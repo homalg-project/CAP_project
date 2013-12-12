@@ -19,9 +19,6 @@
 DeclareCategory( "IsHomalgCategory",
                  IsObject );
 
-DeclareCategory( "IsHomalgCategoryObject",
-                 IsObject );
-
 DeclareCategory( "IsHomalgCategoryMorphism",
                  IsObject );
 
@@ -32,3 +29,22 @@ DeclareCategory( "IsHomalgCategoryMorphism",
 ###################################
 
 DeclareGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT" );
+
+DeclareOperation( "HomalgCategory",
+                  [ ] );
+
+DeclareOperation( "HomalgCategory",
+                  [ IsString ] );
+
+###################################
+##
+#! @Section Morphism functions
+##
+###################################
+
+DeclareAttribute( "HomalgCategoryOfMorphism",
+                  [ IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "PreComposition",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+

@@ -1,0 +1,3 @@
+Constructor: Give categories for objects and morphisms to category.
+             Install filters for containment in category.
+             Install AddToCategory, which can add an object to a category and sets the filter to true.
