@@ -1,17 +1,23 @@
+#############################################################################
+##
+##                                               CategoriesForHomalg package
+##
+##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
+##                  Sebastian Posur,   RWTH Aachen
+##
+#! @AutoDoc
+#! @Chapter Categories for homalg
+##
+#############################################################################
+
+###################################
+##
+#! @Section Categories
+##
+###################################
 
 DeclareCategory( "IsHomalgCategory",
                  IsObject );
-
-DeclareRepresentation( "IsHomalgCategoryRep",
-                       IsAttributeStoringRep and IsHomalgCategory,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfHomalgCategories",
-        NewFamily( "TheFamilyOfHomalgCategories" ) );
-
-BindGlobal( "TheTypeOfHomalgCategories",
-        NewType( TheFamilyOfHomalgCategories,
-                IsHomalgCategoryRep ) );
 
 DeclareCategory( "IsHomalgCategoryObject",
                  IsObject );
@@ -19,4 +25,10 @@ DeclareCategory( "IsHomalgCategoryObject",
 DeclareCategory( "IsHomalgCategoryMorphism",
                  IsObject );
 
-DeclareGlobalFunction( 
+###################################
+##
+#! @Section Constructor
+##
+###################################
+
+DeclareGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT" );
