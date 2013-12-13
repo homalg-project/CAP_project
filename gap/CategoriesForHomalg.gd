@@ -12,14 +12,28 @@
 
 ###################################
 ##
+#! @Level 1
+#! @Section Internal stuff
+##
+###################################
+
+DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG" );
+
+DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_NAME_COUNTER" );
+
+###################################
+##
+#! @ResetLevel
+##
+###################################
+
+###################################
+##
 #! @Section Categories
 ##
 ###################################
 
 DeclareCategory( "IsHomalgCategory",
-                 IsObject );
-
-DeclareCategory( "IsHomalgCategoryMorphism",
                  IsObject );
 
 ###################################
@@ -30,21 +44,42 @@ DeclareCategory( "IsHomalgCategoryMorphism",
 
 DeclareGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT" );
 
-DeclareOperation( "HomalgCategory",
+DeclareGlobalFunction( "CREATE_HOMALG_CATEGORY_FILTERS" );
+
+DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
+
+DeclareOperation( "CreateHomalgCategory",
                   [ ] );
 
-DeclareOperation( "HomalgCategory",
+DeclareOperation( "CreateHomalgCategory",
                   [ IsString ] );
 
 ###################################
 ##
-#! @Section Morphism functions
+#! @Section Internal attributes
 ##
 ###################################
 
-DeclareAttribute( "HomalgCategoryOfMorphism",
-                  [ IsHomalgCategoryMorphism ] );
+DeclareAttribute( "ObjectFilter",
+                  IsHomalgCategory );
 
-DeclareOperation( "PreComposition",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+DeclareAttribute( "MorphismFilter",
+                  IsHomalgCategory );
 
+DeclareAttribute( "IdentityMorphism",
+                  IsHomalgCategory );
+
+DeclareAttribute( "PreCompose",
+                  IsHomalgCategory );
+
+####################################
+##
+#! @Section Add functions
+##
+####################################
+
+DeclareOperation( "AddIdentityMorphism",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddPreCompose",
+                  [ IsHomalgCategory, IsFunction ] );

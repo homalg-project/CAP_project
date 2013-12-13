@@ -6,7 +6,7 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @AutoDoc
-#! @Chapter Category object
+#! @Chapter Category morphism
 ##
 #############################################################################
 
@@ -16,7 +16,7 @@
 ##
 ###################################
 
-DeclareCategory( "IsHomalgCategoryObject",
+DeclareCategory( "IsHomalgCategoryMorphism",
                  IsObject );
 
 ###################################
@@ -25,28 +25,30 @@ DeclareCategory( "IsHomalgCategoryObject",
 ##
 ###################################
 
-#! @Description
-#! This is the place where the category of an object is stored,
-#! once it is set. This also makes sure that an object only belongs to
-#! one category
 #! @Group Category getter
 DeclareAttribute( "HomalgCategory",
-                  IsHomalgCategoryObject );
+                  IsHomalgCategoryMorphism );
+
+DeclareAttribute( "Source",
+                  IsHomalgCategoryMorphism );
+
+DeclareAttribute( "Range",
+                  IsHomalgCategoryMorphism );
 
 ###################################
 ##
-#! @Section Add function
+#! @Section Morphism functions
 ##
 ###################################
 
 DeclareOperation( "Add",
-                  [ IsHomalgCategory, IsHomalgCategoryObject ] );
+                  [ IsHomalgCategory, IsHomalgCategoryMorphism ] );
 
 ###################################
 ##
-#! @Section Element functions
+#! @Section Morphism functions
 ##
 ###################################
 
-DeclareAttribute( "IdentityMorphism",
-                  IsHomalgCategoryObject );
+DeclareOperation( "PreCompose",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );

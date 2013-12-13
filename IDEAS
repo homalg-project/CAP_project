@@ -1,3 +1,10 @@
 Constructor: Give categories for objects and morphisms to category.
              Install filters for containment in category.
              Install AddToCategory, which can add an object to a category and sets the filter to true.
+
+
+
+TODO REIMER:
+Why is there a possibility to add an identity morphism without declaring it?
+
+TODO: Replace IdentityMorphism etc with custom setters which install custom methods

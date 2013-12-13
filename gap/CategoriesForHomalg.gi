@@ -7,6 +7,25 @@
 ##
 #############################################################################
 
+InstallValue( CATEGORIES_FOR_HOMALG,
+              rec(
+                   name_counter := 0
+              )
+);
+
+InstallGlobalFunction( CATEGORIES_FOR_HOMALG_NAME_COUNTER,
+                       
+  function( )
+    local counter;
+    
+    counter := CATEGORIES_FOR_HOMALG.name_counter + 1;
+    
+    CATEGORIES_FOR_HOMALG.name_counter := counter;
+    
+    return counter;
+    
+end );
+
 ######################################
 ##
 ## Reps, types, stuff.
@@ -22,7 +41,7 @@ BindGlobal( "TheFamilyOfHomalgCategories",
 
 BindGlobal( "TheTypeOfHomalgCategories",
         NewType( TheFamilyOfHomalgCategories,
-                IsHomalgCategoryRep ) );
+                 IsHomalgCategoryRep ) );
 
 
 #####################################
@@ -31,73 +50,91 @@ BindGlobal( "TheTypeOfHomalgCategories",
 ##
 #####################################
 
-InstallGlobalFunction( "CREATE_HOMALG_CATEGORY_TYPES",
+InstallGlobalFunction( CREATE_HOMALG_CATEGORY_FILTERS,
                        
-  function( name )
-    local i, cat_name, type_name, rep_name, morphism_cat_name, morphism_type_name, morphism_rep_name,
-          return_record;
+  function( category )
+    local name, filter_name, filter;
     
-    cat_name := Concatenation( "IsHomalgCategory", name, "Object" );
+    name := Name( category );
     
-    DeclareCategory( cat_name,
-                     IsHomalgCategoryObject );
+    filter_name := Concatenation( name, "ObjectFilter" );
     
-    type_name := Concatenation( "TheType", cat_name );
+    SetObjectFilter( category, NewFilter( filter_name ) );
     
-    rep_name := Concatenation( cat_name, "Rep" );
+    filter_name := Concatenation( name, "MorphismFilter" );
     
-    DeclareRepresentation( rep_name,
-                           IsHomalgCategoryObjectRep,
-                           [ ] );
-    
-    BindGlobal( type_name,
-                NewType( TheFamilyOfHomalgCategoryObjects,
-                         ValueGlobal( rep_name ) ) );
-    
-    return_record := rec( object_category := ValueGlobal( cat_name )
-                          object_representation := ValueGlobal( rep_name ),
-                          object_type := ValueGlobal( type_name ),
-    );
-    
-    morphism_cat_name := Concatenation( "IsHomalgCategory", name, "Morphism" );
-    
-    DeclareCategory( morphism_cat_name,
-                     IsHomalgCategoryMorphism );
-    
-    morphism_type_name := Concatenation( "TheType", morphism_cat_name );
-    
-    morphism_rep_name := Concatenation( morphism_cat_name, "Rep" );
-    
-    DeclareRepresentation( morphism_rep_name,
-                           IsHomalgCategoryMorphismRep,
-                           [ ] );
-    
-    BindGlobal( morphism_type_name,
-                NewType( TheFamilyOfHomalgCategoryMorphisms,
-                         ValueGlobal( morphism_rep_name ) ) );
-    
-    return_record.morphism_category := ValueGlobal( morphism_cat_name );
-    
-    return_record.morphism_representation := ValueGlobal( morphism_rep_name );
-    
-    return_record.morphism_type := Value( morphism_type_name );
-    
-    return return_record;
+    SetMorphismFilter( category, NewFilter( filter_name ) );
     
 end );
 
-InstallGlobalFunction( "INSTALL_FUNCTIONS_FOR_CATEGORY",
-                       
-  function( category, obj_category, morphism_category )
-    local i, j, function_list;
-    
-    function_list := [ [ "IdentityMorphism", [ "obj" ] ],
-                       [ "PreComposition", [ "mor", "mor" ] ] ];
-                       
-    for i in [ 1 .. Length( function_list ) ] do
-        
-        for j in [ 1 .. Length( function_list[ i ] ) ]
-    
+# InstallGlobalFunction( INSTALL_ADD_FUNCTIONS_FOR_CATEGORY,
+#                        
+#   function( )
+#     local i, j, function_list, k;
+#     
+#     function_list := [ [ "IdentityMorphism", [ "obj" ] ],
+#                        [ "PreCompose", [ "mor", "mor" ] ] ];
+#     
+#     ## Declare the setters
+#     
+#     for i in function_list do
+#         
+#         DeclareOperation( Concatenation( "Add", i[ 1 ] ),
+#                           [ IsHomalgCategory, IsFunction ] );
+#         
+#     od;
+#     
+#     ## Install the setters
+#     
+#     for i in function_list do
+#         
+#         k := ShallowCopy( i );
+#         
+#         InstallMethod( ValueGlobal( Concatenation( "Add", k[ 1 ] ) ),
+#                        [ IsHomalgCategory, IsFunction ],
+#                        
+#           function( category, inst_meth_function )
+#             local name, filter_list, j;
+#             
+#             name := k[ 1 ];
+#             
+#             filter_list := [ ];
+#             
+#             for j in k[ 2 ] do
+#                 
+#                 if j = "obj" then
+#                     
+#                     Add( filter_list, IsHomalgCategoryObject and ObjectFilter( category ) );
+#                     
+#                 elif j = "mor" then
+#                     
+#                     Add( filter_list, IsHomalgCategoryMorphism and MorphismFilter( category ) );
+#                     
+#                 fi;
+#                 
+#             od;
+#             
+#             InstallMethod( ValueGlobal( name ),
+#                            filter_list,
+#                            
+#               function( arg )
+#                 local ret_val;
+#                 
+#                 ret_val := CallFuncList( inst_meth_function, arg );
+#                 
+#                 Add( category, ret_val );
+#                 
+#                 return ret_val;
+#                 
+#               end );
+#             
+#             end );
+#             
+#     od;
+#     
+# end );
+# 
+# INSTALL_ADD_FUNCTIONS_FOR_CATEGORY( );
 
 InstallGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT",
                        
@@ -134,20 +171,71 @@ end );
 
 #######################################
 ##
+## Add functions
+##
+#######################################
+
+InstallMethod( AddIdentityMorphism,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    InstallMethod( IdentityMorphism,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                   
+      function( object )
+        local ret_val;
+        
+        ret_val := func( object );
+        
+        Add( category, ret_val );
+        
+        return ret_val;
+        
+      end );
+    
+end );
+
+InstallMethod( AddPreCompose,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    InstallMethod( PreCompose,
+                   [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   
+      function( mor_left, mor_right )
+        local ret_val;
+        
+        ret_val := func( mor_left, mor_right );
+        
+        Add( category, ret_val );
+        
+        return ret_val;
+        
+      end );
+    
+end );
+
+#######################################
+##
 ## Constructors
 ##
 #######################################
 
-InstallMethod( HomalgCategory,
+InstallMethod( CreateHomalgCategory,
                [ ],
                
   function( )
+    local name;
     
-    return CREATE_HOMALG_CATEGORY_OBJECT( rec( ),  [ ] );
+    name := Concatenation( "AutomaticHomalgCategory", String( CATEGORIES_FOR_HOMALG_NAME_COUNTER( ) ) );
+    
+    return CreateHomalgCategory( name );
     
 end );
 
-InstallMethod( HomalgCategory,
+InstallMethod( CreateHomalgCategory,
                [ IsString ],
                
   function( name )
@@ -155,7 +243,29 @@ InstallMethod( HomalgCategory,
     
     category := CREATE_HOMALG_CATEGORY_OBJECT( rec( ), [ [ "Name", name ] ] );
     
-    category!.cats_reps_types := CREATE_HOMALG_CATEGORY_TYPES( name );
+    CREATE_HOMALG_CATEGORY_FILTERS( category );
+    
+    InstallImmediateMethod( HomalgCategory,
+                            IsHomalgCategoryObject and ObjectFilter( category ),
+                            0,
+                            
+      function( object )
+        
+        return category;
+        
+    end );
+    
+    InstallImmediateMethod( HomalgCategory,
+                            IsHomalgCategoryMorphism and MorphismFilter( category ),
+                            0,
+                            
+      function( object )
+        
+        return category;
+        
+    end );
+    
+    return category;
     
 end );
 

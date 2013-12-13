@@ -22,7 +22,7 @@ BindGlobal( "TheFamilyOfHomalgCategoryObjects",
 
 BindGlobal( "TheTypeOfHomalgCategoryObjects",
         NewType( TheFamilyOfHomalgCategoryObjects,
-                IsHomalgCategoryObject ) );
+                IsHomalgCategoryObjectRep ) );
 
 #######################################
 ##
@@ -30,14 +30,30 @@ BindGlobal( "TheTypeOfHomalgCategoryObjects",
 ##
 #######################################
 
-InstallMethod( IdentityMorphism,
-               [ IsHomalgCategoryObject ],
+InstallMethod( Add,
+               [ IsHomalgCategory, IsHomalgCategoryObject ],
                
-  function( object )
-    local category;
+  function( category, object )
+    local filter;
     
-    category := HomalgCategoryOfObject( object );
+    if HasHomalgCategory( object ) then
+        
+        if IsIdenticalObj( HomalgCategory( object ), category ) then
+            
+            return;
+            
+        else
+            
+            Error( "this object already has a category" );
+            
+        fi;
+        
+    fi;
     
-    return IdentityMorphism( category )( object );
+    filter := ObjectFilter( category );
+    
+    SetFilterObj( object, filter );
+    
+    ## Homalg category is set by immediate method
     
 end );
