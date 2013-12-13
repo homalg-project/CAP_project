@@ -7,4 +7,7 @@ Constructor: Give categories for objects and morphisms to category.
 TODO REIMER:
 Why is there a possibility to add an identity morphism without declaring it?
 
-TODO: Replace IdentityMorphism etc with custom setters which install custom methods
+TODO:
+* Add generic view and display methods
+* Add caching to methods
+* 

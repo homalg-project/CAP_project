@@ -169,6 +169,26 @@ InstallGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT",
     
 end );
 
+InstallMethod( ZeroObject,
+               [ IsHomalgCategory ],
+               
+  function( category )
+    local zero_obj;
+    
+    if not IsBound( category!.zero_object_constructor ) then
+        
+        Error( "no possibility to construct zero object" );
+        
+    fi;
+    
+    zero_obj := category!.zero_object_constructor();
+    
+    Add( category, zero_obj );
+    
+    return zero_obj;
+    
+end );
+
 #######################################
 ##
 ## Add functions
@@ -207,6 +227,16 @@ InstallMethod( AddPreCompose,
       function( mor_left, mor_right )
         local ret_val;
         
+        if not IsIdenticalObj( HomalgCategory( mor_left ), HomalgCategory( mor_right ) ) then
+            
+            Error( "morphisms must lie in the same category" );
+            
+        elif not IsIdenticalObj( Range( mor_left ), Source( mor_right ) ) then
+            
+            Error( "morphisms not composable" );
+            
+        fi;
+        
         ret_val := func( mor_left, mor_right );
         
         Add( category, ret_val );
@@ -214,6 +244,66 @@ InstallMethod( AddPreCompose,
         return ret_val;
         
       end );
+    
+end );
+
+InstallMethod( AddZeroObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    category!.zero_object_constructor := func;
+    
+    InstallMethod( ZeroObject,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                   
+      function( object )
+        
+        return ZeroObject( category );
+        
+      end );
+    
+end );
+
+InstallMethod( AddMorphismIntoZeroObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    InstallMethod( MorphismIntoZeroObject,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                   
+      function( object )
+        local morphism;
+        
+        morphism := func( object );
+        
+        Add( category, morphism );
+        
+        return morphism;
+        
+    end );
+    
+end );
+
+InstallMethod( AddMorphismFromZeroObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    InstallMethod( MorphismFromZeroObject,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                   
+      function( object )
+        local morphism;
+        
+        morphism := func( object );
+        
+        Add( category, morphism );
+        
+        return morphism;
+        
+    end );
     
 end );
 

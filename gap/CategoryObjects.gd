@@ -50,3 +50,15 @@ DeclareOperation( "Add",
 
 DeclareAttribute( "IdentityMorphism",
                   IsHomalgCategoryObject );
+
+DeclareAttribute( "ZeroObject",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "MorphismFromZeroObject",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "MorphismIntoZeroObject",
+                  IsHomalgCategoryObject );
+
+DeclareOperation( "ZeroMorphism",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );

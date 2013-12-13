@@ -52,3 +52,12 @@ DeclareOperation( "Add",
 
 DeclareOperation( "PreCompose",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+###################################
+##
+#! @Section Implied operations
+##
+###################################
+
+DeclareOperation( "PostCompose",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );

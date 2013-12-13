@@ -62,3 +62,19 @@ InstallMethod( Add,
     
 end );
 
+######################################
+##
+## Implied operations
+##
+######################################
+
+InstallMethod( PostCompose,
+               [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+               
+  function( right_mor, left_mor )
+    
+    return PreCompose( left_mor, right_mor );
+    
+end );
+
+

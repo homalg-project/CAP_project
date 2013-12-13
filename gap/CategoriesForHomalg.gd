@@ -72,6 +72,9 @@ DeclareAttribute( "IdentityMorphism",
 DeclareAttribute( "PreCompose",
                   IsHomalgCategory );
 
+DeclareAttribute( "ZeroObject",
+                  IsHomalgCategory );
+
 ####################################
 ##
 #! @Section Add functions
@@ -82,4 +85,13 @@ DeclareOperation( "AddIdentityMorphism",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareOperation( "AddPreCompose",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddZeroObject",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismIntoZeroObject",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromZeroObject",
                   [ IsHomalgCategory, IsFunction ] );

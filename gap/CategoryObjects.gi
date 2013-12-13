@@ -57,3 +57,13 @@ InstallMethod( Add,
     ## Homalg category is set by immediate method
     
 end );
+
+
+InstallMethod( ZeroMorphism,
+               [ IsHomalgCategoryObject, IsHomalgCategoryObject ],
+               
+  function( obj_source, obj_range )
+    
+    return PreCompose( MorphismIntoZeroObject( obj_source ), MorphismFromZeroObject( obj_range ) );
+    
+end );
