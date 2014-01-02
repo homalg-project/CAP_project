@@ -8,6 +8,5 @@ TODO REIMER:
 Why is there a possibility to add an identity morphism without declaring it?
 
 TODO:
-* Add generic view and display methods
 * Add caching to methods
-* 
+* Add generic display methods
