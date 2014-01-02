@@ -26,6 +26,14 @@ BindGlobal( "TheTypeOfHomalgCategoryObjects",
 
 #######################################
 ##
+## Technical implications
+##
+#######################################
+
+InstallTrueMethod( IsDirectSum, HasFirstSummand and HasSecondSummand );
+
+#######################################
+##
 ## Operations
 ##
 #######################################

@@ -95,3 +95,9 @@ DeclareOperation( "AddMorphismIntoZeroObject",
 
 DeclareOperation( "AddMorphismFromZeroObject",
                   [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectSum_OnObjects",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionFromFirstSummand",
+                  [ IsHomalgCategory, IsFunction ] );

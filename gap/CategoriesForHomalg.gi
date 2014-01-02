@@ -50,6 +50,7 @@ BindGlobal( "TheTypeOfHomalgCategories",
 ##
 #####################################
 
+##
 InstallGlobalFunction( CREATE_HOMALG_CATEGORY_FILTERS,
                        
   function( category )
@@ -67,75 +68,7 @@ InstallGlobalFunction( CREATE_HOMALG_CATEGORY_FILTERS,
     
 end );
 
-# InstallGlobalFunction( INSTALL_ADD_FUNCTIONS_FOR_CATEGORY,
-#                        
-#   function( )
-#     local i, j, function_list, k;
-#     
-#     function_list := [ [ "IdentityMorphism", [ "obj" ] ],
-#                        [ "PreCompose", [ "mor", "mor" ] ] ];
-#     
-#     ## Declare the setters
-#     
-#     for i in function_list do
-#         
-#         DeclareOperation( Concatenation( "Add", i[ 1 ] ),
-#                           [ IsHomalgCategory, IsFunction ] );
-#         
-#     od;
-#     
-#     ## Install the setters
-#     
-#     for i in function_list do
-#         
-#         k := ShallowCopy( i );
-#         
-#         InstallMethod( ValueGlobal( Concatenation( "Add", k[ 1 ] ) ),
-#                        [ IsHomalgCategory, IsFunction ],
-#                        
-#           function( category, inst_meth_function )
-#             local name, filter_list, j;
-#             
-#             name := k[ 1 ];
-#             
-#             filter_list := [ ];
-#             
-#             for j in k[ 2 ] do
-#                 
-#                 if j = "obj" then
-#                     
-#                     Add( filter_list, IsHomalgCategoryObject and ObjectFilter( category ) );
-#                     
-#                 elif j = "mor" then
-#                     
-#                     Add( filter_list, IsHomalgCategoryMorphism and MorphismFilter( category ) );
-#                     
-#                 fi;
-#                 
-#             od;
-#             
-#             InstallMethod( ValueGlobal( name ),
-#                            filter_list,
-#                            
-#               function( arg )
-#                 local ret_val;
-#                 
-#                 ret_val := CallFuncList( inst_meth_function, arg );
-#                 
-#                 Add( category, ret_val );
-#                 
-#                 return ret_val;
-#                 
-#               end );
-#             
-#             end );
-#             
-#     od;
-#     
-# end );
-# 
-# INSTALL_ADD_FUNCTIONS_FOR_CATEGORY( );
-
+##
 InstallGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT",
                        
   function( obj_rec, attr_list )
@@ -169,6 +102,7 @@ InstallGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT",
     
 end );
 
+##
 InstallMethod( ZeroObject,
                [ IsHomalgCategory ],
                
@@ -195,6 +129,7 @@ end );
 ##
 #######################################
 
+##
 InstallMethod( AddIdentityMorphism,
                [ IsHomalgCategory, IsFunction ],
                
@@ -216,6 +151,7 @@ InstallMethod( AddIdentityMorphism,
     
 end );
 
+##
 InstallMethod( AddPreCompose,
                [ IsHomalgCategory, IsFunction ],
                
@@ -265,6 +201,7 @@ InstallMethod( AddZeroObject,
     
 end );
 
+##
 InstallMethod( AddMorphismIntoZeroObject,
                [ IsHomalgCategory, IsFunction ],
                
@@ -286,6 +223,7 @@ InstallMethod( AddMorphismIntoZeroObject,
     
 end );
 
+##
 InstallMethod( AddMorphismFromZeroObject,
                [ IsHomalgCategory, IsFunction ],
                
@@ -306,6 +244,72 @@ InstallMethod( AddMorphismFromZeroObject,
     end );
     
 end );
+
+##
+InstallMethod( AddDirectSum_OnObjects,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    ## Caching here
+    InstallMethod( DirectSumOp,
+                   [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
+                   
+      function( obj_list, obj1 )
+        local obj2, sum_obj;
+        
+        if not Length( obj_list ) = 2 then
+            
+            Error( "there must be two objects for a direct sum" );
+            
+        fi;
+        
+        obj2 := obj_list[ 2 ];
+        
+        if not IsIdenticalObj( HomalgCategory( obj1 ), HomalgCategory( obj2 ) ) then
+            
+            Error( "Objects must lie in the same category" );
+            
+        fi;
+        
+        sum_obj := func( obj1, obj2 );
+        
+        SetFirstSummand( sum_obj, obj1 );
+        
+        SetSecondSummand( sum_obj, obj2 );
+        
+        Add( HomalgCategory( obj1 ), sum_obj );
+        
+        return sum_obj;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddInjectionFromFirstSummand,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    InstallMethod( InjectionFromFirstSummand,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) and IsDirectSum ],
+                   
+      function( sum_obj )
+        local injection1;
+        
+        injection1 := func( sum_obj );
+        
+        Add( HomalgCategory( sum_obj ), injection1 );
+        
+        ## TODO: This morphism is mono
+        
+        return injection1;
+        
+    end );
+    
+end );
+
 
 #######################################
 ##

@@ -37,7 +37,7 @@ DeclareAttribute( "Range",
 
 ###################################
 ##
-#! @Section Morphism functions
+#! @Section Morphism add functions
 ##
 ###################################
 
@@ -52,6 +52,9 @@ DeclareOperation( "Add",
 
 DeclareOperation( "PreCompose",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "DirectSumOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
 
 ###################################
 ##

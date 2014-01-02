@@ -19,6 +19,8 @@
 DeclareCategory( "IsHomalgCategoryObject",
                  IsObject );
 
+DeclareFilter( "IsDirectSum" );
+
 ###################################
 ##
 #! @Section Functions for all objects
@@ -41,6 +43,33 @@ DeclareAttribute( "HomalgCategory",
 
 DeclareOperation( "Add",
                   [ IsHomalgCategory, IsHomalgCategoryObject ] );
+
+###################################
+##
+#! @Section Direct sum attributes
+##
+###################################
+
+DeclareOperation( "DirectSumOp",
+                  [ IsList, IsHomalgCategoryObject ] );
+
+DeclareAttribute( "FirstSummand",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "SecondSummand",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "ProjectionToFirstSummand",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "ProjectionToSecondSummand",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "InjectionFromFirstSummand",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "InjectionFromSecondSummand",
+                  IsHomalgCategoryObject );
 
 ###################################
 ##
