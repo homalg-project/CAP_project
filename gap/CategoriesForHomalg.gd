@@ -101,3 +101,21 @@ DeclareOperation( "AddDirectSum_OnObjects",
 
 DeclareOperation( "AddInjectionFromFirstSummand",
                   [ IsHomalgCategory, IsFunction ] );
+
+####################################
+##
+#! @Section Caching
+##
+####################################
+
+DeclareOperation( "SetCaching",
+                  [ IsHomalgCategory, IsString, IsString ] );
+
+DeclareOperation( "SetCachingToWeak",
+                  [ IsHomalgCategory, IsString ] );
+
+DeclareOperation( "SetCachingToCrisp",
+                  [ IsHomalgCategory, IsString ] );
+
+DeclareOperation( "DeactivateCaching",
+                  [ IsHomalgCategory, IsString ] );

@@ -32,7 +32,7 @@ end );
 ##
 ######################################
 
-DeclareRepresentation( "IsHomalgCategoryRep",
+  DeclareRepresentation( "IsHomalgCategoryRep",
                        IsAttributeStoringRep and IsHomalgCategory,
                        [ ] );
 
@@ -317,6 +317,53 @@ end );
 ##
 #######################################
 
+##
+InstallMethod( SetCaching,
+               [ IsHomalgCategory, IsString, IsString ],
+               
+  function( category, function_name, caching_info )
+    
+    if not caching_info in [ "weak", "crisp", "none" ] then
+        
+        Error( "wrong caching type" );
+        
+    fi;
+    
+    category!.caching_info.( function_name ) := caching_info;
+    
+end );
+
+##
+InstallMethod( SetCachingToWeak,
+               [ IsHomalgCategory, IsString ],
+               
+  function( category, function_name )
+    
+    SetCaching( category, function_name, "weak" );
+    
+end );
+
+##
+InstallMethod( SetCachingToCrisp,
+               [ IsHomalgCategory, IsString ],
+               
+  function( category, function_name )
+    
+    SetCaching( category, function_name, "crisp" );
+    
+end );
+
+##
+InstallMethod( DeactivateCaching,
+               [ IsHomalgCategory, IsString ],
+               
+  function( category, function_name )
+    
+    SetCaching( category, function_name, "none" );
+    
+end );
+
+##
 InstallMethod( CreateHomalgCategory,
                [ ],
                
@@ -335,7 +382,9 @@ InstallMethod( CreateHomalgCategory,
   function( name )
     local category;
     
-    category := CREATE_HOMALG_CATEGORY_OBJECT( rec( ), [ [ "Name", name ] ] );
+    category := rec( caching_info := rec( ) );
+    
+    category := CREATE_HOMALG_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
     
     CREATE_HOMALG_CATEGORY_FILTERS( category );
     
