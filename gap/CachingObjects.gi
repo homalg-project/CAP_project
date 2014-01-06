@@ -37,6 +37,24 @@ BindGlobal( "TheTypeOfCrispCachingObject",
         NewType( TheFamilyOfCachingObjects,
                  IsCrispCachingObjectRep ) );
 
+##
+InstallGlobalFunction( CACHINGOBJECT_HIT,
+                       
+  function( cache )
+    
+    cache!.hit_counter := cache!.hit_counter + 1;
+    
+end );
+
+##
+InstallGlobalFunction( CACHINGOBJECT_MISS,
+                       
+  function( cache )
+    
+    cache!.miss_counter := cache!.miss_counter + 1;
+    
+end );
+
 ## FIXME: Maybe do not search by IsIdenticalObj
 InstallGlobalFunction( SEARCH_WPLIST_FOR_OBJECT,
                        
@@ -45,9 +63,7 @@ InstallGlobalFunction( SEARCH_WPLIST_FOR_OBJECT,
     
     for pos in [ 1 .. LengthWPObj( wp_list ) ] do
         
-        Error( "" );
-        
-        if IsIdenticalObj( object, ElmWPObj( wp_list, pos ) ) then
+        if IsBoundElmWPObj( wp_list, pos ) and IsIdenticalObj( object, ElmWPObj( wp_list, pos ) ) then
             
             return pos;
             
@@ -190,9 +206,13 @@ InstallMethod( GetObject,
     
     if IsBoundElmWPObj( list, pos ) then
         
+        CACHINGOBJECT_HIT( cache );
+        
         return ElmWPObj( list, pos );
         
     fi;
+    
+    CACHINGOBJECT_MISS( cache );
     
     return SuPeRfail;
     
@@ -208,9 +228,13 @@ InstallMethod( GetObject,
     
     if IsBound( list[ pos ] ) then
         
+        CACHINGOBJECT_HIT( cache );
+        
         return list[ pos ];
         
     fi;
+    
+    CACHINGOBJECT_MISS( cache );
     
     return SuPeRfail;
     
@@ -220,7 +244,7 @@ InstallMethod( SetCacheValue,
                [ IsCachingObject, IsList, IsObject ],
                
   function( cache, key_list, value )
-    local keys, length_key_list, i, position, entry_position;
+    local keys, length_key_list, i, position, entry_position, entry_key;
     
     length_key_list := Length( key_list );
     
@@ -231,6 +255,8 @@ InstallMethod( SetCacheValue,
     fi;
     
     keys := cache!.keys;
+    
+    entry_key := [ ];
     
     for i in [ 1 .. length_key_list ] do
         
@@ -244,13 +270,13 @@ InstallMethod( SetCacheValue,
             
         fi;
         
-        keys[ i ] := position;
+        entry_key[ i ] := position;
         
     od;
     
     entry_position := cache!.value_list_position;
     
-    cache!.keys_value_list[ entry_position ] := keys;
+    cache!.keys_value_list[ entry_position ] := entry_key;
     
     Add( cache, entry_position, value );
     
@@ -262,7 +288,7 @@ InstallMethod( CacheValue,
                [ IsCachingObject, IsList ],
                
   function( cache, key_list )
-    local length_key_list, keys, position, i;
+    local length_key_list, keys, position, i, entry_key;
     
     length_key_list := Length( key_list );
     
@@ -274,23 +300,29 @@ InstallMethod( CacheValue,
     
     keys := cache!.keys;
     
+    entry_key := [ ];
+    
     for i in [ 1 .. length_key_list ] do
         
         position := SEARCH_WPLIST_FOR_OBJECT( keys[ i ], key_list[ i ] );
         
         if position = fail then
             
+            CACHINGOBJECT_MISS( cache );
+            
             return SuPeRfail;
             
         fi;
         
-        keys[ i ] := position;
+        entry_key[ i ] := position;
         
     od;
     
-    position := Position( cache!.keys_value_list, keys );
+    position := Position( cache!.keys_value_list, entry_key );
     
     if position = fail then
+        
+        CACHINGOBJECT_MISS( cache );
         
         return SuPeRfail;
         
@@ -300,3 +332,67 @@ InstallMethod( CacheValue,
     
 end );
 
+## InstallMethod( opr[, info][, famp], args-filts[, val], method )
+##
+InstallGlobalFunction( InstallMethodWithCache,
+                       
+  function( arg )
+    local new_func, i, filt_list, crisp, arg_nr, cache, func;
+    
+    ##find filter list
+    for i in [ 2 .. 4 ] do
+        
+        if not IsString( arg[ i ] ) and not IsFunction( arg[ i ] ) then
+            
+            filt_list := arg[ i ];
+            
+            break;
+            
+        fi;
+        
+    od;
+    
+    if not IsBound( filt_list ) then
+        
+        Error( "something went wrong. This should not happen" );
+        
+    fi;
+    
+    crisp := ValueOption( "CrispCache" );
+    
+    if crisp = fail then
+        
+        crisp := false;
+        
+    fi;
+    
+    arg_nr := Length( filt_list );
+    
+    cache := CachingObject( crisp, arg_nr );
+    
+    func := arg[ Length( arg ) ];
+    
+    new_func := function( arg )
+      local value;
+        
+        value := CacheValue( cache, arg );
+        
+        if value <> SuPeRfail then
+            
+            return value;
+            
+        fi;
+        
+        value := CallFuncList( func, arg );
+        
+        SetCacheValue( cache, arg, value );
+        
+        return value;
+        
+    end;
+    
+    arg[ Length( arg ) ] := new_func;
+    
+    CallFuncList( InstallMethod, arg );
+    
+end );

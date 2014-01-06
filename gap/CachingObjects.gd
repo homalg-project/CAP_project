@@ -18,9 +18,15 @@ DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_PREPARE_CACHING_RECORD" );
 
 DeclareGlobalFunction( "SEARCH_WPLIST_FOR_OBJECT" );
 
+DeclareGlobalFunction( "CACHINGOBJECT_HIT" );
+
+DeclareGlobalFunction( "CACHINGOBJECT_MISS" );
+
 DeclareGlobalFunction( "CreateWeakCachingObject" );
 
 DeclareGlobalFunction( "CreateCrispCachingObject" );
+
+DeclareGlobalFunction( "InstallMethodWithCache" );
 
 DeclareOperation( "CachingObject",
                   [ ] );
