@@ -332,6 +332,17 @@ InstallMethod( CacheValue,
     
 end );
 
+##
+InstallGlobalFunction( InstallMethodWithCrispCache,
+                       
+  function( arg )
+    
+    PushOptions( rec( CrispCache := true ) );
+    
+    CallFuncList( InstallMethodWithCache, arg );
+    
+end );
+
 ## InstallMethod( opr[, info][, famp], args-filts[, val], method )
 ##
 InstallGlobalFunction( InstallMethodWithCache,

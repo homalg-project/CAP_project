@@ -67,8 +67,8 @@ InstallMethod( Add,
 end );
 
 
-InstallMethod( ZeroMorphism,
-               [ IsHomalgCategoryObject, IsHomalgCategoryObject ],
+InstallMethodWithCache( ZeroMorphism,
+                        [ IsHomalgCategoryObject, IsHomalgCategoryObject ],
                
   function( obj_source, obj_range )
     

@@ -21,6 +21,8 @@ DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG" );
 
 DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_NAME_COUNTER" );
 
+DeclareGlobalFunction( "DECIDE_INSTALL_FUNCTION" );
+
 ###################################
 ##
 #! @ResetLevel

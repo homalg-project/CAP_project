@@ -28,6 +28,11 @@ DeclareGlobalFunction( "CreateCrispCachingObject" );
 
 DeclareGlobalFunction( "InstallMethodWithCache" );
 
+## Weak cache is std.
+DeclareSynonym( "InstallMethodWithWeakCache", InstallMethodWithCache );
+
+DeclareGlobalFunction( "InstallMethodWithCrispCache" );
+
 DeclareOperation( "CachingObject",
                   [ ] );
 

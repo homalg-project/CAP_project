@@ -7,12 +7,14 @@
 ##
 #############################################################################
 
+##
 InstallValue( CATEGORIES_FOR_HOMALG,
               rec(
                    name_counter := 0
               )
 );
 
+##
 InstallGlobalFunction( CATEGORIES_FOR_HOMALG_NAME_COUNTER,
                        
   function( )
@@ -26,13 +28,47 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_NAME_COUNTER,
     
 end );
 
+##
+InstallGlobalFunction( DECIDE_INSTALL_FUNCTION,
+                       
+  function( category, method )
+    local caching_info;
+    
+    if not IsBound( category!.caching_info.( method ) ) then
+        
+        category!.caching_info.( method ) := "weak";
+        
+    fi;
+    
+    caching_info := category!.caching_info.( method );
+    
+    if caching_info = "weak" then
+        
+        return InstallMethodWithWeakCache;
+        
+    elif caching_info = "crisp" then
+        
+        return InstallMethodWithCrispCache;
+        
+    elif caching_info = "none" then
+        
+        return InstallMethod;
+        
+    else
+        
+        Error( "wrong type of install function" );
+        
+    fi;
+    
+end );
+
 ######################################
 ##
 ## Reps, types, stuff.
 ##
 ######################################
 
-  DeclareRepresentation( "IsHomalgCategoryRep",
+DeclareRepresentation( "IsHomalgCategoryRep",
                        IsAttributeStoringRep and IsHomalgCategory,
                        [ ] );
 
@@ -156,9 +192,12 @@ InstallMethod( AddPreCompose,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
+    local InstallFunction;
     
-    InstallMethod( PreCompose,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "PreCompose" );
+    
+    InstallFunction( PreCompose,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                    
       function( mor_left, mor_right )
         local ret_val;
@@ -250,10 +289,12 @@ InstallMethod( AddDirectSum_OnObjects,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
+    local InstallFunction;
     
-    ## Caching here
-    InstallMethod( DirectSumOp,
-                   [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
+    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "DirectSum" );
+    
+    InstallFunction( DirectSumOp,
+                     [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
                    
       function( obj_list, obj1 )
         local obj2, sum_obj;
