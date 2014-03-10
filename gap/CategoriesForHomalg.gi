@@ -138,6 +138,12 @@ InstallGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT",
     
 end );
 
+#####################################
+##
+## Category stored object functions
+##
+#####################################
+
 ##
 InstallMethod( ZeroObject,
                [ IsHomalgCategory ],
@@ -159,9 +165,15 @@ InstallMethod( ZeroObject,
     
 end );
 
-#######################################
+######################################################
 ##
 ## Add functions
+##
+######################################################
+
+#######################################
+##
+## IdentityMorphism
 ##
 #######################################
 
@@ -170,6 +182,8 @@ InstallMethod( AddIdentityMorphism,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
+    
+    SetIdentityMorphismFunction( category, func );
     
     InstallMethod( IdentityMorphism,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -187,12 +201,20 @@ InstallMethod( AddIdentityMorphism,
     
 end );
 
+#######################################
+##
+## PreCompose
+##
+#######################################
+
 ##
 InstallMethod( AddPreCompose,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
     local InstallFunction;
+    
+    SetPreComposeFunction( category, func );
     
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "PreCompose" );
     
@@ -222,12 +244,20 @@ InstallMethod( AddPreCompose,
     
 end );
 
+#######################################
+##
+## Zero object
+##
+#######################################
+
 InstallMethod( AddZeroObject,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
     
     category!.zero_object_constructor := func;
+    
+    SetZeroObjectFunction( category, func );
     
     InstallMethod( ZeroObject,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -245,6 +275,8 @@ InstallMethod( AddMorphismIntoZeroObject,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
+    
+    SetMorphismIntoZeroObjectFunction( category, func );
     
     InstallMethod( MorphismIntoZeroObject,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -268,6 +300,8 @@ InstallMethod( AddMorphismFromZeroObject,
                
   function( category, func )
     
+    SetMorphismFromZeroObjectFunction( category, func );
+    
     InstallMethod( MorphismFromZeroObject,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) ],
                    
@@ -284,6 +318,12 @@ InstallMethod( AddMorphismFromZeroObject,
     
 end );
 
+#######################################
+##
+## Direct sum
+##
+#######################################
+
 ##
 InstallMethod( AddDirectSum_OnObjects,
                [ IsHomalgCategory, IsFunction ],
@@ -292,6 +332,8 @@ InstallMethod( AddDirectSum_OnObjects,
     local InstallFunction;
     
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "DirectSum" );
+    
+    SetDirectSum_OnObjectsFunction( category, func );
     
     InstallFunction( DirectSumOp,
                      [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -333,6 +375,8 @@ InstallMethod( AddInjectionFromFirstSummand,
                
   function( category, func )
     
+    SetInjectionFromFirstSummandFunction( category, func );
+    
     InstallMethod( InjectionFromFirstSummand,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) and IsDirectSum ],
                    
@@ -351,10 +395,87 @@ InstallMethod( AddInjectionFromFirstSummand,
     
 end );
 
+##
+InstallMethod( AddInjectionFromSecondSummand,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetInjectionFromSecondSummandFunction( category, func );
+    
+    InstallMethod( InjectionFromSecondSummand,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) and IsDirectSum ],
+                   
+      function( sum_obj )
+        local injection1;
+        
+        injection1 := func( sum_obj );
+        
+        Add( HomalgCategory( sum_obj ), injection1 );
+        
+        ## TODO: This morphism is mono
+        
+        return injection1;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddProjectionInFirstFactor,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetProjectionInFirstFactorFunction( category, func );
+    
+    InstallMethod( ProjectionInFirstFactor,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) and IsDirectSum ],
+                   
+      function( sum_obj )
+        local surjection;
+        
+        surjection := func( sum_obj );
+        
+        Add( HomalgCategory( sum_obj ), surjection );
+        
+        ## TODO: This morphism is epi
+        
+        return surjection;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddProjectionInSecondFactor,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetProjectionInSecondFactorFunction( category, func );
+    
+    InstallMethod( ProjectionInSecondFactor,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) and IsDirectSum ],
+                   
+      function( sum_obj )
+        local surjection;
+        
+        surjection := func( sum_obj );
+        
+        Add( HomalgCategory( sum_obj ), surjection );
+        
+        ## TODO: This morphism is epi
+        
+        return surjection;
+        
+    end );
+    
+end );
 
 #######################################
 ##
-## Constructors
+## Caching
 ##
 #######################################
 
@@ -403,6 +524,12 @@ InstallMethod( DeactivateCaching,
     SetCaching( category, function_name, "none" );
     
 end );
+
+#######################################
+##
+## Constructors
+##
+#######################################
 
 ##
 InstallMethod( CreateHomalgCategory,
