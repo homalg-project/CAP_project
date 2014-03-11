@@ -59,10 +59,10 @@ DeclareAttribute( "FirstSummand",
 DeclareAttribute( "SecondSummand",
                   IsHomalgCategoryObject );
 
-DeclareAttribute( "ProjectionToFirstSummand",
+DeclareAttribute( "ProjectionInFirstFactor",
                   IsHomalgCategoryObject );
 
-DeclareAttribute( "ProjectionToSecondSummand",
+DeclareAttribute( "ProjectionInSecondFactor",
                   IsHomalgCategoryObject );
 
 DeclareAttribute( "InjectionFromFirstSummand",

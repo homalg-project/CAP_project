@@ -214,7 +214,7 @@ InstallMethod( AddPreCompose,
   function( category, func )
     local InstallFunction;
     
-    SetPreComposeFunction( category, func );
+    SetPrecomposeFunction( category, func );
     
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "PreCompose" );
     

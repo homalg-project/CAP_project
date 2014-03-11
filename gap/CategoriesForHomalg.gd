@@ -205,13 +205,13 @@ DeclareAttribute( "ProjectionInFirstFactorFunction",
                   IsHomalgCategory );
 
 DeclareOperation( "AddProjectionInFirstFactor",
-                  [ IsHomalgCategory, IsFunction );
+                  [ IsHomalgCategory, IsFunction ] );
 
-DeclareAttribute( "ProjectionInFirstSecondFunction",
+DeclareAttribute( "ProjectionInSecondFactorFunction",
                   IsHomalgCategory );
 
 DeclareOperation( "AddProjectionInSecondFactor",
-                  [ IsHomalgCategory, IsFunction );
+                  [ IsHomalgCategory, IsFunction ] );
 
 ####################################
 ##
