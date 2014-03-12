@@ -136,7 +136,7 @@ DeclareOperation( "AddIdentityMorphism",
 #!  the composition of its two arguments, i.e. if the arguments are two morphisms <A>phi</A>: $A \rightarrow B$ and <A>psi</A>: $B \rightarrow C$ it
 #!  has to return a morphism $\phi\psi : A \rightarrow C$. Source and target of this morphism will be set automatically. This function also installs
 #!  PostCompose, which is just CoPreCompose.
-DeclareAttribute( "PrecomposeFunction",
+DeclareAttribute( "PreComposeFunction",
                   IsHomalgCategory );
 
 DeclareOperation( "AddPreCompose",
@@ -213,6 +213,69 @@ DeclareAttribute( "ProjectionInSecondFactorFunction",
 DeclareOperation( "AddProjectionInSecondFactor",
                   [ IsHomalgCategory, IsFunction ] );
 
+# universal properties of direct sum?
+# product/ coproduct?
+
+####################################
+##
+## Monomorphism as kernel lift
+##
+####################################
+
+DeclareAttribute( "MonoAsKernelLiftFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddMonoAsKernelLift",
+                  [ IsHomalgCategory, IsFunction ] );
+
+####################################
+##
+## Epismorphism as cokernel lift
+##
+####################################
+
+DeclareAttribute( "EpiAsCokernelColiftFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddEpiAsCokernelColift",
+                  [ IsHomalgCategory, IsFunction ] );
+
+####################################
+##
+## Inverse
+##
+####################################
+
+DeclareAttribute( "InverseFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddInverse",
+                  [ IsHomalgCategory, IsFunction ] );
+
+####################################
+##
+## Kernel
+##
+####################################                                                   
+
+DeclareAttribute( "KernelFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddKernel"
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "KernelLiftFunction",
+                  IsHomalgCategory );
+                  
+DeclareOperation( "AddKernelLift"
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "KernelEmbFunction",
+                  IsHomalgCategory );
+                  
+DeclareOperation( "AddKernelEmb"
+                  [ IsHomalgCategory, IsFunction ] );
+                  
 ####################################
 ##
 #! @Section Caching

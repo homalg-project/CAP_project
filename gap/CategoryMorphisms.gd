@@ -35,6 +35,25 @@ DeclareAttribute( "Source",
 DeclareAttribute( "Range",
                   IsHomalgCategoryMorphism );
 
+# this attribute is also an implied operation
+DeclareAttribute( "Inverse",
+                  IsHomalgCategoryMorphism );                  
+
+###################################
+##
+## Properties
+##
+###################################                                 
+
+DeclareProperty( "IsMonomorphism",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "IsEpimorphism",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "IsIsomorphism",
+                 IsHomalgCategoryMorphism );
+
 ###################################
 ##
 #! @Section Morphism add functions
@@ -55,6 +74,27 @@ DeclareOperation( "PreCompose",
 
 DeclareOperation( "DirectSumOp",
                   [ IsList, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "MonoAsKernelLift",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "EpiAsCokernelColift",                  
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+###################################
+##
+#! @Section Kernel and Cokernel
+##
+###################################
+                  
+DeclareAttribute( "Kernel",
+                  IsHomalgCategoryMorphism );
+
+DeclareAttribute( "KernelEmb",
+                  IsHomalgCategoryMorphism );
+
+DeclareOperation( "KernelLift",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 ###################################
 ##

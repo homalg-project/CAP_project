@@ -1,6 +1,12 @@
 
 LoadPackage( "CategoriesForHomalg" );
 
+###################################
+##
+#! @Types and Representations
+##
+###################################
+
 DeclareRepresentation( "IsHomalgRationalVectorSpaceRep",
                        IsHomalgCategoryObjectRep,
                        [ ] );
@@ -17,12 +23,35 @@ BindGlobal( "TheTypeOfHomalgRationalVectorSpaceMorphism",
         NewType( TheFamilyOfHomalgCategoryMorphisms,
                 IsHomalgRationalVectorSpaceMorphismRep ) );
 
-
+###################################
+##
+#! @Attributes
+##
+###################################
+                
 DeclareAttribute( "Dimension",
                   IsHomalgRationalVectorSpaceRep );
 
+#######################################
+##
+#! @Operations
+##
+#######################################
+                  
 DeclareOperation( "QVectorSpace",
                   [ IsInt ] );
+
+DeclareOperation( "VectorSpaceMorphism",
+                  [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ] );
+
+                  
+vecspaces := CreateHomalgCategory( "VectorSpaces" );
+
+#######################################
+##
+#! @Categorical Implementations
+##
+#######################################
 
 InstallMethod( QVectorSpace,
                [ IsInt ],
@@ -35,13 +64,14 @@ InstallMethod( QVectorSpace,
     ObjectifyWithAttributes( space, TheTypeOfHomalgRationalVectorSpaces,
                              Dimension, dim 
     );
+
+    # is this the right place?
+    Add( vecspaces, space );
     
     return space;
     
 end );
 
-DeclareOperation( "VectorSpaceMorphism",
-                  [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ] );
 
 InstallMethod( VectorSpaceMorphism,
                   [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ],
@@ -65,12 +95,12 @@ InstallMethod( VectorSpaceMorphism,
                              Source, source,
                              Range, range 
     );
+
+    Add( vecspaces, morphism );
     
     return morphism;
     
 end );
-
-vecspaces := CreateHomalgCategory( "VectorSpaces" );
 
 AddIdentityMorphism( vecspaces,
                      
@@ -166,9 +196,41 @@ AddInjectionFromFirstSummand( vecspaces,
     
 end );
 
-v := QVectorSpace( 3 );
+#######################################
+##
+#! @View and Display
+##
+#######################################
 
-Add( vecspaces, v );
+InstallMethod( ViewObj,
+               [ IsHomalgRationalVectorSpaceRep ],
+
+  function( obj )
+
+    Print( "<A rational vector space of dimension ", String( Dimension( obj ) ), ">" );
+
+end );
+
+InstallMethod( ViewObj,
+               [ IsHomalgRationalVectorSpaceMorphismRep ],
+
+  function( obj )
+
+    Print( "<A rational vector space homomorphism with matrix " );
+
+    Print( String( obj!.value ) );
+
+    Print( ">" );
+
+end );
+
+#######################################
+##
+#! @Test
+##
+#######################################
+
+v := QVectorSpace( 3 );
 
 id := IdentityMorphism( v );
 
@@ -179,27 +241,4 @@ x3 := QVectorSpace( 1 );
 x := VectorSpaceMorphism( x1, [[ 2 ]], x2 );
 y := VectorSpaceMorphism( x2, [[ 3 ]], x3 );
 
-Add( vecspaces, x );
-Add( vecspaces, y );
 
-InstallMethod( ViewObj,
-               [ IsHomalgRationalVectorSpaceRep ],
-               
-  function( obj )
-    
-    Print( "<A rational vector space of dimension ", String( Dimension( obj ) ), ">" );
-    
-end );
-
-InstallMethod( ViewObj,
-               [ IsHomalgRationalVectorSpaceMorphismRep ],
-               
-  function( obj )
-    
-    Print( "<A rational vector space homomorphism with matrix " );
-    
-    Print( String( obj!.value ) );
-    
-    Print( ">" );
-    
-end );

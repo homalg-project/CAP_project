@@ -26,6 +26,15 @@ BindGlobal( "TheTypeOfHomalgCategoryMorphisms",
 
 ######################################
 ##
+## Immediate Methods
+##
+######################################
+
+#should we prefer InstallImmediateMethod?
+InstallTrueMethod( IsMonomorphism and IsEpimorphism, IsHomalgCategoryMorphism and IsIsomorphism );
+
+######################################
+##
 ## Operations
 ##
 ######################################
@@ -76,5 +85,55 @@ InstallMethod( PostCompose,
     return PreCompose( left_mor, right_mor );
     
 end );
+
+## should we check if the morphism is an isomorphism?
+InstallMethod( Inverse,
+               [ IsHomalgCategoryMorphism and IsIsomorphism ],
+               -1,
+
+  function( mor )
+    local category, assumptions, identity_of_range;
+    
+    category := HomalgCategory( mor );
+    
+    assumptions := HasIdentityMorphismFunction( category ) and
+                    HasMonoAsKernelLiftFunction( category );
+    
+    if assumptions then
+    
+      identity_of_range := IdentityMorphism( Range( mor ) );
+    
+      return MonoAsKernelLift( mor, identity_of_range );
+
+    fi;
+
+    TryNextMethod( );
+  
+end );
+
+##
+InstallMethod( Inverse,
+               [ IsHomalgCategoryMorphism and IsIsomorphism ],
+               -1,
+
+  function( mor )
+    local category, assumptions, identity_of_source;
+
+    category := HomalgCategory( mor );
+
+    assumptions := HasIdentityMorphismFunction( category ) and
+                    HasEpiAsCokernelColiftFunction( category );
+
+    if assumptions then
+
+      identity_of_source := IdentityMorphism( Source( mor ) );
+
+      return EpiAsCokernelColift( mor, identity_of_source );
+
+    fi;
+
+    TryNextMethod( );
+
+end );                        
 
 

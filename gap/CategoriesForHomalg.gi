@@ -185,7 +185,7 @@ InstallMethod( AddIdentityMorphism,
     
     SetIdentityMorphismFunction( category, func );
     
-    InstallMethod( IdentityMorphism,
+      InstallMethod( IdentityMorphism,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) ],
                    
       function( object )
@@ -194,6 +194,10 @@ InstallMethod( AddIdentityMorphism,
         ret_val := func( object );
         
         Add( category, ret_val );
+
+        SetIsIsomorphism( ret_val, true );
+
+        SetInverse( ret_val, ret_val );
         
         return ret_val;
         
@@ -214,7 +218,7 @@ InstallMethod( AddPreCompose,
   function( category, func )
     local InstallFunction;
     
-    SetPrecomposeFunction( category, func );
+    SetPreComposeFunction( category, func );
     
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "PreCompose" );
     
@@ -378,7 +382,7 @@ InstallMethod( AddInjectionFromFirstSummand,
     SetInjectionFromFirstSummandFunction( category, func );
     
     InstallMethod( InjectionFromFirstSummand,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) and IsDirectSum ],
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
                    
       function( sum_obj )
         local injection1;
@@ -404,7 +408,7 @@ InstallMethod( AddInjectionFromSecondSummand,
     SetInjectionFromSecondSummandFunction( category, func );
     
     InstallMethod( InjectionFromSecondSummand,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) and IsDirectSum ],
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
                    
       function( sum_obj )
         local injection1;
@@ -430,7 +434,7 @@ InstallMethod( AddProjectionInFirstFactor,
     SetProjectionInFirstFactorFunction( category, func );
     
     InstallMethod( ProjectionInFirstFactor,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) and IsDirectSum ],
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
                    
       function( sum_obj )
         local surjection;
@@ -456,7 +460,7 @@ InstallMethod( AddProjectionInSecondFactor,
     SetProjectionInSecondFactorFunction( category, func );
     
     InstallMethod( ProjectionInSecondFactor,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) and IsDirectSum ],
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
                    
       function( sum_obj )
         local surjection;
@@ -471,6 +475,107 @@ InstallMethod( AddProjectionInSecondFactor,
         
     end );
     
+end );
+
+####################################
+##
+## Monomorphism as kernel lift
+##
+####################################
+
+##
+InstallMethod( AddMonoAsKernelLift,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    local InstallFunction;
+
+    SetMonoAsKernelLiftFunction( category, func );
+
+    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddMonoAsKernelLift" );
+
+    InstallFunction( MonoAsKernelLift,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsMonomorphism,
+                     IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+
+      function( monomorphism, test_morphism )
+        local lift;
+
+        lift := func( monomorphism, test_morphism );
+
+        Add( HomalgCategory( monomorphism ), lift );
+
+        return lift;
+
+    end );
+  
+end );
+
+####################################
+##
+## Epimorphism as cokernel colift
+##
+####################################
+
+##
+InstallMethod( AddEpiAsCokernelColift,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    local InstallFunction;
+
+    SetEpiAsCokernelColiftFunction( category, func );
+
+    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddEpiAsCokernelColift" );
+
+    InstallFunction( EpiAsCokernelColift,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsEpimorphism,
+                     IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+
+      function( epimorphism, test_morphism )
+        local colift;
+
+        colift := func( epimorphism, test_morphism );
+
+        Add( HomalgCategory( epimorphism ), colift );
+
+        return colift;
+
+    end );
+
+end );
+
+####################################
+##
+## Inverse
+##
+####################################
+
+##
+InstallMethod( AddInverse,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    local InstallFunction;
+
+    SetInverseFunction( category, func );
+
+    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddInverse" );
+
+    InstallFunction( Inverse,
+                     [ IsHomalgCategoryMorphism and IsIsomorphism ],
+
+      function( isomorphism )
+        local inverse;
+
+        inverse := func( isomorphism );
+
+        Add( HomalgCategory( isomorphism ), inverse );
+
+        return inverse;
+
+    end );
+
 end );
 
 #######################################

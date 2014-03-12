@@ -19,7 +19,7 @@
 DeclareCategory( "IsHomalgCategoryObject",
                  IsObject );
 
-DeclareFilter( "IsDirectSum" );
+DeclareFilter( "WasCreatedAsDirectSum" );
 
 ###################################
 ##
