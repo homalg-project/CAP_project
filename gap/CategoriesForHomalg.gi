@@ -495,7 +495,7 @@ InstallMethod( AddMonoAsKernelLift,
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddMonoAsKernelLift" );
 
     InstallFunction( MonoAsKernelLift,
-                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsMonomorphism,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                      IsHomalgCategoryMorphism and MorphismFilter( category ) ],
 
       function( monomorphism, test_morphism )
@@ -529,7 +529,7 @@ InstallMethod( AddEpiAsCokernelColift,
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddEpiAsCokernelColift" );
 
     InstallFunction( EpiAsCokernelColift,
-                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsEpimorphism,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                      IsHomalgCategoryMorphism and MorphismFilter( category ) ],
 
       function( epimorphism, test_morphism )
@@ -560,9 +560,7 @@ InstallMethod( AddInverse,
 
     SetInverseFunction( category, func );
 
-    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddInverse" );
-
-    InstallFunction( Inverse,
+    InstallMethod( Inverse,
                      [ IsHomalgCategoryMorphism and IsIsomorphism ],
 
       function( isomorphism )
@@ -573,6 +571,89 @@ InstallMethod( AddInverse,
         Add( HomalgCategory( isomorphism ), inverse );
 
         return inverse;
+
+    end );
+
+end );
+
+####################################
+##
+## Kernel
+##
+####################################
+
+##
+InstallMethod( AddKernel,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    local InstallFunction;
+
+    SetKernelFunction( category, func );
+
+    InstallMethod( Kernel,
+                     [ IsHomalgCategoryMorphism ],
+
+      function( mor )
+        local kernel;
+
+        kernel := func( mor );
+
+        Add( HomalgCategory( mor ), kernel );
+
+        return kernel;
+
+    end );
+
+end );
+
+##
+InstallMethod( AddKernelLift,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    local InstallFunction;
+
+    SetKernelLiftFunction( category, func );
+
+    InstallMethod( KernelLift,
+                     [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+
+      function( mor, test_morphism )
+        local kernel_lift;
+
+        kernel_lift := func( mor, test_morphism );
+
+        Add( HomalgCategory( mor ), kernel_lift );
+
+        return kernel_lift;
+
+    end );
+
+end );
+
+##
+InstallMethod( AddKernelEmb,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    local InstallFunction;
+
+    SetKernelEmbFunction( category, func );
+
+    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddKernelEmb" );
+
+    InstallFunction( KernelEmb,
+                     [ IsHomalgCategoryMorphism ],
+
+      function( mor )
+        local kernel_emb;
+
+        kernel_emb := func( mor );
+
+        Add( HomalgCategory( mor ), kernel_emb );
+
+        return kernel_emb;
 
     end );
 

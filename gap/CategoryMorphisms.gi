@@ -30,7 +30,6 @@ BindGlobal( "TheTypeOfHomalgCategoryMorphisms",
 ##
 ######################################
 
-#should we prefer InstallImmediateMethod?
 InstallTrueMethod( IsMonomorphism and IsEpimorphism, IsHomalgCategoryMorphism and IsIsomorphism );
 
 ######################################
@@ -88,22 +87,23 @@ end );
 
 ## should we check if the morphism is an isomorphism?
 InstallMethod( Inverse,
-               [ IsHomalgCategoryMorphism and IsIsomorphism ],
+               [ IsHomalgCategoryMorphism ],
                -1,
 
   function( mor )
     local category, assumptions, identity_of_range;
     
     category := HomalgCategory( mor );
-    
+
+    #TODO
     assumptions := HasIdentityMorphismFunction( category ) and
                     HasMonoAsKernelLiftFunction( category );
     
     if assumptions then
-    
-      identity_of_range := IdentityMorphism( Range( mor ) );
-    
-      return MonoAsKernelLift( mor, identity_of_range );
+        
+        identity_of_range := IdentityMorphism( Range( mor ) );
+        
+        return MonoAsKernelLift( mor, identity_of_range );
 
     fi;
 
@@ -113,7 +113,7 @@ end );
 
 ##
 InstallMethod( Inverse,
-               [ IsHomalgCategoryMorphism and IsIsomorphism ],
+               [ IsHomalgCategoryMorphism ],
                -1,
 
   function( mor )
@@ -121,6 +121,7 @@ InstallMethod( Inverse,
 
     category := HomalgCategory( mor );
 
+    #TODO
     assumptions := HasIdentityMorphismFunction( category ) and
                     HasEpiAsCokernelColiftFunction( category );
 
