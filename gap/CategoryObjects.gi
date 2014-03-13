@@ -32,6 +32,21 @@ BindGlobal( "TheTypeOfHomalgCategoryObjects",
 
 InstallTrueMethod( WasCreatedAsDirectSum, HasFirstSummand and HasSecondSummand );
 
+InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
+                       
+  function( category, object )
+    local entry;
+    
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "HomalgCategory" ] ],
+                                                         [ category, object ],
+                                                         [ "CanComputeIdentityMorphism",
+                                                         # ...
+                                                         ] );
+    
+    AddToToDoList( entry );
+    
+end );
+
 #######################################
 ##
 ## Operations
@@ -63,6 +78,8 @@ InstallMethod( Add,
     SetFilterObj( object, filter );
     
     ## Homalg category is set by immediate method
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT( category, object );
     
 end );
 

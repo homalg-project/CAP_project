@@ -86,9 +86,9 @@ DeclareOperation( "EpiAsCokernelColift",
 #! @Section Kernel and Cokernel
 ##
 ###################################
-                  
-DeclareAttribute( "Kernel",
-                  IsHomalgCategoryMorphism );
+
+DeclareOperation( "Kernel",
+                  [ IsHomalgCategoryMorphism ] );
 
 DeclareAttribute( "KernelEmb",
                   IsHomalgCategoryMorphism );

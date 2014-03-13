@@ -116,6 +116,9 @@ DeclareAttribute( "ZeroObject",
 #! @Description
 #!  Installs the function which returns the Identity morphism of an object. The argument <A>func</A> must be a function with one
 #!  argument which returns a morphism with source and target are the argument.
+DeclareProperty( "CanComputeIdentityMorphism",
+                 IsHomalgCategory );
+
 DeclareAttribute( "IdentityMorphismFunction",
                   IsHomalgCategory );
 
@@ -261,21 +264,21 @@ DeclareOperation( "AddInverse",
 DeclareAttribute( "KernelFunction",
                   IsHomalgCategory );
 
-DeclareOperation( "AddKernel"
+DeclareOperation( "AddKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareOperation( "KernelLiftFunction",
+DeclareAttribute( "KernelLiftFunction",
                   IsHomalgCategory );
-                  
-DeclareOperation( "AddKernelLift"
+
+DeclareOperation( "AddKernelLift",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareOperation( "KernelEmbFunction",
+DeclareAttribute( "KernelEmbFunction",
                   IsHomalgCategory );
-                  
-DeclareOperation( "AddKernelEmb"
+
+DeclareOperation( "AddKernelEmb",
                   [ IsHomalgCategory, IsFunction ] );
-                  
+
 ####################################
 ##
 #! @Section Caching

@@ -37,6 +37,14 @@ DeclareAttribute( "HomalgCategory",
 
 ###################################
 ##
+#! @Section Technical stuff
+##
+###################################
+
+DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT" );
+
+###################################
+##
 #! @Section Add function
 ##
 ###################################
@@ -76,6 +84,9 @@ DeclareAttribute( "InjectionFromSecondSummand",
 #! @Section Element functions
 ##
 ###################################
+
+DeclareProperty( "CanComputeIdentityMorphism",
+                 IsHomalgCategoryObject );
 
 DeclareAttribute( "IdentityMorphism",
                   IsHomalgCategoryObject );
