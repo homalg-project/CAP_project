@@ -43,6 +43,24 @@ DeclareAttribute( "HomalgCategory",
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT" );
 
+DeclareProperty( "CanComputeInverse",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputeKernel",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputeKernelEmb",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputeKernelLift",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputePreCompose",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputePostCompose",
+                 IsHomalgCategoryObject );
+
 ###################################
 ##
 #! @Section Add function
@@ -58,6 +76,9 @@ DeclareOperation( "Add",
 ##
 ###################################
 
+DeclareProperty( "CanComputeDirectSum",
+                 IsHomalgCategoryObject );
+
 DeclareOperation( "DirectSumOp",
                   [ IsList, IsHomalgCategoryObject ] );
 
@@ -67,14 +88,26 @@ DeclareAttribute( "FirstSummand",
 DeclareAttribute( "SecondSummand",
                   IsHomalgCategoryObject );
 
+DeclareProperty( "CanComputeProjectionInFirstFactor",
+                 IsHomalgCategoryObject );                  
+
 DeclareAttribute( "ProjectionInFirstFactor",
                   IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputeProjectionInSecondFactor",
+                 IsHomalgCategoryObject );                  
 
 DeclareAttribute( "ProjectionInSecondFactor",
                   IsHomalgCategoryObject );
 
+DeclareProperty( "CanComputeInjectionFromFirstSummand",
+                 IsHomalgCategoryObject );                  
+
 DeclareAttribute( "InjectionFromFirstSummand",
                   IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputeInjectionFromSecondSummand",
+                 IsHomalgCategoryObject );                  
 
 DeclareAttribute( "InjectionFromSecondSummand",
                   IsHomalgCategoryObject );
@@ -85,20 +118,44 @@ DeclareAttribute( "InjectionFromSecondSummand",
 ##
 ###################################
 
+###################################
+##
+## IdentityMorphism
+##
+###################################
+
 DeclareProperty( "CanComputeIdentityMorphism",
                  IsHomalgCategoryObject );
 
 DeclareAttribute( "IdentityMorphism",
                   IsHomalgCategoryObject );
 
+###################################
+##
+## ZeroObject
+##
+###################################
+
+DeclareProperty( "CanComputeZeroObject",
+                 IsHomalgCategoryObject );
+                  
 DeclareAttribute( "ZeroObject",
                   IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputeMorphismFromZeroObject",
+                 IsHomalgCategoryObject );                  
 
 DeclareAttribute( "MorphismFromZeroObject",
                   IsHomalgCategoryObject );
 
+DeclareProperty( "CanComputeMorphismIntoZeroObject",
+                 IsHomalgCategoryObject );                  
+
 DeclareAttribute( "MorphismIntoZeroObject",
                   IsHomalgCategoryObject );
 
+DeclareProperty( "CanComputeZeroMorphism",
+                 IsHomalgCategoryObject );                    
+                  
 DeclareOperation( "ZeroMorphism",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );

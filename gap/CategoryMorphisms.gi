@@ -32,6 +32,44 @@ BindGlobal( "TheTypeOfHomalgCategoryMorphisms",
 
 InstallTrueMethod( IsMonomorphism and IsEpimorphism, IsHomalgCategoryMorphism and IsIsomorphism );
 
+#######################################
+##
+## Technical implications
+##
+#######################################
+
+InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
+
+  function( category, morphism )
+    local entry;
+
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "HomalgCategory" ] ],
+                                                         [ category, morphism ],
+                                                         [ "CanComputeMonoAsKernelLift",
+                                                           "CanComputeEpiAsCokernelLift",
+                                                           "CanComputeIdentityMorphism",
+                                                           "CanComputeInverse",
+                                                           "CanComputeKernel",
+                                                           "CanComputeKernelEmb",
+                                                           "CanComputeKernelLift",
+                                                           "CanComputePreCompose",
+                                                           "CanComputePostCompose",
+                                                           "CanComputeZeroObject",
+                                                           "CanComputeMorphismFromZeroObject",
+                                                           "CanComputeMorphismIntoZeroObject",
+                                                           "CanComputeZeroMorphism",
+                                                           "CanComputeDirectSum",
+                                                           "CanComputeProjectionInFirstFactor",
+                                                           "CanComputeProjectionInSecondFactor",
+                                                           "CanComputeInjectionFromFirstSummand",
+                                                           "CanComputeInjectionFromSecondSummand"
+                                                         # ...
+                                                         ] );
+
+    AddToToDoList( entry );
+
+end );
+
 ######################################
 ##
 ## Operations
@@ -67,6 +105,8 @@ InstallMethod( Add,
     SetFilterObj( morphism, filter );
     
     ## Homalg category is set by immediate method
+
+    INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT( category, morphism );
     
 end );
 
@@ -76,8 +116,11 @@ end );
 ##
 ######################################
 
+InstallTrueMethod( CanComputePostCompose, CanComputePreCompose );
+
 InstallMethod( PostCompose,
-               [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+               [ IsHomalgCategoryMorphism and CanComputePreCompose,
+                 IsHomalgCategoryMorphism and CanComputePreCompose ],
                
   function( right_mor, left_mor )
     
@@ -85,56 +128,36 @@ InstallMethod( PostCompose,
     
 end );
 
-## should we check if the morphism is an isomorphism?
+InstallTrueMethod( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
+
+##
 InstallMethod( Inverse,
-               [ IsHomalgCategoryMorphism ],
+               [ IsHomalgCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
                -1,
 
   function( mor )
-    local category, assumptions, identity_of_range;
-    
-    category := HomalgCategory( mor );
-
-    #TODO
-    assumptions := HasIdentityMorphismFunction( category ) and
-                    HasMonoAsKernelLiftFunction( category );
-    
-    if assumptions then
+    local identity_of_range;
         
         identity_of_range := IdentityMorphism( Range( mor ) );
         
         return MonoAsKernelLift( mor, identity_of_range );
-
-    fi;
-
-    TryNextMethod( );
-  
+        
 end );
+
+InstallTrueMethod( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
 
 ##
 InstallMethod( Inverse,
-               [ IsHomalgCategoryMorphism ],
+               [ IsHomalgCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
                -1,
 
   function( mor )
-    local category, assumptions, identity_of_source;
-
-    category := HomalgCategory( mor );
-
-    #TODO
-    assumptions := HasIdentityMorphismFunction( category ) and
-                    HasEpiAsCokernelColiftFunction( category );
-
-    if assumptions then
+    local identity_of_source;
 
       identity_of_source := IdentityMorphism( Source( mor ) );
 
       return EpiAsCokernelColift( mor, identity_of_source );
-
-    fi;
-
-    TryNextMethod( );
-
+      
 end );                        
 
 

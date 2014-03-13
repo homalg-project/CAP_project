@@ -185,6 +185,8 @@ InstallMethod( AddIdentityMorphism,
     
     SetIdentityMorphismFunction( category, func );
     
+    SetCanComputeIdentityMorphism( category, true );
+    
       InstallMethod( IdentityMorphism,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) ],
                    
@@ -219,6 +221,8 @@ InstallMethod( AddPreCompose,
     local InstallFunction;
     
     SetPreComposeFunction( category, func );
+
+    SetCanComputePreCompose( category, true );
     
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "PreCompose" );
     
@@ -338,6 +342,8 @@ InstallMethod( AddDirectSum_OnObjects,
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "DirectSum" );
     
     SetDirectSum_OnObjectsFunction( category, func );
+
+    SetCanComputeDirectSum( category, true );
     
     InstallFunction( DirectSumOp,
                      [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -380,6 +386,8 @@ InstallMethod( AddInjectionFromFirstSummand,
   function( category, func )
     
     SetInjectionFromFirstSummandFunction( category, func );
+
+    SetCanComputeInjectionFromFirstSummand( category, true );
     
     InstallMethod( InjectionFromFirstSummand,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
@@ -406,6 +414,8 @@ InstallMethod( AddInjectionFromSecondSummand,
   function( category, func )
     
     SetInjectionFromSecondSummandFunction( category, func );
+
+    SetCanComputeInjectionFromSecondSummand( category, true );
     
     InstallMethod( InjectionFromSecondSummand,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
@@ -432,6 +442,8 @@ InstallMethod( AddProjectionInFirstFactor,
   function( category, func )
     
     SetProjectionInFirstFactorFunction( category, func );
+
+    SetCanComputeProjectionInFirstFactor( category, true );
     
     InstallMethod( ProjectionInFirstFactor,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
@@ -458,6 +470,8 @@ InstallMethod( AddProjectionInSecondFactor,
   function( category, func )
     
     SetProjectionInSecondFactorFunction( category, func );
+
+    SetCanComputeProjectionInSecondFactor( category, true );
     
     InstallMethod( ProjectionInSecondFactor,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
@@ -491,6 +505,8 @@ InstallMethod( AddMonoAsKernelLift,
     local InstallFunction;
 
     SetMonoAsKernelLiftFunction( category, func );
+
+    SetCanComputeMonoAsKernelLift( category, true );
 
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddMonoAsKernelLift" );
 
@@ -526,6 +542,8 @@ InstallMethod( AddEpiAsCokernelColift,
 
     SetEpiAsCokernelColiftFunction( category, func );
 
+    SetCanComputeEpiAsCokernelColift( category, true );
+
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddEpiAsCokernelColift" );
 
     InstallFunction( EpiAsCokernelColift,
@@ -560,6 +578,8 @@ InstallMethod( AddInverse,
 
     SetInverseFunction( category, func );
 
+    SetCanComputeInverse( category, true );
+
     InstallMethod( Inverse,
                      [ IsHomalgCategoryMorphism and IsIsomorphism ],
 
@@ -591,6 +611,8 @@ InstallMethod( AddKernel,
 
     SetKernelFunction( category, func );
 
+    SetCanComputeKernel( category, true );
+
     InstallMethod( Kernel,
                      [ IsHomalgCategoryMorphism ],
 
@@ -616,6 +638,8 @@ InstallMethod( AddKernelLift,
 
     SetKernelLiftFunction( category, func );
 
+    SetCanComputeKernelLift( category, true );
+
     InstallMethod( KernelLift,
                      [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
 
@@ -640,6 +664,8 @@ InstallMethod( AddKernelEmb,
     local InstallFunction;
 
     SetKernelEmbFunction( category, func );
+
+    SetCanComputeKernelEmb( category, true );
 
     InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddKernelEmb" );
 

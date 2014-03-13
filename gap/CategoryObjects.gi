@@ -39,10 +39,27 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
     
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "HomalgCategory" ] ],
                                                          [ category, object ],
-                                                         [ "CanComputeIdentityMorphism",
+                                                         [ "CanComputeMonoAsKernelLift",
+                                                           "CanComputeEpiAsCokernelLift",
+                                                           "CanComputeIdentityMorphism",
+                                                           "CanComputeInverse",
+                                                           "CanComputeKernel",
+                                                           "CanComputeKernelEmb",
+                                                           "CanComputeKernelLift",
+                                                           "CanComputePreCompose",
+                                                           "CanComputePostCompose",
+                                                           "CanComputeZeroObject",
+                                                           "CanComputeMorphismFromZeroObject",
+                                                           "CanComputeMorphismIntoZeroObject",
+                                                           "CanComputeZeroMorphism",
+                                                           "CanComputeDirectSum",
+                                                           "CanComputeProjectionInFirstFactor",
+                                                           "CanComputeProjectionInSecondFactor",
+                                                           "CanComputeInjectionFromFirstSummand",
+                                                           "CanComputeInjectionFromSecondSummand"
                                                          # ...
                                                          ] );
-    
+ 
     AddToToDoList( entry );
     
 end );
@@ -83,9 +100,12 @@ InstallMethod( Add,
     
 end );
 
+InstallTrueMethod( CanComputeZeroMorphism, CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject );
 
+##TODO
 InstallMethodWithCache( ZeroMorphism,
-                        [ IsHomalgCategoryObject, IsHomalgCategoryObject ],
+                        [ IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject,
+                          IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject ],
                
   function( obj_source, obj_range )
     

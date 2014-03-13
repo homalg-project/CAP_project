@@ -36,8 +36,49 @@ DeclareAttribute( "Range",
                   IsHomalgCategoryMorphism );
 
 # this attribute is also an implied operation
+DeclareProperty( "CanComputeInverse",
+                 IsHomalgCategoryMorphism );
+
 DeclareAttribute( "Inverse",
-                  IsHomalgCategoryMorphism );                  
+                  IsHomalgCategoryMorphism );
+
+###################################
+##
+#! @Section Technical stuff
+##
+###################################
+
+DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM" );
+
+DeclareProperty( "CanComputeIdentityMorphism",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeZeroObject",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeMorphismFromZeroObject",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeMorphismIntoZeroObject",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeZeroMorphism",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeDirectSum",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeProjectionInFirstFactor",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeProjectionInSecondFactor",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeInjectionFromFirstSummand",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeInjectionFromSecondSummand",
+                 IsHomalgCategoryMorphism );
 
 ###################################
 ##
@@ -69,29 +110,56 @@ DeclareOperation( "Add",
 ##
 ###################################
 
+DeclareProperty( "CanComputePreCompose",
+                 IsHomalgCategoryMorphism );
+
 DeclareOperation( "PreCompose",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
-DeclareOperation( "DirectSumOp",
-                  [ IsList, IsHomalgCategoryMorphism ] );
+###################################
+##
+#! Monomorphism as kernel lift
+##
+###################################         
 
+DeclareProperty( "CanComputeMonoAsKernelLift",
+                 IsHomalgCategoryMorphism );
+                  
 DeclareOperation( "MonoAsKernelLift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
+####################################
+##
+## Epismorphism as cokernel lift
+##
+####################################
+                  
+DeclareProperty( "CanComputeEpiAsCokernelColift",
+                 IsHomalgCategoryMorphism );
+                  
 DeclareOperation( "EpiAsCokernelColift",                  
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 ###################################
 ##
-#! @Section Kernel and Cokernel
+## Kernel
 ##
 ###################################
+
+DeclareProperty( "CanComputeKernel",
+                 IsHomalgCategoryMorphism );
 
 DeclareOperation( "Kernel",
                   [ IsHomalgCategoryMorphism ] );
 
+DeclareProperty( "CanComputeKernelEmb",
+                 IsHomalgCategoryMorphism );                    
+
 DeclareAttribute( "KernelEmb",
                   IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeKernelLift",
+                 IsHomalgCategoryMorphism );                  
 
 DeclareOperation( "KernelLift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
@@ -101,6 +169,9 @@ DeclareOperation( "KernelLift",
 #! @Section Implied operations
 ##
 ###################################
+
+DeclareProperty( "CanComputePostCompose",
+                 IsHomalgCategoryMorphism );
 
 DeclareOperation( "PostCompose",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
