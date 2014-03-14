@@ -53,6 +53,7 @@ vecspaces := CreateHomalgCategory( "VectorSpaces" );
 ##
 #######################################
 
+##
 InstallMethod( QVectorSpace,
                [ IsInt ],
                
@@ -72,7 +73,7 @@ InstallMethod( QVectorSpace,
     
 end );
 
-
+##
 InstallMethod( VectorSpaceMorphism,
                   [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ],
                   
@@ -102,6 +103,7 @@ InstallMethod( VectorSpaceMorphism,
     
 end );
 
+##
 AddIdentityMorphism( vecspaces,
                      
   function( obj )
@@ -113,6 +115,7 @@ AddIdentityMorphism( vecspaces,
     
 end );
 
+##
 AddPreCompose( vecspaces,
                
   function( mor_left, mor_right )
@@ -134,6 +137,7 @@ AddPreCompose( vecspaces,
     
 end );
 
+##
 AddZeroObject( vecspaces,
                
   function( )
@@ -142,6 +146,7 @@ AddZeroObject( vecspaces,
     
 end );
 
+##
 AddMorphismIntoZeroObject( vecspaces,
                            
   function( obj )
@@ -155,6 +160,7 @@ AddMorphismIntoZeroObject( vecspaces,
     
 end );
 
+##
 AddMorphismFromZeroObject( vecspaces,
                            
   function( obj )
@@ -168,6 +174,16 @@ AddMorphismFromZeroObject( vecspaces,
     
 end );
 
+##
+AddMonoAsKernelLift( vecspaces,
+
+  function( monomorphism, test_morphism )
+
+  
+
+end );
+
+##
 AddDirectSum_OnObjects( vecspaces,
                         
   function( a, b )
@@ -179,6 +195,7 @@ AddDirectSum_OnObjects( vecspaces,
     
 end );
 
+##
 AddInjectionFromFirstSummand( vecspaces,
                               
   function( sum_obj )

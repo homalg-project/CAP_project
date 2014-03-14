@@ -61,6 +61,12 @@ DeclareProperty( "CanComputePreCompose",
 DeclareProperty( "CanComputePostCompose",
                  IsHomalgCategoryObject );
 
+DeclareProperty( "CanComputeEpiAsCokernelColift",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputeMonoAsKernelLift",
+                 IsHomalgCategoryObject );                 
+
 ###################################
 ##
 #! @Section Add function
