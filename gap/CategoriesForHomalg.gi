@@ -266,6 +266,8 @@ InstallMethod( AddZeroObject,
     category!.zero_object_constructor := func;
     
     SetZeroObjectFunction( category, func );
+
+    SetCanComputeZeroObject( category, true );
     
     InstallMethod( ZeroObject,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -285,6 +287,8 @@ InstallMethod( AddMorphismIntoZeroObject,
   function( category, func )
     
     SetMorphismIntoZeroObjectFunction( category, func );
+
+    SetCanComputeMorphismIntoZeroObject( category, true );
     
     InstallMethod( MorphismIntoZeroObject,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -309,6 +313,8 @@ InstallMethod( AddMorphismFromZeroObject,
   function( category, func )
     
     SetMorphismFromZeroObjectFunction( category, func );
+
+    SetCanComputeMorphismFromZeroObject( category, true );
     
     InstallMethod( MorphismFromZeroObject,
                    [ IsHomalgCategoryObject and ObjectFilter( category ) ],
