@@ -160,4 +160,30 @@ InstallMethod( Inverse,
       
 end );                        
 
+InstallTrueMethod( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
+
+##
+InstallMethod( KernelLift,
+               [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
+                 IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
+                 -1,
+
+    function( mor, test_morphism )
+
+      return MonoAsKernelLift( KernelEmb( mor ), test_morphism );
+
+end );
+
+InstallTrueMethod( CanComputeKernel, CanComputeKernelEmb );
+
+##
+InstallMethod( KernelOp,
+               [ IsHomalgCategoryMorphism and CanComputeKernelEmb ],
+               -1,
+
+    function( mor )
+
+      return Source( KernelEmb( mor ) );
+
+end );
 

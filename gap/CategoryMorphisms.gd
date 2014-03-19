@@ -149,7 +149,8 @@ DeclareOperation( "EpiAsCokernelColift",
 DeclareProperty( "CanComputeKernel",
                  IsHomalgCategoryMorphism );
 
-DeclareOperation( "Kernel",
+##FIXME: rename -> Kernel                 
+DeclareOperation( "KernelOp",
                   [ IsHomalgCategoryMorphism ] );
 
 DeclareProperty( "CanComputeKernelEmb",

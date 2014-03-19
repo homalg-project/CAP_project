@@ -1,6 +1,8 @@
 
 LoadPackage( "CategoriesForHomalg" );
 
+LoadPackage( "MatricesForHomalg" );
+
 ###################################
 ##
 #! @Types and Representations
@@ -47,6 +49,8 @@ DeclareOperation( "VectorSpaceMorphism",
                   
 vecspaces := CreateHomalgCategory( "VectorSpaces" );
 
+VECTORSPACES_FIELD := HomalgFieldOfRationals( );
+
 #######################################
 ##
 #! @Categorical Implementations
@@ -80,17 +84,7 @@ InstallMethod( VectorSpaceMorphism,
   function( source, matrix, range )
     local morphism;
     
-    morphism := rec( value := matrix );
-    
-    if IsMatrix( matrix ) and ( Length( matrix ) <> Dimension( source ) or ( Length( matrix ) > 0 and ( Length( matrix[ 1 ] ) <> Dimension( range ) ) ) ) then
-        
-        Error( "incorrect dimensions" );
-        
-    elif not( IsMatrix( matrix ) or matrix = 0 ) then
-        
-        Error( "incorrect input" );
-        
-    fi;
+    morphism := rec( Morphism := HomalgMatrix( matrix, Dimension( source ), Dimension( range ), VECTORSPACES_FIELD ) );
     
     ObjectifyWithAttributes( morphism, TheTypeOfHomalgRationalVectorSpaceMorphism,
                              Source, source,
@@ -107,71 +101,55 @@ end );
 AddIdentityMorphism( vecspaces,
                      
   function( obj )
-    local id_morphism;
-    
-    id_morphism := VectorSpaceMorphism( obj, IdentityMat( Dimension( obj ) ), obj );
-    
-    return id_morphism;
+
+    #why is this Eval necessary?
+    return VectorSpaceMorphism( obj, HomalgIdentityMatrix( Dimension( obj ), VECTORSPACES_FIELD ), obj );
     
 end );
 
 ##
 AddPreCompose( vecspaces,
-               
+
   function( mor_left, mor_right )
-    local matr, new_morph;
-    
-    if mor_left!.value = 0 or mor_right!.value = 0 then
-        
-        matr := 0;
-        
-    else
-        
-        matr :=  mor_left!.value * mor_right!.value;
-        
-    fi;
-    
-    new_morph := VectorSpaceMorphism( Source( mor_left ), matr, Range( mor_right ) );
-    
-    return new_morph;
-    
+    local composition;
+
+    composition := mor_left!.Morphism * mor_right!.Morphism;
+
+    return VectorSpaceMorphism( Source( mor_left ), composition, Range( mor_right ) );
+
 end );
 
 ##
 AddZeroObject( vecspaces,
-               
+
   function( )
-    
+
     return QVectorSpace( 0 );
-    
+
 end );
 
 ##
 AddMorphismIntoZeroObject( vecspaces,
-                           
+
   function( obj )
-    local dim, category, mat, morphism;
-    
-    dim := Dimension( obj );
-    
-    morphism := VectorSpaceMorphism( obj, 0, ZeroObject( obj ) );
-    
+    local morphism;
+
+    morphism := VectorSpaceMorphism( obj, HomalgZeroMatrix( Dimension( obj ), 0, VECTORSPACES_FIELD ), ZeroObject( obj ) );
+
     return morphism;
-    
+
 end );
 
 ##
 AddMorphismFromZeroObject( vecspaces,
-                           
+
   function( obj )
-    local dim, mat, morphism;
-    
-    dim := Dimension( obj );
-    
-    morphism := VectorSpaceMorphism( ZeroObject( obj ), 0, obj );
-    
+    local morphism;
+
+    morphism := VectorSpaceMorphism( ZeroObject( obj ), HomalgZeroMatrix( 0, Dimension( obj ), VECTORSPACES_FIELD ), obj );
+
     return morphism;
-    
+
 end );
 
 ##
@@ -179,39 +157,62 @@ AddMonoAsKernelLift( vecspaces,
 
   function( monomorphism, test_morphism )
 
+    return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.Morphism, monomorphism!.Morphism ), Source( monomorphism ) );
+
+end );
+
+##
+AddEpiAsCokernelColift( vecspaces,
   
-
-end );
-
-##
-AddDirectSum_OnObjects( vecspaces,
-                        
-  function( a, b )
-    local dim;
+  function( epimorphism, test_morphism )
     
-    dim := Dimension( a ) + Dimension( b );
-    
-    return QVectorSpace( dim );
+    return VectorSpaceMorphism( Range( epimorphism ), LeftDivide( epimorphism!.Morphism, test_morphism!.Morphism ), Range( test_morphism ) );
     
 end );
 
 ##
-AddInjectionFromFirstSummand( vecspaces,
-                              
-  function( sum_obj )
-    local dim1, dim2, first_summand, matrix;
+AddKernelEmb( vecspaces,
+
+  function( morphism )
+    local kernel_emb, kernel_obj;
     
-    first_summand := FirstSummand( sum_obj );
+    kernel_emb := SyzygiesOfRows( morphism!.Morphism );
     
-    dim1 := Dimension( first_summand );
+    kernel_obj := QVectorSpace( NrRows( kernel_emb ) );
     
-    dim2 := Dimension( SecondSummand( sum_obj ) );
-    
-    matrix := TransposedMat( Concatenation( IdentityMat( dim1 ), NullMat( dim2, dim2 ) ) );
-    
-    return VectorSpaceMorphism( first_summand, matrix, sum_obj );
+    return VectorSpaceMorphism( kernel_obj, kernel_emb, Source( morphism ) );
     
 end );
+
+# ##
+# AddDirectSum_OnObjects( vecspaces,
+#                         
+#   function( a, b )
+#     local dim;
+#     
+#     dim := Dimension( a ) + Dimension( b );
+#     
+#     return QVectorSpace( dim );
+#     
+# end );
+# 
+# ##
+# AddInjectionFromFirstSummand( vecspaces,
+#                               
+#   function( sum_obj )
+#     local dim1, dim2, first_summand, matrix;
+#     
+#     first_summand := FirstSummand( sum_obj );
+#     
+#     dim1 := Dimension( first_summand );
+#     
+#     dim2 := Dimension( SecondSummand( sum_obj ) );
+#     
+#     matrix := TransposedMat( Concatenation( IdentityMat( dim1 ), NullMat( dim2, dim2 ) ) );
+#     
+#     return VectorSpaceMorphism( first_summand, matrix, sum_obj );
+#     
+# end );
 
 #######################################
 ##
@@ -233,11 +234,11 @@ InstallMethod( ViewObj,
 
   function( obj )
 
-    Print( "<A rational vector space homomorphism with matrix " );
-
-    Print( String( obj!.value ) );
-
-    Print( ">" );
+    Print( "A rational vector space homomorphism with matrix: \n" );
+# 
+#     Print( String( obj!.Morphism ) );
+  
+    Display( obj!.Morphism );
 
 end );
 
@@ -247,15 +248,17 @@ end );
 ##
 #######################################
 
-v := QVectorSpace( 3 );
+T := QVectorSpace( 2 );
 
-id := IdentityMorphism( v );
+B := QVectorSpace( 2 );
 
-x1 := QVectorSpace( 1 );
-x2 := QVectorSpace( 1 );
-x3 := QVectorSpace( 1 );
+A :=  QVectorSpace( 1 );
 
-x := VectorSpaceMorphism( x1, [[ 2 ]], x2 );
-y := VectorSpaceMorphism( x2, [[ 3 ]], x3 );
+tau := VectorSpaceMorphism( T, [ [ 1, 1 ], [ 1, 1 ] ], B );
+
+theta := VectorSpaceMorphism( A, [ [ 2, -2 ] ], T );
+
+KernelLift( tau, theta );
+
 
 

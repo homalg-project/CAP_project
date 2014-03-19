@@ -619,7 +619,7 @@ InstallMethod( AddKernel,
 
     SetCanComputeKernel( category, true );
 
-    InstallMethod( Kernel,
+    InstallMethod( KernelOp,
                      [ IsHomalgCategoryMorphism ],
 
       function( mor )
