@@ -148,10 +148,9 @@ DeclareOperation( "EpiAsCokernelColift",
 
 DeclareProperty( "CanComputeKernel",
                  IsHomalgCategoryMorphism );
-
-##FIXME: rename -> Kernel                 
-DeclareOperation( "KernelOp",
-                  [ IsHomalgCategoryMorphism ] );
+              
+# DeclareOperation( "Kernel",
+#                   [ IsHomalgCategoryMorphism ] );
 
 DeclareProperty( "CanComputeKernelEmb",
                  IsHomalgCategoryMorphism );                    
@@ -164,6 +163,30 @@ DeclareProperty( "CanComputeKernelLift",
 
 DeclareOperation( "KernelLift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+###################################
+##
+## Cokernel
+##
+###################################
+
+DeclareProperty( "CanComputeCokernel",
+                 IsHomalgCategoryMorphism );
+
+DeclareAttribute( "Cokernel",
+                  IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeCokernelProj",
+                 IsHomalgCategoryMorphism );
+
+DeclareAttribute( "CokernelProj",
+                  IsHomalgCategoryMorphism );
+
+DeclareProperty( "CanComputeCokernelColift",
+                 IsHomalgCategoryMorphism );
+
+DeclareOperation( "CokernelColift",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );                  
 
 ###################################
 ##

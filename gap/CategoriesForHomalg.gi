@@ -554,7 +554,7 @@ InstallMethod( AddEpiAsCokernelColift,
 
     InstallFunction( EpiAsCokernelColift,
                      [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                     IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                       IsHomalgCategoryMorphism and MorphismFilter( category ) ],
 
       function( epimorphism, test_morphism )
         local colift;
@@ -587,7 +587,7 @@ InstallMethod( AddInverse,
     SetCanComputeInverse( category, true );
 
     InstallMethod( Inverse,
-                     [ IsHomalgCategoryMorphism and IsIsomorphism ],
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsIsomorphism ],
 
       function( isomorphism )
         local inverse;
@@ -619,8 +619,10 @@ InstallMethod( AddKernel,
 
     SetCanComputeKernel( category, true );
 
-    InstallMethod( KernelOp,
-                     [ IsHomalgCategoryMorphism ],
+    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddKernel" );
+
+    InstallFunction( Kernel,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
 
       function( mor )
         local kernel;
@@ -646,8 +648,11 @@ InstallMethod( AddKernelLift,
 
     SetCanComputeKernelLift( category, true );
 
-    InstallMethod( KernelLift,
-                     [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddKernelLift" );
+
+    InstallFunction( KernelLift,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                       IsHomalgCategoryMorphism and MorphismFilter( category ) ],
 
       function( mor, test_morphism )
         local kernel_lift;
@@ -673,10 +678,8 @@ InstallMethod( AddKernelEmb,
 
     SetCanComputeKernelEmb( category, true );
 
-    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddKernelEmb" );
-
-    InstallFunction( KernelEmb,
-                     [ IsHomalgCategoryMorphism ],
+    InstallMethod( KernelEmb,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
 
       function( mor )
         local kernel_emb;
@@ -686,6 +689,96 @@ InstallMethod( AddKernelEmb,
         Add( HomalgCategory( mor ), kernel_emb );
 
         return kernel_emb;
+
+    end );
+
+end );
+
+####################################
+##
+## Cokernel
+##
+####################################
+
+##
+InstallMethod( AddCokernel,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    local InstallFunction;
+
+    SetCokernelFunction( category, func );
+
+    SetCanComputeCokernel( category, true );
+
+    InstallMethod( Cokernel,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+
+      function( mor )
+        local cokernel;
+
+        cokernel := func( mor );
+
+        Add( HomalgCategory( mor ), cokernel );
+
+        return cokernel;
+
+    end );
+
+end );
+
+##
+InstallMethod( AddCokernelColift,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    local InstallFunction;
+
+    SetCokernelColiftFunction( category, func );
+
+    SetCanComputeCokernelColift( category, true );
+
+    InstallFunction := DECIDE_INSTALL_FUNCTION( category, "AddCokernel" );
+
+    InstallFunction( CokernelColift,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                       IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+
+      function( mor, test_morphism )
+        local cokernel_lift;
+
+        cokernel_lift := func( mor, test_morphism );
+
+        Add( HomalgCategory( mor ), cokernel_lift );
+
+        return cokernel_lift;
+
+    end );
+
+end );
+
+##
+InstallMethod( AddCokernelProj,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    local InstallFunction;
+
+    SetCokernelProjFunction( category, func );
+
+    SetCanComputeCokernelProj( category, true );
+
+    InstallMethod( CokernelProj,
+                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+
+      function( mor )
+        local cokernel_proj;
+
+        cokernel_proj := func( mor );
+
+        Add( HomalgCategory( mor ), cokernel_proj );
+
+        return cokernel_proj;
 
     end );
 

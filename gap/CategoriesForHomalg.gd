@@ -332,6 +332,39 @@ DeclareOperation( "AddKernelEmb",
 
 ####################################
 ##
+## Cokernel
+##
+####################################
+
+DeclareProperty( "CanComputeCokernel",
+                 IsHomalgCategory );
+
+DeclareAttribute( "CokernelFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddCokernel",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareProperty( "CanComputeCokernelColift",
+                 IsHomalgCategory );
+
+DeclareAttribute( "CokernelColiftFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddCokernelColift",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareProperty( "CanComputeCokernelProj",
+                 IsHomalgCategory );
+
+DeclareAttribute( "CokernelProjFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddCokernelProj",
+                  [ IsHomalgCategory, IsFunction ] );                  
+
+####################################
+##
 #! @Section Caching
 ##
 ####################################

@@ -83,8 +83,19 @@ InstallMethod( VectorSpaceMorphism,
                   
   function( source, matrix, range )
     local morphism;
+
+    if not IsHomalgMatrix( matrix ) then
     
-    morphism := rec( Morphism := HomalgMatrix( matrix, Dimension( source ), Dimension( range ), VECTORSPACES_FIELD ) );
+      morphism := HomalgMatrix( matrix, Dimension( source ), Dimension( range ), VECTORSPACES_FIELD );
+
+    else
+
+      morphism := matrix;
+
+    fi;
+
+    morphism := rec( morphism := morphism );
+    
     
     ObjectifyWithAttributes( morphism, TheTypeOfHomalgRationalVectorSpaceMorphism,
                              Source, source,
@@ -102,7 +113,6 @@ AddIdentityMorphism( vecspaces,
                      
   function( obj )
 
-    #why is this Eval necessary?
     return VectorSpaceMorphism( obj, HomalgIdentityMatrix( Dimension( obj ), VECTORSPACES_FIELD ), obj );
     
 end );
@@ -113,7 +123,7 @@ AddPreCompose( vecspaces,
   function( mor_left, mor_right )
     local composition;
 
-    composition := mor_left!.Morphism * mor_right!.Morphism;
+    composition := mor_left!.morphism * mor_right!.morphism;
 
     return VectorSpaceMorphism( Source( mor_left ), composition, Range( mor_right ) );
 
@@ -157,7 +167,7 @@ AddMonoAsKernelLift( vecspaces,
 
   function( monomorphism, test_morphism )
 
-    return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.Morphism, monomorphism!.Morphism ), Source( monomorphism ) );
+    return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, monomorphism!.morphism ), Source( monomorphism ) );
 
 end );
 
@@ -166,7 +176,7 @@ AddEpiAsCokernelColift( vecspaces,
   
   function( epimorphism, test_morphism )
     
-    return VectorSpaceMorphism( Range( epimorphism ), LeftDivide( epimorphism!.Morphism, test_morphism!.Morphism ), Range( test_morphism ) );
+    return VectorSpaceMorphism( Range( epimorphism ), LeftDivide( epimorphism!.morphism, test_morphism!.morphism ), Range( test_morphism ) );
     
 end );
 
@@ -176,12 +186,26 @@ AddKernelEmb( vecspaces,
   function( morphism )
     local kernel_emb, kernel_obj;
     
-    kernel_emb := SyzygiesOfRows( morphism!.Morphism );
+    kernel_emb := SyzygiesOfRows( morphism!.morphism );
     
     kernel_obj := QVectorSpace( NrRows( kernel_emb ) );
     
     return VectorSpaceMorphism( kernel_obj, kernel_emb, Source( morphism ) );
     
+end );
+
+##
+AddCokernelProj( vecspaces,
+
+  function( morphism )
+    local cokernel_proj, cokernel_obj;
+
+    cokernel_proj := SyzygiesOfColumns( morphism!.morphism );
+
+    cokernel_obj := QVectorSpace( NrColumns( cokernel_proj ) );
+
+    return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
+
 end );
 
 # ##
@@ -236,9 +260,9 @@ InstallMethod( ViewObj,
 
     Print( "A rational vector space homomorphism with matrix: \n" );
 # 
-#     Print( String( obj!.Morphism ) );
+#     Print( String( obj!.morphism ) );
   
-    Display( obj!.Morphism );
+    Display( obj!.morphism );
 
 end );
 
@@ -254,11 +278,22 @@ B := QVectorSpace( 2 );
 
 A :=  QVectorSpace( 1 );
 
+
+# KernelLift Test:
 tau := VectorSpaceMorphism( T, [ [ 1, 1 ], [ 1, 1 ] ], B );
 
 theta := VectorSpaceMorphism( A, [ [ 2, -2 ] ], T );
 
 KernelLift( tau, theta );
 
+# Inverse Test:
+alpha := VectorSpaceMorphism( T, [ [ 1, 2 ], [ 3, 4 ] ], B );
+
+Inverse( alpha );
+
+#CokernelColift Test:
+tau2 := VectorSpaceMorphism( B, [ [ 1, 1 ], [ 1, 1 ] ], T );
+
+CokernelColift( theta, tau2 );
 
 

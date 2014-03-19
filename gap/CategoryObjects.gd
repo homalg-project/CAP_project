@@ -55,6 +55,15 @@ DeclareProperty( "CanComputeKernelEmb",
 DeclareProperty( "CanComputeKernelLift",
                  IsHomalgCategoryObject );
 
+DeclareProperty( "CanComputeCokernel",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputeCokernelProj",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "CanComputeCokernelColift",
+                 IsHomalgCategoryObject );                 
+
 DeclareProperty( "CanComputePreCompose",
                  IsHomalgCategoryObject );
 
