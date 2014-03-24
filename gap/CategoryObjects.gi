@@ -109,7 +109,7 @@ InstallTrueMethod( CanComputeZeroMorphism, CanComputePreCompose and CanComputeMo
 InstallMethodWithCache( ZeroMorphism,
                         [ IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject,
                           IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject ],
-               
+                          
   function( obj_source, obj_range )
     
     return PreCompose( MorphismIntoZeroObject( obj_source ), MorphismFromZeroObject( obj_range ) );

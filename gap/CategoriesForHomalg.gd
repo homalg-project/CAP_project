@@ -214,7 +214,7 @@ DeclareOperation( "AddDirectSum_OnObjects",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareProperty( "CanComputeInjectionFromFirstSummand",
-                 IsHomalgCategory );                  
+                 IsHomalgCategory );
 
 DeclareAttribute( "InjectionFromFirstSummandFunction",
                   IsHomalgCategory );
@@ -223,7 +223,7 @@ DeclareOperation( "AddInjectionFromFirstSummand",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareProperty( "CanComputeInjectionFromSecondSummand",
-                 IsHomalgCategory );                  
+                 IsHomalgCategory );
 
 DeclareAttribute( "InjectionFromSecondSummandFunction",
                   IsHomalgCategory );
@@ -232,7 +232,7 @@ DeclareOperation( "AddInjectionFromSecondSummand",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareProperty( "CanComputeProjectionInFirstFactor",
-                 IsHomalgCategory );                  
+                 IsHomalgCategory );
 
 DeclareAttribute( "ProjectionInFirstFactorFunction",
                   IsHomalgCategory );
@@ -241,7 +241,7 @@ DeclareOperation( "AddProjectionInFirstFactor",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareProperty( "CanComputeProjectionInSecondFactor",
-                 IsHomalgCategory );                  
+                 IsHomalgCategory );
 
 DeclareAttribute( "ProjectionInSecondFactorFunction",
                   IsHomalgCategory );
@@ -301,7 +301,7 @@ DeclareOperation( "AddInverse",
 ##
 ## Kernel
 ##
-####################################                                                   
+####################################
 
 DeclareProperty( "CanComputeKernel",
                  IsHomalgCategory );
@@ -313,7 +313,7 @@ DeclareOperation( "AddKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareProperty( "CanComputeKernelLift",
-                 IsHomalgCategory );                  
+                 IsHomalgCategory );
 
 DeclareAttribute( "KernelLiftFunction",
                   IsHomalgCategory );
@@ -322,7 +322,7 @@ DeclareOperation( "AddKernelLift",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareProperty( "CanComputeKernelEmb",
-                 IsHomalgCategory );                  
+                 IsHomalgCategory );
 
 DeclareAttribute( "KernelEmbFunction",
                   IsHomalgCategory );
@@ -361,7 +361,7 @@ DeclareAttribute( "CokernelProjFunction",
                   IsHomalgCategory );
 
 DeclareOperation( "AddCokernelProj",
-                  [ IsHomalgCategory, IsFunction ] );                  
+                  [ IsHomalgCategory, IsFunction ] );
 
 ####################################
 ##

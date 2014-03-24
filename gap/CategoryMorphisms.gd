@@ -84,7 +84,7 @@ DeclareProperty( "CanComputeInjectionFromSecondSummand",
 ##
 ## Properties
 ##
-###################################                                 
+###################################
 
 DeclareProperty( "IsMonomorphism",
                  IsHomalgCategoryMorphism );
@@ -120,11 +120,11 @@ DeclareOperation( "PreCompose",
 ##
 #! Monomorphism as kernel lift
 ##
-###################################         
+###################################
 
 DeclareProperty( "CanComputeMonoAsKernelLift",
                  IsHomalgCategoryMorphism );
-                  
+
 DeclareOperation( "MonoAsKernelLift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
@@ -133,11 +133,11 @@ DeclareOperation( "MonoAsKernelLift",
 ## Epismorphism as cokernel lift
 ##
 ####################################
-                  
+
 DeclareProperty( "CanComputeEpiAsCokernelColift",
                  IsHomalgCategoryMorphism );
-                  
-DeclareOperation( "EpiAsCokernelColift",                  
+
+DeclareOperation( "EpiAsCokernelColift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 ###################################
@@ -148,18 +148,18 @@ DeclareOperation( "EpiAsCokernelColift",
 
 DeclareProperty( "CanComputeKernel",
                  IsHomalgCategoryMorphism );
-              
+
 # DeclareOperation( "Kernel",
 #                   [ IsHomalgCategoryMorphism ] );
 
 DeclareProperty( "CanComputeKernelEmb",
-                 IsHomalgCategoryMorphism );                    
+                 IsHomalgCategoryMorphism );
 
 DeclareAttribute( "KernelEmb",
                   IsHomalgCategoryMorphism );
 
 DeclareProperty( "CanComputeKernelLift",
-                 IsHomalgCategoryMorphism );                  
+                 IsHomalgCategoryMorphism );
 
 DeclareOperation( "KernelLift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
@@ -186,7 +186,7 @@ DeclareProperty( "CanComputeCokernelColift",
                  IsHomalgCategoryMorphism );
 
 DeclareOperation( "CokernelColift",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );                  
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 ###################################
 ##

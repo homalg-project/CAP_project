@@ -42,7 +42,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
 
   function( category, morphism )
     local entry;
-
+    
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "HomalgCategory" ] ],
                                                          [ category, morphism ],
                                                          [ "CanComputeMonoAsKernelLift",
@@ -68,9 +68,9 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
                                                            "CanComputeInjectionFromSecondSummand"
                                                          # ...
                                                          ] );
-
+    
     AddToToDoList( entry );
-
+    
 end );
 
 ######################################
@@ -137,7 +137,7 @@ InstallTrueMethod( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeI
 InstallMethod( Inverse,
                [ IsHomalgCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
                -1,
-
+               
   function( mor )
     local identity_of_range;
         
@@ -153,13 +153,13 @@ InstallTrueMethod( CanComputeInverse, CanComputeEpiAsCokernelColift and CanCompu
 InstallMethod( Inverse,
                [ IsHomalgCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
                -1,
-
+               
   function( mor )
     local identity_of_source;
-
-      identity_of_source := IdentityMorphism( Source( mor ) );
-
-      return EpiAsCokernelColift( mor, identity_of_source );
+    
+    identity_of_source := IdentityMorphism( Source( mor ) );
+    
+    return EpiAsCokernelColift( mor, identity_of_source );
       
 end );                        
 
@@ -170,11 +170,11 @@ InstallMethod( KernelLift,
                [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
                  IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
                  -1,
-
-    function( mor, test_morphism )
-
-      return MonoAsKernelLift( KernelEmb( mor ), test_morphism );
-
+                 
+  function( mor, test_morphism )
+    
+    return MonoAsKernelLift( KernelEmb( mor ), test_morphism );
+    
 end );
 
 InstallTrueMethod( CanComputeKernel, CanComputeKernelEmb );
@@ -183,11 +183,11 @@ InstallTrueMethod( CanComputeKernel, CanComputeKernelEmb );
 InstallMethod( Kernel,
                [ IsHomalgCategoryMorphism and CanComputeKernelEmb ],
                -1,
-
-    function( mor )
-
-      return Source( KernelEmb( mor ) );
-
+               
+  function( mor )
+    
+    return Source( KernelEmb( mor ) );
+    
 end );
 
 InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
@@ -197,11 +197,11 @@ InstallMethod( CokernelColift,
                [ IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
                  IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift ],
                  -1,
-
-    function( mor, test_morphism )
-
-      return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
-
+                 
+  function( mor, test_morphism )
+    
+    return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
+    
 end );
 
 InstallTrueMethod( CanComputeCokernel, CanComputeCokernelProj );
@@ -210,10 +210,10 @@ InstallTrueMethod( CanComputeCokernel, CanComputeCokernelProj );
 InstallMethod( Cokernel,
                [ IsHomalgCategoryMorphism and CanComputeCokernelProj ],
                -1,
-
-    function( mor )
-
-      return Range( CokernelProj( mor ) );
-
+               
+  function( mor )
+    
+    return Range( CokernelProj( mor ) );
+    
 end );
 

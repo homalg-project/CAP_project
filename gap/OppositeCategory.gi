@@ -177,6 +177,7 @@ end );
 ##
 InstallMethod( PreCompose,
                [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+               -1,
                
   function( left, right )
     
@@ -187,6 +188,7 @@ end );
 ##
 InstallMethod( PostCompose,
                [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+               -1,
                
   function( left, right )
     
@@ -197,6 +199,7 @@ end );
 ##
 InstallMethod( IdentityMorphism,
                [ IsHomalgCategoryOppositeObjectRep ],
+               -1,
                
   function( obj )
     
@@ -207,10 +210,198 @@ end );
 ##
 InstallMethod( ZeroObject,
                [ IsHomalgCategory and WasCreatedAsOppositeCategory ],
+               -1,
                
   function( category )
     
     return Opposite( ZeroObject( Opposite( category ) ) );
+    
+end );
+
+##
+InstallMethod( MonoAsKernelLift,
+              [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+              -1,
+              
+  function( monomorphism, test_morphism )
+    
+    return Opposite( EpiAsCokernelColift( Opposite( monomorphism ), Opposite( test_morphism ) ) );
+    
+end );
+
+##
+InstallMethod( EpiAsCokernelColift,
+              [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+              -1,
+              
+  function( epimorphism, test_morphism )
+    
+    return Opposite( MonoAsKernelLift( Opposite( epimorphism ), Opposite( test_morphism ) ) );
+    
+end );
+
+##
+InstallMethod( Inverse,
+               [ IsHomalgCategoryOppositeMorphismRep ],
+               -1,
+               
+  function( mor )
+    
+    return Opposite( Inverse( Opposite( mor ) ) );
+    
+end );
+
+##
+InstallMethod( Kernel,
+               [ IsHomalgCategoryOppositeMorphismRep ],
+               -1,
+               
+  function( mor )
+    
+    return Opposite( Cokernel( Opposite( mor ) ) );
+    
+end );
+
+##
+InstallMethod( KernelEmb,
+               [ IsHomalgCategoryOppositeMorphismRep ],
+               -1,
+               
+  function( mor )
+    
+    return Opposite( CokernelProj( Opposite( mor ) ) );
+    
+end );
+
+##
+InstallMethod( KernelLift,
+               [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+               -1,
+               
+  function( mor, test_morphism )
+    
+    return Opposite( CokernelColift( Opposite( mor ), Opposite( test_morphism ) ) );
+    
+end );
+
+##
+InstallMethod( Cokernel,
+               [ IsHomalgCategoryOppositeMorphismRep ],
+               -1,
+               
+  function( mor )
+    
+    return Opposite( Kernel( Opposite( mor ) ) );
+    
+end );
+
+##
+InstallMethod( CokernelProj,
+               [ IsHomalgCategoryOppositeMorphismRep ],
+               -1,
+               
+  function( mor )
+    
+    return Opposite( KernelEmb( Opposite( mor ) ) );
+    
+end );
+
+##
+InstallMethod( CokernelColift,
+               [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+               -1,
+               
+  function( mor, test_morphism )
+    
+    return Opposite( KernelLift( Opposite( mor ), Opposite( test_morphism ) ) );
+    
+end );
+
+##
+InstallMethod( MorphismFromZeroObject,
+               [ IsHomalgCategoryOppositeObjectRep ],
+               -1,
+               
+  function( obj )
+    
+    return Opposite( MorphismIntoZeroObject( Opposite( obj ) ) );
+    
+end );
+
+##
+InstallMethod( MorphismIntoZeroObject,
+               [ IsHomalgCategoryOppositeObjectRep ],
+               -1,
+               
+  function( obj )
+    
+    return Opposite( MorphismFromZeroObject( Opposite( obj ) ) );
+    
+end );
+
+##
+InstallMethod( ZeroMorphism,
+               [ IsHomalgCategoryOppositeObjectRep, IsHomalgCategoryOppositeObjectRep ],
+               -1,
+               
+  function( obj_source, obj_range )
+    
+    return Opposite( ZeroMorphism( Opposite( obj_range ), Opposite( obj_source ) ) );
+    
+end );
+
+##
+InstallMethod(  DirectSumOp,
+                [ IsList, IsHomalgCategoryOppositeObjectRep ],
+                -1,
+                
+  function( obj_list, obj1 )
+    
+    return Opposite( DirectSumOp( List( obj_list, Opposite ), Opposite( obj1 ) ) );
+    
+end );
+
+##
+InstallMethod(  ProjectionInFirstFactor,
+                [ IsHomalgCategoryOppositeObjectRep ],
+                -1,
+                
+  function( sum_obj )
+    
+    return Opposite( InjectionFromFirstSummand( Opposite( sum_obj ) ) );
+    
+end );
+
+##
+InstallMethod(  ProjectionInSecondFactor,
+                [ IsHomalgCategoryOppositeObjectRep ],
+                -1,
+                
+  function( sum_obj )
+    
+    return Opposite( InjectionFromSecondSummand( Opposite( sum_obj ) ) );
+    
+end );
+
+##
+InstallMethod(  InjectionFromFirstSummand,
+                [ IsHomalgCategoryOppositeObjectRep ],
+                -1,
+                
+  function( sum_obj )
+    
+    return Opposite( ProjectionInFirstFactor( Opposite( sum_obj ) ) );
+    
+end );
+
+##
+InstallMethod(  InjectionFromSecondSummand,
+                [ IsHomalgCategoryOppositeObjectRep ],
+                -1,
+                
+  function( sum_obj )
+    
+    return Opposite( ProjectionInSecondFactor( Opposite( sum_obj ) ) );
     
 end );
 

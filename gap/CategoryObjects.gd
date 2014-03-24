@@ -62,7 +62,7 @@ DeclareProperty( "CanComputeCokernelProj",
                  IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeCokernelColift",
-                 IsHomalgCategoryObject );                 
+                 IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputePreCompose",
                  IsHomalgCategoryObject );
@@ -74,7 +74,7 @@ DeclareProperty( "CanComputeEpiAsCokernelColift",
                  IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeMonoAsKernelLift",
-                 IsHomalgCategoryObject );                 
+                 IsHomalgCategoryObject );
 
 ###################################
 ##
@@ -104,25 +104,25 @@ DeclareAttribute( "SecondSummand",
                   IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeProjectionInFirstFactor",
-                 IsHomalgCategoryObject );                  
+                 IsHomalgCategoryObject );
 
 DeclareAttribute( "ProjectionInFirstFactor",
                   IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeProjectionInSecondFactor",
-                 IsHomalgCategoryObject );                  
+                 IsHomalgCategoryObject );
 
 DeclareAttribute( "ProjectionInSecondFactor",
                   IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeInjectionFromFirstSummand",
-                 IsHomalgCategoryObject );                  
+                 IsHomalgCategoryObject );
 
 DeclareAttribute( "InjectionFromFirstSummand",
                   IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeInjectionFromSecondSummand",
-                 IsHomalgCategoryObject );                  
+                 IsHomalgCategoryObject );
 
 DeclareAttribute( "InjectionFromSecondSummand",
                   IsHomalgCategoryObject );
@@ -153,24 +153,24 @@ DeclareAttribute( "IdentityMorphism",
 
 DeclareProperty( "CanComputeZeroObject",
                  IsHomalgCategoryObject );
-                  
+
 DeclareAttribute( "ZeroObject",
                   IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeMorphismFromZeroObject",
-                 IsHomalgCategoryObject );                  
+                 IsHomalgCategoryObject );
 
 DeclareAttribute( "MorphismFromZeroObject",
                   IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeMorphismIntoZeroObject",
-                 IsHomalgCategoryObject );                  
+                 IsHomalgCategoryObject );
 
 DeclareAttribute( "MorphismIntoZeroObject",
                   IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeZeroMorphism",
-                 IsHomalgCategoryObject );                    
-                  
+                 IsHomalgCategoryObject );
+
 DeclareOperation( "ZeroMorphism",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
