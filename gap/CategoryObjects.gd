@@ -82,6 +82,21 @@ DeclareProperty( "CanComputeMonoAsKernelLift",
 ##
 ###################################
 
+DeclareProperty( "IsProjective",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "IsInjective",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "IsZero",
+                 IsHomalgCategoryObject );
+
+###################################
+##
+#! @Section Add function
+##
+###################################
+
 DeclareOperation( "Add",
                   [ IsHomalgCategory, IsHomalgCategoryObject ] );
 

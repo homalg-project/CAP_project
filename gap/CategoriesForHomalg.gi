@@ -161,6 +161,8 @@ InstallMethod( ZeroObject,
     
     Add( category, zero_obj );
     
+    SetIsZero( zero_obj, true );
+    
     return zero_obj;
     
 end );
@@ -196,9 +198,9 @@ InstallMethod( AddIdentityMorphism,
         ret_val := func( object );
         
         Add( category, ret_val );
-
-        SetIsIsomorphism( ret_val, true );
-
+        
+        SetIsOne( ret_val, true );
+        
         SetInverse( ret_val, ret_val );
         
         return ret_val;

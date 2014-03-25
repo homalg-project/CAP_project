@@ -24,6 +24,14 @@ BindGlobal( "TheTypeOfHomalgCategoryObjects",
         NewType( TheFamilyOfHomalgCategoryObjects,
                 IsHomalgCategoryObjectRep ) );
 
+######################################
+##
+## Immediate Methods
+##
+######################################
+
+InstallTrueMethod( IsInjective and IsProjective, IsHomalgCategoryObject and IsZero );
+
 #######################################
 ##
 ## Technical implications

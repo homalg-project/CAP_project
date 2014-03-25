@@ -95,6 +95,25 @@ DeclareProperty( "IsEpimorphism",
 DeclareProperty( "IsIsomorphism",
                  IsHomalgCategoryMorphism );
 
+DeclareProperty( "IsEndomorphism",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "IsAutomorphism",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "IsSplitMonomorphism",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "IsSplitEpimorphism",
+                 IsHomalgCategoryMorphism );
+
+## TODO: IsIdentity
+DeclareProperty( "IsOne",
+                 IsHomalgCategoryMorphism );
+
+DeclareProperty( "IsIdempotent",
+                 IsHomalgCategoryMorphism );
+
 ###################################
 ##
 #! @Section Morphism add functions
