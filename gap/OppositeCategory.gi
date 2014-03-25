@@ -415,28 +415,30 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
     local entry_list, entry;
     
     entry_list := [ [ "CanComputeMonoAsKernelLift", "CanComputeEpiAsCokernelColift" ],
-                  [ "CanComputeEpiAsCokernelColift", "CanComputeMonoAsKernelLift" ],
-                    "CanComputeIdentityMorphism",
-                    "CanComputeInverse",
-                  [ "CanComputeKernel", "CanComputeCokernel" ],
-                  [ "CanComputeKernelEmb", "CanComputeCokernelProj" ],
-                  [ "CanComputeKernelLift", "CanComputeCokernelColift" ],
-                  [ "CanComputeCokernel", "CanComputeKernel" ],
-                  [ "CanComputeCokernelProj", "CanComputeKernelEmb" ],
-                  [ "CanComputeCokernelColift", "CanComputeKernelLift" ],
-                  [ "CanComputePreCompose", "CanComputePostCompose" ],
-                  [ "CanComputePostCompose", "CanComputePreCompose" ],
-                    "CanComputeZeroObject",
-                  [ "CanComputeMorphismFromZeroObject", "CanComputeMorphismIntoZeroObject" ],
-                  [ "CanComputeMorphismIntoZeroObject", "CanComputeMorphismFromZeroObject" ],
-                    "CanComputeZeroMorphism",
-                    "CanComputeDirectSum",
-                  [ "CanComputeProjectionInFirstFactor", "CanComputeInjectionFromFirstSummand" ],
-                  [ "CanComputeProjectionInSecondFactor", "CanComputeInjectionFromSecondSummand" ],
-                  [ "CanComputeInjectionFromFirstSummand", "CanComputeProjectionInFirstFactor" ],
-                  [ "CanComputeInjectionFromSecondSummand", "CanComputeProjectionInSecondFactor" ]
+                    [ "CanComputeEpiAsCokernelColift", "CanComputeMonoAsKernelLift" ],
+                      "CanComputeIdentityMorphism",
+                      "CanComputeInverse",
+                    [ "CanComputeKernel", "CanComputeCokernel" ],
+                    [ "CanComputeKernelEmb", "CanComputeCokernelProj" ],
+                    [ "CanComputeKernelLift", "CanComputeCokernelColift" ],
+                    [ "CanComputeCokernel", "CanComputeKernel" ],
+                    [ "CanComputeCokernelProj", "CanComputeKernelEmb" ],
+                    [ "CanComputeCokernelColift", "CanComputeKernelLift" ],
+                    [ "CanComputePreCompose", "CanComputePostCompose" ],
+                    [ "CanComputePostCompose", "CanComputePreCompose" ],
+                      "CanComputeZeroObject",
+                    [ "CanComputeMorphismFromZeroObject", "CanComputeMorphismIntoZeroObject" ],
+                    [ "CanComputeMorphismIntoZeroObject", "CanComputeMorphismFromZeroObject" ],
+                      "CanComputeZeroMorphism",
+                      "CanComputeDirectSum",
+                    [ "CanComputeProjectionInFirstFactor", "CanComputeInjectionFromFirstSummand" ],
+                    [ "CanComputeProjectionInSecondFactor", "CanComputeInjectionFromSecondSummand" ],
+                    [ "CanComputeInjectionFromFirstSummand", "CanComputeProjectionInFirstFactor" ],
+                    [ "CanComputeInjectionFromSecondSummand", "CanComputeProjectionInSecondFactor" ]
                   # ...
                   ];
+    
+    entry_list := List( entry_list, i -> [ "technical implication", i ] );
     
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "Opposite" ] ],
                                                          [ category, [ Opposite, category ] ],
@@ -457,9 +459,9 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM,
   function( morphism )
     local entry_list, entry;
 
-    entry_list := [ [ "IsMonomorphism", "IsEpimorphism" ],
-                    [ "IsEpimorphism", "IsMonomorphism" ],
-                    [ "IsIsomorphism", "IsIsomorphism" ]
+    entry_list := [ [ "Mono is dual to epi", [ "IsMonomorphism", "IsEpimorphism" ] ],
+                    [ "Epi is dual to mono", [ "IsEpimorphism", "IsMonomorphism" ] ],
+                    [ "Iso is self dual", "IsIsomorphism"]
                   # ...
                   ];
 
