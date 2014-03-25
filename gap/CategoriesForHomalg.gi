@@ -688,6 +688,8 @@ InstallMethod( AddKernelEmb,
         
         Add( HomalgCategory( mor ), kernel_emb );
         
+        SetIsMonomorphism( kernel_emb, true );
+        
         return kernel_emb;
         
     end );
@@ -777,6 +779,8 @@ InstallMethod( AddCokernelProj,
         cokernel_proj := func( mor );
         
         Add( HomalgCategory( mor ), cokernel_proj );
+        
+        SetIsEpimorphism( cokernel_proj, true );
         
         return cokernel_proj;
         

@@ -110,6 +110,8 @@ InstallMethod( Opposite,
     
     Add( Opposite( HomalgCategory( morphism ) ), opposite_morphism );
     
+    INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM( morphism );
+    
     return opposite_morphism;
     
 end );
@@ -351,10 +353,10 @@ InstallMethod( ZeroMorphism,
 end );
 
 ##
-InstallMethod(  DirectSumOp,
-                [ IsList, IsHomalgCategoryOppositeObjectRep ],
-                -1,
-                
+InstallMethod( DirectSumOp,
+               [ IsList, IsHomalgCategoryOppositeObjectRep ],
+               -1,
+               
   function( obj_list, obj1 )
     
     return Opposite( DirectSumOp( List( obj_list, Opposite ), Opposite( obj1 ) ) );
@@ -362,10 +364,10 @@ InstallMethod(  DirectSumOp,
 end );
 
 ##
-InstallMethod(  ProjectionInFirstFactor,
-                [ IsHomalgCategoryOppositeObjectRep ],
-                -1,
-                
+InstallMethod( ProjectionInFirstFactor,
+               [ IsHomalgCategoryOppositeObjectRep ],
+               -1,
+               
   function( sum_obj )
     
     return Opposite( InjectionFromFirstSummand( Opposite( sum_obj ) ) );
@@ -373,10 +375,10 @@ InstallMethod(  ProjectionInFirstFactor,
 end );
 
 ##
-InstallMethod(  ProjectionInSecondFactor,
-                [ IsHomalgCategoryOppositeObjectRep ],
-                -1,
-                
+InstallMethod( ProjectionInSecondFactor,
+               [ IsHomalgCategoryOppositeObjectRep ],
+               -1,
+               
   function( sum_obj )
     
     return Opposite( InjectionFromSecondSummand( Opposite( sum_obj ) ) );
@@ -384,10 +386,10 @@ InstallMethod(  ProjectionInSecondFactor,
 end );
 
 ##
-InstallMethod(  InjectionFromFirstSummand,
-                [ IsHomalgCategoryOppositeObjectRep ],
-                -1,
-                
+InstallMethod( InjectionFromFirstSummand,
+               [ IsHomalgCategoryOppositeObjectRep ],
+               -1,
+               
   function( sum_obj )
     
     return Opposite( ProjectionInFirstFactor( Opposite( sum_obj ) ) );
@@ -395,10 +397,10 @@ InstallMethod(  InjectionFromFirstSummand,
 end );
 
 ##
-InstallMethod(  InjectionFromSecondSummand,
-                [ IsHomalgCategoryOppositeObjectRep ],
-                -1,
-                
+InstallMethod( InjectionFromSecondSummand,
+               [ IsHomalgCategoryOppositeObjectRep ],
+               -1,
+               
   function( sum_obj )
     
     return Opposite( ProjectionInSecondFactor( Opposite( sum_obj ) ) );
@@ -449,3 +451,29 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
     AddToToDoList( entry );
     
 end );
+
+InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM,
+
+  function( morphism )
+    local entry_list, entry;
+
+    entry_list := [ [ "IsMonomorphism", "IsEpimorphism" ],
+                    [ "IsEpimorphism", "IsMonomorphism" ],
+                    [ "IsIsomorphism", "IsIsomorphism" ]
+                  # ...
+                  ];
+
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "Opposite" ] ],
+                                                         [ morphism, [ Opposite, morphism ] ],
+                                                         entry_list );
+
+    AddToToDoList( entry );
+
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "Opposite" ] ],
+                                                         [ [ Opposite, morphism ], morphism ],
+                                                         entry_list );
+
+    AddToToDoList( entry );
+
+end );
+
