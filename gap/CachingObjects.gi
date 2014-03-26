@@ -55,6 +55,41 @@ InstallGlobalFunction( CACHINGOBJECT_MISS,
     
 end );
 
+InstallGlobalFunction( COMPARE_LISTS_WITH_IDENTICAL,
+                       
+  function( list1, list2 )
+    local i;
+    
+    if not IsList( list1 ) and not IsList( list2 ) then
+        
+        return IsIdenticalObj( list1, list2 );
+        
+    elif not IsList( list1 ) or not IsList( list2 ) then
+        
+        return false;
+        
+    fi;
+    
+    if Length( list1 ) <> Length( list2 ) then
+        
+        return false;
+        
+    fi;
+    
+    for i in [ 1 .. Length( list1 ) ] do
+        
+        if COMPARE_LISTS_WITH_IDENTICAL( list1[ i ], list2[ i ] ) = false then
+            
+            return false;
+            
+        fi;
+        
+    od;
+    
+    return true;
+    
+end );
+
 ## FIXME: Maybe do not search by IsIdenticalObj
 InstallGlobalFunction( SEARCH_WPLIST_FOR_OBJECT,
                        
@@ -63,7 +98,7 @@ InstallGlobalFunction( SEARCH_WPLIST_FOR_OBJECT,
     
     for pos in [ 1 .. LengthWPObj( wp_list ) ] do
         
-        if IsBoundElmWPObj( wp_list, pos ) and IsIdenticalObj( object, ElmWPObj( wp_list, pos ) ) then
+        if IsBoundElmWPObj( wp_list, pos ) and COMPARE_LISTS_WITH_IDENTICAL( object, ElmWPObj( wp_list, pos ) ) then ##Look at lists with =.
             
             return pos;
             

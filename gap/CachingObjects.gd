@@ -22,6 +22,8 @@ DeclareGlobalFunction( "CACHINGOBJECT_HIT" );
 
 DeclareGlobalFunction( "CACHINGOBJECT_MISS" );
 
+DeclareGlobalFunction( "COMPARE_LISTS_WITH_IDENTICAL" );
+
 DeclareGlobalFunction( "CreateWeakCachingObject" );
 
 DeclareGlobalFunction( "CreateCrispCachingObject" );

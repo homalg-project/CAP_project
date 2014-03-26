@@ -216,4 +216,3 @@ InstallMethod( Cokernel,
     return Range( CokernelProj( mor ) );
     
 end );
-

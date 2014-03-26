@@ -7,3 +7,6 @@ ReadPackage( "CategoriesForHomalg", "gap/CategoryObjects.gd");
 ReadPackage( "CategoriesForHomalg", "gap/CategoryMorphisms.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/OppositeCategory.gd");
+
+ReadPackage( "CategoriesForHomalg", "gap/ProductCategory.gd");
+
