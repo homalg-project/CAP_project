@@ -92,6 +92,8 @@ InstallMethod( Opposite,
     
     Add( Opposite( HomalgCategory( object ) ), opposite_object );
     
+    INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
+    
     return opposite_object;
     
 end );
@@ -473,6 +475,31 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM,
 
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "Opposite" ] ],
                                                          [ [ Opposite, morphism ], morphism ],
+                                                         entry_list );
+
+    AddToToDoList( entry );
+
+end );
+
+InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT,
+
+  function( object )
+    local entry_list, entry;
+
+    entry_list := [ [ "IsInjective", "IsProjective" ],
+                    [ "IsProjective", "IsInjective" ],
+                    [ "IsZero", "IsZero" ]
+                  # ...
+                  ];
+
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "Opposite" ] ],
+                                                         [ object, [ Opposite, object ] ],
+                                                         entry_list );
+
+    AddToToDoList( entry );
+
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "Opposite" ] ],
+                                                         [ [ Opposite, object ], object ],
                                                          entry_list );
 
     AddToToDoList( entry );

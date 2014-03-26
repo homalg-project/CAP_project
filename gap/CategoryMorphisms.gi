@@ -30,7 +30,15 @@ BindGlobal( "TheTypeOfHomalgCategoryMorphisms",
 ##
 ######################################
 
-InstallTrueMethod( IsMonomorphism and IsEpimorphism, IsHomalgCategoryMorphism and IsIsomorphism );
+InstallTrueMethod( IsSplitMonomorphism and IsSplitEpimorphism, IsHomalgCategoryMorphism and IsIsomorphism );
+
+InstallTrueMethod( IsAutomorphism, IsHomalgCategoryMorphism and IsOne );
+
+InstallTrueMethod( IsIsomorphism and IsEndomorphism, IsHomalgCategoryMorphism and IsAutomorphism );
+
+InstallTrueMethod( IsMonomorphism, IsHomalgCategoryMorphism and IsSplitMonomorphism );
+
+InstallTrueMethod( IsEpimorphism, IsHomalgCategoryMorphism and IsSplitEpimorphism );
 
 #######################################
 ##
