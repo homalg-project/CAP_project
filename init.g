@@ -10,3 +10,5 @@ ReadPackage( "CategoriesForHomalg", "gap/OppositeCategory.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/ProductCategory.gd");
 
+ReadPackage( "CategoriesForHomalg", "gap/CategoriesCategory.gd");
+
