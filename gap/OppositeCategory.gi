@@ -463,7 +463,13 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM,
 
     entry_list := [ [ "Mono is dual to epi", [ "IsMonomorphism", "IsEpimorphism" ] ],
                     [ "Epi is dual to mono", [ "IsEpimorphism", "IsMonomorphism" ] ],
-                    [ "Iso is self dual", "IsIsomorphism"]
+                    [ "Iso is self dual", "IsIsomorphism" ],
+                    [ "IsEndomorphism is self dual", "IsEndomorphism" ],
+                    [ "automorphism is self dual", "IsAutomorphism" ],
+                    [ "One is self dual", "IsOne" ],
+                    [ "Epi is dual to mono", [ "IsSplitMonomorphism", "IsSplitEpimorphism" ] ],
+                    [ "Mono is dual to epi", [ "IsSplitEpimorphism", "IsSplitMonomorphism" ] ],
+                    [ "Idempotent is self dual", "IsIdempotent" ],
                   # ...
                   ];
 
