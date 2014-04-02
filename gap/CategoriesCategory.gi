@@ -124,7 +124,13 @@ InstallMethod( CatFunctorPreimageList,
                
   function( obj )
     
-    return rec();
+    if not IsBound( obj!.CatFunctorPreimageList ) then
+        
+        obj!.CatFunctorPreimageList := rec( );
+        
+    fi;
+    
+    return obj!.CatFunctorPreimageList;
     
 end );
 
@@ -134,7 +140,13 @@ InstallMethod( CatFunctorPreimageList,
                
   function( obj )
     
-    return rec();
+    if not IsBound( obj!.CatFunctorPreimageList ) then
+        
+        obj!.CatFunctorPreimageList := rec( );
+        
+    fi;
+    
+    return obj!.CatFunctorPreimageList;
     
 end );
 
@@ -183,6 +195,11 @@ InstallMethod( ApplyFunctor,
     
     computed_value := ObjectFunction( functor )( obj );
     
+    SetCacheValue( obj_cache, [ obj ], computed_value );
+    
+    ## The preimages are stored because they CAN be elements of product categories.
+    ## If this preimage is deleted and a new one is generated for the call of this functor
+    ## a new image is created. This might cause inconsistencies.
     CatFunctorPreimageList( computed_value ).( Name( functor ) ) := obj;
     
     Add( Range( functor ), computed_value );
@@ -215,6 +232,8 @@ InstallMethod( ApplyFunctor,
     fi;
     
     computed_value := MorphismFunction( functor )( ApplyFunctor( functor, Source( mor ) ), mor, ApplyFunctor( functor, Range( mor ) ) );
+    
+    SetCacheValue( mor_cache, [ mor ], computed_value );
     
     CatFunctorPreimageList( computed_value ).( Name( functor ) ) := mor;
     

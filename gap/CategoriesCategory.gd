@@ -89,11 +89,11 @@ DeclareOperation( "ApplyFunctor",
 ##
 ####################################
 
-DeclareAttribute( "CatFunctorPreimageList",
-                  IsHomalgCategoryObject );
+DeclareOperation( "CatFunctorPreimageList",
+                  [ IsHomalgCategoryObject ] );
 
-DeclareAttribute( "CatFunctorPreimageList",
-                  IsHomalgCategoryMorphism );
+DeclareOperation( "CatFunctorPreimageList",
+                  [ IsHomalgCategoryMorphism ] );
 
 DeclareAttribute( "ObjectCache",
                   IsHomalgFunctor );

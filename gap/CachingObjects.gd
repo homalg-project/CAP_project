@@ -53,5 +53,11 @@ DeclareOperation( "GetObject",
 DeclareOperation( "CacheValue",
                   [ IsCachingObject, IsList ] );
 
+DeclareOperation( "CacheValue",
+                  [ IsCachingObject, IsObject ] );
+
 DeclareOperation( "SetCacheValue",
                   [ IsCachingObject, IsList, IsObject ] );
+
+DeclareOperation( "SetCacheValue",
+                  [ IsCachingObject, IsObject, IsObject ] );

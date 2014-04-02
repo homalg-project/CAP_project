@@ -5,7 +5,7 @@ LoadPackage( "MatricesForHomalg" );
 
 ###################################
 ##
-#! @Types and Representations
+## Types and Representations
 ##
 ###################################
 
@@ -27,7 +27,7 @@ BindGlobal( "TheTypeOfHomalgRationalVectorSpaceMorphism",
 
 ###################################
 ##
-#! @Attributes
+## Attributes
 ##
 ###################################
                 
@@ -36,7 +36,7 @@ DeclareAttribute( "Dimension",
 
 #######################################
 ##
-#! @Operations
+## Operations
 ##
 #######################################
                   
@@ -53,7 +53,7 @@ VECTORSPACES_FIELD := HomalgFieldOfRationals( );
 
 #######################################
 ##
-#! @Categorical Implementations
+## Categorical Implementations
 ##
 #######################################
 
@@ -240,7 +240,7 @@ end );
 
 #######################################
 ##
-#! @View and Display
+## View and Display
 ##
 #######################################
 
@@ -268,7 +268,7 @@ end );
 
 #######################################
 ##
-#! @Test
+## Test
 ##
 #######################################
 
@@ -286,7 +286,7 @@ theta := VectorSpaceMorphism( A, [ [ 2, -2 ] ], T );
 
 KernelLift( tau, theta );
 
-# Inverse Test:
+# Inverse Test
 alpha := VectorSpaceMorphism( T, [ [ 1, 2 ], [ 3, 4 ] ], B );
 
 Inverse( alpha );
@@ -295,5 +295,29 @@ Inverse( alpha );
 tau2 := VectorSpaceMorphism( B, [ [ 1, 1 ], [ 1, 1 ] ], T );
 
 CokernelColift( theta, tau2 );
+
+#######################################
+##
+## Functors
+##
+#######################################
+
+Tensor_Product := HomalgFunctor( "tensor_product", Product( vecspaces, vecspaces ), vecspaces );
+
+AddObjectFunction( Tensor_Product,
+                   
+  function( vecspace_pair )
+    
+    return QVectorSpace( Dimension( vecspace_pair[ 1 ] ) * Dimension( vecspace_pair[ 2 ] ) );
+    
+end );
+
+AddMorphismFunction( Tensor_Product,
+                     
+  function( new_source, morphism, new_range )
+    
+    return VectorSpaceMorphism( new_source, KroneckerMat( morphism[ 1 ]!.morphism, morphism[ 2 ]!.morphism ), new_range );
+    
+end );
 
 

@@ -276,6 +276,15 @@ InstallMethod( GetObject,
 end );
 
 InstallMethod( SetCacheValue,
+               [ IsCachingObject, IsObject, IsObject ],
+               
+  function( cache, key, value )
+    
+    SetCacheValue( cache, [ key ], value );
+    
+end );
+
+InstallMethod( SetCacheValue,
                [ IsCachingObject, IsList, IsObject ],
                
   function( cache, key_list, value )
@@ -319,6 +328,16 @@ InstallMethod( SetCacheValue,
     
 end );
 
+InstallMethod( CacheValue,
+               [ IsCachingObject, IsObject ],
+               
+  function( cache, key )
+    
+    return CacheValue( cache, [ key ] );
+    
+end );
+
+##
 InstallMethod( CacheValue,
                [ IsCachingObject, IsList ],
                
