@@ -90,10 +90,7 @@ DeclareOperation( "ApplyFunctor",
 ####################################
 
 DeclareOperation( "CatFunctorPreimageList",
-                  [ IsHomalgCategoryObject ] );
-
-DeclareOperation( "CatFunctorPreimageList",
-                  [ IsHomalgCategoryMorphism ] );
+                  [ IsHomalgCategoryCell ] );
 
 DeclareAttribute( "ObjectCache",
                   IsHomalgFunctor );

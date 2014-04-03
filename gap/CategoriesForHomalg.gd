@@ -44,6 +44,9 @@ DeclareGlobalFunction( "DECIDE_INSTALL_FUNCTION" );
 DeclareCategory( "IsHomalgCategory",
                  IsObject );
 
+DeclareCategory( "IsHomalgCategoryCell",
+                 IsObject );
+
 ###################################
 ##
 #! @Section Constructor

@@ -320,4 +320,20 @@ AddMorphismFunction( Tensor_Product,
     
 end );
 
+Change_Components := HomalgFunctor( "change_components", Product( vecspaces, vecspaces ), Product( vecspaces, vecspaces ) );
 
+AddObjectFunction( Change_Components,
+                   
+  function( vecspace_pair )
+    
+    return Product( vecspace_pair[ 2 ], vecspace_pair[ 1 ] );
+    
+end );
+
+AddMorphismFunction( Change_Components,
+                   
+  function( new_source, morphism_pair, new_range )
+    
+    return Product( morphism_pair[ 2 ], morphism_pair[ 1 ] );
+    
+end );

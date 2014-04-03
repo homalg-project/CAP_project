@@ -17,7 +17,7 @@
 ###################################
 
 DeclareCategory( "IsHomalgCategoryObject",
-                 IsObject );
+                 IsHomalgCategoryCell );
 
 DeclareFilter( "WasCreatedAsDirectSum" );
 

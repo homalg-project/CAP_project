@@ -17,7 +17,7 @@
 ###################################
 
 DeclareCategory( "IsHomalgCategoryMorphism",
-                 IsObject );
+                 IsHomalgCategoryCell );
 
 ###################################
 ##

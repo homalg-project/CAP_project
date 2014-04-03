@@ -85,16 +85,18 @@ InstallMethod( HomalgFunctor,
                [ IsString, IsHomalgCategory, IsHomalgCategory ],
                
   function( name, source, range )
-    local func;
+    local functor;
     
-    func := rec( );
+    functor := rec( );
     
-    ObjectifyWithAttributes( func, TheTypeOfHomalgFunctors,
+    ObjectifyWithAttributes( functor, TheTypeOfHomalgFunctors,
                              Name, name,
-                             Source, source,
-                             Range, range );
+                             Source, AsCatObject( source ),
+                             Range, AsCatObject( range ) );
     
-    return func;
+    Add( CATEGORIES_FOR_HOMALG_Cat, functor );
+    
+    return functor;
     
 end );
 
@@ -120,23 +122,7 @@ end );
 
 ##
 InstallMethod( CatFunctorPreimageList,
-               [ IsHomalgCategoryObject ],
-               
-  function( obj )
-    
-    if not IsBound( obj!.CatFunctorPreimageList ) then
-        
-        obj!.CatFunctorPreimageList := rec( );
-        
-    fi;
-    
-    return obj!.CatFunctorPreimageList;
-    
-end );
-
-##
-InstallMethod( CatFunctorPreimageList,
-               [ IsHomalgCategoryMorphism ],
+               [ IsHomalgCategoryCell ],
                
   function( obj )
     
@@ -177,7 +163,7 @@ InstallMethod( ApplyFunctor,
   function( functor, obj )
     local obj_cache, cache_return, computed_value;
     
-    if not IsIdenticalObj( HomalgCategory( obj ), Source( functor ) ) then
+    if not IsIdenticalObj( HomalgCategory( obj ), AsHomalgCategory( Source( functor ) ) ) then
         
         Error( "wrong input object" );
         
@@ -202,7 +188,7 @@ InstallMethod( ApplyFunctor,
     ## a new image is created. This might cause inconsistencies.
     CatFunctorPreimageList( computed_value ).( Name( functor ) ) := obj;
     
-    Add( Range( functor ), computed_value );
+    Add( AsHomalgCategory( Range( functor ) ), computed_value );
     
     return computed_value;
     
@@ -215,7 +201,7 @@ InstallMethod( ApplyFunctor,
   function( functor, mor )
     local mor_cache, cache_return, computed_value;
     
-    if not IsIdenticalObj( HomalgCategory( mor ), Source( functor ) ) then
+    if not IsIdenticalObj( HomalgCategory( mor ), AsHomalgCategory( Source( functor ) ) ) then
         
         Error( "wrong input object" );
         
@@ -237,8 +223,60 @@ InstallMethod( ApplyFunctor,
     
     CatFunctorPreimageList( computed_value ).( Name( functor ) ) := mor;
     
-    Add( Range( functor ), computed_value );
+    Add( AsHomalgCategory( Range( functor ) ), computed_value );
     
     return computed_value;
+    
+end );
+
+##
+AddPreCompose( CATEGORIES_FOR_HOMALG_Cat,
+               
+  function( left_functor, right_functor )
+    local obj_func, mor_func, new_functor;
+    
+    new_functor := HomalgFunctor( Concatenation( "Composition of ",
+                                                 Name( left_functor ),
+                                                 " and ",
+                                                 Name( right_functor ) ),
+                                  AsHomalgCategory( Source( left_functor ) ),
+                                  AsHomalgCategory( Range( right_functor ) ) );
+    
+    AddObjectFunction( new_functor,
+      
+      obj -> ApplyFunctor( right_functor, ApplyFunctor( left_functor, obj ) )
+      
+    );
+    
+    AddMorphismFunction( new_functor,
+      
+      function( new_source, morphism, new_range )
+        
+        return ApplyFunctor( right_functor, ApplyFunctor( left_functor, morphism ) );
+        
+    end );
+    
+    return new_functor;
+    
+end );
+
+##
+AddIdentityMorphism( CATEGORIES_FOR_HOMALG_Cat,
+                     
+  function( category )
+    local new_functor;
+    
+    new_functor := HomalgFunctor( Concatenation( "Identity functor of ", Name( category ),
+                                                 category, category ) );
+    
+    AddObjectFunction( new_functor,
+                       
+                       IdFunc );
+    
+    AddMorphismFunction( new_functor,
+                         
+      arg -> arg[ 2 ] );
+    
+    return new_functor;
     
 end );
