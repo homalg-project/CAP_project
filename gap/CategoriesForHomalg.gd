@@ -315,6 +315,7 @@ DeclareAttribute( "KernelFunction",
 DeclareOperation( "AddKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+
 DeclareProperty( "CanComputeKernelLift",
                  IsHomalgCategory );
 
@@ -324,6 +325,17 @@ DeclareAttribute( "KernelLiftFunction",
 DeclareOperation( "AddKernelLift",
                   [ IsHomalgCategory, IsFunction ] );
 
+
+DeclareProperty( "CanComputeKernelLiftWithGivenKernel",
+                 IsHomalgCategory );
+
+DeclareAttribute( "KernelLiftWithGivenKernelFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddKernelLiftWithGivenKernel",
+                  [ IsHomalgCategory, IsFunction ] );
+
+
 DeclareProperty( "CanComputeKernelEmb",
                  IsHomalgCategory );
 
@@ -331,6 +343,16 @@ DeclareAttribute( "KernelEmbFunction",
                   IsHomalgCategory );
 
 DeclareOperation( "AddKernelEmb",
+                  [ IsHomalgCategory, IsFunction ] );
+
+
+DeclareProperty( "CanComputeKernelEmbWithGivenKernel",
+                 IsHomalgCategory );
+
+DeclareAttribute( "KernelEmbWithGivenKernelFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddKernelEmbWithGivenKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
 ####################################
@@ -348,6 +370,7 @@ DeclareAttribute( "CokernelFunction",
 DeclareOperation( "AddCokernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+
 DeclareProperty( "CanComputeCokernelColift",
                  IsHomalgCategory );
 
@@ -357,6 +380,17 @@ DeclareAttribute( "CokernelColiftFunction",
 DeclareOperation( "AddCokernelColift",
                   [ IsHomalgCategory, IsFunction ] );
 
+
+DeclareProperty( "CanComputeCokernelColiftWithGivenCokernel",
+                 IsHomalgCategory );
+
+DeclareAttribute( "CokernelColiftWithGivenCokernelFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+                  [ IsHomalgCategory, IsFunction ] );
+
+
 DeclareProperty( "CanComputeCokernelProj",
                  IsHomalgCategory );
 
@@ -364,6 +398,16 @@ DeclareAttribute( "CokernelProjFunction",
                   IsHomalgCategory );
 
 DeclareOperation( "AddCokernelProj",
+                  [ IsHomalgCategory, IsFunction ] );
+
+
+DeclareProperty( "CanComputeCokernelProjWithGivenCokernel",
+                 IsHomalgCategory );
+
+DeclareAttribute( "CokernelProjWithGivenCokernelFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddCokernelProjWithGivenCokernel",
                   [ IsHomalgCategory, IsFunction ] );
 
 ####################################
