@@ -166,21 +166,37 @@ DeclareOperation( "EpiAsCokernelColift",
 ###################################
 
 DeclareProperty( "CanComputeKernel",
-                 IsHomalgCategoryMorphism );
+                 IsHomalgCategoryCell );
 
-# DeclareOperation( "Kernel",
-#                   [ IsHomalgCategoryMorphism ] );
+DeclareAttribute( "KernelObject",
+                  IsHomalgCategoryMorphism );
+
 
 DeclareProperty( "CanComputeKernelEmb",
-                 IsHomalgCategoryMorphism );
+                 IsHomalgCategoryCell );
 
 DeclareAttribute( "KernelEmb",
                   IsHomalgCategoryMorphism );
 
+
+DeclareProperty( "CanComputeKernelEmbWithGivenKernel",
+                 IsHomalgCategoryCell );
+
+DeclareOperation( "KernelEmbWithGivenKernel",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+
 DeclareProperty( "CanComputeKernelLift",
-                 IsHomalgCategoryMorphism );
+                 IsHomalgCategoryCell );
 
 DeclareOperation( "KernelLift",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+
+DeclareProperty( "CanComputeKernelLiftWithGivenKernel",
+                 IsHomalgCategoryCell );
+
+DeclareOperation( "KernelLiftWithGivenKernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 ###################################
@@ -190,22 +206,38 @@ DeclareOperation( "KernelLift",
 ###################################
 
 DeclareProperty( "CanComputeCokernel",
-                 IsHomalgCategoryMorphism );
+                 IsHomalgCategoryCell );
 
 DeclareAttribute( "Cokernel",
                   IsHomalgCategoryMorphism );
 
+
 DeclareProperty( "CanComputeCokernelProj",
-                 IsHomalgCategoryMorphism );
+                 IsHomalgCategoryCell );
 
 DeclareAttribute( "CokernelProj",
                   IsHomalgCategoryMorphism );
 
+
+DeclareProperty( "CanComputeCokernelProjWithGivenCokernel",
+                 IsHomalgCategoryCell );
+
+DeclareOperation( "CokernelProjWithGivenCokernel",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+
 DeclareProperty( "CanComputeCokernelColift",
-                 IsHomalgCategoryMorphism );
+                 IsHomalgCategoryCell );
 
 DeclareOperation( "CokernelColift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+
+DeclareProperty( "CanComputeCokernelColiftWithGivenCokernel",
+                 IsHomalgCategoryCell );
+
+DeclareOperation( "CokernelColiftWithGivenCokernel",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
 ###################################
 ##

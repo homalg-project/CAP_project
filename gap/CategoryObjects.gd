@@ -46,24 +46,6 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT" );
 DeclareProperty( "CanComputeInverse",
                  IsHomalgCategoryObject );
 
-DeclareProperty( "CanComputeKernel",
-                 IsHomalgCategoryObject );
-
-DeclareProperty( "CanComputeKernelEmb",
-                 IsHomalgCategoryObject );
-
-DeclareProperty( "CanComputeKernelLift",
-                 IsHomalgCategoryObject );
-
-DeclareProperty( "CanComputeCokernel",
-                 IsHomalgCategoryObject );
-
-DeclareProperty( "CanComputeCokernelProj",
-                 IsHomalgCategoryObject );
-
-DeclareProperty( "CanComputeCokernelColift",
-                 IsHomalgCategoryObject );
-
 DeclareProperty( "CanComputePreCompose",
                  IsHomalgCategoryObject );
 

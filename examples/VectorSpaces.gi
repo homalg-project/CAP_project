@@ -181,6 +181,18 @@ AddEpiAsCokernelColift( vecspaces,
 end );
 
 ##
+AddKernel( vecspaces,
+
+  function( morphism )
+    local homalg_matrix;
+
+    homalg_matrix := morphism!.morphism;
+  
+    return QVectorSpace( NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+
+end );
+
+##
 AddKernelEmb( vecspaces,
 
   function( morphism )
@@ -192,6 +204,18 @@ AddKernelEmb( vecspaces,
     
     return VectorSpaceMorphism( kernel_obj, kernel_emb, Source( morphism ) );
     
+end );
+
+##
+AddKernelEmbWithGivenKernel( vecspaces,
+
+  function( morphism, kernel )
+    local kernel_emb;
+
+    kernel_emb := SyzygiesOfRows( morphism!.morphism );
+
+    return VectorSpaceMorphism( kernel, kernel_emb, Source( morphism ) );
+
 end );
 
 ##
@@ -284,17 +308,17 @@ tau := VectorSpaceMorphism( T, [ [ 1, 1 ], [ 1, 1 ] ], B );
 
 theta := VectorSpaceMorphism( A, [ [ 2, -2 ] ], T );
 
-KernelLift( tau, theta );
-
-# Inverse Test
-alpha := VectorSpaceMorphism( T, [ [ 1, 2 ], [ 3, 4 ] ], B );
-
-Inverse( alpha );
-
-#CokernelColift Test:
-tau2 := VectorSpaceMorphism( B, [ [ 1, 1 ], [ 1, 1 ] ], T );
-
-CokernelColift( theta, tau2 );
+# KernelLift( tau, theta );
+# 
+# # Inverse Test
+# alpha := VectorSpaceMorphism( T, [ [ 1, 2 ], [ 3, 4 ] ], B );
+# 
+# Inverse( alpha );
+# 
+# #CokernelColift Test:
+# tau2 := VectorSpaceMorphism( B, [ [ 1, 1 ], [ 1, 1 ] ], T );
+# 
+# CokernelColift( theta, tau2 );
 
 #######################################
 ##

@@ -59,10 +59,14 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
                                                            "CanComputeInverse",
                                                            "CanComputeKernel",
                                                            "CanComputeKernelEmb",
+                                                           "CanComputeKernelEmbWithGivenKernel",
                                                            "CanComputeKernelLift",
+                                                           "CanComputeKernelLiftWithGivenKernel",
                                                            "CanComputeCokernel",
                                                            "CanComputeCokernelProj",
+                                                           "CanComputeCokernelProjWithGivenCokernel",
                                                            "CanComputeCokernelColift",
+                                                           "CanComputeCokernelColiftWithGivenCokernel",
                                                            "CanComputePreCompose",
                                                            "CanComputePostCompose",
                                                            "CanComputeZeroObject",
@@ -169,7 +173,7 @@ InstallMethod( Inverse,
     
     return EpiAsCokernelColift( mor, identity_of_source );
       
-end );                        
+end );
 
 InstallTrueMethod( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
 
@@ -177,7 +181,7 @@ InstallTrueMethod( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoA
 InstallMethod( KernelLift,
                [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
                  IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
-                 -1,
+                 -9999,
                  
   function( mor, test_morphism )
     
@@ -188,14 +192,27 @@ end );
 InstallTrueMethod( CanComputeKernel, CanComputeKernelEmb );
 
 ##
-InstallMethod( Kernel,
+InstallMethod( KernelObject,
                [ IsHomalgCategoryMorphism and CanComputeKernelEmb ],
-               -1,
+               -9999,
                
   function( mor )
     
     return Source( KernelEmb( mor ) );
     
+end );
+
+InstallTrueMethod( CanComputeKernelEmb, CanComputeKernel and CanComputeKernelEmbWithGivenKernel );
+
+##
+InstallMethod( KernelEmb,
+               [ IsHomalgCategoryMorphism and CanComputeKernelEmb ],
+               -9999,
+
+  function( mor )
+
+    return KernelEmbWithGivenKernel( mor, KernelObject( mor ) );
+
 end );
 
 InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
