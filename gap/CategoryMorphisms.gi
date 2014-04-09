@@ -133,15 +133,15 @@ end );
 
 InstallTrueMethod( CanComputePostCompose, CanComputePreCompose );
 
-InstallMethod( PostCompose,
-               [ IsHomalgCategoryMorphism and CanComputePreCompose,
-                 IsHomalgCategoryMorphism and CanComputePreCompose ],
+InstallMethodWithCacheFromObject( PostCompose,
+                                  [ IsHomalgCategoryMorphism and CanComputePreCompose,
+                                  IsHomalgCategoryMorphism and CanComputePreCompose ],
                
   function( right_mor, left_mor )
     
     return PreCompose( left_mor, right_mor );
     
-end );
+end : ArgumentNumber := 1 );
 
 InstallTrueMethod( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
 
@@ -178,11 +178,11 @@ end );
 InstallTrueMethod( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
 
 ##
-InstallMethod( KernelLift,
-               [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
-                 IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
-                 -9999,
-                 
+InstallMethodWithCacheFromObject( KernelLift,
+                                  [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
+                                    IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
+                                    -9999,
+                                    
   function( mor, test_morphism )
     
     return MonoAsKernelLift( KernelEmb( mor ), test_morphism );
@@ -218,11 +218,11 @@ end );
 InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
 
 ##
-InstallMethod( CokernelColift,
-               [ IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
-                 IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift ],
-                 -1,
-                 
+InstallMethodWithCacheFromObject( CokernelColift,
+                                  [ IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
+                                    IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift ],
+                                  -1,
+                                  
   function( mor, test_morphism )
     
     return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );

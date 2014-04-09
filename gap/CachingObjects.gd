@@ -49,6 +49,9 @@ DeclareOperation( "CachingObject",
 DeclareOperation( "CachingObject",
                   [ IsObject, IsObject, IsInt ] );
 
+DeclareOperation( "CachingObject",
+                  [ IsObject, IsObject, IsInt, IsBool ] );
+
 DeclareOperation( "Add",
                   [ IsCachingObject, IsInt, IsObject ] );
 
@@ -66,4 +69,7 @@ DeclareOperation( "InstallHasAndSet",
 
 DeclareOperation( "InstallHasAndSet",
                   [ IsInt, IsString, IsList ] );
+
+DeclareOperation( "InstallHasAndSet",
+                  [ IsBool, IsString, IsList ] );
 

@@ -439,28 +439,36 @@ InstallGlobalFunction( InstallMethodWithCache,
         
         cache := CachingObject( crisp, arg_nr );
         
-    fi; 
+    fi;
     
     func := arg[ Length( arg ) ];
     
-    new_func := function( arg )
-      local value;
+    if cache <> false then
         
-        value := CacheValue( cache, arg );
-        
-        if value <> SuPeRfail then
+        new_func := function( arg )
+          local value;
+            
+            value := CacheValue( cache, arg );
+            
+            if value <> SuPeRfail then
+                
+                return value;
+                
+            fi;
+            
+            value := CallFuncList( func, arg );
+            
+            SetCacheValue( cache, arg, value );
             
             return value;
             
-        fi;
+        end;
         
-        value := CallFuncList( func, arg );
+    else
         
-        SetCacheValue( cache, arg, value );
+        new_func := func;
         
-        return value;
-        
-    end;
+    fi;
     
     arg[ Length( arg ) ] := new_func;
     
@@ -502,28 +510,36 @@ InstallGlobalFunction( InstallMethodWithCacheFromObject,
     
     install_name := NameFunction( arg[ 1 ] );
     
-    InstallHasAndSet( cache_object, install_name, filt_list );
-    
-    new_func := function( arg )
-      local value, cache;
+    if cache_object <> false then
         
-        cache := CachingObject( arg[ cache_object ], install_name, Length( arg ) );
-        
-        value := CacheValue( cache, arg );
-        
-        if value <> SuPeRfail then
+        new_func := function( arg )
+          local value, cache;
+            
+            cache := CachingObject( arg[ cache_object ], install_name, Length( arg ) );
+            
+            value := CacheValue( cache, arg );
+            
+            if value <> SuPeRfail then
+                
+                return value;
+                
+            fi;
+            
+            value := CallFuncList( func, arg );
+            
+            SetCacheValue( cache, arg, value );
             
             return value;
             
-        fi;
+        end;
         
-        value := CallFuncList( func, arg );
+    else
         
-        SetCacheValue( cache, arg, value );
+        new_func := func;
         
-        return value;
-        
-    end;
+    fi;
+    
+    InstallHasAndSet( cache_object, install_name, filt_list );
     
     arg[ Length( arg ) ] := new_func;
     
@@ -572,13 +588,15 @@ InstallMethod( InstallHasAndSet,
                         Concatenation( filter, [ IsObject ] ),
                         
       function( arg )
-        local cache_return;
+        local cache_return, cache_call;
         
-        cache_return := CacheValue( cache, arg );
+        cache_call := arg{[ 1 .. Length( arg ) - 1 ]};
+        
+        cache_return := CacheValue( cache, cache_call );
         
         if cache_return = SuPeRfail then
             
-            CallFuncList( SetCacheValue, Concatenation( [ cache ], arg ) );
+            CallFuncList( SetCacheValue, [ cache, cache_call, arg[ Length( arg ) ] ] );
             
         fi;
         
@@ -640,6 +658,47 @@ InstallMethod( InstallHasAndSet,
             CallFuncList( SetCacheValue, Concatenation( [ cache ], arg ) );
             
         fi;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( InstallHasAndSet,
+               [ IsBool, IsString, IsList ],
+               
+  function( cache, name, filter )
+    local has_name, set_name;
+    
+    has_name := Concatenation( "Has", name );
+    
+    set_name := Concatenation( "Set", name );
+    
+    if not IsBoundGlobal( has_name ) then
+        
+        DeclareOperation( has_name,
+                          filter );
+        
+    fi;
+    
+    if not IsBoundGlobal( set_name ) then
+        
+        DeclareOperation( set_name,
+                          filter );
+        
+    fi;
+    
+    InstallOtherMethod( ValueGlobal( has_name ),
+                        filter,
+                        
+      ReturnFalse );
+    
+    InstallOtherMethod( ValueGlobal( set_name ),
+                        Concatenation( filter, [ IsObject ] ),
+                        
+      function( arg )
+        
+        return;
         
     end );
     
