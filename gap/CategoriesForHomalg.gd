@@ -21,6 +21,8 @@ DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG" );
 
 DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_NAME_COUNTER" );
 
+DeclareGlobalFunction( "CATEGORIES_CACHE_GETTER" );
+
 DeclareGlobalFunction( "DECIDE_INSTALL_FUNCTION" );
 
 ###################################

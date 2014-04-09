@@ -35,6 +35,8 @@ DeclareSynonym( "InstallMethodWithWeakCache", InstallMethodWithCache );
 
 DeclareGlobalFunction( "InstallMethodWithCrispCache" );
 
+DeclareGlobalFunction( "InstallMethodWithCacheFromObject" );
+
 DeclareOperation( "CachingObject",
                   [ ] );
 
@@ -44,6 +46,9 @@ DeclareOperation( "CachingObject",
 DeclareOperation( "CachingObject",
                   [ IsObject, IsObject ] );
 
+DeclareOperation( "CachingObject",
+                  [ IsObject, IsObject, IsInt ] );
+
 DeclareOperation( "Add",
                   [ IsCachingObject, IsInt, IsObject ] );
 
@@ -51,13 +56,14 @@ DeclareOperation( "GetObject",
                   [ IsCachingObject, IsInt ] );
 
 DeclareOperation( "CacheValue",
-                  [ IsCachingObject, IsList ] );
-
-DeclareOperation( "CacheValue",
                   [ IsCachingObject, IsObject ] );
 
 DeclareOperation( "SetCacheValue",
-                  [ IsCachingObject, IsList, IsObject ] );
-
-DeclareOperation( "SetCacheValue",
                   [ IsCachingObject, IsObject, IsObject ] );
+
+DeclareOperation( "InstallHasAndSet",
+                  [ IsCachingObject, IsString, IsList ] );
+
+DeclareOperation( "InstallHasAndSet",
+                  [ IsInt, IsString, IsList ] );
+

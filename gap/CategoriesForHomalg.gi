@@ -842,6 +842,29 @@ InstallMethod( DeactivateCaching,
     
 end );
 
+##
+InstallMethod( CachingObject,
+               [ IsHomalgCategoryCell, IsString, IsInt ],
+               
+  function( cell, name, number )
+    local category, cache;
+    
+    category := HomalgCategory( cell );
+    
+    if IsBound( category!.caches.(name) ) then
+        
+        return category!.caches.(name);
+        
+    fi;
+    
+    cache := CachingObject( number );
+    
+    category!.caches.(name) := cache;
+    
+    return cache;
+    
+end );
+
 #######################################
 ##
 ## Constructors
