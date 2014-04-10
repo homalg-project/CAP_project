@@ -171,3 +171,27 @@ DeclareProperty( "CanComputeZeroMorphism",
 
 DeclareOperation( "ZeroMorphism",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+###################################
+##
+## Kernel
+##
+###################################
+
+DeclareProperty( "WasCreatedAsKernel",
+                 IsHomalgCategoryObject );
+
+DeclareAttribute( "KernelEmb",
+                  IsHomalgCategoryObject );
+
+###################################
+##
+## Cokernel
+##
+###################################
+
+DeclareProperty( "WasCreatedAsCokernel",
+                 IsHomalgCategoryObject );
+
+DeclareAttribute( "CokernelProj",
+                  IsHomalgCategoryObject );

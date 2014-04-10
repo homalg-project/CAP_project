@@ -148,7 +148,7 @@ InstallTrueMethod( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeI
 ##
 InstallMethod( Inverse,
                [ IsHomalgCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
-               -1,
+               -9999, #FIXME
                
   function( mor )
     local identity_of_range;
@@ -164,7 +164,7 @@ InstallTrueMethod( CanComputeInverse, CanComputeEpiAsCokernelColift and CanCompu
 ##
 InstallMethod( Inverse,
                [ IsHomalgCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
-               -1,
+               -9999, #FIXME
                
   function( mor )
     local identity_of_source;
@@ -181,7 +181,7 @@ InstallTrueMethod( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoA
 InstallMethodWithCacheFromObject( KernelLift,
                                   [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
                                     IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
-                                    -9999,
+                                    -9999, #FIXME
                                     
   function( mor, test_morphism )
     
@@ -194,7 +194,7 @@ InstallTrueMethod( CanComputeKernel, CanComputeKernelEmb );
 ##
 InstallMethod( KernelObject,
                [ IsHomalgCategoryMorphism and CanComputeKernelEmb ],
-               -9999,
+               -9999, #FIXME
                
   function( mor )
     
@@ -207,7 +207,7 @@ InstallTrueMethod( CanComputeKernelEmb, CanComputeKernel and CanComputeKernelEmb
 ##
 InstallMethod( KernelEmb,
                [ IsHomalgCategoryMorphism and CanComputeKernelEmb ],
-               -9999,
+               -9999, #FIXME
 
   function( mor )
 
@@ -221,7 +221,7 @@ InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernelProj and CanCompu
 InstallMethodWithCacheFromObject( CokernelColift,
                                   [ IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
                                     IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift ],
-                                  -1,
+                                  -9999, #FIXME
                                   
   function( mor, test_morphism )
     
@@ -234,7 +234,7 @@ InstallTrueMethod( CanComputeCokernel, CanComputeCokernelProj );
 ##
 InstallMethod( Cokernel,
                [ IsHomalgCategoryMorphism and CanComputeCokernelProj ],
-               -1,
+               -9999, #FIXME
                
   function( mor )
     
