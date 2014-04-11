@@ -219,6 +219,19 @@ AddKernelEmbWithGivenKernel( vecspaces,
 end );
 
 ##
+AddCokernel( vecspaces,
+
+  function( morphism )
+    local homalg_matrix;
+
+    homalg_matrix := morphism!.morphism;
+
+    return QVectorSpace( NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+
+end );
+
+
+##
 AddCokernelProj( vecspaces,
 
   function( morphism )
@@ -231,6 +244,31 @@ AddCokernelProj( vecspaces,
     return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
 
 end );
+
+##
+AddCokernelProjWithGivenCokernel( vecspaces,
+
+  function( morphism, cokernel )
+    local cokernel_proj;
+
+    cokernel_proj := SyzygiesOfRows( morphism!.morphism );
+
+    return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel );
+
+end );
+
+##
+AddDirectProduct( vecspaces,
+
+  function( a, b )
+    local dim;
+
+    dim := Dimension( a ) + Dimension( b );
+
+    return QVectorSpace( dim );
+
+end );
+
 
 # ##
 # AddDirectSum_OnObjects( vecspaces,

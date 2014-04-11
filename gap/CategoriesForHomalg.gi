@@ -537,7 +537,7 @@ InstallMethod( AddMonoAsKernelLift,
     
     SetCanComputeMonoAsKernelLift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddMonoAsKernelLift", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "MonoAsKernelLift", 2 );
     
     InstallMethodWithCache( MonoAsKernelLift,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -572,7 +572,7 @@ InstallMethod( AddEpiAsCokernelColift,
     
     SetCanComputeEpiAsCokernelColift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddEpiAsCokernelColift", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "EpiAsCokernelColift", 2 );
     
     InstallMethodWithCache( EpiAsCokernelColift,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -649,6 +649,8 @@ InstallMethod( AddKernel,
         
         Add( HomalgCategory( mor ), kernel );
         
+        SetWasCreatedAsKernel( kernel, true );
+        
         return kernel;
         
     end );
@@ -665,14 +667,14 @@ InstallMethod( AddKernelLift,
     
     SetCanComputeKernelLift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddKernelLift", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "KernelLift", 2 );
     
     InstallMethodWithCache( KernelLift,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                        
       function( mor, test_morphism )
-        local kernel_lift;
+        local kernel_lift, kernel;
         
         if HasKernelObject( mor ) then
         
@@ -683,8 +685,12 @@ InstallMethod( AddKernelLift,
         kernel_lift := func( mor, test_morphism );
         
         Add( HomalgCategory( mor ), kernel_lift );
+
+        kernel := Range( kernel_lift );
         
-        SetKernelObject( mor, Range( kernel_lift ) );
+        SetKernelObject( mor, kernel );
+        
+        SetWasCreatedAsKernel( kernel, true );
         
         return kernel_lift;
         
@@ -695,31 +701,31 @@ end );
 ##
 InstallMethod( AddKernelLiftWithGivenKernel,
                [ IsHomalgCategory, IsFunction ],
-
+               
   function( category, func )
-
+    
     SetKernelLiftWithGivenKernelFunction( category, func );
-
+    
     SetCanComputeKernelLiftWithGivenKernel( category, true );
-
-    DECIDE_INSTALL_FUNCTION( category, "AddKernelLiftWithGivenKernel", 3 );
-
+    
+    DECIDE_INSTALL_FUNCTION( category, "KernelLiftWithGivenKernel", 3 );
+    
     InstallMethodWithCache( KernelLiftWithGivenKernel,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                             IsHomalgCategoryMorphism and MorphismFilter( category ),
                             IsHomalgCategoryObject and ObjectFilter( category ) ],
-
+                            
       function( mor, test_morphism, kernel )
         local kernel_lift;
-
+        
         kernel_lift := func( mor, test_morphism, kernel );
-
+        
         Add( HomalgCategory( mor ), kernel_lift );
-
+        
         return kernel_lift;
-
+        
     end );
-
+    
 end );
 
 ##
@@ -736,7 +742,7 @@ InstallMethod( AddKernelEmb,
                    [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                    
       function( mor )
-        local kernel_emb;
+        local kernel_emb, kernel;
         
         if HasKernelObject( mor ) then
           
@@ -750,7 +756,13 @@ InstallMethod( AddKernelEmb,
         
         SetIsMonomorphism( kernel_emb, true );
         
-        SetKernelObject( mor, Source( kernel_emb ) );
+        kernel := Source( kernel_emb );
+        
+        SetKernelObject( mor, kernel );
+        
+        SetWasCreatedAsKernel( kernel, true );
+        
+        SetKernelEmb( kernel, kernel_emb );
         
         return kernel_emb;
         
@@ -768,7 +780,7 @@ InstallMethod( AddKernelEmbWithGivenKernel,
     
     SetCanComputeKernelEmbWithGivenKernel( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddKernelEmbWithGivenKernel", 3 );
+    DECIDE_INSTALL_FUNCTION( category, "KernelEmbWithGivenKernel", 2 );
     
     InstallMethodWithCache( KernelEmbWithGivenKernel,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -782,6 +794,8 @@ InstallMethod( AddKernelEmbWithGivenKernel,
         Add( HomalgCategory( mor ), kernel_emb );
         
         SetIsMonomorphism( kernel_emb, true );
+        
+        SetKernelEmb( kernel, kernel_emb );
         
         return kernel_emb;
         
@@ -815,6 +829,8 @@ InstallMethod( AddCokernel,
         
         Add( HomalgCategory( mor ), cokernel );
         
+        SetWasCreatedAsCokernel( cokernel, true );
+        
         return cokernel;
         
     end );
@@ -831,14 +847,14 @@ InstallMethod( AddCokernelColift,
     
     SetCanComputeCokernelColift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddCokernelColift", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "CokernelColift", 2 );
     
     InstallMethodWithCache( CokernelColift,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                        
       function( mor, test_morphism )
-        local cokernel_colift;
+        local cokernel_colift, cokernel;
         
         if HasCokernel( mor ) then
           
@@ -850,6 +866,10 @@ InstallMethod( AddCokernelColift,
         
         Add( HomalgCategory( mor ), cokernel_colift );
         
+        cokernel := Source( cokernel_colift );
+        
+        SetWasCreatedAsCokernel( cokernel );
+        
         return cokernel_colift;
         
     end );
@@ -859,31 +879,31 @@ end );
 ##
 InstallMethod( AddCokernelColiftWithGivenCokernel,
                [ IsHomalgCategory, IsFunction ],
-
+               
   function( category, func )
     
     SetCokernelColiftWithGivenCokernelFunction( category, func );
-
+    
     SetCanComputeCokernelColiftWithGivenCokernel( category, true );
-
-    DECIDE_INSTALL_FUNCTION( category, "AddCokernelColiftWithGivenCokernel", 3 );
-
+    
+    DECIDE_INSTALL_FUNCTION( category, "CokernelColiftWithGivenCokernel", 3 );
+    
     InstallMethodWithCache( CokernelColiftWithGivenCokernel,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                             IsHomalgCategoryMorphism and MorphismFilter( category ),
                             IsHomalgCategoryObject and ObjectFilter( category ) ],
-
+                            
       function( mor, test_morphism, cokernel )
         local cokernel_colift;
-
+        
         cokernel_colift := func( mor, test_morphism, cokernel );
-
+        
         Add( HomalgCategory( mor ), cokernel_colift );
-
+        
         return cokernel_colift;
-
+        
     end );
-
+    
 end );
 
 ##
@@ -900,7 +920,7 @@ InstallMethod( AddCokernelProj,
                    [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                    
       function( mor )
-        local cokernel_proj;
+        local cokernel_proj, cokernel;
         
         if HasCokernel( mor ) then
           
@@ -913,8 +933,12 @@ InstallMethod( AddCokernelProj,
         Add( HomalgCategory( mor ), cokernel_proj );
         
         SetIsEpimorphism( cokernel_proj, true );
+
+        cokernel := Range( cokernel_proj );
         
-        SetCokernel( mor, Range( cokernel_proj ) );
+        SetCokernel( mor, cokernel );
+
+        SetCokernelProj( cokernel, cokernel_proj );
         
         return cokernel_proj;
         
@@ -925,31 +949,116 @@ end );
 ##
 InstallMethod( AddCokernelProjWithGivenCokernel,
                [ IsHomalgCategory, IsFunction ],
-
+               
   function( category, func )
-
+    
     SetCokernelProjWithGivenCokernelFunction( category, func );
-
+    
     SetCanComputeCokernelProjWithGivenCokernel( category, true );
-
-    DECIDE_INSTALL_FUNCTION( category, "AddCokernelProjWithGivenCokernel", 3 );
-
+    
+    DECIDE_INSTALL_FUNCTION( category, "CokernelProjWithGivenCokernel", 2 );
+    
     InstallMethodWithCache( CokernelProjWithGivenCokernel,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                             IsHomalgCategoryObject and ObjectFilter( category ) ],
-
+                            
       function( mor, cokernel )
         local cokernel_proj;
-
+        
         cokernel_proj := func( mor, cokernel );
-
+        
         Add( HomalgCategory( mor ), cokernel_proj );
-
+        
         SetIsEpimorphism( cokernel_proj, true );
 
+        SetCokernelProj( cokernel, cokernel_proj );
+        
         return cokernel_proj;
+        
+    end );
+    
+end );
 
-    end : Cache := CachingObject( category, "CokernelProjWithGivenCokernel", 2 ) );
+####################################
+##
+## Direct Product
+##
+####################################
+
+##
+InstallMethod( AddDirectProduct,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetDirectProductFunction( category, func );
+    
+    SetCanComputeDirectProduct( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "DirectProduct", 2 );
+    
+    InstallMethodWithCache( DirectProductObject,
+                            [ IsHomalgCategoryObject and ObjectFilter( category ),
+                              IsHomalgCategoryObject and ObjectFilter( category ) ],
+      
+      function( object_A, object_B )
+        local direct_product;
+
+        direct_product := func( object_A, object_B );
+
+        Add( HomalgCategory( object_A ), direct_product );
+
+        SetWasCreatedAsDirectProduct( direct_product, true );
+
+        return direct_product;
+
+    end );
+
+end );
+
+##
+InstallMethod( AddProjectionInFirstFactorOfDirectProduct,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+
+    SetProjectionInFirstFactorOfDirectProductFunction( category, func );
+
+    SetCanComputeProjectionInFirstFactorOfDirectProduct( category, true );
+
+    InstallMethod( ProjectionInFirstFactor, ## this name is also used for direct sum
+                   [ IsHomalgCategoryObject and ObjectFilter( category ),
+                     IsHomalgCategoryObject and ObjectFilter( category ) ],
+
+      function( object_A, object_B )
+        local projection_in_first_factor, direct_product;
+
+        if HasDirectProductObject( object_A, object_B ) then
+
+          return ProjectionInFirstFactorWithGivenDirectProduct( object_A, DirectProduct( object_A, object_B ) );
+
+        fi;
+
+        projection_in_first_factor := func( object_A, object_B );
+
+        Add( HomalgCategory( object_A ), projection_in_first_factor );
+
+        ## FIXME: it suffices that the category knows that it has a zero object
+        if CanComputeZeroObject( category ) then
+
+          SetIsSplitEpimorphism( projection_in_first_factor, true );
+
+        fi;
+
+        direct_product := Source( projection_in_first_factor );
+
+        SetDirectProductObject( object_A, object_B, direct_product );
+
+        SetProjectionInFirstFactor( direct_product, projection_in_first_factor );
+
+        return projection_in_first_factor;
+
+    end );
 
 end );
 
