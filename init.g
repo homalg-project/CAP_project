@@ -1,5 +1,7 @@
 ReadPackage( "CategoriesForHomalg", "gap/CachingObjects.gd");
 
+ReadPackage( "CategoriesForHomalg", "gap/CachingObjects.gi");
+
 ReadPackage( "CategoriesForHomalg", "gap/CategoriesForHomalg.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/CategoryObjects.gd");
