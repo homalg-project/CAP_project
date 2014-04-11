@@ -308,6 +308,7 @@ DeclareOperation( "AddInverse",
 ##
 ####################################
 
+## Generation of the universal object
 DeclareProperty( "CanComputeKernel",
                  IsHomalgCategory );
 
@@ -317,27 +318,7 @@ DeclareAttribute( "KernelFunction",
 DeclareOperation( "AddKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
-
-DeclareProperty( "CanComputeKernelLift",
-                 IsHomalgCategory );
-
-DeclareAttribute( "KernelLiftFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddKernelLift",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareProperty( "CanComputeKernelLiftWithGivenKernel",
-                 IsHomalgCategory );
-
-DeclareAttribute( "KernelLiftWithGivenKernelFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddKernelLiftWithGivenKernel",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
+## Generation of source/ sink diagram
 DeclareProperty( "CanComputeKernelEmb",
                  IsHomalgCategory );
 
@@ -357,12 +338,33 @@ DeclareAttribute( "KernelEmbWithGivenKernelFunction",
 DeclareOperation( "AddKernelEmbWithGivenKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+## Generation of the morphism given by the universal property
+DeclareProperty( "CanComputeKernelLift",
+                 IsHomalgCategory );
+
+DeclareAttribute( "KernelLiftFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddKernelLift",
+                  [ IsHomalgCategory, IsFunction ] );
+
+
+DeclareProperty( "CanComputeKernelLiftWithGivenKernel",
+                 IsHomalgCategory );
+
+DeclareAttribute( "KernelLiftWithGivenKernelFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddKernelLiftWithGivenKernel",
+                  [ IsHomalgCategory, IsFunction ] );
+
 ####################################
 ##
 ## Cokernel
 ##
 ####################################
 
+## Generation of the universal object
 DeclareProperty( "CanComputeCokernel",
                  IsHomalgCategory );
 
@@ -372,7 +374,27 @@ DeclareAttribute( "CokernelFunction",
 DeclareOperation( "AddCokernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+## Generation of source/ sink diagram
+DeclareProperty( "CanComputeCokernelProj",
+                 IsHomalgCategory );
 
+DeclareAttribute( "CokernelProjFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddCokernelProj",
+                  [ IsHomalgCategory, IsFunction ] );
+
+
+DeclareProperty( "CanComputeCokernelProjWithGivenCokernel",
+                 IsHomalgCategory );
+
+DeclareAttribute( "CokernelProjWithGivenCokernelFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddCokernelProjWithGivenCokernel",
+                  [ IsHomalgCategory, IsFunction ] );
+
+## Generation of the morphism given by the universal property
 DeclareProperty( "CanComputeCokernelColift",
                  IsHomalgCategory );
 
@@ -392,24 +414,80 @@ DeclareAttribute( "CokernelColiftWithGivenCokernelFunction",
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+####################################
+##
+## Direct Product
+##
+####################################
 
-DeclareProperty( "CanComputeCokernelProj",
+## Generation of the universal object
+DeclareProperty( "CanComputeDirectProduct",
                  IsHomalgCategory );
 
-DeclareAttribute( "CokernelProjFunction",
+DeclareAttribute( "DirectProductFunction",
                   IsHomalgCategory );
 
-DeclareOperation( "AddCokernelProj",
+DeclareOperation( "AddDirectProduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+## Generation of source/ sink diagram
+DeclareProperty( "CanComputeProjectionInFirstFactorOfDirectProduct",
+                 IsHomalgCategory );
+
+DeclareAttribute( "ProjectionInFirstFactorOfDirectProductFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddProjectionInFirstFactorOfDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 
-DeclareProperty( "CanComputeCokernelProjWithGivenCokernel",
+DeclareProperty( "CanComputeProjectionInSecondFactorOfDirectProduct",
                  IsHomalgCategory );
 
-DeclareAttribute( "CokernelProjWithGivenCokernelFunction",
+DeclareAttribute( "ProjectionInSecondFactorOfDirectProductFunction",
                   IsHomalgCategory );
 
-DeclareOperation( "AddCokernelProjWithGivenCokernel",
+DeclareOperation( "AddProjectionInSecondFactorOfDirectProduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+
+DeclareProperty( "CanComputeProjectionInFirstFactorWithGivenDirectProduct",
+                 IsHomalgCategory );
+
+DeclareAttribute( "ProjectionInFirstFactorWithGivenDirectProductFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddProjectionInFirstFactorWithGivenDirectProduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+
+DeclareProperty( "CanComputeProjectionInSecondFactorWithGivenDirectProduct",
+                 IsHomalgCategory );
+
+DeclareAttribute( "ProjectionInSecondFactorWithGivenDirectProductFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddProjectionInSecondFactorWithGivenDirectProduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+## Generation of the morphism given by the universal property
+DeclareProperty( "CanComputeUniversalMorphismIntoDirectProduct",
+                 IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismIntoDirectProductFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+
+DeclareProperty( "CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct",
+                 IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismIntoDirectProductWithGivenDirectProductFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 ####################################

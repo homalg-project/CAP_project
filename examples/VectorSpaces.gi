@@ -257,6 +257,19 @@ AddCokernelProjWithGivenCokernel( vecspaces,
 
 end );
 
+##
+AddDirectProduct( vecspaces,
+
+  function( a, b )
+    local dim;
+
+    dim := Dimension( a ) + Dimension( b );
+
+    return QVectorSpace( dim );
+
+end );
+
+
 # ##
 # AddDirectSum_OnObjects( vecspaces,
 #                         

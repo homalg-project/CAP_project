@@ -519,7 +519,7 @@ InstallMethod( AddMonoAsKernelLift,
     
     SetCanComputeMonoAsKernelLift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddMonoAsKernelLift", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "MonoAsKernelLift", 2 );
     
     InstallMethodWithCache( MonoAsKernelLift,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -554,7 +554,7 @@ InstallMethod( AddEpiAsCokernelColift,
     
     SetCanComputeEpiAsCokernelColift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddEpiAsCokernelColift", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "EpiAsCokernelColift", 2 );
     
     InstallMethodWithCache( EpiAsCokernelColift,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -649,7 +649,7 @@ InstallMethod( AddKernelLift,
     
     SetCanComputeKernelLift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddKernelLift", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "KernelLift", 2 );
     
     InstallMethodWithCache( KernelLift,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -690,7 +690,7 @@ InstallMethod( AddKernelLiftWithGivenKernel,
     
     SetCanComputeKernelLiftWithGivenKernel( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddKernelLiftWithGivenKernel", 3 );
+    DECIDE_INSTALL_FUNCTION( category, "KernelLiftWithGivenKernel", 3 );
     
     InstallMethodWithCache( KernelLiftWithGivenKernel,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -762,7 +762,7 @@ InstallMethod( AddKernelEmbWithGivenKernel,
     
     SetCanComputeKernelEmbWithGivenKernel( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddKernelEmbWithGivenKernel", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "KernelEmbWithGivenKernel", 2 );
     
     InstallMethodWithCache( KernelEmbWithGivenKernel,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -829,7 +829,7 @@ InstallMethod( AddCokernelColift,
     
     SetCanComputeCokernelColift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddCokernelColift", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "CokernelColift", 2 );
     
     InstallMethodWithCache( CokernelColift,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -868,7 +868,7 @@ InstallMethod( AddCokernelColiftWithGivenCokernel,
     
     SetCanComputeCokernelColiftWithGivenCokernel( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddCokernelColiftWithGivenCokernel", 3 );
+    DECIDE_INSTALL_FUNCTION( category, "CokernelColiftWithGivenCokernel", 3 );
     
     InstallMethodWithCache( CokernelColiftWithGivenCokernel,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -938,7 +938,7 @@ InstallMethod( AddCokernelProjWithGivenCokernel,
     
     SetCanComputeCokernelProjWithGivenCokernel( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AddCokernelProjWithGivenCokernel", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "CokernelProjWithGivenCokernel", 2 );
     
     InstallMethodWithCache( CokernelProjWithGivenCokernel,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -957,8 +957,91 @@ InstallMethod( AddCokernelProjWithGivenCokernel,
         
         return cokernel_proj;
         
-    end : Cache := CachingObject( category, "CokernelProjWithGivenCokernel", 2 ) );
+    end );
     
+end );
+
+####################################
+##
+## Direct Product
+##
+####################################
+
+##
+InstallMethod( AddDirectProduct,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetDirectProductFunction( category, func );
+    
+    SetCanComputeDirectProduct( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "DirectProduct", 2 );
+    
+    InstallMethodWithCache( DirectProductObject,
+                            [ IsHomalgCategoryObject and ObjectFilter( category ),
+                              IsHomalgCategoryObject and ObjectFilter( category ) ],
+      
+      function( object_A, object_B )
+        local direct_product;
+
+        direct_product := func( object_A, object_B );
+
+        Add( HomalgCategory( object_A ), direct_product );
+
+        SetWasCreatedAsDirectProduct( direct_product, true );
+
+        return direct_product;
+
+    end );
+
+end );
+
+##
+InstallMethod( AddProjectionInFirstFactorOfDirectProduct,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+
+    SetProjectionInFirstFactorOfDirectProductFunction( category, func );
+
+    SetCanComputeProjectionInFirstFactorOfDirectProduct( category, true );
+
+    InstallMethod( ProjectionInFirstFactor, ## this name is also used for direct sum
+                   [ IsHomalgCategoryObject and ObjectFilter( category ),
+                     IsHomalgCategoryObject and ObjectFilter( category ) ],
+
+      function( object_A, object_B )
+        local projection_in_first_factor, direct_product;
+
+        if HasDirectProductObject( object_A, object_B ) then
+
+          return ProjectionInFirstFactorWithGivenDirectProduct( object_A, DirectProduct( object_A, object_B ) );
+
+        fi;
+
+        projection_in_first_factor := func( object_A, object_B );
+
+        Add( HomalgCategory( object_A ), projection_in_first_factor );
+
+        ## FIXME: it suffices that the category knows that it has a zero object
+        if CanComputeZeroObject( category ) then
+
+          SetIsSplitEpimorphism( projection_in_first_factor, true );
+
+        fi;
+
+        direct_product := Source( projection_in_first_factor );
+
+        SetDirectProductObject( object_A, object_B, direct_product );
+
+        SetProjectionInFirstFactor( direct_product, projection_in_first_factor );
+
+        return projection_in_first_factor;
+
+    end );
+
 end );
 
 #######################################

@@ -100,17 +100,17 @@ DeclareAttribute( "FirstSummand",
 DeclareAttribute( "SecondSummand",
                   IsHomalgCategoryObject );
 
-DeclareProperty( "CanComputeProjectionInFirstFactor",
-                 IsHomalgCategoryObject );
-
-DeclareAttribute( "ProjectionInFirstFactor",
-                  IsHomalgCategoryObject );
-
-DeclareProperty( "CanComputeProjectionInSecondFactor",
-                 IsHomalgCategoryObject );
-
-DeclareAttribute( "ProjectionInSecondFactor",
-                  IsHomalgCategoryObject );
+# DeclareProperty( "CanComputeProjectionInFirstFactor",
+#                  IsHomalgCategoryObject );
+# 
+# DeclareAttribute( "ProjectionInFirstFactor",
+#                   IsHomalgCategoryObject );
+# 
+# DeclareProperty( "CanComputeProjectionInSecondFactor",
+#                  IsHomalgCategoryObject );
+# 
+# DeclareAttribute( "ProjectionInSecondFactor",
+#                   IsHomalgCategoryObject );
 
 DeclareProperty( "CanComputeInjectionFromFirstSummand",
                  IsHomalgCategoryObject );
@@ -195,3 +195,35 @@ DeclareProperty( "WasCreatedAsCokernel",
 
 DeclareAttribute( "CokernelProj",
                   IsHomalgCategoryObject );
+
+###################################
+##
+## Direct Product
+##
+###################################
+
+DeclareOperation( "DirectProductObject",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+DeclareOperation( "ProjectionInFirstFactor",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+DeclareOperation( "ProjectionInSecondFactor",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+DeclareOperation( "ProjectionInFirstFactorWithGivenDirectProduct",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+DeclareOperation( "ProjectionInSecondFactorWithGivenDirectProduct",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+DeclareProperty( "WasCreatedAsDirectProduct",
+                 IsHomalgCategoryObject );
+
+DeclareAttribute( "ProjectionInFirstFactor",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "ProjectionInSecondFactor",
+                  IsHomalgCategoryObject );
+
+
