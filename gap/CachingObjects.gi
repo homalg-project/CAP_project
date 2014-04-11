@@ -562,8 +562,22 @@ InstallMethod( InstallHasAndSet,
     
     set_name := Concatenation( "Set", name );
     
-    InstallMethod( ValueGlobal( has_name ),
-                   filter,
+    if not IsBoundGlobal( has_name ) then
+        
+        DeclareOperation( has_name,
+                          filter );
+        
+    fi;
+    
+    if not IsBoundGlobal( set_name ) then
+        
+        DeclareOperation( set_name,
+                          filter );
+        
+    fi;
+    
+    InstallOtherMethod( ValueGlobal( has_name ),
+                        filter,
                         
       function( arg )
         local cache_return;
@@ -574,8 +588,8 @@ InstallMethod( InstallHasAndSet,
         
     end );
     
-    InstallMethod( ValueGlobal( set_name ),
-                   Concatenation( filter, [ IsObject ] ),
+    InstallOtherMethod( ValueGlobal( set_name ),
+                        Concatenation( filter, [ IsObject ] ),
                         
       function( arg )
         local cache_return, cache_call;
@@ -605,8 +619,22 @@ InstallMethod( InstallHasAndSet,
     
     set_name := Concatenation( "Set", name );
     
-    InstallMethod( ValueGlobal( has_name ),
-                   filter,
+    if not IsBoundGlobal( has_name ) then
+        
+        DeclareOperation( has_name,
+                          filter );
+        
+    fi;
+    
+    if not IsBoundGlobal( set_name ) then
+        
+        DeclareOperation( set_name,
+                          filter );
+        
+    fi;
+    
+    InstallOtherMethod( ValueGlobal( has_name ),
+                        filter,
                         
       function( arg )
         local cache, cache_return;
@@ -619,8 +647,8 @@ InstallMethod( InstallHasAndSet,
         
     end );
     
-    InstallMethod( ValueGlobal( set_name ),
-                   Concatenation( filter, [ IsObject ] ),
+    InstallOtherMethod( ValueGlobal( set_name ),
+                        Concatenation( filter, [ IsObject ] ),
                         
       function( arg )
         local cache, cache_return;
@@ -650,12 +678,26 @@ InstallMethod( InstallHasAndSet,
     
     set_name := Concatenation( "Set", name );
     
-    InstallMethod( ValueGlobal( has_name ),
+    if not IsBoundGlobal( has_name ) then
+        
+        DeclareOperation( has_name,
+                          filter );
+        
+    fi;
+    
+    if not IsBoundGlobal( set_name ) then
+        
+        DeclareOperation( set_name,
+                          filter );
+        
+    fi;
+    
+    InstallOtherMethod( ValueGlobal( has_name ),
                         filter,
                         
       ReturnFalse );
     
-    InstallMethod( ValueGlobal( set_name ),
+    InstallOtherMethod( ValueGlobal( set_name ),
                         Concatenation( filter, [ IsObject ] ),
                         
       function( arg )
@@ -663,22 +705,5 @@ InstallMethod( InstallHasAndSet,
         return;
         
     end );
-    
-end );
-
-##
-InstallMethod( DeclareOperationWithCache,
-               [ IsString, IsList ],
-               
-  function( name, filter )
-    local has_name, set_name;
-    
-    DeclareOperation( name, filter );
-    
-    DeclareOperation( has_name, filter );
-    
-    Add( filter, IsObject );
-    
-    DeclareOperation( set_name, filter );
     
 end );

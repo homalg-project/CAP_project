@@ -73,6 +73,3 @@ DeclareOperation( "InstallHasAndSet",
 DeclareOperation( "InstallHasAndSet",
                   [ IsBool, IsString, IsList ] );
 
-DeclareOperation( "DeclareOperationWithCache",
-                  [ IsString, IsList ] );
-
