@@ -202,8 +202,8 @@ DeclareAttribute( "CokernelProj",
 ##
 ###################################
 
-DeclareOperation( "DirectProductObject",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+DeclareOperationWithCache( "DirectProductObject",
+                           [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
 DeclareOperation( "ProjectionInFirstFactor",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );

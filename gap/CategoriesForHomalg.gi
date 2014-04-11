@@ -34,9 +34,9 @@ InstallGlobalFunction( DECIDE_INSTALL_FUNCTION,
   function( category, method, number_parameters )
     local caching_info, cache;
     
-    if IsBound( category!.cache.( method ) ) then
+    if IsBound( category!.caches.( method ) ) then
         
-        PushOptions( Cache := category!.cache.( method ) );
+        PushOptions( rec( Cache := category!.caches.( method ) ) );
         
         return;
         
