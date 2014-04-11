@@ -269,6 +269,55 @@ AddDirectProduct( vecspaces,
 
 end );
 
+##
+AddProjectionInFirstFactorOfDirectProduct( vecspaces,
+
+  function( a, b )
+    local direct_product, projection_in_first_factor;
+    
+    direct_product := QVectorSpace( Dimension( a ) + Dimension( b ) );
+
+    projection_in_first_factor := UnionOfRows( HomalgIdentityMatrix( Dimension( a ), VECTORSPACES_FIELD ),
+                                               HomalgZeroMatrix( Dimension( b ), Dimension( a ), VECTORSPACES_FIELD ) );
+    
+    return VectorSpaceMorphism( direct_product, projection_in_first_factor, a );
+
+end );
+
+##
+AddProjectionInFirstFactorWithGivenDirectProduct( vecspaces,
+
+  function( a, direct_product )
+    local projection_in_first_factor;
+
+    projection_in_first_factor := UnionOfRows( HomalgIdentityMatrix( Dimension( a ), VECTORSPACES_FIELD ),
+                                               HomalgZeroMatrix( Dimension( direct_product ) - Dimension( a ), Dimension( a ), VECTORSPACES_FIELD ) );
+
+
+    return VectorSpaceMorphism( direct_product, projection_in_first_factor, a );
+
+end );
+
+##
+AddUniversalMorphismIntoDirectProduct( vecspaces,
+
+  function( mor_to_A, mor_to_B )
+    local direct_product;
+
+    direct_product := QVectorSpace( Dimension( Range( mor_to_A ) ) + Dimension( Range( mor_to_B ) ) );
+  
+    return VectorSpaceMorphism( Source( mor_to_A ), UnionOfColumns( mor_to_A!.morphism, mor_to_B!.morphism ), direct_product );
+
+end );
+
+##
+AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( vecspaces,
+
+  function( mor_to_A, mor_to_B, direct_product )
+
+    return VectorSpaceMorphism( Source( mor_to_A ), UnionOfColumns( mor_to_A!.morphism, mor_to_B!.morphism ), direct_product );
+
+end );
 
 # ##
 # AddDirectSum_OnObjects( vecspaces,
@@ -357,6 +406,12 @@ theta := VectorSpaceMorphism( A, [ [ 2, -2 ] ], T );
 # tau2 := VectorSpaceMorphism( B, [ [ 1, 1 ], [ 1, 1 ] ], T );
 # 
 # CokernelColift( theta, tau2 );
+
+# Universal morphism of direct product
+
+alpha := VectorSpaceMorphism( T, [ [ 3 ], [ 4 ] ], A );
+
+beta := VectorSpaceMorphism( T, [ [ 1, 1 ], [ 1, 1 ] ], B );
 
 #######################################
 ##
