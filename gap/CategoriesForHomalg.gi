@@ -429,8 +429,6 @@ InstallMethod( AddInjectionFromFirstSummand,
         
         Add( HomalgCategory( sum_obj ), injection1 );
         
-        ## TODO: This morphism is mono
-        
         return injection1;
         
     end );
@@ -456,8 +454,6 @@ InstallMethod( AddInjectionFromSecondSummand,
         injection1 := func( sum_obj );
         
         Add( HomalgCategory( sum_obj ), injection1 );
-        
-        ## TODO: This morphism is mono
         
         return injection1;
         
