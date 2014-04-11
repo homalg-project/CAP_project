@@ -32,7 +32,15 @@ end );
 InstallGlobalFunction( DECIDE_INSTALL_FUNCTION,
                        
   function( category, method, number_parameters )
-    local caching_info;
+    local caching_info, cache;
+    
+    if IsBound( category!.cache.( method ) ) then
+        
+        PushOptions( Cache := category!.cache.( method ) );
+        
+        return;
+        
+    fi;
     
     if not IsBound( category!.caching_info.( method ) ) then
         
@@ -44,19 +52,29 @@ InstallGlobalFunction( DECIDE_INSTALL_FUNCTION,
     
     if caching_info = "weak" then
         
-        PushOptions( rec( Cache := CachingObject( category, method, number_parameters ) ) );
+        cache := CachingObject( category, method, number_parameters );
+        
+        category!.caches.( method ) := cache;
+        
+        PushOptions( rec( Cache := cache ) );
         
         return;
         
     elif caching_info = "crisp" then
         
-        PushOptions( rec( Cache := CachingObject( category, method, number_parameters, true ) ) );
+        cache := CachingObject( category, method, number_parameters, true );
+        
+        category!.caches.( method ) := cache;
+        
+        PushOptions( rec( Cache := cache ) );
         
         return;
         
     elif caching_info = "none" then
         
         PushOptions( rec( Cache := false ) );
+        
+        return;
         
     else
         

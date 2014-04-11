@@ -476,6 +476,8 @@ InstallGlobalFunction( InstallMethodWithCache,
     
     InstallHasAndSet( cache, NameFunction( arg[ 1 ] ), filt_list );
     
+    PopOptions( );
+    
 end );
 
 ##
@@ -544,6 +546,8 @@ InstallGlobalFunction( InstallMethodWithCacheFromObject,
     arg[ Length( arg ) ] := new_func;
     
     CallFuncList( InstallMethod, arg );
+    
+    PopOptions( );
     
 end );
 
