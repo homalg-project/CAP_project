@@ -10,6 +10,9 @@
 ##
 #############################################################################
 
+DeclareAttribute( "DirectProductFunctor",
+                  IsHomalgCategory );
+
 DeclareAttribute( "Components",
                   IsHomalgCategory );
 
