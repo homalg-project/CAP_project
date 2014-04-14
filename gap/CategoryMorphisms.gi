@@ -290,6 +290,34 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT,
                                              PrintString := "split epi",
                                              Adjective := true ) ] ) );
     
+    AddRelationToGraph( print_graph,
+                        rec( Source := [ rec( Conditions := "IsOne",
+                                              PrintString := "identity",
+                                              Adjective := true ) ],
+                             Range := [ rec( Conditions := "IsAutomorphism",
+                                             PrintString := "auto",
+                                             Adjective := true ),
+                                        "IsIsomorphism" ] ) );
+    
+    AddRelationToGraph( print_graph,
+                        rec( Source := [ "IsAutomorphism" ],
+                             Range := [ "IsIsomorphism",
+                                        rec( Conditions := "IsEndomorphism",
+                                             PrintString := "endo",
+                                             Adjective := true ) ] ) );
+    
+    AddRelationToGraph( print_graph,
+                        rec( Source := [ "IsSplitMonomorphism" ],
+                             Range := [ rec( Conditions := "IsMonomorphism",
+                                             PrintString := "mono",
+                                             Adjective := true ) ] ) );
+    
+    AddRelationToGraph( print_graph,
+                        rec( Source := [ "IsSplitEpimorphism" ],
+                             Range := [ rec( Conditions := "IsEpimorphism",
+                                             PrintString := "epi",
+                                             Adjective := true ) ] ) );
+    
     InstallPrintFunctionsOutOfPrintingGraph( print_graph );
     
 end );
