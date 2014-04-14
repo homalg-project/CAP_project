@@ -241,3 +241,35 @@ InstallMethod( Cokernel,
     return Range( CokernelProj( mor ) );
     
 end );
+
+###########################
+##
+## Print
+##
+###########################
+
+InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT,
+                       
+  function( )
+    local print_graph;
+    
+    print_graph := CreatePrintingGraph( IsHomalgCategoryMorphism, "homalg category morphism" );
+    
+    AddRelationToGraph( print_graph,
+                        rec( Source := [ rec( Conditions := "IsIsomorphism",
+                                              PrintString := "iso",
+                                              Adjective := true ) ],
+                             Range := [ rec( Conditions := "IsSplitMonomorphism",
+                                             PrintString := "split mono",
+                                             TypeOfView := "ViewObj",
+                                             ComputeLevel := "AllWithCompute",
+                                             Adjective := true ),
+                                        rec( Conditions := "IsSplitEpimorphism",
+                                             PrintString := "split epi",
+                                             Adjective := true ) ] ) );
+    
+    InstallPrintFunctionsOutOfPrintingGraph( print_graph );
+    
+end );
+
+CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT( );

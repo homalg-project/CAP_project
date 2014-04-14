@@ -48,6 +48,8 @@ DeclareAttribute( "Inverse",
 ##
 ###################################
 
+DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT" );
+
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM" );
 
 DeclareProperty( "CanComputeIdentityMorphism",
