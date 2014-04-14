@@ -243,6 +243,18 @@ DeclareOperation( "CokernelColiftWithGivenCokernel",
 
 ###################################
 ##
+## Direct Product
+##
+###################################
+
+DeclareOperation( "UniversalMorphismIntoDirectProduct",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+###################################
+##
 #! @Section Implied operations
 ##
 ###################################

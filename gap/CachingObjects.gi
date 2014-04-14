@@ -718,6 +718,10 @@ InstallMethod( DeclareOperationWithCache,
     
     set_name := Concatenation( "Set", name );
     
+    has_name := Concatenation( "Has", name );
+    
+    set_name := Concatenation( "Set", name );
+    
     DeclareOperation( name, filter );
     
     DeclareOperation( has_name, filter );

@@ -131,6 +131,8 @@ end );
 ##
 ######################################
 
+## PostCompose
+##
 InstallTrueMethod( CanComputePostCompose, CanComputePreCompose );
 
 InstallMethodWithCacheFromObject( PostCompose,
@@ -143,9 +145,10 @@ InstallMethodWithCacheFromObject( PostCompose,
     
 end : ArgumentNumber := 1 );
 
+## Inverse
+##
 InstallTrueMethod( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
 
-##
 InstallMethod( Inverse,
                [ IsHomalgCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
                -9999, #FIXME
@@ -159,9 +162,10 @@ InstallMethod( Inverse,
         
 end );
 
-InstallTrueMethod( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
 
 ##
+InstallTrueMethod( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
+
 InstallMethod( Inverse,
                [ IsHomalgCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
                -9999, #FIXME
@@ -175,9 +179,10 @@ InstallMethod( Inverse,
       
 end );
 
+## Kernel
+##
 InstallTrueMethod( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
 
-##
 InstallMethodWithCacheFromObject( KernelLift,
                                   [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
                                     IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
@@ -189,9 +194,9 @@ InstallMethodWithCacheFromObject( KernelLift,
     
 end );
 
+##
 InstallTrueMethod( CanComputeKernel, CanComputeKernelEmb );
 
-##
 InstallMethod( KernelObject,
                [ IsHomalgCategoryMorphism and CanComputeKernelEmb ],
                -9999, #FIXME
@@ -202,11 +207,12 @@ InstallMethod( KernelObject,
     
 end );
 
-InstallTrueMethod( CanComputeKernelEmb, CanComputeKernel and CanComputeKernelEmbWithGivenKernel );
 
 ##
+InstallTrueMethod( CanComputeKernelEmb, CanComputeKernel and CanComputeKernelEmbWithGivenKernel );
+
 InstallMethod( KernelEmb,
-               [ IsHomalgCategoryMorphism and CanComputeKernelEmb ],
+               [ IsHomalgCategoryMorphism and CanComputeKernel and CanComputeKernelEmbWithGivenKernel ],
                -9999, #FIXME
 
   function( mor )
@@ -215,9 +221,10 @@ InstallMethod( KernelEmb,
 
 end );
 
+## Cokernel
+##
 InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
 
-##
 InstallMethodWithCacheFromObject( CokernelColift,
                                   [ IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
                                     IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift ],
@@ -229,9 +236,10 @@ InstallMethodWithCacheFromObject( CokernelColift,
     
 end );
 
-InstallTrueMethod( CanComputeCokernel, CanComputeCokernelProj );
 
 ##
+InstallTrueMethod( CanComputeCokernel, CanComputeCokernelProj );
+
 InstallMethod( Cokernel,
                [ IsHomalgCategoryMorphism and CanComputeCokernelProj ],
                -9999, #FIXME
@@ -242,12 +250,26 @@ InstallMethod( Cokernel,
     
 end );
 
+##
+InstallTrueMethod( CanComputeCokernelProj, CanComputeCokernel and CanComputeCokernelProjWithGivenCokernel );
+
+InstallMethod( CokernelProj,
+               [ IsHomalgCategoryMorphism and CanComputeCokernel and CanComputeCokernelProjWithGivenCokernel ],
+               -9999, #FIXME
+
+  function( mor )
+
+    return CokernelProjWithGivenCokernel( mor, Cokernel( mor ) );
+
+end );
+
 ###########################
 ##
 ## Print
 ##
 ###########################
 
+##
 InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT,
                        
   function( )

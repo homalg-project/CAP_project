@@ -58,6 +58,9 @@ DeclareProperty( "CanComputeEpiAsCokernelColift",
 DeclareProperty( "CanComputeMonoAsKernelLift",
                  IsHomalgCategoryObject );
 
+DeclareAttribute( "Genesis",
+                  IsHomalgCategoryCell );
+
 ###################################
 ##
 #! @Section Add function
@@ -208,8 +211,14 @@ DeclareOperationWithCache( "DirectProductObject",
 DeclareOperation( "ProjectionInFirstFactor",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
+DeclareAttribute( "ProjectionInFirstFactor",
+                  IsHomalgCategoryObject );
+
 DeclareOperation( "ProjectionInSecondFactor",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+DeclareAttribute( "ProjectionInSecondFactor",
+                  IsHomalgCategoryObject );
 
 DeclareOperation( "ProjectionInFirstFactorWithGivenDirectProduct",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
@@ -220,10 +229,8 @@ DeclareOperation( "ProjectionInSecondFactorWithGivenDirectProduct",
 DeclareProperty( "WasCreatedAsDirectProduct",
                  IsHomalgCategoryObject );
 
-DeclareAttribute( "ProjectionInFirstFactor",
-                  IsHomalgCategoryObject );
 
-DeclareAttribute( "ProjectionInSecondFactor",
-                  IsHomalgCategoryObject );
+
+
 
 
