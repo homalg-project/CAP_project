@@ -299,6 +299,36 @@ AddProjectionInFirstFactorWithGivenDirectProduct( vecspaces,
 end );
 
 ##
+AddProjectionInSecondFactorOfDirectProduct( vecspaces,
+
+  function( a, b )
+    local direct_product, projection_in_first_factor;
+
+    direct_product := QVectorSpace( Dimension( a ) + Dimension( b ) );
+
+    projection_in_first_factor := UnionOfRows( HomalgZeroMatrix( Dimension( b ), Dimension( a ), VECTORSPACES_FIELD ),
+                                               HomalgIdentityMatrix( Dimension( a ), VECTORSPACES_FIELD )
+                                             );
+
+    return VectorSpaceMorphism( direct_product, projection_in_first_factor, a );
+
+end );
+
+##
+AddProjectionInSecondFactorWithGivenDirectProduct( vecspaces,
+
+  function( a, direct_product )
+    local projection_in_first_factor;
+
+    projection_in_first_factor := UnionOfRows( HomalgZeroMatrix( Dimension( direct_product ) - Dimension( a ), Dimension( a ), VECTORSPACES_FIELD ),
+                                               HomalgIdentityMatrix( Dimension( a ), VECTORSPACES_FIELD )
+                                             );
+
+    return VectorSpaceMorphism( direct_product, projection_in_first_factor, a );
+
+end );
+
+##
 AddUniversalMorphismIntoDirectProduct( vecspaces,
 
   function( mor_to_A, mor_to_B )

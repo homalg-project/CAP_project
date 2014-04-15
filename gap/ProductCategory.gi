@@ -215,6 +215,50 @@ end );
 
 ###################################
 ##
+## Functors on the product category
+##
+###################################
+
+InstallImmediateMethod( DirectProductFunctor,
+                        IsHomalgCategory and
+                        CanComputeProjectionInFirstFactor and
+                        CanComputeProjectionInSecondFactor and
+                        CanComputeUniversalMorphismIntoDirectProduct,
+                        0,
+                        
+  function( category )
+    local direct_product_functor;
+    
+    direct_product_functor := HomalgFunctor( "direct_product", Product( category, category ), category );
+    
+    AddObjectFunction( direct_product_functor,
+    
+      function( object_pair )
+        
+        return DirectProductObject( object_pair[ 1 ], object_pair[ 2 ] );
+        
+    end );
+    
+    AddMorphismFunction( direct_product_functor,
+    
+      function( new_source, morphism_pair, new_range )
+        local projection_A1, projection_A2;
+        
+        projection_A1 := ProjectionInFirstFactor( new_source );
+        
+        projection_A2 := ProjectionInSecondFactor( new_source );
+        
+        return UniversalMorphismIntoDirectProduct( PreCompose( projection_A1, morphism_pair[ 1 ] ), PreCompose( projection_A2, morphism_pair[ 2 ] ) );
+      
+   end );
+   
+   return direct_product_functor;
+  
+end );
+
+
+###################################
+##
 #! @Section Some hacks
 ##
 ###################################
