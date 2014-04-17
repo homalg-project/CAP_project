@@ -40,6 +40,12 @@ DeclareOperation( "\[\]",
 DeclareOperation( "ProductOp",
                   [ IsList, IsHomalgCategory ] );
 
+DeclareOperation( "ProductOp_OnMorphisms",
+                  [ IsList, IsHomalgCategory ] );
+
+DeclareOperation( "ProductOp_OnObjects",
+                  [ IsList, IsHomalgCategory ] );
+
 DeclareOperation( "ProductOp",
                   [ IsList, IsHomalgCategoryObject ] );
 

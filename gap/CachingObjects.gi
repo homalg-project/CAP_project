@@ -26,6 +26,10 @@ DeclareRepresentation( "IsMixedCachingObjectRep",
                        IsCachingObjectRep,
                        [ ] );
 
+DeclareRepresentation( "IsCachingObjectWhichConvertsLists",
+                       IsCachingObjectRep,
+                       [ ] );
+
 BindGlobal( "TheFamilyOfCachingObjects",
         NewFamily( "TheFamilyOfCachingObjects" ) );
 
@@ -36,6 +40,22 @@ BindGlobal( "TheTypeOfWeakCachingObject",
 BindGlobal( "TheTypeOfCrispCachingObject",
         NewType( TheFamilyOfCachingObjects,
                  IsCrispCachingObjectRep ) );
+
+##
+InstallGlobalFunction( CATEGORIES_FOR_HOMALG_SET_ALL_CACHES_CRISP,
+                       
+  function( )
+    
+    InstallMethod( CachingObject,
+                   [ IsBool, IsInt ],
+                   
+      function( is_crisp, nr_keys )
+        
+        return CreateCrispCachingObject( nr_keys );
+        
+    end );
+    
+end );
 
 ##
 InstallGlobalFunction( CACHINGOBJECT_HIT,
@@ -78,7 +98,11 @@ InstallGlobalFunction( COMPARE_LISTS_WITH_IDENTICAL,
     
     for i in [ 1 .. Length( list1 ) ] do
         
-        if COMPARE_LISTS_WITH_IDENTICAL( list1[ i ], list2[ i ] ) = false then
+        if not IsBoundElmWPObj( list1, i ) or not IsBoundElmWPObj( list2, i ) then
+            
+            return false;
+            
+        elif COMPARE_LISTS_WITH_IDENTICAL( ElmWPObj( list1, i ), ElmWPObj( list2, i ) ) = false then
             
             return false;
             
@@ -93,14 +117,22 @@ end );
 ## FIXME: Maybe do not search by IsIdenticalObj
 InstallGlobalFunction( SEARCH_WPLIST_FOR_OBJECT,
                        
-  function( wp_list, object )
+  function( wp_list, crisp_list, object )
     local pos;
     
     for pos in [ 1 .. LengthWPObj( wp_list ) ] do
         
-        if IsBoundElmWPObj( wp_list, pos ) and COMPARE_LISTS_WITH_IDENTICAL( object, ElmWPObj( wp_list, pos ) ) then ##Look at lists with =.
+        if IsBoundElmWPObj( wp_list, pos ) then
             
-            return pos;
+            if ElmWPObj( wp_list, pos ) = SuPeRfail and COMPARE_LISTS_WITH_IDENTICAL( object, crisp_list[ pos ] ) then ##Look at lists with =.
+                
+                return pos;
+                
+            elif COMPARE_LISTS_WITH_IDENTICAL( object, wp_list[ pos ] ) then
+                
+                return pos;
+                
+            fi;
             
         fi;
         
@@ -116,17 +148,16 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_PREPARE_CACHING_RECORD,
     local cache, i;
     
     cache := rec( keys := [ ],
+                crisp_keys := [ ],
                 nr_keys := nr_keys,
                 keys_value_list := [ ],
                 value_list_position := 1,
                 hit_counter := 0,
                 miss_counter := 0 );
     
-    for i in [ 1 .. nr_keys ] do
-        
-        cache.keys[ i ] := WeakPointerObj( [ ] );
-        
-    od;
+    cache.keys := List( [ 1 .. nr_keys ], i -> WeakPointerObj( [ ] ) );
+    
+    cache.crisp_keys := List( [ 1 .. nr_keys ], i -> [ ] );
     
     return cache;
     
@@ -209,7 +240,7 @@ InstallMethod( CachingObject,
                
   function( nr_keys )
     
-    return CreateWeakCachingObject( nr_keys );
+    return CachingObject( false, nr_keys );
     
 end );
 
@@ -288,7 +319,7 @@ InstallMethod( SetCacheValue,
                [ IsCachingObject, IsList, IsObject ],
                
   function( cache, key_list, value )
-    local keys, length_key_list, i, position, entry_position, entry_key;
+    local keys, length_key_list, i, position, entry_position, entry_key, wp_list, crisp_keys;
     
     length_key_list := Length( key_list );
     
@@ -302,15 +333,28 @@ InstallMethod( SetCacheValue,
     
     entry_key := [ ];
     
+    crisp_keys := cache!.crisp_keys;
+    
     for i in [ 1 .. length_key_list ] do
         
-        position := SEARCH_WPLIST_FOR_OBJECT( keys[ i ], key_list[ i ] );
+        position := SEARCH_WPLIST_FOR_OBJECT( keys[ i ], crisp_keys[ i ], key_list[ i ] );
         
         if position = fail then
             
+            ##Inject here.
             position := LengthWPObj( keys[ i ] ) + 1;
             
-            SetElmWPObj( keys[ i ], position, key_list[ i ] );
+            if IsList( key_list[ i ] ) then
+                
+                crisp_keys[ i ][ position ] := WeakPointerObj( key_list[ i ] );
+                
+                SetElmWPObj( keys[ i ], position, SuPeRfail );
+                
+            else
+                
+                SetElmWPObj( keys[ i ], position, key_list[ i ] );
+                
+            fi;
             
         fi;
         
@@ -342,7 +386,7 @@ InstallMethod( CacheValue,
                [ IsCachingObject, IsList ],
                
   function( cache, key_list )
-    local length_key_list, keys, position, i, entry_key;
+    local length_key_list, keys, position, i, entry_key, crisp_keys;
     
     length_key_list := Length( key_list );
     
@@ -354,11 +398,13 @@ InstallMethod( CacheValue,
     
     keys := cache!.keys;
     
+    crisp_keys := cache!.crisp_keys;
+    
     entry_key := [ ];
     
     for i in [ 1 .. length_key_list ] do
         
-        position := SEARCH_WPLIST_FOR_OBJECT( keys[ i ], key_list[ i ] );
+        position := SEARCH_WPLIST_FOR_OBJECT( keys[ i ], crisp_keys[ i ], key_list[ i ] );
         
         if position = fail then
             

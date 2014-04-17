@@ -51,7 +51,7 @@ InstallMethodWithCache( ProductOp,
     
     namestring := Concatenation( "Product of: " , namestring );
     
-    product_category := rec( );
+    product_category := rec( caches := rec( ) );
     
     ObjectifyWithAttributes( product_category, TheTypeOfHomalgProductCategories,
                              Components, category_list,
@@ -86,11 +86,11 @@ InstallMethodWithCache( ProductOp,
 end );
 
 ##
-InstallMethodWithCache( ProductOp,
-                        [ IsList, IsHomalgCategoryObject ],
+InstallMethodWithCacheFromObject( ProductOp_OnObjects,
+                                  [ IsList, IsHomalgCategory ],
                         
-  function( object_list, selector )
-    local product_object, category;
+  function( object_list, category )
+    local product_object;
     
     product_object := rec( );
     
@@ -99,20 +99,18 @@ InstallMethodWithCache( ProductOp,
                              Length, Length( object_list )
                            );
     
-    category := CallFuncList( Product, List( object_list, HomalgCategory ) );
-    
     Add( category, product_object );
     
     return product_object;
     
-end );
+end : ArgumentNumber := 2 );
 
 ##
-InstallMethodWithCache( ProductOp,
-                        [ IsList, IsHomalgCategoryMorphism ],
-                        
-  function( morphism_list, selector )
-    local product_morphism, category;
+InstallMethodWithCacheFromObject( ProductOp_OnMorphisms,
+                                  [ IsList, IsHomalgCategory ],
+                                  
+  function( morphism_list, category )
+    local product_morphism;
     
     product_morphism := rec( );
     
@@ -121,11 +119,29 @@ InstallMethodWithCache( ProductOp,
                              Length, Length( morphism_list )
                            );
     
-    category := CallFuncList( Product, List( morphism_list, HomalgCategory ) );
-    
     Add( category, product_morphism );
     
     return product_morphism;
+    
+end : ArgumentNumber := 2 );
+
+##
+InstallMethod( ProductOp,
+               [ IsList, IsHomalgCategoryObject ],
+               
+  function( object_list, selector )
+    
+    return ProductOp_OnObjects( object_list, CallFuncList( Product, List( object_list, HomalgCategory ) ) );
+    
+end );
+
+##
+InstallMethod( ProductOp,
+               [ IsList, IsHomalgCategoryMorphism ],
+               
+  function( morphism_list, selector )
+    
+    return ProductOp_OnMorphisms( morphism_list, CallFuncList( Product, List( morphism_list, HomalgCategory ) ) );
     
 end );
 

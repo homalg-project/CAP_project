@@ -14,6 +14,8 @@
 DeclareCategory( "IsCachingObject",
                  IsObject );
 
+DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_SET_ALL_CACHES_CRISP" );
+
 DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_PREPARE_CACHING_RECORD" );
 
 DeclareGlobalFunction( "SEARCH_WPLIST_FOR_OBJECT" );

@@ -5,7 +5,7 @@ PackageName := "CategoriesForHomalg",
 Subtitle := "TODO",
 
 Version := Maximum( [
-  "2014.03.26", ## Sebas' version
+  "2014.04.17", ## Sebas' version
   ## this line prevents merge conflicts
   "2014.03.11", ## Sepp's version
 ] ),
