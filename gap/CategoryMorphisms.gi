@@ -288,9 +288,20 @@ end );
 InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT,
                        
   function( )
-    local print_graph;
+    local print_graph, morphism_function;
     
-    print_graph := CreatePrintingGraph( IsHomalgCategoryMorphism, "homalg category morphism" );
+    morphism_function := function( object )
+      local string;
+        
+        string := "morphism in the category ";
+        
+        Append( string, Name( HomalgCategory( object ) ) );
+        
+        return string;
+        
+    end;
+    
+    print_graph := CreatePrintingGraph( IsHomalgCategoryMorphism, morphism_function );
     
     AddRelationToGraph( print_graph,
                         rec( Source := [ rec( Conditions := "IsIsomorphism",
