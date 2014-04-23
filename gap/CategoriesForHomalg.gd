@@ -25,6 +25,10 @@ DeclareGlobalFunction( "CATEGORIES_CACHE_GETTER" );
 
 DeclareGlobalFunction( "DECIDE_INSTALL_FUNCTION" );
 
+DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST" );
+
+DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION" );
+
 ###################################
 ##
 #! @ResetLevel

@@ -47,33 +47,8 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
     
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "HomalgCategory" ] ],
                                                          [ category, object ],
-                                                         [ "CanComputeMonoAsKernelLift",
-                                                           "CanComputeEpiAsCokernelColift",
-                                                           "CanComputeIdentityMorphism",
-                                                           "CanComputeInverse",
-                                                           "CanComputeKernel",
-                                                           "CanComputeKernelEmb",
-                                                           "CanComputeKernelEmbWithGivenKernel",
-                                                           "CanComputeKernelLift",
-                                                           "CanComputeKernelLiftWithGivenKernel",
-                                                           "CanComputeCokernel",
-                                                           "CanComputeCokernelProj",
-                                                           "CanComputeCokernelProjWithGivenCokernel",
-                                                           "CanComputeCokernelColift",
-                                                           "CanComputeCokernelColiftWithGivenCokernel",
-                                                           "CanComputePreCompose",
-                                                           "CanComputePostCompose",
-                                                           "CanComputeZeroObject",
-                                                           "CanComputeMorphismFromZeroObject",
-                                                           "CanComputeMorphismIntoZeroObject",
-                                                           "CanComputeZeroMorphism",
-                                                           "CanComputeDirectSum",
-                                                           "CanComputeProjectionInFirstFactor",
-                                                           "CanComputeProjectionInSecondFactor",
-                                                           "CanComputeInjectionFromFirstSummand",
-                                                           "CanComputeInjectionFromSecondSummand"
-                                                         # ...
-                                                         ] );
+                                                         CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
+                                                       );
  
     AddToToDoList( entry );
     

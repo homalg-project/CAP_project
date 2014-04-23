@@ -14,6 +14,36 @@ InstallValue( CATEGORIES_FOR_HOMALG,
               )
 );
 
+InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
+              
+              [ "CanComputeMonoAsKernelLift",
+                "CanComputeEpiAsCokernelColift",
+                "CanComputeIdentityMorphism",
+                "CanComputeInverse",
+                "CanComputeKernel",
+                "CanComputeKernelEmb",
+                "CanComputeKernelEmbWithGivenKernel",
+                "CanComputeKernelLift",
+                "CanComputeKernelLiftWithGivenKernel",
+                "CanComputeCokernel",
+                "CanComputeCokernelProj",
+                "CanComputeCokernelProjWithGivenCokernel",
+                "CanComputeCokernelColift",
+                "CanComputeCokernelColiftWithGivenCokernel",
+                "CanComputePreCompose",
+                "CanComputePostCompose",
+                "CanComputeZeroObject",
+                "CanComputeMorphismFromZeroObject",
+                "CanComputeMorphismIntoZeroObject",
+                "CanComputeZeroMorphism",
+                "CanComputeDirectSum",
+                "CanComputeProjectionInFirstFactor",
+                "CanComputeProjectionInSecondFactor",
+                "CanComputeInjectionFromFirstSummand",
+                "CanComputeInjectionFromSecondSummand",
+                 # .. 
+              ] );
+
 ##
 InstallGlobalFunction( CATEGORIES_FOR_HOMALG_NAME_COUNTER,
                        
@@ -1430,19 +1460,40 @@ end );
 ##
 #######################################
 
-InstallMethod( ViewObj,
-               [ IsHomalgCategory ],
+InstallGlobalFunction( CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION,
                
-  function( x )
+  function( )
+    local print_graph, category_function, i;
     
-    if HasName( x ) then
+    category_function := function( category )
+      local string;
+      
+      string := "homalg category";
+      
+      if HasName( category ) then
+          
+          Append( string, " with name " );
+          
+          Append( string, Name( category ) );
+          
+      fi;
+      
+      return string;
+      
+    end;
+    
+    print_graph := CreatePrintingGraph( IsHomalgCategory, category_function );
+    
+    for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
         
-        Print( "<", Name( x ), ">" );
+        AddNodeToGraph( print_graph, rec( Conditions := i,
+                                          TypeOfView := 3,
+                                          ComputeLevel := 5 ) );
         
-    else
-        
-        Print( "<A homalg category>" );
-        
-    fi;
+    od;
+    
+    InstallPrintFunctionsOutOfPrintingGraph( print_graph );
     
 end );
+
+CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION( );
