@@ -43,6 +43,8 @@ DeclareAttribute( "HomalgCategory",
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT" );
 
+DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT" );
+
 DeclareProperty( "CanComputeInverse",
                  IsHomalgCategoryObject );
 
@@ -181,8 +183,7 @@ DeclareOperation( "ZeroMorphism",
 ##
 ###################################
 
-DeclareProperty( "WasCreatedAsKernel",
-                 IsHomalgCategoryObject );
+DeclareFilter( "WasCreatedAsKernel" );
 
 DeclareAttribute( "KernelEmb",
                   IsHomalgCategoryObject );
@@ -193,8 +194,7 @@ DeclareAttribute( "KernelEmb",
 ##
 ###################################
 
-DeclareProperty( "WasCreatedAsCokernel",
-                 IsHomalgCategoryObject );
+DeclareFilter( "WasCreatedAsCokernel" );
 
 DeclareAttribute( "CokernelProj",
                   IsHomalgCategoryObject );
@@ -226,8 +226,7 @@ DeclareOperation( "ProjectionInFirstFactorWithGivenDirectProduct",
 DeclareOperation( "ProjectionInSecondFactorWithGivenDirectProduct",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
-DeclareProperty( "WasCreatedAsDirectProduct",
-                 IsHomalgCategoryObject );
+DeclareFilter( "WasCreatedAsDirectProduct" );
 
 
 

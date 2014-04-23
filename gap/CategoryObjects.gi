@@ -192,3 +192,67 @@ InstallMethodWithCacheFromObject( ProjectionInSecondFactor,
     return ProjectionInSecondFactorWithGivenDirectProduct( object_A, object_B, DirectProductObject( object_A, object_B ) );
 
 end );
+
+###########################
+##
+## Print
+##
+###########################
+
+##
+InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT,
+                       
+  function( )
+    local print_graph, object_function;
+    
+    object_function := function( object )
+      local string;
+        
+        string := "object in the category ";
+        
+        Append( string, Name( HomalgCategory( object ) ) );
+        
+        return string;
+        
+    end;
+    
+    print_graph := CreatePrintingGraph( IsHomalgCategoryObject, object_function );
+    
+    AddRelationToGraph( print_graph,
+                        rec( Source := [ rec( Conditions := "IsZero",
+                                              PrintString := "zero",
+                                              Adjective := true ) ],
+                             Range := [ rec( Conditions := "IsInjective",
+                                             PrintString := "injective",
+                                             Adjective := true ),
+                                        rec( Conditions := "IsProjective",
+                                             PrintString := "projective",
+                                             Adjective := true ) ] ) );
+    
+    AddRelationToGraph( print_graph,
+                    rec( Range := [ rec( Conditions := "WasCreatedAsDirectProduct",
+                                         PrintString := "is direct product",
+                                         ComputeLevel := 5
+                                       ) ],
+                         Source := [ rec( Conditions := "WasCreatedAsDirectSum",
+                                          PrintString := "is direct sum",
+                                          ComputeLevel := 5
+                                        ) ] ) );
+    
+    AddNodeToGraph( print_graph,
+                    rec( Conditions := "WasCreatedAsCokernel",
+                         PrintString := "is cokernel",
+                         ComputeLevel := 5
+                       ) );
+    
+    AddNodeToGraph( print_graph,
+                    rec( Conditions := "WasCreatedAsKernel",
+                         PrintString := "is kernel",
+                         ComputeLevel := 5
+                       ) );
+    
+    InstallPrintFunctionsOutOfPrintingGraph( print_graph );
+    
+end );
+
+CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT( );

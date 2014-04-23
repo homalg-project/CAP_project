@@ -675,7 +675,7 @@ InstallMethod( AddKernel,
         
         Add( HomalgCategory( mor ), kernel );
         
-        SetWasCreatedAsKernel( kernel, true );
+        SetFilterObj( kernel, WasCreatedAsKernel );
         
         SetGenesis( kernel, rec( diagram := mor ) );
         
@@ -718,7 +718,7 @@ InstallMethod( AddKernelLift,
         
         SetKernelObject( mor, kernel );
         
-        SetWasCreatedAsKernel( kernel, true );
+        SetFilterObj( kernel, WasCreatedAsKernel );
         
         SetGenesis( kernel, rec( diagram := mor ) );
         
@@ -790,7 +790,7 @@ InstallMethod( AddKernelEmb,
         
         SetKernelObject( mor, kernel );
         
-        SetWasCreatedAsKernel( kernel, true );
+        SetFilterObj( kernel, WasCreatedAsKernel );
         
         SetGenesis( kernel, rec( diagram := mor ) );
         
@@ -861,7 +861,7 @@ InstallMethod( AddCokernel,
         
         Add( HomalgCategory( mor ), cokernel );
         
-        SetWasCreatedAsCokernel( cokernel, true );
+        SetFilterObj( cokernel, WasCreatedAsCokernel );
         
         SetGenesis( cokernel, rec( diagram := mor ) );
         
@@ -902,7 +902,7 @@ InstallMethod( AddCokernelColift,
         
         cokernel := Source( cokernel_colift );
         
-        SetWasCreatedAsCokernel( cokernel );
+        SetFilterObj( cokernel, WasCreatedAsCokernel );
         
         SetGenesis( cokernel, rec( diagram := mor ) );
         
@@ -1046,7 +1046,7 @@ InstallMethod( AddDirectProduct,
 
         Add( HomalgCategory( object_A ), direct_product );
 
-        SetWasCreatedAsDirectProduct( direct_product, true );
+        SetFilterObj( direct_product, WasCreatedAsDirectProduct );
 
         SetGenesis( direct_product, rec( FirstFactor := object_A, SecondFactor := object_B ) );
 
