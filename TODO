@@ -1,1 +1,22 @@
-- Why is DirectSum set so strange by default?
+* Universelle Objekte -> Sepp
+  - Coprodukt
+  - Pullback
+  - Pushout
+  - Direkte Summe
+* Restrukturierung der Dateien
+* Dokumentation
+* Tests
+  - Abgeleitete Algorithmen testen
+* View-Methoden für Kategorien -> Gutsche
+* Null => initial und terminal.
+
+Neue Kategorien
+
+* Terminale Kategorie
+  - Funktoren in andere Kategorien
+    zum Auszeichnen anderer Objekte
+* Komplexe -> Gutsche
+* Cokomplexe -> Gutsche
+* Verallgemeinerte Morphismen
+* Serre-Quotienten
+* Spektralsequenzen
