@@ -199,7 +199,7 @@ DeclareProperty( "CanComputeKernelLiftWithGivenKernel",
                  IsHomalgCategoryCell );
 
 DeclareOperation( "KernelLiftWithGivenKernel",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
 ###################################
 ##
