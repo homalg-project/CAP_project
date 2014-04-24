@@ -9,3 +9,5 @@ ReadPackage( "CategoriesForHomalg", "gap/OppositeCategory.gi");
 ReadPackage( "CategoriesForHomalg", "gap/ProductCategory.gi");
 
 ReadPackage( "CategoriesForHomalg", "gap/CategoriesCategory.gi");
+
+ReadPackage( "CategoriesForHomalg", "gap/TerminalCategory.gi");

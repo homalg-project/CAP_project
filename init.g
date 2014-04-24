@@ -14,3 +14,5 @@ ReadPackage( "CategoriesForHomalg", "gap/ProductCategory.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/CategoriesCategory.gd");
 
+ReadPackage( "CategoriesForHomalg", "gap/TerminalCategory.gd");
+
