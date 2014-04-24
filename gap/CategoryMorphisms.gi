@@ -186,10 +186,10 @@ end );
 ##
 InstallTrueMethod( CanComputeKernelEmb, CanComputeKernel and CanComputeKernelEmbWithGivenKernel );
 
-InstallMethodWithCacheFromObject( KernelEmb,
-                                  [ IsHomalgCategoryMorphism and CanComputeKernel and CanComputeKernelEmbWithGivenKernel ],
-                                  -9999, #FIXME
-                                  
+InstallMethod( KernelEmb,
+               [ IsHomalgCategoryMorphism and CanComputeKernel and CanComputeKernelEmbWithGivenKernel ],
+               -9999, #FIXME
+               
   function( mor )
 
     return KernelEmbWithGivenKernel( mor, KernelObject( mor ) );
