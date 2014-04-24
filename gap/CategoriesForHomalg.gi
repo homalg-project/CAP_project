@@ -1430,26 +1430,6 @@ InstallMethod( CreateHomalgCategory,
     
     CREATE_HOMALG_CATEGORY_FILTERS( category );
     
-    InstallImmediateMethod( HomalgCategory,
-                            IsHomalgCategoryObject and ObjectFilter( category ),
-                            0,
-                            
-      function( object )
-        
-        return category;
-        
-    end );
-    
-    InstallImmediateMethod( HomalgCategory,
-                            IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            0,
-                            
-      function( object )
-        
-        return category;
-        
-    end );
-    
     return category;
     
 end );

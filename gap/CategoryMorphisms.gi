@@ -94,7 +94,7 @@ InstallMethod( Add,
     
     SetFilterObj( morphism, filter );
     
-    ## Homalg category is set by immediate method
+    SetHomalgCategory( morphism, category );
 
     INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT( category, morphism );
     

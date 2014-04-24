@@ -61,26 +61,6 @@ InstallMethodWithCache( ProductOp,
     
     CREATE_HOMALG_CATEGORY_FILTERS( product_category );
     
-    InstallImmediateMethod( HomalgCategory,
-                            IsHomalgCategoryObject and ObjectFilter( product_category ),
-                            0,
-                            
-      function( object )
-        
-        return product_category;
-        
-    end );
-    
-    InstallImmediateMethod( HomalgCategory,
-                            IsHomalgCategoryMorphism and MorphismFilter( product_category ),
-                            0,
-                            
-      function( object )
-        
-        return product_category;
-        
-    end );
-    
     return product_category;
     
 end );

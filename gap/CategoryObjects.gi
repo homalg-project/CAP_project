@@ -140,7 +140,7 @@ InstallMethod( Add,
     
     SetFilterObj( object, filter );
     
-    ## Homalg category is set by immediate method
+    SetHomalgCategory( object, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT( category, object );
     

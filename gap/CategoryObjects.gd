@@ -33,7 +33,7 @@ DeclareFilter( "WasCreatedAsDirectSum" );
 #! one category
 #! @Group Category getter
 DeclareAttribute( "HomalgCategory",
-                  IsHomalgCategoryObject );
+                  IsHomalgCategoryObject, "mutable" );
 
 ###################################
 ##

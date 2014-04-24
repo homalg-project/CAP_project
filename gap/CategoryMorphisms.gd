@@ -27,7 +27,7 @@ DeclareCategory( "IsHomalgCategoryMorphism",
 
 #! @Group Category getter
 DeclareAttribute( "HomalgCategory",
-                  IsHomalgCategoryMorphism );
+                  IsHomalgCategoryMorphism, "mutable" );
 
 DeclareAttribute( "Source",
                   IsHomalgCategoryMorphism );
