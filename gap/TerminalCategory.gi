@@ -57,7 +57,7 @@ InstallMethod( Object,
     ObjectifyWithAttributes( object, TheTypeOfHomalgTerminalCategoryObject,
                              IsZero, true );
     
-    Add( category, object );
+    Add( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, object );
     
     SetIsZero( object, true );
     
@@ -74,14 +74,14 @@ InstallMethod( Morphism,
     
     morphism := rec( );
     
-    object := Object( category );
+    object := Object( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY );
     
     ObjectifyWithAttributes( morphism, TheTypeOfHomalgTerminalCategoryMorphism,
                              Source, object,
                              Range, object,
                              IsOne, true );
     
-    Add( category, morphism );
+    Add( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, morphism );
     
     return morphism;
     
@@ -93,7 +93,7 @@ end );
 ##
 ################################
 
-
+##
 BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
             
   function( )
@@ -150,4 +150,47 @@ end );
 
 INSTALL_TERMINAL_CATEGORY_FUNCTIONS( );
 
+################################
+##
+## Functor constructors
+##
+################################
 
+##
+InstallMethod( FunctorFromTerminalCategory,
+               [ IsHomalgCategoryObject and CanComputeIdentityMorphism ],
+               
+  function( object )
+    local functor;
+    
+    functor := HomalgFunctor( Concatenation( "InjectionInto", Name( HomalgCategory( object ) ) ), CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, HomalgCategory( object ) );
+    
+    functor!.terminal_object_functor_object := object;
+    
+    AddObjectFunction( functor,
+                       
+      function( arg )
+        
+        return functor!.terminal_object_functor_object;
+        
+    end );
+    
+    AddMorphismFunction( functor,
+                         
+      function( arg )
+        
+        return IdentityMorphism( functor!.terminal_object_functor_object );
+        
+    end );
+    
+    return functor;
+    
+end );
+
+##
+InstallMethod( FunctorFromTerminalCategory,
+               [ IsHomalgCategoryMorphism and IsOne ],
+               
+  morphism -> FunctorFromTerminalCategory( Source( morphism ) )
+  
+);

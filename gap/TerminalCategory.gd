@@ -39,3 +39,14 @@ DeclareAttribute( "Object",
 
 DeclareAttribute( "Morphism",
                   IsHomalgCategory );
+
+#########################################
+##
+## Functors
+##
+#########################################
+
+DeclareAttribute( "FunctorFromTerminalCategory",
+                  IsHomalgCategoryCell );
+
+

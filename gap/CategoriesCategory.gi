@@ -35,26 +35,6 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_Cat,
     
     CREATE_HOMALG_CATEGORY_FILTERS( CATEGORIES_FOR_HOMALG_Cat );
     
-    InstallImmediateMethod( HomalgCategory,
-                            IsHomalgCategoryObject and ObjectFilter( CATEGORIES_FOR_HOMALG_Cat ),
-                            0,
-                            
-      function( object )
-        
-        return CATEGORIES_FOR_HOMALG_Cat;
-        
-    end );
-    
-    InstallImmediateMethod( HomalgCategory,
-                            IsHomalgCategoryMorphism and MorphismFilter( CATEGORIES_FOR_HOMALG_Cat ),
-                            0,
-                            
-      function( object )
-        
-        return CATEGORIES_FOR_HOMALG_Cat;
-        
-    end );
-    
     return CATEGORIES_FOR_HOMALG_Cat;
     
 end );
@@ -62,10 +42,9 @@ end );
 CATEGORIES_FOR_HOMALG_CREATE_Cat( );
 
 ##
-InstallImmediateMethod( AsCatObject,
-                        IsHomalgCategory,
-                        0,
-                        
+InstallMethod( AsCatObject,
+               [ IsHomalgCategory ],
+  
   function( category )
     local cat_obj;
     
