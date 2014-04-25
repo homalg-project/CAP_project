@@ -324,16 +324,19 @@ InstallMethod( AddZeroObject,
     
     SetCanComputeZeroObject( category, true );
     
-    InstallMethod( ZeroObject,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
-                   
-      function( object )
-        
-        return ZeroObject( category );
-        
-      end );
+end );
+
+##
+InstallMethod( ZeroObject,
+               [ IsHomalgCategoryCell ],
+               
+  function( cell )
+    
+    return ZeroObject( HomalgCategory( cell ) );
     
 end );
+
+
 
 ##
 InstallMethod( AddMorphismIntoZeroObject,

@@ -827,28 +827,28 @@ end );
 ##
 InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFirstFactor );
 
-InstallMethodeWithCacheFromObject( DirectProductObject,
+InstallMethodWithCacheFromObject( DirectProductObject,
                                    [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
                                      IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
                                    -9999,
                                    
   function( object_A, object_B )
     
-    return Source( ProjectionInFirstFactor( object_A, object_B );
+    return Source( ProjectionInFirstFactor( object_A, object_B ) );
     
 end );
 
 ##
 InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInSecondFactor );
 
-InstallMethodeWithCacheFromObject( DirectProductObject,
+InstallMethodWithCacheFromObject( DirectProductObject,
                                    [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
                                      IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
                                    -9999,
                                    
   function( object_A, object_B )
     
-    return Source( ProjectionInSecondFactor( object_A, object_B );
+    return Source( ProjectionInSecondFactor( object_A, object_B ) );
     
 end );
 

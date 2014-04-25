@@ -105,6 +105,9 @@ DeclareAttribute( "MorphismFilter",
 DeclareAttribute( "ZeroObject",
                   IsHomalgCategory );
 
+DeclareAttribute( "ZeroObject",
+                  IsHomalgCategoryCell );
+
 #############################################
 ##
 #! @Section Add functions

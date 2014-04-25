@@ -33,7 +33,7 @@ DeclareOperation( "KernelLift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 DeclareOperation( "KernelLiftWithGivenKernel",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
 ## CanCompute Properties
 DeclareProperty( "CanComputeKernel",
