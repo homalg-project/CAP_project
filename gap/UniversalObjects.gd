@@ -287,26 +287,6 @@ DeclareAttribute( "UniversalMorphismFromInitialObject",
 DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
-## CanCompute Properties
-
-DeclareProperty( "CanComputeInitialObject",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeInitialObject",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeUniversalMorphismFromInitialObject",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeUniversalMorphismFromInitialObject",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject",
-                 IsHomalgCategoryCell );
-
 ## Function Attributes
 
 DeclareAttribute( "InitialObjectFunction",

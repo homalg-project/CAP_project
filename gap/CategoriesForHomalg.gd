@@ -58,6 +58,7 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeInjectionFromSecondSummand",
                 "CanComputeTerminalObject",
                 "CanComputeUniversalMorphismIntoTerminalObject",
+                "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                 "CanComputeDirectProduct",
                 "CanComputeProjectionInFirstFactorOfDirectProduct",
                 "CanComputeProjectionInSecondFactorOfDirectProduct",
@@ -65,7 +66,9 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeProjectionInSecondFactorWithGivenDirectProduct",
                 "CanComputeUniversalMorphismIntoDirectProduct",
                 "CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject"
+                "CanComputeInitialObject",
+                "CanComputeUniversalMorphismFromInitialObject",
+                "CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject"
                  # .. 
               ] );
 
