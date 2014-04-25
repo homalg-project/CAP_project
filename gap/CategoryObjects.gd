@@ -179,54 +179,11 @@ DeclareOperation( "ZeroMorphism",
 
 ###################################
 ##
-## Kernel
-##
-###################################
-
-DeclareFilter( "WasCreatedAsKernel" );
-
-DeclareAttribute( "KernelEmb",
-                  IsHomalgCategoryObject );
-
-###################################
-##
-## Cokernel
-##
-###################################
-
-DeclareFilter( "WasCreatedAsCokernel" );
-
-DeclareAttribute( "CokernelProj",
-                  IsHomalgCategoryObject );
-
-###################################
-##
 ## Direct Product
 ##
 ###################################
 
-DeclareOperationWithCache( "DirectProductObject",
-                           [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
-DeclareOperation( "ProjectionInFirstFactor",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-DeclareAttribute( "ProjectionInFirstFactor",
-                  IsHomalgCategoryObject );
-
-DeclareOperation( "ProjectionInSecondFactor",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-DeclareAttribute( "ProjectionInSecondFactor",
-                  IsHomalgCategoryObject );
-
-DeclareOperation( "ProjectionInFirstFactorWithGivenDirectProduct",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-DeclareOperation( "ProjectionInSecondFactorWithGivenDirectProduct",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-DeclareFilter( "WasCreatedAsDirectProduct" );
 
 
 
