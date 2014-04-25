@@ -443,6 +443,8 @@ alpha := VectorSpaceMorphism( T, [ [ 3 ], [ 4 ] ], A );
 
 beta := VectorSpaceMorphism( T, [ [ 1, 1 ], [ 1, 1 ] ], B );
 
+gamma := VectorSpaceMorphism( T, [ [ 1, 2 ], [ 3, 4 ] ], B );
+
 #######################################
 ##
 ## Functors

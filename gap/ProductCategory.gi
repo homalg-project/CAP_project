@@ -6,7 +6,7 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @AutoDoc
-#! @Chapter Opposite category
+#! @Chapter Product category
 ##
 #############################################################################
 

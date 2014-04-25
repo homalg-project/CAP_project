@@ -56,62 +56,6 @@ end );
 
 #######################################
 ##
-## Attributes of universal objects
-##
-#######################################
-
-##
-InstallMethod( KernelEmb,
-               [ IsHomalgCategoryObject and WasCreatedAsKernel ],
-               
-  function( kernel )
-  
-    return KernelEmb( Genesis( kernel )!.diagram );
-    
-end );
-
-##
-InstallMethod( CokernelProj,
-               [ IsHomalgCategoryObject and WasCreatedAsCokernel ],
-
-  function( cokernel )
-
-    return CokernelProj( Genesis( cokernel )!.diagram );
-
-end );
-
-##
-InstallMethod( ProjectionInFirstFactor,
-               [ IsHomalgCategoryObject and WasCreatedAsDirectProduct ],
-
-  function( direct_product )
-    local object_A, object_B;
-
-    object_A := Genesis( direct_product )!.FirstFactor;
-
-    object_B := Genesis( direct_product )!.SecondFactor;
-  
-    return ProjectionInFirstFactor( object_A, object_B );
-  
-end );
-
-##
-InstallMethod( ProjectionInSecondFactor,
-               [ IsHomalgCategoryObject and WasCreatedAsDirectProduct ],
-
-  function( direct_product )
-    local object_A, object_B;
-
-    object_A := Genesis( direct_product )!.FirstFactor;
-
-    object_B := Genesis( direct_product )!.SecondFactor;
-
-    return ProjectionInSecondFactor( object_A, object_B );
-
-end );
-
-#######################################
-##
 ## Operations
 ##
 #######################################
@@ -157,40 +101,6 @@ InstallMethodWithCacheFromObject( ZeroMorphism,
     
     return PreCompose( MorphismIntoZeroObject( obj_source ), MorphismFromZeroObject( obj_range ) );
     
-end );
-
-#######################################
-##
-## Implied operations
-##
-#######################################
-
-## Direct Product
-##
-InstallTrueMethod( CanComputeProjectionInFirstFactor, CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct );
-
-InstallMethodWithCacheFromObject( ProjectionInFirstFactor,
-                                  [ IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct,
-                                  IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct ],
-                                  
-  function( object_A, object_B )
-
-    return ProjectionInFirstFactorWithGivenDirectProduct( object_A, object_B, DirectProductObject( object_A, object_B ) );
-
-end );
-
-
-##
-InstallTrueMethod( CanComputeProjectionInSecondFactor, CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct );
-
-InstallMethodWithCacheFromObject( ProjectionInSecondFactor,
-                                  [ IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct,
-                                  IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct ],
-                                  
-  function( object_A, object_B )
-
-    return ProjectionInSecondFactorWithGivenDirectProduct( object_A, object_B, DirectProductObject( object_A, object_B ) );
-
 end );
 
 ###########################

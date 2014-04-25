@@ -124,7 +124,7 @@ end : ArgumentNumber := 1 );
 ##
 InstallTrueMethod( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
 
-InstallMethodWithCacheFromObject( Inverse,
+InstallMethod( Inverse,
                [ IsHomalgCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
                -9999, #FIXME
                
@@ -141,9 +141,9 @@ end : ArgumentNumber := 1 );
 ##
 InstallTrueMethod( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
 
-InstallMethodWithCacheFromObject( Inverse,
-                                  [ IsHomalgCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
-                                  -9999, #FIXME
+InstallMethod( Inverse,
+               [ IsHomalgCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
+               -9999, #FIXME
                                   
   function( mor )
     local identity_of_source;
@@ -152,105 +152,6 @@ InstallMethodWithCacheFromObject( Inverse,
     
     return EpiAsCokernelColift( mor, identity_of_source );
       
-end );
-
-## Kernel
-##
-InstallTrueMethod( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
-
-InstallMethodWithCacheFromObject( KernelLift,
-                                  [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
-                                    IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
-                                    -9999, #FIXME
-                                    
-  function( mor, test_morphism )
-    
-    return MonoAsKernelLift( KernelEmb( mor ), test_morphism );
-    
-end );
-
-##
-InstallTrueMethod( CanComputeKernel, CanComputeKernelEmb );
-
-InstallMethod( KernelObject,
-               [ IsHomalgCategoryMorphism and CanComputeKernelEmb ],
-               -9999, #FIXME
-               
-  function( mor )
-    
-    return Source( KernelEmb( mor ) );
-    
-end );
-
-
-##
-InstallTrueMethod( CanComputeKernelEmb, CanComputeKernel and CanComputeKernelEmbWithGivenKernel );
-
-InstallMethod( KernelEmb,
-               [ IsHomalgCategoryMorphism and CanComputeKernel and CanComputeKernelEmbWithGivenKernel ],
-               -9999, #FIXME
-               
-  function( mor )
-
-    return KernelEmbWithGivenKernel( mor, KernelObject( mor ) );
-
-end );
-
-## Cokernel
-##
-InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
-
-InstallMethodWithCacheFromObject( CokernelColift,
-                                  [ IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
-                                    IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift ],
-                                  -9999, #FIXME
-                                  
-  function( mor, test_morphism )
-    
-    return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
-    
-end );
-
-
-##
-InstallTrueMethod( CanComputeCokernel, CanComputeCokernelProj );
-
-InstallMethodWithCacheFromObject( Cokernel,
-                                  [ IsHomalgCategoryMorphism and CanComputeCokernelProj ],
-                                  -9999, #FIXME
-                                  
-  function( mor )
-    
-    return Range( CokernelProj( mor ) );
-    
-end );
-
-##
-InstallTrueMethod( CanComputeCokernelProj, CanComputeCokernel and CanComputeCokernelProjWithGivenCokernel );
-
-InstallMethodWithCacheFromObject( CokernelProj,
-                                  [ IsHomalgCategoryMorphism and CanComputeCokernel and CanComputeCokernelProjWithGivenCokernel ],
-                                  -9999, #FIXME
-
-  function( mor )
-
-    return CokernelProjWithGivenCokernel( mor, Cokernel( mor ) );
-
-end );
-
-## Direct Product
-##
-InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProduct,
-                   CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct );
-
-InstallMethodWithCacheFromObject( UniversalMorphismIntoDirectProduct,
-                                  [ IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                                  IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
-
-  function( mor_to_A, mor_to_B )
-    
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( mor_to_A, mor_to_B, DirectProductObject( Range( mor_to_A ), Range( mor_to_B ) ) );
-
 end );
 
 ###########################
