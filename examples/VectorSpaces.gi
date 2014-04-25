@@ -382,6 +382,39 @@ AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( vecspaces,
 
 end );
 
+##
+AddInitialObject( vecspaces,
+
+  function( )
+
+    return QVectorSpace( 0 );
+
+end );
+
+##
+AddUniversalMorphismFromInitialObject( vecspaces,
+
+  function( source )
+    local morphism;
+
+    morphism := VectorSpaceMorphism( QVectorSpace( 0 ), HomalgZeroMatrix( 0, Dimension( source ), VECTORSPACES_FIELD ), source );
+
+    return morphism;
+
+end );
+
+##
+AddUniversalMorphismFromInitialObjectWithGivenInitialObject( vecspaces,
+
+  function( source, initial_object )
+    local morphism;
+
+    morphism := VectorSpaceMorphism( initial_object, HomalgZeroMatrix( 0, Dimension( source ), VECTORSPACES_FIELD ), source );
+
+    return morphism;
+
+end );
+
 # ##
 # AddDirectSum_OnObjects( vecspaces,
 #                         

@@ -269,6 +269,72 @@ DeclareFilter( "WasCreatedAsTerminalObject" );
 
 ####################################
 ##
+## Initial Object
+##
+####################################
+
+## Main Operations and Attributes
+
+DeclareAttribute( "InitialObject",
+                  IsHomalgCategory );
+
+DeclareAttribute( "InitialObject",
+                  IsHomalgCategoryCell );
+
+DeclareAttribute( "UniversalMorphismFromInitialObject",
+                  IsHomalgCategoryObject );
+
+DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+## CanCompute Properties
+
+DeclareProperty( "CanComputeInitialObject",
+                 IsHomalgCategory );
+
+DeclareProperty( "CanComputeInitialObject",
+                 IsHomalgCategoryCell );
+
+DeclareProperty( "CanComputeUniversalMorphismFromInitialObject",
+                 IsHomalgCategory );
+
+DeclareProperty( "CanComputeUniversalMorphismFromInitialObject",
+                 IsHomalgCategoryCell );
+
+DeclareProperty( "CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject",
+                 IsHomalgCategory );
+
+DeclareProperty( "CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject",
+                 IsHomalgCategoryCell );
+
+## Function Attributes
+
+DeclareAttribute( "InitialObjectFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismFromInitialObjectFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismFromInitialObjectWithGivenInitialObjectFunction",
+                  IsHomalgCategory );
+
+## Add Operations
+
+DeclareOperation( "AddInitialObject",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromInitialObject",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
+                  [ IsHomalgCategory, IsFunction ] );
+
+## WasCreatedAs Filter
+
+DeclareFilter( "WasCreatedAsInitialObject" );
+
+####################################
+##
 ## Scheme for Universal Object
 ##
 ####################################
