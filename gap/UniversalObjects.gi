@@ -1046,13 +1046,173 @@ InstallTrueMethod( CanComputeUniversalMorphismIntoTerminalObject,
 
 InstallMethod( UniversalMorphismIntoTerminalObject,
                [ IsHomalgCategoryObject and CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject ],
-              -9999, #FIXME
+               -9999, #FIXME
               
   function( test_sink )
     
     return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_sink, TerminalObject( HomalgCategory( test_sink ) ) );
     
 end );
+
+####################################
+##
+## Initial Object
+##
+####################################
+
+####################################
+## Add Operations
+####################################
+
+##
+InstallMethod( AddInitialObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetInitialObjectFunction( category, func );
+    
+#     SetFilterObj( category, CanComputeInitialObject );
+    
+    SetCanComputeInitialObject( category, true );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromInitialObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismFromInitialObjectFunction( category, func );
+    
+#     SetFilterObj( category, CanComputeUniversalMorphismFromInitialObject );
+    
+    SetCanComputeUniversalMorphismFromInitialObject( category, true );
+    
+    InstallMethod( UniversalMorphismFromInitialObject,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                              
+      function( test_source )
+        local category, universal_morphism, initial_object;
+        
+        category := HomalgCategory( test_source );
+        
+        if HasInitialObject( category ) then
+        
+          return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_source, InitialObject( category ) );
+          
+        fi;
+        
+        universal_morphism := func( test_source );
+        
+        Add( HomalgCategory( test_source ), universal_morphism );
+        
+        initial_object := Source( universal_morphism );
+        
+        SetInitialObject( category, initial_object );
+        
+        SetFilterObj( initial_object, WasCreatedAsInitialObject );
+        
+        return universal_morphism;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromInitialObjectWithGivenInitialObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismFromInitialObjectWithGivenInitialObjectFunction( category, func );
+    
+#     SetFilterObj( category, CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject );
+    
+    SetCanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismFromDirectProductWithGivenInitialObject", 2 );
+    
+    InstallMethodWithCache( UniversalMorphismFromInitialObjectWithGivenInitialObject,
+                            [ IsHomalgCategoryObject and ObjectFilter( category ),
+                            IsHomalgCategoryObject and ObjectFilter( category ) ],
+                              
+      function( test_source, initial_object )
+        local universal_morphism;
+        
+        universal_morphism := func( test_source, initial_object );
+        
+        Add( HomalgCategory( test_source ), universal_morphism );
+        
+        return universal_morphism;
+        
+    end );
+    
+end );
+
+####################################
+## Attributes
+####################################
+
+##
+InstallMethod( InitialObject,
+               [ IsHomalgCategoryCell ],
+               
+  function( cell )
+    
+    return InitialObject( HomalgCategory( cell ) );
+    
+end );
+
+##
+# Because the diagram of the initial object is empty, the user
+# must not install UniversalMorphismFromInitialObject without installing InitialObject.
+# Thus the following implication is unnecessary:
+# InstallTrueMethod( CanComputeInitialObject, CanComputeUniversalMorphismFromInitialObject );
+
+InstallMethod( InitialObject,
+               [ IsHomalgCategory ],
+               
+  function( category )
+    local initial_object;
+    
+    if not CanComputeInitialObject( category ) then
+        
+        Error( "no possibility to construct initial object" );
+        
+    fi;
+    
+    initial_object := InitialObjectFunction( category )();
+    
+    Add( category, initial_object );
+    
+    SetFilterObj( initial_object, WasCreatedAsInitialObject );
+    
+    return initial_object;
+    
+end );
+
+####################################
+## Implied Operations
+####################################
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismFromInitialObject,
+                   CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject );
+
+InstallMethod( UniversalMorphismFromInitialObject,
+               [ IsHomalgCategoryObject and CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject ],
+               -9999, #FIXME
+              
+  function( test_source )
+    
+    return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_source, InitialObject( HomalgCategory( test_source ) ) );
+    
+end );
+
+
+
 
 ####################################
 ##
