@@ -306,7 +306,76 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
 
 DeclareFilter( "WasCreatedAsDirectProduct" );
 
+####################################
+##
+## Terminal Object
+##
+####################################
 
+## Main Operations and Attributes
+
+DeclareAttribute( "TerminalObject",
+                  IsHomalgCategory );
+
+DeclareAttribute( "TerminalObject",
+                  IsHomalgCategoryCell );
+
+DeclareAttribute( "UniversalMorphismIntoTerminalObject",
+                  IsHomalgCategoryObject );
+
+DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+## CanCompute Properties
+
+# DeclareFilter( "CanComputeTerminalObject" );
+# 
+# DeclareFilter( "CanComputeUniversalMorphismIntoTerminalObject" );
+# 
+# DeclareFilter( "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject" );
+
+DeclareProperty( "CanComputeTerminalObject",
+                 IsHomalgCategory );
+
+DeclareProperty( "CanComputeTerminalObject",
+                 IsHomalgCategoryCell );
+
+DeclareProperty( "CanComputeUniversalMorphismIntoTerminalObject",
+                 IsHomalgCategory );
+
+DeclareProperty( "CanComputeUniversalMorphismIntoTerminalObject",
+                 IsHomalgCategoryCell );
+
+DeclareProperty( "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+                 IsHomalgCategory );
+
+DeclareProperty( "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+                 IsHomalgCategoryCell );
+
+## Function Attributes
+
+DeclareAttribute( "TerminalObjectFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismIntoTerminalObjectFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFunction",
+                  IsHomalgCategory );
+
+## Add Operations
+
+DeclareOperation( "AddTerminalObject",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+                  [ IsHomalgCategory, IsFunction ] );
+
+## WasCreatedAs Filter
+
+DeclareFilter( "WasCreatedAsTerminalObject" );
 
 ####################################
 ##

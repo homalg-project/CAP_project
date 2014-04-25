@@ -827,28 +827,28 @@ end );
 ##
 InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFirstFactor );
 
-InstallMethodeWithCacheFromObject( DirectProductObject,
-                                   [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
-                                     IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
-                                   -9999,
-                                   
+InstallMethodWithCacheFromObject( DirectProductObject,
+                                  [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
+                                  IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
+                                  -9999,
+                                  
   function( object_A, object_B )
     
-    return Source( ProjectionInFirstFactor( object_A, object_B );
+    return Source( ProjectionInFirstFactor( object_A, object_B ) );
     
 end );
 
 ##
 InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInSecondFactor );
 
-InstallMethodeWithCacheFromObject( DirectProductObject,
-                                   [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
-                                     IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
-                                   -9999,
-                                   
+InstallMethodWithCacheFromObject( DirectProductObject,
+                                  [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
+                                  IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
+                                  -9999,
+                                  
   function( object_A, object_B )
     
-    return Source( ProjectionInSecondFactor( object_A, object_B );
+    return Source( ProjectionInSecondFactor( object_A, object_B ) );
     
 end );
 
@@ -895,6 +895,162 @@ InstallMethodWithCacheFromObject( ProjectionInSecondFactor,
     
 end );
 
+####################################
+##
+## Terminal Object
+##
+####################################
+
+####################################
+## Add Operations
+####################################
+
+##
+InstallMethod( AddTerminalObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetTerminalObjectFunction( category, func );
+    
+#     SetFilterObj( category, CanComputeTerminalObject );
+    
+    SetCanComputeTerminalObject( category, true );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoTerminalObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismIntoTerminalObjectFunction( category, func );
+    
+#     SetFilterObj( category, CanComputeUniversalMorphismIntoTerminalObject );
+    
+    SetCanComputeUniversalMorphismIntoTerminalObject( category, true );
+    
+    InstallMethod( UniversalMorphismIntoTerminalObject,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                              
+      function( test_sink )
+        local category, universal_morphism, terminal_object;
+        
+        category := HomalgCategory( test_sink );
+        
+        if HasTerminalObject( category ) then
+        
+          return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_sink, TerminalObject( category ) );
+          
+        fi;
+        
+        universal_morphism := func( test_sink );
+        
+        Add( HomalgCategory( test_sink ), universal_morphism );
+        
+        terminal_object := Source( universal_morphism );
+        
+        SetTerminalObject( category, terminal_object );
+        
+        SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
+        
+        return universal_morphism;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFunction( category, func );
+    
+#     SetFilterObj( category, CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject );
+    
+    SetCanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProductWithGivenTerminalObject", 2 );
+    
+    InstallMethodWithCache( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+                            [ IsHomalgCategoryObject and ObjectFilter( category ),
+                            IsHomalgCategoryObject and ObjectFilter( category ) ],
+                              
+      function( test_sink, terminal_object )
+        local universal_morphism;
+        
+        universal_morphism := func( test_sink, terminal_object );
+        
+        Add( HomalgCategory( test_sink ), universal_morphism );
+        
+        return universal_morphism;
+        
+    end );
+    
+end );
+
+####################################
+## Attributes
+####################################
+
+##
+InstallMethod( TerminalObject,
+               [ IsHomalgCategoryCell ],
+               
+  function( cell )
+    
+    return TerminalObject( HomalgCategory( cell ) );
+    
+end );
+
+##
+# Because the diagram of the terminal object is empty, the user
+# must not install UniversalMorphismIntoTerminalObject without installing TerminalObject.
+# Thus the following implication is unnecessary:
+# InstallTrueMethod( CanComputeTerminalObject, CanComputeUniversalMorphismIntoTerminalObject );
+
+InstallMethod( TerminalObject,
+               [ IsHomalgCategory ],
+               
+  function( category )
+    local terminal_object;
+    
+    if not CanComputeTerminalObject( category ) then
+        
+        Error( "no possibility to construct terminal object" );
+        
+    fi;
+    
+    terminal_object := TerminalObjectFunction( category )();
+    
+    Add( category, terminal_object );
+    
+    SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
+    
+    return terminal_object;
+    
+end );
+
+####################################
+## Implied Operations
+####################################
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismIntoTerminalObject,
+                   CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject );
+
+InstallMethod( UniversalMorphismIntoTerminalObject,
+               [ IsHomalgCategoryObject and CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject ],
+              -9999, #FIXME
+              
+  function( test_sink )
+    
+    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_sink, TerminalObject( HomalgCategory( test_sink ) ) );
+    
+end );
 
 ####################################
 ##
