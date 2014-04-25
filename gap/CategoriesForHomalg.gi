@@ -14,45 +14,6 @@ InstallValue( CATEGORIES_FOR_HOMALG,
               )
 );
 
-InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
-              
-              [ "CanComputeMonoAsKernelLift",
-                "CanComputeEpiAsCokernelColift",
-                "CanComputeIdentityMorphism",
-                "CanComputeInverse",
-                "CanComputeKernel",
-                "CanComputeKernelEmb",
-                "CanComputeKernelEmbWithGivenKernel",
-                "CanComputeKernelLift",
-                "CanComputeKernelLiftWithGivenKernel",
-                "CanComputeCokernel",
-                "CanComputeCokernelProj",
-                "CanComputeCokernelProjWithGivenCokernel",
-                "CanComputeCokernelColift",
-                "CanComputeCokernelColiftWithGivenCokernel",
-                "CanComputePreCompose",
-                "CanComputePostCompose",
-                "CanComputeZeroObject",
-                "CanComputeMorphismFromZeroObject",
-                "CanComputeMorphismIntoZeroObject",
-                "CanComputeZeroMorphism",
-                "CanComputeDirectSum",
-                "CanComputeProjectionInFirstFactor",
-                "CanComputeProjectionInSecondFactor",
-                "CanComputeInjectionFromFirstSummand",
-                "CanComputeInjectionFromSecondSummand",
-                "CanComputeTerminalObject",
-                "CanComputeUniversalMorphismIntoTerminalObject",
-                "CanComputeDirectProduct",
-                "CanComputeProjectionInFirstFactorOfDirectProduct",
-                "CanComputeProjectionInSecondFactorOfDirectProduct",
-                "CanComputeProjectionInFirstFactorWithGivenDirectProduct",
-                "CanComputeProjectionInSecondFactorWithGivenDirectProduct",
-                "CanComputeUniversalMorphismIntoDirectProduct",
-                "CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct"
-                 # .. 
-              ] );
-
 ##
 InstallGlobalFunction( CATEGORIES_FOR_HOMALG_NAME_COUNTER,
                        

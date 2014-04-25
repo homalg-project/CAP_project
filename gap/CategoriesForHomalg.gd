@@ -29,6 +29,46 @@ DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST" );
 
 DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION" );
 
+InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
+              
+              [ "CanComputeMonoAsKernelLift",
+                "CanComputeEpiAsCokernelColift",
+                "CanComputeIdentityMorphism",
+                "CanComputeInverse",
+                "CanComputeKernel",
+                "CanComputeKernelEmb",
+                "CanComputeKernelEmbWithGivenKernel",
+                "CanComputeKernelLift",
+                "CanComputeKernelLiftWithGivenKernel",
+                "CanComputeCokernel",
+                "CanComputeCokernelProj",
+                "CanComputeCokernelProjWithGivenCokernel",
+                "CanComputeCokernelColift",
+                "CanComputeCokernelColiftWithGivenCokernel",
+                "CanComputePreCompose",
+                "CanComputePostCompose",
+                "CanComputeZeroObject",
+                "CanComputeMorphismFromZeroObject",
+                "CanComputeMorphismIntoZeroObject",
+                "CanComputeZeroMorphism",
+                "CanComputeDirectSum",
+                "CanComputeProjectionInFirstFactor",
+                "CanComputeProjectionInSecondFactor",
+                "CanComputeInjectionFromFirstSummand",
+                "CanComputeInjectionFromSecondSummand",
+                "CanComputeTerminalObject",
+                "CanComputeUniversalMorphismIntoTerminalObject",
+                "CanComputeDirectProduct",
+                "CanComputeProjectionInFirstFactorOfDirectProduct",
+                "CanComputeProjectionInSecondFactorOfDirectProduct",
+                "CanComputeProjectionInFirstFactorWithGivenDirectProduct",
+                "CanComputeProjectionInSecondFactorWithGivenDirectProduct",
+                "CanComputeUniversalMorphismIntoDirectProduct",
+                "CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct",
+                "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject"
+                 # .. 
+              ] );
+
 ###################################
 ##
 #! @ResetLevel
@@ -52,6 +92,24 @@ DeclareCategory( "IsHomalgCategory",
 
 DeclareCategory( "IsHomalgCategoryCell",
                  IsObject );
+
+## Earliest possible place
+BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
+            
+  function( )
+    local i;
+    
+    for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
+        
+        DeclareProperty( i, IsHomalgCategory );
+        
+        DeclareProperty( i, IsHomalgCategoryCell );
+        
+    od;
+    
+end );
+
+INSTALL_CAN_COMPUTE_PROPERTIES( );
 
 ###################################
 ##
@@ -128,8 +186,6 @@ DeclareAttribute( "ZeroObject",
 #! @Description
 #!  Installs the function which returns the Identity morphism of an object. The argument <A>func</A> must be a function with one
 #!  argument which returns a morphism with source and target are the argument.
-DeclareProperty( "CanComputeIdentityMorphism",
-                 IsHomalgCategory );
 
 DeclareAttribute( "IdentityMorphismFunction",
                   IsHomalgCategory );
@@ -151,8 +207,6 @@ DeclareOperation( "AddIdentityMorphism",
 #!  the composition of its two arguments, i.e. if the arguments are two morphisms <A>phi</A>: $A \rightarrow B$ and <A>psi</A>: $B \rightarrow C$ it
 #!  has to return a morphism $\phi\psi : A \rightarrow C$. Source and target of this morphism will be set automatically. This function also installs
 #!  PostCompose, which is just CoPreCompose.
-DeclareProperty( "CanComputePreCompose",
-                 IsHomalgCategory );
 
 DeclareAttribute( "PreComposeFunction",
                   IsHomalgCategory );
@@ -160,8 +214,6 @@ DeclareAttribute( "PreComposeFunction",
 DeclareOperation( "AddPreCompose",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareProperty( "CanComputePostCompose",
-                 IsHomalgCategory );
 
 #! @EndGroup
 
@@ -178,8 +230,6 @@ DeclareProperty( "CanComputePostCompose",
 #!  ZeroObject can be called with an object or the category itself. Using ZeroObject, morphism into and from, and Precompose, one has ZeroMorphism
 #!  installed.
 #!  FIXME: Please add a bit more here.
-DeclareProperty( "CanComputeZeroObject",
-                 IsHomalgCategory );
 
 DeclareAttribute( "ZeroObjectFunction",
                   IsHomalgCategory );
@@ -187,8 +237,6 @@ DeclareAttribute( "ZeroObjectFunction",
 DeclareOperation( "AddZeroObject",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareProperty( "CanComputeMorphismIntoZeroObject",
-                 IsHomalgCategory );
 
 DeclareAttribute( "MorphismIntoZeroObjectFunction",
                   IsHomalgCategory );
@@ -196,8 +244,6 @@ DeclareAttribute( "MorphismIntoZeroObjectFunction",
 DeclareOperation( "AddMorphismIntoZeroObject",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareProperty( "CanComputeMorphismFromZeroObject",
-                 IsHomalgCategory );
 
 DeclareAttribute( "MorphismFromZeroObjectFunction",
                   IsHomalgCategory );
@@ -205,8 +251,6 @@ DeclareAttribute( "MorphismFromZeroObjectFunction",
 DeclareOperation( "AddMorphismFromZeroObject",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareProperty( "CanComputeZeroMorphism",
-                 IsHomalgCategory );
 
 #!  @EndGroup
 
@@ -216,8 +260,6 @@ DeclareProperty( "CanComputeZeroMorphism",
 ##
 ####################################
 
-DeclareProperty( "CanComputeDirectSum",
-                 IsHomalgCategory );
 
 DeclareAttribute( "DirectSum_OnObjectsFunction",
                   IsHomalgCategory );
@@ -225,8 +267,6 @@ DeclareAttribute( "DirectSum_OnObjectsFunction",
 DeclareOperation( "AddDirectSum_OnObjects",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareProperty( "CanComputeInjectionFromFirstSummand",
-                 IsHomalgCategory );
 
 DeclareAttribute( "InjectionFromFirstSummandFunction",
                   IsHomalgCategory );
@@ -234,8 +274,6 @@ DeclareAttribute( "InjectionFromFirstSummandFunction",
 DeclareOperation( "AddInjectionFromFirstSummand",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareProperty( "CanComputeInjectionFromSecondSummand",
-                 IsHomalgCategory );
 
 DeclareAttribute( "InjectionFromSecondSummandFunction",
                   IsHomalgCategory );
@@ -243,8 +281,6 @@ DeclareAttribute( "InjectionFromSecondSummandFunction",
 DeclareOperation( "AddInjectionFromSecondSummand",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareProperty( "CanComputeProjectionInFirstFactor",
-                 IsHomalgCategory );
 
 DeclareAttribute( "ProjectionInFirstFactorFunction",
                   IsHomalgCategory );
@@ -252,8 +288,6 @@ DeclareAttribute( "ProjectionInFirstFactorFunction",
 DeclareOperation( "AddProjectionInFirstFactor",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareProperty( "CanComputeProjectionInSecondFactor",
-                 IsHomalgCategory );
 
 DeclareAttribute( "ProjectionInSecondFactorFunction",
                   IsHomalgCategory );
@@ -270,8 +304,6 @@ DeclareOperation( "AddProjectionInSecondFactor",
 ##
 ####################################
 
-DeclareProperty( "CanComputeMonoAsKernelLift",
-                 IsHomalgCategory );
 
 DeclareAttribute( "MonoAsKernelLiftFunction",
                   IsHomalgCategory );
@@ -285,8 +317,6 @@ DeclareOperation( "AddMonoAsKernelLift",
 ##
 ####################################
 
-DeclareProperty( "CanComputeEpiAsCokernelColift",
-                 IsHomalgCategory );
 
 DeclareAttribute( "EpiAsCokernelColiftFunction",
                   IsHomalgCategory );
@@ -300,8 +330,6 @@ DeclareOperation( "AddEpiAsCokernelColift",
 ##
 ####################################
 
-DeclareProperty( "CanComputeInverse",
-                 IsHomalgCategory );
 
 DeclareAttribute( "InverseFunction",
                   IsHomalgCategory );

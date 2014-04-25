@@ -35,37 +35,6 @@ DeclareOperation( "KernelLift",
 DeclareOperation( "KernelLiftWithGivenKernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
-## CanCompute Properties
-DeclareProperty( "CanComputeKernel",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeKernel",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeKernelEmb",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeKernelEmb",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeKernelEmbWithGivenKernel",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeKernelEmbWithGivenKernel",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeKernelLift",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeKernelLift",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeKernelLiftWithGivenKernel",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeKernelLiftWithGivenKernel",
-                 IsHomalgCategoryCell );
-
 ## Function Attributes
 DeclareAttribute( "KernelFunction",
                   IsHomalgCategory );
@@ -126,37 +95,6 @@ DeclareOperation( "CokernelColift",
 
 DeclareOperation( "CokernelColiftWithGivenCokernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
-
-## CanCompute Properties
-DeclareProperty( "CanComputeCokernel",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeCokernel",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeCokernelProj",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeCokernelProj",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeCokernelProjWithGivenCokernel",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeCokernelProjWithGivenCokernel",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeCokernelColift",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeCokernelColift",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeCokernelColiftWithGivenCokernel",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeCokernelColiftWithGivenCokernel",
-                 IsHomalgCategoryCell );
 
 ## Function Attributes
 DeclareAttribute( "CokernelFunction",
@@ -228,29 +166,6 @@ DeclareOperation( "UniversalMorphismIntoDirectProduct",
 
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
-
-## CanCompute Properties
-
-DeclareProperty( "CanComputeDirectProduct",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeProjectionInFirstFactorOfDirectProduct",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeProjectionInSecondFactorOfDirectProduct",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeProjectionInFirstFactorWithGivenDirectProduct",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeProjectionInSecondFactorWithGivenDirectProduct",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeUniversalMorphismIntoDirectProduct",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                 IsHomalgCategory );
 
 ## Function Attributes
 
@@ -325,31 +240,6 @@ DeclareAttribute( "UniversalMorphismIntoTerminalObject",
 
 DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-## CanCompute Properties
-
-# DeclareFilter( "CanComputeTerminalObject" );
-# 
-# DeclareFilter( "CanComputeUniversalMorphismIntoTerminalObject" );
-# 
-# DeclareFilter( "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject" );
-
-DeclareProperty( "CanComputeTerminalObject",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeTerminalObject",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeUniversalMorphismIntoTerminalObject",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeUniversalMorphismIntoTerminalObject",
-                 IsHomalgCategoryCell );
-
-DeclareProperty( "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-                 IsHomalgCategory );
-
-DeclareProperty( "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-                 IsHomalgCategoryCell );
 
 ## Function Attributes
 
@@ -384,8 +274,6 @@ DeclareFilter( "WasCreatedAsTerminalObject" );
 ####################################
 
 ## Main Operations and Attributes
-
-## CanCompute Properties
 
 ## Function Attributes
 
