@@ -600,7 +600,7 @@ InstallMethod( AddProjectionInFirstFactorOfDirectProduct,
 end );
 
 ##
-InstallMethod( AddProjectionInFirstFactorWithGivenDirectProduct,
+InstallMethod( AddProjectionInFirstFactorOfDirectProductWithGivenDirectProduct,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
@@ -681,7 +681,7 @@ InstallMethod( AddProjectionInSecondFactorOfDirectProduct,
 end );
 
 ##
-InstallMethod( AddProjectionInSecondFactorWithGivenDirectProduct,
+InstallMethod( AddProjectionInSecondFactorOfDirectProductWithGivenDirectProduct,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
