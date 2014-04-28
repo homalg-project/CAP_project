@@ -320,7 +320,6 @@ AddUniversalMorphismIntoTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
 end );
 
 ##
-##
 AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
                                
   function( category, cat_obj )
@@ -337,5 +336,203 @@ AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CATEGORIES_FOR_HO
                          function( arg ) return Morphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
     
     return new_functor;
+    
+end );
+
+AddDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+                  
+  function( left_cat, right_cat )
+    local product_cat;
+    
+    return AsCatObject( Product( AsHomalgCategory( left_cat ), AsHomalgCategory( right_cat ) ) );
+    
+end );
+
+AddProjectionInFirstFactorOfDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+                            
+  function( left_cat, right_cat )
+    local product_cat, projection_functor;
+    
+    product_cat := AsCatObject( Product( AsHomalgCategory( left_cat ), AsHomalgCategory( right_cat ) ) );
+    
+    projection_functor := HomalgFunctor( Concatenation( "Projection into first factor of ", Name( AsHomalgCategory( product_cat ) ) ), product_cat, left_cat );
+    
+    AddObjectFunction( projection_functor,
+                       
+          function( obj )
+            
+            return obj[ 1 ];
+        end );
+        
+    AddMorphismFunction( projection_functor,
+                         
+          function( new_source, morphism, new_range )
+            
+            return morphism[ 1 ];
+            
+        end );
+        
+    return projection_functor;
+    
+end );
+
+AddProjectionInFirstFactorWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+                            
+  function( left_cat, product_cat )
+    local projection_functor;
+    
+    projection_functor := HomalgFunctor( Concatenation( "Projection into first factor of ", Name( AsHomalgCategory( product_cat ) ) ), product_cat, left_cat );
+    
+    AddObjectFunction( projection_functor,
+                       
+          function( obj )
+            
+            return obj[ 1 ];
+        end );
+        
+    AddMorphismFunction( projection_functor,
+                         
+          function( new_source, morphism, new_range )
+            
+            return morphism[ 1 ];
+            
+        end );
+        
+    return projection_functor;
+    
+end );
+
+AddProjectionInSecondFactorOfDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+                            
+  function( left_cat, right_cat )
+    local product_cat, projection_functor;
+    
+    product_cat := AsCatObject( Product( AsHomalgCategory( left_cat ), AsHomalgCategory( right_cat ) ) );
+    
+    projection_functor := HomalgFunctor( Concatenation( "Projection into second factor of ", Name( AsHomalgCategory( product_cat ) ) ), product_cat, right_cat );
+    
+    AddObjectFunction( projection_functor,
+                       
+          function( obj )
+            
+            return obj[ 2 ];
+        end );
+        
+    AddMorphismFunction( projection_functor,
+                         
+          function( new_source, morphism, new_range )
+            
+            return morphism[ 2 ];
+            
+        end );
+        
+    return projection_functor;
+    
+end );
+
+AddProjectionInSecondFactorWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+                            
+  function( right_cat, product_cat )
+    local projection_functor;
+    
+    projection_functor := HomalgFunctor( Concatenation( "Projection into second factor of ", Name( AsHomalgCategory( product_cat ) ) ), product_cat, right_cat );
+    
+    AddObjectFunction( projection_functor,
+                       
+          function( obj )
+            
+            return obj[ 2 ];
+            
+        end );
+        
+    AddMorphismFunction( projection_functor,
+                         
+          function( new_source, morphism, new_range )
+            
+            return morphism[ 2 ];
+            
+        end );
+        
+    return projection_functor;
+    
+end );
+
+AddUniversalMorphismIntoDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+                                       
+  function( mor_to_a, mor_to_b )
+    local product_cat, name_string, universal_functor;
+    
+    product_cat := AsCatObject( Product( AsHomalgCategory( Range( mor_to_a ) ), AsHomalgCategory( Range( mor_to_b ) ) ) );
+    
+    name_string := Concatenation( "Product functor from ", Name( AsHomalgCategory( Source( mor_to_a ) ) ), " to ", Name( AsHomalgCategory( product_cat ) ) );
+    
+    universal_functor := HomalgFunctor( name_string, Source( mor_to_a ), product_cat );
+    
+    AddObjectFunction( universal_functor,
+                       
+          function( object )
+            local left_object, right_object;
+            
+            left_object := ApplyFunctor( mor_to_a, object );
+            
+            right_object := ApplyFunctor( mor_to_b, object );
+            
+            return Product( left_object, right_object );
+            
+        end );
+        
+    AddMorphismFunction( universal_functor,
+                         
+          function( new_source, morphism, new_range )
+            local left_morphism, right_morphism;
+            
+            left_morphism := ApplyFunctor( mor_to_a, morphism );
+            
+            right_morphism := ApplyFunctor( mor_to_b, morphism );
+            
+            return Product( left_morphism, right_morphism );
+            
+        end );
+        
+    return universal_functor;
+    
+end );
+
+AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+                                       
+  function( mor_to_a, mor_to_b, product_cat )
+    local name_string, universal_functor;
+    
+    name_string := Concatenation( "Product functor from ", Name( AsHomalgCategory( Source( mor_to_a ) ) ), " to ", Name( AsHomalgCategory( product_cat ) ) );
+    
+    universal_functor := HomalgFunctor( name_string, Source( mor_to_a ), product_cat );
+    
+    AddObjectFunction( universal_functor,
+                       
+          function( object )
+            local left_object, right_object;
+            
+            left_object := ApplyFunctor( mor_to_a, object );
+            
+            right_object := ApplyFunctor( mor_to_b, object );
+            
+            return Product( left_object, right_object );
+            
+        end );
+        
+    AddMorphismFunction( universal_functor,
+                         
+          function( new_source, morphism, new_range )
+            local left_morphism, right_morphism;
+            
+            left_morphism := ApplyFunctor( mor_to_a, morphism );
+            
+            right_morphism := ApplyFunctor( mor_to_b, morphism );
+            
+            return Product( left_morphism, right_morphism );
+            
+        end );
+        
+    return universal_functor;
     
 end );

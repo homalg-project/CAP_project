@@ -679,6 +679,7 @@ InstallMethod( InstallHasAndSet,
         
     fi;
     
+    
     InstallOtherMethod( ValueGlobal( has_name ),
                         filter,
                         
@@ -697,15 +698,17 @@ InstallMethod( InstallHasAndSet,
                         Concatenation( filter, [ IsObject ] ),
                         
       function( arg )
-        local cache, cache_return;
+        local cache, cache_key, cache_return;
         
         cache := CachingObject( arg[ cache_number ], name, Length( arg ) );
         
-        cache_return := CacheValue( cache, arg );
+        cache_key := arg{[ 1 .. Length( arg ) - 1 ]};
+        
+        cache_return := CacheValue( cache, cache_key );
         
         if cache_return = SuPeRfail then
             
-            CallFuncList( SetCacheValue, Concatenation( [ cache ], arg ) );
+            CallFuncList( SetCacheValue, [ cache, cache_key, arg[ Length( arg ) ] ] );
             
         fi;
         
