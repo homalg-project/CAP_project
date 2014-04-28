@@ -525,7 +525,7 @@ InstallMethod( AddDirectProduct,
     
     SetCanComputeDirectProduct( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "DirectProduct", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "DirectProductObject", 2 );
     
     InstallMethodWithCache( DirectProductObject,
                             [ IsHomalgCategoryObject and ObjectFilter( category ),
