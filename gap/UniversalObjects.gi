@@ -730,6 +730,12 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
       function( mor_to_A, mor_to_B )
         local object_A, object_B, universal_morphism, direct_product;
         
+        if not IsIdenticalObj( Source( mor_to_A ), Source( mor_to_B ) ) then
+            
+            Error( "Sources must be identical in diagram" );
+            
+        fi;
+        
         object_A := Range( mor_to_A );
         
         object_B := Range( mor_to_B );
@@ -775,6 +781,12 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
                               
       function( mor_to_A, mor_to_B, direct_product )
         local universal_morphism;
+        
+        if not IsIdenticalObj( Source( mor_to_A ), Source( mor_to_B ) ) then
+            
+            Error( "Sources must be identical in diagram" );
+            
+        fi;
         
         universal_morphism := func( mor_to_A, mor_to_B, direct_product );
         
