@@ -285,7 +285,7 @@ AddProjectionInFirstFactorOfDirectProduct( vecspaces,
 end );
 
 ##
-AddProjectionInFirstFactorWithGivenDirectProduct( vecspaces,
+AddProjectionInFirstFactorOfDirectProductWithGivenDirectProduct( vecspaces,
 
   function( a, direct_product )
     local projection_in_first_factor;
@@ -315,7 +315,7 @@ AddProjectionInSecondFactorOfDirectProduct( vecspaces,
 end );
 
 ##
-AddProjectionInSecondFactorWithGivenDirectProduct( vecspaces,
+AddProjectionInSecondFactorOfDirectProductWithGivenDirectProduct( vecspaces,
 
   function( a, direct_product )
     local projection_in_first_factor;

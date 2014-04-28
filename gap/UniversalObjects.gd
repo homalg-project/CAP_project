@@ -203,11 +203,11 @@ DeclareOperation( "AddProjectionInSecondFactorOfDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 
-DeclareOperation( "AddProjectionInFirstFactorWithGivenDirectProduct",
+DeclareOperation( "AddProjectionInFirstFactorOfDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 
-DeclareOperation( "AddProjectionInSecondFactorWithGivenDirectProduct",
+DeclareOperation( "AddProjectionInSecondFactorOfDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
