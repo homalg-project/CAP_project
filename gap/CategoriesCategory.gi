@@ -376,7 +376,7 @@ AddProjectionInFirstFactorOfDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
     
 end );
 
-AddProjectionInFirstFactorWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+AddProjectionInFirstFactorOfDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
                             
   function( left_cat, product_cat )
     local projection_functor;
@@ -430,7 +430,7 @@ AddProjectionInSecondFactorOfDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
     
 end );
 
-AddProjectionInSecondFactorWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+AddProjectionInSecondFactorOfDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
                             
   function( right_cat, product_cat )
     local projection_functor;
