@@ -71,6 +71,15 @@ DeclareAttribute( "MorphismFunction",
 DeclareOperation( "HomalgFunctor",
                   [ IsString, IsHomalgCategory, IsHomalgCategory ] );
 
+DeclareOperation( "HomalgFunctor",
+                  [ IsString, IsHomalgCategoryAsCatObject, IsHomalgCategory ] );
+
+DeclareOperation( "HomalgFunctor",
+                  [ IsString, IsHomalgCategory, IsHomalgCategoryAsCatObject ] );
+
+DeclareOperation( "HomalgFunctor",
+                  [ IsString, IsHomalgCategoryAsCatObject, IsHomalgCategoryAsCatObject ] );
+
 ####################################
 ##
 ## Functor Constructors

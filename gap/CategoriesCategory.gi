@@ -80,6 +80,36 @@ InstallMethod( HomalgFunctor,
 end );
 
 ##
+InstallMethod( HomalgFunctor,
+               [ IsString, IsHomalgCategoryAsCatObject, IsHomalgCategory ],
+               
+  function( name, source, range )
+    
+    return HomalgFunctor( name, AsHomalgCategory( source ), range );
+    
+end );
+
+##
+InstallMethod( HomalgFunctor,
+               [ IsString, IsHomalgCategory, IsHomalgCategoryAsCatObject ],
+               
+  function( name, source, range )
+    
+    return HomalgFunctor( name, source, AsHomalgCategory( range ) );
+    
+end );
+
+##
+InstallMethod( HomalgFunctor,
+               [ IsString, IsHomalgCategoryAsCatObject, IsHomalgCategoryAsCatObject ],
+               
+  function( name, source, range )
+    
+    return HomalgFunctor( name, AsHomalgCategory( source ), AsHomalgCategory( range ) );
+    
+end );
+
+##
 InstallMethod( AddObjectFunction,
                [ IsHomalgFunctor, IsFunction ],
                
@@ -245,8 +275,8 @@ AddIdentityMorphism( CATEGORIES_FOR_HOMALG_Cat,
   function( category )
     local new_functor;
     
-    new_functor := HomalgFunctor( Concatenation( "Identity functor of ", Name( category ),
-                                                 category, category ) );
+    new_functor := HomalgFunctor( Concatenation( "Identity functor of ", Name( AsHomalgCategory( category ) ) ),
+                                                 category, category );
     
     AddObjectFunction( new_functor,
                        
@@ -260,4 +290,52 @@ AddIdentityMorphism( CATEGORIES_FOR_HOMALG_Cat,
     
 end );
 
+##
+AddTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
+                   
+  function( )
+    
+    return CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT;
+    
+end );
 
+##
+AddUniversalMorphismIntoTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
+                               
+  function( category )
+    local new_functor;
+    
+    new_functor := HomalgFunctor( Concatenation( "The terminal of ", Name( AsHomalgCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
+    
+    AddObjectFunction( new_functor,
+                       
+                       function( arg ) return Object( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+    
+    AddMorphismFunction( new_functor,
+                         
+                         function( arg ) return Morphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+    
+    return new_functor;
+    
+end );
+
+##
+##
+AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
+                               
+  function( category, cat_obj )
+    local new_functor;
+    
+    new_functor := HomalgFunctor( Concatenation( "The terminal of ", Name( AsHomalgCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
+    
+    AddObjectFunction( new_functor,
+                       
+                       function( arg ) return Object( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+    
+    AddMorphismFunction( new_functor,
+                         
+                         function( arg ) return Morphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+    
+    return new_functor;
+    
+end );
