@@ -219,7 +219,8 @@ InstallImmediateMethod( DirectProductFunctor,
                         IsHomalgCategory and
                         CanComputeProjectionInFirstFactor and
                         CanComputeProjectionInSecondFactor and
-                        CanComputeUniversalMorphismIntoDirectProduct,
+                        CanComputeUniversalMorphismIntoDirectProduct and
+                        CanComputePreCompose,
                         0,
                         
   function( category )
