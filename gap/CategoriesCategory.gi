@@ -284,7 +284,7 @@ AddIdentityMorphism( CATEGORIES_FOR_HOMALG_Cat,
     
     AddMorphismFunction( new_functor,
                          
-      arg -> arg[ 2 ] );
+      function( arg ) return arg[ 2 ]; end );
     
     return new_functor;
     
