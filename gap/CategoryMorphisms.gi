@@ -135,7 +135,7 @@ InstallMethod( Inverse,
         
         return MonoAsKernelLift( mor, identity_of_range );
         
-end : ArgumentNumber := 1 );
+end );
 
 
 ##

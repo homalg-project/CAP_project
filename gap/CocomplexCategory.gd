@@ -11,7 +11,16 @@
 #############################################################################
 
 DeclareCategory( "IsHomalgCocomplex",
-                 IsHomalgCategoryObject )
+                 IsHomalgCategoryObject );
 
 DeclareCategory( "IsHomalgCochainMorphism",
-                 IsHomalgCategoryMorphism )
+                 IsHomalgCategoryMorphism );
+
+#################################################
+##
+## Constructors
+##
+#################################################
+
+DeclareAttribute( "CocomplexCategory",
+                  IsHomalgCategory );

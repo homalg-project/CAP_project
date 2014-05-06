@@ -45,11 +45,6 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT" );
 
 DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT" );
 
-
-
-
-
-
 DeclareAttribute( "Genesis",
                   IsHomalgCategoryCell );
 

@@ -749,9 +749,9 @@ InstallMethod( CreateHomalgCategory,
     
 end );
 
-InstallMethod( CreateHomalgCategory,
-               [ IsString ],
-               
+InstallMethodWithCache( CreateHomalgCategory,
+                        [ IsString ],
+                        
   function( name )
     local category;
     

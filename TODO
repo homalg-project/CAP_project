@@ -3,20 +3,21 @@
   - Pullback
   - Pushout
   - Direkte Summe
-* Restrukturierung der Dateien -> Sepp
 * Dokumentation
 * Tests
   - Abgeleitete Algorithmen testen
-* View-Methoden für Kategorien -> Gutsche
 * Null => initial und terminal. -> Sepp
+
+Neue Sachen:
+
+* IsMorphism.
+* Extend direct product.
+* Convenience functions for functors 
 
 Neue Kategorien
 
-* Terminale Kategorie
-  - Funktoren in andere Kategorien
-    zum Auszeichnen anderer Objekte
 * Komplexe -> Gutsche
-* Cokomplexe -> Gutsche
+* Cokomplexe -> Gutsche -> QPA
 * Verallgemeinerte Morphismen
 * Serre-Quotienten
 * Spektralsequenzen

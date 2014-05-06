@@ -9,17 +9,26 @@
 #############################################################################
 
 DeclareRepresentation( "IsHomalgCocomplexRep",
-                       IsAttributeStoringRep and IsHomalgCategoryObjectRep,
+                       IsHomalgCocomplex and IsAttributeStoringRep and IsHomalgCategoryObjectRep,
                        [ ] );
 
-DeclareRepresentation( "IsHomalgCategoryProductMorphismRep",
-                       IsAttributeStoringRep and IsHomalgCategoryMorphismRep,
+DeclareRepresentation( "IsHomalgCochainMorphismRep",
+                       IsHomalgChainMorphism and IsAttributeStoringRep and IsHomalgCategoryMorphismRep,
                        [ ] );
 
-BindGlobal( "TheTypeOfHomalgCategoryProductObjects",
+BindGlobal( "TheTypeOfHomalgCocomplexes",
         NewType( TheFamilyOfHomalgCategoryObjects,
-                IsHomalgCategoryProductObjectRep ) );
+                IsHomalgCocomplexRep ) );
 
 BindGlobal( "TheTypeOfHomalgCategoryProductMorphisms",
         NewType( TheFamilyOfHomalgCategoryMorphisms,
-                IsHomalgCategoryProductMorphismRep ) );
+                IsHomalgCochainMorphismRep ) );
+
+#################################################
+##
+## Constructors
+##
+#################################################
+
+
+

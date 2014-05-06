@@ -483,7 +483,7 @@ T := QVectorSpace( 2 );
 
 B := QVectorSpace( 2 );
 
-A :=  QVectorSpace( 1 );
+A := QVectorSpace( 1 );
 
 
 # KernelLift Test:

@@ -96,6 +96,12 @@ InstallGlobalFunction( COMPARE_LISTS_WITH_IDENTICAL,
         
     fi;
     
+    if IsString( list1 ) and IsString( list2 ) then
+        
+        return list1 = list2;
+        
+    fi;
+    
     for i in [ 1 .. Length( list1 ) ] do
         
         if not IsBoundElmWPObj( list1, i ) or not IsBoundElmWPObj( list2, i ) then
@@ -346,7 +352,15 @@ InstallMethod( SetCacheValue,
             
             if IsList( key_list[ i ] ) then
                 
-                crisp_keys[ i ][ position ] := WeakPointerObj( key_list[ i ] );
+                if IsString( key_list[ i ] ) then
+                    
+                    crisp_keys[ i ][ position ] := key_list[ i ];
+                    
+                else
+                    
+                    crisp_keys[ i ][ position ] := WeakPointerObj( key_list[ i ] );
+                    
+                fi;
                 
                 SetElmWPObj( keys[ i ], position, SuPeRfail );
                 
