@@ -156,6 +156,44 @@ end );
 
 ###########################
 ##
+## PreCompose
+##
+###########################
+
+## Caching this method is not necessary. It does not create any new object.
+InstallMethod( PreCompose,
+               [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and IsOne ],
+               
+  function( morphism, id )
+    
+    if not IsIdenticalObj( Range( morphism ), Source( id ) ) then
+        
+        Error( "morphisms are not composable" );
+        
+    fi;
+    
+    return morphism;
+    
+end );
+
+## Caching this method is not necessary. It does not create any new object.
+InstallMethod( PreCompose,
+               [ IsHomalgCategoryMorphism and IsOne, IsHomalgCategoryMorphism ],
+               
+  function( id, morphism )
+    
+    if not IsIdenticalObj( Source( morphism ), Range( id ) ) then
+        
+        Error( "morphisms are not composable" );
+        
+    fi;
+    
+    return morphism;
+    
+end );
+
+###########################
+##
 ## Print
 ##
 ###########################
