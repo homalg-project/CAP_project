@@ -213,9 +213,9 @@ InstallMethod( AddIdentityMorphism,
     
     SetCanComputeIdentityMorphism( category, true );
     
-      InstallMethod( IdentityMorphism,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
-                   
+      InstallMethodWithToDoForIsWellDefined( IdentityMorphism,
+                                             [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                             
       function( object )
         local ret_val;
         

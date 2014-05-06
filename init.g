@@ -1,3 +1,7 @@
+ReadPackage( "CategoriesForHomalg", "gap/ToolsForCategories.gd");
+
+ReadPackage( "CategoriesForHomalg", "gap/ToolsForCategories.gi");
+
 ReadPackage( "CategoriesForHomalg", "gap/CategoriesForHomalg.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/CategoryObjects.gd");
