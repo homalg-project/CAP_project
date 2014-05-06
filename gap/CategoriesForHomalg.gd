@@ -171,6 +171,15 @@ DeclareAttribute( "ZeroObject",
 
 #############################################
 ##
+#! @Section Well defined
+##
+#############################################
+
+DeclareProperty( "IsWellDefined",
+                 IsHomalgCategoryCell );
+
+#############################################
+##
 #! @Section Add functions
 ##
 #############################################
