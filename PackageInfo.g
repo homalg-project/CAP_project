@@ -5,7 +5,7 @@ PackageName := "CategoriesForHomalg",
 Subtitle := "TODO",
 
 Version := Maximum( [
-  "2014.05.06", ## Sebas' version
+  "2014.05.08", ## Sebas' version
   ## this line prevents merge conflicts
   "2014.03.11", ## Sepp's version
 ] ),
@@ -66,7 +66,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2014.01.01" ],
-                           [ "ToolsForHomalg", ">= 2014.05.06" ],
+                           [ "ToolsForHomalg", ">= 2014.05.08" ],
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := []

@@ -117,8 +117,8 @@ DeclareAttribute( "InjectionFromSecondSummand",
 ###################################
 
 
-DeclareAttribute( "IdentityMorphism",
-                  IsHomalgCategoryObject );
+DeclareAttributeWithToDoForIsWellDefined( "IdentityMorphism",
+                                          IsHomalgCategoryObject );
 
 ###################################
 ##

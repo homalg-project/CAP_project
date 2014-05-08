@@ -273,7 +273,7 @@ InstallMethod( AddPreCompose,
         
         return ret_val;
         
-      end );
+      end :  );
     
 end );
 

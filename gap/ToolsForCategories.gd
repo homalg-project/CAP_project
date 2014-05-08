@@ -9,3 +9,8 @@
 #############################################################################
 
 DeclareGlobalFunction( "InstallMethodWithToDoForIsWellDefined" );
+
+DeclareOperation( "InstallSetWithToDoForIsWellDefined",
+                  [ IsObject, IsString, IsList ] );
+
+DeclareGlobalFunction( "DeclareAttributeWithToDoForIsWellDefined" );
