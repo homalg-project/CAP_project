@@ -30,9 +30,9 @@ InstallMethod( AddKernel,
     
     SetCanComputeKernel( category, true );
     
-    InstallMethod( KernelObject,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
-                     
+    InstallMethodWithToDoForIsWellDefined( KernelObject,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
       function( mor )
         local kernel;
         
@@ -62,10 +62,10 @@ InstallMethod( AddKernelLift,
     
     DECIDE_INSTALL_FUNCTION( category, "KernelLift", 2 );
     
-    InstallMethodWithCache( KernelLift,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryMorphism and MorphismFilter( category ) ],
-                       
+    InstallMethodWithToDoForIsWellDefined( KernelLift,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
       function( mor, test_morphism )
         local kernel_lift, kernel;
         
@@ -89,7 +89,7 @@ InstallMethod( AddKernelLift,
         
         return kernel_lift;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -105,11 +105,11 @@ InstallMethod( AddKernelLiftWithGivenKernel,
     
     DECIDE_INSTALL_FUNCTION( category, "KernelLiftWithGivenKernel", 3 );
     
-    InstallMethodWithCache( KernelLiftWithGivenKernel,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryObject and ObjectFilter( category ) ],
-                            
+    InstallMethodWithToDoForIsWellDefined( KernelLiftWithGivenKernel,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( mor, test_morphism, kernel )
         local kernel_lift;
         
@@ -119,7 +119,7 @@ InstallMethod( AddKernelLiftWithGivenKernel,
         
         return kernel_lift;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -133,9 +133,9 @@ InstallMethod( AddKernelEmb,
     
     SetCanComputeKernelEmb( category, true );
     
-    InstallMethod( KernelEmb,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
-                   
+    InstallMethodWithToDoForIsWellDefined( KernelEmb,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
       function( mor )
         local kernel_emb, kernel;
         
@@ -179,10 +179,10 @@ InstallMethod( AddKernelEmbWithGivenKernel,
     
     DECIDE_INSTALL_FUNCTION( category, "KernelEmbWithGivenKernel", 2 );
     
-    InstallMethodWithCache( KernelEmbWithGivenKernel,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryObject and ObjectFilter( category ) ],
-                            
+    InstallMethodWithToDoForIsWellDefined( KernelEmbWithGivenKernel,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( mor, kernel )
         local kernel_emb;
         
@@ -196,7 +196,7 @@ InstallMethod( AddKernelEmbWithGivenKernel,
         
         return kernel_emb;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
 
 end );
 
@@ -280,9 +280,9 @@ InstallMethod( AddCokernel,
     
     SetCanComputeCokernel( category, true );
     
-    InstallMethod( Cokernel,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
-                     
+    InstallMethodWithToDoForIsWellDefined( Cokernel,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
       function( mor )
         local cokernel;
         
@@ -312,10 +312,10 @@ InstallMethod( AddCokernelColift,
     
     DECIDE_INSTALL_FUNCTION( category, "CokernelColift", 2 );
     
-    InstallMethodWithCache( CokernelColift,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryMorphism and MorphismFilter( category ) ],
-                       
+    InstallMethodWithToDoForIsWellDefined( CokernelColift,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
       function( mor, test_morphism )
         local cokernel_colift, cokernel;
         
@@ -337,7 +337,7 @@ InstallMethod( AddCokernelColift,
         
         return cokernel_colift;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -353,11 +353,11 @@ InstallMethod( AddCokernelColiftWithGivenCokernel,
     
     DECIDE_INSTALL_FUNCTION( category, "CokernelColiftWithGivenCokernel", 3 );
     
-    InstallMethodWithCache( CokernelColiftWithGivenCokernel,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryObject and ObjectFilter( category ) ],
-                            
+    InstallMethodWithToDoForIsWellDefined( CokernelColiftWithGivenCokernel,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( mor, test_morphism, cokernel )
         local cokernel_colift;
         
@@ -367,7 +367,7 @@ InstallMethod( AddCokernelColiftWithGivenCokernel,
         
         return cokernel_colift;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -381,9 +381,9 @@ InstallMethod( AddCokernelProj,
     
     SetCanComputeCokernelProj( category, true );
     
-    InstallMethod( CokernelProj,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
-                   
+    InstallMethodWithToDoForIsWellDefined( CokernelProj,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
       function( mor )
         local cokernel_proj, cokernel;
         
@@ -425,10 +425,10 @@ InstallMethod( AddCokernelProjWithGivenCokernel,
     
     DECIDE_INSTALL_FUNCTION( category, "CokernelProjWithGivenCokernel", 2 );
     
-    InstallMethodWithCache( CokernelProjWithGivenCokernel,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryObject and ObjectFilter( category ) ],
-                            
+    InstallMethodWithToDoForIsWellDefined( CokernelProjWithGivenCokernel,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( mor, cokernel )
         local cokernel_proj;
         
@@ -442,7 +442,7 @@ InstallMethod( AddCokernelProjWithGivenCokernel,
         
         return cokernel_proj;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -527,10 +527,10 @@ InstallMethod( AddDirectProduct,
     
     DECIDE_INSTALL_FUNCTION( category, "DirectProductObject", 2 );
     
-    InstallMethodWithCache( DirectProductObject,
-                            [ IsHomalgCategoryObject and ObjectFilter( category ),
-                              IsHomalgCategoryObject and ObjectFilter( category ) ],
-      
+    InstallMethodWithToDoForIsWellDefined( DirectProductObject,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( object_A, object_B )
         local direct_product;
         
@@ -544,7 +544,7 @@ InstallMethod( AddDirectProduct,
         
         return direct_product;
         
-    end );
+    end : InstallMethod := InstallMethodWithToDoForIsWellDefined );
     
 
 end );
@@ -561,10 +561,10 @@ InstallMethod( AddProjectionInFirstFactorOfDirectProduct,
     
     DECIDE_INSTALL_FUNCTION( category, "ProjectionInFirstFactor", 2 );
     
-    InstallMethodWithCache( ProjectionInFirstFactor, ## this name is also used for direct sum
-                            [ IsHomalgCategoryObject and ObjectFilter( category ),
-                              IsHomalgCategoryObject and ObjectFilter( category ) ],
-                              
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFirstFactor, ## this name is also used for direct sum
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( object_A, object_B )
         local projection_in_first_factor, direct_product;
         
@@ -595,7 +595,7 @@ InstallMethod( AddProjectionInFirstFactorOfDirectProduct,
         
         return projection_in_first_factor;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
 
 end );
 
@@ -611,10 +611,10 @@ InstallMethod( AddProjectionInFirstFactorOfDirectProductWithGivenDirectProduct,
     
     DECIDE_INSTALL_FUNCTION( category, "ProjectionInFirstFactorWithGivenDirectProduct", 2 );
     
-    InstallMethodWithCache( ProjectionInFirstFactorWithGivenDirectProduct,
-                            [ IsHomalgCategoryObject and ObjectFilter( category ),
-                            IsHomalgCategoryObject and ObjectFilter( category ) ],
-                            
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFirstFactorWithGivenDirectProduct,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( obj_A, direct_product )
         local projection_in_first_factor;
         
@@ -626,7 +626,7 @@ InstallMethod( AddProjectionInFirstFactorOfDirectProductWithGivenDirectProduct,
         
         return projection_in_first_factor;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -642,10 +642,10 @@ InstallMethod( AddProjectionInSecondFactorOfDirectProduct,
     
     DECIDE_INSTALL_FUNCTION( category, "ProjectionInSecondFactor", 2 );
     
-    InstallMethodWithCache( ProjectionInSecondFactor, ## this name is also used for direct sum
-                            [ IsHomalgCategoryObject and ObjectFilter( category ),
-                              IsHomalgCategoryObject and ObjectFilter( category ) ],
-                              
+    InstallMethodWithToDoForIsWellDefined( ProjectionInSecondFactor, ## this name is also used for direct sum
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( object_A, object_B )
         local projection_in_second_factor, direct_product;
         
@@ -676,7 +676,7 @@ InstallMethod( AddProjectionInSecondFactorOfDirectProduct,
         
         return projection_in_second_factor;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -692,10 +692,10 @@ InstallMethod( AddProjectionInSecondFactorOfDirectProductWithGivenDirectProduct,
     
     DECIDE_INSTALL_FUNCTION( category, "ProjectionInSecondFactorWithGivenDirectProduct", 2 );
     
-    InstallMethodWithCache( ProjectionInSecondFactorWithGivenDirectProduct,
-                            [ IsHomalgCategoryObject and ObjectFilter( category ),
-                            IsHomalgCategoryObject and ObjectFilter( category ) ],
-                            
+    InstallMethodWithToDoForIsWellDefined( ProjectionInSecondFactorWithGivenDirectProduct,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( obj_A, direct_product )
         local projection_in_second_factor;
         
@@ -707,7 +707,7 @@ InstallMethod( AddProjectionInSecondFactorOfDirectProductWithGivenDirectProduct,
         
         return projection_in_second_factor;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -723,10 +723,10 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
     
     DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProduct", 2 );
     
-    InstallMethodWithCache( UniversalMorphismIntoDirectProduct,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
-                              
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProduct,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
       function( mor_to_A, mor_to_B )
         local object_A, object_B, universal_morphism, direct_product;
         
@@ -758,9 +758,11 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         return universal_morphism;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
+
+## CONTINUE HERE!
 
 ##
 InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
@@ -774,10 +776,10 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
     
     DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 3 );
     
-    InstallMethodWithCache( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                              IsHomalgCategoryMorphism and MorphismFilter( category ),
-                              IsHomalgCategoryObject and ObjectFilter( category ) ],
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
                               
       function( mor_to_A, mor_to_B, direct_product )
         local universal_morphism;
@@ -794,7 +796,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
         
         return universal_morphism;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -840,74 +842,74 @@ end );
 InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFirstFactor );
 
 ##
-InstallMethodWithCacheFromObject( DirectProductObject,
-                                  [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
-                                  IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
-                                  -9999,
-                                  
+InstallMethodWithToDoForIsWellDefined( DirectProductObject,
+                                       [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
+                                         IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
+                                        -9999,
+                                        
   function( object_A, object_B )
     
     return Source( ProjectionInFirstFactor( object_A, object_B ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInSecondFactor );
 
 ##
-InstallMethodWithCacheFromObject( DirectProductObject,
-                                  [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
-                                  IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
-                                  -9999,
-                                  
+InstallMethodWithToDoForIsWellDefined( DirectProductObject,
+                                       [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
+                                         IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
+                                         -9999,
+                                       
   function( object_A, object_B )
     
     return Source( ProjectionInSecondFactor( object_A, object_B ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProduct,
                    CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct );
 
-InstallMethodWithCacheFromObject( UniversalMorphismIntoDirectProduct,
-                                  [ IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                                  IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
-                                  -9999, #FIXME
-                                  
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProduct,
+                                       [ IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
+                                         IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
+                                         -9999, #FIXME
+                                       
   function( mor_to_A, mor_to_B )
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( mor_to_A, mor_to_B, DirectProductObject( Range( mor_to_A ), Range( mor_to_B ) ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallTrueMethod( CanComputeProjectionInFirstFactor, CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct );
 
-InstallMethodWithCacheFromObject( ProjectionInFirstFactor,
-                                  [ IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct,
-                                  IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct ],
-                                  -9999, #FIXME
-                                  
+InstallMethodWithToDoForIsWellDefined( ProjectionInFirstFactor,
+                                       [ IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct,
+                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct ],
+                                         -9999, #FIXME
+                                         
   function( object_A, object_B )
     
     return ProjectionInFirstFactorWithGivenDirectProduct( object_A, object_B, DirectProductObject( object_A, object_B ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject);
 
 ##
 InstallTrueMethod( CanComputeProjectionInSecondFactor, CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct );
 
-InstallMethodWithCacheFromObject( ProjectionInSecondFactor,
-                                  [ IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct,
-                                  IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct ],
-                                  -9999, #FIXME
-                                  
+InstallMethodWithToDoForIsWellDefined( ProjectionInSecondFactor,
+                                       [ IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct,
+                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct ],
+                                         -9999, #FIXME
+                                       
   function( object_A, object_B )
     
     return ProjectionInSecondFactorWithGivenDirectProduct( object_A, object_B, DirectProductObject( object_A, object_B ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ####################################
 ##
@@ -945,9 +947,9 @@ InstallMethod( AddUniversalMorphismIntoTerminalObject,
     
     SetCanComputeUniversalMorphismIntoTerminalObject( category, true );
     
-    InstallMethod( UniversalMorphismIntoTerminalObject,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
-                              
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoTerminalObject,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( test_sink )
         local category, universal_morphism, terminal_object;
         
@@ -989,10 +991,10 @@ InstallMethod( AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
     
     DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProductWithGivenTerminalObject", 2 );
     
-    InstallMethodWithCache( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
-                            [ IsHomalgCategoryObject and ObjectFilter( category ),
-                            IsHomalgCategoryObject and ObjectFilter( category ) ],
-                              
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( test_sink, terminal_object )
         local universal_morphism;
         
@@ -1002,7 +1004,7 @@ InstallMethod( AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
         
         return universal_morphism;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -1026,9 +1028,10 @@ end );
 # Thus the following implication is unnecessary:
 # InstallTrueMethod( CanComputeTerminalObject, CanComputeUniversalMorphismIntoTerminalObject );
 
-InstallMethod( TerminalObject,
-               [ IsHomalgCategory ],
-               
+## Maybe set IsWellDefined by default.
+InstallMethodWithToDoForIsWellDefined( TerminalObject,
+                                       [ IsHomalgCategory ],
+                                       
   function( category )
     local terminal_object;
     
@@ -1102,9 +1105,9 @@ InstallMethod( AddUniversalMorphismFromInitialObject,
     
     SetCanComputeUniversalMorphismFromInitialObject( category, true );
     
-    InstallMethod( UniversalMorphismFromInitialObject,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
-                              
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromInitialObject,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( test_source )
         local category, universal_morphism, initial_object;
         
@@ -1146,10 +1149,10 @@ InstallMethod( AddUniversalMorphismFromInitialObjectWithGivenInitialObject,
     
     DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismFromDirectProductWithGivenInitialObject", 2 );
     
-    InstallMethodWithCache( UniversalMorphismFromInitialObjectWithGivenInitialObject,
-                            [ IsHomalgCategoryObject and ObjectFilter( category ),
-                            IsHomalgCategoryObject and ObjectFilter( category ) ],
-                              
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromInitialObjectWithGivenInitialObject,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( test_source, initial_object )
         local universal_morphism;
         
@@ -1159,7 +1162,7 @@ InstallMethod( AddUniversalMorphismFromInitialObjectWithGivenInitialObject,
         
         return universal_morphism;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -1183,9 +1186,10 @@ end );
 # Thus the following implication is unnecessary:
 # InstallTrueMethod( CanComputeInitialObject, CanComputeUniversalMorphismFromInitialObject );
 
-InstallMethod( InitialObject,
-               [ IsHomalgCategory ],
-               
+## Maybe set IsWellDefined by default?
+InstallMethodWithToDoForIsWellDefined( InitialObject,
+                                       [ IsHomalgCategory ],
+                                       
   function( category )
     local initial_object;
     

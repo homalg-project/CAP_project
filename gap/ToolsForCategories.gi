@@ -52,7 +52,7 @@ InstallGlobalFunction( InstallMethodWithToDoForIsWellDefined,
         
     fi;
     
-    CallFuncList( install_func, arg );
+    CallFuncList( install_func, arg : InstallMethod := InstallMethod, InstallSet := InstallSetWithToDoForIsWellDefined );
     
 end );
 
@@ -64,6 +64,12 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
     local set_name, install_func;
     
     set_name := Concatenation( "Set", name );
+    
+    if not IsBoundGlobal( set_name ) then
+        
+        DeclareOperation( set_name, Concatenation( filter, [ IsObject ] ) );
+        
+    fi;
     
     InstallOtherMethod( ValueGlobal( set_name ),
                         Concatenation( filter, [ IsObject ] ),
@@ -109,6 +115,12 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
     local set_name;
     
     set_name := Concatenation( "Set", name );
+    
+    if not IsBoundGlobal( set_name ) then
+        
+        DeclareOperation( set_name, Concatenation( filter, [ IsObject ] ) );
+        
+    fi;
     
     InstallOtherMethod( ValueGlobal( set_name ),
                         Concatenation( filter, [ IsObject ] ),

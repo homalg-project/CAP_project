@@ -169,9 +169,9 @@ end );
 #####################################
 
 ##
-InstallMethod( ZeroObject,
-               [ IsHomalgCategory ],
-               
+InstallMethodWithToDoForIsWellDefined( ZeroObject,
+                                       [ IsHomalgCategory ],
+                                       
   function( category )
     local zero_obj;
     
@@ -251,8 +251,8 @@ InstallMethod( AddPreCompose,
     
     DECIDE_INSTALL_FUNCTION( category, "PreCompose", 2 );
     
-    InstallMethodWithCache( PreCompose,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+    InstallMethodWithToDoForIsWellDefined( PreCompose,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                    
       function( mor_left, mor_right )
         local ret_val;
@@ -273,7 +273,7 @@ InstallMethod( AddPreCompose,
         
         return ret_val;
         
-      end :  );
+      end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -318,9 +318,9 @@ InstallMethod( AddMorphismIntoZeroObject,
     
     SetCanComputeMorphismIntoZeroObject( category, true );
     
-    InstallMethod( MorphismIntoZeroObject,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
-                   
+    InstallMethodWithToDoForIsWellDefined( MorphismIntoZeroObject,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( object )
         local morphism;
         
@@ -344,9 +344,9 @@ InstallMethod( AddMorphismFromZeroObject,
     
     SetCanComputeMorphismFromZeroObject( category, true );
     
-    InstallMethod( MorphismFromZeroObject,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
-                   
+    InstallMethodWithToDoForIsWellDefined( MorphismFromZeroObject,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
       function( object )
         local morphism;
         
@@ -366,7 +366,7 @@ end );
 ##
 #######################################
 
-##
+## HERE
 InstallMethod( AddDirectSum_OnObjects,
                [ IsHomalgCategory, IsFunction ],
                
@@ -378,8 +378,8 @@ InstallMethod( AddDirectSum_OnObjects,
     
     SetCanComputeDirectSum( category, true );
     
-    InstallMethodWithCache( DirectSumOp,
-                            [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
+    InstallMethodWithToDoForIsWellDefined( DirectSumOp,
+                                           [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
                    
       function( obj_list, obj1 )
         local obj2, sum_obj;
@@ -408,7 +408,7 @@ InstallMethod( AddDirectSum_OnObjects,
         
         return sum_obj;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
@@ -422,9 +422,9 @@ InstallMethod( AddInjectionFromFirstSummand,
     
     SetCanComputeInjectionFromFirstSummand( category, true );
     
-    InstallMethod( InjectionFromFirstSummand,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
-                   
+    InstallMethodWithToDoForIsWellDefined( InjectionFromFirstSummand,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
+                                           
       function( sum_obj )
         local injection1;
         
@@ -448,9 +448,9 @@ InstallMethod( AddInjectionFromSecondSummand,
     
     SetCanComputeInjectionFromSecondSummand( category, true );
     
-    InstallMethod( InjectionFromSecondSummand,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
-                   
+    InstallMethodWithToDoForIsWellDefined( InjectionFromSecondSummand,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
+                                           
       function( sum_obj )
         local injection1;
         
@@ -474,9 +474,9 @@ InstallMethod( AddProjectionInFirstFactor,
     
     SetCanComputeProjectionInFirstFactor( category, true );
     
-    InstallMethod( ProjectionInFirstFactor,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
-                   
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFirstFactor,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
+                                           
       function( sum_obj )
         local surjection;
         
@@ -502,9 +502,9 @@ InstallMethod( AddProjectionInSecondFactor,
     
     SetCanComputeProjectionInSecondFactor( category, true );
     
-    InstallMethod( ProjectionInSecondFactor,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
-                   
+    InstallMethodWithToDoForIsWellDefined( ProjectionInSecondFactor,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
+                                           
       function( sum_obj )
         local surjection;
         
@@ -538,9 +538,9 @@ InstallMethod( AddMonoAsKernelLift,
     
     DECIDE_INSTALL_FUNCTION( category, "MonoAsKernelLift", 2 );
     
-    InstallMethodWithCache( MonoAsKernelLift,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+    InstallMethodWithToDoForIsWellDefined( MonoAsKernelLift,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                             
       function( monomorphism, test_morphism )
         local lift;
@@ -551,7 +551,7 @@ InstallMethod( AddMonoAsKernelLift,
         
         return lift;
         
-    end );
+    end : InstallMethod := InstallMethodWithToDoForIsWellDefined );
     
 end );
 
@@ -573,10 +573,10 @@ InstallMethod( AddEpiAsCokernelColift,
     
     DECIDE_INSTALL_FUNCTION( category, "EpiAsCokernelColift", 2 );
     
-    InstallMethodWithCache( EpiAsCokernelColift,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                            IsHomalgCategoryMorphism and MorphismFilter( category ) ],
-                       
+    InstallMethodWithToDoForIsWellDefined( EpiAsCokernelColift,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
       function( epimorphism, test_morphism )
         local colift;
         
@@ -586,7 +586,7 @@ InstallMethod( AddEpiAsCokernelColift,
         
         return colift;
         
-    end );
+    end : InstallMethod := InstallMethodWithToDoForIsWellDefined );
     
 end );
 
@@ -606,9 +606,9 @@ InstallMethod( AddInverse,
     
     SetCanComputeInverse( category, true );
     
-    InstallMethod( Inverse,
-                     [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsIsomorphism ],
-                     
+    InstallMethodWithToDoForIsWellDefined( Inverse,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsIsomorphism ],
+                                           
       function( isomorphism )
         local inverse;
         

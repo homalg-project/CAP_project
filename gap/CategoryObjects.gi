@@ -93,15 +93,15 @@ end );
 InstallTrueMethod( CanComputeZeroMorphism, CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject );
 
 ##TODO
-InstallMethodWithCacheFromObject( ZeroMorphism,
-                                  [ IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject,
-                                    IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject ],
+InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
+                                       [ IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject,
+                                         IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject ],
                                   
   function( obj_source, obj_range )
     
     return PreCompose( MorphismIntoZeroObject( obj_source ), MorphismFromZeroObject( obj_range ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ###########################
 ##
