@@ -94,6 +94,39 @@ DeclareOperation( "ApplyFunctor",
 
 ####################################
 ##
+## Functor convinience
+##
+####################################
+
+DeclareOperation( "InstallFunctorOnObjects",
+                  [ IsHomalgFunctor, IsString ] );
+
+DeclareOperation( "InstallFunctorOnMorphisms",
+                  [ IsHomalgFunctor, IsString ] );
+
+DeclareOperation( "InstallFunctor",
+                  [ IsHomalgFunctor, IsString, IsString ] );
+
+DeclareOperation( "InstallFunctor",
+                  [ IsHomalgFunctor, IsString ] );
+
+DeclareOperation( "InstallFunctorOnObjects",
+                  [ IsHomalgFunctor ] );
+
+DeclareOperation( "InstallFunctorOnMorphisms",
+                  [ IsHomalgFunctor ] );
+
+DeclareOperation( "InstallFunctor",
+                  [ IsHomalgFunctor ] );
+
+DeclareAttribute( "ObjectFunctionName",
+                  IsHomalgFunctor );
+
+DeclareAttribute( "MorphismFunctionName",
+                  IsHomalgFunctor );
+
+####################################
+##
 ## Technical stuff
 ##
 ####################################

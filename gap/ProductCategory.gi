@@ -36,6 +36,24 @@ BindGlobal( "TheTypeOfHomalgCategoryProductMorphisms",
 
 ###################################
 ##
+#! @Section Fallback methods for functors
+##
+###################################
+
+##
+InstallMethod( Components,
+               [ IsHomalgCategory ],
+               
+  i -> [ i ] );
+
+##
+InstallMethod( Components,
+               [ IsHomalgCategoryCell ],
+               
+  i -> [ i ] );
+
+###################################
+##
 #! @Section Constructor
 ##
 ###################################

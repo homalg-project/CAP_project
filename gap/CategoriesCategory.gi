@@ -536,3 +536,143 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMA
     return universal_functor;
     
 end );
+
+####################################
+##
+## Functor convinience
+##
+####################################
+
+##
+InstallMethod( InstallFunctorOnObjects,
+               [ IsHomalgFunctor, IsString ],
+               
+  function( functor, name )
+    
+    SetObjectFunctionName( functor, name );
+    
+    InstallFunctorOnObjects( functor );
+    
+end );
+
+##
+InstallMethod( InstallFunctorOnMorphisms,
+               [ IsHomalgFunctor, IsString ],
+               
+  function( functor, name )
+    
+    SetMorphismFunctionName( functor, name );
+    
+    InstallFunctorOnMorphisms( functor );
+    
+end );
+
+##
+InstallMethod( InstallFunctor,
+               [ IsHomalgFunctor, IsString, IsString ],
+               
+  function( functor, obj_name, mor_name )
+    
+    SetObjectFunctionName( functor, obj_name );
+    
+    SetMorphismFunctionName( functor, mor_name );
+    
+    InstallFunctor( functor );
+    
+end );
+
+##
+InstallMethod( InstallFunctor,
+               [ IsHomalgFunctor, IsString ],
+               
+  function( functor, name )
+    
+    InstallFunctor( functor, name, name );
+    
+end );
+
+##
+InstallMethod( ObjectFunctionName,
+               [ IsHomalgFunctor ],
+               
+  Name );
+
+##
+InstallMethod( MorphismFunctionName,
+               [ IsHomalgFunctor ],
+               
+  Name );
+
+##
+InstallMethod( InstallFunctorOnObjects,
+               [ IsHomalgFunctor ],
+               
+  function( functor )
+    local func_name, category_list, filter_list;
+    
+    func_name := ObjectFunctionName( functor );
+    
+    category_list := Components( AsHomalgCategory( Source( functor ) ) );
+    
+    filter_list := List( category_list, ObjectFilter );
+    
+    filter_list := List( filter_list, i -> i and IsHomalgCategoryObject );
+    
+    DeclareOperation( func_name, filter_list );
+    
+    InstallMethod( ValueGlobal( func_name ),
+                   filter_list,
+                   
+      function( arg )
+        local product_object;
+        
+        product_object := CallFuncList( Product, arg );
+        
+        return ApplyFunctor( functor, product_object );
+        
+    end );
+    
+end );    
+
+##
+InstallMethod( InstallFunctorOnMorphisms,
+               [ IsHomalgFunctor ],
+               
+  function( functor )
+    local func_name, category_list, filter_list;
+    
+    func_name := MorphismFunctionName( functor );
+    
+    category_list := Components( AsHomalgCategory( Source( functor ) ) );
+    
+    filter_list := List( category_list, MorphismFilter );
+    
+    filter_list := List( filter_list, i -> i and IsHomalgCategoryObject );
+    
+    DeclareOperation( func_name, filter_list );
+    
+    InstallMethod( ValueGlobal( func_name ),
+                   filter_list,
+                   
+      function( arg )
+        local product_object;
+        
+        product_object := CallFuncList( Product, arg );
+        
+        return ApplyFunctor( functor, product_object );
+        
+    end );
+    
+end );
+
+##
+InstallMethod( InstallFunctor,
+               [ IsHomalgFunctor ],
+               
+  function( functor )
+    
+    InstallFunctorOnObjects( functor );
+    
+    InstallFunctorOnMorphisms( functor );
+    
+end );

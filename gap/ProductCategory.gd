@@ -17,10 +17,7 @@ DeclareAttribute( "Components",
                   IsHomalgCategory );
 
 DeclareAttribute( "Components",
-                  IsHomalgCategoryObject );
-
-DeclareAttribute( "Components",
-                  IsHomalgCategoryMorphism );
+                  IsHomalgCategoryCell );
 
 DeclareOperation( "\[\]",
                   [ IsHomalgCategory, IsInt ] );
