@@ -544,7 +544,7 @@ InstallMethod( AddDirectProduct,
         
         return direct_product;
         
-    end : InstallMethod := InstallMethodWithToDoForIsWellDefined );
+    end : InstallMethod := InstallMethodWithCache );
     
 
 end );
