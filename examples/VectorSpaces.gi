@@ -517,9 +517,9 @@ gamma := VectorSpaceMorphism( T, [ [ 1, 2 ], [ 3, 4 ] ], B );
 ##
 #######################################
 
-Tensor_Product := HomalgFunctor( "tensor_product", Product( vecspaces, vecspaces ), vecspaces );
+Tensor_Product_For_VecSpaces := HomalgFunctor( "Tensor_Product_For_VecSpaces", Product( vecspaces, vecspaces ), vecspaces );
 
-AddObjectFunction( Tensor_Product,
+AddObjectFunction( Tensor_Product_For_VecSpaces,
                    
   function( vecspace_pair )
     
@@ -527,7 +527,7 @@ AddObjectFunction( Tensor_Product,
     
 end );
 
-AddMorphismFunction( Tensor_Product,
+AddMorphismFunction( Tensor_Product_For_VecSpaces,
                      
   function( new_source, morphism, new_range )
     

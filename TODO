@@ -10,9 +10,9 @@
 
 Neue Sachen:
 
-* IsMorphism.
+* IsMorphism -> IsWellDefined DONE
 * Extend direct product.
-* Convenience functions for functors 
+* Convenience functions for functors DONE
 
 Neue Kategorien
 
