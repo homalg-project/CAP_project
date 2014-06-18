@@ -5,8 +5,7 @@
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @AutoDoc
-#! @Chapter Product category
+## Chapter Product category
 ##
 #############################################################################
 
@@ -30,7 +29,7 @@ DeclareOperation( "\[\]",
 
 ############################
 ##
-#! @Section Constructors
+## Section Constructors
 ##
 ############################
 
@@ -51,7 +50,7 @@ DeclareOperation( "ProductOp",
 
 ############################
 ##
-#! @Section Technical methods
+## Section Technical methods
 ##
 ############################
 

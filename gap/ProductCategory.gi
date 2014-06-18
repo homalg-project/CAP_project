@@ -5,8 +5,7 @@
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @AutoDoc
-#! @Chapter Product category
+## Chapter Product category
 ##
 #############################################################################
 
@@ -36,7 +35,7 @@ BindGlobal( "TheTypeOfHomalgCategoryProductMorphisms",
 
 ###################################
 ##
-#! @Section Fallback methods for functors
+## Section Fallback methods for functors
 ##
 ###################################
 
@@ -54,7 +53,7 @@ InstallMethod( Components,
 
 ###################################
 ##
-#! @Section Constructor
+## Section Constructor
 ##
 ###################################
 
@@ -193,7 +192,7 @@ end );
 
 ###################################
 ##
-#! @Section Morphism function
+## Section Morphism function
 ##
 ###################################
 
@@ -274,7 +273,7 @@ end );
 
 ###################################
 ##
-#! @Section Some hacks
+## Section Some hacks
 ##
 ###################################
 
