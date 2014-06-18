@@ -6,12 +6,22 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Categories for homalg
+#!  Categories are the main GAP objects in CategoriesForHomalg.
+#!  They are used to associate GAP objects which represent objects and
+#!  morphisms with their category. By associating an GAP object to the
+#!  category, one of two filters belonging to the category (Object/MorphismFilter)
+#!  are set to true.
+#!  The GAP object of the category then acts like the type of the objects,
+#!  so categories should be seen as the type of their objects.
+#!  Via Add methods, functions for specific existential quantifiers can be
+#!  associated to the category and after that can be applied to GAP objects in the category.
+#!  A GAP category object also knows which constructions
+#!  are currently possible in this category.
 ##
 #############################################################################
 
 ###################################
 ##
-#! @Level 1
 #! @Section Internal stuff
 ##
 ###################################
@@ -70,12 +80,6 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject"
                  # .. 
               ] );
-
-###################################
-##
-#! @ResetLevel
-##
-###################################
 
 ###################################
 ##

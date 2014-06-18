@@ -6,6 +6,15 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Category object
+#!  Any GAP object which is IsHomalgCategoryObject can be added to a category
+#!  and then becomes an object in this category.
+#!  Any object can belong to one or no category.
+#!  After a GAP object is added to the category, it knows which things can be
+#!  computed in its category and to which category it belongs.
+#!  It knows categorial properties and attributes, and the functions for existential quantifiers
+#!  can be applied to the object.
+#!  If an GAP object in the category was constructed by a categorial construction
+#!  it knows its Genesis.
 ##
 #############################################################################
 
