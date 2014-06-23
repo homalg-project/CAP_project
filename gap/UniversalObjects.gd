@@ -6,35 +6,72 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Universal Objects
-##
+#! For every universal object $X$, there are 5 methods which can be installed:
+#! * Constructor of $X$ with a diagram $D$ (i.e. a list of morphisms and objects) as an input
+#! * Constructor of source/sink data with input $D$
+#! * Constructor of source/sink data with input $D$ and $X$
+#! * Constructor of universal property morphism with input $D$ and a test source/sink $T$
+#! * Constructor of universal property morphism with input $D$ and a test source/sink $T$ and $X$
+#! Every universal object stores if it was created as such and therefore can be used to access universal property morphisms (if computable).
 #############################################################################
 
 ####################################
 ##
-## Kernel
+#! @Section Kernel
 ##
 ####################################
 
 ## Main Operations and Attributes
+#! @Description
+#!  Kernel of a given morphism.
+#! @Returns IsHomalgCategoryObject
 DeclareAttribute( "KernelObject",
                   IsHomalgCategoryMorphism );
 
+#! @Description
+#! Embedding of the kernel of a given morphism $\alpha$ into the source of $\alpha$.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments alpha
 DeclareAttribute( "KernelEmb",
                   IsHomalgCategoryMorphism );
 
+#! @Description
+#! Kernel embedding of an object which was created as a kernel.
+#! @Returns IsHomalgCategoryMorphism
 DeclareAttribute( "KernelEmb",
                   IsHomalgCategoryObject );
 
+#! @Description
+#! Embedding of a given kernel $K$ of a given morphism $\alpha$ into the source of $\alpha$.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments alpha, K
 DeclareOperation( "KernelEmbWithGivenKernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
+#! @Description
+#! Given a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
+#! returns the unique morphism $u: T \rightarrow \mathrm{Kern}( \alpha )$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
+#! denotes the kernel embedding.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments alpha, tau
 DeclareOperation( "KernelLift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
+#! @Description
+#! Given a morphism $\alpha: A \rightarrow B$ with a kernel $K$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
+#! returns the unique morphism $u: T \rightarrow K$ such that $\tau = \epsilon \circ u$, where $\epsilon: K \rightarrow A$
+#! denotes the kernel embedding.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments alpha, tau, K
 DeclareOperation( "KernelLiftWithGivenKernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
 ## Function Attributes
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a kernel. 
 DeclareAttribute( "KernelFunction",
                   IsHomalgCategory );
 
@@ -49,26 +86,49 @@ DeclareAttribute( "KernelLiftFunction",
 
 DeclareAttribute( "KernelLiftWithGivenKernelFunction",
                   IsHomalgCategory );
+#! @EndGroup
+#! @EndAutoDoc
 
 ## Add Operations
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+#! @Arguments C, f
 DeclareOperation( "AddKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddKernelEmb",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddKernelEmbWithGivenKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddKernelLift",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddKernelLiftWithGivenKernel",
                   [ IsHomalgCategory, IsFunction ] );
+#! @EndGroup
+#! @EndAutoDoc
 
 ## WasCreatedAs Filter
-DeclareFilter( "WasCreatedAsKernel" );
+#! @Chapter Technical Details
 
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a kernel object. 
+#! Note that we chose <C>WasCreatedAsKernel</C> to be a filter rather than a property,
+#! because by default, a filter is set to false. 
+DeclareFilter( "WasCreatedAsKernel" );
+#! @Chapter Universal Objects
 
 ####################################
 ##
