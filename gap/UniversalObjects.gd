@@ -373,33 +373,59 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
 #! @Description 
 #! When created, this filter is set to true for a terminal object. 
 #! Note that we chose <C>WasCreatedAsTerminalObject</C> to be a filter rather than a property,
-#! because by default, a filter is set to false. 
+#! because by default, a filter is set to false.
 DeclareFilter( "WasCreatedAsTerminalObject" );
 
 #! @Chapter Universal Objects
 
 ####################################
 ##
-## Initial Object
+#! @Section Initial Object
 ##
 ####################################
 
 ## Main Operations and Attributes
 
+#! @BeginGroup 
+
+#! @Description
+#! Initial object of a category $C$
+#! @Returns IsHomalgCategoryObject
+#! @Arguments C
 DeclareAttribute( "InitialObject",
                   IsHomalgCategory );
 
+#! @Description
+#! or of a cell $c$ in $C$
+#! @Arguments c
 DeclareAttribute( "InitialObject",
                   IsHomalgCategoryCell );
 
+#! @EndGroup 
+
+#! @Description
+#! Given an object $A$ this method returns the unique morphism $u: I \rightarrow A$ from 
+#! from the initial object $I$ of the category of $A$ to $A$.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments A
 DeclareAttribute( "UniversalMorphismFromInitialObject",
                   IsHomalgCategoryObject );
 
+#! @Description
+#! Given an object $A$ and an initial object $I$ this method returns the unique morphism $u: I \rightarrow A$ from 
+#! $I$ to $A$
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments A, I
 DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
 ## Function Attributes
 
+#! @BeginGroup
+
+#! @AutoDoc
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a initial object. 
 DeclareAttribute( "InitialObjectFunction",
                   IsHomalgCategory );
 
@@ -408,21 +434,46 @@ DeclareAttribute( "UniversalMorphismFromInitialObjectFunction",
 
 DeclareAttribute( "UniversalMorphismFromInitialObjectWithGivenInitialObjectFunction",
                   IsHomalgCategory );
+#! @EndAutoDoc
+
+# @EndGroup
 
 ## Add Operations
 
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+#! @Arguments C, f
 DeclareOperation( "AddInitialObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromInitialObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsHomalgCategory, IsFunction ] );
+#! @EndGroup
+
+#! @EndAutoDoc
 
 ## WasCreatedAs Filter
 
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a initial object. 
+#! Note that we chose <C>WasCreatedAsInitialObject</C> to be a filter rather than a property,
+#! because by default, a filter is set to false.
 DeclareFilter( "WasCreatedAsInitialObject" );
+
+#! @Chapter Universal Objects
 
 ####################################
 ##
