@@ -132,30 +132,60 @@ DeclareFilter( "WasCreatedAsKernel" );
 
 ####################################
 ##
-## Cokernel
+#!  @Section Cokernel
 ##
 ####################################
 
 ## Main Operations and Attributes
+#! @Description
+#!  Cokernel of a given morphism.
+#! @Returns IsHomalgCategoryObject
 DeclareAttribute( "Cokernel",
                   IsHomalgCategoryMorphism );
 
+#! @Description
+#! Projection $B \twoheadrightarrow \mathrm{Coker}(\alpha)$ into the cokernel of a given morphism $\alpha: A \rightarrow B$.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments alpha
 DeclareAttribute( "CokernelProj",
                   IsHomalgCategoryMorphism );
 
+#! @Description
+#! Cokernel projection of an object which was created as a cokernel.
+#! @Returns IsHomalgCategoryMorphism
 DeclareAttribute( "CokernelProj",
                   IsHomalgCategoryObject );
 
+#! @Description
+#! Projection $B \twoheadrightarrow K$ of a given cokernel $K$ of a given morphism $\alpha: A \rightarrow B$.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments alpha, K
 DeclareOperation( "CokernelProjWithGivenCokernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
+#! @Description
+#! Given a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: B \rightarrow T$ such that $\tau \circ \alpha = 0$, this method
+#! returns the unique morphism $u: \mathrm{Coker}(\alpha) \rightarrow T$ such that $\tau = u \circ \epsilon$, where 
+#! $\epsilon: B \rightarrow \mathrm{Coker}(\alpha)$ denotes the cokernel projection.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments alpha, tau
 DeclareOperation( "CokernelColift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
-
+#! @Description
+#! Given a morphism $\alpha: A \rightarrow B$ with its cokernel $K$ and a testmorphism $\tau: B \rightarrow T$ 
+#! such that $\tau \circ \alpha = 0$, this method returns the unique morphism $u: K \rightarrow T$ such that 
+#! $\tau = u \circ \epsilon$, where $\epsilon: B \rightarrow K$ denotes the cokernel projection.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments alpha, tau, K
 DeclareOperation( "CokernelColiftWithGivenCokernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
 ## Function Attributes
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a cokernel. 
 DeclareAttribute( "CokernelFunction",
                   IsHomalgCategory );
 
@@ -170,6 +200,9 @@ DeclareAttribute( "CokernelColiftFunction",
 
 DeclareAttribute( "CokernelColiftWithGivenCokernelFunction",
                   IsHomalgCategory );
+#! @EndGroup
+#! @EndAutoDoc
+
 
 ## Add Operations
 DeclareOperation( "AddCokernel",
@@ -188,8 +221,17 @@ DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsHomalgCategory, IsFunction ] );
 
 ## WasCreatedAs Filter
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a cokernel object. 
+#! Note that we chose <C>WasCreatedAsCokernel</C> to be a filter rather than a property,
+#! because by default, a filter is set to false. 
 DeclareFilter( "WasCreatedAsCokernel" );
 
+#! @Chapter Universal Objects
 
 ####################################
 ##
