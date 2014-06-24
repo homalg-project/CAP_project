@@ -157,9 +157,9 @@ DeclareAttribute( "CokernelProj",
                   IsHomalgCategoryObject );
 
 #! @Description
-#! Projection $B \twoheadrightarrow K$ of a given cokernel $K$ of a given morphism $\alpha: A \rightarrow B$.
+#! Projection $B \twoheadrightarrow C$ of a given cokernel $C$ of a given morphism $\alpha: A \rightarrow B$.
 #! @Returns IsHomalgCategoryMorphism
-#! @Arguments alpha, K
+#! @Arguments alpha, C
 DeclareOperation( "CokernelProjWithGivenCokernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
@@ -172,11 +172,11 @@ DeclareOperation( "CokernelProjWithGivenCokernel",
 DeclareOperation( "CokernelColift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 #! @Description
-#! Given a morphism $\alpha: A \rightarrow B$ with its cokernel $K$ and a testmorphism $\tau: B \rightarrow T$ 
-#! such that $\tau \circ \alpha = 0$, this method returns the unique morphism $u: K \rightarrow T$ such that 
-#! $\tau = u \circ \epsilon$, where $\epsilon: B \rightarrow K$ denotes the cokernel projection.
+#! Given a morphism $\alpha: A \rightarrow B$ with its cokernel $C$ and a testmorphism $\tau: B \rightarrow T$ 
+#! such that $\tau \circ \alpha = 0$, this method returns the unique morphism $u: C \rightarrow T$ such that 
+#! $\tau = u \circ \epsilon$, where $\epsilon: B \rightarrow C$ denotes the cokernel projection.
 #! @Returns IsHomalgCategoryMorphism
-#! @Arguments alpha, tau, K
+#! @Arguments alpha, tau, C
 DeclareOperation( "CokernelColiftWithGivenCokernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
