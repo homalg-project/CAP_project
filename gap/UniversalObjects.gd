@@ -404,7 +404,7 @@ DeclareAttribute( "InitialObject",
 #! @EndGroup 
 
 #! @Description
-#! Given an object $A$ this method returns the unique morphism $u: I \rightarrow A$ from 
+#! Given an object $A$ this method returns the unique morphism $u: I \rightarrow A$
 #! from the initial object $I$ of the category of $A$ to $A$.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments A
