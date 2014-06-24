@@ -467,7 +467,7 @@ DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
 
 #! @AutoDoc
 #! @Description
-#! These attributes store the implementations of the basic algorithms for a initial object. 
+#! These attributes store the implementations of the basic algorithms for an initial object. 
 DeclareAttribute( "InitialObjectFunction",
                   IsHomalgCategory );
 
@@ -510,7 +510,7 @@ DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
 #! @Section Universal Objects
 
 #! @Description 
-#! When created, this filter is set to true for a initial object. 
+#! When created, this filter is set to true for an initial object. 
 #! Note that we chose <C>WasCreatedAsInitialObject</C> to be a filter rather than a property,
 #! because by default, a filter is set to false.
 DeclareFilter( "WasCreatedAsInitialObject" );
