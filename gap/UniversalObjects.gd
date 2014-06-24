@@ -282,26 +282,52 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 
 ####################################
 ##
-## Terminal Object
+#! @Section Terminal Object
 ##
 ####################################
 
 ## Main Operations and Attributes
 
+#! @BeginGroup 
+
+#! @Description
+#! Terminal object of a category $C$
+#! @Returns IsHomalgCategoryObject
+#! @Arguments C
 DeclareAttribute( "TerminalObject",
                   IsHomalgCategory );
 
+#! @Description
+#! or of a cell $c$ in $C$
+#! @Arguments c
 DeclareAttribute( "TerminalObject",
                   IsHomalgCategoryCell );
 
+#! @EndGroup 
+
+#! @Description
+#! Given an object $A$ this method returns the unique morphism $u: A \rightarrow T$ from 
+#! $A$ into the terminal object $T$ of the category of $A$
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments A
 DeclareAttribute( "UniversalMorphismIntoTerminalObject",
                   IsHomalgCategoryObject );
 
+#! @Description
+#! Given an object $A$ and a terminal object $T$ this method returns the unique morphism $u: A \rightarrow T$ from 
+#! $A$ to $T$
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments A, T
 DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
 ## Function Attributes
 
+#! @BeginGroup
+
+#! @AutoDoc
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a terminal object. 
 DeclareAttribute( "TerminalObjectFunction",
                   IsHomalgCategory );
 
@@ -310,21 +336,47 @@ DeclareAttribute( "UniversalMorphismIntoTerminalObjectFunction",
 
 DeclareAttribute( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFunction",
                   IsHomalgCategory );
+#! @EndAutoDoc
+
+# @EndGroup
 
 ## Add Operations
 
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+#! @Arguments C, f
 DeclareOperation( "AddTerminalObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @EndGroup
+
+#! @EndAutoDoc
+
 ## WasCreatedAs Filter
 
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a terminal object. 
+#! Note that we chose <C>WasCreatedAsTerminalObject</C> to be a filter rather than a property,
+#! because by default, a filter is set to false. 
 DeclareFilter( "WasCreatedAsTerminalObject" );
+
+#! @Chapter Universal Objects
 
 ####################################
 ##
