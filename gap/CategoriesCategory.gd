@@ -126,17 +126,40 @@ DeclareOperation( "HomalgFunctor",
 ##
 ####################################
 
+#! @BeginGroup
+
+#! @Description
+#!  This operation adds a function to the functor which can then be applied to
+#!  objects in the source. The given function <A>function</A> has to take one argument which
+#!  must be an object in the source category and should return a HomalgCategoryObject. The object
+#!  is automatically added to the range of the functor when it is applied to the object.
+#!  The function is stored in the attribute <C>ObjectFunction</C> of <A>functor</A>.
+#! @Arguments functor, function
 DeclareOperation( "AddObjectFunction",
                   [ IsHomalgFunctor, IsFunction ] );
 
+#!
 DeclareAttribute( "ObjectFunction",
                   IsHomalgFunctor );
 
+#! @EndGroup
+
+#! @BeginGroup
+
+#! @Description
+#!  This operation adds a function to the functor which can then be applied to
+#!  morphisms in the source. The given function <A>function</A> has to take three arguments $A, \tau, B$.
+#!  When the funtor <A>functor</A> is applied to the morphism $\tau$, $A$ is the result of <A>functor</A>
+#!  applied to the source of $\tau$, $B$ is the result of <A>functor</A> applied to the range.
+#!  The function is stored in the attribute <C>MorphismFunction</C> of <A>functor</A>.
 DeclareOperation( "AddMorphismFunction",
                   [ IsHomalgFunctor, IsFunction ] );
 
+#!
 DeclareAttribute( "MorphismFunction",
                   IsHomalgFunctor );
+
+#! @EndGroup
 
 ####################################
 ##
@@ -144,11 +167,21 @@ DeclareAttribute( "MorphismFunction",
 ##
 ####################################
 
+#! @BeginGroup
+
+#! @Description
+#!  Applies the functor <A>func</A> to the object <A>A</A> resp. to the morphism $\tau$.
+#! @Returns IsHomalgCategoryObject
+#! @Arguments func,A
 DeclareOperation( "ApplyFunctor",
                   [ IsHomalgFunctor, IsHomalgCategoryObject ] );
 
+#! @Arguments func,tau
+#! @Returns IsHomalgCategoryMorphism
 DeclareOperation( "ApplyFunctor",
                   [ IsHomalgFunctor, IsHomalgCategoryMorphism ] );
+
+#! @EndGroup
 
 ####################################
 ##
@@ -156,24 +189,42 @@ DeclareOperation( "ApplyFunctor",
 ##
 ####################################
 
+#! @BeginGroup
+
+#! @Description
+#!  Installs a method which applies a functor <A>functor</A> to an object or a morphism
+#!  from the source. While <C>InstallFunctor</C> installs such a method for objects and morphisms
+#!  <C>InstallFunctorOnObjects</C> and <C>InstallFunctorOnMorphisms</C> install this method only
+#!  for objects resp. morphisms. If <A>method_name</A>, <A>object_method_name</A>, or <A>morphism_method_name</A>
+#!  are not given, the name of the functor is used. Note that those names can also be set via <C>SetObjectFunctionName</C>
+#!  and <C>SetMorphismFunctionName</C>.
+#!  If the argument is a product of categories $C_1 \times \dots \times C_n$, the installed method will take $n$ arguments
+#!  $A_1, \dots, A_n$, where $A_i$ must be an object in $C_i$.
+#! @Arguments functor,object_method_name
 DeclareOperation( "InstallFunctorOnObjects",
                   [ IsHomalgFunctor, IsString ] );
 
+#! @Arguments functor,morphism_method_name
 DeclareOperation( "InstallFunctorOnMorphisms",
                   [ IsHomalgFunctor, IsString ] );
 
+#! @Arguments functor,object_method_name,morphism_method_name
 DeclareOperation( "InstallFunctor",
                   [ IsHomalgFunctor, IsString, IsString ] );
 
+#! @Arguments functor,method_name
 DeclareOperation( "InstallFunctor",
                   [ IsHomalgFunctor, IsString ] );
 
+#! @Arguments functor
 DeclareOperation( "InstallFunctorOnObjects",
                   [ IsHomalgFunctor ] );
 
+#! @Arguments functor
 DeclareOperation( "InstallFunctorOnMorphisms",
                   [ IsHomalgFunctor ] );
 
+#! @Arguments functor
 DeclareOperation( "InstallFunctor",
                   [ IsHomalgFunctor ] );
 
@@ -183,17 +234,34 @@ DeclareAttribute( "ObjectFunctionName",
 DeclareAttribute( "MorphismFunctionName",
                   IsHomalgFunctor );
 
+#! @EndGroup
+
 ####################################
 ##
-## Technical stuff
+#! @Chapter Technical Details
+#! @Section The category Cat
 ##
 ####################################
 
+#! @Description
+#!  Every category cell which is the result of a functor computation stores its preimage(s) in this record.
+#!  The preimages are stored because they CAN be elements of product categories.
+#!  If this preimage is deleted and a new one is generated for the call of this functor
+#!  a new image is created. This might cause inconsistencies.
+#! @Returns IsRecord
 DeclareOperation( "CatFunctorPreimageList",
                   [ IsHomalgCategoryCell ] );
 
+#! @Description
+#!  Retuns the caching object which stores the results of the functor <A>functor</A> applied to objects.
+#! @Arguments functor
+#! @Returns IsCachingObject
 DeclareAttribute( "ObjectCache",
                   IsHomalgFunctor );
 
+#! @Description
+#!  Retuns the caching object which stores the results of the functor <A>functor</A> applied to morphisms.
+#! @Arguments functor
+#! @Returns IsCachingObject
 DeclareAttribute( "MorphismCache",
                   IsHomalgFunctor );
