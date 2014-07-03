@@ -15,3 +15,8 @@ ToDo:
 * Gruppenkategorie, additive Kategorie.
 * Kategorie muss lernen.
 * Verallgemeinerte Morphismen Kategorie.
+
+Bugs:
+* Add( Category, object ) muss derzeit im Konstruktor aufgerufen werden (z.B bei QVectorSpace), da sonst 
+  die generic Print Methoden einen Fehler werfen (HomalgCategory nicht bekannt)
+* FullView: is direct sum -> was created as direct sum (ebenso: direct product, cokernel, kernel)

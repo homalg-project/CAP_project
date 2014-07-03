@@ -39,14 +39,13 @@ DeclareAttribute( "Dimension",
 ## Operations
 ##
 #######################################
-                  
+
 DeclareOperation( "QVectorSpace",
                   [ IsInt ] );
 
 DeclareOperation( "VectorSpaceMorphism",
                   [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ] );
 
-                  
 vecspaces := CreateHomalgCategory( "VectorSpaces" );
 
 VECTORSPACES_FIELD := HomalgFieldOfRationals( );
