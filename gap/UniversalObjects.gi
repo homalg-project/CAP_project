@@ -525,7 +525,7 @@ DirectProduct := function( arg )
         
       fi;
       
-      return DirectProductForMultipleObjects( CallFuncList( Product, arg ), arg[ 1 ] );
+      return DirectProductOp( CallFuncList( Product, arg ), arg[ 1 ] );
       
   fi;
   
@@ -536,18 +536,18 @@ end;
 MakeReadOnlyGlobal( "DirectProduct" );
 
 ##
-InstallMethod( AddDirectProductForMultipleObjects,
+InstallMethod( AddDirectProduct,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
     
-    SetDirectProductForMultipleObjectsFunction( category, func );
+    SetDirectProductFunction( category, func );
     
-    SetCanComputeDirectProductForMultipleObjects( category, true );
+    SetCanComputeDirectProduct( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "DirectProductForMultipleObjects", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "DirectProductOp", 2 );
     
-    InstallMethodWithToDoForIsWellDefined( DirectProductForMultipleObjects,
+    InstallMethodWithToDoForIsWellDefined( DirectProductOp,
                                            [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
       function( object_product_list, method_selection_object )
@@ -557,7 +557,7 @@ InstallMethod( AddDirectProductForMultipleObjects,
         
         Add( HomalgCategory( method_selection_object ), direct_product_for_multiple_objects );
         
-        SetFilterObj( direct_product_for_multiple_objects, WasCreatedAsDirectProductForMultipleObjects );
+        SetFilterObj( direct_product_for_multiple_objects, WasCreatedAsDirectProduct );
         
         SetGenesis( direct_product_for_multiple_objects, rec( DirectFactors := object_product_list ) );
         
@@ -577,7 +577,7 @@ InstallMethod( ProjectionInFactor,
   function( object_product_list, projection_number )
     local number_of_objects;
     
-    if WasCreatedAsDirectProductForMultipleObjects( object_product_list ) then
+    if WasCreatedAsDirectProduct( object_product_list ) then
     
       number_of_objects := Length( Components( Genesis( object_product_list )!.DirectFactors ) );
       
@@ -629,9 +629,9 @@ InstallMethod( AddProjectionInFactor,
       function( object_product_list, method_selection_object, projection_number )
         local projection_in_factor, direct_product;
         
-        if HasDirectProductForMultipleObjects( object_product_list, method_selection_object ) then
+        if HasDirectProductOp( object_product_list, method_selection_object ) then
           
-          return ProjectionInFactorWithGivenDirectProduct( object_product_list, DirectProductForMultipleObjects( object_product_list, method_selection_object ), projection_number );
+          return ProjectionInFactorWithGivenDirectProduct( object_product_list, DirectProductOp( object_product_list, method_selection_object ), projection_number );
           
         fi;
         
@@ -640,7 +640,7 @@ InstallMethod( AddProjectionInFactor,
         Add( HomalgCategory( method_selection_object ), projection_in_factor );
         
         ## FIXME: it suffices that the category knows that it has a zero object
-        if CanComputeZeroObject( category ) then
+        if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
           
           SetIsSplitEpimorphism( projection_in_factor, true );
           
@@ -650,7 +650,7 @@ InstallMethod( AddProjectionInFactor,
         
         SetGenesis( direct_product, rec( DirectFactors := object_product_list ) );
         
-        SetDirectProductForMultipleObjects( object_product_list, method_selection_object, direct_product );
+        SetDirectProductOp( object_product_list, method_selection_object, direct_product );
         
         return projection_in_factor;
         
@@ -683,7 +683,7 @@ InstallMethod( AddProjectionInFactorWithGivenDirectProduct,
         Add( category, projection_in_factor );
         
         ## FIXME: it suffices that the category knows that it has a zero object
-        if CanComputeZeroObject( category ) then
+        if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
           
           SetIsSplitEpimorphism( projection_in_factor, true );
           
@@ -696,7 +696,7 @@ InstallMethod( AddProjectionInFactorWithGivenDirectProduct,
 end );
 
 ##
-InstallGlobalFunction( UniversalMorphismIntoDirectProductForMultipleObjects,
+InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
 
   function( arg )
     
@@ -705,14 +705,14 @@ InstallGlobalFunction( UniversalMorphismIntoDirectProductForMultipleObjects,
 end );
 
 ##
-InstallMethod( AddUniversalMorphismIntoDirectProductForMultipleObjects,
+InstallMethod( AddUniversalMorphismIntoDirectProduct,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
     
-    SetUniversalMorphismIntoDirectProductForMultipleObjectsFunction( category, func );
+    SetUniversalMorphismIntoDirectProductFunction( category, func );
     
-    SetCanComputeUniversalMorphismIntoDirectProductForMultipleObjects( category, true );
+    SetCanComputeUniversalMorphismIntoDirectProduct( category, true );
     
     DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProduct", 2 );
     
@@ -729,11 +729,11 @@ InstallMethod( AddUniversalMorphismIntoDirectProductForMultipleObjects,
         
         direct_product_objects := CallFuncList( Product, List( Components( sink ), Range ) );
         
-        if HasDirectProductForMultipleObjects( direct_product_objects, direct_product_objects[1] ) then
+        if HasDirectProductOp( direct_product_objects, direct_product_objects[1] ) then
           
           return UniversalMorphismIntoDirectProductWithGivenDirectProduct( 
                    sink, 
-                   DirectProductForMultipleObjects( direct_product_objects, direct_product_objects[1] ) 
+                   DirectProductOp( direct_product_objects, direct_product_objects[1] ) 
                  );
           
         fi;
@@ -752,7 +752,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProductForMultipleObjects,
         
         SetGenesis( direct_product, rec( DirectFactors := direct_product_objects ) );
         
-        SetDirectProductForMultipleObjects( direct_product_objects, direct_product_objects[1], direct_product );
+        SetDirectProductOp( direct_product_objects, direct_product_objects[1], direct_product );
         
         return universal_morphism;
         
@@ -761,7 +761,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProductForMultipleObjects,
 end );
 
 ##
-InstallMethod( AddUniversalMorphismIntoDirectProductForMultipleObjectsWithGivenDirectProduct,
+InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
@@ -800,365 +800,21 @@ InstallMethod( AddUniversalMorphismIntoDirectProductForMultipleObjectsWithGivenD
 end );
 
 ####################################
-##
-## Direct Product
-##
-####################################
-
-####################################
-## Add Operations
-####################################
-
-##
-InstallMethod( AddDirectProduct,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetDirectProductFunction( category, func );
-    
-    SetCanComputeDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "DirectProductObject", 2 );
-    
-    InstallMethodWithToDoForIsWellDefined( DirectProductObject,
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
-                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( object_A, object_B )
-        local direct_product;
-        
-        direct_product := func( object_A, object_B );
-        
-        Add( HomalgCategory( object_A ), direct_product );
-        
-        SetFilterObj( direct_product, WasCreatedAsDirectProduct );
-        
-        SetGenesis( direct_product, rec( FirstFactor := object_A, SecondFactor := object_B ) );
-        
-        return direct_product;
-        
-    end : InstallMethod := InstallMethodWithCache );
-    
-
-end );
-
-##
-InstallMethod( AddProjectionInFirstFactorOfDirectProduct,
-               [ IsHomalgCategory, IsFunction ],
-
-  function( category, func )
-    
-    SetProjectionInFirstFactorOfDirectProductFunction( category, func );
-    
-    SetCanComputeProjectionInFirstFactorOfDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "ProjectionInFirstFactor", 2 );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFirstFactor, ## this name is also used for direct sum
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
-                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( object_A, object_B )
-        local projection_in_first_factor, direct_product;
-        
-        if HasDirectProductObject( object_A, object_B ) then
-          
-          return ProjectionInFirstFactorWithGivenDirectProduct( object_A, DirectProductObject( object_A, object_B ) );
-          
-        fi;
-        
-        projection_in_first_factor := func( object_A, object_B );
-        
-        Add( HomalgCategory( object_A ), projection_in_first_factor );
-        
-        ## FIXME: it suffices that the category knows that it has a zero object
-        if CanComputeZeroObject( category ) then
-          
-          SetIsSplitEpimorphism( projection_in_first_factor, true );
-          
-        fi;
-        
-        direct_product := Source( projection_in_first_factor );
-        
-        SetGenesis( direct_product, rec( FirstFactor := object_A, SecondFactor := object_B ) );
-        
-        SetDirectProductObject( object_A, object_B, direct_product );
-        
-        SetProjectionInFirstFactor( direct_product, projection_in_first_factor );
-        
-        return projection_in_first_factor;
-        
-    end : InstallMethod := InstallMethodWithCache );
-
-end );
-
-##
-InstallMethod( AddProjectionInFirstFactorOfDirectProductWithGivenDirectProduct,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetProjectionInFirstFactorWithGivenDirectProductFunction( category, func );
-    
-    SetCanComputeProjectionInFirstFactorWithGivenDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "ProjectionInFirstFactorWithGivenDirectProduct", 2 );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFirstFactorWithGivenDirectProduct,
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
-                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( obj_A, direct_product )
-        local projection_in_first_factor;
-        
-        projection_in_first_factor := func( obj_A, direct_product );
-        
-        Add( HomalgCategory( obj_A ), projection_in_first_factor );
-        
-        SetProjectionInFirstFactor( direct_product, projection_in_first_factor );
-        
-        return projection_in_first_factor;
-        
-    end : InstallMethod := InstallMethodWithCache );
-    
-end );
-
-##
-InstallMethod( AddProjectionInSecondFactorOfDirectProduct,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetProjectionInSecondFactorOfDirectProductFunction( category, func );
-    
-    SetCanComputeProjectionInSecondFactorOfDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "ProjectionInSecondFactor", 2 );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInSecondFactor, ## this name is also used for direct sum
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
-                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( object_A, object_B )
-        local projection_in_second_factor, direct_product;
-        
-        if HasDirectProductObject( object_A, object_B ) then
-          
-          return ProjectionInSecondFactorWithGivenDirectProduct( object_B, DirectProductObject( object_A, object_B ) );
-          
-        fi;
-        
-        projection_in_second_factor := func( object_A, object_B );
-        
-        Add( HomalgCategory( object_A ), projection_in_second_factor );
-        
-        ## FIXME: it suffices that the category knows that it has a zero object
-        if CanComputeZeroObject( category ) then
-          
-          SetIsSplitEpimorphism( projection_in_second_factor, true );
-          
-        fi;
-        
-        direct_product := Source( projection_in_second_factor );
-        
-        SetGenesis( direct_product, rec( FirstFactor := object_A, SecondFactor := object_B ) );
-        
-        SetDirectProductObject( object_A, object_B, direct_product );
-        
-        SetProjectionInSecondFactor( direct_product, projection_in_second_factor );
-        
-        return projection_in_second_factor;
-        
-    end : InstallMethod := InstallMethodWithCache );
-    
-end );
-
-##
-InstallMethod( AddProjectionInSecondFactorOfDirectProductWithGivenDirectProduct,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetProjectionInSecondFactorWithGivenDirectProductFunction( category, func );
-    
-    SetCanComputeProjectionInSecondFactorWithGivenDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "ProjectionInSecondFactorWithGivenDirectProduct", 2 );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInSecondFactorWithGivenDirectProduct,
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ),
-                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( obj_A, direct_product )
-        local projection_in_second_factor;
-        
-        projection_in_second_factor := func( obj_A, direct_product );
-        
-        Add( HomalgCategory( obj_A ), projection_in_second_factor );
-        
-        SetProjectionInSecondFactor( direct_product, projection_in_second_factor );
-        
-        return projection_in_second_factor;
-        
-    end : InstallMethod := InstallMethodWithCache );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismIntoDirectProduct,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismIntoDirectProductFunction( category, func );
-    
-    SetCanComputeUniversalMorphismIntoDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProduct", 2 );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProduct,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( mor_to_A, mor_to_B )
-        local object_A, object_B, universal_morphism, direct_product;
-        
-        if not IsIdenticalObj( Source( mor_to_A ), Source( mor_to_B ) ) then
-            
-            Error( "Sources must be identical in diagram" );
-            
-        fi;
-        
-        object_A := Range( mor_to_A );
-        
-        object_B := Range( mor_to_B );
-        
-        if HasDirectProductObject( object_A, object_B ) then
-          
-          return UniversalMorphismIntoDirectProductWithGivenDirectProduct( mor_to_A, mor_to_B, DirectProductObject( object_A, object_B ) );
-          
-        fi;
-        
-        universal_morphism := func( mor_to_A, mor_to_B );
-        
-        Add( HomalgCategory( mor_to_A ), universal_morphism );
-        
-        direct_product := Range( universal_morphism );
-        
-        SetGenesis( direct_product, rec( FirstFactor := object_A, SecondFactor := object_B ) );
-        
-        SetDirectProductObject( object_A, object_B, direct_product );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache );
-    
-end );
-
-## CONTINUE HERE!
-
-##
-InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismIntoDirectProductWithGivenDirectProductFunction( category, func );
-    
-    SetCanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 3 );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                                             IsHomalgCategoryMorphism and MorphismFilter( category ),
-                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
-                              
-      function( mor_to_A, mor_to_B, direct_product )
-        local universal_morphism;
-        
-        if not IsIdenticalObj( Source( mor_to_A ), Source( mor_to_B ) ) then
-            
-            Error( "Sources must be identical in diagram" );
-            
-        fi;
-        
-        universal_morphism := func( mor_to_A, mor_to_B, direct_product );
-        
-        Add( HomalgCategory( mor_to_A ), universal_morphism );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache );
-    
-end );
-
-####################################
-## Attributes
-####################################
-
-##
-InstallMethod( ProjectionInFirstFactor,
-               [ IsHomalgCategoryObject and WasCreatedAsDirectProduct ],
-               
-  function( direct_product )
-    local object_A, object_B;
-    
-    object_A := Genesis( direct_product )!.FirstFactor;
-    
-    object_B := Genesis( direct_product )!.SecondFactor;
-    
-    return ProjectionInFirstFactor( object_A, object_B );
-    
-end );
-
-##
-InstallMethod( ProjectionInSecondFactor,
-               [ IsHomalgCategoryObject and WasCreatedAsDirectProduct ],
-               
-  function( direct_product )
-    local object_A, object_B;
-    
-    object_A := Genesis( direct_product )!.FirstFactor;
-    
-    object_B := Genesis( direct_product )!.SecondFactor;
-    
-    return ProjectionInSecondFactor( object_A, object_B );
-    
-end );
-
-####################################
 ## Implied Operations
 ####################################
 
 ##
-InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFirstFactor );
+InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFactor );
 
 ##
-InstallMethodWithToDoForIsWellDefined( DirectProductObject,
-                                       [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
-                                         IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
+InstallMethodWithToDoForIsWellDefined( DirectProductOp,
+                                       [ IsHomalgCategoryObject,
+                                         IsHomalgCategoryObject and CanComputeProjectionInFactor ],
                                         -9999,
                                         
-  function( object_A, object_B )
+  function( object_product_list, method_selection_object )
     
-    return Source( ProjectionInFirstFactor( object_A, object_B ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject );
-
-##
-InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInSecondFactor );
-
-##
-InstallMethodWithToDoForIsWellDefined( DirectProductObject,
-                                       [ IsHomalgCategoryObject and CanComputeProjectionInFirstFactor,
-                                         IsHomalgCategoryObject and CanComputeProjectionInFirstFactor ],
-                                         -9999,
-                                       
-  function( object_A, object_B )
-    
-    return Source( ProjectionInSecondFactor( object_A, object_B ) );
+    return Source( ProjectionInFactor( object_product_list, 1 ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
 
@@ -1166,44 +822,32 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProduct,
                    CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct );
 
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProduct,
-                                       [ IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
+                                       [ IsHomalgCategoryMorphism,
                                          IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
                                          -9999, #FIXME
                                        
-  function( mor_to_A, mor_to_B )
+  function( sink, method_selection_morphism )
     
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( mor_to_A, mor_to_B, DirectProductObject( Range( mor_to_A ), Range( mor_to_B ) ) );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( sink, CallFuncList( DirectProduct, List( Components( sink ), Range ) ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
-InstallTrueMethod( CanComputeProjectionInFirstFactor, CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct );
+InstallTrueMethod( CanComputeProjectionInFactor, CanComputeDirectProduct and CanComputeProjectionInFactorWithGivenDirectProduct );
 
-InstallMethodWithToDoForIsWellDefined( ProjectionInFirstFactor,
-                                       [ IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct,
-                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFirstFactorWithGivenDirectProduct ],
+InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
+                                       [ IsHomalgCategoryObject,
+                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorWithGivenDirectProduct,
+                                         IsInt ],
                                          -9999, #FIXME
                                          
-  function( object_A, object_B )
+  function( object_product_list, method_selection_object, projection_number )
     
-    return ProjectionInFirstFactorWithGivenDirectProduct( object_A, object_B, DirectProductObject( object_A, object_B ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject);
-
-##
-InstallTrueMethod( CanComputeProjectionInSecondFactor, CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct );
-
-InstallMethodWithToDoForIsWellDefined( ProjectionInSecondFactor,
-                                       [ IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct,
-                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInSecondFactorWithGivenDirectProduct ],
-                                         -9999, #FIXME
-                                       
-  function( object_A, object_B )
-    
-    return ProjectionInSecondFactorWithGivenDirectProduct( object_A, object_B, DirectProductObject( object_A, object_B ) );
+    return ProjectionInFactorWithGivenDirectProduct( object_product_list, CallFuncList( DirectProduct, Components( object_product_list ) ), projection_number );
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
+
 
 ####################################
 ##

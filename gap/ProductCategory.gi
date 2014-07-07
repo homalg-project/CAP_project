@@ -259,7 +259,7 @@ InstallMethod( DirectProductFunctor,
         
         sink := List( [ 1 .. number_of_arguments ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_list[i] ) );
         
-        return CallFuncList( UniversalMorphismIntoDirectProductForMultipleObjects, sink );
+        return CallFuncList( UniversalMorphismIntoDirectProduct, sink );
         
    end );
    

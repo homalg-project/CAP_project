@@ -60,29 +60,22 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeMorphismFromZeroObject",
                 "CanComputeMorphismIntoZeroObject",
                 "CanComputeZeroMorphism",
-                "CanComputeDirectSum",
-                "CanComputeProjectionInFirstFactor",
-                "CanComputeProjectionInSecondFactor",
-                "CanComputeInjectionFromFirstSummand",
-                "CanComputeInjectionFromSecondSummand",
+#                 "CanComputeDirectSum",
+#                 "CanComputeProjectionInFirstFactor",
+#                 "CanComputeProjectionInSecondFactor",
+#                 "CanComputeInjectionFromFirstSummand",
+#                 "CanComputeInjectionFromSecondSummand",
                 "CanComputeTerminalObject",
                 "CanComputeUniversalMorphismIntoTerminalObject",
                 "CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-                "CanComputeDirectProduct",
-                "CanComputeProjectionInFirstFactorOfDirectProduct",
-                "CanComputeProjectionInSecondFactorOfDirectProduct",
-                "CanComputeProjectionInFirstFactorWithGivenDirectProduct",
-                "CanComputeProjectionInSecondFactorWithGivenDirectProduct",
-                "CanComputeUniversalMorphismIntoDirectProduct",
-                "CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                 "CanComputeInitialObject",
                 "CanComputeUniversalMorphismFromInitialObject",
                 "CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject",
-                "CanComputeDirectProductForMultipleObjects",
+                "CanComputeDirectProduct",
                 "CanComputeProjectionInFactor",
                 "CanComputeProjectionInFactorWithGivenDirectProduct",
-                "CanComputeUniversalMorphismIntoDirectProductForMultipleObjects"
-                
+                "CanComputeUniversalMorphismIntoDirectProduct",
+                "CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct"
                  # .. 
               ] );
 
@@ -281,39 +274,39 @@ DeclareOperation( "AddMorphismFromZeroObject",
 ####################################
 
 
-DeclareAttribute( "DirectSum_OnObjectsFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddDirectSum_OnObjects",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareAttribute( "InjectionFromFirstSummandFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddInjectionFromFirstSummand",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareAttribute( "InjectionFromSecondSummandFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddInjectionFromSecondSummand",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareAttribute( "ProjectionInFirstFactorFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddProjectionInFirstFactor",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareAttribute( "ProjectionInSecondFactorFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddProjectionInSecondFactor",
-                  [ IsHomalgCategory, IsFunction ] );
+# DeclareAttribute( "DirectSum_OnObjectsFunction",
+#                   IsHomalgCategory );
+# 
+# DeclareOperation( "AddDirectSum_OnObjects",
+#                   [ IsHomalgCategory, IsFunction ] );
+# 
+# 
+# DeclareAttribute( "InjectionFromFirstSummandFunction",
+#                   IsHomalgCategory );
+# 
+# DeclareOperation( "AddInjectionFromFirstSummand",
+#                   [ IsHomalgCategory, IsFunction ] );
+# 
+# 
+# DeclareAttribute( "InjectionFromSecondSummandFunction",
+#                   IsHomalgCategory );
+# 
+# DeclareOperation( "AddInjectionFromSecondSummand",
+#                   [ IsHomalgCategory, IsFunction ] );
+# 
+# 
+# DeclareAttribute( "ProjectionInFirstFactorFunction",
+#                   IsHomalgCategory );
+# 
+# DeclareOperation( "AddProjectionInFirstFactor",
+#                   [ IsHomalgCategory, IsFunction ] );
+# 
+# 
+# DeclareAttribute( "ProjectionInSecondFactorFunction",
+#                   IsHomalgCategory );
+# 
+# DeclareOperation( "AddProjectionInSecondFactor",
+#                   [ IsHomalgCategory, IsFunction ] );
 
 # universal properties of direct sum?
 # product/ coproduct?

@@ -257,7 +257,7 @@ AddCokernelProjWithGivenCokernel( vecspaces,
 end );
 
 ##
-AddDirectProductForMultipleObjects( vecspaces,
+AddDirectProduct( vecspaces,
 
   function( object_product_list )
     local dim;
@@ -332,7 +332,7 @@ AddProjectionInFactorWithGivenDirectProduct( vecspaces,
 
 end );
 
-AddUniversalMorphismIntoDirectProductForMultipleObjects( vecspaces,
+AddUniversalMorphismIntoDirectProduct( vecspaces,
 
   function( sink )
     local dim, direct_product, components, universal_morphism, morphism;
@@ -355,7 +355,7 @@ AddUniversalMorphismIntoDirectProductForMultipleObjects( vecspaces,
   
 end );
 
-AddUniversalMorphismIntoDirectProductForMultipleObjectsWithGivenDirectProduct( vecspaces,
+AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( vecspaces,
 
   function( sink, direct_product )
     local components, universal_morphism, morphism;
@@ -372,99 +372,6 @@ AddUniversalMorphismIntoDirectProductForMultipleObjectsWithGivenDirectProduct( v
   
     return VectorSpaceMorphism( Source( sink[1] ), universal_morphism, direct_product );
   
-end );
-
-
-##
-AddDirectProduct( vecspaces,
-
-  function( a, b )
-    local dim;
-
-    dim := Dimension( a ) + Dimension( b );
-
-    return QVectorSpace( dim );
-
-end );
-
-##
-AddProjectionInFirstFactorOfDirectProduct( vecspaces,
-
-  function( a, b )
-    local direct_product, projection_in_first_factor;
-    
-    direct_product := QVectorSpace( Dimension( a ) + Dimension( b ) );
-
-    projection_in_first_factor := UnionOfRows( HomalgIdentityMatrix( Dimension( a ), VECTORSPACES_FIELD ),
-                                               HomalgZeroMatrix( Dimension( b ), Dimension( a ), VECTORSPACES_FIELD ) );
-    
-    return VectorSpaceMorphism( direct_product, projection_in_first_factor, a );
-
-end );
-
-##
-AddProjectionInFirstFactorOfDirectProductWithGivenDirectProduct( vecspaces,
-
-  function( a, direct_product )
-    local projection_in_first_factor;
-
-    projection_in_first_factor := UnionOfRows( HomalgIdentityMatrix( Dimension( a ), VECTORSPACES_FIELD ),
-                                               HomalgZeroMatrix( Dimension( direct_product ) - Dimension( a ), Dimension( a ), VECTORSPACES_FIELD ) );
-
-
-    return VectorSpaceMorphism( direct_product, projection_in_first_factor, a );
-
-end );
-
-##
-AddProjectionInSecondFactorOfDirectProduct( vecspaces,
-
-  function( a, b )
-    local direct_product, projection_in_first_factor;
-
-    direct_product := QVectorSpace( Dimension( a ) + Dimension( b ) );
-
-    projection_in_first_factor := UnionOfRows( HomalgZeroMatrix( Dimension( b ), Dimension( a ), VECTORSPACES_FIELD ),
-                                               HomalgIdentityMatrix( Dimension( a ), VECTORSPACES_FIELD )
-                                             );
-
-    return VectorSpaceMorphism( direct_product, projection_in_first_factor, a );
-
-end );
-
-##
-AddProjectionInSecondFactorOfDirectProductWithGivenDirectProduct( vecspaces,
-
-  function( a, direct_product )
-    local projection_in_first_factor;
-
-    projection_in_first_factor := UnionOfRows( HomalgZeroMatrix( Dimension( direct_product ) - Dimension( a ), Dimension( a ), VECTORSPACES_FIELD ),
-                                               HomalgIdentityMatrix( Dimension( a ), VECTORSPACES_FIELD )
-                                             );
-
-    return VectorSpaceMorphism( direct_product, projection_in_first_factor, a );
-
-end );
-
-##
-AddUniversalMorphismIntoDirectProduct( vecspaces,
-
-  function( mor_to_A, mor_to_B )
-    local direct_product;
-
-    direct_product := QVectorSpace( Dimension( Range( mor_to_A ) ) + Dimension( Range( mor_to_B ) ) );
-  
-    return VectorSpaceMorphism( Source( mor_to_A ), UnionOfColumns( mor_to_A!.morphism, mor_to_B!.morphism ), direct_product );
-
-end );
-
-##
-AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( vecspaces,
-
-  function( mor_to_A, mor_to_B, direct_product )
-
-    return VectorSpaceMorphism( Source( mor_to_A ), UnionOfColumns( mor_to_A!.morphism, mor_to_B!.morphism ), direct_product );
-
 end );
 
 ##

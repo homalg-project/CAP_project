@@ -367,158 +367,158 @@ end );
 #######################################
 
 ## HERE
-InstallMethod( AddDirectSum_OnObjects,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    DECIDE_INSTALL_FUNCTION( category, "DirectSum", 2 );
-    
-    SetDirectSum_OnObjectsFunction( category, func );
-    
-    SetCanComputeDirectSum( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( DirectSumOp,
-                                           [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
-                   
-      function( obj_list, obj1 )
-        local obj2, sum_obj;
-        
-        if not Length( obj_list ) = 2 then
-            
-            Error( "there must be two objects for a direct sum" );
-            
-        fi;
-        
-        obj2 := obj_list[ 2 ];
-        
-        if not IsIdenticalObj( HomalgCategory( obj1 ), HomalgCategory( obj2 ) ) then
-            
-            Error( "Objects must lie in the same category" );
-            
-        fi;
-        
-        sum_obj := func( obj1, obj2 );
-        
-        SetFirstSummand( sum_obj, obj1 );
-        
-        SetSecondSummand( sum_obj, obj2 );
-        
-        Add( HomalgCategory( obj1 ), sum_obj );
-        
-        return sum_obj;
-        
-    end : InstallMethod := InstallMethodWithCache );
-    
-end );
-
-##
-InstallMethod( AddInjectionFromFirstSummand,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetInjectionFromFirstSummandFunction( category, func );
-    
-    SetCanComputeInjectionFromFirstSummand( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( InjectionFromFirstSummand,
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
-                                           
-      function( sum_obj )
-        local injection1;
-        
-        injection1 := func( sum_obj );
-        
-        Add( HomalgCategory( sum_obj ), injection1 );
-        
-        return injection1;
-        
-    end );
-    
-end );
-
-##
-InstallMethod( AddInjectionFromSecondSummand,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetInjectionFromSecondSummandFunction( category, func );
-    
-    SetCanComputeInjectionFromSecondSummand( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( InjectionFromSecondSummand,
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
-                                           
-      function( sum_obj )
-        local injection1;
-        
-        injection1 := func( sum_obj );
-        
-        Add( HomalgCategory( sum_obj ), injection1 );
-        
-        return injection1;
-        
-    end );
-    
-end );
-
-##
-InstallMethod( AddProjectionInFirstFactor,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetProjectionInFirstFactorFunction( category, func );
-    
-    SetCanComputeProjectionInFirstFactor( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFirstFactor,
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
-                                           
-      function( sum_obj )
-        local surjection;
-        
-        surjection := func( sum_obj );
-        
-        Add( HomalgCategory( sum_obj ), surjection );
-        
-        ## TODO: This morphism is epi
-        
-        return surjection;
-        
-    end );
-    
-end );
-
-##
-InstallMethod( AddProjectionInSecondFactor,
-               [ IsHomalgCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetProjectionInSecondFactorFunction( category, func );
-    
-    SetCanComputeProjectionInSecondFactor( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInSecondFactor,
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
-                                           
-      function( sum_obj )
-        local surjection;
-        
-        surjection := func( sum_obj );
-        
-        Add( HomalgCategory( sum_obj ), surjection );
-        
-        ## TODO: This morphism is epi
-        
-        return surjection;
-        
-    end );
-    
-end );
+# InstallMethod( AddDirectSum_OnObjects,
+#                [ IsHomalgCategory, IsFunction ],
+#                
+#   function( category, func )
+#     
+#     DECIDE_INSTALL_FUNCTION( category, "DirectSum", 2 );
+#     
+#     SetDirectSum_OnObjectsFunction( category, func );
+#     
+#     SetCanComputeDirectSum( category, true );
+#     
+#     InstallMethodWithToDoForIsWellDefined( DirectSumOp,
+#                                            [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
+#                    
+#       function( obj_list, obj1 )
+#         local obj2, sum_obj;
+#         
+#         if not Length( obj_list ) = 2 then
+#             
+#             Error( "there must be two objects for a direct sum" );
+#             
+#         fi;
+#         
+#         obj2 := obj_list[ 2 ];
+#         
+#         if not IsIdenticalObj( HomalgCategory( obj1 ), HomalgCategory( obj2 ) ) then
+#             
+#             Error( "Objects must lie in the same category" );
+#             
+#         fi;
+#         
+#         sum_obj := func( obj1, obj2 );
+#         
+#         SetFirstSummand( sum_obj, obj1 );
+#         
+#         SetSecondSummand( sum_obj, obj2 );
+#         
+#         Add( HomalgCategory( obj1 ), sum_obj );
+#         
+#         return sum_obj;
+#         
+#     end : InstallMethod := InstallMethodWithCache );
+#     
+# end );
+# 
+# ##
+# InstallMethod( AddInjectionFromFirstSummand,
+#                [ IsHomalgCategory, IsFunction ],
+#                
+#   function( category, func )
+#     
+#     SetInjectionFromFirstSummandFunction( category, func );
+#     
+#     SetCanComputeInjectionFromFirstSummand( category, true );
+#     
+#     InstallMethodWithToDoForIsWellDefined( InjectionFromFirstSummand,
+#                                            [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
+#                                            
+#       function( sum_obj )
+#         local injection1;
+#         
+#         injection1 := func( sum_obj );
+#         
+#         Add( HomalgCategory( sum_obj ), injection1 );
+#         
+#         return injection1;
+#         
+#     end );
+#     
+# end );
+# 
+# ##
+# InstallMethod( AddInjectionFromSecondSummand,
+#                [ IsHomalgCategory, IsFunction ],
+#                
+#   function( category, func )
+#     
+#     SetInjectionFromSecondSummandFunction( category, func );
+#     
+#     SetCanComputeInjectionFromSecondSummand( category, true );
+#     
+#     InstallMethodWithToDoForIsWellDefined( InjectionFromSecondSummand,
+#                                            [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
+#                                            
+#       function( sum_obj )
+#         local injection1;
+#         
+#         injection1 := func( sum_obj );
+#         
+#         Add( HomalgCategory( sum_obj ), injection1 );
+#         
+#         return injection1;
+#         
+#     end );
+#     
+# end );
+# 
+# ##
+# InstallMethod( AddProjectionInFirstFactor,
+#                [ IsHomalgCategory, IsFunction ],
+#                
+#   function( category, func )
+#     
+#     SetProjectionInFirstFactorFunction( category, func );
+#     
+#     SetCanComputeProjectionInFirstFactor( category, true );
+#     
+#     InstallMethodWithToDoForIsWellDefined( ProjectionInFirstFactor,
+#                                            [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
+#                                            
+#       function( sum_obj )
+#         local surjection;
+#         
+#         surjection := func( sum_obj );
+#         
+#         Add( HomalgCategory( sum_obj ), surjection );
+#         
+#         ## TODO: This morphism is epi
+#         
+#         return surjection;
+#         
+#     end );
+#     
+# end );
+# 
+# ##
+# InstallMethod( AddProjectionInSecondFactor,
+#                [ IsHomalgCategory, IsFunction ],
+#                
+#   function( category, func )
+#     
+#     SetProjectionInSecondFactorFunction( category, func );
+#     
+#     SetCanComputeProjectionInSecondFactor( category, true );
+#     
+#     InstallMethodWithToDoForIsWellDefined( ProjectionInSecondFactor,
+#                                            [ IsHomalgCategoryObject and ObjectFilter( category ) and WasCreatedAsDirectSum ],
+#                                            
+#       function( sum_obj )
+#         local surjection;
+#         
+#         surjection := func( sum_obj );
+#         
+#         Add( HomalgCategory( sum_obj ), surjection );
+#         
+#         ## TODO: This morphism is epi
+#         
+#         return surjection;
+#         
+#     end );
+#     
+# end );
 
 ####################################
 ##

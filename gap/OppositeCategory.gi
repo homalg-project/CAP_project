@@ -353,60 +353,60 @@ InstallMethod( ZeroMorphism,
     
 end );
 
-##
-InstallMethod( DirectSumOp,
-               [ IsList, IsHomalgCategoryOppositeObjectRep ],
-               -1,
-               
-  function( obj_list, obj1 )
-    
-    return Opposite( DirectSumOp( List( obj_list, Opposite ), Opposite( obj1 ) ) );
-    
-end );
-
-##
-InstallMethod( ProjectionInFirstFactor,
-               [ IsHomalgCategoryOppositeObjectRep ],
-               -1,
-               
-  function( sum_obj )
-    
-    return Opposite( InjectionFromFirstSummand( Opposite( sum_obj ) ) );
-    
-end );
-
-##
-InstallMethod( ProjectionInSecondFactor,
-               [ IsHomalgCategoryOppositeObjectRep ],
-               -1,
-               
-  function( sum_obj )
-    
-    return Opposite( InjectionFromSecondSummand( Opposite( sum_obj ) ) );
-    
-end );
-
-##
-InstallMethod( InjectionFromFirstSummand,
-               [ IsHomalgCategoryOppositeObjectRep ],
-               -1,
-               
-  function( sum_obj )
-    
-    return Opposite( ProjectionInFirstFactor( Opposite( sum_obj ) ) );
-    
-end );
-
-##
-InstallMethod( InjectionFromSecondSummand,
-               [ IsHomalgCategoryOppositeObjectRep ],
-               -1,
-               
-  function( sum_obj )
-    
-    return Opposite( ProjectionInSecondFactor( Opposite( sum_obj ) ) );
-    
-end );
+# ##
+# InstallMethod( DirectSumOp,
+#                [ IsList, IsHomalgCategoryOppositeObjectRep ],
+#                -1,
+#                
+#   function( obj_list, obj1 )
+#     
+#     return Opposite( DirectSumOp( List( obj_list, Opposite ), Opposite( obj1 ) ) );
+#     
+# end );
+# 
+# ##
+# InstallMethod( ProjectionInFirstFactor,
+#                [ IsHomalgCategoryOppositeObjectRep ],
+#                -1,
+#                
+#   function( sum_obj )
+#     
+#     return Opposite( InjectionFromFirstSummand( Opposite( sum_obj ) ) );
+#     
+# end );
+# 
+# ##
+# InstallMethod( ProjectionInSecondFactor,
+#                [ IsHomalgCategoryOppositeObjectRep ],
+#                -1,
+#                
+#   function( sum_obj )
+#     
+#     return Opposite( InjectionFromSecondSummand( Opposite( sum_obj ) ) );
+#     
+# end );
+# 
+# ##
+# InstallMethod( InjectionFromFirstSummand,
+#                [ IsHomalgCategoryOppositeObjectRep ],
+#                -1,
+#                
+#   function( sum_obj )
+#     
+#     return Opposite( ProjectionInFirstFactor( Opposite( sum_obj ) ) );
+#     
+# end );
+# 
+# ##
+# InstallMethod( InjectionFromSecondSummand,
+#                [ IsHomalgCategoryOppositeObjectRep ],
+#                -1,
+#                
+#   function( sum_obj )
+#     
+#     return Opposite( ProjectionInSecondFactor( Opposite( sum_obj ) ) );
+#     
+# end );
 
 ## TODO: Massig todo-list entries die attribute von Category/Object/Morphism auf Opposite übertragen.
 

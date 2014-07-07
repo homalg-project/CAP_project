@@ -235,96 +235,6 @@ DeclareFilter( "WasCreatedAsCokernel" );
 
 ####################################
 ##
-## Direct Product
-##
-####################################
-
-## Main Operations and Attributes
-
-## declaration with cache enables generalized setter/has methods.
-DeclareOperationWithCache( "DirectProductObject",
-                           [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-DeclareOperation( "ProjectionInFirstFactor",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-DeclareAttribute( "ProjectionInFirstFactor",
-                  IsHomalgCategoryObject );
-
-DeclareOperation( "ProjectionInSecondFactor",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-DeclareAttribute( "ProjectionInSecondFactor",
-                  IsHomalgCategoryObject );
-
-DeclareOperation( "ProjectionInFirstFactorWithGivenDirectProduct",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-DeclareOperation( "ProjectionInSecondFactorWithGivenDirectProduct",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-DeclareOperation( "UniversalMorphismIntoDirectProduct",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
-
-DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
-
-## Function Attributes
-
-DeclareAttribute( "DirectProductFunction",
-                  IsHomalgCategory );
-
-DeclareAttribute( "ProjectionInFirstFactorOfDirectProductFunction",
-                  IsHomalgCategory );
-
-DeclareAttribute( "ProjectionInSecondFactorOfDirectProductFunction",
-                  IsHomalgCategory );
-
-DeclareAttribute( "ProjectionInFirstFactorWithGivenDirectProductFunction",
-                  IsHomalgCategory );
-
-DeclareAttribute( "ProjectionInSecondFactorWithGivenDirectProductFunction",
-                  IsHomalgCategory );
-
-DeclareAttribute( "UniversalMorphismIntoDirectProductFunction",
-                  IsHomalgCategory );
-
-DeclareAttribute( "UniversalMorphismIntoDirectProductWithGivenDirectProductFunction",
-                  IsHomalgCategory );
-
-## Add Operations
-
-DeclareOperation( "AddDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInFirstFactorOfDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareOperation( "AddProjectionInSecondFactorOfDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareOperation( "AddProjectionInFirstFactorOfDirectProductWithGivenDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareOperation( "AddProjectionInSecondFactorOfDirectProductWithGivenDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
-
-## WasCreatedAs Filter
-
-DeclareFilter( "WasCreatedAsDirectProduct" );
-
-####################################
-##
 #! @Section Terminal Object
 ##
 ####################################
@@ -529,7 +439,7 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 # because:
 # *IsWellDefined will be handled properly
 # *no caching issues?
-DeclareOperationWithCache( "DirectProductForMultipleObjects",
+DeclareOperationWithCache( "DirectProductOp",
                            [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
 DeclareOperation( "ProjectionInFactor",
@@ -541,7 +451,7 @@ DeclareOperation( "ProjectionInFactorOp",
 DeclareOperation( "ProjectionInFactorWithGivenDirectProduct",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
 
-DeclareGlobalFunction( "UniversalMorphismIntoDirectProductForMultipleObjects" );
+DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
@@ -551,7 +461,7 @@ DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
 
 ## Function Attributes
 
-DeclareAttribute( "DirectProductForMultipleObjectsFunction",
+DeclareAttribute( "DirectProductFunction",
                   IsHomalgCategory );
 
 DeclareAttribute( "ProjectionInFactorFunction",
@@ -560,15 +470,15 @@ DeclareAttribute( "ProjectionInFactorFunction",
 DeclareAttribute( "ProjectionInFactorWithGivenDirectProductFunction",
                   IsHomalgCategory );
 
-DeclareAttribute( "UniversalMorphismIntoDirectProductForMultipleObjectsFunction",
+DeclareAttribute( "UniversalMorphismIntoDirectProductFunction",
                   IsHomalgCategory );
 
-DeclareAttribute( "UniversalMorphismIntoDirectProductForMultipleObjectsWithGivenDirectProductFunction",
+DeclareAttribute( "UniversalMorphismIntoDirectProductWithGivenDirectProductFunction",
                   IsHomalgCategory );
 
 ## Add Operations
 
-DeclareOperation( "AddDirectProductForMultipleObjects",
+DeclareOperation( "AddDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareOperation( "AddProjectionInFactor",
@@ -577,15 +487,15 @@ DeclareOperation( "AddProjectionInFactor",
 DeclareOperation( "AddProjectionInFactorWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismIntoDirectProductForMultipleObjects",
+DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismIntoDirectProductForMultipleObjectsWithGivenDirectProduct",
+DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 ## WasCreatedAs Filter
 
-DeclareFilter( "WasCreatedAsDirectProductForMultipleObjects" );
+DeclareFilter( "WasCreatedAsDirectProduct" );
 
 ####################################
 ##
