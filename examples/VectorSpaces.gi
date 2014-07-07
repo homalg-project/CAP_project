@@ -301,6 +301,79 @@ AddProjectionInFactor( vecspaces,
 
 end );
 
+##
+## the user may assume that Length( object_product_list!.Components ) > 1
+AddProjectionInFactorWithGivenDirectProduct( vecspaces,
+
+  function( object_product_list, direct_product, projection_number )
+    local components, dim, dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
+    
+    components := Components( object_product_list );
+    
+    number_of_objects := Length( Components( object_product_list ) );
+    
+    dim := Sum( components, c -> Dimension( c ) );
+    
+    dim_pre := Sum( components{ [ 1 .. projection_number - 1 ] }, c -> Dimension( c ) );
+    
+    dim_post := Sum( components{ [ projection_number + 1 .. number_of_objects ] }, c -> Dimension( c ) );
+    
+    dim_factor := Dimension( object_product_list[ projection_number ] );
+    
+    projection_in_factor := HomalgZeroMatrix( dim_pre, dim_factor, VECTORSPACES_FIELD );
+    
+    projection_in_factor := UnionOfRows( projection_in_factor, 
+                                         HomalgIdentityMatrix( dim_factor, VECTORSPACES_FIELD ) );
+    
+    projection_in_factor := UnionOfRows( projection_in_factor, 
+                                         HomalgZeroMatrix( dim_post, dim_factor, VECTORSPACES_FIELD ) );
+    
+    return VectorSpaceMorphism( direct_product, projection_in_factor, object_product_list[ projection_number ] );
+
+end );
+
+AddUniversalMorphismIntoDirectProductForMultipleObjects( vecspaces,
+
+  function( sink )
+    local dim, direct_product, components, universal_morphism, morphism;
+    
+    components := Components( sink );
+    
+    dim := Sum( components, c -> Dimension( Range( c ) ) );
+    
+    direct_product := QVectorSpace( dim );
+    
+    universal_morphism := sink[1]!.morphism;
+    
+    for morphism in components{ [ 2 .. Length( components ) ] } do
+    
+      universal_morphism := UnionOfColumns( universal_morphism, morphism!.morphism );
+  
+    od;
+  
+    return VectorSpaceMorphism( Source( sink[1] ), universal_morphism, direct_product );
+  
+end );
+
+AddUniversalMorphismIntoDirectProductForMultipleObjectsWithGivenDirectProduct( vecspaces,
+
+  function( sink, direct_product )
+    local components, universal_morphism, morphism;
+    
+    components := Components( sink );
+    
+    universal_morphism := sink[1]!.morphism;
+    
+    for morphism in components{ [ 2 .. Length( components ) ] } do
+    
+      universal_morphism := UnionOfColumns( universal_morphism, morphism!.morphism );
+  
+    od;
+  
+    return VectorSpaceMorphism( Source( sink[1] ), universal_morphism, direct_product );
+  
+end );
+
 
 ##
 AddDirectProduct( vecspaces,

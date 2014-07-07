@@ -541,8 +541,10 @@ DeclareOperation( "ProjectionInFactorOp",
 DeclareOperation( "ProjectionInFactorWithGivenDirectProduct",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
 
-DeclareOperation( "UniversalMorphismIntoDirectProduct",
-                  [ IsHomalgCategoryMorphism ] );
+DeclareGlobalFunction( "UniversalMorphismIntoDirectProductForMultipleObjects" );
+
+DeclareOperation( "UniversalMorphismIntoDirectProductOp",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );

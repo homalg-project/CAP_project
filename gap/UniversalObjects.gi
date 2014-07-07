@@ -570,15 +570,30 @@ end );
 ##TODO: Install AddProjectionInFactor convenient method with 
 ##the direct product object as an input
 
+##
 InstallMethod( ProjectionInFactor,
                [ IsHomalgCategoryObject, IsInt ],
                
   function( object_product_list, projection_number )
     local number_of_objects;
     
+    if WasCreatedAsDirectProductForMultipleObjects( object_product_list ) then
+    
+      number_of_objects := Length( Components( Genesis( object_product_list )!.DirectFactors ) );
+      
+      if projection_number < 1 or projection_number > number_of_objects then
+      
+        Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
+      
+      fi;
+    
+      return ProjectionInFactorWithGivenDirectProduct( Genesis( object_product_list )!.DirectFactors, object_product_list, projection_number );
+    
+    fi;
+    
     number_of_objects := Length( Components( object_product_list ) );
   
-    if number_of_objects < 0 or number_of_objects > number_of_objects then
+    if projection_number < 0 or projection_number > number_of_objects then
     
       Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
     
@@ -616,7 +631,7 @@ InstallMethod( AddProjectionInFactor,
         
         if HasDirectProductForMultipleObjects( object_product_list, method_selection_object ) then
           
-          return ProjectionInFactorWithGivenDirectProduct( object_product_list, DirectProductForMultipleObjects( object_product_list, method_selection_object ) );
+          return ProjectionInFactorWithGivenDirectProduct( object_product_list, DirectProductForMultipleObjects( object_product_list, method_selection_object ), projection_number );
           
         fi;
         
@@ -643,7 +658,146 @@ InstallMethod( AddProjectionInFactor,
 
 end );
 
+##
+InstallMethod( AddProjectionInFactorWithGivenDirectProduct,
+               [ IsHomalgCategory, IsFunction ],
 
+  function( category, func )
+    
+    SetProjectionInFactorWithGivenDirectProductFunction( category, func );
+    
+    SetCanComputeProjectionInFactorWithGivenDirectProduct( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "ProjectionInFactorWithGivenDirectProduct", 3 );
+    
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenDirectProduct,
+                                           [ IsHomalgCategoryObject, 
+                                             IsHomalgCategoryObject and ObjectFilter( category ), 
+                                             IsInt ],
+                                             
+      function( object_product_list, direct_product, projection_number )
+        local projection_in_factor;
+        
+        projection_in_factor := func( object_product_list, direct_product, projection_number );
+        
+        Add( category, projection_in_factor );
+        
+        ## FIXME: it suffices that the category knows that it has a zero object
+        if CanComputeZeroObject( category ) then
+          
+          SetIsSplitEpimorphism( projection_in_factor, true );
+          
+        fi;
+        
+        return projection_in_factor;
+        
+    end : InstallMethod := InstallMethodWithCache );
+
+end );
+
+##
+InstallGlobalFunction( UniversalMorphismIntoDirectProductForMultipleObjects,
+
+  function( arg )
+    
+    return UniversalMorphismIntoDirectProductOp( CallFuncList( Product, arg ), arg[1] );
+  
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoDirectProductForMultipleObjects,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismIntoDirectProductForMultipleObjectsFunction( category, func );
+    
+    SetCanComputeUniversalMorphismIntoDirectProductForMultipleObjects( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProduct", 2 );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
+                                           [ IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
+      function( sink, method_selection_morphism )
+        local test_object, components, direct_product_objects, universal_morphism, direct_product;
+        
+        test_object := Source( sink[1] );
+        
+        components := Components( sink );
+        
+        direct_product_objects := CallFuncList( Product, List( Components( sink ), Range ) );
+        
+        if HasDirectProductForMultipleObjects( direct_product_objects, direct_product_objects[1] ) then
+          
+          return UniversalMorphismIntoDirectProductWithGivenDirectProduct( 
+                   sink, 
+                   DirectProductForMultipleObjects( direct_product_objects, direct_product_objects[1] ) 
+                 );
+          
+        fi;
+        
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
+            
+            Error( "sources of morphisms must be identical in given sink-diagram" );
+            
+        fi;
+        
+        universal_morphism := func( sink );
+        
+        Add( category, universal_morphism );
+        
+        direct_product := Range( universal_morphism );
+        
+        SetGenesis( direct_product, rec( DirectFactors := direct_product_objects ) );
+        
+        SetDirectProductForMultipleObjects( direct_product_objects, direct_product_objects[1], direct_product );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoDirectProductForMultipleObjectsWithGivenDirectProduct,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismIntoDirectProductWithGivenDirectProductFunction( category, func );
+    
+    SetCanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 2 );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+                                           [ IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
+      function( sink, direct_product )
+        local test_object, components, direct_product_objects, universal_morphism;
+        
+        test_object := Source( sink[1] );
+        
+        components := Components( sink );
+        
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
+            
+            Error( "sources of morphisms must be identical in given sink-diagram" );
+            
+        fi;
+        
+        universal_morphism := func( sink, direct_product );
+        
+        Add( category, universal_morphism );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache );
+    
+end );
 
 ####################################
 ##
