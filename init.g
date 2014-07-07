@@ -1,8 +1,9 @@
 ReadPackage( "CategoriesForHomalg", "gap/ToolsForCategories.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/ToolsForCategories.gi");
-
 ReadPackage( "CategoriesForHomalg", "gap/CategoriesForHomalg.gd");
+
+## FIXME: The loading structure needs to be redone.
+ReadPackage( "CategoriesForHomalg", "gap/ToolsForCategories.gi");
 
 ReadPackage( "CategoriesForHomalg", "gap/CategoryObjects.gd");
 

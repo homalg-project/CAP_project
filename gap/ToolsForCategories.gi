@@ -18,17 +18,20 @@ InstallGlobalFunction( InstallMethodWithToDoForIsWellDefined,
     name := NameFunction( arg[ 1 ] );
     
     new_func := function( arg )
-        local val, entry, i;
+        local val, entry, i, filtered_arg;
+        
+        ## ToDo: This can be improved
+        filtered_arg := Filtered( arg, IsHomalgCategoryCell );
         
         val := CallFuncList( orig_func, arg );
         
-        entry := ToDoListEntry( List( arg, i -> [ i, "IsWellDefined", true ] ), val, "IsWellDefined", true );
+        entry := ToDoListEntry( List( filtered_arg, i -> [ i, "IsWellDefined", true ] ), val, "IsWellDefined", true );
         
         SetDescriptionOfImplication( entry, Concatenation( "Well defined propagation from ", name ) );
         
         AddToToDoList( entry );
         
-        for i in arg do
+        for i in filtered_arg do
             
             entry := ToDoListEntry( [ [ i, "IsWellDefined", false ] ], val, "IsWellDefined", false );
             
@@ -75,9 +78,11 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
                         Concatenation( filter, [ IsObject ] ),
                         
       function( arg )
-        local cache_return, cache_key, entry, i;
+        local cache_return, cache_key, entry, i, filtered_cache_key;
         
         cache_key := arg{[ 1 .. Length( arg ) - 1 ]};
+        
+        filtered_cache_key := Filtered( cache_key, IsHomalgCategoryCell );
         
         cache_return := CacheValue( cache, cache_key );
         
@@ -85,13 +90,13 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
             
             CallFuncList( SetCacheValue, [ cache, cache_key, arg[ Length( arg ) ] ] );
             
-            entry := ToDoListEntry( List( cache_key, i -> [ i, "IsWellDefined", true ] ), arg[ Length( arg ) ], "IsWellDefined", true );
+            entry := ToDoListEntry( List( filtered_cache_key, i -> [ i, "IsWellDefined", true ] ), arg[ Length( arg ) ], "IsWellDefined", true );
             
             SetDescriptionOfImplication( entry, Concatenation( "Well defined propagation from ", name ) );
             
             AddToToDoList( entry );
             
-            for i in cache_key do
+            for i in filtered_cache_key do
                 
                 entry := ToDoListEntry( [ [ i, "IsWellDefined", false ] ], arg[ Length( arg ) ], "IsWellDefined", false );
                 
@@ -126,11 +131,13 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
                         Concatenation( filter, [ IsObject ] ),
                         
       function( arg )
-        local cache, cache_key, cache_return, entry, i;
+        local cache, cache_key, cache_return, entry, i, filtered_cache_key;
         
         cache := CachingObject( arg[ cache_number ], name, Length( arg ) );
         
         cache_key := arg{[ 1 .. Length( arg ) - 1 ]};
+        
+        filtered_cache_key := Filtered( cache_key, IsHomalgCategoryCell );
         
         cache_return := CacheValue( cache, cache_key );
         
@@ -138,13 +145,13 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
             
             CallFuncList( SetCacheValue, [ cache, cache_key, arg[ Length( arg ) ] ] );
             
-            entry := ToDoListEntry( List( cache_key, i -> [ i, "IsWellDefined", true ] ), arg[ Length( arg ) ], "IsWellDefined", true );
+            entry := ToDoListEntry( List( filtered_cache_key, i -> [ i, "IsWellDefined", true ] ), arg[ Length( arg ) ], "IsWellDefined", true );
             
             SetDescriptionOfImplication( entry, Concatenation( "Well defined propagation from ", name ) );
             
             AddToToDoList( entry );
             
-            for i in cache_key do
+            for i in filtered_cache_key do
                 
                 entry := ToDoListEntry( [ [ i, "IsWellDefined", false ] ], arg[ Length( arg ) ], "IsWellDefined", false );
                 
