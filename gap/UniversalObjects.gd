@@ -430,37 +430,91 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 
 ####################################
 ##
-## Direct Product for multiple objects
+#! @Section Direct Product
 ##
 ####################################
 
 ## Main Operations and Attributes
-# the first argument is an object of the product category. This is superior to a list of objects
+# the first argument (diagram) is an object of the product category. This is superior to a list of objects
 # because:
 # *IsWellDefined will be handled properly
 # *no caching issues?
+
+
+## Main Operations and Attributes
+# @Description
+# Direct product of a given diagram $D$, where $D$ is an object in 
+# a product category. The second argument $M$ is an object needed for the method
+# selection.
+# @Returns IsHomalgCategoryObject
+# @Arguments D, M
 DeclareOperationWithCache( "DirectProductOp",
                            [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
+#! @Description
+#! Projection in the $i$-th factor of the direct product given by $D$.
+#! $D$ can either be an object created as a direct product or an object
+#! in a product category $D = (A_i)$ representing a diagram.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments D, i
 DeclareOperation( "ProjectionInFactor",
                   [ IsHomalgCategoryObject, IsInt ] );
 
+# @Description
+# Projection in the $i$-th factor of the direct product given by $D$.
+# $D$ can either be an object created as a direct product or an object
+# in a product category representing a diagram. The second argument $M$
+# is an object needed for the method selection.
+# @Returns IsHomalgCategoryMorphism
+# @Arguments D, M, i
 DeclareOperation( "ProjectionInFactorOp",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
 
+#! @Description
+#! Projection in the $i$-th factor of the direct product $P = \prod_j A_j$ 
+#! given by an object of a product category $D = (A_j)$.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments D, P, i
 DeclareOperation( "ProjectionInFactorWithGivenDirectProduct",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
 
+#! @Description
+#! Given finitely many morphisms $\alpha_i: A \rightarrow B_i$ this method
+#! returns the unique morphism $\alpha: A \rightarrow \prod_j B_j$ such that
+#! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
+#! $\prod_j B_j \rightarrow B_i$.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments alpha_i
 DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 
+# @Description
+# Given finitely many morphisms $D = (\alpha_i: A \rightarrow B_i)$ as an
+# object in the product category, this method
+# returns a unique morphism $\alpha: A \rightarrow \prod_j B_j$ such that
+# $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
+# $\prod_j B_j \rightarrow B_i$. The second argument $M$ is needed for the method selection.
+# @Returns IsHomalgCategoryMorphism
+# @Arguments D, M
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
+#! @Description
+#! Given finitely many morphisms $D = (\alpha_i: A \rightarrow B_i)$ as an
+#! object in a product category, and given the direct product $P = \prod_j B_j$, this method
+#! returns the unique morphism $\alpha: A \rightarrow P$ such that
+#! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
+#! $P \rightarrow B_i$.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments D, P
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
 ## Function Attributes
+#! @AutoDoc
+#! @BeginGroup
 
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a direct product. 
 DeclareAttribute( "DirectProductFunction",
                   IsHomalgCategory );
 
@@ -475,27 +529,54 @@ DeclareAttribute( "UniversalMorphismIntoDirectProductFunction",
 
 DeclareAttribute( "UniversalMorphismIntoDirectProductWithGivenDirectProductFunction",
                   IsHomalgCategory );
+#! @EndGroup
+#! @EndAutoDoc
 
 ## Add Operations
+#! @AutoDoc
+#! @BeginGroup
 
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+
+#! @Arguments C, f
 DeclareOperation( "AddDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddProjectionInFactor",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
+#! @EndGroup
+#! @EndAutoDoc
+
 
 ## WasCreatedAs Filter
 
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a terminal object. 
+#! Note that we chose <C>WasCreatedAsDirectProduct</C> to be a filter rather than a property,
+#! because by default, a filter is set to false.
 DeclareFilter( "WasCreatedAsDirectProduct" );
+
+#! @Chapter Universal Objects
+
 
 ####################################
 ##
