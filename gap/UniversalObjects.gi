@@ -506,6 +506,147 @@ end );
 
 ####################################
 ##
+## Direct Product for multiple objects
+##
+####################################
+
+## GAP-Hack in order to avoid the pre-installed GAP-method DirectProduct
+BindGlobal( "HOMALG_CATEGORIES_DIRECT_PRODUCT_SAVE", DirectProduct );
+
+MakeReadWriteGlobal( "DirectProduct" );
+
+DirectProduct := function( arg )
+  
+  if ( ForAll( arg, IsHomalgCategory ) or ForAll( arg, IsHomalgCategoryObject ) or ForAll( arg, IsHomalgCategoryMorphism ) ) and Length( arg ) > 0 then
+      
+      if Length( arg ) = 1 then 
+      
+        return arg[1];
+        
+      fi;
+      
+      return DirectProductForMultipleObjects( CallFuncList( Product, arg ), arg[ 1 ] );
+      
+  fi;
+  
+  return CallFuncList( HOMALG_CATEGORIES_DIRECT_PRODUCT_SAVE, arg );
+  
+end;
+
+MakeReadOnlyGlobal( "DirectProduct" );
+
+##
+InstallMethod( AddDirectProductForMultipleObjects,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetDirectProductForMultipleObjectsFunction( category, func );
+    
+    SetCanComputeDirectProductForMultipleObjects( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "DirectProductForMultipleObjects", 2 );
+    
+    InstallMethodWithToDoForIsWellDefined( DirectProductForMultipleObjects,
+                                           [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
+      function( object_product_list, method_selection_object )
+        local direct_product_for_multiple_objects;
+        
+        direct_product_for_multiple_objects := func( object_product_list );
+        
+        Add( HomalgCategory( method_selection_object ), direct_product_for_multiple_objects );
+        
+        SetFilterObj( direct_product_for_multiple_objects, WasCreatedAsDirectProductForMultipleObjects );
+        
+        SetGenesis( direct_product_for_multiple_objects, rec( DirectFactors := object_product_list ) );
+        
+        return direct_product_for_multiple_objects;
+        
+    end : InstallMethod := InstallMethodWithCache );
+    
+end );
+
+##TODO: Install AddProjectionInFactor convenient method with 
+##the direct product object as an input
+
+InstallMethod( ProjectionInFactor,
+               [ IsHomalgCategoryObject, IsInt ],
+               
+  function( object_product_list, projection_number )
+    local number_of_objects;
+    
+    number_of_objects := Length( Components( object_product_list ) );
+  
+    if number_of_objects < 0 or number_of_objects > number_of_objects then
+    
+      Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
+    
+    fi;
+  
+    if number_of_objects = 1 then
+        
+      return IdentityMorphism( object_product_list[1] );
+          
+    fi;
+  
+    return ProjectionInFactorOp( object_product_list, object_product_list[1], projection_number );
+  
+end );
+
+##
+InstallMethod( AddProjectionInFactor,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    
+    SetProjectionInFactorFunction( category, func );
+    
+    SetCanComputeProjectionInFactor( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "ProjectionInFactorOp", 3 );
+    
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
+                                           [ IsHomalgCategoryObject, 
+                                             IsHomalgCategoryObject and ObjectFilter( category ), 
+                                             IsInt ],
+                                             
+      function( object_product_list, method_selection_object, projection_number )
+        local projection_in_factor, direct_product;
+        
+        if HasDirectProductForMultipleObjects( object_product_list, method_selection_object ) then
+          
+          return ProjectionInFactorWithGivenDirectProduct( object_product_list, DirectProductForMultipleObjects( object_product_list, method_selection_object ) );
+          
+        fi;
+        
+        projection_in_factor := func( object_product_list, projection_number );
+        
+        Add( HomalgCategory( method_selection_object ), projection_in_factor );
+        
+        ## FIXME: it suffices that the category knows that it has a zero object
+        if CanComputeZeroObject( category ) then
+          
+          SetIsSplitEpimorphism( projection_in_factor, true );
+          
+        fi;
+        
+        direct_product := Source( projection_in_factor );
+        
+        SetGenesis( direct_product, rec( DirectFactors := object_product_list ) );
+        
+        SetDirectProductForMultipleObjects( object_product_list, method_selection_object, direct_product );
+        
+        return projection_in_factor;
+        
+    end : InstallMethod := InstallMethodWithCache );
+
+end );
+
+
+
+####################################
+##
 ## Direct Product
 ##
 ####################################

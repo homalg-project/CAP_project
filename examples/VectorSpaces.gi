@@ -257,6 +257,52 @@ AddCokernelProjWithGivenCokernel( vecspaces,
 end );
 
 ##
+AddDirectProductForMultipleObjects( vecspaces,
+
+  function( object_product_list )
+    local dim;
+    
+    dim := Sum( List( object_product_list!.Components, c -> Dimension( c ) ) );
+    
+    return QVectorSpace( dim );
+  
+end );
+
+##
+## the user may assume that Length( object_product_list!.Components ) > 1
+AddProjectionInFactor( vecspaces,
+
+  function( object_product_list, projection_number )
+    local components, dim, dim_pre, dim_post, dim_factor, direct_product, number_of_objects, projection_in_factor;
+    
+    components := Components( object_product_list );
+    
+    number_of_objects := Length( Components( object_product_list ) );
+    
+    dim := Sum( components, c -> Dimension( c ) );
+    
+    dim_pre := Sum( components{ [ 1 .. projection_number - 1 ] }, c -> Dimension( c ) );
+    
+    dim_post := Sum( components{ [ projection_number + 1 .. number_of_objects ] }, c -> Dimension( c ) );
+    
+    dim_factor := Dimension( object_product_list[ projection_number ] );
+    
+    direct_product := QVectorSpace( dim );
+    
+    projection_in_factor := HomalgZeroMatrix( dim_pre, dim_factor, VECTORSPACES_FIELD );
+    
+    projection_in_factor := UnionOfRows( projection_in_factor, 
+                                         HomalgIdentityMatrix( dim_factor, VECTORSPACES_FIELD ) );
+    
+    projection_in_factor := UnionOfRows( projection_in_factor, 
+                                         HomalgZeroMatrix( dim_post, dim_factor, VECTORSPACES_FIELD ) );
+    
+    return VectorSpaceMorphism( direct_product, projection_in_factor, object_product_list[ projection_number ] );
+
+end );
+
+
+##
 AddDirectProduct( vecspaces,
 
   function( a, b )

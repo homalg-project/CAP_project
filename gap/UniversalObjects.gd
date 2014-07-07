@@ -241,6 +241,7 @@ DeclareFilter( "WasCreatedAsCokernel" );
 
 ## Main Operations and Attributes
 
+## declaration with cache enables generalized setter/has methods.
 DeclareOperationWithCache( "DirectProductObject",
                            [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
@@ -516,6 +517,73 @@ DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
 DeclareFilter( "WasCreatedAsInitialObject" );
 
 #! @Chapter Universal Objects
+
+####################################
+##
+## Direct Product for multiple objects
+##
+####################################
+
+## Main Operations and Attributes
+# the first argument is an object of the product category. This is superior to a list of objects
+# because:
+# *IsWellDefined will be handled properly
+# *no caching issues?
+DeclareOperationWithCache( "DirectProductForMultipleObjects",
+                           [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+DeclareOperation( "ProjectionInFactor",
+                  [ IsHomalgCategoryObject, IsInt ] );
+
+DeclareOperation( "ProjectionInFactorOp",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+
+DeclareOperation( "ProjectionInFactorWithGivenDirectProduct",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+
+DeclareOperation( "UniversalMorphismIntoDirectProduct",
+                  [ IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+## Function Attributes
+
+DeclareAttribute( "DirectProductForMultipleObjectsFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "ProjectionInFactorFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "ProjectionInFactorWithGivenDirectProductFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismIntoDirectProductForMultipleObjectsFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismIntoDirectProductForMultipleObjectsWithGivenDirectProductFunction",
+                  IsHomalgCategory );
+
+## Add Operations
+
+DeclareOperation( "AddDirectProductForMultipleObjects",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionInFactor",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionInFactorWithGivenDirectProduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectProductForMultipleObjects",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectProductForMultipleObjectsWithGivenDirectProduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+## WasCreatedAs Filter
+
+DeclareFilter( "WasCreatedAsDirectProductForMultipleObjects" );
 
 ####################################
 ##

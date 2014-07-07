@@ -77,7 +77,10 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                 "CanComputeInitialObject",
                 "CanComputeUniversalMorphismFromInitialObject",
-                "CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject"
+                "CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject",
+                "CanComputeDirectProductForMultipleObjects",
+                "CanComputeProjectionInFactor"
+                
                  # .. 
               ] );
 
