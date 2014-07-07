@@ -9,8 +9,8 @@
 ##
 #############################################################################
 
-DeclareAttribute( "DirectProductFunctor",
-                  IsHomalgCategory );
+DeclareOperation( "DirectProductFunctor",
+                  [ IsHomalgCategory, IsInt ] );
 
 DeclareAttribute( "Components",
                   IsHomalgCategory );

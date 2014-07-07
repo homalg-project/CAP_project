@@ -232,44 +232,40 @@ end );
 ##
 ###################################
 
-InstallImmediateMethod( DirectProductFunctor,
-                        IsHomalgCategory and
-                        CanComputeProjectionInFirstFactor and
-                        CanComputeProjectionInSecondFactor and
-                        CanComputeUniversalMorphismIntoDirectProduct and
-                        CanComputePreCompose,
-                        0,
-                        
-  function( category )
+InstallMethod( DirectProductFunctor,
+               [ IsHomalgCategory, IsInt ],
+               
+  function( category, number_of_arguments )
     local direct_product_functor;
     
-    direct_product_functor := HomalgFunctor( "direct_product", Product( category, category ), category );
+    direct_product_functor := HomalgFunctor( 
+      Concatenation( "direct_product_on_", Name( category ), "_for_", String( number_of_arguments ), "_arguments" ),
+      CallFuncList( Product, List( [ 1 .. number_of_arguments ], c -> category ) ), 
+      category 
+    );
     
     AddObjectFunction( direct_product_functor,
     
-      function( object_pair )
+      function( object )
         
-        return DirectProductObject( object_pair[ 1 ], object_pair[ 2 ] );
+        return CallFuncList( DirectProduct, Components( object ) );
         
     end );
     
     AddMorphismFunction( direct_product_functor,
     
-      function( new_source, morphism_pair, new_range )
-        local projection_A1, projection_A2;
+      function( new_source, morphism_list, new_range )
+        local sink;
         
-        projection_A1 := ProjectionInFirstFactor( new_source );
+        sink := List( [ 1 .. number_of_arguments ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_list[i] ) );
         
-        projection_A2 := ProjectionInSecondFactor( new_source );
+        return CallFuncList( UniversalMorphismIntoDirectProductForMultipleObjects, sink );
         
-        return UniversalMorphismIntoDirectProduct( PreCompose( projection_A1, morphism_pair[ 1 ] ), PreCompose( projection_A2, morphism_pair[ 2 ] ) );
-      
    end );
    
    return direct_product_functor;
-  
+   
 end );
-
 
 ###################################
 ##
