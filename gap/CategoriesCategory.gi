@@ -531,7 +531,7 @@ InstallMethod( InstallFunctorOnMorphisms,
     
     filter_list := List( category_list, MorphismFilter );
     
-    filter_list := List( filter_list, i -> i and IsHomalgCategoryObject );
+    filter_list := List( filter_list, i -> i and IsHomalgCategoryMorphism );
     
     DeclareOperation( func_name, filter_list );
     
