@@ -516,7 +516,7 @@ InstallMethod( InstallFunctorOnObjects,
         
     end );
     
-end );    
+end );
 
 ##
 InstallMethod( InstallFunctorOnMorphisms,

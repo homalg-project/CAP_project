@@ -60,6 +60,20 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
     
 end );
 
+InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,
+              [  
+                 "IsMonomorphism",
+                 "IsEpimorphism",
+                 "IsIsomorphism",
+                 "IsEndomorphism",
+                 "IsAutomorphism",
+                 "IsSplitMonomorphism",
+                 "IsSplitEpimorphism",
+                 "IsOne",
+                 "IsIdempotent",
+                 # ..
+              ] );
+
 ######################################
 ##
 ## Operations
@@ -97,6 +111,70 @@ InstallMethod( Add,
     SetHomalgCategory( morphism, category );
 
     INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT( category, morphism );
+    
+end );
+
+######################################
+##
+## Morphism equality functions
+##
+######################################
+
+##
+InstallMethod( AddEqualityOfMorphisms,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetMorphismEqualityFunction( category, func );
+    
+    SetCanComputeEqualityOfMorphisms( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "EqualityOfMorphisms", 2 );
+    
+    InstallMethodWithCache( EqualityOfMorphisms,
+                            [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                            
+      function( morphism_1, morphism_2 )
+        local return_value;
+        
+        if not IsIdenticalObj( Source( morphism_1 ), Source( morphism_2 ) ) or not IsIdenticalObj( Range( morphism_1 ), Range( morphism_2 ) ) then
+            
+            return false;
+            
+        fi;
+        
+        return_value := func( morphism_1, morphism_2 );
+        
+        if return_value = true then
+            
+            INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS( morphism_1, morphism_2 );
+            
+        fi;
+        
+        return return_value;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( \=,
+               [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+               
+  EqualityOfMorphisms );
+
+##
+InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS,
+                       
+  function( morphism_1, morphism_2 )
+    local i, entry;
+    
+    for i in PROPAGATION_LIST_FOR_EQUAL_MORPHISMS do
+        
+        AddToToDoList( ToDoListEntryToMaintainEqualAttributes( morphism_1, i, morphism_2, i ) );
+        
+    od;
     
 end );
 

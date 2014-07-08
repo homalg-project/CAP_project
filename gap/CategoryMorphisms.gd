@@ -58,6 +58,10 @@ DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT" );
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM" );
 
+DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS" );
+
+DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
+
 ###################################
 ##
 ## Properties
@@ -100,6 +104,21 @@ DeclareProperty( "IsIdempotent",
 
 DeclareOperation( "Add",
                   [ IsHomalgCategory, IsHomalgCategoryMorphism ] );
+
+###################################
+##
+#! @Section Constructive Hom-sets functions
+##
+###################################
+
+DeclareOperation( "AddEqualityOfMorphisms",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "MorphismEqualityFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "EqualityOfMorphisms",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 ###################################
 ##
