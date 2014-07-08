@@ -232,8 +232,8 @@ end );
 ##
 ###################################
 
-InstallMethod( DirectProductFunctor,
-               [ IsHomalgCategory, IsInt ],
+InstallMethodWithCache( DirectProductFunctor,
+                        [ IsHomalgCategory, IsInt ],
                
   function( category, number_of_arguments )
     local direct_product_functor;

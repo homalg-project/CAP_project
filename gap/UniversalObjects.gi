@@ -714,7 +714,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
     
     SetCanComputeUniversalMorphismIntoDirectProduct( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProduct", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProductOp", 2 );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
                                            [ IsHomalgCategoryMorphism,
