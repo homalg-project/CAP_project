@@ -172,7 +172,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS,
     
     for i in PROPAGATION_LIST_FOR_EQUAL_MORPHISMS do
         
-        AddToToDoList( ToDoListEntryToMaintainEqualAttributes( morphism_1, i, morphism_2, i ) );
+        AddToToDoList( ToDoListEntryForEqualAttributes( morphism_1, i, morphism_2, i ) );
         
     od;
     
