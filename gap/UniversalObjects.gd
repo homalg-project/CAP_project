@@ -442,12 +442,12 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 
 
 ## Main Operations and Attributes
-# @Description
-# Direct product of a given diagram $D$, where $D$ is an object in 
-# a product category. The second argument $M$ is an object needed for the method
-# selection.
-# @Returns IsHomalgCategoryObject
-# @Arguments D, M
+#! @Description
+#! Direct product of a given diagram $D$, where $D$ is an object in 
+#! a product category. The second argument $M$ is an object needed for the method
+#! selection.
+#! @Returns IsHomalgCategoryObject
+#! @Arguments D, M
 DeclareOperationWithCache( "DirectProductOp",
                            [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
