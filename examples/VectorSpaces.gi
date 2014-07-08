@@ -107,6 +107,14 @@ InstallMethod( VectorSpaceMorphism,
     
 end );
 
+AddEqualityOfMorphisms( vecspaces,
+
+  function( a, b )
+  
+    return a!.morphism = b!.morphism;
+  
+end );
+
 ##
 AddIdentityMorphism( vecspaces,
                      
