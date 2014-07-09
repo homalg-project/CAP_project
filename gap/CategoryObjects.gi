@@ -96,6 +96,7 @@ InstallTrueMethod( CanComputeZeroMorphism, CanComputePreCompose and CanComputeMo
 InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
                                        [ IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject,
                                          IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject ],
+                                       -99999, #FIXME
                                   
   function( obj_source, obj_range )
     

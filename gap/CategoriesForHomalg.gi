@@ -46,6 +46,14 @@ InstallGlobalFunction( DECIDE_INSTALL_FUNCTION,
         
         category!.caching_info.( method ) := "weak";
         
+        ## special case for morphisms
+        
+        if method = "AdditionForMorphisms" then
+            
+            category!.caching_info.( method ) := "none";
+            
+        fi;
+        
     fi;
     
     caching_info := category!.caching_info.( method );

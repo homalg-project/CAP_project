@@ -206,6 +206,123 @@ InstallMethod( AddPropertyToMatchAtEqualityOfMorphisms,
     
 end );
 
+##
+InstallMethod( AddIsZeroForMorphisms,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetIsZeroForMorphismsFunction( category, func );
+    
+    SetCanComputeIsZeroForMorphisms( category, true );
+    
+    InstallMethod( IsZero,
+                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   
+        func );
+    
+end );
+
+##
+InstallMethod( AddAdditionForMorphisms,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetAdditionForMorphismsFunction( category, func );
+    
+    SetCanComputeAdditionForMorphisms( category, true );
+    
+    # DECIDE_INSTALL_FUNCTION( category, "AdditionForMorphisms", 2 );
+    
+    InstallMethodWithToDoForIsWellDefined( \+,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   
+      function( mor1, mor2 )
+        local return_value;
+        
+        if not IsIdenticalObj( Source( mor1 ), Source( mor2 ) ) or not IsIdenticalObj( Range( mor1 ), Range( mor2 ) ) then
+            
+            Error( "morphisms are not addable" );
+            
+        fi;
+        
+        return_value := func( mor1, mor2 );
+        
+        Add( category, return_value );
+        
+        return return_value;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddAdditiveInverseForMorphisms,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetAdditiveInverseForMorphismsFunction( category, func );
+    
+    SetCanComputeAdditiveInverseForMorphisms( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( AdditiveInverse,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   
+      function( mor )
+        local additive_inverse;
+        
+        additive_inverse := func( mor );
+        
+        Add( category, additive_inverse );
+        
+        ## FIXME: Propagation
+        
+        return additive_inverse;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddZeroMorphism,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetZeroMorphismFunction( category, func );
+    
+    SetCanComputeZeroMorphism( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "ZeroMorphism", 2 );
+    
+    InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
+                                           [ IsHomalgCategoryObject and ObjectFilter( category ), IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
+      function( source, range )
+        local return_value;
+        
+        return_value := func( source, range );
+        
+        Add( category, return_value );
+        
+        return return_value;
+        
+    end : InstallMethod := InstallMethodWithCache );
+    
+end );
+
+##
+InstallMethod( Zero,
+               [ IsHomalgCategoryMorphism and SetCanComputeZeroMorphism ],
+               
+  function( mor )
+    
+    return ZeroMorphism( Source( mor ), Range( mor ) );
+    
+end );
+
 ######################################
 ##
 ## Implied operations

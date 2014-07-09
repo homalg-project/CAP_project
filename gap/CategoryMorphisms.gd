@@ -25,7 +25,7 @@
 ###################################
 
 DeclareCategory( "IsHomalgCategoryMorphism",
-                 IsHomalgCategoryCell );
+                 IsHomalgCategoryCell and IsAdditiveElementWithInverse );
 
 ###################################
 ##
@@ -122,6 +122,30 @@ DeclareOperation( "EqualityOfMorphisms",
 
 DeclareOperation( "AddPropertyToMatchAtEqualityOfMorphisms",
                   [ IsHomalgCategory, IsString ] );
+
+DeclareOperation( "AddIsZeroForMorphisms",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "IsZeroForMorphismsFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddAdditionForMorphisms",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "AdditionForMorphismsFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddAdditiveInverseForMorphisms",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "AdditiveInverseForMorphismsFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "ZeroMorphismFunction",
+                  IsHomalgCategory );
 
 ###################################
 ##
