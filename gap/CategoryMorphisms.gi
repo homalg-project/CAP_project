@@ -168,13 +168,41 @@ InstallMethod( \=,
 InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS,
                        
   function( morphism_1, morphism_2 )
-    local i, entry;
+    local category, i, entry;
+    
+    category := HomalgCategory( morphism_1 );
     
     for i in PROPAGATION_LIST_FOR_EQUAL_MORPHISMS do
         
         AddToToDoList( ToDoListEntryForEqualAttributes( morphism_1, i, morphism_2, i ) );
         
     od;
+    
+    for i in category!.PROPAGATION_LIST_FOR_EQUAL_MORPHISMS do
+        
+        AddToToDoList( ToDoListEntryForEqualAttributes( morphism_1, i, morphism_2, i ) );
+        
+    od;
+    
+end );
+
+##
+InstallMethod( AddPropertyToMatchAtEqualityOfMorphisms,
+               [ IsHomalgCategory, IsString ],
+               
+  function( category, name )
+    
+    if not IsBound( category!.PROPAGATION_LIST_FOR_EQUAL_MORPHISMS ) then
+        
+        category!.PROPAGATION_LIST_FOR_EQUAL_MORPHISMS := [ ];
+        
+    fi;
+    
+    if Position( category!.PROPAGATION_LIST_FOR_EQUAL_MORPHISMS, name ) = fail then
+        
+        Add( category!.PROPAGATION_LIST_FOR_EQUAL_MORPHISMS, name );
+        
+    fi;
     
 end );
 

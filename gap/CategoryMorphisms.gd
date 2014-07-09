@@ -120,6 +120,9 @@ DeclareAttribute( "MorphismEqualityFunction",
 DeclareOperation( "EqualityOfMorphisms",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
+DeclareOperation( "AddPropertyToMatchAtEqualityOfMorphisms",
+                  [ IsHomalgCategory, IsString ] );
+
 ###################################
 ##
 #! @Section Morphism functions
