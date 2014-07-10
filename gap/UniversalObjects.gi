@@ -506,7 +506,288 @@ end );
 
 ####################################
 ##
-## Direct Product for multiple objects
+## Coproduct
+##
+####################################
+
+InstallGlobalFunction( Coproduct,
+  
+  function( arg )
+  
+    if Length( arg ) = 1 then 
+      
+      return arg[1];
+        
+    fi;
+    
+    return CoproductOp( CallFuncList( Product, arg ), arg[ 1 ] );
+    
+end );
+
+##
+InstallMethod( AddCoproduct,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCoproductFunction( category, func );
+    
+    SetCanComputeCoproduct( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "CoproductOp", 2 );
+    
+    InstallMethodWithToDoForIsWellDefined( CoproductOp,
+                                           [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
+      function( object_product_list, method_selection_object )
+        local coproduct;
+        
+        coproduct := func( object_product_list );
+        
+        Add( HomalgCategory( method_selection_object ), coproduct );
+        
+        SetFilterObj( coproduct, WasCreatedAsCoproduct );
+        
+        SetGenesis( coproduct, rec( Cofactors := object_product_list ) );
+        
+        return coproduct;
+        
+    end : InstallMethod := InstallMethodWithCache );
+    
+end );
+
+##
+InstallGlobalFunction( InjectionOfCofactor,
+               
+  function( object_product_list, injection_number )
+    local number_of_objects;
+    
+    if WasCreatedAsCoproduct( object_product_list ) then
+    
+      number_of_objects := Length( Components( Genesis( object_product_list )!.Cofactors ) );
+      
+      if injection_number < 1 or injection_number > number_of_objects then
+      
+        Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
+      
+      fi;
+    
+      return InjectionOfCofactorWithGivenCoproduct( Genesis( object_product_list )!.Cofactors, object_product_list, injection_number );
+    
+    fi;
+    
+    number_of_objects := Length( Components( object_product_list ) );
+  
+    if injection_number < 0 or injection_number > number_of_objects then
+    
+      Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
+    
+    fi;
+  
+    if number_of_objects = 1 then
+        
+      return IdentityMorphism( object_product_list[1] );
+          
+    fi;
+  
+    return InjectionOfCofactorOp( object_product_list, object_product_list[1], injection_number );
+  
+end );
+
+##
+InstallMethod( AddInjectionOfCofactor,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    
+    SetInjectionOfCofactorFunction( category, func );
+    
+    SetCanComputeInjectionOfCofactor( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "InjectionOfCofactorOp", 3 );
+    
+    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
+                                           [ IsHomalgCategoryObject, 
+                                             IsHomalgCategoryObject and ObjectFilter( category ), 
+                                             IsInt ],
+                                             
+      function( object_product_list, method_selection_object, injection_number )
+        local injection_of_cofactor, coproduct;
+        
+        if HasCoproductOp( object_product_list, method_selection_object ) then
+          
+          return InjectionOfCofactorWithGivenCoproduct( object_product_list, CoproductOp( object_product_list, method_selection_object ), injection_number );
+          
+        fi;
+        
+        injection_of_cofactor := func( object_product_list, injection_number );
+        
+        Add( HomalgCategory( method_selection_object ), injection_of_cofactor );
+        
+        ## FIXME: it suffices that the category knows that it has a zero object
+        if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
+          
+          SetIsSplitMonomorphism( injection_of_cofactor, true );
+          
+        fi;
+        
+        coproduct := Range( injection_of_cofactor );
+        
+        SetGenesis( coproduct, rec( Cofactors := object_product_list ) );
+        
+        SetCoproductOp( object_product_list, method_selection_object, coproduct );
+        
+        return injection_of_cofactor;
+        
+    end : InstallMethod := InstallMethodWithCache );
+
+end );
+
+##
+InstallMethod( AddInjectionOfCofactorWithGivenCoproduct,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    
+    SetInjectionOfCofactorWithGivenCoproductFunction( category, func );
+    
+    SetCanComputeInjectionOfCofactorWithGivenCoproduct( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "InjectionOfCofactorWithGivenCoproduct", 3 );
+    
+    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorWithGivenCoproduct,
+                                           [ IsHomalgCategoryObject, 
+                                             IsHomalgCategoryObject and ObjectFilter( category ), 
+                                             IsInt ],
+                                             
+      function( object_product_list, coproduct, injection_number )
+        local injection_of_cofactor;
+        
+        injection_of_cofactor := func( object_product_list, coproduct, injection_number );
+        
+        Add( category, injection_of_cofactor );
+        
+        ## FIXME: it suffices that the category knows that it has a zero object
+        if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
+          
+          SetIsSplitMonomorphism( injection_of_cofactor, true );
+          
+        fi;
+        
+        return injection_of_cofactor;
+        
+    end : InstallMethod := InstallMethodWithCache );
+
+end );
+
+##
+InstallGlobalFunction( UniversalMorphismFromCoproduct,
+
+  function( arg )
+    
+    return UniversalMorphismFromCoproductOp( CallFuncList( Product, arg ), arg[1] );
+  
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromCoproduct,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismFromCoproductFunction( category, func );
+    
+    SetCanComputeUniversalMorphismFromCoproduct( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismFromCoproductOp", 2 );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
+                                           [ IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
+      function( sink, method_selection_morphism )
+        local test_object, components, coproduct_objects, universal_morphism, coproduct;
+        
+        test_object := Range( sink[1] );
+        
+        components := Components( sink );
+        
+        coproduct_objects := CallFuncList( Product, List( Components( sink ), Source ) );
+        
+        if HasCoproductOp( coproduct_objects, coproduct_objects[1] ) then
+          
+          return UniversalMorphismFromCoproductWithGivenCoproduct( 
+                   sink, 
+                   CoproductOp( coproduct_objects, coproduct_objects[1] ) 
+                 );
+          
+        fi;
+        
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
+            
+            Error( "ranges of morphisms must be identical in given sink-diagram" );
+            
+        fi;
+        
+        universal_morphism := func( sink );
+        
+        Add( category, universal_morphism );
+        
+        coproduct := Source( universal_morphism );
+        
+        SetGenesis( coproduct, rec( Cofactors := coproduct_objects ) );
+        
+        SetCoproductOp( coproduct_objects, coproduct_objects[1], coproduct );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismFromCoproductWithGivenCoproductFunction( category, func );
+    
+    SetCanComputeUniversalMorphismFromCoproductWithGivenCoproduct( category, true );
+    
+    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismFromCoproductWithGivenCoproduct", 2 );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
+                                           [ IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
+      function( sink, coproduct )
+        local test_object, components, coproduct_objects, universal_morphism;
+        
+        test_object := Range( sink[1] );
+        
+        components := Components( sink );
+        
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
+            
+            Error( "ranges of morphisms must be identical in given sink-diagram" );
+            
+        fi;
+        
+        universal_morphism := func( sink, coproduct );
+        
+        Add( category, universal_morphism );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache );
+    
+end );
+
+
+####################################
+##
+## Direct Product
 ##
 ####################################
 
@@ -571,8 +852,7 @@ end );
 ##the direct product object as an input
 
 ##
-InstallMethod( ProjectionInFactor,
-               [ IsHomalgCategoryObject, IsInt ],
+InstallGlobalFunction( ProjectionInFactor,
                
   function( object_product_list, projection_number )
     local number_of_objects;
@@ -720,19 +1000,23 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
                                            [ IsHomalgCategoryMorphism,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
-      function( sink, method_selection_morphism )
+      function( source, method_selection_morphism )
         local test_object, components, direct_product_objects, universal_morphism, direct_product;
         
-        test_object := Source( sink[1] );
+        test_object := Source( source[1] );
         
-        components := Components( sink );
+        components := Components( source );
         
-        direct_product_objects := CallFuncList( Product, List( Components( sink ), Range ) );
+        direct_product_objects := CallFuncList( Product, List( Components( source ), Range ) );
+        
+        Error( "Im here 1" );
         
         if HasDirectProductOp( direct_product_objects, direct_product_objects[1] ) then
           
+          Error( "Im here 2" );
+          
           return UniversalMorphismIntoDirectProductWithGivenDirectProduct( 
-                   sink, 
+                   source, 
                    DirectProductOp( direct_product_objects, direct_product_objects[1] ) 
                  );
           
@@ -740,11 +1024,11 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
             
-            Error( "sources of morphisms must be identical in given sink-diagram" );
+            Error( "sources of morphisms must be identical in given source-diagram" );
             
         fi;
         
-        universal_morphism := func( sink );
+        universal_morphism := func( source );
         
         Add( category, universal_morphism );
         
@@ -776,20 +1060,20 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
                                            [ IsHomalgCategoryMorphism,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
-      function( sink, direct_product )
+      function( source, direct_product )
         local test_object, components, direct_product_objects, universal_morphism;
         
-        test_object := Source( sink[1] );
+        test_object := Source( source[1] );
         
-        components := Components( sink );
+        components := Components( source );
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
             
-            Error( "sources of morphisms must be identical in given sink-diagram" );
+            Error( "sources of morphisms must be identical in given source-diagram" );
             
         fi;
         
-        universal_morphism := func( sink, direct_product );
+        universal_morphism := func( source, direct_product );
         
         Add( category, universal_morphism );
         
@@ -827,9 +1111,9 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
                                          IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
                                          -9999, #FIXME
                                        
-  function( sink, method_selection_morphism )
+  function( source, method_selection_morphism )
     
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( sink, CallFuncList( DirectProduct, List( Components( sink ), Range ) ) );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( source, CallFuncList( DirectProduct, List( Components( source ), Range ) ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
 

@@ -80,6 +80,11 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsZeroForMorphisms",
                 "CanComputeAdditionForMorphisms",
                 "CanComputeAdditiveInverseForMorphisms",
+                "CanComputeCoproduct",
+                "CanComputeInjectionOfCofactor",
+                "CanComputeInjectionOfCofactorWithGivenCoproduct",
+                "CanComputeUniversalMorphismFromCoproduct",
+                "CanComputeUniversalMorphismFromCoproductWithGivenCoproduct"
                  # .. 
               ] );
 
