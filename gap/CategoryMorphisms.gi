@@ -233,7 +233,7 @@ InstallMethod( AddAdditionForMorphisms,
     
     SetCanComputeAdditionForMorphisms( category, true );
     
-    # DECIDE_INSTALL_FUNCTION( category, "AdditionForMorphisms", 2 );
+    DECIDE_INSTALL_FUNCTION( category, "AdditionForMorphisms", 2 );
     
     InstallMethodWithToDoForIsWellDefined( \+,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
@@ -253,7 +253,7 @@ InstallMethod( AddAdditionForMorphisms,
         
         return return_value;
         
-    end );
+    end : InstallMethod := InstallMethodWithCache );
     
 end );
 
