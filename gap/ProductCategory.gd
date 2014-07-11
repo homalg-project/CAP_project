@@ -12,6 +12,9 @@
 DeclareOperationWithCache( "DirectProductFunctor",
                            [ IsHomalgCategory, IsInt ] );
 
+DeclareOperationWithCache( "CoproductFunctor",
+                           [ IsHomalgCategory, IsInt ] );
+
 DeclareAttribute( "Components",
                   IsHomalgCategory );
 
