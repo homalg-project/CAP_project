@@ -415,6 +415,18 @@ AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
 end );
 
 ##
+AddDirectSum( vecspaces,
+
+  function( object_product_list )
+    local dim;
+    
+    dim := Sum( List( object_product_list!.Components, c -> Dimension( c ) ) );
+    
+    return QVectorSpace( dim );
+  
+end );
+
+##
 AddDirectProduct( vecspaces,
 
   function( object_product_list )

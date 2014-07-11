@@ -38,7 +38,7 @@ InstallTrueMethod( IsInjective and IsProjective, IsHomalgCategoryObject and IsZe
 ##
 #######################################
 
-InstallTrueMethod( WasCreatedAsDirectSum, HasFirstSummand and HasSecondSummand );
+# InstallTrueMethod( WasCreatedAsDirectSum, HasFirstSummand and HasSecondSummand );
 
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
                        

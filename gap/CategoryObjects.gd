@@ -27,7 +27,7 @@
 DeclareCategory( "IsHomalgCategoryObject",
                  IsHomalgCategoryCell );
 
-DeclareFilter( "WasCreatedAsDirectSum" );
+# DeclareFilter( "WasCreatedAsDirectSum" );
 
 ###################################
 ##
@@ -86,31 +86,31 @@ DeclareOperation( "Add",
 ##
 ###################################
 
-
-DeclareOperation( "DirectSumOp",
-                  [ IsList, IsHomalgCategoryObject ] );
-
-DeclareAttribute( "FirstSummand",
-                  IsHomalgCategoryObject );
-
-DeclareAttribute( "SecondSummand",
-                  IsHomalgCategoryObject );
-
 # 
-# DeclareAttribute( "ProjectionInFirstFactor",
+# DeclareOperation( "DirectSumOp",
+#                   [ IsList, IsHomalgCategoryObject ] );
+# 
+# DeclareAttribute( "FirstSummand",
+#                   IsHomalgCategoryObject );
+# 
+# DeclareAttribute( "SecondSummand",
+#                   IsHomalgCategoryObject );
+# 
+# # 
+# # DeclareAttribute( "ProjectionInFirstFactor",
+# #                   IsHomalgCategoryObject );
+# # 
+# # 
+# # DeclareAttribute( "ProjectionInSecondFactor",
+# #                   IsHomalgCategoryObject );
+# 
+# 
+# DeclareAttribute( "InjectionFromFirstSummand",
 #                   IsHomalgCategoryObject );
 # 
 # 
-# DeclareAttribute( "ProjectionInSecondFactor",
+# DeclareAttribute( "InjectionFromSecondSummand",
 #                   IsHomalgCategoryObject );
-
-
-DeclareAttribute( "InjectionFromFirstSummand",
-                  IsHomalgCategoryObject );
-
-
-DeclareAttribute( "InjectionFromSecondSummand",
-                  IsHomalgCategoryObject );
 
 ###################################
 ##

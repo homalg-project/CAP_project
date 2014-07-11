@@ -812,8 +812,6 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
-
-
 ####################################
 ##
 ## Direct Product
@@ -1147,6 +1145,76 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
+####################################
+##
+## Direct sum
+##
+####################################
+
+## GAP-Hack in order to avoid the pre-installed GAP-method DirectSum
+BindGlobal( "HOMALG_CATEGORIES_DIRECT_SUM_SAVE", DirectSum );
+
+MakeReadWriteGlobal( "DirectSum" );
+
+DirectSum := function( arg )
+  
+  if ( ForAll( arg, IsHomalgCategory ) or ForAll( arg, IsHomalgCategoryObject ) or ForAll( arg, IsHomalgCategoryMorphism ) ) and Length( arg ) > 0 then
+      
+      if Length( arg ) = 1 then 
+      
+        return arg[1];
+        
+      fi;
+      
+      return DirectSumOp( CallFuncList( Product, arg ), arg[ 1 ] );
+      
+  fi;
+  
+  return CallFuncList( HOMALG_CATEGORIES_DIRECT_SUM_SAVE, arg );
+  
+end;
+
+MakeReadOnlyGlobal( "DirectSum" );
+
+##
+InstallMethod( AddDirectSum,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetDirectSumFunction( category, func );
+    
+    SetCanComputeDirectSum( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( DirectSumOp,
+                                           [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
+      function( object_product_list, method_selection_object )
+        local direct_sum;
+        
+        direct_sum := func( object_product_list );
+        
+        Add( HomalgCategory( method_selection_object ), direct_sum );
+        
+        SetFilterObj( direct_sum, WasCreatedAsDirectSum );
+        
+        ## this will treat direct_sum as if it was a direct product
+        SetFilterObj( direct_sum, WasCreatedAsDirectProduct );
+        
+        SetDirectProductOp( object_product_list, method_selection_object, direct_sum );
+        
+        ## this will treat direct_sum as if it was a coproduct
+        SetFilterObj( direct_sum, WasCreatedAsCoproduct );
+        
+        SetCoproductOp( object_product_list, method_selection_object, direct_sum );
+        
+        SetGenesis( direct_sum, rec( DirectFactors := object_product_list, Cofactors := object_product_list ) );
+        
+        return direct_sum;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "DirectSumOp", 2 ) );
+    
+end );
 
 ####################################
 ##

@@ -430,6 +430,55 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 
 ####################################
 ##
+#! @Section Direct sum
+##
+####################################
+
+## Main Operations and Attributes
+
+DeclareOperationWithCache( "DirectSumOp",
+                           [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+## Function Attributes
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a direct sum. 
+DeclareAttribute( "DirectSumFunction",
+                  IsHomalgCategory );
+#! @EndGroup
+#! @EndAutoDoc
+
+#! @BeginGroup
+
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+
+#! @Arguments C, f
+DeclareOperation( "AddDirectSum",
+                  [ IsHomalgCategory, IsFunction ] );
+#! @EndGroup
+#! @EndAutoDoc
+
+## WasCreatedAs Filter
+
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a direct sum object. 
+#! Note that we chose <C>WasCreatedAsDirectSum</C> to be a filter rather than a property,
+#! because by default, a filter is set to false.
+DeclareFilter( "WasCreatedAsDirectSum" );
+#! @Chapter Universal Objects
+
+
+
+####################################
+##
 #! @Section Coproduct
 ##
 ####################################
