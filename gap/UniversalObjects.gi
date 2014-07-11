@@ -770,6 +770,7 @@ end );
 InstallTrueMethod( CanComputeCoproduct, CanComputeInjectionOfCofactor );
 
 ##
+## this methods is installed using the (cache of the (object of the second argument) )
 InstallMethodWithToDoForIsWellDefined( CoproductOp,
                                        [ IsHomalgCategoryObject,
                                          IsHomalgCategoryObject and CanComputeInjectionOfCofactor ],
@@ -779,7 +780,7 @@ InstallMethodWithToDoForIsWellDefined( CoproductOp,
     
     return Range( InjectionOfCofactor( object_product_list, 1 ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismFromCoproduct,
@@ -794,7 +795,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
     
     return UniversalMorphismFromCoproductWithGivenCoproduct( sink, CallFuncList( Coproduct, List( Components( sink ), Source ) ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
 InstallTrueMethod( CanComputeInjectionOfCofactor, CanComputeCoproduct and CanComputeInjectionOfCofactorWithGivenCoproduct );
@@ -809,7 +810,7 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
     
     return InjectionOfCofactorWithGivenCoproduct( object_product_list, CallFuncList( Coproduct, Components( object_product_list ) ), injection_number );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 
 
