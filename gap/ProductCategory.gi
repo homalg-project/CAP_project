@@ -232,6 +232,7 @@ end );
 ##
 ###################################
 
+##
 InstallMethodWithCache( DirectProductFunctor,
                         [ IsHomalgCategory, IsInt ],
                
@@ -255,15 +256,51 @@ InstallMethodWithCache( DirectProductFunctor,
     AddMorphismFunction( direct_product_functor,
     
       function( new_source, morphism_list, new_range )
-        local sink;
+        local source;
         
-        sink := List( [ 1 .. number_of_arguments ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_list[i] ) );
+        source := List( [ 1 .. number_of_arguments ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_list[i] ) );
         
-        return CallFuncList( UniversalMorphismIntoDirectProduct, sink );
+        return CallFuncList( UniversalMorphismIntoDirectProduct, source );
         
    end );
    
    return direct_product_functor;
+   
+end );
+
+##
+InstallMethodWithCache( CoproductFunctor,
+                        [ IsHomalgCategory, IsInt ],
+               
+  function( category, number_of_arguments )
+    local coproduct_functor;
+    
+    coproduct_functor := HomalgFunctor( 
+      Concatenation( "coproduct_on_", Name( category ), "_for_", String( number_of_arguments ), "_arguments" ),
+      CallFuncList( Product, List( [ 1 .. number_of_arguments ], c -> category ) ), 
+      category 
+    );
+    
+    AddObjectFunction( coproduct_functor,
+    
+      function( object )
+        
+        return CallFuncList( Coproduct, Components( object ) );
+        
+    end );
+    
+    AddMorphismFunction( coproduct_functor,
+    
+      function( new_source, morphism_list, new_range )
+        local sink;
+        
+        sink := List( [ 1 .. number_of_arguments ], i -> PreCompose( morphism_list[i], InjectionOfCofactor( new_range, i ) ) );
+        
+        return CallFuncList( UniversalMorphismFromCoproduct, sink );
+        
+   end );
+   
+   return coproduct_functor;
    
 end );
 

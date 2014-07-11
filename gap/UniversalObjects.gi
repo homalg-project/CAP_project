@@ -784,6 +784,56 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
     
 end );
 
+####################################
+## Implied Operations
+####################################
+
+##
+InstallTrueMethod( CanComputeCoproduct, CanComputeInjectionOfCofactor );
+
+##
+InstallMethodWithToDoForIsWellDefined( CoproductOp,
+                                       [ IsHomalgCategoryObject,
+                                         IsHomalgCategoryObject and CanComputeInjectionOfCofactor ],
+                                        -9999, #FIXME
+                                        
+  function( object_product_list, method_selection_object )
+    
+    return Range( InjectionOfCofactor( object_product_list, 1 ) );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismFromCoproduct,
+                   CanComputeCoproduct and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct );
+
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
+                                       [ IsHomalgCategoryMorphism,
+                                         IsHomalgCategoryMorphism and CanComputeCoproduct and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct ],
+                                         -9999, #FIXME
+                                       
+  function( sink, method_selection_morphism )
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( sink, CallFuncList( Coproduct, List( Components( sink ), Source ) ) );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );
+
+##
+InstallTrueMethod( CanComputeInjectionOfCofactor, CanComputeCoproduct and CanComputeInjectionOfCofactorWithGivenCoproduct );
+
+InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
+                                       [ IsHomalgCategoryObject,
+                                         IsHomalgCategoryObject and CanComputeCoproduct and CanComputeInjectionOfCofactorWithGivenCoproduct,
+                                         IsInt ],
+                                         -9999, #FIXME
+                                         
+  function( object_product_list, method_selection_object, injection_number )
+    
+    return InjectionOfCofactorWithGivenCoproduct( object_product_list, CallFuncList( Coproduct, Components( object_product_list ) ), injection_number );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );
+
+
 
 ####################################
 ##
@@ -1009,12 +1059,8 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         direct_product_objects := CallFuncList( Product, List( Components( source ), Range ) );
         
-        Error( "Im here 1" );
-        
         if HasDirectProductOp( direct_product_objects, direct_product_objects[1] ) then
-          
-          Error( "Im here 2" );
-          
+        
           return UniversalMorphismIntoDirectProductWithGivenDirectProduct( 
                    source, 
                    DirectProductOp( direct_product_objects, direct_product_objects[1] ) 
@@ -1094,7 +1140,7 @@ InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFactor );
 InstallMethodWithToDoForIsWellDefined( DirectProductOp,
                                        [ IsHomalgCategoryObject,
                                          IsHomalgCategoryObject and CanComputeProjectionInFactor ],
-                                        -9999,
+                                        -9999, #FIXME
                                         
   function( object_product_list, method_selection_object )
     
@@ -1172,20 +1218,20 @@ InstallMethod( AddUniversalMorphismIntoTerminalObject,
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoTerminalObject,
                                            [ IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
-      function( test_sink )
+      function( test_source )
         local category, universal_morphism, terminal_object;
         
-        category := HomalgCategory( test_sink );
+        category := HomalgCategory( test_source );
         
         if HasTerminalObject( category ) then
         
-          return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_sink, TerminalObject( category ) );
+          return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( category ) );
           
         fi;
         
-        universal_morphism := func( test_sink );
+        universal_morphism := func( test_source );
         
-        Add( HomalgCategory( test_sink ), universal_morphism );
+        Add( HomalgCategory( test_source ), universal_morphism );
         
         terminal_object := Source( universal_morphism );
         
@@ -1217,12 +1263,12 @@ InstallMethod( AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
                                            [ IsHomalgCategoryObject and ObjectFilter( category ),
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
-      function( test_sink, terminal_object )
+      function( test_source, terminal_object )
         local universal_morphism;
         
-        universal_morphism := func( test_sink, terminal_object );
+        universal_morphism := func( test_source, terminal_object );
         
-        Add( HomalgCategory( test_sink ), universal_morphism );
+        Add( HomalgCategory( test_source ), universal_morphism );
         
         return universal_morphism;
         
@@ -1285,9 +1331,9 @@ InstallMethod( UniversalMorphismIntoTerminalObject,
                [ IsHomalgCategoryObject and CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject ],
                -9999, #FIXME
               
-  function( test_sink )
+  function( test_source )
     
-    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_sink, TerminalObject( HomalgCategory( test_sink ) ) );
+    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( HomalgCategory( test_source ) ) );
     
 end );
 
@@ -1330,20 +1376,20 @@ InstallMethod( AddUniversalMorphismFromInitialObject,
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromInitialObject,
                                            [ IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
-      function( test_source )
+      function( test_sink )
         local category, universal_morphism, initial_object;
         
-        category := HomalgCategory( test_source );
+        category := HomalgCategory( test_sink );
         
         if HasInitialObject( category ) then
         
-          return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_source, InitialObject( category ) );
+          return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( category ) );
           
         fi;
         
-        universal_morphism := func( test_source );
+        universal_morphism := func( test_sink );
         
-        Add( HomalgCategory( test_source ), universal_morphism );
+        Add( HomalgCategory( test_sink ), universal_morphism );
         
         initial_object := Source( universal_morphism );
         
@@ -1375,12 +1421,12 @@ InstallMethod( AddUniversalMorphismFromInitialObjectWithGivenInitialObject,
                                            [ IsHomalgCategoryObject and ObjectFilter( category ),
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
-      function( test_source, initial_object )
+      function( test_sink, initial_object )
         local universal_morphism;
         
-        universal_morphism := func( test_source, initial_object );
+        universal_morphism := func( test_sink, initial_object );
         
-        Add( HomalgCategory( test_source ), universal_morphism );
+        Add( HomalgCategory( test_sink ), universal_morphism );
         
         return universal_morphism;
         
@@ -1443,9 +1489,9 @@ InstallMethod( UniversalMorphismFromInitialObject,
                [ IsHomalgCategoryObject and CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject ],
                -9999, #FIXME
               
-  function( test_source )
+  function( test_sink )
     
-    return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_source, InitialObject( HomalgCategory( test_source ) ) );
+    return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( HomalgCategory( test_sink ) ) );
     
 end );
 
