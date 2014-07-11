@@ -1100,7 +1100,7 @@ InstallMethodWithToDoForIsWellDefined( DirectProductOp,
     
     return Source( ProjectionInFactor( object_product_list, 1 ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProduct,
@@ -1115,7 +1115,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( source, CallFuncList( DirectProduct, List( Components( source ), Range ) ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
 InstallTrueMethod( CanComputeProjectionInFactor, CanComputeDirectProduct and CanComputeProjectionInFactorWithGivenDirectProduct );
@@ -1130,7 +1130,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
     
     return ProjectionInFactorWithGivenDirectProduct( object_product_list, CallFuncList( DirectProduct, Components( object_product_list ) ), projection_number );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 
 ####################################
