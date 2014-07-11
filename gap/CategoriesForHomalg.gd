@@ -32,7 +32,7 @@ DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_NAME_COUNTER" );
 
 DeclareGlobalFunction( "CATEGORIES_CACHE_GETTER" );
 
-DeclareGlobalFunction( "DECIDE_INSTALL_FUNCTION" );
+DeclareGlobalFunction( "GET_METHOD_CACHE" );
 
 DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST" );
 

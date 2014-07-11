@@ -130,8 +130,6 @@ InstallMethod( AddEqualityOfMorphisms,
     
     SetCanComputeEqualityOfMorphisms( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "EqualityOfMorphisms", 2 );
-    
     InstallMethodWithCache( EqualityOfMorphisms,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                             
@@ -154,7 +152,7 @@ InstallMethod( AddEqualityOfMorphisms,
         
         return return_value;
         
-    end );
+    end : Cache := GET_METHOD_CACHE( category, "EqualityOfMorphisms", 2 ) );
     
 end );
 
@@ -233,8 +231,6 @@ InstallMethod( AddAdditionForMorphisms,
     
     SetCanComputeAdditionForMorphisms( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "AdditionForMorphisms", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( \+,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                    
@@ -253,7 +249,7 @@ InstallMethod( AddAdditionForMorphisms,
         
         return return_value;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "AdditionForMorphisms", 2 ) );
     
 end );
 
@@ -295,8 +291,6 @@ InstallMethod( AddZeroMorphism,
     
     SetCanComputeZeroMorphism( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "ZeroMorphism", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
                                            [ IsHomalgCategoryObject and ObjectFilter( category ), IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
@@ -309,7 +303,7 @@ InstallMethod( AddZeroMorphism,
         
         return return_value;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ZeroMorphism", 2 ) );
     
 end );
 

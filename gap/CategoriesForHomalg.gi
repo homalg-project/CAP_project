@@ -29,16 +29,14 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_NAME_COUNTER,
 end );
 
 ##
-InstallGlobalFunction( DECIDE_INSTALL_FUNCTION,
+InstallGlobalFunction( GET_METHOD_CACHE,
                        
   function( category, method, number_parameters )
     local caching_info, cache;
     
     if IsBound( category!.caches.( method ) ) then
         
-        PushOptions( rec( Cache := category!.caches.( method ) ) );
-        
-        return;
+        return category!.caches.( method );
         
     fi;
     
@@ -64,9 +62,7 @@ InstallGlobalFunction( DECIDE_INSTALL_FUNCTION,
         
         category!.caches.( method ) := cache;
         
-        PushOptions( rec( Cache := cache ) );
-        
-        return;
+        return cache;
         
     elif caching_info = "crisp" then
         
@@ -74,16 +70,11 @@ InstallGlobalFunction( DECIDE_INSTALL_FUNCTION,
         
         category!.caches.( method ) := cache;
         
-        PushOptions( rec( Cache := cache ) );
-        
-        return;
+        return cache;
         
     elif caching_info = "none" then
         
-        PushOptions( rec( Cache := false ) );
-        
-        return;
-        
+        return false;
     else
         
         Error( "wrong type of install function" );
@@ -257,8 +248,6 @@ InstallMethod( AddPreCompose,
     
     SetCanComputePreCompose( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "PreCompose", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( PreCompose,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                    
@@ -281,7 +270,7 @@ InstallMethod( AddPreCompose,
         
         return ret_val;
         
-      end : InstallMethod := InstallMethodWithCache );
+      end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "PreCompose", 2 ) );
     
 end );
 
@@ -380,7 +369,7 @@ end );
 #                
 #   function( category, func )
 #     
-#     DECIDE_INSTALL_FUNCTION( category, "DirectSum", 2 );
+#     GET_METHOD_CACHE( category, "DirectSum", 2 );
 #     
 #     SetDirectSum_OnObjectsFunction( category, func );
 #     
@@ -544,8 +533,6 @@ InstallMethod( AddMonoAsKernelLift,
     
     SetCanComputeMonoAsKernelLift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "MonoAsKernelLift", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( MonoAsKernelLift,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
@@ -559,7 +546,7 @@ InstallMethod( AddMonoAsKernelLift,
         
         return lift;
         
-    end : InstallMethod := InstallMethodWithToDoForIsWellDefined );
+    end : InstallMethod := InstallMethodWithToDoForIsWellDefined, Cache := GET_METHOD_CACHE( category, "MonoAsKernelLift", 2 ) );
     
 end );
 
@@ -579,8 +566,6 @@ InstallMethod( AddEpiAsCokernelColift,
     
     SetCanComputeEpiAsCokernelColift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "EpiAsCokernelColift", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( EpiAsCokernelColift,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
@@ -594,7 +579,7 @@ InstallMethod( AddEpiAsCokernelColift,
         
         return colift;
         
-    end : InstallMethod := InstallMethodWithToDoForIsWellDefined );
+    end : InstallMethod := InstallMethodWithToDoForIsWellDefined, Cache := GET_METHOD_CACHE( category, "EpiAsCokernelColift", 2 ) );
     
 end );
 

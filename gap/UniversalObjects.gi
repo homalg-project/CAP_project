@@ -59,8 +59,6 @@ InstallMethod( AddKernelLift,
     
     SetCanComputeKernelLift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "KernelLift", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( KernelLift,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
@@ -88,7 +86,7 @@ InstallMethod( AddKernelLift,
         
         return kernel_lift;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelLift", 2 ) );
     
 end );
 
@@ -101,8 +99,6 @@ InstallMethod( AddKernelLiftWithGivenKernel,
     SetKernelLiftWithGivenKernelFunction( category, func );
     
     SetCanComputeKernelLiftWithGivenKernel( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "KernelLiftWithGivenKernel", 3 );
     
     InstallMethodWithToDoForIsWellDefined( KernelLiftWithGivenKernel,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -118,7 +114,7 @@ InstallMethod( AddKernelLiftWithGivenKernel,
         
         return kernel_lift;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelLiftWithGivenKernel", 3 ) );
     
 end );
 
@@ -176,8 +172,6 @@ InstallMethod( AddKernelEmbWithGivenKernel,
     
     SetCanComputeKernelEmbWithGivenKernel( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "KernelEmbWithGivenKernel", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( KernelEmbWithGivenKernel,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -195,7 +189,7 @@ InstallMethod( AddKernelEmbWithGivenKernel,
         
         return kernel_emb;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelEmbWithGivenKernel", 2 ) );
 
 end );
 
@@ -309,8 +303,6 @@ InstallMethod( AddCokernelColift,
     
     SetCanComputeCokernelColift( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "CokernelColift", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( CokernelColift,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
@@ -336,7 +328,7 @@ InstallMethod( AddCokernelColift,
         
         return cokernel_colift;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CokernelColift", 2 ) );
     
 end );
 
@@ -349,8 +341,6 @@ InstallMethod( AddCokernelColiftWithGivenCokernel,
     SetCokernelColiftWithGivenCokernelFunction( category, func );
     
     SetCanComputeCokernelColiftWithGivenCokernel( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "CokernelColiftWithGivenCokernel", 3 );
     
     InstallMethodWithToDoForIsWellDefined( CokernelColiftWithGivenCokernel,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
@@ -366,7 +356,7 @@ InstallMethod( AddCokernelColiftWithGivenCokernel,
         
         return cokernel_colift;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CokernelColiftWithGivenCokernel", 3 ) );
     
 end );
 
@@ -422,8 +412,6 @@ InstallMethod( AddCokernelProjWithGivenCokernel,
     
     SetCanComputeCokernelProjWithGivenCokernel( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "CokernelProjWithGivenCokernel", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( CokernelProjWithGivenCokernel,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -441,7 +429,7 @@ InstallMethod( AddCokernelProjWithGivenCokernel,
         
         return cokernel_proj;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CokernelProjWithGivenCokernel", 2 ) );
     
 end );
 
@@ -534,8 +522,6 @@ InstallMethod( AddCoproduct,
     
     SetCanComputeCoproduct( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "CoproductOp", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( CoproductOp,
                                            [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
@@ -552,7 +538,7 @@ InstallMethod( AddCoproduct,
         
         return coproduct;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CoproductOp", 2 ) );
     
 end );
 
@@ -604,8 +590,6 @@ InstallMethod( AddInjectionOfCofactor,
     
     SetCanComputeInjectionOfCofactor( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "InjectionOfCofactorOp", 3 );
-    
     InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
                                            [ IsHomalgCategoryObject, 
                                              IsHomalgCategoryObject and ObjectFilter( category ), 
@@ -639,7 +623,7 @@ InstallMethod( AddInjectionOfCofactor,
         
         return injection_of_cofactor;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOp", 3 ) );
 
 end );
 
@@ -652,8 +636,6 @@ InstallMethod( AddInjectionOfCofactorWithGivenCoproduct,
     SetInjectionOfCofactorWithGivenCoproductFunction( category, func );
     
     SetCanComputeInjectionOfCofactorWithGivenCoproduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "InjectionOfCofactorWithGivenCoproduct", 3 );
     
     InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorWithGivenCoproduct,
                                            [ IsHomalgCategoryObject, 
@@ -676,7 +658,7 @@ InstallMethod( AddInjectionOfCofactorWithGivenCoproduct,
         
         return injection_of_cofactor;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorWithGivenCoproduct", 3 ) );
 
 end );
 
@@ -698,8 +680,6 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
     SetUniversalMorphismFromCoproductFunction( category, func );
     
     SetCanComputeUniversalMorphismFromCoproduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismFromCoproductOp", 2 );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
                                            [ IsHomalgCategoryMorphism,
@@ -741,7 +721,7 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromCoproductOp", 2 ) );
     
 end );
 
@@ -754,8 +734,6 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
     SetUniversalMorphismFromCoproductWithGivenCoproductFunction( category, func );
     
     SetCanComputeUniversalMorphismFromCoproductWithGivenCoproduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismFromCoproductWithGivenCoproduct", 2 );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
                                            [ IsHomalgCategoryMorphism,
@@ -780,7 +758,7 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromCoproductWithGivenCoproduct", 2 ) );
     
 end );
 
@@ -876,8 +854,6 @@ InstallMethod( AddDirectProduct,
     
     SetCanComputeDirectProduct( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "DirectProductOp", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( DirectProductOp,
                                            [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
@@ -894,7 +870,7 @@ InstallMethod( AddDirectProduct,
         
         return direct_product_for_multiple_objects;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "DirectProductOp", 2 ) );
     
 end );
 
@@ -949,8 +925,6 @@ InstallMethod( AddProjectionInFactor,
     
     SetCanComputeProjectionInFactor( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "ProjectionInFactorOp", 3 );
-    
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
                                            [ IsHomalgCategoryObject, 
                                              IsHomalgCategoryObject and ObjectFilter( category ), 
@@ -984,7 +958,7 @@ InstallMethod( AddProjectionInFactor,
         
         return projection_in_factor;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOp", 3 ) );
 
 end );
 
@@ -997,8 +971,6 @@ InstallMethod( AddProjectionInFactorWithGivenDirectProduct,
     SetProjectionInFactorWithGivenDirectProductFunction( category, func );
     
     SetCanComputeProjectionInFactorWithGivenDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "ProjectionInFactorWithGivenDirectProduct", 3 );
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenDirectProduct,
                                            [ IsHomalgCategoryObject, 
@@ -1021,7 +993,7 @@ InstallMethod( AddProjectionInFactorWithGivenDirectProduct,
         
         return projection_in_factor;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorWithGivenDirectProduct", 3 ) );
 
 end );
 
@@ -1043,8 +1015,6 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
     SetUniversalMorphismIntoDirectProductFunction( category, func );
     
     SetCanComputeUniversalMorphismIntoDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProductOp", 2 );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
                                            [ IsHomalgCategoryMorphism,
@@ -1086,7 +1056,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductOp", 2 ) );
     
 end );
 
@@ -1099,8 +1069,6 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
     SetUniversalMorphismIntoDirectProductWithGivenDirectProductFunction( category, func );
     
     SetCanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct( category, true );
-    
-    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 2 );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
                                            [ IsHomalgCategoryMorphism,
@@ -1125,7 +1093,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 2 ) );
     
 end );
 
@@ -1257,8 +1225,6 @@ InstallMethod( AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
     
     SetCanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismIntoDirectProductWithGivenTerminalObject", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
                                            [ IsHomalgCategoryObject and ObjectFilter( category ),
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -1272,7 +1238,7 @@ InstallMethod( AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductWithGivenTerminalObject", 2 ) );
     
 end );
 
@@ -1415,8 +1381,6 @@ InstallMethod( AddUniversalMorphismFromInitialObjectWithGivenInitialObject,
     
     SetCanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject( category, true );
     
-    DECIDE_INSTALL_FUNCTION( category, "UniversalMorphismFromDirectProductWithGivenInitialObject", 2 );
-    
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromInitialObjectWithGivenInitialObject,
                                            [ IsHomalgCategoryObject and ObjectFilter( category ),
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -1430,7 +1394,7 @@ InstallMethod( AddUniversalMorphismFromInitialObjectWithGivenInitialObject,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromDirectProductWithGivenInitialObject", 2 ) );
     
 end );
 
