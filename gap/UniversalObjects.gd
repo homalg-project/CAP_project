@@ -430,6 +430,103 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 
 ####################################
 ##
+#! @Section Coproduct
+##
+####################################
+
+## Main Operations and Attributes
+
+DeclareGlobalFunction( "Coproduct" );
+
+DeclareOperationWithCache( "CoproductOp",
+                           [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+DeclareGlobalFunction( "InjectionOfCofactor" );
+
+DeclareOperation( "InjectionOfCofactorOp",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+
+DeclareOperation( "InjectionOfCofactorWithGivenCoproduct",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+
+DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
+
+DeclareOperation( "UniversalMorphismFromCoproductOp",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+## Function Attributes
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a coproduct. 
+DeclareAttribute( "CoproductFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "InjectionOfCofactorFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "InjectionOfCofactorWithGivenCoproductFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismFromCoproductFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismFromCoproductWithGivenCoproductFunction",
+                  IsHomalgCategory );
+#! @EndGroup
+#! @EndAutoDoc
+
+## Add Operations
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+
+#! @Arguments C, f
+DeclareOperation( "AddCoproduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddInjectionOfCofactor",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddInjectionOfCofactorWithGivenCoproduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddUniversalMorphismFromCoproduct",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
+                  [ IsHomalgCategory, IsFunction ] );
+#! @EndGroup
+#! @EndAutoDoc
+
+
+## WasCreatedAs Filter
+
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a coproduct object. 
+#! Note that we chose <C>WasCreatedAsCoprodcut</C> to be a filter rather than a property,
+#! because by default, a filter is set to false.
+DeclareFilter( "WasCreatedAsCoproduct" );
+#! @Chapter Universal Objects
+
+
+####################################
+##
 #! @Section Direct Product
 ##
 ####################################
@@ -457,8 +554,7 @@ DeclareOperationWithCache( "DirectProductOp",
 #! in a product category $D = (A_i)$ representing a diagram.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments D, i
-DeclareOperation( "ProjectionInFactor",
-                  [ IsHomalgCategoryObject, IsInt ] );
+DeclareGlobalFunction( "ProjectionInFactor" );
 
 # @Description
 # Projection in the $i$-th factor of the direct product given by $D$.
