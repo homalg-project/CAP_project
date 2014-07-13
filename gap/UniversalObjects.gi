@@ -1059,7 +1059,9 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         SetDirectProductOp( direct_product_objects, direct_product_objects[1], direct_product );
         
-        Add( HomalgCategory( method_selection_object ), direct_product );
+        Add( HomalgCategory( direct_product_objects[1] ), direct_product );
+        
+        SetFilterObj( direct_product, WasCreatedAsDirectProduct );
         
         return universal_morphism;
         
@@ -1159,6 +1161,62 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 ##
 ####################################
 
+## Immediate methods which link DirectProduct and Coproduct to
+## DirectSum
+
+InstallImmediateMethod( IsImpliedDirectSum,
+                        #FIXME: CanComputeDirectSum -> IsAdditiveCategory
+                        IsHomalgCategoryObject and WasCreatedAsDirectProduct and CanComputeDirectSum,
+                        0,
+                        
+  function( direct_product )
+    local summands;
+    
+    summands := Genesis( direct_product )!.DirectFactors;
+    
+    SetDirectSumOp( summands, summands[1], direct_product );
+    
+    ResetFilterObj( direct_product, HasGenesis );
+    
+    SetGenesis( direct_product, rec( DirectFactors := summands, Cofactors := summands ) ); 
+    
+    SetFilterObj( direct_product, WasCreatedAsDirectSum );
+    
+    SetFilterObj( direct_product, WasCreatedAsCoproduct );
+    
+    SetCoproductOp( Genesis( direct_product )!.DirectFactors, Genesis( direct_product )!.DirectFactors[1], direct_product );
+    
+    return true;
+    
+end );
+
+InstallImmediateMethod( IsImpliedDirectSum,
+                        #FIXME: CanComputeDirectSum -> IsAdditiveCategory
+                        IsHomalgCategoryObject and WasCreatedAsCoproduct and CanComputeDirectSum,
+                        0,
+                        
+  function( coproduct )
+    local summands;
+  
+    summands := Genesis( coproduct )!.Cofactors;
+  
+    SetDirectSumOp( summands, summands[1], coproduct );
+    
+    ResetFilterObj( coproduct, HasGenesis );
+    
+    SetGenesis( coproduct, rec( DirectFactors := summands, Cofactors := summands ) ); 
+    
+    SetFilterObj( coproduct, WasCreatedAsDirectSum );
+    
+    SetFilterObj( coproduct, WasCreatedAsDirectProduct );
+    
+    SetDirectProductOp( Genesis( coproduct )!.Cofactors, Genesis( coproduct )!.Cofactors[1], coproduct );
+    
+    return true;
+    
+end );
+
+
 ## GAP-Hack in order to avoid the pre-installed GAP-method DirectSum
 BindGlobal( "HOMALG_CATEGORIES_DIRECT_SUM_SAVE", DirectSum );
 
@@ -1204,19 +1262,15 @@ InstallMethod( AddDirectSum,
         
         Add( HomalgCategory( method_selection_object ), direct_sum );
         
+        SetGenesis( direct_sum, rec( DirectFactors := object_product_list, Cofactors := object_product_list ) );
+        
         SetFilterObj( direct_sum, WasCreatedAsDirectSum );
         
-        ## this will treat direct_sum as if it was a direct product
+        ## this will treat direct_sum as if it was a direct product (see immediate method above)
         SetFilterObj( direct_sum, WasCreatedAsDirectProduct );
         
-        SetDirectProductOp( object_product_list, method_selection_object, direct_sum );
-        
-        ## this will treat direct_sum as if it was a coproduct
+        ## this will treat direct_sum as if it was a coproduct (see immediate method above)
         SetFilterObj( direct_sum, WasCreatedAsCoproduct );
-        
-        SetCoproductOp( object_product_list, method_selection_object, direct_sum );
-        
-        SetGenesis( direct_sum, rec( DirectFactors := object_product_list, Cofactors := object_product_list ) );
         
         return direct_sum;
         
@@ -1315,7 +1369,7 @@ InstallMethod( AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductWithGivenTerminalObject", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject", 2 ) );
     
 end );
 

@@ -473,6 +473,10 @@ DeclareOperation( "AddDirectSum",
 #! Note that we chose <C>WasCreatedAsDirectSum</C> to be a filter rather than a property,
 #! because by default, a filter is set to false.
 DeclareFilter( "WasCreatedAsDirectSum" );
+
+DeclareProperty( "IsImpliedDirectSum", 
+                 IsHomalgCategoryObject );
+
 #! @Chapter Universal Objects
 
 

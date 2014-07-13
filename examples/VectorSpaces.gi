@@ -608,36 +608,6 @@ AddUniversalMorphismFromInitialObjectWithGivenInitialObject( vecspaces,
 
 end );
 
-# ##
-# AddDirectSum_OnObjects( vecspaces,
-#                         
-#   function( a, b )
-#     local dim;
-#     
-#     dim := Dimension( a ) + Dimension( b );
-#     
-#     return QVectorSpace( dim );
-#     
-# end );
-# 
-# ##
-# AddInjectionFromFirstSummand( vecspaces,
-#                               
-#   function( sum_obj )
-#     local dim1, dim2, first_summand, matrix;
-#     
-#     first_summand := FirstSummand( sum_obj );
-#     
-#     dim1 := Dimension( first_summand );
-#     
-#     dim2 := Dimension( SecondSummand( sum_obj ) );
-#     
-#     matrix := TransposedMat( Concatenation( IdentityMat( dim1 ), NullMat( dim2, dim2 ) ) );
-#     
-#     return VectorSpaceMorphism( first_summand, matrix, sum_obj );
-#     
-# end );
-
 #######################################
 ##
 ## View and Display
