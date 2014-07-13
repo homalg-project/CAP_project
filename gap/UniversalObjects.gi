@@ -532,9 +532,9 @@ InstallMethod( AddCoproduct,
         
         Add( HomalgCategory( method_selection_object ), coproduct );
         
-        SetFilterObj( coproduct, WasCreatedAsCoproduct );
-        
         SetGenesis( coproduct, rec( Cofactors := object_product_list ) );
+        
+        SetFilterObj( coproduct, WasCreatedAsCoproduct );
         
         return coproduct;
         
@@ -620,6 +620,8 @@ InstallMethod( AddInjectionOfCofactor,
         SetGenesis( coproduct, rec( Cofactors := object_product_list ) );
         
         SetCoproductOp( object_product_list, method_selection_object, coproduct );
+        
+        SetFilterObj( coproduct, WasCreatedAsCoproduct );
         
         return injection_of_cofactor;
         
@@ -718,6 +720,8 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
         SetGenesis( coproduct, rec( Cofactors := coproduct_objects ) );
         
         SetCoproductOp( coproduct_objects, coproduct_objects[1], coproduct );
+        
+        SetFilterObj( coproduct, WasCreatedAsCoproduct );
         
         return universal_morphism;
         
@@ -857,17 +861,17 @@ InstallMethod( AddDirectProduct,
                                            [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
       function( object_product_list, method_selection_object )
-        local direct_product_for_multiple_objects;
+        local direct_product;
         
-        direct_product_for_multiple_objects := func( object_product_list );
+        direct_product := func( object_product_list );
         
-        Add( HomalgCategory( method_selection_object ), direct_product_for_multiple_objects );
+        SetFilterObj( direct_product, WasCreatedAsDirectProduct );
         
-        SetFilterObj( direct_product_for_multiple_objects, WasCreatedAsDirectProduct );
+        SetGenesis( direct_product, rec( DirectFactors := object_product_list ) );
         
-        SetGenesis( direct_product_for_multiple_objects, rec( DirectFactors := object_product_list ) );
+        Add( HomalgCategory( method_selection_object ), direct_product );
         
-        return direct_product_for_multiple_objects;
+        return direct_product;
         
     end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "DirectProductOp", 2 ) );
     
@@ -954,6 +958,8 @@ InstallMethod( AddProjectionInFactor,
         SetGenesis( direct_product, rec( DirectFactors := object_product_list ) );
         
         SetDirectProductOp( object_product_list, method_selection_object, direct_product );
+        
+        SetFilterObj( direct_product, WasCreatedAsDirectProduct );
         
         return projection_in_factor;
         
@@ -1052,6 +1058,8 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         SetGenesis( direct_product, rec( DirectFactors := direct_product_objects ) );
         
         SetDirectProductOp( direct_product_objects, direct_product_objects[1], direct_product );
+        
+        Add( HomalgCategory( method_selection_object ), direct_product );
         
         return universal_morphism;
         
