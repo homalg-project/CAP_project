@@ -133,7 +133,7 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
       function( arg )
         local cache, cache_key, cache_return, entry, i, filtered_cache_key;
         
-        cache := CachingObject( arg[ cache_number ], name, Length( arg ) );
+        cache := CachingObject( arg[ cache_number ], name, Length( arg ) - 1 );
         
         cache_key := arg{[ 1 .. Length( arg ) - 1 ]};
         
