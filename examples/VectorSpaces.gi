@@ -392,7 +392,7 @@ AddUniversalMorphismFromCoproduct( vecspaces,
   
     od;
   
-    return VectorSpaceMorphism( Source( sink[1] ), universal_morphism, coproduct );
+    return VectorSpaceMorphism( coproduct, universal_morphism, Source( sink[1] ) );
   
 end );
 
@@ -412,7 +412,7 @@ AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
   
     od;
   
-    return VectorSpaceMorphism( Source( sink[1] ), universal_morphism, coproduct );
+    return VectorSpaceMorphism( coproduct, universal_morphism, Source( sink[1] ) );
   
 end );
 
@@ -440,8 +440,8 @@ end );
 #   
 # end );
 
-##
-## the user may assume that Length( object_product_list!.Components ) > 1
+#
+# the user may assume that Length( object_product_list!.Components ) > 1
 AddProjectionInFactor( vecspaces,
 
   function( object_product_list, projection_number )

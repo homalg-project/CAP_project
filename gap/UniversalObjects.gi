@@ -1276,6 +1276,107 @@ InstallMethod( AddDirectSum,
 end );
 
 ####################################
+## Implied Operations
+####################################
+
+##
+InstallTrueMethod( CanComputeDirectProduct,
+                   CanComputeDirectSum );
+
+InstallMethodWithToDoForIsWellDefined( DirectProductOp,
+                                       [ IsHomalgCategoryObject, IsHomalgCategoryObject and CanComputeDirectSum ],
+                                       -9999 + 1, #FIXME
+                                       
+  function( object_product_list, method_selection_object )
+    
+    return DirectSumOp( object_product_list, method_selection_object );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+
+##
+InstallTrueMethod( CanComputeCoproduct,
+                   CanComputeDirectSum );
+
+InstallMethodWithToDoForIsWellDefined( CoproductOp,
+                                       [ IsHomalgCategoryObject, IsHomalgCategoryObject and CanComputeDirectSum ],
+                                       -9999 + 1, #FIXME
+                                       
+  function( object_product_list, method_selection_object )
+    
+    return DirectSumOp( object_product_list, method_selection_object );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
+                   IsAdditiveCategory and CanComputeDirectSum and CanComputeInjectionOfCofactorWithGivenCoproduct and CanComputeAdditionForMorphisms );
+
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+                                       [ IsHomalgCategoryMorphism, IsHomalgCategoryObject and IsAdditiveCategory and CanComputeDirectSum 
+                                         and CanComputeInjectionOfCofactorWithGivenCoproduct and CanComputeAdditionForMorphisms ],
+                                       -9999 - 1, #FIXME
+                                       
+  function( source, direct_product )
+    local nr_components;
+    
+    nr_components := Length( Components( source ) );
+  
+    return Sum( List( [ 1 .. nr_components ], i -> PreCompose( source[ i ], InjectionOfCofactor( direct_product, i ) ) ) );
+  
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,
+                   IsAdditiveCategory and CanComputeDirectSum and CanComputeProjectionInFactorWithGivenDirectProduct and CanComputeAdditionForMorphisms );
+
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
+                                       [ IsHomalgCategoryMorphism, IsHomalgCategoryObject and IsAdditiveCategory and CanComputeDirectSum 
+                                         and CanComputeProjectionInFactorWithGivenDirectProduct and CanComputeAdditionForMorphisms ],
+                                       -9999 - 1, #FIXME
+                                       
+  function( sink, coproduct )
+    local nr_components;
+    
+    nr_components := Length( Components( sink ) );
+  
+    return Sum( List( [ 1 .. nr_components ], i -> PreCompose( ProjectionInFactor( coproduct, i ), sink[ i ] ) ) );
+  
+end  : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+
+##
+InstallTrueMethod( CanComputeAdditionForMorphisms,
+                   IsAdditiveCategory and CanComputeDirectSum and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
+                   and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct );
+
+InstallMethodWithToDoForIsWellDefined( \+,
+                                       [ IsHomalgCategoryMorphism and IsAdditiveCategory and CanComputeDirectSum and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
+                                         and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct, 
+                                         IsHomalgCategoryMorphism and IsAdditiveCategory and CanComputeDirectSum and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
+                                         and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct ],
+                                         -9999,
+                                         
+  function( mor1, mor2 )
+    local return_value, B, direct_sum, componentwise_morphism, addition_morphism;
+        
+    if not IsIdenticalObj( HomalgCategory( mor1 ), HomalgCategory( mor2 ) ) or not IsIdenticalObj( Source( mor1 ), Source( mor2 ) ) or not IsIdenticalObj( Range( mor1 ), Range( mor2 ) ) then
+      
+      Error( "morphisms are not addable" );
+      
+    fi;
+    
+    B := Range( mor1 );
+    
+    direct_sum := DirectSum( B, B );
+    
+    componentwise_morphism := UniversalMorphismIntoDirectProduct( mor1, mor2 );
+    
+    addition_morphism := UniversalMorphismFromCoproduct( IdentityMorphism( B ), IdentityMorphism( B ) );
+    
+    return PreCompose( componentwise_morphism, addition_morphism );
+    
+end );
+
+####################################
 ##
 ## Terminal Object
 ##
