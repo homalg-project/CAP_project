@@ -48,6 +48,8 @@ DeclareOperation( "VectorSpaceMorphism",
 
 vecspaces := CreateHomalgCategory( "VectorSpaces" );
 
+SetIsAdditiveCategory( vecspaces, true );
+
 VECTORSPACES_FIELD := HomalgFieldOfRationals( );
 
 #######################################
@@ -296,17 +298,17 @@ AddCokernelProjWithGivenCokernel( vecspaces,
 
 end );
 
-##
-AddCoproduct( vecspaces,
-
-  function( object_product_list )
-    local dim;
-    
-    dim := Sum( List( object_product_list!.Components, c -> Dimension( c ) ) );
-    
-    return QVectorSpace( dim );
-  
-end );
+# ##
+# AddCoproduct( vecspaces,
+# 
+#   function( object_product_list )
+#     local dim;
+#     
+#     dim := Sum( List( object_product_list!.Components, c -> Dimension( c ) ) );
+#     
+#     return QVectorSpace( dim );
+#   
+# end );
 
 ##
 ## the user may assume that Length( object_product_list!.Components ) > 1
@@ -426,17 +428,17 @@ AddDirectSum( vecspaces,
   
 end );
 
-##
-AddDirectProduct( vecspaces,
-
-  function( object_product_list )
-    local dim;
-    
-    dim := Sum( List( object_product_list!.Components, c -> Dimension( c ) ) );
-    
-    return QVectorSpace( dim );
-  
-end );
+# ##
+# AddDirectProduct( vecspaces,
+# 
+#   function( object_product_list )
+#     local dim;
+#     
+#     dim := Sum( List( object_product_list!.Components, c -> Dimension( c ) ) );
+#     
+#     return QVectorSpace( dim );
+#   
+# end );
 
 ##
 ## the user may assume that Length( object_product_list!.Components ) > 1

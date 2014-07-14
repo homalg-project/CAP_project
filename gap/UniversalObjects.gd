@@ -474,7 +474,7 @@ DeclareOperation( "AddDirectSum",
 #! because by default, a filter is set to false.
 DeclareFilter( "WasCreatedAsDirectSum" );
 
-DeclareProperty( "IsImpliedDirectSum", 
+DeclareProperty( "IS_IMPLIED_DIRECT_SUM", 
                  IsHomalgCategoryObject );
 
 #! @Chapter Universal Objects

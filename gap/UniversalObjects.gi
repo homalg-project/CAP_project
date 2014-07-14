@@ -1163,10 +1163,8 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ## Immediate methods which link DirectProduct and Coproduct to
 ## DirectSum
-
-InstallImmediateMethod( IsImpliedDirectSum,
-                        #FIXME: CanComputeDirectSum -> IsAdditiveCategory
-                        IsHomalgCategoryObject and WasCreatedAsDirectProduct and CanComputeDirectSum,
+InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
+                        IsHomalgCategoryObject and WasCreatedAsDirectProduct and IsAdditiveCategory,
                         0,
                         
   function( direct_product )
@@ -1184,15 +1182,14 @@ InstallImmediateMethod( IsImpliedDirectSum,
     
     SetFilterObj( direct_product, WasCreatedAsCoproduct );
     
-    SetCoproductOp( Genesis( direct_product )!.DirectFactors, Genesis( direct_product )!.DirectFactors[1], direct_product );
+    SetCoproductOp( summands, summands[1], direct_product );
     
     return true;
     
 end );
 
-InstallImmediateMethod( IsImpliedDirectSum,
-                        #FIXME: CanComputeDirectSum -> IsAdditiveCategory
-                        IsHomalgCategoryObject and WasCreatedAsCoproduct and CanComputeDirectSum,
+InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
+                        IsHomalgCategoryObject and WasCreatedAsCoproduct and IsAdditiveCategory,
                         0,
                         
   function( coproduct )
@@ -1210,7 +1207,7 @@ InstallImmediateMethod( IsImpliedDirectSum,
     
     SetFilterObj( coproduct, WasCreatedAsDirectProduct );
     
-    SetDirectProductOp( Genesis( coproduct )!.Cofactors, Genesis( coproduct )!.Cofactors[1], coproduct );
+    SetDirectProductOp( summands, summands[1], coproduct );
     
     return true;
     
