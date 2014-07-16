@@ -43,6 +43,9 @@ DeclareAttribute( "Source",
 DeclareAttribute( "Range",
                   IsHomalgCategoryMorphism );
 
+DeclareAttribute( "UnderlyingObject",
+                  IsHomalgCategoryMorphism );
+
 # this attribute is also an implied operation
 
 DeclareAttribute( "Inverse",
@@ -71,8 +74,14 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 DeclareProperty( "IsMonomorphism",
                  IsHomalgCategoryMorphism );
 
+DeclareSynonymAttr( "IsSubobject",
+                    IsMonomorphism );
+
 DeclareProperty( "IsEpimorphism",
                  IsHomalgCategoryMorphism );
+
+DeclareSynonymAttr( "IsFactorobject",
+                    IsEpimorphism );
 
 DeclareProperty( "IsIsomorphism",
                  IsHomalgCategoryMorphism );
@@ -145,6 +154,36 @@ DeclareOperation( "AddZeroMorphism",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareAttribute( "ZeroMorphismFunction",
+                  IsHomalgCategory );
+
+###################################
+##
+#! @Section Subobject functions
+##
+###################################
+
+DeclareOperation( "IsEqualAsSubobject",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "IsEqualAsFactorobject",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "Dominates",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "AddDominates",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "DominatesFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "Codominates",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "AddCodominates",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "CodominatesFunction",
                   IsHomalgCategory );
 
 ###################################

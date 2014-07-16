@@ -76,6 +76,204 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,
 
 ######################################
 ##
+## Subobjects
+##
+######################################
+
+##
+InstallMethod( UnderlyingObject,
+               [ IsHomalgCategoryMorphism and IsSubobject ],
+               
+  Source );
+
+##
+InstallMethod( UnderlyingObject,
+               [ IsHomalgCategoryMorphism and IsFactorobject ],
+               
+  Range );
+
+InstallTrueMethod( CanComputeEqualityOfSubobjects, CanComputeDominates );
+
+##
+InstallMethodWithCacheFromObject( IsEqualAsSubobject,
+                                  [ IsHomalgCategoryMorphism and IsSubobject
+                                    and SetCanComputeDominates,
+                                    IsHomalgCategoryMorphism and IsSubobject ],
+                                  
+  function( sub1, sub2 );
+    
+    if not IsIdenticalObj( Range( sub1 ), Range( sub2 ) ) then
+        
+        return false;
+        
+    fi;
+    
+    return Dominates( sub1, sub2 ) and Dominates( sub2, sub2 );
+    
+end );
+
+InstallTrueMethod( CanComputeEqualityOfFactorobjects, CanComputeCodominates );
+
+##
+InstallMethodWithCacheFromObject( IsEqualAsFactorobject,
+                                  [ IsHomalgCategoryMorphism and IsFactorobject
+                                    and CanComputeCodominates, 
+                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                  
+  function( factor1, factor2 )
+    
+    if not IsIdenticalObj( Source( factor1 ), Source( factor2 ) ) then
+        
+        return false;
+        
+    fi;
+    
+    return Codominates( factor1, factor2 ) and Codominates( factor1, factor2 );
+    
+end );
+
+##
+InstallMethod( AddDominates,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCanComputeDominates( category, true );
+    
+    SetDominatesFunction( category, func );
+    
+    InstallMethodWithCache( Dominates,
+                            [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsSubobject,
+                              IsHomalgCategoryMorphism and MorphismFilter( category ) and IsSubobject ],
+                            
+      function( sub1, sub2 )
+        
+        if not IsIdenticalObj( Range( sub1 ), Range( sub2 ) ) then
+            
+            Error( "subobjects of different objects are not comparable by dominates" );
+            
+        fi;
+        
+        return func( sub1, sub2 );
+        
+    end : Cache := GET_METHOD_CACHE( category, "Dominates", 2 ) );
+      
+end );
+
+##
+InstallMethod( AddCodominates,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCanComputeCodominates( category, true );
+    
+    SetCodominatesFunction( category, func );
+    
+    InstallMethodWithCache( Codominates,
+                            [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsFactorobject,
+                              IsHomalgCategoryMorphism and MorphismFilter( category ) and IsFactorobject ],
+                            
+      function( factor1, factor2 )
+        
+        if not IsIdenticalObj( Source( factor1 ), Source( factor2 ) ) then
+            
+            Error( "factorobjects of different objects are not comparable by codominates" );
+            
+        fi;
+        
+        return func( factor1, factor2 );
+        
+    end : Cache := GET_METHOD_CACHE( category, "Codominates", 2 ) );
+      
+end );
+
+InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+
+##
+InstallMethodWithCacheFromObject( Dominates,
+                                  [ IsHomalgCategoryMorphism and IsSubobject 
+                                    and CanComputeCokernelProj
+                                    and CanComputeIsZeroForMorphisms
+                                    and CanComputePreCompose, 
+                                    IsHomalgCategoryMorphism and IsSubobject ],
+                                  
+  function( sub1, sub2 )
+    local cokernel_projection, composition;
+    
+    cokernel_projection := CokernelProj( sub2 );
+    
+    composition := PreCompose( sub1, cokernel_projection );
+    
+    return IsZero( composition );
+    
+end );
+
+InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeCodominates and IsPreAbelianCategory );
+
+##
+InstallMethodWithCacheFromObject( Dominates,
+                                  [ IsHomalgCategoryMorphism and IsSubobject
+                                    and CanComputeCokernelProj
+                                    and CanComputeCodominates
+                                    and IsPreAbelianCategory,
+                                    IsHomalgCategoryMorphism and IsSubobject ],
+                                  
+  function( sub1, sub2 )
+    local cokernel_projection_1, cokernel_projection_2;
+    
+    cokernel_projection_1 := CokernelProj( sub1 );
+    
+    cokernel_projection_2 := CokernelProj( sub2 );
+    
+    return Codominates( cokernel_projection_1, cokernel_projection_2 );
+    
+end );
+
+InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+
+##
+InstallMethodWithCacheFromObject( Codominates,
+                                  [ IsHomalgCategoryMorphism and IsFactorobject
+                                    and CanComputeKernelEmb
+                                    and CanComputeIsZeroForMorphisms
+                                    and CanComputePreCompose,
+                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                  
+  function( factor1, factor2 )
+    local kernel_embedding, composition;
+    
+    kernel_embedding := KernelEmb( factor2 );
+    
+    composition := PreCompose( kernel_embedding, factor1 );
+    
+    return IsZero( composition );
+    
+end );
+
+InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeDominates and IsPreAbelianCategory );
+
+##
+InstallMethodWithCacheFromObject( Codominates,
+                                  [ IsHomalgCategoryMorphism and IsFactorobject
+                                    and CanComputeKernelEmb
+                                    and CanComputeDominates
+                                    and IsPreAbelianCategory,
+                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                  
+  function( factor1, factor2 )
+    local kernel_embedding_1, kernel_embedding_2;
+    
+    kernel_embedding_1 := KernelEmb( factor1 );
+    
+    kernel_embedding_2 := KernelEmb( factor2 );
+    
+    return Dominates( kernel_embedding_2, kernel_embedding_1 );
+    
+end );
+
+######################################
+##
 ## Operations
 ##
 ######################################
