@@ -9,6 +9,8 @@
 ##
 #############################################################################
 
+#FIXME: Add CanComputePreCompose to assumptions in implied methods
+
 ####################################
 ##
 ## Kernel
@@ -1309,11 +1311,16 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                   IsAdditiveCategory and CanComputeDirectSum and CanComputeInjectionOfCofactorWithGivenCoproduct and CanComputeAdditionForMorphisms );
+                   IsAdditiveCategory 
+                   and CanComputeDirectSum 
+                   and CanComputeInjectionOfCofactorWithGivenCoproduct 
+                   and CanComputeAdditionForMorphisms 
+                   and CanComputePreCompose );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
                                        [ IsHomalgCategoryMorphism, IsHomalgCategoryObject and IsAdditiveCategory and CanComputeDirectSum 
-                                         and CanComputeInjectionOfCofactorWithGivenCoproduct and CanComputeAdditionForMorphisms ],
+                                         and CanComputeInjectionOfCofactorWithGivenCoproduct and CanComputeAdditionForMorphisms
+                                         and CanComputePreCompose ],
                                        -9999 - 1, #FIXME
                                        
   function( source, direct_product )
@@ -1327,11 +1334,16 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,
-                   IsAdditiveCategory and CanComputeDirectSum and CanComputeProjectionInFactorWithGivenDirectProduct and CanComputeAdditionForMorphisms );
+                   IsAdditiveCategory 
+                   and CanComputeDirectSum 
+                   and CanComputeProjectionInFactorWithGivenDirectProduct 
+                   and CanComputeAdditionForMorphisms 
+                   and CanComputePreCompose );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
                                        [ IsHomalgCategoryMorphism, IsHomalgCategoryObject and IsAdditiveCategory and CanComputeDirectSum 
-                                         and CanComputeProjectionInFactorWithGivenDirectProduct and CanComputeAdditionForMorphisms ],
+                                         and CanComputeProjectionInFactorWithGivenDirectProduct and CanComputeAdditionForMorphisms
+                                         and CanComputePreCompose ],
                                        -9999 - 1, #FIXME
                                        
   function( sink, coproduct )
@@ -1345,14 +1357,18 @@ end  : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
 InstallTrueMethod( CanComputeAdditionForMorphisms,
-                   IsAdditiveCategory and CanComputeDirectSum and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
-                   and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct );
+                   IsAdditiveCategory 
+                   and CanComputeDirectSum 
+                   and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
+                   and CanComputeIdentityMorphism 
+                   and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct 
+                   and CanComputePreCompose );
 
 InstallMethodWithToDoForIsWellDefined( \+,
                                        [ IsHomalgCategoryMorphism and IsAdditiveCategory and CanComputeDirectSum and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
-                                         and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct, 
+                                         and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct and CanComputePreCompose, 
                                          IsHomalgCategoryMorphism and IsAdditiveCategory and CanComputeDirectSum and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
-                                         and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct ],
+                                         and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct and CanComputePreCompose],
                                          -9999,
                                          
   function( mor1, mor2 )
