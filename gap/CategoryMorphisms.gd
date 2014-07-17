@@ -192,7 +192,6 @@ DeclareAttribute( "CodominatesFunction",
 ##
 ###################################
 
-
 DeclareOperation( "PreCompose",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 

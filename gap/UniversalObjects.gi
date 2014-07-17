@@ -1164,7 +1164,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 ####################################
 
 ## Immediate methods which link DirectProduct and Coproduct to
-## DirectSum
+## DirectSum in the additive case
 InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
                         IsHomalgCategoryObject and WasCreatedAsDirectProduct and IsAdditiveCategory,
                         0,
@@ -1394,6 +1394,142 @@ end );
 
 ####################################
 ##
+## Zero Object
+##
+####################################
+
+## Immediate methods which link InitialObject and TerminalObject to
+## ZeroObject in the additive case
+InstallImmediateMethod( IS_IMPLIED_ZERO_OBJECT,
+                        IsHomalgCategoryObject and WasCreatedAsTerminalObject and IsAdditiveCategory,
+                        0,
+                        
+  function( terminal_object )
+    local category;
+    
+    category := HomalgCategory( terminal_object );
+    
+    SetFilterObj( terminal_object, WasCreatedAsZeroObject );
+    
+    SetZeroObject( category, terminal_object );
+    
+    SetFilterObj( terminal_object, WasCreatedAsInitialObject );
+    
+    SetInitialObject( category, terminal_object );
+    
+    return true;
+    
+end );
+
+##
+InstallImmediateMethod( IS_IMPLIED_ZERO_OBJECT,
+                        IsHomalgCategoryObject and WasCreatedAsInitialObject and IsAdditiveCategory,
+                        0,
+                        
+  function( initial_object )
+    local category;
+    
+    category := HomalgCategory( initial_object );
+    
+    SetFilterObj( initial_object, WasCreatedAsZeroObject );
+    
+    SetZeroObject( category, initial_object );
+    
+    SetFilterObj( initial_object, WasCreatedAsTerminalObject );
+    
+    SetTerminalObject( category, initial_object );
+    
+    return true;
+    
+end );
+
+####################################
+## Add Operations
+####################################
+
+##
+InstallMethod( AddZeroObject,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetZeroObjectFunction( category, func );
+    
+    SetCanComputeZeroObject( category, true );
+    
+end );
+
+####################################
+## Attributes
+####################################
+
+##
+InstallMethod( ZeroObject,
+               [ IsHomalgCategoryCell ],
+               
+  function( cell )
+    
+    return ZeroObject( HomalgCategory( cell ) );
+    
+end );
+
+##
+InstallMethodWithToDoForIsWellDefined( ZeroObject,
+                                       [ IsHomalgCategory ],
+                                       
+  function( category )
+    local zero_object;
+    
+    if not CanComputeZeroObject( category ) then
+        
+        Error( "no possibility to construct zero object" );
+        
+    fi;
+    
+    zero_object := ZeroObjectFunction( category )();
+    
+    Add( category, zero_object );
+    
+    SetIsZero( zero_object, true );
+    
+    SetFilterObj( zero_object, WasCreatedAsZeroObject );
+    
+    ## this will treat zero_object as if it was a terminal object (see immediate method above)
+    SetFilterObj( zero_object, WasCreatedAsTerminalObject );
+    
+    ## this will treat zero_object as if it was an initial object (see immediate method above)
+    SetFilterObj( zero_object, WasCreatedAsInitialObject );
+    
+    return zero_object;
+    
+end );
+
+####################################
+## Renamed Operations
+####################################
+
+##
+InstallMethod( MorphismFromZeroObject,
+               [ IsHomalgCategoryObject ],
+               
+   function( obj )
+   
+     return UniversalMorphismFromInitialObject( obj );
+   
+end );
+
+##
+InstallMethod( MorphismIntoZeroObject,
+               [ IsHomalgCategoryObject ],
+               
+   function( obj )
+   
+     return UniversalMorphismIntoTerminalObject( obj );
+   
+end );
+
+####################################
+##
 ## Terminal Object
 ##
 ####################################
@@ -1410,8 +1546,6 @@ InstallMethod( AddTerminalObject,
     
     SetTerminalObjectFunction( category, func );
     
-#     SetFilterObj( category, CanComputeTerminalObject );
-    
     SetCanComputeTerminalObject( category, true );
     
 end );
@@ -1423,8 +1557,6 @@ InstallMethod( AddUniversalMorphismIntoTerminalObject,
   function( category, func )
     
     SetUniversalMorphismIntoTerminalObjectFunction( category, func );
-    
-#     SetFilterObj( category, CanComputeUniversalMorphismIntoTerminalObject );
     
     SetCanComputeUniversalMorphismIntoTerminalObject( category, true );
     
@@ -1446,7 +1578,7 @@ InstallMethod( AddUniversalMorphismIntoTerminalObject,
         
         Add( HomalgCategory( test_source ), universal_morphism );
         
-        terminal_object := Source( universal_morphism );
+        terminal_object := Range( universal_morphism );
         
         SetTerminalObject( category, terminal_object );
         
@@ -1465,8 +1597,6 @@ InstallMethod( AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
   function( category, func )
     
     SetUniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFunction( category, func );
-    
-#     SetFilterObj( category, CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject );
     
     SetCanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category, true );
     

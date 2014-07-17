@@ -82,38 +82,6 @@ DeclareOperation( "Add",
 
 ###################################
 ##
-#! @Section Direct sum attributes
-##
-###################################
-
-# 
-# DeclareOperation( "DirectSumOp",
-#                   [ IsList, IsHomalgCategoryObject ] );
-# 
-# DeclareAttribute( "FirstSummand",
-#                   IsHomalgCategoryObject );
-# 
-# DeclareAttribute( "SecondSummand",
-#                   IsHomalgCategoryObject );
-# 
-# # 
-# # DeclareAttribute( "ProjectionInFirstFactor",
-# #                   IsHomalgCategoryObject );
-# # 
-# # 
-# # DeclareAttribute( "ProjectionInSecondFactor",
-# #                   IsHomalgCategoryObject );
-# 
-# 
-# DeclareAttribute( "InjectionFromFirstSummand",
-#                   IsHomalgCategoryObject );
-# 
-# 
-# DeclareAttribute( "InjectionFromSecondSummand",
-#                   IsHomalgCategoryObject );
-
-###################################
-##
 #! @Section Element functions
 ##
 ###################################
@@ -130,32 +98,12 @@ DeclareAttributeWithToDoForIsWellDefined( "IdentityMorphism",
 
 ###################################
 ##
-## ZeroObject
+## Zero Morphism
 ##
 ###################################
-
-
-DeclareAttribute( "ZeroObject",
-                  IsHomalgCategoryObject );
-
-
-DeclareAttribute( "MorphismFromZeroObject",
-                  IsHomalgCategoryObject );
-
-
-DeclareAttribute( "MorphismIntoZeroObject",
-                  IsHomalgCategoryObject );
-
 
 DeclareOperation( "ZeroMorphism",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
-
-###################################
-##
-## Direct Product
-##
-###################################
-
 
 
 

@@ -180,30 +180,6 @@ AddZeroObject( vecspaces,
 end );
 
 ##
-AddMorphismIntoZeroObject( vecspaces,
-
-  function( obj )
-    local morphism;
-
-    morphism := VectorSpaceMorphism( obj, HomalgZeroMatrix( Dimension( obj ), 0, VECTORSPACES_FIELD ), ZeroObject( obj ) );
-
-    return morphism;
-
-end );
-
-##
-AddMorphismFromZeroObject( vecspaces,
-
-  function( obj )
-    local morphism;
-
-    morphism := VectorSpaceMorphism( ZeroObject( obj ), HomalgZeroMatrix( 0, Dimension( obj ), VECTORSPACES_FIELD ), obj );
-
-    return morphism;
-
-end );
-
-##
 AddMonoAsKernelLift( vecspaces,
 
   function( monomorphism, test_morphism )

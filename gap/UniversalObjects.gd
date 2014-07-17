@@ -235,7 +235,84 @@ DeclareFilter( "WasCreatedAsCokernel" );
 
 ####################################
 ##
-#! @Section Terminal Object
+#! @Section Zero object
+##
+####################################
+
+## Main Operations and Attributes
+
+#! @BeginGroup 
+
+#! @Description
+#! Zero object of a category $C$
+#! @Returns IsHomalgCategoryObject
+#! @Arguments C
+DeclareAttribute( "ZeroObject",
+                  IsHomalgCategory );
+
+#! @Description
+#! or of a cell $c$ in $C$
+#! @Arguments c
+DeclareAttribute( "ZeroObject",
+                  IsHomalgCategoryCell );
+
+DeclareAttribute( "MorphismFromZeroObject",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "MorphismIntoZeroObject",
+                  IsHomalgCategoryObject );
+
+#! @EndGroup 
+
+
+## Function Attributes
+
+#! @BeginGroup
+
+#! @AutoDoc
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a terminal object. 
+DeclareAttribute( "ZeroObjectFunction",
+                  IsHomalgCategory );
+#! @EndAutoDoc
+
+# @EndGroup
+
+## Add Operations
+
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+#! @Arguments C, f
+DeclareOperation( "AddZeroObject",
+                  [ IsHomalgCategory, IsFunction ] );
+#! @EndGroup
+
+#! @EndAutoDoc
+
+
+## WasCreatedAs Filter
+
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a zero object. 
+#! Note that we chose <C>WasCreatedAsZeroObject</C> to be a filter rather than a property,
+#! because by default, a filter is set to false.
+DeclareFilter( "WasCreatedAsZeroObject" );
+
+DeclareProperty( "IS_IMPLIED_ZERO_OBJECT", 
+                 IsHomalgCategoryObject );
+#! @Chapter Universal Objects
+
+####################################
+##
+#! @Section Terminal object
 ##
 ####################################
 

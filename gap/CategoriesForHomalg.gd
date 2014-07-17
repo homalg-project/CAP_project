@@ -196,15 +196,6 @@ DeclareAttribute( "MorphismFilter",
                   IsHomalgCategory );
 #! @EndGroup
 
-#! @Description
-#!  The zero object of the category, if a method for zero object is installed.
-#!  Also aliases initial and terminal object once it is given.
-DeclareAttribute( "ZeroObject",
-                  IsHomalgCategory );
-
-DeclareAttribute( "ZeroObject",
-                  IsHomalgCategoryCell );
-
 #############################################
 ##
 #! @Section Well defined
@@ -265,42 +256,6 @@ DeclareOperation( "AddPreCompose",
 
 #! @EndGroup
 
-####################################
-##
-## Zero object
-##
-####################################
-
-#! @BeginGroup ZeroObjectConstructor_installer
-
-#! @Description
-#!  Installs the Constructor function for the zero object of a given category. The argument <A>func</A> must take no argument. Later,
-#!  ZeroObject can be called with an object or the category itself. Using ZeroObject, morphism into and from, and Precompose, one has ZeroMorphism
-#!  installed.
-#!  FIXME: Please add a bit more here.
-
-DeclareAttribute( "ZeroObjectFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddZeroObject",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareAttribute( "MorphismIntoZeroObjectFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddMorphismIntoZeroObject",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-DeclareAttribute( "MorphismFromZeroObjectFunction",
-                  IsHomalgCategory );
-
-DeclareOperation( "AddMorphismFromZeroObject",
-                  [ IsHomalgCategory, IsFunction ] );
-
-
-#!  @EndGroup
 
 ####################################
 ##

@@ -114,8 +114,6 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
     
     morphism_function_list := [ AddIdentityMorphism,
                                 AddPreCompose,
-                                AddMorphismIntoZeroObject,
-                                AddMorphismFromZeroObject,
                                 AddMonoAsKernelLift,
                                 AddEpiAsCokernelColift,
                                 AddInverse,
