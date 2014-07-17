@@ -806,6 +806,109 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 
 ####################################
 ##
+#! @Section Pullback
+##
+####################################
+
+## Main Operations and Attributes
+
+## Main Operations and Attributes
+
+# FIXME:
+# Declared as an operation in MatricesForHomalg!
+# DeclareGlobalFunction( "Pullback" );
+
+DeclareGlobalFunction( "FiberProduct" );
+
+DeclareOperationWithCache( "PullbackOp",
+                           [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+## DeclareGlobalFunction( "ProjectionInFactor" ); to be adjusted
+
+DeclareOperation( "ProjectionInFactorOp",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsInt ] );
+
+DeclareOperation( "ProjectionInFactorWithGivenPullback",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject, IsInt ] );
+
+DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
+
+DeclareOperation( "UniversalMorphismIntoPullbackOp",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "UniversalMorphismIntoPullbackWithGivenPullback",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+## Function Attributes
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a pullback. 
+DeclareAttribute( "PullbackFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "ProjectionInFactorOfPullbackFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "ProjectionInFactorWithGivenPullbackFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismIntoPullbackFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismIntoPullbackWithGivenPullbackFunction",
+                  IsHomalgCategory );
+#! @EndGroup
+#! @EndAutoDoc
+
+## Add Operations
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+
+#! @Arguments C, f
+DeclareOperation( "AddPullback",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddProjectionInFactorOfPullback",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddProjectionInFactorWithGivenPullback",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddUniversalMorphismIntoPullback",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
+                  [ IsHomalgCategory, IsFunction ] );
+#! @EndGroup
+#! @EndAutoDoc
+
+
+## WasCreatedAs Filter
+
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a pullback. 
+#! Note that we chose <C>WasCreatedAsPullback</C> to be a filter rather than a property,
+#! because by default, a filter is set to false.
+DeclareFilter( "WasCreatedAsPullback" );
+
+#! @Chapter Universal Objects
+
+####################################
+##
 ## Scheme for Universal Object
 ##
 ####################################

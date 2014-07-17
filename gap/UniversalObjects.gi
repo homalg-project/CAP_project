@@ -818,6 +818,66 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
+
+####################################
+##
+## Direct Product and Pullback
+##
+####################################
+
+##
+InstallGlobalFunction( ProjectionInFactor,
+               
+  function( object_product_list, projection_number )
+    local number_of_objects;
+    
+    if WasCreatedAsDirectProduct( object_product_list ) then
+    
+      number_of_objects := Length( Components( Genesis( object_product_list )!.DirectFactors ) );
+      
+      if projection_number < 1 or projection_number > number_of_objects then
+      
+        Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
+      
+      fi;
+    
+      return ProjectionInFactorWithGivenDirectProduct( Genesis( object_product_list )!.DirectFactors, object_product_list, projection_number );
+    
+    fi;
+    
+    if WasCreatedAsPullback( object_product_list ) then
+    
+      number_of_objects := Length( Components( Genesis( object_product_list )!.PullbackDiagram ) );
+      
+      if projection_number < 1 or projection_number > number_of_objects then
+      
+        Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
+      
+      fi;
+    
+      return ProjectionInFactorWithGivenPullback( Genesis( object_product_list )!.PullbackDiagram, object_product_list, projection_number );
+    
+    fi;
+    
+    number_of_objects := Length( Components( object_product_list ) );
+  
+    if projection_number < 0 or projection_number > number_of_objects then
+    
+      Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
+    
+    fi;
+  
+    if number_of_objects = 1 then
+        
+      return IdentityMorphism( object_product_list[1] );
+          
+    fi;
+  
+    return ProjectionInFactorOp( object_product_list, object_product_list[1], projection_number );
+  
+end );
+
+
 ####################################
 ##
 ## Direct Product
@@ -881,44 +941,6 @@ end );
 
 ##TODO: Install AddProjectionInFactor convenient method with 
 ##the direct product object as an input
-
-##
-InstallGlobalFunction( ProjectionInFactor,
-               
-  function( object_product_list, projection_number )
-    local number_of_objects;
-    
-    if WasCreatedAsDirectProduct( object_product_list ) then
-    
-      number_of_objects := Length( Components( Genesis( object_product_list )!.DirectFactors ) );
-      
-      if projection_number < 1 or projection_number > number_of_objects then
-      
-        Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
-      
-      fi;
-    
-      return ProjectionInFactorWithGivenDirectProduct( Genesis( object_product_list )!.DirectFactors, object_product_list, projection_number );
-    
-    fi;
-    
-    number_of_objects := Length( Components( object_product_list ) );
-  
-    if projection_number < 0 or projection_number > number_of_objects then
-    
-      Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
-    
-    fi;
-  
-    if number_of_objects = 1 then
-        
-      return IdentityMorphism( object_product_list[1] );
-          
-    fi;
-  
-    return ProjectionInFactorOp( object_product_list, object_product_list[1], projection_number );
-  
-end );
 
 ##
 InstallMethod( AddProjectionInFactor,
@@ -1834,7 +1856,221 @@ InstallMethod( UniversalMorphismFromInitialObject,
     
 end );
 
+####################################
+##
+## Pullback
+##
+####################################
 
+InstallGlobalFunction( FiberProduct,
+  
+  function( arg )
+  
+    #the pullback of a tuple of morphisms over the same base B can be interpreted
+    #as the direct product in the category of morphisms over B. Thus it makes sense
+    #to deal with the special case where only one morphism is considered as follows:
+    if Length( arg ) = 1 then 
+      
+      return arg[1];
+        
+    fi;
+    
+    return PullbackOp( CallFuncList( Product, arg ), arg[ 1 ] );
+    
+end );
+
+####################################
+## Add Operations
+####################################
+
+##
+InstallMethod( AddPullback,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetPullbackFunction( category, func );
+    
+    SetCanComputePullback( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( PullbackOp,
+                                           [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
+      function( morphism_product_list, method_selection_morphism )
+        local pullback;
+        
+        pullback := func( morphism_product_list );
+        
+        SetFilterObj( pullback, WasCreatedAsPullback );
+        
+        SetGenesis( pullback, rec( PullbackDiagram := morphism_product_list ) );
+        
+        Add( HomalgCategory( method_selection_morphism ), pullback );
+        
+        return pullback;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "PullbackOp", 2 ) );
+    
+end );
+
+##
+InstallMethod( AddProjectionInFactorOfPullback,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    
+    SetProjectionInFactorOfPullbackFunction( category, func );
+    
+    SetCanComputeProjectionInFactorOfPullback( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ), 
+                                             IsHomalgCategoryMorphism, 
+                                             IsInt ],
+                                             
+      function( morphism_product_list, method_selection_morphism, projection_number )
+        local projection_in_factor, pullback;
+        
+        if HasPullbackOp( morphism_product_list, method_selection_morphism ) then
+          
+          return ProjectionInFactorWithGivenPullback( morphism_product_list, PullbackOp( morphism_product_list, method_selection_morphism ), projection_number );
+          
+        fi;
+        
+        projection_in_factor := func( morphism_product_list, projection_number );
+        
+        Add( HomalgCategory( method_selection_morphism ), projection_in_factor );
+        
+        pullback := Source( projection_in_factor );
+        
+        SetGenesis( pullback, rec( PullbackDiagram := morphism_product_list ) );
+        
+        SetPullbackOp( morphism_product_list, method_selection_morphism, pullback );
+        
+        SetFilterObj( pullback, WasCreatedAsPullback );
+        
+        return projection_in_factor;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfPullbackOp", 3 ) );
+
+end );
+
+##
+InstallMethod( AddProjectionInFactorWithGivenPullback,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    
+    SetProjectionInFactorWithGivenPullbackFunction( category, func );
+    
+    SetCanComputeProjectionInFactorWithGivenPullback( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenPullback,
+                                           [ IsHomalgCategoryMorphism, 
+                                             IsHomalgCategoryObject and ObjectFilter( category ), 
+                                             IsInt ],
+                                             
+      function( morphism_product_list, pullback, projection_number )
+        local projection_in_factor;
+        
+        projection_in_factor := func( morphism_product_list, pullback, projection_number );
+        
+        Add( category, projection_in_factor );
+        
+        return projection_in_factor;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorWithGivenPullback", 3 ) );
+
+end );
+
+##
+InstallGlobalFunction( UniversalMorphismIntoPullback,
+
+  function( arg )
+    local diagram, pullback_or_diagram, source;
+    
+    pullback_or_diagram := arg[ 1 ];
+    
+    source := arg{[ 2 .. Length( arg ) ]};
+    
+    if WasCreatedAsPullback( pullback_or_diagram ) then
+    
+      diagram := Genesis( pullback_or_diagram )!.PullbackDiagram;
+    
+      return UniversalMorphismIntoPullbackOp( diagram, CallFuncList( Product, source ), diagram[1] );
+    
+    fi;
+    
+    return UniversalMorphismIntoPullbackOp( pullback_or_diagram, CallFuncList( Product, source ), pullback_or_diagram[1] );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoPullback,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismIntoPullbackFunction( category, func );
+    
+    SetCanComputeUniversalMorphismIntoPullback( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
+                                           [ IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
+      function( diagram, source, method_selection_morphism )
+        local test_object, components, universal_morphism, pullback;
+        
+        if HasPullbackOp( diagram, diagram[1] ) then
+        
+          return UniversalMorphismIntoPullbackWithGivenPullback( 
+                   diagram, 
+                   source,
+                   PullbackOp( diagram, diagram[1] )
+                 );
+          
+        fi;
+        
+        test_object := Source( source[1] );
+        
+        components := Components( source );
+        
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
+            
+            Error( "sources of morphisms must be identical in given source-diagram" );
+            
+        fi;
+        
+        ## here the user also needs the diagram
+        universal_morphism := func( diagram, source );
+        
+        Add( category, universal_morphism );
+        
+        pullback := Range( universal_morphism );
+        
+        SetGenesis( pullback, rec( PullbackDiagram := diagram ) );
+        
+        SetPullbackOp( diagram, diagram[1], pullback );
+        
+        Add( HomalgCategory( diagram[1] ), pullback );
+        
+        SetFilterObj( pullback, WasCreatedAsPullback );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoPullbackOp", 3 ) );
+    
+end );
+
+####################################
+## Attributes
+####################################
+
+####################################
+## Implied Operations
+####################################
 
 
 ####################################

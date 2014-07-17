@@ -89,7 +89,11 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "IsPreAdditiveCategory", 
                 "IsAdditiveCategory", 
                 "IsPreAbelianCategory", 
-                "IsAbelianCategory"
+                "IsAbelianCategory",
+                "CanComputePullback",
+                "CanComputeProjectionInFactorOfPullback",
+                "CanComputeProjectionInFactorWithGivenPullback",
+                "CanComputeUniversalMorphismIntoPullback"
                 # .. 
               ] );
 
