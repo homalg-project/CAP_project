@@ -374,11 +374,15 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS,
         
     od;
     
-    for i in category!.PROPAGATION_LIST_FOR_EQUAL_MORPHISMS do
+    if IsBound( category!.PROPAGATION_LIST_FOR_EQUAL_MORPHISMS ) then
         
-        AddToToDoList( ToDoListEntryForEqualAttributes( morphism_1, i, morphism_2, i ) );
+        for i in category!.PROPAGATION_LIST_FOR_EQUAL_MORPHISMS do
+            
+            AddToToDoList( ToDoListEntryForEqualAttributes( morphism_1, i, morphism_2, i ) );
+            
+        od;
         
-    od;
+    fi;
     
 end );
 
