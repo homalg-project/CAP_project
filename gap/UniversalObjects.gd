@@ -48,6 +48,15 @@ DeclareAttribute( "KernelEmb",
 DeclareOperation( "KernelEmbWithGivenKernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
+# @Description
+#! Given a kernel $K$ of a morphism $\alpha:A \rightarrow B$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
+#! returns the unique morphism $u: T \rightarrow \mathrm{Kern}( \alpha )$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
+#! denotes the kernel embedding.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments K, tau
+DeclareOperation( "KernelLift",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryMorphism ] );
+
 #! @Description
 #! Given a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
 #! returns the unique morphism $u: T \rightarrow \mathrm{Kern}( \alpha )$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
@@ -162,6 +171,16 @@ DeclareAttribute( "CokernelProj",
 #! @Arguments alpha, C
 DeclareOperation( "CokernelProjWithGivenCokernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+
+#! @Description
+#! Given a cokernel $C$ of a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: B \rightarrow T$ such that $\tau \circ \alpha = 0$, this method
+#! returns the unique morphism $u: \mathrm{Coker}(\alpha) \rightarrow T$ such that $\tau = u \circ \epsilon$, where 
+#! $\epsilon: B \rightarrow \mathrm{Coker}(\alpha)$ denotes the cokernel projection.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments C, tau
+DeclareOperation( "CokernelColift",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryMorphism ] );
 
 #! @Description
 #! Given a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: B \rightarrow T$ such that $\tau \circ \alpha = 0$, this method

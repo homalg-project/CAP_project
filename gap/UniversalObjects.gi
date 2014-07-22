@@ -52,6 +52,16 @@ InstallMethod( AddKernel,
 end );
 
 ##
+InstallMethod( KernelLift,
+               [ IsHomalgCategoryObject, IsHomalgCategoryMorphism ],
+               
+  function( kernel, test_morphism )
+  
+    return KernelLiftWithGivenKernel( Genesis( kernel )!.KernelDiagram, test_morphism, kernel );
+  
+end );
+
+##
 InstallMethod( AddKernelLift,
                [ IsHomalgCategory, IsFunction ],
                
@@ -307,6 +317,16 @@ InstallMethod( AddCokernel,
         
     end );
     
+end );
+
+##
+InstallMethod( CokernelColift,
+               [ IsHomalgCategoryObject, IsHomalgCategoryMorphism ],
+               
+  function( cokernel, test_morphism )
+  
+    return CokernelColiftWithGivenCokernel( Genesis( cokernel )!.CokernelDiagram, test_morphism, cokernel );
+  
 end );
 
 ##
