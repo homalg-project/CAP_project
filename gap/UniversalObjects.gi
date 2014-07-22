@@ -2251,9 +2251,12 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenPullback,
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
-
-
 ##
+InstallTrueMethod( CanComputeUniversalMorphismIntoPullbackWithGivenPullback, CanComputeUniversalMorphismIntoDirectProduct and
+                                                                             CanComputeKernelLift );
+
+# FIXME: WARNING: This method only applies if the pullback was created as a kernel. If the
+# user gives his own pullback method, this derived method fails.
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPullback,
                                        [ 
                                          IsHomalgCategoryMorphism, 
@@ -2272,7 +2275,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPul
     
     test_function := CallFuncList( UniversalMorphismIntoDirectProduct, Components( source ) );
     
-    return KernelLiftWithGivenKernel( Genesis( pullback )!.KernelDiagram, test_function, pullback );
+    return KernelLift( pullback, test_function );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
