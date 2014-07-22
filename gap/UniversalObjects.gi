@@ -43,7 +43,7 @@ InstallMethod( AddKernel,
         
         SetFilterObj( kernel, WasCreatedAsKernel );
         
-        SetGenesis( kernel, rec( diagram := mor ) );
+        SetGenesis( kernel, rec( KernelDiagram := mor ) );
         
         return kernel;
         
@@ -84,7 +84,7 @@ InstallMethod( AddKernelLift,
         
         SetFilterObj( kernel, WasCreatedAsKernel );
         
-        SetGenesis( kernel, rec( diagram := mor ) );
+        SetGenesis( kernel, rec( KernelDiagram := mor ) );
         
         return kernel_lift;
         
@@ -154,7 +154,7 @@ InstallMethod( AddKernelEmb,
         
         SetFilterObj( kernel, WasCreatedAsKernel );
         
-        SetGenesis( kernel, rec( diagram := mor ) );
+        SetGenesis( kernel, rec( KernelDiagram := mor ) );
         
         SetKernelEmb( kernel, kernel_emb );
         
@@ -206,7 +206,7 @@ InstallMethod( KernelEmb,
                
   function( kernel )
   
-    return KernelEmb( Genesis( kernel )!.diagram );
+    return KernelEmb( Genesis( kernel )!.KernelDiagram );
     
 end );
 
@@ -226,6 +226,20 @@ InstallMethodWithCacheFromObject( KernelLift,
     
     return MonoAsKernelLift( KernelEmb( mor ), test_morphism );
     
+end );
+
+##
+InstallTrueMethod( CanComputeKernelLiftWithGivenKernel, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
+
+InstallMethodWithCacheFromObject( KernelLiftWithGivenKernel,
+                                  [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
+                                    IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
+                                    IsHomalgCategoryObject and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
+                                           
+    function( mor, test_morphism, kernel )
+      
+      return MonoAsKernelLift( KernelEmb( kernel ), test_morphism );
+      
 end );
 
 ##
@@ -287,7 +301,7 @@ InstallMethod( AddCokernel,
         
         SetFilterObj( cokernel, WasCreatedAsCokernel );
         
-        SetGenesis( cokernel, rec( diagram := mor ) );
+        SetGenesis( cokernel, rec( CokernelDiagram := mor ) );
         
         return cokernel;
         
@@ -326,7 +340,7 @@ InstallMethod( AddCokernelColift,
         
         SetFilterObj( cokernel, WasCreatedAsCokernel );
         
-        SetGenesis( cokernel, rec( diagram := mor ) );
+        SetGenesis( cokernel, rec( CokernelDiagram := mor ) );
         
         return cokernel_colift;
         
@@ -394,7 +408,7 @@ InstallMethod( AddCokernelProj,
         
         SetCokernel( mor, cokernel );
         
-        SetGenesis( cokernel, rec( diagram := mor ) );
+        SetGenesis( cokernel, rec( CokernelDiagram := mor ) );
 
         SetCokernelProj( cokernel, cokernel_proj );
         
@@ -445,7 +459,7 @@ InstallMethod( CokernelProj,
                
   function( cokernel )
     
-    return CokernelProj( Genesis( cokernel )!.diagram );
+    return CokernelProj( Genesis( cokernel )!.CokernelDiagram );
     
 end );
 
@@ -465,6 +479,20 @@ InstallMethodWithCacheFromObject( CokernelColift,
     
     return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
     
+end );
+
+##
+InstallTrueMethod( CanComputeCokernelColiftWithGivenCokernel, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
+
+InstallMethodWithCacheFromObject( CokernelColiftWithGivenCokernel,
+                                  [ IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
+                                    IsHomalgCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
+                                    IsHomalgCategoryObject and CanComputeCokernelProj and CanComputeEpiAsCokernelColift ],
+                                           
+    function( mor, test_morphism, cokernel )
+      
+      return EpiAsCokernelColift( CokernelProj( cokernel ), test_morphism );
+      
 end );
 
 
@@ -1198,8 +1226,6 @@ InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
     
     SetDirectSumOp( summands, summands[1], direct_product );
     
-    ResetFilterObj( direct_product, HasGenesis );
-    
     SetGenesis( direct_product, rec( DirectFactors := summands, Cofactors := summands ) ); 
     
     SetFilterObj( direct_product, WasCreatedAsDirectSum );
@@ -1222,8 +1248,6 @@ InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
     summands := Genesis( coproduct )!.Cofactors;
   
     SetDirectSumOp( summands, summands[1], coproduct );
-    
-    ResetFilterObj( coproduct, HasGenesis );
     
     SetGenesis( coproduct, rec( DirectFactors := summands, Cofactors := summands ) ); 
     
@@ -1896,14 +1920,14 @@ InstallMethod( AddPullback,
     InstallMethodWithToDoForIsWellDefined( PullbackOp,
                                            [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
-      function( morphism_product_list, method_selection_morphism )
+      function( diagram, method_selection_morphism )
         local pullback;
         
-        pullback := func( morphism_product_list );
+        pullback := func( diagram );
         
         SetFilterObj( pullback, WasCreatedAsPullback );
         
-        SetGenesis( pullback, rec( PullbackDiagram := morphism_product_list ) );
+        SetGenesis( pullback, rec( PullbackDiagram := diagram ) );
         
         Add( HomalgCategory( method_selection_morphism ), pullback );
         
@@ -1924,28 +1948,28 @@ InstallMethod( AddProjectionInFactorOfPullback,
     SetCanComputeProjectionInFactorOfPullback( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ), 
-                                             IsHomalgCategoryMorphism, 
+                                           [ IsHomalgCategoryMorphism, 
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ), 
                                              IsInt ],
                                              
-      function( morphism_product_list, method_selection_morphism, projection_number )
+      function( diagram, method_selection_morphism, projection_number )
         local projection_in_factor, pullback;
         
-        if HasPullbackOp( morphism_product_list, method_selection_morphism ) then
+        if HasPullbackOp( diagram, method_selection_morphism ) then
           
-          return ProjectionInFactorWithGivenPullback( morphism_product_list, PullbackOp( morphism_product_list, method_selection_morphism ), projection_number );
+          return ProjectionInFactorWithGivenPullback( diagram, PullbackOp( diagram, method_selection_morphism ), projection_number );
           
         fi;
         
-        projection_in_factor := func( morphism_product_list, projection_number );
+        projection_in_factor := func( diagram, projection_number );
         
         Add( HomalgCategory( method_selection_morphism ), projection_in_factor );
         
         pullback := Source( projection_in_factor );
         
-        SetGenesis( pullback, rec( PullbackDiagram := morphism_product_list ) );
+        SetGenesis( pullback, rec( PullbackDiagram := diagram ) );
         
-        SetPullbackOp( morphism_product_list, method_selection_morphism, pullback );
+        SetPullbackOp( diagram, method_selection_morphism, pullback );
         
         SetFilterObj( pullback, WasCreatedAsPullback );
         
@@ -1970,10 +1994,10 @@ InstallMethod( AddProjectionInFactorWithGivenPullback,
                                              IsHomalgCategoryObject and ObjectFilter( category ), 
                                              IsInt ],
                                              
-      function( morphism_product_list, pullback, projection_number )
+      function( diagram, pullback, projection_number )
         local projection_in_factor;
         
-        projection_in_factor := func( morphism_product_list, pullback, projection_number );
+        projection_in_factor := func( diagram, pullback, projection_number );
         
         Add( category, projection_in_factor );
         
@@ -2064,13 +2088,190 @@ InstallMethod( AddUniversalMorphismIntoPullback,
     
 end );
 
-####################################
-## Attributes
-####################################
+##
+InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismIntoPullbackWithGivenPullbackFunction( category, func );
+    
+    SetCanComputeUniversalMorphismIntoPullbackWithGivenPullback( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPullback,
+                                           [ IsHomalgCategoryMorphism, 
+                                             IsHomalgCategoryMorphism, 
+                                             IsHomalgCategoryObject and ObjectFilter( category ) 
+                                           ],
+                                           
+      function( diagram, source, pullback )
+        local test_object, components, direct_product_objects, universal_morphism;
+        
+        test_object := Source( source[1] );
+        
+        components := Components( source );
+        
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
+            
+            Error( "sources of morphisms must be identical in given source-diagram" );
+            
+        fi;
+        
+        universal_morphism := func( diagram, source, pullback );
+        
+        Add( category, universal_morphism );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoPullbackWithGivenPullback", 3 ) );
+    
+end );
 
 ####################################
 ## Implied Operations
 ####################################
+
+##
+InstallTrueMethod( CanComputePullback, CanComputeDirectProduct and 
+                                       CanComputeProjectionInFactor and 
+                                       CanComputePreCompose and
+                                       CanComputeAdditionForMorphisms and
+                                       CanComputeAdditiveInverseForMorphisms and
+                                       CanComputeKernel );
+
+##
+InstallMethodWithToDoForIsWellDefined( PullbackOp,
+                                       [ IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryMorphism and
+                                         CanComputeDirectProduct and 
+                                         CanComputeProjectionInFactor and 
+                                         CanComputePreCompose and
+                                         CanComputeAdditionForMorphisms and
+                                         CanComputeAdditiveInverseForMorphisms and
+                                         CanComputeKernel ],
+                                         -9999, #FIXME
+                                         
+  function( diagram, method_selection_morphism )
+    local direct_product, number_of_morphisms, list_of_morphisms, mor1, mor2, pullback;
+    
+    direct_product := CallFuncList( DirectProduct, List( Components( diagram ) , Source ) );
+    
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( ProjectionInFactor( direct_product, i ), diagram[ i ] ) );
+    
+    mor1 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    
+    pullback := KernelObject( mor1 - mor2 );
+    
+    Genesis( pullback )!.PullbackDiagram := diagram;
+    
+    SetFilterObj( pullback, WasCreatedAsPullback );
+    
+    return pullback;
+    
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+
+##
+InstallTrueMethod( CanComputeProjectionInFactorOfPullback, CanComputeProjectionInFactorWithGivenPullback and 
+                                                           CanComputePullback );
+
+InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
+                                       [ IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryMorphism and
+                                         CanComputeProjectionInFactorWithGivenPullback and
+                                         CanComputePullback, 
+                                         IsInt ],
+                                         
+  function( diagram, method_selection_morphism, projection_number )
+  
+    return ProjectionInFactorWithGivenPullback( diagram, PullbackOp( diagram, method_selection_morphism ), projection_number );
+  
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+
+##
+InstallTrueMethod( CanComputeProjectionInFactorWithGivenPullback, CanComputeKernelEmb and
+                                                                  CanComputeProjectionInFactor and
+                                                                  CanComputePullback );
+
+# FIXME: WARNING: This method only applies if the pullback was created as a kernel. If the
+# user gives his own pullback method, this derived method fails.
+InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenPullback,
+                                       [ IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryObject and 
+                                         CanComputeKernelEmb and
+                                         CanComputeProjectionInFactor and
+                                         CanComputePullback, 
+                                         IsInt ],
+                                         
+  function( diagram, pullback, projection_number )
+    local embedding_in_direct_product, direct_product, projection;
+  
+    if not WasCreatedAsKernel( pullback ) then
+    
+      Error( "pullback had to be created as a kernel" );
+    
+    fi;
+    
+    embedding_in_direct_product := KernelEmb( pullback );
+    
+    direct_product := Range( embedding_in_direct_product );
+    
+    if not WasCreatedAsDirectProduct( direct_product ) then
+    
+      Error( "pullback had to be created as a kernel of a morphism with a direct product as source" );
+    
+    fi;
+    
+    projection := ProjectionInFactor( direct_product, projection_number );
+    
+    return PreCompose( embedding_in_direct_product, projection );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+
+
+
+##
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPullback,
+                                       [ 
+                                         IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryObject
+                                       ],
+                                       
+  function( diagram, source, pullback )
+    local test_function;
+    
+    if not WasCreatedAsKernel( pullback ) then
+      
+      Error( "pullback had to be created as a kernel" );
+      
+    fi;
+    
+    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, Components( source ) );
+    
+    return KernelLiftWithGivenKernel( Genesis( pullback )!.KernelDiagram, test_function, pullback );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
+
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismIntoPullback, CanComputeUniversalMorphismIntoPullbackWithGivenPullback and 
+                                                            CanComputePullback );
+
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
+                                           [ IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism ],
+                                             
+  function( diagram, source, method_selection_morphism )
+    
+    return UniversalMorphismIntoPullbackWithGivenPullback( diagram, source, PullbackOp( diagram, method_selection_morphism ) );
+    
+end );
+
 
 
 ####################################

@@ -626,6 +626,17 @@ B := QVectorSpace( 2 );
 
 A := QVectorSpace( 1 );
 
+C := QVectorSpace( 3 );
+
+D := QVectorSpace( 1 );
+
+f := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ] ], A );
+
+g := VectorSpaceMorphism( C, [ [ 1 ], [ -1 ], [ 1 ] ], A );
+
+t1 := VectorSpaceMorphism( D, [ [ 1, 1 ] ], B );
+
+t2 := VectorSpaceMorphism( D, [ [ 1, 0, 1 ] ], C );
 
 # KernelLift Test:
 tau := VectorSpaceMorphism( T, [ [ 1, 1 ], [ 1, 1 ] ], B );
