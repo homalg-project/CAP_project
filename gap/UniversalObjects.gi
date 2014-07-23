@@ -61,7 +61,7 @@ InstallMethod( AddKernel,
         
         SetFilterObj( kernel, WasCreatedAsKernel );
         
-        SetGenesis( kernel, rec( KernelDiagram := mor ) );
+        AddToGenesis( kernel, "KernelDiagram", mor );
         
         return kernel;
         
@@ -112,7 +112,7 @@ InstallMethod( AddKernelLift,
         
         SetFilterObj( kernel, WasCreatedAsKernel );
         
-        SetGenesis( kernel, rec( KernelDiagram := mor ) );
+        AddToGenesis( kernel, "KernelDiagram", mor );
         
         return kernel_lift;
         
@@ -182,7 +182,7 @@ InstallMethod( AddKernelEmb,
         
         SetFilterObj( kernel, WasCreatedAsKernel );
         
-        SetGenesis( kernel, rec( KernelDiagram := mor ) );
+        AddToGenesis( kernel, "KernelDiagram", mor );
         
         SetKernelEmb( kernel, kernel_emb );
         
@@ -329,7 +329,7 @@ InstallMethod( AddCokernel,
         
         SetFilterObj( cokernel, WasCreatedAsCokernel );
         
-        SetGenesis( cokernel, rec( CokernelDiagram := mor ) );
+        AddToGenesis( cokernel,"CokernelDiagram", mor );
         
         return cokernel;
         
@@ -378,7 +378,7 @@ InstallMethod( AddCokernelColift,
         
         SetFilterObj( cokernel, WasCreatedAsCokernel );
         
-        SetGenesis( cokernel, rec( CokernelDiagram := mor ) );
+        AddToGenesis( cokernel, "CokernelDiagram", mor );
         
         return cokernel_colift;
         
@@ -446,7 +446,7 @@ InstallMethod( AddCokernelProj,
         
         SetCokernel( mor, cokernel );
         
-        SetGenesis( cokernel, rec( CokernelDiagram := mor ) );
+        AddToGenesis( cokernel, "CokernelDiagram", mor );
 
         SetCokernelProj( cokernel, cokernel_proj );
         
@@ -658,7 +658,7 @@ InstallMethod( AddCoproduct,
         
         Add( HomalgCategory( method_selection_object ), coproduct );
         
-        SetGenesis( coproduct, rec( Cofactors := object_product_list ) );
+        AddToGenesis( coproduct, "Cofactors", object_product_list );
         
         SetFilterObj( coproduct, WasCreatedAsCoproduct );
         
@@ -705,7 +705,7 @@ InstallMethod( AddInjectionOfCofactor,
         
         coproduct := Range( injection_of_cofactor );
         
-        SetGenesis( coproduct, rec( Cofactors := object_product_list ) );
+        AddToGenesis( coproduct, "Cofactors", object_product_list );
         
         SetCoproductOp( object_product_list, method_selection_object, coproduct );
         
@@ -805,7 +805,7 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
         
         coproduct := Source( universal_morphism );
         
-        SetGenesis( coproduct, rec( Cofactors := coproduct_objects ) );
+        AddToGenesis( coproduct, "Cofactors", coproduct_objects );
         
         SetCoproductOp( coproduct_objects, coproduct_objects[1], coproduct );
         
@@ -1015,7 +1015,7 @@ InstallMethod( AddDirectProduct,
         
         SetFilterObj( direct_product, WasCreatedAsDirectProduct );
         
-        SetGenesis( direct_product, rec( DirectFactors := object_product_list ) );
+        AddToGenesis( direct_product, "DirectFactors", object_product_list );
         
         Add( HomalgCategory( method_selection_object ), direct_product );
         
@@ -1065,7 +1065,7 @@ InstallMethod( AddProjectionInFactor,
         
         direct_product := Source( projection_in_factor );
         
-        SetGenesis( direct_product, rec( DirectFactors := object_product_list ) );
+        AddToGenesis( direct_product, "DirectFactors", object_product_list );
         
         SetDirectProductOp( object_product_list, method_selection_object, direct_product );
         
@@ -1165,7 +1165,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         direct_product := Range( universal_morphism );
         
-        SetGenesis( direct_product, rec( DirectFactors := direct_product_objects ) );
+        AddToGenesis( direct_product, "DirectFactors", direct_product_objects );
         
         SetDirectProductOp( direct_product_objects, direct_product_objects[1], direct_product );
         
@@ -1284,7 +1284,9 @@ InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
     
     SetDirectSumOp( summands, summands[1], direct_product );
     
-    SetGenesis( direct_product, rec( DirectFactors := summands, Cofactors := summands ) ); 
+    AddToGenesis( direct_product, "DirectFactors", summands );
+    
+    AddToGenesis( direct_product, "Cofactors", summands ); 
     
     SetFilterObj( direct_product, WasCreatedAsDirectSum );
     
@@ -1307,7 +1309,9 @@ InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
   
     SetDirectSumOp( summands, summands[1], coproduct );
     
-    SetGenesis( coproduct, rec( DirectFactors := summands, Cofactors := summands ) ); 
+    AddToGenesis( coproduct, "DirectFactors", summands );
+    
+    AddToGenesis( coproduct, "Cofactors", summands ); 
     
     SetFilterObj( coproduct, WasCreatedAsDirectSum );
     
@@ -1365,7 +1369,9 @@ InstallMethod( AddDirectSum,
         
         Add( HomalgCategory( method_selection_object ), direct_sum );
         
-        SetGenesis( direct_sum, rec( DirectFactors := object_product_list, Cofactors := object_product_list ) );
+        AddToGenesis( direct_sum, "DirectFactors", object_product_list );
+        
+        AddToGenesis( direct_sum, "Cofactors", object_product_list );
         
         SetFilterObj( direct_sum, WasCreatedAsDirectSum );
         
@@ -1985,7 +1991,7 @@ InstallMethod( AddPullback,
         
         SetFilterObj( pullback, WasCreatedAsPullback );
         
-        SetGenesis( pullback, rec( PullbackDiagram := diagram ) );
+        AddToGenesis( pullback, "PullbackDiagram", diagram );
         
         Add( HomalgCategory( method_selection_morphism ), pullback );
         
@@ -2025,7 +2031,7 @@ InstallMethod( AddProjectionInFactorOfPullback,
         
         pullback := Source( projection_in_factor );
         
-        SetGenesis( pullback, rec( PullbackDiagram := diagram ) );
+        AddToGenesis( pullback, "PullbackDiagram", diagram );
         
         SetPullbackOp( diagram, method_selection_morphism, pullback );
         
@@ -2132,7 +2138,7 @@ InstallMethod( AddUniversalMorphismIntoPullback,
         
         pullback := Range( universal_morphism );
         
-        SetGenesis( pullback, rec( PullbackDiagram := diagram ) );
+        AddToGenesis( pullback, "PullbackDiagram", diagram );
         
         SetPullbackOp( diagram, diagram[1], pullback );
         
@@ -2380,7 +2386,7 @@ InstallMethod( AddPushout,
         
         SetFilterObj( pushout, WasCreatedAsPushout );
         
-        SetGenesis( pushout, rec( PushoutDiagram := diagram ) );
+        AddToGenesis( pushout, "PushoutDiagram", diagram );
         
         Add( category, pushout );
         
@@ -2420,7 +2426,7 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
         
         pushout := Range( injection_of_cofactor );
         
-        SetGenesis( pushout, rec( PushoutDiagram := diagram ) );
+        AddToGenesis( pushout, "PushoutDiagram", diagram );
         
         SetPushoutOp( diagram, method_selection_morphism, pushout );
         
@@ -2527,7 +2533,7 @@ InstallMethod( AddUniversalMorphismFromPushout,
         
         pushout := Source( universal_morphism );
         
-        SetGenesis( pushout, rec( PushoutDiagram := diagram ) );
+        AddToGenesis( pushout, "PushoutDiagram",diagram );
         
         SetPushoutOp( diagram, diagram[1], pushout );
         
@@ -2757,7 +2763,7 @@ InstallMethod( AddImage,
         
         SetFilterObj( image, WasCreatedAsImage );
         
-        SetGenesis( image, rec( ImageDiagram := mor ) );
+        AddToGenesis( image, "ImageDiagram", mor );
         
         return image;
         
@@ -2796,7 +2802,7 @@ InstallMethod( AddImageEmbedding,
         
         image := Source( image_embedding );
         
-        SetGenesis( image, rec( ImageDiagram := mor ) );
+        AddToGenesis( image, "ImageDiagram", mor );
         
         SetFilterObj( image, WasCreatedAsImage );
         
@@ -2850,7 +2856,11 @@ InstallMethod( ImageObject,
     local image;
     
     image := Source( ImageEmbedding( mor ) );
-    #Genesis
+    
+    AddToGenesis( image, "ImageDiagram", mor );
+    
+    SetFilterObj( image, WasCreatedAsImage );
+    
     return image;
     
 end );
@@ -2863,6 +2873,7 @@ InstallMethod( ImageEmbedding,
                -9999, #FIXME
                                     
   function( mor )
+    local image_embedding, image;
     
     if HasImageObject( mor ) then
       
@@ -2870,7 +2881,17 @@ InstallMethod( ImageEmbedding,
       
     fi;
     
-    return KernelEmb( CokernelProj( mor ) );
+    image_embedding := KernelEmb( CokernelProj( mor ) );
+    
+    image := Source( image_embedding );
+        
+    AddToGenesis( image, "ImageDiagram", mor );
+        
+    SetFilterObj( image, WasCreatedAsImage );
+        
+    SetImageObject( mor, image );
+    
+    return image_embedding;
     
 end );
 
