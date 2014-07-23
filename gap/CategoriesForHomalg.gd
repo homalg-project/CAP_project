@@ -99,7 +99,10 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeInjectionOfCofactorOfPushout",
                 "CanComputeInjectionOfCofactorWithGivenPushout",
                 "CanComputeUniversalMorphismFromPushout",
-                "CanComputeUniversalMorphismFromPushoutWithGivenPushout"
+                "CanComputeUniversalMorphismFromPushoutWithGivenPushout",
+                "CanComputeImage",
+                "CanComputeImageEmbedding",
+                "CanComputeImageEmbeddingWithGivenImage"
                 # .. 
               ] );
 

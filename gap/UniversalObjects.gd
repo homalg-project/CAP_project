@@ -1023,6 +1023,83 @@ DeclareFilter( "WasCreatedAsPushout" );
 
 ####################################
 ##
+#! @Section Image
+##
+####################################
+
+## Main Operations and Attributes
+
+## FIXME: Image is a function
+DeclareAttribute( "ImageObject",
+                  IsHomalgCategoryMorphism );
+
+#convenience function
+DeclareAttribute( "ImageEmbedding",
+                  IsHomalgCategoryObject );
+
+DeclareAttribute( "ImageEmbedding",
+                  IsHomalgCategoryMorphism );
+
+DeclareOperation( "ImageEmbeddingWithGivenImage",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+## Function Attributes
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These attributes store the implementations of the basic algorithms for an image. 
+DeclareAttribute( "ImageFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "ImageEmbeddingFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "ImageEmbeddingWithGivenImageFunction",
+                  IsHomalgCategory );
+#! @EndGroup
+#! @EndAutoDoc
+
+## Add Operations
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+
+#! @Arguments C, f
+DeclareOperation( "AddImage",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddImageEmbedding",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddImageEmbeddingWithGivenImage",
+                  [ IsHomalgCategory, IsFunction ] );
+#! @EndGroup
+#! @EndAutoDoc
+
+
+## WasCreatedAs Filter
+
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for an image. 
+#! Note that we chose <C>WasCreatedAsImage</C> to be a filter rather than a property,
+#! because by default, a filter is set to false.
+DeclareFilter( "WasCreatedAsImage" );
+#! @Chapter Universal Objects
+
+
+
+####################################
+##
 ## Scheme for Universal Object
 ##
 ####################################

@@ -586,6 +586,15 @@ AddUniversalMorphismFromInitialObjectWithGivenInitialObject( vecspaces,
 
 end );
 
+# ##
+# AddImage( vecspaces,
+# 
+#   function( morphism )
+#   
+#     return QVectorSpace( RowRankOfMatrix( morphism!.morphism ) );
+#   
+# end );
+
 #######################################
 ##
 ## View and Display

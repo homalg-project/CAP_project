@@ -2710,6 +2710,153 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
     
 end );
 
+####################################
+##
+## Image
+##
+####################################
+
+
+##
+InstallMethod( AddImage,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetImageFunction( category, func );
+    
+    SetCanComputeImage( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( ImageObject,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
+      function( mor )
+        local image;
+        
+        image := func( mor );
+        
+        Add( category, image );
+        
+        SetFilterObj( image, WasCreatedAsImage );
+        
+        SetGenesis( image, rec( ImageDiagram := mor ) );
+        
+        return image;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddImageEmbedding,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetImageEmbeddingFunction( category, func );
+    
+    SetCanComputeImageEmbedding( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( ImageEmbedding,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
+      function( mor )
+        local image_embedding, image;
+        
+        if HasImageObject( mor ) then
+        
+          return ImageEmbeddingWithGivenImage( mor, ImageObject( mor ) );
+        
+        fi;
+        
+        image_embedding := func( mor );
+        
+        Add( HomalgCategory( mor ), image_embedding );
+        
+        ##Implication (by definition of an image)
+        SetIsMonomorphism( image_embedding, true );
+        
+        image := Source( image_embedding );
+        
+        SetGenesis( image, rec( ImageDiagram := mor ) );
+        
+        SetFilterObj( image, WasCreatedAsImage );
+        
+        SetImageObject( mor, image );
+        
+        return image_embedding;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddImageEmbeddingWithGivenImage,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetImageEmbeddingWithGivenImageFunction( category, func );
+    
+    SetCanComputeImageEmbeddingWithGivenImage( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( ImageEmbeddingWithGivenImage,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
+      function( mor, image )
+        local image_embedding;
+        
+        image_embedding := func( mor, image );
+        
+        Add( category, image_embedding );
+        
+        return image_embedding;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ImageEmbeddingWithGivenImage", 2 ) );
+    
+end );
+
+####################################
+## Implied Operations
+####################################
+
+##
+InstallTrueMethod( CanComputeImage, CanComputeImageEmbedding );
+
+InstallMethod( ImageObject,
+               [ IsHomalgCategoryMorphism and CanComputeImageEmbedding ],
+               -9999, #FIXME
+                                    
+  function( mor )
+    local image;
+    
+    image := Source( ImageEmbedding( mor ) );
+    #Genesis
+    return image;
+    
+end );
+
+##
+InstallTrueMethod( CanComputeImageEmbedding, CanComputeKernelEmb and CanComputeCokernelProj );
+
+InstallMethod( ImageEmbedding,
+               [ IsHomalgCategoryMorphism and CanComputeImageEmbedding ],
+               -9999, #FIXME
+                                    
+  function( mor )
+    
+    if HasImageObject( mor ) then
+      
+      return ImageEmbeddingWithGivenImage( mor, ImageObject( mor ) );
+      
+    fi;
+    
+    return KernelEmb( CokernelProj( mor ) );
+    
+end );
+
+
 
 ####################################
 ##
