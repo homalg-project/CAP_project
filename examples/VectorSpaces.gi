@@ -704,3 +704,17 @@ AddMorphismFunction( Change_Components,
     return Product( morphism_pair[ 2 ], morphism_pair[ 1 ] );
     
 end );
+
+####################################
+##
+## Generalized morphisms
+##
+####################################
+
+## use tau as associated morphism
+
+tau_source_aid := VectorSpaceMorphism( Source( tau ), [ [ 1, 1, 0 ], [ 0, 1, 1 ] ], QVectorSpace( 3 ) );
+
+tau_range_aid := VectorSpaceMorphism( QVectorSpace( 3 ), [ [ 1 , 0 ], [ 1, 1 ], [ 0, 1 ] ], Range( tau ) );
+
+GeneralizedMorphism( tau_source_aid, tau, tau_range_aid );

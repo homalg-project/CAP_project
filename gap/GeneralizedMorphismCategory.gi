@@ -23,22 +23,6 @@ BindGlobal( "TheTypeOfGeneralizedMorphism",
         NewType( TheFamilyOfHomalgCategoryMorphisms,
                 IsGeneralizedMorphismRep ) );
 
-DeclareRepresentation( "IsGeneralizedMorphismWithSourceAidRep",
-                       IsHomalgCategoryMorphismRep and IsGeneralizedMorphismRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismWithSourceAid",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
-                IsGeneralizedMorphismWithSourceAidRep ) );
-
-DeclareRepresentation( "IsGeneralizedMorphismWithRangeAidRep",
-                       IsHomalgCategoryMorphismRep and IsGeneralizedMorphismRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismWithRangeAid",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
-                IsGeneralizedMorphismWithRangeAidRep ) );
-
 ####################################
 ##
 ## Constructors
@@ -100,7 +84,7 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphism,
 ##               [ IsHomalgCategoryMorphism, IsSubobject, IsFactorobject ], we wont check this for performance reasons.
                                        [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
                                        
-  function( associated_morphism, source_aid, range_aid )
+  function( source_aid, associated_morphism, range_aid )
     local generalized_morphism, generalized_category;
     
     if not IsIdenticalObj( Source( source_aid ), Source( associated_morphism ) ) then
@@ -131,11 +115,11 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphism,
 end : InstallMethod := InstallMethodWithToDoForIsWellDefined );
 
 ##
-InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismWithSourceAid,
-                                       [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism, IsHomalgCategoryMorphism ],
+InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
+                                  [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism, IsHomalgCategoryMorphism ],
                
-  function( associated_morphism, source_aid )
-    local generalized_morphism, generalized_category;
+  function( source_aid, associated_morphism )
+    local generalized_morphism;
     
     if not IsIdenticalObj( Source( source_aid ), Source( associated_morphism ) ) then
         
@@ -143,26 +127,17 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismWithSourceAid,
         
     fi;
     
-    generalized_morphism := rec( );
+    generalized_morphism := GeneralizedMorphism( source_aid, associated_morphism, IdentityMorphism( Range( associated_morphism ) ) );
     
-    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphismWithSourceAid,
-                             Source, GeneralizedMorphismObject( Range( source_aid ) ),
-                             Range, GeneralizedMorphismObject( Range( associated_morphism ) ),
-                             SourceAid, source_aid,
-                             RangeAid, IdentityMorphism( Range( associated_morphism ) ),
-                             AssociatedMorphism, associated_morphism );
-    
-    generalized_category := GeneralizedMorphismCategory( HomalgCategory( associated_morphism ) );
-    
-    Add( generalized_category, generalized_morphism );
+    SetHasHonestRange( generalized_morphism, true );
     
     return generalized_morphism;
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismWithRangeAid,
-                                       [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism, IsHomalgCategoryMorphism ],
+InstallMethodWithCacheFromObject( GeneralizedMorphismWithRangeAid,
+                                  [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism, IsHomalgCategoryMorphism ],
                
   function( associated_morphism, range_aid )
     local generalized_morphism, generalized_category;
@@ -173,46 +148,166 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismWithRangeAid,
         
     fi;
     
-    generalized_morphism := rec( );
+    generalized_morphism := GeneralizedMorphism( IdentityMorphism( Source( associated_morphism ) ), associated_morphism, range_aid );
     
-    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphismWithRangeAid,
-                             Source, GeneralizedMorphismObject( Source( associated_morphism ) ),
-                             Range, GeneralizedMorphismObject( Source( range_aid ) ),
-                             SourceAid, IdentityMorphism( Source( associated_morphism ) ),
-                             RangeAid, range_aid,
-                             AssociatedMorphism, associated_morphism );
-    
-    generalized_category := GeneralizedMorphismCategory( HomalgCategory( associated_morphism ) );
-    
-    Add( generalized_category, generalized_morphism );
+    SetHasHonestSource( generalized_morphism, true );
     
     return generalized_morphism;
     
-end : InstallMethod := InstallMethodWithToDoForIsWellDefined );
+end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( AsGeneralizedMorphism,
-                                       [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism ],
+InstallMethod( AsGeneralizedMorphism,
+               [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism ],
                
   function( associated_morphism )
-    local generalized_morphism, generalized_category;
+    local generalized_morphism;
     
-    generalized_morphism := rec( );
-    
-    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphismWithRangeAid,
-                             Source, GeneralizedMorphismObject( Source( associated_morphism ) ),
-                             Range, GeneralizedMorphismObject( Range( associated_morphism ) ),
-                             SourceAid, IdentityMorphism( Source( associated_morphism ) ),
-                             RangeAid, IdentityMorphism( Range( associated_morphism ) ),
-                             AssociatedMorphism, associated_morphism );
-    
-    generalized_category := GeneralizedMorphismCategory( HomalgCategory( associated_morphism ) );
-    
-    Add( generalized_category, generalized_morphism );
+    generalized_morphism := GeneralizedMorphism( IdentityMorphism( Source( associated_morphism ) ), associated_morphism, IdentityMorphism( Range( associated_morphism ) ) );
     
     SetIsHonest( generalized_morphism, true );
     
     return generalized_morphism;
     
 end );
+
+##
+InstallMethodWithToDoForIsWellDefined( PreCompose,
+                                       [ IsGeneralizedMorphism and HasHonestRange, IsGeneralizedMorphism and SetHasHonestSource ],
+                                       
+  function( mor1, mor2 )
+    local category;
+    
+    category := HomalgCategory( mor1 );
+    
+    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+        
+        Error( "morphisms are not composable" );
+        
+    fi;
+    
+    return GeneralizedMorphism( SourceAid( mor1 ), PreCompose( AssociatedMorphism( mor1 ), AssociatedMorphism( mor2 ) ), RangeAid( mor2 ) );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );
+
+##
+InstallMethodWithToDoForIsWellDefined( PreCompose,
+                                       [ IsGeneralizedMorphism and HasHonestRange, IsGeneralizedMorphism and HasHonestRange ],
+                                       
+  function( mor1, mor2 )
+    local category, pullback, new_source_aid, new_associated_morphism;
+    
+    category := HomalgCategory( mor1 );
+    
+    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) or not CanComputePullback( UnderlyingHonestCategory( category ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+        
+        Error( "morphisms are not composable" );
+        
+    fi;
+    
+    pullback := FiberProduct( AssociatedMorphism( mor1 ), SourceAid( mor2 ) );
+    
+    new_source_aid := PreCompose( ProjectionInFactor( pullback, 1 ), SourceAid( mor1 ) );
+    
+    new_associated_morphism := PreCompose( ProjectionInFactor( pullback, 2 ), AssociatedMorphism( mor2 ) );
+    
+    return GeneralizedMorphismWithSourceAid( new_source_aid, new_associated_morphism );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );
+
+##
+InstallMethodWithToDoForIsWellDefined( PreCompose,
+                                       [ IsGeneralizedMorphism and HasHonestSource, IsGeneralizedMorphism and HasHonestSource ],
+                                       
+  function( mor1, mor2 )
+    local category, pushout, new_associated_morphism, new_range_aid;
+    
+    category := HomalgCategory( mor1 );
+    
+    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) or not CanComputePushout( UnderlyingHonestCategory( category ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+        
+        Error( "morphisms are not composable" );
+        
+    fi;
+    
+    pushout := Pushout( RangeAid( mor1 ), AssociatedMorphism( mor2 ) );
+    
+    new_associated_morphism := PreCompose( AssociatedMorphism( mor1 ), InjectionOfCofactor( pushout, 1 ) );
+    
+    new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactor( pushout, 2 ) );
+    
+    return GeneralizedMorphismWithRangeAid( new_associated_morphism, new_range_aid );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );
+
+##
+InstallMethodWithToDoForIsWellDefined( PreCompose,
+                                       [ IsGeneralizedMorphism and IsHonest, IsGeneralizedMorphism and IsHonest ],
+                                       
+  function( mor1, mor2 )
+    local category;
+    
+    category := HomalgCategory( mor1 );
+    
+    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+        
+        Error( "morphisms are not composable" );
+        
+    fi;
+    
+    return AsGeneralizedMorphism( PreCompose( AssociatedMorphism( mor1 ), AssociatedMorphism( mor2 ) ) );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );
+
+
+    
+
 

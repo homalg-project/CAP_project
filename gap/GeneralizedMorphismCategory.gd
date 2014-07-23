@@ -62,7 +62,19 @@ DeclareAttribute( "RangeAid",
 DeclareAttribute( "AssociatedMorphism",
                   IsGeneralizedMorphism );
 
-DeclareAttribute( "IsHonest",
+DeclareProperty( "IsHonest",
                   IsGeneralizedMorphism );
+
+DeclareProperty( "HasHonestSource",
+                  IsGeneralizedMorphism );
+
+DeclareProperty( "HasHonestRange",
+                  IsGeneralizedMorphism );
+
+InstallTrueMethod( IsHonest, HasHonestRange and HasHonestSource );
+
+InstallTrueMethod( HasHonestRange, IsHonest );
+
+InstallTrueMethod( HasHonestSource, IsHonest );
 
 
