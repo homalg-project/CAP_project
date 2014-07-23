@@ -15,6 +15,10 @@
 #! Every universal object stores if it was created as such and therefore can be used to access universal property morphisms (if computable).
 #############################################################################
 
+## needed for multiple genesis
+DeclareOperation( "AddToGenesis",
+                  [ IsHomalgCategoryCell, IsObject, IsObject ] );
+
 ####################################
 ##
 #! @Section Kernel

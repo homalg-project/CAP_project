@@ -11,6 +11,24 @@
 
 #FIXME: Add CanComputePreCompose to assumptions in implied methods
 
+##
+InstallMethod( AddToGenesis,
+               [ IsHomalgCategoryCell, IsString, IsObject ], 
+
+  function( cell, genesis_entry_name, genesis_entry )
+    
+    if HasGenesis( cell ) then
+      
+      Genesis( cell )!.(genesis_entry_name) := genesis_entry;
+      
+   else
+     
+     SetGenesis( cell, rec( (genesis_entry_name) := genesis_entry ) );
+     
+   fi;
+   
+end );
+
 ####################################
 ##
 ## Kernel
