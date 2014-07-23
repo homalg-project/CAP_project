@@ -268,7 +268,7 @@ AddCokernelProjWithGivenCokernel( vecspaces,
   function( morphism, cokernel )
     local cokernel_proj;
 
-    cokernel_proj := SyzygiesOfRows( morphism!.morphism );
+    cokernel_proj := SyzygiesOfColumns( morphism!.morphism );
 
     return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel );
 
@@ -368,7 +368,7 @@ AddUniversalMorphismFromCoproduct( vecspaces,
   
     od;
   
-    return VectorSpaceMorphism( coproduct, universal_morphism, Source( sink[1] ) );
+    return VectorSpaceMorphism( coproduct, universal_morphism, Range( sink[1] ) );
   
 end );
 
@@ -388,7 +388,7 @@ AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
   
     od;
   
-    return VectorSpaceMorphism( coproduct, universal_morphism, Source( sink[1] ) );
+    return VectorSpaceMorphism( coproduct, universal_morphism, Range( sink[1] ) );
   
 end );
 

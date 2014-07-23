@@ -831,8 +831,6 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 
 ## Main Operations and Attributes
 
-## Main Operations and Attributes
-
 # FIXME:
 # Declared as an operation in MatricesForHomalg!
 # DeclareGlobalFunction( "Pullback" );
@@ -923,6 +921,103 @@ DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
 #! Note that we chose <C>WasCreatedAsPullback</C> to be a filter rather than a property,
 #! because by default, a filter is set to false.
 DeclareFilter( "WasCreatedAsPullback" );
+
+#! @Chapter Universal Objects
+
+####################################
+##
+#! @Section Pushout
+##
+####################################
+
+## Main Operations and Attributes
+
+DeclareGlobalFunction( "Pushout" );
+
+DeclareOperationWithCache( "PushoutOp",
+                           [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+## DeclareGlobalFunction( "InjectionOfCofactor" ); to be adjusted
+
+DeclareOperation( "InjectionOfCofactorOp",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsInt ] );
+
+DeclareOperation( "InjectionOfCofactorWithGivenPushout",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject, IsInt ] );
+
+DeclareGlobalFunction( "UniversalMorphismFromPushout" );
+
+DeclareOperation( "UniversalMorphismFromPushoutOp",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+## Function Attributes
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These attributes store the implementations of the basic algorithms for a pushout. 
+DeclareAttribute( "PushoutFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "InjectionOfCofactorOfPushoutFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "InjectionOfCofactorWithGivenPushoutFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismFromPushoutFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismFromPushoutWithGivenPushoutFunction",
+                  IsHomalgCategory );
+#! @EndGroup
+#! @EndAutoDoc
+
+## Add Operations
+#! @AutoDoc
+#! @BeginGroup
+
+#! @Description
+#! These operations add a given method $f$ to a category $C$, i.e., the
+#! method AddX installs a method $X$ for the category $C$.
+
+#! @Arguments C, f
+DeclareOperation( "AddPushout",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddInjectionOfCofactorOfPushout",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddInjectionOfCofactorWithGivenPushout",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddUniversalMorphismFromPushout",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Arguments C, f
+DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
+                  [ IsHomalgCategory, IsFunction ] );
+#! @EndGroup
+#! @EndAutoDoc
+
+
+## WasCreatedAs Filter
+
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+#! @Description 
+#! When created, this filter is set to true for a pushout. 
+#! Note that we chose <C>WasCreatedAsPushout</C> to be a filter rather than a property,
+#! because by default, a filter is set to false.
+DeclareFilter( "WasCreatedAsPushout" );
 
 #! @Chapter Universal Objects
 

@@ -544,6 +544,64 @@ end );
 
 ####################################
 ##
+## Coproduct and Pushout
+##
+####################################
+
+##
+InstallGlobalFunction( InjectionOfCofactor,
+               
+  function( object_product_list, injection_number )
+    local number_of_objects;
+    
+    if WasCreatedAsCoproduct( object_product_list ) then
+    
+      number_of_objects := Length( Components( Genesis( object_product_list )!.Cofactors ) );
+      
+      if injection_number < 1 or injection_number > number_of_objects then
+      
+        Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
+      
+      fi;
+    
+      return InjectionOfCofactorWithGivenCoproduct( Genesis( object_product_list )!.Cofactors, object_product_list, injection_number );
+    
+    fi;
+    
+    if WasCreatedAsPushout( object_product_list ) then
+    
+      number_of_objects := Length( Components( Genesis( object_product_list )!.PushoutDiagram ) );
+      
+      if injection_number < 1 or injection_number > number_of_objects then
+      
+        Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
+      
+      fi;
+    
+      return InjectionOfCofactorWithGivenPushout( Genesis( object_product_list )!.PushoutDiagram, object_product_list, injection_number );
+    
+    fi;
+    
+    number_of_objects := Length( Components( object_product_list ) );
+  
+    if injection_number < 0 or injection_number > number_of_objects then
+    
+      Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
+    
+    fi;
+  
+    if number_of_objects = 1 then
+        
+      return IdentityMorphism( object_product_list[1] );
+          
+    fi;
+  
+    return InjectionOfCofactorOp( object_product_list, object_product_list[1], injection_number );
+  
+end );
+
+####################################
+##
 ## Coproduct
 ##
 ####################################
@@ -590,44 +648,6 @@ InstallMethod( AddCoproduct,
         
     end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CoproductOp", 2 ) );
     
-end );
-
-##
-InstallGlobalFunction( InjectionOfCofactor,
-               
-  function( object_product_list, injection_number )
-    local number_of_objects;
-    
-    if WasCreatedAsCoproduct( object_product_list ) then
-    
-      number_of_objects := Length( Components( Genesis( object_product_list )!.Cofactors ) );
-      
-      if injection_number < 1 or injection_number > number_of_objects then
-      
-        Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
-      
-      fi;
-    
-      return InjectionOfCofactorWithGivenCoproduct( Genesis( object_product_list )!.Cofactors, object_product_list, injection_number );
-    
-    fi;
-    
-    number_of_objects := Length( Components( object_product_list ) );
-  
-    if injection_number < 0 or injection_number > number_of_objects then
-    
-      Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
-    
-    fi;
-  
-    if number_of_objects = 1 then
-        
-      return IdentityMorphism( object_product_list[1] );
-          
-    fi;
-  
-    return InjectionOfCofactorOp( object_product_list, object_product_list[1], injection_number );
-  
 end );
 
 ##
@@ -2125,7 +2145,7 @@ InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
                                            ],
                                            
       function( diagram, source, pullback )
-        local test_object, components, direct_product_objects, universal_morphism;
+        local test_object, components, universal_morphism;
         
         test_object := Source( source[1] );
         
@@ -2295,6 +2315,400 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
     
 end );
 
+####################################
+##
+## Pushout
+##
+####################################
+
+InstallGlobalFunction( Pushout,
+  
+  function( arg )
+  
+    #the pushout of a tuple of morphisms with same source B can be interpreted
+    #as the direct product in the category of morphisms with source B. Thus it makes sense
+    #to deal with the special case where only one morphism is considered as follows:
+    if Length( arg ) = 1 then 
+      
+      return arg[1];
+        
+    fi;
+    
+    return PushoutOp( CallFuncList( Product, arg ), arg[ 1 ] );
+    
+end );
+
+####################################
+## Add Operations
+####################################
+
+##
+InstallMethod( AddPushout,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetPushoutFunction( category, func );
+    
+    SetCanComputePushout( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( PushoutOp,
+                                           [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
+      function( diagram, method_selection_morphism )
+        local pushout;
+        
+        pushout := func( diagram );
+        
+        SetFilterObj( pushout, WasCreatedAsPushout );
+        
+        SetGenesis( pushout, rec( PushoutDiagram := diagram ) );
+        
+        Add( category, pushout );
+        
+        return pushout;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "PushoutOp", 2 ) );
+    
+end );
+
+##
+InstallMethod( AddInjectionOfCofactorOfPushout,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    
+    SetInjectionOfCofactorOfPushoutFunction( category, func );
+    
+    SetCanComputeInjectionOfCofactorOfPushout( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
+                                           [ IsHomalgCategoryMorphism, 
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ), 
+                                             IsInt ],
+                                             
+      function( diagram, method_selection_morphism, injection_number )
+        local injection_of_cofactor, pushout;
+        
+        if HasPushoutOp( diagram, method_selection_morphism ) then
+          
+          return InjectionOfCofactorWithGivenPushout( diagram, PushoutOp( diagram, method_selection_morphism ), injection_number );
+          
+        fi;
+        
+        injection_of_cofactor := func( diagram, injection_number );
+        
+        Add( HomalgCategory( method_selection_morphism ), injection_of_cofactor );
+        
+        pushout := Range( injection_of_cofactor );
+        
+        SetGenesis( pushout, rec( PushoutDiagram := diagram ) );
+        
+        SetPushoutOp( diagram, method_selection_morphism, pushout );
+        
+        SetFilterObj( pushout, WasCreatedAsPushout );
+        
+        return injection_of_cofactor;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOfPushoutOp", 3 ) );
+
+end );
+
+##
+InstallMethod( AddInjectionOfCofactorWithGivenPushout,
+               [ IsHomalgCategory, IsFunction ],
+
+  function( category, func )
+    
+    SetInjectionOfCofactorWithGivenPushoutFunction( category, func );
+    
+    SetCanComputeInjectionOfCofactorWithGivenPushout( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorWithGivenPushout,
+                                           [ IsHomalgCategoryMorphism, 
+                                             IsHomalgCategoryObject and ObjectFilter( category ), 
+                                             IsInt ],
+                                             
+      function( diagram, pushout, injection_number )
+        local injection_of_cofactor;
+        
+        injection_of_cofactor := func( diagram, pushout, injection_number );
+        
+        Add( category, injection_of_cofactor );
+        
+        return injection_of_cofactor;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorWithGivenPushout", 3 ) );
+
+end );
+
+##
+InstallGlobalFunction( UniversalMorphismFromPushout,
+
+  function( arg )
+    local diagram, pushout_or_diagram, sink;
+    
+    pushout_or_diagram := arg[ 1 ];
+    
+    sink := arg{[ 2 .. Length( arg ) ]};
+    
+    if WasCreatedAsPushout( pushout_or_diagram ) then
+    
+      diagram := Genesis( pushout_or_diagram )!.PushoutDiagram;
+    
+      return UniversalMorphismFromPushoutOp( diagram, CallFuncList( Product, sink ), diagram[1] );
+    
+    fi;
+    
+    return UniversalMorphismFromPushoutOp( pushout_or_diagram, CallFuncList( Product, sink ), pushout_or_diagram[1] );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromPushout,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismFromPushoutFunction( category, func );
+    
+    SetCanComputeUniversalMorphismFromPushout( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
+                                           [ IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
+      function( diagram, sink, method_selection_morphism )
+        local test_object, components, universal_morphism, pushout;
+        
+        if HasPushoutOp( diagram, diagram[1] ) then
+        
+          return UniversalMorphismFromPushoutWithGivenPushout( 
+                   diagram, 
+                   sink,
+                   PushoutOp( diagram, diagram[1] )
+                 );
+          
+        fi;
+        
+        test_object := Range( sink[1] );
+        
+        components := Components( sink );
+        
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
+            
+            Error( "ranges of morphisms must be identical in given sink-diagram" );
+            
+        fi;
+        
+        ## here the user also needs the diagram
+        universal_morphism := func( diagram, sink );
+        
+        Add( category, universal_morphism );
+        
+        pushout := Source( universal_morphism );
+        
+        SetGenesis( pushout, rec( PushoutDiagram := diagram ) );
+        
+        SetPushoutOp( diagram, diagram[1], pushout );
+        
+        Add( HomalgCategory( diagram[1] ), pushout );
+        
+        SetFilterObj( pushout, WasCreatedAsPushout );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromPushoutOp", 3 ) );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismFromPushoutWithGivenPushoutFunction( category, func );
+    
+    SetCanComputeUniversalMorphismFromPushoutWithGivenPushout( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutWithGivenPushout,
+                                           [ IsHomalgCategoryMorphism, 
+                                             IsHomalgCategoryMorphism, 
+                                             IsHomalgCategoryObject and ObjectFilter( category ) 
+                                           ],
+                                           
+      function( diagram, sink, pushout )
+        local test_object, components, universal_morphism;
+        
+        test_object := Range( sink[1] );
+        
+        components := Components( sink );
+        
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
+            
+            Error( "ranges of morphisms must be identical in given sink-diagram" );
+            
+        fi;
+        
+        universal_morphism := func( diagram, sink, pushout );
+        
+        Add( category, universal_morphism );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromPushoutWithGivenPushout", 3 ) );
+    
+end );
+
+####################################
+## Implied Operations
+####################################
+
+##
+InstallTrueMethod( CanComputePushout, CanComputeCoproduct and 
+                                      CanComputeInjectionOfCofactor and 
+                                      CanComputePreCompose and
+                                      CanComputeAdditionForMorphisms and
+                                      CanComputeAdditiveInverseForMorphisms and
+                                      CanComputeCokernel );
+
+##
+InstallMethodWithToDoForIsWellDefined( PushoutOp,
+                                       [ IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryMorphism and
+                                         CanComputeCoproduct and 
+                                         CanComputeInjectionOfCofactor and 
+                                         CanComputePreCompose and
+                                         CanComputeAdditionForMorphisms and
+                                         CanComputeAdditiveInverseForMorphisms and
+                                         CanComputeCokernel ],
+                                         -9999, #FIXME
+                                         
+  function( diagram, method_selection_morphism )
+    local coproduct, number_of_morphisms, list_of_morphisms, mor1, mor2, pushout;
+    
+    coproduct := CallFuncList( Coproduct, List( Components( diagram ), Range ) );
+    
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( diagram[ i ], InjectionOfCofactor( coproduct, i ) ) );
+    
+    mor1 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    
+    pushout := Cokernel( mor1 - mor2 );
+    
+    Genesis( pushout )!.PushoutDiagram := diagram;
+    
+    SetFilterObj( pushout, WasCreatedAsPushout );
+    
+    return pushout;
+    
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+
+#
+InstallTrueMethod( CanComputeInjectionOfCofactorOfPushout, CanComputeInjectionOfCofactorWithGivenPushout and 
+                                                           CanComputePushout );
+
+InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
+                                       [ IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryMorphism and
+                                         CanComputeInjectionOfCofactorWithGivenPushout and
+                                         CanComputePushout, 
+                                         IsInt ],
+                                         
+  function( diagram, method_selection_morphism, injection_number )
+  
+    return InjectionOfCofactorWithGivenPushout( diagram, PushoutOp( diagram, method_selection_morphism ), injection_number );
+  
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+
+# ##
+InstallTrueMethod( CanComputeInjectionOfCofactorWithGivenPushout, CanComputeCokernelProj and
+                                                                  CanComputeInjectionOfCofactor and
+                                                                  CanComputePushout );
+
+# FIXME: WARNING: This method only applies if the pushout was created as a cokernel. If the
+# user gives his own pushout method, this derived method fails.
+InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorWithGivenPushout,
+                                       [ IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryObject and 
+                                         CanComputeCokernelProj and
+                                         CanComputeInjectionOfCofactor and
+                                         CanComputePushout, 
+                                         IsInt ],
+                                         
+  function( diagram, pushout, injection_number )
+    local projection_from_coproduct, coproduct, injection;
+  
+    if not WasCreatedAsCokernel( pushout ) then
+    
+      Error( "pushout had to be created as a cokernel" );
+    
+    fi;
+    
+    projection_from_coproduct := CokernelProj( pushout );
+    
+    coproduct := Source( projection_from_coproduct );
+    
+    if not WasCreatedAsCoproduct( coproduct ) then
+    
+      Error( "pushout had to be created as a cokernel of a morphism with a coproduct as range" );
+    
+    fi;
+    
+    injection := InjectionOfCofactor( coproduct, injection_number );
+    
+    return PreCompose( injection, projection_from_coproduct );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismFromPushoutWithGivenPushout, CanComputeUniversalMorphismFromCoproduct and
+                                                                           CanComputeCokernelColift );
+
+# FIXME: WARNING: This method only applies if the pushout was created as a cokernel. If the
+# user gives his own pushout method, this derived method fails.
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutWithGivenPushout,
+                                       [ 
+                                         IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryMorphism, 
+                                         IsHomalgCategoryObject
+                                       ],
+                                       
+  function( diagram, sink, pushout )
+    local test_function;
+    
+    if not WasCreatedAsCokernel( pushout ) then
+      
+      Error( "pushout had to be created as a cokernel" );
+      
+    fi;
+    
+    test_function := CallFuncList( UniversalMorphismFromCoproduct, Components( sink ) );
+    
+    return CokernelColift( pushout, test_function );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
+
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismFromPushout, CanComputeUniversalMorphismFromPushoutWithGivenPushout and 
+                                                           CanComputePushout );
+
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
+                                           [ IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism,
+                                             IsHomalgCategoryMorphism ],
+                                             
+  function( diagram, sink, method_selection_morphism )
+    
+    return UniversalMorphismFromPushoutWithGivenPushout( diagram, sink, PushoutOp( diagram, method_selection_morphism ) );
+    
+end );
 
 
 ####################################

@@ -94,7 +94,12 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeProjectionInFactorOfPullback",
                 "CanComputeProjectionInFactorWithGivenPullback",
                 "CanComputeUniversalMorphismIntoPullback",
-                "CanComputeUniversalMorphismIntoPullbackWithGivenPullback"
+                "CanComputeUniversalMorphismIntoPullbackWithGivenPullback",
+                "CanComputePushout",
+                "CanComputeInjectionOfCofactorOfPushout",
+                "CanComputeInjectionOfCofactorWithGivenPushout",
+                "CanComputeUniversalMorphismFromPushout",
+                "CanComputeUniversalMorphismFromPushoutWithGivenPushout"
                 # .. 
               ] );
 
