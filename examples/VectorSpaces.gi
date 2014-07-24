@@ -727,3 +727,23 @@ tau_source_aid := VectorSpaceMorphism( Source( tau ), [ [ 1, 1, 0 ], [ 0, 1, 1 ]
 tau_range_aid := VectorSpaceMorphism( QVectorSpace( 3 ), [ [ 1 , 0 ], [ 1, 1 ], [ 0, 1 ] ], Range( tau ) );
 
 GeneralizedMorphism( tau_source_aid, tau, tau_range_aid );
+
+## 
+
+BB := QVectorSpace( 3 );
+
+factor := VectorSpaceMorphism( BB, [ [ 1, -1 ], [ 3, 7 ], [ 21, 4 ] ], QVectorSpace( 2 ) );
+
+sub := VectorSpaceMorphism( QVectorSpace( 2 ), [ [ 1, -1, 2 ], [ 3, -1, 11 ] ], BB );
+
+# factor := VectorSpaceMorphism( BB, [ [ 1 ], [ 3 ], [ 21 ] ], QVectorSpace( 1 ) );
+# 
+# sub := VectorSpaceMorphism( QVectorSpace( 2 ), [ [ 1, -1, 2 ], [ 3, -1, 11 ] ], BB );
+
+# factor := VectorSpaceMorphism( BB, [  ], QVectorSpace( 0 ) );
+# 
+# sub := VectorSpaceMorphism( QVectorSpace( 2 ), [ [ 1, -1, 2 ], [ 3, -1, 11 ] ], BB );
+
+# factor := VectorSpaceMorphism( BB, [ [ 1 ], [ 3 ], [ 21 ] ], QVectorSpace( 1 ) );
+# 
+# sub := VectorSpaceMorphism( QVectorSpace( 0 ), [ ], BB );
