@@ -728,6 +728,26 @@ tau_range_aid := VectorSpaceMorphism( QVectorSpace( 3 ), [ [ 1, 0 ], [ 1, 1 ], [
 
 GeneralizedMorphism( tau_source_aid, tau, tau_range_aid );
 
+## 
+
+BB := QVectorSpace( 3 );
+
+factor := VectorSpaceMorphism( BB, [ [ 1, -1 ], [ 3, 7 ], [ 21, 4 ] ], QVectorSpace( 2 ) );
+
+sub := VectorSpaceMorphism( QVectorSpace( 2 ), [ [ 1, -1, 2 ], [ 3, -1, 11 ] ], BB );
+
+# factor := VectorSpaceMorphism( BB, [ [ 1 ], [ 3 ], [ 21 ] ], QVectorSpace( 1 ) );
+# 
+# sub := VectorSpaceMorphism( QVectorSpace( 2 ), [ [ 1, -1, 2 ], [ 3, -1, 11 ] ], BB );
+
+# factor := VectorSpaceMorphism( BB, [  ], QVectorSpace( 0 ) );
+# 
+# sub := VectorSpaceMorphism( QVectorSpace( 2 ), [ [ 1, -1, 2 ], [ 3, -1, 11 ] ], BB );
+
+# factor := VectorSpaceMorphism( BB, [ [ 1 ], [ 3 ], [ 21 ] ], QVectorSpace( 1 ) );
+# 
+# sub := VectorSpaceMorphism( QVectorSpace( 0 ), [ ], BB );
+
 phi_tilde_associated := VectorSpaceMorphism( A, [ [ 1 ], [ 2 ], [ 3 ] ], C );
 
 phi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 1 ], [ 2 ] ], B );
@@ -759,3 +779,4 @@ psi2_tilde_range_aid := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ] ], A );
 psi2_tilde := GeneralizedMorphismWithRangeAid( psi2_tilde_associated, psi2_tilde_range_aid );
 
 composition := PreCompose( phi2_tilde, psi2_tilde );
+

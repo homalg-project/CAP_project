@@ -1989,7 +1989,15 @@ InstallMethod( AddPullback,
                                            [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( diagram, method_selection_morphism )
-        local pullback;
+        local base, pullback;
+        
+        base := Range( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj(  Range( c ), base ) ) then
+        
+          Error( "the given morphisms of the pullback diagram must have the same range\n" );
+        
+        fi;
         
         pullback := func( diagram );
         
@@ -2021,12 +2029,20 @@ InstallMethod( AddProjectionInFactorOfPullback,
                                              IsInt ],
                                              
       function( diagram, method_selection_morphism, projection_number )
-        local projection_in_factor, pullback;
+        local base, projection_in_factor, pullback;
         
         if HasPullbackOp( diagram, method_selection_morphism ) then
           
           return ProjectionInFactorWithGivenPullback( diagram, PullbackOp( diagram, method_selection_morphism ), projection_number );
           
+        fi;
+        
+        base := Range( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj(  Range( c ), base ) ) then
+        
+          Error( "the given morphisms of the pullback diagram must have the same range\n" );
+        
         fi;
         
         projection_in_factor := func( diagram, projection_number );
@@ -2063,7 +2079,15 @@ InstallMethod( AddProjectionInFactorWithGivenPullback,
                                              IsInt ],
                                              
       function( diagram, pullback, projection_number )
-        local projection_in_factor;
+        local base, projection_in_factor;
+        
+        base := Range( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj(  Range( c ), base ) ) then
+        
+          Error( "the given morphisms of the pullback diagram must have the same range\n" );
+        
+        fi;
         
         projection_in_factor := func( diagram, pullback, projection_number );
         
@@ -2113,7 +2137,7 @@ InstallMethod( AddUniversalMorphismIntoPullback,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( diagram, source, method_selection_morphism )
-        local test_object, components, universal_morphism, pullback;
+        local base, test_object, components, universal_morphism, pullback;
         
         if HasPullbackOp( diagram, diagram[1] ) then
         
@@ -2122,6 +2146,14 @@ InstallMethod( AddUniversalMorphismIntoPullback,
                    source,
                    PullbackOp( diagram, diagram[1] )
                  );
+          
+        fi;
+        
+        base := Range( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj(  Range( c ), base ) ) then
+          
+          Error( "the given morphisms of the pullback diagram must have the same range\n" );
           
         fi;
         
@@ -2173,7 +2205,15 @@ InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
                                            ],
                                            
       function( diagram, source, pullback )
-        local test_object, components, universal_morphism;
+        local base, test_object, components, universal_morphism;
+        
+        base := Range( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Range( c ), base ) ) then
+          
+          Error( "the given morphisms of the pullback diagram must have the same range\n" );
+          
+        fi;
         
         test_object := Source( source[1] );
         
@@ -2220,7 +2260,15 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
                                          -9999, #FIXME
                                          
   function( diagram, method_selection_morphism )
-    local direct_product, number_of_morphisms, list_of_morphisms, mor1, mor2, pullback;
+    local base, direct_product, number_of_morphisms, list_of_morphisms, mor1, mor2, pullback;
+    
+    base := Range( diagram[1] );
+    
+    if not ForAll( Components( diagram ), c -> IsIdenticalObj( Range( c ), base ) ) then
+    
+      Error( "the given morphisms of the pullback diagram must have the same range\n" );
+      
+    fi;
     
     direct_product := CallFuncList( DirectProduct, List( Components( diagram ) , Source ) );
     
@@ -2384,7 +2432,15 @@ InstallMethod( AddPushout,
                                            [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( diagram, method_selection_morphism )
-        local pushout;
+        local cobase, pushout;
+        
+        cobase := Source( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+           
+           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           
+        fi;
         
         pushout := func( diagram );
         
@@ -2416,12 +2472,20 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
                                              IsInt ],
                                              
       function( diagram, method_selection_morphism, injection_number )
-        local injection_of_cofactor, pushout;
+        local cobase, injection_of_cofactor, pushout;
         
         if HasPushoutOp( diagram, method_selection_morphism ) then
           
           return InjectionOfCofactorWithGivenPushout( diagram, PushoutOp( diagram, method_selection_morphism ), injection_number );
           
+        fi;
+        
+        cobase := Source( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+           
+           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           
         fi;
         
         injection_of_cofactor := func( diagram, injection_number );
@@ -2458,7 +2522,15 @@ InstallMethod( AddInjectionOfCofactorWithGivenPushout,
                                              IsInt ],
                                              
       function( diagram, pushout, injection_number )
-        local injection_of_cofactor;
+        local cobase, injection_of_cofactor;
+        
+        cobase := Source( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+           
+           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           
+        fi;
         
         injection_of_cofactor := func( diagram, pushout, injection_number );
         
@@ -2508,7 +2580,7 @@ InstallMethod( AddUniversalMorphismFromPushout,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( diagram, sink, method_selection_morphism )
-        local test_object, components, universal_morphism, pushout;
+        local cobase, test_object, components, universal_morphism, pushout;
         
         if HasPushoutOp( diagram, diagram[1] ) then
         
@@ -2518,6 +2590,14 @@ InstallMethod( AddUniversalMorphismFromPushout,
                    PushoutOp( diagram, diagram[1] )
                  );
           
+        fi;
+        
+        cobase := Source( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+           
+           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           
         fi;
         
         test_object := Range( sink[1] );
@@ -2568,7 +2648,15 @@ InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
                                            ],
                                            
       function( diagram, sink, pushout )
-        local test_object, components, universal_morphism;
+        local cobase, test_object, components, universal_morphism;
+        
+        cobase := Source( diagram[1] );
+        
+        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+           
+           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           
+        fi;
         
         test_object := Range( sink[1] );
         
@@ -2615,7 +2703,15 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
                                          -9999, #FIXME
                                          
   function( diagram, method_selection_morphism )
-    local coproduct, number_of_morphisms, list_of_morphisms, mor1, mor2, pushout;
+    local cobase, coproduct, number_of_morphisms, list_of_morphisms, mor1, mor2, pushout;
+    
+    cobase := Source( diagram[1] );
+        
+    if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+           
+       Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           
+    fi;
     
     coproduct := CallFuncList( Coproduct, List( Components( diagram ), Range ) );
     

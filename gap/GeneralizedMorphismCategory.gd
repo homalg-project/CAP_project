@@ -47,6 +47,9 @@ DeclareOperation( "GeneralizedMorphismWithRangeAid",
 DeclareAttributeWithToDoForIsWellDefined( "AsGeneralizedMorphism",
                                           IsHomalgCategoryMorphism );
 
+DeclareOperation( "GeneralizedMorphismFromFactorToSubobject",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
 ####################################
 ##
 ## Attributes

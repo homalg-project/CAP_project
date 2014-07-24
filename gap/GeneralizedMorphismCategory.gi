@@ -308,6 +308,51 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
 end : InstallMethod := InstallMethodWithCacheFromObject );
 
 
+##
+InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
+                                       [ IsHomalgCategoryMorphism and
+                                         CanComputeKernelEmb and
+                                         CanComputeUniversalMorphismFromCoproduct and
+                                         CanComputeImageEmbedding and
+                                         CanComputeMonoAsKernelLift and
+                                         CanComputeCokernelProj and
+                                         CanComputeCokernelColift and
+                                         CanComputePreCompose and
+                                         CanComputeIdentityMorphism,
+                                         IsHomalgCategoryMorphism ],
+                                         
+  function( factor, subobject )
+    local A_into_B, B_onto_BmodC, C_into_B, AoplusC_to_B, AplusC_into_B, C_into_AplusC, AplusC_onto_M, M, M_into_BmodC, A_into_AplusC, A_onto_M;
+    
+    A_into_B := subobject;
+    
+    B_onto_BmodC := factor;
+    
+    # Notation:
+    # subobject: A -> B, factor: B -> B/C
+    # we want to construct: M := (A + C)/C and a generalized morphism: B/C - - - > A
+    
+    C_into_B := KernelEmb( B_onto_BmodC );
+    
+    AoplusC_to_B := UniversalMorphismFromCoproduct( A_into_B, C_into_B );
+    
+    AplusC_into_B := ImageEmbedding( AoplusC_to_B );
+    
+    C_into_AplusC := MonoAsKernelLift( AplusC_into_B, C_into_B );
+    
+    AplusC_onto_M := CokernelProj( C_into_AplusC );
+    
+    M := Range( AplusC_onto_M );
+    
+    M_into_BmodC := CokernelColift( M, PreCompose( AplusC_into_B, B_onto_BmodC ) );
+    
+    A_into_AplusC := MonoAsKernelLift( AplusC_into_B, A_into_B );
+    
+    A_onto_M := PreCompose( A_into_AplusC, AplusC_onto_M );
+    
+    return GeneralizedMorphism( M_into_BmodC, IdentityMorphism( M ), A_onto_M );
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );
     
 
 
