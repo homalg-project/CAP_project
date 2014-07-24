@@ -748,9 +748,9 @@ sub := VectorSpaceMorphism( QVectorSpace( 2 ), [ [ 1, -1, 2 ], [ 3, -1, 11 ] ], 
 # 
 # sub := VectorSpaceMorphism( QVectorSpace( 0 ), [ ], BB );
 
-phi_tilde_associated := VectorSpaceMorphism( A, [ [ 1 ], [ 2 ], [ 3 ] ], C );
+phi_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 2, 0 ] ], C );
 
-phi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 1 ], [ 2 ] ], B );
+phi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 1, 2 ] ], B );
 
 phi_tilde := GeneralizedMorphismWithSourceAid( phi_tilde_source_aid, phi_tilde_associated );
 
@@ -760,11 +760,7 @@ psi_tilde_source_aid := VectorSpaceMorphism( B, [ [ 1, 0, 0 ] ,[ 0, 1, 0 ] ], C 
 
 psi_tilde := GeneralizedMorphismWithSourceAid( psi_tilde_source_aid, psi_tilde_associated );
 
-## Does not work because of bug in Pullback/FiberProduct.
-## PreCompose( phi_tilde, psi_tilde );
-
-## Bug comes from 
-## FiberProduct( phi_tilde_associated, psi_tilde_associated );
+PreCompose( phi_tilde, psi_tilde );
 
 phi2_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 5 ] ], B );
 
