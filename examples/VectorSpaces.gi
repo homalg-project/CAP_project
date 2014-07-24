@@ -724,7 +724,7 @@ end );
 
 tau_source_aid := VectorSpaceMorphism( Source( tau ), [ [ 1, 1, 0 ], [ 0, 1, 1 ] ], QVectorSpace( 3 ) );
 
-tau_range_aid := VectorSpaceMorphism( QVectorSpace( 3 ), [ [ 1 , 0 ], [ 1, 1 ], [ 0, 1 ] ], Range( tau ) );
+tau_range_aid := VectorSpaceMorphism( QVectorSpace( 3 ), [ [ 1, 0 ], [ 1, 1 ], [ 0, 1 ] ], Range( tau ) );
 
 GeneralizedMorphism( tau_source_aid, tau, tau_range_aid );
 
@@ -736,7 +736,7 @@ phi_tilde := GeneralizedMorphismWithSourceAid( phi_tilde_source_aid, phi_tilde_a
 
 psi_tilde_associated := IdentityMorphism( B );
 
-psi_tilde_source_aid := VectorSpaceMorphism( B, [ [ 1,0 ,0] ,[ 0,1,0] ], C );
+psi_tilde_source_aid := VectorSpaceMorphism( B, [ [ 1, 0, 0 ] ,[ 0, 1, 0 ] ], C );
 
 psi_tilde := GeneralizedMorphismWithSourceAid( psi_tilde_source_aid, psi_tilde_associated );
 
@@ -746,3 +746,16 @@ psi_tilde := GeneralizedMorphismWithSourceAid( psi_tilde_source_aid, psi_tilde_a
 ## Bug comes from 
 ## FiberProduct( phi_tilde_associated, psi_tilde_associated );
 
+phi2_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 5 ] ], B );
+
+phi2_tilde_range_aid := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 1 ], [ 1, 1 ] ], B );
+
+phi2_tilde := GeneralizedMorphismWithRangeAid( phi2_tilde_associated, phi2_tilde_range_aid );
+
+psi2_tilde_associated := VectorSpaceMorphism( C, [ [ 1 ], [ 3 ], [ 4 ] ], A );
+
+psi2_tilde_range_aid := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ] ], A );
+
+psi2_tilde := GeneralizedMorphismWithRangeAid( psi2_tilde_associated, psi2_tilde_range_aid );
+
+composition := PreCompose( phi2_tilde, psi2_tilde );
