@@ -2842,6 +2842,21 @@ InstallMethod( AddImageEmbeddingWithGivenImage,
 end );
 
 ####################################
+##
+## Attributes
+##
+####################################
+
+InstallMethod( ImageEmbedding,
+               [ IsHomalgCategoryObject and WasCreatedAsImage ],
+               
+  function( image )
+    
+    return ImageEmbedding( Genesis( image )!.ImageDiagram );
+    
+end );
+
+####################################
 ## Implied Operations
 ####################################
 
