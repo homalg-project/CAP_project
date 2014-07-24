@@ -251,8 +251,12 @@ InstallMethodWithCacheFromObject( KernelLift,
                                     -9999, #FIXME
                                     
   function( mor, test_morphism )
+    local kernel_lift, kernel;
     
-    return MonoAsKernelLift( KernelEmb( mor ), test_morphism );
+    ## KernelEmb passes its kernel object to the kernel lift
+    kernel_lift := MonoAsKernelLift( KernelEmb( mor ), test_morphism );
+    
+    return kernel_lift;
     
 end );
 
@@ -2740,7 +2744,6 @@ end );
 ##
 ####################################
 
-
 ##
 InstallMethod( AddImage,
                [ IsHomalgCategory, IsFunction ],
@@ -2870,11 +2873,8 @@ InstallMethod( ImageObject,
   function( mor )
     local image;
     
+    ## ImageEmbedding creates an ImageObject as source
     image := Source( ImageEmbedding( mor ) );
-    
-    AddToGenesis( image, "ImageDiagram", mor );
-    
-    SetFilterObj( image, WasCreatedAsImage );
     
     return image;
     
@@ -2890,6 +2890,7 @@ InstallMethod( ImageEmbedding,
   function( mor )
     local image_embedding, image;
     
+    ## consistency check
     if HasImageObject( mor ) then
       
       return ImageEmbeddingWithGivenImage( mor, ImageObject( mor ) );
@@ -2899,18 +2900,16 @@ InstallMethod( ImageEmbedding,
     image_embedding := KernelEmb( CokernelProj( mor ) );
     
     image := Source( image_embedding );
-        
+    
     AddToGenesis( image, "ImageDiagram", mor );
-        
+    
     SetFilterObj( image, WasCreatedAsImage );
-        
+    
     SetImageObject( mor, image );
     
     return image_embedding;
     
 end );
-
-
 
 ####################################
 ##
