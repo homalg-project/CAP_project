@@ -30,9 +30,56 @@ BindGlobal( "TheTypeOfGeneralizedMorphism",
 ####################################
 
 ##
+InstallGlobalFunction( CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGORY,
+                       
+  function( )
+    local prop_list_pairs, prop_list_solo, i, concat_string, i_concat;
+    
+    prop_list_pairs := [ ];
+    
+    prop_list_solo := [ ];
+    
+    concat_string := "InUnderlyingHonestCategory";
+    
+    for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
+        
+        i_concat := Concatenation( i, concat_string );
+        
+        Add( prop_list_pairs, [ i, i_concat ] );
+        
+        Add( prop_list_solo, i_concat );
+        
+        DeclareProperty( i_concat, IsHomalgCategory );
+        
+        DeclareProperty( i_concat, IsHomalgCategoryCell );
+        
+    od;
+    
+    InstallValue( GENERALIZED_MORPHISM_CATEGORY_PROPAGATION_LIST, prop_list_pairs );
+    
+    InstallValue( GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST, prop_list_solo );
+    
+end );
+
+CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGORY( );
+
+##
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
                        
   function( category )
+    
+    ## Entries between honest and generalized morphism category
+    
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "UnderlyingHonestCategory" ] ],
+                                                         [ [ UnderlyingHonestCategory, category ], category ],
+                                                         GENERALIZED_MORPHISM_CATEGORY_PROPAGATION_LIST
+                                                       );
+    
+    AddToToDoList( entry );
+    
+    category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS := GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST;
+    
+    category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM := GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST;
     
     return;
     
@@ -307,7 +354,6 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
 
-
 ##
 InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
                                        [ IsHomalgCategoryMorphism and
@@ -353,6 +399,13 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
     return GeneralizedMorphism( M_into_BmodC, IdentityMorphism( M ), A_onto_M );
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
-    
 
-
+# InstallMethodWithToDoForIsWellDefined( PreCompose,
+#                                        [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
+#                                        
+#   function( mor1, mor2 )
+#     local category;
+#     
+#     category := HomalgCategory( mor1 );
+#     
+#     
