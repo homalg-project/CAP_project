@@ -324,13 +324,13 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
   function( factor, subobject )
     local A_into_B, B_onto_BmodC, C_into_B, AoplusC_to_B, AplusC_into_B, C_into_AplusC, AplusC_onto_M, M, M_into_BmodC, A_into_AplusC, A_onto_M;
     
-    A_into_B := subobject;
-    
-    B_onto_BmodC := factor;
-    
     # Notation:
     # subobject: A -> B, factor: B -> B/C
     # we want to construct: M := (A + C)/C and a generalized morphism: B/C - - - > A
+    
+    A_into_B := subobject;
+    
+    B_onto_BmodC := factor;
     
     C_into_B := KernelEmb( B_onto_BmodC );
     
