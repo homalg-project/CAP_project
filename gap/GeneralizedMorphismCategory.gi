@@ -406,7 +406,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 InstallMethodWithToDoForIsWellDefined( PreCompose,
                                        [ IsGeneralizedMorphism 
-#                                          and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
+                                         and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
                                          and CanComputePullbackInUnderlyingHonestCategory
                                          and CanComputePushoutInUnderlyingHonestCategory
                                          and CanComputePreComposeInUnderlyingHonestCategory,
