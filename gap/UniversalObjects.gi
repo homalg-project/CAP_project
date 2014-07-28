@@ -19,12 +19,12 @@ InstallMethod( AddToGenesis,
     
     if HasGenesis( cell ) then
       
-      Genesis( cell )!.(genesis_entry_name) := genesis_entry;
+      AUTODOC_APPEND_RECORD_WRITEONCE( Genesis( cell ), rec( (genesis_entry_name) := genesis_entry ) );
       
    else
-     
-     SetGenesis( cell, rec( (genesis_entry_name) := genesis_entry ) );
-     
+      
+      SetGenesis( cell, rec( (genesis_entry_name) := genesis_entry ) );
+      
    fi;
    
 end );
