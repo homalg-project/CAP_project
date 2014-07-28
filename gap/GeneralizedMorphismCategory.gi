@@ -394,12 +394,35 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
 
-# InstallMethodWithToDoForIsWellDefined( PreCompose,
-#                                        [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
-#                                        
-#   function( mor1, mor2 )
-#     local category;
-#     
-#     category := HomalgCategory( mor1 );
-#     
-#     
+InstallMethodWithToDoForIsWellDefined( PreCompose,
+                                       [ IsGeneralizedMorphism 
+#                                          and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
+                                         and CanComputePullbackInUnderlyingHonestCategory
+                                         and CanComputePushoutInUnderlyingHonestCategory
+                                         and CanComputePreComposeInUnderlyingHonestCategory,
+                                         IsGeneralizedMorphism ],
+                                       
+  function( mor1, mor2 )
+    local generalized_mor_factor_sub, pullback, pushout, new_associated, new_source_aid, new_range_aid;
+    
+    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+        
+        Error( "morphisms are not composable" );
+        
+    fi;
+    
+    generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobject( RangeAid( mor1 ), SourceAid( mor2 ) );
+    
+    pullback := FiberProduct( AssociatedMorphism( mor1 ), SourceAid( generalized_mor_factor_sub ) );
+    
+    pushout := Pushout( RangeAid( generalized_mor_factor_sub ), AssociatedMorphism( mor2 ) );
+    
+    new_source_aid := PreCompose( ProjectionInFactor( pullback, 1 ), SourceAid( mor1 ) );
+    
+    new_associated := PreCompose( ProjectionInFactor( pullback, 2 ), InjectionOfCofactor( pushout, 1 ) );
+    
+    new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactor( pushout, 2 ) );
+    
+    return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
+    
+end );
