@@ -776,3 +776,18 @@ end );
 # 
 # composition := PreCompose( phi2_tilde, psi2_tilde );
 
+phi3_associated := VectorSpaceMorphism( B, [ [ 1, 0 ], [ 0, 1 ] ], B );
+
+phi3_range_aid := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 1 ], [ 0, 0 ] ], B );
+
+psi3_associated := VectorSpaceMorphism( B, [ [ 1, 0 ], [ 0, 1 ] ], B );
+
+psi3_source_aid := VectorSpaceMorphism( B, [ [ 0,1,0],[0,0,1]], C );
+
+phi3 := GeneralizedMorphismWithRangeAid( phi3_associated, phi3_range_aid );
+
+psi3 := GeneralizedMorphismWithSourceAid( psi3_source_aid, psi3_associated );
+
+PreCompose( phi3, psi3 );
+
+
