@@ -52,6 +52,17 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
  
     AddToToDoList( entry );
     
+    if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS ) then
+        
+        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "HomalgCategory" ] ],
+                                                             [ category, object ],
+                                                             category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS
+                                                           );
+        
+        AddToToDoList( entry );
+        
+    fi;
+    
 end );
 
 #######################################

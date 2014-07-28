@@ -58,6 +58,17 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
     
     AddToToDoList( entry );
     
+    if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM ) then
+        
+        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "HomalgCategory" ] ],
+                                                             [ category, morphism ],
+                                                             category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM
+                                                              );
+        
+        AddToToDoList( entry );
+        
+    fi;
+    
 end );
 
 InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,

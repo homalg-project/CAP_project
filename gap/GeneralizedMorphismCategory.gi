@@ -30,9 +30,57 @@ BindGlobal( "TheTypeOfGeneralizedMorphism",
 ####################################
 
 ##
+InstallGlobalFunction( CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGORY,
+                       
+  function( )
+    local prop_list_pairs, prop_list_solo, i, concat_string, i_concat;
+    
+    prop_list_pairs := [ ];
+    
+    prop_list_solo := [ ];
+    
+    concat_string := "InUnderlyingHonestCategory";
+    
+    for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
+        
+        i_concat := Concatenation( i, concat_string );
+        
+        ## FIXME: This syntax needs to be fixed.
+        Add( prop_list_pairs, [ i, [ i, i_concat ] ] );
+        
+        Add( prop_list_solo, i_concat );
+        
+        DeclareProperty( i_concat, IsHomalgCategory );
+        
+        DeclareProperty( i_concat, IsHomalgCategoryCell );
+        
+    od;
+    
+    InstallValue( GENERALIZED_MORPHISM_CATEGORY_PROPAGATION_LIST, prop_list_pairs );
+    
+    InstallValue( GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST, prop_list_solo );
+    
+end );
+
+CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGORY( );
+
+##
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
                        
   function( category )
+    
+    ## Entries between honest and generalized morphism category
+    
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "UnderlyingHonestCategory" ] ],
+                                                         [ [ UnderlyingHonestCategory, category ], category ],
+                                                         GENERALIZED_MORPHISM_CATEGORY_PROPAGATION_LIST
+                                                       );
+    
+    AddToToDoList( entry );
+    
+    category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS := GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST;
+    
+    category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM := GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST;
     
     return;
     
@@ -241,18 +289,16 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism and HasHonestSource, IsGeneralizedMorphism and HasHonestSource ],
+                                       [ IsGeneralizedMorphism
+                                         and HasHonestSource
+                                         and CanComputePreComposeInUnderlyingHonestCategory
+                                         and CanComputePushoutInUnderlyingHonestCategory,
+                                       IsGeneralizedMorphism and HasHonestSource ],
                                        
   function( mor1, mor2 )
     local category, pushout, new_associated_morphism, new_range_aid;
     
     category := HomalgCategory( mor1 );
-    
-    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) or not CanComputePushout( UnderlyingHonestCategory( category ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
     
     if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
         
@@ -278,18 +324,13 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism and IsHonest, IsGeneralizedMorphism and IsHonest ],
+                                       [ IsGeneralizedMorphism and IsHonest and CanComputePreComposeInUnderlyingHonestCategory,
+                                       IsGeneralizedMorphism and IsHonest ],
                                        
   function( mor1, mor2 )
     local category;
     
     category := HomalgCategory( mor1 );
-    
-    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
     
     if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
         
@@ -362,6 +403,36 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
     return GeneralizedMorphism( M_into_BmodC, IdentityMorphism( M ), A_onto_M );
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
+
+InstallMethodWithToDoForIsWellDefined( PreCompose,
+                                       [ IsGeneralizedMorphism 
+                                         and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
+                                         and CanComputePullbackInUnderlyingHonestCategory
+                                         and CanComputePushoutInUnderlyingHonestCategory
+                                         and CanComputePreComposeInUnderlyingHonestCategory,
+                                         IsGeneralizedMorphism ],
+                                       
+  function( mor1, mor2 )
+    local generalized_mor_factor_sub, pullback, pushout, new_associated, new_source_aid, new_range_aid;
     
-
-
+    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+        
+        Error( "morphisms are not composable" );
+        
+    fi;
+    
+    generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobject( RangeAid( mor1 ), SourceAid( mor2 ) );
+    
+    pullback := FiberProduct( AssociatedMorphism( mor1 ), SourceAid( generalized_mor_factor_sub ) );
+    
+    pushout := Pushout( RangeAid( generalized_mor_factor_sub ), AssociatedMorphism( mor2 ) );
+    
+    new_source_aid := PreCompose( ProjectionInFactor( pullback, 1 ), SourceAid( mor1 ) );
+    
+    new_associated := PreCompose( ProjectionInFactor( pullback, 2 ), InjectionOfCofactor( pushout, 1 ) );
+    
+    new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactor( pushout, 2 ) );
+    
+    return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
+    
+end );

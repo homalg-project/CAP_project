@@ -17,6 +17,18 @@ DeclareCategory( "IsGeneralizedMorphism",
 
 ####################################
 ##
+## Technical stuff
+##
+####################################
+
+DeclareGlobalFunction( "CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGORY" );
+
+DeclareGlobalVariable( "GENERALIZED_MORPHISM_CATEGORY_PROPAGATION_LIST" );
+
+DeclareGlobalVariable( "GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST" );
+
+####################################
+##
 ## Constructors
 ##
 ####################################
