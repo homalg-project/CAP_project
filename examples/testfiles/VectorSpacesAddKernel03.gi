@@ -2,8 +2,6 @@
 ## - AddKernel
 ## - AddKernelEmb
 ## - AddKernelEmbWithGivenKernel
-## - AddKernelLift
-## - AddKernelLiftWithGivenKernel
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
   
@@ -53,28 +51,4 @@ AddKernelEmbWithGivenKernel( vecspaces,
 
     return VectorSpaceMorphism( kernel, kernel_emb, Source( morphism ) );
 
-end );
-
-##
-AddKernelLift( vecspaces,
-
-  function( mor, test_morphism )
-   local kernel_emb;
-   
-   kernel_emb := SyzygiesOfRows( mor!.morphism );
-   
-   return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), Source( kernel_emb ) );
-   
-end );
-
-##
-AddKernelLiftWithGivenKernel( vecspaces,
-
-  function( mor, test_morphism, kernel )
-   local kernel_emb;
-   
-   kernel_emb := SyzygiesOfRows( mor!.morphism );
-   
-   return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), kernel );
-   
 end );
