@@ -307,8 +307,17 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
 
-
 ##
+InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject, 
+                   CanComputeKernelEmb and
+                   CanComputeUniversalMorphismFromCoproduct and
+                   CanComputeImageEmbedding and
+                   CanComputeMonoAsKernelLift and
+                   CanComputeCokernelProj and
+                   CanComputeCokernelColift and
+                   CanComputePreCompose and
+                   CanComputeIdentityMorphism );
+
 InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
                                        [ IsHomalgCategoryMorphism and
                                          CanComputeKernelEmb and

@@ -102,7 +102,8 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeUniversalMorphismFromPushoutWithGivenPushout",
                 "CanComputeImage",
                 "CanComputeImageEmbedding",
-                "CanComputeImageEmbeddingWithGivenImage"
+                "CanComputeImageEmbeddingWithGivenImage",
+                "CanComputeGeneralizedMorphismFromFactorToSubobject"
                 # .. 
               ] );
 
