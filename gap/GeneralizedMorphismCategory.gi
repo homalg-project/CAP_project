@@ -68,6 +68,7 @@ CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGORY( );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
                        
   function( category )
+    local entry;
     
     ## Entries between honest and generalized morphism category
     
