@@ -19,12 +19,12 @@ InstallMethod( AddToGenesis,
     
     if HasGenesis( cell ) then
       
-      Genesis( cell )!.(genesis_entry_name) := genesis_entry;
+      AUTODOC_APPEND_RECORD_WRITEONCE( Genesis( cell ), rec( (genesis_entry_name) := genesis_entry ) );
       
    else
-     
-     SetGenesis( cell, rec( (genesis_entry_name) := genesis_entry ) );
-     
+      
+      SetGenesis( cell, rec( (genesis_entry_name) := genesis_entry ) );
+      
    fi;
    
 end );
@@ -2260,7 +2260,7 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
                                          -9999, #FIXME
                                          
   function( diagram, method_selection_morphism )
-    local base, direct_product, number_of_morphisms, list_of_morphisms, mor1, mor2, pullback;
+    local base, direct_product, number_of_morphisms, list_of_morphisms, mor1, mor2, pullback, diff;
     
     base := Range( diagram[1] );
     
@@ -2280,9 +2280,13 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
     
     mor2 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
-    pullback := KernelObject( mor1 - mor2 );
+    diff := mor1 - mor2;
     
-    Genesis( pullback )!.PullbackDiagram := diagram;
+    pullback := KernelObject( diff );
+    
+    AddToGenesis(  pullback, "PullbackAsKernelDiagram", diff );
+    
+    AddToGenesis( pullback, "PullbackDiagram", diagram );
     
     SetFilterObj( pullback, WasCreatedAsPullback );
     
@@ -2312,7 +2316,8 @@ InstallTrueMethod( CanComputeProjectionInFactorWithGivenPullback, CanComputeKern
                                                                   CanComputeProjectionInFactor and
                                                                   CanComputePullback );
 
-# FIXME: WARNING: This method only applies if the pullback was created as a kernel. If the
+# FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
+# the special construction from above. If the
 # user gives his own pullback method, this derived method fails.
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenPullback,
                                        [ IsHomalgCategoryMorphism, 
@@ -2325,13 +2330,13 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenPullback,
   function( diagram, pullback, projection_number )
     local embedding_in_direct_product, direct_product, projection;
   
-    if not WasCreatedAsKernel( pullback ) then
+    if not WasCreatedAsKernel( pullback ) or not IsBound( Genesis( pullback )!.PullbackAsKernelDiagram ) then
     
       Error( "pullback had to be created as a kernel" );
     
     fi;
     
-    embedding_in_direct_product := KernelEmb( pullback );
+    embedding_in_direct_product := KernelEmbWithGivenKernel( Genesis( pullback )!.PullbackAsKernelDiagram, pullback );
     
     direct_product := Range( embedding_in_direct_product );
     
@@ -2351,7 +2356,8 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 InstallTrueMethod( CanComputeUniversalMorphismIntoPullbackWithGivenPullback, CanComputeUniversalMorphismIntoDirectProduct and
                                                                              CanComputeKernelLift );
 
-# FIXME: WARNING: This method only applies if the pullback was created as a kernel. If the
+# FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
+# the special construction from above. If the
 # user gives his own pullback method, this derived method fails.
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPullback,
                                        [ 
@@ -2703,7 +2709,7 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
                                          -9999, #FIXME
                                          
   function( diagram, method_selection_morphism )
-    local cobase, coproduct, number_of_morphisms, list_of_morphisms, mor1, mor2, pushout;
+    local cobase, coproduct, number_of_morphisms, list_of_morphisms, mor1, mor2, pushout, diff;
     
     cobase := Source( diagram[1] );
         
@@ -2723,9 +2729,13 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
     
     mor2 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
-    pushout := Cokernel( mor1 - mor2 );
+    diff := mor1 - mor2;
     
-    Genesis( pushout )!.PushoutDiagram := diagram;
+    pushout := Cokernel( diff );
+    
+    AddToGenesis( pushout, "PushoutAsCokernelDiagram", diff );
+    
+    AddToGenesis( pushout, "PushoutDiagram", diagram );
     
     SetFilterObj( pushout, WasCreatedAsPushout );
     
@@ -2768,13 +2778,13 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorWithGivenPushout,
   function( diagram, pushout, injection_number )
     local projection_from_coproduct, coproduct, injection;
   
-    if not WasCreatedAsCokernel( pushout ) then
+    if not WasCreatedAsCokernel( pushout ) or not IsBound( Genesis( pushout )!.PushoutAsCokernelDiagram ) then
     
       Error( "pushout had to be created as a cokernel" );
     
     fi;
     
-    projection_from_coproduct := CokernelProj( pushout );
+    projection_from_coproduct := CokernelProjWithGivenCokernel( Genesis( pushout )!.PushoutAsCokernelDiagram, pushout );
     
     coproduct := Source( projection_from_coproduct );
     
