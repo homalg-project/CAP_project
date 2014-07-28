@@ -45,7 +45,8 @@ InstallGlobalFunction( CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGOR
         
         i_concat := Concatenation( i, concat_string );
         
-        Add( prop_list_pairs, [ i, i_concat ] );
+        ## FIXME: This syntax needs to be fixed.
+        Add( prop_list_pairs, [ i, [ i, i_concat ] ] );
         
         Add( prop_list_solo, i_concat );
         
@@ -288,18 +289,16 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism and HasHonestSource, IsGeneralizedMorphism and HasHonestSource ],
+                                       [ IsGeneralizedMorphism
+                                         and HasHonestSource
+                                         and CanComputePreComposeInUnderlyingHonestCategory
+                                         and CanComputePushoutInUnderlyingHonestCategory,
+                                       IsGeneralizedMorphism and HasHonestSource ],
                                        
   function( mor1, mor2 )
     local category, pushout, new_associated_morphism, new_range_aid;
     
     category := HomalgCategory( mor1 );
-    
-    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) or not CanComputePushout( UnderlyingHonestCategory( category ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
     
     if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
         
@@ -325,18 +324,13 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism and IsHonest, IsGeneralizedMorphism and IsHonest ],
+                                       [ IsGeneralizedMorphism and IsHonest and CanComputePreComposeInUnderlyingHonestCategory,
+                                       IsGeneralizedMorphism and IsHonest ],
                                        
   function( mor1, mor2 )
     local category;
     
     category := HomalgCategory( mor1 );
-    
-    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
     
     if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
         
