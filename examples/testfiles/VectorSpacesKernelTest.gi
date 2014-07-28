@@ -1,11 +1,14 @@
-#! @Example
-Read( "VectorSpacesConstructors.gi" );
-#! @EndExample
+#! @Chapter Examples and tests
+
+#! @Section kernel
+
+ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesConstructors.gi" );
 
 #! @Example
 vecspaces := CreateHomalgCategory( "VectorSpaces01" );
 #! VectorSpaces01
-Read( "VectorSpacesAddKernel01.gi" );
+ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAddKernel01.gi" );
+#! true
 V := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
 W := QVectorSpace( 3 );
@@ -43,7 +46,8 @@ KernelEmb( k );
 #! @Example
 vecspaces := CreateHomalgCategory( "VectorSpaces02" );
 #! VectorSpaces02
-Read( "VectorSpacesAddKernel02.gi" );
+ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAddKernel02.gi" );
+#! true
 V := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
 W := QVectorSpace( 3 );
@@ -74,7 +78,8 @@ HasKernelEmb( k );
 #! @Example
 vecspaces := CreateHomalgCategory( "VectorSpaces03" );
 #! VectorSpaces03
-Read( "VectorSpacesAddKernel03.gi" );
+ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAddKernel03.gi" );
+#! true
 V := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
 W := QVectorSpace( 3 );
