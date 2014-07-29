@@ -54,6 +54,9 @@ DeclareCategory( "IsHomalgCategoryAsCatObject",
 DeclareCategory( "IsHomalgFunctor",
                  IsHomalgCategoryMorphism );
 
+DeclareCategory( "IsHomalgNaturalTransformation",
+                 IsHomalgCategoryTwoCell );
+
 ####################################
 ##
 #! @Section Constructors
@@ -235,6 +238,33 @@ DeclareAttribute( "MorphismFunctionName",
                   IsHomalgFunctor );
 
 #! @EndGroup
+
+####################################
+##
+#! @Section Natural transformations
+##
+####################################
+
+DeclareAttribute( "Name",
+                  IsHomalgNaturalTransformation );
+
+DeclareOperation( "NaturalTransformation",
+                  [ IsHomalgFunctor, IsHomalgFunctor ] );
+
+DeclareOperation( "NaturalTransformation",
+                  [ IsString, IsHomalgFunctor, IsHomalgFunctor ] );
+
+DeclareAttribute( "NaturalTransformationCache",
+                  IsHomalgNaturalTransformation );
+
+DeclareAttribute( "NaturalTransformationFunction",
+                  IsHomalgNaturalTransformation );
+
+DeclareOperation( "AddNaturalTransformationFunction",
+                  [ IsHomalgNaturalTransformation, IsFunction ] );
+
+DeclareOperation( "ApplyNaturalTransformation",
+                  [ IsHomalgNaturalTransformation, IsHomalgCategoryObject ] );
 
 ####################################
 ##

@@ -24,6 +24,14 @@ BindGlobal( "TheTypeOfHomalgFunctors",
         NewType( TheFamilyOfHomalgCategoryMorphisms,
                 IsHomalgFunctorRep ) );
 
+DeclareRepresentation( "IsHomalgNaturalTransformationRep",
+                       IsHomalgCategoryTwoCellRep and IsHomalgNaturalTransformation,
+                       [ ] );
+
+BindGlobal( "TheTypeOfHomalgNaturalTransformations",
+        NewType( TheFamilyOfHomalgCategoryTwoCells,
+                IsHomalgNaturalTransformationRep ) );
+
 ##
 InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_Cat,
                
@@ -560,3 +568,100 @@ InstallMethod( InstallFunctor,
     InstallFunctorOnMorphisms( functor );
     
 end );
+
+###################################
+##
+## Natural transformations
+##
+###################################
+
+##
+InstallMethod( NaturalTransformation,
+               [ IsHomalgFunctor, IsHomalgFunctor ],
+               
+  function( source, range )
+    
+    return NaturalTransformation( Concatenation( "A Natural transformation from ", Name( source ), " to ", Name( range ) ), source, range );
+    
+end );
+
+##
+InstallMethod( NaturalTransformation,
+               [ IsString, IsHomalgFunctor, IsHomalgFunctor ],
+               
+  function( name, source, range )
+    local natural_transformation;
+    
+    if not IsIdenticalObj( Source( source ), Source( range ) ) or not IsIdenticalObj( Range( source ), Range( range ) ) then
+        
+        Error( "a natural transformation between this functors does not exist" );
+        
+    fi;
+    
+    natural_transformation := rec( );
+    
+    ObjectifyWithAttributes( natural_transformation, TheTypeOfHomalgNaturalTransformations,
+                             Name, name,
+                             Source, source,
+                             Range, range );
+    
+    Add( HomalgCategory( source ), natural_transformation );
+    
+    return natural_transformation;
+    
+end );
+
+##
+InstallMethod( NaturalTransformationCache,
+               [ IsHomalgNaturalTransformation ],
+               
+  function( natural_trafo )
+    
+    return CachingObject( );
+    
+end );
+
+##
+InstallMethod( AddNaturalTransformationFunction,
+               [ IsHomalgNaturalTransformation, IsFunction ],
+               
+  SetNaturalTransformationFunction );
+
+##
+InstallMethodWithToDoForIsWellDefined( ApplyNaturalTransformation,
+                                       [ IsHomalgNaturalTransformation, IsHomalgCategoryObject ],
+               
+  function( trafo, object )
+    local cache, return_morphism;
+    
+    if not IsIdenticalObj( HomalgCategory( object ), AsHomalgCategory( Source( Source( trafo ) ) ) ) then
+        
+        Error( "natural transformation is not applicable" );
+        
+    fi;
+    
+    cache := NaturalTransformationCache( trafo );
+    
+    return_morphism := CacheValue( cache, object );
+    
+    if return_morphism <> SuPeRfail then
+        
+        return return_morphism;
+        
+    fi;
+    
+    return_morphism := NaturalTransformationFunction( trafo )( object, ApplyFunctor( Source( trafo ), object ), ApplyFunctor( Range( trafo ), object ) );
+    
+    SetCacheValue( cache, [ object ], return_morphism );
+    
+    ## FIXME: Maybe cache the preimage here.
+    
+    Add( AsHomalgCategory( Range( Source( trafo ) ) ), return_morphism );
+    
+    return return_morphism;
+    
+end );
+    
+
+
+
