@@ -1,23 +1,24 @@
-* Universelle Objekte -> Sepp
-  - Coprodukt
-  - Pullback
-  - Pushout
-  - Direkte Summe
 * Dokumentation
 * Tests
   - Abgeleitete Algorithmen testen
-* Null => initial und terminal. -> Sepp
 
-Neue Sachen:
+Technik:
+* Methodenimplementation mit InstallWithToDo/InstallWithCache -> Alle überprüfen.
+* Trace auf Product -> Gutsche
 
-* IsMorphism -> IsWellDefined DONE
-* Extend direct product.
-* Convenience functions for functors DONE
-
-Neue Kategorien
-
+ToDo:
+* Natürliche Trasformationen
+  - 2-Zellen
 * Komplexe -> Gutsche
 * Cokomplexe -> Gutsche -> QPA
-* Verallgemeinerte Morphismen
 * Serre-Quotienten
+
+Fehlt:
+* GeneralizedMorphisms
+  - Vergleiche
+  - Vertreter mit Identität als Range ausrechnen.
+  - Propagation:
+    + Honest und Mono/Epi => Splitmono/Splitepi
+
+Neue Kategorien
 * Spektralsequenzen
