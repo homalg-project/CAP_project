@@ -222,24 +222,15 @@ end );
 
 ##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism and HasHonestRange, IsGeneralizedMorphism and SetHasHonestSource ],
+                                       [ IsGeneralizedMorphism 
+                                         and HasHonestRange
+                                         and CanComputePreComposeInUnderlyingHonestCategory,
+                                         IsGeneralizedMorphism and HasHonestSource ],
                                        
   function( mor1, mor2 )
     local category;
     
     category := HomalgCategory( mor1 );
-    
-    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
     
     if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
         
@@ -253,24 +244,16 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism and HasHonestRange, IsGeneralizedMorphism and HasHonestRange ],
+                                       [ IsGeneralizedMorphism 
+                                         and HasHonestRange
+                                         and CanComputePreComposeInUnderlyingHonestCategory
+                                         and CanComputePullbackInUnderlyingHonestCategory,
+                                         IsGeneralizedMorphism and HasHonestRange ],
                                        
   function( mor1, mor2 )
     local category, pullback, new_source_aid, new_associated_morphism;
     
     category := HomalgCategory( mor1 );
-    
-    if not CanComputePreCompose( UnderlyingHonestCategory( category ) ) or not CanComputePullback( UnderlyingHonestCategory( category ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
     
     if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
         
@@ -301,12 +284,6 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     
     category := HomalgCategory( mor1 );
     
-    if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
-    
     if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
         
         Error( "morphisms are not composable" );
@@ -325,19 +302,15 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism and IsHonest and CanComputePreComposeInUnderlyingHonestCategory,
+                                       [ IsGeneralizedMorphism
+                                         and IsHonest
+                                         and CanComputePreComposeInUnderlyingHonestCategory,
                                        IsGeneralizedMorphism and IsHonest ],
                                        
   function( mor1, mor2 )
     local category;
     
     category := HomalgCategory( mor1 );
-    
-    if not IsIdenticalObj( category, HomalgCategory( mor2 ) ) then
-        
-        TryNextMethod( );
-        
-    fi;
     
     if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
         
@@ -436,4 +409,4 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     
     return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject );
