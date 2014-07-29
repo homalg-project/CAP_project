@@ -4,6 +4,8 @@ ReadPackage( "CategoriesForHomalg", "gap/CategoryObjects.gi");
 
 ReadPackage( "CategoriesForHomalg", "gap/CategoryMorphisms.gi");
 
+ReadPackage( "CategoriesForHomalg", "gap/CategoryTwoCells.gi");
+
 ReadPackage( "CategoriesForHomalg", "gap/UniversalObjects.gi" );
 
 ReadPackage( "CategoriesForHomalg", "gap/OppositeCategory.gi");

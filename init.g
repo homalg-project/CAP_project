@@ -9,6 +9,8 @@ ReadPackage( "CategoriesForHomalg", "gap/CategoryObjects.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/CategoryMorphisms.gd");
 
+ReadPackage( "CategoriesForHomalg", "gap/CategoryTwoCells.gd");
+
 ReadPackage( "CategoriesForHomalg", "gap/UniversalObjects.gd" );
 
 ReadPackage( "CategoriesForHomalg", "gap/OppositeCategory.gd");

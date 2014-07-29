@@ -103,7 +103,10 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeImage",
                 "CanComputeImageEmbedding",
                 "CanComputeImageEmbeddingWithGivenImage",
-                "CanComputeGeneralizedMorphismFromFactorToSubobject"
+                "CanComputeGeneralizedMorphismFromFactorToSubobject",
+                "CanComputeHorizontalPreCompose",
+                "CanComputeVerticalPreCompose",
+                "CanComputeIdentityTwoCell"
                 # .. 
               ] );
 
@@ -208,6 +211,11 @@ DeclareAttribute( "ObjectFilter",
 #!
 DeclareAttribute( "MorphismFilter",
                   IsHomalgCategory );
+
+#!
+DeclareAttribute( "TwoCellFilter",
+                  IsHomalgCategory );
+
 #! @EndGroup
 
 #############################################

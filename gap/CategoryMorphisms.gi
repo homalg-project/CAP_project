@@ -319,7 +319,7 @@ InstallMethod( Add,
     
     SetHomalgCategory( morphism, category );
 
-    INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT( category, morphism );
+    INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM( category, morphism );
     
 end );
 

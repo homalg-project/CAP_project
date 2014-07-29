@@ -123,6 +123,10 @@ InstallGlobalFunction( CREATE_HOMALG_CATEGORY_FILTERS,
     
     SetMorphismFilter( category, NewFilter( filter_name ) );
     
+    filter_name := Concatenation( name, "TwoCellFilter" );
+    
+    SetTwoCellFilter( category, NewFilter( filter_name ) );
+    
 end );
 
 ##
