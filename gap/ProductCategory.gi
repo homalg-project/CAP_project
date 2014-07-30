@@ -17,12 +17,20 @@ BindGlobal( "TheTypeOfHomalgProductCategories",
         NewType( TheFamilyOfHomalgCategories,
                  IsHomalgProductCategoryRep ) );
 
+DeclareRepresentation( "IsHomalgCategoryProductCellRep",
+                       IsAttributeStoringRep and IsHomalgCategoryCell,
+                       [ ] );
+
 DeclareRepresentation( "IsHomalgCategoryProductObjectRep",
-                       IsAttributeStoringRep and IsHomalgCategoryObjectRep,
+                       IsHomalgCategoryProductCellRep and IsHomalgCategoryObjectRep,
                        [ ] );
 
 DeclareRepresentation( "IsHomalgCategoryProductMorphismRep",
-                       IsAttributeStoringRep and IsHomalgCategoryMorphismRep,
+                       IsHomalgCategoryProductCellRep and IsHomalgCategoryMorphismRep,
+                       [ ] );
+
+DeclareRepresentation( "IsHomalgCategoryProductTwoCellRep",
+                       IsHomalgCategoryProductCellRep and IsHomalgCategoryTwoCellRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgCategoryProductObjects",
@@ -32,6 +40,10 @@ BindGlobal( "TheTypeOfHomalgCategoryProductObjects",
 BindGlobal( "TheTypeOfHomalgCategoryProductMorphisms",
         NewType( TheFamilyOfHomalgCategoryMorphisms,
                 IsHomalgCategoryProductMorphismRep ) );
+
+BindGlobal( "TheTypeOfHomalgCategoryProductTwoCells",
+        NewType( TheFamilyOfHomalgCategoryTwoCells,
+                IsHomalgCategoryProductTwoCellRep ) );
 
 ###################################
 ##
@@ -123,6 +135,26 @@ InstallMethodWithCacheFromObject( ProductOp_OnMorphisms,
 end : ArgumentNumber := 2 );
 
 ##
+InstallMethodWithCacheFromObject( ProductOp_OnTwoCells,
+                                  [ IsList, IsHomalgCategory ],
+                                  
+  function( twocell_list, category )
+    local product_twocell;
+    
+    product_twocell := rec( );
+    
+    ObjectifyWithAttributes( product_twocell, TheTypeOfHomalgCategoryProductTwoCells,
+                             Components, twocell_list,
+                             Length, Length( twocell_list )
+                           );
+    
+    Add( category, product_twocell );
+    
+    return product_twocell;
+    
+end : ArgumentNumber := 2 );
+
+##
 InstallMethod( ProductOp,
                [ IsList, IsHomalgCategoryObject ],
                
@@ -149,6 +181,19 @@ InstallMethod( ProductOp,
 end );
 
 ##
+InstallMethod( ProductOp,
+               [ IsList, IsHomalgCategoryTwoCellRep ],
+               
+  function( twocell_list, selector )
+    local category_list;
+    
+    category_list := List( twocell_list, HomalgCategory );
+    
+    return ProductOp_OnMorphisms( twocell_list, ProductOp( category_list, category_list[ 1 ] ) );
+    
+end );
+
+##
 InstallMethod( \[\],
                [ IsHomalgProductCategoryRep, IsInt ],
                
@@ -166,33 +211,17 @@ end );
 
 ##
 InstallMethod( \[\],
-               [ IsHomalgCategoryProductObjectRep, IsInt ],
+               [ IsHomalgCategoryProductCellRep, IsInt ],
                
-  function( object, index )
+  function( cell, index )
     
-    if Length( object ) < index then
+    if Length( cell ) < index then
         
         Error( "index too high, cannot compute this Component" );
         
     fi;
     
-    return Components( object )[ index ];
-    
-end );
-
-##
-InstallMethod( \[\],
-               [ IsHomalgCategoryProductMorphismRep, IsInt ],
-               
-  function( morphism, index )
-    
-    if Length( morphism ) < index then
-        
-        Error( "index too high, cannot compute this Component" );
-        
-    fi;
-    
-    return Components( morphism )[ index ];
+    return Components( cell )[ index ];
     
 end );
 
@@ -227,10 +256,66 @@ InstallMethod( PreCompose,
                [ IsHomalgCategoryProductMorphismRep, IsHomalgCategoryProductMorphismRep ],
                
   function( mor_left, mor_right )
+    local left_comp, right_comp;
     
-    return CallFuncList( Product, List( [ 1 .. Length( mor_left ) ], i -> PreCompose( mor_left[ i ], mor_right[ i ] ) ) );
+    left_comp := Components( mor_left );
+    
+    right_comp := Components( mor_right );
+    
+    return CallFuncList( Product, List( [ 1 .. Length( mor_left ) ], i -> PreCompose( left_comp[ i ], right_comp[ i ] ) ) );
     
 end );
+
+##
+InstallMethod( Source,
+               [ IsHomalgCategoryProductTwoCellRep ],
+               
+  function( twocell )
+    
+    return CallFuncList( Product, List( Components( twocell ), Source ) );
+    
+end );
+
+##
+InstallMethod( Range,
+               [ IsHomalgCategoryProductMorphismRep ],
+               
+  function( twocell )
+    
+    return CallFuncList( Product, List( Components( twocell ), Range ) );
+    
+end );
+
+##
+InstallMethod( HorizontalPreCompose,
+               [ IsHomalgCategoryProductTwoCellRep, IsHomalgCategoryProductTwoCellRep ],
+               
+  function( twocell_left, twocell_right )
+    local left_comp, right_comp;
+    
+    left_comp := Components( twocell_left );
+    
+    right_comp := Components( twocell_right );
+    
+    return CallFuncList( Product, List( [ 1 .. Length( twocell_left ) ], i -> HorizontalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
+    
+end );
+
+##
+InstallMethod( VerticalPreCompose,
+               [ IsHomalgCategoryProductTwoCellRep, IsHomalgCategoryProductTwoCellRep ],
+               
+  function( twocell_left, twocell_right )
+    local left_comp, right_comp;
+    
+    left_comp := Components( twocell_left );
+    
+    right_comp := Components( twocell_right );
+    
+    return CallFuncList( Product, List( [ 1 .. Length( twocell_left ) ], i -> VerticalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
+    
+end );
+
 
 ###################################
 ##
@@ -360,7 +445,7 @@ end );
 
 ##
 InstallMethod( IsEqualForCache,
-               [ IsHomalgCategoryProductObjectRep, IsHomalgCategoryProductObjectRep ],
+               [ IsHomalgCategoryProductCellRep, IsHomalgCategoryProductCellRep ],
                
   function( obj1, obj2 )
     local list1, list2, length;
@@ -368,29 +453,6 @@ InstallMethod( IsEqualForCache,
     list1 := Components( obj1 );
     
     list2 := Components( obj2 );
-    
-    length := Length( list1 );
-    
-    if length <> Length( list2 ) then
-        
-        return false;
-        
-    fi;
-    
-    return ForAll( [ 1 .. length ], i -> IsIdenticalObj( list1[ i ], list2[ i ] ) );
-    
-end );
-
-##
-InstallMethod( IsEqualForCache,
-               [ IsHomalgCategoryProductMorphismRep, IsHomalgCategoryProductMorphismRep ],
-               
-  function( mor1, mor2 )
-    local list1, list2, length;
-    
-    list1 := Components( mor1 );
-    
-    list2 := Components( mor2 );
     
     length := Length( list1 );
     

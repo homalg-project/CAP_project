@@ -25,10 +25,8 @@ DeclareOperation( "\[\]",
                   [ IsHomalgCategory, IsInt ] );
 
 DeclareOperation( "\[\]",
-                  [ IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryCell, IsInt ] );
 
-DeclareOperation( "\[\]",
-                  [ IsHomalgCategoryMorphism, IsInt ] );
 
 ############################
 ##
@@ -45,11 +43,11 @@ DeclareOperation( "ProductOp_OnMorphisms",
 DeclareOperation( "ProductOp_OnObjects",
                   [ IsList, IsHomalgCategory ] );
 
-DeclareOperation( "ProductOp",
-                  [ IsList, IsHomalgCategoryObject ] );
+DeclareOperation( "ProductOp_OnTwoCells",
+                  [ IsList, IsHomalgCategory ] );
 
 DeclareOperation( "ProductOp",
-                  [ IsList, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsHomalgCategoryCell ] );
 
 ############################
 ##
