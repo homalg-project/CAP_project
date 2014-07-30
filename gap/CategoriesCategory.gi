@@ -661,7 +661,3 @@ InstallMethodWithToDoForIsWellDefined( ApplyNaturalTransformation,
     return return_morphism;
     
 end );
-    
-
-
-

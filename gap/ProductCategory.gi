@@ -58,8 +58,8 @@ InstallMethod( Components,
 ###################################
 
 ##
-InstallMethodWithCache( ProductOp,
-                        [ IsList, IsHomalgCategory ],
+InstallMethodWithCacheFromObject( ProductOp,
+                                  [ IsList, IsHomalgCategory ],
                         
   function( category_list, selector )
     local product_category, namestring;
@@ -80,7 +80,7 @@ InstallMethodWithCache( ProductOp,
     
     return product_category;
     
-end );
+end : ArgumentNumber := 2 );
 
 ##
 InstallMethodWithCacheFromObject( ProductOp_OnObjects,
@@ -127,8 +127,11 @@ InstallMethod( ProductOp,
                [ IsList, IsHomalgCategoryObject ],
                
   function( object_list, selector )
+    local category_list;
     
-    return ProductOp_OnObjects( object_list, CallFuncList( Product, List( object_list, HomalgCategory ) ) );
+    category_list := List( object_list, HomalgCategory );
+    
+    return ProductOp_OnObjects( object_list, ProductOp( category_list, category_list[ 1 ] ) );
     
 end );
 
@@ -137,8 +140,11 @@ InstallMethod( ProductOp,
                [ IsList, IsHomalgCategoryMorphism ],
                
   function( morphism_list, selector )
+    local category_list;
     
-    return ProductOp_OnMorphisms( morphism_list, CallFuncList( Product, List( morphism_list, HomalgCategory ) ) );
+    category_list := List( morphism_list, HomalgCategory );
+    
+    return ProductOp_OnMorphisms( morphism_list, ProductOp( category_list, category_list[ 1 ] ) );
     
 end );
 
@@ -328,3 +334,72 @@ Product := function( arg )
 end;
 
 MakeReadOnlyGlobal( "Product" );
+
+##
+InstallMethod( IsEqualForCache,
+               [ IsHomalgProductCategoryRep, IsHomalgProductCategoryRep ],
+               
+  function( category1, category2 )
+    local list1, list2, length;
+    
+    list1 := Components( category1 );
+    
+    list2 := Components( category2 );
+    
+    length := Length( list1 );
+    
+    if length <> Length( list2 ) then
+        
+        return false;
+        
+    fi;
+    
+    return ForAll( [ 1 .. length ], i -> IsIdenticalObj( list1[ i ], list2[ i ] ) );
+    
+end );
+
+##
+InstallMethod( IsEqualForCache,
+               [ IsHomalgCategoryProductObjectRep, IsHomalgCategoryProductObjectRep ],
+               
+  function( obj1, obj2 )
+    local list1, list2, length;
+    
+    list1 := Components( obj1 );
+    
+    list2 := Components( obj2 );
+    
+    length := Length( list1 );
+    
+    if length <> Length( list2 ) then
+        
+        return false;
+        
+    fi;
+    
+    return ForAll( [ 1 .. length ], i -> IsIdenticalObj( list1[ i ], list2[ i ] ) );
+    
+end );
+
+##
+InstallMethod( IsEqualForCache,
+               [ IsHomalgCategoryProductMorphismRep, IsHomalgCategoryProductMorphismRep ],
+               
+  function( mor1, mor2 )
+    local list1, list2, length;
+    
+    list1 := Components( mor1 );
+    
+    list2 := Components( mor2 );
+    
+    length := Length( list1 );
+    
+    if length <> Length( list2 ) then
+        
+        return false;
+        
+    fi;
+    
+    return ForAll( [ 1 .. length ], i -> IsIdenticalObj( list1[ i ], list2[ i ] ) );
+    
+end );
