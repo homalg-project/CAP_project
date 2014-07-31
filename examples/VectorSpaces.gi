@@ -3,6 +3,12 @@ LoadPackage( "CategoriesForHomalg" );
 
 LoadPackage( "MatricesForHomalg" );
 
+#ProfileFunctionsInGlobalVariables( true );
+#ProfileOperationsAndMethods( true );
+#ProfileGlobalFunctions( true );
+
+ProfileMethods( IsEqualForCache );
+
 ###################################
 ##
 ## Types and Representations
@@ -776,18 +782,97 @@ end );
 # 
 # composition := PreCompose( phi2_tilde, psi2_tilde );
 
-phi3_associated := VectorSpaceMorphism( B, [ [ 1, 0 ], [ 0, 1 ] ], B );
+# phi3_associated := VectorSpaceMorphism( B, [ [ 1, 0 ], [ 0, 1 ] ], B );
+# 
+# phi3_range_aid := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 1 ], [ 0, 0 ] ], B );
+# 
+# psi3_associated := VectorSpaceMorphism( B, [ [ 1, 0 ], [ 0, 1 ] ], B );
+# 
+# psi3_source_aid := VectorSpaceMorphism( B, [ [ 0,1,0],[0,0,1]], C );
+# 
+# phi3 := GeneralizedMorphismWithRangeAid( phi3_associated, phi3_range_aid );
+# 
+# psi3 := GeneralizedMorphismWithSourceAid( psi3_source_aid, psi3_associated );
+# 
+# PreCompose( phi3, psi3 );
 
-phi3_range_aid := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 1 ], [ 0, 0 ] ], B );
+####################################
+##
+## Natural transformation
+##
+####################################
 
-psi3_associated := VectorSpaceMorphism( B, [ [ 1, 0 ], [ 0, 1 ] ], B );
+##
+identity_functor := IdentityMorphism( AsCatObject( vecspaces ) );
 
-psi3_source_aid := VectorSpaceMorphism( B, [ [ 0,1,0],[0,0,1]], C );
+##
+zero_object := HomalgFunctor( "Zero functor of VectorSpaces", vecspaces, vecspaces );
 
-phi3 := GeneralizedMorphismWithRangeAid( phi3_associated, phi3_range_aid );
+AddObjectFunction( zero_object,
+                   
+  function( obj )
+    
+    return ZeroObject( obj );
+    
+end );
 
-psi3 := GeneralizedMorphismWithSourceAid( psi3_source_aid, psi3_associated );
+AddMorphismFunction( zero_object,
+                     
+  function( zero1, morphism, zero2 )
+    
+    return VectorSpaceMorphism( zero1, [ ], zero2 );
+    
+end );
 
-PreCompose( phi3, psi3 );
+id_to_zero := NaturalTransformation( "One to zero in VectorSpaces", identity_functor, zero_object );
 
+AddNaturalTransformationFunction( id_to_zero,
+                                  
+  function( obj, one_obj, zero )
+    
+    return MorphismIntoZeroObject( obj );
+    
+end );
+
+##
+double_functor := HomalgFunctor( "Double of Vecspaces", vecspaces, vecspaces );
+
+AddObjectFunction( double_functor,
+                   
+  function( obj )
+    
+    return QVectorSpace( 2 * Dimension( obj ) );
+    
+end );
+
+AddMorphismFunction( double_functor,
+                     
+  function( new_source, mor, new_range )
+    local matr, matr1;
+    
+    matr := EntriesOfHomalgMatrixAsListList( mor!.morphism );
+    
+    matr := Concatenation( List( matr, i -> Concatenation( i, ListWithIdenticalEntries( Length( i ), 0 ) ) ), 
+                           List( matr, i -> Concatenation( ListWithIdenticalEntries( Length( i ), 0 ), i ) ) );
+    
+    return VectorSpaceMorphism( new_source, matr, new_range );
+    
+end );
+
+id_to_double := NaturalTransformation( "Id to double in vecspaces", identity_functor, double_functor );
+
+AddNaturalTransformationFunction( id_to_double,
+                                  
+  function( obj, new_source, new_range )
+    local dim, matr;
+    
+    dim := Dimension( obj );
+    
+    matr := IdentityMat( dim );
+    
+    matr := List( matr, i -> Concatenation( i, i ) );
+    
+    return VectorSpaceMorphism( new_source, matr, new_range );
+    
+end );
 
