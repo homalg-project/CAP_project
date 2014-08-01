@@ -462,6 +462,12 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
   function( generalized_morphism1, generalized_morphism2 )
     local subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
     
+    if IsIdenticalObj( generalized_morphism1, generalized_morphism2 ) then
+    
+      return true;
+      
+    fi;
+    
     subobject1 := SourceAid( generalized_morphism1 );
     
     subobject2 := SourceAid( generalized_morphism2 );
