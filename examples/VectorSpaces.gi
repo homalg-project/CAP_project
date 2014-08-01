@@ -787,7 +787,7 @@ psi3_source_aid := VectorSpaceMorphism( B, [ [ 0,1,0],[0,0,1]], C );
 phi3 := GeneralizedMorphismWithRangeAid( phi3_associated, phi3_range_aid );
 
 psi3 := GeneralizedMorphismWithSourceAid( psi3_source_aid, psi3_associated );
-
-PreCompose( phi3, psi3 );
+# 
+# PreCompose( phi3, psi3 );
 
 

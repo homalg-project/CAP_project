@@ -381,7 +381,9 @@ InstallGlobalFunction( SCHEMES_INSTALL_TODO_LIST_FOR_MORPHISM,
     for implication in list_of_implications do
     
       entry := ToDoListEntry( List( implication[1], property -> [ scheme_morphism, property , true ] ), scheme_morphism, implication[2], true );
-        
+      ## Example:
+      ## entry := ToDoListEntry( [ [ scheme_morphism, "IsSeparated", true ], [ scheme_morphism, "IsQuasiCompact", true ] ], scheme_morphism, "IsQuasiSeparated", true );
+      
       SetDescriptionOfImplication( entry, Concatenation( implication[1], "=>", implication[2] ) );
         
       AddToToDoList( entry );
@@ -394,7 +396,6 @@ InstallGlobalFunction( SCHEMES_INSTALL_TODO_LIST_FOR_MORPHISM,
         
     AddToToDoList( entry );
     
-  
 end );
 
 #######################################

@@ -23,6 +23,47 @@ BindGlobal( "TheTypeOfGeneralizedMorphism",
         NewType( TheFamilyOfHomalgCategoryMorphisms,
                 IsGeneralizedMorphismRep ) );
 
+
+####################################
+##
+## ToDo-Lists
+##
+####################################
+
+InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGORY,
+
+  function( category )
+    local technical_implications, implication, entry, objects;
+    
+    technical_implications := [
+      [
+        [
+          [ category, "CanComputeEqualityOfSubobjects", true ],
+          [ category, "CanComputeEqualityOfFactorobjects", true ],
+          [ category, "CanComputeMonoAsKernelLift", true ],
+          [ category, "CanComputeEpiAsCokernelColift", true ],
+          [ category, "CanComputeEqualityOfMorphisms", true ],
+          [ category, "CanComputePreCompose", true ],
+        ],
+        "CanComputeEqualityOfMorphisms"
+      ]
+    ];
+    
+    for implication in technical_implications do
+      
+      entry := ToDoListEntry( Concatenation( implication[1], [ [ category, "GeneralizedMorphismCategory" ] ] ) , 
+                              [ GeneralizedMorphismCategory, category ], 
+                              implication[2], 
+                              true 
+                            );
+      
+      AddToToDoList( entry );
+      
+    od;
+    
+end );
+
+
 ####################################
 ##
 ## Constructors
@@ -103,6 +144,8 @@ InstallMethod( GeneralizedMorphismCategory,
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY( generalized_morphism_category );
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGORY( category );
     
     return generalized_morphism_category;
     
@@ -378,6 +421,7 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
 
+##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
                                        [ IsGeneralizedMorphism 
                                          and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
@@ -410,3 +454,33 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
+
+## CanCompute management in ToDoList of category
+InstallMethodWithCacheFromObject( EqualityOfMorphisms,
+                                  [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
+                                  
+  function( generalized_morphism1, generalized_morphism2 )
+    local subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
+    
+    subobject1 := SourceAid( generalized_morphism1 );
+    
+    subobject2 := SourceAid( generalized_morphism2 );
+    
+    factorobject1 := RangeAid( generalized_morphism1 );
+    
+    factorobject2 := RangeAid( generalized_morphism2 );
+    
+    if not IsEqualAsSubobject( subobject1, subobject2 ) or
+       not IsEqualAsFactorobject( factorobject1, factorobject2 ) then
+      
+      return false;
+      
+    fi;
+    
+    isomorphism_of_subobjects := MonoAsKernelLift( subobject2, subobject1 );
+    
+    isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
+    
+    return EqualityOfMorphisms( AssociatedMorphism( generalized_morphism1 ), PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) );
+    
+end );
