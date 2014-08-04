@@ -65,6 +65,16 @@ EqualityOfMorphisms( c1, c2 );
 #! true
 EqualityOfMorphisms( c1, c1 );
 #! true
+c3_associated := VectorSpaceMorphism( B_1, [ [ 2, 2 ] ], C_1 );
+#! A rational vector space homomorphism with matrix: 
+#! [ [  2,  2 ] ]
+#! 
+c3 := GeneralizedMorphism( c1_source_aid, c3_associated, c1_range_aid );
+#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+EqualityOfMorphisms( c1, c3 );
+#! false
+EqualityOfMorphisms( c2, c3 );
+#! false
 #! @EndExample
 
 #! First composition test:
