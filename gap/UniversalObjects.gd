@@ -717,7 +717,7 @@ DeclareGlobalFunction( "ProjectionInFactor" );
 # @Returns IsHomalgCategoryMorphism
 # @Arguments D, M, i
 DeclareOperation( "ProjectionInFactorOp",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 #! @Description
 #! Projection in the $i$-th factor of the direct product $P = \prod_j A_j$ 
@@ -725,7 +725,7 @@ DeclareOperation( "ProjectionInFactorOp",
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments D, P, i
 DeclareOperation( "ProjectionInFactorWithGivenDirectProduct",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 #! @Description
 #! Given finitely many morphisms $\alpha_i: A \rightarrow B_i$ this method
@@ -847,10 +847,10 @@ DeclareOperationWithCache( "PullbackOp",
 ## DeclareGlobalFunction( "ProjectionInFactor" ); to be adjusted
 
 DeclareOperation( "ProjectionInFactorOp",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsInt ] );
+                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
 
 DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
 

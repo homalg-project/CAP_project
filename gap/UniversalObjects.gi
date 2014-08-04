@@ -931,7 +931,7 @@ InstallGlobalFunction( ProjectionInFactor,
       
       fi;
     
-      return ProjectionInFactorWithGivenDirectProduct( Genesis( object_product_list )!.DirectFactors, object_product_list, projection_number );
+      return ProjectionInFactorWithGivenDirectProduct( Genesis( object_product_list )!.DirectFactors, projection_number, object_product_list );
     
     fi;
     
@@ -945,7 +945,7 @@ InstallGlobalFunction( ProjectionInFactor,
       
       fi;
     
-      return ProjectionInFactorOfPullbackWithGivenPullback( Genesis( object_product_list )!.PullbackDiagram, object_product_list, projection_number );
+      return ProjectionInFactorOfPullbackWithGivenPullback( Genesis( object_product_list )!.PullbackDiagram, projection_number, object_product_list );
     
     fi;
     
@@ -963,7 +963,7 @@ InstallGlobalFunction( ProjectionInFactor,
           
     fi;
   
-    return ProjectionInFactorOp( object_product_list, object_product_list[1], projection_number );
+    return ProjectionInFactorOp( object_product_list, projection_number, object_product_list[1] );
   
 end );
 
@@ -1043,9 +1043,9 @@ InstallMethod( AddProjectionInFactor,
     SetCanComputeProjectionInFactor( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
-                                           [ IsHomalgCategoryObject, 
-                                             IsHomalgCategoryObject and ObjectFilter( category ), 
-                                             IsInt ],
+                                           [ IsHomalgCategoryObject,
+                                             IsInt,
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
                                              
       function( object_product_list, projection_number, method_selection_object )
         local projection_in_factor, direct_product;
@@ -1092,9 +1092,9 @@ InstallMethod( AddProjectionInFactorWithGivenDirectProduct,
     SetCanComputeProjectionInFactorWithGivenDirectProduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenDirectProduct,
-                                           [ IsHomalgCategoryObject, 
-                                             IsHomalgCategoryObject and ObjectFilter( category ), 
-                                             IsInt ],
+                                           [ IsHomalgCategoryObject,
+                                             IsInt,
+                                             IsHomalgCategoryObject and ObjectFilter( category ),  ],
                                              
       function( object_product_list, projection_number, direct_product )
         local projection_in_factor;
@@ -1259,15 +1259,15 @@ InstallTrueMethod( CanComputeProjectionInFactor, CanComputeDirectProduct and Can
 
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
                                        [ IsHomalgCategoryObject,
-                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorWithGivenDirectProduct,
-                                         IsInt ],
+                                         IsInt,
+                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorWithGivenDirectProduct, ],
                                          -9999, #FIXME
                                          
-  function( object_product_list, method_selection_object, projection_number )
+  function( object_product_list, projection_number, method_selection_object )
     
-    return ProjectionInFactorWithGivenDirectProduct( object_product_list, CallFuncList( DirectProduct, Components( object_product_list ) ), projection_number );
+    return ProjectionInFactorWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, Components( object_product_list ) ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ####################################
 ##
@@ -2025,15 +2025,15 @@ InstallMethod( AddProjectionInFactorOfPullback,
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
                                            [ IsHomalgCategoryMorphism, 
-                                             IsHomalgCategoryMorphism and MorphismFilter( category ), 
-                                             IsInt ],
+                                             IsInt,
+                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                              
-      function( diagram, method_selection_morphism, projection_number )
+      function( diagram, projection_number, method_selection_morphism )
         local base, projection_in_factor, pullback;
         
         if HasPullbackOp( diagram, method_selection_morphism ) then
           
-          return ProjectionInFactorOfPullbackWithGivenPullback( diagram, PullbackOp( diagram, method_selection_morphism ), projection_number );
+          return ProjectionInFactorOfPullbackWithGivenPullback( diagram, projection_number, PullbackOp( diagram, method_selection_morphism ) );
           
         fi;
         
@@ -2074,11 +2074,11 @@ InstallMethod( AddProjectionInFactorOfPullbackWithGivenPullback,
     SetCanComputeProjectionInFactorOfPullbackWithGivenPullback( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPullback,
-                                           [ IsHomalgCategoryMorphism, 
-                                             IsHomalgCategoryObject and ObjectFilter( category ), 
-                                             IsInt ],
+                                           [ IsHomalgCategoryMorphism,
+                                             IsInt,
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
                                              
-      function( diagram, pullback, projection_number )
+      function( diagram, projection_number, pullback )
         local base, projection_in_factor;
         
         base := Range( diagram[1] );
@@ -2299,17 +2299,17 @@ InstallTrueMethod( CanComputeProjectionInFactorOfPullback, CanComputeProjectionI
                                                            CanComputePullback );
 
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
-                                       [ IsHomalgCategoryMorphism, 
+                                       [ IsHomalgCategoryMorphism,
+                                         IsInt,
                                          IsHomalgCategoryMorphism and
                                          CanComputeProjectionInFactorOfPullbackWithGivenPullback and
-                                         CanComputePullback, 
-                                         IsInt ],
+                                         CanComputePullback ],
                                          
-  function( diagram, method_selection_morphism, projection_number )
+  function( diagram, projection_number, method_selection_morphism )
   
-    return ProjectionInFactorOfPullbackWithGivenPullback( diagram, PullbackOp( diagram, method_selection_morphism ), projection_number );
+    return ProjectionInFactorOfPullbackWithGivenPullback( diagram, projection_number, PullbackOp( diagram, method_selection_morphism ) );
   
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
 InstallTrueMethod( CanComputeProjectionInFactorOfPullbackWithGivenPullback, CanComputeKernelEmb and
@@ -2320,14 +2320,14 @@ InstallTrueMethod( CanComputeProjectionInFactorOfPullbackWithGivenPullback, CanC
 # the special construction from above. If the
 # user gives his own pullback method, this derived method fails.
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPullback,
-                                       [ IsHomalgCategoryMorphism, 
-                                         IsHomalgCategoryObject and 
+                                       [ IsHomalgCategoryMorphism,
+                                         IsInt,
+                                         IsHomalgCategoryObject and
                                          CanComputeKernelEmb and
                                          CanComputeProjectionInFactor and
-                                         CanComputePullback, 
-                                         IsInt ],
+                                         CanComputePullback ],
                                          
-  function( diagram, pullback, projection_number )
+  function( diagram, projection_number, pullback )
     local embedding_in_direct_product, direct_product, projection;
   
     if not WasCreatedAsKernel( pullback ) or not IsBound( Genesis( pullback )!.PullbackAsKernelDiagram ) then
@@ -2350,7 +2350,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPull
     
     return PreCompose( embedding_in_direct_product, projection );
     
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismIntoPullbackWithGivenPullback, CanComputeUniversalMorphismIntoDirectProduct and
