@@ -176,7 +176,7 @@ AddPullback( integer_category,
 end );
 
 ##
-AddProjectionInFactorWithGivenPullback( integer_category,
+AddProjectionInFactorOfPullbackWithGivenPullback( integer_category,
                                  
   function( product_mor, pullback, coordinate )
     local range;

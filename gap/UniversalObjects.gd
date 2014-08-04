@@ -849,7 +849,7 @@ DeclareOperationWithCache( "PullbackOp",
 DeclareOperation( "ProjectionInFactorOp",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsInt ] );
 
-DeclareOperation( "ProjectionInFactorWithGivenPullback",
+DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject, IsInt ] );
 
 DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
@@ -872,7 +872,7 @@ DeclareAttribute( "PullbackFunction",
 DeclareAttribute( "ProjectionInFactorOfPullbackFunction",
                   IsHomalgCategory );
 
-DeclareAttribute( "ProjectionInFactorWithGivenPullbackFunction",
+DeclareAttribute( "ProjectionInFactorOfPullbackWithGivenPullbackFunction",
                   IsHomalgCategory );
 
 DeclareAttribute( "UniversalMorphismIntoPullbackFunction",
@@ -900,7 +900,7 @@ DeclareOperation( "AddProjectionInFactorOfPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Arguments C, f
-DeclareOperation( "AddProjectionInFactorWithGivenPullback",
+DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Arguments C, f

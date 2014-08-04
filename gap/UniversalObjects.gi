@@ -945,7 +945,7 @@ InstallGlobalFunction( ProjectionInFactor,
       
       fi;
     
-      return ProjectionInFactorWithGivenPullback( Genesis( object_product_list )!.PullbackDiagram, object_product_list, projection_number );
+      return ProjectionInFactorOfPullbackWithGivenPullback( Genesis( object_product_list )!.PullbackDiagram, object_product_list, projection_number );
     
     fi;
     
@@ -2033,7 +2033,7 @@ InstallMethod( AddProjectionInFactorOfPullback,
         
         if HasPullbackOp( diagram, method_selection_morphism ) then
           
-          return ProjectionInFactorWithGivenPullback( diagram, PullbackOp( diagram, method_selection_morphism ), projection_number );
+          return ProjectionInFactorOfPullbackWithGivenPullback( diagram, PullbackOp( diagram, method_selection_morphism ), projection_number );
           
         fi;
         
@@ -2064,16 +2064,16 @@ InstallMethod( AddProjectionInFactorOfPullback,
 end );
 
 ##
-InstallMethod( AddProjectionInFactorWithGivenPullback,
+InstallMethod( AddProjectionInFactorOfPullbackWithGivenPullback,
                [ IsHomalgCategory, IsFunction ],
 
   function( category, func )
     
-    SetProjectionInFactorWithGivenPullbackFunction( category, func );
+    SetProjectionInFactorOfPullbackWithGivenPullbackFunction( category, func );
     
-    SetCanComputeProjectionInFactorWithGivenPullback( category, true );
+    SetCanComputeProjectionInFactorOfPullbackWithGivenPullback( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenPullback,
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPullback,
                                            [ IsHomalgCategoryMorphism, 
                                              IsHomalgCategoryObject and ObjectFilter( category ), 
                                              IsInt ],
@@ -2095,7 +2095,7 @@ InstallMethod( AddProjectionInFactorWithGivenPullback,
         
         return projection_in_factor;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorWithGivenPullback", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfPullbackWithGivenPullback", 3 ) );
 
 end );
 
@@ -2295,31 +2295,31 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeProjectionInFactorOfPullback, CanComputeProjectionInFactorWithGivenPullback and 
+InstallTrueMethod( CanComputeProjectionInFactorOfPullback, CanComputeProjectionInFactorOfPullbackWithGivenPullback and 
                                                            CanComputePullback );
 
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
                                        [ IsHomalgCategoryMorphism, 
                                          IsHomalgCategoryMorphism and
-                                         CanComputeProjectionInFactorWithGivenPullback and
+                                         CanComputeProjectionInFactorOfPullbackWithGivenPullback and
                                          CanComputePullback, 
                                          IsInt ],
                                          
   function( diagram, method_selection_morphism, projection_number )
   
-    return ProjectionInFactorWithGivenPullback( diagram, PullbackOp( diagram, method_selection_morphism ), projection_number );
+    return ProjectionInFactorOfPullbackWithGivenPullback( diagram, PullbackOp( diagram, method_selection_morphism ), projection_number );
   
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeProjectionInFactorWithGivenPullback, CanComputeKernelEmb and
+InstallTrueMethod( CanComputeProjectionInFactorOfPullbackWithGivenPullback, CanComputeKernelEmb and
                                                                   CanComputeProjectionInFactor and
                                                                   CanComputePullback );
 
 # FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
 # the special construction from above. If the
 # user gives his own pullback method, this derived method fails.
-InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenPullback,
+InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPullback,
                                        [ IsHomalgCategoryMorphism, 
                                          IsHomalgCategoryObject and 
                                          CanComputeKernelEmb and
