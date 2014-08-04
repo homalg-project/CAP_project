@@ -597,10 +597,10 @@ DeclareOperationWithCache( "CoproductOp",
 DeclareGlobalFunction( "InjectionOfCofactor" );
 
 DeclareOperation( "InjectionOfCofactorOp",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 DeclareOperation( "InjectionOfCofactorWithGivenCoproduct",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
 
@@ -944,10 +944,10 @@ DeclareOperationWithCache( "PushoutOp",
 ## DeclareGlobalFunction( "InjectionOfCofactor" ); to be adjusted
 
 DeclareOperation( "InjectionOfCofactorOp",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsInt ] );
+                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
 
 DeclareOperation( "InjectionOfCofactorWithGivenPushout",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 

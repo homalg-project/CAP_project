@@ -203,7 +203,7 @@ end );
 ##
 AddInjectionOfCofactorWithGivenPushout( integer_category,
                                  
-  function( product_mor, pushout, coordinate )
+  function( product_mor, coordinate, pushout )
     local source;
     
     source := Range( product_mor[ coordinate ] );
