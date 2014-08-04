@@ -175,3 +175,31 @@ SourceAid( composition2 );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1 ] ]
 #! @EndExample
+
+#! Honest representative test
+#! @Example
+vecspaces := CreateHomalgCategory( "VectorSpacesForGeneralizedMorphismsTest" );
+#! VectorSpacesForGeneralizedMorphismsTest
+ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
+#! true
+phi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 2 ] ], A );
+#! A rational vector space homomorphism with matrix: 
+#! [ [  2 ] ]
+#! 
+phi_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 1 ] ], B );
+#! A rational vector space homomorphism with matrix: 
+#! [ [  1,  1 ] ]
+#!
+phi_tilde_range_aid := VectorSpaceMorphism( B, [ [ 1, 2 ], [ 3, 4 ] ], B );
+#! A rational vector space homomorphism with matrix: 
+#! [ [  1,  2 ],
+#!   [  3,  4 ] ]
+#!
+phi_tilde := GeneralizedMorphism( phi_tilde_source_aid, phi_tilde_associated, phi_tilde_range_aid );
+#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+HonestRepresentative( phi_tilde );
+#! A rational vector space homomorphism with matrix: 
+#! [ [  -1/4,   1/4 ] ]
+#!
+#! @EndExample
+

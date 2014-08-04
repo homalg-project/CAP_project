@@ -64,6 +64,9 @@ DeclareAttributeWithToDoForIsWellDefined( "AsGeneralizedMorphism",
 DeclareOperation( "GeneralizedMorphismFromFactorToSubobject",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
+DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
+                                          IsGeneralizedMorphism );
+
 ####################################
 ##
 ## Attributes

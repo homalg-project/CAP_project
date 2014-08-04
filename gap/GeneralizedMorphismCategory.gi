@@ -490,3 +490,17 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
     return EqualityOfMorphisms( AssociatedMorphism( generalized_morphism1 ), PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) );
     
 end );
+
+##
+InstallMethod( HonestRepresentative,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return PreCompose( 
+             PreCompose( Inverse( SourceAid( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
+             Inverse( RangeAid( generalized_morphism ) ) 
+           );
+    
+end );
+

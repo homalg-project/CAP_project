@@ -331,7 +331,7 @@ InstallMethod( AddInverse,
     
     SetCanComputeInverse( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( Inverse,
+    InstallMethodWithToDoForIsWellDefined( InverseOp,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsIsomorphism ],
                                            
       function( isomorphism )

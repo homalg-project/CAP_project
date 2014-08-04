@@ -244,7 +244,7 @@ InstallMethod( EpiAsCokernelColift,
 end );
 
 ##
-InstallMethod( Inverse,
+InstallMethod( InverseOp,
                [ IsHomalgCategoryOppositeMorphismRep ],
                -1,
                
