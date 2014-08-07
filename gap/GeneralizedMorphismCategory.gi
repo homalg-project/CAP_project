@@ -46,7 +46,15 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGO
           [ category, "CanComputePreCompose", true ],
         ],
         "CanComputeEqualityOfMorphisms"
-      ]
+      ],
+      
+      [
+        [
+          [ category, "CanComputePreCompose", true ],
+          [ category, "CanComputeInverse", true ]
+        ],
+        "CanComputeHonestRepresentative"
+      ],
     ];
     
     for implication in technical_implications do
@@ -146,6 +154,8 @@ InstallMethod( GeneralizedMorphismCategory,
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY( generalized_morphism_category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGORY( category );
+    
+    SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
     return generalized_morphism_category;
     
@@ -491,7 +501,7 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
     
 end );
 
-##
+## CanCompute management in ToDoList of category
 InstallMethod( HonestRepresentative,
                [ IsGeneralizedMorphism ],
                

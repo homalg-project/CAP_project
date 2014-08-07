@@ -85,6 +85,7 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeEqualityOfFactorobjects",
                 "CanComputeDominates",
                 "CanComputeCodominates",
+                "IsEnrichedOverCommutativeRegularSemigroup",
                 "IsAbCategory", 
                 "IsPreAdditiveCategory", 
                 "IsAdditiveCategory", 
@@ -106,7 +107,8 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeGeneralizedMorphismFromFactorToSubobject",
                 "CanComputeHorizontalPreCompose",
                 "CanComputeVerticalPreCompose",
-                "CanComputeIdentityTwoCell"
+                "CanComputeIdentityTwoCell",
+                "CanComputeHonestRepresentative"
                 # .. 
               ] );
 
@@ -177,6 +179,9 @@ DeclareOperation( "CreateHomalgCategory",
 #! @Section Properties
 ##
 #############################################
+
+DeclareProperty( "IsEnrichedOverCommutativeRegularSemigroup",
+                 IsHomalgCategory );
 
 DeclareProperty( "IsAbCategory", 
                  IsHomalgCategory );

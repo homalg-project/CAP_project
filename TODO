@@ -17,7 +17,7 @@ ToDo:
 Fehlt:
 * GeneralizedMorphisms
   - Vergleiche -> DONE
-  - Vertreter mit Identität als Range ausrechnen.
+  - Vertreter mit Identität als Range ausrechnen. -> DONE
   - Propagation:
     + Honest und Mono/Epi => Splitmono/Splitepi
 
