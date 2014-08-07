@@ -75,6 +75,12 @@ EqualityOfMorphisms( c1, c3 );
 #! false
 EqualityOfMorphisms( c2, c3 );
 #! false
+c1 + c2;
+#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+AssociatedMorphism( c1 + c2 );
+#! A rational vector space homomorphism with matrix: 
+#! [ [  12,  12 ] ]
+#! 
 #! @EndExample
 
 #! First composition test:

@@ -55,6 +55,18 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGO
         ],
         "CanComputeHonestRepresentative"
       ],
+      
+      [
+        [
+          [ category, "CanComputePullback", true ],
+          [ category, "CanComputeProjectionInFactor", true ],
+          [ category, "CanComputePushout", true ],
+          [ category, "CanComputeInjectionOfCofactor", true ],
+          [ category, "CanComputePreCompose", true ],
+          [ category, "CanComputeAdditionForMorphisms", true ],
+        ],
+        "CanComputeAdditionForMorphisms"
+      ],
     ];
     
     for implication in technical_implications do
@@ -514,3 +526,37 @@ InstallMethod( HonestRepresentative,
     
 end );
 
+## CanCompute management in ToDoList of category
+InstallMethodWithToDoForIsWellDefined( \+,
+                                       [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
+                   
+  function( mor1, mor2 )
+    local return_value, pullback_of_sourceaids, pushout_of_rangeaids, restricted_mor1, restricted_mor2;
+    
+    if not IsIdenticalObj( Source( mor1 ), Source( mor2 ) ) or not IsIdenticalObj( Range( mor1 ), Range( mor2 ) ) then
+        
+        Error( "morphisms are not addable" );
+        
+    fi;
+    
+    pullback_of_sourceaids := FiberProduct( SourceAid( mor1 ), SourceAid( mor2 ) );
+    
+    pushout_of_rangeaids := Pushout( RangeAid( mor1 ), RangeAid( mor2 ) );
+    
+    restricted_mor1 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 1 ), AssociatedMorphism( mor1 ) );
+    
+    restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactor( pushout_of_rangeaids, 1 ) );
+    
+    restricted_mor2 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 2 ), AssociatedMorphism( mor2 ) );
+    
+    restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactor( pushout_of_rangeaids, 2 ) );
+    
+    return_value := GeneralizedMorphism( 
+                      PreCompose( ProjectionInFactor( pullback_of_sourceaids, 1 ), SourceAid( mor1 ) ),
+                      restricted_mor1 + restricted_mor2,
+                      PreCompose( RangeAid( mor1 ), InjectionOfCofactor( pushout_of_rangeaids, 1 ) )
+                    );
+    
+    return return_value;
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );
