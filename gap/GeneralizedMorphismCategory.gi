@@ -308,7 +308,7 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
 end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
-InstallMethodWithToDoForIsWellDefined( PreCompose,
+InstallMethodWithCacheFromObject( PreCompose,
                                        [ IsGeneralizedMorphism 
                                          and HasHonestRange
                                          and CanComputePreComposeInUnderlyingHonestCategory
@@ -334,7 +334,7 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     
     return GeneralizedMorphismWithSourceAid( new_source_aid, new_associated_morphism );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 ##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
@@ -514,12 +514,12 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
 end );
 
 ## CanCompute management in ToDoList of category
-InstallMethod( HonestRepresentative,
-               [ IsGeneralizedMorphism ],
-               
+InstallMethodWithToDoForIsWellDefined( HonestRepresentative,
+                                       [ IsGeneralizedMorphism ],
+                                       
   function( generalized_morphism )
     
-    return PreCompose( 
+    return PreCompose(
              PreCompose( Inverse( SourceAid( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
              Inverse( RangeAid( generalized_morphism ) ) 
            );

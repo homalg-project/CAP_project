@@ -4,20 +4,19 @@
 
 Technik:
 * Methodenimplementation mit InstallWithToDo/InstallWithCache -> Alle überprüfen.
+  + GeneralizedMorphism braucht niemals ToDo.
 * Trace auf Product -> Gutsche
 * AddSpecialMethod for methods with specific filters.
 
 ToDo:
-* Natürliche Trasformationen
-  - 2-Zellen -> DONE
 * Komplexe -> Gutsche
 * Cokomplexe -> Gutsche -> QPA
 * Serre-Quotienten
+* AddIsWellDefined
+
 
 Fehlt:
 * GeneralizedMorphisms
-  - Vergleiche -> DONE
-  - Vertreter mit Identität als Range ausrechnen. -> DONE
   - Propagation:
     + Honest und Mono/Epi => Splitmono/Splitepi
 
