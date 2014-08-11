@@ -13,7 +13,7 @@ fi;
 
 if not IsHomalgCategory( vecspaces ) then
   
-  vecspaces := CreateHomalgCategory( "VectorSpaces" );
+  vecspaces := CreateHomalgCategory( "VectorSpacesK2" );
   
 fi;
 

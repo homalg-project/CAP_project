@@ -597,10 +597,10 @@ DeclareOperationWithCache( "CoproductOp",
 DeclareGlobalFunction( "InjectionOfCofactor" );
 
 DeclareOperation( "InjectionOfCofactorOp",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 DeclareOperation( "InjectionOfCofactorWithGivenCoproduct",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
 
@@ -717,7 +717,7 @@ DeclareGlobalFunction( "ProjectionInFactor" );
 # @Returns IsHomalgCategoryMorphism
 # @Arguments D, M, i
 DeclareOperation( "ProjectionInFactorOp",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 #! @Description
 #! Projection in the $i$-th factor of the direct product $P = \prod_j A_j$ 
@@ -725,7 +725,7 @@ DeclareOperation( "ProjectionInFactorOp",
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments D, P, i
 DeclareOperation( "ProjectionInFactorWithGivenDirectProduct",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 #! @Description
 #! Given finitely many morphisms $\alpha_i: A \rightarrow B_i$ this method
@@ -847,10 +847,10 @@ DeclareOperationWithCache( "PullbackOp",
 ## DeclareGlobalFunction( "ProjectionInFactor" ); to be adjusted
 
 DeclareOperation( "ProjectionInFactorOp",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsInt ] );
+                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
 
-DeclareOperation( "ProjectionInFactorWithGivenPullback",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject, IsInt ] );
+DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
+                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
 
@@ -872,7 +872,7 @@ DeclareAttribute( "PullbackFunction",
 DeclareAttribute( "ProjectionInFactorOfPullbackFunction",
                   IsHomalgCategory );
 
-DeclareAttribute( "ProjectionInFactorWithGivenPullbackFunction",
+DeclareAttribute( "ProjectionInFactorOfPullbackWithGivenPullbackFunction",
                   IsHomalgCategory );
 
 DeclareAttribute( "UniversalMorphismIntoPullbackFunction",
@@ -900,7 +900,7 @@ DeclareOperation( "AddProjectionInFactorOfPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Arguments C, f
-DeclareOperation( "AddProjectionInFactorWithGivenPullback",
+DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Arguments C, f
@@ -944,10 +944,10 @@ DeclareOperationWithCache( "PushoutOp",
 ## DeclareGlobalFunction( "InjectionOfCofactor" ); to be adjusted
 
 DeclareOperation( "InjectionOfCofactorOp",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsInt ] );
+                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
 
 DeclareOperation( "InjectionOfCofactorWithGivenPushout",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject, IsInt ] );
+                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 

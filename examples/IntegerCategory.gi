@@ -176,9 +176,9 @@ AddPullback( integer_category,
 end );
 
 ##
-AddProjectionInFactorWithGivenPullback( integer_category,
+AddProjectionInFactorOfPullbackWithGivenPullback( integer_category,
                                  
-  function( product_mor, pullback, coordinate )
+  function( product_morx, coordinate, projection_number )
     local range;
     
     range := Source( product_mor[ coordinate ] );
@@ -203,7 +203,7 @@ end );
 ##
 AddInjectionOfCofactorWithGivenPushout( integer_category,
                                  
-  function( product_mor, pushout, coordinate )
+  function( product_mor, coordinate, pushout )
     local source;
     
     source := Range( product_mor[ coordinate ] );

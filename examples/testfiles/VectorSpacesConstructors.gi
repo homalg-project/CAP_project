@@ -54,7 +54,12 @@ DeclareOperation( "QVectorSpace",
 DeclareOperation( "VectorSpaceMorphism",
                   [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ] );
 
-vecspaces := true;
+
+if not IsBound( vecspaces ) then
+  
+  vecspaces := true;
+  
+fi;
 
 VECTORSPACES_FIELD := HomalgFieldOfRationals( );
 

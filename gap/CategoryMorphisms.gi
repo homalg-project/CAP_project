@@ -554,10 +554,10 @@ end : ArgumentNumber := 1 );
 ##
 InstallTrueMethod( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
 
-InstallMethod( Inverse,
-               [ IsHomalgCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
-               -9999, #FIXME
-               
+InstallMethodWithToDoForIsWellDefined( InverseOp,
+                                       [ IsHomalgCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
+                                       -9999, #FIXME
+                                       
   function( mor )
     local identity_of_range;
         
@@ -571,10 +571,10 @@ end );
 ##
 InstallTrueMethod( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
 
-InstallMethod( Inverse,
-               [ IsHomalgCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
-               -9999, #FIXME
-                                  
+InstallMethodWithToDoForIsWellDefined( InverseOp,
+                                       [ IsHomalgCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
+                                       -9998, #FIXME
+                                       
   function( mor )
     local identity_of_source;
     

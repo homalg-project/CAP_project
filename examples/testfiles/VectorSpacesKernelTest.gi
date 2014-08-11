@@ -2,7 +2,11 @@
 
 #! @Section kernel
 
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesConstructors.gi" );
+if not IsBound( VectorSpacesConstructorsLoaded ) then
+  
+  ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesConstructors.gi" );
+  
+fi;
 
 #! @Example
 vecspaces := CreateHomalgCategory( "VectorSpaces01" );
@@ -39,9 +43,6 @@ KernelEmb( k );
 #! [ [  1,  1 ] ]
 #! 
 #! @EndExample
-
-
-
 
 #! @Example
 vecspaces := CreateHomalgCategory( "VectorSpaces02" );

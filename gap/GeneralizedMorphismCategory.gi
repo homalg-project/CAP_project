@@ -46,7 +46,27 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGO
           [ category, "CanComputePreCompose", true ],
         ],
         "CanComputeEqualityOfMorphisms"
-      ]
+      ],
+      
+      [
+        [
+          [ category, "CanComputePreCompose", true ],
+          [ category, "CanComputeInverse", true ]
+        ],
+        "CanComputeHonestRepresentative"
+      ],
+      
+      [
+        [
+          [ category, "CanComputePullback", true ],
+          [ category, "CanComputeProjectionInFactor", true ],
+          [ category, "CanComputePushout", true ],
+          [ category, "CanComputeInjectionOfCofactor", true ],
+          [ category, "CanComputePreCompose", true ],
+          [ category, "CanComputeAdditionForMorphisms", true ],
+        ],
+        "CanComputeAdditionForMorphisms"
+      ],
     ];
     
     for implication in technical_implications do
@@ -146,6 +166,8 @@ InstallMethod( GeneralizedMorphismCategory,
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY( generalized_morphism_category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGORY( category );
+    
+    SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
     return generalized_morphism_category;
     
@@ -462,6 +484,12 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
   function( generalized_morphism1, generalized_morphism2 )
     local subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
     
+    if IsIdenticalObj( generalized_morphism1, generalized_morphism2 ) then
+    
+      return true;
+      
+    fi;
+    
     subobject1 := SourceAid( generalized_morphism1 );
     
     subobject2 := SourceAid( generalized_morphism2 );
@@ -484,3 +512,51 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
     return EqualityOfMorphisms( AssociatedMorphism( generalized_morphism1 ), PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) );
     
 end );
+
+## CanCompute management in ToDoList of category
+InstallMethod( HonestRepresentative,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return PreCompose( 
+             PreCompose( Inverse( SourceAid( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
+             Inverse( RangeAid( generalized_morphism ) ) 
+           );
+    
+end );
+
+## CanCompute management in ToDoList of category
+InstallMethodWithToDoForIsWellDefined( \+,
+                                       [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
+                   
+  function( mor1, mor2 )
+    local return_value, pullback_of_sourceaids, pushout_of_rangeaids, restricted_mor1, restricted_mor2;
+    
+    if not IsIdenticalObj( Source( mor1 ), Source( mor2 ) ) or not IsIdenticalObj( Range( mor1 ), Range( mor2 ) ) then
+        
+        Error( "morphisms are not addable" );
+        
+    fi;
+    
+    pullback_of_sourceaids := FiberProduct( SourceAid( mor1 ), SourceAid( mor2 ) );
+    
+    pushout_of_rangeaids := Pushout( RangeAid( mor1 ), RangeAid( mor2 ) );
+    
+    restricted_mor1 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 1 ), AssociatedMorphism( mor1 ) );
+    
+    restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactor( pushout_of_rangeaids, 1 ) );
+    
+    restricted_mor2 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 2 ), AssociatedMorphism( mor2 ) );
+    
+    restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactor( pushout_of_rangeaids, 2 ) );
+    
+    return_value := GeneralizedMorphism( 
+                      PreCompose( ProjectionInFactor( pullback_of_sourceaids, 1 ), SourceAid( mor1 ) ),
+                      restricted_mor1 + restricted_mor2,
+                      PreCompose( RangeAid( mor1 ), InjectionOfCofactor( pushout_of_rangeaids, 1 ) )
+                    );
+    
+    return return_value;
+    
+end : InstallMethod := InstallMethodWithCacheFromObject );

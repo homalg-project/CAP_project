@@ -48,8 +48,8 @@ DeclareAttribute( "UnderlyingObject",
 
 # this attribute is also an implied operation
 
-DeclareAttribute( "Inverse",
-                  IsHomalgCategoryMorphism );
+DeclareOperation( "InverseOp",
+                  [ IsHomalgCategoryMorphism ] );
 
 ###################################
 ##
