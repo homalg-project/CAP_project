@@ -78,9 +78,9 @@ end );
 ##################################
 
 ##
-InstallMethod( Opposite,
-               [ IsHomalgCategoryObject ],
-               
+InstallMethodWithToDoForIsWellDefined( Opposite,
+                                       [ IsHomalgCategoryObject ],
+                                       
   function( object )
     local opposite_object;
     
@@ -98,9 +98,9 @@ InstallMethod( Opposite,
 end );
 
 ##
-InstallMethod( Opposite,
-               [ IsHomalgCategoryMorphism ],
-               
+InstallMethodWithToDoForIsWellDefined( Opposite,
+                                       [ IsHomalgCategoryMorphism ],
+                                       
   function( morphism )
     local opposite_morphism;
     

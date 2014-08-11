@@ -36,10 +36,10 @@ DeclareAttribute( "Opposite",
 DeclareOperation( "Opposite",
                   [ IsHomalgCategory, IsString ] );
 
-DeclareAttribute( "Opposite",
+DeclareAttributeWithToDoForIsWellDefined( "Opposite",
                   IsHomalgCategoryObject );
 
-DeclareAttribute( "Opposite",
+DeclareAttributeWithToDoForIsWellDefined( "Opposite",
                   IsHomalgCategoryMorphism );
 
 
