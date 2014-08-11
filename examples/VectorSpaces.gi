@@ -826,6 +826,10 @@ end );
 
 id_to_zero := NaturalTransformation( "One to zero in VectorSpaces", identity_functor, zero_object );
 
+psi3 := GeneralizedMorphismWithSourceAid( psi3_source_aid, psi3_associated );
+# 
+# PreCompose( phi3, psi3 );
+
 AddNaturalTransformationFunction( id_to_zero,
                                   
   function( obj, one_obj, zero )

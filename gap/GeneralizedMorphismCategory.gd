@@ -27,6 +27,8 @@ DeclareGlobalVariable( "GENERALIZED_MORPHISM_CATEGORY_PROPAGATION_LIST" );
 
 DeclareGlobalVariable( "GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST" );
 
+DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGORY" );
+
 ####################################
 ##
 ## Constructors
