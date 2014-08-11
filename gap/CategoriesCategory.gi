@@ -63,6 +63,8 @@ InstallMethod( AsCatObject,
     
     Add( CATEGORIES_FOR_HOMALG_Cat, cat_obj );
     
+    SetIsWellDefined( cat_obj, true );
+    
     return cat_obj;
     
 end );

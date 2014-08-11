@@ -43,8 +43,8 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY" );
 DeclareAttribute( "UnderlyingHonestCategory",
                   IsHomalgCategory );
 
-DeclareAttribute( "GeneralizedMorphismObject",
-                  IsHomalgCategoryObject );
+DeclareAttributeWithToDoForIsWellDefined( "GeneralizedMorphismObject",
+                                          IsHomalgCategoryObject );
 
 DeclareAttribute( "UnderlyingHonestObject",
                   IsGeneralizedMorphismCategoryObject );
@@ -73,14 +73,14 @@ DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
 ##
 ####################################
 
-DeclareAttribute( "SourceAid",
-                  IsGeneralizedMorphism );
+DeclareAttributeWithToDoForIsWellDefined( "SourceAid",
+                                          IsGeneralizedMorphism );
 
-DeclareAttribute( "RangeAid",
-                  IsGeneralizedMorphism );
+DeclareAttributeWithToDoForIsWellDefined( "RangeAid",
+                                          IsGeneralizedMorphism );
 
-DeclareAttribute( "AssociatedMorphism",
-                  IsGeneralizedMorphism );
+DeclareAttributeWithToDoForIsWellDefined( "AssociatedMorphism",
+                                          IsGeneralizedMorphism );
 
 DeclareProperty( "IsHonest",
                   IsGeneralizedMorphism );
