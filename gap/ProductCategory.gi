@@ -108,6 +108,8 @@ InstallMethodWithCacheFromObject( ProductOp_OnObjects,
                              Length, Length( object_list )
                            );
     
+    ## FIXME: WellDefined entry
+    
     Add( category, product_object );
     
     return product_object;
@@ -127,6 +129,8 @@ InstallMethodWithCacheFromObject( ProductOp_OnMorphisms,
                              Components, morphism_list,
                              Length, Length( morphism_list )
                            );
+    
+    ## FIXME: WellDefined entry
     
     Add( category, product_morphism );
     
@@ -252,9 +256,9 @@ InstallMethod( Range,
 end );
 
 ##
-InstallMethod( PreCompose,
-               [ IsHomalgCategoryProductMorphismRep, IsHomalgCategoryProductMorphismRep ],
-               
+InstallMethodWithToDoForIsWellDefined( PreCompose,
+                                       [ IsHomalgCategoryProductMorphismRep, IsHomalgCategoryProductMorphismRep ],
+                                       
   function( mor_left, mor_right )
     local left_comp, right_comp;
     
@@ -264,7 +268,7 @@ InstallMethod( PreCompose,
     
     return CallFuncList( Product, List( [ 1 .. Length( mor_left ) ], i -> PreCompose( left_comp[ i ], right_comp[ i ] ) ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject);
 
 ##
 InstallMethod( Source,
@@ -287,8 +291,8 @@ InstallMethod( Range,
 end );
 
 ##
-InstallMethod( HorizontalPreCompose,
-               [ IsHomalgCategoryProductTwoCellRep, IsHomalgCategoryProductTwoCellRep ],
+InstallMethodWithToDoForIsWellDefined( HorizontalPreCompose,
+                                       [ IsHomalgCategoryProductTwoCellRep, IsHomalgCategoryProductTwoCellRep ],
                
   function( twocell_left, twocell_right )
     local left_comp, right_comp;
@@ -299,11 +303,11 @@ InstallMethod( HorizontalPreCompose,
     
     return CallFuncList( Product, List( [ 1 .. Length( twocell_left ) ], i -> HorizontalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject);
 
 ##
-InstallMethod( VerticalPreCompose,
-               [ IsHomalgCategoryProductTwoCellRep, IsHomalgCategoryProductTwoCellRep ],
+InstallMethodWithToDoForIsWellDefined( VerticalPreCompose,
+                                       [ IsHomalgCategoryProductTwoCellRep, IsHomalgCategoryProductTwoCellRep ],
                
   function( twocell_left, twocell_right )
     local left_comp, right_comp;
@@ -314,7 +318,7 @@ InstallMethod( VerticalPreCompose,
     
     return CallFuncList( Product, List( [ 1 .. Length( twocell_left ) ], i -> VerticalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject );
 
 
 ###################################
