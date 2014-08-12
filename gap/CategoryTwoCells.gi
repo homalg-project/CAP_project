@@ -206,6 +206,6 @@ InstallMethod( AddIsWellDefinedForTwoCells,
         
         return func( twocell );
         
-    end : Cache := GET_METHOD_CACHE( category, "IsWellDefinedForTwoCells", 1 ) );
+    end );
     
 end );

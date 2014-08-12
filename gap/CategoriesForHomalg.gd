@@ -113,6 +113,7 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsWellDefinedForObjects",
                 "CanComputeIsWellDefinedForTwoCells",
                 "IsRestrictedGeneralizedMorphismCategory",
+                "CanComputeIsZeroForObjects"
                 # .. 
               ] );
 

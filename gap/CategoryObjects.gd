@@ -59,7 +59,7 @@ DeclareAttribute( "Genesis",
 
 ###################################
 ##
-#! @Section Add function
+#! @Section Properties
 ##
 ###################################
 
@@ -69,8 +69,20 @@ DeclareProperty( "IsProjective",
 DeclareProperty( "IsInjective",
                  IsHomalgCategoryObject );
 
+###################################
+##
+#! @Section Zero object
+##
+###################################
+
 DeclareProperty( "IsZero",
                  IsHomalgCategoryObject );
+
+DeclareOperation( "AddIsZeroForObjects",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "IsZeroForObjectsFunction",
+                  IsHomalgCategory );
 
 ###################################
 ##

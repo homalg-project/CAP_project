@@ -619,6 +619,14 @@ AddIsWellDefinedForMorphisms( vecspaces,
     
 end );
 
+# AddIsZeroForObjects( vecspaces,
+# 
+#   function( obj )
+#   
+#     return Dimension( obj ) = 0;
+#   
+# end );
+
 # ##
 # AddImage( vecspaces,
 # 

@@ -138,7 +138,47 @@ InstallMethod( AddIsWellDefinedForObjects,
         
         return func( object );
         
-    end : Cache := GET_METHOD_CACHE( category, "IsWellDefinedForObjects", 1 ) );
+    end );
+    
+end );
+
+###########################
+##
+## IsZero
+##
+###########################
+
+##
+InstallMethod( AddIsZeroForObjects,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+  
+    SetCanComputeIsZeroForObjects( category, true );
+    
+    SetIsZeroForObjectsFunction( category, func );
+    
+    InstallMethod( IsZero,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                   
+      function( object )
+        
+        return func( object );
+        
+    end );
+  
+end );
+
+##
+InstallTrueMethod( SetCanComputeIsZeroForObjects, CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeEqualityOfMorphisms );
+
+InstallMethod( IsZero,
+               [ IsHomalgCategoryObject and CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeEqualityOfMorphisms ],
+               -9999, #FIXME
+               
+  function( object )
+    
+    return EqualityOfMorphisms( IdentityMorphism( object ), ZeroMorphism( object, object ) );
     
 end );
 

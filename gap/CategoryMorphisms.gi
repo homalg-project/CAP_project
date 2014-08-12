@@ -663,7 +663,7 @@ InstallMethod( AddIsWellDefinedForMorphisms,
         
         return func( morphism );
         
-    end : Cache := GET_METHOD_CACHE( category, "IsWellDefinedForMorphisms", 1 ) );
+    end );
       
 end );
 
