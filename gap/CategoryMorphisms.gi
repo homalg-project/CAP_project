@@ -636,6 +636,39 @@ end );
 
 ###########################
 ##
+## IsWellDefined
+##
+###########################
+
+##
+InstallMethod( AddIsWellDefinedForMorphisms,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCanComputeIsWellDefinedForMorphisms( category, true );
+    
+    SetIsWellDefinedForMorphismsFunction( category, func );
+    
+    InstallMethod( IsWellDefined,
+                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   
+      function( morphism )
+        
+        if not ( IsWellDefined( Source( morphism ) ) and IsWellDefined( Range( morphism ) ) ) then
+          
+          return false;
+          
+        fi;
+        
+        return func( morphism );
+        
+    end : Cache := GET_METHOD_CACHE( category, "IsWellDefinedForMorphisms", 1 ) );
+      
+end );
+
+###########################
+##
 ## Print
 ##
 ###########################

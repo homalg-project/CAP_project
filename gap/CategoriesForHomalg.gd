@@ -108,7 +108,11 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeHorizontalPreCompose",
                 "CanComputeVerticalPreCompose",
                 "CanComputeIdentityTwoCell",
-                "CanComputeHonestRepresentative"
+                "CanComputeHonestRepresentative",
+                "CanComputeIsWellDefinedForMorphisms",
+                "CanComputeIsWellDefinedForObjects",
+                "CanComputeIsWellDefinedForTwoCells",
+                "IsRestrictedGeneralizedMorphismCategory",
                 # .. 
               ] );
 

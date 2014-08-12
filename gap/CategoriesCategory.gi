@@ -663,3 +663,15 @@ InstallMethodWithToDoForIsWellDefined( ApplyNaturalTransformation,
     return return_morphism;
     
 end );
+
+###################################
+##
+## IsWellDefined
+##
+###################################
+
+AddIsWellDefinedForObjects( CATEGORIES_FOR_HOMALG_Cat,
+
+  IsHomalgCategoryAsCatObjectRep
+
+);

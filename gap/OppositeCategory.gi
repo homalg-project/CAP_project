@@ -353,6 +353,26 @@ InstallMethod( ZeroMorphism,
     
 end );
 
+##
+InstallMethod( IsWellDefined,
+               [ IsHomalgCategoryOppositeObjectRep ],
+               -1,
+  function( obj )
+    
+    return IsWellDefined( Opposite( obj ) );
+    
+end );
+
+##
+InstallMethod( IsWellDefined,
+               [ IsHomalgCategoryOppositeMorphismRep ],
+               -1,
+  function( mor )
+    
+    return IsWellDefined( Opposite( mor ) );
+    
+end );
+
 # ##
 # InstallMethod( DirectSumOp,
 #                [ IsList, IsHomalgCategoryOppositeObjectRep ],
@@ -415,6 +435,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
   function( category )
     local entry_list, entry;
     
+    ## TODO: Maintain this list
     entry_list := [ [ "CanComputeMonoAsKernelLift", "CanComputeEpiAsCokernelColift" ],
                     [ "CanComputeEpiAsCokernelColift", "CanComputeMonoAsKernelLift" ],
                       "CanComputeIdentityMorphism",
@@ -431,11 +452,11 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
                     [ "CanComputeMorphismFromZeroObject", "CanComputeMorphismIntoZeroObject" ],
                     [ "CanComputeMorphismIntoZeroObject", "CanComputeMorphismFromZeroObject" ],
                       "CanComputeZeroMorphism",
-                      "CanComputeDirectSum",
-                    [ "CanComputeProjectionInFirstFactor", "CanComputeInjectionFromFirstSummand" ],
-                    [ "CanComputeProjectionInSecondFactor", "CanComputeInjectionFromSecondSummand" ],
-                    [ "CanComputeInjectionFromFirstSummand", "CanComputeProjectionInFirstFactor" ],
-                    [ "CanComputeInjectionFromSecondSummand", "CanComputeProjectionInSecondFactor" ]
+                      "CanComputeDirectSum"
+#                     [ "CanComputeProjectionInFirstFactor", "CanComputeInjectionFromFirstSummand" ],
+#                     [ "CanComputeProjectionInSecondFactor", "CanComputeInjectionFromSecondSummand" ],
+#                     [ "CanComputeInjectionFromFirstSummand", "CanComputeProjectionInFirstFactor" ],
+#                     [ "CanComputeInjectionFromSecondSummand", "CanComputeProjectionInSecondFactor" ]
                   # ...
                   ];
     
@@ -468,7 +489,8 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM,
                     [ "One is self dual", "IsOne" ],
                     [ "Epi is dual to mono", [ "IsSplitMonomorphism", "IsSplitEpimorphism" ] ],
                     [ "Mono is dual to epi", [ "IsSplitEpimorphism", "IsSplitMonomorphism" ] ],
-                    [ "Idempotent is self dual", "IsIdempotent" ],
+                    [ "Idempotent is self dual", "IsIdempotent" ]#,
+#                     [ "IsWellDefined", "IsWellDefined" ]
                   # ...
                   ];
 
@@ -493,7 +515,8 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT,
 
     entry_list := [ [ "IsInjective", "IsProjective" ],
                     [ "IsProjective", "IsInjective" ],
-                    [ "IsZero", "IsZero" ]
+                    [ "IsZero", "IsZero" ]#,
+#                     [ "IsWellDefined", "IsWellDefined" ]
                   # ...
                   ];
 

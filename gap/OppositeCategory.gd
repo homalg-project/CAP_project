@@ -36,10 +36,11 @@ DeclareAttribute( "Opposite",
 DeclareOperation( "Opposite",
                   [ IsHomalgCategory, IsString ] );
 
-DeclareAttributeWithToDoForIsWellDefined( "Opposite",
+# FIXME: Usage of DeclareAttributeWithToDoForIsWellDefined leads to recursion error
+DeclareAttribute( "Opposite",
                   IsHomalgCategoryObject );
 
-DeclareAttributeWithToDoForIsWellDefined( "Opposite",
+DeclareAttribute( "Opposite",
                   IsHomalgCategoryMorphism );
 
 

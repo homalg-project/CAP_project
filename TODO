@@ -7,6 +7,7 @@ Technik:
   + GeneralizedMorphism braucht niemals ToDo.
 * Trace auf Product -> Gutsche
 * AddSpecialMethod for methods with specific filters.
+* Maintain ToDo List in Opposite.gi
 
 ToDo:
 * Komplexe -> Gutsche

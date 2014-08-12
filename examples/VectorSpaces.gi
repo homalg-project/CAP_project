@@ -592,6 +592,33 @@ AddUniversalMorphismFromInitialObjectWithGivenInitialObject( vecspaces,
 
 end );
 
+##
+AddIsWellDefinedForObjects( vecspaces,
+
+  function( vectorspace )
+  
+    return IsHomalgRationalVectorSpaceRep( vectorspace ) and Dimension( vectorspace ) >= 0;
+  
+end );
+
+##
+AddIsWellDefinedForMorphisms( vecspaces,
+
+  function( morphism )
+    local matrix;
+    
+    if not IsHomalgRationalVectorSpaceMorphismRep( morphism ) then
+      return false;
+    fi;
+    
+    matrix := morphism!.morphism;
+    
+    return     IsHomalgMatrix( matrix )
+           and NrRows( matrix ) = Dimension( Source( morphism ) )
+           and NrColumns( matrix ) = Dimension( Range( morphism ) );
+    
+end );
+
 # ##
 # AddImage( vecspaces,
 # 
@@ -826,7 +853,7 @@ end );
 
 id_to_zero := NaturalTransformation( "One to zero in VectorSpaces", identity_functor, zero_object );
 
-psi3 := GeneralizedMorphismWithSourceAid( psi3_source_aid, psi3_associated );
+# psi3 := GeneralizedMorphismWithSourceAid( psi3_source_aid, psi3_associated );
 # 
 # PreCompose( phi3, psi3 );
 
