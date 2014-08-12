@@ -256,6 +256,16 @@ end );
 ###################################
 
 ##
+InstallMethod( IsWellDefined,
+               [ IsHomalgCategoryProductCellRep ],
+               
+  function( cell )
+    
+    return ForAll( Components( cell ), IsWellDefined );
+    
+end );
+
+##
 InstallMethod( Source,
                [ IsHomalgCategoryProductMorphismRep ],
                
