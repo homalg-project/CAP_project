@@ -1754,9 +1754,9 @@ end );
 # InstallTrueMethod( CanComputeTerminalObject, CanComputeUniversalMorphismIntoTerminalObject );
 
 ## Maybe set IsWellDefined by default.
-InstallMethodWithToDoForIsWellDefined( TerminalObject,
-                                       [ IsHomalgCategory ],
-                                       
+InstallMethod( TerminalObject,
+               [ IsHomalgCategory ],
+               
   function( category )
     local terminal_object;
     
@@ -1912,9 +1912,9 @@ end );
 # InstallTrueMethod( CanComputeInitialObject, CanComputeUniversalMorphismFromInitialObject );
 
 ## Maybe set IsWellDefined by default?
-InstallMethodWithToDoForIsWellDefined( InitialObject,
-                                       [ IsHomalgCategory ],
-                                       
+InstallMethod( InitialObject,
+               [ IsHomalgCategory ],
+               
   function( category )
     local initial_object;
     
@@ -1928,7 +1928,7 @@ InstallMethodWithToDoForIsWellDefined( InitialObject,
     
     Add( category, initial_object );
     
-    SetIsWellDefined( terminal_object, true );
+    SetIsWellDefined( initial_object, true );
     
     SetFilterObj( initial_object, WasCreatedAsInitialObject );
     

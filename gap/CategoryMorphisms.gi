@@ -71,13 +71,13 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
     
     ##Well defined
     
-    entry := ToDoListEntry( [ morphism, "IsWellDefined", true ],
-                            [ Source, morphism ], IsWellDefined, true );
+    entry := ToDoListEntry( [ [ morphism, "IsWellDefined", true ] ],
+                            [ Source, morphism ], "IsWellDefined", true );
     
     AddToToDoList( entry );
     
-    entry := ToDoListEntry( [ morphism, "IsWellDefined", true ],
-                            [ Range, morphism ], IsWellDefined, true );
+    entry := ToDoListEntry( [ [ morphism, "IsWellDefined", true ] ],
+                            [ Range, morphism ], "IsWellDefined", true );
     
     AddToToDoList( entry );
     

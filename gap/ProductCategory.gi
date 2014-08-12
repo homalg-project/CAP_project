@@ -99,7 +99,7 @@ InstallMethodWithCacheFromObject( ProductOp_OnObjects,
                                   [ IsList, IsHomalgCategory ],
                         
   function( object_list, category )
-    local product_object;
+    local product_object, entry, i;
     
     product_object := rec( );
     
@@ -108,9 +108,19 @@ InstallMethodWithCacheFromObject( ProductOp_OnObjects,
                              Length, Length( object_list )
                            );
     
-    ## FIXME: WellDefined entry
-    
     Add( category, product_object );
+    
+    entry := List( object_list, i -> [ i, "IsWellDefined", true ] );
+    
+    entry := ToDoListEntry( entry, product_object, "IsWellDefined", true );
+    
+    AddToToDoList( entry );
+    
+    for i in object_list do
+        
+        AddToToDoList( ToDoListEntry( [ [ i, "IsWellDefined", false ] ], product_object, "IsWellDefined", false ) );
+        
+    od;
     
     return product_object;
     
@@ -121,7 +131,7 @@ InstallMethodWithCacheFromObject( ProductOp_OnMorphisms,
                                   [ IsList, IsHomalgCategory ],
                                   
   function( morphism_list, category )
-    local product_morphism;
+    local product_morphism, entry, i;
     
     product_morphism := rec( );
     
@@ -130,9 +140,19 @@ InstallMethodWithCacheFromObject( ProductOp_OnMorphisms,
                              Length, Length( morphism_list )
                            );
     
-    ## FIXME: WellDefined entry
-    
     Add( category, product_morphism );
+    
+    entry := List( morphism_list, i -> [ i, "IsWellDefined", true ] );
+    
+    entry := ToDoListEntry( entry, product_morphism, "IsWellDefined", true );
+    
+    AddToToDoList( entry );
+    
+    for i in morphism_list do
+        
+        AddToToDoList( ToDoListEntry( [ [ i, "IsWellDefined", false ] ], product_morphism, "IsWellDefined", false ) );
+        
+    od;
     
     return product_morphism;
     
