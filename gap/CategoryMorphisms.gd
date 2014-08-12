@@ -98,6 +98,12 @@ DeclareSynonymAttr( "IsFactorobject",
 DeclareProperty( "IsIsomorphism",
                  IsHomalgCategoryMorphism );
 
+DeclareOperation( "AddIsIsomorphism",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "IsIsomorphismFunction",
+                  IsHomalgCategory );
+
 DeclareProperty( "IsEndomorphism",
                  IsHomalgCategoryMorphism );
 

@@ -26,7 +26,7 @@ BindGlobal( "TheTypeOfHomalgCategoryMorphisms",
 
 ######################################
 ##
-## Immediate Methods
+## Properties logic
 ##
 ######################################
 
@@ -127,7 +127,6 @@ InstallMethod( AddIsMonomorphism,
 end );
 
 ##
-##
 InstallTrueMethod( SetCanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsMonomorphism,
@@ -162,7 +161,6 @@ InstallMethod( AddIsEpimorphism,
 end );
 
 ##
-##
 InstallTrueMethod( SetCanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsEpimorphism,
@@ -172,6 +170,40 @@ InstallMethod( IsEpimorphism,
   function( morphism )
     
     return IsZero( Cokernel( morphism ) );
+    
+end );
+
+##
+InstallMethod( AddIsIsomorphism,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCanComputeIsIsomorphism( category, true );
+    
+    SetIsIsomorphismFunction( category, func );
+    
+    InstallMethod( IsIsomorphism,
+                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   
+      function( morphism )
+        
+        return func( morphism );
+        
+    end );
+      
+end );
+
+##
+InstallTrueMethod( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
+
+InstallMethod( IsIsomorphism,
+               [ IsHomalgCategoryMorphism and CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory ],
+               -9999, #FIXME
+               
+  function( morphism )
+    
+    return IsMonomorphism( morphism ) and IsEpimorphism( morphism );
     
 end );
 

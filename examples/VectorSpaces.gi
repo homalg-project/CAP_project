@@ -618,30 +618,39 @@ AddIsWellDefinedForMorphisms( vecspaces,
            and NrColumns( matrix ) = Dimension( Range( morphism ) );
     
 end );
-
-AddIsZeroForObjects( vecspaces,
-
-  function( obj )
-  
-    return Dimension( obj ) = 0;
-  
-end );
-
-AddIsMonomorphism( vecspaces,
-
-  function( morphism )
-  
-    return RowRankOfMatrix( morphism!.morphism ) = Dimension( Source( morphism ) );
-  
-end );
-
-AddIsEpimorphism( vecspaces,
-
-  function( morphism )
-  
-    return ColumnRankOfMatrix( morphism!.morphism ) = Dimension( Range( morphism ) );
-  
-end );
+# 
+# AddIsZeroForObjects( vecspaces,
+# 
+#   function( obj )
+#   
+#     return Dimension( obj ) = 0;
+#   
+# end );
+# 
+# AddIsMonomorphism( vecspaces,
+# 
+#   function( morphism )
+#   
+#     return RowRankOfMatrix( morphism!.morphism ) = Dimension( Source( morphism ) );
+#   
+# end );
+# 
+# AddIsEpimorphism( vecspaces,
+# 
+#   function( morphism )
+#   
+#     return ColumnRankOfMatrix( morphism!.morphism ) = Dimension( Range( morphism ) );
+#   
+# end );
+# 
+# AddIsIsomorphism( vecspaces,
+# 
+#   function( morphism )
+#   
+#     return Dimension( Range( morphism ) ) = Dimension( Source( morphism ) ) 
+#            and ColumnRankOfMatrix( morphism!.morphism ) = Dimension( Range( morphism ) );
+#   
+# end );
 
 # ##
 # AddImage( vecspaces,

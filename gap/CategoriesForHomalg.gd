@@ -115,7 +115,8 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "IsRestrictedGeneralizedMorphismCategory",
                 "CanComputeIsZeroForObjects",
                 "CanComputeIsMonomorphism",
-                "CanComputeIsEpimorphism"
+                "CanComputeIsEpimorphism",
+                "CanComputeIsIsomorphism"
                 # .. 
               ] );
 
