@@ -98,3 +98,15 @@ DeclareOperation( "AddIdentityTwoCell",
 
 DeclareAttribute( "IdentityTwoCellFunction",
                   IsHomalgCategory );
+
+###################################
+##
+## IsWellDefined
+##
+###################################
+
+DeclareOperation( "AddIsWellDefinedForTwoCells",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "IsWellDefinedForTwoCellsFunction",
+                  IsHomalgCategory );

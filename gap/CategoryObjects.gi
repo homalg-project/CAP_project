@@ -117,6 +117,33 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ###########################
 ##
+## IsWellDefined
+##
+###########################
+
+##
+InstallMethod( AddIsWellDefinedForObjects,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCanComputeIsWellDefinedForObjects( category, true );
+    
+    SetIsWellDefinedForObjectsFunction( category, func );
+    
+    InstallMethod( IsWellDefined,
+                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                   
+      function( object )
+        
+        return func( object );
+        
+    end : Cache := GET_METHOD_CACHE( category, "IsWellDefinedForObjects", 1 ) );
+    
+end );
+
+###########################
+##
 ## Print
 ##
 ###########################

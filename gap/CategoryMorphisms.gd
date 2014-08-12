@@ -197,6 +197,18 @@ DeclareOperation( "PreCompose",
 
 ###################################
 ##
+## IsWellDefined
+##
+###################################
+
+DeclareOperation( "AddIsWellDefinedForMorphisms",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "IsWellDefinedForMorphismsFunction",
+                  IsHomalgCategory );
+
+###################################
+##
 #! Monomorphism as kernel lift
 ##
 ###################################

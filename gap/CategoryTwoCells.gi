@@ -176,3 +176,36 @@ InstallMethod( AddIdentityTwoCell,
     end );
     
 end );
+
+###########################
+##
+## IsWellDefined
+##
+###########################
+
+##
+InstallMethod( AddIsWellDefinedForTwoCells,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCanComputeIsWellDefinedForTwoCells( category, true );
+    
+    SetIsWellDefinedForTwoCellsFunction( category, func );
+    
+    InstallMethod( IsWellDefined,
+                   [ IsHomalgCategoryTwoCell and TwoCellFilter( category ) ],
+                   
+      function( twocell )
+        
+        if not( IsWellDefined( Source( twocell ) ) and IsWellDefined( Range( twocell ) ) ) then
+          
+          return false;
+          
+        fi;
+        
+        return func( twocell );
+        
+    end : Cache := GET_METHOD_CACHE( category, "IsWellDefinedForTwoCells", 1 ) );
+    
+end );

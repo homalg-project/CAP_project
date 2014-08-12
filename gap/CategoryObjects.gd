@@ -106,7 +106,17 @@ DeclareAttributeWithToDoForIsWellDefined( "IdentityMorphism",
 DeclareOperation( "ZeroMorphism",
                   [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
+###################################
+##
+## IsWellDefined
+##
+###################################
 
+DeclareOperation( "AddIsWellDefinedForObjects",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "IsWellDefinedForObjectsFunction",
+                  IsHomalgCategory );
 
 
 
