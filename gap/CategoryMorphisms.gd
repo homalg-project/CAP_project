@@ -74,11 +74,23 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 DeclareProperty( "IsMonomorphism",
                  IsHomalgCategoryMorphism );
 
+DeclareOperation( "AddIsMonomorphism",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "IsMonomorphismFunction",
+                  IsHomalgCategory );
+
 DeclareSynonymAttr( "IsSubobject",
                     IsMonomorphism );
 
 DeclareProperty( "IsEpimorphism",
                  IsHomalgCategoryMorphism );
+
+DeclareOperation( "AddIsEpimorphism",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "IsEpimorphismFunction",
+                  IsHomalgCategory );
 
 DeclareSynonymAttr( "IsFactorobject",
                     IsEpimorphism );

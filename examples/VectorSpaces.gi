@@ -54,7 +54,7 @@ DeclareOperation( "VectorSpaceMorphism",
 
 vecspaces := CreateHomalgCategory( "VectorSpaces" );
 
-SetIsAdditiveCategory( vecspaces, true );
+SetIsAbelianCategory( vecspaces, true );
 
 VECTORSPACES_FIELD := HomalgFieldOfRationals( );
 
@@ -619,13 +619,29 @@ AddIsWellDefinedForMorphisms( vecspaces,
     
 end );
 
-# AddIsZeroForObjects( vecspaces,
-# 
-#   function( obj )
-#   
-#     return Dimension( obj ) = 0;
-#   
-# end );
+AddIsZeroForObjects( vecspaces,
+
+  function( obj )
+  
+    return Dimension( obj ) = 0;
+  
+end );
+
+AddIsMonomorphism( vecspaces,
+
+  function( morphism )
+  
+    return RowRankOfMatrix( morphism!.morphism ) = Dimension( Source( morphism ) );
+  
+end );
+
+AddIsEpimorphism( vecspaces,
+
+  function( morphism )
+  
+    return ColumnRankOfMatrix( morphism!.morphism ) = Dimension( Range( morphism ) );
+  
+end );
 
 # ##
 # AddImage( vecspaces,

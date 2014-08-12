@@ -40,6 +40,8 @@ InstallTrueMethod( IsMonomorphism, IsHomalgCategoryMorphism and IsSplitMonomorph
 
 InstallTrueMethod( IsEpimorphism, IsHomalgCategoryMorphism and IsSplitEpimorphism );
 
+InstallTrueMethod( IsIsomorphism, IsMonomorphism and IsEpimorphism and IsAbelianCategory );#TODO: weaker?
+
 #######################################
 ##
 ## Technical implications
@@ -99,9 +101,79 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,
 
 ######################################
 ##
-## Subobjects
+## Subobjects and factorobjects
 ##
 ######################################
+
+##
+InstallMethod( AddIsMonomorphism,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCanComputeIsMonomorphism( category, true );
+    
+    SetIsMonomorphismFunction( category, func );
+    
+    InstallMethod( IsMonomorphism,
+                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   
+      function( morphism )
+        
+        return func( morphism );
+        
+    end );
+      
+end );
+
+##
+##
+InstallTrueMethod( SetCanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
+
+InstallMethod( IsMonomorphism,
+               [ IsHomalgCategoryMorphism and CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
+               -9999, #FIXME
+               
+  function( morphism )
+    
+    return IsZero( KernelObject( morphism ) );
+    
+end );
+
+##
+InstallMethod( AddIsEpimorphism,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCanComputeIsEpimorphism( category, true );
+    
+    SetIsEpimorphismFunction( category, func );
+    
+    InstallMethod( IsEpimorphism,
+                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   
+      function( morphism )
+        
+        return func( morphism );
+        
+    end );
+      
+end );
+
+##
+##
+InstallTrueMethod( SetCanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
+
+InstallMethod( IsEpimorphism,
+               [ IsHomalgCategoryMorphism and CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
+               -9999, #FIXME
+               
+  function( morphism )
+    
+    return IsZero( Cokernel( morphism ) );
+    
+end );
 
 ##
 InstallMethod( UnderlyingObject,
