@@ -29,21 +29,21 @@ DeclareOperation( "AddToGenesis",
 #! @Description
 #!  Kernel of a given morphism.
 #! @Returns IsHomalgCategoryObject
-DeclareAttribute( "KernelObject",
-                  IsHomalgCategoryMorphism );
+DeclareAttributeWithToDoForIsWellDefined( "KernelObject",
+                                          IsHomalgCategoryMorphism );
 
 #! @Description
 #! Embedding of the kernel of a given morphism $\alpha$ into the source of $\alpha$.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments alpha
-DeclareAttribute( "KernelEmb",
-                  IsHomalgCategoryMorphism );
+DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
+                                          IsHomalgCategoryMorphism );
 
 #! @Description
 #! Kernel embedding of an object which was created as a kernel.
 #! @Returns IsHomalgCategoryMorphism
-DeclareAttribute( "KernelEmb",
-                  IsHomalgCategoryObject );
+DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
+                                          IsHomalgCategoryObject );
 
 #! @Description
 #! Embedding of a given kernel $K$ of a given morphism $\alpha$ into the source of $\alpha$.
@@ -153,21 +153,21 @@ DeclareFilter( "WasCreatedAsKernel" );
 #! @Description
 #!  Cokernel of a given morphism.
 #! @Returns IsHomalgCategoryObject
-DeclareAttribute( "Cokernel",
-                  IsHomalgCategoryMorphism );
+DeclareAttributeWithToDoForIsWellDefined( "Cokernel",
+                                          IsHomalgCategoryMorphism );
 
 #! @Description
 #! Projection $B \twoheadrightarrow \mathrm{Coker}(\alpha)$ into the cokernel of a given morphism $\alpha: A \rightarrow B$.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments alpha
-DeclareAttribute( "CokernelProj",
-                  IsHomalgCategoryMorphism );
+DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
+                                          IsHomalgCategoryMorphism );
 
 #! @Description
 #! Cokernel projection of an object which was created as a cokernel.
 #! @Returns IsHomalgCategoryMorphism
-DeclareAttribute( "CokernelProj",
-                  IsHomalgCategoryObject );
+DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
+                                          IsHomalgCategoryObject );
 
 #! @Description
 #! Projection $B \twoheadrightarrow C$ of a given cokernel $C$ of a given morphism $\alpha: A \rightarrow B$.
@@ -279,11 +279,11 @@ DeclareAttribute( "ZeroObject",
 DeclareAttribute( "ZeroObject",
                   IsHomalgCategoryCell );
 
-DeclareAttribute( "MorphismFromZeroObject",
-                  IsHomalgCategoryObject );
+DeclareAttributeWithToDoForIsWellDefined( "MorphismFromZeroObject",
+                                          IsHomalgCategoryObject );
 
-DeclareAttribute( "MorphismIntoZeroObject",
-                  IsHomalgCategoryObject );
+DeclareAttributeWithToDoForIsWellDefined( "MorphismIntoZeroObject",
+                                          IsHomalgCategoryObject );
 
 #! @EndGroup 
 
@@ -363,8 +363,8 @@ DeclareAttribute( "TerminalObject",
 #! $A$ into the terminal object $T$ of the category of $A$
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments A
-DeclareAttribute( "UniversalMorphismIntoTerminalObject",
-                  IsHomalgCategoryObject );
+DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismIntoTerminalObject",
+                                          IsHomalgCategoryObject );
 
 #! @Description
 #! Given an object $A$ and a terminal object $T$ this method returns the unique morphism $u: A \rightarrow T$ from 
@@ -461,8 +461,8 @@ DeclareAttribute( "InitialObject",
 #! from the initial object $I$ of the category of $A$ to $A$.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments A
-DeclareAttribute( "UniversalMorphismFromInitialObject",
-                  IsHomalgCategoryObject );
+DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismFromInitialObject",
+                                          IsHomalgCategoryObject );
 
 #! @Description
 #! Given an object $A$ and an initial object $I$ this method returns the unique morphism $u: I \rightarrow A$ from 
@@ -1034,15 +1034,15 @@ DeclareFilter( "WasCreatedAsPushout" );
 ## Main Operations and Attributes
 
 ## FIXME: Image is a function
-DeclareAttribute( "ImageObject",
-                  IsHomalgCategoryMorphism );
+DeclareAttributeWithToDoForIsWellDefined( "ImageObject",
+                                          IsHomalgCategoryMorphism );
 
 #convenience function
-DeclareAttribute( "ImageEmbedding",
-                  IsHomalgCategoryObject );
+DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
+                                          IsHomalgCategoryObject );
 
-DeclareAttribute( "ImageEmbedding",
-                  IsHomalgCategoryMorphism );
+DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
+                                          IsHomalgCategoryMorphism );
 
 DeclareOperation( "ImageEmbeddingWithGivenImage",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );

@@ -278,7 +278,7 @@ InstallMethod( AddMonoAsKernelLift,
         
         return lift;
         
-    end : InstallMethod := InstallMethodWithToDoForIsWellDefined, Cache := GET_METHOD_CACHE( category, "MonoAsKernelLift", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "MonoAsKernelLift", 2 ) );
     
 end );
 
@@ -311,7 +311,7 @@ InstallMethod( AddEpiAsCokernelColift,
         
         return colift;
         
-    end : InstallMethod := InstallMethodWithToDoForIsWellDefined, Cache := GET_METHOD_CACHE( category, "EpiAsCokernelColift", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "EpiAsCokernelColift", 2 ) );
     
 end );
 

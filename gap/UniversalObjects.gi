@@ -1604,6 +1604,8 @@ InstallMethodWithToDoForIsWellDefined( ZeroObject,
     
     Add( category, zero_object );
     
+    SetIsWellDefined( zero_object, true );
+    
     SetIsZero( zero_object, true );
     
     SetFilterObj( zero_object, WasCreatedAsZeroObject );
@@ -1623,9 +1625,9 @@ end );
 ####################################
 
 ##
-InstallMethod( MorphismFromZeroObject,
-               [ IsHomalgCategoryObject ],
-               
+InstallMethodWithToDoForIsWellDefined( MorphismFromZeroObject,
+                                       [ IsHomalgCategoryObject ],
+                                       
    function( obj )
    
      return UniversalMorphismFromInitialObject( obj );
@@ -1633,9 +1635,9 @@ InstallMethod( MorphismFromZeroObject,
 end );
 
 ##
-InstallMethod( MorphismIntoZeroObject,
-               [ IsHomalgCategoryObject ],
-               
+InstallMethodWithToDoForIsWellDefined( MorphismIntoZeroObject,
+                                       [ IsHomalgCategoryObject ],
+                                       
    function( obj )
    
      return UniversalMorphismIntoTerminalObject( obj );
@@ -1767,6 +1769,8 @@ InstallMethodWithToDoForIsWellDefined( TerminalObject,
     terminal_object := TerminalObjectFunction( category )();
     
     Add( category, terminal_object );
+    
+    SetIsWellDefined( terminal_object, true );
     
     SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
     
@@ -1923,6 +1927,8 @@ InstallMethodWithToDoForIsWellDefined( InitialObject,
     initial_object := InitialObjectFunction( category )();
     
     Add( category, initial_object );
+    
+    SetIsWellDefined( initial_object, true );
     
     SetFilterObj( initial_object, WasCreatedAsInitialObject );
     

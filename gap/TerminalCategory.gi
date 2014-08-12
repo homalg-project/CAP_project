@@ -59,6 +59,8 @@ InstallMethod( Object,
     
     Add( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, object );
     
+    SetIsWellDefined( object, true );
+    
     SetIsZero( object, true );
     
     return object;
@@ -82,6 +84,8 @@ InstallMethod( Morphism,
                              IsOne, true );
     
     Add( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, morphism );
+    
+    SetIsWellDefined( morphism, true );
     
     return morphism;
     

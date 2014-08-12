@@ -71,8 +71,8 @@ DeclareCategory( "IsHomalgNaturalTransformation",
 #!  a category object itself, this would be ambiguous.
 #!  So categories must be wrapped in a CatObject to be an object in Cat.
 #!  This method returns the wrapper object. The category can be reobtained by <C>AsHomalgCategory</C>.
-DeclareAttribute( "AsCatObject",
-                  IsHomalgCategory );
+DeclareAttributeWithToDoForIsWellDefined( "AsCatObject",
+                                          IsHomalgCategory );
 
 #! @Description
 #!  For an object in Cat, this method returns the underlying homalg category. This method is inverse to <C>AsCatObject</C>, i.e.

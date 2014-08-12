@@ -224,10 +224,10 @@ InstallMethod( RestrictedGeneralizedMorphismCategory,
     
 end );
 
-##
-InstallMethod( GeneralizedMorphismObject,
-               [ IsHomalgCategoryObject ],
-               
+
+InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismObject,
+                                       [ IsHomalgCategoryObject ],
+                                       
   function( object )
     local gen_object, generalized_category;
     
@@ -266,10 +266,13 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphism,
     
     ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphism,
                              Source, GeneralizedMorphismObject( Range( source_aid ) ),
-                             Range, GeneralizedMorphismObject( Source( range_aid ) ),
-                             SourceAid, source_aid,
-                             RangeAid, range_aid,
-                             AssociatedMorphism, associated_morphism );
+                             Range, GeneralizedMorphismObject( Source( range_aid ) ) );
+    
+    SetSourceAid( generalized_morphism, source_aid );
+    
+    SetRangeAid( generalized_morphism, range_aid );
+    
+    SetAssociatedMorphism( generalized_morphism, associated_morphism );
     
     generalized_category := GeneralizedMorphismCategory( HomalgCategory( associated_morphism ) );
     
@@ -277,7 +280,7 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphism,
     
     return generalized_morphism;
     
-end : InstallMethod := InstallMethodWithToDoForIsWellDefined );
+end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
@@ -337,12 +340,12 @@ InstallMethod( AsGeneralizedMorphism,
 end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism 
-                                         and HasHonestRange
-                                         and CanComputePreComposeInUnderlyingHonestCategory,
-                                         IsGeneralizedMorphism and HasHonestSource ],
-                                       
+InstallMethodWithCacheFromObject( PreCompose,
+                                  [ IsGeneralizedMorphism 
+                                    and HasHonestRange
+                                    and CanComputePreComposeInUnderlyingHonestCategory,
+                                    IsGeneralizedMorphism and HasHonestSource ],
+                                    
   function( mor1, mor2 )
     local category;
     
@@ -356,7 +359,7 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     
     return GeneralizedMorphism( SourceAid( mor1 ), PreCompose( AssociatedMorphism( mor1 ), AssociatedMorphism( mor2 ) ), RangeAid( mor2 ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 ##
 InstallMethodWithCacheFromObject( PreCompose,
@@ -388,13 +391,13 @@ InstallMethodWithCacheFromObject( PreCompose,
 end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism
-                                         and HasHonestSource
-                                         and CanComputePreComposeInUnderlyingHonestCategory
-                                         and CanComputePushoutInUnderlyingHonestCategory,
-                                       IsGeneralizedMorphism and HasHonestSource ],
-                                       
+InstallMethodWithCacheFromObject( PreCompose,
+                                  [ IsGeneralizedMorphism
+                                    and HasHonestSource
+                                    and CanComputePreComposeInUnderlyingHonestCategory
+                                    and CanComputePushoutInUnderlyingHonestCategory,
+                                  IsGeneralizedMorphism and HasHonestSource ],
+                                  
   function( mor1, mor2 )
     local category, pushout, new_associated_morphism, new_range_aid;
     
@@ -414,15 +417,15 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     
     return GeneralizedMorphismWithRangeAid( new_associated_morphism, new_range_aid );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism
-                                         and IsHonest
-                                         and CanComputePreComposeInUnderlyingHonestCategory,
-                                       IsGeneralizedMorphism and IsHonest ],
-                                       
+InstallMethodWithCacheFromObject( PreCompose,
+                                  [ IsGeneralizedMorphism
+                                    and IsHonest
+                                    and CanComputePreComposeInUnderlyingHonestCategory,
+                                  IsGeneralizedMorphism and IsHonest ],
+                                  
   function( mor1, mor2 )
     local category;
     
@@ -436,7 +439,7 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     
     return AsGeneralizedMorphism( PreCompose( AssociatedMorphism( mor1 ), AssociatedMorphism( mor2 ) ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 ##
 InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject, 
@@ -449,18 +452,18 @@ InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject,
                    CanComputePreCompose and
                    CanComputeIdentityMorphism );
 
-InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
-                                       [ IsHomalgCategoryMorphism and
-                                         CanComputeKernelEmb and
-                                         CanComputeUniversalMorphismFromCoproduct and
-                                         CanComputeImageEmbedding and
-                                         CanComputeMonoAsKernelLift and
-                                         CanComputeCokernelProj and
-                                         CanComputeCokernelColift and
-                                         CanComputePreCompose and
-                                         CanComputeIdentityMorphism,
-                                         IsHomalgCategoryMorphism ],
-                                         
+InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
+                                  [ IsHomalgCategoryMorphism and
+                                    CanComputeKernelEmb and
+                                    CanComputeUniversalMorphismFromCoproduct and
+                                    CanComputeImageEmbedding and
+                                    CanComputeMonoAsKernelLift and
+                                    CanComputeCokernelProj and
+                                    CanComputeCokernelColift and
+                                    CanComputePreCompose and
+                                    CanComputeIdentityMorphism,
+                                    IsHomalgCategoryMorphism ],
+                                    
   function( factor, subobject )
     local A_into_B, B_onto_BmodC, C_into_B, AoplusC_to_B, AplusC_into_B, C_into_AplusC, AplusC_onto_M, M, M_into_BmodC, A_into_AplusC, A_onto_M;
     
@@ -492,17 +495,17 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismFromFactorToSubobject,
     
     return GeneralizedMorphism( M_into_BmodC, IdentityMorphism( M ), A_onto_M );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsGeneralizedMorphism 
-                                         and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
-                                         and CanComputePullbackInUnderlyingHonestCategory
-                                         and CanComputePushoutInUnderlyingHonestCategory
-                                         and CanComputePreComposeInUnderlyingHonestCategory,
-                                         IsGeneralizedMorphism ],
-                                       
+InstallMethodWithCacheFromObject( PreCompose,
+                                  [ IsGeneralizedMorphism 
+                                    and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
+                                    and CanComputePullbackInUnderlyingHonestCategory
+                                    and CanComputePushoutInUnderlyingHonestCategory
+                                    and CanComputePreComposeInUnderlyingHonestCategory,
+                                    IsGeneralizedMorphism ],
+                                    
   function( mor1, mor2 )
     local generalized_mor_factor_sub, pullback, pushout, new_associated, new_source_aid, new_range_aid;
     
@@ -526,7 +529,7 @@ InstallMethodWithToDoForIsWellDefined( PreCompose,
     
     return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 ## CanCompute management in ToDoList of category
 InstallMethodWithCacheFromObject( EqualityOfMorphisms,
@@ -565,9 +568,9 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
 end );
 
 ## CanCompute management in ToDoList of category
-InstallMethodWithToDoForIsWellDefined( HonestRepresentative,
-                                       [ IsGeneralizedMorphism ],
-                                       
+InstallMethod( HonestRepresentative,
+               [ IsGeneralizedMorphism ],
+               
   function( generalized_morphism )
     
     return PreCompose(
@@ -578,9 +581,9 @@ InstallMethodWithToDoForIsWellDefined( HonestRepresentative,
 end );
 
 ## CanCompute management in ToDoList of category
-InstallMethodWithToDoForIsWellDefined( \+,
-                                       [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
-                   
+InstallMethodWithCacheFromObject( \+,
+                                 [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
+                                 
   function( mor1, mor2 )
     local return_value, pullback_of_sourceaids, pushout_of_rangeaids, restricted_mor1, restricted_mor2;
     
@@ -610,7 +613,7 @@ InstallMethodWithToDoForIsWellDefined( \+,
     
     return return_value;
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 ###########################
 ##
@@ -720,3 +723,4 @@ InstallMethod( IsWellDefined,
            and IsWellDefined( AssociatedMorphism( generalized_morphism ) );
     
 end );
+

@@ -78,9 +78,9 @@ end );
 ##################################
 
 ##
-InstallMethod( Opposite,
-               [ IsHomalgCategoryObject ],
-               
+InstallMethodWithToDoForIsWellDefined( Opposite,
+                                       [ IsHomalgCategoryObject ],
+                                       
   function( object )
     local opposite_object;
     
@@ -98,9 +98,9 @@ InstallMethod( Opposite,
 end );
 
 ##
-InstallMethod( Opposite,
-               [ IsHomalgCategoryMorphism ],
-               
+InstallMethodWithToDoForIsWellDefined( Opposite,
+                                       [ IsHomalgCategoryMorphism ],
+                                       
   function( morphism )
     local opposite_morphism;
     
@@ -489,8 +489,8 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM,
                     [ "One is self dual", "IsOne" ],
                     [ "Epi is dual to mono", [ "IsSplitMonomorphism", "IsSplitEpimorphism" ] ],
                     [ "Mono is dual to epi", [ "IsSplitEpimorphism", "IsSplitMonomorphism" ] ],
-                    [ "Idempotent is self dual", "IsIdempotent" ],
-                    [ "IsWellDefined", "IsWellDefined" ]
+                    [ "Idempotent is self dual", "IsIdempotent" ]#,
+#                     [ "IsWellDefined", "IsWellDefined" ]
                   # ...
                   ];
 
@@ -515,8 +515,8 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT,
 
     entry_list := [ [ "IsInjective", "IsProjective" ],
                     [ "IsProjective", "IsInjective" ],
-                    [ "IsZero", "IsZero" ],
-                    [ "IsWellDefined", "IsWellDefined" ]
+                    [ "IsZero", "IsZero" ]#,
+#                     [ "IsWellDefined", "IsWellDefined" ]
                   # ...
                   ];
 
