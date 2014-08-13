@@ -215,7 +215,7 @@ InstallGlobalFunction( DeclareAttributeWithToDoForIsWellDefined,
         
         # If you set something wrong, it is your fault.
         # FIXME: Is this a good idea?
-        entry := ToDoListEntryForEqualAttributes( obj, "IsWellDefined", value, "IsWellDefined" );
+        entry := ToDoListEntryWithContraposition( obj, "IsWellDefined", true, value, "IsWellDefined", true );
         
         SetDescriptionOfImplication( entry, "Propagation of IsWellDefined" );
         

@@ -245,7 +245,7 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismObject,
 end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( GeneralizedMorphism,
+InstallMethodWithCacheFromObject( GeneralizedMorphism,
 ##               [ IsHomalgCategoryMorphism, IsSubobject, IsFactorobject ], we wont check this for performance reasons.
                                        [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
                                        
@@ -280,7 +280,7 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphism,
     
     return generalized_morphism;
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
