@@ -54,7 +54,8 @@ DeclareOperation( "QVectorSpace",
 DeclareOperation( "VectorSpaceMorphism",
                   [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ] );
 
-
+##NOTE: the other test files will rewrite the global variable vecspaces.
+##this has an effect on the constructors below!
 if not IsBound( vecspaces ) then
   
   vecspaces := true;
