@@ -10,6 +10,8 @@ if not IsHomalgCategory( vecspaces ) then
   
 fi;
 
+SetIsAbelianCategory( vecspaces, true );
+
 AddEqualityOfMorphisms( vecspaces,
 
   function( a, b )
@@ -474,3 +476,73 @@ AddUniversalMorphismFromInitialObjectWithGivenInitialObject( vecspaces,
     return morphism;
 
 end );
+
+##
+AddIsWellDefinedForObjects( vecspaces,
+
+  function( vectorspace )
+  
+    return IsHomalgRationalVectorSpaceRep( vectorspace ) and Dimension( vectorspace ) >= 0;
+  
+end );
+
+##
+AddIsWellDefinedForMorphisms( vecspaces,
+
+  function( morphism )
+    local matrix;
+    
+    if not IsHomalgRationalVectorSpaceMorphismRep( morphism ) then
+      return false;
+    fi;
+    
+    matrix := morphism!.morphism;
+    
+    return     IsHomalgMatrix( matrix )
+           and NrRows( matrix ) = Dimension( Source( morphism ) )
+           and NrColumns( matrix ) = Dimension( Range( morphism ) );
+    
+end );
+# 
+# AddIsZeroForObjects( vecspaces,
+# 
+#   function( obj )
+#   
+#     return Dimension( obj ) = 0;
+#   
+# end );
+# 
+# AddIsMonomorphism( vecspaces,
+# 
+#   function( morphism )
+#   
+#     return RowRankOfMatrix( morphism!.morphism ) = Dimension( Source( morphism ) );
+#   
+# end );
+# 
+# AddIsEpimorphism( vecspaces,
+# 
+#   function( morphism )
+#   
+#     return ColumnRankOfMatrix( morphism!.morphism ) = Dimension( Range( morphism ) );
+#   
+# end );
+# 
+# AddIsIsomorphism( vecspaces,
+# 
+#   function( morphism )
+#   
+#     return Dimension( Range( morphism ) ) = Dimension( Source( morphism ) ) 
+#            and ColumnRankOfMatrix( morphism!.morphism ) = Dimension( Range( morphism ) );
+#   
+# end );
+
+# ##
+# AddImage( vecspaces,
+# 
+#   function( morphism )
+#   
+#     return QVectorSpace( RowRankOfMatrix( morphism!.morphism ) );
+#   
+# end );
+# 

@@ -324,6 +324,7 @@ InstallMethodWithCacheFromObject( Dominates,
                                     and CanComputeIsZeroForMorphisms
                                     and CanComputePreCompose, 
                                     IsHomalgCategoryMorphism and IsSubobject ],
+                                    -9000, # FIXME
                                   
   function( sub1, sub2 )
     local cokernel_projection, composition;
@@ -345,6 +346,7 @@ InstallMethodWithCacheFromObject( Dominates,
                                     and CanComputeCodominates
                                     and IsPreAbelianCategory,
                                     IsHomalgCategoryMorphism and IsSubobject ],
+                                    -9999, # FIXME (has to be the lowest Dominates fallback method)
                                   
   function( sub1, sub2 )
     local cokernel_projection_1, cokernel_projection_2;
@@ -366,6 +368,7 @@ InstallMethodWithCacheFromObject( Codominates,
                                     and CanComputeIsZeroForMorphisms
                                     and CanComputePreCompose,
                                     IsHomalgCategoryMorphism and IsFactorobject ],
+                                    -9000, # FIXME
                                   
   function( factor1, factor2 )
     local kernel_embedding, composition;
@@ -387,6 +390,7 @@ InstallMethodWithCacheFromObject( Codominates,
                                     and CanComputeDominates
                                     and IsPreAbelianCategory,
                                     IsHomalgCategoryMorphism and IsFactorobject ],
+                                    -9999, # FIXME (has to be the lowest Codominates fallback method)
                                   
   function( factor1, factor2 )
     local kernel_embedding_1, kernel_embedding_2;
