@@ -315,27 +315,6 @@ InstallMethod( AddCodominates,
       
 end );
 
-InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
-
-##
-InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsHomalgCategoryMorphism and IsSubobject 
-                                    and CanComputeCokernelProj
-                                    and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose, 
-                                    IsHomalgCategoryMorphism and IsSubobject ],
-                                    -9000, # FIXME
-                                  
-  function( sub1, sub2 )
-    local cokernel_projection, composition;
-    
-    cokernel_projection := CokernelProj( sub2 );
-    
-    composition := PreCompose( sub1, cokernel_projection );
-    
-    return IsZero( composition );
-    
-end );
 
 InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeCodominates and IsPreAbelianCategory );
 
@@ -359,27 +338,28 @@ InstallMethodWithCacheFromObject( Dominates,
     
 end );
 
-InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
 
 ##
-InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsHomalgCategoryMorphism and IsFactorobject
-                                    and CanComputeKernelEmb
+InstallMethodWithCacheFromObject( Dominates,
+                                  [ IsHomalgCategoryMorphism and IsSubobject 
+                                    and CanComputeCokernelProj
                                     and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose,
-                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                    and CanComputePreCompose, 
+                                    IsHomalgCategoryMorphism and IsSubobject ],
                                     -9000, # FIXME
                                   
-  function( factor1, factor2 )
-    local kernel_embedding, composition;
+  function( sub1, sub2 )
+    local cokernel_projection, composition;
     
-    kernel_embedding := KernelEmb( factor2 );
+    cokernel_projection := CokernelProj( sub2 );
     
-    composition := PreCompose( kernel_embedding, factor1 );
+    composition := PreCompose( sub1, cokernel_projection );
     
     return IsZero( composition );
     
 end );
+
 
 InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeDominates and IsPreAbelianCategory );
 
@@ -400,6 +380,28 @@ InstallMethodWithCacheFromObject( Codominates,
     kernel_embedding_2 := KernelEmb( factor2 );
     
     return Dominates( kernel_embedding_2, kernel_embedding_1 );
+    
+end );
+
+InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+
+##
+InstallMethodWithCacheFromObject( Codominates,
+                                  [ IsHomalgCategoryMorphism and IsFactorobject
+                                    and CanComputeKernelEmb
+                                    and CanComputeIsZeroForMorphisms
+                                    and CanComputePreCompose,
+                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                    -9000, # FIXME
+                                  
+  function( factor1, factor2 )
+    local kernel_embedding, composition;
+    
+    kernel_embedding := KernelEmb( factor2 );
+    
+    composition := PreCompose( kernel_embedding, factor1 );
+    
+    return IsZero( composition );
     
 end );
 
