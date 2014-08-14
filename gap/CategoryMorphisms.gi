@@ -779,6 +779,51 @@ end );
 
 ###########################
 ##
+## EpiMonoFactorization
+##
+###########################
+
+##
+InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
+                                       [ IsMonomorphism and CanComputeIdentityMorphism ],
+                                       
+  function( monomorphism )
+    
+    return Product( IdentityMorphism( Source( monomorphism ) ), monomorphism );
+    
+end );
+
+##
+InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
+                                       [ IsEpimorphism and CanComputeIdentityMorphism ],
+                                       
+  function( epimorphism )
+    
+    return Product( epimorphism, IdentityMorphism( Range( epimorphism ) ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );
+
+InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
+                                       [ IsHomalgCategoryMorphism ],
+                                       
+  function( morphism )
+    local kernel_embedding, epimorphism, monomorphism;
+    
+    kernel_embedding := KernelEmb( morphism );
+    
+    epimorphism := CokernelProj( kernel_embedding );
+    
+    monomorphism := CokernelColift( kernel_embedding, morphism );
+    
+    return Product( epimorphism, monomorphism );
+    
+end );
+
+###########################
+##
 ## Print
 ##
 ###########################

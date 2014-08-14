@@ -213,6 +213,9 @@ DeclareAttribute( "CodominatesFunction",
 DeclareOperation( "PreCompose",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
+DeclareAttributeWithToDoForIsWellDefined( "EpiMonoFactorization",
+                                          IsHomalgCategoryMorphism );
+
 ###################################
 ##
 ## IsWellDefined
