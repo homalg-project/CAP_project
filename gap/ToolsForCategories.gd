@@ -41,3 +41,7 @@ DeclareOperation( "InstallSetWithToDoForIsWellDefined",
 #!  This function works like DeclareAttribute, but installs ToDoListEntries for the setter of
 #!  the attribute. Please note that implementations still need to be done with InstallMethodWithToDoForIsWellDefined.
 DeclareGlobalFunction( "DeclareAttributeWithToDoForIsWellDefined" );
+
+#!
+DeclareGlobalFunction( "AddSpecialMethod" );
+

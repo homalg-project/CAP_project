@@ -9,8 +9,7 @@
 ##
 #############################################################################
 
-DeclareCategory( "IsHomalgCategoryTwoCell",
-                 IsHomalgCategoryCell );
+## Moved to CategoriesForHomalg.gd
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL" );
 

@@ -24,8 +24,7 @@
 ##
 ###################################
 
-DeclareCategory( "IsHomalgCategoryObject",
-                 IsHomalgCategoryCell );
+## Moved to CategoriesForHomalg.gd
 
 # DeclareFilter( "WasCreatedAsDirectSum" );
 

@@ -137,6 +137,15 @@ DeclareCategory( "IsHomalgCategory",
 DeclareCategory( "IsHomalgCategoryCell",
                  IsObject );
 
+DeclareCategory( "IsHomalgCategoryObject",
+                 IsHomalgCategoryCell );
+
+DeclareCategory( "IsHomalgCategoryMorphism",
+                 IsHomalgCategoryCell and IsAdditiveElementWithInverse );
+
+DeclareCategory( "IsHomalgCategoryTwoCell",
+                 IsHomalgCategoryCell );
+
 ## Earliest possible place
 BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
             

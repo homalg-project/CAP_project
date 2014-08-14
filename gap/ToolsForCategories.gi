@@ -226,3 +226,106 @@ InstallGlobalFunction( DeclareAttributeWithToDoForIsWellDefined,
     end );
     
 end );
+
+##
+InstallGlobalFunction( AddSpecialMethod,
+                       
+  function( input_rec )
+    local current_filter, i;
+    
+    ## Sanitize input data
+    if not IsBound( input_rec!.Category ) then
+        
+        Error( "component Category must be given" );
+        
+    elif IsString( input_rec!.Category ) then
+        
+        input_rec!.Category := CreateHomalgCategory( input_rec!.Category );
+        
+    elif not IsHomalgCategory( input_rec!.Category ) then
+        
+        Error( "component Category must be a string or a homalg category" );
+        
+    fi;
+    
+    if not IsBound( input_rec!.Name ) then
+        
+        Error( "component name must be an Attribute/Operation or a string" );
+        
+    fi;
+    
+    if IsString( input_rec!.Name ) then
+        
+        if not IsBound( input_rec!.CacheName ) then
+            
+            input_rec!.CacheName := input_rec!.Name;
+            
+        fi;
+        
+        input_rec!.Name := ValueGlobal( input_rec!.Name );
+        
+    fi;
+    
+    if not IsBound( input_rec!.CacheName ) then
+        
+        input_rec!.CacheName := NameFunction( input_rec!.Name );
+        
+    fi;
+    
+    if not IsBound( input_rec!.Filter ) and not IsList( input_rec!.Filter ) then
+        
+        Error( "component Filter must be a list of tuples" );
+        
+    fi;
+    
+    for i in [ 1 .. Length( input_rec!.Filter ) ] do
+        
+        current_filter := input_rec!.Filter[ i ];
+        
+        if LowercaseString( current_filter[ 1 ] ) = "object" then
+            
+            input_rec!.Filter[ i ] := current_filter[ 2 ] and IsHomalgCategoryObject and ObjectFilter( input_rec!.Category );
+            
+        elif LowercaseString( current_filter[ 1 ] ) = "morphism" then
+            
+            input_rec!.Filter[ i ] := current_filter[ 2 ] and IsHomalgCategoryMorphism and MorphismFilter( input_rec!.Category );
+            
+        elif LowercaseString( current_filter[ 1 ] ) = "twocell" then
+            
+            input_rec!.Filter[ i ] := current_filter[ 2 ] and IsHomalgCategoryTwoCell and TwoCellFilter( input_rec!.Category );
+            
+        elif LowercaseString( current_filter[ 1 ] ) = "other" then
+            
+            input_rec!.Filter[ i ] := current_filter[ 2 ];
+            
+        else
+            
+            Error( "type of filter must be Object/Morphism/TwoCell/Other" );
+            
+        fi;
+        
+    od;
+    
+    if not IsFunction( input_rec!.Function ) then
+        
+        Error( "component Function must be a function" );
+        
+    fi;
+    
+    if input_rec!.CacheName <> fail then
+        
+        InstallMethodWithToDoForIsWellDefined( input_rec!.Name,
+                                               input_rec!.Filter,
+                                               
+            input_rec!.Function : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( input_rec!.category, input_rec!.CacheName, Length( input_rec!.Filter ) ) );
+        
+    else
+        
+        InstallMethodWithToDoForIsWellDefined( input_rec!.Name,
+                                               input_rec!.Filter,
+                                               
+            input_rec!.Function );
+        
+    fi;
+    
+end );

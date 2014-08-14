@@ -24,8 +24,7 @@
 ##
 ###################################
 
-DeclareCategory( "IsHomalgCategoryMorphism",
-                 IsHomalgCategoryCell and IsAdditiveElementWithInverse );
+## Moved to CategoriesForHomalg.gd
 
 ###################################
 ##
