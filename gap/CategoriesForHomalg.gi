@@ -7,6 +7,28 @@
 ##
 #############################################################################
 
+######################################
+##
+## Properties logic
+##
+######################################
+
+InstallTrueMethod( IsEnrichedOverCommutativeRegularSemigroup, IsAbCategory );
+
+InstallTrueMethod( IsAbCategory, IsPreAdditiveCategory );
+
+InstallTrueMethod( IsPreAdditiveCategory, IsAdditiveCategory );
+
+InstallTrueMethod( IsAdditiveCategory, IsPreAbelianCategory );
+
+InstallTrueMethod( IsPreAbelianCategory, IsAbelianCategory );
+
+######################################
+##
+## Technical stuff
+##
+######################################
+
 ##
 InstallValue( CATEGORIES_FOR_HOMALG,
               rec(

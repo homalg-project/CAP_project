@@ -207,5 +207,9 @@ HonestRepresentative( phi_tilde );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  -1/4,   1/4 ] ]
 #!
+IsWellDefined( phi_tilde );
+#! true
+IsWellDefined( psi_tilde );
+#! true
 #! @EndExample
 

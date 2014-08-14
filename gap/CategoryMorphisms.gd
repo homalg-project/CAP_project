@@ -97,6 +97,12 @@ DeclareSynonymAttr( "IsFactorobject",
 DeclareProperty( "IsIsomorphism",
                  IsHomalgCategoryMorphism );
 
+DeclareOperation( "AddIsIsomorphism",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareAttribute( "IsIsomorphismFunction",
+                  IsHomalgCategory );
+
 DeclareProperty( "IsEndomorphism",
                  IsHomalgCategoryMorphism );
 
@@ -205,6 +211,9 @@ DeclareAttribute( "CodominatesFunction",
 
 DeclareOperation( "PreCompose",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareAttributeWithToDoForIsWellDefined( "EpiMonoFactorization",
+                                          IsHomalgCategoryMorphism );
 
 ###################################
 ##

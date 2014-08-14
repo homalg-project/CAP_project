@@ -26,7 +26,7 @@ BindGlobal( "TheTypeOfHomalgCategoryMorphisms",
 
 ######################################
 ##
-## Immediate Methods
+## Properties logic
 ##
 ######################################
 
@@ -127,7 +127,6 @@ InstallMethod( AddIsMonomorphism,
 end );
 
 ##
-##
 InstallTrueMethod( SetCanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsMonomorphism,
@@ -162,7 +161,6 @@ InstallMethod( AddIsEpimorphism,
 end );
 
 ##
-##
 InstallTrueMethod( SetCanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsEpimorphism,
@@ -172,6 +170,40 @@ InstallMethod( IsEpimorphism,
   function( morphism )
     
     return IsZero( Cokernel( morphism ) );
+    
+end );
+
+##
+InstallMethod( AddIsIsomorphism,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCanComputeIsIsomorphism( category, true );
+    
+    SetIsIsomorphismFunction( category, func );
+    
+    InstallMethod( IsIsomorphism,
+                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   
+      function( morphism )
+        
+        return func( morphism );
+        
+    end );
+      
+end );
+
+##
+InstallTrueMethod( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
+
+InstallMethod( IsIsomorphism,
+               [ IsHomalgCategoryMorphism and CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory ],
+               -9999, #FIXME
+               
+  function( morphism )
+    
+    return IsMonomorphism( morphism ) and IsEpimorphism( morphism );
     
 end );
 
@@ -283,26 +315,6 @@ InstallMethod( AddCodominates,
       
 end );
 
-InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
-
-##
-InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsHomalgCategoryMorphism and IsSubobject 
-                                    and CanComputeCokernelProj
-                                    and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose, 
-                                    IsHomalgCategoryMorphism and IsSubobject ],
-                                  
-  function( sub1, sub2 )
-    local cokernel_projection, composition;
-    
-    cokernel_projection := CokernelProj( sub2 );
-    
-    composition := PreCompose( sub1, cokernel_projection );
-    
-    return IsZero( composition );
-    
-end );
 
 InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeCodominates and IsPreAbelianCategory );
 
@@ -313,6 +325,7 @@ InstallMethodWithCacheFromObject( Dominates,
                                     and CanComputeCodominates
                                     and IsPreAbelianCategory,
                                     IsHomalgCategoryMorphism and IsSubobject ],
+                                    -9999, # FIXME (has to be the lowest Dominates fallback method)
                                   
   function( sub1, sub2 )
     local cokernel_projection_1, cokernel_projection_2;
@@ -325,26 +338,28 @@ InstallMethodWithCacheFromObject( Dominates,
     
 end );
 
-InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
 
 ##
-InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsHomalgCategoryMorphism and IsFactorobject
-                                    and CanComputeKernelEmb
+InstallMethodWithCacheFromObject( Dominates,
+                                  [ IsHomalgCategoryMorphism and IsSubobject 
+                                    and CanComputeCokernelProj
                                     and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose,
-                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                    and CanComputePreCompose, 
+                                    IsHomalgCategoryMorphism and IsSubobject ],
+                                    -9000, # FIXME
                                   
-  function( factor1, factor2 )
-    local kernel_embedding, composition;
+  function( sub1, sub2 )
+    local cokernel_projection, composition;
     
-    kernel_embedding := KernelEmb( factor2 );
+    cokernel_projection := CokernelProj( sub2 );
     
-    composition := PreCompose( kernel_embedding, factor1 );
+    composition := PreCompose( sub1, cokernel_projection );
     
     return IsZero( composition );
     
 end );
+
 
 InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeDominates and IsPreAbelianCategory );
 
@@ -355,6 +370,7 @@ InstallMethodWithCacheFromObject( Codominates,
                                     and CanComputeDominates
                                     and IsPreAbelianCategory,
                                     IsHomalgCategoryMorphism and IsFactorobject ],
+                                    -9999, # FIXME (has to be the lowest Codominates fallback method)
                                   
   function( factor1, factor2 )
     local kernel_embedding_1, kernel_embedding_2;
@@ -364,6 +380,28 @@ InstallMethodWithCacheFromObject( Codominates,
     kernel_embedding_2 := KernelEmb( factor2 );
     
     return Dominates( kernel_embedding_2, kernel_embedding_1 );
+    
+end );
+
+InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+
+##
+InstallMethodWithCacheFromObject( Codominates,
+                                  [ IsHomalgCategoryMorphism and IsFactorobject
+                                    and CanComputeKernelEmb
+                                    and CanComputeIsZeroForMorphisms
+                                    and CanComputePreCompose,
+                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                    -9000, # FIXME
+                                  
+  function( factor1, factor2 )
+    local kernel_embedding, composition;
+    
+    kernel_embedding := KernelEmb( factor2 );
+    
+    composition := PreCompose( kernel_embedding, factor1 );
+    
+    return IsZero( composition );
     
 end );
 
@@ -737,6 +775,51 @@ InstallMethod( AddIsWellDefinedForMorphisms,
         
     end );
       
+end );
+
+###########################
+##
+## EpiMonoFactorization
+##
+###########################
+
+##
+InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
+                                       [ IsMonomorphism and CanComputeIdentityMorphism ],
+                                       
+  function( monomorphism )
+    
+    return Product( IdentityMorphism( Source( monomorphism ) ), monomorphism );
+    
+end );
+
+##
+InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
+                                       [ IsEpimorphism and CanComputeIdentityMorphism ],
+                                       
+  function( epimorphism )
+    
+    return Product( epimorphism, IdentityMorphism( Range( epimorphism ) ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );
+
+InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
+                                       [ IsHomalgCategoryMorphism ],
+                                       
+  function( morphism )
+    local kernel_embedding, epimorphism, monomorphism;
+    
+    kernel_embedding := KernelEmb( morphism );
+    
+    epimorphism := CokernelProj( kernel_embedding );
+    
+    monomorphism := CokernelColift( kernel_embedding, morphism );
+    
+    return Product( epimorphism, monomorphism );
+    
 end );
 
 ###########################
