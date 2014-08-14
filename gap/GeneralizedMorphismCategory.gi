@@ -220,6 +220,8 @@ InstallMethod( RestrictedGeneralizedMorphismCategory,
     
     SetWasCreatedAsGeneralizedMorphismCategory( restricted_generalized_morphism_category, true );
     
+    SetSubcategoryMembershipFunctionForGeneralizedMorphismCategory( restricted_generalized_morphism_category, membership_function );
+    
     return restricted_generalized_morphism_category;
     
 end );
@@ -501,7 +503,14 @@ end );
 
 ## CanCompute management in ToDoList of category
 InstallMethodWithCacheFromObject( EqualityOfMorphisms,
-                                  [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
+                                  [ IsGeneralizedMorphism
+                                    and CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
+                                    and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
+                                    and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
+                                    and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
+                                    and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
+                                    and CanComputePreComposeInUnderlyingHonestCategory,
+                                    IsGeneralizedMorphism ],
                                   
   function( generalized_morphism1, generalized_morphism2 )
     local subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
@@ -537,7 +546,9 @@ end );
 
 ## CanCompute management in ToDoList of category
 InstallMethod( HonestRepresentative,
-               [ IsGeneralizedMorphism ],
+               [ IsGeneralizedMorphism
+                 and CanComputePreComposeInUnderlyingHonestCategory
+                 and CanComputeInverseInUnderlyingHonestCategory ],
                
   function( generalized_morphism )
     
@@ -550,7 +561,13 @@ end );
 
 ## CanCompute management in ToDoList of category
 InstallMethodWithCacheFromObject( \+,
-                                 [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
+                                 [ IsGeneralizedMorphism
+                                   and CanComputePullbackInUnderlyingHonestCategory
+                                   and CanComputeProjectionInFactorInUnderlyingHonestCategory
+                                   and CanComputePushoutInUnderlyingHonestCategory
+                                   and CanComputeInjectionOfCofactorInUnderlyingHonestCategory
+                                   and CanComputePreComposeInUnderlyingHonestCategory
+                                   and CanComputeAdditionForMorphismsInUnderlyingHonestCategory, IsGeneralizedMorphism ],
                                  
   function( mor1, mor2 )
     local return_value, pullback_of_sourceaids, pushout_of_rangeaids, restricted_mor1, restricted_mor2;
@@ -616,7 +633,9 @@ InstallImmediateMethod( INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphism
                      [
                        [ underlying_honest_category, "CanComputeIsWellDefinedForMorphisms", true ],
                        [ underlying_honest_category, "CanComputeKernel", true ],
-                       [ underlying_honest_category, "CanComputeCokernel", true ] #TODO: CanComputeIsMono(Epi)morphism
+                       [ underlying_honest_category, "CanComputeCokernel", true ],
+                       [ underlying_honest_category, "CanComputeIsMonomorphism", true ],
+                       [ underlying_honest_category, "CanComputeIsEpimorphism", true ] 
                      ],
                      "CanComputeIsWellDefinedForMorphisms"
                    ];
@@ -631,7 +650,9 @@ InstallImmediateMethod( INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphism
     
     implication := [
                      [
-                       [ underlying_honest_category, "CanComputeIsWellDefinedForMorphisms", true ] #TODO: CanComputeIsMono(Epi)morphism
+                       [ underlying_honest_category, "CanComputeIsWellDefinedForMorphisms", true ],
+                       [ underlying_honest_category, "CanComputeIsMonomorphism", true ],
+                       [ underlying_honest_category, "CanComputeIsEpimorphism", true ]
                      ],
                      "CanComputeIsWellDefinedForMorphisms"
                    ];
@@ -681,7 +702,10 @@ end );
 
 ## CanCompute management done by ImmediateMethod above
 InstallMethod( IsWellDefined,
-               [ IsGeneralizedMorphismRep ],
+               [ IsGeneralizedMorphismRep
+                 and CanComputeIsWellDefinedForMorphismsInUnderlyingHonestCategory
+                 and CanComputeIsMonomorphismInUnderlyingHonestCategory
+                 and CanComputeIsEpimorphismInUnderlyingHonestCategory ],
                  
   function( generalized_morphism )
     local category;
