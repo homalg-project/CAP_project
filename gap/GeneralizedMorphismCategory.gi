@@ -443,57 +443,25 @@ end );
 
 ##
 InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject, 
-                   CanComputeKernelEmb and
-                   CanComputeUniversalMorphismFromCoproduct and
-                   CanComputeImageEmbedding and
-                   CanComputeMonoAsKernelLift and
-                   CanComputeCokernelProj and
-                   CanComputeCokernelColift and
-                   CanComputePreCompose and
-                   CanComputeIdentityMorphism );
+                   CanComputePreCompose
+                   and CanComputeEpiMonoFactorization
+                   and CanComputeIdentityMorphism);
 
 InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
-                                  [ IsHomalgCategoryMorphism and
-                                    CanComputeKernelEmb and
-                                    CanComputeUniversalMorphismFromCoproduct and
-                                    CanComputeImageEmbedding and
-                                    CanComputeMonoAsKernelLift and
-                                    CanComputeCokernelProj and
-                                    CanComputeCokernelColift and
-                                    CanComputePreCompose and
-                                    CanComputeIdentityMorphism,
+                                  [ IsHomalgCategoryMorphism
+                                    and CanComputePreCompose
+                                    and CanComputeEpiMonoFactorization
+                                    and CanComputeIdentityMorphism,
                                     IsHomalgCategoryMorphism ],
                                     
   function( factor, subobject )
-    local A_into_B, B_onto_BmodC, C_into_B, AoplusC_to_B, AplusC_into_B, C_into_AplusC, AplusC_onto_M, M, M_into_BmodC, A_into_AplusC, A_onto_M;
+    local composition, epi_mono_factorization;
     
-    # Notation:
-    # subobject: A -> B, factor: B -> B/C
-    # we want to construct: M := (A + C)/C and a generalized morphism: B/C - - - > A
+    composition := PreCompose( subobject, factor );
     
-    A_into_B := subobject;
+    epi_mono_factorization := EpiMonoFactorization( composition );
     
-    B_onto_BmodC := factor;
-    
-    C_into_B := KernelEmb( B_onto_BmodC );
-    
-    AoplusC_to_B := UniversalMorphismFromCoproduct( A_into_B, C_into_B );
-    
-    AplusC_into_B := ImageEmbedding( AoplusC_to_B );
-    
-    C_into_AplusC := MonoAsKernelLift( AplusC_into_B, C_into_B );
-    
-    AplusC_onto_M := CokernelProj( C_into_AplusC );
-    
-    M := Range( AplusC_onto_M );
-    
-    M_into_BmodC := CokernelColift( M, PreCompose( AplusC_into_B, B_onto_BmodC ) );
-    
-    A_into_AplusC := MonoAsKernelLift( AplusC_into_B, A_into_B );
-    
-    A_onto_M := PreCompose( A_into_AplusC, AplusC_onto_M );
-    
-    return GeneralizedMorphism( M_into_BmodC, IdentityMorphism( M ), A_onto_M );
+    return GeneralizedMorphism( epi_mono_factorization[2], IdentityMorphism( Range( epi_mono_factorization[1] ) ), epi_mono_factorization[1] );
     
 end );
 

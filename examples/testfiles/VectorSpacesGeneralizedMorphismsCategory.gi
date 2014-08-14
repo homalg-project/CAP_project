@@ -182,6 +182,46 @@ SourceAid( composition2 );
 #! [ [  1 ] ]
 #! @EndExample
 
+#! Third composition test
+
+#! @Example
+vecspaces := CreateHomalgCategory( "VectorSpacesForGeneralizedMorphismsTest" );
+#! VectorSpacesForGeneralizedMorphismsTest
+ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
+#! true
+A := QVectorSpace( 3 );
+Asub := QVectorSpace( 2 );
+B := QVectorSpace( 3 );
+Bfac := QVectorSpace( 1 );
+Bsub := QVectorSpace( 2 );
+C := QVectorSpace( 3 );
+Cfac := QVectorSpace( 1 );
+Asub_into_A := VectorSpaceMorphism( Asub, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], A );
+Asub_to_Bfac := VectorSpaceMorphism( Asub, [ [ 1 ], [ 1 ] ], Bfac );
+B_onto_Bfac := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ], [ 1 ] ], Bfac );
+Bsub_into_B := VectorSpaceMorphism( Bsub, [ [ 2, 2, 0 ], [ 0, 2, 2 ] ], B );
+Bsub_to_Cfac := VectorSpaceMorphism( Bsub, [ [ 3 ], [ 0 ] ], Cfac );
+C_onto_Cfac := VectorSpaceMorphism( C, [ [ 1 ], [ 2 ], [ 3 ] ], Cfac );
+generalized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );
+generalized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );
+
+A := QVectorSpace( 3 );
+Asub := QVectorSpace( 2 );
+B := QVectorSpace( 3 );
+Bfac := QVectorSpace( 1 );
+Bsub := QVectorSpace( 2 );
+C := QVectorSpace( 4 );
+Cfac := QVectorSpace( 2 );
+Asub_into_A := VectorSpaceMorphism( Asub, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], A );
+Asub_to_Bfac := VectorSpaceMorphism( Asub, [ [ 1 ], [ 1 ] ], Bfac );
+B_onto_Bfac := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ], [ 1 ] ], Bfac );
+Bsub_into_B := VectorSpaceMorphism( Bsub, [ [ 2, 2, 0 ], [ 0, 2, 2 ] ], B );
+Bsub_to_Cfac := VectorSpaceMorphism( Bsub, [ [ 3, 3 ], [ 0, 0 ] ], Cfac );
+C_onto_Cfac := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 2 ], [ 3, 3 ] ], Cfac );
+generalized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );
+generalized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );
+#! @EndExample
+
 #! Honest representative test
 #! @Example
 vecspaces := CreateHomalgCategory( "VectorSpacesForGeneralizedMorphismsTest" );
