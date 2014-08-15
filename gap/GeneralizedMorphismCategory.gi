@@ -195,6 +195,7 @@ InstallMethod( RestrictedGeneralizedMorphismCategory,
   
 end );
 
+##TODO: Constructors for morphisms and objects in RestrictedGeneralizedMorphismCategory
 ##
 InstallMethod( RestrictedGeneralizedMorphismCategory,
                [ IsHomalgCategory, IsFunction, IsString ],
@@ -227,8 +228,8 @@ InstallMethod( RestrictedGeneralizedMorphismCategory,
 end );
 
 
-InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismObject,
-                                       [ IsHomalgCategoryObject ],
+InstallMethod( GeneralizedMorphismObject,
+               [ IsHomalgCategoryObject ],
                                        
   function( object )
     local gen_object, generalized_category;
@@ -241,6 +242,8 @@ InstallMethodWithToDoForIsWellDefined( GeneralizedMorphismObject,
     generalized_category := GeneralizedMorphismCategory( HomalgCategory( object ) );
     
     Add( generalized_category, gen_object );
+    
+    AddToToDoList( ToDoListEntryForEqualAttributes( gen_object, "IsWellDefined", object, "IsWellDefined" ) );
     
     return gen_object;
     
