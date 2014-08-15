@@ -29,8 +29,7 @@ DeclareGlobalVariable( "GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST" );
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGORY" );
 
-DeclareProperty( "WasCreatedAsGeneralizedMorphismCategory",
-                 IsHomalgCategory );
+DeclareFilter( "WasCreatedAsGeneralizedMorphismCategory" );
 
 DeclareProperty( "INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms",
                  IsHomalgCategory );

@@ -179,7 +179,7 @@ InstallMethod( GeneralizedMorphismCategory,
     
     SetIsRestrictedGeneralizedMorphismCategory( generalized_morphism_category, false );
     
-    SetWasCreatedAsGeneralizedMorphismCategory( generalized_morphism_category, true );
+    SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategory );
     
     return generalized_morphism_category;
     
@@ -196,9 +196,9 @@ InstallMethod( RestrictedGeneralizedMorphismCategory,
 end );
 
 ##
-InstallMethod( RestrictedGeneralizedMorphismCategory,
-               [ IsHomalgCategory, IsFunction, IsString ],
-               
+InstallMethodWithCacheFromObject( RestrictedGeneralizedMorphismCategory,
+                                  [ IsHomalgCategory, IsFunction, IsString ],
+                                  
   function( category, membership_function, membership_function_name )
     local name, restricted_generalized_morphism_category;
     
@@ -218,7 +218,7 @@ InstallMethod( RestrictedGeneralizedMorphismCategory,
     
     SetIsRestrictedGeneralizedMorphismCategory( restricted_generalized_morphism_category, true );
     
-    SetWasCreatedAsGeneralizedMorphismCategory( restricted_generalized_morphism_category, true );
+    SetFilterObj( restricted_generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategory );
     
     return restricted_generalized_morphism_category;
     
@@ -602,7 +602,7 @@ end );
 
 ## FIXME: This construction should be done by a TODO List
 InstallImmediateMethod( INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms,
-                        WasCreatedAsGeneralizedMorphismCategory,
+                        IsHomalgCategory and WasCreatedAsGeneralizedMorphismCategory,
                         0,
                         
   function( generalized_morphism_category )
