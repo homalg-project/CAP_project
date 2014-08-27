@@ -235,7 +235,7 @@ InstallMethodWithCacheFromObject( IsEqualAsSubobject,
         
     fi;
     
-    return Dominates( sub1, sub2 ) and Dominates( sub2, sub2 );
+    return Dominates( sub1, sub2 ) and Dominates( sub2, sub1 );
     
 end );
 
