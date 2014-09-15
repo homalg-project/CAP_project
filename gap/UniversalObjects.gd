@@ -1017,6 +1017,11 @@ DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
 DeclareOperation( "AddUniversalMorphismIntoPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}, P ) \mapsto u$ 
+#! to the category $C$
+#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ are morphisms of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
                   [ IsHomalgCategory, IsFunction ] );
@@ -1042,6 +1047,14 @@ DeclareFilter( "WasCreatedAsPullback" );
 #! @Section Pushout
 ##
 ####################################
+
+#! Let $C$ be a category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
+#! Now take $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n} \in C^n$. An object $I$ equipped with morphisms 
+#! $(\iota_i: I_i \rightarrow I)_{i = 1 \dots n} \in C^n$ is called a pushout of
+#! $(\beta_i)_{i = 1 \dots n}$ if for every collection of morphisms $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n} \in C^n$
+#! with the property $\tau_i \circ \beta_i  = \tau_j \circ \beta_j $ for all $i,j = 1, \dots, n$,
+#! there exists a unique morphism $u: I \rightarrow T$ such that $\tau_i = u \circ \iota_i$ for all $i = 1 \dots n$.
+
 
 ## Main Operations and Attributes
 
@@ -1090,34 +1103,48 @@ DeclareAttribute( "UniversalMorphismFromPushoutWithGivenPushoutFunction",
 #! @EndAutoDoc
 
 ## Add Operations
-#! @AutoDoc
-#! @BeginGroup
+
 
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
-
+#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$ to the category $C$
+#! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, i ) \mapsto \iota_i$ to the category $C$
+#! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactorOfPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, i, I ) \mapsto \iota_i$ to the category $C$
+#! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactorWithGivenPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n} ) \mapsto u$ 
+#! to the category $C$ where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ and $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ are morphisms of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}, I ) \mapsto u$ 
+#! to the category $C$ where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ and $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ are morphisms of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsHomalgCategory, IsFunction ] );
-#! @EndGroup
-#! @EndAutoDoc
+
 
 
 ## WasCreatedAs Filter
