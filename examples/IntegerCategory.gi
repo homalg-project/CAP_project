@@ -178,7 +178,7 @@ end );
 ##
 AddProjectionInFactorOfPullbackWithGivenPullback( integer_category,
                                  
-  function( product_morx, coordinate, projection_number )
+  function( product_morx, coordinate, pullback )
     local range;
     
     range := Source( product_mor[ coordinate ] );

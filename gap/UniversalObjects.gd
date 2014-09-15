@@ -924,6 +924,13 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 ##
 ####################################
 
+#! Let $C$ be a category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
+#! Now take $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n} \in C^n$. An object $P$ equipped with morphisms 
+#! $(\pi_i: P \rightarrow P_i)_{i = 1 \dots n} \in C^n$ is called a pullback of
+#! $(\beta_i)_{i = 1 \dots n}$ if for every collection of morphisms $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n} \in C^n$
+#! with the property $\beta_i \circ \tau_i = \beta_j \circ \tau_j$ for all $i,j = 1, \dots, n$,
+#! there exists a unique morphism $u: T \rightarrow P$ such that $\tau_i = \pi_i \circ u $ for all $i = 1 \dots n$.
+
 ## Main Operations and Attributes
 
 # FIXME:
@@ -975,25 +982,37 @@ DeclareAttribute( "UniversalMorphismIntoPullbackWithGivenPullbackFunction",
 #! @EndAutoDoc
 
 ## Add Operations
-#! @AutoDoc
-#! @BeginGroup
+
 
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
-
+#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$ to the category $C$
+#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, i ) \mapsto \pi_i$ to the category $C$
+#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorOfPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, i, P ) \mapsto \pi_i$ to the category $C$
+#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}  ) \mapsto u$ 
+#! to the category $C$
+#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ are morphisms of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoPullback",
                   [ IsHomalgCategory, IsFunction ] );
@@ -1001,8 +1020,7 @@ DeclareOperation( "AddUniversalMorphismIntoPullback",
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
                   [ IsHomalgCategory, IsFunction ] );
-#! @EndGroup
-#! @EndAutoDoc
+
 
 
 ## WasCreatedAs Filter

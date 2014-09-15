@@ -2095,7 +2095,7 @@ InstallMethod( AddProjectionInFactorOfPullbackWithGivenPullback,
         
         fi;
         
-        projection_in_factor := func( diagram, pullback, projection_number );
+        projection_in_factor := func( diagram, projection_number, pullback );
         
         Add( category, projection_in_factor );
         
@@ -2544,7 +2544,7 @@ InstallMethod( AddInjectionOfCofactorWithGivenPushout,
            
         fi;
         
-        injection_of_cofactor := func( diagram, pushout, injection_number );
+        injection_of_cofactor := func( diagram, injection_number, pushout );
         
         Add( category, injection_of_cofactor );
         
