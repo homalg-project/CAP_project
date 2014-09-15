@@ -645,7 +645,7 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #! Now take $(I_1, \dots, I_n) \in C^n$. An object $I$ equipped with morphisms 
 #! $(\iota_i: I_i \rightarrow I)_{i = 1 \dots n} \in C^n$ is called a coproduct of
 #! $(I_1, \dots, I_n)$ if for every collection of morphisms $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n} \in C^n$
-#! there exists a unique morphism $u: I \rightarrow T$ such that $\tau_i = \tau \circ \iota_i$ for all $i = 1 \dots n$.
+#! there exists a unique morphism $u: I \rightarrow T$ such that $\tau_i = u \circ \iota_i$ for all $i = 1 \dots n$.
 
 ## Main Operations and Attributes
 
@@ -756,6 +756,13 @@ DeclareFilter( "WasCreatedAsCoproduct" );
 ##
 ####################################
 
+#! Let $C$ be a category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
+#! Now take $(P_1, \dots, P_n) \in C^n$. An object $P$ equipped with morphisms 
+#! $(\pi_i: P \rightarrow P_i)_{i = 1 \dots n} \in C^n$ is called a direct product of
+#! $(P_1, \dots, P_n)$ if for every collection of morphisms $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n} \in C^n$
+#! there exists a unique morphism $u: T \rightarrow P$ such that $\tau_i = \pi_i \circ u $ for all $i = 1 \dots n$.
+
+
 ## Main Operations and Attributes
 # the first argument (diagram) is an object of the product category. This is superior to a list of objects
 # because:
@@ -854,34 +861,46 @@ DeclareAttribute( "UniversalMorphismIntoDirectProductWithGivenDirectProductFunct
 #! @EndAutoDoc
 
 ## Add Operations
-#! @AutoDoc
-#! @BeginGroup
 
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
-
+#! This operation adds the given function $f: ( (P_1, \dots, P_n) ) \mapsto P$ to the category $C$
+#! where $(P_1, \dots, P_n)$ is an object of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (P_1, \dots, P_n), i ) \mapsto \pi_i$ to the category $C$
+#! where $(P_1, \dots, P_n)$ is an object of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactor",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (P_1, \dots, P_n), i, P ) \mapsto \pi_i$ to the category $C$
+#! where $(P_1, \dots, P_n)$ is an object of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n} ) \mapsto u$ to the category $C$
+#! where $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}, P ) \mapsto u$ to the category $C$
+#! where $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
-#! @EndGroup
-#! @EndAutoDoc
 
 
 ## WasCreatedAs Filter
