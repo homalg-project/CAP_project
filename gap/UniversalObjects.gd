@@ -25,6 +25,11 @@ DeclareOperation( "AddToGenesis",
 ##
 ####################################
 
+#! Let $\alpha: A \rightarrow B$ be a morphism. A kernel of $\alpha$ is a morphism
+#! $\iota: K \rightarrow A$ such that $\alpha \circ \iota = 0$ and such that for 
+#! every test morphism $\tau: T \rightarrow A$ with $\alpha \circ \tau = 0$, there
+#! exists a unique morphism $u: T \rightarrow K$ such that $\iota \circ u = \tau$.
+
 ## Main Operations and Attributes
 #! @Description
 #!  Kernel of a given morphism.
@@ -54,7 +59,7 @@ DeclareOperation( "KernelEmbWithGivenKernel",
 
 # @Description
 #! Given a kernel $K$ of a morphism $\alpha:A \rightarrow B$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
-#! returns the unique morphism $u: T \rightarrow \mathrm{Kern}( \alpha )$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
+#! returns the unique morphism $u: T \rightarrow K$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
 #! denotes the kernel embedding.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments K, tau
@@ -63,7 +68,7 @@ DeclareOperation( "KernelLift",
 
 #! @Description
 #! Given a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
-#! returns the unique morphism $u: T \rightarrow \mathrm{Kern}( \alpha )$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
+#! returns the unique morphism $u: T \rightarrow K$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
 #! denotes the kernel embedding.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments alpha, tau
@@ -103,33 +108,41 @@ DeclareAttribute( "KernelLiftWithGivenKernelFunction",
 #! @EndAutoDoc
 
 ## Add Operations
-#! @AutoDoc
-#! @BeginGroup
 
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
+#! This operation adds the given function $f: \alpha \mapsto K$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: \alpha \mapsto \iota$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernelEmb",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: (\alpha, K) \mapsto \iota$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernelEmbWithGivenKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: (\alpha, \tau) \mapsto u$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernelLift",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: (\alpha, \tau, K) \mapsto u$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernelLiftWithGivenKernel",
                   [ IsHomalgCategory, IsFunction ] );
-#! @EndGroup
-#! @EndAutoDoc
 
 ## WasCreatedAs Filter
 #! @Chapter Technical Details
@@ -148,6 +161,12 @@ DeclareFilter( "WasCreatedAsKernel" );
 #!  @Section Cokernel
 ##
 ####################################
+
+#! Let $\alpha: A \rightarrow B$ be a morphism. A cokernel of $\alpha$ is a morphism
+#! $\epsilon: B \rightarrow C$ such that $\epsilon \circ \alpha = 0$ and such that for 
+#! every test morphism $\tau: B \rightarrow T$ with $\tau \circ \alpha = 0$, there
+#! exists a unique morphism $u: C \rightarrow T$ such that $u \circ \epsilon  = \tau$.
+
 
 ## Main Operations and Attributes
 #! @Description
@@ -228,18 +247,38 @@ DeclareAttribute( "CokernelColiftWithGivenCokernelFunction",
 
 
 ## Add Operations
+#! @Description
+#! This operation adds the given function $f: \alpha \mapsto C$ to the category $C$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddCokernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: \alpha \mapsto \epsilon$ to the category $C$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddCokernelProj",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: (\alpha, C) \mapsto \epsilon$ to the category $C$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddCokernelProjWithGivenCokernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: (\alpha, \tau) \mapsto u$ to the category $C$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddCokernelColift",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: (\alpha, \tau, C) \mapsto u$ to the category $C$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -261,6 +300,8 @@ DeclareFilter( "WasCreatedAsCokernel" );
 #! @Section Zero object
 ##
 ####################################
+
+#! A zero object of a category $C$ is an object $Z$ which is an initial and a terminal object.
 
 ## Main Operations and Attributes
 
@@ -292,29 +333,23 @@ DeclareAttributeWithToDoForIsWellDefined( "MorphismIntoZeroObject",
 
 #! @BeginGroup
 
-#! @AutoDoc
 #! @Description
 #! These attributes store the implementations of the basic algorithms for a terminal object. 
 DeclareAttribute( "ZeroObjectFunction",
                   IsHomalgCategory );
-#! @EndAutoDoc
 
-# @EndGroup
+#! @EndGroup
 
 ## Add Operations
 
-#! @AutoDoc
-#! @BeginGroup
-
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
+#! This operation adds the given function $f$: (no argument) $\mapsto Z$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddZeroObject",
                   [ IsHomalgCategory, IsFunction ] );
-#! @EndGroup
 
-#! @EndAutoDoc
+
 
 
 ## WasCreatedAs Filter
@@ -338,6 +373,9 @@ DeclareProperty( "IS_IMPLIED_ZERO_OBJECT",
 #! @Section Terminal object
 ##
 ####################################
+
+#! An object $T$ of a category $C$ is called terminal if for every object $A$
+#! there exists a unique morphism $u: A \rightarrow T$.
 
 ## Main Operations and Attributes
 
@@ -391,31 +429,32 @@ DeclareAttribute( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFun
                   IsHomalgCategory );
 #! @EndAutoDoc
 
-# @EndGroup
+#! @EndGroup
 
 ## Add Operations
 
-#! @AutoDoc
-#! @BeginGroup
 
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
+#! This operation adds the given function $f$: (no argument) $\mapsto T$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddTerminalObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: A \mapsto u$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: (A, T) \mapsto u$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsHomalgCategory, IsFunction ] );
 
-#! @EndGroup
-
-#! @EndAutoDoc
 
 ## WasCreatedAs Filter
 
@@ -436,6 +475,9 @@ DeclareFilter( "WasCreatedAsTerminalObject" );
 #! @Section Initial Object
 ##
 ####################################
+
+#! An object $I$ of a category $C$ is called initial if for every object $A$
+#! there exists a unique morphism $u: I \rightarrow A$.
 
 ## Main Operations and Attributes
 
@@ -489,7 +531,7 @@ DeclareAttribute( "UniversalMorphismFromInitialObjectWithGivenInitialObjectFunct
                   IsHomalgCategory );
 #! @EndAutoDoc
 
-# @EndGroup
+#! @EndGroup
 
 ## Add Operations
 
@@ -497,16 +539,22 @@ DeclareAttribute( "UniversalMorphismFromInitialObjectWithGivenInitialObjectFunct
 #! @BeginGroup
 
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
+#! This operation adds the given function $f$: (no argument) $\mapsto I$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInitialObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: A \mapsto u$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromInitialObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: (A, T) \mapsto u$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsHomalgCategory, IsFunction ] );
@@ -534,6 +582,15 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 ##
 ####################################
 
+#! Let $C$ be an additive category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
+#! Now take $(S_1, \dots, S_n) \in C^n$. An object $S$ equipped with morphisms $\pi_i: S \rightarrow S_i$ and
+#! $\iota_i: S_i \rightarrow S$ is called direct sum of
+#! $(S_1, \dots, S_n)$ if
+#! - $\sum_{i = 1}^n (\iota_i \circ \pi_i) = \mathrm{id}_S$,
+#! - for all $i,j \in \{ 1 \dots n \}$: $\pi_j\iota_i  = \delta_{ij}\mathrm{id}_{S_i}$, where $\delta_{ij}$ denotes the Kronecker delta.
+#! Note: this implies that $S$ is a direct product with respect to the $\pi_i$ and a coproduct with
+#! respect to the $\iota_i$.
+
 ## Main Operations and Attributes
 
 DeclareOperationWithCache( "DirectSumOp",
@@ -550,17 +607,14 @@ DeclareAttribute( "DirectSumFunction",
 #! @EndGroup
 #! @EndAutoDoc
 
-#! @BeginGroup
-
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
-
+#! This operation adds the given function $f: ( (S_1, \dots, S_n) ) \mapsto S$ to the category $C$,
+#! where $(S_1, \dots, S_n)$ is an object of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddDirectSum",
                   [ IsHomalgCategory, IsFunction ] );
-#! @EndGroup
-#! @EndAutoDoc
+
 
 ## WasCreatedAs Filter
 
@@ -586,6 +640,12 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #! @Section Coproduct
 ##
 ####################################
+
+#! Let $C$ be a category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
+#! Now take $(I_1, \dots, I_n) \in C^n$. An object $I$ equipped with morphisms 
+#! $(\iota_i: I_i \rightarrow I)_{i = 1 \dots n} \in C^n$ is called a coproduct of
+#! $(I_1, \dots, I_n)$ if for every collection of morphisms $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n} \in C^n$
+#! there exists a unique morphism $u: I \rightarrow T$ such that $\tau_i = \tau \circ \iota_i$ for all $i = 1 \dots n$.
 
 ## Main Operations and Attributes
 
@@ -634,34 +694,46 @@ DeclareAttribute( "UniversalMorphismFromCoproductWithGivenCoproductFunction",
 #! @EndAutoDoc
 
 ## Add Operations
-#! @AutoDoc
-#! @BeginGroup
 
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
-
+#! This operation adds the given function $f: ( (I_1, \dots, I_n) ) \mapsto I$ to the category $C$
+#! where $(I_1, \dots, I_n)$ is an object of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (I_1, \dots, I_n), i ) \mapsto \iota_i$ to the category $C$
+#! where $(I_1, \dots, I_n)$ is an object of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactor",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( (I_1, \dots, I_n), i, I ) \mapsto \iota_i$ to the category $C$
+#! where $(I_1, \dots, I_n)$ is an object of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactorWithGivenCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}  ) \mapsto u$ to the category $C$
+#! where $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: ( ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}, I  ) \mapsto u$ to the category $C$
+#! where $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
-#! @EndGroup
-#! @EndAutoDoc
 
 
 ## WasCreatedAs Filter
