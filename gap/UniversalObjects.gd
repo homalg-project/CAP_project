@@ -1167,6 +1167,9 @@ DeclareFilter( "WasCreatedAsPushout" );
 ##
 ####################################
 
+#! Let $\alpha: A \rightarrow B$ be a morphism. The image of $\alpha$ is
+#! the smallest monomorphism $\iota: I \hookrightarrow B$ through which $\alpha$ factors.
+
 ## Main Operations and Attributes
 
 ## FIXME: Image is a function
@@ -1201,26 +1204,27 @@ DeclareAttribute( "ImageEmbeddingWithGivenImageFunction",
 #! @EndAutoDoc
 
 ## Add Operations
-#! @AutoDoc
-#! @BeginGroup
 
 #! @Description
-#! These operations add a given method $f$ to a category $C$, i.e., the
-#! method AddX installs a method $X$ for the category $C$.
-
+#! This operation adds the given function $f: \alpha \mapsto I$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddImage",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: \alpha \mapsto \iota$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddImageEmbedding",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: (\alpha, I) \mapsto \iota$ to the category $C$.
+#! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddImageEmbeddingWithGivenImage",
                   [ IsHomalgCategory, IsFunction ] );
-#! @EndGroup
-#! @EndAutoDoc
 
 
 ## WasCreatedAs Filter
