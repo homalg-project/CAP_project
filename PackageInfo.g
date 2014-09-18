@@ -2,8 +2,16 @@ SetPackageInfo( rec(
 
 PackageName := "ModulePresentationsForHomalg",
 Subtitle := "Category R-pres for CategoriesForHomalg",
-Version := "0.1dev",
-Date := "18/09/2014", # dd/mm/yyyy format
+Version := Maximum( [
+           ##
+           "2014.09.18", # Sebas version
+           ##
+           "2014.09.18", # Sepps version
+           ##
+           ] ),
+           
+Date := ~.Version{[ 1 .. 10 ]},
+Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
 
 Persons := [
   rec(
@@ -69,7 +77,10 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.6",
-  NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ] ],
+  NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
+                           [ "MatricesForHomalg", ">=0" ],
+                           [ "CategoriesForHomalg", ">=0" ]
+  ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
