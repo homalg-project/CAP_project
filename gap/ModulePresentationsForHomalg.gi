@@ -58,7 +58,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
                        
   function( category )
     
-    ADD_KERNEL_EMBEDDING_LEFT( category );
+    ADD_KERNEL_LEFT( category );
     
     ADD_PRECOMPOSE_LEFT( category );
     
@@ -70,6 +70,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_ZERO_MORPHISM_LEFT( category );
     
+    ADD_EQUAL_FOR_MORPHISMS_LEFT( category );
+    
 end );
 
 ##
@@ -77,7 +79,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
                        
   function( category )
     
-    ADD_KERNEL_EMBEDDING_RIGHT( category );
+    ADD_KERNEL_RIGHT( category );
     
     ADD_PRECOMPOSE_RIGHT( category );
     
@@ -89,10 +91,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_ZERO_MORPHISM_RIGHT( category );
     
+    ADD_EQUAL_FOR_MORPHISMS_RIGHT( category );
+    
 end );
 
 ##
-InstallGlobalFunction( ADD_KERNEL_EMBEDDING_LEFT,
+InstallGlobalFunction( ADD_KERNEL_LEFT,
                        
   function( category )
     
@@ -111,10 +115,25 @@ InstallGlobalFunction( ADD_KERNEL_EMBEDDING_LEFT,
         
     end );
     
+    AddMonoAsKernelLift( category,
+                         
+      function( mono, test )
+        local lift;
+        
+        lift := RightDivide( UnderlyingMatrix( test ), UnderlyingMatrix( mono ) );
+        
+        if lift = false then
+            return false;
+        fi;
+        
+        return PresentationMorphism( Source( test ), lift, Source( mono ) );
+        
+    end );
+    
 end );
 
 ##
-InstallGlobalFunction( ADD_KERNEL_EMBEDDING_RIGHT,
+InstallGlobalFunction( ADD_KERNEL_RIGHT,
                        
   function( category )
     
@@ -130,6 +149,22 @@ InstallGlobalFunction( ADD_KERNEL_EMBEDDING_RIGHT,
         kernel := AsRightPresentation( kernel );
         
         return PresentationMorphism( kernel, embedding, Source( morphism ) );
+        
+    end );
+    
+    AddMonoAsKernelLift( category,
+                         
+      function( mono, test )
+        local lift;
+        
+        lift := LeftDivide( UnderlyingMatrix( test ), UnderlyingMatrix( mono ) );
+        
+        if lift = false then
+            return false;
+        fi;
+        
+        
+        return PresentationMorphism( Source( test ), lift, Source( mono ) );
         
     end );
     
@@ -241,6 +276,42 @@ InstallGlobalFunction( ADD_ZERO_MORPHISM_RIGHT,
         matrix := HomalgZeroMatrix( NrRows( UnderlyingMatrix( range ) ), NrRows( UnderlyingMatrix( source ) ), category!.ring_for_representation_category );
         
         return PresentationMorphism( source, matrix, range );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_LEFT,
+                       
+  function( category )
+    
+    AddEqualityOfMorphisms( category,
+                            
+      function( mor1, mor2 )
+        local result_of_divide;
+        
+        result_of_divide := DecideZeroRows( UnderlyingMatrix( mor1 ) - UnderlyingMatrix( mor2 ), UnderlyingMatrix( Range( mor1 ) ) );
+        
+        return IsZero( result_of_divide );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_RIGHT,
+                       
+  function( category )
+    
+    AddEqualityOfMorphisms( category,
+                            
+      function( mor1, mor2 )
+        local result_of_divide;
+        
+        result_of_divide := DecideZeroColumns( UnderlyingMatrix( mor1 ) - UnderlyingMatrix( mor2 ), UnderlyingMatrix( Range( mor1 ) ) );
+        
+        return IsZero( result_of_divide );
         
     end );
     

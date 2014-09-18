@@ -27,21 +27,25 @@ DeclareAttribute( "RightPresentations",
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_LEFT_PRESENTATION" );
 
-DeclareGlobalFunction( "ADD_KERNEL_EMBEDDING_LEFT" );
+DeclareGlobalFunction( "ADD_KERNEL_LEFT" );
 
 DeclareGlobalFunction( "ADD_PRECOMPOSE_LEFT" );
 
 DeclareGlobalFunction( "ADD_ZERO_MORPHISM_LEFT" );
 
+DeclareGlobalFunction( "ADD_EQUAL_FOR_MORPHISMS_LEFT" );
+
 
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
 
-DeclareGlobalFunction( "ADD_KERNEL_EMBEDDING_RIGHT" );
+DeclareGlobalFunction( "ADD_KERNEL_RIGHT" );
 
 DeclareGlobalFunction( "ADD_PRECOMPOSE_RIGHT" );
 
 DeclareGlobalFunction( "ADD_ZERO_MORPHISM_RIGHT" );
+
+DeclareGlobalFunction( "ADD_EQUAL_FOR_MORPHISMS_RIGHT" );
 
 
 
