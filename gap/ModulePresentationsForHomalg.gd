@@ -1,3 +1,8 @@
-#! @Description
-#!   Insert documentation for you function here
-DeclareGlobalFunction( "ModulePresentationsForHomalg_Example" );
+#############################################################################
+##
+##                                       ModulePresentationsForHomalg package
+##
+##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
+##                  Sebastian Posur,   RWTH Aachen
+##
+#############################################################################

@@ -1,5 +1,8 @@
-InstallGlobalFunction( ModulePresentationsForHomalg_Example,
-function()
-	Print( "This is a placeholder function, replace it with your own code.\n" );
-end );
-
+#############################################################################
+##
+##                                       ModulePresentationsForHomalg package
+##
+##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
+##                  Sebastian Posur,   RWTH Aachen
+##
+#############################################################################
