@@ -6,3 +6,15 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #############################################################################
+
+##############################################
+##
+## Category
+##
+##############################################
+
+DeclareAttribute( "LeftPresentations",
+                  IsHomalgRing );
+
+DeclareAttribute( "RightPresentations",
+                  IsHomalgRing );
