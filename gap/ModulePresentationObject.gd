@@ -13,11 +13,14 @@
 ##
 #############################
 
-DeclareCategory( "IsLeftPresentation",
+DeclareCategory( "IsLeftOrRightPresentation",
                  IsHomalgCategoryObject );
 
+DeclareCategory( "IsLeftPresentation",
+                 IsLeftOrRightPresentation );
+
 DeclareCategory( "IsRightPresentation",
-                 IsHomalgCategoryObject );
+                 IsLeftOrRightPresentation );
 
 #############################
 ##
@@ -30,3 +33,17 @@ DeclareAttribute( "AsLeftPresentation",
 
 DeclareAttribute( "AsRightPresentation",
                   IsHomalgMatrix );
+
+DeclareGlobalFunction( "AsLeftOrRightPresentation" );
+
+#############################
+##
+## Attributes
+##
+#############################
+
+DeclareAttribute( "UnderlyingMatrix",
+                  IsLeftOrRightPresentation );
+
+DeclareAttribute( "UnderlyingHomalgRing",
+                  IsLeftOrRightPresentation );

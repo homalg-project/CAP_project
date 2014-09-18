@@ -30,5 +30,48 @@ BindGlobal( "TheTypeOfRightPresentations",
             NewType( TheFamilyOfRightPresentations,
                      IsRightPresentationRep ) );
 
+#############################
+##
+## Constructors
+##
+#############################
 
+InstallGlobalFunction( AsLeftOrRightPresentation,
+               
+  function( matrix, left )
+    local module, ring, type, presentation_category;
+    
+    module := rec( );
+    
+    ring := HomalgRing( matrix );
+    
+    if left = true then
+        type := TheTypeOfLeftPresentations;
+        presentation_category := LeftPresentations( ring );
+    else
+        type := TheTypeOfRightPresentations;
+        presentation_category := RightPresentations( ring );
+    fi;
+    
+    ObjectifyWithAttributes( module, type,
+                             UnderlyingMatrix, matrix,
+                             UnderlyingHomalgRing, ring
+                           );
+    
+    Add( presentation_category, module );
+    
+    return module;
+    
+end );
 
+##
+InstallMethod( AsLeftPresentation,
+               [ IsHomalgMatrix ],
+               
+  matrix -> AsLeftOrRightPresentation( matrix, true ) );
+
+##
+InstallMethod( AsRightPresentation,
+               [ IsHomalgMatrix ],
+               
+  matrix -> AsLeftOrRightPresentation( matrix, false ) );
