@@ -18,3 +18,35 @@ DeclareAttribute( "LeftPresentations",
 
 DeclareAttribute( "RightPresentations",
                   IsHomalgRing );
+
+##############################################
+##
+## Add methods
+##
+##############################################
+
+DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_LEFT_PRESENTATION" );
+
+DeclareGlobalFunction( "ADD_KERNEL_EMBEDDING_LEFT" );
+
+DeclareGlobalFunction( "ADD_PRECOMPOSE_LEFT" );
+
+DeclareGlobalFunction( "ADD_ZERO_MORPHISM_LEFT" );
+
+
+
+DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
+
+DeclareGlobalFunction( "ADD_KERNEL_EMBEDDING_RIGHT" );
+
+DeclareGlobalFunction( "ADD_PRECOMPOSE_RIGHT" );
+
+DeclareGlobalFunction( "ADD_ZERO_MORPHISM_RIGHT" );
+
+
+
+DeclareGlobalFunction( "ADD_IS_ZERO_FOR_MORPHISMS" );
+
+DeclareGlobalFunction( "ADD_ADDITION_FOR_MORPHISMS" );
+
+DeclareGlobalFunction( "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS" );
