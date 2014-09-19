@@ -157,12 +157,11 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
       function( mono, test )
         local lift;
         
-        lift := LeftDivide( UnderlyingMatrix( test ), UnderlyingMatrix( mono ) );
+        lift := LeftDivide( UnderlyingMatrix( mono ), UnderlyingMatrix( test ) );
         
         if lift = false then
             return false;
         fi;
-        
         
         return PresentationMorphism( Source( test ), lift, Source( mono ) );
         
