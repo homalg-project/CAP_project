@@ -186,6 +186,8 @@ InstallMethod( AddKernelEmb,
         
         SetKernelEmb( kernel, kernel_emb );
         
+        #Is this necessary (and in all other analogous situations?): SetKernelEmbWithGivenKernel( mor, kernel, kernel_emb );
+        
         return kernel_emb;
         
     end );
