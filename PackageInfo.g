@@ -10,7 +10,8 @@ Version := Maximum( [
   "2014.03.11", ## Sepp's version
 ] ),
 
-Date := "12/12/2013",
+Date := ~.Version{[ 1 .. 10 ]},
+Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
 
 Persons := [
   rec(
