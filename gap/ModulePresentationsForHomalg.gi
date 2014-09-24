@@ -99,6 +99,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_COKERNEL_RIGHT( category );
     
+    ADD_DIRECT_SUM_RIGHT( category );
+    
 end );
 
 ##
@@ -501,6 +503,120 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         for i in [ 2 .. number_of_components ] do
             
             map_into_product := UnionOfRows( map_into_product, UnderlyingMatrix( components[ i ] ) );
+            
+        od;
+        
+        return PresentationMorphism( direct_sum, map_into_product, Range( components[ 1 ] ) );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
+                       
+  function( category )
+    
+    AddDirectSum( category,
+                  
+      function( product_object )
+        local objects, direct_sum;
+        
+        objects := Components( product_object );
+        
+        objects := List( objects, UnderlyingMatrix );
+        
+        direct_sum := DiagMat( objects );
+        
+        return AsLeftPresentation( direct_sum );
+        
+    end );
+    
+    AddProjectionInFactorWithGivenDirectProduct( category,
+                                                 
+      function( product_object, component_number, direct_sum_object )
+        local objects, object_column_dimension, projection, projection_matrix, i;
+        
+        objects := Components( product_object );
+        
+        object_column_dimension := List( objects, i -> NrRows( UnderlyingMatrix( i ) ) );
+        
+        projection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
+        
+        projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
+        
+        projection_matrix := projection[ 1 ];
+        
+        for i in [ 2 .. Length( objects ) ] do
+            
+            projection_matrix := Columns( projection_matrix, projection[ i ] );
+            
+        od;
+        
+        return PresentationMorphism( direct_sum_object, projection_matrix, objects[ component_number ] );
+        
+    end );
+    
+    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category,
+                                                                 
+      function( product_morphism, direct_sum )
+        local components, number_of_components, map_into_product, i;
+        
+        components := Components( product_morphism );
+        
+        number_of_components := Length( components );
+        
+        map_into_product := UnderlyingMatrix( components[ 1 ] );
+        
+        for i in [ 2 .. number_of_components ] do
+            
+            map_into_product := UnionOfRows( map_into_product, UnderlyingMatrix( components[ i ] ) );
+            
+        od;
+        
+        return PresentationMorphism( Source( components[ 1 ] ), map_into_product, direct_sum );
+        
+    end );
+    
+    AddInjectionOfCofactorWithGivenCoproduct( category,
+                                              
+      function( product_object, component_number, direct_sum_object )
+        local objects, object_column_dimension, projection, projection_matrix, i;
+        
+        objects := Components( product_object );
+        
+        object_column_dimension := List( objects, i -> NrRows( UnderlyingMatrix( i ) ) );
+        
+        projection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
+        
+        projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
+        
+        projection_matrix := projection[ 1 ];
+        
+        for i in [ 2 .. Length( objects ) ] do
+            
+            projection_matrix := UnionOfRows( projection_matrix, projection[ i ] );
+            
+        od;
+        
+        return PresentationMorphism( objects[ component_number ], projection_matrix, product_object );
+        
+    end );
+    
+    AddUniversalMorphismFromCoproductWithGivenCoproduct( category,
+                                                         
+      function( product_morphism, direct_sum )
+        local components, number_of_components, map_into_product, i;
+        
+        components := Components( product_morphism );
+        
+        number_of_components := Length( components );
+        
+        map_into_product := UnderlyingMatrix( components[ 1 ] );
+        
+        for i in [ 2 .. number_of_components ] do
+            
+            map_into_product := UnionOfColums( map_into_product, UnderlyingMatrix( components[ i ] ) );
             
         od;
         
