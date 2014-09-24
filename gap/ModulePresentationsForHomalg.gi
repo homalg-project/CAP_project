@@ -74,6 +74,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_COKERNEL_LEFT( category );
     
+    ADD_DIRECT_SUM_LEFT( category );
+    
 end );
 
 ##
@@ -389,6 +391,53 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
         fi;
         
         return PresentationMorphism( Range( epimorphism ), lift, Range( test_morphism ) );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
+                       
+  function( category )
+    
+    AddDirectSum( category,
+                  
+      function( product_object )
+        local objects, direct_sum;
+        
+        objects := Components( product_object );
+        
+        objects := List( objects, UnderlyingMatrix );
+        
+        direct_sum := DiagMat( objects );
+        
+        return AsLeftPresentation( direct_sum );
+        
+    end );
+    
+    AddProjectionInFactorWithGivenDirectProduct( category,
+                                                 
+      function( product_object, component_number, direct_sum_object )
+        local objects, object_column_dimension, projection, projection_matrix, i;
+        
+        objects := Components( product_object );
+        
+        object_column_dimension := List( objects, i -> NrColumns( UnderlyingMatrix( i ) ) );
+        
+        projection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
+        
+        projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
+        
+        projection_matrix := projection[ 1 ];
+        
+        for i in [ 2 .. Length( objects ) ] do
+            
+            projection_matrix := UnionOfRows( projection_matrix, projection[ i ] );
+            
+        od;
+        
+        return PresentationMorphism( direct_sum_object, projection_matrix, objects[ component_number ] );
         
     end );
     
