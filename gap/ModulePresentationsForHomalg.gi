@@ -72,6 +72,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_EQUAL_FOR_MORPHISMS_LEFT( category );
     
+    ADD_COKERNEL_LEFT( category );
+    
 end );
 
 ##
@@ -92,6 +94,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_ZERO_MORPHISM_RIGHT( category );
     
     ADD_EQUAL_FOR_MORPHISMS_RIGHT( category );
+    
+    ADD_COKERNEL_RIGHT( category );
     
 end );
 
@@ -117,16 +121,16 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
     
     AddMonoAsKernelLift( category,
                          
-      function( mono, test )
+      function( monomorphism, test_morphism )
         local lift;
         
-        lift := RightDivide( UnderlyingMatrix( test ), UnderlyingMatrix( mono ) );
+        lift := RightDivide( UnderlyingMatrix( test_morphism ), UnderlyingMatrix( monomorphism ), UnderlyingMatrix( Range( monomorphism ) ) );
         
         if lift = false then
             return false;
         fi;
         
-        return PresentationMorphism( Source( test ), lift, Source( mono ) );
+        return PresentationMorphism( Source( test_morphism ), lift, Source( monomorphism ) );
         
     end );
     
@@ -154,16 +158,16 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
     
     AddMonoAsKernelLift( category,
                          
-      function( mono, test )
+      function( monomorphism, test_morphism )
         local lift;
         
-        lift := LeftDivide( UnderlyingMatrix( mono ), UnderlyingMatrix( test ) );
+        lift := LeftDivide( UnderlyingMatrix( monomorphism ), UnderlyingMatrix( test_morphism ), UnderlyingMatrix( Range( monomorphism ) ) );
         
         if lift = false then
             return false;
         fi;
         
-        return PresentationMorphism( Source( test ), lift, Source( mono ) );
+        return PresentationMorphism( Source( test_morphism ), lift, Source( monomorphism ) );
         
     end );
     
@@ -206,9 +210,9 @@ InstallGlobalFunction( ADD_ADDITION_FOR_MORPHISMS,
     
     AddAdditionForMorphisms( category,
                              
-      function( mor1, mor2 )
+      function( morphism_1, morphism_2 )
         
-        return PresentationMorphism( Source( mor1 ), UnderlyingMatrix( mor1 ) + UnderlyingMatrix( mor2 ), Range( mor1 ) );
+        return PresentationMorphism( Source( morphism_1 ), UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ), Range( morphism_1 ) );
         
     end );
     
@@ -221,9 +225,9 @@ InstallGlobalFunction( ADD_ADDITIVE_INVERSE_FOR_MORPHISMS,
     
     AddAdditiveInverseForMorphisms( category,
                                     
-      function( mor1 )
+      function( morphism_1 )
         
-        return PresentationMorphism( Source( mor1 ), - UnderlyingMatrix( mor1 ), Range( mor1 ) );
+        return PresentationMorphism( Source( morphism_1 ), - UnderlyingMatrix( morphism_1 ), Range( morphism_1 ) );
         
     end );
     
@@ -236,9 +240,9 @@ InstallGlobalFunction( ADD_IS_ZERO_FOR_MORPHISMS,
     
     AddIsZeroForMorphisms( category,
                            
-      function( mor )
+      function( morphism )
         
-        return IsZero( UnderlyingMatrix( mor ) );
+        return IsZero( UnderlyingMatrix( morphism ) );
         
     end );
     
@@ -287,10 +291,10 @@ InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_LEFT,
     
     AddEqualityOfMorphisms( category,
                             
-      function( mor1, mor2 )
+      function( morphism_1, morphism_2 )
         local result_of_divide;
         
-        result_of_divide := DecideZeroRows( UnderlyingMatrix( mor1 ) - UnderlyingMatrix( mor2 ), UnderlyingMatrix( Range( mor1 ) ) );
+        result_of_divide := DecideZeroRows( UnderlyingMatrix( morphism_1 ) - UnderlyingMatrix( morphism_2 ), UnderlyingMatrix( Range( morphism_1 ) ) );
         
         return IsZero( result_of_divide );
         
@@ -305,12 +309,86 @@ InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_RIGHT,
     
     AddEqualityOfMorphisms( category,
                             
-      function( mor1, mor2 )
+      function( morphism_1, morphism_2 )
         local result_of_divide;
         
-        result_of_divide := DecideZeroColumns( UnderlyingMatrix( mor1 ) - UnderlyingMatrix( mor2 ), UnderlyingMatrix( Range( mor1 ) ) );
+        result_of_divide := DecideZeroColumns( UnderlyingMatrix( morphism_1 ) - UnderlyingMatrix( morphism_2 ), UnderlyingMatrix( Range( morphism_1 ) ) );
         
         return IsZero( result_of_divide );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_COKERNEL_LEFT,
+                       
+  function( category )
+    
+    AddCokernelProj( category,
+                     
+      function( morphism )
+        local cokernel_object, projection;
+        
+        cokernel_object := UnionOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
+        
+        cokernel_object := AsLeftPresentation( cokernel_object );
+        
+        projection := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( Range( morphism ) ) ), category!.ring_for_representation_category );
+        
+        return PresentationMorphism( Range( morphism ), projection, cokernel_object );
+        
+    end );
+    
+    AddEpiAsCokernelColift( category,
+                            
+      function( epimorphism, test_morphism )
+        local lift;
+        
+        lift := LeftDivide( UnderlyingMatrix( epimorphism ), UnderlyingMatrix( test_morphism ), UnderlyingMatrix( Range( test_morphism ) ) );
+        
+        if lift = false then
+            return false;
+        fi;
+        
+        return PresentationMorphism( Range( epimorphism ), lift, Range( test_morphism ) );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_COKERNEL_RIGHT,
+                       
+  function( category )
+    
+    AddCokernelProj( category,
+                     
+      function( morphism )
+        local cokernel_object, projection;
+        
+        cokernel_object := UnionOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
+        
+        cokernel_object := AsRightPresentation( cokernel_object );
+        
+        projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), category!.ring_for_representation_category );
+        
+        return PresentationMorphism( Range( morphism ), projection, cokernel_object );
+        
+    end );
+    
+    AddEpiAsCokernelColift( category,
+                            
+      function( epimorphism, test_morphism )
+        local lift;
+        
+        lift := RightDivide( UnderlyingMatrix( test_morphism ), UnderlyingMatrix( epimorphism ), UnderlyingMatrix( Range( test_morphism ) ) );
+        
+        if lift = false then
+            return false;
+        fi;
+        
+        return PresentationMorphism( Range( epimorphism ), lift, Range( test_morphism ) );
         
     end );
     

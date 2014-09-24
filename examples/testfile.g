@@ -11,3 +11,22 @@ Bright := AsRightPresentation( B );
 tau := HomalgMatrix( [ [ 1, 0 ], [ 0, 1 ] ], ZZ );
 
 
+#########################
+##
+## Cokernel
+##
+#########################
+
+A := AsLeftPresentation( HomalgZeroMatrix( 0, 1, ZZ ) );
+phi := HomalgMatrix( [ [ 4 ] ], ZZ );
+
+phi := PresentationMorphism( A, phi, A );
+
+epsilon := CokernelProj( phi );
+
+tau := HomalgMatrix( [ [ 2 ] ], ZZ );
+B := AsLeftPresentation( HomalgMatrix( [ [ 8 ] ], ZZ ) );
+tau := PresentationMorphism( A, tau, B );
+
+
+

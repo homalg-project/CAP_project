@@ -35,6 +35,8 @@ DeclareGlobalFunction( "ADD_ZERO_MORPHISM_LEFT" );
 
 DeclareGlobalFunction( "ADD_EQUAL_FOR_MORPHISMS_LEFT" );
 
+DeclareGlobalFunction( "ADD_COKERNEL_LEFT" );
+
 
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
@@ -46,6 +48,8 @@ DeclareGlobalFunction( "ADD_PRECOMPOSE_RIGHT" );
 DeclareGlobalFunction( "ADD_ZERO_MORPHISM_RIGHT" );
 
 DeclareGlobalFunction( "ADD_EQUAL_FOR_MORPHISMS_RIGHT" );
+
+DeclareGlobalFunction( "ADD_COKERNEL_RIGHT" );
 
 
 
