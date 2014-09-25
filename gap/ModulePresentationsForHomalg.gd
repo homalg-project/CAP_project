@@ -41,6 +41,8 @@ DeclareGlobalFunction( "ADD_DIRECT_SUM_LEFT" );
 
 DeclareGlobalFunction( "ADD_ZERO_OBJECT_LEFT" );
 
+DeclareGlobalFunction( "ADD_IDENTITY_LEFT" );
+
 
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
@@ -58,6 +60,8 @@ DeclareGlobalFunction( "ADD_COKERNEL_RIGHT" );
 DeclareGlobalFunction( "ADD_DIRECT_SUM_RIGHT" );
 
 DeclareGlobalFunction( "ADD_ZERO_OBJECT_RIGHT" );
+
+DeclareGlobalFunction( "ADD_IDENTITY_RIGHT" );
 
 
 

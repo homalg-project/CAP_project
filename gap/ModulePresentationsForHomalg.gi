@@ -82,6 +82,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_ZERO_OBJECT_LEFT( category );
     
+    ADD_IDENTITY_LEFT( category );
+    
 end );
 
 ##
@@ -106,6 +108,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_COKERNEL_RIGHT( category );
     
     ADD_DIRECT_SUM_RIGHT( category );
+    
+    ADD_ZERO_OBJECT_RIGHT( category );
+    
+    ADD_IDENTITY_RIGHT( category );
     
 end );
 
@@ -632,6 +638,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     
 end );
 
+##
 InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
                        
   function( category )
@@ -675,4 +682,82 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
     
 end );
 
+##
+InstallGlobalFunction( ADD_ZERO_OBJECT_RIGHT,
+                       
+  function( category )
+    
+    AddZeroObject( category,
+                   
+      function( )
+        local matrix;
+        
+        matrix := HomalgZeroMatrix( 0, 0, category!.ring_for_representation_category );
+        
+        return AsRightPresentation( matrix );
+        
+    end );
+    
+    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category,
+                                                                   
+      function( object, terminal_object )
+        local nr_rows, morphism;
+        
+        nr_rows := NrRows( UnderlyingMatrix( object ) );
+        
+        morphism := HomalgZeroMatrix( 0, nr_rows, category!.ring_for_representation_category );
+        
+        return PresentationMorphism( object, morphism, terminal_object );
+        
+    end );
+    
+    AddUniversalMorphismFromInitialObjectWithGivenInitialObject( category,
+                                                                 
+      function( object, initial_object )
+        local nr_rows, morphism;
+        
+        nr_rows := NrRows( UnderlyingMatrix( object ) );
+        
+        morphism := HomalgZeroMatrix( nr_rows, 0, category!.ring_for_representation_category );
+        
+        return PresentationMorphism( initial_object, morphism, object );
+        
+    end );
+    
+end );
 
+##
+InstallGlobalFunction( ADD_IDENTITY_LEFT,
+                       
+  function( category )
+    
+    AddIdentityMorphism( category,
+                         
+      function( object )
+        local matrix;
+        
+        matrix := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( object ) ), category!.ring_for_representation_category );
+        
+        return PresentationMorphism( object, matrix, object );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_IDENTITY_RIGHT,
+                       
+  function( category )
+    
+    AddIdentityMorphism( category,
+                         
+      function( object )
+        local matrix;
+        
+        matrix := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( object ) ), category!.ring_for_representation_category );
+        
+        return PresentationMorphism( object, matrix, object );
+        
+    end );
+    
+end );
