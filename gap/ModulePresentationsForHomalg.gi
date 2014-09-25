@@ -20,6 +20,8 @@ InstallMethod( LeftPresentations,
     
     ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
     
+    SetIsAbelianCategory( category, true );
+    
     return category;
     
 end );
@@ -36,6 +38,8 @@ InstallMethod( RightPresentations,
     category!.ring_for_representation_category := ring;
     
     ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
+    
+    SetIsAbelianCategory( category, true );
     
     return category;
     
@@ -75,6 +79,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     ADD_COKERNEL_LEFT( category );
     
     ADD_DIRECT_SUM_LEFT( category );
+    
+    ADD_ZERO_OBJECT_LEFT( category );
     
 end );
 
@@ -625,3 +631,48 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     end );
     
 end );
+
+InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
+                       
+  function( category )
+    
+    AddZeroObject( category,
+                   
+      function( )
+        local matrix;
+        
+        matrix := HomalgZeroMatrix( 0, 0, category!.ring_for_representation_category );
+        
+        return AsLeftPresentation( matrix );
+        
+    end );
+    
+    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category,
+                                                                   
+      function( object, terminal_object )
+        local nr_columns, morphism;
+        
+        nr_columns := NrColumns( UnderlyingMatrix( object ) );
+        
+        morphism := HomalgZeroMatrix( nr_columns, 0, category!.ring_for_representation_category );
+        
+        return PresentationMorphism( object, morphism, terminal_object );
+        
+    end );
+    
+    AddUniversalMorphismFromInitialObjectWithGivenInitialObject( category,
+                                                                 
+      function( object, initial_object )
+        local nr_columns, morphism;
+        
+        nr_columns := NrColumns( UnderlyingMatrix( object ) );
+        
+        morphism := HomalgZeroMatrix( 0, nr_columns, category!.ring_for_representation_category );
+        
+        return PresentationMorphism( initial_object, morphism, object );
+        
+    end );
+    
+end );
+
+
