@@ -467,25 +467,25 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     AddInjectionOfCofactorWithGivenCoproduct( category,
                                               
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, projection, projection_matrix, i;
+        local objects, object_column_dimension, injection, injection_matrix, i;
         
         objects := Components( product_object );
         
         object_column_dimension := List( objects, i -> NrColumns( UnderlyingMatrix( i ) ) );
         
-        projection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
+        injection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
         
-        projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
+        injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
         
-        projection_matrix := projection[ 1 ];
+        injection_matrix := injection[ 1 ];
         
         for i in [ 2 .. Length( objects ) ] do
             
-            projection_matrix := UnionOfColumns( projection_matrix, projection[ i ] );
+            injection_matrix := UnionOfColumns( injection_matrix, injection[ i ] );
             
         od;
         
-        return PresentationMorphism( objects[ component_number ], projection_matrix, product_object );
+        return PresentationMorphism( objects[ component_number ], injection_matrix, product_object );
         
     end );
     
@@ -581,25 +581,25 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     AddInjectionOfCofactorWithGivenCoproduct( category,
                                               
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, projection, projection_matrix, i;
+        local objects, object_column_dimension, injection, injection_matrix, i;
         
         objects := Components( product_object );
         
         object_column_dimension := List( objects, i -> NrRows( UnderlyingMatrix( i ) ) );
         
-        projection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
+        injection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
         
-        projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
+        injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
         
-        projection_matrix := projection[ 1 ];
+        injection_matrix := injection[ 1 ];
         
         for i in [ 2 .. Length( objects ) ] do
             
-            projection_matrix := UnionOfRows( projection_matrix, projection[ i ] );
+            injection_matrix := UnionOfRows( injection_matrix, injection[ i ] );
             
         od;
         
-        return PresentationMorphism( objects[ component_number ], projection_matrix, product_object );
+        return PresentationMorphism( objects[ component_number ], injection_matrix, product_object );
         
     end );
     
@@ -616,7 +616,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
         for i in [ 2 .. number_of_components ] do
             
-            map_into_product := UnionOfColums( map_into_product, UnderlyingMatrix( components[ i ] ) );
+            map_into_product := UnionOfColumns( map_into_product, UnderlyingMatrix( components[ i ] ) );
             
         od;
         
