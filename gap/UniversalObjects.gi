@@ -1564,6 +1564,9 @@ end );
 ####################################
 
 ##
+InstallTrueMethod( CanComputeTerminalObject, CanComputeZeroObject );
+
+##
 InstallMethod( AddZeroObject,
                [ IsHomalgCategory, IsFunction ],
                
@@ -1798,6 +1801,31 @@ InstallMethod( UniversalMorphismIntoTerminalObject,
     
 end );
 
+##
+InstallTrueMethod( CanComputeTerminalObject, CanComputeZeroObject );
+
+##
+InstallMethod( TerminalObject,
+               [ IsHomalgCategoryObject and CanComputeZeroObject ],
+               - 9999, # FIXME
+               
+  function( object )
+    
+    return ZeroObject( object );
+    
+end );
+
+##
+InstallMethod( TerminalObject,
+               [ IsHomalgCategory and CanComputeZeroObject ],
+               -9999,
+               
+  function( category )
+    
+    return ZeroObject( category );
+    
+end );
+
 ####################################
 ##
 ## Initial Object
@@ -1953,6 +1981,31 @@ InstallMethod( UniversalMorphismFromInitialObject,
   function( test_sink )
     
     return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( HomalgCategory( test_sink ) ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeInitialObject, CanComputeZeroObject );
+
+##
+InstallMethod( InitialObject,
+               [ IsHomalgCategoryObject and CanComputeZeroObject ],
+               - 9999, # FIXME
+               
+  function( object )
+    
+    return ZeroObject( object );
+    
+end );
+
+##
+InstallMethod( InitialObject,
+               [ IsHomalgCategory and CanComputeZeroObject ],
+               -9999,
+               
+  function( category )
+    
+    return ZeroObject( category );
     
 end );
 
