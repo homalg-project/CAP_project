@@ -449,8 +449,6 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
                     [ "CanComputePreCompose", "CanComputePostCompose" ],
                     [ "CanComputePostCompose", "CanComputePreCompose" ],
                       "CanComputeZeroObject",
-                    [ "CanComputeMorphismFromZeroObject", "CanComputeMorphismIntoZeroObject" ],
-                    [ "CanComputeMorphismIntoZeroObject", "CanComputeMorphismFromZeroObject" ],
                       "CanComputeZeroMorphism",
                       "CanComputeDirectSum"
 #                     [ "CanComputeProjectionInFirstFactor", "CanComputeInjectionFromFirstSummand" ],

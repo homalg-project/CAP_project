@@ -101,17 +101,25 @@ InstallMethod( Add,
     
 end );
 
-InstallTrueMethod( CanComputeZeroMorphism, CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject );
+InstallTrueMethod( CanComputeZeroMorphism, CanComputePreCompose
+                                       and CanComputeUniversalMorphismIntoTerminalObject
+                                       and CanComputeUniversalMorphismFromInitialObject
+                                       and IsAdditiveCategory );
 
 ##TODO
 InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
-                                       [ IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject,
-                                         IsHomalgCategoryObject and CanComputePreCompose and CanComputeMorphismIntoZeroObject and CanComputeMorphismFromZeroObject ],
+                                       [ IsHomalgCategoryObject
+                                     and CanComputePreCompose
+                                     and CanComputeUniversalMorphismIntoTerminalObject
+                                     and IsAdditiveCategory,
+                                         IsHomalgCategoryObject
+                                     and CanComputeUniversalMorphismFromInitialObject
+                                     and IsAdditiveCategory ],
                                        -99999, #FIXME
                                   
   function( obj_source, obj_range )
     
-    return PreCompose( MorphismIntoZeroObject( obj_source ), MorphismFromZeroObject( obj_range ) );
+    return PreCompose( UniversalMorphismIntoTerminalObject( obj_source ), UniversalMorphismFromInitialObject( obj_range ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject );
 
