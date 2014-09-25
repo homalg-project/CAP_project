@@ -1760,16 +1760,10 @@ end );
 
 ## Maybe set IsWellDefined by default.
 InstallMethod( TerminalObject,
-               [ IsHomalgCategory ],
+               [ IsHomalgCategory and HasTerminalObjectFunction ],
                
   function( category )
     local terminal_object;
-    
-    if not CanComputeTerminalObject( category ) then
-        
-        Error( "no possibility to construct terminal object" );
-        
-    fi;
     
     terminal_object := TerminalObjectFunction( category )();
     
@@ -1943,16 +1937,10 @@ end );
 
 ## Maybe set IsWellDefined by default?
 InstallMethod( InitialObject,
-               [ IsHomalgCategory ],
+               [ IsHomalgCategory and HasInitialObjectFunction ],
                
   function( category )
     local initial_object;
-    
-    if not CanComputeInitialObject( category ) then
-        
-        Error( "no possibility to construct initial object" );
-        
-    fi;
     
     initial_object := InitialObjectFunction( category )();
     
