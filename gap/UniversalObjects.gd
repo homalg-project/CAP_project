@@ -6,13 +6,55 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Universal Objects
+#! Let $I$ and $A$ be categories. A functor $D: I \rightarrow A$ is sometimes also called
+#! a diagram with index category $I$.
+#! A limit of a diagram $D$ is an object $X$ together with a collection of morphisms
+#! $(s_i: X \rightarrow D_i)_{i \in I}$, called a source, such that for every other source
+#! $(t_i: T \rightarrow D_i)_{i \in I}$, there exists a unique morphism $u: T \rightarrow X$ such that
+#! $s_i \circ u = t_i$ for all $i$. 
+#! Dually, a colimit of a diagram $D$ is an object $X$ together with a collection of morphisms
+#! $(s_i: D_i \rightarrow X)_{i \in I}$, called a sink, such that for every other sink
+#! $(t_i: D_i \rightarrow T)_{i \in I}$, there exists a unique morphism $u: X \rightarrow T$ such that
+#! $u \circ s_i = t_i$ for all $i$. 
+#! We call such objects universal.
 #! For every universal object $X$, there are 5 methods which can be installed:
-#! * Constructor of $X$ with a diagram $D$ (i.e. a list of morphisms and objects) as an input
-#! * Constructor of source/sink data with input $D$
-#! * Constructor of source/sink data with input $D$ and $X$
-#! * Constructor of universal property morphism with input $D$ and a test source/sink $T$
-#! * Constructor of universal property morphism with input $D$ and a test source/sink $T$ and $X$
-#! Every universal object stores if it was created as such and therefore can be used to access universal property morphisms (if computable).
+#! * $D \mapsto X$: Constructor of $X$ with a diagram $D$ (i.e. a list of morphisms and objects) as an input 
+#! * $D \mapsto s_i$: Constructor of source/sink data with input $D$
+#! * $(D,X) \mapsto s_i$: Constructor of source/sink data with input $D$ and $X$
+#! * $(D, t_i) \mapsto u$: Constructor of universal property morphism with input $D$ and a test source/sink $T$
+#! * $(D, t_i, X) \mapsto u$: Constructor of universal property morphism with input $D$ and a test source/sink $T$ and $X$
+#! The convention in CategoriesForHomalg is: every diagram $D$ should only have one universal object $X$.
+#! Thus every computed $X$ will be cached. For example, if you compute the pullback object of a given
+#! diagram twice, you will get identical objects (IsIdenticalObj will return true).
+#! <Br/>
+#! This convention becomes inevitable if you build functors out of universal objects, because 
+#! functors are in particular mathematical maps which only allow exactly one output for one given input.
+#! <Br/>
+#! This convention also clarifies the relevance of the constructors which have $D$ and $X$ as an input:
+#! if you have a constructor for $D \mapsto X$, you must also have a constructor
+#! for $(D,X) \mapsto s_i$ in order to compute the $s_i$. Because if you first construct $X$
+#! from $D$, $X$ is once and for all cached as the universal object of $D$. In particular, the
+#! maps $s_i$ must have source/ range identical to $X$. But this can only be guaranteed by
+#! having $X$ as part of the input in the constructor of the $s_i$.
+#! <Br/>
+#! The following combinations of implementations of the above constructors allow a full functionality 
+#! of the universal object in question:
+#! * implement all constructors
+#! * implement $D \mapsto s_i$ and $(D, t_i, X) \mapsto u$
+#! * implement $D \mapsto X$, $(D,X) \mapsto s_i$ and $(D, t_i, X) \mapsto u$
+#! * implement $D \mapsto X$, $D \mapsto s_i$, $(D,X) \mapsto s_i$ and $(D, t_i, X) \mapsto u$
+#! * implement $D \mapsto X$, $(D,X) \mapsto s_i$, $(D, t_i) \mapsto u$ and $(D, t_i, X) \mapsto u$
+#! Sometimes, there are even shorter ways: in an abelian category, all you have to implement 
+#! for a kernel is:
+#! * KernelEmb
+#! * MonoAsKernelLift
+#! One note: a derived method should never use constructors with given $X$ as an input.
+#! The internals of CategoriesForHomalg will take care that no confusion accurs. For example: if you
+#! call KernelEmb of a morphism $\alpha$, CategoriesForHomalg works as follows:
+#! * Check the cache: is the kernel embedding of $\alpha$ already computed? If yes, return this cached embedding.
+#! * Otherwise, check if the kernel object of $\alpha$ is already computed. If yes, call KernelEmbWithGivenKernel( $\alpha$ ). If no, call KernelEmb( $\alpha$ ).
+#! 
+#! One further note: every universal object stores if it was created as such and therefore can be used to access universal property morphisms (if computable).
 #############################################################################
 
 ## needed for multiple genesis
