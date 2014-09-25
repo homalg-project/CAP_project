@@ -2385,7 +2385,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPull
     
     fi;
     
-    embedding_in_direct_product := KernelEmbWithGivenKernel( Genesis( pullback )!.PullbackAsKernelDiagram, pullback );
+    embedding_in_direct_product := KernelEmb( Genesis( pullback )!.PullbackAsKernelDiagram );
     
     direct_product := Range( embedding_in_direct_product );
     
@@ -2833,7 +2833,7 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorWithGivenPushout,
     
     fi;
     
-    projection_from_coproduct := CokernelProjWithGivenCokernel( Genesis( pushout )!.PushoutAsCokernelDiagram, pushout );
+    projection_from_coproduct := CokernelProj( Genesis( pushout )!.PushoutAsCokernelDiagram );
     
     coproduct := Source( projection_from_coproduct );
     
