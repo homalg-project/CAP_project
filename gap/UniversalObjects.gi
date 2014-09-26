@@ -69,13 +69,14 @@ InstallMethod( AddKernel,
     
 end );
 
+## convenience method
 ##
 InstallMethod( KernelLift,
                [ IsHomalgCategoryObject, IsHomalgCategoryMorphism ],
                
   function( kernel, test_morphism )
   
-    return KernelLiftWithGivenKernel( Genesis( kernel )!.KernelDiagram, test_morphism, kernel );
+    return KernelLift( Genesis( kernel )!.KernelDiagram, test_morphism );
   
 end );
 
@@ -343,13 +344,14 @@ InstallMethod( AddCokernel,
     
 end );
 
+## convenience
 ##
 InstallMethod( CokernelColift,
                [ IsHomalgCategoryObject, IsHomalgCategoryMorphism ],
                
   function( cokernel, test_morphism )
   
-    return CokernelColiftWithGivenCokernel( Genesis( cokernel )!.CokernelDiagram, test_morphism, cokernel );
+    return CokernelColift( Genesis( cokernel )!.CokernelDiagram, test_morphism );
   
 end );
 
@@ -1427,16 +1429,18 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                   IsAdditiveCategory 
-                   and CanComputeDirectSum 
-                   and CanComputeInjectionOfCofactorWithGivenCoproduct 
+                   IsAdditiveCategory
+                   and CanComputeInjectionOfCofactor
                    and CanComputeAdditionForMorphisms 
                    and CanComputePreCompose );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                                       [ IsHomalgCategoryMorphism, IsHomalgCategoryObject and IsAdditiveCategory and CanComputeDirectSum 
-                                         and CanComputeInjectionOfCofactorWithGivenCoproduct and CanComputeAdditionForMorphisms
-                                         and CanComputePreCompose ],
+                                       [ IsHomalgCategoryMorphism,
+                                         IsHomalgCategoryObject 
+                                     and IsAdditiveCategory
+                                     and CanComputeInjectionOfCofactor 
+                                     and CanComputeAdditionForMorphisms
+                                     and CanComputePreCompose ],
                                        -9999 - 1, #FIXME
                                        
   function( source, direct_product )
@@ -1450,16 +1454,18 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,
-                   IsAdditiveCategory 
-                   and CanComputeDirectSum 
-                   and CanComputeProjectionInFactorWithGivenDirectProduct 
+                   IsAdditiveCategory
+                   and CanComputeProjectionInFactor
                    and CanComputeAdditionForMorphisms 
                    and CanComputePreCompose );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
-                                       [ IsHomalgCategoryMorphism, IsHomalgCategoryObject and IsAdditiveCategory and CanComputeDirectSum 
-                                         and CanComputeProjectionInFactorWithGivenDirectProduct and CanComputeAdditionForMorphisms
-                                         and CanComputePreCompose ],
+                                       [ IsHomalgCategoryMorphism,
+                                         IsHomalgCategoryObject
+                                     and IsAdditiveCategory
+                                     and CanComputeProjectionInFactor
+                                     and CanComputeAdditionForMorphisms
+                                     and CanComputePreCompose ],
                                        -9999 - 1, #FIXME
                                        
   function( sink, coproduct )
@@ -1473,18 +1479,22 @@ end  : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
 InstallTrueMethod( CanComputeAdditionForMorphisms,
-                   IsAdditiveCategory 
-                   and CanComputeDirectSum 
-                   and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
-                   and CanComputeIdentityMorphism 
-                   and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct 
+                   IsAdditiveCategory
+                   and CanComputeDirectSum
+                   and CanComputeUniversalMorphismIntoDirectProduct
+                   and CanComputeIdentityMorphism
+                   and CanComputeUniversalMorphismFromCoproduct
                    and CanComputePreCompose );
 
 InstallMethodWithToDoForIsWellDefined( \+,
-                                       [ IsHomalgCategoryMorphism and IsAdditiveCategory and CanComputeDirectSum and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
-                                         and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct and CanComputePreCompose, 
-                                         IsHomalgCategoryMorphism and IsAdditiveCategory and CanComputeDirectSum and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct 
-                                         and CanComputeIdentityMorphism and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct and CanComputePreCompose],
+                                       [ IsHomalgCategoryMorphism
+                                     and IsAdditiveCategory
+                                     and CanComputeDirectSum
+                                     and CanComputeUniversalMorphismIntoDirectProduct
+                                     and CanComputeIdentityMorphism
+                                     and CanComputeUniversalMorphismFromCoproduct
+                                     and CanComputePreCompose,
+                                         IsHomalgCategoryMorphism ],
                                          -9999,
                                          
   function( mor1, mor2 )
@@ -2368,6 +2378,8 @@ InstallTrueMethod( CanComputeProjectionInFactorOfPullbackWithGivenPullback, CanC
 # FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
 # the special construction from above. If the
 # user gives his own pullback method, this derived method fails.
+# Of course, as mentioned in the introduction of this chapter, the user should never only install 
+# the constructor of a universal object without also implementing the WithGiven-methods.
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPullback,
                                        [ IsHomalgCategoryMorphism,
                                          IsInt,
