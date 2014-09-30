@@ -13,3 +13,8 @@ DeclareAttribute( "FunctorStandardModuleLeft",
 DeclareAttribute( "FunctorStandardModuleRight",
                   IsHomalgRing );
 
+DeclareAttribute( "FunctorLessGeneratorsLeft",
+                  IsHomalgRing );
+
+DeclareAttribute( "FunctorLessGeneratorsRight",
+                  IsHomalgRing );
