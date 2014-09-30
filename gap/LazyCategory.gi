@@ -40,7 +40,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return PreCompose( EvalUnderlyingObject( left_morphism ), EvalUnderlyingObject( right_morphism ) ); end;
         
-        return DummyLazyMorphism( func );
+        return DummyLazyMorphism( Source( left_morphism ), func, Range( right_morphism ) );
         
     end );
     
@@ -117,24 +117,16 @@ end );
 
 InstallGlobalFunction( DummyLazyMorphism,
                        
-  function( evaluate_function )
-    local lazy_morphism, source_func, range_func;
+  function( source, evaluate_function, range )
+    local lazy_morphism;
     
     lazy_morphism := rec( evaluate_function := evaluate_function );
     
     ObjectifyWithAttributes( lazy_morphism, TheTypeOfLazyCategoryMorphism );
     
-    source_func := function( )
-                       return Source( EvalUnderlyingObject( lazy_morphism ) );
-                   end;
+    SetSource( lazy_morphism, source );
     
-    SetSource( lazy_morphism, DummyLazyObject( source_func ) );
-    
-    range_func := function( )
-                      return Range( EvalUnderlyingObject( lazy_morphism ) );
-                  end;
-    
-    SetRange( lazy_morphism, DummyLazyObject( range_func ) );
+    SetRange( lazy_morphism, range );
     
     return lazy_morphism;
     
