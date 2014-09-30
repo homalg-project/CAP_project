@@ -44,6 +44,28 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddIdentityMorphism( lazy_category,
+                         
+      function( object )
+        local func;
+        
+        func := function( ) return IdentityMorphism( EvalUnderlyingObject( object ) ); end;
+        
+        return DummyLazyMorphism( object, func, object );
+        
+    end );
+    
+    AddInverse( lazy_category,
+                
+      function( morphism )
+        local func;
+        
+        func := function( ) return Inverse( EvalUnderlyingObject( morphism ) ); end;
+        
+        return DummyLazyMorphism( Range( morphism ), func, Source( morphism ) );
+        
+    end );
+    
 end );
 
 InstallMethod( LazyCategory,
