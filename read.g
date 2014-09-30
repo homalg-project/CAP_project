@@ -19,3 +19,5 @@ ReadPackage( "CategoriesForHomalg", "gap/TerminalCategory.gi");
 ReadPackage( "CategoriesForHomalg", "gap/GeneralizedMorphismCategory.gi");
 
 ReadPackage( "CategoriesForHomalg", "gap/SerreQuotients.gi");
+
+ReadPackage( "CategoriesForHomalg", "gap/LazyCategory.gi");
