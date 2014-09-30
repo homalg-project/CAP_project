@@ -4,3 +4,5 @@ ReadPackage( "ModulePresentationsForHomalg", "gap/ModulePresentationsForHomalg.g
 ReadPackage( "ModulePresentationsForHomalg", "gap/ModulePresentationObject.gd");
 
 ReadPackage( "ModulePresentationsForHomalg", "gap/ModulePresentationMorphism.gd");
+
+ReadPackage( "ModulePresentationsForHomalg", "gap/ModulePresentationFunctors.gd");
