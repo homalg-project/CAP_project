@@ -518,11 +518,15 @@ InstallMethod( InstallFunctorOnObjects,
                    filter_list,
                    
       function( arg )
-        local product_object;
+        local object;
         
-        product_object := CallFuncList( Product, arg );
+        if Length( arg ) > 1 then
+            object := CallFuncList( Product, arg );
+        else
+            object := arg[ 1 ];
+        fi;
         
-        return ApplyFunctor( functor, product_object );
+        return ApplyFunctor( functor, object );
         
     end );
     
@@ -549,11 +553,15 @@ InstallMethod( InstallFunctorOnMorphisms,
                    filter_list,
                    
       function( arg )
-        local product_object;
+        local object;
         
-        product_object := CallFuncList( Product, arg );
+        if Length( arg ) > 1 then
+            object := CallFuncList( Product, arg );
+        else
+            object := arg[ 1 ];
+        fi;
         
-        return ApplyFunctor( functor, product_object );
+        return ApplyFunctor( functor, object );
         
     end );
     
