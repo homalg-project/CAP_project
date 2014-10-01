@@ -24,15 +24,15 @@ DeclareAttribute( "UnderlyingBusyCategory",
 DeclareAttribute( "Lazy",
                   IsHomalgCategoryCell );
 
-DeclareGlobalFunction( "DummyLazyObject" );
+DeclareGlobalFunction( "LazyObject" );
 
-DeclareGlobalFunction( "DummyLazyMorphism" );
+DeclareGlobalFunction( "LazyMorphism" );
 
-DeclareGlobalFunction( "DummyLazyMorphismWithoutSourceAndRange" );
+DeclareGlobalFunction( "LazyMorphismWithoutSourceAndRange" );
 
-DeclareGlobalFunction( "DummyLazyMorphismWithoutSource" );
+DeclareGlobalFunction( "LazyMorphismWithoutSource" );
 
-DeclareGlobalFunction( "DummyLazyMorphismWithoutRange" );
+DeclareGlobalFunction( "LazyMorphismWithoutRange" );
 
 ###########################################
 ##

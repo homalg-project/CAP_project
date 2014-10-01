@@ -40,7 +40,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return PreCompose( Eval( left_morphism ), Eval( right_morphism ) ); end;
         
-        return DummyLazyMorphism( Source( left_morphism ), func, Range( right_morphism ) );
+        return LazyMorphism( Source( left_morphism ), func, Range( right_morphism ) );
         
     end );
     
@@ -51,7 +51,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return IdentityMorphism( Eval( object ) ); end;
         
-        return DummyLazyMorphism( object, func, object );
+        return LazyMorphism( object, func, object );
         
     end );
     
@@ -62,7 +62,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return Inverse( Eval( morphism ) ); end;
         
-        return DummyLazyMorphism( Range( morphism ), func, Source( morphism ) );
+        return LazyMorphism( Range( morphism ), func, Source( morphism ) );
         
     end );
     
@@ -73,7 +73,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return MonoAsKernelLift( Eval( monomorphism ), Eval( test_morphism ) ); end;
         
-        return DummyLazyMorphism( Source( test_morphism ), func, Source( monomorphism ) );
+        return LazyMorphism( Source( test_morphism ), func, Source( monomorphism ) );
         
     end );
     
@@ -84,7 +84,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return EpiAsCokernelColift( Eval( epimorphism ), Eval( test_morphism ) ); end;
         
-        return DummyLazyMorphism( Range( epimorphism ), func, Range( test_morphism ) );
+        return LazyMorphism( Range( epimorphism ), func, Range( test_morphism ) );
         
     end );
     
@@ -151,7 +151,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return Eval( morphism1 ) + Eval( morphism2 ); end;
         
-        return DummyLazyMorphism( Source( morphism1 ), func, Range( morphism2 ) );
+        return LazyMorphism( Source( morphism1 ), func, Range( morphism2 ) );
         
     end );
     
@@ -162,7 +162,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return AdditiveInverse( Eval( morphism ) ); end;
         
-        return DummyLazyMorphism( Source( morphism ), func, Range( morphism ) );
+        return LazyMorphism( Source( morphism ), func, Range( morphism ) );
         
     end );
     
@@ -173,7 +173,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return ZeroMorphism( Eval( source ), Eval( range ) ); end;
         
-        return DummyLazyMorphism( source, func, range );
+        return LazyMorphism( source, func, range );
         
     end );
     
@@ -192,7 +192,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return KernelObject( Eval( morphism ) ); end;
         
-        return DummyLazyObject( func );
+        return LazyObject( func );
         
       end );
       
@@ -203,7 +203,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return KernelEmb( Eval( morphism ) ); end;
         
-        kernel_emb := DummyLazyMorphismWithoutSource( func, Source( morphism ) );
+        kernel_emb := LazyMorphismWithoutSource( func, Source( morphism ) );
         
         return kernel_emb;
         
@@ -216,7 +216,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return KernelEmbWithGivenKernel( Eval( morphism ), Eval( kernel ) ); end;
         
-        return DummyLazyMorphism( kernel, func, Source( morphism ) );
+        return LazyMorphism( kernel, func, Source( morphism ) );
         
     end );
     
@@ -280,7 +280,7 @@ InstallMethod( Lazy,
     
 end );
 
-InstallGlobalFunction( DummyLazyObject,
+InstallGlobalFunction( LazyObject,
                        
   function( evaluate_function )
     local lazy_object;
@@ -293,7 +293,7 @@ InstallGlobalFunction( DummyLazyObject,
     
 end );
 
-InstallGlobalFunction( DummyLazyMorphism,
+InstallGlobalFunction( LazyMorphism,
                        
   function( source, evaluate_function, range )
     local lazy_morphism;
@@ -310,7 +310,7 @@ InstallGlobalFunction( DummyLazyMorphism,
     
 end );
 
-InstallGlobalFunction( DummyLazyMorphismWithoutSourceAndRange,
+InstallGlobalFunction( LazyMorphismWithoutSourceAndRange,
                        
   function( evaluate_function )
     local lazy_morphism, source, range;
@@ -319,11 +319,11 @@ InstallGlobalFunction( DummyLazyMorphismWithoutSourceAndRange,
     
     ObjectifyWithAttributes( lazy_morphism, TheTypeOfLazyCategoryMorphism );
     
-    source := DummyLazyObject( function( ) return Source( Eval( lazy_morphism ) ); end );
+    source := LazyObject( function( ) return Source( Eval( lazy_morphism ) ); end );
     
     SetSource( lazy_morphism, source );
     
-    range := DummyLazyObject( function( ) return Range( Eval( lazy_morphism ) ); end );
+    range := LazyObject( function( ) return Range( Eval( lazy_morphism ) ); end );
     
     SetRange( lazy_morphism, range );
     
@@ -331,7 +331,7 @@ InstallGlobalFunction( DummyLazyMorphismWithoutSourceAndRange,
     
 end );
 
-InstallGlobalFunction( DummyLazyMorphismWithoutSource,
+InstallGlobalFunction( LazyMorphismWithoutSource,
                        
   function( evaluate_function, range )
     local lazy_morphism, source;
@@ -340,7 +340,7 @@ InstallGlobalFunction( DummyLazyMorphismWithoutSource,
     
     ObjectifyWithAttributes( lazy_morphism, TheTypeOfLazyCategoryMorphism );
     
-    source := DummyLazyObject( function( ) return Source( Eval( lazy_morphism ) ); end );
+    source := LazyObject( function( ) return Source( Eval( lazy_morphism ) ); end );
     
     SetSource( lazy_morphism, source );
     
@@ -350,7 +350,7 @@ InstallGlobalFunction( DummyLazyMorphismWithoutSource,
     
 end );
 
-InstallGlobalFunction( DummyLazyMorphismWithoutRange,
+InstallGlobalFunction( LazyMorphismWithoutRange,
                        
   function( source, evaluate_function )
     local lazy_morphism, range;
@@ -361,7 +361,7 @@ InstallGlobalFunction( DummyLazyMorphismWithoutRange,
     
     SetSource( lazy_morphism, source );
     
-    range := DummyLazyObject( function( ) return Range( Eval( lazy_morphism ) ); end );
+    range := LazyObject( function( ) return Range( Eval( lazy_morphism ) ); end );
     
     SetRange( lazy_morphism, range );
     
