@@ -185,7 +185,18 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    
+    AddKernelEmb( lazy_category,
+                  
+      function( morphism )
+        local func, kernel_emb, source;
+        
+        func := function( ) return KernelEmb( EvalUnderlyingObject( morphism ) ); end;
+        
+        kernel_emb := DummyLazyMorphismWithoutSource( func, Source( morphism ) );
+        
+        return kernel_emb;
+        
+    end );
     
 end );
 
@@ -274,6 +285,66 @@ InstallGlobalFunction( DummyLazyMorphism,
     return lazy_morphism;
     
 end );
+
+InstallGlobalFunction( DummyLazyMorphismWithoutSourceAndRange,
+                       
+  function( evaluate_function )
+    local lazy_morphism, source, range;
+    
+    lazy_morphism := rec( evaluate_function := evaluate_function );
+    
+    ObjectifyWithAttributes( lazy_morphism, TheTypeOfLazyCategoryMorphism );
+    
+    source := DummyLazyObject( function( ) return Source( EvalUnderlyingObject( lazy_morphism ) ); end );
+    
+    SetSource( lazy_morphism, source );
+    
+    range := DummyLazyObject( function( ) return Range( EvalUnderlyingObject( lazy_morphism ) ); end );
+    
+    SetRange( lazy_morphism, range );
+    
+    return lazy_morphism;
+    
+end );
+
+InstallGlobalFunction( DummyLazyMorphismWithoutSource,
+                       
+  function( evaluate_function, range )
+    local lazy_morphism, source;
+    
+    lazy_morphism := rec( evaluate_function := evaluate_function );
+    
+    ObjectifyWithAttributes( lazy_morphism, TheTypeOfLazyCategoryMorphism );
+    
+    source := DummyLazyObject( function( ) return Source( EvalUnderlyingObject( lazy_morphism ) ); end );
+    
+    SetSource( lazy_morphism, source );
+    
+    SetRange( lazy_morphism, range );
+    
+    return lazy_morphism;
+    
+end );
+
+InstallGlobalFunction( DummyLazyMorphismWithoutRange,
+                       
+  function( source, evaluate_function )
+    local lazy_morphism, range;
+    
+    lazy_morphism := rec( evaluate_function := evaluate_function );
+    
+    ObjectifyWithAttributes( lazy_morphism, TheTypeOfLazyCategoryMorphism );
+    
+    SetSource( lazy_morphism, source );
+    
+    range := DummyLazyObject( function( ) return Range( EvalUnderlyingObject( lazy_morphism ) ); end );
+    
+    SetRange( lazy_morphism, range );
+    
+    return lazy_morphism;
+    
+end );
+
 
 #################################
 ##

@@ -28,6 +28,12 @@ DeclareGlobalFunction( "DummyLazyObject" );
 
 DeclareGlobalFunction( "DummyLazyMorphism" );
 
+DeclareGlobalFunction( "DummyLazyMorphismWithoutSourceAndRange" );
+
+DeclareGlobalFunction( "DummyLazyMorphismWithoutSource" );
+
+DeclareGlobalFunction( "DummyLazyMorphismWithoutRange" );
+
 ###########################################
 ##
 ## Content
