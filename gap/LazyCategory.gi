@@ -319,7 +319,7 @@ end );
 InstallGlobalFunction( LazyMorphism,
                        
   function( source, evaluate_function, range )
-    local lazy_morphism;
+    local lazy_morphism, entry;
     
     lazy_morphism := rec( evaluate_function := evaluate_function );
     
@@ -328,6 +328,14 @@ InstallGlobalFunction( LazyMorphism,
     SetSource( lazy_morphism, source );
     
     SetRange( lazy_morphism, range );
+    
+    entry := ToDoListEntry( [ [ lazy_morphism, "Eval" ] ], source, "Eval", function( arg ) return Source( Eval( lazy_morphism ) ); end );
+    
+    AddToToDoList( entry );
+    
+    entry := ToDoListEntry( [ [ lazy_morphism, "Eval" ] ], range, "Eval", function( arg ) return Range( Eval( lazy_morphism ) ); end );
+    
+    AddToToDoList( entry );
     
     return lazy_morphism;
     
@@ -336,7 +344,7 @@ end );
 InstallGlobalFunction( LazyMorphismWithoutSourceAndRange,
                        
   function( evaluate_function )
-    local lazy_morphism, source, range;
+    local lazy_morphism, source, range, entry;
     
     lazy_morphism := rec( evaluate_function := evaluate_function );
     
@@ -349,6 +357,14 @@ InstallGlobalFunction( LazyMorphismWithoutSourceAndRange,
     range := LazyObject( function( ) return Range( Eval( lazy_morphism ) ); end );
     
     SetRange( lazy_morphism, range );
+    
+    entry := ToDoListEntry( [ [ lazy_morphism, "Eval" ] ], source, "Eval", function( arg ) return Source( Eval( lazy_morphism ) ); end );
+    
+    AddToToDoList( entry );
+    
+    entry := ToDoListEntry( [ [ lazy_morphism, "Eval" ] ], range, "Eval", function( arg ) return Range( Eval( lazy_morphism ) ); end );
+    
+    AddToToDoList( entry );
     
     return lazy_morphism;
     
@@ -357,7 +373,7 @@ end );
 InstallGlobalFunction( LazyMorphismWithoutSource,
                        
   function( evaluate_function, range )
-    local lazy_morphism, source;
+    local lazy_morphism, source, entry;
     
     lazy_morphism := rec( evaluate_function := evaluate_function );
     
@@ -369,6 +385,14 @@ InstallGlobalFunction( LazyMorphismWithoutSource,
     
     SetRange( lazy_morphism, range );
     
+    entry := ToDoListEntry( [ [ lazy_morphism, "Eval" ] ], source, "Eval", function( arg ) return Source( Eval( lazy_morphism ) ); end );
+    
+    AddToToDoList( entry );
+    
+    entry := ToDoListEntry( [ [ lazy_morphism, "Eval" ] ], range, "Eval", function( arg ) return Range( Eval( lazy_morphism ) ); end );
+    
+    AddToToDoList( entry );
+    
     return lazy_morphism;
     
 end );
@@ -376,7 +400,7 @@ end );
 InstallGlobalFunction( LazyMorphismWithoutRange,
                        
   function( source, evaluate_function )
-    local lazy_morphism, range;
+    local lazy_morphism, range, entry;
     
     lazy_morphism := rec( evaluate_function := evaluate_function );
     
@@ -387,6 +411,14 @@ InstallGlobalFunction( LazyMorphismWithoutRange,
     range := LazyObject( function( ) return Range( Eval( lazy_morphism ) ); end );
     
     SetRange( lazy_morphism, range );
+    
+    entry := ToDoListEntry( [ [ lazy_morphism, "Eval" ] ], source, "Eval", function( arg ) return Source( Eval( lazy_morphism ) ); end );
+    
+    AddToToDoList( entry );
+    
+    entry := ToDoListEntry( [ [ lazy_morphism, "Eval" ] ], range, "Eval", function( arg ) return Range( Eval( lazy_morphism ) ); end );
+    
+    AddToToDoList( entry );
     
     return lazy_morphism;
     
