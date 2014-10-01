@@ -220,7 +220,27 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddKernelLift( lazy_category,
+      
+      function( morphism, test_morphism )
+        local func;
+        
+        func := function( ) return KernelLift( Eval( morphism ), Eval( test_morphism ) ); end;
+        
+        return LazyMorphismWithoutRange( Source( test_morphism ), func );
+        
+    end );
     
+    AddKernelLiftWithGivenKernel( lazy_category,
+      
+      function( morphism, test_morphism, kernel )
+        local func;
+        
+        func := function( ) return KernelLiftWithGivenKernel( Eval( morphism ), Eval( test_morphism ), Eval( kernel ) ); end;
+        
+        return LazyMorphism( Source( test_morphism ), func, kernel );
+        
+    end );
     
     
     
