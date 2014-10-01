@@ -38,7 +38,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( left_morphism, right_morphism )
         local func;
         
-        func := function( ) return PreCompose( EvalUnderlyingObject( left_morphism ), EvalUnderlyingObject( right_morphism ) ); end;
+        func := function( ) return PreCompose( Eval( left_morphism ), Eval( right_morphism ) ); end;
         
         return DummyLazyMorphism( Source( left_morphism ), func, Range( right_morphism ) );
         
@@ -49,7 +49,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( object )
         local func;
         
-        func := function( ) return IdentityMorphism( EvalUnderlyingObject( object ) ); end;
+        func := function( ) return IdentityMorphism( Eval( object ) ); end;
         
         return DummyLazyMorphism( object, func, object );
         
@@ -60,7 +60,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( morphism )
         local func;
         
-        func := function( ) return Inverse( EvalUnderlyingObject( morphism ) ); end;
+        func := function( ) return Inverse( Eval( morphism ) ); end;
         
         return DummyLazyMorphism( Range( morphism ), func, Source( morphism ) );
         
@@ -71,7 +71,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( monomorphism, test_morphism )
         local func;
         
-        func := function( ) return MonoAsKernelLift( EvalUnderlyingObject( monomorphism ), EvalUnderlyingObject( test_morphism ) ); end;
+        func := function( ) return MonoAsKernelLift( Eval( monomorphism ), Eval( test_morphism ) ); end;
         
         return DummyLazyMorphism( Source( test_morphism ), func, Source( monomorphism ) );
         
@@ -82,7 +82,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( epimorphism, test_morphism )
         local func;
         
-        func := function( ) return EpiAsCokernelColift( EvalUnderlyingObject( epimorphism ), EvalUnderlyingObject( test_morphism ) ); end;
+        func := function( ) return EpiAsCokernelColift( Eval( epimorphism ), Eval( test_morphism ) ); end;
         
         return DummyLazyMorphism( Range( epimorphism ), func, Range( test_morphism ) );
         
@@ -92,7 +92,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                        
       function( morphism )
         
-        return IsMonomorphism( EvalUnderlyingObject( morphism ) );
+        return IsMonomorphism( Eval( morphism ) );
         
     end );
     
@@ -100,7 +100,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                        
       function( morphism )
         
-        return IsEpimorphism( EvalUnderlyingObject( morphism ) );
+        return IsEpimorphism( Eval( morphism ) );
         
     end );
     
@@ -108,7 +108,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                        
       function( morphism )
         
-        return IsIsomorphism( EvalUnderlyingObject( morphism ) );
+        return IsIsomorphism( Eval( morphism ) );
         
     end );
     
@@ -116,7 +116,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                   
       function( subobject1, subobject2 )
         
-        return Dominates( EvalUnderlyingObject( subobject1 ), EvalUnderlyingObject( subobject2 ) );
+        return Dominates( Eval( subobject1 ), Eval( subobject2 ) );
         
     end );
     
@@ -124,7 +124,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                   
       function( factorobject1, factorobject2 )
         
-        return Codominates( EvalUnderlyingObject( factorobject1 ), EvalUnderlyingObject( factorobject2 ) );
+        return Codominates( Eval( factorobject1 ), Eval( factorobject2 ) );
         
     end );
     
@@ -132,7 +132,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                            
       function( morphism1, morphism2 )
         
-        return EqualityOfMorphisms( EvalUnderlyingObject( morphism1 ), EvalUnderlyingObject( morphism2 ) );
+        return EqualityOfMorphisms( Eval( morphism1 ), Eval( morphism2 ) );
         
     end );
     
@@ -140,7 +140,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                            
       function( morphism )
         
-        return IsZero( EvalUnderlyingObject( morphism ) );
+        return IsZero( Eval( morphism ) );
         
     end );
     
@@ -149,7 +149,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( morphism1, morphism2 )
         local func;
         
-        func := function( ) return EvalUnderlyingObject( morphism1 ) + EvalUnderlyingObject( morphism2 ); end;
+        func := function( ) return Eval( morphism1 ) + Eval( morphism2 ); end;
         
         return DummyLazyMorphism( Source( morphism1 ), func, Range( morphism2 ) );
         
@@ -160,7 +160,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( morphism )
         local func;
         
-        func := function( ) return AdditiveInverse( EvalUnderlyingObject( morphism ) ); end;
+        func := function( ) return AdditiveInverse( Eval( morphism ) ); end;
         
         return DummyLazyMorphism( Source( morphism ), func, Range( morphism ) );
         
@@ -171,7 +171,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( source, range )
         local func;
         
-        func := function( ) return ZeroMorphism( EvalUnderlyingObject( source ), EvalUnderlyingObject( range ) ); end;
+        func := function( ) return ZeroMorphism( Eval( source ), Eval( range ) ); end;
         
         return DummyLazyMorphism( source, func, range );
         
@@ -181,7 +181,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                                   
       function( morphism )
         
-        return IsWellDefined( EvalUnderlyingObject( morphism ) );
+        return IsWellDefined( Eval( morphism ) );
         
     end );
     
@@ -190,7 +190,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( morphism )
         local func;
         
-        func := function( ) return KernelObject( EvalUnderlyingObject( morphism ) ); end;
+        func := function( ) return KernelObject( Eval( morphism ) ); end;
         
         return DummyLazyObject( func );
         
@@ -201,7 +201,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( morphism )
         local func, kernel_emb, source;
         
-        func := function( ) return KernelEmb( EvalUnderlyingObject( morphism ) ); end;
+        func := function( ) return KernelEmb( Eval( morphism ) ); end;
         
         kernel_emb := DummyLazyMorphismWithoutSource( func, Source( morphism ) );
         
@@ -214,7 +214,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( morphism, kernel )
         local func;
         
-        func := function( ) return KernelEmbWithGivenKernel( EvalUnderlyingObject( morphism ), EvalUnderlyingObject( kernel ) ); end;
+        func := function( ) return KernelEmbWithGivenKernel( Eval( morphism ), Eval( kernel ) ); end;
         
         return DummyLazyMorphism( kernel, func, Source( morphism ) );
         
@@ -250,7 +250,7 @@ InstallMethod( Lazy,
     
     ObjectifyWithAttributes( lazy_cell, TheTypeOfLazyCategoryObject );
     
-    SetEvalUnderlyingObject( lazy_cell, cell );
+    SetEval( lazy_cell, cell );
     
     Add( LazyCategory( HomalgCategory( cell ) ), lazy_cell );
     
@@ -268,7 +268,7 @@ InstallMethod( Lazy,
     
     ObjectifyWithAttributes( lazy_morphism, TheTypeOfLazyCategoryMorphism );
     
-    SetEvalUnderlyingObject( lazy_morphism, morphism );
+    SetEval( lazy_morphism, morphism );
     
     SetSource( lazy_morphism, Lazy( Source( morphism ) ) );
     
@@ -319,11 +319,11 @@ InstallGlobalFunction( DummyLazyMorphismWithoutSourceAndRange,
     
     ObjectifyWithAttributes( lazy_morphism, TheTypeOfLazyCategoryMorphism );
     
-    source := DummyLazyObject( function( ) return Source( EvalUnderlyingObject( lazy_morphism ) ); end );
+    source := DummyLazyObject( function( ) return Source( Eval( lazy_morphism ) ); end );
     
     SetSource( lazy_morphism, source );
     
-    range := DummyLazyObject( function( ) return Range( EvalUnderlyingObject( lazy_morphism ) ); end );
+    range := DummyLazyObject( function( ) return Range( Eval( lazy_morphism ) ); end );
     
     SetRange( lazy_morphism, range );
     
@@ -340,7 +340,7 @@ InstallGlobalFunction( DummyLazyMorphismWithoutSource,
     
     ObjectifyWithAttributes( lazy_morphism, TheTypeOfLazyCategoryMorphism );
     
-    source := DummyLazyObject( function( ) return Source( EvalUnderlyingObject( lazy_morphism ) ); end );
+    source := DummyLazyObject( function( ) return Source( Eval( lazy_morphism ) ); end );
     
     SetSource( lazy_morphism, source );
     
@@ -361,7 +361,7 @@ InstallGlobalFunction( DummyLazyMorphismWithoutRange,
     
     SetSource( lazy_morphism, source );
     
-    range := DummyLazyObject( function( ) return Range( EvalUnderlyingObject( lazy_morphism ) ); end );
+    range := DummyLazyObject( function( ) return Range( Eval( lazy_morphism ) ); end );
     
     SetRange( lazy_morphism, range );
     
@@ -376,7 +376,7 @@ end );
 ##
 #################################
 
-InstallMethod( EvalUnderlyingObject,
+InstallMethod( Eval,
                [ IsLazyCategoryCell ],
                
   function( cell )
@@ -418,13 +418,13 @@ InstallMethod( ViewObj,
 end );
 
 InstallMethod( ViewObj,
-               [ IsLazyCategoryCell and HasEvalUnderlyingObject ],
+               [ IsLazyCategoryCell and HasEval ],
                100000000000000, ##FIXME!!!!
                
   function( cell )
     
     Print( "Lazy hull of:\n" );
     
-    ViewObj( EvalUnderlyingObject( cell ) );
+    ViewObj( Eval( cell ) );
     
 end );

@@ -49,7 +49,7 @@ DeclareCategory( "IsLazyCategoryObject",
 DeclareCategory( "IsLazyCategoryMorphism",
                  IsHomalgCategoryMorphism and IsLazyCategoryCell );
 
-DeclareAttribute( "EvalUnderlyingObject",
+DeclareAttribute( "Eval",
                   IsLazyCategoryCell );
 
 
