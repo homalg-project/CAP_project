@@ -66,6 +66,119 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddMonoAsKernelLift( lazy_category,
+                         
+      function( monomorphism, test_morphism )
+        local func;
+        
+        func := function( ) return MonoAsKernelLift( EvalUnderlyingObject( monomorphism ), EvalUnderlyingObject( test_morphism ) ); end;
+        
+        return DummyLazyMorphism( Source( test_morphism ), func, Source( monomorphism ) );
+        
+    end );
+    
+    AddEpiAsCokernelColift( lazy_category,
+                            
+      function( epimorphism, test_morphism )
+        local func;
+        
+        func := function( ) return EpiAsCokernelColift( EvalUnderlyingObject( epimorphism ), EvalUnderlyingObject( test_morphism ) ); end;
+        
+        return DummyLazyMorphism( Range( epimorphism ), func, Range( test_morphism ) );
+        
+    end );
+    
+    AddIsMonomorphism( lazy_category,
+                       
+      function( morphism )
+        
+        return IsMonomorphism( EvalUnderlyingObject( morphism ) );
+        
+    end );
+    
+    AddIsEpimorphism( lazy_category,
+                       
+      function( morphism )
+        
+        return IsEpimorphism( EvalUnderlyingObject( morphism ) );
+        
+    end );
+    
+    AddIsIsomorphism( lazy_category,
+                       
+      function( morphism )
+        
+        return IsIsomorphism( EvalUnderlyingObject( morphism ) );
+        
+    end );
+    
+    AddDominates( lazy_category,
+                  
+      function( subobject1, subobject2 )
+        
+        return Dominates( EvalUnderlyingObject( subobject1 ), EvalUnderlyingObject( subobject2 ) );
+        
+    end );
+    
+    AddCodominates( lazy_category,
+                  
+      function( factorobject1, factorobject2 )
+        
+        return Codominates( EvalUnderlyingObject( factorobject1 ), EvalUnderlyingObject( factorobject2 ) );
+        
+    end );
+    
+    AddEqualityOfMorphisms( lazy_category,
+                           
+      function( morphism1, morphism2 )
+        
+        return EqualityOfMorphisms( EvalUnderlyingObject( morphism1 ), EvalUnderlyingObject( morphism2 ) );
+        
+    end );
+    
+    AddIsZeroForMorphisms( lazy_category,
+                           
+      function( morphism )
+        
+        return IsZero( EvalUnderlyingObject( morphism ) );
+        
+    end );
+    
+    AddAdditionForMorphisms( lazy_category,
+                             
+      function( morphism1, morphism2 )
+        local func;
+        
+        func := function( ) return EvalUnderlyingObject( morphism1 ) + EvalUnderlyingObject( morphism2 ); end;
+        
+        return DummyLazyMorphism( Source( morphism1 ), func, Range( morphism2 ) );
+        
+    end );
+    
+    AddAdditiveInverseForMorphisms( lazy_category,
+                                   
+      function( morphism )
+        local func;
+        
+        func := function( ) return AdditiveInverse( EvalUnderlyingObject( morphism ) ); end;
+        
+        return DummyLazyMorphism( Source( morphism ), func, Range( morphism ) );
+        
+    end );
+    
+    AddZeroMorphism( lazy_category,
+                     
+      function( source, range )
+        local func;
+        
+        func := function( ) return ZeroMorphism( EvalUnderlyingObject( source ), EvalUnderlyingObject( range ) ); end;
+        
+        return DummyLazyMorphism( source, func, range );
+        
+    end );
+    
+    
+    
 end );
 
 InstallMethod( LazyCategory,
