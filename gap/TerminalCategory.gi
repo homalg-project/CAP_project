@@ -46,7 +46,7 @@ InstallValue( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT,
               AsCatObject( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ) );
 
 ##
-InstallMethod( Object,
+InstallMethod( UniqueObject,
                [ IsHomalgCategory and IsTerminalCategory ],
                
   function( category )
@@ -68,7 +68,7 @@ InstallMethod( Object,
 end );
 
 ##
-InstallMethod( Morphism,
+InstallMethod( UniqueMorphism,
                [ IsHomalgCategory and IsTerminalCategory ],
                
   function( category )
@@ -108,7 +108,7 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
                            AddCokernel,
                            AddDirectProduct ];
     
-    obj_func := function( arg ) return Object( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end;
+    obj_func := function( arg ) return UniqueObject( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end;
     
     for i in obj_function_list do
         
@@ -133,7 +133,7 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
                                 AddUniversalMorphismIntoDirectProduct,
                                 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct ];
     
-    morphism_function := function( arg ) return Morphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end;
+    morphism_function := function( arg ) return UniqueMorphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end;
     
     for i in morphism_function_list do
         

@@ -36,6 +36,30 @@ DeclareGlobalFunction( "LazyMorphismWithoutRange" );
 
 ###########################################
 ##
+## Dummy Constructors
+##
+###########################################
+
+DeclareOperation( "Object",
+                  [ IsHomalgCategory ] );
+
+DeclareOperation( "Object",
+                  [ IsHomalgCategoryCell ] );
+
+DeclareOperation( "Morphism",
+                  [ IsHomalgCategory ] );
+
+DeclareOperation( "Morphism",
+                  [ IsHomalgCategoryObject, IsHomalgCategory, IsHomalgCategoryObject ] );
+
+DeclareOperation( "Morphism",
+                  [ IsHomalgCategoryCell ] );
+
+DeclareOperation( "Morphism",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryCell, IsHomalgCategoryObject ] );
+
+###########################################
+##
 ## Content
 ##
 ###########################################

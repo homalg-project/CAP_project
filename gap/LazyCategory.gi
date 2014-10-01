@@ -222,6 +222,9 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     
     
     
+    
+    
+    
 end );
 
 InstallMethod( LazyCategory,
@@ -369,6 +372,131 @@ InstallGlobalFunction( LazyMorphismWithoutRange,
     
 end );
 
+#################################
+##
+## Dummy Constructors
+##
+#################################
+
+##
+InstallMethod( Object,
+               [ IsHomalgCategory ],
+               
+  function( category )
+    local object;
+    
+    object := rec( );
+    
+    ObjectifyWithAttributes( object, TheTypeOfLazyCategoryObject );
+    
+    Add( LazyCategory( category ), object );
+    
+    return object;
+    
+end );
+
+##
+InstallMethod( Object,
+               [ IsHomalgCategoryCell ],
+               
+  function( cell )
+    
+    return Object( HomalgCategory( cell ) );
+    
+end );
+
+##
+InstallMethod( Morphism,
+               [ IsHomalgCategoryObject, IsHomalgCategory, IsHomalgCategoryObject ],
+               
+  function( source, category, range )
+    local lazy_category, morphism, entry;
+    
+    lazy_category := LazyCategory( category );
+    
+    if not ObjectFilter( lazy_category )( source ) then
+        
+        Error( "source must lie in lazy category" );
+        
+    fi;
+    
+    if not ObjectFilter( lazy_category )( source ) then
+        
+        Error( "range must lie in lazy category" );
+        
+    fi;
+    
+    morphism := rec( );
+    
+    ObjectifyWithAttributes( morphism, TheTypeOfLazyCategoryMorphism,
+                             Source, source,
+                             Range, range );
+    
+    entry := ToDoListEntry( [ [ morphism, "Eval" ] ], source, "Eval", function( arg ) return Source( Eval( morphism ) ); end );
+    
+    AddToToDoList( entry );
+    
+    entry := ToDoListEntry( [ [ morphism, "Eval" ] ], range, "Eval", function( arg ) return Range( Eval( morphism ) ); end );
+    
+    AddToToDoList( entry );
+    
+    Add( lazy_category, morphism );
+    
+    return morphism;
+    
+end );
+
+InstallMethod( Morphism,
+               [ IsHomalgCategoryObject, IsHomalgCategoryCell, IsHomalgCategoryObject ],
+               
+  function( source, cell, range )
+    
+    return Morphism( source, HomalgCategory( cell ), range );
+    
+end );
+
+InstallMethod( Morphism,
+               [ IsHomalgCategory ],
+               
+  function( category )
+    local lazy_category, source, range, morphism, entry;
+    
+    lazy_category := LazyCategory( category );
+    
+    morphism := rec( );
+    
+    ObjectifyWithAttributes( morphism, TheTypeOfLazyCategoryMorphism );
+    
+    source := LazyObject( function( ) return Source( Eval( morphism ) ); end );
+    
+    SetSource( morphism, source );
+    
+    entry := ToDoListEntry( [ [ morphism, "Eval" ] ], source, "Eval", function( arg ) return Source( Eval( morphism ) ); end );
+    
+    AddToToDoList( entry );
+    
+    range := LazyObject( function( ) return Range( Eval( morphism ) ); end );
+    
+    SetRange( morphism, range );
+    
+    entry := ToDoListEntry( [ [ morphism, "Eval" ] ], range, "Eval", function( arg ) return Range( Eval( morphism ) ); end );
+    
+    AddToToDoList( entry );
+    
+    Add( lazy_category, morphism );
+    
+    return morphism;
+    
+end );
+
+InstallMethod( Morphism,
+               [ IsHomalgCategoryCell ],
+               
+  function( cell )
+    
+    return Morphism( HomalgCategory( cell ) );
+    
+end );
 
 #################################
 ##

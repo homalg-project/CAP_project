@@ -33,10 +33,10 @@ DeclareFilter( "IsTerminalCategory" );
 ##
 #########################################
 
-DeclareAttribute( "Object",
+DeclareAttribute( "UniqueObject",
                   IsHomalgCategory );
 
-DeclareAttribute( "Morphism",
+DeclareAttribute( "UniqueMorphism",
                   IsHomalgCategory );
 
 #########################################

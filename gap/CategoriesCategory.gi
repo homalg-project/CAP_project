@@ -319,11 +319,11 @@ AddUniversalMorphismIntoTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
     
     AddObjectFunction( new_functor,
                        
-                       function( arg ) return Object( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+                       function( arg ) return UniqueObject( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
     
     AddMorphismFunction( new_functor,
                          
-                         function( arg ) return Morphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+                         function( arg ) return UniqueMorphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
     
     return new_functor;
     
@@ -339,11 +339,11 @@ AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CATEGORIES_FOR_HO
     
     AddObjectFunction( new_functor,
                        
-                       function( arg ) return Object( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+                       function( arg ) return UniqueObject( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
     
     AddMorphismFunction( new_functor,
                          
-                         function( arg ) return Morphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+                         function( arg ) return UniqueMorphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
     
     return new_functor;
     
