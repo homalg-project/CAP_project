@@ -185,6 +185,17 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddKernel( lazy_category,
+      
+      function( morphism )
+        local func;
+        
+        func := function( ) return KernelObject( EvalUnderlyingObject( morphism ) ); end;
+        
+        return DummyLazyObject( func );
+        
+      end );
+      
     AddKernelEmb( lazy_category,
                   
       function( morphism )
@@ -197,6 +208,19 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         return kernel_emb;
         
     end );
+    
+    AddKernelEmbWithGivenKernel( lazy_category,
+      
+      function( morphism, kernel )
+        local func;
+        
+        func := function( ) return KernelEmbWithGivenKernel( EvalUnderlyingObject( morphism ), EvalUnderlyingObject( kernel ) ); end;
+        
+        return DummyLazyMorphism( kernel, func, Source( morphism ) );
+        
+    end );
+    
+    
     
 end );
 
