@@ -636,6 +636,8 @@ InstallMethod( AddZeroMorphism,
         
         Add( category, return_value );
         
+        SetIsZero( return_value, true );
+        
         return return_value;
         
     end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ZeroMorphism", 2 ) );
