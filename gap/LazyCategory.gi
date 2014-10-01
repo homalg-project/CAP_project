@@ -177,6 +177,14 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddIsWellDefinedForMorphisms( lazy_category,
+                                  
+      function( morphism )
+        
+        return IsWellDefined( EvalUnderlyingObject( morphism ) );
+        
+    end );
+    
     
     
 end );
@@ -319,6 +327,8 @@ InstallMethod( ViewObj,
                100000000000000, ##FIXME!!!!
                
   function( cell )
+    
+    Print( "Lazy hull of:\n" );
     
     ViewObj( EvalUnderlyingObject( cell ) );
     
