@@ -199,13 +199,11 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     AddKernelEmb( lazy_category,
                   
       function( morphism )
-        local func, kernel_emb, source;
+        local func;
         
         func := function( ) return KernelEmb( Eval( morphism ) ); end;
         
-        kernel_emb := LazyMorphismWithoutSource( func, Source( morphism ) );
-        
-        return kernel_emb;
+        return LazyMorphismWithoutSource( func, Source( morphism ) );
         
     end );
     
@@ -242,8 +240,60 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddCokernel( lazy_category,
+      
+      function( morphism )
+        local func;
+        
+        func := function( ) return Cokernel( Eval( morphism ) ); end;
+        
+        return LazyObject( func );
+        
+    end );
     
+    AddCokernelProj( lazy_category,
+      
+      function( morphism )
+        local func;
+        
+        func := function( ) return CokernelProj( Eval( morphism ) ); end;
+        
+        return LazyMorphismWithoutRange( Range( morphism ), func );
+        
+    end );
     
+    AddCokernelProjWithGivenCokernel( lazy_category,
+      
+      function( morphism, cokernel )
+        local func;
+        
+        func := function( ) return CokernelProjWithGivenCokernel( Eval( morphism ), Eval( cokernel ) ); end;
+        
+        return LazyMorphism( Range( morphism ), func, cokernel );
+        
+    end );
+    
+    AddCokernelColift( lazy_category,
+      
+      function( morphism, test_morphism )
+        local func;
+        
+        func := function( ) return CokernelColift( Eval( morphism ), Eval( test_morphism ) ); end;
+        
+        return LazyMorphismWithoutSource( func, Range( test_morphism ) );
+        
+    end );
+    
+    AddCokernelColiftWithGivenCokernel( lazy_category,
+      
+      function( morphism, test_morphism, cokernel )
+        local func;
+        
+        func := function( ) return CokernelColiftWithGivenCokernel( Eval( morphism ), Eval( test_morphism ), Eval( cokernel ) ); end;
+        
+        return LazyMorphism( cokernel, func, Range( test_morphism ) );
+        
+    end );
     
 end );
 
