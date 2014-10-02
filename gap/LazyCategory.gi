@@ -295,6 +295,17 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddZeroObject( lazy_category,
+      
+      function( )
+        local func;
+        
+        func := function( ) return ZeroObject( UnderlyingBusyCategory( lazy_category ) ); end;
+        
+        return LazyObject( func );
+        
+    end );
+    
 end );
 
 InstallMethod( LazyCategory,
