@@ -372,6 +372,25 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    # object_product_list is an object in the product category of the lazy category
+    AddDirectSum( lazy_category,
+      
+      function( object_product_list )
+        local func;
+        
+        func := function( )
+          local evaluation_list;
+          
+          evaluation_list := List( Components( object_product_list ), Eval );
+          
+          return DirectSum( CallFuncList( Product, evaluation_list ) );
+          
+        end;
+        
+        return LazyObject( func );
+        
+    end );
+    
 end );
 
 InstallMethod( LazyCategory,
