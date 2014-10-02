@@ -306,6 +306,39 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddTerminalObject( lazy_category,
+      
+      function( )
+        local func;
+        
+        func := function( ) return TerminalObject( UnderlyingBusyCategory( lazy_category ) ); end;
+        
+        return LazyObject( func );
+        
+    end );
+    
+    AddUniversalMorphismIntoTerminalObject( lazy_category,
+      
+      function( object )
+        local func;
+        
+        func := function( ) return UniversalMorphismIntoTerminalObject( Eval( object ) ); end;
+        
+        return LazyMorphismWithoutRange( object, func );
+        
+    end );
+    
+    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( lazy_category,
+      
+      function( object, terminal_object )
+        local func;
+        
+        func := function( ) return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( Eval( object ), Eval( terminal_object ) ); end;
+        
+        return LazyMorphism( object, func, terminal_object );
+        
+    end );
+    
 end );
 
 InstallMethod( LazyCategory,
