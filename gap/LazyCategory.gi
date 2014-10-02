@@ -32,6 +32,7 @@ BindGlobal( "TheTypeOfLazyCategoryMorphism",
 BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
             
   function( lazy_category, category )
+    local EvalProductList, EvalAndRewrapProductList;
     
     AddPreCompose( lazy_category,
                    
@@ -372,22 +373,90 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    #auxiliary functions
+    EvalProductList := function( product_list )
+      
+      return List( Components( product_list ), Eval );
+      
+    end;
+    
+    EvalAndRewrapProductList := function( product_list )
+      local evaluation_list;
+      
+      evaluation_list := List( Components( product_list ), Eval );
+      
+      return CallFuncList( Product, evaluation_list );
+      
+    end;
+    
     # object_product_list is an object in the product category of the lazy category
     AddDirectSum( lazy_category,
       
       function( object_product_list )
         local func;
         
-        func := function( )
-          local evaluation_list;
-          
-          evaluation_list := List( Components( object_product_list ), Eval );
-          
-          return DirectSum( CallFuncList( Product, evaluation_list ) );
+        func := function( ) return CallFuncList( DirectSum, EvalProductList( object_product_list ) ); end;
+        
+        return LazyObject( func );
+        
+    end );
+    
+    AddCoproduct( lazy_category,
+      
+      function( object_product_list )
+        local func;
+        
+        func := function( ) return CallFuncList( Coproduct, EvalProductList( object_product_list ) ); end;
+        
+        return LazyObject( func );
+        
+    end );
+    
+    AddInjectionOfCofactor( lazy_category,
+      
+      function( object_product_list, injection_number )
+        local func;
+        
+        func := function( ) return InjectionOfCofactor( EvalAndRewrapProductList( object_product_list ), injection_number ); end;
+        
+        return LazyMorphismWithoutRange( object_product_list[ injection_number ], func );
+        
+    end );
+    
+    AddInjectionOfCofactorWithGivenCoproduct( lazy_category,
+      
+      function( object_product_list, injection_number, coproduct )
+        local func;
+        
+        func := function( ) 
+        
+          return InjectionOfCofactorWithGivenCoproduct( EvalAndRewrapProductList( object_product_list ), injection_number, Eval( coproduct ) ); 
           
         end;
         
-        return LazyObject( func );
+        return LazyMorphism( object_product_list[ injection_number ], func, coproduct );
+        
+    end );
+    
+    AddUniversalMorphismFromCoproduct( lazy_category,
+      
+      function( sink )
+        local func;
+        
+        func := function( ) return CallFuncList( UniversalMorphismFromCoproduct, EvalProductList( sink ) ); end;
+        
+        return LazyMorphismWithoutRange( Source( sink[1] ), func );
+        
+    end );
+    
+    AddUniversalMorphismFromCoproductWithGivenCoproduct( lazy_category,
+      
+      function( sink, coproduct )
+        local func;
+        
+        func := function( ) return UniversalMorphismFromCoproductWithGivenCoproduct( EvalAndRewrapProductList( sink ), Eval( coproduct ) ); end;
+        
+        return LazyMorphism( Source( sink[1] ), func, coproduct );
         
     end );
     
