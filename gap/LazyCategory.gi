@@ -339,6 +339,39 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddInitialObject( lazy_category,
+      
+      function( )
+        local func;
+        
+        func := function( ) return InitialObject( UnderlyingBusyCategory( lazy_category ) ); end;
+        
+        return LazyObject( func );
+        
+    end );
+    
+    AddUniversalMorphismFromInitialObject( lazy_category,
+      
+      function( object )
+        local func;
+        
+        func := function( ) return UniversalMorphismFromInitialObject( Eval( object ) ); end;
+        
+        return LazyMorphismWithoutSource( func, object );
+        
+    end );
+    
+    AddUniversalMorphismFromInitialObjectWithGivenInitialObject( lazy_category,
+      
+      function( object, initial_object )
+        local func;
+        
+        func := function( ) return UniversalMorphismFromInitialObjectWithGivenInitialObject( Eval( object ), Eval( initial_object ) ); end;
+        
+        return LazyMorphism( initial_object, func, object );
+        
+    end );
+    
 end );
 
 InstallMethod( LazyCategory,
