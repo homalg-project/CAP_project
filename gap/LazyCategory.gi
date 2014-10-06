@@ -663,8 +663,39 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         return LazyMorphism( pushout, func, Range( sink[1] ) );
         
     end );
+    
+    AddImage( lazy_category,
+      
+      function( morphism )
+        local func;
         
+        func := function( ) return ImageObject( Eval( morphism ) ); end;
         
+        return LazyObject( func );
+        
+    end );
+    
+    AddImageEmbedding( lazy_category,
+      
+      function( morphism )
+        local func;
+        
+        func := function( ) return ImageEmbedding( Eval( morphism ) ); end;
+        
+        return LazyMorphismWithoutSource( func, Range( morphism ) );
+        
+    end );
+    
+    AddImageEmbeddingWithGivenImage( lazy_category,
+      
+      function( morphism, image )
+        local func;
+        
+        func := function( ) return ImageEmbeddingWithGivenImage( Eval( morphism ), Eval( image ) ); end;
+        
+        return LazyMorphism( image, func, Range( morphism ) );
+        
+    end );
     
 end );
 
