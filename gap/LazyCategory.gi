@@ -568,7 +568,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         func := function( ) 
           
           return CallFuncList( UniversalMorphismIntoPullback, 
-                   Concatenation( EvalAndRewrapProductList( diagram ), EvalProductList( source ) )
+                   Concatenation( [ EvalAndRewrapProductList( diagram ) ], EvalProductList( source ) )
                  );
                  
         end;
@@ -592,6 +592,79 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         return LazyMorphism( Source( source[1] ), func, pullback );
       
     end );
+    
+    AddPushout( lazy_category,
+      
+      function( diagram )
+        local func;
+        
+        func := function( ) return CallFuncList( Pushout, EvalProductList( diagram ) ); end;
+        
+        return LazyObject( func );
+        
+    end );
+    
+    AddInjectionOfCofactorOfPushout( lazy_category,
+      
+      function( diagram, injection_number )
+        local func;
+        
+        func := function( ) return InjectionOfCofactor( EvalAndRewrapProductList( diagram ), injection_number ); end;
+        
+        return LazyMorphismWithoutRange( Source( diagram[ injection_number ] ), func );
+        
+    end );
+    
+    AddInjectionOfCofactorWithGivenPushout( lazy_category,
+      
+      function( diagram, injection_number, pushout )
+        local func;
+        
+        func := function( ) 
+          
+          return InjectionOfCofactorWithGivenPushout( EvalAndRewrapProductList( diagram ), injection_number, Eval( pushout ) );
+        
+        end;
+        
+        return LazyMorphism( Source( diagram[ injection_number ] ), func, pushout );
+        
+    end );
+    
+    AddUniversalMorphismFromPushout( lazy_category,
+      
+      function( diagram, sink )
+        local func;
+        
+        func := function( )
+          
+          return CallFuncList( UniversalMorphismFromPushout,
+                   Concatenation( [ EvalAndRewrapProductList( diagram ) ], EvalProductList( sink ) )
+                 );
+                 
+        end;
+        
+        return LazyMorphismWithoutSource( func, Range( sink[1] ) );
+        
+    end );
+    
+    AddUniversalMorphismFromPushoutWithGivenPushout( lazy_category,
+      
+      function( diagram, sink, pushout )
+        local func;
+        
+        func := function( )
+          
+          return UniversalMorphismFromPushoutWithGivenPushout( 
+                   EvalAndRewrapProductList( diagram ), EvalAndRewrapProductList( sink ), Eval( pushout )
+                 );
+                 
+        end;
+        
+        return LazyMorphism( pushout, func, Range( sink[1] ) );
+        
+    end );
+        
+        
     
 end );
 

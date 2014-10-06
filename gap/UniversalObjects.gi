@@ -2534,6 +2534,7 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
     
     SetCanComputeInjectionOfCofactorOfPushout( category, true );
     
+    #TODO: Get the names clean!
     InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
                                            [ IsHomalgCategoryMorphism,
                                              IsInt,

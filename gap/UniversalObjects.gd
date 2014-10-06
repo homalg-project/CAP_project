@@ -1163,6 +1163,7 @@ DeclareOperation( "AddPushout",
 DeclareOperation( "AddInjectionOfCofactorOfPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
+#TODO: Get the names clean!
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, i, I ) \mapsto \iota_i$ to the category $C$
 #! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
