@@ -523,6 +523,76 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
+    AddPullback( lazy_category,
+      
+      function( diagram )
+        local func;
+        
+        func := function( ) return CallFuncList( FiberProduct, EvalProductList( diagram ) ); end;
+        
+        return LazyObject( func );
+        
+    end );
+    
+    AddProjectionInFactorOfPullback( lazy_category,
+      
+      function( diagram, projection_number )
+        local func;
+        
+        func := function( ) return ProjectionInFactor( EvalAndRewrapProductList( diagram ), projection_number ); end;
+        
+        return LazyMorphismWithoutSource( func, Source( diagram[ projection_number ] ) );
+        
+    end );
+    
+    AddProjectionInFactorOfPullbackWithGivenPullback( lazy_category,
+      
+      function( diagram, projection_number, pullback )
+        local func;
+        
+        func := function( ) 
+          
+          return ProjectionInFactorOfPullbackWithGivenPullback( EvalAndRewrapProductList( diagram ), projection_number, Eval( pullback ) );
+          
+        end;
+        
+        return LazyMorphism( pullback, func, Source( diagram[ projection_number ] ) );
+        
+    end );
+    
+    AddUniversalMorphismIntoPullback( lazy_category,
+      
+      function( diagram, source )
+        local func;
+        
+        func := function( ) 
+          
+          return CallFuncList( UniversalMorphismIntoPullback, 
+                   Concatenation( EvalAndRewrapProductList( diagram ), EvalProductList( source ) )
+                 );
+                 
+        end;
+        
+        return LazyMorphismWithoutRange( Source( source[1] ), func );
+        
+    end );
+    
+    AddUniversalMorphismIntoPullbackWithGivenPullback( lazy_category,
+      
+      function( diagram, source, pullback )
+        local func;
+        
+        func := function( )
+          
+          return UniversalMorphismIntoPullbackWithGivenPullback(
+                   EvalAndRewrapProductList( diagram ), EvalAndRewrapProductList( source ), Eval( pullback )
+                 );
+        end;
+        
+        return LazyMorphism( Source( source[1] ), func, pullback );
+      
+    end );
+    
 end );
 
 InstallMethod( LazyCategory,

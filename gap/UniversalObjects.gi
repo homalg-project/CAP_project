@@ -2082,7 +2082,8 @@ InstallMethod( AddProjectionInFactorOfPullback,
     
     SetCanComputeProjectionInFactorOfPullback( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
+    #TODO: Get the names clean!
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp, 
                                            [ IsHomalgCategoryMorphism, 
                                              IsInt,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
