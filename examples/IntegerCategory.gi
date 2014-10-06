@@ -201,7 +201,7 @@ AddPushout( integer_category,
 end );
 
 ##
-AddInjectionOfCofactorWithGivenPushout( integer_category,
+AddInjectionOfCofactorOfPushoutWithGivenPushout( integer_category,
                                  
   function( product_mor, coordinate, pushout )
     local source;

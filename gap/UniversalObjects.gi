@@ -2576,7 +2576,7 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
 end );
 
 ##
-InstallMethod( AddInjectionOfCofactorWithGivenPushout,
+InstallMethod( AddInjectionOfCofactorOfPushoutWithGivenPushout,
                [ IsHomalgCategory, IsFunction ],
 
   function( category, func )

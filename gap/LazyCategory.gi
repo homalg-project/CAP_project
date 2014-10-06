@@ -615,7 +615,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddInjectionOfCofactorWithGivenPushout( lazy_category,
+    AddInjectionOfCofactorOfPushoutWithGivenPushout( lazy_category,
       
       function( diagram, injection_number, pushout )
         local func;
