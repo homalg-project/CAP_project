@@ -445,7 +445,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return CallFuncList( UniversalMorphismFromCoproduct, EvalProductList( sink ) ); end;
         
-        return LazyMorphismWithoutRange( Source( sink[1] ), func );
+        return LazyMorphismWithoutSource( func, Source( sink[1] ) );
         
     end );
     
@@ -456,7 +456,70 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return UniversalMorphismFromCoproductWithGivenCoproduct( EvalAndRewrapProductList( sink ), Eval( coproduct ) ); end;
         
-        return LazyMorphism( Source( sink[1] ), func, coproduct );
+        return LazyMorphism( coproduct, func, Source( sink[1] ) );
+        
+    end );
+    
+    AddDirectProduct( lazy_category,
+      
+      function( object_product_list )
+        local func;
+        
+        func := function( ) return CallFuncList( DirectProduct, EvalProductList( object_product_list ) ); end;
+        
+        return LazyObject( func );
+        
+    end );
+    
+    AddProjectionInFactor( lazy_category,
+      
+      function( object_product_list, projection_number )
+        local func;
+        
+        func := function( ) return ProjectionInFactor( EvalAndRewrapProductList( object_product_list ), projection_number ); end;
+        
+        return LazyMorphismWithoutSource( func, object_product_list[ projection_number ] );
+        
+    end );
+    
+    AddProjectionInFactorWithGivenDirectProduct( lazy_category,
+      
+      function( object_product_list, projection_number, direct_product )
+        local func;
+        
+        func := function( ) 
+          
+          return ProjectionInFactorWithGivenDirectProduct( EvalAndRewrapProductList( object_product_list ), projection_number, Eval( direct_product ) );
+        
+        end;
+        
+        return LazyMorphism( direct_product, func, object_product_list[ projection_number ] );
+        
+    end );
+    
+    AddUniversalMorphismIntoDirectProduct( lazy_category,
+      
+      function( source )
+        local func;
+        
+        func := function( ) return CallFuncList( UniversalMorphismIntoDirectProduct, EvalProductList( source ) ); end;
+        
+        return LazyMorphismWithoutRange( Source( source[1] ), func );
+        
+    end );
+    
+    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( lazy_category,
+      
+      function( source, direct_product )
+        local func;
+        
+        func := function( ) 
+          
+          return UniversalMorphismIntoDirectProductWithGivenDirectProduct( EvalAndRewrapProductList( source ), Eval( direct_product ) );
+        
+        end;
+        
+        return LazyMorphism(  Source( source[1] ), func, direct_product );
         
     end );
     
