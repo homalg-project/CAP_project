@@ -34,6 +34,13 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
   function( lazy_category, category )
     local EvalProductList, EvalAndRewrapProductList;
     
+    #WARNING: The constructor LazyMorphismWithoutX must not be used, because
+    #in a deductive system, source and target are not formal but actual
+    #operations.
+    #Furthermore, it is not necessary to derive source or target from the function.
+    #If one is only interested in the source of an unevaluated morphism, the morphism
+    #itself should not be evaluated.
+    
     AddPreCompose( lazy_category,
                    
       function( left_morphism, right_morphism )
@@ -204,7 +211,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return KernelEmb( Eval( morphism ) ); end;
         
-        return LazyMorphismWithoutSource( func, Source( morphism ) );
+        return LazyMorphism( KernelObject( morphism ), func, Source( morphism ) );
         
     end );
     
@@ -226,7 +233,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return KernelLift( Eval( morphism ), Eval( test_morphism ) ); end;
         
-        return LazyMorphismWithoutRange( Source( test_morphism ), func );
+        return LazyMorphism( Source( test_morphism ), func, KernelObject( morphism ) );
         
     end );
     
@@ -259,7 +266,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return CokernelProj( Eval( morphism ) ); end;
         
-        return LazyMorphismWithoutRange( Range( morphism ), func );
+        return LazyMorphism( Range( morphism ), func, Cokernel( morphism ) );
         
     end );
     
@@ -281,7 +288,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return CokernelColift( Eval( morphism ), Eval( test_morphism ) ); end;
         
-        return LazyMorphismWithoutSource( func, Range( test_morphism ) );
+        return LazyMorphism( Cokernel( morphism ), func, Range( test_morphism ) );
         
     end );
     
@@ -325,7 +332,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return UniversalMorphismIntoTerminalObject( Eval( object ) ); end;
         
-        return LazyMorphismWithoutRange( object, func );
+        return LazyMorphism( object, func, TerminalObject( object ) );
         
     end );
     
@@ -358,7 +365,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return UniversalMorphismFromInitialObject( Eval( object ) ); end;
         
-        return LazyMorphismWithoutSource( func, object );
+        return LazyMorphism( InitialObject( object ), func, object );
         
     end );
     
@@ -415,11 +422,13 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     AddInjectionOfCofactor( lazy_category,
       
       function( object_product_list, injection_number )
-        local func;
+        local func, coproduct;
         
         func := function( ) return InjectionOfCofactor( EvalAndRewrapProductList( object_product_list ), injection_number ); end;
         
-        return LazyMorphismWithoutRange( object_product_list[ injection_number ], func );
+        coproduct := CallFuncList( Coproduct, Components( object_product_list ) );
+        
+        return LazyMorphism( object_product_list[ injection_number ], func, coproduct );
         
     end );
     
@@ -441,11 +450,13 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     AddUniversalMorphismFromCoproduct( lazy_category,
       
       function( sink )
-        local func;
+        local func, coproduct;
         
         func := function( ) return CallFuncList( UniversalMorphismFromCoproduct, EvalProductList( sink ) ); end;
         
-        return LazyMorphismWithoutSource( func, Source( sink[1] ) );
+        coproduct := CallFuncList( Coproduct, List( Components( sink ), Source ) );
+        
+        return LazyMorphism( coproduct, func, Source( sink[1] ) );
         
     end );
     
@@ -474,11 +485,13 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     AddProjectionInFactor( lazy_category,
       
       function( object_product_list, projection_number )
-        local func;
+        local func, direct_product;
         
         func := function( ) return ProjectionInFactor( EvalAndRewrapProductList( object_product_list ), projection_number ); end;
         
-        return LazyMorphismWithoutSource( func, object_product_list[ projection_number ] );
+        direct_product := CallFuncList( DirectProduct, Components( object_product_list ) );
+        
+        return LazyMorphism( direct_product, func, object_product_list[ projection_number ] );
         
     end );
     
@@ -500,11 +513,13 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     AddUniversalMorphismIntoDirectProduct( lazy_category,
       
       function( source )
-        local func;
+        local func, direct_product;
         
         func := function( ) return CallFuncList( UniversalMorphismIntoDirectProduct, EvalProductList( source ) ); end;
         
-        return LazyMorphismWithoutRange( Source( source[1] ), func );
+        direct_product := CallFuncList( DirectProduct, List( Components( source ), Range ) );
+        
+        return LazyMorphism( Source( source[1] ), func, direct_product );
         
     end );
     
@@ -537,11 +552,13 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     AddProjectionInFactorOfPullback( lazy_category,
       
       function( diagram, projection_number )
-        local func;
+        local func, pullback;
         
         func := function( ) return ProjectionInFactor( EvalAndRewrapProductList( diagram ), projection_number ); end;
         
-        return LazyMorphismWithoutSource( func, Source( diagram[ projection_number ] ) );
+        pullback := CallFuncList( FiberProduct, Components( diagram ) );
+        
+        return LazyMorphism( pullback, func, Source( diagram[ projection_number ] ) );
         
     end );
     
@@ -563,7 +580,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     AddUniversalMorphismIntoPullback( lazy_category,
       
       function( diagram, source )
-        local func;
+        local func, pullback;
         
         func := function( ) 
           
@@ -573,7 +590,9 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                  
         end;
         
-        return LazyMorphismWithoutRange( Source( source[1] ), func );
+        pullback := CallFuncList( FiberProduct, Components( diagram ) );
+        
+        return LazyMorphism( Source( source[1] ), func, pullback );
         
     end );
     
@@ -607,11 +626,13 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     AddInjectionOfCofactorOfPushout( lazy_category,
       
       function( diagram, injection_number )
-        local func;
+        local func, pushout;
         
         func := function( ) return InjectionOfCofactor( EvalAndRewrapProductList( diagram ), injection_number ); end;
         
-        return LazyMorphismWithoutRange( Source( diagram[ injection_number ] ), func );
+        pushout := CallFuncList( Pushout, Components( diagram ) );
+        
+        return LazyMorphism( Source( diagram[ injection_number ] ), func, pushout );
         
     end );
     
@@ -633,7 +654,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     AddUniversalMorphismFromPushout( lazy_category,
       
       function( diagram, sink )
-        local func;
+        local func, pushout;
         
         func := function( )
           
@@ -643,7 +664,9 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
                  
         end;
         
-        return LazyMorphismWithoutSource( func, Range( sink[1] ) );
+        pushout := CallFuncList( Pushout, Components( diagram ) );
+        
+        return LazyMorphism( pushout, func, Range( sink[1] ) );
         
     end );
     
@@ -682,7 +705,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) return ImageEmbedding( Eval( morphism ) ); end;
         
-        return LazyMorphismWithoutSource( func, Range( morphism ) );
+        return LazyMorphism( ImageObject( morphism ), func, Range( morphism ) );
         
     end );
     

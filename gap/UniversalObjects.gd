@@ -761,6 +761,7 @@ DeclareOperation( "AddInjectionOfCofactor",
 DeclareOperation( "AddInjectionOfCofactorWithGivenCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#FIXME: it is inconsistent with the convention that the diagram does not have to be given as an input!
 #! @Description
 #! This operation adds the given function $f: ( ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}  ) \mapsto u$ to the category $C$
 #! where $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
