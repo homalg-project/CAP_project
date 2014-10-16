@@ -115,7 +115,9 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsMonomorphism",
                 "CanComputeIsEpimorphism",
                 "CanComputeIsIsomorphism",
-                "CanComputeEpiMonoFactorization"
+                "CanComputeEpiMonoFactorization",
+                "CanComputeCoastrictionToImage",
+                "CanComputeCoastrictionToImageWithGivenImage",
                 # .. 
               ] );
 

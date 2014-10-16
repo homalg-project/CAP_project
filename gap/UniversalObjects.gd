@@ -1211,11 +1211,16 @@ DeclareFilter( "WasCreatedAsPushout" );
 ####################################
 
 #! Let $\alpha: A \rightarrow B$ be a morphism. The image of $\alpha$ is
-#! the smallest monomorphism $\iota: I \hookrightarrow B$ through which $\alpha$ factors.
+#! the smallest monomorphism $\iota: I \hookrightarrow B$ through which $\alpha$ factors, i.e.,
+#! such that there exists a morphism $c: A \rightarrow I$ with $\iota \circ c = \alpha$.
+#! Smallest in this context means that for every other factorization of $\alpha = \tau_1 \circ \tau_2$
+#! with $\tau_1: A \rightarrow T, \tau_2: T \rightarrow B$
+#! where $\tau_2$ is a monomorphism, there exists a unique morphism $u: I \rightarrow T$
+#! such that $\iota = \tau_2 \circ u$ and $\tau_1 = u \circ c$.
 
 ## Main Operations and Attributes
 
-## FIXME: Image is a function
+## FIXME: Image is a function (rename: ImageObject -> Image)
 DeclareAttributeWithToDoForIsWellDefined( "ImageObject",
                                           IsHomalgCategoryMorphism );
 
@@ -1226,7 +1231,17 @@ DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
 DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
                                           IsHomalgCategoryMorphism );
 
+#convenience function
+DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
+                                          IsHomalgCategoryObject );
+
+DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
+                                          IsHomalgCategoryMorphism );
+
 DeclareOperation( "ImageEmbeddingWithGivenImage",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
+DeclareOperation( "CoastrictionToImageWithGivenImage",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
 ## Function Attributes
@@ -1243,6 +1258,13 @@ DeclareAttribute( "ImageEmbeddingFunction",
 
 DeclareAttribute( "ImageEmbeddingWithGivenImageFunction",
                   IsHomalgCategory );
+
+DeclareAttribute( "CoastrictionToImageFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "CoastrictionToImageWithGivenImageFunction",
+                  IsHomalgCategory );
+
 #! @EndGroup
 #! @EndAutoDoc
 
@@ -1269,6 +1291,35 @@ DeclareOperation( "AddImageEmbedding",
 DeclareOperation( "AddImageEmbeddingWithGivenImage",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Description
+#! This operation adds the given function $f: \alpha \mapsto c$ to the category $C$.
+#! @Returns nothing
+#! @Arguments C, f
+DeclareOperation( "AddCoastrictionToImage",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Description
+#! This operation adds the given function $f: (\alpha, I) \mapsto c$ to the category $C$.
+#! @Returns nothing
+#! @Arguments C, f
+DeclareOperation( "AddCoastrictionToImageWithGivenImage",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Description
+#! This operation adds the given function $f: (\alpha, [\tau_1, \tau_2]) \mapsto u$ to the category $C$.
+#! Note that $[\tau_1, \tau_2]$ is a morphism in the product category $C \times C$.
+#! @Returns nothing
+#! @Arguments C, f
+DeclareOperation( "AddUniversalMorphismFromImage",
+                  [ IsHomalgCategory, IsFunction ] );
+
+#! @Description
+#! This operation adds the given function $f: (\alpha, [\tau_1, \tau_2], I) \mapsto u$ to the category $C$.
+#! Note that $[\tau_1, \tau_2]$ is a morphism in the product category $C \times C$.
+#! @Returns nothing
+#! @Arguments C, f
+DeclareOperation( "AddUniversalMorphismFromImageWithGivenImage",
+                  [ IsHomalgCategory, IsFunction ] );
 
 ## WasCreatedAs Filter
 

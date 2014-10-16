@@ -3054,6 +3054,73 @@ InstallMethod( AddImageEmbeddingWithGivenImage,
     
 end );
 
+##
+InstallMethod( AddCoastrictionToImage,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCoastrictionToImageFunction( category, func );
+    
+    SetCanComputeCoastrictionToImage( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( CoastrictionToImage,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           
+      function( morphism )
+        local coastriction_to_image, image;
+        
+        if HasImageObject( morphism ) then
+        
+          return CoastrictionToImageWithGivenImage( morphism, ImageObject( morphism ) );
+        
+        fi;
+        
+        coastriction_to_image := func( morphism );
+        
+        Add( HomalgCategory( morphism ), coastriction_to_image );
+        
+        image := Range( coastriction_to_image );
+        
+        AddToGenesis( image, "ImageDiagram", morphism );
+        
+        SetFilterObj( image, WasCreatedAsImage );
+        
+        SetImageObject( morphism, image );
+        
+        return coastriction_to_image;
+        
+    end );
+    
+end );
+
+##
+InstallMethod( AddCoastrictionToImageWithGivenImage,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetCoastrictionToImageWithGivenImageFunction( category, func );
+    
+    SetCanComputeCoastrictionToImageWithGivenImage( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( CoastrictionToImageWithGivenImage,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           
+      function( morphism, image )
+        local coastriction_to_image;
+        
+        coastriction_to_image := func( morphism, image );
+        
+        Add( category, coastriction_to_image );
+        
+        return coastriction_to_image;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CoastrictionToImageWithGivenImage", 2 ) );
+    
+end );
+
 ####################################
 ##
 ## Attributes
@@ -3066,6 +3133,15 @@ InstallMethod( ImageEmbedding,
   function( image )
     
     return ImageEmbedding( Genesis( image )!.ImageDiagram );
+    
+end );
+
+InstallMethod( CoastrictionToImage,
+               [ IsHomalgCategoryObject and WasCreatedAsImage ],
+               
+  function( image )
+    
+    return CoastrictionToImage( Genesis( image )!.ImageDiagram );
     
 end );
 
@@ -3090,6 +3166,9 @@ InstallMethod( ImageObject,
     
 end );
 
+## Note: As long as the above derived ImageObject-function is used,
+## there is no need to implement ImageEmbeddingWithGivenImage in order
+## to keep these methods consistent. 
 ##
 InstallTrueMethod( CanComputeImageEmbedding, CanComputeKernelEmb and CanComputeCokernelProj );
 
@@ -3118,6 +3197,57 @@ InstallMethod( ImageEmbedding,
     SetImageObject( mor, image );
     
     return image_embedding;
+    
+end );
+
+##
+InstallTrueMethod( CanComputeImageEmbedding, CanComputeImageEmbeddingWithGivenImage and CanComputeImage );
+
+InstallMethod( ImageEmbedding,
+               [ IsHomalgCategoryMorphism
+                 and CanComputeImageEmbeddingWithGivenImage
+                 and CanComputeImage ],
+                 -9900, #FIXME
+                 
+  function( morphism )
+    
+    return ImageEmbeddingWithGivenImage( ImageObject( morphism ), morphism );
+  
+end );
+
+
+##
+InstallTrueMethod( CanComputeCoastrictionToImage, CanComputeCoastrictionToImageWithGivenImage and CanComputeImage );
+
+InstallMethod( CoastrictionToImage,
+               [ IsHomalgCategoryMorphism
+                 and CanComputeCoastrictionToImageWithGivenImage 
+                 and CanComputeImage ],
+                 -9900, #FIXME
+                 
+  function( morphism )
+    
+    return CoastrictionToImageWithGivenImage( Image( morphism ), morphism );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeCoastrictionToImage,
+                   CanComputeImageEmbedding
+                   and CanComputeMonoAsKernelLift );
+
+InstallMethod( CoastrictionToImage,
+               [ IsHomalgCategoryMorphism
+                 and CanComputeImageEmbedding
+                 and CanComputeMonoAsKernelLift ],
+                 -9999, #FIXME
+                 
+  function( morphism )
+    local image_embedding;
+    
+    image_embedding := ImageEmbedding( morphism );
+    
+    return MonoAsKernelLift( image_embedding, morphism );
     
 end );
 
