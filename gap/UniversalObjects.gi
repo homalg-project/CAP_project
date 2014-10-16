@@ -1524,6 +1524,9 @@ end );
 ##
 ####################################
 
+##
+InstallTrueMethod( WasCreatedAsZeroObject, IsZero );
+
 ## Immediate methods which link InitialObject and TerminalObject to
 ## ZeroObject in the additive case
 InstallImmediateMethod( IS_IMPLIED_ZERO_OBJECT,
@@ -1806,6 +1809,24 @@ InstallMethod( UniversalMorphismIntoTerminalObject,
 end );
 
 ##
+InstallTrueMethod( CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+                   CanComputeZeroMorphism
+                   and IsAdditiveCategory );
+
+InstallMethod( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+               [ IsHomalgCategoryObject
+                 and CanComputeZeroMorphism
+                 and IsAdditiveCategory,
+                 IsHomalgCategoryObject ],
+                 -9999, #FIXME
+                 
+  function( test_source, terminal_object )
+    
+    return ZeroMorphism( test_source, terminal_object );
+    
+end );
+
+##
 InstallTrueMethod( CanComputeTerminalObject, CanComputeZeroObject );
 
 ##
@@ -1979,6 +2000,24 @@ InstallMethod( UniversalMorphismFromInitialObject,
   function( test_sink )
     
     return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( HomalgCategory( test_sink ) ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject,
+                   CanComputeZeroMorphism
+                   and IsAdditiveCategory );
+
+InstallMethod( UniversalMorphismFromInitialObjectWithGivenInitialObject,
+               [ IsHomalgCategoryObject
+                 and CanComputeZeroMorphism
+                 and IsAdditiveCategory,
+                 IsHomalgCategoryObject ],
+                 -9999, #FIXME
+                 
+  function( test_sink, initial_object )
+    
+    return ZeroMorphism( initial_object, test_sink );
     
 end );
 
@@ -2344,6 +2383,7 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
     
     pullback := KernelObject( diff );
     
+    #unfortunately this is necessary here
     AddToGenesis(  pullback, "PullbackAsKernelDiagram", diff );
     
     AddToGenesis( pullback, "PullbackDiagram", diagram );
@@ -2796,6 +2836,7 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
     
     pushout := Cokernel( diff );
     
+    #unfortunately this is necessary here
     AddToGenesis( pushout, "PushoutAsCokernelDiagram", diff );
     
     AddToGenesis( pushout, "PushoutDiagram", diagram );
