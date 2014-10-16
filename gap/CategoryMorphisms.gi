@@ -127,15 +127,49 @@ InstallMethod( AddIsMonomorphism,
 end );
 
 ##
-InstallTrueMethod( SetCanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
+InstallTrueMethod( CanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsMonomorphism,
                [ IsHomalgCategoryMorphism and CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
-               -9999, #FIXME
+               -9900, #FIXME
                
   function( morphism )
     
     return IsZero( KernelObject( morphism ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeIsMonomorphism, 
+                   CanComputeIsIsomorphism
+                   and CanComputeIdentityMorphism
+                   and CanComputeProjectionInFactorOfPullback
+                   and CanComputePreCompose
+                   and CanComputeUniversalMorphismIntoPullback );
+
+InstallMethod( IsMonomorphism,
+               [ IsHomalgCategoryMorphism
+                 and CanComputeIsIsomorphism
+                 and CanComputeIdentityMorphism
+                 and CanComputeProjectionInFactorOfPullback
+                 and CanComputePreCompose
+                 and CanComputeUniversalMorphismIntoPullback ],
+                 -9999, #FIXME
+                 
+  function( morphism )
+    local pullback_diagram, pullback_projection_1, pullback_projection_2, identity, diagonal_morphism;
+      
+      pullback_diagram := Product( morphism, morphism );
+      
+      pullback_projection_1 := ProjectionInFactor( pullback_diagram, 1 );
+      
+      pullback_projection_2 := ProjectionInFactor( pullback_diagram, 2 );
+      
+      identity := IdentityMorphism( Source( morphism ) );
+      
+      diagonal_morphism := UniversalMorphismIntoPullback( pullback_diagram, identity, identity );
+      
+      return IsIsomorphism( diagonal_morphism );
     
 end );
 
@@ -160,16 +194,50 @@ InstallMethod( AddIsEpimorphism,
       
 end );
 
-##
-InstallTrueMethod( SetCanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
+#
+InstallTrueMethod( CanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsEpimorphism,
                [ IsHomalgCategoryMorphism and CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
-               -9999, #FIXME
+               -9900, #FIXME
                
   function( morphism )
     
     return IsZero( Cokernel( morphism ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeIsEpimorphism,
+                   CanComputeIsIsomorphism
+                   and CanComputeIdentityMorphism
+                   and CanComputeInjectionOfCofactorOfPushout
+                   and CanComputePreCompose
+                   and CanComputeUniversalMorphismFromPushout );
+
+InstallMethod( IsEpimorphism,
+               [ IsHomalgCategoryMorphism
+                 and CanComputeIsIsomorphism
+                 and CanComputeIdentityMorphism
+                 and CanComputeInjectionOfCofactorOfPushout
+                 and CanComputePreCompose
+                 and CanComputeUniversalMorphismFromPushout ],
+                 -9999, #FIXME
+                 
+  function( morphism )
+    local pushout_diagram, pushout_injection_1, pushout_injection_2, identity, codiagonal_morphism;
+      
+      pushout_diagram := Product( morphism, morphism );
+      
+      pushout_injection_1 := InjectionOfCofactor( pushout_diagram, 1 );
+      
+      pushout_injection_2 := InjectionOfCofactor( pushout_diagram, 2 );
+      
+      identity := IdentityMorphism( Range( morphism ) );
+      
+      codiagonal_morphism := UniversalMorphismFromPushout( pushout_diagram, identity, identity );
+      
+      return IsIsomorphism( codiagonal_morphism );
     
 end );
 
