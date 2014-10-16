@@ -1244,6 +1244,12 @@ DeclareOperation( "ImageEmbeddingWithGivenImage",
 DeclareOperation( "CoastrictionToImageWithGivenImage",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
+DeclareOperation( "UniversalMorphismFromImage",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+DeclareOperation( "UniversalMorphismFromImageWithGivenImage",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+
 ## Function Attributes
 #! @AutoDoc
 #! @BeginGroup
@@ -1264,6 +1270,13 @@ DeclareAttribute( "CoastrictionToImageFunction",
 
 DeclareAttribute( "CoastrictionToImageWithGivenImageFunction",
                   IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismFromImageFunction",
+                  IsHomalgCategory );
+
+DeclareAttribute( "UniversalMorphismFromImageWithGivenImageFunction",
+                  IsHomalgCategory );
+
 
 #! @EndGroup
 #! @EndAutoDoc

@@ -118,6 +118,8 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeEpiMonoFactorization",
                 "CanComputeCoastrictionToImage",
                 "CanComputeCoastrictionToImageWithGivenImage",
+                "CanComputeUniversalMorphismFromImage",
+                "CanComputeUniversalMorphismFromImageWithGivenImage"
                 # .. 
               ] );
 

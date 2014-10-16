@@ -3121,6 +3121,93 @@ InstallMethod( AddCoastrictionToImageWithGivenImage,
     
 end );
 
+##
+InstallMethod( AddUniversalMorphismFromImage,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismFromImageFunction( category, func );
+    
+    SetCanComputeUniversalMorphismFromImage( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImage,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism ],
+                                           
+      function( morphism, test_factorization )
+        local universal_morphism, image;
+        
+        if HasImageObject( morphism ) then
+          
+          return UniversalMorphismFromImageWithGivenImage(
+                   morphism,
+                   test_factorization,
+                   ImageObject( morphism )
+                 );
+          
+        fi;
+        
+        if ( Source( morphism ) <> Source( test_factorization[1] ) )
+           or ( Range( morphism ) <> Range( test_factorization[2] ) )
+           or ( Range( test_factorization[1] ) <> Range( test_factorization[2] ) ) then
+            
+            Error( "the input is not a proper factorization\n" );
+            
+        fi;
+        
+        universal_morphism := func( morphism, test_factorization );
+        
+        Add( category, universal_morphism );
+        
+        image := Source( universal_morphism );
+        
+        AddToGenesis( image, "ImageDiagram", morphism );
+        
+        SetImageObject( morphism, image );
+        
+        SetFilterObj( image, WasCreatedAsImage );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromImage", 2 ) );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromImageWithGivenImage,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetUniversalMorphismFromImageWithGivenImageFunction( category, func );
+    
+    SetCanComputeUniversalMorphismFromImageWithGivenImage( category, true );
+    
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImageWithGivenImage,
+                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
+                                             IsHomalgCategoryMorphism ],
+                                           
+      function( morphism, test_factorization, image )
+        local universal_morphism;
+        
+        if ( Source( morphism ) <> Source( test_factorization[1] ) )
+           or ( Range( morphism ) <> Range( test_factorization[2] ) )
+           or ( Range( test_factorization[1] ) <> Range( test_factorization[2] ) ) then
+            
+            Error( "the input is not a proper factorization\n" );
+            
+        fi;
+        
+        ##FIXME: this is a monomorphism if test_factorization[2] was a monomorphism (i.e. a proper input)
+        universal_morphism := func( morphism, test_factorization, image );
+        
+        return universal_morphism;
+        
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromImageWithGivenImage", 3 ) );
+    
+end );
+
 ####################################
 ##
 ## Attributes
@@ -3251,6 +3338,44 @@ InstallMethod( CoastrictionToImage,
     
 end );
 
+##
+InstallTrueMethod( CanComputeUniversalMorphismFromImage,
+                   CanComputeUniversalMorphismFromImageWithGivenImage
+                   and CanComputeImage );
+
+InstallMethod( UniversalMorphismFromImage,
+               [ IsHomalgCategoryMorphism
+                 and CanComputeUniversalMorphismFromImageWithGivenImage
+                 and CanComputeImage,
+                 IsHomalgCategoryMorphism ],
+                 -9900, #FIXME
+                 
+  function( morphism, test_factorization )
+    
+    return UniversalMorphismFromImageWithGivenImage( morphism, test_factorization, ImageObject( morphism ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeUniversalMorphismFromImage,
+                   CanComputeMonoAsKernelLift
+                   and CanComputeImageEmbedding );
+
+InstallMethod( UniversalMorphismFromImage,
+               [ IsHomalgCategoryMorphism
+                 and CanComputeMonoAsKernelLift
+                 and CanComputeImageEmbedding,
+                 IsHomalgCategoryMorphism ],
+                 -9999, #FIXME
+                 
+  function( morphism, test_factorization )
+    local image_embedding;
+    
+    image_embedding := ImageEmbedding( morphism );
+    
+    return MonoAsKernelLift( test_factorization[2], image_embedding );
+    
+end );
 ####################################
 ##
 ## Scheme for Universal Object
