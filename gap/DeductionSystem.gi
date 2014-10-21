@@ -165,3 +165,48 @@ InstallMethod( DeductionSystemMorphism,
     return deduction_morphism;
     
 end );
+
+#################################
+##
+## View
+##
+#################################
+
+InstallMethod( ViewObj,
+               [ IsDeductionSystemObject ],
+               
+  function( cell )
+    
+    Print( "<An unevaluated object in " );
+    
+    Print( Name( HomalgCategory( cell ) ) );
+    
+    Print( ">" );
+    
+end );
+
+InstallMethod( ViewObj,
+               [ IsDeductionSystemMorphism ],
+               
+  function( cell )
+    
+    Print( "<An unevaluated morphism in " );
+    
+    Print( Name( HomalgCategory( cell ) ) );
+    
+    Print( ">" );
+    
+end );
+
+InstallMethod( ViewObj,
+               [ IsDeductionSystemCell and HasEval ],
+               100000000000000, ##FIXME!!!!
+               
+  function( cell )
+    
+    Print( "Lazy hull of:\n" );
+    
+    ViewObj( Eval( cell ) );
+    
+end );
+
