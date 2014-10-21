@@ -23,75 +23,6 @@ BindGlobal( "TheTypeOfGeneralizedMorphism",
         NewType( TheFamilyOfHomalgCategoryMorphisms,
                 IsGeneralizedMorphismRep ) );
 
-
-####################################
-##
-## ToDo-Lists
-##
-####################################
-
-InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGORY,
-
-  function( category )
-    local technical_implications, implication, entry, objects;
-    
-    technical_implications := [
-      [
-        [
-          [ category, "CanComputeEqualityOfSubobjects", true ],
-          [ category, "CanComputeEqualityOfFactorobjects", true ],
-          [ category, "CanComputeMonoAsKernelLift", true ],
-          [ category, "CanComputeEpiAsCokernelColift", true ],
-          [ category, "CanComputeEqualityOfMorphisms", true ],
-          [ category, "CanComputePreCompose", true ],
-        ],
-        "CanComputeEqualityOfMorphisms"
-      ],
-      
-      [
-        [
-          [ category, "CanComputePreCompose", true ],
-          [ category, "CanComputeInverse", true ]
-        ],
-        "CanComputeHonestRepresentative"
-      ],
-      
-      [
-        [
-          [ category, "CanComputePullback", true ],
-          [ category, "CanComputeProjectionInFactor", true ],
-          [ category, "CanComputePushout", true ],
-          [ category, "CanComputeInjectionOfCofactor", true ],
-          [ category, "CanComputePreCompose", true ],
-          [ category, "CanComputeAdditionForMorphisms", true ],
-        ],
-        "CanComputeAdditionForMorphisms"
-      ],
-      
-      [
-        [
-          [ category, "CanComputeIsWellDefinedForObjects", true ],
-        ],
-        "CanComputeIsWellDefinedForObjects"
-      ]
-      
-    ];
-    
-    for implication in technical_implications do
-      
-      entry := ToDoListEntry( Concatenation( implication[1], [ [ category, "GeneralizedMorphismCategory" ] ] ) , 
-                              [ GeneralizedMorphismCategory, category ], 
-                              implication[2], 
-                              true 
-                            );
-      
-      AddToToDoList( entry );
-      
-    od;
-    
-end );
-
-
 ####################################
 ##
 ## Constructors
@@ -172,8 +103,6 @@ InstallMethod( GeneralizedMorphismCategory,
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY( generalized_morphism_category );
-    
-    INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGORY( category );
     
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
@@ -402,30 +331,12 @@ InstallMethodWithCacheFromObject( PreCompose,
 end );
 
 ##
-InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject, 
-                   CanComputePreCompose
-                   and CanComputeEpiMonoFactorization
-                   and CanComputeIdentityMorphism);
+InstallTrueMethod( CanComputePreCompose,
+                   CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
+                   and CanComputePullbackInUnderlyingHonestCategory
+                   and CanComputePushoutInUnderlyingHonestCategory
+                   and CanComputePreComposeInUnderlyingHonestCategory );
 
-InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
-                                  [ IsHomalgCategoryMorphism
-                                    and CanComputePreCompose
-                                    and CanComputeEpiMonoFactorization
-                                    and CanComputeIdentityMorphism,
-                                    IsHomalgCategoryMorphism ],
-                                    
-  function( factor, subobject )
-    local composition, epi_mono_factorization;
-    
-    composition := PreCompose( subobject, factor );
-    
-    epi_mono_factorization := EpiMonoFactorization( composition );
-    
-    return GeneralizedMorphism( epi_mono_factorization[2], IdentityMorphism( Range( epi_mono_factorization[1] ) ), epi_mono_factorization[1] );
-    
-end );
-
-##
 InstallMethodWithCacheFromObject( PreCompose,
                                   [ IsGeneralizedMorphism 
                                     and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
@@ -459,7 +370,39 @@ InstallMethodWithCacheFromObject( PreCompose,
     
 end );
 
-## CanCompute management in ToDoList of category
+##
+InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject,
+                   CanComputePreCompose
+                   and CanComputeEpiMonoFactorization
+                   and CanComputeIdentityMorphism);
+
+InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
+                                  [ IsHomalgCategoryMorphism
+                                    and CanComputePreCompose
+                                    and CanComputeEpiMonoFactorization
+                                    and CanComputeIdentityMorphism,
+                                    IsHomalgCategoryMorphism ],
+                                    
+  function( factor, subobject )
+    local composition, epi_mono_factorization;
+    
+    composition := PreCompose( subobject, factor );
+    
+    epi_mono_factorization := EpiMonoFactorization( composition );
+    
+    return GeneralizedMorphism( epi_mono_factorization[2], IdentityMorphism( Range( epi_mono_factorization[1] ) ), epi_mono_factorization[1] );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeEqualityOfMorphisms,
+                   CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
+                   and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
+                   and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
+                   and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
+                   and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
+                   and CanComputePreComposeInUnderlyingHonestCategory );
+
 InstallMethodWithCacheFromObject( EqualityOfMorphisms,
                                   [ IsGeneralizedMorphism
                                     and CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
@@ -502,7 +445,11 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
     
 end );
 
-## CanCompute management in ToDoList of category
+##
+InstallTrueMethod( CanComputeHonestRepresentative,
+                   CanComputePreComposeInUnderlyingHonestCategory
+                   and CanComputeInverseInUnderlyingHonestCategory );
+
 InstallMethod( HonestRepresentative,
                [ IsGeneralizedMorphism
                  and CanComputePreComposeInUnderlyingHonestCategory
@@ -517,7 +464,15 @@ InstallMethod( HonestRepresentative,
     
 end );
 
-## CanCompute management in ToDoList of category
+##
+InstallTrueMethod( CanComputeAdditionForMorphisms,
+                   CanComputePullbackInUnderlyingHonestCategory
+                   and CanComputeProjectionInFactorInUnderlyingHonestCategory
+                   and CanComputePushoutInUnderlyingHonestCategory
+                   and CanComputeInjectionOfCofactorInUnderlyingHonestCategory
+                   and CanComputePreComposeInUnderlyingHonestCategory
+                   and CanComputeAdditionForMorphismsInUnderlyingHonestCategory );
+
 InstallMethodWithCacheFromObject( \+,
                                  [ IsGeneralizedMorphism
                                    and CanComputePullbackInUnderlyingHonestCategory
