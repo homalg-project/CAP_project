@@ -135,9 +135,8 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedMorphism,
-##               [ IsHomalgCategoryMorphism, IsSubobject, IsFactorobject ], we wont check this for performance reasons.
-                                       [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
-                                       
+                                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+                                  
   function( source_aid, associated_morphism, range_aid )
     local generalized_morphism, generalized_category;
     
@@ -510,6 +509,22 @@ InstallMethodWithCacheFromObject( \+,
                     );
     
     return return_value;
+    
+end );
+
+##
+InstallTrueMethod( CanComputeIdentityMorphism, CanComputeIdentityMorphismInUnderlyingHonestCategory );
+
+InstallMethodWithCacheFromObject( IdentityMorphism,
+                                  [ IsGeneralizedMorphismCategoryObjectRep
+                                    and CanComputeIdentityMorphismInUnderlyingHonestCategory ],
+                                  
+  function( generalized_object )
+    local identity_morphism;
+    
+    identity_morphism := IdentityMorphism( UnderlyingHonestObject( generalized_object ) );
+    
+    return AsGeneralizedMorphism( identity_morphism );
     
 end );
 
