@@ -62,7 +62,7 @@ DeclareAttribute( "SourceAid",
 DeclareAttribute( "RangeAid",
                   IsSerreQuotientCategoryMorphism );
 
-DeclareAttribute( "AssociatedMorphism",
+DeclareAttribute( "MorphismAid",
                   IsSerreQuotientCategoryMorphism );
 
 ##############################################

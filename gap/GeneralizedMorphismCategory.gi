@@ -137,14 +137,14 @@ end );
 InstallMethodWithCacheFromObject( GeneralizedMorphism,
                                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
                                   
-  function( source_aid, associated_morphism, range_aid )
+  function( source_aid, morphism_aid, range_aid )
     local generalized_morphism, generalized_category;
     
-    if not IsIdenticalObj( Source( source_aid ), Source( associated_morphism ) ) then
+    if not IsIdenticalObj( Source( source_aid ), Source( morphism_aid ) ) then
         
         Error( "source of source aid and associated morphism must be the same object" );
         
-    elif not IsIdenticalObj( Range( range_aid ), Range( associated_morphism ) ) then
+    elif not IsIdenticalObj( Range( range_aid ), Range( morphism_aid ) ) then
         
         Error( "range of range aid and associated morphism must be the same object" );
         
@@ -160,9 +160,9 @@ InstallMethodWithCacheFromObject( GeneralizedMorphism,
     
     SetRangeAid( generalized_morphism, range_aid );
     
-    SetAssociatedMorphism( generalized_morphism, associated_morphism );
+    SetMorphismAid( generalized_morphism, morphism_aid );
     
-    generalized_category := GeneralizedMorphismCategory( HomalgCategory( associated_morphism ) );
+    generalized_category := GeneralizedMorphismCategory( HomalgCategory( morphism_aid ) );
     
     Add( generalized_category, generalized_morphism );
     
@@ -174,16 +174,16 @@ end );
 InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
                                   [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism, IsHomalgCategoryMorphism ],
                
-  function( source_aid, associated_morphism )
+  function( source_aid, morphism_aid )
     local generalized_morphism;
     
-    if not IsIdenticalObj( Source( source_aid ), Source( associated_morphism ) ) then
+    if not IsIdenticalObj( Source( source_aid ), Source( morphism_aid ) ) then
         
         Error( "source of source aid and associated morphism must be the same object" );
         
     fi;
     
-    generalized_morphism := GeneralizedMorphism( source_aid, associated_morphism, IdentityMorphism( Range( associated_morphism ) ) );
+    generalized_morphism := GeneralizedMorphism( source_aid, morphism_aid, IdentityMorphism( Range( morphism_aid ) ) );
     
     SetHasHonestRange( generalized_morphism, true );
     
@@ -195,16 +195,16 @@ end );
 InstallMethodWithCacheFromObject( GeneralizedMorphismWithRangeAid,
                                   [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism, IsHomalgCategoryMorphism ],
                
-  function( associated_morphism, range_aid )
+  function( morphism_aid, range_aid )
     local generalized_morphism, generalized_category;
     
-    if not IsIdenticalObj( Range( range_aid ), Range( associated_morphism ) ) then
+    if not IsIdenticalObj( Range( range_aid ), Range( morphism_aid ) ) then
         
         Error( "source of source aid and associated morphism must be the same object" );
         
     fi;
     
-    generalized_morphism := GeneralizedMorphism( IdentityMorphism( Source( associated_morphism ) ), associated_morphism, range_aid );
+    generalized_morphism := GeneralizedMorphism( IdentityMorphism( Source( morphism_aid ) ), morphism_aid, range_aid );
     
     SetHasHonestSource( generalized_morphism, true );
     
@@ -216,10 +216,10 @@ end );
 InstallMethod( AsGeneralizedMorphism,
                [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism ],
                
-  function( associated_morphism )
+  function( morphism_aid )
     local generalized_morphism;
     
-    generalized_morphism := GeneralizedMorphism( IdentityMorphism( Source( associated_morphism ) ), associated_morphism, IdentityMorphism( Range( associated_morphism ) ) );
+    generalized_morphism := GeneralizedMorphism( IdentityMorphism( Source( morphism_aid ) ), morphism_aid, IdentityMorphism( Range( morphism_aid ) ) );
     
     SetIsHonest( generalized_morphism, true );
     
@@ -245,7 +245,7 @@ InstallMethodWithCacheFromObject( PreCompose,
         
     fi;
     
-    return GeneralizedMorphism( SourceAid( mor1 ), PreCompose( AssociatedMorphism( mor1 ), AssociatedMorphism( mor2 ) ), RangeAid( mor2 ) );
+    return GeneralizedMorphism( SourceAid( mor1 ), PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ), RangeAid( mor2 ) );
     
 end );
 
@@ -258,7 +258,7 @@ InstallMethodWithCacheFromObject( PreCompose,
                                          IsGeneralizedMorphism and HasHonestRange ],
                                        
   function( mor1, mor2 )
-    local category, pullback, new_source_aid, new_associated_morphism;
+    local category, pullback, new_source_aid, new_morphism_aid;
     
     category := HomalgCategory( mor1 );
     
@@ -268,13 +268,13 @@ InstallMethodWithCacheFromObject( PreCompose,
         
     fi;
     
-    pullback := FiberProduct( AssociatedMorphism( mor1 ), SourceAid( mor2 ) );
+    pullback := FiberProduct( MorphismAid( mor1 ), SourceAid( mor2 ) );
     
     new_source_aid := PreCompose( ProjectionInFactor( pullback, 1 ), SourceAid( mor1 ) );
     
-    new_associated_morphism := PreCompose( ProjectionInFactor( pullback, 2 ), AssociatedMorphism( mor2 ) );
+    new_morphism_aid := PreCompose( ProjectionInFactor( pullback, 2 ), MorphismAid( mor2 ) );
     
-    return GeneralizedMorphismWithSourceAid( new_source_aid, new_associated_morphism );
+    return GeneralizedMorphismWithSourceAid( new_source_aid, new_morphism_aid );
     
 end );
 
@@ -287,7 +287,7 @@ InstallMethodWithCacheFromObject( PreCompose,
                                   IsGeneralizedMorphism and HasHonestSource ],
                                   
   function( mor1, mor2 )
-    local category, pushout, new_associated_morphism, new_range_aid;
+    local category, pushout, new_morphism_aid, new_range_aid;
     
     category := HomalgCategory( mor1 );
     
@@ -297,13 +297,13 @@ InstallMethodWithCacheFromObject( PreCompose,
         
     fi;
     
-    pushout := Pushout( RangeAid( mor1 ), AssociatedMorphism( mor2 ) );
+    pushout := Pushout( RangeAid( mor1 ), MorphismAid( mor2 ) );
     
-    new_associated_morphism := PreCompose( AssociatedMorphism( mor1 ), InjectionOfCofactor( pushout, 1 ) );
+    new_morphism_aid := PreCompose( MorphismAid( mor1 ), InjectionOfCofactor( pushout, 1 ) );
     
     new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactor( pushout, 2 ) );
     
-    return GeneralizedMorphismWithRangeAid( new_associated_morphism, new_range_aid );
+    return GeneralizedMorphismWithRangeAid( new_morphism_aid, new_range_aid );
     
 end );
 
@@ -325,7 +325,7 @@ InstallMethodWithCacheFromObject( PreCompose,
         
     fi;
     
-    return AsGeneralizedMorphism( PreCompose( AssociatedMorphism( mor1 ), AssociatedMorphism( mor2 ) ) );
+    return AsGeneralizedMorphism( PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ) );
     
 end );
 
@@ -355,9 +355,9 @@ InstallMethodWithCacheFromObject( PreCompose,
     
     generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobject( RangeAid( mor1 ), SourceAid( mor2 ) );
     
-    pullback := FiberProduct( AssociatedMorphism( mor1 ), SourceAid( generalized_mor_factor_sub ) );
+    pullback := FiberProduct( MorphismAid( mor1 ), SourceAid( generalized_mor_factor_sub ) );
     
-    pushout := Pushout( RangeAid( generalized_mor_factor_sub ), AssociatedMorphism( mor2 ) );
+    pushout := Pushout( RangeAid( generalized_mor_factor_sub ), MorphismAid( mor2 ) );
     
     new_source_aid := PreCompose( ProjectionInFactor( pullback, 1 ), SourceAid( mor1 ) );
     
@@ -440,7 +440,7 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
     
     isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
     
-    return EqualityOfMorphisms( AssociatedMorphism( generalized_morphism1 ), PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) );
+    return EqualityOfMorphisms( MorphismAid( generalized_morphism1 ), PreCompose( PreCompose( isomorphism_of_subobjects, MorphismAid( generalized_morphism2 ) ), isomorphism_of_factorobjects ) );
     
 end );
 
@@ -457,7 +457,7 @@ InstallMethod( HonestRepresentative,
   function( generalized_morphism )
     
     return PreCompose(
-             PreCompose( Inverse( SourceAid( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
+             PreCompose( Inverse( SourceAid( generalized_morphism ) ), MorphismAid( generalized_morphism ) ), 
              Inverse( RangeAid( generalized_morphism ) ) 
            );
     
@@ -494,11 +494,11 @@ InstallMethodWithCacheFromObject( \+,
     
     pushout_of_rangeaids := Pushout( RangeAid( mor1 ), RangeAid( mor2 ) );
     
-    restricted_mor1 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 1 ), AssociatedMorphism( mor1 ) );
+    restricted_mor1 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 1 ), MorphismAid( mor1 ) );
     
     restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactor( pushout_of_rangeaids, 1 ) );
     
-    restricted_mor2 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 2 ), AssociatedMorphism( mor2 ) );
+    restricted_mor2 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 2 ), MorphismAid( mor2 ) );
     
     restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactor( pushout_of_rangeaids, 2 ) );
     
@@ -559,14 +559,14 @@ InstallMethod( IsWellDefined,
     
     category := HomalgCategory( SourceAid( generalized_morphism ) );
     
-    if not ForAll( [ AssociatedMorphism( generalized_morphism ), RangeAid( generalized_morphism ) ],
+    if not ForAll( [ MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ],
                  x -> IsIdenticalObj( HomalgCategory( x ), category ) ) then
       
       return false;
       
     fi;
     
-    if not ( ForAll( [ SourceAid( generalized_morphism ), AssociatedMorphism( generalized_morphism ), RangeAid( generalized_morphism ) ],
+    if not ( ForAll( [ SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ],
              IsWellDefined ) ) then
       
       return false;

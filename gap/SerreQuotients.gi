@@ -125,7 +125,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
     
     SetRangeAid( serre_morphism, RangeAid( gen_morphism ) );
     
-    SetAssociatedMorphism( serre_morphism, AssociatedMorphism( gen_morphism ) );
+    SetMorphismAid( serre_morphism, MorphismAid( gen_morphism ) );
     
     return serre_morphism;
     

@@ -82,7 +82,7 @@ DeclareAttributeWithToDoForIsWellDefined( "SourceAid",
 DeclareAttributeWithToDoForIsWellDefined( "RangeAid",
                                           IsGeneralizedMorphism );
 
-DeclareAttributeWithToDoForIsWellDefined( "AssociatedMorphism",
+DeclareAttributeWithToDoForIsWellDefined( "MorphismAid",
                                           IsGeneralizedMorphism );
 
 DeclareProperty( "IsHonest",
