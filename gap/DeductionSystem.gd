@@ -18,7 +18,9 @@ DeclareCategory( "IsDeductionSystemObject",
 DeclareCategory( "IsDeductionSystemMorphism",
                  IsDeductionSystemCell and IsHomalgCategoryMorphism );
 
-# DeclareGlobalFunction( 
+DeclareGlobalFunction( "ADDS_FOR_DEDUCTION_SYSTEM" );
+
+DeclareGlobalFunction( "RESOLVE_HISTORY" );
 
 #####################################
 ##
@@ -36,17 +38,13 @@ DeclareOperation( "DeductionSystemObject",
                   [ ] );
 
 DeclareOperation( "DeductionSystemObject",
-                  [ IsOperation, IsList ] );
+                  [ IsFunction, IsList ] );
 
-DeclareOperation( "DeductionMorphism",
+DeclareOperation( "DeductionSystemMorphism",
                   [ IsHomalgCategoryMorphism ] );
 
-DeclareOperation( "DeductionMorphism",
-                  [ IsList ] );
-
-DeclareOperation( "DeductionMorphism",
-                  [ IsDeductionSystemObject, IsList, IsDeductionSystemObject ] );
-
+DeclareOperation( "DeductionSystemMorphism",
+                  [ IsDeductionSystemObject, IsFunction, IsList, IsDeductionSystemObject ] );
 
 #####################################
 ##

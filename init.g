@@ -26,3 +26,5 @@ ReadPackage( "CategoriesForHomalg", "gap/GeneralizedMorphismCategory.gd");
 ReadPackage( "CategoriesForHomalg", "gap/SerreQuotients.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/LazyCategory.gd");
+
+ReadPackage( "CategoriesForHomalg", "gap/DeductionSystem.gd");
