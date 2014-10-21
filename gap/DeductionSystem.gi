@@ -91,7 +91,7 @@ InstallMethod( DeductionSystemObject,
     
     deduction_object := rec( );
     
-    ObjectifyWithAttributes( object, TheTypeOfDeductionSystemObject,
+    ObjectifyWithAttributes( deduction_object, TheTypeOfDeductionSystemObject,
                              Eval, object );
     
     SetHistory( deduction_object, [ Eval, [ deduction_object ] ] );
