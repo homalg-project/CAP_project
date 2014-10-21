@@ -26,5 +26,5 @@ g := GeneralizedMorphism( alpha, alpha, alpha );
 IsWellDefined( alpha );
 #! true
 IsWellDefined( g );
-#! false
+#! true
 #! @EndExample

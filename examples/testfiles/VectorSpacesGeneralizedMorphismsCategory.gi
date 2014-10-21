@@ -267,8 +267,8 @@ Bfac := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>
 Bsub := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
-C := QVectorSpace( 4 );
-#! <A rational vector space of dimension 4>
+C := QVectorSpace( 3 );
+#! <A rational vector space of dimension 3>
 Cfac := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
 Asub_into_A := VectorSpaceMorphism( Asub, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], A );

@@ -43,12 +43,6 @@ DeclareProperty( "INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms",
 DeclareAttribute( "GeneralizedMorphismCategory",
                   IsHomalgCategory );
 
-DeclareOperation( "RestrictedGeneralizedMorphismCategory",
-                  [ IsHomalgCategory, IsFunction ] );
-
-DeclareOperation( "RestrictedGeneralizedMorphismCategory",
-                  [ IsHomalgCategory, IsFunction, IsString ] );
-
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY" );
 
 DeclareAttribute( "UnderlyingHonestCategory",
@@ -101,9 +95,6 @@ DeclareProperty( "HasHonestSource",
 
 DeclareProperty( "HasHonestRange",
                   IsGeneralizedMorphism );
-
-DeclareProperty( "IsRestrictedGeneralizedMorphismCategory",
-                 IsHomalgCategory );
 
 DeclareAttribute( "SubcategoryMembershipFunctionForGeneralizedMorphismCategory",
                   IsHomalgCategory );

@@ -177,56 +177,11 @@ InstallMethod( GeneralizedMorphismCategory,
     
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
-    SetIsRestrictedGeneralizedMorphismCategory( generalized_morphism_category, false );
-    
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategory );
     
     return generalized_morphism_category;
     
 end );
-
-##
-InstallMethod( RestrictedGeneralizedMorphismCategory,
-               [ IsHomalgCategory, IsFunction ],
-
-  function( category, membership_function )
-  
-    return RestrictedGeneralizedMorphismCategory( category, membership_function, "a membership function" );
-  
-end );
-
-##TODO: Constructors for morphisms and objects in RestrictedGeneralizedMorphismCategory
-##
-InstallMethodWithCacheFromObject( RestrictedGeneralizedMorphismCategory,
-                                  [ IsHomalgCategory, IsFunction, IsString ],
-                                  
-  function( category, membership_function, membership_function_name )
-    local name, restricted_generalized_morphism_category;
-    
-    name := Name( category );
-    
-    name := Concatenation( "Generalized morphism category of ", name, " restricted by ", membership_function_name );
-    
-    restricted_generalized_morphism_category := CreateHomalgCategory( name );
-    
-    SetUnderlyingHonestCategory( restricted_generalized_morphism_category, category );
-    
-    INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY( restricted_generalized_morphism_category );
-    
-    INSTALL_TODO_LIST_ENTRIES_FOR_GENERALIZED_MORPHISM_CATEGORY( category );
-    
-    SetIsEnrichedOverCommutativeRegularSemigroup( restricted_generalized_morphism_category, true );
-    
-    SetIsRestrictedGeneralizedMorphismCategory( restricted_generalized_morphism_category, true );
-    
-    SetFilterObj( restricted_generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategory );
-    
-    SetSubcategoryMembershipFunctionForGeneralizedMorphismCategory( restricted_generalized_morphism_category, membership_function );
-    
-    return restricted_generalized_morphism_category;
-    
-end );
-
 
 InstallMethod( GeneralizedMorphismObject,
                [ IsHomalgCategoryObject ],
@@ -609,7 +564,9 @@ end );
 ##
 ###########################
 
-## CanCompute management in ToDoList of category
+##
+InstallTrueMethod( CanComputeIsWellDefinedForObjects, CanComputeIsWellDefinedForObjectsInUnderlyingHonestCategory );
+
 InstallMethod( IsWellDefined,
                [ IsGeneralizedMorphismCategoryObjectRep
                  and CanComputeIsWellDefinedForObjectsInUnderlyingHonestCategory ],
@@ -620,102 +577,32 @@ InstallMethod( IsWellDefined,
     
 end );
 
-## FIXME: This construction should be done by a TODO List
-InstallImmediateMethod( INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms,
-                        IsHomalgCategory and WasCreatedAsGeneralizedMorphismCategory,
-                        0,
-                        
-  function( generalized_morphism_category )
-    local entry, implication, underlying_honest_category;
-    
-    underlying_honest_category := UnderlyingHonestCategory( generalized_morphism_category );
-    
-    if IsRestrictedGeneralizedMorphismCategory( generalized_morphism_category ) then
-    
-    implication := [
-                     [
-                       [ underlying_honest_category, "CanComputeIsWellDefinedForMorphisms", true ],
-                       [ underlying_honest_category, "CanComputeKernel", true ],
-                       [ underlying_honest_category, "CanComputeCokernel", true ],
-                       [ underlying_honest_category, "CanComputeIsMonomorphism", true ],
-                       [ underlying_honest_category, "CanComputeIsEpimorphism", true ] 
-                     ],
-                     "CanComputeIsWellDefinedForMorphisms"
-                   ];
-      
-      entry := ToDoListEntry( implication[1], 
-                              generalized_morphism_category, 
-                              implication[2], 
-                              true 
-                            );
-    
-    else
-    
-    implication := [
-                     [
-                       [ underlying_honest_category, "CanComputeIsWellDefinedForMorphisms", true ],
-                       [ underlying_honest_category, "CanComputeIsMonomorphism", true ],
-                       [ underlying_honest_category, "CanComputeIsEpimorphism", true ]
-                     ],
-                     "CanComputeIsWellDefinedForMorphisms"
-                   ];
-      
-      entry := ToDoListEntry( implication[1], 
-                              generalized_morphism_category, 
-                              implication[2], 
-                              true 
-                            );
-      
+##
+InstallTrueMethod( CanComputeIsWellDefinedForMorphisms, CanComputeIsWellDefinedForMorphismsInUnderlyingHonestCategory );
 
+InstallMethod( IsWellDefined,
+               [ IsGeneralizedMorphismRep
+                 and CanComputeIsWellDefinedForMorphismsInUnderlyingHonestCategory ],
+               
+  function( generalized_morphism )
+    local category;
     
+    category := HomalgCategory( SourceAid( generalized_morphism ) );
+    
+    if not ForAll( [ AssociatedMorphism( generalized_morphism ), RangeAid( generalized_morphism ) ],
+                 x -> IsIdenticalObj( HomalgCategory( x ), category ) ) then
+      
+      return false;
+      
     fi;
     
-    AddToToDoList( entry );
+    if not ( ForAll( [ SourceAid( generalized_morphism ), AssociatedMorphism( generalized_morphism ), RangeAid( generalized_morphism ) ],
+             IsWellDefined ) ) then
+      
+      return false;
+      
+    fi;
     
     return true;
     
 end );
-
-
-
-## CanCompute management done by ImmediateMethod above
-InstallMethod( IsWellDefined,
-               [ IsGeneralizedMorphismRep
-                 and IsRestrictedGeneralizedMorphismCategory
-                 # we must not check here CanComputeKernel[Cokernel]InUnderlyingHonestCategory:
-                 # if IsRestrictedGeneralizedMorphismCategory = true but CanComputeKernel[Cokernel]InUnderlyingHonestCategory = false then
-                 # GAP would apply the method installed below, leading to wrong results.
-               ],
-                 
-  function( generalized_morphism )
-    local category;
-    
-    category := HomalgCategory( generalized_morphism );
-
-    if not ( SubcategoryMembershipFunctionForGeneralizedMorphismCategory( category )( Cokernel( SourceAid( generalized_morphism ) ) )
-       and SubcategoryMembershipFunctionForGeneralizedMorphismCategory( category )( KernelObject( RangeAid( generalized_morphism ) ) ) ) then
-         
-         return false;
-         
-    fi;
-    
-    TryNextMethod( ); # application of the method installed below for further checking
-    
-end );
-
-## CanCompute management done by ImmediateMethod above
-InstallMethod( IsWellDefined,
-               [ IsGeneralizedMorphismRep
-                 and CanComputeIsWellDefinedForMorphismsInUnderlyingHonestCategory
-                 and CanComputeIsMonomorphismInUnderlyingHonestCategory
-                 and CanComputeIsEpimorphismInUnderlyingHonestCategory ],
-                 
-  function( generalized_morphism )
-    local category;
-    
-    return IsMonomorphism( SourceAid( generalized_morphism ) )
-           and IsEpimorphism( RangeAid( generalized_morphism ) )
-           and IsWellDefined( AssociatedMorphism( generalized_morphism ) );
-    
-end );
-
