@@ -22,6 +22,8 @@ DeclareGlobalFunction( "ADDS_FOR_DEDUCTION_SYSTEM" );
 
 DeclareGlobalFunction( "RESOLVE_HISTORY" );
 
+DeclareGlobalFunction( "RECURSIVE_EVAL" );
+
 #####################################
 ##
 ## Constructor
@@ -31,20 +33,20 @@ DeclareGlobalFunction( "RESOLVE_HISTORY" );
 DeclareAttribute( "DeductionSystem",
                   IsHomalgCategory );
 
-DeclareOperation( "DeductionSystemObject",
-                  [ IsHomalgCategoryObject ] );
+DeclareAttribute( "AsDeductionSystemObject",
+                  IsHomalgCategoryObject );
 
 DeclareOperation( "DeductionSystemObject",
                   [ ] );
 
 DeclareOperation( "DeductionSystemObject",
-                  [ IsFunction, IsList ] );
+                  [ IsString, IsList ] );
+
+DeclareAttribute( "AsDeductionSystemMorphism",
+                  IsHomalgCategoryMorphism );
 
 DeclareOperation( "DeductionSystemMorphism",
-                  [ IsHomalgCategoryMorphism ] );
-
-DeclareOperation( "DeductionSystemMorphism",
-                  [ IsDeductionSystemObject, IsFunction, IsList, IsDeductionSystemObject ] );
+                  [ IsDeductionSystemObject, IsString, IsList, IsDeductionSystemObject ] );
 
 #####################################
 ##
@@ -57,3 +59,12 @@ DeclareAttribute( "History",
 
 DeclareAttribute( "Eval",
                   IsDeductionSystemCell );
+
+#####################################
+##
+## Attributes for all cells
+##
+#####################################
+
+DeclareAttribute( "ChecksFromLogic",
+                  IsHomalgCategoryCell, "mutable" );
