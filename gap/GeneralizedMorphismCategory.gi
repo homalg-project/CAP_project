@@ -372,24 +372,28 @@ end );
 ##
 InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject,
                    CanComputePreCompose
-                   and CanComputeEpiMonoFactorization
-                   and CanComputeIdentityMorphism);
+                   and CanComputeImageEmbedding
+                   and CanComputeCoastrictionToImage
+                   and CanComputeIdentityMorphism );
 
 InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
                                   [ IsHomalgCategoryMorphism
                                     and CanComputePreCompose
-                                    and CanComputeEpiMonoFactorization
+                                    and CanComputeImageEmbedding
+                                    and CanComputeCoastrictionToImage
                                     and CanComputeIdentityMorphism,
                                     IsHomalgCategoryMorphism ],
                                     
   function( factor, subobject )
-    local composition, epi_mono_factorization;
+    local composition, image_embedding, coastriction_to_image;
     
     composition := PreCompose( subobject, factor );
     
-    epi_mono_factorization := EpiMonoFactorization( composition );
+    coastriction_to_image := CoastrictionToImage( composition );
     
-    return GeneralizedMorphism( epi_mono_factorization[2], IdentityMorphism( Range( epi_mono_factorization[1] ) ), epi_mono_factorization[1] );
+    image_embedding := ImageEmbedding( composition );
+    
+    return GeneralizedMorphism( image_embedding, IdentityMorphism( Range( coastriction_to_image ) ), coastriction_to_image );
     
 end );
 

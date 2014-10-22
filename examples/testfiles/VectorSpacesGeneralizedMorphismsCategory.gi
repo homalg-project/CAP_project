@@ -170,7 +170,7 @@ composition2 := PreCompose( phi2_tilde, psi2_tilde );
 #! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 MorphismAid( composition2 );
 #! A rational vector space homomorphism with matrix: 
-#! [ [  16 ] ]
+#! [ [  16/5 ] ]
 #! 
 RangeAid( composition2 );
 #! A rational vector space homomorphism with matrix: 
@@ -179,7 +179,7 @@ RangeAid( composition2 );
 #! 
 SourceAid( composition2 );
 #! A rational vector space homomorphism with matrix: 
-#! [ [  1 ] ]
+#! [ [  1/5 ] ]
 #! @EndExample
 
 #! Third composition test
@@ -248,7 +248,7 @@ p := PreCompose( generalized_morphism1, generalized_morphism2 );
 SourceAid( p );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  -1,   1,   0 ],
-#!   [   4,   0,   0 ] ]
+#!   [   1,   0,   0 ] ]
 #! 
 MorphismAid( p );
 #! A rational vector space homomorphism with matrix: 
@@ -316,7 +316,7 @@ p := PreCompose( generalized_morphism1, generalized_morphism2 );
 SourceAid( p );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  -1,   1,   0 ],
-#!   [   4,   0,   0 ] ]
+#!   [   1,   0,   0 ] ]
 #! 
 MorphismAid( p );
 #! A rational vector space homomorphism with matrix: 
