@@ -226,6 +226,22 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
+    AddUniversalMorphismIntoTerminalObject( deduction_system,
+                                            
+      function( object )
+        
+        return DeductionSystemMorphism( object, "UniversalMorphismIntoTerminalObject", [ object ], TerminalObject( deduction_system ) );
+        
+    end );
+    
+    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( deduction_system,
+                                            
+      function( object, terminal_object )
+        
+        return DeductionSystemMorphism( object, "UniversalMorphismIntoTerminalObject", [ object ], terminal_object );
+        
+    end );
+    
     AddInitialObject( deduction_system,
                       
       function( )
@@ -454,7 +470,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
         pushout := CallFuncList( Pushout, components );
         
-        return DeductionSystemMorphism( Source( components[ injection_number ] ), "InjectionOfCofactorOfPushout", [ [ "Product", components ], injection_number ], pushout );
+        return DeductionSystemMorphism( Range( components[ injection_number ] ), "InjectionOfCofactorOfPushout", [ [ "Product", components ], injection_number ], pushout );
         
     end );
     
@@ -465,7 +481,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
         components := Components( diagram );
         
-        return DeductionSystemMorphism( Source( components[ injection_number ] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ [ "Product", components ], injection_number, pushout ], pushout );
+        return DeductionSystemMorphism( Range( components[ injection_number ] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ [ "Product", components ], injection_number, pushout ], pushout );
         
     end );
     

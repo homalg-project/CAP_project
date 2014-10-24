@@ -270,6 +270,7 @@ InstallMethodWithCacheFromObject( KernelLiftWithGivenKernel,
                                   [ IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
                                     IsHomalgCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
                                     IsHomalgCategoryObject and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
+                                  -9999, #FIXME
                                            
     function( mor, test_morphism, kernel )
       
@@ -604,7 +605,7 @@ InstallGlobalFunction( InjectionOfCofactor,
       
       fi;
     
-      return InjectionOfCofactorWithGivenPushout( Genesis( object_product_list )!.PushoutDiagram, injection_number, object_product_list );
+      return InjectionOfCofactorOfPushoutWithGivenPushout( Genesis( object_product_list )!.PushoutDiagram, injection_number, object_product_list );
     
     fi;
     
@@ -2428,6 +2429,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPull
                                          CanComputeKernelEmb and
                                          CanComputeProjectionInFactor and
                                          CanComputePullback ],
+                                         -9999,
                                          
   function( diagram, projection_number, pullback )
     local embedding_in_direct_product, direct_product, projection;
@@ -2585,7 +2587,7 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
         
         if HasPushoutOp( diagram, method_selection_morphism ) then
           
-          return InjectionOfCofactorWithGivenPushout( diagram, injection_number, PushoutOp( diagram, method_selection_morphism ) );
+          return InjectionOfCofactorOfPushoutWithGivenPushout( diagram, injection_number, PushoutOp( diagram, method_selection_morphism ) );
           
         fi;
         
@@ -2621,11 +2623,11 @@ InstallMethod( AddInjectionOfCofactorOfPushoutWithGivenPushout,
 
   function( category, func )
     
-    SetInjectionOfCofactorWithGivenPushoutFunction( category, func );
+    SetInjectionOfCofactorOfPushoutWithGivenPushoutFunction( category, func );
     
-    SetCanComputeInjectionOfCofactorWithGivenPushout( category, true );
+    SetCanComputeInjectionOfCofactorOfPushoutWithGivenPushout( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorWithGivenPushout,
+    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPushout,
                                            [ IsHomalgCategoryMorphism,
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -2647,7 +2649,7 @@ InstallMethod( AddInjectionOfCofactorOfPushoutWithGivenPushout,
         
         return injection_of_cofactor;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorWithGivenPushout", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOfPushoutWithGivenPushout", 3 ) );
 
 end );
 
@@ -2848,36 +2850,37 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 #
-InstallTrueMethod( CanComputeInjectionOfCofactorOfPushout, CanComputeInjectionOfCofactorWithGivenPushout and 
+InstallTrueMethod( CanComputeInjectionOfCofactorOfPushout, CanComputeInjectionOfCofactorOfPushoutWithGivenPushout and 
                                                            CanComputePushout );
 
 InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
                                        [ IsHomalgCategoryMorphism,
                                          IsInt,
                                          IsHomalgCategoryMorphism and
-                                         CanComputeInjectionOfCofactorWithGivenPushout and
+                                         CanComputeInjectionOfCofactorOfPushoutWithGivenPushout and
                                          CanComputePushout ],
                                          
   function( diagram, injection_number, method_selection_morphism )
   
-    return InjectionOfCofactorWithGivenPushout( diagram, injection_number, PushoutOp( diagram, method_selection_morphism ) );
+    return InjectionOfCofactorOfPushoutWithGivenPushout( diagram, injection_number, PushoutOp( diagram, method_selection_morphism ) );
   
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 # ##
-InstallTrueMethod( CanComputeInjectionOfCofactorWithGivenPushout, CanComputeCokernelProj and
+InstallTrueMethod( CanComputeInjectionOfCofactorOfPushoutWithGivenPushout, CanComputeCokernelProj and
                                                                   CanComputeInjectionOfCofactor and
                                                                   CanComputePushout );
 
 # FIXME: WARNING: This method only applies if the pushout was created as a cokernel. If the
 # user gives his own pushout method, this derived method fails.
-InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorWithGivenPushout,
+InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPushout,
                                        [ IsHomalgCategoryMorphism,
                                          IsInt,
                                          IsHomalgCategoryObject and 
                                          CanComputeCokernelProj and
                                          CanComputeInjectionOfCofactor and
                                          CanComputePushout ],
+                                         -9999,
                                          
   function( diagram, injection_number, pushout )
     local projection_from_coproduct, coproduct, injection;

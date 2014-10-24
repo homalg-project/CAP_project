@@ -1111,7 +1111,7 @@ DeclareOperationWithCache( "PushoutOp",
 DeclareOperation( "InjectionOfCofactorOp",
                   [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
 
-DeclareOperation( "InjectionOfCofactorWithGivenPushout",
+DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
@@ -1134,7 +1134,7 @@ DeclareAttribute( "PushoutFunction",
 DeclareAttribute( "InjectionOfCofactorOfPushoutFunction",
                   IsHomalgCategory );
 
-DeclareAttribute( "InjectionOfCofactorWithGivenPushoutFunction",
+DeclareAttribute( "InjectionOfCofactorOfPushoutWithGivenPushoutFunction",
                   IsHomalgCategory );
 
 DeclareAttribute( "UniversalMorphismFromPushoutFunction",

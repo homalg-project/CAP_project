@@ -632,7 +632,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         pushout := CallFuncList( Pushout, Components( diagram ) );
         
-        return LazyMorphism( Source( diagram[ injection_number ] ), func, pushout );
+        return LazyMorphism( Range( diagram[ injection_number ] ), func, pushout );
         
     end );
     
@@ -643,11 +643,11 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) 
           
-          return InjectionOfCofactorWithGivenPushout( EvalAndRewrapProductList( diagram ), injection_number, Eval( pushout ) );
+          return InjectionOfCofactorOfPushoutWithGivenPushout( EvalAndRewrapProductList( diagram ), injection_number, Eval( pushout ) );
         
         end;
         
-        return LazyMorphism( Source( diagram[ injection_number ] ), func, pushout );
+        return LazyMorphism( Range( diagram[ injection_number ] ), func, pushout );
         
     end );
     

@@ -96,7 +96,7 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeUniversalMorphismIntoPullbackWithGivenPullback",
                 "CanComputePushout",
                 "CanComputeInjectionOfCofactorOfPushout",
-                "CanComputeInjectionOfCofactorWithGivenPushout",
+                "CanComputeInjectionOfCofactorOfPushoutWithGivenPushout",
                 "CanComputeUniversalMorphismFromPushout",
                 "CanComputeUniversalMorphismFromPushoutWithGivenPushout",
                 "CanComputeImage",
@@ -205,23 +205,31 @@ DeclareOperation( "CreateHomalgCategory",
 ##
 #############################################
 
-DeclareProperty( "IsEnrichedOverCommutativeRegularSemigroup",
-                 IsHomalgCategory );
+DeclareGlobalVariable( "HOMALG_CATEGORY_PROPERTIES" );
 
-DeclareProperty( "IsAbCategory", 
-                 IsHomalgCategory );
+InstallValue( HOMALG_CATEGORY_PROPERTIES,
+              
+              [ "IsEnrichedOverCommutativeRegularSemigroup",
+                "IsAbCategory",
+                "IsPreAdditiveCategory",
+                "IsAdditiveCategory",
+                "IsPreAbelianCategory",
+                "IsAbelianCategory" ] );
 
-DeclareProperty( "IsPreAdditiveCategory", 
-                 IsHomalgCategory );
+BindGlobal( "INSTALL_CATEGORY_PROPERTIES",
+            
+  function( )
+    local i;
+    
+    for i in HOMALG_CATEGORY_PROPERTIES do
+        
+        DeclareProperty( i, IsHomalgCategory );
+        
+    od;
+    
+end );
 
-DeclareProperty( "IsAdditiveCategory", 
-                 IsHomalgCategory );
-
-DeclareProperty( "IsPreAbelianCategory", 
-                 IsHomalgCategory );
-
-DeclareProperty( "IsAbelianCategory", 
-                 IsHomalgCategory );
+INSTALL_CATEGORY_PROPERTIES( );
 
 ###################################
 ##
