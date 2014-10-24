@@ -94,6 +94,12 @@ InstallMethod( GeneralizedMorphismCategory,
   function( category )
     local name, generalized_morphism_category;
     
+    if not IsAbelianCategory( category ) then
+      
+      Error( "the category mus be abelian" );
+      
+    fi;
+    
     name := Name( category );
     
     name := Concatenation( "Generalized morphism category of ", name );
@@ -226,6 +232,12 @@ InstallMethod( AsGeneralizedMorphism,
     return generalized_morphism;
     
 end );
+
+####################################
+##
+## PreCompose
+##
+####################################
 
 ##
 InstallMethodWithCacheFromObject( PreCompose,
@@ -368,6 +380,12 @@ InstallMethodWithCacheFromObject( PreCompose,
     return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
     
 end );
+
+####################################
+##
+## Methods for GeneralizedMorphismCategory
+##
+####################################
 
 ##
 InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject,
@@ -513,6 +531,185 @@ InstallMethodWithCacheFromObject( \+,
                     );
     
     return return_value;
+    
+end );
+
+##
+InstallTrueMethod( CanComputeDomainAssociatedMorphismCodomainTriple,
+                   CanComputePushoutInUnderlyingHonestCategory
+                   and CanComputePreComposeInUnderlyingHonestCategory
+                   and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
+                   and CanComputeCoastrictionToImageInUnderlyingHonestCategory
+                   and CanComputePullbackInUnderlyingHonestCategory
+                   and CanComputeImageEmbeddingInUnderlyingHonestCategory
+                   and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory );
+
+InstallMethod( DomainAssociatedMorphismCodomainTriple,
+               [ IsGeneralizedMorphism
+                 and CanComputePushoutInUnderlyingHonestCategory
+                 and CanComputePreComposeInUnderlyingHonestCategory
+                 and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
+                 and CanComputeCoastrictionToImageInUnderlyingHonestCategory
+                 and CanComputePullbackInUnderlyingHonestCategory
+                 and CanComputeImageEmbeddingInUnderlyingHonestCategory
+                 and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory ],
+                 
+  function( generalized_morphism )
+    local source_aid, morphism_aid, range_aid, pushout, composition, codomain, pullback, domain, associated_morphism;
+    
+    source_aid := SourceAid( generalized_morphism );
+    
+    morphism_aid := MorphismAid( generalized_morphism );
+    
+    range_aid := RangeAid( generalized_morphism );
+    
+    #non-trivial SourceAid and non-trivial RangeAid
+    
+    pushout := Pushout( SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ) );
+    
+    composition := PreCompose( RangeAid( generalized_morphism ), InjectionOfCofactor( pushout, 2 ) );
+    
+    codomain := CoastrictionToImage( composition );
+    
+    pullback := FiberProduct( InjectionOfCofactor( pushout, 1 ), ImageEmbedding( composition ) );
+    
+    domain := ProjectionInFactor( pullback, 1 );
+    
+    associated_morphism := ProjectionInFactor( pullback, 2 );
+    
+    return [ domain, associated_morphism, codomain ];
+    
+end );
+
+##
+InstallMethod( DomainAssociatedMorphismCodomainTriple,
+               [ IsGeneralizedMorphism
+                 and CanComputeImageEmbeddingInUnderlyingHonestCategory
+                 and CanComputePushoutInUnderlyingHonestCategory
+                 and CanComputeCoastrictionToImageInUnderlyingHonestCategory
+                 and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
+                 and HasHonestRange ],
+                 
+  function( generalized_morphism )
+    local source_aid, morphism_aid, range_aid, domain, pushout, associated_morphism, codomain;
+    
+    source_aid := SourceAid( generalized_morphism );
+    
+    morphism_aid := MorphismAid( generalized_morphism );
+    
+    range_aid := RangeAid( generalized_morphism );
+      
+    #trivial RangeAid
+    
+    domain := ImageEmbedding( source_aid );
+    
+    pushout := Pushout( CoastrictionToImage( source_aid ), morphism_aid );
+    
+    associated_morphism := InjectionOfCofactor( pushout, 1 );
+    
+    codomain := InjectionOfCofactor( pushout, 2 );
+    
+    return [ domain, associated_morphism, codomain ];
+    
+end );
+
+##
+InstallMethod( DomainAssociatedMorphismCodomainTriple,
+               [ IsGeneralizedMorphism
+                 and CanComputeCoastrictionToImageInUnderlyingHonestCategory
+                 and CanComputePullbackInUnderlyingHonestCategory
+                 and CanComputeImageEmbeddingInUnderlyingHonestCategory
+                 and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory
+                 and HasHonestSource ],
+                 
+  function( generalized_morphism )
+    local source_aid, morphism_aid, range_aid, codomain, pullback, domain, associated_morphism;
+    
+    source_aid := SourceAid( generalized_morphism );
+    
+    morphism_aid := MorphismAid( generalized_morphism );
+    
+    range_aid := RangeAid( generalized_morphism );
+
+    #trivial SourceAid
+    
+    codomain := CoastrictionToImage( range_aid );
+    
+    pullback := FiberProduct( morphism_aid, ImageEmbedding( range_aid ) );
+    
+    domain := ProjectionInFactor( pullback, 1 );
+    
+    associated_morphism := ProjectionInFactor( pullback, 2 );
+    
+    return [ domain, associated_morphism, codomain ];
+    
+end );
+
+##
+InstallMethod( DomainAssociatedMorphismCodomainTriple,
+               [ IsGeneralizedMorphism
+                 and HasHonestSource
+                 and HasHonestRange ],
+                 9999,
+                 
+  function( generalized_morphism )
+    
+    return [ SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ];
+    
+end );
+
+## GAP-Hack in order to avoid the pre-installed GAP-method Domain
+BindGlobal( "HOMALG_CATEGORIES_DOMAIN_SAVE", Domain );
+
+MakeReadWriteGlobal( "Domain" );
+
+Domain := function( arg )
+  
+  if Length( arg ) = 1 and IsGeneralizedMorphism( arg[1] ) then
+      
+      return DomainOp( arg[ 1 ] );
+      
+  fi;
+  
+  return CallFuncList( HOMALG_CATEGORIES_DOMAIN_SAVE, arg );
+  
+end;
+
+MakeReadOnlyGlobal( "Domain" );
+
+##
+InstallTrueMethod( CanComputeDomain, CanComputeDomainAssociatedMorphismCodomainTriple );
+
+InstallMethod( DomainOp,
+               [ IsGeneralizedMorphism and CanComputeDomainAssociatedMorphismCodomainTriple ],
+               
+  function( generalized_morphism )
+    
+    return DomainAssociatedMorphismCodomainTriple( generalized_morphism )[1];
+    
+end );
+
+##
+InstallTrueMethod( CanComputeAssociatedMorphism, CanComputeDomainAssociatedMorphismCodomainTriple );
+
+InstallMethod( AssociatedMorphism,
+               [ IsGeneralizedMorphism and CanComputeDomainAssociatedMorphismCodomainTriple ],
+               
+  function( generalized_morphism )
+    
+    return DomainAssociatedMorphismCodomainTriple( generalized_morphism )[2];
+    
+end );
+
+##
+InstallTrueMethod( CanComputeCodomain, CanComputeDomainAssociatedMorphismCodomainTriple );
+
+InstallMethod( Codomain,
+               [ IsGeneralizedMorphism and CanComputeDomainAssociatedMorphismCodomainTriple ],
+               
+  function( generalized_morphism )
+    
+    return DomainAssociatedMorphismCodomainTriple( generalized_morphism )[3];
     
 end );
 

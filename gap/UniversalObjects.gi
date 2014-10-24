@@ -3255,7 +3255,7 @@ end );
 
 ## Note: As long as the above derived ImageObject-function is used,
 ## there is no need to implement ImageEmbeddingWithGivenImage in order
-## to keep these methods consistent. 
+## to keep these methods consistent.
 ##
 InstallTrueMethod( CanComputeImageEmbedding, CanComputeKernelEmb and CanComputeCokernelProj );
 

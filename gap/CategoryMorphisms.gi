@@ -873,7 +873,7 @@ InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
     
 end );
 
-## FIXME: IsAbelianCategory to restrictive
+## FIXME: IsAbelianCategory too restrictive
 InstallTrueMethod( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );
 
 InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,

@@ -85,6 +85,18 @@ DeclareAttributeWithToDoForIsWellDefined( "RangeAid",
 DeclareAttributeWithToDoForIsWellDefined( "MorphismAid",
                                           IsGeneralizedMorphism );
 
+DeclareAttributeWithToDoForIsWellDefined( "DomainOp",
+                                          IsGeneralizedMorphism );
+
+DeclareAttributeWithToDoForIsWellDefined( "Codomain",
+                                          IsGeneralizedMorphism );
+
+DeclareAttributeWithToDoForIsWellDefined( "AssociatedMorphism",
+                                          IsGeneralizedMorphism );
+
+DeclareAttributeWithToDoForIsWellDefined( "DomainAssociatedMorphismCodomainTriple",
+                                          IsGeneralizedMorphism );
+
 DeclareProperty( "IsHonest",
                   IsGeneralizedMorphism );
 
