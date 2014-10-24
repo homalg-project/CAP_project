@@ -534,6 +534,12 @@ InstallMethodWithCacheFromObject( \+,
     
 end );
 
+###########################
+##
+## Domain, Associated Morphism, Codomain
+##
+###########################
+
 ##
 InstallTrueMethod( CanComputeDomainAssociatedMorphismCodomainTriple,
                    CanComputePushoutInUnderlyingHonestCategory
@@ -726,6 +732,62 @@ InstallMethodWithCacheFromObject( IdentityMorphism,
     identity_morphism := IdentityMorphism( UnderlyingHonestObject( generalized_object ) );
     
     return AsGeneralizedMorphism( identity_morphism );
+    
+end );
+
+###########################
+##
+## Pseudo-Inverse
+##
+###########################
+
+## convention: we prefer a 2-arrow calculus with honest source,
+## because in the module category, pushouts are easier too compute
+## than pullbacks.
+##
+InstallMethod( PseudoInverse,
+               [ IsGeneralizedMorphism
+                 and HasHonestSource ],
+               9999,
+               
+  function( generalized_morphism )
+    
+    return GeneralizedMorphismWithRangeAid( RangeAid( generalized_morphism ),
+                                            MorphismAid( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( PseudoInverse,
+               [ IsGeneralizedMorphism
+                 and HasHonestRange ],
+                 
+  function( generalized_morphism )
+    
+    return GeneralizedMorphismWithSourceAid( MorphismAid( generalized_morphism ),
+                                             SourceAid( generalized_morphism ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputePseudoInverse,
+                   CanComputePreCompose ); 
+
+InstallMethod( PseudoInverse,
+               [ IsGeneralizedMorphism ],
+                 
+  function( generalized_morphism )
+    local source_aid, factor1, factor2;
+    
+    source_aid := SourceAid( generalized_morphism );
+    
+    factor1 := GeneralizedMorphismWithSourceAid( source_aid, 
+                                                IdentityMorphism( Source( source_aid ) ) );
+    
+    factor2 := GeneralizedMorphismWithRangeAid( MorphismAid( generalized_morphism ),
+                                                RangeAid( generalized_morphism ) );
+    
+    return PreCompose( PseudoInverse( factor2 ), PseudoInverse( factor1 ) );
     
 end );
 

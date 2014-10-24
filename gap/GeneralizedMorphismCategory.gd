@@ -97,6 +97,9 @@ DeclareAttributeWithToDoForIsWellDefined( "AssociatedMorphism",
 DeclareAttributeWithToDoForIsWellDefined( "DomainAssociatedMorphismCodomainTriple",
                                           IsGeneralizedMorphism );
 
+DeclareAttributeWithToDoForIsWellDefined( "PseudoInverse",
+                                          IsGeneralizedMorphism );
+
 DeclareProperty( "IsHonest",
                   IsGeneralizedMorphism );
 

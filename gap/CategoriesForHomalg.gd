@@ -123,7 +123,8 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeDomainAssociatedMorphismCodomainTriple",
                 "CanComputeDomain",
                 "CanComputeCodomain",
-                "CanComputeAssociatedMorphism"
+                "CanComputeAssociatedMorphism",
+                "CanComputePseudoInverse"
                 # .. 
               ] );
 
