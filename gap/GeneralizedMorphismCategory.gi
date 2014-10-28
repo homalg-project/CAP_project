@@ -497,20 +497,21 @@ end );
 ##
 InstallTrueMethod( CanComputeAdditionForMorphisms,
                    CanComputePullbackInUnderlyingHonestCategory
-                   and CanComputeProjectionInFactorInUnderlyingHonestCategory
+                   and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory
                    and CanComputePushoutInUnderlyingHonestCategory
-                   and CanComputeInjectionOfCofactorInUnderlyingHonestCategory
+                   and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
                    and CanComputePreComposeInUnderlyingHonestCategory
                    and CanComputeAdditionForMorphismsInUnderlyingHonestCategory );
 
 InstallMethodWithCacheFromObject( \+,
                                  [ IsGeneralizedMorphism
                                    and CanComputePullbackInUnderlyingHonestCategory
-                                   and CanComputeProjectionInFactorInUnderlyingHonestCategory
+                                   and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory
                                    and CanComputePushoutInUnderlyingHonestCategory
-                                   and CanComputeInjectionOfCofactorInUnderlyingHonestCategory
+                                   and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
                                    and CanComputePreComposeInUnderlyingHonestCategory
-                                   and CanComputeAdditionForMorphismsInUnderlyingHonestCategory, IsGeneralizedMorphism ],
+                                   and CanComputeAdditionForMorphismsInUnderlyingHonestCategory, 
+                                   IsGeneralizedMorphism ],
                                  
   function( mor1, mor2 )
     local return_value, pullback_of_sourceaids, pushout_of_rangeaids, restricted_mor1, restricted_mor2;

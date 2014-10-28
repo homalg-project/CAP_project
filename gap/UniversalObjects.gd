@@ -746,7 +746,7 @@ DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
 DeclareAttribute( "CoproductFunction",
                   IsHomalgCategory );
 
-DeclareAttribute( "InjectionOfCofactorFunction",
+DeclareAttribute( "InjectionOfCofactorOfCoproductFunction",
                   IsHomalgCategory );
 
 DeclareAttribute( "InjectionOfCofactorOfCoproductWithGivenCoproductFunction",
@@ -917,7 +917,7 @@ DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
 DeclareAttribute( "DirectProductFunction",
                   IsHomalgCategory );
 
-DeclareAttribute( "ProjectionInFactorFunction",
+DeclareAttribute( "ProjectionInFactorOfDirectProductFunction",
                   IsHomalgCategory );
 
 DeclareAttribute( "ProjectionInFactorOfDirectProductWithGivenDirectProductFunction",

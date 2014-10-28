@@ -705,9 +705,9 @@ InstallMethod( AddInjectionOfCofactorOfCoproduct,
 
   function( category, func )
     
-    SetInjectionOfCofactorFunction( category, func );
+    SetInjectionOfCofactorOfCoproductFunction( category, func );
     
-    SetCanComputeInjectionOfCofactor( category, true );
+    SetCanComputeInjectionOfCofactorOfCoproduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
                                            [ IsHomalgCategoryObject, 
@@ -890,13 +890,13 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeCoproduct, CanComputeInjectionOfCofactor );
+InstallTrueMethod( CanComputeCoproduct, CanComputeInjectionOfCofactorOfCoproduct );
 
 ##
 ## this methods is installed using the (cache of the (object of the second argument) )
 InstallMethodWithToDoForIsWellDefined( CoproductOp,
                                        [ IsHomalgCategoryObject,
-                                         IsHomalgCategoryObject and CanComputeInjectionOfCofactor ],
+                                         IsHomalgCategoryObject and CanComputeInjectionOfCofactorOfCoproduct ],
                                         -9999, #FIXME
                                         
   function( object_product_list, method_selection_object )
@@ -921,7 +921,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeInjectionOfCofactor, CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct );
+InstallTrueMethod( CanComputeInjectionOfCofactorOfCoproduct, CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct );
 
 InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
                                        [ IsHomalgCategoryObject,
@@ -1084,9 +1084,9 @@ InstallMethod( AddProjectionInFactorOfDirectProduct,
 
   function( category, func )
     
-    SetProjectionInFactorFunction( category, func );
+    SetProjectionInFactorOfDirectProductFunction( category, func );
     
-    SetCanComputeProjectionInFactor( category, true );
+    SetCanComputeProjectionInFactorOfDirectProduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
                                            [ IsHomalgCategoryObject,
@@ -1271,12 +1271,12 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFactor );
+InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFactorOfDirectProduct );
 
 ##
 InstallMethodWithToDoForIsWellDefined( DirectProductOp,
                                        [ IsHomalgCategoryObject,
-                                         IsHomalgCategoryObject and CanComputeProjectionInFactor ],
+                                         IsHomalgCategoryObject and CanComputeProjectionInFactorOfDirectProduct ],
                                         -9999, #FIXME
                                         
   function( object_product_list, method_selection_object )
@@ -1301,7 +1301,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeProjectionInFactor, CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct );
+InstallTrueMethod( CanComputeProjectionInFactorOfDirectProduct, CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct );
 
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
                                        [ IsHomalgCategoryObject,
@@ -1472,7 +1472,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
 ##
 InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
                    IsAdditiveCategory
-                   and CanComputeInjectionOfCofactor
+                   and CanComputeInjectionOfCofactorOfCoproduct
                    and CanComputeAdditionForMorphisms 
                    and CanComputePreCompose );
 
@@ -1480,7 +1480,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGiv
                                        [ IsHomalgCategoryMorphism,
                                          IsHomalgCategoryObject 
                                      and IsAdditiveCategory
-                                     and CanComputeInjectionOfCofactor 
+                                     and CanComputeInjectionOfCofactorOfCoproduct 
                                      and CanComputeAdditionForMorphisms
                                      and CanComputePreCompose ],
                                        -9999 - 1, #FIXME
@@ -1497,7 +1497,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
 ##
 InstallTrueMethod( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,
                    IsAdditiveCategory
-                   and CanComputeProjectionInFactor
+                   and CanComputeProjectionInFactorOfDirectProduct
                    and CanComputeAdditionForMorphisms 
                    and CanComputePreCompose );
 
@@ -1505,7 +1505,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCo
                                        [ IsHomalgCategoryMorphism,
                                          IsHomalgCategoryObject
                                      and IsAdditiveCategory
-                                     and CanComputeProjectionInFactor
+                                     and CanComputeProjectionInFactorOfDirectProduct
                                      and CanComputeAdditionForMorphisms
                                      and CanComputePreCompose ],
                                        -9999 - 1, #FIXME
@@ -2393,7 +2393,7 @@ end );
 
 ##
 InstallTrueMethod( CanComputePullback, CanComputeDirectProduct and 
-                                       CanComputeProjectionInFactor and 
+                                       CanComputeProjectionInFactorOfDirectProduct and 
                                        CanComputePreCompose and
                                        CanComputeAdditionForMorphisms and
                                        CanComputeAdditiveInverseForMorphisms and
@@ -2404,7 +2404,7 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
                                        [ IsHomalgCategoryMorphism, 
                                          IsHomalgCategoryMorphism and
                                          CanComputeDirectProduct and 
-                                         CanComputeProjectionInFactor and 
+                                         CanComputeProjectionInFactorOfDirectProduct and 
                                          CanComputePreCompose and
                                          CanComputeAdditionForMorphisms and
                                          CanComputeAdditiveInverseForMorphisms and
@@ -2466,7 +2466,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
 InstallTrueMethod( CanComputeProjectionInFactorOfPullbackWithGivenPullback, CanComputeKernelEmb and
-                                                                  CanComputeProjectionInFactor and
+                                                                  CanComputeProjectionInFactorOfDirectProduct and
                                                                   CanComputePullback );
 
 # FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
@@ -2479,7 +2479,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPull
                                          IsInt,
                                          IsHomalgCategoryObject and
                                          CanComputeKernelEmb and
-                                         CanComputeProjectionInFactor and
+                                         CanComputeProjectionInFactorOfDirectProduct and
                                          CanComputePullback ],
                                          -9999,
                                          
@@ -2857,7 +2857,7 @@ end );
 
 ##
 InstallTrueMethod( CanComputePushout, CanComputeCoproduct and 
-                                      CanComputeInjectionOfCofactor and 
+                                      CanComputeInjectionOfCofactorOfCoproduct and 
                                       CanComputePreCompose and
                                       CanComputeAdditionForMorphisms and
                                       CanComputeAdditiveInverseForMorphisms and
@@ -2868,7 +2868,7 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
                                        [ IsHomalgCategoryMorphism, 
                                          IsHomalgCategoryMorphism and
                                          CanComputeCoproduct and 
-                                         CanComputeInjectionOfCofactor and 
+                                         CanComputeInjectionOfCofactorOfCoproduct and 
                                          CanComputePreCompose and
                                          CanComputeAdditionForMorphisms and
                                          CanComputeAdditiveInverseForMorphisms and
@@ -2930,7 +2930,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 # ##
 InstallTrueMethod( CanComputeInjectionOfCofactorOfPushoutWithGivenPushout, CanComputeCokernelProj and
-                                                                  CanComputeInjectionOfCofactor and
+                                                                  CanComputeInjectionOfCofactorOfCoproduct and
                                                                   CanComputePushout );
 
 # FIXME: WARNING: This method only applies if the pushout was created as a cokernel. If the
@@ -2940,7 +2940,7 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPush
                                          IsInt,
                                          IsHomalgCategoryObject and 
                                          CanComputeCokernelProj and
-                                         CanComputeInjectionOfCofactor and
+                                         CanComputeInjectionOfCofactorOfCoproduct and
                                          CanComputePushout ],
                                          -9999,
                                          
