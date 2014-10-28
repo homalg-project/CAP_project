@@ -136,11 +136,11 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddEqualityOfMorphisms( lazy_category,
+    AddIsEqualForMorphisms( lazy_category,
                            
       function( morphism1, morphism2 )
         
-        return EqualityOfMorphisms( Eval( morphism1 ), Eval( morphism2 ) );
+        return IsEqualForMorphisms( Eval( morphism1 ), Eval( morphism2 ) );
         
     end );
     

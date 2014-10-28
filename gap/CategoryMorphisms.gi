@@ -520,16 +520,16 @@ end );
 ######################################
 
 ##
-InstallMethod( AddEqualityOfMorphisms,
+InstallMethod( AddIsEqualForMorphisms,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )
     
     SetMorphismEqualityFunction( category, func );
     
-    SetCanComputeEqualityOfMorphisms( category, true );
+    SetCanComputeIsEqualForMorphisms( category, true );
     
-    InstallMethodWithCache( EqualityOfMorphisms,
+    InstallMethodWithCache( IsEqualForMorphisms,
                             [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                             
       function( morphism_1, morphism_2 )
@@ -551,7 +551,7 @@ InstallMethod( AddEqualityOfMorphisms,
         
         return return_value;
         
-    end : Cache := GET_METHOD_CACHE( category, "EqualityOfMorphisms", 2 ) );
+    end : Cache := GET_METHOD_CACHE( category, "IsEqualForMorphisms", 2 ) );
     
 end );
 
@@ -559,7 +559,7 @@ end );
 InstallMethod( \=,
                [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
                
-  EqualityOfMorphisms );
+  IsEqualForMorphisms );
 
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS,
@@ -588,7 +588,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS,
 end );
 
 ##
-InstallMethod( AddPropertyToMatchAtEqualityOfMorphisms,
+InstallMethod( AddPropertyToMatchAtIsEqualForMorphisms,
                [ IsHomalgCategory, IsString ],
                
   function( category, name )

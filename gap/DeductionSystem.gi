@@ -150,11 +150,11 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddEqualityOfMorphisms( deduction_system,
+    AddIsEqualForMorphisms( deduction_system,
                             
       function( morphism1, morphism2 )
         
-        return EqualityOfMorphisms( Eval( morphism1 ), Eval( morphism2 ) );
+        return IsEqualForMorphisms( Eval( morphism1 ), Eval( morphism2 ) );
         
     end );
     

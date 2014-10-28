@@ -416,22 +416,22 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
 end );
 
 ##
-InstallTrueMethod( CanComputeEqualityOfMorphisms,
+InstallTrueMethod( CanComputeIsEqualForMorphisms,
                    CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
                    and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
                    and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
                    and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
-                   and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
+                   and CanComputeIsEqualForMorphismsInUnderlyingHonestCategory
                    and CanComputePreComposeInUnderlyingHonestCategory
                    and CanComputeDomainAssociatedMorphismCodomainTriple );
 
-InstallMethodWithCacheFromObject( EqualityOfMorphisms,
+InstallMethodWithCacheFromObject( IsEqualForMorphisms,
                                   [ IsGeneralizedMorphism
                                     and CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
                                     and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
                                     and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
                                     and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
-                                    and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
+                                    and CanComputeIsEqualForMorphismsInUnderlyingHonestCategory
                                     and CanComputePreComposeInUnderlyingHonestCategory
                                     and CanComputeDomainAssociatedMorphismCodomainTriple,
                                     IsGeneralizedMorphism ],
@@ -469,7 +469,7 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
     
     isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
     
-    return EqualityOfMorphisms( AssociatedMorphism( generalized_morphism1 ), 
+    return IsEqualForMorphisms( AssociatedMorphism( generalized_morphism1 ), 
                                 PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) 
                               );
     

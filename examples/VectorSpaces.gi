@@ -115,7 +115,7 @@ InstallMethod( VectorSpaceMorphism,
     
 end );
 
-AddEqualityOfMorphisms( vecspaces,
+AddIsEqualForMorphisms( vecspaces,
 
   function( a, b )
   

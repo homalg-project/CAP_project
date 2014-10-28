@@ -137,16 +137,16 @@ DeclareOperation( "Add",
 ##
 ###################################
 
-DeclareOperation( "AddEqualityOfMorphisms",
+DeclareOperation( "AddIsEqualForMorphisms",
                   [ IsHomalgCategory, IsFunction ] );
 
 DeclareAttribute( "MorphismEqualityFunction",
                   IsHomalgCategory );
 
-DeclareOperation( "EqualityOfMorphisms",
+DeclareOperation( "IsEqualForMorphisms",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
-DeclareOperation( "AddPropertyToMatchAtEqualityOfMorphisms",
+DeclareOperation( "AddPropertyToMatchAtIsEqualForMorphisms",
                   [ IsHomalgCategory, IsString ] );
 
 DeclareOperation( "AddIsZeroForMorphisms",
