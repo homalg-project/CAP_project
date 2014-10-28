@@ -578,6 +578,15 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     range_aid := RangeAid( generalized_morphism );
     
+    if HasIsSubobject( source_aid ) 
+       and IsSubobject( source_aid )
+       and HasIsFactorobject( range_aid )
+       and IsFactorobject( range_aid ) then
+       
+       return [ source_aid, morphism_aid, range_aid ];
+    
+    fi;
+    
     #non-trivial SourceAid and non-trivial RangeAid
     
     pushout := Pushout( SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ) );
@@ -613,7 +622,13 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     morphism_aid := MorphismAid( generalized_morphism );
     
     range_aid := RangeAid( generalized_morphism );
-      
+    
+    if HasIsSubobject( source_aid )
+       and IsSubobject( source_aid ) then
+       
+       return [ source_aid, morphism_aid, range_aid ];
+    
+    fi;
     #trivial RangeAid
     
     domain := ImageEmbedding( source_aid );
@@ -645,7 +660,13 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     morphism_aid := MorphismAid( generalized_morphism );
     
     range_aid := RangeAid( generalized_morphism );
-
+    
+    if HasIsFactorobject( range_aid )
+       and IsFactorobject( range_aid ) then
+       
+       return [ source_aid, morphism_aid, range_aid ];
+    
+    fi;
     #trivial SourceAid
     
     codomain := CoastrictionToImage( range_aid );
