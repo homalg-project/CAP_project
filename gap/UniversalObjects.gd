@@ -720,6 +720,9 @@ DeclareOperationWithCache( "CoproductOp",
 
 DeclareGlobalFunction( "InjectionOfCofactor" );
 
+DeclareOperation( "InjectionOfCofactorOfCoproduct",
+                  [ IsHomalgCategoryObject, IsInt ] );
+
 DeclareOperation( "InjectionOfCofactorOfCoproductOp",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 

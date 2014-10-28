@@ -688,6 +688,17 @@ InstallMethod( AddCoproduct,
     
 end );
 
+## convenience method
+##
+InstallMethod( InjectionOfCofactorOfCoproduct,
+               [ IsHomalgCategoryObject, IsInt ],
+               
+  function( object_product_list, injection_number )
+    
+    return InjectionOfCofactorOfCoproductOp( object_product_list, injection_number, object_product_list[1] );
+    
+end );
+
 ##
 InstallMethod( AddInjectionOfCofactorOfCoproduct,
                [ IsHomalgCategory, IsFunction ],
