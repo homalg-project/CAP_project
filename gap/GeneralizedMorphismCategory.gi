@@ -416,25 +416,24 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
 end );
 
 ##
-# InstallTrueMethod( CanComputeEqualityOfMorphisms,
-#                    CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
-#                    and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
-#                    and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
-#                    and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
-#                    and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
-#                    and CanComputePreComposeInUnderlyingHonestCategory );
+InstallTrueMethod( CanComputeEqualityOfMorphisms,
+                   CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
+                   and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
+                   and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
+                   and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
+                   and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
+                   and CanComputePreComposeInUnderlyingHonestCategory
+                   and CanComputeDomainAssociatedMorphismCodomainTriple );
 
 InstallMethodWithCacheFromObject( EqualityOfMorphisms,
-#                                   [ IsGeneralizedMorphism
-#                                     and CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
-#                                     and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
-#                                     and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
-#                                     and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
-#                                     and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
-#                                     and CanComputePreComposeInUnderlyingHonestCategory,
-#                                     IsGeneralizedMorphism ],
-#                                     
-                                  [ IsGeneralizedMorphism,
+                                  [ IsGeneralizedMorphism
+                                    and CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
+                                    and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
+                                    and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
+                                    and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
+                                    and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
+                                    and CanComputePreComposeInUnderlyingHonestCategory
+                                    and CanComputeDomainAssociatedMorphismCodomainTriple,
                                     IsGeneralizedMorphism ],
                                   
   function( generalized_morphism1, generalized_morphism2 )
