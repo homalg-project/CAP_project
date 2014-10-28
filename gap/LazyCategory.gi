@@ -538,7 +538,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddPullback( lazy_category,
+    AddFiberProduct( lazy_category,
       
       function( diagram )
         local func;

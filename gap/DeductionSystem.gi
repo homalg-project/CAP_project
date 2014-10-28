@@ -449,7 +449,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddPullback( deduction_system,
+    AddFiberProduct( deduction_system,
                  
       function( diagram )
         local components;

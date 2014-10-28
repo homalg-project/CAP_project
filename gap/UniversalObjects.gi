@@ -2075,7 +2075,7 @@ end );
 ####################################
 
 ##
-InstallMethod( AddPullback,
+InstallMethod( AddFiberProduct,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )

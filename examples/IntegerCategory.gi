@@ -164,7 +164,7 @@ AddPreCompose( integer_category,
 end );
 
 #
-AddPullback( integer_category,
+AddFiberProduct( integer_category,
              
   function( product_mor )
     local pullback;

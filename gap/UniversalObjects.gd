@@ -1054,7 +1054,7 @@ DeclareAttribute( "UniversalMorphismIntoPullbackWithGivenPullbackFunction",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddPullback",
+DeclareOperation( "AddFiberProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Description
