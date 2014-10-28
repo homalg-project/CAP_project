@@ -344,7 +344,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddInjectionOfCofactor( deduction_system,
+    AddInjectionOfCofactorOfCoproduct( deduction_system,
                             
       function( object_product_list, injection_number )
         local components, coproduct;

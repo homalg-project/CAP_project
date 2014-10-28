@@ -581,6 +581,7 @@ InstallGlobalFunction( InjectionOfCofactor,
   function( object_product_list, injection_number )
     local number_of_objects;
     
+    ## convenience: first argument was created as a coproduct
     if WasCreatedAsCoproduct( object_product_list ) then
     
       number_of_objects := Length( Components( Genesis( object_product_list )!.Cofactors ) );
@@ -595,6 +596,7 @@ InstallGlobalFunction( InjectionOfCofactor,
     
     fi;
     
+    ## convenience: first argument was created as a pushout
     if WasCreatedAsPushout( object_product_list ) then
     
       number_of_objects := Length( Components( Genesis( object_product_list )!.PushoutDiagram ) );
@@ -609,6 +611,7 @@ InstallGlobalFunction( InjectionOfCofactor,
     
     fi;
     
+    ## first argument is a product object
     number_of_objects := Length( Components( object_product_list ) );
   
     if injection_number < 0 or injection_number > number_of_objects then
@@ -622,9 +625,17 @@ InstallGlobalFunction( InjectionOfCofactor,
       return IdentityMorphism( object_product_list[1] );
           
     fi;
-  
-    return InjectionOfCofactorOp( object_product_list, injection_number, object_product_list[1] );
-  
+    
+    if IsHomalgCategoryObject( object_product_list[1] ) then
+      
+      return InjectionOfCofactorOfCoproductOp( object_product_list, injection_number, object_product_list[1] );
+    
+    else ## IsHomalgCategoryMorphism( object_product_list[1] ) = true
+      
+      return InjectionOfCofactorOfPushoutOp( object_product_list, injection_number, object_product_list[1] );
+      
+    fi;
+    
 end );
 
 ####################################
@@ -678,7 +689,7 @@ InstallMethod( AddCoproduct,
 end );
 
 ##
-InstallMethod( AddInjectionOfCofactor,
+InstallMethod( AddInjectionOfCofactorOfCoproduct,
                [ IsHomalgCategory, IsFunction ],
 
   function( category, func )
@@ -687,7 +698,7 @@ InstallMethod( AddInjectionOfCofactor,
     
     SetCanComputeInjectionOfCofactor( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
+    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
                                            [ IsHomalgCategoryObject, 
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -722,7 +733,7 @@ InstallMethod( AddInjectionOfCofactor,
         
         return injection_of_cofactor;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOp", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOfCoproductOp", 3 ) );
 
 end );
 
@@ -901,7 +912,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 ##
 InstallTrueMethod( CanComputeInjectionOfCofactor, CanComputeCoproduct and CanComputeInjectionOfCofactorWithGivenCoproduct );
 
-InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
+InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
                                        [ IsHomalgCategoryObject,
                                          IsInt,
                                          IsHomalgCategoryObject and CanComputeCoproduct and CanComputeInjectionOfCofactorWithGivenCoproduct, ],
@@ -2596,6 +2607,17 @@ InstallMethod( AddPushout,
     
 end );
 
+## convenience method
+##
+InstallMethod( InjectionOfCofactorOfPushout,
+               [ IsHomalgCategoryMorphism, IsInt ],
+               
+  function( diagram, injection_number )
+    
+    InjectionOfCofactorOfPushoutOp( diagram, injection_number, diagram[1] );
+    
+end );
+
 ##
 InstallMethod( AddInjectionOfCofactorOfPushout,
                [ IsHomalgCategory, IsFunction ],
@@ -2606,8 +2628,7 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
     
     SetCanComputeInjectionOfCofactorOfPushout( category, true );
     
-    #TODO: Get the names clean!
-    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
+    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutOp,
                                            [ IsHomalgCategoryMorphism,
                                              IsInt,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ), ],
@@ -2883,7 +2904,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 InstallTrueMethod( CanComputeInjectionOfCofactorOfPushout, CanComputeInjectionOfCofactorOfPushoutWithGivenPushout and 
                                                            CanComputePushout );
 
-InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOp,
+InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutOp,
                                        [ IsHomalgCategoryMorphism,
                                          IsInt,
                                          IsHomalgCategoryMorphism and

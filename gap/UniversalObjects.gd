@@ -720,7 +720,7 @@ DeclareOperationWithCache( "CoproductOp",
 
 DeclareGlobalFunction( "InjectionOfCofactor" );
 
-DeclareOperation( "InjectionOfCofactorOp",
+DeclareOperation( "InjectionOfCofactorOfCoproductOp",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 DeclareOperation( "InjectionOfCofactorWithGivenCoproduct",
@@ -772,7 +772,7 @@ DeclareOperation( "AddCoproduct",
 #! where $(I_1, \dots, I_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddInjectionOfCofactor",
+DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Description
@@ -1136,7 +1136,10 @@ DeclareOperationWithCache( "PushoutOp",
 
 ## DeclareGlobalFunction( "InjectionOfCofactor" ); to be adjusted
 
-DeclareOperation( "InjectionOfCofactorOp",
+DeclareOperation( "InjectionOfCofactorOfPushout",
+                  [ IsHomalgCategoryMorphism, IsInt ] );
+
+DeclareOperation( "InjectionOfCofactorOfPushoutOp",
                   [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
 
 DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
