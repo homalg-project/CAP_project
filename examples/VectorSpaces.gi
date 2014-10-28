@@ -204,7 +204,7 @@ AddEpiAsCokernelColift( vecspaces,
 end );
 
 ##
-AddKernel( vecspaces,
+AddKernelObject( vecspaces,
 
   function( morphism )
     local homalg_matrix;

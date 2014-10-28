@@ -40,7 +40,7 @@ end );
 ####################################
 
 ##
-InstallMethod( AddKernel,
+InstallMethod( AddKernelObject,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )

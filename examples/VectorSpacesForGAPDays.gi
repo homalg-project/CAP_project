@@ -155,7 +155,7 @@ AddEpiAsCokernelColift( QVectorSpaces,
 end );
 
 ##
-AddKernel( QVectorSpaces,
+AddKernelObject( QVectorSpaces,
 
   function( morphism )
     local homalg_matrix;

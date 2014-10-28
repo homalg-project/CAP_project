@@ -192,7 +192,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
     
     ## HOLE: Well defined
     
-    AddKernel( deduction_system,
+    AddKernelObject( deduction_system,
                
       function( morphism )
         

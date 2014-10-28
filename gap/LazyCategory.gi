@@ -193,7 +193,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddKernel( lazy_category,
+    AddKernelObject( lazy_category,
       
       function( morphism )
         local func;

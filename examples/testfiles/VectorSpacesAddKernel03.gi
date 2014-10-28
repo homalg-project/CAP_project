@@ -16,7 +16,7 @@ if not IsHomalgCategory( vecspaces ) then
 fi;
 
 ##
-AddKernel( vecspaces,
+AddKernelObject( vecspaces,
 
   function( morphism )
     local homalg_matrix;

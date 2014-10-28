@@ -177,7 +177,7 @@ DeclareAttribute( "KernelLiftWithGivenKernelFunction",
 #! This operation adds the given function $f: \alpha \mapsto K$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddKernel",
+DeclareOperation( "AddKernelObject",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Description

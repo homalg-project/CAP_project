@@ -104,7 +104,7 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
     local obj_function_list, obj_func, morphism_function_list, morphism_function, i;
     
     obj_function_list := [ AddZeroObject,
-                           AddKernel,
+                           AddKernelObject,
                            AddCokernel,
                            AddDirectProduct ];
     
