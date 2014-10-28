@@ -12,7 +12,7 @@ fi;
 
 SetIsAbelianCategory( vecspaces, true );
 
-AddEqualityOfMorphisms( vecspaces,
+AddIsEqualForMorphisms( vecspaces,
 
   function( a, b )
   

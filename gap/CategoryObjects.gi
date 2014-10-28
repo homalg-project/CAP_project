@@ -178,15 +178,15 @@ InstallMethod( AddIsZeroForObjects,
 end );
 
 ##
-InstallTrueMethod( SetCanComputeIsZeroForObjects, CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeEqualityOfMorphisms );
+InstallTrueMethod( SetCanComputeIsZeroForObjects, CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms );
 
 InstallMethod( IsZero,
-               [ IsHomalgCategoryObject and CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeEqualityOfMorphisms ],
+               [ IsHomalgCategoryObject and CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms ],
                -9999, #FIXME
                
   function( object )
     
-    return EqualityOfMorphisms( IdentityMorphism( object ), ZeroMorphism( object, object ) );
+    return IsEqualForMorphisms( IdentityMorphism( object ), ZeroMorphism( object, object ) );
     
 end );
 

@@ -61,9 +61,9 @@ c2_associated := VectorSpaceMorphism( B_2, [ [ 6, 6 ] ], C_2 );
 #! 
 c2 := GeneralizedMorphism( c2_source_aid, c2_associated, c2_range_aid );
 #! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
-EqualityOfMorphisms( c1, c2 );
+IsEqualForMorphisms( c1, c2 );
 #! true
-EqualityOfMorphisms( c1, c1 );
+IsEqualForMorphisms( c1, c1 );
 #! true
 c3_associated := VectorSpaceMorphism( B_1, [ [ 2, 2 ] ], C_1 );
 #! A rational vector space homomorphism with matrix: 
@@ -71,9 +71,9 @@ c3_associated := VectorSpaceMorphism( B_1, [ [ 2, 2 ] ], C_1 );
 #! 
 c3 := GeneralizedMorphism( c1_source_aid, c3_associated, c1_range_aid );
 #! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
-EqualityOfMorphisms( c1, c3 );
+IsEqualForMorphisms( c1, c3 );
 #! false
-EqualityOfMorphisms( c2, c3 );
+IsEqualForMorphisms( c2, c3 );
 #! false
 c1 + c2;
 #! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
