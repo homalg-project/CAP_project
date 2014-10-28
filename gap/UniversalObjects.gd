@@ -1309,7 +1309,7 @@ DeclareAttribute( "UniversalMorphismFromImageWithGivenImageFunction",
 #! This operation adds the given function $f: \alpha \mapsto I$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddImage",
+DeclareOperation( "AddImageObject",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Description

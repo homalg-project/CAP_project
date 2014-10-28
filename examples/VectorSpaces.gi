@@ -653,7 +653,7 @@ end );
 # end );
 
 # ##
-# AddImage( vecspaces,
+# AddImageObject( vecspaces,
 # 
 #   function( morphism )
 #   

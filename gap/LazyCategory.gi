@@ -687,7 +687,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddImage( lazy_category,
+    AddImageObject( lazy_category,
       
       function( morphism )
         local func;

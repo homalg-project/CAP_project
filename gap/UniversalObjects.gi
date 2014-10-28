@@ -2958,7 +2958,7 @@ end );
 ####################################
 
 ##
-InstallMethod( AddImage,
+InstallMethod( AddImageObject,
                [ IsHomalgCategory, IsFunction ],
                
   function( category, func )

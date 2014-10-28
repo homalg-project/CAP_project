@@ -575,7 +575,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddImage( deduction_system,
+    AddImageObject( deduction_system,
               
       function( morphism )
         
