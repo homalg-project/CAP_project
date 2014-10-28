@@ -834,10 +834,10 @@ DeclareGlobalFunction( "ProjectionInFactor" );
 # @Description
 # Projection in the $i$-th factor of the direct product given by $D$.
 # $D$ can either be an object created as a direct product or an object
-# in a product category representing a diagram. The second argument $M$
+# in a product category representing a diagram. The third argument $M$
 # is an object needed for the method selection.
 # @Returns IsHomalgCategoryMorphism
-# @Arguments D, M, i
+# @Arguments D, i, M
 DeclareOperation( "ProjectionInFactorOp",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
@@ -845,7 +845,7 @@ DeclareOperation( "ProjectionInFactorOp",
 #! Projection in the $i$-th factor of the direct product $P = \prod_j A_j$ 
 #! given by an object of a product category $D = (A_j)$.
 #! @Returns IsHomalgCategoryMorphism
-#! @Arguments D, P, i
+#! @Arguments D, i, P
 DeclareOperation( "ProjectionInFactorWithGivenDirectProduct",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 

@@ -416,22 +416,25 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
 end );
 
 ##
-InstallTrueMethod( CanComputeEqualityOfMorphisms,
-                   CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
-                   and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
-                   and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
-                   and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
-                   and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
-                   and CanComputePreComposeInUnderlyingHonestCategory );
+# InstallTrueMethod( CanComputeEqualityOfMorphisms,
+#                    CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
+#                    and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
+#                    and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
+#                    and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
+#                    and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
+#                    and CanComputePreComposeInUnderlyingHonestCategory );
 
 InstallMethodWithCacheFromObject( EqualityOfMorphisms,
-                                  [ IsGeneralizedMorphism
-                                    and CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
-                                    and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
-                                    and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
-                                    and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
-                                    and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
-                                    and CanComputePreComposeInUnderlyingHonestCategory,
+#                                   [ IsGeneralizedMorphism
+#                                     and CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
+#                                     and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
+#                                     and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
+#                                     and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
+#                                     and CanComputeEqualityOfMorphismsInUnderlyingHonestCategory
+#                                     and CanComputePreComposeInUnderlyingHonestCategory,
+#                                     IsGeneralizedMorphism ],
+#                                     
+                                  [ IsGeneralizedMorphism,
                                     IsGeneralizedMorphism ],
                                   
   function( generalized_morphism1, generalized_morphism2 )
@@ -443,16 +446,21 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
       
     fi;
     
-    subobject1 := SourceAid( generalized_morphism1 );
+    subobject1 := Domain( generalized_morphism1 );
     
-    subobject2 := SourceAid( generalized_morphism2 );
+    subobject2 := Domain( generalized_morphism2 );
     
-    factorobject1 := RangeAid( generalized_morphism1 );
+    if not IsEqualAsSubobject( subobject1, subobject2 ) then
+      
+      return false;
+      
+    fi;
     
-    factorobject2 := RangeAid( generalized_morphism2 );
+    factorobject1 := Codomain( generalized_morphism1 );
     
-    if not IsEqualAsSubobject( subobject1, subobject2 ) or
-       not IsEqualAsFactorobject( factorobject1, factorobject2 ) then
+    factorobject2 := Codomain( generalized_morphism2 );
+    
+    if not IsEqualAsFactorobject( factorobject1, factorobject2 ) then
       
       return false;
       
@@ -462,7 +470,9 @@ InstallMethodWithCacheFromObject( EqualityOfMorphisms,
     
     isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
     
-    return EqualityOfMorphisms( MorphismAid( generalized_morphism1 ), PreCompose( PreCompose( isomorphism_of_subobjects, MorphismAid( generalized_morphism2 ) ), isomorphism_of_factorobjects ) );
+    return EqualityOfMorphisms( AssociatedMorphism( generalized_morphism1 ), 
+                                PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) 
+                              );
     
 end );
 
@@ -690,8 +700,13 @@ InstallMethod( DomainOp,
                [ IsGeneralizedMorphism and CanComputeDomainAssociatedMorphismCodomainTriple ],
                
   function( generalized_morphism )
+    local domain;
     
-    return DomainAssociatedMorphismCodomainTriple( generalized_morphism )[1];
+    domain := DomainAssociatedMorphismCodomainTriple( generalized_morphism )[1];
+    
+    SetIsMonomorphism( domain, true );
+    
+    return domain;
     
 end );
 
@@ -714,8 +729,13 @@ InstallMethod( Codomain,
                [ IsGeneralizedMorphism and CanComputeDomainAssociatedMorphismCodomainTriple ],
                
   function( generalized_morphism )
+    local codomain;
     
-    return DomainAssociatedMorphismCodomainTriple( generalized_morphism )[3];
+    codomain := DomainAssociatedMorphismCodomainTriple( generalized_morphism )[3];
+    
+    SetIsEpimorphism( codomain, true );
+    
+    return codomain;
     
 end );
 
