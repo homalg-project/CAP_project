@@ -309,7 +309,7 @@ end );
 
 #
 # the user may assume that Length( object_product_list!.Components ) > 1
-AddProjectionInFactor( vecspaces,
+AddProjectionInFactorOfDirectProduct( vecspaces,
 
   function( object_product_list, projection_number )
     local components, dim, dim_pre, dim_post, dim_factor, direct_product, number_of_objects, projection_in_factor;

@@ -401,7 +401,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddProjectionInFactor( deduction_system,
+    AddProjectionInFactorOfDirectProduct( deduction_system,
                            
       function( object_product_list, projection_number )
         local components, direct_product;

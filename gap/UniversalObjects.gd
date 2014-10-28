@@ -853,6 +853,9 @@ DeclareOperationWithCache( "DirectProductOp",
 #! @Arguments D, i
 DeclareGlobalFunction( "ProjectionInFactor" );
 
+
+DeclareOperation( "ProjectionInFactorOfDirectProduct",
+                  [ IsHomalgCategoryObject, IsInt ] );
 # @Description
 # Projection in the $i$-th factor of the direct product given by $D$.
 # $D$ can either be an object created as a direct product or an object
@@ -860,7 +863,7 @@ DeclareGlobalFunction( "ProjectionInFactor" );
 # is an object needed for the method selection.
 # @Returns IsHomalgCategoryMorphism
 # @Arguments D, i, M
-DeclareOperation( "ProjectionInFactorOp",
+DeclareOperation( "ProjectionInFactorOfDirectProductOp",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 #! @Description
@@ -940,7 +943,7 @@ DeclareOperation( "AddDirectProduct",
 #! where $(P_1, \dots, P_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddProjectionInFactor",
+DeclareOperation( "AddProjectionInFactorOfDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Description
@@ -1009,7 +1012,10 @@ DeclareOperationWithCache( "PullbackOp",
 
 ## DeclareGlobalFunction( "ProjectionInFactor" ); to be adjusted
 
-DeclareOperation( "ProjectionInFactorOp",
+DeclareOperation( "ProjectionInFactorOfPullback",
+                  [ IsHomalgCategoryMorphism, IsInt ] );
+
+DeclareOperation( "ProjectionInFactorOfPullbackOp",
                   [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
 
 DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",

@@ -920,12 +920,14 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 ##
 ####################################
 
+## convenience method:
 ##
 InstallGlobalFunction( ProjectionInFactor,
                
   function( object_product_list, projection_number )
     local number_of_objects;
     
+    ## convenience: first argument was created as direct product
     if WasCreatedAsDirectProduct( object_product_list ) then
     
       number_of_objects := Length( Components( Genesis( object_product_list )!.DirectFactors ) );
@@ -940,6 +942,7 @@ InstallGlobalFunction( ProjectionInFactor,
     
     fi;
     
+    ## convenience: first argument was created as a pullback
     if WasCreatedAsPullback( object_product_list ) then
     
       number_of_objects := Length( Components( Genesis( object_product_list )!.PullbackDiagram ) );
@@ -954,6 +957,7 @@ InstallGlobalFunction( ProjectionInFactor,
     
     fi;
     
+    ## assumption: first argument is a product object
     number_of_objects := Length( Components( object_product_list ) );
   
     if projection_number < 0 or projection_number > number_of_objects then
@@ -967,8 +971,16 @@ InstallGlobalFunction( ProjectionInFactor,
       return IdentityMorphism( object_product_list[1] );
           
     fi;
-  
-    return ProjectionInFactorOp( object_product_list, projection_number, object_product_list[1] );
+    
+    if IsHomalgCategoryObject( object_product_list[1] )  then 
+      
+      return ProjectionInFactorOfDirectProductOp( object_product_list, projection_number, object_product_list[1] );
+      
+    else # IsHomalgCategoryMorphism( object_product_list[1] ) = true
+      
+      return ProjectionInFactorOfPullbackOp( object_product_list, projection_number, object_product_list[1] );
+      
+    fi;
   
 end );
 
@@ -1034,11 +1046,18 @@ InstallMethod( AddDirectProduct,
     
 end );
 
-##TODO: Install AddProjectionInFactor convenient method with 
-##the direct product object as an input
+##
+InstallMethod( ProjectionInFactorOfDirectProduct,
+               [ IsHomalgCategoryObject, IsInt ],
+               
+  function( object_product_list, projection_number )
+    
+    return ProjectionInFactorOfDirectProductOp( object_product_list, projection_number, object_product_list[1] );
+    
+end );
 
 ##
-InstallMethod( AddProjectionInFactor,
+InstallMethod( AddProjectionInFactorOfDirectProduct,
                [ IsHomalgCategory, IsFunction ],
 
   function( category, func )
@@ -1047,7 +1066,7 @@ InstallMethod( AddProjectionInFactor,
     
     SetCanComputeProjectionInFactor( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
                                            [ IsHomalgCategoryObject,
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -1082,7 +1101,7 @@ InstallMethod( AddProjectionInFactor,
         
         return projection_in_factor;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOp", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfDirectProductOp", 3 ) );
 
 end );
 
@@ -1262,7 +1281,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 ##
 InstallTrueMethod( CanComputeProjectionInFactor, CanComputeDirectProduct and CanComputeProjectionInFactorWithGivenDirectProduct );
 
-InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
+InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
                                        [ IsHomalgCategoryObject,
                                          IsInt,
                                          IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorWithGivenDirectProduct, ],
@@ -2112,6 +2131,17 @@ InstallMethod( AddFiberProduct,
     
 end );
 
+## convenience method:
+##
+InstallMethod( ProjectionInFactorOfPullback,
+               [ IsHomalgCategoryMorphism, IsInt ],
+               
+  function( diagram, projection_number )
+    
+    return ProjectionInFactorOfPullbackOp( diagram, projection_number, diagram[1] );
+    
+end );
+
 ##
 InstallMethod( AddProjectionInFactorOfPullback,
                [ IsHomalgCategory, IsFunction ],
@@ -2123,8 +2153,8 @@ InstallMethod( AddProjectionInFactorOfPullback,
     SetCanComputeProjectionInFactorOfPullback( category, true );
     
     #TODO: Get the names clean!
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp, 
-                                           [ IsHomalgCategoryMorphism, 
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackOp,
+                                           [ IsHomalgCategoryMorphism,
                                              IsInt,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                              
@@ -2399,7 +2429,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 InstallTrueMethod( CanComputeProjectionInFactorOfPullback, CanComputeProjectionInFactorOfPullbackWithGivenPullback and 
                                                            CanComputePullback );
 
-InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOp,
+InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackOp,
                                        [ IsHomalgCategoryMorphism,
                                          IsInt,
                                          IsHomalgCategoryMorphism and

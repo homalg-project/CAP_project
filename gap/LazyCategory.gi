@@ -482,7 +482,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddProjectionInFactor( lazy_category,
+    AddProjectionInFactorOfDirectProduct( lazy_category,
       
       function( object_product_list, projection_number )
         local func, direct_product;
