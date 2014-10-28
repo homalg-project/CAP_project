@@ -495,14 +495,14 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddProjectionInFactorWithGivenDirectProduct( lazy_category,
+    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( lazy_category,
       
       function( object_product_list, projection_number, direct_product )
         local func;
         
         func := function( ) 
           
-          return ProjectionInFactorWithGivenDirectProduct( EvalAndRewrapProductList( object_product_list ), projection_number, Eval( direct_product ) );
+          return ProjectionInFactorOfDirectProductWithGivenDirectProduct( EvalAndRewrapProductList( object_product_list ), projection_number, Eval( direct_product ) );
         
         end;
         

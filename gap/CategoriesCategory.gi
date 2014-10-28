@@ -359,7 +359,7 @@ AddDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
 end );
 
 ##
-AddProjectionInFactorWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
                             
   function( object_product_list, direct_product, projection_number )
     local projection_functor;

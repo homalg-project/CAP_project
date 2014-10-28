@@ -129,7 +129,7 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
                                 AddCokernelColift,
                                 AddCokernelColiftWithGivenCokernel,
                                 AddProjectionInFactorOfDirectProduct,
-                                AddProjectionInFactorWithGivenDirectProduct,
+                                AddProjectionInFactorOfDirectProductWithGivenDirectProduct,
                                 AddUniversalMorphismIntoDirectProduct,
                                 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct ];
     

@@ -949,7 +949,7 @@ InstallGlobalFunction( ProjectionInFactor,
       
       fi;
     
-      return ProjectionInFactorWithGivenDirectProduct( Genesis( object_product_list )!.DirectFactors, projection_number, object_product_list );
+      return ProjectionInFactorOfDirectProductWithGivenDirectProduct( Genesis( object_product_list )!.DirectFactors, projection_number, object_product_list );
     
     fi;
     
@@ -1087,7 +1087,7 @@ InstallMethod( AddProjectionInFactorOfDirectProduct,
         
         if HasDirectProductOp( object_product_list, method_selection_object ) then
           
-          return ProjectionInFactorWithGivenDirectProduct( object_product_list, projection_number, DirectProductOp( object_product_list, method_selection_object ) );
+          return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, DirectProductOp( object_product_list, method_selection_object ) );
           
         fi;
         
@@ -1117,16 +1117,16 @@ InstallMethod( AddProjectionInFactorOfDirectProduct,
 end );
 
 ##
-InstallMethod( AddProjectionInFactorWithGivenDirectProduct,
+InstallMethod( AddProjectionInFactorOfDirectProductWithGivenDirectProduct,
                [ IsHomalgCategory, IsFunction ],
 
   function( category, func )
     
-    SetProjectionInFactorWithGivenDirectProductFunction( category, func );
+    SetProjectionInFactorOfDirectProductWithGivenDirectProductFunction( category, func );
     
-    SetCanComputeProjectionInFactorWithGivenDirectProduct( category, true );
+    SetCanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorWithGivenDirectProduct,
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductWithGivenDirectProduct,
                                            [ IsHomalgCategoryObject,
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ),  ],
@@ -1147,7 +1147,7 @@ InstallMethod( AddProjectionInFactorWithGivenDirectProduct,
         
         return projection_in_factor;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorWithGivenDirectProduct", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfDirectProductWithGivenDirectProduct", 3 ) );
 
 end );
 
@@ -1290,17 +1290,17 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeProjectionInFactor, CanComputeDirectProduct and CanComputeProjectionInFactorWithGivenDirectProduct );
+InstallTrueMethod( CanComputeProjectionInFactor, CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct );
 
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
                                        [ IsHomalgCategoryObject,
                                          IsInt,
-                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorWithGivenDirectProduct, ],
+                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct, ],
                                          -9999, #FIXME
                                          
   function( object_product_list, projection_number, method_selection_object )
     
-    return ProjectionInFactorWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, Components( object_product_list ) ) );
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, Components( object_product_list ) ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 

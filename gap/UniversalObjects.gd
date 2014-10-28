@@ -871,7 +871,7 @@ DeclareOperation( "ProjectionInFactorOfDirectProductOp",
 #! given by an object of a product category $D = (A_j)$.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments D, i, P
-DeclareOperation( "ProjectionInFactorWithGivenDirectProduct",
+DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 #! @Description
@@ -917,7 +917,7 @@ DeclareAttribute( "DirectProductFunction",
 DeclareAttribute( "ProjectionInFactorFunction",
                   IsHomalgCategory );
 
-DeclareAttribute( "ProjectionInFactorWithGivenDirectProductFunction",
+DeclareAttribute( "ProjectionInFactorOfDirectProductWithGivenDirectProductFunction",
                   IsHomalgCategory );
 
 DeclareAttribute( "UniversalMorphismIntoDirectProductFunction",
@@ -951,7 +951,7 @@ DeclareOperation( "AddProjectionInFactorOfDirectProduct",
 #! where $(P_1, \dots, P_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddProjectionInFactorWithGivenDirectProduct",
+DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 #! @Description
