@@ -432,14 +432,14 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddInjectionOfCofactorWithGivenCoproduct( lazy_category,
+    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( lazy_category,
       
       function( object_product_list, injection_number, coproduct )
         local func;
         
         func := function( ) 
         
-          return InjectionOfCofactorWithGivenCoproduct( EvalAndRewrapProductList( object_product_list ), injection_number, Eval( coproduct ) ); 
+          return InjectionOfCofactorOfCoproductWithGivenCoproduct( EvalAndRewrapProductList( object_product_list ), injection_number, Eval( coproduct ) ); 
           
         end;
         

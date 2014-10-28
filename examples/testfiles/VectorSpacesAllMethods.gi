@@ -224,7 +224,7 @@ end );
 
 ##
 ## the user may assume that Length( object_product_list!.Components ) > 1
-AddInjectionOfCofactorWithGivenCoproduct( vecspaces,
+AddInjectionOfCofactorOfCoproductWithGivenCoproduct( vecspaces,
 
   function( object_product_list, injection_number, coproduct )
     local components, dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;

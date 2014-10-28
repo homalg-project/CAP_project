@@ -592,7 +592,7 @@ InstallGlobalFunction( InjectionOfCofactor,
       
       fi;
     
-      return InjectionOfCofactorWithGivenCoproduct( Genesis( object_product_list )!.Cofactors, injection_number, object_product_list );
+      return InjectionOfCofactorOfCoproductWithGivenCoproduct( Genesis( object_product_list )!.Cofactors, injection_number, object_product_list );
     
     fi;
     
@@ -708,7 +708,7 @@ InstallMethod( AddInjectionOfCofactorOfCoproduct,
         
         if HasCoproductOp( object_product_list, method_selection_object ) then
           
-          return InjectionOfCofactorWithGivenCoproduct( object_product_list, injection_number, CoproductOp( object_product_list, method_selection_object ) );
+          return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CoproductOp( object_product_list, method_selection_object ) );
           
         fi;
         
@@ -738,16 +738,16 @@ InstallMethod( AddInjectionOfCofactorOfCoproduct,
 end );
 
 ##
-InstallMethod( AddInjectionOfCofactorWithGivenCoproduct,
+InstallMethod( AddInjectionOfCofactorOfCoproductWithGivenCoproduct,
                [ IsHomalgCategory, IsFunction ],
 
   function( category, func )
     
-    SetInjectionOfCofactorWithGivenCoproductFunction( category, func );
+    SetInjectionOfCofactorOfCoproductWithGivenCoproductFunction( category, func );
     
-    SetCanComputeInjectionOfCofactorWithGivenCoproduct( category, true );
+    SetCanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorWithGivenCoproduct,
+    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductWithGivenCoproduct,
                                            [ IsHomalgCategoryObject, 
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
@@ -768,7 +768,7 @@ InstallMethod( AddInjectionOfCofactorWithGivenCoproduct,
         
         return injection_of_cofactor;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorWithGivenCoproduct", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOfCoproductWithGivenCoproduct", 3 ) );
 
 end );
 
@@ -910,17 +910,17 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeInjectionOfCofactor, CanComputeCoproduct and CanComputeInjectionOfCofactorWithGivenCoproduct );
+InstallTrueMethod( CanComputeInjectionOfCofactor, CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct );
 
 InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
                                        [ IsHomalgCategoryObject,
                                          IsInt,
-                                         IsHomalgCategoryObject and CanComputeCoproduct and CanComputeInjectionOfCofactorWithGivenCoproduct, ],
+                                         IsHomalgCategoryObject and CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct, ],
                                          -9999, #FIXME
                                          
   function( object_product_list, injection_number, method_selection_object )
     
-    return InjectionOfCofactorWithGivenCoproduct( object_product_list, injection_number, CallFuncList( Coproduct, Components( object_product_list ) ) );
+    return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CallFuncList( Coproduct, Components( object_product_list ) ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 

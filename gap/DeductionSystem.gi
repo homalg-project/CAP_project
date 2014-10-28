@@ -358,14 +358,14 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddInjectionOfCofactorWithGivenCoproduct( deduction_system,
+    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( deduction_system,
                                               
       function( object_product_list, injection_number, coproduct )
         local components;
         
         components := Components( object_product_list );
         
-        return DeductionSystemMorphism( components[ injection_number ], "InjectionOfCofactorWithGivenCoproduct", [ [ "Product", components ], injection_number, coproduct ], coproduct );
+        return DeductionSystemMorphism( components[ injection_number ], "InjectionOfCofactorOfCoproductWithGivenCoproduct", [ [ "Product", components ], injection_number, coproduct ], coproduct );
         
     end );
     

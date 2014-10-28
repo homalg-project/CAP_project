@@ -723,7 +723,7 @@ DeclareGlobalFunction( "InjectionOfCofactor" );
 DeclareOperation( "InjectionOfCofactorOfCoproductOp",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
-DeclareOperation( "InjectionOfCofactorWithGivenCoproduct",
+DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
@@ -746,7 +746,7 @@ DeclareAttribute( "CoproductFunction",
 DeclareAttribute( "InjectionOfCofactorFunction",
                   IsHomalgCategory );
 
-DeclareAttribute( "InjectionOfCofactorWithGivenCoproductFunction",
+DeclareAttribute( "InjectionOfCofactorOfCoproductWithGivenCoproductFunction",
                   IsHomalgCategory );
 
 DeclareAttribute( "UniversalMorphismFromCoproductFunction",
@@ -780,7 +780,7 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
 #! where $(I_1, \dots, I_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddInjectionOfCofactorWithGivenCoproduct",
+DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
 #FIXME: it is inconsistent with the convention that the diagram does not have to be given as an input!
