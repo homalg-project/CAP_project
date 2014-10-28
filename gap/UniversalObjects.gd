@@ -57,6 +57,28 @@
 #! One further note: every universal object stores if it was created as such and therefore can be used to access universal property morphisms (if computable).
 #############################################################################
 
+####################################
+##
+#! @Section Type system
+##
+####################################
+
+#! Explaination of methods of the form $\texttt{Add}F( f, C )$ for a function name $F$ (e.g. KernelLift, DirectProduct),
+#! a function $f$ and a HomalgCategory $C$:
+#! The method $\texttt{Add}F( f, C )$ installs the method with the name $F$ properly such that it can be
+#! used within the context of the given category $C$. 
+#! Valid types for the (multiple) arguments of $F$ are:
+#! * HomalgCategoryObject
+#! * HomalgCategoryMorphism
+#! * List containing only HomalgCategoryObjects
+#! * List containing only HomalgCategoryMorphisms
+#! * Integer
+#! Valid types for the output of $F$ are:
+#! * HomalgCategoryObject
+#! * HomalgCategoryMorphism.
+#! Note the name convention: If $\texttt{Add}F$ is a method, then so is $F$.
+
+
 ## needed for multiple genesis
 DeclareOperation( "AddToGenesis",
                   [ IsHomalgCategoryCell, IsObject, IsObject ] );
