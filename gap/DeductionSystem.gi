@@ -102,7 +102,69 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    ## HOLE
+    AddEpiAsCokernelColift( deduction_system,
+                            
+      function( epimorphism, test_morphism )
+        
+        return DeductionSystemMorphism( Range( epimorphism ), "EpiAsCokernelColift", [ epimorphism, test_morphism ], Range( test_morphism ) );
+        
+    end );
+    
+    AddIsMonomorphism( deduction_system,
+                       
+      function( morphism )
+        
+        return IsMonomorphism( Eval( morphism ) );
+        
+    end );
+    
+    AddIsEpimorphism( deduction_system,
+                      
+      function( morphism )
+        
+        return IsEpimorphism( Eval( morphism ) );
+        
+    end );
+    
+    AddIsIsomorphism( deduction_system,
+                      
+      function( morphism )
+        
+        return IsIsomorphism( Eval( morphism ) );
+        
+    end );
+    
+    AddDominates( deduction_system,
+                  
+      function( subobject1, subobject2 )
+        
+        return Dominates( Eval( subobject1 ), Eval( subobject2 ) );
+        
+    end );
+    
+    AddCodominates( deduction_system,
+                    
+      function( factorobject1, factorobject2 )
+        
+        return Codominates( Eval( factorobject1 ), Eval( factorobject2 ) );
+        
+    end );
+    
+    AddEqualityOfMorphisms( deduction_system,
+                            
+      function( morphism1, morphism2 )
+        
+        return EqualityOfMorphisms( Eval( morphism1 ), Eval( morphism2 ) );
+        
+    end );
+    
+    AddIsZeroForMorphisms( deduction_system,
+                           
+      function( morphism )
+        
+        return IsZero( Eval( morphism ) );
+        
+    end );
     
     AddAdditionForMorphisms( deduction_system,
                              
