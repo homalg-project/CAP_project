@@ -940,3 +940,10 @@ AddNaturalTransformationFunction( id_to_double,
     
 end );
 
+ADD_THEOREM_TO_CATEGORY( vecspaces, rec( Function := "KernelEmb", 
+                                         Source := [ rec( Object := 1, 
+                                                          ValueFunction := IsMonomorphism, 
+                                                          Value := true ) ], 
+                                         Range := rec( ValueFunction := IsZero, 
+                                                       Value := true ) ) );
+

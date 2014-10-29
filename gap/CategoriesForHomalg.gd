@@ -173,6 +173,9 @@ end );
 
 INSTALL_CAN_COMPUTE_PROPERTIES( );
 
+DeclareAttribute( "TheoremRecord",
+                  IsHomalgCategory, "mutable" );
+
 ###################################
 ##
 #! @Section Constructor

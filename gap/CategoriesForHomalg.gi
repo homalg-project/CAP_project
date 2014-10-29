@@ -187,6 +187,15 @@ InstallGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT",
     
 end );
 
+InstallMethod( TheoremRecord,
+               [ IsHomalgCategory ],
+               
+  function( category )
+    
+    return rec( );
+    
+end );
+
 ######################################################
 ##
 ## Add functions
