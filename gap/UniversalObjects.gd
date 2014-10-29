@@ -98,6 +98,7 @@ DeclareOperation( "AddToGenesis",
 #! @Description
 #!  Kernel of a given morphism.
 #! @Returns IsHomalgCategoryObject
+#! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "KernelObject",
                                           IsHomalgCategoryMorphism );
 
@@ -111,6 +112,7 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
 #! @Description
 #! Kernel embedding of an object which was created as a kernel.
 #! @Returns IsHomalgCategoryMorphism
+#! @Arguments K
 DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
                                           IsHomalgCategoryObject );
 
@@ -236,6 +238,7 @@ DeclareFilter( "WasCreatedAsKernel" );
 #! @Description
 #!  Cokernel of a given morphism.
 #! @Returns IsHomalgCategoryObject
+#! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "Cokernel",
                                           IsHomalgCategoryMorphism );
 
@@ -249,6 +252,7 @@ DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
 #! @Description
 #! Cokernel projection of an object which was created as a cokernel.
 #! @Returns IsHomalgCategoryMorphism
+#! @Arguments C
 DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
                                           IsHomalgCategoryObject );
 
@@ -398,7 +402,8 @@ DeclareAttributeWithToDoForIsWellDefined( "MorphismIntoZeroObject",
 #! @BeginGroup
 
 #! @Description
-#! These attributes store the implementations of the basic algorithms for a terminal object. 
+#! These attributes store the implementations of the basic algorithms for a terminal object.
+#! @Arguments C
 DeclareAttribute( "ZeroObjectFunction",
                   IsHomalgCategory );
 
@@ -482,13 +487,16 @@ DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
 
 #! @AutoDoc
 #! @Description
-#! These attributes store the implementations of the basic algorithms for a terminal object. 
+#! These attributes store the implementations of the basic algorithms for a terminal object.
+#! @Arguments C
 DeclareAttribute( "TerminalObjectFunction",
                   IsHomalgCategory );
 
+#! @Arguments C
 DeclareAttribute( "UniversalMorphismIntoTerminalObjectFunction",
                   IsHomalgCategory );
 
+#! @Arguments C
 DeclareAttribute( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFunction",
                   IsHomalgCategory );
 #! @EndAutoDoc
@@ -584,13 +592,16 @@ DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
 
 #! @AutoDoc
 #! @Description
-#! These attributes store the implementations of the basic algorithms for an initial object. 
+#! These attributes store the implementations of the basic algorithms for an initial object.
+#! @Arguments C
 DeclareAttribute( "InitialObjectFunction",
                   IsHomalgCategory );
 
+#! @Arguments C
 DeclareAttribute( "UniversalMorphismFromInitialObjectFunction",
                   IsHomalgCategory );
 
+#! @Arguments C
 DeclareAttribute( "UniversalMorphismFromInitialObjectWithGivenInitialObjectFunction",
                   IsHomalgCategory );
 #! @EndAutoDoc
@@ -657,6 +668,7 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 
 ## Main Operations and Attributes
 
+##FIXME: List as argument
 DeclareOperationWithCache( "DirectSumOp",
                            [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
@@ -676,6 +688,7 @@ DeclareAttribute( "DirectSumFunction",
 #! where $(S_1, \dots, S_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+##FIXME: List as argument for f
 DeclareOperation( "AddDirectSum",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -713,27 +726,35 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 
 ## Main Operations and Attributes
 
+##FIXME: should call CoproductOp with List as argument
 DeclareGlobalFunction( "Coproduct" );
 
+##FIXME: List as argument
 DeclareOperationWithCache( "CoproductOp",
                            [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
+##FIXME: should call InjectionOfCofactorOfCoproductOp/ InjectionOfCofactorOfPushoutOp with List as argument
 DeclareGlobalFunction( "InjectionOfCofactor" );
 
 DeclareOperation( "InjectionOfCofactorOfCoproduct",
                   [ IsHomalgCategoryObject, IsInt ] );
 
+##FIXME: List as argument
 DeclareOperation( "InjectionOfCofactorOfCoproductOp",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
+##FIXME: List as argument
 DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
+##FIXME: Should call UniversalMorphismFromCoproductOp with List as argument
 DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
 
+##FIXME: List as argument
 DeclareOperation( "UniversalMorphismFromCoproductOp",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
+##FIXME: List as argument
 DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
@@ -767,6 +788,7 @@ DeclareAttribute( "UniversalMorphismFromCoproductWithGivenCoproductFunction",
 #! where $(I_1, \dots, I_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#FIXME: List as argument in f
 DeclareOperation( "AddCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -775,6 +797,7 @@ DeclareOperation( "AddCoproduct",
 #! where $(I_1, \dots, I_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#FIXME: List as argument in f
 DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -783,6 +806,7 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
 #! where $(I_1, \dots, I_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#FIXME: List as argument in f
 DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -792,6 +816,7 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
 #! where $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#FIXME: List as argument in f
 DeclareOperation( "AddUniversalMorphismFromCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -800,6 +825,7 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
 #! where $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#FIXME: List as argument in f
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -845,6 +871,7 @@ DeclareFilter( "WasCreatedAsCoproduct" );
 #! selection.
 #! @Returns IsHomalgCategoryObject
 #! @Arguments D, M
+# FIXME: List as argument
 DeclareOperationWithCache( "DirectProductOp",
                            [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
 
@@ -854,18 +881,21 @@ DeclareOperationWithCache( "DirectProductOp",
 #! in a product category $D = (A_i)$ representing a diagram.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments D, i
+# FIXME: ProjectionInFactorOfDirectProductOp/ ProjectionInFactorOfPullbackOp should have List as input
 DeclareGlobalFunction( "ProjectionInFactor" );
 
 
+# FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfDirectProduct",
                   [ IsHomalgCategoryObject, IsInt ] );
-# @Description
-# Projection in the $i$-th factor of the direct product given by $D$.
-# $D$ can either be an object created as a direct product or an object
-# in a product category representing a diagram. The third argument $M$
-# is an object needed for the method selection.
-# @Returns IsHomalgCategoryMorphism
-# @Arguments D, i, M
+#! @Description
+#! Projection in the $i$-th factor of the direct product given by $D$.
+#! $D$ can either be an object created as a direct product or an object
+#! in a product category representing a diagram. The third argument $M$
+#! is an object needed for the method selection.
+#! @Returns IsHomalgCategoryMorphism
+#! @Arguments D, i, M
+# FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfDirectProductOp",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
@@ -874,6 +904,7 @@ DeclareOperation( "ProjectionInFactorOfDirectProductOp",
 #! given by an object of a product category $D = (A_j)$.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments D, i, P
+# FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
 
@@ -884,6 +915,7 @@ DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
 #! $\prod_j B_j \rightarrow B_i$.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments alpha_i
+# FIXME: Should call UniversalMorphismIntoDirectProductOp with List as argument
 DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 
 # @Description
@@ -894,6 +926,7 @@ DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 # $\prod_j B_j \rightarrow B_i$. The second argument $M$ is needed for the method selection.
 # @Returns IsHomalgCategoryMorphism
 # @Arguments D, M
+# FIXME: List as argument
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
@@ -905,6 +938,7 @@ DeclareOperation( "UniversalMorphismIntoDirectProductOp",
 #! $P \rightarrow B_i$.
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments D, P
+# FIXME: List as argument
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
@@ -938,6 +972,7 @@ DeclareAttribute( "UniversalMorphismIntoDirectProductWithGivenDirectProductFunct
 #! where $(P_1, \dots, P_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: List as argument of f
 DeclareOperation( "AddDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -946,6 +981,7 @@ DeclareOperation( "AddDirectProduct",
 #! where $(P_1, \dots, P_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: List as argument of f
 DeclareOperation( "AddProjectionInFactorOfDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -954,6 +990,7 @@ DeclareOperation( "AddProjectionInFactorOfDirectProduct",
 #! where $(P_1, \dots, P_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: List as argument of f
 DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -962,6 +999,7 @@ DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
 #! where $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: List as argument of f
 DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -970,6 +1008,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
 #! where $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: List as argument of f
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1007,28 +1046,33 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 # FIXME:
 # Declared as an operation in MatricesForHomalg!
 # DeclareGlobalFunction( "Pullback" );
-
+# FIXME: PullbackOp should be called with List as argument
 DeclareGlobalFunction( "FiberProduct" );
 
+# FIXME: List as argument
 DeclareOperationWithCache( "PullbackOp",
                            [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
-## DeclareGlobalFunction( "ProjectionInFactor" ); to be adjusted
-
+# FIXME: ProjectionInFactorOfPullbackOp shoult be called with List as argument
 DeclareOperation( "ProjectionInFactorOfPullback",
                   [ IsHomalgCategoryMorphism, IsInt ] );
 
+# FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfPullbackOp",
                   [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
 
+# FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
                   [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryObject ] );
 
+# FIXME: UniversalMorphismIntoPullbackOp should be called with List as argument
 DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
 
+# FIXME: List as argument
 DeclareOperation( "UniversalMorphismIntoPullbackOp",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
+# FIXME: List as argument
 DeclareOperation( "UniversalMorphismIntoPullbackWithGivenPullback",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
@@ -1063,6 +1107,7 @@ DeclareAttribute( "UniversalMorphismIntoPullbackWithGivenPullbackFunction",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: f should use List as argument
 DeclareOperation( "AddFiberProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1071,6 +1116,7 @@ DeclareOperation( "AddFiberProduct",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: f should use List as argument
 DeclareOperation( "AddProjectionInFactorOfPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1079,6 +1125,7 @@ DeclareOperation( "AddProjectionInFactorOfPullback",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: f should use List as argument
 DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1088,6 +1135,7 @@ DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ are morphisms of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: f should use List as argument
 DeclareOperation( "AddUniversalMorphismIntoPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1097,6 +1145,7 @@ DeclareOperation( "AddUniversalMorphismIntoPullback",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ are morphisms of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+# FIXME: f should use List as argument
 DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1132,27 +1181,35 @@ DeclareFilter( "WasCreatedAsPullback" );
 
 ## Main Operations and Attributes
 
+# FIXME: PushoutOp should be called with List as argument
 DeclareGlobalFunction( "Pushout" );
 
+# FIXME: List as argument
 DeclareOperationWithCache( "PushoutOp",
                            [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 ## DeclareGlobalFunction( "InjectionOfCofactor" ); to be adjusted
 
+# FIXME: InjectionOfCofactorOfPushoutOp should be called with List as argument
 DeclareOperation( "InjectionOfCofactorOfPushout",
                   [ IsHomalgCategoryMorphism, IsInt ] );
 
+# FIXME: List as argument
 DeclareOperation( "InjectionOfCofactorOfPushoutOp",
                   [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
 
+# FIXME: List as argument
 DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryObject ] );
 
+# FIXME: UniversalMorphismFromPushoutOp should be called with List as argument
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 
+# FIXME: List as argument
 DeclareOperation( "UniversalMorphismFromPushoutOp",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
+# FIXME: List as argument
 DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
@@ -1187,6 +1244,7 @@ DeclareAttribute( "UniversalMorphismFromPushoutWithGivenPushoutFunction",
 #! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#! FIXME: f should have List as argument
 DeclareOperation( "AddPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1195,6 +1253,7 @@ DeclareOperation( "AddPushout",
 #! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#! FIXME: f should have List as argument
 DeclareOperation( "AddInjectionOfCofactorOfPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1203,6 +1262,7 @@ DeclareOperation( "AddInjectionOfCofactorOfPushout",
 #! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a morphism of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#! FIXME: f should have List as argument
 DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1211,6 +1271,7 @@ DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
 #! to the category $C$ where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ and $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ are morphisms of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#! FIXME: f should have List as argument
 DeclareOperation( "AddUniversalMorphismFromPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -1219,6 +1280,7 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
 #! to the category $C$ where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ and $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ are morphisms of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
+#! FIXME: f should have List as argument
 DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
