@@ -584,7 +584,7 @@ InstallGlobalFunction( InjectionOfCofactor,
     ## convenience: first argument was created as a coproduct
     if WasCreatedAsCoproduct( object_product_list ) then
     
-      number_of_objects := Length( Components( Genesis( object_product_list )!.Cofactors ) );
+      number_of_objects := Length( Genesis( object_product_list )!.Cofactors );
       
       if injection_number < 1 or injection_number > number_of_objects then
       
@@ -599,7 +599,7 @@ InstallGlobalFunction( InjectionOfCofactor,
     ## convenience: first argument was created as a pushout
     if WasCreatedAsPushout( object_product_list ) then
     
-      number_of_objects := Length( Components( Genesis( object_product_list )!.PushoutDiagram ) );
+      number_of_objects := Length( Genesis( object_product_list )!.PushoutDiagram );
       
       if injection_number < 1 or injection_number > number_of_objects then
       
@@ -612,7 +612,7 @@ InstallGlobalFunction( InjectionOfCofactor,
     fi;
     
     ## first argument is a product object
-    number_of_objects := Length( Components( object_product_list ) );
+    number_of_objects := Length( object_product_list );
   
     if injection_number < 0 or injection_number > number_of_objects then
     
@@ -654,7 +654,7 @@ InstallGlobalFunction( Coproduct,
         
     fi;
     
-    return CoproductOp( CallFuncList( Product, arg ), arg[ 1 ] );
+    return CoproductOp( arg, arg[ 1 ] );
     
 end );
 
@@ -669,7 +669,7 @@ InstallMethod( AddCoproduct,
     SetCanComputeCoproduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( CoproductOp,
-                                           [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
       function( object_product_list, method_selection_object )
         local coproduct;
@@ -691,7 +691,7 @@ end );
 ## convenience method
 ##
 InstallMethod( InjectionOfCofactorOfCoproduct,
-               [ IsHomalgCategoryObject, IsInt ],
+               [ IsList, IsInt ],
                
   function( object_product_list, injection_number )
     
@@ -710,7 +710,7 @@ InstallMethod( AddInjectionOfCofactorOfCoproduct,
     SetCanComputeInjectionOfCofactorOfCoproduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
-                                           [ IsHomalgCategoryObject, 
+                                           [ IsList,
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                              
@@ -759,7 +759,7 @@ InstallMethod( AddInjectionOfCofactorOfCoproductWithGivenCoproduct,
     SetCanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductWithGivenCoproduct,
-                                           [ IsHomalgCategoryObject, 
+                                           [ IsList,
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                              
@@ -788,7 +788,7 @@ InstallGlobalFunction( UniversalMorphismFromCoproduct,
 
   function( arg )
     
-    return UniversalMorphismFromCoproductOp( CallFuncList( Product, arg ), arg[1] );
+    return UniversalMorphismFromCoproductOp( arg, arg[1] );
   
 end );
 
@@ -803,7 +803,7 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
     SetCanComputeUniversalMorphismFromCoproduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
-                                           [ IsHomalgCategoryMorphism,
+                                           [ IsList,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( sink, method_selection_morphism )
@@ -811,15 +811,15 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
         
         test_object := Range( sink[1] );
         
-        components := Components( sink );
+        components := sink;
         
-        coproduct_objects := CallFuncList( Product, List( Components( sink ), Source ) );
+        coproduct_objects := List( sink, Source );
         
         if HasCoproductOp( coproduct_objects, coproduct_objects[1] ) then
           
-          return UniversalMorphismFromCoproductWithGivenCoproduct( 
-                   sink, 
-                   CoproductOp( coproduct_objects, coproduct_objects[1] ) 
+          return UniversalMorphismFromCoproductWithGivenCoproduct(
+                   sink,
+                   CoproductOp( coproduct_objects, coproduct_objects[1] )
                  );
           
         fi;
@@ -859,7 +859,7 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
     SetCanComputeUniversalMorphismFromCoproductWithGivenCoproduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
-                                           [ IsHomalgCategoryMorphism,
+                                           [ IsList,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
       function( sink, coproduct )
@@ -867,7 +867,7 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
         
         test_object := Range( sink[1] );
         
-        components := Components( sink );
+        components := sink; #components superflous
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
             
@@ -895,7 +895,7 @@ InstallTrueMethod( CanComputeCoproduct, CanComputeInjectionOfCofactorOfCoproduct
 ##
 ## this methods is installed using the (cache of the (object of the second argument) )
 InstallMethodWithToDoForIsWellDefined( CoproductOp,
-                                       [ IsHomalgCategoryObject,
+                                       [ IsList,
                                          IsHomalgCategoryObject and CanComputeInjectionOfCofactorOfCoproduct ],
                                         -9999, #FIXME
                                         
@@ -910,13 +910,13 @@ InstallTrueMethod( CanComputeUniversalMorphismFromCoproduct,
                    CanComputeCoproduct and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
-                                       [ IsHomalgCategoryMorphism,
+                                       [ IsList,
                                          IsHomalgCategoryMorphism and CanComputeCoproduct and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct ],
                                          -9999, #FIXME
                                        
   function( sink, method_selection_morphism )
     
-    return UniversalMorphismFromCoproductWithGivenCoproduct( sink, CallFuncList( Coproduct, List( Components( sink ), Source ) ) );
+    return UniversalMorphismFromCoproductWithGivenCoproduct( sink, CallFuncList( Coproduct, List( sink, Source ) ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
@@ -924,14 +924,14 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 InstallTrueMethod( CanComputeInjectionOfCofactorOfCoproduct, CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct );
 
 InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
-                                       [ IsHomalgCategoryObject,
+                                       [ IsList,
                                          IsInt,
                                          IsHomalgCategoryObject and CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct, ],
                                          -9999, #FIXME
                                          
   function( object_product_list, injection_number, method_selection_object )
     
-    return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CallFuncList( Coproduct, Components( object_product_list ) ) );
+    return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CallFuncList( Coproduct, object_product_list ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
@@ -952,7 +952,7 @@ InstallGlobalFunction( ProjectionInFactor,
     ## convenience: first argument was created as direct product
     if WasCreatedAsDirectProduct( object_product_list ) then
     
-      number_of_objects := Length( Components( Genesis( object_product_list )!.DirectFactors ) );
+      number_of_objects := Length( Genesis( object_product_list )!.DirectFactors );
       
       if projection_number < 1 or projection_number > number_of_objects then
       
@@ -967,7 +967,7 @@ InstallGlobalFunction( ProjectionInFactor,
     ## convenience: first argument was created as a pullback
     if WasCreatedAsPullback( object_product_list ) then
     
-      number_of_objects := Length( Components( Genesis( object_product_list )!.PullbackDiagram ) );
+      number_of_objects := Length( Genesis( object_product_list )!.PullbackDiagram );
       
       if projection_number < 1 or projection_number > number_of_objects then
       
@@ -980,7 +980,7 @@ InstallGlobalFunction( ProjectionInFactor,
     fi;
     
     ## assumption: first argument is a product object
-    number_of_objects := Length( Components( object_product_list ) );
+    number_of_objects := Length( object_product_list );
   
     if projection_number < 0 or projection_number > number_of_objects then
     
@@ -1028,7 +1028,7 @@ DirectProduct := function( arg )
         
       fi;
       
-      return DirectProductOp( CallFuncList( Product, arg ), arg[ 1 ] );
+      return DirectProductOp( arg, arg[ 1 ] );
       
   fi;
   
@@ -1049,7 +1049,7 @@ InstallMethod( AddDirectProduct,
     SetCanComputeDirectProduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( DirectProductOp,
-                                           [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
       function( object_product_list, method_selection_object )
         local direct_product;
@@ -1070,7 +1070,7 @@ end );
 
 ##
 InstallMethod( ProjectionInFactorOfDirectProduct,
-               [ IsHomalgCategoryObject, IsInt ],
+               [ IsList, IsInt ],
                
   function( object_product_list, projection_number )
     
@@ -1089,7 +1089,7 @@ InstallMethod( AddProjectionInFactorOfDirectProduct,
     SetCanComputeProjectionInFactorOfDirectProduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
-                                           [ IsHomalgCategoryObject,
+                                           [ IsList,
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                              
@@ -1138,7 +1138,7 @@ InstallMethod( AddProjectionInFactorOfDirectProductWithGivenDirectProduct,
     SetCanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-                                           [ IsHomalgCategoryObject,
+                                           [ IsList,
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ),  ],
                                              
@@ -1167,7 +1167,7 @@ InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
 
   function( arg )
     
-    return UniversalMorphismIntoDirectProductOp( CallFuncList( Product, arg ), arg[1] );
+    return UniversalMorphismIntoDirectProductOp( arg, arg[1] );
   
 end );
 
@@ -1182,7 +1182,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
     SetCanComputeUniversalMorphismIntoDirectProduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
-                                           [ IsHomalgCategoryMorphism,
+                                           [ IsList,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( source, method_selection_morphism )
@@ -1190,15 +1190,15 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         test_object := Source( source[1] );
         
-        components := Components( source );
+        components := source;
         
-        direct_product_objects := CallFuncList( Product, List( Components( source ), Range ) );
+        direct_product_objects := List( source, Range );
         
         if HasDirectProductOp( direct_product_objects, direct_product_objects[1] ) then
         
-          return UniversalMorphismIntoDirectProductWithGivenDirectProduct( 
-                   source, 
-                   DirectProductOp( direct_product_objects, direct_product_objects[1] ) 
+          return UniversalMorphismIntoDirectProductWithGivenDirectProduct(
+                   source,
+                   DirectProductOp( direct_product_objects, direct_product_objects[1] )
                  );
           
         fi;
@@ -1240,7 +1240,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
     SetCanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct( category, true );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                                           [ IsHomalgCategoryMorphism,
+                                           [ IsList,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
       function( source, direct_product )
@@ -1248,7 +1248,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
         
         test_object := Source( source[1] );
         
-        components := Components( source );
+        components := source;#FIXME: components superflous
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
             
@@ -1275,7 +1275,7 @@ InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFactorOfDirect
 
 ##
 InstallMethodWithToDoForIsWellDefined( DirectProductOp,
-                                       [ IsHomalgCategoryObject,
+                                       [ IsList,
                                          IsHomalgCategoryObject and CanComputeProjectionInFactorOfDirectProduct ],
                                         -9999, #FIXME
                                         
@@ -1290,13 +1290,13 @@ InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProduct,
                    CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
-                                       [ IsHomalgCategoryMorphism,
+                                       [ IsList,
                                          IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
                                          -9999, #FIXME
                                        
   function( source, method_selection_morphism )
     
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( source, CallFuncList( DirectProduct, List( Components( source ), Range ) ) );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( source, CallFuncList( DirectProduct, List( source, Range ) ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
@@ -1304,14 +1304,14 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 InstallTrueMethod( CanComputeProjectionInFactorOfDirectProduct, CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct );
 
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
-                                       [ IsHomalgCategoryObject,
+                                       [ IsList,
                                          IsInt,
                                          IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct, ],
                                          -9999, #FIXME
                                          
   function( object_product_list, projection_number, method_selection_object )
     
-    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, Components( object_product_list ) ) );
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, object_product_list ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
@@ -1389,7 +1389,7 @@ DirectSum := function( arg )
         
       fi;
       
-      return DirectSumOp( CallFuncList( Product, arg ), arg[ 1 ] );
+      return DirectSumOp( arg, arg[ 1 ] );
       
   fi;
   
@@ -1410,7 +1410,7 @@ InstallMethod( AddDirectSum,
     SetCanComputeDirectSum( category, true );
     
     InstallMethodWithToDoForIsWellDefined( DirectSumOp,
-                                           [ IsHomalgCategoryObject, IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           [ IsList, IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
       function( object_product_list, method_selection_object )
         local direct_sum;
@@ -1446,7 +1446,7 @@ InstallTrueMethod( CanComputeDirectProduct,
                    CanComputeDirectSum );
 
 InstallMethodWithToDoForIsWellDefined( DirectProductOp,
-                                       [ IsHomalgCategoryObject, IsHomalgCategoryObject and CanComputeDirectSum ],
+                                       [ IsList, IsHomalgCategoryObject and CanComputeDirectSum ],
                                        -9999 + 1, #FIXME
                                        
   function( object_product_list, method_selection_object )
@@ -1460,7 +1460,7 @@ InstallTrueMethod( CanComputeCoproduct,
                    CanComputeDirectSum );
 
 InstallMethodWithToDoForIsWellDefined( CoproductOp,
-                                       [ IsHomalgCategoryObject, IsHomalgCategoryObject and CanComputeDirectSum ],
+                                       [ IsList, IsHomalgCategoryObject and CanComputeDirectSum ],
                                        -9999 + 1, #FIXME
                                        
   function( object_product_list, method_selection_object )
@@ -1477,7 +1477,7 @@ InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectPr
                    and CanComputePreCompose );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                                       [ IsHomalgCategoryMorphism,
+                                       [ IsList,
                                          IsHomalgCategoryObject 
                                      and IsAdditiveCategory
                                      and CanComputeInjectionOfCofactorOfCoproduct 
@@ -1488,7 +1488,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGiv
   function( source, direct_product )
     local nr_components;
     
-    nr_components := Length( Components( source ) );
+    nr_components := Length( source );
   
     return Sum( List( [ 1 .. nr_components ], i -> PreCompose( source[ i ], InjectionOfCofactor( direct_product, i ) ) ) );
   
@@ -1502,7 +1502,7 @@ InstallTrueMethod( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,
                    and CanComputePreCompose );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
-                                       [ IsHomalgCategoryMorphism,
+                                       [ IsList,
                                          IsHomalgCategoryObject
                                      and IsAdditiveCategory
                                      and CanComputeProjectionInFactorOfDirectProduct
@@ -1513,7 +1513,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCo
   function( sink, coproduct )
     local nr_components;
     
-    nr_components := Length( Components( sink ) );
+    nr_components := Length( sink );
   
     return Sum( List( [ 1 .. nr_components ], i -> PreCompose( ProjectionInFactor( coproduct, i ), sink[ i ] ) ) );
   
@@ -2107,7 +2107,7 @@ InstallGlobalFunction( FiberProduct,
         
     fi;
     
-    return PullbackOp( CallFuncList( Product, arg ), arg[ 1 ] );
+    return PullbackOp( arg, arg[ 1 ] );
     
 end );
 
@@ -2126,14 +2126,14 @@ InstallMethod( AddFiberProduct,
     SetCanComputePullback( category, true );
     
     InstallMethodWithToDoForIsWellDefined( PullbackOp,
-                                           [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           [ IsList, IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( diagram, method_selection_morphism )
         local base, pullback;
         
         base := Range( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj(  Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj(  Range( c ), base ) ) then
         
           Error( "the given morphisms of the pullback diagram must have the same range\n" );
         
@@ -2156,7 +2156,7 @@ end );
 ## convenience method:
 ##
 InstallMethod( ProjectionInFactorOfPullback,
-               [ IsHomalgCategoryMorphism, IsInt ],
+               [ IsList, IsInt ],
                
   function( diagram, projection_number )
     
@@ -2176,7 +2176,7 @@ InstallMethod( AddProjectionInFactorOfPullback,
     
     #TODO: Get the names clean!
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackOp,
-                                           [ IsHomalgCategoryMorphism,
+                                           [ IsList,
                                              IsInt,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                              
@@ -2191,7 +2191,7 @@ InstallMethod( AddProjectionInFactorOfPullback,
         
         base := Range( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj(  Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj(  Range( c ), base ) ) then
         
           Error( "the given morphisms of the pullback diagram must have the same range\n" );
         
@@ -2226,7 +2226,7 @@ InstallMethod( AddProjectionInFactorOfPullbackWithGivenPullback,
     SetCanComputeProjectionInFactorOfPullbackWithGivenPullback( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPullback,
-                                           [ IsHomalgCategoryMorphism,
+                                           [ IsList,
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                              
@@ -2235,7 +2235,7 @@ InstallMethod( AddProjectionInFactorOfPullbackWithGivenPullback,
         
         base := Range( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj(  Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj(  Range( c ), base ) ) then
         
           Error( "the given morphisms of the pullback diagram must have the same range\n" );
         
@@ -2265,11 +2265,11 @@ InstallGlobalFunction( UniversalMorphismIntoPullback,
     
       diagram := Genesis( pullback_or_diagram )!.PullbackDiagram;
     
-      return UniversalMorphismIntoPullbackOp( diagram, CallFuncList( Product, source ), diagram[1] );
+      return UniversalMorphismIntoPullbackOp( diagram, source, diagram[1] );
     
     fi;
     
-    return UniversalMorphismIntoPullbackOp( pullback_or_diagram, CallFuncList( Product, source ), pullback_or_diagram[1] );
+    return UniversalMorphismIntoPullbackOp( pullback_or_diagram, source, pullback_or_diagram[1] );
     
 end );
 
@@ -2284,8 +2284,8 @@ InstallMethod( AddUniversalMorphismIntoPullback,
     SetCanComputeUniversalMorphismIntoPullback( category, true );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
-                                           [ IsHomalgCategoryMorphism,
-                                             IsHomalgCategoryMorphism,
+                                           [ IsList,
+                                             IsList,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( diagram, source, method_selection_morphism )
@@ -2303,7 +2303,7 @@ InstallMethod( AddUniversalMorphismIntoPullback,
         
         base := Range( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj(  Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj(  Range( c ), base ) ) then
           
           Error( "the given morphisms of the pullback diagram must have the same range\n" );
           
@@ -2311,7 +2311,7 @@ InstallMethod( AddUniversalMorphismIntoPullback,
         
         test_object := Source( source[1] );
         
-        components := Components( source );
+        components := source; #FIXME components superflous
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
             
@@ -2351,8 +2351,8 @@ InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
     SetCanComputeUniversalMorphismIntoPullbackWithGivenPullback( category, true );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPullback,
-                                           [ IsHomalgCategoryMorphism, 
-                                             IsHomalgCategoryMorphism, 
+                                           [ IsList,
+                                             IsList,
                                              IsHomalgCategoryObject and ObjectFilter( category ) 
                                            ],
                                            
@@ -2361,7 +2361,7 @@ InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
         
         base := Range( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj( Range( c ), base ) ) then
           
           Error( "the given morphisms of the pullback diagram must have the same range\n" );
           
@@ -2369,7 +2369,7 @@ InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
         
         test_object := Source( source[1] );
         
-        components := Components( source );
+        components := source;
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
             
@@ -2401,7 +2401,7 @@ InstallTrueMethod( CanComputePullback, CanComputeDirectProduct and
 
 ##
 InstallMethodWithToDoForIsWellDefined( PullbackOp,
-                                       [ IsHomalgCategoryMorphism, 
+                                       [ IsList,
                                          IsHomalgCategoryMorphism and
                                          CanComputeDirectProduct and 
                                          CanComputeProjectionInFactorOfDirectProduct and 
@@ -2416,13 +2416,13 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
     
     base := Range( diagram[1] );
     
-    if not ForAll( Components( diagram ), c -> IsIdenticalObj( Range( c ), base ) ) then
+    if not ForAll( diagram, c -> IsIdenticalObj( Range( c ), base ) ) then
     
       Error( "the given morphisms of the pullback diagram must have the same range\n" );
       
     fi;
     
-    direct_product := CallFuncList( DirectProduct, List( Components( diagram ) , Source ) );
+    direct_product := CallFuncList( DirectProduct, List( diagram, Source ) );
     
     number_of_morphisms := Length( diagram );
     
@@ -2452,7 +2452,7 @@ InstallTrueMethod( CanComputeProjectionInFactorOfPullback, CanComputeProjectionI
                                                            CanComputePullback );
 
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackOp,
-                                       [ IsHomalgCategoryMorphism,
+                                       [ IsList,
                                          IsInt,
                                          IsHomalgCategoryMorphism and
                                          CanComputeProjectionInFactorOfPullbackWithGivenPullback and
@@ -2475,7 +2475,7 @@ InstallTrueMethod( CanComputeProjectionInFactorOfPullbackWithGivenPullback, CanC
 # Of course, as mentioned in the introduction of this chapter, the user should never only install 
 # the constructor of a universal object without also implementing the WithGiven-methods.
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPullback,
-                                       [ IsHomalgCategoryMorphism,
+                                       [ IsList,
                                          IsInt,
                                          IsHomalgCategoryObject and
                                          CanComputeKernelEmb and
@@ -2516,9 +2516,9 @@ InstallTrueMethod( CanComputeUniversalMorphismIntoPullbackWithGivenPullback, Can
 # the special construction from above. If the
 # user gives his own pullback method, this derived method fails.
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPullback,
-                                       [ 
-                                         IsHomalgCategoryMorphism, 
-                                         IsHomalgCategoryMorphism, 
+                                       [
+                                         IsList,
+                                         IsList,
                                          IsHomalgCategoryObject
                                        ],
                                        
@@ -2531,7 +2531,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPul
       
     fi;
     
-    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, Components( source ) );
+    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
     
     return KernelLift( pullback, test_function );
     
@@ -2543,8 +2543,8 @@ InstallTrueMethod( CanComputeUniversalMorphismIntoPullback, CanComputeUniversalM
                                                             CanComputePullback );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
-                                           [ IsHomalgCategoryMorphism,
-                                             IsHomalgCategoryMorphism,
+                                           [ IsList,
+                                             IsList,
                                              IsHomalgCategoryMorphism ],
                                              
   function( diagram, source, method_selection_morphism )
@@ -2572,7 +2572,7 @@ InstallGlobalFunction( Pushout,
         
     fi;
     
-    return PushoutOp( CallFuncList( Product, arg ), arg[ 1 ] );
+    return PushoutOp( arg, arg[ 1 ] );
     
 end );
 
@@ -2591,14 +2591,14 @@ InstallMethod( AddPushout,
     SetCanComputePushout( category, true );
     
     InstallMethodWithToDoForIsWellDefined( PushoutOp,
-                                           [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           [ IsList, IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( diagram, method_selection_morphism )
         local cobase, pushout;
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
            
            Error( "the given morphisms of the pushout diagram must have the same source\n" );
            
@@ -2621,7 +2621,7 @@ end );
 ## convenience method
 ##
 InstallMethod( InjectionOfCofactorOfPushout,
-               [ IsHomalgCategoryMorphism, IsInt ],
+               [ IsList, IsInt ],
                
   function( diagram, injection_number )
     
@@ -2640,7 +2640,7 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
     SetCanComputeInjectionOfCofactorOfPushout( category, true );
     
     InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutOp,
-                                           [ IsHomalgCategoryMorphism,
+                                           [ IsList,
                                              IsInt,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ), ],
                                              
@@ -2655,7 +2655,7 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
            
            Error( "the given morphisms of the pushout diagram must have the same source\n" );
            
@@ -2690,7 +2690,7 @@ InstallMethod( AddInjectionOfCofactorOfPushoutWithGivenPushout,
     SetCanComputeInjectionOfCofactorOfPushoutWithGivenPushout( category, true );
     
     InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPushout,
-                                           [ IsHomalgCategoryMorphism,
+                                           [ IsList,
                                              IsInt,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                              
@@ -2699,7 +2699,7 @@ InstallMethod( AddInjectionOfCofactorOfPushoutWithGivenPushout,
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
            
            Error( "the given morphisms of the pushout diagram must have the same source\n" );
            
@@ -2729,11 +2729,11 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
     
       diagram := Genesis( pushout_or_diagram )!.PushoutDiagram;
     
-      return UniversalMorphismFromPushoutOp( diagram, CallFuncList( Product, sink ), diagram[1] );
+      return UniversalMorphismFromPushoutOp( diagram, sink, diagram[1] );
     
     fi;
     
-    return UniversalMorphismFromPushoutOp( pushout_or_diagram, CallFuncList( Product, sink ), pushout_or_diagram[1] );
+    return UniversalMorphismFromPushoutOp( pushout_or_diagram, sink, pushout_or_diagram[1] );
     
 end );
 
@@ -2748,8 +2748,8 @@ InstallMethod( AddUniversalMorphismFromPushout,
     SetCanComputeUniversalMorphismFromPushout( category, true );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
-                                           [ IsHomalgCategoryMorphism,
-                                             IsHomalgCategoryMorphism,
+                                           [ IsList,
+                                             IsList,
                                              IsHomalgCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( diagram, sink, method_selection_morphism )
@@ -2767,7 +2767,7 @@ InstallMethod( AddUniversalMorphismFromPushout,
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
            
            Error( "the given morphisms of the pushout diagram must have the same source\n" );
            
@@ -2775,7 +2775,7 @@ InstallMethod( AddUniversalMorphismFromPushout,
         
         test_object := Range( sink[1] );
         
-        components := Components( sink );
+        components := sink;
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
             
@@ -2815,8 +2815,8 @@ InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
     SetCanComputeUniversalMorphismFromPushoutWithGivenPushout( category, true );
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutWithGivenPushout,
-                                           [ IsHomalgCategoryMorphism, 
-                                             IsHomalgCategoryMorphism, 
+                                           [ IsList,
+                                             IsList,
                                              IsHomalgCategoryObject and ObjectFilter( category ) 
                                            ],
                                            
@@ -2825,7 +2825,7 @@ InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
            
            Error( "the given morphisms of the pushout diagram must have the same source\n" );
            
@@ -2833,7 +2833,7 @@ InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
         
         test_object := Range( sink[1] );
         
-        components := Components( sink );
+        components := sink; #FIXME: components superflous
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
             
@@ -2865,10 +2865,10 @@ InstallTrueMethod( CanComputePushout, CanComputeCoproduct and
 
 ##
 InstallMethodWithToDoForIsWellDefined( PushoutOp,
-                                       [ IsHomalgCategoryMorphism, 
+                                       [ IsList,
                                          IsHomalgCategoryMorphism and
-                                         CanComputeCoproduct and 
-                                         CanComputeInjectionOfCofactorOfCoproduct and 
+                                         CanComputeCoproduct and
+                                         CanComputeInjectionOfCofactorOfCoproduct and
                                          CanComputePreCompose and
                                          CanComputeAdditionForMorphisms and
                                          CanComputeAdditiveInverseForMorphisms and
@@ -2880,13 +2880,13 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
     
     cobase := Source( diagram[1] );
         
-    if not ForAll( Components( diagram ), c -> IsIdenticalObj( Source( c ), cobase ) ) then
+    if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
            
        Error( "the given morphisms of the pushout diagram must have the same source\n" );
            
     fi;
     
-    coproduct := CallFuncList( Coproduct, List( Components( diagram ), Range ) );
+    coproduct := CallFuncList( Coproduct, List( diagram, Range ) );
     
     number_of_morphisms := Length( diagram );
     
@@ -2916,7 +2916,7 @@ InstallTrueMethod( CanComputeInjectionOfCofactorOfPushout, CanComputeInjectionOf
                                                            CanComputePushout );
 
 InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutOp,
-                                       [ IsHomalgCategoryMorphism,
+                                       [ IsList,
                                          IsInt,
                                          IsHomalgCategoryMorphism and
                                          CanComputeInjectionOfCofactorOfPushoutWithGivenPushout and
@@ -2936,9 +2936,9 @@ InstallTrueMethod( CanComputeInjectionOfCofactorOfPushoutWithGivenPushout, CanCo
 # FIXME: WARNING: This method only applies if the pushout was created as a cokernel. If the
 # user gives his own pushout method, this derived method fails.
 InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPushout,
-                                       [ IsHomalgCategoryMorphism,
+                                       [ IsList,
                                          IsInt,
-                                         IsHomalgCategoryObject and 
+                                         IsHomalgCategoryObject and
                                          CanComputeCokernelProj and
                                          CanComputeInjectionOfCofactorOfCoproduct and
                                          CanComputePushout ],
@@ -2976,9 +2976,9 @@ InstallTrueMethod( CanComputeUniversalMorphismFromPushoutWithGivenPushout, CanCo
 # FIXME: WARNING: This method only applies if the pushout was created as a cokernel. If the
 # user gives his own pushout method, this derived method fails.
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutWithGivenPushout,
-                                       [ 
-                                         IsHomalgCategoryMorphism, 
-                                         IsHomalgCategoryMorphism, 
+                                       [
+                                         IsList,
+                                         IsList,
                                          IsHomalgCategoryObject
                                        ],
                                        
@@ -2991,7 +2991,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutWithGivenPush
       
     fi;
     
-    test_function := CallFuncList( UniversalMorphismFromCoproduct, Components( sink ) );
+    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
     
     return CokernelColift( pushout, test_function );
     
@@ -3003,8 +3003,8 @@ InstallTrueMethod( CanComputeUniversalMorphismFromPushout, CanComputeUniversalMo
                                                            CanComputePushout );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
-                                           [ IsHomalgCategoryMorphism,
-                                             IsHomalgCategoryMorphism,
+                                           [ IsList,
+                                             IsList,
                                              IsHomalgCategoryMorphism ],
                                              
   function( diagram, sink, method_selection_morphism )

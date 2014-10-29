@@ -668,9 +668,9 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 
 ## Main Operations and Attributes
 
-##FIXME: List as argument
+##FIXME: List as argument DONE
 DeclareOperationWithCache( "DirectSumOp",
-                           [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+                           [ IsList, IsHomalgCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -688,7 +688,7 @@ DeclareAttribute( "DirectSumFunction",
 #! where $(S_1, \dots, S_n)$ is an object of the product category $C^n$.
 #! @Returns nothing
 #! @Arguments C, f
-##FIXME: List as argument for f
+##FIXME: List as argument for f DONE
 DeclareOperation( "AddDirectSum",
                   [ IsHomalgCategory, IsFunction ] );
 
@@ -731,32 +731,33 @@ DeclareGlobalFunction( "Coproduct" );
 
 ##FIXME: List as argument
 DeclareOperationWithCache( "CoproductOp",
-                           [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+                           [ IsList, IsHomalgCategoryObject ] );
 
 ##FIXME: should call InjectionOfCofactorOfCoproductOp/ InjectionOfCofactorOfPushoutOp with List as argument
 DeclareGlobalFunction( "InjectionOfCofactor" );
 
+# FIXME: List as argument
 DeclareOperation( "InjectionOfCofactorOfCoproduct",
-                  [ IsHomalgCategoryObject, IsInt ] );
+                  [ IsList, IsInt ] );
 
 ##FIXME: List as argument
 DeclareOperation( "InjectionOfCofactorOfCoproductOp",
-                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsHomalgCategoryObject ] );
 
 ##FIXME: List as argument
 DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
-                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsHomalgCategoryObject ] );
 
 ##FIXME: Should call UniversalMorphismFromCoproductOp with List as argument
 DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
 
 ##FIXME: List as argument
 DeclareOperation( "UniversalMorphismFromCoproductOp",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsHomalgCategoryMorphism ] );
 
 ##FIXME: List as argument
 DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsList, IsHomalgCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -873,7 +874,7 @@ DeclareFilter( "WasCreatedAsCoproduct" );
 #! @Arguments D, M
 # FIXME: List as argument
 DeclareOperationWithCache( "DirectProductOp",
-                           [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+                           [ IsList, IsHomalgCategoryObject ] );
 
 #! @Description
 #! Projection in the $i$-th factor of the direct product given by $D$.
@@ -887,7 +888,7 @@ DeclareGlobalFunction( "ProjectionInFactor" );
 
 # FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfDirectProduct",
-                  [ IsHomalgCategoryObject, IsInt ] );
+                  [ IsList, IsInt ] );
 #! @Description
 #! Projection in the $i$-th factor of the direct product given by $D$.
 #! $D$ can either be an object created as a direct product or an object
@@ -897,7 +898,7 @@ DeclareOperation( "ProjectionInFactorOfDirectProduct",
 #! @Arguments D, i, M
 # FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfDirectProductOp",
-                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsHomalgCategoryObject ] );
 
 #! @Description
 #! Projection in the $i$-th factor of the direct product $P = \prod_j A_j$ 
@@ -906,7 +907,7 @@ DeclareOperation( "ProjectionInFactorOfDirectProductOp",
 #! @Arguments D, i, P
 # FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
-                  [ IsHomalgCategoryObject, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsHomalgCategoryObject ] );
 
 #! @Description
 #! Given finitely many morphisms $\alpha_i: A \rightarrow B_i$ this method
@@ -928,7 +929,7 @@ DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 # @Arguments D, M
 # FIXME: List as argument
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsHomalgCategoryMorphism ] );
 
 #! @Description
 #! Given finitely many morphisms $D = (\alpha_i: A \rightarrow B_i)$ as an
@@ -940,7 +941,7 @@ DeclareOperation( "UniversalMorphismIntoDirectProductOp",
 #! @Arguments D, P
 # FIXME: List as argument
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsList, IsHomalgCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -1051,30 +1052,30 @@ DeclareGlobalFunction( "FiberProduct" );
 
 # FIXME: List as argument
 DeclareOperationWithCache( "PullbackOp",
-                           [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                           [ IsList, IsHomalgCategoryMorphism ] );
 
-# FIXME: ProjectionInFactorOfPullbackOp shoult be called with List as argument
+# FIXME: ProjectionInFactorOfPullbackOp should be called with List as argument
 DeclareOperation( "ProjectionInFactorOfPullback",
-                  [ IsHomalgCategoryMorphism, IsInt ] );
+                  [ IsList, IsInt ] );
 
 # FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfPullbackOp",
-                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsInt, IsHomalgCategoryMorphism ] );
 
 # FIXME: List as argument
 DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
-                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsHomalgCategoryObject ] );
 
 # FIXME: UniversalMorphismIntoPullbackOp should be called with List as argument
 DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
 
 # FIXME: List as argument
 DeclareOperation( "UniversalMorphismIntoPullbackOp",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsList, IsHomalgCategoryMorphism ] );
 
 # FIXME: List as argument
 DeclareOperation( "UniversalMorphismIntoPullbackWithGivenPullback",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsHomalgCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -1186,32 +1187,32 @@ DeclareGlobalFunction( "Pushout" );
 
 # FIXME: List as argument
 DeclareOperationWithCache( "PushoutOp",
-                           [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                           [ IsList, IsHomalgCategoryMorphism ] );
 
 ## DeclareGlobalFunction( "InjectionOfCofactor" ); to be adjusted
 
 # FIXME: InjectionOfCofactorOfPushoutOp should be called with List as argument
 DeclareOperation( "InjectionOfCofactorOfPushout",
-                  [ IsHomalgCategoryMorphism, IsInt ] );
+                  [ IsList, IsInt ] );
 
 # FIXME: List as argument
 DeclareOperation( "InjectionOfCofactorOfPushoutOp",
-                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsInt, IsHomalgCategoryMorphism ] );
 
 # FIXME: List as argument
 DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
-                  [ IsHomalgCategoryMorphism, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsHomalgCategoryObject ] );
 
 # FIXME: UniversalMorphismFromPushoutOp should be called with List as argument
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 
 # FIXME: List as argument
 DeclareOperation( "UniversalMorphismFromPushoutOp",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsList, IsHomalgCategoryMorphism ] );
 
 # FIXME: List as argument
 DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsHomalgCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
