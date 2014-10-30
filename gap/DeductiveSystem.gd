@@ -24,12 +24,6 @@ DeclareGlobalFunction( "RESOLVE_HISTORY" );
 
 DeclareGlobalFunction( "RECURSIVE_EVAL" );
 
-DeclareGlobalFunction( "ADD_THEOREM_TO_CATEGORY" );
-
-DeclareGlobalFunction( "SANITIZE_RECORD" );
-
-DeclareGlobalFunction( "INSTALL_TODO_FOR_LOGICAL_THEOREMS" );
-
 #####################################
 ##
 ## Constructor

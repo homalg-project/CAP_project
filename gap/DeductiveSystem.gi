@@ -13,7 +13,7 @@
 ##
 ####################################
 
-InstallGlobalFunction( "RESOLVE_HISTORY",
+InstallGlobalFunction( RESOLVE_HISTORY,
                        
   function( list )
     local new_list, i;
@@ -35,202 +35,6 @@ InstallGlobalFunction( "RESOLVE_HISTORY",
     od;
     
     return new_list;
-    
-end );
-
-InstallGlobalFunction( ADD_THEOREM_TO_CATEGORY,
-                       
-  function( category, implication_record )
-    local theorem_record, name;
-    
-    theorem_record := TheoremRecord( category );
-    
-    name := implication_record.Function;
-    
-    if not IsBound( theorem_record.( name ) ) then
-        
-        theorem_record.( name ) := [ implication_record ];
-        
-    else
-        
-        Add( theorem_record.( name ), implication_record );
-        
-    fi;
-    
-end );
-
-InstallGlobalFunction( SANITIZE_RECORD,
-                       
-  function( record, arguments, result_object )
-    local object, index_list, i, value_function, value;
-    
-    if not IsBound( record!.Object ) then
-        
-        object := "result";
-        
-    else
-        
-        object := record!.Object;
-        
-    fi;
-    
-    if IsString( object ) and LowercaseString( object ) = "result" then
-        
-        object := result_object;
-        
-    elif IsInt( object ) then
-        
-        object := arguments[ object ];
-        
-    elif IsList( object ) then
-        
-        index_list := object;
-        
-        object := arguments;
-        
-        for i in index_list do
-            
-            object := object[ i ];
-            
-        od;
-        
-    else
-        
-        Error( "wrong object type" );
-        
-    fi;
-    
-    if IsBound( record!.ValueFunction ) then
-        
-        value_function := record!.ValueFunction;
-        
-    else
-        
-        value_function := IdFunc;
-        
-    fi;
-    
-    if IsBound( record!.Value ) then
-        
-        value := record!.Value;
-        
-    else
-        
-        value := true;
-        
-    fi;
-    
-    if not IsBound( record!.compare_function ) then
-        
-        return [ object, value_function, value ];
-        
-    else
-        
-        return [ object, value_function, value, record!.compare_function ];
-        
-    fi;
-    
-end );
-
-InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
-                       
-  function( method_name, arguments, result_object )
-    local current_argument, crisp_category, deductive_category, theorem_list,
-          current_theorem, todo_list_source, range, is_valid_theorem, sanitized_source,
-          entry, current_source;
-    
-    if Length( arguments ) = 0 then
-        
-        Error( "Cannot figure out which category to use here" );
-        
-    fi;
-    
-    current_argument := arguments[ 1 ];
-    
-    if IsHomalgCategory( current_argument ) then
-       
-        crisp_category := current_argument;
-        
-        deductive_category := DeductiveSystem( crisp_category );
-        
-    elif IsHomalgCategoryCell( current_argument ) then
-        
-        deductive_category := HomalgCategory( current_argument );
-        
-        crisp_category := UnderlyingHonestCategory( deductive_category );
-        
-    elif IsList( current_argument ) then
-        
-        deductive_category := HomalgCategory( current_argument[ 1 ] );
-        
-        crisp_category := UnderlyingHonestCategory( deductive_category );
-        
-    else
-        
-        Error( "this should not happen: wrong arguments" );
-        
-    fi;
-    
-    if not IsBound( TheoremRecord( crisp_category).( method_name ) ) then
-        
-        return;
-        
-    fi;
-    
-    theorem_list := TheoremRecord( crisp_category ).( method_name );
-    
-    for current_theorem in theorem_list do
-        
-        todo_list_source := [ ];
-        
-        is_valid_theorem := true;
-        
-        for current_source in current_theorem.Source do
-            
-            sanitized_source := SANITIZE_RECORD( current_source, arguments, result_object );
-            
-            if IsBound( current_source!.Type ) and LowercaseString( current_source!.Type ) = "testdirect" then
-                
-                if ( Length( sanitized_source ) = 3 and not sanitized_source[ 2 ]( sanitized_source[ 1 ] ) = sanitized_source[ 3 ] )
-                   or ( Length( sanitized_source ) = 4 and not sanitized_source[ 4 ]( sanitized_source[ 2 ]( sanitized_source[ 1 ] ), sanitized_source[ 3 ] ) ) then
-                    
-                    is_valid_theorem := false;
-                    
-                    break;
-                      
-                fi;
-                
-            else
-                
-                sanitized_source[ 2 ] := NameFunction( sanitized_source[ 2 ] );
-                
-                Add( todo_list_source, sanitized_source );
-                
-            fi;
-            
-        od;
-        
-        if is_valid_theorem = false then
-            
-            continue;
-            
-        fi;
-        
-        range := SANITIZE_RECORD( current_theorem!.Range, arguments, result_object );
-        
-        if Length( todo_list_source ) = 0 then
-            
-            Setter( range[ 2 ] )( range[ 1 ], range[ 3 ] );
-            
-            continue;
-            
-        fi;
-        
-        entry := ToDoListEntry( todo_list_source, range[ 1 ], NameFunction( range[ 2 ] ), range[ 3 ] );
-        
-        AddToToDoList( entry );
-        
-    od;
     
 end );
 
@@ -881,6 +685,10 @@ InstallGlobalFunction( RECURSIVE_EVAL,
     elif IsList( list ) and Length( list ) = 2 and IsString( list[ 1 ] ) then
         
         return CallFuncList( ValueGlobal( list[ 1 ] ), List( list[ 2 ], RECURSIVE_EVAL ) );
+        
+    elif IsList( list ) and ForAll( list, IsHomalgCategoryCell ) then
+        
+        return List( list, RECURSIVE_EVAL );
         
     fi;
     

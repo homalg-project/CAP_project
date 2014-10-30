@@ -23,3 +23,5 @@ ReadPackage( "CategoriesForHomalg", "gap/SerreQuotients.gi");
 ReadPackage( "CategoriesForHomalg", "gap/LazyCategory.gi");
 
 ReadPackage( "CategoriesForHomalg", "gap/DeductiveSystem.gi");
+
+ReadPackage( "CategoriesForHomalg", "gap/LogicForDeductiveSystem.gi");
