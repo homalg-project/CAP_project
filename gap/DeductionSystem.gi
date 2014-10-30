@@ -22,7 +22,7 @@ InstallGlobalFunction( "RESOLVE_HISTORY",
     
     for i in list do
         
-        if IsDeductionSystemCell( i ) then
+        if IsDeductiveSystemCell( i ) then
             
             Add( new_list, History( i ) );
             
@@ -135,7 +135,7 @@ end );
 InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
                        
   function( method_name, arguments, result_object )
-    local current_argument, crisp_category, deduction_category, theorem_list,
+    local current_argument, crisp_category, deductive_category, theorem_list,
           current_theorem, todo_list_source, range, is_valid_theorem, sanitized_source,
           entry, current_source;
     
@@ -151,19 +151,19 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
        
         crisp_category := current_argument;
         
-        deduction_category := DeductionSystem( crisp_category );
+        deductive_category := DeductiveSystem( crisp_category );
         
     elif IsHomalgCategoryCell( current_argument ) then
         
-        deduction_category := HomalgCategory( current_argument );
+        deductive_category := HomalgCategory( current_argument );
         
-        crisp_category := UnderlyingHonestCategory( deduction_category );
+        crisp_category := UnderlyingHonestCategory( deductive_category );
         
     elif IsList( current_argument ) then
         
-        deduction_category := HomalgCategory( current_argument[ 1 ] );
+        deductive_category := HomalgCategory( current_argument[ 1 ] );
         
-        crisp_category := UnderlyingHonestCategory( deduction_category );
+        crisp_category := UnderlyingHonestCategory( deductive_category );
         
     else
         
@@ -240,21 +240,21 @@ end );
 ##
 ####################################
 
-DeclareRepresentation( "IsDeductionSystemObjectRep",
-                       IsHomalgCategoryObjectRep and IsDeductionSystemObject,
+DeclareRepresentation( "IsDeductiveSystemObjectRep",
+                       IsHomalgCategoryObjectRep and IsDeductiveSystemObject,
                        [ ] );
 
-BindGlobal( "TheTypeOfDeductionSystemObject",
+BindGlobal( "TheTypeOfDeductiveSystemObject",
         NewType( TheFamilyOfHomalgCategoryObjects,
-                IsDeductionSystemObjectRep ) );
+                IsDeductiveSystemObjectRep ) );
 
-DeclareRepresentation( "IsDeductionSystemMorphismRep",
-                       IsHomalgCategoryMorphismRep and IsDeductionSystemMorphism,
+DeclareRepresentation( "IsDeductiveSystemMorphismRep",
+                       IsHomalgCategoryMorphismRep and IsDeductiveSystemMorphism,
                        [ ] );
 
-BindGlobal( "TheTypeOfDeductionSystemMorphism",
+BindGlobal( "TheTypeOfDeductiveSystemMorphism",
         NewType( TheFamilyOfHomalgCategoryMorphisms,
-                IsDeductionSystemMorphismRep ) );
+                IsDeductiveSystemMorphismRep ) );
 
 ####################################
 ##
@@ -262,51 +262,51 @@ BindGlobal( "TheTypeOfDeductionSystemMorphism",
 ##
 ####################################
 
-InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
+InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                        
-  function( deduction_system, category )
+  function( deductive_system, category )
     
-    AddPreCompose( deduction_system,
+    AddPreCompose( deductive_system,
                    
       function( left_morphism, right_morphism )
         
-        return DeductionSystemMorphism( Source( left_morphism ), "PreCompose", [ left_morphism, right_morphism ], Range( right_morphism ) );
+        return DeductiveSystemMorphism( Source( left_morphism ), "PreCompose", [ left_morphism, right_morphism ], Range( right_morphism ) );
         
     end );
     
-    AddIdentityMorphism( deduction_system,
+    AddIdentityMorphism( deductive_system,
                          
       function( object )
         
-        return DeductionSystemMorphism( object, "IdentityMorphism", [ object ], object );
+        return DeductiveSystemMorphism( object, "IdentityMorphism", [ object ], object );
         
     end );
     
-    AddInverse( deduction_system,
+    AddInverse( deductive_system,
                 
       function( morphism )
         
-        return DeductionSystemMorphism( Range( morphism ), "Inverse", [ morphism ], Source( morphism ) );
+        return DeductiveSystemMorphism( Range( morphism ), "Inverse", [ morphism ], Source( morphism ) );
         
     end );
     
-    AddMonoAsKernelLift( deduction_system,
+    AddMonoAsKernelLift( deductive_system,
                          
       function( monomorphism, test_morphism )
         
-        return DeductionSystemMorphism( Source( test_morphism ), "MonoAsKernelLift", [ monomorphism, test_morphism ], Source( monomorphism ) );
+        return DeductiveSystemMorphism( Source( test_morphism ), "MonoAsKernelLift", [ monomorphism, test_morphism ], Source( monomorphism ) );
         
     end );
     
-    AddEpiAsCokernelColift( deduction_system,
+    AddEpiAsCokernelColift( deductive_system,
                             
       function( epimorphism, test_morphism )
         
-        return DeductionSystemMorphism( Range( epimorphism ), "EpiAsCokernelColift", [ epimorphism, test_morphism ], Range( test_morphism ) );
+        return DeductiveSystemMorphism( Range( epimorphism ), "EpiAsCokernelColift", [ epimorphism, test_morphism ], Range( test_morphism ) );
         
     end );
     
-    AddIsMonomorphism( deduction_system,
+    AddIsMonomorphism( deductive_system,
                        
       function( morphism )
         
@@ -314,7 +314,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddIsEpimorphism( deduction_system,
+    AddIsEpimorphism( deductive_system,
                       
       function( morphism )
         
@@ -322,7 +322,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddIsIsomorphism( deduction_system,
+    AddIsIsomorphism( deductive_system,
                       
       function( morphism )
         
@@ -330,7 +330,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddDominates( deduction_system,
+    AddDominates( deductive_system,
                   
       function( subobject1, subobject2 )
         
@@ -338,7 +338,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddCodominates( deduction_system,
+    AddCodominates( deductive_system,
                     
       function( factorobject1, factorobject2 )
         
@@ -346,7 +346,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddIsEqualForMorphisms( deduction_system,
+    AddIsEqualForMorphisms( deductive_system,
                             
       function( morphism1, morphism2 )
         
@@ -354,7 +354,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddIsZeroForMorphisms( deduction_system,
+    AddIsZeroForMorphisms( deductive_system,
                            
       function( morphism )
         
@@ -362,384 +362,384 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
         
     end );
     
-    AddAdditionForMorphisms( deduction_system,
+    AddAdditionForMorphisms( deductive_system,
                              
       function( morphism1, morphism2 )
         
-        return DeductionSystemMorphism( Source( morphism1 ), "\+", [ morphism1, morphism2 ], Range( morphism1 ) );
+        return DeductiveSystemMorphism( Source( morphism1 ), "\+", [ morphism1, morphism2 ], Range( morphism1 ) );
         
     end );
     
-    AddAdditiveInverseForMorphisms( deduction_system,
+    AddAdditiveInverseForMorphisms( deductive_system,
                                     
       function( morphism )
         
-        return DeductionSystemMorphism( Source( morphism ), "AdditiveInverse", [ morphism ], Range( morphism ) );
+        return DeductiveSystemMorphism( Source( morphism ), "AdditiveInverse", [ morphism ], Range( morphism ) );
         
     end );
     
-    AddZeroMorphism( deduction_system,
+    AddZeroMorphism( deductive_system,
                      
       function( source, range )
         
-        return DeductionSystemMorphism( source, "ZeroMorphism", [ source, range ], range );
+        return DeductiveSystemMorphism( source, "ZeroMorphism", [ source, range ], range );
         
     end );
     
     ## HOLE: Well defined
     
-    AddKernelObject( deduction_system,
+    AddKernelObject( deductive_system,
                
       function( morphism )
         
-        return DeductionSystemObject( "KernelObject", [ morphism ] );
+        return DeductiveSystemObject( "KernelObject", [ morphism ] );
         
     end );
     
-    AddKernelEmb( deduction_system,
+    AddKernelEmb( deductive_system,
                   
       function( morphism )
         
-        return DeductionSystemMorphism( KernelObject( morphism ), "KernelEmb", [ morphism ], Source( morphism ) );
+        return DeductiveSystemMorphism( KernelObject( morphism ), "KernelEmb", [ morphism ], Source( morphism ) );
         
     end );
     
-    AddKernelEmbWithGivenKernel( deduction_system,
+    AddKernelEmbWithGivenKernel( deductive_system,
                                  
       function( morphism, kernel )
         
-        return DeductionSystemMorphism( kernel, "KernelEmbWithGivenKernel", [ morphism, kernel ], Source( morphism ) );
+        return DeductiveSystemMorphism( kernel, "KernelEmbWithGivenKernel", [ morphism, kernel ], Source( morphism ) );
         
     end );
     
-    AddKernelLift( deduction_system,
+    AddKernelLift( deductive_system,
                    
       function( morphism, test_morphism )
         
-        return DeductionSystemMorphism( Source( test_morphism ), "KernelLift", [ morphism, test_morphism ], KernelObject( morphism ) );
+        return DeductiveSystemMorphism( Source( test_morphism ), "KernelLift", [ morphism, test_morphism ], KernelObject( morphism ) );
         
     end );
     
-    AddKernelLiftWithGivenKernel( deduction_system,
+    AddKernelLiftWithGivenKernel( deductive_system,
                                   
       function( morphism, test_morphism, kernel )
         
-        return DeductionSystemMorphism( Source( test_morphism ), "KernelLiftWithGivenKernel", [ morphism, test_morphism, kernel ], kernel );
+        return DeductiveSystemMorphism( Source( test_morphism ), "KernelLiftWithGivenKernel", [ morphism, test_morphism, kernel ], kernel );
         
     end );
     
-    AddCokernel( deduction_system,
+    AddCokernel( deductive_system,
                  
       function( morphism )
         
-        return DeductionSystemObject( "Cokernel", [ morphism ] );
+        return DeductiveSystemObject( "Cokernel", [ morphism ] );
         
     end );
     
-    AddCokernelProj( deduction_system,
+    AddCokernelProj( deductive_system,
                      
       function( morphism )
         
-        return DeductionSystemMorphism( Range( morphism ), "CokernelProj", [ morphism ], Cokernel( morphism ) );
+        return DeductiveSystemMorphism( Range( morphism ), "CokernelProj", [ morphism ], Cokernel( morphism ) );
         
     end );
     
-    AddCokernelProjWithGivenCokernel( deduction_system,
+    AddCokernelProjWithGivenCokernel( deductive_system,
                                       
       function( morphism, cokernel )
         
-        return DeductionSystemMorphism( Range( morphism ), "CokernelProjWithGivenCokernel", [ morphism, cokernel ], cokernel );
+        return DeductiveSystemMorphism( Range( morphism ), "CokernelProjWithGivenCokernel", [ morphism, cokernel ], cokernel );
         
     end );
     
-    AddCokernelColift( deduction_system,
+    AddCokernelColift( deductive_system,
                        
       function( morphism, test_morphism )
         
-        return DeductionSystemMorphism( Cokernel( morphism ), "CokernelColift", [ morphism, test_morphism ], Range( test_morphism ) );
+        return DeductiveSystemMorphism( Cokernel( morphism ), "CokernelColift", [ morphism, test_morphism ], Range( test_morphism ) );
         
     end );
     
-    AddCokernelColiftWithGivenCokernel( deduction_system,
+    AddCokernelColiftWithGivenCokernel( deductive_system,
                                         
       function( morphism, test_morphism, cokernel )
         
-        return DeductionSystemMorphism( cokernel, "AddCokernelColiftWithGivenCokernel", [ morphism, test_morphism, cokernel ], Range( test_morphism ) );
+        return DeductiveSystemMorphism( cokernel, "AddCokernelColiftWithGivenCokernel", [ morphism, test_morphism, cokernel ], Range( test_morphism ) );
         
     end );
     
-    AddZeroObject( deduction_system,
+    AddZeroObject( deductive_system,
                    
       function( ) 
         
-        return DeductionSystemObject( "ZeroObject", [ category ] );
+        return DeductiveSystemObject( "ZeroObject", [ category ] );
         
     end );
     
-    AddTerminalObject( deduction_system,
+    AddTerminalObject( deductive_system,
                        
       function( )
         
-        return DeductionSystemObject( "TerminalObject", [ category ] );
+        return DeductiveSystemObject( "TerminalObject", [ category ] );
         
     end );
     
-    AddUniversalMorphismIntoTerminalObject( deduction_system,
+    AddUniversalMorphismIntoTerminalObject( deductive_system,
                                             
       function( object )
         
-        return DeductionSystemMorphism( object, "UniversalMorphismIntoTerminalObject", [ object ], TerminalObject( deduction_system ) );
+        return DeductiveSystemMorphism( object, "UniversalMorphismIntoTerminalObject", [ object ], TerminalObject( deductive_system ) );
         
     end );
     
-    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( deduction_system,
+    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( deductive_system,
                                             
       function( object, terminal_object )
         
-        return DeductionSystemMorphism( object, "UniversalMorphismIntoTerminalObject", [ object ], terminal_object );
+        return DeductiveSystemMorphism( object, "UniversalMorphismIntoTerminalObject", [ object ], terminal_object );
         
     end );
     
-    AddInitialObject( deduction_system,
+    AddInitialObject( deductive_system,
                       
       function( )
         
-        return DeductionSystemObject( "InitialObject", [ category ] );
+        return DeductiveSystemObject( "InitialObject", [ category ] );
         
     end );
     
-    AddUniversalMorphismFromInitialObject( deduction_system,
+    AddUniversalMorphismFromInitialObject( deductive_system,
                                            
       function( object )
         
-        return DeductionSystemMorphism( InitialObject( object ), "UniversalMorphismFromInitialObject", [ object ], object );
+        return DeductiveSystemMorphism( InitialObject( object ), "UniversalMorphismFromInitialObject", [ object ], object );
         
     end );
     
-    AddUniversalMorphismFromInitialObjectWithGivenInitialObject( deduction_system,
+    AddUniversalMorphismFromInitialObjectWithGivenInitialObject( deductive_system,
                                                                  
       function( object, initial_object )
         
-        return DeductionSystemMorphism( initial_object, "UniversalMorphismFromInitialObjectWithGivenInitialObject", [ object, initial_object ], object );
+        return DeductiveSystemMorphism( initial_object, "UniversalMorphismFromInitialObjectWithGivenInitialObject", [ object, initial_object ], object );
         
     end );
     
-    AddDirectSum( deduction_system,
+    AddDirectSum( deductive_system,
                   
       function( object_product_list )
         
-        return DeductionSystemObject( "DirectSum", [ object_product_list ] );
+        return DeductiveSystemObject( "DirectSum", [ object_product_list ] );
         
     end );
     
-    AddCoproduct( deduction_system,
+    AddCoproduct( deductive_system,
                   
       function( object_product_list )
         
-        return DeductionSystemObject( "Coproduct", [ object_product_list ] );
+        return DeductiveSystemObject( "Coproduct", [ object_product_list ] );
         
     end );
     
-    AddInjectionOfCofactorOfCoproduct( deduction_system,
+    AddInjectionOfCofactorOfCoproduct( deductive_system,
                             
       function( object_product_list, injection_number )
         local coproduct;
         
         coproduct := Coproduct( object_product_list );
         
-        return DeductionSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactor",  [ object_product_list, injection_number ], coproduct );
+        return DeductiveSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactor",  [ object_product_list, injection_number ], coproduct );
         
     end );
     
-    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( deduction_system,
+    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( deductive_system,
                                               
       function( object_product_list, injection_number, coproduct )
         
-        return DeductionSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactorOfCoproductWithGivenCoproduct", [ object_product_list, injection_number, coproduct ], coproduct );
+        return DeductiveSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactorOfCoproductWithGivenCoproduct", [ object_product_list, injection_number, coproduct ], coproduct );
         
     end );
     
-    AddUniversalMorphismFromCoproduct( deduction_system,
+    AddUniversalMorphismFromCoproduct( deductive_system,
                                        
       function( sink )
         local coproduct;
         
         coproduct := Coproduct( List( sink, Source ) );
         
-        return DeductionSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ sink ], Source( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ sink ], Source( sink[ 1 ] ) );
         
     end );
     
-    AddUniversalMorphismFromCoproductWithGivenCoproduct( deduction_system,
+    AddUniversalMorphismFromCoproductWithGivenCoproduct( deductive_system,
                                                          
       function( sink, coproduct )
         
-        return DeductionSystemMorphism( coproduct, "UniversalMorphismFromCoproductWithGivenCoproduct", [ sink, coproduct ], Source( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproductWithGivenCoproduct", [ sink, coproduct ], Source( sink[ 1 ] ) );
         
     end );
     
-    AddDirectProduct( deduction_system,
+    AddDirectProduct( deductive_system,
                       
       function( object_product_list )
         
-        return DeductionSystemObject( "DirectProduct", [ object_product_list ] );
+        return DeductiveSystemObject( "DirectProduct", [ object_product_list ] );
         
     end );
     
-    AddProjectionInFactorOfDirectProduct( deduction_system,
+    AddProjectionInFactorOfDirectProduct( deductive_system,
                            
       function( object_product_list, projection_number )
         local direct_product;
         
         direct_product := DirectProduct( object_product_list );
         
-        return DeductionSystemMorphism( direct_product, "ProjectionInFactor", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
+        return DeductiveSystemMorphism( direct_product, "ProjectionInFactor", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
         
     end );
     
-    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( deduction_system,
+    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( deductive_system,
                                                  
       function( object_product_list, projection_number, direct_product )
         
-        return DeductionSystemMorphism( direct_product, "ProjectionInFactor", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
+        return DeductiveSystemMorphism( direct_product, "ProjectionInFactor", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
         
     end );
     
-    AddUniversalMorphismIntoDirectProduct( deduction_system,
+    AddUniversalMorphismIntoDirectProduct( deductive_system,
                                            
       function( source )
         local direct_product;
         
         direct_product := DirectProduct( List( source, Range ) );
         
-        return DeductionSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", source, direct_product );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", source, direct_product );
         
     end );
     
-    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( deduction_system,
+    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( deductive_system,
                                            
       function( source, direct_product )
         
-        return DeductionSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProductWithGivenDirectProduct", [ source, direct_product ], direct_product );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProductWithGivenDirectProduct", [ source, direct_product ], direct_product );
         
     end );
     
-    AddFiberProduct( deduction_system,
+    AddFiberProduct( deductive_system,
                  
       function( diagram )
         
-        return DeductionSystemObject( "FiberProduct", [ diagram ] );
+        return DeductiveSystemObject( "FiberProduct", [ diagram ] );
         
     end );
     
-    AddProjectionInFactorOfPullback( deduction_system,
+    AddProjectionInFactorOfPullback( deductive_system,
                                      
       function( diagram, projection_number )
         local pullback;
         
         pullback := FiberProduct( diagram );
         
-        return DeductionSystemMorphism( pullback, "ProjectionInFactorOfPullback", [ diagram, projection_number ], Source( diagram[ projection_number ] ) );
+        return DeductiveSystemMorphism( pullback, "ProjectionInFactorOfPullback", [ diagram, projection_number ], Source( diagram[ projection_number ] ) );
         
     end );
     
-    AddProjectionInFactorOfPullbackWithGivenPullback( deduction_system,
+    AddProjectionInFactorOfPullbackWithGivenPullback( deductive_system,
                                      
       function( diagram, projection_number, pullback )
         
-        return DeductionSystemMorphism( pullback, "ProjectionInFactorOfPullbackWithGivenPullback", [ diagram, projection_number, pullback ], Source( diagram[ projection_number ] ) );
+        return DeductiveSystemMorphism( pullback, "ProjectionInFactorOfPullbackWithGivenPullback", [ diagram, projection_number, pullback ], Source( diagram[ projection_number ] ) );
         
     end );
     
-    AddUniversalMorphismIntoPullback( deduction_system,
+    AddUniversalMorphismIntoPullback( deductive_system,
                                       
       function( diagram, source )
         local pullback;
         
         pullback := FiberProduct( diagram );
         
-        return DeductionSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullback", [ diagram, source ], pullback );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullback", [ diagram, source ], pullback );
         
     end );
     
-    AddUniversalMorphismIntoPullbackWithGivenPullback( deduction_system,
+    AddUniversalMorphismIntoPullbackWithGivenPullback( deductive_system,
                                       
       function( diagram, source, pullback )
         
-        return DeductionSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullbackWithGivenPullback", [ diagram, source, pullback ], pullback );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullbackWithGivenPullback", [ diagram, source, pullback ], pullback );
         
     end );
     
-    AddPushout( deduction_system,
+    AddPushout( deductive_system,
                 
       function( diagram )
         
-        return DeductionSystemObject( "Pushout", [ diagram ] );
+        return DeductiveSystemObject( "Pushout", [ diagram ] );
         
     end );
     
-    AddInjectionOfCofactorOfPushout( deduction_system,
+    AddInjectionOfCofactorOfPushout( deductive_system,
                                      
       function( diagram, injection_number )
         local pushout;
         
         pushout := Pushout( diagram );
         
-        return DeductionSystemMorphism( Range( diagram[ injection_number ] ), "InjectionOfCofactorOfPushout", [ diagram, injection_number ], pushout );
+        return DeductiveSystemMorphism( Range( diagram[ injection_number ] ), "InjectionOfCofactorOfPushout", [ diagram, injection_number ], pushout );
         
     end );
     
-    AddInjectionOfCofactorOfPushoutWithGivenPushout( deduction_system,
+    AddInjectionOfCofactorOfPushoutWithGivenPushout( deductive_system,
                                      
       function( diagram, injection_number, pushout )
         
-        return DeductionSystemMorphism( Range( diagram[ injection_number ] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, injection_number, pushout ], pushout );
+        return DeductiveSystemMorphism( Range( diagram[ injection_number ] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, injection_number, pushout ], pushout );
         
     end );
     
-    AddUniversalMorphismFromPushout( deduction_system,
+    AddUniversalMorphismFromPushout( deductive_system,
                                      
       function( diagram, sink )
         local pushout;
         
         pushout := Pushout( diagram );
         
-        return DeductionSystemMorphism( pushout, "UniversalMorphismFromPushout", [ diagram, sink ], Range( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( pushout, "UniversalMorphismFromPushout", [ diagram, sink ], Range( sink[ 1 ] ) );
         
     end );
     
-    AddUniversalMorphismFromPushoutWithGivenPushout( deduction_system,
+    AddUniversalMorphismFromPushoutWithGivenPushout( deductive_system,
                                      
       function( diagram, sink, pushout )
         
-        return DeductionSystemMorphism( pushout, "UniversalMorphismFromPushoutWithGivenPushout", [ diagram, sink, pushout ], Range( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( pushout, "UniversalMorphismFromPushoutWithGivenPushout", [ diagram, sink, pushout ], Range( sink[ 1 ] ) );
         
     end );
     
-    AddImageObject( deduction_system,
+    AddImageObject( deductive_system,
               
       function( morphism )
         
-        return DeductionSystemObject( "ImageObject", [ morphism ] );
+        return DeductiveSystemObject( "ImageObject", [ morphism ] );
         
     end );
     
-    AddImageEmbedding( deduction_system,
+    AddImageEmbedding( deductive_system,
                        
       function( morphism )
         local image_object;
         
         image_object := ImageObject( morphism );
         
-        return DeductionSystemMorphism( image_object, "ImageEmbedding", [ morphism ], Range( morphism ) );
+        return DeductiveSystemMorphism( image_object, "ImageEmbedding", [ morphism ], Range( morphism ) );
         
     end );
     
-    AddImageEmbeddingWithGivenImage( deduction_system,
+    AddImageEmbeddingWithGivenImage( deductive_system,
                                      
       function( morphism, image_object )
         
-        return DeductionSystemMorphism( image_object, "ImageEmbeddingWithGivenImage", [ morphism, image_object ], Range( morphism ) );
+        return DeductiveSystemMorphism( image_object, "ImageEmbeddingWithGivenImage", [ morphism, image_object ], Range( morphism ) );
         
     end );
     
@@ -751,107 +751,107 @@ end );
 ##
 ####################################
 
-InstallMethod( DeductionSystem,
+InstallMethod( DeductiveSystem,
                [ IsHomalgCategory ],
                
   function( category )
-    local deduction_system;
+    local deductive_system;
     
-    deduction_system := CreateHomalgCategory( Concatenation( "Deduction system of ", Name( category ) ) );
+    deductive_system := CreateHomalgCategory( Concatenation( "Deduction system of ", Name( category ) ) );
     
-    SetUnderlyingHonestCategory( deduction_system, category );
+    SetUnderlyingHonestCategory( deductive_system, category );
     
-    ADDS_FOR_DEDUCTION_SYSTEM( deduction_system, category );
+    ADDS_FOR_DEDUCTIVE_SYSTEM( deductive_system, category );
     
-    return deduction_system;
+    return deductive_system;
     
 end );
 
 ##
-InstallMethod( InDeductionSystem,
+InstallMethod( InDeductiveSystem,
                [ IsHomalgCategoryObject ],
                
   function( object )
-    local deduction_object;
+    local deductive_object;
     
-    deduction_object := rec( );
+    deductive_object := rec( );
     
-    ObjectifyWithAttributes( deduction_object, TheTypeOfDeductionSystemObject,
+    ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject,
                              Eval, object );
     
-    SetHistory( deduction_object, deduction_object );
+    SetHistory( deductive_object, deductive_object );
     
-    Add( DeductionSystem( HomalgCategory( object ) ), deduction_object );
+    Add( DeductiveSystem( HomalgCategory( object ) ), deductive_object );
     
-    return deduction_object;
+    return deductive_object;
     
 end );
 
 ##
-InstallMethod( DeductionSystemObject,
+InstallMethod( DeductiveSystemObject,
                [ IsString, IsList ],
                
   function( func, argument_list )
-    local deduction_object, resolved_history;
+    local deductive_object, resolved_history;
     
-    deduction_object := rec( );
+    deductive_object := rec( );
     
     resolved_history := RESOLVE_HISTORY( argument_list );
     
-    ObjectifyWithAttributes( deduction_object, TheTypeOfDeductionSystemObject,
+    ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject,
                              History, [ func, resolved_history ] );
     
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deduction_object );
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deductive_object );
     
-    return deduction_object;
+    return deductive_object;
     
 end );
 
 ##
-InstallMethod( InDeductionSystem,
+InstallMethod( InDeductiveSystem,
                [ IsHomalgCategoryMorphism ],
                
   function( morphism )
-    local deduction_morphism, source, range;
+    local deductive_morphism, source, range;
     
-    source := AsDeductionSystemObject( Source( morphism ) );
+    source := AsDeductiveSystemObject( Source( morphism ) );
     
-    range := AsDeductionSystemObject( Range( morphism ) );
+    range := AsDeductiveSystemObject( Range( morphism ) );
     
-    deduction_morphism := rec( );
+    deductive_morphism := rec( );
     
-    ObjectifyWithAttributes( deduction_morphism, TheTypeOfDeductionSystemMorphism,
+    ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
                              Source, source,
                              Range, range,
                              Eval, morphism );
     
-    SetHistory( deduction_morphism, deduction_morphism );
+    SetHistory( deductive_morphism, deductive_morphism );
     
-    Add( DeductionSystem( HomalgCategory( morphism ) ), deduction_morphism );
+    Add( DeductiveSystem( HomalgCategory( morphism ) ), deductive_morphism );
     
-    return deduction_morphism;
+    return deductive_morphism;
     
 end );
 
 ##
-InstallMethod( DeductionSystemMorphism,
-               [ IsDeductionSystemObject, IsString, IsList, IsDeductionSystemObject ],
+InstallMethod( DeductiveSystemMorphism,
+               [ IsDeductiveSystemObject, IsString, IsList, IsDeductiveSystemObject ],
                
   function( source, func, argument_list, range )
-    local deduction_morphism, resolved_history;
+    local deductive_morphism, resolved_history;
     
-    deduction_morphism := rec( );
+    deductive_morphism := rec( );
     
     resolved_history := RESOLVE_HISTORY( argument_list );
     
-    ObjectifyWithAttributes( deduction_morphism, TheTypeOfDeductionSystemMorphism,
+    ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
                              History, [ func, resolved_history ],
                              Source, source,
                              Range, range );
     
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deduction_morphism );
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deductive_morphism );
     
-    return deduction_morphism;
+    return deductive_morphism;
     
 end );
 
@@ -874,7 +874,7 @@ InstallGlobalFunction( RECURSIVE_EVAL,
             
   function( list )
     
-    if IsDeductionSystemCell( list ) then
+    if IsDeductiveSystemCell( list ) then
         
         return Eval( list );
         
@@ -890,7 +890,7 @@ end );
 
 ##
 InstallMethod( Eval,
-               [ IsDeductionSystemCell ],
+               [ IsDeductiveSystemCell ],
                
   function( cell )
     local history, new_history, checks, eval;
@@ -922,7 +922,7 @@ end );
 #################################
 
 InstallMethod( ViewObj,
-               [ IsDeductionSystemObject ],
+               [ IsDeductiveSystemObject ],
                
   function( cell )
     
@@ -935,7 +935,7 @@ InstallMethod( ViewObj,
 end );
 
 InstallMethod( ViewObj,
-               [ IsDeductionSystemMorphism ],
+               [ IsDeductiveSystemMorphism ],
                
   function( cell )
     
@@ -948,7 +948,7 @@ InstallMethod( ViewObj,
 end );
 
 InstallMethod( ViewObj,
-               [ IsDeductionSystemCell and HasEval ],
+               [ IsDeductiveSystemCell and HasEval ],
                100000000000000, ##FIXME!!!!
                
   function( cell )

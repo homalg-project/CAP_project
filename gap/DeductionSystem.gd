@@ -9,16 +9,16 @@
 ##
 #############################################################################
 
-DeclareCategory( "IsDeductionSystemCell",
+DeclareCategory( "IsDeductiveSystemCell",
                  IsHomalgCategoryCell );
 
-DeclareCategory( "IsDeductionSystemObject",
-                 IsDeductionSystemCell and IsHomalgCategoryObject );
+DeclareCategory( "IsDeductiveSystemObject",
+                 IsDeductiveSystemCell and IsHomalgCategoryObject );
 
-DeclareCategory( "IsDeductionSystemMorphism",
-                 IsDeductionSystemCell and IsHomalgCategoryMorphism );
+DeclareCategory( "IsDeductiveSystemMorphism",
+                 IsDeductiveSystemCell and IsHomalgCategoryMorphism );
 
-DeclareGlobalFunction( "ADDS_FOR_DEDUCTION_SYSTEM" );
+DeclareGlobalFunction( "ADDS_FOR_DEDUCTIVE_SYSTEM" );
 
 DeclareGlobalFunction( "RESOLVE_HISTORY" );
 
@@ -36,23 +36,23 @@ DeclareGlobalFunction( "INSTALL_TODO_FOR_LOGICAL_THEOREMS" );
 ##
 #####################################
 
-DeclareAttribute( "DeductionSystem",
+DeclareAttribute( "DeductiveSystem",
                   IsHomalgCategory );
 
-DeclareAttribute( "InDeductionSystem",
+DeclareAttribute( "InDeductiveSystem",
                   IsHomalgCategoryObject );
 
-DeclareOperation( "DeductionSystemObject",
+DeclareOperation( "DeductiveSystemObject",
                   [ ] );
 
-DeclareOperation( "DeductionSystemObject",
+DeclareOperation( "DeductiveSystemObject",
                   [ IsString, IsList ] );
 
-DeclareAttribute( "InDeductionSystem",
+DeclareAttribute( "InDeductiveSystem",
                   IsHomalgCategoryMorphism );
 
-DeclareOperation( "DeductionSystemMorphism",
-                  [ IsDeductionSystemObject, IsString, IsList, IsDeductionSystemObject ] );
+DeclareOperation( "DeductiveSystemMorphism",
+                  [ IsDeductiveSystemObject, IsString, IsList, IsDeductiveSystemObject ] );
 
 #####################################
 ##
@@ -61,10 +61,10 @@ DeclareOperation( "DeductionSystemMorphism",
 #####################################
 
 DeclareAttribute( "History",
-                  IsDeductionSystemCell, "mutable" );
+                  IsDeductiveSystemCell, "mutable" );
 
 DeclareAttribute( "Eval",
-                  IsDeductionSystemCell );
+                  IsDeductiveSystemCell );
 
 #####################################
 ##
