@@ -3268,7 +3268,7 @@ InstallMethod( AddUniversalMorphismFromImage,
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImage,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                                             IsHomalgCategoryMorphism ],
+                                             IsList ],
                                            
       function( morphism, test_factorization )
         local universal_morphism, image;
@@ -3321,7 +3321,8 @@ InstallMethod( AddUniversalMorphismFromImageWithGivenImage,
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImageWithGivenImage,
                                            [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                                             IsHomalgCategoryMorphism ],
+                                             IsList,
+                                             IsHomalgCategoryObject ],
                                            
       function( morphism, test_factorization, image )
         local universal_morphism;
@@ -3482,7 +3483,7 @@ InstallMethod( UniversalMorphismFromImage,
                [ IsHomalgCategoryMorphism
                  and CanComputeUniversalMorphismFromImageWithGivenImage
                  and CanComputeImage,
-                 IsHomalgCategoryMorphism ],
+                 IsList ],
                  -9900, #FIXME
                  
   function( morphism, test_factorization )
@@ -3500,7 +3501,7 @@ InstallMethod( UniversalMorphismFromImage,
                [ IsHomalgCategoryMorphism
                  and CanComputeMonoAsKernelLift
                  and CanComputeImageEmbedding,
-                 IsHomalgCategoryMorphism ],
+                 IsList ],
                  -9999, #FIXME
                  
   function( morphism, test_factorization )
