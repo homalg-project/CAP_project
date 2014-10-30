@@ -39,7 +39,7 @@ DeclareGlobalFunction( "INSTALL_TODO_FOR_LOGICAL_THEOREMS" );
 DeclareAttribute( "DeductionSystem",
                   IsHomalgCategory );
 
-DeclareAttribute( "AsDeductionSystemObject",
+DeclareAttribute( "InDeductionSystem",
                   IsHomalgCategoryObject );
 
 DeclareOperation( "DeductionSystemObject",
@@ -48,7 +48,7 @@ DeclareOperation( "DeductionSystemObject",
 DeclareOperation( "DeductionSystemObject",
                   [ IsString, IsList ] );
 
-DeclareAttribute( "AsDeductionSystemMorphism",
+DeclareAttribute( "InDeductionSystem",
                   IsHomalgCategoryMorphism );
 
 DeclareOperation( "DeductionSystemMorphism",

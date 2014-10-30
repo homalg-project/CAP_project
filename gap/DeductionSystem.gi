@@ -768,7 +768,7 @@ InstallMethod( DeductionSystem,
 end );
 
 ##
-InstallMethod( AsDeductionSystemObject,
+InstallMethod( InDeductionSystem,
                [ IsHomalgCategoryObject ],
                
   function( object )
@@ -808,7 +808,7 @@ InstallMethod( DeductionSystemObject,
 end );
 
 ##
-InstallMethod( AsDeductionSystemMorphism,
+InstallMethod( InDeductionSystem,
                [ IsHomalgCategoryMorphism ],
                
   function( morphism )
