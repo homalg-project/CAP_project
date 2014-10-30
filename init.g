@@ -27,4 +27,4 @@ ReadPackage( "CategoriesForHomalg", "gap/SerreQuotients.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/LazyCategory.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/DeductionSystem.gd");
+ReadPackage( "CategoriesForHomalg", "gap/DeductiveSystem.gd");
