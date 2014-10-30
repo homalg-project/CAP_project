@@ -183,22 +183,22 @@ end );
 #   function( object_product_list )
 #     local dim;
 #     
-#     dim := Sum( List( object_product_list!.Components, c -> Dimension( c ) ) );
+#     dim := Sum( List( object_product_list, c -> Dimension( c ) ) );
 #     
 #     return QVectorSpace( dim );
 #   
 # end );
 
 ##
-## the user may assume that Length( object_product_list!.Components ) > 1
+## the user may assume that Length( object_product_list ) > 1
 AddInjectionOfCofactorOfCoproduct( vecspaces,
 
   function( object_product_list, injection_number )
     local components, dim, dim_pre, dim_post, dim_cofactor, coproduct, number_of_objects, injection_of_cofactor;
     
-    components := Components( object_product_list );
+    components := object_product_list;
     
-    number_of_objects := Length( Components( object_product_list ) );
+    number_of_objects := Length( components );
     
     dim := Sum( components, c -> Dimension( c ) );
     
@@ -223,15 +223,15 @@ AddInjectionOfCofactorOfCoproduct( vecspaces,
 end );
 
 ##
-## the user may assume that Length( object_product_list!.Components ) > 1
+## the user may assume that Length( object_product_list ) > 1
 AddInjectionOfCofactorOfCoproductWithGivenCoproduct( vecspaces,
 
   function( object_product_list, injection_number, coproduct )
     local components, dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
     
-    components := Components( object_product_list );
+    components := object_product_list;
     
-    number_of_objects := Length( Components( object_product_list ) );
+    number_of_objects := Length( components );
     
     dim_pre := Sum( components{ [ 1 .. injection_number - 1 ] }, c -> Dimension( c ) );
     
@@ -257,7 +257,7 @@ AddUniversalMorphismFromCoproduct( vecspaces,
   function( sink )
     local dim, coproduct, components, universal_morphism, morphism;
     
-    components := Components( sink );
+    components := sink;
     
     dim := Sum( components, c -> Dimension( Source( c ) ) );
     
@@ -281,7 +281,7 @@ AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
   function( sink, coproduct )
     local components, universal_morphism, morphism;
     
-    components := Components( sink );
+    components := sink;
     
     universal_morphism := sink[1]!.morphism;
     
@@ -301,22 +301,22 @@ AddDirectSum( vecspaces,
   function( object_product_list )
     local dim;
     
-    dim := Sum( List( object_product_list!.Components, c -> Dimension( c ) ) );
+    dim := Sum( List( object_product_list, c -> Dimension( c ) ) );
     
     return QVectorSpace( dim );
   
 end );
 
 #
-# the user may assume that Length( object_product_list!.Components ) > 1
+# the user may assume that Length( object_product_list ) > 1
 AddProjectionInFactorOfDirectProduct( vecspaces,
 
   function( object_product_list, projection_number )
     local components, dim, dim_pre, dim_post, dim_factor, direct_product, number_of_objects, projection_in_factor;
     
-    components := Components( object_product_list );
+    components := object_product_list;
     
-    number_of_objects := Length( Components( object_product_list ) );
+    number_of_objects := Length( components );
     
     dim := Sum( components, c -> Dimension( c ) );
     
@@ -341,15 +341,15 @@ AddProjectionInFactorOfDirectProduct( vecspaces,
 end );
 
 ##
-## the user may assume that Length( object_product_list!.Components ) > 1
+## the user may assume that Length( object_product_list ) > 1
 AddProjectionInFactorOfDirectProductWithGivenDirectProduct( vecspaces,
 
   function( object_product_list, projection_number, direct_product )
     local components, dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
     
-    components := Components( object_product_list );
+    components := object_product_list;
     
-    number_of_objects := Length( Components( object_product_list ) );
+    number_of_objects := Length( components );
     
     dim_pre := Sum( components{ [ 1 .. projection_number - 1 ] }, c -> Dimension( c ) );
     
@@ -374,7 +374,7 @@ AddUniversalMorphismIntoDirectProduct( vecspaces,
   function( sink )
     local dim, direct_product, components, universal_morphism, morphism;
     
-    components := Components( sink );
+    components := sink;
     
     dim := Sum( components, c -> Dimension( Range( c ) ) );
     
@@ -397,7 +397,7 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( vecspaces,
   function( sink, direct_product )
     local components, universal_morphism, morphism;
     
-    components := Components( sink );
+    components := sink;
     
     universal_morphism := sink[1]!.morphism;
     

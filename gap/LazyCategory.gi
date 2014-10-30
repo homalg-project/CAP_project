@@ -381,18 +381,20 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     end );
     
     #auxiliary functions
+    ## FIXME: superfluous
     EvalProductList := function( product_list )
       
-      return List( Components( product_list ), Eval );
+      return List( product_list, Eval );
       
     end;
     
+    ## FIXME: superfluous
     EvalAndRewrapProductList := function( product_list )
       local evaluation_list;
       
-      evaluation_list := List( Components( product_list ), Eval );
+      evaluation_list := List( product_list, Eval );
       
-      return CallFuncList( Product, evaluation_list );
+      return evaluation_list;
       
     end;
     

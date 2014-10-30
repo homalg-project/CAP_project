@@ -169,7 +169,7 @@ AddFiberProduct( integer_category,
   function( product_mor )
     local pullback;
     
-    pullback := Gcd( List( Components( product_mor ), i -> AsInteger( Source( i ) ) ) );
+    pullback := Gcd( List( product_mor, i -> AsInteger( Source( i ) ) ) );
     
     return HomalgInteger( pullback );
     
@@ -194,7 +194,7 @@ AddPushout( integer_category,
   function( product_mor )
     local pushout;
     
-    pushout := Lcm( List( Components( product_mor ), i -> AsInteger( Range( i ) ) ) );
+    pushout := Lcm( List( product_mor, i -> AsInteger( Range( i ) ) ) );
     
     return HomalgInteger( pushout );
     
