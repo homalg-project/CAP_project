@@ -18,10 +18,16 @@ InstallGlobalFunction( InstallMethodWithToDoForIsWellDefined,
     name := NameFunction( arg[ 1 ] );
     
     new_func := function( arg )
-        local val, entry, i, filtered_arg;
+        local val, entry, i, filtered_arg, list_args;
         
         ## ToDo: This can be improved
         filtered_arg := Filtered( arg, IsHomalgCategoryCell );
+        
+        list_args := Flat( Filtered( arg, IsList ) );
+        
+        list_args := Filtered( list_args, IsHomalgCategoryCell );
+        
+        filtered_arg := Concatenation( filtered_arg, list_args );
         
         val := CallFuncList( orig_func, arg );
         
@@ -78,11 +84,17 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
                         Concatenation( filter, [ IsObject ] ),
                         
       function( arg )
-        local cache_return, cache_key, entry, i, filtered_cache_key;
+        local cache_return, cache_key, entry, i, filtered_cache_key, list_cache_key;
         
         cache_key := arg{[ 1 .. Length( arg ) - 1 ]};
         
         filtered_cache_key := Filtered( cache_key, IsHomalgCategoryCell );
+        
+        list_cache_key := Flat( Filtered( cache_key, IsList ) );
+        
+        list_cache_key := Filtered( list_cache_key, IsHomalgCategoryCell );
+        
+        filtered_cache_key := Concatenation( filtered_cache_key, list_cache_key );
         
         cache_return := CacheValue( cache, cache_key );
         
@@ -131,13 +143,19 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
                         Concatenation( filter, [ IsObject ] ),
                         
       function( arg )
-        local cache, cache_key, cache_return, entry, i, filtered_cache_key;
+        local cache, cache_key, cache_return, entry, i, filtered_cache_key, list_cache_key;
         
         cache := CachingObject( arg[ cache_number ], name, Length( arg ) - 1 );
         
         cache_key := arg{[ 1 .. Length( arg ) - 1 ]};
         
         filtered_cache_key := Filtered( cache_key, IsHomalgCategoryCell );
+        
+        list_cache_key := Flat( Filtered( cache_key, IsList ) );
+        
+        list_cache_key := Filtered( list_cache_key, IsHomalgCategoryCell );
+        
+        filtered_cache_key := Concatenation( filtered_cache_key, list_cache_key );
         
         cache_return := CacheValue( cache, cache_key );
         
