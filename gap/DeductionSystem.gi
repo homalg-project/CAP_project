@@ -528,7 +528,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
                   
       function( object_product_list )
         
-        return DeductionSystemObject( "DirectSum", Components( object_product_list ) );
+        return DeductionSystemObject( "DirectSum", [ object_product_list ] );
         
     end );
     
@@ -536,56 +536,45 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
                   
       function( object_product_list )
         
-        return DeductionSystemObject( "Coproduct", Components( object_product_list ) );
+        return DeductionSystemObject( "Coproduct", [ object_product_list ] );
         
     end );
     
     AddInjectionOfCofactorOfCoproduct( deduction_system,
                             
       function( object_product_list, injection_number )
-        local components, coproduct;
+        local coproduct;
         
-        components := Components( object_product_list );
+        coproduct := Coproduct( object_product_list );
         
-        ## Rethink this!!
-        coproduct := CallFuncList( Coproduct, components );
-        
-        return DeductionSystemMorphism( components[ injection_number ], "InjectionOfCofactor",  [ [ "Product", components ], injection_number ], coproduct );
+        return DeductionSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactor",  [ object_product_list, injection_number ], coproduct );
         
     end );
     
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( deduction_system,
                                               
       function( object_product_list, injection_number, coproduct )
-        local components;
         
-        components := Components( object_product_list );
-        
-        return DeductionSystemMorphism( components[ injection_number ], "InjectionOfCofactorOfCoproductWithGivenCoproduct", [ [ "Product", components ], injection_number, coproduct ], coproduct );
+        return DeductionSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactorOfCoproductWithGivenCoproduct", [ object_product_list, injection_number, coproduct ], coproduct );
         
     end );
     
     AddUniversalMorphismFromCoproduct( deduction_system,
                                        
       function( sink )
-        local components, coproduct;
+        local coproduct;
         
-        components := Components( sink );
+        coproduct := Coproduct( List( sink, Source ) );
         
-        coproduct := Coproduct( List( components, Source ) );
-        
-        return DeductionSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", components, Source( components[ 1 ] ) );
+        return DeductionSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ sink ], Source( sink[ 1 ] ) );
         
     end );
     
     AddUniversalMorphismFromCoproductWithGivenCoproduct( deduction_system,
                                                          
       function( sink, coproduct )
-        local components;
         
-        components := Components( sink );
-        
-        return DeductionSystemMorphism( coproduct, "UniversalMorphismFromCoproductWithGivenCoproduct", [ [ "Product", components ], coproduct ], Source( components[ 1 ] ) );
+        return DeductionSystemMorphism( coproduct, "UniversalMorphismFromCoproductWithGivenCoproduct", [ sink, coproduct ], Source( sink[ 1 ] ) );
         
     end );
     
@@ -593,181 +582,137 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTION_SYSTEM,
                       
       function( object_product_list )
         
-        return DeductionSystemObject( "DirectProduct", Components( object_product_list ) );
+        return DeductionSystemObject( "DirectProduct", [ object_product_list ] );
         
     end );
     
     AddProjectionInFactorOfDirectProduct( deduction_system,
                            
       function( object_product_list, projection_number )
-        local components, direct_product;
+        local direct_product;
         
-        components := Components( object_product_list );
+        direct_product := DirectProduct( object_product_list );
         
-        direct_product := CallFuncList( DirectProduct, components );
-        
-        return DeductionSystemMorphism( direct_product, "ProjectionInFactor", [ [ "Product", components ], projection_number ], components[ projection_number ] );
+        return DeductionSystemMorphism( direct_product, "ProjectionInFactor", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
         
     end );
     
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( deduction_system,
                                                  
       function( object_product_list, projection_number, direct_product )
-        local components;
         
-        components := Components( object_product_list );
-        
-        return DeductionSystemMorphism( direct_product, "ProjectionInFactor", [ [ "Product", components ], projection_number ], components[ projection_number ] );
+        return DeductionSystemMorphism( direct_product, "ProjectionInFactor", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
         
     end );
     
     AddUniversalMorphismIntoDirectProduct( deduction_system,
                                            
       function( source )
-        local components, direct_product;
+        local direct_product;
         
-        components := Components( source );
+        direct_product := DirectProduct( List( source, Range ) );
         
-        direct_product := CallFuncList( DirectProduct, List( components, Range ) );
-        
-        return DeductionSystemMorphism( Source( components[ 1 ] ), "UniversalMorphismIntoDirectProduct", components, direct_product );
+        return DeductionSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", source, direct_product );
         
     end );
     
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( deduction_system,
                                            
       function( source, direct_product )
-        local components;
         
-        components := Components( source );
-        
-        return DeductionSystemMorphism( Source( components[ 1 ] ), "UniversalMorphismIntoDirectProductWithGivenDirectProduct", [ [ "Product", components ], direct_product ], direct_product );
+        return DeductionSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProductWithGivenDirectProduct", [ source, direct_product ], direct_product );
         
     end );
     
     AddFiberProduct( deduction_system,
                  
       function( diagram )
-        local components;
         
-        components := Components( diagram );
-        
-        return DeductionSystemObject( "FiberProduct", components );
+        return DeductionSystemObject( "FiberProduct", [ diagram ] );
         
     end );
     
     AddProjectionInFactorOfPullback( deduction_system,
                                      
       function( diagram, projection_number )
-        local components, pullback;
+        local pullback;
         
-        components := Components( diagram );
+        pullback := FiberProduct( diagram );
         
-        pullback := CallFuncList( FiberProduct, components );
-        
-        return DeductionSystemMorphism( pullback, "ProjectionInFactorOfPullback", [ [ "Product", components ], projection_number ], Source( components[ projection_number ] ) );
+        return DeductionSystemMorphism( pullback, "ProjectionInFactorOfPullback", [ diagram, projection_number ], Source( diagram[ projection_number ] ) );
         
     end );
     
     AddProjectionInFactorOfPullbackWithGivenPullback( deduction_system,
                                      
       function( diagram, projection_number, pullback )
-        local components;
         
-        components := Components( diagram );
-        
-        return DeductionSystemMorphism( pullback, "ProjectionInFactorOfPullbackWithGivenPullback", [ [ "Product", components ], projection_number, pullback ], Source( components[ projection_number ] ) );
+        return DeductionSystemMorphism( pullback, "ProjectionInFactorOfPullbackWithGivenPullback", [ diagram, projection_number, pullback ], Source( diagram[ projection_number ] ) );
         
     end );
     
     AddUniversalMorphismIntoPullback( deduction_system,
                                       
       function( diagram, source )
-        local components_diagram, components_source, pullback;
+        local pullback;
         
-        components_diagram := Components( diagram );
+        pullback := FiberProduct( diagram );
         
-        components_source := Components( source );
-        
-        pullback := CallFuncList( FiberProduct, diagram );
-        
-        return DeductionSystemMorphism( Source( components_source[ 1 ] ), "UniversalMorphismIntoPullback", Concatenation( [ [ "Product", components_diagram ] ], components_source ), pullback );
+        return DeductionSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullback", [ diagram, source ], pullback );
         
     end );
     
     AddUniversalMorphismIntoPullbackWithGivenPullback( deduction_system,
                                       
       function( diagram, source, pullback )
-        local components_diagram, components_source;
         
-        components_diagram := Components( diagram );
-        
-        components_source := Components( source );
-        
-        return DeductionSystemMorphism( Source( components_source[ 1 ] ), "UniversalMorphismIntoPullbackWithGivenPullback", [ [ "Product", components_diagram ], [ "Product", components_source ], pullback ], pullback );
+        return DeductionSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullbackWithGivenPullback", [ diagram, source, pullback ], pullback );
         
     end );
     
     AddPushout( deduction_system,
                 
       function( diagram )
-        local components;
         
-        components := Components( diagram );
-        
-        return DeductionSystemObject( "Pushout", components );
+        return DeductionSystemObject( "Pushout", [ diagram ] );
         
     end );
     
     AddInjectionOfCofactorOfPushout( deduction_system,
                                      
       function( diagram, injection_number )
-        local components, pushout;
+        local pushout;
         
-        components := Components( diagram );
+        pushout := Pushout( diagram );
         
-        pushout := CallFuncList( Pushout, components );
-        
-        return DeductionSystemMorphism( Range( components[ injection_number ] ), "InjectionOfCofactorOfPushout", [ [ "Product", components ], injection_number ], pushout );
+        return DeductionSystemMorphism( Range( diagram[ injection_number ] ), "InjectionOfCofactorOfPushout", [ diagram, injection_number ], pushout );
         
     end );
     
     AddInjectionOfCofactorOfPushoutWithGivenPushout( deduction_system,
                                      
       function( diagram, injection_number, pushout )
-        local components;
         
-        components := Components( diagram );
-        
-        return DeductionSystemMorphism( Range( components[ injection_number ] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ [ "Product", components ], injection_number, pushout ], pushout );
+        return DeductionSystemMorphism( Range( diagram[ injection_number ] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, injection_number, pushout ], pushout );
         
     end );
     
     AddUniversalMorphismFromPushout( deduction_system,
                                      
       function( diagram, sink )
-        local components_diagram, components_sink, pushout;
+        local pushout;
         
-        components_diagram := Components( diagram );
+        pushout := Pushout( diagram );
         
-        components_sink := Components( sink );
-        
-        pushout := CallFuncList( Pushout, components_diagram );
-        
-        return DeductionSystemMorphism( pushout, "UniversalMorphismFromPushout", Concatenation( [ [ "Product", components_diagram ] ], components_sink ), Range( sink[ 1 ] ) );
+        return DeductionSystemMorphism( pushout, "UniversalMorphismFromPushout", [ diagram, sink ], Range( sink[ 1 ] ) );
         
     end );
     
     AddUniversalMorphismFromPushoutWithGivenPushout( deduction_system,
                                      
       function( diagram, sink, pushout )
-        local components_diagram, components_sink;
         
-        components_diagram := Components( diagram );
-        
-        components_sink := Components( sink );
-        
-        return DeductionSystemMorphism( pushout, "UniversalMorphismFromPushout", [ [ "Product", components_diagram ], [ "Product", components_sink ], pushout ], Range( sink[ 1 ] ) );
+        return DeductionSystemMorphism( pushout, "UniversalMorphismFromPushoutWithGivenPushout", [ diagram, sink, pushout ], Range( sink[ 1 ] ) );
         
     end );
     

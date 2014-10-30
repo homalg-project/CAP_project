@@ -947,3 +947,10 @@ ADD_THEOREM_TO_CATEGORY( vecspaces, rec( Function := "KernelEmb",
                                          Range := rec( ValueFunction := IsZero, 
                                                        Value := true ) ) );
 
+ADD_THEOREM_TO_CATEGORY( vecspaces, rec( Function := "DirectProduct",
+                                         Source := [ rec( Object := 1,
+                                                          ValueFunction := IsZero ),
+                                                     rec( Object := 2,
+                                                          ValueFunction := IsZero ) ],
+                                         Range := rec( ValueFunction := IsZero ) ) );
+
