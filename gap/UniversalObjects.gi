@@ -867,7 +867,7 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
         
         test_object := Range( sink[1] );
         
-        components := sink; #components superflous
+        components := sink; #components superfluous
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
             
@@ -1248,7 +1248,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
         
         test_object := Source( source[1] );
         
-        components := source;#FIXME: components superflous
+        components := source;#FIXME: components superfluous
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
             
@@ -2311,7 +2311,7 @@ InstallMethod( AddUniversalMorphismIntoPullback,
         
         test_object := Source( source[1] );
         
-        components := source; #FIXME components superflous
+        components := source; #FIXME components superfluous
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
             
@@ -2833,7 +2833,7 @@ InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
         
         test_object := Range( sink[1] );
         
-        components := sink; #FIXME: components superflous
+        components := sink; #FIXME: components superfluous
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
             
