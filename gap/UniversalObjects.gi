@@ -647,8 +647,16 @@ end );
 InstallGlobalFunction( Coproduct,
   
   function( arg )
-  
-    if Length( arg ) = 1 then 
+    
+    if Length( arg ) = 1
+       and IsList( arg[1] )
+       and ForAll( arg[1], IsHomalgCategoryObject ) then
+       
+       return CoproductOp( arg[1], arg[1][1] );
+       
+    fi;
+    
+    if Length( arg ) = 1 then
       
       return arg[1];
         
@@ -787,6 +795,13 @@ end );
 InstallGlobalFunction( UniversalMorphismFromCoproduct,
 
   function( arg )
+    
+    if Length( arg ) = 1
+       and IsList( arg[1] ) then
+       
+       return UniversalMorphismFromCoproductOp( arg[1], arg[1][1] );
+       
+    fi;
     
     return UniversalMorphismFromCoproductOp( arg, arg[1] );
   
@@ -1020,6 +1035,14 @@ MakeReadWriteGlobal( "DirectProduct" );
 
 DirectProduct := function( arg )
   
+  if Length( arg ) = 1
+     and IsList( arg[1] ) 
+     and ForAll( arg[1], IsHomalgCategoryObject ) then
+     
+     return DirectProductOp( arg[1], arg[1][1] );
+     
+  fi;
+  
   if ( ForAll( arg, IsHomalgCategory ) or ForAll( arg, IsHomalgCategoryObject ) or ForAll( arg, IsHomalgCategoryMorphism ) ) and Length( arg ) > 0 then
       
       if Length( arg ) = 1 then 
@@ -1166,6 +1189,13 @@ end );
 InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
 
   function( arg )
+    
+    if Length( arg ) = 1
+       and IsList( arg[1] ) then
+       
+       return UniversalMorphismIntoDirectProductOp( arg[1], arg[1][1] );
+       
+    fi;
     
     return UniversalMorphismIntoDirectProductOp( arg, arg[1] );
   
@@ -1380,6 +1410,14 @@ BindGlobal( "HOMALG_CATEGORIES_DIRECT_SUM_SAVE", DirectSum );
 MakeReadWriteGlobal( "DirectSum" );
 
 DirectSum := function( arg )
+  
+  if Length( arg ) = 1
+     and IsList( arg[1] )
+     and ForAll( arg[1], IsHomalgCategoryObject ) then
+     
+     return DirectSumOp( arg[1], arg[1][1] );
+     
+   fi;
   
   if ( ForAll( arg, IsHomalgCategory ) or ForAll( arg, IsHomalgCategoryObject ) or ForAll( arg, IsHomalgCategoryMorphism ) ) and Length( arg ) > 0 then
       
@@ -2097,7 +2135,15 @@ end );
 InstallGlobalFunction( FiberProduct,
   
   function( arg )
-  
+    
+    if Length( arg ) = 1
+       and IsList( arg[1] )
+       and ForAll( arg[1], IsHomalgCategoryMorphism ) then
+       
+       return PullbackOp( arg[1], arg[1][1] );
+       
+     fi;
+    
     #the pullback of a tuple of morphisms over the same base B can be interpreted
     #as the direct product in the category of morphisms over B. Thus it makes sense
     #to deal with the special case where only one morphism is considered as follows:
@@ -2256,6 +2302,14 @@ InstallGlobalFunction( UniversalMorphismIntoPullback,
 
   function( arg )
     local diagram, pullback_or_diagram, source;
+    
+    if Length( arg ) = 2
+       and IsList( arg[1] )
+       and IsList( arg[2] ) then
+       
+       return UniversalMorphismIntoPullbackOp( arg[1], arg[2], arg[1][1] );
+       
+    fi;
     
     pullback_or_diagram := arg[ 1 ];
     
@@ -2562,7 +2616,15 @@ end );
 InstallGlobalFunction( Pushout,
   
   function( arg )
-  
+    
+    if Length( arg ) = 1
+       and IsList( arg[1] )
+       and ForAll( arg[1], IsHomalgCategoryMorphism ) then
+       
+       return PushoutOp( arg[1], arg[1][1] );
+       
+     fi;
+    
     #the pushout of a tuple of morphisms with same source B can be interpreted
     #as the direct product in the category of morphisms with source B. Thus it makes sense
     #to deal with the special case where only one morphism is considered as follows:
@@ -2720,6 +2782,14 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
 
   function( arg )
     local diagram, pushout_or_diagram, sink;
+    
+    if Length( arg ) = 2
+       and IsList( arg[1] )
+       and IsList( arg[2] ) then
+       
+       return UniversalMorphismFromPushoutOp( arg[1], arg[2], arg[1][1] );
+       
+    fi;
     
     pushout_or_diagram := arg[ 1 ];
     
