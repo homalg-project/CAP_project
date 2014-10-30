@@ -305,7 +305,7 @@ InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_LEFT,
                        
   function( category )
     
-    AddEqualityOfMorphisms( category,
+    AddIsEqualForMorphisms( category,
                             
       function( morphism_1, morphism_2 )
         local result_of_divide;
@@ -323,7 +323,7 @@ InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_RIGHT,
                        
   function( category )
     
-    AddEqualityOfMorphisms( category,
+    AddIsEqualForMorphisms( category,
                             
       function( morphism_1, morphism_2 )
         local result_of_divide;
@@ -420,7 +420,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
       function( product_object )
         local objects, direct_sum;
         
-        objects := Components( product_object );
+        objects := product_object;
         
         objects := List( objects, UnderlyingMatrix );
         
@@ -430,12 +430,12 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         
     end );
     
-    AddProjectionInFactorWithGivenDirectProduct( category,
+    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( category,
                                                  
       function( product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, projection, projection_matrix, i;
         
-        objects := Components( product_object );
+        objects := product_object;
         
         object_column_dimension := List( objects, i -> NrColumns( UnderlyingMatrix( i ) ) );
         
@@ -460,7 +460,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
       function( product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
         
-        components := Components( product_morphism );
+        components := product_morphism;
         
         number_of_components := Length( components );
         
@@ -476,12 +476,12 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         
     end );
     
-    AddInjectionOfCofactorWithGivenCoproduct( category,
+    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( category,
                                               
       function( product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, injection, injection_matrix, i;
         
-        objects := Components( product_object );
+        objects := product_object;
         
         object_column_dimension := List( objects, i -> NrColumns( UnderlyingMatrix( i ) ) );
         
@@ -506,7 +506,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
       function( product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
         
-        components := Components( product_morphism );
+        components := product_morphism;
         
         number_of_components := Length( components );
         
@@ -534,7 +534,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
       function( product_object )
         local objects, direct_sum;
         
-        objects := Components( product_object );
+        objects := product_object;
         
         objects := List( objects, UnderlyingMatrix );
         
@@ -544,12 +544,12 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
     end );
     
-    AddProjectionInFactorWithGivenDirectProduct( category,
+    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( category,
                                                  
       function( product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, projection, projection_matrix, i;
         
-        objects := Components( product_object );
+        objects := product_object;
         
         object_column_dimension := List( objects, i -> NrRows( UnderlyingMatrix( i ) ) );
         
@@ -574,7 +574,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
       function( product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
         
-        components := Components( product_morphism );
+        components := product_morphism;
         
         number_of_components := Length( components );
         
@@ -590,12 +590,12 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
     end );
     
-    AddInjectionOfCofactorWithGivenCoproduct( category,
+    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( category,
                                               
       function( product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, injection, injection_matrix, i;
         
-        objects := Components( product_object );
+        objects := product_object;
         
         object_column_dimension := List( objects, i -> NrRows( UnderlyingMatrix( i ) ) );
         
@@ -620,7 +620,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
       function( product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
         
-        components := Components( product_morphism );
+        components := product_morphism;
         
         number_of_components := Length( components );
         
