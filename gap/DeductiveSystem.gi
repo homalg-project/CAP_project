@@ -814,9 +814,9 @@ InstallMethod( InDeductiveSystem,
   function( morphism )
     local deductive_morphism, source, range;
     
-    source := AsDeductiveSystemObject( Source( morphism ) );
+    source := InDeductiveSystem( Source( morphism ) );
     
-    range := AsDeductiveSystemObject( Range( morphism ) );
+    range := InDeductiveSystem( Range( morphism ) );
     
     deductive_morphism := rec( );
     
