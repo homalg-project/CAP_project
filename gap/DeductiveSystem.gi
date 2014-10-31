@@ -26,6 +26,10 @@ InstallGlobalFunction( RESOLVE_HISTORY,
             
             Add( new_list, History( i ) );
             
+        elif IsList( i )  then
+            
+            Add( new_list, List( i, History ) );
+            
         else
             
             Add( new_list, i );
