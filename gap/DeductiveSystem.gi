@@ -26,7 +26,7 @@ InstallGlobalFunction( RESOLVE_HISTORY,
             
             Add( new_list, History( i ) );
             
-        elif IsList( i )  then
+        elif IsList( i ) then
             
             Add( new_list, List( i, History ) );
             
@@ -690,7 +690,7 @@ InstallGlobalFunction( RECURSIVE_EVAL,
         
         return CallFuncList( ValueGlobal( list[ 1 ] ), List( list[ 2 ], RECURSIVE_EVAL ) );
         
-    elif IsList( list ) and ForAll( list, IsHomalgCategoryCell ) then
+    elif IsList( list ) then
         
         return List( list, RECURSIVE_EVAL );
         
