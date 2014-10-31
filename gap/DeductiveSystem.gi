@@ -216,7 +216,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                  
       function( morphism, kernel )
         
-        return DeductiveSystemMorphism( kernel, "KernelEmbWithGivenKernel", [ morphism, kernel ], Source( morphism ) );
+        return DeductiveSystemMorphism( kernel, "KernelEmb", [ morphism ], Source( morphism ) );
         
     end );
     
@@ -232,7 +232,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                   
       function( morphism, test_morphism, kernel )
         
-        return DeductiveSystemMorphism( Source( test_morphism ), "KernelLiftWithGivenKernel", [ morphism, test_morphism, kernel ], kernel );
+        return DeductiveSystemMorphism( Source( test_morphism ), "KernelLift", [ morphism, test_morphism ], kernel );
         
     end );
     
@@ -256,7 +256,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                       
       function( morphism, cokernel )
         
-        return DeductiveSystemMorphism( Range( morphism ), "CokernelProjWithGivenCokernel", [ morphism, cokernel ], cokernel );
+        return DeductiveSystemMorphism( Range( morphism ), "CokernelProj", [ morphism ], cokernel );
         
     end );
     
@@ -272,7 +272,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                         
       function( morphism, test_morphism, cokernel )
         
-        return DeductiveSystemMorphism( cokernel, "AddCokernelColiftWithGivenCokernel", [ morphism, test_morphism, cokernel ], Range( test_morphism ) );
+        return DeductiveSystemMorphism( cokernel, "AddCokernelColift", [ morphism, test_morphism ], Range( test_morphism ) );
         
     end );
     
@@ -328,7 +328,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                                                  
       function( object, initial_object )
         
-        return DeductiveSystemMorphism( initial_object, "UniversalMorphismFromInitialObjectWithGivenInitialObject", [ object, initial_object ], object );
+        return DeductiveSystemMorphism( initial_object, "UniversalMorphismFromInitialObject", [ object ], object );
         
     end );
     
@@ -363,7 +363,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                               
       function( object_product_list, injection_number, coproduct )
         
-        return DeductiveSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactorOfCoproductWithGivenCoproduct", [ object_product_list, injection_number, coproduct ], coproduct );
+        return DeductiveSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactorOfCoproduct", [ object_product_list, injection_number ], coproduct );
         
     end );
     
@@ -378,11 +378,11 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddUniversalMorphismFromCoproductWithGivenCoproduct( deductive_system,
+    AddUniversalMorphismFromCoproduct( deductive_system,
                                                          
       function( sink, coproduct )
         
-        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproductWithGivenCoproduct", [ sink, coproduct ], Source( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ sink ], Source( sink[ 1 ] ) );
         
     end );
     
@@ -401,7 +401,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
         direct_product := DirectProduct( object_product_list );
         
-        return DeductiveSystemMorphism( direct_product, "ProjectionInFactor", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
+        return DeductiveSystemMorphism( direct_product, "ProjectionInFactorOfDirectProduct", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
         
     end );
     
@@ -409,7 +409,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                                  
       function( object_product_list, projection_number, direct_product )
         
-        return DeductiveSystemMorphism( direct_product, "ProjectionInFactor", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
+        return DeductiveSystemMorphism( direct_product, "ProjectionInFactorOfDirectProduct", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
         
     end );
     
@@ -428,7 +428,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                            
       function( source, direct_product )
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProductWithGivenDirectProduct", [ source, direct_product ], direct_product );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ source ], direct_product );
         
     end );
     
@@ -455,7 +455,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                      
       function( diagram, projection_number, pullback )
         
-        return DeductiveSystemMorphism( pullback, "ProjectionInFactorOfPullbackWithGivenPullback", [ diagram, projection_number, pullback ], Source( diagram[ projection_number ] ) );
+        return DeductiveSystemMorphism( pullback, "ProjectionInFactorOfPullback", [ diagram, projection_number ], Source( diagram[ projection_number ] ) );
         
     end );
     
@@ -474,7 +474,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                       
       function( diagram, source, pullback )
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullbackWithGivenPullback", [ diagram, source, pullback ], pullback );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullback", [ diagram, source ], pullback );
         
     end );
     
@@ -501,7 +501,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                      
       function( diagram, injection_number, pushout )
         
-        return DeductiveSystemMorphism( Range( diagram[ injection_number ] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, injection_number, pushout ], pushout );
+        return DeductiveSystemMorphism( Range( diagram[ injection_number ] ), "InjectionOfCofactorOfPushout", [ diagram, injection_number ], pushout );
         
     end );
     
@@ -520,7 +520,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                      
       function( diagram, sink, pushout )
         
-        return DeductiveSystemMorphism( pushout, "UniversalMorphismFromPushoutWithGivenPushout", [ diagram, sink, pushout ], Range( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( pushout, "UniversalMorphismFromPushout", [ diagram, sink ], Range( sink[ 1 ] ) );
         
     end );
     
@@ -547,7 +547,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                                      
       function( morphism, image_object )
         
-        return DeductiveSystemMorphism( image_object, "ImageEmbeddingWithGivenImage", [ morphism, image_object ], Range( morphism ) );
+        return DeductiveSystemMorphism( image_object, "ImageEmbedding", [ morphism ], Range( morphism ) );
         
     end );
     
