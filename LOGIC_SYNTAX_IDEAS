@@ -35,6 +35,9 @@ theorem1.32 := rec( Source := [ Precompose,
 
 Immediate Rules
 
+@Theorem
+A | .
+
 theorem1.14 := rec( Source_List := [ rec( Source := "beta,
                                           Source_predicate := IsMonomorphism,
                                           value := true ) ],
