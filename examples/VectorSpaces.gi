@@ -952,3 +952,11 @@ ADD_THEOREM_TO_CATEGORY( vecspaces, rec( Function := "DirectProduct",
                                                           ValueFunction := IsZero ) ],
                                          Range := rec( ValueFunction := IsZero ) ) );
 
+# @Theorem
+# A | ( For all x in A : IsZero( x ) = true ) => IsZero( DirectProduct( A ) ) = true.
+# A:\Obj ~|~ \IsZero( A ) \vdash \IsInjective( A )
+# @EndTheorem
+# @Proof
+# bla bla bla bla
+# @EndProof
+

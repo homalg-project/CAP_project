@@ -52,8 +52,6 @@ InstallGlobalFunction( SANITIZE_RECORD,
         
         object := arguments;
         
-        Error( "" );
-        
     elif IsInt( object ) then
         
         object := [ arguments[ object ] ];
