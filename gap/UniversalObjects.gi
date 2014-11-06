@@ -2687,7 +2687,7 @@ InstallMethod( InjectionOfCofactorOfPushout,
                
   function( diagram, injection_number )
     
-    InjectionOfCofactorOfPushoutOp( diagram, injection_number, diagram[1] );
+    return InjectionOfCofactorOfPushoutOp( diagram, injection_number, diagram[1] );
     
 end );
 

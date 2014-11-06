@@ -54,6 +54,7 @@ B_onto_Bfac := InDeductiveSystem( B_onto_Bfac );
 Bsub_into_B := InDeductiveSystem( Bsub_into_B );
 Bsub_to_Cfac := InDeductiveSystem( Bsub_to_Cfac );
 C_onto_Cfac := InDeductiveSystem( C_onto_Cfac );
+SetIsAbelianCategory( HomalgCategory( C_onto_Cfac ), true );
 generalized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );
 #! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 generalized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );
