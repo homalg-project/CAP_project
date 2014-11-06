@@ -48,17 +48,17 @@ Bsub_to_Cfac := VectorSpaceMorphism( Bsub, [ [ 3 ], [ 0 ] ], Cfac );
 #!   [  0 ] ]
 #! 
 C_onto_Cfac := VectorSpaceMorphism( C, [ [ 1 ], [ 2 ], [ 3 ] ], Cfac );
-Asub_into_A := AsDeductionSystemMorphism( Asub_into_A );
-Asub_to_Bfac := AsDeductionSystemMorphism( Asub_to_Bfac );
-B_onto_Bfac := AsDeductionSystemMorphism( B_onto_Bfac );
-Bsub_into_B := AsDeductionSystemMorphism( Bsub_into_B );
-Bsub_to_Cfac := AsDeductionSystemMorphism( Bsub_to_Cfac );
-C_onto_Cfac := AsDeductionSystemMorphism( C_onto_Cfac );
+Asub_into_A := InDeductiveSystem( Asub_into_A );
+Asub_to_Bfac := InDeductiveSystem( Asub_to_Bfac );
+B_onto_Bfac := InDeductiveSystem( B_onto_Bfac );
+Bsub_into_B := InDeductiveSystem( Bsub_into_B );
+Bsub_to_Cfac := InDeductiveSystem( Bsub_to_Cfac );
+C_onto_Cfac := InDeductiveSystem( C_onto_Cfac );
 generalized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );
 #! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 generalized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );
-generalized_morphism1 := AsDeductionSystemMorphism( generalized_morphism1 );
-generalized_morphism2 := AsDeductionSystemMorphism( generalized_morphism2 );
+generalized_morphism1 := InDeductiveSystem( generalized_morphism1 );
+generalized_morphism2 := InDeductiveSystem( generalized_morphism2 );
 p := PreCompose( generalized_morphism1, generalized_morphism2 );
 
 
