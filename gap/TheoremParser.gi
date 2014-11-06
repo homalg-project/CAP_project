@@ -138,11 +138,208 @@ BindGlobal( "REMOVE_PART_AFTER_FIRST_SUBSTRING",
     
 end );
 
+BindGlobal( "COUNT_SUBSTRING_APPEARANCE",
+            
+  function( string, substring )
+    
+    string := SPLIT_STRING_MULTIPLE( string, substring );
+    
+    return Length( string ) - 1;
+    
+end );
+
+BindGlobal( "FIND_PART_WHICH_CONTAINS_FUNCTION",
+            
+  function( part )
+    local nr_substring_close_bracket, return_record, splitted_part, predicate, func, variables, position_equal, value, position_close_bracket;
+    
+    nr_substring_close_bracket := COUNT_SUBSTRING_APPEARANCE( part, "(" );
+    
+    if nr_substring_close_bracket < 2 then
+        
+        return fail;
+        
+    fi;
+    
+    if nr_substring_close_bracket > 2 then
+        
+        part := Concatenation( "this is not a valid part: ", part );
+        
+        Error( part );
+        
+    fi;
+    
+    return_record := rec( );
+    
+    splitted_part := SplitString( part, "(" );
+    
+    predicate := NormalizedWhitespace( splitted_part[ 1 ] );
+    
+    func := NormalizedWhitespace( splitted_part[ 2 ] );
+    
+    variables := NormalizedWhitespace( splitted_part[ 3 ] );
+    
+    position_equal := PositionSublist( variables, "=" );
+    
+    if position_equal <> fail then
+        
+        variables := SplitString( variables, "=" );
+        
+        value := variables[ 2 ];
+        
+        variables := variables[ 1 ];
+        
+        value := CONVERT_STRING_TO_BOOL_OR_INT( value );
+        
+    else
+        
+        value := true;
+        
+    fi;
+    
+    position_close_bracket := PositionSublist( variables, ")" );
+    
+    if position_close_bracket = fail then
+        
+        Error( "some ) should have been found" );
+        
+    else
+        
+        variables := variables{[ 1 .. position_close_bracket - 1 ]};
+        
+    fi;
+    
+    return_record!.TheoremPart := rec( Value := value, ValueFunction := ValueGlobal( NormalizedWhitespace( predicate ) ), Object := "result" );
+    
+    return_record!.Variables := SANITIZE_ARGUMENT_LIST( variables );
+    
+    return_record!.Function := func;
+    
+    return return_record;
+    
+end );
+
+BindGlobal( "FIND_PREDICATE_VARIABLES",
+            
+  function( source_part, range_variables )
+    local split_source_part, func, predicate, variables, source_rec, bound_variable, value,
+          position_exists, position_forall, i;
+    
+    split_source_part := SplitString( source_part, "(" );
+    
+    if Length( split_source_part ) <> 2 then
+        
+        Error( "this should not happen, too many (" );
+        
+    fi;
+    
+    source_rec := rec( );
+    
+    ## find bound variables
+    predicate := split_source_part[ 1 ];
+    
+    variables := SplitString( split_source_part[ 2 ], "=" );
+    
+    if Length( variables ) = 2 then
+        
+        value := CONVERT_STRING_TO_BOOL_OR_INT( variables[ 2 ] );
+        
+        variables := variables[ 1 ];
+        
+    else
+        
+        value := true;
+        
+        variables := variables[ 1 ];
+        
+    fi;
+    
+    position_forall := PositionSublist( predicate, "forall" );
+    
+    position_exists := PositionSublist( predicate, "exists" );
+    
+    if Minimum( [ position_forall, position_exists ] ) <> fail then
+        
+        predicate := predicate{[ Minimum( [ position_forall, position_exists ] ) + 7 .. Length( predicate ) ]};
+        
+        predicate := SplitString( predicate, ":" );
+        
+        bound_variable := predicate[ 1 ];
+        
+        predicate := predicate[ 2 ];
+        
+        bound_variable := SPLIT_STRING_MULTIPLE( bound_variable, "in" );
+        
+        bound_variable := List( bound_variable, NormalizedWhitespace );
+        
+        bound_variable := Position( range_variables, bound_variable[ 2 ] );
+        
+        if position_forall <> fail then
+            
+            bound_variable := [ bound_variable, "all" ];
+            
+        else
+            
+            bound_variable := [ bound_variable, "any" ];
+            
+        fi;
+        
+    else
+        
+        predicate := split_source_part[ 1 ];
+        
+        variables := NormalizedWhitespace( variables{[ 1 .. PositionSublist( variables, ")" ) - 1 ]} );
+        
+        for i in [ 1 .. Length( range_variables ) ] do
+            
+            if IsString( range_variables[ i ] ) then
+                
+                if variables = range_variables[ i ] then
+                    
+                    bound_variable := i;
+                    
+                    break;
+                    
+                fi;
+                
+            else
+                
+                bound_variable := Position( range_variables[ i ], variables );
+                
+                if bound_variable <> fail then
+                    
+                    bound_variable := [ i, bound_variable ];
+                    
+                    break;
+                    
+                else
+                    
+                    Unbind( bound_variable );
+                    
+                fi;
+                
+            fi;
+            
+        od;
+        
+        if not IsBound( bound_variable ) then
+            
+            variables := Concatenation( "variable ", variables, " was not recognized" );
+            
+        fi;
+        
+    fi;
+    
+    return rec( Object := bound_variable, ValueFunction := ValueGlobal( NormalizedWhitespace( predicate ) ), Value := value );
+    
+end );
+
 InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
                        
   function( theorem_string )
     local variable_part, source_part, range_part, range_value, range_command,
-          range_predicate, range_variables, position;
+          range_predicate, range_variables, position, i, current_source_rec, source_part_split,
+          sources_list, int_conversion, theorem_record, result_function_variables, to_be_removed;
     
     source_part := PositionSublist( theorem_string, "~|~" );
     
@@ -174,67 +371,107 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
     
     variable_part := SplitString( variable_part, "," );
     
-    variable_part := List( variable_part, i -> REMOVE_PART_AFTER_FIRST_SUBSTRING( i, ":" ) );
+    variable_part := List( variable_part, i -> SplitString( i, ":" ) );
     
-    ##Find range part
+    variable_part := List( variable_part, i -> List( i, j -> NormalizedWhitespace( j ) ) );
     
-    range_value := SplitString( range_part, "=" );
+    ## split source part
     
-    if Length( range_value ) = 2 then
+    source_part := SplitString( source_part, "," );
+    
+    ## find function, and therefore return variables
+    ## check range first
+    
+    theorem_record := FIND_PART_WHICH_CONTAINS_FUNCTION( range_part );
+    
+    sources_list := [ ];
+    
+    if theorem_record <> fail then
+        ## Range contains the function
         
-        range_part := NormalizedWhitespace( range_value[ 1 ] );
+        theorem_record!.Range := theorem_record!.TheoremPart;
         
-        range_value := CONVERT_STRING_TO_BOOL_OR_INT( range_value[ 2 ] );
+        Unbind( theorem_record!.TheoremPart );
         
-    elif Length( range_value ) = 1 then
+        result_function_variables := theorem_record!.Variables;
         
-        range_value := true;
+        Unbind( theorem_record!.Variables );
         
     else
         
-        Error( "wrong range format, too many =" );
+        theorem_record := rec( );
         
     fi;
     
-    range_part := SplitString( range_part, "(" );
+    to_be_removed := [ ];
     
-    range_predicate := range_part[ 1 ];
+    for i in source_part do
+        
+        current_source_rec := FIND_PART_WHICH_CONTAINS_FUNCTION( i );
+        
+        if current_source_rec <> fail then
+            
+            result_function_variables := current_source_rec!.Variables;
+            
+            theorem_record!.Function := current_source_rec!.Function;
+            
+            Add( sources_list, current_source_rec!.TheoremPart );
+            
+            Add( to_be_removed, i );
+            
+        fi;
+        
+    od;
     
-    if Length( range_part ) = 2 then
+    for i in to_be_removed do
         
-        range_variables := range_part[ 2 ];
+        Remove( source_part, Position( source_part, i ) );
         
-        range_command := "IMPLICATION";
+    od;
+    
+    if not IsBound( theorem_record!.Function ) then
         
-    elif Length( range_part ) = 3 then
+        Error( "not yet implemented" );
         
-        range_command := range_part[ 2 ];
-        
-        range_variables := range_part[ 3 ];
-        
-    else
-        
-        Error( "wrong range format" );
+        ## TODO
         
     fi;
     
-    ##Sanitize range variables
-    
-    position := PositionSublist( range_variables, ")" );
-    
-    if position = fail then
+    if not IsBound( theorem_record!.Range ) then
         
-        Error( "some ) should have been found" );
+        theorem_record!.Range := FIND_PREDICATE_VARIABLES( range_part, result_function_variables );
         
     fi;
     
-    range_variables := range_variables{[ 1 .. position - 1 ]};
+    for i in source_part do
+        
+        Add( sources_list, FIND_PREDICATE_VARIABLES( i, result_function_variables ) );
+        
+    od;
     
-    range_variables := SANITIZE_ARGUMENT_LIST( range_variables );
+    for i in [ 1 .. Length( result_function_variables ) ] do
+        
+        if not IsString( result_function_variables[ i ] ) then
+            
+            continue;
+            
+        fi;
+        
+        int_conversion := Int( result_function_variables[ i ] );
+        
+        if int_conversion = fail then
+            
+            continue;
+            
+        fi;
+        
+        Add( sources_list, rec( Type := "testdirect", Object := i, Value := int_conversion ) );
+        
+    od;
     
+    theorem_record!.Source := sources_list;
     
-    
-    return [ variable_part, source_part, range_part, range_value ];
+    return theorem_record;
     
 end );
 
