@@ -339,7 +339,8 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
   function( theorem_string )
     local variable_part, source_part, range_part, range_value, range_command,
           range_predicate, range_variables, position, i, current_source_rec, source_part_split,
-          sources_list, int_conversion, theorem_record, result_function_variables, to_be_removed;
+          sources_list, int_conversion, theorem_record, result_function_variables, to_be_removed,
+          source_part_copy;
     
     source_part := PositionSublist( theorem_string, "~|~" );
     
@@ -377,7 +378,19 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
     
     ## split source part
     
-    source_part := SplitString( source_part, "," );
+    source_part_copy := ShallowCopy( source_part );
+    
+    RemoveCharacters( source_part_copy, " \n\t\r" );
+    
+    if source_part_copy = "()" then
+        
+        source_part := [ ];
+        
+    else
+        
+        source_part := SplitString( source_part, "," );
+        
+    fi;
     
     ## find function, and therefore return variables
     ## check range first
@@ -431,9 +444,7 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
     
     if not IsBound( theorem_record!.Function ) then
         
-        Error( "not yet implemented" );
-        
-        ## TODO
+        Error( "no function found. This is the wrong parser" );
         
     fi;
     
@@ -472,6 +483,109 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
     theorem_record!.Source := sources_list;
     
     return theorem_record;
+    
+end );
+
+BindGlobal( "RETURN_STRING_BETWEEN_SUBSTRINGS",
+            
+  function( string, substring_begin, substring_end )
+    local substring, rest_of_string, position_begin, position_end;
+    
+    position_begin := PositionSublist( string, substring_begin );
+    
+    position_end := PositionSublist( string, substring_end );
+    
+    if position_begin = fail or position_end = fail then
+        
+        return fail;
+        
+    fi;
+    
+    substring := string{[ position_begin + Length( substring_begin ) .. position_end - 1 ]};
+    
+    rest_of_string := string{[ position_end + Length( substring_end ) .. Length( string ) ]};
+    
+    return [ substring, rest_of_string ];
+    
+end );
+
+BindGlobal( "REMOVE_CHARACTERS_FROM_LATEX",
+            
+  function( string )
+    local i;
+    
+    for i in [ "&", "\\", "big", "$" ] do
+        
+        string := Concatenation( SPLIT_STRING_MULTIPLE( string, i ) );
+        
+    od;
+    
+    return string;
+    
+end );
+
+InstallGlobalFunction( "READ_THEOREM_FILE",
+                       
+  function( filename )
+    local stream, file, line, substring, theorem_list, without_align;
+    
+    if not IsExistingFile( filename ) then
+        
+        Error( "no file found" );
+        
+    fi;
+    
+    stream := IO_File( filename, "r" );
+    
+    line := IO_ReadLine( stream );
+    
+    file := "";
+    
+    while line <> "" do
+        
+        file := Concatenation( file, line );
+        
+        line := IO_ReadLine( stream );
+        
+    od;
+    
+    IO_Close( stream );
+    
+    NormalizeWhitespace( file );
+    
+    file := REMOVE_CHARACTERS_FROM_LATEX( file );
+    
+    theorem_list := [ ];
+    
+    while true do
+        
+        substring := RETURN_STRING_BETWEEN_SUBSTRINGS( file, "begin{sequent}", "end{sequent}" );
+        
+        if substring = fail then
+            
+            break;
+            
+        fi;
+        
+        file := substring[ 2 ];
+        
+        without_align := RETURN_STRING_BETWEEN_SUBSTRINGS( substring[ 1 ], "begin{align*}", "end{align*}" );
+        
+        if without_align = fail then
+            
+            without_align := substring[ 1 ];
+            
+        else
+            
+            without_align := without_align[ 1 ];
+            
+        fi;
+        
+        Add( theorem_list, PARSE_THEOREM_FROM_LATEX( without_align ) );
+        
+    od;
+    
+    return theorem_list;
     
 end );
 

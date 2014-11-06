@@ -11,3 +11,5 @@
 
 DeclareGlobalFunction( "PARSE_THEOREM_FROM_LATEX" );
 
+DeclareGlobalFunction( "READ_THEOREM_FILE" );
+
