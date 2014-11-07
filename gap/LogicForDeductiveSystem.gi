@@ -241,3 +241,48 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
     od;
     
 end );
+
+##
+InstallGlobalFunction( ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY,
+                       
+  function( category, immediate_record )
+    
+    if HasDeductiveSystem( category ) then
+        
+        INSTALL_PREDICATE_IMPLICATION( DeductiveSystem( category ), immediate_record );
+        
+    fi;
+    
+    if not IsBound( category!.predicate_implication ) then
+        
+        category!.predicate_implication := [ ];
+        
+    fi;
+    
+    Add( category!.predicate_implication, immediate_record );
+    
+end );
+
+##
+InstallGlobalFunction( INSTALL_PREDICATE_IMPLICATION,
+                       
+  function( category, immediate_record )
+    local cell_filter;
+    
+    if LowercaseString( immediate_record!.CellType ) = "obj" then
+        
+        cell_filter := ObjectFilter( category );
+        
+    elif LowercaseString( immediate_record!.CellType ) = "mor" then
+        
+        cell_filter := MorphismFilter( category );
+        
+    else
+        
+        cell_filter := TwoCellFilter( category );
+        
+    fi;
+    
+    InstallTrueMethod( immediate_record!.Range and cell_filter, immediate_record!.Source and cell_filter );
+    
+end );

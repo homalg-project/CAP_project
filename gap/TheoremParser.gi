@@ -342,11 +342,11 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
           sources_list, int_conversion, theorem_record, result_function_variables, to_be_removed,
           source_part_copy;
     
-    source_part := PositionSublist( theorem_string, "~|~" );
+    source_part := PositionSublist( theorem_string, "|" );
     
     if source_part = fail then
         
-        Error( "no ~|~ found" );
+        Error( "no | found" );
         
     fi;
     
@@ -546,7 +546,7 @@ BindGlobal( "REMOVE_CHARACTERS_FROM_LATEX",
   function( string )
     local i;
     
-    for i in [ "&", "\\", "big", "$", "mathrm" ] do
+    for i in [ "&", "\\", "big", "$", "mathrm", "~" ] do
         
         string := Concatenation( SPLIT_STRING_MULTIPLE( string, i ) );
         
@@ -620,6 +620,59 @@ InstallGlobalFunction( "READ_THEOREM_FILE",
     od;
     
     return theorem_list;
+    
+end );
+
+
+
+##############################
+##
+## True methods
+##
+##############################
+
+InstallGlobalFunction( "PARSE_PREDICATE_IMPLICATION_FROM_LATEX",
+                       
+  function( theorem_string )
+    local variable_part, source_part, range_part, source_filter, range_filter, i;
+    
+    variable_part := SplitString( theorem_string, "|" );
+    
+    source_part := SPLIT_STRING_MULTIPLE( variable_part[ 2 ], "vdash" );
+    
+    range_part := source_part[ 2 ];
+    
+    source_part := source_part[ 1 ];
+    
+    variable_part := variable_part[ 1 ];
+    
+    variable_part := NormalizedWhitespace( SplitString( variable_part, ":" )[ 2 ] );
+    
+    source_part := SplitString( source_part, "," );
+    
+    source_part := List( source_part, i -> NormalizedWhitespace( REMOVE_PART_AFTER_FIRST_SUBSTRING( i, "(" ) ) );
+    
+    if Length( source_part ) = 0 then
+        
+        Error( "no source part found" );
+        
+    fi;
+    
+    source_filter := ValueGlobal( source_part[ 1 ] );
+    
+    Remove( source_part, 1 );
+    
+    for i in source_part do
+        
+        source_filter := source_filter and ValueGlobal( i );
+        
+    od;
+    
+    range_part := NormalizedWhitespace( REMOVE_PART_AFTER_FIRST_SUBSTRING( range_part, "(" ) );
+    
+    range_part := ValueGlobal( range_part );
+    
+    return rec( CellType := variable_part, Source := source_filter, Range := range_part );
     
 end );
 
