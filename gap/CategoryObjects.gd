@@ -68,6 +68,12 @@ DeclareProperty( "IsProjective",
 DeclareProperty( "IsInjective",
                  IsHomalgCategoryObject );
 
+DeclareProperty( "IsTerminal",
+                 IsHomalgCategoryObject );
+
+DeclareProperty( "IsInitial",
+                 IsHomalgCategoryObject );
+
 ###################################
 ##
 #! @Section Zero object
