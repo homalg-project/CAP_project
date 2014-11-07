@@ -68,6 +68,7 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2014.06.26" ],
                            [ "ToolsForHomalg", ">= 2014.05.08" ],
+                           [ "io", ">=0" ],
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := []
