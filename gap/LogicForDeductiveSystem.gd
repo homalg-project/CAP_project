@@ -9,6 +9,14 @@
 ##
 #############################################################################
 
+## Global files and add functions
+
+DeclareGlobalVariable( "CATEGORIES_LOGIC_FILES" );
+
+DeclareGlobalFunction( "AddTheoremFileToCategory" );
+
+DeclareGlobalFunction( "AddPredicateImplicationFileToCategory" );
+
 ## Theorems
 
 DeclareGlobalFunction( "ADD_THEOREM_TO_CATEGORY" );

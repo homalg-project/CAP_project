@@ -556,14 +556,28 @@ BindGlobal( "REMOVE_CHARACTERS_FROM_LATEX",
     
 end );
 
-InstallGlobalFunction( "READ_THEOREM_FILE",
+InstallGlobalFunction( "READ_LOGIC_FILE",
                        
-  function( filename )
-    local stream, file, line, substring, theorem_list, without_align;
+  function( filename, type )
+    local stream, file, line, substring, theorem_list, without_align, parser;
     
     if not IsExistingFile( filename ) then
         
         Error( "no file found" );
+        
+    fi;
+    
+    if LowercaseString( type ) = "implication" then
+        
+        parser := PARSE_PREDICATE_IMPLICATION_FROM_LATEX;
+        
+    elif LowercaseString( type ) = "theorem" then
+        
+        parser := PARSE_THEOREM_FROM_LATEX;
+        
+    else
+        
+        Error( "wrong parsing type" );
         
     fi;
     
@@ -615,7 +629,7 @@ InstallGlobalFunction( "READ_THEOREM_FILE",
             
         fi;
         
-        Add( theorem_list, PARSE_THEOREM_FROM_LATEX( without_align ) );
+        Add( theorem_list, parser( without_align ) );
         
     od;
     
@@ -623,7 +637,13 @@ InstallGlobalFunction( "READ_THEOREM_FILE",
     
 end );
 
-
+InstallGlobalFunction( READ_THEOREM_FILE,
+                       
+  function( theorem_file )
+    
+    return READ_LOGIC_FILE( theorem_file, "theorem" );
+    
+end );
 
 ##############################
 ##
@@ -673,6 +693,14 @@ InstallGlobalFunction( "PARSE_PREDICATE_IMPLICATION_FROM_LATEX",
     range_part := ValueGlobal( range_part );
     
     return rec( CellType := variable_part, Source := source_filter, Range := range_part );
+    
+end );
+
+InstallGlobalFunction( READ_PREDICATE_IMPLICATION_FILE,
+                       
+  function( predicate_file )
+    
+    return READ_LOGIC_FILE( predicate_file, "implication" );
     
 end );
 
