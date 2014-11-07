@@ -392,6 +392,38 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
         
     fi;
     
+    ## Rebuild Sourcepart, remove brackets
+    
+    source_part := List( source_part, NormalizedWhitespace );
+    
+    i := 1;
+    
+    while i < Length( source_part ) do
+        
+        if COUNT_SUBSTRING_APPEARANCE( source_part[ i ], "(" ) > COUNT_SUBSTRING_APPEARANCE( source_part[ i ], ")" ) then
+            
+            source_part[ i ] := Concatenation( source_part[ i ], source_part[ i + 1 ] );
+            
+            Remove( source_part, [ i + 1 ] );
+            
+        else
+            
+            i := i + 1;
+            
+        fi;
+        
+    od;
+    
+    for i in [ 1 .. Length( source_part ) ] do
+        
+        if source_part[ i ][ 1 ] = '(' then
+            
+            source_part[ i ] := source_part[ i ]{[ 2 .. Length( source_part[ i ] ) - 1 ]};
+            
+        fi;
+        
+    od;
+    
     ## find function, and therefore return variables
     ## check range first
     
@@ -514,7 +546,7 @@ BindGlobal( "REMOVE_CHARACTERS_FROM_LATEX",
   function( string )
     local i;
     
-    for i in [ "&", "\\", "big", "$", "{", "}", "mathrm" ] do
+    for i in [ "&", "\\", "big", "$", "mathrm" ] do
         
         string := Concatenation( SPLIT_STRING_MULTIPLE( string, i ) );
         
@@ -542,6 +574,8 @@ InstallGlobalFunction( "READ_THEOREM_FILE",
     file := "";
     
     while line <> "" do
+        
+        line := REMOVE_PART_AFTER_FIRST_SUBSTRING( line, "%" );
         
         file := Concatenation( file, line );
         
