@@ -120,40 +120,51 @@ end );
 
 InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
                        
-  function( method_name, arguments, result_object )
-    local current_argument, crisp_category, deductive_category, theorem_list,
+  function( arg )
+    local method_name, arguments, result_object,
+          current_argument, crisp_category, deductive_category, theorem_list,
           current_theorem, todo_list_source, range, is_valid_theorem, sanitized_source,
           entry, current_source, sanitized_source_list;
     
-    if Length( arguments ) = 0 then
-        
-        Error( "Cannot figure out which category to use here" );
-        
-    fi;
+    method_name := arg[ 1 ];
     
-    current_argument := arguments[ 1 ];
+    arguments := arg[ 2 ];
     
-    if IsHomalgCategory( current_argument ) then
-       
-        crisp_category := current_argument;
+    result_object := arg[ 3 ];
+    
+    if Length( arg ) = 4 then
         
-        deductive_category := DeductiveSystem( crisp_category );
+        deductive_category := arg[ 4 ];
         
-    elif IsHomalgCategoryCell( current_argument ) then
-        
-        deductive_category := HomalgCategory( current_argument );
-        
-        crisp_category := UnderlyingHonestCategory( deductive_category );
-        
-    elif IsList( current_argument ) then
-        
-        deductive_category := HomalgCategory( current_argument[ 1 ] );
-        
-        crisp_category := UnderlyingHonestCategory( deductive_category );
+        crisp_category := UnderlyingHonestCategory( arg[ 4 ] );
         
     else
         
-        Error( "this should not happen: wrong arguments" );
+        current_argument := arguments[ 1 ];
+        
+        if IsHomalgCategory( current_argument ) then
+           
+            crisp_category := current_argument;
+            
+            deductive_category := DeductiveSystem( crisp_category );
+            
+        elif IsHomalgCategoryCell( current_argument ) then
+            
+            deductive_category := HomalgCategory( current_argument );
+            
+            crisp_category := UnderlyingHonestCategory( deductive_category );
+            
+        elif IsList( current_argument ) then
+            
+            deductive_category := HomalgCategory( current_argument[ 1 ] );
+            
+            crisp_category := UnderlyingHonestCategory( deductive_category );
+            
+        else
+            
+            Error( "Cannot figure out which category to use here" );
+            
+        fi;
         
     fi;
     

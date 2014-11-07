@@ -637,6 +637,10 @@ InstallMethod( InDeductiveSystem,
     
     Add( DeductiveSystem( HomalgCategory( morphism ) ), deductive_morphism );
     
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ deductive_morphism ], source );
+    
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ deductive_morphism ], range );
+    
     return deductive_morphism;
     
 end );
@@ -658,6 +662,10 @@ InstallMethod( DeductiveSystemMorphism,
                              Range, range );
     
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deductive_morphism );
+    
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ deductive_morphism ], source, HomalgCategory( source ) );
+    
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ deductive_morphism ], range, HomalgCategory( range ) );
     
     return deductive_morphism;
     
