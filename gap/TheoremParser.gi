@@ -514,7 +514,7 @@ BindGlobal( "REMOVE_CHARACTERS_FROM_LATEX",
   function( string )
     local i;
     
-    for i in [ "&", "\\", "big", "$" ] do
+    for i in [ "&", "\\", "big", "$", "{", "}", "mathrm" ] do
         
         string := Concatenation( SPLIT_STRING_MULTIPLE( string, i ) );
         
