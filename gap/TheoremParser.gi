@@ -358,7 +358,7 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
         
     fi;
     
-    theorem_string := SPLIT_STRING_MULTIPLE( theorem_string, "~|~" );
+    theorem_string := SplitString( theorem_string, "|" );
     
     theorem_string[ 2 ] := SPLIT_STRING_MULTIPLE( theorem_string[ 2 ], "\vdash" );
     

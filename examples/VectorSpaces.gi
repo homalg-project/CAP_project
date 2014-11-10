@@ -952,9 +952,9 @@ ADD_THEOREM_TO_CATEGORY( vecspaces, rec( Function := "DirectProduct",
                                                           ValueFunction := IsZero ) ],
                                          Range := rec( ValueFunction := IsZero ) ) );
 
-theorem_string := "\alpha:Mor, \beta:Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsMonomorphism( \ProjectionInFactorOfPullback( [ \alpha, \beta ], 2 ) )";
-
-ADD_THEOREM_TO_CATEGORY( vecspaces, PARSE_THEOREM_FROM_LATEX( theorem_string ) );
+# theorem_string := "\alpha:Mor, \beta:Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsMonomorphism( \ProjectionInFactorOfPullback( [ \alpha, \beta ], 2 ) )";
+# 
+# ADD_THEOREM_TO_CATEGORY( vecspaces, PARSE_THEOREM_FROM_LATEX( theorem_string ) );
 
 # @Theorem
 # A | ( For all x in A : IsZero( x ) = true ) => IsZero( DirectProduct( A ) ) = true.
