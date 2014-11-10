@@ -7,6 +7,167 @@
 ##
 #############################################################################
 
+########################################
+##
+## Global logic files
+##
+########################################
+
+InstallValue( CATEGORIES_LOGIC_FILES,
+              
+  rec(
+      
+      Propositions := rec(
+          General := [ ],
+          IsEnrichedOverCommutativeRegularSemigroup := [ ],
+          IsAbCategory := [ ],
+          IsPreAdditiveCategory := [ ],
+          IsAdditiveCategory := [ ],
+          IsPreAbelianCategory := [ ],
+          IsAbelianCategory := [ ] ),
+      Predicates := rec(
+          General := [ ],
+          IsEnrichedOverCommutativeRegularSemigroup := [ ],
+          IsAbCategory := [ ],
+          IsPreAdditiveCategory := [ ],
+          IsAdditiveCategory := [ ],
+          IsPreAbelianCategory := [ ],
+          IsAbelianCategory := [ ] ),
+      EvalRules := rec(
+          General := [ ],
+          IsEnrichedOverCommutativeRegularSemigroup := [ ],
+          IsAbCategory := [ ],
+          IsPreAdditiveCategory := [ ],
+          IsAdditiveCategory := [ ],
+          IsPreAbelianCategory := [ ],
+          IsAbelianCategory := [ ] )
+     ) );
+
+InstallGlobalFunction( AddTheoremFileToCategory,
+                       
+  function( category, filename )
+    local theorem_list, i;
+    
+    Add( category!.logical_implication_files.Propositions.General, filename );
+    
+    if not HasDeductiveSystem( category ) then
+        
+        return;
+        
+    fi;
+    
+    theorem_list := READ_THEOREM_FILE( filename );
+    
+    for i in theorem_list do
+        
+        ADD_THEOREM_TO_CATEGORY( category, i );
+        
+    od;
+    
+end );
+
+InstallGlobalFunction( AddPredicateImplicationFileToCategory,
+                       
+  function( category, filename )
+    local theorem_list, i;
+    
+    Add( category!.logical_implication_files.Predicates.General, filename );
+    
+    if not HasDeductiveSystem( category ) then
+        
+        return;
+        
+    fi;
+    
+    theorem_list := READ_PREDICATE_IMPLICATION_FILE( filename );
+    
+    for i in theorem_list do
+        
+        ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY( DeductiveSystem( category ), i );
+        
+    od;
+    
+end );
+
+InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
+                       
+  function( category, current_filter )
+    local i, theorem_list, current_theorem;
+    
+    for i in category!.logical_implication_files.Propositions.( current_filter ) do
+        
+        theorem_list := READ_THEOREM_FILE( i );
+        
+        for current_theorem in theorem_list do
+            
+            ADD_THEOREM_TO_CATEGORY( category, current_theorem );
+            
+        od;
+        
+    od;
+    
+    for i in category!.logical_implication_files.Predicates.( current_filter ) do
+        
+        theorem_list := READ_PREDICATE_IMPLICATION_FILE( i );
+        
+        for current_theorem in theorem_list do
+            
+            ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY( DeductiveSystem( category ), current_theorem );
+            
+        od;
+        
+    od;
+    
+#         for i in category!.logical_implication_files.EvalRules.( current_filter ) do
+#             
+#             theorem_list := READ_EVAL_RULES_FILE( i );
+#             
+#             for current_theorem in theorem_list do
+#                 
+#                 ADD_EVAL_RULES_TO_CATEGORY( category, current_theorem );
+#                 
+#             od;
+#             
+#         od;
+    
+end );
+
+
+BindGlobal( "INSTALL_LOGICAL_IMPLICATIONS_IMMEDIATE_PART",
+            
+  function( )
+    local current_filter;
+    
+    for current_filter in [ "IsEnrichedOverCommutativeRegularSemigroup",
+                            "IsAbCategory",
+                            "IsPreAdditiveCategory",
+                            "IsAdditiveCategory",
+                            "IsPreAbelianCategory",
+                            "IsAbelianCategory" ] do
+                            
+        InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
+                                IsHomalgCategory and HasDeductiveSystem and ValueGlobal( current_filter ),
+                                0,
+                                
+          function( category )
+            
+            INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, current_filter );
+            
+            TryNextMethod( );
+            
+        end );
+    
+    od;
+    
+end );
+
+INSTALL_LOGICAL_IMPLICATIONS_IMMEDIATE_PART( );
+
+###################################
+##
+## Theorem part
+##
+###################################
 
 InstallGlobalFunction( ADD_THEOREM_TO_CATEGORY,
                        
@@ -241,6 +402,12 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
     od;
     
 end );
+
+###################################
+##
+## Predicate part
+##
+###################################
 
 ##
 InstallGlobalFunction( ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY,

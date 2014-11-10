@@ -13,6 +13,11 @@
 
 DeclareGlobalVariable( "CATEGORIES_LOGIC_FILES" );
 
+DeclareAttribute( "INSTALL_LOGICAL_IMPLICATIONS",
+                  IsHomalgCategory );
+
+DeclareGlobalFunction( "INSTALL_LOGICAL_IMPLICATIONS_HELPER" );
+
 DeclareGlobalFunction( "AddTheoremFileToCategory" );
 
 DeclareGlobalFunction( "AddPredicateImplicationFileToCategory" );
