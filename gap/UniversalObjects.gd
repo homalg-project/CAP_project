@@ -743,10 +743,10 @@ DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
 DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
 
 DeclareOperation( "UniversalMorphismFromCoproductOp",
-                  [ IsList, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsList, IsHomalgCategoryObject ] );
 
 DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
-                  [ IsList, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsHomalgCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc

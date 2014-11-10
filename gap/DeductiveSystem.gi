@@ -369,20 +369,20 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromCoproduct( deductive_system,
                                        
-      function( sink )
+      function( diagram, sink )
         local coproduct;
         
         coproduct := Coproduct( List( sink, Source ) );
         
-        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ sink ], Source( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ diagram, sink ], Source( sink[ 1 ] ) );
         
     end );
     
     AddUniversalMorphismFromCoproduct( deductive_system,
                                                          
-      function( sink, coproduct )
+      function( diagram, sink, coproduct )
         
-        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ sink ], Source( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ diagram, sink ], Source( sink[ 1 ] ) );
         
     end );
     

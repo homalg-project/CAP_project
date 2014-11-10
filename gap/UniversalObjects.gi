@@ -795,15 +795,19 @@ end );
 InstallGlobalFunction( UniversalMorphismFromCoproduct,
 
   function( arg )
+    local diagram;
     
-    if Length( arg ) = 1
-       and IsList( arg[1] ) then
+    if Length( arg ) = 2
+       and IsList( arg[1] )
+       and IsList( arg[2] ) then
        
-       return UniversalMorphismFromCoproductOp( arg[1], arg[1][1] );
+       return UniversalMorphismFromCoproductOp( arg[1], arg[2], arg[1][1] );
        
     fi;
     
-    return UniversalMorphismFromCoproductOp( arg, arg[1] );
+    diagram := List( arg, Source );
+    
+    return UniversalMorphismFromCoproductOp( diagram, arg, diagram[1] );
   
 end );
 
@@ -819,25 +823,28 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
                                            [ IsList,
-                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                             IsList,
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
-      function( sink, method_selection_morphism )
+      function( diagram, sink, method_selection_object )
         local test_object, components, coproduct_objects, universal_morphism, coproduct;
         
-        test_object := Range( sink[1] );
-        
+        ##TODO: superfluous
         components := sink;
         
-        coproduct_objects := List( sink, Source );
+        coproduct_objects := diagram;
         
         if HasCoproductOp( coproduct_objects, coproduct_objects[1] ) then
           
           return UniversalMorphismFromCoproductWithGivenCoproduct(
+                   diagram,
                    sink,
                    CoproductOp( coproduct_objects, coproduct_objects[1] )
                  );
           
         fi;
+        
+        test_object := Range( sink[1] );
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
             
@@ -845,7 +852,7 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
             
         fi;
         
-        universal_morphism := func( sink );
+        universal_morphism := func( diagram, sink );
         
         Add( category, universal_morphism );
         
@@ -859,7 +866,7 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromCoproductOp", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromCoproductOp", 3 ) );
     
 end );
 
@@ -875,9 +882,10 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
                                            [ IsList,
+                                             IsList,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
-      function( sink, coproduct )
+      function( diagram, sink, coproduct )
         local test_object, components, coproduct_objects, universal_morphism;
         
         test_object := Range( sink[1] );
@@ -890,13 +898,13 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
             
         fi;
         
-        universal_morphism := func( sink, coproduct );
+        universal_morphism := func( diagram, sink, coproduct );
         
         Add( category, universal_morphism );
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromCoproductWithGivenCoproduct", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromCoproductWithGivenCoproduct", 3 ) );
     
 end );
 
@@ -926,14 +934,15 @@ InstallTrueMethod( CanComputeUniversalMorphismFromCoproduct,
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
                                        [ IsList,
-                                         IsHomalgCategoryMorphism and CanComputeCoproduct and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct ],
+                                         IsList,
+                                         IsHomalgCategoryObject and CanComputeCoproduct and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct ],
                                          -9999, #FIXME
                                        
-  function( sink, method_selection_morphism )
+  function( diagram, sink, method_selection_object )
     
-    return UniversalMorphismFromCoproductWithGivenCoproduct( sink, CallFuncList( Coproduct, List( sink, Source ) ) );
+    return UniversalMorphismFromCoproductWithGivenCoproduct( diagram, sink, CallFuncList( Coproduct, List( sink, Source ) ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
 InstallTrueMethod( CanComputeInjectionOfCofactorOfCoproduct, CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct );
@@ -1334,7 +1343,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
                                          IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
                                          -9999, #FIXME
                                        
-  function( diagram, source, method_selection_morphism )
+  function( diagram, source, method_selection_object )
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, source, CallFuncList( DirectProduct, List( source, Range ) ) );
     
@@ -1552,6 +1561,7 @@ InstallTrueMethod( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
                                        [ IsList,
+                                         IsList,
                                          IsHomalgCategoryObject
                                      and IsAdditiveCategory
                                      and CanComputeProjectionInFactorOfDirectProduct
@@ -1559,14 +1569,14 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCo
                                      and CanComputePreCompose ],
                                        -9999 - 1, #FIXME
                                        
-  function( sink, coproduct )
+  function( diagram, sink, coproduct )
     local nr_components;
     
     nr_components := Length( sink );
   
     return Sum( List( [ 1 .. nr_components ], i -> PreCompose( ProjectionInFactor( coproduct, i ), sink[ i ] ) ) );
   
-end  : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+end  : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
 InstallTrueMethod( CanComputeAdditionForMorphisms,

@@ -451,7 +451,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     
     AddUniversalMorphismFromCoproduct( lazy_category,
       
-      function( sink )
+      function( diagram, sink )
         local func, coproduct;
         
         func := function( ) return CallFuncList( UniversalMorphismFromCoproduct, EvalProductList( sink ) ); end;
@@ -464,10 +464,10 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     
     AddUniversalMorphismFromCoproductWithGivenCoproduct( lazy_category,
       
-      function( sink, coproduct )
+      function( diagram, sink, coproduct )
         local func;
         
-        func := function( ) return UniversalMorphismFromCoproductWithGivenCoproduct( EvalAndRewrapProductList( sink ), Eval( coproduct ) ); end;
+        func := function( ) return UniversalMorphismFromCoproductWithGivenCoproduct( EvalProductList( diagram ), EvalAndRewrapProductList( sink ), Eval( coproduct ) ); end;
         
         return LazyMorphism( coproduct, func, Source( sink[1] ) );
         
@@ -532,7 +532,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
         func := function( ) 
           
-          return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, EvalAndRewrapProductList( source ), Eval( direct_product ) );
+          return UniversalMorphismIntoDirectProductWithGivenDirectProduct( EvalProductList( diagram ), EvalAndRewrapProductList( source ), Eval( direct_product ) );
         
         end;
         

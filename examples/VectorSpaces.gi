@@ -357,7 +357,7 @@ end );
 ##
 AddUniversalMorphismFromCoproduct( vecspaces,
 
-  function( sink )
+  function( diagram, sink )
     local dim, coproduct, components, universal_morphism, morphism;
     
     components := sink;
@@ -381,7 +381,7 @@ end );
 ##
 AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
 
-  function( sink, coproduct )
+  function( diagram, sink, coproduct )
     local components, universal_morphism, morphism;
     
     components := sink;
