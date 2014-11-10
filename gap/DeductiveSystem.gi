@@ -415,20 +415,20 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoDirectProduct( deductive_system,
                                            
-      function( source )
+      function( diagram, source )
         local direct_product;
         
         direct_product := DirectProduct( List( source, Range ) );
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", source, direct_product );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ diagram, source ], direct_product );
         
     end );
     
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( deductive_system,
                                            
-      function( source, direct_product )
+      function( diagram, source, direct_product )
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ source ], direct_product );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ diagram, source ], direct_product );
         
     end );
     

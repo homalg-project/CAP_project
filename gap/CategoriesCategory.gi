@@ -393,7 +393,7 @@ end );
 ##
 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
                                        
-  function( sink, direct_product )
+  function( diagram, sink, direct_product )
     local name_string, universal_functor;
     
     name_string := Concatenation( 

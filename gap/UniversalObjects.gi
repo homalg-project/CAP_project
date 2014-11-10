@@ -1189,15 +1189,20 @@ end );
 InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
 
   function( arg )
+    local diagram;
     
-    if Length( arg ) = 1
-       and IsList( arg[1] ) then
+    if Length( arg ) = 2
+       and IsList( arg[1] )
+       and IsList( arg[2] ) then
        
-       return UniversalMorphismIntoDirectProductOp( arg[1], arg[1][1] );
+       return UniversalMorphismIntoDirectProductOp( arg[1], arg[2], arg[1][1] );
        
     fi;
     
-    return UniversalMorphismIntoDirectProductOp( arg, arg[1] );
+    ##convenience: UniversalMorphismIntoDirectProduct( test_projection_1, ..., test_projection_k )
+    diagram := List( arg, Range );
+    
+    return UniversalMorphismIntoDirectProductOp( diagram, arg, diagram[1] );
   
 end );
 
@@ -1213,25 +1218,28 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
                                            [ IsList,
-                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                             IsList,
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
-      function( source, method_selection_morphism )
+      function( diagram, source, method_selection_object )
         local test_object, components, direct_product_objects, universal_morphism, direct_product;
         
-        test_object := Source( source[1] );
-        
+        #TODO: superfluous
         components := source;
         
-        direct_product_objects := List( source, Range );
+        direct_product_objects := diagram;
         
         if HasDirectProductOp( direct_product_objects, direct_product_objects[1] ) then
         
           return UniversalMorphismIntoDirectProductWithGivenDirectProduct(
+                   diagram,
                    source,
                    DirectProductOp( direct_product_objects, direct_product_objects[1] )
                  );
           
         fi;
+        
+        test_object := Source( source[1] );
         
         if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
             
@@ -1239,7 +1247,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
             
         fi;
         
-        universal_morphism := func( source );
+        universal_morphism := func( diagram, source );
         
         Add( category, universal_morphism );
         
@@ -1255,7 +1263,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductOp", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductOp", 3 ) );
     
 end );
 
@@ -1271,9 +1279,10 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
     
     InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
                                            [ IsList,
+                                             IsList,
                                              IsHomalgCategoryObject and ObjectFilter( category ) ],
                                            
-      function( source, direct_product )
+      function( diagram, source, direct_product )
         local test_object, components, direct_product_objects, universal_morphism;
         
         test_object := Source( source[1] );
@@ -1286,13 +1295,13 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
             
         fi;
         
-        universal_morphism := func( source, direct_product );
+        universal_morphism := func( diagram, source, direct_product );
         
         Add( category, universal_morphism );
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 3 ) );
     
 end );
 
@@ -1321,14 +1330,15 @@ InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProduct,
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
                                        [ IsList,
-                                         IsHomalgCategoryMorphism and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
+                                         IsList,
+                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
                                          -9999, #FIXME
                                        
-  function( source, method_selection_morphism )
+  function( diagram, source, method_selection_morphism )
     
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( source, CallFuncList( DirectProduct, List( source, Range ) ) );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, source, CallFuncList( DirectProduct, List( source, Range ) ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
 InstallTrueMethod( CanComputeProjectionInFactorOfDirectProduct, CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct );
@@ -1516,6 +1526,7 @@ InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectPr
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
                                        [ IsList,
+                                         IsList,
                                          IsHomalgCategoryObject 
                                      and IsAdditiveCategory
                                      and CanComputeInjectionOfCofactorOfCoproduct 
@@ -1523,14 +1534,14 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGiv
                                      and CanComputePreCompose ],
                                        -9999 - 1, #FIXME
                                        
-  function( source, direct_product )
+  function( diagram, source, direct_product )
     local nr_components;
     
     nr_components := Length( source );
   
     return Sum( List( [ 1 .. nr_components ], i -> PreCompose( source[ i ], InjectionOfCofactor( direct_product, i ) ) ) );
   
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3  );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,

@@ -896,6 +896,7 @@ DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
 #! @Arguments alpha_i
 DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 
+# TODO: Fix this documentation (new argument)
 # @Description
 # Given finitely many morphisms $D = (\alpha_i: A \rightarrow B_i)$ as a
 # list of objects, this method
@@ -905,8 +906,9 @@ DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 # @Returns IsHomalgCategoryMorphism
 # @Arguments D, M
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
-                  [ IsList, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsList, IsHomalgCategoryObject ] );
 
+# TODO: Fix this documentation (new argument)
 #! @Description
 #! Given finitely many morphisms $D = (\alpha_i: A \rightarrow B_i)$ as a
 #! list of objects, and given the direct product $P = \prod_j B_j$, this method
@@ -916,7 +918,7 @@ DeclareOperation( "UniversalMorphismIntoDirectProductOp",
 #! @Returns IsHomalgCategoryMorphism
 #! @Arguments D, P
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsList, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsHomalgCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc

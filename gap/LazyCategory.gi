@@ -514,7 +514,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     
     AddUniversalMorphismIntoDirectProduct( lazy_category,
       
-      function( source )
+      function( diagram, source )
         local func, direct_product;
         
         func := function( ) return CallFuncList( UniversalMorphismIntoDirectProduct, EvalProductList( source ) ); end;
@@ -527,12 +527,12 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
     
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( lazy_category,
       
-      function( source, direct_product )
+      function( diagram, source, direct_product )
         local func;
         
         func := function( ) 
           
-          return UniversalMorphismIntoDirectProductWithGivenDirectProduct( EvalAndRewrapProductList( source ), Eval( direct_product ) );
+          return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, EvalAndRewrapProductList( source ), Eval( direct_product ) );
         
         end;
         
