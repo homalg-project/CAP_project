@@ -369,20 +369,20 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromCoproduct( deductive_system,
                                        
-      function( sink )
+      function( diagram, sink )
         local coproduct;
         
         coproduct := Coproduct( List( sink, Source ) );
         
-        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ sink ], Source( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ diagram, sink ], Source( sink[ 1 ] ) );
         
     end );
     
     AddUniversalMorphismFromCoproduct( deductive_system,
                                                          
-      function( sink, coproduct )
+      function( diagram, sink, coproduct )
         
-        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ sink ], Source( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ diagram, sink ], Source( sink[ 1 ] ) );
         
     end );
     
@@ -415,20 +415,20 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoDirectProduct( deductive_system,
                                            
-      function( source )
+      function( diagram, source )
         local direct_product;
         
         direct_product := DirectProduct( List( source, Range ) );
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", source, direct_product );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ diagram, source ], direct_product );
         
     end );
     
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( deductive_system,
                                            
-      function( source, direct_product )
+      function( diagram, source, direct_product )
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ source ], direct_product );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ diagram, source ], direct_product );
         
     end );
     
