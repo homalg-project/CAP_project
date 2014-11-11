@@ -646,28 +646,44 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
             
             resolved_objects := [ ];
             
-            for i in object_to_check do
-                
-                Add( resolved_objects, GET_CORRECT_SUBTREE_ENTRY( history, i ) );
-                
-            od;
+            Add( resolved_objects, GET_CORRECT_SUBTREE_ENTRY( history, object_to_check[ 1 ] ) );
             
-            if ForAny( resolved_objects, i -> i = fail ) then
+            if IsString( object_to_check[ 2 ] ) then
                 
-                to_be_applied := false;
+                ## To do
                 
-                break;
+            elif IsInt( object_to_check[ 2 ] ) then
                 
-            fi;
-            
-            resolved_objects := IS_EQUAL_FOR_SUBTREES( resolved_objects );
-            
-            if resolved_objects = false then
+                if not resolved_objects[ 1 ] = object_to_check[ 2 ] then
+                    
+                    to_be_applied := false;
+                    
+                    break;
+                    
+                fi;
                 
-                to_be_applied := false;
+            else
                 
-                break;
+                Add( resolved_objects, GET_CORRECT_SUBTREE_ENTRY( history, object_to_check[ 2 ] ) );
                 
+                if ForAny( resolved_objects, i -> i = fail ) then
+                    
+                    to_be_applied := false;
+                    
+                    break;
+                    
+                fi;
+                
+                resolved_objects := IS_EQUAL_FOR_SUBTREES( resolved_objects );
+                
+                if resolved_objects = false then
+                    
+                    to_be_applied := false;
+                    
+                    break;
+                    
+                fi;
+              
             fi;
             
         od;
@@ -680,7 +696,7 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
         
         replaced_history := GET_CORRECT_SUBTREE_ENTRY( history, rule_to_apply!.part_to_replace );
         
-        part_for_well_defined := rule_to_apply!.part_for_well_defined;
+        part_for_well_defined := rule_to_apply!.part_for_is_well_defined;
         
         rule_applied := true;
         
@@ -694,17 +710,17 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
         
     fi;
     
-    part_for_well_defined := List( rule_to_apply!.part_for_well_defined, i -> FIX_WELL_DEFINED_PART( i, history ) );
+    part_for_well_defined := List( rule_to_apply!.part_for_is_well_defined, i -> FIX_WELL_DEFINED_PART( i, history ) );
     
     new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( replaced_history, rules );
     
     if new_return = fail then
         
-        return rec( new_history := replaced_history, part_for_well_defined := part_for_well_defined );
+        return rec( new_history := replaced_history, part_for_is_well_defined := part_for_well_defined );
         
     fi;
     
-    new_return!.part_for_well_defined := Concatenation( new_return!.part_for_well_defined, part_for_well_defined );
+    new_return!.part_for_is_well_defined := Concatenation( new_return!.part_for_is_well_defined, part_for_well_defined );
     
     return new_return;
     

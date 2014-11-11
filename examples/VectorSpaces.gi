@@ -955,7 +955,10 @@ end );
 eval_rule := rec( command := "PreCompose",
                   commands_to_check := [ [ [ 1 ], "UniversalMorphismIntoPullback" ],
                                          [ [ 2 ], "ProjectionInFactorOfPullback" ] ],
-                  cells_to_check := [ [ [ 1, 1 ], [ 2, 1 ] ] ],
-                  part_to_replace := [ 1, 2 ],
+                  cells_to_check := [ [ [ 1, 1, 1 ], [ 2, 1, 1 ] ],
+                                      [ [ 1, 1, 2 ], [ 2, 1, 2 ] ],
+                                      [ [ 2, 2 ], 2 ]
+                                    ],
+                  part_to_replace := [ 1, 2, 1 ],
                   ## TODO:
                   part_for_is_well_defined := [ [ "IsEqualForMorphisms", [ [ "PreCompose", [ [ 1, 2, 1 ], [ 1, 1, 1 ] ] ], [ "PreCompose", [ [ 1, 2, 2 ], [ 1, 1, 2 ] ] ] ] ] ] );

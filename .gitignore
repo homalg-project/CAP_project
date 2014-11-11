@@ -37,4 +37,5 @@ doc/manual.lab
 doc/*.xml
 maketest.g
 parsertest.g
+judgement_test
 
