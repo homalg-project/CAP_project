@@ -62,7 +62,7 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_OBJECTS" );
 
 ###################################
 ##
-#! @Section Constructive Object-sets
+## Constructive Object-sets
 ##
 ###################################
 

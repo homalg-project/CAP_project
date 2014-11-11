@@ -266,7 +266,7 @@ InstallMethod( AddPreCompose,
             
             Error( "morphisms must lie in the same category" );
             
-        elif not IsIdenticalObj( Range( mor_left ), Source( mor_right ) ) then
+        elif not IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) then
             
             Error( "morphisms not composable" );
             
