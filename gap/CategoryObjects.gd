@@ -56,6 +56,28 @@ DeclareAttribute( "Genesis",
                   IsHomalgCategoryCell, 
                   "mutable" );
 
+DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS" );
+
+DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_OBJECTS" );
+
+###################################
+##
+#! @Section Constructive Object-sets
+##
+###################################
+
+DeclareOperation( "AddIsEqualForObjects",
+                  [ IsHomalgCategory, IsFunction ] );
+
+DeclareOperationWithCache( "IsEqualForObjects",
+                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+
+DeclareAttribute( "ObjectEqualityFunction",
+                  IsHomalgCategory );
+
+DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
+                  [ IsHomalgCategory, IsString ] );
+
 ###################################
 ##
 #! @Section Properties

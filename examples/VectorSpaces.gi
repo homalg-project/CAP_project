@@ -661,6 +661,14 @@ end );
 #   
 # end );
 
+AddIsEqualForObjects( vecspaces,
+  
+  function( vecspace_1, vecspace_2 )
+    
+    return Dimension( vecspace_1 ) = Dimension( vecspace_2 );
+    
+end );
+
 #######################################
 ##
 ## View and Display
