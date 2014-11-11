@@ -35,3 +35,11 @@ DeclareGlobalFunction( "INSTALL_TODO_FOR_LOGICAL_THEOREMS" );
 DeclareGlobalFunction( "ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY" );
 
 DeclareGlobalFunction( "INSTALL_PREDICATE_IMPLICATION" );
+
+## Eval rules
+
+DeclareGlobalFunction( "FIX_WELL_DEFINED_PART" );
+
+DeclareGlobalFunction( "IS_EQUAL_FOR_SUBTREES_RECURSIVE" );
+
+DeclareGlobalFunction( "APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE" );

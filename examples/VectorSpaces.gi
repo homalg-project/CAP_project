@@ -940,18 +940,6 @@ AddNaturalTransformationFunction( id_to_double,
     
 end );
 
-ADD_THEOREM_TO_CATEGORY( vecspaces, rec( Function := "KernelEmb", 
-                                         Source := [ rec( Object := 1, 
-                                                          ValueFunction := IsMonomorphism, 
-                                                          Value := true ) ], 
-                                         Range := rec( ValueFunction := IsZero, 
-                                                       Value := true ) ) );
-
-ADD_THEOREM_TO_CATEGORY( vecspaces, rec( Function := "DirectProduct",
-                                         Source := [ rec( Object := [ 1, "all" ],
-                                                          ValueFunction := IsZero ) ],
-                                         Range := rec( ValueFunction := IsZero ) ) );
-
 # theorem_string := "\alpha:Mor, \beta:Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsMonomorphism( \ProjectionInFactorOfPullback( [ \alpha, \beta ], 2 ) )";
 # 
 # ADD_THEOREM_TO_CATEGORY( vecspaces, PARSE_THEOREM_FROM_LATEX( theorem_string ) );
@@ -964,3 +952,10 @@ ADD_THEOREM_TO_CATEGORY( vecspaces, rec( Function := "DirectProduct",
 # bla bla bla bla
 # @EndProof
 
+eval_rule := rec( command := "PreCompose",
+                  commands_to_check := [ [ [ 1 ], "UniversalMorphismIntoPullback" ],
+                                         [ [ 2 ], "ProjectionInFactorOfPullback" ] ],
+                  cells_to_check := [ [ [ 1, 1 ], [ 2, 1 ] ] ],
+                  part_to_replace := [ 1, 2 ],
+                  ## TODO:
+                  part_for_is_well_defined := [ [ "IsEqualForMorphisms", [ [ "PreCompose", [ [ 1, 2, 1 ], [ 1, 1, 1 ] ] ], [ "PreCompose", [ [ 1, 2, 2 ], [ 1, 1, 2 ] ] ] ] ] ] );

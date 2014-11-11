@@ -462,14 +462,251 @@ end );
 ##
 ###################################
 
-# ##
-# InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
-#                        
-#   function( history, rule )
-#     local return_rec;
-#     
-#     return_rec := rec( );
-#     
-#     
+##
+BindGlobal( "GET_CORRECT_SUBTREE_ENTRY",
+            
+  function( tree, subtree_index_list )
+    local i;
+    
+    for i in subtree_index_list do
+        
+        if IsList( tree ) and IsString( tree[ 1 ] ) then
+            
+            tree := tree[ 2 ];
+            
+        fi;
+        
+        if not IsList( tree ) or Length( tree ) < i then
+            
+            return fail;
+            
+        fi;
+        
+        tree := tree[ i ];
+        
+    od;
+    
+    return tree;
+    
+end );
 
+##
+InstallGlobalFunction( IS_EQUAL_FOR_SUBTREES_RECURSIVE,
+            
+  function( subtree1, subtree2 )
+    local i;
+    
+    if not IsList( subtree1 ) and not IsList( subtree1 ) then
+        
+        return IsIdenticalObj( subtree1, subtree2 );
+        
+    fi;
+    
+    if IsString( subtree1 ) and IsString( subtree2 ) then
+        
+        return subtree1 = subtree2;
+        
+    fi;
+    
+    if IsList( subtree1 ) and IsList( subtree2 ) then
+        
+        return ForAll( [ 1 .. Length( subtree1 ) ], i -> IS_EQUAL_FOR_SUBTREES_RECURSIVE( subtree1[ i ], subtree2[ i ] ) );
+        
+    fi;
+    
+    return false;
+    
+end );
 
+##
+BindGlobal( "IS_EQUAL_FOR_SUBTREES",
+            
+  function( subtree_list )
+    local first_subtree, i;
+    
+    if Length( subtree_list ) < 2 then
+        
+        return true;
+        
+    fi;
+    
+    first_subtree := subtree_list[ 1 ];
+    
+    for i in [ 2 .. Length( subtree_list ) ] do
+        
+        if IS_EQUAL_FOR_SUBTREES_RECURSIVE( first_subtree, subtree_list[ i ] ) = false then
+            
+            return false;
+            
+        fi;
+        
+    od;
+    
+    return true;
+    
+end );
+
+##
+InstallGlobalFunction( FIX_WELL_DEFINED_PART,
+            
+  function( well_defined_part, history )
+    local current_well_defined_part;
+    
+    if IsString( well_defined_part ) then
+        
+        return well_defined_part;
+        
+    fi;
+    
+    if IsList( well_defined_part ) and ForAll( well_defined_part, IsInt ) then
+        
+        return GET_CORRECT_SUBTREE_ENTRY( history, well_defined_part );
+        
+    fi;
+    
+    if IsList( well_defined_part ) then
+        
+        return List( well_defined_part, i -> FIX_WELL_DEFINED_PART( i, history ) );
+        
+    fi;
+    
+    return well_defined_part;
+    
+end );
+    
+
+##
+InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
+                       
+  function( history, rules )
+    local return_rec, command, current_rules, rule_to_apply, command_to_check,
+          command_from_history, to_be_applied, rule_applied, object_to_check, resolved_objects, i,
+          replaced_history, part_for_well_defined, new_return;
+    
+    if not IsList( history ) then
+        
+        return fail;
+        
+    fi;
+    
+    if not IsString( history[ 1 ] ) then
+        
+        return fail;
+        
+    fi;
+
+    return_rec := rec( );
+    
+    command := history[ 1 ];
+    
+    current_rules := rules.( command );
+    
+    rule_applied := false;
+    
+    for rule_to_apply in current_rules do
+        
+        ## Check string part
+        to_be_applied := true;
+        
+        for command_to_check in rule_to_apply!.commands_to_check do
+            
+            command_from_history := GET_CORRECT_SUBTREE_ENTRY( history, command_to_check[ 1 ] );
+            
+            if not IsList( command_from_history ) then
+                
+                to_be_applied := false;
+                
+                break;
+                
+            fi;
+            
+            command_from_history := command_from_history[ 1 ];
+            
+            if not command_from_history = command_to_check[ 2 ] then
+                
+                to_be_applied := false;
+                
+                break;
+                
+            fi;
+            
+        od;
+        
+        if to_be_applied = false then
+            
+            continue;
+            
+        fi;
+        
+        ## Check equality of objects
+        
+        to_be_applied := true;
+        
+        for object_to_check in rule_to_apply.cells_to_check do
+            
+            resolved_objects := [ ];
+            
+            for i in object_to_check do
+                
+                Add( resolved_objects, GET_CORRECT_SUBTREE_ENTRY( history, i ) );
+                
+            od;
+            
+            if ForAny( resolved_objects, i -> i = fail ) then
+                
+                to_be_applied := false;
+                
+                break;
+                
+            fi;
+            
+            resolved_objects := IS_EQUAL_FOR_SUBTREES( resolved_objects );
+            
+            if resolved_objects = false then
+                
+                to_be_applied := false;
+                
+                break;
+                
+            fi;
+            
+        od;
+        
+        if to_be_applied = false then
+            
+            continue;
+            
+        fi;
+        
+        replaced_history := GET_CORRECT_SUBTREE_ENTRY( history, rule_to_apply!.part_to_replace );
+        
+        part_for_well_defined := rule_to_apply!.part_for_well_defined;
+        
+        rule_applied := true;
+        
+        break;
+        
+    od;
+    
+    if rule_applied = false then
+        
+        return fail;
+        
+    fi;
+    
+    part_for_well_defined := List( rule_to_apply!.part_for_well_defined, i -> FIX_WELL_DEFINED_PART( i, history ) );
+    
+    new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( replaced_history, rules );
+    
+    if new_return = fail then
+        
+        return rec( new_history := replaced_history, part_for_well_defined := part_for_well_defined );
+        
+    fi;
+    
+    new_return!.part_for_well_defined := Concatenation( new_return!.part_for_well_defined, part_for_well_defined );
+    
+    return new_return;
+    
+end );
+    
