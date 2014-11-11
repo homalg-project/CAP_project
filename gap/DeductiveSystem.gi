@@ -571,7 +571,7 @@ InstallMethod( DeductiveSystem,
     
     ADDS_FOR_DEDUCTIVE_SYSTEM( deductive_system, category );
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "General" );
+    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, deductive_system, "General" );
     
     return deductive_system;
     

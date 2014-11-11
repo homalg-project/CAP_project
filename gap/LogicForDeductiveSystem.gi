@@ -7,6 +7,8 @@
 ##
 #############################################################################
 
+## RETHINK THIS WHOLE STRUCTURE
+
 ########################################
 ##
 ## Global logic files
@@ -18,7 +20,9 @@ InstallValue( CATEGORIES_LOGIC_FILES,
   rec(
       
       Propositions := rec(
-          General := [ Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForGeneralCategories.tex" ) ],
+          General := [
+                       Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForGeneralCategories.tex" )
+                     ],
           IsEnrichedOverCommutativeRegularSemigroup := [ ],
           IsAbCategory := [ ],
           IsPreAdditiveCategory := [ ],
@@ -26,8 +30,8 @@ InstallValue( CATEGORIES_LOGIC_FILES,
           IsPreAbelianCategory := [ ],
           IsAbelianCategory := [ ] ),
       Predicates := rec(
-          General := [ #Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), PropositionsForGeneralCategories.tex ) 
-                       
+          General := [
+                       Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForGeneralCategories.tex" )
           ],
           IsEnrichedOverCommutativeRegularSemigroup := [ ],
           IsAbCategory := [ ],
@@ -85,7 +89,7 @@ InstallGlobalFunction( AddPredicateImplicationFileToCategory,
     
     for i in theorem_list do
         
-        ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY( DeductiveSystem( category ), i );
+        ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY( category, DeductiveSystem( category ), i );
         
     od;
     
@@ -93,7 +97,7 @@ end );
 
 InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
                        
-  function( category, current_filter )
+  function( category, deductive_category, current_filter )
     local i, theorem_list, current_theorem;
     
     for i in category!.logical_implication_files.Propositions.( current_filter ) do
@@ -114,7 +118,7 @@ InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
         
         for current_theorem in theorem_list do
             
-            ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY( DeductiveSystem( category ), current_theorem );
+            ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY( category, deductive_category, current_theorem );
             
         od;
         
@@ -153,7 +157,7 @@ BindGlobal( "INSTALL_LOGICAL_IMPLICATIONS_IMMEDIATE_PART",
                                 
           function( category )
             
-            INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, current_filter );
+            INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), current_filter );
             
             TryNextMethod( );
             
@@ -414,13 +418,9 @@ end );
 ##
 InstallGlobalFunction( ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY,
                        
-  function( category, immediate_record )
+  function( category, deductive_category, immediate_record )
     
-    if HasDeductiveSystem( category ) then
-        
-        INSTALL_PREDICATE_IMPLICATION( DeductiveSystem( category ), immediate_record );
-        
-    fi;
+    INSTALL_PREDICATE_IMPLICATION( deductive_category, immediate_record );
     
     if not IsBound( category!.predicate_implication ) then
         
@@ -455,3 +455,21 @@ InstallGlobalFunction( INSTALL_PREDICATE_IMPLICATION,
     InstallTrueMethod( immediate_record!.Range and cell_filter, immediate_record!.Source and cell_filter );
     
 end );
+
+###################################
+##
+## Predicate part
+##
+###################################
+
+# ##
+# InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
+#                        
+#   function( history, rule )
+#     local return_rec;
+#     
+#     return_rec := rec( );
+#     
+#     
+
+
