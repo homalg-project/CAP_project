@@ -706,3 +706,258 @@ end );
 
 ## PARSE_THEOREM_FROM_LATEX( "A:\Obj ~|~ \IsZero( A ) \vdash \IsProjective( A )" );
 
+BindGlobal( "EXTRACT_SINGLE_VARIABLE",
+            
+  function( list )
+    
+    if IsList( list ) and Length( list ) = 1 and IsString( list[ 1 ] ) then
+        
+        return list[ 1 ];
+        
+    fi;
+    
+    return list;
+    
+end );
+
+InstallGlobalFunction( "TOKENIZE_INPUT_JUDGEMENT",
+                       
+  function( judgement )
+    local next_position_komma, next_position_bracket, return_list, current_bracket_nesting, i, new_judgement, j, new_sublist, current_list;
+    
+    NormalizeWhitespace( judgement );
+    
+    judgement := SplitString( judgement, "," );
+    
+    i := 1;
+    
+    while i <= Length( judgement ) do
+        
+        current_bracket_nesting := COUNT_SUBSTRING_APPEARANCE( judgement[ i ], "(" ) - COUNT_SUBSTRING_APPEARANCE( judgement[ i ], ")" );
+        
+        if current_bracket_nesting > 0 then
+            
+            judgement[ i ] := Concatenation( judgement[ i ], ",", judgement[ i + 1 ] );
+            
+            Remove( judgement, i + 1 );
+            
+        else
+            
+            i := i + 1;
+            
+        fi;
+        
+    od;
+    
+    if Length( judgement ) = 1 then
+        
+        judgement := judgement[ 1 ];
+        
+        next_position_bracket := PositionSublist( judgement, "(" );
+        
+        if next_position_bracket = fail then
+            
+            return [ judgement ];
+            
+        fi;
+        
+        return [ NormalizedWhitespace( judgement{[ 1 .. next_position_bracket - 1 ]} ), TOKENIZE_INPUT_JUDGEMENT( judgement{[ next_position_bracket + 1 .. Length( judgement ) - 1 ]} ) ];
+        
+    fi;
+    
+    Apply( judgement, NormalizedWhitespace );
+    
+    new_judgement := [ ];
+    
+    current_list := new_judgement;
+    
+    for i in [ 1 .. Length( judgement ) ] do
+        
+        if judgement[ i ][ 1 ] = '[' then
+            
+            Remove( judgement[ i ], 1 );
+            
+            if judgement[ i ][ Length( judgement[ i ] ) ] = ']' then
+                
+                Remove( judgement[ i ], Length( judgement[ i ] ) );
+                
+                Add( current_list, [ EXTRACT_SINGLE_VARIABLE( TOKENIZE_INPUT_JUDGEMENT( judgement[ i ] ) ) ] );
+                
+            else
+                
+                current_list := [ ];
+                
+                Add( current_list, EXTRACT_SINGLE_VARIABLE( TOKENIZE_INPUT_JUDGEMENT( judgement[ i ] ) ) );
+                
+            fi;
+            
+        elif judgement[ i ][ Length( judgement[ i ] ) ] = ']' then
+            
+            Remove( judgement[ i ], Length( judgement[ i ] ) );
+            
+            Add( current_list, EXTRACT_SINGLE_VARIABLE( TOKENIZE_INPUT_JUDGEMENT( judgement[ i ] ) ) );
+            
+            Add( new_judgement, current_list );
+            
+            current_list := new_judgement;
+            
+        else
+            
+            Add( current_list, EXTRACT_SINGLE_VARIABLE( TOKENIZE_INPUT_JUDGEMENT( judgement[ i ] ) ));
+            
+        fi;
+        
+    od;
+    
+    Print( new_judgement );
+    
+    Print( "\n" );
+    
+    return new_judgement;
+    
+end );
+
+InstallGlobalFunction( SEARCH_FOR_VARIABLE_NAME_APPEARANCE,
+            
+  function( tree, name )
+    local appearance_list, current_result, i, j;
+    
+    if IsList( tree ) and Length( tree ) = 2 and IsString( tree[ 1 ] ) and IsList( tree[ 2 ] ) then
+        
+        return SEARCH_FOR_VARIABLE_NAME_APPEARANCE( tree[ 2 ], name );
+        
+    fi;
+    
+    if IsList( tree ) then
+        
+        appearance_list := [ ];
+        
+        for i in [ 1 .. Length( tree ) ] do
+            
+            if IsString( tree[ i ] ) then
+                
+                if tree[ i ] = name then
+                    
+                    Add( appearance_list, [ i ] );
+                    
+                fi;
+                
+            elif IsList( tree[ i ] ) then
+                
+                current_result := SEARCH_FOR_VARIABLE_NAME_APPEARANCE( tree[ i ], name );
+                
+                for j in current_result do
+                    
+                    Add( appearance_list, Concatenation( [ i ], j ) );
+                    
+                od;
+                
+            fi;
+            
+        od;
+        
+        return appearance_list;
+        
+    fi;
+    
+end );
+
+InstallGlobalFunction( REPLACE_VARIABLE,
+                       
+  function( tree, name, replacement )
+    
+    if IsString( tree ) and tree = name then
+        
+        return replacement;
+        
+    fi;
+    
+    if IsList( tree ) then
+        
+        return List( tree, i -> REPLACE_VARIABLE( i, name, replacement ) );
+        
+    fi;
+    
+    return tree;
+    
+end );
+
+##
+InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
+                       
+  function( rule )
+    local variables, source, range, range_left, range_replace, variable_equalities, i, j, variable_position;
+    
+    variables := SplitString( rule, "|" );
+    
+    if Length( variables ) <> 2 then
+        
+        Error( "no unique | found" );
+        
+    fi;
+    
+    variables[ 2 ] := SPLIT_STRING_MULTIPLE( variables[ 2 ], "vdash" );
+    
+    if Length( variables[ 2 ] ) <> 2 then
+        
+        Error( "no unique vdash found" );
+        
+    fi;
+    
+    source := NormalizedWhitespace( variables[ 2 ][ 1 ] );
+    
+    range := variables[ 2 ][ 2 ];
+    
+    variables := NormalizedWhitespace( variables[ 1 ] );
+    
+    range := SplitString( range, "=" );
+    
+    if Length( range ) <> 2 then
+        
+        Error( "no unique = found" );
+        
+    fi;
+    
+    range_left := NormalizedWhitespace( range[ 1 ] );
+    
+    range_replace := NormalizedWhitespace( range[ 2 ] );
+    
+    ## Sanitize Variables
+    variables := SplitString( variables, "," );
+    
+    variables := List( variables, i -> SplitString( i, ":" ) );
+    
+    variables := List( variables, i -> List( i, NormalizedWhitespace ) );
+    
+    ##
+    source := TOKENIZE_INPUT_JUDGEMENT( source );
+    
+    range_left := TOKENIZE_INPUT_JUDGEMENT( range_left );
+    
+    range_replace := TOKENIZE_INPUT_JUDGEMENT( range_replace );
+    
+    ## Search positions of variables in tree
+    
+    variable_position := List( variables, i -> SEARCH_FOR_VARIABLE_NAME_APPEARANCE( range_left, i[ 2 ] ) );
+    
+    variable_equalities := [ ];
+    
+    for i in variable_position do
+        
+        if Length( i ) > 1 then
+            
+            for j in [ 2 .. Length( i ) ] do
+                
+                Add( variable_equalities, [ i[ 1 ], i[ j ] ] );
+                
+            od;
+            
+        fi;
+        
+    od;
+    
+    
+    
+    
+end );
+

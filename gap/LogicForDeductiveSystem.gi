@@ -581,7 +581,7 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
   function( history, rules )
     local return_rec, command, current_rules, rule_to_apply, command_to_check,
           command_from_history, to_be_applied, rule_applied, object_to_check, resolved_objects, i,
-          replaced_history, part_for_well_defined, new_return;
+          replaced_history, part_for_well_defined, new_return, arguments;
     
     if not IsList( history ) then
         
@@ -650,7 +650,27 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
             
             if IsString( object_to_check[ 2 ] ) then
                 
-                ## To do
+                if not IsHomalgCategoryCell( resolved_objects[ 1 ] ) then
+                    
+                    to_be_applied := false;
+                    
+                    break;
+                    
+                fi;
+                
+                object_to_check[ 2 ] := ValueGlobal( object_to_check[ 2 ] );
+                
+                if Tester( object_to_check[ 2 ] )( object_to_check[ 1 ] ) or EvalCanComputePredicates( HomalgCategory( object_to_check[ 1 ] ) ) then
+                    
+                    if not object_to_check[ 2 ]( object_to_check[ 1 ] ) then
+                        
+                        to_be_applied := false;
+                        
+                        break;
+                        
+                    fi;
+                    
+                fi;
                 
             elif IsInt( object_to_check[ 2 ] ) then
                 
@@ -705,6 +725,34 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
     od;
     
     if rule_applied = false then
+        
+        for arguments in [ 1 .. Length( history[ 2 ] ) ] do
+            
+            new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history[ 2 ][ arguments ], rules );
+            
+            if new_return <> fail then
+                
+                history := StructuralCopy( history );
+                
+                history[ 2 ][ arguments ] := new_return!.new_history;
+                
+                part_for_well_defined := new_return!.part_for_is_well_defined;
+                
+                new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, rules );
+                
+                if new_return = fail then
+                    
+                    return rec( new_history := history, part_for_is_well_defined := part_for_well_defined );
+                    
+                else
+                    
+                    return rec( new_history := new_return!.new_history, part_for_is_well_defined := Concatenation( part_for_well_defined, new_return!.part_for_is_well_defined ) );
+                    
+                fi;
+                
+            fi;
+            
+        od;
         
         return fail;
         

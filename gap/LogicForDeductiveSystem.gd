@@ -43,3 +43,6 @@ DeclareGlobalFunction( "FIX_WELL_DEFINED_PART" );
 DeclareGlobalFunction( "IS_EQUAL_FOR_SUBTREES_RECURSIVE" );
 
 DeclareGlobalFunction( "APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE" );
+
+DeclareFilter( "EvalCanComputePredicates" );
+
