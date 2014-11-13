@@ -40,7 +40,9 @@ InstallValue( CATEGORIES_LOGIC_FILES,
           IsPreAbelianCategory := [ ],
           IsAbelianCategory := [ ] ),
       EvalRules := rec(
-          General := [ ],
+          General := [ 
+                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForGeneralCategories.tex" )
+          ],
           IsEnrichedOverCommutativeRegularSemigroup := [ ],
           IsAbCategory := [ ],
           IsPreAdditiveCategory := [ ],
@@ -95,6 +97,29 @@ InstallGlobalFunction( AddPredicateImplicationFileToCategory,
     
 end );
 
+InstallGlobalFunction( AddEvalRuleFileToCategory,
+                       
+  function( category, filename )
+    local theorem_list, i;
+    
+    Add( category!.logical_implication_files.Predicates.General, filename );
+    
+    if not HasDeductiveSystem( category ) then
+        
+        return;
+        
+    fi;
+    
+    theorem_list := READ_EVAL_RULE_FILE( filename );
+    
+    for i in theorem_list do
+        
+        ADD_EVAL_RULES_TO_CATEGORY( category, i );
+        
+    od;
+    
+end );
+
 InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
                        
   function( category, deductive_category, current_filter )
@@ -124,17 +149,17 @@ InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
         
     od;
     
-#         for i in category!.logical_implication_files.EvalRules.( current_filter ) do
-#             
-#             theorem_list := READ_EVAL_RULES_FILE( i );
-#             
-#             for current_theorem in theorem_list do
-#                 
-#                 ADD_EVAL_RULES_TO_CATEGORY( category, current_theorem );
-#                 
-#             od;
-#             
-#         od;
+        for i in category!.logical_implication_files.EvalRules.( current_filter ) do
+            
+            theorem_list := READ_EVAL_RULE_FILE( i );
+            
+            for current_theorem in theorem_list do
+                
+                ADD_EVAL_RULES_TO_CATEGORY( category, current_theorem );
+                
+            od;
+            
+        od;
     
 end );
 
@@ -714,7 +739,13 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
             
         fi;
         
-        replaced_history := GET_CORRECT_SUBTREE_ENTRY( history, rule_to_apply!.part_to_replace );
+        replaced_history := FIX_WELL_DEFINED_PART( rule_to_apply!.part_to_replace, history );
+        
+        if IsList( replaced_history ) and Length( replaced_history ) = 1 then
+            
+            replaced_history := replaced_history[ 1 ];
+            
+        fi;
         
         part_for_well_defined := rule_to_apply!.part_for_is_well_defined;
         
@@ -773,4 +804,33 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
     return new_return;
     
 end );
+
+InstallGlobalFunction( ADD_EVAL_RULES_TO_CATEGORY,
+                       
+  function( category, rule_record )
+    local command;
     
+    if not IsBound( rule_record!.command ) then
+        
+        return;
+        
+    fi;
+    
+    command := rule_record!.command;
+    
+    if not IsBound( category!.eval_rules ) then
+        
+        category!.eval_rules := rec( );
+        
+    fi;
+    
+    if not IsBound( category!.eval_rules.( command ) ) then
+        
+        category!.eval_rules.( command ) := [ ];
+        
+    fi;
+    
+    Add( category!.eval_rules.( command ), rule_record );
+    
+end );
+

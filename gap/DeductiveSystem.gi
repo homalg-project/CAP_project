@@ -719,19 +719,27 @@ InstallMethod( Eval,
     
     history := History( cell );
     
-    history := APPLY_LOGIC_TO_HISTORY( history );
+    new_history := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, UnderlyingHonestCategory( HomalgCategory( cell ) )!.eval_rules );
     
-    new_history := history[ 1 ];
-    
-    checks := history[ 2 ];
+    if new_history <> fail then
+        
+        checks := new_history!.part_for_is_well_defined;
+        
+        new_history := new_history!.new_history;
+        
+    else
+        
+        checks := [ ];
+        
+        new_history := history;
+        
+    fi;
     
     SetHistory( cell, new_history );
     
     SetChecksFromLogic( cell, checks );
     
     eval := RECURSIVE_EVAL( new_history );
-    
-    SetChecksFromLogic( eval, checks );
     
     return eval;
     

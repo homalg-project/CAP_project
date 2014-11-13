@@ -7,6 +7,12 @@
 ##
 #############################################################################
 
+BindGlobal( "STRING_REPRESENTS_INTEGER",
+            
+  i -> ForAll( i, j -> j in "0123456789" )
+  
+);
+
 BindGlobal( "SPLIT_STRING_MULTIPLE",
             
   function( string, substring )
@@ -500,15 +506,15 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
             
         fi;
         
-        int_conversion := Int( result_function_variables[ i ] );
+        int_conversion := STRING_REPRESENTS_INTEGER( result_function_variables[ i ] );
         
-        if int_conversion = fail then
+        if int_conversion = false then
             
             continue;
             
         fi;
         
-        Add( sources_list, rec( Type := "testdirect", Object := i, Value := int_conversion ) );
+        Add( sources_list, rec( Type := "testdirect", Object := i, Value := Int( result_function_variables[ i ] ) ) );
         
     od;
     
@@ -574,6 +580,10 @@ InstallGlobalFunction( "READ_LOGIC_FILE",
     elif LowercaseString( type ) = "theorem" then
         
         parser := PARSE_THEOREM_FROM_LATEX;
+        
+    elif LowercaseString( type ) = "eval_rule" then
+        
+        parser := PARSE_EVAL_RULE_FROM_LATEX;
         
     else
         
@@ -809,22 +819,124 @@ InstallGlobalFunction( "TOKENIZE_INPUT_JUDGEMENT",
         
     od;
     
-    Print( new_judgement );
-    
-    Print( "\n" );
-    
     return new_judgement;
     
 end );
 
 InstallGlobalFunction( SEARCH_FOR_VARIABLE_NAME_APPEARANCE,
             
-  function( tree, name )
-    local appearance_list, current_result, i, j;
+  function( tree, names )
+    local appearance_list, current_result, i, j, name_position, return_list;
     
-    if IsList( tree ) and Length( tree ) = 2 and IsString( tree[ 1 ] ) and IsList( tree[ 2 ] ) then
+    ## command_case
+    if Length( tree ) = 2 and IsString( tree[ 1 ] ) and Position( names, tree[ 1 ] ) = fail and not STRING_REPRESENTS_INTEGER( tree[ 1 ] ) then
         
-        return SEARCH_FOR_VARIABLE_NAME_APPEARANCE( tree[ 2 ], name );
+        return SEARCH_FOR_VARIABLE_NAME_APPEARANCE( tree[ 2 ], names );
+        
+    fi;
+    
+    if IsString( tree ) then
+        
+        name_position := Position( names, tree );
+        
+        return_list := List( names, i -> [ ] );
+        
+        if name_position <> fail then
+            
+            return_list[ name_position ] := [ [ ] ];
+            
+        fi;
+        
+        return return_list;
+        
+    fi;
+    
+    if IsList( tree ) and not IsString( tree ) then
+        
+        return_list := List( names, i -> [ ] );
+        
+        for i in [ 1 .. Length( tree ) ] do
+            
+            current_result := SEARCH_FOR_VARIABLE_NAME_APPEARANCE( tree[ i ], names );
+            
+            for j in [ 1 .. Length( current_result ) ] do
+                
+                current_result[ j ] := List( current_result[ j ], k -> Concatenation( [ i ], k ) );
+                
+                return_list[ j ] := Concatenation( current_result[ j ], return_list[ j ] );
+                
+            od;
+            
+        od;
+        
+        return return_list;
+        
+    fi;
+    
+    return List( names, i -> [ ] );
+    
+end );
+
+##
+InstallGlobalFunction( REPLACE_VARIABLE,
+                       
+  function( tree, names, replacements )
+    
+    if IsString( tree ) and Position( names, tree ) <> fail then
+        
+        return replacements[ Position( names, tree ) ];
+        
+    fi;
+    
+    if IsList( tree ) then
+        
+        return List( tree, i -> REPLACE_VARIABLE( i, names, replacements ) );
+        
+    fi;
+    
+    return tree;
+    
+end );
+
+InstallGlobalFunction( REPLACE_INTEGER_VARIABLE,
+                       
+  function( tree )
+    local int;
+
+    if IsString( tree ) then
+       
+       int := STRING_REPRESENTS_INTEGER( tree );
+       
+       if int = false then
+           
+           return tree;
+           
+       else
+           
+           return Int( tree );
+           
+       fi;
+       
+    fi;
+
+    if IsList( tree ) then
+       
+       return List( tree, REPLACE_INTEGER_VARIABLE );
+       
+    fi;
+
+    return tree;
+    
+end );
+
+InstallGlobalFunction( SEARCH_FOR_INT_VARIABLE_APPEARANCE,
+            
+  function( tree )
+    local appearance_list, current_result, i, j, int;
+    
+    if IsList( tree ) and Length( tree ) = 2 and IsString( tree[ 1 ] ) and IsList( tree[ 2 ] ) and not IsString( tree[ 2 ] ) then
+        
+        return SEARCH_FOR_INT_VARIABLE_APPEARANCE( tree[ 2 ] );
         
     fi;
     
@@ -836,19 +948,21 @@ InstallGlobalFunction( SEARCH_FOR_VARIABLE_NAME_APPEARANCE,
             
             if IsString( tree[ i ] ) then
                 
-                if tree[ i ] = name then
+                int := STRING_REPRESENTS_INTEGER( tree[ i ] );
+                
+                if int <> false then
                     
-                    Add( appearance_list, [ i ] );
+                    Add( appearance_list, [ [ i ], Int( tree[ i ] ) ] );
                     
                 fi;
                 
             elif IsList( tree[ i ] ) then
                 
-                current_result := SEARCH_FOR_VARIABLE_NAME_APPEARANCE( tree[ i ], name );
+                current_result := SEARCH_FOR_INT_VARIABLE_APPEARANCE( tree[ i ] );
                 
                 for j in current_result do
                     
-                    Add( appearance_list, Concatenation( [ i ], j ) );
+                    Add( appearance_list, [ Concatenation( [ i ], j[ 1 ] ), j[ 2 ] ] );
                     
                 od;
                 
@@ -862,23 +976,39 @@ InstallGlobalFunction( SEARCH_FOR_VARIABLE_NAME_APPEARANCE,
     
 end );
 
-InstallGlobalFunction( REPLACE_VARIABLE,
+##
+InstallGlobalFunction( FIND_COMMAND_POSITIONS,
                        
-  function( tree, name, replacement )
+  function( tree, variable_names )
+    local current_command, command_list, i, current_return, j, return_list;
     
-    if IsString( tree ) and tree = name then
+    command_list := [ ];
+    
+    if IsList( tree ) and Length( tree ) = 2 and IsString( tree[ 1 ] ) and IsList( tree[ 2 ] ) and Position( variable_names, tree[ 1 ] ) = fail  then
         
-        return replacement;
+        command_list := [ [ [ ], tree[ 1 ] ] ];
+        
+        tree := tree[ 2 ];
         
     fi;
     
     if IsList( tree ) then
         
-        return List( tree, i -> REPLACE_VARIABLE( i, name, replacement ) );
+        for i in [ 1 .. Length( tree ) ] do
+            
+            current_return := FIND_COMMAND_POSITIONS( tree[ i ], variable_names );
+            
+            for j in current_return do
+                
+                Add( command_list, [ Concatenation( [ i ], j[ 1 ] ), j[ 2 ] ] );
+                
+            od;
+            
+        od;
         
     fi;
     
-    return tree;
+    return command_list;
     
 end );
 
@@ -886,7 +1016,8 @@ end );
 InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
                        
   function( rule )
-    local variables, source, range, range_left, range_replace, variable_equalities, i, j, variable_position;
+    local variables, source, range, range_left, range_replace, variable_equalities, i, j, variable_position, commands, source_copy,
+          variable_names, selected_variable_position, initial_command;
     
     variables := SplitString( rule, "|" );
     
@@ -906,6 +1037,20 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     source := NormalizedWhitespace( variables[ 2 ][ 1 ] );
     
+    source_copy := ShallowCopy( source );
+    
+    RemoveCharacters( source_copy, " \n\t\r" );
+    
+    if source_copy = "()" then
+        
+        source := [ ];
+        
+    else
+        
+        source := TOKENIZE_INPUT_JUDGEMENT( source );
+        
+    fi;
+    
     range := variables[ 2 ][ 2 ];
     
     variables := NormalizedWhitespace( variables[ 1 ] );
@@ -922,6 +1067,8 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     range_replace := NormalizedWhitespace( range[ 2 ] );
     
+    range_replace := NormalizedWhitespace( SplitString( range_replace, ":" )[ 1 ] );
+    
     ## Sanitize Variables
     variables := SplitString( variables, "," );
     
@@ -929,16 +1076,17 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     variables := List( variables, i -> List( i, NormalizedWhitespace ) );
     
-    ##
-    source := TOKENIZE_INPUT_JUDGEMENT( source );
+    variable_names := List( variables, i -> i[ 1 ] );
     
     range_left := TOKENIZE_INPUT_JUDGEMENT( range_left );
     
-    range_replace := TOKENIZE_INPUT_JUDGEMENT( range_replace );
+    range_replace := TOKENIZE_INPUT_JUDGEMENT( range_replace )[ 1 ];
     
     ## Search positions of variables in tree
     
-    variable_position := List( variables, i -> SEARCH_FOR_VARIABLE_NAME_APPEARANCE( range_left, i[ 2 ] ) );
+    variable_position := SEARCH_FOR_VARIABLE_NAME_APPEARANCE( range_left, variable_names );
+    
+    selected_variable_position := List( variable_position, i -> i[ 1 ] );
     
     variable_equalities := [ ];
     
@@ -956,8 +1104,43 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
         
     od;
     
+    variable_equalities := Concatenation( variable_equalities, SEARCH_FOR_INT_VARIABLE_APPEARANCE( range_left ) );
     
+    commands := FIND_COMMAND_POSITIONS( range_left, variable_names );
     
+    Apply( source, REPLACE_INTEGER_VARIABLE );
+    
+    range_replace := REPLACE_INTEGER_VARIABLE( range_replace );
+    
+    Apply( source, j -> REPLACE_VARIABLE( j, variable_names, selected_variable_position ) );
+    
+    range_replace := REPLACE_VARIABLE( range_replace, variable_names, selected_variable_position );
+    
+    ## Find initial command
+    
+    for i in [ 1 .. Length( commands ) ] do
+        
+        if commands[ i ][ 1 ] = [ ] then
+            
+            initial_command := commands[ i ][ 2 ];
+            
+            Remove( commands, i );
+            
+            break;
+            
+        fi;
+        
+    od;
+    
+    return rec( command := initial_command, commands_to_check := commands, cells_to_check := variable_equalities, part_to_replace := range_replace, part_for_is_well_defined := source );
+    
+end );
+
+InstallGlobalFunction( READ_EVAL_RULE_FILE,
+                       
+  function( eval_rule_file )
+    
+    return READ_LOGIC_FILE( eval_rule_file, "eval_rule" );
     
 end );
 

@@ -22,6 +22,8 @@ DeclareGlobalFunction( "AddTheoremFileToCategory" );
 
 DeclareGlobalFunction( "AddPredicateImplicationFileToCategory" );
 
+DeclareGlobalFunction( "AddEvalRuleFileToCategory" );
+
 ## Theorems
 
 DeclareGlobalFunction( "ADD_THEOREM_TO_CATEGORY" );
@@ -43,6 +45,8 @@ DeclareGlobalFunction( "FIX_WELL_DEFINED_PART" );
 DeclareGlobalFunction( "IS_EQUAL_FOR_SUBTREES_RECURSIVE" );
 
 DeclareGlobalFunction( "APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE" );
+
+DeclareGlobalFunction( "ADD_EVAL_RULES_TO_CATEGORY" );
 
 DeclareFilter( "EvalCanComputePredicates" );
 
