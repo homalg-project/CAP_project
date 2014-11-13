@@ -1080,7 +1080,7 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     range_left := TOKENIZE_INPUT_JUDGEMENT( range_left );
     
-    range_replace := TOKENIZE_INPUT_JUDGEMENT( range_replace )[ 1 ];
+    range_replace := TOKENIZE_INPUT_JUDGEMENT( range_replace );
     
     ## Search positions of variables in tree
     

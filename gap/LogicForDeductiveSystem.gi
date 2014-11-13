@@ -624,6 +624,12 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
     
     command := history[ 1 ];
     
+    if not IsBound( rules.( command ) ) then
+        
+        return fail;
+        
+    fi;
+    
     current_rules := rules.( command );
     
     rule_applied := false;
