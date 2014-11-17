@@ -5,6 +5,8 @@
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
+#! @Chapter Categories for homalg
+##
 #############################################################################
 
 ######################################
@@ -60,6 +62,130 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
                                                            );
         
         AddToToDoList( entry );
+        
+    fi;
+    
+end );
+
+InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS,
+              [  
+                 "IsTerminal",
+                 "IsInitial",
+                 "IsProjective",
+                 "IsInjective",
+                 "IsZero",
+                 # ..
+              ] );
+
+###################################
+##
+#! @Section Zero object
+##
+###################################
+
+DeclareProperty( "IsZero",
+                 IsHomalgCategoryObject );
+###################################
+##
+## Constructive Object-sets
+##
+###################################
+
+##
+InstallMethod( AddIsEqualForObjects,
+               [ IsHomalgCategory, IsFunction ],
+               
+  function( category, func )
+    
+    SetObjectEqualityFunction( category, func );
+    
+end );
+
+InstallMethodWithCacheFromObject( IsEqualForObjects,
+                                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ],
+                                  
+  function( object_1, object_2 )
+    local category, return_value;
+    
+    if IsIdenticalObj( object_1, object_2 ) then
+      
+      return true;
+      
+    fi;
+    
+    category := HomalgCategory( object_1 );
+    
+    if not IsIdenticalObj( category, HomalgCategory( object_2 ) ) then
+      
+      return false;
+      
+    fi;
+    
+    if HasObjectEqualityFunction( category ) then
+    
+      return_value := ObjectEqualityFunction( category )( object_1, object_2 );
+      
+      if return_value then
+        
+        INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object_1, object_2 );
+      
+      fi;
+      
+      return return_value;
+      
+    fi;
+    
+    return false;
+    
+end );
+
+##
+InstallMethod( \=,
+               [ IsHomalgCategoryObject, IsHomalgCategoryObject ],
+               
+  IsEqualForObjects );
+
+##
+InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS,
+                       
+  function( object_1, object_2 )
+    local category, i, entry;
+    
+    category := HomalgCategory( object_1 );
+    
+    for i in PROPAGATION_LIST_FOR_EQUAL_OBJECTS do
+        
+        AddToToDoList( ToDoListEntryForEqualAttributes( object_1, i, object_2, i ) );
+        
+    od;
+    
+    if IsBound( category!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS ) then
+        
+        for i in category!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS do
+            
+            AddToToDoList( ToDoListEntryForEqualAttributes( object_1, i, object_2, i ) );
+            
+        od;
+        
+    fi;
+    
+end );
+
+##
+InstallMethod( AddPropertyToMatchAtIsEqualForObjects,
+               [ IsHomalgCategory, IsString ],
+               
+  function( category, name )
+    
+    if not IsBound( category!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS ) then
+        
+        category!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS := [ ];
+        
+    fi;
+    
+    if Position( category!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS, name ) = fail then
+        
+        Add( category!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS, name );
         
     fi;
     

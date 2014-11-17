@@ -146,13 +146,13 @@ InstallMethodWithCacheFromObject( GeneralizedMorphism,
   function( source_aid, morphism_aid, range_aid )
     local generalized_morphism, generalized_category;
     
-    if not IsIdenticalObj( Source( source_aid ), Source( morphism_aid ) ) then
+    if not IsEqualForObjects( Source( source_aid ), Source( morphism_aid ) ) then
         
-        Error( "source of source aid and associated morphism must be the same object" );
+        Error( "source of source aid and associated morphism must be equal objects" );
         
-    elif not IsIdenticalObj( Range( range_aid ), Range( morphism_aid ) ) then
+    elif not IsEqualForObjects( Range( range_aid ), Range( morphism_aid ) ) then
         
-        Error( "range of range aid and associated morphism must be the same object" );
+        Error( "range of range aid and associated morphism must be equal objects" );
         
     fi;
     
@@ -183,9 +183,9 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
   function( source_aid, morphism_aid )
     local generalized_morphism;
     
-    if not IsIdenticalObj( Source( source_aid ), Source( morphism_aid ) ) then
+    if not IsEqualForObjects( Source( source_aid ), Source( morphism_aid ) ) then
         
-        Error( "source of source aid and associated morphism must be the same object" );
+        Error( "source of source aid and associated morphism must be the equal objects" );
         
     fi;
     
@@ -204,9 +204,9 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismWithRangeAid,
   function( morphism_aid, range_aid )
     local generalized_morphism, generalized_category;
     
-    if not IsIdenticalObj( Range( range_aid ), Range( morphism_aid ) ) then
+    if not IsEqualForObjects( Range( range_aid ), Range( morphism_aid ) ) then
         
-        Error( "source of source aid and associated morphism must be the same object" );
+        Error( "source of source aid and associated morphism must be the equal objects" );
         
     fi;
     
@@ -251,7 +251,7 @@ InstallMethodWithCacheFromObject( PreCompose,
     
     category := HomalgCategory( mor1 );
     
-    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
         Error( "morphisms are not composable" );
         
@@ -274,7 +274,7 @@ InstallMethodWithCacheFromObject( PreCompose,
     
     category := HomalgCategory( mor1 );
     
-    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
         Error( "morphisms are not composable" );
         
@@ -303,7 +303,7 @@ InstallMethodWithCacheFromObject( PreCompose,
     
     category := HomalgCategory( mor1 );
     
-    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
         Error( "morphisms are not composable" );
         
@@ -331,7 +331,7 @@ InstallMethodWithCacheFromObject( PreCompose,
     
     category := HomalgCategory( mor1 );
     
-    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
         Error( "morphisms are not composable" );
         
@@ -359,7 +359,7 @@ InstallMethodWithCacheFromObject( PreCompose,
   function( mor1, mor2 )
     local generalized_mor_factor_sub, pullback, pushout, new_associated, new_source_aid, new_range_aid;
     
-    if not IsIdenticalObj( Range( mor1 ), Source( mor2 ) ) then
+    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
         Error( "morphisms are not composable" );
         
@@ -516,7 +516,7 @@ InstallMethodWithCacheFromObject( \+,
   function( mor1, mor2 )
     local return_value, pullback_of_sourceaids, pushout_of_rangeaids, restricted_mor1, restricted_mor2;
     
-    if not IsIdenticalObj( Source( mor1 ), Source( mor2 ) ) or not IsIdenticalObj( Range( mor1 ), Range( mor2 ) ) then
+    if not IsEqualForObjects( Source( mor1 ), Source( mor2 ) ) or not IsEqualForObjects( Range( mor1 ), Range( mor2 ) ) then
         
         Error( "morphisms are not addable" );
         

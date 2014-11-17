@@ -846,9 +846,9 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
         
         test_object := Range( sink[1] );
         
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
             
-            Error( "ranges of morphisms must be identical in given sink-diagram" );
+            Error( "ranges of morphisms must be equal in given sink-diagram" );
             
         fi;
         
@@ -892,9 +892,9 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
         
         components := sink; #components superfluous
         
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
             
-            Error( "ranges of morphisms must be identical in given sink-diagram" );
+            Error( "ranges of morphisms must be equal in given sink-diagram" );
             
         fi;
         
@@ -1250,9 +1250,9 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         test_object := Source( source[1] );
         
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
             
-            Error( "sources of morphisms must be identical in given source-diagram" );
+            Error( "sources of morphisms must be equal in given source-diagram" );
             
         fi;
         
@@ -1298,9 +1298,9 @@ InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
         
         components := source;#FIXME: components superfluous
         
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
             
-            Error( "sources of morphisms must be identical in given source-diagram" );
+            Error( "sources of morphisms must be equal in given source-diagram" );
             
         fi;
         
@@ -1601,7 +1601,7 @@ InstallMethodWithToDoForIsWellDefined( \+,
   function( mor1, mor2 )
     local return_value, B, direct_sum, componentwise_morphism, addition_morphism;
         
-    if not IsIdenticalObj( HomalgCategory( mor1 ), HomalgCategory( mor2 ) ) or not IsIdenticalObj( Source( mor1 ), Source( mor2 ) ) or not IsIdenticalObj( Range( mor1 ), Range( mor2 ) ) then
+    if not IsIdenticalObj( HomalgCategory( mor1 ), HomalgCategory( mor2 ) ) or not IsEqualForObjects( Source( mor1 ), Source( mor2 ) ) or not IsEqualForObjects( Range( mor1 ), Range( mor2 ) ) then
       
       Error( "morphisms are not addable" );
       
@@ -2200,9 +2200,9 @@ InstallMethod( AddFiberProduct,
         
         base := Range( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj(  Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
         
-          Error( "the given morphisms of the pullback diagram must have the same range\n" );
+          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
         
         fi;
         
@@ -2241,7 +2241,6 @@ InstallMethod( AddProjectionInFactorOfPullback,
     
     SetCanComputeProjectionInFactorOfPullback( category, true );
     
-    #TODO: Get the names clean!
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackOp,
                                            [ IsList,
                                              IsInt,
@@ -2258,9 +2257,9 @@ InstallMethod( AddProjectionInFactorOfPullback,
         
         base := Range( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj(  Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
         
-          Error( "the given morphisms of the pullback diagram must have the same range\n" );
+          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
         
         fi;
         
@@ -2302,9 +2301,9 @@ InstallMethod( AddProjectionInFactorOfPullbackWithGivenPullback,
         
         base := Range( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj(  Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
         
-          Error( "the given morphisms of the pullback diagram must have the same range\n" );
+          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
         
         fi;
         
@@ -2378,9 +2377,9 @@ InstallMethod( AddUniversalMorphismIntoPullback,
         
         base := Range( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj(  Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
           
-          Error( "the given morphisms of the pullback diagram must have the same range\n" );
+          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
           
         fi;
         
@@ -2388,9 +2387,9 @@ InstallMethod( AddUniversalMorphismIntoPullback,
         
         components := source; #FIXME components superfluous
         
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
             
-            Error( "sources of morphisms must be identical in given source-diagram" );
+            Error( "sources of morphisms must be equal in given source-diagram" );
             
         fi;
         
@@ -2436,9 +2435,9 @@ InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
         
         base := Range( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj( Range( c ), base ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects( Range( c ), base ) ) then
           
-          Error( "the given morphisms of the pullback diagram must have the same range\n" );
+          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
           
         fi;
         
@@ -2446,9 +2445,9 @@ InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
         
         components := source;
         
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Source( c ), test_object ) ) then
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
             
-            Error( "sources of morphisms must be identical in given source-diagram" );
+            Error( "sources of morphisms must be equal in given source-diagram" );
             
         fi;
         
@@ -2491,9 +2490,9 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
     
     base := Range( diagram[1] );
     
-    if not ForAll( diagram, c -> IsIdenticalObj( Range( c ), base ) ) then
+    if not ForAll( diagram, c -> IsEqualForObjects( Range( c ), base ) ) then
     
-      Error( "the given morphisms of the pullback diagram must have the same range\n" );
+      Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
       
     fi;
     
@@ -2681,9 +2680,9 @@ InstallMethod( AddPushout,
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
            
-           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
            
         fi;
         
@@ -2738,9 +2737,9 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
            
-           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
            
         fi;
         
@@ -2782,9 +2781,9 @@ InstallMethod( AddInjectionOfCofactorOfPushoutWithGivenPushout,
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
            
-           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
            
         fi;
         
@@ -2858,9 +2857,9 @@ InstallMethod( AddUniversalMorphismFromPushout,
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
            
-           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
            
         fi;
         
@@ -2868,9 +2867,9 @@ InstallMethod( AddUniversalMorphismFromPushout,
         
         components := sink;
         
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
             
-            Error( "ranges of morphisms must be identical in given sink-diagram" );
+            Error( "ranges of morphisms must be equal in given sink-diagram" );
             
         fi;
         
@@ -2916,9 +2915,9 @@ InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
         
         cobase := Source( diagram[1] );
         
-        if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
+        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
            
-           Error( "the given morphisms of the pushout diagram must have the same source\n" );
+           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
            
         fi;
         
@@ -2926,9 +2925,9 @@ InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
         
         components := sink; #FIXME: components superfluous
         
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsIdenticalObj( Range( c ), test_object ) ) then
+        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
             
-            Error( "ranges of morphisms must be identical in given sink-diagram" );
+            Error( "ranges of morphisms must be equal in given sink-diagram" );
             
         fi;
         
@@ -2971,9 +2970,9 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
     
     cobase := Source( diagram[1] );
         
-    if not ForAll( diagram, c -> IsIdenticalObj( Source( c ), cobase ) ) then
+    if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
            
-       Error( "the given morphisms of the pushout diagram must have the same source\n" );
+       Error( "the given morphisms of the pushout diagram must have equal sources\n" );
            
     fi;
     

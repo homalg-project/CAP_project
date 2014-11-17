@@ -297,7 +297,8 @@ InstallMethodWithCacheFromObject( IsEqualAsSubobject,
                                   
   function( sub1, sub2 );
     
-    if not IsIdenticalObj( Range( sub1 ), Range( sub2 ) ) then
+    ##or should this be IsIdenticalObj?
+    if not IsEqualForObjects( Range( sub1 ), Range( sub2 ) ) then
         
         return false;
         
@@ -317,7 +318,8 @@ InstallMethodWithCacheFromObject( IsEqualAsFactorobject,
                                   
   function( factor1, factor2 )
     
-    if not IsIdenticalObj( Source( factor1 ), Source( factor2 ) ) then
+    ##or should this be IsIdenticalObj?
+    if not IsEqualForObjects( Source( factor1 ), Source( factor2 ) ) then
         
         return false;
         
@@ -343,7 +345,8 @@ InstallMethod( AddDominates,
                             
       function( sub1, sub2 )
         
-        if not IsIdenticalObj( Range( sub1 ), Range( sub2 ) ) then
+        ##or should this be IsIdenticalObj?
+        if not IsEqualForObjects( Range( sub1 ), Range( sub2 ) ) then
             
             Error( "subobjects of different objects are not comparable by dominates" );
             
@@ -371,7 +374,8 @@ InstallMethod( AddCodominates,
                             
       function( factor1, factor2 )
         
-        if not IsIdenticalObj( Source( factor1 ), Source( factor2 ) ) then
+        ##or should this be IsIdenticalObj?
+        if not IsEqualForObjects( Source( factor1 ), Source( factor2 ) ) then
             
             Error( "factorobjects of different objects are not comparable by codominates" );
             
@@ -535,7 +539,7 @@ InstallMethod( AddIsEqualForMorphisms,
       function( morphism_1, morphism_2 )
         local return_value;
         
-        if not IsIdenticalObj( Source( morphism_1 ), Source( morphism_2 ) ) or not IsIdenticalObj( Range( morphism_1 ), Range( morphism_2 ) ) then
+        if not IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) ) or not IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) ) then
             
             return false;
             
@@ -640,7 +644,7 @@ InstallMethod( AddAdditionForMorphisms,
       function( mor1, mor2 )
         local return_value;
         
-        if not IsIdenticalObj( Source( mor1 ), Source( mor2 ) ) or not IsIdenticalObj( Range( mor1 ), Range( mor2 ) ) then
+        if not IsEqualForObjects( Source( mor1 ), Source( mor2 ) ) or not IsEqualForObjects( Range( mor1 ), Range( mor2 ) ) then
             
             Error( "morphisms are not addable" );
             
@@ -783,12 +787,13 @@ end );
 ###########################
 
 ## Caching this method is not necessary. It does not create any new object.
+## Note: this actually is an in-build relation which is not done by the deductive system.
 InstallMethod( PreCompose,
                [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and IsOne ],
                
   function( morphism, id )
     
-    if not IsIdenticalObj( Range( morphism ), Source( id ) ) then
+    if not IsEqualForObjects( Range( morphism ), Source( id ) ) then
         
         Error( "morphisms are not composable" );
         
@@ -799,12 +804,13 @@ InstallMethod( PreCompose,
 end );
 
 ## Caching this method is not necessary. It does not create any new object.
+## Note: this actually is an in-build relation which is not done by the deductive system.
 InstallMethod( PreCompose,
                [ IsHomalgCategoryMorphism and IsOne, IsHomalgCategoryMorphism ],
                
   function( id, morphism )
     
-    if not IsIdenticalObj( Source( morphism ), Range( id ) ) then
+    if not IsEqualForObjects( Source( morphism ), Range( id ) ) then
         
         Error( "morphisms are not composable" );
         

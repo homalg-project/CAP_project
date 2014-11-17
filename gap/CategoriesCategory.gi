@@ -602,6 +602,8 @@ InstallMethod( NaturalTransformation,
   function( name, source, range )
     local natural_transformation;
     
+    ##formally, this has to be IsEqualForObjects (of CAT), but
+    ##equality of categories is given by IsIdenticalObj.
     if not IsIdenticalObj( Source( source ), Source( range ) ) or not IsIdenticalObj( Range( source ), Range( range ) ) then
         
         Error( "a natural transformation between this functors does not exist" );
@@ -644,6 +646,8 @@ InstallMethodWithToDoForIsWellDefined( ApplyNaturalTransformation,
   function( trafo, object )
     local cache, return_morphism;
     
+    ##formally, this has to be IsEqualForObjects (of CAT), but
+    ##equality of categories is given by IsIdenticalObj.
     if not IsIdenticalObj( HomalgCategory( object ), AsHomalgCategory( Source( Source( trafo ) ) ) ) then
         
         Error( "natural transformation is not applicable" );
