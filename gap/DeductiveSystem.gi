@@ -9,6 +9,15 @@
 
 ####################################
 ##
+## Option records and functions
+##
+####################################
+
+InstallValue( DEDUCTIVE_SYSTEM_OPTIONS,
+              rec( resolve_variable_names := false ) );
+
+####################################
+##
 ## Auxiliary functions
 ##
 ####################################
@@ -618,6 +627,28 @@ InstallMethod( DeductiveSystemObject,
 end );
 
 ##
+InstallMethod( DeductiveSystemObject,
+               [ IsHomalgCategory ],
+               
+  function( category )
+    local deductive_system, deductive_object;
+    
+    deductive_system := DeductiveSystem( category );
+    
+    deductive_object := rec( );
+    
+    ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject );
+    
+    SetHistory( deductive_object, deductive_object );
+    
+    Add( deductive_system, deductive_object );
+    
+    return deductive_object;
+    
+end );
+    
+
+##
 InstallMethod( InDeductiveSystem,
                [ IsHomalgCategoryMorphism ],
                
@@ -664,6 +695,32 @@ InstallMethod( DeductiveSystemMorphism,
                              Range, range );
     
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deductive_morphism );
+    
+    ## CHECK THIS
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ deductive_morphism ], source, HomalgCategory( source ) );
+    
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ deductive_morphism ], range, HomalgCategory( range ) );
+    
+    return deductive_morphism;
+    
+end );
+
+##
+InstallMethod( DeductiveSystemMorphism,
+               [ IsDeductiveSystemObject, IsDeductiveSystemObject ],
+               
+  function( source, range )
+    local deductive_system, deductive_morphism;
+    
+    deductive_morphism := rec( );
+    
+    ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
+                             Source, source,
+                             Range, range );
+    
+    SetHistory( deductive_morphism, deductive_morphism );
+    
+    Add( HomalgCategory( source ), deductive_morphism );
     
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ deductive_morphism ], source, HomalgCategory( source ) );
     
@@ -756,12 +813,21 @@ InstallMethod( ViewObj,
                
   function( cell )
     
-    Print( "<An unevaluated object in " );
+    Print( "<" );
     
-    Print( Name( HomalgCategory( cell ) ) );
+    Print( String( cell ) );
     
     Print( ">" );
     
+end );
+
+InstallMethod( String,
+               [ IsDeductiveSystemObject ],
+               
+   function( cell )
+     
+     return Concatenation( "An unevaluated object in " , Name( HomalgCategory( cell ) ) );
+     
 end );
 
 InstallMethod( ViewObj,
@@ -769,12 +835,21 @@ InstallMethod( ViewObj,
                
   function( cell )
     
-    Print( "<An unevaluated morphism in " );
+    Print( "<" );
     
-    Print( Name( HomalgCategory( cell ) ) );
+    Print( String( cell ) );
     
     Print( ">" );
     
+end );
+
+InstallMethod( String,
+               [ IsDeductiveSystemMorphism ],
+               
+   function( cell )
+     
+     return Concatenation( "An unevaluated morphism in " , Name( HomalgCategory( cell ) ) );
+     
 end );
 
 InstallMethod( ViewObj,
@@ -788,6 +863,61 @@ InstallMethod( ViewObj,
     ViewObj( Eval( cell ) );
     
     Print( ">" );
+    
+end );
+
+InstallMethod( String,
+               [ IsDeductiveSystemCell and HasEval ],
+               100000000000000, ##FIXME!!!!
+               
+  function( cell )
+    
+    return Concatenation( "Deductive system hull of: ", String( Eval( cell ) ) );
+    
+end );
+
+#####################################
+##
+## Print history
+##
+#####################################
+
+InstallGlobalFunction( "HistoryToString",
+                       
+  function( history )
+    local string, resolve_variable_names, gvars;
+    
+    resolve_variable_names := ValueOption( "ResolveVariableNames" );
+    
+    if IsList( history ) and Length( history ) >= 1 and IsString( history[ 1 ] ) then
+        
+        return Concatenation( history[ 1 ], "( ", JoinStringsWithSeparator( List( history[ 2 ], HistoryToString ), "," ), " )" );
+        
+    elif IsList( history ) then
+        
+        string := List( history, HistoryToString );
+        
+        string := JoinStringsWithSeparator( string, ", " );
+        
+        return Concatenation( "[ ", string, " ]" );
+        
+    elif IsHomalgCategoryCell( history ) and resolve_variable_names = true then
+        
+        gvars := NamesGVars( );
+        
+        for string in gvars do
+            
+            if IsBoundGlobal( string ) and IsIdenticalObj( ValueGlobal( string ), history ) and not string in [ "last", "last2", "last3" ] then
+                
+                return string;
+                
+            fi;
+            
+        od;
+        
+    fi;
+    
+    return String( history );
     
 end );
 

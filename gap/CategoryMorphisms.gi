@@ -969,3 +969,12 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT,
 end );
 
 CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT( );
+
+InstallMethod( String,
+               [ IsHomalgCategoryMorphism ],
+               
+  function( morphism )
+    
+    return Concatenation( "A morphism in ", Name( HomalgCategory( morphism ) ) );
+    
+end );

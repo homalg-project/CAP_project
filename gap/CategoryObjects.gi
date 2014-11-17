@@ -379,3 +379,12 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT,
 end );
 
 CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT( );
+
+InstallMethod( String,
+               [ IsHomalgCategoryObject ],
+               
+  function( object )
+    
+    return Concatenation( "An object in ", Name( HomalgCategory( object ) ) );
+    
+end );

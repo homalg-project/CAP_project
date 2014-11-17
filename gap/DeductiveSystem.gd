@@ -9,6 +9,8 @@
 ##
 #############################################################################
 
+DeclareGlobalVariable( "DEDUCTIVE_SYSTEM_OPTIONS" );
+
 DeclareCategory( "IsDeductiveSystemCell",
                  IsHomalgCategoryCell );
 
@@ -24,6 +26,8 @@ DeclareGlobalFunction( "RESOLVE_HISTORY" );
 
 DeclareGlobalFunction( "RECURSIVE_EVAL" );
 
+DeclareGlobalFunction( "HistoryToString" );
+
 #####################################
 ##
 ## Constructor
@@ -37,7 +41,7 @@ DeclareAttribute( "InDeductiveSystem",
                   IsHomalgCategoryObject );
 
 DeclareOperation( "DeductiveSystemObject",
-                  [ ] );
+                  [ IsHomalgCategory ] );
 
 DeclareOperation( "DeductiveSystemObject",
                   [ IsString, IsList ] );
@@ -47,6 +51,9 @@ DeclareAttribute( "InDeductiveSystem",
 
 DeclareOperation( "DeductiveSystemMorphism",
                   [ IsDeductiveSystemObject, IsString, IsList, IsDeductiveSystemObject ] );
+
+DeclareOperation( "DeductiveSystemMorphism",
+                  [ IsDeductiveSystemObject, IsDeductiveSystemObject ] );
 
 #####################################
 ##
