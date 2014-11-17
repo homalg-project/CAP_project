@@ -560,6 +560,42 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
+    AddCoastrictionToImage( deductive_system,
+                            
+      function( morphism )
+        local image_object;
+        
+        image_object := ImageObject( morphism );
+        
+        return DeductiveSystemMorphism( Source( morphism ), "CoastrictionToImage", [ morphism ], image_object );
+        
+    end );
+    
+    AddCoastrictionToImageWithGivenImage( deductive_system,
+                            
+      function( morphism, image_object )
+        
+        return DeductiveSystemMorphism( Source( morphism ), "CoastrictionToImage", [ morphism ], image_object );
+        
+    end );
+    
+    AddUniversalMorphismFromImage( deductive_system,
+                                   
+      function( morphism, test_factorization )
+        local image_object;
+        
+        image_object := ImageObject( morphism );
+        
+        return DeductiveSystemMorphism( image_object, "UniversalMorphismFromImage", [ morphism, test_factorization ], Source( test_factorization[1] ) );
+    end );
+    
+    AddUniversalMorphismFromImageWithGivenImage( deductive_system,
+                                   
+      function( morphism, test_factorization, image_object )
+        
+        return DeductiveSystemMorphism( image_object, "UniversalMorphismFromImage", [ morphism, test_factorization ], Source( test_factorization[1] ) );
+    end );
+    
 end );
 
 ####################################

@@ -748,6 +748,18 @@ gamma := VectorSpaceMorphism( T, [ [ 1, 2 ], [ 3, 4 ] ], B );
 
 #######################################
 ##
+## Snake-Lemma test
+##
+#######################################
+
+eta := VectorSpaceMorphism( T, [ [ 1, 1 ], [ 2, 2 ] ], T );
+
+eta := InDeductiveSystem( eta );
+
+SetIsAbelianCategory( HomalgCategory( eta ), true );
+
+#######################################
+##
 ## Functors
 ##
 #######################################

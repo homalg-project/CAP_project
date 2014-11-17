@@ -185,7 +185,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
     
     if not IsEqualForObjects( Source( source_aid ), Source( morphism_aid ) ) then
         
-        Error( "source of source aid and associated morphism must be the equal objects" );
+        Error( "source of source aid and associated morphism must be equal objects" );
         
     fi;
     
@@ -206,7 +206,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismWithRangeAid,
     
     if not IsEqualForObjects( Range( range_aid ), Range( morphism_aid ) ) then
         
-        Error( "source of source aid and associated morphism must be the equal objects" );
+        Error( "range of source aid and associated morphism must be equal objects" );
         
     fi;
     
@@ -878,5 +878,54 @@ InstallMethod( IsWellDefined,
     fi;
     
     return true;
+    
+end );
+
+###########################
+##
+## Snake-Lemma
+##
+###########################
+
+##
+InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphism,
+                                  [ IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism ],
+                                    
+  function( morphism_up_right,
+            morphism_middle_left,
+            morphism_middle_middle,
+            morphism_middle_right,
+            morphism_down_left )
+      local generalized_morphism1, generalized_morphism2, cokernel_proj, composition,
+            domain, inverse_domain, associated_morphism, codomain, inverse_codomain;
+            
+      
+    generalized_morphism1 := GeneralizedMorphismWithRangeAid( KernelEmb( morphism_middle_right ), morphism_up_right );
+    
+    generalized_morphism2 := GeneralizedMorphismWithRangeAid( morphism_middle_middle, morphism_down_left );
+    
+    cokernel_proj := AsGeneralizedMorphism( CokernelProj( morphism_middle_left ) );
+    
+    composition := PreCompose( generalized_morphism1, generalized_morphism2 );
+    
+    composition := PreCompose( composition, cokernel_proj );
+    
+#     domain := Domain( composition );
+#     
+#     inverse_domain := Inverse( domain );
+    
+    associated_morphism := AssociatedMorphism( composition );
+    
+    return associated_morphism;
+#     
+#     codomain := Codomain( composition );
+#     
+#     inverse_codomain := Inverse( codomain );
+#     
+#     return PreCompose( PreCompose( inverse_domain, associated_morphism ), inverse_codomain );
     
 end );

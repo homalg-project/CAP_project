@@ -118,4 +118,15 @@ InstallTrueMethod( HasHonestRange, IsHonest );
 
 InstallTrueMethod( HasHonestSource, IsHonest );
 
+####################################
+##
+## Snake-Lemma
+##
+####################################
 
+DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphism",
+                           [ IsHomalgCategoryMorphism,
+                           IsHomalgCategoryMorphism,
+                           IsHomalgCategoryMorphism,
+                           IsHomalgCategoryMorphism,
+                           IsHomalgCategoryMorphism ] );
