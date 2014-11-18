@@ -24,7 +24,9 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                        Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForGeneralCategories.tex" )
                      ],
           IsEnrichedOverCommutativeRegularSemigroup := [ ],
-          IsAbCategory := [ ],
+          IsAbCategory := [
+                            Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForAbCategories.tex" ) 
+                          ],
           IsPreAdditiveCategory := [ ],
           IsAdditiveCategory := [ ],
           IsPreAbelianCategory := [ ],

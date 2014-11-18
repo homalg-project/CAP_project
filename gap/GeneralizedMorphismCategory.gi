@@ -890,37 +890,46 @@ end );
 ##
 InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphism,
                                   [ IsHomalgCategoryMorphism,
+#                                     IsHomalgCategoryMorphism,
                                     IsHomalgCategoryMorphism,
-                                    IsHomalgCategoryMorphism,
-                                    IsHomalgCategoryMorphism,
+#                                     IsHomalgCategoryMorphism,
                                     IsHomalgCategoryMorphism ],
                                     
   function( morphism_up_right,
-            morphism_middle_left,
+#             morphism_middle_left,
             morphism_middle_middle,
-            morphism_middle_right,
+#             morphism_middle_right,
             morphism_down_left )
       local generalized_morphism1, generalized_morphism2, cokernel_proj, composition,
             domain, inverse_domain, associated_morphism, codomain, inverse_codomain;
             
-      
-    generalized_morphism1 := GeneralizedMorphismWithRangeAid( KernelEmb( morphism_middle_right ), morphism_up_right );
+    composition := GeneralizedMorphism( morphism_up_right,
+                                        morphism_middle_middle,
+                                        morphism_down_left );
     
-    generalized_morphism2 := GeneralizedMorphismWithRangeAid( morphism_middle_middle, morphism_down_left );
+    associated_morphism := AssociatedMorphism( composition );
     
-    cokernel_proj := AsGeneralizedMorphism( CokernelProj( morphism_middle_left ) );
+    return associated_morphism;
     
-    composition := PreCompose( generalized_morphism1, generalized_morphism2 );
-    
-    composition := PreCompose( composition, cokernel_proj );
+end );
+
+## Alternative implementation:
+
+#     generalized_morphism1 := GeneralizedMorphismWithRangeAid( KernelEmb( morphism_middle_right ), morphism_up_right );
+#     
+#     generalized_morphism2 := GeneralizedMorphismWithRangeAid( morphism_middle_middle, morphism_down_left );
+#     
+#     cokernel_proj := AsGeneralizedMorphism( CokernelProj( morphism_middle_left ) );
+#     
+#     composition := PreCompose( generalized_morphism1, generalized_morphism2 );
+#     
+#     composition := PreCompose( composition, cokernel_proj );
     
 #     domain := Domain( composition );
 #     
 #     inverse_domain := Inverse( domain );
     
-    associated_morphism := AssociatedMorphism( composition );
     
-    return associated_morphism;
 #     
 #     codomain := Codomain( composition );
 #     
@@ -928,4 +937,3 @@ InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphism,
 #     
 #     return PreCompose( PreCompose( inverse_domain, associated_morphism ), inverse_codomain );
     
-end );

@@ -455,6 +455,8 @@ InstallMethod( AddCokernelProj,
         
         SetCokernel( mor, cokernel );
         
+        SetFilterObj( cokernel, WasCreatedAsCokernel );
+        
         AddToGenesis( cokernel, "CokernelDiagram", mor );
 
         SetCokernelProj( cokernel, cokernel_proj );
@@ -1172,7 +1174,7 @@ InstallMethod( AddProjectionInFactorOfDirectProductWithGivenDirectProduct,
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductWithGivenDirectProduct,
                                            [ IsList,
                                              IsInt,
-                                             IsHomalgCategoryObject and ObjectFilter( category ),  ],
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
                                              
       function( object_product_list, projection_number, direct_product )
         local projection_in_factor;
@@ -1355,7 +1357,7 @@ InstallTrueMethod( CanComputeProjectionInFactorOfDirectProduct, CanComputeDirect
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
                                        [ IsList,
                                          IsInt,
-                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct, ],
+                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct ],
                                          -9999, #FIXME
                                          
   function( object_product_list, projection_number, method_selection_object )
@@ -2750,7 +2752,7 @@ InstallMethod( AddInjectionOfCofactorOfPushout,
         pushout := Range( injection_of_cofactor );
         
         AddToGenesis( pushout, "PushoutDiagram", diagram );
-        
+
         SetPushoutOp( diagram, method_selection_morphism, pushout );
         
         SetFilterObj( pushout, WasCreatedAsPushout );
@@ -3013,7 +3015,7 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutOp,
                                          CanComputePushout ],
                                          
   function( diagram, injection_number, method_selection_morphism )
-  
+    
     return InjectionOfCofactorOfPushoutWithGivenPushout( diagram, injection_number, PushoutOp( diagram, method_selection_morphism ) );
   
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
@@ -3499,7 +3501,7 @@ InstallTrueMethod( CanComputeUniversalMorphismFromImage,
                    CanComputeUniversalMorphismFromImageWithGivenImage
                    and CanComputeImage );
 
-InstallMethod( UniversalMorphismFromImage,
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImage,
                [ IsHomalgCategoryMorphism
                  and CanComputeUniversalMorphismFromImageWithGivenImage
                  and CanComputeImage,
@@ -3510,14 +3512,14 @@ InstallMethod( UniversalMorphismFromImage,
     
     return UniversalMorphismFromImageWithGivenImage( morphism, test_factorization, ImageObject( morphism ) );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 1 );
 
 ##
 InstallTrueMethod( CanComputeUniversalMorphismFromImage,
                    CanComputeMonoAsKernelLift
                    and CanComputeImageEmbedding );
 
-InstallMethod( UniversalMorphismFromImage,
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImage,
                [ IsHomalgCategoryMorphism
                  and CanComputeMonoAsKernelLift
                  and CanComputeImageEmbedding,
@@ -3531,7 +3533,7 @@ InstallMethod( UniversalMorphismFromImage,
     
     return MonoAsKernelLift( test_factorization[2], image_embedding );
     
-end );
+end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 1 );
 ####################################
 ##
 ## Scheme for Universal Object
