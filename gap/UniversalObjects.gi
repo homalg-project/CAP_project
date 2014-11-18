@@ -1174,7 +1174,7 @@ InstallMethod( AddProjectionInFactorOfDirectProductWithGivenDirectProduct,
     InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductWithGivenDirectProduct,
                                            [ IsList,
                                              IsInt,
-                                             IsHomalgCategoryObject and ObjectFilter( category ),  ],
+                                             IsHomalgCategoryObject and ObjectFilter( category ) ],
                                              
       function( object_product_list, projection_number, direct_product )
         local projection_in_factor;
@@ -1357,7 +1357,7 @@ InstallTrueMethod( CanComputeProjectionInFactorOfDirectProduct, CanComputeDirect
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
                                        [ IsList,
                                          IsInt,
-                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct, ],
+                                         IsHomalgCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct ],
                                          -9999, #FIXME
                                          
   function( object_product_list, projection_number, method_selection_object )

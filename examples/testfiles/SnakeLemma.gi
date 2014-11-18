@@ -1,17 +1,38 @@
-LoadPackage( "ModulePresentationsForHomalg" );
+## Create the category of rational vector spaces
 
-LoadPackage( "RingsForHomalg" );
+if not IsBound( VectorSpacesConstructorsLoaded ) then
 
-ZZ := HomalgRingOfIntegersInSingular( );
+  ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesConstructors.gi" );;
 
-F := FreeLeftPresentation( 1, ZZ );
+fi;
 
-mor := PresentationMorphism( F, HomalgMatrix( [ [ 1 ] ], ZZ ), F );
+vecspaces := CreateHomalgCategory( "vecspaces" );
+ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 
-F := InDeductiveSystem( F );
+## create example input
 
-mor := InDeductiveSystem( mor );
+A1 := QVectorSpace( 1 );
 
-SetIsAbelianCategory( HomalgCategory( F ), true );
+A2 := QVectorSpace( 2 );
 
-c := SnakeLemmaConnectingHomomorphism( mor, mor, mor, mor, mor );
+B := QVectorSpace( 3 );
+
+alpha1 := VectorSpaceMorphism( A1, [ 1, 0, 0 ], B );
+
+alpha2 := VectorSpaceMorphism( A1, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], B );
+
+alpha1 := InDeductiveSystem( alpha1 );
+
+alpha2 := InDeductiveSystem( alpha2 );
+
+B := InDeductiveSystem( B );
+
+SetIsAbelianCategory( HomalgCategory( alpha1 ), true );
+
+##
+
+cokernel_proj_1 := CokernelProj( alpha1 );
+
+identity_B := IdentityMorphism( B );
+
+c := SnakeLemmaConnectingHomomorphism( cokernel_proj_1, identity_B, alpha2 );
