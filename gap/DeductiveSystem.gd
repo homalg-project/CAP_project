@@ -28,6 +28,10 @@ DeclareGlobalFunction( "RECURSIVE_EVAL" );
 
 DeclareGlobalFunction( "HistoryToString" );
 
+DeclareGlobalFunction( "PRINT_HISTORY_RECURSIVE" );
+
+DeclareGlobalFunction( "PrintHistory" );
+
 #####################################
 ##
 ## Constructor

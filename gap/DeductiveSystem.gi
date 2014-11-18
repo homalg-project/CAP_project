@@ -918,6 +918,7 @@ end );
 ##
 #####################################
 
+##
 InstallGlobalFunction( "HistoryToString",
                        
   function( history )
@@ -954,6 +955,70 @@ InstallGlobalFunction( "HistoryToString",
     fi;
     
     return String( history );
+    
+end );
+
+##
+InstallGlobalFunction( PRINT_HISTORY_RECURSIVE,
+                       
+  function( history )
+    local string, resolve_variable_names, gvars;
+    
+    resolve_variable_names := ValueOption( "ResolveVariableNames" );
+    
+    if IsList( history ) and Length( history ) >= 1 and IsString( history[ 1 ] ) then
+        
+        string := List( history[ 2 ], PRINT_HISTORY_RECURSIVE );
+        
+        string := List( string, i -> ReplacedString( i, "\n", "\n*  " ) );
+        
+        string := List( string, i -> Concatenation( "** ", i, "\n" ) );
+        
+        string := JoinStringsWithSeparator( string, "" );
+        
+        string := Concatenation( history[ 1 ], "(\n", string, ")" );
+        
+        return string;
+        
+    elif IsList( history ) then
+        
+        string := List( history, PRINT_HISTORY_RECURSIVE );
+        
+        string := List( string, i -> ReplacedString( i, "\n", "\n*  " ) );
+        
+        string := List( string, i -> Concatenation( "** ", i, "\n" ) );
+        
+        string := JoinStringsWithSeparator( string, "" );
+        
+        string := Concatenation( "[\n", string, "]" );
+        
+        return string;
+        
+    elif IsHomalgCategoryCell( history ) and resolve_variable_names = true then
+        
+        gvars := NamesGVars( );
+        
+        for string in gvars do
+            
+            if IsBoundGlobal( string ) and IsIdenticalObj( ValueGlobal( string ), history ) and not string in [ "last", "last2", "last3" ] then
+                
+                return string;
+                
+            fi;
+            
+        od;
+        
+    fi;
+    
+    return String( history );
+    
+end );
+
+InstallGlobalFunction( "PrintHistory",
+                       
+  function( history )
+    
+    Print( PRINT_HISTORY_RECURSIVE( history ) );
     
 end );
 
