@@ -457,7 +457,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category,
                                                                  
-      function( product_morphism, direct_sum )
+      function( diagram, product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
         
         components := product_morphism;
@@ -503,7 +503,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     
     AddUniversalMorphismFromCoproductWithGivenCoproduct( category,
                                                          
-      function( product_morphism, direct_sum )
+      function( diagram, product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
         
         components := product_morphism;
