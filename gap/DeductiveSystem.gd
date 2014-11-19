@@ -30,6 +30,8 @@ DeclareGlobalFunction( "HistoryToString" );
 
 DeclareGlobalFunction( "PRINT_HISTORY_RECURSIVE" );
 
+DeclareGlobalFunction( "PrintHistoryClean" );
+
 DeclareGlobalFunction( "PrintHistory" );
 
 #####################################

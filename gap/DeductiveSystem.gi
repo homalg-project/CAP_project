@@ -1014,7 +1014,7 @@ InstallGlobalFunction( PRINT_HISTORY_RECURSIVE,
     
 end );
 
-InstallGlobalFunction( "PrintHistory",
+InstallGlobalFunction( PrintHistoryClean,
                        
   function( history )
     
@@ -1027,6 +1027,14 @@ InstallGlobalFunction( "PrintHistory",
         Print( PRINT_HISTORY_RECURSIVE( history ) );
         
     fi;
+    
+end );
+
+InstallGlobalFunction( PrintHistory,
+                       
+  function( history )
+    
+    PrintHistoryClean( history : ResolveVariableNames := true );
     
 end );
 
