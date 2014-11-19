@@ -165,36 +165,77 @@ InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
     
 end );
 
-
-BindGlobal( "INSTALL_LOGICAL_IMPLICATIONS_IMMEDIATE_PART",
-            
-  function( )
-    local current_filter;
+InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
+                        IsHomalgCategory and HasDeductiveSystem and IsEnrichedOverCommutativeRegularSemigroup,
+                        0,
+                        
+  function( category )
     
-    for current_filter in [ "IsEnrichedOverCommutativeRegularSemigroup",
-                            "IsAbCategory",
-                            "IsPreAdditiveCategory",
-                            "IsAdditiveCategory",
-                            "IsPreAbelianCategory",
-                            "IsAbelianCategory" ] do
-                            
-        InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                                IsHomalgCategory and HasDeductiveSystem and ValueGlobal( current_filter ),
-                                0,
-                                
-          function( category )
-            
-            INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), current_filter );
-            
-            TryNextMethod( );
-            
-        end );
+    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), "IsEnrichedOverCommutativeRegularSemigroup" );
     
-    od;
+    TryNextMethod( );
     
 end );
 
-INSTALL_LOGICAL_IMPLICATIONS_IMMEDIATE_PART( );
+InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
+                        IsHomalgCategory and HasDeductiveSystem and IsPreAdditiveCategory,
+                        0,
+                        
+  function( category )
+    
+    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), "IsPreAdditiveCategory" );
+    
+    TryNextMethod( );
+    
+end );
+
+InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
+                        IsHomalgCategory and HasDeductiveSystem and IsAdditiveCategory,
+                        0,
+                        
+  function( category )
+    
+    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), "IsAdditiveCategory" );
+    
+    TryNextMethod( );
+    
+end );
+
+InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
+                        IsHomalgCategory and HasDeductiveSystem and IsPreAbelianCategory,
+                        0,
+                        
+  function( category )
+    
+    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), "IsPreAbelianCategory" );
+    
+    TryNextMethod( );
+    
+end );
+
+InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
+                        IsHomalgCategory and HasDeductiveSystem and IsAbelianCategory,
+                        0,
+                        
+  function( category )
+    
+    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), "IsAbelianCategory" );
+    
+    TryNextMethod( );
+    
+end );
+
+InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
+                        IsHomalgCategory and HasDeductiveSystem and IsAbCategory,
+                        0,
+                        
+  function( category )
+    
+    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), "IsAbCategory" );
+    
+    TryNextMethod( );
+    
+end );
 
 ###################################
 ##

@@ -1063,6 +1063,10 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
         
     fi;
     
+    range[ 2 ] := ReplacedString( range[ 2 ], "_{Mor}", "" );
+    
+    range[ 2 ] := ReplacedString( range[ 2 ], "_{Obj}", "" );
+    
     range_left := NormalizedWhitespace( range[ 1 ] );
     
     range_replace := NormalizedWhitespace( range[ 2 ] );

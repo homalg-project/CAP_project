@@ -812,7 +812,15 @@ InstallMethod( Eval,
     
     history := History( cell );
     
-    new_history := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, UnderlyingHonestCategory( HomalgCategory( cell ) )!.eval_rules );
+    if IsBound( UnderlyingHonestCategory( HomalgCategory( cell ) )!.eval_rules ) then
+        
+        new_history := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, UnderlyingHonestCategory( HomalgCategory( cell ) )!.eval_rules );
+        
+    else
+        
+        new_history := fail;
+        
+    fi;
     
     if new_history <> fail then
         
