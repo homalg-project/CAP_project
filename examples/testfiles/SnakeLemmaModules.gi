@@ -4,7 +4,7 @@ LoadPackage( "RingsForHomalg" );
 
 ## Initialisation
 
-ZZ := HomalgFieldOfIntegersInSingular( );
+ZZ := HomalgRingOfIntegersInSingular( );
 
 F := FreeLeftPresentation( 2, ZZ );
 
