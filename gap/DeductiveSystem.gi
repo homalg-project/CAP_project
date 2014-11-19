@@ -742,7 +742,7 @@ InstallMethod( DeductiveSystemObject,
     resolved_history := RESOLVE_HISTORY( argument_list );
     
     ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject,
-                             History, [ func, resolved_history ] );
+                             History, rec( command := func, arguments := resolved_history ) );
     
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deductive_object );
     
@@ -822,7 +822,7 @@ InstallMethod( DeductiveSystemMorphism,
     resolved_history := RESOLVE_HISTORY( argument_list );
     
     ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
-                             History, [ func, resolved_history ],
+                             History, rec( command :=func, arguments := resolved_history ),
                              Source, source,
                              Range, range );
     
@@ -885,9 +885,9 @@ InstallGlobalFunction( RECURSIVE_EVAL,
         
         return Eval( list );
         
-    elif IsList( list ) and Length( list ) = 2 and IsString( list[ 1 ] ) then
+    elif IsRecord( list ) then
         
-        return CallFuncList( ValueGlobal( list[ 1 ] ), List( list[ 2 ], RECURSIVE_EVAL ) );
+        CallFuncList( ValueGlobal( list!.command ), List( list!.arguments, RECURSIVE_EVAL ) );
         
     elif IsList( list ) then
         
@@ -1072,9 +1072,9 @@ InstallGlobalFunction( "HistoryToString",
     
     resolve_variable_names := ValueOption( "ResolveVariableNames" );
     
-    if IsList( history ) and Length( history ) >= 1 and IsString( history[ 1 ] ) then
+    if IsRecord( history ) then
         
-        return Concatenation( history[ 1 ], "( ", JoinStringsWithSeparator( List( history[ 2 ], HistoryToString ), "," ), " )" );
+        return Concatenation( history!.command, "( ", JoinStringsWithSeparator( List( history!.arguments, HistoryToString ), "," ), " )" );
         
     elif IsList( history ) then
         
@@ -1112,9 +1112,9 @@ InstallGlobalFunction( PRINT_HISTORY_RECURSIVE,
     
     resolve_variable_names := ValueOption( "ResolveVariableNames" );
     
-    if IsList( history ) and Length( history ) >= 1 and IsString( history[ 1 ] ) then
+    if IsRecord( history ) then
         
-        string := List( history[ 2 ], PRINT_HISTORY_RECURSIVE );
+        string := List( history!.arguments, PRINT_HISTORY_RECURSIVE );
         
         string := List( string, i -> ReplacedString( i, "\n", "\n*  " ) );
         
@@ -1122,7 +1122,7 @@ InstallGlobalFunction( PRINT_HISTORY_RECURSIVE,
         
         string := JoinStringsWithSeparator( string, "" );
         
-        string := Concatenation( history[ 1 ], "(\n", string, ")" );
+        string := Concatenation( history!.command, "(\n", string, ")" );
         
         return string;
         
