@@ -30,13 +30,13 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                             Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForAbCategories.tex" )
                           ],
           IsPreAdditiveCategory := [
-                                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForPreAdditiveCategories.tex" )
+                                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForPreadditiveCategories.tex" )
                                    ],
           IsAdditiveCategory := [
                                   Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForAdditiveCategories.tex" )
                                 ],
           IsPreAbelianCategory := [
-                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForPreAbelianCategories.tex" )
+                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForPreabelianCategories.tex" )
                                   ],
           IsAbelianCategory := [
 #                                  Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForAbelianCategories.tex" )
@@ -52,13 +52,13 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                             Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForAbCategories.tex" )
                           ],
           IsPreAdditiveCategory := [
-                                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForPreAdditiveCategories.tex" )
+                                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForPreadditiveCategories.tex" )
                                    ],
           IsAdditiveCategory := [
                                   Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForAdditiveCategories.tex" )
                                 ],
           IsPreAbelianCategory := [
-                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForPreAbelianCategories.tex" )
+                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForPreabelianCategories.tex" )
                                   ],
           IsAbelianCategory := [
                                  Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForAbelianCategories.tex" )
@@ -74,13 +74,13 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                             Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbCategories.tex" )
                           ],
           IsPreAdditiveCategory := [
-                                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreAdditiveCategories.tex" )
+                                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreadditiveCategories.tex" )
                                    ],
           IsAdditiveCategory := [
                                   Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAdditiveCategories.tex" )
                                 ],
           IsPreAbelianCategory := [
-                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreAbelianCategories.tex" )
+                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreabelianCategories.tex" )
                                   ],
           IsAbelianCategory := [
                                  Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbelianCategories.tex" )
