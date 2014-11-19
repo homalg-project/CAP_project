@@ -11,16 +11,18 @@ ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.g
 
 ## create example input
 
-A := QVectorSpace( 3 );
+A := QVectorSpace( 2 );
 B := QVectorSpace( 2 );
-alpha := VectorSpaceMorphism( A, [ [ 1, 1 ], [ 1, -1 ], [ 1, 2 ] ], B );
+alpha := VectorSpaceMorphism( A, [ [ 1, 1 ], [ 1, -1 ] ], A );
 A := InDeductiveSystem( A );
 B := InDeductiveSystem( B );
 alpha := InDeductiveSystem( alpha );
 
 ## operations
 
-k := KernelEmb( alpha );
+# k := KernelEmb( alpha );
+
+k := alpha;
 
 P := DirectProduct( A, A );
 
