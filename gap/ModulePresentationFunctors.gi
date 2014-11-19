@@ -45,7 +45,7 @@ BindGlobal( "INSTALL_FUNCTOR_STANDARD_MODULE_METHODS",
             
             matrix := UnderlyingMatrix( morphism );
             
-            return PresentationMorphism( new_source, morphism, new_range );
+            return PresentationMorphism( new_source, matrix, new_range );
             
         end );
         
