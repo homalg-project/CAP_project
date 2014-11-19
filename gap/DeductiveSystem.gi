@@ -1018,7 +1018,15 @@ InstallGlobalFunction( "PrintHistory",
                        
   function( history )
     
-    Print( PRINT_HISTORY_RECURSIVE( history ) );
+    if IsHomalgCategoryCell( history ) then
+        
+        Print( PRINT_HISTORY_RECURSIVE( History( history ) ) );
+        
+    else
+        
+        Print( PRINT_HISTORY_RECURSIVE( history ) );
+        
+    fi;
     
 end );
 
