@@ -64,6 +64,7 @@ DeclareGlobalFunction( "ADD_ZERO_OBJECT_RIGHT" );
 DeclareGlobalFunction( "ADD_IDENTITY_RIGHT" );
 
 
+DeclareGlobalFunction( "ADD_EQUAL_FOR_OBJECTS" );
 
 DeclareGlobalFunction( "ADD_IS_ZERO_FOR_MORPHISMS" );
 

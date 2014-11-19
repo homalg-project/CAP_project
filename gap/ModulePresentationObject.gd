@@ -36,6 +36,12 @@ DeclareAttribute( "AsRightPresentation",
 
 DeclareGlobalFunction( "AsLeftOrRightPresentation" );
 
+DeclareOperation( "FreeLeftPresentation",
+                  [ IsInt, IsHomalgRing ] );
+
+DeclareOperation( "FreeRightPresentation",
+                  [ IsInt, IsHomalgRing ] );
+
 #############################
 ##
 ## Attributes

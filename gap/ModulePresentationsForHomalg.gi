@@ -84,6 +84,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_IDENTITY_LEFT( category );
     
+    ADD_EQUAL_FOR_OBJECTS( category );
+    
 end );
 
 ##
@@ -112,6 +114,23 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_ZERO_OBJECT_RIGHT( category );
     
     ADD_IDENTITY_RIGHT( category );
+    
+    ADD_EQUAL_FOR_OBJECTS( category );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_EQUAL_FOR_OBJECTS,
+                       
+  function( category )
+    
+    AddIsEqualForObjects( category,
+                   
+      function( object1, object2 )
+        
+        return UnderlyingMatrix( object1 ) = UnderlyingMatrix( object2 );
+        
+    end );
     
 end );
 
@@ -433,13 +452,16 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( category,
                                                  
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, projection, projection_matrix, i;
+        local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix, i;
         
         objects := product_object;
         
         object_column_dimension := List( objects, i -> NrColumns( UnderlyingMatrix( i ) ) );
         
-        projection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
+        dimension_of_factor := object_column_dimension[ component_number ];
+        
+        projection := List( object_column_dimension, i -> 
+                            HomalgZeroMatrix( i, dimension_of_factor, category!.ring_for_representation_category ) );
         
         projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
         
@@ -479,13 +501,15 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( category,
                                               
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, injection, injection_matrix, i;
+        local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix, i;
         
         objects := product_object;
         
         object_column_dimension := List( objects, i -> NrColumns( UnderlyingMatrix( i ) ) );
         
-        injection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
+        dimension_of_cofactor := object_column_dimension[ component_number ];
+        
+        injection := List( object_column_dimension, i -> HomalgZeroMatrix( dimension_of_cofactor, i, category!.ring_for_representation_category ) );
         
         injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
         
@@ -497,7 +521,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
             
         od;
         
-        return PresentationMorphism( objects[ component_number ], injection_matrix, product_object );
+        return PresentationMorphism( objects[ component_number ], injection_matrix, direct_sum_object );
         
     end );
     
@@ -547,13 +571,15 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( category,
                                                  
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, projection, projection_matrix, i;
+        local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix, i;
         
         objects := product_object;
         
         object_column_dimension := List( objects, i -> NrRows( UnderlyingMatrix( i ) ) );
         
-        projection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
+        dimension_of_factor := object_column_dimension[ component_number ];
+        
+        projection := List( object_column_dimension, i -> HomalgZeroMatrix( dimension_of_factor, i, category!.ring_for_representation_category ) );
         
         projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
         
@@ -593,13 +619,15 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( category,
                                               
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, injection, injection_matrix, i;
+        local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix, i;
         
         objects := product_object;
         
         object_column_dimension := List( objects, i -> NrRows( UnderlyingMatrix( i ) ) );
         
-        injection := List( object_column_dimension, i -> HomalgZeroMatrix( i, i, category!.ring_for_representation_category ) );
+        dimension_of_cofactor := object_column_dimension[ component_number ];
+        
+        injection := List( object_column_dimension, i -> HomalgZeroMatrix( i, dimension_of_cofactor, category!.ring_for_representation_category ) );
         
         injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
         
@@ -611,7 +639,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
             
         od;
         
-        return PresentationMorphism( objects[ component_number ], injection_matrix, product_object );
+        return PresentationMorphism( objects[ component_number ], injection_matrix, direct_sum_object );
         
     end );
     

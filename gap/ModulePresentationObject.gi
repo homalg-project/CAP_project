@@ -75,3 +75,35 @@ InstallMethod( AsRightPresentation,
                [ IsHomalgMatrix ],
                
   matrix -> AsLeftOrRightPresentation( matrix, false ) );
+
+##
+InstallMethod( FreeLeftPresentation,
+               [ IsInt, IsHomalgRing ],
+               
+  function( rank, homalg_ring )
+    
+    if rank < 0 then
+      
+      Error( "rank must be a non-negative integer" );
+      
+    fi;
+    
+    return AsLeftPresentation( HomalgMatrix( [ List( [ 1 .. rank ], i -> 0 ) ], homalg_ring ) );
+    
+end );
+
+##
+InstallMethod( FreeRightPresentation,
+               [ IsInt, IsHomalgRing ],
+               
+  function( rank, homalg_ring )
+    
+    if rank < 0 then
+      
+      Error( "rank must be a non-negative integer" );
+      
+    fi;
+    
+    return AsRightPresentation( HomalgMatrix( [ List( [ 1 .. rank ], i -> [ 0 ] ) ], homalg_ring ) );
+    
+end );
