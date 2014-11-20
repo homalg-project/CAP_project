@@ -126,7 +126,7 @@ InstallTrueMethod( HasHonestSource, IsHonest );
 
 DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphism",
                            [ IsHomalgCategoryMorphism,
-#                            IsHomalgCategoryMorphism,
                            IsHomalgCategoryMorphism,
-#                            IsHomalgCategoryMorphism,
+                           IsHomalgCategoryMorphism,
+                           IsHomalgCategoryMorphism,
                            IsHomalgCategoryMorphism ] );

@@ -19,7 +19,7 @@ B := QVectorSpace( 3 );
 
 alpha1 := VectorSpaceMorphism( A1, [ 1, 0, 0 ], B );
 
-alpha2 := VectorSpaceMorphism( A1, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], B );
+alpha2 := VectorSpaceMorphism( A2, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], B );
 
 alpha1 := InDeductiveSystem( alpha1 );
 
