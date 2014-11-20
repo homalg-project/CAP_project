@@ -84,7 +84,11 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_IDENTITY_LEFT( category );
     
-    ADD_EQUAL_FOR_OBJECTS( category );
+#     ADD_EQUAL_FOR_OBJECTS( category );
+    
+    ADD_IS_WELL_DEFINED_FOR_OBJECTS( category );
+    
+    ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT( category );
     
 end );
 
@@ -115,7 +119,97 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_IDENTITY_RIGHT( category );
     
-    ADD_EQUAL_FOR_OBJECTS( category );
+#     ADD_EQUAL_FOR_OBJECTS( category );
+    
+    ADD_IS_WELL_DEFINED_FOR_OBJECTS( category );
+    
+    ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT( category );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_OBJECTS,
+                       
+  function( category )
+    
+    AddIsWellDefinedForObjects( category,
+      
+      function( object )
+        
+        return IsHomalgMatrix( UnderlyingMatrix( object ) ) and IsHomalgRing( UnderlyingHomalgRing( object ) );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
+                       
+  function( category )
+    
+    AddIsWellDefinedForMorphisms( category,
+      
+      function( morphism )
+        local source_matrix, range_matrix, morphism_matrix;
+        
+        source_matrix := UnderlyingMatrix( Source( morphism ) );
+        
+        range_matrix := UnderlyingMatrix( Range( morphism ) );
+        
+        morphism_matrix := UnderlyingMatrix( morphism );
+        
+        if not ( NrColumns( source_matrix ) = NrRows( morphism_matrix )
+                 and NrColumns( morphism_matrix ) = NrColumns( range_matrix ) ) then
+          
+          return false;
+          
+        fi;
+        
+        if RightDivide( source_matrix * morphism_matrix, range_matrix ) = false then
+          
+          return false;
+          
+        fi;
+        
+        return true;
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
+                       
+  function( category )
+    
+    AddIsWellDefinedForMorphisms( category,
+      
+      function( morphism )
+        
+        local source_matrix, range_matrix, morphism_matrix;
+        
+        source_matrix := UnderlyingMatrix( Source( morphism ) );
+        
+        range_matrix := UnderlyingMatrix( Range( morphism ) );
+        
+        morphism_matrix := UnderlyingMatrix( morphism );
+        
+        if not ( NrRows( source_matrix ) = NrColumns( morphism_matrix )
+                 and NrRows( morphism_matrix ) = NrRows( range_matrix ) ) then
+          
+          return false;
+          
+        fi;
+        
+        if LeftDivide( range_matrix, morphism_matrix * source_matrix ) = false then
+          
+          return false;
+          
+        fi;
+        
+        return true;
+        
+    end );
     
 end );
 

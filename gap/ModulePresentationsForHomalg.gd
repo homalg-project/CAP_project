@@ -43,6 +43,7 @@ DeclareGlobalFunction( "ADD_ZERO_OBJECT_LEFT" );
 
 DeclareGlobalFunction( "ADD_IDENTITY_LEFT" );
 
+DeclareGlobalFunction( "ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT" );
 
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
@@ -63,6 +64,10 @@ DeclareGlobalFunction( "ADD_ZERO_OBJECT_RIGHT" );
 
 DeclareGlobalFunction( "ADD_IDENTITY_RIGHT" );
 
+DeclareGlobalFunction( "ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT" );
+
+
+DeclareGlobalFunction( "ADD_IS_WELL_DEFINED_FOR_OBJECTS" );
 
 DeclareGlobalFunction( "ADD_EQUAL_FOR_OBJECTS" );
 
