@@ -887,7 +887,7 @@ InstallGlobalFunction( RECURSIVE_EVAL,
         
     elif IsRecord( list ) then
         
-        CallFuncList( ValueGlobal( list!.command ), List( list!.arguments, RECURSIVE_EVAL ) );
+        return CallFuncList( ValueGlobal( list!.command ), List( list!.arguments, RECURSIVE_EVAL ) );
         
     elif IsList( list ) then
         

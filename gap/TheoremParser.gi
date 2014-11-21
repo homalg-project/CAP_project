@@ -68,6 +68,165 @@ BindGlobal( "CONVERT_STRING_TO_BOOL_OR_INT",
     
 end );
 
+BindGlobal( "SPLIT_THEOREM",
+            
+  function( theorem_string )
+    local return_rec;
+    
+    return_rec := rec( );
+    
+    theorem_string := SplitString( theorem_string, "|" );
+    
+    if Length( theorem_string ) <> 2 then
+        
+        return "no unique | found";
+        
+    fi;
+    
+    return_rec!.context := theorem_string[ 1 ];
+    
+    theorem_string := SPLIT_STRING_MULTIPLE( theorem_string[ 2 ], "vdash" );
+    
+    if Length( theorem_string ) <> 2 then
+        
+        return "no unique vdash found";
+        
+    fi;
+    
+    return_rec!.source := theorem_string[ 1 ];
+    
+    return_rec!.range := theorem_string[ 2 ];
+    
+    return return_rec;
+    
+end );
+
+BindGlobal( "SPLIT_KOMMAS_NOT_IN_BRACKETS",
+            
+  function( string )
+    local return_list, bracket_count, i, positions;
+    
+    if Length( string ) = 0 then
+        
+        return [ ];
+        
+    fi;
+    
+    positions := [ 1 ];
+    
+    bracket_count := 0;
+    
+    for i in [ 1 .. Length( string ) ] do
+        
+        if string[ i ] in [ '(', '[' ] then
+            
+            bracket_count := bracket_count + 1;
+            
+        elif string[ i ] in [ ')', ']' ] then
+            
+            bracket_count := bracket_count - 1;
+            
+        elif bracket_count = 0 and string[ i ] = ',' then
+            
+            Add( positions, i );
+            
+        fi;
+        
+    od;
+    
+    Add( positions, Length( string ) );
+    
+    return_list := [ ];
+    
+    for i in [ 1 .. Length( positions ) - 1 ] do
+        
+        Add( return_list, string{[ positions[ i ] .. positions[ i + ] ]} );
+        
+    od;
+    
+    return return_list;
+    
+end );
+
+BindGlobal( "COMMAND_AND_ARGUMENTS",
+            
+  function( command_string )
+    local command, arguments, first_pos, i;
+    
+    i := PositionSublist( command_string, "(" );
+    
+    if i = fail then
+        
+        return fail;
+        
+    fi;
+    
+    command := command_string{[ 1 .. i - 1 ]};
+    
+    first_pos := i;
+    
+    while PositionSublist( command_string, ")", i ) <> fail do
+        
+        i := PositionSublist( command_string, ")", i );
+        
+    od;
+    
+    arguments := command_string{[ first_pos + 1 .. i ]};
+    
+    return rec( command := command, arguments := arguments );
+    
+end );
+
+BindGlobal( "FIND_LISTING",
+            
+  function( string )
+    
+    NormalizeWhitespace( string );
+    
+    if string[ 1 ] = '[' and string[ Length( string ) ] = ']' then
+        
+        return SPLIT_KOMMAS_NOT_IN_BRACKETS( string{[ 2 .. Length( string ) - 1 ]} );
+        
+    fi;
+    
+    return fail;
+    
+end );
+
+InstallGlobalFunction( "SPLIT_SINGLE_PART_RECURSIVE",
+                       
+  function( single_part )
+    local 
+    
+
+BindGlobal( "SPLIT_SINGLE_PART",
+            
+  function( part )
+    local return_rec
+    
+    return_rec := rec( );
+    
+    part := SplitString( part, ":" );
+    
+    Perform( part, NormalizedWhitespace );
+    
+    if Length( part ) = 2 then
+        
+        return_rec!.bound_variables := part[ 1 ];
+        
+        part := part[ 2 ];
+        
+    else
+        
+        return_rec!.bound_variables := fail;
+        
+        part := part[ 1 ];
+        
+    fi;
+    
+    
+    
+
 BindGlobal( "SANITIZE_ARGUMENT_LIST",
             
   function( string )
