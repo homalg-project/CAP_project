@@ -133,21 +133,33 @@ BindGlobal( "TheTypeOfHomalgCategories",
 InstallGlobalFunction( CREATE_HOMALG_CATEGORY_FILTERS,
                        
   function( category )
-    local name, filter_name, filter;
+    local name, cell_filter, filter_name, filter;
     
     name := Name( category );
     
-    filter_name := Concatenation( name, "ObjectFilter" );
+    filter_name := Concatenation( name, "CellFilter" );
     
-    SetObjectFilter( category, NewFilter( filter_name ) );
+    cell_filter := NewFilter( filter_name );
     
-    filter_name := Concatenation( name, "MorphismFilter" );
+    SetCellFilter( category, cell_filter );
     
-    SetMorphismFilter( category, NewFilter( filter_name ) );
+    filter_name := NewFilter( Concatenation( name, "ObjectFilter" ) );
     
-    filter_name := Concatenation( name, "TwoCellFilter" );
+    InstallTrueMethod( cell_filter, filter_name );
     
-    SetTwoCellFilter( category, NewFilter( filter_name ) );
+    SetObjectFilter( category, filter_name );
+    
+    filter_name := NewFilter( Concatenation( name, "MorphismFilter" ) );
+    
+    InstallTrueMethod( cell_filter, filter_name );
+    
+    SetMorphismFilter( category, filter_name );
+    
+    filter_name := NewFilter( Concatenation( name, "TwoCellFilter" ) );
+    
+    InstallTrueMethod( cell_filter, filter_name );
+    
+    SetTwoCellFilter( category, filter_name );
     
 end );
 
@@ -203,6 +215,21 @@ end );
 ## Add functions
 ##
 ######################################################
+
+InstallMethod( AddCategoryToFamily,
+               [ IsHomalgCategory, IsString ],
+               
+  function( category, family )
+    
+    if not IsBound( category!.families ) then
+        
+        category!.families := [ ];
+        
+    fi;
+    
+    Add( category!.families, LowercaseString( family ) );
+    
+end );
 
 #######################################
 ##
@@ -518,6 +545,8 @@ InstallMethodWithCache( CreateHomalgCategory,
     category := CREATE_HOMALG_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
     
     CREATE_HOMALG_CATEGORY_FILTERS( category );
+    
+    AddCategoryToFamily( category, "general" );
     
     return category;
     

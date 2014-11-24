@@ -347,3 +347,84 @@ InstallGlobalFunction( AddSpecialMethod,
     fi;
     
 end );
+
+##########################################
+##
+## Family property
+##
+##########################################
+
+InstallGlobalFunction( DeclareFamilyProperty,
+                       
+  function( arg )
+    local name, filter, family, cell_type, reinstall;
+    
+    if Length( arg ) < 2 or Length( arg ) > 4 then
+        
+        Error( "usage DeclareFamilyProperty( name, filter[, family, type of cell ] )" );
+        
+    fi;
+    
+    name := arg[ 1 ];
+    
+    filter := arg[ 2 ];
+    
+    if not IsBound( arg[ 3 ] ) then
+        
+        family := "general";
+        
+    elif IsBound( arg[ 3 ] ) and LowercaseString( arg[ 3 ] ) in [ "cell", "object", "morphism", "twocell" ] then
+        
+        arg[ 4 ] := arg[ 3 ];
+        
+        family := "general";
+        
+    else
+        
+        family := LowercaseString( arg[ 3 ] );
+        
+    fi;
+    
+    if Length( arg ) > 3 then
+        
+        cell_type := LowercaseString( arg[ 4 ] );
+        
+    else
+        
+        cell_type := "cell";
+        
+    fi;
+    
+    if not cell_type in [ "object", "morphism", "twocell", "cell" ] then
+        
+        Error( "cell must be object, morphism, twocell, or cell" );
+        
+    fi;
+    
+    if not IsBound( CATEGORIES_FAMILY_PROPERTIES.( family ) ) then
+        
+        CATEGORIES_FAMILY_PROPERTIES.( family ) := rec( );
+        
+    fi;
+    
+    if not IsBound( CATEGORIES_FAMILY_PROPERTIES.( family ).( cell_type ) ) then
+        
+        CATEGORIES_FAMILY_PROPERTIES.( family ).( cell_type ) := [ ];
+        
+    fi;
+    
+    reinstall := ValueOption( "reinstall" );
+    
+    if reinstall <> false then
+        
+        reinstall := true;
+        
+    fi;
+    
+    Add( CATEGORIES_FAMILY_PROPERTIES.( family ).( cell_type ), [ name, reinstall ] );
+    
+    DeclareProperty( name, filter );
+    
+end );
+
+

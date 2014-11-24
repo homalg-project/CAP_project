@@ -73,6 +73,14 @@ BindGlobal( "TheTypeOfDeductiveSystemMorphism",
         NewType( TheFamilyOfHomalgCategoryMorphisms,
                 IsDeductiveSystemMorphismRep ) );
 
+DeclareRepresentation( "IsDeductiveSystemTwoCellRep",
+                       IsHomalgCategoryTwoCellRep and IsDeductiveSystemTwoCell,
+                       [ ] );
+
+BindGlobal( "TheTypeOfDeductiveTwoCell",
+        NewType( TheFamilyOfHomalgCategoryTwoCells,
+                IsDeductiveSystemTwoCellRep ) );
+
 ####################################
 ##
 ## Add methods
@@ -614,6 +622,8 @@ InstallMethod( DeductiveSystem,
     
     SetUnderlyingHonestCategory( deductive_system, category );
     
+    INSTALL_PROPERTIES_FOR_DEDUCTIVE_SYSTEM( deductive_system, category );
+    
     ADDS_FOR_DEDUCTIVE_SYSTEM( deductive_system, category );
     
     INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, deductive_system, "General" );
@@ -622,12 +632,82 @@ InstallMethod( DeductiveSystem,
     
 end );
 
+BindGlobal( "INSTALL_PROPERTIES_FOR_DEDUCTIVE_SYSTEM_INSTALL_HELPER",
+            
+  function( name, filter )
+      
+      InstallMethod( name,
+                     [ filter ],
+          
+        function( cell )
+          
+          return name( Eval( cell ) );
+          
+      end );
+      
+end );
+
+InstallGlobalFunction( INSTALL_PROPERTIES_FOR_DEDUCTIVE_SYSTEM,
+                       
+  function( deductive_category, category )
+    local families, family, type, filter, filter_getter, property, type_list;
+    
+    families := category!.families;
+    
+    deductive_category!.properties_to_propagate := rec( cell := [ ], object := [ ], morphism := [ ], twocell := [ ] );
+    
+    for family in families do
+        
+        if IsBound( CATEGORIES_FAMILY_PROPERTIES.( family ) ) then
+            
+            for type in [ 1 .. 4 ] do
+                
+                filter := [ "IsDeductiveSystemCell", "IsDeductiveSystemObject", "IsDeductiveSystemMorphism", "IsDeductiveSystemTwoCell" ];
+                
+                filter := filter[ type ];
+                
+                filter_getter := [ CellFilter, ObjectFilter, MorphismFilter, TwoCellFilter ];
+                
+                filter_getter := filter_getter[ type ];
+                
+                type_list := [ "cell", "object", "morphism", "twocell" ];
+                
+                type := type_list[ type ];
+                
+                if IsBound( CATEGORIES_FAMILY_PROPERTIES.( family ).( type ) ) then
+                    
+                    for property in CATEGORIES_FAMILY_PROPERTIES.( family ).( type ) do
+                        
+                        Add( deductive_category!.properties_to_propagate.( type ), property[ 1 ] );
+                        
+                        if property[ 2 ] = true then
+                            
+                            DeclareProperty( property[ 1 ], ValueGlobal( filter ) and filter_getter( deductive_category ) );
+                            
+                        fi;
+                        
+                        property := ValueGlobal( property[ 1 ] );
+                        
+                        INSTALL_PROPERTIES_FOR_DEDUCTIVE_SYSTEM_INSTALL_HELPER( property, ValueGlobal( filter ) and filter_getter( deductive_category ) );
+                        
+                    od;
+                    
+                fi;
+                
+            od;
+            
+        fi;
+        
+    od;
+    
+end );
+
 ##
 InstallMethod( InDeductiveSystem,
                [ IsHomalgCategoryObject ],
                
   function( object )
-    local deductive_object;
+    local deductive_object, deductive_system, property, entry;
     
     deductive_object := rec( );
     
@@ -636,7 +716,15 @@ InstallMethod( InDeductiveSystem,
     
     SetHistory( deductive_object, deductive_object );
     
-    Add( DeductiveSystem( HomalgCategory( object ) ), deductive_object );
+    deductive_system := DeductiveSystem( HomalgCategory( object ) );
+    
+    Add( deductive_system, deductive_object );
+    
+    for property in Concatenation( deductive_system!.properties_to_propagate.cell, deductive_system!.properties_to_propagate.object ) do
+        
+        AddToToDoList( ToDoListEntryForEqualAttributes( object, property, deductive_object, property ) );
+        
+    od;
     
     return deductive_object;
     
@@ -689,7 +777,7 @@ InstallMethod( InDeductiveSystem,
                [ IsHomalgCategoryMorphism ],
                
   function( morphism )
-    local deductive_morphism, source, range;
+    local deductive_morphism, source, range, property, deductive_system;
     
     source := InDeductiveSystem( Source( morphism ) );
     
@@ -704,11 +792,19 @@ InstallMethod( InDeductiveSystem,
     
     SetHistory( deductive_morphism, deductive_morphism );
     
-    Add( DeductiveSystem( HomalgCategory( morphism ) ), deductive_morphism );
+    deductive_system := DeductiveSystem( HomalgCategory( morphism ) );
+    
+    Add( deductive_system, deductive_morphism );
     
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ deductive_morphism ], source );
     
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ deductive_morphism ], range );
+    
+    for property in Concatenation( deductive_system!.properties_to_propagate.cell, deductive_system!.properties_to_propagate.morphism ) do
+        
+        AddToToDoList( ToDoListEntryForEqualAttributes( morphism, property, deductive_morphism, property ) );
+        
+    od;
     
     return deductive_morphism;
     
@@ -843,6 +939,48 @@ InstallMethod( Eval,
     eval := RECURSIVE_EVAL( new_history );
     
     return eval;
+    
+end );
+
+#################################
+##
+## Special Adds
+##
+#################################
+
+InstallMethod( Add,
+               [ IsHomalgCategory, IsDeductiveSystemObject ],
+               
+  function( deductive_system, object )
+    local property;
+    
+    if HasEval( object ) then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    AddToToDoList( ToDoListEntryToMaintainEqualAttributes( [ [ object, "Eval" ] ], [ object, [ Eval, object ] ], Concatenation( deductive_system!.properties_to_propagate.cell, deductive_system!.properties_to_propagate.object ) ) );
+    
+    TryNextMethod();
+    
+end );
+
+InstallMethod( Add,
+               [ IsHomalgCategory, IsDeductiveSystemMorphism ],
+               
+  function( deductive_system, morphism )
+    local property;
+    
+    if HasEval( morphism ) then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    AddToToDoList( ToDoListEntryToMaintainEqualAttributes( [ [ morphism, "Eval" ] ], [ morphism, [ Eval, morphism ] ], Concatenation( deductive_system!.properties_to_propagate.cell, deductive_system!.properties_to_propagate.morphism ) ) );
+    
+    TryNextMethod();
     
 end );
 

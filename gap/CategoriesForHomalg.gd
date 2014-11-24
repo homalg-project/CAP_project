@@ -128,6 +128,12 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 # .. 
               ] );
 
+DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
+
+InstallValue( CATEGORIES_FAMILY_PROPERTIES,
+              
+              rec( ) );
+
 ###################################
 ##
 #! @Section Categories
@@ -175,6 +181,9 @@ INSTALL_CAN_COMPUTE_PROPERTIES( );
 
 DeclareAttribute( "TheoremRecord",
                   IsHomalgCategory, "mutable" );
+
+DeclareOperation( "AddCategoryToFamily",
+                  [ IsHomalgCategory, IsString ] );
 
 ###################################
 ##
@@ -246,6 +255,10 @@ INSTALL_CATEGORY_PROPERTIES( );
 #!  Contain filter for objects and morphisms in this category.
 #!  These filters are set true once an object or morphism is added to the
 #!  category. These filters are used to apply the right functions in the method selection.
+DeclareAttribute( "CellFilter",
+                  IsHomalgCategory );
+
+#!
 DeclareAttribute( "ObjectFilter",
                   IsHomalgCategory );
 

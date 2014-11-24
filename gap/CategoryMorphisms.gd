@@ -70,8 +70,8 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 ##
 ###################################
 
-DeclareProperty( "IsMonomorphism",
-                 IsHomalgCategoryMorphism );
+DeclareFamilyProperty( "IsMonomorphism",
+                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareOperation( "AddIsMonomorphism",
                   [ IsHomalgCategory, IsFunction ] );
@@ -82,8 +82,8 @@ DeclareAttribute( "IsMonomorphismFunction",
 DeclareSynonymAttr( "IsSubobject",
                     IsMonomorphism );
 
-DeclareProperty( "IsEpimorphism",
-                 IsHomalgCategoryMorphism );
+DeclareFamilyProperty( "IsEpimorphism",
+                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareOperation( "AddIsEpimorphism",
                   [ IsHomalgCategory, IsFunction ] );
@@ -94,8 +94,8 @@ DeclareAttribute( "IsEpimorphismFunction",
 DeclareSynonymAttr( "IsFactorobject",
                     IsEpimorphism );
 
-DeclareProperty( "IsIsomorphism",
-                 IsHomalgCategoryMorphism );
+DeclareFamilyProperty( "IsIsomorphism",
+                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareOperation( "AddIsIsomorphism",
                   [ IsHomalgCategory, IsFunction ] );
@@ -103,24 +103,24 @@ DeclareOperation( "AddIsIsomorphism",
 DeclareAttribute( "IsIsomorphismFunction",
                   IsHomalgCategory );
 
-DeclareProperty( "IsEndomorphism",
-                 IsHomalgCategoryMorphism );
+DeclareFamilyProperty( "IsEndomorphism",
+                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
 
-DeclareProperty( "IsAutomorphism",
-                 IsHomalgCategoryMorphism );
+DeclareFamilyProperty( "IsAutomorphism",
+                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
 
-DeclareProperty( "IsSplitMonomorphism",
-                 IsHomalgCategoryMorphism );
+DeclareFamilyProperty( "IsSplitMonomorphism",
+                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
 
-DeclareProperty( "IsSplitEpimorphism",
-                 IsHomalgCategoryMorphism );
+DeclareFamilyProperty( "IsSplitEpimorphism",
+                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
 
 ## TODO: IsIdentity
-DeclareProperty( "IsOne",
-                 IsHomalgCategoryMorphism );
+DeclareFamilyProperty( "IsOne",
+                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
 
-DeclareProperty( "IsIdempotent",
-                 IsHomalgCategoryMorphism );
+DeclareFamilyProperty( "IsIdempotent",
+                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
 
 ###################################
 ##
