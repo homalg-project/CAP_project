@@ -84,17 +84,17 @@ DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
 ##
 ###################################
 
-DeclareProperty( "IsProjective",
-                 IsHomalgCategoryObject );
+DeclareFamilyProperty( "IsProjective",
+                       IsHomalgCategoryObject, "object" : reinstall := false );
 
-DeclareProperty( "IsInjective",
-                 IsHomalgCategoryObject );
+DeclareFamilyProperty( "IsInjective",
+                       IsHomalgCategoryObject, "object" : reinstall := false );
 
-DeclareProperty( "IsTerminal",
-                 IsHomalgCategoryObject );
+DeclareFamilyProperty( "IsTerminal",
+                       IsHomalgCategoryObject, "object" : reinstall := false );
 
-DeclareProperty( "IsInitial",
-                 IsHomalgCategoryObject );
+DeclareFamilyProperty( "IsInitial",
+                       IsHomalgCategoryObject, "object" : reinstall := false );
 
 ###################################
 ##
@@ -102,8 +102,8 @@ DeclareProperty( "IsInitial",
 ##
 ###################################
 
-DeclareProperty( "IsZero",
-                 IsHomalgCategoryObject );
+DeclareFamilyProperty( "IsZero",
+                       IsHomalgCategoryObject, "object" : reinstall := false );
 
 DeclareOperation( "AddIsZeroForObjects",
                   [ IsHomalgCategory, IsFunction ] );
