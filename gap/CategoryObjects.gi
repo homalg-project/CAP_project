@@ -79,14 +79,6 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS,
 
 ###################################
 ##
-#! @Section Zero object
-##
-###################################
-
-DeclareProperty( "IsZero",
-                 IsHomalgCategoryObject );
-###################################
-##
 ## Constructive Object-sets
 ##
 ###################################
