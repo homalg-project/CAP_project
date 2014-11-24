@@ -45,3 +45,6 @@ DeclareGlobalFunction( "DeclareAttributeWithToDoForIsWellDefined" );
 #!
 DeclareGlobalFunction( "AddSpecialMethod" );
 
+#!
+DeclareGlobalFunction( "DeclareFamilyProperty" );
+

@@ -20,6 +20,11 @@ DeclareCategory( "IsDeductiveSystemObject",
 DeclareCategory( "IsDeductiveSystemMorphism",
                  IsDeductiveSystemCell and IsHomalgCategoryMorphism );
 
+DeclareCategory( "IsDeductiveSystemTwoCell",
+                 IsDeductiveSystemCell and IsHomalgCategoryTwoCell );
+
+DeclareGlobalFunction( "INSTALL_PROPERTIES_FOR_DEDUCTIVE_SYSTEM" );
+
 DeclareGlobalFunction( "ADDS_FOR_DEDUCTIVE_SYSTEM" );
 
 DeclareGlobalFunction( "RESOLVE_HISTORY" );
@@ -60,6 +65,12 @@ DeclareOperation( "DeductiveSystemMorphism",
 
 DeclareOperation( "DeductiveSystemMorphism",
                   [ IsDeductiveSystemObject, IsDeductiveSystemObject ] );
+
+#####################################
+##
+## Special Add
+##
+#####################################
 
 #####################################
 ##
