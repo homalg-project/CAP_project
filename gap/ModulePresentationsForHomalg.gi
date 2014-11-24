@@ -22,6 +22,28 @@ InstallMethod( LeftPresentations,
     
     SetIsAbelianCategory( category, true );
     
+    AddCategoryToFamily( category, "ModuleCategory" );
+    
+    
+    ## TODO: avoid code duplication (see RightPresentations)
+    AddTheoremFileToCategory( category,
+      Filename(
+        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        "PropositionsForGeneralModuleCategories.tex" )
+    );
+    
+    AddPredicateImplicationFileToCategory( category,
+      Filename(
+        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        "PredicateImplicationsForGeneralModuleCategories.tex" )
+     );
+    
+    AddEvalRuleFileToCategory( category,
+      Filename(
+        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        "RelationsForGeneralModuleCategories.tex" )
+    );
+    
     return category;
     
 end );
@@ -40,6 +62,27 @@ InstallMethod( RightPresentations,
     ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
     
     SetIsAbelianCategory( category, true );
+    
+    AddCategoryToFamily( category, "ModuleCategory" );
+    
+    ## TODO: avoid code duplication (see LeftPresentations)
+    AddTheoremFileToCategory( category,
+      Filename(
+        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        "PropositionsForGeneralModuleCategories.tex" )
+    );
+    
+    AddPredicateImplicationFileToCategory( category,
+      Filename(
+        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        "PredicateImplicationsForGeneralModuleCategories.tex" )
+     );
+    
+    AddEvalRuleFileToCategory( category,
+      Filename(
+        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        "RelationsForGeneralModuleCategories.tex" )
+    );
     
     return category;
     

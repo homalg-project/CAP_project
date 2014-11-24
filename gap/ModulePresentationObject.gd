@@ -44,6 +44,18 @@ DeclareOperation( "FreeRightPresentation",
 
 #############################
 ##
+## Properties
+##
+#############################
+
+
+DeclareFamilyProperty( "IsFree",
+                       IsHomalgCategoryMorphism,
+                       "ModuleCategory",
+                       "object" );
+
+#############################
+##
 ## Attributes
 ##
 #############################
