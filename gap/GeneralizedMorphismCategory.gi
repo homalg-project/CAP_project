@@ -952,4 +952,24 @@ end );
 #     inverse_codomain := Inverse( codomain );
 #     
 #     return PreCompose( PreCompose( inverse_domain, associated_morphism ), inverse_codomain );
+
+InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphismWithKernelAndCokernel,
+                                  [ IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism ],
+                                    
+  function( morphism_up_right,
+            morphism_middle_middle,
+            morphism_down_left )
+      local generalized_morphism1, generalized_morphism2, cokernel_proj, composition,
+            domain, inverse_domain, associated_morphism, codomain, inverse_codomain;
+            
+    composition := GeneralizedMorphism( morphism_up_right,
+                                        morphism_middle_middle,
+                                        morphism_down_left );
     
+    associated_morphism := AssociatedMorphism( composition );
+    
+    return associated_morphism;
+    
+end );
