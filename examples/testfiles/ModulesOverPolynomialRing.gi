@@ -42,4 +42,4 @@ pi1 := ProjectionInFactor( P, 1 );
 
 composite := PreCompose( pi1, kernelemb1 );
 
-e := Eval( composite );
+e := Evaluation( composite );
