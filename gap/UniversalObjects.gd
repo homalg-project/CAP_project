@@ -222,6 +222,11 @@ DeclareOperation( "AddKernelLiftWithGivenKernel",
 DeclareFilter( "WasCreatedAsKernel" );
 #! @Chapter Universal Objects
 
+## Application of KernelObject to path
+DeclareOperation( "ApplicationOfKernelObjectToPath",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+
 ####################################
 ##
 #!  @Section Cokernel

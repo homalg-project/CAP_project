@@ -306,6 +306,30 @@ InstallMethod( KernelEmb,
 end );
 
 ####################################
+## Application to path
+####################################
+
+## mor: x -> y
+## equality_source: x -> x'
+## equality_range: y -> y'
+##
+InstallMethodWithCacheFromObject( ApplicationOfKernelObjectToPath,
+                                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+                                  
+  function( mor, equality_source, equality_range )
+    local kernel_emb, transported_mor;
+    
+    kernel_emb := KernelEmb( mor );
+    
+    transported_mor := TransportHom( mor, equality_source, equality_range );
+    
+    return KernelLift( transported_mor,
+                       PreCompose( kernel_emb, equality_source )
+                     );
+    
+end );
+
+####################################
 ##
 ## Cokernel
 ##

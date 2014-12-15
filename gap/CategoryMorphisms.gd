@@ -173,6 +173,9 @@ DeclareOperation( "AddZeroMorphism",
 DeclareAttribute( "ZeroMorphismFunction",
                   IsHomalgCategory );
 
+DeclareOperation( "TransportHom",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
 ###################################
 ##
 #! @Section Subobject functions
