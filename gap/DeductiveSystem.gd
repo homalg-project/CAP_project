@@ -81,8 +81,14 @@ DeclareOperation( "DeductiveSystemMorphism",
 DeclareAttribute( "History",
                   IsDeductiveSystemCell, "mutable" );
 
-DeclareAttribute( "Eval",
-                  IsDeductiveSystemCell );
+DeclareOperation( "Evaluation",
+                  [ IsDeductiveSystemCell ] );
+
+DeclareOperation( "HasEvaluation",
+                  [ IsDeductiveSystemCell ] );
+
+DeclareOperation( "SetEvaluation",
+                  [ IsDeductiveSystemCell, IsHomalgCategoryCell ] );
 
 #####################################
 ##

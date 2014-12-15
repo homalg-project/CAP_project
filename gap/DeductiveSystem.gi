@@ -135,7 +135,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                        
       function( morphism )
         
-        return IsMonomorphism( Eval( morphism ) );
+        return IsMonomorphism( Evaluation( morphism ) );
         
     end );
     
@@ -143,7 +143,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                       
       function( morphism )
         
-        return IsEpimorphism( Eval( morphism ) );
+        return IsEpimorphism( Evaluation( morphism ) );
         
     end );
     
@@ -151,7 +151,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                       
       function( morphism )
         
-        return IsIsomorphism( Eval( morphism ) );
+        return IsIsomorphism( Evaluation( morphism ) );
         
     end );
     
@@ -159,7 +159,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                   
       function( subobject1, subobject2 )
         
-        return Dominates( Eval( subobject1 ), Eval( subobject2 ) );
+        return Dominates( Evaluation( subobject1 ), Evaluation( subobject2 ) );
         
     end );
     
@@ -167,7 +167,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                     
       function( factorobject1, factorobject2 )
         
-        return Codominates( Eval( factorobject1 ), Eval( factorobject2 ) );
+        return Codominates( Evaluation( factorobject1 ), Evaluation( factorobject2 ) );
         
     end );
     
@@ -175,7 +175,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                             
       function( morphism1, morphism2 )
         
-        return IsEqualForMorphisms( Eval( morphism1 ), Eval( morphism2 ) );
+        return IsEqualForMorphisms( Evaluation( morphism1 ), Evaluation( morphism2 ) );
         
     end );
     
@@ -183,7 +183,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                            
       function( morphism )
         
-        return IsZero( Eval( morphism ) );
+        return IsZero( Evaluation( morphism ) );
         
     end );
     
@@ -641,7 +641,7 @@ BindGlobal( "INSTALL_PROPERTIES_FOR_DEDUCTIVE_SYSTEM_INSTALL_HELPER",
           
         function( cell )
           
-          return name( Eval( cell ) );
+          return name( Evaluation( cell ) );
           
       end );
       
@@ -711,8 +711,9 @@ InstallMethod( InDeductiveSystem,
     
     deductive_object := rec( );
     
-    ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject,
-                             Eval, object );
+    ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject );
+    
+    SetEvaluation( deductive_object, object );
     
     SetHistory( deductive_object, deductive_object );
     
@@ -739,7 +740,7 @@ InstallMethod( DeductiveSystemObject,
     
     deductive_object := rec( );
     
-    resolved_history := RESOLVE_HISTORY( argument_list );
+#     resolved_history := RESOLVE_HISTORY( argument_list );
     
     ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject,
                              History, rec( command := func, arguments := resolved_history ) );
@@ -787,8 +788,9 @@ InstallMethod( InDeductiveSystem,
     
     ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
                              Source, source,
-                             Range, range,
-                             Eval, morphism );
+                             Range, range );
+    
+    SetEvaluation( deductive_morphism, morphism );
     
     SetHistory( deductive_morphism, deductive_morphism );
     
@@ -819,7 +821,7 @@ InstallMethod( DeductiveSystemMorphism,
     
     deductive_morphism := rec( );
     
-    resolved_history := RESOLVE_HISTORY( argument_list );
+#     resolved_history := RESOLVE_HISTORY( argument_list );
     
     ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
                              History, rec( command :=func, arguments := resolved_history ),
@@ -883,7 +885,13 @@ InstallGlobalFunction( RECURSIVE_EVAL,
     
     if IsDeductiveSystemCell( list ) then
         
-        return Eval( list );
+        if not IsBound( list!.eval ) or not IsBoundElmWPObj( list!.eval, 1 ) then
+            
+            Error( "cannot evaluate object since leaves in history do not have evaluation.\n If you continue from here, your results will be wrong." );
+            
+       fi;
+        
+        return Evaluation( list );
         
     elif IsRecord( list ) then
         
@@ -900,11 +908,17 @@ InstallGlobalFunction( RECURSIVE_EVAL,
 end );
 
 ##
-InstallMethod( Eval,
+InstallMethod( Evaluation,
                [ IsDeductiveSystemCell ],
                
   function( cell )
-    local history, new_history, checks, eval;
+    local history, new_history, checks, eval, property, property_list, deductive_system;
+    
+    if IsBound( cell!.eval ) and IsBoundElmWPObj( cell!.eval, 1 ) then
+        
+        return ElmWPObj( cell!.eval, 1 );
+        
+    fi;
     
     history := History( cell );
     
@@ -938,7 +952,49 @@ InstallMethod( Eval,
     
     eval := RECURSIVE_EVAL( new_history );
     
+    cell!.eval := WeakPointerObj( [ eval ] );
+    
+    deductive_system := HomalgCategory( cell );
+    
+    if IsDeductiveSystemMorphism( cell ) then
+        
+        property_list := deductive_system!.properties_to_propagate.morphism;
+        
+    elif IsDeductiveSystemObject( cell ) then
+        
+        property_list := deductive_system!.properties_to_propagate.object;
+        
+    else
+        
+        property_list := [ ];
+        
+    fi;
+    
+    for property in Concatenation( deductive_system!.properties_to_propagate.cell, property_list ) do
+        
+        AddToToDoList( ToDoListEntryForEqualAttributes( cell, property, eval, property ) );
+        
+    od;
+    
     return eval;
+    
+end );
+
+InstallMethod( HasEvaluation,
+               [ IsDeductiveSystemCell ],
+               
+  function( cell )
+    
+    return IsBound( cell!.eval ) and IsBoundElmWPObj( cell!.eval, 1 );
+    
+end );
+
+InstallMethod( SetEvaluation,
+               [ IsDeductiveSystemCell, IsHomalgCategoryCell ],
+               
+  function( cell, value )
+    
+    cell!.eval := WeakPointerObj( [ value ] );
     
 end );
 
@@ -948,41 +1004,41 @@ end );
 ##
 #################################
 
-InstallMethod( Add,
-               [ IsHomalgCategory, IsDeductiveSystemObject ],
-               
-  function( deductive_system, object )
-    local property;
-    
-    if HasEval( object ) then
-        
-        TryNextMethod();
-        
-    fi;
-    
-    AddToToDoList( ToDoListEntryToMaintainEqualAttributes( [ [ object, "Eval" ] ], [ object, [ Eval, object ] ], Concatenation( deductive_system!.properties_to_propagate.cell, deductive_system!.properties_to_propagate.object ) ) );
-    
-    TryNextMethod();
-    
-end );
-
-InstallMethod( Add,
-               [ IsHomalgCategory, IsDeductiveSystemMorphism ],
-               
-  function( deductive_system, morphism )
-    local property;
-    
-    if HasEval( morphism ) then
-        
-        TryNextMethod();
-        
-    fi;
-    
-    AddToToDoList( ToDoListEntryToMaintainEqualAttributes( [ [ morphism, "Eval" ] ], [ morphism, [ Eval, morphism ] ], Concatenation( deductive_system!.properties_to_propagate.cell, deductive_system!.properties_to_propagate.morphism ) ) );
-    
-    TryNextMethod();
-    
-end );
+# InstallMethod( Add,
+#                [ IsHomalgCategory, IsDeductiveSystemObject ],
+#                
+#   function( deductive_system, object )
+#     local property;
+#     
+#     if HasEvaluation( object ) then
+#         
+#         TryNextMethod();
+#         
+#     fi;
+#     
+#     AddToToDoList( ToDoListEntryToMaintainEqualAttributes( [ [ object, "HasEvaluation",  ] ], [ object, [ Eval, object ] ], Concatenation( deductive_system!.properties_to_propagate.cell, deductive_system!.properties_to_propagate.object ) ) );
+#     
+#     TryNextMethod();
+#     
+# end );
+# 
+# InstallMethod( Add,
+#                [ IsHomalgCategory, IsDeductiveSystemMorphism ],
+#                
+#   function( deductive_system, morphism )
+#     local property;
+#     
+#     if HasEval( morphism ) then
+#         
+#         TryNextMethod();
+#         
+#     fi;
+#     
+#     AddToToDoList( ToDoListEntryToMaintainEqualAttributes( [ [ morphism, "Eval" ] ], [ morphism, [ Eval, morphism ] ], Concatenation( deductive_system!.properties_to_propagate.cell, deductive_system!.properties_to_propagate.morphism ) ) );
+#     
+#     TryNextMethod();
+#     
+# end );
 
 #################################
 ##
@@ -1034,17 +1090,26 @@ InstallMethod( String,
      
 end );
 
+## Those two methods can cause errors.
 InstallMethod( ViewObj,
-               [ IsDeductiveSystemCell and HasEval ],
+               [ IsDeductiveSystemCell ],
                100000000000000, ##FIXME!!!!
                
   function( cell )
     
-    Print( "<Deductive system hull of: " );
-    
-    ViewObj( Eval( cell ) );
-    
-    Print( ">" );
+    if HasEval( cell ) then
+        
+        Print( "<Deductive system hull of: " );
+        
+        ViewObj( Eval( cell ) );
+        
+        Print( ">" );
+        
+    else
+        
+        TryNextMethod();
+        
+    fi;
     
 end );
 
@@ -1054,7 +1119,15 @@ InstallMethod( String,
                
   function( cell )
     
-    return Concatenation( "Deductive system hull of: ", String( Eval( cell ) ) );
+    if HasEval( cell ) then
+        
+        return Concatenation( "Deductive system hull of: ", String( Eval( cell ) ) );
+        
+    else
+        
+        TryNextMethod();
+        
+    fi;
     
 end );
 

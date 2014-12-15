@@ -130,3 +130,8 @@ DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphism",
                            IsHomalgCategoryMorphism,
                            IsHomalgCategoryMorphism,
                            IsHomalgCategoryMorphism ] );
+
+DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphismWithKernelAndCokernel",
+                           [ IsHomalgCategoryMorphism,
+                           IsHomalgCategoryMorphism,
+                           IsHomalgCategoryMorphism ] );
