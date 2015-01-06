@@ -1182,7 +1182,7 @@ BindGlobal( "FIND_VARIABLE_TYPES",
             
             for j in [ i + 1 .. Length( var_list ) ] do
                 
-                if IsBound( var_list[ j ][ 2 ] then
+                if IsBound( var_list[ j ][ 2 ] ) then
                     
                     var_list[ i ][ 2 ] := var_list[ j ][ 2 ];
                     
@@ -1200,7 +1200,7 @@ BindGlobal( "FIND_VARIABLE_TYPES",
             
         fi;
         
-        var_list[ i ][ 2 ] = LowercaseString( NormalizedWhitespace( var_list[ i ][ 2 ] ) );
+        var_list[ i ][ 2 ] := LowercaseString( NormalizedWhitespace( var_list[ i ][ 2 ] ) );
         
         NormalizeWhitespace( var_list[ i ][ 1 ] );
         
@@ -1215,13 +1215,13 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
                        
   function( rule )
     local split_record, variables, source, range, range_left, range_replace, variable_equalities, i, j, variable_position, commands, source_copy,
-          variable_names, selected_variable_position, initial_command;
+          variable_names, selected_variable_position, initial_command, object_variables, list_variables, int_variables;
     
     split_record := SPLIT_THEOREM( rule );
     
     if IsString( split_record ) then
         
-        Error( Concatenation( split_record ), " in ", rule ) );
+        Error( Concatenation( split_record ), " in ", rule );
         
     fi;
     
