@@ -142,6 +142,36 @@ end );
 
 #############################
 ##
+## Add functions
+##
+#############################
+
+BindGlobal( "ADD_ZERO_OBJECT_IN_Z_FUNCTORS",
+            
+  function( category )
+    local object_func, differential_func, zero_object;
+    
+    AddZeroObject( ZFunctorCategory( category ),
+      
+      function( )
+        
+        object_func := function( arg ) return ZeroObject( category ); end;
+        
+        differential_func := function( arg ) return IdentityMorphism( ZeroObject( category ) ); end;
+        
+        zero_object := ZFunctorObject( object_func, differential_func, category );
+        
+        return zero_object;
+        
+    end );
+    
+end );
+
+AddToToDoList( ToDoListEntry( [ [ category, CanComputeZeroObject ],
+                                [ category, ZFunctorCategory ] ], [ ADD_ZERO_OBJECT_IN_Z_FUNCTORS, category ] ) ); 
+
+#############################
+##
 ## Constructors
 ##
 #############################
