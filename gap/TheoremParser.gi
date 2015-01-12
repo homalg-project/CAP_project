@@ -249,10 +249,6 @@ InstallGlobalFunction( "SPLIT_SINGLE_PART_RECURSIVE",
     
     listing := SPLIT_KOMMAS_NOT_IN_BRACKETS( single_part );
     
-    Print( listing );
-    
-    Print( "\n" );
-    
     if listing = [ ] then
         
         return List( listing, SPLIT_SINGLE_PART_RECURSIVE );
@@ -1217,7 +1213,7 @@ InstallGlobalFunction( GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE,
     
     if IsString( tree ) then
         
-        return [ [ [ ], [ tree ] ] ];
+        return [ [ [ ], tree ] ];
         
     elif IsList( tree ) then
         
@@ -1232,6 +1228,8 @@ InstallGlobalFunction( GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE,
             Append( var_list, current_var );
             
         od;
+        
+        return var_list;
         
     elif IsRecord( tree ) then
         
@@ -1278,6 +1276,10 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     int_variables := Filtered( variables, i -> i[ 2 ] in [ "int" ] );
     
+    list_variables := Filtered( list_variables, i -> i[ 1 ] );
+    
+    int_variables := List( int_variables, i -> i[ 1 ] );
+    
     ## Sanitize range, find positions of variables
     
     RemoveCharacters( range, "\n\t\r" );
@@ -1304,7 +1306,79 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     variables_with_positions := GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( range_source_tree );
     
+    ## Split into integers, list entries, etc.
     
+    ## First, fixed integers:
+    
+    fixed_integers := Filtered( variables_with_positions, i -> STRING_REPRESENTS_INTEGER( i[ 2 ] ) );
+    
+    variable_integers := Filtered( variables_with_positions, i -> i[ 2 ] in int_variables );
+    
+    entries_in_lists := Filtered( variables_with_positions, i -> PositionSublist( i[ 2 ], "[" ) <> fail );
+    
+    ## Store some informations
+    return_rec := rec( );
+    
+    return_rec!.fixed_integers := List( fixed_integers, i -> [ i[ 1 ], Int_SAVE( i[ 2 ] ) ] );
+    
+    ## find matching variables
+    equal_variable_pairs := List( variables_with_positions, i -> [ i[ 1 ] ] );
+    
+    for i in [ 1 .. Length( variables_with_positions ) ] do
+        
+        for j in [ i + 1 .. Length( variables_with_positions ) ] do
+            
+            if variables_with_positions[ i ][ 2 ] = variables_with_positions[ j ][ 2 ] then
+                
+                Add( equal_variable_pairs[ i ], variables_with_positions[ j ][ 1 ] );
+                
+            fi;
+            
+        od;
+        
+    od;
+    
+    equal_variable_pairs := Filtered( equal_variable_pairs, i -> Length( i ) > 1 );
+    
+    return_rec!.equal_variable_pairs := equal_variable_pairs;
+    
+    ## Find entries in lists
+    
+    list_variable_position_pairs := [ ];
+    
+    for entry_list in entries_in_lists do
+        
+        entry := SplitString( entry_list[ 2 ], "[" );
+        
+        list_name := entry[ 1 ];
+        
+        int_name := entry[ 2 ]{[ 1 .. Length( entry[ 2 ] ) - 1 ]};
+        
+        list_position := Filtered( variables_with_positions, i -> i[ 2 ] = list_name );
+        
+        if list_position <> [ ] then
+            
+            list_position := list_position[ 1 ];
+            
+        fi;
+        
+        if STRING_REPRESENTS_INTEGER( int_name ) then
+            
+            int_name := Int_SAVE( int_name );
+            
+        fi;
+        
+        Add( list_variable_position_pairs, [ Concatenation( entry_list[ 1 ], [ int_name ] ), list_position[ 1 ] );
+        
+    od;
+    
+    return_rec!.list_variable_position_pairs := list_variable_position_pairs;
+    
+    return_rec!.range_source := range_source_tree;
+    
+    return_rec!.variable_integers := variable_integers;
+    
+    Error( "" );
     
     source_copy := ShallowCopy( source );
     
