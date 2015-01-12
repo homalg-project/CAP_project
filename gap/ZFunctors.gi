@@ -166,9 +166,9 @@ BindGlobal( "ADD_ZERO_OBJECT_IN_Z_FUNCTORS",
     end );
     
 end );
-
-AddToToDoList( ToDoListEntry( [ [ category, CanComputeZeroObject ],
-                                [ category, ZFunctorCategory ] ], [ ADD_ZERO_OBJECT_IN_Z_FUNCTORS, category ] ) ); 
+# 
+# AddToToDoList( ToDoListEntry( [ [ category, CanComputeZeroObject ],
+#                                 [ category, ZFunctorCategory ] ], [ ADD_ZERO_OBJECT_IN_Z_FUNCTORS, category ] ) ); 
 
 #############################
 ##

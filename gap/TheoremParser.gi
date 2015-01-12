@@ -1174,11 +1174,11 @@ BindGlobal( "FIND_VARIABLE_TYPES",
     
     var_list := List( var_list, i -> SplitString( i, ":" ) );
     
-    Perform( var_list, i -> Perform( i, NormalizeWhitespace ) );
+    Perform( var_list, i -> List( i, NormalizedWhitespace ) );
     
     for i in [ 1 .. Length( var_list ) ] do
         
-        if Length( var_list )[ i ] = 1 then
+        if Length( var_list[ i ] ) = 1 then
             
             for j in [ i + 1 .. Length( var_list ) ] do
                 
@@ -1210,12 +1210,48 @@ BindGlobal( "FIND_VARIABLE_TYPES",
     
 end );
 
+InstallGlobalFunction( GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE,
+                       
+  function( tree )
+    local i, var_list, current_var;
+    
+    if IsString( tree ) then
+        
+        return [ [ [ ], [ tree ] ] ];
+        
+    elif IsList( tree ) then
+        
+        var_list := [ ];
+        
+        for i in [ 1 .. Length( tree ) ] do
+            
+            current_var := GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( tree[ i ] );
+            
+            current_var := List( current_var, j -> [ Concatenation( [ i ], j[ 1 ] ), j[ 2 ] ] );
+            
+            Append( var_list, current_var );
+            
+        od;
+        
+    elif IsRecord( tree ) then
+        
+        return GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( tree!.arguments );
+        
+    fi;
+    
+    return [ ];
+    
+end );
+
+
+
 ##
 InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
                        
   function( rule )
     local split_record, variables, source, range, range_left, range_replace, variable_equalities, i, j, variable_position, commands, source_copy,
-          variable_names, selected_variable_position, initial_command, object_variables, list_variables, int_variables;
+          variable_names, selected_variable_position, initial_command, object_variables, list_variables, int_variables,
+          range_source, range_source_tree, variables_with_positions;
     
     split_record := SPLIT_THEOREM( rule );
     
@@ -1243,6 +1279,30 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     int_variables := Filtered( variables, i -> i[ 2 ] in [ "int" ] );
     
     ## Sanitize range, find positions of variables
+    
+    RemoveCharacters( range, "\n\t\r" );
+    
+    range := SplitString( range, "=" );
+    
+    if Length( range ) <> 2 then
+        
+        Error( "range must contain exactly one =" );
+        
+    fi;
+    
+    range_source := range[ 1 ];
+    
+    range_replace := range[ 2 ];
+    
+    range_replace := ReplacedString( range_replace, "_{Mor}", "" );
+    
+    range_replace := ReplacedString( range_replace, "_{Obj}", "" );
+    
+    range_source_tree := SPLIT_SINGLE_PART( range_source );
+    
+    ## Find variable positions
+    
+    variables_with_positions := GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( range_source_tree );
     
     
     
@@ -1272,9 +1332,7 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
         
     fi;
     
-    range[ 2 ] := ReplacedString( range[ 2 ], "_{Mor}", "" );
     
-    range[ 2 ] := ReplacedString( range[ 2 ], "_{Obj}", "" );
     
     range_left := NormalizedWhitespace( range[ 1 ] );
     

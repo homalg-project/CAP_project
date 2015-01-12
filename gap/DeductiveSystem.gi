@@ -743,7 +743,7 @@ InstallMethod( DeductiveSystemObject,
 #     resolved_history := RESOLVE_HISTORY( argument_list );
     
     ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject,
-                             History, rec( command := func, arguments := resolved_history ) );
+                             History, rec( command := func, arguments := argument_list ) );
     
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deductive_object );
     
@@ -824,7 +824,7 @@ InstallMethod( DeductiveSystemMorphism,
 #     resolved_history := RESOLVE_HISTORY( argument_list );
     
     ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
-                             History, rec( command :=func, arguments := resolved_history ),
+                             History, rec( command :=func, arguments := argument_list ),
                              Source, source,
                              Range, range );
     

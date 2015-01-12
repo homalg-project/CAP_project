@@ -41,3 +41,5 @@ DeclareGlobalFunction( "PARSE_EVAL_RULE_FROM_LATEX" );
 DeclareGlobalFunction( "READ_EVAL_RULE_FILE" );
 
 
+DeclareGlobalFunction( "GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE" );
+
