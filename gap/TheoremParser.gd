@@ -22,6 +22,8 @@ DeclareGlobalFunction( "PARSE_PREDICATE_IMPLICATION_FROM_LATEX" );
 DeclareGlobalFunction( "READ_PREDICATE_IMPLICATION_FILE" );
 
 
+DeclareGlobalFunction( "SPLIT_SINGLE_PART_RECURSIVE" );
+
 DeclareGlobalFunction( "SEARCH_FOR_VARIABLE_NAME_APPEARANCE" );
 
 DeclareGlobalFunction( "SEARCH_FOR_INT_VARIABLE_APPEARANCE" );
@@ -38,4 +40,6 @@ DeclareGlobalFunction( "PARSE_EVAL_RULE_FROM_LATEX" );
 
 DeclareGlobalFunction( "READ_EVAL_RULE_FILE" );
 
+
+DeclareGlobalFunction( "GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE" );
 

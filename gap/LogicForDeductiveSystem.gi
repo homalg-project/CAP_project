@@ -65,25 +65,25 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                                ] ),
       EvalRules := rec(
           General := [
-                       Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForGeneralCategories.tex" )
+#                       Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForGeneralCategories.tex" )
                      ],
           IsEnrichedOverCommutativeRegularSemigroup := [
-                                                         Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
+#                                                         Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
                                                        ],
           IsAbCategory := [
-                            Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbCategories.tex" )
+#                            Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbCategories.tex" )
                           ],
           IsPreAdditiveCategory := [
-                                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreadditiveCategories.tex" )
+#                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreadditiveCategories.tex" )
                                    ],
           IsAdditiveCategory := [
-                                  Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAdditiveCategories.tex" )
+#                                 Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAdditiveCategories.tex" )
                                 ],
           IsPreAbelianCategory := [
-                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreabelianCategories.tex" )
+#                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreabelianCategories.tex" )
                                   ],
           IsAbelianCategory := [
-                                 Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbelianCategories.tex" )
+#                                 Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbelianCategories.tex" )
                                ] ),
      ) );
 
@@ -572,19 +572,19 @@ BindGlobal( "GET_CORRECT_SUBTREE_ENTRY",
     
     for i in subtree_index_list do
         
-        if IsList( tree ) and IsString( tree[ 1 ] ) then
+        if IsRecord( tree ) then
             
-            tree := tree[ 2 ];
+            tree := tree!.arguments[ i ];
             
-        fi;
-        
-        if not IsList( tree ) or Length( tree ) < i then
+        elif IsList( tree ) then
+            
+            tree := tree[ i ];
+            
+        else
             
             return fail;
             
         fi;
-        
-        tree := tree[ i ];
         
     od;
     
@@ -598,22 +598,24 @@ InstallGlobalFunction( IS_EQUAL_FOR_SUBTREES_RECURSIVE,
   function( subtree1, subtree2 )
     local i;
     
-    if not IsList( subtree1 ) and not IsList( subtree1 ) then
+    if IsRecord( subtree1 ) and IsRecord( subtree2 ) then
         
-        return IsIdenticalObj( subtree1, subtree2 );
+        return subtree1!.command = subtree2!.command and IS_EQUAL_FOR_SUBTREES_RECURSIVE( subtree1!.arguments, subtree2!.arguments );
         
-    fi;
-    
-    if IsString( subtree1 ) and IsString( subtree2 ) then
+    elif IsList( subtree1 ) and IsList( subtree2 ) then
         
-        return subtree1 = subtree2;
-        
-    fi;
-    
-    if IsList( subtree1 ) and IsList( subtree2 ) then
+        if not Length( subtree1 ) = Length( subtree2 ) then
+            
+            return false;
+            
+        fi;
         
         return ForAll( [ 1 .. Length( subtree1 ) ], i -> IS_EQUAL_FOR_SUBTREES_RECURSIVE( subtree1[ i ], subtree2[ i ] ) );
         
+    else
+        
+        return IsIdenticalObj( subtree1, subtree2 );
+    
     fi;
     
     return false;
@@ -623,20 +625,20 @@ end );
 ##
 BindGlobal( "IS_EQUAL_FOR_SUBTREES",
             
-  function( subtree_list )
+  function( arg )
     local first_subtree, i;
     
-    if Length( subtree_list ) < 2 then
+    if Length( arg ) < 2 then
         
         return true;
         
     fi;
     
-    first_subtree := subtree_list[ 1 ];
+    first_subtree := arg[ 1 ];
     
-    for i in [ 2 .. Length( subtree_list ) ] do
+    for i in [ 2 .. Length( arg ) ] do
         
-        if IS_EQUAL_FOR_SUBTREES_RECURSIVE( first_subtree, subtree_list[ i ] ) = false then
+        if IS_EQUAL_FOR_SUBTREES_RECURSIVE( first_subtree, arg[ i ] ) = false then
             
             return false;
             
@@ -685,13 +687,7 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
           command_from_history, to_be_applied, rule_applied, object_to_check, resolved_objects, i,
           replaced_history, part_for_well_defined, new_return, arguments;
     
-    if not IsList( history ) then
-        
-        return fail;
-        
-    fi;
-    
-    if not IsString( history[ 1 ] ) then
+    if not IsRecord( history ) then
         
         return fail;
         
@@ -699,7 +695,7 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
 
     return_rec := rec( );
     
-    command := history[ 1 ];
+    command := history!.command;
     
     if not IsBound( rules.( command ) ) then
         
@@ -720,7 +716,7 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
             
             command_from_history := GET_CORRECT_SUBTREE_ENTRY( history, command_to_check[ 1 ] );
             
-            if not IsList( command_from_history ) then
+            if not IsRecord( command_from_history ) then
                 
                 to_be_applied := false;
                 
@@ -728,7 +724,7 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
                 
             fi;
             
-            command_from_history := command_from_history[ 1 ];
+            command_from_history := command_from_history!.command_to_check;
             
             if not command_from_history = command_to_check[ 2 ] then
                 
@@ -840,15 +836,15 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
     
     if rule_applied = false then
         
-        for arguments in [ 1 .. Length( history[ 2 ] ) ] do
+        for arguments in [ 1 .. Length( history!.arguments ) ] do
             
-            new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history[ 2 ][ arguments ], rules );
+            new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history!.arguments[ arguments ], rules );
             
             if new_return <> fail then
                 
                 history := StructuralCopy( history );
                 
-                history[ 2 ][ arguments ] := new_return!.new_history;
+                history!.arguments[ arguments ] := new_return!.new_history;
                 
                 part_for_well_defined := new_return!.part_for_is_well_defined;
                 

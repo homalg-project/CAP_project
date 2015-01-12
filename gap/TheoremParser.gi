@@ -7,12 +7,39 @@
 ##
 #############################################################################
 
+#################################
+##
+## Tool methods
+##
+#################################
+
+## Returns true if string represents an integer and
+## converting is save, false otherwise.
 BindGlobal( "STRING_REPRESENTS_INTEGER",
             
   i -> ForAll( i, j -> j in "0123456789" )
   
 );
 
+## Converts to int if string is an int,
+## returns fail otherwise
+BindGlobal( "Int_SAVE",
+            
+  function( string )
+    
+    if STRING_REPRESENTS_INTEGER( string ) then
+        
+        return Int( string );
+        
+    else
+        
+        return fail;
+        
+    fi;
+    
+end );
+
+##Splits string at occourences of substring
 BindGlobal( "SPLIT_STRING_MULTIPLE",
             
   function( string, substring )
@@ -46,6 +73,9 @@ BindGlobal( "SPLIT_STRING_MULTIPLE",
     
 end );
 
+## If string is true or false, method returns
+## the corresponding bool. If string represents an int,
+## method returns this int. Fail otherwise.
 BindGlobal( "CONVERT_STRING_TO_BOOL_OR_INT",
             
   function( string )
@@ -62,9 +92,219 @@ BindGlobal( "CONVERT_STRING_TO_BOOL_OR_INT",
         
     else
         
-        return Int( string );
+        return Int_SAVE( string );
         
     fi;
+    
+end );
+
+## Splits theorem at | and vdash,
+## returns a list with three entries,
+## and throws an error otherwise.
+BindGlobal( "SPLIT_THEOREM",
+            
+  function( theorem_string )
+    local return_rec;
+    
+    return_rec := rec( );
+    
+    theorem_string := SplitString( theorem_string, "|" );
+    
+    if Length( theorem_string ) <> 2 then
+        
+        return "no unique | found";
+        
+    fi;
+    
+    return_rec!.context := NormalizedWhitespace( theorem_string[ 1 ] );
+    
+    theorem_string := SPLIT_STRING_MULTIPLE( theorem_string[ 2 ], "vdash" );
+    
+    if Length( theorem_string ) <> 2 then
+        
+        return "no unique vdash found";
+        
+    fi;
+    
+    return_rec!.source := NormalizedWhitespace( theorem_string[ 1 ] );
+    
+    return_rec!.range := NormalizedWhitespace( theorem_string[ 2 ] );
+    
+    return return_rec;
+    
+end );
+
+## Returns an empty list if string is empty.
+## Splits string at ',' if not in ( ) or [ ].
+BindGlobal( "SPLIT_KOMMAS_NOT_IN_BRACKETS",
+            
+  function( string )
+    local return_list, bracket_count, i, positions;
+    
+    if Length( string ) = 0 then
+        
+        return [ ];
+        
+    fi;
+    
+    positions := [ 0 ]; ## Yes
+    
+    bracket_count := 0;
+    
+    for i in [ 1 .. Length( string ) ] do
+        
+        if string[ i ] in [ '(', '[' ] then
+            
+            bracket_count := bracket_count + 1;
+            
+        elif string[ i ] in [ ')', ']' ] then
+            
+            bracket_count := bracket_count - 1;
+            
+        elif bracket_count = 0 and string[ i ] = ',' then
+            
+            Add( positions, i );
+            
+        fi;
+        
+    od;
+    
+    Add( positions, Length( string ) + 1 ); ## Yes
+    
+    return_list := [ ];
+    
+    for i in [ 1 .. Length( positions ) - 1 ] do
+        
+        Add( return_list, string{[ positions[ i ] + 1 .. positions[ i + 1 ] - 1 ]} );
+        
+    od;
+    
+    return return_list;
+    
+end );
+
+## If string is of form command( some ) it returns
+## a record with command entry is the command string
+## and arguments is the list of arguments
+BindGlobal( "COMMAND_AND_ARGUMENTS",
+            
+  function( command_string )
+    local command, arguments, first_pos, i;
+    
+    i := PositionSublist( command_string, "(" );
+    
+    if i = fail then
+        
+        return fail;
+        
+    fi;
+    
+    command := command_string{[ 1 .. i - 1 ]};
+    
+    first_pos := i;
+    
+    while PositionSublist( command_string, ")", i ) <> fail do
+        
+        i := PositionSublist( command_string, ")", i );
+        
+    od;
+    
+    arguments := command_string{[ first_pos + 1 .. i - 1 ]};
+    
+    return rec( command := command, arguments := SPLIT_KOMMAS_NOT_IN_BRACKETS( arguments ) );
+    
+end );
+
+## If string is [ some ] then it returns the corresponding list. Fail otherwise
+BindGlobal( "FIND_LISTING",
+            
+  function( string )
+    
+    NormalizeWhitespace( string );
+    
+    if string[ 1 ] = '[' and string[ Length( string ) ] = ']' then
+        
+        return SPLIT_KOMMAS_NOT_IN_BRACKETS( string{[ 2 .. Length( string ) - 1 ]} );
+        
+    fi;
+    
+    return fail;
+    
+end );
+
+InstallGlobalFunction( "SPLIT_SINGLE_PART_RECURSIVE",
+                       
+  function( single_part )
+    local listing;
+    
+    NormalizeWhitespace( single_part );
+    
+    listing := FIND_LISTING( single_part );
+    
+    if listing <> fail then
+        
+        return List( listing, SPLIT_SINGLE_PART_RECURSIVE );
+        
+    fi;
+    
+    listing := SPLIT_KOMMAS_NOT_IN_BRACKETS( single_part );
+    
+    Print( listing );
+    
+    Print( "\n" );
+    
+    if listing = [ ] then
+        
+        return List( listing, SPLIT_SINGLE_PART_RECURSIVE );
+        
+    fi;
+    
+    listing := COMMAND_AND_ARGUMENTS( single_part );
+    
+    if listing = fail then
+        
+        return single_part;
+        
+    fi;
+    
+    Apply( listing!.arguments, SPLIT_SINGLE_PART_RECURSIVE );
+    
+    return listing;
+    
+end );
+
+BindGlobal( "SPLIT_SINGLE_PART",
+            
+  function( part )
+    local return_rec, temp_rec;
+    
+    return_rec := rec( );
+    
+    part := SplitString( part, ":" );
+    
+    Perform( part, NormalizedWhitespace );
+    
+    if Length( part ) = 2 then
+        
+        return_rec!.bound_variables := part[ 1 ];
+        
+        part := part[ 2 ];
+        
+    else
+        
+        return_rec!.bound_variables := fail;
+        
+        part := part[ 1 ];
+        
+    fi;
+    
+    temp_rec := SPLIT_SINGLE_PART_RECURSIVE( part );
+    
+    return_rec!.command := temp_rec!.command;
+    
+    return_rec!.arguments := temp_rec!.arguments;
+    
+    return return_rec;
     
 end );
 
@@ -125,6 +365,8 @@ BindGlobal( "SANITIZE_ARGUMENT_LIST",
     
 end );
 
+## Returns the part of string before the first occourence of substring.
+## If substring is not present, the whole string is returned
 BindGlobal( "REMOVE_PART_AFTER_FIRST_SUBSTRING",
             
   function( string, substring )
@@ -144,6 +386,7 @@ BindGlobal( "REMOVE_PART_AFTER_FIRST_SUBSTRING",
     
 end );
 
+## Returns the number of occourences of substring in string
 BindGlobal( "COUNT_SUBSTRING_APPEARANCE",
             
   function( string, substring )
@@ -716,122 +959,15 @@ end );
 
 ## PARSE_THEOREM_FROM_LATEX( "A:\Obj ~|~ \IsZero( A ) \vdash \IsProjective( A )" );
 
-BindGlobal( "EXTRACT_SINGLE_VARIABLE",
-            
-  function( list )
-    
-    if IsList( list ) and Length( list ) = 1 and IsString( list[ 1 ] ) then
-        
-        return list[ 1 ];
-        
-    fi;
-    
-    return list;
-    
-end );
-
-InstallGlobalFunction( "TOKENIZE_INPUT_JUDGEMENT",
-                       
-  function( judgement )
-    local next_position_komma, next_position_bracket, return_list, current_bracket_nesting, i, new_judgement, j, new_sublist, current_list;
-    
-    NormalizeWhitespace( judgement );
-    
-    judgement := SplitString( judgement, "," );
-    
-    i := 1;
-    
-    while i <= Length( judgement ) do
-        
-        current_bracket_nesting := COUNT_SUBSTRING_APPEARANCE( judgement[ i ], "(" ) - COUNT_SUBSTRING_APPEARANCE( judgement[ i ], ")" );
-        
-        if current_bracket_nesting > 0 then
-            
-            judgement[ i ] := Concatenation( judgement[ i ], ",", judgement[ i + 1 ] );
-            
-            Remove( judgement, i + 1 );
-            
-        else
-            
-            i := i + 1;
-            
-        fi;
-        
-    od;
-    
-    if Length( judgement ) = 1 then
-        
-        judgement := judgement[ 1 ];
-        
-        next_position_bracket := PositionSublist( judgement, "(" );
-        
-        if next_position_bracket = fail then
-            
-            return [ judgement ];
-            
-        fi;
-        
-        return [ NormalizedWhitespace( judgement{[ 1 .. next_position_bracket - 1 ]} ), TOKENIZE_INPUT_JUDGEMENT( judgement{[ next_position_bracket + 1 .. Length( judgement ) - 1 ]} ) ];
-        
-    fi;
-    
-    Apply( judgement, NormalizedWhitespace );
-    
-    new_judgement := [ ];
-    
-    current_list := new_judgement;
-    
-    for i in [ 1 .. Length( judgement ) ] do
-        
-        if judgement[ i ][ 1 ] = '[' then
-            
-            Remove( judgement[ i ], 1 );
-            
-            if judgement[ i ][ Length( judgement[ i ] ) ] = ']' then
-                
-                Remove( judgement[ i ], Length( judgement[ i ] ) );
-                
-                Add( current_list, [ EXTRACT_SINGLE_VARIABLE( TOKENIZE_INPUT_JUDGEMENT( judgement[ i ] ) ) ] );
-                
-            else
-                
-                current_list := [ ];
-                
-                Add( current_list, EXTRACT_SINGLE_VARIABLE( TOKENIZE_INPUT_JUDGEMENT( judgement[ i ] ) ) );
-                
-            fi;
-            
-        elif judgement[ i ][ Length( judgement[ i ] ) ] = ']' then
-            
-            Remove( judgement[ i ], Length( judgement[ i ] ) );
-            
-            Add( current_list, EXTRACT_SINGLE_VARIABLE( TOKENIZE_INPUT_JUDGEMENT( judgement[ i ] ) ) );
-            
-            Add( new_judgement, current_list );
-            
-            current_list := new_judgement;
-            
-        else
-            
-            Add( current_list, EXTRACT_SINGLE_VARIABLE( TOKENIZE_INPUT_JUDGEMENT( judgement[ i ] ) ));
-            
-        fi;
-        
-    od;
-    
-    return new_judgement;
-    
-end );
-
 InstallGlobalFunction( SEARCH_FOR_VARIABLE_NAME_APPEARANCE,
             
   function( tree, names )
     local appearance_list, current_result, i, j, name_position, return_list;
     
     ## command_case
-    if Length( tree ) = 2 and IsString( tree[ 1 ] ) and Position( names, tree[ 1 ] ) = fail and not STRING_REPRESENTS_INTEGER( tree[ 1 ] ) then
+    if IsRecord( tree ) then
         
-        return SEARCH_FOR_VARIABLE_NAME_APPEARANCE( tree[ 2 ], names );
+        return SEARCH_FOR_VARIABLE_NAME_APPEARANCE( tree!.arguments, names );
         
     fi;
     
@@ -873,14 +1009,13 @@ InstallGlobalFunction( SEARCH_FOR_VARIABLE_NAME_APPEARANCE,
         
     fi;
     
-    return List( names, i -> [ ] );
-    
 end );
 
 ##
 InstallGlobalFunction( REPLACE_VARIABLE,
                        
   function( tree, names, replacements )
+    local return_rec, entry;
     
     if IsString( tree ) and Position( names, tree ) <> fail then
         
@@ -891,6 +1026,16 @@ InstallGlobalFunction( REPLACE_VARIABLE,
     if IsList( tree ) then
         
         return List( tree, i -> REPLACE_VARIABLE( i, names, replacements ) );
+        
+    fi;
+    
+    if IsRecord( tree ) then
+        
+        return_rec := ShallowCopy( tree );
+        
+        return_rec.arguments := REPLACE_VARIABLE( tree!.arguments, names, replacements );
+        
+        return return_rec;
         
     fi;
     
@@ -923,6 +1068,16 @@ InstallGlobalFunction( REPLACE_INTEGER_VARIABLE,
        
        return List( tree, REPLACE_INTEGER_VARIABLE );
        
+    fi;
+    
+    if IsRecord( tree ) then
+        
+        int := ShallowCopy( tree );
+        
+        int!.arguments := REPLACE_INTEGER_VARIABLE( tree!.arguments );
+        
+        return int;
+        
     fi;
 
     return tree;
@@ -1012,34 +1167,148 @@ InstallGlobalFunction( FIND_COMMAND_POSITIONS,
     
 end );
 
+BindGlobal( "FIND_VARIABLE_TYPES",
+            
+  function( var_list )
+    local i, j, next_type;
+    
+    var_list := List( var_list, i -> SplitString( i, ":" ) );
+    
+    Perform( var_list, i -> List( i, NormalizedWhitespace ) );
+    
+    for i in [ 1 .. Length( var_list ) ] do
+        
+        if Length( var_list[ i ] ) = 1 then
+            
+            for j in [ i + 1 .. Length( var_list ) ] do
+                
+                if IsBound( var_list[ j ][ 2 ] ) then
+                    
+                    var_list[ i ][ 2 ] := var_list[ j ][ 2 ];
+                    
+                    break;
+                    
+                fi;
+                
+            od;
+            
+        fi;
+        
+        if not IsBound( var_list[ i ][ 2 ] ) then
+            
+            Error( "no type for variable found" );
+            
+        fi;
+        
+        var_list[ i ][ 2 ] := LowercaseString( NormalizedWhitespace( var_list[ i ][ 2 ] ) );
+        
+        NormalizeWhitespace( var_list[ i ][ 1 ] );
+        
+    od;
+    
+    return var_list;
+    
+end );
+
+InstallGlobalFunction( GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE,
+                       
+  function( tree )
+    local i, var_list, current_var;
+    
+    if IsString( tree ) then
+        
+        return [ [ [ ], [ tree ] ] ];
+        
+    elif IsList( tree ) then
+        
+        var_list := [ ];
+        
+        for i in [ 1 .. Length( tree ) ] do
+            
+            current_var := GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( tree[ i ] );
+            
+            current_var := List( current_var, j -> [ Concatenation( [ i ], j[ 1 ] ), j[ 2 ] ] );
+            
+            Append( var_list, current_var );
+            
+        od;
+        
+    elif IsRecord( tree ) then
+        
+        return GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( tree!.arguments );
+        
+    fi;
+    
+    return [ ];
+    
+end );
+
+
+
 ##
 InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
                        
   function( rule )
-    local variables, source, range, range_left, range_replace, variable_equalities, i, j, variable_position, commands, source_copy,
-          variable_names, selected_variable_position, initial_command;
+    local split_record, variables, source, range, range_left, range_replace, variable_equalities, i, j, variable_position, commands, source_copy,
+          variable_names, selected_variable_position, initial_command, object_variables, list_variables, int_variables,
+          range_source, range_source_tree, variables_with_positions;
     
-    variables := SplitString( rule, "|" );
+    split_record := SPLIT_THEOREM( rule );
     
-    if Length( variables ) <> 2 then
+    if IsString( split_record ) then
         
-        Error( "no unique | found" );
-        
-    fi;
-    
-    variables[ 2 ] := SPLIT_STRING_MULTIPLE( variables[ 2 ], "vdash" );
-    
-    if Length( variables[ 2 ] ) <> 2 then
-        
-        Error( "no unique vdash found" );
+        Error( Concatenation( split_record ), " in ", rule );
         
     fi;
     
-    source := NormalizedWhitespace( variables[ 2 ][ 1 ] );
+    variables := split_record!.context;
+    
+    source := split_record!.source;
+    
+    range := split_record!.range;
+    
+    ## Sanitize variables and find type
+    variables := SPLIT_KOMMAS_NOT_IN_BRACKETS( variables );
+    
+    variables := FIND_VARIABLE_TYPES( variables );
+    
+    object_variables := Filtered( variables, i -> i[ 2 ] in [ "obj", "mor" ] );
+    
+    list_variables := Filtered( variables, i -> i[ 2 ] in [ "listobj", "listmor" ] );
+    
+    int_variables := Filtered( variables, i -> i[ 2 ] in [ "int" ] );
+    
+    ## Sanitize range, find positions of variables
+    
+    RemoveCharacters( range, "\n\t\r" );
+    
+    range := SplitString( range, "=" );
+    
+    if Length( range ) <> 2 then
+        
+        Error( "range must contain exactly one =" );
+        
+    fi;
+    
+    range_source := range[ 1 ];
+    
+    range_replace := range[ 2 ];
+    
+    range_replace := ReplacedString( range_replace, "_{Mor}", "" );
+    
+    range_replace := ReplacedString( range_replace, "_{Obj}", "" );
+    
+    range_source_tree := SPLIT_SINGLE_PART( range_source );
+    
+    ## Find variable positions
+    
+    variables_with_positions := GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( range_source_tree );
+    
+    
     
     source_copy := ShallowCopy( source );
     
-    RemoveCharacters( source_copy, " \n\t\r" );
+    RemoveCharacters( source_copy, "\n\t\r" );
     
     if source_copy = "()" then
         
@@ -1047,13 +1316,13 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
         
     else
         
-        source := TOKENIZE_INPUT_JUDGEMENT( source );
+        source := SPLIT_KOMMAS_NOT_IN_BRACKETS( source );
         
     fi;
     
-    range := variables[ 2 ][ 2 ];
+    List( source, SPLIT_SINGLE_PART );
     
-    variables := NormalizedWhitespace( variables[ 1 ] );
+    ## Source done, split range at correct point.
     
     range := SplitString( range, "=" );
     
@@ -1063,9 +1332,7 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
         
     fi;
     
-    range[ 2 ] := ReplacedString( range[ 2 ], "_{Mor}", "" );
     
-    range[ 2 ] := ReplacedString( range[ 2 ], "_{Obj}", "" );
     
     range_left := NormalizedWhitespace( range[ 1 ] );
     
@@ -1073,8 +1340,12 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     range_replace := NormalizedWhitespace( SplitString( range_replace, ":" )[ 1 ] );
     
+    range_left := SPLIT_SINGLE_PART( range_left );
+    
+    range_replace := SPLIT_SINGLE_PART( range_replace );
+    
     ## Sanitize Variables
-    variables := SplitString( variables, "," );
+    variables := SPLIT_KOMMAS_NOT_IN_BRACKETS( variables );
     
     variables := List( variables, i -> SplitString( i, ":" ) );
     
@@ -1082,12 +1353,7 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     variable_names := List( variables, i -> i[ 1 ] );
     
-    range_left := TOKENIZE_INPUT_JUDGEMENT( range_left );
-    
-    range_replace := TOKENIZE_INPUT_JUDGEMENT( range_replace );
-    
     ## Search positions of variables in tree
-    
     variable_position := SEARCH_FOR_VARIABLE_NAME_APPEARANCE( range_left, variable_names );
     
     selected_variable_position := List( variable_position, i -> i[ 1 ] );
