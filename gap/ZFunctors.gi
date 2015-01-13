@@ -51,36 +51,50 @@ end );
 
 #############################
 ##
-## Setter & Getter
+## Getter
 ##
 ############################
+##
+## No setter are installed:
+## All differentials and objects of a ZFunctor are determined
+## after its construction. Thus, they should behave
+## like an infinite family of attributes. But the user is not supposed to
+## set attributes manually in order to construct an object.
+## For example: Z := ZeroObject( ZFunctorCategory( ) ) must not be
+## seen as a "dummy" object for which I can set Z[i] arbitrarily,
+## for Z already knows that it is a zero object.
 
 InstallMethod( \[\],
                [ IsZFunctorObject, IsInt ],
                
   function( object, index )
-    local part;
+    local object_weak_pointer_list, list_index, part;
     
-    if IsBoundElmWPObj( object!.objects, index ) then
+    if index > 0 then
         
-        return ElmWPObj( object!.objects, index );
+        object_weak_pointer_list := object!.objects_positive;
+        
+        list_index := index;
+        
+    else
+        
+        object_weak_pointer_list := object!.objects_nonpositive;
+        
+        list_index := -index + 1;
         
     fi;
-    
+      
+    if IsBoundElmWPObj( object_weak_pointer_list, list_index ) then
+        
+        return ElmWPObj( object_weak_pointer_list, list_index );
+        
+    fi;
+  
     part := object!.object_func( index );
     
-    SetElmWPObj( object!.objects, index, part );
+    SetElmWPObj( object_weak_pointer_list, list_index, part );
     
     return part;
-    
-end );
-
-InstallMethod( \[\]\:\=,
-               [ IsZFunctorObject, IsInt, IsObject ],
-               
-  function( object, index, value )
-    
-    SetElmWPObj( object!.objects, index, value );
     
 end );
 
@@ -88,28 +102,33 @@ InstallMethod( Differential,
                [ IsZFunctorObject, IsInt ],
                
   function( object, index )
-    local part;
+    local differential_weak_pointer_list, list_index, part;
     
-    if IsBoundElmWPObj( object!.differentials, index ) then
+    if index > 0 then
         
-        return ElmWPObj( object!.differentials, index );
+        differential_weak_pointer_list := object!.differentials_positive;
+        
+        list_index := index;
+        
+    else
+        
+        differential_weak_pointer_list := object!.differentials_nonpositive;
+        
+        list_index := -index + 1;
         
     fi;
-    
+      
+    if IsBoundElmWPObj( differential_weak_pointer_list, list_index ) then
+        
+        return ElmWPObj( differential_weak_pointer_list, list_index );
+        
+    fi;
+  
     part := object!.differential_func( index );
     
-    SetElmWPObj( object!.differentials, index, part );
+    SetElmWPObj( differential_weak_pointer_list, list_index, part );
     
     return part;
-    
-end );
-
-InstallMethod( SetDifferential,
-               [ IsZFunctorObject, IsInt, IsObject ],
-               
-  function( object, index, value )
-    
-    SetElmWPObj( object!.differentials, index, value );
     
 end );
 
@@ -117,28 +136,33 @@ InstallMethod( \[\],
                [ IsZFunctorMorphism, IsInt ],
                
   function( morphism, index )
-    local part;
+    local morphisms_weak_pointer_list, list_index, part;
     
-    if IsBoundElmWPObj( morphism!.morphisms, index ) then
+    if index > 0 then
         
-        return ElmWPObj( morphism!.morphisms, index );
+        morphisms_weak_pointer_list := morphism!.morphisms_positive;
+        
+        list_index := index;
+        
+    else
+        
+        morphisms_weak_pointer_list := morphism!.morphisms_nonpositive;
+        
+        list_index := -index + 1;
         
     fi;
-    
+      
+    if IsBoundElmWPObj( morphisms_weak_pointer_list, list_index ) then
+        
+        return ElmWPObj( morphisms_weak_pointer_list, list_index );
+        
+    fi;
+  
     part := morphism!.morphism_func( index );
     
-    SetElmWPObj( morphism!.morphisms, index, part );
+    SetElmWPObj( morphisms_weak_pointer_list, list_index, part );
     
     return part;
-    
-end );
-
-InstallMethod( \[\]\:\=,
-               [ IsZFunctorMorphism, IsInt, IsObject ],
-               
-  function( morphism, index, value )
-    
-    SetElmWPObj( morphism!.morphisms, index, value );
     
 end );
 
@@ -194,8 +218,10 @@ InstallMethod( ZFunctorObject,
   function( object_func, differential_func, category )
     local object;
     
-    object := rec( objects := WeakPointerObj( [ ] ),
-                   differentials := WeakPointerObj( [ ] ),
+    object := rec( objects_positive := WeakPointerObj( [ ] ),
+                   objects_nonpositive := WeakPointerObj( [ ] ),
+                   differentials_positive := WeakPointerObj( [ ] ),
+                   differentials_nonpositive := WeakPointerObj( [ ] ),
                    object_func := object_func,
                    differential_func := differential_func );
     
@@ -213,7 +239,8 @@ InstallMethod( ZFunctorMorphism,
   function( source, func, range )
     local morphism;
     
-    morphism := rec( morphisms := WeakPointerObj( [ ] ),
+    morphism := rec( morphisms_positive := WeakPointerObj( [ ] ),
+                     morphisms_nonpositive := WeakPointerObj( [ ] ),
                      morphism_func := func );
     
     ObjectifyWithAttributes( morphism, TheTypeOfZFunctorMorphism,

@@ -34,21 +34,12 @@ DeclareAttribute( "ZFunctorCategory",
 
 ####################################
 ##
-## Setter & Getter
+## Getter
 ##
 ####################################
 
-DeclareOperation( "\[\]\:\=",
-                  [ IsZFunctorObject, IsInt, IsObject ] );
-
-DeclareOperation( "\[\]\:\=",
-                  [ IsZFunctorMorphism, IsInt, IsObject ] );
-
 DeclareOperation( "Differential",
                   [ IsZFunctorObject, IsInt ] );
-
-DeclareOperation( "SetDifferential",
-                  [ IsZFunctorObject, IsInt, IsObject ] );
 
 ####################################
 ##
