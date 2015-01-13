@@ -172,6 +172,53 @@ end );
 ##
 #############################
 
+## Kernel
+##
+BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
+          
+  function( category )
+      local object_func, differential_func, kernel_object;
+      
+      AddKernelObject( ZFunctorCategory( category ),
+        
+        function( morphism )
+          
+          object_func := function( index )
+              
+              return KernelObject( morphism[ index ] );
+              
+          end;
+          
+          differential_func := function( index )
+              local cohomological_index, morphism_part, kernel_embedding_range, differential_part, kernel_embedding_source;
+              
+              cohomological_index := index + 1;
+              
+              morphism_part := morphism[ cohomological_index ];
+              
+              kernel_embedding_range := KernelEmb( morphism_part );
+              
+              differential_part := Source( morphism )[ index ];
+              
+              kernel_embedding_source := KernelEmb( morphism[ index ] );
+              
+              return KernelLift(
+                PreCompose( kernel_embedding_range, morphism_part ),
+                PreCompose( kernel_embedding_source, differential_part )
+              );
+              
+          end;
+          
+          kernel_object := ZFunctorObject( object_func, differential_func, category );
+          
+          return kernel_object;
+          
+      end );
+      
+end );
+
+## Zero Object
+##
 BindGlobal( "ADD_ZERO_OBJECT_IN_Z_FUNCTORS",
             
   function( category )
@@ -193,14 +240,20 @@ BindGlobal( "ADD_ZERO_OBJECT_IN_Z_FUNCTORS",
     
 end );
 
+##
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
             
   function( category )
     local entry;
     
-    entry := ToDoListEntry( [ [ category, "CanComputeZeroObject" ], [ category, "ZFunctorCategory" ] ], 
+    entry := ToDoListEntry( [ [ category, "CanComputeZeroObject" ], [ category, "ZFunctorCategory" ] ],
                             function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end );
-#                             [ ADD_ZERO_OBJECT_IN_Z_FUNCTORS, category ] );
+    
+    AddToToDoList( entry );
+    
+    entry := ToDoListEntry( [ [ category, "CanComputeKernelObject" ], [ category, "CanComputeKernelEmb" ],
+                              [ category, "CanComputeKernelLift" ], [ category, "ZFunctorCategory" ] ],
+                            function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end );
     
     AddToToDoList( entry );
     
