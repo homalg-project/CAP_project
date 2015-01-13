@@ -43,6 +43,8 @@ InstallMethod( ZFunctorCategory,
     
     SetUnderlyingHonestCategory( z_functor_category, category );
     
+    INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY( category );
+    
     return z_functor_category;
     
 end );
@@ -166,9 +168,19 @@ BindGlobal( "ADD_ZERO_OBJECT_IN_Z_FUNCTORS",
     end );
     
 end );
-# 
-# AddToToDoList( ToDoListEntry( [ [ category, CanComputeZeroObject ],
-#                                 [ category, ZFunctorCategory ] ], [ ADD_ZERO_OBJECT_IN_Z_FUNCTORS, category ] ) ); 
+
+InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
+            
+  function( category )
+    local entry;
+    
+    entry := ToDoListEntry( [ [ category, "CanComputeZeroObject" ], [ category, "ZFunctorCategory" ] ], 
+                            function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end );
+#                             [ ADD_ZERO_OBJECT_IN_Z_FUNCTORS, category ] );
+    
+    AddToToDoList( entry );
+    
+end );
 
 #############################
 ##
