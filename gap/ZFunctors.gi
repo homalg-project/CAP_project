@@ -172,13 +172,12 @@ end );
 ##
 #############################
 
-## Kernel
-##
+## KernelObject
 BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
           
   function( category )
       local object_func, differential_func, kernel_object;
-      
+
       AddKernelObject( ZFunctorCategory( category ),
         
         function( morphism )
@@ -190,21 +189,16 @@ BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
           end;
           
           differential_func := function( index )
-              local cohomological_index, morphism_part, kernel_embedding_range, differential_part, kernel_embedding_source;
+              local cohomological_index;
               
               cohomological_index := index + 1;
               
-              morphism_part := morphism[ cohomological_index ];
-              
-              kernel_embedding_range := KernelEmb( morphism_part );
-              
-              differential_part := Source( morphism )[ index ];
-              
-              kernel_embedding_source := KernelEmb( morphism[ index ] );
-              
-              return KernelLift(
-                PreCompose( kernel_embedding_range, morphism_part ),
-                PreCompose( kernel_embedding_source, differential_part )
+              return KernelObjectFunctorial(
+                
+                morphism[ index ],
+                Differential( Source( morphism ), index ),
+                morphism[ cohomological_index ]
+                
               );
               
           end;
@@ -215,6 +209,48 @@ BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
           
       end );
       
+end );
+
+## KernelEmbWithGivenKernel
+BindGlobal( "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
+  
+  function( category )
+      local morphism_func, kernel_emb;
+
+      AddKernelEmbWithGivenKernel( ZFunctorCategory( category ),
+        
+        function( morphism, kernel )
+          
+          morphism_func := function( index )
+              
+              return KernelEmb( morphism[ index ] );
+              
+          end;
+          
+          kernel_emb := ZFunctorMorphism( kernel, morphism_func, Source( morphism ) );
+          
+      end );
+end );
+
+## KernelLiftWithGivenKernel
+BindGlobal( "ADD_KERNELLIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
+  
+  function( category )
+      local morphism_func, kernel_lift;
+
+      AddKernelLiftWithGivenKernel( ZFunctorCategory( category ),
+        
+        function( morphism, test_morphism, kernel )
+          
+          morphism_func := function( index )
+              
+              return KernelLift( morphism[ index ], test_morphism[ index ] );
+              
+          end;
+          
+          kernel_lift := ZFunctorMorphism( Source( test_morphism ), morphism_func, kernel );
+          
+      end );
 end );
 
 ## Zero Object
@@ -244,18 +280,21 @@ end );
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
             
   function( category )
-    local entry;
+    local todo_list_entries, entry, new_entry;
     
-    entry := ToDoListEntry( [ [ category, "CanComputeZeroObject" ], [ category, "ZFunctorCategory" ] ],
-                            function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end );
+    todo_list_entries := [
+        [ "CanComputeZeroObject", function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ "CanComputeKernelObjectFunctorial", function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ "CanComputeKernelEmb", function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ]
+    ];
     
-    AddToToDoList( entry );
-    
-    entry := ToDoListEntry( [ [ category, "CanComputeKernelObject" ], [ category, "CanComputeKernelEmb" ],
-                              [ category, "CanComputeKernelLift" ], [ category, "ZFunctorCategory" ] ],
-                            function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end );
-    
-    AddToToDoList( entry );
+    for entry in todo_list_entries do
+        
+        new_entry := ToDoListEntry( [ [ category, entry[1] ], [ category, "ZFunctorCategory" ] ], entry[2] );
+        
+        AddToToDoList( new_entry );
+        
+    od;
     
 end );
 

@@ -306,26 +306,34 @@ InstallMethod( KernelEmb,
 end );
 
 ####################################
-## Application to path
+## Functorial operations
 ####################################
 
-## mor: x -> y
-## equality_source: x -> x'
-## equality_range: y -> y'
 ##
-InstallMethodWithCacheFromObject( ApplicationOfKernelObjectToPath,
-                                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+InstallMethod( KernelObjectFunctorial,
+               [ IsList ],
                                   
-  function( mor, equality_source, equality_range )
-    local kernel_emb, transported_mor;
+  function( morphism_of_morphisms )
     
-    kernel_emb := KernelEmb( mor );
+    return KernelObjectFunctorial( morphism_of_morphisms[1], morphism_of_morphisms[2][1], morphism_of_morphisms[3] );
     
-    transported_mor := TransportHom( mor, equality_source, equality_range );
+end );
+
+##
+InstallTrueMethod( CanComputeKernelObjectFunctorial,
+                   CanComputeKernelLift and CanComputeKernelEmb and CanComputePreCompose );
+
+InstallMethodWithCacheFromObject( KernelObjectFunctorial,
+                                  [ IsHomalgCategoryMorphism and CanComputeKernelLift and CanComputeKernelEmb and CanComputePreCompose,
+                                    IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism ],
+                                  
+  function( mu, alpha, vu )
     
-    return KernelLift( transported_mor,
-                       PreCompose( kernel_emb, equality_source )
-                     );
+    return KernelLift(
+                vu,
+                PreCompose( KernelEmb( mu ), alpha )
+              );
     
 end );
 

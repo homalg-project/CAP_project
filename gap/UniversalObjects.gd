@@ -150,6 +150,7 @@ DeclareOperation( "KernelLift",
 DeclareOperation( "KernelLiftWithGivenKernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
+
 ## Function Attributes
 #! @AutoDoc
 #! @BeginGroup
@@ -210,6 +211,30 @@ DeclareOperation( "AddKernelLift",
 DeclareOperation( "AddKernelLiftWithGivenKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+
+#! @Section Functorial methods for kernel
+
+#! KernelObject as a functorial operation. This means:
+#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
+#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha = \alpha' \circ \mu$,
+#! we obtain a morphism $\phi: \mathrm{Kernel}( \alpha ) \rightarrow \mathrm{Kernel}( \alpha' )$.
+
+
+#! @Description
+#! This method takes $L = [ \mu, [ \alpha, \alpha' ], \nu ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "KernelObjectFunctorial",
+                  [ IsList ] );
+
+#! @Description
+#! For the computation of $\phi$, you do not need $\alpha'$.
+#! @Returns $\phi$
+#! @Arguments mu, alpha, nu
+DeclareOperation( "KernelObjectFunctorial",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+
 ## WasCreatedAs Filter
 #! @Chapter Technical Details
 
@@ -220,11 +245,7 @@ DeclareOperation( "AddKernelLiftWithGivenKernel",
 #! Note that we chose <C>WasCreatedAsKernel</C> to be a filter rather than a property,
 #! because by default, a filter is set to false. 
 DeclareFilter( "WasCreatedAsKernel" );
-#! @Chapter Universal Objects
 
-## Application of KernelObject to path
-DeclareOperation( "ApplicationOfKernelObjectToPath",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 
 ####################################

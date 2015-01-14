@@ -760,6 +760,30 @@ SetIsAbelianCategory( HomalgCategory( eta ), true );
 
 #######################################
 ##
+## Functorial methods tests
+##
+#######################################
+
+A := QVectorSpace( 2 );
+
+A_p := QVectorSpace( 2 );
+
+B := QVectorSpace( 2 );
+
+B_p := QVectorSpace( 2 );
+
+alpha := VectorSpaceMorphism( A, [ [ 0, 0 ], [ 0, 1 ] ], B );
+
+alpha_p := VectorSpaceMorphism( A_p, [ [ 0, 0 ], [ 0, 1 ] ], B_p );
+
+mu := VectorSpaceMorphism( A, [ [ 1, 0 ], [ 0, 0 ] ], A_p );
+
+nu := VectorSpaceMorphism( B, [ [ 1, 0 ], [ 0, 0 ] ], B_p );
+
+# KernelObjectFunctorial( mu, alpha, nu );
+
+#######################################
+##
 ## Functors
 ##
 #######################################
