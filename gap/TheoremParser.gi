@@ -1275,6 +1275,29 @@ BindGlobal( "SPLIT_INTO_LIST_NAME_AND_INDEX",
     
 end );
 
+InstallGlobalFunction( REPLACE_INTEGER_STRINGS_BY_INTS_AND_VARIABLES_BY_FAIL_RECURSIVE,
+            
+  function( record )
+    
+    if IsRecord( record ) then
+        
+        return rec( command := record.command, arguments := REPLACE_INTEGER_STRINGS_BY_INTS_AND_VARIABLES_BY_FAIL_RECURSIVE( record!.arguments ) );
+        
+    elif IsList( record ) and not IsString( record ) then
+        
+        return List( record, REPLACE_INTEGER_STRINGS_BY_INTS_AND_VARIABLES_BY_FAIL_RECURSIVE );
+        
+    elif IsString( record ) and STRING_REPRESENTS_INTEGER( record ) then
+        
+        return Int_SAVE( record );
+        
+    fi;
+    
+    return SuPeRfail;
+    
+end );
+
+
 ##
 InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
                        
@@ -1282,6 +1305,8 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     local split_record, variables, source, range, range_left, range_replace, variable_equalities, i, j, variable_position, commands, source_copy,
           variable_names, selected_variable_position, initial_command, object_variables, list_variables, int_variables,
           range_source, range_source_tree, variables_with_positions;
+    
+    RemoveCharacters( rule, " \n\t\r" );
     
     split_record := SPLIT_THEOREM( rule );
     
@@ -1314,8 +1339,6 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     ## Sanitize range, find positions of variables
     
-    RemoveCharacters( range, "\n\t\r" );
-    
     range := SplitString( range, "=" );
     
     if Length( range ) <> 2 then
@@ -1338,20 +1361,31 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     variables_with_positions := GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( range_source_tree );
     
-    ## Split into integers, list entries, etc.
+    variable_with_positions := List( variables_with_positions, i -> [ i[ 1 ], i[ 2 ] ] );
     
-    ## First, fixed integers:
+    ## Build complete variable record:
     
-    fixed_integers := Filtered( variables_with_positions, i -> STRING_REPRESENTS_INTEGER( i[ 2 ] ) );
+    variable_record := rec( );
     
-    variable_integers := Filtered( variables_with_positions, i -> i[ 2 ] in int_variables );
+    for variable in variables do
+        
+        possible_positions := Filtered( variables_with_positions, i -> i[ 2 ] = variable[ 1 ] );
+        
+        if possible_positions = [ ] then
+            
+            continue;
+            
+        fi;
+        
+        variable_record.( variable[ 1 ] ) := possible_positions[ 1 ][ 1 ];
+        
+    od;
     
-    entries_in_lists := Filtered( variables_with_positions, i -> PositionSublist( i[ 2 ], "[" ) <> fail );
-    
-    ## Store some informations
     return_rec := rec( );
     
-    return_rec!.fixed_integers := List( fixed_integers, i -> [ i[ 1 ], Int_SAVE( i[ 2 ] ) ] );
+    return_rec!.command_tree := REPLACE_INTEGER_STRINGS_BY_INTS_AND_VARIABLES_BY_FAIL_RECURSIVE( range_source_tree );
+    
+    return_rec!.variable_record := variable_record;
     
     ## find matching variables
     equal_variable_pairs := List( variables_with_positions, i -> [ i[ 1 ] ] );
@@ -1372,86 +1406,45 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     equal_variable_pairs := Filtered( equal_variable_pairs, i -> Length( i ) > 1 );
     
-    return_rec!.equal_variable_pairs := equal_variable_pairs;
-    
-    ## Find entries in lists
-    
-    list_variable_position_pairs := [ ];
-    
-    for entry_list in entries_in_lists do
+    for variable in variable_with_positions do
         
-        entry := SplitString( entry_list[ 2 ], "[" );
-        
-        list_name := entry[ 1 ];
-        
-        int_name := entry[ 2 ]{[ 1 .. Length( entry[ 2 ] ) - 1 ]};
-        
-        list_position := Filtered( variables_with_positions, i -> i[ 2 ] = list_name );
-        
-        if list_position <> [ ] then
+        if IS_LIST_WITH_INDEX( variable[ 2 ] ) then
             
-            list_position := list_position[ 1 ];
+            current_variable_and_index := SPLIT_INTO_LIST_NAME_AND_INDEX( variable[ 2 ] );
+            
+            if STRING_REPRESENTS_INTEGER( current_variable_and_index[ 2 ] ) then
+                
+                additional_position := Int_SAVE( current_variable_and_index[ 2 ] );
+                
+            else
+                
+                additional_position := current_variable_and_index[ 2 ];
+                
+            fi;
+            
+            Add( equal_variable_pairs, [ variable[ 1 ], Concatenation( variable_record.( current_variable_and_index[ 1 ] ), additional_position ) ] );
             
         fi;
-        
-        if STRING_REPRESENTS_INTEGER( int_name ) then
-            
-            int_name := Int_SAVE( int_name );
-            
-        fi;
-        
-        Add( list_variable_position_pairs, [ Concatenation( entry_list[ 1 ], [ int_name ] ), list_position[ 1 ] ] );
         
     od;
     
-    return_rec!.list_variable_position_pairs := list_variable_position_pairs;
+    return_rec!.equal_variable_positions := equal_variable_pairs;
     
-    return_rec!.range_source := range_source_tree;
-    
-    return_rec!.variable_integers := variable_integers;
-    
-    ## Range part of range
-    ## Is range a list entry?
-    
-    range_replace := SplitString( range_replace, "[" );
-    
-    range_replace := List( range_replace, NormalizedWhitespace );
-    
-    range_replace_position := Filtered( variables_with_positions, i -> i[ 2 ] = range_replace[ 1 ] );
-    
-    if Length( range_replace_position ) = 0 then
+    if IS_LIST_WITH_INDEX( range_replace ) then
         
-        Error( "replacement not found in variables" );
+        range_replace_list_and_index := SPLIT_INTO_LIST_NAME_AND_INDEX( range_replace );
+        
+        return_rec!.replace := Concatenation( variable_record.( range_replace_list_and_index[ 1 ] ), [ range_replace_list_and_index[ 2 ] ] );
+        
+    else
+        
+        return_rec!.replace := variable_record.( range_replace );
         
     fi;
-    
-    range_replace_position := range_replace_position[ 1 ][ 1 ];
-    
-    if Length( range_replace ) = 2 then
-        
-        range_replace := range_replace[ 2 ]{[ 1 .. Length( range_replace[ 2 ] ) - 1 ]};
-        
-        if STRING_REPRESENTS_INTEGER( range_replace ) then
-            
-            range_replace := Int_SAVE( range_replace );
-            
-        fi;
-        
-        Add( range_replace_position, range_replace );
-        
-    fi;
-    
-    return_rec!.replace := range_replace_position;
     
     ## Starting with sources
     
-    NormalizeWhitespace( source );
-    
-    source_copy := ShallowCopy( source );
-    
-    RemoveCharacters( source_copy, " " );
-    
-    if source_copy = "()" then
+    if source = "()" then
         
         source_list := [ ];
         
@@ -1469,119 +1462,30 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     for source in source_list do
         
-        current_source_rec := rec( );
+        if source.bound_variable = fail then
+            
+            Add( source, source_list );
+            
+        else
+            
+            bound_variable_string := source!.bound_variable;
+            
+            bound_variable_string := RETURN_STRING_BETWEEN_SUBSTRINGS( bound_variable_string, "forall", "in" );
+            
+            bound_variable_name := bound_variable_string[ 1 ];
+            
+            bound_variable_list_content := RETURN_STRING_BETWEEN_SUBSTRINGS( bound_variable_string[ 2 ], "[", "]" )[ 1 ];
+            
+            bound_variable_list_content := SPLIT_STRING_MULTIPLE( bound_variable_list_content, ".." );
+            
+            bound_variable_list_boundaries := [ ];
+            
+            for i in [ 1, 2 ] do
+                
+                if STRING_REPRESENTS_INTEGER( bound_variable_list_boundaries[ i ] ) then
+                    
+                    
         
-        current_source_variables := GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( source );
-        
-        if source!.bound_variables <> fail then
-            
-            bound_variable_name := RETURN_STRING_BETWEEN_SUBSTRINGS( source!.bound_variables, "forall", "in" );
-            
-            bound_variable_list := bound_variable_name[ 2 ];
-            
-            bound_variable_name := NormalizedWhitespace( bound_variable_name[ 1 ] );
-            
-            is_bound_variable := [ ];
-            
-            index_is_bound_variable := [ ];
-            
-            for current_variable in current_source_variables do
-                
-                current_split_variable := SPLIT_INTO_LIST_NAME_AND_INDEX( current_variable[ 2 ] );
-                
-                if current_split_variable[ 1 ] = bound_variable_name then
-                    
-                    Add( is_bound_variable, current_variable );
-                    
-                elif current_split_variable[ 2 ] = bound_variable_name then
-                    
-                    Add( index_is_bound_variable, current_variable );
-                    
-                fi;
-                
-            od;
-            
-            current_source_rec!.is_bound_variable := is_bound_variable;
-            
-            index_bound_variable_with_position := [ ];
-            
-            for current_variable in index_is_bound_variable do
-                
-                current_split_variable := SPLIT_INTO_LIST_NAME_AND_INDEX( current_variable[ 2 ] )[ 1 ];
-                
-                position_of_current_variable := Filtered( variables_with_positions, i -> i[ 2 ] = current_split_variable )[ 1 ][ 1 ];
-                
-                Add( index_bound_variable_with_position, [ position_of_current_variable, current_variable[ 1 ] ] );
-                
-            od;
-            
-            current_source_rec!.index_is_bound_variable := index_bound_variable_with_position;
-            
-            bound_variable_list_record := rec( );
-            
-            current_source_rec!.bound_variable := bound_variable_list_record;
-            
-            if PositionSublist( bound_variable_list, "[" ) = fail then
-                
-                bound_variable_list_record!.object := Filtered( variables_with_positions, i -> i[ 2 ] = bound_variable_list )[ 1 ][ 1 ];
-                
-            else
-                
-                list_content := RETURN_STRING_BETWEEN_SUBSTRINGS( bound_variable_list, "[", "]" )[ 1 ];
-                
-                list_content := SPLIT_STRING_MULTIPLE( list_content, ".." );
-                
-                list_content := List( list_content, NormalizeWhitespace );
-                
-                if STRING_REPRESENTS_INTEGER( list_content[ 1 ] ) then
-                    
-                    bound_variable_list_record!.beginning := Int_SAVE( list_content[ 1 ] );
-                    
-                elif PositionSublist( list_content[ 1 ], "Length(" ) <> fail then
-                    
-                    list_content[ 1 ] := SPLIT_SINGLE_PART( list_content[ 1 ] );
-                    
-                    list_content[ 1 ] := list_content[ 1 ]!.arguments[ 1 ];
-                    
-                    NormalizedWhitespace( list_content[ 1 ] );
-                    
-                    bound_variable_list_record!.beginning := [ "Length", Filtered( variable_with_positions, i -> i[ 2 ] = list_content[ 1 ] )[ 1 ][ 1 ] ];
-                    
-                else
-                    
-                    NormalizedWhitespace( list_content[ 1 ] );
-                    
-                    bound_variable_list_record!.beginning := [ "Length", Filtered( variable_with_positions, i -> i[ 2 ] = list_content[ 1 ] )[ 1 ][ 1 ] ];
-                    
-                fi;
-                
-                if STRING_REPRESENTS_INTEGER( list_content[ 2 ] ) then
-                    
-                    bound_variable_list_record!.ende := Int_SAVE( list_content[ 2 ] );
-                    
-                elif PositionSublist( list_content[ 2 ], "Length(" ) <> fail then
-                    
-                    list_content[ 2 ] := SPLIT_SINGLE_PART( list_content[ 2 ] );
-                    
-                    list_content[ 2 ] := list_content[ 2 ]!.arguments[ 1 ];
-                    
-                    NormalizedWhitespace( list_content[ 2 ] );
-                    
-                    bound_variable_list_record!.ende := [ "Length", Filtered( variable_with_positions, i -> i[ 2 ] = list_content[ 2 ] )[ 1 ][ 1 ] ];
-                    
-                else
-                    
-                    NormalizedWhitespace( list_content[ 2 ] );
-                    
-                    bound_variable_list_record!.ende := Filtered( variable_with_positions, i -> i[ 2 ] = list_content[ 2 ] )[ 1 ][ 1 ];
-                    
-                fi;
-                
-            fi;
-            
-            Error( "" );
-            
-        fi;
     
     
 end );
