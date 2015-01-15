@@ -305,6 +305,20 @@ InstallMethod( KernelEmb,
     
 end );
 
+##
+InstallTrueMethod( CanComputeKernelLift, CanComputeKernel and CanComputeKernelLiftWithGivenKernel );
+
+InstallMethod( KernelLift,
+               [ IsHomalgCategoryMorphism and CanComputeKernel and CanComputeKernelLiftWithGivenKernel,
+                 IsHomalgCategoryMorphism ],
+               -9999, #FIXME
+               
+  function( morphism, test_morphism )
+    
+    return KernelLiftWithGivenKernel( morphism, test_morphism, KernelObject( morphism ) );
+    
+end );
+
 ####################################
 ## Functorial operations
 ####################################
@@ -600,6 +614,20 @@ InstallMethod( CokernelProj,
   function( mor )
     
     return CokernelProjWithGivenCokernel( mor, Cokernel( mor ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernel and CanComputeCokernelColiftWithGivenCokernel );
+
+InstallMethod( CokernelColift,
+               [ IsHomalgCategoryMorphism and CanComputeCokernel and CanComputeCokernelColiftWithGivenCokernel,
+                 IsHomalgCategoryMorphism ],
+               -9999, #FIXME
+               
+  function( morphism, test_morphism )
+    
+    return CokernelColiftWithGivenCokernel( morphism, test_morphism, Cokernel( morphism ) );
     
 end );
 
