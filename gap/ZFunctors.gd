@@ -6,7 +6,8 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Functors from integers category
-##
+#! Convention: A morphism in Z from an integer a to an integer b
+#! exists if and only if a <= b.
 #############################################################################
 
 ####################################
@@ -50,5 +51,17 @@ DeclareOperation( "Differential",
 DeclareOperation( "ZFunctorObject",
                   [ IsFunction, IsFunction, IsHomalgCategory ] );
 
+DeclareOperation( "AsZFunctorObject",
+                  [ IsHomalgCategoryObject, IsInt ] );
+
+DeclareAttribute( "AsZFunctorObject",
+                  IsHomalgCategoryObject );
+
 DeclareOperation( "ZFunctorMorphism",
                   [ IsZFunctorObject, IsFunction, IsZFunctorObject ] );
+
+DeclareOperation( "AsZFunctorMorphism",
+                  [ IsHomalgCategoryMorphism, IsInt ] );
+
+DeclareAttribute( "AsZFunctorMorphism",
+                  IsHomalgCategoryMorphism );
