@@ -51,17 +51,9 @@ DeclareOperation( "Differential",
 DeclareOperation( "ZFunctorObject",
                   [ IsFunction, IsFunction, IsHomalgCategory ] );
 
-DeclareOperation( "AsZFunctorObject",
-                  [ IsHomalgCategoryObject, IsInt ] );
-
-DeclareAttribute( "AsZFunctorObject",
-                  IsHomalgCategoryObject );
+KeyDependentOperation( "AsZFunctorObject", IsHomalgCategoryObject, IsInt, RETURN_TRUE );
 
 DeclareOperation( "ZFunctorMorphism",
                   [ IsZFunctorObject, IsFunction, IsZFunctorObject ] );
 
-DeclareOperation( "AsZFunctorMorphism",
-                  [ IsHomalgCategoryMorphism, IsInt ] );
-
-DeclareAttribute( "AsZFunctorMorphism",
-                  IsHomalgCategoryMorphism );
+KeyDependentOperation( "AsZFunctorMorphism", IsHomalgCategoryMorphism, IsInt, RETURN_TRUE );

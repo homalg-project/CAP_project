@@ -172,6 +172,28 @@ end );
 ##
 #############################
 
+BindGlobal( "ADD_PRECOMPOSE_IN_Z_FUNCTORS",
+        
+  function( category )
+      local morphism_func, precompose_mor;
+      
+      AddPreCompose( ZFunctorCategory( category ),
+          
+          function( mor_left, mor_right )
+              
+              morphism_func := function( index )
+                  
+                  return PreCompose( mor_left[ index ], mor_right[ index ] );
+                  
+              end;
+              
+              precompose_mor := ZFunctorMorphism( Source( mor_left ), morphism_func, Range( mor_right ) );
+              
+              return precompose_mor;
+              
+      end );
+end );
+
 ## KernelObject
 BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
           
@@ -287,6 +309,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
     local todo_list_entries, entry, new_entry;
     
     todo_list_entries := [
+        [ "CanComputePreCompose", function( ) ADD_PRECOMPOSE_IN_Z_FUNCTORS( category ); end ],
         [ "CanComputeZeroObject", function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end ],
         [ "CanComputeKernelObjectFunctorial", function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
         [ "CanComputeKernelEmb", function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
@@ -332,18 +355,9 @@ InstallMethod( ZFunctorObject,
 end );
 
 ##
-InstallMethod( AsZFunctorObject,
-               [ IsHomalgCategoryObject ],
-               
-  function( object )
-      
-      return AsZFunctorObject( object, 0 );
-      
-end );
+InstallMethod( AsZFunctorObjectOp,
 
-##
-InstallMethod( AsZFunctorObject,
-               [ IsHomalgCategoryObject, IsInt ],
+                                  [ IsHomalgCategoryObject, IsInt ],
                
   function( object, embedding_index )
     local object_func, differential_func, z_functor_object, objects_positive, objects_nonpositive;
@@ -431,17 +445,7 @@ InstallMethod( ZFunctorMorphism,
 end );
 
 ##
-InstallMethod( AsZFunctorMorphism,
-               [ IsHomalgCategoryMorphism ],
-               
-  function( morphism )
-      
-      return AsZFunctorMorphism( morphism, 0 );
-      
-end );
-
-##
-InstallMethod( AsZFunctorMorphism,
+InstallMethod( AsZFunctorMorphismOp,
                [ IsHomalgCategoryMorphism, IsInt ],
                
   function( morphism, embedding_index )
