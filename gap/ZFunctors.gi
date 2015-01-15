@@ -172,6 +172,7 @@ end );
 ##
 #############################
 
+##
 BindGlobal( "ADD_PRECOMPOSE_IN_Z_FUNCTORS",
         
   function( category )
@@ -192,7 +193,30 @@ BindGlobal( "ADD_PRECOMPOSE_IN_Z_FUNCTORS",
               return precompose_mor;
               
       end );
-end );
+  end );
+
+##
+BindGlobal( "ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS",
+          
+  function( category )
+      local morphism_func, identity_mor;
+      
+      AddIdentityMorphism( ZFunctorCategory( category ),
+          
+          function( object )
+              
+              morphism_func := function( index )
+                  
+                  return IdentityMorphism( object[ index ] );
+                  
+              end;
+              
+              identity_mor := ZFunctorMorphism( object, morphism_func, object );
+              
+              return identity_mor;
+              
+      end );
+  end );
 
 ## KernelObject
 BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
@@ -310,6 +334,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
     
     todo_list_entries := [
         [ "CanComputePreCompose", function( ) ADD_PRECOMPOSE_IN_Z_FUNCTORS( category ); end ],
+        [ "CanComputeIdentityMorphism", function( ) ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS( category ); end ],
         [ "CanComputeZeroObject", function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end ],
         [ "CanComputeKernelObjectFunctorial", function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
         [ "CanComputeKernelEmb", function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
@@ -356,8 +381,7 @@ end );
 
 ##
 InstallMethod( AsZFunctorObjectOp,
-
-                                  [ IsHomalgCategoryObject, IsInt ],
+               [ IsHomalgCategoryObject, IsInt ],
                
   function( object, embedding_index )
     local object_func, differential_func, z_functor_object, objects_positive, objects_nonpositive;
