@@ -214,23 +214,23 @@ DeclareOperation( "AddKernelLiftWithGivenKernel",
 
 #! @Section Functorial methods for kernel
 
-#! KernelObject as a functorial operation. This means:
+#! KernelObject is a functorial operation. This means:
 #! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha = \alpha' \circ \mu$,
 #! we obtain a morphism $\phi: \mathrm{Kernel}( \alpha ) \rightarrow \mathrm{Kernel}( \alpha' )$.
 
 
 #! @Description
-#! This method takes $L = [ \mu, [ \alpha, \alpha' ], \nu ]$ as an input.
+#! This method takes $L = [ \alpha, [ \mu, \nu ], \alpha' ]$ as an input.
 #! @Returns $\phi$
 #! @Arguments L
 DeclareOperation( "KernelObjectFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! For the computation of $\phi$, you do not need $\alpha'$.
+#! For the computation of $\phi$, you do not need $\nu$.
 #! @Returns $\phi$
-#! @Arguments mu, alpha, nu
+#! @Arguments alpha, mu, alpha_p
 DeclareOperation( "KernelObjectFunctorial",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
@@ -375,6 +375,28 @@ DeclareOperation( "AddCokernelColift",
 #! @Arguments C, f
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsHomalgCategory, IsFunction ] );
+
+#! @Section Functorial methods for cokernel
+
+#! Cokernel is a functorial operation. This means:
+#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
+#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha = \alpha' \circ \mu$,
+#! we obtain a morphism $\phi: \mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Kernel}( \alpha' )$.
+
+
+#! @Description
+#! This method takes $L = [ \alpha, [ \mu, \nu ], \alpha' ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "CokernelFunctorial",
+                  [ IsList ] );
+
+#! @Description
+#! For the computation of $\phi$, you do not need $\mu$.
+#! @Returns $\phi$
+#! @Arguments alpha, nu, alpha_p
+DeclareOperation( "CokernelFunctorial",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 ## WasCreatedAs Filter
 #! @Chapter Technical Details

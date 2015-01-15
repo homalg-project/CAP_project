@@ -342,11 +342,11 @@ InstallMethodWithCacheFromObject( KernelObjectFunctorial,
                                     IsHomalgCategoryMorphism,
                                     IsHomalgCategoryMorphism ],
                                   
-  function( mu, alpha, vu )
+  function( alpha, mu, alpha_p )
     
     return KernelLift(
-                vu,
-                PreCompose( KernelEmb( mu ), alpha )
+                alpha_p,
+                PreCompose( KernelEmb( alpha ), mu )
               );
     
 end );
@@ -628,6 +628,38 @@ InstallMethod( CokernelColift,
   function( morphism, test_morphism )
     
     return CokernelColiftWithGivenCokernel( morphism, test_morphism, Cokernel( morphism ) );
+    
+end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( CokernelFunctorial,
+               [ IsList ],
+                                  
+  function( morphism_of_morphisms )
+    
+    return CokernelFunctorial( morphism_of_morphisms[1], morphism_of_morphisms[2][2], morphism_of_morphisms[3] );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeCokernelFunctorial,
+                   CanComputeCokernelColift and CanComputeCokernelProj and CanComputePreCompose );
+
+InstallMethodWithCacheFromObject( CokernelFunctorial,
+                                  [ IsHomalgCategoryMorphism and CanComputeCokernelColift and CanComputeCokernelProj and CanComputePreCompose,
+                                    IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism ],
+                                  
+  function( alpha, nu, alpha_p )
+    
+    return CokernelColift(
+                alpha,
+                PreCompose( nu, CokernelProj( alpha_p ) )
+              );
     
 end );
 
