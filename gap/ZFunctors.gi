@@ -303,6 +303,91 @@ BindGlobal( "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
       end );
 end );
 
+## Cokernel
+BindGlobal( "ADD_COKERNEL_IN_Z_FUNCTORS",
+          
+  function( category )
+      local object_func, differential_func, cokernel_object;
+
+      AddCokernel( ZFunctorCategory( category ),
+        
+        function( morphism )
+          
+          object_func := function( index )
+              
+              return Cokernel( morphism[ index ] );
+              
+          end;
+          
+          differential_func := function( index )
+              local cohomological_index;
+              
+              cohomological_index := index + 1;
+              
+              return CokernelFunctorial(
+                
+                morphism[ index ],
+                Differential( Range( morphism ), index ),
+                morphism[ cohomological_index ]
+                
+              );
+              
+          end;
+          
+          cokernel_object := ZFunctorObject( object_func, differential_func, category );
+          
+          return cokernel_object;
+          
+      end );
+      
+end );
+
+## CokernelProjWithGivenCokernel
+BindGlobal( "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS",
+  
+  function( category )
+      local morphism_func, cokernel_proj;
+
+      AddCokernelProjWithGivenCokernel( ZFunctorCategory( category ),
+        
+        function( morphism, cokernel )
+          
+          morphism_func := function( index )
+              
+              return CokernelProj( morphism[ index ] );
+              
+          end;
+          
+          cokernel_proj := ZFunctorMorphism( Range( morphism ), morphism_func, cokernel );
+          
+          return cokernel_proj;
+          
+      end );
+end );
+
+## CokernelColiftWithGivenCokernel
+BindGlobal( "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS",
+  
+  function( category )
+      local morphism_func, cokernel_proj;
+
+      AddCokernelColiftWithGivenCokernel( ZFunctorCategory( category ),
+        
+        function( morphism, test_morphism, cokernel )
+          
+          morphism_func := function( index )
+              
+              return CokernelColift( morphism[ index ], test_morphism[ index ] );
+              
+          end;
+          
+          cokernel_proj := ZFunctorMorphism( cokernel, morphism_func, Range( test_morphism ) );
+          
+          return cokernel_proj;
+          
+      end );
+end );
+
 ## Zero Object
 ##
 BindGlobal( "ADD_ZERO_OBJECT_IN_Z_FUNCTORS",
@@ -338,7 +423,10 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         [ "CanComputeZeroObject", function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end ],
         [ "CanComputeKernelObjectFunctorial", function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
         [ "CanComputeKernelEmb", function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
-        [ "CanComputeKernelLift", function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ]
+        [ "CanComputeKernelLift", function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ "CanComputeCokernelFunctorial", function( ) ADD_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ "CanComputeCokernelProj", function( ) ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ "CanComputeCokernelColift", function( ) ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ]
     ];
     
     for entry in todo_list_entries do
