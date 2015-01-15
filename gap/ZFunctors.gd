@@ -6,8 +6,8 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Functors from integers category
-#! Convention: A morphism in Z from an integer a to an integer b
-#! exists if and only if a <= b.
+#! Convention: A morphism in $\mathbb{Z}$ from an integer $a$ to an integer $b$
+#! exists if and only if $a \leq b$.
 #############################################################################
 
 ####################################

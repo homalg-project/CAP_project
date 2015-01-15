@@ -246,7 +246,7 @@ DeclareOperation( "KernelObjectFunctorial",
 #! because by default, a filter is set to false. 
 DeclareFilter( "WasCreatedAsKernel" );
 
-
+#! @Chapter Universal Objects
 
 ####################################
 ##
