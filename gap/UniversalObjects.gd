@@ -575,6 +575,18 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
 DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for terminal object
+
+#! Terminal object is a functorial operation. This means:
+#! There exists a unique morphisms $\phi: T \rightarrow T$.
+
+
+#! @Description
+#! This method takes a category $C$ as an input.
+#! @Returns $\phi$
+#! @Arguments C
+DeclareAttribute( "TerminalObjectFunctorial",
+                  IsHomalgCategory );
 
 ## WasCreatedAs Filter
 

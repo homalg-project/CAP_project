@@ -2047,6 +2047,43 @@ InstallMethod( TerminalObject,
 end );
 
 ####################################
+## Functorial operations
+####################################
+
+##
+InstallTrueMethod( CanComputeTerminalObjectFunctorial,
+                   CanComputeTerminalObject and CanComputeIdentityMorphism );
+
+InstallMethod( TerminalObjectFunctorial,
+               [ IsHomalgCategory and CanComputeTerminalObject and CanComputeIdentityMorphism ],
+                                  
+  function( category )
+    local terminal_object;
+    
+    terminal_object := TerminalObject( category );
+    
+    return IdentityMorphism( terminal_object );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeTerminalObjectFunctorial,
+                   CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObject );
+
+InstallMethod( TerminalObjectFunctorial,
+               [ IsHomalgCategory and CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObject ],
+                 -9999,
+                                  
+  function( category )
+    local terminal_object;
+    
+    terminal_object := TerminalObject( category );
+    
+    return UniversalMorphismIntoTerminalObject( terminal_object );
+    
+end );
+
+####################################
 ##
 ## Initial Object
 ##
