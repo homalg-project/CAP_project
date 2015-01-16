@@ -1053,6 +1053,47 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( CoproductFunctorial,
+               [ IsList ],
+                                  
+  function( morphism_list )
+    
+    return CoproductFunctorialOp( morphism_list, morphism_list[1] );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeCoproductFunctorial,
+                   CanComputeCoproduct and CanComputePreCompose and CanComputeInjectionOfCofactorOfCoproduct
+                   and CanComputeUniversalMorphismFromCoproduct );
+
+InstallMethodWithCacheFromObject( CoproductFunctorialOp,
+                                  [ IsList,
+                                    IsHomalgCategoryMorphism
+                                    and CanComputeCoproduct
+                                    and CanComputePreCompose
+                                    and CanComputeInjectionOfCofactorOfCoproduct
+                                    and CanComputeUniversalMorphismFromCoproduct ],
+                                  
+  function( morphism_list, caching_object )
+    local new_range, sink, diagram;
+        
+        new_range := Coproduct( List( morphism_list, mor -> Range( mor ) ) );
+        
+        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( morphism_list[i], InjectionOfCofactor( new_range, i ) ) );
+        
+        diagram := List( morphism_list, mor -> Source( mor ) );
+        
+        return UniversalMorphismFromCoproduct( diagram, sink );
+        
+end : ArgumentNumber := 2 );
+
+
 
 ####################################
 ##
@@ -1457,6 +1498,47 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
     return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, object_product_list ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( DirectProductFunctorial,
+               [ IsList ],
+                                  
+  function( morphism_list )
+    
+    return DirectProductFunctorialOp( morphism_list, morphism_list[1] );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeDirectProductFunctorial,
+                   CanComputeDirectProduct and CanComputePreCompose and CanComputeProjectionInFactorOfDirectProduct 
+                   and CanComputeUniversalMorphismIntoDirectProduct );
+
+InstallMethodWithCacheFromObject( DirectProductFunctorialOp,
+                                  [ IsList,
+                                    IsHomalgCategoryMorphism
+                                    and CanComputeDirectProduct
+                                    and CanComputePreCompose
+                                    and CanComputeProjectionInFactorOfDirectProduct
+                                    and CanComputeUniversalMorphismIntoDirectProduct ],
+                                  
+  function( morphism_list, caching_object )
+    local new_source, source, diagram;
+        
+        new_source := DirectProduct( List( morphism_list, mor -> Source( mor ) ) );
+        
+        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_list[i] ) );
+        
+        diagram := List( morphism_list, mor -> Range( mor ) );
+        
+        return UniversalMorphismIntoDirectProduct( diagram, source );
+        
+end : ArgumentNumber := 2 );
+
 
 ####################################
 ##

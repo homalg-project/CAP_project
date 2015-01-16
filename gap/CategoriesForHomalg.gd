@@ -128,7 +128,9 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeKernelObjectFunctorial",
                 "CanComputeCokernelFunctorial",
                 "CanComputeTerminalObjectFunctorial",
-                "CanComputeInitialObjectFunctorial"
+                "CanComputeInitialObjectFunctorial",
+                "CanComputeDirectProductFunctorial",
+                "CanComputeCoproductFunctorial"
                 # .. 
               ] );
 

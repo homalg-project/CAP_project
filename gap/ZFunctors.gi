@@ -497,6 +497,23 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJEC
     
 end );
 
+# ##
+# BindGlobal( "ADD_DIRECT_SUM_IN_Z_FUNCTORS",
+#           
+#   function( category )
+#     local object_func, differential_func, direct_sum_object;
+#     
+#     AddDirectSum( ZFunctorCategory( category ),
+#       
+#       function( object_list )
+#         
+#         object_func := function( index ) return DirectSum( List( object_list, obj -> obj[ index ] ) ); end;
+#         
+#         
+#         
+#     end );
+# end );
+
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
             

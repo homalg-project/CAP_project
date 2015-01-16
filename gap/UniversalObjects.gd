@@ -887,6 +887,24 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for coproduct
+
+#! Coproduct is a functorial operation. This means:
+#! For $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$,
+#! we obtain a morphism $\phi: \mathrm{Coproduct}( I_1, \dots, I_n ) \rightarrow \mathrm{Coproduct}( I_1', \dots, I_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "CoproductFunctorial",
+                  [ IsList ] );
+
+DeclareOperation( "CoproductFunctorialOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
+
+
 
 ## WasCreatedAs Filter
 
@@ -1058,6 +1076,23 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for direct product
+
+#! DirectProduct is a functorial operation. This means:
+#! For $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
+#! we obtain a morphism $\phi: \mathrm{DirectProduct}( P_1, \dots, P_n ) \rightarrow \mathrm{DirectProduct}( P_1', \dots, P_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "DirectProductFunctorial",
+                  [ IsList ] );
+
+DeclareOperation( "DirectProductFunctorialOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
+
 
 ## WasCreatedAs Filter
 
@@ -1072,7 +1107,6 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
 DeclareFilter( "WasCreatedAsDirectProduct" );
 
 #! @Chapter Universal Objects
-
 
 ####################################
 ##
