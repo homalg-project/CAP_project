@@ -497,6 +497,76 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJEC
     
 end );
 
+##
+BindGlobal( "ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local object_func, differential_func, direct_product_object;
+      
+      AddDirectProduct( ZFunctorCategory( category ),
+        
+        function( object_list )
+            
+            object_func := function( index ) return DirectProduct( List( object_list, obj -> obj[ index ] ) ); end;
+            
+            differential_func := function( index ) return DirectProductFunctorial( List( object_list, obj -> Differential( obj, index ) ) ); end;
+            
+            direct_product_object := ZFunctorObject( object_func, differential_func, category );
+            
+            return direct_product_object;
+            
+      end );
+end );
+
+##
+BindGlobal( "ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local differential_func, projection;
+      
+      AddProjectionInFactorOfDirectProductWithGivenDirectProduct( ZFunctorCategory( category ),
+        
+        function( object_list, projection_number, direct_product )
+          
+          differential_func := function( index )
+            
+            return ProjectionInFactorOfDirectProduct( List( object_list, obj-> obj[index] ), projection_number );
+            
+          end;
+          
+          projection := ZFunctorMorphism( direct_product, differential_func, object_list[ projection_number ] );
+          
+          return projection;
+          
+      end );
+end );
+
+##
+BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local differential_func, universal_morphism;
+      
+      AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( ZFunctorCategory( category ),
+        
+        function( diagram, source, direct_product )
+          
+          differential_func := function( index )
+              
+              return UniversalMorphismIntoDirectProduct(
+                       List( diagram, mor -> mor[ index ] ),
+                       List( source, mor -> mor[ index ] )
+                     );
+              
+          end;
+          
+          universal_morphism := ZFunctorMorphism( Source( source[1] ), differential_func, direct_product );
+          
+          return universal_morphism;
+          
+      end );
+      
+end );
 # ##
 # BindGlobal( "ADD_DIRECT_SUM_IN_Z_FUNCTORS",
 #           
@@ -534,7 +604,12 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         [ [ "CanComputeUniversalMorphismIntoTerminalObject" ], function( ) ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
         [ [ "CanComputeInitialObject", "CanComputeInitialObjectFunctorial" ], function( ) ADD_INITIAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
         [ [ "CanComputeUniversalMorphismFromInitialObject" ], function( ) ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
-
+        [ [ "CanComputeDirectProduct", "CanComputeDirectProductFunctorial" ], function( ) ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeProjectionInFactorOfDirectProduct" ], 
+          function( ) ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismIntoDirectProduct" ], 
+          function( ) ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ]
     ];
     
     for entry in todo_list_entries do
