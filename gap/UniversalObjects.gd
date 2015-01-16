@@ -697,6 +697,19 @@ DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
 
 #! @EndAutoDoc
 
+#! @Section Functorial methods for initial object
+
+#! Terminal object is a functorial operation. This means:
+#! There exists a unique morphisms $\phi: I \rightarrow I$.
+
+
+#! @Description
+#! This method takes a category $C$ as an input.
+#! @Returns $\phi$
+#! @Arguments C
+DeclareAttribute( "InitialObjectFunctorial",
+                  IsHomalgCategory );
+
 ## WasCreatedAs Filter
 
 #! @Chapter Technical Details

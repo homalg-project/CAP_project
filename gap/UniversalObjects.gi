@@ -2279,6 +2279,43 @@ InstallMethod( InitialObject,
 end );
 
 ####################################
+## Functorial operations
+####################################
+
+##
+InstallTrueMethod( CanComputeInitialObjectFunctorial,
+                   CanComputeInitialObject and CanComputeIdentityMorphism );
+
+InstallMethod( InitialObjectFunctorial,
+               [ IsHomalgCategory and CanComputeInitialObject and CanComputeIdentityMorphism ],
+                                  
+  function( category )
+    local initial_object;
+    
+    initial_object := InitialObject( category );
+    
+    return IdentityMorphism( initial_object );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeInitialObjectFunctorial,
+                   CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObject );
+
+InstallMethod( InitialObjectFunctorial,
+               [ IsHomalgCategory and CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObject ],
+                 -9999,
+                                  
+  function( category )
+    local initial_object;
+    
+    initial_object := InitialObject( category );
+    
+    return UniversalMorphismFromInitialObject( initial_object );
+    
+end );
+
+####################################
 ##
 ## Pullback
 ##
