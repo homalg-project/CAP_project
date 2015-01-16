@@ -399,13 +399,56 @@ BindGlobal( "ADD_ZERO_OBJECT_IN_Z_FUNCTORS",
       
       function( )
         
-        object_func := function( arg ) return ZeroObject( category ); end;
+        object_func := function( index ) return ZeroObject( category ); end;
         
-        differential_func := function( arg ) return IdentityMorphism( ZeroObject( category ) ); end;
+        differential_func := function( index ) return IdentityMorphism( ZeroObject( category ) ); end;
         
         zero_object := ZFunctorObject( object_func, differential_func, category );
         
         return zero_object;
+        
+    end );
+    
+end );
+
+## Terminal object
+##
+BindGlobal( "ADD_TERMINAL_OBJECT_IN_Z_FUNCTORS",
+            
+  function( category )
+    local object_func, differential_func, terminal_object;
+    
+    AddTerminalObject( ZFunctorCategory( category ),
+      
+      function( )
+        
+        object_func := function( index ) return TerminalObject( category ); end;
+        
+        differential_func := function( index ) return TerminalObjectFunctorial( category ); end;
+        
+        terminal_object := ZFunctorObject( object_func, differential_func, category );
+        
+        return terminal_object;
+        
+    end );
+    
+end );
+
+##
+BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_Z_FUNCTORS",
+          
+  function( category )
+    local morphism_func, universal_morphism;
+    
+    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( ZFunctorCategory( category ),
+      
+      function( object, terminal_object )
+        
+        morphism_func := function( index ) return UniversalMorphismIntoTerminalObject( object[ index ] ); end;
+        
+        universal_morphism := ZFunctorMorphism( object, morphism_func, terminal_object );
+        
+        return universal_morphism;
         
     end );
     
@@ -418,20 +461,25 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
     local todo_list_entries, entry, new_entry;
     
     todo_list_entries := [
-        [ "CanComputePreCompose", function( ) ADD_PRECOMPOSE_IN_Z_FUNCTORS( category ); end ],
-        [ "CanComputeIdentityMorphism", function( ) ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS( category ); end ],
-        [ "CanComputeZeroObject", function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end ],
-        [ "CanComputeKernelObjectFunctorial", function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
-        [ "CanComputeKernelEmb", function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
-        [ "CanComputeKernelLift", function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
-        [ "CanComputeCokernelFunctorial", function( ) ADD_COKERNEL_IN_Z_FUNCTORS( category ); end ],
-        [ "CanComputeCokernelProj", function( ) ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
-        [ "CanComputeCokernelColift", function( ) ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ]
+        [ [ "CanComputePreCompose" ], function( ) ADD_PRECOMPOSE_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeIdentityMorphism" ], function( ) ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeZeroObject" ], function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeKernel", "CanComputeKernelObjectFunctorial" ], function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeKernelEmb" ], function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeKernelLift" ], function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeCokernel", "CanComputeCokernelFunctorial" ], function( ) ADD_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeCokernelProj" ], function( ) ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeCokernelColift" ], function( ) ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeTerminalObject", "CanComputeTerminalObjectFunctorial" ], function( ) ADD_TERMINAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeUniversalMorphismIntoTerminalObject" ], function( ) ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
     ];
     
     for entry in todo_list_entries do
         
-        new_entry := ToDoListEntry( [ [ category, entry[1] ], [ category, "ZFunctorCategory" ] ], entry[2] );
+        new_entry := ToDoListEntry(
+          Concatenation( List( entry[1], can_compute -> [ category, can_compute ] ), [ [ category, "ZFunctorCategory" ] ] ),
+          entry[2]
+        );
         
         AddToToDoList( new_entry );
         
