@@ -479,11 +479,16 @@ InstallMethod( AsZFunctorObjectOp,
             
             return object;
             
+        elif index < embedding_index then
+            
+            return InitialObject( object );
+        
         else
             
-            return ZeroObject( object );
-        
+            return TerminalObject( object );
+            
         fi;
+        
     end;
     
     differential_func := function( index )
@@ -499,9 +504,13 @@ InstallMethod( AsZFunctorObjectOp,
           
           return UniversalMorphismFromInitialObject( object );
           
+      elif index < embedding_index - 1 then
+          
+          return InitialObjectFunctorial( HomalgCategory( object ) );
+          
       else
           
-          return ZeroMorphism( ZeroObject( object ), ZeroObject( object ) );
+          return TerminalObjectFunctorial( HomalgCategory( object ) );
           
       fi;
     end;
@@ -569,9 +578,13 @@ InstallMethod( AsZFunctorMorphismOp,
             
             return morphism;
             
+        elif index < embedding_index then
+            
+            return InitialObjectFunctorial( HomalgCategory( morphism ) );
+            
         else
             
-            return ZeroMorphism( ZeroObject( morphism ), ZeroObject( morphism ) );
+            return TerminalObjectFunctorial( HomalgCategory( morphism ) );
             
         fi;
     end;
