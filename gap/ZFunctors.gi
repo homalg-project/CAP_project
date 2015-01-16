@@ -454,6 +454,49 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJ
     
 end );
 
+## Initial object
+##
+BindGlobal( "ADD_INITIAL_OBJECT_IN_Z_FUNCTORS",
+            
+  function( category )
+    local object_func, differential_func, initial_object;
+    
+    AddInitialObject( ZFunctorCategory( category ),
+      
+      function( )
+        
+        object_func := function( index ) return InitialObject( category ); end;
+        
+        differential_func := function( index ) return InitialObjectFunctorial( category ); end;
+        
+        initial_object := ZFunctorObject( object_func, differential_func, category );
+        
+        return initial_object;
+        
+    end );
+    
+end );
+
+##
+BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_Z_FUNCTORS",
+          
+  function( category )
+    local morphism_func, universal_morphism;
+    
+    AddUniversalMorphismFromInitialObjectWithGivenInitialObject( ZFunctorCategory( category ),
+      
+      function( object, initial_object )
+        
+        morphism_func := function( index ) return UniversalMorphismFromInitialObject( object[ index ] ); end;
+        
+        universal_morphism := ZFunctorMorphism( initial_object, morphism_func, object );
+        
+        return universal_morphism;
+        
+    end );
+    
+end );
+
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
             
@@ -472,6 +515,9 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         [ [ "CanComputeCokernelColift" ], function( ) ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
         [ [ "CanComputeTerminalObject", "CanComputeTerminalObjectFunctorial" ], function( ) ADD_TERMINAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
         [ [ "CanComputeUniversalMorphismIntoTerminalObject" ], function( ) ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeInitialObject", "CanComputeInitialObjectFunctorial" ], function( ) ADD_INITIAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeUniversalMorphismFromInitialObject" ], function( ) ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+
     ];
     
     for entry in todo_list_entries do
