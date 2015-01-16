@@ -1302,9 +1302,11 @@ end );
 InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
                        
   function( rule )
-    local split_record, variables, source, range, range_left, range_replace, variable_equalities, i, j, variable_position, commands, source_copy,
-          variable_names, selected_variable_position, initial_command, object_variables, list_variables, int_variables,
-          range_source, range_source_tree, variables_with_positions;
+    local split_record, variables, source, range, object_variables, list_variables, int_variables,
+          range_source, range_replace, range_source_tree, variables_with_positions, variable_record,
+          variable, possible_positions, equal_variable_pairs, current_variable_and_index, additional_position,
+          range_replace_list_and_index, new_source_list, bound_variable_string, bound_variable_name,
+          bound_variable_list_content, bound_variable_list_boundaries, i, return_rec, source_list, j;
     
     RemoveCharacters( rule, " \n\t\r" );
     
@@ -1361,8 +1363,6 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     variables_with_positions := GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE( range_source_tree );
     
-    variable_with_positions := List( variables_with_positions, i -> [ i[ 1 ], i[ 2 ] ] );
-    
     ## Build complete variable record:
     
     variable_record := rec( );
@@ -1406,7 +1406,7 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     equal_variable_pairs := Filtered( equal_variable_pairs, i -> Length( i ) > 1 );
     
-    for variable in variable_with_positions do
+    for variable in variables_with_positions do
         
         if IS_LIST_WITH_INDEX( variable[ 2 ] ) then
             
@@ -1462,13 +1462,9 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     for source in source_list do
         
-        if source.bound_variable = fail then
-            
-            Add( source, source_list );
-            
-        else
-            
-            bound_variable_string := source!.bound_variable;
+        if source.bound_variables <> fail then
+           
+            bound_variable_string := source!.bound_variables;
             
             bound_variable_string := RETURN_STRING_BETWEEN_SUBSTRINGS( bound_variable_string, "forall", "in" );
             
@@ -1482,11 +1478,31 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
             
             for i in [ 1, 2 ] do
                 
-                if STRING_REPRESENTS_INTEGER( bound_variable_list_boundaries[ i ] ) then
+                if STRING_REPRESENTS_INTEGER( bound_variable_list_content[ i ] ) then
                     
+                    bound_variable_list_boundaries[ i ] := Int_SAVE( bound_variable_list_content[ i ] );
                     
+                else
+                    
+                    bound_variable_list_boundaries[ i ] := bound_variable_list_content[ i ];
+                    
+                fi;
+                
+            od;
+            
+            source!.bound_variable_name := bound_variable_name;
+            
+            source!.bound_variable_list_boundaries := bound_variable_list_boundaries;
+            
+        fi;
         
+        Add( new_source_list, source );
+        
+    od;
     
+    return_rec!.source_list := new_source_list;
+    
+    return return_rec;
     
 end );
 
