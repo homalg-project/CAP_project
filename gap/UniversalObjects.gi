@@ -1796,6 +1796,35 @@ InstallMethodWithToDoForIsWellDefined( \+,
 end );
 
 ####################################
+## Functorial operations
+####################################
+
+##
+InstallTrueMethod( CanComputeDirectSumFunctorial, CanComputeDirectProductFunctorial and IsPreAdditiveCategory );
+
+InstallMethod( DirectSumFunctorial,
+               [ IsList ],
+                                  
+  function( morphism_list )
+    
+    return DirectProductFunctorial( morphism_list );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeDirectSumFunctorial, CanComputeCoproductFunctorial and IsPreAdditiveCategory );
+
+InstallMethod( DirectSumFunctorial,
+               [ IsList ],
+               -9999,
+                                  
+  function( morphism_list )
+    
+    return CoproductFunctorial( morphism_list );
+    
+end );
+
+####################################
 ##
 ## Zero Object
 ##

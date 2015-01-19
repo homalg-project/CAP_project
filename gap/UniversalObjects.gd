@@ -763,6 +763,23 @@ DeclareAttribute( "DirectSumFunction",
 DeclareOperation( "AddDirectSum",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for direct sum
+
+#! Direct sum is a functorial operation. This means:
+#! For $(\mu_i: S_i \rightarrow S'_i)_{i=1\dots n}$,
+#! we obtain a morphism $\phi: \mathrm{DirectSum}( S_1, \dots, S_n ) \rightarrow \mathrm{DirectSum}( S_1', \dots, S_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "DirectSumFunctorial",
+                  [ IsList ] );
+
+DeclareOperation( "DirectSumOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
+
 
 ## WasCreatedAs Filter
 
