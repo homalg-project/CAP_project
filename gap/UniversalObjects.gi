@@ -3426,6 +3426,49 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
 end );
 
 ####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( PushoutFunctorial,
+               [ IsList ],
+               
+  function( morphism_of_morphisms )
+      
+      return PushoutFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
+      
+end );
+
+##
+InstallTrueMethod( CanComputePushoutFunctorial,
+                   CanComputePushout
+                   and CanComputePreCompose
+                   and CanComputeInjectionOfCofactorOfPushout
+                   and CanComputeUniversalMorphismFromPushout );
+
+InstallMethodWithCacheFromObject( PushoutFunctorialOp,
+                                  [ IsList,
+                                    IsHomalgCategoryMorphism
+                                    and CanComputePushout
+                                    and CanComputePreCompose
+                                    and CanComputeInjectionOfCofactorOfPushout
+                                    and CanComputeUniversalMorphismFromPushout ],
+                                  
+  function( morphism_of_morphisms, cobase_morphism )
+    local new_range, sink, diagram;
+        
+        new_range := Pushout( List( morphism_of_morphisms, mor -> mor[3] ) );
+        
+        sink := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( morphism_of_morphisms[i][2], InjectionOfCofactor( new_range, i ) ) );
+        
+        diagram := List( morphism_of_morphisms, mor -> mor[1] );
+        
+        return UniversalMorphismFromPushout( diagram, sink );
+        
+end : ArgumentNumber := 2 );
+
+
+####################################
 ##
 ## Image
 ##

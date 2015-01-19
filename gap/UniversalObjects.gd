@@ -1375,6 +1375,31 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
 DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for pushout
+
+#! Pullback is a functorial operation. This means:
+#! For a second diagram $\beta_i': B' \rightarrow I_i'$ and a natural morphism
+#! between pushout diagrams (i.e., a collection of morphisms
+#! $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \beta = \mu_i \circ \beta_i$ for $i = 1, \dots n$)
+#! we obtain a morphism $\phi: \mathrm{Pushout}( \beta_1, \dots, \beta_n ) \rightarrow \mathrm{Pushout}( \beta_1', \dots, \beta_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ as an input.
+#! Note that $\beta$ is not needed for the computation of $\phi$.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "PushoutFunctorial",
+                  [ IsList ] );
+
+
+#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ 
+#! and $\beta$ as an input.
+#! @Returns $\phi$
+#! @Arguments L, beta
+DeclareOperation( "PushoutFunctorialOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
 
 
 ## WasCreatedAs Filter
