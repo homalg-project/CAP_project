@@ -777,10 +777,6 @@ DeclareOperation( "AddDirectSum",
 DeclareOperation( "DirectSumFunctorial",
                   [ IsList ] );
 
-DeclareOperation( "DirectSumOp",
-                  [ IsList, IsHomalgCategoryMorphism ] );
-
-
 ## WasCreatedAs Filter
 
 #! @Chapter Technical Details
@@ -1233,7 +1229,31 @@ DeclareOperation( "AddUniversalMorphismIntoPullback",
 DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for pullback
 
+#! Pullback is a functorial operation. This means:
+#! For a second diagram $\beta_i': P_i' \rightarrow B'$ and a natural morphism
+#! between pullback diagrams (i.e., a collection of morphisms
+#! $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \mu_i = \beta \circ \beta_i$ for $i = 1, \dots n$)
+#! we obtain a morphism $\phi: \mathrm{FiberProduct}( \beta_1, \dots, \beta_n ) \rightarrow \mathrm{FiberProduct}( \beta_1', \dots, \beta_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ as an input.
+#! Note that $\beta$ is not needed for the computation of $\phi$.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "PullbackFunctorial",
+                  [ IsList ] );
+
+
+#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ 
+#! and $\beta$ as an input.
+#! @Returns $\phi$
+#! @Arguments L, beta
+DeclareOperation( "PullbackFunctorialOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
 
 ## WasCreatedAs Filter
 

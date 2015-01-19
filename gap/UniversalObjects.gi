@@ -2907,6 +2907,49 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
 end );
 
 ####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( PullbackFunctorial,
+               [ IsList ],
+               
+  function( morphism_of_morphisms )
+      
+      return PullbackFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
+      
+end );
+
+##
+InstallTrueMethod( CanComputePullbackFunctorial,
+                   CanComputePullback
+                   and CanComputePreCompose
+                   and CanComputeProjectionInFactorOfPullback
+                   and CanComputeUniversalMorphismIntoPullback );
+
+InstallMethodWithCacheFromObject( PullbackFunctorialOp,
+                                  [ IsList,
+                                    IsHomalgCategoryMorphism
+                                    and CanComputePullback
+                                    and CanComputePreCompose
+                                    and CanComputeProjectionInFactorOfPullback
+                                    and CanComputeUniversalMorphismIntoPullback ],
+                                  
+  function( morphism_of_morphisms, base_morphism )
+    local new_source, source, diagram;
+        
+        new_source := FiberProduct( List( morphism_of_morphisms, mor -> mor[1] ) );
+        
+        source := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_of_morphisms[i][2] ) );
+        
+        diagram := List( morphism_of_morphisms, mor -> mor[3] );
+        
+        return UniversalMorphismIntoPullback( diagram, source );
+        
+end : ArgumentNumber := 2 );
+
+
+####################################
 ##
 ## Pushout
 ##
