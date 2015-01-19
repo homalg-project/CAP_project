@@ -646,22 +646,26 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUN
 end );
 
 
-# ##
-# BindGlobal( "ADD_DIRECT_SUM_IN_Z_FUNCTORS",
-#           
-#   function( category )
-#     local object_func, differential_func, direct_sum_object;
-#     
-#     AddDirectSum( ZFunctorCategory( category ),
-#       
-#       function( object_list )
-#         
-#         object_func := function( index ) return DirectSum( List( object_list, obj -> obj[ index ] ) ); end;
-#         
-#         
-#         
-#     end );
-# end );
+##
+BindGlobal( "ADD_DIRECT_SUM_IN_Z_FUNCTORS",
+          
+  function( category )
+    local object_func, differential_func, direct_sum_object;
+    
+    AddDirectSum( ZFunctorCategory( category ),
+      
+      function( object_list )
+        
+        object_func := function( index ) return DirectSum( List( object_list, obj -> obj[ index ] ) ); end;
+        
+        differential_func := function( index ) return DirectSumFunctorial( List( object_list, obj -> Differential( obj, index ) ) ); end;
+            
+        direct_sum_object := ZFunctorObject( object_func, differential_func, category );
+            
+        return direct_sum_object;
+            
+      end );
+end );
 
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
@@ -710,7 +714,9 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
           function( ) ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeUniversalMorphismFromCoproduct" ], 
-          function( ) ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS( category ); end ]
+          function( ) ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeDirectSum", "CanComputeDirectSumFunctorial" ], function( ) ADD_DIRECT_SUM_IN_Z_FUNCTORS( category ); end ]
     ];
     
     for entry in todo_list_entries do
