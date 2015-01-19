@@ -1425,7 +1425,7 @@ DeclareFilter( "WasCreatedAsPushout" );
 #! Let $\alpha: A \rightarrow B$ be a morphism. The image of $\alpha$ is
 #! the smallest monomorphism $\iota: I \hookrightarrow B$ through which $\alpha$ factors, i.e.,
 #! such that there exists a morphism $c: A \rightarrow I$ with $\iota \circ c = \alpha$.
-#! Smallest in this context means that for every other factorization of $\alpha = \tau_1 \circ \tau_2$
+#! Smallest in this context means that for every other factorization of $\alpha = \tau_2 \circ \tau_1$
 #! with $\tau_1: A \rightarrow T, \tau_2: T \rightarrow B$
 #! where $\tau_2$ is a monomorphism, there exists a unique morphism $u: I \rightarrow T$
 #! such that $\iota = \tau_2 \circ u$ and $\tau_1 = u \circ c$.

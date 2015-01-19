@@ -220,6 +220,30 @@ BindGlobal( "ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS",
       end );
   end );
 
+## Inverse
+##
+BindGlobal( "ADD_INVERSE_IN_Z_FUNCTORS",
+          
+  function( category )
+    local morphism_func, inverse;
+    
+    AddInverse( ZFunctorCategory( category ),
+        
+        function( isomorphism )
+            
+            morphism_func := function( index )
+                
+                return Inverse( isomorphism[ index ] );
+                
+            end;
+            
+            inverse := ZFunctorMorphism( Range( isomorphism ), morphism_func, Source( isomorphism ) );
+            
+            return inverse;
+            
+    end );
+  end );
+
 ## KernelObject
 ##
 BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
@@ -894,6 +918,8 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeUniversalMorphismFromPushout" ],
           function( ) ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeInverse" ], function( ) ADD_INVERSE_IN_Z_FUNCTORS( category ); end ],
         
     ];
     
