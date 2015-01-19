@@ -172,6 +172,7 @@ end );
 ##
 #############################
 
+## PreCompose
 ##
 BindGlobal( "ADD_PRECOMPOSE_IN_Z_FUNCTORS",
         
@@ -195,6 +196,7 @@ BindGlobal( "ADD_PRECOMPOSE_IN_Z_FUNCTORS",
       end );
   end );
 
+## Identity
 ##
 BindGlobal( "ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS",
           
@@ -219,6 +221,7 @@ BindGlobal( "ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS",
   end );
 
 ## KernelObject
+##
 BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
           
   function( category )
@@ -304,6 +307,7 @@ BindGlobal( "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
 end );
 
 ## Cokernel
+##
 BindGlobal( "ADD_COKERNEL_IN_Z_FUNCTORS",
           
   function( category )
@@ -497,6 +501,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJEC
     
 end );
 
+## Direct product
 ##
 BindGlobal( "ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS",
           
@@ -567,6 +572,80 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUC
       end );
       
 end );
+
+## Coproduct
+##
+BindGlobal( "ADD_COPRODUCT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local object_func, differential_func, coproduct_object;
+      
+      AddCoproduct( ZFunctorCategory( category ),
+        
+        function( object_list )
+            
+            object_func := function( index ) return Coproduct( List( object_list, obj -> obj[ index ] ) ); end;
+            
+            differential_func := function( index ) return CoproductFunctorial( List( object_list, obj -> Differential( obj, index ) ) ); end;
+            
+            coproduct_object := ZFunctorObject( object_func, differential_func, category );
+            
+            return coproduct_object;
+            
+      end );
+end );
+
+##
+BindGlobal( "ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local differential_func, injection;
+      
+      AddInjectionOfCofactorOfCoproductWithGivenCoproduct( ZFunctorCategory( category ),
+        
+        function( object_list, injection_number, coproduct )
+          
+          differential_func := function( index )
+            
+            return InjectionOfCofactorOfCoproduct( List( object_list, obj-> obj[index] ), injection_number );
+            
+          end;
+          
+          injection := ZFunctorMorphism( object_list[ injection_number ], differential_func, coproduct );
+          
+          return injection;
+          
+      end );
+end );
+
+##
+BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local differential_func, universal_morphism;
+      
+      AddUniversalMorphismFromCoproductWithGivenCoproduct( ZFunctorCategory( category ),
+        
+        function( diagram, sink, coproduct )
+          
+          differential_func := function( index )
+              
+              return UniversalMorphismFromCoproduct(
+                       List( diagram, mor -> mor[ index ] ),
+                       List( sink, mor -> mor[ index ] )
+                     );
+              
+          end;
+          
+          universal_morphism := ZFunctorMorphism( coproduct, differential_func, Range( sink[1] ) );
+          
+          return universal_morphism;
+          
+      end );
+      
+end );
+
+
 # ##
 # BindGlobal( "ADD_DIRECT_SUM_IN_Z_FUNCTORS",
 #           
@@ -592,24 +671,46 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
     
     todo_list_entries := [
         [ [ "CanComputePreCompose" ], function( ) ADD_PRECOMPOSE_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeIdentityMorphism" ], function( ) ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeZeroObject" ], function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeKernel", "CanComputeKernelObjectFunctorial" ], function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeKernelEmb" ], function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeKernelLift" ], function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeCokernel", "CanComputeCokernelFunctorial" ], function( ) ADD_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeCokernelProj" ], function( ) ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeCokernelColift" ], function( ) ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeTerminalObject", "CanComputeTerminalObjectFunctorial" ], function( ) ADD_TERMINAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeUniversalMorphismIntoTerminalObject" ], function( ) ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeInitialObject", "CanComputeInitialObjectFunctorial" ], function( ) ADD_INITIAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeUniversalMorphismFromInitialObject" ], function( ) ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeDirectProduct", "CanComputeDirectProductFunctorial" ], function( ) ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        
         [ [ "CanComputeProjectionInFactorOfDirectProduct" ], 
           function( ) ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeUniversalMorphismIntoDirectProduct" ], 
-          function( ) ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ]
+          function( ) ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeCoproduct", "CanComputeCoproductFunctorial" ], function( ) ADD_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeInjectionOfCofactorOfCoproduct" ], 
+          function( ) ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismFromCoproduct" ], 
+          function( ) ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS( category ); end ]
     ];
     
     for entry in todo_list_entries do
