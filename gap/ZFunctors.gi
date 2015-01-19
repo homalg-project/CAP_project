@@ -645,7 +645,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUN
       
 end );
 
-
+## Direct sum
 ##
 BindGlobal( "ADD_DIRECT_SUM_IN_Z_FUNCTORS",
           
@@ -666,6 +666,87 @@ BindGlobal( "ADD_DIRECT_SUM_IN_Z_FUNCTORS",
             
       end );
 end );
+
+## Pullback
+##
+BindGlobal( "ADD_FIBER_PRODUCT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local object_func, differential_func, pullback_object;
+      
+      AddFiberProduct( ZFunctorCategory( category ),
+        
+        function( morphism_list )
+            
+            object_func := function( index ) return FiberProduct( List( morphism_list, mor -> mor[ index ] ) ); end;
+            
+            differential_func := function( index ) 
+              local cohomological_index;
+              
+              cohomological_index := index + 1;
+              
+              return PullbackFunctorial( List( morphism_list, mor -> [ mor[ index ], Differential( Source( mor ), index ), mor[ cohomological_index ] ] ) ); 
+              
+            end;
+            
+            
+            pullback_object := ZFunctorObject( object_func, differential_func, category );
+            
+            return pullback_object;
+            
+      end );
+end );
+
+##
+BindGlobal( "ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS",
+          
+    function( category )
+      local differential_func, projection;
+      
+      AddProjectionInFactorOfPullbackWithGivenPullback( ZFunctorCategory( category ),
+        
+        function( morphism_list, projection_number, pullback )
+          
+          differential_func := function( index )
+            
+            return ProjectionInFactorOfPullback( List( morphism_list, mor-> mor[index] ), projection_number );
+            
+          end;
+          
+          projection := ZFunctorMorphism( pullback, differential_func, Source( morphism_list[ projection_number ] ) );
+          
+          return projection;
+          
+      end );
+end );
+
+##
+BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS",
+          
+    function( category )
+      local differential_func, universal_morphism;
+      
+      AddUniversalMorphismIntoPullbackWithGivenPullback( ZFunctorCategory( category ),
+        
+        function( diagram, source, pullback )
+          
+          differential_func := function( index )
+              
+              return UniversalMorphismIntoPullback(
+                       List( diagram, mor -> mor[ index ] ),
+                       List( source, mor -> mor[ index ] )
+                     );
+              
+          end;
+          
+          universal_morphism := ZFunctorMorphism( Source( source[1] ), differential_func, pullback );
+          
+          return universal_morphism;
+          
+      end );
+      
+end );
+
 
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
@@ -702,21 +783,30 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeDirectProduct", "CanComputeDirectProductFunctorial" ], function( ) ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeProjectionInFactorOfDirectProduct" ], 
+        [ [ "CanComputeProjectionInFactorOfDirectProduct" ],
           function( ) ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeUniversalMorphismIntoDirectProduct" ], 
+        [ [ "CanComputeUniversalMorphismIntoDirectProduct" ],
           function( ) ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeCoproduct", "CanComputeCoproductFunctorial" ], function( ) ADD_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeInjectionOfCofactorOfCoproduct" ], 
+        [ [ "CanComputeInjectionOfCofactorOfCoproduct" ],
           function( ) ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeUniversalMorphismFromCoproduct" ], 
+        [ [ "CanComputeUniversalMorphismFromCoproduct" ],
           function( ) ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeDirectSum", "CanComputeDirectSumFunctorial" ], function( ) ADD_DIRECT_SUM_IN_Z_FUNCTORS( category ); end ]
+        [ [ "CanComputeDirectSum", "CanComputeDirectSumFunctorial" ], function( ) ADD_DIRECT_SUM_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputePullback", "CanComputePullbackFunctorial" ], function( ) ADD_FIBER_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeProjectionInFactorOfPullback" ],
+          function( ) ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismIntoPullback" ],
+          function( ) ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS( category ); end ]
+
     ];
     
     for entry in todo_list_entries do
