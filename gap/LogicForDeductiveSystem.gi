@@ -65,25 +65,25 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                                ] ),
       EvalRules := rec(
           General := [
-#                       Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForGeneralCategories.tex" )
+                      Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForGeneralCategories.tex" )
                      ],
           IsEnrichedOverCommutativeRegularSemigroup := [
-#                                                         Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
+                                                        Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
                                                        ],
           IsAbCategory := [
-#                            Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbCategories.tex" )
+                           Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbCategories.tex" )
                           ],
           IsPreAdditiveCategory := [
-#                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreadditiveCategories.tex" )
+                                   Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreadditiveCategories.tex" )
                                    ],
           IsAdditiveCategory := [
-#                                 Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAdditiveCategories.tex" )
+                                Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAdditiveCategories.tex" )
                                 ],
           IsPreAbelianCategory := [
-#                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreabelianCategories.tex" )
+                                   Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreabelianCategories.tex" )
                                   ],
           IsAbelianCategory := [
-#                                 Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbelianCategories.tex" )
+                                Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbelianCategories.tex" )
                                ] ),
      ) );
 
@@ -701,11 +701,11 @@ InstallGlobalFunction( CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE,
         
         if Length( history ) = Length( command_tree ) then
             
-            return ForAll( [ 1 .. Length( history ) ], CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE( history[ i ], command_tree[ i ] ) );
+            return ForAll( [ 1 .. Length( history ) ], i -> CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE( history[ i ], command_tree[ i ] ) );
             
         fi;
         
-    od;
+    fi;
     
     if IsRecord( history ) and IsRecord( command_tree ) then
         
@@ -716,6 +716,121 @@ InstallGlobalFunction( CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE,
     return false;
     
 end );
+
+BindGlobal( "GET_FULL_POSITION",
+            
+  function( position, variable_name_record )
+    local new_position, i;
+    
+    new_position := ShallowCopy( position );
+    
+    for i in [ 1 .. Length( new_position ) ] do
+        
+        if IsString( new_position[ i ] ) then
+            
+            new_position[ i ] := variable_name_record.( new_position[ i ] );
+            
+        fi;
+        
+    od;
+    
+    return new_position;
+    
+end );
+
+BindGlobal( "GET_VARIABLE_FROM_POSITION",
+            
+  function( history, position )
+    local variable;
+    
+    variable := history;
+    
+    for i in position do
+        
+        if IsHomalgCategoryCell( variable ) then
+            
+            variable := History( variable );
+            
+        fi;
+        
+        if IsRecord( variable ) then
+            
+            variable := variable!.arguments[ i ];
+            
+            continue;
+            
+        elif IsList( variable ) then
+            
+            variable := variable[ i ];
+            
+            continue;
+            
+        fi;
+        
+    od;
+    
+    return variable;
+    
+end );
+
+##
+BindGlobal( "FILL_VARIABLE_NAME_RECORD",
+            
+  function( history, variable_name_record )
+    local filled_variable_record, name, current_position, current_variable, i;
+    
+    filled_variable_record := StructuralCopy( variable_name_record );
+    
+    for name in RecNames( filled_variable_record ) do
+        
+        current_position := filled_variable_record.( name );
+        
+        current_variable := GET_VARIABLE_FROM_POSITION( history, current_position );
+        
+        filled_variable_record.( name ) := current_variable;
+        
+    od;
+    
+    return filled_variable_record;
+    
+end );
+
+##
+BindGlobal( "CHECK_VARIABLE_PAIRS",
+            
+  function( history, variable_name_pairs, variable_name_record )
+    local current_list, position_index, current_first_object, current_object;
+    
+    for current_list in variable_name_pairs do
+        
+        if Length( current_list ) < 2 then
+            
+            continue;
+            
+        fi;
+        
+        current_first_object := current_list[ 1 ];
+        
+        current_first_object := GET_VARIABLE_FROM_POSITION( history, GET_FULL_POSITION( current_first_object, variable_name_record ) );
+        
+        for position_index in [ 2 .. Length( current_list ) ] do
+            
+            current_object := GET_VARIABLE_FROM_POSITION( history, GET_FULL_POSITION( current_list[ position_index ], variable_name_record ) );
+            
+            if not current_object = current_first_object then
+                
+                return false;
+                
+            fi;
+            
+        od;
+        
+    od;
+    
+    return true;
+    
+end );
+
 
 ##
 InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
@@ -747,9 +862,6 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
     
     for rule_to_apply in current_rules do
         
-        ## Check string part
-        to_be_applied := true;
-        
         command_check := CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE( history, rule_to_apply!.command_tree );
         
         if command_check = false then
@@ -758,81 +870,17 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
             
         fi;
         
-        ## Check equality of objects
+        variable_name_record := FILL_VARIABLE_NAME_RECORD( rule_to_apply, history );
         
-        to_be_applied := true;
+        variable_check := CHECK_VARIABLE_PAIRS( history, rule_to_apply!.equal_variable_pairs, variable_name_record );
         
-        for object_to_check in rule_to_apply.cells_to_check do
-            
-            resolved_objects := [ ];
-            
-            Add( resolved_objects, GET_CORRECT_SUBTREE_ENTRY( history, object_to_check[ 1 ] ) );
-            
-            if IsString( object_to_check[ 2 ] ) then
-                
-                if not IsHomalgCategoryCell( resolved_objects[ 1 ] ) then
-                    
-                    to_be_applied := false;
-                    
-                    break;
-                    
-                fi;
-                
-                object_to_check[ 2 ] := ValueGlobal( object_to_check[ 2 ] );
-                
-                if Tester( object_to_check[ 2 ] )( object_to_check[ 1 ] ) or EvalCanComputePredicates( HomalgCategory( object_to_check[ 1 ] ) ) then
-                    
-                    if not object_to_check[ 2 ]( object_to_check[ 1 ] ) then
-                        
-                        to_be_applied := false;
-                        
-                        break;
-                        
-                    fi;
-                    
-                fi;
-                
-            elif IsInt( object_to_check[ 2 ] ) then
-                
-                if not resolved_objects[ 1 ] = object_to_check[ 2 ] then
-                    
-                    to_be_applied := false;
-                    
-                    break;
-                    
-                fi;
-                
-            else
-                
-                Add( resolved_objects, GET_CORRECT_SUBTREE_ENTRY( history, object_to_check[ 2 ] ) );
-                
-                if ForAny( resolved_objects, i -> i = fail ) then
-                    
-                    to_be_applied := false;
-                    
-                    break;
-                    
-                fi;
-                
-                resolved_objects := IS_EQUAL_FOR_SUBTREES( resolved_objects );
-                
-                if resolved_objects = false then
-                    
-                    to_be_applied := false;
-                    
-                    break;
-                    
-                fi;
-              
-            fi;
-            
-        od;
-        
-        if to_be_applied = false then
+        if variable_check = false then
             
             continue;
             
         fi;
+        
+        
         
         replaced_history := FIX_WELL_DEFINED_PART( rule_to_apply!.part_to_replace, history );
         
