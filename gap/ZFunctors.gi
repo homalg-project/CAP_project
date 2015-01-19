@@ -747,6 +747,86 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCT
       
 end );
 
+## Pushout
+##
+BindGlobal( "ADD_PUSHOUT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local object_func, differential_func, pushout_object;
+      
+      AddPushout( ZFunctorCategory( category ),
+        
+        function( morphism_list )
+            
+            object_func := function( index ) return Pushout( List( morphism_list, mor -> mor[ index ] ) ); end;
+            
+            differential_func := function( index ) 
+              local cohomological_index;
+              
+              cohomological_index := index + 1;
+              
+              return PushoutFunctorial( List( morphism_list, mor -> [ mor[ index ], Differential( Range( mor ), index ), mor[ cohomological_index ] ] ) ); 
+              
+            end;
+            
+            
+            pushout_object := ZFunctorObject( object_func, differential_func, category );
+            
+            return pushout_object;
+            
+      end );
+end );
+
+##
+BindGlobal( "ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local differential_func, injection;
+      
+      AddInjectionOfCofactorOfPushoutWithGivenPushout( ZFunctorCategory( category ),
+        
+        function( morphism_list, injection_number, pushout )
+          
+          differential_func := function( index )
+            
+            return InjectionOfCofactorOfPushout( List( morphism_list, mor-> mor[index] ), injection_number );
+            
+          end;
+          
+          injection := ZFunctorMorphism( Range( morphism_list[ injection_number ] ), differential_func, pushout );
+          
+          return injection;
+          
+      end );
+end );
+
+##
+BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS",
+          
+    function( category )
+      local differential_func, universal_morphism;
+      
+      AddUniversalMorphismFromPushoutWithGivenPushout( ZFunctorCategory( category ),
+        
+        function( diagram, sink, pushout )
+          
+          differential_func := function( index )
+              
+              return UniversalMorphismFromPushout(
+                       List( diagram, mor -> mor[ index ] ),
+                       List( sink, mor -> mor[ index ] )
+                     );
+              
+          end;
+          
+          universal_morphism := ZFunctorMorphism( pushout, differential_func, Range( sink[1] ) );
+          
+          return universal_morphism;
+          
+      end );
+      
+end );
+
 
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
@@ -805,8 +885,16 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
           function( ) ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeUniversalMorphismIntoPullback" ],
-          function( ) ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS( category ); end ]
-
+          function( ) ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputePushout", "CanComputePushoutFunctorial" ], function( ) ADD_PUSHOUT_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeInjectionOfCofactorOfPushout" ],
+          function( ) ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismFromPushout" ],
+          function( ) ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS( category ); end ],
+        
     ];
     
     for entry in todo_list_entries do
