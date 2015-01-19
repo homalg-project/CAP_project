@@ -677,7 +677,45 @@ InstallGlobalFunction( FIX_WELL_DEFINED_PART,
     return well_defined_part;
     
 end );
+
+##
+InstallGlobalFunction( CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE,
+                       
+  function( history, command_tree )
+    local object_history;
     
+    if command_tree = SuPeRfail then
+        
+        return true;
+        
+    fi;
+    
+    
+    if IsHomalgCategoryCell( history ) then
+        
+        return false;
+        
+    fi;
+    
+    if IsList( history ) and IsList( command_tree ) then
+        
+        if Length( history ) = Length( command_tree ) then
+            
+            return ForAll( [ 1 .. Length( history ) ], CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE( history[ i ], command_tree[ i ] ) );
+            
+        fi;
+        
+    od;
+    
+    if IsRecord( history ) and IsRecord( command_tree ) then
+        
+        return history!.command = command_tree!.command and CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE( history!.arguments, command_tree!.arguments );
+        
+    fi;
+    
+    return false;
+    
+end );
 
 ##
 InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
@@ -712,31 +750,9 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
         ## Check string part
         to_be_applied := true;
         
-        for command_to_check in rule_to_apply!.commands_to_check do
-            
-            command_from_history := GET_CORRECT_SUBTREE_ENTRY( history, command_to_check[ 1 ] );
-            
-            if not IsRecord( command_from_history ) then
-                
-                to_be_applied := false;
-                
-                break;
-                
-            fi;
-            
-            command_from_history := command_from_history!.command_to_check;
-            
-            if not command_from_history = command_to_check[ 2 ] then
-                
-                to_be_applied := false;
-                
-                break;
-                
-            fi;
-            
-        od;
+        command_check := CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE( history, rule_to_apply!.command_tree );
         
-        if to_be_applied = false then
+        if command_check = false then
             
             continue;
             
@@ -889,13 +905,13 @@ InstallGlobalFunction( ADD_EVAL_RULES_TO_CATEGORY,
   function( category, rule_record )
     local command;
     
-    if not IsBound( rule_record!.command ) then
+    if not IsBound( rule_record!.starting_command ) then
         
         return;
         
     fi;
     
-    command := rule_record!.command;
+    command := rule_record!.starting_command ;
     
     if not IsBound( category!.eval_rules ) then
         

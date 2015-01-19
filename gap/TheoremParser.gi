@@ -791,7 +791,7 @@ BindGlobal( "REMOVE_CHARACTERS_FROM_LATEX",
   function( string )
     local i;
     
-    for i in [ "&", "\\", "big", "$", "mathrm", "~" ] do
+    for i in [ "&", "\\", "big", "\big", "$", "mathrm", "~" ] do
         
         string := Concatenation( SPLIT_STRING_MULTIPLE( string, i ) );
         
@@ -1441,6 +1441,8 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
         return_rec!.replace := variable_record.( range_replace );
         
     fi;
+    
+    return_rec!.starting_command := range_source_tree!.command;
     
     ## Starting with sources
     

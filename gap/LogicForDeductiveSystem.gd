@@ -48,5 +48,7 @@ DeclareGlobalFunction( "APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE" );
 
 DeclareGlobalFunction( "ADD_EVAL_RULES_TO_CATEGORY" );
 
+DeclareGlobalFunction( "CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE" );
+
 DeclareFilter( "EvalCanComputePredicates" );
 

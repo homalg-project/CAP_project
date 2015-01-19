@@ -824,7 +824,7 @@ InstallMethod( DeductiveSystemMorphism,
 #     resolved_history := RESOLVE_HISTORY( argument_list );
     
     ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
-                             History, rec( command :=func, arguments := argument_list ),
+                             History, rec( command := func, arguments := argument_list ),
                              Source, source,
                              Range, range );
     
