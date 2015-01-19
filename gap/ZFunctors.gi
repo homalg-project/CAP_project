@@ -895,6 +895,72 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTOR
       
 end );
 
+## Addition for morphisms
+##
+BindGlobal( "ADD_ADDITION_FOR_MORPHISMS_IN_Z_FUNCTORS",
+         
+    function( category )
+      local differential_func, sum_of_morphisms;
+      
+      AddAdditionForMorphisms( ZFunctorCategory( category ),
+      
+        function( morphism1, morphism2 )
+          
+          differential_func := function( index )
+              
+              return morphism1[ index ] + morphism2[ index ];
+              
+          end;
+          
+          sum_of_morphisms := ZFunctorMorphism( Source( morphism1 ), differential_func, Range( morphism1 ) );
+          
+          return sum_of_morphisms;
+        
+    end );
+    
+end );
+
+## Additive inverse
+##
+BindGlobal( "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_Z_FUNCTORS",
+          
+    function( category )
+      local differential_func, additive_inverse;
+      
+      AddAdditiveInverseForMorphisms( ZFunctorCategory( category ),
+                                    
+        function( morphism )
+          
+          differential_func := function( index ) return AdditiveInverse( morphism[ index ] ); end;
+          
+          additive_inverse := ZFunctorMorphism( Source( morphism ), differential_func, Range( morphism ) );
+           
+          return additive_inverse;
+        
+      end );
+        
+end );
+    
+## Zero morphism
+##
+BindGlobal( "ADD_ZERO_MORPHISM_IN_Z_FUNCTORS",
+        
+    function( category )
+      local differential_func, zero_morphism;
+
+      AddZeroMorphism( ZFunctorCategory( category ),
+                     
+        function( source, range )
+          
+          differential_func := function( index ) return ZeroMorphism( source[ index ], range[ index ] ); end;
+          
+          zero_morphism := ZFunctorMorphism( source, differential_func, range );
+        
+          return zero_morphism;
+        
+    end );
+    
+end );
 
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
@@ -967,7 +1033,13 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeMonoAsKernelLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT( category ); end ],
         
-        [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT( category ); end ]
+        [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT( category ); end ],
+        
+        [ [ "CanComputeAdditionForMorphisms" ], function( ) ADD_ADDITION_FOR_MORPHISMS_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeAdditiveInverseForMorphisms" ], function( ) ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeZeroMorphism" ], function( ) ADD_ZERO_MORPHISM_IN_Z_FUNCTORS( category ); end ],
         
     ];
     
