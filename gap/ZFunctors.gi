@@ -244,6 +244,50 @@ BindGlobal( "ADD_INVERSE_IN_Z_FUNCTORS",
     end );
   end );
 
+## MonoAsKernelLift
+##
+BindGlobal( "ADD_MONO_AS_KERNEL_LIFT",
+          
+  function( category )
+    local morphism_func, mono_as_kernel_lift;
+    
+    AddMonoAsKernelLift( ZFunctorCategory( category ),
+                         
+      function( monomorphism, test_morphism )
+        
+        morphism_func := function( index ) return MonoAsKernelLift( monomorphism[ index ], test_morphism[ index ] );
+        
+      end;
+      
+      mono_as_kernel_lift := ZFunctorMorphism( Source( test_morphism ), morphism_func, Source( monomorphism ) );
+      
+      return mono_as_kernel_lift;
+        
+    end );
+  end );
+
+## EpiAsCokernelColift
+##
+BindGlobal( "ADD_EPI_AS_COKERNEL_COLIFT",
+          
+  function( category )
+    local morphism_func, epi_as_cokernel_colift;
+    
+    AddEpiAsCokernelColift( ZFunctorCategory( category ),
+                         
+      function( epimorphism, test_morphism )
+        
+        morphism_func := function( index ) return EpiAsCokernelColift( epimorphism[ index ], test_morphism[ index ] );
+        
+      end;
+      
+      epi_as_cokernel_colift := ZFunctorMorphism( Range( epimorphism ), morphism_func, Range( test_morphism ) );
+      
+      return epi_as_cokernel_colift;
+        
+    end );
+  end );
+
 ## KernelObject
 ##
 BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
@@ -920,6 +964,10 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
           function( ) ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeInverse" ], function( ) ADD_INVERSE_IN_Z_FUNCTORS( category ); end ],
+        
+        [ [ "CanComputeMonoAsKernelLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT( category ); end ],
+        
+        [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT( category ); end ]
         
     ];
     

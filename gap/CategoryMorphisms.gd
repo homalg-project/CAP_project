@@ -232,11 +232,18 @@ DeclareAttribute( "IsWellDefinedForMorphismsFunction",
 
 ###################################
 ##
-#! Monomorphism as kernel lift
+## Monomorphism as kernel lift
 ##
 ###################################
 
-
+#! @Description
+#! This operation takes a monomorphism $\iota: K \rightarrow A$
+#! and a test morphism $\tau: T \rightarrow A$ and tries
+#! to compute a lift $u: T \rightarrow K$ such that
+#! $\iota \circ u = \tau$. If this is not possible the method 
+#! will return fail.
+#! @Returns $u$
+#! @Arguments monomorphism, test_morphism
 DeclareOperation( "MonoAsKernelLift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
@@ -246,7 +253,14 @@ DeclareOperation( "MonoAsKernelLift",
 ##
 ####################################
 
-
+#! @Description
+#! This operation takes an epimorphism $\epsilon: A \rightarrow C$
+#! and a test morphism $\tau: A \rightarrow T$ and tries
+#! to compute a colift $u: T \rightarrow K$ such that
+#! $u \circ \epsilon = \tau$. If this is not possible the method 
+#! will return fail.
+#! @Returns $u$
+#! @Arguments epimorphism, test_morphism
 DeclareOperation( "EpiAsCokernelColift",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
