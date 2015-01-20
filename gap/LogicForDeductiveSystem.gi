@@ -831,6 +831,128 @@ BindGlobal( "CHECK_VARIABLE_PAIRS",
     
 end );
 
+BindGlobal( "GET_VARIABLE_BY_NAME",
+            
+  function( name, variable_name_record )
+    local name_and_index, variable;
+    
+    if IS_LIST_WITH_INDEX( name ) then
+        
+        name_and_index := SPLIT_INTO_LIST_NAME_AND_INDEX( name );
+        
+        variable := variable_name_record.( name_and_index[ 1 ] );
+        
+        if STRING_REPRESENTS_INTEGER( name_and_index[ 2 ] ) then
+            
+            variable := variable[ Int_SAVE( name_and_index[ 2 ] ) ];
+            
+        else
+            
+            variable := variable[ variable_name_record.( name_and_index[ 2 ] ) ];
+            
+        fi;
+        
+    else
+        
+        variable := variable_name_record.( name );
+        
+    fi;
+    
+    return variable;
+    
+end );
+
+BindGlobal( "SANITIZE_SOURCE_PART_WITH_EVERYTHING_GIVEN_RECURSIVE",
+            
+  function( source_rec, variable_name_rec )
+    local new_rec, new_name;
+    
+    
+    
+    if IsRecord( source_rec ) then
+        
+        new_rec := rec( command := source_rec!.command );
+        
+        new_rec.arguments := List( source_rec.arguments, i -> SANITIZE_SOURCE_PART_WITH_EVERYTHING_GIVEN_RECURSIVE( i, variable_name_rec ) );
+        
+        return new_rec;
+        
+    elif IsInt( source_rec ) then
+        
+        return source_rec;
+        
+    else
+        
+        
+    
+
+BindGlobal( "SANITIZE_SOURCE_PART",
+            
+  function( source_rec, history, variable_name_record )
+    local new_source_list, bound_variable_name, bound_variable_list, i;
+    
+    new_source_rec := StructuralCopy( source_rec );
+    
+    if source_rec!.bound_variable = fail then
+        
+        bound_variable_name := "xXx_my_super_crazy_dummy_variable_name_ausrufezeichen_xXx";
+        
+        bound_variable_list := [ 1 ];
+        
+    else
+        
+        bound_variable_name := source_rec!.bound_variable_name;
+        
+        if IsBound( source_rec!.bound_variable_name ) then
+            
+            bound_variable_list := variable_name_record.( source_rec.bound_variable_name );
+            
+        else
+            
+            bound_variable_list := source_rec.bound_variable_list_boundaries;
+            
+            for i in [ 1, 2 ] do
+                
+                if IsInt( bound_variable_list[ i ] ) then
+                    
+                    continue;
+                    
+                fi;
+                
+                if PositionSublist( bound_variable_list[ i ], "Length(" ) <> fail then
+                    
+                    bound_variable_list[ i ] := bound_variable_list[ i ]{[ PositionSublist( bound_variable_list[ i ], "Length(" ) + 7 .. Length( bound_variable_list[ i ] ) - 1 ]};
+                    
+                    bound_variable_list[ i ] := Length( variable_name_record.( bound_variable_list[ i ] ) );
+                    
+                else
+                    
+                    bound_variable_list[ i ] := variable_name_record.( bound_variable_list[ i ] );
+                    
+                fi;
+                
+            od;
+            
+            bound_variable_list := [ bound_variable_list[ 1 ] .. bound_variable_list[ 2 ] ];
+            
+        fi;
+        
+    fi;
+    
+    new_source_list := [ ];
+    
+    for i in bound_variable_list do
+        
+        variable_name_record.( bound_variable_name ) := i;
+        
+        Add( new_source_list, SANITIZE_SOURCE_PART_WITH_EVERYTHING_GIVEN_RECURSIVE( source_rec, variable_name_record ) );
+        
+    od;
+    
+    return new_source_list;
+    
+end );
+
 
 ##
 InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
@@ -880,17 +1002,15 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
             
         fi;
         
+        ## if we get here, we have found a rule to apply
         
+        replace_history := GET_VARIABLE_FROM_POSITION( history, GET_FULL_POSITION( rule_to_apply!.replace ) );
         
-        replaced_history := FIX_WELL_DEFINED_PART( rule_to_apply!.part_to_replace, history );
+        part_for_well_defined := rule_to_apply!.source_list;
         
-        if IsList( replaced_history ) and Length( replaced_history ) = 1 then
-            
-            replaced_history := replaced_history[ 1 ];
-            
-        fi;
+        part_for_well_defined := List( part_for_well_defined, i -> SANITIZE_SOURCE_PART( i, history, variable_name_record ) );
         
-        part_for_well_defined := rule_to_apply!.part_for_is_well_defined;
+        part_for_well_defined := Flat( part_for_well_defined );
         
         rule_applied := true;
         

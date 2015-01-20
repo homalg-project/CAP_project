@@ -9,6 +9,11 @@
 ##
 #############################################################################
 
+DeclareGlobalFunction( "STRING_REPRESENTS_INTEGER" );
+
+DeclareGlobalFunction( "Int_SAVE" );
+
+
 DeclareGlobalFunction( "READ_LOGIC_FILE" );
 
 
@@ -45,3 +50,7 @@ DeclareGlobalFunction( "GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE" );
 
 DeclareGlobalFunction( "REPLACE_INTEGER_STRINGS_BY_INTS_AND_VARIABLES_BY_FAIL_RECURSIVE" );
 
+
+DeclareGlobalFunction( "IS_LIST_WITH_INDEX" );
+
+DeclareGlobalFunction( "SPLIT_INTO_LIST_NAME_AND_INDEX" );

@@ -15,7 +15,7 @@
 
 ## Returns true if string represents an integer and
 ## converting is save, false otherwise.
-BindGlobal( "STRING_REPRESENTS_INTEGER",
+InstallGlobalFunction( STRING_REPRESENTS_INTEGER,
             
   i -> ForAll( i, j -> j in "0123456789" )
   
@@ -23,7 +23,7 @@ BindGlobal( "STRING_REPRESENTS_INTEGER",
 
 ## Converts to int if string is an int,
 ## returns fail otherwise
-BindGlobal( "Int_SAVE",
+InstallGlobalFunction( Int_SAVE,
             
   function( string )
     
@@ -1241,7 +1241,7 @@ InstallGlobalFunction( GIVE_VARIABLE_NAMES_WITH_POSITIONS_RECURSIVE,
     
 end );
 
-BindGlobal( "IS_LIST_WITH_INDEX",
+InstallGlobalFunction( "IS_LIST_WITH_INDEX",
             
   function( variable_name )
     
@@ -1255,7 +1255,7 @@ BindGlobal( "IS_LIST_WITH_INDEX",
     
 end );
 
-BindGlobal( "SPLIT_INTO_LIST_NAME_AND_INDEX",
+InstallGlobalFunction( "SPLIT_INTO_LIST_NAME_AND_INDEX",
             
   function( variable_name )
     
@@ -1335,7 +1335,7 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
     
     int_variables := Filtered( variables, i -> i[ 2 ] in [ "int" ] );
     
-    list_variables := Filtered( list_variables, i -> i[ 1 ] );
+    list_variables := List( list_variables, i -> i[ 1 ] );
     
     int_variables := List( int_variables, i -> i[ 1 ] );
     
@@ -1472,29 +1472,37 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
             
             bound_variable_name := bound_variable_string[ 1 ];
             
-            bound_variable_list_content := RETURN_STRING_BETWEEN_SUBSTRINGS( bound_variable_string[ 2 ], "[", "]" )[ 1 ];
-            
-            bound_variable_list_content := SPLIT_STRING_MULTIPLE( bound_variable_list_content, ".." );
-            
-            bound_variable_list_boundaries := [ ];
-            
-            for i in [ 1, 2 ] do
+            if COUNT_SUBSTRING_APPEARANCE( bound_variable_string[ 2 ], "[" ) = 0 then
                 
-                if STRING_REPRESENTS_INTEGER( bound_variable_list_content[ i ] ) then
-                    
-                    bound_variable_list_boundaries[ i ] := Int_SAVE( bound_variable_list_content[ i ] );
-                    
-                else
-                    
-                    bound_variable_list_boundaries[ i ] := bound_variable_list_content[ i ];
-                    
-                fi;
+                source!.bound_variable_list_name := bound_variable_string[ 2 ];
                 
-            od;
+            else
+                
+                bound_variable_list_content := RETURN_STRING_BETWEEN_SUBSTRINGS( bound_variable_string[ 2 ], "[", "]" )[ 1 ];
+                
+                bound_variable_list_content := SPLIT_STRING_MULTIPLE( bound_variable_list_content, ".." );
+                
+                bound_variable_list_boundaries := [ ];
+                
+                for i in [ 1, 2 ] do
+                    
+                    if STRING_REPRESENTS_INTEGER( bound_variable_list_content[ i ] ) then
+                        
+                        bound_variable_list_boundaries[ i ] := Int_SAVE( bound_variable_list_content[ i ] );
+                        
+                    else
+                        
+                        bound_variable_list_boundaries[ i ] := bound_variable_list_content[ i ];
+                        
+                    fi;
+                    
+                od;
+                
+                source!.bound_variable_list_boundaries := bound_variable_list_boundaries;
+            
+            fi;
             
             source!.bound_variable_name := bound_variable_name;
-            
-            source!.bound_variable_list_boundaries := bound_variable_list_boundaries;
             
         fi;
         
