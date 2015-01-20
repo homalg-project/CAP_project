@@ -96,7 +96,7 @@ InstallMethod( GeneralizedMorphismCategory,
     
     if not IsAbelianCategory( category ) then
       
-      Error( "the category mus be abelian" );
+      Error( "the category must be abelian" );
       
     fi;
     

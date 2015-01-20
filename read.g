@@ -22,6 +22,8 @@ ReadPackage( "CategoriesForHomalg", "gap/SerreQuotients.gi");
 
 ReadPackage( "CategoriesForHomalg", "gap/ZFunctors.gi");
 
+ReadPackage( "CategoriesForHomalg", "gap/CocomplexCategory.gi");
+
 ReadPackage( "CategoriesForHomalg", "gap/LazyCategory.gi");
 
 ReadPackage( "CategoriesForHomalg", "gap/DeductiveSystem.gi");

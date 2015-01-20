@@ -18,11 +18,15 @@
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY" );
 
+DeclareCategory( "IsZFunctorCell",
+                 IsHomalgCategoryCell );
+
 DeclareCategory( "IsZFunctorObject",
-                 IsHomalgCategoryObject );
+                 IsHomalgCategoryObject and IsZFunctorCell );
 
 DeclareCategory( "IsZFunctorMorphism",
-                 IsHomalgCategoryMorphism );
+                 IsHomalgCategoryMorphism and IsZFunctorCell );
+
 
 ####################################
 ##
