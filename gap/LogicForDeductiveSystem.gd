@@ -50,5 +50,7 @@ DeclareGlobalFunction( "ADD_EVAL_RULES_TO_CATEGORY" );
 
 DeclareGlobalFunction( "CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE" );
 
+DeclareGlobalFunction( "SANITIZE_SOURCE_PART_WITH_EVERYTHING_GIVEN_RECURSIVE" );
+
 DeclareFilter( "EvalCanComputePredicates" );
 

@@ -741,7 +741,7 @@ end );
 BindGlobal( "GET_VARIABLE_FROM_POSITION",
             
   function( history, position )
-    local variable;
+    local variable, i;
     
     variable := history;
     
@@ -862,12 +862,10 @@ BindGlobal( "GET_VARIABLE_BY_NAME",
     
 end );
 
-BindGlobal( "SANITIZE_SOURCE_PART_WITH_EVERYTHING_GIVEN_RECURSIVE",
+InstallGlobalFunction( SANITIZE_SOURCE_PART_WITH_EVERYTHING_GIVEN_RECURSIVE,
             
   function( source_rec, variable_name_rec )
     local new_rec, new_name;
-    
-    
     
     if IsRecord( source_rec ) then
         
@@ -881,15 +879,18 @@ BindGlobal( "SANITIZE_SOURCE_PART_WITH_EVERYTHING_GIVEN_RECURSIVE",
         
         return source_rec;
         
-    else
+    elif IsString( source_rec ) then
         
+        return GET_VARIABLE_BY_NAME( source_rec, variable_name_rec );
         
+    fi;
     
+end );
 
 BindGlobal( "SANITIZE_SOURCE_PART",
             
   function( source_rec, history, variable_name_record )
-    local new_source_list, bound_variable_name, bound_variable_list, i;
+    local new_source_rec, bound_variable_name, bound_variable_list, i, new_source_list;
     
     new_source_rec := StructuralCopy( source_rec );
     
@@ -960,7 +961,8 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
   function( history, rules )
     local return_rec, command, current_rules, rule_to_apply, command_to_check,
           command_from_history, to_be_applied, rule_applied, object_to_check, resolved_objects, i,
-          replaced_history, part_for_well_defined, new_return, arguments;
+          replaced_history, part_for_well_defined, new_return, arguments, command_check, variable_name_record,
+          variable_check;
     
     if not IsRecord( history ) then
         
@@ -1004,7 +1006,7 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
         
         ## if we get here, we have found a rule to apply
         
-        replace_history := GET_VARIABLE_FROM_POSITION( history, GET_FULL_POSITION( rule_to_apply!.replace ) );
+        replaced_history := GET_VARIABLE_FROM_POSITION( history, GET_FULL_POSITION( rule_to_apply!.replace ) );
         
         part_for_well_defined := rule_to_apply!.source_list;
         
@@ -1018,53 +1020,53 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
         
     od;
     
-    if rule_applied = false then
+    if rule_applied = true then
         
-        for arguments in [ 1 .. Length( history!.arguments ) ] do
+        new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( replaced_history, rules );
+        
+        if new_return = fail then
             
-            new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history!.arguments[ arguments ], rules );
+            return rec( new_history := replaced_history, part_for_is_well_defined := part_for_well_defined );
             
-            if new_return <> fail then
+        else
+            
+            new_return!.part_for_is_well_defined := Concatenation( new_return!.part_for_is_well_defined, part_for_well_defined );
+            
+            return new_return;
+            
+        fi;
+        
+    fi;
+    
+    for arguments in [ 1 .. Length( history!.arguments ) ] do
+        
+        new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history!.arguments[ arguments ], rules );
+        
+        if new_return <> fail then
+            
+            history := StructuralCopy( history );
+            
+            history!.arguments[ arguments ] := new_return!.new_history;
+            
+            part_for_well_defined := new_return!.part_for_is_well_defined;
+            
+            new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, rules );
+            
+            if new_return = fail then
                 
-                history := StructuralCopy( history );
+                return rec( new_history := history, part_for_is_well_defined := part_for_well_defined );
                 
-                history!.arguments[ arguments ] := new_return!.new_history;
+            else
                 
-                part_for_well_defined := new_return!.part_for_is_well_defined;
-                
-                new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, rules );
-                
-                if new_return = fail then
-                    
-                    return rec( new_history := history, part_for_is_well_defined := part_for_well_defined );
-                    
-                else
-                    
-                    return rec( new_history := new_return!.new_history, part_for_is_well_defined := Concatenation( part_for_well_defined, new_return!.part_for_is_well_defined ) );
-                    
-                fi;
+                return rec( new_history := new_return!.new_history, part_for_is_well_defined := Concatenation( part_for_well_defined, new_return!.part_for_is_well_defined ) );
                 
             fi;
             
-        od;
+        fi;
         
-        return fail;
-        
-    fi;
+    od;
     
-    part_for_well_defined := List( rule_to_apply!.part_for_is_well_defined, i -> FIX_WELL_DEFINED_PART( i, history ) );
-    
-    new_return := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( replaced_history, rules );
-    
-    if new_return = fail then
-        
-        return rec( new_history := replaced_history, part_for_is_well_defined := part_for_well_defined );
-        
-    fi;
-    
-    new_return!.part_for_is_well_defined := Concatenation( new_return!.part_for_is_well_defined, part_for_well_defined );
-    
-    return new_return;
+    return fail;
     
 end );
 

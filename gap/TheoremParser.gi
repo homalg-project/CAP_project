@@ -1480,7 +1480,27 @@ InstallGlobalFunction( PARSE_EVAL_RULE_FROM_LATEX,
                 
                 bound_variable_list_content := RETURN_STRING_BETWEEN_SUBSTRINGS( bound_variable_string[ 2 ], "[", "]" )[ 1 ];
                 
-                bound_variable_list_content := SPLIT_STRING_MULTIPLE( bound_variable_list_content, ".." );
+                for i in [ "..", ",dots,", "dots" ] do
+                    
+                    bound_variable_list_content := SPLIT_STRING_MULTIPLE( bound_variable_list_content, i );
+                    
+                    if Length( bound_variable_list_content ) > 1 then
+                        
+                        break;
+                        
+                    else
+                        
+                        bound_variable_list_content := bound_variable_list_content[ 1 ];
+                        
+                    fi;
+                    
+                od;
+                
+                if Length( bound_variable_list_content ) < 2 then
+                    
+                    Error( "could not split bound variable list correctly" );
+                    
+                fi;
                 
                 bound_variable_list_boundaries := [ ];
                 
