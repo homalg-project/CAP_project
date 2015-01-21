@@ -70,8 +70,13 @@ BindGlobal( "ADD_PRECOMPOSE_IN_COCOMPLEX_CATEGORY",
     AddPreCompose( CocomplexCategory( category ),
           
       function( mor_left, mor_right )
+        local source, range;
         
-        return AsCochainMap( PreCompose( UnderlyingZFunctorCell( mor_left ), UnderlyingZFunctorCell( mor_right ) ) );
+        source := Source( mor_left );
+        
+        range := Range( mor_right );
+        
+        return CochainMap( source, PreCompose( UnderlyingZFunctorCell( mor_left ), UnderlyingZFunctorCell( mor_right ) ), range );
         
     end );
     
@@ -171,6 +176,28 @@ InstallMethod( AsCochainMap,
     source := AsCocomplex( Source( z_functor_morphism ) );
     
     range := AsCocomplex( Range( z_functor_morphism ) );
+    
+    morphism := rec( );
+    
+    ObjectifyWithAttributes( morphism, TheTypeOfCochainMaps,
+                             UnderlyingZFunctorCell, z_functor_morphism,
+                             Source, source,
+                             Range, range );
+    
+    Add( CocomplexCategory( category ), morphism );
+    
+    return morphism;
+    
+end );
+
+##
+InstallMethod( CochainMap,
+               [ IsCocomplex, IsZFunctorMorphism, IsCocomplex ],
+               
+  function( source, z_functor_morphism, range )
+    local category, morphism;
+    
+    category := UnderlyingHonestCategory( HomalgCategory( z_functor_morphism ) );
     
     morphism := rec( );
     

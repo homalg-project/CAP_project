@@ -59,6 +59,9 @@ DeclareAttribute( "AsCocomplex",
 DeclareAttribute( "AsCochainMap",
                   IsZFunctorMorphism );
 
+DeclareOperation( "CochainMap",
+                  [ IsCocomplex, IsZFunctorMorphism, IsCocomplex ] );
+
 KeyDependentOperation( "AsPointedCocomplex", IsHomalgCategoryObject, IsInt, RETURN_TRUE );
 
 KeyDependentOperation( "AsPointedCochainMap", IsHomalgCategoryMorphism, IsInt, RETURN_TRUE );
