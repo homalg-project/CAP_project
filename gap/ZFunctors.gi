@@ -246,7 +246,7 @@ BindGlobal( "ADD_INVERSE_IN_Z_FUNCTORS",
 
 ## MonoAsKernelLift
 ##
-BindGlobal( "ADD_MONO_AS_KERNEL_LIFT",
+BindGlobal( "ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS",
           
   function( category )
     local morphism_func, mono_as_kernel_lift;
@@ -268,7 +268,7 @@ BindGlobal( "ADD_MONO_AS_KERNEL_LIFT",
 
 ## EpiAsCokernelColift
 ##
-BindGlobal( "ADD_EPI_AS_COKERNEL_COLIFT",
+BindGlobal( "ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS",
           
   function( category )
     local morphism_func, epi_as_cokernel_colift;
@@ -441,7 +441,7 @@ end );
 BindGlobal( "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS",
   
   function( category )
-      local morphism_func, cokernel_proj;
+      local morphism_func, cokernel_colift;
 
       AddCokernelColiftWithGivenCokernel( ZFunctorCategory( category ),
         
@@ -453,9 +453,9 @@ BindGlobal( "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS",
               
           end;
           
-          cokernel_proj := ZFunctorMorphism( cokernel, morphism_func, Range( test_morphism ) );
+          cokernel_colift := ZFunctorMorphism( cokernel, morphism_func, Range( test_morphism ) );
           
-          return cokernel_proj;
+          return cokernel_colift;
           
       end );
 end );
@@ -1031,9 +1031,9 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeInverse" ], function( ) ADD_INVERSE_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeMonoAsKernelLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT( category ); end ],
+        [ [ "CanComputeMonoAsKernelLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT( category ); end ],
+        [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeAdditionForMorphisms" ], function( ) ADD_ADDITION_FOR_MORPHISMS_IN_Z_FUNCTORS( category ); end ],
         
