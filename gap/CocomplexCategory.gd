@@ -11,14 +11,31 @@
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_COCOMPLEX_CATEGORY" );
 
-DeclareCategory( "IsCocomplexCell",
+DeclareCategory( "IsComplexOrCocomplexCell",
                  IsCapCategoryCell );
 
+DeclareCategory( "IsComplexOrCocomplex",
+                 IsCapCategoryObject and IsComplexOrCocomplexCell );
+
+DeclareCategory( "IsCocomplexCell",
+                 IsComplexOrCocomplexCell );
+
 DeclareCategory( "IsCocomplex",
-                 IsCapCategoryObject and IsCocomplexCell );
+                 IsComplexOrCocomplex and IsCocomplexCell );
 
 DeclareCategory( "IsCochainMap",
                  IsCapCategoryMorphism and IsCocomplexCell );
+
+
+DeclareCategory( "IsComplexCell",
+                 IsComplexOrCocomplexCell );
+
+DeclareCategory( "IsComplex",
+                 IsCapCategoryObject and IsComplexCell );
+
+DeclareCategory( "IsChainMap",
+                 IsCapCategoryMorphism and IsComplexCell );
+
 
 ####################################
 ##
@@ -29,6 +46,9 @@ DeclareCategory( "IsCochainMap",
 DeclareAttribute( "CocomplexCategory",
                   IsCapCategory );
 
+DeclareAttribute( "ComplexCategory",
+                  IsCapCategory );
+
 ####################################
 ##
 ## Attributes
@@ -36,7 +56,7 @@ DeclareAttribute( "CocomplexCategory",
 ####################################
 
 DeclareAttribute( "UnderlyingZFunctorCell",
-                  IsCocomplex );
+                  IsComplexOrCocomplexCell );
 
 ####################################
 ##
@@ -56,12 +76,25 @@ DeclareOperation( "Differential",
 DeclareAttribute( "AsCocomplex",
                   IsZFunctorObject );
 
+DeclareAttribute( "AsComplex",
+                  IsZFunctorObject );
+
 DeclareAttribute( "AsCochainMap",
+                  IsZFunctorMorphism );
+
+DeclareAttribute( "AsChainMap",
                   IsZFunctorMorphism );
 
 DeclareOperation( "CochainMap",
                   [ IsCocomplex, IsZFunctorMorphism, IsCocomplex ] );
 
-KeyDependentOperation( "AsPointedCocomplex", IsCapCategoryObject, IsInt, RETURN_TRUE );
+DeclareOperation( "ChainMap",
+                  [ IsComplexOrCocomplex, IsZFunctorMorphism, IsComplexOrCocomplex ] );
 
-KeyDependentOperation( "AsPointedCochainMap", IsCapCategoryMorphism, IsInt, RETURN_TRUE );
+KeyDependentOperation( "AsPointedCocomplex", IsCapCategoryObject, IsInt, ReturnTrue );
+
+KeyDependentOperation( "AsPointedComplex", IsCapCategoryObject, IsInt, ReturnTrue );
+
+KeyDependentOperation( "AsPointedCochainMap", IsCapCategoryMorphism, IsInt, ReturnTrue );
+
+KeyDependentOperation( "AsPointedChainMap", IsCapCategoryMorphism, IsInt, ReturnTrue );
