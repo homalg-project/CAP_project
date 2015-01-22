@@ -372,7 +372,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
         coproduct := Coproduct( object_product_list );
         
-        return DeductiveSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactor",  [ object_product_list, injection_number ], coproduct );
+        return DeductiveSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactorOfCoproduct",  [ object_product_list, injection_number ], coproduct );
         
     end );
     
@@ -395,7 +395,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddUniversalMorphismFromCoproduct( deductive_system,
+    AddUniversalMorphismFromCoproductWithGivenCoproduct( deductive_system,
                                                          
       function( diagram, sink, coproduct )
         
@@ -885,11 +885,11 @@ InstallGlobalFunction( RECURSIVE_EVAL,
     
     if IsDeductiveSystemCell( list ) then
         
-        if not IsBound( list!.eval ) or not IsBoundElmWPObj( list!.eval, 1 ) then
+        if IsDeductiveSystemCell( History( list ) ) and not HasEvaluation( list ) then
             
             Error( "cannot evaluate object since leaves in history do not have evaluation.\n If you continue from here, your results will be wrong." );
             
-       fi;
+        fi;
         
         return Evaluation( list );
         
@@ -1097,31 +1097,13 @@ InstallMethod( ViewObj,
                
   function( cell )
     
-    if HasEval( cell ) then
+    if HasEvaluation( cell ) then
         
         Print( "<Deductive system hull of: " );
         
-        ViewObj( Eval( cell ) );
+        ViewObj( Evaluation( cell ) );
         
         Print( ">" );
-        
-    else
-        
-        TryNextMethod();
-        
-    fi;
-    
-end );
-
-InstallMethod( String,
-               [ IsDeductiveSystemCell and HasEval ],
-               100000000000000, ##FIXME!!!!
-               
-  function( cell )
-    
-    if HasEval( cell ) then
-        
-        return Concatenation( "Deductive system hull of: ", String( Eval( cell ) ) );
         
     else
         
@@ -1184,6 +1166,12 @@ InstallGlobalFunction( PRINT_HISTORY_RECURSIVE,
     local string, resolve_variable_names, gvars;
     
     resolve_variable_names := ValueOption( "ResolveVariableNames" );
+    
+    if IsHomalgCategoryCell( history ) and IsRecord( History( history ) ) then
+        
+        history := History( history );
+        
+    fi;
     
     if IsRecord( history ) then
         

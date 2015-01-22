@@ -690,10 +690,19 @@ InstallGlobalFunction( CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE,
         
     fi;
     
-    
     if IsHomalgCategoryCell( history ) then
         
-        return false;
+        history := History( history );
+        
+        if not IsRecord( history ) then
+            
+            return false;
+            
+        else
+            
+            return CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE( history, command_tree );
+            
+        fi;
         
     fi;
     
@@ -964,9 +973,15 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
           replaced_history, part_for_well_defined, new_return, arguments, command_check, variable_name_record,
           variable_check;
     
-    if not IsRecord( history ) then
+    if IsHomalgCategoryCell( history ) then
         
-        return fail;
+        history := History( history );
+        
+        if not IsRecord( history ) then
+            
+            return fail;
+            
+        fi;
         
     fi;
 
@@ -994,9 +1009,9 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
             
         fi;
         
-        variable_name_record := FILL_VARIABLE_NAME_RECORD( rule_to_apply, history );
+        variable_name_record := FILL_VARIABLE_NAME_RECORD( history, rule_to_apply!.variable_record );
         
-        variable_check := CHECK_VARIABLE_PAIRS( history, rule_to_apply!.equal_variable_pairs, variable_name_record );
+        variable_check := CHECK_VARIABLE_PAIRS( history, rule_to_apply!.equal_variable_positions, variable_name_record );
         
         if variable_check = false then
             
@@ -1006,7 +1021,7 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
         
         ## if we get here, we have found a rule to apply
         
-        replaced_history := GET_VARIABLE_FROM_POSITION( history, GET_FULL_POSITION( rule_to_apply!.replace ) );
+        replaced_history := GET_VARIABLE_FROM_POSITION( history, GET_FULL_POSITION( rule_to_apply!.replace, variable_name_record ) );
         
         part_for_well_defined := rule_to_apply!.source_list;
         
