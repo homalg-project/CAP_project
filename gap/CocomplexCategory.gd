@@ -12,13 +12,13 @@
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_COCOMPLEX_CATEGORY" );
 
 DeclareCategory( "IsCocomplexCell",
-                 IsHomalgCategoryCell );
+                 IsCapCategoryCell );
 
 DeclareCategory( "IsCocomplex",
-                 IsHomalgCategoryObject and IsCocomplexCell );
+                 IsCapCategoryObject and IsCocomplexCell );
 
 DeclareCategory( "IsCochainMap",
-                 IsHomalgCategoryMorphism and IsCocomplexCell );
+                 IsCapCategoryMorphism and IsCocomplexCell );
 
 ####################################
 ##
@@ -27,7 +27,7 @@ DeclareCategory( "IsCochainMap",
 ####################################
 
 DeclareAttribute( "CocomplexCategory",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 ####################################
 ##
@@ -62,6 +62,6 @@ DeclareAttribute( "AsCochainMap",
 DeclareOperation( "CochainMap",
                   [ IsCocomplex, IsZFunctorMorphism, IsCocomplex ] );
 
-KeyDependentOperation( "AsPointedCocomplex", IsHomalgCategoryObject, IsInt, RETURN_TRUE );
+KeyDependentOperation( "AsPointedCocomplex", IsCapCategoryObject, IsInt, RETURN_TRUE );
 
-KeyDependentOperation( "AsPointedCochainMap", IsHomalgCategoryMorphism, IsInt, RETURN_TRUE );
+KeyDependentOperation( "AsPointedCochainMap", IsCapCategoryMorphism, IsInt, RETURN_TRUE );

@@ -10,10 +10,10 @@
 #############################################################################
 
 DeclareCategory( "IsSerreQuotientCategoryObject",
-                 IsHomalgCategoryObject );
+                 IsCapCategoryObject );
 
 DeclareCategory( "IsSerreQuotientCategoryMorphism",
-                 IsHomalgCategoryMorphism );
+                 IsCapCategoryMorphism );
 
 ##############################################
 ##
@@ -24,13 +24,13 @@ DeclareCategory( "IsSerreQuotientCategoryMorphism",
 DeclareFilter( "WasCreatedAsSerreQuotientCategory" );
 
 DeclareAttribute( "SubcategoryMembershipTestFunctionForSerreQuotient",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UnderlyingHonestCategory",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UnderlyingGeneralizedMorphismCategory",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 ##############################################
 ##
@@ -39,7 +39,7 @@ DeclareAttribute( "UnderlyingGeneralizedMorphismCategory",
 ##############################################
 
 DeclareOperation( "AsSerreQuotientObject",
-                  [ IsHomalgCategory, IsHomalgCategoryObject ] );
+                  [ IsCapCategory, IsCapCategoryObject ] );
 
 DeclareAttribute( "UnderlyingGeneralizedObject",
                   IsSerreQuotientCategoryObject );
@@ -72,26 +72,26 @@ DeclareAttribute( "MorphismAid",
 ##############################################
 
 DeclareOperation( "SerreQuotientCategory",
-                  [ IsHomalgCategory, IsFunction, IsString ] );
+                  [ IsCapCategory, IsFunction, IsString ] );
 
 DeclareOperation( "SerreQuotientCategory",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AsSerreQuotientCategoryObject",
-                  [ IsHomalgCategory, IsHomalgCategoryObject ] );
+                  [ IsCapCategory, IsCapCategoryObject ] );
 
 DeclareOperation( "SerreQuotientCategoryMorphism",
-                  [ IsHomalgCategory, IsGeneralizedMorphism ] );
+                  [ IsCapCategory, IsGeneralizedMorphism ] );
 
 DeclareOperation( "SerreQuotientCategoryMorphism",
-                  [ IsHomalgCategory, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "SerreQuotientCategoryMorphismWithSourceAid",
-                  [ IsHomalgCategory, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "SerreQuotientCategoryMorphismWithRangeAid",
-                  [ IsHomalgCategory, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "AsSerreQuotientCategoryMorphism",
-                  [ IsHomalgCategory, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategory, IsCapCategoryMorphism ] );
 

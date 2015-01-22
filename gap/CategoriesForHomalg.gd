@@ -155,20 +155,20 @@ InstallValue( CATEGORIES_FAMILY_PROPERTIES,
 #!  the category information, the caching, and filters for objects in the category.
 #!  Please note that the object itself is not related to methods, you only need it
 #!  as a handler and a presentation of the category.
-DeclareCategory( "IsHomalgCategory",
+DeclareCategory( "IsCapCategory",
                  IsObject );
 
-DeclareCategory( "IsHomalgCategoryCell",
+DeclareCategory( "IsCapCategoryCell",
                  IsObject );
 
-DeclareCategory( "IsHomalgCategoryObject",
-                 IsHomalgCategoryCell );
+DeclareCategory( "IsCapCategoryObject",
+                 IsCapCategoryCell );
 
-DeclareCategory( "IsHomalgCategoryMorphism",
-                 IsHomalgCategoryCell and IsAdditiveElementWithInverse );
+DeclareCategory( "IsCapCategoryMorphism",
+                 IsCapCategoryCell and IsAdditiveElementWithInverse );
 
-DeclareCategory( "IsHomalgCategoryTwoCell",
-                 IsHomalgCategoryCell );
+DeclareCategory( "IsCapCategoryTwoCell",
+                 IsCapCategoryCell );
 
 ## Earliest possible place
 BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
@@ -178,9 +178,9 @@ BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
     
     for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
         
-        DeclareProperty( i, IsHomalgCategory );
+        DeclareProperty( i, IsCapCategory );
         
-        DeclareProperty( i, IsHomalgCategoryCell );
+        DeclareProperty( i, IsCapCategoryCell );
         
     od;
     
@@ -189,10 +189,10 @@ end );
 INSTALL_CAN_COMPUTE_PROPERTIES( );
 
 DeclareAttribute( "TheoremRecord",
-                  IsHomalgCategory, "mutable" );
+                  IsCapCategory, "mutable" );
 
 DeclareOperation( "AddCategoryToFamily",
-                  [ IsHomalgCategory, IsString ] );
+                  [ IsCapCategory, IsString ] );
 
 ###################################
 ##
@@ -206,17 +206,17 @@ DeclareGlobalFunction( "CREATE_HOMALG_CATEGORY_FILTERS" );
 
 DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
 
-#! @BeginGroup CreateHomalgCategory_Constructor
+#! @BeginGroup CreateCapCategory_Constructor
 
 #! @Description
 #!  Creates a new homalg category from scratch.
 #!  The name is optional. If no name is given, the
 #!  name will be set to a generic but unique name.
-DeclareOperation( "CreateHomalgCategory",
+DeclareOperation( "CreateCapCategory",
                   [ ] );
 
 #!
-DeclareOperation( "CreateHomalgCategory",
+DeclareOperation( "CreateCapCategory",
                   [ IsString ] );
 #! @EndGroup
 
@@ -244,7 +244,7 @@ BindGlobal( "INSTALL_CATEGORY_PROPERTIES",
     
     for i in HOMALG_CATEGORY_PROPERTIES do
         
-        DeclareProperty( i, IsHomalgCategory );
+        DeclareProperty( i, IsCapCategory );
         
     od;
     
@@ -265,19 +265,19 @@ INSTALL_CATEGORY_PROPERTIES( );
 #!  These filters are set true once an object or morphism is added to the
 #!  category. These filters are used to apply the right functions in the method selection.
 DeclareAttribute( "CellFilter",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #!
 DeclareAttribute( "ObjectFilter",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #!
 DeclareAttribute( "MorphismFilter",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #!
 DeclareAttribute( "TwoCellFilter",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #! @EndGroup
 
@@ -288,7 +288,7 @@ DeclareAttribute( "TwoCellFilter",
 #############################################
 
 DeclareProperty( "IsWellDefined",
-                 IsHomalgCategoryCell );
+                 IsCapCategoryCell );
 
 #############################################
 ##
@@ -312,10 +312,10 @@ DeclareProperty( "IsWellDefined",
 #!  argument which returns a morphism with source and target are the argument.
 
 DeclareAttribute( "IdentityMorphismFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "AddIdentityMorphism",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 #! @EndGroup
 
 ####################################
@@ -333,10 +333,10 @@ DeclareOperation( "AddIdentityMorphism",
 #!  PostCompose, which is just CoPreCompose.
 
 DeclareAttribute( "PreComposeFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "AddPreCompose",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 
 #! @EndGroup
@@ -350,10 +350,10 @@ DeclareOperation( "AddPreCompose",
 
 
 DeclareAttribute( "MonoAsKernelLiftFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "AddMonoAsKernelLift",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 ####################################
 ##
@@ -363,10 +363,10 @@ DeclareOperation( "AddMonoAsKernelLift",
 
 
 DeclareAttribute( "EpiAsCokernelColiftFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "AddEpiAsCokernelColift",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 ####################################
 ##
@@ -376,10 +376,10 @@ DeclareOperation( "AddEpiAsCokernelColift",
 
 
 DeclareAttribute( "InverseFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "AddInverse",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 ####################################
 ##
@@ -388,13 +388,13 @@ DeclareOperation( "AddInverse",
 ####################################
 
 DeclareOperation( "SetCaching",
-                  [ IsHomalgCategory, IsString, IsString ] );
+                  [ IsCapCategory, IsString, IsString ] );
 
 DeclareOperation( "SetCachingToWeak",
-                  [ IsHomalgCategory, IsString ] );
+                  [ IsCapCategory, IsString ] );
 
 DeclareOperation( "SetCachingToCrisp",
-                  [ IsHomalgCategory, IsString ] );
+                  [ IsCapCategory, IsString ] );
 
 DeclareOperation( "DeactivateCaching",
-                  [ IsHomalgCategory, IsString ] );
+                  [ IsCapCategory, IsString ] );

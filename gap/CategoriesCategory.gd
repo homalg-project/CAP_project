@@ -8,7 +8,7 @@
 ##
 #! @Chapter Category of categories
 #!  Categories itself with functors as morphisms form a category.
-#!  So the data structure of <C>HomalgCategory</C>s is designed to be objects in a
+#!  So the data structure of <C>CapCategory</C>s is designed to be objects in a
 #!  category. This category is implemented in <C>CATEGORIES_FOR_HOMALG_Cat</C>.
 #!  For every category, the corresponding object in Cat can be obtained via <C>AsCatObject</C>.
 #!  The implemetation of the category of categories offers a data structure for functors.
@@ -46,16 +46,16 @@ DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_CREATE_Cat" );
 
 #! @Description
 #!  The GAP category of homalg categories seen as object in Cat.
-DeclareCategory( "IsHomalgCategoryAsCatObject",
-                 IsHomalgCategoryObject );
+DeclareCategory( "IsCapCategoryAsCatObject",
+                 IsCapCategoryObject );
 
 #! @Description
 #!  The GAP category of functors.
 DeclareCategory( "IsHomalgFunctor",
-                 IsHomalgCategoryMorphism );
+                 IsCapCategoryMorphism );
 
 DeclareCategory( "IsHomalgNaturalTransformation",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 ####################################
 ##
@@ -65,20 +65,20 @@ DeclareCategory( "IsHomalgNaturalTransformation",
 
 #! @Description
 #!  Given a homalg category, this method returns the corresponding object in Cat.
-#!  For technical reasons, the filter <C>IsHomalgCategory</C> must not imply the filter <C>IsHomalgCategoryObject</C>.
+#!  For technical reasons, the filter <C>IsCapCategory</C> must not imply the filter <C>IsCapCategoryObject</C>.
 #!  For example, if <C>InitialObject</C> is applied to an object, it returns the initial object of its category. If it is
 #!  applied to a category, it returns the initial object of the category. If a homalg category would be
 #!  a category object itself, this would be ambiguous.
 #!  So categories must be wrapped in a CatObject to be an object in Cat.
-#!  This method returns the wrapper object. The category can be reobtained by <C>AsHomalgCategory</C>.
+#!  This method returns the wrapper object. The category can be reobtained by <C>AsCapCategory</C>.
 DeclareAttributeWithToDoForIsWellDefined( "AsCatObject",
-                                          IsHomalgCategory );
+                                          IsCapCategory );
 
 #! @Description
 #!  For an object in Cat, this method returns the underlying homalg category. This method is inverse to <C>AsCatObject</C>, i.e.
-#!  AsHomalgCategory( AsCatObject( A ) ) = A.
-DeclareAttribute( "AsHomalgCategory",
-                  IsHomalgCategoryAsCatObject );
+#!  AsCapCategory( AsCatObject( A ) ) = A.
+DeclareAttribute( "AsCapCategory",
+                  IsCapCategoryAsCatObject );
 
 ####################################
 ##
@@ -107,19 +107,19 @@ DeclareAttribute( "AsHomalgCategory",
 #!  Both can be given as object in Cat or as category itself.
 #! @Arguments name,A,B
 DeclareOperation( "HomalgFunctor",
-                  [ IsString, IsHomalgCategory, IsHomalgCategory ] );
+                  [ IsString, IsCapCategory, IsCapCategory ] );
 
 #! @Arguments name,A,B
 DeclareOperation( "HomalgFunctor",
-                  [ IsString, IsHomalgCategoryAsCatObject, IsHomalgCategory ] );
+                  [ IsString, IsCapCategoryAsCatObject, IsCapCategory ] );
 
 #! @Arguments name,A,B
 DeclareOperation( "HomalgFunctor",
-                  [ IsString, IsHomalgCategory, IsHomalgCategoryAsCatObject ] );
+                  [ IsString, IsCapCategory, IsCapCategoryAsCatObject ] );
 
 #! @Arguments name,A,B
 DeclareOperation( "HomalgFunctor",
-                  [ IsString, IsHomalgCategoryAsCatObject, IsHomalgCategoryAsCatObject ] );
+                  [ IsString, IsCapCategoryAsCatObject, IsCapCategoryAsCatObject ] );
 
 #! @EndGroup
 
@@ -134,7 +134,7 @@ DeclareOperation( "HomalgFunctor",
 #! @Description
 #!  This operation adds a function to the functor which can then be applied to
 #!  objects in the source. The given function <A>function</A> has to take one argument which
-#!  must be an object in the source category and should return a HomalgCategoryObject. The object
+#!  must be an object in the source category and should return a CapCategoryObject. The object
 #!  is automatically added to the range of the functor when it is applied to the object.
 #!  The function is stored in the attribute <C>ObjectFunction</C> of <A>functor</A>.
 #! @Arguments functor, function
@@ -174,15 +174,15 @@ DeclareAttribute( "MorphismFunction",
 
 #! @Description
 #!  Applies the functor <A>func</A> to the object <A>A</A> resp. to the morphism $\tau$.
-#! @Returns IsHomalgCategoryObject
+#! @Returns IsCapCategoryObject
 #! @Arguments func,A
 DeclareOperation( "ApplyFunctor",
-                  [ IsHomalgFunctor, IsHomalgCategoryObject ] );
+                  [ IsHomalgFunctor, IsCapCategoryObject ] );
 
 #! @Arguments func,tau
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 DeclareOperation( "ApplyFunctor",
-                  [ IsHomalgFunctor, IsHomalgCategoryMorphism ] );
+                  [ IsHomalgFunctor, IsCapCategoryMorphism ] );
 
 #! @EndGroup
 
@@ -264,7 +264,7 @@ DeclareOperation( "AddNaturalTransformationFunction",
                   [ IsHomalgNaturalTransformation, IsFunction ] );
 
 DeclareOperation( "ApplyNaturalTransformation",
-                  [ IsHomalgNaturalTransformation, IsHomalgCategoryObject ] );
+                  [ IsHomalgNaturalTransformation, IsCapCategoryObject ] );
 
 ####################################
 ##
@@ -280,7 +280,7 @@ DeclareOperation( "ApplyNaturalTransformation",
 #!  a new image is created. This might cause inconsistencies.
 #! @Returns IsRecord
 DeclareOperation( "CatFunctorPreimageList",
-                  [ IsHomalgCategoryCell ] );
+                  [ IsCapCategoryCell ] );
 
 #! @Description
 #!  Retuns the caching object which stores the results of the functor <A>functor</A> applied to objects.

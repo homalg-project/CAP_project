@@ -6,7 +6,7 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Category morphism
-#!  Any GAP object which is IsHomalgCategoryMorphism can be added to a category
+#!  Any GAP object which is IsCapCategoryMorphism can be added to a category
 #!  and then becomes a morphism in this category.
 #!  Any morphism can belong to one or no category.
 #!  After a GAP object is added to the category, it knows which things can be
@@ -33,22 +33,22 @@
 ###################################
 
 #! @Group Category getter
-DeclareAttribute( "HomalgCategory",
-                  IsHomalgCategoryMorphism );
+DeclareAttribute( "CapCategory",
+                  IsCapCategoryMorphism );
 
 DeclareAttribute( "Source",
-                  IsHomalgCategoryMorphism );
+                  IsCapCategoryMorphism );
 
 DeclareAttribute( "Range",
-                  IsHomalgCategoryMorphism );
+                  IsCapCategoryMorphism );
 
 DeclareAttribute( "UnderlyingObject",
-                  IsHomalgCategoryMorphism );
+                  IsCapCategoryMorphism );
 
 # this attribute is also an implied operation
 
 DeclareOperation( "InverseOp",
-                  [ IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism ] );
 
 ###################################
 ##
@@ -71,56 +71,56 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 ###################################
 
 DeclareFamilyProperty( "IsMonomorphism",
-                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareOperation( "AddIsMonomorphism",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "IsMonomorphismFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareSynonymAttr( "IsSubobject",
                     IsMonomorphism );
 
 DeclareFamilyProperty( "IsEpimorphism",
-                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareOperation( "AddIsEpimorphism",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "IsEpimorphismFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareSynonymAttr( "IsFactorobject",
                     IsEpimorphism );
 
 DeclareFamilyProperty( "IsIsomorphism",
-                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareOperation( "AddIsIsomorphism",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "IsIsomorphismFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareFamilyProperty( "IsEndomorphism",
-                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareFamilyProperty( "IsAutomorphism",
-                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareFamilyProperty( "IsSplitMonomorphism",
-                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareFamilyProperty( "IsSplitEpimorphism",
-                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
 ## TODO: IsIdentity
 DeclareFamilyProperty( "IsOne",
-                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
 DeclareFamilyProperty( "IsIdempotent",
-                       IsHomalgCategoryMorphism, "morphism" : reinstall := false );
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
 ###################################
 ##
@@ -129,7 +129,7 @@ DeclareFamilyProperty( "IsIdempotent",
 ###################################
 
 DeclareOperation( "Add",
-                  [ IsHomalgCategory, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategory, IsCapCategoryMorphism ] );
 
 ###################################
 ##
@@ -138,43 +138,43 @@ DeclareOperation( "Add",
 ###################################
 
 DeclareOperation( "AddIsEqualForMorphisms",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "MorphismEqualityFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "IsEqualForMorphisms",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "AddPropertyToMatchAtIsEqualForMorphisms",
-                  [ IsHomalgCategory, IsString ] );
+                  [ IsCapCategory, IsString ] );
 
 DeclareOperation( "AddIsZeroForMorphisms",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "IsZeroForMorphismsFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "AddAdditionForMorphisms",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "AdditionForMorphismsFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "AddAdditiveInverseForMorphisms",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "AdditiveInverseForMorphismsFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "AddZeroMorphism",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "ZeroMorphismFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "TransportHom",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ###################################
 ##
@@ -183,28 +183,28 @@ DeclareOperation( "TransportHom",
 ###################################
 
 DeclareOperation( "IsEqualAsSubobject",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "IsEqualAsFactorobject",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "Dominates",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "AddDominates",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "DominatesFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "Codominates",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "AddCodominates",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "CodominatesFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 ###################################
 ##
@@ -213,10 +213,10 @@ DeclareAttribute( "CodominatesFunction",
 ###################################
 
 DeclareOperation( "PreCompose",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareAttributeWithToDoForIsWellDefined( "EpiMonoFactorization",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 ###################################
 ##
@@ -225,10 +225,10 @@ DeclareAttributeWithToDoForIsWellDefined( "EpiMonoFactorization",
 ###################################
 
 DeclareOperation( "AddIsWellDefinedForMorphisms",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "IsWellDefinedForMorphismsFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 ###################################
 ##
@@ -245,7 +245,7 @@ DeclareAttribute( "IsWellDefinedForMorphismsFunction",
 #! @Returns $u$
 #! @Arguments monomorphism, test_morphism
 DeclareOperation( "MonoAsKernelLift",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ####################################
 ##
@@ -262,7 +262,7 @@ DeclareOperation( "MonoAsKernelLift",
 #! @Returns $u$
 #! @Arguments epimorphism, test_morphism
 DeclareOperation( "EpiAsCokernelColift",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 
 ###################################
@@ -273,4 +273,4 @@ DeclareOperation( "EpiAsCokernelColift",
 
 
 DeclareOperation( "PostCompose",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );

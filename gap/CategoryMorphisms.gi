@@ -13,16 +13,16 @@
 ##
 ######################################
 
-DeclareRepresentation( "IsHomalgCategoryMorphismRep",
-                       IsAttributeStoringRep and IsHomalgCategoryMorphism,
+DeclareRepresentation( "IsCapCategoryMorphismRep",
+                       IsAttributeStoringRep and IsCapCategoryMorphism,
                        [ ] );
 
-BindGlobal( "TheFamilyOfHomalgCategoryMorphisms",
-        NewFamily( "TheFamilyOfHomalgCategoryMorphisms" ) );
+BindGlobal( "TheFamilyOfCapCategoryMorphisms",
+        NewFamily( "TheFamilyOfCapCategoryMorphisms" ) );
 
-BindGlobal( "TheTypeOfHomalgCategoryMorphisms",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
-                IsHomalgCategoryMorphismRep ) );
+BindGlobal( "TheTypeOfCapCategoryMorphisms",
+        NewType( TheFamilyOfCapCategoryMorphisms,
+                IsCapCategoryMorphismRep ) );
 
 ######################################
 ##
@@ -30,15 +30,15 @@ BindGlobal( "TheTypeOfHomalgCategoryMorphisms",
 ##
 ######################################
 # 
-# InstallTrueMethod( IsSplitMonomorphism and IsSplitEpimorphism, IsHomalgCategoryMorphism and IsIsomorphism );
+# InstallTrueMethod( IsSplitMonomorphism and IsSplitEpimorphism, IsCapCategoryMorphism and IsIsomorphism );
 # 
-# InstallTrueMethod( IsAutomorphism, IsHomalgCategoryMorphism and IsOne );
+# InstallTrueMethod( IsAutomorphism, IsCapCategoryMorphism and IsOne );
 # 
-# InstallTrueMethod( IsIsomorphism and IsEndomorphism, IsHomalgCategoryMorphism and IsAutomorphism );
+# InstallTrueMethod( IsIsomorphism and IsEndomorphism, IsCapCategoryMorphism and IsAutomorphism );
 # 
-# InstallTrueMethod( IsMonomorphism, IsHomalgCategoryMorphism and IsSplitMonomorphism );
+# InstallTrueMethod( IsMonomorphism, IsCapCategoryMorphism and IsSplitMonomorphism );
 # 
-# InstallTrueMethod( IsEpimorphism, IsHomalgCategoryMorphism and IsSplitEpimorphism );
+# InstallTrueMethod( IsEpimorphism, IsCapCategoryMorphism and IsSplitEpimorphism );
 # 
 # InstallTrueMethod( IsIsomorphism, IsMonomorphism and IsEpimorphism and IsAbelianCategory );#TODO: weaker?
 
@@ -53,7 +53,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
   function( category, morphism )
     local entry;
     
-    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "HomalgCategory" ] ],
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "CapCategory" ] ],
                                                          [ category, morphism ],
                                                          CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
                                                           );
@@ -62,7 +62,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
     
     if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM ) then
         
-        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "HomalgCategory" ] ],
+        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "CapCategory" ] ],
                                                              [ category, morphism ],
                                                              category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM
                                                               );
@@ -107,7 +107,7 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,
 
 ##
 InstallMethod( AddIsMonomorphism,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -116,7 +116,7 @@ InstallMethod( AddIsMonomorphism,
     SetIsMonomorphismFunction( category, func );
     
     InstallMethod( IsMonomorphism,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   [ IsCapCategoryMorphism and MorphismFilter( category ) ],
                    
       function( morphism )
         
@@ -130,7 +130,7 @@ end );
 InstallTrueMethod( CanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsMonomorphism,
-               [ IsHomalgCategoryMorphism and CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
+               [ IsCapCategoryMorphism and CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
                -9900, #FIXME
                
   function( morphism )
@@ -148,7 +148,7 @@ InstallTrueMethod( CanComputeIsMonomorphism,
                    and CanComputeUniversalMorphismIntoPullback );
 
 InstallMethod( IsMonomorphism,
-               [ IsHomalgCategoryMorphism
+               [ IsCapCategoryMorphism
                  and CanComputeIsIsomorphism
                  and CanComputeIdentityMorphism
                  and CanComputeProjectionInFactorOfPullback
@@ -175,7 +175,7 @@ end );
 
 ##
 InstallMethod( AddIsEpimorphism,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -184,7 +184,7 @@ InstallMethod( AddIsEpimorphism,
     SetIsEpimorphismFunction( category, func );
     
     InstallMethod( IsEpimorphism,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   [ IsCapCategoryMorphism and MorphismFilter( category ) ],
                    
       function( morphism )
         
@@ -198,7 +198,7 @@ end );
 InstallTrueMethod( CanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsEpimorphism,
-               [ IsHomalgCategoryMorphism and CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
+               [ IsCapCategoryMorphism and CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
                -9900, #FIXME
                
   function( morphism )
@@ -216,7 +216,7 @@ InstallTrueMethod( CanComputeIsEpimorphism,
                    and CanComputeUniversalMorphismFromPushout );
 
 InstallMethod( IsEpimorphism,
-               [ IsHomalgCategoryMorphism
+               [ IsCapCategoryMorphism
                  and CanComputeIsIsomorphism
                  and CanComputeIdentityMorphism
                  and CanComputeInjectionOfCofactorOfPushout
@@ -243,7 +243,7 @@ end );
 
 ##
 InstallMethod( AddIsIsomorphism,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -252,7 +252,7 @@ InstallMethod( AddIsIsomorphism,
     SetIsIsomorphismFunction( category, func );
     
     InstallMethod( IsIsomorphism,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   [ IsCapCategoryMorphism and MorphismFilter( category ) ],
                    
       function( morphism )
         
@@ -266,7 +266,7 @@ end );
 InstallTrueMethod( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
 
 InstallMethod( IsIsomorphism,
-               [ IsHomalgCategoryMorphism and CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory ],
+               [ IsCapCategoryMorphism and CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory ],
                -9999, #FIXME
                
   function( morphism )
@@ -277,13 +277,13 @@ end );
 
 ##
 InstallMethod( UnderlyingObject,
-               [ IsHomalgCategoryMorphism and IsSubobject ],
+               [ IsCapCategoryMorphism and IsSubobject ],
                
   Source );
 
 ##
 InstallMethod( UnderlyingObject,
-               [ IsHomalgCategoryMorphism and IsFactorobject ],
+               [ IsCapCategoryMorphism and IsFactorobject ],
                
   Range );
 
@@ -291,9 +291,9 @@ InstallTrueMethod( CanComputeEqualityOfSubobjects, CanComputeDominates );
 
 ##
 InstallMethodWithCacheFromObject( IsEqualAsSubobject,
-                                  [ IsHomalgCategoryMorphism and IsSubobject
+                                  [ IsCapCategoryMorphism and IsSubobject
                                     and SetCanComputeDominates,
-                                    IsHomalgCategoryMorphism and IsSubobject ],
+                                    IsCapCategoryMorphism and IsSubobject ],
                                   
   function( sub1, sub2 );
     
@@ -312,9 +312,9 @@ InstallTrueMethod( CanComputeEqualityOfFactorobjects, CanComputeCodominates );
 
 ##
 InstallMethodWithCacheFromObject( IsEqualAsFactorobject,
-                                  [ IsHomalgCategoryMorphism and IsFactorobject
+                                  [ IsCapCategoryMorphism and IsFactorobject
                                     and CanComputeCodominates, 
-                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                    IsCapCategoryMorphism and IsFactorobject ],
                                   
   function( factor1, factor2 )
     
@@ -331,7 +331,7 @@ end );
 
 ##
 InstallMethod( AddDominates,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -340,8 +340,8 @@ InstallMethod( AddDominates,
     SetDominatesFunction( category, func );
     
     InstallMethodWithCache( Dominates,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsSubobject,
-                              IsHomalgCategoryMorphism and MorphismFilter( category ) and IsSubobject ],
+                            [ IsCapCategoryMorphism and MorphismFilter( category ) and IsSubobject,
+                              IsCapCategoryMorphism and MorphismFilter( category ) and IsSubobject ],
                             
       function( sub1, sub2 )
         
@@ -360,7 +360,7 @@ end );
 
 ##
 InstallMethod( AddCodominates,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -369,8 +369,8 @@ InstallMethod( AddCodominates,
     SetCodominatesFunction( category, func );
     
     InstallMethodWithCache( Codominates,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsFactorobject,
-                              IsHomalgCategoryMorphism and MorphismFilter( category ) and IsFactorobject ],
+                            [ IsCapCategoryMorphism and MorphismFilter( category ) and IsFactorobject,
+                              IsCapCategoryMorphism and MorphismFilter( category ) and IsFactorobject ],
                             
       function( factor1, factor2 )
         
@@ -392,11 +392,11 @@ InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeCod
 
 ##
 InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsHomalgCategoryMorphism and IsSubobject
+                                  [ IsCapCategoryMorphism and IsSubobject
                                     and CanComputeCokernelProj
                                     and CanComputeCodominates
                                     and IsPreAbelianCategory,
-                                    IsHomalgCategoryMorphism and IsSubobject ],
+                                    IsCapCategoryMorphism and IsSubobject ],
                                     -9999, # FIXME (has to be the lowest Dominates fallback method)
                                   
   function( sub1, sub2 )
@@ -414,11 +414,11 @@ InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZ
 
 ##
 InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsHomalgCategoryMorphism and IsSubobject 
+                                  [ IsCapCategoryMorphism and IsSubobject 
                                     and CanComputeCokernelProj
                                     and CanComputeIsZeroForMorphisms
                                     and CanComputePreCompose, 
-                                    IsHomalgCategoryMorphism and IsSubobject ],
+                                    IsCapCategoryMorphism and IsSubobject ],
                                     -9000, # FIXME
                                   
   function( sub1, sub2 )
@@ -437,11 +437,11 @@ InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeDomi
 
 ##
 InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsHomalgCategoryMorphism and IsFactorobject
+                                  [ IsCapCategoryMorphism and IsFactorobject
                                     and CanComputeKernelEmb
                                     and CanComputeDominates
                                     and IsPreAbelianCategory,
-                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                    IsCapCategoryMorphism and IsFactorobject ],
                                     -9999, # FIXME (has to be the lowest Codominates fallback method)
                                   
   function( factor1, factor2 )
@@ -459,11 +459,11 @@ InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZe
 
 ##
 InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsHomalgCategoryMorphism and IsFactorobject
+                                  [ IsCapCategoryMorphism and IsFactorobject
                                     and CanComputeKernelEmb
                                     and CanComputeIsZeroForMorphisms
                                     and CanComputePreCompose,
-                                    IsHomalgCategoryMorphism and IsFactorobject ],
+                                    IsCapCategoryMorphism and IsFactorobject ],
                                     -9000, # FIXME
                                   
   function( factor1, factor2 )
@@ -484,14 +484,14 @@ end );
 ######################################
 
 InstallMethod( Add,
-               [ IsHomalgCategory, IsHomalgCategoryMorphism ],
+               [ IsCapCategory, IsCapCategoryMorphism ],
                
   function( category, morphism )
     local obj_filter, filter;
     
-    if HasHomalgCategory( morphism ) then
+    if HasCapCategory( morphism ) then
         
-        if IsIdenticalObj( HomalgCategory( morphism ), category ) then
+        if IsIdenticalObj( CapCategory( morphism ), category ) then
             
             return;
             
@@ -511,7 +511,7 @@ InstallMethod( Add,
     
     SetFilterObj( morphism, filter );
     
-    SetHomalgCategory( morphism, category );
+    SetCapCategory( morphism, category );
 
     INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM( category, morphism );
     
@@ -525,7 +525,7 @@ end );
 
 ##
 InstallMethod( AddIsEqualForMorphisms,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -534,7 +534,7 @@ InstallMethod( AddIsEqualForMorphisms,
     SetCanComputeIsEqualForMorphisms( category, true );
     
     InstallMethodWithCache( IsEqualForMorphisms,
-                            [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                            [ IsCapCategoryMorphism and MorphismFilter( category ), IsCapCategoryMorphism and MorphismFilter( category ) ],
                             
       function( morphism_1, morphism_2 )
         local return_value;
@@ -561,7 +561,7 @@ end );
 
 ##
 InstallMethod( \=,
-               [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   IsEqualForMorphisms );
 
@@ -571,7 +571,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS,
   function( morphism_1, morphism_2 )
     local category, i, entry;
     
-    category := HomalgCategory( morphism_1 );
+    category := CapCategory( morphism_1 );
     
     for i in PROPAGATION_LIST_FOR_EQUAL_MORPHISMS do
         
@@ -593,7 +593,7 @@ end );
 
 ##
 InstallMethod( AddPropertyToMatchAtIsEqualForMorphisms,
-               [ IsHomalgCategory, IsString ],
+               [ IsCapCategory, IsString ],
                
   function( category, name )
     
@@ -613,7 +613,7 @@ end );
 
 ##
 InstallMethod( AddIsZeroForMorphisms,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -622,7 +622,7 @@ InstallMethod( AddIsZeroForMorphisms,
     SetCanComputeIsZeroForMorphisms( category, true );
     
     InstallMethod( IsZero,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   [ IsCapCategoryMorphism and MorphismFilter( category ) ],
                    
         func );
     
@@ -630,7 +630,7 @@ end );
 
 ##
 InstallMethod( AddAdditionForMorphisms,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -639,7 +639,7 @@ InstallMethod( AddAdditionForMorphisms,
     SetCanComputeAdditionForMorphisms( category, true );
     
     InstallMethodWithToDoForIsWellDefined( \+,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           [ IsCapCategoryMorphism and MorphismFilter( category ), IsCapCategoryMorphism and MorphismFilter( category ) ],
                    
       function( mor1, mor2 )
         local return_value;
@@ -662,7 +662,7 @@ end );
 
 ##
 InstallMethod( AddAdditiveInverseForMorphisms,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -671,7 +671,7 @@ InstallMethod( AddAdditiveInverseForMorphisms,
     SetCanComputeAdditiveInverseForMorphisms( category, true );
     
     InstallMethodWithToDoForIsWellDefined( AdditiveInverse,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           [ IsCapCategoryMorphism and MorphismFilter( category ) ],
                    
       function( mor )
         local additive_inverse;
@@ -690,7 +690,7 @@ end );
 
 ##
 InstallMethod( AddZeroMorphism,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -699,7 +699,7 @@ InstallMethod( AddZeroMorphism,
     SetCanComputeZeroMorphism( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
-                                           [ IsHomalgCategoryObject and ObjectFilter( category ), IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                           [ IsCapCategoryObject and ObjectFilter( category ), IsCapCategoryObject and ObjectFilter( category ) ],
                                            
       function( source, range )
         local return_value;
@@ -718,7 +718,7 @@ end );
 
 ##
 InstallMethod( Zero,
-               [ IsHomalgCategoryMorphism and SetCanComputeZeroMorphism ],
+               [ IsCapCategoryMorphism and SetCanComputeZeroMorphism ],
                
   function( mor )
     
@@ -738,7 +738,7 @@ end );
 ## TransportHom( mor, equality_source, equality_range ): x' -> y'
 ##
 InstallMethodWithCacheFromObject( TransportHom,
-                                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+                                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( mor, equality_source, equality_range )
     
@@ -759,8 +759,8 @@ end );
 InstallTrueMethod( CanComputePostCompose, CanComputePreCompose );
 
 InstallMethodWithCacheFromObject( PostCompose,
-                                  [ IsHomalgCategoryMorphism and CanComputePreCompose,
-                                  IsHomalgCategoryMorphism and CanComputePreCompose ],
+                                  [ IsCapCategoryMorphism and CanComputePreCompose,
+                                  IsCapCategoryMorphism and CanComputePreCompose ],
                
   function( right_mor, left_mor )
     
@@ -773,7 +773,7 @@ end : ArgumentNumber := 1 );
 InstallTrueMethod( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
 
 InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                       [ IsHomalgCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
+                                       [ IsCapCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
                                        -9999, #FIXME
                                        
   function( mor )
@@ -790,7 +790,7 @@ end );
 InstallTrueMethod( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
 
 InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                       [ IsHomalgCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
+                                       [ IsCapCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
                                        -9998, #FIXME
                                        
   function( mor )
@@ -811,7 +811,7 @@ end );
 ## Caching this method is not necessary. It does not create any new object.
 ## Note: this actually is an in-build relation which is not done by the deductive system.
 InstallMethod( PreCompose,
-               [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism and IsOne ],
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism and IsOne ],
                
   function( morphism, id )
     
@@ -828,7 +828,7 @@ end );
 ## Caching this method is not necessary. It does not create any new object.
 ## Note: this actually is an in-build relation which is not done by the deductive system.
 InstallMethod( PreCompose,
-               [ IsHomalgCategoryMorphism and IsOne, IsHomalgCategoryMorphism ],
+               [ IsCapCategoryMorphism and IsOne, IsCapCategoryMorphism ],
                
   function( id, morphism )
     
@@ -850,7 +850,7 @@ end );
 
 ##
 InstallMethod( AddIsWellDefinedForMorphisms,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -859,7 +859,7 @@ InstallMethod( AddIsWellDefinedForMorphisms,
     SetIsWellDefinedForMorphismsFunction( category, func );
     
     InstallMethod( IsWellDefined,
-                   [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                   [ IsCapCategoryMorphism and MorphismFilter( category ) ],
                    
       function( morphism )
         
@@ -905,7 +905,7 @@ end );
 InstallTrueMethod( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );
 
 InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
-                                       [ IsHomalgCategoryMorphism ],
+                                       [ IsCapCategoryMorphism ],
                                        
   function( morphism )
     local kernel_embedding, epimorphism, monomorphism;
@@ -937,13 +937,13 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT,
         
         string := "morphism in the category ";
         
-        Append( string, Name( HomalgCategory( object ) ) );
+        Append( string, Name( CapCategory( object ) ) );
         
         return string;
         
     end;
     
-    print_graph := CreatePrintingGraph( IsHomalgCategoryMorphism, morphism_function );
+    print_graph := CreatePrintingGraph( IsCapCategoryMorphism, morphism_function );
     
     AddRelationToGraph( print_graph,
                         rec( Source := [ rec( Conditions := "IsIsomorphism",
@@ -993,10 +993,10 @@ end );
 CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT( );
 
 InstallMethod( String,
-               [ IsHomalgCategoryMorphism ],
+               [ IsCapCategoryMorphism ],
                
   function( morphism )
     
-    return Concatenation( "A morphism in ", Name( HomalgCategory( morphism ) ) );
+    return Concatenation( "A morphism in ", Name( CapCategory( morphism ) ) );
     
 end );

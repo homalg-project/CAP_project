@@ -15,16 +15,16 @@
 ##
 ######################################
 
-DeclareRepresentation( "IsHomalgCategoryObjectRep",
-                       IsAttributeStoringRep and IsHomalgCategoryObject,
+DeclareRepresentation( "IsCapCategoryObjectRep",
+                       IsAttributeStoringRep and IsCapCategoryObject,
                        [ ] );
 
-BindGlobal( "TheFamilyOfHomalgCategoryObjects",
-        NewFamily( "TheFamilyOfHomalgCategoryObjects" ) );
+BindGlobal( "TheFamilyOfCapCategoryObjects",
+        NewFamily( "TheFamilyOfCapCategoryObjects" ) );
 
-BindGlobal( "TheTypeOfHomalgCategoryObjects",
-        NewType( TheFamilyOfHomalgCategoryObjects,
-                IsHomalgCategoryObjectRep ) );
+BindGlobal( "TheTypeOfCapCategoryObjects",
+        NewType( TheFamilyOfCapCategoryObjects,
+                IsCapCategoryObjectRep ) );
 
 ######################################
 ##
@@ -32,7 +32,7 @@ BindGlobal( "TheTypeOfHomalgCategoryObjects",
 ##
 ######################################
 
-InstallTrueMethod( IsInjective and IsProjective, IsHomalgCategoryObject and IsZero );
+InstallTrueMethod( IsInjective and IsProjective, IsCapCategoryObject and IsZero );
 
 #######################################
 ##
@@ -47,7 +47,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
   function( category, object )
     local entry;
     
-    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "HomalgCategory" ] ],
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "CapCategory" ] ],
                                                          [ category, object ],
                                                          CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
                                                        );
@@ -56,7 +56,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
     
     if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS ) then
         
-        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "HomalgCategory" ] ],
+        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "CapCategory" ] ],
                                                              [ category, object ],
                                                              category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS
                                                            );
@@ -85,7 +85,7 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS,
 
 ##
 InstallMethod( AddIsEqualForObjects,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -94,7 +94,7 @@ InstallMethod( AddIsEqualForObjects,
 end );
 
 InstallMethodWithCacheFromObject( IsEqualForObjects,
-                                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ],
+                                  [ IsCapCategoryObject, IsCapCategoryObject ],
                                   
   function( object_1, object_2 )
     local category, return_value;
@@ -105,9 +105,9 @@ InstallMethodWithCacheFromObject( IsEqualForObjects,
       
     fi;
     
-    category := HomalgCategory( object_1 );
+    category := CapCategory( object_1 );
     
-    if not IsIdenticalObj( category, HomalgCategory( object_2 ) ) then
+    if not IsIdenticalObj( category, CapCategory( object_2 ) ) then
       
       return false;
       
@@ -133,7 +133,7 @@ end );
 
 ##
 InstallMethod( \=,
-               [ IsHomalgCategoryObject, IsHomalgCategoryObject ],
+               [ IsCapCategoryObject, IsCapCategoryObject ],
                
   IsEqualForObjects );
 
@@ -143,7 +143,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS,
   function( object_1, object_2 )
     local category, i, entry;
     
-    category := HomalgCategory( object_1 );
+    category := CapCategory( object_1 );
     
     for i in PROPAGATION_LIST_FOR_EQUAL_OBJECTS do
         
@@ -165,7 +165,7 @@ end );
 
 ##
 InstallMethod( AddPropertyToMatchAtIsEqualForObjects,
-               [ IsHomalgCategory, IsString ],
+               [ IsCapCategory, IsString ],
                
   function( category, name )
     
@@ -190,14 +190,14 @@ end );
 #######################################
 
 InstallMethod( Add,
-               [ IsHomalgCategory, IsHomalgCategoryObject ],
+               [ IsCapCategory, IsCapCategoryObject ],
                
   function( category, object )
     local filter;
     
-    if HasHomalgCategory( object ) then
+    if HasCapCategory( object ) then
         
-        if IsIdenticalObj( HomalgCategory( object ), category ) then
+        if IsIdenticalObj( CapCategory( object ), category ) then
             
             return;
             
@@ -213,7 +213,7 @@ InstallMethod( Add,
     
     SetFilterObj( object, filter );
     
-    SetHomalgCategory( object, category );
+    SetCapCategory( object, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT( category, object );
     
@@ -226,11 +226,11 @@ InstallTrueMethod( CanComputeZeroMorphism, CanComputePreCompose
 
 ##TODO
 InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
-                                       [ IsHomalgCategoryObject
+                                       [ IsCapCategoryObject
                                      and CanComputePreCompose
                                      and CanComputeUniversalMorphismIntoTerminalObject
                                      and IsAdditiveCategory,
-                                         IsHomalgCategoryObject
+                                         IsCapCategoryObject
                                      and CanComputeUniversalMorphismFromInitialObject
                                      and IsAdditiveCategory ],
                                        -99999, #FIXME
@@ -249,7 +249,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallMethod( AddIsWellDefinedForObjects,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -258,7 +258,7 @@ InstallMethod( AddIsWellDefinedForObjects,
     SetIsWellDefinedForObjectsFunction( category, func );
     
     InstallMethod( IsWellDefined,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                   [ IsCapCategoryObject and ObjectFilter( category ) ],
                    
       function( object )
         
@@ -276,7 +276,7 @@ end );
 
 ##
 InstallMethod( AddIsZeroForObjects,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
   
@@ -285,7 +285,7 @@ InstallMethod( AddIsZeroForObjects,
     SetIsZeroForObjectsFunction( category, func );
     
     InstallMethod( IsZero,
-                   [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                   [ IsCapCategoryObject and ObjectFilter( category ) ],
                    
       function( object )
         
@@ -299,7 +299,7 @@ end );
 InstallTrueMethod( SetCanComputeIsZeroForObjects, CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms );
 
 InstallMethod( IsZero,
-               [ IsHomalgCategoryObject and CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms ],
+               [ IsCapCategoryObject and CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms ],
                -9999, #FIXME
                
   function( object )
@@ -325,13 +325,13 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT,
         
         string := "object in the category ";
         
-        Append( string, Name( HomalgCategory( object ) ) );
+        Append( string, Name( CapCategory( object ) ) );
         
         return string;
         
     end;
     
-    print_graph := CreatePrintingGraph( IsHomalgCategoryObject, object_function );
+    print_graph := CreatePrintingGraph( IsCapCategoryObject, object_function );
     
     AddRelationToGraph( print_graph,
                         rec( Source := [ rec( Conditions := "IsZero",
@@ -373,10 +373,10 @@ end );
 CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT( );
 
 InstallMethod( String,
-               [ IsHomalgCategoryObject ],
+               [ IsCapCategoryObject ],
                
   function( object )
     
-    return Concatenation( "An object in ", Name( HomalgCategory( object ) ) );
+    return Concatenation( "An object in ", Name( CapCategory( object ) ) );
     
 end );

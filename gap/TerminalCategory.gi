@@ -14,19 +14,19 @@
 #####################################
 
 DeclareRepresentation( "IsHomalgTerminalCategoryObjectRep",
-                       IsAttributeStoringRep and IsHomalgCategoryObjectRep,
+                       IsAttributeStoringRep and IsCapCategoryObjectRep,
                        [ ] );
 
 DeclareRepresentation( "IsHomalgTerminalCategoryMorphismRep",
-                       IsAttributeStoringRep and IsHomalgCategoryMorphismRep,
+                       IsAttributeStoringRep and IsCapCategoryMorphismRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgTerminalCategoryObject",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsHomalgTerminalCategoryObjectRep ) );
 
 BindGlobal( "TheTypeOfHomalgTerminalCategoryMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsHomalgTerminalCategoryMorphismRep ) );
 
 #####################################
@@ -37,7 +37,7 @@ BindGlobal( "TheTypeOfHomalgTerminalCategoryMorphism",
 
 InstallValue( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY,
               
-              CreateHomalgCategory( "TerminalCategory" ) );
+              CreateCapCategory( "TerminalCategory" ) );
 
 SetFilterObj( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, IsTerminalCategory );
 
@@ -47,7 +47,7 @@ InstallValue( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT,
 
 ##
 InstallMethod( UniqueObject,
-               [ IsHomalgCategory and IsTerminalCategory ],
+               [ IsCapCategory and IsTerminalCategory ],
                
   function( category )
     local object;
@@ -69,7 +69,7 @@ end );
 
 ##
 InstallMethod( UniqueMorphism,
-               [ IsHomalgCategory and IsTerminalCategory ],
+               [ IsCapCategory and IsTerminalCategory ],
                
   function( category )
     local morphism, object;
@@ -153,12 +153,12 @@ INSTALL_TERMINAL_CATEGORY_FUNCTIONS( );
 
 ##
 InstallMethod( FunctorFromTerminalCategory,
-               [ IsHomalgCategoryObject and CanComputeIdentityMorphism ],
+               [ IsCapCategoryObject and CanComputeIdentityMorphism ],
                
   function( object )
     local functor;
     
-    functor := HomalgFunctor( Concatenation( "InjectionInto", Name( HomalgCategory( object ) ) ), CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, HomalgCategory( object ) );
+    functor := HomalgFunctor( Concatenation( "InjectionInto", Name( CapCategory( object ) ) ), CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, CapCategory( object ) );
     
     functor!.terminal_object_functor_object := object;
     
@@ -184,7 +184,7 @@ end );
 
 ##
 InstallMethod( FunctorFromTerminalCategory,
-               [ IsHomalgCategoryMorphism and IsOne ],
+               [ IsCapCategoryMorphism and IsOne ],
                
   morphism -> FunctorFromTerminalCategory( Source( morphism ) )
   

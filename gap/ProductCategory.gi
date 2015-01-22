@@ -10,40 +10,40 @@
 #############################################################################
 
 DeclareRepresentation( "IsHomalgProductCategoryRep",
-                       IsAttributeStoringRep and IsHomalgCategoryRep,
+                       IsAttributeStoringRep and IsCapCategoryRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgProductCategories",
         NewType( TheFamilyOfHomalgCategories,
                  IsHomalgProductCategoryRep ) );
 
-DeclareRepresentation( "IsHomalgCategoryProductCellRep",
-                       IsAttributeStoringRep and IsHomalgCategoryCell,
+DeclareRepresentation( "IsCapCategoryProductCellRep",
+                       IsAttributeStoringRep and IsCapCategoryCell,
                        [ ] );
 
-DeclareRepresentation( "IsHomalgCategoryProductObjectRep",
-                       IsHomalgCategoryProductCellRep and IsHomalgCategoryObjectRep,
+DeclareRepresentation( "IsCapCategoryProductObjectRep",
+                       IsCapCategoryProductCellRep and IsCapCategoryObjectRep,
                        [ ] );
 
-DeclareRepresentation( "IsHomalgCategoryProductMorphismRep",
-                       IsHomalgCategoryProductCellRep and IsHomalgCategoryMorphismRep,
+DeclareRepresentation( "IsCapCategoryProductMorphismRep",
+                       IsCapCategoryProductCellRep and IsCapCategoryMorphismRep,
                        [ ] );
 
-DeclareRepresentation( "IsHomalgCategoryProductTwoCellRep",
-                       IsHomalgCategoryProductCellRep and IsHomalgCategoryTwoCellRep,
+DeclareRepresentation( "IsCapCategoryProductTwoCellRep",
+                       IsCapCategoryProductCellRep and IsCapCategoryTwoCellRep,
                        [ ] );
 
-BindGlobal( "TheTypeOfHomalgCategoryProductObjects",
-        NewType( TheFamilyOfHomalgCategoryObjects,
-                IsHomalgCategoryProductObjectRep ) );
+BindGlobal( "TheTypeOfCapCategoryProductObjects",
+        NewType( TheFamilyOfCapCategoryObjects,
+                IsCapCategoryProductObjectRep ) );
 
-BindGlobal( "TheTypeOfHomalgCategoryProductMorphisms",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
-                IsHomalgCategoryProductMorphismRep ) );
+BindGlobal( "TheTypeOfCapCategoryProductMorphisms",
+        NewType( TheFamilyOfCapCategoryMorphisms,
+                IsCapCategoryProductMorphismRep ) );
 
-BindGlobal( "TheTypeOfHomalgCategoryProductTwoCells",
-        NewType( TheFamilyOfHomalgCategoryTwoCells,
-                IsHomalgCategoryProductTwoCellRep ) );
+BindGlobal( "TheTypeOfCapCategoryProductTwoCells",
+        NewType( TheFamilyOfCapCategoryTwoCells,
+                IsCapCategoryProductTwoCellRep ) );
 
 ###################################
 ##
@@ -53,13 +53,13 @@ BindGlobal( "TheTypeOfHomalgCategoryProductTwoCells",
 
 ##
 InstallMethod( Components,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   i -> [ i ] );
 
 ##
 InstallMethod( Components,
-               [ IsHomalgCategoryCell ],
+               [ IsCapCategoryCell ],
                
   i -> [ i ] );
 
@@ -71,7 +71,7 @@ InstallMethod( Components,
 
 ##
 InstallMethodWithCacheFromObject( ProductOp,
-                                  [ IsList, IsHomalgCategory ],
+                                  [ IsList, IsCapCategory ],
                         
   function( category_list, selector )
     local product_category, namestring;
@@ -96,14 +96,14 @@ end : ArgumentNumber := 2 );
 
 ##
 InstallMethodWithCacheFromObject( ProductOp_OnObjects,
-                                  [ IsList, IsHomalgCategory ],
+                                  [ IsList, IsCapCategory ],
                         
   function( object_list, category )
     local product_object, entry, i;
     
     product_object := rec( );
     
-    ObjectifyWithAttributes( product_object, TheTypeOfHomalgCategoryProductObjects,
+    ObjectifyWithAttributes( product_object, TheTypeOfCapCategoryProductObjects,
                              Components, object_list,
                              Length, Length( object_list )
                            );
@@ -128,14 +128,14 @@ end : ArgumentNumber := 2 );
 
 ##
 InstallMethodWithCacheFromObject( ProductOp_OnMorphisms,
-                                  [ IsList, IsHomalgCategory ],
+                                  [ IsList, IsCapCategory ],
                                   
   function( morphism_list, category )
     local product_morphism, entry, i;
     
     product_morphism := rec( );
     
-    ObjectifyWithAttributes( product_morphism, TheTypeOfHomalgCategoryProductMorphisms,
+    ObjectifyWithAttributes( product_morphism, TheTypeOfCapCategoryProductMorphisms,
                              Components, morphism_list,
                              Length, Length( morphism_list )
                            );
@@ -160,14 +160,14 @@ end : ArgumentNumber := 2 );
 
 ##
 InstallMethodWithCacheFromObject( ProductOp_OnTwoCells,
-                                  [ IsList, IsHomalgCategory ],
+                                  [ IsList, IsCapCategory ],
                                   
   function( twocell_list, category )
     local product_twocell;
     
     product_twocell := rec( );
     
-    ObjectifyWithAttributes( product_twocell, TheTypeOfHomalgCategoryProductTwoCells,
+    ObjectifyWithAttributes( product_twocell, TheTypeOfCapCategoryProductTwoCells,
                              Components, twocell_list,
                              Length, Length( twocell_list )
                            );
@@ -180,12 +180,12 @@ end : ArgumentNumber := 2 );
 
 ##
 InstallMethod( ProductOp,
-               [ IsList, IsHomalgCategoryObject ],
+               [ IsList, IsCapCategoryObject ],
                
   function( object_list, selector )
     local category_list;
     
-    category_list := List( object_list, HomalgCategory );
+    category_list := List( object_list, CapCategory );
     
     return ProductOp_OnObjects( object_list, ProductOp( category_list, category_list[ 1 ] ) );
     
@@ -193,12 +193,12 @@ end );
 
 ##
 InstallMethod( ProductOp,
-               [ IsList, IsHomalgCategoryMorphism ],
+               [ IsList, IsCapCategoryMorphism ],
                
   function( morphism_list, selector )
     local category_list;
     
-    category_list := List( morphism_list, HomalgCategory );
+    category_list := List( morphism_list, CapCategory );
     
     return ProductOp_OnMorphisms( morphism_list, ProductOp( category_list, category_list[ 1 ] ) );
     
@@ -206,12 +206,12 @@ end );
 
 ##
 InstallMethod( ProductOp,
-               [ IsList, IsHomalgCategoryTwoCellRep ],
+               [ IsList, IsCapCategoryTwoCellRep ],
                
   function( twocell_list, selector )
     local category_list;
     
-    category_list := List( twocell_list, HomalgCategory );
+    category_list := List( twocell_list, CapCategory );
     
     return ProductOp_OnMorphisms( twocell_list, ProductOp( category_list, category_list[ 1 ] ) );
     
@@ -235,7 +235,7 @@ end );
 
 ##
 InstallMethod( \[\],
-               [ IsHomalgCategoryProductCellRep, IsInt ],
+               [ IsCapCategoryProductCellRep, IsInt ],
                
   function( cell, index )
     
@@ -257,7 +257,7 @@ end );
 
 ##
 InstallMethod( IsWellDefined,
-               [ IsHomalgCategoryProductCellRep ],
+               [ IsCapCategoryProductCellRep ],
                
   function( cell )
     
@@ -267,7 +267,7 @@ end );
 
 ##
 InstallMethod( Source,
-               [ IsHomalgCategoryProductMorphismRep ],
+               [ IsCapCategoryProductMorphismRep ],
                
   function( morphism )
     
@@ -277,7 +277,7 @@ end );
 
 ##
 InstallMethod( Range,
-               [ IsHomalgCategoryProductMorphismRep ],
+               [ IsCapCategoryProductMorphismRep ],
                
   function( morphism )
     
@@ -287,7 +287,7 @@ end );
 
 ##
 InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsHomalgCategoryProductMorphismRep, IsHomalgCategoryProductMorphismRep ],
+                                       [ IsCapCategoryProductMorphismRep, IsCapCategoryProductMorphismRep ],
                                        
   function( mor_left, mor_right )
     local left_comp, right_comp;
@@ -302,7 +302,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject);
 
 ##
 InstallMethod( Source,
-               [ IsHomalgCategoryProductTwoCellRep ],
+               [ IsCapCategoryProductTwoCellRep ],
                
   function( twocell )
     
@@ -312,7 +312,7 @@ end );
 
 ##
 InstallMethod( Range,
-               [ IsHomalgCategoryProductMorphismRep ],
+               [ IsCapCategoryProductMorphismRep ],
                
   function( twocell )
     
@@ -322,7 +322,7 @@ end );
 
 ##
 InstallMethodWithToDoForIsWellDefined( HorizontalPreCompose,
-                                       [ IsHomalgCategoryProductTwoCellRep, IsHomalgCategoryProductTwoCellRep ],
+                                       [ IsCapCategoryProductTwoCellRep, IsCapCategoryProductTwoCellRep ],
                
   function( twocell_left, twocell_right )
     local left_comp, right_comp;
@@ -337,7 +337,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject);
 
 ##
 InstallMethodWithToDoForIsWellDefined( VerticalPreCompose,
-                                       [ IsHomalgCategoryProductTwoCellRep, IsHomalgCategoryProductTwoCellRep ],
+                                       [ IsCapCategoryProductTwoCellRep, IsCapCategoryProductTwoCellRep ],
                
   function( twocell_left, twocell_right )
     local left_comp, right_comp;
@@ -359,7 +359,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ##
 InstallMethodWithCache( DirectProductFunctor,
-                        [ IsHomalgCategory, IsInt ],
+                        [ IsCapCategory, IsInt ],
                
   function( category, number_of_arguments )
     local direct_product_functor;
@@ -395,7 +395,7 @@ end );
 
 ##
 InstallMethodWithCache( CoproductFunctor,
-                        [ IsHomalgCategory, IsInt ],
+                        [ IsCapCategory, IsInt ],
                
   function( category, number_of_arguments )
     local coproduct_functor;
@@ -442,7 +442,7 @@ MakeReadWriteGlobal( "Product" );
 ## HEHE!
 Product := function( arg )
   
-  if ( ForAll( arg, IsHomalgCategory ) or ForAll( arg, IsHomalgCategoryObject ) or ForAll( arg, IsHomalgCategoryMorphism ) ) and Length( arg ) > 0 then
+  if ( ForAll( arg, IsCapCategory ) or ForAll( arg, IsCapCategoryObject ) or ForAll( arg, IsCapCategoryMorphism ) ) and Length( arg ) > 0 then
       
       return ProductOp( arg, arg[ 1 ] );
       
@@ -479,7 +479,7 @@ end );
 
 ##
 InstallMethod( IsEqualForCache,
-               [ IsHomalgCategoryProductCellRep, IsHomalgCategoryProductCellRep ],
+               [ IsCapCategoryProductCellRep, IsCapCategoryProductCellRep ],
                
   function( obj1, obj2 )
     local list1, list2, length;

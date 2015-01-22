@@ -16,13 +16,13 @@
 ###########################################
 
 DeclareAttribute( "LazyCategory",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UnderlyingBusyCategory",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "Lazy",
-                  IsHomalgCategoryCell );
+                  IsCapCategoryCell );
 
 DeclareGlobalFunction( "LazyObject" );
 
@@ -41,22 +41,22 @@ DeclareGlobalFunction( "LazyMorphismWithoutRange" );
 ###########################################
 
 DeclareOperation( "Object",
-                  [ IsHomalgCategory ] );
+                  [ IsCapCategory ] );
 
 DeclareOperation( "Object",
-                  [ IsHomalgCategoryCell ] );
+                  [ IsCapCategoryCell ] );
 
 DeclareOperation( "Morphism",
-                  [ IsHomalgCategory ] );
+                  [ IsCapCategory ] );
 
 DeclareOperation( "Morphism",
-                  [ IsHomalgCategoryObject, IsHomalgCategory, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategory, IsCapCategoryObject ] );
 
 DeclareOperation( "Morphism",
-                  [ IsHomalgCategoryCell ] );
+                  [ IsCapCategoryCell ] );
 
 DeclareOperation( "Morphism",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryCell, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryCell, IsCapCategoryObject ] );
 
 ###########################################
 ##
@@ -65,13 +65,13 @@ DeclareOperation( "Morphism",
 ###########################################
 
 DeclareCategory( "IsLazyCategoryCell",
-                 IsHomalgCategoryCell );
+                 IsCapCategoryCell );
 
 DeclareCategory( "IsLazyCategoryObject",
-                 IsHomalgCategoryObject and IsLazyCategoryCell );
+                 IsCapCategoryObject and IsLazyCategoryCell );
 
 DeclareCategory( "IsLazyCategoryMorphism",
-                 IsHomalgCategoryMorphism and IsLazyCategoryCell );
+                 IsCapCategoryMorphism and IsLazyCategoryCell );
 
 DeclareAttribute( "Eval",
                   IsLazyCategoryCell );

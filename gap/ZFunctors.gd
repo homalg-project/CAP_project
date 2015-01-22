@@ -19,13 +19,13 @@
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY" );
 
 DeclareCategory( "IsZFunctorCell",
-                 IsHomalgCategoryCell );
+                 IsCapCategoryCell );
 
 DeclareCategory( "IsZFunctorObject",
-                 IsHomalgCategoryObject and IsZFunctorCell );
+                 IsCapCategoryObject and IsZFunctorCell );
 
 DeclareCategory( "IsZFunctorMorphism",
-                 IsHomalgCategoryMorphism and IsZFunctorCell );
+                 IsCapCategoryMorphism and IsZFunctorCell );
 
 
 ####################################
@@ -35,7 +35,7 @@ DeclareCategory( "IsZFunctorMorphism",
 ####################################
 
 DeclareAttribute( "ZFunctorCategory",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 ####################################
 ##
@@ -53,11 +53,11 @@ DeclareOperation( "Differential",
 ####################################
 
 DeclareOperation( "ZFunctorObject",
-                  [ IsFunction, IsFunction, IsHomalgCategory ] );
+                  [ IsFunction, IsFunction, IsCapCategory ] );
 
-KeyDependentOperation( "AsZFunctorObject", IsHomalgCategoryObject, IsInt, RETURN_TRUE );
+KeyDependentOperation( "AsZFunctorObject", IsCapCategoryObject, IsInt, RETURN_TRUE );
 
 DeclareOperation( "ZFunctorMorphism",
                   [ IsZFunctorObject, IsFunction, IsZFunctorObject ] );
 
-KeyDependentOperation( "AsZFunctorMorphism", IsHomalgCategoryMorphism, IsInt, RETURN_TRUE );
+KeyDependentOperation( "AsZFunctorMorphism", IsCapCategoryMorphism, IsInt, RETURN_TRUE );

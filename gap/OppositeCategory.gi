@@ -15,21 +15,21 @@
 ##
 ###################################
 
-DeclareRepresentation( "IsHomalgCategoryOppositeObjectRep",
-                       IsAttributeStoringRep and IsHomalgCategoryObjectRep,
+DeclareRepresentation( "IsCapCategoryOppositeObjectRep",
+                       IsAttributeStoringRep and IsCapCategoryObjectRep,
                        [ ] );
 
-DeclareRepresentation( "IsHomalgCategoryOppositeMorphismRep",
-                       IsAttributeStoringRep and IsHomalgCategoryMorphismRep,
+DeclareRepresentation( "IsCapCategoryOppositeMorphismRep",
+                       IsAttributeStoringRep and IsCapCategoryMorphismRep,
                        [ ] );
 
-BindGlobal( "TheTypeOfHomalgCategoryOppositeObjects",
-        NewType( TheFamilyOfHomalgCategoryObjects,
-                IsHomalgCategoryOppositeObjectRep ) );
+BindGlobal( "TheTypeOfCapCategoryOppositeObjects",
+        NewType( TheFamilyOfCapCategoryObjects,
+                IsCapCategoryOppositeObjectRep ) );
 
-BindGlobal( "TheTypeOfHomalgCategoryOppositeMorphisms",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
-                IsHomalgCategoryOppositeMorphismRep ) );
+BindGlobal( "TheTypeOfCapCategoryOppositeMorphisms",
+        NewType( TheFamilyOfCapCategoryMorphisms,
+                IsCapCategoryOppositeMorphismRep ) );
 
 
 ###################################
@@ -40,7 +40,7 @@ BindGlobal( "TheTypeOfHomalgCategoryOppositeMorphisms",
 
 ##
 InstallImmediateMethod( Opposite,
-                        IsHomalgCategory and HasOpposite,
+                        IsCapCategory and HasOpposite,
                         0,
                         
   function( obj )
@@ -51,7 +51,7 @@ end );
 
 ##
 InstallImmediateMethod( Opposite,
-                        IsHomalgCategoryObject and HasOpposite,
+                        IsCapCategoryObject and HasOpposite,
                         0,
                         
   function( obj )
@@ -62,7 +62,7 @@ end );
 
 ##
 InstallImmediateMethod( Opposite,
-                        IsHomalgCategoryMorphism and HasOpposite,
+                        IsCapCategoryMorphism and HasOpposite,
                         0,
                         
   function( obj )
@@ -79,17 +79,17 @@ end );
 
 ##
 InstallMethodWithToDoForIsWellDefined( Opposite,
-                                       [ IsHomalgCategoryObject ],
+                                       [ IsCapCategoryObject ],
                                        
   function( object )
     local opposite_object;
     
     opposite_object := rec( );
     
-    ObjectifyWithAttributes( opposite_object, TheTypeOfHomalgCategoryOppositeObjects,
+    ObjectifyWithAttributes( opposite_object, TheTypeOfCapCategoryOppositeObjects,
                              Opposite, object );
     
-    Add( Opposite( HomalgCategory( object ) ), opposite_object );
+    Add( Opposite( CapCategory( object ) ), opposite_object );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
     
@@ -99,17 +99,17 @@ end );
 
 ##
 InstallMethodWithToDoForIsWellDefined( Opposite,
-                                       [ IsHomalgCategoryMorphism ],
+                                       [ IsCapCategoryMorphism ],
                                        
   function( morphism )
     local opposite_morphism;
     
     opposite_morphism := rec( );
     
-    ObjectifyWithAttributes( opposite_morphism, TheTypeOfHomalgCategoryOppositeMorphisms,
+    ObjectifyWithAttributes( opposite_morphism, TheTypeOfCapCategoryOppositeMorphisms,
                              Opposite, morphism );
     
-    Add( Opposite( HomalgCategory( morphism ) ), opposite_morphism );
+    Add( Opposite( CapCategory( morphism ) ), opposite_morphism );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM( morphism );
     
@@ -119,12 +119,12 @@ end );
 
 ##
 InstallMethod( Opposite,
-               [ IsHomalgCategory, IsString ],
+               [ IsCapCategory, IsString ],
                
   function( category, name )
     local opposite_category;
     
-    opposite_category := CreateHomalgCategory( name );
+    opposite_category := CreateCapCategory( name );
     
     SetWasCreatedAsOppositeCategory( opposite_category, true );
     
@@ -138,7 +138,7 @@ end );
 
 ##
 InstallMethod( Opposite,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     local opposite_category;
@@ -157,7 +157,7 @@ end );
 
 ##
 InstallImmediateMethod( Source,
-                        IsHomalgCategoryOppositeMorphismRep,
+                        IsCapCategoryOppositeMorphismRep,
                         0,
                         
   function( morphism )
@@ -168,7 +168,7 @@ end );
 
 ##
 InstallImmediateMethod( Range,
-                        IsHomalgCategoryOppositeMorphismRep,
+                        IsCapCategoryOppositeMorphismRep,
                         0,
                         
   function( morphism )
@@ -179,7 +179,7 @@ end );
 
 ##
 InstallMethod( PreCompose,
-               [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
                -1,
                
   function( left, right )
@@ -190,7 +190,7 @@ end );
 
 ##
 InstallMethod( PostCompose,
-               [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
                -1,
                
   function( left, right )
@@ -201,7 +201,7 @@ end );
 
 ##
 InstallMethod( IdentityMorphism,
-               [ IsHomalgCategoryOppositeObjectRep ],
+               [ IsCapCategoryOppositeObjectRep ],
                -1,
                
   function( obj )
@@ -212,7 +212,7 @@ end );
 
 ##
 InstallMethod( ZeroObject,
-               [ IsHomalgCategory and WasCreatedAsOppositeCategory ],
+               [ IsCapCategory and WasCreatedAsOppositeCategory ],
                -1,
                
   function( category )
@@ -223,7 +223,7 @@ end );
 
 ##
 InstallMethod( MonoAsKernelLift,
-              [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+              [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
               -1,
               
   function( monomorphism, test_morphism )
@@ -234,7 +234,7 @@ end );
 
 ##
 InstallMethod( EpiAsCokernelColift,
-              [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+              [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
               -1,
               
   function( epimorphism, test_morphism )
@@ -245,7 +245,7 @@ end );
 
 ##
 InstallMethod( InverseOp,
-               [ IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep ],
                -1,
                
   function( mor )
@@ -256,7 +256,7 @@ end );
 
 ##
 InstallMethod( Kernel,
-               [ IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep ],
                -1,
                
   function( mor )
@@ -267,7 +267,7 @@ end );
 
 ##
 InstallMethod( KernelEmb,
-               [ IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep ],
                -1,
                
   function( mor )
@@ -278,7 +278,7 @@ end );
 
 ##
 InstallMethod( KernelLift,
-               [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
                -1,
                
   function( mor, test_morphism )
@@ -289,7 +289,7 @@ end );
 
 ##
 InstallMethod( Cokernel,
-               [ IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep ],
                -1,
                
   function( mor )
@@ -300,7 +300,7 @@ end );
 
 ##
 InstallMethod( CokernelProj,
-               [ IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep ],
                -1,
                
   function( mor )
@@ -311,7 +311,7 @@ end );
 
 ##
 InstallMethod( CokernelColift,
-               [ IsHomalgCategoryOppositeMorphismRep, IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
                -1,
                
   function( mor, test_morphism )
@@ -322,7 +322,7 @@ end );
 
 ##
 InstallMethod( MorphismFromZeroObject,
-               [ IsHomalgCategoryOppositeObjectRep ],
+               [ IsCapCategoryOppositeObjectRep ],
                -1,
                
   function( obj )
@@ -333,7 +333,7 @@ end );
 
 ##
 InstallMethod( MorphismIntoZeroObject,
-               [ IsHomalgCategoryOppositeObjectRep ],
+               [ IsCapCategoryOppositeObjectRep ],
                -1,
                
   function( obj )
@@ -344,7 +344,7 @@ end );
 
 ##
 InstallMethod( ZeroMorphism,
-               [ IsHomalgCategoryOppositeObjectRep, IsHomalgCategoryOppositeObjectRep ],
+               [ IsCapCategoryOppositeObjectRep, IsCapCategoryOppositeObjectRep ],
                -1,
                
   function( obj_source, obj_range )
@@ -355,7 +355,7 @@ end );
 
 ##
 InstallMethod( IsWellDefined,
-               [ IsHomalgCategoryOppositeObjectRep ],
+               [ IsCapCategoryOppositeObjectRep ],
                -1,
   function( obj )
     
@@ -365,7 +365,7 @@ end );
 
 ##
 InstallMethod( IsWellDefined,
-               [ IsHomalgCategoryOppositeMorphismRep ],
+               [ IsCapCategoryOppositeMorphismRep ],
                -1,
   function( mor )
     
@@ -375,7 +375,7 @@ end );
 
 # ##
 # InstallMethod( DirectSumOp,
-#                [ IsList, IsHomalgCategoryOppositeObjectRep ],
+#                [ IsList, IsCapCategoryOppositeObjectRep ],
 #                -1,
 #                
 #   function( obj_list, obj1 )
@@ -386,7 +386,7 @@ end );
 # 
 # ##
 # InstallMethod( ProjectionInFirstFactor,
-#                [ IsHomalgCategoryOppositeObjectRep ],
+#                [ IsCapCategoryOppositeObjectRep ],
 #                -1,
 #                
 #   function( sum_obj )
@@ -397,7 +397,7 @@ end );
 # 
 # ##
 # InstallMethod( ProjectionInSecondFactor,
-#                [ IsHomalgCategoryOppositeObjectRep ],
+#                [ IsCapCategoryOppositeObjectRep ],
 #                -1,
 #                
 #   function( sum_obj )
@@ -408,7 +408,7 @@ end );
 # 
 # ##
 # InstallMethod( InjectionFromFirstSummand,
-#                [ IsHomalgCategoryOppositeObjectRep ],
+#                [ IsCapCategoryOppositeObjectRep ],
 #                -1,
 #                
 #   function( sum_obj )
@@ -419,7 +419,7 @@ end );
 # 
 # ##
 # InstallMethod( InjectionFromSecondSummand,
-#                [ IsHomalgCategoryOppositeObjectRep ],
+#                [ IsCapCategoryOppositeObjectRep ],
 #                -1,
 #                
 #   function( sum_obj )

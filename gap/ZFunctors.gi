@@ -8,19 +8,19 @@
 #############################################################################
 
 DeclareRepresentation( "IsZFunctorObjectRep",
-                       IsHomalgCategoryObjectRep and IsZFunctorObject,
+                       IsCapCategoryObjectRep and IsZFunctorObject,
                        [ ] );
 
 BindGlobal( "TheTypeOfZFunctorObject",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsZFunctorObjectRep ) );
 
 DeclareRepresentation( "IsZFunctorMorphismRep",
-                       IsHomalgCategoryMorphismRep and IsZFunctorMorphism,
+                       IsCapCategoryMorphismRep and IsZFunctorMorphism,
                        [ ] );
 
 BindGlobal( "TheTypeOfZFunctorMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsZFunctorMorphismRep ) );
 
 #############################
@@ -30,7 +30,7 @@ BindGlobal( "TheTypeOfZFunctorMorphism",
 #############################
 
 InstallMethod( ZFunctorCategory,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     local name, z_functor_category;
@@ -39,7 +39,7 @@ InstallMethod( ZFunctorCategory,
     
     name := Concatenation( "Functors from integers into ", name );
     
-    z_functor_category := CreateHomalgCategory( name );
+    z_functor_category := CreateCapCategory( name );
     
     SetUnderlyingHonestCategory( z_functor_category, category );
     
@@ -1064,7 +1064,7 @@ end );
 
 ##
 InstallMethod( ZFunctorObject,
-               [ IsFunction, IsFunction, IsHomalgCategory ],
+               [ IsFunction, IsFunction, IsCapCategory ],
                
   function( object_func, differential_func, category )
     local object;
@@ -1086,7 +1086,7 @@ end );
 
 ##
 InstallMethod( AsZFunctorObjectOp,
-               [ IsHomalgCategoryObject, IsInt ],
+               [ IsCapCategoryObject, IsInt ],
                
   function( object, embedding_index )
     local object_func, differential_func, z_functor_object, objects_positive, objects_nonpositive;
@@ -1123,11 +1123,11 @@ InstallMethod( AsZFunctorObjectOp,
           
       elif index < embedding_index - 1 then
           
-          return InitialObjectFunctorial( HomalgCategory( object ) );
+          return InitialObjectFunctorial( CapCategory( object ) );
           
       else
           
-          return TerminalObjectFunctorial( HomalgCategory( object ) );
+          return TerminalObjectFunctorial( CapCategory( object ) );
           
       fi;
     end;
@@ -1155,7 +1155,7 @@ InstallMethod( AsZFunctorObjectOp,
     
     ObjectifyWithAttributes( z_functor_object, TheTypeOfZFunctorObject );
     
-    Add( ZFunctorCategory( HomalgCategory( object ) ), z_functor_object );
+    Add( ZFunctorCategory( CapCategory( object ) ), z_functor_object );
     
     return z_functor_object;
     
@@ -1176,7 +1176,7 @@ InstallMethod( ZFunctorMorphism,
                              Source, source,
                              Range, range );
     
-    Add( HomalgCategory( source ), morphism );
+    Add( CapCategory( source ), morphism );
     
     return morphism;
     
@@ -1184,7 +1184,7 @@ end );
 
 ##
 InstallMethod( AsZFunctorMorphismOp,
-               [ IsHomalgCategoryMorphism, IsInt ],
+               [ IsCapCategoryMorphism, IsInt ],
                
   function( morphism, embedding_index )
     local morphism_func, morphisms_positive, morphisms_nonpositive, z_functor_morphism, source, range;
@@ -1197,11 +1197,11 @@ InstallMethod( AsZFunctorMorphismOp,
             
         elif index < embedding_index then
             
-            return InitialObjectFunctorial( HomalgCategory( morphism ) );
+            return InitialObjectFunctorial( CapCategory( morphism ) );
             
         else
             
-            return TerminalObjectFunctorial( HomalgCategory( morphism ) );
+            return TerminalObjectFunctorial( CapCategory( morphism ) );
             
         fi;
     end;
@@ -1232,7 +1232,7 @@ InstallMethod( AsZFunctorMorphismOp,
                              Source, source,
                              Range, range );
     
-    Add( HomalgCategory( source ), z_functor_morphism );
+    Add( CapCategory( source ), z_functor_morphism );
     
     return z_functor_morphism;
     

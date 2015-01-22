@@ -21,11 +21,11 @@ InstallGlobalFunction( InstallMethodWithToDoForIsWellDefined,
         local val, entry, i, filtered_arg, list_args;
         
         ## ToDo: This can be improved
-        filtered_arg := Filtered( arg, IsHomalgCategoryCell );
+        filtered_arg := Filtered( arg, IsCapCategoryCell );
         
         list_args := Flat( Filtered( arg, IsList ) );
         
-        list_args := Filtered( list_args, IsHomalgCategoryCell );
+        list_args := Filtered( list_args, IsCapCategoryCell );
         
         filtered_arg := Concatenation( filtered_arg, list_args );
         
@@ -88,11 +88,11 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
         
         cache_key := arg{[ 1 .. Length( arg ) - 1 ]};
         
-        filtered_cache_key := Filtered( cache_key, IsHomalgCategoryCell );
+        filtered_cache_key := Filtered( cache_key, IsCapCategoryCell );
         
         list_cache_key := Flat( Filtered( cache_key, IsList ) );
         
-        list_cache_key := Filtered( list_cache_key, IsHomalgCategoryCell );
+        list_cache_key := Filtered( list_cache_key, IsCapCategoryCell );
         
         filtered_cache_key := Concatenation( filtered_cache_key, list_cache_key );
         
@@ -149,11 +149,11 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
         
         cache_key := arg{[ 1 .. Length( arg ) - 1 ]};
         
-        filtered_cache_key := Filtered( cache_key, IsHomalgCategoryCell );
+        filtered_cache_key := Filtered( cache_key, IsCapCategoryCell );
         
         list_cache_key := Flat( Filtered( cache_key, IsList ) );
         
-        list_cache_key := Filtered( list_cache_key, IsHomalgCategoryCell );
+        list_cache_key := Filtered( list_cache_key, IsCapCategoryCell );
         
         filtered_cache_key := Concatenation( filtered_cache_key, list_cache_key );
         
@@ -258,9 +258,9 @@ InstallGlobalFunction( AddSpecialMethod,
         
     elif IsString( input_rec!.Category ) then
         
-        input_rec!.Category := CreateHomalgCategory( input_rec!.Category );
+        input_rec!.Category := CreateCapCategory( input_rec!.Category );
         
-    elif not IsHomalgCategory( input_rec!.Category ) then
+    elif not IsCapCategory( input_rec!.Category ) then
         
         Error( "component Category must be a string or a homalg category" );
         
@@ -302,15 +302,15 @@ InstallGlobalFunction( AddSpecialMethod,
         
         if LowercaseString( current_filter[ 1 ] ) = "object" then
             
-            input_rec!.Filter[ i ] := current_filter[ 2 ] and IsHomalgCategoryObject and ObjectFilter( input_rec!.Category );
+            input_rec!.Filter[ i ] := current_filter[ 2 ] and IsCapCategoryObject and ObjectFilter( input_rec!.Category );
             
         elif LowercaseString( current_filter[ 1 ] ) = "morphism" then
             
-            input_rec!.Filter[ i ] := current_filter[ 2 ] and IsHomalgCategoryMorphism and MorphismFilter( input_rec!.Category );
+            input_rec!.Filter[ i ] := current_filter[ 2 ] and IsCapCategoryMorphism and MorphismFilter( input_rec!.Category );
             
         elif LowercaseString( current_filter[ 1 ] ) = "twocell" then
             
-            input_rec!.Filter[ i ] := current_filter[ 2 ] and IsHomalgCategoryTwoCell and TwoCellFilter( input_rec!.Category );
+            input_rec!.Filter[ i ] := current_filter[ 2 ] and IsCapCategoryTwoCell and TwoCellFilter( input_rec!.Category );
             
         elif LowercaseString( current_filter[ 1 ] ) = "other" then
             

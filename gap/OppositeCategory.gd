@@ -16,7 +16,7 @@
 ###################################
 
 DeclareProperty( "WasCreatedAsOppositeCategory",
-                 IsHomalgCategory );
+                 IsCapCategory );
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY" );
 
@@ -31,17 +31,17 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT" );
 ###################################
 
 DeclareAttribute( "Opposite",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "Opposite",
-                  [ IsHomalgCategory, IsString ] );
+                  [ IsCapCategory, IsString ] );
 
 # FIXME: Usage of DeclareAttributeWithToDoForIsWellDefined leads to recursion error
 DeclareAttribute( "Opposite",
-                  IsHomalgCategoryObject );
+                  IsCapCategoryObject );
 
 DeclareAttribute( "Opposite",
-                  IsHomalgCategoryMorphism );
+                  IsCapCategoryMorphism );
 
 
 

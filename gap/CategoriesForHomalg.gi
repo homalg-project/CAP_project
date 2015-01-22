@@ -111,8 +111,8 @@ end );
 ##
 ######################################
 
-DeclareRepresentation( "IsHomalgCategoryRep",
-                       IsAttributeStoringRep and IsHomalgCategory,
+DeclareRepresentation( "IsCapCategoryRep",
+                       IsAttributeStoringRep and IsCapCategory,
                        [ ] );
 
 BindGlobal( "TheFamilyOfHomalgCategories",
@@ -120,7 +120,7 @@ BindGlobal( "TheFamilyOfHomalgCategories",
 
 BindGlobal( "TheTypeOfHomalgCategories",
         NewType( TheFamilyOfHomalgCategories,
-                 IsHomalgCategoryRep ) );
+                 IsCapCategoryRep ) );
 
 
 #####################################
@@ -202,7 +202,7 @@ InstallGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT",
 end );
 
 InstallMethod( TheoremRecord,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     
@@ -217,7 +217,7 @@ end );
 ######################################################
 
 InstallMethod( AddCategoryToFamily,
-               [ IsHomalgCategory, IsString ],
+               [ IsCapCategory, IsString ],
                
   function( category, family )
     
@@ -239,7 +239,7 @@ end );
 
 ##
 InstallMethod( AddIdentityMorphism,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -248,7 +248,7 @@ InstallMethod( AddIdentityMorphism,
     SetCanComputeIdentityMorphism( category, true );
     
       InstallMethodWithToDoForIsWellDefined( IdentityMorphism,
-                                             [ IsHomalgCategoryObject and ObjectFilter( category ) ],
+                                             [ IsCapCategoryObject and ObjectFilter( category ) ],
                                              
       function( object )
         local ret_val;
@@ -275,7 +275,7 @@ end );
 
 ##
 InstallMethod( AddPreCompose,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -284,12 +284,12 @@ InstallMethod( AddPreCompose,
     SetCanComputePreCompose( category, true );
     
     InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ), IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           [ IsCapCategoryMorphism and MorphismFilter( category ), IsCapCategoryMorphism and MorphismFilter( category ) ],
                    
       function( mor_left, mor_right )
         local ret_val;
         
-        if not IsIdenticalObj( HomalgCategory( mor_left ), HomalgCategory( mor_right ) ) then
+        if not IsIdenticalObj( CapCategory( mor_left ), CapCategory( mor_right ) ) then
             
             Error( "morphisms must lie in the same category" );
             
@@ -317,7 +317,7 @@ end );
 
 ##
 InstallMethod( AddMonoAsKernelLift,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -326,15 +326,15 @@ InstallMethod( AddMonoAsKernelLift,
     SetCanComputeMonoAsKernelLift( category, true );
     
     InstallMethodWithToDoForIsWellDefined( MonoAsKernelLift,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
+                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
                             
       function( monomorphism, test_morphism )
         local lift;
         
         lift := func( monomorphism, test_morphism );
         
-        Add( HomalgCategory( monomorphism ), lift );
+        Add( CapCategory( monomorphism ), lift );
         
         return lift;
         
@@ -350,7 +350,7 @@ end );
 
 ##
 InstallMethod( AddEpiAsCokernelColift,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -359,15 +359,15 @@ InstallMethod( AddEpiAsCokernelColift,
     SetCanComputeEpiAsCokernelColift( category, true );
     
     InstallMethodWithToDoForIsWellDefined( EpiAsCokernelColift,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ),
-                                             IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
+                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( epimorphism, test_morphism )
         local colift;
         
         colift := func( epimorphism, test_morphism );
         
-        Add( HomalgCategory( epimorphism ), colift );
+        Add( CapCategory( epimorphism ), colift );
         
         return colift;
         
@@ -383,7 +383,7 @@ end );
 
 ##
 InstallMethod( AddInverse,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -392,14 +392,14 @@ InstallMethod( AddInverse,
     SetCanComputeInverse( category, true );
     
     InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) and IsIsomorphism ],
+                                           [ IsCapCategoryMorphism and MorphismFilter( category ) and IsIsomorphism ],
                                            
       function( isomorphism )
         local inverse;
         
         inverse := func( isomorphism );
         
-        Add( HomalgCategory( isomorphism ), inverse );
+        Add( CapCategory( isomorphism ), inverse );
         
         return inverse;
         
@@ -417,7 +417,7 @@ end );
 
 ##
 InstallMethod( SetCaching,
-               [ IsHomalgCategory, IsString, IsString ],
+               [ IsCapCategory, IsString, IsString ],
                
   function( category, function_name, caching_info )
     
@@ -433,7 +433,7 @@ end );
 
 ##
 InstallMethod( SetCachingToWeak,
-               [ IsHomalgCategory, IsString ],
+               [ IsCapCategory, IsString ],
                
   function( category, function_name )
     
@@ -443,7 +443,7 @@ end );
 
 ##
 InstallMethod( SetCachingToCrisp,
-               [ IsHomalgCategory, IsString ],
+               [ IsCapCategory, IsString ],
                
   function( category, function_name )
     
@@ -453,7 +453,7 @@ end );
 
 ##
 InstallMethod( DeactivateCaching,
-               [ IsHomalgCategory, IsString ],
+               [ IsCapCategory, IsString ],
                
   function( category, function_name )
     
@@ -463,12 +463,12 @@ end );
 
 ##
 InstallMethod( CachingObject,
-               [ IsHomalgCategoryCell, IsString, IsInt ],
+               [ IsCapCategoryCell, IsString, IsInt ],
                
   function( cell, name, number )
     local category, cache;
     
-    category := HomalgCategory( cell );
+    category := CapCategory( cell );
     
     if IsBound( category!.caches.(name) ) then
         
@@ -486,7 +486,7 @@ end );
 
 ##
 InstallMethod( CachingObject,
-               [ IsHomalgCategory, IsString, IsInt ],
+               [ IsCapCategory, IsString, IsInt ],
                
   function( arg )
     
@@ -496,7 +496,7 @@ end );
 
 ##
 InstallMethod( CachingObject,
-               [ IsHomalgCategory, IsString, IsInt, IsBool ],
+               [ IsCapCategory, IsString, IsInt, IsBool ],
                
   function( category, name, number, is_crisp )
     local cache;
@@ -522,19 +522,19 @@ end );
 #######################################
 
 ##
-InstallMethod( CreateHomalgCategory,
+InstallMethod( CreateCapCategory,
                [ ],
                
   function( )
     local name;
     
-    name := Concatenation( "AutomaticHomalgCategory", String( CATEGORIES_FOR_HOMALG_NAME_COUNTER( ) ) );
+    name := Concatenation( "AutomaticCapCategory", String( CATEGORIES_FOR_HOMALG_NAME_COUNTER( ) ) );
     
-    return CreateHomalgCategory( name );
+    return CreateCapCategory( name );
     
 end );
 
-InstallMethodWithCache( CreateHomalgCategory,
+InstallMethodWithCache( CreateCapCategory,
                         [ IsString ],
                         
   function( name )
@@ -580,7 +580,7 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION,
       
     end;
     
-    print_graph := CreatePrintingGraph( IsHomalgCategory, category_function );
+    print_graph := CreatePrintingGraph( IsCapCategory, category_function );
     
     for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
         

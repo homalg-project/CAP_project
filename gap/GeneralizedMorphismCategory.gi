@@ -8,19 +8,19 @@
 #############################################################################
 
 DeclareRepresentation( "IsGeneralizedMorphismCategoryObjectRep",
-                       IsHomalgCategoryObjectRep and IsGeneralizedMorphismCategoryObject,
+                       IsCapCategoryObjectRep and IsGeneralizedMorphismCategoryObject,
                        [ ] );
 
 BindGlobal( "TheTypeOfGeneralizedMorphismCategoryObject",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsGeneralizedMorphismCategoryObjectRep ) );
 
 DeclareRepresentation( "IsGeneralizedMorphismRep",
-                       IsHomalgCategoryMorphismRep and IsGeneralizedMorphism,
+                       IsCapCategoryMorphismRep and IsGeneralizedMorphism,
                        [ ] );
 
 BindGlobal( "TheTypeOfGeneralizedMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsGeneralizedMorphismRep ) );
 
 ####################################
@@ -50,9 +50,9 @@ InstallGlobalFunction( CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGOR
         
         Add( prop_list_solo, i_concat );
         
-        DeclareProperty( i_concat, IsHomalgCategory );
+        DeclareProperty( i_concat, IsCapCategory );
         
-        DeclareProperty( i_concat, IsHomalgCategoryCell );
+        DeclareProperty( i_concat, IsCapCategoryCell );
         
     od;
     
@@ -89,7 +89,7 @@ end );
 
 ##
 InstallMethod( GeneralizedMorphismCategory,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     local name, generalized_morphism_category;
@@ -104,7 +104,7 @@ InstallMethod( GeneralizedMorphismCategory,
     
     name := Concatenation( "Generalized morphism category of ", name );
     
-    generalized_morphism_category := CreateHomalgCategory( name );
+    generalized_morphism_category := CreateCapCategory( name );
     
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
@@ -119,7 +119,7 @@ InstallMethod( GeneralizedMorphismCategory,
 end );
 
 InstallMethod( GeneralizedMorphismObject,
-               [ IsHomalgCategoryObject ],
+               [ IsCapCategoryObject ],
                                        
   function( object )
     local gen_object, generalized_category;
@@ -129,7 +129,7 @@ InstallMethod( GeneralizedMorphismObject,
     ObjectifyWithAttributes( gen_object, TheTypeOfGeneralizedMorphismCategoryObject,
                              UnderlyingHonestObject, object );
     
-    generalized_category := GeneralizedMorphismCategory( HomalgCategory( object ) );
+    generalized_category := GeneralizedMorphismCategory( CapCategory( object ) );
     
     Add( generalized_category, gen_object );
     
@@ -141,7 +141,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedMorphism,
-                                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+                                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( source_aid, morphism_aid, range_aid )
     local generalized_morphism, generalized_category;
@@ -168,7 +168,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphism,
     
     SetMorphismAid( generalized_morphism, morphism_aid );
     
-    generalized_category := GeneralizedMorphismCategory( HomalgCategory( morphism_aid ) );
+    generalized_category := GeneralizedMorphismCategory( CapCategory( morphism_aid ) );
     
     Add( generalized_category, generalized_morphism );
     
@@ -178,7 +178,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
-                                  [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism, IsHomalgCategoryMorphism ],
+                                  [ IsCapCategoryMorphism and CanComputeIdentityMorphism, IsCapCategoryMorphism ],
                
   function( source_aid, morphism_aid )
     local generalized_morphism;
@@ -199,7 +199,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedMorphismWithRangeAid,
-                                  [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism, IsHomalgCategoryMorphism ],
+                                  [ IsCapCategoryMorphism and CanComputeIdentityMorphism, IsCapCategoryMorphism ],
                
   function( morphism_aid, range_aid )
     local generalized_morphism, generalized_category;
@@ -220,7 +220,7 @@ end );
 
 ##
 InstallMethod( AsGeneralizedMorphism,
-               [ IsHomalgCategoryMorphism and CanComputeIdentityMorphism ],
+               [ IsCapCategoryMorphism and CanComputeIdentityMorphism ],
                
   function( morphism_aid )
     local generalized_morphism;
@@ -249,7 +249,7 @@ InstallMethodWithCacheFromObject( PreCompose,
   function( mor1, mor2 )
     local category;
     
-    category := HomalgCategory( mor1 );
+    category := CapCategory( mor1 );
     
     if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
@@ -272,7 +272,7 @@ InstallMethodWithCacheFromObject( PreCompose,
   function( mor1, mor2 )
     local category, pullback, new_source_aid, new_morphism_aid;
     
-    category := HomalgCategory( mor1 );
+    category := CapCategory( mor1 );
     
     if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
@@ -301,7 +301,7 @@ InstallMethodWithCacheFromObject( PreCompose,
   function( mor1, mor2 )
     local category, pushout, new_morphism_aid, new_range_aid;
     
-    category := HomalgCategory( mor1 );
+    category := CapCategory( mor1 );
     
     if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
@@ -329,7 +329,7 @@ InstallMethodWithCacheFromObject( PreCompose,
   function( mor1, mor2 )
     local category;
     
-    category := HomalgCategory( mor1 );
+    category := CapCategory( mor1 );
     
     if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
@@ -395,12 +395,12 @@ InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject,
                    and CanComputeIdentityMorphism );
 
 InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
-                                  [ IsHomalgCategoryMorphism
+                                  [ IsCapCategoryMorphism
                                     and CanComputePreCompose
                                     and CanComputeImageEmbedding
                                     and CanComputeCoastrictionToImage
                                     and CanComputeIdentityMorphism,
-                                    IsHomalgCategoryMorphism ],
+                                    IsCapCategoryMorphism ],
                                     
   function( factor, subobject )
     local composition, image_embedding, coastriction_to_image;
@@ -861,10 +861,10 @@ InstallMethod( IsWellDefined,
   function( generalized_morphism )
     local category;
     
-    category := HomalgCategory( SourceAid( generalized_morphism ) );
+    category := CapCategory( SourceAid( generalized_morphism ) );
     
     if not ForAll( [ MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ],
-                 x -> IsIdenticalObj( HomalgCategory( x ), category ) ) then
+                 x -> IsIdenticalObj( CapCategory( x ), category ) ) then
       
       return false;
       
@@ -889,11 +889,11 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphism,
-                                  [ IsHomalgCategoryMorphism,
-                                    IsHomalgCategoryMorphism,
-                                    IsHomalgCategoryMorphism,
-                                    IsHomalgCategoryMorphism,
-                                    IsHomalgCategoryMorphism ],
+                                  [ IsCapCategoryMorphism,
+                                    IsCapCategoryMorphism,
+                                    IsCapCategoryMorphism,
+                                    IsCapCategoryMorphism,
+                                    IsCapCategoryMorphism ],
                                     
   function( morphism_up_right,
             morphism_middle_left,
@@ -954,9 +954,9 @@ end );
 #     return PreCompose( PreCompose( inverse_domain, associated_morphism ), inverse_codomain );
 
 InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphismWithKernelAndCokernel,
-                                  [ IsHomalgCategoryMorphism,
-                                    IsHomalgCategoryMorphism,
-                                    IsHomalgCategoryMorphism ],
+                                  [ IsCapCategoryMorphism,
+                                    IsCapCategoryMorphism,
+                                    IsCapCategoryMorphism ],
                                     
   function( morphism_up_right,
             morphism_middle_middle,

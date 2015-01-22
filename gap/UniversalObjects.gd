@@ -64,24 +64,24 @@
 ####################################
 
 #! Explaination of methods of the form $\texttt{Add}F( f, C )$ for a function name $F$ (e.g. KernelLift, DirectProduct),
-#! a function $f$ and a HomalgCategory $C$:
+#! a function $f$ and a CapCategory $C$:
 #! The method $\texttt{Add}F( f, C )$ installs the method with the name $F$ properly such that it can be
 #! used within the context of the given category $C$. 
 #! Valid types for the (multiple) arguments of $F$ are:
-#! * HomalgCategoryObject
-#! * HomalgCategoryMorphism
-#! * List containing only HomalgCategoryObjects
-#! * List containing only HomalgCategoryMorphisms
+#! * CapCategoryObject
+#! * CapCategoryMorphism
+#! * List containing only CapCategoryObjects
+#! * List containing only CapCategoryMorphisms
 #! * Integer
 #! Valid types for the output of $F$ are:
-#! * HomalgCategoryObject
-#! * HomalgCategoryMorphism.
+#! * CapCategoryObject
+#! * CapCategoryMorphism.
 #! Note the name convention: If $\texttt{Add}F$ is a method, then so is $F$.
 
 
 ## needed for multiple genesis
 DeclareOperation( "AddToGenesis",
-                  [ IsHomalgCategoryCell, IsObject, IsObject ] );
+                  [ IsCapCategoryCell, IsObject, IsObject ] );
 
 ####################################
 ##
@@ -97,58 +97,58 @@ DeclareOperation( "AddToGenesis",
 ## Main Operations and Attributes
 #! @Description
 #!  Kernel of a given morphism.
-#! @Returns IsHomalgCategoryObject
+#! @Returns IsCapCategoryObject
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "KernelObject",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 #! @Description
 #! Embedding of the kernel of a given morphism $\alpha$ into the source of $\alpha$.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 #! @Description
 #! Kernel embedding of an object which was created as a kernel.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments K
 DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 #! @Description
 #! Embedding of a given kernel $K$ of a given morphism $\alpha$ into the source of $\alpha$.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, K
 DeclareOperation( "KernelEmbWithGivenKernel",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 # @Description
 #! Given a kernel $K$ of a morphism $\alpha:A \rightarrow B$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
 #! returns the unique morphism $u: T \rightarrow K$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
 #! denotes the kernel embedding.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments K, tau
 DeclareOperation( "KernelLift",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! Given a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
 #! returns the unique morphism $u: T \rightarrow K$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
 #! denotes the kernel embedding.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, tau
 DeclareOperation( "KernelLift",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #! Given a morphism $\alpha: A \rightarrow B$ with a kernel $K$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
 #! returns the unique morphism $u: T \rightarrow K$ such that $\tau = \epsilon \circ u$, where $\epsilon: K \rightarrow A$
 #! denotes the kernel embedding.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, tau, K
 DeclareOperation( "KernelLiftWithGivenKernel",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
 ## Function Attributes
@@ -158,19 +158,19 @@ DeclareOperation( "KernelLiftWithGivenKernel",
 #! @Description
 #! These attributes store the implementations of the basic algorithms for a kernel. 
 DeclareAttribute( "KernelFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "KernelEmbFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "KernelEmbWithGivenKernelFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "KernelLiftFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "KernelLiftWithGivenKernelFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 #! @EndGroup
 #! @EndAutoDoc
 
@@ -181,35 +181,35 @@ DeclareAttribute( "KernelLiftWithGivenKernelFunction",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernelObject",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: \alpha \mapsto \iota$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernelEmb",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, K) \mapsto \iota$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernelEmbWithGivenKernel",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, \tau) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernelLift",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, \tau, K) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddKernelLiftWithGivenKernel",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 
 #! @Section Functorial methods for kernel
@@ -232,7 +232,7 @@ DeclareOperation( "KernelObjectFunctorial",
 #! @Returns $\phi$
 #! @Arguments alpha, mu, alpha_p
 DeclareOperation( "KernelObjectFunctorial",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 
 ## WasCreatedAs Filter
@@ -263,58 +263,58 @@ DeclareFilter( "WasCreatedAsKernel" );
 ## Main Operations and Attributes
 #! @Description
 #!  Cokernel of a given morphism.
-#! @Returns IsHomalgCategoryObject
+#! @Returns IsCapCategoryObject
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "Cokernel",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 #! @Description
 #! Projection $B \twoheadrightarrow \mathrm{Coker}(\alpha)$ into the cokernel of a given morphism $\alpha: A \rightarrow B$.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 #! @Description
 #! Cokernel projection of an object which was created as a cokernel.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments C
 DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 #! @Description
 #! Projection $B \twoheadrightarrow C$ of a given cokernel $C$ of a given morphism $\alpha: A \rightarrow B$.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, C
 DeclareOperation( "CokernelProjWithGivenCokernel",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
 #! @Description
 #! Given a cokernel $C$ of a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: B \rightarrow T$ such that $\tau \circ \alpha = 0$, this method
 #! returns the unique morphism $u: \mathrm{Coker}(\alpha) \rightarrow T$ such that $\tau = u \circ \epsilon$, where 
 #! $\epsilon: B \rightarrow \mathrm{Coker}(\alpha)$ denotes the cokernel projection.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments C, tau
 DeclareOperation( "CokernelColift",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! Given a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: B \rightarrow T$ such that $\tau \circ \alpha = 0$, this method
 #! returns the unique morphism $u: \mathrm{Coker}(\alpha) \rightarrow T$ such that $\tau = u \circ \epsilon$, where 
 #! $\epsilon: B \rightarrow \mathrm{Coker}(\alpha)$ denotes the cokernel projection.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, tau
 DeclareOperation( "CokernelColift",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 #! @Description
 #! Given a morphism $\alpha: A \rightarrow B$ with its cokernel $C$ and a testmorphism $\tau: B \rightarrow T$ 
 #! such that $\tau \circ \alpha = 0$, this method returns the unique morphism $u: C \rightarrow T$ such that 
 #! $\tau = u \circ \epsilon$, where $\epsilon: B \rightarrow C$ denotes the cokernel projection.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, tau, C
 DeclareOperation( "CokernelColiftWithGivenCokernel",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -323,19 +323,19 @@ DeclareOperation( "CokernelColiftWithGivenCokernel",
 #! @Description
 #! These attributes store the implementations of the basic algorithms for a cokernel. 
 DeclareAttribute( "CokernelFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "CokernelProjFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "CokernelProjWithGivenCokernelFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "CokernelColiftFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "CokernelColiftWithGivenCokernelFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 #! @EndGroup
 #! @EndAutoDoc
 
@@ -346,35 +346,35 @@ DeclareAttribute( "CokernelColiftWithGivenCokernelFunction",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCokernel",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: \alpha \mapsto \epsilon$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCokernelProj",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, C) \mapsto \epsilon$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCokernelProjWithGivenCokernel",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, \tau) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCokernelColift",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, \tau, C) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Section Functorial methods for cokernel
 
@@ -396,7 +396,7 @@ DeclareOperation( "CokernelFunctorial",
 #! @Returns $\phi$
 #! @Arguments alpha, nu, alpha_p
 DeclareOperation( "CokernelFunctorial",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ## WasCreatedAs Filter
 #! @Chapter Technical Details
@@ -425,22 +425,22 @@ DeclareFilter( "WasCreatedAsCokernel" );
 
 #! @Description
 #! Zero object of a category $C$
-#! @Returns IsHomalgCategoryObject
+#! @Returns IsCapCategoryObject
 #! @Arguments C
 DeclareAttribute( "ZeroObject",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #! @Description
 #! or of a cell $c$ in $C$
 #! @Arguments c
 DeclareAttribute( "ZeroObject",
-                  IsHomalgCategoryCell );
+                  IsCapCategoryCell );
 
 DeclareAttributeWithToDoForIsWellDefined( "MorphismFromZeroObject",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 DeclareAttributeWithToDoForIsWellDefined( "MorphismIntoZeroObject",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 #! @EndGroup 
 
@@ -453,7 +453,7 @@ DeclareAttributeWithToDoForIsWellDefined( "MorphismIntoZeroObject",
 #! These attributes store the implementations of the basic algorithms for a terminal object.
 #! @Arguments C
 DeclareAttribute( "ZeroObjectFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #! @EndGroup
 
@@ -464,7 +464,7 @@ DeclareAttribute( "ZeroObjectFunction",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddZeroObject",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 
 
@@ -482,7 +482,7 @@ DeclareOperation( "AddZeroObject",
 DeclareFilter( "WasCreatedAsZeroObject" );
 
 DeclareProperty( "IS_IMPLIED_ZERO_OBJECT", 
-                 IsHomalgCategoryObject );
+                 IsCapCategoryObject );
 #! @Chapter Universal Objects
 
 ####################################
@@ -500,34 +500,34 @@ DeclareProperty( "IS_IMPLIED_ZERO_OBJECT",
 
 #! @Description
 #! Terminal object of a category $C$
-#! @Returns IsHomalgCategoryObject
+#! @Returns IsCapCategoryObject
 #! @Arguments C
 DeclareAttribute( "TerminalObject",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #! @Description
 #! or of a cell $c$ in $C$
 #! @Arguments c
 DeclareAttribute( "TerminalObject",
-                  IsHomalgCategoryCell );
+                  IsCapCategoryCell );
 
 #! @EndGroup 
 
 #! @Description
 #! Given an object $A$ this method returns the unique morphism $u: A \rightarrow T$ from 
 #! $A$ into the terminal object $T$ of the category of $A$
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments A
 DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismIntoTerminalObject",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 #! @Description
 #! Given an object $A$ and a terminal object $T$ this method returns the unique morphism $u: A \rightarrow T$ from 
 #! $A$ to $T$
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments A, T
 DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## Function Attributes
 
@@ -538,15 +538,15 @@ DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
 #! These attributes store the implementations of the basic algorithms for a terminal object.
 #! @Arguments C
 DeclareAttribute( "TerminalObjectFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #! @Arguments C
 DeclareAttribute( "UniversalMorphismIntoTerminalObjectFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #! @Arguments C
 DeclareAttribute( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 #! @EndAutoDoc
 
 #! @EndGroup
@@ -559,21 +559,21 @@ DeclareAttribute( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFun
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddTerminalObject",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: A \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (A, T) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Section Functorial methods for terminal object
 
@@ -586,7 +586,7 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
 #! @Returns $\phi$
 #! @Arguments C
 DeclareAttribute( "TerminalObjectFunctorial",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 ## WasCreatedAs Filter
 
@@ -617,34 +617,34 @@ DeclareFilter( "WasCreatedAsTerminalObject" );
 
 #! @Description
 #! Initial object of a category $C$
-#! @Returns IsHomalgCategoryObject
+#! @Returns IsCapCategoryObject
 #! @Arguments C
 DeclareAttribute( "InitialObject",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #! @Description
 #! or of a cell $c$ in $C$
 #! @Arguments c
 DeclareAttribute( "InitialObject",
-                  IsHomalgCategoryCell );
+                  IsCapCategoryCell );
 
 #! @EndGroup 
 
 #! @Description
 #! Given an object $A$ this method returns the unique morphism $u: I \rightarrow A$
 #! from the initial object $I$ of the category of $A$ to $A$.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments A
 DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismFromInitialObject",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 #! @Description
 #! Given an object $A$ and an initial object $I$ this method returns the unique morphism $u: I \rightarrow A$ from 
 #! $I$ to $A$
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments A, I
 DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## Function Attributes
 
@@ -655,15 +655,15 @@ DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
 #! These attributes store the implementations of the basic algorithms for an initial object.
 #! @Arguments C
 DeclareAttribute( "InitialObjectFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #! @Arguments C
 DeclareAttribute( "UniversalMorphismFromInitialObjectFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #! @Arguments C
 DeclareAttribute( "UniversalMorphismFromInitialObjectWithGivenInitialObjectFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 #! @EndAutoDoc
 
 #! @EndGroup
@@ -678,21 +678,21 @@ DeclareAttribute( "UniversalMorphismFromInitialObjectWithGivenInitialObjectFunct
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInitialObject",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: A \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromInitialObject",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (A, T) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 #! @EndGroup
 
 #! @EndAutoDoc
@@ -708,7 +708,7 @@ DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
 #! @Returns $\phi$
 #! @Arguments C
 DeclareAttribute( "InitialObjectFunctorial",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 ## WasCreatedAs Filter
 
@@ -742,7 +742,7 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 ## Main Operations and Attributes
 
 DeclareOperationWithCache( "DirectSumOp",
-                           [ IsList, IsHomalgCategoryObject ] );
+                           [ IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -751,7 +751,7 @@ DeclareOperationWithCache( "DirectSumOp",
 #! @Description
 #! These attributes store the implementations of the basic algorithms for a direct sum. 
 DeclareAttribute( "DirectSumFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 #! @EndGroup
 #! @EndAutoDoc
 
@@ -761,7 +761,7 @@ DeclareAttribute( "DirectSumFunction",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddDirectSum",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Section Functorial methods for direct sum
 
@@ -790,7 +790,7 @@ DeclareOperation( "DirectSumFunctorial",
 DeclareFilter( "WasCreatedAsDirectSum" );
 
 DeclareProperty( "IS_IMPLIED_DIRECT_SUM", 
-                 IsHomalgCategoryObject );
+                 IsCapCategoryObject );
 
 #! @Chapter Universal Objects
 
@@ -813,7 +813,7 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 DeclareGlobalFunction( "Coproduct" );
 
 DeclareOperationWithCache( "CoproductOp",
-                           [ IsList, IsHomalgCategoryObject ] );
+                           [ IsList, IsCapCategoryObject ] );
 
 DeclareGlobalFunction( "InjectionOfCofactor" );
 
@@ -821,18 +821,18 @@ DeclareOperation( "InjectionOfCofactorOfCoproduct",
                   [ IsList, IsInt ] );
 
 DeclareOperation( "InjectionOfCofactorOfCoproductOp",
-                  [ IsList, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
-                  [ IsList, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
 
 DeclareOperation( "UniversalMorphismFromCoproductOp",
-                  [ IsList, IsList, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsCapCategoryObject ] );
 
 DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
-                  [ IsList, IsList, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -841,19 +841,19 @@ DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
 #! @Description
 #! These attributes store the implementations of the basic algorithms for a coproduct. 
 DeclareAttribute( "CoproductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "InjectionOfCofactorOfCoproductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "InjectionOfCofactorOfCoproductWithGivenCoproductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismFromCoproductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismFromCoproductWithGivenCoproductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 #! @EndGroup
 #! @EndAutoDoc
 
@@ -865,7 +865,7 @@ DeclareAttribute( "UniversalMorphismFromCoproductWithGivenCoproductFunction",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCoproduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (I_1, \dots, I_n), i ) \mapsto \iota_i$ to the category $C$
@@ -873,7 +873,7 @@ DeclareOperation( "AddCoproduct",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (I_1, \dots, I_n), i, I ) \mapsto \iota_i$ to the category $C$
@@ -881,7 +881,7 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #FIXME: it is inconsistent with the convention that the diagram does not have to be given as an input!
 #! @Description
@@ -890,7 +890,7 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromCoproduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}, I  ) \mapsto u$ to the category $C$
@@ -898,7 +898,7 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Section Functorial methods for coproduct
 
@@ -915,7 +915,7 @@ DeclareOperation( "CoproductFunctorial",
                   [ IsList ] );
 
 DeclareOperation( "CoproductFunctorialOp",
-                  [ IsList, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsCapCategoryMorphism ] );
 
 
 
@@ -958,16 +958,16 @@ DeclareFilter( "WasCreatedAsCoproduct" );
 #! Direct product of a given diagram $D$, where $D$ is a list of objects.
 #! The second argument $M$ is an object needed for the method
 #! selection.
-#! @Returns IsHomalgCategoryObject
+#! @Returns IsCapCategoryObject
 #! @Arguments D, M
 DeclareOperationWithCache( "DirectProductOp",
-                           [ IsList, IsHomalgCategoryObject ] );
+                           [ IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! Projection in the $i$-th factor of the direct product given by $D$.
 #! $D$ can either be an object created as a direct product or a list
 #! of objects $D = (A_i)$ representing a diagram.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments D, i
 DeclareGlobalFunction( "ProjectionInFactor" );
 
@@ -978,25 +978,25 @@ DeclareOperation( "ProjectionInFactorOfDirectProduct",
 #! $D$ can either be an object created as a direct product or a list
 #! of objects representing a diagram. The third argument $M$
 #! is an object needed for the method selection.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments D, i, M
 DeclareOperation( "ProjectionInFactorOfDirectProductOp",
-                  [ IsList, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
 #! Projection in the $i$-th factor of the direct product $P = \prod_j A_j$ 
 #! given by a list of objects $D = (A_j)$.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments D, i, P
 DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
-                  [ IsList, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
 #! Given finitely many morphisms $\alpha_i: A \rightarrow B_i$ this method
 #! returns the unique morphism $\alpha: A \rightarrow \prod_j B_j$ such that
 #! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
 #! $\prod_j B_j \rightarrow B_i$.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments alpha_i
 DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 
@@ -1007,10 +1007,10 @@ DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 # returns a unique morphism $\alpha: A \rightarrow \prod_j B_j$ such that
 # $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
 # $\prod_j B_j \rightarrow B_i$. The second argument $M$ is needed for the method selection.
-# @Returns IsHomalgCategoryMorphism
+# @Returns IsCapCategoryMorphism
 # @Arguments D, M
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
-                  [ IsList, IsList, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsCapCategoryObject ] );
 
 # TODO: Fix this documentation (new argument)
 #! @Description
@@ -1019,10 +1019,10 @@ DeclareOperation( "UniversalMorphismIntoDirectProductOp",
 #! returns the unique morphism $\alpha: A \rightarrow P$ such that
 #! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
 #! $P \rightarrow B_i$.
-#! @Returns IsHomalgCategoryMorphism
+#! @Returns IsCapCategoryMorphism
 #! @Arguments D, P
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsList, IsList, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -1031,19 +1031,19 @@ DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
 #! @Description
 #! These attributes store the implementations of the basic algorithms for a direct product. 
 DeclareAttribute( "DirectProductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "ProjectionInFactorOfDirectProductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "ProjectionInFactorOfDirectProductWithGivenDirectProductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismIntoDirectProductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismIntoDirectProductWithGivenDirectProductFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 #! @EndGroup
 #! @EndAutoDoc
 
@@ -1055,7 +1055,7 @@ DeclareAttribute( "UniversalMorphismIntoDirectProductWithGivenDirectProductFunct
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (P_1, \dots, P_n), i ) \mapsto \pi_i$ to the category $C$
@@ -1063,7 +1063,7 @@ DeclareOperation( "AddDirectProduct",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorOfDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (P_1, \dots, P_n), i, P ) \mapsto \pi_i$ to the category $C$
@@ -1071,7 +1071,7 @@ DeclareOperation( "AddProjectionInFactorOfDirectProduct",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n} ) \mapsto u$ to the category $C$
@@ -1079,7 +1079,7 @@ DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}, P ) \mapsto u$ to the category $C$
@@ -1087,7 +1087,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Section Functorial methods for direct product
 
@@ -1104,7 +1104,7 @@ DeclareOperation( "DirectProductFunctorial",
                   [ IsList ] );
 
 DeclareOperation( "DirectProductFunctorialOp",
-                  [ IsList, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsCapCategoryMorphism ] );
 
 
 ## WasCreatedAs Filter
@@ -1142,24 +1142,24 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 DeclareGlobalFunction( "FiberProduct" );
 
 DeclareOperationWithCache( "PullbackOp",
-                           [ IsList, IsHomalgCategoryMorphism ] );
+                           [ IsList, IsCapCategoryMorphism ] );
 
 DeclareOperation( "ProjectionInFactorOfPullback",
                   [ IsList, IsInt ] );
 
 DeclareOperation( "ProjectionInFactorOfPullbackOp",
-                  [ IsList, IsInt, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsInt, IsCapCategoryMorphism ] );
 
 DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
-                  [ IsList, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
 
 DeclareOperation( "UniversalMorphismIntoPullbackOp",
-                  [ IsList, IsList, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsList, IsCapCategoryMorphism ] );
 
 DeclareOperation( "UniversalMorphismIntoPullbackWithGivenPullback",
-                  [ IsList, IsList, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -1168,19 +1168,19 @@ DeclareOperation( "UniversalMorphismIntoPullbackWithGivenPullback",
 #! @Description
 #! These attributes store the implementations of the basic algorithms for a pullback. 
 DeclareAttribute( "PullbackFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "ProjectionInFactorOfPullbackFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "ProjectionInFactorOfPullbackWithGivenPullbackFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismIntoPullbackFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismIntoPullbackWithGivenPullbackFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 #! @EndGroup
 #! @EndAutoDoc
 
@@ -1193,7 +1193,7 @@ DeclareAttribute( "UniversalMorphismIntoPullbackWithGivenPullbackFunction",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddFiberProduct",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, i ) \mapsto \pi_i$ to the category $C$
@@ -1201,7 +1201,7 @@ DeclareOperation( "AddFiberProduct",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorOfPullback",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, i, P ) \mapsto \pi_i$ to the category $C$
@@ -1209,7 +1209,7 @@ DeclareOperation( "AddProjectionInFactorOfPullback",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}  ) \mapsto u$ 
@@ -1218,7 +1218,7 @@ DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoPullback",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}, P ) \mapsto u$ 
@@ -1227,7 +1227,7 @@ DeclareOperation( "AddUniversalMorphismIntoPullback",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Section Functorial methods for pullback
 
@@ -1253,7 +1253,7 @@ DeclareOperation( "PullbackFunctorial",
 #! @Returns $\phi$
 #! @Arguments L, beta
 DeclareOperation( "PullbackFunctorialOp",
-                  [ IsList, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsCapCategoryMorphism ] );
 
 ## WasCreatedAs Filter
 
@@ -1288,7 +1288,7 @@ DeclareFilter( "WasCreatedAsPullback" );
 DeclareGlobalFunction( "Pushout" );
 
 DeclareOperationWithCache( "PushoutOp",
-                           [ IsList, IsHomalgCategoryMorphism ] );
+                           [ IsList, IsCapCategoryMorphism ] );
 
 ## DeclareGlobalFunction( "InjectionOfCofactor" ); to be adjusted
 
@@ -1296,18 +1296,18 @@ DeclareOperation( "InjectionOfCofactorOfPushout",
                   [ IsList, IsInt ] );
 
 DeclareOperation( "InjectionOfCofactorOfPushoutOp",
-                  [ IsList, IsInt, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsInt, IsCapCategoryMorphism ] );
 
 DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
-                  [ IsList, IsInt, IsHomalgCategoryObject ] );
+                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 
 DeclareOperation( "UniversalMorphismFromPushoutOp",
-                  [ IsList, IsList, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsList, IsCapCategoryMorphism ] );
 
 DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
-                  [ IsList, IsList, IsHomalgCategoryObject ] );
+                  [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -1316,19 +1316,19 @@ DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
 #! @Description
 #! These attributes store the implementations of the basic algorithms for a pushout. 
 DeclareAttribute( "PushoutFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "InjectionOfCofactorOfPushoutFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "InjectionOfCofactorOfPushoutWithGivenPushoutFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismFromPushoutFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismFromPushoutWithGivenPushoutFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 #! @EndGroup
 #! @EndAutoDoc
 
@@ -1341,7 +1341,7 @@ DeclareAttribute( "UniversalMorphismFromPushoutWithGivenPushoutFunction",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddPushout",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, i ) \mapsto \iota_i$ to the category $C$
@@ -1349,7 +1349,7 @@ DeclareOperation( "AddPushout",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactorOfPushout",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, i, I ) \mapsto \iota_i$ to the category $C$
@@ -1357,7 +1357,7 @@ DeclareOperation( "AddInjectionOfCofactorOfPushout",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n} ) \mapsto u$ 
@@ -1365,7 +1365,7 @@ DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromPushout",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}, I ) \mapsto u$ 
@@ -1373,7 +1373,7 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Section Functorial methods for pushout
 
@@ -1399,7 +1399,7 @@ DeclareOperation( "PushoutFunctorial",
 #! @Returns $\phi$
 #! @Arguments L, beta
 DeclareOperation( "PushoutFunctorialOp",
-                  [ IsList, IsHomalgCategoryMorphism ] );
+                  [ IsList, IsCapCategoryMorphism ] );
 
 
 ## WasCreatedAs Filter
@@ -1434,33 +1434,33 @@ DeclareFilter( "WasCreatedAsPushout" );
 
 ## FIXME: Image is a function (rename: ImageObject -> Image)
 DeclareAttributeWithToDoForIsWellDefined( "ImageObject",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 #convenience function
 DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 #convenience function
 DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 DeclareOperation( "ImageEmbeddingWithGivenImage",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 DeclareOperation( "CoastrictionToImageWithGivenImage",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 DeclareOperation( "UniversalMorphismFromImage",
-                  [ IsHomalgCategoryMorphism, IsList ] );
+                  [ IsCapCategoryMorphism, IsList ] );
 
 DeclareOperation( "UniversalMorphismFromImageWithGivenImage",
-                  [ IsHomalgCategoryMorphism, IsList, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
 #! @AutoDoc
@@ -1469,25 +1469,25 @@ DeclareOperation( "UniversalMorphismFromImageWithGivenImage",
 #! @Description
 #! These attributes store the implementations of the basic algorithms for an image. 
 DeclareAttribute( "ImageFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "ImageEmbeddingFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "ImageEmbeddingWithGivenImageFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "CoastrictionToImageFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "CoastrictionToImageWithGivenImageFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismFromImageFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismFromImageWithGivenImageFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 
 #! @EndGroup
@@ -1500,35 +1500,35 @@ DeclareAttribute( "UniversalMorphismFromImageWithGivenImageFunction",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddImageObject",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: \alpha \mapsto \iota$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddImageEmbedding",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, I) \mapsto \iota$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddImageEmbeddingWithGivenImage",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: \alpha \mapsto c$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCoastrictionToImage",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, I) \mapsto c$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCoastrictionToImageWithGivenImage",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, [\tau_1, \tau_2]) \mapsto u$ to the category $C$.
@@ -1536,7 +1536,7 @@ DeclareOperation( "AddCoastrictionToImageWithGivenImage",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromImage",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, [\tau_1, \tau_2], I) \mapsto u$ to the category $C$.
@@ -1544,7 +1544,7 @@ DeclareOperation( "AddUniversalMorphismFromImage",
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromImageWithGivenImage",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 ## WasCreatedAs Filter
 

@@ -10,10 +10,10 @@
 #############################################################################
 
 DeclareCategory( "IsGeneralizedMorphismCategoryObject",
-                 IsHomalgCategoryObject );
+                 IsCapCategoryObject );
 
 DeclareCategory( "IsGeneralizedMorphism",
-                 IsHomalgCategoryMorphism );
+                 IsCapCategoryMorphism );
 
 ####################################
 ##
@@ -30,7 +30,7 @@ DeclareGlobalVariable( "GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST" );
 DeclareFilter( "WasCreatedAsGeneralizedMorphismCategory" );
 
 DeclareProperty( "INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms",
-                 IsHomalgCategory );
+                 IsCapCategory );
 
 ####################################
 ##
@@ -39,33 +39,33 @@ DeclareProperty( "INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms",
 ####################################
 
 DeclareAttribute( "GeneralizedMorphismCategory",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY" );
 
 DeclareAttribute( "UnderlyingHonestCategory",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttributeWithToDoForIsWellDefined( "GeneralizedMorphismObject",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 DeclareAttribute( "UnderlyingHonestObject",
                   IsGeneralizedMorphismCategoryObject );
 
 DeclareOperation( "GeneralizedMorphism",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "GeneralizedMorphismWithSourceAid",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "GeneralizedMorphismWithRangeAid",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareAttributeWithToDoForIsWellDefined( "AsGeneralizedMorphism",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 DeclareOperation( "GeneralizedMorphismFromFactorToSubobject",
-                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
                                           IsGeneralizedMorphism );
@@ -110,7 +110,7 @@ DeclareProperty( "HasHonestRange",
                   IsGeneralizedMorphism );
 
 DeclareAttribute( "SubcategoryMembershipFunctionForGeneralizedMorphismCategory",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 InstallTrueMethod( IsHonest, HasHonestRange and HasHonestSource );
 
@@ -125,13 +125,13 @@ InstallTrueMethod( HasHonestSource, IsHonest );
 ####################################
 
 DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphism",
-                           [ IsHomalgCategoryMorphism,
-                           IsHomalgCategoryMorphism,
-                           IsHomalgCategoryMorphism,
-                           IsHomalgCategoryMorphism,
-                           IsHomalgCategoryMorphism ] );
+                           [ IsCapCategoryMorphism,
+                           IsCapCategoryMorphism,
+                           IsCapCategoryMorphism,
+                           IsCapCategoryMorphism,
+                           IsCapCategoryMorphism ] );
 
 DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphismWithKernelAndCokernel",
-                           [ IsHomalgCategoryMorphism,
-                           IsHomalgCategoryMorphism,
-                           IsHomalgCategoryMorphism ] );
+                           [ IsCapCategoryMorphism,
+                           IsCapCategoryMorphism,
+                           IsCapCategoryMorphism ] );

@@ -14,7 +14,7 @@
 DeclareGlobalVariable( "CATEGORIES_LOGIC_FILES" );
 
 DeclareAttribute( "INSTALL_LOGICAL_IMPLICATIONS",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareGlobalFunction( "INSTALL_LOGICAL_IMPLICATIONS_HELPER" );
 

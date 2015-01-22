@@ -7,16 +7,16 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsHomalgCategoryTwoCellRep",
-                       IsAttributeStoringRep and IsHomalgCategoryTwoCell,
+DeclareRepresentation( "IsCapCategoryTwoCellRep",
+                       IsAttributeStoringRep and IsCapCategoryTwoCell,
                        [ ] );
 
-BindGlobal( "TheFamilyOfHomalgCategoryTwoCells",
-        NewFamily( "TheFamilyOfHomalgCategoryTwoCells" ) );
+BindGlobal( "TheFamilyOfCapCategoryTwoCells",
+        NewFamily( "TheFamilyOfCapCategoryTwoCells" ) );
 
-BindGlobal( "TheTypeOfHomalgCategoryTwoCells",
-        NewType( TheFamilyOfHomalgCategoryTwoCells,
-                IsHomalgCategoryTwoCellRep ) );
+BindGlobal( "TheTypeOfCapCategoryTwoCells",
+        NewType( TheFamilyOfCapCategoryTwoCells,
+                IsCapCategoryTwoCellRep ) );
 
 ####################################
 ##
@@ -30,7 +30,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL,
   function( category, twocell )
     local entry;
     
-    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ twocell, "HomalgCategory" ] ],
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ twocell, "CapCategory" ] ],
                                                          [ category, twocell ],
                                                          CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
                                                           );
@@ -39,7 +39,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL,
     
     if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_TWOCELL ) then
         
-        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ twocell, "HomalgCategory" ] ],
+        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ twocell, "CapCategory" ] ],
                                                              [ category, twocell ],
                                                              category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_TWOCELL
                                                               );
@@ -52,14 +52,14 @@ end );
 
 ##
 InstallMethod( Add,
-               [ IsHomalgCategory, IsHomalgCategoryTwoCell ],
+               [ IsCapCategory, IsCapCategoryTwoCell ],
                
   function( category, twocell )
     local obj_filter, filter;
     
-    if HasHomalgCategory( twocell ) then
+    if HasCapCategory( twocell ) then
         
-        if IsIdenticalObj( HomalgCategory( twocell ), category ) then
+        if IsIdenticalObj( CapCategory( twocell ), category ) then
             
             return;
             
@@ -79,7 +79,7 @@ InstallMethod( Add,
     
     SetFilterObj( twocell, filter );
     
-    SetHomalgCategory( twocell, category );
+    SetCapCategory( twocell, category );
 
     INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL( category, twocell );
     
@@ -87,7 +87,7 @@ end );
 
 ##
 InstallMethod( AddHorizontalPreCompose,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -96,8 +96,8 @@ InstallMethod( AddHorizontalPreCompose,
     SetCanComputeHorizontalPreCompose( category, true );
     
     InstallMethodWithToDoForIsWellDefined( HorizontalPreCompose,
-                                           [ IsHomalgCategoryTwoCell and TwoCellFilter( category ),
-                                             IsHomalgCategoryTwoCell and TwoCellFilter( category ) ],
+                                           [ IsCapCategoryTwoCell and TwoCellFilter( category ),
+                                             IsCapCategoryTwoCell and TwoCellFilter( category ) ],
                             
       function( twocell_1, twocell_2 )
         local horizontal_composition;
@@ -120,7 +120,7 @@ end );
 
 ##
 InstallMethod( AddVerticalPreCompose,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -129,8 +129,8 @@ InstallMethod( AddVerticalPreCompose,
     SetCanComputeVerticalPreCompose( category, true );
     
     InstallMethodWithToDoForIsWellDefined( VerticalPreCompose,
-                                           [ IsHomalgCategoryTwoCell and TwoCellFilter( category ),
-                                             IsHomalgCategoryTwoCell and TwoCellFilter( category ) ],
+                                           [ IsCapCategoryTwoCell and TwoCellFilter( category ),
+                                             IsCapCategoryTwoCell and TwoCellFilter( category ) ],
                             
       function( twocell_1, twocell_2 )
         local vertical_composition;
@@ -153,7 +153,7 @@ end );
 
 ##
 InstallMethod( AddIdentityTwoCell,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -162,7 +162,7 @@ InstallMethod( AddIdentityTwoCell,
     SetCanComputeIdentityTwoCell( category, true );
     
     InstallMethodWithToDoForIsWellDefined( IdentityTwoCell,
-                                           [ IsHomalgCategoryMorphism and MorphismFilter( category ) ],
+                                           [ IsCapCategoryMorphism and MorphismFilter( category ) ],
                    
       function( mor )
         local two_cell;
@@ -185,7 +185,7 @@ end );
 
 ##
 InstallMethod( AddIsWellDefinedForTwoCells,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
@@ -194,7 +194,7 @@ InstallMethod( AddIsWellDefinedForTwoCells,
     SetIsWellDefinedForTwoCellsFunction( category, func );
     
     InstallMethod( IsWellDefined,
-                   [ IsHomalgCategoryTwoCell and TwoCellFilter( category ) ],
+                   [ IsCapCategoryTwoCell and TwoCellFilter( category ) ],
                    
       function( twocell )
         

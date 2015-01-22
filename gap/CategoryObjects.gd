@@ -6,7 +6,7 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Category object
-#!  Any GAP object which is IsHomalgCategoryObject can be added to a category
+#!  Any GAP object which is IsCapCategoryObject can be added to a category
 #!  and then becomes an object in this category.
 #!  Any object can belong to one or no category.
 #!  After a GAP object is added to the category, it knows which things can be
@@ -39,8 +39,8 @@
 #! once it is set. This also makes sure that an object only belongs to
 #! one category
 #! @Group Category getter
-DeclareAttribute( "HomalgCategory",
-                  IsHomalgCategoryObject );
+DeclareAttribute( "CapCategory",
+                  IsCapCategoryObject );
 
 ###################################
 ##
@@ -53,7 +53,7 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT" );
 DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT" );
 
 DeclareAttribute( "Genesis",
-                  IsHomalgCategoryCell, 
+                  IsCapCategoryCell, 
                   "mutable" );
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS" );
@@ -67,16 +67,16 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_OBJECTS" );
 ###################################
 
 DeclareOperation( "AddIsEqualForObjects",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareOperationWithCache( "IsEqualForObjects",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 DeclareAttribute( "ObjectEqualityFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
-                  [ IsHomalgCategory, IsString ] );
+                  [ IsCapCategory, IsString ] );
 
 ###################################
 ##
@@ -85,16 +85,16 @@ DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
 ###################################
 
 DeclareFamilyProperty( "IsProjective",
-                       IsHomalgCategoryObject, "object" : reinstall := false );
+                       IsCapCategoryObject, "object" : reinstall := false );
 
 DeclareFamilyProperty( "IsInjective",
-                       IsHomalgCategoryObject, "object" : reinstall := false );
+                       IsCapCategoryObject, "object" : reinstall := false );
 
 DeclareFamilyProperty( "IsTerminal",
-                       IsHomalgCategoryObject, "object" : reinstall := false );
+                       IsCapCategoryObject, "object" : reinstall := false );
 
 DeclareFamilyProperty( "IsInitial",
-                       IsHomalgCategoryObject, "object" : reinstall := false );
+                       IsCapCategoryObject, "object" : reinstall := false );
 
 ###################################
 ##
@@ -103,13 +103,13 @@ DeclareFamilyProperty( "IsInitial",
 ###################################
 
 DeclareFamilyProperty( "IsZero",
-                       IsHomalgCategoryObject, "object" : reinstall := false );
+                       IsCapCategoryObject, "object" : reinstall := false );
 
 DeclareOperation( "AddIsZeroForObjects",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "IsZeroForObjectsFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 ###################################
 ##
@@ -118,7 +118,7 @@ DeclareAttribute( "IsZeroForObjectsFunction",
 ###################################
 
 DeclareOperation( "Add",
-                  [ IsHomalgCategory, IsHomalgCategoryObject ] );
+                  [ IsCapCategory, IsCapCategoryObject ] );
 
 ###################################
 ##
@@ -134,7 +134,7 @@ DeclareOperation( "Add",
 
 
 DeclareAttributeWithToDoForIsWellDefined( "IdentityMorphism",
-                                          IsHomalgCategoryObject );
+                                          IsCapCategoryObject );
 
 ###################################
 ##
@@ -143,7 +143,7 @@ DeclareAttributeWithToDoForIsWellDefined( "IdentityMorphism",
 ###################################
 
 DeclareOperation( "ZeroMorphism",
-                  [ IsHomalgCategoryObject, IsHomalgCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ###################################
 ##
@@ -152,10 +152,10 @@ DeclareOperation( "ZeroMorphism",
 ###################################
 
 DeclareOperation( "AddIsWellDefinedForObjects",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "IsWellDefinedForObjectsFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 
 

@@ -200,7 +200,7 @@ InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
 end );
 
 InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsHomalgCategory and HasDeductiveSystem and IsEnrichedOverCommutativeRegularSemigroup,
+                        IsCapCategory and HasDeductiveSystem and IsEnrichedOverCommutativeRegularSemigroup,
                         0,
                         
   function( category )
@@ -212,7 +212,7 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
 end );
 
 InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsHomalgCategory and HasDeductiveSystem and IsPreAdditiveCategory,
+                        IsCapCategory and HasDeductiveSystem and IsPreAdditiveCategory,
                         0,
                         
   function( category )
@@ -224,7 +224,7 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
 end );
 
 InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsHomalgCategory and HasDeductiveSystem and IsAdditiveCategory,
+                        IsCapCategory and HasDeductiveSystem and IsAdditiveCategory,
                         0,
                         
   function( category )
@@ -236,7 +236,7 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
 end );
 
 InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsHomalgCategory and HasDeductiveSystem and IsPreAbelianCategory,
+                        IsCapCategory and HasDeductiveSystem and IsPreAbelianCategory,
                         0,
                         
   function( category )
@@ -248,7 +248,7 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
 end );
 
 InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsHomalgCategory and HasDeductiveSystem and IsAbelianCategory,
+                        IsCapCategory and HasDeductiveSystem and IsAbelianCategory,
                         0,
                         
   function( category )
@@ -260,7 +260,7 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
 end );
 
 InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsHomalgCategory and HasDeductiveSystem and IsAbCategory,
+                        IsCapCategory and HasDeductiveSystem and IsAbCategory,
                         0,
                         
   function( category )
@@ -411,21 +411,21 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
         
         current_argument := arguments[ 1 ];
         
-        if IsHomalgCategory( current_argument ) then
+        if IsCapCategory( current_argument ) then
            
             crisp_category := current_argument;
             
             deductive_category := DeductiveSystem( crisp_category );
             
-        elif IsHomalgCategoryCell( current_argument ) then
+        elif IsCapCategoryCell( current_argument ) then
             
-            deductive_category := HomalgCategory( current_argument );
+            deductive_category := CapCategory( current_argument );
             
             crisp_category := UnderlyingHonestCategory( deductive_category );
             
         elif IsList( current_argument ) then
             
-            deductive_category := HomalgCategory( current_argument[ 1 ] );
+            deductive_category := CapCategory( current_argument[ 1 ] );
             
             crisp_category := UnderlyingHonestCategory( deductive_category );
             
@@ -690,7 +690,7 @@ InstallGlobalFunction( CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE,
         
     fi;
     
-    if IsHomalgCategoryCell( history ) then
+    if IsCapCategoryCell( history ) then
         
         history := History( history );
         
@@ -756,7 +756,7 @@ BindGlobal( "GET_VARIABLE_FROM_POSITION",
     
     for i in position do
         
-        if IsHomalgCategoryCell( variable ) then
+        if IsCapCategoryCell( variable ) then
             
             variable := History( variable );
             
@@ -973,7 +973,7 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
           replaced_history, part_for_well_defined, new_return, arguments, command_check, variable_name_record,
           variable_check;
     
-    if IsHomalgCategoryCell( history ) then
+    if IsCapCategoryCell( history ) then
         
         history := History( history );
         

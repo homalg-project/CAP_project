@@ -9,19 +9,19 @@
 #############################################################################
 
 DeclareRepresentation( "IsCocomplexRep",
-                       IsHomalgCategoryObjectRep and IsCocomplex,
+                       IsCapCategoryObjectRep and IsCocomplex,
                        [ ] );
 
 DeclareRepresentation( "IsCochainMapRep",
-                       IsHomalgCategoryMorphismRep and IsCochainMap,
+                       IsCapCategoryMorphismRep and IsCochainMap,
                        [ ] );
 
 BindGlobal( "TheTypeOfCocomplexes",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsCocomplexRep ) );
 
 BindGlobal( "TheTypeOfCochainMaps",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsCochainMapRep ) );
 
 #############################
@@ -32,7 +32,7 @@ BindGlobal( "TheTypeOfCochainMaps",
 
 ##
 InstallMethod( CocomplexCategory,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     local name, cocomplex_category;
@@ -47,7 +47,7 @@ InstallMethod( CocomplexCategory,
     
     name := Concatenation( "Cocomplex category of ", name );
     
-    cocomplex_category := CreateHomalgCategory( name );
+    cocomplex_category := CreateCapCategory( name );
     
     SetUnderlyingHonestCategory( cocomplex_category, category );
     
@@ -791,7 +791,7 @@ InstallMethod( AsCocomplex,
   function( z_functor_object )
     local category, object;
     
-    category := UnderlyingHonestCategory( HomalgCategory( z_functor_object ) );
+    category := UnderlyingHonestCategory( CapCategory( z_functor_object ) );
     
     object := rec( );
     
@@ -811,7 +811,7 @@ InstallMethod( AsCochainMap,
   function( z_functor_morphism )
     local category, source, range, morphism;
     
-    category := UnderlyingHonestCategory( HomalgCategory( z_functor_morphism ) );
+    category := UnderlyingHonestCategory( CapCategory( z_functor_morphism ) );
     
     source := AsCocomplex( Source( z_functor_morphism ) );
     
@@ -837,7 +837,7 @@ InstallMethod( CochainMap,
   function( source, z_functor_morphism, range )
     local category, morphism;
     
-    category := UnderlyingHonestCategory( HomalgCategory( z_functor_morphism ) );
+    category := UnderlyingHonestCategory( CapCategory( z_functor_morphism ) );
     
     morphism := rec( );
     
@@ -854,7 +854,7 @@ end );
 
 ##
 InstallMethod( AsPointedCocomplexOp,
-               [ IsHomalgCategoryObject, IsInt ],
+               [ IsCapCategoryObject, IsInt ],
                
   function( object, index )
       
@@ -864,7 +864,7 @@ end );
 
 ##
 InstallMethod( AsPointedCochainMapOp,
-               [ IsHomalgCategoryMorphism, IsInt ],
+               [ IsCapCategoryMorphism, IsInt ],
                
   function( morphism, index )
       

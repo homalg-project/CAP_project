@@ -8,19 +8,19 @@
 #############################################################################
 
 DeclareRepresentation( "IsLazyCategoryObjectRep",
-                       IsHomalgCategoryObjectRep and IsLazyCategoryObject,
+                       IsCapCategoryObjectRep and IsLazyCategoryObject,
                        [ ] );
 
 BindGlobal( "TheTypeOfLazyCategoryObject",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsLazyCategoryObjectRep ) );
 
 DeclareRepresentation( "IsLazyCategoryMorphismRep",
-                       IsHomalgCategoryMorphismRep and IsLazyCategoryMorphism,
+                       IsCapCategoryMorphismRep and IsLazyCategoryMorphism,
                        [ ] );
 
 BindGlobal( "TheTypeOfLazyCategoryMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsLazyCategoryMorphismRep ) );
 
 #################################
@@ -725,12 +725,12 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
 end );
 
 InstallMethod( LazyCategory,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     local lazy_category;
     
-    lazy_category := CreateHomalgCategory( Concatenation( "Lazy category of ", Name( category ) ) );
+    lazy_category := CreateCapCategory( Concatenation( "Lazy category of ", Name( category ) ) );
     
     SetUnderlyingBusyCategory( lazy_category, category );
     
@@ -741,7 +741,7 @@ InstallMethod( LazyCategory,
 end );
 
 InstallMethod( Lazy,
-               [ IsHomalgCategoryObject ],
+               [ IsCapCategoryObject ],
                
   function( cell )
     local lazy_cell;
@@ -752,14 +752,14 @@ InstallMethod( Lazy,
     
     SetEval( lazy_cell, cell );
     
-    Add( LazyCategory( HomalgCategory( cell ) ), lazy_cell );
+    Add( LazyCategory( CapCategory( cell ) ), lazy_cell );
     
     return lazy_cell;
     
 end );
 
 InstallMethod( Lazy,
-               [ IsHomalgCategoryMorphism ],
+               [ IsCapCategoryMorphism ],
                
   function( morphism )
     local lazy_morphism;
@@ -774,7 +774,7 @@ InstallMethod( Lazy,
     
     SetRange( lazy_morphism, Lazy( Range( morphism ) ) );
     
-    Add( LazyCategory( HomalgCategory( morphism ) ), lazy_morphism );
+    Add( LazyCategory( CapCategory( morphism ) ), lazy_morphism );
     
     return lazy_morphism;
     
@@ -909,7 +909,7 @@ end );
 
 ##
 InstallMethod( Object,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     local object;
@@ -926,17 +926,17 @@ end );
 
 ##
 InstallMethod( Object,
-               [ IsHomalgCategoryCell ],
+               [ IsCapCategoryCell ],
                
   function( cell )
     
-    return Object( HomalgCategory( cell ) );
+    return Object( CapCategory( cell ) );
     
 end );
 
 ##
 InstallMethod( Morphism,
-               [ IsHomalgCategoryObject, IsHomalgCategory, IsHomalgCategoryObject ],
+               [ IsCapCategoryObject, IsCapCategory, IsCapCategoryObject ],
                
   function( source, category, range )
     local lazy_category, morphism, entry;
@@ -976,16 +976,16 @@ InstallMethod( Morphism,
 end );
 
 InstallMethod( Morphism,
-               [ IsHomalgCategoryObject, IsHomalgCategoryCell, IsHomalgCategoryObject ],
+               [ IsCapCategoryObject, IsCapCategoryCell, IsCapCategoryObject ],
                
   function( source, cell, range )
     
-    return Morphism( source, HomalgCategory( cell ), range );
+    return Morphism( source, CapCategory( cell ), range );
     
 end );
 
 InstallMethod( Morphism,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     local lazy_category, source, range, morphism, entry;
@@ -1019,11 +1019,11 @@ InstallMethod( Morphism,
 end );
 
 InstallMethod( Morphism,
-               [ IsHomalgCategoryCell ],
+               [ IsCapCategoryCell ],
                
   function( cell )
     
-    return Morphism( HomalgCategory( cell ) );
+    return Morphism( CapCategory( cell ) );
     
 end );
 
@@ -1055,7 +1055,7 @@ InstallMethod( ViewObj,
     
     Print( "<An unevaluated object in " );
     
-    Print( Name( HomalgCategory( cell ) ) );
+    Print( Name( CapCategory( cell ) ) );
     
     Print( ">" );
     
@@ -1068,7 +1068,7 @@ InstallMethod( ViewObj,
     
     Print( "<An unevaluated morphism in " );
     
-    Print( Name( HomalgCategory( cell ) ) );
+    Print( Name( CapCategory( cell ) ) );
     
     Print( ">" );
     

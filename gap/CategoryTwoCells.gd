@@ -20,13 +20,13 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL" );
 ######################################
 
 DeclareAttribute( "Source",
-                  IsHomalgCategoryTwoCell );
+                  IsCapCategoryTwoCell );
 
 DeclareAttribute( "Range",
-                  IsHomalgCategoryTwoCell );
+                  IsCapCategoryTwoCell );
 
 DeclareProperty( "IsWellDefined",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 ###################################
 ##
@@ -35,32 +35,32 @@ DeclareProperty( "IsWellDefined",
 ###################################
 
 DeclareProperty( "IsMonomorphism",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 DeclareProperty( "IsEpimorphism",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 DeclareProperty( "IsIsomorphism",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 DeclareProperty( "IsEndomorphism",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 DeclareProperty( "IsAutomorphism",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 DeclareProperty( "IsSplitMonomorphism",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 DeclareProperty( "IsSplitEpimorphism",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 ## TODO: IsIdentity
 DeclareProperty( "IsOne",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 DeclareProperty( "IsIdempotent",
-                 IsHomalgCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 #######################################
 ##
@@ -69,34 +69,34 @@ DeclareProperty( "IsIdempotent",
 #######################################
 
 DeclareOperation( "Add",
-                  [ IsHomalgCategory, IsHomalgCategoryTwoCell ] );
+                  [ IsCapCategory, IsCapCategoryTwoCell ] );
 
 DeclareOperation( "HorizontalPreCompose",
-                  [ IsHomalgCategoryTwoCell, IsHomalgCategoryTwoCell ] );
+                  [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
 DeclareOperation( "AddHorizontalPreCompose",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "HorizontalPreComposeFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareOperation( "VerticalPreCompose",
-                  [ IsHomalgCategoryTwoCell, IsHomalgCategoryTwoCell ] );
+                  [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
 DeclareOperation( "AddVerticalPreCompose",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "VerticalPreComposeFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttributeWithToDoForIsWellDefined( "IdentityTwoCell",
-                                          IsHomalgCategoryMorphism );
+                                          IsCapCategoryMorphism );
 
 DeclareOperation( "AddIdentityTwoCell",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "IdentityTwoCellFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 ###################################
 ##
@@ -105,7 +105,7 @@ DeclareAttribute( "IdentityTwoCellFunction",
 ###################################
 
 DeclareOperation( "AddIsWellDefinedForTwoCells",
-                  [ IsHomalgCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction ] );
 
 DeclareAttribute( "IsWellDefinedForTwoCellsFunction",
-                  IsHomalgCategory );
+                  IsCapCategory );

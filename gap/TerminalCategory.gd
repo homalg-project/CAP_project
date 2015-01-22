@@ -34,10 +34,10 @@ DeclareFilter( "IsTerminalCategory" );
 #########################################
 
 DeclareAttribute( "UniqueObject",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "UniqueMorphism",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 #########################################
 ##
@@ -46,6 +46,6 @@ DeclareAttribute( "UniqueMorphism",
 #########################################
 
 DeclareAttribute( "FunctorFromTerminalCategory",
-                  IsHomalgCategoryCell );
+                  IsCapCategoryCell );
 
 

@@ -8,28 +8,28 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsHomalgCategoryAsCatObjectRep",
-                       IsHomalgCategoryObjectRep and IsHomalgCategoryAsCatObject,
+DeclareRepresentation( "IsCapCategoryAsCatObjectRep",
+                       IsCapCategoryObjectRep and IsCapCategoryAsCatObject,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgCategoriesAsCatObjects",
-        NewType( TheFamilyOfHomalgCategoryObjects,
-                IsHomalgCategoryAsCatObjectRep ) );
+        NewType( TheFamilyOfCapCategoryObjects,
+                IsCapCategoryAsCatObjectRep ) );
 
 DeclareRepresentation( "IsHomalgFunctorRep",
-                       IsHomalgCategoryMorphismRep and IsHomalgFunctor,
+                       IsCapCategoryMorphismRep and IsHomalgFunctor,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgFunctors",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsHomalgFunctorRep ) );
 
 DeclareRepresentation( "IsHomalgNaturalTransformationRep",
-                       IsHomalgCategoryTwoCellRep and IsHomalgNaturalTransformation,
+                       IsCapCategoryTwoCellRep and IsHomalgNaturalTransformation,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgNaturalTransformations",
-        NewType( TheFamilyOfHomalgCategoryTwoCells,
+        NewType( TheFamilyOfCapCategoryTwoCells,
                 IsHomalgNaturalTransformationRep ) );
 
 ##
@@ -51,7 +51,7 @@ CATEGORIES_FOR_HOMALG_CREATE_Cat( );
 
 ##
 InstallMethod( AsCatObject,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
   
   function( category )
     local cat_obj;
@@ -59,7 +59,7 @@ InstallMethod( AsCatObject,
     cat_obj := rec( );
     
     ObjectifyWithAttributes( cat_obj, TheTypeOfHomalgCategoriesAsCatObjects,
-                             AsHomalgCategory, category );
+                             AsCapCategory, category );
     
     Add( CATEGORIES_FOR_HOMALG_Cat, cat_obj );
     
@@ -71,7 +71,7 @@ end );
 
 ##
 InstallMethod( HomalgFunctor,
-               [ IsString, IsHomalgCategory, IsHomalgCategory ],
+               [ IsString, IsCapCategory, IsCapCategory ],
                
   function( name, source, range )
     local functor;
@@ -91,31 +91,31 @@ end );
 
 ##
 InstallMethod( HomalgFunctor,
-               [ IsString, IsHomalgCategoryAsCatObject, IsHomalgCategory ],
+               [ IsString, IsCapCategoryAsCatObject, IsCapCategory ],
                
   function( name, source, range )
     
-    return HomalgFunctor( name, AsHomalgCategory( source ), range );
+    return HomalgFunctor( name, AsCapCategory( source ), range );
     
 end );
 
 ##
 InstallMethod( HomalgFunctor,
-               [ IsString, IsHomalgCategory, IsHomalgCategoryAsCatObject ],
+               [ IsString, IsCapCategory, IsCapCategoryAsCatObject ],
                
   function( name, source, range )
     
-    return HomalgFunctor( name, source, AsHomalgCategory( range ) );
+    return HomalgFunctor( name, source, AsCapCategory( range ) );
     
 end );
 
 ##
 InstallMethod( HomalgFunctor,
-               [ IsString, IsHomalgCategoryAsCatObject, IsHomalgCategoryAsCatObject ],
+               [ IsString, IsCapCategoryAsCatObject, IsCapCategoryAsCatObject ],
                
   function( name, source, range )
     
-    return HomalgFunctor( name, AsHomalgCategory( source ), AsHomalgCategory( range ) );
+    return HomalgFunctor( name, AsCapCategory( source ), AsCapCategory( range ) );
     
 end );
 
@@ -141,7 +141,7 @@ end );
 
 ##
 InstallMethod( CatFunctorPreimageList,
-               [ IsHomalgCategoryCell ],
+               [ IsCapCategoryCell ],
                
   function( obj )
     
@@ -177,12 +177,12 @@ end );
 
 ##
 InstallMethod( ApplyFunctor,
-               [ IsHomalgFunctor, IsHomalgCategoryObject ],
+               [ IsHomalgFunctor, IsCapCategoryObject ],
                
   function( functor, obj )
     local obj_cache, cache_return, computed_value;
     
-    if not IsIdenticalObj( HomalgCategory( obj ), AsHomalgCategory( Source( functor ) ) ) then
+    if not IsIdenticalObj( CapCategory( obj ), AsCapCategory( Source( functor ) ) ) then
         
         Error( "wrong input object" );
         
@@ -207,7 +207,7 @@ InstallMethod( ApplyFunctor,
     ## a new image is created. This might cause inconsistencies.
     CatFunctorPreimageList( computed_value ).( Name( functor ) ) := obj;
     
-    Add( AsHomalgCategory( Range( functor ) ), computed_value );
+    Add( AsCapCategory( Range( functor ) ), computed_value );
     
     return computed_value;
     
@@ -215,12 +215,12 @@ end );
 
 ##
 InstallMethod( ApplyFunctor,
-               [ IsHomalgFunctor, IsHomalgCategoryMorphism ],
+               [ IsHomalgFunctor, IsCapCategoryMorphism ],
                
   function( functor, mor )
     local mor_cache, cache_return, computed_value;
     
-    if not IsIdenticalObj( HomalgCategory( mor ), AsHomalgCategory( Source( functor ) ) ) then
+    if not IsIdenticalObj( CapCategory( mor ), AsCapCategory( Source( functor ) ) ) then
         
         Error( "wrong input object" );
         
@@ -242,7 +242,7 @@ InstallMethod( ApplyFunctor,
     
     CatFunctorPreimageList( computed_value ).( Name( functor ) ) := mor;
     
-    Add( AsHomalgCategory( Range( functor ) ), computed_value );
+    Add( AsCapCategory( Range( functor ) ), computed_value );
     
     return computed_value;
     
@@ -258,8 +258,8 @@ AddPreCompose( CATEGORIES_FOR_HOMALG_Cat,
                                                  Name( left_functor ),
                                                  " and ",
                                                  Name( right_functor ) ),
-                                  AsHomalgCategory( Source( left_functor ) ),
-                                  AsHomalgCategory( Range( right_functor ) ) );
+                                  AsCapCategory( Source( left_functor ) ),
+                                  AsCapCategory( Range( right_functor ) ) );
     
     AddObjectFunction( new_functor,
       
@@ -285,7 +285,7 @@ AddIdentityMorphism( CATEGORIES_FOR_HOMALG_Cat,
   function( category )
     local new_functor;
     
-    new_functor := HomalgFunctor( Concatenation( "Identity functor of ", Name( AsHomalgCategory( category ) ) ),
+    new_functor := HomalgFunctor( Concatenation( "Identity functor of ", Name( AsCapCategory( category ) ) ),
                                                  category, category );
     
     AddObjectFunction( new_functor,
@@ -315,7 +315,7 @@ AddUniversalMorphismIntoTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
   function( category )
     local new_functor;
     
-    new_functor := HomalgFunctor( Concatenation( "The terminal of ", Name( AsHomalgCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
+    new_functor := HomalgFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
     
     AddObjectFunction( new_functor,
                        
@@ -335,7 +335,7 @@ AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CATEGORIES_FOR_HO
   function( category, cat_obj )
     local new_functor;
     
-    new_functor := HomalgFunctor( Concatenation( "The terminal of ", Name( AsHomalgCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
+    new_functor := HomalgFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
     
     AddObjectFunction( new_functor,
                        
@@ -354,7 +354,7 @@ AddDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
                   
   function( product_of_categories )
     
-    return AsCatObject( CallFuncList( Product, List( Components( product_of_categories ), AsHomalgCategory ) ) );
+    return AsCatObject( CallFuncList( Product, List( Components( product_of_categories ), AsCapCategory ) ) );
     
 end );
 
@@ -365,7 +365,7 @@ AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMAL
     local projection_functor;
     
     projection_functor := HomalgFunctor( 
-      Concatenation( "Projection into ", String( projection_number ),"-th factor of ", Name( AsHomalgCategory( direct_product ) ) ), 
+      Concatenation( "Projection into ", String( projection_number ),"-th factor of ", Name( AsCapCategory( direct_product ) ) ), 
       direct_product, 
       object_product_list[ projection_number ]
     );
@@ -398,9 +398,9 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMA
     
     name_string := Concatenation( 
       "Product functor from ", 
-      Name( AsHomalgCategory( Source( sink[1] ) ) ), 
+      Name( AsCapCategory( Source( sink[1] ) ) ), 
       " to ", 
-      Name( AsHomalgCategory( direct_product ) ) 
+      Name( AsCapCategory( direct_product ) ) 
     );
     
     universal_functor := HomalgFunctor( name_string, Source( sink[1] ), direct_product );
@@ -506,11 +506,11 @@ InstallMethod( InstallFunctorOnObjects,
     
     func_name := ObjectFunctionName( functor );
     
-    category_list := Components( AsHomalgCategory( Source( functor ) ) );
+    category_list := Components( AsCapCategory( Source( functor ) ) );
     
     filter_list := List( category_list, ObjectFilter );
     
-    filter_list := List( filter_list, i -> i and IsHomalgCategoryObject );
+    filter_list := List( filter_list, i -> i and IsCapCategoryObject );
     
     DeclareOperation( func_name, filter_list );
     
@@ -541,11 +541,11 @@ InstallMethod( InstallFunctorOnMorphisms,
     
     func_name := MorphismFunctionName( functor );
     
-    category_list := Components( AsHomalgCategory( Source( functor ) ) );
+    category_list := Components( AsCapCategory( Source( functor ) ) );
     
     filter_list := List( category_list, MorphismFilter );
     
-    filter_list := List( filter_list, i -> i and IsHomalgCategoryMorphism );
+    filter_list := List( filter_list, i -> i and IsCapCategoryMorphism );
     
     DeclareOperation( func_name, filter_list );
     
@@ -617,7 +617,7 @@ InstallMethod( NaturalTransformation,
                              Source, source,
                              Range, range );
     
-    Add( HomalgCategory( source ), natural_transformation );
+    Add( CapCategory( source ), natural_transformation );
     
     return natural_transformation;
     
@@ -641,14 +641,14 @@ InstallMethod( AddNaturalTransformationFunction,
 
 ##
 InstallMethodWithToDoForIsWellDefined( ApplyNaturalTransformation,
-                                       [ IsHomalgNaturalTransformation, IsHomalgCategoryObject ],
+                                       [ IsHomalgNaturalTransformation, IsCapCategoryObject ],
                
   function( trafo, object )
     local cache, return_morphism;
     
     ##formally, this has to be IsEqualForObjects (of CAT), but
     ##equality of categories is given by IsIdenticalObj.
-    if not IsIdenticalObj( HomalgCategory( object ), AsHomalgCategory( Source( Source( trafo ) ) ) ) then
+    if not IsIdenticalObj( CapCategory( object ), AsCapCategory( Source( Source( trafo ) ) ) ) then
         
         Error( "natural transformation is not applicable" );
         
@@ -670,7 +670,7 @@ InstallMethodWithToDoForIsWellDefined( ApplyNaturalTransformation,
     
     ## FIXME: Maybe cache the preimage here.
     
-    Add( AsHomalgCategory( Range( Source( trafo ) ) ), return_morphism );
+    Add( AsCapCategory( Range( Source( trafo ) ) ), return_morphism );
     
     return return_morphism;
     
@@ -684,6 +684,6 @@ end );
 
 AddIsWellDefinedForObjects( CATEGORIES_FOR_HOMALG_Cat,
 
-  IsHomalgCategoryAsCatObjectRep
+  IsCapCategoryAsCatObjectRep
 
 );

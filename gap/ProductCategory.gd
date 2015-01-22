@@ -10,22 +10,22 @@
 #############################################################################
 
 DeclareOperationWithCache( "DirectProductFunctor",
-                           [ IsHomalgCategory, IsInt ] );
+                           [ IsCapCategory, IsInt ] );
 
 DeclareOperationWithCache( "CoproductFunctor",
-                           [ IsHomalgCategory, IsInt ] );
+                           [ IsCapCategory, IsInt ] );
 
 DeclareAttribute( "Components",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "Components",
-                  IsHomalgCategoryCell );
+                  IsCapCategoryCell );
 
 DeclareOperation( "\[\]",
-                  [ IsHomalgCategory, IsInt ] );
+                  [ IsCapCategory, IsInt ] );
 
 DeclareOperation( "\[\]",
-                  [ IsHomalgCategoryCell, IsInt ] );
+                  [ IsCapCategoryCell, IsInt ] );
 
 
 ############################
@@ -35,19 +35,19 @@ DeclareOperation( "\[\]",
 ############################
 
 DeclareOperation( "ProductOp",
-                  [ IsList, IsHomalgCategory ] );
+                  [ IsList, IsCapCategory ] );
 
 DeclareOperation( "ProductOp_OnMorphisms",
-                  [ IsList, IsHomalgCategory ] );
+                  [ IsList, IsCapCategory ] );
 
 DeclareOperation( "ProductOp_OnObjects",
-                  [ IsList, IsHomalgCategory ] );
+                  [ IsList, IsCapCategory ] );
 
 DeclareOperation( "ProductOp_OnTwoCells",
-                  [ IsList, IsHomalgCategory ] );
+                  [ IsList, IsCapCategory ] );
 
 DeclareOperation( "ProductOp",
-                  [ IsList, IsHomalgCategoryCell ] );
+                  [ IsList, IsCapCategoryCell ] );
 
 ############################
 ##
@@ -56,10 +56,10 @@ DeclareOperation( "ProductOp",
 ############################
 
 DeclareAttribute( "Length",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "Length",
-                  IsHomalgCategoryObject );
+                  IsCapCategoryObject );
 
 DeclareAttribute( "Length",
-                  IsHomalgCategoryMorphism );
+                  IsCapCategoryMorphism );

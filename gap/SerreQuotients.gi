@@ -8,19 +8,19 @@
 #############################################################################
 
 DeclareRepresentation( "IsSerreQuotientCategoryObjectRep",
-                       IsHomalgCategoryObjectRep and IsSerreQuotientCategoryObject,
+                       IsCapCategoryObjectRep and IsSerreQuotientCategoryObject,
                        [ ] );
 
 BindGlobal( "TheTypeOfSerreQuotientCategoryObject",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsSerreQuotientCategoryObjectRep ) );
 
 DeclareRepresentation( "IsSerreQuotientCategoryMorphismRep",
-                       IsHomalgCategoryMorphismRep and IsSerreQuotientCategoryMorphism,
+                       IsCapCategoryMorphismRep and IsSerreQuotientCategoryMorphism,
                        [ ] );
 
 BindGlobal( "TheTypeOfSerreQuotientCategoryMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                  IsSerreQuotientCategoryMorphismRep ) );
 
 #############################################
@@ -30,7 +30,7 @@ BindGlobal( "TheTypeOfSerreQuotientCategoryMorphism",
 #############################################
 
 InstallMethod( SerreQuotientCategory,
-               [ IsHomalgCategory, IsFunction ],
+               [ IsCapCategory, IsFunction ],
                
   function( category, test_function )
     local name;
@@ -42,7 +42,7 @@ InstallMethod( SerreQuotientCategory,
 end );
 
 InstallMethodWithCacheFromObject( SerreQuotientCategory,
-                                  [ IsHomalgCategory, IsFunction, IsString ],
+                                  [ IsCapCategory, IsFunction, IsString ],
                                   
   function( category, test_function, function_name )
     local serre_category, gen_category, name;
@@ -51,7 +51,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategory,
     
     name := Concatenation( "The Serre quotient category of ", name, " by ", function_name );
     
-    serre_category := CreateHomalgCategory( name );
+    serre_category := CreateCapCategory( name );
     
     SetFilterObj( serre_category, WasCreatedAsSerreQuotientCategory );
     
@@ -74,14 +74,14 @@ InstallMethodWithCacheFromObject( SerreQuotientCategory,
 end );
 
 InstallMethodWithCacheFromObject( AsSerreQuotientObject,
-                                  [ IsHomalgCategory and WasCreatedAsSerreQuotientCategory, IsHomalgCategoryObject ],
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryObject ],
                                   
   function( serre_category, object )
     local honest_category, serre_object;
     
     honest_category := UnderlyingHonestCategory( serre_category );
     
-    if not IsIdenticalObj( honest_category, HomalgCategory( object ) ) then
+    if not IsIdenticalObj( honest_category, CapCategory( object ) ) then
         
         Error( "object does not belong to underlying honest category of serre quotient" );
         
@@ -102,12 +102,12 @@ InstallMethodWithCacheFromObject( AsSerreQuotientObject,
 end );
 
 InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
-                                  [ IsHomalgCategory and WasCreatedAsSerreQuotientCategory, IsGeneralizedMorphism ],
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsGeneralizedMorphism ],
                                   
   function( serre_category, gen_morphism )
     local honest_category, serre_morphism;
     
-    if not IsIdenticalObj( UnderlyingGeneralizedMorphismCategory( serre_category ), HomalgCategory( gen_morphism ) ) then
+    if not IsIdenticalObj( UnderlyingGeneralizedMorphismCategory( serre_category ), CapCategory( gen_morphism ) ) then
         
         Error( "generalized morphism has wrong category" );
         
@@ -132,7 +132,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
 end );
 
 InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
-                                  [ IsHomalgCategory and WasCreatedAsSerreQuotientCategory, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( serre_category, source_aid, associated, range_aid )
     
@@ -141,7 +141,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
 end );
 
 InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphismWithSourceAid,
-                                  [ IsHomalgCategory and WasCreatedAsSerreQuotientCategory, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( serre_category, source_aid, associated )
     
@@ -150,7 +150,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphismWithSourceAid,
 end );
 
 InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphismWithRangeAid,
-                                  [ IsHomalgCategory and WasCreatedAsSerreQuotientCategory, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( serre_category, associated, range_aid )
     
@@ -159,7 +159,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphismWithRangeAid,
 end );
 
 InstallMethodWithCacheFromObject( AsSerreQuotientCategoryMorphism,
-                                  [ IsHomalgCategory and WasCreatedAsSerreQuotientCategory, IsHomalgCategoryMorphism ],
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism ],
                                   
   function( serre_category, associated )
     

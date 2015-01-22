@@ -58,27 +58,27 @@ end );
 ####################################
 
 DeclareRepresentation( "IsDeductiveSystemObjectRep",
-                       IsHomalgCategoryObjectRep and IsDeductiveSystemObject,
+                       IsCapCategoryObjectRep and IsDeductiveSystemObject,
                        [ ] );
 
 BindGlobal( "TheTypeOfDeductiveSystemObject",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsDeductiveSystemObjectRep ) );
 
 DeclareRepresentation( "IsDeductiveSystemMorphismRep",
-                       IsHomalgCategoryMorphismRep and IsDeductiveSystemMorphism,
+                       IsCapCategoryMorphismRep and IsDeductiveSystemMorphism,
                        [ ] );
 
 BindGlobal( "TheTypeOfDeductiveSystemMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsDeductiveSystemMorphismRep ) );
 
 DeclareRepresentation( "IsDeductiveSystemTwoCellRep",
-                       IsHomalgCategoryTwoCellRep and IsDeductiveSystemTwoCell,
+                       IsCapCategoryTwoCellRep and IsDeductiveSystemTwoCell,
                        [ ] );
 
 BindGlobal( "TheTypeOfDeductiveTwoCell",
-        NewType( TheFamilyOfHomalgCategoryTwoCells,
+        NewType( TheFamilyOfCapCategoryTwoCells,
                 IsDeductiveSystemTwoCellRep ) );
 
 ####################################
@@ -613,12 +613,12 @@ end );
 ####################################
 
 InstallMethod( DeductiveSystem,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     local deductive_system;
     
-    deductive_system := CreateHomalgCategory( Concatenation( "Deduction system of ", Name( category ) ) );
+    deductive_system := CreateCapCategory( Concatenation( "Deduction system of ", Name( category ) ) );
     
     SetUnderlyingHonestCategory( deductive_system, category );
     
@@ -704,7 +704,7 @@ end );
 
 ##
 InstallMethod( InDeductiveSystem,
-               [ IsHomalgCategoryObject ],
+               [ IsCapCategoryObject ],
                
   function( object )
     local deductive_object, deductive_system, property, entry;
@@ -717,7 +717,7 @@ InstallMethod( InDeductiveSystem,
     
     SetHistory( deductive_object, deductive_object );
     
-    deductive_system := DeductiveSystem( HomalgCategory( object ) );
+    deductive_system := DeductiveSystem( CapCategory( object ) );
     
     Add( deductive_system, deductive_object );
     
@@ -753,7 +753,7 @@ end );
 
 ##
 InstallMethod( DeductiveSystemObject,
-               [ IsHomalgCategory ],
+               [ IsCapCategory ],
                
   function( category )
     local deductive_system, deductive_object;
@@ -775,7 +775,7 @@ end );
 
 ##
 InstallMethod( InDeductiveSystem,
-               [ IsHomalgCategoryMorphism ],
+               [ IsCapCategoryMorphism ],
                
   function( morphism )
     local deductive_morphism, source, range, property, deductive_system;
@@ -794,7 +794,7 @@ InstallMethod( InDeductiveSystem,
     
     SetHistory( deductive_morphism, deductive_morphism );
     
-    deductive_system := DeductiveSystem( HomalgCategory( morphism ) );
+    deductive_system := DeductiveSystem( CapCategory( morphism ) );
     
     Add( deductive_system, deductive_morphism );
     
@@ -831,9 +831,9 @@ InstallMethod( DeductiveSystemMorphism,
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deductive_morphism );
     
     ## CHECK THIS
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ deductive_morphism ], source, HomalgCategory( source ) );
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ deductive_morphism ], source, CapCategory( source ) );
     
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ deductive_morphism ], range, HomalgCategory( range ) );
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ deductive_morphism ], range, CapCategory( range ) );
     
     return deductive_morphism;
     
@@ -854,11 +854,11 @@ InstallMethod( DeductiveSystemMorphism,
     
     SetHistory( deductive_morphism, deductive_morphism );
     
-    Add( HomalgCategory( source ), deductive_morphism );
+    Add( CapCategory( source ), deductive_morphism );
     
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ deductive_morphism ], source, HomalgCategory( source ) );
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ deductive_morphism ], source, CapCategory( source ) );
     
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ deductive_morphism ], range, HomalgCategory( range ) );
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ deductive_morphism ], range, CapCategory( range ) );
     
     return deductive_morphism;
     
@@ -922,9 +922,9 @@ InstallMethod( Evaluation,
     
     history := History( cell );
     
-    if IsBound( UnderlyingHonestCategory( HomalgCategory( cell ) )!.eval_rules ) then
+    if IsBound( UnderlyingHonestCategory( CapCategory( cell ) )!.eval_rules ) then
         
-        new_history := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, UnderlyingHonestCategory( HomalgCategory( cell ) )!.eval_rules );
+        new_history := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, UnderlyingHonestCategory( CapCategory( cell ) )!.eval_rules );
         
     else
         
@@ -954,7 +954,7 @@ InstallMethod( Evaluation,
     
     cell!.eval := WeakPointerObj( [ eval ] );
     
-    deductive_system := HomalgCategory( cell );
+    deductive_system := CapCategory( cell );
     
     if IsDeductiveSystemMorphism( cell ) then
         
@@ -990,7 +990,7 @@ InstallMethod( HasEvaluation,
 end );
 
 InstallMethod( SetEvaluation,
-               [ IsDeductiveSystemCell, IsHomalgCategoryCell ],
+               [ IsDeductiveSystemCell, IsCapCategoryCell ],
                
   function( cell, value )
     
@@ -1005,7 +1005,7 @@ end );
 #################################
 
 # InstallMethod( Add,
-#                [ IsHomalgCategory, IsDeductiveSystemObject ],
+#                [ IsCapCategory, IsDeductiveSystemObject ],
 #                
 #   function( deductive_system, object )
 #     local property;
@@ -1023,7 +1023,7 @@ end );
 # end );
 # 
 # InstallMethod( Add,
-#                [ IsHomalgCategory, IsDeductiveSystemMorphism ],
+#                [ IsCapCategory, IsDeductiveSystemMorphism ],
 #                
 #   function( deductive_system, morphism )
 #     local property;
@@ -1064,7 +1064,7 @@ InstallMethod( String,
                
    function( cell )
      
-     return Concatenation( "An unevaluated object in " , Name( HomalgCategory( cell ) ) );
+     return Concatenation( "An unevaluated object in " , Name( CapCategory( cell ) ) );
      
 end );
 
@@ -1086,7 +1086,7 @@ InstallMethod( String,
                
    function( cell )
      
-     return Concatenation( "An unevaluated morphism in " , Name( HomalgCategory( cell ) ) );
+     return Concatenation( "An unevaluated morphism in " , Name( CapCategory( cell ) ) );
      
 end );
 
@@ -1139,7 +1139,7 @@ InstallGlobalFunction( "HistoryToString",
         
         return Concatenation( "[ ", string, " ]" );
         
-    elif IsHomalgCategoryCell( history ) and resolve_variable_names = true then
+    elif IsCapCategoryCell( history ) and resolve_variable_names = true then
         
         gvars := NamesGVars( );
         
@@ -1167,7 +1167,7 @@ InstallGlobalFunction( PRINT_HISTORY_RECURSIVE,
     
     resolve_variable_names := ValueOption( "ResolveVariableNames" );
     
-    if IsHomalgCategoryCell( history ) and IsRecord( History( history ) ) then
+    if IsCapCategoryCell( history ) and IsRecord( History( history ) ) then
         
         history := History( history );
         
@@ -1201,7 +1201,7 @@ InstallGlobalFunction( PRINT_HISTORY_RECURSIVE,
         
         return string;
         
-    elif IsHomalgCategoryCell( history ) and resolve_variable_names = true then
+    elif IsCapCategoryCell( history ) and resolve_variable_names = true then
         
         gvars := NamesGVars( );
         
@@ -1225,7 +1225,7 @@ InstallGlobalFunction( PrintHistoryClean,
                        
   function( history )
     
-    if IsHomalgCategoryCell( history ) then
+    if IsCapCategoryCell( history ) then
         
         Print( PRINT_HISTORY_RECURSIVE( History( history ) ) );
         

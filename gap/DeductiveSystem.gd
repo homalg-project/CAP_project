@@ -12,16 +12,16 @@
 DeclareGlobalVariable( "DEDUCTIVE_SYSTEM_OPTIONS" );
 
 DeclareCategory( "IsDeductiveSystemCell",
-                 IsHomalgCategoryCell );
+                 IsCapCategoryCell );
 
 DeclareCategory( "IsDeductiveSystemObject",
-                 IsDeductiveSystemCell and IsHomalgCategoryObject );
+                 IsDeductiveSystemCell and IsCapCategoryObject );
 
 DeclareCategory( "IsDeductiveSystemMorphism",
-                 IsDeductiveSystemCell and IsHomalgCategoryMorphism );
+                 IsDeductiveSystemCell and IsCapCategoryMorphism );
 
 DeclareCategory( "IsDeductiveSystemTwoCell",
-                 IsDeductiveSystemCell and IsHomalgCategoryTwoCell );
+                 IsDeductiveSystemCell and IsCapCategoryTwoCell );
 
 DeclareGlobalFunction( "INSTALL_PROPERTIES_FOR_DEDUCTIVE_SYSTEM" );
 
@@ -46,19 +46,19 @@ DeclareGlobalFunction( "PrintHistory" );
 #####################################
 
 DeclareAttribute( "DeductiveSystem",
-                  IsHomalgCategory );
+                  IsCapCategory );
 
 DeclareAttribute( "InDeductiveSystem",
-                  IsHomalgCategoryObject );
+                  IsCapCategoryObject );
 
 DeclareOperation( "DeductiveSystemObject",
-                  [ IsHomalgCategory ] );
+                  [ IsCapCategory ] );
 
 DeclareOperation( "DeductiveSystemObject",
                   [ IsString, IsList ] );
 
 DeclareAttribute( "InDeductiveSystem",
-                  IsHomalgCategoryMorphism );
+                  IsCapCategoryMorphism );
 
 DeclareOperation( "DeductiveSystemMorphism",
                   [ IsDeductiveSystemObject, IsString, IsList, IsDeductiveSystemObject ] );
@@ -88,7 +88,7 @@ DeclareOperation( "HasEvaluation",
                   [ IsDeductiveSystemCell ] );
 
 DeclareOperation( "SetEvaluation",
-                  [ IsDeductiveSystemCell, IsHomalgCategoryCell ] );
+                  [ IsDeductiveSystemCell, IsCapCategoryCell ] );
 
 #####################################
 ##
@@ -97,4 +97,4 @@ DeclareOperation( "SetEvaluation",
 #####################################
 
 DeclareAttribute( "ChecksFromLogic",
-                  IsHomalgCategoryCell, "mutable" );
+                  IsCapCategoryCell, "mutable" );
