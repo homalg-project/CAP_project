@@ -124,7 +124,16 @@ InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeDomain",
                 "CanComputeCodomain",
                 "CanComputeAssociatedMorphism",
-                "CanComputePseudoInverse"
+                "CanComputePseudoInverse",
+                "CanComputeKernelObjectFunctorial",
+                "CanComputeCokernelFunctorial",
+                "CanComputeTerminalObjectFunctorial",
+                "CanComputeInitialObjectFunctorial",
+                "CanComputeDirectProductFunctorial",
+                "CanComputeCoproductFunctorial",
+                "CanComputeDirectSumFunctorial",
+                "CanComputePullbackFunctorial",
+                "CanComputePushoutFunctorial"
                 # .. 
               ] );
 

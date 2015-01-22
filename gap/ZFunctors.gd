@@ -6,14 +6,27 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Functors from integers category
-##
+#! Convention: A morphism in $\mathbb{Z}$ from an integer $a$ to an integer $b$
+#! exists if and only if $a \leq b$.
 #############################################################################
 
+####################################
+##
+## Technical stuff
+##
+####################################
+
+DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY" );
+
+DeclareCategory( "IsZFunctorCell",
+                 IsHomalgCategoryCell );
+
 DeclareCategory( "IsZFunctorObject",
-                 IsHomalgCategoryObject );
+                 IsHomalgCategoryObject and IsZFunctorCell );
 
 DeclareCategory( "IsZFunctorMorphism",
-                 IsHomalgCategoryMorphism );
+                 IsHomalgCategoryMorphism and IsZFunctorCell );
+
 
 ####################################
 ##
@@ -26,21 +39,12 @@ DeclareAttribute( "ZFunctorCategory",
 
 ####################################
 ##
-## Setter & Getter
+## Getter
 ##
 ####################################
 
-DeclareOperation( "\[\]\:\=",
-                  [ IsZFunctorObject, IsInt, IsObject ] );
-
-DeclareOperation( "\[\]\:\=",
-                  [ IsZFunctorMorphism, IsInt, IsObject ] );
-
 DeclareOperation( "Differential",
                   [ IsZFunctorObject, IsInt ] );
-
-DeclareOperation( "SetDifferential",
-                  [ IsZFunctorObject, IsInt, IsObject ] );
 
 ####################################
 ##
@@ -51,5 +55,9 @@ DeclareOperation( "SetDifferential",
 DeclareOperation( "ZFunctorObject",
                   [ IsFunction, IsFunction, IsHomalgCategory ] );
 
+KeyDependentOperation( "AsZFunctorObject", IsHomalgCategoryObject, IsInt, RETURN_TRUE );
+
 DeclareOperation( "ZFunctorMorphism",
                   [ IsZFunctorObject, IsFunction, IsZFunctorObject ] );
+
+KeyDependentOperation( "AsZFunctorMorphism", IsHomalgCategoryMorphism, IsInt, RETURN_TRUE );

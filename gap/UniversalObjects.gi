@@ -305,6 +305,52 @@ InstallMethod( KernelEmb,
     
 end );
 
+##
+InstallTrueMethod( CanComputeKernelLift, CanComputeKernel and CanComputeKernelLiftWithGivenKernel );
+
+InstallMethod( KernelLift,
+               [ IsHomalgCategoryMorphism and CanComputeKernel and CanComputeKernelLiftWithGivenKernel,
+                 IsHomalgCategoryMorphism ],
+               -9999, #FIXME
+               
+  function( morphism, test_morphism )
+    
+    return KernelLiftWithGivenKernel( morphism, test_morphism, KernelObject( morphism ) );
+    
+end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( KernelObjectFunctorial,
+               [ IsList ],
+                                  
+  function( morphism_of_morphisms )
+    
+    return KernelObjectFunctorial( morphism_of_morphisms[1], morphism_of_morphisms[2][1], morphism_of_morphisms[3] );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeKernelObjectFunctorial,
+                   CanComputeKernelLift and CanComputeKernelEmb and CanComputePreCompose );
+
+InstallMethodWithCacheFromObject( KernelObjectFunctorial,
+                                  [ IsHomalgCategoryMorphism and CanComputeKernelLift and CanComputeKernelEmb and CanComputePreCompose,
+                                    IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism ],
+                                  
+  function( alpha, mu, alpha_p )
+    
+    return KernelLift(
+                alpha_p,
+                PreCompose( KernelEmb( alpha ), mu )
+              );
+    
+end );
+
 ####################################
 ##
 ## Cokernel
@@ -568,6 +614,52 @@ InstallMethod( CokernelProj,
   function( mor )
     
     return CokernelProjWithGivenCokernel( mor, Cokernel( mor ) );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernel and CanComputeCokernelColiftWithGivenCokernel );
+
+InstallMethod( CokernelColift,
+               [ IsHomalgCategoryMorphism and CanComputeCokernel and CanComputeCokernelColiftWithGivenCokernel,
+                 IsHomalgCategoryMorphism ],
+               -9999, #FIXME
+               
+  function( morphism, test_morphism )
+    
+    return CokernelColiftWithGivenCokernel( morphism, test_morphism, Cokernel( morphism ) );
+    
+end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( CokernelFunctorial,
+               [ IsList ],
+                                  
+  function( morphism_of_morphisms )
+    
+    return CokernelFunctorial( morphism_of_morphisms[1], morphism_of_morphisms[2][2], morphism_of_morphisms[3] );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeCokernelFunctorial,
+                   CanComputeCokernelColift and CanComputeCokernelProj and CanComputePreCompose );
+
+InstallMethodWithCacheFromObject( CokernelFunctorial,
+                                  [ IsHomalgCategoryMorphism and CanComputeCokernelColift and CanComputeCokernelProj and CanComputePreCompose,
+                                    IsHomalgCategoryMorphism,
+                                    IsHomalgCategoryMorphism ],
+                                  
+  function( alpha, nu, alpha_p )
+    
+    return CokernelColift(
+                alpha,
+                PreCompose( nu, CokernelProj( alpha_p ) )
+              );
     
 end );
 
@@ -960,6 +1052,47 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
     return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CallFuncList( Coproduct, object_product_list ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( CoproductFunctorial,
+               [ IsList ],
+                                  
+  function( morphism_list )
+    
+    return CoproductFunctorialOp( morphism_list, morphism_list[1] );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeCoproductFunctorial,
+                   CanComputeCoproduct and CanComputePreCompose and CanComputeInjectionOfCofactorOfCoproduct
+                   and CanComputeUniversalMorphismFromCoproduct );
+
+InstallMethodWithCacheFromObject( CoproductFunctorialOp,
+                                  [ IsList,
+                                    IsHomalgCategoryMorphism
+                                    and CanComputeCoproduct
+                                    and CanComputePreCompose
+                                    and CanComputeInjectionOfCofactorOfCoproduct
+                                    and CanComputeUniversalMorphismFromCoproduct ],
+                                  
+  function( morphism_list, caching_object )
+    local new_range, sink, diagram;
+        
+        new_range := Coproduct( List( morphism_list, mor -> Range( mor ) ) );
+        
+        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( morphism_list[i], InjectionOfCofactor( new_range, i ) ) );
+        
+        diagram := List( morphism_list, mor -> Source( mor ) );
+        
+        return UniversalMorphismFromCoproduct( diagram, sink );
+        
+end : ArgumentNumber := 2 );
+
 
 
 ####################################
@@ -1367,6 +1500,47 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( DirectProductFunctorial,
+               [ IsList ],
+                                  
+  function( morphism_list )
+    
+    return DirectProductFunctorialOp( morphism_list, morphism_list[1] );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeDirectProductFunctorial,
+                   CanComputeDirectProduct and CanComputePreCompose and CanComputeProjectionInFactorOfDirectProduct 
+                   and CanComputeUniversalMorphismIntoDirectProduct );
+
+InstallMethodWithCacheFromObject( DirectProductFunctorialOp,
+                                  [ IsList,
+                                    IsHomalgCategoryMorphism
+                                    and CanComputeDirectProduct
+                                    and CanComputePreCompose
+                                    and CanComputeProjectionInFactorOfDirectProduct
+                                    and CanComputeUniversalMorphismIntoDirectProduct ],
+                                  
+  function( morphism_list, caching_object )
+    local new_source, source, diagram;
+        
+        new_source := DirectProduct( List( morphism_list, mor -> Source( mor ) ) );
+        
+        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_list[i] ) );
+        
+        diagram := List( morphism_list, mor -> Range( mor ) );
+        
+        return UniversalMorphismIntoDirectProduct( diagram, source );
+        
+end : ArgumentNumber := 2 );
+
+
+####################################
 ##
 ## Direct sum
 ##
@@ -1618,6 +1792,35 @@ InstallMethodWithToDoForIsWellDefined( \+,
     addition_morphism := UniversalMorphismFromCoproduct( IdentityMorphism( B ), IdentityMorphism( B ) );
     
     return PreCompose( componentwise_morphism, addition_morphism );
+    
+end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallTrueMethod( CanComputeDirectSumFunctorial, CanComputeDirectProductFunctorial and IsPreAdditiveCategory );
+
+InstallMethod( DirectSumFunctorial,
+               [ IsList ],
+                                  
+  function( morphism_list )
+    
+    return DirectProductFunctorial( morphism_list );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeDirectSumFunctorial, CanComputeCoproductFunctorial and IsPreAdditiveCategory );
+
+InstallMethod( DirectSumFunctorial,
+               [ IsList ],
+               -9999,
+                                  
+  function( morphism_list )
+    
+    return CoproductFunctorial( morphism_list );
     
 end );
 
@@ -1955,6 +2158,43 @@ InstallMethod( TerminalObject,
 end );
 
 ####################################
+## Functorial operations
+####################################
+
+##
+InstallTrueMethod( CanComputeTerminalObjectFunctorial,
+                   CanComputeTerminalObject and CanComputeIdentityMorphism );
+
+InstallMethod( TerminalObjectFunctorial,
+               [ IsHomalgCategory and CanComputeTerminalObject and CanComputeIdentityMorphism ],
+                                  
+  function( category )
+    local terminal_object;
+    
+    terminal_object := TerminalObject( category );
+    
+    return IdentityMorphism( terminal_object );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeTerminalObjectFunctorial,
+                   CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObject );
+
+InstallMethod( TerminalObjectFunctorial,
+               [ IsHomalgCategory and CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObject ],
+                 -9999,
+                                  
+  function( category )
+    local terminal_object;
+    
+    terminal_object := TerminalObject( category );
+    
+    return UniversalMorphismIntoTerminalObject( terminal_object );
+    
+end );
+
+####################################
 ##
 ## Initial Object
 ##
@@ -2146,6 +2386,43 @@ InstallMethod( InitialObject,
   function( category )
     
     return ZeroObject( category );
+    
+end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallTrueMethod( CanComputeInitialObjectFunctorial,
+                   CanComputeInitialObject and CanComputeIdentityMorphism );
+
+InstallMethod( InitialObjectFunctorial,
+               [ IsHomalgCategory and CanComputeInitialObject and CanComputeIdentityMorphism ],
+                                  
+  function( category )
+    local initial_object;
+    
+    initial_object := InitialObject( category );
+    
+    return IdentityMorphism( initial_object );
+    
+end );
+
+##
+InstallTrueMethod( CanComputeInitialObjectFunctorial,
+                   CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObject );
+
+InstallMethod( InitialObjectFunctorial,
+               [ IsHomalgCategory and CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObject ],
+                 -9999,
+                                  
+  function( category )
+    local initial_object;
+    
+    initial_object := InitialObject( category );
+    
+    return UniversalMorphismFromInitialObject( initial_object );
     
 end );
 
@@ -2630,6 +2907,49 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
 end );
 
 ####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( PullbackFunctorial,
+               [ IsList ],
+               
+  function( morphism_of_morphisms )
+      
+      return PullbackFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
+      
+end );
+
+##
+InstallTrueMethod( CanComputePullbackFunctorial,
+                   CanComputePullback
+                   and CanComputePreCompose
+                   and CanComputeProjectionInFactorOfPullback
+                   and CanComputeUniversalMorphismIntoPullback );
+
+InstallMethodWithCacheFromObject( PullbackFunctorialOp,
+                                  [ IsList,
+                                    IsHomalgCategoryMorphism
+                                    and CanComputePullback
+                                    and CanComputePreCompose
+                                    and CanComputeProjectionInFactorOfPullback
+                                    and CanComputeUniversalMorphismIntoPullback ],
+                                  
+  function( morphism_of_morphisms, base_morphism )
+    local new_source, source, diagram;
+        
+        new_source := FiberProduct( List( morphism_of_morphisms, mor -> mor[1] ) );
+        
+        source := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_of_morphisms[i][2] ) );
+        
+        diagram := List( morphism_of_morphisms, mor -> mor[3] );
+        
+        return UniversalMorphismIntoPullback( diagram, source );
+        
+end : ArgumentNumber := 2 );
+
+
+####################################
 ##
 ## Pushout
 ##
@@ -3104,6 +3424,49 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
     return UniversalMorphismFromPushoutWithGivenPushout( diagram, sink, PushoutOp( diagram, method_selection_morphism ) );
     
 end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( PushoutFunctorial,
+               [ IsList ],
+               
+  function( morphism_of_morphisms )
+      
+      return PushoutFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
+      
+end );
+
+##
+InstallTrueMethod( CanComputePushoutFunctorial,
+                   CanComputePushout
+                   and CanComputePreCompose
+                   and CanComputeInjectionOfCofactorOfPushout
+                   and CanComputeUniversalMorphismFromPushout );
+
+InstallMethodWithCacheFromObject( PushoutFunctorialOp,
+                                  [ IsList,
+                                    IsHomalgCategoryMorphism
+                                    and CanComputePushout
+                                    and CanComputePreCompose
+                                    and CanComputeInjectionOfCofactorOfPushout
+                                    and CanComputeUniversalMorphismFromPushout ],
+                                  
+  function( morphism_of_morphisms, cobase_morphism )
+    local new_range, sink, diagram;
+        
+        new_range := Pushout( List( morphism_of_morphisms, mor -> mor[3] ) );
+        
+        sink := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( morphism_of_morphisms[i][2], InjectionOfCofactor( new_range, i ) ) );
+        
+        diagram := List( morphism_of_morphisms, mor -> mor[1] );
+        
+        return UniversalMorphismFromPushout( diagram, sink );
+        
+end : ArgumentNumber := 2 );
+
 
 ####################################
 ##

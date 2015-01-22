@@ -150,6 +150,7 @@ DeclareOperation( "KernelLift",
 DeclareOperation( "KernelLiftWithGivenKernel",
                   [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryObject ] );
 
+
 ## Function Attributes
 #! @AutoDoc
 #! @BeginGroup
@@ -210,6 +211,30 @@ DeclareOperation( "AddKernelLift",
 DeclareOperation( "AddKernelLiftWithGivenKernel",
                   [ IsHomalgCategory, IsFunction ] );
 
+
+#! @Section Functorial methods for kernel
+
+#! KernelObject is a functorial operation. This means:
+#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
+#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha = \alpha' \circ \mu$,
+#! we obtain a morphism $\phi: \mathrm{Kernel}( \alpha ) \rightarrow \mathrm{Kernel}( \alpha' )$.
+
+
+#! @Description
+#! This method takes $L = [ \alpha, [ \mu, \nu ], \alpha' ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "KernelObjectFunctorial",
+                  [ IsList ] );
+
+#! @Description
+#! For the computation of $\phi$, you do not need $\nu$.
+#! @Returns $\phi$
+#! @Arguments alpha, mu, alpha_p
+DeclareOperation( "KernelObjectFunctorial",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
+
+
 ## WasCreatedAs Filter
 #! @Chapter Technical Details
 
@@ -220,6 +245,7 @@ DeclareOperation( "AddKernelLiftWithGivenKernel",
 #! Note that we chose <C>WasCreatedAsKernel</C> to be a filter rather than a property,
 #! because by default, a filter is set to false. 
 DeclareFilter( "WasCreatedAsKernel" );
+
 #! @Chapter Universal Objects
 
 ####################################
@@ -349,6 +375,28 @@ DeclareOperation( "AddCokernelColift",
 #! @Arguments C, f
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsHomalgCategory, IsFunction ] );
+
+#! @Section Functorial methods for cokernel
+
+#! Cokernel is a functorial operation. This means:
+#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
+#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha = \alpha' \circ \mu$,
+#! we obtain a morphism $\phi: \mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Kernel}( \alpha' )$.
+
+
+#! @Description
+#! This method takes $L = [ \alpha, [ \mu, \nu ], \alpha' ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "CokernelFunctorial",
+                  [ IsList ] );
+
+#! @Description
+#! For the computation of $\phi$, you do not need $\mu$.
+#! @Returns $\phi$
+#! @Arguments alpha, nu, alpha_p
+DeclareOperation( "CokernelFunctorial",
+                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ] );
 
 ## WasCreatedAs Filter
 #! @Chapter Technical Details
@@ -527,6 +575,18 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
 DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for terminal object
+
+#! Terminal object is a functorial operation. This means:
+#! There exists a unique morphisms $\phi: T \rightarrow T$.
+
+
+#! @Description
+#! This method takes a category $C$ as an input.
+#! @Returns $\phi$
+#! @Arguments C
+DeclareAttribute( "TerminalObjectFunctorial",
+                  IsHomalgCategory );
 
 ## WasCreatedAs Filter
 
@@ -637,6 +697,19 @@ DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
 
 #! @EndAutoDoc
 
+#! @Section Functorial methods for initial object
+
+#! Terminal object is a functorial operation. This means:
+#! There exists a unique morphisms $\phi: I \rightarrow I$.
+
+
+#! @Description
+#! This method takes a category $C$ as an input.
+#! @Returns $\phi$
+#! @Arguments C
+DeclareAttribute( "InitialObjectFunctorial",
+                  IsHomalgCategory );
+
 ## WasCreatedAs Filter
 
 #! @Chapter Technical Details
@@ -690,6 +763,19 @@ DeclareAttribute( "DirectSumFunction",
 DeclareOperation( "AddDirectSum",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for direct sum
+
+#! Direct sum is a functorial operation. This means:
+#! For $(\mu_i: S_i \rightarrow S'_i)_{i=1\dots n}$,
+#! we obtain a morphism $\phi: \mathrm{DirectSum}( S_1, \dots, S_n ) \rightarrow \mathrm{DirectSum}( S_1', \dots, S_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "DirectSumFunctorial",
+                  [ IsList ] );
 
 ## WasCreatedAs Filter
 
@@ -813,6 +899,24 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsHomalgCategory, IsFunction ] );
+
+#! @Section Functorial methods for coproduct
+
+#! Coproduct is a functorial operation. This means:
+#! For $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$,
+#! we obtain a morphism $\phi: \mathrm{Coproduct}( I_1, \dots, I_n ) \rightarrow \mathrm{Coproduct}( I_1', \dots, I_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "CoproductFunctorial",
+                  [ IsList ] );
+
+DeclareOperation( "CoproductFunctorialOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
+
 
 
 ## WasCreatedAs Filter
@@ -985,6 +1089,23 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for direct product
+
+#! DirectProduct is a functorial operation. This means:
+#! For $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
+#! we obtain a morphism $\phi: \mathrm{DirectProduct}( P_1, \dots, P_n ) \rightarrow \mathrm{DirectProduct}( P_1', \dots, P_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ as an input.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "DirectProductFunctorial",
+                  [ IsList ] );
+
+DeclareOperation( "DirectProductFunctorialOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
+
 
 ## WasCreatedAs Filter
 
@@ -999,7 +1120,6 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
 DeclareFilter( "WasCreatedAsDirectProduct" );
 
 #! @Chapter Universal Objects
-
 
 ####################################
 ##
@@ -1109,7 +1229,31 @@ DeclareOperation( "AddUniversalMorphismIntoPullback",
 DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for pullback
 
+#! Pullback is a functorial operation. This means:
+#! For a second diagram $\beta_i': P_i' \rightarrow B'$ and a natural morphism
+#! between pullback diagrams (i.e., a collection of morphisms
+#! $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \mu_i = \beta \circ \beta_i$ for $i = 1, \dots n$)
+#! we obtain a morphism $\phi: \mathrm{FiberProduct}( \beta_1, \dots, \beta_n ) \rightarrow \mathrm{FiberProduct}( \beta_1', \dots, \beta_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ as an input.
+#! Note that $\beta$ is not needed for the computation of $\phi$.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "PullbackFunctorial",
+                  [ IsList ] );
+
+
+#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ 
+#! and $\beta$ as an input.
+#! @Returns $\phi$
+#! @Arguments L, beta
+DeclareOperation( "PullbackFunctorialOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
 
 ## WasCreatedAs Filter
 
@@ -1231,6 +1375,31 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
 DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsHomalgCategory, IsFunction ] );
 
+#! @Section Functorial methods for pushout
+
+#! Pullback is a functorial operation. This means:
+#! For a second diagram $\beta_i': B' \rightarrow I_i'$ and a natural morphism
+#! between pushout diagrams (i.e., a collection of morphisms
+#! $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \beta = \mu_i \circ \beta_i$ for $i = 1, \dots n$)
+#! we obtain a morphism $\phi: \mathrm{Pushout}( \beta_1, \dots, \beta_n ) \rightarrow \mathrm{Pushout}( \beta_1', \dots, \beta_n' )$.
+
+
+#! @Description
+#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ as an input.
+#! Note that $\beta$ is not needed for the computation of $\phi$.
+#! @Returns $\phi$
+#! @Arguments L
+DeclareOperation( "PushoutFunctorial",
+                  [ IsList ] );
+
+
+#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ 
+#! and $\beta$ as an input.
+#! @Returns $\phi$
+#! @Arguments L, beta
+DeclareOperation( "PushoutFunctorialOp",
+                  [ IsList, IsHomalgCategoryMorphism ] );
 
 
 ## WasCreatedAs Filter
@@ -1256,7 +1425,7 @@ DeclareFilter( "WasCreatedAsPushout" );
 #! Let $\alpha: A \rightarrow B$ be a morphism. The image of $\alpha$ is
 #! the smallest monomorphism $\iota: I \hookrightarrow B$ through which $\alpha$ factors, i.e.,
 #! such that there exists a morphism $c: A \rightarrow I$ with $\iota \circ c = \alpha$.
-#! Smallest in this context means that for every other factorization of $\alpha = \tau_1 \circ \tau_2$
+#! Smallest in this context means that for every other factorization of $\alpha = \tau_2 \circ \tau_1$
 #! with $\tau_1: A \rightarrow T, \tau_2: T \rightarrow B$
 #! where $\tau_2$ is a monomorphism, there exists a unique morphism $u: I \rightarrow T$
 #! such that $\iota = \tau_2 \circ u$ and $\tau_1 = u \circ c$.

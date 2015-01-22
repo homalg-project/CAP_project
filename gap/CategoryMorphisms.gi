@@ -728,6 +728,28 @@ end );
 
 ######################################
 ##
+## Morphism transport
+##
+######################################
+
+## mor: x -> y
+## equality_source: x -> x'
+## equality_range: y -> y'
+## TransportHom( mor, equality_source, equality_range ): x' -> y'
+##
+InstallMethodWithCacheFromObject( TransportHom,
+                                  [ IsHomalgCategoryMorphism, IsHomalgCategoryMorphism, IsHomalgCategoryMorphism ],
+                                  
+  function( mor, equality_source, equality_range )
+    
+    return PreCompose(
+             Inverse( equality_source ),
+             PreCompose( mor, equality_range )
+           );
+    
+end );
+######################################
+##
 ## Implied operations
 ##
 ######################################
