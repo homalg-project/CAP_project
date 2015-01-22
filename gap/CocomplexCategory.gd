@@ -17,6 +17,7 @@ DeclareCategory( "IsComplexOrCocomplexCell",
 DeclareCategory( "IsComplexOrCocomplex",
                  IsCapCategoryObject and IsComplexOrCocomplexCell );
 
+
 DeclareCategory( "IsCocomplexCell",
                  IsComplexOrCocomplexCell );
 
@@ -89,7 +90,7 @@ DeclareOperation( "CochainMap",
                   [ IsCocomplex, IsZFunctorMorphism, IsCocomplex ] );
 
 DeclareOperation( "ChainMap",
-                  [ IsComplexOrCocomplex, IsZFunctorMorphism, IsComplexOrCocomplex ] );
+                  [ IsComplex, IsZFunctorMorphism, IsComplex ] );
 
 KeyDependentOperation( "AsPointedCocomplex", IsCapCategoryObject, IsInt, ReturnTrue );
 
