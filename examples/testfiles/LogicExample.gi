@@ -6,7 +6,7 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 
 fi;
 
-vecspaces := CreateHomalgCategory( "vecspaces" );
+vecspaces := CreateCapCategory( "vecspaces" );
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 
 ## create example input

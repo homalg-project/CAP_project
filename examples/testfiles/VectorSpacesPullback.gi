@@ -9,7 +9,7 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 fi;
 
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpacesForPullbackTest" );
+vecspaces := CreateCapCategory( "VectorSpacesForPullbackTest" );
 #! VectorSpacesForPullbackTest
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true

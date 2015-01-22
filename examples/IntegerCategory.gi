@@ -2,19 +2,19 @@
 LoadPackage( "CategoriesForHomalg" );
 
 DeclareRepresentation( "IsHomalgIntegerRep",
-                       IsHomalgCategoryObjectRep,
+                       IsCapCategoryObjectRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgIntegers",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsHomalgIntegerRep ) );
 
 DeclareRepresentation( "IsHomalgIntegerMorphismRep",
-                       IsHomalgCategoryMorphismRep,
+                       IsCapCategoryMorphismRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgIntegerMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsHomalgIntegerMorphismRep ) );
 
 ############################
@@ -32,7 +32,7 @@ DeclareAttribute( "AsInteger",
 ##
 ############################
 
-integer_category := CreateHomalgCategory( "Integers" );
+integer_category := CreateCapCategory( "Integers" );
 
 #############################
 ##

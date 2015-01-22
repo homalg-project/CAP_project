@@ -9,7 +9,7 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 fi;
 
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpaces01" );
+vecspaces := CreateCapCategory( "VectorSpaces01" );
 #! VectorSpaces01
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAddKernel01.gi" );
 #! true
@@ -45,7 +45,7 @@ KernelEmb( k );
 #! @EndExample
 
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpaces02" );
+vecspaces := CreateCapCategory( "VectorSpaces02" );
 #! VectorSpaces02
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAddKernel02.gi" );
 #! true
@@ -77,7 +77,7 @@ HasKernelEmb( k );
 #! @EndExample
 
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpaces03" );
+vecspaces := CreateCapCategory( "VectorSpaces03" );
 #! VectorSpaces03
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAddKernel03.gi" );
 #! true

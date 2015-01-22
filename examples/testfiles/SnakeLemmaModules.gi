@@ -24,7 +24,7 @@ alpha2 := PresentationMorphism( A2, HomalgMatrix( [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], 
 # 
 # B := InDeductiveSystem( B );
 # 
-# SetIsAbelianCategory( HomalgCategory( B ), true );
+# SetIsAbelianCategory( CapCategory( B ), true );
 
 
 cokernel_proj_1 := CokernelProj( alpha1 );

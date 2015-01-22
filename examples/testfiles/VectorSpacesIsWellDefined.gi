@@ -9,7 +9,7 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 fi;
 
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpacesForIsWellDefinedTest" );
+vecspaces := CreateCapCategory( "VectorSpacesForIsWellDefinedTest" );
 #! VectorSpacesForIsWellDefinedTest 
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true

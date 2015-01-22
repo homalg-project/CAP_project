@@ -9,19 +9,19 @@ LoadPackage( "MatricesForHomalg" );
 ###################################
 
 DeclareRepresentation( "IsHomalgRationalVectorSpaceRep",
-                       IsHomalgCategoryObjectRep,
+                       IsCapCategoryObjectRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgRationalVectorSpaces",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsHomalgRationalVectorSpaceRep ) );
 
 DeclareRepresentation( "IsHomalgRationalVectorSpaceMorphismRep",
-                       IsHomalgCategoryMorphismRep,
+                       IsCapCategoryMorphismRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgRationalVectorSpaceMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsHomalgRationalVectorSpaceMorphismRep ) );
 
 ###################################
@@ -41,7 +41,7 @@ VECTORSPACES_FIELD := HomalgFieldOfRationals( );
 ##
 ###################################
 
-BindGlobal( "QVectorSpaces", CreateHomalgCategory( "QVectorSpaces" ) );
+BindGlobal( "QVectorSpaces", CreateCapCategory( "QVectorSpaces" ) );
 
 ###################################
 ##

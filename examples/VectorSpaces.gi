@@ -16,19 +16,19 @@ ProfileMethods( IsEqualForCache );
 ###################################
 
 DeclareRepresentation( "IsHomalgRationalVectorSpaceRep",
-                       IsHomalgCategoryObjectRep,
+                       IsCapCategoryObjectRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgRationalVectorSpaces",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsHomalgRationalVectorSpaceRep ) );
 
 DeclareRepresentation( "IsHomalgRationalVectorSpaceMorphismRep",
-                       IsHomalgCategoryMorphismRep,
+                       IsCapCategoryMorphismRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgRationalVectorSpaceMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsHomalgRationalVectorSpaceMorphismRep ) );
 
 ###################################
@@ -52,7 +52,7 @@ DeclareOperation( "QVectorSpace",
 DeclareOperation( "VectorSpaceMorphism",
                   [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ] );
 
-vecspaces := CreateHomalgCategory( "VectorSpaces" );
+vecspaces := CreateCapCategory( "VectorSpaces" );
 
 SetIsAbelianCategory( vecspaces, true );
 
@@ -756,7 +756,7 @@ eta := VectorSpaceMorphism( T, [ [ 1, 1 ], [ 2, 2 ] ], T );
 
 eta := InDeductiveSystem( eta );
 
-SetIsAbelianCategory( HomalgCategory( eta ), true );
+SetIsAbelianCategory( CapCategory( eta ), true );
 
 #######################################
 ##

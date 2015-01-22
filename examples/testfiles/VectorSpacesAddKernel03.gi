@@ -9,9 +9,9 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
   
 fi;
 
-if not IsHomalgCategory( vecspaces ) then
+if not IsCapCategory( vecspaces ) then
   
-  vecspaces := CreateHomalgCategory( "VectorSpacesK3" );
+  vecspaces := CreateCapCategory( "VectorSpacesK3" );
   
 fi;
 

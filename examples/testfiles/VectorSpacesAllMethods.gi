@@ -4,9 +4,9 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
   
 fi;
 
-if not IsHomalgCategory( vecspaces ) then
+if not IsCapCategory( vecspaces ) then
 
-  vecspaces := CreateHomalgCategory( "VectorSpacesAllMethods" );
+  vecspaces := CreateCapCategory( "VectorSpacesAllMethods" );
   
 fi;
 

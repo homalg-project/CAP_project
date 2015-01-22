@@ -9,25 +9,25 @@ LoadPackage( "CategoriesForHomalg" );
 ###################################
 
 DeclareCategory( "IsScheme",
-                 IsHomalgCategoryObject );
+                 IsCapCategoryObject );
 
 DeclareRepresentation( "IsSchemeRep",
-                       IsScheme and IsHomalgCategoryObjectRep,
+                       IsScheme and IsCapCategoryObjectRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfSchemes",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsSchemeRep ) );
 
 DeclareCategory( "IsSchemeMorphism",
-                 IsHomalgCategoryMorphism );
+                 IsCapCategoryMorphism );
 
 DeclareRepresentation( "IsSchemeMorphismRep",
-                       IsSchemeMorphism and IsHomalgCategoryObjectRep,
+                       IsSchemeMorphism and IsCapCategoryObjectRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfSchemeMorphisms",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsSchemeMorphismRep ) );
 
 #######################################
@@ -367,7 +367,7 @@ InstallValue( MORPHISM_LOGIC_LIST,
     
   ] );  
 
-Schemes := CreateHomalgCategory( "Schemes" );
+Schemes := CreateCapCategory( "Schemes" );
 
 ## Implementation
 

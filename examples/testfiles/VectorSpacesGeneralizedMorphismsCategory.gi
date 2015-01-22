@@ -9,7 +9,7 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 fi;
 
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpacesForGeneralizedMorphismsTest" );
+vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
@@ -86,7 +86,7 @@ MorphismAid( c1 + c2 );
 #! First composition test:
 
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpacesForGeneralizedMorphismsTest" );
+vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
@@ -137,7 +137,7 @@ RangeAid( composition );
 #! Second composition test
 
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpacesForGeneralizedMorphismsTest" );
+vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
@@ -185,7 +185,7 @@ SourceAid( composition2 );
 #! Third composition test
 
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpacesForGeneralizedMorphismsTest" );
+vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
@@ -332,7 +332,7 @@ RangeAid( p );
 
 #! Honest representative test
 #! @Example
-vecspaces := CreateHomalgCategory( "VectorSpacesForGeneralizedMorphismsTest" );
+vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true

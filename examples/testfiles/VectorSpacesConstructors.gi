@@ -18,19 +18,19 @@ BindGlobal( "VectorSpacesConstructorsLoaded", true );
 ###################################
 
 DeclareRepresentation( "IsHomalgRationalVectorSpaceRep",
-                       IsHomalgCategoryObjectRep,
+                       IsCapCategoryObjectRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgRationalVectorSpaces",
-        NewType( TheFamilyOfHomalgCategoryObjects,
+        NewType( TheFamilyOfCapCategoryObjects,
                 IsHomalgRationalVectorSpaceRep ) );
 
 DeclareRepresentation( "IsHomalgRationalVectorSpaceMorphismRep",
-                       IsHomalgCategoryMorphismRep,
+                       IsCapCategoryMorphismRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfHomalgRationalVectorSpaceMorphism",
-        NewType( TheFamilyOfHomalgCategoryMorphisms,
+        NewType( TheFamilyOfCapCategoryMorphisms,
                 IsHomalgRationalVectorSpaceMorphismRep ) );
 
 ###################################

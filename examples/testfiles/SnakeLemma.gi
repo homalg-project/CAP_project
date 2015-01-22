@@ -6,7 +6,7 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 
 fi;
 
-vecspaces := CreateHomalgCategory( "vecspaces" );
+vecspaces := CreateCapCategory( "vecspaces" );
 ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
 
 ## create example input
@@ -27,7 +27,7 @@ alpha2 := InDeductiveSystem( alpha2 );
 
 B := InDeductiveSystem( B );
 
-SetIsAbelianCategory( HomalgCategory( alpha1 ), true );
+SetIsAbelianCategory( CapCategory( alpha1 ), true );
 
 ##
 
