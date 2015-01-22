@@ -662,7 +662,75 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_COCOMPLEX_CATEGORY,
     
         [ [ "CanComputePreCompose" ], function( ) ADD_PRECOMPOSE_IN_COCOMPLEX_CATEGORY( category ); end ],
         
+        [ [ "CanComputeIdentityMorphism" ], function( ) ADD_IDENTITY_MORPHISM_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeZeroObject" ], function( ) ADD_ZERO_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeKernel" ], function( ) ADD_KERNEL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeKernelEmb" ], function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeKernelLift" ], function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeCokernel" ], function( ) ADD_COKERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeCokernelProj" ], function( ) ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeCokernelColift" ], function( ) ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeTerminalObject" ], function( ) ADD_TERMINAL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismIntoTerminalObject" ], function( ) ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeInitialObject" ], function( ) ADD_INITIAL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismFromInitialObject" ], function( ) ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
         [ [ "CanComputeDirectProduct" ], function( ) ADD_DIRECT_PRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeProjectionInFactorOfDirectProduct" ],
+          function( ) ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismIntoDirectProduct" ],
+          function( ) ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeCoproduct" ], function( ) ADD_COPRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeInjectionOfCofactorOfCoproduct" ],
+          function( ) ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismFromCoproduct" ],
+          function( ) ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeDirectSum" ], function( ) ADD_DIRECT_SUM_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputePullback" ], function( ) ADD_FIBER_PRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeProjectionInFactorOfPullback" ],
+          function( ) ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismIntoPullback" ],
+          function( ) ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputePushout" ], function( ) ADD_PUSHOUT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeInjectionOfCofactorOfPushout" ],
+          function( ) ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeUniversalMorphismFromPushout" ],
+          function( ) ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeInverse" ], function( ) ADD_INVERSE_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeMonoAsKernelLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeAdditionForMorphisms" ], function( ) ADD_ADDITION_FOR_MORPHISMS_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeAdditiveInverseForMorphisms" ], function( ) ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_COCOMPLEX_CATEGORY( category ); end ],
+        
+        [ [ "CanComputeZeroMorphism" ], function( ) ADD_ZERO_MORPHISM_IN_COCOMPLEX_CATEGORY( category ); end ],
         
     ];
     
