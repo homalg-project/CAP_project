@@ -11,6 +11,8 @@
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_COCOMPLEX_CATEGORY" );
 
+DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_COMPLEX_CATEGORY" );
+
 DeclareCategory( "IsComplexOrCocomplexCell",
                  IsCapCategoryCell );
 
@@ -64,6 +66,9 @@ DeclareAttribute( "UnderlyingZFunctorCell",
 ## Getter
 ##
 ####################################
+
+DeclareOperation( "Differential",
+                  [ IsComplex, IsInt ] );
 
 DeclareOperation( "Differential",
                   [ IsCocomplex, IsInt ] );

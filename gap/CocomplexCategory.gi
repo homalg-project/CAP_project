@@ -24,6 +24,23 @@ BindGlobal( "TheTypeOfCochainMaps",
         NewType( TheFamilyOfCapCategoryMorphisms,
                 IsCochainMapRep ) );
 
+DeclareRepresentation( "IsComplexRep",
+                       IsCapCategoryObjectRep and IsComplex,
+                       [ ] );
+
+DeclareRepresentation( "IsChainMapRep",
+                       IsCapCategoryMorphismRep and IsChainMap,
+                       [ ] );
+
+BindGlobal( "TheTypeOfComplexes",
+        NewType( TheFamilyOfCapCategoryObjects,
+                IsComplexRep ) );
+
+BindGlobal( "TheTypeOfChainMaps",
+        NewType( TheFamilyOfCapCategoryMorphisms,
+                IsChainMapRep ) );
+
+
 #############################
 ##
 ## Attributes
@@ -54,6 +71,33 @@ InstallMethod( CocomplexCategory,
     INSTALL_TODO_LIST_ENTRIES_FOR_COCOMPLEX_CATEGORY( category );
     
     return cocomplex_category;
+    
+end );
+
+##
+InstallMethod( ComplexCategory,
+               [ IsCapCategory ],
+               
+  function( category )
+    local name, complex_category;
+    
+    if not IsAbelianCategory( category ) then
+        
+      Error( "the category must be abelian" );
+      
+    fi;
+    
+    name := Name( category );
+    
+    name := Concatenation( "Complex category of ", name );
+    
+    complex_category := CreateCapCategory( name );
+    
+    SetUnderlyingHonestCategory( complex_category, category );
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_COMPLEX_CATEGORY( category );
+    
+    return complex_category;
     
 end );
 
@@ -656,6 +700,102 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
     end );
     
+    InstallGlobalFunction( ValueGlobal( Concatenation( "INSTALL_TODO_LIST_ENTRIES_FOR_", name_part, "_CATEGORY" ) ),
+                
+      function( category )
+       local z_functor_category, todo_list_entries, entry, new_entry;
+        
+        z_functor_category := ZFunctorCategory( category );
+        
+        todo_list_entries := [
+        
+            [ [ "CanComputePreCompose" ], function( ) ValueGlobal( Concatenation(  "ADD_PRECOMPOSE_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeIdentityMorphism" ], function( ) ValueGlobal( Concatenation(  "ADD_IDENTITY_MORPHISM_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeZeroObject" ], function( ) ValueGlobal( Concatenation(  "ADD_ZERO_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeKernel" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeKernelEmb" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeKernelLift" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeCokernel" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeCokernelProj" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeCokernelColift" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeTerminalObject" ], function( ) ValueGlobal( Concatenation(  "ADD_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeUniversalMorphismIntoTerminalObject" ], function( ) ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeInitialObject" ], function( ) ValueGlobal( Concatenation(  "ADD_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeUniversalMorphismFromInitialObject" ], function( ) ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeDirectProduct" ], function( ) ValueGlobal( Concatenation(  "ADD_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeProjectionInFactorOfDirectProduct" ],
+              function( ) ValueGlobal( Concatenation(  "ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeUniversalMorphismIntoDirectProduct" ],
+              function( ) ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeCoproduct" ], function( ) ValueGlobal( Concatenation(  "ADD_COPRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeInjectionOfCofactorOfCoproduct" ],
+              function( ) ValueGlobal( Concatenation(  "ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeUniversalMorphismFromCoproduct" ],
+              function( ) ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeDirectSum" ], function( ) ValueGlobal( Concatenation(  "ADD_DIRECT_SUM_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputePullback" ], function( ) ValueGlobal( Concatenation(  "ADD_FIBER_PRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeProjectionInFactorOfPullback" ],
+              function( ) ValueGlobal( Concatenation(  "ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeUniversalMorphismIntoPullback" ],
+              function( ) ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputePushout" ], function( ) ValueGlobal( Concatenation(  "ADD_PUSHOUT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeInjectionOfCofactorOfPushout" ],
+              function( ) ValueGlobal( Concatenation(  "ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeUniversalMorphismFromPushout" ],
+              function( ) ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeInverse" ], function( ) ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeMonoAsKernelLift" ], function( ) ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeEpiAsCokernelColift" ], function( ) ValueGlobal( Concatenation(  "ADD_EPI_AS_COKERNEL_COLIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeAdditionForMorphisms" ], function( ) ValueGlobal( Concatenation(  "ADD_ADDITION_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeAdditiveInverseForMorphisms" ], function( ) ValueGlobal( Concatenation(  "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+            [ [ "CanComputeZeroMorphism" ], function( ) ValueGlobal( Concatenation(  "ADD_ZERO_MORPHISM_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            
+        ];
+        
+        for entry in todo_list_entries do
+            
+            new_entry := ToDoListEntry(
+              Concatenation( List( entry[1], can_compute -> [ z_functor_category, can_compute ] ), [ [ category, NameFunction( category_getter ) ] ] ),
+              entry[2]
+            );
+            
+            AddToToDoList( new_entry );
+            
+        od;
+        
+    end );
+    
 end );
 
 BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX_NOW",
@@ -675,105 +815,6 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX_NOW",
 end );
 
 INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX_NOW( );
-
-
-##
-InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_COCOMPLEX_CATEGORY,
-            
-  function( category )
-   local z_functor_category, todo_list_entries, entry, new_entry;
-    
-    z_functor_category := ZFunctorCategory( category );
-    
-    todo_list_entries := [
-    
-        [ [ "CanComputePreCompose" ], function( ) ADD_PRECOMPOSE_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeIdentityMorphism" ], function( ) ADD_IDENTITY_MORPHISM_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeZeroObject" ], function( ) ADD_ZERO_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeKernel" ], function( ) ADD_KERNEL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeKernelEmb" ], function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeKernelLift" ], function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeCokernel" ], function( ) ADD_COKERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeCokernelProj" ], function( ) ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeCokernelColift" ], function( ) ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeTerminalObject" ], function( ) ADD_TERMINAL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeUniversalMorphismIntoTerminalObject" ], function( ) ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeInitialObject" ], function( ) ADD_INITIAL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeUniversalMorphismFromInitialObject" ], function( ) ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeDirectProduct" ], function( ) ADD_DIRECT_PRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeProjectionInFactorOfDirectProduct" ],
-          function( ) ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeUniversalMorphismIntoDirectProduct" ],
-          function( ) ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeCoproduct" ], function( ) ADD_COPRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeInjectionOfCofactorOfCoproduct" ],
-          function( ) ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeUniversalMorphismFromCoproduct" ],
-          function( ) ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeDirectSum" ], function( ) ADD_DIRECT_SUM_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputePullback" ], function( ) ADD_FIBER_PRODUCT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeProjectionInFactorOfPullback" ],
-          function( ) ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeUniversalMorphismIntoPullback" ],
-          function( ) ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputePushout" ], function( ) ADD_PUSHOUT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeInjectionOfCofactorOfPushout" ],
-          function( ) ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeUniversalMorphismFromPushout" ],
-          function( ) ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeInverse" ], function( ) ADD_INVERSE_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeMonoAsKernelLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeAdditionForMorphisms" ], function( ) ADD_ADDITION_FOR_MORPHISMS_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeAdditiveInverseForMorphisms" ], function( ) ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-        [ [ "CanComputeZeroMorphism" ], function( ) ADD_ZERO_MORPHISM_IN_COCOMPLEX_CATEGORY( category ); end ],
-        
-    ];
-    
-    for entry in todo_list_entries do
-        
-        new_entry := ToDoListEntry(
-          Concatenation( List( entry[1], can_compute -> [ z_functor_category, can_compute ] ), [ [ category, "CocomplexCategory" ] ] ),
-          entry[2]
-        );
-        
-        AddToToDoList( new_entry );
-        
-    od;
-    
-end );
-
 
 
 #############################
@@ -796,12 +837,22 @@ InstallMethod( \[\],
 end );
 
 ##
-InstallMethod( Differential,
-               [ IsCocomplex, IsInt ],
+InstallMethod( \[\],
+               [ IsComplexCell, IsInt ],
                
-  function( cocomplex, index )
+  function( complex_cell, index )
       
-      return Differential( UnderlyingZFunctorCell( cocomplex ), index );
+      return UnderlyingZFunctorCell( complex_cell )[ -index ];
+      
+end );
+
+##
+InstallMethod( Differential,
+               [ IsComplex, IsInt ],
+               
+  function( complex, index )
+      
+      return Differential( UnderlyingZFunctorCell( complex ), -index );
       
 end );
 
@@ -811,23 +862,65 @@ end );
 ##
 #################################################
 
-##
-InstallMethod( AsCocomplex,
-               [ IsZFunctorObject ],
+BindGlobal( "AS_COMPLEX_OR_COCOMPLEX",
                
-  function( z_functor_object )
+  function( z_functor_object, type, category_getter )
     local category, object;
     
     category := UnderlyingHonestCategory( CapCategory( z_functor_object ) );
     
     object := rec( );
     
-    ObjectifyWithAttributes( object, TheTypeOfCocomplexes,
+    ObjectifyWithAttributes( object, type,
                              UnderlyingZFunctorCell, z_functor_object );
     
-    Add( CocomplexCategory( category ), object );
+    Add( category_getter( category ), object );
     
     return object;
+    
+end );
+
+##
+InstallMethod( AsCocomplex,
+               [ IsZFunctorObject ],
+               
+  function( z_functor_object )
+    
+    return AS_COMPLEX_OR_COCOMPLEX( z_functor_object, TheTypeOfCocomplexes, CocomplexCategory );
+    
+end );
+
+##
+InstallMethod( AsComplex,
+               [ IsZFunctorObject ],
+               
+  function( z_functor_object )
+    
+    return AS_COMPLEX_OR_COCOMPLEX( z_functor_object, TheTypeOfComplexes, ComplexCategory );
+    
+end );
+
+BindGlobal( "AS_CHAIN_OR_COCHAIN_MAP",
+            
+  function( z_functor_morphism, type, object_constructor, category_getter )
+    local category, source, range, morphism;
+    
+    category := UnderlyingHonestCategory( CapCategory( z_functor_morphism ) );
+    
+    source := object_constructor( Source( z_functor_morphism ) );
+    
+    range := object_constructor( Range( z_functor_morphism ) );
+    
+    morphism := rec( );
+    
+    ObjectifyWithAttributes( morphism, type,
+                             UnderlyingZFunctorCell, z_functor_morphism,
+                             Source, source,
+                             Range, range );
+    
+    Add( category_getter( category ), morphism );
+    
+    return morphism;
     
 end );
 
@@ -836,22 +929,36 @@ InstallMethod( AsCochainMap,
                [ IsZFunctorMorphism ],
                
   function( z_functor_morphism )
-    local category, source, range, morphism;
+    
+    return AS_CHAIN_OR_COCHAIN_MAP( z_functor_morphism, TheTypeOfCochainMaps, AsCocomplex, CocomplexCategory );
+    
+end );
+
+##
+InstallMethod( AsChainMap,
+               [ IsZFunctorMorphism ],
+               
+  function( z_functor_morphism )
+    
+    return AS_CHAIN_OR_COCHAIN_MAP( z_functor_morphism, TheTypeOfChainMaps, AsComplex, ComplexCategory );
+    
+end );
+
+BindGlobal( "CHAIN_OR_COCHAIN_MAP",
+            
+  function( source, z_functor_morphism, range, type, category_getter )
+    local category, morphism;
     
     category := UnderlyingHonestCategory( CapCategory( z_functor_morphism ) );
     
-    source := AsCocomplex( Source( z_functor_morphism ) );
-    
-    range := AsCocomplex( Range( z_functor_morphism ) );
-    
     morphism := rec( );
     
-    ObjectifyWithAttributes( morphism, TheTypeOfCochainMaps,
+    ObjectifyWithAttributes( morphism, type,
                              UnderlyingZFunctorCell, z_functor_morphism,
                              Source, source,
                              Range, range );
     
-    Add( CocomplexCategory( category ), morphism );
+    Add( category_getter( category ), morphism );
     
     return morphism;
     
@@ -862,20 +969,18 @@ InstallMethod( CochainMap,
                [ IsCocomplex, IsZFunctorMorphism, IsCocomplex ],
                
   function( source, z_functor_morphism, range )
-    local category, morphism;
     
-    category := UnderlyingHonestCategory( CapCategory( z_functor_morphism ) );
+    return CHAIN_OR_COCHAIN_MAP( source, z_functor_morphism, range, TheTypeOfCochainMaps, CocomplexCategory );
     
-    morphism := rec( );
+end );
+
+##
+InstallMethod( ChainMap,
+               [ IsComplex, IsZFunctorMorphism, IsComplex ],
+               
+  function( source, z_functor_morphism, range )
     
-    ObjectifyWithAttributes( morphism, TheTypeOfCochainMaps,
-                             UnderlyingZFunctorCell, z_functor_morphism,
-                             Source, source,
-                             Range, range );
-    
-    Add( CocomplexCategory( category ), morphism );
-    
-    return morphism;
+    return CHAIN_OR_COCHAIN_MAP( source, z_functor_morphism, range, TheTypeOfChainMaps, ComplexCategory );
     
 end );
 
@@ -890,11 +995,31 @@ InstallMethod( AsPointedCocomplexOp,
 end );
 
 ##
+InstallMethod( AsPointedComplexOp,
+               [ IsCapCategoryObject, IsInt ],
+               
+  function( object, index )
+      
+      return AsComplex( AsZFunctorObject( object, index ) );
+      
+end );
+
+##
 InstallMethod( AsPointedCochainMapOp,
                [ IsCapCategoryMorphism, IsInt ],
                
   function( morphism, index )
       
       return AsCochainMap( AsZFunctorMorphism( morphism, index ) );
+      
+end );
+
+##
+InstallMethod( AsPointedChainMapOp,
+               [ IsCapCategoryMorphism, IsInt ],
+               
+  function( morphism, index )
+      
+      return AsChainMap( AsZFunctorMorphism( morphism, index ) );
       
 end );
