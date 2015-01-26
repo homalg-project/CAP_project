@@ -104,3 +104,19 @@ KeyDependentOperation( "AsPointedComplex", IsCapCategoryObject, IsInt, ReturnTru
 KeyDependentOperation( "AsPointedCochainMap", IsCapCategoryMorphism, IsInt, ReturnTrue );
 
 KeyDependentOperation( "AsPointedChainMap", IsCapCategoryMorphism, IsInt, ReturnTrue );
+
+####################################
+##
+## Spectral sequence algorithm
+##
+####################################
+
+DeclareOperationWithCache( "GeneralizedDifferentialOfTotalCocomplex",
+                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+
+DeclareOperationWithCache( "SpectralSequenceEntry",
+                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+
+DeclareOperationWithCache( "SpectralSequenceDifferential",
+                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+

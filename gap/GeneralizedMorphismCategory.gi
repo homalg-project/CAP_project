@@ -832,6 +832,16 @@ InstallMethod( PseudoInverse,
     
 end );
 
+##
+InstallMethod( GeneralizedInverse,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    
+    return PseudoInverse( AsGeneralizedMorphism( morphism ) );
+    
+end );
+
 ###########################
 ##
 ## IsWellDefined

@@ -357,7 +357,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           function( object, terminal_object )
             
-            return morphism_constructor( object, UniversalMorphismIntoTerminalObject( UnderlyingZFunctorCell( object ), UnderlyingZFunctorCell( terminal_object ) ), terminal_object );
+            return morphism_constructor( object, UniversalMorphismIntoTerminalObject( UnderlyingZFunctorCell( object ) ), terminal_object );
             
         end );
         
@@ -388,7 +388,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           function( object, initial_object )
             
-            return morphism_constructor( initial_object, UniversalMorphismFromInitialObject( UnderlyingZFunctorCell( object ), UnderlyingZFunctorCell( initial_object ) ), object );
+            return morphism_constructor( initial_object, UniversalMorphismFromInitialObject( UnderlyingZFunctorCell( object ) ), object );
         
         end );
         
@@ -848,6 +848,16 @@ end );
 
 ##
 InstallMethod( Differential,
+               [ IsCocomplex, IsInt ],
+               
+  function( complex, index )
+      
+      return Differential( UnderlyingZFunctorCell( complex ), index );
+      
+end );
+
+##
+InstallMethod( Differential,
                [ IsComplex, IsInt ],
                
   function( complex, index )
@@ -1023,3 +1033,104 @@ InstallMethod( AsPointedChainMapOp,
       return AsChainMap( AsZFunctorMorphism( morphism, index ) );
       
 end );
+
+####################################
+##
+## Spectral sequence algorithm
+##
+####################################
+
+##
+InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalCocomplex,
+                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  
+  function( bicomplex, page, p, q )
+    local idempotent_source, idempotent_range, differential, i, generalized_morphism_given_by_cospans, auxiliary_cospan;
+    
+    differential := AsGeneralizedMorphism( Differential( bicomplex, p )[q] );
+    
+    if page = 0 then
+      
+      return differential;
+      
+    fi;
+    
+    differential := AsGeneralizedMorphism( Differential( bicomplex, p + ( page - 1 ) )[ q - ( page - 1 ) ] );
+    
+    idempotent_source := IdempotentDefinedBySubobject( KernelEmb( Differential( bicomplex[p], q ) ) );
+    
+    idempotent_range := IdempotentDefinedByFactorobject( CokernelProj( Differential( bicomplex[p + page], q - page ) ) );
+    
+    generalized_morphism_given_by_cospans := IdentityMorphism( Source( differential ) );
+    
+    for i in Reversed( [ 2 .. page ] ) do
+      
+      auxiliary_cospan := GeneralizedMorphismWithRangeAid(
+        Differential( bicomplex, p + ( i - 2 ) )[ q - ( i - 2 ) ],
+        Differential( bicomplex[ p + ( i - 1 ) ], q - ( i - 1 ) )
+      );
+      
+      generalized_morphism_given_by_cospans := PreCompose( auxiliary_cospan, generalized_morphism_given_by_cospans );
+      
+    od;
+    
+    differential := PreCompose( differential, idempotent_range );
+    
+    generalized_morphism_given_by_cospans := PreCompose( idempotent_source, generalized_morphism_given_by_cospans );
+    
+    return PreCompose( generalized_morphism_given_by_cospans, differential );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( SpectralSequenceEntry,
+                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  
+  function( cocomplex, page, p, q )
+    local generalized_morphism_into_entry, generalized_morphism_from_entry,
+          mono, epi, image_embedding;
+    
+    generalized_morphism_into_entry :=
+      GeneralizedDifferentialOfTotalCocomplex( cocomplex, page, p - page, q + page - 1 );
+    
+    generalized_morphism_from_entry :=
+      GeneralizedDifferentialOfTotalCocomplex( cocomplex, page, p, q );
+    
+    mono := Domain( generalized_morphism_from_entry );
+    
+    epi := Codomain( generalized_morphism_into_entry );
+    
+    image_embedding := ImageEmbedding( PreCompose( mono, epi ) );
+    
+    return GeneralizedMorphismWithRangeAid( image_embedding, epi );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( SpectralSequenceDifferential,
+                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  
+  function( cocomplex, page, p, q )
+    local generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range,
+          source_epi, range_mono, generalized_morphism;
+    
+    generalized_morphism_into_source :=
+      GeneralizedDifferentialOfTotalCocomplex( cocomplex, page, p - page, q + page - 1 );
+    
+    generalized_differential := 
+      GeneralizedDifferentialOfTotalCocomplex( cocomplex, page, p, q );
+
+    generalized_morphism_from_range :=
+      GeneralizedDifferentialOfTotalCocomplex( cocomplex, page, p + page, q - page + 1 );
+      
+    source_epi := GeneralizedInverse( Codomain( generalized_morphism_into_source ) );
+    
+    range_mono := GeneralizedInverse( Domain( generalized_morphism_from_range ) );
+    
+    generalized_morphism := PreCompose( source_epi, PreCompose( generalized_differential, range_mono ) );
+    
+    return AssociatedMorphism( generalized_morphism );
+    
+end );
+
+

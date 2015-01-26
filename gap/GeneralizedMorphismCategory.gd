@@ -100,6 +100,12 @@ DeclareAttributeWithToDoForIsWellDefined( "DomainAssociatedMorphismCodomainTripl
 DeclareAttributeWithToDoForIsWellDefined( "PseudoInverse",
                                           IsGeneralizedMorphism );
 
+##
+## When calling this method on a generalized morphism, the effect
+## differs from the effect of PseudoInverse.
+DeclareAttributeWithToDoForIsWellDefined( "GeneralizedInverse",
+                                          IsCapCategoryMorphism );
+
 DeclareProperty( "IsHonest",
                   IsGeneralizedMorphism );
 
