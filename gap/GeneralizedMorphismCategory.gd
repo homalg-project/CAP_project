@@ -135,3 +135,16 @@ DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphismWithKernelAndCokerne
                            [ IsCapCategoryMorphism,
                            IsCapCategoryMorphism,
                            IsCapCategoryMorphism ] );
+
+####################################
+##
+## Idempotents
+##
+####################################
+
+DeclareAttribute( "IdempotentDefinedBySubobject",
+                  IsSubobject );
+
+DeclareAttribute( "IdempotentDefinedByFactorobject",
+                  IsFactorobject );
+

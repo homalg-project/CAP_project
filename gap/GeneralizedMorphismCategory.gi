@@ -973,3 +973,31 @@ InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphismWithKernelAndC
     return associated_morphism;
     
 end );
+
+####################################
+##
+## Idempotents
+##
+####################################
+
+##
+InstallMethod( IdempotentDefinedBySubobject,
+               [ IsSubobject ],
+               
+  function( subobject )
+    
+    return GeneralizedMorphismWithSourceAid( subobject, subobject );
+    
+end );
+
+##
+InstallMethod( IdempotentDefinedByFactorobject,
+               [ IsFactorobject ],
+               
+  function( factorobject )
+    
+    return GeneralizedMorphismWithRangeAid( factorobject, factorobject );
+    
+end );
+
+
