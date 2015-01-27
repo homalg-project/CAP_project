@@ -1047,10 +1047,10 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalCocomplex,
   function( bicomplex, page, p, q )
     local idempotent_source, idempotent_range, differential, i, generalized_morphism_given_by_cospans, auxiliary_cospan;
     
-    differential := AsGeneralizedMorphism( Differential( bicomplex, p )[q] );
-    
     if page = 0 then
-      
+    
+      differential := AsGeneralizedMorphism( Differential( bicomplex, p )[q] );
+    
       return differential;
       
     fi;
