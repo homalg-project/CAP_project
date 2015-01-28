@@ -1045,11 +1045,13 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalCocomplex,
                                   [ IsCocomplex, IsInt, IsInt, IsInt ],
                                   
   function( bicomplex, page, p, q )
-    local idempotent_source, idempotent_range, differential, i, generalized_morphism_given_by_cospans, auxiliary_cospan;
+    local vertical_differential, idempotent_source, idempotent_range, differential, i, generalized_morphism_given_by_cospans, auxiliary_cospan;
+    
+    vertical_differential := Differential( bicomplex[p], q );
     
     if page = 0 then
     
-      differential := AsGeneralizedMorphism( Differential( bicomplex, p )[q] );
+      differential := AsGeneralizedMorphism( vertical_differential );
     
       return differential;
       
@@ -1057,7 +1059,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalCocomplex,
     
     differential := AsGeneralizedMorphism( Differential( bicomplex, p + ( page - 1 ) )[ q - ( page - 1 ) ] );
     
-    idempotent_source := IdempotentDefinedBySubobject( KernelEmb( Differential( bicomplex[p], q ) ) );
+    idempotent_source := IdempotentDefinedBySubobject( KernelEmb( vertical_differential ) );
     
     idempotent_range := IdempotentDefinedByFactorobject( CokernelProj( Differential( bicomplex[p + page], q - page ) ) );
     
