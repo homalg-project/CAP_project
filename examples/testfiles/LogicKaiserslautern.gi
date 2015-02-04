@@ -1,5 +1,3 @@
-INSTALL_FIBER_PRODUCT := true;
-
 LoadPackage( "ModulePresentationsForHomalg" );
 
 LoadPackage( "RingsForHomalg" );
