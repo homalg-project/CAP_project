@@ -37,24 +37,14 @@ delta5 := InDeductiveSystem( delta5_eval );
 SetIsAbelianCategory( CapCategory( delta1 ), true );
 
 
-delta1 := AsGeneralizedMorphism( delta1 );
 
-delta2 := AsGeneralizedMorphism( delta2 );
+cospan1 := GeneralizedMorphismWithRangeAid( delta1, delta2 );
 
-delta3 := AsGeneralizedMorphism( delta3 );
-
-delta4 := AsGeneralizedMorphism( delta4 );
+cospan2 := GeneralizedMorphismWithRangeAid( delta3, delta4 );
 
 delta5 := AsGeneralizedMorphism( delta5 );
 
-
-connecting_morphism := delta1;
-
-connecting_morphism := PreCompose( connecting_morphism, PseudoInverse( delta2 ) );
-
-connecting_morphism := PreCompose( connecting_morphism, delta3 );
-
-connecting_morphism := PreCompose( connecting_morphism, PseudoInverse( delta4 ) );
+connecting_morphism := PreCompose( cospan1, cospan2 );
 
 connecting_morphism := PreCompose( connecting_morphism, delta5 );
 
@@ -65,5 +55,4 @@ c_eval := Evaluation( c );
 c_eval_less_generators := ApplyFunctor( FunctorLessGeneratorsLeft( ZZ ), c_eval );
 
 Display( UnderlyingMatrix( c_eval_less_generators ) );
-
 
