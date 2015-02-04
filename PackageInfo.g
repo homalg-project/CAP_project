@@ -1,7 +1,7 @@
 SetPackageInfo( rec(
 
 PackageName := "ModulePresentationsForHomalg",
-Subtitle := "Category R-pres for CategoriesForHomalg",
+Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
            "2014.09.24", # Sebas version
@@ -72,7 +72,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Category R-pres for CategoriesForHomalg",
+  LongTitle := "Category R-pres for CAP",
 ),
 
 Dependencies := rec(
