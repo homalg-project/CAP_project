@@ -14,7 +14,7 @@
 #############################
 
 DeclareCategory( "IsLeftOrRightPresentation",
-                 IsHomalgCategoryObject );
+                 IsCAPCategoryObject );
 
 DeclareCategory( "IsLeftPresentation",
                  IsLeftOrRightPresentation );

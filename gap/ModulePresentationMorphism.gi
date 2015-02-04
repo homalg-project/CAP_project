@@ -43,7 +43,7 @@ InstallMethod( PresentationMorphism,
   function( source, matrix, range )
     local category, left, morphism, type;
     
-    category := HomalgCategory( source );
+    category := CAPCategory( source );
     
     left := IsLeftPresentation( source );
     
