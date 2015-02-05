@@ -28,6 +28,8 @@ composite := PreCompose( pi1, alpha1 );
 
 PrintHistory( composite );
 
+HasIsMonomorphism( composite );
+
 IsMonomorphism( alpha1 );
 
 IsMonomorphism( alpha2 );
