@@ -14,7 +14,7 @@ InstallMethod( LeftPresentations,
   function( ring )
     local category;
     
-    category := CreateHomalgCategory( Concatenation( "Category of left presentations of ", RingName( ring ) ) );
+    category := CreateCapCategory( Concatenation( "Category of left presentations of ", RingName( ring ) ) );
     
     category!.ring_for_representation_category := ring;
     
@@ -55,7 +55,7 @@ InstallMethod( RightPresentations,
   function( ring )
     local category;
     
-    category := CreateHomalgCategory( Concatenation( "Category of right presentations of ", RingName( ring ) ) );
+    category := CreateCapCategory( Concatenation( "Category of right presentations of ", RingName( ring ) ) );
     
     category!.ring_for_representation_category := ring;
     
