@@ -50,7 +50,7 @@ DeclareOperation( "FreeRightPresentation",
 
 
 DeclareFamilyProperty( "IsFree",
-                       IsHomalgCategoryMorphism,
+                       IsCapCategoryMorphism,
                        "ModuleCategory",
                        "object" );
 
