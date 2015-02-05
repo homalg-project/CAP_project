@@ -8,7 +8,7 @@
 #############################################################################
 
 DeclareCategory( "IsLeftOrRightPresentationMorphism",
-                 IsCAPCategoryMorphism );
+                 IsCapCategoryMorphism );
 
 DeclareCategory( "IsLeftPresentationMorphism",
                  IsLeftOrRightPresentationMorphism );
