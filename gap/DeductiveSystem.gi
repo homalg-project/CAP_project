@@ -1093,7 +1093,7 @@ end );
 ## Those two methods can cause errors.
 InstallMethod( ViewObj,
                [ IsDeductiveSystemCell ],
-               100000000000000, ##FIXME!!!!
+               1000000, ##FIXME!!!!
                
   function( cell )
     
@@ -1110,6 +1110,23 @@ InstallMethod( ViewObj,
         TryNextMethod();
         
     fi;
+    
+end );
+
+##
+InstallMethod( String,
+               [ IsDeductiveSystemCell ],
+               1000000,
+               
+  function( cell )
+    
+    if HasEvaluation( cell ) then
+        
+        return Concatenation( "Deductive system hull of ", String( cell ) );
+        
+    fi;
+    
+    TryNextMethod();
     
 end );
 
@@ -1203,7 +1220,7 @@ InstallGlobalFunction( PRINT_HISTORY_RECURSIVE,
         
     elif IsCapCategoryCell( history ) and resolve_variable_names = true then
         
-        gvars := NamesGVars( );
+        gvars := NamesUserGVars( );
         
         for string in gvars do
             
@@ -1216,6 +1233,8 @@ InstallGlobalFunction( PRINT_HISTORY_RECURSIVE,
         od;
         
     fi;
+    
+#     InfoOfObject( history );
     
     return String( history );
     
