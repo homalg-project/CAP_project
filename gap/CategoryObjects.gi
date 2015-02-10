@@ -47,12 +47,12 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
   function( category, object )
     local entry;
     
-    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "CapCategory" ] ],
-                                                         [ category, object ],
-                                                         CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
-                                                       );
- 
-    AddToToDoList( entry );
+#     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "CapCategory" ] ],
+#                                                          [ category, object ],
+#                                                          CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
+#                                                        );
+#  
+#     AddToToDoList( entry );
     
     if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS ) then
         
