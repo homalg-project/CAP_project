@@ -61,3 +61,5 @@ c_eval_less_generators := ApplyFunctor( FunctorLessGeneratorsLeft( ZZ ), c_eval 
 
 Display( UnderlyingMatrix( c_eval_less_generators ) );
 
+QUIT;
+
