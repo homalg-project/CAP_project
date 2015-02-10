@@ -30,12 +30,12 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL,
   function( category, twocell )
     local entry;
     
-    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ twocell, "CapCategory" ] ],
-                                                         [ category, twocell ],
-                                                         CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
-                                                          );
-    
-    AddToToDoList( entry );
+#     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ twocell, "CapCategory" ] ],
+#                                                          [ category, twocell ],
+#                                                          CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
+#                                                           );
+#     
+#     AddToToDoList( entry );
     
     if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_TWOCELL ) then
         

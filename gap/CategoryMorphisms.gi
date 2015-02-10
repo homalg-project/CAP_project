@@ -53,12 +53,12 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
   function( category, morphism )
     local entry;
     
-    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "CapCategory" ] ],
-                                                         [ category, morphism ],
-                                                         CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
-                                                          );
-    
-    AddToToDoList( entry );
+#     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "CapCategory" ] ],
+#                                                          [ category, morphism ],
+#                                                          CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
+#                                                           );
+#     
+#     AddToToDoList( entry );
     
     if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM ) then
         

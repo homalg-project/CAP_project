@@ -130,6 +130,26 @@ BindGlobal( "TheTypeOfHomalgCategories",
 #####################################
 
 ##
+InstallGlobalFunction( INSTALL_CAN_COMPUTE_TO_DO_LISTS,
+                       
+  function( category )
+    local i, entry_func;
+    
+    entry_func := function( category, filter_name )
+        
+        return ToDoListEntry( [ [ category, filter_name, true ] ], function( ) InstallTrueMethod( ValueGlobal( filter_name ), CanComputeFilter( category ) ); end );
+        
+    end;
+    
+    for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
+        
+        AddToToDoList( entry_func( category, i ) );
+        
+    od;
+    
+end );
+
+##
 InstallGlobalFunction( CREATE_HOMALG_CATEGORY_FILTERS,
                        
   function( category )
@@ -160,6 +180,12 @@ InstallGlobalFunction( CREATE_HOMALG_CATEGORY_FILTERS,
     InstallTrueMethod( cell_filter, filter_name );
     
     SetTwoCellFilter( category, filter_name );
+    
+    filter_name := NewFilter( Concatenation( name, "CanComputeFilter" ) );
+    
+    SetCanComputeFilter( category, filter_name );
+    
+    InstallTrueMethod( filter_name, cell_filter );
     
 end );
 
@@ -545,6 +571,8 @@ InstallMethodWithCache( CreateCapCategory,
     category := CREATE_HOMALG_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
     
     CREATE_HOMALG_CATEGORY_FILTERS( category );
+    
+    INSTALL_CAN_COMPUTE_TO_DO_LISTS( category );
     
     AddCategoryToFamily( category, "general" );
     

@@ -38,6 +38,8 @@ DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST" );
 
 DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION" );
 
+DeclareGlobalFunction( "INSTALL_CAN_COMPUTE_TO_DO_LISTS" );
+
 InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
               
               [ "CanComputeMonoAsKernelLift",
@@ -277,6 +279,9 @@ DeclareAttribute( "MorphismFilter",
 
 #!
 DeclareAttribute( "TwoCellFilter",
+                  IsCapCategory );
+
+DeclareAttribute( "CanComputeFilter",
                   IsCapCategory );
 
 #! @EndGroup

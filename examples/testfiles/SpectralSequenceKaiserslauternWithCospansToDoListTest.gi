@@ -1,3 +1,7 @@
+LoadPackage( "ToolsForHomalg" );
+
+ShowToDoListInfo( );
+
 LoadPackage( "ModulePresentationsForHomalg" );
 
 LoadPackage( "RingsForHomalg" );
@@ -60,4 +64,6 @@ c_eval := Evaluation( c );
 c_eval_less_generators := ApplyFunctor( FunctorLessGeneratorsLeft( ZZ ), c_eval );
 
 Display( UnderlyingMatrix( c_eval_less_generators ) );
+
+QUIT;
 
