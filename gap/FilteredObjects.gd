@@ -62,7 +62,7 @@ DeclareAttribute( "CategoryOfDescendingFilteredObjects",
 ####################################
 
 DeclareAttribute( "UnderlyingZFunctorCell",
-                  IsComplexOrCocomplexCell );
+                  IsFilteredObjectCategoryCell );
 
 ####################################
 ##
