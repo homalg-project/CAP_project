@@ -29,6 +29,8 @@ ReadPackage( "CategoriesForHomalg", "gap/ZFunctors.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/CocomplexCategory.gd");
 
+ReadPackage( "CategoriesForHomalg", "gap/FilteredObjects.gd");
+
 ReadPackage( "CategoriesForHomalg", "gap/LazyCategory.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/DeductiveSystem.gd");
