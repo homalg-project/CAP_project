@@ -55,6 +55,9 @@ DeclareOperation( "Differential",
 DeclareOperation( "ZFunctorObject",
                   [ IsFunction, IsFunction, IsCapCategory ] );
 
+DeclareOperation( "ZFunctorObjectExtendedByInitialAndIdentity",
+                  [ IsFunction, IsFunction, IsCapCategory, IsInt, IsInt ] );
+
 KeyDependentOperation( "AsZFunctorObject", IsCapCategoryObject, IsInt, RETURN_TRUE );
 
 DeclareOperation( "ZFunctorMorphism",

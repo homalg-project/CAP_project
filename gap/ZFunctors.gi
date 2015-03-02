@@ -1085,6 +1085,68 @@ InstallMethod( ZFunctorObject,
 end );
 
 ##
+InstallMethod( ZFunctorObjectExtendedByInitialAndIdentity,
+               [ IsFunction, IsFunction, IsCapCategory, IsInt, IsInt ],
+               
+  function( object_func, differential_func, category, lower_bound, upper_bound )
+    local object, new_object_func, new_differential_func;
+    
+    new_object_func := function( i )
+        
+        if i < lower_bound  then
+            
+            return InitialObject( category );
+            
+        elif i >= upper_bound then
+            
+            return object_func( upper_bound );
+            
+        else
+            
+            return object_func( i );
+            
+        fi;
+        
+    end;
+    
+    new_differential_func := function( i )
+        
+        if i < lower_bound - 1 then
+            
+            return IdentityMorphism( InitialObject( category ) );
+            
+        elif i = lower_bound - 1 then
+            
+            return UniversalMorphismFromInitialObject( object_func( lower_bound ) );
+            
+        elif i >= upper_bound then
+            
+            return IdentityMorphism( object_func( upper_bound ) );
+            
+        else
+            
+            return differential_func( i );
+            
+        fi;
+        
+    end;
+    
+    object := rec( objects_positive := WeakPointerObj( [ ] ),
+                   objects_nonpositive := WeakPointerObj( [ ] ),
+                   differentials_positive := WeakPointerObj( [ ] ),
+                   differentials_nonpositive := WeakPointerObj( [ ] ),
+                   object_func := new_object_func,
+                   differential_func := new_differential_func );
+    
+    ObjectifyWithAttributes( object, TheTypeOfZFunctorObject );
+    
+    Add( ZFunctorCategory( category ), object );
+    
+    return object;
+    
+end );
+
+##
 InstallMethod( AsZFunctorObjectOp,
                [ IsCapCategoryObject, IsInt ],
                
