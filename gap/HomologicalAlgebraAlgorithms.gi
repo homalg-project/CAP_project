@@ -201,3 +201,62 @@ InstallMethodWithCacheFromObject( SpectralSequenceDifferential,
     return AssociatedMorphism( generalized_morphism );
     
 end );
+
+#############################################################################
+##
+## Spectral sequence algorithm for ascending filtered complexes (homological)
+##
+#############################################################################
+
+InstallMethodWithCacheFromObject( GeneralizedDifferentialOfAscendingFilteredComplex,
+                                  [ IsComplex, IsInt, IsInt, IsInt ],
+                                  
+  function( complex, r, p, q )
+    local n, embedding, generalized_embedding, j, projection, generalized_projection, differential;
+    
+    n := p+q;
+    
+    embedding := Embedding( complex[n], p - 1 );
+    
+    generalized_embedding := PseudoInverse( AsGeneralizedMorphism( CokernelProj( embedding ) ) );
+    
+    embedding := IdentityMorphism( complex[n-1][p-r] );
+      
+    for j in [ 0 .. r - 1 ] do
+      
+      embedding := PreCompose( embedding, Embedding( complex[n-1], p - r + j ) );
+      
+    od;
+    
+    projection := CokernelProj( Embedding( complex[n-1],p-r-1 ) );
+    
+    generalized_projection := GeneralizedMorphismWithSourceAid( embedding, projection );
+    
+    differential := AsGeneralizedMorphism( Differential( complex, n )[p] );
+    
+    return PreCompose( PreCompose( generalized_embedding, differential ), generalized_projection );
+    
+end );
+
+InstallMethodWithCacheFromObject( SpectralSequenceEntryOfAscendingFilteredComplex,
+                                  [ IsComplex, IsInt, IsInt, IsInt ], 
+                                  
+function( complex, r, p, q )
+    local generalized_morphism_into_entry, generalized_morphism_from_entry,
+          mono, epi, image_embedding;
+    
+    generalized_morphism_into_entry :=
+      GeneralizedDifferentialOfAscendingFilteredComplex( complex, r, p + r, q - r + 1 );
+    
+    generalized_morphism_from_entry :=
+      GeneralizedDifferentialOfAscendingFilteredComplex( complex, r, p, q );
+    
+    mono := Domain( generalized_morphism_from_entry );
+    
+    epi := Codomain( generalized_morphism_into_entry );
+    
+    image_embedding := ImageEmbedding( PreCompose( mono, epi ) );
+    
+    return GeneralizedMorphismWithRangeAid( image_embedding, epi );
+    
+end );

@@ -783,7 +783,7 @@ end );
 ###########################
 
 ## convention: we prefer a 2-arrow calculus with honest source,
-## because in the module category, pushouts are easier too compute
+## because in the module category, pushouts are easier to compute
 ## than pullbacks.
 ##
 InstallMethod( PseudoInverse,
