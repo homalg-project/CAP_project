@@ -41,3 +41,17 @@ DeclareOperationWithCache( "SpectralSequenceEntry",
 
 DeclareOperationWithCache( "SpectralSequenceDifferential",
                            [ IsCocomplex, IsInt, IsInt, IsInt ] );
+
+##################################################################
+##
+## Spectral sequence algorithm for descending filtered cocomplexes
+##
+##################################################################
+
+## convenction: a descending filtered cocomplex is a cocomplex of filtered objects
+
+###############################################################
+##
+## Spectral sequence algorithm for ascending filtered complexes
+##
+###############################################################

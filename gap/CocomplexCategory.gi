@@ -54,9 +54,9 @@ InstallMethod( CocomplexCategory,
   function( category )
     local name, cocomplex_category;
     
-    if not IsAbelianCategory( category ) then
+    if not IsAdditiveCategory( category ) then
         
-      Error( "the category must be abelian" );
+      Error( "the category must be additive" );
       
     fi;
     
@@ -81,9 +81,9 @@ InstallMethod( ComplexCategory,
   function( category )
     local name, complex_category;
     
-    if not IsAbelianCategory( category ) then
+    if not IsAdditiveCategory( category ) then
         
-      Error( "the category must be abelian" );
+      Error( "the category must be additive" );
       
     fi;
     

@@ -97,6 +97,12 @@ DeclareAttribute( "AsDescendingFilteredMorphism",
 DeclareOperation( "AscendingFilteredMorphism",
                   [ IsAscendingFilteredObject, IsZFunctorMorphism, IsAscendingFilteredObject ] );
 
+DeclareOperation( "AscendingFilteredMorphism",
+                  [ IsAscendingFilteredObject, IsFunction, IsAscendingFilteredObject ] );
+
 DeclareOperation( "DescendingFilteredMorphism",
                   [ IsDescendingFilteredObject, IsZFunctorMorphism, IsDescendingFilteredObject ] );
+
+DeclareOperation( "DescendingFilteredMorphism",
+                  [ IsDescendingFilteredObject, IsFunction, IsDescendingFilteredObject ] );
 

@@ -35,7 +35,7 @@ identity_B := IdentityMorphism( B );
 
 iota := MonoAsKernelLift( alpha2, alpha1 );
 
-eps := EpiAsCokernelColift( cokernel_proj_1, cokernel_proj_2 );
+eps := CokernelColift( alpha1, cokernel_proj_2 );
 
 c := SnakeLemmaConnectingHomomorphism( cokernel_proj_1, iota, identity_B, eps, alpha2 );
 
