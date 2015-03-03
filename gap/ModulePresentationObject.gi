@@ -88,7 +88,7 @@ InstallMethod( FreeLeftPresentation,
       
     fi;
     
-    return AsLeftPresentation( HomalgMatrix( [ List( [ 1 .. rank ], i -> 0 ) ], homalg_ring ) );
+    return AsLeftPresentation( HomalgZeroMatrix( 0, rank, homalg_ring ) );
     
 end );
 
@@ -104,6 +104,6 @@ InstallMethod( FreeRightPresentation,
       
     fi;
     
-    return AsRightPresentation( HomalgMatrix( [ List( [ 1 .. rank ], i -> [ 0 ] ) ], homalg_ring ) );
+    return AsRightPresentation( HomalgZeroMatrix( rank, 0, homalg_ring ) );
     
 end );

@@ -512,18 +512,11 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
         
     end );
     
-    AddEpiAsCokernelColift( category,
-                            
-      function( epimorphism, test_morphism )
-        local lift;
+    AddCokernelColiftWithGivenCokernel( category,
+      
+      function( morphism, test_morphism, cokernel_object )
         
-        lift := LeftDivide( UnderlyingMatrix( epimorphism ), UnderlyingMatrix( test_morphism ), UnderlyingMatrix( Range( test_morphism ) ) );
-        
-        if lift = false then
-            return false;
-        fi;
-        
-        return PresentationMorphism( Range( epimorphism ), lift, Range( test_morphism ) );
+        return PresentationMorphism( cokernel_object, UnderlyingMatrix( test_morphism ), Range( test_morphism ) );
         
     end );
     
@@ -549,18 +542,11 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
         
     end );
     
-    AddEpiAsCokernelColift( category,
-                            
-      function( epimorphism, test_morphism )
-        local lift;
+    AddCokernelColiftWithGivenCokernel( category,
+      
+      function( morphism, test_morphism, cokernel_object )
         
-        lift := RightDivide( UnderlyingMatrix( test_morphism ), UnderlyingMatrix( epimorphism ), UnderlyingMatrix( Range( test_morphism ) ) );
-        
-        if lift = false then
-            return false;
-        fi;
-        
-        return PresentationMorphism( Range( epimorphism ), lift, Range( test_morphism ) );
+        return PresentationMorphism( cokernel_object, UnderlyingMatrix( test_morphism ), Range( test_morphism ) );
         
     end );
     
