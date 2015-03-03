@@ -35,6 +35,10 @@ ReadPackage( "CategoriesForHomalg", "gap/LazyCategory.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/DeductiveSystem.gd");
 
+ReadPackage( "CategoriesForHomalg", "gap/HomologicalAlgebraAlgorithms.gd");
+
 ReadPackage( "CategoriesForHomalg", "gap/LogicForDeductiveSystem.gd");
 
 ReadPackage( "CategoriesForHomalg", "gap/TheoremParser.gd");
+
+

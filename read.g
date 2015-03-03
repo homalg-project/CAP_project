@@ -30,6 +30,8 @@ ReadPackage( "CategoriesForHomalg", "gap/LazyCategory.gi");
 
 ReadPackage( "CategoriesForHomalg", "gap/DeductiveSystem.gi");
 
+ReadPackage( "CategoriesForHomalg", "gap/HomologicalAlgebraAlgorithms.gi");
+
 ReadPackage( "CategoriesForHomalg", "gap/LogicForDeductiveSystem.gi");
 
 ReadPackage( "CategoriesForHomalg", "gap/TheoremParser.gi");
