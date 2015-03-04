@@ -2,7 +2,7 @@
 ##
 ##                                               CategoriesForHomalg package
 ##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
+##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 ##
@@ -739,6 +739,19 @@ InstallMethod( AscendingFilteredMorphism,
 end );
 
 ##
+InstallMethod( AscendingFilteredMorphism,
+               [ IsAscendingFilteredObject, IsFunction, IsAscendingFilteredObject ],
+               
+  function( source, morphism_func, range )
+    local z_functor_morphism;
+    
+    z_functor_morphism := ZFunctorMorphism( UnderlyingZFunctorCell( source ), morphism_func, UnderlyingZFunctorCell( range ) );
+    
+    return FILTERED_MORPHISM( source, z_functor_morphism, range, TheTypeOfAscendingFilteredMorphisms, CategoryOfAscendingFilteredObjects );
+    
+end );
+
+##
 InstallMethod( DescendingFilteredMorphism,
                [ IsDescendingFilteredObject, IsZFunctorMorphism, IsDescendingFilteredObject ],
                
@@ -747,3 +760,17 @@ InstallMethod( DescendingFilteredMorphism,
     return FILTERED_MORPHISM( source, z_functor_morphism, range, TheTypeOfDescendingFilteredMorphisms, CategoryOfDescendingFilteredObjects );
     
 end );
+
+##
+InstallMethod( DescendingFilteredMorphism,
+               [ IsDescendingFilteredObject, IsFunction, IsDescendingFilteredObject ],
+               
+  function( source, morphism_func, range )
+    local z_functor_morphism;
+    
+    z_functor_morphism := ZFunctorMorphism( UnderlyingZFunctorCell( source ), morphism_func, UnderlyingZFunctorCell( range ) );
+    
+    return FILTERED_MORPHISM( source, z_functor_morphism, range, TheTypeOfDescendingFilteredMorphisms, CategoryOfDescendingFilteredObjects );
+    
+end );
+

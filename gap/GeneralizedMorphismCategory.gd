@@ -124,23 +124,7 @@ InstallTrueMethod( HasHonestRange, IsHonest );
 
 InstallTrueMethod( HasHonestSource, IsHonest );
 
-####################################
-##
-## Snake-Lemma
-##
-####################################
 
-DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphism",
-                           [ IsCapCategoryMorphism,
-                           IsCapCategoryMorphism,
-                           IsCapCategoryMorphism,
-                           IsCapCategoryMorphism,
-                           IsCapCategoryMorphism ] );
-
-DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphismWithKernelAndCokernel",
-                           [ IsCapCategoryMorphism,
-                           IsCapCategoryMorphism,
-                           IsCapCategoryMorphism ] );
 
 ####################################
 ##
