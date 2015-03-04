@@ -208,6 +208,7 @@ end );
 ##
 #############################################################################
 
+##
 InstallMethodWithCacheFromObject( GeneralizedDifferentialOfAscendingFilteredComplex,
                                   [ IsComplex, IsInt, IsInt, IsInt ],
                                   
@@ -238,6 +239,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfAscendingFilteredComp
     
 end );
 
+##
 InstallMethodWithCacheFromObject( SpectralSequenceEntryOfAscendingFilteredComplex,
                                   [ IsComplex, IsInt, IsInt, IsInt ], 
                                   
@@ -258,5 +260,32 @@ function( complex, r, p, q )
     image_embedding := ImageEmbedding( PreCompose( mono, epi ) );
     
     return GeneralizedMorphismWithRangeAid( image_embedding, epi );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( SpectralSequenceDifferentialOfAscendingFilteredComplex,
+                                  [ IsComplex, IsInt, IsInt, IsInt ],
+                                  
+  function( complex, r, p, q )
+    local generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range,
+          source_epi, range_mono, generalized_morphism;
+    
+    generalized_morphism_into_source :=
+      GeneralizedDifferentialOfAscendingFilteredComplex( complex, r, p + r, q - r + 1 );
+    
+    generalized_differential := 
+      GeneralizedDifferentialOfAscendingFilteredComplex( complex, r, p, q );
+
+    generalized_morphism_from_range :=
+      GeneralizedDifferentialOfAscendingFilteredComplex( complex, r, p - r, q + r - 1 );
+      
+    source_epi := GeneralizedInverse( Codomain( generalized_morphism_into_source ) );
+    
+    range_mono := GeneralizedInverse( Domain( generalized_morphism_from_range ) );
+    
+    generalized_morphism := PreCompose( source_epi, PreCompose( generalized_differential, range_mono ) );
+    
+    return AssociatedMorphism( generalized_morphism );
     
 end );
