@@ -64,3 +64,6 @@ DeclareOperationWithCache( "GeneralizedDifferentialOfAscendingFilteredComplex",
 
 DeclareOperationWithCache( "SpectralSequenceEntryOfAscendingFilteredComplex",
                            [ IsComplex, IsInt, IsInt, IsInt ] );
+
+DeclareOperationWithCache( "SpectralSequenceDifferentialOfAscendingFilteredComplex",
+                           [ IsComplex, IsInt, IsInt, IsInt ] );

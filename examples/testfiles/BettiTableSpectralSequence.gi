@@ -194,20 +194,24 @@ complex := AsComplex( complex );
 
 F := FunctorLessGeneratorsLeft( R );
 
-s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 0, 0, 0 );
-Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
+# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 0, 0, 0 );
+# Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
+# 
+# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 1, 0, 0 );
+# Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
+# 
+# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 2, 0, 0 );
+# Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
+# 
+# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 3, 0, 0 );
+# Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
+# 
+# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 4, 0, 0 );
+# Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
+# 
+# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 5, 0, 0 );
+# Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
 
-s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 1, 0, 0 );
-Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
+s := SpectralSequenceDifferentialOfAscendingFilteredComplex( complex, 3, 3, -2 );
 
-s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 2, 0, 0 );
-Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
-
-s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 3, 0, 0 );
-Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
-
-s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 4, 0, 0 );
-Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
-
-s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 5, 0, 0 );
-Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
+Display( UnderlyingMatrix( ApplyFunctor( F, s ) ) );
