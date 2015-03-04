@@ -1223,6 +1223,56 @@ InstallMethod( AsZFunctorObjectOp,
     
 end );
 
+# ##
+# InstallMethod( ZFunctorObjectFromMorphismList,
+#                [ IsList ],
+#                
+#   function( morphism_list )
+#     
+#     return ZFunctorObjectFromMorphismList( morphism_list, 0 );
+#     
+# end );
+
+# ##
+# InstallMethod( ZFunctorObjectFromMorphismList,
+#                [ IsList, IsInt ],
+#                
+#   function( morphism_list, start_position )
+#     local category, object_func, differential_func, list_length;
+#     
+#     if Length( morphism_list ) = 0 then
+#         
+#         Error( "empty list is not allowed" );
+#         
+#     fi;
+#     
+#     category := CapCategory( morphism_list[ 1 ] );
+#     
+#     list_length := Length( morphism_list );
+#     
+#     object_func := function( i )
+#         
+#         if i < start_position - 1 then
+#             
+#             return InitialObject( category );
+#             
+#         elif i = start_position - 1 then
+#             
+#             return Source( morphism_list[ start_position ] );
+#             
+#         elif i <= start_position + list_length then
+#             
+#             return Range( morphism_list[ i - start_position ] );
+#             
+#         else
+#             
+#             return TerminalObject( category );
+#             
+#         fi;
+#         
+#     end;
+#     ## HERE
+
 ##
 InstallMethod( ZFunctorMorphism,
                [ IsZFunctorObject, IsFunction, IsZFunctorObject ],
