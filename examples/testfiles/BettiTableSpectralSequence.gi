@@ -19,7 +19,7 @@ morphism_func := function( i ) return IdentityMorphism( S ); end;
 
 C0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, category, 0, 4 );
 
-C0 := AsAscendingFilteredObject( C0 );
+# C0 := AsAscendingFilteredObject( C0 );
 
 
 #C_1
@@ -49,11 +49,11 @@ S2 := FreeLeftPresentation( 2, R );
 #   fi;
 # end;
 
-C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S2, S ), 1 ), IdentityMorphism( DirectSum( S2, S ) ) ], 2 );
+C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S2, S ), 1 ) ], 2 );
 
-C1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );
+C1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 2 );
 
-C1 := AsAscendingFilteredObject( C1 );
+# C1 := AsAscendingFilteredObject( C1 );
 
 #C_3
 # object_func := function( i )
@@ -84,7 +84,7 @@ C2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S, S ), 
 
 C2 := ZFunctorObjectExtendedByInitialAndIdentity( C2, 3, 3 );
 
-C2 := AsAscendingFilteredObject( C2 );
+# C2 := AsAscendingFilteredObject( C2 );
 
 #delta1: C0 <-- C1
 
@@ -92,107 +92,115 @@ delta_1_3 := PresentationMorphism( C1[3], HomalgMatrix( [ [ "x^2" ], [ "xy" ], [
 
 delta_1_2 := PresentationMorphism( C1[2], HomalgMatrix( [ [ "x^2" ], [ "xy" ] ], 2, 1, R ), C0[2] );
 
-morph_func := function( i )
-  if i >= 3 then
-    
-    return delta_1_3;
-    
-  elif i = 2 then
-    
-    return delta_1_2;
-    
-  elif i >= 0 then
-    
-    return UniversalMorphismFromInitialObject( C0[1] );
-    
-  else
-    
-    return UniversalMorphismFromInitialObject( InitialObject( category ) );
-    
-  fi;
-end;
+# morph_func := function( i )
+#   if i >= 3 then
+#     
+#     return delta_1_3;
+#     
+#   elif i = 2 then
+#     
+#     return delta_1_2;
+#     
+#   elif i >= 0 then
+#     
+#     return UniversalMorphismFromInitialObject( C0[1] );
+#     
+#   else
+#     
+#     return UniversalMorphismFromInitialObject( InitialObject( category ) );
+#     
+#   fi;
+# end;
 
-delta1 := AscendingFilteredMorphism( C1, morph_func, C0 );
+delta1 := ZFunctorMorphism( C1, [ delta_1_2, delta_1_3 ], 2, C0 );
 
-#delta2: C2 --> C1
+delta1 := ZFunctorMorphismExtendedByInitialAndIdentity( delta1, 2, 3 );
+
+delta1 := AsAscendingFilteredMorphism( delta1 );
+
+#delta2: C1 <-- C2
 
 delta_2_3 := PresentationMorphism( C2[3], HomalgMatrix( [ [ "y", "-x", "0" ] ], 1, 3, R ), C1[3] );
 
 delta_2_4 := PresentationMorphism( C2[4], HomalgMatrix( [ [ "y", "-x", "0" ], [ "0", "y^2", "-x" ] ], 2, 3, R ), C1[4] );
 
-morph_func := function( i )
-  if i >= 4 then
-    
-    return delta_2_4;
-    
-  elif i = 3 then
-    
-    return delta_2_3;
-    
-  elif i = 2 then
-    
-    return UniversalMorphismFromInitialObject( C1[2] );
-    
-  else
-    
-    return UniversalMorphismFromInitialObject( InitialObject( category ) );
-    
-  fi;
-end;
+# morph_func := function( i )
+#   if i >= 4 then
+#     
+#     return delta_2_4;
+#     
+#   elif i = 3 then
+#     
+#     return delta_2_3;
+#     
+#   elif i = 2 then
+#     
+#     return UniversalMorphismFromInitialObject( C1[2] );
+#     
+#   else
+#     
+#     return UniversalMorphismFromInitialObject( InitialObject( category ) );
+#     
+#   fi;
+# end;
 
-delta2 := AscendingFilteredMorphism( C2, morph_func, C1 );
+delta2 := ZFunctorMorphism( C2, [ UniversalMorphismFromInitialObject( C1[2] ), delta_2_3, delta_2_4 ], 1, C1 );
+
+delta2 := ZFunctorMorphismExtendedByInitialAndIdentity( delta2, 1, 3 );
+
+delta2 := AsAscendingFilteredMorphism( delta2 );
 
 #the complex
 
-zero_object := ZeroObject( CategoryOfAscendingFilteredObjects( category ) );
+# zero_object := ZeroObject( CategoryOfAscendingFilteredObjects( category ) );
 
-object_func := function( i )
-  if i > 0 or i < -2 then 
-    
-    return zero_object; #would be nice if this was unnecessary
-    
-  elif i = 0 then
-    
-    return C0;
-    
-  elif i = -1 then
-    
-    return C1;
-    
-  elif i = -2 then
-    
-    return C2;
-    
-  fi;
-end;
-
-morph_func := function( i )
-  if i >= 0 then
-    
-    return UniversalMorphismIntoTerminalObject( C0 );
-    
-  elif i = -3 then
-    
-    return UniversalMorphismFromInitialObject( C2 );
-    
-  elif i < -3 then
-    
-    UniversalMorphismFromInitialObject( zero_object );
-    
-  elif i = -1 then
-    
-    return delta1;
-    
-  elif i = -2 then
-    
-    return delta2;
-    
-  fi;
-end;
+# object_func := function( i )
+#   if i > 0 or i < -2 then 
+#     
+#     return zero_object; #would be nice if this was unnecessary
+#     
+#   elif i = 0 then
+#     
+#     return C0;
+#     
+#   elif i = -1 then
+#     
+#     return C1;
+#     
+#   elif i = -2 then
+#     
+#     return C2;
+#     
+#   fi;
+# end;
+# 
+# morph_func := function( i )
+#   if i >= 0 then
+#     
+#     return UniversalMorphismIntoTerminalObject( C0 );
+#     
+#   elif i = -3 then
+#     
+#     return UniversalMorphismFromInitialObject( C2 );
+#     
+#   elif i < -3 then
+#     
+#     UniversalMorphismFromInitialObject( zero_object );
+#     
+#   elif i = -1 then
+#     
+#     return delta1;
+#     
+#   elif i = -2 then
+#     
+#     return delta2;
+#     
+#   fi;
+# end;
 
 SetIsAdditiveCategory( CategoryOfAscendingFilteredObjects( category ), true );
 
-complex := ZFunctorObject( object_func, morph_func, CategoryOfAscendingFilteredObjects( category ) );
+complex := ZFunctorObjectFromMorphismList( [ delta2, delta1 ], -2 );
 
 complex := AsComplex( complex );
 

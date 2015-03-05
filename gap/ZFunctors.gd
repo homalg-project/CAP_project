@@ -72,4 +72,16 @@ KeyDependentOperation( "AsZFunctorObject", IsCapCategoryObject, IsInt, RETURN_TR
 DeclareOperation( "ZFunctorMorphism",
                   [ IsZFunctorObject, IsFunction, IsZFunctorObject ] );
 
+DeclareOperation( "ZFunctorMorphism",
+                  [ IsZFunctorObject, IsList, IsInt, IsZFunctorObject ] );
+
+DeclareOperation( "ZFunctorMorphism",
+                  [ IsZFunctorObject, IsList, IsZFunctorObject ] );
+
+DeclareOperation( "ZFunctorMorphismExtendedByInitialAndIdentity",
+                  [ IsZFunctorObject, IsFunction, IsZFunctorObject, IsInt, IsInt ] );
+
+DeclareOperation( "ZFunctorMorphismExtendedByInitialAndIdentity",
+                  [ IsZFunctorMorphism, IsInt, IsInt ] );
+
 KeyDependentOperation( "AsZFunctorMorphism", IsCapCategoryMorphism, IsInt, RETURN_TRUE );
