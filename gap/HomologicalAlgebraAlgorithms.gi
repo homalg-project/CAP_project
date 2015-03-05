@@ -233,6 +233,98 @@ InstallMethodWithCacheFromObject( SpectralSequenceDifferential,
     
 end );
 
+############################################################
+##
+## Spectral sequence algorithm for homological bicomplexes
+##
+############################################################
+
+##
+InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalComplex,
+                                  [ IsComplex, IsInt, IsInt, IsInt ],
+                                  
+  function( bicomplex, page, p, q )
+    local vertical_differential, idempotent_source, idempotent_range, differential, i, generalized_morphism_given_by_cospans, auxiliary_cospan;
+    
+    vertical_differential := Differential( bicomplex[p], q );
+    
+    if page = 0 then
+    
+      differential := AsGeneralizedMorphism( vertical_differential );
+    
+      return differential;
+      
+    fi;
+    
+    differential := AsGeneralizedMorphism( Differential( bicomplex, p - page + 1 )[ q + ( page - 1 ) ] );
+    
+    idempotent_source := IdempotentDefinedBySubobject( KernelEmb( vertical_differential ) );
+    
+    idempotent_range := IdempotentDefinedByFactorobject( CokernelProj( Differential( bicomplex[p - page], q + page ) ) );
+    
+    generalized_morphism_given_by_cospans := IdentityMorphism( Source( differential ) );
+    
+    for i in Reversed( [ 2 .. page ] ) do
+      
+      auxiliary_cospan := GeneralizedMorphismWithRangeAid(
+        Differential( bicomplex, p - ( i - 2 ) )[ q + ( i - 2 ) ],
+        Differential( bicomplex[ p - ( i - 1 ) ], q + ( i - 1 ) )
+      );
+      
+      generalized_morphism_given_by_cospans := PreCompose( auxiliary_cospan, generalized_morphism_given_by_cospans );
+      
+    od;
+    
+    differential := PreCompose( differential, idempotent_range );
+    
+    generalized_morphism_given_by_cospans := PreCompose( idempotent_source, generalized_morphism_given_by_cospans );
+    
+    return PreCompose( generalized_morphism_given_by_cospans, differential );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( SpectralSequenceEntry,
+                                  [ IsComplex, IsInt, IsInt, IsInt ],
+                                  
+  function( complex, page, p, q )
+    local generalized_morphism_into_entry, generalized_morphism_from_entry,
+          mono, epi, image_embedding;
+    
+    generalized_morphism_into_entry :=
+      GeneralizedDifferentialOfTotalComplex( complex, page, p + page, q - page + 1 );
+    
+    generalized_morphism_from_entry :=
+      GeneralizedDifferentialOfTotalComplex( complex, page, p, q );
+    
+    return GetSpectralSequenceObjectFromConsecutiveGeneralizedDifferentials( generalized_morphism_into_entry, generalized_morphism_from_entry );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( SpectralSequenceDifferential,
+                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  
+  function( complex, page, p, q )
+    local generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range,
+          source_epi, range_mono, generalized_morphism;
+    
+    generalized_morphism_into_source :=
+      GeneralizedDifferentialOfTotalComplex( complex, page, p + page, q - page + 1 );
+    
+    generalized_differential := 
+      GeneralizedDifferentialOfTotalComplex( complex, page, p, q );
+
+    generalized_morphism_from_range :=
+      GeneralizedDifferentialOfTotalComplex( complex, page, p - page, q + page - 1 );
+    
+    return GetSpectralSequenceDifferentialFromConsecutiveGeneralizedDifferentials( 
+             generalized_morphism_into_source,
+             generalized_differential,
+             generalized_morphism_from_range );
+    
+end );
+
 #############################################################################
 ##
 ## Spectral sequence algorithm for ascending filtered complexes (homological)

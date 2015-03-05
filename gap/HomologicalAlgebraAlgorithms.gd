@@ -54,6 +54,21 @@ DeclareOperationWithCache( "SpectralSequenceEntry",
 DeclareOperationWithCache( "SpectralSequenceDifferential",
                            [ IsCocomplex, IsInt, IsInt, IsInt ] );
 
+############################################################
+##
+## Spectral sequence algorithm for homological bicomplexes
+##
+############################################################
+
+DeclareOperationWithCache( "GeneralizedDifferentialOfTotalComplex",
+                           [ IsComplex, IsInt, IsInt, IsInt ] );
+
+DeclareOperationWithCache( "SpectralSequenceEntry",
+                           [ IsComplex, IsInt, IsInt, IsInt ] );
+
+DeclareOperationWithCache( "SpectralSequenceDifferential",
+                           [ IsComplex, IsInt, IsInt, IsInt ] );
+
 ##################################################################################
 ##
 ## Spectral sequence algorithm for descending filtered cocomplexes (cohomological)
