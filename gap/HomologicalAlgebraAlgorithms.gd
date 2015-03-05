@@ -29,6 +29,18 @@ DeclareOperationWithCache( "SnakeLemmaConnectingHomomorphismWithKernelAndCokerne
 
 ############################################################
 ##
+## Algorithms for spectral sequences
+##
+############################################################
+
+DeclareOperationWithCache( "GetSpectralSequenceObjectFromConsecutiveGeneralizedDifferentials",
+                           [ IsGeneralizedMorphism, IsGeneralizedMorphism ] );
+
+DeclareOperationWithCache( "GetSpectralSequenceDifferentialFromConsecutiveGeneralizedDifferentials",
+                           [ IsGeneralizedMorphism, IsGeneralizedMorphism, IsGeneralizedMorphism ] );
+
+############################################################
+##
 ## Spectral sequence algorithm for cohomological bicomplexes
 ##
 ############################################################
@@ -50,6 +62,14 @@ DeclareOperationWithCache( "SpectralSequenceDifferential",
 
 ## convention: a descending filtered cocomplex is a cocomplex of descending filtered objects
 
+DeclareOperationWithCache( "GeneralizedDifferentialOfDescendingFilteredCocomplex",
+                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+
+DeclareOperationWithCache( "SpectralSequenceEntryOfDescendingFilteredCocomplex",
+                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+
+DeclareOperationWithCache( "SpectralSequenceDifferentialOfDescendingFilteredCocomplex",
+                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
 
 #############################################################################
 ##

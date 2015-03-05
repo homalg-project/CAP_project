@@ -103,6 +103,46 @@ end );
 
 ############################################################
 ##
+## Algorithms for spectral sequences
+##
+############################################################
+
+##
+InstallMethodWithCacheFromObject( GetSpectralSequenceObjectFromConsecutiveGeneralizedDifferentials,
+                                  [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
+                                  
+  function( generalized_morphism_from_entry, generalized_morphism_into_entry )
+    local mono, epi, image_embedding;
+    
+    mono := Domain( generalized_morphism_from_entry );
+    
+    epi := Codomain( generalized_morphism_into_entry );
+    
+    image_embedding := ImageEmbedding( PreCompose( mono, epi ) );
+    
+    return GeneralizedMorphismWithRangeAid( image_embedding, epi );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( GetSpectralSequenceDifferentialFromConsecutiveGeneralizedDifferentials,
+                                  [ IsGeneralizedMorphism, IsGeneralizedMorphism, IsGeneralizedMorphism ],
+                                  
+  function( generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range )
+    local source_epi, range_mono, generalized_morphism;
+    
+    source_epi := GeneralizedInverse( Codomain( generalized_morphism_into_source ) );
+    
+    range_mono := GeneralizedInverse( Domain( generalized_morphism_from_range ) );
+    
+    generalized_morphism := PreCompose( source_epi, PreCompose( generalized_differential, range_mono ) );
+    
+    return AssociatedMorphism( generalized_morphism );
+    
+end );
+
+############################################################
+##
 ## Spectral sequence algorithm for cohomological bicomplexes
 ##
 ############################################################
@@ -165,13 +205,7 @@ InstallMethodWithCacheFromObject( SpectralSequenceEntry,
     generalized_morphism_from_entry :=
       GeneralizedDifferentialOfTotalCocomplex( cocomplex, page, p, q );
     
-    mono := Domain( generalized_morphism_from_entry );
-    
-    epi := Codomain( generalized_morphism_into_entry );
-    
-    image_embedding := ImageEmbedding( PreCompose( mono, epi ) );
-    
-    return GeneralizedMorphismWithRangeAid( image_embedding, epi );
+    return GetSpectralSequenceObjectFromConsecutiveGeneralizedDifferentials( generalized_morphism_into_entry, generalized_morphism_from_entry );
     
 end );
 
@@ -191,14 +225,11 @@ InstallMethodWithCacheFromObject( SpectralSequenceDifferential,
 
     generalized_morphism_from_range :=
       GeneralizedDifferentialOfTotalCocomplex( cocomplex, page, p + page, q - page + 1 );
-      
-    source_epi := GeneralizedInverse( Codomain( generalized_morphism_into_source ) );
     
-    range_mono := GeneralizedInverse( Domain( generalized_morphism_from_range ) );
-    
-    generalized_morphism := PreCompose( source_epi, PreCompose( generalized_differential, range_mono ) );
-    
-    return AssociatedMorphism( generalized_morphism );
+    return GetSpectralSequenceDifferentialFromConsecutiveGeneralizedDifferentials( 
+             generalized_morphism_into_source,
+             generalized_differential,
+             generalized_morphism_from_range );
     
 end );
 
@@ -253,13 +284,7 @@ function( complex, r, p, q )
     generalized_morphism_from_entry :=
       GeneralizedDifferentialOfAscendingFilteredComplex( complex, r, p, q );
     
-    mono := Domain( generalized_morphism_from_entry );
-    
-    epi := Codomain( generalized_morphism_into_entry );
-    
-    image_embedding := ImageEmbedding( PreCompose( mono, epi ) );
-    
-    return GeneralizedMorphismWithRangeAid( image_embedding, epi );
+    return GetSpectralSequenceObjectFromConsecutiveGeneralizedDifferentials( generalized_morphism_into_entry, generalized_morphism_from_entry );
     
 end );
 
@@ -279,13 +304,89 @@ InstallMethodWithCacheFromObject( SpectralSequenceDifferentialOfAscendingFiltere
 
     generalized_morphism_from_range :=
       GeneralizedDifferentialOfAscendingFilteredComplex( complex, r, p - r, q + r - 1 );
+    
+    return GetSpectralSequenceDifferentialFromConsecutiveGeneralizedDifferentials( 
+             generalized_morphism_into_source,
+             generalized_differential,
+             generalized_morphism_from_range );
+    
+end );
+
+##################################################################################
+##
+## Spectral sequence algorithm for descending filtered cocomplexes (cohomological)
+##
+##################################################################################
+
+##
+InstallMethodWithCacheFromObject( GeneralizedDifferentialOfDescendingFilteredCocomplex,
+                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  
+  function( cocomplex, r, p, q )
+    local n, embedding, generalized_embedding, j, projection, generalized_projection, differential;
+    
+    n := p+q;
+    
+    embedding := Embedding( cocomplex[n], p + 1 );
+    
+    generalized_embedding := PseudoInverse( AsGeneralizedMorphism( CokernelProj( embedding ) ) );
+    
+    embedding := IdentityMorphism( cocomplex[n+1][p+r] );
       
-    source_epi := GeneralizedInverse( Codomain( generalized_morphism_into_source ) );
+    for j in [ 0 .. r - 1 ] do
+      
+      embedding := PreCompose( embedding, Embedding( cocomplex[n+1], p + r - j ) );
+      
+    od;
     
-    range_mono := GeneralizedInverse( Domain( generalized_morphism_from_range ) );
+    projection := CokernelProj( Embedding( cocomplex[n+1],p+r+1 ) );
     
-    generalized_morphism := PreCompose( source_epi, PreCompose( generalized_differential, range_mono ) );
+    generalized_projection := GeneralizedMorphismWithSourceAid( embedding, projection );
     
-    return AssociatedMorphism( generalized_morphism );
+    differential := AsGeneralizedMorphism( Differential( cocomplex, n )[p] );
+    
+    return PreCompose( PreCompose( generalized_embedding, differential ), generalized_projection );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( SpectralSequenceEntryOfDescendingFilteredCocomplex,
+                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  
+  function( cocomplex, page, p, q )
+    local generalized_morphism_into_entry, generalized_morphism_from_entry,
+          mono, epi, image_embedding;
+    
+    generalized_morphism_into_entry :=
+      GeneralizedDifferentialOfDescendingFilteredCocomplex( cocomplex, page, p - page, q + page - 1 );
+    
+    generalized_morphism_from_entry :=
+      GeneralizedDifferentialOfDescendingFilteredCocomplex( cocomplex, page, p, q );
+    
+    return GetSpectralSequenceObjectFromConsecutiveGeneralizedDifferentials( generalized_morphism_into_entry, generalized_morphism_from_entry );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( SpectralSequenceDifferentialOfDescendingFilteredCocomplex,
+                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  
+  function( cocomplex, page, p, q )
+    local generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range,
+          source_epi, range_mono, generalized_morphism;
+    
+    generalized_morphism_into_source :=
+      GeneralizedDifferentialOfDescendingFilteredCocomplex( cocomplex, page, p - page, q + page - 1 );
+    
+    generalized_differential := 
+      GeneralizedDifferentialOfDescendingFilteredCocomplex( cocomplex, page, p, q );
+
+    generalized_morphism_from_range :=
+      GeneralizedDifferentialOfDescendingFilteredCocomplex( cocomplex, page, p + page, q - page + 1 );
+    
+    return GetSpectralSequenceDifferentialFromConsecutiveGeneralizedDifferentials( 
+             generalized_morphism_into_source,
+             generalized_differential,
+             generalized_morphism_from_range );
     
 end );
