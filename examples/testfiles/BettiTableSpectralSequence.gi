@@ -25,60 +25,64 @@ C0 := AsAscendingFilteredObject( C0 );
 #C_1
 S2 := FreeLeftPresentation( 2, R );
 
-object_func := function( i )
-  if i <= 2 then
-    
-    return S2;
-    
-  else
-    
-    return DirectSum( S2, S );
-  
-  fi;
-end;
+# object_func := function( i )
+#   if i <= 2 then
+#     
+#     return S2;
+#     
+#   else
+#     
+#     return DirectSum( S2, S );
+#   
+#   fi;
+# end;
+# 
+# morphism_func := function( i )
+#   if i = 2 then
+#     
+#     return InjectionOfCofactor( DirectSum( S2, S ), 1 );
+#   
+#   elif i > 2 then
+#     
+#     return IdentityMorphism( DirectSum( S2, S ) ); #would be nice if this was unnecessary
+#     
+#   fi;
+# end;
 
-morphism_func := function( i )
-  if i = 2 then
-    
-    return InjectionOfCofactor( DirectSum( S2, S ), 1 );
-  
-  elif i > 2 then
-    
-    return IdentityMorphism( DirectSum( S2, S ) ); #would be nice if this was unnecessary
-    
-  fi;
-end;
+C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S2, S ), 1 ), IdentityMorphism( DirectSum( S2, S ) ) ], 2 );
 
-C1 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, category, 2, 3 );
+C1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );
 
 C1 := AsAscendingFilteredObject( C1 );
 
 #C_3
-object_func := function( i )
-  if i = 3 then
-    
-    return S;
-    
-  elif i > 3 then
-    
-    return DirectSum( S, S );
-    
-  fi;
-end;
+# object_func := function( i )
+#   if i = 3 then
+#     
+#     return S;
+#     
+#   elif i > 3 then
+#     
+#     return DirectSum( S, S );
+#     
+#   fi;
+# end;
+# 
+# morphism_func := function( i )
+#   if i = 3 then
+#     
+#     return InjectionOfCofactor( DirectSum( S, S ), 1 );
+#     
+#   elif i > 3 then
+#     
+#     return IdentityMorphism( DirectSum( S, S ) ); #would be nice if this was unnecessary
+#     
+#   fi;
+# end;
 
-morphism_func := function( i )
-  if i = 3 then
-    
-    return InjectionOfCofactor( DirectSum( S, S ), 1 );
-    
-  elif i > 3 then
-    
-    return IdentityMorphism( DirectSum( S, S ) ); #would be nice if this was unnecessary
-    
-  fi;
-end;
+C2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S, S ), 1 ) ], 3 );
 
-C2 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, category, 3, 4 );
+C2 := ZFunctorObjectExtendedByInitialAndIdentity( C2, 3, 3 );
 
 C2 := AsAscendingFilteredObject( C2 );
 
