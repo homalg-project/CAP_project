@@ -1084,6 +1084,15 @@ InstallMethod( ZFunctorObject,
     
 end );
 
+InstallMethod( ZFunctorObjectExtendedByInitialAndIdentity,
+               [ IsZFunctorObject, IsInt, IsInt ],
+               
+  function( object, lower_bound, upper_bound )
+      
+      return ZFunctorObjectExtendedByInitialAndIdentity( object!.object_func, object!.differential_func, UnderlyingHonestCategory( CapCategory( object ) ), lower_bound, upper_bound );
+      
+end );
+
 ##
 InstallMethod( ZFunctorObjectExtendedByInitialAndIdentity,
                [ IsFunction, IsFunction, IsCapCategory, IsInt, IsInt ],
@@ -1224,6 +1233,85 @@ InstallMethod( AsZFunctorObjectOp,
 end );
 
 ##
+InstallMethod( ZFunctorObjectFromMorphismList,
+               [ IsList ],
+               
+  function( morphism_list )
+    
+    return ZFunctorObjectFromMorphismList( morphism_list, 0 );
+    
+end );
+
+##
+InstallMethod( ZFunctorObjectFromMorphismList,
+               [ IsList, IsInt ],
+               
+  function( morphism_list, start_position )
+    local category, object_func, morphism_func, list_length;
+    
+    if Length( morphism_list ) = 0 then
+        
+        Error( "empty list is not allowed" );
+        
+    fi;
+    
+    category := CapCategory( morphism_list[ 1 ] );
+    
+    list_length := Length( morphism_list );
+    
+    object_func := function( i )
+        
+        if i < start_position then
+            
+            return InitialObject( category );
+            
+        elif i = start_position then
+            
+            return Source( morphism_list[ 1 ] );
+            
+        elif i <= start_position + list_length then
+            
+            return Range( morphism_list[ i - start_position ] );
+            
+        else
+            
+            return TerminalObject( category );
+            
+        fi;
+        
+    end;
+    
+    morphism_func := function( i )
+        
+        if i < start_position - 1 then
+            
+            return IdentityMorphism( InitialObject( category ) );
+            
+        elif i = start_position - 1 then
+            
+            return UniversalMorphismFromInitialObject( Source( morphism_list[ 1 ] ) );
+            
+        elif i < start_position + list_length then
+            
+            return morphism_list[ i - start_position + 1 ];
+            
+        elif i = start_position + list_length then
+            
+            return UniversalMorphismIntoTerminalObject( Range( morphism_list[ list_length ] ) );
+            
+        else
+            
+            return IdentityMorphism( TerminalObject( category ) );
+            
+        fi;
+        
+    end;
+    
+    return ZFunctorObject( object_func, morphism_func, category );
+    
+end );
+
+##
 InstallMethod( ZFunctorMorphism,
                [ IsZFunctorObject, IsFunction, IsZFunctorObject ],
                
@@ -1241,6 +1329,89 @@ InstallMethod( ZFunctorMorphism,
     Add( CapCategory( source ), morphism );
     
     return morphism;
+    
+end );
+
+InstallMethod( ZFunctorMorphism,
+               [ IsZFunctorObject, IsList, IsZFunctorObject ],
+               
+  function( source, list, range )
+      
+      return ZFunctorMorphism( source, list, 0, range );
+      
+end );
+
+##
+InstallMethod( ZFunctorMorphism,
+               [ IsZFunctorObject, IsList, IsInt, IsZFunctorObject ],
+               
+  function( source, morphism_list, start_position, range )
+    local list_length, morphism_func;
+    
+    list_length := Length( morphism_list );
+    
+    if list_length = 0 then
+        
+        return ZeroMorphism( source, range );
+        
+    fi;
+    
+    morphism_func := function( i )
+        
+        if i >= start_position and i < start_position + list_length then
+            
+            return morphism_list[ i - start_position + 1 ];
+            
+        else
+            
+            return ZeroMorphism( source[ i ], range[ i ] );
+            
+        fi;
+        
+    end;
+    
+    return ZFunctorMorphism( source, morphism_func, range );
+    
+end );
+
+##
+InstallMethod( ZFunctorMorphismExtendedByInitialAndIdentity,
+               [ IsZFunctorObject, IsFunction, IsZFunctorObject, IsInt, IsInt ],
+               
+  function( source, morphism_func, range, lower_bound, upper_bound )
+    local underlying_category, new_morphism_func;
+    
+    underlying_category := UnderlyingHonestCategory( CapCategory( source ) );
+    
+    new_morphism_func := function( i )
+        
+        if i < lower_bound then
+            
+            return IdentityMorphism( InitialObject( underlying_category ) );
+            
+        elif i < upper_bound then
+            
+            return morphism_func( i );
+            
+        else
+            
+            return morphism_func( upper_bound );
+            
+        fi;
+        
+    end;
+    
+    return ZFunctorMorphism( source, new_morphism_func, range );
+    
+end );
+
+##
+InstallMethod( ZFunctorMorphismExtendedByInitialAndIdentity,
+               [ IsZFunctorMorphism, IsInt, IsInt ],
+               
+  function( morphism, lower_bound, upper_bound )
+    
+    return ZFunctorMorphismExtendedByInitialAndIdentity( Source( morphism ), morphism!.morphism_func, Range( morphism ), lower_bound, upper_bound );
     
 end );
 
