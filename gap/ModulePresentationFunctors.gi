@@ -25,7 +25,7 @@ BindGlobal( "INSTALL_FUNCTOR_STANDARD_MODULE_METHODS",
         
         category := presentations( ring );
         
-        functor := HomalgFunctor( Concatenation( "Standard module for ", Name( category ) ), category, category );
+        functor := CapFunctor( Concatenation( "Standard module for ", Name( category ) ), category, category );
         
         AddObjectFunction( functor,
                            
@@ -82,7 +82,7 @@ InstallMethod( FunctorLessGeneratorsLeft,
     
     category := LeftPresentations( ring );
     
-    functor := HomalgFunctor( Concatenation( "Less generators for ", Name( category ) ), category, category );
+    functor := CapFunctor( Concatenation( "Less generators for ", Name( category ) ), category, category );
     
     AddObjectFunction( functor,
                        
@@ -125,7 +125,7 @@ InstallMethod( FunctorLessGeneratorsRight,
     
     category := RightPresentations( ring );
     
-    functor := HomalgFunctor( Concatenation( "Less generators for ", Name( category ) ), category, category );
+    functor := CapFunctor( Concatenation( "Less generators for ", Name( category ) ), category, category );
     
     AddObjectFunction( functor,
                        
