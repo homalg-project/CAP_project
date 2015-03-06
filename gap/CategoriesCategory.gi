@@ -16,13 +16,13 @@ BindGlobal( "TheTypeOfHomalgCategoriesAsCatObjects",
         NewType( TheFamilyOfCapCategoryObjects,
                 IsCapCategoryAsCatObjectRep ) );
 
-DeclareRepresentation( "IsHomalgFunctorRep",
-                       IsCapCategoryMorphismRep and IsHomalgFunctor,
+DeclareRepresentation( "IsCapFunctorRep",
+                       IsCapCategoryMorphismRep and IsCapFunctor,
                        [ ] );
 
-BindGlobal( "TheTypeOfHomalgFunctors",
+BindGlobal( "TheTypeOfCapFunctors",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsHomalgFunctorRep ) );
+                IsCapFunctorRep ) );
 
 DeclareRepresentation( "IsHomalgNaturalTransformationRep",
                        IsCapCategoryTwoCellRep and IsHomalgNaturalTransformation,
@@ -70,7 +70,7 @@ InstallMethod( AsCatObject,
 end );
 
 ##
-InstallMethod( HomalgFunctor,
+InstallMethod( CapFunctor,
                [ IsString, IsCapCategory, IsCapCategory ],
                
   function( name, source, range )
@@ -78,7 +78,7 @@ InstallMethod( HomalgFunctor,
     
     functor := rec( );
     
-    ObjectifyWithAttributes( functor, TheTypeOfHomalgFunctors,
+    ObjectifyWithAttributes( functor, TheTypeOfCapFunctors,
                              Name, name,
                              Source, AsCatObject( source ),
                              Range, AsCatObject( range ) );
@@ -90,38 +90,38 @@ InstallMethod( HomalgFunctor,
 end );
 
 ##
-InstallMethod( HomalgFunctor,
+InstallMethod( CapFunctor,
                [ IsString, IsCapCategoryAsCatObject, IsCapCategory ],
                
   function( name, source, range )
     
-    return HomalgFunctor( name, AsCapCategory( source ), range );
+    return CapFunctor( name, AsCapCategory( source ), range );
     
 end );
 
 ##
-InstallMethod( HomalgFunctor,
+InstallMethod( CapFunctor,
                [ IsString, IsCapCategory, IsCapCategoryAsCatObject ],
                
   function( name, source, range )
     
-    return HomalgFunctor( name, source, AsCapCategory( range ) );
+    return CapFunctor( name, source, AsCapCategory( range ) );
     
 end );
 
 ##
-InstallMethod( HomalgFunctor,
+InstallMethod( CapFunctor,
                [ IsString, IsCapCategoryAsCatObject, IsCapCategoryAsCatObject ],
                
   function( name, source, range )
     
-    return HomalgFunctor( name, AsCapCategory( source ), AsCapCategory( range ) );
+    return CapFunctor( name, AsCapCategory( source ), AsCapCategory( range ) );
     
 end );
 
 ##
 InstallMethod( AddObjectFunction,
-               [ IsHomalgFunctor, IsFunction ],
+               [ IsCapFunctor, IsFunction ],
                
   function( functor, func )
     
@@ -131,7 +131,7 @@ end );
 
 ##
 InstallMethod( AddMorphismFunction,
-               [ IsHomalgFunctor, IsFunction ],
+               [ IsCapFunctor, IsFunction ],
                
   function( functor, func )
     
@@ -157,7 +157,7 @@ end );
 
 ##
 InstallMethod( ObjectCache,
-               [ IsHomalgFunctor ],
+               [ IsCapFunctor ],
                
   function( functor )
     
@@ -167,7 +167,7 @@ end );
 
 ##
 InstallMethod( MorphismCache,
-               [ IsHomalgFunctor ],
+               [ IsCapFunctor ],
                
   function( functor )
     
@@ -177,7 +177,7 @@ end );
 
 ##
 InstallMethod( ApplyFunctor,
-               [ IsHomalgFunctor, IsCapCategoryObject ],
+               [ IsCapFunctor, IsCapCategoryObject ],
                
   function( functor, obj )
     local obj_cache, cache_return, computed_value;
@@ -215,7 +215,7 @@ end );
 
 ##
 InstallMethod( ApplyFunctor,
-               [ IsHomalgFunctor, IsCapCategoryMorphism ],
+               [ IsCapFunctor, IsCapCategoryMorphism ],
                
   function( functor, mor )
     local mor_cache, cache_return, computed_value;
@@ -254,7 +254,7 @@ AddPreCompose( CATEGORIES_FOR_HOMALG_Cat,
   function( left_functor, right_functor )
     local obj_func, mor_func, new_functor;
     
-    new_functor := HomalgFunctor( Concatenation( "Composition of ",
+    new_functor := CapFunctor( Concatenation( "Composition of ",
                                                  Name( left_functor ),
                                                  " and ",
                                                  Name( right_functor ) ),
@@ -285,7 +285,7 @@ AddIdentityMorphism( CATEGORIES_FOR_HOMALG_Cat,
   function( category )
     local new_functor;
     
-    new_functor := HomalgFunctor( Concatenation( "Identity functor of ", Name( AsCapCategory( category ) ) ),
+    new_functor := CapFunctor( Concatenation( "Identity functor of ", Name( AsCapCategory( category ) ) ),
                                                  category, category );
     
     AddObjectFunction( new_functor,
@@ -315,7 +315,7 @@ AddUniversalMorphismIntoTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
   function( category )
     local new_functor;
     
-    new_functor := HomalgFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
+    new_functor := CapFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
     
     AddObjectFunction( new_functor,
                        
@@ -335,7 +335,7 @@ AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CATEGORIES_FOR_HO
   function( category, cat_obj )
     local new_functor;
     
-    new_functor := HomalgFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
+    new_functor := CapFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
     
     AddObjectFunction( new_functor,
                        
@@ -364,7 +364,7 @@ AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMAL
   function( object_product_list, direct_product, projection_number )
     local projection_functor;
     
-    projection_functor := HomalgFunctor( 
+    projection_functor := CapFunctor( 
       Concatenation( "Projection into ", String( projection_number ),"-th factor of ", Name( AsCapCategory( direct_product ) ) ), 
       direct_product, 
       object_product_list[ projection_number ]
@@ -403,7 +403,7 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMA
       Name( AsCapCategory( direct_product ) ) 
     );
     
-    universal_functor := HomalgFunctor( name_string, Source( sink[1] ), direct_product );
+    universal_functor := CapFunctor( name_string, Source( sink[1] ), direct_product );
     
     AddObjectFunction( universal_functor,
                        
@@ -439,7 +439,7 @@ end );
 
 ##
 InstallMethod( InstallFunctorOnObjects,
-               [ IsHomalgFunctor, IsString ],
+               [ IsCapFunctor, IsString ],
                
   function( functor, name )
     
@@ -451,7 +451,7 @@ end );
 
 ##
 InstallMethod( InstallFunctorOnMorphisms,
-               [ IsHomalgFunctor, IsString ],
+               [ IsCapFunctor, IsString ],
                
   function( functor, name )
     
@@ -463,7 +463,7 @@ end );
 
 ##
 InstallMethod( InstallFunctor,
-               [ IsHomalgFunctor, IsString, IsString ],
+               [ IsCapFunctor, IsString, IsString ],
                
   function( functor, obj_name, mor_name )
     
@@ -477,7 +477,7 @@ end );
 
 ##
 InstallMethod( InstallFunctor,
-               [ IsHomalgFunctor, IsString ],
+               [ IsCapFunctor, IsString ],
                
   function( functor, name )
     
@@ -487,19 +487,19 @@ end );
 
 ##
 InstallMethod( ObjectFunctionName,
-               [ IsHomalgFunctor ],
+               [ IsCapFunctor ],
                
   Name );
 
 ##
 InstallMethod( MorphismFunctionName,
-               [ IsHomalgFunctor ],
+               [ IsCapFunctor ],
                
   Name );
 
 ##
 InstallMethod( InstallFunctorOnObjects,
-               [ IsHomalgFunctor ],
+               [ IsCapFunctor ],
                
   function( functor )
     local func_name, category_list, filter_list;
@@ -534,7 +534,7 @@ end );
 
 ##
 InstallMethod( InstallFunctorOnMorphisms,
-               [ IsHomalgFunctor ],
+               [ IsCapFunctor ],
                
   function( functor )
     local func_name, category_list, filter_list;
@@ -569,7 +569,7 @@ end );
 
 ##
 InstallMethod( InstallFunctor,
-               [ IsHomalgFunctor ],
+               [ IsCapFunctor ],
                
   function( functor )
     
@@ -587,7 +587,7 @@ end );
 
 ##
 InstallMethod( NaturalTransformation,
-               [ IsHomalgFunctor, IsHomalgFunctor ],
+               [ IsCapFunctor, IsCapFunctor ],
                
   function( source, range )
     
@@ -597,7 +597,7 @@ end );
 
 ##
 InstallMethod( NaturalTransformation,
-               [ IsString, IsHomalgFunctor, IsHomalgFunctor ],
+               [ IsString, IsCapFunctor, IsCapFunctor ],
                
   function( name, source, range )
     local natural_transformation;

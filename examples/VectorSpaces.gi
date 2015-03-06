@@ -788,7 +788,7 @@ nu := VectorSpaceMorphism( B, [ [ 1, 0 ], [ 0, 0 ] ], B_p );
 ##
 #######################################
 
-Tensor_Product_For_VecSpaces := HomalgFunctor( "Tensor_Product_For_VecSpaces", Product( vecspaces, vecspaces ), vecspaces );
+Tensor_Product_For_VecSpaces := CapFunctor( "Tensor_Product_For_VecSpaces", Product( vecspaces, vecspaces ), vecspaces );
 
 AddObjectFunction( Tensor_Product_For_VecSpaces,
                    
@@ -806,7 +806,7 @@ AddMorphismFunction( Tensor_Product_For_VecSpaces,
     
 end );
 
-Change_Components := HomalgFunctor( "change_components", Product( vecspaces, vecspaces ), Product( vecspaces, vecspaces ) );
+Change_Components := CapFunctor( "change_components", Product( vecspaces, vecspaces ), Product( vecspaces, vecspaces ) );
 
 AddObjectFunction( Change_Components,
                    
@@ -910,7 +910,7 @@ end );
 identity_functor := IdentityMorphism( AsCatObject( vecspaces ) );
 
 ##
-zero_object := HomalgFunctor( "Zero functor of VectorSpaces", vecspaces, vecspaces );
+zero_object := CapFunctor( "Zero functor of VectorSpaces", vecspaces, vecspaces );
 
 AddObjectFunction( zero_object,
                    
@@ -943,7 +943,7 @@ AddNaturalTransformationFunction( id_to_zero,
 end );
 
 ##
-double_functor := HomalgFunctor( "Double of Vecspaces", vecspaces, vecspaces );
+double_functor := CapFunctor( "Double of Vecspaces", vecspaces, vecspaces );
 
 AddObjectFunction( double_functor,
                    

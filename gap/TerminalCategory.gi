@@ -158,7 +158,7 @@ InstallMethod( FunctorFromTerminalCategory,
   function( object )
     local functor;
     
-    functor := HomalgFunctor( Concatenation( "InjectionInto", Name( CapCategory( object ) ) ), CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, CapCategory( object ) );
+    functor := CapFunctor( Concatenation( "InjectionInto", Name( CapCategory( object ) ) ), CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, CapCategory( object ) );
     
     functor!.terminal_object_functor_object := object;
     

@@ -364,7 +364,7 @@ InstallMethodWithCache( DirectProductFunctor,
   function( category, number_of_arguments )
     local direct_product_functor;
     
-    direct_product_functor := HomalgFunctor( 
+    direct_product_functor := CapFunctor( 
       Concatenation( "direct_product_on_", Name( category ), "_for_", String( number_of_arguments ), "_arguments" ),
       CallFuncList( Product, List( [ 1 .. number_of_arguments ], c -> category ) ), 
       category 
@@ -400,7 +400,7 @@ InstallMethodWithCache( CoproductFunctor,
   function( category, number_of_arguments )
     local coproduct_functor;
     
-    coproduct_functor := HomalgFunctor( 
+    coproduct_functor := CapFunctor( 
       Concatenation( "coproduct_on_", Name( category ), "_for_", String( number_of_arguments ), "_arguments" ),
       CallFuncList( Product, List( [ 1 .. number_of_arguments ], c -> category ) ), 
       category 

@@ -51,7 +51,7 @@ DeclareCategory( "IsCapCategoryAsCatObject",
 
 #! @Description
 #!  The GAP category of functors.
-DeclareCategory( "IsHomalgFunctor",
+DeclareCategory( "IsCapFunctor",
                  IsCapCategoryMorphism );
 
 DeclareCategory( "IsHomalgNaturalTransformation",
@@ -106,19 +106,19 @@ DeclareAttribute( "AsCapCategory",
 #!  installed as a method. <A>A</A> and <A>B</A> are source and target.
 #!  Both can be given as object in Cat or as category itself.
 #! @Arguments name,A,B
-DeclareOperation( "HomalgFunctor",
+DeclareOperation( "CapFunctor",
                   [ IsString, IsCapCategory, IsCapCategory ] );
 
 #! @Arguments name,A,B
-DeclareOperation( "HomalgFunctor",
+DeclareOperation( "CapFunctor",
                   [ IsString, IsCapCategoryAsCatObject, IsCapCategory ] );
 
 #! @Arguments name,A,B
-DeclareOperation( "HomalgFunctor",
+DeclareOperation( "CapFunctor",
                   [ IsString, IsCapCategory, IsCapCategoryAsCatObject ] );
 
 #! @Arguments name,A,B
-DeclareOperation( "HomalgFunctor",
+DeclareOperation( "CapFunctor",
                   [ IsString, IsCapCategoryAsCatObject, IsCapCategoryAsCatObject ] );
 
 #! @EndGroup
@@ -139,11 +139,11 @@ DeclareOperation( "HomalgFunctor",
 #!  The function is stored in the attribute <C>ObjectFunction</C> of <A>functor</A>.
 #! @Arguments functor, function
 DeclareOperation( "AddObjectFunction",
-                  [ IsHomalgFunctor, IsFunction ] );
+                  [ IsCapFunctor, IsFunction ] );
 
 #!
 DeclareAttribute( "ObjectFunction",
-                  IsHomalgFunctor );
+                  IsCapFunctor );
 
 #! @EndGroup
 
@@ -156,11 +156,11 @@ DeclareAttribute( "ObjectFunction",
 #!  applied to the source of $\tau$, $B$ is the result of <A>functor</A> applied to the range.
 #!  The function is stored in the attribute <C>MorphismFunction</C> of <A>functor</A>.
 DeclareOperation( "AddMorphismFunction",
-                  [ IsHomalgFunctor, IsFunction ] );
+                  [ IsCapFunctor, IsFunction ] );
 
 #!
 DeclareAttribute( "MorphismFunction",
-                  IsHomalgFunctor );
+                  IsCapFunctor );
 
 #! @EndGroup
 
@@ -177,12 +177,12 @@ DeclareAttribute( "MorphismFunction",
 #! @Returns IsCapCategoryObject
 #! @Arguments func,A
 DeclareOperation( "ApplyFunctor",
-                  [ IsHomalgFunctor, IsCapCategoryObject ] );
+                  [ IsCapFunctor, IsCapCategoryObject ] );
 
 #! @Arguments func,tau
 #! @Returns IsCapCategoryMorphism
 DeclareOperation( "ApplyFunctor",
-                  [ IsHomalgFunctor, IsCapCategoryMorphism ] );
+                  [ IsCapFunctor, IsCapCategoryMorphism ] );
 
 #! @EndGroup
 
@@ -205,37 +205,37 @@ DeclareOperation( "ApplyFunctor",
 #!  $A_1, \dots, A_n$, where $A_i$ must be an object in $C_i$.
 #! @Arguments functor,object_method_name
 DeclareOperation( "InstallFunctorOnObjects",
-                  [ IsHomalgFunctor, IsString ] );
+                  [ IsCapFunctor, IsString ] );
 
 #! @Arguments functor,morphism_method_name
 DeclareOperation( "InstallFunctorOnMorphisms",
-                  [ IsHomalgFunctor, IsString ] );
+                  [ IsCapFunctor, IsString ] );
 
 #! @Arguments functor,object_method_name,morphism_method_name
 DeclareOperation( "InstallFunctor",
-                  [ IsHomalgFunctor, IsString, IsString ] );
+                  [ IsCapFunctor, IsString, IsString ] );
 
 #! @Arguments functor,method_name
 DeclareOperation( "InstallFunctor",
-                  [ IsHomalgFunctor, IsString ] );
+                  [ IsCapFunctor, IsString ] );
 
 #! @Arguments functor
 DeclareOperation( "InstallFunctorOnObjects",
-                  [ IsHomalgFunctor ] );
+                  [ IsCapFunctor ] );
 
 #! @Arguments functor
 DeclareOperation( "InstallFunctorOnMorphisms",
-                  [ IsHomalgFunctor ] );
+                  [ IsCapFunctor ] );
 
 #! @Arguments functor
 DeclareOperation( "InstallFunctor",
-                  [ IsHomalgFunctor ] );
+                  [ IsCapFunctor ] );
 
 DeclareAttribute( "ObjectFunctionName",
-                  IsHomalgFunctor );
+                  IsCapFunctor );
 
 DeclareAttribute( "MorphismFunctionName",
-                  IsHomalgFunctor );
+                  IsCapFunctor );
 
 #! @EndGroup
 
@@ -249,10 +249,10 @@ DeclareAttribute( "Name",
                   IsHomalgNaturalTransformation );
 
 DeclareOperation( "NaturalTransformation",
-                  [ IsHomalgFunctor, IsHomalgFunctor ] );
+                  [ IsCapFunctor, IsCapFunctor ] );
 
 DeclareOperation( "NaturalTransformation",
-                  [ IsString, IsHomalgFunctor, IsHomalgFunctor ] );
+                  [ IsString, IsCapFunctor, IsCapFunctor ] );
 
 DeclareAttribute( "NaturalTransformationCache",
                   IsHomalgNaturalTransformation );
@@ -287,11 +287,11 @@ DeclareOperation( "CatFunctorPreimageList",
 #! @Arguments functor
 #! @Returns IsCachingObject
 DeclareAttribute( "ObjectCache",
-                  IsHomalgFunctor );
+                  IsCapFunctor );
 
 #! @Description
 #!  Retuns the caching object which stores the results of the functor <A>functor</A> applied to morphisms.
 #! @Arguments functor
 #! @Returns IsCachingObject
 DeclareAttribute( "MorphismCache",
-                  IsHomalgFunctor );
+                  IsCapFunctor );
