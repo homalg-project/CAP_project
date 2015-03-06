@@ -1261,17 +1261,17 @@ InstallMethod( ZFunctorObjectFromMorphismList,
     
     object_func := function( i )
         
-        if i < start_position - 1 then
+        if i < start_position then
             
             return InitialObject( category );
             
-        elif i = start_position - 1 then
+        elif i = start_position then
             
-            return Source( morphism_list[ start_position ] );
+            return Source( morphism_list[ 1 ] );
             
         elif i <= start_position + list_length then
             
-            return Range( morphism_list[ i - start_position + 1 ] );
+            return Range( morphism_list[ i - start_position ] );
             
         else
             
@@ -1291,11 +1291,11 @@ InstallMethod( ZFunctorObjectFromMorphismList,
             
             return UniversalMorphismFromInitialObject( Source( morphism_list[ 1 ] ) );
             
-        elif i <= start_position + list_length then
+        elif i < start_position + list_length then
             
             return morphism_list[ i - start_position + 1 ];
             
-        elif i = start_position + list_length + 1 then
+        elif i = start_position + list_length then
             
             return UniversalMorphismIntoTerminalObject( Range( morphism_list[ list_length ] ) );
             
@@ -1358,7 +1358,7 @@ InstallMethod( ZFunctorMorphism,
     
     morphism_func := function( i )
         
-        if i > start_position and i <= start_position + list_length then
+        if i >= start_position and i < start_position + list_length then
             
             return morphism_list[ i - start_position + 1 ];
             
