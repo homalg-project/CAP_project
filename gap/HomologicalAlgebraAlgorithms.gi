@@ -111,7 +111,7 @@ end );
 InstallMethodWithCacheFromObject( GetSpectralSequenceObjectFromConsecutiveGeneralizedDifferentials,
                                   [ IsGeneralizedMorphism, IsGeneralizedMorphism ],
                                   
-  function( generalized_morphism_from_entry, generalized_morphism_into_entry )
+  function( generalized_morphism_into_entry, generalized_morphism_from_entry )
     local mono, epi, image_embedding;
     
     mono := Domain( generalized_morphism_from_entry );
