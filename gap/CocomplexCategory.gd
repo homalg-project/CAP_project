@@ -94,8 +94,14 @@ DeclareAttribute( "AsChainMap",
 DeclareOperation( "CochainMap",
                   [ IsCocomplex, IsZFunctorMorphism, IsCocomplex ] );
 
+DeclareOperation( "CochainMap",
+                  [ IsCocomplex, IsFunction, IsCocomplex ] );
+
 DeclareOperation( "ChainMap",
                   [ IsComplex, IsZFunctorMorphism, IsComplex ] );
+
+DeclareOperation( "ChainMap",
+                  [ IsComplex, IsFunction, IsComplex ] );
 
 KeyDependentOperation( "AsPointedCocomplex", IsCapCategoryObject, IsInt, ReturnTrue );
 
@@ -104,4 +110,14 @@ KeyDependentOperation( "AsPointedComplex", IsCapCategoryObject, IsInt, ReturnTru
 KeyDependentOperation( "AsPointedCochainMap", IsCapCategoryMorphism, IsInt, ReturnTrue );
 
 KeyDependentOperation( "AsPointedChainMap", IsCapCategoryMorphism, IsInt, ReturnTrue );
+
+#################################################
+##
+## Functors
+##
+#################################################
+
+DeclareOperationWithCache( "ChainToCochainFunctor",
+                           [ IsCapCategory ] );
+
 

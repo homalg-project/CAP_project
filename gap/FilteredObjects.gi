@@ -766,9 +766,17 @@ InstallMethod( DescendingFilteredMorphism,
                [ IsDescendingFilteredObject, IsFunction, IsDescendingFilteredObject ],
                
   function( source, morphism_func, range )
-    local z_functor_morphism;
+    local twisted_morphism_func, z_functor_morphism;
     
-    z_functor_morphism := ZFunctorMorphism( UnderlyingZFunctorCell( source ), morphism_func, UnderlyingZFunctorCell( range ) );
+    ## this is due to the convention in ZFunctors: i -> j iff i <= j,
+    ## thus the function can be given with correct indices by the user
+    twisted_morphism_func := function( i )
+      
+      return morphism_func(-i);
+      
+    end;
+    
+    z_functor_morphism := ZFunctorMorphism( UnderlyingZFunctorCell( source ), twisted_morphism_func, UnderlyingZFunctorCell( range ) );
     
     return FILTERED_MORPHISM( source, z_functor_morphism, range, TheTypeOfDescendingFilteredMorphisms, CategoryOfDescendingFilteredObjects );
     

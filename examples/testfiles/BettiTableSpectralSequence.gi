@@ -175,7 +175,7 @@ morph_func := function( i )
     
   elif i < -3 then
     
-    UniversalMorphismFromInitialObject( zero_object );
+    return UniversalMorphismFromInitialObject( zero_object );
     
   elif i = -1 then
     
@@ -214,6 +214,6 @@ F := FunctorLessGeneratorsLeft( R );
 # s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 5, 0, 0 );
 # Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
 
-s := SpectralSequenceDifferentialOfAscendingFilteredComplex( complex, 3, 3, -2 );
-
-Display( UnderlyingMatrix( ApplyFunctor( F, s ) ) );
+# s := SpectralSequenceDifferentialOfAscendingFilteredComplex( complex, 3, 3, -2 );
+# 
+# Display( UnderlyingMatrix( ApplyFunctor( F, s ) ) );

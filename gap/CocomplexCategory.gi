@@ -985,10 +985,44 @@ InstallMethod( CochainMap,
 end );
 
 ##
+InstallMethod( CochainMap,
+               [ IsCocomplex, IsFunction, IsCocomplex ],
+               
+  function( source, func, range )
+    local z_functor_morphism;
+    
+    z_functor_morphism := ZFunctorMorphism( UnderlyingZFunctorCell( source ), func, UnderlyingZFunctorCell( range ) );
+    
+    return CHAIN_OR_COCHAIN_MAP( source, z_functor_morphism, range, TheTypeOfCochainMaps, CocomplexCategory );
+    
+end );
+
+##
 InstallMethod( ChainMap,
                [ IsComplex, IsZFunctorMorphism, IsComplex ],
                
   function( source, z_functor_morphism, range )
+    
+    return CHAIN_OR_COCHAIN_MAP( source, z_functor_morphism, range, TheTypeOfChainMaps, ComplexCategory );
+    
+end );
+
+##
+InstallMethod( ChainMap,
+               [ IsComplex, IsFunction, IsComplex ],
+               
+  function( source, func, range )
+    local twisted_morphism_func, z_functor_morphism;
+    
+    ## this is due to the convention in ZFunctors: i -> j iff i <= j,
+    ## thus the function can be given with correct indices by the user
+    twisted_morphism_func := function( i )
+      
+      return func(-i);
+      
+    end;
+    
+    z_functor_morphism := ZFunctorMorphism( UnderlyingZFunctorCell( source ), twisted_morphism_func, UnderlyingZFunctorCell( range ) );
     
     return CHAIN_OR_COCHAIN_MAP( source, z_functor_morphism, range, TheTypeOfChainMaps, ComplexCategory );
     
@@ -1034,6 +1068,66 @@ InstallMethod( AsPointedChainMapOp,
       
 end );
 
+#################################################
+##
+## Functors
+##
+#################################################
 
+InstallMethodWithCache( ChainToCochainFunctor,
+                        [ IsCapCategory ],
+                                  
+  function( complex_category )
+    local category, cocomplex_category, functor;
+    
+    category := UnderlyingHonestCategory( complex_category );
+    
+    cocomplex_category := CocomplexCategory( category );
+    
+    functor := CapFunctor( Concatenation( "Complex to cocomplex functor of ", Name( complex_category ) ), 
+                           complex_category,
+                           cocomplex_category );
+    
+    AddObjectFunction( functor,
+      
+      function( complex )
+        local object_func, differential_func, z_functor_object;
+        
+        object_func := function( i )
+          
+          return complex[-i];
+          
+        end;
+        
+        differential_func := function( i )
+          
+          return Differential( complex, -i );
+          
+        end;
+        
+        z_functor_object := ZFunctorObject( object_func, differential_func, category );
+        
+        return AsCocomplex( z_functor_object );
+        
+    end );
+    
+    AddMorphismFunction( functor,
+      
+      function( new_source, morphism, new_range )
+        local func;
+        
+        func := function( i )
+          
+          return morphism[-i];
+          
+        end;
+        
+        return ChainMap( new_source, func, new_range );
+        
+    end );
+    
+    return functor;
+    
+end );
 
 
