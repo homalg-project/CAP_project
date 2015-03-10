@@ -782,3 +782,127 @@ InstallMethod( DescendingFilteredMorphism,
     
 end );
 
+#################################################
+##
+## Functors
+##
+#################################################
+
+##
+InstallMethodWithCache( DescendingToAscendingFilteredObjectFunctor,
+                        [ IsCapCategory ],
+                                  
+  function( category )
+    local descending_filtered_object_category, ascending_filtered_object_category, functor;
+    
+    descending_filtered_object_category := CategoryOfDescendingFilteredObjects( category );
+    
+    ascending_filtered_object_category := CategoryOfAscendingFilteredObjects( category );
+    
+    functor := CapFunctor( Concatenation( "Descending to ascending filtered objects functor of ", Name( category ) ), 
+                           descending_filtered_object_category,
+                           ascending_filtered_object_category );
+    
+    AddObjectFunction( functor,
+      
+      function( descending_filtered_object )
+        local object_func, differential_func, z_functor_object;
+        
+        object_func := function( i )
+          
+          return descending_filtered_object[-i];
+          
+        end;
+        
+        differential_func := function( i )
+          
+          return Differential( descending_filtered_object, -i );
+          
+        end;
+        
+        z_functor_object := ZFunctorObject( object_func, differential_func, category );
+        
+        return AsAscendingFilteredObject( z_functor_object );
+        
+    end );
+    
+    AddMorphismFunction( functor,
+      
+      function( new_source, morphism, new_range )
+        local func;
+        
+        func := function( i )
+          
+          return morphism[-i];
+          
+        end;
+        
+        return AscendingFilteredMorphism( new_source, func, new_range );
+        
+    end );
+    
+    return functor;
+    
+end );
+
+##
+InstallMethodWithCache( AscendingToDescendingFilteredObjectFunctor,
+                        [ IsCapCategory ],
+                                  
+  function( category )
+    local ascending_filtered_object_category, descending_filtered_object_category, functor;
+    
+    ascending_filtered_object_category := CategoryOfAscendingFilteredObjects( category );
+    
+    descending_filtered_object_category := CategoryOfDescendingFilteredObjects( category );
+    
+    functor := CapFunctor( Concatenation( "Ascending to descending filtered object functor of ", Name( category ) ), 
+                           ascending_filtered_object_category,
+                           descending_filtered_object_category );
+    
+    AddObjectFunction( functor,
+      
+      function( ascending_filtered_object )
+        local object_func, differential_func, z_functor_object;
+        
+        object_func := function( i )
+          
+          return ascending_filtered_object[i];
+          
+        end;
+        
+        differential_func := function( i )
+          
+          return Differential( ascending_filtered_object, i );
+          
+        end;
+        
+        z_functor_object := ZFunctorObject( object_func, differential_func, category );
+        
+        #note that the interpretation of this z_functor_object as a complex will automatically
+        #change the signs
+        return AsDescendingFilteredObject( z_functor_object );
+        
+    end );
+    
+    AddMorphismFunction( functor,
+      
+      function( new_source, morphism, new_range )
+        local func;
+        
+        func := function( i )
+          
+          return morphism[-i];
+          
+        end;
+        
+        #here the signs have to be changed manually for this constructor
+        #expects a function whose indices are compatible with new_source and new_range
+        return DescendingFilteredMorphism( new_source, func, new_range );
+        
+    end );
+    
+    return functor;
+    
+end );
+

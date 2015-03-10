@@ -106,3 +106,15 @@ DeclareOperation( "DescendingFilteredMorphism",
 DeclareOperation( "DescendingFilteredMorphism",
                   [ IsDescendingFilteredObject, IsFunction, IsDescendingFilteredObject ] );
 
+#################################################
+##
+## Functors
+##
+#################################################
+
+DeclareOperationWithCache( "DescendingToAscendingFilteredObjectFunctor",
+                           [ IsCapCategory ] );
+
+DeclareOperationWithCache( "AscendingToDescendingFilteredObjectFunctor",
+                           [ IsCapCategory ] );
+

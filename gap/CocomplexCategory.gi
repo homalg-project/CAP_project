@@ -1142,7 +1142,7 @@ InstallMethodWithCache( CocomplexToComplexFunctor,
     
     complex_category := ComplexCategory( category );
     
-    functor := CapFunctor( Concatenation( "Cocomplex to complex functor of ", Name( cocomplex_category ) ), 
+    functor := CapFunctor( Concatenation( "Cocomplex to complex functor of ", Name( category ) ), 
                            cocomplex_category,
                            complex_category );
     
