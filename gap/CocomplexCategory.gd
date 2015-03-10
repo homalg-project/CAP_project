@@ -122,3 +122,11 @@ DeclareOperationWithCache( "ComplexToCocomplexFunctor",
 
 DeclareOperationWithCache( "CocomplexToComplexFunctor",
                            [ IsCapCategory ] );
+
+KeyDependentOperation( "HomologyFunctor",
+                       IsCapCategory, IsInt, ReturnTrue );
+
+KeyDependentOperation( "CohomologyFunctor",
+                       IsCapCategory, IsInt, ReturnTrue );
+
+
