@@ -7,6 +7,8 @@ AutoDoc( "CategoriesForHomalg" : scaffold := true, autodoc :=
                             [ "LoadPackage( \"CategoriesForHomalg\" );",
                               "LoadPackage( \"IO_ForHomalg\" );",
                               "LoadPackage( \"GaussForHomalg\" );",
+			      "LoadPackage( \"ModulePresentationsForHomalg\" );",
+			      "LoadPackage( \"RingsForHomalg\" );",
                               "HOMALG_IO.show_banners := false;",
                               "HOMALG_IO.suppress_PID := true;",
                               "HOMALG_IO.use_common_stream := true;",
