@@ -1074,17 +1074,18 @@ end );
 ##
 #################################################
 
-InstallMethodWithCache( ChainToCochainFunctor,
+##
+InstallMethodWithCache( ComplexToCocomplexFunctor,
                         [ IsCapCategory ],
                                   
-  function( complex_category )
-    local category, cocomplex_category, functor;
+  function( category )
+    local complex_category, cocomplex_category, functor;
     
-    category := UnderlyingHonestCategory( complex_category );
+    complex_category := ComplexCategory( category );
     
     cocomplex_category := CocomplexCategory( category );
     
-    functor := CapFunctor( Concatenation( "Complex to cocomplex functor of ", Name( complex_category ) ), 
+    functor := CapFunctor( Concatenation( "Complex to cocomplex functor of ", Name( category ) ), 
                            complex_category,
                            cocomplex_category );
     
@@ -1130,4 +1131,63 @@ InstallMethodWithCache( ChainToCochainFunctor,
     
 end );
 
-
+##
+InstallMethodWithCache( CocomplexToComplexFunctor,
+                        [ IsCapCategory ],
+                                  
+  function( category )
+    local cocomplex_category, complex_category, functor;
+    
+    cocomplex_category := CocomplexCategory( category );
+    
+    complex_category := ComplexCategory( category );
+    
+    functor := CapFunctor( Concatenation( "Cocomplex to complex functor of ", Name( cocomplex_category ) ), 
+                           cocomplex_category,
+                           complex_category );
+    
+    AddObjectFunction( functor,
+      
+      function( cocomplex )
+        local object_func, differential_func, z_functor_object;
+        
+        object_func := function( i )
+          
+          return cocomplex[i];
+          
+        end;
+        
+        differential_func := function( i )
+          
+          return Differential( cocomplex, i );
+          
+        end;
+        
+        z_functor_object := ZFunctorObject( object_func, differential_func, category );
+        
+        #note that the interpretation of this z_functor_object as a complex will automatically
+        #change the signs
+        return AsComplex( z_functor_object );
+        
+    end );
+    
+    AddMorphismFunction( functor,
+      
+      function( new_source, morphism, new_range )
+        local func;
+        
+        func := function( i )
+          
+          return morphism[-i];
+          
+        end;
+        
+        #here the signs have to be changed manually for this constructor
+        #expects a function whose indices are compatible with new_source and new_range
+        return ChainMap( new_source, func, new_range );
+        
+    end );
+    
+    return functor;
+    
+end );

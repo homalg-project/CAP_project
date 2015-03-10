@@ -117,7 +117,8 @@ KeyDependentOperation( "AsPointedChainMap", IsCapCategoryMorphism, IsInt, Return
 ##
 #################################################
 
-DeclareOperationWithCache( "ChainToCochainFunctor",
+DeclareOperationWithCache( "ComplexToCocomplexFunctor",
                            [ IsCapCategory ] );
 
-
+DeclareOperationWithCache( "CocomplexToComplexFunctor",
+                           [ IsCapCategory ] );
