@@ -73,6 +73,19 @@ complex := AsComplex( complex );
 
 F := FunctorLessGeneratorsLeft( R );
 
+AscToDescFunctor := AscendingToDescendingFilteredObjectFunctor( category );
+
+cocomplex := ZFunctorObjectFromMorphismList( [ ApplyFunctor( AscToDescFunctor, delta2 ), ApplyFunctor( AscToDescFunctor, delta1 ) ], -2 );
+
+SetIsAdditiveCategory( CategoryOfDescendingFilteredObjects( category ), true );
+
+cocomplex := AsCocomplex( cocomplex );
+
+#Display( UnderlyingMatrix( Differential( cocomplex, -1 )[-2] ) );
+## Tests for cohomological case
+# s := SpectralSequenceDifferentialOfAscendingFilteredComplex( cocomplex, 3, 3, -2 );
+
+## Tests for homological case:
 # s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 0, 0, 0 );
 # Display( UnderlyingMatrix( ApplyFunctor( F, UnderlyingHonestObject( Source( s ) ) ) ) );
 # 

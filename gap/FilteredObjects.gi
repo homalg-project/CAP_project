@@ -816,7 +816,7 @@ InstallMethodWithCache( DescendingToAscendingFilteredObjectFunctor,
         
         differential_func := function( i )
           
-          return Differential( descending_filtered_object, -i );
+          return Embedding( descending_filtered_object, -i );
           
         end;
         
@@ -873,7 +873,7 @@ InstallMethodWithCache( AscendingToDescendingFilteredObjectFunctor,
         
         differential_func := function( i )
           
-          return Differential( ascending_filtered_object, i );
+          return Embedding( ascending_filtered_object, i );
           
         end;
         
