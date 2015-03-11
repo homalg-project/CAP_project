@@ -1237,7 +1237,7 @@ InstallMethod( HomologyFunctorOp,
             
             alpha_p := Differential( range_complex, index );
             
-            mu := Differential( chain_map, index );
+            mu := chain_map[ index ];
             
             mor_between_kernel := KernelObjectFunctorial( alpha, mu, alpha_p );
             
@@ -1261,3 +1261,71 @@ InstallMethod( HomologyFunctorOp,
       
 end );
 
+##
+InstallMethod( CohomologyFunctorOp,
+               [ IsCapCategory, IsInt ],
+               
+  function( category, index )
+      local cocomplex_category, functor;
+      
+      cocomplex_category := CocomplexCategory( category );
+      
+      functor := CapFunctor( Concatenation( String( index ), "-th cohomology functor of ", Name( category ) ), 
+                             cocomplex_category,
+                             category );
+      
+      AddObjectFunction( functor,
+        
+        function( cocomplex )
+          local pre_differential, post_differential, image_embedding, kernel_lift;
+          
+          pre_differential := Differential( cocomplex, index - 1 );
+          
+          post_differential := Differential( cocomplex, index );
+          
+          image_embedding := ImageEmbedding( pre_differential );
+          
+          kernel_lift := KernelLift( post_differential, image_embedding );
+          
+          return Cokernel( kernel_lift );
+          
+      end );
+      
+      AddMorphismFunction( functor,
+          
+          function( new_source, chain_map, new_range )
+            local source_cocomplex, range_cocomplex, alpha, alpha_p, mu,
+                  mor_between_kernel, image_embedding_source, image_embedding_range,
+                  kernel_lift_source, kernel_lift_range, cokernel_proj_range;
+            
+            source_cocomplex := Source( chain_map );
+            
+            range_cocomplex := Range( chain_map );
+            
+            alpha := Differential( source_cocomplex, index );
+            
+            alpha_p := Differential( range_cocomplex, index );
+            
+            mu := chain_map[ index ];
+            
+            mor_between_kernel := KernelObjectFunctorial( alpha, mu, alpha_p );
+            
+            image_embedding_source := ImageEmbedding( Differential( source_cocomplex, index - 1 ) );
+            
+            image_embedding_range := ImageEmbedding( Differential( range_cocomplex, index - 1 ) );
+            
+            kernel_lift_source := KernelLift( alpha, image_embedding_source );
+            
+            kernel_lift_range := KernelLift( alpha_p, image_embedding_range );
+            
+            cokernel_proj_range := CokernelProj( kernel_lift_range );
+            
+            return CokernelColift( kernel_lift_source,
+                                   PreCompose( mor_between_kernel, cokernel_proj_range )
+                                 );
+            
+      end );
+      
+      return functor;
+      
+end );
