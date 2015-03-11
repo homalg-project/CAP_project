@@ -82,13 +82,22 @@ DeclareOperation( "Differential",
 DeclareAttribute( "AsCocomplex",
                   IsZFunctorObject );
 
+DeclareOperation( "CocomplexFromMorphismList",
+                  [ IsList, IsInt ] );
+
+DeclareOperation( "CocomplexFromMorphismList",
+                  [ IsList ] );
+
 DeclareAttribute( "AsComplex",
                   IsZFunctorObject );
 
-DeclareAttribute( "AsCochainMap",
-                  IsZFunctorMorphism );
+DeclareOperation( "ComplexFromMorphismList",
+                  [ IsList, IsInt ] );
 
-DeclareAttribute( "AsChainMap",
+DeclareOperation( "ComplexFromMorphismList",
+                  [ IsList ] );
+
+DeclareAttribute( "AsCochainMap",
                   IsZFunctorMorphism );
 
 DeclareOperation( "CochainMap",
@@ -97,11 +106,26 @@ DeclareOperation( "CochainMap",
 DeclareOperation( "CochainMap",
                   [ IsCocomplex, IsFunction, IsCocomplex ] );
 
+DeclareOperation( "CochainMap",
+                  [ IsCocomplex, IsList, IsInt, IsCocomplex ]  );
+
+DeclareOperation( "CochainMap",
+                  [ IsCocomplex, IsList, IsCocomplex ]  );
+
+DeclareAttribute( "AsChainMap",
+                  IsZFunctorMorphism );
+
 DeclareOperation( "ChainMap",
                   [ IsComplex, IsZFunctorMorphism, IsComplex ] );
 
 DeclareOperation( "ChainMap",
                   [ IsComplex, IsFunction, IsComplex ] );
+
+DeclareOperation( "ChainMap",
+                  [ IsComplex, IsList, IsInt, IsComplex ] );
+
+DeclareOperation( "ChainMap",
+                  [ IsComplex, IsList, IsComplex ] );
 
 KeyDependentOperation( "AsPointedCocomplex", IsCapCategoryObject, IsInt, ReturnTrue );
 

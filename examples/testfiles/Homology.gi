@@ -20,17 +20,11 @@ v1 := PresentationMorphism( C2, HomalgMatrix( [ [ 2, 0 ], [ 1, 2 ] ], ZZ ), C2 )
 #! <A morphism in the category Category of left presentations of Z>
 v2 := PresentationMorphism( C1, HomalgMatrix( [ [ 4 ] ], ZZ ), C1 );
 #! <A morphism in the category Category of left presentations of Z>
-cocomplex_h1 := ZFunctorObjectFromMorphismList( [ h1 ], 0 );
-#! <An object in the category Functors from integers into Category of left presentations of Z>
-cocomplex_h2 := ZFunctorObjectFromMorphismList( [ h2 ], 0 );
-#! <An object in the category Functors from integers into Category of left presentations of Z>
-cocomplex_mor := ZFunctorMorphism( cocomplex_h2, [ v1, v2 ], 0, cocomplex_h1 );
-#! <A morphism in the category Functors from integers into Category of left presentations of Z>
-cocomplex_h1 := AsCocomplex( cocomplex_h1 );
+cocomplex_h1 := CocomplexFromMorphismList( [ h1 ] );
 #! <An object in the category Cocomplex category of Category of left presentations of Z>
-cocomplex_h2 := AsCocomplex( cocomplex_h2 );
+cocomplex_h2 := CocomplexFromMorphismList( [ h2 ] );
 #! <An object in the category Cocomplex category of Category of left presentations of Z>
-cocomplex_mor := CochainMap( cocomplex_h2, cocomplex_mor, cocomplex_h1 );
+cocomplex_mor := CochainMap( cocomplex_h2, [ v1, v2 ], cocomplex_h1 );
 #! <A morphism in the category Cocomplex category of Category of left presentations of Z>
 Zmod := CapCategory( C1 );
 #! Category of left presentations of Z

@@ -901,12 +901,54 @@ InstallMethod( AsCocomplex,
 end );
 
 ##
+InstallMethod( CocomplexFromMorphismList,
+               [ IsList, IsInt ],
+               
+  function( morphism_list, start_position )
+    
+    return AsCocomplex( ZFunctorObjectFromMorphismList( morphism_list, start_position ) );
+    
+end );
+
+##
+InstallMethod( CocomplexFromMorphismList,
+               [ IsList ],
+               
+  function( morphism_list )
+    
+    return CocomplexFromMorphismList( morphism_list, 0 );
+    
+end );
+
+##
 InstallMethod( AsComplex,
                [ IsZFunctorObject ],
                
   function( z_functor_object )
     
     return AS_COMPLEX_OR_COCOMPLEX( z_functor_object, TheTypeOfComplexes, ComplexCategory );
+    
+end );
+
+##
+InstallMethod( ComplexFromMorphismList,
+               [ IsList, IsInt ],
+               
+  function( morphism_list, start_position )
+    
+    return AsComplex( ZFunctorObjectFromMorphismList( morphism_list, -start_position ) );
+    
+end );
+
+
+## given a morphism list [ P_0 <-- P_1, ..., P_n-2 <-- P_n-1 ],
+## this method returns the complex P_0 <-- P_1 <-- ... <-- P_n-1
+InstallMethod( ComplexFromMorphismList,
+               [ IsList ],
+               
+  function( morphism_list )
+    
+    return ComplexFromMorphismList( morphism_list, Length( morphism_list ) );
     
 end );
 
@@ -998,6 +1040,34 @@ InstallMethod( CochainMap,
 end );
 
 ##
+InstallMethod( CochainMap,
+               [ IsCocomplex, IsList, IsInt, IsCocomplex ],
+               
+  function( source, morphism_list, start_position, range )
+    local z_functor_morphism;
+    
+    z_functor_morphism := ZFunctorMorphism( 
+                            UnderlyingZFunctorCell( source ),
+                            morphism_list,
+                            start_position,
+                            UnderlyingZFunctorCell( range )
+                          );
+    
+    return CochainMap( source, z_functor_morphism, range );
+    
+end );
+
+##
+InstallMethod( CochainMap,
+               [ IsCocomplex, IsList, IsCocomplex ],
+               
+  function( source, morphism_list, range )
+    
+    return CochainMap( source, morphism_list, 0, range );
+    
+end );
+
+##
 InstallMethod( ChainMap,
                [ IsComplex, IsZFunctorMorphism, IsComplex ],
                
@@ -1025,6 +1095,34 @@ InstallMethod( ChainMap,
     z_functor_morphism := ZFunctorMorphism( UnderlyingZFunctorCell( source ), twisted_morphism_func, UnderlyingZFunctorCell( range ) );
     
     return CHAIN_OR_COCHAIN_MAP( source, z_functor_morphism, range, TheTypeOfChainMaps, ComplexCategory );
+    
+end );
+
+##
+InstallMethod( ChainMap,
+               [ IsComplex, IsList, IsInt, IsComplex ],
+               
+  function( source, morphism_list, start_position, range )
+    local z_functor_morphism;
+    
+    z_functor_morphism := ZFunctorMorphism( 
+                            UnderlyingZFunctorCell( source ),
+                            morphism_list,
+                            -start_position,
+                            UnderlyingZFunctorCell( range )
+                          );
+    
+    return ChainMap( source, z_functor_morphism, range );
+    
+end );
+
+##
+InstallMethod( ChainMap,
+               [ IsComplex, IsList, IsComplex ],
+               
+  function( source, morphism_list, range )
+    
+    return ChainMap( source, morphism_list, Length( morphism_list ) - 1, range );
     
 end );
 
