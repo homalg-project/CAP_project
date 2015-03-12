@@ -883,7 +883,7 @@ end );
 
 ##
 InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
-                                       [ IsMonomorphism and CanComputeIdentityMorphism ],
+                                       [ IsCapCategoryMorphism and IsMonomorphism and CanComputeIdentityMorphism ],
                                        
   function( monomorphism )
     
@@ -893,7 +893,7 @@ end );
 
 ##
 InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
-                                       [ IsEpimorphism and CanComputeIdentityMorphism ],
+                                       [ IsCapCategoryMorphism and IsEpimorphism and CanComputeIdentityMorphism ],
                                        
   function( epimorphism )
     
