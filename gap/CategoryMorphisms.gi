@@ -812,7 +812,7 @@ end );
 ## Note: this actually is an in-build relation which is not done by the deductive system.
 InstallMethod( PreCompose,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism and IsOne ],
-               
+               9999,
   function( morphism, id )
     
     if not IsEqualForObjects( Range( morphism ), Source( id ) ) then
@@ -829,7 +829,7 @@ end );
 ## Note: this actually is an in-build relation which is not done by the deductive system.
 InstallMethod( PreCompose,
                [ IsCapCategoryMorphism and IsOne, IsCapCategoryMorphism ],
-               
+               9999,
   function( id, morphism )
     
     if not IsEqualForObjects( Source( morphism ), Range( id ) ) then
