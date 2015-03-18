@@ -35,4 +35,4 @@ cokernel_proj_1 := CokernelProj( alpha1 );
 
 identity_B := IdentityMorphism( B );
 
-c := SnakeLemmaConnectingHomomorphism( cokernel_proj_1, identity_B, alpha2 );
+c := SnakeLemmaConnectingHomomorphismWithKernelAndCokernel( cokernel_proj_1, identity_B, alpha2 );
