@@ -11,21 +11,21 @@ ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.g
 
 ## create example input
 
-A1 := QVectorSpace( 1 );
+A1_eval := QVectorSpace( 1 );
 
-A2 := QVectorSpace( 2 );
+A2_eval := QVectorSpace( 2 );
 
-B := QVectorSpace( 3 );
+B_eval := QVectorSpace( 3 );
 
-alpha1 := VectorSpaceMorphism( A1, [ 1, 0, 0 ], B );
+alpha1_eval := VectorSpaceMorphism( A1_eval, [ 1, 0, 0 ], B_eval );
 
-alpha2 := VectorSpaceMorphism( A2, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], B );
+alpha2_eval := VectorSpaceMorphism( A2_eval, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], B_eval );
 
-alpha1 := InDeductiveSystem( alpha1 );
+alpha1 := InDeductiveSystem( alpha1_eval );
 
-alpha2 := InDeductiveSystem( alpha2 );
+alpha2 := InDeductiveSystem( alpha2_eval );
 
-B := InDeductiveSystem( B );
+B := InDeductiveSystem( B_eval );
 
 SetIsAbelianCategory( CapCategory( alpha1 ), true );
 
