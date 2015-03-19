@@ -675,6 +675,16 @@ InstallGlobalFunction( InjectionOfCofactor,
   function( object_product_list, injection_number )
     local number_of_objects;
     
+    if WasCreatedAsCoproduct( object_product_list ) and WasCreatedAsPushout( object_product_list ) then
+        
+      ## this might only happen when
+      ## the function which was added to construct the coproduct/pushout does not return
+      ## a new object but some part of its input
+      
+      return Error( "this object is a coproduct and a pushout concurrently, thus the injection is ambiguous" );
+        
+    fi;
+    
     ## convenience: first argument was created as a coproduct
     if WasCreatedAsCoproduct( object_product_list ) then
     
@@ -1107,6 +1117,16 @@ InstallGlobalFunction( ProjectionInFactor,
                
   function( object_product_list, projection_number )
     local number_of_objects;
+    
+    if WasCreatedAsDirectProduct( object_product_list ) and WasCreatedAsPullback( object_product_list ) then
+        
+        ## this might only happen when
+        ## the function which was added to construct the product/ pullback does not return
+        ## a new object but some part of its input
+        
+        return Error( "this object is a product and a pullback concurrently, thus the projection is ambiguous" );
+        
+    fi;
     
     ## convenience: first argument was created as direct product
     if WasCreatedAsDirectProduct( object_product_list ) then
