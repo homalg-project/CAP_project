@@ -231,6 +231,7 @@ end );
 ## Attributes
 ####################################
 
+## convenience
 ##
 InstallMethod( KernelEmb,
                [ IsCapCategoryObject and WasCreatedAsKernel ],
@@ -1028,7 +1029,7 @@ InstallMethodWithToDoForIsWellDefined( CoproductOp,
                                         
   function( object_product_list, method_selection_object )
     
-    return Range( InjectionOfCofactor( object_product_list, 1 ) );
+    return Range( InjectionOfCofactorOfCoproduct( object_product_list, 1 ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
@@ -1091,11 +1092,11 @@ InstallMethodWithCacheFromObject( CoproductFunctorialOp,
                                     and CanComputeUniversalMorphismFromCoproduct ],
                                   
   function( morphism_list, caching_object )
-    local new_range, sink, diagram;
+    local coproduct_diagram, sink, diagram;
         
-        new_range := Coproduct( List( morphism_list, mor -> Range( mor ) ) );
+        coproduct_diagram := List( morphism_list, mor -> Range( mor ) );
         
-        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( morphism_list[i], InjectionOfCofactor( new_range, i ) ) );
+        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( morphism_list[i], InjectionOfCofactorOfCoproduct( coproduct_diagram, i ) ) );
         
         diagram := List( morphism_list, mor -> Source( mor ) );
         
@@ -1484,7 +1485,7 @@ InstallMethodWithToDoForIsWellDefined( DirectProductOp,
                                         
   function( object_product_list, method_selection_object )
     
-    return Source( ProjectionInFactor( object_product_list, 1 ) );
+    return Source( ProjectionInFactorOfDirectProduct( object_product_list, 1 ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
@@ -1547,11 +1548,11 @@ InstallMethodWithCacheFromObject( DirectProductFunctorialOp,
                                     and CanComputeUniversalMorphismIntoDirectProduct ],
                                   
   function( morphism_list, caching_object )
-    local new_source, source, diagram;
+    local direct_product_diagram, source, diagram;
         
-        new_source := DirectProduct( List( morphism_list, mor -> Source( mor ) ) );
+        direct_product_diagram := List( morphism_list, mor -> Source( mor ) );
         
-        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_list[i] ) );
+        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), morphism_list[i] ) );
         
         diagram := List( morphism_list, mor -> Range( mor ) );
         
@@ -1744,7 +1745,8 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGiv
     
     nr_components := Length( source );
   
-    return Sum( List( [ 1 .. nr_components ], i -> PreCompose( source[ i ], InjectionOfCofactor( direct_product, i ) ) ) );
+    return Sum( List( [ 1 .. nr_components ], 
+     i -> PreCompose( source[ i ], InjectionOfCofactorOfCoproductWithGivenCoproduct( diagram, i, direct_product ) ) ) );
   
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3  );
 
@@ -1770,7 +1772,8 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCo
     
     nr_components := Length( sink );
   
-    return Sum( List( [ 1 .. nr_components ], i -> PreCompose( ProjectionInFactor( coproduct, i ), sink[ i ] ) ) );
+    return Sum( List( [ 1 .. nr_components ], 
+      i -> PreCompose( ProjectionInFactorOfDirectProductWithGivenDirectProduct( diagram, i, coproduct ), sink[ i ] ) ) );
   
 end  : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
@@ -2785,7 +2788,7 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
                                          -9999, #FIXME
                                          
   function( diagram, method_selection_morphism )
-    local base, direct_product, number_of_morphisms, list_of_morphisms, mor1, mor2, pullback, diff;
+    local base, direct_product_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2, pullback, diff;
     
     base := Range( diagram[1] );
     
@@ -2795,11 +2798,11 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
       
     fi;
     
-    direct_product := CallFuncList( DirectProduct, List( diagram, Source ) );
+    direct_product_diagram := List( diagram, Source );
     
     number_of_morphisms := Length( diagram );
     
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( ProjectionInFactor( direct_product, i ), diagram[ i ] ) );
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), diagram[ i ] ) );
     
     mor1 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
     
@@ -2808,6 +2811,12 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
     diff := mor1 - mor2;
     
     pullback := KernelObject( diff );
+    
+    if IsBound( pullback!.Genesis.PullbackAsKernelDiagram ) then
+        
+        Error( "pullback has two origins, which leads to inconsistencies." );
+        
+    fi;
     
     #unfortunately this is necessary here
     AddToGenesis(  pullback, "PullbackAsKernelDiagram", diff );
@@ -2857,7 +2866,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPull
                                          -9999,
                                          
   function( diagram, projection_number, pullback )
-    local embedding_in_direct_product, direct_product, projection;
+    local embedding_in_direct_product, direct_product, direct_product_diagram, projection;
   
     if not WasCreatedAsKernel( pullback ) or not IsBound( Genesis( pullback )!.PullbackAsKernelDiagram ) then
     
@@ -2875,7 +2884,9 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPull
     
     fi;
     
-    projection := ProjectionInFactor( direct_product, projection_number );
+    direct_product_diagram := direct_product!.Genesis.DirectFactors;
+    
+    projection := ProjectionInFactorOfDirectProductWithGivenDirectProduct( direct_product_diagram, projection_number, direct_product );
     
     return PreCompose( embedding_in_direct_product, projection );
     
@@ -2956,11 +2967,11 @@ InstallMethodWithCacheFromObject( PullbackFunctorialOp,
                                     and CanComputeUniversalMorphismIntoPullback ],
                                   
   function( morphism_of_morphisms, base_morphism )
-    local new_source, source, diagram;
+    local pullback_diagram, source, diagram;
         
-        new_source := FiberProduct( List( morphism_of_morphisms, mor -> mor[1] ) );
+        pullback_diagram := List( morphism_of_morphisms, mor -> mor[1] );
         
-        source := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_of_morphisms[i][2] ) );
+        source := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( ProjectionInFactorOfPullback( pullback_diagram, i ), morphism_of_morphisms[i][2] ) );
         
         diagram := List( morphism_of_morphisms, mor -> mor[3] );
         
@@ -3308,7 +3319,7 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
                                          -9999, #FIXME
                                          
   function( diagram, method_selection_morphism )
-    local cobase, coproduct, number_of_morphisms, list_of_morphisms, mor1, mor2, pushout, diff;
+    local cobase, coproduct_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2, pushout, diff;
     
     cobase := Source( diagram[1] );
         
@@ -3318,11 +3329,11 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
            
     fi;
     
-    coproduct := CallFuncList( Coproduct, List( diagram, Range ) );
+    coproduct_diagram := List( diagram, Range );
     
     number_of_morphisms := Length( diagram );
     
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( diagram[ i ], InjectionOfCofactor( coproduct, i ) ) );
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( diagram[ i ], InjectionOfCofactorOfCoproduct( coproduct_diagram, i ) ) );
     
     mor1 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
     
@@ -3331,6 +3342,12 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
     diff := mor1 - mor2;
     
     pushout := Cokernel( diff );
+    
+    if IsBound( pushout!.Genesis.PushoutAsCokernelDiagram ) then
+        
+        Error( "pushout has two origins, which leads to inconsistencies." );
+        
+    fi;
     
     #unfortunately this is necessary here
     AddToGenesis( pushout, "PushoutAsCokernelDiagram", diff );
@@ -3377,7 +3394,7 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPush
                                          -9999,
                                          
   function( diagram, injection_number, pushout )
-    local projection_from_coproduct, coproduct, injection;
+    local projection_from_coproduct, coproduct, coproduct_diagram, injection;
   
     if not WasCreatedAsCokernel( pushout ) or not IsBound( Genesis( pushout )!.PushoutAsCokernelDiagram ) then
     
@@ -3395,7 +3412,9 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPush
     
     fi;
     
-    injection := InjectionOfCofactor( coproduct, injection_number );
+    coproduct_diagram := coproduct!.Genesis.Cofactors;
+    
+    injection := InjectionOfCofactorOfCoproductWithGivenCoproduct( coproduct_diagram, injection_number, coproduct );
     
     return PreCompose( injection, projection_from_coproduct );
     
@@ -3475,11 +3494,11 @@ InstallMethodWithCacheFromObject( PushoutFunctorialOp,
                                     and CanComputeUniversalMorphismFromPushout ],
                                   
   function( morphism_of_morphisms, cobase_morphism )
-    local new_range, sink, diagram;
+    local pushout_diagram, sink, diagram;
         
-        new_range := Pushout( List( morphism_of_morphisms, mor -> mor[3] ) );
+        pushout_diagram := List( morphism_of_morphisms, mor -> mor[3] );
         
-        sink := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( morphism_of_morphisms[i][2], InjectionOfCofactor( new_range, i ) ) );
+        sink := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( morphism_of_morphisms[i][2], InjectionOfCofactorOfPushout( pushout_diagram, i ) ) );
         
         diagram := List( morphism_of_morphisms, mor -> mor[1] );
         

@@ -383,6 +383,7 @@ InstallMethodWithCache( DirectProductFunctor,
       function( new_source, morphism_list, new_range )
         local source;
         
+        ##TODO: get rid of ProjectionInFactor
         source := List( [ 1 .. number_of_arguments ], i -> PreCompose( ProjectionInFactor( new_source, i ), morphism_list[i] ) );
         
         return CallFuncList( UniversalMorphismIntoDirectProduct, source );
@@ -419,6 +420,7 @@ InstallMethodWithCache( CoproductFunctor,
       function( new_source, morphism_list, new_range )
         local sink;
         
+        ##TODO: get rid of InjectionOfCofactor
         sink := List( [ 1 .. number_of_arguments ], i -> PreCompose( morphism_list[i], InjectionOfCofactor( new_range, i ) ) );
         
         return CallFuncList( UniversalMorphismFromCoproduct, sink );

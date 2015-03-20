@@ -270,7 +270,7 @@ InstallMethodWithCacheFromObject( PreCompose,
                                          IsGeneralizedMorphism and HasHonestRange ],
                                        
   function( mor1, mor2 )
-    local category, pullback, new_source_aid, new_morphism_aid;
+    local category, pullback_diagram, new_source_aid, new_morphism_aid;
     
     category := CapCategory( mor1 );
     
@@ -280,11 +280,11 @@ InstallMethodWithCacheFromObject( PreCompose,
         
     fi;
     
-    pullback := FiberProduct( MorphismAid( mor1 ), SourceAid( mor2 ) );
+    pullback_diagram := [ MorphismAid( mor1 ), SourceAid( mor2 ) ];
     
-    new_source_aid := PreCompose( ProjectionInFactor( pullback, 1 ), SourceAid( mor1 ) );
+    new_source_aid := PreCompose( ProjectionInFactorOfPullback( pullback_diagram, 1 ), SourceAid( mor1 ) );
     
-    new_morphism_aid := PreCompose( ProjectionInFactor( pullback, 2 ), MorphismAid( mor2 ) );
+    new_morphism_aid := PreCompose( ProjectionInFactorOfPullback( pullback_diagram, 2 ), MorphismAid( mor2 ) );
     
     return GeneralizedMorphismWithSourceAid( new_source_aid, new_morphism_aid );
     
@@ -299,7 +299,7 @@ InstallMethodWithCacheFromObject( PreCompose,
                                   IsGeneralizedMorphism and HasHonestSource ],
                                   
   function( mor1, mor2 )
-    local category, pushout, new_morphism_aid, new_range_aid;
+    local category, diagram, injection_of_cofactor1, injection_of_cofactor2, new_morphism_aid, new_range_aid;
     
     category := CapCategory( mor1 );
     
@@ -309,11 +309,17 @@ InstallMethodWithCacheFromObject( PreCompose,
         
     fi;
     
-    pushout := Pushout( RangeAid( mor1 ), MorphismAid( mor2 ) );
+    diagram := [ RangeAid( mor1 ), MorphismAid( mor2 ) ];
     
-    new_morphism_aid := PreCompose( MorphismAid( mor1 ), InjectionOfCofactor( pushout, 1 ) );
+    injection_of_cofactor1 :=
+      InjectionOfCofactorOfPushout( diagram, 1 );
     
-    new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactor( pushout, 2 ) );
+    injection_of_cofactor2 :=
+      InjectionOfCofactorOfPushout( diagram, 2 );
+    
+    new_morphism_aid := PreCompose( MorphismAid( mor1 ), injection_of_cofactor1 );
+    
+    new_range_aid := PreCompose( RangeAid( mor2 ), injection_of_cofactor2 );
     
     return GeneralizedMorphismWithRangeAid( new_morphism_aid, new_range_aid );
     
@@ -357,7 +363,7 @@ InstallMethodWithCacheFromObject( PreCompose,
                                     IsGeneralizedMorphism ],
                                     
   function( mor1, mor2 )
-    local generalized_mor_factor_sub, pullback, pushout, new_associated, new_source_aid, new_range_aid;
+    local generalized_mor_factor_sub, pullback_diagram, pushout_diagram, new_associated, new_source_aid, new_range_aid;
     
     if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
         
@@ -367,15 +373,15 @@ InstallMethodWithCacheFromObject( PreCompose,
     
     generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobject( RangeAid( mor1 ), SourceAid( mor2 ) );
     
-    pullback := FiberProduct( MorphismAid( mor1 ), SourceAid( generalized_mor_factor_sub ) );
+    pullback_diagram := [ MorphismAid( mor1 ), SourceAid( generalized_mor_factor_sub ) ];
     
-    pushout := Pushout( RangeAid( generalized_mor_factor_sub ), MorphismAid( mor2 ) );
+    pushout_diagram := [ RangeAid( generalized_mor_factor_sub ), MorphismAid( mor2 ) ];
     
-    new_source_aid := PreCompose( ProjectionInFactor( pullback, 1 ), SourceAid( mor1 ) );
+    new_source_aid := PreCompose( ProjectionInFactorOfPullback( pullback_diagram, 1 ), SourceAid( mor1 ) );
     
-    new_associated := PreCompose( ProjectionInFactor( pullback, 2 ), InjectionOfCofactor( pushout, 1 ) );
+    new_associated := PreCompose( ProjectionInFactorOfPullback( pullback_diagram, 2 ), InjectionOfCofactorOfPushout( pushout_diagram, 1 ) );
     
-    new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactor( pushout, 2 ) );
+    new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactorOfPushout( pushout_diagram, 2 ) );
     
     return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
     
@@ -514,7 +520,7 @@ InstallMethodWithCacheFromObject( \+,
                                    IsGeneralizedMorphism ],
                                  
   function( mor1, mor2 )
-    local return_value, pullback_of_sourceaids, pushout_of_rangeaids, restricted_mor1, restricted_mor2;
+    local return_value, pullback_of_sourceaids_diagram, pushout_of_rangeaids_diagram, restricted_mor1, restricted_mor2;
     
     if not IsEqualForObjects( Source( mor1 ), Source( mor2 ) ) or not IsEqualForObjects( Range( mor1 ), Range( mor2 ) ) then
         
@@ -522,22 +528,22 @@ InstallMethodWithCacheFromObject( \+,
         
     fi;
     
-    pullback_of_sourceaids := FiberProduct( SourceAid( mor1 ), SourceAid( mor2 ) );
+    pullback_of_sourceaids_diagram := [ SourceAid( mor1 ), SourceAid( mor2 ) ];
     
-    pushout_of_rangeaids := Pushout( RangeAid( mor1 ), RangeAid( mor2 ) );
+    pushout_of_rangeaids_diagram := [ RangeAid( mor1 ), RangeAid( mor2 ) ];
     
-    restricted_mor1 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 1 ), MorphismAid( mor1 ) );
+    restricted_mor1 := PreCompose( ProjectionInFactorOfPullback( pullback_of_sourceaids_diagram, 1 ), MorphismAid( mor1 ) );
     
-    restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactor( pushout_of_rangeaids, 1 ) );
+    restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) );
     
-    restricted_mor2 := PreCompose( ProjectionInFactor( pullback_of_sourceaids, 2 ), MorphismAid( mor2 ) );
+    restricted_mor2 := PreCompose( ProjectionInFactorOfPullback( pullback_of_sourceaids_diagram, 2 ), MorphismAid( mor2 ) );
     
-    restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactor( pushout_of_rangeaids, 2 ) );
+    restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 2 ) );
     
     return_value := GeneralizedMorphism( 
-                      PreCompose( ProjectionInFactor( pullback_of_sourceaids, 1 ), SourceAid( mor1 ) ),
+                      PreCompose( ProjectionInFactorOfPullback( pullback_of_sourceaids_diagram, 1 ), SourceAid( mor1 ) ),
                       restricted_mor1 + restricted_mor2,
-                      PreCompose( RangeAid( mor1 ), InjectionOfCofactor( pushout_of_rangeaids, 1 ) )
+                      PreCompose( RangeAid( mor1 ), InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) )
                     );
     
     return return_value;
@@ -571,7 +577,7 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
                  and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory ],
                  
   function( generalized_morphism )
-    local source_aid, morphism_aid, range_aid, pushout, composition, codomain, pullback, domain, associated_morphism;
+    local source_aid, morphism_aid, range_aid, pushout_diagram, composition, codomain, pullback_diagram, domain, associated_morphism;
     
     source_aid := SourceAid( generalized_morphism );
     
@@ -590,17 +596,17 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     #non-trivial SourceAid and non-trivial RangeAid
     
-    pushout := Pushout( SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ) );
+    pushout_diagram := [ SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ) ];
     
-    composition := PreCompose( RangeAid( generalized_morphism ), InjectionOfCofactor( pushout, 2 ) );
+    composition := PreCompose( RangeAid( generalized_morphism ), InjectionOfCofactorOfPushout( pushout_diagram, 2 ) );
     
     codomain := CoastrictionToImage( composition );
     
-    pullback := FiberProduct( InjectionOfCofactor( pushout, 1 ), ImageEmbedding( composition ) );
+    pullback_diagram := [ InjectionOfCofactorOfPushout( pushout_diagram, 1 ), ImageEmbedding( composition ) ];
     
-    domain := ProjectionInFactor( pullback, 1 );
+    domain := ProjectionInFactorOfPullback( pullback_diagram, 1 );
     
-    associated_morphism := ProjectionInFactor( pullback, 2 );
+    associated_morphism := ProjectionInFactorOfPullback( pullback_diagram, 2 );
     
     return [ domain, associated_morphism, codomain ];
     
@@ -616,7 +622,7 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
                  and HasHonestRange ],
                  
   function( generalized_morphism )
-    local source_aid, morphism_aid, range_aid, domain, pushout, associated_morphism, codomain;
+    local source_aid, morphism_aid, range_aid, domain, pushout_diagram, associated_morphism, codomain;
     
     source_aid := SourceAid( generalized_morphism );
     
@@ -634,11 +640,11 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     domain := ImageEmbedding( source_aid );
     
-    pushout := Pushout( CoastrictionToImage( source_aid ), morphism_aid );
+    pushout_diagram := [ CoastrictionToImage( source_aid ), morphism_aid ];
     
-    associated_morphism := InjectionOfCofactor( pushout, 1 );
+    associated_morphism := InjectionOfCofactorOfPushout( pushout_diagram, 1 );
     
-    codomain := InjectionOfCofactor( pushout, 2 );
+    codomain := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
     
     return [ domain, associated_morphism, codomain ];
     
@@ -654,7 +660,7 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
                  and HasHonestSource ],
                  
   function( generalized_morphism )
-    local source_aid, morphism_aid, range_aid, codomain, pullback, domain, associated_morphism;
+    local source_aid, morphism_aid, range_aid, codomain, pullback_diagram, domain, associated_morphism;
     
     source_aid := SourceAid( generalized_morphism );
     
@@ -672,11 +678,11 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     codomain := CoastrictionToImage( range_aid );
     
-    pullback := FiberProduct( morphism_aid, ImageEmbedding( range_aid ) );
+    pullback_diagram := [ morphism_aid, ImageEmbedding( range_aid ) ];
     
-    domain := ProjectionInFactor( pullback, 1 );
+    domain := ProjectionInFactorOfPullback( pullback_diagram, 1 );
     
-    associated_morphism := ProjectionInFactor( pullback, 2 );
+    associated_morphism := ProjectionInFactorOfPullback( pullback_diagram, 2 );
     
     return [ domain, associated_morphism, codomain ];
     

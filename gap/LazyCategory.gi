@@ -426,7 +426,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( object_product_list, injection_number )
         local func, coproduct;
         
-        func := function( ) return InjectionOfCofactor( EvalAndRewrapProductList( object_product_list ), injection_number ); end;
+        func := function( ) return InjectionOfCofactorOfCoproduct( EvalAndRewrapProductList( object_product_list ), injection_number ); end;
         
         coproduct := CallFuncList( Coproduct, Components( object_product_list ) );
         
@@ -630,7 +630,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
       function( diagram, injection_number )
         local func, pushout;
         
-        func := function( ) return InjectionOfCofactor( EvalAndRewrapProductList( diagram ), injection_number ); end;
+        func := function( ) return InjectionOfCofactorOfPushout( EvalAndRewrapProductList( diagram ), injection_number ); end;
         
         pushout := CallFuncList( Pushout, Components( diagram ) );
         
