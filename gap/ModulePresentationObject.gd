@@ -28,11 +28,11 @@ DeclareCategory( "IsRightPresentation",
 ##
 #############################
 
-DeclareAttribute( "AsLeftPresentation",
-                  IsHomalgMatrix );
+DeclareOperation( "AsLeftPresentation",
+                  [ IsHomalgMatrix ] );
 
-DeclareAttribute( "AsRightPresentation",
-                  IsHomalgMatrix );
+DeclareOperation( "AsRightPresentation",
+                  [ IsHomalgMatrix ] );
 
 DeclareGlobalFunction( "AsLeftOrRightPresentation" );
 
