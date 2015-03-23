@@ -159,11 +159,11 @@ InstallMethod( IsMonomorphism,
   function( morphism )
     local pullback_diagram, pullback_projection_1, pullback_projection_2, identity, diagonal_morphism;
       
-      pullback_diagram := Product( morphism, morphism );
+      pullback_diagram := [ morphism, morphism ];
       
-      pullback_projection_1 := ProjectionInFactor( pullback_diagram, 1 );
+      pullback_projection_1 := ProjectionInFactorOfPullback( pullback_diagram, 1 );
       
-      pullback_projection_2 := ProjectionInFactor( pullback_diagram, 2 );
+      pullback_projection_2 := ProjectionInFactorOfPullback( pullback_diagram, 2 );
       
       identity := IdentityMorphism( Source( morphism ) );
       
@@ -227,11 +227,11 @@ InstallMethod( IsEpimorphism,
   function( morphism )
     local pushout_diagram, pushout_injection_1, pushout_injection_2, identity, codiagonal_morphism;
       
-      pushout_diagram := Product( morphism, morphism );
+      pushout_diagram := [ morphism, morphism ];
       
-      pushout_injection_1 := InjectionOfCofactor( pushout_diagram, 1 );
+      pushout_injection_1 := InjectionOfCofactorOfPushout( pushout_diagram, 1 );
       
-      pushout_injection_2 := InjectionOfCofactor( pushout_diagram, 2 );
+      pushout_injection_2 := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
       
       identity := IdentityMorphism( Range( morphism ) );
       
