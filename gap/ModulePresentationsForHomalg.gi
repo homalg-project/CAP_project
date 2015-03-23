@@ -127,7 +127,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_IDENTITY_LEFT( category );
     
-#     ADD_EQUAL_FOR_OBJECTS( category );
+    ADD_EQUAL_FOR_OBJECTS( category );
     
     ADD_IS_WELL_DEFINED_FOR_OBJECTS( category );
     
@@ -162,7 +162,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_IDENTITY_RIGHT( category );
     
-#     ADD_EQUAL_FOR_OBJECTS( category );
+    ADD_EQUAL_FOR_OBJECTS( category );
     
     ADD_IS_WELL_DEFINED_FOR_OBJECTS( category );
     
