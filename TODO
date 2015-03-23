@@ -17,5 +17,9 @@ Fehlt:
   - Propagation:
     + Honest und Mono/Epi => Splitmono/Splitepi
 
+Cleanup:
+* Pullback/ Pushout derivation without PullbackAsKernelDiagram/PushoutAsCokernelDiagram
+* higher methods and convenient methods must not use *WithGiven*
+
 Neue Kategorien
 * Spektralsequenzen

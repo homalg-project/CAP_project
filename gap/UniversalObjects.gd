@@ -6,6 +6,7 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Universal Objects
+#! NOTE: This text has to updated, since caching is not inevitable due to IsEqualForObjects and IsEqualForMorphisms.
 #! Let $I$ and $A$ be categories. A functor $D: I \rightarrow A$ is sometimes also called
 #! a diagram with index category $I$.
 #! A limit of a diagram $D$ is an object $X$ together with a collection of morphisms
