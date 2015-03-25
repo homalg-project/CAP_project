@@ -26,7 +26,7 @@ DeclareCategory( "IsCapCocomplexCell",
 DeclareCategory( "IsCapCocomplex",
                  IsCapComplexOrCocomplex and IsCapCocomplexCell );
 
-DeclareCategory( "IsCochainMap",
+DeclareCategory( "IsCapCochainMap",
                  IsCapCategoryMorphism and IsCapCocomplexCell );
 
 
@@ -36,7 +36,7 @@ DeclareCategory( "IsCapComplexCell",
 DeclareCategory( "IsCapComplex",
                  IsCapCategoryObject and IsCapComplexCell );
 
-DeclareCategory( "IsChainMap",
+DeclareCategory( "IsCapChainMap",
                  IsCapCategoryMorphism and IsCapComplexCell );
 
 

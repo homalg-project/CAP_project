@@ -12,8 +12,8 @@ DeclareRepresentation( "IsCapCocomplexRep",
                        IsCapCategoryObjectRep and IsCapCocomplex,
                        [ ] );
 
-DeclareRepresentation( "IsCochainMapRep",
-                       IsCapCategoryMorphismRep and IsCochainMap,
+DeclareRepresentation( "IsCapCochainMapRep",
+                       IsCapCategoryMorphismRep and IsCapCochainMap,
                        [ ] );
 
 BindGlobal( "TheTypeOfCocomplexes",
@@ -22,14 +22,14 @@ BindGlobal( "TheTypeOfCocomplexes",
 
 BindGlobal( "TheTypeOfCochainMaps",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCochainMapRep ) );
+                IsCapCochainMapRep ) );
 
 DeclareRepresentation( "IsCapComplexRep",
                        IsCapCategoryObjectRep and IsCapComplex,
                        [ ] );
 
-DeclareRepresentation( "IsChainMapRep",
-                       IsCapCategoryMorphismRep and IsChainMap,
+DeclareRepresentation( "IsCapChainMapRep",
+                       IsCapCategoryMorphismRep and IsCapChainMap,
                        [ ] );
 
 BindGlobal( "TheTypeOfComplexes",
@@ -38,7 +38,7 @@ BindGlobal( "TheTypeOfComplexes",
 
 BindGlobal( "TheTypeOfChainMaps",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsChainMapRep ) );
+                IsCapChainMapRep ) );
 
 
 #############################
