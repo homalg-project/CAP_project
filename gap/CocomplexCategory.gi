@@ -8,8 +8,8 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsCocomplexRep",
-                       IsCapCategoryObjectRep and IsCocomplex,
+DeclareRepresentation( "IsCapCocomplexRep",
+                       IsCapCategoryObjectRep and IsCapCocomplex,
                        [ ] );
 
 DeclareRepresentation( "IsCochainMapRep",
@@ -18,14 +18,14 @@ DeclareRepresentation( "IsCochainMapRep",
 
 BindGlobal( "TheTypeOfCocomplexes",
         NewType( TheFamilyOfCapCategoryObjects,
-                IsCocomplexRep ) );
+                IsCapCocomplexRep ) );
 
 BindGlobal( "TheTypeOfCochainMaps",
         NewType( TheFamilyOfCapCategoryMorphisms,
                 IsCochainMapRep ) );
 
-DeclareRepresentation( "IsComplexRep",
-                       IsCapCategoryObjectRep and IsComplex,
+DeclareRepresentation( "IsCapComplexRep",
+                       IsCapCategoryObjectRep and IsCapComplex,
                        [ ] );
 
 DeclareRepresentation( "IsChainMapRep",
@@ -34,7 +34,7 @@ DeclareRepresentation( "IsChainMapRep",
 
 BindGlobal( "TheTypeOfComplexes",
         NewType( TheFamilyOfCapCategoryObjects,
-                IsComplexRep ) );
+                IsCapComplexRep ) );
 
 BindGlobal( "TheTypeOfChainMaps",
         NewType( TheFamilyOfCapCategoryMorphisms,
@@ -828,7 +828,7 @@ INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX_NOW( );
 
 ##
 InstallMethod( \[\],
-               [ IsCocomplexCell, IsInt ],
+               [ IsCapCocomplexCell, IsInt ],
                
   function( cocomplex_cell, index )
       
@@ -838,7 +838,7 @@ end );
 
 ##
 InstallMethod( \[\],
-               [ IsComplexCell, IsInt ],
+               [ IsCapComplexCell, IsInt ],
                
   function( complex_cell, index )
       
@@ -848,7 +848,7 @@ end );
 
 ##
 InstallMethod( Differential,
-               [ IsCocomplex, IsInt ],
+               [ IsCapCocomplex, IsInt ],
                
   function( complex, index )
       
@@ -858,7 +858,7 @@ end );
 
 ##
 InstallMethod( Differential,
-               [ IsComplex, IsInt ],
+               [ IsCapComplex, IsInt ],
                
   function( complex, index )
       
@@ -1018,7 +1018,7 @@ end );
 
 ##
 InstallMethod( CochainMap,
-               [ IsCocomplex, IsZFunctorMorphism, IsCocomplex ],
+               [ IsCapCocomplex, IsZFunctorMorphism, IsCapCocomplex ],
                
   function( source, z_functor_morphism, range )
     
@@ -1028,7 +1028,7 @@ end );
 
 ##
 InstallMethod( CochainMap,
-               [ IsCocomplex, IsFunction, IsCocomplex ],
+               [ IsCapCocomplex, IsFunction, IsCapCocomplex ],
                
   function( source, func, range )
     local z_functor_morphism;
@@ -1041,7 +1041,7 @@ end );
 
 ##
 InstallMethod( CochainMap,
-               [ IsCocomplex, IsList, IsInt, IsCocomplex ],
+               [ IsCapCocomplex, IsList, IsInt, IsCapCocomplex ],
                
   function( source, morphism_list, start_position, range )
     local z_functor_morphism;
@@ -1059,7 +1059,7 @@ end );
 
 ##
 InstallMethod( CochainMap,
-               [ IsCocomplex, IsList, IsCocomplex ],
+               [ IsCapCocomplex, IsList, IsCapCocomplex ],
                
   function( source, morphism_list, range )
     
@@ -1069,7 +1069,7 @@ end );
 
 ##
 InstallMethod( ChainMap,
-               [ IsComplex, IsZFunctorMorphism, IsComplex ],
+               [ IsCapComplex, IsZFunctorMorphism, IsCapComplex ],
                
   function( source, z_functor_morphism, range )
     
@@ -1079,7 +1079,7 @@ end );
 
 ##
 InstallMethod( ChainMap,
-               [ IsComplex, IsFunction, IsComplex ],
+               [ IsCapComplex, IsFunction, IsCapComplex ],
                
   function( source, func, range )
     local twisted_morphism_func, z_functor_morphism;
@@ -1100,7 +1100,7 @@ end );
 
 ##
 InstallMethod( ChainMap,
-               [ IsComplex, IsList, IsInt, IsComplex ],
+               [ IsCapComplex, IsList, IsInt, IsCapComplex ],
                
   function( source, morphism_list, start_position, range )
     local z_functor_morphism;
@@ -1118,7 +1118,7 @@ end );
 
 ##
 InstallMethod( ChainMap,
-               [ IsComplex, IsList, IsComplex ],
+               [ IsCapComplex, IsList, IsCapComplex ],
                
   function( source, morphism_list, range )
     
