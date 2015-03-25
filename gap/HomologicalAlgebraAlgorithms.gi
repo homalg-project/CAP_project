@@ -149,7 +149,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalCocomplex,
-                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapCocomplex, IsInt, IsInt, IsInt ],
                                   
   function( bicomplex, page, p, q )
     local vertical_differential, idempotent_source, idempotent_range, differential, i, generalized_morphism_given_by_cospans, auxiliary_cospan;
@@ -193,7 +193,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( SpectralSequenceEntry,
-                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapCocomplex, IsInt, IsInt, IsInt ],
                                   
   function( cocomplex, page, p, q )
     local generalized_morphism_into_entry, generalized_morphism_from_entry,
@@ -211,7 +211,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( SpectralSequenceDifferential,
-                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapCocomplex, IsInt, IsInt, IsInt ],
                                   
   function( cocomplex, page, p, q )
     local generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range,
@@ -241,7 +241,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalComplex,
-                                  [ IsComplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapComplex, IsInt, IsInt, IsInt ],
                                   
   function( bicomplex, page, p, q )
     local vertical_differential, idempotent_source, idempotent_range, differential, i, generalized_morphism_given_by_cospans, auxiliary_cospan;
@@ -285,7 +285,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( SpectralSequenceEntry,
-                                  [ IsComplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapComplex, IsInt, IsInt, IsInt ],
                                   
   function( complex, page, p, q )
     local generalized_morphism_into_entry, generalized_morphism_from_entry,
@@ -303,7 +303,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( SpectralSequenceDifferential,
-                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapCocomplex, IsInt, IsInt, IsInt ],
                                   
   function( complex, page, p, q )
     local generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range,
@@ -333,7 +333,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedDifferentialOfAscendingFilteredComplex,
-                                  [ IsComplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapComplex, IsInt, IsInt, IsInt ],
                                   
   function( complex, r, p, q )
     local n, embedding, generalized_embedding, j, projection, generalized_projection, differential;
@@ -364,7 +364,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( SpectralSequenceEntryOfAscendingFilteredComplex,
-                                  [ IsComplex, IsInt, IsInt, IsInt ], 
+                                  [ IsCapComplex, IsInt, IsInt, IsInt ], 
                                   
 function( complex, r, p, q )
     local generalized_morphism_into_entry, generalized_morphism_from_entry,
@@ -382,7 +382,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( SpectralSequenceDifferentialOfAscendingFilteredComplex,
-                                  [ IsComplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapComplex, IsInt, IsInt, IsInt ],
                                   
   function( complex, r, p, q )
     local generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range,
@@ -412,7 +412,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedDifferentialOfDescendingFilteredCocomplex,
-                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapCocomplex, IsInt, IsInt, IsInt ],
                                   
   function( cocomplex, r, p, q )
     local n, embedding, generalized_embedding, j, projection, generalized_projection, differential;
@@ -443,7 +443,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( SpectralSequenceEntryOfDescendingFilteredCocomplex,
-                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapCocomplex, IsInt, IsInt, IsInt ],
                                   
   function( cocomplex, page, p, q )
     local generalized_morphism_into_entry, generalized_morphism_from_entry,
@@ -461,7 +461,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( SpectralSequenceDifferentialOfDescendingFilteredCocomplex,
-                                  [ IsCocomplex, IsInt, IsInt, IsInt ],
+                                  [ IsCapCocomplex, IsInt, IsInt, IsInt ],
                                   
   function( cocomplex, page, p, q )
     local generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range,

@@ -46,13 +46,13 @@ DeclareOperationWithCache( "GetSpectralSequenceDifferentialFromConsecutiveGenera
 ############################################################
 
 DeclareOperationWithCache( "GeneralizedDifferentialOfTotalCocomplex",
-                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapCocomplex, IsInt, IsInt, IsInt ] );
 
 DeclareOperationWithCache( "SpectralSequenceEntry",
-                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapCocomplex, IsInt, IsInt, IsInt ] );
 
 DeclareOperationWithCache( "SpectralSequenceDifferential",
-                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapCocomplex, IsInt, IsInt, IsInt ] );
 
 ############################################################
 ##
@@ -61,13 +61,13 @@ DeclareOperationWithCache( "SpectralSequenceDifferential",
 ############################################################
 
 DeclareOperationWithCache( "GeneralizedDifferentialOfTotalComplex",
-                           [ IsComplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapComplex, IsInt, IsInt, IsInt ] );
 
 DeclareOperationWithCache( "SpectralSequenceEntry",
-                           [ IsComplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapComplex, IsInt, IsInt, IsInt ] );
 
 DeclareOperationWithCache( "SpectralSequenceDifferential",
-                           [ IsComplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapComplex, IsInt, IsInt, IsInt ] );
 
 ##################################################################################
 ##
@@ -78,13 +78,13 @@ DeclareOperationWithCache( "SpectralSequenceDifferential",
 ## convention: a descending filtered cocomplex is a cocomplex of descending filtered objects
 
 DeclareOperationWithCache( "GeneralizedDifferentialOfDescendingFilteredCocomplex",
-                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapCocomplex, IsInt, IsInt, IsInt ] );
 
 DeclareOperationWithCache( "SpectralSequenceEntryOfDescendingFilteredCocomplex",
-                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapCocomplex, IsInt, IsInt, IsInt ] );
 
 DeclareOperationWithCache( "SpectralSequenceDifferentialOfDescendingFilteredCocomplex",
-                           [ IsCocomplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapCocomplex, IsInt, IsInt, IsInt ] );
 
 #############################################################################
 ##
@@ -95,10 +95,10 @@ DeclareOperationWithCache( "SpectralSequenceDifferentialOfDescendingFilteredCoco
 ## convention: an ascending filtered complex is a complex of ascending filtered objects
 
 DeclareOperationWithCache( "GeneralizedDifferentialOfAscendingFilteredComplex",
-                           [ IsComplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapComplex, IsInt, IsInt, IsInt ] );
 
 DeclareOperationWithCache( "SpectralSequenceEntryOfAscendingFilteredComplex",
-                           [ IsComplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapComplex, IsInt, IsInt, IsInt ] );
 
 DeclareOperationWithCache( "SpectralSequenceDifferentialOfAscendingFilteredComplex",
-                           [ IsComplex, IsInt, IsInt, IsInt ] );
+                           [ IsCapComplex, IsInt, IsInt, IsInt ] );
