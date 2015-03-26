@@ -13,3 +13,12 @@ Bug reports and other feedback are welcome. The latest version of this
 package can be found at
 
     https://github.com/sebasguts/CAP
+
+To get the files in the repository, first clone it from github via
+
+    git clone https://github.com/sebasguts/CAP.git
+
+After that, please initialize the logic submodule, by going inside
+the directory and run
+    
+    git submodule init && git submodule update
