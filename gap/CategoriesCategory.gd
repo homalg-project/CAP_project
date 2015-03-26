@@ -9,7 +9,7 @@
 #! @Chapter Category of categories
 #!  Categories itself with functors as morphisms form a category.
 #!  So the data structure of <C>CapCategory</C>s is designed to be objects in a
-#!  category. This category is implemented in <C>CAP_INTERNAL_Cat</C>.
+#!  category. This category is implemented in <C>CapCat</C>.
 #!  For every category, the corresponding object in Cat can be obtained via <C>AsCatObject</C>.
 #!  The implemetation of the category of categories offers a data structure for functors.
 #!  Those are implemented as morphisms in this category, so functors can be handled like
@@ -28,7 +28,7 @@
 #!  This variable stores the category of categories. Every category object is
 #!  constructed as an object in this category, so Cat is constructed when loading
 #!  the package. 
-DeclareGlobalVariable( "CAP_INTERNAL_Cat" );
+DeclareGlobalVariable( "CapCat" );
 
 ####################################
 ##

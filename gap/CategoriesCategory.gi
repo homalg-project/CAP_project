@@ -37,13 +37,13 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
                
   function(  )
     
-    InstallValue( CAP_INTERNAL_Cat, rec( caching_info := rec( ) ) );
+    InstallValue( CapCat, rec( caching_info := rec( ) ) );
     
-    CREATE_CAP_CATEGORY_OBJECT( CAP_INTERNAL_Cat, [ [ "Name", "Cat" ] ] );
+    CREATE_CAP_CATEGORY_OBJECT( CapCat, [ [ "Name", "Cat" ] ] );
     
-    CREATE_CAP_CATEGORY_FILTERS( CAP_INTERNAL_Cat );
+    CREATE_CAP_CATEGORY_FILTERS( CapCat );
     
-    return CAP_INTERNAL_Cat;
+    return CapCat;
     
 end );
 
@@ -61,7 +61,7 @@ InstallMethod( AsCatObject,
     ObjectifyWithAttributes( cat_obj, TheTypeOfHomalgCategoriesAsCatObjects,
                              AsCapCategory, category );
     
-    Add( CAP_INTERNAL_Cat, cat_obj );
+    Add( CapCat, cat_obj );
     
     SetIsWellDefined( cat_obj, true );
     
@@ -83,7 +83,7 @@ InstallMethod( CapFunctor,
                              Source, AsCatObject( source ),
                              Range, AsCatObject( range ) );
     
-    Add( CAP_INTERNAL_Cat, functor );
+    Add( CapCat, functor );
     
     return functor;
     
@@ -249,7 +249,7 @@ InstallMethod( ApplyFunctor,
 end );
 
 ##
-AddPreCompose( CAP_INTERNAL_Cat,
+AddPreCompose( CapCat,
                
   function( left_functor, right_functor )
     local obj_func, mor_func, new_functor;
@@ -280,7 +280,7 @@ AddPreCompose( CAP_INTERNAL_Cat,
 end );
 
 ##
-AddIdentityMorphism( CAP_INTERNAL_Cat,
+AddIdentityMorphism( CapCat,
                      
   function( category )
     local new_functor;
@@ -301,7 +301,7 @@ AddIdentityMorphism( CAP_INTERNAL_Cat,
 end );
 
 ##
-AddTerminalObject( CAP_INTERNAL_Cat,
+AddTerminalObject( CapCat,
                    
   function( )
     
@@ -310,7 +310,7 @@ AddTerminalObject( CAP_INTERNAL_Cat,
 end );
 
 ##
-AddUniversalMorphismIntoTerminalObject( CAP_INTERNAL_Cat,
+AddUniversalMorphismIntoTerminalObject( CapCat,
                                
   function( category )
     local new_functor;
@@ -330,7 +330,7 @@ AddUniversalMorphismIntoTerminalObject( CAP_INTERNAL_Cat,
 end );
 
 ##
-AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CAP_INTERNAL_Cat,
+AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CapCat,
                                
   function( category, cat_obj )
     local new_functor;
@@ -350,7 +350,7 @@ AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CAP_INTERNAL_Cat,
 end );
 
 ##
-AddDirectProduct( CAP_INTERNAL_Cat,
+AddDirectProduct( CapCat,
                   
   function( product_of_categories )
     
@@ -359,7 +359,7 @@ AddDirectProduct( CAP_INTERNAL_Cat,
 end );
 
 ##
-AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CAP_INTERNAL_Cat,
+AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CapCat,
                             
   function( object_product_list, direct_product, projection_number )
     local projection_functor;
@@ -391,7 +391,7 @@ AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CAP_INTERNAL_Cat,
 end );
 
 ##
-AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CAP_INTERNAL_Cat,
+AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CapCat,
                                        
   function( diagram, sink, direct_product )
     local name_string, universal_functor;
@@ -682,7 +682,7 @@ end );
 ##
 ###################################
 
-AddIsWellDefinedForObjects( CAP_INTERNAL_Cat,
+AddIsWellDefinedForObjects( CapCat,
 
   IsCapCategoryAsCatObjectRep
 
