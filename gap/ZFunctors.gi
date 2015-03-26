@@ -23,6 +23,15 @@ BindGlobal( "TheTypeOfZFunctorMorphism",
         NewType( TheFamilyOfCapCategoryMorphisms,
                 IsZFunctorMorphismRep ) );
 
+
+#############################
+##
+## Technical stuff
+##
+#############################
+
+
+
 #############################
 ##
 ## Attributes
@@ -1140,18 +1149,7 @@ InstallMethod( ZFunctorObjectExtendedByInitialAndIdentity,
         
     end;
     
-    object := rec( objects_positive := WeakPointerObj( [ ] ),
-                   objects_nonpositive := WeakPointerObj( [ ] ),
-                   differentials_positive := WeakPointerObj( [ ] ),
-                   differentials_nonpositive := WeakPointerObj( [ ] ),
-                   object_func := new_object_func,
-                   differential_func := new_differential_func );
-    
-    ObjectifyWithAttributes( object, TheTypeOfZFunctorObject );
-    
-    Add( ZFunctorCategory( category ), object );
-    
-    return object;
+    return ZFunctorObject( new_object_func, new_differential_func, category );
     
 end );
 
