@@ -29,6 +29,57 @@ InstallTrueMethod( IsPreAbelianCategory, IsAbelianCategory );
 ##
 ######################################
 
+InstallGlobalFunction( ListCanComputesOfCategory,
+  
+  function( object )
+    local can_compute, cannot_compute, i;
+    
+    if not IsCapCategory( object ) and not IsCapCategoryCell( object ) then
+        
+        Print( "This is not a CAP category or a CAP category cell\n" );
+        
+        return;
+        
+    fi;
+    
+    can_compute := [ ];
+    
+    cannot_compute := [ ];
+    
+    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
+        
+        if PositionSublist( i, "CanCompute" ) = fail then
+            
+            continue;
+            
+        fi;
+        
+        if Tester( ValueGlobal( i ) )( object ) then
+            
+            Add( can_compute, i );
+            
+        else
+            
+            Add( cannot_compute, i );
+            
+        fi;
+        
+    od;
+    
+    Print( "Can do the following basic methods at the moment:\n" );
+    
+    for i in can_compute do
+        Print( "* ", i{[ 11 .. Length( i )]}, "\n" );
+    od;
+    
+    Print( "\nThe following is still missing:\n" );
+    
+    for i in cannot_compute do
+        Print( "* ", i{[ 11 .. Length( i )]}, "\n" );
+    od;
+    
+end );
+
 ##
 InstallValue( CAP_INTERNAL,
               rec(
