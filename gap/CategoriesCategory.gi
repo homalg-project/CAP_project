@@ -39,9 +39,9 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
     
     InstallValue( CAP_INTERNAL_Cat, rec( caching_info := rec( ) ) );
     
-    CREATE_HOMALG_CATEGORY_OBJECT( CAP_INTERNAL_Cat, [ [ "Name", "Cat" ] ] );
+    CREATE_CAP_CATEGORY_OBJECT( CAP_INTERNAL_Cat, [ [ "Name", "Cat" ] ] );
     
-    CREATE_HOMALG_CATEGORY_FILTERS( CAP_INTERNAL_Cat );
+    CREATE_CAP_CATEGORY_FILTERS( CAP_INTERNAL_Cat );
     
     return CAP_INTERNAL_Cat;
     

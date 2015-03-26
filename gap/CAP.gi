@@ -150,7 +150,7 @@ InstallGlobalFunction( INSTALL_CAN_COMPUTE_TO_DO_LISTS,
 end );
 
 ##
-InstallGlobalFunction( CREATE_HOMALG_CATEGORY_FILTERS,
+InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
                        
   function( category )
     local name, cell_filter, filter_name, filter;
@@ -190,7 +190,7 @@ InstallGlobalFunction( CREATE_HOMALG_CATEGORY_FILTERS,
 end );
 
 ##
-InstallGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT",
+InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
                        
   function( obj_rec, attr_list )
     local i, flatted_attribute_list;
@@ -568,9 +568,9 @@ InstallMethodWithCache( CreateCapCategory,
     
     category := rec( caching_info := rec( ) );
     
-    category := CREATE_HOMALG_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
+    category := CREATE_CAP_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
     
-    CREATE_HOMALG_CATEGORY_FILTERS( category );
+    CREATE_CAP_CATEGORY_FILTERS( category );
     
     INSTALL_CAN_COMPUTE_TO_DO_LISTS( category );
     
