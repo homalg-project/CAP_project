@@ -30,21 +30,21 @@ InstallTrueMethod( IsPreAbelianCategory, IsAbelianCategory );
 ######################################
 
 ##
-InstallValue( CATEGORIES_FOR_HOMALG,
+InstallValue( CAP_INTERNAL,
               rec(
                    name_counter := 0
               )
 );
 
 ##
-InstallGlobalFunction( CATEGORIES_FOR_HOMALG_NAME_COUNTER,
+InstallGlobalFunction( CAP_INTERNAL_NAME_COUNTER,
                        
   function( )
     local counter;
     
-    counter := CATEGORIES_FOR_HOMALG.name_counter + 1;
+    counter := CAP_INTERNAL.name_counter + 1;
     
-    CATEGORIES_FOR_HOMALG.name_counter := counter;
+    CAP_INTERNAL.name_counter := counter;
     
     return counter;
     
@@ -141,7 +141,7 @@ InstallGlobalFunction( INSTALL_CAN_COMPUTE_TO_DO_LISTS,
         
     end;
     
-    for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
+    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
         
         AddToToDoList( entry_func( category, i ) );
         
@@ -554,7 +554,7 @@ InstallMethod( CreateCapCategory,
   function( )
     local name;
     
-    name := Concatenation( "AutomaticCapCategory", String( CATEGORIES_FOR_HOMALG_NAME_COUNTER( ) ) );
+    name := Concatenation( "AutomaticCapCategory", String( CAP_INTERNAL_NAME_COUNTER( ) ) );
     
     return CreateCapCategory( name );
     
@@ -586,7 +586,7 @@ end );
 ##
 #######################################
 
-InstallGlobalFunction( CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION,
+InstallGlobalFunction( CAP_INTERNAL_INSTALL_PRINT_FUNCTION,
                
   function( )
     local print_graph, category_function, i;
@@ -610,7 +610,7 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION,
     
     print_graph := CreatePrintingGraph( IsCapCategory, category_function );
     
-    for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
+    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
         
         AddNodeToGraph( print_graph, rec( Conditions := i,
                                           TypeOfView := 3,
@@ -622,4 +622,4 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION,
     
 end );
 
-CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION( );
+CAP_INTERNAL_INSTALL_PRINT_FUNCTION( );

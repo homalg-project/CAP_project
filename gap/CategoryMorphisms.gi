@@ -55,7 +55,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
     
 #     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "CapCategory" ] ],
 #                                                          [ category, morphism ],
-#                                                          CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
+#                                                          CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST
 #                                                           );
 #     
 #     AddToToDoList( entry );
@@ -927,7 +927,7 @@ end );
 ###########################
 
 ##
-InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT,
+InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_PRINT,
                        
   function( )
     local print_graph, morphism_function;
@@ -990,7 +990,7 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT,
     
 end );
 
-CATEGORIES_FOR_HOMALG_CREATE_MORPHISM_PRINT( );
+CAP_INTERNAL_CREATE_MORPHISM_PRINT( );
 
 InstallMethod( String,
                [ IsCapCategoryMorphism ],

@@ -49,7 +49,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
     
 #     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "CapCategory" ] ],
 #                                                          [ category, object ],
-#                                                          CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
+#                                                          CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST
 #                                                        );
 #  
 #     AddToToDoList( entry );
@@ -315,7 +315,7 @@ end );
 ###########################
 
 ##
-InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT,
+InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
                        
   function( )
     local print_graph, object_function;
@@ -370,7 +370,7 @@ InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT,
     
 end );
 
-CATEGORIES_FOR_HOMALG_CREATE_OBJECT_PRINT( );
+CAP_INTERNAL_CREATE_OBJECT_PRINT( );
 
 InstallMethod( String,
                [ IsCapCategoryObject ],

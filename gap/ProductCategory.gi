@@ -437,7 +437,7 @@ end );
 ##
 ###################################
 
-BindGlobal( "HOMALG_CATEGORIES_PRODUCT_SAVE", Product );
+BindGlobal( "CAP_INTERNAL_PRODUCT_SAVE", Product );
 
 MakeReadWriteGlobal( "Product" );
 
@@ -450,7 +450,7 @@ Product := function( arg )
       
   fi;
   
-  return CallFuncList( HOMALG_CATEGORIES_PRODUCT_SAVE, arg );
+  return CallFuncList( CAP_INTERNAL_PRODUCT_SAVE, arg );
   
 end;
 

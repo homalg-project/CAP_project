@@ -32,7 +32,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL,
     
 #     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ twocell, "CapCategory" ] ],
 #                                                          [ category, twocell ],
-#                                                          CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST
+#                                                          CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST
 #                                                           );
 #     
 #     AddToToDoList( entry );
