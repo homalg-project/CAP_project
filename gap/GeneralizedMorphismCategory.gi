@@ -41,7 +41,7 @@ InstallGlobalFunction( CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGOR
     
     concat_string := "InUnderlyingHonestCategory";
     
-    for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
+    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
         
         i_concat := Concatenation( i, concat_string );
         
@@ -702,7 +702,7 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
 end );
 
 ## GAP-Hack in order to avoid the pre-installed GAP-method Domain
-BindGlobal( "HOMALG_CATEGORIES_DOMAIN_SAVE", Domain );
+BindGlobal( "CAP_INTERNAL_DOMAIN_SAVE", Domain );
 
 MakeReadWriteGlobal( "Domain" );
 
@@ -714,7 +714,7 @@ Domain := function( arg )
       
   fi;
   
-  return CallFuncList( HOMALG_CATEGORIES_DOMAIN_SAVE, arg );
+  return CallFuncList( CAP_INTERNAL_DOMAIN_SAVE, arg );
   
 end;
 

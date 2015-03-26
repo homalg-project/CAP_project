@@ -26,21 +26,21 @@
 ##
 ###################################
 
-DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG" );
+DeclareGlobalVariable( "CAP_INTERNAL" );
 
-DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_NAME_COUNTER" );
+DeclareGlobalFunction( "CAP_INTERNAL_NAME_COUNTER" );
 
 DeclareGlobalFunction( "CATEGORIES_CACHE_GETTER" );
 
 DeclareGlobalFunction( "GET_METHOD_CACHE" );
 
-DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST" );
+DeclareGlobalVariable( "CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST" );
 
-DeclareGlobalFunction( "CATEGORIES_FOR_HOMALG_INSTALL_PRINT_FUNCTION" );
+DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );
 
 DeclareGlobalFunction( "INSTALL_CAN_COMPUTE_TO_DO_LISTS" );
 
-InstallValue( CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST,
+InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
               
               [ "CanComputeMonoAsKernelLift",
                 "CanComputeEpiAsCokernelColift",
@@ -178,7 +178,7 @@ BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
   function( )
     local i;
     
-    for i in CATEGORIES_FOR_HOMALG_CAN_COMPUTE_FILTER_LIST do
+    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
         
         DeclareProperty( i, IsCapCategory );
         

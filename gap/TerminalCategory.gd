@@ -15,9 +15,9 @@
 ##
 #########################################
 
-DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT" );
+DeclareGlobalVariable( "CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT" );
 
-DeclareGlobalVariable( "CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY" );
+DeclareGlobalVariable( "CAP_INTERNAL_TERMINAL_CATEGORY" );
 
 #########################################
 ##

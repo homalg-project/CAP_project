@@ -35,15 +35,15 @@ BindGlobal( "TheTypeOfHomalgTerminalCategoryMorphism",
 ##
 #####################################
 
-InstallValue( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY,
+InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY,
               
               CreateCapCategory( "TerminalCategory" ) );
 
-SetFilterObj( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, IsTerminalCategory );
+SetFilterObj( CAP_INTERNAL_TERMINAL_CATEGORY, IsTerminalCategory );
 
-InstallValue( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT,
+InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT,
               
-              AsCatObject( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ) );
+              AsCatObject( CAP_INTERNAL_TERMINAL_CATEGORY ) );
 
 ##
 InstallMethod( UniqueObject,
@@ -57,7 +57,7 @@ InstallMethod( UniqueObject,
     ObjectifyWithAttributes( object, TheTypeOfHomalgTerminalCategoryObject,
                              IsZero, true );
     
-    Add( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, object );
+    Add( CAP_INTERNAL_TERMINAL_CATEGORY, object );
     
     SetIsWellDefined( object, true );
     
@@ -76,14 +76,14 @@ InstallMethod( UniqueMorphism,
     
     morphism := rec( );
     
-    object := Object( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY );
+    object := Object( CAP_INTERNAL_TERMINAL_CATEGORY );
     
     ObjectifyWithAttributes( morphism, TheTypeOfHomalgTerminalCategoryMorphism,
                              Source, object,
                              Range, object,
                              IsOne, true );
     
-    Add( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, morphism );
+    Add( CAP_INTERNAL_TERMINAL_CATEGORY, morphism );
     
     SetIsWellDefined( morphism, true );
     
@@ -108,11 +108,11 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
                            AddCokernel,
                            AddDirectProduct ];
     
-    obj_func := function( arg ) return UniqueObject( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end;
+    obj_func := function( arg ) return UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY ); end;
     
     for i in obj_function_list do
         
-        i( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, obj_func );
+        i( CAP_INTERNAL_TERMINAL_CATEGORY, obj_func );
         
     od;
     
@@ -133,11 +133,11 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
                                 AddUniversalMorphismIntoDirectProduct,
                                 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct ];
     
-    morphism_function := function( arg ) return UniqueMorphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end;
+    morphism_function := function( arg ) return UniqueMorphism( CAP_INTERNAL_TERMINAL_CATEGORY ); end;
     
     for i in morphism_function_list do
         
-        i( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, morphism_function );
+        i( CAP_INTERNAL_TERMINAL_CATEGORY, morphism_function );
         
     od;
     
@@ -158,7 +158,7 @@ InstallMethod( FunctorFromTerminalCategory,
   function( object )
     local functor;
     
-    functor := CapFunctor( Concatenation( "InjectionInto", Name( CapCategory( object ) ) ), CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY, CapCategory( object ) );
+    functor := CapFunctor( Concatenation( "InjectionInto", Name( CapCategory( object ) ) ), CAP_INTERNAL_TERMINAL_CATEGORY, CapCategory( object ) );
     
     functor!.terminal_object_functor_object := object;
     

@@ -1194,7 +1194,7 @@ end );
 ####################################
 
 ## GAP-Hack in order to avoid the pre-installed GAP-method DirectProduct
-BindGlobal( "HOMALG_CATEGORIES_DIRECT_PRODUCT_SAVE", DirectProduct );
+BindGlobal( "CAP_INTERNAL_DIRECT_PRODUCT_SAVE", DirectProduct );
 
 MakeReadWriteGlobal( "DirectProduct" );
 
@@ -1220,7 +1220,7 @@ DirectProduct := function( arg )
       
   fi;
   
-  return CallFuncList( HOMALG_CATEGORIES_DIRECT_PRODUCT_SAVE, arg );
+  return CallFuncList( CAP_INTERNAL_DIRECT_PRODUCT_SAVE, arg );
   
 end;
 
@@ -1621,7 +1621,7 @@ end );
 
 
 ## GAP-Hack in order to avoid the pre-installed GAP-method DirectSum
-BindGlobal( "HOMALG_CATEGORIES_DIRECT_SUM_SAVE", DirectSum );
+BindGlobal( "CAP_INTERNAL_DIRECT_SUM_SAVE", DirectSum );
 
 MakeReadWriteGlobal( "DirectSum" );
 
@@ -1647,7 +1647,7 @@ DirectSum := function( arg )
       
   fi;
   
-  return CallFuncList( HOMALG_CATEGORIES_DIRECT_SUM_SAVE, arg );
+  return CallFuncList( CAP_INTERNAL_DIRECT_SUM_SAVE, arg );
   
 end;
 

@@ -33,21 +33,21 @@ BindGlobal( "TheTypeOfHomalgNaturalTransformations",
                 IsHomalgNaturalTransformationRep ) );
 
 ##
-InstallGlobalFunction( CATEGORIES_FOR_HOMALG_CREATE_Cat,
+InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
                
   function(  )
     
-    InstallValue( CATEGORIES_FOR_HOMALG_Cat, rec( caching_info := rec( ) ) );
+    InstallValue( CAP_INTERNAL_Cat, rec( caching_info := rec( ) ) );
     
-    CREATE_HOMALG_CATEGORY_OBJECT( CATEGORIES_FOR_HOMALG_Cat, [ [ "Name", "Cat" ] ] );
+    CREATE_HOMALG_CATEGORY_OBJECT( CAP_INTERNAL_Cat, [ [ "Name", "Cat" ] ] );
     
-    CREATE_HOMALG_CATEGORY_FILTERS( CATEGORIES_FOR_HOMALG_Cat );
+    CREATE_HOMALG_CATEGORY_FILTERS( CAP_INTERNAL_Cat );
     
-    return CATEGORIES_FOR_HOMALG_Cat;
+    return CAP_INTERNAL_Cat;
     
 end );
 
-CATEGORIES_FOR_HOMALG_CREATE_Cat( );
+CAP_INTERNAL_CREATE_Cat( );
 
 ##
 InstallMethod( AsCatObject,
@@ -61,7 +61,7 @@ InstallMethod( AsCatObject,
     ObjectifyWithAttributes( cat_obj, TheTypeOfHomalgCategoriesAsCatObjects,
                              AsCapCategory, category );
     
-    Add( CATEGORIES_FOR_HOMALG_Cat, cat_obj );
+    Add( CAP_INTERNAL_Cat, cat_obj );
     
     SetIsWellDefined( cat_obj, true );
     
@@ -83,7 +83,7 @@ InstallMethod( CapFunctor,
                              Source, AsCatObject( source ),
                              Range, AsCatObject( range ) );
     
-    Add( CATEGORIES_FOR_HOMALG_Cat, functor );
+    Add( CAP_INTERNAL_Cat, functor );
     
     return functor;
     
@@ -249,7 +249,7 @@ InstallMethod( ApplyFunctor,
 end );
 
 ##
-AddPreCompose( CATEGORIES_FOR_HOMALG_Cat,
+AddPreCompose( CAP_INTERNAL_Cat,
                
   function( left_functor, right_functor )
     local obj_func, mor_func, new_functor;
@@ -280,7 +280,7 @@ AddPreCompose( CATEGORIES_FOR_HOMALG_Cat,
 end );
 
 ##
-AddIdentityMorphism( CATEGORIES_FOR_HOMALG_Cat,
+AddIdentityMorphism( CAP_INTERNAL_Cat,
                      
   function( category )
     local new_functor;
@@ -301,56 +301,56 @@ AddIdentityMorphism( CATEGORIES_FOR_HOMALG_Cat,
 end );
 
 ##
-AddTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
+AddTerminalObject( CAP_INTERNAL_Cat,
                    
   function( )
     
-    return CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT;
+    return CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT;
     
 end );
 
 ##
-AddUniversalMorphismIntoTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
+AddUniversalMorphismIntoTerminalObject( CAP_INTERNAL_Cat,
                                
   function( category )
     local new_functor;
     
-    new_functor := CapFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
+    new_functor := CapFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT );
     
     AddObjectFunction( new_functor,
                        
-                       function( arg ) return UniqueObject( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+                       function( arg ) return UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY ); end );
     
     AddMorphismFunction( new_functor,
                          
-                         function( arg ) return UniqueMorphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+                         function( arg ) return UniqueMorphism( CAP_INTERNAL_TERMINAL_CATEGORY ); end );
     
     return new_functor;
     
 end );
 
 ##
-AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CATEGORIES_FOR_HOMALG_Cat,
+AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( CAP_INTERNAL_Cat,
                                
   function( category, cat_obj )
     local new_functor;
     
-    new_functor := CapFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY_AS_CAT_OBJECT );
+    new_functor := CapFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT );
     
     AddObjectFunction( new_functor,
                        
-                       function( arg ) return UniqueObject( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+                       function( arg ) return UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY ); end );
     
     AddMorphismFunction( new_functor,
                          
-                         function( arg ) return UniqueMorphism( CATEGORIES_FOR_HOMALG_TERMINAL_CATEGORY ); end );
+                         function( arg ) return UniqueMorphism( CAP_INTERNAL_TERMINAL_CATEGORY ); end );
     
     return new_functor;
     
 end );
 
 ##
-AddDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+AddDirectProduct( CAP_INTERNAL_Cat,
                   
   function( product_of_categories )
     
@@ -359,7 +359,7 @@ AddDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
 end );
 
 ##
-AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CAP_INTERNAL_Cat,
                             
   function( object_product_list, direct_product, projection_number )
     local projection_functor;
@@ -391,7 +391,7 @@ AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMAL
 end );
 
 ##
-AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CATEGORIES_FOR_HOMALG_Cat,
+AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CAP_INTERNAL_Cat,
                                        
   function( diagram, sink, direct_product )
     local name_string, universal_functor;
@@ -682,7 +682,7 @@ end );
 ##
 ###################################
 
-AddIsWellDefinedForObjects( CATEGORIES_FOR_HOMALG_Cat,
+AddIsWellDefinedForObjects( CAP_INTERNAL_Cat,
 
   IsCapCategoryAsCatObjectRep
 
