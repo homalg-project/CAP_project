@@ -296,7 +296,7 @@ DeclareOperation( "CokernelProjWithGivenCokernel",
 #! returns the unique morphism $u: \mathrm{Coker}(\alpha) \rightarrow T$ such that $\tau = u \circ \epsilon$, where 
 #! $\epsilon: B \rightarrow \mathrm{Coker}(\alpha)$ denotes the cokernel projection.
 #! @Returns IsCapCategoryMorphism
-#! @Arguments C, tau
+#! @Arguments K, tau
 DeclareOperation( "CokernelColift",
                   [ IsCapCategoryObject, IsCapCategoryMorphism ] );
 
@@ -309,11 +309,11 @@ DeclareOperation( "CokernelColift",
 DeclareOperation( "CokernelColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 #! @Description
-#! Given a morphism $\alpha: A \rightarrow B$ with its cokernel $C$ and a testmorphism $\tau: B \rightarrow T$ 
-#! such that $\tau \circ \alpha = 0$, this method returns the unique morphism $u: C \rightarrow T$ such that 
-#! $\tau = u \circ \epsilon$, where $\epsilon: B \rightarrow C$ denotes the cokernel projection.
+#! Given a morphism $\alpha: A \rightarrow B$ with its cokernel $K$ and a testmorphism $\tau: B \rightarrow T$ 
+#! such that $\tau \circ \alpha = 0$, this method returns the unique morphism $u: K \rightarrow T$ such that 
+#! $\tau = u \circ \epsilon$, where $\epsilon: B \rightarrow K$ denotes the cokernel projection.
 #! @Returns IsCapCategoryMorphism
-#! @Arguments alpha, tau, C
+#! @Arguments alpha, tau, K
 DeclareOperation( "CokernelColiftWithGivenCokernel",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -343,7 +343,7 @@ DeclareAttribute( "CokernelColiftWithGivenCokernelFunction",
 
 ## Add Operations
 #! @Description
-#! This operation adds the given function $f: \alpha \mapsto C$ to the category $C$.
+#! This operation adds the given function $f: \alpha \mapsto K$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCokernel",
@@ -357,7 +357,7 @@ DeclareOperation( "AddCokernelProj",
                   [ IsCapCategory, IsFunction ] );
 
 #! @Description
-#! This operation adds the given function $f: (\alpha, C) \mapsto \epsilon$ to the category $C$.
+#! This operation adds the given function $f: (\alpha, K) \mapsto \epsilon$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCokernelProjWithGivenCokernel",
@@ -371,7 +371,7 @@ DeclareOperation( "AddCokernelColift",
                   [ IsCapCategory, IsFunction ] );
 
 #! @Description
-#! This operation adds the given function $f: (\alpha, \tau, C) \mapsto u$ to the category $C$.
+#! This operation adds the given function $f: (\alpha, \tau, K) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
