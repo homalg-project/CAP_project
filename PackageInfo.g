@@ -4,9 +4,9 @@ PackageName := "ModulePresentationsForHomalg",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2014.09.24", # Sebas version
+           "2015.03.26", # Sebas version
            ##
-           "2014.09.18", # Sepps version
+           "2015.03.26", # Sepps version
            ##
            ] ),
 
