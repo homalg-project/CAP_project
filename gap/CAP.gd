@@ -202,9 +202,9 @@ DeclareOperation( "AddCategoryToFamily",
 ##
 ###################################
 
-DeclareGlobalFunction( "CREATE_HOMALG_CATEGORY_OBJECT" );
+DeclareGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT" );
 
-DeclareGlobalFunction( "CREATE_HOMALG_CATEGORY_FILTERS" );
+DeclareGlobalFunction( "CREATE_CAP_CATEGORY_FILTERS" );
 
 DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
 
@@ -228,9 +228,9 @@ DeclareOperation( "CreateCapCategory",
 ##
 #############################################
 
-DeclareGlobalVariable( "HOMALG_CATEGORY_PROPERTIES" );
+DeclareGlobalVariable( "CAP_CATEGORY_PROPERTIES" );
 
-InstallValue( HOMALG_CATEGORY_PROPERTIES,
+InstallValue( CAP_CATEGORY_PROPERTIES,
               
               [ "IsEnrichedOverCommutativeRegularSemigroup",
                 "IsAbCategory",
@@ -244,7 +244,7 @@ BindGlobal( "INSTALL_CATEGORY_PROPERTIES",
   function( )
     local i;
     
-    for i in HOMALG_CATEGORY_PROPERTIES do
+    for i in CAP_CATEGORY_PROPERTIES do
         
         DeclareProperty( i, IsCapCategory );
         

@@ -88,7 +88,7 @@ InstallMethodWithCacheFromObject( ProductOp,
                              Name, namestring
                            );
     
-    CREATE_HOMALG_CATEGORY_FILTERS( product_category );
+    CREATE_CAP_CATEGORY_FILTERS( product_category );
     
     return product_category;
     
