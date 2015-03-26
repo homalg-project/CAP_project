@@ -724,12 +724,6 @@ InstallGlobalFunction( InjectionOfCofactor,
       Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
     
     fi;
-  
-    if number_of_objects = 1 then
-        
-      return IdentityMorphism( object_product_list[1] );
-          
-    fi;
     
     if IsCapCategoryObject( object_product_list[1] ) then
       
@@ -759,12 +753,6 @@ InstallGlobalFunction( Coproduct,
        
        return CoproductOp( arg[1], arg[1][1] );
        
-    fi;
-    
-    if Length( arg ) = 1 then
-      
-      return arg[1];
-        
     fi;
     
     return CoproductOp( arg, arg[ 1 ] );
@@ -1167,12 +1155,6 @@ InstallGlobalFunction( ProjectionInFactor,
       Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
     
     fi;
-  
-    if number_of_objects = 1 then
-        
-      return IdentityMorphism( object_product_list[1] );
-          
-    fi;
     
     if IsCapCategoryObject( object_product_list[1] )  then 
       
@@ -1209,12 +1191,6 @@ DirectProduct := function( arg )
   fi;
   
   if ( ForAll( arg, IsCapCategory ) or ForAll( arg, IsCapCategoryObject ) or ForAll( arg, IsCapCategoryMorphism ) ) and Length( arg ) > 0 then
-      
-      if Length( arg ) = 1 then 
-      
-        return arg[1];
-        
-      fi;
       
       return DirectProductOp( arg, arg[ 1 ] );
       
@@ -1637,12 +1613,6 @@ DirectSum := function( arg )
   
   if ( ForAll( arg, IsCapCategory ) or ForAll( arg, IsCapCategoryObject ) or ForAll( arg, IsCapCategoryMorphism ) ) and Length( arg ) > 0 then
       
-      if Length( arg ) = 1 then 
-      
-        return arg[1];
-        
-      fi;
-      
       return DirectSumOp( arg, arg[ 1 ] );
       
   fi;
@@ -1771,7 +1741,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCo
     local nr_components;
     
     nr_components := Length( sink );
-  
+    
     return Sum( List( [ 1 .. nr_components ], 
       i -> PreCompose( ProjectionInFactorOfDirectProductWithGivenDirectProduct( diagram, i, coproduct ), sink[ i ] ) ) );
   
@@ -2467,15 +2437,6 @@ InstallGlobalFunction( FiberProduct,
        
      fi;
     
-    #the pullback of a tuple of morphisms over the same base B can be interpreted
-    #as the direct product in the category of morphisms over B. Thus it makes sense
-    #to deal with the special case where only one morphism is considered as follows:
-    if Length( arg ) = 1 then 
-      
-      return arg[1];
-        
-    fi;
-    
     return PullbackOp( arg, arg[ 1 ] );
     
 end );
@@ -2997,15 +2958,6 @@ InstallGlobalFunction( Pushout,
        return PushoutOp( arg[1], arg[1][1] );
        
      fi;
-    
-    #the pushout of a tuple of morphisms with same source B can be interpreted
-    #as the direct product in the category of morphisms with source B. Thus it makes sense
-    #to deal with the special case where only one morphism is considered as follows:
-    if Length( arg ) = 1 then 
-      
-      return arg[1];
-        
-    fi;
     
     return PushoutOp( arg, arg[ 1 ] );
     

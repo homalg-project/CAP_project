@@ -256,9 +256,9 @@ DeclareFilter( "WasCreatedAsKernel" );
 ####################################
 
 #! Let $\alpha: A \rightarrow B$ be a morphism. A cokernel of $\alpha$ is a morphism
-#! $\epsilon: B \rightarrow C$ such that $\epsilon \circ \alpha = 0$ and such that for 
+#! $\epsilon: B \rightarrow K$ such that $\epsilon \circ \alpha = 0$ and such that for 
 #! every test morphism $\tau: B \rightarrow T$ with $\tau \circ \alpha = 0$, there
-#! exists a unique morphism $u: C \rightarrow T$ such that $u \circ \epsilon  = \tau$.
+#! exists a unique morphism $u: K \rightarrow T$ such that $u \circ \epsilon  = \tau$.
 
 
 ## Main Operations and Attributes
@@ -279,20 +279,20 @@ DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
 #! @Description
 #! Cokernel projection of an object which was created as a cokernel.
 #! @Returns IsCapCategoryMorphism
-#! @Arguments C
+#! @Arguments K
 DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
                                           IsCapCategoryObject );
 
 #! @Description
-#! Projection $B \twoheadrightarrow C$ of a given cokernel $C$ of a given morphism $\alpha: A \rightarrow B$.
+#! Projection $B \twoheadrightarrow K$ of a given cokernel $K$ of a given morphism $\alpha: A \rightarrow B$.
 #! @Returns IsCapCategoryMorphism
-#! @Arguments alpha, C
+#! @Arguments alpha, K
 DeclareOperation( "CokernelProjWithGivenCokernel",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
 #! @Description
-#! Given a cokernel $C$ of a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: B \rightarrow T$ such that $\tau \circ \alpha = 0$, this method
+#! Given a cokernel $K$ of a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: B \rightarrow T$ such that $\tau \circ \alpha = 0$, this method
 #! returns the unique morphism $u: \mathrm{Coker}(\alpha) \rightarrow T$ such that $\tau = u \circ \epsilon$, where 
 #! $\epsilon: B \rightarrow \mathrm{Coker}(\alpha)$ denotes the cokernel projection.
 #! @Returns IsCapCategoryMorphism
