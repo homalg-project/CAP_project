@@ -4,14 +4,14 @@
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
   
-  ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesConstructors.gi" );
+  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );
   
 fi;
 
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpaces01" );
 #! VectorSpaces01
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAddKernel01.gi" );
+ReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel01.gi" );
 #! true
 V := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
@@ -47,7 +47,7 @@ KernelEmb( k );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpaces02" );
 #! VectorSpaces02
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAddKernel02.gi" );
+ReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel02.gi" );
 #! true
 V := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
@@ -79,7 +79,7 @@ HasKernelEmb( k );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpaces03" );
 #! VectorSpaces03
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAddKernel03.gi" );
+ReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel03.gi" );
 #! true
 V := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>

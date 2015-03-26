@@ -1,6 +1,6 @@
 #############################################################################
 ##
-##                                               CategoriesForHomalg package
+##                                               CAP package
 ##
 ##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
@@ -24,7 +24,7 @@
 #! * $(D,X) \mapsto s_i$: Constructor of source/sink data with input $D$ and $X$
 #! * $(D, t_i) \mapsto u$: Constructor of universal property morphism with input $D$ and a test source/sink $T$
 #! * $(D, t_i, X) \mapsto u$: Constructor of universal property morphism with input $D$ and a test source/sink $T$ and $X$
-#! The convention in CategoriesForHomalg is: every diagram $D$ should only have one universal object $X$.
+#! The convention in CAP is: every diagram $D$ should only have one universal object $X$.
 #! Thus every computed $X$ will be cached. For example, if you compute the pullback object of a given
 #! diagram twice, you will get identical objects (IsIdenticalObj will return true).
 #! <Br/>
@@ -50,8 +50,8 @@
 #! * KernelEmb
 #! * MonoAsKernelLift
 #! One note: a derived method should never use constructors with given $X$ as an input.
-#! The internals of CategoriesForHomalg will take care that no confusion accurs. For example: if you
-#! call KernelEmb of a morphism $\alpha$, CategoriesForHomalg works as follows:
+#! The internals of CAP will take care that no confusion accurs. For example: if you
+#! call KernelEmb of a morphism $\alpha$, CAP works as follows:
 #! * Check the cache: is the kernel embedding of $\alpha$ already computed? If yes, return this cached embedding.
 #! * Otherwise, check if the kernel object of $\alpha$ is already computed. If yes, call KernelEmbWithGivenKernel( $\alpha$ ). If no, call KernelEmb( $\alpha$ ).
 #! 

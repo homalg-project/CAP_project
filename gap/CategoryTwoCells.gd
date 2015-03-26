@@ -1,6 +1,6 @@
 #############################################################################
 ##
-##                                               CategoriesForHomalg package
+##                                               CAP package
 ##
 ##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
@@ -9,7 +9,7 @@
 ##
 #############################################################################
 
-## Moved to CategoriesForHomalg.gd
+## Moved to CAP.gd
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL" );
 

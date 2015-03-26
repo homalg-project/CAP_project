@@ -1,6 +1,6 @@
 #############################################################################
 ##
-##                                               CategoriesForHomalg package
+##                                               CAP package
 ##
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
@@ -24,7 +24,7 @@
 ##
 ###################################
 
-## Moved to CategoriesForHomalg.gd
+## Moved to CAP.gd
 
 ###################################
 ##

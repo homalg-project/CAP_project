@@ -1,13 +1,13 @@
 SetPackageInfo( rec(
 
-PackageName := "CategoriesForHomalg",
+PackageName := "CAP",
 
 Subtitle := "TODO",
 
 Version := Maximum( [
-  "2014.11.24", ## Sebas' version
+  "2015.03.26", ## Sebas' version
   ## this line prevents merge conflicts
-  "2014.03.11", ## Sepp's version
+  "2015.03.26", ## Sepp's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -44,19 +44,19 @@ Persons := [
 
 Status := "dev",
 
-PackageWWWHome := "http://www.TODO.INSERT.WEBPAGE.HERE/",
-#PackageWWWHome := "http://github.com/username/CategoriesForHomalg/",
+#PackageWWWHome := "http://www.TODO.INSERT.WEBPAGE.HERE/",
+PackageWWWHome := "http://github.com/homalg-project/CAP/",
 
 ArchiveFormats := ".tar.gz",
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "CategoriesForHomalg-", ~.Version ),
+ArchiveURL     := Concatenation( ~.PackageWWWHome, "CAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "CategoriesForHomalg",
+  BookName  := "CAP",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",

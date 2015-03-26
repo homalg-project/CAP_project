@@ -1,6 +1,6 @@
 #############################################################################
 ##
-##                                               CategoriesForHomalg package
+##                                               CAP package
 ##
 ##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
@@ -12,7 +12,7 @@
 #! @Section Install functions for IsWellDefined
 
 #! @Description
-#!  The IsWellDefined filter is a basic function of CategoriesForHomalg.
+#!  The IsWellDefined filter is a basic function of CAP.
 #!  For every categorial construction the outcome is well defined if
 #!  and only if every input object or morphism of the construction is well defined.
 #!  So for every implementation of a categorial construction a ToDoListEntry needs

@@ -1,12 +1,12 @@
 #############################################################################
 ##
-##                                               CategoriesForHomalg package
+##                                               CAP package
 ##
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Categories for homalg
-#!  Categories are the main GAP objects in CategoriesForHomalg.
+#!  Categories are the main GAP objects in CAP.
 #!  They are used to associate GAP objects which represent objects and
 #!  morphisms with their category. By associating an GAP object to the
 #!  category, one of two filters belonging to the category (Object/MorphismFilter)

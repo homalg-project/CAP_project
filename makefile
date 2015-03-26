@@ -15,10 +15,10 @@ test:	doc
 	gap maketest.g
 
 archive: test
-	(mkdir -p ../tar; cd ..; tar czvf tar/CategoriesForHomalg.tar.gz --exclude ".DS_Store" --exclude "*~" CategoriesForHomalg/doc/*.* CategoriesForHomalg/doc/clean CategoriesForHomalg/gap/*.{gi,gd} CategoriesForHomalg/{PackageInfo.g,README,COPYING,VERSION,init.g,read.g,makedoc.g,makefile,maketest.g} CategoriesForHomalg/examples/*.g CategoriesForHomalg/examples/doc/*.g)
+	(mkdir -p ../tar; cd ..; tar czvf tar/CAP.tar.gz --exclude ".DS_Store" --exclude "*~" CAP/doc/*.* CAP/doc/clean CAP/gap/*.{gi,gd} CAP/{PackageInfo.g,README,COPYING,VERSION,init.g,read.g,makedoc.g,makefile,maketest.g} CAP/examples/*.g CAP/examples/doc/*.g)
 
 #WEBPOS=public_html
-#WEBPOS_FINAL=~/Sites/homalg-project/CategoriesForHomalg
+#WEBPOS_FINAL=~/Sites/homalg-project/CAP
 
 towww: archive
 	echo '<?xml version="1.0" encoding="UTF-8"?>' >${WEBPOS}.version
@@ -26,12 +26,12 @@ towww: archive
 	cat VERSION >>${WEBPOS}.version
 	echo '</mixer>' >>${WEBPOS}.version
 	cp PackageInfo.g ${WEBPOS}
-	cp README ${WEBPOS}/README.CategoriesForHomalg
-	cp doc/manual.pdf ${WEBPOS}/CategoriesForHomalg.pdf
+	cp README ${WEBPOS}/README.CAP
+	cp doc/manual.pdf ${WEBPOS}/CAP.pdf
 	cp doc/*.{css,html} ${WEBPOS}
 	rm -f ${WEBPOS}/*.tar.gz
-	mv ../tar/CategoriesForHomalg.tar.gz ${WEBPOS}/CategoriesForHomalg-`cat VERSION`.tar.gz
+	mv ../tar/CAP.tar.gz ${WEBPOS}/CAP-`cat VERSION`.tar.gz
 	rm -f ${WEBPOS_FINAL}/*.tar.gz
 	cp ${WEBPOS}/* ${WEBPOS_FINAL}
-	ln -s CategoriesForHomalg-`cat VERSION`.tar.gz ${WEBPOS_FINAL}/CategoriesForHomalg.tar.gz
+	ln -s CAP-`cat VERSION`.tar.gz ${WEBPOS_FINAL}/CAP.tar.gz
 

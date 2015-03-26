@@ -1,4 +1,4 @@
-LoadPackage( "CategoriesForHomalg" );
+LoadPackage( "CAP" );
 
 ## Declaration
 

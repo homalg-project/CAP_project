@@ -4,14 +4,14 @@
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
 
-  ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesConstructors.gi" );;
+  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );;
 
 fi;
 
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForIsWellDefinedTest" );
 #! VectorSpacesForIsWellDefinedTest 
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
 A := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>

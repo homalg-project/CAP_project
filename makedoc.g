@@ -1,10 +1,10 @@
 LoadPackage("AutoDoc");
 
-AutoDoc( "CategoriesForHomalg" : scaffold := true, autodoc :=
+AutoDoc( "CAP" : scaffold := true, autodoc :=
          rec( scan_dirs := [ "gap", "examples/testfiles" ] ),
          maketest := rec( folder := ".",
                           commands :=
-                            [ "LoadPackage( \"CategoriesForHomalg\" );",
+                            [ "LoadPackage( \"CAP\" );",
                               "LoadPackage( \"IO_ForHomalg\" );",
                               "LoadPackage( \"GaussForHomalg\" );",
 			      "LoadPackage( \"ModulePresentationsForHomalg\" );",

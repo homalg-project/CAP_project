@@ -1,6 +1,6 @@
 #############################################################################
 ##
-##                                               CategoriesForHomalg package
+##                                               CAP package
 ##
 ##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
@@ -21,69 +21,69 @@ InstallValue( CATEGORIES_LOGIC_FILES,
       
       Propositions := rec(
           General := [
-                       Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForGeneralCategories.tex" )
+                       Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForGeneralCategories.tex" )
                      ],
           IsEnrichedOverCommutativeRegularSemigroup := [
-                                                         Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
+                                                         Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
                                                        ],
           IsAbCategory := [
-                            Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForAbCategories.tex" )
+                            Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForAbCategories.tex" )
                           ],
           IsPreAdditiveCategory := [
-                                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForPreadditiveCategories.tex" )
+                                     Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForPreadditiveCategories.tex" )
                                    ],
           IsAdditiveCategory := [
-                                  Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForAdditiveCategories.tex" )
+                                  Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForAdditiveCategories.tex" )
                                 ],
           IsPreAbelianCategory := [
-                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForPreabelianCategories.tex" )
+                                    Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForPreabelianCategories.tex" )
                                   ],
           IsAbelianCategory := [
-#                                  Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PropositionsForAbelianCategories.tex" )
+#                                  Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForAbelianCategories.tex" )
                                ] ),
       Predicates := rec(
           General := [
-                       Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForGeneralCategories.tex" )
+                       Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForGeneralCategories.tex" )
                      ],
           IsEnrichedOverCommutativeRegularSemigroup := [
-                                                         Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
+                                                         Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
                                                        ],
           IsAbCategory := [
-                            Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForAbCategories.tex" )
+                            Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForAbCategories.tex" )
                           ],
           IsPreAdditiveCategory := [
-                                     Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForPreadditiveCategories.tex" )
+                                     Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForPreadditiveCategories.tex" )
                                    ],
           IsAdditiveCategory := [
-                                  Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForAdditiveCategories.tex" )
+                                  Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForAdditiveCategories.tex" )
                                 ],
           IsPreAbelianCategory := [
-                                    Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForPreabelianCategories.tex" )
+                                    Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForPreabelianCategories.tex" )
                                   ],
           IsAbelianCategory := [
-                                 Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "PredicateImplicationsForAbelianCategories.tex" )
+                                 Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForAbelianCategories.tex" )
                                ] ),
       EvalRules := rec(
           General := [
-                      Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForGeneralCategories.tex" )
+                      Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForGeneralCategories.tex" )
                      ],
           IsEnrichedOverCommutativeRegularSemigroup := [
-                                                        Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
+                                                        Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForCategoriesEnrichedOverCommutativeRegularSemigroups.tex" )
                                                        ],
           IsAbCategory := [
-                           Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbCategories.tex" )
+                           Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForAbCategories.tex" )
                           ],
           IsPreAdditiveCategory := [
-                                   Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreadditiveCategories.tex" )
+                                   Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForPreadditiveCategories.tex" )
                                    ],
           IsAdditiveCategory := [
-                                Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAdditiveCategories.tex" )
+                                Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForAdditiveCategories.tex" )
                                 ],
           IsPreAbelianCategory := [
-                                   Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForPreabelianCategories.tex" )
+                                   Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForPreabelianCategories.tex" )
                                   ],
           IsAbelianCategory := [
-                                Filename( DirectoriesPackageLibrary( "CategoriesForHomalg", "LogicForCategories" ), "RelationsForAbelianCategories.tex" )
+                                Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForAbelianCategories.tex" )
                                ] ),
      ) );
 

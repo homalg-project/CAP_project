@@ -1,4 +1,4 @@
-LoadPackage( "CategoriesForHomalg" );
+LoadPackage( "CAP" );
 LoadPackage( "AutoDoc" );
 T := DocumentationTree( );
 xx := CachingObject( );

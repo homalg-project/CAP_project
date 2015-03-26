@@ -1,44 +1,44 @@
-ReadPackage( "CategoriesForHomalg", "gap/ToolsForCategories.gd");
+ReadPackage( "CAP", "gap/ToolsForCategories.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/CategoriesForHomalg.gd");
+ReadPackage( "CAP", "gap/CAP.gd");
 
 ## FIXME: The loading structure needs to be redone.
-ReadPackage( "CategoriesForHomalg", "gap/ToolsForCategories.gi");
+ReadPackage( "CAP", "gap/ToolsForCategories.gi");
 
-ReadPackage( "CategoriesForHomalg", "gap/CategoryObjects.gd");
+ReadPackage( "CAP", "gap/CategoryObjects.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/CategoryMorphisms.gd");
+ReadPackage( "CAP", "gap/CategoryMorphisms.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/CategoryTwoCells.gd");
+ReadPackage( "CAP", "gap/CategoryTwoCells.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/UniversalObjects.gd" );
+ReadPackage( "CAP", "gap/UniversalObjects.gd" );
 
-ReadPackage( "CategoriesForHomalg", "gap/OppositeCategory.gd");
+ReadPackage( "CAP", "gap/OppositeCategory.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/ProductCategory.gd");
+ReadPackage( "CAP", "gap/ProductCategory.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/CategoriesCategory.gd");
+ReadPackage( "CAP", "gap/CategoriesCategory.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/TerminalCategory.gd");
+ReadPackage( "CAP", "gap/TerminalCategory.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/GeneralizedMorphismCategory.gd");
+ReadPackage( "CAP", "gap/GeneralizedMorphismCategory.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/SerreQuotients.gd");
+ReadPackage( "CAP", "gap/SerreQuotients.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/ZFunctors.gd");
+ReadPackage( "CAP", "gap/ZFunctors.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/CocomplexCategory.gd");
+ReadPackage( "CAP", "gap/CocomplexCategory.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/FilteredObjects.gd");
+ReadPackage( "CAP", "gap/FilteredObjects.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/LazyCategory.gd");
+ReadPackage( "CAP", "gap/LazyCategory.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/DeductiveSystem.gd");
+ReadPackage( "CAP", "gap/DeductiveSystem.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/HomologicalAlgebraAlgorithms.gd");
+ReadPackage( "CAP", "gap/HomologicalAlgebraAlgorithms.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/LogicForDeductiveSystem.gd");
+ReadPackage( "CAP", "gap/LogicForDeductiveSystem.gd");
 
-ReadPackage( "CategoriesForHomalg", "gap/TheoremParser.gd");
+ReadPackage( "CAP", "gap/TheoremParser.gd");
 
 

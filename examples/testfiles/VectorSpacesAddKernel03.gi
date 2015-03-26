@@ -5,7 +5,7 @@
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
   
-  ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesConstructors.gi" );
+  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );
   
 fi;
 

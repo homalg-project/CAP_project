@@ -4,14 +4,14 @@
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
 
-  ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesConstructors.gi" );;
+  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );;
 
 fi;
 
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
 B := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
@@ -88,7 +88,7 @@ MorphismAid( c1 + c2 );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
 A := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>
@@ -139,7 +139,7 @@ RangeAid( composition );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
 phi2_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 5 ] ], B );
 #! A rational vector space homomorphism with matrix: 
@@ -187,7 +187,7 @@ SourceAid( composition2 );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
 A := QVectorSpace( 3 );
 #! <A rational vector space of dimension 3>
@@ -334,7 +334,7 @@ RangeAid( p );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CategoriesForHomalg", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
 A := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>
