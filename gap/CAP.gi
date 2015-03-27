@@ -184,7 +184,7 @@ BindGlobal( "TheTypeOfHomalgCategories",
 InstallGlobalFunction( INSTALL_CAN_COMPUTE_TO_DO_LISTS,
                        
   function( category )
-    local i, entry_func;
+    local i, entry_func, internal_list;
     
     entry_func := function( category, filter_name )
         
@@ -192,7 +192,13 @@ InstallGlobalFunction( INSTALL_CAN_COMPUTE_TO_DO_LISTS,
         
     end;
     
-    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
+    internal_list := Concatenation( 
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForAllCategories,
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForSpecialCategories,
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories
+                     );
+    
+    for i in internal_list do
         
         AddToToDoList( entry_func( category, i ) );
         
@@ -640,7 +646,7 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_PRINT_FUNCTION,
                
   function( )
-    local print_graph, category_function, i;
+    local print_graph, category_function, i, internal_list;
     
     category_function := function( category )
       local string;
@@ -661,7 +667,13 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_PRINT_FUNCTION,
     
     print_graph := CreatePrintingGraph( IsCapCategory, category_function );
     
-    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
+    internal_list := Concatenation( 
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForAllCategories,
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForSpecialCategories,
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories
+                     );
+    
+    for i in internal_list do
         
         AddNodeToGraph( print_graph, rec( Conditions := i,
                                           TypeOfView := 3,

@@ -40,9 +40,45 @@ DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );
 
 DeclareGlobalFunction( "INSTALL_CAN_COMPUTE_TO_DO_LISTS" );
 
+
+
 InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
+              rec( 
+              MathematicalPropertiesOfCategories := [
+                "IsEnrichedOverCommutativeRegularSemigroup",
+                "IsAbCategory", 
+                "IsPreAdditiveCategory", 
+                "IsAdditiveCategory", 
+                "IsPreAbelianCategory", 
+                "IsAbelianCategory"
+              ],
               
-              [ "CanComputeMonoAsKernelLift",
+              CanComputeForSpecialCategories := [
+                "CanComputeDomainAssociatedMorphismCodomainTriple",
+                "CanComputeDomain",
+                "CanComputeCodomain",
+                "CanComputeAssociatedMorphism",
+                "CanComputePseudoInverse",
+                "CanComputeKernelObjectFunctorial",
+                "CanComputeCokernelFunctorial",
+                "CanComputeTerminalObjectFunctorial",
+                "CanComputeInitialObjectFunctorial",
+                "CanComputeDirectProductFunctorial",
+                "CanComputeCoproductFunctorial",
+                "CanComputeDirectSumFunctorial",
+                "CanComputePullbackFunctorial",
+                "CanComputePushoutFunctorial",
+                "CanComputeGeneralizedMorphismFromFactorToSubobject", #this actually is a general algorithm, but it does not have an Add
+                "CanComputeHorizontalPreCompose", # for 2-categories
+                "CanComputeVerticalPreCompose",
+                "CanComputeIdentityTwoCell",
+                "CanComputeHonestRepresentative",
+                "CanComputeIsWellDefinedForTwoCells",
+                
+              ],
+              
+              CanComputeForAllCategories := [ 
+                "CanComputeMonoAsKernelLift",
                 "CanComputeEpiAsCokernelColift",
                 "CanComputeIdentityMorphism",
                 "CanComputeInverse",
@@ -85,12 +121,6 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeEqualityOfFactorobjects",
                 "CanComputeDominates",
                 "CanComputeCodominates",
-                "IsEnrichedOverCommutativeRegularSemigroup",
-                "IsAbCategory", 
-                "IsPreAdditiveCategory", 
-                "IsAdditiveCategory", 
-                "IsPreAbelianCategory", 
-                "IsAbelianCategory",
                 "CanComputePullback",
                 "CanComputeProjectionInFactorOfPullback",
                 "CanComputeProjectionInFactorOfPullbackWithGivenPullback",
@@ -104,15 +134,8 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeImage",
                 "CanComputeImageEmbedding",
                 "CanComputeImageEmbeddingWithGivenImage",
-                "CanComputeGeneralizedMorphismFromFactorToSubobject",
-                "CanComputeHorizontalPreCompose",
-                "CanComputeVerticalPreCompose",
-                "CanComputeIdentityTwoCell",
-                "CanComputeHonestRepresentative",
                 "CanComputeIsWellDefinedForMorphisms",
                 "CanComputeIsWellDefinedForObjects",
-                "CanComputeIsWellDefinedForTwoCells",
-                "IsRestrictedGeneralizedMorphismCategory",
                 "CanComputeIsZeroForObjects",
                 "CanComputeIsMonomorphism",
                 "CanComputeIsEpimorphism",
@@ -122,22 +145,9 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeCoastrictionToImageWithGivenImage",
                 "CanComputeUniversalMorphismFromImage",
                 "CanComputeUniversalMorphismFromImageWithGivenImage",
-                "CanComputeDomainAssociatedMorphismCodomainTriple",
-                "CanComputeDomain",
-                "CanComputeCodomain",
-                "CanComputeAssociatedMorphism",
-                "CanComputePseudoInverse",
-                "CanComputeKernelObjectFunctorial",
-                "CanComputeCokernelFunctorial",
-                "CanComputeTerminalObjectFunctorial",
-                "CanComputeInitialObjectFunctorial",
-                "CanComputeDirectProductFunctorial",
-                "CanComputeCoproductFunctorial",
-                "CanComputeDirectSumFunctorial",
-                "CanComputePullbackFunctorial",
-                "CanComputePushoutFunctorial"
-                # .. 
-              ] );
+                
+                ] )
+);
 
 DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
 
@@ -178,9 +188,15 @@ DeclareCategory( "IsCapCategoryTwoCell",
 BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
             
   function( )
-    local i;
+    local i, internal_list;
     
-    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
+    internal_list := Concatenation( 
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForAllCategories,
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForSpecialCategories,
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories
+                     );
+    
+    for i in internal_list do
         
         DeclareProperty( i, IsCapCategory );
         
