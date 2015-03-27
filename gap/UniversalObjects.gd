@@ -1161,7 +1161,7 @@ DeclareOperationWithCache( "PullbackOp",
 #! @Description
 #! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and an integer $j$
 #! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
-#! @Returns IsCapCategoryObject
+#! @Returns IsCapCategoryMorphism
 #! @Arguments D, j
 DeclareOperation( "ProjectionInFactorOfPullback",
                   [ IsList, IsInt ] );
@@ -1170,7 +1170,7 @@ DeclareOperation( "ProjectionInFactorOfPullback",
 #! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$, an integer $j$,
 #! and a morphism $m$ used for the method selection,
 #! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
-#! @Returns IsCapCategoryObject
+#! @Returns IsCapCategoryMorphism
 #! @Arguments D, j, m
 DeclareOperation( "ProjectionInFactorOfPullbackOp",
                   [ IsList, IsInt, IsCapCategoryMorphism ] );
@@ -1179,16 +1179,42 @@ DeclareOperation( "ProjectionInFactorOfPullbackOp",
 #! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$, an integer $j$,
 #! and a pullback $P$
 #! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
-#! @Returns IsCapCategoryObject
+#! @Returns IsCapCategoryMorphism
 #! @Arguments D, j, m
 DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
+#! @Description
+#! This convenience method may be used in three ways:
+#! 1) The input is a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
+#! and a test source $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ and computes
+#! the universal morphism $u$ into the pullback of $D$. 
+#! 2) The input is a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
+#! and arbitrary many morphisms $\tau_i: T \rightarrow P_i$ which define a test source and
+#! computes the universal morphism $u$ into the pullback of $D$. 
+#! 3) The input is an object $P$ which is a pullback 
+#! and arbitrary many morphisms $\tau_i: T \rightarrow P_i$ which define a test source and
+#! computes the universal morphism $u$ into the pullback $P$
+#! @Returns IsCapCategoryMorphism
 DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
 
+#! @Description
+#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$,
+#! a test source $T = ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ and a morphism $m$ for the method selection,
+#! this method computes
+#! the universal morphism $u$ into the pullback of $D$. 
+#! @Returns IsCapCategoryMorphism
+#! @Arguments D, T, m
 DeclareOperation( "UniversalMorphismIntoPullbackOp",
                   [ IsList, IsList, IsCapCategoryMorphism ] );
 
+#! @Description
+#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$,
+#! a test source $T = ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ and a pullback $P$ of $D$
+#! this method computes
+#! the universal morphism $u$ into the pullback $P$.
+#! @Returns IsCapCategoryMorphism
+#! @Arguments D, T, P
 DeclareOperation( "UniversalMorphismIntoPullbackWithGivenPullback",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
@@ -1206,7 +1232,7 @@ DeclareAttribute( "ProjectionInFactorOfPullbackFunction",
 
 DeclareAttribute( "ProjectionInFactorOfPullbackWithGivenPullbackFunction",
                   IsCapCategory );
-
+# 
 DeclareAttribute( "UniversalMorphismIntoPullbackFunction",
                   IsCapCategory );
 
