@@ -1140,17 +1140,47 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 # FIXME:
 # Declared as an operation in MatricesForHomalg!
 # DeclareGlobalFunction( "Pullback" );
+
+#! @Description
+#! This function either accepts a list $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
+#! of morphisms or 
+#! arbitrary many arrows $\beta_i: P_i \rightarrow B$ as an input and returns
+#! the pullback $P$.
+#! @Returns IsCapCategoryObject
+#! @Arguments D, j
 DeclareGlobalFunction( "FiberProduct" );
 
+#! @Description
+#! This function takes $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
+#! as an input and a morphism for the method selection and returns the pullback $P$ of $D$.
+#! @Returns IsCapCategoryObject
+#! @Arguments D, j
 DeclareOperationWithCache( "PullbackOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
+#! @Description
+#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and an integer $j$
+#! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
+#! @Returns IsCapCategoryObject
+#! @Arguments D, j
 DeclareOperation( "ProjectionInFactorOfPullback",
                   [ IsList, IsInt ] );
 
+#! @Description
+#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$, an integer $j$,
+#! and a morphism $m$ used for the method selection,
+#! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
+#! @Returns IsCapCategoryObject
+#! @Arguments D, j, m
 DeclareOperation( "ProjectionInFactorOfPullbackOp",
                   [ IsList, IsInt, IsCapCategoryMorphism ] );
 
+#! @Description
+#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$, an integer $j$,
+#! and a pullback $P$
+#! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
+#! @Returns IsCapCategoryObject
+#! @Arguments D, j, m
 DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 

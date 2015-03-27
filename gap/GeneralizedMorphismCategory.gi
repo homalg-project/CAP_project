@@ -33,7 +33,7 @@ BindGlobal( "TheTypeOfGeneralizedMorphism",
 InstallGlobalFunction( CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGORY,
                        
   function( )
-    local prop_list_pairs, prop_list_solo, i, concat_string, i_concat;
+    local prop_list_pairs, prop_list_solo, i, concat_string, i_concat, internal_list;
     
     prop_list_pairs := [ ];
     
@@ -41,7 +41,13 @@ InstallGlobalFunction( CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGOR
     
     concat_string := "InUnderlyingHonestCategory";
     
-    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
+    internal_list := Concatenation( 
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForAllCategories,
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForSpecialCategories,
+                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories
+                     );
+    
+    for i in internal_list do
         
         i_concat := Concatenation( i, concat_string );
         
