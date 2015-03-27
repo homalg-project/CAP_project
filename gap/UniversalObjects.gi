@@ -1793,7 +1793,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeDirectProductFunctorial and IsPreAdditiveCategory );
+InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeDirectProductFunctorial and IsAbCategory );
 
 InstallMethod( DirectSumFunctorial,
                [ IsList ],
@@ -1805,7 +1805,7 @@ InstallMethod( DirectSumFunctorial,
 end );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeCoproductFunctorial and IsPreAdditiveCategory );
+InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeCoproductFunctorial and IsAbCategory );
 
 InstallMethod( DirectSumFunctorial,
                [ IsList ],

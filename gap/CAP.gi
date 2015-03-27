@@ -15,9 +15,7 @@
 
 InstallTrueMethod( IsEnrichedOverCommutativeRegularSemigroup, IsAbCategory );
 
-InstallTrueMethod( IsAbCategory, IsPreAdditiveCategory );
-
-InstallTrueMethod( IsPreAdditiveCategory, IsAdditiveCategory );
+InstallTrueMethod( IsAbCategory, IsAdditiveCategory );
 
 InstallTrueMethod( IsAdditiveCategory, IsPreAbelianCategory );
 

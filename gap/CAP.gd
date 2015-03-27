@@ -20,6 +20,31 @@
 ##
 #############################################################################
 
+####################################
+##
+#! @Section Computable categories
+##
+####################################
+
+#! Let $C$ denote a category in CAP.
+
+####################################
+##
+#! @Section Computable categories
+##
+####################################
+
+#! We say $C$ is a $\textbf{computable category}$ if it passes the following filters:
+#! * $\texttt{CanComputeIsEqualForMorphisms}$
+#! * $\texttt{CanComputePreCompose}$
+#! * $\texttt{CanComputeIdentityMorphism}$
+
+#! We say $C$ is a $\textbf{computable category}$ if it passes the following filters:
+#! * $\texttt{CanComputeIsEqualForMorphisms}$
+#! * $\texttt{CanComputePreCompose}$
+#! * $\texttt{CanComputeIdentityMorphism}$
+
+
 ###################################
 ##
 #! @Section Internal stuff
@@ -46,8 +71,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
               rec( 
               MathematicalPropertiesOfCategories := [
                 "IsEnrichedOverCommutativeRegularSemigroup",
-                "IsAbCategory", 
-                "IsPreAdditiveCategory", 
+                "IsAbCategory",
                 "IsAdditiveCategory", 
                 "IsPreAbelianCategory", 
                 "IsAbelianCategory"
@@ -239,38 +263,6 @@ DeclareOperation( "CreateCapCategory",
 DeclareOperation( "CreateCapCategory",
                   [ IsString ] );
 #! @EndGroup
-
-#############################################
-##
-#! @Section Properties
-##
-#############################################
-
-DeclareGlobalVariable( "CAP_CATEGORY_PROPERTIES" );
-
-InstallValue( CAP_CATEGORY_PROPERTIES,
-              
-              [ "IsEnrichedOverCommutativeRegularSemigroup",
-                "IsAbCategory",
-                "IsPreAdditiveCategory",
-                "IsAdditiveCategory",
-                "IsPreAbelianCategory",
-                "IsAbelianCategory" ] );
-
-BindGlobal( "INSTALL_CATEGORY_PROPERTIES",
-            
-  function( )
-    local i;
-    
-    for i in CAP_CATEGORY_PROPERTIES do
-        
-        DeclareProperty( i, IsCapCategory );
-        
-    od;
-    
-end );
-
-INSTALL_CATEGORY_PROPERTIES( );
 
 ###################################
 ##

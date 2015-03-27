@@ -29,9 +29,6 @@ InstallValue( CATEGORIES_LOGIC_FILES,
           IsAbCategory := [
                             Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForAbCategories.tex" )
                           ],
-          IsPreAdditiveCategory := [
-                                     Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForPreadditiveCategories.tex" )
-                                   ],
           IsAdditiveCategory := [
                                   Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForAdditiveCategories.tex" )
                                 ],
@@ -51,9 +48,6 @@ InstallValue( CATEGORIES_LOGIC_FILES,
           IsAbCategory := [
                             Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForAbCategories.tex" )
                           ],
-          IsPreAdditiveCategory := [
-                                     Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForPreadditiveCategories.tex" )
-                                   ],
           IsAdditiveCategory := [
                                   Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForAdditiveCategories.tex" )
                                 ],
@@ -73,9 +67,6 @@ InstallValue( CATEGORIES_LOGIC_FILES,
           IsAbCategory := [
                            Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForAbCategories.tex" )
                           ],
-          IsPreAdditiveCategory := [
-                                   Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForPreadditiveCategories.tex" )
-                                   ],
           IsAdditiveCategory := [
                                 Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForAdditiveCategories.tex" )
                                 ],
@@ -206,18 +197,6 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
   function( category )
     
     INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), "IsEnrichedOverCommutativeRegularSemigroup" );
-    
-    TryNextMethod( );
-    
-end );
-
-InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsCapCategory and HasDeductiveSystem and IsPreAdditiveCategory,
-                        0,
-                        
-  function( category )
-    
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, DeductiveSystem( category ), "IsPreAdditiveCategory" );
     
     TryNextMethod( );
     
