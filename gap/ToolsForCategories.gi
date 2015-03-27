@@ -470,7 +470,7 @@ end );
 InstallGlobalFunction( PossibleDerivationsOfMethod,
   
   function( category, string )
-    local triangle;
+    local triangle, i, j, possible_implications, current_source, category_property;
     
     if IsCapCategory( string ) and IsString( category ) then
         
@@ -489,6 +489,65 @@ InstallGlobalFunction( PossibleDerivationsOfMethod,
         return;
         
     fi;
+    
+    possible_implications := Filtered( CAP_INTERNAL_METHOD_IMPLICATION_LIST, i -> ForAny( i[ 1 ], j -> j = string ) );
+    
+    if Length( possible_implications ) = 0 then
+        
+        Print( "No derived methods found.\n" );
+        
+        Print( "Please install the method directly using Add", string, ".\n" );
+        
+        return;
+        
+    fi;
+    
+    for i in possible_implications do
+        
+        current_source := ShallowCopy( i[ 2 ] );
+        
+        ## Find category implications
+        
+        category_property := false;
+        
+        for j in current_source do
+            
+            if j in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories then
+                
+                category_property := j;
+                
+                Remove( current_source, Position( current_source, category_property ) );
+                
+                break;
+                
+            fi;
+            
+        od;
+        
+        if category_property = false 
+           or ( Tester( ValueGlobal( category_property ) )( category ) and ValueGlobal( category_property )( category ) ) then
+            
+            Print( "The method ", string, " can be derived by implementing\n" );
+            
+        elif Tester( ValueGlobal( category_property ) )( category ) = false then
+            
+            Print( "If ", Name( category ), " would be ", category_property, " then ", string, " could be derived by implementing\n" );
+            
+        else
+            
+            continue;
+            
+        fi;
+        
+        for j in current_source do
+            
+            Print( "* ", j, "\n" );
+            
+        od;
+        
+        Print( "\n" );
+        
+    od;
     
 end );
 
