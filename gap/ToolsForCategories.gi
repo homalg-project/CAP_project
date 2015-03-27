@@ -492,16 +492,6 @@ InstallGlobalFunction( PossibleDerivationsOfMethod,
     
     possible_implications := Filtered( CAP_INTERNAL_METHOD_IMPLICATION_LIST, i -> ForAny( i[ 1 ], j -> j = string ) );
     
-    if Length( possible_implications ) = 0 then
-        
-        Print( "No derived methods found.\n" );
-        
-        Print( "Please install the method directly using Add", string, ".\n" );
-        
-        return;
-        
-    fi;
-    
     for i in possible_implications do
         
         current_source := ShallowCopy( i[ 2 ] );
@@ -541,13 +531,35 @@ InstallGlobalFunction( PossibleDerivationsOfMethod,
         
         for j in current_source do
             
-            Print( "* ", j, "\n" );
+            Print( "* ", j );
+            
+            if Tester( ValueGlobal( Concatenation( "CanCompute", j ) ) )( category ) then
+                
+                Print( " (already installed)\n" );
+                
+            else
+                
+                Print( "\n" );
+                
+            fi;
             
         od;
         
         Print( "\n" );
         
     od;
+    
+    if Length( possible_implications ) = 0 then
+        
+        Print( "No derived methods found.\n\n" );
+        
+    fi;
+    
+    if IsBoundGlobal( Concatenation( "Add", string ) ) then
+        
+        Print( "It is possible to Add this method directly using Add", string, ".\n\n" );
+        
+    fi;
     
 end );
 

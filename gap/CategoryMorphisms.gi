@@ -127,7 +127,7 @@ InstallMethod( AddIsMonomorphism,
 end );
 
 ##
-InstallTrueMethod( CanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
+InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsMonomorphism,
                [ IsCapCategoryMorphism and CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
@@ -140,7 +140,7 @@ InstallMethod( IsMonomorphism,
 end );
 
 ##
-InstallTrueMethod( CanComputeIsMonomorphism, 
+InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, 
                    CanComputeIsIsomorphism
                    and CanComputeIdentityMorphism
                    and CanComputeProjectionInFactorOfPullback
@@ -195,7 +195,7 @@ InstallMethod( AddIsEpimorphism,
 end );
 
 #
-InstallTrueMethod( CanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
+InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsEpimorphism,
                [ IsCapCategoryMorphism and CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
@@ -208,7 +208,7 @@ InstallMethod( IsEpimorphism,
 end );
 
 ##
-InstallTrueMethod( CanComputeIsEpimorphism,
+InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism,
                    CanComputeIsIsomorphism
                    and CanComputeIdentityMorphism
                    and CanComputeInjectionOfCofactorOfPushout
@@ -263,7 +263,7 @@ InstallMethod( AddIsIsomorphism,
 end );
 
 ##
-InstallTrueMethod( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
+InstallTrueMethodAndStoreImplication( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
 
 InstallMethod( IsIsomorphism,
                [ IsCapCategoryMorphism and CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory ],
@@ -287,7 +287,7 @@ InstallMethod( UnderlyingObject,
                
   Range );
 
-InstallTrueMethod( CanComputeEqualityOfSubobjects, CanComputeDominates );
+InstallTrueMethodAndStoreImplication( CanComputeEqualityOfSubobjects, CanComputeDominates );
 
 ##
 InstallMethodWithCacheFromObject( IsEqualAsSubobject,
@@ -308,7 +308,7 @@ InstallMethodWithCacheFromObject( IsEqualAsSubobject,
     
 end );
 
-InstallTrueMethod( CanComputeEqualityOfFactorobjects, CanComputeCodominates );
+InstallTrueMethodAndStoreImplication( CanComputeEqualityOfFactorobjects, CanComputeCodominates );
 
 ##
 InstallMethodWithCacheFromObject( IsEqualAsFactorobject,
@@ -388,7 +388,7 @@ InstallMethod( AddCodominates,
 end );
 
 
-InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeCodominates and IsPreAbelianCategory );
+InstallTrueMethodAndStoreImplication( CanComputeDominates, CanComputeCokernelProj and CanComputeCodominates and IsPreAbelianCategory );
 
 ##
 InstallMethodWithCacheFromObject( Dominates,
@@ -410,7 +410,7 @@ InstallMethodWithCacheFromObject( Dominates,
     
 end );
 
-InstallTrueMethod( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+InstallTrueMethodAndStoreImplication( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
 
 ##
 InstallMethodWithCacheFromObject( Dominates,
@@ -433,7 +433,7 @@ InstallMethodWithCacheFromObject( Dominates,
 end );
 
 
-InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeDominates and IsPreAbelianCategory );
+InstallTrueMethodAndStoreImplication( CanComputeCodominates, CanComputeKernelEmb and CanComputeDominates and IsPreAbelianCategory );
 
 ##
 InstallMethodWithCacheFromObject( Codominates,
@@ -455,7 +455,7 @@ InstallMethodWithCacheFromObject( Codominates,
     
 end );
 
-InstallTrueMethod( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+InstallTrueMethodAndStoreImplication( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
 
 ##
 InstallMethodWithCacheFromObject( Codominates,
@@ -756,7 +756,7 @@ end );
 
 ## PostCompose
 ##
-InstallTrueMethod( CanComputePostCompose, CanComputePreCompose );
+InstallTrueMethodAndStoreImplication( CanComputePostCompose, CanComputePreCompose );
 
 InstallMethodWithCacheFromObject( PostCompose,
                                   [ IsCapCategoryMorphism and CanComputePreCompose,
@@ -770,7 +770,7 @@ end : ArgumentNumber := 1 );
 
 ## Inverse
 ##
-InstallTrueMethod( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
+InstallTrueMethodAndStoreImplication( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
 
 InstallMethodWithToDoForIsWellDefined( InverseOp,
                                        [ IsCapCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
@@ -787,7 +787,7 @@ end );
 
 
 ##
-InstallTrueMethod( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
+InstallTrueMethodAndStoreImplication( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
 
 InstallMethodWithToDoForIsWellDefined( InverseOp,
                                        [ IsCapCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
@@ -902,7 +902,7 @@ InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
 end );
 
 ## FIXME: IsAbelianCategory too restrictive
-InstallTrueMethod( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );
+InstallTrueMethodAndStoreImplication( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );
 
 InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
                                        [ IsCapCategoryMorphism ],
