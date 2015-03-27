@@ -427,4 +427,155 @@ InstallGlobalFunction( DeclareFamilyProperty,
     
 end );
 
+#
+InstallValue( CAP_INTERNAL_METHOD_IMPLICATION_LIST, [ ] );
+
+BindGlobal( "CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING",
+  
+  function( string )
+    
+    if PositionSublist( string, "CanCompute" ) <> fail then
+        
+        return string{[ 11 .. Length( string ) ]};
+        
+    fi;
+    
+    return string;
+    
+end );
+
+InstallGlobalFunction( InstallTrueMethodAndStoreImplication,
+  
+  function( range, source )
+    local names_source, names_range, i, remove_can_compute;
+    
+    InstallTrueMethod( range, source );
+    
+    names_range := NamesFilter( range );
+    
+    names_range := Filtered( names_range, i -> PositionSublist( i, "Tester(" ) = fail );
+    
+    Apply( names_range, CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING );
+    
+    names_source := NamesFilter( source );
+    
+    names_source := Filtered( names_source, i -> PositionSublist( i, "Tester(" ) = fail );
+    
+    Apply( names_source, CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING );
+    
+    Add( CAP_INTERNAL_METHOD_IMPLICATION_LIST, [ names_range, names_source ] );
+    
+end );
+
+InstallGlobalFunction( PossibleDerivationsOfMethod,
+  
+  function( category, string )
+    local triangle, i, j, possible_implications, current_source, category_property, can_compute_string;
+    
+    if IsCapCategory( string ) and IsString( category ) then
+        
+        triangle := string;
+        
+        string := category;
+        
+        category := triangle;
+        
+    fi;
+    
+    if not IsString( string ) or not IsCapCategory( category ) then
+        
+        Error( "Usage is <category>,<string>\n" );
+        
+        return;
+        
+    fi;
+    
+    if not IsBoundGlobal( string ) then
+        
+        Error( Concatenation( string, " is not bound globally." ) );
+        
+        return;
+        
+    fi;
+    
+    can_compute_string := Concatenation( "CanCompute", string );
+    
+    if Tester( ValueGlobal( can_compute_string ) )( category ) and ValueGlobal( can_compute_string )( category ) then
+        
+        Print( Name( category ), " can already compute ", string, ".\n\n" );
+        
+    fi;
+    
+    possible_implications := Filtered( CAP_INTERNAL_METHOD_IMPLICATION_LIST, i -> ForAny( i[ 1 ], j -> j = string ) );
+    
+    for i in possible_implications do
+        
+        current_source := ShallowCopy( i[ 2 ] );
+        
+        ## Find category implications
+        
+        category_property := false;
+        
+        for j in current_source do
+            
+            if j in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories then
+                
+                category_property := j;
+                
+                Remove( current_source, Position( current_source, category_property ) );
+                
+                break;
+                
+            fi;
+            
+        od;
+        
+        if category_property = false 
+           or ( Tester( ValueGlobal( category_property ) )( category ) and ValueGlobal( category_property )( category ) ) then
+            
+            Print( "The method ", string, " can be derived by implementing\n" );
+            
+        elif Tester( ValueGlobal( category_property ) )( category ) = false then
+            
+            Print( "If ", Name( category ), " would be ", category_property, " then ", string, " could be derived by implementing\n" );
+            
+        else
+            
+            continue;
+            
+        fi;
+        
+        for j in current_source do
+            
+            Print( "* ", j );
+            
+            if Tester( ValueGlobal( Concatenation( "CanCompute", j ) ) )( category ) then
+                
+                Print( " (already installed)\n" );
+                
+            else
+                
+                Print( "\n" );
+                
+            fi;
+            
+        od;
+        
+        Print( "\n" );
+        
+    od;
+    
+    if Length( possible_implications ) = 0 then
+        
+        Print( "No derived methods found.\n\n" );
+        
+    fi;
+    
+    if IsBoundGlobal( Concatenation( "Add", string ) ) then
+        
+        Print( "It is possible to Add this method directly using Add", string, ".\n\n" );
+        
+    fi;
+    
+end );
 

@@ -219,7 +219,7 @@ InstallMethod( Add,
     
 end );
 
-InstallTrueMethod( CanComputeZeroMorphism, CanComputePreCompose
+InstallTrueMethodAndStoreImplication( CanComputeZeroMorphism, CanComputePreCompose
                                        and CanComputeUniversalMorphismIntoTerminalObject
                                        and CanComputeUniversalMorphismFromInitialObject
                                        and IsAdditiveCategory );
@@ -296,7 +296,7 @@ InstallMethod( AddIsZeroForObjects,
 end );
 
 ##
-InstallTrueMethod( SetCanComputeIsZeroForObjects, CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms );
+InstallTrueMethodAndStoreImplication( CanComputeIsZeroForObjects, CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms );
 
 InstallMethod( IsZero,
                [ IsCapCategoryObject and CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms ],

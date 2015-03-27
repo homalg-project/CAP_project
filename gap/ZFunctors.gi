@@ -23,6 +23,15 @@ BindGlobal( "TheTypeOfZFunctorMorphism",
         NewType( TheFamilyOfCapCategoryMorphisms,
                 IsZFunctorMorphismRep ) );
 
+
+#############################
+##
+## Technical stuff
+##
+#############################
+
+
+
 #############################
 ##
 ## Attributes
@@ -1140,18 +1149,7 @@ InstallMethod( ZFunctorObjectExtendedByInitialAndIdentity,
         
     end;
     
-    object := rec( objects_positive := WeakPointerObj( [ ] ),
-                   objects_nonpositive := WeakPointerObj( [ ] ),
-                   differentials_positive := WeakPointerObj( [ ] ),
-                   differentials_nonpositive := WeakPointerObj( [ ] ),
-                   object_func := new_object_func,
-                   differential_func := new_differential_func );
-    
-    ObjectifyWithAttributes( object, TheTypeOfZFunctorObject );
-    
-    Add( ZFunctorCategory( category ), object );
-    
-    return object;
+    return ZFunctorObject( new_object_func, new_differential_func, category );
     
 end );
 
@@ -1203,32 +1201,7 @@ InstallMethod( AsZFunctorObjectOp,
       fi;
     end;
     
-    objects_positive := WeakPointerObj( [ ] );
-    
-    objects_nonpositive := WeakPointerObj( [ ] );
-    
-    if embedding_index > 0 then
-        
-        SetElmWPObj( objects_positive, embedding_index, object );
-        
-    else
-        
-        SetElmWPObj( objects_nonpositive, -embedding_index + 1, object );
-        
-    fi;
-    
-    z_functor_object := rec( objects_positive := objects_positive,
-                             objects_nonpositive := objects_nonpositive,
-                             differentials_positive := WeakPointerObj( [ ] ),
-                             differentials_nonpositive := WeakPointerObj( [ ] ),
-                             object_func := object_func,
-                             differential_func := differential_func );
-    
-    ObjectifyWithAttributes( z_functor_object, TheTypeOfZFunctorObject );
-    
-    Add( ZFunctorCategory( CapCategory( object ) ), z_functor_object );
-    
-    return z_functor_object;
+    return ZFunctorObject( object_func, differential_func, CapCategory( object ) );
     
 end );
 
@@ -1439,34 +1412,10 @@ InstallMethod( AsZFunctorMorphismOp,
         fi;
     end;
     
-    morphisms_positive := WeakPointerObj( [ ] );
-    
-    morphisms_nonpositive := WeakPointerObj( [ ] );
-    
-    if embedding_index > 0 then
-        
-        SetElmWPObj( morphisms_positive, embedding_index, morphism );
-        
-    else
-        
-        SetElmWPObj( morphisms_nonpositive, -embedding_index + 1, morphism );
-    
-    fi;
-    
-    z_functor_morphism := rec( morphisms_positive := morphisms_positive,
-                     morphisms_nonpositive := morphisms_nonpositive,
-                     morphism_func := morphism_func );
-    
     source := AsZFunctorObject( Source( morphism ), embedding_index );
     
     range := AsZFunctorObject( Range( morphism ), embedding_index );
     
-    ObjectifyWithAttributes( z_functor_morphism, TheTypeOfZFunctorMorphism,
-                             Source, source,
-                             Range, range );
-    
-    Add( CapCategory( source ), z_functor_morphism );
-    
-    return z_functor_morphism;
+    return ZFunctorMorphism( source, morphism_func, range );
     
 end );

@@ -247,7 +247,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
+InstallTrueMethodAndStoreImplication( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
 
 InstallMethodWithCacheFromObject( KernelLift,
                                   [ IsCapCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
@@ -265,7 +265,7 @@ InstallMethodWithCacheFromObject( KernelLift,
 end );
 
 ##
-InstallTrueMethod( CanComputeKernelLiftWithGivenKernel, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
+InstallTrueMethodAndStoreImplication( CanComputeKernelLiftWithGivenKernel, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
 
 InstallMethodWithCacheFromObject( KernelLiftWithGivenKernel,
                                   [ IsCapCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
@@ -280,7 +280,7 @@ InstallMethodWithCacheFromObject( KernelLiftWithGivenKernel,
 end );
 
 ##
-InstallTrueMethod( CanComputeKernel, CanComputeKernelEmb );
+InstallTrueMethodAndStoreImplication( CanComputeKernel, CanComputeKernelEmb );
 
 InstallMethod( KernelObject,
                [ IsCapCategoryMorphism and CanComputeKernelEmb ],
@@ -294,7 +294,7 @@ end );
 
 
 ##
-InstallTrueMethod( CanComputeKernelEmb, CanComputeKernel and CanComputeKernelEmbWithGivenKernel );
+InstallTrueMethodAndStoreImplication( CanComputeKernelEmb, CanComputeKernel and CanComputeKernelEmbWithGivenKernel );
 
 InstallMethod( KernelEmb,
                [ IsCapCategoryMorphism and CanComputeKernel and CanComputeKernelEmbWithGivenKernel ],
@@ -307,7 +307,7 @@ InstallMethod( KernelEmb,
 end );
 
 ##
-InstallTrueMethod( CanComputeKernelLift, CanComputeKernel and CanComputeKernelLiftWithGivenKernel );
+InstallTrueMethodAndStoreImplication( CanComputeKernelLift, CanComputeKernel and CanComputeKernelLiftWithGivenKernel );
 
 InstallMethod( KernelLift,
                [ IsCapCategoryMorphism and CanComputeKernel and CanComputeKernelLiftWithGivenKernel,
@@ -335,7 +335,7 @@ InstallMethod( KernelObjectFunctorial,
 end );
 
 ##
-InstallTrueMethod( CanComputeKernelObjectFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputeKernelObjectFunctorial,
                    CanComputeKernelLift and CanComputeKernelEmb and CanComputePreCompose );
 
 InstallMethodWithCacheFromObject( KernelObjectFunctorial,
@@ -564,7 +564,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
+InstallTrueMethodAndStoreImplication( CanComputeCokernelColift, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
 
 InstallMethodWithCacheFromObject( CokernelColift,
                                   [ IsCapCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
@@ -578,7 +578,7 @@ InstallMethodWithCacheFromObject( CokernelColift,
 end );
 
 ##
-InstallTrueMethod( CanComputeCokernelColiftWithGivenCokernel, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
+InstallTrueMethodAndStoreImplication( CanComputeCokernelColiftWithGivenCokernel, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
 
 InstallMethodWithCacheFromObject( CokernelColiftWithGivenCokernel,
                                   [ IsCapCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
@@ -593,7 +593,7 @@ end );
 
 
 ##
-InstallTrueMethod( CanComputeCokernel, CanComputeCokernelProj );
+InstallTrueMethodAndStoreImplication( CanComputeCokernel, CanComputeCokernelProj );
 
 InstallMethod( Cokernel,
                [ IsCapCategoryMorphism and CanComputeCokernelProj ],
@@ -606,7 +606,7 @@ InstallMethod( Cokernel,
 end );
 
 ##
-InstallTrueMethod( CanComputeCokernelProj, CanComputeCokernel and CanComputeCokernelProjWithGivenCokernel );
+InstallTrueMethodAndStoreImplication( CanComputeCokernelProj, CanComputeCokernel and CanComputeCokernelProjWithGivenCokernel );
 
 InstallMethod( CokernelProj,
                [ IsCapCategoryMorphism and CanComputeCokernel and CanComputeCokernelProjWithGivenCokernel ],
@@ -619,7 +619,7 @@ InstallMethod( CokernelProj,
 end );
 
 ##
-InstallTrueMethod( CanComputeCokernelColift, CanComputeCokernel and CanComputeCokernelColiftWithGivenCokernel );
+InstallTrueMethodAndStoreImplication( CanComputeCokernelColift, CanComputeCokernel and CanComputeCokernelColiftWithGivenCokernel );
 
 InstallMethod( CokernelColift,
                [ IsCapCategoryMorphism and CanComputeCokernel and CanComputeCokernelColiftWithGivenCokernel,
@@ -647,7 +647,7 @@ InstallMethod( CokernelFunctorial,
 end );
 
 ##
-InstallTrueMethod( CanComputeCokernelFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputeCokernelFunctorial,
                    CanComputeCokernelColift and CanComputeCokernelProj and CanComputePreCompose );
 
 InstallMethodWithCacheFromObject( CokernelFunctorial,
@@ -1006,7 +1006,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeCoproduct, CanComputeInjectionOfCofactorOfCoproduct );
+InstallTrueMethodAndStoreImplication( CanComputeCoproduct, CanComputeInjectionOfCofactorOfCoproduct );
 
 ##
 ## this methods is installed using the (cache of the (object of the second argument) )
@@ -1022,7 +1022,7 @@ InstallMethodWithToDoForIsWellDefined( CoproductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismFromCoproduct,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromCoproduct,
                    CanComputeCoproduct and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
@@ -1038,7 +1038,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
-InstallTrueMethod( CanComputeInjectionOfCofactorOfCoproduct, CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct );
+InstallTrueMethodAndStoreImplication( CanComputeInjectionOfCofactorOfCoproduct, CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct );
 
 InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
                                        [ IsList,
@@ -1067,7 +1067,7 @@ InstallMethod( CoproductFunctorial,
 end );
 
 ##
-InstallTrueMethod( CanComputeCoproductFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputeCoproductFunctorial,
                    CanComputeCoproduct and CanComputePreCompose and CanComputeInjectionOfCofactorOfCoproduct
                    and CanComputeUniversalMorphismFromCoproduct );
 
@@ -1451,7 +1451,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeDirectProduct, CanComputeProjectionInFactorOfDirectProduct );
+InstallTrueMethodAndStoreImplication( CanComputeDirectProduct, CanComputeProjectionInFactorOfDirectProduct );
 
 ##
 InstallMethodWithToDoForIsWellDefined( DirectProductOp,
@@ -1466,7 +1466,7 @@ InstallMethodWithToDoForIsWellDefined( DirectProductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProduct,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoDirectProduct,
                    CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
@@ -1482,7 +1482,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
-InstallTrueMethod( CanComputeProjectionInFactorOfDirectProduct, CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct );
+InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfDirectProduct, CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct );
 
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
                                        [ IsList,
@@ -1511,7 +1511,7 @@ InstallMethod( DirectProductFunctorial,
 end );
 
 ##
-InstallTrueMethod( CanComputeDirectProductFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputeDirectProductFunctorial,
                    CanComputeDirectProduct and CanComputePreCompose and CanComputeProjectionInFactorOfDirectProduct 
                    and CanComputeUniversalMorphismIntoDirectProduct );
 
@@ -1666,7 +1666,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeDirectProduct,
+InstallTrueMethodAndStoreImplication( CanComputeDirectProduct,
                    CanComputeDirectSum );
 
 InstallMethodWithToDoForIsWellDefined( DirectProductOp,
@@ -1680,7 +1680,7 @@ InstallMethodWithToDoForIsWellDefined( DirectProductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeCoproduct,
+InstallTrueMethodAndStoreImplication( CanComputeCoproduct,
                    CanComputeDirectSum );
 
 InstallMethodWithToDoForIsWellDefined( CoproductOp,
@@ -1694,7 +1694,7 @@ InstallMethodWithToDoForIsWellDefined( CoproductOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
                    IsAdditiveCategory
                    and CanComputeInjectionOfCofactorOfCoproduct
                    and CanComputeAdditionForMorphisms 
@@ -1721,7 +1721,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGiv
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3  );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,
                    IsAdditiveCategory
                    and CanComputeProjectionInFactorOfDirectProduct
                    and CanComputeAdditionForMorphisms 
@@ -1748,7 +1748,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCo
 end  : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
-InstallTrueMethod( CanComputeAdditionForMorphisms,
+InstallTrueMethodAndStoreImplication( CanComputeAdditionForMorphisms,
                    IsAdditiveCategory
                    and CanComputeDirectSum
                    and CanComputeUniversalMorphismIntoDirectProduct
@@ -1793,7 +1793,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeDirectSumFunctorial, CanComputeDirectProductFunctorial and IsAbCategory );
+InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeDirectProductFunctorial and IsAbCategory );
 
 InstallMethod( DirectSumFunctorial,
                [ IsList ],
@@ -1805,7 +1805,7 @@ InstallMethod( DirectSumFunctorial,
 end );
 
 ##
-InstallTrueMethod( CanComputeDirectSumFunctorial, CanComputeCoproductFunctorial and IsAbCategory );
+InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeCoproductFunctorial and IsAbCategory );
 
 InstallMethod( DirectSumFunctorial,
                [ IsList ],
@@ -1876,7 +1876,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeTerminalObject, CanComputeZeroObject );
+InstallTrueMethodAndStoreImplication( CanComputeTerminalObject, CanComputeZeroObject );
 
 ##
 InstallMethod( AddZeroObject,
@@ -2094,7 +2094,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismIntoTerminalObject,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoTerminalObject,
                    CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject );
 
 InstallMethod( UniversalMorphismIntoTerminalObject,
@@ -2108,7 +2108,7 @@ InstallMethod( UniversalMorphismIntoTerminalObject,
 end );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
                    CanComputeZeroMorphism
                    and IsAdditiveCategory );
 
@@ -2126,7 +2126,7 @@ InstallMethod( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
 end );
 
 ##
-InstallTrueMethod( CanComputeTerminalObject, CanComputeZeroObject );
+InstallTrueMethodAndStoreImplication( CanComputeTerminalObject, CanComputeZeroObject );
 
 ##
 InstallMethod( TerminalObject,
@@ -2155,7 +2155,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeTerminalObjectFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputeTerminalObjectFunctorial,
                    CanComputeTerminalObject and CanComputeIdentityMorphism );
 
 InstallMethod( TerminalObjectFunctorial,
@@ -2171,7 +2171,7 @@ InstallMethod( TerminalObjectFunctorial,
 end );
 
 ##
-InstallTrueMethod( CanComputeTerminalObjectFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputeTerminalObjectFunctorial,
                    CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObject );
 
 InstallMethod( TerminalObjectFunctorial,
@@ -2326,7 +2326,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismFromInitialObject,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromInitialObject,
                    CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject );
 
 InstallMethod( UniversalMorphismFromInitialObject,
@@ -2340,7 +2340,7 @@ InstallMethod( UniversalMorphismFromInitialObject,
 end );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject,
                    CanComputeZeroMorphism
                    and IsAdditiveCategory );
 
@@ -2358,7 +2358,7 @@ InstallMethod( UniversalMorphismFromInitialObjectWithGivenInitialObject,
 end );
 
 ##
-InstallTrueMethod( CanComputeInitialObject, CanComputeZeroObject );
+InstallTrueMethodAndStoreImplication( CanComputeInitialObject, CanComputeZeroObject );
 
 ##
 InstallMethod( InitialObject,
@@ -2387,7 +2387,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeInitialObjectFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputeInitialObjectFunctorial,
                    CanComputeInitialObject and CanComputeIdentityMorphism );
 
 InstallMethod( InitialObjectFunctorial,
@@ -2403,7 +2403,7 @@ InstallMethod( InitialObjectFunctorial,
 end );
 
 ##
-InstallTrueMethod( CanComputeInitialObjectFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputeInitialObjectFunctorial,
                    CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObject );
 
 InstallMethod( InitialObjectFunctorial,
@@ -2729,7 +2729,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputePullback, CanComputeDirectProduct and 
+InstallTrueMethodAndStoreImplication( CanComputePullback, CanComputeDirectProduct and 
                                        CanComputeProjectionInFactorOfDirectProduct and 
                                        CanComputePreCompose and
                                        CanComputeAdditionForMorphisms and
@@ -2791,7 +2791,7 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethod( CanComputeProjectionInFactorOfPullback, CanComputeProjectionInFactorOfPullbackWithGivenPullback and 
+InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfPullback, CanComputeProjectionInFactorOfPullbackWithGivenPullback and 
                                                            CanComputePullback );
 
 InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackOp,
@@ -2808,7 +2808,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
-InstallTrueMethod( CanComputeProjectionInFactorOfPullbackWithGivenPullback, CanComputeKernelEmb and
+InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfPullbackWithGivenPullback, CanComputeKernelEmb and
                                                                   CanComputeProjectionInFactorOfDirectProduct and
                                                                   CanComputePullback );
 
@@ -2854,7 +2854,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPull
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismIntoPullbackWithGivenPullback, CanComputeUniversalMorphismIntoDirectProduct and
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoPullbackWithGivenPullback, CanComputeUniversalMorphismIntoDirectProduct and
                                                                              CanComputeKernelLift );
 
 # FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
@@ -2884,7 +2884,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismIntoPullback, CanComputeUniversalMorphismIntoPullbackWithGivenPullback and 
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoPullback, CanComputeUniversalMorphismIntoPullbackWithGivenPullback and 
                                                             CanComputePullback );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
@@ -2913,7 +2913,7 @@ InstallMethod( PullbackFunctorial,
 end );
 
 ##
-InstallTrueMethod( CanComputePullbackFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputePullbackFunctorial,
                    CanComputePullback
                    and CanComputePreCompose
                    and CanComputeProjectionInFactorOfPullback
@@ -3251,7 +3251,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputePushout, CanComputeCoproduct and 
+InstallTrueMethodAndStoreImplication( CanComputePushout, CanComputeCoproduct and 
                                       CanComputeInjectionOfCofactorOfCoproduct and 
                                       CanComputePreCompose and
                                       CanComputeAdditionForMorphisms and
@@ -3313,7 +3313,7 @@ InstallMethodWithToDoForIsWellDefined( PushoutOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 #
-InstallTrueMethod( CanComputeInjectionOfCofactorOfPushout, CanComputeInjectionOfCofactorOfPushoutWithGivenPushout and 
+InstallTrueMethodAndStoreImplication( CanComputeInjectionOfCofactorOfPushout, CanComputeInjectionOfCofactorOfPushoutWithGivenPushout and 
                                                            CanComputePushout );
 
 InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutOp,
@@ -3330,7 +3330,7 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutOp,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 # ##
-InstallTrueMethod( CanComputeInjectionOfCofactorOfPushoutWithGivenPushout, CanComputeCokernelProj and
+InstallTrueMethodAndStoreImplication( CanComputeInjectionOfCofactorOfPushoutWithGivenPushout, CanComputeCokernelProj and
                                                                   CanComputeInjectionOfCofactorOfCoproduct and
                                                                   CanComputePushout );
 
@@ -3373,7 +3373,7 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPush
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismFromPushoutWithGivenPushout, CanComputeUniversalMorphismFromCoproduct and
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromPushoutWithGivenPushout, CanComputeUniversalMorphismFromCoproduct and
                                                                            CanComputeCokernelColift );
 
 # FIXME: WARNING: This method only applies if the pushout was created as a cokernel. If the
@@ -3402,7 +3402,7 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismFromPushout, CanComputeUniversalMorphismFromPushoutWithGivenPushout and 
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromPushout, CanComputeUniversalMorphismFromPushoutWithGivenPushout and 
                                                            CanComputePushout );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
@@ -3431,7 +3431,7 @@ InstallMethod( PushoutFunctorial,
 end );
 
 ##
-InstallTrueMethod( CanComputePushoutFunctorial,
+InstallTrueMethodAndStoreImplication( CanComputePushoutFunctorial,
                    CanComputePushout
                    and CanComputePreCompose
                    and CanComputeInjectionOfCofactorOfPushout
@@ -3749,7 +3749,7 @@ end );
 ####################################
 
 ##
-InstallTrueMethod( CanComputeImage, CanComputeImageEmbedding );
+InstallTrueMethodAndStoreImplication( CanComputeImage, CanComputeImageEmbedding );
 
 InstallMethod( ImageObject,
                [ IsCapCategoryMorphism and CanComputeImageEmbedding ],
@@ -3769,7 +3769,7 @@ end );
 ## there is no need to implement ImageEmbeddingWithGivenImage in order
 ## to keep these methods consistent.
 ##
-InstallTrueMethod( CanComputeImageEmbedding, CanComputeKernelEmb and CanComputeCokernelProj );
+InstallTrueMethodAndStoreImplication( CanComputeImageEmbedding, CanComputeKernelEmb and CanComputeCokernelProj );
 
 InstallMethod( ImageEmbedding,
                [ IsCapCategoryMorphism and CanComputeImageEmbedding ],
@@ -3800,7 +3800,7 @@ InstallMethod( ImageEmbedding,
 end );
 
 ##
-InstallTrueMethod( CanComputeImageEmbedding, CanComputeImageEmbeddingWithGivenImage and CanComputeImage );
+InstallTrueMethodAndStoreImplication( CanComputeImageEmbedding, CanComputeImageEmbeddingWithGivenImage and CanComputeImage );
 
 InstallMethod( ImageEmbedding,
                [ IsCapCategoryMorphism
@@ -3816,7 +3816,7 @@ end );
 
 
 ##
-InstallTrueMethod( CanComputeCoastrictionToImage, CanComputeCoastrictionToImageWithGivenImage and CanComputeImage );
+InstallTrueMethodAndStoreImplication( CanComputeCoastrictionToImage, CanComputeCoastrictionToImageWithGivenImage and CanComputeImage );
 
 InstallMethod( CoastrictionToImage,
                [ IsCapCategoryMorphism
@@ -3831,7 +3831,7 @@ InstallMethod( CoastrictionToImage,
 end );
 
 ##
-InstallTrueMethod( CanComputeCoastrictionToImage,
+InstallTrueMethodAndStoreImplication( CanComputeCoastrictionToImage,
                    CanComputeImageEmbedding
                    and CanComputeMonoAsKernelLift );
 
@@ -3851,7 +3851,7 @@ InstallMethod( CoastrictionToImage,
 end );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismFromImage,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromImage,
                    CanComputeUniversalMorphismFromImageWithGivenImage
                    and CanComputeImage );
 
@@ -3869,7 +3869,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImage,
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 1 );
 
 ##
-InstallTrueMethod( CanComputeUniversalMorphismFromImage,
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromImage,
                    CanComputeMonoAsKernelLift
                    and CanComputeImageEmbedding );
 
