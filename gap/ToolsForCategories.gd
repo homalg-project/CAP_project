@@ -48,3 +48,11 @@ DeclareGlobalFunction( "AddSpecialMethod" );
 #!
 DeclareGlobalFunction( "DeclareFamilyProperty" );
 
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_IMPLICATION_LIST" );
+
+#!
+DeclareGlobalFunction( "InstallTrueMethodAndStoreImplication" );
+
+#!
+DeclareGlobalFunction( "PossibleDerivationsOfMethod" );
+

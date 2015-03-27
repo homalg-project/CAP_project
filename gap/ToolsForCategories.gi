@@ -427,4 +427,68 @@ InstallGlobalFunction( DeclareFamilyProperty,
     
 end );
 
+#
+InstallValue( CAP_INTERNAL_METHOD_IMPLICATION_LIST, [ ] );
+
+BindGlobal( "CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING",
+  
+  function( string )
+    
+    if PositionSublist( string, "CanCompute" ) <> fail then
+        
+        return string{[ 11 .. Length( string ) ]};
+        
+    fi;
+    
+    return string;
+    
+end );
+
+InstallGlobalFunction( InstallTrueMethodAndStoreImplication,
+  
+  function( range, source )
+    local names_source, names_range, i, remove_can_compute;
+    
+    InstallTrueMethod( range, source );
+    
+    names_range := NamesFilter( range );
+    
+    names_range := Filtered( names_range, i -> PositionSublist( i, "Tester(" ) = fail );
+    
+    Apply( names_range, CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING );
+    
+    names_source := NamesFilter( source );
+    
+    names_source := Filtered( names_source, i -> PositionSublist( i, "Tester(" ) = fail );
+    
+    Apply( names_source, CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING );
+    
+    Add( CAP_INTERNAL_METHOD_IMPLICATION_LIST, [ names_range, names_source ] );
+    
+end );
+
+InstallGlobalFunction( PossibleDerivationsOfMethod,
+  
+  function( category, string )
+    local triangle;
+    
+    if IsCapCategory( string ) and IsString( category ) then
+        
+        triangle := string;
+        
+        string := category;
+        
+        category := triangle;
+        
+    fi;
+    
+    if not IsString( string ) or not IsCapCategory( category ) then
+        
+        Error( "Usage is <category>,<string>\n" );
+        
+        return;
+        
+    fi;
+    
+end );
 
