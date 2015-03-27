@@ -44,9 +44,9 @@ InstallGlobalFunction( ListCanComputesOfCategory,
     
     cannot_compute := [ ];
     
-    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST do
+    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForAllCategories do
         
-        if PositionSublist( i, "CanCompute" ) = fail then
+        if PositionSublist( i, "WithGiven" ) <> fail then
             
             continue;
             
