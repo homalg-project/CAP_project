@@ -470,7 +470,7 @@ end );
 InstallGlobalFunction( PossibleDerivationsOfMethod,
   
   function( category, string )
-    local triangle, i, j, possible_implications, current_source, category_property;
+    local triangle, i, j, possible_implications, current_source, category_property, can_compute_string;
     
     if IsCapCategory( string ) and IsString( category ) then
         
@@ -487,6 +487,22 @@ InstallGlobalFunction( PossibleDerivationsOfMethod,
         Error( "Usage is <category>,<string>\n" );
         
         return;
+        
+    fi;
+    
+    if not IsBoundGlobal( string ) then
+        
+        Error( Concatenation( string, " is not bound globally." ) );
+        
+        return;
+        
+    fi;
+    
+    can_compute_string := Concatenation( "CanCompute", string );
+    
+    if Tester( ValueGlobal( can_compute_string ) )( category ) and ValueGlobal( can_compute_string )( category ) then
+        
+        Print( Name( category ), " can already compute ", string, ".\n\n" );
         
     fi;
     
