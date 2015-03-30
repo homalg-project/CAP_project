@@ -56,3 +56,6 @@ DeclareGlobalFunction( "InstallTrueMethodAndStoreImplication" );
 #!
 DeclareGlobalFunction( "PossibleDerivationsOfMethod" );
 
+#!
+DeclareGlobalFunction( "ListCanComputesOfCategory" );
+

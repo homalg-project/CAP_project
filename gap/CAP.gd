@@ -179,8 +179,6 @@ InstallValue( CATEGORIES_FAMILY_PROPERTIES,
               
               rec( ) );
 
-DeclareGlobalFunction( "ListCanComputesOfCategory" );
-
 ###################################
 ##
 #! @Section Categories
