@@ -1818,6 +1818,43 @@ InstallMethod( DirectSumFunctorial,
 end );
 
 ####################################
+## Convenience operations
+####################################
+
+##
+InstallMethod( MorphismBetweenDirectSums,
+               [ IsList ],
+               
+  function( morphism_matrix )
+    local diagram_direct_sum_source, diagram_direct_sum_range;
+    
+    diagram_direct_sum_source := List( morphism_matrix, row -> Source( row[1] ) );
+    
+    diagram_direct_sum_range := List( morphism_matrix[1], entry -> Range( entry ) );
+    
+    return MorphismBetweenDirectSumsOp( diagram_direct_sum_source, morphism_matrix, diagram_direct_sum_range, diagram_direct_sum_source[1] );
+    
+end );
+
+InstallMethodWithCacheFromObject( MorphismBetweenDirectSumsOp,
+                                  [ IsList, IsList, IsList, IsCapCategoryObject ],
+                                  
+  function( diagram_direct_sum_source, morphism_matrix, diagram_direct_sum_range, method_selection_object )
+    local test_diagram_product, test_diagram_coproduct, morphism_into_product;
+    
+    test_diagram_coproduct := [ ];
+    
+    for test_diagram_product in morphism_matrix do
+      
+      Add( test_diagram_coproduct, UniversalMorphismIntoDirectProduct( diagram_direct_sum_range, test_diagram_product ) );
+      
+    od;
+    
+    return UniversalMorphismFromCoproduct( diagram_direct_sum_source, test_diagram_coproduct );
+    
+end: ArgumentNumber := 4 );
+
+####################################
 ##
 ## Zero Object
 ##
