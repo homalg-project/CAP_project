@@ -936,7 +936,7 @@ InstallMethod( ComplexFromMorphismList,
                
   function( morphism_list, start_position )
     
-    return AsComplex( ZFunctorObjectFromMorphismList( morphism_list, -start_position ) );
+    return AsComplex( ZFunctorObjectFromMorphismList( Reversed( morphism_list ), -start_position ) );
     
 end );
 
