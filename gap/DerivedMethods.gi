@@ -821,6 +821,37 @@ InstallMethodWithToDoForIsWellDefined( \+,
     
 end );
 
+##
+InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeDirectProductFunctorial and IsAdditiveCategory );
+
+InstallMethodWithCacheFromObject( DirectSumFunctorialOp,
+                                  [ IsList,
+                                    IsCapCategoryMorphism
+                                    and CanComputeDirectProductFunctorial
+                                    and IsAdditiveCategory ],
+                 
+  function( morphism_list, method_selection_morphism )
+    
+    return DirectProductFunctorial( morphism_list );
+    
+end : ArgumentNumber := 2 );
+
+##
+InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeCoproductFunctorial and IsAdditiveCategory );
+
+InstallMethodWithCacheFromObject( DirectSumFunctorialOp,
+                                  [ IsList,
+                                    IsCapCategoryMorphism
+                                    and CanComputeCoproductFunctorial 
+                                    and IsAdditiveCategory ],
+                                   -9999,
+                                  
+  function( morphism_list, method_selection_morphism )
+    
+    return CoproductFunctorial( morphism_list );
+    
+end : ArgumentNumber := 2 );
+
 ####################################
 ## Derived Methods for TerminalObject
 ####################################

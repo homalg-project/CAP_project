@@ -1340,27 +1340,12 @@ end );
 ## FIXME: There has to be a DirectSumFunctorialOp in order to
 ## add these methods properly to the derivation graph
 ##
-InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeDirectProductFunctorial and IsAbCategory );
-
 InstallMethod( DirectSumFunctorial,
                [ IsList ],
                                   
   function( morphism_list )
     
-    return DirectProductFunctorial( morphism_list );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeCoproductFunctorial and IsAbCategory );
-
-InstallMethod( DirectSumFunctorial,
-               [ IsList ],
-               -9999,
-                                  
-  function( morphism_list )
-    
-    return CoproductFunctorial( morphism_list );
+    return DirectSumFunctorialOp( morphism_list, morphism_list[1] );
     
 end );
 

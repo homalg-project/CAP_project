@@ -786,6 +786,13 @@ DeclareOperation( "AddDirectSum",
 DeclareOperation( "DirectSumFunctorial",
                   [ IsList ] );
 
+#! @Description
+#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ and a morphism $m$ for the method selection.
+#! @Returns $\phi$
+#! @Arguments L, m
+DeclareOperation( "DirectSumFunctorialOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
 ## WasCreatedAs Filter
 
 #! @Chapter Technical Details
