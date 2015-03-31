@@ -745,6 +745,14 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 DeclareOperationWithCache( "DirectSumOp",
                            [ IsList, IsCapCategoryObject ] );
 
+## convenience methods
+
+DeclareOperationWithCache( "MorphismBetweenDirectSums",
+                           [ IsList ] );
+
+DeclareOperationWithCache( "MorphismBetweenDirectSumsOp",
+                           [ IsList, IsInt, IsInt, IsCapCategoryMorphism ] );
+
 ## Function Attributes
 #! @AutoDoc
 #! @BeginGroup

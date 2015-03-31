@@ -405,6 +405,39 @@ InstallMethod( AddEpiAsCokernelColift,
     
 end );
 
+## this derivation leads to circuits
+##
+# InstallTrueMethodAndStoreImplication( CanComputeEpiAsCokernelColift, 
+#                                       CanComputeKernelEmb
+#                                       and CanComputeCokernelColift
+#                                       and CanComputePreCompose
+#                                       and CanComputeInverse );
+# 
+# InstallMethodWithCacheFromObject( EpiAsCokernelColift,
+#                                   [ IsCapCategoryMorphism
+#                                     and CanComputeKernelEmb
+#                                     and CanComputeCokernelColift
+#                                     and CanComputePreCompose
+#                                     and CanComputeInverse,
+#                                     IsCapCategoryMorphism ],
+#                                     -9999, ##FIXME
+#                                     
+#   function( epimorphism, test_morphism )
+#     local kernel_emb, cokernel_colift_to_range_of_epimorphism, cokernel_colift_to_range_of_test_morphism, inverse;
+#     
+#     kernel_emb := KernelEmb( epimorphism );
+#     
+#     cokernel_colift_to_range_of_epimorphism :=
+#       CokernelColift( kernel_emb, epimorphism );
+#       
+#     cokernel_colift_to_range_of_test_morphism :=
+#       CokernelColift( kernel_emb, test_morphism );
+#     
+#     return PreCompose( Inverse( cokernel_colift_to_range_of_epimorphism ), cokernel_colift_to_range_of_test_morphism );
+#     
+# end );
+
+
 ####################################
 ##
 ## Inverse
