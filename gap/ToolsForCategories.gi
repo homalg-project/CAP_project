@@ -66,6 +66,49 @@ InstallGlobalFunction( InstallMethodWithToDoForIsWellDefined,
 end );
 
 ##
+InstallGlobalFunction( "ToDoForIsWellDefinedWrapper",
+  
+  function( orig_func )
+    
+    new_func := function( arg )
+        local val, entry, i, filtered_arg, list_args;
+        
+        ## ToDo: This can be improved
+        filtered_arg := Filtered( arg, IsCapCategoryCell );
+        
+        list_args := Flat( Filtered( arg, IsList ) );
+        
+        list_args := Filtered( list_args, IsCapCategoryCell );
+        
+        filtered_arg := Concatenation( filtered_arg, list_args );
+        
+        val := CallFuncList( orig_func, arg );
+        
+        entry := ToDoListEntry( List( filtered_arg, i -> [ i, "IsWellDefined", true ] ), val, "IsWellDefined", true );
+        
+        SetDescriptionOfImplication( entry, "Well defined propagation" );
+        
+        AddToToDoList( entry );
+        
+        for i in filtered_arg do
+            
+            entry := ToDoListEntry( [ [ i, "IsWellDefined", false ] ], val, "IsWellDefined", false );
+            
+            SetDescriptionOfImplication( entry, "Well defined propagation" );
+            
+            AddToToDoList( entry );
+            
+        od;
+        
+        return val;
+        
+    end;
+    
+    return new_func;
+    
+end );
+
+##
 InstallMethod( InstallSetWithToDoForIsWellDefined,
                [ IsCachingObject, IsString, IsList ],
                

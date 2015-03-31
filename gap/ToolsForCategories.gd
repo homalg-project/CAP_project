@@ -27,6 +27,8 @@
 #!  which is then used instead of InstallMethod. This is used for the caching functions.
 DeclareGlobalFunction( "InstallMethodWithToDoForIsWellDefined" );
 
+DeclareGlobalFunction( "ToDoForIsWellDefinedWrapper" );
+
 
 #! @Description
 #!  For the caching one needs the possibility to install setters for functions with multiple arguments.
