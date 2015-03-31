@@ -1826,21 +1826,43 @@ InstallMethod( MorphismBetweenDirectSums,
                [ IsList ],
                
   function( morphism_matrix )
-    local diagram_direct_sum_source, diagram_direct_sum_range;
+    local morphism_matrix_listlist, row, rows, cols;
     
-    diagram_direct_sum_source := List( morphism_matrix, row -> Source( row[1] ) );
+    morphism_matrix_listlist := [ ];
     
-    diagram_direct_sum_range := List( morphism_matrix[1], entry -> Range( entry ) );
+    for row in morphism_matrix do
+      
+      Append( morphism_matrix_listlist, row );
+      
+    od;
     
-    return MorphismBetweenDirectSumsOp( diagram_direct_sum_source, morphism_matrix, diagram_direct_sum_range, diagram_direct_sum_source[1] );
+    rows := Length( morphism_matrix );
+    
+    cols := Length( morphism_matrix[1] );
+    
+    return MorphismBetweenDirectSumsOp( morphism_matrix_listlist, rows, cols, morphism_matrix[1][1] );
     
 end );
 
 InstallMethodWithCacheFromObject( MorphismBetweenDirectSumsOp,
-                                  [ IsList, IsList, IsList, IsCapCategoryObject ],
+                                  [ IsList, IsInt, IsInt, IsCapCategoryMorphism ],
                                   
-  function( diagram_direct_sum_source, morphism_matrix, diagram_direct_sum_range, method_selection_object )
-    local test_diagram_product, test_diagram_coproduct, morphism_into_product;
+  function( morphism_matrix_listlist, rows, cols, caching_object )
+    local morphism_matrix, i, diagram_direct_sum_source, diagram_direct_sum_range, test_diagram_product, test_diagram_coproduct, morphism_into_product;
+    
+    Error( "test" );
+    
+    morphism_matrix := [ ];
+    
+    for i in [ 1 .. rows ] do
+      
+      Add( morphism_matrix, morphism_matrix_listlist{[(i-1)*cols + 1 .. i*cols]} );
+      
+    od;
+    
+    diagram_direct_sum_source := List( morphism_matrix, row -> Source( row[1] ) );
+    
+    diagram_direct_sum_range := List( morphism_matrix[1], entry -> Range( entry ) );
     
     test_diagram_coproduct := [ ];
     

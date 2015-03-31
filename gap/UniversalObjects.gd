@@ -751,7 +751,7 @@ DeclareOperationWithCache( "MorphismBetweenDirectSums",
                            [ IsList ] );
 
 DeclareOperationWithCache( "MorphismBetweenDirectSumsOp",
-                           [ IsList, IsList, IsList, IsCapCategoryObject ] );
+                           [ IsList, IsInt, IsInt, IsCapCategoryMorphism ] );
 
 ## Function Attributes
 #! @AutoDoc
