@@ -69,6 +69,7 @@ end );
 InstallGlobalFunction( "ToDoForIsWellDefinedWrapper",
   
   function( orig_func )
+    local new_func;
     
     new_func := function( arg )
         local val, entry, i, filtered_arg, list_args;
