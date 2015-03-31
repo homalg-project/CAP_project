@@ -219,27 +219,7 @@ InstallMethod( Add,
     
 end );
 
-InstallTrueMethodAndStoreImplication( CanComputeZeroMorphism, CanComputePreCompose
-                                       and CanComputeUniversalMorphismIntoTerminalObject
-                                       and CanComputeUniversalMorphismFromInitialObject
-                                       and IsAdditiveCategory );
 
-##TODO
-InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
-                                       [ IsCapCategoryObject
-                                     and CanComputePreCompose
-                                     and CanComputeUniversalMorphismIntoTerminalObject
-                                     and IsAdditiveCategory,
-                                         IsCapCategoryObject
-                                     and CanComputeUniversalMorphismFromInitialObject
-                                     and IsAdditiveCategory ],
-                                       -99999, #FIXME
-                                  
-  function( obj_source, obj_range )
-    
-    return PreCompose( UniversalMorphismIntoTerminalObject( obj_source ), UniversalMorphismFromInitialObject( obj_range ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject );
 
 ###########################
 ##
@@ -295,18 +275,7 @@ InstallMethod( AddIsZeroForObjects,
   
 end );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeIsZeroForObjects, CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms );
 
-InstallMethod( IsZero,
-               [ IsCapCategoryObject and CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms ],
-               -9999, #FIXME
-               
-  function( object )
-    
-    return IsEqualForMorphisms( IdentityMorphism( object ), ZeroMorphism( object, object ) );
-    
-end );
 
 ###########################
 ##
