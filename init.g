@@ -41,4 +41,4 @@ ReadPackage( "CAP", "gap/LogicForDeductiveSystem.gd");
 
 ReadPackage( "CAP", "gap/TheoremParser.gd");
 
-
+ReadPackage( "CAP", "gap/Derivations.gd");
