@@ -8,6 +8,8 @@ Version := Maximum( [
   "2015.03.30", ## Sebas' version
   ## this line prevents merge conflicts
   "2015.03.26", ## Sepp's version
+  ## this line prevents merge conflicts
+  "2015.03.31", ## Oystein's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -39,6 +41,21 @@ Persons := [
       "Germany" ] ),
     Place := "Aachen",
     Institution := "Rheinisch-Westfälische Technische Hochschule Aachen",
+   ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Øystein",
+    LastName := "Skartsæterhagen",
+    WWWHome := "http://www.math.ntnu.no/~oysteini/",
+    Email := "oysteini@math.ntnu.no",
+    PostalAddress := Concatenation( [
+      "NTNU\n",
+      "Institutt for matematiske fag\n",
+      "7491 Trondheim\n",
+      "Norway" ] ),
+    Place := "Trondheim",
+    Institution := "Norges teknisk-naturvitenskapelige universitet",
    ),
 ],
 
