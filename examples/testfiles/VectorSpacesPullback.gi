@@ -1,6 +1,6 @@
 #! @Chapter Examples and tests
 
-#! @Section Pullback
+#! @Section FiberProduct
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
 
@@ -9,8 +9,8 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 fi;
 
 #! @Example
-vecspaces := CreateCapCategory( "VectorSpacesForPullbackTest" );
-#! VectorSpacesForPullbackTest
+vecspaces := CreateCapCategory( "VectorSpacesForFiberProductTest" );
+#! VectorSpacesForFiberProductTest
 ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
 A := QVectorSpace( 1 );

@@ -61,17 +61,17 @@ end );
 InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, 
                    CanComputeIsIsomorphism
                    and CanComputeIdentityMorphism
-                   and CanComputeProjectionInFactorOfPullback
+                   and CanComputeProjectionInFactorOfFiberProduct
                    and CanComputePreCompose
-                   and CanComputeUniversalMorphismIntoPullback );
+                   and CanComputeUniversalMorphismIntoFiberProduct );
 
 InstallMethod( IsMonomorphism,
                [ IsCapCategoryMorphism
                  and CanComputeIsIsomorphism
                  and CanComputeIdentityMorphism
-                 and CanComputeProjectionInFactorOfPullback
+                 and CanComputeProjectionInFactorOfFiberProduct
                  and CanComputePreCompose
-                 and CanComputeUniversalMorphismIntoPullback ],
+                 and CanComputeUniversalMorphismIntoFiberProduct ],
                  -9999, #FIXME
                  
   function( morphism )
@@ -79,13 +79,13 @@ InstallMethod( IsMonomorphism,
       
       pullback_diagram := [ morphism, morphism ];
       
-      pullback_projection_1 := ProjectionInFactorOfPullback( pullback_diagram, 1 );
+      pullback_projection_1 := ProjectionInFactorOfFiberProduct( pullback_diagram, 1 );
       
-      pullback_projection_2 := ProjectionInFactorOfPullback( pullback_diagram, 2 );
+      pullback_projection_2 := ProjectionInFactorOfFiberProduct( pullback_diagram, 2 );
       
       identity := IdentityMorphism( Source( morphism ) );
       
-      diagonal_morphism := UniversalMorphismIntoPullback( pullback_diagram, identity, identity );
+      diagonal_morphism := UniversalMorphismIntoFiberProduct( pullback_diagram, identity, identity );
       
       return IsIsomorphism( diagonal_morphism );
     
@@ -1041,11 +1041,11 @@ InstallMethod( InitialObjectFunctorial,
 end );
 
 ####################################
-## Derived Methods for Pullback
+## Derived Methods for FiberProduct
 ####################################
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputePullback, CanComputeDirectProduct and 
+InstallTrueMethodAndStoreImplication( CanComputeFiberProduct, CanComputeDirectProduct and 
                                        CanComputeProjectionInFactorOfDirectProduct and 
                                        CanComputePreCompose and
                                        CanComputeAdditionForMorphisms and
@@ -1053,7 +1053,7 @@ InstallTrueMethodAndStoreImplication( CanComputePullback, CanComputeDirectProduc
                                        CanComputeKernel );
 
 ##
-InstallMethodWithToDoForIsWellDefined( PullbackOp,
+InstallMethodWithToDoForIsWellDefined( FiberProductOp,
                                        [ IsList,
                                          IsCapCategoryMorphism and
                                          CanComputeDirectProduct and 
@@ -1089,69 +1089,69 @@ InstallMethodWithToDoForIsWellDefined( PullbackOp,
     
     pullback := KernelObject( diff );
     
-    if IsBound( pullback!.Genesis.PullbackAsKernelDiagram ) then
+    if IsBound( pullback!.Genesis.FiberProductAsKernelDiagram ) then
         
         Error( "pullback has two origins, which leads to inconsistencies." );
         
     fi;
     
     #unfortunately this is necessary here
-    AddToGenesis(  pullback, "PullbackAsKernelDiagram", diff );
+    AddToGenesis(  pullback, "FiberProductAsKernelDiagram", diff );
     
-    AddToGenesis( pullback, "PullbackDiagram", diagram );
+    AddToGenesis( pullback, "FiberProductDiagram", diagram );
     
-    SetFilterObj( pullback, WasCreatedAsPullback );
+    SetFilterObj( pullback, WasCreatedAsFiberProduct );
     
     return pullback;
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfPullback, CanComputeProjectionInFactorOfPullbackWithGivenPullback and 
-                                                           CanComputePullback );
+InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfFiberProduct, CanComputeProjectionInFactorOfFiberProductWithGivenFiberProduct and 
+                                                           CanComputeFiberProduct );
 
-InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackOp,
+InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductOp,
                                        [ IsList,
                                          IsInt,
                                          IsCapCategoryMorphism and
-                                         CanComputeProjectionInFactorOfPullbackWithGivenPullback and
-                                         CanComputePullback ],
+                                         CanComputeProjectionInFactorOfFiberProductWithGivenFiberProduct and
+                                         CanComputeFiberProduct ],
                                          
   function( diagram, projection_number, method_selection_morphism )
   
-    return ProjectionInFactorOfPullbackWithGivenPullback( diagram, projection_number, PullbackOp( diagram, method_selection_morphism ) );
+    return ProjectionInFactorOfFiberProductWithGivenFiberProduct( diagram, projection_number, FiberProductOp( diagram, method_selection_morphism ) );
   
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfPullbackWithGivenPullback, CanComputeKernelEmb and
+InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfFiberProductWithGivenFiberProduct, CanComputeKernelEmb and
                                                                   CanComputeProjectionInFactorOfDirectProduct and
-                                                                  CanComputePullback );
+                                                                  CanComputeFiberProduct );
 
 # FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
 # the special construction from above. If the
 # user gives his own pullback method, this derived method fails.
 # Of course, as mentioned in the introduction of this chapter, the user should never only install 
 # the constructor of a universal object without also implementing the WithGiven-methods.
-InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPullback,
+InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
                                        [ IsList,
                                          IsInt,
                                          IsCapCategoryObject and
                                          CanComputeKernelEmb and
                                          CanComputeProjectionInFactorOfDirectProduct and
-                                         CanComputePullback ],
+                                         CanComputeFiberProduct ],
                                          -9999,
                                          
   function( diagram, projection_number, pullback )
     local embedding_in_direct_product, direct_product, direct_product_diagram, projection;
   
-    if not WasCreatedAsKernel( pullback ) or not IsBound( Genesis( pullback )!.PullbackAsKernelDiagram ) then
+    if not WasCreatedAsKernel( pullback ) or not IsBound( Genesis( pullback )!.FiberProductAsKernelDiagram ) then
     
       Error( "pullback had to be created as a kernel" );
     
     fi;
     
-    embedding_in_direct_product := KernelEmb( Genesis( pullback )!.PullbackAsKernelDiagram );
+    embedding_in_direct_product := KernelEmb( Genesis( pullback )!.FiberProductAsKernelDiagram );
     
     direct_product := Range( embedding_in_direct_product );
     
@@ -1170,13 +1170,13 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPull
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoPullbackWithGivenPullback, CanComputeUniversalMorphismIntoDirectProduct and
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoFiberProductWithGivenFiberProduct, CanComputeUniversalMorphismIntoDirectProduct and
                                                                              CanComputeKernelLift );
 
 # FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
 # the special construction from above. If the
 # user gives his own pullback method, this derived method fails.
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPullback,
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
                                        [
                                          IsList,
                                          IsList,
@@ -1200,45 +1200,45 @@ end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoPullback, CanComputeUniversalMorphismIntoPullbackWithGivenPullback and 
-                                                            CanComputePullback );
+InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoFiberProduct, CanComputeUniversalMorphismIntoFiberProductWithGivenFiberProduct and 
+                                                            CanComputeFiberProduct );
 
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
+InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoFiberProductOp,
                                            [ IsList,
                                              IsList,
                                              IsCapCategoryMorphism ],
                                              
   function( diagram, source, method_selection_morphism )
     
-    return UniversalMorphismIntoPullbackWithGivenPullback( diagram, source, PullbackOp( diagram, method_selection_morphism ) );
+    return UniversalMorphismIntoFiberProductWithGivenFiberProduct( diagram, source, FiberProductOp( diagram, method_selection_morphism ) );
     
 end );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputePullbackFunctorial,
-                   CanComputePullback
+InstallTrueMethodAndStoreImplication( CanComputeFiberProductFunctorial,
+                   CanComputeFiberProduct
                    and CanComputePreCompose
-                   and CanComputeProjectionInFactorOfPullback
-                   and CanComputeUniversalMorphismIntoPullback );
+                   and CanComputeProjectionInFactorOfFiberProduct
+                   and CanComputeUniversalMorphismIntoFiberProduct );
 
-InstallMethodWithCacheFromObject( PullbackFunctorialOp,
+InstallMethodWithCacheFromObject( FiberProductFunctorialOp,
                                   [ IsList,
                                     IsCapCategoryMorphism
-                                    and CanComputePullback
+                                    and CanComputeFiberProduct
                                     and CanComputePreCompose
-                                    and CanComputeProjectionInFactorOfPullback
-                                    and CanComputeUniversalMorphismIntoPullback ],
+                                    and CanComputeProjectionInFactorOfFiberProduct
+                                    and CanComputeUniversalMorphismIntoFiberProduct ],
                                   
   function( morphism_of_morphisms, base_morphism )
     local pullback_diagram, source, diagram;
         
         pullback_diagram := List( morphism_of_morphisms, mor -> mor[1] );
         
-        source := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( ProjectionInFactorOfPullback( pullback_diagram, i ), morphism_of_morphisms[i][2] ) );
+        source := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, i ), morphism_of_morphisms[i][2] ) );
         
         diagram := List( morphism_of_morphisms, mor -> mor[3] );
         
-        return UniversalMorphismIntoPullback( diagram, source );
+        return UniversalMorphismIntoFiberProduct( diagram, source );
         
 end : ArgumentNumber := 2 );
 

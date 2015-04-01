@@ -366,7 +366,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
     end );
     
-    ## Pullback
+    ## FiberProduct
     ##
     BindGlobal( Concatenation( "ADD_FIBER_PRODUCT_IN_", name_part, "_CATEGORY" ),
               
@@ -387,7 +387,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
               
         function( category )
           
-          AddProjectionInFactorOfPullbackWithGivenPullback( category_getter( category ),
+          AddProjectionInFactorOfFiberProductWithGivenFiberProduct( category_getter( category ),
             
             function( morphism_list, projection_number, pullback )
               local range;
@@ -395,7 +395,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
               range := Source( morphism_list[ projection_number ] );
               
               return morphism_constructor( pullback,
-                       ProjectionInFactorOfPullback(
+                       ProjectionInFactorOfFiberProduct(
                          List( morphism_list, mor -> UnderlyingZFunctorCell( mor ) ),
                          projection_number,
                          UnderlyingZFunctorCell( pullback )
@@ -412,12 +412,12 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
               
         function( category )
           
-          AddUniversalMorphismIntoPullbackWithGivenPullback( category_getter( category ),
+          AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( category_getter( category ),
             
             function( diagram, source, pullback )
               
               return morphism_constructor( Source( source[1] ),
-                       UniversalMorphismIntoPullback(
+                       UniversalMorphismIntoFiberProduct(
                          List( diagram, obj -> UnderlyingZFunctorCell( obj ) ),
                          List( source, mor -> UnderlyingZFunctorCell( mor ) ),
                          UnderlyingZFunctorCell( pullback )
@@ -517,12 +517,12 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
             [ [ "CanComputeUniversalMorphismIntoDirectProduct" ],
               function( ) ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputePullback" ], function( ) ValueGlobal( Concatenation(  "ADD_FIBER_PRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            [ [ "CanComputeFiberProduct" ], function( ) ValueGlobal( Concatenation(  "ADD_FIBER_PRODUCT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeProjectionInFactorOfPullback" ],
+            [ [ "CanComputeProjectionInFactorOfFiberProduct" ],
               function( ) ValueGlobal( Concatenation(  "ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeUniversalMorphismIntoPullback" ],
+            [ [ "CanComputeUniversalMorphismIntoFiberProduct" ],
               function( ) ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
             [ [ "CanComputeInverse" ], function( ) ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) )( category ); end ],

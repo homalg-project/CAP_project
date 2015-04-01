@@ -744,7 +744,7 @@ BindGlobal( "ADD_DIRECT_SUM_IN_Z_FUNCTORS",
       end );
 end );
 
-## Pullback
+## FiberProduct
 ##
 BindGlobal( "ADD_FIBER_PRODUCT_IN_Z_FUNCTORS",
           
@@ -762,7 +762,7 @@ BindGlobal( "ADD_FIBER_PRODUCT_IN_Z_FUNCTORS",
               
               cohomological_index := index + 1;
               
-              return PullbackFunctorial( List( morphism_list, mor -> [ mor[ index ], Differential( Source( mor ), index ), mor[ cohomological_index ] ] ) ); 
+              return FiberProductFunctorial( List( morphism_list, mor -> [ mor[ index ], Differential( Source( mor ), index ), mor[ cohomological_index ] ] ) ); 
               
             end;
             
@@ -780,13 +780,13 @@ BindGlobal( "ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCT
     function( category )
       local differential_func, projection;
       
-      AddProjectionInFactorOfPullbackWithGivenPullback( ZFunctorCategory( category ),
+      AddProjectionInFactorOfFiberProductWithGivenFiberProduct( ZFunctorCategory( category ),
         
         function( morphism_list, projection_number, pullback )
           
           differential_func := function( index )
             
-            return ProjectionInFactorOfPullback( List( morphism_list, mor-> mor[index] ), projection_number );
+            return ProjectionInFactorOfFiberProduct( List( morphism_list, mor-> mor[index] ), projection_number );
             
           end;
           
@@ -803,13 +803,13 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCT
     function( category )
       local differential_func, universal_morphism;
       
-      AddUniversalMorphismIntoPullbackWithGivenPullback( ZFunctorCategory( category ),
+      AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( ZFunctorCategory( category ),
         
         function( diagram, source, pullback )
           
           differential_func := function( index )
               
-              return UniversalMorphismIntoPullback(
+              return UniversalMorphismIntoFiberProduct(
                        List( diagram, mor -> mor[ index ] ),
                        List( source, mor -> mor[ index ] )
                      );
@@ -1022,12 +1022,12 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeDirectSum", "CanComputeDirectSumFunctorial" ], function( ) ADD_DIRECT_SUM_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputePullback", "CanComputePullbackFunctorial" ], function( ) ADD_FIBER_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeFiberProduct", "CanComputeFiberProductFunctorial" ], function( ) ADD_FIBER_PRODUCT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeProjectionInFactorOfPullback" ],
+        [ [ "CanComputeProjectionInFactorOfFiberProduct" ],
           function( ) ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeUniversalMorphismIntoPullback" ],
+        [ [ "CanComputeUniversalMorphismIntoFiberProduct" ],
           function( ) ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputePushout", "CanComputePushoutFunctorial" ], function( ) ADD_PUSHOUT_IN_Z_FUNCTORS( category ); end ],

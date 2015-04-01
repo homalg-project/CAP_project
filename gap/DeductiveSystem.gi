@@ -457,41 +457,41 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddProjectionInFactorOfPullback( deductive_system,
+    AddProjectionInFactorOfFiberProduct( deductive_system,
                                      
       function( diagram, projection_number )
         local pullback;
         
         pullback := FiberProduct( diagram );
         
-        return DeductiveSystemMorphism( pullback, "ProjectionInFactorOfPullback", [ diagram, projection_number ], Source( diagram[ projection_number ] ) );
+        return DeductiveSystemMorphism( pullback, "ProjectionInFactorOfFiberProduct", [ diagram, projection_number ], Source( diagram[ projection_number ] ) );
         
     end );
     
-    AddProjectionInFactorOfPullbackWithGivenPullback( deductive_system,
+    AddProjectionInFactorOfFiberProductWithGivenFiberProduct( deductive_system,
                                      
       function( diagram, projection_number, pullback )
         
-        return DeductiveSystemMorphism( pullback, "ProjectionInFactorOfPullback", [ diagram, projection_number ], Source( diagram[ projection_number ] ) );
+        return DeductiveSystemMorphism( pullback, "ProjectionInFactorOfFiberProduct", [ diagram, projection_number ], Source( diagram[ projection_number ] ) );
         
     end );
     
-    AddUniversalMorphismIntoPullback( deductive_system,
+    AddUniversalMorphismIntoFiberProduct( deductive_system,
                                       
       function( diagram, source )
         local pullback;
         
         pullback := FiberProduct( diagram );
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullback", [ diagram, source ], pullback );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoFiberProduct", [ diagram, source ], pullback );
         
     end );
     
-    AddUniversalMorphismIntoPullbackWithGivenPullback( deductive_system,
+    AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( deductive_system,
                                       
       function( diagram, source, pullback )
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoPullback", [ diagram, source ], pullback );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoFiberProduct", [ diagram, source ], pullback );
         
     end );
     

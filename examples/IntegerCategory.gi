@@ -176,7 +176,7 @@ AddFiberProduct( integer_category,
 end );
 
 ##
-AddProjectionInFactorOfPullbackWithGivenPullback( integer_category,
+AddProjectionInFactorOfFiberProductWithGivenFiberProduct( integer_category,
                                  
   function( product_morx, coordinate, pullback )
     local range;

@@ -1139,7 +1139,7 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 
 ####################################
 ##
-#! @Section Pullback
+#! @Section FiberProduct
 ##
 ####################################
 
@@ -1154,7 +1154,7 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 
 # FIXME:
 # Declared as an operation in MatricesForHomalg!
-# DeclareGlobalFunction( "Pullback" );
+# DeclareGlobalFunction( "FiberProduct" );
 
 #! @Description
 #! This function either accepts a list $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
@@ -1170,7 +1170,7 @@ DeclareGlobalFunction( "FiberProduct" );
 #! as an input and a morphism for the method selection and returns the pullback $P$ of $D$.
 #! @Returns IsCapCategoryObject
 #! @Arguments D, j
-DeclareOperationWithCache( "PullbackOp",
+DeclareOperationWithCache( "FiberProductOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -1178,7 +1178,7 @@ DeclareOperationWithCache( "PullbackOp",
 #! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments D, j
-DeclareOperation( "ProjectionInFactorOfPullback",
+DeclareOperation( "ProjectionInFactorOfFiberProduct",
                   [ IsList, IsInt ] );
 
 #! @Description
@@ -1187,7 +1187,7 @@ DeclareOperation( "ProjectionInFactorOfPullback",
 #! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments D, j, m
-DeclareOperation( "ProjectionInFactorOfPullbackOp",
+DeclareOperation( "ProjectionInFactorOfFiberProductOp",
                   [ IsList, IsInt, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -1196,7 +1196,7 @@ DeclareOperation( "ProjectionInFactorOfPullbackOp",
 #! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments D, j, m
-DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
+DeclareOperation( "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
@@ -1211,7 +1211,7 @@ DeclareOperation( "ProjectionInFactorOfPullbackWithGivenPullback",
 #! and arbitrary many morphisms $\tau_i: T \rightarrow P_i$ which define a test source and
 #! computes the universal morphism $u$ into the pullback $P$
 #! @Returns IsCapCategoryMorphism
-DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
+DeclareGlobalFunction( "UniversalMorphismIntoFiberProduct" );
 
 #! @Description
 #! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$,
@@ -1220,7 +1220,7 @@ DeclareGlobalFunction( "UniversalMorphismIntoPullback" );
 #! the universal morphism $u$ into the pullback of $D$. 
 #! @Returns IsCapCategoryMorphism
 #! @Arguments D, T, m
-DeclareOperation( "UniversalMorphismIntoPullbackOp",
+DeclareOperation( "UniversalMorphismIntoFiberProductOp",
                   [ IsList, IsList, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -1230,7 +1230,7 @@ DeclareOperation( "UniversalMorphismIntoPullbackOp",
 #! the universal morphism $u$ into the pullback $P$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments D, T, P
-DeclareOperation( "UniversalMorphismIntoPullbackWithGivenPullback",
+DeclareOperation( "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -1239,19 +1239,19 @@ DeclareOperation( "UniversalMorphismIntoPullbackWithGivenPullback",
 
 #! @Description
 #! These attributes store the implementations of the basic algorithms for a pullback. 
-DeclareAttribute( "PullbackFunction",
+DeclareAttribute( "FiberProductFunction",
                   IsCapCategory );
 
-DeclareAttribute( "ProjectionInFactorOfPullbackFunction",
+DeclareAttribute( "ProjectionInFactorOfFiberProductFunction",
                   IsCapCategory );
 
-DeclareAttribute( "ProjectionInFactorOfPullbackWithGivenPullbackFunction",
+DeclareAttribute( "ProjectionInFactorOfFiberProductWithGivenFiberProductFunction",
                   IsCapCategory );
 # 
-DeclareAttribute( "UniversalMorphismIntoPullbackFunction",
+DeclareAttribute( "UniversalMorphismIntoFiberProductFunction",
                   IsCapCategory );
 
-DeclareAttribute( "UniversalMorphismIntoPullbackWithGivenPullbackFunction",
+DeclareAttribute( "UniversalMorphismIntoFiberProductWithGivenFiberProductFunction",
                   IsCapCategory );
 #! @EndGroup
 #! @EndAutoDoc
@@ -1272,7 +1272,7 @@ DeclareOperation( "AddFiberProduct",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a list of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddProjectionInFactorOfPullback",
+DeclareOperation( "AddProjectionInFactorOfFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
 #! @Description
@@ -1280,7 +1280,7 @@ DeclareOperation( "AddProjectionInFactorOfPullback",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a list of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
+DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
 #! @Description
@@ -1289,7 +1289,7 @@ DeclareOperation( "AddProjectionInFactorOfPullbackWithGivenPullback",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ are lists of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismIntoPullback",
+DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
 #! @Description
@@ -1298,12 +1298,12 @@ DeclareOperation( "AddUniversalMorphismIntoPullback",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ are lists of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
+DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
 #! @Section Functorial methods for pullback
 
-#! Pullback is a functorial operation. This means:
+#! FiberProduct is a functorial operation. This means:
 #! For a second diagram $\beta_i': P_i' \rightarrow B'$ and a natural morphism
 #! between pullback diagrams (i.e., a collection of morphisms
 #! $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
@@ -1316,7 +1316,7 @@ DeclareOperation( "AddUniversalMorphismIntoPullbackWithGivenPullback",
 #! Note that $\beta$ is not needed for the computation of $\phi$.
 #! @Returns $\phi$
 #! @Arguments L
-DeclareOperation( "PullbackFunctorial",
+DeclareOperation( "FiberProductFunctorial",
                   [ IsList ] );
 
 
@@ -1324,7 +1324,7 @@ DeclareOperation( "PullbackFunctorial",
 #! and $\beta$ as an input.
 #! @Returns $\phi$
 #! @Arguments L, beta
-DeclareOperation( "PullbackFunctorialOp",
+DeclareOperation( "FiberProductFunctorialOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
 ## WasCreatedAs Filter
@@ -1335,9 +1335,9 @@ DeclareOperation( "PullbackFunctorialOp",
 
 #! @Description 
 #! When created, this filter is set to true for a pullback. 
-#! Note that we chose <C>WasCreatedAsPullback</C> to be a filter rather than a property,
+#! Note that we chose <C>WasCreatedAsFiberProduct</C> to be a filter rather than a property,
 #! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsPullback" );
+DeclareFilter( "WasCreatedAsFiberProduct" );
 
 #! @Chapter Universal Objects
 
@@ -1449,7 +1449,7 @@ DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
 
 #! @Section Functorial methods for pushout
 
-#! Pullback is a functorial operation. This means:
+#! FiberProduct is a functorial operation. This means:
 #! For a second diagram $\beta_i': B' \rightarrow I_i'$ and a natural morphism
 #! between pushout diagrams (i.e., a collection of morphisms
 #! $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
