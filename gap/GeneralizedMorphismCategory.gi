@@ -272,7 +272,7 @@ InstallMethodWithCacheFromObject( PreCompose,
                                        [ IsGeneralizedMorphism 
                                          and HasHonestRange
                                          and CanComputePreComposeInUnderlyingHonestCategory
-                                         and CanComputePullbackInUnderlyingHonestCategory,
+                                         and CanComputeFiberProductInUnderlyingHonestCategory,
                                          IsGeneralizedMorphism and HasHonestRange ],
                                        
   function( mor1, mor2 )
@@ -288,9 +288,9 @@ InstallMethodWithCacheFromObject( PreCompose,
     
     pullback_diagram := [ MorphismAid( mor1 ), SourceAid( mor2 ) ];
     
-    new_source_aid := PreCompose( ProjectionInFactorOfPullback( pullback_diagram, 1 ), SourceAid( mor1 ) );
+    new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
     
-    new_morphism_aid := PreCompose( ProjectionInFactorOfPullback( pullback_diagram, 2 ), MorphismAid( mor2 ) );
+    new_morphism_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), MorphismAid( mor2 ) );
     
     return GeneralizedMorphismWithSourceAid( new_source_aid, new_morphism_aid );
     
@@ -356,14 +356,14 @@ end );
 ##
 InstallTrueMethod( CanComputePreCompose,
                    CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
-                   and CanComputePullbackInUnderlyingHonestCategory
+                   and CanComputeFiberProductInUnderlyingHonestCategory
                    and CanComputePushoutInUnderlyingHonestCategory
                    and CanComputePreComposeInUnderlyingHonestCategory );
 
 InstallMethodWithCacheFromObject( PreCompose,
                                   [ IsGeneralizedMorphism 
                                     and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
-                                    and CanComputePullbackInUnderlyingHonestCategory
+                                    and CanComputeFiberProductInUnderlyingHonestCategory
                                     and CanComputePushoutInUnderlyingHonestCategory
                                     and CanComputePreComposeInUnderlyingHonestCategory,
                                     IsGeneralizedMorphism ],
@@ -383,9 +383,9 @@ InstallMethodWithCacheFromObject( PreCompose,
     
     pushout_diagram := [ RangeAid( generalized_mor_factor_sub ), MorphismAid( mor2 ) ];
     
-    new_source_aid := PreCompose( ProjectionInFactorOfPullback( pullback_diagram, 1 ), SourceAid( mor1 ) );
+    new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
     
-    new_associated := PreCompose( ProjectionInFactorOfPullback( pullback_diagram, 2 ), InjectionOfCofactorOfPushout( pushout_diagram, 1 ) );
+    new_associated := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), InjectionOfCofactorOfPushout( pushout_diagram, 1 ) );
     
     new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactorOfPushout( pushout_diagram, 2 ) );
     
@@ -508,8 +508,8 @@ end );
 
 ##
 InstallTrueMethod( CanComputeAdditionForMorphisms,
-                   CanComputePullbackInUnderlyingHonestCategory
-                   and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory
+                   CanComputeFiberProductInUnderlyingHonestCategory
+                   and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory
                    and CanComputePushoutInUnderlyingHonestCategory
                    and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
                    and CanComputePreComposeInUnderlyingHonestCategory
@@ -517,8 +517,8 @@ InstallTrueMethod( CanComputeAdditionForMorphisms,
 
 InstallMethodWithCacheFromObject( \+,
                                  [ IsGeneralizedMorphism
-                                   and CanComputePullbackInUnderlyingHonestCategory
-                                   and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory
+                                   and CanComputeFiberProductInUnderlyingHonestCategory
+                                   and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory
                                    and CanComputePushoutInUnderlyingHonestCategory
                                    and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
                                    and CanComputePreComposeInUnderlyingHonestCategory
@@ -538,16 +538,16 @@ InstallMethodWithCacheFromObject( \+,
     
     pushout_of_rangeaids_diagram := [ RangeAid( mor1 ), RangeAid( mor2 ) ];
     
-    restricted_mor1 := PreCompose( ProjectionInFactorOfPullback( pullback_of_sourceaids_diagram, 1 ), MorphismAid( mor1 ) );
+    restricted_mor1 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), MorphismAid( mor1 ) );
     
     restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) );
     
-    restricted_mor2 := PreCompose( ProjectionInFactorOfPullback( pullback_of_sourceaids_diagram, 2 ), MorphismAid( mor2 ) );
+    restricted_mor2 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 2 ), MorphismAid( mor2 ) );
     
     restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 2 ) );
     
     return_value := GeneralizedMorphism( 
-                      PreCompose( ProjectionInFactorOfPullback( pullback_of_sourceaids_diagram, 1 ), SourceAid( mor1 ) ),
+                      PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), SourceAid( mor1 ) ),
                       restricted_mor1 + restricted_mor2,
                       PreCompose( RangeAid( mor1 ), InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) )
                     );
@@ -568,9 +568,9 @@ InstallTrueMethod( CanComputeDomainAssociatedMorphismCodomainTriple,
                    and CanComputePreComposeInUnderlyingHonestCategory
                    and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
                    and CanComputeCoastrictionToImageInUnderlyingHonestCategory
-                   and CanComputePullbackInUnderlyingHonestCategory
+                   and CanComputeFiberProductInUnderlyingHonestCategory
                    and CanComputeImageEmbeddingInUnderlyingHonestCategory
-                   and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory );
+                   and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory );
 
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
                [ IsGeneralizedMorphism
@@ -578,9 +578,9 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
                  and CanComputePreComposeInUnderlyingHonestCategory
                  and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
                  and CanComputeCoastrictionToImageInUnderlyingHonestCategory
-                 and CanComputePullbackInUnderlyingHonestCategory
+                 and CanComputeFiberProductInUnderlyingHonestCategory
                  and CanComputeImageEmbeddingInUnderlyingHonestCategory
-                 and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory ],
+                 and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory ],
                  
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, pushout_diagram, composition, codomain, pullback_diagram, domain, associated_morphism;
@@ -610,9 +610,9 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     pullback_diagram := [ InjectionOfCofactorOfPushout( pushout_diagram, 1 ), ImageEmbedding( composition ) ];
     
-    domain := ProjectionInFactorOfPullback( pullback_diagram, 1 );
+    domain := ProjectionInFactorOfFiberProduct( pullback_diagram, 1 );
     
-    associated_morphism := ProjectionInFactorOfPullback( pullback_diagram, 2 );
+    associated_morphism := ProjectionInFactorOfFiberProduct( pullback_diagram, 2 );
     
     return [ domain, associated_morphism, codomain ];
     
@@ -660,9 +660,9 @@ end );
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
                [ IsGeneralizedMorphism
                  and CanComputeCoastrictionToImageInUnderlyingHonestCategory
-                 and CanComputePullbackInUnderlyingHonestCategory
+                 and CanComputeFiberProductInUnderlyingHonestCategory
                  and CanComputeImageEmbeddingInUnderlyingHonestCategory
-                 and CanComputeProjectionInFactorOfPullbackInUnderlyingHonestCategory
+                 and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory
                  and HasHonestSource ],
                  
   function( generalized_morphism )
@@ -686,9 +686,9 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     pullback_diagram := [ morphism_aid, ImageEmbedding( range_aid ) ];
     
-    domain := ProjectionInFactorOfPullback( pullback_diagram, 1 );
+    domain := ProjectionInFactorOfFiberProduct( pullback_diagram, 1 );
     
-    associated_morphism := ProjectionInFactorOfPullback( pullback_diagram, 2 );
+    associated_morphism := ProjectionInFactorOfFiberProduct( pullback_diagram, 2 );
     
     return [ domain, associated_morphism, codomain ];
     

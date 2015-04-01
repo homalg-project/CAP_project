@@ -1,5 +1,7 @@
 ReadPackage( "CAP", "gap/ToolsForCategories.gd");
 
+ReadPackage( "CAP", "gap/MethodRecord.gd" );
+
 ReadPackage( "CAP", "gap/CAP.gd");
 
 ## FIXME: The loading structure needs to be redone.

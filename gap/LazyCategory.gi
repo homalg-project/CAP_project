@@ -551,7 +551,7 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddProjectionInFactorOfPullback( lazy_category,
+    AddProjectionInFactorOfFiberProduct( lazy_category,
       
       function( diagram, projection_number )
         local func, pullback;
@@ -564,14 +564,14 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddProjectionInFactorOfPullbackWithGivenPullback( lazy_category,
+    AddProjectionInFactorOfFiberProductWithGivenFiberProduct( lazy_category,
       
       function( diagram, projection_number, pullback )
         local func;
         
         func := function( ) 
           
-          return ProjectionInFactorOfPullbackWithGivenPullback( EvalAndRewrapProductList( diagram ), projection_number, Eval( pullback ) );
+          return ProjectionInFactorOfFiberProductWithGivenFiberProduct( EvalAndRewrapProductList( diagram ), projection_number, Eval( pullback ) );
           
         end;
         
@@ -579,14 +579,14 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddUniversalMorphismIntoPullback( lazy_category,
+    AddUniversalMorphismIntoFiberProduct( lazy_category,
       
       function( diagram, source )
         local func, pullback;
         
         func := function( ) 
           
-          return CallFuncList( UniversalMorphismIntoPullback, 
+          return CallFuncList( UniversalMorphismIntoFiberProduct, 
                    Concatenation( [ EvalAndRewrapProductList( diagram ) ], EvalProductList( source ) )
                  );
                  
@@ -598,14 +598,14 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddUniversalMorphismIntoPullbackWithGivenPullback( lazy_category,
+    AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( lazy_category,
       
       function( diagram, source, pullback )
         local func;
         
         func := function( )
           
-          return UniversalMorphismIntoPullbackWithGivenPullback(
+          return UniversalMorphismIntoFiberProductWithGivenFiberProduct(
                    EvalAndRewrapProductList( diagram ), EvalAndRewrapProductList( source ), Eval( pullback )
                  );
         end;

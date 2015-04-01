@@ -47,7 +47,7 @@ InstallMethod( AddKernelObject,
     
     SetKernelFunction( category, func );
     
-    SetCanComputeKernel( category, true );
+    SetCanComputeKernelObject( category, true );
     
     InstallMethodWithToDoForIsWellDefined( KernelObject,
                                            [ IsCapCategoryMorphism and MorphismFilter( category ) ],
@@ -841,7 +841,7 @@ end );
 
 ####################################
 ##
-## Direct Product and Pullback
+## Direct Product and FiberProduct
 ##
 ####################################
 
@@ -852,7 +852,7 @@ InstallGlobalFunction( ProjectionInFactor,
   function( object_product_list, projection_number )
     local number_of_objects;
     
-    if WasCreatedAsDirectProduct( object_product_list ) and WasCreatedAsPullback( object_product_list ) then
+    if WasCreatedAsDirectProduct( object_product_list ) and WasCreatedAsFiberProduct( object_product_list ) then
         
         ## this might only happen when
         ## the function which was added to construct the product/ pullback does not return
@@ -878,9 +878,9 @@ InstallGlobalFunction( ProjectionInFactor,
     fi;
     
     ## convenience: first argument was created as a pullback
-    if WasCreatedAsPullback( object_product_list ) then
+    if WasCreatedAsFiberProduct( object_product_list ) then
     
-      number_of_objects := Length( Genesis( object_product_list )!.PullbackDiagram );
+      number_of_objects := Length( Genesis( object_product_list )!.FiberProductDiagram );
       
       if projection_number < 1 or projection_number > number_of_objects then
       
@@ -888,7 +888,7 @@ InstallGlobalFunction( ProjectionInFactor,
       
       fi;
     
-      return ProjectionInFactorOfPullbackWithGivenPullback( Genesis( object_product_list )!.PullbackDiagram, projection_number, object_product_list );
+      return ProjectionInFactorOfFiberProductWithGivenFiberProduct( Genesis( object_product_list )!.FiberProductDiagram, projection_number, object_product_list );
     
     fi;
     
@@ -907,7 +907,7 @@ InstallGlobalFunction( ProjectionInFactor,
       
     else # IsCapCategoryMorphism( object_product_list[1] ) = true
       
-      return ProjectionInFactorOfPullbackOp( object_product_list, projection_number, object_product_list[1] );
+      return ProjectionInFactorOfFiberProductOp( object_product_list, projection_number, object_product_list[1] );
       
     fi;
   
@@ -1813,7 +1813,7 @@ end );
 
 ####################################
 ##
-## Pullback
+## FiberProduct
 ##
 ####################################
 
@@ -1825,11 +1825,11 @@ InstallGlobalFunction( FiberProduct,
        and IsList( arg[1] )
        and ForAll( arg[1], IsCapCategoryMorphism ) then
        
-       return PullbackOp( arg[1], arg[1][1] );
+       return FiberProductOp( arg[1], arg[1][1] );
        
      fi;
     
-    return PullbackOp( arg, arg[ 1 ] );
+    return FiberProductOp( arg, arg[ 1 ] );
     
 end );
 
@@ -1843,11 +1843,11 @@ InstallMethod( AddFiberProduct,
                
   function( category, func )
     
-    SetPullbackFunction( category, func );
+    SetFiberProductFunction( category, func );
     
-    SetCanComputePullback( category, true );
+    SetCanComputeFiberProduct( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( PullbackOp,
+    InstallMethodWithToDoForIsWellDefined( FiberProductOp,
                                            [ IsList, IsCapCategoryMorphism and MorphismFilter( category ) ],
                                            
       function( diagram, method_selection_morphism )
@@ -1863,40 +1863,40 @@ InstallMethod( AddFiberProduct,
         
         pullback := func( diagram );
         
-        SetFilterObj( pullback, WasCreatedAsPullback );
+        SetFilterObj( pullback, WasCreatedAsFiberProduct );
         
-        AddToGenesis( pullback, "PullbackDiagram", diagram );
+        AddToGenesis( pullback, "FiberProductDiagram", diagram );
         
         Add( CapCategory( method_selection_morphism ), pullback );
         
         return pullback;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "PullbackOp", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "FiberProductOp", 2 ) );
     
 end );
 
 ## convenience method:
 ##
-InstallMethod( ProjectionInFactorOfPullback,
+InstallMethod( ProjectionInFactorOfFiberProduct,
                [ IsList, IsInt ],
                
   function( diagram, projection_number )
     
-    return ProjectionInFactorOfPullbackOp( diagram, projection_number, diagram[1] );
+    return ProjectionInFactorOfFiberProductOp( diagram, projection_number, diagram[1] );
     
 end );
 
 ##
-InstallMethod( AddProjectionInFactorOfPullback,
+InstallMethod( AddProjectionInFactorOfFiberProduct,
                [ IsCapCategory, IsFunction ],
 
   function( category, func )
     
-    SetProjectionInFactorOfPullbackFunction( category, func );
+    SetProjectionInFactorOfFiberProductFunction( category, func );
     
-    SetCanComputeProjectionInFactorOfPullback( category, true );
+    SetCanComputeProjectionInFactorOfFiberProduct( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackOp,
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductOp,
                                            [ IsList,
                                              IsInt,
                                              IsCapCategoryMorphism and MorphismFilter( category ) ],
@@ -1904,9 +1904,9 @@ InstallMethod( AddProjectionInFactorOfPullback,
       function( diagram, projection_number, method_selection_morphism )
         local base, projection_in_factor, pullback;
         
-        if HasPullbackOp( diagram, method_selection_morphism ) then
+        if HasFiberProductOp( diagram, method_selection_morphism ) then
           
-          return ProjectionInFactorOfPullbackWithGivenPullback( diagram, projection_number, PullbackOp( diagram, method_selection_morphism ) );
+          return ProjectionInFactorOfFiberProductWithGivenFiberProduct( diagram, projection_number, FiberProductOp( diagram, method_selection_morphism ) );
           
         fi;
         
@@ -1924,29 +1924,29 @@ InstallMethod( AddProjectionInFactorOfPullback,
         
         pullback := Source( projection_in_factor );
         
-        AddToGenesis( pullback, "PullbackDiagram", diagram );
+        AddToGenesis( pullback, "FiberProductDiagram", diagram );
         
-        SetPullbackOp( diagram, method_selection_morphism, pullback );
+        SetFiberProductOp( diagram, method_selection_morphism, pullback );
         
-        SetFilterObj( pullback, WasCreatedAsPullback );
+        SetFilterObj( pullback, WasCreatedAsFiberProduct );
         
         return projection_in_factor;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfPullbackOp", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfFiberProductOp", 3 ) );
 
 end );
 
 ##
-InstallMethod( AddProjectionInFactorOfPullbackWithGivenPullback,
+InstallMethod( AddProjectionInFactorOfFiberProductWithGivenFiberProduct,
                [ IsCapCategory, IsFunction ],
 
   function( category, func )
     
-    SetProjectionInFactorOfPullbackWithGivenPullbackFunction( category, func );
+    SetProjectionInFactorOfFiberProductWithGivenFiberProductFunction( category, func );
     
-    SetCanComputeProjectionInFactorOfPullbackWithGivenPullback( category, true );
+    SetCanComputeProjectionInFactorOfFiberProductWithGivenFiberProduct( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfPullbackWithGivenPullback,
+    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
                                            [ IsList,
                                              IsInt,
                                              IsCapCategoryObject and ObjectFilter( category ) ],
@@ -1968,12 +1968,12 @@ InstallMethod( AddProjectionInFactorOfPullbackWithGivenPullback,
         
         return projection_in_factor;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfPullbackWithGivenPullback", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfFiberProductWithGivenFiberProduct", 3 ) );
 
 end );
 
 ##
-InstallGlobalFunction( UniversalMorphismIntoPullback,
+InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
 
   function( arg )
     local diagram, pullback_or_diagram, source;
@@ -1982,7 +1982,7 @@ InstallGlobalFunction( UniversalMorphismIntoPullback,
        and IsList( arg[1] )
        and IsList( arg[2] ) then
        
-       return UniversalMorphismIntoPullbackOp( arg[1], arg[2], arg[1][1] );
+       return UniversalMorphismIntoFiberProductOp( arg[1], arg[2], arg[1][1] );
        
     fi;
     
@@ -1990,29 +1990,29 @@ InstallGlobalFunction( UniversalMorphismIntoPullback,
     
     source := arg{[ 2 .. Length( arg ) ]};
     
-    if WasCreatedAsPullback( pullback_or_diagram ) then
+    if WasCreatedAsFiberProduct( pullback_or_diagram ) then
     
-      diagram := Genesis( pullback_or_diagram )!.PullbackDiagram;
+      diagram := Genesis( pullback_or_diagram )!.FiberProductDiagram;
     
-      return UniversalMorphismIntoPullbackOp( diagram, source, diagram[1] );
+      return UniversalMorphismIntoFiberProductOp( diagram, source, diagram[1] );
     
     fi;
     
-    return UniversalMorphismIntoPullbackOp( pullback_or_diagram, source, pullback_or_diagram[1] );
+    return UniversalMorphismIntoFiberProductOp( pullback_or_diagram, source, pullback_or_diagram[1] );
     
 end );
 
 ##
-InstallMethod( AddUniversalMorphismIntoPullback,
+InstallMethod( AddUniversalMorphismIntoFiberProduct,
                [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
-    SetUniversalMorphismIntoPullbackFunction( category, func );
+    SetUniversalMorphismIntoFiberProductFunction( category, func );
     
-    SetCanComputeUniversalMorphismIntoPullback( category, true );
+    SetCanComputeUniversalMorphismIntoFiberProduct( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackOp,
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoFiberProductOp,
                                            [ IsList,
                                              IsList,
                                              IsCapCategoryMorphism and MorphismFilter( category ) ],
@@ -2020,12 +2020,12 @@ InstallMethod( AddUniversalMorphismIntoPullback,
       function( diagram, source, method_selection_morphism )
         local base, test_object, components, universal_morphism, pullback;
         
-        if HasPullbackOp( diagram, diagram[1] ) then
+        if HasFiberProductOp( diagram, diagram[1] ) then
         
-          return UniversalMorphismIntoPullbackWithGivenPullback( 
+          return UniversalMorphismIntoFiberProductWithGivenFiberProduct( 
                    diagram, 
                    source,
-                   PullbackOp( diagram, diagram[1] )
+                   FiberProductOp( diagram, diagram[1] )
                  );
           
         fi;
@@ -2055,31 +2055,31 @@ InstallMethod( AddUniversalMorphismIntoPullback,
         
         pullback := Range( universal_morphism );
         
-        AddToGenesis( pullback, "PullbackDiagram", diagram );
+        AddToGenesis( pullback, "FiberProductDiagram", diagram );
         
-        SetPullbackOp( diagram, diagram[1], pullback );
+        SetFiberProductOp( diagram, diagram[1], pullback );
         
         Add( CapCategory( diagram[1] ), pullback );
         
-        SetFilterObj( pullback, WasCreatedAsPullback );
+        SetFilterObj( pullback, WasCreatedAsFiberProduct );
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoPullbackOp", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoFiberProductOp", 3 ) );
     
 end );
 
 ##
-InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
+InstallMethod( AddUniversalMorphismIntoFiberProductWithGivenFiberProduct,
                [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
-    SetUniversalMorphismIntoPullbackWithGivenPullbackFunction( category, func );
+    SetUniversalMorphismIntoFiberProductWithGivenFiberProductFunction( category, func );
     
-    SetCanComputeUniversalMorphismIntoPullbackWithGivenPullback( category, true );
+    SetCanComputeUniversalMorphismIntoFiberProductWithGivenFiberProduct( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoPullbackWithGivenPullback,
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
                                            [ IsList,
                                              IsList,
                                              IsCapCategoryObject and ObjectFilter( category ) 
@@ -2112,7 +2112,7 @@ InstallMethod( AddUniversalMorphismIntoPullbackWithGivenPullback,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoPullbackWithGivenPullback", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoFiberProductWithGivenFiberProduct", 3 ) );
     
 end );
 
@@ -2123,12 +2123,12 @@ end );
 ####################################
 
 ##
-InstallMethod( PullbackFunctorial,
+InstallMethod( FiberProductFunctorial,
                [ IsList ],
                
   function( morphism_of_morphisms )
       
-      return PullbackFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
+      return FiberProductFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
       
 end );
 

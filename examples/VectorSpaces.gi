@@ -984,7 +984,7 @@ AddNaturalTransformationFunction( id_to_double,
     
 end );
 
-# theorem_string := "\alpha:Mor, \beta:Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsMonomorphism( \ProjectionInFactorOfPullback( [ \alpha, \beta ], 2 ) )";
+# theorem_string := "\alpha:Mor, \beta:Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsMonomorphism( \ProjectionInFactorOfFiberProduct( [ \alpha, \beta ], 2 ) )";
 # 
 # ADD_THEOREM_TO_CATEGORY( vecspaces, PARSE_THEOREM_FROM_LATEX( theorem_string ) );
 
@@ -997,8 +997,8 @@ end );
 # @EndProof
 
 eval_rule := rec( command := "PreCompose",
-                  commands_to_check := [ [ [ 1 ], "UniversalMorphismIntoPullback" ],
-                                         [ [ 2 ], "ProjectionInFactorOfPullback" ] ],
+                  commands_to_check := [ [ [ 1 ], "UniversalMorphismIntoFiberProduct" ],
+                                         [ [ 2 ], "ProjectionInFactorOfFiberProduct" ] ],
                   cells_to_check := [ [ [ 1, 1, 1 ], [ 2, 1, 1 ] ],
                                       [ [ 1, 1, 2 ], [ 2, 1, 2 ] ],
                                       [ [ 2, 2 ], 2 ]
