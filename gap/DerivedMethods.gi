@@ -1,3 +1,96 @@
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_PAIRS" );
+
+InstallValue( CAP_INTERNAL_METHOD_NAME_PAIRS, [
+[ "MonoAsKernelLift", "MonoAsKernelLift" ],
+[ "EpiAsCokernelColift", ],
+[ "IdentityMorphism", ],
+[ "Inverse", ],
+[ "Kernel", ],
+[ "KernelEmb", ],
+[ "KernelEmbWithGivenKernel", ],
+[ "KernelLift", ],
+[ "KernelLiftWithGivenKernel", ],
+[ "Cokernel", ],
+[ "CokernelProj", ],
+[ "CokernelProjWithGivenCokernel", ],
+[ "CokernelColift", ],
+[ "CokernelColiftWithGivenCokernel", ],
+[ "PreCompose", ],
+[ "PostCompose", ],
+[ "ZeroObject", ],
+[ "ZeroMorphism", ],
+[ "DirectSum", ],
+[ "TerminalObject", ],
+[ "UniversalMorphismIntoTerminalObject", ],
+[ "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject", ],
+[ "InitialObject", ],
+[ "UniversalMorphismFromInitialObject", ],
+[ "UniversalMorphismFromInitialObjectWithGivenInitialObject", ],
+[ "DirectProduct", ],
+[ "ProjectionInFactorOfDirectProduct", ],
+[ "ProjectionInFactorOfDirectProductWithGivenDirectProduct", ],
+[ "UniversalMorphismIntoDirectProduct", ],
+[ "UniversalMorphismIntoDirectProductWithGivenDirectProduct", ],
+[ "IsEqualForMorphisms", ],
+[ "IsZeroForMorphisms", ],
+[ "AdditionForMorphisms", ],
+[ "AdditiveInverseForMorphisms", ],
+[ "Coproduct", ],
+[ "InjectionOfCofactorOfCoproduct", ],
+[ "InjectionOfCofactorOfCoproductWithGivenCoproduct", ],
+[ "UniversalMorphismFromCoproduct", ],
+[ "UniversalMorphismFromCoproductWithGivenCoproduct", ],
+[ "EqualityOfSubobjects", ],
+[ "EqualityOfFactorobjects", ],
+[ "Dominates", ],
+[ "Codominates", ],
+[ "Pullback", ],
+[ "ProjectionInFactorOfPullback", ],
+[ "ProjectionInFactorOfPullbackWithGivenPullback", ],
+[ "UniversalMorphismIntoPullback", ],
+[ "UniversalMorphismIntoPullbackWithGivenPullback", ],
+[ "Pushout", ],
+[ "InjectionOfCofactorOfPushout", ],
+[ "InjectionOfCofactorOfPushoutWithGivenPushout", ],
+[ "UniversalMorphismFromPushout", ],
+[ "UniversalMorphismFromPushoutWithGivenPushout", ],
+[ "Image", ],
+[ "ImageEmbedding", ],
+[ "ImageEmbeddingWithGivenImage", ],
+[ "IsWellDefinedForMorphisms", ],
+[ "IsWellDefinedForObjects", ],
+[ "IsZeroForObjects", ],
+[ "IsMonomorphism", ],
+[ "IsEpimorphism", ],
+[ "IsIsomorphism", ],
+[ "EpiMonoFactorization", ],
+[ "CoastrictionToImage", ],
+[ "CoastrictionToImageWithGivenImage", ],
+[ "UniversalMorphismFromImage", ],
+[ "UniversalMorphismFromImageWithGivenImage", ],
+[ "DomainAssociatedMorphismCodomainTriple", ],
+[ "Domain", ],
+[ "Codomain", ],
+[ "AssociatedMorphism", ],
+[ "PseudoInverse", ],
+[ "KernelObjectFunctorial", ],
+[ "CokernelFunctorial", ],
+[ "TerminalObjectFunctorial", ],
+[ "InitialObjectFunctorial", ],
+[ "DirectProductFunctorial", ],
+[ "CoproductFunctorial", ],
+[ "DirectSumFunctorial", ],
+[ "PullbackFunctorial", ],
+[ "PushoutFunctorial", ],
+[ "GeneralizedMorphismFromFactorToSubobject", ],
+[ "HorizontalPreCompose", ],
+[ "VerticalPreCompose", ],
+[ "IdentityTwoCell", ],
+[ "HonestRepresentative", ],
+[ "IsWellDefinedForTwoCells", ]
+] );
+
+
 ###########################
 ##
 ## Derivations taken from CategoryObjects.gi
@@ -15,8 +108,7 @@ InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
                                      and CanComputeUniversalMorphismIntoTerminalObject
                                      and IsAdditiveCategory,
                                          IsCapCategoryObject
-                                     and CanComputeUniversalMorphismFromInitialObject
-                                     and IsAdditiveCategory ],
+                                       ],
                                        -99999, #FIXME
                                   
   function( obj_source, obj_range )
@@ -45,10 +137,10 @@ end );
 ###########################
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
+InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, CanComputeKernelObject and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
 InstallMethod( IsMonomorphism,
-               [ IsCapCategoryMorphism and CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
+               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeIsZeroForObjects and IsAdditiveCategory ],
                -9900, #FIXME
                
   function( morphism )
@@ -392,7 +484,7 @@ InstallMethodWithCacheFromObject( KernelLiftWithGivenKernel,
 end );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernel, CanComputeKernelEmb );
+InstallTrueMethodAndStoreImplication( CanComputeKernelObject, CanComputeKernelEmb );
 
 InstallMethod( KernelObject,
                [ IsCapCategoryMorphism and CanComputeKernelEmb ],
@@ -406,10 +498,10 @@ end );
 
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernelEmb, CanComputeKernel and CanComputeKernelEmbWithGivenKernel );
+InstallTrueMethodAndStoreImplication( CanComputeKernelEmb, CanComputeKernelObject and CanComputeKernelEmbWithGivenKernel );
 
 InstallMethod( KernelEmb,
-               [ IsCapCategoryMorphism and CanComputeKernel and CanComputeKernelEmbWithGivenKernel ],
+               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeKernelEmbWithGivenKernel ],
                -9999, #FIXME
                
   function( mor )
@@ -419,10 +511,10 @@ InstallMethod( KernelEmb,
 end );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernelLift, CanComputeKernel and CanComputeKernelLiftWithGivenKernel );
+InstallTrueMethodAndStoreImplication( CanComputeKernelLift, CanComputeKernelObject and CanComputeKernelLiftWithGivenKernel );
 
 InstallMethod( KernelLift,
-               [ IsCapCategoryMorphism and CanComputeKernel and CanComputeKernelLiftWithGivenKernel,
+               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeKernelLiftWithGivenKernel,
                  IsCapCategoryMorphism ],
                -9999, #FIXME
                
@@ -1050,7 +1142,7 @@ InstallTrueMethodAndStoreImplication( CanComputeFiberProduct, CanComputeDirectPr
                                        CanComputePreCompose and
                                        CanComputeAdditionForMorphisms and
                                        CanComputeAdditiveInverseForMorphisms and
-                                       CanComputeKernel );
+                                       CanComputeKernelObject );
 
 ##
 InstallMethodWithToDoForIsWellDefined( FiberProductOp,
@@ -1061,7 +1153,7 @@ InstallMethodWithToDoForIsWellDefined( FiberProductOp,
                                          CanComputePreCompose and
                                          CanComputeAdditionForMorphisms and
                                          CanComputeAdditiveInverseForMorphisms and
-                                         CanComputeKernel ],
+                                         CanComputeKernelObject ],
                                          -9999, #FIXME
                                          
   function( diagram, method_selection_morphism )

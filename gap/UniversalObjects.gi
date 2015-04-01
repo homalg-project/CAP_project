@@ -47,7 +47,7 @@ InstallMethod( AddKernelObject,
     
     SetKernelFunction( category, func );
     
-    SetCanComputeKernel( category, true );
+    SetCanComputeKernelObject( category, true );
     
     InstallMethodWithToDoForIsWellDefined( KernelObject,
                                            [ IsCapCategoryMorphism and MorphismFilter( category ) ],

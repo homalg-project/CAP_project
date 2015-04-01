@@ -495,7 +495,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
             
             [ [ "CanComputeZeroObject" ], function( ) ValueGlobal( Concatenation(  "ADD_ZERO_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeKernel" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            [ [ "CanComputeKernelObject" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
             [ [ "CanComputeKernelEmb" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             

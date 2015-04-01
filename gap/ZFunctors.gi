@@ -984,7 +984,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeZeroObject" ], function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeKernel", "CanComputeKernelObjectFunctorial" ], function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeKernelObject", "CanComputeKernelObjectFunctorial" ], function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeKernelEmb" ], function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
         
