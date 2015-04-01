@@ -25,6 +25,8 @@ DeclareOperation( "DerivationResultWeight",
 
 DeclareOperation( "MakeDerivationGraph", [ IsDenseList ] );
 DeclareOperation( "AddDerivation", [ IsDerivationGraph, IsDerivation ] );
+DeclareOperation( "AddDerivation", [ IsDerivationGraph, IsFunction, IsDenseList, IsObject ] );
+
 DeclareAttribute( "Operations", IsDerivationGraph );
 DeclareOperation( "DerivationsUsingOperation", [ IsDerivationGraph, IsString ] );
 DeclareOperation( "DerivationsOfOperation", [ IsDerivationGraph, IsString ] );

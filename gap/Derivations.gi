@@ -90,12 +90,16 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
           
           elif IsString( current_entry ) then
               current_entry := LowercaseString( current_entry );
-              if current_entry = "object" then
-                  list[ i ] := ObjectFilter( category );
+              if current_entry = "category" then
+                  list[ i ] := IsCapCategory;
+              elif current_entry = "cell" then
+                  list[ i ] := CellFilter( category ) and IsCapCategoryCell;
+              elif current_entry = "object" then
+                  list[ i ] := ObjectFilter( category ) and IsCapCategoryObject;
               elif current_entry = "morphism" then
-                  list[ i ] := MorphismFilter( category );
+                  list[ i ] := MorphismFilter( category ) and IsCapCategoryMorphism;
               elif current_entry = "twocell" then
-                  list[ i ] := TwoCellFilter( category );
+                  list[ i ] := TwoCellFilter( category ) and IsCapCategoryTwoCell;
               else
                   Error( "filter type is not recognized, must be object, morphism, or twocell" );
               fi;
@@ -138,8 +142,12 @@ function( d, weight, C )
   local method_name, general_filter_list, installation_name, nr_arguments,
         cache_name, current_implementation, current_filters;
   
-  Info( DerivationInfo, 1, Concatenation( "install(", weight, ") ", TargetOperation( d ),
-         ": ", DerivationName( d ), "\n" ) );
+  Info( DerivationInfo, 1, Concatenation( "install(",
+                                          String( weight ),
+                                          ") ",
+                                          TargetOperation( d ),
+                                          ": ",
+                                          DerivationName( d ), "\n" ) );
   
   method_name := TargetOperation( d );
   ## getting the filters and installation name from the record
@@ -225,6 +233,54 @@ function( G, d )
   for op_name in UsedOperations( d ) do
     Add( G!.derivations_by_used_ops.( op_name ), d );
   od;
+end );
+
+InstallMethod( AddDerivation,
+               [ IsDerivationGraph, IsFunction, IsDenseList, IsFunction ],
+               
+  function( graph, target_op, used_ops_with_multiples,
+            implementations_with_extra_filters )
+    
+    AddDerivation( graph,
+                  target_op,
+                  used_ops_with_multiples,
+                  [ implementations_with_extra_filters, [ ] ] );
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT",
+    
+  function( option_name, default )
+    local value;
+    
+    value := ValueOption( option_name );
+    
+    if value = fail then
+        return default;
+    fi;
+    
+    return value;
+end );
+
+InstallMethod( AddDerivation,
+               [ IsDerivationGraph, IsFunction, IsDenseList, IsDenseList ],
+               
+  function( graph, target_op, used_ops_with_multiples,
+            implementations_with_extra_filters )
+    local weight, category_filter, description, derivation;
+    
+    weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
+    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
+    description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
+    
+    derivation := MakeDerivation( description,
+                                  target_op,
+                                  used_ops_with_multiples,
+                                  weight,
+                                  implementations_with_extra_filters,
+                                  category_filter );
+    
+    AddDerivation( graph, derivation );
 end );
 
 InstallMethod( DerivationsUsingOperation,
