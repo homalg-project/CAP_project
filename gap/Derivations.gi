@@ -42,6 +42,19 @@ function( name, target_op, used_ops_with_multiples,
   return d;
 end );
 
+InstallMethod( String,
+               [ IsDerivation ],
+function( d )
+  return Concatenation( "derivation ", DerivationName( d ),
+                        " of operation ", TargetOperation( d ) );
+end );
+
+InstallMethod( ViewObj,
+               [ IsDerivation ],
+function( d )
+  Print( "<", String( d ), ">" );
+end );
+
 InstallMethod( InstallDerivationForCategory,
                [ IsDerivation, IsPosInt, IsCapCategory ],
 function( d, weight, C )
@@ -85,6 +98,18 @@ function( operations )
   return G;
 end );
 
+InstallMethod( String,
+               [ IsDerivationGraph ],
+function( G )
+  return "derivation graph";
+end );
+
+InstallMethod( ViewObj,
+               [ IsDerivationGraph ],
+function( G )
+  Print( "<", String( G ), ">" );
+end );
+
 InstallMethod( AddDerivation,
                [ IsDerivationGraphRep, IsDerivation ],
 function( G, d )
@@ -122,6 +147,18 @@ function( C, G )
     owl!.operation_derivations.( op_name ) := fail;
   od;
   return owl;
+end );
+
+InstallMethod( String,
+               [ IsOperationWeightListRep ],
+function( owl )
+  return Concatenation( "operation weight list for ", String( owl!.category ) );
+end );
+
+InstallMethod( ViewObj,
+               [ IsOperationWeightList ],
+function( owl )
+  Print( "<", String( owl ), ">" );
 end );
 
 InstallMethod( CurrentOperationWeight,
@@ -246,6 +283,19 @@ function()
                          str := function(n) return n[1]; end,
                          array := [],
                          node_indices := rec() ) );
+end );
+
+InstallMethod( String,
+               [ IsStringMinHeap ],
+function( H )
+  return Concatenation( "min heap for strings, with size ",
+                        String( HeapSize( H ) ) );
+end );
+
+InstallMethod( ViewObj,
+               [ IsStringMinHeap ],
+function( H )
+  Print( "<", String( H ), ">" );
 end );
 
 InstallMethod( HeapSize,
