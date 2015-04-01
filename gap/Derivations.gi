@@ -20,11 +20,14 @@ InstallMethod( MakeDerivation,
                  IsPosInt, IsFunction ],
 function( name, target_op, used_ops_with_multiples,
           weight, implementation )
-  local d, used_ops, used_op_multiples;
+  local d, used_ops, used_op_multiples, used_op_names_with_multiples;
   d := rec();
   used_ops := List( used_ops_with_multiples,
                     l -> NameFunction( l[ 1 ] ) );
   used_op_multiples := List( used_ops_with_multiples, l -> l[ 2 ] );
+  used_op_names_with_multiples :=
+    List( used_ops_with_multiples,
+          l -> [ NameFunction( l[ 1 ] ), l[ 2 ] ] );
   ObjectifyWithAttributes
     ( d,
       NewType( TheFamilyOfDerivations, IsDerivationRep ),
@@ -33,6 +36,7 @@ function( name, target_op, used_ops_with_multiples,
       DerivationFunction, implementation,
       TargetOperation, NameFunction( target_op ),
       UsedOperations, used_ops,
+      UsedOperationsWithMultiples, used_op_names_with_multiples,
       UsedOperationMultiples, used_op_multiples );
   # TODO options
   return d;
@@ -175,7 +179,56 @@ function( owl, op_name, weight )
   InstallDerivationsUsingOperation( owl, op_name );
 end );
 
-
+InstallMethod( PrintDerivationTree,
+               [ IsOperationWeightList, IsString ],
+function( owl, op_name )
+  local print_node, get_children;
+  print_node := function( node )
+    local w, mult, op, d;
+    mult := node[ 2 ];
+    op := node[ 1 ];
+    if op = fail then
+      Print( "  ", mult );
+      return;
+    fi;
+    w := CurrentOperationWeight( owl, op );
+    d := DerivationOfOperation( owl, op );
+    if mult <> fail then
+      Print( "+ ", mult, " * " );
+    fi;
+    if w = infinity then
+      Print( "(not installed)" );
+    else
+      Print( "(", w, ")" );
+    fi;
+    Print( " ", op );
+    if w <> infinity then
+      Print( " " );
+      if d = fail then
+        Print( "[primitive]" );
+      else
+        Print( "[derived:", DerivationName( d ), "]" );
+      fi;
+    fi;
+  end;
+  get_children := function( node )
+    local op, d;
+    op := node[ 1 ];
+    if op = fail then
+      return [];
+    fi;
+    d := DerivationOfOperation( owl, op );
+    if d = fail then
+      return [];
+    else
+      return Concatenation( [ [ fail, DerivationWeight( d ) ] ],
+                            UsedOperationsWithMultiples( d ) );
+    fi;
+  end;
+  PrintTree( [ op_name, fail ],
+             print_node,
+             get_children );
+end );
 
 
 DeclareRepresentation( "IsStringMinHeapRep",
@@ -289,3 +342,23 @@ function( H, i )
   fi;
 end );
 
+
+InstallMethod( PrintTree,
+               [ IsObject, IsFunction, IsFunction ],
+function( root, print_node, get_children )
+  PrintTreeRec( root, print_node, get_children, 0 );
+end );
+
+InstallMethod( PrintTreeRec,
+               [ IsObject, IsFunction, IsFunction, IsInt ],
+function( node, print_node, get_children, level )
+  local i, child;
+  for i in [ 1 .. level ] do
+    Print( "   " );
+  od;
+  print_node( node );
+  Print( "\n" );
+  for child in get_children( node ) do
+    PrintTreeRec( child, print_node, get_children, level + 1 );
+  od;
+end );

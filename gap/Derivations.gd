@@ -11,6 +11,7 @@ DeclareAttribute( "DerivationFunction", IsDerivation );
 DeclareAttribute( "TargetOperation", IsDerivation );
 DeclareAttribute( "UsedOperations", IsDerivation );
 DeclareAttribute( "UsedOperationMultiples", IsDerivation );
+DeclareAttribute( "UsedOperationsWithMultiples", IsDerivation );
 DeclareOperation( "InstallDerivationForCategory",
                   [ IsDerivation, IsPosInt, IsCapCategory ] );
 DeclareOperation( "DerivationResultWeight",
@@ -30,6 +31,8 @@ DeclareOperation( "DerivationOfOperation", [ IsOperationWeightList, IsString ] )
 DeclareOperation( "InstallDerivationsUsingOperation",
                   [ IsOperationWeightList, IsString ] );
 DeclareOperation( "AddPrimitiveOperation", [ IsOperationWeightList, IsString, IsInt ] );
+DeclareOperation( "PrintDerivationTree",
+                  [ IsOperationWeightList, IsString ] );
 
 DeclareCategory( "IsStringMinHeap", IsObject );
 DeclareGlobalFunction( "StringMinHeap" );
@@ -41,3 +44,7 @@ DeclareOperation( "DecreaseKey", [ IsStringMinHeap, IsString, IsInt ] );
 DeclareOperation( "Swap", [ IsStringMinHeap, IsPosInt, IsPosInt ] );
 DeclareOperation( "Contains", [ IsStringMinHeap, IsString ] );
 DeclareOperation( "Heapify", [ IsStringMinHeap, IsPosInt ] );
+
+DeclareOperation( "PrintTree", [ IsObject, IsFunction, IsFunction ] );
+DeclareOperation( "PrintTreeRec",
+                  [ IsObject, IsFunction, IsFunction, IsInt ] );
