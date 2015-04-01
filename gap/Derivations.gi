@@ -65,12 +65,96 @@ function( d, C )
   return Tester( filter )( C ) and filter( C );
 end );
 
+InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
+  
+  function( list, category )
+      local i, current_entry,  current_filter, j;
+      list := ShallowCopy( list );
+      
+      for i in [ 1 .. Length( list ) ] do
+          current_entry := list[ i ];
+          
+          if IsFilter( current_entry ) then
+              continue;
+          
+          elif IsString( current_entry ) then
+              current_entry := LowercaseString( current_entry );
+              if PositionSublist( current_entry, "object" ) <> fail then
+                  list[ i ] := ObjectFilter( category );
+              elif PositionSublist( current_entry, "morphism" ) <> fail then
+                  list[ i ] := MorphismFilter( category );
+              elif PositionSublist( current_entry, "twocell" ) <> fail then
+                  list[ i ] := TwoCellFilter( category );
+              fi;
+              
+          elif IsList( current_entry ) then
+              current_entry := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( current_entry, category );
+              current_filter := current_entry[ 1 ];
+              for j in current_entry{[ 2 .. Length( current_entry ) ]} do
+                  current_filter := current_filter and j;
+              od;
+          fi;
+          
+      od;
+      
+      return list;
+end );
+
+BindGlobal( "CAP_INTERNAL_MERGE_FILTER_LISTS",
+  
+  function( filter_list, additional_filters )
+    local i;
+    filter_list := ShallowCopy( filter_list );
+    
+    if not Length( filter_list ) >= Length( additional_filters ) then
+        Error( "too many additional filters" );
+    fi;
+    
+    for i in [ 1 .. Length( filter_list ) ] do
+        if IsBound( additional_filters[ i ] ) then
+            filter_list[ i ] := filter_list[ i ] and additional_filters[ i ];
+        fi;
+    od;
+    
+    return filter_list;
+end );
+
 InstallMethod( InstallDerivationForCategory,
                [ IsDerivation, IsPosInt, IsCapCategory ],
 function( d, weight, C )
+  local method_name, general_filter_list, installation_name, nr_arguments,
+        cache_name, current_implementation, current_filters;
+  
   Print( "install(", weight, ") ", TargetOperation( d ),
          ": ", DerivationName( d ), "\n" );
-  # TODO actual installation
+  
+  method_name := TargetOperation( d );
+  ## getting the filters and installation name from the record
+  general_filter_list := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).filter_list;
+  installation_name := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).installation_name;
+  general_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( general_filter_list, C );
+  
+  nr_arguments := Length( general_filter_list );
+  if nr_arguments > 1 then
+    cache_name := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).cache_name;
+    PushOptions( rec( InstallMethod := InstallMethodWithCache,
+                      Cache := GET_METHOD_CACHE( C, cache_name, nr_arguments ) ) );
+  fi;
+  
+  for current_implementation in DerivationFunctionsWithExtraFilters( d ) do
+      
+      current_filters := CAP_INTERNAL_MERGE_FILTER_LISTS( general_filter_list, 
+                                                          current_implementation[ 2 ] );
+      
+      InstallMethodWithToDoForIsWellDefined( ValueGlobal( installation_name ),
+                                             current_filters,
+                                             current_implementation[ 1 ] );
+  od;
+  
+  if nr_arguments > 1 then
+      PopOptions( );
+  fi;
+  
 end );
 
 InstallMethod( DerivationResultWeight,
