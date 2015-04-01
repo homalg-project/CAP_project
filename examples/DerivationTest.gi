@@ -17,20 +17,27 @@ G := MakeDerivationGraph( [ "A", "B", "C", "D" ] );
 f := function(x) return x; end;
 AddDerivation( G, MakeDerivation( "foo", A,
                                   [ [ B, 2 ], [ C, 1 ] ],
-                                  1, f ) );
+                                  1, [ f, [] ], IsCapCategory ) );
 AddDerivation( G, MakeDerivation( "bar", B,
                                   [ [ D, 1 ] ],
-                                  1, f ) );
+                                  1, [ f, [] ], IsCapCategory ) );
 AddDerivation( G, MakeDerivation( "baz", D,
                                   [ [ B, 1 ] ],
-                                  1, f ) );
+                                  1, [ f, [] ], IsCapCategory ) );
 AddDerivation( G, MakeDerivation( "quux", C,
                                   [ [ A, 3 ], [ D, 5 ] ],
-                                  7, f ) );
+                                  7, [ f, [] ], IsAbelianCategory ) );
 AddDerivation( G, MakeDerivation( "quuux", C,
                                   [ [ B, 8 ], [ D, 5 ] ],
-                                  2, f ) );
+                                  2, [ f, [] ], IsCapCategory ) );
 
-owl := MakeOperationWeightList( CapCat, G );
+cat := CreateCapCategory( "test category" );
+owl := MakeOperationWeightList( cat, G );
+Print( "Adding A with weight 2\n" );
 AddPrimitiveOperation( owl, "A", 2 );
+Print( "Adding B with weight 2\n" );
 AddPrimitiveOperation( owl, "B", 2 );
+Print( "Set abelian=true\n" );
+SetIsAbelianCategory( cat, true );
+Print( "Reevaluate\n" );
+Reevaluate( owl );

@@ -4,10 +4,12 @@ DeclareCategory( "IsOperationWeightList", IsObject );
 
 DeclareOperation( "MakeDerivation",
                   [ IsString, IsFunction, IsDenseList,
-                    IsPosInt, IsFunction ] );
+                    IsPosInt, IsDenseList, IsFunction ] );
 DeclareAttribute( "DerivationName", IsDerivation );
 DeclareAttribute( "DerivationWeight", IsDerivation );
-DeclareAttribute( "DerivationFunction", IsDerivation );
+DeclareAttribute( "DerivationFunctionsWithExtraFilters", IsDerivation );
+DeclareAttribute( "CategoryFilter", IsDerivation );
+DeclareOperation( "IsApplicableToCategory", [ IsDerivation, IsCapCategory ] );
 DeclareAttribute( "TargetOperation", IsDerivation );
 DeclareAttribute( "UsedOperations", IsDerivation );
 DeclareAttribute( "UsedOperationMultiples", IsDerivation );
@@ -24,12 +26,15 @@ DeclareOperation( "DerivationsUsingOperation", [ IsDerivationGraph, IsString ] )
 DeclareOperation( "DerivationsOfOperation", [ IsDerivationGraph, IsString ] );
 
 DeclareOperation( "MakeOperationWeightList", [ IsCapCategory, IsDerivationGraph ] );
+DeclareAttribute( "DerivationGraph", IsOperationWeightList );
+DeclareAttribute( "CategoryOfOperationWeightList", IsOperationWeightList );
 DeclareOperation( "CurrentOperationWeight", [ IsOperationWeightList, IsString ] );
 DeclareOperation( "OperationWeightUsingDerivation",
                   [ IsOperationWeightList, IsDerivation ] );
 DeclareOperation( "DerivationOfOperation", [ IsOperationWeightList, IsString ] );
 DeclareOperation( "InstallDerivationsUsingOperation",
                   [ IsOperationWeightList, IsString ] );
+DeclareOperation( "Reevaluate", [ IsOperationWeightList ] );
 DeclareOperation( "AddPrimitiveOperation", [ IsOperationWeightList, IsString, IsInt ] );
 DeclareOperation( "PrintDerivationTree",
                   [ IsOperationWeightList, IsString ] );

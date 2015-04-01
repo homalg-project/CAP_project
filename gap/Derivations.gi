@@ -5,7 +5,7 @@ DeclareRepresentation( "IsDerivationGraphRep",
                        IsAttributeStoringRep and IsDerivationGraph,
                        [] );
 DeclareRepresentation( "IsOperationWeightListRep",
-                       IsComponentObjectRep and IsOperationWeightList,
+                       IsAttributeStoringRep and IsOperationWeightList,
                        [] );
 
 BindGlobal( "TheFamilyOfDerivations",
@@ -17,9 +17,10 @@ BindGlobal( "TheFamilyOfOperationWeightLists",
 
 InstallMethod( MakeDerivation,
                [ IsString, IsFunction, IsDenseList,
-                 IsPosInt, IsFunction ],
+                 IsPosInt, IsDenseList, IsFunction ],
 function( name, target_op, used_ops_with_multiples,
-          weight, implementation )
+          weight, implementations_with_extra_filters,
+          category_filter )
   local d, used_ops, used_op_multiples, used_op_names_with_multiples;
   d := rec();
   used_ops := List( used_ops_with_multiples,
@@ -33,7 +34,8 @@ function( name, target_op, used_ops_with_multiples,
       NewType( TheFamilyOfDerivations, IsDerivationRep ),
       DerivationName, name,
       DerivationWeight, weight,
-      DerivationFunction, implementation,
+      DerivationFunctionsWithExtraFilters, implementations_with_extra_filters,
+      CategoryFilter, category_filter,
       TargetOperation, NameFunction( target_op ),
       UsedOperations, used_ops,
       UsedOperationsWithMultiples, used_op_names_with_multiples,
@@ -53,6 +55,14 @@ InstallMethod( ViewObj,
                [ IsDerivation ],
 function( d )
   Print( "<", String( d ), ">" );
+end );
+
+InstallMethod( IsApplicableToCategory,
+               [ IsDerivation, IsCapCategory ],
+function( d, C )
+  local filter;
+  filter := CategoryFilter( d );
+  return Tester( filter )( C ) and filter( C );
 end );
 
 InstallMethod( InstallDerivationForCategory,
@@ -146,6 +156,8 @@ function( C, G )
     owl!.operation_weights.( op_name ) := infinity;
     owl!.operation_derivations.( op_name ) := fail;
   od;
+  SetDerivationGraph( owl, G );
+  SetCategoryOfOperationWeightList( owl, C );
   return owl;
 end );
 
@@ -193,6 +205,9 @@ function( owl, op_name )
     op_name := node[ 1 ];
     weight := node[ 2 ];
     for d in DerivationsUsingOperation( owl!.graph, op_name ) do
+      if not IsApplicableToCategory( d, CategoryOfOperationWeightList( owl ) ) then
+        continue;
+      fi;
       new_weight := OperationWeightUsingDerivation( owl, d );
       target := TargetOperation( d );
       if new_weight < CurrentOperationWeight( owl, target ) then
@@ -208,6 +223,17 @@ function( owl, op_name )
     od;
   od;
 end );  
+
+InstallMethod( Reevaluate,
+               [ IsOperationWeightList ],
+function( owl )
+  local op_name;
+  for op_name in Operations( DerivationGraph( owl ) ) do
+    if CurrentOperationWeight( owl, op_name ) < infinity then
+      InstallDerivationsUsingOperation( owl, op_name );
+    fi;
+  od;
+end );
 
 InstallMethod( AddPrimitiveOperation,
                [ IsOperationWeightListRep, IsString, IsInt ],
