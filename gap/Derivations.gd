@@ -1,3 +1,7 @@
+DeclareInfoClass( "DerivationInfo" );
+DeclareGlobalFunction( "ActivateDerivationInfo" );
+DeclareGlobalFunction( "DeactivateDerivationInfo" );
+
 DeclareCategory( "IsDerivation", IsObject );
 DeclareCategory( "IsDerivationGraph", IsObject );
 DeclareCategory( "IsOperationWeightList", IsObject );

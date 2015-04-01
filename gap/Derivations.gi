@@ -15,6 +15,17 @@ BindGlobal( "TheFamilyOfDerivationGraphs",
 BindGlobal( "TheFamilyOfOperationWeightLists",
             NewFamily( "TheFamilyOfOperationWeightLists" ) );
 
+
+InstallGlobalFunction( "ActivateDerivationInfo",
+  function( )
+    SetInfoLevel( DerivationInfo, 1 );
+end );
+
+InstallGlobalFunction( "DeactivateDerivationInfo",
+  function( )
+    SetInfoLevel( DerivationInfo, 0 );
+end );
+
 InstallMethod( MakeDerivation,
                [ IsString, IsFunction, IsDenseList,
                  IsPosInt, IsDenseList, IsFunction ],
@@ -79,12 +90,14 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
           
           elif IsString( current_entry ) then
               current_entry := LowercaseString( current_entry );
-              if PositionSublist( current_entry, "object" ) <> fail then
+              if current_entry = "object" then
                   list[ i ] := ObjectFilter( category );
-              elif PositionSublist( current_entry, "morphism" ) <> fail then
+              elif current_entry = "morphism" then
                   list[ i ] := MorphismFilter( category );
-              elif PositionSublist( current_entry, "twocell" ) <> fail then
+              elif current_entry = "twocell" then
                   list[ i ] := TwoCellFilter( category );
+              else
+                  Error( "filter type is not recognized, must be object, morphism, or twocell" );
               fi;
               
           elif IsList( current_entry ) then
@@ -125,8 +138,8 @@ function( d, weight, C )
   local method_name, general_filter_list, installation_name, nr_arguments,
         cache_name, current_implementation, current_filters;
   
-  Print( "install(", weight, ") ", TargetOperation( d ),
-         ": ", DerivationName( d ), "\n" );
+  Info( DerivationInfo, 1, Concatenation( "install(", weight, ") ", TargetOperation( d ),
+         ": ", DerivationName( d ), "\n" ) );
   
   method_name := TargetOperation( d );
   ## getting the filters and installation name from the record
