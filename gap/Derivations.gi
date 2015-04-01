@@ -5,7 +5,7 @@ DeclareRepresentation( "IsDerivationGraphRep",
                        IsAttributeStoringRep and IsDerivationGraph,
                        [] );
 DeclareRepresentation( "IsOperationWeightListRep",
-                       IsComponentObjectRep and IsOperationWeightList,
+                       IsAttributeStoringRep and IsOperationWeightList,
                        [] );
 
 BindGlobal( "TheFamilyOfDerivations",
@@ -17,25 +17,52 @@ BindGlobal( "TheFamilyOfOperationWeightLists",
 
 InstallMethod( MakeDerivation,
                [ IsString, IsFunction, IsDenseList,
-                 IsPosInt, IsFunction ],
+                 IsPosInt, IsDenseList, IsFunction ],
 function( name, target_op, used_ops_with_multiples,
-          weight, implementation )
-  local d, used_ops, used_op_multiples;
+          weight, implementations_with_extra_filters,
+          category_filter )
+  local d, used_ops, used_op_multiples, used_op_names_with_multiples;
   d := rec();
   used_ops := List( used_ops_with_multiples,
                     l -> NameFunction( l[ 1 ] ) );
   used_op_multiples := List( used_ops_with_multiples, l -> l[ 2 ] );
+  used_op_names_with_multiples :=
+    List( used_ops_with_multiples,
+          l -> [ NameFunction( l[ 1 ] ), l[ 2 ] ] );
   ObjectifyWithAttributes
     ( d,
       NewType( TheFamilyOfDerivations, IsDerivationRep ),
       DerivationName, name,
       DerivationWeight, weight,
-      DerivationFunction, implementation,
+      DerivationFunctionsWithExtraFilters, implementations_with_extra_filters,
+      CategoryFilter, category_filter,
       TargetOperation, NameFunction( target_op ),
       UsedOperations, used_ops,
+      UsedOperationsWithMultiples, used_op_names_with_multiples,
       UsedOperationMultiples, used_op_multiples );
   # TODO options
   return d;
+end );
+
+InstallMethod( String,
+               [ IsDerivation ],
+function( d )
+  return Concatenation( "derivation ", DerivationName( d ),
+                        " of operation ", TargetOperation( d ) );
+end );
+
+InstallMethod( ViewObj,
+               [ IsDerivation ],
+function( d )
+  Print( "<", String( d ), ">" );
+end );
+
+InstallMethod( IsApplicableToCategory,
+               [ IsDerivation, IsCapCategory ],
+function( d, C )
+  local filter;
+  filter := CategoryFilter( d );
+  return Tester( filter )( C ) and filter( C );
 end );
 
 InstallMethod( InstallDerivationForCategory,
@@ -81,6 +108,18 @@ function( operations )
   return G;
 end );
 
+InstallMethod( String,
+               [ IsDerivationGraph ],
+function( G )
+  return "derivation graph";
+end );
+
+InstallMethod( ViewObj,
+               [ IsDerivationGraph ],
+function( G )
+  Print( "<", String( G ), ">" );
+end );
+
 InstallMethod( AddDerivation,
                [ IsDerivationGraphRep, IsDerivation ],
 function( G, d )
@@ -117,7 +156,21 @@ function( C, G )
     owl!.operation_weights.( op_name ) := infinity;
     owl!.operation_derivations.( op_name ) := fail;
   od;
+  SetDerivationGraph( owl, G );
+  SetCategoryOfOperationWeightList( owl, C );
   return owl;
+end );
+
+InstallMethod( String,
+               [ IsOperationWeightListRep ],
+function( owl )
+  return Concatenation( "operation weight list for ", String( owl!.category ) );
+end );
+
+InstallMethod( ViewObj,
+               [ IsOperationWeightList ],
+function( owl )
+  Print( "<", String( owl ), ">" );
 end );
 
 InstallMethod( CurrentOperationWeight,
@@ -152,6 +205,9 @@ function( owl, op_name )
     op_name := node[ 1 ];
     weight := node[ 2 ];
     for d in DerivationsUsingOperation( owl!.graph, op_name ) do
+      if not IsApplicableToCategory( d, CategoryOfOperationWeightList( owl ) ) then
+        continue;
+      fi;
       new_weight := OperationWeightUsingDerivation( owl, d );
       target := TargetOperation( d );
       if new_weight < CurrentOperationWeight( owl, target ) then
@@ -168,6 +224,17 @@ function( owl, op_name )
   od;
 end );  
 
+InstallMethod( Reevaluate,
+               [ IsOperationWeightList ],
+function( owl )
+  local op_name;
+  for op_name in Operations( DerivationGraph( owl ) ) do
+    if CurrentOperationWeight( owl, op_name ) < infinity then
+      InstallDerivationsUsingOperation( owl, op_name );
+    fi;
+  od;
+end );
+
 InstallMethod( AddPrimitiveOperation,
                [ IsOperationWeightListRep, IsString, IsInt ],
 function( owl, op_name, weight )
@@ -175,7 +242,56 @@ function( owl, op_name, weight )
   InstallDerivationsUsingOperation( owl, op_name );
 end );
 
-
+InstallMethod( PrintDerivationTree,
+               [ IsOperationWeightList, IsString ],
+function( owl, op_name )
+  local print_node, get_children;
+  print_node := function( node )
+    local w, mult, op, d;
+    mult := node[ 2 ];
+    op := node[ 1 ];
+    if op = fail then
+      Print( "  ", mult );
+      return;
+    fi;
+    w := CurrentOperationWeight( owl, op );
+    d := DerivationOfOperation( owl, op );
+    if mult <> fail then
+      Print( "+ ", mult, " * " );
+    fi;
+    if w = infinity then
+      Print( "(not installed)" );
+    else
+      Print( "(", w, ")" );
+    fi;
+    Print( " ", op );
+    if w <> infinity then
+      Print( " " );
+      if d = fail then
+        Print( "[primitive]" );
+      else
+        Print( "[derived:", DerivationName( d ), "]" );
+      fi;
+    fi;
+  end;
+  get_children := function( node )
+    local op, d;
+    op := node[ 1 ];
+    if op = fail then
+      return [];
+    fi;
+    d := DerivationOfOperation( owl, op );
+    if d = fail then
+      return [];
+    else
+      return Concatenation( [ [ fail, DerivationWeight( d ) ] ],
+                            UsedOperationsWithMultiples( d ) );
+    fi;
+  end;
+  PrintTree( [ op_name, fail ],
+             print_node,
+             get_children );
+end );
 
 
 DeclareRepresentation( "IsStringMinHeapRep",
@@ -193,6 +309,19 @@ function()
                          str := function(n) return n[1]; end,
                          array := [],
                          node_indices := rec() ) );
+end );
+
+InstallMethod( String,
+               [ IsStringMinHeap ],
+function( H )
+  return Concatenation( "min heap for strings, with size ",
+                        String( HeapSize( H ) ) );
+end );
+
+InstallMethod( ViewObj,
+               [ IsStringMinHeap ],
+function( H )
+  Print( "<", String( H ), ">" );
 end );
 
 InstallMethod( HeapSize,
@@ -289,3 +418,23 @@ function( H, i )
   fi;
 end );
 
+
+InstallMethod( PrintTree,
+               [ IsObject, IsFunction, IsFunction ],
+function( root, print_node, get_children )
+  PrintTreeRec( root, print_node, get_children, 0 );
+end );
+
+InstallMethod( PrintTreeRec,
+               [ IsObject, IsFunction, IsFunction, IsInt ],
+function( node, print_node, get_children, level )
+  local i, child;
+  for i in [ 1 .. level ] do
+    Print( "   " );
+  od;
+  print_node( node );
+  Print( "\n" );
+  for child in get_children( node ) do
+    PrintTreeRec( child, print_node, get_children, level + 1 );
+  od;
+end );
