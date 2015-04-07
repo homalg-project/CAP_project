@@ -65,6 +65,7 @@ DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );
 
 DeclareGlobalFunction( "INSTALL_CAN_COMPUTE_TO_DO_LISTS" );
 
+DeclareGlobalVariable( "CAP_INTERNAL_DERIVATION_GRAPH" );
 
 
 InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,

@@ -103,6 +103,11 @@ InstallGlobalFunction( GET_METHOD_CACHE,
     
 end );
 
+InstallValue( CAP_INTERNAL_DERIVATION_GRAPH,
+    
+    MakeDerivationGraph( List( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForAllCategories, i -> i{[ 11 .. Length( i ) ]} ) ) );
+
+
 ######################################
 ##
 ## Reps, types, stuff.
