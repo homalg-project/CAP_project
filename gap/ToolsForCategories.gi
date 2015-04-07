@@ -781,7 +781,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
     else
         
-        install_name := record.install_name;
+        install_name := record.installation_name;
         
     fi;
     
@@ -893,6 +893,98 @@ InstallGlobalFunction( CapInternalInstallAdd,
     end );
     
 end );
+
+BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
+  
+  function( with_given_name, object_name, has_arguments )
+    local return_func;
+    
+    has_name := Concatenation( "Has", object_name );
+    
+    has_function := ValueGlobal( has_name );
+    
+    object_function := ValueGlobal( object_name );
+    
+    with_given_name_function := ValueGlobal( with_given_name );
+    
+    return function( arg )
+        local has_arg_list;
+        
+        has_arg_list := arg{ has_arguments };
+        
+        has_return := CallFuncList( has_function, has_arg_list );
+        
+        if has_return = false then
+            
+            return [ false ];
+            
+        fi;
+        
+        return [ true, CallFuncList( with_given_name_function, Concatenation( arg, [ CallFuncList( object_function, has_arg_list ) ] ) ) ];
+        
+    end;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
+  
+  function( source_range_object, object_function_name, object_function_argument_list )
+    local object_getter, set_object, was_created_filter, diagram_name, setter_function;
+    
+    if source_range_object = "Source" then
+        object_getter := Source;
+        set_object := true;
+    elif source_range_object = "Range" then
+        object_getter := Range;
+        set_object := true;
+    else
+        object_getter := IdFunc;
+        set_object := false;
+    fi;
+    
+    was_created_filter := ValueGlobal( Concatenation( "WasCreatedAs", object_function_name ) );
+    diagram_name := Concatenation( object_function_name, "Diagram" );
+    setter_function := ValueGlobal( Concatenation( "Set", object_function_name ) );
+    
+    return function( arg )
+        local result, object;
+        
+        result := arg[ Length( arg ) ];
+        arg := Remove( arg );
+        object := object_getter( result );
+        
+        if set_object then
+            CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
+        fi;
+        
+        SetFilterObj( was_created_filter, object );
+        
+        AddToGenesis( object, diagram_name, arg[ 1 ] );
+        
+    end;
+    
+end;
+
+InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
+    
+  function( )
+    local recnames, current_recname, current_rec, 
+    
+    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    
+    for current_recname in recnames do
+        
+        current_rec := ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ) );
+        
+        current_rec.function_name := current_recname;
+        
+        if PositionSublist( current_recname, "WithGiven" ) <> fail then
+            
+            CapInternalInstallAdd( current_rec );
+            
+        else
+            
+            position_of_with_given := 
 
 
 
