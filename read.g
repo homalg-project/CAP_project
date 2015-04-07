@@ -1,3 +1,6 @@
+## CAP.gi uses implementations in this file.
+ReadPackage( "CAP", "gap/Derivations.gi");
+
 ReadPackage( "CAP", "gap/CAP.gi");
 
 ReadPackage( "CAP", "gap/CategoryObjects.gi");
@@ -38,4 +41,3 @@ ReadPackage( "CAP", "gap/LogicForDeductiveSystem.gi");
 
 ReadPackage( "CAP", "gap/TheoremParser.gi");
 
-ReadPackage( "CAP", "gap/Derivations.gi");
