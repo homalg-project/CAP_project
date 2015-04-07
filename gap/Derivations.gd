@@ -61,5 +61,3 @@ DeclareOperation( "PrintTree", [ IsObject, IsFunction, IsFunction ] );
 DeclareOperation( "PrintTreeRec",
                   [ IsObject, IsFunction, IsFunction, IsInt ] );
 
-DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS" );
-

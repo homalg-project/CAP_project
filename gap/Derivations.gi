@@ -76,66 +76,6 @@ function( d, C )
   return Tester( filter )( C ) and filter( C );
 end );
 
-InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
-  
-  function( list, category )
-      local i, current_entry,  current_filter, j;
-      list := ShallowCopy( list );
-      
-      for i in [ 1 .. Length( list ) ] do
-          current_entry := list[ i ];
-          
-          if IsFilter( current_entry ) then
-              continue;
-          
-          elif IsString( current_entry ) then
-              current_entry := LowercaseString( current_entry );
-              if current_entry = "category" then
-                  list[ i ] := IsCapCategory;
-              elif current_entry = "cell" then
-                  list[ i ] := CellFilter( category ) and IsCapCategoryCell;
-              elif current_entry = "object" then
-                  list[ i ] := ObjectFilter( category ) and IsCapCategoryObject;
-              elif current_entry = "morphism" then
-                  list[ i ] := MorphismFilter( category ) and IsCapCategoryMorphism;
-              elif current_entry = "twocell" then
-                  list[ i ] := TwoCellFilter( category ) and IsCapCategoryTwoCell;
-              else
-                  Error( "filter type is not recognized, must be object, morphism, or twocell" );
-              fi;
-              
-          elif IsList( current_entry ) then
-              current_entry := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( current_entry, category );
-              current_filter := current_entry[ 1 ];
-              for j in current_entry{[ 2 .. Length( current_entry ) ]} do
-                  current_filter := current_filter and j;
-              od;
-          fi;
-          
-      od;
-      
-      return list;
-end );
-
-BindGlobal( "CAP_INTERNAL_MERGE_FILTER_LISTS",
-  
-  function( filter_list, additional_filters )
-    local i;
-    filter_list := ShallowCopy( filter_list );
-    
-    if not Length( filter_list ) >= Length( additional_filters ) then
-        Error( "too many additional filters" );
-    fi;
-    
-    for i in [ 1 .. Length( filter_list ) ] do
-        if IsBound( additional_filters[ i ] ) then
-            filter_list[ i ] := filter_list[ i ] and additional_filters[ i ];
-        fi;
-    od;
-    
-    return filter_list;
-end );
-
 InstallMethod( InstallDerivationForCategory,
                [ IsDerivation, IsPosInt, IsCapCategory ],
 function( d, weight, C )
