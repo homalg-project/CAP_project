@@ -2059,7 +2059,7 @@ InstallMethod( AddUniversalMorphismIntoFiberProduct,
         
         SetFiberProductOp( diagram, diagram[1], pullback );
         
-        Add( CapCategory( diagram[1] ), pullback );
+#         Add( CapCategory( diagram[1] ), pullback );
         
         SetFilterObj( pullback, WasCreatedAsFiberProduct );
         
