@@ -283,6 +283,17 @@ InstallMethod( AddDerivation,
     AddDerivation( graph, derivation );
 end );
 
+InstallGlobalFunction( AddDerivationToCAP,
+  
+  function( arg )
+    local list;
+    
+    list := Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH ], arg );
+    
+    CallFuncList( AddDerivation, list );
+    
+end );
+
 InstallMethod( DerivationsUsingOperation,
                [ IsDerivationGraphRep, IsString ],
 function( G, op_name )
