@@ -377,9 +377,9 @@ InstallMethodWithCacheFromObject( KernelLift,
 end );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernelLiftWithGivenKernel, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
+InstallTrueMethodAndStoreImplication( CanComputeKernelLiftWithGivenKernelObject, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
 
-InstallMethodWithCacheFromObject( KernelLiftWithGivenKernel,
+InstallMethodWithCacheFromObject( KernelLiftWithGivenKernelObject,
                                   [ IsCapCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
                                     IsCapCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
                                     IsCapCategoryObject and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
@@ -406,29 +406,29 @@ end );
 
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernelEmb, CanComputeKernelObject and CanComputeKernelEmbWithGivenKernel );
+InstallTrueMethodAndStoreImplication( CanComputeKernelEmb, CanComputeKernelObject and CanComputeKernelEmbWithGivenKernelObject );
 
 InstallMethod( KernelEmb,
-               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeKernelEmbWithGivenKernel ],
+               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeKernelEmbWithGivenKernelObject ],
                -9999, #FIXME
                
   function( mor )
     
-    return KernelEmbWithGivenKernel( mor, KernelObject( mor ) );
+    return KernelEmbWithGivenKernelObject( mor, KernelObject( mor ) );
     
 end );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernelLift, CanComputeKernelObject and CanComputeKernelLiftWithGivenKernel );
+InstallTrueMethodAndStoreImplication( CanComputeKernelLift, CanComputeKernelObject and CanComputeKernelLiftWithGivenKernelObject );
 
 InstallMethod( KernelLift,
-               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeKernelLiftWithGivenKernel,
+               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeKernelLiftWithGivenKernelObject,
                  IsCapCategoryMorphism ],
                -9999, #FIXME
                
   function( morphism, test_morphism )
     
-    return KernelLiftWithGivenKernel( morphism, test_morphism, KernelObject( morphism ) );
+    return KernelLiftWithGivenKernelObject( morphism, test_morphism, KernelObject( morphism ) );
     
 end );
 

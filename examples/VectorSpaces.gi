@@ -230,7 +230,7 @@ AddKernelEmb( vecspaces,
 end );
 
 ##
-AddKernelEmbWithGivenKernel( vecspaces,
+AddKernelEmbWithGivenKernelObject( vecspaces,
 
   function( morphism, kernel )
     local kernel_emb;

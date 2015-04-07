@@ -1,9 +1,9 @@
 ## Implemented:
 ## - AddKernel
 ## - AddKernelEmb
-## - AddKernelEmbWithGivenKernel
+## - AddKernelEmbWithGivenKernelObject
 ## - AddKernelLift
-## - AddKernelLiftWithGivenKernel
+## - AddKernelLiftWithGivenKernelObject
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
   
@@ -44,7 +44,7 @@ AddKernelEmb( vecspaces,
 end );
 
 ##
-AddKernelEmbWithGivenKernel( vecspaces,
+AddKernelEmbWithGivenKernelObject( vecspaces,
 
   function( morphism, kernel )
     local kernel_emb;
@@ -68,7 +68,7 @@ AddKernelLift( vecspaces,
 end );
 
 ##
-AddKernelLiftWithGivenKernel( vecspaces,
+AddKernelLiftWithGivenKernelObject( vecspaces,
 
   function( mor, test_morphism, kernel )
    local kernel_emb;

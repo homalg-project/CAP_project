@@ -195,12 +195,12 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
     end );
 
-    ## KernelEmbWithGivenKernel
+    ## KernelEmbWithGivenKernelObject
     BindGlobal( Concatenation( "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ),
       
       function( category )
 
-          AddKernelEmbWithGivenKernel( category_getter( category ),
+          AddKernelEmbWithGivenKernelObject( category_getter( category ),
             
             function( morphism, kernel )
               local range;
@@ -213,12 +213,12 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
     end );
 
-    ## KernelLiftWithGivenKernel
+    ## KernelLiftWithGivenKernelObject
     BindGlobal( Concatenation( "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ),
       
       function( category )
 
-          AddKernelLiftWithGivenKernel( category_getter( category ),
+          AddKernelLiftWithGivenKernelObject( category_getter( category ),
             
             function( morphism, test_morphism, kernel )
               local source;

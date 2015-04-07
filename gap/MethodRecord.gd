@@ -27,20 +27,20 @@ KernelEmb := rec(
   installation_name := "KernelEmb",
   filter_list := [ "morphism" ] ),
 
-KernelEmbWithGivenKernel := rec(
-  installation_name := "KernelEmbWithGivenKernel",
+KernelEmbWithGivenKernelObject := rec(
+  installation_name := "KernelEmbWithGivenKernelObject",
   filter_list := [ "morphism", "object" ],
-  cache_name := "KernelEmbWithGivenKernel" ),
+  cache_name := "KernelEmbWithGivenKernelObject" ),
 
 KernelLift := rec(
   installation_name := "KernelLift",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "KernelLift" ),
 
-KernelLiftWithGivenKernel := rec(
-  installation_name := "KernelLiftWithGivenKernel",
+KernelLiftWithGivenKernelObject := rec(
+  installation_name := "KernelLiftWithGivenKernelObject",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "KernelLiftWithGivenKernel" ),
+  cache_name := "KernelLiftWithGivenKernelObject" ),
 
 Cokernel := rec(
   installation_name := "Cokernel",
