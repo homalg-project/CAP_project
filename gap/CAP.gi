@@ -226,9 +226,12 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     flatted_attribute_list := Concatenation( [ obj_rec, TheTypeOfHomalgCategories ], flatted_attribute_list );
     
+    
     obj_rec!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );
     
     CallFuncList( ObjectifyWithAttributes, flatted_attribute_list );
+    
+    obj_rec!.derivations_weight_list := MakeOperationsWeightList( obj_rec, CAP_INTERNAL_DERIVATION_GRAPH );
     
     obj_rec!.caches := rec( );
     
