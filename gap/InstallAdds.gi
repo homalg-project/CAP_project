@@ -66,12 +66,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
     fi;
     
     InstallMethod( ValueGlobal( add_name ),
-                   [ IsCapCategory, IsList ],
+                   [ IsCapCategory, IsList, IsInt ],
       
-      function( category, method_list )
-        local install_func, replaced_filter_list, install_method, popper, i, weight;
-        
-        weight := 1;
+      function( category, method_list, weight )
+        local install_func, replaced_filter_list, install_method, popper, i;
         
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( category, filter_list );
         
