@@ -300,3 +300,5 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
     od;
     
 end );
+
+CAP_INTERNAL_INSTALL_ALL_ADDS();
