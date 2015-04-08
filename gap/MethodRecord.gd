@@ -45,7 +45,7 @@ KernelLift := rec(
 
 KernelLiftWithGivenKernelObject := rec(
   installation_name := "KernelLiftWithGivenKernelObject",
-  filter_list := [ "morphism", "morphism" ],
+  filter_list := [ "morphism", "morphism", "object" ],
   cache_name := "KernelLiftWithGivenKernelObject",
   universal_type := "Limit" ),
 
@@ -75,7 +75,7 @@ CokernelColift := rec(
 
 CokernelColiftWithGivenCokernel := rec(
   installation_name := "CokernelColiftWithGivenCokernel",
-  filter_list := [ "morphism", "object" ],
+  filter_list := [ "morphism", "morphism", "object" ],
   cache_name := "CokernelColiftWithGivenCokernel",
   universal_type := "Colimit" ),
 
@@ -189,7 +189,7 @@ IsEqualForMorphisms := rec(
   well_defined_todo := false ),
 
 IsZeroForMorphisms := rec(
-  installation_name := "IsZeroForMorphisms",
+  installation_name := "IsZero",
   filter_list := [ "morphism" ],
   well_defined_todo := false ),
 
@@ -199,7 +199,7 @@ AdditionForMorphisms := rec(
   cache_name := "AdditionForMorphisms" ),
 
 AdditiveInverseForMorphisms := rec(
-  installation_name := "AdditiveInverseForMorphisms",
+  installation_name := "AdditiveInverse",
   filter_list := [ "morphism" ] ),
 
 Coproduct := rec(
@@ -342,17 +342,17 @@ ImageEmbeddingWithGivenImageObject := rec(
   universal_type := "Limit" ),
 
 IsWellDefinedForMorphisms := rec(
-  installation_name := "IsWellDefinedForMorphisms",
+  installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],
   well_defined_todo := false ),
 
 IsWellDefinedForObjects := rec(
-  installation_name := "IsWellDefinedForObjects",
+  installation_name := "IsWellDefined",
   filter_list := [ "object" ],
   well_defined_todo := false ),
 
 IsZeroForObjects := rec(
-  installation_name := "IsZeroForObjects",
+  installation_name := "IsZero",
   filter_list := [ "object" ],
   well_defined_todo := false ),
 
@@ -505,7 +505,7 @@ IdentityTwoCell := rec(
 #   cache_name := "HonestRepresentative" ),
 
 IsWellDefinedForTwoCells := rec(
-  installation_name := "IsWellDefinedForTwoCells",
+  installation_name := "IsWellDefined",
   filter_list := [ "twocell" ],
   well_defined_todo := false ) )
 );

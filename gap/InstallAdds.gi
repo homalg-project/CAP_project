@@ -17,7 +17,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
     
     function_name := record.function_name;
     
-    if not IsBound( record.install_name ) then
+    if not IsBound( record.installation_name ) then
         
         install_name := function_name;
         
@@ -66,12 +66,21 @@ InstallGlobalFunction( CapInternalInstallAdd,
     fi;
     
     InstallMethod( ValueGlobal( add_name ),
+                   [ IsCapCategory, IsFunction ],
+                   
+      function( category, func )
+        
+        ValueGlobal( add_name )( category, [ [ func, [ ] ] ], 100 );
+        
+    end );
+    
+    InstallMethod( ValueGlobal( add_name ),
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )
         local install_func, replaced_filter_list, install_method, popper, i;
         
-        replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( category, filter_list );
+        replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
         
         Setter( ValueGlobal( can_compute_name ) )( category, true );
         
@@ -97,7 +106,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, filter_list );
             
-            install_method( install_name,
+            install_method( ValueGlobal( install_name ),
                             new_filter_list,
                             
               function( arg )
