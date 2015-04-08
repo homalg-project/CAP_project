@@ -3,6 +3,8 @@ ReadPackage( "CAP", "gap/ToolsForCategories.gd");
 
 ReadPackage( "CAP", "gap/CAP.gd");
 
+ReadPackage( "CAP", "gap/Derivations.gd");
+
 ## FIXME: The loading structure needs to be redone.
 ReadPackage( "CAP", "gap/ToolsForCategories.gi");
 
@@ -13,6 +15,8 @@ ReadPackage( "CAP", "gap/CategoryMorphisms.gd");
 ReadPackage( "CAP", "gap/CategoryTwoCells.gd");
 
 ReadPackage( "CAP", "gap/UniversalObjects.gd" );
+
+ReadPackage( "CAP", "gap/InstallAdds.gd" );
 
 ReadPackage( "CAP", "gap/OppositeCategory.gd");
 
@@ -44,4 +48,3 @@ ReadPackage( "CAP", "gap/TheoremParser.gd");
 
 ReadPackage( "CAP", "gap/MethodRecord.gd" );
 
-ReadPackage( "CAP", "gap/Derivations.gd");

@@ -64,6 +64,4 @@ DeclareGlobalFunction( "ListCanComputesOfCategory" );
 DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS" );
 DeclareGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS" );
 
-#!
-DeclareGlobalFunction( "CapInternalInstallAdd" );
 

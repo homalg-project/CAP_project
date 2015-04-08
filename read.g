@@ -11,6 +11,8 @@ ReadPackage( "CAP", "gap/CategoryTwoCells.gi");
 
 ReadPackage( "CAP", "gap/UniversalObjects.gi" );
 
+ReadPackage( "CAP", "gap/InstallAdds.gi" );
+
 ReadPackage( "CAP", "gap/OppositeCategory.gi");
 
 ReadPackage( "CAP", "gap/ProductCategory.gi");
