@@ -1145,7 +1145,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductWithGiven
   function( diagram, projection_number, pullback )
     local embedding_in_direct_product, direct_product, direct_product_diagram, projection;
   
-    if not WasCreatedAsKernel( pullback ) or not IsBound( Genesis( pullback )!.FiberProductAsKernelDiagram ) then
+    if not WasCreatedAsKernelObject( pullback ) or not IsBound( Genesis( pullback )!.FiberProductAsKernelDiagram ) then
     
       Error( "pullback had to be created as a kernel" );
     
@@ -1186,7 +1186,7 @@ InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoFiberProductWithGive
   function( diagram, source, pullback )
     local test_function;
     
-    if not WasCreatedAsKernel( pullback ) then
+    if not WasCreatedAsKernelObject( pullback ) then
       
       Error( "pullback had to be created as a kernel" );
       
@@ -1462,7 +1462,7 @@ InstallMethod( ImageObject,
 end );
 
 ## Note: As long as the above derived ImageObject-function is used,
-## there is no need to implement ImageEmbeddingWithGivenImage in order
+## there is no need to implement ImageEmbeddingWithGivenImageObject in order
 ## to keep these methods consistent.
 ##
 InstallTrueMethodAndStoreImplication( CanComputeImageEmbedding, CanComputeKernelEmb and CanComputeCokernelProj );
@@ -1477,7 +1477,7 @@ InstallMethod( ImageEmbedding,
     ## consistency check
     if HasImageObject( mor ) then
       
-      return ImageEmbeddingWithGivenImage( mor, ImageObject( mor ) );
+      return ImageEmbeddingWithGivenImageObject( mor, ImageObject( mor ) );
       
     fi;
     
@@ -1487,7 +1487,7 @@ InstallMethod( ImageEmbedding,
     
     AddToGenesis( image, "ImageDiagram", mor );
     
-    SetFilterObj( image, WasCreatedAsImage );
+    SetFilterObj( image, WasCreatedAsImageObject );
     
     SetImageObject( mor, image );
     
@@ -1496,33 +1496,33 @@ InstallMethod( ImageEmbedding,
 end );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeImageEmbedding, CanComputeImageEmbeddingWithGivenImage and CanComputeImage );
+InstallTrueMethodAndStoreImplication( CanComputeImageEmbedding, CanComputeImageEmbeddingWithGivenImageObject and CanComputeImage );
 
 InstallMethod( ImageEmbedding,
                [ IsCapCategoryMorphism
-                 and CanComputeImageEmbeddingWithGivenImage
+                 and CanComputeImageEmbeddingWithGivenImageObject
                  and CanComputeImage ],
                  -9900, #FIXME
                  
   function( morphism )
     
-    return ImageEmbeddingWithGivenImage( ImageObject( morphism ), morphism );
+    return ImageEmbeddingWithGivenImageObject( ImageObject( morphism ), morphism );
   
 end );
 
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeCoastrictionToImage, CanComputeCoastrictionToImageWithGivenImage and CanComputeImage );
+InstallTrueMethodAndStoreImplication( CanComputeCoastrictionToImage, CanComputeCoastrictionToImageWithGivenImageObject and CanComputeImage );
 
 InstallMethod( CoastrictionToImage,
                [ IsCapCategoryMorphism
-                 and CanComputeCoastrictionToImageWithGivenImage 
+                 and CanComputeCoastrictionToImageWithGivenImageObject 
                  and CanComputeImage ],
                  -9900, #FIXME
                  
   function( morphism )
     
-    return CoastrictionToImageWithGivenImage( Image( morphism ), morphism );
+    return CoastrictionToImageWithGivenImageObject( Image( morphism ), morphism );
     
 end );
 
@@ -1548,19 +1548,19 @@ end );
 
 ##
 InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromImage,
-                   CanComputeUniversalMorphismFromImageWithGivenImage
+                   CanComputeUniversalMorphismFromImageWithGivenImageObject
                    and CanComputeImage );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImage,
                [ IsCapCategoryMorphism
-                 and CanComputeUniversalMorphismFromImageWithGivenImage
+                 and CanComputeUniversalMorphismFromImageWithGivenImageObject
                  and CanComputeImage,
                  IsList ],
                  -9900, #FIXME
                  
   function( morphism, test_factorization )
     
-    return UniversalMorphismFromImageWithGivenImage( morphism, test_factorization, ImageObject( morphism ) );
+    return UniversalMorphismFromImageWithGivenImageObject( morphism, test_factorization, ImageObject( morphism ) );
     
 end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 1 );
 

@@ -262,9 +262,9 @@ DeclareOperation( "KernelObjectFunctorial",
 
 #! @Description 
 #! When created, this filter is set to true for a kernel object. 
-#! Note that we chose <C>WasCreatedAsKernel</C> to be a filter rather than a property,
+#! Note that we chose <C>WasCreatedAsKernelObject</C> to be a filter rather than a property,
 #! because by default, a filter is set to false. 
-DeclareFilter( "WasCreatedAsKernel" );
+DeclareFilter( "WasCreatedAsKernelObject" );
 
 #! @Chapter Universal Objects
 
@@ -1674,16 +1674,16 @@ DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
 DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
                                           IsCapCategoryMorphism );
 
-DeclareOperation( "ImageEmbeddingWithGivenImage",
+DeclareOperation( "ImageEmbeddingWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-DeclareOperation( "CoastrictionToImageWithGivenImage",
+DeclareOperation( "CoastrictionToImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 DeclareOperation( "UniversalMorphismFromImage",
                   [ IsCapCategoryMorphism, IsList ] );
 
-DeclareOperation( "UniversalMorphismFromImageWithGivenImage",
+DeclareOperation( "UniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -1698,19 +1698,19 @@ DeclareAttribute( "ImageFunction",
 DeclareAttribute( "ImageEmbeddingFunction",
                   IsCapCategory );
 
-DeclareAttribute( "ImageEmbeddingWithGivenImageFunction",
+DeclareAttribute( "ImageEmbeddingWithGivenImageObjectFunction",
                   IsCapCategory );
 
 DeclareAttribute( "CoastrictionToImageFunction",
                   IsCapCategory );
 
-DeclareAttribute( "CoastrictionToImageWithGivenImageFunction",
+DeclareAttribute( "CoastrictionToImageWithGivenImageObjectFunction",
                   IsCapCategory );
 
 DeclareAttribute( "UniversalMorphismFromImageFunction",
                   IsCapCategory );
 
-DeclareAttribute( "UniversalMorphismFromImageWithGivenImageFunction",
+DeclareAttribute( "UniversalMorphismFromImageWithGivenImageObjectFunction",
                   IsCapCategory );
 
 
@@ -1745,10 +1745,10 @@ DeclareOperation( "AddImageEmbedding",
 #! This operation adds the given function $f: (\alpha, I) \mapsto \iota$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddImageEmbeddingWithGivenImage",
+DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddImageEmbeddingWithGivenImage",
+DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1767,10 +1767,10 @@ DeclareOperation( "AddCoastrictionToImage",
 #! This operation adds the given function $f: (\alpha, I) \mapsto c$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddCoastrictionToImageWithGivenImage",
+DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoastrictionToImageWithGivenImage",
+DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1791,10 +1791,10 @@ DeclareOperation( "AddUniversalMorphismFromImage",
 #! Note that $[\tau_1, \tau_2]$ is a list of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismFromImageWithGivenImage",
+DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismFromImageWithGivenImage",
+DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1806,9 +1806,9 @@ DeclareOperation( "AddUniversalMorphismFromImageWithGivenImage",
 
 #! @Description 
 #! When created, this filter is set to true for an image. 
-#! Note that we chose <C>WasCreatedAsImage</C> to be a filter rather than a property,
+#! Note that we chose <C>WasCreatedAsImageObject</C> to be a filter rather than a property,
 #! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsImage" );
+DeclareFilter( "WasCreatedAsImageObject" );
 #! @Chapter Universal Objects
 
 

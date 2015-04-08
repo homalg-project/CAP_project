@@ -172,7 +172,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
-  function( source_range_object, object_function_name, object_function_argument_list )
+  function( source_range_object, object_function_name, object_function_argument_list, object_call_name )
     local object_getter, set_object, was_created_filter, diagram_name, setter_function;
     
     if source_range_object = "Source" then
@@ -186,8 +186,8 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
         set_object := false;
     fi;
     
-    was_created_filter := ValueGlobal( Concatenation( "WasCreatedAs", object_function_name ) );
-    diagram_name := Concatenation( object_function_name, "Diagram" );
+    was_created_filter := ValueGlobal( Concatenation( "WasCreatedAs", object_call_name ) );
+    diagram_name := Concatenation( object_call_name, "Diagram" );
     setter_function := ValueGlobal( Concatenation( "Set", object_function_name ) );
     
     return function( arg )
@@ -221,6 +221,12 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         
         current_rec := ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ) );
         
+        if IsBound( current_rec.no_install ) and current_rec.no_install = true then
+            
+            continue;
+            
+        fi;
+        
         current_rec.function_name := current_recname;
         
         if PositionSublist( current_recname, "WithGiven" ) <> fail or not IsBound( current_rec.universal_type ) then
@@ -243,7 +249,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         
         if IsBound( current_rec.universal_type ) and not IsBound( current_rec.universal_object_position ) then
             
-            current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( "id", current_rec.installation_name, arg_list ); ##Please note that the third argument is not used
+            current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( "id", current_rec.installation_name, arg_list, current_recname ); ##Please note that the third argument is not used
             
             CapInternalInstallAdd( current_rec );
             
@@ -252,8 +258,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         fi;
         
         if IsBound( current_rec.universal_object_position ) then
-            
-            current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position , current_rec.installation_name, arg_list );
             
             ## find with given name
             
@@ -284,6 +288,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             object_func := CAP_INTERNAL_METHOD_NAME_RECORD.( object_name ).installation_name;
             
             current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list );
+            
+            current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, arg_list, object_name );
             
             CapInternalInstallAdd( current_rec );
             

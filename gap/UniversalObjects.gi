@@ -59,7 +59,7 @@ InstallMethod( AddKernelObject,
         
         Add( CapCategory( mor ), kernel );
         
-        SetFilterObj( kernel, WasCreatedAsKernel );
+        SetFilterObj( kernel, WasCreatedAsKernelObject );
         
         AddToGenesis( kernel, "KernelDiagram", mor );
         
@@ -111,7 +111,7 @@ InstallMethod( AddKernelLift,
         
         SetKernelObject( mor, kernel );
         
-        SetFilterObj( kernel, WasCreatedAsKernel );
+        SetFilterObj( kernel, WasCreatedAsKernelObject );
         
         AddToGenesis( kernel, "KernelDiagram", mor );
         
@@ -181,7 +181,7 @@ InstallMethod( AddKernelEmb,
         
         SetKernelObject( mor, kernel );
         
-        SetFilterObj( kernel, WasCreatedAsKernel );
+        SetFilterObj( kernel, WasCreatedAsKernelObject );
         
         AddToGenesis( kernel, "KernelDiagram", mor );
         
@@ -234,7 +234,7 @@ end );
 ## convenience
 ##
 InstallMethod( KernelEmb,
-               [ IsCapCategoryObject and WasCreatedAsKernel ],
+               [ IsCapCategoryObject and WasCreatedAsKernelObject ],
                
   function( kernel )
   
@@ -2483,7 +2483,7 @@ InstallMethod( AddImageObject,
         
         Add( category, image );
         
-        SetFilterObj( image, WasCreatedAsImage );
+        SetFilterObj( image, WasCreatedAsImageObject );
         
         AddToGenesis( image, "ImageDiagram", mor );
         
@@ -2511,7 +2511,7 @@ InstallMethod( AddImageEmbedding,
         
         if HasImageObject( mor ) then
         
-          return ImageEmbeddingWithGivenImage( mor, ImageObject( mor ) );
+          return ImageEmbeddingWithGivenImageObject( mor, ImageObject( mor ) );
         
         fi;
         
@@ -2526,7 +2526,7 @@ InstallMethod( AddImageEmbedding,
         
         AddToGenesis( image, "ImageDiagram", mor );
         
-        SetFilterObj( image, WasCreatedAsImage );
+        SetFilterObj( image, WasCreatedAsImageObject );
         
         SetImageObject( mor, image );
         
@@ -2537,16 +2537,16 @@ InstallMethod( AddImageEmbedding,
 end );
 
 ##
-InstallMethod( AddImageEmbeddingWithGivenImage,
+InstallMethod( AddImageEmbeddingWithGivenImageObject,
                [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
-    SetImageEmbeddingWithGivenImageFunction( category, func );
+    SetImageEmbeddingWithGivenImageObjectFunction( category, func );
     
-    SetCanComputeImageEmbeddingWithGivenImage( category, true );
+    SetCanComputeImageEmbeddingWithGivenImageObject( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( ImageEmbeddingWithGivenImage,
+    InstallMethodWithToDoForIsWellDefined( ImageEmbeddingWithGivenImageObject,
                                            [ IsCapCategoryMorphism and MorphismFilter( category ),
                                              IsCapCategoryObject and ObjectFilter( category ) ],
                                            
@@ -2559,7 +2559,7 @@ InstallMethod( AddImageEmbeddingWithGivenImage,
         
         return image_embedding;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ImageEmbeddingWithGivenImage", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ImageEmbeddingWithGivenImageObject", 2 ) );
     
 end );
 
@@ -2581,7 +2581,7 @@ InstallMethod( AddCoastrictionToImage,
         
         if HasImageObject( morphism ) then
         
-          return CoastrictionToImageWithGivenImage( morphism, ImageObject( morphism ) );
+          return CoastrictionToImageWithGivenImageObject( morphism, ImageObject( morphism ) );
         
         fi;
         
@@ -2593,7 +2593,7 @@ InstallMethod( AddCoastrictionToImage,
         
         AddToGenesis( image, "ImageDiagram", morphism );
         
-        SetFilterObj( image, WasCreatedAsImage );
+        SetFilterObj( image, WasCreatedAsImageObject );
         
         SetImageObject( morphism, image );
         
@@ -2604,16 +2604,16 @@ InstallMethod( AddCoastrictionToImage,
 end );
 
 ##
-InstallMethod( AddCoastrictionToImageWithGivenImage,
+InstallMethod( AddCoastrictionToImageWithGivenImageObject,
                [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
-    SetCoastrictionToImageWithGivenImageFunction( category, func );
+    SetCoastrictionToImageWithGivenImageObjectFunction( category, func );
     
-    SetCanComputeCoastrictionToImageWithGivenImage( category, true );
+    SetCanComputeCoastrictionToImageWithGivenImageObject( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( CoastrictionToImageWithGivenImage,
+    InstallMethodWithToDoForIsWellDefined( CoastrictionToImageWithGivenImageObject,
                                            [ IsCapCategoryMorphism and MorphismFilter( category ),
                                              IsCapCategoryObject and ObjectFilter( category ) ],
                                            
@@ -2626,7 +2626,7 @@ InstallMethod( AddCoastrictionToImageWithGivenImage,
         
         return coastriction_to_image;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CoastrictionToImageWithGivenImage", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CoastrictionToImageWithGivenImageObject", 2 ) );
     
 end );
 
@@ -2649,7 +2649,7 @@ InstallMethod( AddUniversalMorphismFromImage,
         
         if HasImageObject( morphism ) then
           
-          return UniversalMorphismFromImageWithGivenImage(
+          return UniversalMorphismFromImageWithGivenImageObject(
                    morphism,
                    test_factorization,
                    ImageObject( morphism )
@@ -2675,7 +2675,7 @@ InstallMethod( AddUniversalMorphismFromImage,
         
         SetImageObject( morphism, image );
         
-        SetFilterObj( image, WasCreatedAsImage );
+        SetFilterObj( image, WasCreatedAsImageObject );
         
         return universal_morphism;
         
@@ -2684,16 +2684,16 @@ InstallMethod( AddUniversalMorphismFromImage,
 end );
 
 ##
-InstallMethod( AddUniversalMorphismFromImageWithGivenImage,
+InstallMethod( AddUniversalMorphismFromImageWithGivenImageObject,
                [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
-    SetUniversalMorphismFromImageWithGivenImageFunction( category, func );
+    SetUniversalMorphismFromImageWithGivenImageObjectFunction( category, func );
     
-    SetCanComputeUniversalMorphismFromImageWithGivenImage( category, true );
+    SetCanComputeUniversalMorphismFromImageWithGivenImageObject( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImageWithGivenImage,
+    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImageWithGivenImageObject,
                                            [ IsCapCategoryMorphism and MorphismFilter( category ),
                                              IsList,
                                              IsCapCategoryObject ],
@@ -2714,7 +2714,7 @@ InstallMethod( AddUniversalMorphismFromImageWithGivenImage,
         
         return universal_morphism;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromImageWithGivenImage", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromImageWithGivenImageObject", 3 ) );
     
 end );
 
@@ -2725,7 +2725,7 @@ end );
 ####################################
 
 InstallMethod( ImageEmbedding,
-               [ IsCapCategoryObject and WasCreatedAsImage ],
+               [ IsCapCategoryObject and WasCreatedAsImageObject ],
                
   function( image )
     
@@ -2734,7 +2734,7 @@ InstallMethod( ImageEmbedding,
 end );
 
 InstallMethod( CoastrictionToImage,
-               [ IsCapCategoryObject and WasCreatedAsImage ],
+               [ IsCapCategoryObject and WasCreatedAsImageObject ],
                
   function( image )
     

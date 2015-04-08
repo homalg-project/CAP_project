@@ -330,7 +330,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
                        ) );
     
     AddNodeToGraph( print_graph,
-                    rec( Conditions := "WasCreatedAsKernel",
+                    rec( Conditions := "WasCreatedAsKernelObject",
                          PrintString := "is kernel",
                          ComputeLevel := 5
                        ) );

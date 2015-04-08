@@ -560,7 +560,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddImageEmbeddingWithGivenImage( deductive_system,
+    AddImageEmbeddingWithGivenImageObject( deductive_system,
                                      
       function( morphism, image_object )
         
@@ -579,7 +579,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddCoastrictionToImageWithGivenImage( deductive_system,
+    AddCoastrictionToImageWithGivenImageObject( deductive_system,
                             
       function( morphism, image_object )
         
@@ -597,7 +597,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         return DeductiveSystemMorphism( image_object, "UniversalMorphismFromImage", [ morphism, test_factorization ], Source( test_factorization[1] ) );
     end );
     
-    AddUniversalMorphismFromImageWithGivenImage( deductive_system,
+    AddUniversalMorphismFromImageWithGivenImageObject( deductive_system,
                                    
       function( morphism, test_factorization, image_object )
         

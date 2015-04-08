@@ -711,12 +711,12 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddImageEmbeddingWithGivenImage( lazy_category,
+    AddImageEmbeddingWithGivenImageObject( lazy_category,
       
       function( morphism, image )
         local func;
         
-        func := function( ) return ImageEmbeddingWithGivenImage( Eval( morphism ), Eval( image ) ); end;
+        func := function( ) return ImageEmbeddingWithGivenImageObject( Eval( morphism ), Eval( image ) ); end;
         
         return LazyMorphism( image, func, Range( morphism ) );
         
