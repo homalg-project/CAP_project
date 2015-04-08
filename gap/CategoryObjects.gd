@@ -69,6 +69,10 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_OBJECTS" );
 DeclareOperation( "AddIsEqualForObjects",
                   [ IsCapCategory, IsFunction ] );
 
+DeclareOperation( "AddIsEqualForObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+
 DeclareOperationWithCache( "IsEqualForObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -77,6 +81,7 @@ DeclareAttribute( "ObjectEqualityFunction",
 
 DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
                   [ IsCapCategory, IsString ] );
+
 
 ###################################
 ##
@@ -107,6 +112,10 @@ DeclareFamilyProperty( "IsZero",
 
 DeclareOperation( "AddIsZeroForObjects",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsZeroForObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
 
 DeclareAttribute( "IsZeroForObjectsFunction",
                   IsCapCategory );
@@ -153,6 +162,10 @@ DeclareOperation( "ZeroMorphism",
 
 DeclareOperation( "AddIsWellDefinedForObjects",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsWellDefinedForObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
 
 DeclareAttribute( "IsWellDefinedForObjectsFunction",
                   IsCapCategory );

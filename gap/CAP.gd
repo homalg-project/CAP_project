@@ -330,6 +330,10 @@ DeclareAttribute( "IdentityMorphismFunction",
 
 DeclareOperation( "AddIdentityMorphism",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIdentityMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
 #! @EndGroup
 
 ####################################
@@ -352,6 +356,10 @@ DeclareAttribute( "PreComposeFunction",
 DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsFunction ] );
 
+DeclareOperation( "AddPreCompose",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+
 
 #! @EndGroup
 
@@ -369,6 +377,10 @@ DeclareAttribute( "MonoAsKernelLiftFunction",
 DeclareOperation( "AddMonoAsKernelLift",
                   [ IsCapCategory, IsFunction ] );
 
+DeclareOperation( "AddMonoAsKernelLift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+
 ####################################
 ##
 ## Epismorphism as cokernel lift
@@ -382,6 +394,10 @@ DeclareAttribute( "EpiAsCokernelColiftFunction",
 DeclareOperation( "AddEpiAsCokernelColift",
                   [ IsCapCategory, IsFunction ] );
 
+DeclareOperation( "AddEpiAsCokernelColift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+
 ####################################
 ##
 ## Inverse
@@ -394,6 +410,10 @@ DeclareAttribute( "InverseFunction",
 
 DeclareOperation( "AddInverse",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInverse",
+                  [ IsCapCategory, IsList, IsInt ] );
+
 
 ####################################
 ##
