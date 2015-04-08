@@ -103,6 +103,11 @@ InstallGlobalFunction( GET_METHOD_CACHE,
     
 end );
 
+InstallValue( CAP_INTERNAL_DERIVATION_GRAPH,
+    
+    MakeDerivationGraph( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ) );
+
+
 ######################################
 ##
 ## Reps, types, stuff.
@@ -221,9 +226,12 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     flatted_attribute_list := Concatenation( [ obj_rec, TheTypeOfHomalgCategories ], flatted_attribute_list );
     
+    
     obj_rec!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );
     
     CallFuncList( ObjectifyWithAttributes, flatted_attribute_list );
+    
+    obj_rec!.derivations_weight_list := MakeOperationWeightList( obj_rec, CAP_INTERNAL_DERIVATION_GRAPH );
     
     obj_rec!.caches := rec( );
     
@@ -404,6 +412,39 @@ InstallMethod( AddEpiAsCokernelColift,
     end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "EpiAsCokernelColift", 2 ) );
     
 end );
+
+## this derivation leads to circuits
+##
+# InstallTrueMethodAndStoreImplication( CanComputeEpiAsCokernelColift, 
+#                                       CanComputeKernelEmb
+#                                       and CanComputeCokernelColift
+#                                       and CanComputePreCompose
+#                                       and CanComputeInverse );
+# 
+# InstallMethodWithCacheFromObject( EpiAsCokernelColift,
+#                                   [ IsCapCategoryMorphism
+#                                     and CanComputeKernelEmb
+#                                     and CanComputeCokernelColift
+#                                     and CanComputePreCompose
+#                                     and CanComputeInverse,
+#                                     IsCapCategoryMorphism ],
+#                                     -9999, ##FIXME
+#                                     
+#   function( epimorphism, test_morphism )
+#     local kernel_emb, cokernel_colift_to_range_of_epimorphism, cokernel_colift_to_range_of_test_morphism, inverse;
+#     
+#     kernel_emb := KernelEmb( epimorphism );
+#     
+#     cokernel_colift_to_range_of_epimorphism :=
+#       CokernelColift( kernel_emb, epimorphism );
+#       
+#     cokernel_colift_to_range_of_test_morphism :=
+#       CokernelColift( kernel_emb, test_morphism );
+#     
+#     return PreCompose( Inverse( cokernel_colift_to_range_of_epimorphism ), cokernel_colift_to_range_of_test_morphism );
+#     
+# end );
+
 
 ####################################
 ##

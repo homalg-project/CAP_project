@@ -5,9 +5,9 @@ PackageName := "CAP",
 Subtitle := "TODO",
 
 Version := Maximum( [
-  "2015.03.30", ## Sebas' version
+  "2015.04.07", ## Sebas' version
   ## this line prevents merge conflicts
-  "2015.03.26", ## Sepp's version
+  "2015.04.01", ## Sepp's version
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
 ] ),
@@ -84,7 +84,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2014.06.26" ],
-                           [ "ToolsForHomalg", ">= 2014.05.08" ],
+                           [ "ToolsForHomalg", ">= 2015.03.31" ],
                            [ "io", ">=0" ],
   ],
   SuggestedOtherPackages := [ ],

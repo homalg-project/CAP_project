@@ -27,6 +27,8 @@
 #!  which is then used instead of InstallMethod. This is used for the caching functions.
 DeclareGlobalFunction( "InstallMethodWithToDoForIsWellDefined" );
 
+DeclareGlobalFunction( "ToDoForIsWellDefinedWrapper" );
+
 
 #! @Description
 #!  For the caching one needs the possibility to install setters for functions with multiple arguments.
@@ -58,4 +60,10 @@ DeclareGlobalFunction( "PossibleDerivationsOfMethod" );
 
 #!
 DeclareGlobalFunction( "ListCanComputesOfCategory" );
+
+DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS" );
+DeclareGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS" );
+
+#!
+DeclareGlobalFunction( "CapInternalInstallAdd" );
 

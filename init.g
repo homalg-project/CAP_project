@@ -1,5 +1,6 @@
 ReadPackage( "CAP", "gap/ToolsForCategories.gd");
 
+
 ReadPackage( "CAP", "gap/CAP.gd");
 
 ## FIXME: The loading structure needs to be redone.
@@ -40,5 +41,7 @@ ReadPackage( "CAP", "gap/HomologicalAlgebraAlgorithms.gd");
 ReadPackage( "CAP", "gap/LogicForDeductiveSystem.gd");
 
 ReadPackage( "CAP", "gap/TheoremParser.gd");
+
+ReadPackage( "CAP", "gap/MethodRecord.gd" );
 
 ReadPackage( "CAP", "gap/Derivations.gd");

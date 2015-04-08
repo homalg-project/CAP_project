@@ -27,6 +27,17 @@ BindGlobal( "TheFamilyOfDerivationGraphs",
 BindGlobal( "TheFamilyOfOperationWeightLists",
             NewFamily( "TheFamilyOfOperationWeightLists" ) );
 
+
+InstallGlobalFunction( "ActivateDerivationInfo",
+  function( )
+    SetInfoLevel( DerivationInfo, 1 );
+end );
+
+InstallGlobalFunction( "DeactivateDerivationInfo",
+  function( )
+    SetInfoLevel( DerivationInfo, 0 );
+end );
+
 InstallMethod( MakeDerivation,
                [ IsString, IsFunction, IsDenseList,
                  IsPosInt, IsDenseList, IsFunction ],
@@ -80,9 +91,43 @@ end );
 InstallMethod( InstallDerivationForCategory,
                [ IsDerivation, IsPosInt, IsCapCategory ],
 function( d, weight, C )
-  Print( "install(", weight, ") ", TargetOperation( d ),
-         ": ", DerivationName( d ), "\n" );
-  # TODO actual installation
+  local method_name, general_filter_list, installation_name, nr_arguments,
+        cache_name, current_implementation, current_filters;
+  
+  Info( DerivationInfo, 1, Concatenation( "install(",
+                                          String( weight ),
+                                          ") ",
+                                          TargetOperation( d ),
+                                          ": ",
+                                          DerivationName( d ), "\n" ) );
+  
+  method_name := TargetOperation( d );
+  ## getting the filters and installation name from the record
+  general_filter_list := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).filter_list;
+  installation_name := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).installation_name;
+  general_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( general_filter_list, C );
+  
+  nr_arguments := Length( general_filter_list );
+  if nr_arguments > 1 then
+    cache_name := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).cache_name;
+    PushOptions( rec( InstallMethod := InstallMethodWithCache,
+                      Cache := GET_METHOD_CACHE( C, cache_name, nr_arguments ) ) );
+  fi;
+  
+  for current_implementation in DerivationFunctionsWithExtraFilters( d ) do
+      
+      current_filters := CAP_INTERNAL_MERGE_FILTER_LISTS( general_filter_list, 
+                                                          current_implementation[ 2 ] );
+      
+      InstallMethodWithToDoForIsWellDefined( ValueGlobal( installation_name ),
+                                             current_filters,
+                                             current_implementation[ 1 ] );
+  od;
+  
+  if nr_arguments > 1 then
+      PopOptions( );
+  fi;
+  
 end );
 
 InstallMethod( DerivationResultWeight,
@@ -140,6 +185,65 @@ function( G, d )
   for op_name in UsedOperations( d ) do
     Add( G!.derivations_by_used_ops.( op_name ), d );
   od;
+end );
+
+InstallMethod( AddDerivation,
+               [ IsDerivationGraph, IsFunction, IsDenseList, IsFunction ],
+               
+  function( graph, target_op, used_ops_with_multiples,
+            implementations_with_extra_filters )
+    
+    AddDerivation( graph,
+                  target_op,
+                  used_ops_with_multiples,
+                  [ implementations_with_extra_filters, [ ] ] );
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT",
+    
+  function( option_name, default )
+    local value;
+    
+    value := ValueOption( option_name );
+    
+    if value = fail then
+        return default;
+    fi;
+    
+    return value;
+end );
+
+InstallMethod( AddDerivation,
+               [ IsDerivationGraph, IsFunction, IsDenseList, IsDenseList ],
+               
+  function( graph, target_op, used_ops_with_multiples,
+            implementations_with_extra_filters )
+    local weight, category_filter, description, derivation;
+    
+    weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
+    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
+    description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
+    
+    derivation := MakeDerivation( description,
+                                  target_op,
+                                  used_ops_with_multiples,
+                                  weight,
+                                  implementations_with_extra_filters,
+                                  category_filter );
+    
+    AddDerivation( graph, derivation );
+end );
+
+InstallGlobalFunction( AddDerivationToCAP,
+  
+  function( arg )
+    local list;
+    
+    list := Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH ], arg );
+    
+    CallFuncList( AddDerivation, list );
+    
 end );
 
 InstallMethod( DerivationsUsingOperation,

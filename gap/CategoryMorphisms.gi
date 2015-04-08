@@ -126,52 +126,7 @@ InstallMethod( AddIsMonomorphism,
       
 end );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
-InstallMethod( IsMonomorphism,
-               [ IsCapCategoryMorphism and CanComputeKernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
-               -9900, #FIXME
-               
-  function( morphism )
-    
-    return IsZero( KernelObject( morphism ) );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, 
-                   CanComputeIsIsomorphism
-                   and CanComputeIdentityMorphism
-                   and CanComputeProjectionInFactorOfPullback
-                   and CanComputePreCompose
-                   and CanComputeUniversalMorphismIntoPullback );
-
-InstallMethod( IsMonomorphism,
-               [ IsCapCategoryMorphism
-                 and CanComputeIsIsomorphism
-                 and CanComputeIdentityMorphism
-                 and CanComputeProjectionInFactorOfPullback
-                 and CanComputePreCompose
-                 and CanComputeUniversalMorphismIntoPullback ],
-                 -9999, #FIXME
-                 
-  function( morphism )
-    local pullback_diagram, pullback_projection_1, pullback_projection_2, identity, diagonal_morphism;
-      
-      pullback_diagram := [ morphism, morphism ];
-      
-      pullback_projection_1 := ProjectionInFactorOfPullback( pullback_diagram, 1 );
-      
-      pullback_projection_2 := ProjectionInFactorOfPullback( pullback_diagram, 2 );
-      
-      identity := IdentityMorphism( Source( morphism ) );
-      
-      diagonal_morphism := UniversalMorphismIntoPullback( pullback_diagram, identity, identity );
-      
-      return IsIsomorphism( diagonal_morphism );
-    
-end );
 
 ##
 InstallMethod( AddIsEpimorphism,
@@ -194,52 +149,7 @@ InstallMethod( AddIsEpimorphism,
       
 end );
 
-#
-InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
 
-InstallMethod( IsEpimorphism,
-               [ IsCapCategoryMorphism and CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
-               -9900, #FIXME
-               
-  function( morphism )
-    
-    return IsZero( Cokernel( morphism ) );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism,
-                   CanComputeIsIsomorphism
-                   and CanComputeIdentityMorphism
-                   and CanComputeInjectionOfCofactorOfPushout
-                   and CanComputePreCompose
-                   and CanComputeUniversalMorphismFromPushout );
-
-InstallMethod( IsEpimorphism,
-               [ IsCapCategoryMorphism
-                 and CanComputeIsIsomorphism
-                 and CanComputeIdentityMorphism
-                 and CanComputeInjectionOfCofactorOfPushout
-                 and CanComputePreCompose
-                 and CanComputeUniversalMorphismFromPushout ],
-                 -9999, #FIXME
-                 
-  function( morphism )
-    local pushout_diagram, pushout_injection_1, pushout_injection_2, identity, codiagonal_morphism;
-      
-      pushout_diagram := [ morphism, morphism ];
-      
-      pushout_injection_1 := InjectionOfCofactorOfPushout( pushout_diagram, 1 );
-      
-      pushout_injection_2 := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
-      
-      identity := IdentityMorphism( Range( morphism ) );
-      
-      codiagonal_morphism := UniversalMorphismFromPushout( pushout_diagram, identity, identity );
-      
-      return IsIsomorphism( codiagonal_morphism );
-    
-end );
 
 ##
 InstallMethod( AddIsIsomorphism,
@@ -262,18 +172,7 @@ InstallMethod( AddIsIsomorphism,
       
 end );
 
-##
-InstallTrueMethodAndStoreImplication( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
 
-InstallMethod( IsIsomorphism,
-               [ IsCapCategoryMorphism and CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory ],
-               -9999, #FIXME
-               
-  function( morphism )
-    
-    return IsMonomorphism( morphism ) and IsEpimorphism( morphism );
-    
-end );
 
 ##
 InstallMethod( UnderlyingObject,
@@ -287,47 +186,7 @@ InstallMethod( UnderlyingObject,
                
   Range );
 
-InstallTrueMethodAndStoreImplication( CanComputeEqualityOfSubobjects, CanComputeDominates );
 
-##
-InstallMethodWithCacheFromObject( IsEqualAsSubobject,
-                                  [ IsCapCategoryMorphism and IsSubobject
-                                    and SetCanComputeDominates,
-                                    IsCapCategoryMorphism and IsSubobject ],
-                                  
-  function( sub1, sub2 );
-    
-    ##or should this be IsIdenticalObj?
-    if not IsEqualForObjects( Range( sub1 ), Range( sub2 ) ) then
-        
-        return false;
-        
-    fi;
-    
-    return Dominates( sub1, sub2 ) and Dominates( sub2, sub1 );
-    
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeEqualityOfFactorobjects, CanComputeCodominates );
-
-##
-InstallMethodWithCacheFromObject( IsEqualAsFactorobject,
-                                  [ IsCapCategoryMorphism and IsFactorobject
-                                    and CanComputeCodominates, 
-                                    IsCapCategoryMorphism and IsFactorobject ],
-                                  
-  function( factor1, factor2 )
-    
-    ##or should this be IsIdenticalObj?
-    if not IsEqualForObjects( Source( factor1 ), Source( factor2 ) ) then
-        
-        return false;
-        
-    fi;
-    
-    return Codominates( factor1, factor2 ) and Codominates( factor1, factor2 );
-    
-end );
 
 ##
 InstallMethod( AddDominates,
@@ -388,94 +247,6 @@ InstallMethod( AddCodominates,
 end );
 
 
-InstallTrueMethodAndStoreImplication( CanComputeDominates, CanComputeCokernelProj and CanComputeCodominates and IsPreAbelianCategory );
-
-##
-InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsCapCategoryMorphism and IsSubobject
-                                    and CanComputeCokernelProj
-                                    and CanComputeCodominates
-                                    and IsPreAbelianCategory,
-                                    IsCapCategoryMorphism and IsSubobject ],
-                                    -9999, # FIXME (has to be the lowest Dominates fallback method)
-                                  
-  function( sub1, sub2 )
-    local cokernel_projection_1, cokernel_projection_2;
-    
-    cokernel_projection_1 := CokernelProj( sub1 );
-    
-    cokernel_projection_2 := CokernelProj( sub2 );
-    
-    return Codominates( cokernel_projection_1, cokernel_projection_2 );
-    
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
-
-##
-InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsCapCategoryMorphism and IsSubobject 
-                                    and CanComputeCokernelProj
-                                    and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose, 
-                                    IsCapCategoryMorphism and IsSubobject ],
-                                    -9000, # FIXME
-                                  
-  function( sub1, sub2 )
-    local cokernel_projection, composition;
-    
-    cokernel_projection := CokernelProj( sub2 );
-    
-    composition := PreCompose( sub1, cokernel_projection );
-    
-    return IsZero( composition );
-    
-end );
-
-
-InstallTrueMethodAndStoreImplication( CanComputeCodominates, CanComputeKernelEmb and CanComputeDominates and IsPreAbelianCategory );
-
-##
-InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsCapCategoryMorphism and IsFactorobject
-                                    and CanComputeKernelEmb
-                                    and CanComputeDominates
-                                    and IsPreAbelianCategory,
-                                    IsCapCategoryMorphism and IsFactorobject ],
-                                    -9999, # FIXME (has to be the lowest Codominates fallback method)
-                                  
-  function( factor1, factor2 )
-    local kernel_embedding_1, kernel_embedding_2;
-    
-    kernel_embedding_1 := KernelEmb( factor1 );
-    
-    kernel_embedding_2 := KernelEmb( factor2 );
-    
-    return Dominates( kernel_embedding_2, kernel_embedding_1 );
-    
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
-
-##
-InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsCapCategoryMorphism and IsFactorobject
-                                    and CanComputeKernelEmb
-                                    and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose,
-                                    IsCapCategoryMorphism and IsFactorobject ],
-                                    -9000, # FIXME
-                                  
-  function( factor1, factor2 )
-    local kernel_embedding, composition;
-    
-    kernel_embedding := KernelEmb( factor2 );
-    
-    composition := PreCompose( kernel_embedding, factor1 );
-    
-    return IsZero( composition );
-    
-end );
 
 ######################################
 ##
@@ -748,59 +519,7 @@ InstallMethodWithCacheFromObject( TransportHom,
            );
     
 end );
-######################################
-##
-## Implied operations
-##
-######################################
 
-## PostCompose
-##
-InstallTrueMethodAndStoreImplication( CanComputePostCompose, CanComputePreCompose );
-
-InstallMethodWithCacheFromObject( PostCompose,
-                                  [ IsCapCategoryMorphism and CanComputePreCompose,
-                                  IsCapCategoryMorphism and CanComputePreCompose ],
-               
-  function( right_mor, left_mor )
-    
-    return PreCompose( left_mor, right_mor );
-    
-end : ArgumentNumber := 1 );
-
-## Inverse
-##
-InstallTrueMethodAndStoreImplication( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
-
-InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                       [ IsCapCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
-                                       -9999, #FIXME
-                                       
-  function( mor )
-    local identity_of_range;
-        
-        identity_of_range := IdentityMorphism( Range( mor ) );
-        
-        return MonoAsKernelLift( mor, identity_of_range );
-        
-end );
-
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
-
-InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                       [ IsCapCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
-                                       -9998, #FIXME
-                                       
-  function( mor )
-    local identity_of_source;
-    
-    identity_of_source := IdentityMorphism( Source( mor ) );
-    
-    return EpiAsCokernelColift( mor, identity_of_source );
-      
-end );
 
 ###########################
 ##
@@ -881,44 +600,27 @@ end );
 ##
 ###########################
 
-##
-InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
-                                       [ IsCapCategoryMorphism and IsMonomorphism and CanComputeIdentityMorphism ],
-                                       
-  function( monomorphism )
-    
-    return Product( IdentityMorphism( Source( monomorphism ) ), monomorphism );
-    
-end );
+## FIXME: these special derivations rely on the fact that they are compatible with the general method
+## for EpiMonoFactorization
 
-##
-InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
-                                       [ IsCapCategoryMorphism and IsEpimorphism and CanComputeIdentityMorphism ],
-                                       
-  function( epimorphism )
-    
-    return Product( epimorphism, IdentityMorphism( Range( epimorphism ) ) );
-    
-end );
-
-## FIXME: IsAbelianCategory too restrictive
-InstallTrueMethodAndStoreImplication( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );
-
-InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
-                                       [ IsCapCategoryMorphism ],
-                                       
-  function( morphism )
-    local kernel_embedding, epimorphism, monomorphism;
-    
-    kernel_embedding := KernelEmb( morphism );
-    
-    epimorphism := CokernelProj( kernel_embedding );
-    
-    monomorphism := CokernelColift( kernel_embedding, morphism );
-    
-    return Product( epimorphism, monomorphism );
-    
-end );
+# InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
+#                                        [ IsCapCategoryMorphism and IsMonomorphism and CanComputeIdentityMorphism ],
+#                                        
+#   function( monomorphism )
+#     
+#     return [ IdentityMorphism( Source( monomorphism ) ), monomorphism ];
+#     
+# end );
+# 
+# ##
+# InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
+#                                        [ IsCapCategoryMorphism and IsEpimorphism and CanComputeIdentityMorphism ],
+#                                        
+#   function( epimorphism )
+#     
+#     return [ epimorphism, IdentityMorphism( Range( epimorphism ) ) ];
+#     
+# end );
 
 ###########################
 ##

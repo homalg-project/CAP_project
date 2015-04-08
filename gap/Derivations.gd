@@ -13,6 +13,23 @@
 
 ####################################
 ##
+#! @Section Info class
+##
+####################################
+
+#! @Description
+#!  Info class for derivations.
+DeclareInfoClass( "DerivationInfo" );
+
+#!
+DeclareGlobalFunction( "ActivateDerivationInfo" );
+
+#!
+DeclareGlobalFunction( "DeactivateDerivationInfo" );
+
+
+####################################
+##
 #! @Section Derivation objects
 ##
 ####################################
@@ -158,6 +175,12 @@ DeclareOperation( "MakeDerivationGraph", [ IsDenseList ] );
 #!  Add a derivation to a derivation graph.
 #! @Arguments G, d
 DeclareOperation( "AddDerivation", [ IsDerivationGraph, IsDerivation ] );
+
+#!
+DeclareOperation( "AddDerivation", [ IsDerivationGraph, IsFunction, IsDenseList, IsObject ] );
+
+#!
+DeclareGlobalFunction( "AddDerivationToCAP" );
 
 #! @Description
 #!  Gives the operations in the graph <A>G</A>, as a list of strings.

@@ -65,6 +65,7 @@ DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );
 
 DeclareGlobalFunction( "INSTALL_CAN_COMPUTE_TO_DO_LISTS" );
 
+DeclareGlobalVariable( "CAP_INTERNAL_DERIVATION_GRAPH" );
 
 
 InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
@@ -90,7 +91,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeDirectProductFunctorial",
                 "CanComputeCoproductFunctorial",
                 "CanComputeDirectSumFunctorial",
-                "CanComputePullbackFunctorial",
+                "CanComputeFiberProductFunctorial",
                 "CanComputePushoutFunctorial",
                 "CanComputeGeneralizedMorphismFromFactorToSubobject", #this actually is a general algorithm, but it does not have an Add
                 "CanComputeHorizontalPreCompose", # for 2-categories
@@ -106,7 +107,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeEpiAsCokernelColift",
                 "CanComputeIdentityMorphism",
                 "CanComputeInverse",
-                "CanComputeKernel",
+                "CanComputeKernelObject",
                 "CanComputeKernelEmb",
                 "CanComputeKernelEmbWithGivenKernel",
                 "CanComputeKernelLift",
@@ -145,11 +146,11 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeEqualityOfFactorobjects",
                 "CanComputeDominates",
                 "CanComputeCodominates",
-                "CanComputePullback",
-                "CanComputeProjectionInFactorOfPullback",
-                "CanComputeProjectionInFactorOfPullbackWithGivenPullback",
-                "CanComputeUniversalMorphismIntoPullback",
-                "CanComputeUniversalMorphismIntoPullbackWithGivenPullback",
+                "CanComputeFiberProduct",
+                "CanComputeProjectionInFactorOfFiberProduct",
+                "CanComputeProjectionInFactorOfFiberProductWithGivenFiberProduct",
+                "CanComputeUniversalMorphismIntoFiberProduct",
+                "CanComputeUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                 "CanComputePushout",
                 "CanComputeInjectionOfCofactorOfPushout",
                 "CanComputeInjectionOfCofactorOfPushoutWithGivenPushout",

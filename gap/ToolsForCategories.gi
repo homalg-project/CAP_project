@@ -66,6 +66,50 @@ InstallGlobalFunction( InstallMethodWithToDoForIsWellDefined,
 end );
 
 ##
+InstallGlobalFunction( "ToDoForIsWellDefinedWrapper",
+  
+  function( orig_func )
+    local new_func;
+    
+    new_func := function( arg )
+        local val, entry, i, filtered_arg, list_args;
+        
+        ## ToDo: This can be improved
+        filtered_arg := Filtered( arg, IsCapCategoryCell );
+        
+        list_args := Flat( Filtered( arg, IsList ) );
+        
+        list_args := Filtered( list_args, IsCapCategoryCell );
+        
+        filtered_arg := Concatenation( filtered_arg, list_args );
+        
+        val := CallFuncList( orig_func, arg );
+        
+        entry := ToDoListEntry( List( filtered_arg, i -> [ i, "IsWellDefined", true ] ), val, "IsWellDefined", true );
+        
+        SetDescriptionOfImplication( entry, "Well defined propagation" );
+        
+        AddToToDoList( entry );
+        
+        for i in filtered_arg do
+            
+            entry := ToDoListEntry( [ [ i, "IsWellDefined", false ] ], val, "IsWellDefined", false );
+            
+            SetDescriptionOfImplication( entry, "Well defined propagation" );
+            
+            AddToToDoList( entry );
+            
+        od;
+        
+        return val;
+        
+    end;
+    
+    return new_func;
+    
+end );
+
+##
 InstallMethod( InstallSetWithToDoForIsWellDefined,
                [ IsCachingObject, IsString, IsList ],
                
@@ -640,4 +684,216 @@ InstallGlobalFunction( PossibleDerivationsOfMethod,
     fi;
     
 end );
+
+#####################################
+##
+## Install add
+##
+#####################################
+
+# InstallAdd( 
+# 
+#   rec(
+#   function_name := "KernelEmb"
+#   install_name := "KernelEmb",
+#   filter_list := [ "morphism" ],
+#   cache_name := "KernelEmb",
+#   pre_function := func,
+#   redirect_function := func,
+#   post_function := func,
+#   well_defined_todo := false
+#    ),
+    
+    ## redirect function bauen
+
+InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
+  
+  function( list, category )
+      local i, current_entry,  current_filter, j;
+      list := ShallowCopy( list );
+      
+      for i in [ 1 .. Length( list ) ] do
+          current_entry := list[ i ];
+          
+          if IsFilter( current_entry ) then
+              continue;
+          
+          elif IsString( current_entry ) then
+              current_entry := LowercaseString( current_entry );
+              if current_entry = "category" then
+                  list[ i ] := IsCapCategory;
+              elif current_entry = "cell" then
+                  list[ i ] := CellFilter( category ) and IsCapCategoryCell;
+              elif current_entry = "object" then
+                  list[ i ] := ObjectFilter( category ) and IsCapCategoryObject;
+              elif current_entry = "morphism" then
+                  list[ i ] := MorphismFilter( category ) and IsCapCategoryMorphism;
+              elif current_entry = "twocell" then
+                  list[ i ] := TwoCellFilter( category ) and IsCapCategoryTwoCell;
+              else
+                  Error( "filter type is not recognized, must be object, morphism, or twocell" );
+              fi;
+              
+          elif IsList( current_entry ) then
+              current_entry := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( current_entry, category );
+              current_filter := current_entry[ 1 ];
+              for j in current_entry{[ 2 .. Length( current_entry ) ]} do
+                  current_filter := current_filter and j;
+              od;
+          fi;
+          
+      od;
+      
+      return list;
+end );
+
+InstallGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS",
+  
+  function( filter_list, additional_filters )
+    local i;
+    filter_list := ShallowCopy( filter_list );
+    
+    if not Length( filter_list ) >= Length( additional_filters ) then
+        Error( "too many additional filters" );
+    fi;
+    
+    for i in [ 1 .. Length( filter_list ) ] do
+        if IsBound( additional_filters[ i ] ) then
+            filter_list[ i ] := filter_list[ i ] and additional_filters[ i ];
+        fi;
+    od;
+    
+    return filter_list;
+end );
+
+InstallGlobalFunction( CapInternalInstallAdd,
+  
+  function( record )
+    local function_name, install_name, add_name, can_compute_name, pre_function,
+          redirect_function, post_function, filter_list, well_defined_todo, caching,
+          cache_name, nr_arguments;
+    
+    function_name := record.function_name;
+    
+    if not IsBound( record.install_name ) then
+        
+        install_name := function_name;
+        
+    else
+        
+        install_name := record.install_name;
+        
+    fi;
+    
+    add_name := Concatenation( "Add", function_name );
+    
+    can_compute_name := Concatenation( "CanCompute", function_name );
+    
+    if IsBound( record.pre_function ) then
+        pre_function := record.pre_function;
+    else
+        pre_function := function( arg ) return [ true ]; end;
+    fi;
+    
+    if IsBound( record.redirect_function ) then
+        redirect_function := record.redirect_function;
+    else
+        redirect_function := function( arg ) return [ false ]; end;
+    fi;
+    
+    if IsBound( record.post_function ) then
+        post_function := record.post_function;
+    else
+        post_function := ReturnTrue;
+    fi;
+    
+    filter_list := record.filter_list;
+    
+    if IsBound( record.well_defined_todo ) then
+        well_defined_todo := record.well_defined_todo;
+    else
+        well_defined_todo := true;
+    fi;
+    
+    if IsBound( record.cache_name ) then
+        caching := true;
+        cache_name := record.cache_name;
+        nr_arguments := Length( filter_list );
+    else
+        caching := false;
+    fi;
+    
+    InstallMethod( ValueGlobal( add_name ),
+                   [ IsCapCategory, IsList ],
+      
+      function( category, method_list )
+        local install_func, replaced_filter_list, install_method, popper, i;
+        
+        replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( category, filter_list );
+        
+        Setter( ValueGlobal( can_compute_name ) )( category, true );
+        
+        if well_defined_todo = true and caching = true then
+            install_method := InstallMethodWithToDoForIsWellDefined;
+            PushOptions( rec( InstallMethod := InstallMethodWithCache,
+                              Cache := GET_METHOD_CACHE( category, cache_name, nr_arguments ) ) );
+            popper := true;
+        elif well_defined_todo = false and caching = true then
+            install_method := InstallMethodWithCache;
+            PushOptions( rec( Cache := GET_METHOD_CACHE( category, cache_name, nr_arguments )  ) );
+            popper := true;
+        elif well_defined_todo = true and caching = false then
+            install_method := InstallMethodWithToDoForIsWellDefined;
+            popper := false;
+        else
+            install_method := InstallMethod;
+            popper := false;
+        fi;
+        
+        install_func := function( func_to_install, filter_list )
+          local new_filter_list;
+            
+            new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, filter_list );
+            
+            install_method( install_name,
+                            new_filter_list,
+                            
+              function( arg )
+                local pre_func_return, redirect_return, result, post_func_arguments;
+                
+                redirect_return := CallFuncList( arg );
+                if redirect_return[ 1 ] = true then
+                    return redirect_return[ 2 ];
+                fi;
+                
+                pre_func_return := CallFuncList( pre_function, arg );
+                if pre_func_return[ 1 ] = false then
+                    Error( pre_func_return[ 2 ] );
+                fi;
+                
+                result := CallFuncList( func_to_install, arg );
+                Add( category, result );
+                
+                Add( arg, result );
+                CallFuncList( post_function, arg );
+                
+                return result;
+            end );
+            
+        end;
+        
+        for i in method_list do
+            install_func( i[ 1 ], i[ 2 ] );
+        od;
+        
+        if popper then
+            PopOptions();
+        fi;
+        
+    end );
+    
+end );
+
+
+
 
