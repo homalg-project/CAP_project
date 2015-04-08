@@ -337,13 +337,13 @@ BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
       
 end );
 
-## KernelEmbWithGivenKernel
+## KernelEmbWithGivenKernelObject
 BindGlobal( "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
   
   function( category )
       local morphism_func, kernel_emb;
 
-      AddKernelEmbWithGivenKernel( ZFunctorCategory( category ),
+      AddKernelEmbWithGivenKernelObject( ZFunctorCategory( category ),
         
         function( morphism, kernel )
           
@@ -360,13 +360,13 @@ BindGlobal( "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
       end );
 end );
 
-## KernelLiftWithGivenKernel
+## KernelLiftWithGivenKernelObject
 BindGlobal( "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
   
   function( category )
       local morphism_func, kernel_lift;
 
-      AddKernelLiftWithGivenKernel( ZFunctorCategory( category ),
+      AddKernelLiftWithGivenKernelObject( ZFunctorCategory( category ),
         
         function( morphism, test_morphism, kernel )
           

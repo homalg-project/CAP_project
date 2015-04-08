@@ -99,7 +99,7 @@ InstallMethod( AddKernelLift,
         
         if HasKernelObject( mor ) then
         
-          return KernelLiftWithGivenKernel( mor, test_morphism, KernelObject( mor ) );
+          return KernelLiftWithGivenKernelObject( mor, test_morphism, KernelObject( mor ) );
         
         fi;
         
@@ -122,16 +122,16 @@ InstallMethod( AddKernelLift,
 end );
 
 ##
-InstallMethod( AddKernelLiftWithGivenKernel,
+InstallMethod( AddKernelLiftWithGivenKernelObject,
                [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
-    SetKernelLiftWithGivenKernelFunction( category, func );
+    SetKernelLiftWithGivenKernelObjectFunction( category, func );
     
-    SetCanComputeKernelLiftWithGivenKernel( category, true );
+    SetCanComputeKernelLiftWithGivenKernelObject( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( KernelLiftWithGivenKernel,
+    InstallMethodWithToDoForIsWellDefined( KernelLiftWithGivenKernelObject,
                                            [ IsCapCategoryMorphism and MorphismFilter( category ),
                                              IsCapCategoryMorphism and MorphismFilter( category ),
                                              IsCapCategoryObject and ObjectFilter( category ) ],
@@ -145,7 +145,7 @@ InstallMethod( AddKernelLiftWithGivenKernel,
         
         return kernel_lift;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelLiftWithGivenKernel", 3 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelLiftWithGivenKernelObject", 3 ) );
     
 end );
 
@@ -167,7 +167,7 @@ InstallMethod( AddKernelEmb,
         
         if HasKernelObject( mor ) then
           
-          return KernelEmbWithGivenKernel( mor, KernelObject( mor ) );
+          return KernelEmbWithGivenKernelObject( mor, KernelObject( mor ) );
           
         fi;
         
@@ -187,7 +187,7 @@ InstallMethod( AddKernelEmb,
         
         SetKernelEmb( kernel, kernel_emb );
         
-        #Is this necessary (and in all other analogous situations?): SetKernelEmbWithGivenKernel( mor, kernel, kernel_emb );
+        #Is this necessary (and in all other analogous situations?): SetKernelEmbWithGivenKernelObject( mor, kernel, kernel_emb );
         
         return kernel_emb;
         
@@ -196,16 +196,16 @@ InstallMethod( AddKernelEmb,
 end );
 
 ##
-InstallMethod( AddKernelEmbWithGivenKernel,
+InstallMethod( AddKernelEmbWithGivenKernelObject,
                [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
-    SetKernelEmbWithGivenKernelFunction( category, func );
+    SetKernelEmbWithGivenKernelObjectFunction( category, func );
     
-    SetCanComputeKernelEmbWithGivenKernel( category, true );
+    SetCanComputeKernelEmbWithGivenKernelObject( category, true );
     
-    InstallMethodWithToDoForIsWellDefined( KernelEmbWithGivenKernel,
+    InstallMethodWithToDoForIsWellDefined( KernelEmbWithGivenKernelObject,
                                            [ IsCapCategoryMorphism and MorphismFilter( category ),
                                              IsCapCategoryObject and ObjectFilter( category ) ],
                                            
@@ -222,7 +222,7 @@ InstallMethod( AddKernelEmbWithGivenKernel,
         
         return kernel_emb;
         
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelEmbWithGivenKernel", 2 ) );
+    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelEmbWithGivenKernelObject", 2 ) );
 
 end );
 

@@ -53,7 +53,7 @@
 #! The internals of CAP will take care that no confusion accurs. For example: if you
 #! call KernelEmb of a morphism $\alpha$, CAP works as follows:
 #! * Check the cache: is the kernel embedding of $\alpha$ already computed? If yes, return this cached embedding.
-#! * Otherwise, check if the kernel object of $\alpha$ is already computed. If yes, call KernelEmbWithGivenKernel( $\alpha$ ). If no, call KernelEmb( $\alpha$ ).
+#! * Otherwise, check if the kernel object of $\alpha$ is already computed. If yes, call KernelEmbWithGivenKernelObject( $\alpha$ ). If no, call KernelEmb( $\alpha$ ).
 #! 
 #! One further note: every universal object stores if it was created as such and therefore can be used to access universal property morphisms (if computable).
 #############################################################################
@@ -121,7 +121,7 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
 #! Embedding of a given kernel $K$ of a given morphism $\alpha$ into the source of $\alpha$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, K
-DeclareOperation( "KernelEmbWithGivenKernel",
+DeclareOperation( "KernelEmbWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 # @Description
@@ -148,7 +148,7 @@ DeclareOperation( "KernelLift",
 #! denotes the kernel embedding.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, tau, K
-DeclareOperation( "KernelLiftWithGivenKernel",
+DeclareOperation( "KernelLiftWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
@@ -164,13 +164,13 @@ DeclareAttribute( "KernelFunction",
 DeclareAttribute( "KernelEmbFunction",
                   IsCapCategory );
 
-DeclareAttribute( "KernelEmbWithGivenKernelFunction",
+DeclareAttribute( "KernelEmbWithGivenKernelObjectFunction",
                   IsCapCategory );
 
 DeclareAttribute( "KernelLiftFunction",
                   IsCapCategory );
 
-DeclareAttribute( "KernelLiftWithGivenKernelFunction",
+DeclareAttribute( "KernelLiftWithGivenKernelObjectFunction",
                   IsCapCategory );
 #! @EndGroup
 #! @EndAutoDoc
@@ -195,7 +195,7 @@ DeclareOperation( "AddKernelEmb",
 #! This operation adds the given function $f: (\alpha, K) \mapsto \iota$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddKernelEmbWithGivenKernel",
+DeclareOperation( "AddKernelEmbWithGivenKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
 #! @Description
@@ -209,7 +209,7 @@ DeclareOperation( "AddKernelLift",
 #! This operation adds the given function $f: (\alpha, \tau, K) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddKernelLiftWithGivenKernel",
+DeclareOperation( "AddKernelLiftWithGivenKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
 

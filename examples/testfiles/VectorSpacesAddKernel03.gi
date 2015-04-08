@@ -1,7 +1,7 @@
 ## Implemented:
 ## - AddKernel
 ## - AddKernelEmb
-## - AddKernelEmbWithGivenKernel
+## - AddKernelEmbWithGivenKernelObject
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
   
@@ -42,7 +42,7 @@ AddKernelEmb( vecspaces,
 end );
 
 ##
-AddKernelEmbWithGivenKernel( vecspaces,
+AddKernelEmbWithGivenKernelObject( vecspaces,
 
   function( morphism, kernel )
     local kernel_emb;

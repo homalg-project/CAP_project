@@ -229,7 +229,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddKernelEmbWithGivenKernel( deductive_system,
+    AddKernelEmbWithGivenKernelObject( deductive_system,
                                  
       function( morphism, kernel )
         
@@ -245,7 +245,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddKernelLiftWithGivenKernel( deductive_system,
+    AddKernelLiftWithGivenKernelObject( deductive_system,
                                   
       function( morphism, test_morphism, kernel )
         
