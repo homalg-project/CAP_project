@@ -2471,7 +2471,7 @@ InstallMethod( AddImageObject,
     
     SetImageFunction( category, func );
     
-    SetCanComputeImage( category, true );
+    SetCanComputeImageObject( category, true );
     
     InstallMethodWithToDoForIsWellDefined( ImageObject,
                                            [ IsCapCategoryMorphism and MorphismFilter( category ) ],

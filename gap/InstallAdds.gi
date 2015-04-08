@@ -112,7 +112,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
               function( arg )
                 local pre_func_return, redirect_return, result, post_func_arguments;
                 
-                redirect_return := CallFuncList( arg );
+                redirect_return := CallFuncList( redirect_function, arg );
                 if redirect_return[ 1 ] = true then
                     return redirect_return[ 2 ];
                 fi;
@@ -203,14 +203,14 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
         local result, object;
         
         result := arg[ Length( arg ) ];
-        arg := Remove( arg );
+        Remove( arg );
         object := object_getter( result );
         
         if set_object then
             CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
         fi;
         
-        SetFilterObj( was_created_filter, object );
+        SetFilterObj( object, was_created_filter );
         
         AddToGenesis( object, diagram_name, arg[ 1 ] );
         

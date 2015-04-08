@@ -1445,7 +1445,7 @@ end : ArgumentNumber := 2 );
 ####################################
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeImage, CanComputeImageEmbedding );
+InstallTrueMethodAndStoreImplication( CanComputeImageObject, CanComputeImageEmbedding );
 
 InstallMethod( ImageObject,
                [ IsCapCategoryMorphism and CanComputeImageEmbedding ],
@@ -1496,12 +1496,12 @@ InstallMethod( ImageEmbedding,
 end );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeImageEmbedding, CanComputeImageEmbeddingWithGivenImageObject and CanComputeImage );
+InstallTrueMethodAndStoreImplication( CanComputeImageEmbedding, CanComputeImageEmbeddingWithGivenImageObject and CanComputeImageObject );
 
 InstallMethod( ImageEmbedding,
                [ IsCapCategoryMorphism
                  and CanComputeImageEmbeddingWithGivenImageObject
-                 and CanComputeImage ],
+                 and CanComputeImageObject ],
                  -9900, #FIXME
                  
   function( morphism )
@@ -1512,12 +1512,12 @@ end );
 
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeCoastrictionToImage, CanComputeCoastrictionToImageWithGivenImageObject and CanComputeImage );
+InstallTrueMethodAndStoreImplication( CanComputeCoastrictionToImage, CanComputeCoastrictionToImageWithGivenImageObject and CanComputeImageObject );
 
 InstallMethod( CoastrictionToImage,
                [ IsCapCategoryMorphism
                  and CanComputeCoastrictionToImageWithGivenImageObject 
-                 and CanComputeImage ],
+                 and CanComputeImageObject ],
                  -9900, #FIXME
                  
   function( morphism )
@@ -1549,12 +1549,12 @@ end );
 ##
 InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromImage,
                    CanComputeUniversalMorphismFromImageWithGivenImageObject
-                   and CanComputeImage );
+                   and CanComputeImageObject );
 
 InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImage,
                [ IsCapCategoryMorphism
                  and CanComputeUniversalMorphismFromImageWithGivenImageObject
-                 and CanComputeImage,
+                 and CanComputeImageObject,
                  IsList ],
                  -9900, #FIXME
                  

@@ -740,6 +740,7 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
               for j in current_entry{[ 2 .. Length( current_entry ) ]} do
                   current_filter := current_filter and j;
               od;
+              list[ i ] := current_filter;
           fi;
           
       od;
