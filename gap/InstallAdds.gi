@@ -129,7 +129,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 fi;
                 
                 result := CallFuncList( func_to_install, arg{ argument_list } );
-                Add( category, result );
+                
+                ## Fixme: Maybe create a different add/simply check if it is a bool
+                ##        Such stuff will ultimately slow down the methods :(
+                if IsCapCategoryCell( result ) then
+                    Add( category, result );
+                fi;
                 
                 Add( arg, result );
                 CallFuncList( post_function, arg );
@@ -216,9 +221,9 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
         fi;
         
-        SetFilterObj( object, was_created_filter );
-        
+        ## Those two commands are not commutative
         AddToGenesis( object, diagram_name, arg[ 1 ] );
+        SetFilterObj( object, was_created_filter );
         
     end;
     
