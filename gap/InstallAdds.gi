@@ -160,7 +160,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
-  function( with_given_name, object_name, has_arguments )
+  function( with_given_name, object_name, has_arguments, with_given_arguments )
     local return_func, has_name, has_function, object_function, with_given_name_function;
     
     has_name := Concatenation( "Has", object_name );
@@ -184,7 +184,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
             
         fi;
         
-        return [ true, CallFuncList( with_given_name_function, Concatenation( arg, [ CallFuncList( object_function, has_arg_list ) ] ) ) ];
+        return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ CallFuncList( object_function, has_arg_list ) ] ) ) ];
         
     end;
     
@@ -270,6 +270,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         if Length( current_rec.filter_list ) > 1 and
            ForAll( [ 1 .. Length( current_rec.filter_list ) - 1 ], i -> current_rec.filter_list[ i ] = IsInt or current_rec.filter_list[ i ] = IsList ) then
             current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) - 1 ];
+        else
+            current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) ];
         fi;
         
         if IsBound( current_rec.universal_type ) and not IsBound( current_rec.universal_object_position ) then
@@ -312,7 +314,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             
             object_func := CAP_INTERNAL_METHOD_NAME_RECORD.( object_name ).installation_name;
             
-            current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list );
+            current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list, current_rec.argument_list );
             
             current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, arg_list, object_name );
             

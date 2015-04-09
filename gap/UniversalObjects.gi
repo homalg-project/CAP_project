@@ -510,7 +510,7 @@ InstallGlobalFunction( InjectionOfCofactor,
     ## convenience: first argument was created as a coproduct
     if WasCreatedAsCoproduct( object_product_list ) then
     
-      number_of_objects := Length( Genesis( object_product_list )!.Cofactors );
+      number_of_objects := Length( Genesis( object_product_list )!.CoproductDiagram );
       
       if injection_number < 1 or injection_number > number_of_objects then
       
@@ -518,7 +518,7 @@ InstallGlobalFunction( InjectionOfCofactor,
       
       fi;
     
-      return InjectionOfCofactorOfCoproductWithGivenCoproduct( Genesis( object_product_list )!.Cofactors, injection_number, object_product_list );
+      return InjectionOfCofactorOfCoproductWithGivenCoproduct( Genesis( object_product_list )!.CoproductDiagram, injection_number, object_product_list );
     
     fi;
     
@@ -600,7 +600,7 @@ InstallMethod( AddCoproduct,
         
         Add( CapCategory( method_selection_object ), coproduct );
         
-        AddToGenesis( coproduct, "Cofactors", object_product_list );
+        AddToGenesis( coproduct, "CoproductDiagram", object_product_list );
         
         SetFilterObj( coproduct, WasCreatedAsCoproduct );
         
@@ -658,7 +658,7 @@ InstallMethod( AddInjectionOfCofactorOfCoproduct,
         
         coproduct := Range( injection_of_cofactor );
         
-        AddToGenesis( coproduct, "Cofactors", object_product_list );
+        AddToGenesis( coproduct, "CoproductDiagram", object_product_list );
         
         SetCoproductOp( object_product_list, method_selection_object, coproduct );
         
@@ -772,7 +772,7 @@ InstallMethod( AddUniversalMorphismFromCoproduct,
         
         coproduct := Source( universal_morphism );
         
-        AddToGenesis( coproduct, "Cofactors", coproduct_objects );
+        AddToGenesis( coproduct, "CoproductDiagram", coproduct_objects );
         
         SetCoproductOp( coproduct_objects, coproduct_objects[1], coproduct );
         
@@ -865,7 +865,7 @@ InstallGlobalFunction( ProjectionInFactor,
     ## convenience: first argument was created as direct product
     if WasCreatedAsDirectProduct( object_product_list ) then
     
-      number_of_objects := Length( Genesis( object_product_list )!.DirectFactors );
+      number_of_objects := Length( Genesis( object_product_list )!.DirectProductDiagram );
       
       if projection_number < 1 or projection_number > number_of_objects then
       
@@ -873,7 +873,7 @@ InstallGlobalFunction( ProjectionInFactor,
       
       fi;
     
-      return ProjectionInFactorOfDirectProductWithGivenDirectProduct( Genesis( object_product_list )!.DirectFactors, projection_number, object_product_list );
+      return ProjectionInFactorOfDirectProductWithGivenDirectProduct( Genesis( object_product_list )!.DirectProductDiagram, projection_number, object_product_list );
     
     fi;
     
@@ -967,7 +967,7 @@ InstallMethod( AddDirectProduct,
         
         SetFilterObj( direct_product, WasCreatedAsDirectProduct );
         
-        AddToGenesis( direct_product, "DirectFactors", object_product_list );
+        AddToGenesis( direct_product, "DirectProductDiagram", object_product_list );
         
         Add( CapCategory( method_selection_object ), direct_product );
         
@@ -1024,7 +1024,7 @@ InstallMethod( AddProjectionInFactorOfDirectProduct,
         
         direct_product := Source( projection_in_factor );
         
-        AddToGenesis( direct_product, "DirectFactors", object_product_list );
+        AddToGenesis( direct_product, "DirectProductDiagram", object_product_list );
         
         SetDirectProductOp( object_product_list, method_selection_object, direct_product );
         
@@ -1139,7 +1139,7 @@ InstallMethod( AddUniversalMorphismIntoDirectProduct,
         
         direct_product := Range( universal_morphism );
         
-        AddToGenesis( direct_product, "DirectFactors", direct_product_objects );
+        AddToGenesis( direct_product, "DirectProductDiagram", direct_product_objects );
         
         SetDirectProductOp( direct_product_objects, direct_product_objects[1], direct_product );
         
@@ -1223,13 +1223,13 @@ InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
   function( direct_product )
     local summands;
     
-    summands := Genesis( direct_product )!.DirectFactors;
+    summands := Genesis( direct_product )!.DirectProductDiagram;
     
     SetDirectSumOp( summands, summands[1], direct_product );
     
-    AddToGenesis( direct_product, "DirectFactors", summands );
+    AddToGenesis( direct_product, "DirectProductDiagram", summands );
     
-    AddToGenesis( direct_product, "Cofactors", summands ); 
+    AddToGenesis( direct_product, "CoproductDiagram", summands ); 
     
     SetFilterObj( direct_product, WasCreatedAsDirectSum );
     
@@ -1248,13 +1248,13 @@ InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
   function( coproduct )
     local summands;
   
-    summands := Genesis( coproduct )!.Cofactors;
+    summands := Genesis( coproduct )!.CoproductDiagram;
   
     SetDirectSumOp( summands, summands[1], coproduct );
     
-    AddToGenesis( coproduct, "DirectFactors", summands );
+    AddToGenesis( coproduct, "DirectProductDiagram", summands );
     
-    AddToGenesis( coproduct, "Cofactors", summands ); 
+    AddToGenesis( coproduct, "CoproductDiagram", summands ); 
     
     SetFilterObj( coproduct, WasCreatedAsDirectSum );
     
@@ -1314,9 +1314,9 @@ InstallMethod( AddDirectSum,
         
         Add( CapCategory( method_selection_object ), direct_sum );
         
-        AddToGenesis( direct_sum, "DirectFactors", object_product_list );
+        AddToGenesis( direct_sum, "DirectProductDiagram", object_product_list );
         
-        AddToGenesis( direct_sum, "Cofactors", object_product_list );
+        AddToGenesis( direct_sum, "CoproductDiagram", object_product_list );
         
         SetFilterObj( direct_sum, WasCreatedAsDirectSum );
         

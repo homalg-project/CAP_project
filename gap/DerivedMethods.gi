@@ -1161,7 +1161,7 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductWithGiven
     
     fi;
     
-    direct_product_diagram := direct_product!.Genesis.DirectFactors;
+    direct_product_diagram := direct_product!.Genesis.DirectProductDiagram;
     
     projection := ProjectionInFactorOfDirectProductWithGivenDirectProduct( direct_product_diagram, projection_number, direct_product );
     
@@ -1360,7 +1360,7 @@ InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPush
     
     fi;
     
-    coproduct_diagram := coproduct!.Genesis.Cofactors;
+    coproduct_diagram := coproduct!.Genesis.CoproductDiagram;
     
     injection := InjectionOfCofactorOfCoproductWithGivenCoproduct( coproduct_diagram, injection_number, coproduct );
     
