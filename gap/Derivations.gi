@@ -1,3 +1,15 @@
+#############################################################################
+##
+##                                               CAP package
+##
+##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
+##                  Sebastian Posur,   RWTH Aachen
+##
+#! @Chapter Managing derived methods
+#!
+##
+#############################################################################
+
 DeclareRepresentation( "IsDerivationRep",
                        IsAttributeStoringRep and IsDerivation,
                        [] );
@@ -252,9 +264,7 @@ function( C, G )
   local owl, op_name;
   owl := Objectify( NewType( TheFamilyOfOperationWeightLists,
                              IsOperationWeightListRep ),
-                    rec( category := C,
-                         graph := G,
-                         operation_weights := rec(),
+                    rec( operation_weights := rec(),
                          operation_derivations := rec() ) );
   for op_name in Operations( G ) do
     owl!.operation_weights.( op_name ) := infinity;
@@ -266,9 +276,10 @@ function( C, G )
 end );
 
 InstallMethod( String,
-               [ IsOperationWeightListRep ],
+               [ IsOperationWeightList ],
 function( owl )
-  return Concatenation( "operation weight list for ", String( owl!.category ) );
+  return Concatenation( "operation weight list for ",
+                        String( CategoryOfOperationWeightList( owl ) ) );
 end );
 
 InstallMethod( ViewObj,
@@ -284,7 +295,7 @@ function( owl, op_name )
 end );
 
 InstallMethod( OperationWeightUsingDerivation,
-               [ IsOperationWeightListRep, IsDerivation ],
+               [ IsOperationWeightList, IsDerivation ],
 function( owl, d )
   return DerivationResultWeight
          ( d, List( UsedOperations( d ),
@@ -308,14 +319,14 @@ function( owl, op_name )
     node := ExtractMin( Q );
     op_name := node[ 1 ];
     weight := node[ 2 ];
-    for d in DerivationsUsingOperation( owl!.graph, op_name ) do
+    for d in DerivationsUsingOperation( DerivationGraph( owl ), op_name ) do
       if not IsApplicableToCategory( d, CategoryOfOperationWeightList( owl ) ) then
         continue;
       fi;
       new_weight := OperationWeightUsingDerivation( owl, d );
       target := TargetOperation( d );
       if new_weight < CurrentOperationWeight( owl, target ) then
-        InstallDerivationForCategory( d, new_weight, owl!.category );
+        InstallDerivationForCategory( d, new_weight, CategoryOfOperationWeightList( owl ) );
         if Contains( Q, target ) then
           DecreaseKey( Q, target, new_weight );
         else
