@@ -38,7 +38,7 @@ DeclareGlobalFunction( "DeactivateDerivationInfo" );
 #!  A derivation object describes a derived method.
 #!  It contains information about which operation the derived method
 #!  implements, and which other operations it relies on.
-DeclareCategory( "IsDerivation", IsObject );
+DeclareCategory( "IsDerivedMethod", IsObject );
 
 #! @Description
 #!  Creates a new derivation object.
@@ -80,49 +80,49 @@ DeclareOperation( "MakeDerivation",
 #!  particular derivation, and normally not the same as the name
 #!  of the operation implemented by the derivation.
 #! @Arguments d
-DeclareAttribute( "DerivationName", IsDerivation );
+DeclareAttribute( "DerivationName", IsDerivedMethod );
 
 #! @Description
 #!  Extra weight for the derivation.
 #! @Arguments d
-DeclareAttribute( "DerivationWeight", IsDerivation );
+DeclareAttribute( "DerivationWeight", IsDerivedMethod );
 
 #! @Description
 #!  The implementation(s) of the derivation, together with lists
 #!  of extra filters for each implementation.
 #! @Arguments d
-DeclareAttribute( "DerivationFunctionsWithExtraFilters", IsDerivation );
+DeclareAttribute( "DerivationFunctionsWithExtraFilters", IsDerivedMethod );
 
 #! @Description
 #!  Filter describing which categories the derivation is valid for.
 #! @Arguments d
-DeclareAttribute( "CategoryFilter", IsDerivation );
+DeclareAttribute( "CategoryFilter", IsDerivedMethod );
 
 #! @Description
 #!  Checks if the derivation is known to be valid for a given category.
 #! @Arguments d, C
 #! @Returns <C>true</C> if the category <A>C</A> is known to satisfy
 #!          the category filter of the derivation <A>d</A>.
-DeclareOperation( "IsApplicableToCategory", [ IsDerivation, IsCapCategory ] );
+DeclareOperation( "IsApplicableToCategory", [ IsDerivedMethod, IsCapCategory ] );
 
 #! @Arguments d
 #! @Returns
 #!  The name (as a string) of the operation implemented
 #!  by the derivation <A>d</A>
-DeclareAttribute( "TargetOperation", IsDerivation );
+DeclareAttribute( "TargetOperation", IsDerivedMethod );
 
 #! @Arguments d
 #! @Returns
 #!  The names (as strings) of the operations used by the
 #!  derivation <A>d</A>
-DeclareAttribute( "UsedOperations", IsDerivation );
+DeclareAttribute( "UsedOperations", IsDerivedMethod );
 
 #! @Arguments d
 #! @Returns
 #!  Multiplicities of each operation used by the derivation
 #!  <A>d</A>, in order corresponding to the operation names
 #!  returned by <C>UsedOperations(d)</C>.
-DeclareAttribute( "UsedOperationMultiples", IsDerivation );
+DeclareAttribute( "UsedOperationMultiples", IsDerivedMethod );
 
 #! @Arguments d
 #! @Returns
@@ -131,7 +131,7 @@ DeclareAttribute( "UsedOperationMultiples", IsDerivation );
 #!  The result is a list consisting of lists of the form
 #!  <C>[op_name, mult]</C>, where <C>op_name</C> is a string
 #!  and <C>mult</C> a positive integer.
-DeclareAttribute( "UsedOperationsWithMultiples", IsDerivation );
+DeclareAttribute( "UsedOperationsWithMultiples", IsDerivedMethod );
 
 #! @Description
 #!  Install the derived method <A>d</A> for the category <A>C</A>.
@@ -139,7 +139,7 @@ DeclareAttribute( "UsedOperationsWithMultiples", IsDerivation );
 #!  implemented by this derivation.
 #! @Arguments d, weight, C
 DeclareOperation( "InstallDerivationForCategory",
-                  [ IsDerivation, IsPosInt, IsCapCategory ] );
+                  [ IsDerivedMethod, IsPosInt, IsCapCategory ] );
 
 #! @Description
 #!  Computes the resulting weight of the target operation of this
@@ -149,7 +149,7 @@ DeclareOperation( "InstallDerivationForCategory",
 #!  <C>UsedOperations( d )</C>, in the same order.
 #! @Arguments d, op_weights
 DeclareOperation( "DerivationResultWeight",
-                  [ IsDerivation, IsDenseList ] );
+                  [ IsDerivedMethod, IsDenseList ] );
 
 
 ####################################
@@ -161,7 +161,7 @@ DeclareOperation( "DerivationResultWeight",
 #! @Description
 #!  A derivation graph consists of a set of operations and a set of derivations
 #!  specifying how some operations can be implemented in terms of other operations.
-DeclareCategory( "IsDerivationGraph", IsObject );
+DeclareCategory( "IsDerivedMethodGraph", IsObject );
 
 #! @Description
 #!  Make a derivation graph containing the given set of operations and no derivations.
@@ -174,10 +174,10 @@ DeclareOperation( "MakeDerivationGraph", [ IsDenseList ] );
 #! @Description
 #!  Add a derivation to a derivation graph.
 #! @Arguments G, d
-DeclareOperation( "AddDerivation", [ IsDerivationGraph, IsDerivation ] );
+DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsDerivedMethod ] );
 
 #!
-DeclareOperation( "AddDerivation", [ IsDerivationGraph, IsFunction, IsDenseList, IsObject ] );
+DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsObject ] );
 
 #!
 DeclareGlobalFunction( "AddDerivationToCAP" );
@@ -185,20 +185,20 @@ DeclareGlobalFunction( "AddDerivationToCAP" );
 #! @Description
 #!  Gives the operations in the graph <A>G</A>, as a list of strings.
 #! @Arguments G
-DeclareAttribute( "Operations", IsDerivationGraph );
+DeclareAttribute( "Operations", IsDerivedMethodGraph );
 
 #! @Description
 #!  Finds all the derivations in the graph <A>G</A> that use the operation named
 #!  <A>op_name</A>, and returns them as a list.
 #! @Arguments G, op_name
-DeclareOperation( "DerivationsUsingOperation", [ IsDerivationGraph, IsString ] );
+DeclareOperation( "DerivationsUsingOperation", [ IsDerivedMethodGraph, IsString ] );
 
 #! @Description
 #!  Finds all the derivations in the graph <A>G</A> targeting the operation named
 #!  <A>op_name</A> (that is, the derivations that provide implementations of this
 #!  operation), and returns them as a list.
 #! @Arguments G, op_name
-DeclareOperation( "DerivationsOfOperation", [ IsDerivationGraph, IsString ] );
+DeclareOperation( "DerivationsOfOperation", [ IsDerivedMethodGraph, IsString ] );
 
 
 ####################################
@@ -225,7 +225,7 @@ DeclareCategory( "IsOperationWeightList", IsObject );
 #!  The argument <A>C</A> is the CAP category this operation weight list is associated to,
 #!  and the argument <A>G</A> is a derivation graph containing operation names and derivations.
 #! @Arguments C, G
-DeclareOperation( "MakeOperationWeightList", [ IsCapCategory, IsDerivationGraph ] );
+DeclareOperation( "MakeOperationWeightList", [ IsCapCategory, IsDerivedMethodGraph ] );
 
 #! @Description
 #!  Returns the derivation graph used by the operation weight list <A>owl</A>.
@@ -247,7 +247,7 @@ DeclareOperation( "CurrentOperationWeight", [ IsOperationWeightList, IsString ] 
 #!  would be if we had used that derivation.
 #! @Arguments owl, d
 DeclareOperation( "OperationWeightUsingDerivation",
-                  [ IsOperationWeightList, IsDerivation ] );
+                  [ IsOperationWeightList, IsDerivedMethod ] );
 
 #! @Description
 #!  Returns the derivation which is currently used to implement the operation

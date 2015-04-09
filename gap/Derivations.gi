@@ -10,11 +10,11 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsDerivationRep",
-                       IsAttributeStoringRep and IsDerivation,
+DeclareRepresentation( "IsDerivedMethodRep",
+                       IsAttributeStoringRep and IsDerivedMethod,
                        [] );
-DeclareRepresentation( "IsDerivationGraphRep",
-                       IsAttributeStoringRep and IsDerivationGraph,
+DeclareRepresentation( "IsDerivedMethodGraphRep",
+                       IsAttributeStoringRep and IsDerivedMethodGraph,
                        [] );
 DeclareRepresentation( "IsOperationWeightListRep",
                        IsAttributeStoringRep and IsOperationWeightList,
@@ -54,7 +54,7 @@ function( name, target_op, used_ops_with_multiples,
           l -> [ NameFunction( l[ 1 ] ), l[ 2 ] ] );
   ObjectifyWithAttributes
     ( d,
-      NewType( TheFamilyOfDerivations, IsDerivationRep ),
+      NewType( TheFamilyOfDerivations, IsDerivedMethodRep ),
       DerivationName, name,
       DerivationWeight, weight,
       DerivationFunctionsWithExtraFilters, implementations_with_extra_filters,
@@ -68,20 +68,20 @@ function( name, target_op, used_ops_with_multiples,
 end );
 
 InstallMethod( String,
-               [ IsDerivation ],
+               [ IsDerivedMethod ],
 function( d )
   return Concatenation( "derivation ", DerivationName( d ),
                         " of operation ", TargetOperation( d ) );
 end );
 
 InstallMethod( ViewObj,
-               [ IsDerivation ],
+               [ IsDerivedMethod ],
 function( d )
   Print( "<", String( d ), ">" );
 end );
 
 InstallMethod( IsApplicableToCategory,
-               [ IsDerivation, IsCapCategory ],
+               [ IsDerivedMethod, IsCapCategory ],
 function( d, C )
   local filter;
   filter := CategoryFilter( d );
@@ -89,7 +89,7 @@ function( d, C )
 end );
 
 InstallMethod( InstallDerivationForCategory,
-               [ IsDerivation, IsPosInt, IsCapCategory ],
+               [ IsDerivedMethod, IsPosInt, IsCapCategory ],
 function( d, weight, C )
   local method_name, general_filter_list, installation_name, nr_arguments,
         cache_name, current_implementation, current_filters;
@@ -133,7 +133,7 @@ function( d, weight, C )
 end );
 
 InstallMethod( DerivationResultWeight,
-               [ IsDerivation, IsDenseList ],
+               [ IsDerivedMethod, IsDenseList ],
 function( d, op_weights )
   local w, used_op_multiples, i, op_w, mult;
   w := DerivationWeight( d );
@@ -158,7 +158,7 @@ function( operations )
   ObjectifyWithAttributes
     ( G,
       NewType( TheFamilyOfDerivationGraphs,
-               IsDerivationGraphRep ),
+               IsDerivedMethodGraphRep ),
       Operations, operations );
   for op_name in operations do
     G!.derivations_by_target.( op_name ) := [];
@@ -168,19 +168,19 @@ function( operations )
 end );
 
 InstallMethod( String,
-               [ IsDerivationGraph ],
+               [ IsDerivedMethodGraph ],
 function( G )
   return "derivation graph";
 end );
 
 InstallMethod( ViewObj,
-               [ IsDerivationGraph ],
+               [ IsDerivedMethodGraph ],
 function( G )
   Print( "<", String( G ), ">" );
 end );
 
 InstallMethod( AddDerivation,
-               [ IsDerivationGraphRep, IsDerivation ],
+               [ IsDerivedMethodGraphRep, IsDerivedMethod ],
 function( G, d )
   local op_name;
   Add( G!.derivations_by_target.( TargetOperation( d ) ), d );
@@ -190,7 +190,7 @@ function( G, d )
 end );
 
 InstallMethod( AddDerivation,
-               [ IsDerivationGraph, IsFunction, IsDenseList, IsFunction ],
+               [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsFunction ],
                
   function( graph, target_op, used_ops_with_multiples,
             implementations_with_extra_filters )
@@ -217,7 +217,7 @@ BindGlobal( "CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT",
 end );
 
 InstallMethod( AddDerivation,
-               [ IsDerivationGraph, IsFunction, IsDenseList, IsDenseList ],
+               [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsDenseList ],
                
   function( graph, target_op, used_ops_with_multiples,
             implementations_with_extra_filters )
@@ -249,19 +249,19 @@ InstallGlobalFunction( AddDerivationToCAP,
 end );
 
 InstallMethod( DerivationsUsingOperation,
-               [ IsDerivationGraphRep, IsString ],
+               [ IsDerivedMethodGraphRep, IsString ],
 function( G, op_name )
   return G!.derivations_by_used_ops.( op_name );
 end );
 
 InstallMethod( DerivationsOfOperation,
-               [ IsDerivationGraphRep, IsString ],
+               [ IsDerivedMethodGraphRep, IsString ],
 function( G, op_name )
   return G!.derivations_by_target.( op_name );
 end );
 
 InstallMethod( MakeOperationWeightList,
-               [ IsCapCategory, IsDerivationGraph ],
+               [ IsCapCategory, IsDerivedMethodGraph ],
 function( C, G )
   local owl, op_name;
   owl := Objectify( NewType( TheFamilyOfOperationWeightLists,
@@ -297,7 +297,7 @@ function( owl, op_name )
 end );
 
 InstallMethod( OperationWeightUsingDerivation,
-               [ IsOperationWeightList, IsDerivation ],
+               [ IsOperationWeightList, IsDerivedMethod ],
 function( owl, d )
   return DerivationResultWeight
          ( d, List( UsedOperations( d ),
