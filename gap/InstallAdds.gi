@@ -13,7 +13,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
   function( record )
     local function_name, install_name, add_name, can_compute_name, pre_function,
           redirect_function, post_function, filter_list, well_defined_todo, caching,
-          cache_name, nr_arguments;
+          cache_name, nr_arguments, argument_list;
     
     function_name := record.function_name;
     
@@ -63,6 +63,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
         nr_arguments := Length( filter_list );
     else
         caching := false;
+    fi;
+    
+    if IsBound( record.argument_list ) then
+        argument_list := record.argument_list;
+    else
+        argument_list := [ 1 .. Length( filter_list ) ];
     fi;
     
     InstallMethod( ValueGlobal( add_name ),
@@ -122,7 +128,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     Error( pre_func_return[ 2 ] );
                 fi;
                 
-                result := CallFuncList( func_to_install, arg );
+                result := CallFuncList( func_to_install, arg{ argument_list } );
                 Add( category, result );
                 
                 Add( arg, result );
@@ -254,6 +260,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             
             arg_list := [ 1 ];
             
+        fi;
+        
+        if Length( current_rec.filter_list ) > 1 and
+           ForAll( [ 1 .. Length( current_rec.filter_list ) - 1 ], i -> current_rec.filter_list[ i ] = IsInt or current_rec.filter_list[ i ] = IsList ) then
+            current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) - 1 ];
         fi;
         
         if IsBound( current_rec.universal_type ) and not IsBound( current_rec.universal_object_position ) then
