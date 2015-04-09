@@ -5,25 +5,23 @@
 ##
 ###########################
 ##
-InstallTrueMethodAndStoreImplication( CanComputeZeroMorphism, CanComputePreCompose
-                                       and CanComputeUniversalMorphismIntoTerminalObject
-                                       and CanComputeUniversalMorphismFromInitialObject
-                                       and IsAdditiveCategory );
+# InstallTrueMethodAndStoreImplication( CanComputeZeroMorphism, CanComputePreCompose
+#                                        and CanComputeUniversalMorphismIntoTerminalObject
+#                                        and CanComputeUniversalMorphismFromInitialObject
+#                                        and IsAdditiveCategory );
 
-InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
-                                       [ IsCapCategoryObject
-                                     and CanComputePreCompose
-                                     and CanComputeUniversalMorphismIntoTerminalObject
-                                     and IsAdditiveCategory,
-                                         IsCapCategoryObject
-                                       ],
-                                       -99999, #FIXME
-                                  
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               ZeroMorphism,
+               [ [ PreCompose, 1 ],
+                 [ UniversalMorphismIntoTerminalObject, 1 ],
+                 [ UniversalMorphismFromInitialObject, 1 ] ],
+                 
   function( obj_source, obj_range )
     
     return PreCompose( UniversalMorphismIntoTerminalObject( obj_source ), UniversalMorphismFromInitialObject( obj_range ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+  end : CategoryFilter := IsAdditiveCategory,
+        Description := "Zero morphism by composition of morphism into and from zero object" );
 
 ##
 InstallTrueMethodAndStoreImplication( CanComputeIsZeroForObjects, CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms );
@@ -58,30 +56,23 @@ InstallMethod( IsMonomorphism,
 end );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, 
-                   CanComputeIsIsomorphism
-                   and CanComputeIdentityMorphism
-                   and CanComputeProjectionInFactorOfFiberProduct
-                   and CanComputePreCompose
-                   and CanComputeUniversalMorphismIntoFiberProduct );
+# InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, 
+#                    CanComputeIsIsomorphism
+#                    and CanComputeIdentityMorphism
+#                    and CanComputeProjectionInFactorOfFiberProduct
+#                    and CanComputePreCompose
+#                    and CanComputeUniversalMorphismIntoFiberProduct );
 
-InstallMethod( IsMonomorphism,
-               [ IsCapCategoryMorphism
-                 and CanComputeIsIsomorphism
-                 and CanComputeIdentityMorphism
-                 and CanComputeProjectionInFactorOfFiberProduct
-                 and CanComputePreCompose
-                 and CanComputeUniversalMorphismIntoFiberProduct ],
-                 -9999, #FIXME
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               IsMonomorphism,
+               [ [ IsIsomorphism, 1 ],
+                 [ IdentityMorphism, 1 ],
+                 [ UniversalMorphismIntoFiberProduct, 1 ] ],
                  
   function( morphism )
     local pullback_diagram, pullback_projection_1, pullback_projection_2, identity, diagonal_morphism;
       
       pullback_diagram := [ morphism, morphism ];
-      
-      pullback_projection_1 := ProjectionInFactorOfFiberProduct( pullback_diagram, 1 );
-      
-      pullback_projection_2 := ProjectionInFactorOfFiberProduct( pullback_diagram, 2 );
       
       identity := IdentityMorphism( Source( morphism ) );
       

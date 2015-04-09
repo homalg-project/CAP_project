@@ -124,6 +124,8 @@ function( d, weight, C )
                                              current_implementation[ 1 ] );
   od;
   
+  ValueGlobal( Concatenation( "SetCanCompute", method_name ) )( C, true );
+  
   if nr_arguments > 1 then
       PopOptions( );
   fi;
@@ -196,7 +198,7 @@ InstallMethod( AddDerivation,
     AddDerivation( graph,
                   target_op,
                   used_ops_with_multiples,
-                  [ implementations_with_extra_filters, [ ] ] );
+                  [ [ implementations_with_extra_filters, [ ] ] ] );
     
 end );
 
