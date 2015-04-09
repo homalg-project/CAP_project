@@ -73,7 +73,7 @@ k_lift := KernelLift( k, tau );
 #!   [  2 ] ]
 #! 
 HasKernelEmb( k );
-#! true
+#! false
 #! @EndExample
 
 #! @Example

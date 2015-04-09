@@ -1089,14 +1089,14 @@ InstallMethodWithToDoForIsWellDefined( FiberProductOp,
     
     pullback := KernelObject( diff );
     
-    if IsBound( pullback!.Genesis.FiberProductAsKernelDiagram ) then
+    if IsBound( pullback!.Genesis.FiberProductAsKernelObjectDiagram ) then
         
         Error( "pullback has two origins, which leads to inconsistencies." );
         
     fi;
     
     #unfortunately this is necessary here
-    AddToGenesis(  pullback, "FiberProductAsKernelDiagram", diff );
+    AddToGenesis(  pullback, "FiberProductAsKernelObjectDiagram", diff );
     
     AddToGenesis( pullback, "FiberProductDiagram", diagram );
     
@@ -1145,13 +1145,13 @@ InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductWithGiven
   function( diagram, projection_number, pullback )
     local embedding_in_direct_product, direct_product, direct_product_diagram, projection;
   
-    if not WasCreatedAsKernelObject( pullback ) or not IsBound( Genesis( pullback )!.FiberProductAsKernelDiagram ) then
+    if not WasCreatedAsKernelObject( pullback ) or not IsBound( Genesis( pullback )!.FiberProductAsKernelObjectDiagram ) then
     
       Error( "pullback had to be created as a kernel" );
     
     fi;
     
-    embedding_in_direct_product := KernelEmb( Genesis( pullback )!.FiberProductAsKernelDiagram );
+    embedding_in_direct_product := KernelEmb( Genesis( pullback )!.FiberProductAsKernelObjectDiagram );
     
     direct_product := Range( embedding_in_direct_product );
     

@@ -61,7 +61,7 @@ InstallMethod( AddKernelObject,
         
         SetFilterObj( kernel, WasCreatedAsKernelObject );
         
-        AddToGenesis( kernel, "KernelDiagram", mor );
+        AddToGenesis( kernel, "KernelObjectDiagram", mor );
         
         return kernel;
         
@@ -76,7 +76,7 @@ InstallMethod( KernelLift,
                
   function( kernel, test_morphism )
   
-    return KernelLift( Genesis( kernel )!.KernelDiagram, test_morphism );
+    return KernelLift( Genesis( kernel )!.KernelObjectDiagram, test_morphism );
   
 end );
 
@@ -113,7 +113,7 @@ InstallMethod( AddKernelLift,
         
         SetFilterObj( kernel, WasCreatedAsKernelObject );
         
-        AddToGenesis( kernel, "KernelDiagram", mor );
+        AddToGenesis( kernel, "KernelObjectDiagram", mor );
         
         return kernel_lift;
         
@@ -183,7 +183,7 @@ InstallMethod( AddKernelEmb,
         
         SetFilterObj( kernel, WasCreatedAsKernelObject );
         
-        AddToGenesis( kernel, "KernelDiagram", mor );
+        AddToGenesis( kernel, "KernelObjectDiagram", mor );
         
         SetKernelEmb( kernel, kernel_emb );
         
@@ -238,7 +238,7 @@ InstallMethod( KernelEmb,
                
   function( kernel )
   
-    return KernelEmb( Genesis( kernel )!.KernelDiagram );
+    return KernelEmb( Genesis( kernel )!.KernelObjectDiagram );
     
 end );
 
