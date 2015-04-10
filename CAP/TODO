@@ -1,0 +1,25 @@
+* Dokumentation
+* Tests
+  - Abgeleitete Algorithmen testen
+
+Technik:
+* Trace auf Product -> Gutsche
+* Maintain ToDo List in Opposite.gi
+
+ToDo:
+* Komplexe -> Gutsche
+* Cokomplexe -> Gutsche -> QPA
+* Serre-Quotienten
+
+
+Fehlt:
+* GeneralizedMorphisms
+  - Propagation:
+    + Honest und Mono/Epi => Splitmono/Splitepi
+
+Cleanup:
+* FiberProduct/ Pushout derivation without FiberProductAsKernelDiagram/PushoutAsCokernelDiagram
+* higher methods and convenient methods must not use *WithGiven*
+
+Neue Kategorien
+* Spektralsequenzen

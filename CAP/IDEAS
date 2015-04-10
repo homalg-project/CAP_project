@@ -1,0 +1,22 @@
+Constructor: Give categories for objects and morphisms to category.
+             Install filters for containment in category.
+             Install AddToCategory, which can add an object to a category and sets the filter to true.
+
+
+
+TODO REIMER:
+Why is there a possibility to add an identity morphism without declaring it?
+
+TODO:
+* Add caching to methods
+* Add generic display methods
+
+ToDo:
+* Gruppenkategorie, additive Kategorie.
+* Kategorie muss lernen.
+* Verallgemeinerte Morphismen Kategorie.
+
+Bugs:
+* Add( Category, object ) muss derzeit im Konstruktor aufgerufen werden (z.B bei QVectorSpace), da sonst 
+  die generic Print Methoden einen Fehler werfen (HomalgCategory nicht bekannt)
+* FullView: is direct sum -> was created as direct sum (ebenso: direct product, cokernel, kernel)

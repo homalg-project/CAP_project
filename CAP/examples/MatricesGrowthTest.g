@@ -1,0 +1,10 @@
+LoadPackage( "ModulePresentationsForHomalg" );
+LoadPackage( "RingsForHomalg" );
+QQ := HomalgFieldOfRationalsInSingular( );
+R := QQ * "x,y";
+S := FreeLeftPresentation( 1, R );
+S2 := FreeLeftPresentation( 2, R );
+alpha := PresentationMorphism( S, HomalgMatrix( [ [ 1, 2 ] ], R ), S2 );
+id := IdentityMorphism( S );
+p := PreCompose( id, alpha );
+IsIdenticalObj( p, alpha );

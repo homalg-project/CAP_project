@@ -1,0 +1,58 @@
+Eval Rules
+
+if IsEqualAsMorphism( Precompose( tau_alpha, alpha ), Precompose( tau_beta, beta ) ) then
+  Precompose( UniversalMorphismIntoFiberProduct( FiberProduct( alpha, beta ), tau_alpha, tau_beta ), ProjectionInFactor( FiberProduct( alpha, beta ), 1 ) ) -> tau_alpha
+
+theorem1.32 := rec( Source := [ Precompose,
+                                    [ UniversalMorphismIntoFiberProduct,
+                                          [ FiberProduct,
+                                                "alpha",
+                                                "beta"
+                                          ],
+                                          "tau_alpha",
+                                          "tau_beta"
+                                    ],
+                                    [ ProjectionInFactor,
+                                          [ FiberProduct,
+                                                "alpha",
+                                                "beta"
+                                          ],
+                                          1
+                                    ]
+                              ],
+                    Range := "tau_alpha",
+                    Condition := [ IsEqualAsMorphism,
+                                       [ Precompose,
+                                             "tau_alpha",
+                                             "alpha"
+                                       ],
+                                       [ Precompose,
+                                             "tau_beta",
+                                             "beta"
+                                       ]
+                                 ]
+                  );
+
+Immediate Rules
+
+@Theorem
+A | .
+
+theorem1.14 := rec( Source_List := [ rec( Source := "beta,
+                                          Source_predicate := IsMonomorphism,
+                                          value := true ) ],
+                    Range := [ ProjectionInFactor,
+                                   [ FiberProduct,
+                                         "alpha",
+                                          "beta"
+                                   ]
+                                   1
+                             ],
+                    Range_predicate := IsMonomorphism,
+                    value := true );
+
+True Rules
+
+theorem 1.1 := rec( Source_Filters := [ IsZero, OBJECT_FILTER ],
+                    Range_Filters := [ IsInjective, OBJECT_FILTER ] );
+
