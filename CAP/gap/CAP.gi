@@ -270,73 +270,7 @@ InstallMethod( AddCategoryToFamily,
 end );
 
 
-####################################
-##
-## Monomorphism as kernel lift
-##
-####################################
-
-##
-InstallMethod( AddMonoAsKernelLift,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetMonoAsKernelLiftFunction( category, func );
-    
-    SetCanComputeMonoAsKernelLift( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( MonoAsKernelLift,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
-                            
-      function( monomorphism, test_morphism )
-        local lift;
-        
-        lift := func( monomorphism, test_morphism );
-        
-        Add( CapCategory( monomorphism ), lift );
-        
-        return lift;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "MonoAsKernelLift", 2 ) );
-    
-end );
-
-####################################
-##
-## Epimorphism as cokernel colift
-##
-####################################
-
-##
-InstallMethod( AddEpiAsCokernelColift,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetEpiAsCokernelColiftFunction( category, func );
-    
-    SetCanComputeEpiAsCokernelColift( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( EpiAsCokernelColift,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( epimorphism, test_morphism )
-        local colift;
-        
-        colift := func( epimorphism, test_morphism );
-        
-        Add( CapCategory( epimorphism ), colift );
-        
-        return colift;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "EpiAsCokernelColift", 2 ) );
-    
-end );
-
-## this derivation leads to circuits
+## FIXME: this derivation leads to circuits <- not anymore
 ##
 # InstallTrueMethodAndStoreImplication( CanComputeEpiAsCokernelColift, 
 #                                       CanComputeKernelEmb
@@ -367,40 +301,6 @@ end );
 #     return PreCompose( Inverse( cokernel_colift_to_range_of_epimorphism ), cokernel_colift_to_range_of_test_morphism );
 #     
 # end );
-
-
-####################################
-##
-## Inverse
-##
-####################################
-
-##
-InstallMethod( AddInverse,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetInverseFunction( category, func );
-    
-    SetCanComputeInverse( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ) and IsIsomorphism ],
-                                           
-      function( isomorphism )
-        local inverse;
-        
-        inverse := func( isomorphism );
-        
-        Add( CapCategory( isomorphism ), inverse );
-        
-        return inverse;
-        
-    end );
-    
-end );
-
 
 
 #######################################
