@@ -53,5 +53,6 @@ end;
 - KernelEmb/ KernelEmbWithGivenKernel: 
   SetIsMonomorphism( kernel_emb, true );
 
-- 
+- CokernelProj/ CokernelProjWithGivenCokernel
+  SetIsEpimorphism( cokernel_proj, true );
 

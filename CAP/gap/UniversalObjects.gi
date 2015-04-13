@@ -80,40 +80,9 @@ end );
 ####################################
 
 ####################################
-## Add Operations
+## Convenience methods
 ####################################
 
-##
-InstallMethod( AddCokernel,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetCokernelFunction( category, func );
-    
-    SetCanComputeCokernel( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( Cokernel,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( mor )
-        local cokernel;
-        
-        cokernel := func( mor );
-        
-        Add( CapCategory( mor ), cokernel );
-        
-        SetFilterObj( cokernel, WasCreatedAsCokernel );
-        
-        AddToGenesis( cokernel,"CokernelDiagram", mor );
-        
-        return cokernel;
-        
-    end );
-    
-end );
-
-## convenience
 ##
 InstallMethod( CokernelColift,
                [ IsCapCategoryObject, IsCapCategoryMorphism ],
@@ -125,152 +94,6 @@ InstallMethod( CokernelColift,
 end );
 
 ##
-InstallMethod( AddCokernelColift,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetCokernelColiftFunction( category, func );
-    
-    SetCanComputeCokernelColift( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( CokernelColift,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( mor, test_morphism )
-        local cokernel_colift, cokernel;
-        
-        if HasCokernel( mor ) then
-          
-          return CokernelColiftWithGivenCokernel( mor, test_morphism, Cokernel( mor ) );
-          
-        fi;
-        
-        cokernel_colift := func( mor, test_morphism );
-        
-        Add( CapCategory( mor ), cokernel_colift );
-        
-        cokernel := Source( cokernel_colift );
-        
-        SetFilterObj( cokernel, WasCreatedAsCokernel );
-        
-        AddToGenesis( cokernel, "CokernelDiagram", mor );
-        
-        return cokernel_colift;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CokernelColift", 2 ) );
-    
-end );
-
-##
-InstallMethod( AddCokernelColiftWithGivenCokernel,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetCokernelColiftWithGivenCokernelFunction( category, func );
-    
-    SetCanComputeCokernelColiftWithGivenCokernel( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( CokernelColiftWithGivenCokernel,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( mor, test_morphism, cokernel )
-        local cokernel_colift;
-        
-        cokernel_colift := func( mor, test_morphism, cokernel );
-        
-        Add( CapCategory( mor ), cokernel_colift );
-        
-        return cokernel_colift;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CokernelColiftWithGivenCokernel", 3 ) );
-    
-end );
-
-##
-InstallMethod( AddCokernelProj,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetCokernelProjFunction( category, func );
-    
-    SetCanComputeCokernelProj( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( CokernelProj,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( mor )
-        local cokernel_proj, cokernel;
-        
-        if HasCokernel( mor ) then
-          
-          return CokernelProjWithGivenCokernel( mor, Cokernel( mor ) );
-          
-        fi;
-        
-        cokernel_proj := func( mor );
-        
-        Add( CapCategory( mor ), cokernel_proj );
-        
-        SetIsEpimorphism( cokernel_proj, true );
-
-        cokernel := Range( cokernel_proj );
-        
-        SetCokernel( mor, cokernel );
-        
-        SetFilterObj( cokernel, WasCreatedAsCokernel );
-        
-        AddToGenesis( cokernel, "CokernelDiagram", mor );
-
-        SetCokernelProj( cokernel, cokernel_proj );
-        
-        return cokernel_proj;
-        
-    end );
-    
-end );
-
-##
-InstallMethod( AddCokernelProjWithGivenCokernel,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetCokernelProjWithGivenCokernelFunction( category, func );
-    
-    SetCanComputeCokernelProjWithGivenCokernel( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( CokernelProjWithGivenCokernel,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( mor, cokernel )
-        local cokernel_proj;
-        
-        cokernel_proj := func( mor, cokernel );
-        
-        Add( CapCategory( mor ), cokernel_proj );
-        
-        SetIsEpimorphism( cokernel_proj, true );
-
-        SetCokernelProj( cokernel, cokernel_proj );
-        
-        return cokernel_proj;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CokernelProjWithGivenCokernel", 2 ) );
-    
-end );
-
-####################################
-## Attributes 
-####################################
-
-##
 InstallMethod( CokernelProj,
                [ IsCapCategoryObject and WasCreatedAsCokernel ],
                
@@ -279,8 +102,6 @@ InstallMethod( CokernelProj,
     return CokernelProj( Genesis( cokernel )!.CokernelDiagram );
     
 end );
-
-
 
 ####################################
 ## Functorial operations
