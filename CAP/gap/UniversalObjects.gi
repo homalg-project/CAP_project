@@ -441,6 +441,10 @@ end );
 ##
 ####################################
 
+####################################
+## Technical methods
+####################################
+
 ## Immediate methods which link DirectProduct and Coproduct to
 ## DirectSum in the additive case
 InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
@@ -493,6 +497,9 @@ InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
     
 end );
 
+####################################
+## Convenience methods
+####################################
 
 ## GAP-Hack in order to avoid the pre-installed GAP-method DirectSum
 BindGlobal( "CAP_INTERNAL_DIRECT_SUM_SAVE", DirectSum );
@@ -520,6 +527,10 @@ DirectSum := function( arg )
 end;
 
 MakeReadOnlyGlobal( "DirectSum" );
+
+####################################
+## Add methods
+####################################
 
 ##
 InstallMethod( AddDirectSum,
@@ -576,8 +587,6 @@ end );
 ## Functorial operations
 ####################################
 
-## FIXME: There has to be a DirectSumFunctorialOp in order to
-## add these methods properly to the derivation graph
 ##
 InstallMethod( DirectSumFunctorial,
                [ IsList ],
@@ -589,7 +598,7 @@ InstallMethod( DirectSumFunctorial,
 end );
 
 ####################################
-## Convenience operations
+## Categorical methods
 ####################################
 
 ##
@@ -615,6 +624,7 @@ InstallMethod( MorphismBetweenDirectSums,
     
 end );
 
+##
 InstallMethodWithCacheFromObject( MorphismBetweenDirectSumsOp,
                                   [ IsList, IsInt, IsInt, IsCapCategoryMorphism ],
                                   
