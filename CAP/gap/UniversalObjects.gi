@@ -1716,11 +1716,21 @@ InstallMethod( AddInitialObject,
                
   function( category, func )
     
+    AddInitialObject( category, func, 100 );
+    
+end );
+
+##
+InstallMethod( AddInitialObject,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    
     SetInitialObjectFunction( category, func );
     
-#     SetFilterObj( category, CanComputeInitialObject );
-    
     SetCanComputeInitialObject( category, true );
+    
+    AddPrimitiveOperation( category!.derivations_weight_list, "InitialObject", weight );
     
 end );
 
