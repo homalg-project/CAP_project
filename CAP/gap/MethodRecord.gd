@@ -224,7 +224,8 @@ IsEqualForMorphisms := rec(
   installation_name := "IsEqualForMorphisms",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsEqualForMorphisms",
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  no_install := true ),
 
 IsZeroForMorphisms := rec(
   installation_name := "IsZero",
