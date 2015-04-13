@@ -835,5 +835,6 @@ IdentityTwoCell := rec(
 IsWellDefinedForTwoCells := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "twocell" ],
-  well_defined_todo := false ) )
+  well_defined_todo := false,
+  no_install := true ) )
 );
