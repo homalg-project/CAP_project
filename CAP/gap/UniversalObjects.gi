@@ -635,8 +635,6 @@ end: ArgumentNumber := 4 );
 ##
 ####################################
 
-##
-InstallTrueMethod( WasCreatedAsZeroObject, IsZero );
 
 ## Immediate methods which link InitialObject and TerminalObject to
 ## ZeroObject in the additive case
