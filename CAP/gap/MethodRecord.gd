@@ -104,6 +104,7 @@ ZeroMorphism := rec(
 DirectSum := rec(
   installation_name := "DirectSumOp",
   filter_list := [ IsList, "object" ],
+  argument_list := [ 1 ],
   cache_name := "DirectSumOp",
   universal_type := "LimitColimit",
   no_install := true ),

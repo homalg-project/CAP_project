@@ -533,55 +533,27 @@ MakeReadOnlyGlobal( "DirectSum" );
 ####################################
 
 ##
-InstallMethod( AddDirectSum,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    AddDirectSum( category, func, 100 );
-    
-end );
+BindGlobal( "CAP_INTERNAL_ADD_DIRECT_SUM_RECORD", 
+            ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.DirectSum ) );
 
-##
-InstallMethod( AddDirectSum,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    
-    SetDirectSumFunction( category, func );
-    
-    SetCanComputeDirectSum( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( DirectSumOp,
-                                           [ IsList, IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( object_product_list, method_selection_object )
-        local direct_sum;
-        
-        direct_sum := func( object_product_list );
-        
-        Add( category, direct_sum );
-        
-        AddToGenesis( direct_sum, "DirectProductDiagram", object_product_list );
-        
-        AddToGenesis( direct_sum, "CoproductDiagram", object_product_list );
-        
-        SetFilterObj( direct_sum, WasCreatedAsDirectSum );
-        
-        ## this will treat direct_sum as if it was a direct product (see immediate method above)
-        SetFilterObj( direct_sum, WasCreatedAsDirectProduct );
-        
-        ## this will treat direct_sum as if it was a coproduct (see immediate method above)
-        SetFilterObj( direct_sum, WasCreatedAsCoproduct );
-        
-        return direct_sum;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "DirectSumOp", 2 ) );
-    
-    AddPrimitiveOperation( category!.derivations_weight_list, "DirectSum", weight );
-    
-end );
+CAP_INTERNAL_ADD_DIRECT_SUM_RECORD.function_name := "DirectSum";
 
+CAP_INTERNAL_ADD_DIRECT_SUM_RECORD.post_function :=
+  function( object_product_list, method_selection_object, direct_sum )
+    
+    AddToGenesis( direct_sum, "DirectProductDiagram", object_product_list );
+        
+    AddToGenesis( direct_sum, "CoproductDiagram", object_product_list );
+    
+    SetFilterObj( direct_sum, WasCreatedAsDirectSum );
+    
+    ## this will treat direct_sum as if it was a direct product (see immediate method above)
+    SetFilterObj( direct_sum, WasCreatedAsDirectProduct );
+    
+    ## this will treat direct_sum as if it was a coproduct (see immediate method above)
+    SetFilterObj( direct_sum, WasCreatedAsCoproduct );
+    
+end;
 
 ####################################
 ## Functorial operations
