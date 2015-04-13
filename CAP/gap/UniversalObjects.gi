@@ -1784,6 +1784,42 @@ InstallMethod( AddInitialObject,
 end );
 
 ##
+BindGlobal( "CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD", 
+            ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.UniversalMorphismFromInitialObject ) );
+
+CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD.function_name := "UniversalMorphismFromInitialObject";
+
+CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD.redirect_function :=
+  function( test_sink )
+    local category;
+    
+    category := CapCategory( test_sink );
+    
+    if HasInitialObject( category ) then
+      
+      return [ true, UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( category ) ) ];
+      
+    fi;
+    
+    return [ false ];
+    
+end;
+
+CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD.post_function :=
+  function( test_sink, universal_morphism )
+    local category, initial_object;
+    
+    category := CapCategory( test_sink );
+    
+    initial_object := Source( universal_morphism );
+    
+    SetInitialObject( category, initial_object );
+    
+    SetFilterObj( initial_object, WasCreatedAsInitialObject );
+    
+end;
+
+##
 InstallMethod( AddUniversalMorphismFromInitialObject,
                [ IsCapCategory, IsFunction ],
                
