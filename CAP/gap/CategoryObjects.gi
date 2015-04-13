@@ -219,64 +219,6 @@ InstallMethod( Add,
     
 end );
 
-
-
-###########################
-##
-## IsWellDefined
-##
-###########################
-
-##
-InstallMethod( AddIsWellDefinedForObjects,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetCanComputeIsWellDefinedForObjects( category, true );
-    
-    SetIsWellDefinedForObjectsFunction( category, func );
-    
-    InstallMethod( IsWellDefined,
-                   [ IsCapCategoryObject and ObjectFilter( category ) ],
-                   
-      function( object )
-        
-        return func( object );
-        
-    end );
-    
-end );
-
-###########################
-##
-## IsZero
-##
-###########################
-
-##
-InstallMethod( AddIsZeroForObjects,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-  
-    SetCanComputeIsZeroForObjects( category, true );
-    
-    SetIsZeroForObjectsFunction( category, func );
-    
-    InstallMethod( IsZero,
-                   [ IsCapCategoryObject and ObjectFilter( category ) ],
-                   
-      function( object )
-        
-        return func( object );
-        
-    end );
-  
-end );
-
-
-
 ###########################
 ##
 ## Print
