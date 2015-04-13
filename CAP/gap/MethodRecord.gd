@@ -88,13 +88,13 @@ PostCompose := rec(
   installation_name := "PostCompose",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "PostCompose",
-  no_install := true ),
+  no_install := true ), #there is no Add-method
 
 ZeroObject := rec(
   installation_name := "ZeroObject",
   filter_list := [ IsCapCategory ],
   cache_name := "ZeroObject",
-  no_install := true ),
+  no_install := true ), 
 
 ZeroMorphism := rec(
   installation_name := "ZeroMorphism",
@@ -239,14 +239,14 @@ EqualityOfSubobjects := rec(
   filter_list := [ [ "morphism", IsSubobject ], [ "morphism", IsSubobject ] ],
   cache_name := "EqualityOfSubobjects",
   well_defined_todo := false,
-  no_install := true ),
+  no_install := true ), #there is no Add-method 
 
 EqualityOfFactorobjects := rec(
   installation_name := "EqualityOfFactorobjects",
   filter_list := [ [ "morphism", IsFactorobject ], [ "morphism", IsFactorobject ] ],
   cache_name := "EqualityOfFactorobjects",
   well_defined_todo := false,
-  no_install := true ),
+  no_install := true ), #there is no Add-method
 
 Dominates := rec(
   installation_name := "Dominates",
@@ -432,13 +432,13 @@ KernelObjectFunctorial := rec(
   installation_name := "KernelObjectFunctorial",
   filter_list := [ "morphism", "morphism", "morphism" ],
   cache_name := "KernelObjectFunctorial",
-  no_install := true ),
+  no_install := true ), #there is no Add-method
 
 CokernelFunctorial := rec(
   installation_name := "CokernelFunctorial",
   filter_list := [ "morphism", "morphism", "morphism" ],
   cache_name := "CokernelFunctorial",
-  no_install := true ),
+  no_install := true ), #there is no Add-method
 
 # TerminalObjectFunctorial := rec(
 #   installation_name := "TerminalObjectFunctorial",
@@ -454,31 +454,31 @@ DirectProductFunctorial := rec(
   installation_name := "DirectProductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectProductFunctorialOp",
-  no_install := true ),
+  no_install := true ), #there is no Add-method
 
 CoproductFunctorial := rec(
   installation_name := "CoproductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "CoproductFunctorialOp",
-  no_install := true ),
+  no_install := true ), #there is no Add-method
 
 DirectSumFunctorial := rec(
   installation_name := "DirectSumFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumFunctorialOp",
-  no_install := true ),
+  no_install := true ), #there is no Add-method
 
 FiberProductFunctorial := rec(
   installation_name := "FiberProductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "FiberProductFunctorialOp",
-  no_install := true ),
+  no_install := true ), #there is no Add-method
 
 PushoutFunctorial := rec(
   installation_name := "PushoutFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "PushoutFunctorialOp",
-  no_install := true  ),
+  no_install := true  ), #there is no Add-method
 
 # GeneralizedMorphismFromFactorToSubobject := rec(
 #   installation_name := "GeneralizedMorphismFromFactorToSubobject",
