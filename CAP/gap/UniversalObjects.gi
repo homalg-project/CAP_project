@@ -1576,9 +1576,21 @@ InstallMethod( AddTerminalObject,
                
   function( category, func )
     
+    AddTerminalObject( category, func, 100 );
+    
+end );
+
+##
+InstallMethod( AddTerminalObject,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    
     SetTerminalObjectFunction( category, func );
     
     SetCanComputeTerminalObject( category, true );
+    
+    AddPrimitiveOperation( category!.derivations_weight_list, "TerminalObject", weight );
     
 end );
 
