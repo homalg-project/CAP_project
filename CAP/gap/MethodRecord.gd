@@ -224,13 +224,41 @@ UniversalMorphismFromCoproduct := rec(
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismFromCoproductOp",
   universal_object_position := "Source",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  
+  pre_function := function( diagram, sink, method_selection_object )
+    local test_object;
+    
+    test_object := Range( sink[1] );
+        
+    if false in List( sink{[2 .. Length( sink ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
+      
+      return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+        
+    fi;
+        
+    return [ true ];
+  end ),
 
 UniversalMorphismFromCoproductWithGivenCoproduct := rec(
   installation_name := "UniversalMorphismFromCoproductWithGivenCoproduct",
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismFromCoproductWithGivenCoproduct",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  
+  pre_function := function( diagram, sink, coproduct )
+    local test_object;
+    
+    test_object := Range( sink[1] );
+        
+    if false in List( sink{[2 .. Length( sink ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
+      
+      return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+        
+    fi;
+        
+    return [ true ];
+  end ),
 
 EqualityOfSubobjects := rec(
   installation_name := "EqualityOfSubobjects",

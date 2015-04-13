@@ -123,6 +123,10 @@ end );
 ##
 ####################################
 
+####################################
+## Convenience methods
+####################################
+
 ##
 InstallGlobalFunction( InjectionOfCofactor,
                
@@ -196,6 +200,11 @@ end );
 ##
 ####################################
 
+####################################
+## Convenience methods
+####################################
+
+##
 InstallGlobalFunction( Coproduct,
   
   function( arg )
@@ -210,131 +219,6 @@ InstallGlobalFunction( Coproduct,
     
     return CoproductOp( arg, arg[ 1 ] );
     
-end );
-
-##
-InstallMethod( AddCoproduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetCoproductFunction( category, func );
-    
-    SetCanComputeCoproduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( CoproductOp,
-                                           [ IsList, IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( object_product_list, method_selection_object )
-        local coproduct;
-        
-        coproduct := func( object_product_list );
-        
-        Add( CapCategory( method_selection_object ), coproduct );
-        
-        AddToGenesis( coproduct, "CoproductDiagram", object_product_list );
-        
-        SetFilterObj( coproduct, WasCreatedAsCoproduct );
-        
-        return coproduct;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "CoproductOp", 2 ) );
-    
-end );
-
-## convenience method
-##
-InstallMethod( InjectionOfCofactorOfCoproduct,
-               [ IsList, IsInt ],
-               
-  function( object_product_list, injection_number )
-    
-    return InjectionOfCofactorOfCoproductOp( object_product_list, injection_number, object_product_list[1] );
-    
-end );
-
-##
-InstallMethod( AddInjectionOfCofactorOfCoproduct,
-               [ IsCapCategory, IsFunction ],
-
-  function( category, func )
-    
-    SetInjectionOfCofactorOfCoproductFunction( category, func );
-    
-    SetCanComputeInjectionOfCofactorOfCoproduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
-                                           [ IsList,
-                                             IsInt,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                             
-      function( object_product_list, injection_number, method_selection_object )
-        local injection_of_cofactor, coproduct;
-        
-        if HasCoproductOp( object_product_list, method_selection_object ) then
-          
-          return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CoproductOp( object_product_list, method_selection_object ) );
-          
-        fi;
-        
-        injection_of_cofactor := func( object_product_list, injection_number );
-        
-        Add( CapCategory( method_selection_object ), injection_of_cofactor );
-        
-        ## FIXME: it suffices that the category knows that it has a zero object
-        if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
-          
-          SetIsSplitMonomorphism( injection_of_cofactor, true );
-          
-        fi;
-        
-        coproduct := Range( injection_of_cofactor );
-        
-        AddToGenesis( coproduct, "CoproductDiagram", object_product_list );
-        
-        SetCoproductOp( object_product_list, method_selection_object, coproduct );
-        
-        SetFilterObj( coproduct, WasCreatedAsCoproduct );
-        
-        return injection_of_cofactor;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOfCoproductOp", 3 ) );
-
-end );
-
-##
-InstallMethod( AddInjectionOfCofactorOfCoproductWithGivenCoproduct,
-               [ IsCapCategory, IsFunction ],
-
-  function( category, func )
-    
-    SetInjectionOfCofactorOfCoproductWithGivenCoproductFunction( category, func );
-    
-    SetCanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductWithGivenCoproduct,
-                                           [ IsList,
-                                             IsInt,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                             
-      function( object_product_list, injection_number, coproduct )
-        local injection_of_cofactor;
-        
-        injection_of_cofactor := func( object_product_list, injection_number, coproduct );
-        
-        Add( category, injection_of_cofactor );
-        
-        ## FIXME: it suffices that the category knows that it has a zero object
-        if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
-          
-          SetIsSplitMonomorphism( injection_of_cofactor, true );
-          
-        fi;
-        
-        return injection_of_cofactor;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOfCoproductWithGivenCoproduct", 3 ) );
-
 end );
 
 ##
@@ -357,104 +241,19 @@ InstallGlobalFunction( UniversalMorphismFromCoproduct,
   
 end );
 
-##
-InstallMethod( AddUniversalMorphismFromCoproduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismFromCoproductFunction( category, func );
-    
-    SetCanComputeUniversalMorphismFromCoproduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( diagram, sink, method_selection_object )
-        local test_object, components, coproduct_objects, universal_morphism, coproduct;
-        
-        ##TODO: superfluous
-        components := sink;
-        
-        coproduct_objects := diagram;
-        
-        if HasCoproductOp( coproduct_objects, coproduct_objects[1] ) then
-          
-          return UniversalMorphismFromCoproductWithGivenCoproduct(
-                   diagram,
-                   sink,
-                   CoproductOp( coproduct_objects, coproduct_objects[1] )
-                 );
-          
-        fi;
-        
-        test_object := Range( sink[1] );
-        
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
-            
-            Error( "ranges of morphisms must be equal in given sink-diagram" );
-            
-        fi;
-        
-        universal_morphism := func( diagram, sink );
-        
-        Add( category, universal_morphism );
-        
-        coproduct := Source( universal_morphism );
-        
-        AddToGenesis( coproduct, "CoproductDiagram", coproduct_objects );
-        
-        SetCoproductOp( coproduct_objects, coproduct_objects[1], coproduct );
-        
-        SetFilterObj( coproduct, WasCreatedAsCoproduct );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromCoproductOp", 3 ) );
-    
-end );
+####################################
+## Categorical methods
+####################################
 
 ##
-InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
-               [ IsCapCategory, IsFunction ],
+InstallMethod( InjectionOfCofactorOfCoproduct,
+               [ IsList, IsInt ],
                
-  function( category, func )
+  function( object_product_list, injection_number )
     
-    SetUniversalMorphismFromCoproductWithGivenCoproductFunction( category, func );
-    
-    SetCanComputeUniversalMorphismFromCoproductWithGivenCoproduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( diagram, sink, coproduct )
-        local test_object, components, coproduct_objects, universal_morphism;
-        
-        test_object := Range( sink[1] );
-        
-        components := sink; #components superfluous
-        
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
-            
-            Error( "ranges of morphisms must be equal in given sink-diagram" );
-            
-        fi;
-        
-        universal_morphism := func( diagram, sink, coproduct );
-        
-        Add( category, universal_morphism );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromCoproductWithGivenCoproduct", 3 ) );
+    return InjectionOfCofactorOfCoproductOp( object_product_list, injection_number, object_product_list[1] );
     
 end );
-
-
 
 ####################################
 ## Functorial operations

@@ -55,4 +55,12 @@ end;
 
 - CokernelProj/ CokernelProjWithGivenCokernel
   SetIsEpimorphism( cokernel_proj, true );
+  
+- InjectionOfCofactorOfCoproduct/ InjectionOfCofactorOfCoproductWithGivenCoproduct
+  ## FIXME: it suffices that the category knows that it has a zero object
+  if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
+    
+    SetIsSplitMonomorphism( injection_of_cofactor, true );
+    
+  fi;
 
