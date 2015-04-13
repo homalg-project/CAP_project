@@ -319,33 +319,119 @@ FiberProduct := rec(
   installation_name := "FiberProductOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "FiberProductOp",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  
+  pre_function := function( diagram, method_selection_morphism )
+    local base;
+    
+    base := Range( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects( Range( c ), base ) ) then
+    
+      return [ false, "the given morphisms of the pullback diagram must have equal ranges" ];
+    
+    fi;
+    
+    return [ true ];
+  end ),
 
 ProjectionInFactorOfFiberProduct := rec(
   installation_name := "ProjectionInFactorOfFiberProductOp",
   filter_list := [ IsList, IsInt, "morphism" ],
   cache_name := "ProjectionInFactorOfFiberProductOp",
   universal_object_position := "Source",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  
+  pre_function := function( diagram, projection_number, method_selection_morphism )
+    local base;
+    
+    base := Range( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
+    
+      return [ false, "the given morphisms of the pullback diagram must have equal ranges" ];
+    
+    fi;
+    
+    return [ true ];
+  end ),
 
 ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   installation_name := "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  
+  pre_function := function( diagram, projection_number, pullback )
+    local base;
+    
+    base := Range( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
+    
+      return [ false, "the given morphisms of the pullback diagram must have equal ranges" ];
+    
+    fi;
+    
+    return [ true ];
+  end ),
 
 UniversalMorphismIntoFiberProduct := rec(
   installation_name := "UniversalMorphismIntoFiberProductOp",
   filter_list := [ IsList, IsList, "morphism" ],
   cache_name := "UniversalMorphismIntoFiberProductOp",
   universal_object_position := "Range",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  
+  pre_function := function( diagram, source, method_selection_morphism )
+    local base, test_object;
+    
+    base := Range( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
+      
+      return [ false, "the given morphisms of the pullback diagram must have equal ranges" ];
+      
+    fi;
+    
+    test_object := Source( source[1] );
+    
+    if false in List( source{[2 .. Length( source ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
+        
+        return [ false, "sources of morphisms must be equal in given source diagram" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
   installation_name := "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  
+  pre_function := function( diagram, source, pullback )
+    local base, test_object, components, universal_morphism;
+    
+    base := Range( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects( Range( c ), base ) ) then
+      
+      return [ false, "the given morphisms of the pullback diagram must have equal ranges" ];
+      
+    fi;
+    
+    test_object := Source( source[1] );
+    
+    if false in List( source{[2 .. Length( source ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
+        
+        return [ false, "sources of morphisms must be equal in given source diagram" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 Pushout := rec(
   installation_name := "PushoutOp",

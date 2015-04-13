@@ -1002,6 +1002,11 @@ end;
 ##
 ####################################
 
+####################################
+## Convenience methods
+####################################
+
+##
 InstallGlobalFunction( FiberProduct,
   
   function( arg )
@@ -1018,49 +1023,6 @@ InstallGlobalFunction( FiberProduct,
     
 end );
 
-####################################
-## Add Operations
-####################################
-
-##
-InstallMethod( AddFiberProduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetFiberProductFunction( category, func );
-    
-    SetCanComputeFiberProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( FiberProductOp,
-                                           [ IsList, IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( diagram, method_selection_morphism )
-        local base, pullback;
-        
-        base := Range( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
-        
-          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
-        
-        fi;
-        
-        pullback := func( diagram );
-        
-        SetFilterObj( pullback, WasCreatedAsFiberProduct );
-        
-        AddToGenesis( pullback, "FiberProductDiagram", diagram );
-        
-        Add( CapCategory( method_selection_morphism ), pullback );
-        
-        return pullback;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "FiberProductOp", 2 ) );
-    
-end );
-
-## convenience method:
 ##
 InstallMethod( ProjectionInFactorOfFiberProduct,
                [ IsList, IsInt ],
@@ -1069,92 +1031,6 @@ InstallMethod( ProjectionInFactorOfFiberProduct,
     
     return ProjectionInFactorOfFiberProductOp( diagram, projection_number, diagram[1] );
     
-end );
-
-##
-InstallMethod( AddProjectionInFactorOfFiberProduct,
-               [ IsCapCategory, IsFunction ],
-
-  function( category, func )
-    
-    SetProjectionInFactorOfFiberProductFunction( category, func );
-    
-    SetCanComputeProjectionInFactorOfFiberProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductOp,
-                                           [ IsList,
-                                             IsInt,
-                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                             
-      function( diagram, projection_number, method_selection_morphism )
-        local base, projection_in_factor, pullback;
-        
-        if HasFiberProductOp( diagram, method_selection_morphism ) then
-          
-          return ProjectionInFactorOfFiberProductWithGivenFiberProduct( diagram, projection_number, FiberProductOp( diagram, method_selection_morphism ) );
-          
-        fi;
-        
-        base := Range( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
-        
-          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
-        
-        fi;
-        
-        projection_in_factor := func( diagram, projection_number );
-        
-        Add( CapCategory( method_selection_morphism ), projection_in_factor );
-        
-        pullback := Source( projection_in_factor );
-        
-        AddToGenesis( pullback, "FiberProductDiagram", diagram );
-        
-        SetFiberProductOp( diagram, method_selection_morphism, pullback );
-        
-        SetFilterObj( pullback, WasCreatedAsFiberProduct );
-        
-        return projection_in_factor;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfFiberProductOp", 3 ) );
-
-end );
-
-##
-InstallMethod( AddProjectionInFactorOfFiberProductWithGivenFiberProduct,
-               [ IsCapCategory, IsFunction ],
-
-  function( category, func )
-    
-    SetProjectionInFactorOfFiberProductWithGivenFiberProductFunction( category, func );
-    
-    SetCanComputeProjectionInFactorOfFiberProductWithGivenFiberProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
-                                           [ IsList,
-                                             IsInt,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                             
-      function( diagram, projection_number, pullback )
-        local base, projection_in_factor;
-        
-        base := Range( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
-        
-          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
-        
-        fi;
-        
-        projection_in_factor := func( diagram, projection_number, pullback );
-        
-        Add( category, projection_in_factor );
-        
-        return projection_in_factor;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfFiberProductWithGivenFiberProduct", 3 ) );
-
 end );
 
 ##
@@ -1187,122 +1063,6 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
     
 end );
 
-##
-InstallMethod( AddUniversalMorphismIntoFiberProduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismIntoFiberProductFunction( category, func );
-    
-    SetCanComputeUniversalMorphismIntoFiberProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoFiberProductOp,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( diagram, source, method_selection_morphism )
-        local base, test_object, components, universal_morphism, pullback;
-        
-        if HasFiberProductOp( diagram, diagram[1] ) then
-        
-          return UniversalMorphismIntoFiberProductWithGivenFiberProduct( 
-                   diagram, 
-                   source,
-                   FiberProductOp( diagram, diagram[1] )
-                 );
-          
-        fi;
-        
-        base := Range( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects(  Range( c ), base ) ) then
-          
-          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
-          
-        fi;
-        
-        test_object := Source( source[1] );
-        
-        components := source; #FIXME components superfluous
-        
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
-            
-            Error( "sources of morphisms must be equal in given source-diagram" );
-            
-        fi;
-        
-        ## here the user also needs the diagram
-        universal_morphism := func( diagram, source );
-        
-        Add( category, universal_morphism );
-        
-        pullback := Range( universal_morphism );
-        
-        AddToGenesis( pullback, "FiberProductDiagram", diagram );
-        
-        SetFiberProductOp( diagram, diagram[1], pullback );
-        
-#         Add( CapCategory( diagram[1] ), pullback );
-        
-        SetFilterObj( pullback, WasCreatedAsFiberProduct );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoFiberProductOp", 3 ) );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismIntoFiberProductWithGivenFiberProduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismIntoFiberProductWithGivenFiberProductFunction( category, func );
-    
-    SetCanComputeUniversalMorphismIntoFiberProductWithGivenFiberProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryObject and ObjectFilter( category ) 
-                                           ],
-                                           
-      function( diagram, source, pullback )
-        local base, test_object, components, universal_morphism;
-        
-        base := Range( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects( Range( c ), base ) ) then
-          
-          Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
-          
-        fi;
-        
-        test_object := Source( source[1] );
-        
-        components := source;
-        
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
-            
-            Error( "sources of morphisms must be equal in given source-diagram" );
-            
-        fi;
-        
-        universal_morphism := func( diagram, source, pullback );
-        
-        Add( category, universal_morphism );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoFiberProductWithGivenFiberProduct", 3 ) );
-    
-end );
-
-
-
 ####################################
 ## Functorial operations
 ####################################
@@ -1316,9 +1076,6 @@ InstallMethod( FiberProductFunctorial,
       return FiberProductFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
       
 end );
-
-
-
 
 ####################################
 ##
