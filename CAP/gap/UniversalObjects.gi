@@ -276,7 +276,10 @@ end );
 ##
 ####################################
 
-## convenience method:
+####################################
+## Convenience methods
+####################################
+
 ##
 InstallGlobalFunction( ProjectionInFactor,
                
@@ -351,6 +354,10 @@ end );
 ##
 ####################################
 
+####################################
+## Convenience methods
+####################################
+
 ## GAP-Hack in order to avoid the pre-installed GAP-method DirectProduct
 BindGlobal( "CAP_INTERNAL_DIRECT_PRODUCT_SAVE", DirectProduct );
 
@@ -379,130 +386,6 @@ end;
 MakeReadOnlyGlobal( "DirectProduct" );
 
 ##
-InstallMethod( AddDirectProduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetDirectProductFunction( category, func );
-    
-    SetCanComputeDirectProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( DirectProductOp,
-                                           [ IsList, IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( object_product_list, method_selection_object )
-        local direct_product;
-        
-        direct_product := func( object_product_list );
-        
-        SetFilterObj( direct_product, WasCreatedAsDirectProduct );
-        
-        AddToGenesis( direct_product, "DirectProductDiagram", object_product_list );
-        
-        Add( CapCategory( method_selection_object ), direct_product );
-        
-        return direct_product;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "DirectProductOp", 2 ) );
-    
-end );
-
-##
-InstallMethod( ProjectionInFactorOfDirectProduct,
-               [ IsList, IsInt ],
-               
-  function( object_product_list, projection_number )
-    
-    return ProjectionInFactorOfDirectProductOp( object_product_list, projection_number, object_product_list[1] );
-    
-end );
-
-##
-InstallMethod( AddProjectionInFactorOfDirectProduct,
-               [ IsCapCategory, IsFunction ],
-
-  function( category, func )
-    
-    SetProjectionInFactorOfDirectProductFunction( category, func );
-    
-    SetCanComputeProjectionInFactorOfDirectProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
-                                           [ IsList,
-                                             IsInt,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                             
-      function( object_product_list, projection_number, method_selection_object )
-        local projection_in_factor, direct_product;
-        
-        if HasDirectProductOp( object_product_list, method_selection_object ) then
-          
-          return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, DirectProductOp( object_product_list, method_selection_object ) );
-          
-        fi;
-        
-        projection_in_factor := func( object_product_list, projection_number );
-        
-        Add( CapCategory( method_selection_object ), projection_in_factor );
-        
-        ## FIXME: it suffices that the category knows that it has a zero object
-        if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
-          
-          SetIsSplitEpimorphism( projection_in_factor, true );
-          
-        fi;
-        
-        direct_product := Source( projection_in_factor );
-        
-        AddToGenesis( direct_product, "DirectProductDiagram", object_product_list );
-        
-        SetDirectProductOp( object_product_list, method_selection_object, direct_product );
-        
-        SetFilterObj( direct_product, WasCreatedAsDirectProduct );
-        
-        return projection_in_factor;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfDirectProductOp", 3 ) );
-
-end );
-
-##
-InstallMethod( AddProjectionInFactorOfDirectProductWithGivenDirectProduct,
-               [ IsCapCategory, IsFunction ],
-
-  function( category, func )
-    
-    SetProjectionInFactorOfDirectProductWithGivenDirectProductFunction( category, func );
-    
-    SetCanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-                                           [ IsList,
-                                             IsInt,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                             
-      function( object_product_list, projection_number, direct_product )
-        local projection_in_factor;
-        
-        projection_in_factor := func( object_product_list, projection_number, direct_product );
-        
-        Add( category, projection_in_factor );
-        
-        ## FIXME: it suffices that the category knows that it has a zero object
-        if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
-          
-          SetIsSplitEpimorphism( projection_in_factor, true );
-          
-        fi;
-        
-        return projection_in_factor;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ProjectionInFactorOfDirectProductWithGivenDirectProduct", 3 ) );
-
-end );
-
-##
 InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
 
   function( arg )
@@ -523,106 +406,19 @@ InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
   
 end );
 
-##
-InstallMethod( AddUniversalMorphismIntoDirectProduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismIntoDirectProductFunction( category, func );
-    
-    SetCanComputeUniversalMorphismIntoDirectProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( diagram, source, method_selection_object )
-        local test_object, components, direct_product_objects, universal_morphism, direct_product;
-        
-        #TODO: superfluous
-        components := source;
-        
-        direct_product_objects := diagram;
-        
-        if HasDirectProductOp( direct_product_objects, direct_product_objects[1] ) then
-        
-          return UniversalMorphismIntoDirectProductWithGivenDirectProduct(
-                   diagram,
-                   source,
-                   DirectProductOp( direct_product_objects, direct_product_objects[1] )
-                 );
-          
-        fi;
-        
-        test_object := Source( source[1] );
-        
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
-            
-            Error( "sources of morphisms must be equal in given source-diagram" );
-            
-        fi;
-        
-        universal_morphism := func( diagram, source );
-        
-        Add( category, universal_morphism );
-        
-        direct_product := Range( universal_morphism );
-        
-        AddToGenesis( direct_product, "DirectProductDiagram", direct_product_objects );
-        
-        SetDirectProductOp( direct_product_objects, direct_product_objects[1], direct_product );
-        
-        Add( CapCategory( direct_product_objects[1] ), direct_product );
-        
-        SetFilterObj( direct_product, WasCreatedAsDirectProduct );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductOp", 3 ) );
-    
-end );
+####################################
+## Categorical methods
+####################################
 
 ##
-InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
-               [ IsCapCategory, IsFunction ],
+InstallMethod( ProjectionInFactorOfDirectProduct,
+               [ IsList, IsInt ],
                
-  function( category, func )
+  function( object_product_list, projection_number )
     
-    SetUniversalMorphismIntoDirectProductWithGivenDirectProductFunction( category, func );
-    
-    SetCanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( diagram, source, direct_product )
-        local test_object, components, direct_product_objects, universal_morphism;
-        
-        test_object := Source( source[1] );
-        
-        components := source;#FIXME: components superfluous
-        
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
-            
-            Error( "sources of morphisms must be equal in given source-diagram" );
-            
-        fi;
-        
-        universal_morphism := func( diagram, source, direct_product );
-        
-        Add( category, universal_morphism );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 3 ) );
+    return ProjectionInFactorOfDirectProductOp( object_product_list, projection_number, object_product_list[1] );
     
 end );
-
-
 
 ####################################
 ## Functorial operations

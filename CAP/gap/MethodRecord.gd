@@ -172,13 +172,41 @@ UniversalMorphismIntoDirectProduct := rec(
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismIntoDirectProductOp",
   universal_object_position := "Range",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  
+  pre_function := function( diagram, source, method_selection_object )
+    local test_object;
+    
+    test_object := Source( source[1] );
+        
+    if false in List( source{[2 .. Length( source ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
+      
+      return [ false, "sources of morphisms must be equal in given source diagram" ];
+      
+    fi;
+    
+    return [ true ];
+  end ),
 
 UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   installation_name := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  
+  pre_function := function( diagram, source, direct_product )
+  local test_object;
+    
+    test_object := Source( source[1] );
+        
+    if false in List( source{[2 .. Length( source ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
+      
+      return [ false, "sources of morphisms must be equal in given source diagram" ];
+      
+    fi;
+    
+    return [ true ];
+  end ),
 
 IsEqualForMorphisms := rec(
   installation_name := "IsEqualForMorphisms",

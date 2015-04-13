@@ -64,3 +64,10 @@ end;
     
   fi;
 
+- ProjectionInFactorOfDirectProduct/ ProjectionInFactorOfDirectProductWithGivenDirectProduct
+  ## FIXME: it suffices that the category knows that it has a zero object
+  if HasCanComputeZeroObject( category ) and CanComputeZeroObject( category ) then
+    
+    SetIsSplitEpimorphism( projection_in_factor, true );
+    
+  fi;
