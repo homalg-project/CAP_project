@@ -124,10 +124,9 @@ UniversalMorphismIntoTerminalObject := rec(
 
 UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
   installation_name := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-  filter_list := [ IsCapCategory, "object", "object" ],
+  filter_list := [ "object", "object" ],
   cache_name := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-  universal_type := "Limit",
-  no_install := true ),
+  universal_type := "Limit" ),
 
 InitialObject := rec(
   installation_name := "InitialObject",
@@ -147,8 +146,7 @@ UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
   installation_name := "UniversalMorphismFromInitialObjectWithGivenInitialObject",
   filter_list := [ "object", "object" ],
   cache_name := "UniversalMorphismFromInitialObjectWithGivenInitialObject",
-  universal_type := "Colimit",
-  no_install := true ),
+  universal_type := "Colimit" ),
 
 DirectProduct := rec(
   installation_name := "DirectProductOp",
