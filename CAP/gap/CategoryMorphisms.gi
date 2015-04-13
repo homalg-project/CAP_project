@@ -252,65 +252,16 @@ InstallMethod( AddPropertyToMatchAtIsEqualForMorphisms,
 end );
 
 
+######################################
 ##
-InstallMethod( AddAdditiveInverseForMorphisms,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetAdditiveInverseForMorphismsFunction( category, func );
-    
-    SetCanComputeAdditiveInverseForMorphisms( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( AdditiveInverse,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ) ],
-                   
-      function( mor )
-        local additive_inverse;
-        
-        additive_inverse := func( mor );
-        
-        Add( category, additive_inverse );
-        
-        ## FIXME: Propagation
-        
-        return additive_inverse;
-        
-    end );
-    
-end );
-
+## Convenience method
 ##
-InstallMethod( AddZeroMorphism,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetZeroMorphismFunction( category, func );
-    
-    SetCanComputeZeroMorphism( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( ZeroMorphism,
-                                           [ IsCapCategoryObject and ObjectFilter( category ), IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( source, range )
-        local return_value;
-        
-        return_value := func( source, range );
-        
-        Add( category, return_value );
-        
-        SetIsZero( return_value, true );
-        
-        return return_value;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "ZeroMorphism", 2 ) );
-    
-end );
+######################################
 
+## FIXME: how to classify this method?
 ##
 InstallMethod( Zero,
-               [ IsCapCategoryMorphism and SetCanComputeZeroMorphism ],
+               [ IsCapCategoryMorphism and CanComputeZeroMorphism ],
                
   function( mor )
     
@@ -347,6 +298,8 @@ end );
 ## PreCompose
 ##
 ###########################
+
+## FIXME: These methods break the derivations. They maybe should included to the MethodRecord.
 
 ## Caching this method is not necessary. It does not create any new object.
 ## Note: this actually is an in-build relation which is not done by the deductive system.

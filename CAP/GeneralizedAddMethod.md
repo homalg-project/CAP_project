@@ -79,3 +79,6 @@ end;
 - IdentityMorphism
   SetIsOne( ret_val, true );
   SetInverse( ret_val, ret_val );
+  
+- ZeroMorphism
+  SetIsZero( return_value, true );
