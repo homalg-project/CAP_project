@@ -635,6 +635,9 @@ end: ArgumentNumber := 4 );
 ##
 ####################################
 
+####################################
+## Technical methods
+####################################
 
 ## Immediate methods which link InitialObject and TerminalObject to
 ## ZeroObject in the additive case
@@ -682,7 +685,41 @@ InstallImmediateMethod( IS_IMPLIED_ZERO_OBJECT,
 end );
 
 ####################################
-## Add Operations
+## Convenience methods
+####################################
+
+##
+InstallMethod( ZeroObject,
+               [ IsCapCategoryCell ],
+               
+  function( cell )
+    
+    return ZeroObject( CapCategory( cell ) );
+    
+end );
+
+##
+InstallMethod( MorphismFromZeroObject,
+               [ IsCapCategoryObject ],
+               
+   function( obj )
+   
+     return UniversalMorphismFromInitialObject( obj );
+   
+end );
+
+##
+InstallMethod( MorphismIntoZeroObject,
+               [ IsCapCategoryObject ],
+               
+   function( obj )
+   
+     return UniversalMorphismIntoTerminalObject( obj );
+   
+end );
+
+####################################
+## Add methods
 ####################################
 
 InstallMethod( AddZeroObject,
@@ -705,20 +742,6 @@ InstallMethod( AddZeroObject,
     SetCanComputeZeroObject( category, true );
     
     AddPrimitiveOperation( category!.derivations_weight_list, "ZeroObject", weight );
-    
-end );
-
-####################################
-## Attributes
-####################################
-
-##
-InstallMethod( ZeroObject,
-               [ IsCapCategoryCell ],
-               
-  function( cell )
-    
-    return ZeroObject( CapCategory( cell ) );
     
 end );
 
@@ -753,30 +776,6 @@ InstallMethodWithToDoForIsWellDefined( ZeroObject,
     
     return zero_object;
     
-end );
-
-####################################
-## Renamed Operations
-####################################
-
-##
-InstallMethodWithToDoForIsWellDefined( MorphismFromZeroObject,
-                                       [ IsCapCategoryObject ],
-                                       
-   function( obj )
-   
-     return UniversalMorphismFromInitialObject( obj );
-   
-end );
-
-##
-InstallMethodWithToDoForIsWellDefined( MorphismIntoZeroObject,
-                                       [ IsCapCategoryObject ],
-                                       
-   function( obj )
-   
-     return UniversalMorphismIntoTerminalObject( obj );
-   
 end );
 
 ####################################

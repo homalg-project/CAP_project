@@ -477,11 +477,11 @@ DeclareAttribute( "ZeroObject",
 DeclareAttribute( "ZeroObject",
                   IsCapCategoryCell );
 
-DeclareAttributeWithToDoForIsWellDefined( "MorphismFromZeroObject",
-                                          IsCapCategoryObject );
+DeclareAttribute( "MorphismFromZeroObject",
+                  IsCapCategoryObject );
 
-DeclareAttributeWithToDoForIsWellDefined( "MorphismIntoZeroObject",
-                                          IsCapCategoryObject );
+DeclareAttribute( "MorphismIntoZeroObject",
+                  IsCapCategoryObject );
 
 #! @EndGroup 
 
