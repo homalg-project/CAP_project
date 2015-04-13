@@ -75,3 +75,7 @@ end;
 - ImageEmbedding
   ##Implication (by definition of an image)
   SetIsMonomorphism( image_embedding, true );
+
+- IdentityMorphism
+  SetIsOne( ret_val, true );
+  SetInverse( ret_val, ret_val );

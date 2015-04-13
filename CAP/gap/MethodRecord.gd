@@ -82,7 +82,18 @@ CokernelColiftWithGivenCokernel := rec(
 PreCompose := rec(
   installation_name := "PreCompose",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "PreCompose" ),
+  cache_name := "PreCompose",
+  
+  pre_function := function( mor_left, mor_right )
+    
+    if not IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) then
+        
+        return [ false, "morphisms not composable" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 PostCompose := rec(
   installation_name := "PostCompose",
