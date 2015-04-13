@@ -785,7 +785,21 @@ end );
 ####################################
 
 ####################################
-## Add Operations
+## Convenience methods
+####################################
+
+##
+InstallMethod( TerminalObject,
+               [ IsCapCategoryCell ],
+               
+  function( cell )
+    
+    return TerminalObject( CapCategory( cell ) );
+    
+end );
+
+####################################
+## Add methods
 ####################################
 
 ##
@@ -809,6 +823,31 @@ InstallMethod( AddTerminalObject,
     SetCanComputeTerminalObject( category, true );
     
     AddPrimitiveOperation( category!.derivations_weight_list, "TerminalObject", weight );
+    
+end );
+
+##
+# Because the diagram of the terminal object is empty, the user
+# must not install UniversalMorphismIntoTerminalObject without installing TerminalObject.
+# Thus the following implication is unnecessary:
+# InstallTrueMethod( CanComputeTerminalObject, CanComputeUniversalMorphismIntoTerminalObject );
+
+## Maybe set IsWellDefined by default.
+InstallMethod( TerminalObject,
+               [ IsCapCategory and HasTerminalObjectFunction ],
+               
+  function( category )
+    local terminal_object;
+    
+    terminal_object := TerminalObjectFunction( category )();
+    
+    Add( category, terminal_object );
+    
+    SetIsWellDefined( terminal_object, true );
+    
+    SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
+    
+    return terminal_object;
     
 end );
 
@@ -847,113 +886,6 @@ CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD.post_function :=
     SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
     
 end;
-
-
-##
-InstallMethod( AddUniversalMorphismIntoTerminalObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismIntoTerminalObjectFunction( category, func );
-    
-    SetCanComputeUniversalMorphismIntoTerminalObject( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoTerminalObject,
-                                           [ IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( test_source )
-        local category, universal_morphism, terminal_object;
-        
-        category := CapCategory( test_source );
-        
-        if HasTerminalObject( category ) then
-        
-          return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( category ) );
-          
-        fi;
-        
-        universal_morphism := func( test_source );
-        
-        Add( CapCategory( test_source ), universal_morphism );
-        
-        terminal_object := Range( universal_morphism );
-        
-        SetTerminalObject( category, terminal_object );
-        
-        SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
-        
-        return universal_morphism;
-        
-    end );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFunction( category, func );
-    
-    SetCanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
-                                           [ IsCapCategoryObject and ObjectFilter( category ),
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( test_source, terminal_object )
-        local universal_morphism;
-        
-        universal_morphism := func( test_source, terminal_object );
-        
-        Add( CapCategory( test_source ), universal_morphism );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject", 2 ) );
-    
-end );
-
-####################################
-## Attributes
-####################################
-
-##
-InstallMethod( TerminalObject,
-               [ IsCapCategoryCell ],
-               
-  function( cell )
-    
-    return TerminalObject( CapCategory( cell ) );
-    
-end );
-
-##
-# Because the diagram of the terminal object is empty, the user
-# must not install UniversalMorphismIntoTerminalObject without installing TerminalObject.
-# Thus the following implication is unnecessary:
-# InstallTrueMethod( CanComputeTerminalObject, CanComputeUniversalMorphismIntoTerminalObject );
-
-## Maybe set IsWellDefined by default.
-InstallMethod( TerminalObject,
-               [ IsCapCategory and HasTerminalObjectFunction ],
-               
-  function( category )
-    local terminal_object;
-    
-    terminal_object := TerminalObjectFunction( category )();
-    
-    Add( category, terminal_object );
-    
-    SetIsWellDefined( terminal_object, true );
-    
-    SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
-    
-    return terminal_object;
-    
-end );
 
 ####################################
 ##
