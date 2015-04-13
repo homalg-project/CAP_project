@@ -412,7 +412,7 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
   universal_type := "Limit",
   
   pre_function := function( diagram, source, pullback )
-    local base, test_object, components, universal_morphism;
+    local base, test_object;
     
     base := Range( diagram[1] );
     
@@ -437,33 +437,119 @@ Pushout := rec(
   installation_name := "PushoutOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "PushoutOp",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  
+  pre_function := function( diagram, method_selection_morphism )
+    local cobase;
+    
+    cobase := Source( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
+       
+       return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
+       
+    fi;
+    
+    return [ true ];
+  end ),
 
 InjectionOfCofactorOfPushout := rec(
   installation_name := "InjectionOfCofactorOfPushoutOp",
   filter_list := [ IsList, IsInt, "morphism" ],
   cache_name := "InjectionOfCofactorOfPushoutOp",
   universal_object_position := "Range",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  
+  pre_function := function( diagram, injection_number, method_selection_morphism )
+    local cobase;
+    
+    cobase := Source( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
+       
+       return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
+       
+    fi;
+    
+    return [ true ];
+  end ),
 
 InjectionOfCofactorOfPushoutWithGivenPushout := rec(
   installation_name := "InjectionOfCofactorOfPushoutWithGivenPushout",
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "InjectionOfCofactorOfPushoutWithGivenPushout",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  
+  pre_function := function( diagram, injection_number, pushout )
+    local cobase;
+    
+    cobase := Source( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
+       
+       return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
+       
+    fi;
+    
+    return [ true ];
+  end ),
 
 UniversalMorphismFromPushout := rec(
   installation_name := "UniversalMorphismFromPushoutOp",
   filter_list := [ IsList, IsList, "morphism" ],
   cache_name := "UniversalMorphismFromPushoutOp",
   universal_object_position := "Source",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  
+  pre_function := function( diagram, sink, method_selection_morphism )
+    local cobase, test_object;
+    
+    cobase := Source( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
+       
+       return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
+       
+    fi;
+    
+    test_object := Range( sink[1] );
+    
+    if false in List( sink{[2 .. Length( sink ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
+        
+        return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 UniversalMorphismFromPushoutWithGivenPushout := rec(
   installation_name := "UniversalMorphismFromPushoutWithGivenPushout",
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismFromPushoutWithGivenPushout",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  
+  pre_function := function( diagram, sink, pushout )
+    local cobase, test_object;
+    
+    cobase := Source( diagram[1] );
+    
+    if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
+       
+       return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
+       
+    fi;
+    
+    test_object := Range( sink[1] );
+    
+    if false in List( sink{[2 .. Length( sink ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
+        
+        return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+        
+    fi; 
+    
+    return [ true ];
+  end ),
 
 ImageObject := rec(
   installation_name := "ImageObject",

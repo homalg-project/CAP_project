@@ -1083,6 +1083,11 @@ end );
 ##
 ####################################
 
+####################################
+## Convenience methods
+####################################
+
+##
 InstallGlobalFunction( Pushout,
   
   function( arg )
@@ -1099,49 +1104,6 @@ InstallGlobalFunction( Pushout,
     
 end );
 
-####################################
-## Add Operations
-####################################
-
-##
-InstallMethod( AddPushout,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetPushoutFunction( category, func );
-    
-    SetCanComputePushout( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( PushoutOp,
-                                           [ IsList, IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( diagram, method_selection_morphism )
-        local cobase, pushout;
-        
-        cobase := Source( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
-           
-           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
-           
-        fi;
-        
-        pushout := func( diagram );
-        
-        SetFilterObj( pushout, WasCreatedAsPushout );
-        
-        AddToGenesis( pushout, "PushoutDiagram", diagram );
-        
-        Add( category, pushout );
-        
-        return pushout;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "PushoutOp", 2 ) );
-    
-end );
-
-## convenience method
 ##
 InstallMethod( InjectionOfCofactorOfPushout,
                [ IsList, IsInt ],
@@ -1150,92 +1112,6 @@ InstallMethod( InjectionOfCofactorOfPushout,
     
     return InjectionOfCofactorOfPushoutOp( diagram, injection_number, diagram[1] );
     
-end );
-
-##
-InstallMethod( AddInjectionOfCofactorOfPushout,
-               [ IsCapCategory, IsFunction ],
-
-  function( category, func )
-    
-    SetInjectionOfCofactorOfPushoutFunction( category, func );
-    
-    SetCanComputeInjectionOfCofactorOfPushout( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutOp,
-                                           [ IsList,
-                                             IsInt,
-                                             IsCapCategoryMorphism and MorphismFilter( category ), ],
-                                             
-      function( diagram, injection_number, method_selection_morphism )
-        local cobase, injection_of_cofactor, pushout;
-        
-        if HasPushoutOp( diagram, method_selection_morphism ) then
-          
-          return InjectionOfCofactorOfPushoutWithGivenPushout( diagram, injection_number, PushoutOp( diagram, method_selection_morphism ) );
-          
-        fi;
-        
-        cobase := Source( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
-           
-           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
-           
-        fi;
-        
-        injection_of_cofactor := func( diagram, injection_number );
-        
-        Add( CapCategory( method_selection_morphism ), injection_of_cofactor );
-        
-        pushout := Range( injection_of_cofactor );
-        
-        AddToGenesis( pushout, "PushoutDiagram", diagram );
-
-        SetPushoutOp( diagram, method_selection_morphism, pushout );
-        
-        SetFilterObj( pushout, WasCreatedAsPushout );
-        
-        return injection_of_cofactor;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOfPushoutOp", 3 ) );
-
-end );
-
-##
-InstallMethod( AddInjectionOfCofactorOfPushoutWithGivenPushout,
-               [ IsCapCategory, IsFunction ],
-
-  function( category, func )
-    
-    SetInjectionOfCofactorOfPushoutWithGivenPushoutFunction( category, func );
-    
-    SetCanComputeInjectionOfCofactorOfPushoutWithGivenPushout( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPushout,
-                                           [ IsList,
-                                             IsInt,
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                             
-      function( diagram, injection_number, pushout )
-        local cobase, injection_of_cofactor;
-        
-        cobase := Source( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
-           
-           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
-           
-        fi;
-        
-        injection_of_cofactor := func( diagram, injection_number, pushout );
-        
-        Add( category, injection_of_cofactor );
-        
-        return injection_of_cofactor;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "InjectionOfCofactorOfPushoutWithGivenPushout", 3 ) );
-
 end );
 
 ##
@@ -1268,122 +1144,6 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
     
 end );
 
-##
-InstallMethod( AddUniversalMorphismFromPushout,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismFromPushoutFunction( category, func );
-    
-    SetCanComputeUniversalMorphismFromPushout( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( diagram, sink, method_selection_morphism )
-        local cobase, test_object, components, universal_morphism, pushout;
-        
-        if HasPushoutOp( diagram, diagram[1] ) then
-        
-          return UniversalMorphismFromPushoutWithGivenPushout( 
-                   diagram, 
-                   sink,
-                   PushoutOp( diagram, diagram[1] )
-                 );
-          
-        fi;
-        
-        cobase := Source( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
-           
-           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
-           
-        fi;
-        
-        test_object := Range( sink[1] );
-        
-        components := sink;
-        
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
-            
-            Error( "ranges of morphisms must be equal in given sink-diagram" );
-            
-        fi;
-        
-        ## here the user also needs the diagram
-        universal_morphism := func( diagram, sink );
-        
-        Add( category, universal_morphism );
-        
-        pushout := Source( universal_morphism );
-        
-        AddToGenesis( pushout, "PushoutDiagram",diagram );
-        
-        SetPushoutOp( diagram, diagram[1], pushout );
-        
-        Add( CapCategory( diagram[1] ), pushout );
-        
-        SetFilterObj( pushout, WasCreatedAsPushout );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromPushoutOp", 3 ) );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismFromPushoutWithGivenPushoutFunction( category, func );
-    
-    SetCanComputeUniversalMorphismFromPushoutWithGivenPushout( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutWithGivenPushout,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryObject and ObjectFilter( category ) 
-                                           ],
-                                           
-      function( diagram, sink, pushout )
-        local cobase, test_object, components, universal_morphism;
-        
-        cobase := Source( diagram[1] );
-        
-        if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
-           
-           Error( "the given morphisms of the pushout diagram must have equal sources\n" );
-           
-        fi;
-        
-        test_object := Range( sink[1] );
-        
-        components := sink; #FIXME: components superfluous
-        
-        if false in List( components{[2 .. Length( components ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
-            
-            Error( "ranges of morphisms must be equal in given sink-diagram" );
-            
-        fi;
-        
-        universal_morphism := func( diagram, sink, pushout );
-        
-        Add( category, universal_morphism );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromPushoutWithGivenPushout", 3 ) );
-    
-end );
-
-
-
 ####################################
 ## Functorial operations
 ####################################
@@ -1397,7 +1157,6 @@ InstallMethod( PushoutFunctorial,
       return PushoutFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
       
 end );
-
 
 ####################################
 ##
