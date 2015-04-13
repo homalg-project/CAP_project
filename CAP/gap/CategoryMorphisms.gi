@@ -117,68 +117,6 @@ InstallMethod( UnderlyingObject,
                
   Range );
 
-
-
-##
-InstallMethod( AddDominates,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetCanComputeDominates( category, true );
-    
-    SetDominatesFunction( category, func );
-    
-    InstallMethodWithCache( Dominates,
-                            [ IsCapCategoryMorphism and MorphismFilter( category ) and IsSubobject,
-                              IsCapCategoryMorphism and MorphismFilter( category ) and IsSubobject ],
-                            
-      function( sub1, sub2 )
-        
-        ##or should this be IsIdenticalObj?
-        if not IsEqualForObjects( Range( sub1 ), Range( sub2 ) ) then
-            
-            Error( "subobjects of different objects are not comparable by dominates" );
-            
-        fi;
-        
-        return func( sub1, sub2 );
-        
-    end : Cache := GET_METHOD_CACHE( category, "Dominates", 2 ) );
-      
-end );
-
-##
-InstallMethod( AddCodominates,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetCanComputeCodominates( category, true );
-    
-    SetCodominatesFunction( category, func );
-    
-    InstallMethodWithCache( Codominates,
-                            [ IsCapCategoryMorphism and MorphismFilter( category ) and IsFactorobject,
-                              IsCapCategoryMorphism and MorphismFilter( category ) and IsFactorobject ],
-                            
-      function( factor1, factor2 )
-        
-        ##or should this be IsIdenticalObj?
-        if not IsEqualForObjects( Source( factor1 ), Source( factor2 ) ) then
-            
-            Error( "factorobjects of different objects are not comparable by codominates" );
-            
-        fi;
-        
-        return func( factor1, factor2 );
-        
-    end : Cache := GET_METHOD_CACHE( category, "Codominates", 2 ) );
-      
-end );
-
-
-
 ######################################
 ##
 ## Operations

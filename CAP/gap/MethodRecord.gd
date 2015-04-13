@@ -318,13 +318,35 @@ Dominates := rec(
   installation_name := "Dominates",
   filter_list := [ [ "morphism", IsSubobject ], [ "morphism", IsSubobject ] ],
   cache_name := "Dominates",
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  
+  pre_function := function( sub1, sub2 )
+    
+    if not IsEqualForObjects( Range( sub1 ), Range( sub2 ) ) then
+        
+        return [ false, "subobjects of different objects are not comparable by dominates" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 Codominates := rec(
   installation_name := "Codominates",
   filter_list := [ [ "morphism", IsFactorobject ], [ "morphism", IsFactorobject ] ],
   cache_name := "Codominates",
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  
+  pre_function := function( factor1, factor2 )
+    
+    if not IsEqualForObjects( Source( factor1 ), Source( factor2 ) ) then
+        
+        return [ false, "factorobjects of different objects are not comparable by codominates" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 FiberProduct := rec(
   installation_name := "FiberProductOp",
