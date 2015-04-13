@@ -71,3 +71,7 @@ end;
     SetIsSplitEpimorphism( projection_in_factor, true );
     
   fi;
+  
+- ImageEmbedding
+  ##Implication (by definition of an image)
+  SetIsMonomorphism( image_embedding, true );

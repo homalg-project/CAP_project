@@ -622,13 +622,39 @@ UniversalMorphismFromImage := rec(
   filter_list := [ "morphism", IsList ],
   cache_name := "UniversalMorphismFromImage",
   universal_object_position := "Source",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  
+  pre_function := function( morphism, test_factorization )
+    
+    if ( Source( morphism ) <> Source( test_factorization[1] ) )
+       or ( Range( morphism ) <> Range( test_factorization[2] ) )
+       or ( Range( test_factorization[1] ) <> Range( test_factorization[2] ) ) then
+        
+        return [ false, "the input is not a proper factorization" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 UniversalMorphismFromImageWithGivenImageObject := rec(
   installation_name := "UniversalMorphismFromImageWithGivenImageObject",
   filter_list := [ "morphism", IsList, "object" ],
   cache_name := "UniversalMorphismFromImageWithGivenImageObject",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  
+  pre_function := function( morphism, test_factorization, image )
+    
+    if ( Source( morphism ) <> Source( test_factorization[1] ) )
+       or ( Range( morphism ) <> Range( test_factorization[2] ) )
+       or ( Range( test_factorization[1] ) <> Range( test_factorization[2] ) ) then
+        
+        return [ false, "the input is not a proper factorization" ];
+        
+    fi; 
+    
+    return [ true ];
+  end ),
 
 # DomainAssociatedMorphismCodomainTriple := rec(
 #   installation_name := "DomainAssociatedMorphismCodomainTriple",
