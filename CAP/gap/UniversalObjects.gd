@@ -841,7 +841,7 @@ DeclareOperation( "AddDirectSum",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 
 #! @Section Functorial methods for direct sum

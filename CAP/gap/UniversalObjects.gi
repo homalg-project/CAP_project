@@ -1300,6 +1300,16 @@ InstallMethod( AddDirectSum,
                
   function( category, func )
     
+    AddDirectSum( category, func, 100 );
+    
+end );
+
+##
+InstallMethod( AddDirectSum,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    
     SetDirectSumFunction( category, func );
     
     SetCanComputeDirectSum( category, true );
@@ -1312,7 +1322,7 @@ InstallMethod( AddDirectSum,
         
         direct_sum := func( object_product_list );
         
-        Add( CapCategory( method_selection_object ), direct_sum );
+        Add( category, direct_sum );
         
         AddToGenesis( direct_sum, "DirectProductDiagram", object_product_list );
         
@@ -1329,6 +1339,8 @@ InstallMethod( AddDirectSum,
         return direct_sum;
         
     end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "DirectSumOp", 2 ) );
+    
+    AddPrimitiveOperation( category!.derivations_weight_list, "DirectSum", weight );
     
 end );
 
