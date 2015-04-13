@@ -1466,15 +1466,26 @@ end );
 ## Add Operations
 ####################################
 
-##
 InstallMethod( AddZeroObject,
                [ IsCapCategory, IsFunction ],
                
   function( category, func )
     
+    AddZeroObject( category, func, 100 );
+    
+end );
+
+##
+InstallMethod( AddZeroObject,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    
     SetZeroObjectFunction( category, func );
     
     SetCanComputeZeroObject( category, true );
+    
+    AddPrimitiveOperation( category!.derivations_weight_list, "ZeroObject", weight );
     
 end );
 
