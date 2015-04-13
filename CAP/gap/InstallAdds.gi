@@ -81,6 +81,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
     end );
     
     InstallMethod( ValueGlobal( add_name ),
+                   [ IsCapCategory, IsFunction, IsInt ],
+                   
+      function( category, func, weight )
+        
+        ValueGlobal( add_name )( category, [ [ func, [ ] ] ], weight );
+        
+    end );
+    
+    InstallMethod( ValueGlobal( add_name ),
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )

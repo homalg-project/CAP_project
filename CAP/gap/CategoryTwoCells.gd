@@ -78,6 +78,9 @@ DeclareOperation( "AddHorizontalPreCompose",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddHorizontalPreCompose",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddHorizontalPreCompose",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -91,6 +94,9 @@ DeclareOperation( "AddVerticalPreCompose",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddVerticalPreCompose",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddVerticalPreCompose",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -102,6 +108,9 @@ DeclareAttributeWithToDoForIsWellDefined( "IdentityTwoCell",
 
 DeclareOperation( "AddIdentityTwoCell",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIdentityTwoCell",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddIdentityTwoCell",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -118,6 +127,9 @@ DeclareAttribute( "IdentityTwoCellFunction",
 
 DeclareOperation( "AddIsWellDefinedForTwoCells",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsWellDefinedForTwoCells",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddIsWellDefinedForTwoCells",
                   [ IsCapCategory, IsList, IsInt ] );

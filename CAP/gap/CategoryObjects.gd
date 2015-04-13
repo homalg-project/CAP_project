@@ -70,6 +70,9 @@ DeclareOperation( "AddIsEqualForObjects",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddIsEqualForObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualForObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -112,6 +115,9 @@ DeclareFamilyProperty( "IsZero",
 
 DeclareOperation( "AddIsZeroForObjects",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsZeroForObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddIsZeroForObjects",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -162,6 +168,9 @@ DeclareOperation( "ZeroMorphism",
 
 DeclareOperation( "AddIsWellDefinedForObjects",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsWellDefinedForObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddIsWellDefinedForObjects",
                   [ IsCapCategory, IsList, IsInt ] );

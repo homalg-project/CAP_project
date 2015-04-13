@@ -77,6 +77,9 @@ DeclareOperation( "AddIsMonomorphism",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddIsMonomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsMonomorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -93,6 +96,9 @@ DeclareOperation( "AddIsEpimorphism",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddIsEpimorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEpimorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -107,6 +113,9 @@ DeclareFamilyProperty( "IsIsomorphism",
 
 DeclareOperation( "AddIsIsomorphism",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsIsomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddIsIsomorphism",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -153,6 +162,9 @@ DeclareOperation( "AddIsEqualForMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddIsEqualForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -169,6 +181,9 @@ DeclareOperation( "AddIsZeroForMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddIsZeroForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsZeroForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -177,6 +192,9 @@ DeclareAttribute( "IsZeroForMorphismsFunction",
 
 DeclareOperation( "AddAdditionForMorphisms",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddAdditionForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddAdditionForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -189,6 +207,9 @@ DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddAdditiveInverseForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -197,6 +218,9 @@ DeclareAttribute( "AdditiveInverseForMorphismsFunction",
 
 DeclareOperation( "AddZeroMorphism",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddZeroMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -227,6 +251,9 @@ DeclareOperation( "AddDominates",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddDominates",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDominates",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -238,6 +265,9 @@ DeclareOperation( "Codominates",
 
 DeclareOperation( "AddCodominates",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCodominates",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddCodominates",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -266,6 +296,9 @@ DeclareAttributeWithToDoForIsWellDefined( "EpiMonoFactorization",
 
 DeclareOperation( "AddIsWellDefinedForMorphisms",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsWellDefinedForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddIsWellDefinedForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );

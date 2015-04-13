@@ -185,6 +185,9 @@ DeclareOperation( "AddKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddKernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddKernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -194,6 +197,9 @@ DeclareOperation( "AddKernelObject",
 #! @Arguments C, f
 DeclareOperation( "AddKernelEmb",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddKernelEmb",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddKernelEmb",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -207,6 +213,9 @@ DeclareOperation( "AddKernelEmbWithGivenKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddKernelEmbWithGivenKernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddKernelEmbWithGivenKernelObject",
                   [ IsCapCategory, IsList, IsInt] );
 
 
@@ -218,6 +227,9 @@ DeclareOperation( "AddKernelLift",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddKernelLift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddKernelLift",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -227,6 +239,9 @@ DeclareOperation( "AddKernelLift",
 #! @Arguments C, f
 DeclareOperation( "AddKernelLiftWithGivenKernelObject",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddKernelLiftWithGivenKernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddKernelLiftWithGivenKernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -369,6 +384,9 @@ DeclareOperation( "AddCokernel",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddCokernel",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCokernel",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -378,6 +396,9 @@ DeclareOperation( "AddCokernel",
 #! @Arguments C, f
 DeclareOperation( "AddCokernelProj",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCokernelProj",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddCokernelProj",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -391,6 +412,9 @@ DeclareOperation( "AddCokernelProjWithGivenCokernel",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddCokernelProjWithGivenCokernel",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCokernelProjWithGivenCokernel",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -400,6 +424,9 @@ DeclareOperation( "AddCokernelProjWithGivenCokernel",
 #! @Arguments C, f
 DeclareOperation( "AddCokernelColift",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCokernelColift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddCokernelColift",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -412,6 +439,9 @@ DeclareOperation( "AddCokernelColift",
 #! @Arguments C, f
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -618,6 +648,9 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -627,6 +660,9 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -749,6 +785,9 @@ DeclareOperation( "AddUniversalMorphismFromInitialObject",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddUniversalMorphismFromInitialObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromInitialObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -758,6 +797,9 @@ DeclareOperation( "AddUniversalMorphismFromInitialObject",
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -839,6 +881,9 @@ DeclareAttribute( "DirectSumFunction",
 #! @Arguments C, f
 DeclareOperation( "AddDirectSum",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddDirectSum",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -956,6 +1001,9 @@ DeclareOperation( "AddCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -968,6 +1016,9 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -978,6 +1029,9 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -993,6 +1047,9 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddUniversalMorphismFromCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1003,6 +1060,9 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -1166,6 +1226,9 @@ DeclareOperation( "AddDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1176,6 +1239,9 @@ DeclareOperation( "AddDirectProduct",
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorOfDirectProduct",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddProjectionInFactorOfDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -1190,6 +1256,9 @@ DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1202,6 +1271,9 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1212,6 +1284,9 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -1380,6 +1455,9 @@ DeclareOperation( "AddFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1392,6 +1470,9 @@ DeclareOperation( "AddProjectionInFactorOfFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddProjectionInFactorOfFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1402,6 +1483,9 @@ DeclareOperation( "AddProjectionInFactorOfFiberProduct",
 #! @Arguments C, f
 DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -1417,6 +1501,9 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1428,6 +1515,9 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -1548,6 +1638,9 @@ DeclareOperation( "AddPushout",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1558,6 +1651,9 @@ DeclareOperation( "AddPushout",
 #! @Arguments C, f
 DeclareOperation( "AddInjectionOfCofactorOfPushout",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddInjectionOfCofactorOfPushout",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -1572,6 +1668,9 @@ DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1584,6 +1683,9 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddUniversalMorphismFromPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1594,6 +1696,9 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -1727,6 +1832,9 @@ DeclareOperation( "AddImageObject",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddImageObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1736,6 +1844,9 @@ DeclareOperation( "AddImageObject",
 #! @Arguments C, f
 DeclareOperation( "AddImageEmbedding",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddImageEmbedding",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddImageEmbedding",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -1749,6 +1860,9 @@ DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1760,6 +1874,9 @@ DeclareOperation( "AddCoastrictionToImage",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddCoastrictionToImage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoastrictionToImage",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1769,6 +1886,9 @@ DeclareOperation( "AddCoastrictionToImage",
 #! @Arguments C, f
 DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
@@ -1783,6 +1903,9 @@ DeclareOperation( "AddUniversalMorphismFromImage",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddUniversalMorphismFromImage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromImage",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1793,6 +1916,9 @@ DeclareOperation( "AddUniversalMorphismFromImage",
 #! @Arguments C, f
 DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
