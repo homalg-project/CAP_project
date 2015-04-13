@@ -49,4 +49,9 @@ InstallMethod( Add*F*,
 end;
         
         
+## Differences between general Add-Method and the former implementation:
+- KernelEmb/ KernelEmbWithGivenKernel: 
+  SetIsMonomorphism( kernel_emb, true );
+
+- 
 

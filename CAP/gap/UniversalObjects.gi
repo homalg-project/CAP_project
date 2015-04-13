@@ -36,40 +36,9 @@ end );
 ####################################
 
 ####################################
-## Add Operations
+## Convenience methods
 ####################################
 
-##
-InstallMethod( AddKernelObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetKernelFunction( category, func );
-    
-    SetCanComputeKernelObject( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( KernelObject,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( mor )
-        local kernel;
-        
-        kernel := func( mor );
-        
-        Add( CapCategory( mor ), kernel );
-        
-        SetFilterObj( kernel, WasCreatedAsKernelObject );
-        
-        AddToGenesis( kernel, "KernelObjectDiagram", mor );
-        
-        return kernel;
-        
-    end );
-    
-end );
-
-## convenience method
 ##
 InstallMethod( KernelLift,
                [ IsCapCategoryObject, IsCapCategoryMorphism ],
@@ -81,158 +50,6 @@ InstallMethod( KernelLift,
 end );
 
 ##
-InstallMethod( AddKernelLift,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetKernelLiftFunction( category, func );
-    
-    SetCanComputeKernelLift( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( KernelLift,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( mor, test_morphism )
-        local kernel_lift, kernel;
-        
-        if HasKernelObject( mor ) then
-        
-          return KernelLiftWithGivenKernelObject( mor, test_morphism, KernelObject( mor ) );
-        
-        fi;
-        
-        kernel_lift := func( mor, test_morphism );
-        
-        Add( CapCategory( mor ), kernel_lift );
-
-        kernel := Range( kernel_lift );
-        
-        SetKernelObject( mor, kernel );
-        
-        SetFilterObj( kernel, WasCreatedAsKernelObject );
-        
-        AddToGenesis( kernel, "KernelObjectDiagram", mor );
-        
-        return kernel_lift;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelLift", 2 ) );
-    
-end );
-
-##
-InstallMethod( AddKernelLiftWithGivenKernelObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetKernelLiftWithGivenKernelObjectFunction( category, func );
-    
-    SetCanComputeKernelLiftWithGivenKernelObject( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( KernelLiftWithGivenKernelObject,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( mor, test_morphism, kernel )
-        local kernel_lift;
-        
-        kernel_lift := func( mor, test_morphism, kernel );
-        
-        Add( CapCategory( mor ), kernel_lift );
-        
-        return kernel_lift;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelLiftWithGivenKernelObject", 3 ) );
-    
-end );
-
-##
-InstallMethod( AddKernelEmb,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetKernelEmbFunction( category, func );
-    
-    SetCanComputeKernelEmb( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( KernelEmb,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                           
-      function( mor )
-        local kernel_emb, kernel;
-        
-        if HasKernelObject( mor ) then
-          
-          return KernelEmbWithGivenKernelObject( mor, KernelObject( mor ) );
-          
-        fi;
-        
-        kernel_emb := func( mor );
-        
-        Add( CapCategory( mor ), kernel_emb );
-        
-        SetIsMonomorphism( kernel_emb, true );
-        
-        kernel := Source( kernel_emb );
-        
-        SetKernelObject( mor, kernel );
-        
-        SetFilterObj( kernel, WasCreatedAsKernelObject );
-        
-        AddToGenesis( kernel, "KernelObjectDiagram", mor );
-        
-        SetKernelEmb( kernel, kernel_emb );
-        
-        #Is this necessary (and in all other analogous situations?): SetKernelEmbWithGivenKernelObject( mor, kernel, kernel_emb );
-        
-        return kernel_emb;
-        
-    end );
-    
-end );
-
-##
-InstallMethod( AddKernelEmbWithGivenKernelObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetKernelEmbWithGivenKernelObjectFunction( category, func );
-    
-    SetCanComputeKernelEmbWithGivenKernelObject( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( KernelEmbWithGivenKernelObject,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( mor, kernel )
-        local kernel_emb;
-        
-        kernel_emb := func( mor, kernel );
-        
-        Add( CapCategory( mor ), kernel_emb );
-        
-        SetIsMonomorphism( kernel_emb, true );
-        
-        SetKernelEmb( kernel, kernel_emb );
-        
-        return kernel_emb;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "KernelEmbWithGivenKernelObject", 2 ) );
-
-end );
-
-
-####################################
-## Attributes
-####################################
-
-## convenience
-##
 InstallMethod( KernelEmb,
                [ IsCapCategoryObject and WasCreatedAsKernelObject ],
                
@@ -241,12 +58,6 @@ InstallMethod( KernelEmb,
     return KernelEmb( Genesis( kernel )!.KernelObjectDiagram );
     
 end );
-
-####################################
-## Implied Operations
-####################################
-
-
 
 ####################################
 ## Functorial operations
