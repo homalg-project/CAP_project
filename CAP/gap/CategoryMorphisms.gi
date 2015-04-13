@@ -251,54 +251,6 @@ InstallMethod( AddPropertyToMatchAtIsEqualForMorphisms,
     
 end );
 
-##
-InstallMethod( AddIsZeroForMorphisms,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetIsZeroForMorphismsFunction( category, func );
-    
-    SetCanComputeIsZeroForMorphisms( category, true );
-    
-    InstallMethod( IsZero,
-                   [ IsCapCategoryMorphism and MorphismFilter( category ) ],
-                   
-        func );
-    
-end );
-
-##
-InstallMethod( AddAdditionForMorphisms,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetAdditionForMorphismsFunction( category, func );
-    
-    SetCanComputeAdditionForMorphisms( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( \+,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ), IsCapCategoryMorphism and MorphismFilter( category ) ],
-                   
-      function( mor1, mor2 )
-        local return_value;
-        
-        if not IsEqualForObjects( Source( mor1 ), Source( mor2 ) ) or not IsEqualForObjects( Range( mor1 ), Range( mor2 ) ) then
-            
-            Error( "morphisms are not addable" );
-            
-        fi;
-        
-        return_value := func( mor1, mor2 );
-        
-        Add( category, return_value );
-        
-        return return_value;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "AdditionForMorphisms", 2 ) );
-    
-end );
 
 ##
 InstallMethod( AddAdditiveInverseForMorphisms,

@@ -235,7 +235,18 @@ IsZeroForMorphisms := rec(
 AdditionForMorphisms := rec(
   installation_name := "\+",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "AdditionForMorphisms" ),
+  cache_name := "AdditionForMorphisms",
+  
+  pre_function := function( mor1, mor2 )
+    
+    if not IsEqualForObjects( Source( mor1 ), Source( mor2 ) ) or not IsEqualForObjects( Range( mor1 ), Range( mor2 ) ) then
+        
+        return [ false, "morphisms are not addable" ];
+        
+    fi; 
+    
+    return [ true ];
+  end ),
 
 AdditiveInverseForMorphisms := rec(
   installation_name := "AdditiveInverse",
