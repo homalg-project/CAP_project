@@ -1607,6 +1607,43 @@ InstallMethod( AddTerminalObject,
 end );
 
 ##
+BindGlobal( "CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD", 
+            ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.UniversalMorphismIntoTerminalObject ) );
+
+CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD.function_name := "UniversalMorphismIntoTerminalObject";
+
+CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD.redirect_function :=
+  function( test_source )
+    local category;
+    
+    category := CapCategory( test_source );
+        
+    if HasTerminalObject( category ) then
+    
+      return [ true, UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( category ) ) ];
+      
+    fi;
+    
+    return [ false ];
+    
+end;
+
+CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD.post_function :=
+  function( test_source, universal_morphism )
+    local category, terminal_object;
+    
+    category := CapCategory( test_source );
+    
+    terminal_object := Range( universal_morphism );
+    
+    SetTerminalObject( category, terminal_object );
+    
+    SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
+    
+end;
+
+
+##
 InstallMethod( AddUniversalMorphismIntoTerminalObject,
                [ IsCapCategory, IsFunction ],
                
