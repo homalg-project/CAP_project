@@ -894,7 +894,21 @@ end;
 ####################################
 
 ####################################
-## Add Operations
+## Convenience methods
+####################################
+
+##
+InstallMethod( InitialObject,
+               [ IsCapCategoryCell ],
+               
+  function( cell )
+    
+    return InitialObject( CapCategory( cell ) );
+    
+end );
+
+####################################
+## Add methods
 ####################################
 
 ##
@@ -918,6 +932,31 @@ InstallMethod( AddInitialObject,
     SetCanComputeInitialObject( category, true );
     
     AddPrimitiveOperation( category!.derivations_weight_list, "InitialObject", weight );
+    
+end );
+
+##
+# Because the diagram of the initial object is empty, the user
+# must not install UniversalMorphismFromInitialObject without installing InitialObject.
+# Thus the following implication is unnecessary:
+# InstallTrueMethod( CanComputeInitialObject, CanComputeUniversalMorphismFromInitialObject );
+
+## Maybe set IsWellDefined by default?
+InstallMethod( InitialObject,
+               [ IsCapCategory and HasInitialObjectFunction ],
+               
+  function( category )
+    local initial_object;
+    
+    initial_object := InitialObjectFunction( category )();
+    
+    Add( category, initial_object );
+    
+    SetIsWellDefined( initial_object, true );
+    
+    SetFilterObj( initial_object, WasCreatedAsInitialObject );
+    
+    return initial_object;
     
 end );
 
@@ -956,116 +995,6 @@ CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD.post_function :=
     SetFilterObj( initial_object, WasCreatedAsInitialObject );
     
 end;
-
-##
-InstallMethod( AddUniversalMorphismFromInitialObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismFromInitialObjectFunction( category, func );
-    
-#     SetFilterObj( category, CanComputeUniversalMorphismFromInitialObject );
-    
-    SetCanComputeUniversalMorphismFromInitialObject( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromInitialObject,
-                                           [ IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( test_sink )
-        local category, universal_morphism, initial_object;
-        
-        category := CapCategory( test_sink );
-        
-        if HasInitialObject( category ) then
-        
-          return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( category ) );
-          
-        fi;
-        
-        universal_morphism := func( test_sink );
-        
-        Add( CapCategory( test_sink ), universal_morphism );
-        
-        initial_object := Source( universal_morphism );
-        
-        SetInitialObject( category, initial_object );
-        
-        SetFilterObj( initial_object, WasCreatedAsInitialObject );
-        
-        return universal_morphism;
-        
-    end );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismFromInitialObjectWithGivenInitialObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    SetUniversalMorphismFromInitialObjectWithGivenInitialObjectFunction( category, func );
-    
-#     SetFilterObj( category, CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject );
-    
-    SetCanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject( category, true );
-    
-    InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromInitialObjectWithGivenInitialObject,
-                                           [ IsCapCategoryObject and ObjectFilter( category ),
-                                             IsCapCategoryObject and ObjectFilter( category ) ],
-                                           
-      function( test_sink, initial_object )
-        local universal_morphism;
-        
-        universal_morphism := func( test_sink, initial_object );
-        
-        Add( CapCategory( test_sink ), universal_morphism );
-        
-        return universal_morphism;
-        
-    end : InstallMethod := InstallMethodWithCache, Cache := GET_METHOD_CACHE( category, "UniversalMorphismFromDirectProductWithGivenInitialObject", 2 ) );
-    
-end );
-
-####################################
-## Attributes
-####################################
-
-##
-InstallMethod( InitialObject,
-               [ IsCapCategoryCell ],
-               
-  function( cell )
-    
-    return InitialObject( CapCategory( cell ) );
-    
-end );
-
-##
-# Because the diagram of the initial object is empty, the user
-# must not install UniversalMorphismFromInitialObject without installing InitialObject.
-# Thus the following implication is unnecessary:
-# InstallTrueMethod( CanComputeInitialObject, CanComputeUniversalMorphismFromInitialObject );
-
-## Maybe set IsWellDefined by default?
-InstallMethod( InitialObject,
-               [ IsCapCategory and HasInitialObjectFunction ],
-               
-  function( category )
-    local initial_object;
-    
-    initial_object := InitialObjectFunction( category )();
-    
-    Add( category, initial_object );
-    
-    SetIsWellDefined( initial_object, true );
-    
-    SetFilterObj( initial_object, WasCreatedAsInitialObject );
-    
-    return initial_object;
-    
-end );
 
 ####################################
 ##
