@@ -794,12 +794,34 @@ PushoutFunctorial := rec(
 HorizontalPreCompose := rec(
   installation_name := "HorizontalPreCompose",
   filter_list := [ "twocell", "twocell" ],
-  cache_name := "HorizontalPreCompose" ),
+  cache_name := "HorizontalPreCompose",
+  
+  pre_function := function( twocell_1, twocell_2 )
+    
+    if not IsIdenticalObj( Range( Source( twocell_1 ) ), Source( Source( twocell_2 ) ) ) then
+        
+        return [ false, "2-cells are not horizontally composable" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 VerticalPreCompose := rec(
   installation_name := "VerticalPreCompose",
   filter_list := [ "twocell", "twocell" ],
-  cache_name := "VerticalPreCompose" ),
+  cache_name := "VerticalPreCompose",
+  
+  pre_function := function( twocell_1, twocell_2 )
+    
+    if not IsIdenticalObj( Range( twocell_1 ), Source( twocell_2 ) ) then
+        
+        return [ false, "2-cells are not vertically composable" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 IdentityTwoCell := rec(
   installation_name := "IdentityTwoCell",
