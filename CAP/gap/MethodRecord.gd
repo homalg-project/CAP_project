@@ -616,7 +616,8 @@ ImageEmbeddingWithGivenImageObject := rec(
 IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  no_install := true ),
 
 IsWellDefinedForObjects := rec(
   installation_name := "IsWellDefined",
