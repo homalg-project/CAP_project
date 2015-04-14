@@ -110,7 +110,7 @@ end : CategoryFilter := IsAbelianCategory,
 
 ##
 AddDerivationToCAP( IsEqualAsSubobjects,
-                    [ [ Dominates, 1 ] ],
+                    [ [ Dominates, 2 ] ],
                
   function( sub1, sub2 );
     
@@ -118,37 +118,20 @@ AddDerivationToCAP( IsEqualAsSubobjects,
     
 end : Description := "IsEqualAsSubobjects(sub1, sub2) if sub1 dominates sub2 and vice versa" );
 
-InstallTrueMethodAndStoreImplication( CanComputeIsEqualAsFactorobjects, CanComputeCodominates );
-
 ##
-InstallMethodWithCacheFromObject( IsEqualAsFactorobjects,
-                                  [ IsCapCategoryMorphism and IsFactorobject
-                                    and CanComputeCodominates, 
-                                    IsCapCategoryMorphism and IsFactorobject ],
+AddDerivationToCAP( IsEqualAsFactorobjects,
+                    [ [ Codominates, 2 ] ],
                                   
   function( factor1, factor2 )
     
-    ##or should this be IsIdenticalObj?
-    if not IsEqualForObjects( Source( factor1 ), Source( factor2 ) ) then
-        
-        return false;
-        
-    fi;
-    
     return Codominates( factor1, factor2 ) and Codominates( factor1, factor2 );
     
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeDominates, CanComputeCokernelProj and CanComputeCodominates and IsPreAbelianCategory );
+end : Description := "IsEqualAsFactorobjects(factor1, factor2) if factor1 dominates factor2 and vice versa" );
 
 ##
-InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsCapCategoryMorphism and IsSubobject
-                                    and CanComputeCokernelProj
-                                    and CanComputeCodominates
-                                    and IsPreAbelianCategory,
-                                    IsCapCategoryMorphism and IsSubobject ],
-                                    -9999, # FIXME (has to be the lowest Dominates fallback method)
+AddDerivationToCAP( Dominates,
+                    [ [ CokernelProj, 2 ],
+                      [ Codominates, 1 ] ],
                                   
   function( sub1, sub2 )
     local cokernel_projection_1, cokernel_projection_2;
@@ -159,12 +142,9 @@ InstallMethodWithCacheFromObject( Dominates,
     
     return Codominates( cokernel_projection_1, cokernel_projection_2 );
     
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+end : Description := "Dominates using Codominates and duality by cokernel" );
 
 ##
-
 AddDerivationToCAP( Dominates,
                     [ [ CokernelProj, 1 ],
                       [ PreCompose, 1 ],
@@ -181,17 +161,10 @@ AddDerivationToCAP( Dominates,
     
 end : Description := "Dominates(sub1, sub2) by deciding if sub1 composed with CokernelProj(sub2) is zero" );
 
-
-InstallTrueMethodAndStoreImplication( CanComputeCodominates, CanComputeKernelEmb and CanComputeDominates and IsPreAbelianCategory );
-
 ##
-InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsCapCategoryMorphism and IsFactorobject
-                                    and CanComputeKernelEmb
-                                    and CanComputeDominates
-                                    and IsPreAbelianCategory,
-                                    IsCapCategoryMorphism and IsFactorobject ],
-                                    -9999, # FIXME (has to be the lowest Codominates fallback method)
+AddDerivationToCAP( Codominates,
+                    [ [ KernelEmb, 2 ],
+                      [ Dominates, 1 ] ],
                                   
   function( factor1, factor2 )
     local kernel_embedding_1, kernel_embedding_2;
@@ -202,18 +175,13 @@ InstallMethodWithCacheFromObject( Codominates,
     
     return Dominates( kernel_embedding_2, kernel_embedding_1 );
     
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+end : Description := "Codominates using Dominates and duality by kernel" );
 
 ##
-InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsCapCategoryMorphism and IsFactorobject
-                                    and CanComputeKernelEmb
-                                    and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose,
-                                    IsCapCategoryMorphism and IsFactorobject ],
-                                    -9000, # FIXME
+AddDerivationToCAP( Codominates,
+                    [ [ KernelEmb, 1 ],
+                      [ PreCompose, 1 ],
+                      [ IsZeroForMorphisms, 1 ] ],
                                   
   function( factor1, factor2 )
     local kernel_embedding, composition;
@@ -224,7 +192,7 @@ InstallMethodWithCacheFromObject( Codominates,
     
     return IsZero( composition );
     
-end );
+end : Description := "Codominates(factor1, factor2) by deciding if KernelEmb(factor2) composed with factor1 is zero" );
 
 ## PostCompose
 ##
