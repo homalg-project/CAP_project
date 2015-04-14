@@ -6,11 +6,10 @@
 ###########################
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               ZeroMorphism,
-               [ [ PreCompose, 1 ],
-                 [ UniversalMorphismIntoTerminalObject, 1 ],
-                 [ UniversalMorphismFromInitialObject, 1 ] ],
+AddDerivationToCAP( ZeroMorphism,
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoTerminalObject, 1 ],
+                      [ UniversalMorphismFromInitialObject, 1 ] ],
                  
   function( obj_source, obj_range )
     
@@ -20,11 +19,10 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
         Description := "Zero morphism by composition of morphism into and from zero object" );
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsZeroForObjects,
-               [ [ IsEqualForMorphisms, 1 ],
-                 [ IdentityMorphism, 1 ],
-                 [ ZeroMorphism, 1 ] ],
+AddDerivationToCAP( IsZeroForObjects,
+                    [ [ IsEqualForMorphisms, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ ZeroMorphism, 1 ] ],
                  
   function( object )
   
@@ -39,10 +37,9 @@ end : Description := "IsZeroForObjects by comparing identity morphism with zero 
 ###########################
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsMonomorphism,
-               [ [ IsZeroForObjects, 1 ],
-                 [ KernelObject, 1 ] ],
+AddDerivationToCAP( IsMonomorphism,
+                    [ [ IsZeroForObjects, 1 ],
+                      [ KernelObject, 1 ] ],
   function( morphism )
     
     return IsZero( KernelObject( morphism ) );
@@ -51,11 +48,10 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "IsMonomorphism by deciding if the kernel is a zero object" );
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsMonomorphism,
-               [ [ IsIsomorphism, 1 ],
-                 [ IdentityMorphism, 1 ],
-                 [ UniversalMorphismIntoFiberProduct, 1 ] ],
+AddDerivationToCAP( IsMonomorphism,
+                    [ [ IsIsomorphism, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ UniversalMorphismIntoFiberProduct, 1 ] ],
                  
   function( morphism )
     local pullback_diagram, pullback_projection_1, pullback_projection_2, identity, diagonal_morphism;
@@ -71,10 +67,9 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
 end : Description := "IsMonomorphism by deciding if the diagonal morphism is an isomorphism" );
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsEpimorphism,
-               [ [ IsZeroForObjects, 1 ],
-                 [ Cokernel, 1 ] ],
+AddDerivationToCAP( IsEpimorphism,
+                    [ [ IsZeroForObjects, 1 ],
+                      [ Cokernel, 1 ] ],
   function( morphism )
     
     return IsZero( Cokernel( morphism ) );
@@ -83,11 +78,10 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsEpimorphism,
-               [ [ IdentityMorphism, 1 ],
-                 [ UniversalMorphismFromPushout, 1 ],
-                 [ IsIsomorphism, 1 ] ],
+AddDerivationToCAP( IsEpimorphism,
+                    [ [ IdentityMorphism, 1 ],
+                      [ UniversalMorphismFromPushout, 1 ],
+                      [ IsIsomorphism, 1 ] ],
                  
   function( morphism )
     local pushout_diagram, identity, codiagonal_morphism;
@@ -103,10 +97,9 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
 end : Description := "IsEpimorphism by deciding if the codiagonal morphism is an isomorphism" );
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsIsomorphism,
-               [ [ IsMonomorphism, 1 ],
-                 [ IsEpimorphism, 1 ] ],
+AddDerivationToCAP( IsIsomorphism,
+                    [ [ IsMonomorphism, 1 ],
+                      [ IsEpimorphism, 1 ] ],
                  
   function( morphism )
     
@@ -115,31 +108,20 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
 end : CategoryFilter := IsAbelianCategory,
       Description := "IsIsomorphism by deciding if it is a mono and an epi" );
 
-InstallTrueMethodAndStoreImplication( CanComputeEqualityOfSubobjects, CanComputeDominates );
-
 ##
-InstallMethodWithCacheFromObject( IsEqualAsSubobject,
-                                  [ IsCapCategoryMorphism and IsSubobject
-                                    and SetCanComputeDominates,
-                                    IsCapCategoryMorphism and IsSubobject ],
-                                  
+AddDerivationToCAP( IsEqualAsSubobjects,
+                    [ [ Dominates, 1 ] ],
+               
   function( sub1, sub2 );
-    
-    ##or should this be IsIdenticalObj?
-    if not IsEqualForObjects( Range( sub1 ), Range( sub2 ) ) then
-        
-        return false;
-        
-    fi;
     
     return Dominates( sub1, sub2 ) and Dominates( sub2, sub1 );
     
 end );
 
-InstallTrueMethodAndStoreImplication( CanComputeEqualityOfFactorobjects, CanComputeCodominates );
+InstallTrueMethodAndStoreImplication( CanComputeIsEqualAsFactorobjects, CanComputeCodominates );
 
 ##
-InstallMethodWithCacheFromObject( IsEqualAsFactorobject,
+InstallMethodWithCacheFromObject( IsEqualAsFactorobjects,
                                   [ IsCapCategoryMorphism and IsFactorobject
                                     and CanComputeCodominates, 
                                     IsCapCategoryMorphism and IsFactorobject ],
@@ -182,13 +164,11 @@ end );
 InstallTrueMethodAndStoreImplication( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
 
 ##
-InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsCapCategoryMorphism and IsSubobject 
-                                    and CanComputeCokernelProj
-                                    and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose, 
-                                    IsCapCategoryMorphism and IsSubobject ],
-                                    -9000, # FIXME
+
+AddDerivationToCAP( Dominates,
+                    [ [ CokernelProj, 1 ],
+                      [ PreCompose, 1 ],
+                      [ IsZeroForMorphisms, 1 ] ],
                                   
   function( sub1, sub2 )
     local cokernel_projection, composition;
