@@ -134,6 +134,8 @@ DeclareOperation( "AddIsWellDefinedForTwoCells",
 DeclareOperation( "AddIsWellDefinedForTwoCells",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "IsWellDefinedForTwoCells",
+                  [ IsCapCategoryTwoCell ] );
 
 DeclareAttribute( "IsWellDefinedForTwoCellsFunction",
                   IsCapCategory );

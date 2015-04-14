@@ -89,7 +89,19 @@ InstallMethod( AddIsEqualForObjects,
                
   function( category, func )
     
+    AddIsEqualForObjects( category, func, 100 );
+    
+end );
+
+##
+InstallMethod( AddIsEqualForObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    
     SetObjectEqualityFunction( category, func );
+    
+    AddPrimitiveOperation( category!.derivations_weight_list, "IsEqualForObjects", weight );
     
 end );
 
@@ -218,6 +230,12 @@ InstallMethod( Add,
     INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT( category, object );
     
 end );
+
+##
+InstallMethod( IsWellDefinedForObjects,
+               [ IsCapCategoryObject ],
+  IsWellDefined
+);
 
 ###########################
 ##

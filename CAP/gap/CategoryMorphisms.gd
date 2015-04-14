@@ -186,6 +186,8 @@ DeclareOperation( "AddIsZeroForMorphisms",
 DeclareOperation( "AddIsZeroForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "IsZeroForMorphisms",
+                  [ IsCapCategoryMorphism ] );
 
 DeclareAttribute( "IsZeroForMorphismsFunction",
                   IsCapCategory );
@@ -303,6 +305,8 @@ DeclareOperation( "AddIsWellDefinedForMorphisms",
 DeclareOperation( "AddIsWellDefinedForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "IsWellDefinedForMorphisms",
+                  [ IsCapCategoryMorphism ] );
 
 DeclareAttribute( "IsWellDefinedForMorphismsFunction",
                   IsCapCategory );

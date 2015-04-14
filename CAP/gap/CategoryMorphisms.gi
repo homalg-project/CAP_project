@@ -157,6 +157,12 @@ InstallMethod( Add,
     
 end );
 
+##
+InstallMethod( IsZeroForMorphisms,
+               [ IsCapCategoryMorphism ],
+                  
+IsZero );
+
 ######################################
 ##
 ## Morphism equality functions
@@ -166,8 +172,18 @@ end );
 ##
 InstallMethod( AddIsEqualForMorphisms,
                [ IsCapCategory, IsFunction ],
-               
+
   function( category, func )
+    
+    AddIsEqualForMorphisms( category, func, 100 );
+    
+end );
+
+##
+InstallMethod( AddIsEqualForMorphisms,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
     
     SetMorphismEqualityFunction( category, func );
     
@@ -196,6 +212,8 @@ InstallMethod( AddIsEqualForMorphisms,
         return return_value;
         
     end : Cache := GET_METHOD_CACHE( category, "IsEqualForMorphisms", 2 ) );
+    
+    AddPrimitiveOperation( category!.derivations_weight_list, "IsEqualForMorphisms", weight );
     
 end );
 
@@ -347,6 +365,16 @@ InstallMethod( AddIsWellDefinedForMorphisms,
                
   function( category, func )
     
+    AddIsWellDefinedForMorphisms( category, func, 100 );
+    
+end );
+
+##
+InstallMethod( AddIsWellDefinedForMorphisms,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    
     SetCanComputeIsWellDefinedForMorphisms( category, true );
     
     SetIsWellDefinedForMorphismsFunction( category, func );
@@ -365,8 +393,17 @@ InstallMethod( AddIsWellDefinedForMorphisms,
         return func( morphism );
         
     end );
-      
+    
+    AddPrimitiveOperation( category!.derivations_weight_list, "IsWellDefinedForMorphisms", weight );
+    
 end );
+
+##
+InstallMethod( IsWellDefinedForMorphisms,
+               [ IsCapCategoryMorphism ],
+               
+  IsWellDefined
+);
 
 ###########################
 ##

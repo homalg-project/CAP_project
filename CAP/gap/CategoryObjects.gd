@@ -122,6 +122,8 @@ DeclareOperation( "AddIsZeroForObjects",
 DeclareOperation( "AddIsZeroForObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "IsZeroForObjects", 
+                  [ IsCapCategoryObject ] );
 
 DeclareAttribute( "IsZeroForObjectsFunction",
                   IsCapCategory );
@@ -175,6 +177,8 @@ DeclareOperation( "AddIsWellDefinedForObjects",
 DeclareOperation( "AddIsWellDefinedForObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "IsWellDefinedForObjects",
+                  [ IsCapCategoryObject ] );
 
 DeclareAttribute( "IsWellDefinedForObjectsFunction",
                   IsCapCategory );

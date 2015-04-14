@@ -98,6 +98,16 @@ InstallMethod( AddIsWellDefinedForTwoCells,
                
   function( category, func )
     
+    AddIsWellDefinedForTwoCells( category, func, 100 );
+    
+end );
+
+##
+InstallMethod( AddIsWellDefinedForTwoCells,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    
     SetCanComputeIsWellDefinedForTwoCells( category, true );
     
     SetIsWellDefinedForTwoCellsFunction( category, func );
@@ -117,4 +127,14 @@ InstallMethod( AddIsWellDefinedForTwoCells,
         
     end );
     
+    AddPrimitiveOperation( category!.derivations_weight_list, "IsWellDefinedForTwoCells", weight );
+    
 end );
+
+##
+InstallMethod( IsWellDefinedForTwoCells,
+               [ IsCapCategoryTwoCell ],
+               
+  IsWellDefined
+);
+

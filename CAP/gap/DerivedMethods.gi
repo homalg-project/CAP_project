@@ -4,12 +4,8 @@
 ## Derivations taken from CategoryObjects.gi
 ##
 ###########################
-##
-# InstallTrueMethodAndStoreImplication( CanComputeZeroMorphism, CanComputePreCompose
-#                                        and CanComputeUniversalMorphismIntoTerminalObject
-#                                        and CanComputeUniversalMorphismFromInitialObject
-#                                        and IsAdditiveCategory );
 
+##
 AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
                ZeroMorphism,
                [ [ PreCompose, 1 ],
@@ -24,17 +20,17 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
         Description := "Zero morphism by composition of morphism into and from zero object" );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeIsZeroForObjects, CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms );
-
-InstallMethod( IsZero,
-               [ IsCapCategoryObject and CanComputeIdentityMorphism and CanComputeZeroMorphism and CanComputeIsEqualForMorphisms ],
-               -9999, #FIXME
-               
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               IsZeroForObjects,
+               [ [ IsEqualForMorphisms, 1 ],
+                 [ IdentityMorphism, 1 ],
+                 [ ZeroMorphism, 1 ] ],
+                 
   function( object )
-    
+  
     return IsEqualForMorphisms( IdentityMorphism( object ), ZeroMorphism( object, object ) );
     
-end );
+end : Description := "IsZeroForObjects by comparing identity morphism with zero morphism" );
 
 ###########################
 ##
@@ -367,21 +363,22 @@ InstallMethodWithCacheFromObject( KernelLift,
     
 end );
 
-# ## this method uses meta information stored in the KernelObject
+
 #
-# InstallTrueMethodAndStoreImplication( CanComputeKernelLiftWithGivenKernelObject, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
-# 
-# InstallMethodWithCacheFromObject( KernelLiftWithGivenKernelObject,
-#                                   [ IsCapCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
-#                                     IsCapCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
-#                                     IsCapCategoryObject and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
-#                                   -9999, #FIXME
-#                                            
-#     function( mor, test_morphism, kernel )
-#       
-#       return MonoAsKernelLift( KernelEmb( kernel ), test_morphism );
-#       
-# end );
+InstallTrueMethodAndStoreImplication( CanComputeKernelLiftWithGivenKernelObject, 
+                                      CanComputeKernelEmbWithGivenKernelObject and CanComputeMonoAsKernelLift );
+
+InstallMethodWithCacheFromObject( KernelLiftWithGivenKernelObject,
+                                  [ IsCapCategoryMorphism and CanComputeKernelEmbWithGivenKernelObject and CanComputeMonoAsKernelLift,
+                                    IsCapCategoryMorphism,
+                                    IsCapCategoryObject ],
+                                  -9999, #FIXME
+                                           
+    function( mor, test_morphism, kernel )
+      
+      return MonoAsKernelLift( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
+      
+end );
 
 ##
 InstallTrueMethodAndStoreImplication( CanComputeKernelObject, CanComputeKernelEmb );
@@ -460,20 +457,21 @@ InstallMethodWithCacheFromObject( CokernelColift,
     
 end );
 
-# ## this method uses meta information stored in the Cokernel
-#
-# InstallTrueMethodAndStoreImplication( CanComputeCokernelColiftWithGivenCokernel, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
-# 
-# InstallMethodWithCacheFromObject( CokernelColiftWithGivenCokernel,
-#                                   [ IsCapCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
-#                                     IsCapCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
-#                                     IsCapCategoryObject and CanComputeCokernelProj and CanComputeEpiAsCokernelColift ],
-#                                            
-#     function( mor, test_morphism, cokernel )
-#       
-#       return EpiAsCokernelColift( CokernelProj( cokernel ), test_morphism );
-#       
-# end );
+##
+InstallTrueMethodAndStoreImplication( CanComputeCokernelColiftWithGivenCokernel, 
+                                      CanComputeCokernelProjWithGivenCokernel 
+                                      and CanComputeEpiAsCokernelColift );
+
+InstallMethodWithCacheFromObject( CokernelColiftWithGivenCokernel,
+                                  [ IsCapCategoryMorphism and CanComputeCokernelProjWithGivenCokernel and CanComputeEpiAsCokernelColift,
+                                    IsCapCategoryMorphism,
+                                    IsCapCategoryObject ],
+                                           
+    function( mor, test_morphism, cokernel )
+      
+      return EpiAsCokernelColift( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
+      
+end );
 
 
 ##
