@@ -276,14 +276,14 @@ end );
 #                                       CanComputeKernelEmb
 #                                       and CanComputeCokernelColift
 #                                       and CanComputePreCompose
-#                                       and CanComputeInverse );
+#                                       and CanComputeInverseImmutable );
 # 
 # InstallMethodWithCacheFromObject( EpiAsCokernelColift,
 #                                   [ IsCapCategoryMorphism
 #                                     and CanComputeKernelEmb
 #                                     and CanComputeCokernelColift
 #                                     and CanComputePreCompose
-#                                     and CanComputeInverse,
+#                                     and CanComputeInverseImmutable,
 #                                     IsCapCategoryMorphism ],
 #                                     -9999, ##FIXME
 #                                     
@@ -302,6 +302,23 @@ end );
 #     
 # end );
 
+####################################
+##
+## Inverse
+##
+####################################
+
+InstallMethod( AddInverse,
+               [ IsCapCategory, IsFunction ],
+               AddInverseImmutable );
+
+InstallMethod( AddInverse,
+               [ IsCapCategory, IsFunction, IsInt ],
+               AddInverseImmutable );
+
+InstallMethod( AddInverse,
+               [ IsCapCategory, IsList, IsInt ],
+               AddInverseImmutable );
 
 #######################################
 ##

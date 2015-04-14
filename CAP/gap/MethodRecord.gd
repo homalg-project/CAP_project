@@ -15,7 +15,7 @@ IdentityMorphism := rec(
   installation_name := "IdentityMorphism",
   filter_list := [ "object" ] ),
 
-Inverse := rec(
+InverseImmutable := rec(
   installation_name := "InverseOp",
   filter_list := [ "morphism" ] ),
 

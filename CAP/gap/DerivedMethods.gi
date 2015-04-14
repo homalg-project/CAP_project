@@ -194,55 +194,55 @@ AddDerivationToCAP( ZeroMorphism,
   end : CategoryFilter := IsAdditiveCategory,
         Description := "Zero morphism by composition of morphism into and from zero object" );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputePostCompose, CanComputePreCompose );
-
-InstallMethodWithCacheFromObject( PostCompose,
-                                  [ IsCapCategoryMorphism and CanComputePreCompose,
-                                  IsCapCategoryMorphism and CanComputePreCompose ],
-               
-  function( right_mor, left_mor )
-    
-    return PreCompose( left_mor, right_mor );
-    
-end : ArgumentNumber := 1 );
-
-# AddDerivationToCAP( PostCompose,
-#                     [ [ PreCompose, 1 ] ],
-#                     
+# ##
+# InstallTrueMethodAndStoreImplication( CanComputePostCompose, CanComputePreCompose );
+# 
+# InstallMethodWithCacheFromObject( PostCompose,
+#                                   [ IsCapCategoryMorphism and CanComputePreCompose,
+#                                   IsCapCategoryMorphism and CanComputePreCompose ],
+#                
 #   function( right_mor, left_mor )
 #     
 #     return PreCompose( left_mor, right_mor );
 #     
-# end : Description := "PostCompose using PreCompose and swapping arguments" );
+# end : ArgumentNumber := 1 );
+
+AddDerivationToCAP( PostCompose,
+                    [ [ PreCompose, 1 ] ],
+                    
+  function( right_mor, left_mor )
+    
+    return PreCompose( left_mor, right_mor );
+    
+end : Description := "PostCompose using PreCompose and swapping arguments" );
+
+#
+AddDerivationToCAP( Inverse,
+                    [ [ IdentityMorphism, 1 ],
+                      [ MonoAsKernelLift, 1 ] ],
+                                       
+  function( mor )
+    local identity_of_range;
+        
+        identity_of_range := IdentityMorphism( Range( mor ) );
+        
+        return MonoAsKernelLift( mor, identity_of_range );
+        
+end : Description := "Inverse using MonoAsKernelLift of an identity morphism" );
 
 ##
-# AddDerivationToCAP( Inverse,
-#                     [ [ IdentityMorphism, 1 ],
-#                       [ MonoAsKernelLift, 1 ] ],
-#                                        
-#   function( mor )
-#     local identity_of_range;
-#         
-#         identity_of_range := IdentityMorphism( Range( mor ) );
-#         
-#         return MonoAsKernelLift( mor, identity_of_range );
-#         
-# end : Description := "Inverse using MonoAsKernelLift of an identity morphism" );
-# 
-# ##
-# AddDerivationToCAP( Inverse,
-#                     [ [ IdentityMorphism, 1 ],
-#                       [ EpiAsCokernelColift, 1 ] ],
-#                                        
-#   function( mor )
-#     local identity_of_source;
-#     
-#     identity_of_source := IdentityMorphism( Source( mor ) );
-#     
-#     return EpiAsCokernelColift( mor, identity_of_source );
-#       
-# end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
+AddDerivationToCAP( Inverse,
+                    [ [ IdentityMorphism, 1 ],
+                      [ EpiAsCokernelColift, 1 ] ],
+                                       
+  function( mor )
+    local identity_of_source;
+    
+    identity_of_source := IdentityMorphism( Source( mor ) );
+    
+    return EpiAsCokernelColift( mor, identity_of_source );
+      
+end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
 
 ## FIXME: IsAbelianCategory too restrictive
 InstallTrueMethodAndStoreImplication( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );

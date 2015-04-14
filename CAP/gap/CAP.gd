@@ -106,7 +106,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeMonoAsKernelLift",
                 "CanComputeEpiAsCokernelColift",
                 "CanComputeIdentityMorphism",
-                "CanComputeInverse",
+                "CanComputeInverseImmutable",
                 "CanComputeKernelObject",
                 "CanComputeKernelEmb",
                 "CanComputeKernelEmbWithGivenKernelObject",
@@ -427,6 +427,15 @@ DeclareOperation( "AddInverse",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddInverse",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInverseImmutable",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInverseImmutable",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInverseImmutable",
                   [ IsCapCategory, IsList, IsInt ] );
 
 

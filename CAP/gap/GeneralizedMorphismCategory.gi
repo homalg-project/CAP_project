@@ -490,12 +490,12 @@ end );
 ##
 InstallTrueMethod( CanComputeHonestRepresentative,
                    CanComputePreComposeInUnderlyingHonestCategory
-                   and CanComputeInverseInUnderlyingHonestCategory );
+                   and CanComputeInverseImmutableInUnderlyingHonestCategory );
 
 InstallMethod( HonestRepresentative,
                [ IsGeneralizedMorphism
                  and CanComputePreComposeInUnderlyingHonestCategory
-                 and CanComputeInverseInUnderlyingHonestCategory ],
+                 and CanComputeInverseImmutableInUnderlyingHonestCategory ],
                
   function( generalized_morphism )
     

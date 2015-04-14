@@ -1038,7 +1038,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         [ [ "CanComputeUniversalMorphismFromPushout" ],
           function( ) ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeInverse" ], function( ) ADD_INVERSE_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeInverseImmutable" ], function( ) ADD_INVERSE_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeMonoAsKernelLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS( category ); end ],
         

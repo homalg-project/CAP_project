@@ -162,12 +162,13 @@ InstallGlobalFunction( CapInternalInstallAdd,
             install_func( i[ 1 ], i[ 2 ] );
         od;
         
-        if set_primitive then
-            AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
-        fi;
-        
+        ## The following commands do NOT commute.
         if popper then
             PopOptions();
+        fi;
+        
+        if set_primitive then
+            AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
         fi;
         
     end );

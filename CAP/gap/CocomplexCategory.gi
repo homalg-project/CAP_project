@@ -769,7 +769,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             [ [ "CanComputeUniversalMorphismFromPushout" ],
               function( ) ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeInverse" ], function( ) ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            [ [ "CanComputeInverseImmutable" ], function( ) ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
             [ [ "CanComputeMonoAsKernelLift" ], function( ) ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
