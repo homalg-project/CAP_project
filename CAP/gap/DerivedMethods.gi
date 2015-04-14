@@ -1,22 +1,9 @@
 
 ###########################
 ##
-## Derivations taken from CategoryObjects.gi
+## Methods returning a boolean
 ##
 ###########################
-
-##
-AddDerivationToCAP( ZeroMorphism,
-                    [ [ PreCompose, 1 ],
-                      [ UniversalMorphismIntoTerminalObject, 1 ],
-                      [ UniversalMorphismFromInitialObject, 1 ] ],
-                 
-  function( obj_source, obj_range )
-    
-    return PreCompose( UniversalMorphismIntoTerminalObject( obj_source ), UniversalMorphismFromInitialObject( obj_range ) );
-    
-  end : CategoryFilter := IsAdditiveCategory,
-        Description := "Zero morphism by composition of morphism into and from zero object" );
 
 ##
 AddDerivationToCAP( IsZeroForObjects,
@@ -29,12 +16,6 @@ AddDerivationToCAP( IsZeroForObjects,
     return IsEqualForMorphisms( IdentityMorphism( object ), ZeroMorphism( object, object ) );
     
 end : Description := "IsZeroForObjects by comparing identity morphism with zero morphism" );
-
-###########################
-##
-## Derivations taken from CategoryMorphisms.gi
-##
-###########################
 
 ##
 AddDerivationToCAP( IsMonomorphism,
@@ -194,7 +175,25 @@ AddDerivationToCAP( Codominates,
     
 end : Description := "Codominates(factor1, factor2) by deciding if KernelEmb(factor2) composed with factor1 is zero" );
 
-## PostCompose
+###########################
+##
+## Methods returning a morphism where the source and range can directly be read of from the input
+##
+###########################
+
+##
+AddDerivationToCAP( ZeroMorphism,
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoTerminalObject, 1 ],
+                      [ UniversalMorphismFromInitialObject, 1 ] ],
+                 
+  function( obj_source, obj_range )
+    
+    return PreCompose( UniversalMorphismIntoTerminalObject( obj_source ), UniversalMorphismFromInitialObject( obj_range ) );
+    
+  end : CategoryFilter := IsAdditiveCategory,
+        Description := "Zero morphism by composition of morphism into and from zero object" );
+
 ##
 InstallTrueMethodAndStoreImplication( CanComputePostCompose, CanComputePreCompose );
 
@@ -208,39 +207,42 @@ InstallMethodWithCacheFromObject( PostCompose,
     
 end : ArgumentNumber := 1 );
 
-## Inverse
-##
-InstallTrueMethodAndStoreImplication( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
-
-InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                       [ IsCapCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
-                                       -9999, #FIXME
-                                       
-  function( mor )
-    local identity_of_range;
-        
-        identity_of_range := IdentityMorphism( Range( mor ) );
-        
-        return MonoAsKernelLift( mor, identity_of_range );
-        
-end );
-
+# AddDerivationToCAP( PostCompose,
+#                     [ [ PreCompose, 1 ] ],
+#                     
+#   function( right_mor, left_mor )
+#     
+#     return PreCompose( left_mor, right_mor );
+#     
+# end : Description := "PostCompose using PreCompose and swapping arguments" );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
-
-InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                       [ IsCapCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
-                                       -9998, #FIXME
-                                       
-  function( mor )
-    local identity_of_source;
-    
-    identity_of_source := IdentityMorphism( Source( mor ) );
-    
-    return EpiAsCokernelColift( mor, identity_of_source );
-      
-end );
+# AddDerivationToCAP( Inverse,
+#                     [ [ IdentityMorphism, 1 ],
+#                       [ MonoAsKernelLift, 1 ] ],
+#                                        
+#   function( mor )
+#     local identity_of_range;
+#         
+#         identity_of_range := IdentityMorphism( Range( mor ) );
+#         
+#         return MonoAsKernelLift( mor, identity_of_range );
+#         
+# end : Description := "Inverse using MonoAsKernelLift of an identity morphism" );
+# 
+# ##
+# AddDerivationToCAP( Inverse,
+#                     [ [ IdentityMorphism, 1 ],
+#                       [ EpiAsCokernelColift, 1 ] ],
+#                                        
+#   function( mor )
+#     local identity_of_source;
+#     
+#     identity_of_source := IdentityMorphism( Source( mor ) );
+#     
+#     return EpiAsCokernelColift( mor, identity_of_source );
+#       
+# end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
 
 ## FIXME: IsAbelianCategory too restrictive
 InstallTrueMethodAndStoreImplication( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );
