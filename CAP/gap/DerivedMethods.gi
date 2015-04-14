@@ -39,26 +39,18 @@ end : Description := "IsZeroForObjects by comparing identity morphism with zero 
 ###########################
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, CanComputeKernelObject and CanComputeIsZeroForObjects and IsAdditiveCategory );
-
-InstallMethod( IsMonomorphism,
-               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeIsZeroForObjects and IsAdditiveCategory ],
-               -9900, #FIXME
-               
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               IsMonomorphism,
+               [ [ IsZeroForObjects, 1 ],
+                 [ KernelObject, 1 ] ],
   function( morphism )
     
     return IsZero( KernelObject( morphism ) );
     
-end );
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "IsMonomorphism by deciding if the kernel is a zero object" );
 
 ##
-# InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, 
-#                    CanComputeIsIsomorphism
-#                    and CanComputeIdentityMorphism
-#                    and CanComputeProjectionInFactorOfFiberProduct
-#                    and CanComputePreCompose
-#                    and CanComputeUniversalMorphismIntoFiberProduct );
-
 AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
                IsMonomorphism,
                [ [ IsIsomorphism, 1 ],
@@ -76,7 +68,7 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
       
       return IsIsomorphism( diagonal_morphism );
     
-end );
+end : Description := "IsMonomorphism by deciding if the diagonal morphism is an isomorphism" );
 
 #
 InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
