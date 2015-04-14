@@ -71,42 +71,28 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
 end : Description := "IsMonomorphism by deciding if the diagonal morphism is an isomorphism" );
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsEpimorphism,
-               [ [ IsZeroForObjects, 1 ],
-                 [ Cokernel, 1 ] ],
-  function( morphism )
-    
-    return IsZero( Cokernel( morphism ) );
-    
-end : CategoryFilter := IsAdditiveCategory,
-      Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
+# AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+#                IsEpimorphism,
+#                [ [ IsZeroForObjects, 1 ],
+#                  [ Cokernel, 1 ] ],
+#   function( morphism )
+#     
+#     return IsZero( Cokernel( morphism ) );
+#     
+# end : CategoryFilter := IsAdditiveCategory,
+#       Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism,
-                   CanComputeIsIsomorphism
-                   and CanComputeIdentityMorphism
-                   and CanComputeInjectionOfCofactorOfPushout
-                   and CanComputePreCompose
-                   and CanComputeUniversalMorphismFromPushout );
-
-InstallMethod( IsEpimorphism,
-               [ IsCapCategoryMorphism
-                 and CanComputeIsIsomorphism
-                 and CanComputeIdentityMorphism
-                 and CanComputeInjectionOfCofactorOfPushout
-                 and CanComputePreCompose
-                 and CanComputeUniversalMorphismFromPushout ],
-                 -9999, #FIXME
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               IsEpimorphism,
+               [ [ IdentityMorphism, 1 ],
+                 [ UniversalMorphismFromPushout, 1 ],
+                 [ IsIsomorphism, 1 ] ],
                  
   function( morphism )
-    local pushout_diagram, pushout_injection_1, pushout_injection_2, identity, codiagonal_morphism;
+    local pushout_diagram, identity, codiagonal_morphism;
       
       pushout_diagram := [ morphism, morphism ];
-      
-      pushout_injection_1 := InjectionOfCofactorOfPushout( pushout_diagram, 1 );
-      
-      pushout_injection_2 := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
       
       identity := IdentityMorphism( Range( morphism ) );
       
@@ -114,7 +100,7 @@ InstallMethod( IsEpimorphism,
       
       return IsIsomorphism( codiagonal_morphism );
     
-end );
+end : Description := "IsEpimorphism by deciding if the codiagonal morphism is an isomorphism" );
 
 ##
 InstallTrueMethodAndStoreImplication( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
