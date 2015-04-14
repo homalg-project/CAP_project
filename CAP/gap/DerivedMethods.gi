@@ -70,18 +70,17 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
     
 end : Description := "IsMonomorphism by deciding if the diagonal morphism is an isomorphism" );
 
-#
-InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
-
-InstallMethod( IsEpimorphism,
-               [ IsCapCategoryMorphism and CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
-               -9900, #FIXME
-               
+##
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               IsEpimorphism,
+               [ [ IsZeroForObjects, 1 ],
+                 [ Cokernel, 1 ] ],
   function( morphism )
     
     return IsZero( Cokernel( morphism ) );
     
-end );
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
 
 ##
 InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism,
