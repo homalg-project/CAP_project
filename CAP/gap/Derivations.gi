@@ -91,8 +91,7 @@ end );
 InstallMethod( InstallDerivationForCategory,
                [ IsDerivedMethod, IsPosInt, IsCapCategory ],
 function( d, weight, C )
-  local method_name, general_filter_list, installation_name, nr_arguments,
-        cache_name, current_implementation, current_filters;
+  local method_name, implementation_list, add_method;
   
   Info( DerivationInfo, 1, Concatenation( "install(",
                                           String( weight ),
@@ -103,32 +102,11 @@ function( d, weight, C )
   
   method_name := TargetOperation( d );
   ## getting the filters and installation name from the record
-  general_filter_list := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).filter_list;
-  installation_name := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).installation_name;
-  general_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( general_filter_list, C );
   
-  nr_arguments := Length( general_filter_list );
-  if nr_arguments > 1 then
-    cache_name := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).cache_name;
-    PushOptions( rec( InstallMethod := InstallMethodWithCache,
-                      Cache := GET_METHOD_CACHE( C, cache_name, nr_arguments ) ) );
-  fi;
+  implementation_list := DerivationFunctionsWithExtraFilters( d );
   
-  for current_implementation in DerivationFunctionsWithExtraFilters( d ) do
-      
-      current_filters := CAP_INTERNAL_MERGE_FILTER_LISTS( general_filter_list, 
-                                                          current_implementation[ 2 ] );
-      
-      InstallMethodWithToDoForIsWellDefined( ValueGlobal( installation_name ),
-                                             current_filters,
-                                             current_implementation[ 1 ] );
-  od;
-  
-  ValueGlobal( Concatenation( "SetCanCompute", method_name ) )( C, true );
-  
-  if nr_arguments > 1 then
-      PopOptions( );
-  fi;
+  add_method := ValueGlobal( Concatenation( "Add", method_name ) );
+  add_method( C, implementation_list, 1 : SetPrimitive := false ); ##The third argument is ignored
   
 end );
 

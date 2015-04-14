@@ -93,7 +93,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )
-        local install_func, replaced_filter_list, install_method, popper, i;
+        local install_func, replaced_filter_list, install_method, popper, i, set_primitive;
+        
+        set_primitive := ValueOption( "SetPrimitive" );
+        if set_primitive <> false then
+            set_primitive := true;
+        fi;
         
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
         
@@ -157,7 +162,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
             install_func( i[ 1 ], i[ 2 ] );
         od;
         
-        AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
+        if set_primitive then
+            AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
+        fi;
         
         if popper then
             PopOptions();
