@@ -91,7 +91,8 @@ end );
 InstallMethod( InstallDerivationForCategory,
                [ IsDerivedMethod, IsPosInt, IsCapCategory ],
 function( d, weight, C )
-  local method_name, implementation_list, add_method;
+  local method_name, implementation_list, add_method, add_name, general_filter_list,
+        installation_name, nr_arguments, cache_name, current_filters, current_implementation;
   
   Info( DerivationInfo, 1, Concatenation( "install(",
                                           String( weight ),
@@ -101,12 +102,45 @@ function( d, weight, C )
                                           DerivationName( d ), "\n" ) );
   
   method_name := TargetOperation( d );
+  implementation_list := DerivationFunctionsWithExtraFilters( d );
+  add_name := Concatenation( "Add", method_name );
   ## getting the filters and installation name from the record
   
-  implementation_list := DerivationFunctionsWithExtraFilters( d );
-  
-  add_method := ValueGlobal( Concatenation( "Add", method_name ) );
-  add_method( C, implementation_list, 1 : SetPrimitive := false ); ##The third argument is ignored
+  if not IsBoundGlobal( add_name ) then
+      
+      general_filter_list := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).filter_list;
+      installation_name := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).installation_name;
+      general_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( general_filter_list, C );
+      
+      nr_arguments := Length( general_filter_list );
+      if nr_arguments > 1 then
+        cache_name := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).cache_name;
+        PushOptions( rec( InstallMethod := InstallMethodWithCache,
+                          Cache := GET_METHOD_CACHE( C, cache_name, nr_arguments ) ) );
+      fi;
+      
+      for current_implementation in implementation_list do
+          
+          current_filters := CAP_INTERNAL_MERGE_FILTER_LISTS( general_filter_list, 
+                                                              current_implementation[ 2 ] );
+          
+          InstallMethodWithToDoForIsWellDefined( ValueGlobal( installation_name ),
+                                                current_filters,
+                                                current_implementation[ 1 ] );
+      od;
+      
+      ValueGlobal( Concatenation( "SetCanCompute", method_name ) )( C, true );
+      
+      if nr_arguments > 1 then
+          PopOptions( );
+      fi;
+      
+  else
+      
+      add_method := ValueGlobal( add_name );
+      add_method( C, implementation_list, 1 : SetPrimitive := false ); ##The third argument is ignored
+      
+  fi;
   
 end );
 
