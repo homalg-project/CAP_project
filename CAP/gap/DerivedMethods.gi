@@ -71,16 +71,16 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
 end : Description := "IsMonomorphism by deciding if the diagonal morphism is an isomorphism" );
 
 ##
-# AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-#                IsEpimorphism,
-#                [ [ IsZeroForObjects, 1 ],
-#                  [ Cokernel, 1 ] ],
-#   function( morphism )
-#     
-#     return IsZero( Cokernel( morphism ) );
-#     
-# end : CategoryFilter := IsAdditiveCategory,
-#       Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               IsEpimorphism,
+               [ [ IsZeroForObjects, 1 ],
+                 [ Cokernel, 1 ] ],
+  function( morphism )
+    
+    return IsZero( Cokernel( morphism ) );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
 
 ##
 AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
@@ -103,17 +103,17 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
 end : Description := "IsEpimorphism by deciding if the codiagonal morphism is an isomorphism" );
 
 ##
-InstallTrueMethodAndStoreImplication( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
-
-InstallMethod( IsIsomorphism,
-               [ IsCapCategoryMorphism and CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory ],
-               -9999, #FIXME
-               
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               IsIsomorphism,
+               [ [ IsMonomorphism, 1 ],
+                 [ IsEpimorphism, 1 ] ],
+                 
   function( morphism )
     
     return IsMonomorphism( morphism ) and IsEpimorphism( morphism );
     
-end );
+end : CategoryFilter := IsAbelianCategory,
+      Description := "IsIsomorphism by deciding if it is a mono and an epi" );
 
 InstallTrueMethodAndStoreImplication( CanComputeEqualityOfSubobjects, CanComputeDominates );
 
