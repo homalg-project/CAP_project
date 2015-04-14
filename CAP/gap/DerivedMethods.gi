@@ -1,30 +1,15 @@
 
 ###########################
 ##
-## Derivations taken from CategoryObjects.gi
+## Methods returning a boolean
 ##
 ###########################
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               ZeroMorphism,
-               [ [ PreCompose, 1 ],
-                 [ UniversalMorphismIntoTerminalObject, 1 ],
-                 [ UniversalMorphismFromInitialObject, 1 ] ],
-                 
-  function( obj_source, obj_range )
-    
-    return PreCompose( UniversalMorphismIntoTerminalObject( obj_source ), UniversalMorphismFromInitialObject( obj_range ) );
-    
-  end : CategoryFilter := IsAdditiveCategory,
-        Description := "Zero morphism by composition of morphism into and from zero object" );
-
-##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsZeroForObjects,
-               [ [ IsEqualForMorphisms, 1 ],
-                 [ IdentityMorphism, 1 ],
-                 [ ZeroMorphism, 1 ] ],
+AddDerivationToCAP( IsZeroForObjects,
+                    [ [ IsEqualForMorphisms, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ ZeroMorphism, 1 ] ],
                  
   function( object )
   
@@ -32,17 +17,10 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
     
 end : Description := "IsZeroForObjects by comparing identity morphism with zero morphism" );
 
-###########################
 ##
-## Derivations taken from CategoryMorphisms.gi
-##
-###########################
-
-##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsMonomorphism,
-               [ [ IsZeroForObjects, 1 ],
-                 [ KernelObject, 1 ] ],
+AddDerivationToCAP( IsMonomorphism,
+                    [ [ IsZeroForObjects, 1 ],
+                      [ KernelObject, 1 ] ],
   function( morphism )
     
     return IsZero( KernelObject( morphism ) );
@@ -51,11 +29,10 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "IsMonomorphism by deciding if the kernel is a zero object" );
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsMonomorphism,
-               [ [ IsIsomorphism, 1 ],
-                 [ IdentityMorphism, 1 ],
-                 [ UniversalMorphismIntoFiberProduct, 1 ] ],
+AddDerivationToCAP( IsMonomorphism,
+                    [ [ IsIsomorphism, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ UniversalMorphismIntoFiberProduct, 1 ] ],
                  
   function( morphism )
     local pullback_diagram, pullback_projection_1, pullback_projection_2, identity, diagonal_morphism;
@@ -71,23 +48,21 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
 end : Description := "IsMonomorphism by deciding if the diagonal morphism is an isomorphism" );
 
 ##
-# AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-#                IsEpimorphism,
-#                [ [ IsZeroForObjects, 1 ],
-#                  [ Cokernel, 1 ] ],
-#   function( morphism )
-#     
-#     return IsZero( Cokernel( morphism ) );
-#     
-# end : CategoryFilter := IsAdditiveCategory,
-#       Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
+AddDerivationToCAP( IsEpimorphism,
+                    [ [ IsZeroForObjects, 1 ],
+                      [ Cokernel, 1 ] ],
+  function( morphism )
+    
+    return IsZero( Cokernel( morphism ) );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
 
 ##
-AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
-               IsEpimorphism,
-               [ [ IdentityMorphism, 1 ],
-                 [ UniversalMorphismFromPushout, 1 ],
-                 [ IsIsomorphism, 1 ] ],
+AddDerivationToCAP( IsEpimorphism,
+                    [ [ IdentityMorphism, 1 ],
+                      [ UniversalMorphismFromPushout, 1 ],
+                      [ IsIsomorphism, 1 ] ],
                  
   function( morphism )
     local pushout_diagram, identity, codiagonal_morphism;
@@ -103,70 +78,41 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
 end : Description := "IsEpimorphism by deciding if the codiagonal morphism is an isomorphism" );
 
 ##
-InstallTrueMethodAndStoreImplication( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
-
-InstallMethod( IsIsomorphism,
-               [ IsCapCategoryMorphism and CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory ],
-               -9999, #FIXME
-               
+AddDerivationToCAP( IsIsomorphism,
+                    [ [ IsMonomorphism, 1 ],
+                      [ IsEpimorphism, 1 ] ],
+                 
   function( morphism )
     
     return IsMonomorphism( morphism ) and IsEpimorphism( morphism );
     
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeEqualityOfSubobjects, CanComputeDominates );
+end : CategoryFilter := IsAbelianCategory,
+      Description := "IsIsomorphism by deciding if it is a mono and an epi" );
 
 ##
-InstallMethodWithCacheFromObject( IsEqualAsSubobject,
-                                  [ IsCapCategoryMorphism and IsSubobject
-                                    and SetCanComputeDominates,
-                                    IsCapCategoryMorphism and IsSubobject ],
-                                  
+AddDerivationToCAP( IsEqualAsSubobjects,
+                    [ [ Dominates, 2 ] ],
+               
   function( sub1, sub2 );
-    
-    ##or should this be IsIdenticalObj?
-    if not IsEqualForObjects( Range( sub1 ), Range( sub2 ) ) then
-        
-        return false;
-        
-    fi;
     
     return Dominates( sub1, sub2 ) and Dominates( sub2, sub1 );
     
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeEqualityOfFactorobjects, CanComputeCodominates );
+end : Description := "IsEqualAsSubobjects(sub1, sub2) if sub1 dominates sub2 and vice versa" );
 
 ##
-InstallMethodWithCacheFromObject( IsEqualAsFactorobject,
-                                  [ IsCapCategoryMorphism and IsFactorobject
-                                    and CanComputeCodominates, 
-                                    IsCapCategoryMorphism and IsFactorobject ],
+AddDerivationToCAP( IsEqualAsFactorobjects,
+                    [ [ Codominates, 2 ] ],
                                   
   function( factor1, factor2 )
     
-    ##or should this be IsIdenticalObj?
-    if not IsEqualForObjects( Source( factor1 ), Source( factor2 ) ) then
-        
-        return false;
-        
-    fi;
-    
     return Codominates( factor1, factor2 ) and Codominates( factor1, factor2 );
     
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeDominates, CanComputeCokernelProj and CanComputeCodominates and IsPreAbelianCategory );
+end : Description := "IsEqualAsFactorobjects(factor1, factor2) if factor1 dominates factor2 and vice versa" );
 
 ##
-InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsCapCategoryMorphism and IsSubobject
-                                    and CanComputeCokernelProj
-                                    and CanComputeCodominates
-                                    and IsPreAbelianCategory,
-                                    IsCapCategoryMorphism and IsSubobject ],
-                                    -9999, # FIXME (has to be the lowest Dominates fallback method)
+AddDerivationToCAP( Dominates,
+                    [ [ CokernelProj, 2 ],
+                      [ Codominates, 1 ] ],
                                   
   function( sub1, sub2 )
     local cokernel_projection_1, cokernel_projection_2;
@@ -177,18 +123,13 @@ InstallMethodWithCacheFromObject( Dominates,
     
     return Codominates( cokernel_projection_1, cokernel_projection_2 );
     
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeDominates, CanComputeCokernelProj and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+end : Description := "Dominates using Codominates and duality by cokernel" );
 
 ##
-InstallMethodWithCacheFromObject( Dominates,
-                                  [ IsCapCategoryMorphism and IsSubobject 
-                                    and CanComputeCokernelProj
-                                    and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose, 
-                                    IsCapCategoryMorphism and IsSubobject ],
-                                    -9000, # FIXME
+AddDerivationToCAP( Dominates,
+                    [ [ CokernelProj, 1 ],
+                      [ PreCompose, 1 ],
+                      [ IsZeroForMorphisms, 1 ] ],
                                   
   function( sub1, sub2 )
     local cokernel_projection, composition;
@@ -199,19 +140,12 @@ InstallMethodWithCacheFromObject( Dominates,
     
     return IsZero( composition );
     
-end );
-
-
-InstallTrueMethodAndStoreImplication( CanComputeCodominates, CanComputeKernelEmb and CanComputeDominates and IsPreAbelianCategory );
+end : Description := "Dominates(sub1, sub2) by deciding if sub1 composed with CokernelProj(sub2) is zero" );
 
 ##
-InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsCapCategoryMorphism and IsFactorobject
-                                    and CanComputeKernelEmb
-                                    and CanComputeDominates
-                                    and IsPreAbelianCategory,
-                                    IsCapCategoryMorphism and IsFactorobject ],
-                                    -9999, # FIXME (has to be the lowest Codominates fallback method)
+AddDerivationToCAP( Codominates,
+                    [ [ KernelEmb, 2 ],
+                      [ Dominates, 1 ] ],
                                   
   function( factor1, factor2 )
     local kernel_embedding_1, kernel_embedding_2;
@@ -222,18 +156,13 @@ InstallMethodWithCacheFromObject( Codominates,
     
     return Dominates( kernel_embedding_2, kernel_embedding_1 );
     
-end );
-
-InstallTrueMethodAndStoreImplication( CanComputeCodominates, CanComputeKernelEmb and CanComputeIsZeroForMorphisms and CanComputePreCompose );
+end : Description := "Codominates using Dominates and duality by kernel" );
 
 ##
-InstallMethodWithCacheFromObject( Codominates,
-                                  [ IsCapCategoryMorphism and IsFactorobject
-                                    and CanComputeKernelEmb
-                                    and CanComputeIsZeroForMorphisms
-                                    and CanComputePreCompose,
-                                    IsCapCategoryMorphism and IsFactorobject ],
-                                    -9000, # FIXME
+AddDerivationToCAP( Codominates,
+                    [ [ KernelEmb, 1 ],
+                      [ PreCompose, 1 ],
+                      [ IsZeroForMorphisms, 1 ] ],
                                   
   function( factor1, factor2 )
     local kernel_embedding, composition;
@@ -244,9 +173,27 @@ InstallMethodWithCacheFromObject( Codominates,
     
     return IsZero( composition );
     
-end );
+end : Description := "Codominates(factor1, factor2) by deciding if KernelEmb(factor2) composed with factor1 is zero" );
 
-## PostCompose
+###########################
+##
+## Methods returning a morphism where the source and range can directly be read of from the input
+##
+###########################
+
+##
+AddDerivationToCAP( ZeroMorphism,
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoTerminalObject, 1 ],
+                      [ UniversalMorphismFromInitialObject, 1 ] ],
+                 
+  function( obj_source, obj_range )
+    
+    return PreCompose( UniversalMorphismIntoTerminalObject( obj_source ), UniversalMorphismFromInitialObject( obj_range ) );
+    
+  end : CategoryFilter := IsAdditiveCategory,
+        Description := "Zero morphism by composition of morphism into and from zero object" );
+
 ##
 InstallTrueMethodAndStoreImplication( CanComputePostCompose, CanComputePreCompose );
 
@@ -260,39 +207,42 @@ InstallMethodWithCacheFromObject( PostCompose,
     
 end : ArgumentNumber := 1 );
 
-## Inverse
-##
-InstallTrueMethodAndStoreImplication( CanComputeInverse, CanComputeMonoAsKernelLift and CanComputeIdentityMorphism );
-
-InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                       [ IsCapCategoryMorphism and CanComputeMonoAsKernelLift and CanComputeIdentityMorphism ],
-                                       -9999, #FIXME
-                                       
-  function( mor )
-    local identity_of_range;
-        
-        identity_of_range := IdentityMorphism( Range( mor ) );
-        
-        return MonoAsKernelLift( mor, identity_of_range );
-        
-end );
-
+# AddDerivationToCAP( PostCompose,
+#                     [ [ PreCompose, 1 ] ],
+#                     
+#   function( right_mor, left_mor )
+#     
+#     return PreCompose( left_mor, right_mor );
+#     
+# end : Description := "PostCompose using PreCompose and swapping arguments" );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeInverse, CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism );
-
-InstallMethodWithToDoForIsWellDefined( InverseOp,
-                                       [ IsCapCategoryMorphism and CanComputeEpiAsCokernelColift and CanComputeIdentityMorphism ],
-                                       -9998, #FIXME
-                                       
-  function( mor )
-    local identity_of_source;
-    
-    identity_of_source := IdentityMorphism( Source( mor ) );
-    
-    return EpiAsCokernelColift( mor, identity_of_source );
-      
-end );
+# AddDerivationToCAP( Inverse,
+#                     [ [ IdentityMorphism, 1 ],
+#                       [ MonoAsKernelLift, 1 ] ],
+#                                        
+#   function( mor )
+#     local identity_of_range;
+#         
+#         identity_of_range := IdentityMorphism( Range( mor ) );
+#         
+#         return MonoAsKernelLift( mor, identity_of_range );
+#         
+# end : Description := "Inverse using MonoAsKernelLift of an identity morphism" );
+# 
+# ##
+# AddDerivationToCAP( Inverse,
+#                     [ [ IdentityMorphism, 1 ],
+#                       [ EpiAsCokernelColift, 1 ] ],
+#                                        
+#   function( mor )
+#     local identity_of_source;
+#     
+#     identity_of_source := IdentityMorphism( Source( mor ) );
+#     
+#     return EpiAsCokernelColift( mor, identity_of_source );
+#       
+# end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
 
 ## FIXME: IsAbelianCategory too restrictive
 InstallTrueMethodAndStoreImplication( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );

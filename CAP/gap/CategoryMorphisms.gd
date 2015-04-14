@@ -240,10 +240,28 @@ DeclareOperation( "TransportHom",
 ##
 ###################################
 
-DeclareOperation( "IsEqualAsSubobject",
+DeclareOperation( "AddIsEqualAsSubobjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualAsSubobjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualAsSubobjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "IsEqualAsSubobjects",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "IsEqualAsFactorobject",
+DeclareOperation( "AddIsEqualAsFactorobjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualAsFactorobjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualAsFactorobjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "IsEqualAsFactorobjects",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "Dominates",

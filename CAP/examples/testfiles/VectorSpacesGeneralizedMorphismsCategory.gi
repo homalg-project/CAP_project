@@ -2,12 +2,13 @@
 
 #! @Section Generalized morphisms category
 
+
 if not IsBound( VectorSpacesConstructorsLoaded ) then
 
   ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );;
 
 fi;
-
+ActivateDerivationInfo();
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest

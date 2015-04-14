@@ -429,8 +429,8 @@ end );
 
 ##
 InstallTrueMethod( CanComputeIsEqualForMorphisms,
-                   CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
-                   and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
+                   CanComputeIsEqualAsSubobjectsInUnderlyingHonestCategory
+                   and CanComputeIsEqualAsFactorobjectsInUnderlyingHonestCategory
                    and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
                    and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
                    and CanComputeIsEqualForMorphismsInUnderlyingHonestCategory
@@ -439,8 +439,8 @@ InstallTrueMethod( CanComputeIsEqualForMorphisms,
 
 InstallMethodWithCacheFromObject( IsEqualForMorphisms,
                                   [ IsGeneralizedMorphism
-                                    and CanComputeEqualityOfSubobjectsInUnderlyingHonestCategory
-                                    and CanComputeEqualityOfFactorobjectsInUnderlyingHonestCategory
+                                    and CanComputeIsEqualAsSubobjectsInUnderlyingHonestCategory
+                                    and CanComputeIsEqualAsFactorobjectsInUnderlyingHonestCategory
                                     and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
                                     and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
                                     and CanComputeIsEqualForMorphismsInUnderlyingHonestCategory
@@ -461,7 +461,7 @@ InstallMethodWithCacheFromObject( IsEqualForMorphisms,
     
     subobject2 := Domain( generalized_morphism2 );
     
-    if not IsEqualAsSubobject( subobject1, subobject2 ) then
+    if not IsEqualAsSubobjects( subobject1, subobject2 ) then
       
       return false;
       
@@ -471,7 +471,7 @@ InstallMethodWithCacheFromObject( IsEqualForMorphisms,
     
     factorobject2 := Codomain( generalized_morphism2 );
     
-    if not IsEqualAsFactorobject( factorobject1, factorobject2 ) then
+    if not IsEqualAsFactorobjects( factorobject1, factorobject2 ) then
       
       return false;
       

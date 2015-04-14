@@ -319,19 +319,17 @@ UniversalMorphismFromCoproductWithGivenCoproduct := rec(
     return [ true ];
   end ),
 
-EqualityOfSubobjects := rec(
-  installation_name := "EqualityOfSubobjects",
+IsEqualAsSubobjects := rec(
+  installation_name := "IsEqualAsSubobjects",
   filter_list := [ [ "morphism", IsSubobject ], [ "morphism", IsSubobject ] ],
-  cache_name := "EqualityOfSubobjects",
-  well_defined_todo := false,
-  no_install := true ), #there is no Add-method 
+  cache_name := "IsEqualAsSubobjects",
+  well_defined_todo := false ),
 
-EqualityOfFactorobjects := rec(
-  installation_name := "EqualityOfFactorobjects",
+IsEqualAsFactorobjects := rec(
+  installation_name := "IsEqualAsFactorobjects",
   filter_list := [ [ "morphism", IsFactorobject ], [ "morphism", IsFactorobject ] ],
-  cache_name := "EqualityOfFactorobjects",
-  well_defined_todo := false,
-  no_install := true ), #there is no Add-method
+  cache_name := "IsEqualAsFactorobjects",
+  well_defined_todo := false ),
 
 Dominates := rec(
   installation_name := "Dominates",
