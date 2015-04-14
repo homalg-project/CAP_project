@@ -116,7 +116,7 @@ AddDerivationToCAP( IsEqualAsSubobjects,
     
     return Dominates( sub1, sub2 ) and Dominates( sub2, sub1 );
     
-end );
+end : Description := "IsEqualAsSubobjects(sub1, sub2) if sub1 dominates sub2 and vice versa" );
 
 InstallTrueMethodAndStoreImplication( CanComputeIsEqualAsFactorobjects, CanComputeCodominates );
 
@@ -179,7 +179,7 @@ AddDerivationToCAP( Dominates,
     
     return IsZero( composition );
     
-end );
+end : Description := "Dominates(sub1, sub2) by deciding if sub1 composed with CokernelProj(sub2) is zero" );
 
 
 InstallTrueMethodAndStoreImplication( CanComputeCodominates, CanComputeKernelEmb and CanComputeDominates and IsPreAbelianCategory );
