@@ -106,7 +106,7 @@ function( d, weight, C )
   implementation_list := DerivationFunctionsWithExtraFilters( d );
   
   add_method := ValueGlobal( Concatenation( "Add", method_name ) );
-  add_method( C, implementation_list : SetPrimitive := false );
+  add_method( C, implementation_list, 1 : SetPrimitive := false ); ##The third argument is ignored
   
 end );
 
