@@ -39,26 +39,18 @@ end : Description := "IsZeroForObjects by comparing identity morphism with zero 
 ###########################
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, CanComputeKernelObject and CanComputeIsZeroForObjects and IsAdditiveCategory );
-
-InstallMethod( IsMonomorphism,
-               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeIsZeroForObjects and IsAdditiveCategory ],
-               -9900, #FIXME
-               
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               IsMonomorphism,
+               [ [ IsZeroForObjects, 1 ],
+                 [ KernelObject, 1 ] ],
   function( morphism )
     
     return IsZero( KernelObject( morphism ) );
     
-end );
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "IsMonomorphism by deciding if the kernel is a zero object" );
 
 ##
-# InstallTrueMethodAndStoreImplication( CanComputeIsMonomorphism, 
-#                    CanComputeIsIsomorphism
-#                    and CanComputeIdentityMorphism
-#                    and CanComputeProjectionInFactorOfFiberProduct
-#                    and CanComputePreCompose
-#                    and CanComputeUniversalMorphismIntoFiberProduct );
-
 AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
                IsMonomorphism,
                [ [ IsIsomorphism, 1 ],
@@ -76,46 +68,31 @@ AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
       
       return IsIsomorphism( diagonal_morphism );
     
-end );
-
-#
-InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism, CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory );
-
-InstallMethod( IsEpimorphism,
-               [ IsCapCategoryMorphism and CanComputeCokernel and CanComputeIsZeroForObjects and IsAdditiveCategory ],
-               -9900, #FIXME
-               
-  function( morphism )
-    
-    return IsZero( Cokernel( morphism ) );
-    
-end );
+end : Description := "IsMonomorphism by deciding if the diagonal morphism is an isomorphism" );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeIsEpimorphism,
-                   CanComputeIsIsomorphism
-                   and CanComputeIdentityMorphism
-                   and CanComputeInjectionOfCofactorOfPushout
-                   and CanComputePreCompose
-                   and CanComputeUniversalMorphismFromPushout );
+# AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+#                IsEpimorphism,
+#                [ [ IsZeroForObjects, 1 ],
+#                  [ Cokernel, 1 ] ],
+#   function( morphism )
+#     
+#     return IsZero( Cokernel( morphism ) );
+#     
+# end : CategoryFilter := IsAdditiveCategory,
+#       Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
 
-InstallMethod( IsEpimorphism,
-               [ IsCapCategoryMorphism
-                 and CanComputeIsIsomorphism
-                 and CanComputeIdentityMorphism
-                 and CanComputeInjectionOfCofactorOfPushout
-                 and CanComputePreCompose
-                 and CanComputeUniversalMorphismFromPushout ],
-                 -9999, #FIXME
+##
+AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH,
+               IsEpimorphism,
+               [ [ IdentityMorphism, 1 ],
+                 [ UniversalMorphismFromPushout, 1 ],
+                 [ IsIsomorphism, 1 ] ],
                  
   function( morphism )
-    local pushout_diagram, pushout_injection_1, pushout_injection_2, identity, codiagonal_morphism;
+    local pushout_diagram, identity, codiagonal_morphism;
       
       pushout_diagram := [ morphism, morphism ];
-      
-      pushout_injection_1 := InjectionOfCofactorOfPushout( pushout_diagram, 1 );
-      
-      pushout_injection_2 := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
       
       identity := IdentityMorphism( Range( morphism ) );
       
@@ -123,7 +100,7 @@ InstallMethod( IsEpimorphism,
       
       return IsIsomorphism( codiagonal_morphism );
     
-end );
+end : Description := "IsEpimorphism by deciding if the codiagonal morphism is an isomorphism" );
 
 ##
 InstallTrueMethodAndStoreImplication( SetCanComputeIsIsomorphism, CanComputeIsMonomorphism and CanComputeIsEpimorphism and IsAbelianCategory );#TODO: weaker?
