@@ -305,9 +305,6 @@ DeclareAttribute( "CodominatesFunction",
 DeclareOperation( "PreCompose",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareAttributeWithToDoForIsWellDefined( "EpiMonoFactorization",
-                                          IsCapCategoryMorphism );
-
 ###################################
 ##
 ## IsWellDefined

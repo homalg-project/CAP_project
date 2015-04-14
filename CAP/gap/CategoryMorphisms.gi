@@ -407,34 +407,6 @@ InstallMethod( IsWellDefinedForMorphisms,
 
 ###########################
 ##
-## EpiMonoFactorization
-##
-###########################
-
-## FIXME: these special derivations rely on the fact that they are compatible with the general method
-## for EpiMonoFactorization
-
-# InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
-#                                        [ IsCapCategoryMorphism and IsMonomorphism and CanComputeIdentityMorphism ],
-#                                        
-#   function( monomorphism )
-#     
-#     return [ IdentityMorphism( Source( monomorphism ) ), monomorphism ];
-#     
-# end );
-# 
-# ##
-# InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
-#                                        [ IsCapCategoryMorphism and IsEpimorphism and CanComputeIdentityMorphism ],
-#                                        
-#   function( epimorphism )
-#     
-#     return [ epimorphism, IdentityMorphism( Range( epimorphism ) ) ];
-#     
-# end );
-
-###########################
-##
 ## Print
 ##
 ###########################

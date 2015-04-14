@@ -10,6 +10,29 @@
 
 ###########################
 ##
+## EpiMonoFactorization
+##
+###########################
+
+##
+InstallMethod( EpiMonoFactorization,
+               [ IsCapCategoryMorphism ],
+                                       
+  function( morphism )
+    local kernel_embedding, epimorphism, monomorphism;
+    
+    kernel_embedding := KernelEmb( morphism );
+    
+    epimorphism := CokernelProj( kernel_embedding );
+    
+    monomorphism := CokernelColift( kernel_embedding, morphism );
+    
+    return [ epimorphism, monomorphism ];
+    
+end );
+
+###########################
+##
 ## Snake-Lemma
 ##
 ###########################

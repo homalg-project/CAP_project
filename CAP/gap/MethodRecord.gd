@@ -649,13 +649,6 @@ IsIsomorphism := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false ),
 
-## TODO: is this function necessary?
-# EpiMonoFactorization := rec(
-#   installation_name := "EpiMonoFactorization",
-#   filter_list := [ "morphism" ],
-#   cache_name := "EpiMonoFactorization",
-#   well_defined_todo := false ),
-
 CoastrictionToImage := rec(
   installation_name := "CoastrictionToImage",
   filter_list := [ "morphism" ],

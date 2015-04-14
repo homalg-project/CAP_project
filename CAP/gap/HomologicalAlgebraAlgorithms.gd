@@ -9,6 +9,9 @@
 ##
 #############################################################################
 
+DeclareOperation( "EpiMonoFactorization",
+                  [ IsCapCategoryMorphism ] );
+
 ####################################
 ##
 ## Snake-Lemma

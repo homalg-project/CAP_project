@@ -194,19 +194,7 @@ AddDerivationToCAP( ZeroMorphism,
   end : CategoryFilter := IsAdditiveCategory,
         Description := "Zero morphism by composition of morphism into and from zero object" );
 
-# ##
-# InstallTrueMethodAndStoreImplication( CanComputePostCompose, CanComputePreCompose );
-# 
-# InstallMethodWithCacheFromObject( PostCompose,
-#                                   [ IsCapCategoryMorphism and CanComputePreCompose,
-#                                   IsCapCategoryMorphism and CanComputePreCompose ],
-#                
-#   function( right_mor, left_mor )
-#     
-#     return PreCompose( left_mor, right_mor );
-#     
-# end : ArgumentNumber := 1 );
-
+##
 AddDerivationToCAP( PostCompose,
                     [ [ PreCompose, 1 ] ],
                     
@@ -216,7 +204,7 @@ AddDerivationToCAP( PostCompose,
     
 end : Description := "PostCompose using PreCompose and swapping arguments" );
 
-#
+##
 AddDerivationToCAP( Inverse,
                     [ [ IdentityMorphism, 1 ],
                       [ MonoAsKernelLift, 1 ] ],
@@ -243,25 +231,6 @@ AddDerivationToCAP( Inverse,
     return EpiAsCokernelColift( mor, identity_of_source );
       
 end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
-
-## FIXME: IsAbelianCategory too restrictive
-InstallTrueMethodAndStoreImplication( CanComputeEpiMonoFactorization, IsAbelianCategory and CanComputeKernelEmb and CanComputeCokernelProj and CanComputeCokernelColift );
-
-InstallMethodWithToDoForIsWellDefined( EpiMonoFactorization,
-                                       [ IsCapCategoryMorphism ],
-                                       
-  function( morphism )
-    local kernel_embedding, epimorphism, monomorphism;
-    
-    kernel_embedding := KernelEmb( morphism );
-    
-    epimorphism := CokernelProj( kernel_embedding );
-    
-    monomorphism := CokernelColift( kernel_embedding, morphism );
-    
-    return [ epimorphism, monomorphism ];
-    
-end );
 
 ###########################
 ##
