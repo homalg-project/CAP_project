@@ -365,3 +365,13 @@ DeclareOperation( "Swap", [ IsStringMinHeap, IsPosInt, IsPosInt ] );
 #!  This is an internal function.
 #! @Arguments H, i
 DeclareOperation( "Heapify", [ IsStringMinHeap, IsPosInt ] );
+
+
+#################################
+##
+## Some print functions
+##
+#################################
+
+DeclareGlobalFunction( "InstalledMethodsOfCategory" );
+

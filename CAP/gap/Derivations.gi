@@ -533,3 +533,57 @@ function( node, print_node, get_children, level )
     PrintTreeRec( child, print_node, get_children, level + 1 );
   od;
 end );
+
+#################################
+##
+## Some print functions
+##
+#################################
+
+##
+InstallGlobalFunction( InstalledMethodsOfCategory,
+  
+  function( cell )
+    local weight_list, list_of_methods, i, current_weight, can_compute, cannot_compute;
+    
+    if IsCapCategory( cell ) then
+        weight_list := cell!.derivations_weight_list;
+    elif IsCapCategoryCell( cell ) then
+        weight_list := CapCategory( cell )!.derivations_weight_list;
+    else
+        Error( "Input must be a category or a cell" );
+    fi;
+    
+    list_of_methods := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
+    
+    can_compute := [ ];
+    cannot_compute := [ ];
+    
+    for i in list_of_methods do
+        
+        current_weight := CurrentOperationWeight( weight_list, i );
+        
+        if current_weight < infinity then
+            Add( can_compute, [ i, current_weight ] );
+        else
+            Add( cannot_compute, i );
+        fi;
+        
+    od;
+    
+    Print( "Can do the following basic methods at the moment:\n" );
+    
+    for i in can_compute do
+        Print( "* ", i[ 1 ], ", weight ", String( i[ 2 ] ), "\n" );
+    od;
+    
+    Print( "\nThe following is still missing:\n" );
+    
+    for i in cannot_compute do
+        Print( "* ", i, "\n" );
+    od;
+    
+    Print( "\nPlease use PossibleDerivationsOfMethod( <category>, <name> ) do get\n",
+           "information about how to add the missing methods\n" );
+    
+end );
