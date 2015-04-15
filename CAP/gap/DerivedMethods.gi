@@ -243,6 +243,18 @@ AddDerivationToCAP( KernelLiftWithGivenKernelObject,
       
 end : Description := "KernelLiftWithGivenKernelObject using MonoAsKernelLift and KernelEmbWithGivenKernelObject" );
 
+##
+AddDerivationToCAP( CokernelColiftWithGivenCokernel,
+                    [ [ EpiAsCokernelColift, 1 ],
+                      [ CokernelProjWithGivenCokernel, 1 ] ],
+                                           
+    function( mor, test_morphism, cokernel )
+      
+      return EpiAsCokernelColift( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
+      
+end : Description := "CokernelColiftWithGivenCokernel using EpiAsCokernelColift and CokernelProjWithGivenCokernel" );
+
+
 ###########################
 ##
 ## Methods returning a morphism with source or range constructed within the method!
@@ -301,6 +313,53 @@ AddDerivationToCAP( KernelObjectFunctorial,
     
 end : Description := "KernelObjectFunctorial using the universality of the kernel" );
 
+##
+AddDerivationToCAP( CokernelColift,
+                    [ [ EpiAsCokernelColift, 1 ],
+                      [ CokernelProj, 1 ] ],
+                                  
+  function( mor, test_morphism )
+    
+    return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
+    
+end : Description := "CokernelColift using EpiAsCokernelColift and CokernelProj" );
+
+##
+AddDerivationToCAP( CokernelProj,
+                    [ [ CokernelProjWithGivenCokernel, 1 ] ],
+                    
+  function( mor )
+    
+    return CokernelProjWithGivenCokernel( mor, Cokernel( mor ) );
+    
+end : Description := "CokerneProj using CokernelProjWithGivenCokernel and Cokernel" );
+
+##
+AddDerivationToCAP( CokernelColift,
+                    [ [ CokernelColiftWithGivenCokernel, 1 ],
+                      [ Cokernel, 1 ] ],
+               
+  function( morphism, test_morphism )
+    
+    return CokernelColiftWithGivenCokernel( morphism, test_morphism, Cokernel( morphism ) );
+    
+end : Description := "CokernelColift using CokernelColiftWithGivenCokernel and Cokernel" );
+
+##
+AddDerivationToCAP( CokernelFunctorial,
+                    [ [ CokernelColift, 1 ],
+                      [ PreCompose, 1 ],
+                      [ CokernelProj, 1 ] ],
+                                  
+  function( alpha, nu, alpha_p )
+    
+    return CokernelColift(
+                alpha,
+                PreCompose( nu, CokernelProj( alpha_p ) )
+              );
+    
+end : Description := "CokernelFunctorial using the universality of the cokernel" );
+
 ###########################
 ##
 ## Methods returning an object
@@ -317,105 +376,16 @@ AddDerivationToCAP( KernelObject,
     
 end : Description := "KernelObject as the source of KernelEmb" );
 
-
-
-
-
-
-
-
-####################################
-## Derived Methods for Cokernel
-####################################
-
 ##
-InstallTrueMethodAndStoreImplication( CanComputeCokernelColift, CanComputeCokernelProj and CanComputeEpiAsCokernelColift );
-
-InstallMethodWithCacheFromObject( CokernelColift,
-                                  [ IsCapCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift,
-                                    IsCapCategoryMorphism and CanComputeCokernelProj and CanComputeEpiAsCokernelColift ],
-                                  -9999, #FIXME
-                                  
-  function( mor, test_morphism )
-    
-    return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeCokernelColiftWithGivenCokernel, 
-                                      CanComputeCokernelProjWithGivenCokernel 
-                                      and CanComputeEpiAsCokernelColift );
-
-InstallMethodWithCacheFromObject( CokernelColiftWithGivenCokernel,
-                                  [ IsCapCategoryMorphism and CanComputeCokernelProjWithGivenCokernel and CanComputeEpiAsCokernelColift,
-                                    IsCapCategoryMorphism,
-                                    IsCapCategoryObject ],
-                                           
-    function( mor, test_morphism, cokernel )
-      
-      return EpiAsCokernelColift( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
-      
-end );
-
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeCokernel, CanComputeCokernelProj );
-
-InstallMethod( Cokernel,
-               [ IsCapCategoryMorphism and CanComputeCokernelProj ],
-               -9999, #FIXME
+AddDerivationToCAP( Cokernel,
+                    [ [ CokernelProj, 1 ] ],
                                   
   function( mor )
     
     return Range( CokernelProj( mor ) );
     
-end );
+end : Description := "Cokernel as the range of CokernelProj" );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeCokernelProj, CanComputeCokernel and CanComputeCokernelProjWithGivenCokernel );
-
-InstallMethod( CokernelProj,
-               [ IsCapCategoryMorphism and CanComputeCokernel and CanComputeCokernelProjWithGivenCokernel ],
-               -9999, #FIXME
-               
-  function( mor )
-    
-    return CokernelProjWithGivenCokernel( mor, Cokernel( mor ) );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeCokernelColift, CanComputeCokernel and CanComputeCokernelColiftWithGivenCokernel );
-
-InstallMethod( CokernelColift,
-               [ IsCapCategoryMorphism and CanComputeCokernel and CanComputeCokernelColiftWithGivenCokernel,
-                 IsCapCategoryMorphism ],
-               -9999, #FIXME
-               
-  function( morphism, test_morphism )
-    
-    return CokernelColiftWithGivenCokernel( morphism, test_morphism, Cokernel( morphism ) );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeCokernelFunctorial,
-                   CanComputeCokernelColift and CanComputeCokernelProj and CanComputePreCompose );
-
-InstallMethodWithCacheFromObject( CokernelFunctorial,
-                                  [ IsCapCategoryMorphism and CanComputeCokernelColift and CanComputeCokernelProj and CanComputePreCompose,
-                                    IsCapCategoryMorphism,
-                                    IsCapCategoryMorphism ],
-                                  
-  function( alpha, nu, alpha_p )
-    
-    return CokernelColift(
-                alpha,
-                PreCompose( nu, CokernelProj( alpha_p ) )
-              );
-    
-end );
 
 ####################################
 ## Derived Methods for Coproduct
