@@ -401,6 +401,47 @@ AddDerivationToCAP( CoproductFunctorial,
         
 end : Description := "CoproductFunctorial using the universality of the coproduct" );
 
+##
+AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
+                    [ [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ],
+                      [ DirectProduct, 1 ] ],
+                                       
+  function( diagram, source, method_selection_object )
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, source, CallFuncList( DirectProduct, List( source, Range ) ) );
+    
+end : Description := "DirectProduct using UniversalMorphismIntoDirectProductWithGivenDirectProduct and DirectProduct" );
+
+##
+AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
+                    [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
+                      [ DirectProduct, 1 ] ],
+                                         
+  function( object_product_list, projection_number, method_selection_object )
+    
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, object_product_list ) );
+    
+end : Description := "ProjectionInFactorOfDirectProduct using ProjectionInFactorOfDirectProductWithGivenDirectProduct and DirectProduct" );
+
+##
+AddDerivationToCAP( DirectProductFunctorial,
+                    [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ UniversalMorphismIntoDirectProduct, 1 ] ],
+                                  
+  function( morphism_list, caching_object )
+    local direct_product_diagram, source, diagram;
+        
+        direct_product_diagram := List( morphism_list, mor -> Source( mor ) );
+        
+        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), morphism_list[i] ) );
+        
+        diagram := List( morphism_list, mor -> Range( mor ) );
+        
+        return UniversalMorphismIntoDirectProduct( diagram, source );
+        
+end : Description := "DirectProductFunctorial using universality of direct product" );
+
 ###########################
 ##
 ## Methods returning an object
@@ -437,82 +478,25 @@ AddDerivationToCAP( Coproduct,
     
 end : Description := "Coproduct as the range of the first injection" );
 
-
-####################################
-## Derived Methods for DirectProduct
-####################################
-
 ##
-InstallTrueMethodAndStoreImplication( CanComputeDirectProduct, CanComputeProjectionInFactorOfDirectProduct );
-
-##
-InstallMethodWithToDoForIsWellDefined( DirectProductOp,
-                                       [ IsList,
-                                         IsCapCategoryObject and CanComputeProjectionInFactorOfDirectProduct ],
-                                        -9999, #FIXME
+AddDerivationToCAP( DirectProduct,
+                    [ [ ProjectionInFactorOfDirectProduct, 1 ] ],
                                         
   function( object_product_list, method_selection_object )
     
     return Source( ProjectionInFactorOfDirectProduct( object_product_list, 1 ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+end : Description := "DirectProduct as Source of ProjectionInFactorOfDirectProduct" );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoDirectProduct,
-                   CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct );
+####################################
+## Derived Methods for DirectProduct
+####################################
 
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
-                                       [ IsList,
-                                         IsList,
-                                         IsCapCategoryObject and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
-                                         -9999, #FIXME
-                                       
-  function( diagram, source, method_selection_object )
-    
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, source, CallFuncList( DirectProduct, List( source, Range ) ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfDirectProduct, CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct );
 
-InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
-                                       [ IsList,
-                                         IsInt,
-                                         IsCapCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct ],
-                                         -9999, #FIXME
-                                         
-  function( object_product_list, projection_number, method_selection_object )
-    
-    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, object_product_list ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeDirectProductFunctorial,
-                   CanComputeDirectProduct and CanComputePreCompose and CanComputeProjectionInFactorOfDirectProduct 
-                   and CanComputeUniversalMorphismIntoDirectProduct );
 
-InstallMethodWithCacheFromObject( DirectProductFunctorialOp,
-                                  [ IsList,
-                                    IsCapCategoryMorphism
-                                    and CanComputeDirectProduct
-                                    and CanComputePreCompose
-                                    and CanComputeProjectionInFactorOfDirectProduct
-                                    and CanComputeUniversalMorphismIntoDirectProduct ],
-                                  
-  function( morphism_list, caching_object )
-    local direct_product_diagram, source, diagram;
-        
-        direct_product_diagram := List( morphism_list, mor -> Source( mor ) );
-        
-        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), morphism_list[i] ) );
-        
-        diagram := List( morphism_list, mor -> Range( mor ) );
-        
-        return UniversalMorphismIntoDirectProduct( diagram, source );
-        
-end : ArgumentNumber := 2 );
+
 
 ####################################
 ## Derived Methods due to DirectSum
