@@ -232,99 +232,65 @@ AddDerivationToCAP( Inverse,
       
 end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
 
-###########################
 ##
-## Derivations taken from UniversalObjects.gi
-##
-###########################
-
-####################################
-## Derived Methods for Kernel
-####################################
-##
-InstallTrueMethodAndStoreImplication( CanComputeKernelLift, CanComputeKernelEmb and CanComputeMonoAsKernelLift );
-
-InstallMethodWithCacheFromObject( KernelLift,
-                                  [ IsCapCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift,
-                                    IsCapCategoryMorphism and CanComputeKernelEmb and CanComputeMonoAsKernelLift ],
-                                    -9999, #FIXME
-                                    
-  function( mor, test_morphism )
-    local kernel_lift, kernel;
-    
-    ## KernelEmb passes its kernel object to the kernel lift
-    kernel_lift := MonoAsKernelLift( KernelEmb( mor ), test_morphism );
-    
-    return kernel_lift;
-    
-end );
-
-
-#
-InstallTrueMethodAndStoreImplication( CanComputeKernelLiftWithGivenKernelObject, 
-                                      CanComputeKernelEmbWithGivenKernelObject and CanComputeMonoAsKernelLift );
-
-InstallMethodWithCacheFromObject( KernelLiftWithGivenKernelObject,
-                                  [ IsCapCategoryMorphism and CanComputeKernelEmbWithGivenKernelObject and CanComputeMonoAsKernelLift,
-                                    IsCapCategoryMorphism,
-                                    IsCapCategoryObject ],
-                                  -9999, #FIXME
-                                           
+AddDerivationToCAP( KernelLiftWithGivenKernelObject,
+                    [ [ MonoAsKernelLift, 1 ],
+                      [ KernelEmbWithGivenKernelObject, 1 ] ],
+                      
     function( mor, test_morphism, kernel )
       
       return MonoAsKernelLift( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
       
-end );
+end : Description := "KernelLiftWithGivenKernelObject using MonoAsKernelLift and KernelEmbWithGivenKernelObject" );
+
+###########################
+##
+## Methods returning a morphism with source or range constructed within the method!
+## If there is a method available which only constructs this source or range,
+## one has to be sure that this source is equal to that construction (by IsEqualForObjects)
+##
+###########################
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernelObject, CanComputeKernelEmb );
-
-InstallMethod( KernelObject,
-               [ IsCapCategoryMorphism and CanComputeKernelEmb ],
-               -9999, #FIXME
-               
-  function( mor )
+AddDerivationToCAP( KernelLift,
+                    [ [ MonoAsKernelLift, 1 ],
+                      [ KernelEmb, 1 ] ],
+  function( mor, test_morphism )
+    local kernel_lift, kernel;
     
-    return Source( KernelEmb( mor ) );
+    kernel_lift := MonoAsKernelLift( KernelEmb( mor ), test_morphism );
     
-end );
-
+    return kernel_lift;
+    
+end : Description := "KernelLift using MonoAsKernelLift and KernelEmb" );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernelEmb, CanComputeKernelObject and CanComputeKernelEmbWithGivenKernelObject );
-
-InstallMethod( KernelEmb,
-               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeKernelEmbWithGivenKernelObject ],
-               -9999, #FIXME
-               
+AddDerivationToCAP( KernelEmb,
+                    [ [ KernelEmbWithGivenKernelObject, 1 ],
+                      [ KernelObject, 1 ] ],
+                      
   function( mor )
     
     return KernelEmbWithGivenKernelObject( mor, KernelObject( mor ) );
     
-end );
+end : Description := "KernelEmb using KernelEmbWithGivenKernelObject and KernelObject" );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernelLift, CanComputeKernelObject and CanComputeKernelLiftWithGivenKernelObject );
-
-InstallMethod( KernelLift,
-               [ IsCapCategoryMorphism and CanComputeKernelObject and CanComputeKernelLiftWithGivenKernelObject,
-                 IsCapCategoryMorphism ],
-               -9999, #FIXME
+AddDerivationToCAP( KernelLift,
+                    [ [ KernelLiftWithGivenKernelObject, 1 ],
+                      [ KernelObject, 1 ] ],
                
   function( morphism, test_morphism )
     
     return KernelLiftWithGivenKernelObject( morphism, test_morphism, KernelObject( morphism ) );
     
-end );
+end : Description := "KernelLift using KernelLiftWithGivenKernelObject and KernelObject" );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeKernelObjectFunctorial,
-                   CanComputeKernelLift and CanComputeKernelEmb and CanComputePreCompose );
-
-InstallMethodWithCacheFromObject( KernelObjectFunctorial,
-                                  [ IsCapCategoryMorphism and CanComputeKernelLift and CanComputeKernelEmb and CanComputePreCompose,
-                                    IsCapCategoryMorphism,
-                                    IsCapCategoryMorphism ],
+AddDerivationToCAP( KernelObjectFunctorial,
+                    [ [ KernelLift, 1 ],
+                      [ PreCompose, 1 ],
+                      [ KernelEmb, 1 ] ],
                                   
   function( alpha, mu, alpha_p )
     
@@ -333,7 +299,30 @@ InstallMethodWithCacheFromObject( KernelObjectFunctorial,
                 PreCompose( KernelEmb( alpha ), mu )
               );
     
-end );
+end : Description := "KernelObjectFunctorial using the universality of the kernel" );
+
+###########################
+##
+## Methods returning an object
+##
+###########################
+
+##
+AddDerivationToCAP( KernelObject,
+                    [ [ KernelEmb, 1 ] ],
+                    
+  function( mor )
+    
+    return Source( KernelEmb( mor ) );
+    
+end : Description := "KernelObject as the source of KernelEmb" );
+
+
+
+
+
+
+
 
 ####################################
 ## Derived Methods for Cokernel

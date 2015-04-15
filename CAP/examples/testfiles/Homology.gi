@@ -6,7 +6,7 @@
 LoadPackage( "ModulePresentationsForHomalg" );
 LoadPackage( "RingsForHomalg" );
 
-
+ActivateDerivationInfo();
 #! @Example
 ZZ := HomalgRingOfIntegersInSingular( );
 #! Z
