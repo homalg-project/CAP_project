@@ -657,6 +657,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             Print( "It was given as a primitive operation.\n\n" );
         else
             Print( "It was derived by ", DerivationName( current_derivation ), " using \n" );
+            used_ops_with_multiples := UsedOperationsWithMultiples( current_derivation );
             for i in used_ops_with_multiples do
                 
                 Print( "* ", i[ 1 ], " (x", i[ 2 ], ")" );
