@@ -311,6 +311,18 @@ AddDerivationToCAP( AdditionForMorphisms,
 end : CategoryFilter := IsAdditiveCategory,
       Description := "AdditionForMorphisms(mor1, mor2) as the composition of (mor1,mor2) with the codiagonal morphism" );
 
+##
+AddDerivationToCAP( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+                    [ [ ZeroMorphism, 1 ] ],
+                 
+  function( test_source, terminal_object )
+    
+    return ZeroMorphism( test_source, terminal_object );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject computing the zero morphism");
+
+
 ###########################
 ##
 ## Methods returning a morphism with source or range constructed within the method!
@@ -520,6 +532,17 @@ AddDerivationToCAP( DirectSumFunctorial,
 end : CategoryFilter := IsAdditiveCategory,
       Description := "DirectSumFunctorial using CoproductFunctorial" );
 
+##
+AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
+                    [ [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
+                      [ TerminalObject, 1 ] ],
+  function( test_source )
+    
+    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( CapCategory( test_source ) ) );
+    
+end : Description := "UniversalMorphismIntoTerminalObject using UniversalMorphismIntoTerminalObjectWithGivenTerminalObject and TerminalObject");
+
+
 ###########################
 ##
 ## Methods returning an object
@@ -585,41 +608,12 @@ AddDerivationToCAP( Coproduct,
 end : Description := "Coproduct equals DirectSum"  );
 
 
+
 ####################################
 ## Derived Methods for TerminalObject
 ####################################
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoTerminalObject,
-                   CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject );
 
-InstallMethod( UniversalMorphismIntoTerminalObject,
-               [ IsCapCategoryObject and CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject ],
-               -9999, #FIXME
-              
-  function( test_source )
-    
-    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( CapCategory( test_source ) ) );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
-                   CanComputeZeroMorphism
-                   and IsAdditiveCategory );
-
-InstallMethod( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
-               [ IsCapCategoryObject
-                 and CanComputeZeroMorphism
-                 and IsAdditiveCategory,
-                 IsCapCategoryObject ],
-                 -9999, #FIXME
-                 
-  function( test_source, terminal_object )
-    
-    return ZeroMorphism( test_source, terminal_object );
-    
-end );
 
 ##
 InstallTrueMethodAndStoreImplication( CanComputeTerminalObject, CanComputeZeroObject );
