@@ -360,6 +360,47 @@ AddDerivationToCAP( CokernelFunctorial,
     
 end : Description := "CokernelFunctorial using the universality of the cokernel" );
 
+##
+AddDerivationToCAP( UniversalMorphismFromCoproduct,
+                    [ [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ],
+                      [ Coproduct, 1 ] ],
+                                       
+  function( diagram, sink, method_selection_object )
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( diagram, sink, CallFuncList( Coproduct, List( sink, Source ) ) );
+    
+end : Description := "UniversalMorphismFromCoproduct using UniversalMorphismFromCoproductWithGivenCoproduct and Coproduct" );
+
+##
+AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
+                    [ [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 1 ],
+                      [ Coproduct, 1 ] ],
+                                         
+  function( object_product_list, injection_number, method_selection_object )
+    
+    return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CallFuncList( Coproduct, object_product_list ) );
+    
+end : Description := "InjectionOfCofactorOfCoproduct using InjectionOfCofactorOfCoproductWithGivenCoproduct and Coproduct" );
+
+##
+AddDerivationToCAP( CoproductFunctorial,
+                    [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ UniversalMorphismFromCoproduct, 1 ] ], 
+                                  
+  function( morphism_list, caching_object )
+    local coproduct_diagram, sink, diagram;
+        
+        coproduct_diagram := List( morphism_list, mor -> Range( mor ) );
+        
+        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( morphism_list[i], InjectionOfCofactorOfCoproduct( coproduct_diagram, i ) ) );
+        
+        diagram := List( morphism_list, mor -> Source( mor ) );
+        
+        return UniversalMorphismFromCoproduct( diagram, sink );
+        
+end : Description := "CoproductFunctorial using the universality of the coproduct" );
+
 ###########################
 ##
 ## Methods returning an object
@@ -386,83 +427,16 @@ AddDerivationToCAP( Cokernel,
     
 end : Description := "Cokernel as the range of CokernelProj" );
 
-
-####################################
-## Derived Methods for Coproduct
-####################################
-
 ##
-InstallTrueMethodAndStoreImplication( CanComputeCoproduct, CanComputeInjectionOfCofactorOfCoproduct );
-
-##
-## this methods is installed using the (cache of the (object of the second argument) )
-InstallMethodWithToDoForIsWellDefined( CoproductOp,
-                                       [ IsList,
-                                         IsCapCategoryObject and CanComputeInjectionOfCofactorOfCoproduct ],
-                                        -9999, #FIXME
+AddDerivationToCAP( Coproduct,
+                    [ [ InjectionOfCofactorOfCoproduct, 1 ] ],
                                         
   function( object_product_list, method_selection_object )
     
     return Range( InjectionOfCofactorOfCoproduct( object_product_list, 1 ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+end : Description := "Coproduct as the range of the first injection" );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromCoproduct,
-                   CanComputeCoproduct and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct );
-
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductOp,
-                                       [ IsList,
-                                         IsList,
-                                         IsCapCategoryObject and CanComputeCoproduct and CanComputeUniversalMorphismFromCoproductWithGivenCoproduct ],
-                                         -9999, #FIXME
-                                       
-  function( diagram, sink, method_selection_object )
-    
-    return UniversalMorphismFromCoproductWithGivenCoproduct( diagram, sink, CallFuncList( Coproduct, List( sink, Source ) ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeInjectionOfCofactorOfCoproduct, CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct );
-
-InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfCoproductOp,
-                                       [ IsList,
-                                         IsInt,
-                                         IsCapCategoryObject and CanComputeCoproduct and CanComputeInjectionOfCofactorOfCoproductWithGivenCoproduct, ],
-                                         -9999, #FIXME
-                                         
-  function( object_product_list, injection_number, method_selection_object )
-    
-    return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CallFuncList( Coproduct, object_product_list ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeCoproductFunctorial,
-                   CanComputeCoproduct and CanComputePreCompose and CanComputeInjectionOfCofactorOfCoproduct
-                   and CanComputeUniversalMorphismFromCoproduct );
-
-InstallMethodWithCacheFromObject( CoproductFunctorialOp,
-                                  [ IsList,
-                                    IsCapCategoryMorphism
-                                    and CanComputeCoproduct
-                                    and CanComputePreCompose
-                                    and CanComputeInjectionOfCofactorOfCoproduct
-                                    and CanComputeUniversalMorphismFromCoproduct ],
-                                  
-  function( morphism_list, caching_object )
-    local coproduct_diagram, sink, diagram;
-        
-        coproduct_diagram := List( morphism_list, mor -> Range( mor ) );
-        
-        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( morphism_list[i], InjectionOfCofactorOfCoproduct( coproduct_diagram, i ) ) );
-        
-        diagram := List( morphism_list, mor -> Source( mor ) );
-        
-        return UniversalMorphismFromCoproduct( diagram, sink );
-        
-end : ArgumentNumber := 2 );
 
 ####################################
 ## Derived Methods for DirectProduct
