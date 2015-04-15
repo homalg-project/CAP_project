@@ -121,7 +121,7 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
 #! Embedding of a given kernel $K$ of a given morphism $\alpha$ into the source of $\alpha$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, K
-DeclareOperation( "KernelEmbWithGivenKernelObject",
+DeclareOperationWithCache( "KernelEmbWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 # @Description
@@ -148,7 +148,7 @@ DeclareOperation( "KernelLift",
 #! denotes the kernel embedding.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, tau, K
-DeclareOperation( "KernelLiftWithGivenKernelObject",
+DeclareOperationWithCache( "KernelLiftWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
@@ -209,13 +209,13 @@ DeclareOperation( "AddKernelEmb",
 #! This operation adds the given function $f: (\alpha, K) \mapsto \iota$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddKernelEmbWithGivenKernelObject",
+DeclareOperationWithCache( "AddKernelEmbWithGivenKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddKernelEmbWithGivenKernelObject",
+DeclareOperationWithCache( "AddKernelEmbWithGivenKernelObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddKernelEmbWithGivenKernelObject",
+DeclareOperationWithCache( "AddKernelEmbWithGivenKernelObject",
                   [ IsCapCategory, IsList, IsInt] );
 
 
@@ -237,13 +237,13 @@ DeclareOperation( "AddKernelLift",
 #! This operation adds the given function $f: (\alpha, \tau, K) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddKernelLiftWithGivenKernelObject",
+DeclareOperationWithCache( "AddKernelLiftWithGivenKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddKernelLiftWithGivenKernelObject",
+DeclareOperationWithCache( "AddKernelLiftWithGivenKernelObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddKernelLiftWithGivenKernelObject",
+DeclareOperationWithCache( "AddKernelLiftWithGivenKernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -321,7 +321,7 @@ DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
 #! Projection $B \twoheadrightarrow K$ of a given cokernel $K$ of a given morphism $\alpha: A \rightarrow B$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, K
-DeclareOperation( "CokernelProjWithGivenCokernel",
+DeclareOperationWithCache( "CokernelProjWithGivenCokernel",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
@@ -348,7 +348,7 @@ DeclareOperation( "CokernelColift",
 #! $\tau = u \circ \epsilon$, where $\epsilon: B \rightarrow K$ denotes the cokernel projection.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments alpha, tau, K
-DeclareOperation( "CokernelColiftWithGivenCokernel",
+DeclareOperationWithCache( "CokernelColiftWithGivenCokernel",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -408,13 +408,13 @@ DeclareOperation( "AddCokernelProj",
 #! This operation adds the given function $f: (\alpha, K) \mapsto \epsilon$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddCokernelProjWithGivenCokernel",
+DeclareOperationWithCache( "AddCokernelProjWithGivenCokernel",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernelProjWithGivenCokernel",
+DeclareOperationWithCache( "AddCokernelProjWithGivenCokernel",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernelProjWithGivenCokernel",
+DeclareOperationWithCache( "AddCokernelProjWithGivenCokernel",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -437,13 +437,13 @@ DeclareOperation( "AddCokernelColift",
 #! This operation adds the given function $f: (\alpha, \tau, K) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+DeclareOperationWithCache( "AddCokernelColiftWithGivenCokernel",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+DeclareOperationWithCache( "AddCokernelColiftWithGivenCokernel",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+DeclareOperationWithCache( "AddCokernelColiftWithGivenCokernel",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -601,7 +601,7 @@ DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismIntoTerminalObject",
 #! $A$ to $T$
 #! @Returns IsCapCategoryMorphism
 #! @Arguments A, T
-DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+DeclareOperationWithCache( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -658,13 +658,13 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
 #! This operation adds the given function $f: (A, T) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+DeclareOperationWithCache( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+DeclareOperationWithCache( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+DeclareOperationWithCache( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -736,7 +736,7 @@ DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismFromInitialObject",
 #! $I$ to $A$
 #! @Returns IsCapCategoryMorphism
 #! @Arguments A, I
-DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
+DeclareOperationWithCache( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -795,13 +795,13 @@ DeclareOperation( "AddUniversalMorphismFromInitialObject",
 #! This operation adds the given function $f: (A, T) \mapsto u$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
+DeclareOperationWithCache( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
+DeclareOperationWithCache( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
+DeclareOperationWithCache( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 #! @EndGroup
@@ -956,7 +956,7 @@ DeclareOperation( "InjectionOfCofactorOfCoproduct",
 DeclareOperation( "InjectionOfCofactorOfCoproductOp",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
-DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
+DeclareOperationWithCache( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
@@ -964,7 +964,7 @@ DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
 DeclareOperation( "UniversalMorphismFromCoproductOp",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
-DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
+DeclareOperationWithCache( "UniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -1027,13 +1027,13 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
 #! where $(I_1, \dots, I_n)$ is a list of objects in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
+DeclareOperationWithCache( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
+DeclareOperationWithCache( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
+DeclareOperationWithCache( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1058,13 +1058,13 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
 #! where $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ is a list of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
+DeclareOperationWithCache( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
+DeclareOperationWithCache( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
+DeclareOperationWithCache( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1156,7 +1156,7 @@ DeclareOperation( "ProjectionInFactorOfDirectProductOp",
 #! given by a list of objects $D = (A_j)$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments D, i, P
-DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
+DeclareOperationWithCache( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
@@ -1189,7 +1189,7 @@ DeclareOperation( "UniversalMorphismIntoDirectProductOp",
 #! $P \rightarrow B_i$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments D, P
-DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+DeclareOperationWithCache( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -1252,13 +1252,13 @@ DeclareOperation( "AddProjectionInFactorOfDirectProduct",
 #! where $(P_1, \dots, P_n)$ is a list of objects in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
+DeclareOperationWithCache( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
+DeclareOperationWithCache( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
+DeclareOperationWithCache( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1282,13 +1282,13 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
 #! where $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ is a list of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
+DeclareOperationWithCache( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
+DeclareOperationWithCache( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
+DeclareOperationWithCache( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1383,7 +1383,7 @@ DeclareOperation( "ProjectionInFactorOfFiberProductOp",
 #! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments D, j, m
-DeclareOperation( "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
+DeclareOperationWithCache( "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
@@ -1417,7 +1417,7 @@ DeclareOperation( "UniversalMorphismIntoFiberProductOp",
 #! the universal morphism $u$ into the pullback $P$.
 #! @Returns IsCapCategoryMorphism
 #! @Arguments D, T, P
-DeclareOperation( "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
+DeclareOperationWithCache( "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -1481,13 +1481,13 @@ DeclareOperation( "AddProjectionInFactorOfFiberProduct",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a list of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
+DeclareOperationWithCache( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
+DeclareOperationWithCache( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
+DeclareOperationWithCache( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1513,13 +1513,13 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
 #! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ are lists of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
+DeclareOperationWithCache( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
+DeclareOperationWithCache( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
+DeclareOperationWithCache( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1592,7 +1592,7 @@ DeclareOperation( "InjectionOfCofactorOfPushout",
 DeclareOperation( "InjectionOfCofactorOfPushoutOp",
                   [ IsList, IsInt, IsCapCategoryMorphism ] );
 
-DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
+DeclareOperationWithCache( "InjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
@@ -1600,7 +1600,7 @@ DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 DeclareOperation( "UniversalMorphismFromPushoutOp",
                   [ IsList, IsList, IsCapCategoryMorphism ] );
 
-DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
+DeclareOperationWithCache( "UniversalMorphismFromPushoutWithGivenPushout",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -1664,13 +1664,13 @@ DeclareOperation( "AddInjectionOfCofactorOfPushout",
 #! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a list of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
+DeclareOperationWithCache( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
+DeclareOperationWithCache( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
+DeclareOperationWithCache( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1694,13 +1694,13 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
 #! to the category $C$ where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ and $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ are lists of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
+DeclareOperationWithCache( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
+DeclareOperationWithCache( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
+DeclareOperationWithCache( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1779,16 +1779,16 @@ DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
 DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
                                           IsCapCategoryMorphism );
 
-DeclareOperation( "ImageEmbeddingWithGivenImageObject",
+DeclareOperationWithCache( "ImageEmbeddingWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-DeclareOperation( "CoastrictionToImageWithGivenImageObject",
+DeclareOperationWithCache( "CoastrictionToImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 DeclareOperation( "UniversalMorphismFromImage",
                   [ IsCapCategoryMorphism, IsList ] );
 
-DeclareOperation( "UniversalMorphismFromImageWithGivenImageObject",
+DeclareOperationWithCache( "UniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
 ## Function Attributes
@@ -1856,13 +1856,13 @@ DeclareOperation( "AddImageEmbedding",
 #! This operation adds the given function $f: (\alpha, I) \mapsto \iota$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
+DeclareOperationWithCache( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
+DeclareOperationWithCache( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
+DeclareOperationWithCache( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1884,13 +1884,13 @@ DeclareOperation( "AddCoastrictionToImage",
 #! This operation adds the given function $f: (\alpha, I) \mapsto c$ to the category $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
+DeclareOperationWithCache( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
+DeclareOperationWithCache( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
+DeclareOperationWithCache( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -1914,13 +1914,13 @@ DeclareOperation( "AddUniversalMorphismFromImage",
 #! Note that $[\tau_1, \tau_2]$ is a list of morphisms in $C$.
 #! @Returns nothing
 #! @Arguments C, f
-DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
+DeclareOperationWithCache( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
+DeclareOperationWithCache( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
+DeclareOperationWithCache( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
