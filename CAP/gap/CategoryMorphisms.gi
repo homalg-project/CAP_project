@@ -163,6 +163,12 @@ InstallMethod( IsZeroForMorphisms,
                   
 IsZero );
 
+##
+InstallMethod( AdditionForMorphisms,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+\+ );
+
 ######################################
 ##
 ## Morphism equality functions

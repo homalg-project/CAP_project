@@ -201,6 +201,8 @@ DeclareOperation( "AddAdditionForMorphisms",
 DeclareOperation( "AddAdditionForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AdditionForMorphisms",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareAttribute( "AdditionForMorphismsFunction",
                   IsCapCategory );
