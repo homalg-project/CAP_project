@@ -734,15 +734,17 @@ CokernelFunctorial := rec(
   cache_name := "CokernelFunctorial",
   no_install := true ), #there is no Add-method
 
-# TerminalObjectFunctorial := rec(
-#   installation_name := "TerminalObjectFunctorial",
-#   filter_list := [ ],
-#   cache_name := "TerminalObjectFunctorial" ),
-# 
-# InitialObjectFunctorial := rec(
-#   installation_name := "InitialObjectFunctorial",
-#   filter_list := [ ],
-#   cache_name := "InitialObjectFunctorial" ),
+TerminalObjectFunctorial := rec(
+  installation_name := "TerminalObjectFunctorial",
+  filter_list := [ "category" ],
+  cache_name := "TerminalObjectFunctorial",
+  no_install := true ),
+
+InitialObjectFunctorial := rec(
+  installation_name := "InitialObjectFunctorial",
+  filter_list := [ "category" ],
+  cache_name := "InitialObjectFunctorial",
+  no_install := true ),
 
 DirectProductFunctorial := rec(
   installation_name := "DirectProductFunctorialOp",

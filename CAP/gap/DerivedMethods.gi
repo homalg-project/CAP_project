@@ -478,7 +478,7 @@ AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, source, CallFuncList( DirectProduct, List( source, Range ) ) );
     
-end : Description := "DirectProduct using UniversalMorphismIntoDirectProductWithGivenDirectProduct and DirectProduct" );
+end : Description := "UniversalMorphismIntoDirectProduct using UniversalMorphismIntoDirectProductWithGivenDirectProduct and DirectProduct" );
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
@@ -542,6 +542,33 @@ AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
     
 end : Description := "UniversalMorphismIntoTerminalObject using UniversalMorphismIntoTerminalObjectWithGivenTerminalObject and TerminalObject");
 
+##
+AddDerivationToCAP( TerminalObjectFunctorial,
+                    [ [ TerminalObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                                  
+  function( category )
+    local terminal_object;
+    
+    terminal_object := TerminalObject( category );
+    
+    return IdentityMorphism( terminal_object );
+    
+end : Description := "TerminalObjectFunctorial using the identity morphism of terminal object" );
+
+##
+AddDerivationToCAP( TerminalObjectFunctorial,
+                    [ [ TerminalObject, 1 ],
+                      [ UniversalMorphismIntoTerminalObject, 1 ] ],
+                                  
+  function( category )
+    local terminal_object;
+    
+    terminal_object := TerminalObject( category );
+    
+    return UniversalMorphismIntoTerminalObject( terminal_object );
+    
+end : Description := "TerminalObjectFunctorial using the universality of terminal object" );
 
 ###########################
 ##
@@ -607,12 +634,6 @@ AddDerivationToCAP( Coproduct,
     
 end : Description := "Coproduct equals DirectSum"  );
 
-
-
-####################################
-## Derived Methods for TerminalObject
-####################################
-
 ##
 AddDerivationToCAP( TerminalObject,
                     [ [ ZeroObject, 1 ] ],
@@ -623,38 +644,13 @@ AddDerivationToCAP( TerminalObject,
     
 end : Description := "TerminalObject equals ZeroObject" );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeTerminalObjectFunctorial,
-                   CanComputeTerminalObject and CanComputeIdentityMorphism );
+####################################
+## Derived Methods for TerminalObject
+####################################
 
-InstallMethod( TerminalObjectFunctorial,
-               [ IsCapCategory and CanComputeTerminalObject and CanComputeIdentityMorphism ],
-                                  
-  function( category )
-    local terminal_object;
-    
-    terminal_object := TerminalObject( category );
-    
-    return IdentityMorphism( terminal_object );
-    
-end );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeTerminalObjectFunctorial,
-                   CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObject );
 
-InstallMethod( TerminalObjectFunctorial,
-               [ IsCapCategory and CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObject ],
-                 -9999,
-                                  
-  function( category )
-    local terminal_object;
-    
-    terminal_object := TerminalObject( category );
-    
-    return UniversalMorphismIntoTerminalObject( terminal_object );
-    
-end );
+
 
 ####################################
 ## Derived Methods for InitialObject
