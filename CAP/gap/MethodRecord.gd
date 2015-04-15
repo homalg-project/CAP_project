@@ -103,9 +103,8 @@ PostCompose := rec(
 
 ZeroObject := rec(
   installation_name := "ZeroObject",
-  filter_list := [ IsCapCategory ],
-  cache_name := "ZeroObject",
-  no_install := true ), 
+  filter_list := [ "category" ],
+  cache_name := "ZeroObject" ), 
 
 ZeroMorphism := rec(
   installation_name := "ZeroMorphism",
@@ -122,10 +121,9 @@ DirectSum := rec(
 
 TerminalObject := rec(
   installation_name := "TerminalObject",
-  filter_list := [ ],
+  filter_list := [ "category" ],
   cache_name := "TerminalObject",
-  universal_type := "Limit",
-  no_install := true ),
+  universal_type := "Limit" ),
 
 UniversalMorphismIntoTerminalObject := rec(
   installation_name := "UniversalMorphismIntoTerminalObject",
@@ -142,10 +140,9 @@ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
 
 InitialObject := rec(
   installation_name := "InitialObject",
-  filter_list := [ ],
+  filter_list := [ "category" ],
   cache_name := "InitialObject",
-  universal_type := "Colimit",
-  no_install := true ),
+  universal_type := "Colimit" ),
 
 UniversalMorphismFromInitialObject := rec(
   installation_name := "UniversalMorphismFromInitialObject",
