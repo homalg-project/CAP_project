@@ -274,6 +274,10 @@ DeclareOperation( "CreateCapCategory",
 #!  Contain filter for objects and morphisms in this category.
 #!  These filters are set true once an object or morphism is added to the
 #!  category. These filters are used to apply the right functions in the method selection.
+DeclareAttribute( "CategoryFilter",
+                  IsCapCategory );
+
+#!
 DeclareAttribute( "CellFilter",
                   IsCapCategory );
 

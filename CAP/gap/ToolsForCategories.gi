@@ -547,7 +547,7 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
           elif IsString( current_entry ) then
               current_entry := LowercaseString( current_entry );
               if current_entry = "category" then
-                  list[ i ] := IsCapCategory;
+                  list[ i ] := CategoryFilter( category ) and IsCapCategory;
               elif current_entry = "cell" then
                   list[ i ] := CellFilter( category ) and IsCapCategoryCell;
               elif current_entry = "object" then

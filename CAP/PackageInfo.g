@@ -5,7 +5,7 @@ PackageName := "CAP",
 Subtitle := "TODO",
 
 Version := Maximum( [
-  "2015.04.09", ## Sebas' version
+  "2015.04.15", ## Sebas' version
   ## this line prevents merge conflicts
   "2015.04.13", ## Sepp's version
   ## this line prevents merge conflicts

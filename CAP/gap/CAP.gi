@@ -166,6 +166,12 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
     
     name := Name( category );
     
+    filter_name := NewFilter( Concatenation( name, "InternalCategoryFilter" ) );
+    
+    SetCategoryFilter( category, filter_name );
+    
+    SetFilterObj( category, filter_name );
+    
     filter_name := Concatenation( name, "CellFilter" );
     
     cell_filter := NewFilter( filter_name );
