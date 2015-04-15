@@ -621,3 +621,90 @@ InstallGlobalFunction( InstalledMethodsOfCategory,
            "information about how to add the missing methods\n" );
     
 end );
+
+##
+InstallGlobalFunction( DerivationsOfMethodByCategory,
+  
+  function( category, name )
+    local string, weight_list, current_weight, current_derivation,
+          possible_derivations, category_filter, used_ops_with_multiples, i;
+    
+    if IsFunction( name ) then
+        string := NameFunction( name );
+    elif IsString( name ) then
+        string := name;
+    else
+        Error( "Usage is <category>,<string>\n" );
+        return;
+    fi;
+    
+    if not IsBoundGlobal( string ) then
+        Error( Concatenation( string, " is not bound globally." ) );
+        return;
+    fi;
+    
+    weight_list := category!.derivations_weight_list;
+    
+    current_weight := CurrentOperationWeight( weight_list, string );
+    
+    if current_weight < infinity then
+    
+        current_derivation := DerivationOfOperation( weight_list, string );
+        
+        Print( Name( category ), " can already compute ", string, " with weight " , String( current_weight ), ".\n" );
+        
+        if current_derivation = fail then
+            Print( "It was given as a primitive operation.\n\n" );
+        else
+            Print( "It was derived by ", DerivationName( current_derivation ), " using \n" );
+            for i in used_ops_with_multiples do
+                
+                Print( "* ", i[ 1 ], " (x", i[ 2 ], ")" );
+                Print( " installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ) );
+                Print( "\n" );
+              
+            od;
+        fi;
+        
+    else
+        
+        Print( string, " is currently not installed for ", Name( category ), ".\n\n" );
+        
+    fi;
+    
+    Print( "Possible derivations of ", string, " are:\n\n" );
+    
+    possible_derivations := DerivationsOfOperation( CAP_INTERNAL_DERIVATION_GRAPH, string );
+    
+    for current_derivation in possible_derivations do
+        
+        category_filter := CategoryFilter( current_derivation );
+        
+        if Tester( category_filter )( category ) and not category_filter( category ) then
+            continue;
+        elif not Tester( category_filter )( category ) then
+            Print( "If ", Name( category ), " would be ", NamesFilter( category_filter )[ 1 ], " then\n" );
+            Print( string, " could be derived by\n" );
+        else
+            Print( string, " can be derived by\n" );
+        fi;
+        
+        used_ops_with_multiples := UsedOperationsWithMultiples( current_derivation );
+        
+        for i in used_ops_with_multiples do
+            
+            Print( "* ", i[ 1 ], " (x", i[ 2 ], ")" );
+            
+            if CurrentOperationWeight( weight_list, i[ 1 ] ) < infinity then
+                Print( ", (already installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ),")" );
+            fi;
+            
+            Print( "\n" );
+            
+        od;
+        
+        Print( "with additional weight ", String( DerivationWeight( current_derivation ) ), ".\n\n" );
+        
+    od;
+    
+end );

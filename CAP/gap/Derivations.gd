@@ -374,4 +374,5 @@ DeclareOperation( "Heapify", [ IsStringMinHeap, IsPosInt ] );
 #################################
 
 DeclareGlobalFunction( "InstalledMethodsOfCategory" );
+DeclareGlobalFunction( "DerivationsOfMethodByCategory" );
 
