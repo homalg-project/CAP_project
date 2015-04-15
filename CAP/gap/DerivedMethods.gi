@@ -613,22 +613,6 @@ end : Description := "Coproduct equals DirectSum"  );
 ## Derived Methods for TerminalObject
 ####################################
 
-
-
-# ##
-# InstallTrueMethodAndStoreImplication( CanComputeTerminalObject, CanComputeZeroObject );
-# 
-# ##
-# InstallMethod( TerminalObject,
-#                [ IsCapCategoryObject and CanComputeZeroObject ],
-#                - 9999, # FIXME
-#                
-#   function( object )
-#     
-#     return ZeroObject( object );
-#     
-# end );
-
 ##
 AddDerivationToCAP( TerminalObject,
                     [ [ ZeroObject, 1 ] ],
@@ -710,17 +694,6 @@ end );
 
 ##
 InstallTrueMethodAndStoreImplication( CanComputeInitialObject, CanComputeZeroObject );
-
-##
-InstallMethod( InitialObject,
-               [ IsCapCategoryObject and CanComputeZeroObject ],
-               - 9999, # FIXME
-               
-  function( object )
-    
-    return ZeroObject( object );
-    
-end );
 
 ##
 InstallMethod( InitialObject,
