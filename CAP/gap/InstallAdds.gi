@@ -76,7 +76,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    
       function( category, func )
         
-        ValueGlobal( add_name )( category, [ [ func, [ ] ] ], 100 );
+        ValueGlobal( add_name )( category, func, 100 );
         
     end );
     
@@ -348,8 +348,54 @@ end );
 CAP_INTERNAL_INSTALL_ALL_ADDS();
 
 ## special cases
+##
 CapInternalInstallAdd( CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD );
 
+##
 CapInternalInstallAdd( CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD );
 
+##
 CapInternalInstallAdd( CAP_INTERNAL_ADD_DIRECT_SUM_RECORD );
+
+## These methods overwrite the automatically generated methods.
+## The users do not have to give the category as an argument
+## to their functions, but within derivations, the category has
+## to be an argument (see any derivation of ZeroObject in DerivedMethods.gd)
+##
+InstallMethod( AddZeroObject,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    local wrapped_func;
+    
+    wrapped_func := function( cat ) return func(); end;
+    
+    AddZeroObject( category, [ [ wrapped_func, [ ] ] ], weight );
+    
+end );
+
+##
+InstallMethod( AddInitialObject,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    local wrapped_func;
+    
+    wrapped_func := function( cat ) return func(); end;
+    
+    AddInitialObject( category, [ [ wrapped_func, [ ] ] ], weight );
+    
+end );
+
+##
+InstallMethod( AddTerminalObject,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    local wrapped_func;
+    
+    wrapped_func := function( cat ) return func(); end;
+    
+    AddTerminalObject( category, [ [ wrapped_func, [ ] ] ], weight );
+    
+end );

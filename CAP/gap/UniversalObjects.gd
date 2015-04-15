@@ -540,6 +540,7 @@ DeclareOperation( "AddZeroObject",
 DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
+## don't document this function
 DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
@@ -640,6 +641,7 @@ DeclareOperation( "AddTerminalObject",
 DeclareOperation( "AddTerminalObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
+## don't document this function
 DeclareOperation( "AddTerminalObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
@@ -779,6 +781,7 @@ DeclareOperation( "AddInitialObject",
 DeclareOperation( "AddInitialObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
+## don't document this function
 DeclareOperation( "AddInitialObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
