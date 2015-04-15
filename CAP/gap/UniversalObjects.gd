@@ -540,7 +540,8 @@ DeclareOperation( "AddZeroObject",
 DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-
+DeclareOperation( "AddZeroObject",
+                  [ IsCapCategory, IsList, IsInt ] );
 
 
 
@@ -639,6 +640,8 @@ DeclareOperation( "AddTerminalObject",
 DeclareOperation( "AddTerminalObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
+DeclareOperation( "AddTerminalObject",
+                  [ IsCapCategory, IsList, IsInt ] );
 
 #! @Description
 #! This operation adds the given function $f: A \mapsto u$ to the category $C$.
@@ -776,6 +779,8 @@ DeclareOperation( "AddInitialObject",
 DeclareOperation( "AddInitialObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
+DeclareOperation( "AddInitialObject",
+                  [ IsCapCategory, IsList, IsInt ] );
 
 #! @Description
 #! This operation adds the given function $f: A \mapsto u$ to the category $C$.
