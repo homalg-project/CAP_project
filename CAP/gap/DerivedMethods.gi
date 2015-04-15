@@ -254,6 +254,74 @@ AddDerivationToCAP( CokernelColiftWithGivenCokernel,
       
 end : Description := "CokernelColiftWithGivenCokernel using EpiAsCokernelColift and CokernelProjWithGivenCokernel" );
 
+#
+AddDerivationToCAP( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+                    [ [ AdditionForMorphisms, 1 ],
+                      [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ], ## nr_components would be the correct number
+                      [ PreCompose, 2 ] ], ## nr_components would be the correct number
+                                       
+  function( diagram, source, direct_product )
+    local nr_components;
+    
+    nr_components := Length( source );
+  
+    return Sum( List( [ 1 .. nr_components ], 
+     i -> PreCompose( source[ i ], InjectionOfCofactorOfCoproductWithGivenCoproduct( diagram, i, direct_product ) ) ) );
+  
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoDirectProductWithGivenDirectProduct using the injections of the direct sum" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromCoproductWithGivenCoproduct,
+                    [ [ AdditionForMorphisms, 1 ],
+                      [ PreCompose, 2 ], ## nr_components would be the correct number
+                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ] ], ## nr_components would be the correct number
+                      
+  function( diagram, sink, coproduct )
+    local nr_components;
+    
+    nr_components := Length( sink );
+    
+    return Sum( List( [ 1 .. nr_components ], 
+      i -> PreCompose( ProjectionInFactorOfDirectProductWithGivenDirectProduct( diagram, i, coproduct ), sink[ i ] ) ) );
+  
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismFromCoproductWithGivenCoproduct using projections of the direct sum" );
+
+##
+AddDerivationToCAP( AdditionForMorphisms,
+                    [ [ UniversalMorphismIntoDirectProduct, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ UniversalMorphismFromCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                      
+  function( mor1, mor2 )
+    local return_value, B, identity_morphism_B, componentwise_morphism, addition_morphism;
+    
+    B := Range( mor1 );
+    
+    componentwise_morphism := UniversalMorphismIntoDirectProduct( mor1, mor2 );
+    
+    identity_morphism_B := IdentityMorphism( B );
+    
+    addition_morphism := UniversalMorphismFromCoproduct( identity_morphism_B, identity_morphism_B );
+    
+    return PreCompose( componentwise_morphism, addition_morphism );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "AdditionForMorphisms(mor1, mor2) as the composition of (mor1,mor2) with the codiagonal morphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+                    [ [ ZeroMorphism, 1 ] ],
+                 
+  function( test_source, terminal_object )
+    
+    return ZeroMorphism( test_source, terminal_object );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject computing the zero morphism");
+
 
 ###########################
 ##
@@ -365,7 +433,7 @@ AddDerivationToCAP( UniversalMorphismFromCoproduct,
                     [ [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ],
                       [ Coproduct, 1 ] ],
                                        
-  function( diagram, sink, method_selection_object )
+  function( diagram, sink )
     
     return UniversalMorphismFromCoproductWithGivenCoproduct( diagram, sink, CallFuncList( Coproduct, List( sink, Source ) ) );
     
@@ -376,7 +444,7 @@ AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
                     [ [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 1 ],
                       [ Coproduct, 1 ] ],
                                          
-  function( object_product_list, injection_number, method_selection_object )
+  function( object_product_list, injection_number )
     
     return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CallFuncList( Coproduct, object_product_list ) );
     
@@ -400,6 +468,80 @@ AddDerivationToCAP( CoproductFunctorial,
         return UniversalMorphismFromCoproduct( diagram, sink );
         
 end : Description := "CoproductFunctorial using the universality of the coproduct" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
+                    [ [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ],
+                      [ DirectProduct, 1 ] ],
+                                       
+  function( diagram, source )
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, source, CallFuncList( DirectProduct, List( source, Range ) ) );
+    
+end : Description := "DirectProduct using UniversalMorphismIntoDirectProductWithGivenDirectProduct and DirectProduct" );
+
+##
+AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
+                    [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
+                      [ DirectProduct, 1 ] ],
+                                         
+  function( object_product_list, projection_number )
+    
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, object_product_list ) );
+    
+end : Description := "ProjectionInFactorOfDirectProduct using ProjectionInFactorOfDirectProductWithGivenDirectProduct and DirectProduct" );
+
+##
+AddDerivationToCAP( DirectProductFunctorial,
+                    [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ UniversalMorphismIntoDirectProduct, 1 ] ],
+                                  
+  function( morphism_list, caching_object )
+    local direct_product_diagram, source, diagram;
+        
+        direct_product_diagram := List( morphism_list, mor -> Source( mor ) );
+        
+        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), morphism_list[i] ) );
+        
+        diagram := List( morphism_list, mor -> Range( mor ) );
+        
+        return UniversalMorphismIntoDirectProduct( diagram, source );
+        
+end : Description := "DirectProductFunctorial using universality of direct product" );
+
+##
+AddDerivationToCAP( DirectSumFunctorial,
+                    [ [ DirectProductFunctorial, 1 ] ],
+                 
+  function( morphism_list )
+    
+    return DirectProductFunctorial( morphism_list );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "DirectSumFunctorial using DirectProductFunctorial");
+
+##
+AddDerivationToCAP( DirectSumFunctorial,
+                    [ [ CoproductFunctorial, 1 ] ],
+                                  
+  function( morphism_list )
+    
+    return CoproductFunctorial( morphism_list );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "DirectSumFunctorial using CoproductFunctorial" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
+                    [ [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
+                      [ TerminalObject, 1 ] ],
+  function( test_source )
+    
+    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( CapCategory( test_source ) ) );
+    
+end : Description := "UniversalMorphismIntoTerminalObject using UniversalMorphismIntoTerminalObjectWithGivenTerminalObject and TerminalObject");
+
 
 ###########################
 ##
@@ -431,282 +573,47 @@ end : Description := "Cokernel as the range of CokernelProj" );
 AddDerivationToCAP( Coproduct,
                     [ [ InjectionOfCofactorOfCoproduct, 1 ] ],
                                         
-  function( object_product_list, method_selection_object )
+  function( object_product_list )
     
     return Range( InjectionOfCofactorOfCoproduct( object_product_list, 1 ) );
     
 end : Description := "Coproduct as the range of the first injection" );
 
-
-####################################
-## Derived Methods for DirectProduct
-####################################
-
 ##
-InstallTrueMethodAndStoreImplication( CanComputeDirectProduct, CanComputeProjectionInFactorOfDirectProduct );
-
-##
-InstallMethodWithToDoForIsWellDefined( DirectProductOp,
-                                       [ IsList,
-                                         IsCapCategoryObject and CanComputeProjectionInFactorOfDirectProduct ],
-                                        -9999, #FIXME
+AddDerivationToCAP( DirectProduct,
+                    [ [ ProjectionInFactorOfDirectProduct, 1 ] ],
                                         
-  function( object_product_list, method_selection_object )
+  function( object_product_list )
     
     return Source( ProjectionInFactorOfDirectProduct( object_product_list, 1 ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
+end : Description := "DirectProduct as Source of ProjectionInFactorOfDirectProduct" );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoDirectProduct,
-                   CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct );
+## should we add IsAdditiveCategory?
+AddDerivationToCAP( DirectProduct,
+                    [ [ DirectSum, 1 ] ],
+  function( object_product_list )
+    
+    return DirectSum( object_product_list );
+    
+end : Description := "DirectProduct equals DirectSum" );
 
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductOp,
-                                       [ IsList,
-                                         IsList,
-                                         IsCapCategoryObject and CanComputeDirectProduct and CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct ],
-                                         -9999, #FIXME
-                                       
-  function( diagram, source, method_selection_object )
+## should we add IsAdditiveCategory?
+AddDerivationToCAP( Coproduct,
+                    [ [ DirectSum, 1 ] ],
+  function( object_product_list )
     
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, source, CallFuncList( DirectProduct, List( source, Range ) ) );
+    return DirectSum( object_product_list );
     
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
+end : Description := "Coproduct equals DirectSum"  );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfDirectProduct, CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct );
 
-InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfDirectProductOp,
-                                       [ IsList,
-                                         IsInt,
-                                         IsCapCategoryObject and CanComputeDirectProduct and CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct ],
-                                         -9999, #FIXME
-                                         
-  function( object_product_list, projection_number, method_selection_object )
-    
-    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, object_product_list ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeDirectProductFunctorial,
-                   CanComputeDirectProduct and CanComputePreCompose and CanComputeProjectionInFactorOfDirectProduct 
-                   and CanComputeUniversalMorphismIntoDirectProduct );
-
-InstallMethodWithCacheFromObject( DirectProductFunctorialOp,
-                                  [ IsList,
-                                    IsCapCategoryMorphism
-                                    and CanComputeDirectProduct
-                                    and CanComputePreCompose
-                                    and CanComputeProjectionInFactorOfDirectProduct
-                                    and CanComputeUniversalMorphismIntoDirectProduct ],
-                                  
-  function( morphism_list, caching_object )
-    local direct_product_diagram, source, diagram;
-        
-        direct_product_diagram := List( morphism_list, mor -> Source( mor ) );
-        
-        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), morphism_list[i] ) );
-        
-        diagram := List( morphism_list, mor -> Range( mor ) );
-        
-        return UniversalMorphismIntoDirectProduct( diagram, source );
-        
-end : ArgumentNumber := 2 );
-
-####################################
-## Derived Methods due to DirectSum
-####################################
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeDirectProduct,
-                   CanComputeDirectSum );
-
-InstallMethodWithToDoForIsWellDefined( DirectProductOp,
-                                       [ IsList, IsCapCategoryObject and CanComputeDirectSum ],
-                                       -9999 + 1, #FIXME
-                                       
-  function( object_product_list, method_selection_object )
-    
-    return DirectSumOp( object_product_list, method_selection_object );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeCoproduct,
-                   CanComputeDirectSum );
-
-InstallMethodWithToDoForIsWellDefined( CoproductOp,
-                                       [ IsList, IsCapCategoryObject and CanComputeDirectSum ],
-                                       -9999 + 1, #FIXME
-                                       
-  function( object_product_list, method_selection_object )
-    
-    return DirectSumOp( object_product_list, method_selection_object );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                   IsAdditiveCategory
-                   and CanComputeInjectionOfCofactorOfCoproduct
-                   and CanComputeAdditionForMorphisms 
-                   and CanComputePreCompose );
-
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-                                       [ IsList,
-                                         IsList,
-                                         IsCapCategoryObject 
-                                     and IsAdditiveCategory
-                                     and CanComputeInjectionOfCofactorOfCoproduct 
-                                     and CanComputeAdditionForMorphisms
-                                     and CanComputePreCompose ],
-                                       -9999 - 1, #FIXME
-                                       
-  function( diagram, source, direct_product )
-    local nr_components;
-    
-    nr_components := Length( source );
-  
-    return Sum( List( [ 1 .. nr_components ], 
-     i -> PreCompose( source[ i ], InjectionOfCofactorOfCoproductWithGivenCoproduct( diagram, i, direct_product ) ) ) );
-  
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3  );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromCoproductWithGivenCoproduct,
-                   IsAdditiveCategory
-                   and CanComputeProjectionInFactorOfDirectProduct
-                   and CanComputeAdditionForMorphisms 
-                   and CanComputePreCompose );
-
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromCoproductWithGivenCoproduct,
-                                       [ IsList,
-                                         IsList,
-                                         IsCapCategoryObject
-                                     and IsAdditiveCategory
-                                     and CanComputeProjectionInFactorOfDirectProduct
-                                     and CanComputeAdditionForMorphisms
-                                     and CanComputePreCompose ],
-                                       -9999 - 1, #FIXME
-                                       
-  function( diagram, sink, coproduct )
-    local nr_components;
-    
-    nr_components := Length( sink );
-    
-    return Sum( List( [ 1 .. nr_components ], 
-      i -> PreCompose( ProjectionInFactorOfDirectProductWithGivenDirectProduct( diagram, i, coproduct ), sink[ i ] ) ) );
-  
-end  : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeAdditionForMorphisms,
-                   IsAdditiveCategory
-                   and CanComputeDirectSum
-                   and CanComputeUniversalMorphismIntoDirectProduct
-                   and CanComputeIdentityMorphism
-                   and CanComputeUniversalMorphismFromCoproduct
-                   and CanComputePreCompose );
-
-InstallMethodWithToDoForIsWellDefined( \+,
-                                       [ IsCapCategoryMorphism
-                                     and IsAdditiveCategory
-                                     and CanComputeDirectSum
-                                     and CanComputeUniversalMorphismIntoDirectProduct
-                                     and CanComputeIdentityMorphism
-                                     and CanComputeUniversalMorphismFromCoproduct
-                                     and CanComputePreCompose,
-                                         IsCapCategoryMorphism ],
-                                         -9999,
-                                         
-  function( mor1, mor2 )
-    local return_value, B, direct_sum, componentwise_morphism, addition_morphism;
-        
-    if not IsIdenticalObj( CapCategory( mor1 ), CapCategory( mor2 ) ) or not IsEqualForObjects( Source( mor1 ), Source( mor2 ) ) or not IsEqualForObjects( Range( mor1 ), Range( mor2 ) ) then
-      
-      Error( "morphisms are not addable" );
-      
-    fi;
-    
-    B := Range( mor1 );
-    
-    direct_sum := DirectSum( B, B );
-    
-    componentwise_morphism := UniversalMorphismIntoDirectProduct( mor1, mor2 );
-    
-    addition_morphism := UniversalMorphismFromCoproduct( IdentityMorphism( B ), IdentityMorphism( B ) );
-    
-    return PreCompose( componentwise_morphism, addition_morphism );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeDirectProductFunctorial and IsAdditiveCategory );
-
-InstallMethodWithCacheFromObject( DirectSumFunctorialOp,
-                                  [ IsList,
-                                    IsCapCategoryMorphism
-                                    and CanComputeDirectProductFunctorial
-                                    and IsAdditiveCategory ],
-                 
-  function( morphism_list, method_selection_morphism )
-    
-    return DirectProductFunctorial( morphism_list );
-    
-end : ArgumentNumber := 2 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeDirectSumFunctorial, CanComputeCoproductFunctorial and IsAdditiveCategory );
-
-InstallMethodWithCacheFromObject( DirectSumFunctorialOp,
-                                  [ IsList,
-                                    IsCapCategoryMorphism
-                                    and CanComputeCoproductFunctorial 
-                                    and IsAdditiveCategory ],
-                                   -9999,
-                                  
-  function( morphism_list, method_selection_morphism )
-    
-    return CoproductFunctorial( morphism_list );
-    
-end : ArgumentNumber := 2 );
 
 ####################################
 ## Derived Methods for TerminalObject
 ####################################
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoTerminalObject,
-                   CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject );
 
-InstallMethod( UniversalMorphismIntoTerminalObject,
-               [ IsCapCategoryObject and CanComputeTerminalObject and CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject ],
-               -9999, #FIXME
-              
-  function( test_source )
-    
-    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( CapCategory( test_source ) ) );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
-                   CanComputeZeroMorphism
-                   and IsAdditiveCategory );
-
-InstallMethod( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
-               [ IsCapCategoryObject
-                 and CanComputeZeroMorphism
-                 and IsAdditiveCategory,
-                 IsCapCategoryObject ],
-                 -9999, #FIXME
-                 
-  function( test_source, terminal_object )
-    
-    return ZeroMorphism( test_source, terminal_object );
-    
-end );
 
 ##
 InstallTrueMethodAndStoreImplication( CanComputeTerminalObject, CanComputeZeroObject );
