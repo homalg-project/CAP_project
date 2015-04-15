@@ -365,7 +365,7 @@ AddDerivationToCAP( UniversalMorphismFromCoproduct,
                     [ [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ],
                       [ Coproduct, 1 ] ],
                                        
-  function( diagram, sink, method_selection_object )
+  function( diagram, sink )
     
     return UniversalMorphismFromCoproductWithGivenCoproduct( diagram, sink, CallFuncList( Coproduct, List( sink, Source ) ) );
     
@@ -376,7 +376,7 @@ AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
                     [ [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 1 ],
                       [ Coproduct, 1 ] ],
                                          
-  function( object_product_list, injection_number, method_selection_object )
+  function( object_product_list, injection_number )
     
     return InjectionOfCofactorOfCoproductWithGivenCoproduct( object_product_list, injection_number, CallFuncList( Coproduct, object_product_list ) );
     
@@ -406,7 +406,7 @@ AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
                     [ [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ],
                       [ DirectProduct, 1 ] ],
                                        
-  function( diagram, source, method_selection_object )
+  function( diagram, source )
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, source, CallFuncList( DirectProduct, List( source, Range ) ) );
     
@@ -417,7 +417,7 @@ AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
                     [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
                       [ DirectProduct, 1 ] ],
                                          
-  function( object_product_list, projection_number, method_selection_object )
+  function( object_product_list, projection_number )
     
     return ProjectionInFactorOfDirectProductWithGivenDirectProduct( object_product_list, projection_number, CallFuncList( DirectProduct, object_product_list ) );
     
@@ -472,7 +472,7 @@ end : Description := "Cokernel as the range of CokernelProj" );
 AddDerivationToCAP( Coproduct,
                     [ [ InjectionOfCofactorOfCoproduct, 1 ] ],
                                         
-  function( object_product_list, method_selection_object )
+  function( object_product_list )
     
     return Range( InjectionOfCofactorOfCoproduct( object_product_list, 1 ) );
     
@@ -482,11 +482,30 @@ end : Description := "Coproduct as the range of the first injection" );
 AddDerivationToCAP( DirectProduct,
                     [ [ ProjectionInFactorOfDirectProduct, 1 ] ],
                                         
-  function( object_product_list, method_selection_object )
+  function( object_product_list )
     
     return Source( ProjectionInFactorOfDirectProduct( object_product_list, 1 ) );
     
 end : Description := "DirectProduct as Source of ProjectionInFactorOfDirectProduct" );
+
+## should we add IsAdditiveCategory?
+AddDerivationToCAP( DirectProduct,
+                    [ [ DirectSum, 1 ] ],
+  function( object_product_list )
+    
+    return DirectSum( object_product_list );
+    
+end : Description := "DirectProduct equals DirectSum" );
+
+##
+AddDerivationToCAP( Coproduct,
+                    [ [ DirectSum, 1 ] ],
+  function( object_product_list )
+    
+    return DirectSum( object_product_list );
+    
+end : Description := "Coproduct equals DirectSum"  );
+
 
 ####################################
 ## Derived Methods for DirectProduct
@@ -494,41 +513,6 @@ end : Description := "DirectProduct as Source of ProjectionInFactorOfDirectProdu
 
 
 
-
-
-
-
-####################################
-## Derived Methods due to DirectSum
-####################################
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeDirectProduct,
-                   CanComputeDirectSum );
-
-InstallMethodWithToDoForIsWellDefined( DirectProductOp,
-                                       [ IsList, IsCapCategoryObject and CanComputeDirectSum ],
-                                       -9999 + 1, #FIXME
-                                       
-  function( object_product_list, method_selection_object )
-    
-    return DirectSumOp( object_product_list, method_selection_object );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeCoproduct,
-                   CanComputeDirectSum );
-
-InstallMethodWithToDoForIsWellDefined( CoproductOp,
-                                       [ IsList, IsCapCategoryObject and CanComputeDirectSum ],
-                                       -9999 + 1, #FIXME
-                                       
-  function( object_product_list, method_selection_object )
-    
-    return DirectSumOp( object_product_list, method_selection_object );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2  );
 
 ##
 InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct,
