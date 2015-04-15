@@ -291,6 +291,17 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
     end );
     
+    AddKernelEmbWithGivenKernelObject( category,
+      
+      function( morphism, kernel )
+        local embedding;
+        
+        embedding := SyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
+        
+        return PresentationMorphism( kernel, embedding, Source( morphism ) );
+        
+    end );
+    
     AddMonoAsKernelLift( category,
                          
       function( monomorphism, test_morphism )
@@ -323,6 +334,17 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         kernel := SyzygiesOfColumns( embedding, UnderlyingMatrix( Source( morphism ) ) );
         
         kernel := AsRightPresentation( kernel );
+        
+        return PresentationMorphism( kernel, embedding, Source( morphism ) );
+        
+    end );
+    
+    AddKernelEmbWithGivenKernelObject( category,
+      
+      function( morphism, kernel )
+        local embedding;
+        
+        embedding := SyzygiesOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
         
         return PresentationMorphism( kernel, embedding, Source( morphism ) );
         
@@ -512,6 +534,17 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
         
     end );
     
+    AddCokernelProjWithGivenCokernel( category,
+                     
+      function( morphism, cokernel_object )
+        local projection;
+        
+        projection := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( Range( morphism ) ) ), category!.ring_for_representation_category );
+        
+        return PresentationMorphism( Range( morphism ), projection, cokernel_object );
+        
+    end );
+    
     AddCokernelColiftWithGivenCokernel( category,
       
       function( morphism, test_morphism, cokernel_object )
@@ -535,6 +568,17 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
         cokernel_object := UnionOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
         
         cokernel_object := AsRightPresentation( cokernel_object );
+        
+        projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), category!.ring_for_representation_category );
+        
+        return PresentationMorphism( Range( morphism ), projection, cokernel_object );
+        
+    end );
+    
+    AddCokernelProjWithGivenCokernel( category,
+                     
+      function( morphism, cokernel_object )
+        local projection;
         
         projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), category!.ring_for_representation_category );
         
