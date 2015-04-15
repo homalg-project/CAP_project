@@ -665,6 +665,9 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 Print( "\n" );
               
             od;
+            
+            Print( "\n" );
+            
         fi;
         
     else
