@@ -322,6 +322,17 @@ AddDerivationToCAP( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
 end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject computing the zero morphism");
 
+##
+AddDerivationToCAP( UniversalMorphismFromInitialObjectWithGivenInitialObject,
+                    [ [ ZeroMorphism, 1 ] ],
+                 
+  function( test_sink, initial_object )
+    
+    return ZeroMorphism( initial_object, test_sink );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismFromInitialObjectWithGivenInitialObject computing the zero morphism" );
+
 
 ###########################
 ##
@@ -570,6 +581,45 @@ AddDerivationToCAP( TerminalObjectFunctorial,
     
 end : Description := "TerminalObjectFunctorial using the universality of terminal object" );
 
+##
+AddDerivationToCAP( UniversalMorphismFromInitialObject,
+                    [ [ UniversalMorphismFromInitialObjectWithGivenInitialObject, 1 ],
+                      [ InitialObject, 1 ] ],
+              
+  function( test_sink )
+    
+    return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( CapCategory( test_sink ) ) );
+    
+end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromInitialObjectWithGivenInitialObject and InitialObject" );
+
+##
+AddDerivationToCAP( InitialObjectFunctorial,
+                    [ [ InitialObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                                  
+  function( category )
+    local initial_object;
+    
+    initial_object := InitialObject( category );
+    
+    return IdentityMorphism( initial_object );
+    
+end : Description := "InitialObjectFunctorial using the identity morphism of initial object" );
+
+##
+AddDerivationToCAP( InitialObjectFunctorial,
+                    [ [ InitialObject, 1 ],
+                      [ UniversalMorphismFromInitialObject, 1 ] ],
+                                  
+  function( category )
+    local initial_object;
+    
+    initial_object := InitialObject( category );
+    
+    return UniversalMorphismFromInitialObject( initial_object );
+    
+end : Description := "InitialObjectFunctorial using the universality of the initial object" );
+
 ###########################
 ##
 ## Methods returning an object
@@ -644,96 +694,16 @@ AddDerivationToCAP( TerminalObject,
     
 end : Description := "TerminalObject equals ZeroObject" );
 
-####################################
-## Derived Methods for TerminalObject
-####################################
-
-
-
-
-
-####################################
-## Derived Methods for InitialObject
-####################################
-
 ##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromInitialObject,
-                   CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject );
-
-InstallMethod( UniversalMorphismFromInitialObject,
-               [ IsCapCategoryObject and CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject ],
-               -9999, #FIXME
-              
-  function( test_sink )
-    
-    return UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( CapCategory( test_sink ) ) );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromInitialObjectWithGivenInitialObject,
-                   CanComputeZeroMorphism
-                   and IsAdditiveCategory );
-
-InstallMethod( UniversalMorphismFromInitialObjectWithGivenInitialObject,
-               [ IsCapCategoryObject
-                 and CanComputeZeroMorphism
-                 and IsAdditiveCategory,
-                 IsCapCategoryObject ],
-                 -9999, #FIXME
-                 
-  function( test_sink, initial_object )
-    
-    return ZeroMorphism( initial_object, test_sink );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeInitialObject, CanComputeZeroObject );
-
-##
-InstallMethod( InitialObject,
-               [ IsCapCategory and CanComputeZeroObject ],
-               -9999,
+AddDerivationToCAP( InitialObject,
+                    [ [ ZeroObject, 1 ] ],
                
   function( category )
     
     return ZeroObject( category );
     
-end );
+end : Description := "InitialObject equals ZeroObject" );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeInitialObjectFunctorial,
-                   CanComputeInitialObject and CanComputeIdentityMorphism );
-
-InstallMethod( InitialObjectFunctorial,
-               [ IsCapCategory and CanComputeInitialObject and CanComputeIdentityMorphism ],
-                                  
-  function( category )
-    local initial_object;
-    
-    initial_object := InitialObject( category );
-    
-    return IdentityMorphism( initial_object );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeInitialObjectFunctorial,
-                   CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObject );
-
-InstallMethod( InitialObjectFunctorial,
-               [ IsCapCategory and CanComputeInitialObject and CanComputeUniversalMorphismFromInitialObject ],
-                 -9999,
-                                  
-  function( category )
-    local initial_object;
-    
-    initial_object := InitialObject( category );
-    
-    return UniversalMorphismFromInitialObject( initial_object );
-    
-end );
 
 ####################################
 ## Derived Methods for FiberProduct
