@@ -803,55 +803,6 @@ end );
 ####################################
 
 ##
-InstallMethod( AddTerminalObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    AddTerminalObject( category, func, 100 );
-    
-end );
-
-##
-InstallMethod( AddTerminalObject,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    
-    SetTerminalObjectFunction( category, func );
-    
-    SetCanComputeTerminalObject( category, true );
-    
-    AddPrimitiveOperation( category!.derivations_weight_list, "TerminalObject", weight );
-    
-end );
-
-##
-# Because the diagram of the terminal object is empty, the user
-# must not install UniversalMorphismIntoTerminalObject without installing TerminalObject.
-# Thus the following implication is unnecessary:
-# InstallTrueMethod( CanComputeTerminalObject, CanComputeUniversalMorphismIntoTerminalObject );
-
-## Maybe set IsWellDefined by default.
-InstallMethod( TerminalObject,
-               [ IsCapCategory and HasTerminalObjectFunction ],
-               
-  function( category )
-    local terminal_object;
-    
-    terminal_object := TerminalObjectFunction( category )();
-    
-    Add( category, terminal_object );
-    
-    SetIsWellDefined( terminal_object, true );
-    
-    SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
-    
-    return terminal_object;
-    
-end );
-
-##
 BindGlobal( "CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD", 
             ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.UniversalMorphismIntoTerminalObject ) );
 
@@ -910,55 +861,6 @@ end );
 ####################################
 ## Add methods
 ####################################
-
-##
-InstallMethod( AddInitialObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    AddInitialObject( category, func, 100 );
-    
-end );
-
-##
-InstallMethod( AddInitialObject,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    
-    SetInitialObjectFunction( category, func );
-    
-    SetCanComputeInitialObject( category, true );
-    
-    AddPrimitiveOperation( category!.derivations_weight_list, "InitialObject", weight );
-    
-end );
-
-##
-# Because the diagram of the initial object is empty, the user
-# must not install UniversalMorphismFromInitialObject without installing InitialObject.
-# Thus the following implication is unnecessary:
-# InstallTrueMethod( CanComputeInitialObject, CanComputeUniversalMorphismFromInitialObject );
-
-## Maybe set IsWellDefined by default?
-InstallMethod( InitialObject,
-               [ IsCapCategory and HasInitialObjectFunction ],
-               
-  function( category )
-    local initial_object;
-    
-    initial_object := InitialObjectFunction( category )();
-    
-    Add( category, initial_object );
-    
-    SetIsWellDefined( initial_object, true );
-    
-    SetFilterObj( initial_object, WasCreatedAsInitialObject );
-    
-    return initial_object;
-    
-end );
 
 ##
 BindGlobal( "CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD", 
