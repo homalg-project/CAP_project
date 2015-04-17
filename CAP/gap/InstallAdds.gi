@@ -293,7 +293,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         
         if IsBound( current_rec.universal_type ) and not IsBound( current_rec.universal_object_position ) then
             
-            current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( "id", current_rec.installation_name, arg_list, current_recname ); ##Please note that the third argument is not used
+            if not IsBound( current_rec.post_function ) then
+                current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( "id", current_rec.installation_name, arg_list, current_recname ); ##Please note that the third argument is not used
+            fi;
             
             CapInternalInstallAdd( current_rec );
             
@@ -333,7 +335,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             
             current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list, current_rec.argument_list );
             
-            current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, arg_list, object_name );
+            if not IsBound( current_rec.post_function ) then
+                current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, arg_list, object_name );
+            fi;
             
             CapInternalInstallAdd( current_rec );
             
