@@ -826,5 +826,12 @@ IsWellDefinedForTwoCells := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "twocell" ],
   well_defined_todo := false,
+  no_install := true ),
+  
+DirectSumDiagonalDifference := rec(
+  installation_name := "DirectSumDiagonalDifferenceOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "DirectSumDiagonalDifferenceOp",
   no_install := true ) )
+
 );

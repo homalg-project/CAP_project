@@ -169,6 +169,13 @@ InstallMethod( AdditionForMorphisms,
                
 \+ );
 
+##
+InstallMethod( AdditiveInverseForMorphisms,
+                  [ IsCapCategoryMorphism ],
+                  
+AdditiveInverse );
+
+
 ######################################
 ##
 ## Morphism equality functions

@@ -710,6 +710,31 @@ end : Description := "InitialObject equals ZeroObject" );
 ####################################
 
 ##
+AddDerivationToCAP( DirectSumDiagonalDifference,
+                    [ [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
+                      [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number here
+                      [ UniversalMorphismIntoDirectProduct, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
+                      [ AdditiveInverseForMorphisms,1 ],
+                      [ AdditionForMorphisms, 1 ] ],
+                    
+  function( diagram, method_selection_morphism )
+    local direct_product_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2;
+    
+    direct_product_diagram := List( diagram, Source );
+    
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), diagram[ i ] ) );
+    
+    mor1 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    
+    return mor1 - mor2;
+    
+end : Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
+
+##
 InstallTrueMethodAndStoreImplication( CanComputeFiberProduct, CanComputeDirectProduct and 
                                        CanComputeProjectionInFactorOfDirectProduct and 
                                        CanComputePreCompose and

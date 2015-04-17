@@ -1351,6 +1351,13 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 # Declared as an operation in MatricesForHomalg!
 # DeclareGlobalFunction( "FiberProduct" );
 
+DeclareOperation( "DirectSumDiagonalDifference",
+                  [ IsList ] );
+
+DeclareOperationWithCache( "DirectSumDiagonalDifferenceOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
+
 #! @Description
 #! This function either accepts a list $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
 #! of morphisms or 
