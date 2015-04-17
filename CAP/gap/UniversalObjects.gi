@@ -966,12 +966,12 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
 end );
 
 ##
-InstallMethod( DirectSumDiagonalDifference,
+InstallMethod( DirectProductDiagonalDifference,
                [ IsList ],
                
   function( diagram )
     
-    return DirectSumDiagonalDifferenceOp( diagram, diagram[1] );
+    return DirectProductDiagonalDifferenceOp( diagram, diagram[1] );
     
 end );
 

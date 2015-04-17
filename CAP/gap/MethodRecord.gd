@@ -828,10 +828,10 @@ IsWellDefinedForTwoCells := rec(
   well_defined_todo := false,
   no_install := true ),
   
-DirectSumDiagonalDifference := rec(
-  installation_name := "DirectSumDiagonalDifferenceOp",
+DirectProductDiagonalDifference := rec(
+  installation_name := "DirectProductDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
-  cache_name := "DirectSumDiagonalDifferenceOp",
+  cache_name := "DirectProductDiagonalDifferenceOp",
   no_install := true ),
   
 FiberProductEmbeddingInDirectSum := rec(

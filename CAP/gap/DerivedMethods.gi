@@ -355,7 +355,7 @@ end : Description := "ProjectionInFactorOfFiberProductWithGivenFiberProduct by c
 ##
 AddDerivationToCAP( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
                     [ [ UniversalMorphismIntoDirectProduct, 1 ],
-                       [ DirectSumDiagonalDifference, 1 ],
+                       [ DirectProductDiagonalDifference, 1 ],
                        [ KernelLift, 1 ] ],
                                        
   function( diagram, source, pullback )
@@ -363,7 +363,7 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
     
     test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
     
-    direct_sum_diagonal_difference := DirectSumDiagonalDifference( diagram );
+    direct_sum_diagonal_difference := DirectProductDiagonalDifference( diagram );
     
     return KernelLift( direct_sum_diagonal_difference, test_function );
     
@@ -657,7 +657,7 @@ AddDerivationToCAP( InitialObjectFunctorial,
 end : Description := "InitialObjectFunctorial using the universality of the initial object" );
 
 ##
-AddDerivationToCAP( DirectSumDiagonalDifference,
+AddDerivationToCAP( DirectProductDiagonalDifference,
                     [ [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
                       [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number here
                       [ UniversalMorphismIntoDirectProduct, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
@@ -679,7 +679,7 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
     
     return mor1 - mor2;
     
-end : Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
+end : Description := "DirectProductDiagonalDifference using the operations defining this morphism" );
 
 ##
 AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
@@ -687,9 +687,9 @@ AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
                     
   function( diagram, method_selection_morphism )
     
-    return KernelEmb( DirectSumDiagonalDifference( diagram ) );
+    return KernelEmb( DirectProductDiagonalDifference( diagram ) );
     
-end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectSumDiagonalDifference" );
+end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectProductDiagonalDifference" );
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
@@ -713,7 +713,7 @@ end : Description := "ProjectionInFactorOfFiberProduct by composing the direct s
 ##
 AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
                     [ [ UniversalMorphismIntoDirectProduct, 1 ],
-                       [ DirectSumDiagonalDifference, 1 ],
+                       [ DirectProductDiagonalDifference, 1 ],
                        [ KernelLift, 1 ] ],
                                        
   function( diagram, source )
@@ -721,7 +721,7 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
     
     test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
     
-    direct_sum_diagonal_difference := DirectSumDiagonalDifference( diagram );
+    direct_sum_diagonal_difference := DirectProductDiagonalDifference( diagram );
     
     return KernelLift( direct_sum_diagonal_difference, test_function );
     

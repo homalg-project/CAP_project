@@ -1352,11 +1352,11 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 # DeclareGlobalFunction( "FiberProduct" );
 
 ##
-DeclareOperation( "DirectSumDiagonalDifference",
+DeclareOperation( "DirectProductDiagonalDifference",
                   [ IsList ] );
 
 ##
-DeclareOperationWithCache( "DirectSumDiagonalDifferenceOp",
+DeclareOperationWithCache( "DirectProductDiagonalDifferenceOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
 ##

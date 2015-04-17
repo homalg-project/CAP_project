@@ -169,7 +169,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeCoastrictionToImageWithGivenImageObject",
                 "CanComputeUniversalMorphismFromImage",
                 "CanComputeUniversalMorphismFromImageWithGivenImageObject",
-                "CanComputeDirectSumDiagonalDifference",
+                "CanComputeDirectProductDiagonalDifference",
                 "CanComputeFiberProductEmbeddingInDirectSum"
                 
                 ] )
