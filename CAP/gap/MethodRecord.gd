@@ -838,8 +838,19 @@ FiberProductEmbeddingInDirectSum := rec(
   installation_name := "FiberProductEmbeddingInDirectSumOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "FiberProductEmbeddingInDirectSumOp",
-  no_install := true )
+  no_install := true ),
   
+CoproductDiagonalDifference := rec(
+  installation_name := "CoproductDiagonalDifferenceOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "CoproductDiagonalDifferenceOp",
+  no_install := true ),
+  
+DirectSumProjectionInPushout := rec(
+  installation_name := "DirectSumProjectionInPushoutOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "DirectSumProjectionInPushoutOp",
+  no_install := true )
   )
 
 );

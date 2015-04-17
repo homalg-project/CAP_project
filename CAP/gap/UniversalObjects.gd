@@ -1603,6 +1603,22 @@ DeclareFilter( "WasCreatedAsFiberProduct" );
 
 
 ## Main Operations and Attributes
+##
+DeclareOperation( "CoproductDiagonalDifference",
+                  [ IsList ] );
+
+##
+DeclareOperationWithCache( "CoproductDiagonalDifferenceOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "DirectSumProjectionInPushout",
+                  [ IsList ] );
+
+##
+DeclareOperationWithCache( "DirectSumProjectionInPushoutOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
 
 DeclareGlobalFunction( "Pushout" );
 

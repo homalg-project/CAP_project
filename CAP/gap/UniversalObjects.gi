@@ -1066,6 +1066,27 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
     
 end );
 
+##
+InstallMethod( CoproductDiagonalDifference,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return CoproductDiagonalDifferenceOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( DirectSumProjectionInPushout,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return DirectSumProjectionInPushoutOp( diagram, diagram[1] );
+    
+end );
+
+
 ####################################
 ## Functorial operations
 ####################################
