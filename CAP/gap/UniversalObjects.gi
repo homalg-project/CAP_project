@@ -971,7 +971,7 @@ InstallMethod( DirectSumDiagonalDifference,
                
   function( diagram )
     
-    return DirectSumDiagonalDifference( diagram, diagram[1] );
+    return DirectSumDiagonalDifferenceOp( diagram, diagram[1] );
     
 end );
 
