@@ -735,6 +735,16 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
 end : Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
 
 ##
+AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
+                    [ [ KernelEmb, 1 ] ],
+                    
+  function( diagram, method_selection_morphism )
+    
+    return KernelEmb( DirectSumDiagonalDifference( diagram ) );
+    
+end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectSumDiagonalDifference" );
+
+##
 InstallTrueMethodAndStoreImplication( CanComputeFiberProduct, CanComputeDirectProduct and 
                                        CanComputeProjectionInFactorOfDirectProduct and 
                                        CanComputePreCompose and

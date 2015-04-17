@@ -1351,10 +1351,20 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 # Declared as an operation in MatricesForHomalg!
 # DeclareGlobalFunction( "FiberProduct" );
 
+##
 DeclareOperation( "DirectSumDiagonalDifference",
                   [ IsList ] );
 
+##
 DeclareOperationWithCache( "DirectSumDiagonalDifferenceOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "FiberProductEmbeddingInDirectSum",
+                  [ IsList ] );
+
+##
+DeclareOperationWithCache( "FiberProductEmbeddingInDirectSumOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
 

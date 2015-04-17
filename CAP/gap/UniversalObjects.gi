@@ -974,6 +974,17 @@ InstallMethod( DirectSumDiagonalDifference,
     return DirectSumDiagonalDifference( diagram, diagram[1] );
     
 end );
+
+##
+InstallMethod( FiberProductEmbeddingInDirectSum,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return FiberProductEmbeddingInDirectSumOp( diagram, diagram[1] );
+    
+end );
+
 ####################################
 ## Functorial operations
 ####################################

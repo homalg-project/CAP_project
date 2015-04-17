@@ -832,6 +832,14 @@ DirectSumDiagonalDifference := rec(
   installation_name := "DirectSumDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumDiagonalDifferenceOp",
-  no_install := true ) )
+  no_install := true ),
+  
+FiberProductEmbeddingInDirectSum := rec(
+  installation_name := "FiberProductEmbeddingInDirectSumOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "FiberProductEmbeddingInDirectSumOp",
+  no_install := true )
+  
+  )
 
 );
