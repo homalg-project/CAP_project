@@ -18,9 +18,9 @@ InstallMethod( LeftPresentations,
     
     category!.ring_for_representation_category := ring;
     
-    ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
-    
     SetIsAbelianCategory( category, true );
+    
+    ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
     
     AddCategoryToFamily( category, "ModuleCategory" );
     

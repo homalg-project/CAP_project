@@ -405,6 +405,24 @@ AddDerivationToCAP( UniversalMorphismFromPushoutWithGivenPushout,
     
 end : Description := "UniversalMorphismFromPushoutWithGivenPushout using the universality of the cokernel representation of the pushout" );
 
+##
+AddDerivationToCAP( ImageEmbeddingWithGivenImageObject,
+                    [ [ KernelEmb, 1 ],
+                      [ CokernelProj, 1 ] ],
+                      
+  function( mor, image_object )
+    local image_embedding;
+    
+    image_embedding := KernelEmb( CokernelProj( mor ) );
+    
+    return image_embedding;
+    
+end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "ImageEmbeddingWithGivenImageObject as the kernel embedding of the cokernel projection"
+##    depends_on := "ImageEmbedding as the kernel embedding of the cokernel projection"
+);
+
+
 ###########################
 ##
 ## Methods returning a morphism with source or range constructed within the method!
@@ -871,6 +889,86 @@ AddDerivationToCAP( PushoutFunctorial,
         
 end : Description := "PushoutFunctorial using the universality of the pushout" );
 
+##
+AddDerivationToCAP( ImageEmbedding,
+                    [ [ KernelEmb, 1 ],
+                      [ CokernelProj, 1 ] ],
+                      
+  function( mor )
+    local image_embedding;
+    
+    image_embedding := KernelEmb( CokernelProj( mor ) );
+    
+    return image_embedding;
+    
+end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "ImageEmbedding as the kernel embedding of the cokernel projection"
+##    depends_on := "ImageObject as the source of ImageEmbedding"
+);
+
+##
+AddDerivationToCAP( ImageEmbedding,
+                    [ [ ImageEmbeddingWithGivenImageObject, 1 ],
+                      [ ImageObject, 1 ] ],
+                      
+  function( morphism )
+    
+    return ImageEmbeddingWithGivenImageObject( morphism, ImageObject( morphism ) );
+  
+end : Description := "ImageEmbedding using ImageEmbeddingWithGivenImageObject and ImageObject" );
+
+
+##
+AddDerivationToCAP( CoastrictionToImage,
+                    [ [ CoastrictionToImageWithGivenImageObject, 1 ],
+                      [ ImageObject, 1 ] ],
+                 
+  function( morphism )
+    
+    return CoastrictionToImageWithGivenImageObject( morphism, ImageObject( morphism ) );
+    
+end : Description := "CoastrictionToImage using CoastrictionToImageWithGivenImageObject and ImageObject" );
+
+##
+AddDerivationToCAP( CoastrictionToImage,
+                    [ [ ImageEmbedding, 1 ],
+                      [ MonoAsKernelLift, 1 ] ],
+                 
+  function( morphism )
+    local image_embedding;
+    
+    image_embedding := ImageEmbedding( morphism );
+    
+    return MonoAsKernelLift( image_embedding, morphism );
+    
+end : Description := "CoastrictionToImage using that image embedding can be seen as a kernel" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromImage,
+                    [ [ UniversalMorphismFromImageWithGivenImageObject, 1 ],
+                      [ ImageObject, 1 ] ],
+                      
+  function( morphism, test_factorization )
+    
+    return UniversalMorphismFromImageWithGivenImageObject( morphism, test_factorization, ImageObject( morphism ) );
+    
+end : Description := "UniversalMorphismFromImage using UniversalMorphismFromImageWithGivenImageObject and ImageObject" );
+
+## FIXME: maybe the first entry of the list test_factorization can be ommitted here
+##
+AddDerivationToCAP( UniversalMorphismFromImage,
+                    [ [ ImageEmbedding, 1 ],
+                      [ MonoAsKernelLift, 1 ] ],
+                      
+  function( morphism, test_factorization )
+    local image_embedding;
+    
+    image_embedding := ImageEmbedding( morphism );
+    
+    return MonoAsKernelLift( test_factorization[2], image_embedding );
+    
+end : Description := "UniversalMorphismFromImage using ImageEmbedding and MonoAsKernelLift" );
+
 
 ###########################
 ##
@@ -976,151 +1074,27 @@ AddDerivationToCAP( Pushout,
     
 end : Description := "Pushout as the range of DirectSumProjectionInPushout" );
 
+##
+AddDerivationToCAP( ImageObject,
+                    [ [ ImageEmbedding, 1 ] ],
+                    
+  function( mor )
+    local image;
+    
+    image := Source( ImageEmbedding( mor ) );
+    
+    return image;
+    
+end : Description := "ImageObject as the source of ImageEmbedding" );
 
 ####################################
 ## Derived Methods for Image
 ####################################
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeImageObject, CanComputeImageEmbedding );
-
-InstallMethod( ImageObject,
-               [ IsCapCategoryMorphism and CanComputeImageEmbedding ],
-               -9999, #FIXME
-                                    
-  function( mor )
-    local image;
-    
-    ## ImageEmbedding creates an ImageObject as source
-    image := Source( ImageEmbedding( mor ) );
-    
-    return image;
-    
-end );
-
-## Note: As long as the above derived ImageObject-function is used,
-## there is no need to implement ImageEmbeddingWithGivenImageObject in order
-## to keep these methods consistent.
-##
-InstallTrueMethodAndStoreImplication( CanComputeImageEmbedding, CanComputeKernelEmb and CanComputeCokernelProj );
-
-InstallMethod( ImageEmbedding,
-               [ IsCapCategoryMorphism and CanComputeImageEmbedding ],
-               -9999, #FIXME
-                                    
-  function( mor )
-    local image_embedding, image;
-    
-    ## consistency check
-    if HasImageObject( mor ) then
-      
-      return ImageEmbeddingWithGivenImageObject( mor, ImageObject( mor ) );
-      
-    fi;
-    
-    image_embedding := KernelEmb( CokernelProj( mor ) );
-    
-    image := Source( image_embedding );
-    
-    AddToGenesis( image, "ImageDiagram", mor );
-    
-    SetFilterObj( image, WasCreatedAsImageObject );
-    
-    SetImageObject( mor, image );
-    
-    return image_embedding;
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeImageEmbedding, CanComputeImageEmbeddingWithGivenImageObject and CanComputeImageObject );
-
-InstallMethod( ImageEmbedding,
-               [ IsCapCategoryMorphism
-                 and CanComputeImageEmbeddingWithGivenImageObject
-                 and CanComputeImageObject ],
-                 -9900, #FIXME
-                 
-  function( morphism )
-    
-    return ImageEmbeddingWithGivenImageObject( ImageObject( morphism ), morphism );
-  
-end );
 
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeCoastrictionToImage, CanComputeCoastrictionToImageWithGivenImageObject and CanComputeImageObject );
 
-InstallMethod( CoastrictionToImage,
-               [ IsCapCategoryMorphism
-                 and CanComputeCoastrictionToImageWithGivenImageObject 
-                 and CanComputeImageObject ],
-                 -9900, #FIXME
-                 
-  function( morphism )
-    
-    return CoastrictionToImageWithGivenImageObject( Image( morphism ), morphism );
-    
-end );
 
-##
-InstallTrueMethodAndStoreImplication( CanComputeCoastrictionToImage,
-                   CanComputeImageEmbedding
-                   and CanComputeMonoAsKernelLift );
-
-InstallMethod( CoastrictionToImage,
-               [ IsCapCategoryMorphism
-                 and CanComputeImageEmbedding
-                 and CanComputeMonoAsKernelLift ],
-                 -9999, #FIXME
-                 
-  function( morphism )
-    local image_embedding;
-    
-    image_embedding := ImageEmbedding( morphism );
-    
-    return MonoAsKernelLift( image_embedding, morphism );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromImage,
-                   CanComputeUniversalMorphismFromImageWithGivenImageObject
-                   and CanComputeImageObject );
-
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImage,
-               [ IsCapCategoryMorphism
-                 and CanComputeUniversalMorphismFromImageWithGivenImageObject
-                 and CanComputeImageObject,
-                 IsList ],
-                 -9900, #FIXME
-                 
-  function( morphism, test_factorization )
-    
-    return UniversalMorphismFromImageWithGivenImageObject( morphism, test_factorization, ImageObject( morphism ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 1 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromImage,
-                   CanComputeMonoAsKernelLift
-                   and CanComputeImageEmbedding );
-
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromImage,
-               [ IsCapCategoryMorphism
-                 and CanComputeMonoAsKernelLift
-                 and CanComputeImageEmbedding,
-                 IsList ],
-                 -9999, #FIXME
-                 
-  function( morphism, test_factorization )
-    local image_embedding;
-    
-    image_embedding := ImageEmbedding( morphism );
-    
-    return MonoAsKernelLift( test_factorization[2], image_embedding );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 1 );
 
 
 
