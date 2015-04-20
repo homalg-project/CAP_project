@@ -965,6 +965,26 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
     
 end );
 
+##
+InstallMethod( DirectProductDiagonalDifference,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return DirectProductDiagonalDifferenceOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( FiberProductEmbeddingInDirectSum,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return FiberProductEmbeddingInDirectSumOp( diagram, diagram[1] );
+    
+end );
+
 ####################################
 ## Functorial operations
 ####################################
@@ -1045,6 +1065,27 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
     return UniversalMorphismFromPushoutOp( pushout_or_diagram, sink, pushout_or_diagram[1] );
     
 end );
+
+##
+InstallMethod( CoproductDiagonalDifference,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return CoproductDiagonalDifferenceOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( DirectSumProjectionInPushout,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return DirectSumProjectionInPushoutOp( diagram, diagram[1] );
+    
+end );
+
 
 ####################################
 ## Functorial operations

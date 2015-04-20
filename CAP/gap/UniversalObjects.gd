@@ -1351,6 +1351,23 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 # Declared as an operation in MatricesForHomalg!
 # DeclareGlobalFunction( "FiberProduct" );
 
+##
+DeclareOperation( "DirectProductDiagonalDifference",
+                  [ IsList ] );
+
+##
+DeclareOperationWithCache( "DirectProductDiagonalDifferenceOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "FiberProductEmbeddingInDirectSum",
+                  [ IsList ] );
+
+##
+DeclareOperationWithCache( "FiberProductEmbeddingInDirectSumOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
+
 #! @Description
 #! This function either accepts a list $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
 #! of morphisms or 
@@ -1586,6 +1603,22 @@ DeclareFilter( "WasCreatedAsFiberProduct" );
 
 
 ## Main Operations and Attributes
+##
+DeclareOperation( "CoproductDiagonalDifference",
+                  [ IsList ] );
+
+##
+DeclareOperationWithCache( "CoproductDiagonalDifferenceOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "DirectSumProjectionInPushout",
+                  [ IsList ] );
+
+##
+DeclareOperationWithCache( "DirectSumProjectionInPushoutOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
 
 DeclareGlobalFunction( "Pushout" );
 

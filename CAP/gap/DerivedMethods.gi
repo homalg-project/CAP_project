@@ -333,6 +333,77 @@ AddDerivationToCAP( UniversalMorphismFromInitialObjectWithGivenInitialObject,
 end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismFromInitialObjectWithGivenInitialObject computing the zero morphism" );
 
+##
+AddDerivationToCAP( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
+                    [ [ FiberProductEmbeddingInDirectSum, 1 ],
+                      [ ProjectionInFactorOfDirectProduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                      
+  function( diagram, projection_number, pullback )
+    local embedding_in_direct_product, direct_product, direct_product_diagram, projection;
+    
+    embedding_in_direct_product := FiberProductEmbeddingInDirectSum( diagram );
+    
+    direct_product_diagram := List( diagram, Source );
+    
+    projection := ProjectionInFactorOfDirectProduct( direct_product_diagram, projection_number );
+    
+    return PreCompose( embedding_in_direct_product, projection );
+    
+end : Description := "ProjectionInFactorOfFiberProductWithGivenFiberProduct by composing the embedding of fiber product in the direct product with the direct sum projection" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
+                    [ [ UniversalMorphismIntoDirectProduct, 1 ],
+                       [ DirectProductDiagonalDifference, 1 ],
+                       [ KernelLift, 1 ] ],
+                                       
+  function( diagram, source, pullback )
+    local test_function, direct_sum_diagonal_difference;
+    
+    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
+    
+    direct_sum_diagonal_difference := DirectProductDiagonalDifference( diagram );
+    
+    return KernelLift( direct_sum_diagonal_difference, test_function );
+    
+end : Description := "UniversalMorphismIntoFiberProductWithGivenFiberProduct using the universality of the kernel representation of the pullback" );
+
+##
+AddDerivationToCAP( InjectionOfCofactorOfPushoutWithGivenPushout,
+                    [ [ DirectSumProjectionInPushout, 1 ],
+                      [ InjectionOfCofactorOfCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                                         
+  function( diagram, injection_number, pushout )
+    local projection_from_coproduct, coproduct, coproduct_diagram, injection;
+    
+    projection_from_coproduct := DirectSumProjectionInPushout( diagram );
+    
+    coproduct_diagram := List( diagram, Range );
+    
+    injection := InjectionOfCofactorOfCoproduct( coproduct_diagram, injection_number );
+    
+    return PreCompose( injection, projection_from_coproduct );
+    
+end : Description := "InjectionOfCofactorOfPushoutWithGivenPushout by composing the coproduct injection with the direct sum projection to the pushout" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromPushoutWithGivenPushout,
+                    [ [ UniversalMorphismFromCoproduct, 1 ],
+                      [ CoproductDiagonalDifference, 1 ],
+                      [ CokernelColift, 1 ] ],
+                    
+  function( diagram, sink, pushout )
+    local test_function, coproduct_diagonal_difference;
+    
+    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
+    
+    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
+    
+    return CokernelColift( coproduct_diagonal_difference, test_function );
+    
+end : Description := "UniversalMorphismFromPushoutWithGivenPushout using the universality of the cokernel representation of the pushout" );
 
 ###########################
 ##
@@ -620,6 +691,187 @@ AddDerivationToCAP( InitialObjectFunctorial,
     
 end : Description := "InitialObjectFunctorial using the universality of the initial object" );
 
+##
+AddDerivationToCAP( DirectProductDiagonalDifference,
+                    [ [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
+                      [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number here
+                      [ UniversalMorphismIntoDirectProduct, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
+                      [ AdditiveInverseForMorphisms,1 ],
+                      [ AdditionForMorphisms, 1 ] ],
+                    
+  function( diagram, method_selection_morphism )
+    local direct_product_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2;
+    
+    direct_product_diagram := List( diagram, Source );
+    
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), diagram[ i ] ) );
+    
+    mor1 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    
+    return mor1 - mor2;
+    
+end : Description := "DirectProductDiagonalDifference using the operations defining this morphism" );
+
+##
+AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
+                    [ [ KernelEmb, 1 ] ],
+                    
+  function( diagram, method_selection_morphism )
+    
+    return KernelEmb( DirectProductDiagonalDifference( diagram ) );
+    
+end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectProductDiagonalDifference" );
+
+##
+AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
+                    [ [ FiberProductEmbeddingInDirectSum, 1 ],
+                      [ ProjectionInFactorOfDirectProduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                      
+  function( diagram, projection_number )
+    local embedding_in_direct_product, direct_product, direct_product_diagram, projection;
+    
+    embedding_in_direct_product := FiberProductEmbeddingInDirectSum( diagram );
+    
+    direct_product_diagram := List( diagram, Source );
+    
+    projection := ProjectionInFactorOfDirectProduct( direct_product_diagram, projection_number );
+    
+    return PreCompose( embedding_in_direct_product, projection );
+    
+end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
+                    [ [ UniversalMorphismIntoDirectProduct, 1 ],
+                       [ DirectProductDiagonalDifference, 1 ],
+                       [ KernelLift, 1 ] ],
+                                       
+  function( diagram, source )
+    local test_function, direct_sum_diagonal_difference;
+    
+    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
+    
+    direct_sum_diagonal_difference := DirectProductDiagonalDifference( diagram );
+    
+    return KernelLift( direct_sum_diagonal_difference, test_function );
+    
+end : Description := "UniversalMorphismIntoFiberProductWithGivenFiberProduct using the universality of the kernel representation of the pullback" );
+
+##
+AddDerivationToCAP( FiberProductFunctorial,
+                    [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the right number
+                      [ ProjectionInFactorOfFiberProduct, 2 ], ## Length( morphism_of_morphisms ) would be the right number,
+                      [ UniversalMorphismIntoFiberProduct, 1 ] ],
+                                  
+  function( morphism_of_morphisms, base_morphism )
+    local pullback_diagram, source, diagram;
+        
+        pullback_diagram := List( morphism_of_morphisms, mor -> mor[1] );
+        
+        source := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, i ), morphism_of_morphisms[i][2] ) );
+        
+        diagram := List( morphism_of_morphisms, mor -> mor[3] );
+        
+        return UniversalMorphismIntoFiberProduct( diagram, source );
+        
+end : Description := "FiberProductFunctorial using the universality of the fiber product" );
+
+##
+AddDerivationToCAP( CoproductDiagonalDifference,
+                    [ [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( diagram ) would be the correct number
+                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+                      [ UniversalMorphismFromCoproduct, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
+                      [ AdditiveInverseForMorphisms, 1 ],
+                      [ AdditionForMorphisms, 1 ] ],
+                    
+  function( diagram, method_selection_morphism )
+    local cobase, coproduct_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2;
+    
+    coproduct_diagram := List( diagram, Range );
+    
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( diagram[ i ], InjectionOfCofactorOfCoproduct( coproduct_diagram, i ) ) );
+    
+    mor1 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    
+    return mor1 - mor2;
+    
+end : Description := "CoproductDiagonalDifference using the operations defining this morphism" );
+
+##
+AddDerivationToCAP( DirectSumProjectionInPushout,
+                    [ [ CokernelProj, 1 ] ],
+                    
+  function( diagram, method_selection_morphism )
+    
+    return CokernelProj( CoproductDiagonalDifference( diagram ) );
+    
+end : Description := "DirectSumProjectionInPushout as the cokernel projection of CoproductDiagonalDifference" );
+
+##
+AddDerivationToCAP( InjectionOfCofactorOfPushout,
+                    [ [ DirectSumProjectionInPushout, 1 ],
+                      [ InjectionOfCofactorOfCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                                         
+  function( diagram, injection_number )
+    local projection_from_coproduct, coproduct, coproduct_diagram, injection;
+    
+    projection_from_coproduct := DirectSumProjectionInPushout( diagram );
+    
+    coproduct_diagram := List( diagram, Range );
+    
+    injection := InjectionOfCofactorOfCoproduct( coproduct_diagram, injection_number );
+    
+    return PreCompose( injection, projection_from_coproduct );
+    
+end : Description := "InjectionOfCofactorOfPushout by composing the coproduct injection with the direct sum projection to the pushout" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromPushout,
+                    [ [ UniversalMorphismFromCoproduct, 1 ],
+                      [ CoproductDiagonalDifference, 1 ],
+                      [ CokernelColift, 1 ] ],
+                    
+  function( diagram, sink )
+    local test_function, coproduct_diagonal_difference;
+    
+    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
+    
+    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
+    
+    return CokernelColift( coproduct_diagonal_difference, test_function );
+    
+end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
+
+##
+AddDerivationToCAP( PushoutFunctorial,
+                    [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the correct number here
+                      [ InjectionOfCofactorOfPushout, 2 ], ## Length( morphism_of_morphisms ) would be the correct number here
+                      [ UniversalMorphismFromPushout, 1 ] ],
+                                  
+  function( morphism_of_morphisms, cobase_morphism )
+    local pushout_diagram, sink, diagram;
+        
+        pushout_diagram := List( morphism_of_morphisms, mor -> mor[3] );
+        
+        sink := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( morphism_of_morphisms[i][2], InjectionOfCofactorOfPushout( pushout_diagram, i ) ) );
+        
+        diagram := List( morphism_of_morphisms, mor -> mor[1] );
+        
+        return UniversalMorphismFromPushout( diagram, sink );
+        
+end : Description := "PushoutFunctorial using the universality of the pushout" );
+
+
 ###########################
 ##
 ## Methods returning an object
@@ -704,406 +956,26 @@ AddDerivationToCAP( InitialObject,
     
 end : Description := "InitialObject equals ZeroObject" );
 
-
-####################################
-## Derived Methods for FiberProduct
-####################################
+##
+AddDerivationToCAP( FiberProduct,
+                    [ [ FiberProductEmbeddingInDirectSum, 1 ] ],
+                    
+function( diagram )
+    
+    return Source( FiberProductEmbeddingInDirectSum( diagram ) );
+    
+end : Description := "FiberProduct as the source of FiberProductEmbeddingInDirectSum" );
 
 ##
-InstallTrueMethodAndStoreImplication( CanComputeFiberProduct, CanComputeDirectProduct and 
-                                       CanComputeProjectionInFactorOfDirectProduct and 
-                                       CanComputePreCompose and
-                                       CanComputeAdditionForMorphisms and
-                                       CanComputeAdditiveInverseForMorphisms and
-                                       CanComputeKernelObject );
+AddDerivationToCAP( Pushout,
+                    [ [ DirectSumProjectionInPushout, 1 ] ],
+                    
+  function( diagram )
+    
+    return Range( DirectSumProjectionInPushout( diagram ) );
+    
+end : Description := "Pushout as the range of DirectSumProjectionInPushout" );
 
-##
-InstallMethodWithToDoForIsWellDefined( FiberProductOp,
-                                       [ IsList,
-                                         IsCapCategoryMorphism and
-                                         CanComputeDirectProduct and 
-                                         CanComputeProjectionInFactorOfDirectProduct and 
-                                         CanComputePreCompose and
-                                         CanComputeAdditionForMorphisms and
-                                         CanComputeAdditiveInverseForMorphisms and
-                                         CanComputeKernelObject ],
-                                         -9999, #FIXME
-                                         
-  function( diagram, method_selection_morphism )
-    local base, direct_product_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2, pullback, diff;
-    
-    base := Range( diagram[1] );
-    
-    if not ForAll( diagram, c -> IsEqualForObjects( Range( c ), base ) ) then
-    
-      Error( "the given morphisms of the pullback diagram must have equal ranges\n" );
-      
-    fi;
-    
-    direct_product_diagram := List( diagram, Source );
-    
-    number_of_morphisms := Length( diagram );
-    
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), diagram[ i ] ) );
-    
-    mor1 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
-    
-    mor2 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
-    
-    diff := mor1 - mor2;
-    
-    pullback := KernelObject( diff );
-    
-    if IsBound( pullback!.Genesis.FiberProductAsKernelObjectDiagram ) then
-        
-        Error( "pullback has two origins, which leads to inconsistencies." );
-        
-    fi;
-    
-    #unfortunately this is necessary here
-    AddToGenesis(  pullback, "FiberProductAsKernelObjectDiagram", diff );
-    
-    AddToGenesis( pullback, "FiberProductDiagram", diagram );
-    
-    SetFilterObj( pullback, WasCreatedAsFiberProduct );
-    
-    return pullback;
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfFiberProduct, CanComputeProjectionInFactorOfFiberProductWithGivenFiberProduct and 
-                                                           CanComputeFiberProduct );
-
-InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductOp,
-                                       [ IsList,
-                                         IsInt,
-                                         IsCapCategoryMorphism and
-                                         CanComputeProjectionInFactorOfFiberProductWithGivenFiberProduct and
-                                         CanComputeFiberProduct ],
-                                         
-  function( diagram, projection_number, method_selection_morphism )
-  
-    return ProjectionInFactorOfFiberProductWithGivenFiberProduct( diagram, projection_number, FiberProductOp( diagram, method_selection_morphism ) );
-  
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeProjectionInFactorOfFiberProductWithGivenFiberProduct, CanComputeKernelEmb and
-                                                                  CanComputeProjectionInFactorOfDirectProduct and
-                                                                  CanComputeFiberProduct );
-
-# FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
-# the special construction from above. If the
-# user gives his own pullback method, this derived method fails.
-# Of course, as mentioned in the introduction of this chapter, the user should never only install 
-# the constructor of a universal object without also implementing the WithGiven-methods.
-InstallMethodWithToDoForIsWellDefined( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
-                                       [ IsList,
-                                         IsInt,
-                                         IsCapCategoryObject and
-                                         CanComputeKernelEmb and
-                                         CanComputeProjectionInFactorOfDirectProduct and
-                                         CanComputeFiberProduct ],
-                                         -9999,
-                                         
-  function( diagram, projection_number, pullback )
-    local embedding_in_direct_product, direct_product, direct_product_diagram, projection;
-  
-    if not WasCreatedAsKernelObject( pullback ) or not IsBound( Genesis( pullback )!.FiberProductAsKernelObjectDiagram ) then
-    
-      Error( "pullback had to be created as a kernel" );
-    
-    fi;
-    
-    embedding_in_direct_product := KernelEmb( Genesis( pullback )!.FiberProductAsKernelObjectDiagram );
-    
-    direct_product := Range( embedding_in_direct_product );
-    
-    if not WasCreatedAsDirectProduct( direct_product ) then
-    
-      Error( "pullback had to be created as a kernel of a morphism with a direct product as source" );
-    
-    fi;
-    
-    direct_product_diagram := direct_product!.Genesis.DirectProductDiagram;
-    
-    projection := ProjectionInFactorOfDirectProductWithGivenDirectProduct( direct_product_diagram, projection_number, direct_product );
-    
-    return PreCompose( embedding_in_direct_product, projection );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoFiberProductWithGivenFiberProduct, CanComputeUniversalMorphismIntoDirectProduct and
-                                                                             CanComputeKernelLift );
-
-# FIXME: WARNING: This method only applies if the pullback was created as a kernel AND if this kernel came from 
-# the special construction from above. If the
-# user gives his own pullback method, this derived method fails.
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                                       [
-                                         IsList,
-                                         IsList,
-                                         IsCapCategoryObject
-                                       ],
-                                       
-  function( diagram, source, pullback )
-    local test_function;
-    
-    if not WasCreatedAsKernelObject( pullback ) then
-      
-      Error( "pullback had to be created as a kernel" );
-      
-    fi;
-    
-    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
-    
-    return KernelLift( pullback, test_function );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismIntoFiberProduct, CanComputeUniversalMorphismIntoFiberProductWithGivenFiberProduct and 
-                                                            CanComputeFiberProduct );
-
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismIntoFiberProductOp,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryMorphism ],
-                                             
-  function( diagram, source, method_selection_morphism )
-    
-    return UniversalMorphismIntoFiberProductWithGivenFiberProduct( diagram, source, FiberProductOp( diagram, method_selection_morphism ) );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeFiberProductFunctorial,
-                   CanComputeFiberProduct
-                   and CanComputePreCompose
-                   and CanComputeProjectionInFactorOfFiberProduct
-                   and CanComputeUniversalMorphismIntoFiberProduct );
-
-InstallMethodWithCacheFromObject( FiberProductFunctorialOp,
-                                  [ IsList,
-                                    IsCapCategoryMorphism
-                                    and CanComputeFiberProduct
-                                    and CanComputePreCompose
-                                    and CanComputeProjectionInFactorOfFiberProduct
-                                    and CanComputeUniversalMorphismIntoFiberProduct ],
-                                  
-  function( morphism_of_morphisms, base_morphism )
-    local pullback_diagram, source, diagram;
-        
-        pullback_diagram := List( morphism_of_morphisms, mor -> mor[1] );
-        
-        source := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, i ), morphism_of_morphisms[i][2] ) );
-        
-        diagram := List( morphism_of_morphisms, mor -> mor[3] );
-        
-        return UniversalMorphismIntoFiberProduct( diagram, source );
-        
-end : ArgumentNumber := 2 );
-
-####################################
-## Derived Methods for Pushout
-####################################
-
-##
-InstallTrueMethodAndStoreImplication( CanComputePushout, CanComputeCoproduct and 
-                                      CanComputeInjectionOfCofactorOfCoproduct and 
-                                      CanComputePreCompose and
-                                      CanComputeAdditionForMorphisms and
-                                      CanComputeAdditiveInverseForMorphisms and
-                                      CanComputeCokernel );
-
-##
-InstallMethodWithToDoForIsWellDefined( PushoutOp,
-                                       [ IsList,
-                                         IsCapCategoryMorphism and
-                                         CanComputeCoproduct and
-                                         CanComputeInjectionOfCofactorOfCoproduct and
-                                         CanComputePreCompose and
-                                         CanComputeAdditionForMorphisms and
-                                         CanComputeAdditiveInverseForMorphisms and
-                                         CanComputeCokernel ],
-                                         -9999, #FIXME
-                                         
-  function( diagram, method_selection_morphism )
-    local cobase, coproduct_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2, pushout, diff;
-    
-    cobase := Source( diagram[1] );
-        
-    if not ForAll( diagram, c -> IsEqualForObjects( Source( c ), cobase ) ) then
-           
-       Error( "the given morphisms of the pushout diagram must have equal sources\n" );
-           
-    fi;
-    
-    coproduct_diagram := List( diagram, Range );
-    
-    number_of_morphisms := Length( diagram );
-    
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( diagram[ i ], InjectionOfCofactorOfCoproduct( coproduct_diagram, i ) ) );
-    
-    mor1 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
-    
-    mor2 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
-    
-    diff := mor1 - mor2;
-    
-    pushout := Cokernel( diff );
-    
-    if IsBound( pushout!.Genesis.PushoutAsCokernelDiagram ) then
-        
-        Error( "pushout has two origins, which leads to inconsistencies." );
-        
-    fi;
-    
-    #unfortunately this is necessary here
-    AddToGenesis( pushout, "PushoutAsCokernelDiagram", diff );
-    
-    AddToGenesis( pushout, "PushoutDiagram", diagram );
-    
-    SetFilterObj( pushout, WasCreatedAsPushout );
-    
-    return pushout;
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 2 );
-
-#
-InstallTrueMethodAndStoreImplication( CanComputeInjectionOfCofactorOfPushout, CanComputeInjectionOfCofactorOfPushoutWithGivenPushout and 
-                                                           CanComputePushout );
-
-InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutOp,
-                                       [ IsList,
-                                         IsInt,
-                                         IsCapCategoryMorphism and
-                                         CanComputeInjectionOfCofactorOfPushoutWithGivenPushout and
-                                         CanComputePushout ],
-                                         
-  function( diagram, injection_number, method_selection_morphism )
-    
-    return InjectionOfCofactorOfPushoutWithGivenPushout( diagram, injection_number, PushoutOp( diagram, method_selection_morphism ) );
-  
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-# ##
-InstallTrueMethodAndStoreImplication( CanComputeInjectionOfCofactorOfPushoutWithGivenPushout, CanComputeCokernelProj and
-                                                                  CanComputeInjectionOfCofactorOfCoproduct and
-                                                                  CanComputePushout );
-
-# FIXME: WARNING: This method only applies if the pushout was created as a cokernel. If the
-# user gives his own pushout method, this derived method fails.
-InstallMethodWithToDoForIsWellDefined( InjectionOfCofactorOfPushoutWithGivenPushout,
-                                       [ IsList,
-                                         IsInt,
-                                         IsCapCategoryObject and
-                                         CanComputeCokernelProj and
-                                         CanComputeInjectionOfCofactorOfCoproduct and
-                                         CanComputePushout ],
-                                         -9999,
-                                         
-  function( diagram, injection_number, pushout )
-    local projection_from_coproduct, coproduct, coproduct_diagram, injection;
-  
-    if not WasCreatedAsCokernel( pushout ) or not IsBound( Genesis( pushout )!.PushoutAsCokernelDiagram ) then
-    
-      Error( "pushout had to be created as a cokernel" );
-    
-    fi;
-    
-    projection_from_coproduct := CokernelProj( Genesis( pushout )!.PushoutAsCokernelDiagram );
-    
-    coproduct := Source( projection_from_coproduct );
-    
-    if not WasCreatedAsCoproduct( coproduct ) then
-    
-      Error( "pushout had to be created as a cokernel of a morphism with a coproduct as range" );
-    
-    fi;
-    
-    coproduct_diagram := coproduct!.Genesis.CoproductDiagram;
-    
-    injection := InjectionOfCofactorOfCoproductWithGivenCoproduct( coproduct_diagram, injection_number, coproduct );
-    
-    return PreCompose( injection, projection_from_coproduct );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromPushoutWithGivenPushout, CanComputeUniversalMorphismFromCoproduct and
-                                                                           CanComputeCokernelColift );
-
-# FIXME: WARNING: This method only applies if the pushout was created as a cokernel. If the
-# user gives his own pushout method, this derived method fails.
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutWithGivenPushout,
-                                       [
-                                         IsList,
-                                         IsList,
-                                         IsCapCategoryObject
-                                       ],
-                                       
-  function( diagram, sink, pushout )
-    local test_function;
-    
-    if not WasCreatedAsCokernel( pushout ) then
-      
-      Error( "pushout had to be created as a cokernel" );
-      
-    fi;
-    
-    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
-    
-    return CokernelColift( pushout, test_function );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject, ArgumentNumber := 3 );
-
-
-##
-InstallTrueMethodAndStoreImplication( CanComputeUniversalMorphismFromPushout, CanComputeUniversalMorphismFromPushoutWithGivenPushout and 
-                                                           CanComputePushout );
-
-InstallMethodWithToDoForIsWellDefined( UniversalMorphismFromPushoutOp,
-                                           [ IsList,
-                                             IsList,
-                                             IsCapCategoryMorphism ],
-                                             
-  function( diagram, sink, method_selection_morphism )
-    
-    return UniversalMorphismFromPushoutWithGivenPushout( diagram, sink, PushoutOp( diagram, method_selection_morphism ) );
-    
-end );
-
-##
-InstallTrueMethodAndStoreImplication( CanComputePushoutFunctorial,
-                   CanComputePushout
-                   and CanComputePreCompose
-                   and CanComputeInjectionOfCofactorOfPushout
-                   and CanComputeUniversalMorphismFromPushout );
-
-InstallMethodWithCacheFromObject( PushoutFunctorialOp,
-                                  [ IsList,
-                                    IsCapCategoryMorphism
-                                    and CanComputePushout
-                                    and CanComputePreCompose
-                                    and CanComputeInjectionOfCofactorOfPushout
-                                    and CanComputeUniversalMorphismFromPushout ],
-                                  
-  function( morphism_of_morphisms, cobase_morphism )
-    local pushout_diagram, sink, diagram;
-        
-        pushout_diagram := List( morphism_of_morphisms, mor -> mor[3] );
-        
-        sink := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( morphism_of_morphisms[i][2], InjectionOfCofactorOfPushout( pushout_diagram, i ) ) );
-        
-        diagram := List( morphism_of_morphisms, mor -> mor[1] );
-        
-        return UniversalMorphismFromPushout( diagram, sink );
-        
-end : ArgumentNumber := 2 );
 
 ####################################
 ## Derived Methods for Image

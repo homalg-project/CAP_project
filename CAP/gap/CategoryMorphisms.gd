@@ -216,6 +216,8 @@ DeclareOperation( "AddAdditiveInverseForMorphisms",
 DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AdditiveInverseForMorphisms",
+                  [ IsCapCategoryMorphism ] );
 
 DeclareAttribute( "AdditiveInverseForMorphismsFunction",
                   IsCapCategory );

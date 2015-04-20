@@ -826,5 +826,31 @@ IsWellDefinedForTwoCells := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "twocell" ],
   well_defined_todo := false,
-  no_install := true ) )
+  no_install := true ),
+  
+DirectProductDiagonalDifference := rec(
+  installation_name := "DirectProductDiagonalDifferenceOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "DirectProductDiagonalDifferenceOp",
+  no_install := true ),
+  
+FiberProductEmbeddingInDirectSum := rec(
+  installation_name := "FiberProductEmbeddingInDirectSumOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "FiberProductEmbeddingInDirectSumOp",
+  no_install := true ),
+  
+CoproductDiagonalDifference := rec(
+  installation_name := "CoproductDiagonalDifferenceOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "CoproductDiagonalDifferenceOp",
+  no_install := true ),
+  
+DirectSumProjectionInPushout := rec(
+  installation_name := "DirectSumProjectionInPushoutOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "DirectSumProjectionInPushoutOp",
+  no_install := true )
+  )
+
 );
