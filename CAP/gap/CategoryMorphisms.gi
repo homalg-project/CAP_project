@@ -210,6 +210,7 @@ InstallMethod( AddIsEqualForMorphisms,
         
         if not IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) ) or not IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) ) then
             
+            ##FIXME: Can this cause problems in further computations?
             Error( "Source or range are not equal" );
             
         fi;
@@ -234,7 +235,17 @@ end );
 InstallMethod( \=,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-  IsEqualForMorphisms );
+  function( morphism_1, morphism_2 )
+    
+    if not IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) ) or not IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) ) then
+        
+        return false;
+        
+    fi;
+    
+    return IsEqualForMorphisms( morphism_1, morphism_2 );
+    
+end );
 
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS,
