@@ -210,7 +210,7 @@ InstallMethod( AddIsEqualForMorphisms,
         
         if not IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) ) or not IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) ) then
             
-            return false;
+            Error( "Source or range are not equal" );
             
         fi;
         
