@@ -157,6 +157,17 @@ InstallMethod( Add,
     
 end );
 
+InstallMethod( AddForMorphisms,
+               [ IsCapCategory, IsObject ],
+               
+  function( category, morphism )
+    
+    SetFilterObj( morphism, IsCapCategoryMorphism );
+    
+    Add( category, morphism );
+    
+end );
+
 ##
 InstallMethod( IsZeroForMorphisms,
                [ IsCapCategoryMorphism ],

@@ -85,6 +85,17 @@ InstallMethod( Add,
     
 end );
 
+##
+InstallMethod( AddForTwoCells,
+               [ IsCapCategory, IsObject ],
+               
+  function( category, twocell )
+    
+    SetFilterObj( twocell, IsCapCategoryTwoCell );
+    
+    Add( category, twocell );
+    
+end );
 
 ###########################
 ##

@@ -231,6 +231,17 @@ InstallMethod( Add,
     
 end );
 
+InstallMethod( AddForObjects,
+               [ IsCapCategory, IsObject ],
+               
+  function( category, object )
+    
+    SetFilterObj( object, IsCapCategoryObject );
+    
+    Add( category, object );
+    
+end );
+
 ##
 InstallMethod( IsWellDefinedForObjects,
                [ IsCapCategoryObject ],

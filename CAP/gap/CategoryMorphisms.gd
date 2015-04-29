@@ -152,6 +152,9 @@ DeclareFamilyProperty( "IsIdempotent",
 DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryMorphism ] );
 
+DeclareOperation( "AddForMorphisms",
+                  [ IsCapCategory, IsObject ] );
+
 ###################################
 ##
 #! @Section Constructive Hom-sets functions

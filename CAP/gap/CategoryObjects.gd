@@ -137,6 +137,9 @@ DeclareAttribute( "IsZeroForObjectsFunction",
 DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
+DeclareOperation( "AddForObjects",
+                  [ IsCapCategory, IsObject ] );
+
 ###################################
 ##
 #! @Section Element functions

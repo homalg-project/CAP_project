@@ -71,6 +71,9 @@ DeclareProperty( "IsIdempotent",
 DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryTwoCell ] );
 
+DeclareOperation( "AddForTwoCells",
+                  [ IsCapCategory, IsObject ] );
+
 DeclareOperation( "HorizontalPreCompose",
                   [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 

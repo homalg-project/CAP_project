@@ -13,7 +13,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
   function( record )
     local function_name, install_name, add_name, can_compute_name, pre_function,
           redirect_function, post_function, filter_list, well_defined_todo, caching,
-          cache_name, nr_arguments, argument_list;
+          cache_name, nr_arguments, argument_list, add_function;
     
     function_name := record.function_name;
     
@@ -69,6 +69,16 @@ InstallGlobalFunction( CapInternalInstallAdd,
         argument_list := record.argument_list;
     else
         argument_list := [ 1 .. Length( filter_list ) ];
+    fi;
+    
+    if record.return_type = "object" then
+        add_function := AddForObjects;
+    elif record.return_type = "morphism" then
+        add_function := AddForMorphisms;
+    elif record.return_type = "twocell" then
+        add_function := AddForTwoCells;
+    else
+        add_function := ReturnTrue;
     fi;
     
     InstallMethod( ValueGlobal( add_name ),
@@ -146,9 +156,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
                 ## Fixme: Maybe create a different add/simply check if it is a bool
                 ##        Such stuff will ultimately slow down the methods :(
-                if IsCapCategoryCell( result ) then
-                    Add( category, result );
-                fi;
+                add_function( category, result );
                 
                 Add( arg, result );
                 CallFuncList( post_function, arg );
