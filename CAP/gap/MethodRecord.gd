@@ -4,80 +4,94 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
 MonoAsKernelLift := rec(
   installation_name := "MonoAsKernelLift",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "MonoAsKernelLift" ),
+  cache_name := "MonoAsKernelLift",
+  return_type := "morphism" ),
 
 EpiAsCokernelColift := rec(
   installation_name := "EpiAsCokernelColift",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "EpiAsCokernelColift" ),
+  cache_name := "EpiAsCokernelColift",
+  return_type := "morphism" ),
 
 IdentityMorphism := rec(
   installation_name := "IdentityMorphism",
-  filter_list := [ "object" ] ),
+  filter_list := [ "object" ],
+  return_type := "morphism" ),
 
 InverseImmutable := rec(
   installation_name := "InverseOp",
-  filter_list := [ "morphism" ] ),
+  filter_list := [ "morphism" ],
+  return_type := "morphism" ),
 
 KernelObject := rec(
   installation_name := "KernelObject",
   filter_list := [ "morphism" ],
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "object" ),
 
 KernelEmb := rec(
   installation_name := "KernelEmb",
   filter_list := [ "morphism" ],
   universal_object_position := "Source",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 KernelEmbWithGivenKernelObject := rec(
   installation_name := "KernelEmbWithGivenKernelObject",
   filter_list := [ "morphism", "object" ],
   cache_name := "KernelEmbWithGivenKernelObject",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 KernelLift := rec(
   installation_name := "KernelLift",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "KernelLift",
   universal_object_position := "Range",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 KernelLiftWithGivenKernelObject := rec(
   installation_name := "KernelLiftWithGivenKernelObject",
   filter_list := [ "morphism", "morphism", "object" ],
   cache_name := "KernelLiftWithGivenKernelObject",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 Cokernel := rec(
   installation_name := "Cokernel",
   filter_list := [ "morphism" ],
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "object" ),
 
 CokernelProj := rec(
   installation_name := "CokernelProj",
   filter_list := [ "morphism" ],
   universal_object_position := "Range",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "morphism" ),
 
 CokernelProjWithGivenCokernel := rec(
   installation_name := "CokernelProjWithGivenCokernel",
   filter_list := [ "morphism", "object" ],
   cache_name := "CokernelProjWithGivenCokernel",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "morphism" ),
 
 CokernelColift := rec(
   installation_name := "CokernelColift",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "CokernelColift",
   universal_object_position := "Source",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "morphism" ),
 
 CokernelColiftWithGivenCokernel := rec(
   installation_name := "CokernelColiftWithGivenCokernel",
   filter_list := [ "morphism", "morphism", "object" ],
   cache_name := "CokernelColiftWithGivenCokernel",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "morphism" ),
 
 PreCompose := rec(
   installation_name := "PreCompose",
@@ -93,23 +107,27 @@ PreCompose := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 PostCompose := rec(
   installation_name := "PostCompose",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "PostCompose",
-  no_install := true ), #there is no Add-method
+  no_install := true,
+  return_type := "morphism" ), #there is no Add-method
 
 ZeroObject := rec(
   installation_name := "ZeroObject",
   filter_list := [ "category" ],
-  cache_name := "ZeroObject" ), 
+  cache_name := "ZeroObject",
+  return_type := "object" ), 
 
 ZeroMorphism := rec(
   installation_name := "ZeroMorphism",
   filter_list := [ "object", "object" ],
-  cache_name := "ZeroMorphism" ),
+  cache_name := "ZeroMorphism",
+  return_type := "morphism" ),
 
 DirectSum := rec(
   installation_name := "DirectSumOp",
@@ -117,64 +135,74 @@ DirectSum := rec(
   argument_list := [ 1 ],
   cache_name := "DirectSumOp",
   universal_type := "LimitColimit",
-  no_install := true ),
+  no_install := true,
+  return_type := "object" ),
 
 TerminalObject := rec(
   installation_name := "TerminalObject",
   filter_list := [ "category" ],
   cache_name := "TerminalObject",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "object" ),
 
 UniversalMorphismIntoTerminalObject := rec(
   installation_name := "UniversalMorphismIntoTerminalObject",
   filter_list := [ "object" ],
   universal_object_position := "Range",
   universal_type := "Limit",
-  no_install := true ),
+  no_install := true,
+  return_type := "morphism" ),
 
 UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
   installation_name := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
   filter_list := [ "object", "object" ],
   cache_name := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 InitialObject := rec(
   installation_name := "InitialObject",
   filter_list := [ "category" ],
   cache_name := "InitialObject",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "object" ),
 
 UniversalMorphismFromInitialObject := rec(
   installation_name := "UniversalMorphismFromInitialObject",
   filter_list := [ "object" ],
   universal_object_position := "Source",
   universal_type := "Colimit",
-  no_install := true ),
+  no_install := true,
+  return_type := "morphism" ),
 
 UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
   installation_name := "UniversalMorphismFromInitialObjectWithGivenInitialObject",
   filter_list := [ "object", "object" ],
   cache_name := "UniversalMorphismFromInitialObjectWithGivenInitialObject",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "morphism" ),
 
 DirectProduct := rec(
   installation_name := "DirectProductOp",
   filter_list := [ IsList, "object" ],
   cache_name := "DirectProductOp",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "object" ),
 
 ProjectionInFactorOfDirectProduct := rec(
   installation_name := "ProjectionInFactorOfDirectProductOp",
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "ProjectionInFactorOfDirectProductOp",
   universal_object_position := "Source",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 ProjectionInFactorOfDirectProductWithGivenDirectProduct := rec(
   installation_name := "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 UniversalMorphismIntoDirectProduct := rec(
   installation_name := "UniversalMorphismIntoDirectProductOp",
@@ -195,7 +223,8 @@ UniversalMorphismIntoDirectProduct := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   installation_name := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
@@ -215,26 +244,30 @@ UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 IsEqualForMorphisms := rec(
   installation_name := "IsEqualForMorphisms",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsEqualForMorphisms",
   well_defined_todo := false,
-  no_install := true ),
+  no_install := true,
+  return_type := "bool" ),
 
 IsEqualForObjects := rec(
   installation_name := "IsEqualForObjects",
   filter_list := [ "object", "object" ],
   cache_name := "IsEqualForObjects",
   well_defined_todo := false,
-  no_install := true ),
+  no_install := true,
+  return_type := "bool" ),
 
 IsZeroForMorphisms := rec(
   installation_name := "IsZero",
   filter_list := [ "morphism" ],
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  return_type := "bool" ),
 
 AdditionForMorphisms := rec(
   installation_name := "\+",
@@ -250,30 +283,35 @@ AdditionForMorphisms := rec(
     fi; 
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 AdditiveInverseForMorphisms := rec(
   installation_name := "AdditiveInverse",
-  filter_list := [ "morphism" ] ),
+  filter_list := [ "morphism" ],
+  return_type := "morphism" ),
 
 Coproduct := rec(
   installation_name := "CoproductOp",
   filter_list := [ IsList, "object" ],
   cache_name := "CoproductOp",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "object" ),
 
 InjectionOfCofactorOfCoproduct := rec(
   installation_name := "InjectionOfCofactorOfCoproductOp",
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "InjectionOfCofactorOfCoproductOp",
   universal_object_position := "Range",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "morphism" ),
 
 InjectionOfCofactorOfCoproductWithGivenCoproduct := rec(
   installation_name := "InjectionOfCofactorOfCoproductWithGivenCoproduct",
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "InjectionOfCofactorOfCoproductWithGivenCoproduct",
-  universal_type := "Colimit" ),
+  universal_type := "Colimit",
+  return_type := "morphism" ),
 
 UniversalMorphismFromCoproduct := rec(
   installation_name := "UniversalMorphismFromCoproductOp",
@@ -294,7 +332,8 @@ UniversalMorphismFromCoproduct := rec(
     fi;
         
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 UniversalMorphismFromCoproductWithGivenCoproduct := rec(
   installation_name := "UniversalMorphismFromCoproductWithGivenCoproduct",
@@ -314,19 +353,22 @@ UniversalMorphismFromCoproductWithGivenCoproduct := rec(
     fi;
         
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 IsEqualAsSubobjects := rec(
   installation_name := "IsEqualAsSubobjects",
   filter_list := [ [ "morphism", IsSubobject ], [ "morphism", IsSubobject ] ],
   cache_name := "IsEqualAsSubobjects",
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  return_type := "bool" ),
 
 IsEqualAsFactorobjects := rec(
   installation_name := "IsEqualAsFactorobjects",
   filter_list := [ [ "morphism", IsFactorobject ], [ "morphism", IsFactorobject ] ],
   cache_name := "IsEqualAsFactorobjects",
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  return_type := "bool" ),
 
 Dominates := rec(
   installation_name := "Dominates",
@@ -343,7 +385,8 @@ Dominates := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "bool" ),
 
 Codominates := rec(
   installation_name := "Codominates",
@@ -360,7 +403,8 @@ Codominates := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "bool" ),
 
 FiberProduct := rec(
   installation_name := "FiberProductOp",
@@ -380,7 +424,8 @@ FiberProduct := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "object" ),
 
 ProjectionInFactorOfFiberProduct := rec(
   installation_name := "ProjectionInFactorOfFiberProductOp",
@@ -401,7 +446,8 @@ ProjectionInFactorOfFiberProduct := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   installation_name := "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
@@ -421,7 +467,8 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 UniversalMorphismIntoFiberProduct := rec(
   installation_name := "UniversalMorphismIntoFiberProductOp",
@@ -450,7 +497,8 @@ UniversalMorphismIntoFiberProduct := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
   installation_name := "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
@@ -478,7 +526,8 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 Pushout := rec(
   installation_name := "PushoutOp",
@@ -498,7 +547,8 @@ Pushout := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "object" ),
 
 InjectionOfCofactorOfPushout := rec(
   installation_name := "InjectionOfCofactorOfPushoutOp",
@@ -519,7 +569,8 @@ InjectionOfCofactorOfPushout := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 InjectionOfCofactorOfPushoutWithGivenPushout := rec(
   installation_name := "InjectionOfCofactorOfPushoutWithGivenPushout",
@@ -539,7 +590,8 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 UniversalMorphismFromPushout := rec(
   installation_name := "UniversalMorphismFromPushoutOp",
@@ -568,7 +620,8 @@ UniversalMorphismFromPushout := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 UniversalMorphismFromPushoutWithGivenPushout := rec(
   installation_name := "UniversalMorphismFromPushoutWithGivenPushout",
@@ -596,67 +649,79 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
     fi; 
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 ImageObject := rec(
   installation_name := "ImageObject",
   filter_list := [ "morphism" ],
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "object" ),
 
 ImageEmbedding := rec(
   installation_name := "ImageEmbedding",
   filter_list := [ "morphism" ],
   universal_object_position := "Source",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 ImageEmbeddingWithGivenImageObject := rec(
   installation_name := "ImageEmbeddingWithGivenImageObject",
   filter_list := [ "morphism", "object" ],
   cache_name := "ImageEmbeddingWithGivenImageObject",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
-  no_install := true ),
+  no_install := true,
+  return_type := "bool" ),
 
 IsWellDefinedForObjects := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "object" ],
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  return_type := "bool" ),
 
 IsZeroForObjects := rec(
   installation_name := "IsZero",
   filter_list := [ "object" ],
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  return_type := "bool" ),
 
 IsMonomorphism := rec(
   installation_name := "IsMonomorphism",
   filter_list := [ "morphism" ],
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  return_type := "bool" ),
 
 IsEpimorphism := rec(
   installation_name := "IsEpimorphism",
   filter_list := [ "morphism" ],
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  return_type := "bool" ),
 
 IsIsomorphism := rec(
   installation_name := "IsIsomorphism",
   filter_list := [ "morphism" ],
-  well_defined_todo := false ),
+  well_defined_todo := false,
+  return_type := "bool" ),
 
 CoastrictionToImage := rec(
   installation_name := "CoastrictionToImage",
   filter_list := [ "morphism" ],
   universal_object_position := "Range",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 CoastrictionToImageWithGivenImageObject := rec(
   installation_name := "CoastrictionToImageWithGivenImageObject",
   filter_list := [ "morphism", "object" ],
   cache_name := "CoastrictionToImageWithGivenImageObject",
-  universal_type := "Limit" ),
+  universal_type := "Limit",
+  return_type := "morphism" ),
 
 UniversalMorphismFromImage := rec(
   installation_name := "UniversalMorphismFromImage",
@@ -676,7 +741,8 @@ UniversalMorphismFromImage := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 UniversalMorphismFromImageWithGivenImageObject := rec(
   installation_name := "UniversalMorphismFromImageWithGivenImageObject",
@@ -695,7 +761,8 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
     fi; 
     
     return [ true ];
-  end ),
+  end,
+  return_type := "morphism" ),
 
 # DomainAssociatedMorphismCodomainTriple := rec(
 #   installation_name := "DomainAssociatedMorphismCodomainTriple",
@@ -726,55 +793,64 @@ KernelObjectFunctorial := rec(
   installation_name := "KernelObjectFunctorial",
   filter_list := [ "morphism", "morphism", "morphism" ],
   cache_name := "KernelObjectFunctorial",
-  no_install := true ), #there is no Add-method
+  no_install := true,
+  return_type := "morphism" ), #there is no Add-method
 
 CokernelFunctorial := rec(
   installation_name := "CokernelFunctorial",
   filter_list := [ "morphism", "morphism", "morphism" ],
   cache_name := "CokernelFunctorial",
-  no_install := true ), #there is no Add-method
+  no_install := true,
+  return_type := "morphism" ), #there is no Add-method
 
 TerminalObjectFunctorial := rec(
   installation_name := "TerminalObjectFunctorial",
   filter_list := [ "category" ],
   cache_name := "TerminalObjectFunctorial",
-  no_install := true ),
+  no_install := true,
+  return_type := "morphism" ),
 
 InitialObjectFunctorial := rec(
   installation_name := "InitialObjectFunctorial",
   filter_list := [ "category" ],
   cache_name := "InitialObjectFunctorial",
-  no_install := true ),
+  no_install := true,
+  return_type := "morphism" ),
 
 DirectProductFunctorial := rec(
   installation_name := "DirectProductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectProductFunctorialOp",
-  no_install := true ), #there is no Add-method
+  no_install := true,
+  return_type := "morphism" ), #there is no Add-method
 
 CoproductFunctorial := rec(
   installation_name := "CoproductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "CoproductFunctorialOp",
-  no_install := true ), #there is no Add-method
+  no_install := true,
+  return_type := "morphism" ), #there is no Add-method
 
 DirectSumFunctorial := rec(
   installation_name := "DirectSumFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumFunctorialOp",
-  no_install := true ), #there is no Add-method
+  no_install := true,
+  return_type := "morphism" ), #there is no Add-method
 
 FiberProductFunctorial := rec(
   installation_name := "FiberProductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "FiberProductFunctorialOp",
-  no_install := true ), #there is no Add-method
+  no_install := true,
+  return_type := "morphism" ), #there is no Add-method
 
 PushoutFunctorial := rec(
   installation_name := "PushoutFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "PushoutFunctorialOp",
-  no_install := true  ), #there is no Add-method
+  no_install := true,
+  return_type := "morphism" ), #there is no Add-method
 
 # GeneralizedMorphismFromFactorToSubobject := rec(
 #   installation_name := "GeneralizedMorphismFromFactorToSubobject",
@@ -795,7 +871,8 @@ HorizontalPreCompose := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "twocell" ),
 
 VerticalPreCompose := rec(
   installation_name := "VerticalPreCompose",
@@ -811,11 +888,13 @@ VerticalPreCompose := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+  return_type := "twocell" ),
 
 IdentityTwoCell := rec(
   installation_name := "IdentityTwoCell",
-  filter_list := [ "twocell" ] ),
+  filter_list := [ "twocell" ],
+  return_type := "twocell" ),
 
 # HonestRepresentative := rec(
 #   installation_name := "HonestRepresentative",
@@ -826,31 +905,36 @@ IsWellDefinedForTwoCells := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "twocell" ],
   well_defined_todo := false,
-  no_install := true ),
+  no_install := true,
+  return_type := "bool" ),
   
 DirectProductDiagonalDifference := rec(
   installation_name := "DirectProductDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectProductDiagonalDifferenceOp",
-  no_install := true ),
+  no_install := true,
+  return_type := "morphism" ),
   
 FiberProductEmbeddingInDirectSum := rec(
   installation_name := "FiberProductEmbeddingInDirectSumOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "FiberProductEmbeddingInDirectSumOp",
-  no_install := true ),
+  no_install := true,
+  return_type := "morphism" ),
   
 CoproductDiagonalDifference := rec(
   installation_name := "CoproductDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "CoproductDiagonalDifferenceOp",
-  no_install := true ),
+  no_install := true,
+  return_type := "morphism" ),
   
 DirectSumProjectionInPushout := rec(
   installation_name := "DirectSumProjectionInPushoutOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumProjectionInPushoutOp",
-  no_install := true )
+  no_install := true,
+  return_type := "morphism" )
   )
 
 );
