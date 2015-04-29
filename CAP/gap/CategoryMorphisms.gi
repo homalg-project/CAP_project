@@ -143,9 +143,9 @@ InstallMethod( Add,
         
     fi;
     
-    Add( category, Source( morphism ) );
+    AddForObjects( category, Source( morphism ) );
     
-    Add( category, Range( morphism ) );
+    AddForObjects( category, Range( morphism ) );
     
     filter := MorphismFilter( category );
     
