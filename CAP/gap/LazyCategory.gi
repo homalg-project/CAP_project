@@ -85,12 +85,12 @@ BindGlobal( "ADDS_FOR_LAZY_CATEGORY",
         
     end );
     
-    AddEpiAsCokernelColift( lazy_category,
+    AddColift( lazy_category,
                             
       function( epimorphism, test_morphism )
         local func;
         
-        func := function( ) return EpiAsCokernelColift( Eval( epimorphism ), Eval( test_morphism ) ); end;
+        func := function( ) return Colift( Eval( epimorphism ), Eval( test_morphism ) ); end;
         
         return LazyMorphism( Range( epimorphism ), func, Range( test_morphism ) );
         

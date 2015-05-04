@@ -146,7 +146,7 @@ AddLift( QVectorSpaces,
 end );
 
 ##
-AddEpiAsCokernelColift( QVectorSpaces,
+AddColift( QVectorSpaces,
   
   function( epimorphism, test_morphism )
     

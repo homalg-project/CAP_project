@@ -221,16 +221,16 @@ end : Description := "Inverse using Lift of an identity morphism" );
 ##
 AddDerivationToCAP( Inverse,
                     [ [ IdentityMorphism, 1 ],
-                      [ EpiAsCokernelColift, 1 ] ],
+                      [ Colift, 1 ] ],
                                        
   function( mor )
     local identity_of_source;
     
     identity_of_source := IdentityMorphism( Source( mor ) );
     
-    return EpiAsCokernelColift( mor, identity_of_source );
+    return Colift( mor, identity_of_source );
       
-end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
+end : Description := "Inverse using Colift of an identity morphism" );
 
 ##
 AddDerivationToCAP( KernelLiftWithGivenKernelObject,
@@ -245,14 +245,14 @@ end : Description := "KernelLiftWithGivenKernelObject using Lift and KernelEmbWi
 
 ##
 AddDerivationToCAP( CokernelColiftWithGivenCokernel,
-                    [ [ EpiAsCokernelColift, 1 ],
+                    [ [ Colift, 1 ],
                       [ CokernelProjWithGivenCokernel, 1 ] ],
                                            
     function( mor, test_morphism, cokernel )
       
-      return EpiAsCokernelColift( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
+      return Colift( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
       
-end : Description := "CokernelColiftWithGivenCokernel using EpiAsCokernelColift and CokernelProjWithGivenCokernel" );
+end : Description := "CokernelColiftWithGivenCokernel using Colift and CokernelProjWithGivenCokernel" );
 
 #
 AddDerivationToCAP( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
@@ -483,14 +483,14 @@ end : Description := "KernelObjectFunctorial using the universality of the kerne
 
 ##
 AddDerivationToCAP( CokernelColift,
-                    [ [ EpiAsCokernelColift, 1 ],
+                    [ [ Colift, 1 ],
                       [ CokernelProj, 1 ] ],
                                   
   function( mor, test_morphism )
     
-    return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
+    return Colift( CokernelProj( mor ), test_morphism );
     
-end : Description := "CokernelColift using EpiAsCokernelColift and CokernelProj" );
+end : Description := "CokernelColift using Colift and CokernelProj" );
 
 ##
 AddDerivationToCAP( CokernelProj,

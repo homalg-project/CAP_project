@@ -191,13 +191,13 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
     end );
 
-    ## EpiAsCokernelColift
+    ## Colift
     ##
     BindGlobal( Concatenation( "ADD_EPI_AS_COKERNEL_COLIFT_IN_", name_part, "_CATEGORY" ),
               
       function( category )
         
-        AddEpiAsCokernelColift( category_getter( category ),
+        AddColift( category_getter( category ),
                              
           function( epimorphism, test_morphism )
             local source, range;
@@ -206,7 +206,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             
             range := Range( test_morphism );
             
-            return morphism_constructor( source, EpiAsCokernelColift( UnderlyingZFunctorCell( epimorphism ), UnderlyingZFunctorCell( test_morphism ) ), range );
+            return morphism_constructor( source, Colift( UnderlyingZFunctorCell( epimorphism ), UnderlyingZFunctorCell( test_morphism ) ), range );
             
         end );
         
@@ -773,7 +773,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             
             [ [ "CanComputeLift" ], function( ) ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeEpiAsCokernelColift" ], function( ) ValueGlobal( Concatenation(  "ADD_EPI_AS_COKERNEL_COLIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            [ [ "CanComputeColift" ], function( ) ValueGlobal( Concatenation(  "ADD_EPI_AS_COKERNEL_COLIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
             [ [ "CanComputeAdditionForMorphisms" ], function( ) ValueGlobal( Concatenation(  "ADD_ADDITION_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             

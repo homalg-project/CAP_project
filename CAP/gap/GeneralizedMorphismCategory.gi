@@ -432,7 +432,7 @@ InstallTrueMethod( CanComputeIsEqualForMorphisms,
                    CanComputeIsEqualAsSubobjectsInUnderlyingHonestCategory
                    and CanComputeIsEqualAsFactorobjectsInUnderlyingHonestCategory
                    and CanComputeLiftInUnderlyingHonestCategory
-                   and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
+                   and CanComputeColiftInUnderlyingHonestCategory
                    and CanComputeIsEqualForMorphismsInUnderlyingHonestCategory
                    and CanComputePreComposeInUnderlyingHonestCategory
                    and CanComputeDomainAssociatedMorphismCodomainTriple );
@@ -442,7 +442,7 @@ InstallMethodWithCacheFromObject( IsEqualForMorphisms,
                                     and CanComputeIsEqualAsSubobjectsInUnderlyingHonestCategory
                                     and CanComputeIsEqualAsFactorobjectsInUnderlyingHonestCategory
                                     and CanComputeLiftInUnderlyingHonestCategory
-                                    and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
+                                    and CanComputeColiftInUnderlyingHonestCategory
                                     and CanComputeIsEqualForMorphismsInUnderlyingHonestCategory
                                     and CanComputePreComposeInUnderlyingHonestCategory
                                     and CanComputeDomainAssociatedMorphismCodomainTriple,
@@ -479,7 +479,7 @@ InstallMethodWithCacheFromObject( IsEqualForMorphisms,
     
     isomorphism_of_subobjects := Lift( subobject2, subobject1 );
     
-    isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
+    isomorphism_of_factorobjects := Colift( factorobject2, factorobject1 );
     
     return IsEqualForMorphisms( AssociatedMorphism( generalized_morphism1 ), 
                                 PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) 
