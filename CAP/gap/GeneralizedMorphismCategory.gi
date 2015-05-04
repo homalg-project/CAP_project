@@ -431,7 +431,7 @@ end );
 InstallTrueMethod( CanComputeIsEqualForMorphisms,
                    CanComputeIsEqualAsSubobjectsInUnderlyingHonestCategory
                    and CanComputeIsEqualAsFactorobjectsInUnderlyingHonestCategory
-                   and CanComputeLiftInUnderlyingHonestCategory
+                   and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
                    and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
                    and CanComputeIsEqualForMorphismsInUnderlyingHonestCategory
                    and CanComputePreComposeInUnderlyingHonestCategory
@@ -441,7 +441,7 @@ InstallMethodWithCacheFromObject( IsEqualForMorphisms,
                                   [ IsGeneralizedMorphism
                                     and CanComputeIsEqualAsSubobjectsInUnderlyingHonestCategory
                                     and CanComputeIsEqualAsFactorobjectsInUnderlyingHonestCategory
-                                    and CanComputeLiftInUnderlyingHonestCategory
+                                    and CanComputeMonoAsKernelLiftInUnderlyingHonestCategory
                                     and CanComputeEpiAsCokernelColiftInUnderlyingHonestCategory
                                     and CanComputeIsEqualForMorphismsInUnderlyingHonestCategory
                                     and CanComputePreComposeInUnderlyingHonestCategory
@@ -477,7 +477,7 @@ InstallMethodWithCacheFromObject( IsEqualForMorphisms,
       
     fi;
     
-    isomorphism_of_subobjects := Lift( subobject2, subobject1 );
+    isomorphism_of_subobjects := MonoAsKernelLift( subobject2, subobject1 );
     
     isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
     

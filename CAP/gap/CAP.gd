@@ -103,7 +103,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
               ],
               
               CanComputeForAllCategories := [ 
-                "CanComputeLift",
+                "CanComputeMonoAsKernelLift",
                 "CanComputeEpiAsCokernelColift",
                 "CanComputeIdentityMorphism",
                 "CanComputeInverseImmutable",
@@ -384,16 +384,16 @@ DeclareOperation( "AddPreCompose",
 ####################################
 
 
-DeclareAttribute( "LiftFunction",
+DeclareAttribute( "MonoAsKernelLiftFunction",
                   IsCapCategory );
 
-DeclareOperation( "AddLift",
+DeclareOperation( "AddMonoAsKernelLift",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLift",
+DeclareOperation( "AddMonoAsKernelLift",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLift",
+DeclareOperation( "AddMonoAsKernelLift",
                   [ IsCapCategory, IsList, IsInt ] );
 
 

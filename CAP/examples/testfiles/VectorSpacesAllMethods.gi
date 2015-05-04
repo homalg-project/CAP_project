@@ -83,7 +83,7 @@ AddZeroObject( vecspaces,
 end );
 
 ##
-AddLift( vecspaces,
+AddMonoAsKernelLift( vecspaces,
 
   function( monomorphism, test_morphism )
 

@@ -170,13 +170,13 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
     end );
 
-    ## Lift
+    ## MonoAsKernelLift
     ##
     BindGlobal( Concatenation( "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ),
               
       function( category )
         
-        AddLift( category_getter( category ),
+        AddMonoAsKernelLift( category_getter( category ),
             
             function( monomorphism, test_morphism )
               local source, range;
@@ -185,7 +185,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               
               range := Source( monomorphism );
               
-              return morphism_constructor( source, Lift( UnderlyingZFunctorCell( monomorphism ), UnderlyingZFunctorCell( test_morphism ) ), range );
+              return morphism_constructor( source, MonoAsKernelLift( UnderlyingZFunctorCell( monomorphism ), UnderlyingZFunctorCell( test_morphism ) ), range );
               
         end );
         
@@ -771,7 +771,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             
             [ [ "CanComputeInverseImmutable" ], function( ) ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeLift" ], function( ) ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            [ [ "CanComputeMonoAsKernelLift" ], function( ) ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
             [ [ "CanComputeEpiAsCokernelColift" ], function( ) ValueGlobal( Concatenation(  "ADD_EPI_AS_COKERNEL_COLIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
