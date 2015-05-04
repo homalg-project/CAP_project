@@ -158,13 +158,13 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
     end );
 
-    ## MonoAsKernelLift
+    ## Lift
     ##
     BindGlobal( Concatenation( "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ),
               
       function( category )
         
-        AddMonoAsKernelLift( category_getter( category ),
+        AddLift( category_getter( category ),
             
             function( monomorphism, test_morphism )
               local source, range;
@@ -173,7 +173,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
               
               range := Source( monomorphism );
               
-              return morphism_constructor( source, MonoAsKernelLift( UnderlyingZFunctorCell( monomorphism ), UnderlyingZFunctorCell( test_morphism ) ), range );
+              return morphism_constructor( source, Lift( UnderlyingZFunctorCell( monomorphism ), UnderlyingZFunctorCell( test_morphism ) ), range );
               
         end );
         
@@ -527,7 +527,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
             
             [ [ "CanComputeInverseImmutable" ], function( ) ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeMonoAsKernelLift" ], function( ) ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            [ [ "CanComputeLift" ], function( ) ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
             [ [ "CanComputeAdditionForMorphisms" ], function( ) ValueGlobal( Concatenation(  "ADD_ADDITION_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             

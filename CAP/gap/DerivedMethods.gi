@@ -207,16 +207,16 @@ end : Description := "PostCompose using PreCompose and swapping arguments" );
 ##
 AddDerivationToCAP( Inverse,
                     [ [ IdentityMorphism, 1 ],
-                      [ MonoAsKernelLift, 1 ] ],
+                      [ Lift, 1 ] ],
                                        
   function( mor )
     local identity_of_range;
         
         identity_of_range := IdentityMorphism( Range( mor ) );
         
-        return MonoAsKernelLift( mor, identity_of_range );
+        return Lift( mor, identity_of_range );
         
-end : Description := "Inverse using MonoAsKernelLift of an identity morphism" );
+end : Description := "Inverse using Lift of an identity morphism" );
 
 ##
 AddDerivationToCAP( Inverse,
@@ -234,14 +234,14 @@ end : Description := "Inverse using EpiAsCokernelColift of an identity morphism"
 
 ##
 AddDerivationToCAP( KernelLiftWithGivenKernelObject,
-                    [ [ MonoAsKernelLift, 1 ],
+                    [ [ Lift, 1 ],
                       [ KernelEmbWithGivenKernelObject, 1 ] ],
                       
     function( mor, test_morphism, kernel )
       
-      return MonoAsKernelLift( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
+      return Lift( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
       
-end : Description := "KernelLiftWithGivenKernelObject using MonoAsKernelLift and KernelEmbWithGivenKernelObject" );
+end : Description := "KernelLiftWithGivenKernelObject using Lift and KernelEmbWithGivenKernelObject" );
 
 ##
 AddDerivationToCAP( CokernelColiftWithGivenCokernel,
@@ -433,16 +433,16 @@ end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
 
 ##
 AddDerivationToCAP( KernelLift,
-                    [ [ MonoAsKernelLift, 1 ],
+                    [ [ Lift, 1 ],
                       [ KernelEmb, 1 ] ],
   function( mor, test_morphism )
     local kernel_lift, kernel;
     
-    kernel_lift := MonoAsKernelLift( KernelEmb( mor ), test_morphism );
+    kernel_lift := Lift( KernelEmb( mor ), test_morphism );
     
     return kernel_lift;
     
-end : Description := "KernelLift using MonoAsKernelLift and KernelEmb" );
+end : Description := "KernelLift using Lift and KernelEmb" );
 
 ##
 AddDerivationToCAP( KernelEmb,
@@ -932,14 +932,14 @@ end : Description := "CoastrictionToImage using CoastrictionToImageWithGivenImag
 ##
 AddDerivationToCAP( CoastrictionToImage,
                     [ [ ImageEmbedding, 1 ],
-                      [ MonoAsKernelLift, 1 ] ],
+                      [ Lift, 1 ] ],
                  
   function( morphism )
     local image_embedding;
     
     image_embedding := ImageEmbedding( morphism );
     
-    return MonoAsKernelLift( image_embedding, morphism );
+    return Lift( image_embedding, morphism );
     
 end : Description := "CoastrictionToImage using that image embedding can be seen as a kernel" );
 
@@ -958,16 +958,16 @@ end : Description := "UniversalMorphismFromImage using UniversalMorphismFromImag
 ##
 AddDerivationToCAP( UniversalMorphismFromImage,
                     [ [ ImageEmbedding, 1 ],
-                      [ MonoAsKernelLift, 1 ] ],
+                      [ Lift, 1 ] ],
                       
   function( morphism, test_factorization )
     local image_embedding;
     
     image_embedding := ImageEmbedding( morphism );
     
-    return MonoAsKernelLift( test_factorization[2], image_embedding );
+    return Lift( test_factorization[2], image_embedding );
     
-end : Description := "UniversalMorphismFromImage using ImageEmbedding and MonoAsKernelLift" );
+end : Description := "UniversalMorphismFromImage using ImageEmbedding and Lift" );
 
 
 ###########################

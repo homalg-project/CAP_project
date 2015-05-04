@@ -1,10 +1,10 @@
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD" );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec( 
-MonoAsKernelLift := rec(
-  installation_name := "MonoAsKernelLift",
+Lift := rec(
+  installation_name := "Lift",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "MonoAsKernelLift",
+  cache_name := "Lift",
   return_type := "morphism",
   
   post_function := function( alpha, beta, lift )

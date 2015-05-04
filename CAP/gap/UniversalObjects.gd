@@ -48,7 +48,7 @@
 #! Sometimes, there are even shorter ways: in an abelian category, all you have to implement 
 #! for a kernel is:
 #! * KernelEmb
-#! * MonoAsKernelLift
+#! * Lift
 #! One note: a derived method should never use constructors with given $X$ as an input.
 #! The internals of CAP will take care that no confusion accurs. For example: if you
 #! call KernelEmb of a morphism $\alpha$, CAP works as follows:

@@ -302,7 +302,7 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
     end );
     
-    AddMonoAsKernelLift( category,
+    AddLift( category,
                          
       function( monomorphism, test_morphism )
         local lift;
@@ -350,7 +350,7 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         
     end );
     
-    AddMonoAsKernelLift( category,
+    AddLift( category,
                          
       function( monomorphism, test_morphism )
         local lift;

@@ -115,11 +115,11 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddMonoAsKernelLift( deductive_system,
+    AddLift( deductive_system,
                          
       function( monomorphism, test_morphism )
         
-        return DeductiveSystemMorphism( Source( test_morphism ), "MonoAsKernelLift", [ monomorphism, test_morphism ], Source( monomorphism ) );
+        return DeductiveSystemMorphism( Source( test_morphism ), "Lift", [ monomorphism, test_morphism ], Source( monomorphism ) );
         
     end );
     

@@ -347,7 +347,7 @@ DeclareAttribute( "IsWellDefinedForMorphismsFunction",
 #! will return fail.
 #! @Returns $u$
 #! @Arguments monomorphism, test_morphism
-DeclareOperation( "MonoAsKernelLift",
+DeclareOperation( "Lift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ####################################

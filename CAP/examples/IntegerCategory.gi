@@ -213,7 +213,7 @@ AddInjectionOfCofactorOfPushoutWithGivenPushout( integer_category,
 end );
 
 ##
-AddMonoAsKernelLift( integer_category,
+AddLift( integer_category,
                      
   function( monomorphism, test_morphism )
     
