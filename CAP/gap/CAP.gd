@@ -104,7 +104,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
               
               CanComputeForAllCategories := [ 
                 "CanComputeLift",
-                "CanComputeColift",
+                "CanComputeEpiAsCokernelColift",
                 "CanComputeIdentityMorphism",
                 "CanComputeInverseImmutable",
                 "CanComputeKernelObject",
@@ -404,16 +404,16 @@ DeclareOperation( "AddLift",
 ####################################
 
 
-DeclareAttribute( "ColiftFunction",
+DeclareAttribute( "EpiAsCokernelColiftFunction",
                   IsCapCategory );
 
-DeclareOperation( "AddColift",
+DeclareOperation( "AddEpiAsCokernelColift",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddColift",
+DeclareOperation( "AddEpiAsCokernelColift",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddColift",
+DeclareOperation( "AddEpiAsCokernelColift",
                   [ IsCapCategory, IsList, IsInt ] );
 
 

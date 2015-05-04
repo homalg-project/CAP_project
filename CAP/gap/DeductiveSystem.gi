@@ -123,11 +123,11 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddColift( deductive_system,
+    AddEpiAsCokernelColift( deductive_system,
                             
       function( epimorphism, test_morphism )
         
-        return DeductiveSystemMorphism( Range( epimorphism ), "Colift", [ epimorphism, test_morphism ], Range( test_morphism ) );
+        return DeductiveSystemMorphism( Range( epimorphism ), "EpiAsCokernelColift", [ epimorphism, test_morphism ], Range( test_morphism ) );
         
     end );
     

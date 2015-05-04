@@ -195,7 +195,7 @@ AddLift( vecspaces,
 end );
 
 ##
-AddColift( vecspaces,
+AddEpiAsCokernelColift( vecspaces,
   
   function( epimorphism, test_morphism )
     

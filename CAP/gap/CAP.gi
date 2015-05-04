@@ -278,13 +278,13 @@ end );
 
 ## FIXME: this derivation leads to circuits <- not anymore
 ##
-# InstallTrueMethodAndStoreImplication( CanComputeColift, 
+# InstallTrueMethodAndStoreImplication( CanComputeEpiAsCokernelColift, 
 #                                       CanComputeKernelEmb
 #                                       and CanComputeCokernelColift
 #                                       and CanComputePreCompose
 #                                       and CanComputeInverseImmutable );
 # 
-# InstallMethodWithCacheFromObject( Colift,
+# InstallMethodWithCacheFromObject( EpiAsCokernelColift,
 #                                   [ IsCapCategoryMorphism
 #                                     and CanComputeKernelEmb
 #                                     and CanComputeCokernelColift

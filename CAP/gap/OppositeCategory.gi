@@ -228,12 +228,12 @@ InstallMethod( Lift,
               
   function( monomorphism, test_morphism )
     
-    return Opposite( Colift( Opposite( monomorphism ), Opposite( test_morphism ) ) );
+    return Opposite( EpiAsCokernelColift( Opposite( monomorphism ), Opposite( test_morphism ) ) );
     
 end );
 
 ##
-InstallMethod( Colift,
+InstallMethod( EpiAsCokernelColift,
               [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
               -1,
               
@@ -436,8 +436,8 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
     local entry_list, entry;
     
     ## TODO: Maintain this list
-    entry_list := [ [ "CanComputeLift", "CanComputeColift" ],
-                    [ "CanComputeColift", "CanComputeLift" ],
+    entry_list := [ [ "CanComputeLift", "CanComputeEpiAsCokernelColift" ],
+                    [ "CanComputeEpiAsCokernelColift", "CanComputeLift" ],
                       "CanComputeIdentityMorphism",
                       "CanComputeInverseImmutable",
                     [ "CanComputeKernelObject", "CanComputeCokernel" ],

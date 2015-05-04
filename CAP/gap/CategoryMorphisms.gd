@@ -364,7 +364,7 @@ DeclareOperation( "Lift",
 #! will return fail.
 #! @Returns $u$
 #! @Arguments epimorphism, test_morphism
-DeclareOperation( "Colift",
+DeclareOperation( "EpiAsCokernelColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 

@@ -17,10 +17,10 @@ Lift := rec(
     
 end ),
 
-Colift := rec(
-  installation_name := "Colift",
+EpiAsCokernelColift := rec(
+  installation_name := "EpiAsCokernelColift",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "Colift",
+  cache_name := "EpiAsCokernelColift",
   return_type := "morphism",
   post_function := function( alpha, beta, colift )
     
