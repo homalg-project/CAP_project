@@ -347,7 +347,7 @@ DeclareAttribute( "IsWellDefinedForMorphismsFunction",
 #! will return fail.
 #! @Returns $u$
 #! @Arguments monomorphism, test_morphism
-DeclareOperation( "Lift",
+DeclareOperation( "MonoAsKernelLift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ####################################
@@ -364,7 +364,7 @@ DeclareOperation( "Lift",
 #! will return fail.
 #! @Returns $u$
 #! @Arguments epimorphism, test_morphism
-DeclareOperation( "Colift",
+DeclareOperation( "EpiAsCokernelColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 

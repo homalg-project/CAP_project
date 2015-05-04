@@ -253,18 +253,18 @@ BindGlobal( "ADD_INVERSE_IN_Z_FUNCTORS",
     end );
   end );
 
-## Lift
+## MonoAsKernelLift
 ##
 BindGlobal( "ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS",
           
   function( category )
     local morphism_func, mono_as_kernel_lift;
     
-    AddLift( ZFunctorCategory( category ),
+    AddMonoAsKernelLift( ZFunctorCategory( category ),
                          
       function( monomorphism, test_morphism )
         
-        morphism_func := function( index ) return Lift( monomorphism[ index ], test_morphism[ index ] );
+        morphism_func := function( index ) return MonoAsKernelLift( monomorphism[ index ], test_morphism[ index ] );
         
       end;
       
@@ -275,18 +275,18 @@ BindGlobal( "ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS",
     end );
   end );
 
-## Colift
+## EpiAsCokernelColift
 ##
 BindGlobal( "ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS",
           
   function( category )
     local morphism_func, epi_as_cokernel_colift;
     
-    AddColift( ZFunctorCategory( category ),
+    AddEpiAsCokernelColift( ZFunctorCategory( category ),
                          
       function( epimorphism, test_morphism )
         
-        morphism_func := function( index ) return Colift( epimorphism[ index ], test_morphism[ index ] );
+        morphism_func := function( index ) return EpiAsCokernelColift( epimorphism[ index ], test_morphism[ index ] );
         
       end;
       
@@ -1040,9 +1040,9 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeInverseImmutable" ], function( ) ADD_INVERSE_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeMonoAsKernelLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeAdditionForMorphisms" ], function( ) ADD_ADDITION_FOR_MORPHISMS_IN_Z_FUNCTORS( category ); end ],
         

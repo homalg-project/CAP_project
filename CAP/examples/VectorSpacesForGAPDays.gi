@@ -137,7 +137,7 @@ end );
 #######################################
 
 ##
-AddLift( QVectorSpaces,
+AddMonoAsKernelLift( QVectorSpaces,
 
   function( monomorphism, test_morphism )
 
@@ -146,7 +146,7 @@ AddLift( QVectorSpaces,
 end );
 
 ##
-AddColift( QVectorSpaces,
+AddEpiAsCokernelColift( QVectorSpaces,
   
   function( epimorphism, test_morphism )
     
