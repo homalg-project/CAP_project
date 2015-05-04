@@ -103,8 +103,8 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
               ],
               
               CanComputeForAllCategories := [ 
-                "CanComputeMonoAsKernelLift",
-                "CanComputeEpiAsCokernelColift",
+                "CanComputeLift",
+                "CanComputeColift",
                 "CanComputeIdentityMorphism",
                 "CanComputeInverseImmutable",
                 "CanComputeKernelObject",
@@ -384,16 +384,16 @@ DeclareOperation( "AddPreCompose",
 ####################################
 
 
-DeclareAttribute( "MonoAsKernelLiftFunction",
+DeclareAttribute( "LiftFunction",
                   IsCapCategory );
 
-DeclareOperation( "AddMonoAsKernelLift",
+DeclareOperation( "AddLift",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddMonoAsKernelLift",
+DeclareOperation( "AddLift",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddMonoAsKernelLift",
+DeclareOperation( "AddLift",
                   [ IsCapCategory, IsList, IsInt ] );
 
 
@@ -404,16 +404,16 @@ DeclareOperation( "AddMonoAsKernelLift",
 ####################################
 
 
-DeclareAttribute( "EpiAsCokernelColiftFunction",
+DeclareAttribute( "ColiftFunction",
                   IsCapCategory );
 
-DeclareOperation( "AddEpiAsCokernelColift",
+DeclareOperation( "AddColift",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddEpiAsCokernelColift",
+DeclareOperation( "AddColift",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddEpiAsCokernelColift",
+DeclareOperation( "AddColift",
                   [ IsCapCategory, IsList, IsInt ] );
 
 

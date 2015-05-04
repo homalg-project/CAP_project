@@ -208,7 +208,7 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
           
         fi;
         
-        if RightDivide( source_matrix * morphism_matrix, range_matrix ) = false then
+        if RightDivide( source_matrix * morphism_matrix, range_matrix ) = fail then
           
           return false;
           
@@ -244,7 +244,7 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
           
         fi;
         
-        if LeftDivide( range_matrix, morphism_matrix * source_matrix ) = false then
+        if LeftDivide( range_matrix, morphism_matrix * source_matrix ) = fail then
           
           return false;
           
@@ -302,15 +302,15 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
     end );
     
-    AddMonoAsKernelLift( category,
+    AddLift( category,
                          
       function( monomorphism, test_morphism )
         local lift;
         
         lift := RightDivide( UnderlyingMatrix( test_morphism ), UnderlyingMatrix( monomorphism ), UnderlyingMatrix( Range( monomorphism ) ) );
         
-        if lift = false then
-            return false;
+        if lift = fail then
+            return fail;
         fi;
         
         return PresentationMorphism( Source( test_morphism ), lift, Source( monomorphism ) );
@@ -350,15 +350,15 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         
     end );
     
-    AddMonoAsKernelLift( category,
+    AddLift( category,
                          
       function( monomorphism, test_morphism )
         local lift;
         
         lift := LeftDivide( UnderlyingMatrix( monomorphism ), UnderlyingMatrix( test_morphism ), UnderlyingMatrix( Range( monomorphism ) ) );
         
-        if lift = false then
-            return false;
+        if lift = fail then
+            return fail;
         fi;
         
         return PresentationMorphism( Source( test_morphism ), lift, Source( monomorphism ) );

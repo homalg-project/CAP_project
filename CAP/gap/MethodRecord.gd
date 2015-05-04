@@ -1,17 +1,36 @@
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD" );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec( 
-MonoAsKernelLift := rec(
-  installation_name := "MonoAsKernelLift",
+Lift := rec(
+  installation_name := "Lift",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "MonoAsKernelLift",
-  return_type := "morphism" ),
+  cache_name := "Lift",
+  return_type := "morphism",
+  
+  post_function := function( alpha, beta, lift )
+    
+    if lift = fail then
+        
+        Error( "Lift doesn't exist" );
+        
+    fi;
+    
+end ),
 
-EpiAsCokernelColift := rec(
-  installation_name := "EpiAsCokernelColift",
+Colift := rec(
+  installation_name := "Colift",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "EpiAsCokernelColift",
-  return_type := "morphism" ),
+  cache_name := "Colift",
+  return_type := "morphism",
+  post_function := function( alpha, beta, colift )
+    
+    if colift = fail then
+        
+        Error( "Colift doesn't exist" );
+        
+    fi;
+    
+end ),
 
 IdentityMorphism := rec(
   installation_name := "IdentityMorphism",

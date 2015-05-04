@@ -154,12 +154,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
                 result := CallFuncList( func_to_install, arg{ argument_list } );
                 
-                ## Fixme: Maybe create a different add/simply check if it is a bool
-                ##        Such stuff will ultimately slow down the methods :(
-                add_function( category, result );
-                
                 Add( arg, result );
                 CallFuncList( post_function, arg );
+                
+                add_function( category, result );
                 
                 return result;
             end );

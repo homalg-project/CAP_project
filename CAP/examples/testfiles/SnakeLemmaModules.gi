@@ -33,7 +33,7 @@ cokernel_proj_2 := CokernelProj( alpha2 );
 
 identity_B := IdentityMorphism( B );
 
-iota := MonoAsKernelLift( alpha2, alpha1 );
+iota := Lift( alpha2, alpha1 );
 
 eps := CokernelColift( alpha1, cokernel_proj_2 );
 

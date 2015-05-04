@@ -83,7 +83,7 @@ AddZeroObject( vecspaces,
 end );
 
 ##
-AddMonoAsKernelLift( vecspaces,
+AddLift( vecspaces,
 
   function( monomorphism, test_morphism )
 
@@ -92,7 +92,7 @@ AddMonoAsKernelLift( vecspaces,
 end );
 
 ##
-AddEpiAsCokernelColift( vecspaces,
+AddColift( vecspaces,
   
   function( epimorphism, test_morphism )
     
