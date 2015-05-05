@@ -317,6 +317,21 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
     end );
     
+    AddLift( category,
+      
+      function( alpha, beta )
+        local lift;
+        
+        lift := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( beta ) ) );
+        
+        if lift = fail then
+            return fail;
+        fi;
+        
+        return PresentationMorphism( Source( alpha ), lift, Source( beta ) );
+        
+    end );
+    
 end );
 
 ##
@@ -362,6 +377,21 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         fi;
         
         return PresentationMorphism( Source( test_morphism ), lift, Source( monomorphism ) );
+        
+    end );
+    
+    AddLift( category,
+      
+      function( alpha, beta )
+        local lift;
+        
+        lift := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( alpha ) ) );
+        
+        if lift = fail then
+            return fail;
+        fi;
+        
+        return PresentationMorphism( Source( beta ), lift, Source( alpha ) );
         
     end );
     
