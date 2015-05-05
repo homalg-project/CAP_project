@@ -422,6 +422,26 @@ end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
 ##    depends_on := "ImageEmbedding as the kernel embedding of the cokernel projection"
 );
 
+##
+AddDerivationToCAP( MonoAsKernelLift,
+                    [ [ Lift, 1 ] ],
+                    
+  function( alpha, beta )
+    
+    ## Caution with the order of the arguments!
+    return Lift( beta, alpha );
+    
+end : Description := "MonoAsKernelLift using Lift" );
+
+##
+AddDerivationToCAP( EpiAsCokernelColift,
+                    [ [ Lift, 1 ] ],
+                    
+  function( alpha, beta )
+    
+    return Colift( alpha, beta );
+    
+end : Description := "EpiAsCokernelColift using Colift" );
 
 ###########################
 ##

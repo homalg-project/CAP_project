@@ -302,21 +302,6 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
     end );
     
-    AddMonoAsKernelLift( category,
-                         
-      function( monomorphism, test_morphism )
-        local lift;
-        
-        lift := RightDivide( UnderlyingMatrix( test_morphism ), UnderlyingMatrix( monomorphism ), UnderlyingMatrix( Range( monomorphism ) ) );
-        
-        if lift = fail then
-            return fail;
-        fi;
-        
-        return PresentationMorphism( Source( test_morphism ), lift, Source( monomorphism ) );
-        
-    end );
-    
     AddLift( category,
       
       function( alpha, beta )
@@ -362,21 +347,6 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         embedding := SyzygiesOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
         
         return PresentationMorphism( kernel, embedding, Source( morphism ) );
-        
-    end );
-    
-    AddMonoAsKernelLift( category,
-                         
-      function( monomorphism, test_morphism )
-        local lift;
-        
-        lift := LeftDivide( UnderlyingMatrix( monomorphism ), UnderlyingMatrix( test_morphism ), UnderlyingMatrix( Range( monomorphism ) ) );
-        
-        if lift = fail then
-            return fail;
-        fi;
-        
-        return PresentationMorphism( Source( test_morphism ), lift, Source( monomorphism ) );
         
     end );
     
