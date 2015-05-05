@@ -45,9 +45,6 @@ DeclareOperation( "InstallSetWithToDoForIsWellDefined",
 DeclareGlobalFunction( "DeclareAttributeWithToDoForIsWellDefined" );
 
 #!
-DeclareGlobalFunction( "AddSpecialMethod" );
-
-#!
 DeclareGlobalFunction( "DeclareFamilyProperty" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_IMPLICATION_LIST" );
