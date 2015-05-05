@@ -370,6 +370,38 @@ DeclareOperation( "EpiAsCokernelColift",
 
 ###################################
 ##
+## Lift/ Colift
+##
+###################################
+
+##
+DeclareOperation( "Lift",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddLift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+##
+DeclareOperation( "Colift",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddColift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddColift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddColift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+###################################
+##
 #! @Section Implied operations
 ##
 ###################################
