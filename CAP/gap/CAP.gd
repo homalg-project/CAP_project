@@ -172,7 +172,9 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeDirectProductDiagonalDifference",
                 "CanComputeFiberProductEmbeddingInDirectSum",
                 "CanComputeCoproductDiagonalDifference",
-                "CanComputeDirectSumProjectionInPushout"
+                "CanComputeDirectSumProjectionInPushout",
+                "CanComputeLift",
+                "CanComputeColift"
                 
                 ] )
 );

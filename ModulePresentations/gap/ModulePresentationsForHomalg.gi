@@ -302,18 +302,18 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
     end );
     
-    AddMonoAsKernelLift( category,
-                         
-      function( monomorphism, test_morphism )
+    AddLift( category,
+      
+      function( alpha, beta )
         local lift;
         
-        lift := RightDivide( UnderlyingMatrix( test_morphism ), UnderlyingMatrix( monomorphism ), UnderlyingMatrix( Range( monomorphism ) ) );
+        lift := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( beta ) ) );
         
         if lift = fail then
             return fail;
         fi;
         
-        return PresentationMorphism( Source( test_morphism ), lift, Source( monomorphism ) );
+        return PresentationMorphism( Source( alpha ), lift, Source( beta ) );
         
     end );
     
@@ -350,18 +350,18 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         
     end );
     
-    AddMonoAsKernelLift( category,
-                         
-      function( monomorphism, test_morphism )
+    AddLift( category,
+      
+      function( alpha, beta )
         local lift;
         
-        lift := LeftDivide( UnderlyingMatrix( monomorphism ), UnderlyingMatrix( test_morphism ), UnderlyingMatrix( Range( monomorphism ) ) );
+        lift := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( alpha ) ) );
         
         if lift = fail then
             return fail;
         fi;
         
-        return PresentationMorphism( Source( test_morphism ), lift, Source( monomorphism ) );
+        return PresentationMorphism( Source( beta ), lift, Source( alpha ) );
         
     end );
     

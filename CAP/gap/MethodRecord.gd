@@ -11,7 +11,7 @@ MonoAsKernelLift := rec(
     
     if lift = fail then
         
-        Error( "Lift doesn't exist" );
+        Error( "Mono as kernel lift doesn't exist" );
         
     fi;
     
@@ -21,6 +21,37 @@ EpiAsCokernelColift := rec(
   installation_name := "EpiAsCokernelColift",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "EpiAsCokernelColift",
+  return_type := "morphism",
+  post_function := function( alpha, beta, colift )
+    
+    if colift = fail then
+        
+        Error( "Epi as cokernel colift doesn't exist" );
+        
+    fi;
+    
+end ),
+
+Lift := rec(
+  installation_name := "Lift",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "Lift",
+  return_type := "morphism",
+  
+  post_function := function( alpha, beta, lift )
+    
+    if lift = fail then
+        
+        Error( "Lift doesn't exist" );
+        
+    fi;
+    
+end ),
+
+Colift := rec(
+  installation_name := "Colift",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "Colift",
   return_type := "morphism",
   post_function := function( alpha, beta, colift )
     
