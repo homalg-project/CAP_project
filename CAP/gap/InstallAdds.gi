@@ -86,7 +86,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    
       function( category, func )
         
-        ValueGlobal( add_name )( category, func, 100 );
+        ValueGlobal( add_name )( category, func, -1 );
         
     end );
     
@@ -99,6 +99,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
     end );
     
+    InstallOtherMethod( ValueGlobal( add_name ),
+                   [ IsCapCategory, IsList ],
+                   
+      function( category, func )
+        
+        ValueGlobal( add_name )( category, func, -1 );
+        
+    end );
+    
     InstallMethod( ValueGlobal( add_name ),
                    [ IsCapCategory, IsList, IsInt ],
       
@@ -108,6 +117,18 @@ InstallGlobalFunction( CapInternalInstallAdd,
         set_primitive := ValueOption( "SetPrimitive" );
         if set_primitive <> false then
             set_primitive := true;
+        fi;
+        
+        if weight = -1 and DerivationOfOperation( category!.derivations_weight_list, function_name ) <> fail then
+            ## Is a derivation at the moment
+            weight := 100;
+        elif weight = -1 and CurrentOperationWeight( category!.derivations_weight_list, function_name ) = infinity then
+            ## Is not installed at the moment
+            weight := 100;
+        elif weight = -1 and DerivationOfOperation( category!.derivations_weight_list, function_name ) = fail
+                         and CurrentOperationWeight( category!.derivations_weight_list, function_name ) <> infinity then
+            ## Not a derivation and already installed
+            set_primitive := false;
         fi;
         
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
