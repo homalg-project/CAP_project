@@ -147,3 +147,106 @@ AddKernelLiftWithGivenKernelObject( vecspaces,
    return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), kernel );
    
 end );
+
+## Methods needed for DirectSumProjectionInPushout
+
+##
+AddCokernel( vecspaces,
+
+  function( morphism )
+    local homalg_matrix;
+
+    homalg_matrix := morphism!.morphism;
+
+    return QVectorSpace( NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+
+end );
+
+##
+AddCokernelProjWithGivenCokernel( vecspaces,
+
+  function( morphism, cokernel )
+    local cokernel_proj;
+
+    cokernel_proj := SyzygiesOfColumns( morphism!.morphism );
+
+    return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel );
+
+end );
+
+##
+AddEpiAsCokernelColift( vecspaces,
+  
+  function( epimorphism, test_morphism )
+    
+    return VectorSpaceMorphism( Range( epimorphism ), LeftDivide( epimorphism!.morphism, test_morphism!.morphism ), Range( test_morphism ) );
+    
+end );
+
+##
+AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
+
+  function( diagram, sink, coproduct )
+    local components, universal_morphism, morphism;
+    
+    components := sink;
+    
+    universal_morphism := sink[1]!.morphism;
+    
+    for morphism in components{ [ 2 .. Length( components ) ] } do
+    
+      universal_morphism := UnionOfRows( universal_morphism, morphism!.morphism );
+  
+    od;
+  
+    return VectorSpaceMorphism( coproduct, universal_morphism, Range( sink[1] ) );
+  
+end );
+
+##
+AddInjectionOfCofactorOfCoproductWithGivenCoproduct( vecspaces,
+
+  function( object_product_list, injection_number, coproduct )
+    local components, dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
+    
+    components := object_product_list;
+    
+    number_of_objects := Length( components );
+    
+    dim_pre := Sum( components{ [ 1 .. injection_number - 1 ] }, c -> Dimension( c ) );
+    
+    dim_post := Sum( components{ [ injection_number + 1 .. number_of_objects ] }, c -> Dimension( c ) );
+    
+    dim_cofactor := Dimension( object_product_list[ injection_number ] );
+    
+    injection_of_cofactor := HomalgZeroMatrix( dim_cofactor, dim_pre ,VECTORSPACES_FIELD );
+    
+    injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
+                                         HomalgIdentityMatrix( dim_cofactor, VECTORSPACES_FIELD ) );
+    
+    injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
+                                         HomalgZeroMatrix( dim_cofactor, dim_post, VECTORSPACES_FIELD ) );
+    
+    return VectorSpaceMorphism( object_product_list[ injection_number ], injection_of_cofactor, coproduct );
+
+end );
+
+##
+AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
+
+  function( diagram, sink, coproduct )
+    local components, universal_morphism, morphism;
+    
+    components := sink;
+    
+    universal_morphism := sink[1]!.morphism;
+    
+    for morphism in components{ [ 2 .. Length( components ) ] } do
+    
+      universal_morphism := UnionOfRows( universal_morphism, morphism!.morphism );
+  
+    od;
+  
+    return VectorSpaceMorphism( coproduct, universal_morphism, Range( sink[1] ) );
+  
+end );

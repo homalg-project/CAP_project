@@ -1630,6 +1630,17 @@ DeclareOperation( "DirectSumProjectionInPushout",
 DeclareOperationWithCache( "DirectSumProjectionInPushoutOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
+##
+DeclareOperation( "AddDirectSumProjectionInPushout",
+                  [ IsCapCategory, IsFunction ] );
+
+##
+DeclareOperation( "AddDirectSumProjectionInPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+##
+DeclareOperation( "AddDirectSumProjectionInPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
 
 DeclareGlobalFunction( "Pushout" );
 

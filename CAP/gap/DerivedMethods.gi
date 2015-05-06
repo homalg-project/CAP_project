@@ -372,22 +372,6 @@ AddDerivationToCAP( InjectionOfCofactorOfPushoutWithGivenPushout,
     
 end : Description := "InjectionOfCofactorOfPushoutWithGivenPushout by composing the coproduct injection with the direct sum projection to the pushout" );
 
-##
-AddDerivationToCAP( UniversalMorphismFromPushoutWithGivenPushout,
-                    [ [ UniversalMorphismFromCoproduct, 1 ],
-                      [ CoproductDiagonalDifference, 1 ],
-                      [ CokernelColift, 1 ] ],
-                    
-  function( diagram, sink, pushout )
-    local test_function, coproduct_diagonal_difference;
-    
-    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
-    
-    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
-    
-    return CokernelColift( coproduct_diagonal_difference, test_function );
-    
-end : Description := "UniversalMorphismFromPushoutWithGivenPushout using the universality of the cokernel representation of the pushout" );
 
 ##
 AddDerivationToCAP( ImageEmbeddingWithGivenImageObject,
@@ -804,15 +788,6 @@ AddDerivationToCAP( CoproductDiagonalDifference,
     
 end : Description := "CoproductDiagonalDifference using the operations defining this morphism" );
 
-##
-AddDerivationToCAP( DirectSumProjectionInPushout,
-                    [ [ CokernelProj, 1 ] ],
-                    
-  function( diagram, method_selection_morphism )
-    
-    return CokernelProj( CoproductDiagonalDifference( diagram ) );
-    
-end : Description := "DirectSumProjectionInPushout as the cokernel projection of CoproductDiagonalDifference" );
 
 ##
 AddDerivationToCAP( InjectionOfCofactorOfPushout,
@@ -833,22 +808,6 @@ AddDerivationToCAP( InjectionOfCofactorOfPushout,
     
 end : Description := "InjectionOfCofactorOfPushout by composing the coproduct injection with the direct sum projection to the pushout" );
 
-##
-AddDerivationToCAP( UniversalMorphismFromPushout,
-                    [ [ UniversalMorphismFromCoproduct, 1 ],
-                      [ CoproductDiagonalDifference, 1 ],
-                      [ CokernelColift, 1 ] ],
-                    
-  function( diagram, sink )
-    local test_function, coproduct_diagonal_difference;
-    
-    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
-    
-    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
-    
-    return CokernelColift( coproduct_diagonal_difference, test_function );
-    
-end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
 
 ##
 AddDerivationToCAP( PushoutFunctorial,
@@ -1135,5 +1094,67 @@ AddFinalDerivation( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
     
 end : Description := "UniversalMorphismIntoFiberProductWithGivenFiberProduct using the universality of the kernel representation of the pullback" );
 
+##
+AddFinalDerivation( DirectSumProjectionInPushout,
+                    [ [ CokernelProj, 1 ],
+                      [ CoproductDiagonalDifference, 1 ] ],
+                    [ Pushout,
+                      InjectionOfCofactorOfPushout,
+                      InjectionOfCofactorOfPushoutWithGivenPushout,
+                      UniversalMorphismFromPushout,
+                      UniversalMorphismFromPushoutWithGivenPushout,
+                      DirectSumProjectionInPushout ],
+                    
+  function( diagram, method_selection_morphism )
+    
+    return CokernelProj( CoproductDiagonalDifference( diagram ) );
+    
+end : Description := "DirectSumProjectionInPushout as the cokernel projection of CoproductDiagonalDifference" );
 
+##
+AddFinalDerivation( UniversalMorphismFromPushout,
+                    [ [ UniversalMorphismFromCoproduct, 1 ],
+                      [ CoproductDiagonalDifference, 1 ],
+                      [ CokernelColift, 1 ] ],
+                    [ Pushout,
+                      InjectionOfCofactorOfPushout,
+                      InjectionOfCofactorOfPushoutWithGivenPushout,
+                      UniversalMorphismFromPushout,
+                      UniversalMorphismFromPushoutWithGivenPushout,
+                      DirectSumProjectionInPushout ],
+                    
+  function( diagram, sink )
+    local test_function, coproduct_diagonal_difference;
+    
+    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
+    
+    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
+    
+    return CokernelColift( coproduct_diagonal_difference, test_function );
+    
+end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
+
+
+##
+AddFinalDerivation( UniversalMorphismFromPushoutWithGivenPushout,
+                    [ [ UniversalMorphismFromCoproduct, 1 ],
+                      [ CoproductDiagonalDifference, 1 ],
+                      [ CokernelColift, 1 ] ],
+                    [ Pushout,
+                      InjectionOfCofactorOfPushout,
+                      InjectionOfCofactorOfPushoutWithGivenPushout,
+                      UniversalMorphismFromPushout,
+                      UniversalMorphismFromPushoutWithGivenPushout,
+                      DirectSumProjectionInPushout ],
+                    
+  function( diagram, sink, pushout )
+    local test_function, coproduct_diagonal_difference;
+    
+    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
+    
+    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
+    
+    return CokernelColift( coproduct_diagonal_difference, test_function );
+    
+end : Description := "UniversalMorphismFromPushoutWithGivenPushout using the universality of the cokernel representation of the pushout" );
 
