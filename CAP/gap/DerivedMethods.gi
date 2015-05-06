@@ -374,23 +374,6 @@ end : Description := "InjectionOfCofactorOfPushoutWithGivenPushout by composing 
 
 
 ##
-AddDerivationToCAP( ImageEmbeddingWithGivenImageObject,
-                    [ [ KernelEmb, 1 ],
-                      [ CokernelProj, 1 ] ],
-                      
-  function( mor, image_object )
-    local image_embedding;
-    
-    image_embedding := KernelEmb( CokernelProj( mor ) );
-    
-    return image_embedding;
-    
-end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
-      Description := "ImageEmbeddingWithGivenImageObject as the kernel embedding of the cokernel projection"
-##    depends_on := "ImageEmbedding as the kernel embedding of the cokernel projection"
-);
-
-##
 AddDerivationToCAP( MonoAsKernelLift,
                     [ [ Lift, 1 ] ],
                     
@@ -830,23 +813,6 @@ end : Description := "PushoutFunctorial using the universality of the pushout" )
 
 ##
 AddDerivationToCAP( ImageEmbedding,
-                    [ [ KernelEmb, 1 ],
-                      [ CokernelProj, 1 ] ],
-                      
-  function( mor )
-    local image_embedding;
-    
-    image_embedding := KernelEmb( CokernelProj( mor ) );
-    
-    return image_embedding;
-    
-end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
-      Description := "ImageEmbedding as the kernel embedding of the cokernel projection"
-##    depends_on := "ImageObject as the source of ImageEmbedding"
-);
-
-##
-AddDerivationToCAP( ImageEmbedding,
                     [ [ ImageEmbeddingWithGivenImageObject, 1 ],
                       [ ImageObject, 1 ] ],
                       
@@ -1030,6 +996,7 @@ end : Description := "ImageObject as the source of ImageEmbedding" );
 ## Final derived methods
 ####################################
 
+## Final methods for FiberProduct
 ##
 AddFinalDerivation( FiberProductEmbeddingInDirectSum,
                     [ [ KernelEmb, 1 ],
@@ -1094,6 +1061,7 @@ AddFinalDerivation( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
     
 end : Description := "UniversalMorphismIntoFiberProductWithGivenFiberProduct using the universality of the kernel representation of the pullback" );
 
+## Final methods for Pushout
 ##
 AddFinalDerivation( DirectSumProjectionInPushout,
                     [ [ CokernelProj, 1 ],
@@ -1157,4 +1125,53 @@ AddFinalDerivation( UniversalMorphismFromPushoutWithGivenPushout,
     return CokernelColift( coproduct_diagonal_difference, test_function );
     
 end : Description := "UniversalMorphismFromPushoutWithGivenPushout using the universality of the cokernel representation of the pushout" );
+
+## Final methods for Image
+##
+AddFinalDerivation( ImageEmbeddingWithGivenImageObject,
+                    [ [ KernelEmb, 1 ],
+                      [ CokernelProj, 1 ] ],
+                    [ ImageObject,
+                      ImageEmbedding,
+                      ImageEmbeddingWithGivenImageObject,
+                      CoastrictionToImage,
+                      CoastrictionToImageWithGivenImageObject,
+                      UniversalMorphismFromImage,
+                      UniversalMorphismFromImageWithGivenImageObject ],
+                      
+  function( mor, image_object )
+    local image_embedding;
+    
+    image_embedding := KernelEmb( CokernelProj( mor ) );
+    
+    return image_embedding;
+    
+end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "ImageEmbeddingWithGivenImageObject as the kernel embedding of the cokernel projection"
+##    depends_on := "ImageEmbedding as the kernel embedding of the cokernel projection"
+);
+
+##
+AddFinalDerivation( ImageEmbedding,
+                    [ [ KernelEmb, 1 ],
+                      [ CokernelProj, 1 ] ],
+                    [ ImageObject,
+                      ImageEmbedding,
+                      ImageEmbeddingWithGivenImageObject,
+                      CoastrictionToImage,
+                      CoastrictionToImageWithGivenImageObject,
+                      UniversalMorphismFromImage,
+                      UniversalMorphismFromImageWithGivenImageObject ],
+                      
+  function( mor )
+    local image_embedding;
+    
+    image_embedding := KernelEmb( CokernelProj( mor ) );
+    
+    return image_embedding;
+    
+end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "ImageEmbedding as the kernel embedding of the cokernel projection"
+##    depends_on := "ImageObject as the source of ImageEmbedding"
+);
 
