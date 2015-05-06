@@ -55,5 +55,5 @@ DeclareGlobalFunction( "InstallTrueMethodAndStoreImplication" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS" );
 DeclareGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS" );
-
+DeclareGlobalFunction( "CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT" );
 
