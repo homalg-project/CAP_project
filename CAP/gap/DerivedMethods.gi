@@ -756,7 +756,8 @@ end : Description := "DirectProductDiagonalDifference using the operations defin
 
 ##
 AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
-                    [ [ KernelEmb, 1 ] ],
+                    [ [ KernelEmb, 1 ],
+                      [ DirectProductDiagonalDifference, 1 ] ],
                     
   function( diagram, method_selection_morphism )
     
