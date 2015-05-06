@@ -8,6 +8,8 @@ ReadPackage( "CAP", "gap/Derivations.gd");
 ## FIXME: The loading structure needs to be redone.
 ReadPackage( "CAP", "gap/ToolsForCategories.gi");
 
+ReadPackage( "CAP", "gap/Finalize.gd" );
+
 ReadPackage( "CAP", "gap/CategoryObjects.gd");
 
 ReadPackage( "CAP", "gap/CategoryMorphisms.gd");

@@ -214,20 +214,6 @@ InstallMethod( AddDerivation,
     
 end );
 
-BindGlobal( "CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT",
-    
-  function( option_name, default )
-    local value;
-    
-    value := ValueOption( option_name );
-    
-    if value = fail then
-        return default;
-    fi;
-    
-    return value;
-end );
-
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsDenseList ],
                

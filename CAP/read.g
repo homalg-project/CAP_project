@@ -3,6 +3,8 @@ ReadPackage( "CAP", "gap/Derivations.gi");
 
 ReadPackage( "CAP", "gap/CAP.gi");
 
+ReadPackage( "CAP", "gap/Finalize.gi" );
+
 ReadPackage( "CAP", "gap/CategoryObjects.gi");
 
 ReadPackage( "CAP", "gap/CategoryMorphisms.gi");
