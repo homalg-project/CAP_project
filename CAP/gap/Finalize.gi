@@ -44,24 +44,37 @@ InstallMethod( Finalize,
                [ IsCapCategory ],
                
   function( category )
-    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name;
+    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs;
     
     ## Set filters for AbCategory etc to false if not true.
     
-    i := 1;
-    
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
-    
-    n := Length( derivation_list );
     
     weight_list := category!.derivations_weight_list;
     
-    while i <= n do
+    while true do
         
-        current_final_derivation := derivation_list[ i ];
+        current_installs := [ ];
         
-        if ForAll( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, j[ 1 ] ) < infinity ) and
-           ForAll( current_final_derivation.cannot_compute, j -> CurrentOperationWeight( weight_list, j ) = infinity ) then
+        for i in [ 1 .. Length( derivation_list ) ] do
+            
+            current_final_derivation := derivation_list[ i ];
+            
+            if ForAll( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, j[ 1 ] ) < infinity ) and
+              ForAll( current_final_derivation.cannot_compute, j -> CurrentOperationWeight( weight_list, j ) = infinity ) then
+                
+                Add( current_installs, i );
+                
+            fi;
+            
+        od;
+        
+        if current_installs = [ ] then
+            break;
+        fi;
+        
+        for i in current_installs do
+            current_final_derivation := derivation_list[ i ];
             
             ## calculate weight
             weight := current_final_derivation.weight + Sum( List( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, j[ 1 ] ) * j[ 2 ] ) );
@@ -73,11 +86,8 @@ InstallMethod( Finalize,
             
             ## Remove entry
             Remove( derivation_list, i );
-            i := 1;
-            n := n - 1;
-        else
-            i := i + 1;
-        fi;
+            
+        od;
         
     od;
     
