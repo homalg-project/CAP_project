@@ -799,7 +799,7 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
     
     return KernelLift( direct_sum_diagonal_difference, test_function );
     
-end : Description := "UniversalMorphismIntoFiberProductWithGivenFiberProduct using the universality of the kernel representation of the pullback" );
+end : Description := "UniversalMorphismIntoFiberProduct using the universality of the kernel representation of the pullback" );
 
 ##
 AddDerivationToCAP( FiberProductFunctorial,
