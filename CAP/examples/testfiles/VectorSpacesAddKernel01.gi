@@ -78,3 +78,5 @@ AddKernelLiftWithGivenKernelObject( vecspaces,
    return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), kernel );
    
 end );
+
+Finalize( vecspaces );

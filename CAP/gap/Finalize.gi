@@ -60,8 +60,8 @@ InstallMethod( Finalize,
             
             current_final_derivation := derivation_list[ i ];
             
-            if ForAll( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, j[ 1 ] ) < infinity ) and
-              ForAll( current_final_derivation.cannot_compute, j -> CurrentOperationWeight( weight_list, j ) = infinity ) then
+            if ForAll( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) < infinity ) and
+              ForAll( current_final_derivation.cannot_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j ) ) = infinity ) then
                 
                 Add( current_installs, i );
                 
@@ -77,17 +77,17 @@ InstallMethod( Finalize,
             current_final_derivation := derivation_list[ i ];
             
             ## calculate weight
-            weight := current_final_derivation.weight + Sum( List( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, j[ 1 ] ) * j[ 2 ] ) );
+            weight := current_final_derivation.weight + Sum( List( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
             
             ## Add method
             add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_final_derivation.name ) ] ) );
             
             add_name( category, current_final_derivation.function_list, weight );
             
-            ## Remove entry
-            Remove( derivation_list, i );
-            
         od;
+        
+        ## Remove all already installed entries
+        derivation_list := derivation_list{ Difference( [ 1 .. Length( derivation_list ) ], current_installs ) };
         
     od;
     

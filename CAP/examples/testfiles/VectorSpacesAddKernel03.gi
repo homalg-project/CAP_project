@@ -52,3 +52,5 @@ AddKernelEmbWithGivenKernelObject( vecspaces,
     return VectorSpaceMorphism( kernel, kernel_emb, Source( morphism ) );
 
 end );
+
+Finalize( vecspaces );

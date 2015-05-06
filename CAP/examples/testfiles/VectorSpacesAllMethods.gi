@@ -546,3 +546,5 @@ end );
 #   
 # end );
 # 
+
+Finalize( vecspaces );

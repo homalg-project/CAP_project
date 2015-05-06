@@ -44,6 +44,8 @@ InstallMethod( LeftPresentations,
         "RelationsForGeneralModuleCategories.tex" )
     );
     
+    Finalize( category );
+    
     return category;
     
 end );
@@ -83,6 +85,8 @@ InstallMethod( RightPresentations,
         DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
+    
+    Finalize( category );
     
     return category;
     
