@@ -346,6 +346,9 @@ DeclareOperation( "AddIdentityMorphism",
 DeclareOperation( "AddIdentityMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddIdentityMorphism",
+                  [ IsCapCategory, IsList ] );
+
 #! @EndGroup
 
 ####################################
@@ -374,6 +377,9 @@ DeclareOperation( "AddPreCompose",
 DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddPreCompose",
+                  [ IsCapCategory, IsList ] );
+
 
 
 #! @EndGroup
@@ -398,6 +404,9 @@ DeclareOperation( "AddMonoAsKernelLift",
 DeclareOperation( "AddMonoAsKernelLift",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddMonoAsKernelLift",
+                  [ IsCapCategory, IsList ] );
+
 
 ####################################
 ##
@@ -417,6 +426,9 @@ DeclareOperation( "AddEpiAsCokernelColift",
 
 DeclareOperation( "AddEpiAsCokernelColift",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpiAsCokernelColift",
+                  [ IsCapCategory, IsList ] );
 
 
 ####################################
@@ -438,6 +450,9 @@ DeclareOperation( "AddInverse",
 DeclareOperation( "AddInverse",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddInverse",
+                  [ IsCapCategory, IsList ] );
+
 DeclareOperation( "AddInverseImmutable",
                   [ IsCapCategory, IsFunction ] );
 
@@ -446,6 +461,9 @@ DeclareOperation( "AddInverseImmutable",
 
 DeclareOperation( "AddInverseImmutable",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInverseImmutable",
+                  [ IsCapCategory, IsList ] );
 
 
 ####################################

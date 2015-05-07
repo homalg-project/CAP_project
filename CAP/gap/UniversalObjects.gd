@@ -190,6 +190,9 @@ DeclareOperation( "AddKernelObject",
 DeclareOperation( "AddKernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddKernelObject",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: \alpha \mapsto \iota$ to the category $C$.
@@ -203,6 +206,9 @@ DeclareOperation( "AddKernelEmb",
 
 DeclareOperation( "AddKernelEmb",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddKernelEmb",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -218,6 +224,9 @@ DeclareOperation( "AddKernelEmbWithGivenKernelObject",
 DeclareOperation( "AddKernelEmbWithGivenKernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddKernelEmbWithGivenKernelObject",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, \tau) \mapsto u$ to the category $C$.
@@ -232,6 +241,9 @@ DeclareOperation( "AddKernelLift",
 DeclareOperation( "AddKernelLift",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddKernelLift",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, \tau, K) \mapsto u$ to the category $C$.
@@ -245,6 +257,9 @@ DeclareOperation( "AddKernelLiftWithGivenKernelObject",
 
 DeclareOperation( "AddKernelLiftWithGivenKernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddKernelLiftWithGivenKernelObject",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Section Functorial methods for kernel
@@ -389,6 +404,9 @@ DeclareOperation( "AddCokernel",
 DeclareOperation( "AddCokernel",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddCokernel",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: \alpha \mapsto \epsilon$ to the category $C$.
@@ -402,6 +420,9 @@ DeclareOperation( "AddCokernelProj",
 
 DeclareOperation( "AddCokernelProj",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCokernelProj",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -417,6 +438,9 @@ DeclareOperation( "AddCokernelProjWithGivenCokernel",
 DeclareOperation( "AddCokernelProjWithGivenCokernel",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddCokernelProjWithGivenCokernel",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, \tau) \mapsto u$ to the category $C$.
@@ -430,6 +454,9 @@ DeclareOperation( "AddCokernelColift",
 
 DeclareOperation( "AddCokernelColift",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCokernelColift",
+                  [ IsCapCategory, IsList ] );
 
 
 
@@ -445,6 +472,9 @@ DeclareOperation( "AddCokernelColiftWithGivenCokernel",
 
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Section Functorial methods for cokernel
@@ -543,6 +573,9 @@ DeclareOperation( "AddZeroObject",
 ## don't document this function
 DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddZeroObject",
+                  [ IsCapCategory, IsList ] );
 
 
 
@@ -645,6 +678,9 @@ DeclareOperation( "AddTerminalObject",
 DeclareOperation( "AddTerminalObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddTerminalObject",
+                  [ IsCapCategory, IsList ] );
+
 #! @Description
 #! This operation adds the given function $f: A \mapsto u$ to the category $C$.
 #! @Returns nothing
@@ -657,6 +693,9 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
 
 DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -671,6 +710,9 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
 
 DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Section Functorial methods for terminal object
@@ -785,6 +827,9 @@ DeclareOperation( "AddInitialObject",
 DeclareOperation( "AddInitialObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddInitialObject",
+                  [ IsCapCategory, IsList ] );
+
 #! @Description
 #! This operation adds the given function $f: A \mapsto u$ to the category $C$.
 #! @Returns nothing
@@ -797,6 +842,9 @@ DeclareOperation( "AddUniversalMorphismFromInitialObject",
 
 DeclareOperation( "AddUniversalMorphismFromInitialObject",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromInitialObject",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -811,6 +859,9 @@ DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
 
 DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
+                  [ IsCapCategory, IsList ] );
 
 #! @EndGroup
 
@@ -895,6 +946,9 @@ DeclareOperation( "AddDirectSum",
 
 DeclareOperation( "AddDirectSum",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectSum",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Section Functorial methods for direct sum
@@ -1014,6 +1068,9 @@ DeclareOperation( "AddCoproduct",
 DeclareOperation( "AddCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddCoproduct",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( (I_1, \dots, I_n), i ) \mapsto \iota_i$ to the category $C$
@@ -1029,6 +1086,9 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
 DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( (I_1, \dots, I_n), i, I ) \mapsto \iota_i$ to the category $C$
@@ -1043,6 +1103,9 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
 
 DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
+                  [ IsCapCategory, IsList ] );
 
 
 #FIXME: it is inconsistent with the convention that the diagram does not have to be given as an input!
@@ -1060,6 +1123,9 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
 DeclareOperation( "AddUniversalMorphismFromCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddUniversalMorphismFromCoproduct",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}, I  ) \mapsto u$ to the category $C$
@@ -1074,6 +1140,9 @@ DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
 
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Section Functorial methods for coproduct
@@ -1239,6 +1308,9 @@ DeclareOperation( "AddDirectProduct",
 DeclareOperation( "AddDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddDirectProduct",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( (P_1, \dots, P_n), i ) \mapsto \pi_i$ to the category $C$
@@ -1253,6 +1325,9 @@ DeclareOperation( "AddProjectionInFactorOfDirectProduct",
 
 DeclareOperation( "AddProjectionInFactorOfDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectProduct",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -1269,6 +1344,9 @@ DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
 DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n} ) \mapsto u$ to the category $C$
@@ -1284,6 +1362,9 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
 DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}, P ) \mapsto u$ to the category $C$
@@ -1298,6 +1379,9 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
 
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Section Functorial methods for direct product
@@ -1378,6 +1462,9 @@ DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
 ##
 DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
+                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! This function either accepts a list $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
@@ -1496,6 +1583,9 @@ DeclareOperation( "AddFiberProduct",
 DeclareOperation( "AddFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, i ) \mapsto \pi_i$ to the category $C$
@@ -1511,6 +1601,9 @@ DeclareOperation( "AddProjectionInFactorOfFiberProduct",
 DeclareOperation( "AddProjectionInFactorOfFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddProjectionInFactorOfFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, i, P ) \mapsto \pi_i$ to the category $C$
@@ -1525,6 +1618,9 @@ DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
 
 DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -1542,6 +1638,9 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
 DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}, P ) \mapsto u$ 
@@ -1557,6 +1656,9 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
 
 DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Section Functorial methods for pullback
@@ -1642,6 +1744,9 @@ DeclareOperation( "AddDirectSumProjectionInPushout",
 DeclareOperation( "AddDirectSumProjectionInPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddDirectSumProjectionInPushout",
+                  [ IsCapCategory, IsList ] );
+
 DeclareGlobalFunction( "Pushout" );
 
 DeclareOperationWithCache( "PushoutOp",
@@ -1706,6 +1811,9 @@ DeclareOperation( "AddPushout",
 DeclareOperation( "AddPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddPushout",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, i ) \mapsto \iota_i$ to the category $C$
@@ -1720,6 +1828,9 @@ DeclareOperation( "AddInjectionOfCofactorOfPushout",
 
 DeclareOperation( "AddInjectionOfCofactorOfPushout",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfPushout",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -1736,6 +1847,9 @@ DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
 DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n} ) \mapsto u$ 
@@ -1751,6 +1865,9 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
 DeclareOperation( "AddUniversalMorphismFromPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddUniversalMorphismFromPushout",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}, I ) \mapsto u$ 
@@ -1765,6 +1882,9 @@ DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
 
 DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Section Functorial methods for pushout
@@ -1900,6 +2020,9 @@ DeclareOperation( "AddImageObject",
 DeclareOperation( "AddImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddImageObject",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: \alpha \mapsto \iota$ to the category $C$.
@@ -1913,6 +2036,9 @@ DeclareOperation( "AddImageEmbedding",
 
 DeclareOperation( "AddImageEmbedding",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddImageEmbedding",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -1928,6 +2054,9 @@ DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
 DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: \alpha \mapsto c$ to the category $C$.
@@ -1942,6 +2071,9 @@ DeclareOperation( "AddCoastrictionToImage",
 DeclareOperation( "AddCoastrictionToImage",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddCoastrictionToImage",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, I) \mapsto c$ to the category $C$.
@@ -1955,6 +2087,9 @@ DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
 
 DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -1971,6 +2106,9 @@ DeclareOperation( "AddUniversalMorphismFromImage",
 DeclareOperation( "AddUniversalMorphismFromImage",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddUniversalMorphismFromImage",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! This operation adds the given function $f: (\alpha, [\tau_1, \tau_2], I) \mapsto u$ to the category $C$.
@@ -1985,6 +2123,9 @@ DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
 
 DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
+                  [ IsCapCategory, IsList ] );
 
 
 ## WasCreatedAs Filter

@@ -75,6 +75,9 @@ DeclareOperation( "AddIsEqualForObjects",
 DeclareOperation( "AddIsEqualForObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
+DeclareOperation( "AddIsEqualForObjects",
+                  [ IsCapCategory, IsList ] );
+
 
 DeclareOperationWithCache( "IsEqualForObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -121,6 +124,9 @@ DeclareOperation( "AddIsZeroForObjects",
 
 DeclareOperation( "AddIsZeroForObjects",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsZeroForObjects",
+                  [ IsCapCategory, IsList ] );
 
 DeclareOperation( "IsZeroForObjects", 
                   [ IsCapCategoryObject ] );
@@ -179,6 +185,9 @@ DeclareOperation( "AddIsWellDefinedForObjects",
 
 DeclareOperation( "AddIsWellDefinedForObjects",
                   [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsWellDefinedForObjects",
+                  [ IsCapCategory, IsList ] );
 
 DeclareOperation( "IsWellDefinedForObjects",
                   [ IsCapCategoryObject ] );
