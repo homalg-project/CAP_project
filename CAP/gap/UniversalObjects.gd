@@ -216,7 +216,7 @@ DeclareOperation( "AddKernelEmbWithGivenKernelObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
 DeclareOperation( "AddKernelEmbWithGivenKernelObject",
-                  [ IsCapCategory, IsList, IsInt] );
+                  [ IsCapCategory, IsList, IsInt ] );
 
 
 #! @Description
