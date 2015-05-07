@@ -99,7 +99,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
     end );
     
-    InstallOtherMethod( ValueGlobal( add_name ),
+    InstallMethod( ValueGlobal( add_name ),
                    [ IsCapCategory, IsList ],
                    
       function( category, func )
