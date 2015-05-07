@@ -19,5 +19,9 @@ DeclareOperation( "AddFinalDerivation",
                   [ IsFunction, IsDenseList, IsDenseList, IsFunction ] );
 
 
-DeclareProperty( "Finalize",
+DeclareProperty( "IsFinalized",
                   IsCapCategory );
+
+DeclareOperation( "Finalize",
+                  [ IsCapCategory ] );
+
