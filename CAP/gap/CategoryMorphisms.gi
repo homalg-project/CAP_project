@@ -143,9 +143,9 @@ InstallMethod( Add,
         
     fi;
     
-    AddForObjects( category, Source( morphism ) );
+    AddObject( category, Source( morphism ) );
     
-    AddForObjects( category, Range( morphism ) );
+    AddObject( category, Range( morphism ) );
     
     filter := MorphismFilter( category );
     
@@ -157,7 +157,7 @@ InstallMethod( Add,
     
 end );
 
-InstallMethod( AddForMorphisms,
+InstallMethod( AddMorphism,
                [ IsCapCategory, IsObject ],
                
   function( category, morphism )

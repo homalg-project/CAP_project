@@ -143,7 +143,7 @@ DeclareAttribute( "IsZeroForObjectsFunction",
 DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
-DeclareOperation( "AddForObjects",
+DeclareOperation( "AddObject",
                   [ IsCapCategory, IsObject ] );
 
 ###################################

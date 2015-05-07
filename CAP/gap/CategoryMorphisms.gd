@@ -161,7 +161,7 @@ DeclareFamilyProperty( "IsIdempotent",
 DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryMorphism ] );
 
-DeclareOperation( "AddForMorphisms",
+DeclareOperation( "AddMorphism",
                   [ IsCapCategory, IsObject ] );
 
 ###################################

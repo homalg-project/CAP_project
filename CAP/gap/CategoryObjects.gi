@@ -231,7 +231,7 @@ InstallMethod( Add,
     
 end );
 
-InstallMethod( AddForObjects,
+InstallMethod( AddObject,
                [ IsCapCategory, IsObject ],
                
   function( category, object )

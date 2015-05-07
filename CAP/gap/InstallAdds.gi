@@ -72,11 +72,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
     fi;
     
     if record.return_type = "object" then
-        add_function := AddForObjects;
+        add_function := AddObject;
     elif record.return_type = "morphism" then
-        add_function := AddForMorphisms;
+        add_function := AddMorphism;
     elif record.return_type = "twocell" then
-        add_function := AddForTwoCells;
+        add_function := AddTwoCell;
     else
         add_function := ReturnTrue;
     fi;

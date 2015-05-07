@@ -71,9 +71,9 @@ InstallMethod( Add,
         
     fi;
     
-    AddForMorphisms( category, Source( twocell ) );
+    AddMorphism( category, Source( twocell ) );
     
-    AddForMorphisms( category, Range( twocell ) );
+    AddMorphism( category, Range( twocell ) );
     
     filter := TwoCellFilter( category );
     
@@ -86,7 +86,7 @@ InstallMethod( Add,
 end );
 
 ##
-InstallMethod( AddForTwoCells,
+InstallMethod( AddTwoCell,
                [ IsCapCategory, IsObject ],
                
   function( category, twocell )
