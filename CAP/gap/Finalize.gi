@@ -53,6 +53,18 @@ InstallMethod( IsFinalized,
     
     ## Set filters for AbCategory etc to false if not true.
     
+    for i in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories do
+        
+        i := ValueGlobal( i );
+        
+        if not Tester( i )( category ) then
+            
+            Setter( i )( category, false );
+            
+        fi;
+        
+    od;
+    
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
     
     weight_list := category!.derivations_weight_list;
