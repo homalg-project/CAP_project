@@ -50,7 +50,7 @@ InstallMethod( ZFunctorCategory,
     
     z_functor_category := CreateCapCategory( name );
     
-    SetUnderlyingHonestCategory( z_functor_category, category );
+    SetUnderlyingCategory( z_functor_category, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY( category );
     
@@ -1098,7 +1098,7 @@ InstallMethod( ZFunctorObjectExtendedByInitialAndIdentity,
                
   function( object, lower_bound, upper_bound )
       
-      return ZFunctorObjectExtendedByInitialAndIdentity( object!.object_func, object!.differential_func, UnderlyingHonestCategory( CapCategory( object ) ), lower_bound, upper_bound );
+      return ZFunctorObjectExtendedByInitialAndIdentity( object!.object_func, object!.differential_func, UnderlyingCategory( CapCategory( object ) ), lower_bound, upper_bound );
       
 end );
 
@@ -1354,7 +1354,7 @@ InstallMethod( ZFunctorMorphismExtendedByInitialAndIdentity,
   function( source, morphism_func, range, lower_bound, upper_bound )
     local underlying_category, new_morphism_func;
     
-    underlying_category := UnderlyingHonestCategory( CapCategory( source ) );
+    underlying_category := UnderlyingCategory( CapCategory( source ) );
     
     new_morphism_func := function( i )
         

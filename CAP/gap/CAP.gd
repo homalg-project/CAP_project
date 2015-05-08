@@ -304,6 +304,9 @@ DeclareAttribute( "CanComputeFilter",
 
 #! @EndGroup
 
+DeclareAttribute( "UnderlyingCategory",
+                  IsCapCategory );
+
 #############################################
 ##
 #! @Section Well defined

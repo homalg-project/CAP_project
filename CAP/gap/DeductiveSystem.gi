@@ -620,7 +620,7 @@ InstallMethod( DeductiveSystem,
     
     deductive_system := CreateCapCategory( Concatenation( "Deduction system of ", Name( category ) ) );
     
-    SetUnderlyingHonestCategory( deductive_system, category );
+    SetUnderlyingCategory( deductive_system, category );
     
     INSTALL_PROPERTIES_FOR_DEDUCTIVE_SYSTEM( deductive_system, category );
     
@@ -922,9 +922,9 @@ InstallMethod( Evaluation,
     
     history := History( cell );
     
-    if IsBound( UnderlyingHonestCategory( CapCategory( cell ) )!.eval_rules ) then
+    if IsBound( UnderlyingCategory( CapCategory( cell ) )!.eval_rules ) then
         
-        new_history := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, UnderlyingHonestCategory( CapCategory( cell ) )!.eval_rules );
+        new_history := APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE( history, UnderlyingCategory( CapCategory( cell ) )!.eval_rules );
         
     else
         

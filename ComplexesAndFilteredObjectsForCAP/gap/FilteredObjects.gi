@@ -60,7 +60,7 @@ InstallMethod( CategoryOfAscendingFilteredObjects,
     
     filtered_object_category := CreateCapCategory( name );
     
-    SetUnderlyingHonestCategory( filtered_object_category, category );
+    SetUnderlyingCategory( filtered_object_category, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_ASCENDING_FILTERED_OBJECTS_CATEGORY( category );
     
@@ -81,7 +81,7 @@ InstallMethod( CategoryOfDescendingFilteredObjects,
     
     filtered_objects_category := CreateCapCategory( name );
     
-    SetUnderlyingHonestCategory( filtered_objects_category, category );
+    SetUnderlyingCategory( filtered_objects_category, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_DESCENDING_FILTERED_OBJECTS_CATEGORY( category );
     
@@ -631,7 +631,7 @@ BindGlobal( "AS_ASCENDING_OR_DESCENDING_FILTERED_OBJECT",
   function( z_functor_object, type, category_getter )
     local category, object;
     
-    category := UnderlyingHonestCategory( CapCategory( z_functor_object ) );
+    category := UnderlyingCategory( CapCategory( z_functor_object ) );
     
     object := rec( );
     
@@ -669,7 +669,7 @@ BindGlobal( "AS_FILTERED_MORPHISM",
   function( z_functor_morphism, type, object_constructor, category_getter )
     local category, source, range, morphism;
     
-    category := UnderlyingHonestCategory( CapCategory( z_functor_morphism ) );
+    category := UnderlyingCategory( CapCategory( z_functor_morphism ) );
     
     source := object_constructor( Source( z_functor_morphism ) );
     
@@ -713,7 +713,7 @@ BindGlobal( "FILTERED_MORPHISM",
   function( source, z_functor_morphism, range, type, category_getter )
     local category, morphism;
     
-    category := UnderlyingHonestCategory( CapCategory( z_functor_morphism ) );
+    category := UnderlyingCategory( CapCategory( z_functor_morphism ) );
     
     morphism := rec( );
     

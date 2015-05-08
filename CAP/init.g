@@ -30,8 +30,6 @@ ReadPackage( "CAP", "gap/TerminalCategory.gd");
 
 ReadPackage( "CAP", "gap/DeductiveSystem.gd");
 
-ReadPackage( "CAP", "gap/HomologicalAlgebraAlgorithms.gd");
-
 ReadPackage( "CAP", "gap/LogicForDeductiveSystem.gd");
 
 ReadPackage( "CAP", "gap/TheoremParser.gd");

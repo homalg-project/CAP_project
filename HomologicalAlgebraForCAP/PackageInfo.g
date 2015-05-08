@@ -1,14 +1,14 @@
 SetPackageInfo( rec(
 
-PackageName := "GeneralizedMorphismsForCAP",
-Subtitle := "Implementations of generalized morphisms for the CAP project",
+PackageName := "HomologicalAlgebraForCAP",
+Subtitle := "Homological algebra algorithms for CAP",
 
 Version := Maximum( [
   "2015.05.08", ## Sebas' version
 ## this line prevents merge conflicts
-  "2015.04.15", ## Sepp's version
+   "2015.04.15", ## Sepp's version
 ## this line prevents merge conflicts
-   ] ),
+    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
@@ -49,7 +49,7 @@ Persons := [
 
 PackageWWWHome := "",
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "GeneralizedMorphismsForCAP-", ~.Version ),
+ArchiveURL     := Concatenation( ~.PackageWWWHome, "HomologicalAlgebraForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
@@ -68,18 +68,19 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "GeneralizedMorphismsForCAP",
+  BookName  := "HomologicalAlgebraForCAP",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Implementations of generalized morphisms for the CAP project",
+  LongTitle := "Homological algebra algorithms for CAP",
 ),
 
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">=2015.05.08" ] ],
+                           [ "GeneralizedMorphismsForCAP", ">=2015.05.08" ],
+                           [ "ComplexesAndFilteredObjectsForCAP", ">=2015.05.08" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),

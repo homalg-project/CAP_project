@@ -27,8 +27,6 @@ ReadPackage( "CAP", "gap/DeductiveSystem.gi");
 
 ReadPackage( "CAP", "gap/DerivedMethods.gi");
 
-ReadPackage( "CAP", "gap/HomologicalAlgebraAlgorithms.gi");
-
 ReadPackage( "CAP", "gap/LogicForDeductiveSystem.gi");
 
 ReadPackage( "CAP", "gap/TheoremParser.gi");

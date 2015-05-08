@@ -384,7 +384,7 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
         
         deductive_category := arg[ 4 ];
         
-        crisp_category := UnderlyingHonestCategory( arg[ 4 ] );
+        crisp_category := UnderlyingCategory( arg[ 4 ] );
         
     else
         
@@ -400,13 +400,13 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
             
             deductive_category := CapCategory( current_argument );
             
-            crisp_category := UnderlyingHonestCategory( deductive_category );
+            crisp_category := UnderlyingCategory( deductive_category );
             
         elif IsList( current_argument ) then
             
             deductive_category := CapCategory( current_argument[ 1 ] );
             
-            crisp_category := UnderlyingHonestCategory( deductive_category );
+            crisp_category := UnderlyingCategory( deductive_category );
             
         else
             

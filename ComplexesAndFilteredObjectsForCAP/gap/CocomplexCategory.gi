@@ -66,7 +66,7 @@ InstallMethod( CocomplexCategory,
     
     cocomplex_category := CreateCapCategory( name );
     
-    SetUnderlyingHonestCategory( cocomplex_category, category );
+    SetUnderlyingCategory( cocomplex_category, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_COCOMPLEX_CATEGORY( category );
     
@@ -93,7 +93,7 @@ InstallMethod( ComplexCategory,
     
     complex_category := CreateCapCategory( name );
     
-    SetUnderlyingHonestCategory( complex_category, category );
+    SetUnderlyingCategory( complex_category, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_COMPLEX_CATEGORY( category );
     
@@ -877,7 +877,7 @@ BindGlobal( "AS_COMPLEX_OR_COCOMPLEX",
   function( z_functor_object, type, category_getter )
     local category, object;
     
-    category := UnderlyingHonestCategory( CapCategory( z_functor_object ) );
+    category := UnderlyingCategory( CapCategory( z_functor_object ) );
     
     object := rec( );
     
@@ -957,7 +957,7 @@ BindGlobal( "AS_CHAIN_OR_COCHAIN_MAP",
   function( z_functor_morphism, type, object_constructor, category_getter )
     local category, source, range, morphism;
     
-    category := UnderlyingHonestCategory( CapCategory( z_functor_morphism ) );
+    category := UnderlyingCategory( CapCategory( z_functor_morphism ) );
     
     source := object_constructor( Source( z_functor_morphism ) );
     
@@ -1001,7 +1001,7 @@ BindGlobal( "CHAIN_OR_COCHAIN_MAP",
   function( source, z_functor_morphism, range, type, category_getter )
     local category, morphism;
     
-    category := UnderlyingHonestCategory( CapCategory( z_functor_morphism ) );
+    category := UnderlyingCategory( CapCategory( z_functor_morphism ) );
     
     morphism := rec( );
     
