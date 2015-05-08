@@ -1,6 +1,6 @@
 SetPackageInfo( rec(
 
-PackageName := "ModulePresentationsForHomalg",
+PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
@@ -48,7 +48,7 @@ Persons := [
 
 PackageWWWHome := "",
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "ModulePresentationsForHomalg-", ~.Version ),
+ArchiveURL     := Concatenation( ~.PackageWWWHome, "ModulePresentationsForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
@@ -67,7 +67,7 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "ModulePresentationsForHomalg",
+  BookName  := "ModulePresentationsForCAP",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",

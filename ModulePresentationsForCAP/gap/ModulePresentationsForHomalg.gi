@@ -1,6 +1,6 @@
 #############################################################################
 ##
-##                                       ModulePresentationsForHomalg package
+##                                       ModulePresentationsForCAP package
 ##
 ##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
@@ -28,19 +28,19 @@ InstallMethod( LeftPresentations,
     ## TODO: avoid code duplication (see RightPresentations)
     AddTheoremFileToCategory( category,
       Filename(
-        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "PropositionsForGeneralModuleCategories.tex" )
     );
     
     AddPredicateImplicationFileToCategory( category,
       Filename(
-        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "PredicateImplicationsForGeneralModuleCategories.tex" )
      );
     
     AddEvalRuleFileToCategory( category,
       Filename(
-        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
     
@@ -70,19 +70,19 @@ InstallMethod( RightPresentations,
     ## TODO: avoid code duplication (see LeftPresentations)
     AddTheoremFileToCategory( category,
       Filename(
-        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "PropositionsForGeneralModuleCategories.tex" )
     );
     
     AddPredicateImplicationFileToCategory( category,
       Filename(
-        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "PredicateImplicationsForGeneralModuleCategories.tex" )
      );
     
     AddEvalRuleFileToCategory( category,
       Filename(
-        DirectoriesPackageLibrary( "ModulePresentationsForHomalg", "LogicForModulePresentations" ),
+        DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
     

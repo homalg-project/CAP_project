@@ -1,4 +1,4 @@
-LoadPackage( "ModulePresentationsForHomalg" );
+LoadPackage( "ModulePresentationsForCAP" );
 LoadPackage( "RingsForHomalg" );
 QQ := HomalgFieldOfRationalsInSingular( );
 R := QQ * "x,y";

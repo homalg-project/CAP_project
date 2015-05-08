@@ -1,4 +1,4 @@
-LoadPackage( "ModulePresentationsForHomalg" );
+LoadPackage( "ModulePresentationsForCAP" );
 LoadPackage( "RingsForHomalg" );
 
 ZZ := HomalgRingOfIntegersInSingular( );

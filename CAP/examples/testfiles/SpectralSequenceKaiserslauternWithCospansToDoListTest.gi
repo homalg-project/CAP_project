@@ -2,7 +2,7 @@ LoadPackage( "ToolsForHomalg" );
 
 ShowToDoListInfo( );
 
-LoadPackage( "ModulePresentationsForHomalg" );
+LoadPackage( "ModulePresentationsForCAP" );
 LoadPackage( "GeneralizedMorphismsForCAP" );
 LoadPackage( "RingsForHomalg" );
 
