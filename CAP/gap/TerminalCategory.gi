@@ -76,7 +76,7 @@ InstallMethod( UniqueMorphism,
     
     morphism := rec( );
     
-    object := Object( CAP_INTERNAL_TERMINAL_CATEGORY );
+    object := UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY );
     
     ObjectifyWithAttributes( morphism, TheTypeOfHomalgTerminalCategoryMorphism,
                              Source, object,
