@@ -28,10 +28,6 @@ ReadPackage( "CAP", "gap/CategoriesCategory.gd");
 
 ReadPackage( "CAP", "gap/TerminalCategory.gd");
 
-ReadPackage( "CAP", "gap/GeneralizedMorphismCategory.gd");
-
-ReadPackage( "CAP", "gap/SerreQuotients.gd");
-
 ReadPackage( "CAP", "gap/ZFunctors.gd");
 
 ReadPackage( "CAP", "gap/CocomplexCategory.gd");
