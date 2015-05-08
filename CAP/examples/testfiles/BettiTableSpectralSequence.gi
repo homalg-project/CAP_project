@@ -1,5 +1,7 @@
 LoadPackage( "ModulePresentationsForHomalg" );
 
+LoadPackage( "HomologicalAlgebraForCAP" );
+
 LoadPackage( "RingsForHomalg" );
 
 QQ := HomalgFieldOfRationalsInSingular( );

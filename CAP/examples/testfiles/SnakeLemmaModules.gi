@@ -1,5 +1,5 @@
 LoadPackage( "ModulePresentationsForHomalg" );
-
+LoadPackage( "HomologicalAlgebraForCAP" );
 LoadPackage( "RingsForHomalg" );
 
 ## Initialisation

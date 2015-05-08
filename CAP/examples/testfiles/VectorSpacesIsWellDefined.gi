@@ -13,6 +13,8 @@ vecspaces := CreateCapCategory( "VectorSpacesForIsWellDefinedTest" );
 #! VectorSpacesForIsWellDefinedTest 
 ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
+LoadPackage( "GeneralizedMorphismsForCAP" );
+#! true
 A := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>
 B := QVectorSpace( 2 );

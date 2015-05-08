@@ -4,6 +4,7 @@
 
 
 LoadPackage( "ModulePresentationsForHomalg" );
+LoadPackage( "HomologicalAlgebraForCAP" );
 LoadPackage( "RingsForHomalg" );
 
 #ActivateDerivationInfo();

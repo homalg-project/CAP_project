@@ -9,6 +9,8 @@ vecspaces := CreateCapCategory( "VectorSpacesForSpectralSequenceTest" );
 
 ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 
+LoadPackage( "HomologicalAlgebraForCAP" );
+
 A := QVectorSpace( 2 );
 
 CA := AsPointedCocomplex( A, 0 );

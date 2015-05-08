@@ -9,6 +9,7 @@ AutoDoc( "CAP" : scaffold := true, autodoc :=
                               "LoadPackage( \"GaussForHomalg\" );",
 			      "LoadPackage( \"ModulePresentationsForHomalg\" );",
 			      "LoadPackage( \"RingsForHomalg\" );",
+			      "LoadPackage( \"HomologicalAlgebraForCAP\" );",
                               "HOMALG_IO.show_banners := false;",
                               "HOMALG_IO.suppress_PID := true;",
                               "HOMALG_IO.use_common_stream := true;",

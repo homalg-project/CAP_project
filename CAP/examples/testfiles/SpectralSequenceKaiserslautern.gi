@@ -1,5 +1,5 @@
 LoadPackage( "ModulePresentationsForHomalg" );
-
+LoadPackage( "GeneralizedMorphismsForCAP" );
 LoadPackage( "RingsForHomalg" );
 
 ## Initialisation

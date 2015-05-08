@@ -3,6 +3,7 @@
 #! @Section Spectral sequences
 
 LoadPackage( "ModulePresentationsForHomalg" );
+LoadPackage( "HomologicalAlgebraForCAP" );
 LoadPackage( "RingsForHomalg" );
 
 #! @Example

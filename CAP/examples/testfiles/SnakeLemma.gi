@@ -9,6 +9,8 @@ fi;
 vecspaces := CreateCapCategory( "vecspaces" );
 ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 
+LoadPackage( "HomologicalAlgebraForCAP" );
+
 ## create example input
 
 A1_eval := QVectorSpace( 1 );
