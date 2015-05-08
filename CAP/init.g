@@ -38,8 +38,6 @@ ReadPackage( "CAP", "gap/CocomplexCategory.gd");
 
 ReadPackage( "CAP", "gap/FilteredObjects.gd");
 
-ReadPackage( "CAP", "gap/LazyCategory.gd");
-
 ReadPackage( "CAP", "gap/DeductiveSystem.gd");
 
 ReadPackage( "CAP", "gap/HomologicalAlgebraAlgorithms.gd");

@@ -33,8 +33,6 @@ ReadPackage( "CAP", "gap/CocomplexCategory.gi");
 
 ReadPackage( "CAP", "gap/FilteredObjects.gi");
 
-ReadPackage( "CAP", "gap/LazyCategory.gi");
-
 ReadPackage( "CAP", "gap/DeductiveSystem.gi");
 
 ReadPackage( "CAP", "gap/DerivedMethods.gi");
