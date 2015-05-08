@@ -23,12 +23,6 @@ ReadPackage( "CAP", "gap/CategoriesCategory.gi");
 
 ReadPackage( "CAP", "gap/TerminalCategory.gi");
 
-ReadPackage( "CAP", "gap/ZFunctors.gi");
-
-ReadPackage( "CAP", "gap/CocomplexCategory.gi");
-
-ReadPackage( "CAP", "gap/FilteredObjects.gi");
-
 ReadPackage( "CAP", "gap/DeductiveSystem.gi");
 
 ReadPackage( "CAP", "gap/DerivedMethods.gi");

@@ -28,12 +28,6 @@ ReadPackage( "CAP", "gap/CategoriesCategory.gd");
 
 ReadPackage( "CAP", "gap/TerminalCategory.gd");
 
-ReadPackage( "CAP", "gap/ZFunctors.gd");
-
-ReadPackage( "CAP", "gap/CocomplexCategory.gd");
-
-ReadPackage( "CAP", "gap/FilteredObjects.gd");
-
 ReadPackage( "CAP", "gap/DeductiveSystem.gd");
 
 ReadPackage( "CAP", "gap/HomologicalAlgebraAlgorithms.gd");

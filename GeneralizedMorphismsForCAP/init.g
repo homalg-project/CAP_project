@@ -1,5 +1,5 @@
 
-ReadPackage( "CAP", "gap/GeneralizedMorphismCategory.gd");
+ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategory.gd");
 
-ReadPackage( "CAP", "gap/SerreQuotients.gd");
+ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotients.gd");
 
