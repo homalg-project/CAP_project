@@ -128,7 +128,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_WITH_GIVEN_FINAL_DERIVATIONS",
                             [ [ name_without_with_given, 1 ], [ universal_object, 0 ] ],
                             [ name_with_given ],
                             function( arg ) return CallFuncList( name_without_with_given, arg{[ 1 .. Length( arg ) - 1 ]} ); end :
-                            CategoryOptionFunction := function( category ) category!.redirects.( name_without_with_given ) := false; end );
+                            CategoryOptionFunction := function( category ) category!.redirects.( NameFunction( name_without_with_given ) ) := false; end );
                             
     end;
     
