@@ -265,13 +265,13 @@ InstallGlobalFunction( ADD_EQUAL_FOR_OBJECTS,
                        
   function( category )
     
-    AddIsEqualForObjects( category,
-                   
-      function( object1, object2 )
-        
-        return UnderlyingMatrix( object1 ) = UnderlyingMatrix( object2 );
-        
-    end );
+#     AddIsEqualForObjects( category,
+#                    
+#       function( object1, object2 )
+#         
+#         return UnderlyingMatrix( object1 ) = UnderlyingMatrix( object2 );
+#         
+#     end );
     
 end );
 
@@ -281,44 +281,35 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
   function( category )
     
     AddKernelEmb( category,
-      
+
       function( morphism )
         local kernel, embedding;
-        
+
         embedding := SyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
-        
+
         kernel := SyzygiesOfRows( embedding, UnderlyingMatrix( Source( morphism ) ) );
-        
+
         kernel := AsLeftPresentation( kernel );
-        
+
         return PresentationMorphism( kernel, embedding, Source( morphism ) );
-        
+
     end );
-    
-    AddKernelEmbWithGivenKernelObject( category,
-      
-      function( morphism, kernel )
-        local embedding;
-        
+
+    AddKernelLiftWithGivenKernelObject( category,
+
+      function( morphism, test_morphism, kernel )
+        local lift, embedding;
+
         embedding := SyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
-        
-        return PresentationMorphism( kernel, embedding, Source( morphism ) );
-        
-    end );
-    
-    AddLift( category,
-      
-      function( alpha, beta )
-        local lift;
-        
-        lift := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( beta ) ) );
-        
+
+        lift := RightDivide( UnderlyingMatrix( test_morphism ), embedding, UnderlyingMatrix( Source( morphism ) ) );
+
         if lift = fail then
             return fail;
         fi;
-        
-        return PresentationMorphism( Source( alpha ), lift, Source( beta ) );
-        
+
+        return PresentationMorphism( Source( test_morphism ), lift, kernel );
+
     end );
     
 end );
