@@ -281,44 +281,39 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
   function( category )
     
     AddKernelEmb( category,
-      
+
       function( morphism )
         local kernel, embedding;
-        
+
         embedding := SyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
-        
+
         kernel := SyzygiesOfRows( embedding, UnderlyingMatrix( Source( morphism ) ) );
-        
+
         kernel := AsLeftPresentation( kernel );
-        
+
         return PresentationMorphism( kernel, embedding, Source( morphism ) );
-        
+
     end );
-    
-    AddKernelEmbWithGivenKernelObject( category,
-      
-      function( morphism, kernel )
-        local embedding;
-        
+
+    AddKernelLift( category,
+
+      function( morphism, test_morphism )
+        local lift, kernel, embedding;
+
         embedding := SyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
-        
-        return PresentationMorphism( kernel, embedding, Source( morphism ) );
-        
-    end );
-    
-    AddLift( category,
-      
-      function( alpha, beta )
-        local lift;
-        
-        lift := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( beta ) ) );
-        
+
+        kernel := SyzygiesOfRows( embedding, UnderlyingMatrix( Source( morphism ) ) );
+
+        kernel := AsLeftPresentation( kernel );
+
+        lift := RightDivide( UnderlyingMatrix( test_morphism ), embedding, UnderlyingMatrix( Source( morphism ) ) );
+
         if lift = fail then
             return fail;
         fi;
-        
-        return PresentationMorphism( Source( alpha ), lift, Source( beta ) );
-        
+
+        return PresentationMorphism( Source( test_morphism ), lift, kernel );
+
     end );
     
 end );
