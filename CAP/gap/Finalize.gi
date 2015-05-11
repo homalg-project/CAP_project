@@ -30,6 +30,7 @@ InstallMethod( AddFinalDerivation,
     final_derivation.weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     final_derivation.description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
     final_derivation.category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
+    final_derivation.option_function := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryOptionFunction", ReturnTrue );
     
     final_derivation.name := name;
     final_derivation.can_compute := can;
@@ -101,6 +102,8 @@ InstallMethod( IsFinalized,
             
             add_name( category, current_final_derivation.function_list, weight );
             
+            current_final_derivation.option_function( category );
+            
         od;
         
         ## Remove all already installed entries
@@ -124,7 +127,8 @@ BindGlobal( "CAP_INTERNAL_CREATE_WITH_GIVEN_FINAL_DERIVATIONS",
         AddFinalDerivation( name_with_given,
                             [ [ name_without_with_given, 1 ], [ universal_object, 0 ] ],
                             [ name_with_given ],
-                            function( arg ) return CallFuncList( name_without_with_given, arg{[ 1 .. Length( arg ) - 1 ]} ); end );
+                            function( arg ) return CallFuncList( name_without_with_given, arg{[ 1 .. Length( arg ) - 1 ]} ); end :
+                            CategoryOptionFunction := function( category ) category!.redirects.( name_without_with_given ) := false; end );
                             
     end;
     
