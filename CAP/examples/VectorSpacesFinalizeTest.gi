@@ -137,14 +137,14 @@ end );
 
 ## Methods needed for FiberProductEmbeddingInDirectSum:
 ##
-AddKernelLiftWithGivenKernelObject( vecspaces,
+AddKernelLift( vecspaces,
 
-  function( mor, test_morphism, kernel )
+  function( mor, test_morphism )
    local kernel_emb;
    
    kernel_emb := SyzygiesOfRows( mor!.morphism );
    
-   return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), kernel );
+   return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), Source( kernel_emb ) );
    
 end );
 
