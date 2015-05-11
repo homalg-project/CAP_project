@@ -161,11 +161,13 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             new_filter_list,
                             
               function( arg )
-                local pre_func_return, redirect_return, result, post_func_arguments;
+                local redirect_flag, pre_func_return, redirect_return, result, post_func_arguments;
                 
-                redirect_return := CallFuncList( redirect_function, arg );
-                if redirect_return[ 1 ] = true then
-                    return redirect_return[ 2 ];
+                if not IsBound( category!.redirects.( install_name ) ) or category!.redirects.( install_name ) <> false then
+                    redirect_return := CallFuncList( redirect_function, arg );
+                    if redirect_return[ 1 ] = true then
+                        return redirect_return[ 2 ];
+                    fi;
                 fi;
                 
                 pre_func_return := CallFuncList( pre_function, arg );
