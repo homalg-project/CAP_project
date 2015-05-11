@@ -1,0 +1,3 @@
+[submodule "CAP/LogicForCategories"]
+	path = CAP/LogicForCategories
+	url = https://github.com/sebastianpos/LogicForCategories.git
