@@ -891,6 +891,30 @@ AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
     
 end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectProductDiagonalDifference" );
 
+##
+AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
+                    [ [ UniversalMorphismIntoDirectProduct, 1 ],
+                      [ DirectProductDiagonalDifference, 1 ],
+                      [ KernelLift, 1 ],
+                      [ PreCompose, 1 ],
+                      [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ] ],
+                                       
+  function( diagram, source )
+    local test_function, direct_product_diagonal_difference, kernel_lift;
+    
+    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
+    
+    direct_product_diagonal_difference := DirectProductDiagonalDifference( diagram );
+    
+    kernel_lift := KernelLift( direct_product_diagonal_difference, test_function );
+    
+    return PreCompose(
+             kernel_lift,
+             IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( diagram )
+           );
+    
+end : Description := "UniversalMorphismIntoFiberProduct using the universality of the kernel representation of the pullback" );
+
 
 ###########################
 ##
@@ -1057,29 +1081,6 @@ AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
     
 end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the identity of the kernel of diagonal difference" );
 
-
-##
-AddFinalDerivation( UniversalMorphismIntoFiberProduct,
-                    [ [ UniversalMorphismIntoDirectProduct, 1 ],
-                       [ DirectProductDiagonalDifference, 1 ],
-                       [ KernelLift, 1 ] ],
-                    [ FiberProduct, 
-                      ProjectionInFactorOfFiberProduct,
-                      ProjectionInFactorOfFiberProductWithGivenFiberProduct,
-                      UniversalMorphismIntoFiberProduct,
-                      UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                      FiberProductEmbeddingInDirectSum ],
-                                       
-  function( diagram, source )
-    local test_function, direct_sum_diagonal_difference;
-    
-    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
-    
-    direct_sum_diagonal_difference := DirectProductDiagonalDifference( diagram );
-    
-    return KernelLift( direct_sum_diagonal_difference, test_function );
-    
-end : Description := "UniversalMorphismIntoFiberProduct using the universality of the kernel representation of the pullback" );
 
 ## Final methods for Pushout
 ##
