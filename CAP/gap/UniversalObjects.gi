@@ -985,6 +985,27 @@ InstallMethod( FiberProductEmbeddingInDirectSum,
     
 end );
 
+##
+InstallMethod( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp( diagram, diagram[1] );
+    
+end );
+
+
 ####################################
 ## Functorial operations
 ####################################

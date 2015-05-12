@@ -997,6 +997,49 @@ end : Description := "ImageObject as the source of ImageEmbedding" );
 ####################################
 
 ## Final methods for FiberProduct
+
+##
+AddFinalDerivation( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
+                    [ [ DirectProductDiagonalDifference, 1 ], 
+                      [ KernelObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ FiberProduct,
+                      ProjectionInFactorOfFiberProduct,
+                      ProjectionInFactorOfFiberProductWithGivenFiberProduct,
+                      UniversalMorphismIntoFiberProduct,
+                      UniversalMorphismIntoFiberProductWithGivenFiberProduct,
+                      FiberProductEmbeddingInDirectSum ],
+                    
+  function( diagram, method_selection_morphism )
+    local kernel_of_diagonal_difference;
+    
+    kernel_of_diagonal_difference := KernelObject( DirectProductDiagonalDifference( diagram ) );
+    
+    return IdentityMorphism( kernel_of_diagonal_difference );
+    
+end );
+
+##
+AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
+                    [ [ DirectProductDiagonalDifference, 1 ], 
+                      [ KernelObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ FiberProduct,
+                      ProjectionInFactorOfFiberProduct,
+                      ProjectionInFactorOfFiberProductWithGivenFiberProduct,
+                      UniversalMorphismIntoFiberProduct,
+                      UniversalMorphismIntoFiberProductWithGivenFiberProduct,
+                      FiberProductEmbeddingInDirectSum ],
+                    
+  function( diagram, method_selection_morphism )
+    local kernel_of_diagonal_difference;
+    
+    kernel_of_diagonal_difference := KernelObject( DirectProductDiagonalDifference( diagram ) );
+    
+    return IdentityMorphism( kernel_of_diagonal_difference );
+    
+end );
+
 ##
 AddFinalDerivation( FiberProductEmbeddingInDirectSum,
                     [ [ KernelEmb, 1 ],
@@ -1008,7 +1051,7 @@ AddFinalDerivation( FiberProductEmbeddingInDirectSum,
                       UniversalMorphismIntoFiberProductWithGivenFiberProduct,
                       FiberProductEmbeddingInDirectSum ],
                     
-  function( diagram, method_selection_morphism )
+  function( diagram )
     
     return KernelEmb( DirectProductDiagonalDifference( diagram ) );
     

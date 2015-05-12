@@ -967,10 +967,23 @@ DirectProductDiagonalDifference := rec(
   
 FiberProductEmbeddingInDirectSum := rec(
   installation_name := "FiberProductEmbeddingInDirectSumOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "FiberProductEmbeddingInDirectSumOp",
   return_type := "morphism" ),
   
+IsomorphismFromFiberProductToKernelOfDiagonalDifference := rec(
+  installation_name := "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
+  return_type := "morphism" ),
+  
+IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct := rec(
+  installation_name := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
+  filter_list := [ IsList, "morphism" ],
+  cache_name := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
+  return_type := "morphism" ),
+
 CoproductDiagonalDifference := rec(
   installation_name := "CoproductDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],

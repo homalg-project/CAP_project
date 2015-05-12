@@ -1436,6 +1436,50 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 # DeclareGlobalFunction( "FiberProduct" );
 
 ##
+DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
+                  [ IsList ] );
+##
+DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
+                  [ IsCapCategory, IsFunction ] );
+##
+DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
+                  [ IsCapCategory, IsList, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
+                  [ IsList ] );
+##
+DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+##
+DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+##
+DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+##
+DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+
+##
 DeclareOperation( "DirectProductDiagonalDifference",
                   [ IsList ] );
 

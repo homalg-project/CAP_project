@@ -174,7 +174,9 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeCoproductDiagonalDifference",
                 "CanComputeDirectSumProjectionInPushout",
                 "CanComputeLift",
-                "CanComputeColift"
+                "CanComputeColift",
+                "CanComputeIsomorphismFromFiberProductToKernelOfDiagonalDifference",
+                "CanComputeIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct"
                 
                 ] )
 );
