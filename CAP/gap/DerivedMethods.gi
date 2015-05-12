@@ -1081,30 +1081,6 @@ AddFinalDerivation( UniversalMorphismIntoFiberProduct,
     
 end : Description := "UniversalMorphismIntoFiberProduct using the universality of the kernel representation of the pullback" );
 
-
-##
-AddFinalDerivation( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                    [ [ UniversalMorphismIntoDirectProduct, 1 ],
-                       [ DirectProductDiagonalDifference, 1 ],
-                       [ KernelLift, 1 ] ],
-                    [ FiberProduct, 
-                      ProjectionInFactorOfFiberProduct,
-                      ProjectionInFactorOfFiberProductWithGivenFiberProduct,
-                      UniversalMorphismIntoFiberProduct,
-                      UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                      FiberProductEmbeddingInDirectSum ],
-                                       
-  function( diagram, source, pullback )
-    local test_function, direct_sum_diagonal_difference;
-    
-    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
-    
-    direct_sum_diagonal_difference := DirectProductDiagonalDifference( diagram );
-    
-    return KernelLift( direct_sum_diagonal_difference, test_function );
-    
-end : Description := "UniversalMorphismIntoFiberProductWithGivenFiberProduct using the universality of the kernel representation of the pullback" );
-
 ## Final methods for Pushout
 ##
 AddFinalDerivation( DirectSumProjectionInPushout,
@@ -1146,54 +1122,7 @@ AddFinalDerivation( UniversalMorphismFromPushout,
     
 end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
 
-
-##
-AddFinalDerivation( UniversalMorphismFromPushoutWithGivenPushout,
-                    [ [ UniversalMorphismFromCoproduct, 1 ],
-                      [ CoproductDiagonalDifference, 1 ],
-                      [ CokernelColift, 1 ] ],
-                    [ Pushout,
-                      InjectionOfCofactorOfPushout,
-                      InjectionOfCofactorOfPushoutWithGivenPushout,
-                      UniversalMorphismFromPushout,
-                      UniversalMorphismFromPushoutWithGivenPushout,
-                      DirectSumProjectionInPushout ],
-                    
-  function( diagram, sink, pushout )
-    local test_function, coproduct_diagonal_difference;
-    
-    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
-    
-    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
-    
-    return CokernelColift( coproduct_diagonal_difference, test_function );
-    
-end : Description := "UniversalMorphismFromPushoutWithGivenPushout using the universality of the cokernel representation of the pushout" );
-
 ## Final methods for Image
-##
-AddFinalDerivation( ImageEmbeddingWithGivenImageObject,
-                    [ [ KernelEmb, 1 ],
-                      [ CokernelProj, 1 ] ],
-                    [ ImageObject,
-                      ImageEmbedding,
-                      ImageEmbeddingWithGivenImageObject,
-                      CoastrictionToImage,
-                      CoastrictionToImageWithGivenImageObject,
-                      UniversalMorphismFromImage,
-                      UniversalMorphismFromImageWithGivenImageObject ],
-                      
-  function( mor, image_object )
-    local image_embedding;
-    
-    image_embedding := KernelEmb( CokernelProj( mor ) );
-    
-    return image_embedding;
-    
-end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
-      Description := "ImageEmbeddingWithGivenImageObject as the kernel embedding of the cokernel projection"
-##    depends_on := "ImageEmbedding as the kernel embedding of the cokernel projection"
-);
 
 ##
 AddFinalDerivation( ImageEmbedding,
