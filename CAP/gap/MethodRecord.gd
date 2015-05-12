@@ -975,12 +975,14 @@ FiberProductEmbeddingInDirectSum := rec(
 IsomorphismFromFiberProductToKernelOfDiagonalDifference := rec(
   installation_name := "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
+  argument_list := [ 1 ],
   cache_name := "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
   return_type := "morphism" ),
   
 IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct := rec(
   installation_name := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
   filter_list := [ IsList, "morphism" ],
+  argument_list := [ 1 ],
   cache_name := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
   return_type := "morphism" ),
 

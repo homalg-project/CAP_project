@@ -394,6 +394,28 @@ AddDerivationToCAP( EpiAsCokernelColift,
     
 end : Description := "EpiAsCokernelColift using Colift" );
 
+##
+AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
+                    [ [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( diagram ) );
+    
+end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the inverse of IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct" );
+
+##
+AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
+                    [ [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromFiberProductToKernelOfDiagonalDifference( diagram ) );
+    
+end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the inverse of IsomorphismFromFiberProductToKernelOfDiagonalDifference" );
+
 ###########################
 ##
 ## Methods returning a morphism with source or range constructed within the method!
@@ -1051,7 +1073,7 @@ AddFinalDerivation( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
                       UniversalMorphismIntoFiberProductWithGivenFiberProduct,
                       FiberProductEmbeddingInDirectSum ],
                     
-  function( diagram, method_selection_morphism )
+  function( diagram )
     local kernel_of_diagonal_difference;
     
     kernel_of_diagonal_difference := KernelObject( DirectProductDiagonalDifference( diagram ) );
@@ -1072,7 +1094,7 @@ AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
                       UniversalMorphismIntoFiberProductWithGivenFiberProduct,
                       FiberProductEmbeddingInDirectSum ],
                     
-  function( diagram, method_selection_morphism )
+  function( diagram )
     local kernel_of_diagonal_difference;
     
     kernel_of_diagonal_difference := KernelObject( DirectProductDiagonalDifference( diagram ) );
