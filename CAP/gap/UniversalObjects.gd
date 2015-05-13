@@ -1759,6 +1759,50 @@ DeclareFilter( "WasCreatedAsFiberProduct" );
 #! there exists a unique morphism $u: I \rightarrow T$ such that $\tau_i = u \circ \iota_i$ for all $i = 1 \dots n$.
 
 
+##
+DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
+                  [ IsList ] );
+
+##
+DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
+                  [ IsCapCategory, IsFunction ] );
+##
+DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
+                  [ IsCapCategory, IsList, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
+                  [ IsList ] );
+
+##
+DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
+                  [ IsCapCategory, IsFunction ] );
+##
+DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
+                  [ IsCapCategory, IsList ] );
+
+
+
 ## Main Operations and Attributes
 ##
 DeclareOperation( "CoproductDiagonalDifference",

@@ -986,6 +986,22 @@ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct := rec(
   cache_name := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
   return_type := "morphism" ),
 
+IsomorphismFromPushoutToCokernelOfDiagonalDifference := rec(
+  installation_name := "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
+  filter_list := [ IsList, "morphism" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
+  return_type := "morphism" ),
+
+IsomorphismFromCokernelOfDiagonalDifferenceToPushout := rec(
+  installation_name := "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
+  filter_list := [ IsList, "morphism" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
+  return_type := "morphism" ),
+
+
+
 CoproductDiagonalDifference := rec(
   installation_name := "CoproductDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
@@ -996,6 +1012,7 @@ CoproductDiagonalDifference := rec(
 DirectSumProjectionInPushout := rec(
   installation_name := "DirectSumProjectionInPushoutOp",
   filter_list := [ IsList, "morphism" ],
+  argument_list := [ 1 ],
   cache_name := "DirectSumProjectionInPushoutOp",
   return_type := "morphism" )
   )

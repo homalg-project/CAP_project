@@ -416,6 +416,29 @@ AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
     
 end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the inverse of IsomorphismFromFiberProductToKernelOfDiagonalDifference" );
 
+##
+AddDerivationToCAP( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
+                    [ [ IsomorphismFromPushoutToCokernelOfDiagonalDifference, 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ) );
+    
+end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as the inverse of IsomorphismFromPushoutToCokernelOfDiagonalDifference" );
+
+##
+AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
+                    [ [ IsomorphismFromCokernelOfDiagonalDifferenceToPushout , 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromCokernelOfDiagonalDifferenceToPushout( diagram ) );
+    
+end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the inverse of IsomorphismFromCokernelOfDiagonalDifferenceToPushout" );
+
+
 ###########################
 ##
 ## Methods returning a morphism with source or range constructed within the method!
@@ -937,6 +960,45 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
     
 end : Description := "UniversalMorphismIntoFiberProduct using the universality of the kernel representation of the pullback" );
 
+##
+AddDerivationToCAP( DirectSumProjectionInPushout,
+                    [ [ CokernelProj, 1 ],
+                      [ CoproductDiagonalDifference, 1 ],
+                      [ IsomorphismFromCokernelOfDiagonalDifferenceToPushout, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( diagram )
+    local cokernel_proj_of_diagonal_difference;
+    
+    cokernel_proj_of_diagonal_difference := CokernelProj( CoproductDiagonalDifference( diagram ) );
+    
+    return PreCompose( cokernel_proj_of_diagonal_difference,
+                       IsomorphismFromCokernelOfDiagonalDifferenceToPushout( diagram ) );
+    
+end : Description := "DirectSumProjectionInPushout as the cokernel projection of CoproductDiagonalDifference" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromPushout,
+                    [ [ UniversalMorphismFromCoproduct, 1 ],
+                      [ CoproductDiagonalDifference, 1 ],
+                      [ CokernelColift, 1 ],
+                      [ IsomorphismFromPushoutToCokernelOfDiagonalDifference, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( diagram, sink )
+    local test_function, coproduct_diagonal_difference, cokernel_colift;
+    
+    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
+    
+    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
+    
+    cokernel_colift := CokernelColift( coproduct_diagonal_difference, test_function );
+    
+    return PreCompose( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ),
+                       cokernel_colift );
+    
+end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
+
 
 ###########################
 ##
@@ -1071,7 +1133,9 @@ AddFinalDerivation( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
                       ProjectionInFactorOfFiberProductWithGivenFiberProduct,
                       UniversalMorphismIntoFiberProduct,
                       UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                      FiberProductEmbeddingInDirectSum ],
+                      FiberProductEmbeddingInDirectSum,
+                      IsomorphismFromFiberProductToKernelOfDiagonalDifference,
+                      IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct ],
                     
   function( diagram )
     local kernel_of_diagonal_difference;
@@ -1092,7 +1156,9 @@ AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
                       ProjectionInFactorOfFiberProductWithGivenFiberProduct,
                       UniversalMorphismIntoFiberProduct,
                       UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                      FiberProductEmbeddingInDirectSum ],
+                      FiberProductEmbeddingInDirectSum,
+                      IsomorphismFromFiberProductToKernelOfDiagonalDifference,
+                      IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct ],
                     
   function( diagram )
     local kernel_of_diagonal_difference;
@@ -1103,47 +1169,53 @@ AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
     
 end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the identity of the kernel of diagonal difference" );
 
-
 ## Final methods for Pushout
-##
-AddFinalDerivation( DirectSumProjectionInPushout,
-                    [ [ CokernelProj, 1 ],
-                      [ CoproductDiagonalDifference, 1 ] ],
-                    [ Pushout,
-                      InjectionOfCofactorOfPushout,
-                      InjectionOfCofactorOfPushoutWithGivenPushout,
-                      UniversalMorphismFromPushout,
-                      UniversalMorphismFromPushoutWithGivenPushout,
-                      DirectSumProjectionInPushout ],
-                    
-  function( diagram, method_selection_morphism )
-    
-    return CokernelProj( CoproductDiagonalDifference( diagram ) );
-    
-end : Description := "DirectSumProjectionInPushout as the cokernel projection of CoproductDiagonalDifference" );
 
 ##
-AddFinalDerivation( UniversalMorphismFromPushout,
-                    [ [ UniversalMorphismFromCoproduct, 1 ],
+AddFinalDerivation( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
+                    [ [ Cokernel, 1 ],
                       [ CoproductDiagonalDifference, 1 ],
-                      [ CokernelColift, 1 ] ],
+                      [ IdentityMorphism, 1 ] ],
                     [ Pushout,
                       InjectionOfCofactorOfPushout,
                       InjectionOfCofactorOfPushoutWithGivenPushout,
                       UniversalMorphismFromPushout,
                       UniversalMorphismFromPushoutWithGivenPushout,
-                      DirectSumProjectionInPushout ],
+                      DirectSumProjectionInPushout,
+                      IsomorphismFromPushoutToCokernelOfDiagonalDifference,
+                      IsomorphismFromCokernelOfDiagonalDifferenceToPushout ],
                     
-  function( diagram, sink )
-    local test_function, coproduct_diagonal_difference;
+  function( diagram )
+    local cokernel_of_diagonal_difference;
     
-    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
+    cokernel_of_diagonal_difference := Cokernel( CoproductDiagonalDifference( diagram ) );
     
-    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
+    return IdentityMorphism( cokernel_of_diagonal_difference );
     
-    return CokernelColift( coproduct_diagonal_difference, test_function );
+end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the identity of the cokernel of diagonal difference" );
+
+##
+AddFinalDerivation( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
+                    [ [ Cokernel, 1 ],
+                      [ CoproductDiagonalDifference, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ Pushout,
+                      InjectionOfCofactorOfPushout,
+                      InjectionOfCofactorOfPushoutWithGivenPushout,
+                      UniversalMorphismFromPushout,
+                      UniversalMorphismFromPushoutWithGivenPushout,
+                      DirectSumProjectionInPushout,
+                      IsomorphismFromPushoutToCokernelOfDiagonalDifference,
+                      IsomorphismFromCokernelOfDiagonalDifferenceToPushout ],
+                    
+  function( diagram )
+    local cokernel_of_diagonal_difference;
     
-end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
+    cokernel_of_diagonal_difference := Cokernel( CoproductDiagonalDifference( diagram ) );
+    
+    return IdentityMorphism( cokernel_of_diagonal_difference );
+    
+end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as the identity of the cokernel of diagonal difference" );
 
 ## Final methods for Image
 

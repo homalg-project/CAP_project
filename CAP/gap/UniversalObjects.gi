@@ -1005,6 +1005,25 @@ InstallMethod( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
     
 end );
 
+##
+InstallMethod( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp( diagram, diagram[1] );
+    
+end );
 
 ####################################
 ## Functorial operations
