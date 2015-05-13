@@ -178,8 +178,8 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsomorphismFromFiberProductToKernelOfDiagonalDifference",
                 "CanComputeIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
                 "CanComputeIsomorphismFromPushoutToCokernelOfDiagonalDifference",
-                "CanComputeIsomorphismFromCokernelOfDiagonalDifferenceToPushout"
-                
+                "CanComputeIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
+                "CanComputeIsomorphismFromImageObjectToKernelOfCokernel"
                 ] )
 );
 

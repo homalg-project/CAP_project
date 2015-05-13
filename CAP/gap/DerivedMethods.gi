@@ -999,6 +999,24 @@ AddDerivationToCAP( UniversalMorphismFromPushout,
     
 end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
 
+##
+AddDerivationToCAP( ImageEmbedding,
+                    [ [ KernelEmb, 1 ],
+                      [ CokernelProj, 1 ],
+                      [ IsomorphismFromImageObjectToKernelOfCokernel, 1 ],
+                      [ PreCompose, 1 ] ],
+                      
+  function( mor )
+    local image_embedding;
+    
+    image_embedding := KernelEmb( CokernelProj( mor ) );
+    
+    return PreCompose( IsomorphismFromImageObjectToKernelOfCokernel( mor ),
+                       image_embedding );
+    
+end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "ImageEmbedding as the kernel embedding of the cokernel projection"
+);
 
 ###########################
 ##
@@ -1220,26 +1238,27 @@ end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as th
 ## Final methods for Image
 
 ##
-AddFinalDerivation( ImageEmbedding,
-                    [ [ KernelEmb, 1 ],
-                      [ CokernelProj, 1 ] ],
+AddFinalDerivation( IsomorphismFromImageObjectToKernelOfCokernel,
+                    [ [ KernelObject, 1 ],
+                      [ CokernelProj, 1 ],
+                      [ IdentityMorphism, 1 ] ],
                     [ ImageObject,
                       ImageEmbedding,
                       ImageEmbeddingWithGivenImageObject,
                       CoastrictionToImage,
                       CoastrictionToImageWithGivenImageObject,
                       UniversalMorphismFromImage,
-                      UniversalMorphismFromImageWithGivenImageObject ],
-                      
+                      UniversalMorphismFromImageWithGivenImageObject,
+                      IsomorphismFromImageObjectToKernelOfCokernel ],
+                    
   function( mor )
-    local image_embedding;
+    local kernel_of_cokernel;
     
-    image_embedding := KernelEmb( CokernelProj( mor ) );
+    kernel_of_cokernel := KernelObject( CokernelProj( mor ) );
     
-    return image_embedding;
+    return IdentityMorphism( kernel_of_cokernel );
     
-end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
-      Description := "ImageEmbedding as the kernel embedding of the cokernel projection"
-##    depends_on := "ImageObject as the source of ImageEmbedding"
-);
+end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
+
+
 

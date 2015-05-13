@@ -2032,6 +2032,21 @@ DeclareFilter( "WasCreatedAsPushout" );
 
 ## Main Operations and Attributes
 
+DeclareOperation( "IsomorphismFromImageObjectToKernelOfCokernel",
+                  [ IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
+                  [ IsCapCategory, IsList ] );
+
 ## FIXME: Image is a function (rename: ImageObject -> Image)
 DeclareAttributeWithToDoForIsWellDefined( "ImageObject",
                                           IsCapCategoryMorphism );

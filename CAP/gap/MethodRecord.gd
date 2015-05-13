@@ -1000,7 +1000,11 @@ IsomorphismFromCokernelOfDiagonalDifferenceToPushout := rec(
   cache_name := "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
   return_type := "morphism" ),
 
-
+IsomorphismFromImageObjectToKernelOfCokernel := rec(
+  installation_name := "IsomorphismFromImageObjectToKernelOfCokernel",
+  filter_list := [ "morphism" ],
+  cache_name := "IsomorphismFromImageObjectToKernelOfCokernel",
+  return_type := "morphism" ),
 
 CoproductDiagonalDifference := rec(
   installation_name := "CoproductDiagonalDifferenceOp",
