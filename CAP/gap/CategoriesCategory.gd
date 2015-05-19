@@ -121,6 +121,13 @@ DeclareOperation( "CapFunctor",
 DeclareOperation( "CapFunctor",
                   [ IsString, IsCapCategoryAsCatObject, IsCapCategoryAsCatObject ] );
 
+#! @Arguments name,A,B
+DeclareOperation( "CapFunctor",
+                  [ IsString, IsList, IsCapCategory ] );
+
+#! @Arguments name,A,B
+DeclareOperation( "CapFunctor",
+                  [ IsString, IsList, IsCapCategoryAsCatObject ] );
 #! @EndGroup
 
 ####################################

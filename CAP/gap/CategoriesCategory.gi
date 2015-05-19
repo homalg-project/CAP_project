@@ -69,14 +69,64 @@ InstallMethod( AsCatObject,
     
 end );
 
+BindGlobal( "CAP_INTERNAL_NICE_FUNCTOR_INPUT_LIST",
+  
+  function( list )
+    local i;
+    
+    for i in [ 1 .. Length( list ) ] do
+        
+        if IsCapCategory( list[ i ] ) then
+            list[ i ] := [ list[ i ], false ]; ##true means opposite
+        elif IsCapCategoryAsCatObject( list[ i ] ) then
+            list[ i ] := [ AsCapCategory( list[ i ] ), false ];
+        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategory( list[ i ][ 1 ] ) then
+            list[ i ][ 2 ] := true;
+        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategoryAsCatObject( list[ i ][ 1 ] ) then
+            list[ i ] := [ AsCapCategory( list[ i ][ 1 ] ), true ];
+        fi;
+        
+    od;
+    
+    return list;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_CREATE_FUNCTOR_SOURCE",
+  
+  function( list )
+    local source_list, i;
+    
+    source_list := [ ];
+    
+    for i in list do
+        
+        if i[ 2 ] = false then
+            Add( source_list, i[ 1 ] );
+        else
+            Add( source_list, Opposite( i[ 1 ] ) );
+        fi;
+        
+    od;
+    
+    return CallFuncList( Product, source_list );
+    
+end );
+
 ##
 InstallMethod( CapFunctor,
-               [ IsString, IsCapCategory, IsCapCategory ],
+               [ IsString, IsList, IsCapCategory ],
                
-  function( name, source, range )
-    local functor;
+  function( name, source_list, range )
+    local source, functor;
     
     functor := rec( );
+    
+    source_list := CAP_INTERNAL_NICE_FUNCTOR_INPUT_LIST( source_list );
+    
+    functor.input_source_list := source_list;
+    
+    source := CAP_INTERNAL_CREATE_FUNCTOR_SOURCE( source_list );
     
     ObjectifyWithAttributes( functor, TheTypeOfCapFunctors,
                              Name, name,
@@ -91,11 +141,21 @@ end );
 
 ##
 InstallMethod( CapFunctor,
+               [ IsString, IsCapCategory, IsCapCategory ],
+               
+  function( name, source, range )
+    
+    return CapFunctor( name, [ source ], range );
+    
+end );
+
+##
+InstallMethod( CapFunctor,
                [ IsString, IsCapCategoryAsCatObject, IsCapCategory ],
                
   function( name, source, range )
     
-    return CapFunctor( name, AsCapCategory( source ), range );
+    return CapFunctor( name, [ source ], range );
     
 end );
 
@@ -105,7 +165,7 @@ InstallMethod( CapFunctor,
                
   function( name, source, range )
     
-    return CapFunctor( name, source, AsCapCategory( range ) );
+    return CapFunctor( name, [ source ], AsCapCategory( range ) );
     
 end );
 
@@ -115,7 +175,7 @@ InstallMethod( CapFunctor,
                
   function( name, source, range )
     
-    return CapFunctor( name, AsCapCategory( source ), AsCapCategory( range ) );
+    return CapFunctor( name, [ source ], AsCapCategory( range ) );
     
 end );
 
