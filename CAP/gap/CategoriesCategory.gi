@@ -410,7 +410,7 @@ InstallGlobalFunction( ApplyFunctor,
                
   function( arg )
     local functor, arguments, is_object, cache, cache_return, computed_value,
-          source_list, source_value, range_list, range_value, i;
+          source_list, source_value, range_list, range_value, i, tmp;
     
     functor := arg[ 1 ];
     
@@ -440,6 +440,14 @@ InstallGlobalFunction( ApplyFunctor,
         source_list := List( arguments, Source );
         
         range_list := List( arguments, Range );
+        
+        for i in [ 1 .. Length( arguments ) ] do
+            if functor!.input_source_list[ i ][ 2 ] = true then
+                tmp := source_list[ i ];
+                source_list[ i ] := range_list[ i ];
+                range_list[ i ] := source_list[ i ];
+            fi;
+        od;
         
         source_value := CallFuncList( ApplyFunctor, Concatenation( [ functor ], source_list ) );
         
