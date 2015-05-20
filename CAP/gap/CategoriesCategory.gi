@@ -126,6 +126,8 @@ InstallMethod( CapFunctor,
     
     functor.input_source_list := source_list;
     
+    functor.number_arguments := Length( source_list );
+    
     source := CAP_INTERNAL_CREATE_FUNCTOR_SOURCE( source_list );
     
     ObjectifyWithAttributes( functor, TheTypeOfCapFunctors,
@@ -179,13 +181,181 @@ InstallMethod( CapFunctor,
     
 end );
 
+BindGlobal( "CAP_INTERNAL_SANITIZE_FUNC_LIST_FOR_FUNCTORS",
+  
+  function( list )
+    local sanitized_list, i;
+    
+    sanitized_list := [ ];
+    
+    for i in list do
+        
+        if IsFunction( i ) then
+            
+            Add( sanitized_list, [ i, [ ] ] );
+            
+        elif IsList( i ) and Length( i ) = 1 then
+            
+            Add( sanitized_list, [ i[ 1 ], [ ] ] );
+            
+        elif IsList( i ) and Length( i ) = 2 then
+            
+            Add( sanitized_list, i );
+            
+        else
+            
+            Error( "wrong function input" );
+            
+        fi;
+        
+    od;
+    
+    return sanitized_list;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST",
+  
+  function( functor, type )
+    local filter_list;
+    
+    filter_list := List( functor!.input_source_list, i -> i[ 1 ] );
+    
+    if type = "cell" then
+        
+        filter_list := List( filter_list, CellFilter );
+        
+    elif type = "object" then
+        
+        filter_list := List( filter_list, ObjectFilter );
+        
+    elif type = "morphism" then
+        
+        filter_list := List( filter_list, MorphismFilter );
+        
+    elif type = "twocell" then
+        
+        filter_list := List( filter_list, TwoCellFilter );
+        
+    else
+        
+        ## Should never be reached
+        Error( "unrecognized type" );
+        
+    fi;
+    
+    return filter_list;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_INSTALL_FUNCTOR_OPERATION",
+  
+  function( operation, func_list, filter_list, cache )
+    local current_filter_list, current_method;
+    
+    for current_method in func_list do
+        
+        current_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( filter_list, current_method[ 2 ] );
+        
+        InstallMethodWithCache( operation, current_filter_list, current_method[ 1 ] : Cache := cache );
+        
+    od;
+    
+end );
+
+InstallMethod( FunctorObjectOperation,
+               [ IsCapFunctor ],
+               
+  function( functor )
+    local filter_list;
+    
+    filter_list := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "object" );
+    
+    return NewOperation( Concatenation( "CAP_FUNCTOR_", Name( functor ), "_OBJECT_OPERATION" ), filter_list );
+    
+end );
+
+InstallMethod( FunctorMorphismOperation,
+               [ IsCapFunctor ],
+               
+  function( functor )
+    local filter_list, range_cat;
+    
+    filter_list := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "morphism" );
+    
+    range_cat := AsCapCategory( Range( functor ) );
+    
+    filter_list := Concatenation( [ ObjectFilter( range_cat ) ], filter_list, [ ObjectFilter( range_cat ) ] );
+    
+    return NewOperation( Concatenation( "CAP_FUNCTOR_", Name( functor ), "_MORPHISM_OPERATION" ), filter_list );
+    
+end );
+
+##
+InstallMethod( AddObjectFunction,
+               [ IsCapFunctor, IsList ],
+               
+  function( functor, func_list )
+    local sanitized_list, filter_list, operation;
+    
+    sanitized_list := CAP_INTERNAL_SANITIZE_FUNC_LIST_FOR_FUNCTORS( func_list );
+    
+    filter_list := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "object" );
+    
+    if not IsBound( functor!.object_function_list ) then
+        
+        functor!.object_function_list := sanitized_list;
+        
+    else
+        
+        Append( functor!.object_function_list, sanitized_list );
+        
+    fi;
+    
+    operation := FunctorObjectOperation( functor );
+    
+    CAP_INTERNAL_INSTALL_FUNCTOR_OPERATION( operation, sanitized_list, filter_list, ObjectCache( functor ) );
+    
+end );
+
 ##
 InstallMethod( AddObjectFunction,
                [ IsCapFunctor, IsFunction ],
                
   function( functor, func )
     
-    SetObjectFunction( functor, func );
+    AddObjectFunction( functor, [ [ func, [ ] ] ] );
+    
+end );
+
+##
+InstallMethod( AddMorphismFunction,
+               [ IsCapFunctor, IsList ],
+               
+  function( functor, func_list )
+    local sanitized_list, filter_list, operation, range_cat;
+    
+    sanitized_list := CAP_INTERNAL_SANITIZE_FUNC_LIST_FOR_FUNCTORS( func_list );
+    
+    filter_list := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "morphism" );
+    
+    range_cat := AsCapCategory( Range( functor ) );
+    
+    filter_list := Concatenation( [ ObjectFilter( range_cat ) ], filter_list, [ ObjectFilter( range_cat ) ] );
+    
+    if not IsBound( functor!.morphism_function_list ) then
+        
+        functor!.morphism_function_list := sanitized_list;
+        
+    else
+        
+        Append( functor!.morphism_function_list, sanitized_list );
+        
+    fi;
+    
+    operation := FunctorMorphismOperation( functor );
+    
+    CAP_INTERNAL_INSTALL_FUNCTOR_OPERATION( operation, sanitized_list, filter_list, MorphismCache( functor ) );
     
 end );
 
@@ -195,7 +365,7 @@ InstallMethod( AddMorphismFunction,
                
   function( functor, func )
     
-    SetMorphismFunction( functor, func );
+    AddMorphismFunction( functor, [ [ func, [ ] ] ] );
     
 end );
 
@@ -221,7 +391,7 @@ InstallMethod( ObjectCache,
                
   function( functor )
     
-    return CachingObject( );
+    return CachingObject( functor!.number_arguments );
     
 end );
 
@@ -231,76 +401,57 @@ InstallMethod( MorphismCache,
                
   function( functor )
     
-    return CachingObject( );
+    return CachingObject( functor!.number_arguments + 2 );
     
 end );
 
 ##
-InstallMethod( ApplyFunctor,
-               [ IsCapFunctor, IsCapCategoryObject ],
+InstallGlobalFunction( ApplyFunctor,
                
-  function( functor, obj )
-    local obj_cache, cache_return, computed_value;
+  function( arg )
+    local functor, arguments, is_object, cache, cache_return, computed_value,
+          source_list, source_value, range_list, range_value, i;
     
-    if not IsIdenticalObj( CapCategory( obj ), AsCapCategory( Source( functor ) ) ) then
+    functor := arg[ 1 ];
+    
+    arguments := arg{[ 2 .. Length( arg ) ]};
+    
+    if Length( arguments ) = 1 and functor!.number_arguments > 1 then
         
-        Error( "wrong input object" );
+        arguments := Components( arguments[ 1 ] );
         
+        for i in [ 1 .. Length( arguments ) ] do
+            if functor!.input_source_list[ i ][ 2 ] = true then
+                arguments[ i ] := Opposite( arguments[ i ] );
+            fi;
+        od;
+        
+    elif Length( arguments ) = 1 and functor!.input_source_list[ 1 ][ 2 ] = true and
+         IsIdenticalObj( CapCategory( arguments[ 1 ] ), Opposite( functor!.input_source_list[ 1 ][ 1 ] ) ) then
+         arguments[ 1 ] := Opposite( arguments[ 1 ] );
     fi;
     
-    obj_cache := ObjectCache( functor );
-    
-    cache_return := CacheValue( obj_cache, obj );
-    
-    if cache_return <> SuPeRfail then
+    if IsCapCategoryObject( arguments[ 1 ] ) then
         
-        return cache_return;
+        computed_value := CallFuncList( FunctorObjectOperation( functor ), arguments );
         
-    fi;
-    
-    computed_value := ObjectFunction( functor )( obj );
-    
-    SetCacheValue( obj_cache, [ obj ], computed_value );
-    
-    ## The preimages are stored because they CAN be elements of product categories.
-    ## If this preimage is deleted and a new one is generated for the call of this functor
-    ## a new image is created. This might cause inconsistencies.
-    CatFunctorPreimageList( computed_value ).( Name( functor ) ) := obj;
-    
-    Add( AsCapCategory( Range( functor ) ), computed_value );
-    
-    return computed_value;
-    
-end );
-
-##
-InstallMethod( ApplyFunctor,
-               [ IsCapFunctor, IsCapCategoryMorphism ],
-               
-  function( functor, mor )
-    local mor_cache, cache_return, computed_value;
-    
-    if not IsIdenticalObj( CapCategory( mor ), AsCapCategory( Source( functor ) ) ) then
+    elif IsCapCategoryMorphism( arguments[ 1 ] ) then
         
-        Error( "wrong input object" );
+        source_list := List( arguments, Source );
+        
+        range_list := List( arguments, Range );
+        
+        source_value := CallFuncList( ApplyFunctor, Concatenation( [ functor ], source_list ) );
+        
+        range_value := CallFuncList( ApplyFunctor, Concatenation( [ functor ], range_list ) );
+        
+        computed_value := CallFuncList( FunctorMorphismOperation( functor ), Concatenation( [ source_value ], arguments, [ range_value ] ) );
+        
+    else
+        
+        Error( "Second argument of ApplyFunctor must be a category cell" );
         
     fi;
-    
-    mor_cache := MorphismCache( functor );
-    
-    cache_return := CacheValue( mor_cache, mor );
-    
-    if cache_return <> SuPeRfail then
-        
-        return cache_return;
-        
-    fi;
-    
-    computed_value := MorphismFunction( functor )( ApplyFunctor( functor, Source( mor ) ), mor, ApplyFunctor( functor, Range( mor ) ) );
-    
-    SetCacheValue( mor_cache, [ mor ], computed_value );
-    
-    CatFunctorPreimageList( computed_value ).( Name( functor ) ) := mor;
     
     Add( AsCapCategory( Range( functor ) ), computed_value );
     

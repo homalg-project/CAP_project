@@ -148,9 +148,14 @@ DeclareOperation( "CapFunctor",
 DeclareOperation( "AddObjectFunction",
                   [ IsCapFunctor, IsFunction ] );
 
+DeclareOperation( "AddObjectFunction",
+                  [ IsCapFunctor, IsList ] );
+
+
 #!
-DeclareAttribute( "ObjectFunction",
+DeclareAttribute( "FunctorObjectOperation",
                   IsCapFunctor );
+
 
 #! @EndGroup
 
@@ -165,8 +170,11 @@ DeclareAttribute( "ObjectFunction",
 DeclareOperation( "AddMorphismFunction",
                   [ IsCapFunctor, IsFunction ] );
 
+DeclareOperation( "AddMorphismFunction",
+                  [ IsCapFunctor, IsList ] );
+
 #!
-DeclareAttribute( "MorphismFunction",
+DeclareAttribute( "FunctorMorphismOperation",
                   IsCapFunctor );
 
 #! @EndGroup
@@ -180,16 +188,10 @@ DeclareAttribute( "MorphismFunction",
 #! @BeginGroup
 
 #! @Description
-#!  Applies the functor <A>func</A> to the object <A>A</A> resp. to the morphism $\tau$.
-#! @Returns IsCapCategoryObject
+#!  Applies the functor <A>func</A> to the object or morphism <A>A</A>.
+#! @Returns IsCapCategoryCell
 #! @Arguments func,A
-DeclareOperation( "ApplyFunctor",
-                  [ IsCapFunctor, IsCapCategoryObject ] );
-
-#! @Arguments func,tau
-#! @Returns IsCapCategoryMorphism
-DeclareOperation( "ApplyFunctor",
-                  [ IsCapFunctor, IsCapCategoryMorphism ] );
+DeclareGlobalFunction( "ApplyFunctor" );
 
 #! @EndGroup
 
