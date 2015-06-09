@@ -768,7 +768,7 @@ InstallMethod( NaturalTransformation,
     ##equality of categories is given by IsIdenticalObj.
     if not IsIdenticalObj( Source( source ), Source( range ) ) or not IsIdenticalObj( Range( source ), Range( range ) ) then
         
-        Error( "a natural transformation between this functors does not exist" );
+        Error( "a natural transformation between these functors does not exist" );
         
     fi;
     
@@ -791,7 +791,51 @@ InstallMethod( NaturalTransformationCache,
                
   function( natural_trafo )
     
-    return CachingObject( );
+    return CachingObject( Source( natural_trafo )!.number_arguments + 2 );
+    
+end );
+
+##
+InstallMethod( NaturalTransformationOperation,
+               [ IsCapNaturalTransformation ],
+               
+  function( trafo )
+    local filter_list;
+    
+    filter_list := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( Source( trafo ), "object" );
+    
+    filter_list := Concatenation( [ ObjectFilter( AsCapCategory( Range( Source( trafo ) ) ) ) ], filter_list, [ ObjectFilter( AsCapCategory( Range( Source( trafo ) ) ) ) ] );
+    
+    return NewOperation( Concatenation( "CAP_NATURAL_TRANSFORMATION_", Name( trafo ), "_OPERATION" ), filter_list );
+    
+end );
+
+##
+InstallMethod( AddNaturalTransformationFunction,
+               [ IsCapNaturalTransformation, IsList ],
+               
+  function( trafo, func_list )
+    local sanitized_list, filter_list, operation, range_cat;
+    
+    sanitized_list := CAP_INTERNAL_SANITIZE_FUNC_LIST_FOR_FUNCTORS( func_list );
+    
+    filter_list := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( Source( trafo ), "object" );
+    
+    filter_list := Concatenation( [ ObjectFilter( AsCapCategory( Range( Source( trafo ) ) ) ) ], filter_list, [ ObjectFilter( AsCapCategory( Range( Source( trafo ) ) ) ) ] );
+    
+    if not IsBound( trafo!.function_list ) then
+        
+        trafo!.function_list := sanitized_list;
+        
+    else
+        
+        Append( trafo!.function_list, sanitized_list );
+        
+    fi;
+    
+    operation := NaturalTransformationOperation( trafo );
+    
+    CAP_INTERNAL_INSTALL_FUNCTOR_OPERATION( operation, sanitized_list, filter_list, NaturalTransformationCache( trafo ) );
     
 end );
 
@@ -799,42 +843,91 @@ end );
 InstallMethod( AddNaturalTransformationFunction,
                [ IsCapNaturalTransformation, IsFunction ],
                
-  SetNaturalTransformationFunction );
+  function( trafo, func )
+    
+    AddNaturalTransformationFunction( trafo, [ [ func, [ ] ] ] );
+    
+end );
 
-##
-InstallMethodWithToDoForIsWellDefined( ApplyNaturalTransformation,
-                                       [ IsCapNaturalTransformation, IsCapCategoryObject ],
+InstallGlobalFunction( ApplyNaturalTransformation,
                
-  function( trafo, object )
-    local cache, return_morphism;
+  function( arg )
+    local trafo, source_functor, arguments, i, source_value, range_value, computed_value;
     
-    ##formally, this has to be IsEqualForObjects (of CAT), but
-    ##equality of categories is given by IsIdenticalObj.
-    if not IsIdenticalObj( CapCategory( object ), AsCapCategory( Source( Source( trafo ) ) ) ) then
+    trafo := arg[ 1 ];
+    
+    source_functor := Source( trafo );
+    
+    arguments := arg{[ 2 .. Length( arg ) ]};
+    
+    if Length( arguments ) = 1 and source_functor!.number_arguments > 1 then
         
-        Error( "natural transformation is not applicable" );
+        arguments := Components( arguments[ 1 ] );
+        
+        for i in [ 1 .. Length( arguments ) ] do
+            if source_functor!.input_source_list[ i ][ 2 ] = true then
+                arguments[ i ] := Opposite( arguments[ i ] );
+            fi;
+        od;
+        
+    elif Length( arguments ) = 1 and source_functor!.input_source_list[ 1 ][ 2 ] = true and
+         IsIdenticalObj( CapCategory( arguments[ 1 ] ), Opposite( source_functor!.input_source_list[ 1 ][ 1 ] ) ) then
+         arguments[ 1 ] := Opposite( arguments[ 1 ] );
+    fi;
+    
+    source_value := CallFuncList( ApplyFunctor, Concatenation( [ source_functor ], arguments ) );
+    
+    range_value := CallFuncList( ApplyFunctor, Concatenation( [ Range( trafo ) ], arguments ) );
+    
+    computed_value := CallFuncList( NaturalTransformationOperation( trafo ), Concatenation( [ source_value ], arguments, [ range_value ] ) );
+    
+    Add( AsCapCategory( Range( source_functor ) ), computed_value );
+    
+    return computed_value;
+    
+end );
+
+InstallMethod( InstallNaturalTransformation,
+               [ IsCapNaturalTransformation, IsString ],
+               
+  function( trafo, install_name )
+    local object_filters, object_product_filters, current_filters;
+    
+    if IsBound( trafo!.is_already_installed ) then
+        
+        return;
         
     fi;
     
-    cache := NaturalTransformationCache( trafo );
-    
-    return_morphism := CacheValue( cache, object );
-    
-    if return_morphism <> SuPeRfail then
+    if IsBoundGlobal( install_name ) and not IsOperation( ValueGlobal( install_name ) ) then
         
-        return return_morphism;
+        Error( Concatenation( "cannot install natural transformation under name ", install_name ) );
         
     fi;
     
-    return_morphism := NaturalTransformationFunction( trafo )( object, ApplyFunctor( Source( trafo ), object ), ApplyFunctor( Range( trafo ), object ) );
+    object_filters := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( Source( trafo ), "object" );
     
-    SetCacheValue( cache, [ object ], return_morphism );
+    object_product_filters := [ ObjectFilter( AsCapCategory( Source( Source( trafo ) ) ) ) ];
     
-    ## FIXME: Maybe cache the preimage here.
+    for current_filters in [
+        [ install_name, object_filters ],
+        [ install_name, object_product_filters ],
+        ] do
+        
+        CallFuncList( DeclareOperation, current_filters );
+        
+        InstallMethod( ValueGlobal( current_filters[ 1 ] ),
+                      current_filters[ 2 ],
+                      
+          function( arg )
+            
+            return CallFuncList( ApplyNaturalTransformation, Concatenation( [ trafo ], arg ) );
+            
+        end );
+        
+    od;
     
-    Add( AsCapCategory( Range( Source( trafo ) ) ), return_morphism );
-    
-    return return_morphism;
+    trafo!.is_already_installed := true;
     
 end );
 

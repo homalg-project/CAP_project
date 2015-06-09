@@ -246,11 +246,19 @@ DeclareAttribute( "NaturalTransformationCache",
 DeclareAttribute( "NaturalTransformationFunction",
                   IsCapNaturalTransformation );
 
+DeclareAttribute( "NaturalTransformationOperation",
+                  IsCapNaturalTransformation );
+
 DeclareOperation( "AddNaturalTransformationFunction",
                   [ IsCapNaturalTransformation, IsFunction ] );
 
-DeclareOperation( "ApplyNaturalTransformation",
-                  [ IsCapNaturalTransformation, IsCapCategoryObject ] );
+DeclareOperation( "AddNaturalTransformationFunction",
+                  [ IsCapNaturalTransformation, IsList ] );
+
+DeclareGlobalFunction( "ApplyNaturalTransformation" );
+
+DeclareOperation( "InstallNaturalTransformation",
+                  [ IsCapNaturalTransformation, IsString ] );
 
 ####################################
 ##
