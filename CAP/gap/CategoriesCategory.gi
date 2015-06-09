@@ -12,7 +12,7 @@ DeclareRepresentation( "IsCapCategoryAsCatObjectRep",
                        IsCapCategoryObjectRep and IsCapCategoryAsCatObject,
                        [ ] );
 
-BindGlobal( "TheTypeOfHomalgCategoriesAsCatObjects",
+BindGlobal( "TheTypeOfCapCategoriesAsCatObjects",
         NewType( TheFamilyOfCapCategoryObjects,
                 IsCapCategoryAsCatObjectRep ) );
 
@@ -24,13 +24,13 @@ BindGlobal( "TheTypeOfCapFunctors",
         NewType( TheFamilyOfCapCategoryMorphisms,
                 IsCapFunctorRep ) );
 
-DeclareRepresentation( "IsHomalgNaturalTransformationRep",
-                       IsCapCategoryTwoCellRep and IsHomalgNaturalTransformation,
+DeclareRepresentation( "IsCapNaturalTransformationRep",
+                       IsCapCategoryTwoCellRep and IsCapNaturalTransformation,
                        [ ] );
 
-BindGlobal( "TheTypeOfHomalgNaturalTransformations",
+BindGlobal( "TheTypeOfCapNaturalTransformations",
         NewType( TheFamilyOfCapCategoryTwoCells,
-                IsHomalgNaturalTransformationRep ) );
+                IsCapNaturalTransformationRep ) );
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
@@ -58,7 +58,7 @@ InstallMethod( AsCatObject,
     
     cat_obj := rec( );
     
-    ObjectifyWithAttributes( cat_obj, TheTypeOfHomalgCategoriesAsCatObjects,
+    ObjectifyWithAttributes( cat_obj, TheTypeOfCapCategoriesAsCatObjects,
                              AsCapCategory, category );
     
     Add( CapCat, cat_obj );
@@ -774,7 +774,7 @@ InstallMethod( NaturalTransformation,
     
     natural_transformation := rec( );
     
-    ObjectifyWithAttributes( natural_transformation, TheTypeOfHomalgNaturalTransformations,
+    ObjectifyWithAttributes( natural_transformation, TheTypeOfCapNaturalTransformations,
                              Name, name,
                              Source, source,
                              Range, range );
@@ -787,7 +787,7 @@ end );
 
 ##
 InstallMethod( NaturalTransformationCache,
-               [ IsHomalgNaturalTransformation ],
+               [ IsCapNaturalTransformation ],
                
   function( natural_trafo )
     
@@ -797,13 +797,13 @@ end );
 
 ##
 InstallMethod( AddNaturalTransformationFunction,
-               [ IsHomalgNaturalTransformation, IsFunction ],
+               [ IsCapNaturalTransformation, IsFunction ],
                
   SetNaturalTransformationFunction );
 
 ##
 InstallMethodWithToDoForIsWellDefined( ApplyNaturalTransformation,
-                                       [ IsHomalgNaturalTransformation, IsCapCategoryObject ],
+                                       [ IsCapNaturalTransformation, IsCapCategoryObject ],
                
   function( trafo, object )
     local cache, return_morphism;

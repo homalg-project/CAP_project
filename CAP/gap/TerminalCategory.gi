@@ -13,21 +13,21 @@
 ##
 #####################################
 
-DeclareRepresentation( "IsHomalgTerminalCategoryObjectRep",
+DeclareRepresentation( "IsCapTerminalCategoryObjectRep",
                        IsAttributeStoringRep and IsCapCategoryObjectRep,
                        [ ] );
 
-DeclareRepresentation( "IsHomalgTerminalCategoryMorphismRep",
+DeclareRepresentation( "IsCapTerminalCategoryMorphismRep",
                        IsAttributeStoringRep and IsCapCategoryMorphismRep,
                        [ ] );
 
-BindGlobal( "TheTypeOfHomalgTerminalCategoryObject",
+BindGlobal( "TheTypeOfCapTerminalCategoryObject",
         NewType( TheFamilyOfCapCategoryObjects,
-                IsHomalgTerminalCategoryObjectRep ) );
+                IsCapTerminalCategoryObjectRep ) );
 
-BindGlobal( "TheTypeOfHomalgTerminalCategoryMorphism",
+BindGlobal( "TheTypeOfCapTerminalCategoryMorphism",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsHomalgTerminalCategoryMorphismRep ) );
+                IsCapTerminalCategoryMorphismRep ) );
 
 #####################################
 ##
@@ -54,7 +54,7 @@ InstallMethod( UniqueObject,
     
     object := rec( );
     
-    ObjectifyWithAttributes( object, TheTypeOfHomalgTerminalCategoryObject,
+    ObjectifyWithAttributes( object, TheTypeOfCapTerminalCategoryObject,
                              IsZero, true );
     
     Add( CAP_INTERNAL_TERMINAL_CATEGORY, object );
@@ -78,7 +78,7 @@ InstallMethod( UniqueMorphism,
     
     object := UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY );
     
-    ObjectifyWithAttributes( morphism, TheTypeOfHomalgTerminalCategoryMorphism,
+    ObjectifyWithAttributes( morphism, TheTypeOfCapTerminalCategoryMorphism,
                              Source, object,
                              Range, object,
                              IsOne, true );

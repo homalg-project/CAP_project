@@ -54,7 +54,7 @@ DeclareCategory( "IsCapCategoryAsCatObject",
 DeclareCategory( "IsCapFunctor",
                  IsCapCategoryMorphism );
 
-DeclareCategory( "IsHomalgNaturalTransformation",
+DeclareCategory( "IsCapNaturalTransformation",
                  IsCapCategoryTwoCell );
 
 ####################################
@@ -232,7 +232,7 @@ DeclareAttribute( "MorphismFunctionName",
 ####################################
 
 DeclareAttribute( "Name",
-                  IsHomalgNaturalTransformation );
+                  IsCapNaturalTransformation );
 
 DeclareOperation( "NaturalTransformation",
                   [ IsCapFunctor, IsCapFunctor ] );
@@ -241,16 +241,16 @@ DeclareOperation( "NaturalTransformation",
                   [ IsString, IsCapFunctor, IsCapFunctor ] );
 
 DeclareAttribute( "NaturalTransformationCache",
-                  IsHomalgNaturalTransformation );
+                  IsCapNaturalTransformation );
 
 DeclareAttribute( "NaturalTransformationFunction",
-                  IsHomalgNaturalTransformation );
+                  IsCapNaturalTransformation );
 
 DeclareOperation( "AddNaturalTransformationFunction",
-                  [ IsHomalgNaturalTransformation, IsFunction ] );
+                  [ IsCapNaturalTransformation, IsFunction ] );
 
 DeclareOperation( "ApplyNaturalTransformation",
-                  [ IsHomalgNaturalTransformation, IsCapCategoryObject ] );
+                  [ IsCapNaturalTransformation, IsCapCategoryObject ] );
 
 ####################################
 ##

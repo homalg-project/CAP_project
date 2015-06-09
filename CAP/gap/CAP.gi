@@ -118,11 +118,11 @@ DeclareRepresentation( "IsCapCategoryRep",
                        IsAttributeStoringRep and IsCapCategory,
                        [ ] );
 
-BindGlobal( "TheFamilyOfHomalgCategories",
-        NewFamily( "TheFamilyOfHomalgCategories" ) );
+BindGlobal( "TheFamilyOfCapCategories",
+        NewFamily( "TheFamilyOfCapCategories" ) );
 
-BindGlobal( "TheTypeOfHomalgCategories",
-        NewType( TheFamilyOfHomalgCategories,
+BindGlobal( "TheTypeOfCapCategories",
+        NewType( TheFamilyOfCapCategories,
                  IsCapCategoryRep ) );
 
 
@@ -230,7 +230,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
         
     od;
     
-    flatted_attribute_list := Concatenation( [ obj_rec, TheTypeOfHomalgCategories ], flatted_attribute_list );
+    flatted_attribute_list := Concatenation( [ obj_rec, TheTypeOfCapCategories ], flatted_attribute_list );
     
     
     obj_rec!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );

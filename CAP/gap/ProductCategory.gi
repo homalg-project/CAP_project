@@ -9,13 +9,13 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsHomalgProductCategoryRep",
+DeclareRepresentation( "IsCapProductCategoryRep",
                        IsAttributeStoringRep and IsCapCategoryRep,
                        [ ] );
 
-BindGlobal( "TheTypeOfHomalgProductCategories",
-        NewType( TheFamilyOfHomalgCategories,
-                 IsHomalgProductCategoryRep ) );
+BindGlobal( "TheTypeOfCapProductCategories",
+        NewType( TheFamilyOfCapCategories,
+                 IsCapProductCategoryRep ) );
 
 DeclareRepresentation( "IsCapCategoryProductCellRep",
                        IsAttributeStoringRep and IsCapCategoryCell,
@@ -82,7 +82,7 @@ InstallMethodWithCacheFromObject( ProductOp,
     
     product_category := rec( caches := rec( ) );
     
-    ObjectifyWithAttributes( product_category, TheTypeOfHomalgProductCategories,
+    ObjectifyWithAttributes( product_category, TheTypeOfCapProductCategories,
                              Components, category_list,
                              Length, Length( category_list ),
                              Name, namestring
@@ -219,7 +219,7 @@ end );
 
 ##
 InstallMethod( \[\],
-               [ IsHomalgProductCategoryRep, IsInt ],
+               [ IsCapProductCategoryRep, IsInt ],
                
   function( category, index )
     
@@ -458,7 +458,7 @@ MakeReadOnlyGlobal( "Product" );
 
 ##
 InstallMethod( IsEqualForCache,
-               [ IsHomalgProductCategoryRep, IsHomalgProductCategoryRep ],
+               [ IsCapProductCategoryRep, IsCapProductCategoryRep ],
                
   function( category1, category2 )
     local list1, list2, length;

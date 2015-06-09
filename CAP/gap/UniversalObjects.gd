@@ -1432,7 +1432,7 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 ## Main Operations and Attributes
 
 # FIXME:
-# Declared as an operation in MatricesForHomalg!
+# Declared as an operation in MatricesForCap!
 # DeclareGlobalFunction( "FiberProduct" );
 
 ##
