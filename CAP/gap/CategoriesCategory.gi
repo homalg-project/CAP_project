@@ -656,145 +656,88 @@ end );
 ##
 ####################################
 
-##
-InstallMethod( InstallFunctorOnObjects,
-               [ IsCapFunctor, IsString ],
-               
-  function( functor, name )
-    
-    SetObjectFunctionName( functor, name );
-    
-    InstallFunctorOnObjects( functor );
-    
-end );
-
-##
-InstallMethod( InstallFunctorOnMorphisms,
-               [ IsCapFunctor, IsString ],
-               
-  function( functor, name )
-    
-    SetMorphismFunctionName( functor, name );
-    
-    InstallFunctorOnMorphisms( functor );
-    
-end );
-
-##
-InstallMethod( InstallFunctor,
-               [ IsCapFunctor, IsString, IsString ],
-               
-  function( functor, obj_name, mor_name )
-    
-    SetObjectFunctionName( functor, obj_name );
-    
-    SetMorphismFunctionName( functor, mor_name );
-    
-    InstallFunctor( functor );
-    
-end );
-
-##
 InstallMethod( InstallFunctor,
                [ IsCapFunctor, IsString ],
                
-  function( functor, name )
+  function( functor, install_name )
+    local object_name, morphism_name, object_filters, object_product_filters, morphism_filters,
+          morphism_product_filters, current_filters;
     
-    InstallFunctor( functor, name, name );
-    
-end );
-
-##
-InstallMethod( ObjectFunctionName,
-               [ IsCapFunctor ],
-               
-  Name );
-
-##
-InstallMethod( MorphismFunctionName,
-               [ IsCapFunctor ],
-               
-  Name );
-
-##
-InstallMethod( InstallFunctorOnObjects,
-               [ IsCapFunctor ],
-               
-  function( functor )
-    local func_name, category_list, filter_list;
-    
-    func_name := ObjectFunctionName( functor );
-    
-    category_list := Components( AsCapCategory( Source( functor ) ) );
-    
-    filter_list := List( category_list, ObjectFilter );
-    
-    filter_list := List( filter_list, i -> i and IsCapCategoryObject );
-    
-    DeclareOperation( func_name, filter_list );
-    
-    InstallMethod( ValueGlobal( func_name ),
-                   filter_list,
-                   
-      function( arg )
-        local object;
+    if IsBound( functor!.is_already_installed ) then
         
-        if Length( arg ) > 1 then
-            object := CallFuncList( Product, arg );
-        else
-            object := arg[ 1 ];
-        fi;
+        return;
         
-        return ApplyFunctor( functor, object );
+    fi;
+    
+    if IsBoundGlobal( install_name ) and not IsOperation( ValueGlobal( install_name ) ) then
         
-    end );
-    
-end );
-
-##
-InstallMethod( InstallFunctorOnMorphisms,
-               [ IsCapFunctor ],
-               
-  function( functor )
-    local func_name, category_list, filter_list;
-    
-    func_name := MorphismFunctionName( functor );
-    
-    category_list := Components( AsCapCategory( Source( functor ) ) );
-    
-    filter_list := List( category_list, MorphismFilter );
-    
-    filter_list := List( filter_list, i -> i and IsCapCategoryMorphism );
-    
-    DeclareOperation( func_name, filter_list );
-    
-    InstallMethod( ValueGlobal( func_name ),
-                   filter_list,
-                   
-      function( arg )
-        local object;
+        Error( Concatenation( "cannot install functor under name ", install_name ) );
         
-        if Length( arg ) > 1 then
-            object := CallFuncList( Product, arg );
-        else
-            object := arg[ 1 ];
-        fi;
+    fi;
+    
+    object_name := Concatenation( install_name, "OnObjects" );
+    
+    if HasObjectFunctionName( functor ) then
         
-        return ApplyFunctor( functor, object );
+        object_name := ObjectFunctionName( functor );
         
-    end );
+    fi;
     
-end );
-
-##
-InstallMethod( InstallFunctor,
-               [ IsCapFunctor ],
-               
-  function( functor )
+    if IsBoundGlobal( object_name ) and not IsOperation( ValueGlobal( object_name ) ) then
+        
+        Error( Concatenation( "cannot install functor object function under name ", object_name ) );
+        
+    fi;
     
-    InstallFunctorOnObjects( functor );
+    SetObjectFunctionName( functor, object_name );
     
-    InstallFunctorOnMorphisms( functor );
+    morphism_name := Concatenation( install_name, "OnMorphisms" );
+    
+    if HasMorphismFunctionName( functor ) then
+        
+        object_name := MorphismFunctionName( functor );
+        
+    fi;
+    
+    if IsBoundGlobal( morphism_name ) and not IsOperation( ValueGlobal( morphism_name ) ) then
+        
+        Error( Concatenation( "cannot install functor morphism function under name ", morphism_name ) );
+        
+    fi;
+    
+    SetObjectFunctionName( functor, morphism_name );
+    
+    object_filters := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "object" );
+    morphism_filters := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "morphism" );
+    
+    object_product_filters := [ ObjectFilter( AsCapCategory( Source( functor ) ) ) ];
+    morphism_product_filters := [ MorphismFilter( AsCapCategory( Source( functor ) ) ) ];
+    
+    for current_filters in [
+        [ install_name, object_filters ],
+        [ install_name, morphism_filters ],
+        [ install_name, object_product_filters ],
+        [ install_name, morphism_product_filters ],
+        [ object_name, object_filters ],
+        [ object_name, object_product_filters ],
+        [ morphism_name, morphism_filters ],
+        [ morphism_name, morphism_product_filters ]
+        ] do
+        
+        CallFuncList( DeclareOperation, current_filters );
+        
+        InstallMethod( ValueGlobal( current_filters[ 1 ] ),
+                      current_filters[ 2 ],
+                      
+          function( arg )
+            
+            return CallFuncList( ApplyFunctor, Concatenation( [ functor ], arg ) );
+            
+        end );
+        
+    od;
+    
+    functor!.is_already_installed := true;
     
 end );
 

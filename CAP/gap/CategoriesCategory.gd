@@ -204,41 +204,18 @@ DeclareGlobalFunction( "ApplyFunctor" );
 #! @BeginGroup
 
 #! @Description
-#!  Installs a method which applies a functor <A>functor</A> to an object or a morphism
-#!  from the source. While <C>InstallFunctor</C> installs such a method for objects and morphisms
-#!  <C>InstallFunctorOnObjects</C> and <C>InstallFunctorOnMorphisms</C> install this method only
-#!  for objects resp. morphisms. If <A>method_name</A>, <A>object_method_name</A>, or <A>morphism_method_name</A>
-#!  are not given, the name of the functor is used. Note that those names can also be set via <C>SetObjectFunctionName</C>
-#!  and <C>SetMorphismFunctionName</C>.
-#!  If the argument is a product of categories $C_1 \times \dots \times C_n$, the installed method will take $n$ arguments
-#!  $A_1, \dots, A_n$, where $A_i$ must be an object in $C_i$.
-#! @Arguments functor,object_method_name
-DeclareOperation( "InstallFunctorOnObjects",
-                  [ IsCapFunctor, IsString ] );
+#! TODO
 
-#! @Arguments functor,morphism_method_name
-DeclareOperation( "InstallFunctorOnMorphisms",
-                  [ IsCapFunctor, IsString ] );
 
-#! @Arguments functor,object_method_name,morphism_method_name
-DeclareOperation( "InstallFunctor",
-                  [ IsCapFunctor, IsString, IsString ] );
+# This one does not exist because spaces
+# in operation names are okay, but cause
+# terrible problems.
+# DeclareOperation( "InstallFunctor",
+#                   [ IsCapFunctor ] );
 
 #! @Arguments functor,method_name
 DeclareOperation( "InstallFunctor",
                   [ IsCapFunctor, IsString ] );
-
-#! @Arguments functor
-DeclareOperation( "InstallFunctorOnObjects",
-                  [ IsCapFunctor ] );
-
-#! @Arguments functor
-DeclareOperation( "InstallFunctorOnMorphisms",
-                  [ IsCapFunctor ] );
-
-#! @Arguments functor
-DeclareOperation( "InstallFunctor",
-                  [ IsCapFunctor ] );
 
 DeclareAttribute( "ObjectFunctionName",
                   IsCapFunctor );
