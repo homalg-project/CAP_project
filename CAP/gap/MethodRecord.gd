@@ -347,7 +347,31 @@ IsEqualForObjects := rec(
   filter_list := [ "object", "object" ],
   cache_name := "IsEqualForObjects",
   well_defined_todo := false,
-  no_install := true,
+  
+  redirect_function := function( object_1, object_2 )
+    
+    if IsIdenticalObj( object_1, object_2 ) then
+      
+      return [ true, true ];
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
+  post_function := function( object_1, object_2, return_value )
+    
+    if return_value = true then
+      
+      INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object_1, object_2 );
+      
+    fi;
+    
+  end,
+  
   return_type := "bool" ),
 
 IsZeroForMorphisms := rec(
