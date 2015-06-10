@@ -342,6 +342,42 @@ IsEqualForMorphisms := rec(
   
   return_type := "bool" ),
 
+IsIdenticalForMorphisms := rec(
+  installation_name := "IsIdenticalForMorphisms",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "IsIdenticalForMorphisms",
+  well_defined_todo := false,
+  
+  pre_function := function( morphism_1, morphism_2 )
+    
+    if not IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) ) or not IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) ) then
+    
+      ##FIXME: Can this cause problems in further computations?
+      return [ false, "Source or range are not equal" ];
+    
+    fi;
+    
+    return [ true ];
+    
+  end,
+  
+  redirect_function := function( morphism_1, morphism_2 )
+    
+    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+      
+      return [ true, true ];
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
+  return_type := "bool" ),
+
+
 IsEqualForObjects := rec(
   installation_name := "IsEqualForObjects",
   filter_list := [ "object", "object" ],
