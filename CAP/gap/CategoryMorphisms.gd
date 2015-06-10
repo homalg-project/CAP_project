@@ -170,6 +170,8 @@ DeclareOperation( "AddMorphism",
 ##
 ###################################
 
+
+## IsEqualForMorphisms
 DeclareOperation( "AddIsEqualForMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
@@ -182,12 +184,31 @@ DeclareOperation( "AddIsEqualForMorphisms",
 DeclareOperation( "AddIsEqualForMorphisms",
                   [ IsCapCategory, IsList ] );
 
-
 DeclareAttribute( "MorphismEqualityFunction",
                   IsCapCategory );
 
 DeclareOperation( "IsEqualForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+## IsIdenticalForMorphisms
+DeclareOperation( "AddIsIdenticalForMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsIdenticalForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsIdenticalForMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsIdenticalForMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+DeclareAttribute( "MorphismIdenticalFunction",
+                  IsCapCategory );
+
+DeclareOperation( "IsIdenticalForMorphisms",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
 
 DeclareOperation( "AddPropertyToMatchAtIsEqualForMorphisms",
                   [ IsCapCategory, IsString ] );
