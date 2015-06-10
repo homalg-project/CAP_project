@@ -194,55 +194,6 @@ AdditiveInverse );
 ######################################
 
 ##
-InstallMethod( AddIsEqualForMorphisms,
-               [ IsCapCategory, IsFunction ],
-
-  function( category, func )
-    
-    AddIsEqualForMorphisms( category, func, 100 );
-    
-end );
-
-##
-InstallMethod( AddIsEqualForMorphisms,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    
-    SetMorphismEqualityFunction( category, func );
-    
-    SetCanComputeIsEqualForMorphisms( category, true );
-    
-    InstallMethodWithCache( IsEqualForMorphisms,
-                            [ IsCapCategoryMorphism and MorphismFilter( category ), IsCapCategoryMorphism and MorphismFilter( category ) ],
-                            
-      function( morphism_1, morphism_2 )
-        local return_value;
-        
-        if not IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) ) or not IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) ) then
-            
-            ##FIXME: Can this cause problems in further computations?
-            Error( "Source or range are not equal" );
-            
-        fi;
-        
-        return_value := func( morphism_1, morphism_2 );
-        
-        if return_value = true then
-            
-            INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS( morphism_1, morphism_2 );
-            
-        fi;
-        
-        return return_value;
-        
-    end : Cache := GET_METHOD_CACHE( category, "IsEqualForMorphisms", 2 ) );
-    
-    AddPrimitiveOperation( category!.derivations_weight_list, "IsEqualForMorphisms", weight );
-    
-end );
-
-##
 InstallMethod( \=,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
