@@ -120,6 +120,9 @@ InstallMethod( GeneralizedMorphismCategory,
     
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategory );
     
+    ## FIXME: Use Adds (e.g. for PreCompose) and finalize after that!
+    Finalize( generalized_morphism_category );
+    
     return generalized_morphism_category;
     
 end );

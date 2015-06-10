@@ -548,6 +548,8 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
             
         od;
         
+        Finalize( category );
+        
     end );
     
 end );

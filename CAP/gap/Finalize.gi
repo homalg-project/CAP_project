@@ -70,6 +70,14 @@ InstallMethod( IsFinalized,
     
     weight_list := category!.derivations_weight_list;
     
+    ## Equality handling
+    
+    if CurrentOperationWeight( weight_list, "IsEqualForObjects" ) = infinity then
+        
+        AddIsEqualForObjects( category, RETURN_FAIL );
+        
+    fi;
+    
     while true do
         
         current_installs := [ ];

@@ -794,6 +794,8 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             
         od;
         
+        Finalize( category );
+        
     end );
     
 end );

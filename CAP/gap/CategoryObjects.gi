@@ -84,66 +84,6 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS,
 ###################################
 
 ##
-InstallMethod( AddIsEqualForObjects,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    AddIsEqualForObjects( category, func, 100 );
-    
-end );
-
-##
-InstallMethod( AddIsEqualForObjects,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    
-    SetObjectEqualityFunction( category, func );
-    
-    AddPrimitiveOperation( category!.derivations_weight_list, "IsEqualForObjects", weight );
-    
-end );
-
-InstallMethodWithCacheFromObject( IsEqualForObjects,
-                                  [ IsCapCategoryObject, IsCapCategoryObject ],
-                                  
-  function( object_1, object_2 )
-    local category, return_value;
-    
-    if IsIdenticalObj( object_1, object_2 ) then
-      
-      return true;
-      
-    fi;
-    
-    category := CapCategory( object_1 );
-    
-    if not IsIdenticalObj( category, CapCategory( object_2 ) ) then
-      
-      return false;
-      
-    fi;
-    
-    if HasObjectEqualityFunction( category ) then
-    
-      return_value := ObjectEqualityFunction( category )( object_1, object_2 );
-      
-      if return_value then
-        
-        INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object_1, object_2 );
-      
-      fi;
-      
-      return return_value;
-      
-    fi;
-    
-    return false;
-    
-end );
-
-##
 InstallMethod( \=,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
