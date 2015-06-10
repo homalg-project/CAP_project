@@ -76,3 +76,5 @@ DeclareGlobalFunction( "ADD_IS_ZERO_FOR_MORPHISMS" );
 DeclareGlobalFunction( "ADD_ADDITION_FOR_MORPHISMS" );
 
 DeclareGlobalFunction( "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS" );
+
+DeclareGlobalFunction( "ADD_IS_IDENTICAL_FOR_MORPHISMS" );

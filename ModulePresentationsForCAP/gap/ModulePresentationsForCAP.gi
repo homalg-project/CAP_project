@@ -137,6 +137,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT( category );
     
+    ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
+    
 end );
 
 ##
@@ -171,6 +173,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_IS_WELL_DEFINED_FOR_OBJECTS( category );
     
     ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT( category );
+    
+    ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
 end );
 
@@ -255,6 +259,21 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
         fi;
         
         return true;
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_IS_IDENTICAL_FOR_MORPHISMS,
+                              
+  function( category )
+    
+    AddIsIdenticalForMorphisms( category,
+    
+      function( morphism_1, morphism_2 )
+        
+        return UnderlyingMatrix( morphism_1 ) = UnderlyingMatrix( morphism_2 );
         
     end );
     
