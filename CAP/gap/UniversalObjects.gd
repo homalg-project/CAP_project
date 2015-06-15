@@ -555,6 +555,18 @@ DeclareAttribute( "UniversalMorphismIntoZeroObject",
 DeclareOperation( "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+DeclareAttribute( "IsomorphismFromZeroObjectToInitialObject",
+                  IsCapCategory );
+
+DeclareAttribute( "IsomorphismFromInitialObjectToZeroObject",
+                  IsCapCategory );
+
+DeclareAttribute( "IsomorphismFromZeroObjectToTerminalObject",
+                  IsCapCategory );
+
+DeclareAttribute( "IsomorphismFromTerminalObjectToZeroObject",
+                  IsCapCategory );
+
 #! @EndGroup 
 
 
@@ -589,6 +601,8 @@ DeclareOperation( "AddZeroObject",
 DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsList ] );
 
+
+
 DeclareOperation( "AddUniversalMorphismIntoZeroObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -639,6 +653,57 @@ DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
 DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
                   [ IsCapCategory, IsList ] );
 
+
+
+DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
+                  [ IsCapCategory, IsList ] );
+
+DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
+                  [ IsCapCategory, IsList ] );
+
+
+
+DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
+                  [ IsCapCategory, IsList ] );
+
+DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
+                  [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
 

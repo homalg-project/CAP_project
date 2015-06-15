@@ -263,6 +263,33 @@ UniversalMorphismIntoZeroObjectWithGivenZeroObject := rec(
   universal_type := "Limit",
   return_type := "morphism" ),
 
+IsomorphismFromZeroObjectToInitialObject := rec(
+  installation_name := "IsomorphismFromZeroObjectToInitialObject",
+  filter_list := [ "category" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromZeroObjectToInitialObject",
+  return_type := "morphism" ),
+
+IsomorphismFromInitialObjectToZeroObject := rec(
+  installation_name := "IsomorphismFromInitialObjectToZeroObject",
+  filter_list := [ "category" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromInitialObjectToZeroObject",
+  return_type := "morphism" ),
+
+IsomorphismFromZeroObjectToTerminalObject := rec(
+  installation_name := "IsomorphismFromZeroObjectToTerminalObject",
+  filter_list := [ "category" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromZeroObjectToTerminalObject",
+  return_type := "morphism" ),
+
+IsomorphismFromTerminalObjectToZeroObject := rec(
+  installation_name := "IsomorphismFromTerminalObjectToZeroObject",
+  filter_list := [ "category" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromTerminalObjectToZeroObject",
+  return_type := "morphism" ),
 
 ZeroMorphism := rec(
   installation_name := "ZeroMorphism",
