@@ -532,28 +532,6 @@ MakeReadOnlyGlobal( "DirectSum" );
 ## Add methods
 ####################################
 
-##
-BindGlobal( "CAP_INTERNAL_ADD_DIRECT_SUM_RECORD", 
-            ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.DirectSum ) );
-
-CAP_INTERNAL_ADD_DIRECT_SUM_RECORD.function_name := "DirectSum";
-
-CAP_INTERNAL_ADD_DIRECT_SUM_RECORD.post_function :=
-  function( object_product_list, method_selection_object, direct_sum )
-    
-    AddToGenesis( direct_sum, "DirectProductDiagram", object_product_list );
-        
-    AddToGenesis( direct_sum, "CoproductDiagram", object_product_list );
-    
-    SetFilterObj( direct_sum, WasCreatedAsDirectSum );
-    
-    ## this will treat direct_sum as if it was a direct product (see immediate method above)
-    SetFilterObj( direct_sum, WasCreatedAsDirectProduct );
-    
-    ## this will treat direct_sum as if it was a coproduct (see immediate method above)
-    SetFilterObj( direct_sum, WasCreatedAsCoproduct );
-    
-end;
 
 ####################################
 ## Functorial operations
@@ -802,42 +780,6 @@ end );
 ## Add methods
 ####################################
 
-##
-BindGlobal( "CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD", 
-            ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.UniversalMorphismIntoTerminalObject ) );
-
-CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD.function_name := "UniversalMorphismIntoTerminalObject";
-
-CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD.redirect_function :=
-  function( test_source )
-    local category;
-    
-    category := CapCategory( test_source );
-        
-    if HasTerminalObject( category ) then
-    
-      return [ true, UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-end;
-
-CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD.post_function :=
-  function( test_source, universal_morphism )
-    local category, terminal_object;
-    
-    category := CapCategory( test_source );
-    
-    terminal_object := Range( universal_morphism );
-    
-    SetTerminalObject( category, terminal_object );
-    
-    SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
-    
-end;
-
 ####################################
 ##
 ## Initial Object
@@ -861,42 +803,6 @@ end );
 ####################################
 ## Add methods
 ####################################
-
-##
-BindGlobal( "CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD", 
-            ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.UniversalMorphismFromInitialObject ) );
-
-CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD.function_name := "UniversalMorphismFromInitialObject";
-
-CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD.redirect_function :=
-  function( test_sink )
-    local category;
-    
-    category := CapCategory( test_sink );
-    
-    if HasInitialObject( category ) then
-      
-      return [ true, UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-end;
-
-CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD.post_function :=
-  function( test_sink, universal_morphism )
-    local category, initial_object;
-    
-    category := CapCategory( test_sink );
-    
-    initial_object := Source( universal_morphism );
-    
-    SetInitialObject( category, initial_object );
-    
-    SetFilterObj( initial_object, WasCreatedAsInitialObject );
-    
-end;
 
 ####################################
 ##

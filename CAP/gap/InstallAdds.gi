@@ -336,6 +336,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             
             ## find with given name
             
+            ## FIXME: If the redirect function is already bound, then this part is superfluous
+            
             with_given_name := Concatenation( current_recname, "WithGiven" );
             
             with_given_name_length := Length( with_given_name );
@@ -362,7 +364,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             
             object_func := CAP_INTERNAL_METHOD_NAME_RECORD.( object_name ).installation_name;
             
-            current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list, current_rec.argument_list );
+            if not IsBound( current_rec.redirect_function ) then
+              current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list, current_rec.argument_list );
+            fi;
             
             if not IsBound( current_rec.post_function ) then
                 current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, arg_list, object_name );
@@ -380,20 +384,10 @@ end );
 
 CAP_INTERNAL_INSTALL_ALL_ADDS();
 
-## special cases
-##
-CapInternalInstallAdd( CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_RECORD );
-
-##
-CapInternalInstallAdd( CAP_INTERNAL_ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_RECORD );
-
-##
-CapInternalInstallAdd( CAP_INTERNAL_ADD_DIRECT_SUM_RECORD );
-
 ## These methods overwrite the automatically generated methods.
 ## The users do not have to give the category as an argument
 ## to their functions, but within derivations, the category has
-## to be an argument (see any derivation of ZeroObject in DerivedMethods.gd)
+## to be an argument (see any derivation of ZeroObject in DerivedMethods.gi)
 ##
 InstallMethod( AddZeroObject,
                [ IsCapCategory, IsFunction, IsInt ],

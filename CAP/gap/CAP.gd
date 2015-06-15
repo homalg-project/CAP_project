@@ -182,6 +182,12 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
                 "CanComputeIsomorphismFromImageObjectToKernelOfCokernel",
                 "CanComputeIsIdenticalForMorphisms",
+                "CanComputeUniversalMorphismIntoZeroObject",
+                "CanComputeUniversalMorphismFromZeroObject",
+                "CanComputeIsomorphismFromZeroObjectToInitialObject",
+                "CanComputeIsomorphismFromInitialObjectToZeroObject",
+                "CanComputeIsomorphismFromZeroObjectToTerminalObject",
+                "CanComputeIsomorphismFromTerminalObjectToZeroObject"
                 ] )
 );
 

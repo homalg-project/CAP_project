@@ -173,6 +173,14 @@ ZeroObject := rec(
   cache_name := "ZeroObject",
   return_type := "object" ), 
 
+UniversalMorphismFromZeroObject := rec(
+  installation_name := "UniversalMorphismFromZeroObject",
+  filter_list := [ "object" ],
+  universal_object_position := "Source",
+  universal_type := "Colimit",
+  no_install := true,
+  return_type := "morphism" ),
+
 ZeroMorphism := rec(
   installation_name := "ZeroMorphism",
   filter_list := [ "object", "object" ],
@@ -185,8 +193,21 @@ DirectSum := rec(
   argument_list := [ 1 ],
   cache_name := "DirectSumOp",
   universal_type := "LimitColimit",
-  no_install := true,
-  return_type := "object" ),
+  return_type := "object",
+  ## TODO: DirectSum and DirectProduct and Coproduct mustn't be forced to be identical
+  post_function := function( object_product_list, method_selection_object, direct_sum )
+    
+    AddToGenesis( direct_sum, "DirectProductDiagram", object_product_list );
+        
+    AddToGenesis( direct_sum, "CoproductDiagram", object_product_list );
+    
+    SetFilterObj( direct_sum, WasCreatedAsDirectSum );
+    
+    SetFilterObj( direct_sum, WasCreatedAsDirectProduct );
+    
+    SetFilterObj( direct_sum, WasCreatedAsCoproduct );
+    
+  end ),
 
 TerminalObject := rec(
   installation_name := "TerminalObject",
@@ -200,8 +221,38 @@ UniversalMorphismIntoTerminalObject := rec(
   filter_list := [ "object" ],
   universal_object_position := "Range",
   universal_type := "Limit",
-  no_install := true,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  
+  ## this redirect and this post function have to be given manually, because
+  ## they call the setter and getter functions of CapCategory( diagram ), and 
+  ## not of diagram.
+  redirect_function := function( test_source )
+    local category;
+    
+    category := CapCategory( test_source );
+        
+    if HasTerminalObject( category ) then
+    
+      return [ true, UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( category ) ) ];
+      
+    fi;
+    
+    return [ false ];
+    
+  end,
+
+  post_function := function( test_source, universal_morphism )
+    local category, terminal_object;
+    
+    category := CapCategory( test_source );
+    
+    terminal_object := Range( universal_morphism );
+    
+    SetTerminalObject( category, terminal_object );
+    
+    SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
+    
+  end ),
 
 UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
   installation_name := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
@@ -215,15 +266,47 @@ InitialObject := rec(
   filter_list := [ "category" ],
   cache_name := "InitialObject",
   universal_type := "Colimit",
-  return_type := "object" ),
+  return_type := "object"
+),
 
 UniversalMorphismFromInitialObject := rec(
   installation_name := "UniversalMorphismFromInitialObject",
   filter_list := [ "object" ],
   universal_object_position := "Source",
   universal_type := "Colimit",
-  no_install := true,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  function_name := "UniversalMorphismFromInitialObject",
+  
+  ## this redirect and this post function have to be given manually, because
+  ## they call the setter and getter functions of CapCategory( diagram ), and 
+  ## not of diagram.
+  redirect_function := function( test_sink )
+    local category;
+    
+    category := CapCategory( test_sink );
+    
+    if HasInitialObject( category ) then
+      
+      return [ true, UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( category ) ) ];
+      
+    fi;
+    
+    return [ false ];
+    
+  end,
+  
+  post_function := function( test_sink, universal_morphism )
+    local category, initial_object;
+    
+    category := CapCategory( test_sink );
+    
+    initial_object := Source( universal_morphism );
+    
+    SetInitialObject( category, initial_object );
+    
+    SetFilterObj( initial_object, WasCreatedAsInitialObject );
+    
+  end ),
 
 UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
   installation_name := "UniversalMorphismFromInitialObjectWithGivenInitialObject",
