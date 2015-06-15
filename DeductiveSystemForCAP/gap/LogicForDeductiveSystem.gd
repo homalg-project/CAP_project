@@ -11,8 +11,6 @@
 
 ## Global files and add functions
 
-DeclareGlobalVariable( "CATEGORIES_LOGIC_FILES" );
-
 DeclareAttribute( "INSTALL_LOGICAL_IMPLICATIONS",
                   IsCapCategory );
 
