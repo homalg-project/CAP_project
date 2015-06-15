@@ -543,6 +543,18 @@ DeclareAttribute( "MorphismFromZeroObject",
 DeclareAttribute( "MorphismIntoZeroObject",
                   IsCapCategoryObject );
 
+DeclareAttribute( "UniversalMorphismFromZeroObject",
+                  IsCapCategoryObject );
+
+DeclareOperation( "UniversalMorphismFromZeroObjectWithGivenZeroObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareAttribute( "UniversalMorphismIntoZeroObject",
+                  IsCapCategoryObject );
+
+DeclareOperation( "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
 #! @EndGroup 
 
 
@@ -577,6 +589,55 @@ DeclareOperation( "AddZeroObject",
 DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsList ] );
 
+DeclareOperation( "AddUniversalMorphismIntoZeroObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoZeroObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoZeroObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoZeroObject",
+                  [ IsCapCategory, IsList ] );
+
+DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
+                  [ IsCapCategory, IsList ] );
+
+
+
+DeclareOperation( "AddUniversalMorphismFromZeroObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromZeroObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromZeroObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromZeroObject",
+                  [ IsCapCategory, IsList ] );
+
+DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
+                  [ IsCapCategory, IsList ] );
 
 
 ## WasCreatedAs Filter
