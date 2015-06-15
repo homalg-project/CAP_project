@@ -218,6 +218,52 @@ UniversalMorphismFromZeroObjectWithGivenZeroObject := rec(
   universal_type := "Colimit",
   return_type := "morphism" ),
 
+UniversalMorphismIntoZeroObject := rec(
+  installation_name := "UniversalMorphismIntoZeroObject",
+  filter_list := [ "object" ],
+  universal_object_position := "Range",
+  universal_type := "Limit",
+  return_type := "morphism",
+  
+  ## this redirect and this post function have to be given manually, because
+  ## they call the setter and getter functions of CapCategory( diagram ), and 
+  ## not of diagram.
+  redirect_function := function( test_source )
+    local category;
+    
+    category := CapCategory( test_source );
+        
+    if HasZeroObject( category ) then
+    
+      return [ true, UniversalMorphismIntoZeroObjectWithGivenZeroObject( test_source, ZeroObject( category ) ) ];
+      
+    fi;
+    
+    return [ false ];
+    
+  end,
+
+  post_function := function( test_source, universal_morphism )
+    local category, zero_object;
+    
+    category := CapCategory( test_source );
+    
+    zero_object := Range( universal_morphism );
+    
+    SetTerminalObject( category, zero_object );
+    
+    SetFilterObj( zero_object, WasCreatedAsTerminalObject );
+    
+  end ),
+
+UniversalMorphismIntoZeroObjectWithGivenZeroObject := rec(
+  installation_name := "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
+  filter_list := [ "object", "object" ],
+  cache_name := "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
+  universal_type := "Limit",
+  return_type := "morphism" ),
+
+
 ZeroMorphism := rec(
   installation_name := "ZeroMorphism",
   filter_list := [ "object", "object" ],
