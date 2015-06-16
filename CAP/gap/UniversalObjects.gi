@@ -614,13 +614,6 @@ end: ArgumentNumber := 4 );
 ####################################
 
 ####################################
-## Technical methods
-####################################
-
-## Immediate methods which link InitialObject and TerminalObject to
-## ZeroObject in the additive case
-
-####################################
 ## Convenience methods
 ####################################
 
@@ -640,7 +633,7 @@ InstallMethod( MorphismFromZeroObject,
                
    function( obj )
    
-     return UniversalMorphismFromInitialObject( obj );
+     return UniversalMorphismFromZeroObject( obj );
    
 end );
 
@@ -650,14 +643,9 @@ InstallMethod( MorphismIntoZeroObject,
                
    function( obj )
    
-     return UniversalMorphismIntoTerminalObject( obj );
+     return UniversalMorphismIntoZeroObject( obj );
    
 end );
-
-####################################
-## Add methods
-####################################
-
 
 ####################################
 ##
@@ -680,10 +668,6 @@ InstallMethod( TerminalObject,
 end );
 
 ####################################
-## Add methods
-####################################
-
-####################################
 ##
 ## Initial Object
 ##
@@ -702,10 +686,6 @@ InstallMethod( InitialObject,
     return InitialObject( CapCategory( cell ) );
     
 end );
-
-####################################
-## Add methods
-####################################
 
 ####################################
 ##
