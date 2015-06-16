@@ -320,8 +320,11 @@ AddDerivationToCAP( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
     return ZeroMorphism( test_source, terminal_object );
     
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject computing the zero morphism");
+      Description := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject computing the zero morphism" );
 
+## NOTE: Derivations like these maybe problematic within the groupoid interpretation,
+## because this result doesn't have to be equal (under IsIdenticalForMorphisms) with the result
+## of UniversalMorphismFromInitialObject
 ##
 AddDerivationToCAP( UniversalMorphismFromInitialObjectWithGivenInitialObject,
                     [ [ ZeroMorphism, 1 ] ],
@@ -332,6 +335,28 @@ AddDerivationToCAP( UniversalMorphismFromInitialObjectWithGivenInitialObject,
     
 end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismFromInitialObjectWithGivenInitialObject computing the zero morphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromZeroObjectWithGivenZeroObject,
+                    [ [ ZeroMorphism, 1 ] ],
+                 
+  function( test_sink, zero_object )
+    
+    return ZeroMorphism( zero_object, test_sink );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismFromZeroObjectWithGivenZeroObject computing the zero morphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoZeroObjectWithGivenZeroObject,
+                    [ [ ZeroMorphism, 1 ] ],
+                 
+  function( test_source, zero_object )
+    
+    return ZeroMorphism( test_source, zero_object );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoZeroObjectWithGivenZeroObject computing the zero morphism" );
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
