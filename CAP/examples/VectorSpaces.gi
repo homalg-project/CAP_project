@@ -527,16 +527,7 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( vecspaces,
 end );
 
 ##
-AddTerminalObject( vecspaces,
-
-  function( )
-
-    return QVectorSpace( 0 );
-
-end );
-
-##
-AddUniversalMorphismIntoTerminalObject( vecspaces,
+AddUniversalMorphismIntoZeroObject( vecspaces,
 
   function( sink )
     local morphism;
@@ -548,7 +539,7 @@ AddUniversalMorphismIntoTerminalObject( vecspaces,
 end );
 
 ##
-AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( vecspaces,
+AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( vecspaces,
 
   function( sink, terminal_object )
     local morphism;
@@ -560,7 +551,7 @@ AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( vecspaces,
 end );
 
 ##
-AddInitialObject( vecspaces,
+AddZeroObject( vecspaces,
 
   function( )
 
@@ -569,7 +560,7 @@ AddInitialObject( vecspaces,
 end );
 
 ##
-AddUniversalMorphismFromInitialObject( vecspaces,
+AddUniversalMorphismFromZeroObject( vecspaces,
 
   function( source )
     local morphism;
@@ -581,7 +572,7 @@ AddUniversalMorphismFromInitialObject( vecspaces,
 end );
 
 ##
-AddUniversalMorphismFromInitialObjectWithGivenInitialObject( vecspaces,
+AddUniversalMorphismFromZeroObjectWithGivenZeroObject( vecspaces,
 
   function( source, initial_object )
     local morphism;

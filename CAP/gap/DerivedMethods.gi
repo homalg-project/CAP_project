@@ -1076,6 +1076,8 @@ AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
     
 end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
 
+##
+
 
 ###########################
 ##
