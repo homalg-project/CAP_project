@@ -70,6 +70,21 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                                ] ),
      ) );
 
+InstallGlobalFunction( SetCapLogicInfo,
+  
+  function( arg )
+    local level;
+    
+    if Length( arg ) = 0 then
+        level := 1;
+    else
+        level := arg[ 1 ];
+    fi;
+    
+    SetInfoLevel( CapLogicInfo, level );
+    
+end );
+
 ###################################
 ##
 ## Logic part 1: theorems
@@ -218,6 +233,8 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
     
     result_object := arg[ 3 ];
     
+    Info( CapLogicInfo, 1, Concatenation( "Creating todo list for operation ", method_name ) );
+    
     if Length( arg ) = 4 then
         
         category := arg[ 4 ];
@@ -253,6 +270,8 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
     fi;
     
     theorem_list := TheoremRecord( category ).( method_name );
+    
+    Info( CapLogicInfo, 1, Concatenation( "Trying to create ", String( Length( theorem_list ) ), " theorems" );
     
     for current_theorem in theorem_list do
         
@@ -295,9 +314,13 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
         
         if is_valid_theorem = false then
             
+            Info( CapLogicInfo, 1, Concatenation( "Failed" );
+            
             continue;
             
         fi;
+        
+        Info( CapLogicInfo, 1, Concatenation( "Success" );
         
         range := SANITIZE_RECORD( current_theorem!.Range, arguments, result_object );
         

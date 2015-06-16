@@ -9,6 +9,10 @@
 
 DeclareGlobalVariable( "CATEGORIES_LOGIC_FILES" );
 
+DeclareInfoClass( "CapLogicInfo" );
+
+DeclareGlobalFunction( "SetCapLogicInfo" );
+
 ############################
 ##
 ## Theorems
