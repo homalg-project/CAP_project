@@ -184,12 +184,12 @@ end : Description := "Codominates(factor1, factor2) by deciding if KernelEmb(fac
 ##
 AddDerivationToCAP( ZeroMorphism,
                     [ [ PreCompose, 1 ],
-                      [ UniversalMorphismIntoTerminalObject, 1 ],
-                      [ UniversalMorphismFromInitialObject, 1 ] ],
+                      [ UniversalMorphismIntoZeroObject, 1 ],
+                      [ UniversalMorphismFromZeroObject, 1 ] ],
                  
   function( obj_source, obj_range )
     
-    return PreCompose( UniversalMorphismIntoTerminalObject( obj_source ), UniversalMorphismFromInitialObject( obj_range ) );
+    return PreCompose( UniversalMorphismIntoZeroObject( obj_source ), UniversalMorphismFromZeroObject( obj_range ) );
     
   end : CategoryFilter := IsAdditiveCategory,
         Description := "Zero morphism by composition of morphism into and from zero object" );
@@ -1145,23 +1145,44 @@ end : Description := "Coproduct equals DirectSum"  );
 
 ##
 AddDerivationToCAP( TerminalObject,
-                    [ [ ZeroObject, 1 ] ],
+                    [ [ IsomorphismFromTerminalObjectToZeroObject, 1 ] ],
                
   function( category )
     
-    return ZeroObject( category );
+    return Source( IsomorphismFromTerminalObjectToZeroObject( category ) );
     
-end : Description := "TerminalObject equals ZeroObject" );
+end : Description := "TerminalObject as the source of IsomorphismFromTerminalObjectToZeroObject" );
+
+##
+AddDerivationToCAP( TerminalObject,
+                    [ [ IsomorphismFromZeroObjectToTerminalObject, 1 ] ],
+               
+  function( category )
+    
+    return Range( IsomorphismFromZeroObjectToTerminalObject( category ) );
+    
+end : Description := "TerminalObject as the range of IsomorphismFromZeroObjectToTerminalObject" );
 
 ##
 AddDerivationToCAP( InitialObject,
-                    [ [ ZeroObject, 1 ] ],
+                    [ [ IsomorphismFromInitialObjectToZeroObject, 1 ] ],
                
   function( category )
     
-    return ZeroObject( category );
+    return Source( IsomorphismFromInitialObjectToZeroObject( category ) );
     
-end : Description := "InitialObject equals ZeroObject" );
+end : Description := "InitialObject as the source of IsomorphismFromInitialObjectToZeroObject" );
+
+##
+AddDerivationToCAP( InitialObject,
+                    [ [ IsomorphismFromZeroObjectToInitialObject, 1 ] ],
+               
+  function( category )
+    
+    return Range( IsomorphismFromZeroObjectToInitialObject( category ) );
+    
+end : Description := "InitialObject as the range of IsomorphismFromZeroObjectToInitialObject" );
+
 
 ##
 AddDerivationToCAP( FiberProduct,
