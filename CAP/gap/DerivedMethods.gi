@@ -1077,6 +1077,67 @@ AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
 end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
 
 ##
+AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
+                    [ [ UniversalMorphismFromInitialObject, 1 ],
+                      [ ZeroObject, 1 ] ],
+                      
+  function( category )
+    
+    return UniversalMorphismFromInitialObject( ZeroObject( category ) );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "IsomorphismFromInitialObjectToZeroObject as the unique morphism from initial object to zero object" );
+
+##
+AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
+                    [ [ Inverse, 1 ],
+                      [ IsomorphismFromZeroObjectToInitialObject, 1 ] ],
+  function( category )
+    
+    return Inverse( IsomorphismFromZeroObjectToInitialObject( category ) );
+    
+end : Description := "IsomorphismFromInitialObjectToZeroObject as the inverse of IsomorphismFromZeroObjectToInitialObject" );
+
+##
+AddDerivationToCAP( IsomorphismFromZeroObjectToInitialObject,
+                    [ [ Inverse, 1 ],
+                      [ IsomorphismFromInitialObjectToZeroObject, 1 ] ],
+  function( category )
+    
+    return Inverse( IsomorphismFromInitialObjectToZeroObject( category ) );
+    
+end : Description := "IsomorphismFromZeroObjectToInitialObject as the inverse of IsomorphismFromInitialObjectToZeroObject" );
+
+##
+AddDerivationToCAP( IsomorphismFromZeroObjectToTerminalObject,
+                    [ [ UniversalMorphismIntoTerminalObject, 1 ],
+                      [ ZeroObject, 1 ] ],
+  function( category )
+    
+    return UniversalMorphismIntoTerminalObject( ZeroObject( category ) );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "IsomorphismFromZeroObjectToTerminalObject as the unique morphism from zero object to terminal object" );
+
+##
+AddDerivationToCAP( IsomorphismFromTerminalObjectToZeroObject,
+                    [ [ Inverse, 1 ],
+                      [ IsomorphismFromZeroObjectToTerminalObject, 1 ] ],
+  function( category )
+    
+    return Inverse( IsomorphismFromZeroObjectToTerminalObject( category ) );
+    
+end : Description := "IsomorphismFromTerminalObjectToZeroObject as the inverse of IsomorphismFromZeroObjectToTerminalObject" );
+
+##
+AddDerivationToCAP( IsomorphismFromZeroObjectToTerminalObject,
+                    [ [ Inverse, 1 ],
+                      [ IsomorphismFromTerminalObjectToZeroObject, 1 ] ],
+  function( category )
+    
+    return Inverse( IsomorphismFromTerminalObjectToZeroObject( category ) );
+    
+end : Description := "IsomorphismFromZeroObjectToTerminalObject as the inverse of IsomorphismFromTerminalObjectToZeroObject" );
 
 
 ###########################
