@@ -619,48 +619,6 @@ end: ArgumentNumber := 4 );
 
 ## Immediate methods which link InitialObject and TerminalObject to
 ## ZeroObject in the additive case
-InstallImmediateMethod( IS_IMPLIED_ZERO_OBJECT,
-                        IsCapCategoryObject and WasCreatedAsTerminalObject and IsAdditiveCategory,
-                        0,
-                        
-  function( terminal_object )
-    local category;
-    
-    category := CapCategory( terminal_object );
-    
-    SetFilterObj( terminal_object, WasCreatedAsZeroObject );
-    
-    SetZeroObject( category, terminal_object );
-    
-    SetFilterObj( terminal_object, WasCreatedAsInitialObject );
-    
-    SetInitialObject( category, terminal_object );
-    
-    return true;
-    
-end );
-
-##
-InstallImmediateMethod( IS_IMPLIED_ZERO_OBJECT,
-                        IsCapCategoryObject and WasCreatedAsInitialObject and IsAdditiveCategory,
-                        0,
-                        
-  function( initial_object )
-    local category;
-    
-    category := CapCategory( initial_object );
-    
-    SetFilterObj( initial_object, WasCreatedAsZeroObject );
-    
-    SetZeroObject( category, initial_object );
-    
-    SetFilterObj( initial_object, WasCreatedAsTerminalObject );
-    
-    SetTerminalObject( category, initial_object );
-    
-    return true;
-    
-end );
 
 ####################################
 ## Convenience methods
