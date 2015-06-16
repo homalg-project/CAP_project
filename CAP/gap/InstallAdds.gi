@@ -177,10 +177,13 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
                 result := CallFuncList( func_to_install, arg{ argument_list } );
                 
+                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result );
+                
                 Add( arg, result );
                 CallFuncList( post_function, arg );
                 
                 add_function( category, result );
+                
                 
                 return result;
             end );
@@ -285,7 +288,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
     
     for current_recname in recnames do
         
-        current_rec := ShallowCopy( CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ) );
+        current_rec := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
         
         if IsBound( current_rec.no_install ) and current_rec.no_install = true then
             

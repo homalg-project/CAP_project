@@ -320,6 +320,20 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
     
 end );
 
+InstallImmediateMethod( CAP_CATEGORY_SOURCE_RANGE_THEOREM_INSTALL_HELPER,
+                        IsCapCategoryMorphism and HasCapCategory and HasSource and HasRange,
+                        0,
+                        
+  function( morphism )
+    
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ) );
+    
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ) );
+    
+    TryNextMethod();
+    
+end );
+
 ##############################
 ##
 ## Logic part 2: predicates
