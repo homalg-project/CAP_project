@@ -620,13 +620,15 @@ InstallMethod( DeductiveSystem,
     
     deductive_system := CreateCapCategory( Concatenation( "Deduction system of ", Name( category ) ) );
     
+    SetTheoremRecord( deductive_system, TheoremRecord( category ) );
+    
     SetUnderlyingCategory( deductive_system, category );
     
     INSTALL_PROPERTIES_FOR_DEDUCTIVE_SYSTEM( deductive_system, category );
     
     ADDS_FOR_DEDUCTIVE_SYSTEM( deductive_system, category );
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, deductive_system, "General" );
+    INSTALL_LOGICAL_IMPLICATIONS_HELPER_EVAL_RULES( category, deductive_system, "General" );
     
     return deductive_system;
     
