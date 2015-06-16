@@ -13,7 +13,6 @@
 
 DeclareGlobalFunction( "INSTALL_LOGICAL_IMPLICATIONS_HELPER_EVAL_RULES" );
 
-DeclareGlobalFunction( "AddEvalRuleFileToCategory" );
 
 ## Theorems
 
@@ -26,8 +25,6 @@ DeclareGlobalFunction( "FIX_WELL_DEFINED_PART" );
 DeclareGlobalFunction( "IS_EQUAL_FOR_SUBTREES_RECURSIVE" );
 
 DeclareGlobalFunction( "APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE" );
-
-DeclareGlobalFunction( "ADD_EVAL_RULES_TO_CATEGORY" );
 
 DeclareGlobalFunction( "CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE" );
 

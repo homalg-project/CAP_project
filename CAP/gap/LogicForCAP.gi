@@ -400,6 +400,65 @@ end );
 
 ###############################
 ##
+## Part 3: Eval rule API
+##
+###############################
+
+##
+InstallGlobalFunction( AddEvalRuleFileToCategory,
+                       
+  function( category, filename )
+    local theorem_list, i;
+    
+    Add( category!.logical_implication_files.EvalRules.General, filename );
+    
+    if IsBound( category!.logical_implication_files.EvalRules.general_rules_already_read ) and
+       category!.logical_implication_files.EvalRules.general_rules_already_read = true then
+        
+        theorem_list := READ_EVAL_RULE_FILE( filename );
+        
+        for i in theorem_list do
+            
+            ADD_EVAL_RULES_TO_CATEGORY( category, i );
+            
+        od;
+        
+    fi;
+    
+end );
+
+##
+InstallGlobalFunction( ADD_EVAL_RULES_TO_CATEGORY,
+                       
+  function( category, rule_record )
+    local command;
+    
+    if not IsBound( rule_record!.starting_command ) then
+        
+        return;
+        
+    fi;
+    
+    command := rule_record!.starting_command ;
+    
+    if not IsBound( category!.eval_rules ) then
+        
+        category!.eval_rules := rec( );
+        
+    fi;
+    
+    if not IsBound( category!.eval_rules.( command ) ) then
+        
+        category!.eval_rules.( command ) := [ ];
+        
+    fi;
+    
+    Add( category!.eval_rules.( command ), rule_record );
+    
+end );
+
+###############################
+##
 ## Technical functions
 ##
 ###############################

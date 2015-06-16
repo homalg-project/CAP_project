@@ -37,6 +37,16 @@ DeclareGlobalFunction( "INSTALL_PREDICATE_IMPLICATION" );
 
 #############################
 ##
+## API for EvalRules
+##
+#############################
+
+DeclareGlobalFunction( "AddEvalRuleFileToCategory" );
+
+DeclareGlobalFunction( "ADD_EVAL_RULES_TO_CATEGORY" );
+
+#############################
+##
 ## Technical functions
 ##
 #############################

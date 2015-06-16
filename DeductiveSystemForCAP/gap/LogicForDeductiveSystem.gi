@@ -15,33 +15,12 @@
 ##
 ########################################
 
-InstallGlobalFunction( AddEvalRuleFileToCategory,
-                       
-  function( category, filename )
-    local theorem_list, i;
-    
-    Add( category!.logical_implication_files.Predicates.General, filename );
-    
-    if not HasDeductiveSystem( category ) then
-        
-        return;
-        
-    fi;
-    
-    theorem_list := READ_EVAL_RULE_FILE( filename );
-    
-    for i in theorem_list do
-        
-        ADD_EVAL_RULES_TO_CATEGORY( category, i );
-        
-    od;
-    
-end );
-
-InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER_EVAL_RULES_EVAL_RULES,
+InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER_EVAL_RULES,
                        
   function( category, deductive_category, current_filter )
     local i, theorem_list, current_theorem;
+    
+    category!.logical_implication_files.EvalRules.general_rules_already_read := true;
     
     for i in category!.logical_implication_files.EvalRules.( current_filter ) do
         
@@ -644,32 +623,4 @@ InstallGlobalFunction( APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE,
     
 end );
 
-InstallGlobalFunction( ADD_EVAL_RULES_TO_CATEGORY,
-                       
-  function( category, rule_record )
-    local command;
-    
-    if not IsBound( rule_record!.starting_command ) then
-        
-        return;
-        
-    fi;
-    
-    command := rule_record!.starting_command ;
-    
-    if not IsBound( category!.eval_rules ) then
-        
-        category!.eval_rules := rec( );
-        
-    fi;
-    
-    if not IsBound( category!.eval_rules.( command ) ) then
-        
-        category!.eval_rules.( command ) := [ ];
-        
-    fi;
-    
-    Add( category!.eval_rules.( command ), rule_record );
-    
-end );
 
