@@ -1018,6 +1018,65 @@ end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
       Description := "ImageEmbedding as the kernel embedding of the cokernel projection"
 );
 
+##
+AddDerivationToCAP( UniversalMorphismIntoZeroObject,
+                    [ [ UniversalMorphismIntoTerminalObject, 1 ],
+                      [ IsomorphismFromTerminalObjectToZeroObject, 1 ] ],
+  function( obj )
+    local category;
+    
+    category := CapCategory( obj );
+    
+    return PreCompose( UniversalMorphismIntoTerminalObject( obj ),
+                       IsomorphismFromTerminalObjectToZeroObject( category ) );
+    
+end : Description := "UniversalMorphismIntoZeroObject using UniversalMorphismIntoTerminalObject" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromZeroObject,
+                    [ [ IsomorphismFromZeroObjectToInitialObject, 1 ],
+                      [ UniversalMorphismFromInitialObject, 1 ] ],
+  function( obj )
+    local category;
+    
+    category := CapCategory( obj );
+    
+    return PreCompose( IsomorphismFromZeroObjectToInitialObject( category ),
+                       UniversalMorphismFromInitialObject( obj ) );
+    
+end : Description := "UniversalMorphismFromZeroObject using UniversalMorphismFromInitialObject" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromInitialObject,
+                    [ [ IsomorphismFromInitialObjectToZeroObject, 1 ],
+                      [ UniversalMorphismFromZeroObject, 1 ] ],
+  
+  function( obj )
+    local category;
+    
+    category := CapCategory( obj );
+    
+    return PreCompose( IsomorphismFromInitialObjectToZeroObject( category ),
+                       UniversalMorphismFromZeroObject( obj ) );
+    
+end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
+                    [ [ UniversalMorphismIntoZeroObject, 1 ],
+                      [ IsomorphismFromZeroObjectToTerminalObject, 1 ] ],
+  
+  function( obj )
+    local category;
+    
+    category := CapCategory( obj );
+    
+    return PreCompose( UniversalMorphismIntoZeroObject( obj ),
+                       IsomorphismFromZeroObjectToTerminalObject( category ) );
+    
+end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
+
+
 ###########################
 ##
 ## Methods returning an object
