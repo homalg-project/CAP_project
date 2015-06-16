@@ -1342,5 +1342,74 @@ AddFinalDerivation( IsomorphismFromImageObjectToKernelOfCokernel,
     
 end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
 
+## Final methods for initial object
 
+##
+AddFinalDerivation( IsomorphismFromInitialObjectToZeroObject,
+                    [ [ ZeroObject, 1 ] ],
+                    [ InitialObject,
+                      UniversalMorphismFromInitialObject
+                      ## NOTE: the combination of AddZeroObject and AddUniversalMorphismFromInitialObjectWithGivenInitialObject
+                      ## is okay because only having UniversalMorphismFromInitialObjectWithGivenInitialObject, you cannot
+                      ## deduce an InitialObject
+#                       UniversalMorphismFromInitialObjectWithGivenInitialObject
+                    ],
+                    
+  function( category )
+    
+    return IdentityMorphism( ZeroObject( category ) );
+    
+end : Description := "IsomorphismFromInitialObjectToZeroObject as the identity of the zero object" );
 
+##
+AddFinalDerivation( IsomorphismFromZeroObjectToInitialObject,
+                    [ [ ZeroObject, 1 ] ],
+                    [ InitialObject,
+                      UniversalMorphismFromInitialObject
+                      ## NOTE: the combination of AddZeroObject and AddUniversalMorphismFromInitialObjectWithGivenInitialObject
+                      ## is okay because only having UniversalMorphismFromInitialObjectWithGivenInitialObject, you cannot
+                      ## deduce an InitialObject
+#                       UniversalMorphismFromInitialObjectWithGivenInitialObject
+                    ],
+                    
+  function( category )
+    
+    return IdentityMorphism( ZeroObject( category ) );
+    
+end : Description := "IsomorphismFromZeroObjectToInitialObject as the identity of the zero object" );
+
+## Final methods for terminal object
+
+##
+AddFinalDerivation( IsomorphismFromTerminalObjectToZeroObject,
+                    [ [ ZeroObject, 1 ] ],
+                    [ TerminalObject,
+                      UniversalMorphismIntoTerminalObject
+                      ## NOTE: the combination of AddZeroObject and AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
+                      ## is okay because only having UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, you cannot
+                      ## deduce a TerminalObject
+#                       UniversalMorphismIntoTerminalObjectWithGivenTerminalObject
+                    ],
+                    
+  function( category )
+    
+    return IdentityMorphism( ZeroObject( category ) );
+    
+end : Description := "IsomorphismFromTerminalObjectToZeroObject as the identity of the zero object" );
+
+##
+AddFinalDerivation( IsomorphismFromZeroObjectToTerminalObject,
+                    [ [ ZeroObject, 1 ] ],
+                    [ TerminalObject,
+                      UniversalMorphismIntoTerminalObject
+                      ## NOTE: the combination of AddZeroObject and AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
+                      ## is okay because only having UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, you cannot
+                      ## deduce a TerminalObject
+#                       UniversalMorphismIntoTerminalObjectWithGivenTerminalObject
+                    ],
+                    
+  function( category )
+    
+    return IdentityMorphism( ZeroObject( category ) );
+    
+end : Description := "IsomorphismFromZeroObjectToTerminalObject as the identity of the zero object" );
