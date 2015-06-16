@@ -700,61 +700,6 @@ end );
 ## Add methods
 ####################################
 
-InstallMethod( AddZeroObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    AddZeroObject( category, func, 100 );
-    
-end );
-
-##
-InstallMethod( AddZeroObject,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    
-    SetZeroObjectFunction( category, func );
-    
-    SetCanComputeZeroObject( category, true );
-    
-    AddPrimitiveOperation( category!.derivations_weight_list, "ZeroObject", weight );
-    
-end );
-
-##
-InstallMethodWithToDoForIsWellDefined( ZeroObject,
-                                       [ IsCapCategory ],
-                                       
-  function( category )
-    local zero_object;
-    
-    if not CanComputeZeroObject( category ) then
-        
-        Error( "no possibility to construct zero object" );
-        
-    fi;
-    
-    zero_object := ZeroObjectFunction( category )();
-    
-    Add( category, zero_object );
-    
-    SetIsWellDefined( zero_object, true );
-    
-    SetIsZero( zero_object, true );
-    
-    SetFilterObj( zero_object, WasCreatedAsZeroObject );
-    
-    ## this will treat zero_object as if it was a terminal object (see immediate method above)
-    SetFilterObj( zero_object, WasCreatedAsTerminalObject );
-    
-    ## this will treat zero_object as if it was an initial object (see immediate method above)
-    SetFilterObj( zero_object, WasCreatedAsInitialObject );
-    
-    return zero_object;
-    
-end );
 
 ####################################
 ##
