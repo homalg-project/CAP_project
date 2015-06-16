@@ -872,7 +872,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
         
     end );
     
-    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category,
+    AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
                                                                    
       function( object, terminal_object )
         local nr_columns, morphism;
@@ -885,7 +885,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
         
     end );
     
-    AddUniversalMorphismFromInitialObjectWithGivenInitialObject( category,
+    AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
                                                                  
       function( object, initial_object )
         local nr_columns, morphism;
@@ -916,7 +916,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_RIGHT,
         
     end );
     
-    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category,
+    AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
                                                                    
       function( object, terminal_object )
         local nr_rows, morphism;
@@ -929,7 +929,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_RIGHT,
         
     end );
     
-    AddUniversalMorphismFromInitialObjectWithGivenInitialObject( category,
+    AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
                                                                  
       function( object, initial_object )
         local nr_rows, morphism;
