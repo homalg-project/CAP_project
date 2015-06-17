@@ -337,6 +337,8 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
         
         entry := ToDoListEntry( todo_list_source, range[ 1 ], NameFunction( range[ 2 ] ), range[ 3 ] );
         
+        SetDescriptionOfImplication( entry, Concatenation( "Implication from ", method_name ) );
+        
         AddToToDoList( entry );
         
     od;

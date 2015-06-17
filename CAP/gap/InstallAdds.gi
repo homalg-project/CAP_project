@@ -166,6 +166,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 if not IsBound( category!.redirects.( install_name ) ) or category!.redirects.( install_name ) <> false then
                     redirect_return := CallFuncList( redirect_function, arg );
                     if redirect_return[ 1 ] = true then
+                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, redirect_return[ 2 ] );
                         return redirect_return[ 2 ];
                     fi;
                 fi;
