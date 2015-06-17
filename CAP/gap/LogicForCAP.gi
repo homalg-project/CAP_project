@@ -271,7 +271,7 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
     
     theorem_list := TheoremRecord( category ).( method_name );
     
-    Info( CapLogicInfo, 1, Concatenation( "Trying to create ", String( Length( theorem_list ) ), " theorems" );
+    Info( CapLogicInfo, 1, Concatenation( "Trying to create ", String( Length( theorem_list ) ), " theorems" ) );
     
     for current_theorem in theorem_list do
         
@@ -314,13 +314,13 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
         
         if is_valid_theorem = false then
             
-            Info( CapLogicInfo, 1, Concatenation( "Failed" );
+            Info( CapLogicInfo, 1, "Failed" );
             
             continue;
             
         fi;
         
-        Info( CapLogicInfo, 1, Concatenation( "Success" );
+        Info( CapLogicInfo, 1, "Success" );
         
         range := SANITIZE_RECORD( current_theorem!.Range, arguments, result_object );
         

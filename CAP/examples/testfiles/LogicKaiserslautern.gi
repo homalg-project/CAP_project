@@ -8,9 +8,9 @@ R := Q * "x,y";
 
 F := FreeLeftPresentation( 1, R );
 
-alpha1_eval := PresentationMorphism( F, HomalgMatrix( "[ [ x ] ]", R ), F );
+alpha1 := PresentationMorphism( F, HomalgMatrix( "[ [ x ] ]", R ), F );
 
-alpha2_eval := PresentationMorphism( F, HomalgMatrix( "[ [ y ] ]", R ), F );
+alpha2 := PresentationMorphism( F, HomalgMatrix( "[ [ y ] ]", R ), F );
 
 ## Initializing the deductive system
 
@@ -22,7 +22,7 @@ alpha2 := InDeductiveSystem( alpha2_eval );
 
 P := FiberProduct( alpha1, alpha2 );
 
-pi1 := ProjectionInFactor( P, 1 );
+pi1 := ProjectionInFactorOfFiberproduct( [ alpha1, alpha2 ], 1 );
 
 composite := PreCompose( pi1, alpha1 );
 
