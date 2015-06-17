@@ -1218,6 +1218,58 @@ AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
     
 end : Description := "InjectionOfCofactorOfDirectSum using InjectionOfCofactorOfCoproduct" );
 
+##
+AddDerivationToCAP( UniversalMorphismIntoDirectSum,
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoDirectProduct, 1 ],
+                      [ IsomorphismFromDirectProductToDirectSum, 1 ] ],
+                    
+  function( diagram, source )
+    
+    return PreCompose( UniversalMorphismIntoDirectProduct( diagram, source ),
+                       IsomorphismFromDirectProductToDirectSum( diagram ) );
+    
+end : Description := "UniversalMorphismIntoDirectSum using UniversalMorphismIntoDirectProduct" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoDirectSum, 1 ],
+                      [ IsomorphismFromDirectSumToDirectProduct, 1 ] ],
+                    
+  function( diagram, source )
+    
+    return PreCompose( UniversalMorphismIntoDirectSum( diagram, source ),
+                       IsomorphismFromDirectSumToDirectProduct( diagram ) );
+    
+end : Description := "UniversalMorphismIntoDirectProduct using UniversalMorphismIntoDirectSum" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromDirectSum,
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromDirectSumToCoproduct, 1 ],
+                      [ UniversalMorphismFromCoproduct, 1 ] ],
+                    
+  function( diagram, sink )
+    
+    return PreCompose( IsomorphismFromDirectSumToCoproduct( diagram ),
+                       UniversalMorphismFromCoproduct( diagram, sink ) );
+    
+end : Description := "UniversalMorphismFromDirectSum using UniversalMorphismFromCoproduct" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromCoproduct,
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromCoproductToDirectSum, 1 ],
+                      [ UniversalMorphismFromDirectSum, 1 ] ],
+                    
+  function( diagram, sink )
+    
+    return PreCompose( IsomorphismFromCoproductToDirectSum( diagram ),
+                       UniversalMorphismFromDirectSum( diagram, sink ) );
+    
+end : Description := "UniversalMorphismFromCoproduct using UniversalMorphismFromDirectSum" );
+
 ###########################
 ##
 ## Methods returning an object
