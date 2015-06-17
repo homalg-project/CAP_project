@@ -189,7 +189,19 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsomorphismFromZeroObjectToInitialObject",
                 "CanComputeIsomorphismFromInitialObjectToZeroObject",
                 "CanComputeIsomorphismFromZeroObjectToTerminalObject",
-                "CanComputeIsomorphismFromTerminalObjectToZeroObject"
+                "CanComputeIsomorphismFromTerminalObjectToZeroObject",
+                "CanComputeProjectionInFactorOfDirectSum",
+                "CanComputeProjectionInFactorOfDirectSumWithGivenDirectSum",
+                "CanComputeInjectionOfCofactorOfDirectSum",
+                "CanComputeInjectionOfCofactorOfDirectSumWithGivenDirectSum",
+                "CanComputeUniversalMorphismIntoDirectSum",
+                "CanComputeUniversalMorphismIntoDirectSumWithGivenDirectSum",
+                "CanComputeUniversalMorphismFromDirectSum",
+                "CanComputeUniversalMorphismFromDirectSumWithGivenDirectSum",
+                "CanComputeIsomorphismFromDirectSumToDirectProduct",
+                "CanComputeIsomorphismFromDirectProductToDirectSum",
+                "CanComputeIsomorphismFromDirectSumToCoproduct",
+                "CanComputeIsomorphismFromCoproductToDirectSum"
                 ] )
 );
 
