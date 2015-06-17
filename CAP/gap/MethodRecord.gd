@@ -319,8 +319,6 @@ DirectSum := rec(
     
   end ),
 
-##begin
-
 ProjectionInFactorOfDirectSum := rec(
   installation_name := "ProjectionInFactorOfDirectSumOp",
   filter_list := [ IsList, IsInt, "object" ],
@@ -436,11 +434,6 @@ UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
     return [ true ];
   end,
   return_type := "morphism" ),
-
-
-##end
-
-
 
 TerminalObject := rec(
   installation_name := "TerminalObject",
@@ -1417,6 +1410,36 @@ IsomorphismFromImageObjectToKernelOfCokernel := rec(
   filter_list := [ "morphism" ],
   cache_name := "IsomorphismFromImageObjectToKernelOfCokernel",
   return_type := "morphism" ),
+
+IsomorphismFromDirectSumToDirectProduct := rec(
+  installation_name := IsomorphismFromDirectSumToDirectProductOp,
+  filter_list := [ IsList, "object" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromDirectSumToDirectProductOp",
+  return_type := "morphism" ),
+
+IsomorphismFromDirectSumToCoproduct := rec(
+  installation_name := IsomorphismFromDirectSumToCoproductOp,
+  filter_list := [ IsList, "object" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromDirectSumToCoproductOp",
+  return_type := "morphism" ),
+
+IsomorphismFromDirectProductToDirectSum := rec(
+  installation_name := IsomorphismFromDirectProductToDirectSumOp,
+  filter_list := [ IsList, "object" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromDirectProductToDirectSumOp",
+  return_type := "morphism" ),
+
+IsomorphismFromCoproductToDirectSum := rec(
+  installation_name := IsomorphismFromCoproductToDirectSumOp,
+  filter_list := [ IsList, "object" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromCoproductToDirectSumOp",
+  return_type := "morphism" ),
+
+
 
 CoproductDiagonalDifference := rec(
   installation_name := "CoproductDiagonalDifferenceOp",

@@ -1045,7 +1045,8 @@ end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoZeroObject,
-                    [ [ UniversalMorphismIntoTerminalObject, 1 ],
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoTerminalObject, 1 ],
                       [ IsomorphismFromTerminalObjectToZeroObject, 1 ] ],
   function( obj )
     local category;
@@ -1059,7 +1060,8 @@ end : Description := "UniversalMorphismIntoZeroObject using UniversalMorphismInt
 
 ##
 AddDerivationToCAP( UniversalMorphismFromZeroObject,
-                    [ [ IsomorphismFromZeroObjectToInitialObject, 1 ],
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromZeroObjectToInitialObject, 1 ],
                       [ UniversalMorphismFromInitialObject, 1 ] ],
   function( obj )
     local category;
@@ -1073,7 +1075,8 @@ end : Description := "UniversalMorphismFromZeroObject using UniversalMorphismFro
 
 ##
 AddDerivationToCAP( UniversalMorphismFromInitialObject,
-                    [ [ IsomorphismFromInitialObjectToZeroObject, 1 ],
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromInitialObjectToZeroObject, 1 ],
                       [ UniversalMorphismFromZeroObject, 1 ] ],
   
   function( obj )
@@ -1088,7 +1091,8 @@ end : Description := "UniversalMorphismFromInitialObject using UniversalMorphism
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
-                    [ [ UniversalMorphismIntoZeroObject, 1 ],
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoZeroObject, 1 ],
                       [ IsomorphismFromZeroObjectToTerminalObject, 1 ] ],
   
   function( obj )
@@ -1164,6 +1168,55 @@ AddDerivationToCAP( IsomorphismFromZeroObjectToTerminalObject,
     
 end : Description := "IsomorphismFromZeroObjectToTerminalObject as the inverse of IsomorphismFromTerminalObjectToZeroObject" );
 
+##
+AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromDirectProductToDirectSum, 1 ],
+                      [ ProjectionInFactorOfDirectSum, 1 ] ],
+  function( diagram, projection_number )
+    
+    return PreCompose( IsomorphismFromDirectProductToDirectSum( diagram ),
+                       ProjectionInFactorOfDirectSum( diagram, projection_number ) );
+    
+end : Description := "ProjectionInFactorOfDirectProduct using ProjectionInFactorOfDirectSum" );
+
+##
+AddDerivationToCAP( ProjectionInFactorOfDirectSum,
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromDirectSumToDirectProduct, 1 ],
+                      [ ProjectionInFactorOfDirectProduct, 1 ] ],
+  function( diagram, projection_number )
+    
+    return PreCompose( IsomorphismFromDirectSumToDirectProduct( diagram ),
+                       ProjectionInFactorOfDirectProduct( diagram, projection_number ) );
+    
+end : Description := "ProjectionInFactorOfDirectSum using ProjectionInFactorOfDirectProduct" );
+
+##
+AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
+                    [ [ PreCompose, 1 ],
+                      [ InjectionOfCofactorOfDirectSum, 1 ],
+                      [ IsomorphismFromDirectSumToCoproduct, 1 ] ],
+                      
+  function( diagram, injection_number )
+    
+    return PreCompose( InjectionOfCofactorOfDirectSum( diagram, injection_number ),
+                       IsomorphismFromDirectSumToCoproduct( diagram ) );
+    
+end : Description := "InjectionOfCofactorOfCoproduct using InjectionOfCofactorOfDirectSum" );
+
+##
+AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
+                    [ [ PreCompose, 1 ],
+                      [ InjectionOfCofactorOfCoproduct, 1 ],
+                      [ IsomorphismFromCoproductToDirectSum, 1 ] ],
+                      
+  function( diagram, injection_number )
+    
+    return PreCompose( InjectionOfCofactorOfCoproduct( diagram, injection_number ),
+                       IsomorphismFromCoproductToDirectSum( diagram ) );
+    
+end : Description := "InjectionOfCofactorOfDirectSum using InjectionOfCofactorOfCoproduct" );
 
 ###########################
 ##
