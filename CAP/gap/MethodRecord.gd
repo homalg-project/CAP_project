@@ -319,6 +319,129 @@ DirectSum := rec(
     
   end ),
 
+##begin
+
+ProjectionInFactorOfDirectSum := rec(
+  installation_name := "ProjectionInFactorOfDirectSumOp",
+  filter_list := [ IsList, IsInt, "object" ],
+  cache_name := "ProjectionInFactorOfDirectSumOp",
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  return_type := "morphism" ),
+
+ProjectionInFactorOfDirectSumWithGivenDirectSum := rec(
+  installation_name := "ProjectionInFactorOfDirectSumWithGivenDirectSum",
+  filter_list := [ IsList, IsInt, "object" ],
+  cache_name := "ProjectionInFactorOfDirectSumWithGivenDirectSum",
+  universal_type := "Limit",
+  return_type := "morphism" ),
+
+UniversalMorphismIntoDirectSum := rec(
+  installation_name := "UniversalMorphismIntoDirectSumOp",
+  filter_list := [ IsList, IsList, "object" ],
+  cache_name := "UniversalMorphismIntoDirectSumOp",
+  universal_object_position := "Range",
+  universal_type := "Limit",
+  
+  pre_function := function( diagram, source, method_selection_object )
+    local test_object;
+    
+    test_object := Source( source[1] );
+        
+    if false in List( source{[2 .. Length( source ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
+      
+      return [ false, "sources of morphisms must be equal in given source diagram" ];
+      
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
+UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
+  installation_name := "UniversalMorphismIntoDirectSumWithGivenDirectSum",
+  filter_list := [ IsList, IsList, "object" ],
+  cache_name := "UniversalMorphismIntoDirectSumWithGivenDirectSum",
+  universal_type := "Limit",
+  
+  pre_function := function( diagram, source, direct_sum )
+  local test_object;
+    
+    test_object := Source( source[1] );
+        
+    if false in List( source{[2 .. Length( source ) ]}, c -> IsEqualForObjects( Source( c ), test_object ) ) then
+      
+      return [ false, "sources of morphisms must be equal in given source diagram" ];
+      
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
+InjectionOfCofactorOfDirectSum := rec(
+  installation_name := "InjectionOfCofactorOfDirectSumOp",
+  filter_list := [ IsList, IsInt, "object" ],
+  cache_name := "InjectionOfCofactorOfDirectSumOp",
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  return_type := "morphism" ),
+
+InjectionOfCofactorOfDirectSumWithGivenDirectSum := rec(
+  installation_name := "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
+  filter_list := [ IsList, IsInt, "object" ],
+  cache_name := "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
+  universal_type := "Colimit",
+  return_type := "morphism" ),
+
+UniversalMorphismFromDirectSum := rec(
+  installation_name := "UniversalMorphismFromDirectSumOp",
+  filter_list := [ IsList, IsList, "object" ],
+  cache_name := "UniversalMorphismFromDirectSumOp",
+  universal_object_position := "Source",
+  universal_type := "Colimit",
+  
+  pre_function := function( diagram, sink, method_selection_object )
+    local test_object;
+    
+    test_object := Range( sink[1] );
+        
+    if false in List( sink{[2 .. Length( sink ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
+      
+      return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+        
+    fi;
+        
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
+UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
+  installation_name := "UniversalMorphismFromDirectSumWithGivenDirectSum",
+  filter_list := [ IsList, IsList, "object" ],
+  cache_name := "UniversalMorphismFromDirectSumWithGivenDirectSum",
+  universal_type := "Colimit",
+  
+  pre_function := function( diagram, sink, direct_sum )
+    local test_object;
+    
+    test_object := Range( sink[1] );
+        
+    if false in List( sink{[2 .. Length( sink ) ]}, c -> IsEqualForObjects( Range( c ), test_object ) ) then
+      
+      return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+        
+    fi;
+        
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
+
+##end
+
+
+
 TerminalObject := rec(
   installation_name := "TerminalObject",
   filter_list := [ "category" ],

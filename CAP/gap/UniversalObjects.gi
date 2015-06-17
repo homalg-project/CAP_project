@@ -549,6 +549,26 @@ InstallMethod( InjectionOfCofactorOfDirectSum,
 end );
 
 ##
+InstallMethod( UniversalMorphismFromDirectSum,
+               [ IsList, IsList ],
+               
+  function( diagram, sink )
+    
+    return UniversalMorphismFromDirectSumOp( diagram, sink, diagram[1] );
+    
+end );
+
+##
+InstallMethod( UniversalMorphismIntoDirectSum,
+               [ IsList, IsList ],
+               
+  function( diagram, source )
+    
+    return UniversalMorphismIntoDirectSumOp( diagram, source, diagram[1] );
+    
+end );
+
+##
 InstallMethod( IsomorphismFromDirectProductToDirectSum,
                [ IsList ],
                
