@@ -20,6 +20,10 @@ ReadPackage( "CAP", "gap/UniversalObjects.gd" );
 
 ReadPackage( "CAP", "gap/InstallAdds.gd" );
 
+ReadPackage( "CAP", "gap/TheoremParser.gd");
+
+ReadPackage( "CAP", "gap/LogicForCAP.gd");
+
 ReadPackage( "CAP", "gap/OppositeCategory.gd");
 
 ReadPackage( "CAP", "gap/ProductCategory.gd");
@@ -27,12 +31,6 @@ ReadPackage( "CAP", "gap/ProductCategory.gd");
 ReadPackage( "CAP", "gap/CategoriesCategory.gd");
 
 ReadPackage( "CAP", "gap/TerminalCategory.gd");
-
-ReadPackage( "CAP", "gap/DeductiveSystem.gd");
-
-ReadPackage( "CAP", "gap/LogicForDeductiveSystem.gd");
-
-ReadPackage( "CAP", "gap/TheoremParser.gd");
 
 ReadPackage( "CAP", "gap/MethodRecord.gd" );
 

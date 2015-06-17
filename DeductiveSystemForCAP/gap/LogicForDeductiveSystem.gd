@@ -11,32 +11,12 @@
 
 ## Global files and add functions
 
-DeclareGlobalVariable( "CATEGORIES_LOGIC_FILES" );
+DeclareGlobalFunction( "INSTALL_LOGICAL_IMPLICATIONS_HELPER_EVAL_RULES" );
 
-DeclareAttribute( "INSTALL_LOGICAL_IMPLICATIONS",
-                  IsCapCategory );
-
-DeclareGlobalFunction( "INSTALL_LOGICAL_IMPLICATIONS_HELPER" );
-
-DeclareGlobalFunction( "AddTheoremFileToCategory" );
-
-DeclareGlobalFunction( "AddPredicateImplicationFileToCategory" );
-
-DeclareGlobalFunction( "AddEvalRuleFileToCategory" );
 
 ## Theorems
 
-DeclareGlobalFunction( "ADD_THEOREM_TO_CATEGORY" );
-
-DeclareGlobalFunction( "SANITIZE_RECORD" );
-
-DeclareGlobalFunction( "INSTALL_TODO_FOR_LOGICAL_THEOREMS" );
-
 ## True methods
-
-DeclareGlobalFunction( "ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY" );
-
-DeclareGlobalFunction( "INSTALL_PREDICATE_IMPLICATION" );
 
 ## Eval rules
 
@@ -45,8 +25,6 @@ DeclareGlobalFunction( "FIX_WELL_DEFINED_PART" );
 DeclareGlobalFunction( "IS_EQUAL_FOR_SUBTREES_RECURSIVE" );
 
 DeclareGlobalFunction( "APPLY_JUDGEMENT_TO_HISTORY_RECURSIVE" );
-
-DeclareGlobalFunction( "ADD_EVAL_RULES_TO_CATEGORY" );
 
 DeclareGlobalFunction( "CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE" );
 
