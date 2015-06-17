@@ -1048,6 +1048,110 @@ DeclareOperationWithCache( "MorphismBetweenDirectSums",
 DeclareOperationWithCache( "MorphismBetweenDirectSumsOp",
                            [ IsList, IsInt, IsInt, IsCapCategoryMorphism ] );
 
+
+DeclareOperation( "AddProjectionInFactorOfDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddUniversalMorphismFromDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
+                  [ IsCapCategory, IsList ] );
+
 ## Function Attributes
 #! @AutoDoc
 #! @BeginGroup
