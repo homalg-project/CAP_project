@@ -1040,6 +1040,44 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 DeclareOperationWithCache( "DirectSumOp",
                            [ IsList, IsCapCategoryObject ] );
 
+DeclareOperation( "ProjectionInFactorOfDirectSum",
+                  [ IsList, IsInt ] );
+
+DeclareOperation( "ProjectionInFactorOfDirectSumOp",
+                  [ IsList, IsInt, IsCapCategoryObject ] );
+
+DeclareOperation( "InjectionOfCofactorOfDirectSum",
+                  [ IsList, IsInt ] );
+
+DeclareOperation( "InjectionOfCofactorOfDirectSumOp",
+                  [ IsList, IsInt, IsCapCategoryObject ] );
+
+DeclareOperation( "IsomorphismFromDirectSumToDirectProduct",
+                  [ IsList ] );
+
+DeclareOperation( "IsomorphismFromDirectSumToDirectProductOp",
+                  [ IsList, IsCapCategoryObject ] );
+
+DeclareOperation( "IsomorphismFromDirectProductToDirectSum",
+                  [ IsList ] );
+
+DeclareOperation( "IsomorphismFromDirectProductToDirectSumOp",
+                  [ IsList, IsCapCategoryObject ] );
+
+
+DeclareOperation( "IsomorphismFromDirectSumToCoproduct",
+                  [ IsList ] );
+
+DeclareOperation( "IsomorphismFromDirectSumToCoproductOp",
+                  [ IsList, IsCapCategoryObject ] );
+
+DeclareOperation( "IsomorphismFromCoproductToDirectSum",
+                  [ IsList ] );
+
+DeclareOperation( "IsomorphismFromCoproductToDirectSumOp",
+                  [ IsList, IsCapCategoryObject ] );
+
+
 ## convenience methods
 
 DeclareOperationWithCache( "MorphismBetweenDirectSums",
