@@ -528,6 +528,66 @@ end;
 
 MakeReadOnlyGlobal( "DirectSum" );
 
+##
+InstallMethod( ProjectionInFactorOfDirectSum,
+               [ IsList, IsInt ],
+               
+  function( diagram, projection_number )
+    
+    return ProjectionInFactorOfDirectSumOp( diagram, projection_number, diagram[1] );
+    
+end );
+
+##
+InstallMethod( InjectionOfCofactorOfDirectSum,
+               [ IsList, IsInt ],
+               
+  function( diagram, injection_number )
+    
+    return InjectionOfCofactorOfDirectSumOp( diagram, injection_number, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromDirectProductToDirectSum,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromDirectProductToDirectSumOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromDirectSumToDirectProduct,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromDirectSumToDirectProductOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromCoproductToDirectSum,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromCoproductToDirectSumOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromDirectSumToCoproduct,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromDirectSumToCoproductOp( diagram, diagram[1] );
+    
+end );
+
 ####################################
 ## Add methods
 ####################################

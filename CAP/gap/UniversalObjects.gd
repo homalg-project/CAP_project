@@ -1046,10 +1046,16 @@ DeclareOperation( "ProjectionInFactorOfDirectSum",
 DeclareOperation( "ProjectionInFactorOfDirectSumOp",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
+DeclareOperation( "ProjectionInFactorOfDirectSumWithGivenDirectSum",
+                  [ IsList, IsInt, IsCapCategoryObject ] );
+
 DeclareOperation( "InjectionOfCofactorOfDirectSum",
                   [ IsList, IsInt ] );
 
 DeclareOperation( "InjectionOfCofactorOfDirectSumOp",
+                  [ IsList, IsInt, IsCapCategoryObject ] );
+
+DeclareOperation( "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 DeclareOperation( "IsomorphismFromDirectSumToDirectProduct",
