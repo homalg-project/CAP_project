@@ -254,7 +254,7 @@ AddDerivationToCAP( CokernelColiftWithGivenCokernel,
       
 end : Description := "CokernelColiftWithGivenCokernel using EpiAsCokernelColift and CokernelProjWithGivenCokernel" );
 
-#
+##
 AddDerivationToCAP( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
                     [ [ AdditionForMorphisms, 1 ],
                       [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ], ## nr_components would be the correct number
