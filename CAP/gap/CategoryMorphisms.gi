@@ -391,6 +391,12 @@ InstallMethod( IsWellDefinedForMorphisms,
   IsWellDefined
 );
 
+##
+InstallMethod( IsEqualForCache,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  IsIdenticalForMorphisms );
+
 ###########################
 ##
 ## Print

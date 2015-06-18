@@ -188,6 +188,12 @@ InstallMethod( IsWellDefinedForObjects,
   IsWellDefined
 );
 
+##
+InstallMethod( IsEqualForCache,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  IsEqualForObjects );
+
 ###########################
 ##
 ## Print
