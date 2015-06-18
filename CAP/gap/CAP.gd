@@ -500,3 +500,8 @@ DeclareOperation( "SetCachingToCrisp",
 
 DeclareOperation( "DeactivateCaching",
                   [ IsCapCategory, IsString ] );
+
+DeclareGlobalFunction( "SetCachingOfCategory" );
+DeclareGlobalFunction( "SetCachingOfCategoryWeak" );
+DeclareGlobalFunction( "SetCachingOfCategoryCrisp" );
+DeclareGlobalFunction( "DeactivateCachingOfCategory" );

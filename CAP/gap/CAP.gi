@@ -51,55 +51,39 @@ end );
 ##
 InstallGlobalFunction( GET_METHOD_CACHE,
                        
-  function( category, method, number_parameters )
-    local caching_info, cache;
+  function( category, name, number )
+    local cache, cache_type;
     
-    if IsBound( category!.caches.( method ) ) then
+    if IsBound( category!.caches.( name ) ) and IsCachingObject( category!.caches.( name ) ) then
         
-        return category!.caches.( method );
+        return category!.caches.( name );
         
     fi;
     
-    if not IsBound( category!.caching_info.( method ) ) then
+    if IsBound( category!.caches.( name ) ) and IsString( category!.caches.( name ) ) then
         
-        category!.caching_info.( method ) := "weak";
+        cache_type := category!.caches.( name );
         
-        ## special case for morphisms
-        
-        if method = "AdditionForMorphisms" then
-            
-            category!.caching_info.( method ) := "none";
-            
-        fi;
-        
-    fi;
-    
-    caching_info := category!.caching_info.( method );
-    
-    if caching_info = "weak" then
-        
-        cache := CachingObject( category, method, number_parameters );
-        
-        category!.caches.( method ) := cache;
-        
-        return cache;
-        
-    elif caching_info = "crisp" then
-        
-        cache := CachingObject( category, method, number_parameters, true );
-        
-        category!.caches.( method ) := cache;
-        
-        return cache;
-        
-    elif caching_info = "none" then
-        
-        return false;
     else
         
-        Error( "wrong type of install function" );
+        cache_type := category!.default_cache_type;
         
     fi;
+    
+    if cache_type = "weak" then
+        cache := CreateWeakCachingObject( number );
+    elif cache_type = "crisp" then
+        cache := CreateCrispCachingObject( number );
+    elif cache_type = "none" then
+        cache := CreateCrispCachingObject( number );
+        DeactivateCachingObject( cache );
+    else
+        Error( "unrecognized cache type" );
+    fi;
+    
+    category!.caches.(name) := cache;
+    
+    return cache;
     
 end );
 
@@ -243,6 +227,8 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.redirects := rec( );
     
+    obj_rec!.default_cache_type := "weak";
+    
     return obj_rec;
     
 end );
@@ -339,6 +325,7 @@ InstallMethod( SetCaching,
                [ IsCapCategory, IsString, IsString ],
                
   function( category, function_name, caching_info )
+    local current_cache;
     
     if not caching_info in [ "weak", "crisp", "none" ] then
         
@@ -346,7 +333,24 @@ InstallMethod( SetCaching,
         
     fi;
     
-    category!.caching_info.( function_name ) := caching_info;
+    if not IsBound( category!.caches.( function_name ) )
+       or IsString( category!.caches.( function_name ) ) then
+        
+        category!.caches.( function_name ) := caching_info;
+        
+    elif IsCachingObject( category!.caches.( function_name ) ) then
+        
+        current_cache := category!.caches.( function_name );
+        
+        if caching_info = "weak" then
+            SetCachingObjectWeak( current_cache );
+        elif caching_info = "crisp" then
+            SetCachingObjectCrisp( current_cache );
+        elif caching_info = "none" then
+            DeactivateCachingObject( current_cache );
+        fi;
+        
+    fi;
     
 end );
 
@@ -387,19 +391,7 @@ InstallMethod( CachingObject,
   function( cell, name, number )
     local category, cache;
     
-    category := CapCategory( cell );
-    
-    if IsBound( category!.caches.(name) ) then
-        
-        return category!.caches.(name);
-        
-    fi;
-    
-    cache := CachingObject( number );
-    
-    category!.caches.(name) := cache;
-    
-    return cache;
+    return GET_METHOD_CACHE( CapCategory( cell ), name, number );
     
 end );
 
@@ -407,32 +399,55 @@ end );
 InstallMethod( CachingObject,
                [ IsCapCategory, IsString, IsInt ],
                
-  function( arg )
+  function( category, name, number )
     
-    return CallFuncList( CachingObject, Concatenation( arg, [ false ] ) );
+    return GET_METHOD_CACHE( category, name, number );
     
 end );
 
-##
-InstallMethod( CachingObject,
-               [ IsCapCategory, IsString, IsInt, IsBool ],
-               
-  function( category, name, number, is_crisp )
-    local cache;
+InstallGlobalFunction( SetCachingOfCategory,
+  
+  function( category, type )
+    local current_name;
     
-    if IsBound( category!.caches.(name) ) then
-        
-        return category!.caches.(name);
-        
+    if not type in [ "weak", "crisp", "none" ] then
+        Error( "wrong type for caching" );
     fi;
     
-    cache := CachingObject( number, is_crisp );
+    category!.default_cache_type := type;
     
-    category!.caches.(name) := cache;
-    
-    return cache;
+    for current_name in RecNames( category!.caches ) do
+        
+        SetCaching( category, current_name, type );
+        
+    od;
     
 end );
+
+InstallGlobalFunction( SetCachingOfCategoryWeak,
+  
+  function( category )
+    
+    SetCachingOfCategory( category, "weak" );
+    
+end );
+
+InstallGlobalFunction( SetCachingOfCategoryCrisp,
+  
+  function( category )
+    
+    SetCachingOfCategory( category, "crisp" );
+    
+end );
+
+InstallGlobalFunction( DeactivateCachingOfCategory,
+  
+  function( category )
+    
+    SetCachingOfCategory( category, "none" );
+    
+end );
+
 
 #######################################
 ##
@@ -459,7 +474,7 @@ InstallMethodWithCache( CreateCapCategory,
   function( name )
     local category;
     
-    category := rec( caching_info := rec( ) );
+    category := rec( );
     
     category := CREATE_CAP_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
     
