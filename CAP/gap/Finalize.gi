@@ -80,22 +80,22 @@ InstallMethod( IsFinalized,
     
     ## FIXME: enable these lines if the generalized morphism category 
     ## only uses add-methods for installing the primitive operations
-#     if ( CurrentOperationWeight( weight_list, "IsEqualForMorphisms" ) = infinity )
-#        and  ( CurrentOperationWeight( weight_list, "IsIdenticalForMorphisms" ) = infinity ) then
-#         
-#         AddIsEqualForMorphisms( category, RETURN_FAIL );
-#         
-#         AddIsIdenticalForMorphisms( category, RETURN_FAIL );
-#         
-#     elif ( CurrentOperationWeight( weight_list, "IsEqualForMorphisms" ) = infinity ) then
-#       
-#       AddIsEqualForMorphisms( category, IsIdenticalForMorphisms );
-#       
-#     elif ( CurrentOperationWeight( weight_list, "IsIdenticalForMorphisms" ) = infinity ) then
-#       
-#       AddIsIdenticalForMorphisms( category, IsEqualForMorphisms );
-#       
-#     fi;
+    if ( CurrentOperationWeight( weight_list, "IsEqualForMorphisms" ) = infinity )
+       and  ( CurrentOperationWeight( weight_list, "IsIdenticalForMorphisms" ) = infinity ) then
+        
+        AddIsEqualForMorphisms( category, RETURN_FAIL );
+        
+        AddIsIdenticalForMorphisms( category, RETURN_FAIL );
+        
+    elif ( CurrentOperationWeight( weight_list, "IsEqualForMorphisms" ) = infinity ) then
+      
+      AddIsEqualForMorphisms( category, IsIdenticalForMorphisms );
+      
+    elif ( CurrentOperationWeight( weight_list, "IsIdenticalForMorphisms" ) = infinity ) then
+      
+      AddIsIdenticalForMorphisms( category, IsEqualForMorphisms );
+      
+    fi;
     
     while true do
         
