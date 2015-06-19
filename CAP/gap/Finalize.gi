@@ -161,6 +161,8 @@ BindGlobal( "CAP_INTERNAL_CREATE_WITH_GIVEN_FINAL_DERIVATIONS",
     
     for current_recname in recnames do
         
+        ## Note that the clean name will be the function_name, not the install_name
+        
         with_given_position := PositionSublist( current_recname, "WithGiven" );
         
         if with_given_position = fail then continue; fi;

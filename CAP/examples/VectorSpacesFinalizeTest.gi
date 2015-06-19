@@ -70,7 +70,7 @@ end );
 
 ##
 ## the user may assume that Length( object_product_list ) > 1
-AddProjectionInFactorOfDirectProductWithGivenDirectProduct( vecspaces,
+AddProjectionInFactorOfDirectSumWithGivenDirectSum( vecspaces,
 
   function( object_product_list, projection_number, direct_product )
     local components, dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
@@ -98,7 +98,7 @@ AddProjectionInFactorOfDirectProductWithGivenDirectProduct( vecspaces,
 end );
 
 ##
-AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( vecspaces,
+AddUniversalMorphismIntoDirectSumWithGivenDirectSum( vecspaces,
 
   function( diagram, sink, direct_product )
     local components, universal_morphism, morphism;
@@ -184,7 +184,7 @@ AddEpiAsCokernelColift( vecspaces,
 end );
 
 ##
-AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
+AddUniversalMorphismFromDirectSumWithGivenDirectSum( vecspaces,
 
   function( diagram, sink, coproduct )
     local components, universal_morphism, morphism;
@@ -204,7 +204,7 @@ AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
 end );
 
 ##
-AddInjectionOfCofactorOfCoproductWithGivenCoproduct( vecspaces,
+AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( vecspaces,
 
   function( object_product_list, injection_number, coproduct )
     local components, dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
@@ -232,7 +232,7 @@ AddInjectionOfCofactorOfCoproductWithGivenCoproduct( vecspaces,
 end );
 
 ##
-AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
+AddUniversalMorphismFromDirectSumWithGivenDirectSum( vecspaces,
 
   function( diagram, sink, coproduct )
     local components, universal_morphism, morphism;

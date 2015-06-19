@@ -150,6 +150,12 @@ PreCompose := rec(
   
   pre_function := function( mor_left, mor_right )
     
+    if IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) = fail then
+      
+      return [ false, "cannot decide whether morphisms are composable" ];
+      
+    fi;
+    
     if not IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) then
         
         return [ false, "morphisms not composable" ];
@@ -303,23 +309,8 @@ DirectSum := rec(
   argument_list := [ 1 ],
   cache_name := "DirectSumOp",
   universal_type := "LimitColimit",
-  return_type := "object",
-  ## TODO: DirectSum and DirectProduct and Coproduct mustn't be forced to be identical
-  post_function := function( object_product_list, method_selection_object, direct_sum )
-    
-    AddToGenesis( direct_sum, "DirectProductDiagram", object_product_list );
-        
-    AddToGenesis( direct_sum, "CoproductDiagram", object_product_list );
-    
-    SetFilterObj( direct_sum, WasCreatedAsDirectSum );
-    
-    SetFilterObj( direct_sum, WasCreatedAsDirectProduct );
-    
-    SetFilterObj( direct_sum, WasCreatedAsCoproduct );
-    
-  end ),
-
-##begin
+  return_type := "object"
+  ),
 
 ProjectionInFactorOfDirectSum := rec(
   installation_name := "ProjectionInFactorOfDirectSumOp",
@@ -436,11 +427,6 @@ UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
     return [ true ];
   end,
   return_type := "morphism" ),
-
-
-##end
-
-
 
 TerminalObject := rec(
   installation_name := "TerminalObject",
@@ -1370,10 +1356,10 @@ IsWellDefinedForTwoCells := rec(
   no_install := true,
   return_type := "bool" ),
   
-DirectProductDiagonalDifference := rec(
-  installation_name := "DirectProductDiagonalDifferenceOp",
+DirectSumDiagonalDifference := rec(
+  installation_name := "DirectSumDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
-  cache_name := "DirectProductDiagonalDifferenceOp",
+  cache_name := "DirectSumDiagonalDifferenceOp",
   no_install := true,
   return_type := "morphism" ),
   
@@ -1418,10 +1404,41 @@ IsomorphismFromImageObjectToKernelOfCokernel := rec(
   cache_name := "IsomorphismFromImageObjectToKernelOfCokernel",
   return_type := "morphism" ),
 
-CoproductDiagonalDifference := rec(
-  installation_name := "CoproductDiagonalDifferenceOp",
+  
+IsomorphismFromDirectSumToDirectProduct := rec(
+  installation_name := "IsomorphismFromDirectSumToDirectProductOp",
+  filter_list := [ IsList, "object" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromDirectSumToDirectProductOp",
+  return_type := "morphism" ),
+
+IsomorphismFromDirectSumToCoproduct := rec(
+  installation_name := "IsomorphismFromDirectSumToCoproductOp",
+  filter_list := [ IsList, "object" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromDirectSumToCoproductOp",
+  return_type := "morphism" ),
+
+IsomorphismFromDirectProductToDirectSum := rec(
+  installation_name := "IsomorphismFromDirectProductToDirectSumOp",
+  filter_list := [ IsList, "object" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromDirectProductToDirectSumOp",
+  return_type := "morphism" ),
+
+IsomorphismFromCoproductToDirectSum := rec(
+  installation_name := "IsomorphismFromCoproductToDirectSumOp",
+  filter_list := [ IsList, "object" ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromCoproductToDirectSumOp",
+  return_type := "morphism" ),
+
+
+
+DirectSumCodiagonalDifference := rec(
+  installation_name := "DirectSumCodiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
-  cache_name := "CoproductDiagonalDifferenceOp",
+  cache_name := "DirectSumCodiagonalDifferenceOp",
   no_install := true,
   return_type := "morphism" ),
   

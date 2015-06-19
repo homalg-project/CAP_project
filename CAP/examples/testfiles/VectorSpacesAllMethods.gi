@@ -20,6 +20,14 @@ AddIsEqualForMorphisms( vecspaces,
   
 end );
 
+AddIsEqualForObjects( vecspaces,
+
+  function( a, b )
+  
+    return Dimension( a ) = Dimension( b );
+  
+end );
+
 AddIsZeroForMorphisms( vecspaces,
 
   function( a )
@@ -191,7 +199,7 @@ end );
 
 ##
 ## the user may assume that Length( object_product_list ) > 1
-AddInjectionOfCofactorOfCoproduct( vecspaces,
+AddInjectionOfCofactorOfDirectSum( vecspaces,
 
   function( object_product_list, injection_number )
     local components, dim, dim_pre, dim_post, dim_cofactor, coproduct, number_of_objects, injection_of_cofactor;
@@ -224,7 +232,7 @@ end );
 
 ##
 ## the user may assume that Length( object_product_list ) > 1
-AddInjectionOfCofactorOfCoproductWithGivenCoproduct( vecspaces,
+AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( vecspaces,
 
   function( object_product_list, injection_number, coproduct )
     local components, dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
@@ -252,7 +260,7 @@ AddInjectionOfCofactorOfCoproductWithGivenCoproduct( vecspaces,
 end );
 
 ##
-AddUniversalMorphismFromCoproduct( vecspaces,
+AddUniversalMorphismFromDirectSum( vecspaces,
 
   function( diagram, sink )
     local dim, coproduct, components, universal_morphism, morphism;
@@ -276,7 +284,7 @@ AddUniversalMorphismFromCoproduct( vecspaces,
 end );
 
 ##
-AddUniversalMorphismFromCoproductWithGivenCoproduct( vecspaces,
+AddUniversalMorphismFromDirectSumWithGivenDirectSum( vecspaces,
 
   function( diagram, sink, coproduct )
     local components, universal_morphism, morphism;
@@ -309,7 +317,7 @@ end );
 
 #
 # the user may assume that Length( object_product_list ) > 1
-AddProjectionInFactorOfDirectProduct( vecspaces,
+AddProjectionInFactorOfDirectSum( vecspaces,
 
   function( object_product_list, projection_number )
     local components, dim, dim_pre, dim_post, dim_factor, direct_product, number_of_objects, projection_in_factor;
@@ -342,7 +350,7 @@ end );
 
 ##
 ## the user may assume that Length( object_product_list ) > 1
-AddProjectionInFactorOfDirectProductWithGivenDirectProduct( vecspaces,
+AddProjectionInFactorOfDirectSumWithGivenDirectSum( vecspaces,
 
   function( object_product_list, projection_number, direct_product )
     local components, dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
@@ -369,7 +377,7 @@ AddProjectionInFactorOfDirectProductWithGivenDirectProduct( vecspaces,
 
 end );
 
-AddUniversalMorphismIntoDirectProduct( vecspaces,
+AddUniversalMorphismIntoDirectSum( vecspaces,
 
   function( diagram, sink )
     local dim, direct_product, components, universal_morphism, morphism;
@@ -392,7 +400,7 @@ AddUniversalMorphismIntoDirectProduct( vecspaces,
   
 end );
 
-AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( vecspaces,
+AddUniversalMorphismIntoDirectSumWithGivenDirectSum( vecspaces,
 
   function( diagram, sink, direct_product )
     local components, universal_morphism, morphism;

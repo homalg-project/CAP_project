@@ -255,44 +255,44 @@ AddDerivationToCAP( CokernelColiftWithGivenCokernel,
 end : Description := "CokernelColiftWithGivenCokernel using EpiAsCokernelColift and CokernelProjWithGivenCokernel" );
 
 ##
-AddDerivationToCAP( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+AddDerivationToCAP( UniversalMorphismIntoDirectSumWithGivenDirectSum,
                     [ [ AdditionForMorphisms, 1 ],
-                      [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ], ## nr_components would be the correct number
+                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ], ## nr_components would be the correct number
                       [ PreCompose, 2 ] ], ## nr_components would be the correct number
                                        
-  function( diagram, source, direct_product )
+  function( diagram, source, direct_sum )
     local nr_components;
     
     nr_components := Length( source );
   
     return Sum( List( [ 1 .. nr_components ], 
-     i -> PreCompose( source[ i ], InjectionOfCofactorOfCoproductWithGivenCoproduct( diagram, i, direct_product ) ) ) );
+     i -> PreCompose( source[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( diagram, i, direct_sum ) ) ) );
   
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismIntoDirectProductWithGivenDirectProduct using the injections of the direct sum" );
+      Description := "UniversalMorphismIntoDirectSumWithGivenDirectSum using the injections of the direct sum" );
 
 ##
-AddDerivationToCAP( UniversalMorphismFromCoproductWithGivenCoproduct,
+AddDerivationToCAP( UniversalMorphismFromDirectSumWithGivenDirectSum,
                     [ [ AdditionForMorphisms, 1 ],
                       [ PreCompose, 2 ], ## nr_components would be the correct number
-                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ] ], ## nr_components would be the correct number
+                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ] ], ## nr_components would be the correct number
                       
-  function( diagram, sink, coproduct )
+  function( diagram, sink, direct_sum )
     local nr_components;
     
     nr_components := Length( sink );
     
     return Sum( List( [ 1 .. nr_components ], 
-      i -> PreCompose( ProjectionInFactorOfDirectProductWithGivenDirectProduct( diagram, i, coproduct ), sink[ i ] ) ) );
+      i -> PreCompose( ProjectionInFactorOfDirectSumWithGivenDirectSum( diagram, i, direct_sum ), sink[ i ] ) ) );
   
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismFromCoproductWithGivenCoproduct using projections of the direct sum" );
+      Description := "UniversalMorphismFromDirectSumWithGivenDirectSum using projections of the direct sum" );
 
 ##
 AddDerivationToCAP( AdditionForMorphisms,
                     [ [ UniversalMorphismIntoDirectProduct, 1 ],
                       [ IdentityMorphism, 1 ],
-                      [ UniversalMorphismFromCoproduct, 1 ],
+                      [ UniversalMorphismFromDirectSum, 1 ],
                       [ PreCompose, 1 ] ],
                       
   function( mor1, mor2 )
@@ -300,11 +300,11 @@ AddDerivationToCAP( AdditionForMorphisms,
     
     B := Range( mor1 );
     
-    componentwise_morphism := UniversalMorphismIntoDirectProduct( mor1, mor2 );
+    componentwise_morphism := UniversalMorphismIntoDirectSum( mor1, mor2 );
     
     identity_morphism_B := IdentityMorphism( B );
     
-    addition_morphism := UniversalMorphismFromCoproduct( identity_morphism_B, identity_morphism_B );
+    addition_morphism := UniversalMorphismFromDirectSum( identity_morphism_B, identity_morphism_B );
     
     return PreCompose( componentwise_morphism, addition_morphism );
     
@@ -361,41 +361,41 @@ end : CategoryFilter := IsAdditiveCategory,
 ##
 AddDerivationToCAP( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
                     [ [ FiberProductEmbeddingInDirectSum, 1 ],
-                      [ ProjectionInFactorOfDirectProduct, 1 ],
+                      [ ProjectionInFactorOfDirectSum, 1 ],
                       [ PreCompose, 1 ] ],
                       
   function( diagram, projection_number, pullback )
-    local embedding_in_direct_product, direct_product, direct_product_diagram, projection;
+    local embedding_in_direct_sum, direct_product_diagram, projection;
     
-    embedding_in_direct_product := FiberProductEmbeddingInDirectSum( diagram );
+    embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
     
     direct_product_diagram := List( diagram, Source );
     
-    projection := ProjectionInFactorOfDirectProduct( direct_product_diagram, projection_number );
+    projection := ProjectionInFactorOfDirectSum( direct_product_diagram, projection_number );
     
-    return PreCompose( embedding_in_direct_product, projection );
+    return PreCompose( embedding_in_direct_sum, projection );
     
-end : Description := "ProjectionInFactorOfFiberProductWithGivenFiberProduct by composing the embedding of fiber product in the direct product with the direct sum projection" );
+end : Description := "ProjectionInFactorOfFiberProductWithGivenFiberProduct by composing the embedding of fiber product in the direct sum with the direct sum projection" );
 
 
 ##
 AddDerivationToCAP( InjectionOfCofactorOfPushoutWithGivenPushout,
                     [ [ DirectSumProjectionInPushout, 1 ],
-                      [ InjectionOfCofactorOfCoproduct, 1 ],
+                      [ InjectionOfCofactorOfDirectSum, 1 ],
                       [ PreCompose, 1 ] ],
                                          
   function( diagram, injection_number, pushout )
-    local projection_from_coproduct, coproduct, coproduct_diagram, injection;
+    local projection_from_direct_sum, direct_sum_diagram, injection;
     
-    projection_from_coproduct := DirectSumProjectionInPushout( diagram );
+    projection_from_direct_sum := DirectSumProjectionInPushout( diagram );
     
-    coproduct_diagram := List( diagram, Range );
+    direct_sum_diagram := List( diagram, Range );
     
-    injection := InjectionOfCofactorOfCoproduct( coproduct_diagram, injection_number );
+    injection := InjectionOfCofactorOfDirectSum( direct_sum_diagram, injection_number );
     
-    return PreCompose( injection, projection_from_coproduct );
+    return PreCompose( injection, projection_from_direct_sum );
     
-end : Description := "InjectionOfCofactorOfPushoutWithGivenPushout by composing the coproduct injection with the direct sum projection to the pushout" );
+end : Description := "InjectionOfCofactorOfPushoutWithGivenPushout by composing the direct sum injection with the direct sum projection to the pushout" );
 
 
 ##
@@ -597,7 +597,7 @@ AddDerivationToCAP( CoproductFunctorial,
                       [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismFromCoproduct, 1 ] ], 
                                   
-  function( morphism_list, caching_object )
+  function( morphism_list )
     local coproduct_diagram, sink, diagram;
         
         coproduct_diagram := List( morphism_list, mor -> Range( mor ) );
@@ -638,7 +638,7 @@ AddDerivationToCAP( DirectProductFunctorial,
                       [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismIntoDirectProduct, 1 ] ],
                                   
-  function( morphism_list, caching_object )
+  function( morphism_list )
     local direct_product_diagram, source, diagram;
         
         direct_product_diagram := List( morphism_list, mor -> Source( mor ) );
@@ -653,25 +653,43 @@ end : Description := "DirectProductFunctorial using universality of direct produ
 
 ##
 AddDerivationToCAP( DirectSumFunctorial,
-                    [ [ DirectProductFunctorial, 1 ] ],
+                    [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ ProjectionInFactorOfDirectSum, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ UniversalMorphismIntoDirectSum, 1 ] ],
                  
   function( morphism_list )
-    
-    return DirectProductFunctorial( morphism_list );
+    local direct_sum_diagram, source, diagram;
+        
+        direct_sum_diagram := List( morphism_list, mor -> Source( mor ) );
+        
+        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( ProjectionInFactorOfDirectSum( direct_sum_diagram, i ), morphism_list[i] ) );
+        
+        diagram := List( morphism_list, mor -> Range( mor ) );
+        
+        return UniversalMorphismIntoDirectSum( diagram, source );
     
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "DirectSumFunctorial using DirectProductFunctorial");
+      Description := "DirectSumFunctorial using the universal morphism into direct sum");
 
 ##
 AddDerivationToCAP( DirectSumFunctorial,
-                    [ [ CoproductFunctorial, 1 ] ],
+                    [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ InjectionOfCofactorOfDirectSum, 2 ], ## Length( morphism_list ) would be the correct number
+                      [ UniversalMorphismFromDirectSum, 1 ] ], 
                                   
   function( morphism_list )
-    
-    return CoproductFunctorial( morphism_list );
+    local direct_sum_diagram, sink, diagram;
+        
+        direct_sum_diagram := List( morphism_list, mor -> Range( mor ) );
+        
+        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( morphism_list[i], InjectionOfCofactorOfDirectSum( direct_sum_diagram, i ) ) );
+        
+        diagram := List( morphism_list, mor -> Source( mor ) );
+        
+        return UniversalMorphismFromDirectSum( diagram, sink );
     
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "DirectSumFunctorial using CoproductFunctorial" );
+      Description := "DirectSumFunctorial using the universal morphism from direct sum" );
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
@@ -751,48 +769,48 @@ AddDerivationToCAP( InitialObjectFunctorial,
 end : Description := "InitialObjectFunctorial using the universality of the initial object" );
 
 ##
-AddDerivationToCAP( DirectProductDiagonalDifference,
+AddDerivationToCAP( DirectSumDiagonalDifference,
                     [ [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
-                      [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number here
-                      [ UniversalMorphismIntoDirectProduct, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
+                      [ ProjectionInFactorOfDirectSum, 2 ], ## Length( diagram ) would be the correct number here
+                      [ UniversalMorphismIntoDirectSum, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
                       [ AdditiveInverseForMorphisms,1 ],
                       [ AdditionForMorphisms, 1 ] ],
                     
   function( diagram, method_selection_morphism )
-    local direct_product_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2;
+    local direct_sum_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2;
     
-    direct_product_diagram := List( diagram, Source );
+    direct_sum_diagram := List( diagram, Source );
     
     number_of_morphisms := Length( diagram );
     
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( ProjectionInFactorOfDirectProduct( direct_product_diagram, i ), diagram[ i ] ) );
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( ProjectionInFactorOfDirectSum( direct_sum_diagram, i ), diagram[ i ] ) );
     
-    mor1 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    mor1 := CallFuncList( UniversalMorphismIntoDirectSum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
     
-    mor2 := CallFuncList( UniversalMorphismIntoDirectProduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    mor2 := CallFuncList( UniversalMorphismIntoDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
     return mor1 - mor2;
     
-end : Description := "DirectProductDiagonalDifference using the operations defining this morphism" );
+end : Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
 
 
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
                     [ [ FiberProductEmbeddingInDirectSum, 1 ],
-                      [ ProjectionInFactorOfDirectProduct, 1 ],
+                      [ ProjectionInFactorOfDirectSum, 1 ],
                       [ PreCompose, 1 ] ],
                       
   function( diagram, projection_number )
-    local embedding_in_direct_product, direct_product, direct_product_diagram, projection;
+    local embedding_in_direct_sum, direct_sum_diagram, projection;
     
-    embedding_in_direct_product := FiberProductEmbeddingInDirectSum( diagram );
+    embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
     
-    direct_product_diagram := List( diagram, Source );
+    direct_sum_diagram := List( diagram, Source );
     
-    projection := ProjectionInFactorOfDirectProduct( direct_product_diagram, projection_number );
+    projection := ProjectionInFactorOfDirectSum( direct_sum_diagram, projection_number );
     
-    return PreCompose( embedding_in_direct_product, projection );
+    return PreCompose( embedding_in_direct_sum, projection );
     
 end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
 
@@ -817,49 +835,49 @@ AddDerivationToCAP( FiberProductFunctorial,
 end : Description := "FiberProductFunctorial using the universality of the fiber product" );
 
 ##
-AddDerivationToCAP( CoproductDiagonalDifference,
-                    [ [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( diagram ) would be the correct number
+AddDerivationToCAP( DirectSumCodiagonalDifference,
+                    [ [ InjectionOfCofactorOfDirectSum, 2 ], ## Length( diagram ) would be the correct number
                       [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
-                      [ UniversalMorphismFromCoproduct, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
+                      [ UniversalMorphismFromDirectSum, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
                       [ AdditiveInverseForMorphisms, 1 ],
                       [ AdditionForMorphisms, 1 ] ],
                     
   function( diagram, method_selection_morphism )
-    local cobase, coproduct_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2;
+    local cobase, direct_sum_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2;
     
-    coproduct_diagram := List( diagram, Range );
+    direct_sum_diagram := List( diagram, Range );
     
     number_of_morphisms := Length( diagram );
     
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( diagram[ i ], InjectionOfCofactorOfCoproduct( coproduct_diagram, i ) ) );
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( diagram[ i ], InjectionOfCofactorOfDirectSum( direct_sum_diagram, i ) ) );
     
-    mor1 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    mor1 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
     
-    mor2 := CallFuncList( UniversalMorphismFromCoproduct, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    mor2 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
     return mor1 - mor2;
     
-end : Description := "CoproductDiagonalDifference using the operations defining this morphism" );
+end : Description := "DirectSumCodiagonalDifference using the operations defining this morphism" );
 
 
 ##
 AddDerivationToCAP( InjectionOfCofactorOfPushout,
                     [ [ DirectSumProjectionInPushout, 1 ],
-                      [ InjectionOfCofactorOfCoproduct, 1 ],
+                      [ InjectionOfCofactorOfDirectSum, 1 ],
                       [ PreCompose, 1 ] ],
                                          
   function( diagram, injection_number )
-    local projection_from_coproduct, coproduct, coproduct_diagram, injection;
+    local projection_from_direct_sum, direct_sum_diagram, injection;
     
-    projection_from_coproduct := DirectSumProjectionInPushout( diagram );
+    projection_from_direct_sum := DirectSumProjectionInPushout( diagram );
     
-    coproduct_diagram := List( diagram, Range );
+    direct_sum_diagram := List( diagram, Range );
     
-    injection := InjectionOfCofactorOfCoproduct( coproduct_diagram, injection_number );
+    injection := InjectionOfCofactorOfDirectSum( direct_sum_diagram, injection_number );
     
-    return PreCompose( injection, projection_from_coproduct );
+    return PreCompose( injection, projection_from_direct_sum );
     
-end : Description := "InjectionOfCofactorOfPushout by composing the coproduct injection with the direct sum projection to the pushout" );
+end : Description := "InjectionOfCofactorOfPushout by composing the direct sum injection with the direct sum projection to the pushout" );
 
 
 ##
@@ -947,36 +965,36 @@ end : Description := "UniversalMorphismFromImage using ImageEmbedding and MonoAs
 ##
 AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
                     [ [ KernelEmb, 1 ],
-                      [ DirectProductDiagonalDifference, 1 ],
+                      [ DirectSumDiagonalDifference, 1 ],
                       [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
                       [ PreCompose, 1 ] ],
                     
   function( diagram )
     local kernel_of_diagonal_difference;
     
-    kernel_of_diagonal_difference := KernelEmb( DirectProductDiagonalDifference( diagram ) );
+    kernel_of_diagonal_difference := KernelEmb( DirectSumDiagonalDifference( diagram ) );
     
     return PreCompose( IsomorphismFromFiberProductToKernelOfDiagonalDifference( diagram ),
                        kernel_of_diagonal_difference );
     
-end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectProductDiagonalDifference" );
+end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectSumDiagonalDifference" );
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
-                    [ [ UniversalMorphismIntoDirectProduct, 1 ],
-                      [ DirectProductDiagonalDifference, 1 ],
+                    [ [ UniversalMorphismIntoDirectSum, 1 ],
+                      [ DirectSumDiagonalDifference, 1 ],
                       [ KernelLift, 1 ],
                       [ PreCompose, 1 ],
                       [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ] ],
                                        
   function( diagram, source )
-    local test_function, direct_product_diagonal_difference, kernel_lift;
+    local test_function, direct_sum_diagonal_difference, kernel_lift;
     
-    test_function := CallFuncList( UniversalMorphismIntoDirectProduct, source );
+    test_function := CallFuncList( UniversalMorphismIntoDirectSum, source );
     
-    direct_product_diagonal_difference := DirectProductDiagonalDifference( diagram );
+    direct_sum_diagonal_difference := DirectSumDiagonalDifference( diagram );
     
-    kernel_lift := KernelLift( direct_product_diagonal_difference, test_function );
+    kernel_lift := KernelLift( direct_sum_diagonal_difference, test_function );
     
     return PreCompose(
              kernel_lift,
@@ -988,36 +1006,36 @@ end : Description := "UniversalMorphismIntoFiberProduct using the universality o
 ##
 AddDerivationToCAP( DirectSumProjectionInPushout,
                     [ [ CokernelProj, 1 ],
-                      [ CoproductDiagonalDifference, 1 ],
+                      [ DirectSumCodiagonalDifference, 1 ],
                       [ IsomorphismFromCokernelOfDiagonalDifferenceToPushout, 1 ],
                       [ PreCompose, 1 ] ],
                     
   function( diagram )
     local cokernel_proj_of_diagonal_difference;
     
-    cokernel_proj_of_diagonal_difference := CokernelProj( CoproductDiagonalDifference( diagram ) );
+    cokernel_proj_of_diagonal_difference := CokernelProj( DirectSumCodiagonalDifference( diagram ) );
     
     return PreCompose( cokernel_proj_of_diagonal_difference,
                        IsomorphismFromCokernelOfDiagonalDifferenceToPushout( diagram ) );
     
-end : Description := "DirectSumProjectionInPushout as the cokernel projection of CoproductDiagonalDifference" );
+end : Description := "DirectSumProjectionInPushout as the cokernel projection of DirectSumCodiagonalDifference" );
 
 ##
 AddDerivationToCAP( UniversalMorphismFromPushout,
-                    [ [ UniversalMorphismFromCoproduct, 1 ],
-                      [ CoproductDiagonalDifference, 1 ],
+                    [ [ UniversalMorphismFromDirectSum, 1 ],
+                      [ DirectSumCodiagonalDifference, 1 ],
                       [ CokernelColift, 1 ],
                       [ IsomorphismFromPushoutToCokernelOfDiagonalDifference, 1 ],
                       [ PreCompose, 1 ] ],
                     
   function( diagram, sink )
-    local test_function, coproduct_diagonal_difference, cokernel_colift;
+    local test_function, direct_sum_codiagonal_difference, cokernel_colift;
     
-    test_function := CallFuncList( UniversalMorphismFromCoproduct, sink );
+    test_function := CallFuncList( UniversalMorphismFromDirectSum, sink );
     
-    coproduct_diagonal_difference := CoproductDiagonalDifference( diagram );
+    direct_sum_codiagonal_difference := DirectSumCodiagonalDifference( diagram );
     
-    cokernel_colift := CokernelColift( coproduct_diagonal_difference, test_function );
+    cokernel_colift := CokernelColift( direct_sum_codiagonal_difference, test_function );
     
     return PreCompose( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ),
                        cokernel_colift );
@@ -1045,7 +1063,8 @@ end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoZeroObject,
-                    [ [ UniversalMorphismIntoTerminalObject, 1 ],
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoTerminalObject, 1 ],
                       [ IsomorphismFromTerminalObjectToZeroObject, 1 ] ],
   function( obj )
     local category;
@@ -1059,7 +1078,8 @@ end : Description := "UniversalMorphismIntoZeroObject using UniversalMorphismInt
 
 ##
 AddDerivationToCAP( UniversalMorphismFromZeroObject,
-                    [ [ IsomorphismFromZeroObjectToInitialObject, 1 ],
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromZeroObjectToInitialObject, 1 ],
                       [ UniversalMorphismFromInitialObject, 1 ] ],
   function( obj )
     local category;
@@ -1073,7 +1093,8 @@ end : Description := "UniversalMorphismFromZeroObject using UniversalMorphismFro
 
 ##
 AddDerivationToCAP( UniversalMorphismFromInitialObject,
-                    [ [ IsomorphismFromInitialObjectToZeroObject, 1 ],
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromInitialObjectToZeroObject, 1 ],
                       [ UniversalMorphismFromZeroObject, 1 ] ],
   
   function( obj )
@@ -1088,7 +1109,8 @@ end : Description := "UniversalMorphismFromInitialObject using UniversalMorphism
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
-                    [ [ UniversalMorphismIntoZeroObject, 1 ],
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoZeroObject, 1 ],
                       [ IsomorphismFromZeroObjectToTerminalObject, 1 ] ],
   
   function( obj )
@@ -1164,6 +1186,158 @@ AddDerivationToCAP( IsomorphismFromZeroObjectToTerminalObject,
     
 end : Description := "IsomorphismFromZeroObjectToTerminalObject as the inverse of IsomorphismFromTerminalObjectToZeroObject" );
 
+##
+AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromDirectProductToDirectSum, 1 ],
+                      [ ProjectionInFactorOfDirectSum, 1 ] ],
+  function( diagram, projection_number )
+    
+    return PreCompose( IsomorphismFromDirectProductToDirectSum( diagram ),
+                       ProjectionInFactorOfDirectSum( diagram, projection_number ) );
+    
+end : Description := "ProjectionInFactorOfDirectProduct using ProjectionInFactorOfDirectSum" );
+
+##
+AddDerivationToCAP( ProjectionInFactorOfDirectSum,
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromDirectSumToDirectProduct, 1 ],
+                      [ ProjectionInFactorOfDirectProduct, 1 ] ],
+  function( diagram, projection_number )
+    
+    return PreCompose( IsomorphismFromDirectSumToDirectProduct( diagram ),
+                       ProjectionInFactorOfDirectProduct( diagram, projection_number ) );
+    
+end : Description := "ProjectionInFactorOfDirectSum using ProjectionInFactorOfDirectProduct" );
+
+##
+AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
+                    [ [ PreCompose, 1 ],
+                      [ InjectionOfCofactorOfDirectSum, 1 ],
+                      [ IsomorphismFromDirectSumToCoproduct, 1 ] ],
+                      
+  function( diagram, injection_number )
+    
+    return PreCompose( InjectionOfCofactorOfDirectSum( diagram, injection_number ),
+                       IsomorphismFromDirectSumToCoproduct( diagram ) );
+    
+end : Description := "InjectionOfCofactorOfCoproduct using InjectionOfCofactorOfDirectSum" );
+
+##
+AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
+                    [ [ PreCompose, 1 ],
+                      [ InjectionOfCofactorOfCoproduct, 1 ],
+                      [ IsomorphismFromCoproductToDirectSum, 1 ] ],
+                      
+  function( diagram, injection_number )
+    
+    return PreCompose( InjectionOfCofactorOfCoproduct( diagram, injection_number ),
+                       IsomorphismFromCoproductToDirectSum( diagram ) );
+    
+end : Description := "InjectionOfCofactorOfDirectSum using InjectionOfCofactorOfCoproduct" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoDirectSum,
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoDirectProduct, 1 ],
+                      [ IsomorphismFromDirectProductToDirectSum, 1 ] ],
+                    
+  function( diagram, source )
+    
+    return PreCompose( UniversalMorphismIntoDirectProduct( diagram, source ),
+                       IsomorphismFromDirectProductToDirectSum( diagram ) );
+    
+end : Description := "UniversalMorphismIntoDirectSum using UniversalMorphismIntoDirectProduct" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
+                    [ [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoDirectSum, 1 ],
+                      [ IsomorphismFromDirectSumToDirectProduct, 1 ] ],
+                    
+  function( diagram, source )
+    
+    return PreCompose( UniversalMorphismIntoDirectSum( diagram, source ),
+                       IsomorphismFromDirectSumToDirectProduct( diagram ) );
+    
+end : Description := "UniversalMorphismIntoDirectProduct using UniversalMorphismIntoDirectSum" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromDirectSum,
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromDirectSumToCoproduct, 1 ],
+                      [ UniversalMorphismFromCoproduct, 1 ] ],
+                    
+  function( diagram, sink )
+    
+    return PreCompose( IsomorphismFromDirectSumToCoproduct( diagram ),
+                       UniversalMorphismFromCoproduct( diagram, sink ) );
+    
+end : Description := "UniversalMorphismFromDirectSum using UniversalMorphismFromCoproduct" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromCoproduct,
+                    [ [ PreCompose, 1 ],
+                      [ IsomorphismFromCoproductToDirectSum, 1 ],
+                      [ UniversalMorphismFromDirectSum, 1 ] ],
+                    
+  function( diagram, sink )
+    
+    return PreCompose( IsomorphismFromCoproductToDirectSum( diagram ),
+                       UniversalMorphismFromDirectSum( diagram, sink ) );
+    
+end : Description := "UniversalMorphismFromCoproduct using UniversalMorphismFromDirectSum" );
+
+##
+AddDerivationToCAP( IsomorphismFromDirectProductToDirectSum,
+                    [ [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number
+                      [ UniversalMorphismIntoDirectSum, 1 ] ],
+                    
+  function( diagram )
+    local source;
+    
+    source := List( [ 1 .. Length( diagram ) ], i -> ProjectionInFactorOfDirectProduct( diagram, i ) );
+    
+    return UniversalMorphismIntoDirectSum( diagram, source );
+    
+end : Description := "IsomorphismFromDirectProductToDirectSum using direct product projections and universal property of direct sum" );
+
+##
+AddDerivationToCAP( IsomorphismFromDirectProductToDirectSum,
+                    [ [ IsomorphismFromDirectSumToDirectProduct, 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromDirectSumToDirectProduct( diagram ) );
+    
+end : Description := "IsomorphismFromDirectProductToDirectSum as the inverse of IsomorphismFromDirectSumToDirectProduct" );
+
+##
+AddDerivationToCAP( IsomorphismFromDirectSumToDirectProduct,
+                    [ [ ProjectionInFactorOfDirectSum, 2 ], ## Length( diagram ) would be the correct number
+                      [ UniversalMorphismIntoDirectProduct, 1 ] ],
+                    
+  function( diagram )
+    local source;
+    
+    source := List( [ 1 .. Length( diagram ) ], i -> ProjectionInFactorOfDirectSum( diagram, i ) );
+    
+    return UniversalMorphismIntoDirectProduct( diagram, source );
+    
+end : Description := "IsomorphismFromDirectSumToDirectProduct using direct sum projections and universal property of direct product" );
+
+##
+AddDerivationToCAP( IsomorphismFromDirectSumToDirectProduct,
+                    [ [ Inverse, 1 ],
+                      [ IsomorphismFromDirectProductToDirectSum, 1 ] ],
+                      
+  function( diagram );
+    
+    return Inverse( IsomorphismFromDirectProductToDirectSum( diagram ) );
+    
+end : Description := "IsomorphismFromDirectSumToDirectProduct as the inverse of IsomorphismFromDirectProductToDirectSum" );
+
 
 ###########################
 ##
@@ -1211,23 +1385,23 @@ AddDerivationToCAP( DirectProduct,
     
 end : Description := "DirectProduct as Source of ProjectionInFactorOfDirectProduct" );
 
-## should we add IsAdditiveCategory?
+##
 AddDerivationToCAP( DirectProduct,
-                    [ [ DirectSum, 1 ] ],
+                    [ [ IsomorphismFromDirectProductToDirectSum, 1 ] ],
   function( object_product_list )
     
-    return DirectSum( object_product_list );
+    return Source( IsomorphismFromDirectProductToDirectSum( object_product_list ) );
     
-end : Description := "DirectProduct equals DirectSum" );
+end : Description := "DirectProduct as the source of IsomorphismFromDirectProductToDirectSum" );
 
-## should we add IsAdditiveCategory?
+##
 AddDerivationToCAP( Coproduct,
-                    [ [ DirectSum, 1 ] ],
+                    [ [ IsomorphismFromDirectSumToCoproduct, 1 ] ],
   function( object_product_list )
     
-    return DirectSum( object_product_list );
+    return Range( IsomorphismFromDirectSumToCoproduct( object_product_list ) );
     
-end : Description := "Coproduct equals DirectSum"  );
+end : Description := "Coproduct as the range of IsomorphismFromDirectSumToCoproduct" );
 
 ##
 AddDerivationToCAP( TerminalObject,
@@ -1311,7 +1485,7 @@ end : Description := "ImageObject as the source of ImageEmbedding" );
 
 ##
 AddFinalDerivation( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
-                    [ [ DirectProductDiagonalDifference, 1 ], 
+                    [ [ DirectSumDiagonalDifference, 1 ], 
                       [ KernelObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ FiberProduct,
@@ -1326,7 +1500,7 @@ AddFinalDerivation( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
   function( diagram )
     local kernel_of_diagonal_difference;
     
-    kernel_of_diagonal_difference := KernelObject( DirectProductDiagonalDifference( diagram ) );
+    kernel_of_diagonal_difference := KernelObject( DirectSumDiagonalDifference( diagram ) );
     
     return IdentityMorphism( kernel_of_diagonal_difference );
     
@@ -1334,7 +1508,7 @@ end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as
 
 ##
 AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
-                    [ [ DirectProductDiagonalDifference, 1 ], 
+                    [ [ DirectSumDiagonalDifference, 1 ], 
                       [ KernelObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ FiberProduct,
@@ -1349,7 +1523,7 @@ AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
   function( diagram )
     local kernel_of_diagonal_difference;
     
-    kernel_of_diagonal_difference := KernelObject( DirectProductDiagonalDifference( diagram ) );
+    kernel_of_diagonal_difference := KernelObject( DirectSumDiagonalDifference( diagram ) );
     
     return IdentityMorphism( kernel_of_diagonal_difference );
     
@@ -1360,7 +1534,7 @@ end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as
 ##
 AddFinalDerivation( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
                     [ [ Cokernel, 1 ],
-                      [ CoproductDiagonalDifference, 1 ],
+                      [ DirectSumCodiagonalDifference, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Pushout,
                       InjectionOfCofactorOfPushout,
@@ -1374,7 +1548,7 @@ AddFinalDerivation( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
   function( diagram )
     local cokernel_of_diagonal_difference;
     
-    cokernel_of_diagonal_difference := Cokernel( CoproductDiagonalDifference( diagram ) );
+    cokernel_of_diagonal_difference := Cokernel( DirectSumCodiagonalDifference( diagram ) );
     
     return IdentityMorphism( cokernel_of_diagonal_difference );
     
@@ -1383,7 +1557,7 @@ end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as th
 ##
 AddFinalDerivation( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
                     [ [ Cokernel, 1 ],
-                      [ CoproductDiagonalDifference, 1 ],
+                      [ DirectSumCodiagonalDifference, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Pushout,
                       InjectionOfCofactorOfPushout,
@@ -1397,7 +1571,7 @@ AddFinalDerivation( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
   function( diagram )
     local cokernel_of_diagonal_difference;
     
-    cokernel_of_diagonal_difference := Cokernel( CoproductDiagonalDifference( diagram ) );
+    cokernel_of_diagonal_difference := Cokernel( DirectSumCodiagonalDifference( diagram ) );
     
     return IdentityMorphism( cokernel_of_diagonal_difference );
     
@@ -1432,7 +1606,8 @@ end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identi
 
 ##
 AddFinalDerivation( IsomorphismFromInitialObjectToZeroObject,
-                    [ [ ZeroObject, 1 ] ],
+                    [ [ ZeroObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
                     [ InitialObject,
                       UniversalMorphismFromInitialObject
                       ## NOTE: the combination of AddZeroObject and AddUniversalMorphismFromInitialObjectWithGivenInitialObject
@@ -1449,7 +1624,8 @@ end : Description := "IsomorphismFromInitialObjectToZeroObject as the identity o
 
 ##
 AddFinalDerivation( IsomorphismFromZeroObjectToInitialObject,
-                    [ [ ZeroObject, 1 ] ],
+                    [ [ ZeroObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
                     [ InitialObject,
                       UniversalMorphismFromInitialObject
                       ## NOTE: the combination of AddZeroObject and AddUniversalMorphismFromInitialObjectWithGivenInitialObject
@@ -1468,7 +1644,8 @@ end : Description := "IsomorphismFromZeroObjectToInitialObject as the identity o
 
 ##
 AddFinalDerivation( IsomorphismFromTerminalObjectToZeroObject,
-                    [ [ ZeroObject, 1 ] ],
+                    [ [ ZeroObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
                     [ TerminalObject,
                       UniversalMorphismIntoTerminalObject
                       ## NOTE: the combination of AddZeroObject and AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
@@ -1485,7 +1662,8 @@ end : Description := "IsomorphismFromTerminalObjectToZeroObject as the identity 
 
 ##
 AddFinalDerivation( IsomorphismFromZeroObjectToTerminalObject,
-                    [ [ ZeroObject, 1 ] ],
+                    [ [ ZeroObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
                     [ TerminalObject,
                       UniversalMorphismIntoTerminalObject
                       ## NOTE: the combination of AddZeroObject and AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
@@ -1499,3 +1677,76 @@ AddFinalDerivation( IsomorphismFromZeroObjectToTerminalObject,
     return IdentityMorphism( ZeroObject( category ) );
     
 end : Description := "IsomorphismFromZeroObjectToTerminalObject as the identity of the zero object" );
+
+## Final methods for product
+
+##
+AddFinalDerivation( IsomorphismFromDirectSumToDirectProduct,
+                    [ [ DirectSum, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ DirectProduct,
+                      DirectProductFunctorial,
+                      ProjectionInFactorOfDirectProduct,
+#                       ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+                      UniversalMorphismIntoDirectProduct ],
+#                       UniversalMorphismIntoDirectProductWithGivenDirectProduct ],
+                      
+  function( diagram )
+    
+    return IdentityMorphism( DirectSum( diagram ) );
+    
+end : Description := "IsomorphismFromDirectSumToDirectProduct as the identity of the direct sum" );
+
+##
+AddFinalDerivation( IsomorphismFromDirectProductToDirectSum,
+                    [ [ DirectSum, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ DirectProduct,
+                      DirectProductFunctorial,
+                      ProjectionInFactorOfDirectProduct,
+#                       ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+                      UniversalMorphismIntoDirectProduct ],
+#                       UniversalMorphismIntoDirectProductWithGivenDirectProduct ],
+                      
+  function( diagram )
+    
+    return IdentityMorphism( DirectSum( diagram ) );
+    
+end : Description := "IsomorphismFromDirectProductToDirectSum as the identity of the direct sum" );
+
+## Final methods for coproduct
+
+##
+AddFinalDerivation( IsomorphismFromCoproductToDirectSum,
+                    [ [ DirectSum, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ Coproduct,
+                      CoproductFunctorial,
+                      InjectionOfCofactorOfCoproduct,
+#                       InjectionOfCofactorOfCoproductWithGivenCoproduct,
+                      UniversalMorphismFromCoproduct ],
+#                       UniversalMorphismFromCoproductWithGivenCoproduct ],
+                      
+  function( diagram )
+    
+    return IdentityMorphism( DirectSum( diagram ) );
+    
+end : Description := "IsomorphismFromCoproductToDirectSum as the identity of the direct sum" );
+
+##
+AddFinalDerivation( IsomorphismFromDirectSumToCoproduct,
+                    [ [ DirectSum, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ Coproduct,
+                      CoproductFunctorial,
+                      InjectionOfCofactorOfCoproduct,
+#                       InjectionOfCofactorOfCoproductWithGivenCoproduct,
+                      UniversalMorphismFromCoproduct ],
+#                       UniversalMorphismFromCoproductWithGivenCoproduct ],
+                      
+  function( diagram )
+    
+    return IdentityMorphism( DirectSum( diagram ) );
+    
+end : Description := "IsomorphismFromDirectSumToCoproduct as the identity of the direct sum" );
+
