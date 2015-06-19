@@ -70,6 +70,8 @@ InstallMethod( CocomplexCategory,
     
     INSTALL_TODO_LIST_ENTRIES_FOR_COCOMPLEX_CATEGORY( category );
     
+    Finalize( cocomplex_category );
+    
     return cocomplex_category;
     
 end );
@@ -96,6 +98,8 @@ InstallMethod( ComplexCategory,
     SetUnderlyingCategory( complex_category, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_COMPLEX_CATEGORY( category );
+    
+    Finalize( complex_category );
     
     return complex_category;
     
@@ -793,8 +797,6 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             AddToToDoList( new_entry );
             
         od;
-        
-        Finalize( category );
         
     end );
     

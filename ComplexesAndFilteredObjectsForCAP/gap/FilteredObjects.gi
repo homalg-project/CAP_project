@@ -52,19 +52,21 @@ InstallMethod( CategoryOfAscendingFilteredObjects,
                [ IsCapCategory ],
                
   function( category )
-    local name, filtered_object_category;
+    local name, filtered_objects_category;
     
     name := Name( category );
     
     name := Concatenation( "Ascending filtered object category of ", name );
     
-    filtered_object_category := CreateCapCategory( name );
+    filtered_objects_category := CreateCapCategory( name );
     
-    SetUnderlyingCategory( filtered_object_category, category );
+    SetUnderlyingCategory( filtered_objects_category, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_ASCENDING_FILTERED_OBJECTS_CATEGORY( category );
     
-    return filtered_object_category;
+    Finalize( filtered_objects_category );
+    
+    return filtered_objects_category;
     
 end );
 
@@ -84,6 +86,8 @@ InstallMethod( CategoryOfDescendingFilteredObjects,
     SetUnderlyingCategory( filtered_objects_category, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_DESCENDING_FILTERED_OBJECTS_CATEGORY( category );
+    
+    Finalize( filtered_objects_category );
     
     return filtered_objects_category;
     
@@ -547,8 +551,6 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
             AddToToDoList( new_entry );
             
         od;
-        
-        Finalize( category );
         
     end );
     

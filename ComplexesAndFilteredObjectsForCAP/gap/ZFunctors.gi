@@ -54,6 +54,8 @@ InstallMethod( ZFunctorCategory,
     
     INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY( category );
     
+    Finalize( z_functor_category );
+    
     return z_functor_category;
     
 end );
