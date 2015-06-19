@@ -133,14 +133,40 @@ InstallGlobalFunction( InjectionOfCofactor,
   function( object_product_list, injection_number )
     local number_of_objects;
     
+    ## this might only happen when
+    ## the function which was added to construct the coproduct/pushout does not return
+    ## a new object but some part of its input
     if WasCreatedAsCoproduct( object_product_list ) and WasCreatedAsPushout( object_product_list ) then
-        
-      ## this might only happen when
-      ## the function which was added to construct the coproduct/pushout does not return
-      ## a new object but some part of its input
       
       return Error( "this object is a coproduct and a pushout concurrently, thus the injection is ambiguous" );
         
+    fi;
+    
+    if WasCreatedAsCoproduct( object_product_list ) and WasCreatedAsDirectSum( object_product_list ) then
+      
+      return Error( "this object is a coproduct and a direct sum concurrently, thus the injection is ambiguous" );
+        
+    fi;
+    
+    if WasCreatedAsPushout( object_product_list ) and WasCreatedAsDirectSum( object_product_list ) then
+      
+      return Error( "this object is a pushout and a direct sum concurrently, thus the injection is ambiguous" );
+        
+    fi;
+    
+    ## convenience: first argument was created as a direct sum
+    if WasCreatedAsDirectSum( object_product_list ) then
+      
+      number_of_objects := Length( Genesis( object_product_list )!.DirectSumDiagram );
+      
+      if injection_number < 1 or injection_number > number_of_objects then
+      
+        Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
+      
+      fi;
+    
+      return InjectionOfCofactorOfDirectSumWithGivenDirectSum( Genesis( object_product_list )!.DirectSumDiagram, injection_number, object_product_list );
+      
     fi;
     
     ## convenience: first argument was created as a coproduct
@@ -286,14 +312,40 @@ InstallGlobalFunction( ProjectionInFactor,
   function( object_product_list, projection_number )
     local number_of_objects;
     
+    ## this might only happen when
+    ## the function which was added to construct the product/ pullback does not return
+    ## a new object but some part of its input
     if WasCreatedAsDirectProduct( object_product_list ) and WasCreatedAsFiberProduct( object_product_list ) then
-        
-        ## this might only happen when
-        ## the function which was added to construct the product/ pullback does not return
-        ## a new object but some part of its input
         
         return Error( "this object is a product and a pullback concurrently, thus the projection is ambiguous" );
         
+    fi;
+    
+    if WasCreatedAsDirectSum( object_product_list ) and WasCreatedAsFiberProduct( object_product_list ) then
+        
+        return Error( "this object is a direct sum and a pullback concurrently, thus the projection is ambiguous" );
+        
+    fi;
+    
+    if WasCreatedAsDirectProduct( object_product_list ) and WasCreatedAsDirectSum( object_product_list ) then
+        
+        return Error( "this object is a product and a direct sum concurrently, thus the projection is ambiguous" );
+        
+    fi;
+    
+    ## convenience: first argument was created as direct sum
+    if WasCreatedAsDirectSum( object_product_list ) then
+    
+      number_of_objects := Length( Genesis( object_product_list )!.DirectSumDiagram );
+      
+      if projection_number < 1 or projection_number > number_of_objects then
+      
+        Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
+      
+      fi;
+    
+      return ProjectionInFactorOfDirectSumWithGivenDirectSum( Genesis( object_product_list )!.DirectSumDiagram, projection_number, object_product_list );
+    
     fi;
     
     ## convenience: first argument was created as direct product
@@ -445,58 +497,6 @@ end );
 ## Technical methods
 ####################################
 
-## Immediate methods which link DirectProduct and Coproduct to
-## DirectSum in the additive case
-InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
-                        IsCapCategoryObject and WasCreatedAsDirectProduct and IsAdditiveCategory,
-                        0,
-                        
-  function( direct_product )
-    local summands;
-    
-    summands := Genesis( direct_product )!.DirectProductDiagram;
-    
-    SetDirectSumOp( summands, summands[1], direct_product );
-    
-    AddToGenesis( direct_product, "DirectProductDiagram", summands );
-    
-    AddToGenesis( direct_product, "CoproductDiagram", summands ); 
-    
-    SetFilterObj( direct_product, WasCreatedAsDirectSum );
-    
-    SetFilterObj( direct_product, WasCreatedAsCoproduct );
-    
-    SetCoproductOp( summands, summands[1], direct_product );
-    
-    return true;
-    
-end );
-
-InstallImmediateMethod( IS_IMPLIED_DIRECT_SUM,
-                        IsCapCategoryObject and WasCreatedAsCoproduct and IsAdditiveCategory,
-                        0,
-                        
-  function( coproduct )
-    local summands;
-  
-    summands := Genesis( coproduct )!.CoproductDiagram;
-  
-    SetDirectSumOp( summands, summands[1], coproduct );
-    
-    AddToGenesis( coproduct, "DirectProductDiagram", summands );
-    
-    AddToGenesis( coproduct, "CoproductDiagram", summands ); 
-    
-    SetFilterObj( coproduct, WasCreatedAsDirectSum );
-    
-    SetFilterObj( coproduct, WasCreatedAsDirectProduct );
-    
-    SetDirectProductOp( summands, summands[1], coproduct );
-    
-    return true;
-    
-end );
-
 ####################################
 ## Convenience methods
 ####################################
@@ -549,22 +549,43 @@ InstallMethod( InjectionOfCofactorOfDirectSum,
 end );
 
 ##
-InstallMethod( UniversalMorphismFromDirectSum,
-               [ IsList, IsList ],
-               
-  function( diagram, sink )
+InstallGlobalFunction( UniversalMorphismFromDirectSum,
+
+  function( arg )
+    local diagram;
     
-    return UniversalMorphismFromDirectSumOp( diagram, sink, diagram[1] );
+    if Length( arg ) = 2
+       and IsList( arg[1] )
+       and IsList( arg[2] ) then
+       
+       return UniversalMorphismFromDirectSumOp( arg[1], arg[2], arg[1][1] );
+       
+    fi;
     
+    diagram := List( arg, Source );
+    
+    return UniversalMorphismFromDirectSumOp( diagram, arg, diagram[1] );
+  
 end );
 
 ##
-InstallMethod( UniversalMorphismIntoDirectSum,
-               [ IsList, IsList ],
+InstallGlobalFunction( UniversalMorphismIntoDirectSum,
                
-  function( diagram, source )
+  function( arg )
+    local diagram;
     
-    return UniversalMorphismIntoDirectSumOp( diagram, source, diagram[1] );
+    if Length( arg ) = 2
+       and IsList( arg[1] )
+       and IsList( arg[2] ) then
+       
+       return UniversalMorphismIntoDirectSumOp( arg[1], arg[2], arg[1][1] );
+       
+    fi;
+    
+    ##convenience: UniversalMorphismIntoDirectSum( test_projection_1, ..., test_projection_k )
+    diagram := List( arg, Range );
+    
+    return UniversalMorphismIntoDirectSumOp( diagram, arg, diagram[1] );
     
 end );
 
@@ -835,12 +856,12 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
 end );
 
 ##
-InstallMethod( DirectProductDiagonalDifference,
+InstallMethod( DirectSumDiagonalDifference,
                [ IsList ],
                
   function( diagram )
     
-    return DirectProductDiagonalDifferenceOp( diagram, diagram[1] );
+    return DirectSumDiagonalDifferenceOp( diagram, diagram[1] );
     
 end );
 
@@ -976,12 +997,12 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
 end );
 
 ##
-InstallMethod( CoproductDiagonalDifference,
+InstallMethod( DirectSumCodiagonalDifference,
                [ IsList ],
                
   function( diagram )
     
-    return CoproductDiagonalDifferenceOp( diagram, diagram[1] );
+    return DirectSumCodiagonalDifferenceOp( diagram, diagram[1] );
     
 end );
 

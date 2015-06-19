@@ -1058,8 +1058,7 @@ DeclareOperation( "InjectionOfCofactorOfDirectSumOp",
 DeclareOperation( "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
-DeclareOperation( "UniversalMorphismIntoDirectSum",
-                  [ IsList, IsList ] );
+DeclareGlobalFunction( "UniversalMorphismIntoDirectSum" );
 
 DeclareOperation( "UniversalMorphismIntoDirectSumOp",
                   [ IsList, IsList, IsCapCategoryObject ] );
@@ -1067,8 +1066,7 @@ DeclareOperation( "UniversalMorphismIntoDirectSumOp",
 DeclareOperation( "UniversalMorphismIntoDirectSumWithGivenDirectSum",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
-DeclareOperation( "UniversalMorphismFromDirectSum",
-                  [ IsList, IsList ] );
+DeclareGlobalFunction( "UniversalMorphismFromDirectSum" );
 
 DeclareOperation( "UniversalMorphismFromDirectSumOp",
                   [ IsList, IsList, IsCapCategoryObject ] );
@@ -1824,11 +1822,11 @@ DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
 
 
 ##
-DeclareOperation( "DirectProductDiagonalDifference",
+DeclareOperation( "DirectSumDiagonalDifference",
                   [ IsList ] );
 
 ##
-DeclareOperationWithCache( "DirectProductDiagonalDifferenceOp",
+DeclareOperationWithCache( "DirectSumDiagonalDifferenceOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
 ##
@@ -2149,11 +2147,11 @@ DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
 
 ## Main Operations and Attributes
 ##
-DeclareOperation( "CoproductDiagonalDifference",
+DeclareOperation( "DirectSumCodiagonalDifference",
                   [ IsList ] );
 
 ##
-DeclareOperationWithCache( "CoproductDiagonalDifferenceOp",
+DeclareOperationWithCache( "DirectSumCodiagonalDifferenceOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
 ##
