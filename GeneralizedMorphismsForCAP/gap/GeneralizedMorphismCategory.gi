@@ -89,6 +89,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
     
     category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM := GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST;
     
+    if CanComputeIsEqualForObjects( UnderlyingHonestCategory( category ) ) then
+      
+      AddIsEqualForObjects( category,
+        
+        function( object_1, object_2 )
+          
+          return IsEqualForObjects( UnderlyingHonestObject( object_1 ), UnderlyingHonestObject( object_2 ) );
+          
+      end );
+      
+    fi;
+    
     return;
     
 end );
