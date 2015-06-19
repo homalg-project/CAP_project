@@ -395,7 +395,19 @@ InstallMethod( IsWellDefinedForMorphisms,
 InstallMethod( IsEqualForCache,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-  IsIdenticalForMorphisms );
+  function( morphism_1, morphism_2 )
+    local result;
+    
+    
+    result := IsIdenticalForMorphisms( morphism_1, morphism_2 );
+    
+    if result = fail then
+        return false;
+    fi;
+    
+    return result;
+    
+end );
 
 ###########################
 ##
