@@ -1354,7 +1354,55 @@ AddDerivationToCAP( IsomorphismFromDirectSumToDirectProduct,
     
 end : Description := "IsomorphismFromDirectSumToDirectProduct as the inverse of IsomorphismFromDirectProductToDirectSum" );
 
+##
+AddDerivationToCAP( IsomorphismFromCoproductToDirectSum,
+                    [ [ InjectionOfCofactorOfDirectSum, 2 ], ## Length( diagram ) would be the correct number
+                      [ UniversalMorphismFromCoproduct, 1 ] ],
+                    
+  function( diagram )
+    local sink;
+    
+    sink := List( [ 1 .. Length( diagram ) ], i -> InjectionOfCofactorOfDirectSum( diagram, i ) );
+    
+    return UniversalMorphismFromCoproduct( diagram, sink );
+    
+end : Description := "IsomorphismFromCoproductToDirectSum using cofactor injections and the universal property of the coproduct" );
 
+##
+AddDerivationToCAP( IsomorphismFromCoproductToDirectSum,
+                    [ [ Inverse, 1 ],
+                      [ IsomorphismFromDirectSumToCoproduct, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromDirectSumToCoproduct( diagram ) );
+  
+end : Description := "IsomorphismFromCoproductToDirectSum as the inverse of IsomorphismFromDirectSumToCoproduct" );
+
+##
+AddDerivationToCAP( IsomorphismFromDirectSumToCoproduct,
+                    [ [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( diagram ) would be the correct number
+                      [ UniversalMorphismFromDirectSum, 1 ] ],
+                    
+  function( diagram )
+    local sink;
+    
+    sink := List( [ 1 .. Length( diagram ) ], i -> InjectionOfCofactorOfCoproduct( diagram, i ) );
+    
+    return UniversalMorphismFromDirectSum( diagram, sink );
+    
+end : Description := "IsomorphismFromDirectSumToCoproduct using cofactor injections and the universal property of the direct sum" );
+
+##
+AddDerivationToCAP( IsomorphismFromDirectSumToCoproduct,
+                    [ [ Inverse, 1 ],
+                      [ IsomorphismFromCoproductToDirectSum, 1 ] ],
+                    
+  function( diagram )
+    
+    return Inverse( IsomorphismFromCoproductToDirectSum( diagram ) );
+    
+end : Description := "IsomorphismFromDirectSumToCoproduct as the inverse of IsomorphismFromCoproductToDirectSum" );
 ###########################
 ##
 ## Methods returning an object
