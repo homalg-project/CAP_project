@@ -18,6 +18,22 @@ AddDerivationToCAP( IsZeroForObjects,
 end : Description := "IsZeroForObjects by comparing identity morphism with zero morphism" );
 
 ##
+AddDerivationToCAP( IsIdenticalForMorphismsOnMor,
+                    [ [ IsIdenticalForMorphisms, 1 ] ],
+                    
+  function( morphism_1, morphism_2 )
+    
+    if not IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) ) or not IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) ) then
+    
+      return false;
+    
+    fi;
+    
+    return IsIdenticalForMorphisms( morphism_1, morphism_2 );
+    
+end : Description := "IsIdenticalForMorphismsOnMor using IsIdenticalForMorphisms" );
+
+##
 AddDerivationToCAP( IsMonomorphism,
                     [ [ IsZeroForObjects, 1 ],
                       [ KernelObject, 1 ] ],

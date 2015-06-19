@@ -399,7 +399,7 @@ InstallMethod( IsEqualForCache,
     local result;
     
     
-    result := IsIdenticalForMorphisms( morphism_1, morphism_2 );
+    result := IsIdenticalForMorphismsOnMor( morphism_1, morphism_2 );
     
     if result = fail then
         return false;

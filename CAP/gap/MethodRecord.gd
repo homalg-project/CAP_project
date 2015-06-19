@@ -678,6 +678,27 @@ IsIdenticalForMorphisms := rec(
   
   return_type := "bool" ),
 
+IsIdenticalForMorphismsOnMor := rec(
+  installation_name := "IsIdenticalForMorphismsOnMor",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "IsIdenticalForMorphismsOnMor",
+  well_defined_todo := false,
+  
+  redirect_function := function( morphism_1, morphism_2 )
+    
+    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+      
+      return [ true, true ];
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
+  return_type := "bool" ),
 
 IsEqualForObjects := rec(
   installation_name := "IsEqualForObjects",

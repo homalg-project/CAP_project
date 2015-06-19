@@ -1,6 +1,8 @@
 
 LoadPackage( "CAP" );
 
+LoadPackage( "DeductiveSystemForCAP" );
+
 LoadPackage( "MatricesForHomalg" );
 
 #ProfileFunctionsInGlobalVariables( true );
@@ -113,6 +115,14 @@ InstallMethod( VectorSpaceMorphism,
     
     return morphism;
     
+end );
+
+AddIsIdenticalForMorphisms( vecspaces,
+
+  function( a, b )
+  
+    return a!.morphism = b!.morphism;
+  
 end );
 
 AddIsEqualForMorphisms( vecspaces,
