@@ -700,11 +700,11 @@ InstallMethodWithCacheFromObject( MorphismBetweenDirectSumsOp,
     
     for test_diagram_product in morphism_matrix do
       
-      Add( test_diagram_coproduct, UniversalMorphismIntoDirectProduct( diagram_direct_sum_range, test_diagram_product ) );
+      Add( test_diagram_coproduct, UniversalMorphismIntoDirectSum( diagram_direct_sum_range, test_diagram_product ) );
       
     od;
     
-    return UniversalMorphismFromCoproduct( diagram_direct_sum_source, test_diagram_coproduct );
+    return UniversalMorphismFromDirectSum( diagram_direct_sum_source, test_diagram_coproduct );
     
 end: ArgumentNumber := 4 );
 
