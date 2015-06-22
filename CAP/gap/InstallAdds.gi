@@ -173,7 +173,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
                 pre_func_return := CallFuncList( pre_function, arg );
                 if pre_func_return[ 1 ] = false then
-                    Error( Concatenation( "in function ", record.function_name, " of category ", Name( category ), "\n", pre_func_return[ 2 ] ) );
+                    Error( Concatenation( "in function \033[1m", record.function_name, 
+                        "\033[0m\n       of category \033[1m",
+                        Name( category ), ":\033[0m\n\033[1m       ", pre_func_return[ 2 ], "\033[0m\n" ) );
                 fi;
                 
                 result := CallFuncList( func_to_install, arg{ argument_list } );
