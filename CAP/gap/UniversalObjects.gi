@@ -157,57 +157,25 @@ InstallGlobalFunction( InjectionOfCofactor,
     ## convenience: first argument was created as a direct sum
     if WasCreatedAsDirectSum( object_product_list ) then
       
-      number_of_objects := Length( Genesis( object_product_list )!.DirectSumDiagram );
-      
-      if injection_number < 1 or injection_number > number_of_objects then
-      
-        Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
-      
-      fi;
-    
       return InjectionOfCofactorOfDirectSumWithGivenDirectSum( Genesis( object_product_list )!.DirectSumDiagram, injection_number, object_product_list );
       
     fi;
     
     ## convenience: first argument was created as a coproduct
     if WasCreatedAsCoproduct( object_product_list ) then
-    
-      number_of_objects := Length( Genesis( object_product_list )!.CoproductDiagram );
       
-      if injection_number < 1 or injection_number > number_of_objects then
-      
-        Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
-      
-      fi;
-    
       return InjectionOfCofactorOfCoproductWithGivenCoproduct( Genesis( object_product_list )!.CoproductDiagram, injection_number, object_product_list );
     
     fi;
     
     ## convenience: first argument was created as a pushout
     if WasCreatedAsPushout( object_product_list ) then
-    
-      number_of_objects := Length( Genesis( object_product_list )!.PushoutDiagram );
       
-      if injection_number < 1 or injection_number > number_of_objects then
-      
-        Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
-      
-      fi;
-    
       return InjectionOfCofactorOfPushoutWithGivenPushout( Genesis( object_product_list )!.PushoutDiagram, injection_number, object_product_list );
-    
+      
     fi;
     
     ## first argument is a product object
-    number_of_objects := Length( object_product_list );
-  
-    if injection_number < 0 or injection_number > number_of_objects then
-    
-      Error( Concatenation( "there does not exist a ", String( injection_number ), "-th injection" ) );
-    
-    fi;
-    
     if IsCapCategoryObject( object_product_list[1] ) then
       
       return InjectionOfCofactorOfCoproductOp( object_product_list, injection_number, object_product_list[1] );
@@ -335,58 +303,26 @@ InstallGlobalFunction( ProjectionInFactor,
     
     ## convenience: first argument was created as direct sum
     if WasCreatedAsDirectSum( object_product_list ) then
-    
-      number_of_objects := Length( Genesis( object_product_list )!.DirectSumDiagram );
       
-      if projection_number < 1 or projection_number > number_of_objects then
-      
-        Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
-      
-      fi;
-    
       return ProjectionInFactorOfDirectSumWithGivenDirectSum( Genesis( object_product_list )!.DirectSumDiagram, projection_number, object_product_list );
-    
+      
     fi;
     
     ## convenience: first argument was created as direct product
     if WasCreatedAsDirectProduct( object_product_list ) then
-    
-      number_of_objects := Length( Genesis( object_product_list )!.DirectProductDiagram );
       
-      if projection_number < 1 or projection_number > number_of_objects then
-      
-        Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
-      
-      fi;
-    
       return ProjectionInFactorOfDirectProductWithGivenDirectProduct( Genesis( object_product_list )!.DirectProductDiagram, projection_number, object_product_list );
-    
+      
     fi;
     
     ## convenience: first argument was created as a pullback
     if WasCreatedAsFiberProduct( object_product_list ) then
-    
-      number_of_objects := Length( Genesis( object_product_list )!.FiberProductDiagram );
       
-      if projection_number < 1 or projection_number > number_of_objects then
-      
-        Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
-      
-      fi;
-    
       return ProjectionInFactorOfFiberProductWithGivenFiberProduct( Genesis( object_product_list )!.FiberProductDiagram, projection_number, object_product_list );
-    
+      
     fi;
     
     ## assumption: first argument is a product object
-    number_of_objects := Length( object_product_list );
-  
-    if projection_number < 0 or projection_number > number_of_objects then
-    
-      Error( Concatenation( "there does not exist a ", String( projection_number ), "-th projection" ) );
-    
-    fi;
-    
     if IsCapCategoryObject( object_product_list[1] )  then 
       
       return ProjectionInFactorOfDirectProductOp( object_product_list, projection_number, object_product_list[1] );
