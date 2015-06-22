@@ -223,7 +223,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphism,
         Error( "range of range aid and associated morphism must be equal objects" );
         
     fi;
-    
+
     generalized_morphism := rec( );
     
     ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphism,

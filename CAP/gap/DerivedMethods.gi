@@ -22,8 +22,26 @@ AddDerivationToCAP( IsIdenticalForMorphismsOnMor,
                     [ [ IsIdenticalForMorphisms, 1 ] ],
                     
   function( morphism_1, morphism_2 )
+    local value_1, value_2;
     
-    if not IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) ) or not IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) ) then
+    value_1 := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
+    
+    if value_1 = fail then
+      
+      return fail;
+      
+    fi;
+    
+    value_2 := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    
+    if value_2 = fail then
+      
+      return fail;
+      
+    fi;
+    
+    
+    if ( value_1 = false ) or ( value_2 = false ) then
     
       return false;
     
