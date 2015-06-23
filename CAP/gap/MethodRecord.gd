@@ -82,7 +82,7 @@ KernelObject := rec(
   filter_list := [ "morphism" ],
   universal_type := "Limit",
   return_type := "object",
-  dual_operation := "CoKernel" ),
+  dual_operation := "Cokernel" ),
 
 KernelEmb := rec(
   installation_name := "KernelEmb",

@@ -117,6 +117,82 @@ InstallMethodWithToDoForIsWellDefined( Opposite,
     
 end );
 
+DeclareGlobalFunction( "CAP_INTERNAL_OPPOSITE_RECURSIVE" );
+
+InstallGlobalFunction( CAP_INTERNAL_OPPOSITE_RECURSIVE,
+  
+  function( obj )
+    
+    if IsCapCategory( obj ) or IsCapCategoryCell( obj ) then
+        return Opposite( obj );
+    elif IsList( obj ) then
+        return List( obj, CAP_INTERNAL_OPPOSITE_RECURSIVE );
+    else
+        return obj;
+    fi;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
+  
+  function( opposite_category, category )
+    local recnames, current_recname, category_weight_list, dual_name, current_entry, func,
+          current_add;
+    
+    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    
+    category_weight_list := category!.derivations_weight_list;
+    
+    for current_recname in recnames do
+        
+        current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
+        
+        if IsBound( current_entry.no_install ) and current_entry.no_install = true then
+            continue;
+        fi;
+        
+        ## FIXME: No coimage yet!
+        if PositionSublist( current_recname, "Image" ) <> fail then
+            continue;
+        fi;
+        
+        ## No support for twocells
+        if current_recname in [ "HorizontalPreCompose",
+                                "VerticalPreCompose",
+                                "IdenticalTwoCell" ] then
+            continue;
+        fi;
+        
+        if IsBound( current_entry.dual_operation ) then
+            dual_name := current_entry.dual_operation;
+        else
+            dual_name := current_recname;
+        fi;
+        
+        if CurrentOperationWeight( category_weight_list, dual_name ) = infinity then
+            continue;
+        fi;
+        
+        func :=function( arg )
+            local op_arg, result;
+            
+            op_arg := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+            
+            result := CallFuncList( ValueGlobal( dual_name ), op_arg );
+            
+            return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
+            
+        end;
+        
+        current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
+        
+        current_add( opposite_category, func );
+        
+    od;
+    
+end );
+
+
 ##
 InstallMethod( Opposite,
                [ IsCapCategory, IsString ],
@@ -124,11 +200,17 @@ InstallMethod( Opposite,
   function( category, name )
     local opposite_category;
     
+    if not IsFinalized( category ) then
+        Error( "Input category must be finalized to create opposite category" );
+    fi;
+    
     opposite_category := CreateCapCategory( name );
     
     SetWasCreatedAsOppositeCategory( opposite_category, true );
     
     SetOpposite( opposite_category, category );
+    
+    CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
     
@@ -177,300 +259,11 @@ InstallImmediateMethod( Range,
     
 end );
 
-##
-InstallMethod( PreCompose,
-               [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
-               -1,
-               
-  function( left, right )
-    
-    return Opposite( PreCompose( Opposite( right ), Opposite( left ) ) );
-    
-end );
-
-##
-InstallMethod( PostCompose,
-               [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
-               -1,
-               
-  function( left, right )
-    
-    return Opposite( PreCompose( Opposite( left ), Opposite( right ) ) );
-    
-end );
-
-##
-InstallMethod( IdentityMorphism,
-               [ IsCapCategoryOppositeObjectRep ],
-               -1,
-               
-  function( obj )
-    
-    return Opposite( IdentityMorphism( Opposite( obj ) ) );
-    
-end );
-
-##
-InstallMethod( ZeroObject,
-               [ IsCapCategory and WasCreatedAsOppositeCategory ],
-               -1,
-               
-  function( category )
-    
-    return Opposite( ZeroObject( Opposite( category ) ) );
-    
-end );
-
-##
-InstallMethod( MonoAsKernelLift,
-              [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
-              -1,
-              
-  function( monomorphism, test_morphism )
-    
-    return Opposite( EpiAsCokernelColift( Opposite( monomorphism ), Opposite( test_morphism ) ) );
-    
-end );
-
-##
-InstallMethod( EpiAsCokernelColift,
-              [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
-              -1,
-              
-  function( epimorphism, test_morphism )
-    
-    return Opposite( MonoAsKernelLift( Opposite( epimorphism ), Opposite( test_morphism ) ) );
-    
-end );
-
-##
-InstallMethod( InverseOp,
-               [ IsCapCategoryOppositeMorphismRep ],
-               -1,
-               
-  function( mor )
-    
-    return Opposite( Inverse( Opposite( mor ) ) );
-    
-end );
-
-##
-InstallMethod( Kernel,
-               [ IsCapCategoryOppositeMorphismRep ],
-               -1,
-               
-  function( mor )
-    
-    return Opposite( Cokernel( Opposite( mor ) ) );
-    
-end );
-
-##
-InstallMethod( KernelEmb,
-               [ IsCapCategoryOppositeMorphismRep ],
-               -1,
-               
-  function( mor )
-    
-    return Opposite( CokernelProj( Opposite( mor ) ) );
-    
-end );
-
-##
-InstallMethod( KernelLift,
-               [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
-               -1,
-               
-  function( mor, test_morphism )
-    
-    return Opposite( CokernelColift( Opposite( mor ), Opposite( test_morphism ) ) );
-    
-end );
-
-##
-InstallMethod( Cokernel,
-               [ IsCapCategoryOppositeMorphismRep ],
-               -1,
-               
-  function( mor )
-    
-    return Opposite( Kernel( Opposite( mor ) ) );
-    
-end );
-
-##
-InstallMethod( CokernelProj,
-               [ IsCapCategoryOppositeMorphismRep ],
-               -1,
-               
-  function( mor )
-    
-    return Opposite( KernelEmb( Opposite( mor ) ) );
-    
-end );
-
-##
-InstallMethod( CokernelColift,
-               [ IsCapCategoryOppositeMorphismRep, IsCapCategoryOppositeMorphismRep ],
-               -1,
-               
-  function( mor, test_morphism )
-    
-    return Opposite( KernelLift( Opposite( mor ), Opposite( test_morphism ) ) );
-    
-end );
-
-##
-InstallMethod( MorphismFromZeroObject,
-               [ IsCapCategoryOppositeObjectRep ],
-               -1,
-               
-  function( obj )
-    
-    return Opposite( MorphismIntoZeroObject( Opposite( obj ) ) );
-    
-end );
-
-##
-InstallMethod( MorphismIntoZeroObject,
-               [ IsCapCategoryOppositeObjectRep ],
-               -1,
-               
-  function( obj )
-    
-    return Opposite( MorphismFromZeroObject( Opposite( obj ) ) );
-    
-end );
-
-##
-InstallMethod( ZeroMorphism,
-               [ IsCapCategoryOppositeObjectRep, IsCapCategoryOppositeObjectRep ],
-               -1,
-               
-  function( obj_source, obj_range )
-    
-    return Opposite( ZeroMorphism( Opposite( obj_range ), Opposite( obj_source ) ) );
-    
-end );
-
-##
-InstallMethod( IsWellDefined,
-               [ IsCapCategoryOppositeObjectRep ],
-               -1,
-  function( obj )
-    
-    return IsWellDefined( Opposite( obj ) );
-    
-end );
-
-##
-InstallMethod( IsWellDefined,
-               [ IsCapCategoryOppositeMorphismRep ],
-               -1,
-  function( mor )
-    
-    return IsWellDefined( Opposite( mor ) );
-    
-end );
-
-# ##
-# InstallMethod( DirectSumOp,
-#                [ IsList, IsCapCategoryOppositeObjectRep ],
-#                -1,
-#                
-#   function( obj_list, obj1 )
-#     
-#     return Opposite( DirectSumOp( List( obj_list, Opposite ), Opposite( obj1 ) ) );
-#     
-# end );
-# 
-# ##
-# InstallMethod( ProjectionInFirstFactor,
-#                [ IsCapCategoryOppositeObjectRep ],
-#                -1,
-#                
-#   function( sum_obj )
-#     
-#     return Opposite( InjectionFromFirstSummand( Opposite( sum_obj ) ) );
-#     
-# end );
-# 
-# ##
-# InstallMethod( ProjectionInSecondFactor,
-#                [ IsCapCategoryOppositeObjectRep ],
-#                -1,
-#                
-#   function( sum_obj )
-#     
-#     return Opposite( InjectionFromSecondSummand( Opposite( sum_obj ) ) );
-#     
-# end );
-# 
-# ##
-# InstallMethod( InjectionFromFirstSummand,
-#                [ IsCapCategoryOppositeObjectRep ],
-#                -1,
-#                
-#   function( sum_obj )
-#     
-#     return Opposite( ProjectionInFirstFactor( Opposite( sum_obj ) ) );
-#     
-# end );
-# 
-# ##
-# InstallMethod( InjectionFromSecondSummand,
-#                [ IsCapCategoryOppositeObjectRep ],
-#                -1,
-#                
-#   function( sum_obj )
-#     
-#     return Opposite( ProjectionInSecondFactor( Opposite( sum_obj ) ) );
-#     
-# end );
-
 ## TODO: Massig todo-list entries die attribute von Category/Object/Morphism auf Opposite übertragen.
 
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
                        
   function( category )
-    local entry_list, entry;
-    
-    ## TODO: Maintain this list
-    entry_list := [ [ "CanComputeMonoAsKernelLift", "CanComputeEpiAsCokernelColift" ],
-                    [ "CanComputeEpiAsCokernelColift", "CanComputeMonoAsKernelLift" ],
-                      "CanComputeIdentityMorphism",
-                      "CanComputeInverseImmutable",
-                    [ "CanComputeKernelObject", "CanComputeCokernel" ],
-                    [ "CanComputeKernelEmb", "CanComputeCokernelProj" ],
-                    [ "CanComputeKernelLift", "CanComputeCokernelColift" ],
-                    [ "CanComputeCokernel", "CanComputeKernelObject" ],
-                    [ "CanComputeCokernelProj", "CanComputeKernelEmb" ],
-                    [ "CanComputeCokernelColift", "CanComputeKernelLift" ],
-                    [ "CanComputePreCompose", "CanComputePostCompose" ],
-                    [ "CanComputePostCompose", "CanComputePreCompose" ],
-                      "CanComputeZeroObject",
-                      "CanComputeZeroMorphism",
-                      "CanComputeDirectSum"
-#                     [ "CanComputeProjectionInFirstFactor", "CanComputeInjectionFromFirstSummand" ],
-#                     [ "CanComputeProjectionInSecondFactor", "CanComputeInjectionFromSecondSummand" ],
-#                     [ "CanComputeInjectionFromFirstSummand", "CanComputeProjectionInFirstFactor" ],
-#                     [ "CanComputeInjectionFromSecondSummand", "CanComputeProjectionInSecondFactor" ]
-                  # ...
-                  ];
-    
-    entry_list := List( entry_list, i -> [ "technical implication", i ] );
-    
-    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "Opposite" ] ],
-                                                         [ category, [ Opposite, category ] ],
-                                                         entry_list );
-    
-    AddToToDoList( entry );
-    
-    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "Opposite" ] ],
-                                                         [ [ Opposite, category ], category ],
-                                                         entry_list );
- 
-    AddToToDoList( entry );
     
 end );
 
