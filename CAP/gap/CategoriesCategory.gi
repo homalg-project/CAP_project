@@ -370,22 +370,6 @@ InstallMethod( AddMorphismFunction,
 end );
 
 ##
-InstallMethod( CatFunctorPreimageList,
-               [ IsCapCategoryCell ],
-               
-  function( obj )
-    
-    if not IsBound( obj!.CatFunctorPreimageList ) then
-        
-        obj!.CatFunctorPreimageList := rec( );
-        
-    fi;
-    
-    return obj!.CatFunctorPreimageList;
-    
-end );
-
-##
 InstallMethod( ObjectCache,
                [ IsCapFunctor ],
                
@@ -471,7 +455,7 @@ end );
 AddPreCompose( CapCat,
                
   function( left_functor, right_functor )
-    local obj_func, mor_func, new_functor;
+    local new_functor;
     
     new_functor := CapFunctor( Concatenation( "Composition of ",
                                                  Name( left_functor ),
@@ -928,6 +912,32 @@ InstallMethod( InstallNaturalTransformation,
     od;
     
     trafo!.is_already_installed := true;
+    
+end );
+
+##
+AddVerticalPreCompose( CapCat,
+               
+  function( above_transformation, below_transformation )
+    local new_natural_transformation;
+    
+    new_natural_transformation := NaturalTransformation( Concatenation( "Vertical composition of ",
+                                                         Name( above_transformation ),
+                                                         " and ",
+                                                         Name( below_transformation ) ),
+                                                         Source( above_transformation ),
+                                                         Range( below_transformation ) );
+    
+    AddNaturalTransformationFunction( new_natural_transformation,
+      
+      function( source_value, object, range_value )
+        
+        return PreCompose( ApplyNaturalTransformation( above_transformation, object ),
+                           ApplyNaturalTransformation( below_transformation, object ) );
+        
+      end );
+    
+    return new_natural_transformation;
     
 end );
 

@@ -268,15 +268,6 @@ DeclareOperation( "InstallNaturalTransformation",
 ####################################
 
 #! @Description
-#!  Every category cell which is the result of a functor computation stores its preimage(s) in this record.
-#!  The preimages are stored because they CAN be elements of product categories.
-#!  If this preimage is deleted and a new one is generated for the call of this functor
-#!  a new image is created. This might cause inconsistencies.
-#! @Returns IsRecord
-DeclareOperation( "CatFunctorPreimageList",
-                  [ IsCapCategoryCell ] );
-
-#! @Description
 #!  Retuns the caching object which stores the results of the functor <A>functor</A> applied to objects.
 #! @Arguments functor
 #! @Returns IsCachingObject
