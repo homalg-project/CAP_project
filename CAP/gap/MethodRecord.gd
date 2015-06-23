@@ -185,9 +185,26 @@ PostCompose := rec(
   installation_name := "PostCompose",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "PostCompose",
-  no_install := true,
+  
+  pre_function := function( mor_right, mor_left )
+    
+    if IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) = fail then
+      
+      return [ false, "cannot decide whether morphisms are composable" ];
+      
+    fi;
+    
+    if not IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) then
+        
+        return [ false, "morphisms not composable" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
+  
   return_type := "morphism",
-  dual_operation := "PreCompose" ), #there is no Add-method
+  dual_operation := "PreCompose" ),
 
 ZeroObject := rec(
   installation_name := "ZeroObject",
