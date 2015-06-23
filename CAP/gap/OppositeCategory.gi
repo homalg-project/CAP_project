@@ -137,7 +137,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
     local recnames, current_recname, category_weight_list, dual_name, current_entry, func,
-          current_add;
+          current_add, create_func;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
@@ -173,16 +173,22 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
-        func :=function( arg )
-            local op_arg, result;
+        create_func := function( dual_name )
             
-            op_arg := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-            
-            result := CallFuncList( ValueGlobal( dual_name ), op_arg );
-            
-            return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
+            return function( arg )
+                local op_arg, result;
+                
+                op_arg := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+                
+                result := CallFuncList( ValueGlobal( dual_name ), op_arg );
+                
+                return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
+                
+            end;
             
         end;
+        
+        func := create_func( dual_name );
         
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
         
