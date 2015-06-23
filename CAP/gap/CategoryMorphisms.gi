@@ -296,49 +296,6 @@ InstallMethodWithCacheFromObject( TransportHom,
     
 end );
 
-
-###########################
-##
-## PreCompose
-##
-###########################
-
-## FIXME: These methods break the derivations. They maybe should included to the MethodRecord.
-
-## Caching this method is not necessary. It does not create any new object.
-## Note: this actually is an in-build relation which is not done by the deductive system.
-InstallMethod( PreCompose,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism and IsOne ],
-               9999,
-  function( morphism, id )
-    
-    if not IsEqualForObjects( Range( morphism ), Source( id ) ) then
-        
-        Error( "morphisms are not composable" );
-        
-    fi;
-    
-    return morphism;
-    
-end );
-
-## Caching this method is not necessary. It does not create any new object.
-## Note: this actually is an in-build relation which is not done by the deductive system.
-InstallMethod( PreCompose,
-               [ IsCapCategoryMorphism and IsOne, IsCapCategoryMorphism ],
-               9999,
-  function( id, morphism )
-    
-    if not IsEqualForObjects( Source( morphism ), Range( id ) ) then
-        
-        Error( "morphisms are not composable" );
-        
-    fi;
-    
-    return morphism;
-    
-end );
-
 ###########################
 ##
 ## IsWellDefined
