@@ -370,22 +370,6 @@ InstallMethod( AddMorphismFunction,
 end );
 
 ##
-InstallMethod( CatFunctorPreimageList,
-               [ IsCapCategoryCell ],
-               
-  function( obj )
-    
-    if not IsBound( obj!.CatFunctorPreimageList ) then
-        
-        obj!.CatFunctorPreimageList := rec( );
-        
-    fi;
-    
-    return obj!.CatFunctorPreimageList;
-    
-end );
-
-##
 InstallMethod( ObjectCache,
                [ IsCapFunctor ],
                
