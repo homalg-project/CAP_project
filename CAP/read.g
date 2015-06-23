@@ -19,6 +19,8 @@ ReadPackage( "CAP", "gap/TheoremParser.gi");
 
 ReadPackage( "CAP", "gap/LogicForCAP.gi");
 
+ReadPackage( "CAP", "gap/DerivedMethods.gi");
+
 ReadPackage( "CAP", "gap/OppositeCategory.gi");
 
 ReadPackage( "CAP", "gap/ProductCategory.gi");
@@ -27,6 +29,5 @@ ReadPackage( "CAP", "gap/CategoriesCategory.gi");
 
 ReadPackage( "CAP", "gap/TerminalCategory.gi");
 
-ReadPackage( "CAP", "gap/DerivedMethods.gi");
 
 

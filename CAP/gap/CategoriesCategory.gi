@@ -941,6 +941,74 @@ AddVerticalPreCompose( CapCat,
     
 end );
 
+##
+InstallMethodWithCacheFromObject( HorizontalPreComposeNaturalTransformationWithFunctor,
+                                  [ IsCapNaturalTransformation, IsCapFunctor ],
+                           
+  function( natural_transformation, functor )
+    local composition;
+    
+    composition := NaturalTransformation( Concatenation( "Horizontal composition of natural transformation ",
+                                                         Name( natural_transformation ),
+                                                         " and functor ",
+                                                         Name( functor ) ),
+                                                         PreCompose( Source( natural_transformation ), functor ),
+                                                         PreCompose( Range( natural_transformation ), functor ) );
+    
+    AddNaturalTransformationFunction( composition,
+      
+      function( source_value, object, range_value )
+        
+        return ApplyFunctor( functor, ApplyNaturalTransformation( natural_transformation, object ) );
+        
+      end );
+    
+    return composition;
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( HorizontalPreComposeFunctorWithNaturalTransformation,
+                                  [ IsCapFunctor, IsCapNaturalTransformation ],
+                           
+  function( functor, natural_transformation )
+    local composition;
+    
+    composition := NaturalTransformation( Concatenation( "Horizontal composition of functor ",
+                                                         Name( functor ),
+                                                         " and natural transformation ",
+                                                         Name( natural_transformation ) ),
+                                                         PreCompose( functor, Source( natural_transformation ) ),
+                                                         PreCompose( functor, Range( natural_transformation ) ) );
+    
+    AddNaturalTransformationFunction( composition,
+      
+      function( source_value, object, range_value )
+        
+        return ApplyNaturalTransformation( natural_transformation, ApplyFunctor( functor, object ) );
+        
+      end );
+    
+    return composition;
+    
+end );
+
+##
+AddHorizontalPreCompose( CapCat,
+  
+  function( left_natural_transformation, right_natural_transformation )
+    local pre_compose_transfo_functor, pre_compose_functor_transfo;
+    
+    pre_compose_transfo_functor := 
+          HorizontalPreComposeNaturalTransformationWithFunctor( left_natural_transformation, Source( right_natural_transformation ) );
+          
+    pre_compose_functor_transfo :=
+          HorizontalPreComposeFunctorWithNaturalTransformation( Range( left_natural_transformation ), right_natural_transformation );
+    
+    return VerticalPreCompose( pre_compose_transfo_functor, pre_compose_functor_transfo );
+    
+end );
+
 ###################################
 ##
 ## IsWellDefined
