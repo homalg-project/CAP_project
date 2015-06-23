@@ -239,6 +239,16 @@ AddDerivationToCAP( PostCompose,
 end : Description := "PostCompose using PreCompose and swapping arguments" );
 
 ##
+AddDerivationToCAP( PreCompose,
+                    [ [ PostCompose, 1 ] ],
+                    
+  function( left_mor, right_mor )
+    
+    return PostCompose( right_mor, left_mor );
+    
+end : Description := "PreCompose using PostCompose and swapping arguments" );
+
+##
 AddDerivationToCAP( Inverse,
                     [ [ IdentityMorphism, 1 ],
                       [ MonoAsKernelLift, 1 ] ],

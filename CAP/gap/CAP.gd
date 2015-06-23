@@ -410,6 +410,17 @@ DeclareOperation( "AddPreCompose",
 DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsList ] );
 
+DeclareOperation( "AddPostCompose",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPostCompose",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPostCompose",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPostCompose",
+                  [ IsCapCategory, IsList ] );
 
 
 #! @EndGroup
