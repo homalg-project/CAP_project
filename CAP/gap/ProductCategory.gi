@@ -80,7 +80,8 @@ InstallMethodWithCacheFromObject( ProductOp,
     
     namestring := Concatenation( "Product of: " , namestring );
     
-    product_category := rec( caches := rec( ) );
+    product_category := rec( caches := rec( ),
+                             default_cache_type := "weak" );
     
     ObjectifyWithAttributes( product_category, TheTypeOfCapProductCategories,
                              Components, category_list,
