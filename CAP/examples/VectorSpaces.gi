@@ -937,7 +937,7 @@ id_to_zero := NaturalTransformation( "One to zero in VectorSpaces", identity_fun
 
 AddNaturalTransformationFunction( id_to_zero,
                                   
-  function( obj, one_obj, zero )
+  function( one_obj, obj, zero )
     
     return MorphismIntoZeroObject( obj );
     
@@ -972,7 +972,7 @@ id_to_double := NaturalTransformation( "Id to double in vecspaces", identity_fun
 
 AddNaturalTransformationFunction( id_to_double,
                                   
-  function( obj, new_source, new_range )
+  function( new_source, obj, new_range )
     local dim, matr;
     
     dim := Dimension( obj );
@@ -984,6 +984,25 @@ AddNaturalTransformationFunction( id_to_double,
     return VectorSpaceMorphism( new_source, matr, new_range );
     
 end );
+
+double_swap_components := NaturalTransformation( "double swap components", double_functor, double_functor );
+
+AddNaturalTransformationFunction( double_swap_components,
+  
+  function( doubled_source, obj, doubled_range )
+    local zero_morphism, one_morphism;
+    
+    zero_morphism := ZeroMorphism( obj, obj );
+    
+    one_morphism := IdentityMorphism( obj );
+    
+    return MorphismBetweenDirectSums( [ [ zero_morphism, one_morphism ], [ one_morphism, zero_morphism ] ] );
+    
+end );
+
+composition_of_double_swap_components := VerticalPreCompose( double_swap_components, double_swap_components );
+
+ApplyNaturalTransformation( composition_of_double_swap_components, A );
 
 # theorem_string := "\alpha:Mor, \beta:Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsMonomorphism( \ProjectionInFactorOfFiberProduct( [ \alpha, \beta ], 2 ) )";
 # 

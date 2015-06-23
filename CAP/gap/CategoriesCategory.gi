@@ -952,3 +952,5 @@ AddIsWellDefinedForObjects( CapCat,
   IsCapCategoryAsCatObjectRep
 
 );
+
+Finalize( CapCat );

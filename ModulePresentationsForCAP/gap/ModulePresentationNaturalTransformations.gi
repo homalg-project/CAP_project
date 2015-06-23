@@ -32,7 +32,7 @@ BindGlobal( "INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE_MET
         
         AddNaturalTransformationFunction( natural_transformation,
                                           
-          function( object, id_object, standard_object )
+          function( id_object, object, standard_object )
             local matrix;
             
             matrix := HomalgIdentityMatrix( nr_generators( UnderlyingMatrix( id_object ) ), ring );

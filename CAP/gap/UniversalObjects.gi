@@ -618,8 +618,6 @@ InstallMethodWithCacheFromObject( MorphismBetweenDirectSumsOp,
   function( morphism_matrix_listlist, rows, cols, caching_object )
     local morphism_matrix, i, diagram_direct_sum_source, diagram_direct_sum_range, test_diagram_product, test_diagram_coproduct, morphism_into_product;
     
-    Error( "test" );
-    
     morphism_matrix := [ ];
     
     for i in [ 1 .. rows ] do
