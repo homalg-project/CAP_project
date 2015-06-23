@@ -114,6 +114,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
       function( category, method_list, weight )
         local install_func, replaced_filter_list, install_method, popper, i, set_primitive;
         
+        ## If there already is a faster method, do nothing!
+        if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
+            return;
+        fi;
+        
         set_primitive := ValueOption( "SetPrimitive" );
         if set_primitive <> false then
             set_primitive := true;

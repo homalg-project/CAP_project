@@ -1,6 +1,6 @@
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD" );
 
-InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec( 
+InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
 MonoAsKernelLift := rec(
   installation_name := "MonoAsKernelLift",
   filter_list := [ "morphism", "morphism" ],
@@ -15,7 +15,8 @@ MonoAsKernelLift := rec(
         
     fi;
     
-end ),
+  end,
+  dual_operation := "EpiAsCokernelColift" ),
 
 EpiAsCokernelColift := rec(
   installation_name := "EpiAsCokernelColift",
@@ -30,7 +31,8 @@ EpiAsCokernelColift := rec(
         
     fi;
     
-end ),
+  end,
+  dual_operation := "MonoAsKernelLift" ),
 
 Lift := rec(
   installation_name := "Lift",
@@ -46,7 +48,8 @@ Lift := rec(
         
     fi;
     
-end ),
+  end,
+  dual_operation := "Colift" ),
 
 Colift := rec(
   installation_name := "Colift",
@@ -61,7 +64,8 @@ Colift := rec(
         
     fi;
     
-end ),
+  end,
+  dual_operation := "Lift" ),
 
 IdentityMorphism := rec(
   installation_name := "IdentityMorphism",
@@ -77,21 +81,24 @@ KernelObject := rec(
   installation_name := "KernelObject",
   filter_list := [ "morphism" ],
   universal_type := "Limit",
-  return_type := "object" ),
+  return_type := "object",
+  dual_operation := "CoKernel" ),
 
 KernelEmb := rec(
   installation_name := "KernelEmb",
   filter_list := [ "morphism" ],
   universal_object_position := "Source",
   universal_type := "Limit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CokernelProj" ),
 
 KernelEmbWithGivenKernelObject := rec(
   installation_name := "KernelEmbWithGivenKernelObject",
   filter_list := [ "morphism", "object" ],
   cache_name := "KernelEmbWithGivenKernelObject",
   universal_type := "Limit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CokernelProjWithGivenCokernel"),
 
 KernelLift := rec(
   installation_name := "KernelLift",
@@ -99,34 +106,39 @@ KernelLift := rec(
   cache_name := "KernelLift",
   universal_object_position := "Range",
   universal_type := "Limit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CokernelColift" ),
 
 KernelLiftWithGivenKernelObject := rec(
   installation_name := "KernelLiftWithGivenKernelObject",
   filter_list := [ "morphism", "morphism", "object" ],
   cache_name := "KernelLiftWithGivenKernelObject",
   universal_type := "Limit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CokernelColiftWithGivenCokernel" ),
 
 Cokernel := rec(
   installation_name := "Cokernel",
   filter_list := [ "morphism" ],
   universal_type := "Colimit",
-  return_type := "object" ),
+  return_type := "object",
+  dual_operation := "KernelObject" ),
 
 CokernelProj := rec(
   installation_name := "CokernelProj",
   filter_list := [ "morphism" ],
   universal_object_position := "Range",
   universal_type := "Colimit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "KernelEmb" ),
 
 CokernelProjWithGivenCokernel := rec(
   installation_name := "CokernelProjWithGivenCokernel",
   filter_list := [ "morphism", "object" ],
   cache_name := "CokernelProjWithGivenCokernel",
   universal_type := "Colimit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "KernelEmbWithGivenKernelObject" ),
 
 CokernelColift := rec(
   installation_name := "CokernelColift",
@@ -134,14 +146,16 @@ CokernelColift := rec(
   cache_name := "CokernelColift",
   universal_object_position := "Source",
   universal_type := "Colimit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "KernelLift" ),
 
 CokernelColiftWithGivenCokernel := rec(
   installation_name := "CokernelColiftWithGivenCokernel",
   filter_list := [ "morphism", "morphism", "object" ],
   cache_name := "CokernelColiftWithGivenCokernel",
   universal_type := "Colimit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "KernelLiftWithGivenKernelObject" ),
 
 PreCompose := rec(
   installation_name := "PreCompose",
