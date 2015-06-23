@@ -76,6 +76,13 @@ InstallMethodWithCacheFromObject( ProductOp,
   function( category_list, selector )
     local product_category, namestring;
     
+    ## this is the convention in CapCat
+    if Length( category_list ) = 1 then
+      
+      return category_list[1];
+      
+    fi;
+    
     namestring := JoinStringsWithSeparator( List( category_list, Name ), ", " );
     
     namestring := Concatenation( "Product of: " , namestring );

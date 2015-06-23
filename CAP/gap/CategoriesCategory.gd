@@ -260,6 +260,13 @@ DeclareGlobalFunction( "ApplyNaturalTransformation" );
 DeclareOperation( "InstallNaturalTransformation",
                   [ IsCapNaturalTransformation, IsString ] );
 
+DeclareOperationWithCache( "HorizontalPreComposeNaturalTransformationWithFunctor",
+                           [ IsCapNaturalTransformation, IsCapFunctor ] );
+
+DeclareOperationWithCache( "HorizontalPreComposeFunctorWithNaturalTransformation",
+                           [ IsCapFunctor, IsCapNaturalTransformation ] );
+
+
 ####################################
 ##
 #! @Chapter Technical Details
