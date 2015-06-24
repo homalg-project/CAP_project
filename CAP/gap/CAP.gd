@@ -214,7 +214,14 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsSplitEpimorphism",
                 "CanComputeIsIdempotent",
                 "CanComputeIsProjective",
-                "CanComputeIsInjective"
+                "CanComputeIsInjective",
+                "CanComputeCoimage",
+                "CanComputeCoimageProjection",
+                "CanComputeCoimageProjectionWithGivenCoimage",
+                "CanComputeAstrictionToCoimage",
+                "CanComputeAstrictionToCoimageWithGivenCoimage",
+                "CanComputeUniversalMorphismIntoCoimage",
+                "CanComputeUniversalMorphismIntoCoimageWithGivenCoimage",
                 ] )
 );
 
