@@ -95,17 +95,69 @@ DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
 ##
 ###################################
 
+##
 DeclareFamilyProperty( "IsProjective",
                        IsCapCategoryObject, "object" : reinstall := false );
 
+DeclareOperation( "AddIsProjective",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsProjective",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsProjective",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsProjective",
+                  [ IsCapCategory, IsList ] );
+
+##
 DeclareFamilyProperty( "IsInjective",
                        IsCapCategoryObject, "object" : reinstall := false );
 
+DeclareOperation( "AddIsInjective",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsInjective",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsInjective",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsInjective",
+                  [ IsCapCategory, IsList ] );
+
+##
 DeclareFamilyProperty( "IsTerminal",
                        IsCapCategoryObject, "object" : reinstall := false );
 
+DeclareOperation( "AddIsTerminal",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsTerminal",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsTerminal",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsTerminal",
+                  [ IsCapCategory, IsList ] );
+
+##
 DeclareFamilyProperty( "IsInitial",
                        IsCapCategoryObject, "object" : reinstall := false );
+
+DeclareOperation( "AddIsInitial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsInitial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsInitial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsInitial",
+                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##

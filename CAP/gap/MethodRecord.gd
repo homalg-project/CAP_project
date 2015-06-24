@@ -908,7 +908,8 @@ IsZeroForMorphisms := rec(
   installation_name := "IsZero",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
-  return_type := "bool" ),
+  return_type := "bool",
+  is_categorical_property := "morphism" ),
 
 AdditionForMorphisms := rec(
   installation_name := "\+",
@@ -1574,27 +1575,107 @@ IsZeroForObjects := rec(
   installation_name := "IsZero",
   filter_list := [ "object" ],
   well_defined_todo := false,
-  return_type := "bool" ),
+  return_type := "bool",
+  is_categorical_property := "object" ),
 
 IsMonomorphism := rec(
   installation_name := "IsMonomorphism",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  dual_operation := "IsEpimorphism" ),
+  dual_operation := "IsEpimorphism",
+  is_categorical_property := "morphism" ),
 
 IsEpimorphism := rec(
   installation_name := "IsEpimorphism",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  dual_operation := "IsMonomorphism" ),
+  dual_operation := "IsMonomorphism",
+  is_categorical_property := "morphism" ),
 
 IsIsomorphism := rec(
   installation_name := "IsIsomorphism",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
-  return_type := "bool" ),
+  return_type := "bool",
+  is_categorical_property := "morphism" ),
+
+IsEndomorphism := rec(
+  installation_name := "IsEndomorphism",
+  filter_list := [ "morphism" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  is_categorical_property := "morphism" ),
+
+IsAutomorphism := rec(
+  installation_name := "IsAutomorphism",
+  filter_list := [ "morphism" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  is_categorical_property := "morphism" ),
+
+IsOne := rec(
+  installation_name := "IsOne",
+  filter_list := [ "morphism" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  is_categorical_property := "morphism" ),
+
+IsSplitMonomorphism := rec(
+  installation_name := "IsSplitMonomorphism",
+  filter_list := [ "morphism" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  dual_operation := "IsSplitEpimorphism",
+  is_categorical_property := "morphism" ),
+
+IsSplitEpimorphism := rec(
+  installation_name := "IsSplitEpimorphism",
+  filter_list := [ "morphism" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  dual_operation := "IsSplitMonomorphism",
+  is_categorical_property := "morphism" ),
+
+IsIdempotent := rec(
+  installation_name := "IsIdempotent",
+  filter_list := [ "morphism" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  is_categorical_property := "morphism" ),
+
+IsProjective := rec(
+  installation_name := "IsProjective",
+  filter_list := [ "object" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  dual_operation := "IsInjective",
+  is_categorical_property := "object" ),
+
+IsInjective := rec(
+  installation_name := "IsInjective",
+  filter_list := [ "object" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  dual_operation := "IsProjective",
+  is_categorical_property := "object" ),
+
+IsTerminal := rec(
+  installation_name := "IsTerminal",
+  filter_list := [ "object" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  dual_operation := "IsInitial",
+  is_categorical_property := "object" ),
+
+IsInitial := rec(
+  installation_name := "IsInitial",
+  filter_list := [ "object" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  dual_operation := "IsTerminal",
+  is_categorical_property := "object" ),
 
 CoastrictionToImage := rec(
   installation_name := "CoastrictionToImage",

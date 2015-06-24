@@ -70,6 +70,7 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 ##
 ###################################
 
+##
 DeclareFamilyProperty( "IsMonomorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
@@ -85,13 +86,10 @@ DeclareOperation( "AddIsMonomorphism",
 DeclareOperation( "AddIsMonomorphism",
                   [ IsCapCategory, IsList ] );
 
-
-DeclareAttribute( "IsMonomorphismFunction",
-                  IsCapCategory );
-
 DeclareSynonymAttr( "IsSubobject",
                     IsMonomorphism );
 
+##
 DeclareFamilyProperty( "IsEpimorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
@@ -107,13 +105,10 @@ DeclareOperation( "AddIsEpimorphism",
 DeclareOperation( "AddIsEpimorphism",
                   [ IsCapCategory, IsList ] );
 
-
-DeclareAttribute( "IsEpimorphismFunction",
-                  IsCapCategory );
-
 DeclareSynonymAttr( "IsFactorobject",
                     IsEpimorphism );
 
+##
 DeclareFamilyProperty( "IsIsomorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
@@ -129,28 +124,101 @@ DeclareOperation( "AddIsIsomorphism",
 DeclareOperation( "AddIsIsomorphism",
                   [ IsCapCategory, IsList ] );
 
-
-DeclareAttribute( "IsIsomorphismFunction",
-                  IsCapCategory );
-
+##
 DeclareFamilyProperty( "IsEndomorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+DeclareOperation( "AddIsEndomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEndomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEndomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEndomorphism",
+                  [ IsCapCategory, IsList ] );
+
+##
 DeclareFamilyProperty( "IsAutomorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+DeclareOperation( "AddIsAutomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsAutomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsAutomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsAutomorphism",
+                  [ IsCapCategory, IsList ] );
+
+##
 DeclareFamilyProperty( "IsSplitMonomorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+DeclareOperation( "AddIsSplitMonomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsSplitMonomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsSplitMonomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsSplitMonomorphism",
+                  [ IsCapCategory, IsList ] );
+
+##
 DeclareFamilyProperty( "IsSplitEpimorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
+
+DeclareOperation( "AddIsSplitEpimorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsSplitEpimorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsSplitEpimorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsSplitEpimorphism",
+                  [ IsCapCategory, IsList ] );
 
 ## TODO: IsIdentity
 DeclareFamilyProperty( "IsOne",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+DeclareOperation( "AddIsOne",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsOne",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsOne",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsOne",
+                  [ IsCapCategory, IsList ] );
+
+##
 DeclareFamilyProperty( "IsIdempotent",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
+
+DeclareOperation( "AddIsIdempotent",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsIdempotent",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsIdempotent",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsIdempotent",
+                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##
