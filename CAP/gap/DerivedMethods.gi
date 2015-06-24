@@ -1849,9 +1849,9 @@ AddFinalDerivation( PreCompose,
                     [ ],
                     
   [ 
-    [ function( mor_1, mor_2 ) return mor_1; end, [ , IsOne ] ],
+    [ function( mor_1, mor_2 ) return mor_1; end, [ , IsIdenticalToIdentityMorphism ] ],
     
-    [ function( mor_1, mor_2 ) return mor_2; end, [ IsOne, ] ]
+    [ function( mor_1, mor_2 ) return mor_2; end, [ IsIdenticalToIdentityMorphism, ] ]
     
   ]
   
