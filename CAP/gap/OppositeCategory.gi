@@ -206,7 +206,7 @@ InstallMethod( Opposite,
   function( category, name )
     local opposite_category;
     
-    if not IsFinalized( category ) then
+    if not HasIsFinalized( category ) or not IsFinalized( category ) then
         Error( "Input category must be finalized to create opposite category" );
     fi;
     

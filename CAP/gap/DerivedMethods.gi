@@ -1857,3 +1857,50 @@ AddFinalDerivation( PreCompose,
   
 : Weight := 0  );
 
+## Final method for IsEqualForObjects
+##
+AddFinalDerivation( IsEqualForObjects,
+                    [ ],
+                    [ IsEqualForObjects ],
+                    
+  ReturnFail );
+
+## Final methods for IsEqual/IsIdenticalForMorphisms
+##
+AddFinalDerivation( IsEqualForMorphisms,
+                    [ ],
+                    [ IsEqualForMorphisms,
+                      IsIdenticalForMorphisms ],
+                      
+  ReturnFail : Description := "Only IsIdenticalObj for comparing" );
+
+##
+AddFinalDerivation( IsIdenticalForMorphisms,
+                    [ ],
+                    [ IsEqualForMorphisms,
+                      IsIdenticalForMorphisms ],
+                      
+  ReturnFail : Description := "Only IsIdenticalObj for comparing" );
+
+##
+AddFinalDerivation( IsEqualForMorphisms,
+                    [ [ IsIdenticalForMorphisms, 1 ] ],
+                    [ IsEqualForMorphisms ],
+                    
+  IsIdenticalForMorphisms : Description := "Use IsIdenticalForMorphisms for IsEqualForMorphisms" );
+
+##
+AddFinalDerivation( IsIdenticalForMorphisms,
+                    [ [ IsEqualForMorphisms, 1 ] ],
+                    [ IsIdenticalForMorphisms ],
+                    
+  IsEqualForMorphisms : Description := "Use IsEqualForMorphisms for IsIdenticalForMorphisms",
+                        CategoryOptionFunction := function( category )
+                            
+                            InstallMethod( IsEqualForCache,
+                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
+                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
+                                IsIdenticalObj );
+                        end );
+
+
