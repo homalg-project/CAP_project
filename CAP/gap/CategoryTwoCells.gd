@@ -74,6 +74,7 @@ DeclareOperation( "Add",
 DeclareOperation( "AddTwoCell",
                   [ IsCapCategory, IsObject ] );
 
+##
 DeclareOperation( "HorizontalPreCompose",
                   [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
@@ -89,10 +90,24 @@ DeclareOperation( "AddHorizontalPreCompose",
 DeclareOperation( "AddHorizontalPreCompose",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareOperation( "HorizontalPostCompose",
+                  [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
-DeclareAttribute( "HorizontalPreComposeFunction",
-                  IsCapCategory );
+DeclareOperation( "AddHorizontalPostCompose",
+                  [ IsCapCategory, IsFunction ] );
 
+DeclareOperation( "AddHorizontalPostCompose",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddHorizontalPostCompose",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddHorizontalPostCompose",
+                  [ IsCapCategory, IsList ] );
+
+
+##
 DeclareOperation( "VerticalPreCompose",
                   [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
@@ -108,9 +123,22 @@ DeclareOperation( "AddVerticalPreCompose",
 DeclareOperation( "AddVerticalPreCompose",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareOperation( "VerticalPostCompose",
+                  [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
-DeclareAttribute( "VerticalPreComposeFunction",
-                  IsCapCategory );
+DeclareOperation( "AddVerticalPostCompose",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddVerticalPostCompose",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddVerticalPostCompose",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddVerticalPostCompose",
+                  [ IsCapCategory, IsList ] );
+
 
 DeclareAttributeWithToDoForIsWellDefined( "IdentityTwoCell",
                                           IsCapCategoryMorphism );
@@ -128,8 +156,6 @@ DeclareOperation( "AddIdentityTwoCell",
                   [ IsCapCategory, IsList ] );
 
 
-DeclareAttribute( "IdentityTwoCellFunction",
-                  IsCapCategory );
 
 ###################################
 ##
@@ -152,5 +178,3 @@ DeclareOperation( "AddIsWellDefinedForTwoCells",
 DeclareOperation( "IsWellDefinedForTwoCells",
                   [ IsCapCategoryTwoCell ] );
 
-DeclareAttribute( "IsWellDefinedForTwoCellsFunction",
-                  IsCapCategory );

@@ -82,8 +82,6 @@ DeclareOperation( "AddIsEqualForObjects",
 DeclareOperationWithCache( "IsEqualForObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareAttribute( "ObjectEqualityFunction",
-                  IsCapCategory );
 
 DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
                   [ IsCapCategory, IsString ] );
@@ -183,8 +181,6 @@ DeclareOperation( "AddIsZeroForObjects",
 DeclareOperation( "IsZeroForObjects", 
                   [ IsCapCategoryObject ] );
 
-DeclareAttribute( "IsZeroForObjectsFunction",
-                  IsCapCategory );
 
 ###################################
 ##
@@ -244,8 +240,6 @@ DeclareOperation( "AddIsWellDefinedForObjects",
 DeclareOperation( "IsWellDefinedForObjects",
                   [ IsCapCategoryObject ] );
 
-DeclareAttribute( "IsWellDefinedForObjectsFunction",
-                  IsCapCategory );
 
 
 

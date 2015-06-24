@@ -1567,7 +1567,21 @@ IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
-  no_install := true,
+  
+  redirect_function := function( morphism )
+    
+    if not ( IsWellDefined( Source( morphism ) ) and IsWellDefined( Range( morphism ) ) ) then
+      
+      return [ true, false ];
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
   return_type := "bool" ),
 
 IsWellDefinedForObjects := rec(
@@ -1868,6 +1882,26 @@ HorizontalPreCompose := rec(
   end,
   return_type := "twocell" ),
 
+HorizontalPostCompose := rec(
+  installation_name := "HorizontalPostCompose",
+  filter_list := [ "twocell", "twocell" ],
+  cache_name := "HorizontalPostCompose",
+  dual_operation := "HorizontalPreCompose",
+  
+  pre_function := function( twocell_2, twocell_1 )
+    local value;
+    
+    value := IsEqualForObjects( Range( Source( twocell_1 ) ), Source( Source( twocell_2 ) ) );
+    if value = fail then
+        return [ false, "cannot decide whether 2-cells are horizontally composable" ];
+    elif value = false then
+        return [ false, "2-cells are not horizontally composable" ];
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "twocell" ),
+
 VerticalPreCompose := rec(
   installation_name := "VerticalPreCompose",
   filter_list := [ "twocell", "twocell" ],
@@ -1875,6 +1909,26 @@ VerticalPreCompose := rec(
   dual_operation := "VerticalPostCompose",
   
   pre_function := function( twocell_1, twocell_2 )
+    local value;
+    
+    value := IsIdenticalForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
+    if value = fail then
+        return [ false, "cannot decide whether 2-cells are vertically composable" ];
+    elif value = false then
+        return [ false, "2-cells are not vertically composable" ];
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "twocell" ),
+
+VerticalPostCompose := rec(
+  installation_name := "VerticalPostCompose",
+  filter_list := [ "twocell", "twocell" ],
+  cache_name := "VerticalPostCompose",
+  dual_operation := "VerticalPreCompose",
+  
+  pre_function := function( twocell_2, twocell_1 )
     local value;
     
     value := IsIdenticalForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
@@ -1902,7 +1956,19 @@ IsWellDefinedForTwoCells := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "twocell" ],
   well_defined_todo := false,
-  no_install := true,
+  
+  redirect_function := function( twocell )
+    
+    if not( IsWellDefined( Source( twocell ) ) and IsWellDefined( Range( twocell ) ) ) then
+      
+      return [ true, false ];
+      
+    fi;
+    
+    return [ false ];
+    
+  end,
+  
   return_type := "bool" ),
   
 DirectSumDiagonalDifference := rec(

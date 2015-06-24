@@ -472,9 +472,6 @@ DeclareOperation( "AddIsWellDefinedForMorphisms",
 DeclareOperation( "IsWellDefinedForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
-DeclareAttribute( "IsWellDefinedForMorphismsFunction",
-                  IsCapCategory );
-
 ###################################
 ##
 ## Monomorphism as kernel lift
