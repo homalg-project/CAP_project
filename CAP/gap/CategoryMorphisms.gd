@@ -268,9 +268,6 @@ DeclareOperation( "AddIsEqualForMorphisms",
 DeclareOperation( "AddIsEqualForMorphisms",
                   [ IsCapCategory, IsList ] );
 
-DeclareAttribute( "MorphismEqualityFunction",
-                  IsCapCategory );
-
 DeclareOperation( "IsEqualForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
@@ -301,8 +298,6 @@ DeclareOperation( "AddIsIdenticalForMorphismsOnMor",
                   [ IsCapCategory, IsList ] );
 
 
-DeclareAttribute( "MorphismIdenticalFunction",
-                  IsCapCategory );
 
 DeclareOperation( "IsIdenticalForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -328,8 +323,6 @@ DeclareOperation( "AddIsZeroForMorphisms",
 DeclareOperation( "IsZeroForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
-DeclareAttribute( "IsZeroForMorphismsFunction",
-                  IsCapCategory );
 
 DeclareOperation( "AddAdditionForMorphisms",
                   [ IsCapCategory, IsFunction ] );
@@ -346,8 +339,6 @@ DeclareOperation( "AddAdditionForMorphisms",
 DeclareOperation( "AdditionForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareAttribute( "AdditionForMorphismsFunction",
-                  IsCapCategory );
 
 DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsFunction ] );
@@ -364,8 +355,7 @@ DeclareOperation( "AddAdditiveInverseForMorphisms",
 DeclareOperation( "AdditiveInverseForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
-DeclareAttribute( "AdditiveInverseForMorphismsFunction",
-                  IsCapCategory );
+
 
 DeclareOperation( "AddZeroMorphism",
                   [ IsCapCategory, IsFunction ] );
@@ -379,9 +369,6 @@ DeclareOperation( "AddZeroMorphism",
 DeclareOperation( "AddZeroMorphism",
                   [ IsCapCategory, IsList ] );
 
-
-DeclareAttribute( "ZeroMorphismFunction",
-                  IsCapCategory );
 
 DeclareOperation( "TransportHom",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -438,8 +425,6 @@ DeclareOperation( "AddDominates",
                   [ IsCapCategory, IsList ] );
 
 
-DeclareAttribute( "DominatesFunction",
-                  IsCapCategory );
 
 DeclareOperation( "Codominates",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -456,9 +441,6 @@ DeclareOperation( "AddCodominates",
 DeclareOperation( "AddCodominates",
                   [ IsCapCategory, IsList ] );
 
-
-DeclareAttribute( "CodominatesFunction",
-                  IsCapCategory );
 
 ###################################
 ##

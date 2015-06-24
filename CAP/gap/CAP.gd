@@ -375,9 +375,6 @@ DeclareProperty( "IsWellDefined",
 #!  Installs the function which returns the Identity morphism of an object. The argument <A>func</A> must be a function with one
 #!  argument which returns a morphism with source and target are the argument.
 
-DeclareAttribute( "IdentityMorphismFunction",
-                  IsCapCategory );
-
 DeclareOperation( "AddIdentityMorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -405,9 +402,6 @@ DeclareOperation( "AddIdentityMorphism",
 #!  the composition of its two arguments, i.e. if the arguments are two morphisms <A>phi</A>: $A \rightarrow B$ and <A>psi</A>: $B \rightarrow C$ it
 #!  has to return a morphism $\phi\psi : A \rightarrow C$. Source and target of this morphism will be set automatically. This function also installs
 #!  PostCompose, which is just CoPreCompose.
-
-DeclareAttribute( "PreComposeFunction",
-                  IsCapCategory );
 
 DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsFunction ] );
@@ -444,9 +438,6 @@ DeclareOperation( "AddPostCompose",
 ####################################
 
 
-DeclareAttribute( "MonoAsKernelLiftFunction",
-                  IsCapCategory );
-
 DeclareOperation( "AddMonoAsKernelLift",
                   [ IsCapCategory, IsFunction ] );
 
@@ -466,10 +457,6 @@ DeclareOperation( "AddMonoAsKernelLift",
 ##
 ####################################
 
-
-DeclareAttribute( "EpiAsCokernelColiftFunction",
-                  IsCapCategory );
-
 DeclareOperation( "AddEpiAsCokernelColift",
                   [ IsCapCategory, IsFunction ] );
 
@@ -488,10 +475,6 @@ DeclareOperation( "AddEpiAsCokernelColift",
 ## Inverse
 ##
 ####################################
-
-
-DeclareAttribute( "InverseFunction",
-                  IsCapCategory );
 
 DeclareOperation( "AddInverse",
                   [ IsCapCategory, IsFunction ] );
