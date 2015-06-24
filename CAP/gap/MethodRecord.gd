@@ -1916,7 +1916,19 @@ IsWellDefinedForTwoCells := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "twocell" ],
   well_defined_todo := false,
-  no_install := true,
+  
+  redirect_function := function( twocell )
+    
+    if not( IsWellDefined( Source( twocell ) ) and IsWellDefined( Range( twocell ) ) ) then
+      
+      return [ true, false ];
+      
+    fi;
+    
+    return [ false ];
+    
+  end,
+  
   return_type := "bool" ),
   
 DirectSumDiagonalDifference := rec(

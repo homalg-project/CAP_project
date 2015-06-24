@@ -104,45 +104,6 @@ end );
 ###########################
 
 ##
-InstallMethod( AddIsWellDefinedForTwoCells,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    AddIsWellDefinedForTwoCells( category, func, 100 );
-    
-end );
-
-##
-InstallMethod( AddIsWellDefinedForTwoCells,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    
-    SetCanComputeIsWellDefinedForTwoCells( category, true );
-    
-    SetIsWellDefinedForTwoCellsFunction( category, func );
-    
-    InstallMethod( IsWellDefined,
-                   [ IsCapCategoryTwoCell and TwoCellFilter( category ) ],
-                   
-      function( twocell )
-        
-        if not( IsWellDefined( Source( twocell ) ) and IsWellDefined( Range( twocell ) ) ) then
-          
-          return false;
-          
-        fi;
-        
-        return func( twocell );
-        
-    end );
-    
-    AddPrimitiveOperation( category!.derivations_weight_list, "IsWellDefinedForTwoCells", weight );
-    
-end );
-
-##
 InstallMethod( IsWellDefinedForTwoCells,
                [ IsCapCategoryTwoCell ],
                
