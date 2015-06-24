@@ -152,29 +152,6 @@ DeclareOperation( "KernelLiftWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
-## Function Attributes
-#! @AutoDoc
-#! @BeginGroup
-
-#! @Description
-#! These attributes store the implementations of the basic algorithms for a kernel. 
-DeclareAttribute( "KernelFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "KernelEmbFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "KernelEmbWithGivenKernelObjectFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "KernelLiftFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "KernelLiftWithGivenKernelObjectFunction",
-                  IsCapCategory );
-#! @EndGroup
-#! @EndAutoDoc
-
 ## Add Operations
 
 #! @Description
@@ -365,29 +342,6 @@ DeclareOperation( "CokernelColift",
 #! @Arguments alpha, tau, K
 DeclareOperation( "CokernelColiftWithGivenCokernel",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
-
-## Function Attributes
-#! @AutoDoc
-#! @BeginGroup
-
-#! @Description
-#! These attributes store the implementations of the basic algorithms for a cokernel. 
-DeclareAttribute( "CokernelFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "CokernelProjFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "CokernelProjWithGivenCokernelFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "CokernelColiftFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "CokernelColiftWithGivenCokernelFunction",
-                  IsCapCategory );
-#! @EndGroup
-#! @EndAutoDoc
 
 
 ## Add Operations
@@ -765,28 +719,6 @@ DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismIntoTerminalObject",
 DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## Function Attributes
-
-#! @BeginGroup
-
-#! @AutoDoc
-#! @Description
-#! These attributes store the implementations of the basic algorithms for a terminal object.
-#! @Arguments C
-DeclareAttribute( "TerminalObjectFunction",
-                  IsCapCategory );
-
-#! @Arguments C
-DeclareAttribute( "UniversalMorphismIntoTerminalObjectFunction",
-                  IsCapCategory );
-
-#! @Arguments C
-DeclareAttribute( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObjectFunction",
-                  IsCapCategory );
-#! @EndAutoDoc
-
-#! @EndGroup
-
 ## Add Operations
 
 
@@ -911,28 +843,6 @@ DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismFromInitialObject",
 #! @Arguments A, I
 DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-## Function Attributes
-
-#! @BeginGroup
-
-#! @AutoDoc
-#! @Description
-#! These attributes store the implementations of the basic algorithms for an initial object.
-#! @Arguments C
-DeclareAttribute( "InitialObjectFunction",
-                  IsCapCategory );
-
-#! @Arguments C
-DeclareAttribute( "UniversalMorphismFromInitialObjectFunction",
-                  IsCapCategory );
-
-#! @Arguments C
-DeclareAttribute( "UniversalMorphismFromInitialObjectWithGivenInitialObjectFunction",
-                  IsCapCategory );
-#! @EndAutoDoc
-
-#! @EndGroup
 
 ## Add Operations
 
@@ -1264,17 +1174,6 @@ DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
 DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
                   [ IsCapCategory, IsList ] );
 
-## Function Attributes
-#! @AutoDoc
-#! @BeginGroup
-
-#! @Description
-#! These attributes store the implementations of the basic algorithms for a direct sum. 
-DeclareAttribute( "DirectSumFunction",
-                  IsCapCategory );
-#! @EndGroup
-#! @EndAutoDoc
-
 #! @Description
 #! This operation adds the given function $f: ( (S_1, \dots, S_n) ) \mapsto S$ to the category $C$,
 #! where $(S_1, \dots, S_n)$ is a list of objects in $C$.
@@ -1370,29 +1269,6 @@ DeclareOperation( "UniversalMorphismFromCoproductOp",
 
 DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
-
-## Function Attributes
-#! @AutoDoc
-#! @BeginGroup
-
-#! @Description
-#! These attributes store the implementations of the basic algorithms for a coproduct. 
-DeclareAttribute( "CoproductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "InjectionOfCofactorOfCoproductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "InjectionOfCofactorOfCoproductWithGivenCoproductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "UniversalMorphismFromCoproductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "UniversalMorphismFromCoproductWithGivenCoproductFunction",
-                  IsCapCategory );
-#! @EndGroup
-#! @EndAutoDoc
 
 ## Add Operations
 
@@ -1610,29 +1486,6 @@ DeclareOperation( "UniversalMorphismIntoDirectProductOp",
 #! @Arguments D, P
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
-
-## Function Attributes
-#! @AutoDoc
-#! @BeginGroup
-
-#! @Description
-#! These attributes store the implementations of the basic algorithms for a direct product. 
-DeclareAttribute( "DirectProductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "ProjectionInFactorOfDirectProductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "ProjectionInFactorOfDirectProductWithGivenDirectProductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "UniversalMorphismIntoDirectProductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "UniversalMorphismIntoDirectProductWithGivenDirectProductFunction",
-                  IsCapCategory );
-#! @EndGroup
-#! @EndAutoDoc
 
 ## Add Operations
 
@@ -1929,29 +1782,6 @@ DeclareOperation( "UniversalMorphismIntoFiberProductOp",
 DeclareOperation( "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
-## Function Attributes
-#! @AutoDoc
-#! @BeginGroup
-
-#! @Description
-#! These attributes store the implementations of the basic algorithms for a pullback. 
-DeclareAttribute( "FiberProductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "ProjectionInFactorOfFiberProductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "ProjectionInFactorOfFiberProductWithGivenFiberProductFunction",
-                  IsCapCategory );
-# 
-DeclareAttribute( "UniversalMorphismIntoFiberProductFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "UniversalMorphismIntoFiberProductWithGivenFiberProductFunction",
-                  IsCapCategory );
-#! @EndGroup
-#! @EndAutoDoc
-
 ## Add Operations
 
 
@@ -2201,29 +2031,6 @@ DeclareOperation( "UniversalMorphismFromPushoutOp",
 DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
-## Function Attributes
-#! @AutoDoc
-#! @BeginGroup
-
-#! @Description
-#! These attributes store the implementations of the basic algorithms for a pushout. 
-DeclareAttribute( "PushoutFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "InjectionOfCofactorOfPushoutFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "InjectionOfCofactorOfPushoutWithGivenPushoutFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "UniversalMorphismFromPushoutFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "UniversalMorphismFromPushoutWithGivenPushoutFunction",
-                  IsCapCategory );
-#! @EndGroup
-#! @EndAutoDoc
-
 ## Add Operations
 
 
@@ -2418,37 +2225,6 @@ DeclareOperation( "UniversalMorphismFromImage",
 
 DeclareOperation( "UniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
-
-## Function Attributes
-#! @AutoDoc
-#! @BeginGroup
-
-#! @Description
-#! These attributes store the implementations of the basic algorithms for an image. 
-DeclareAttribute( "ImageFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "ImageEmbeddingFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "ImageEmbeddingWithGivenImageObjectFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "CoastrictionToImageFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "CoastrictionToImageWithGivenImageObjectFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "UniversalMorphismFromImageFunction",
-                  IsCapCategory );
-
-DeclareAttribute( "UniversalMorphismFromImageWithGivenImageObjectFunction",
-                  IsCapCategory );
-
-
-#! @EndGroup
-#! @EndAutoDoc
 
 ## Add Operations
 
