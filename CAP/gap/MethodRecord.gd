@@ -70,7 +70,12 @@ Colift := rec(
 IdentityMorphism := rec(
   installation_name := "IdentityMorphism",
   filter_list := [ "object" ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  post_function := function( object, identity_morphism )
+    
+    SetIsIdenticalToIdentityMorphism( identity_morphism, true );
+    
+  end ),
 
 InverseImmutable := rec(
   installation_name := "InverseOp",
