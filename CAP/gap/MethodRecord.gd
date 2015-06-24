@@ -1563,6 +1563,109 @@ ImageEmbeddingWithGivenImageObject := rec(
   universal_type := "Limit",
   return_type := "morphism" ),
 
+Coimage := rec(
+  installation_name := "Coimage",
+  filter_list := [ "morphism" ],
+  universal_type := "Colimit",
+  return_type := "object" ),
+
+CoimageProjection := rec(
+  installation_name := "CoimageProjection",
+  filter_list := [ "morphism" ],
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  return_type := "morphism" ),
+
+CoimageProjectionWithGivenCoimage := rec(
+  installation_name := "CoimageProjectionWithGivenCoimage",
+  filter_list := [ "morphism", "object" ],
+  cache_name := "CoimageProjectionWithGivenCoimage",
+  universal_type := "Colimit",
+  return_type := "morphism" ),
+
+AstrictionToCoimage := rec(
+  installation_name := "AstrictionToCoimage",
+  filter_list := [ "morphism" ],
+  universal_object_position := "Source",
+  universal_type := "Colimit",
+  return_type := "morphism" ),
+
+AstrictionToCoimageWithGivenCoimage := rec(
+  installation_name := "AstrictionToCoimageWithGivenCoimage",
+  filter_list := [ "morphism", "object" ],
+  cache_name := "AstrictionToCoimageWithGivenCoimage",
+  universal_type := "Colimit",
+  return_type := "morphism" ),
+
+UniversalMorphismIntoCoimage := rec(
+  installation_name := "UniversalMorphismIntoCoimage",
+  filter_list := [ "morphism", IsList ],
+  cache_name := "UniversalMorphismIntoCoimage",
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  
+  pre_function := function( morphism, test_factorization )
+    local value;
+    
+    value := IsEqualForObjects( Source( morphism ), Source( test_factorization[ 1 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether source of morphism and test factorization are equal" ];
+    elif value = false then
+        return [ false, "source of morphism and test factorization are not equal" ];
+    fi;
+    
+    value := IsEqualForObjects( Range( morphism ), Range( test_factorization[ 2 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether range of morphism and test factorization are equal" ];
+    elif value = false then
+        return [ false, "range of morphism and test factorization are not equal" ];
+    fi;
+    
+    value := IsEqualForObjects( Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether source and range of test factorization are equal" ];
+    elif value = false then
+        return [ false, "source and range of test factorization are not equal" ];
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
+UniversalMorphismIntoCoimageWithGivenCoimage := rec(
+  installation_name := "UniversalMorphismIntoCoimageWithGivenCoimage",
+  filter_list := [ "morphism", IsList, "object" ],
+  cache_name := "UniversalMorphismIntoCoimageWithGivenCoimage",
+  universal_type := "Colimit",
+  
+  pre_function := function( morphism, test_factorization, image )
+    local value;
+    
+    value := IsEqualForObjects( Source( morphism ), Source( test_factorization[ 1 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether source of morphism and test factorization are equal" ];
+    elif value = false then
+        return [ false, "source of morphism and test factorization are not equal" ];
+    fi;
+    
+    value := IsEqualForObjects( Range( morphism ), Range( test_factorization[ 2 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether range of morphism and test factorization are equal" ];
+    elif value = false then
+        return [ false, "range of morphism and test factorization are not equal" ];
+    fi;
+    
+    value := IsEqualForObjects( Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether source and range of test factorization are equal" ];
+    elif value = false then
+        return [ false, "source and range of test factorization are not equal" ];
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
 IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],
