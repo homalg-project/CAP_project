@@ -1567,35 +1567,40 @@ Coimage := rec(
   installation_name := "Coimage",
   filter_list := [ "morphism" ],
   universal_type := "Colimit",
-  return_type := "object" ),
+  return_type := "object",
+  dual_operation := "Image" ),
 
 CoimageProjection := rec(
   installation_name := "CoimageProjection",
   filter_list := [ "morphism" ],
   universal_object_position := "Range",
   universal_type := "Colimit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "ImageEmbedding" ),
 
 CoimageProjectionWithGivenCoimage := rec(
   installation_name := "CoimageProjectionWithGivenCoimage",
   filter_list := [ "morphism", "object" ],
   cache_name := "CoimageProjectionWithGivenCoimage",
   universal_type := "Colimit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "ImageEmbeddingWithGivenImageObject" ),
 
 AstrictionToCoimage := rec(
   installation_name := "AstrictionToCoimage",
   filter_list := [ "morphism" ],
   universal_object_position := "Source",
   universal_type := "Colimit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CoastrictionToImage" ),
 
 AstrictionToCoimageWithGivenCoimage := rec(
   installation_name := "AstrictionToCoimageWithGivenCoimage",
   filter_list := [ "morphism", "object" ],
   cache_name := "AstrictionToCoimageWithGivenCoimage",
   universal_type := "Colimit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CoastrictionToImageWithGivenImageObject" ),
 
 UniversalMorphismIntoCoimage := rec(
   installation_name := "UniversalMorphismIntoCoimage",
@@ -1630,7 +1635,8 @@ UniversalMorphismIntoCoimage := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "UniversalMorphismFromImage" ),
 
 UniversalMorphismIntoCoimageWithGivenCoimage := rec(
   installation_name := "UniversalMorphismIntoCoimageWithGivenCoimage",
@@ -1664,7 +1670,8 @@ UniversalMorphismIntoCoimageWithGivenCoimage := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "UniversalMorphismFromImageWithGivenImageObject" ),
 
 IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
