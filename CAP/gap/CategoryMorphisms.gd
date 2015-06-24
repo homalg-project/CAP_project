@@ -220,6 +220,22 @@ DeclareOperation( "AddIsIdempotent",
 DeclareOperation( "AddIsIdempotent",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareProperty( "IsIdenticalToIdentityMorphism",
+                 IsCapCategoryMorphism );
+
+DeclareOperation( "AddIsIdenticalToIdentityMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsIdenticalToIdentityMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsIdenticalToIdentityMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsIdenticalToIdentityMorphism",
+                  [ IsCapCategory, IsList ] );
+
 ###################################
 ##
 #! @Section Morphism add functions

@@ -909,7 +909,7 @@ IsZeroForMorphisms := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 AdditionForMorphisms := rec(
   installation_name := "\+",
@@ -1576,7 +1576,7 @@ IsZeroForObjects := rec(
   filter_list := [ "object" ],
   well_defined_todo := false,
   return_type := "bool",
-  is_categorical_property := "object" ),
+  property_of := "object" ),
 
 IsMonomorphism := rec(
   installation_name := "IsMonomorphism",
@@ -1584,7 +1584,7 @@ IsMonomorphism := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEpimorphism",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 IsEpimorphism := rec(
   installation_name := "IsEpimorphism",
@@ -1592,35 +1592,35 @@ IsEpimorphism := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsMonomorphism",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 IsIsomorphism := rec(
   installation_name := "IsIsomorphism",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 IsEndomorphism := rec(
   installation_name := "IsEndomorphism",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 IsAutomorphism := rec(
   installation_name := "IsAutomorphism",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 IsOne := rec(
   installation_name := "IsOne",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 IsSplitMonomorphism := rec(
   installation_name := "IsSplitMonomorphism",
@@ -1628,7 +1628,7 @@ IsSplitMonomorphism := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsSplitEpimorphism",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 IsSplitEpimorphism := rec(
   installation_name := "IsSplitEpimorphism",
@@ -1636,14 +1636,14 @@ IsSplitEpimorphism := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsSplitMonomorphism",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 IsIdempotent := rec(
   installation_name := "IsIdempotent",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  is_categorical_property := "morphism" ),
+  property_of := "morphism" ),
 
 IsProjective := rec(
   installation_name := "IsProjective",
@@ -1651,7 +1651,7 @@ IsProjective := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsInjective",
-  is_categorical_property := "object" ),
+  property_of := "object" ),
 
 IsInjective := rec(
   installation_name := "IsInjective",
@@ -1659,7 +1659,7 @@ IsInjective := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsProjective",
-  is_categorical_property := "object" ),
+  property_of := "object" ),
 
 IsTerminal := rec(
   installation_name := "IsTerminal",
@@ -1667,7 +1667,7 @@ IsTerminal := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsInitial",
-  is_categorical_property := "object" ),
+  property_of := "object" ),
 
 IsInitial := rec(
   installation_name := "IsInitial",
@@ -1675,7 +1675,14 @@ IsInitial := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsTerminal",
-  is_categorical_property := "object" ),
+  property_of := "object" ),
+
+IsIdenticalToIdentityMorphism := rec(
+  installation_name := "IsIdenticalToIdentityMorphism",
+  filter_list := [ "morphism" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  property_of := "morphism" ),
 
 CoastrictionToImage := rec(
   installation_name := "CoastrictionToImage",
