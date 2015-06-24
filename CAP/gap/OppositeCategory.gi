@@ -202,7 +202,9 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
         ## No support for twocells
         if current_recname in [ "HorizontalPreCompose",
+                                "HorizontalPostCompose",
                                 "VerticalPreCompose",
+                                "VerticalPostCompose",
                                 "IdenticalTwoCell" ] then
             continue;
         fi;
