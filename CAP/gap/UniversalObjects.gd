@@ -2362,7 +2362,148 @@ DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
 DeclareFilter( "WasCreatedAsImageObject" );
 #! @Chapter Universal Objects
 
+####################################
+##
+#! @Section Coimage
+##
+####################################
 
+## FIXME: Image is a function (rename: ImageObject -> Image)
+DeclareAttributeWithToDoForIsWellDefined( "Coimage",
+                                          IsCapCategoryMorphism );
+
+#convenience function
+DeclareAttributeWithToDoForIsWellDefined( "CoimageProjection",
+                                          IsCapCategoryObject );
+
+DeclareAttributeWithToDoForIsWellDefined( "CoimageProjection",
+                                          IsCapCategoryMorphism );
+
+#convenience function
+DeclareAttributeWithToDoForIsWellDefined( "AstrictionToCoimage",
+                                          IsCapCategoryObject );
+
+DeclareAttributeWithToDoForIsWellDefined( "AstrictionToCoimage",
+                                          IsCapCategoryMorphism );
+
+DeclareOperation( "CoimageProjectionWithGivenCoimage",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "AstrictionToCoimageWithGivenCoimage",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "UniversalMorphismIntoCoimage",
+                  [ IsCapCategoryMorphism, IsList ] );
+
+DeclareOperation( "UniversalMorphismIntoCoimageWithGivenCoimage",
+                  [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
+
+## Add Operations
+
+DeclareOperation( "AddCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoimage",
+                  [ IsCapCategory, IsList ] );
+
+
+
+DeclareOperation( "AddCoimageProjection",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoimageProjection",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoimageProjection",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoimageProjection",
+                  [ IsCapCategory, IsList ] );
+
+
+
+DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
+                  [ IsCapCategory, IsList ] );
+
+
+
+DeclareOperation( "AddAstrictionToCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddAstrictionToCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddAstrictionToCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddAstrictionToCoimage",
+                  [ IsCapCategory, IsList ] );
+
+
+
+DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
+                  [ IsCapCategory, IsList ] );
+
+
+
+DeclareOperation( "AddUniversalMorphismIntoCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoCoimage",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
+                  [ IsCapCategory, IsList ] );
+
+
+## WasCreatedAs Filter
+
+#! @Chapter Technical Details
+
+#! @Section Universal Objects
+
+DeclareFilter( "WasCreatedAsCoimage" );
+#! @Chapter Universal Objects
 
 ####################################
 ##
