@@ -42,7 +42,7 @@ BindGlobal( "TheTypeOfCapCategoryOppositeMorphisms",
 
 BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
   function( )
-    local recnames, current_recname, object_property_list, morphism_property_list, current_entry;
+    local recnames, current_recname, object_property_list, morphism_property_list, current_entry, current_rec;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
@@ -52,15 +52,18 @@ BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
     
     for current_recname in recnames do
         
-        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).property_of ) then
+        current_rec := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
+        
+        if not IsBound( current_rec.property_of ) then
             continue;
         fi;
         
-        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).dual_operation ) or
-           CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).dual_operation = current_recname then
-            current_entry := current_recname;
+        if not IsBound( current_rec.dual_operation ) or
+           current_rec.dual_operation = current_recname then
+            current_entry := current_rec.installation_name;
         else
-            current_entry := [ current_recname, CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).dual_operation ];
+            current_entry := [ current_rec.installation_name,
+                               CAP_INTERNAL_METHOD_NAME_RECORD.( current_rec.dual_operation ).installation_name ];
         fi;
         
         if CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).property_of = "object" then
