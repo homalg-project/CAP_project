@@ -70,40 +70,6 @@ InstallMethod( IsFinalized,
     
     weight_list := category!.derivations_weight_list;
     
-    ## Equality handling
-    
-    if CurrentOperationWeight( weight_list, "IsEqualForObjects" ) = infinity then
-        
-        AddIsEqualForObjects( category, RETURN_FAIL );
-        
-    fi;
-    
-    ## FIXME: enable these lines if the generalized morphism category 
-    ## only uses add-methods for installing the primitive operations
-    if ( CurrentOperationWeight( weight_list, "IsEqualForMorphisms" ) = infinity )
-       and  ( CurrentOperationWeight( weight_list, "IsIdenticalForMorphisms" ) = infinity ) then
-        
-        AddIsEqualForMorphisms( category, RETURN_FAIL );
-        
-        AddIsIdenticalForMorphisms( category, RETURN_FAIL );
-        
-    elif ( CurrentOperationWeight( weight_list, "IsEqualForMorphisms" ) = infinity ) then
-      
-      AddIsEqualForMorphisms( category, IsIdenticalForMorphisms );
-      
-    elif ( CurrentOperationWeight( weight_list, "IsIdenticalForMorphisms" ) = infinity ) then
-      
-      AddIsIdenticalForMorphisms( category, IsEqualForMorphisms );
-      
-      InstallMethod( IsEqualForCache,
-                     [ IsCapCategoryMorphism and MorphismFilter( category ),
-                       IsCapCategoryMorphism and MorphismFilter( category ) ],
-                       
-                       IsIdenticalObj );
-        
-        
-    fi;
-    
     while true do
         
         current_installs := [ ];

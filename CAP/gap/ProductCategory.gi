@@ -98,6 +98,8 @@ InstallMethodWithCacheFromObject( ProductOp,
     
     CREATE_CAP_CATEGORY_FILTERS( product_category );
     
+    
+    
     return product_category;
     
 end : ArgumentNumber := 2 );
