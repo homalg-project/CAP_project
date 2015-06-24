@@ -303,45 +303,6 @@ end );
 ###########################
 
 ##
-InstallMethod( AddIsWellDefinedForMorphisms,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    
-    AddIsWellDefinedForMorphisms( category, func, 100 );
-    
-end );
-
-##
-InstallMethod( AddIsWellDefinedForMorphisms,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    
-    SetCanComputeIsWellDefinedForMorphisms( category, true );
-    
-    SetIsWellDefinedForMorphismsFunction( category, func );
-    
-    InstallMethod( IsWellDefined,
-                   [ IsCapCategoryMorphism and MorphismFilter( category ) ],
-                   
-      function( morphism )
-        
-        if not ( IsWellDefined( Source( morphism ) ) and IsWellDefined( Range( morphism ) ) ) then
-          
-          return false;
-          
-        fi;
-        
-        return func( morphism );
-        
-    end );
-    
-    AddPrimitiveOperation( category!.derivations_weight_list, "IsWellDefinedForMorphisms", weight );
-    
-end );
-
-##
 InstallMethod( IsWellDefinedForMorphisms,
                [ IsCapCategoryMorphism ],
                

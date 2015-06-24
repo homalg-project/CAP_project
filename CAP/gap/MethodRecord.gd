@@ -1567,7 +1567,21 @@ IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
-  no_install := true,
+  
+  redirect_function := function( morphism )
+    
+    if not ( IsWellDefined( Source( morphism ) ) and IsWellDefined( Range( morphism ) ) ) then
+      
+      return [ true, false ];
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
   return_type := "bool" ),
 
 IsWellDefinedForObjects := rec(
