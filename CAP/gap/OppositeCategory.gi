@@ -38,6 +38,47 @@ BindGlobal( "TheTypeOfCapCategoryOppositeMorphisms",
 ##
 ###################################
 
+
+
+BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
+  function( )
+    local recnames, current_recname, object_property_list, morphism_property_list, current_entry;
+    
+    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    
+    object_property_list := [ ];
+    
+    morphism_property_list := [ ];
+    
+    for current_recname in recnames do
+        
+        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).property_of ) then
+            continue;
+        fi;
+        
+        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).dual_operation ) or
+           CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).dual_operation = current_recname then
+            current_entry := current_recname;
+        else
+            current_entry := [ current_recname, CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).dual_operation ];
+        fi;
+        
+        if CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).property_of = "object" then
+            Add( object_property_list, current_entry );
+        elif CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).property_of = "morphism" then
+            Add( morphism_property_list, current_entry );
+        fi;
+        
+    od;
+    
+    InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, morphism_property_list );
+    
+    InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, object_property_list );
+    
+end );
+
+CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS();
+
 ##
 InstallImmediateMethod( Opposite,
                         IsCapCategory and HasOpposite,
@@ -274,60 +315,40 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
 end );
 
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM,
-
+                       
   function( morphism )
     local entry_list, entry;
-
-    entry_list := [ [ "Mono is dual to epi", [ "IsMonomorphism", "IsEpimorphism" ] ],
-                    [ "Epi is dual to mono", [ "IsEpimorphism", "IsMonomorphism" ] ],
-                    [ "Iso is self dual", "IsIsomorphism" ],
-                    [ "IsEndomorphism is self dual", "IsEndomorphism" ],
-                    [ "automorphism is self dual", "IsAutomorphism" ],
-                    [ "One is self dual", "IsOne" ],
-                    [ "Epi is dual to mono", [ "IsSplitMonomorphism", "IsSplitEpimorphism" ] ],
-                    [ "Mono is dual to epi", [ "IsSplitEpimorphism", "IsSplitMonomorphism" ] ],
-                    [ "Idempotent is self dual", "IsIdempotent" ]#,
-#                     [ "IsWellDefined", "IsWellDefined" ]
-                  # ...
-                  ];
-
+    
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "Opposite" ] ],
                                                          [ morphism, [ Opposite, morphism ] ],
-                                                         entry_list );
-
+                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS );
+    
     AddToToDoList( entry );
-
+    
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "Opposite" ] ],
                                                          [ [ Opposite, morphism ], morphism ],
-                                                         entry_list );
-
+                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS );
+    
     AddToToDoList( entry );
-
+    
 end );
 
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT,
-
+                       
   function( object )
     local entry_list, entry;
-
-    entry_list := [ [ "IsInjective", "IsProjective" ],
-                    [ "IsProjective", "IsInjective" ],
-                    [ "IsZero", "IsZero" ]#,
-#                     [ "IsWellDefined", "IsWellDefined" ]
-                  # ...
-                  ];
-
+    
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "Opposite" ] ],
                                                          [ object, [ Opposite, object ] ],
-                                                         entry_list );
+                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS );
 
     AddToToDoList( entry );
-
+    
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "Opposite" ] ],
                                                          [ [ Opposite, object ], object ],
-                                                         entry_list );
-
+                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS );
+    
     AddToToDoList( entry );
-
+    
 end );
 
