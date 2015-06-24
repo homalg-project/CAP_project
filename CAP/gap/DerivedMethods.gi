@@ -6,6 +6,17 @@
 ###########################
 
 ##
+AddDerivationToCAP( IsIdenticalToIdentityMorphism,
+                    [ [ IsIdenticalForMorphismsOnMor, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
+  function( morphism )
+    
+    return IsIdenticalForMorphismsOnMor( morphism, IdentityMorphism( Source( morphism ) ) );
+    
+end : Description := "IsIdenticalToIdentityMorphism using IsIdenticalForMorphismsOnMor and IdentityMorphism" );
+  
+##
 AddDerivationToCAP( IsZeroForObjects,
                     [ [ IsEqualForMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],

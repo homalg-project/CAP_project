@@ -202,7 +202,18 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsomorphismFromDirectProductToDirectSum",
                 "CanComputeIsomorphismFromDirectSumToCoproduct",
                 "CanComputeIsomorphismFromCoproductToDirectSum",
-                "CanComputeIsIdenticalForMorphismsOnMor"
+                "CanComputeIsIdenticalForMorphismsOnMor",
+                "CanComputeIsIdenticalToIdentityMorphism",
+                "CanComputeIsTerminal",
+                "CanComputeIsInitial",
+                "CanComputeIsEndomorphism",
+                "CanComputeIsAutomorphism",
+                "CanComputeIsOne",
+                "CanComputeIsSplitMonomorphism",
+                "CanComputeIsSplitEpimorphism",
+                "CanComputeIsIdempotent",
+                "CanComputeIsProjective",
+                "CanComputeIsInjective"
                 ] )
 );
 
