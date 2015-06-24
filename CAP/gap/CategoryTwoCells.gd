@@ -74,6 +74,7 @@ DeclareOperation( "Add",
 DeclareOperation( "AddTwoCell",
                   [ IsCapCategory, IsObject ] );
 
+##
 DeclareOperation( "HorizontalPreCompose",
                   [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
@@ -89,7 +90,24 @@ DeclareOperation( "AddHorizontalPreCompose",
 DeclareOperation( "AddHorizontalPreCompose",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareOperation( "HorizontalPostCompose",
+                  [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
+DeclareOperation( "AddHorizontalPostCompose",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddHorizontalPostCompose",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddHorizontalPostCompose",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddHorizontalPostCompose",
+                  [ IsCapCategory, IsList ] );
+
+
+##
 DeclareOperation( "VerticalPreCompose",
                   [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
@@ -103,6 +121,22 @@ DeclareOperation( "AddVerticalPreCompose",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddVerticalPreCompose",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareOperation( "VerticalPostCompose",
+                  [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
+
+DeclareOperation( "AddVerticalPostCompose",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddVerticalPostCompose",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddVerticalPostCompose",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddVerticalPostCompose",
                   [ IsCapCategory, IsList ] );
 
 

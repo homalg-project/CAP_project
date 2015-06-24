@@ -1580,6 +1580,52 @@ AddDerivationToCAP( ImageObject,
     
 end : Description := "ImageObject as the source of ImageEmbedding" );
 
+###########################
+##
+## Methods returning a twocell
+##
+###########################
+
+##
+AddDerivationToCAP( HorizontalPostCompose,
+                    [ [ HorizontalPreCompose, 1 ] ],
+                    
+  function( twocell_right, twocell_left )
+    
+    return HorizontalPreCompose( twocell_left, twocell_right );
+    
+end : Description := "HorizontalPostCompose using HorizontalPreCompose" );
+
+##
+AddDerivationToCAP( HorizontalPreCompose,
+                    [ [ HorizontalPostCompose, 1 ] ],
+                    
+  function( twocell_left, twocell_right )
+    
+    return HorizontalPostCompose( twocell_right, twocell_left );
+    
+end : Description := "HorizontalPreCompose using HorizontalPostCompose" );
+
+##
+AddDerivationToCAP( VerticalPostCompose,
+                    [ [ VerticalPreCompose, 1 ] ],
+                    
+  function( twocell_below, twocell_above )
+    
+    return VerticalPreCompose( twocell_above, twocell_below );
+    
+end : Description := "VerticalPostCompose using VerticalPreCompose" );
+
+##
+AddDerivationToCAP( VerticalPreCompose,
+                    [ [ VerticalPostCompose, 1 ] ],
+                    
+  function( twocell_above, twocell_below )
+    
+    return VerticalPostCompose( twocell_below, twocell_above );
+    
+end : Description := "VerticalPreCompose using VerticalPostCompose" );
+
 ####################################
 ## Final derived methods
 ####################################

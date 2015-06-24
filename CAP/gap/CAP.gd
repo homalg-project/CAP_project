@@ -99,7 +99,8 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIdentityTwoCell",
                 "CanComputeHonestRepresentative",
                 "CanComputeIsWellDefinedForTwoCells",
-                
+                "CanComputeHorizontalPostCompose",
+                "CanComputeVerticalPostCompose"
               ],
               
               CanComputeForAllCategories := [ 
