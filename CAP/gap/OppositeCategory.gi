@@ -309,8 +309,6 @@ InstallImmediateMethod( Range,
     
 end );
 
-## TODO: Massig todo-list entries die attribute von Category/Object/Morphism auf Opposite übertragen.
-
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
                        
   function( category )
