@@ -117,7 +117,7 @@ InstallMethod( VectorSpaceMorphism,
     
 end );
 
-AddIsIdenticalForMorphisms( vecspaces,
+AddIsEqualForMorphisms( vecspaces,
 
   function( a, b )
   
@@ -125,7 +125,7 @@ AddIsIdenticalForMorphisms( vecspaces,
   
 end );
 
-AddIsEqualForMorphisms( vecspaces,
+AddIsCongruentForMorphisms( vecspaces,
 
   function( a, b )
   
@@ -1025,6 +1025,6 @@ eval_rule := rec( command := "PreCompose",
                                     ],
                   part_to_replace := [ 1, 2, 1 ],
                   ## TODO:
-                  part_for_is_well_defined := [ [ "IsEqualForMorphisms", [ [ "PreCompose", [ [ 1, 2, 1 ], [ 1, 1, 1 ] ] ], [ "PreCompose", [ [ 1, 2, 2 ], [ 1, 1, 2 ] ] ] ] ] ] );
+                  part_for_is_well_defined := [ [ "IsCongruentForMorphisms", [ [ "PreCompose", [ [ 1, 2, 1 ], [ 1, 1, 1 ] ] ], [ "PreCompose", [ [ 1, 2, 2 ], [ 1, 1, 2 ] ] ] ] ] ] );
 
 eval_rule := REMOVE_CHARACTERS_FROM_LATEX( "A, B:Obj, tau_A, tau_B:Mor |~ &()vdash &Precompose(InjectionOfCofactorOfCoproduct( [A, B], 1 ),&UniversalMorphismFromCoproduct( [A,B], [tau_A, tau_B] ) ) = tau_A" );

@@ -224,8 +224,8 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     obj_rec!.derivations_weight_list := MakeOperationWeightList( obj_rec, CAP_INTERNAL_DERIVATION_GRAPH );
     
     obj_rec!.caches := rec( IsEqualForObjects := "none",
-                            IsIdenticalForMorphisms := "none",
-                            IsIdenticalForMorphismsOnMor := "none" );
+                            IsEqualForMorphisms := "none",
+                            IsEqualForMorphismsOnMor := "none" );
     
     obj_rec!.redirects := rec( );
     
@@ -420,7 +420,7 @@ InstallGlobalFunction( SetCachingOfCategory,
     
     for current_name in RecNames( category!.caches ) do
         
-        if current_name in [ "IsIdenticalForMorphisms", "IsEqualForObjects", "IsIdenticalForMorphismsOnMor" ] then
+        if current_name in [ "IsEqualForMorphisms", "IsEqualForObjects", "IsEqualForMorphismsOnMor" ] then
             continue; ## Those are needed for comparison in caches
         fi;
         

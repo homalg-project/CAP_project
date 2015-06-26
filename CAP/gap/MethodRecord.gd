@@ -729,10 +729,10 @@ UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   end,
   return_type := "morphism" ),
 
-IsEqualForMorphisms := rec(
-  installation_name := "IsEqualForMorphisms",
+IsCongruentForMorphisms := rec(
+  installation_name := "IsCongruentForMorphisms",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "IsEqualForMorphisms",
+  cache_name := "IsCongruentForMorphisms",
   well_defined_todo := false,
   
   pre_function := function( morphism_1, morphism_2 )
@@ -797,10 +797,10 @@ IsEqualForMorphisms := rec(
   
   return_type := "bool" ),
 
-IsIdenticalForMorphisms := rec(
-  installation_name := "IsIdenticalForMorphisms",
+IsEqualForMorphisms := rec(
+  installation_name := "IsEqualForMorphisms",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "IsIdenticalForMorphisms",
+  cache_name := "IsEqualForMorphisms",
   well_defined_todo := false,
   
   pre_function := function( morphism_1, morphism_2 )
@@ -855,10 +855,10 @@ IsIdenticalForMorphisms := rec(
   
   return_type := "bool" ),
 
-IsIdenticalForMorphismsOnMor := rec(
-  installation_name := "IsIdenticalForMorphismsOnMor",
+IsEqualForMorphismsOnMor := rec(
+  installation_name := "IsEqualForMorphismsOnMor",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "IsIdenticalForMorphismsOnMor",
+  cache_name := "IsEqualForMorphismsOnMor",
   well_defined_todo := false,
   
   redirect_function := function( morphism_1, morphism_2 )
@@ -1563,6 +1563,116 @@ ImageEmbeddingWithGivenImageObject := rec(
   universal_type := "Limit",
   return_type := "morphism" ),
 
+Coimage := rec(
+  installation_name := "Coimage",
+  filter_list := [ "morphism" ],
+  universal_type := "Colimit",
+  return_type := "object",
+  dual_operation := "Image" ),
+
+CoimageProjection := rec(
+  installation_name := "CoimageProjection",
+  filter_list := [ "morphism" ],
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  return_type := "morphism",
+  dual_operation := "ImageEmbedding" ),
+
+CoimageProjectionWithGivenCoimage := rec(
+  installation_name := "CoimageProjectionWithGivenCoimage",
+  filter_list := [ "morphism", "object" ],
+  cache_name := "CoimageProjectionWithGivenCoimage",
+  universal_type := "Colimit",
+  return_type := "morphism",
+  dual_operation := "ImageEmbeddingWithGivenImageObject" ),
+
+AstrictionToCoimage := rec(
+  installation_name := "AstrictionToCoimage",
+  filter_list := [ "morphism" ],
+  universal_object_position := "Source",
+  universal_type := "Colimit",
+  return_type := "morphism",
+  dual_operation := "CoastrictionToImage" ),
+
+AstrictionToCoimageWithGivenCoimage := rec(
+  installation_name := "AstrictionToCoimageWithGivenCoimage",
+  filter_list := [ "morphism", "object" ],
+  cache_name := "AstrictionToCoimageWithGivenCoimage",
+  universal_type := "Colimit",
+  return_type := "morphism",
+  dual_operation := "CoastrictionToImageWithGivenImageObject" ),
+
+UniversalMorphismIntoCoimage := rec(
+  installation_name := "UniversalMorphismIntoCoimage",
+  filter_list := [ "morphism", IsList ],
+  cache_name := "UniversalMorphismIntoCoimage",
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  
+  pre_function := function( morphism, test_factorization )
+    local value;
+    
+    value := IsEqualForObjects( Source( morphism ), Source( test_factorization[ 1 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether source of morphism and test factorization are equal" ];
+    elif value = false then
+        return [ false, "source of morphism and test factorization are not equal" ];
+    fi;
+    
+    value := IsEqualForObjects( Range( morphism ), Range( test_factorization[ 2 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether range of morphism and test factorization are equal" ];
+    elif value = false then
+        return [ false, "range of morphism and test factorization are not equal" ];
+    fi;
+    
+    value := IsEqualForObjects( Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether source and range of test factorization are equal" ];
+    elif value = false then
+        return [ false, "source and range of test factorization are not equal" ];
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism",
+  dual_operation := "UniversalMorphismFromImage" ),
+
+UniversalMorphismIntoCoimageWithGivenCoimage := rec(
+  installation_name := "UniversalMorphismIntoCoimageWithGivenCoimage",
+  filter_list := [ "morphism", IsList, "object" ],
+  cache_name := "UniversalMorphismIntoCoimageWithGivenCoimage",
+  universal_type := "Colimit",
+  
+  pre_function := function( morphism, test_factorization, image )
+    local value;
+    
+    value := IsEqualForObjects( Source( morphism ), Source( test_factorization[ 1 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether source of morphism and test factorization are equal" ];
+    elif value = false then
+        return [ false, "source of morphism and test factorization are not equal" ];
+    fi;
+    
+    value := IsEqualForObjects( Range( morphism ), Range( test_factorization[ 2 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether range of morphism and test factorization are equal" ];
+    elif value = false then
+        return [ false, "range of morphism and test factorization are not equal" ];
+    fi;
+    
+    value := IsEqualForObjects( Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) );
+    if value = fail then
+        return [ false, "cannot decide whether source and range of test factorization are equal" ];
+    elif value = false then
+        return [ false, "source and range of test factorization are not equal" ];
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism",
+  dual_operation := "UniversalMorphismFromImageWithGivenImageObject" ),
+
 IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],
@@ -1911,7 +2021,7 @@ VerticalPreCompose := rec(
   pre_function := function( twocell_1, twocell_2 )
     local value;
     
-    value := IsIdenticalForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
+    value := IsEqualForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
     if value = fail then
         return [ false, "cannot decide whether 2-cells are vertically composable" ];
     elif value = false then
@@ -1931,7 +2041,7 @@ VerticalPostCompose := rec(
   pre_function := function( twocell_2, twocell_1 )
     local value;
     
-    value := IsIdenticalForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
+    value := IsEqualForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
     if value = fail then
         return [ false, "cannot decide whether 2-cells are vertically composable" ];
     elif value = false then

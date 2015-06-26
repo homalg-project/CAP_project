@@ -269,7 +269,7 @@ InstallGlobalFunction( ADD_IS_IDENTICAL_FOR_MORPHISMS,
                               
   function( category )
     
-    AddIsIdenticalForMorphisms( category,
+    AddIsEqualForMorphisms( category,
     
       function( morphism_1, morphism_2 )
         
@@ -506,7 +506,7 @@ InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_LEFT,
                        
   function( category )
     
-    AddIsEqualForMorphisms( category,
+    AddIsCongruentForMorphisms( category,
                             
       function( morphism_1, morphism_2 )
         local result_of_divide;
@@ -524,7 +524,7 @@ InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_RIGHT,
                        
   function( category )
     
-    AddIsEqualForMorphisms( category,
+    AddIsCongruentForMorphisms( category,
                             
       function( morphism_1, morphism_2 )
         local result_of_divide;

@@ -109,7 +109,7 @@ InstallMethodWithCache( HomalgIntegerMorphism,
 end );
 
 ##
-AddIsEqualForMorphisms( integer_category,
+AddIsCongruentForMorphisms( integer_category,
                          
   ReturnTrue );
 

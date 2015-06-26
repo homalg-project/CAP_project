@@ -157,21 +157,21 @@ InstallGlobalFunction( InjectionOfCofactor,
     ## convenience: first argument was created as a direct sum
     if WasCreatedAsDirectSum( object_product_list ) then
       
-      return InjectionOfCofactorOfDirectSumWithGivenDirectSum( Genesis( object_product_list )!.DirectSumDiagram, injection_number, object_product_list );
+      return InjectionOfCofactorOfDirectSum( Genesis( object_product_list )!.DirectSumDiagram, injection_number );
       
     fi;
     
     ## convenience: first argument was created as a coproduct
     if WasCreatedAsCoproduct( object_product_list ) then
       
-      return InjectionOfCofactorOfCoproductWithGivenCoproduct( Genesis( object_product_list )!.CoproductDiagram, injection_number, object_product_list );
+      return InjectionOfCofactorOfCoproduct( Genesis( object_product_list )!.CoproductDiagram, injection_number );
     
     fi;
     
     ## convenience: first argument was created as a pushout
     if WasCreatedAsPushout( object_product_list ) then
       
-      return InjectionOfCofactorOfPushoutWithGivenPushout( Genesis( object_product_list )!.PushoutDiagram, injection_number, object_product_list );
+      return InjectionOfCofactorOfPushout( Genesis( object_product_list )!.PushoutDiagram, injection_number );
       
     fi;
     
@@ -304,21 +304,21 @@ InstallGlobalFunction( ProjectionInFactor,
     ## convenience: first argument was created as direct sum
     if WasCreatedAsDirectSum( object_product_list ) then
       
-      return ProjectionInFactorOfDirectSumWithGivenDirectSum( Genesis( object_product_list )!.DirectSumDiagram, projection_number, object_product_list );
+      return ProjectionInFactorOfDirectSum( Genesis( object_product_list )!.DirectSumDiagram, projection_number );
       
     fi;
     
     ## convenience: first argument was created as direct product
     if WasCreatedAsDirectProduct( object_product_list ) then
       
-      return ProjectionInFactorOfDirectProductWithGivenDirectProduct( Genesis( object_product_list )!.DirectProductDiagram, projection_number, object_product_list );
+      return ProjectionInFactorOfDirectProduct( Genesis( object_product_list )!.DirectProductDiagram, projection_number );
       
     fi;
     
     ## convenience: first argument was created as a pullback
     if WasCreatedAsFiberProduct( object_product_list ) then
       
-      return ProjectionInFactorOfFiberProductWithGivenFiberProduct( Genesis( object_product_list )!.FiberProductDiagram, projection_number, object_product_list );
+      return ProjectionInFactorOfFiberProduct( Genesis( object_product_list )!.FiberProductDiagram, projection_number );
       
     fi;
     

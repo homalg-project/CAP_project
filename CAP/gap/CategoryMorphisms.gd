@@ -255,6 +255,22 @@ DeclareOperation( "AddMorphism",
 ###################################
 
 
+## IsCongruentForMorphisms
+DeclareOperation( "AddIsCongruentForMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsCongruentForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsCongruentForMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsCongruentForMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+DeclareOperation( "IsCongruentForMorphisms",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
 ## IsEqualForMorphisms
 DeclareOperation( "AddIsEqualForMorphisms",
                   [ IsCapCategory, IsFunction ] );
@@ -268,44 +284,28 @@ DeclareOperation( "AddIsEqualForMorphisms",
 DeclareOperation( "AddIsEqualForMorphisms",
                   [ IsCapCategory, IsList ] );
 
+
+DeclareOperation( "AddIsEqualForMorphismsOnMor",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualForMorphismsOnMor",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualForMorphismsOnMor",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEqualForMorphismsOnMor",
+                  [ IsCapCategory, IsList ] );
+
+
+
 DeclareOperation( "IsEqualForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-## IsIdenticalForMorphisms
-DeclareOperation( "AddIsIdenticalForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsIdenticalForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalForMorphisms",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddIsIdenticalForMorphismsOnMor",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsIdenticalForMorphismsOnMor",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalForMorphismsOnMor",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalForMorphismsOnMor",
-                  [ IsCapCategory, IsList ] );
-
-
-
-DeclareOperation( "IsIdenticalForMorphisms",
+DeclareOperation( "IsEqualForMorphismsOnMor",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "IsIdenticalForMorphismsOnMor",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-DeclareOperation( "AddPropertyToMatchAtIsEqualForMorphisms",
+DeclareOperation( "AddPropertyToMatchAtIsCongruentForMorphisms",
                   [ IsCapCategory, IsString ] );
 
 DeclareOperation( "AddIsZeroForMorphisms",

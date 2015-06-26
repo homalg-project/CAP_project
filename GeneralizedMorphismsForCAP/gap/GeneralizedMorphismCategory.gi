@@ -107,11 +107,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
        and CanComputeIsEqualAsFactorobjects( underlying_honest_category )
        and CanComputeMonoAsKernelLift( underlying_honest_category )
        and CanComputeEpiAsCokernelColift( underlying_honest_category )
-       and CanComputeIsEqualForMorphisms( underlying_honest_category )
+       and CanComputeIsCongruentForMorphisms( underlying_honest_category )
        and CanComputePreCompose( underlying_honest_category )
        and CanComputeDomainAssociatedMorphismCodomainTriple( category ) then
        
-       AddIsEqualForMorphisms( category,
+       AddIsCongruentForMorphisms( category,
                                   
          function( generalized_morphism1, generalized_morphism2 )
            local subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
@@ -140,7 +140,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
            
            isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
            
-           return IsEqualForMorphisms( AssociatedMorphism( generalized_morphism1 ), 
+           return IsCongruentForMorphisms( AssociatedMorphism( generalized_morphism1 ), 
                                       PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) 
                                      );
       

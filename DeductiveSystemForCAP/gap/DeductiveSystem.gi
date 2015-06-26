@@ -171,11 +171,11 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddIsEqualForMorphisms( deductive_system,
+    AddIsCongruentForMorphisms( deductive_system,
                             
       function( morphism1, morphism2 )
         
-        return IsEqualForMorphisms( Evaluation( morphism1 ), Evaluation( morphism2 ) );
+        return IsCongruentForMorphisms( Evaluation( morphism1 ), Evaluation( morphism2 ) );
         
     end );
     

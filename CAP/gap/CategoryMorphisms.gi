@@ -205,7 +205,7 @@ InstallMethod( \=,
         
     fi;
     
-    return IsEqualForMorphisms( morphism_1, morphism_2 );
+    return IsCongruentForMorphisms( morphism_1, morphism_2 );
     
 end );
 
@@ -236,7 +236,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS,
 end );
 
 ##
-InstallMethod( AddPropertyToMatchAtIsEqualForMorphisms,
+InstallMethod( AddPropertyToMatchAtIsCongruentForMorphisms,
                [ IsCapCategory, IsString ],
                
   function( category, name )
@@ -317,7 +317,7 @@ InstallMethod( IsEqualForCache,
     local result;
     
     
-    result := IsIdenticalForMorphismsOnMor( morphism_1, morphism_2 );
+    result := IsEqualForMorphismsOnMor( morphism_1, morphism_2 );
     
     if result = fail then
         return false;
