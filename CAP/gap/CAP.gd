@@ -35,12 +35,12 @@
 ####################################
 
 #! We say $C$ is a $\textbf{computable category}$ if it passes the following filters:
-#! * $\texttt{CanComputeIsEqualForMorphisms}$
+#! * $\texttt{CanComputeIsCongruentForMorphisms}$
 #! * $\texttt{CanComputePreCompose}$
 #! * $\texttt{CanComputeIdentityMorphism}$
 
 #! We say $C$ is a $\textbf{computable category}$ if it passes the following filters:
-#! * $\texttt{CanComputeIsEqualForMorphisms}$
+#! * $\texttt{CanComputeIsCongruentForMorphisms}$
 #! * $\texttt{CanComputePreCompose}$
 #! * $\texttt{CanComputeIdentityMorphism}$
 
@@ -134,7 +134,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeProjectionInFactorOfDirectProductWithGivenDirectProduct",
                 "CanComputeUniversalMorphismIntoDirectProduct",
                 "CanComputeUniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                "CanComputeIsEqualForMorphisms",
+                "CanComputeIsCongruentForMorphisms",
                 "CanComputeIsEqualForObjects",
                 "CanComputeIsZeroForMorphisms",
                 "CanComputeAdditionForMorphisms",
@@ -182,7 +182,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsomorphismFromPushoutToCokernelOfDiagonalDifference",
                 "CanComputeIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
                 "CanComputeIsomorphismFromImageObjectToKernelOfCokernel",
-                "CanComputeIsIdenticalForMorphisms",
+                "CanComputeIsEqualForMorphisms",
                 "CanComputeUniversalMorphismIntoZeroObject",
                 "CanComputeUniversalMorphismIntoZeroObjectWithGivenZeroObject",
                 "CanComputeUniversalMorphismFromZeroObject",
@@ -203,7 +203,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsomorphismFromDirectProductToDirectSum",
                 "CanComputeIsomorphismFromDirectSumToCoproduct",
                 "CanComputeIsomorphismFromCoproductToDirectSum",
-                "CanComputeIsIdenticalForMorphismsOnMor",
+                "CanComputeIsEqualForMorphismsOnMor",
                 "CanComputeIsIdenticalToIdentityMorphism",
                 "CanComputeIsTerminal",
                 "CanComputeIsInitial",

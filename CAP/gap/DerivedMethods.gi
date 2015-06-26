@@ -7,30 +7,30 @@
 
 ##
 AddDerivationToCAP( IsIdenticalToIdentityMorphism,
-                    [ [ IsIdenticalForMorphismsOnMor, 1 ],
+                    [ [ IsEqualForMorphismsOnMor, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     
   function( morphism )
     
-    return IsIdenticalForMorphismsOnMor( morphism, IdentityMorphism( Source( morphism ) ) );
+    return IsEqualForMorphismsOnMor( morphism, IdentityMorphism( Source( morphism ) ) );
     
-end : Description := "IsIdenticalToIdentityMorphism using IsIdenticalForMorphismsOnMor and IdentityMorphism" );
+end : Description := "IsIdenticalToIdentityMorphism using IsEqualForMorphismsOnMor and IdentityMorphism" );
   
 ##
 AddDerivationToCAP( IsZeroForObjects,
-                    [ [ IsEqualForMorphisms, 1 ],
+                    [ [ IsCongruentForMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ ZeroMorphism, 1 ] ],
                  
   function( object )
   
-    return IsEqualForMorphisms( IdentityMorphism( object ), ZeroMorphism( object, object ) );
+    return IsCongruentForMorphisms( IdentityMorphism( object ), ZeroMorphism( object, object ) );
     
 end : Description := "IsZeroForObjects by comparing identity morphism with zero morphism" );
 
 ##
-AddDerivationToCAP( IsIdenticalForMorphismsOnMor,
-                    [ [ IsIdenticalForMorphisms, 1 ] ],
+AddDerivationToCAP( IsEqualForMorphismsOnMor,
+                    [ [ IsEqualForMorphisms, 1 ] ],
                     
   function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -58,9 +58,9 @@ AddDerivationToCAP( IsIdenticalForMorphismsOnMor,
     
     fi;
     
-    return IsIdenticalForMorphisms( morphism_1, morphism_2 );
+    return IsEqualForMorphisms( morphism_1, morphism_2 );
     
-end : Description := "IsIdenticalForMorphismsOnMor using IsIdenticalForMorphisms" );
+end : Description := "IsEqualForMorphismsOnMor using IsEqualForMorphisms" );
 
 ##
 AddDerivationToCAP( IsMonomorphism,
@@ -378,7 +378,7 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject computing the zero morphism" );
 
 ## NOTE: Derivations like these maybe problematic within the groupoid interpretation,
-## because this result doesn't have to be equal (under IsIdenticalForMorphisms) with the result
+## because this result doesn't have to be equal (under IsEqualForMorphisms) with the result
 ## of UniversalMorphismFromInitialObject
 ##
 AddDerivationToCAP( UniversalMorphismFromInitialObjectWithGivenInitialObject,
@@ -1922,36 +1922,36 @@ AddFinalDerivation( IsEqualForObjects,
                     
   ReturnFail );
 
-## Final methods for IsEqual/IsIdenticalForMorphisms
+## Final methods for IsEqual/IsEqualForMorphisms
 ##
-AddFinalDerivation( IsEqualForMorphisms,
+AddFinalDerivation( IsCongruentForMorphisms,
                     [ ],
-                    [ IsEqualForMorphisms,
-                      IsIdenticalForMorphisms ],
-                      
-  ReturnFail : Description := "Only IsIdenticalObj for comparing" );
-
-##
-AddFinalDerivation( IsIdenticalForMorphisms,
-                    [ ],
-                    [ IsEqualForMorphisms,
-                      IsIdenticalForMorphisms ],
+                    [ IsCongruentForMorphisms,
+                      IsEqualForMorphisms ],
                       
   ReturnFail : Description := "Only IsIdenticalObj for comparing" );
 
 ##
 AddFinalDerivation( IsEqualForMorphisms,
-                    [ [ IsIdenticalForMorphisms, 1 ] ],
+                    [ ],
+                    [ IsCongruentForMorphisms,
+                      IsEqualForMorphisms ],
+                      
+  ReturnFail : Description := "Only IsIdenticalObj for comparing" );
+
+##
+AddFinalDerivation( IsCongruentForMorphisms,
+                    [ [ IsEqualForMorphisms, 1 ] ],
+                    [ IsCongruentForMorphisms ],
+                    
+  IsEqualForMorphisms : Description := "Use IsEqualForMorphisms for IsCongruentForMorphisms" );
+
+##
+AddFinalDerivation( IsEqualForMorphisms,
+                    [ [ IsCongruentForMorphisms, 1 ] ],
                     [ IsEqualForMorphisms ],
                     
-  IsIdenticalForMorphisms : Description := "Use IsIdenticalForMorphisms for IsEqualForMorphisms" );
-
-##
-AddFinalDerivation( IsIdenticalForMorphisms,
-                    [ [ IsEqualForMorphisms, 1 ] ],
-                    [ IsIdenticalForMorphisms ],
-                    
-  IsEqualForMorphisms : Description := "Use IsEqualForMorphisms for IsIdenticalForMorphisms",
+  IsCongruentForMorphisms : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms",
                         CategoryOptionFunction := function( category )
                             
                             InstallMethod( IsEqualForCache,

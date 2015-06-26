@@ -729,10 +729,10 @@ UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   end,
   return_type := "morphism" ),
 
-IsEqualForMorphisms := rec(
-  installation_name := "IsEqualForMorphisms",
+IsCongruentForMorphisms := rec(
+  installation_name := "IsCongruentForMorphisms",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "IsEqualForMorphisms",
+  cache_name := "IsCongruentForMorphisms",
   well_defined_todo := false,
   
   pre_function := function( morphism_1, morphism_2 )
@@ -797,10 +797,10 @@ IsEqualForMorphisms := rec(
   
   return_type := "bool" ),
 
-IsIdenticalForMorphisms := rec(
-  installation_name := "IsIdenticalForMorphisms",
+IsEqualForMorphisms := rec(
+  installation_name := "IsEqualForMorphisms",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "IsIdenticalForMorphisms",
+  cache_name := "IsEqualForMorphisms",
   well_defined_todo := false,
   
   pre_function := function( morphism_1, morphism_2 )
@@ -855,10 +855,10 @@ IsIdenticalForMorphisms := rec(
   
   return_type := "bool" ),
 
-IsIdenticalForMorphismsOnMor := rec(
-  installation_name := "IsIdenticalForMorphismsOnMor",
+IsEqualForMorphismsOnMor := rec(
+  installation_name := "IsEqualForMorphismsOnMor",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "IsIdenticalForMorphismsOnMor",
+  cache_name := "IsEqualForMorphismsOnMor",
   well_defined_todo := false,
   
   redirect_function := function( morphism_1, morphism_2 )
@@ -2021,7 +2021,7 @@ VerticalPreCompose := rec(
   pre_function := function( twocell_1, twocell_2 )
     local value;
     
-    value := IsIdenticalForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
+    value := IsEqualForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
     if value = fail then
         return [ false, "cannot decide whether 2-cells are vertically composable" ];
     elif value = false then
@@ -2041,7 +2041,7 @@ VerticalPostCompose := rec(
   pre_function := function( twocell_2, twocell_1 )
     local value;
     
-    value := IsIdenticalForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
+    value := IsEqualForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
     if value = fail then
         return [ false, "cannot decide whether 2-cells are vertically composable" ];
     elif value = false then
