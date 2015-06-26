@@ -195,17 +195,13 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
-        ## FIXME: No coimage yet!
-        if PositionSublist( current_recname, "Image" ) <> fail then
-            continue;
-        fi;
-        
         ## No support for twocells
         if current_recname in [ "HorizontalPreCompose",
                                 "HorizontalPostCompose",
                                 "VerticalPreCompose",
                                 "VerticalPostCompose",
-                                "IdenticalTwoCell" ] then
+                                "IdenticalTwoCell",
+                                "IsomorphismFromImageObjectToKernelOfCokernel" ] then
             continue;
         fi;
         

@@ -1547,28 +1547,31 @@ ImageObject := rec(
   installation_name := "ImageObject",
   filter_list := [ "morphism" ],
   universal_type := "Limit",
-  return_type := "object" ),
+  return_type := "object",
+  dual_operation := "Coimage" ),
 
 ImageEmbedding := rec(
   installation_name := "ImageEmbedding",
   filter_list := [ "morphism" ],
   universal_object_position := "Source",
   universal_type := "Limit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CoimageProjection" ),
 
 ImageEmbeddingWithGivenImageObject := rec(
   installation_name := "ImageEmbeddingWithGivenImageObject",
   filter_list := [ "morphism", "object" ],
   cache_name := "ImageEmbeddingWithGivenImageObject",
   universal_type := "Limit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CoimageProjectionWithGivenCoimage" ),
 
 Coimage := rec(
   installation_name := "Coimage",
   filter_list := [ "morphism" ],
   universal_type := "Colimit",
   return_type := "object",
-  dual_operation := "Image" ),
+  dual_operation := "ImageObject" ),
 
 CoimageProjection := rec(
   installation_name := "CoimageProjection",
@@ -1818,14 +1821,16 @@ CoastrictionToImage := rec(
   filter_list := [ "morphism" ],
   universal_object_position := "Range",
   universal_type := "Limit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "AstrictionToCoimage" ),
 
 CoastrictionToImageWithGivenImageObject := rec(
   installation_name := "CoastrictionToImageWithGivenImageObject",
   filter_list := [ "morphism", "object" ],
   cache_name := "CoastrictionToImageWithGivenImageObject",
   universal_type := "Limit",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "AstrictionToCoimageWithGivenCoimage" ),
 
 UniversalMorphismFromImage := rec(
   installation_name := "UniversalMorphismFromImage",
@@ -1833,6 +1838,7 @@ UniversalMorphismFromImage := rec(
   cache_name := "UniversalMorphismFromImage",
   universal_object_position := "Source",
   universal_type := "Limit",
+  dual_operation := "UniversalMorphismIntoCoimage",
   
   pre_function := function( morphism, test_factorization )
     local value;
@@ -1867,6 +1873,7 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
   filter_list := [ "morphism", IsList, "object" ],
   cache_name := "UniversalMorphismFromImageWithGivenImageObject",
   universal_type := "Limit",
+  dual_operation := "UniversalMorphismIntoCoimageWithGivenCoimage",
   
   pre_function := function( morphism, test_factorization, image )
     local value;
