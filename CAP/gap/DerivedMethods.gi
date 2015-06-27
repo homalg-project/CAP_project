@@ -6,6 +6,20 @@
 ###########################
 
 ##
+AddDerivationToCAP( IsZeroForMorphisms,
+                    [ [ ZeroMorphism, 1 ],
+                      [ IsCongruentForMorphisms, 1 ] ],
+                      
+  function( morphism )
+    local zero_morphism;
+    
+    zero_morphism := ZeroMorphism( Source( morphism ), Range( morphism ) );
+    
+    return IsCongruentForMorphisms( zero_morphism, morphism );
+    
+end : Description := "IsZeroForMorphisms by deciding whether the given morphism is congruent to the zero morphism" );
+
+##
 AddDerivationToCAP( IsIdenticalToIdentityMorphism,
                     [ [ IsEqualForMorphismsOnMor, 1 ],
                       [ IdentityMorphism, 1 ] ],
