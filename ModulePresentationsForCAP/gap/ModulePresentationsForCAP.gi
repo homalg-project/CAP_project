@@ -454,14 +454,14 @@ end );
 InstallGlobalFunction( ADD_IS_ZERO_FOR_MORPHISMS,
                        
   function( category )
-    
-    AddIsZeroForMorphisms( category,
-                           
-      function( morphism )
-        
-        return IsZero( UnderlyingMatrix( morphism ) );
-        
-    end );
+    ## FIXME: Use DecideZeroRows here (and DecideZeroColumns for the case of right modules)
+#     AddIsZeroForMorphisms( category,
+#                            
+#       function( morphism )
+#         
+#         return IsZero( UnderlyingMatrix( morphism ) );
+#         
+#     end );
     
 end );
 
