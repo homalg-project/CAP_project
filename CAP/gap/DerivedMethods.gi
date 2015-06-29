@@ -532,6 +532,27 @@ AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
     
 end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the inverse of IsomorphismFromCokernelOfDiagonalDifferenceToPushout" );
 
+AddDerivationToCAP( EpiAsCokernelColift,
+                    [ [ KernelEmb, 1 ],
+                      [ CokernelColift, 2 ],
+                      [ PreCompose, 1 ],
+                      [ Inverse, 1 ] ],
+                    
+  function( epimorphism, test_morphism )
+    local kernel_emb, cokernel_colift_to_range_of_epimorphism, cokernel_colift_to_range_of_test_morphism, inverse;
+    
+    kernel_emb := KernelEmb( epimorphism );
+    
+    cokernel_colift_to_range_of_epimorphism :=
+      CokernelColift( kernel_emb, epimorphism );
+      
+    cokernel_colift_to_range_of_test_morphism :=
+      CokernelColift( kernel_emb, test_morphism );
+    
+    return PreCompose( Inverse( cokernel_colift_to_range_of_epimorphism ), cokernel_colift_to_range_of_test_morphism );
+    
+end );
+
 
 ###########################
 ##
