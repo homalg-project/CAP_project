@@ -9,14 +9,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsCapProductCategoryRep",
-                       IsAttributeStoringRep and IsCapCategoryRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfCapProductCategories",
-        NewType( TheFamilyOfCapCategories,
-                 IsCapProductCategoryRep ) );
-
 DeclareRepresentation( "IsCapCategoryProductCellRep",
                        IsAttributeStoringRep and IsCapCategoryCell,
                        [ ] );
@@ -69,12 +61,129 @@ InstallMethod( Components,
 ##
 ###################################
 
+BindGlobal( "CAP_INTERNAL_CREATE_PRODUCT_ARGUMENT_LIST",
+  
+  function( arg_list )
+    local nr_components, current_argument, i, j, current_mat, new_args;
+    
+    i := 1;
+    
+    while IsInt( arg_list[ i ] ) do
+        i := i + 1;
+    od;
+    
+    if IsCapCategoryCell( arg_list[ 1 ] ) or IsCapCategory( arg_list[ 1 ] ) then
+        
+        nr_components := Length( arg_list[ 1 ] );
+        
+    elif IsList( arg_list[ 1 ] ) then
+        
+        nr_components := Length( arg_list[ 1 ][ 1 ] );
+        
+    fi;
+    
+    new_args := List( [ 1 .. nr_components ], i -> [ ] );
+    
+    for i in [ 1 .. Length( arg_list ) ] do
+        
+        current_argument := arg_list[ i ];
+        
+        if IsCapCategoryCell( current_argument ) or IsCapCategory( current_argument ) then
+            
+            for j in [ 1 .. nr_components ] do
+                new_args[ j ][ i ] := current_argument[ j ];
+            od;
+            
+        elif IsInt( current_argument ) then
+            
+            for j in [ 1 .. nr_components ] do
+                new_args[ j ][ i ] := current_argument;
+            od;
+            
+        elif IsList( current_argument ) then
+            
+            current_mat := TransposedMat( List( current_argument, Components ) );
+            
+            for j in [ 1 .. nr_components ] do
+                new_args[ j ][ i ] := current_mat[ j ];
+            od;
+            
+        else
+            
+            Error( "Unrecognized argument type" );
+            
+        fi;
+        
+    od;
+    
+    return new_args;
+    
+end );
+
+##
+BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
+  
+  function( product_category )
+    local recnames, current_recname, category_weight_list, current_entry, func,
+          current_add, create_func, components;
+    
+    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    
+    components := Components( product_category );
+    
+    category_weight_list := List( components, category -> category!.derivations_weight_list );
+    
+    for current_recname in recnames do
+        
+        current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
+        
+        if IsBound( current_entry.no_install ) and current_entry.no_install = true then
+            continue;
+        fi;
+        
+        if ForAny( category_weight_list, list -> CurrentOperationWeight( list, current_recname ) = infinity ) then
+            continue;
+        fi;
+        
+        create_func := function( current_name )
+            
+            return function( arg )
+                local product_args, result_list;
+                
+                product_args := CAP_INTERNAL_CREATE_PRODUCT_ARGUMENT_LIST( arg );
+                
+                result_list := List( product_args, i -> CallFuncList( ValueGlobal( current_name ), i ) );
+                
+                if ForAll( result_list, IsBool ) then
+                    return ForAll( result_list, i -> i = true );
+                fi;
+                
+                return CallFuncList( Product, result_list );
+                
+            end;
+            
+        end;
+        
+        func := create_func( current_recname );
+        
+        current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
+        
+        current_add( product_category, func );
+        
+    od;
+    
+end );
+
 ##
 InstallMethodWithCacheFromObject( ProductOp,
                                   [ IsList, IsCapCategory ],
                         
   function( category_list, selector )
     local product_category, namestring;
+    
+    if not ForAll( category_list, HasIsFinalized ) or not ForAll( category_list, IsFinalized ) then
+        Error( "all categories for the product must be finalized" );
+    fi;
     
     ## this is the convention in CapCat
     if Length( category_list ) = 1 then
@@ -87,18 +196,15 @@ InstallMethodWithCacheFromObject( ProductOp,
     
     namestring := Concatenation( "Product of: " , namestring );
     
-    product_category := rec( caches := rec( ),
-                             default_cache_type := "weak" );
+    product_category := CreateCapCategory( namestring );
     
-    ObjectifyWithAttributes( product_category, TheTypeOfCapProductCategories,
-                             Components, category_list,
-                             Length, Length( category_list ),
-                             Name, namestring
-                           );
+    SetComponents( product_category, category_list );
     
-    CREATE_CAP_CATEGORY_FILTERS( product_category );
+    SetLength( product_category, Length( category_list ) );
     
+    SetFilterObj( product_category, IsCapProductCategory );
     
+    CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY( product_category );
     
     return product_category;
     
@@ -229,7 +335,7 @@ end );
 
 ##
 InstallMethod( \[\],
-               [ IsCapProductCategoryRep, IsInt ],
+               [ IsCapCategory and IsCapProductCategory, IsInt ],
                
   function( category, index )
     
@@ -266,16 +372,6 @@ end );
 ###################################
 
 ##
-InstallMethod( IsWellDefined,
-               [ IsCapCategoryProductCellRep ],
-               
-  function( cell )
-    
-    return ForAll( Components( cell ), IsWellDefined );
-    
-end );
-
-##
 InstallMethod( Source,
                [ IsCapCategoryProductMorphismRep ],
                
@@ -294,21 +390,6 @@ InstallMethod( Range,
     return CallFuncList( Product, List( Components( morphism ), Range ) );
     
 end );
-
-##
-InstallMethodWithToDoForIsWellDefined( PreCompose,
-                                       [ IsCapCategoryProductMorphismRep, IsCapCategoryProductMorphismRep ],
-                                       
-  function( mor_left, mor_right )
-    local left_comp, right_comp;
-    
-    left_comp := Components( mor_left );
-    
-    right_comp := Components( mor_right );
-    
-    return CallFuncList( Product, List( [ 1 .. Length( mor_left ) ], i -> PreCompose( left_comp[ i ], right_comp[ i ] ) ) );
-    
-end : InstallMethod := InstallMethodWithCacheFromObject);
 
 ##
 InstallMethod( Source,
@@ -468,7 +549,7 @@ MakeReadOnlyGlobal( "Product" );
 
 ##
 InstallMethod( IsEqualForCache,
-               [ IsCapProductCategoryRep, IsCapProductCategoryRep ],
+               [ IsCapCategory and IsCapProductCategory, IsCapCategory and IsCapProductCategory ],
                
   function( category1, category2 )
     local list1, list2, length;
@@ -485,7 +566,7 @@ InstallMethod( IsEqualForCache,
         
     fi;
     
-    return ForAll( [ 1 .. length ], i -> IsIdenticalObj( list1[ i ], list2[ i ] ) );
+    return ForAll( [ 1 .. length ], i -> IsEqualForCache( list1[ i ], list2[ i ] ) );
     
 end );
 
@@ -508,6 +589,6 @@ InstallMethod( IsEqualForCache,
         
     fi;
     
-    return ForAll( [ 1 .. length ], i -> IsIdenticalObj( list1[ i ], list2[ i ] ) );
+    return ForAll( [ 1 .. length ], i -> IsEqualForCache( list1[ i ], list2[ i ] ) );
     
 end );
