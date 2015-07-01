@@ -480,7 +480,7 @@ end : Description := "MonoAsKernelLift using Lift" );
 
 ##
 AddDerivationToCAP( EpiAsCokernelColift,
-                    [ [ Lift, 1 ] ],
+                    [ [ Colift, 1 ] ],
                     
   function( alpha, beta )
     
