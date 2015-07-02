@@ -19,6 +19,49 @@ InstallMethod( AddFinalDerivation,
     
 end );
 
+BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
+  
+  function( derivation )
+    
+    local possible_names, all_operations_names, function_object, function_string,
+          string_stream, i, all_operations;
+    
+    possible_names := derivation!.can_compute;
+    
+    possible_names := List( possible_names, i -> NameFunction( i[ 1 ] ) );
+    
+    all_operations := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
+    
+    for function_object in derivation!.function_list do
+        
+        function_object := function_object[ 1 ];
+        
+        function_string := "";
+        
+        string_stream := OutputTextString( function_string, false );
+        
+        PrintTo( string_stream, function_object );
+        
+        CloseStream( string_stream );
+        
+        RemoveCharacters( function_string, "()[];," );
+        
+        NormalizeWhitespace( function_string );
+        
+        function_string := SplitString( function_string, " " );
+        
+        for i in function_string do
+            
+            if i in all_operations and not i in possible_names then
+                Error( Concatenation( "final derivation with description\n", derivation.description, "\n uses ", i, ",\n which is not part of its condition" ) );
+            fi;
+            
+        od;
+        
+    od;
+    
+end );
+
 InstallMethod( AddFinalDerivation,
                [ IsFunction, IsDenseList, IsDenseList, IsDenseList ],
                
@@ -36,6 +79,8 @@ InstallMethod( AddFinalDerivation,
     final_derivation.can_compute := can;
     final_derivation.cannot_compute := cannot;
     final_derivation.function_list := func_list;
+    
+    CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK( final_derivation );
     
     Add( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list, final_derivation );
     
