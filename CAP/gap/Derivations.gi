@@ -64,6 +64,7 @@ function( name, target_op, used_ops_with_multiples,
       UsedOperationsWithMultiples, used_op_names_with_multiples,
       UsedOperationMultiples, used_op_multiples );
   # TODO options
+  
   return d;
 end );
 
@@ -231,6 +232,9 @@ InstallMethod( AddDerivation,
                                   weight,
                                   implementations_with_extra_filters,
                                   category_filter );
+    
+      
+    CAP_INTERNAL_DERIVATION_SANITY_CHECK( graph, derivation );
     
     AddDerivation( graph, derivation );
 end );
@@ -698,3 +702,45 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
     od;
     
 end );
+
+
+InstallGlobalFunction( CAP_INTERNAL_DERIVATION_SANITY_CHECK,
+                       
+  function( graph, derivation )
+    local possible_names, all_operations, function_object, function_string,
+          string_stream, i;
+    
+    possible_names := UsedOperations( derivation );
+    
+    all_operations := Operations( graph );
+    
+    for function_object in DerivationFunctionsWithExtraFilters( derivation ) do
+        
+        function_object := function_object[ 1 ];
+        
+        function_string := "";
+        
+        string_stream := OutputTextString( function_string, false );
+        
+        PrintTo( string_stream, function_object );
+        
+        CloseStream( string_stream );
+        
+        RemoveCharacters( function_string, "()[];," );
+        
+        NormalizeWhitespace( function_string );
+        
+        function_string := SplitString( function_string, " " );
+        
+        for i in function_string do
+            
+            if i in all_operations and not i in possible_names then
+                Error( Concatenation( "derivation with description\n", String( derivation ), "\n uses ", i, ",\n which is not part of its condition" ) );
+            fi;
+            
+        od;
+        
+    od;
+    
+end );
+

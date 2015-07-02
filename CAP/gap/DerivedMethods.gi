@@ -44,7 +44,8 @@ end : Description := "IsZeroForObjects by comparing identity morphism with zero 
 
 ##
 AddDerivationToCAP( IsEqualForMorphismsOnMor,
-                    [ [ IsEqualForMorphisms, 1 ] ],
+                    [ [ IsEqualForMorphisms, 1 ],
+                      [ IsEqualForObjects, 2 ] ],
                     
   function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -359,7 +360,7 @@ end : CategoryFilter := IsAdditiveCategory,
 
 ##
 AddDerivationToCAP( AdditionForMorphisms,
-                    [ [ UniversalMorphismIntoDirectProduct, 1 ],
+                    [ [ UniversalMorphismIntoDirectSum, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ UniversalMorphismFromDirectSum, 1 ],
                       [ PreCompose, 1 ] ],
@@ -625,7 +626,8 @@ end : Description := "CokernelColift using EpiAsCokernelColift and CokernelProj"
 
 ##
 AddDerivationToCAP( CokernelProj,
-                    [ [ CokernelProjWithGivenCokernel, 1 ] ],
+                    [ [ CokernelProjWithGivenCokernel, 1 ],
+                      [ Cokernel, 1 ] ],
                     
   function( mor )
     
