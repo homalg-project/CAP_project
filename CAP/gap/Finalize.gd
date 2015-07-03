@@ -18,6 +18,12 @@ DeclareOperation( "AddFinalDerivation",
 DeclareOperation( "AddFinalDerivation",
                   [ IsFunction, IsDenseList, IsDenseList, IsFunction ] );
 
+DeclareOperation( "AddFinalDerivation",
+                  [ IsFunction, IsDenseList, IsDenseList ] );
+
+DeclareOperation( "AddFinalDerivation",
+                  [ IsFunction, IsDenseList, IsFunction ] );
+
 
 DeclareProperty( "IsFinalized",
                   IsCapCategory );

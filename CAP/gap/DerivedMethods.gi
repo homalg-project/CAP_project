@@ -7,8 +7,6 @@
 
 ##
 AddDerivationToCAP( IsZeroForMorphisms,
-                    [ [ ZeroMorphism, 1 ],
-                      [ IsCongruentForMorphisms, 1 ] ],
                       
   function( morphism )
     local zero_morphism;
@@ -326,9 +324,6 @@ end : Description := "CokernelColiftWithGivenCokernel using EpiAsCokernelColift 
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoDirectSumWithGivenDirectSum,
-                    [ [ AdditionForMorphisms, 1 ],
-                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ], ## nr_components would be the correct number
-                      [ PreCompose, 2 ] ], ## nr_components would be the correct number
                                        
   function( diagram, source, direct_sum )
     local nr_components;

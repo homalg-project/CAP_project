@@ -178,6 +178,10 @@ DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsDerivedMethod ] );
 
 #!
 DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsObject ] );
+#!
+DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsFunction, IsDenseList ] );
+#!
+DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsFunction, IsFunction ] );
 
 #!
 DeclareGlobalFunction( "AddDerivationToCAP" );

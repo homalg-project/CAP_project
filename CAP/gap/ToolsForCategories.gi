@@ -505,4 +505,140 @@ InstallGlobalFunction( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT,
     return value;
 end );
 
+##
+BindGlobal( "CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP",
+  
+  function( function_string, loop_symbol )
+    local current_position, current_scan_position, bracket_count;
+    
+    current_position := PositionSublist( function_string, loop_symbol );
+    
+    while current_position <> fail do
+        
+        current_scan_position := current_position + Length( loop_symbol ) + 2;
+        
+        bracket_count := 1;
+        
+        while bracket_count <> 0 do
+            
+            if function_string[ current_scan_position ] = '(' then
+                
+                bracket_count := bracket_count + 1;
+                
+            elif function_string[ current_scan_position ] = ')' then
+                
+                bracket_count := bracket_count - 1;
+                
+            fi;
+            
+            current_scan_position := current_scan_position + 1;
+            
+        od;
+        
+        function_string := Concatenation( function_string{[ 1 .. current_scan_position - 1 ]}, " od ", function_string{[ current_scan_position .. Length( function_string ) ]} );
+        
+        current_position := PositionSublist( function_string, loop_symbol, current_position + 1 );
+        
+    od;
+    
+    return function_string;
+    
+end );
 
+##
+InstallGlobalFunction( CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION,
+  
+  function( func, symbol_list, loop_multiple )
+    local func_as_string, func_stream, i, func_as_list, loop_power, symbol_appearance_rec, current_symbol;
+    
+    func_as_string := "";
+    
+    func_stream := OutputTextString( func_as_string, false );
+    
+    PrintTo( func_stream, func );
+    
+    CloseStream( func_stream );
+    
+    ## Make List, Perform, Apply look like loops
+    
+    for i in [ "List", "Perform", "Apply" ] do
+        
+        func_as_string := CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP( func_as_string, i );
+        
+    od;
+    
+    RemoveCharacters( func_as_string, "()[];," );
+    
+    NormalizeWhitespace( func_as_string );
+    
+    func_as_list := SplitString( func_as_string, " " );
+    
+    ## stupid stupid special case
+    ## This might cause a bug sometime.
+    for i in [ 1 .. Length( func_as_list ) ] do
+        
+        if func_as_list[ i ] in [ "+", "-", "Sum" ] then
+            
+            func_as_list[ i ] := "AdditionForMorphisms";
+            
+        fi;
+        
+    od;
+    
+    loop_power := 0;
+    
+    symbol_appearance_rec := rec( );
+    
+    for current_symbol in func_as_list do
+        
+        if current_symbol in symbol_list then
+            
+            if not IsBound( symbol_appearance_rec.( current_symbol ) ) then
+                symbol_appearance_rec.( current_symbol ) := 0;
+            fi;
+            
+            symbol_appearance_rec.( current_symbol ) := symbol_appearance_rec.( current_symbol ) + loop_multiple^loop_power;
+            
+        elif current_symbol in [ "for", "while", "List", "Perform", "Apply" ] then
+            loop_power := loop_power + 1;
+            
+        elif current_symbol = "od" then
+            loop_power := loop_power - 1;
+            
+        fi;
+        
+    od;
+    
+    return List( RecNames( symbol_appearance_rec ), i -> [ i, symbol_appearance_rec.(i) ] );
+    
+end );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_MERGE_PRECONDITIONS_LIST,
+  
+  function( list1, list2 )
+    local i, j, append;
+    
+    for i in list1 do
+        
+        append := true;
+        
+        for j in [ 1 .. Length( list2 ) ] do
+            
+            if list2[ j ][ 1 ] = i[ 1 ] then
+                list2[ j ][ 2 ] := Maximum( list2[ j ][ 2 ], i[ 2 ] );
+                append := false;
+                break;
+            fi;
+        od;
+        
+        if append then
+            Add( list2, i );
+        fi;
+        
+    od;
+    
+    return list2;
+    
+end );
+                

@@ -203,6 +203,30 @@ function( G, d )
 end );
 
 InstallMethod( AddDerivation,
+               [ IsDerivedMethodGraph, IsFunction, IsFunction ],
+               
+  function( graph, target_op, implementations_with_extra_filters )
+    
+    AddDerivation( graph,
+                   target_op,
+                   [ ],
+                   [ [ implementations_with_extra_filters, [ ] ] ] );
+                   
+end );
+
+InstallMethod( AddDerivation,
+               [ IsDerivedMethodGraph, IsFunction, IsDenseList ],
+               
+  function( graph, target_op, implementations_with_extra_filters )
+    
+    AddDerivation( graph,
+                   target_op,
+                   [ ],
+                   [ [ implementations_with_extra_filters, [ ] ] ] );
+                   
+end );
+
+InstallMethod( AddDerivation,
                [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsFunction ],
                
   function( graph, target_op, used_ops_with_multiples,
@@ -220,11 +244,29 @@ InstallMethod( AddDerivation,
                
   function( graph, target_op, used_ops_with_multiples,
             implementations_with_extra_filters )
-    local weight, category_filter, description, derivation;
+    local weight, category_filter, description, derivation, collected_list,
+          operations_in_graph, current_list, current_implementation, loop_multiplier;
     
     weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
     description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
+    loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
+    
+    ## get used ops
+    ## Is this the right place? Or should this only be done when no ops are given?
+    operations_in_graph := Operations( graph );
+    
+    collected_list := [ ];
+    
+    for current_implementation in implementations_with_extra_filters do
+        
+        current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier );
+        current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[ 2 ] ] );
+        collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+        
+    od;
+    
+    used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, used_ops_with_multiples );
     
     derivation := MakeDerivation( description,
                                   target_op,
@@ -233,7 +275,7 @@ InstallMethod( AddDerivation,
                                   implementations_with_extra_filters,
                                   category_filter );
     
-      
+    ## FIXME: Should this be obsolete since the operations are extracted above?
     CAP_INTERNAL_DERIVATION_SANITY_CHECK( graph, derivation );
     
     AddDerivation( graph, derivation );
