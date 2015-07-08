@@ -117,26 +117,104 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismFromInitialObject computing the zero morphism" );
 
 ##
-AddDerivationToCAP( UniversalMorphismFromZeroObjectWithGivenZeroObject,
-                    [ [ ZeroMorphism, 1 ] ],
-                 
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromZeroObject,
+  
+  function( test_sink )
+    local zero_object;
+    
+    zero_object := ZeroObject( CapCategory( test_sink ) );
+    
+    return ZeroMorphism( zero_object, test_sink );
+    
+  end,
+  
   function( test_sink, zero_object )
     
     return ZeroMorphism( zero_object, test_sink );
     
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismFromZeroObjectWithGivenZeroObject computing the zero morphism" );
+      Description := "UniversalMorphismFromZeroObject computing the zero morphism" );
 
 ##
-AddDerivationToCAP( UniversalMorphismIntoZeroObjectWithGivenZeroObject,
-                    [ [ ZeroMorphism, 1 ] ],
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
+  
+  function( test_source )
+    local zero_object;
+    
+    zero_object := ZeroObject( CapCategory( test_source ) );
+    
+    return ZeroMorphism( test_source, zero_object );
+    
+  end,
                  
   function( test_source, zero_object )
     
     return ZeroMorphism( test_source, zero_object );
     
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismIntoZeroObjectWithGivenZeroObject computing the zero morphism" );
+      Description := "UniversalMorphismIntoZeroObject computing the zero morphism" );
+
+
+##
+AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
+                      
+  function( diagram, projection_number )
+    local embedding_in_direct_sum, direct_sum_diagram, projection;
+    
+    embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
+    
+    direct_sum_diagram := List( diagram, Source );
+    
+    projection := ProjectionInFactorOfDirectSum( direct_sum_diagram, projection_number );
+    
+    return PreCompose( embedding_in_direct_sum, projection );
+    
+  end,
+  
+  ## FIXME: this function is the canonical WithGiven function
+  function( diagram, projection_number, pullback )
+    local embedding_in_direct_sum, direct_product_diagram, projection;
+    
+    embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
+    
+    direct_product_diagram := List( diagram, Source );
+    
+    projection := ProjectionInFactorOfDirectSum( direct_product_diagram, projection_number );
+    
+    return PreCompose( embedding_in_direct_sum, projection );
+    
+end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
+
+##
+AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
+                                         
+  function( diagram, injection_number )
+    local projection_from_direct_sum, direct_sum_diagram, injection;
+    
+    projection_from_direct_sum := DirectSumProjectionInPushout( diagram );
+    
+    direct_sum_diagram := List( diagram, Range );
+    
+    injection := InjectionOfCofactorOfDirectSum( direct_sum_diagram, injection_number );
+    
+    return PreCompose( injection, projection_from_direct_sum );
+    
+  end,
+  
+  ## FIXME: this function is the canonical WithGiven function
+  function( diagram, injection_number, pushout )
+    local projection_from_direct_sum, direct_sum_diagram, injection;
+    
+    projection_from_direct_sum := DirectSumProjectionInPushout( diagram );
+    
+    direct_sum_diagram := List( diagram, Range );
+    
+    injection := InjectionOfCofactorOfDirectSum( direct_sum_diagram, injection_number );
+    
+    return PreCompose( injection, projection_from_direct_sum );
+    
+end : Description := "InjectionOfCofactorOfPushout by composing the direct sum injection with the direct sum projection to the pushout" );
+
 
 
 ###########################
@@ -468,44 +546,8 @@ end : CategoryFilter := IsAdditiveCategory,
 
 
 
-##
-AddDerivationToCAP( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
-                    [ [ FiberProductEmbeddingInDirectSum, 1 ],
-                      [ ProjectionInFactorOfDirectSum, 1 ],
-                      [ PreCompose, 1 ] ],
-                      
-  function( diagram, projection_number, pullback )
-    local embedding_in_direct_sum, direct_product_diagram, projection;
-    
-    embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
-    
-    direct_product_diagram := List( diagram, Source );
-    
-    projection := ProjectionInFactorOfDirectSum( direct_product_diagram, projection_number );
-    
-    return PreCompose( embedding_in_direct_sum, projection );
-    
-end : Description := "ProjectionInFactorOfFiberProductWithGivenFiberProduct by composing the embedding of fiber product in the direct sum with the direct sum projection" );
 
 
-##
-AddDerivationToCAP( InjectionOfCofactorOfPushoutWithGivenPushout,
-                    [ [ DirectSumProjectionInPushout, 1 ],
-                      [ InjectionOfCofactorOfDirectSum, 1 ],
-                      [ PreCompose, 1 ] ],
-                                         
-  function( diagram, injection_number, pushout )
-    local projection_from_direct_sum, direct_sum_diagram, injection;
-    
-    projection_from_direct_sum := DirectSumProjectionInPushout( diagram );
-    
-    direct_sum_diagram := List( diagram, Range );
-    
-    injection := InjectionOfCofactorOfDirectSum( direct_sum_diagram, injection_number );
-    
-    return PreCompose( injection, projection_from_direct_sum );
-    
-end : Description := "InjectionOfCofactorOfPushoutWithGivenPushout by composing the direct sum injection with the direct sum projection to the pushout" );
 
 
 ##
@@ -905,24 +947,6 @@ end : Description := "DirectSumDiagonalDifference using the operations defining 
 
 
 
-##
-AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
-                    [ [ FiberProductEmbeddingInDirectSum, 1 ],
-                      [ ProjectionInFactorOfDirectSum, 1 ],
-                      [ PreCompose, 1 ] ],
-                      
-  function( diagram, projection_number )
-    local embedding_in_direct_sum, direct_sum_diagram, projection;
-    
-    embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
-    
-    direct_sum_diagram := List( diagram, Source );
-    
-    projection := ProjectionInFactorOfDirectSum( direct_sum_diagram, projection_number );
-    
-    return PreCompose( embedding_in_direct_sum, projection );
-    
-end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
 
 
 ##
@@ -968,26 +992,6 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     return mor1 - mor2;
     
 end : Description := "DirectSumCodiagonalDifference using the operations defining this morphism" );
-
-
-##
-AddDerivationToCAP( InjectionOfCofactorOfPushout,
-                    [ [ DirectSumProjectionInPushout, 1 ],
-                      [ InjectionOfCofactorOfDirectSum, 1 ],
-                      [ PreCompose, 1 ] ],
-                                         
-  function( diagram, injection_number )
-    local projection_from_direct_sum, direct_sum_diagram, injection;
-    
-    projection_from_direct_sum := DirectSumProjectionInPushout( diagram );
-    
-    direct_sum_diagram := List( diagram, Range );
-    
-    injection := InjectionOfCofactorOfDirectSum( direct_sum_diagram, injection_number );
-    
-    return PreCompose( injection, projection_from_direct_sum );
-    
-end : Description := "InjectionOfCofactorOfPushout by composing the direct sum injection with the direct sum projection to the pushout" );
 
 
 ##
