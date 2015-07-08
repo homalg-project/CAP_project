@@ -1,3 +1,143 @@
+###########################
+##
+## WithGiven pairs
+##
+###########################
+
+AddWithGivenDerivationPairToCAP( KernelLift,
+  function( mor, test_morphism )
+    
+    return MonoAsKernelLift( KernelEmb( mor ), test_morphism );
+    
+  end,
+  
+  function( mor, test_morphism, kernel )
+    
+    return MonoAsKernelLift( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
+    
+end : Description := "KernelLift using MonoAsKernelLift and KernelEmb" );
+
+##
+AddWithGivenDerivationPairToCAP( CokernelColift,
+  function( mor, test_morphism )
+    
+    return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
+    
+  end,
+
+  function( mor, test_morphism, cokernel )
+      
+      return EpiAsCokernelColift( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
+      
+end : Description := "CokernelColift using EpiAsCokernelColift and CokernelProj" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
+  function( diagram, source )
+    local nr_components;
+    
+    nr_components := Length( source );
+    
+    return Sum( List( [ 1 .. nr_components ],
+     i -> PreCompose( source[ i ], InjectionOfCofactorOfDirectSum( diagram, i ) ) ) );
+    
+  end,
+  
+  function( diagram, source, direct_sum )
+    local nr_components;
+    
+    nr_components := Length( source );
+  
+    return Sum( List( [ 1 .. nr_components ], 
+     i -> PreCompose( source[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( diagram, i, direct_sum ) ) ) );
+  
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoDirectSum using the injections of the direct sum" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
+  
+  function( diagram, sink )
+    local nr_components;
+    
+    nr_components := Length( sink );
+    
+    return Sum( List( [ 1 .. nr_components ],
+      i -> PreCompose( ProjectionInFactorOfDirectSum( diagram, i ), sink[ i ] ) ) );
+    
+  end,
+  
+  function( diagram, sink, direct_sum )
+    local nr_components;
+    
+    nr_components := Length( sink );
+    
+    return Sum( List( [ 1 .. nr_components ], 
+      i -> PreCompose( ProjectionInFactorOfDirectSumWithGivenDirectSum( diagram, i, direct_sum ), sink[ i ] ) ) );
+  
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismFromDirectSum using projections of the direct sum" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
+  
+  function( test_source )
+    local terminal_object;
+    
+    terminal_object := TerminalObject( CapCategory( test_source ) );
+    
+    return ZeroMorphism( test_source, terminal_object );
+    
+  end,
+  
+  function( test_source, terminal_object )
+    
+    return ZeroMorphism( test_source, terminal_object );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoTerminalObject computing the zero morphism" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromInitialObject,
+  
+  function( test_sink )
+    local initial_object;
+    
+    initial_object := InitialObject( CapCategory( test_sink ) );
+    
+    return ZeroMorphism( initial_object, test_sink );
+    
+  end,
+                 
+  function( test_sink, initial_object )
+    
+    return ZeroMorphism( initial_object, test_sink );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismFromInitialObject computing the zero morphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromZeroObjectWithGivenZeroObject,
+                    [ [ ZeroMorphism, 1 ] ],
+                 
+  function( test_sink, zero_object )
+    
+    return ZeroMorphism( zero_object, test_sink );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismFromZeroObjectWithGivenZeroObject computing the zero morphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoZeroObjectWithGivenZeroObject,
+                    [ [ ZeroMorphism, 1 ] ],
+                 
+  function( test_source, zero_object )
+    
+    return ZeroMorphism( test_source, zero_object );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoZeroObjectWithGivenZeroObject computing the zero morphism" );
+
 
 ###########################
 ##
@@ -300,47 +440,6 @@ AddDerivationToCAP( Inverse,
       
 end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
 
-##
-AddDerivationToCAP( CokernelColiftWithGivenCokernel,
-                    [ [ EpiAsCokernelColift, 1 ],
-                      [ CokernelProjWithGivenCokernel, 1 ] ],
-                                           
-    function( mor, test_morphism, cokernel )
-      
-      return EpiAsCokernelColift( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
-      
-end : Description := "CokernelColiftWithGivenCokernel using EpiAsCokernelColift and CokernelProjWithGivenCokernel" );
-
-##
-AddDerivationToCAP( UniversalMorphismIntoDirectSumWithGivenDirectSum,
-                                       
-  function( diagram, source, direct_sum )
-    local nr_components;
-    
-    nr_components := Length( source );
-  
-    return Sum( List( [ 1 .. nr_components ], 
-     i -> PreCompose( source[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( diagram, i, direct_sum ) ) ) );
-  
-end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismIntoDirectSumWithGivenDirectSum using the injections of the direct sum" );
-
-##
-AddDerivationToCAP( UniversalMorphismFromDirectSumWithGivenDirectSum,
-                    [ [ AdditionForMorphisms, 1 ],
-                      [ PreCompose, 2 ], ## nr_components would be the correct number
-                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ] ], ## nr_components would be the correct number
-                      
-  function( diagram, sink, direct_sum )
-    local nr_components;
-    
-    nr_components := Length( sink );
-    
-    return Sum( List( [ 1 .. nr_components ], 
-      i -> PreCompose( ProjectionInFactorOfDirectSumWithGivenDirectSum( diagram, i, direct_sum ), sink[ i ] ) ) );
-  
-end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismFromDirectSumWithGivenDirectSum using projections of the direct sum" );
 
 ##
 AddDerivationToCAP( AdditionForMorphisms,
@@ -365,52 +464,9 @@ AddDerivationToCAP( AdditionForMorphisms,
 end : CategoryFilter := IsAdditiveCategory,
       Description := "AdditionForMorphisms(mor1, mor2) as the composition of (mor1,mor2) with the codiagonal morphism" );
 
-##
-AddDerivationToCAP( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
-                    [ [ ZeroMorphism, 1 ] ],
-                 
-  function( test_source, terminal_object )
-    
-    return ZeroMorphism( test_source, terminal_object );
-    
-end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject computing the zero morphism" );
 
-## NOTE: Derivations like these maybe problematic within the groupoid interpretation,
-## because this result doesn't have to be equal (under IsEqualForMorphisms) with the result
-## of UniversalMorphismFromInitialObject
-##
-AddDerivationToCAP( UniversalMorphismFromInitialObjectWithGivenInitialObject,
-                    [ [ ZeroMorphism, 1 ] ],
-                 
-  function( test_sink, initial_object )
-    
-    return ZeroMorphism( initial_object, test_sink );
-    
-end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismFromInitialObjectWithGivenInitialObject computing the zero morphism" );
 
-##
-AddDerivationToCAP( UniversalMorphismFromZeroObjectWithGivenZeroObject,
-                    [ [ ZeroMorphism, 1 ] ],
-                 
-  function( test_sink, zero_object )
-    
-    return ZeroMorphism( zero_object, test_sink );
-    
-end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismFromZeroObjectWithGivenZeroObject computing the zero morphism" );
 
-##
-AddDerivationToCAP( UniversalMorphismIntoZeroObjectWithGivenZeroObject,
-                    [ [ ZeroMorphism, 1 ] ],
-                 
-  function( test_source, zero_object )
-    
-    return ZeroMorphism( test_source, zero_object );
-    
-end : CategoryFilter := IsAdditiveCategory,
-      Description := "UniversalMorphismIntoZeroObjectWithGivenZeroObject computing the zero morphism" );
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
@@ -547,21 +603,6 @@ end );
 ##
 ###########################
 
-AddWithGivenDerivationPairToCAP( KernelLift,
-  function( mor, test_morphism )
-    local kernel_lift, kernel;
-    
-    kernel_lift := MonoAsKernelLift( KernelEmb( mor ), test_morphism );
-    
-    return kernel_lift;
-    
-end,
-  
-  function( mor, test_morphism, kernel )
-    
-    return MonoAsKernelLift( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
-    
-end : Description := "KernelLift using MonoAsKernelLift and KernelEmb" );
 
 ##
 AddDerivationToCAP( KernelEmb,
@@ -600,16 +641,6 @@ AddDerivationToCAP( KernelObjectFunctorial,
     
 end : Description := "KernelObjectFunctorial using the universality of the kernel" );
 
-##
-AddDerivationToCAP( CokernelColift,
-                    [ [ EpiAsCokernelColift, 1 ],
-                      [ CokernelProj, 1 ] ],
-                                  
-  function( mor, test_morphism )
-    
-    return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
-    
-end : Description := "CokernelColift using EpiAsCokernelColift and CokernelProj" );
 
 ##
 AddDerivationToCAP( CokernelProj,
