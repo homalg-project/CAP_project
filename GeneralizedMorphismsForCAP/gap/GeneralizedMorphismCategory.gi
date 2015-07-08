@@ -103,6 +103,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
       
     fi;
     
+    
+    ## FIXME: not necessarily set to false
     if CanComputeIsEqualAsSubobjects( underlying_honest_category )
        and CanComputeIsEqualAsFactorobjects( underlying_honest_category )
        and CanComputeMonoAsKernelLift( underlying_honest_category )
