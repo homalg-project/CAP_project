@@ -281,6 +281,97 @@ InstallMethod( AddDerivation,
     AddDerivation( graph, derivation );
 end );
 
+InstallMethod( AddDerivationPair,
+               [ IsDerivedMethodGraph, IsFunction, IsFunction, IsFunction, IsFunction ],
+               
+  function( graph, target_op1, target_op2, implementations_with_extra_filters1, implementations_with_extra_filters2 )
+    
+    AddDerivationPair( graph,
+                       target_op1,
+                       target_op2,
+                       [ ],
+                       [ [ implementations_with_extra_filters1, [ ] ] ],
+                       [ [ implementations_with_extra_filters2, [ ] ] ] );
+                   
+end );
+
+InstallMethod( AddDerivationPair,
+               [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsDenseList ],
+               
+  function( graph, target_op1, target_op2, implementations_with_extra_filters1, implementations_with_extra_filters2 )
+    
+    AddDerivationPair( graph,
+                       target_op1,
+                       target_op2,
+                       [ ],
+                       [ [ implementations_with_extra_filters1, [ ] ] ],
+                       [ [ implementations_with_extra_filters2, [ ] ] ] );
+                   
+end );
+
+InstallMethod( AddDerivationPair,
+               [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsFunction, IsFunction ],
+               
+  function( graph, target_op1, target_op2, used_ops_with_multiples,
+            implementations_with_extra_filters1, implementations_with_extra_filters2 )
+    
+    AddDerivationPair( graph,
+                       target_op1,
+                       target_op2,
+                       used_ops_with_multiples,
+                       [ [ implementations_with_extra_filters1, [ ] ] ],
+                       [ [ implementations_with_extra_filters2, [ ] ] ] );
+    
+end );
+
+InstallMethod( AddDerivationPair,
+               [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsDenseList, IsDenseList ],
+               
+  function( graph, target_op1, target_op2, used_ops_with_multiples,
+            implementations_with_extra_filters1, implementations_with_extra_filters2 )
+    local weight, category_filter, description, derivation1, derivation2, collected_list,
+          operations_in_graph, current_list, current_implementation, loop_multiplier;
+    
+    weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
+    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
+    description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
+    loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
+    
+    ## get used ops
+    ## Is this the right place? Or should this only be done when no ops are given?
+    operations_in_graph := Operations( graph );
+    
+    collected_list := [ ];
+    
+    for current_implementation in Concatenation( implementations_with_extra_filters1, implementations_with_extra_filters2 ) do
+        
+        current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier );
+        current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[ 2 ] ] );
+        collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+        
+    od;
+    
+    used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, used_ops_with_multiples );
+    
+    derivation1 := MakeDerivation( description,
+                                  target_op1,
+                                  used_ops_with_multiples,
+                                  weight,
+                                  implementations_with_extra_filters2,
+                                  category_filter );
+    
+    derivation2 := MakeDerivation( description,
+                                   target_op2,
+                                   used_ops_with_multiples,
+                                   weight,
+                                   implementations_with_extra_filters2,
+                                   category_filter );
+    
+    AddDerivation( graph, derivation1 );
+    AddDerivation( graph, derivation2 );
+    
+end );
+
 InstallGlobalFunction( AddDerivationToCAP,
   
   function( arg )
@@ -289,6 +380,40 @@ InstallGlobalFunction( AddDerivationToCAP,
     list := Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH ], arg );
     
     CallFuncList( AddDerivation, list );
+    
+end );
+
+InstallGlobalFunction( AddDerivationPairToCAP,
+  
+  function( arg )
+    
+    CallFuncList( AddDerivationPair, Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH ], arg ) );
+    
+end );
+
+InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
+  
+  function( arg )
+    local op_without_given, op_with_given, recnames, new_arg, i;
+    
+    op_without_given := NameFunction( arg[ 1 ] );
+    
+    op_with_given := Concatenation( op_without_given, "WithGiven" );
+    
+    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    
+    for i in recnames do
+        
+        if PositionSublist( i, op_with_given ) <> fail then
+            op_with_given := i;
+            break;
+        fi;
+        
+    od;
+    
+    new_arg := Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH, arg[ 1 ], ValueGlobal( op_with_given ) ], arg{[ 2 .. Length( arg ) ]} );
+    
+    CallFuncList( AddDerivationPair, new_arg );
     
 end );
 

@@ -301,17 +301,6 @@ AddDerivationToCAP( Inverse,
 end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
 
 ##
-AddDerivationToCAP( KernelLiftWithGivenKernelObject,
-                    [ [ MonoAsKernelLift, 1 ],
-                      [ KernelEmbWithGivenKernelObject, 1 ] ],
-                      
-    function( mor, test_morphism, kernel )
-      
-      return MonoAsKernelLift( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
-      
-end : Description := "KernelLiftWithGivenKernelObject using MonoAsKernelLift and KernelEmbWithGivenKernelObject" );
-
-##
 AddDerivationToCAP( CokernelColiftWithGivenCokernel,
                     [ [ EpiAsCokernelColift, 1 ],
                       [ CokernelProjWithGivenCokernel, 1 ] ],
@@ -558,16 +547,19 @@ end );
 ##
 ###########################
 
-##
-AddDerivationToCAP( KernelLift,
-                    [ [ MonoAsKernelLift, 1 ],
-                      [ KernelEmb, 1 ] ],
+AddWithGivenDerivationPairToCAP( KernelLift,
   function( mor, test_morphism )
     local kernel_lift, kernel;
     
     kernel_lift := MonoAsKernelLift( KernelEmb( mor ), test_morphism );
     
     return kernel_lift;
+    
+end,
+  
+  function( mor, test_morphism, kernel )
+    
+    return MonoAsKernelLift( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
     
 end : Description := "KernelLift using MonoAsKernelLift and KernelEmb" );
 

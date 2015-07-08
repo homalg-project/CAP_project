@@ -184,7 +184,19 @@ DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsFunction, IsDenseLi
 DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsFunction, IsFunction ] );
 
 #!
+DeclareOperation( "AddDerivationPair", [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsDenseList, IsDenseList ] );
+DeclareOperation( "AddDerivationPair", [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsDenseList ] );
+DeclareOperation( "AddDerivationPair", [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsFunction, IsFunction ] );
+DeclareOperation( "AddDerivationPair", [ IsDerivedMethodGraph, IsFunction, IsFunction, IsFunction, IsFunction ] );
+
+#!
 DeclareGlobalFunction( "AddDerivationToCAP" );
+
+#!
+DeclareGlobalFunction( "AddDerivationPairToCAP" );
+
+#!
+DeclareGlobalFunction( "AddWithGivenDerivationPairToCAP" );
 
 #! @Description
 #!  Gives the operations in the graph <A>G</A>, as a list of strings.
