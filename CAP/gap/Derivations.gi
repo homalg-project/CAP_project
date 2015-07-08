@@ -357,7 +357,7 @@ InstallMethod( AddDerivationPair,
                                   target_op1,
                                   used_ops_with_multiples,
                                   weight,
-                                  implementations_with_extra_filters2,
+                                  implementations_with_extra_filters1,
                                   category_filter );
     
     derivation2 := MakeDerivation( description,
