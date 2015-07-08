@@ -546,7 +546,7 @@ BindGlobal( "CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP",
 end );
 
 ##
-InstallGlobalFunction( CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION,
+InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
   
   function( func, symbol_list, loop_multiple )
     local func_as_string, func_stream, i, n, func_as_list, loop_power, symbol_appearance_rec, current_symbol;
@@ -560,8 +560,8 @@ InstallGlobalFunction( CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION,
     CloseStream( func_stream );
     
     ## Make List, Perform, Apply look like loops
-    
-    for i in [ "List", "Perform", "Apply" ] do
+    ## Beginning space is important here, to avoid scanning things like CallFuncList
+    for i in [ " List", " Perform", " Apply" ] do
         
         func_as_string := CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP( func_as_string, i );
         
@@ -620,6 +620,7 @@ InstallGlobalFunction( CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION,
             loop_power := loop_power + 1;
             
         elif current_symbol = "od" then
+            
             loop_power := loop_power - 1;
             
         fi;
