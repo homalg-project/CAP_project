@@ -515,7 +515,7 @@ BindGlobal( "CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP",
     
     while current_position <> fail do
         
-        current_scan_position := current_position + Length( loop_symbol ) + 2;
+        current_scan_position := current_position + Length( loop_symbol ) + 1;
         
         bracket_count := 1;
         
@@ -561,7 +561,7 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     
     ## Make List, Perform, Apply look like loops
     ## Beginning space is important here, to avoid scanning things like CallFuncList
-    for i in [ " List", " Perform", " Apply" ] do
+    for i in [ " List(", " Perform(", " Apply(" ] do
         
         func_as_string := CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP( func_as_string, i );
         
