@@ -1055,14 +1055,6 @@ AddDerivationToCAP( AdditionForMorphisms,
 end : CategoryFilter := IsAdditiveCategory,
       Description := "AdditionForMorphisms(mor1, mor2) as the composition of (mor1,mor2) with the codiagonal morphism" );
 
-
-
-
-
-
-
-
-
 ##
 AddDerivationToCAP( MonoAsKernelLift,
                     [ [ Lift, 1 ] ],

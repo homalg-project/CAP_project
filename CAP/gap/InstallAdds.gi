@@ -7,6 +7,30 @@
 ##
 #############################################################################
 
+BindGlobal( "CAP_INTERNAL_CREATE_OTHER_PAIR_FUNC",
+  
+  function( record )
+    local object_name, op_name, with_given_name;
+    
+    op_name := record.with_given_without_given_name_pair[ 1 ];
+    with_given_name := record.with_given_without_given_name_pair[ 2 ];
+    
+    if record.is_with_given = false then
+        
+        return function( arg ) return CallFuncList( ValueGlobal( op_name ), arg{[ 1 .. Length( arg ) - 1 ]} ); end;
+        
+    else
+        
+        object_name := with_given_name{[ PositionSublist( with_given_name, "WithGiven" ) + 9 .. Length( with_given_name ) ]};
+        
+        object_name := CAP_INTERNAL_METHOD_NAME_RECORD.( object_name ).installation_name;
+        
+        return function( arg ) return CallFuncList( ValueGlobal( with_given_name ), 
+                                                    Concatenation( arg, [ CallFuncList( object_name, arg{ record.universal_object_arg_list } ) ] ) ); end;
+        
+    fi;
+    
+end );
 
 InstallGlobalFunction( CapInternalInstallAdd,
   
@@ -112,7 +136,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )
-        local install_func, replaced_filter_list, install_method, popper, i, set_primitive;
+        local install_func, replaced_filter_list, install_method, popper, i, set_primitive, install_remaining_pair, is_derivation,
+              install_pair_func, pair_name, pair_func;
         
         ## If there already is a faster method, do nothing!
         if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
@@ -124,16 +149,32 @@ InstallGlobalFunction( CapInternalInstallAdd,
             set_primitive := true;
         fi;
         
-        if weight = -1 and DerivationOfOperation( category!.derivations_weight_list, function_name ) <> fail then
-            ## Is a derivation at the moment
+        is_derivation := ValueOption( "IsDerivation" );
+        if is_derivation <> true then
+            is_derivation := false;
+        fi;
+        
+        if weight = -1 then
             weight := 100;
-        elif weight = -1 and CurrentOperationWeight( category!.derivations_weight_list, function_name ) = infinity then
-            ## Is not installed at the moment
-            weight := 100;
-        elif weight = -1 and DerivationOfOperation( category!.derivations_weight_list, function_name ) = fail
-                         and CurrentOperationWeight( category!.derivations_weight_list, function_name ) <> infinity then
-            ## Not a derivation and already installed
-            set_primitive := false;
+        fi;
+        
+        install_pair_func := false;
+        
+        if not is_derivation and record.with_given_without_given_name_pair <> fail then
+            if record.is_with_given = false then
+                pair_name := record.with_given_without_given_name_pair[ 2 ];
+            else
+                pair_name := record.with_given_without_given_name_pair[ 1 ];
+            fi;
+            
+            if CurrentOperationWeight( category!.derivations_weight_list, pair_name ) > weight then
+                install_pair_func := true;
+                pair_func := CAP_INTERNAL_CREATE_OTHER_PAIR_FUNC( record );
+                category!.redirects.( record.with_given_without_given_name_pair[ 1 ] ) := false;
+            else
+                category!.redirects.( record.with_given_without_given_name_pair[ 1 ] ) := true;
+            fi;
+            
         fi;
         
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
@@ -209,7 +250,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         if set_primitive then
             AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
+            
+            if install_pair_func = true then
+                CallFuncList( ValueGlobal( Concatenation( "Add", pair_name ) ),[ category, [ [ pair_func, [ ] ] ], weight ] );
+            fi;
+            
         fi;
+        
+        
         
     end );
     
@@ -306,13 +354,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         
         current_rec.function_name := current_recname;
         
-        if PositionSublist( current_recname, "WithGiven" ) <> fail or not IsBound( current_rec.universal_type ) then
-            
-            CapInternalInstallAdd( current_rec );
-            
-            continue;
-            
-        fi;
+        current_rec!.with_given_without_given_name_pair := fail;
         
         if current_rec.filter_list[ 1 ] = IsList then
             
@@ -321,6 +363,28 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         else
             
             arg_list := [ 1 ];
+            
+        fi;
+        
+        current_rec!.universal_object_arg_list := arg_list;
+        
+        current_rec!.is_with_given := false;
+        
+        if PositionSublist( current_recname, "WithGiven" ) <> fail then
+            
+            current_rec!.with_given_without_given_name_pair := [ current_recname{[ 1 .. PositionSublist( current_recname, "WithGiven" ) - 1 ]}, current_recname ];
+            
+            current_rec!.is_with_given := true;
+            
+            CapInternalInstallAdd( current_rec );
+            
+            continue;
+            
+        elif not IsBound( current_rec.universal_type ) then
+            
+            CapInternalInstallAdd( current_rec );
+            
+            continue;
             
         fi;
         
@@ -370,6 +434,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
                 Error( Concatenation( "Name not found: ", with_given_name ) );
                 
             fi;
+            
+            current_rec!.with_given_without_given_name_pair := [ current_recname, with_given_name ];
             
             object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
             

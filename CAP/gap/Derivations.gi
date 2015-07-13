@@ -139,7 +139,7 @@ function( d, weight, C )
   else
       
       add_method := ValueGlobal( add_name );
-      add_method( C, implementation_list, 1 : SetPrimitive := false ); ##The third argument is ignored
+      add_method( C, implementation_list, 1 : SetPrimitive := false, IsDerivation := true ); ##The third argument is ignored
       
   fi;
   
