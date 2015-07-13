@@ -209,7 +209,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 local redirect_flag, pre_func_return, redirect_return, result, post_func_arguments;
                 
                 if not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false then
-                    redirect_return := CallFuncList( redirect_function, arg );
+                    redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
                     if redirect_return[ 1 ] = true then
                         INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, redirect_return[ 2 ] );
                         return redirect_return[ 2 ];
@@ -264,7 +264,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
-  function( with_given_name, object_name, has_arguments, with_given_arguments )
+  function( with_given_name, object_name, has_arguments, with_given_arguments, cache_name )
     local return_func, has_name, has_function, object_function, with_given_name_function;
     
     has_name := Concatenation( "Has", object_name );
@@ -276,13 +276,19 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
     with_given_name_function := ValueGlobal( with_given_name );
     
     return function( arg )
-        local has_arg_list, has_return;
+        local has_arg_list, has_return, category, cache;
+        
+        category := arg[ 1 ];
+        
+        arg := arg{[ 2 .. Length( arg ) ]};
         
         has_arg_list := arg{ has_arguments };
         
-        has_return := CallFuncList( has_function, has_arg_list );
+        cache := GET_METHOD_CACHE( category, cache_name, Length( has_arguments ) );
         
-        if has_return = false then
+        has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
+        
+        if has_return = SuPeRfail then
             
             return [ false ];
             
@@ -333,6 +339,14 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     
 end );
 
+BindGlobal( "CAP_INTERNAL_CREATE_NEW_REDIRECT",
+  
+  function( func )
+    
+    return function( arg ) return CallFuncList( func, arg{[ 2 .. Length( arg ) ]} ); end;
+    
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
     
   function( )
@@ -348,6 +362,14 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         if IsBound( current_rec.no_install ) and current_rec.no_install = true then
             
             continue;
+            
+        fi;
+        
+        if not IsBound( current_rec.cache_name ) then current_rec.cache_name := current_recname; fi;
+        
+        if IsBound( current_rec.redirect_function ) then
+            
+            current_rec.redirect_function := CAP_INTERNAL_CREATE_NEW_REDIRECT( current_rec.redirect_function );
             
         fi;
         
@@ -441,7 +463,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             object_func := CAP_INTERNAL_METHOD_NAME_RECORD.( object_name ).installation_name;
             
             if not IsBound( current_rec.redirect_function ) then
-              current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list, current_rec.argument_list );
+              current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list, current_rec.argument_list, object_func );
             fi;
             
             if not IsBound( current_rec.post_function ) then
