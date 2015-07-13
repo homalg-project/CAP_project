@@ -23,10 +23,9 @@ BindGlobal( "CAP_INTERNAL_CREATE_OTHER_PAIR_FUNC",
         
         object_name := with_given_name{[ PositionSublist( with_given_name, "WithGiven" ) + 9 .. Length( with_given_name ) ]};
         
-        object_name := CAP_INTERNAL_METHOD_NAME_RECORD.( object_name ).installation_name;
-        
-        return function( arg ) return CallFuncList( ValueGlobal( with_given_name ), 
-                                                    Concatenation( arg, [ CallFuncList( object_name, arg{ record.universal_object_arg_list } ) ] ) ); end;
+        return function( arg )
+                    return CallFuncList( ValueGlobal( with_given_name ),
+                                         Concatenation( arg, [ CallFuncList( ValueGlobal( object_name ), [ arg[ 1 ] ] ) ] ) ); end;
         
     fi;
     
