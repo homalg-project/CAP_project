@@ -639,7 +639,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         
     end );
     
-    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( category,
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
                                                  
       function( product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix, i;
@@ -667,7 +667,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         
     end );
     
-    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category,
+    AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
                                                                  
       function( diagram, product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
@@ -688,7 +688,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         
     end );
     
-    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( category,
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
                                               
       function( product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix, i;
@@ -715,7 +715,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         
     end );
     
-    AddUniversalMorphismFromCoproductWithGivenCoproduct( category,
+    AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
                                                          
       function( diagram, product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
@@ -758,7 +758,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
     end );
     
-    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( category,
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
                                                  
       function( product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix, i;
@@ -785,7 +785,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
     end );
     
-    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category,
+    AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
                                                                  
       function( product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
@@ -806,7 +806,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
     end );
     
-    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( category,
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
                                               
       function( product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix, i;
@@ -833,7 +833,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
     end );
     
-    AddUniversalMorphismFromCoproductWithGivenCoproduct( category,
+    AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
                                                          
       function( product_morphism, direct_sum )
         local components, number_of_components, map_into_product, i;
