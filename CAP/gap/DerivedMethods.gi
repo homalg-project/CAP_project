@@ -931,6 +931,25 @@ AddDerivationToCAP( EpiAsCokernelColift,
 end : Description := "EpiAsCokernelColift using Colift" );
 
 ##
+AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,
+        
+  function( morphism )
+    
+    return Inverse( IsomorphismFromImageObjectToKernelOfCokernel( morphism ) );
+    
+end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the inverse of IsomorphismFromImageObjectToKernelOfCokernel" );
+
+##
+AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
+        
+  function( morphism )
+    
+    return Inverse( IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
+    
+end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the inverse of IsomorphismFromKernelOfCokernelToImageObject" );
+
+
+##
 AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
                     [ [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ],
                       [ Inverse, 1 ] ],
