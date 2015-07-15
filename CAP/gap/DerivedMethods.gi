@@ -1277,6 +1277,20 @@ AddDerivationToCAP( DirectSumProjectionInPushout,
     
 end : Description := "DirectSumProjectionInPushout as the cokernel projection of DirectSumCodiagonalDifference" );
 
+##
+AddDerivationToCAP( DirectSumProjectionInPushout,
+        
+  function( diagram )
+    local ranges_of_diagram, test_sink;
+    
+    ranges_of_diagram := List( diagram, Range );
+    
+    test_sink := List( [ 1 .. Length( diagram ) ], i -> InjectionOfCofactorOfPushout( diagram, i ) );
+    
+    return UniversalMorphismFromDirectSum( ranges_of_diagram, test_sink );
+    
+end : Description := "DirectSumProjectionInPushout using the universal property of the direct sum" );
+
 
 ##
 AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
