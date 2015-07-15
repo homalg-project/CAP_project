@@ -1367,6 +1367,15 @@ AddDerivationToCAP( IsomorphismFromZeroObjectToInitialObject,
 end : Description := "IsomorphismFromZeroObjectToInitialObject as the inverse of IsomorphismFromInitialObjectToZeroObject" );
 
 ##
+AddDerivationToCAP( IsomorphismFromZeroObjectToInitialObject,
+         
+  function( category )
+    
+    return UniversalMorphismFromZeroObject( InitialObject( category ) );
+    
+end : Description := "IsomorphismFromZeroObjectToInitialObject using the universal property of the zero object" );
+
+##
 AddDerivationToCAP( IsomorphismFromZeroObjectToTerminalObject,
                     [ [ UniversalMorphismIntoTerminalObject, 1 ],
                       [ ZeroObject, 1 ] ],
