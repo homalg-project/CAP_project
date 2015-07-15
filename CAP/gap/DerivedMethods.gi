@@ -374,17 +374,6 @@ AddWithGivenDerivationPairToCAP( CoimageProjection,
     return PreCompose( coimage_projection,
                        IsomorphismFromCokernelOfKernelToCoimage( mor ) );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( mor, coimage )
-    local coimage_projection;
-    
-    coimage_projection := CokernelProj( KernelEmb( mor ) );
-    
-    return PreCompose( coimage_projection,
-                       IsomorphismFromCokernelOfKernelToCoimage( mor ) );
-    
 end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
       Description := "CoimageProjection as the cokernel projection of the kernel embedding" );
 
