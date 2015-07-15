@@ -849,6 +849,20 @@ AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
 end : Description := "IsomorphismFromCokernelOfKernelToCoimage as the inverse of IsomorphismFromCoimageToCokernelOfKernel" );
 
 ##
+AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
+        
+  function( morphism )
+    local cokernel_proj, morphism_from_cokernel;
+    
+    cokernel_proj := CokernelProj( KernelEmb( morphism ) );
+    
+    morphism_from_cokernel := EpiAsCokernelColift( cokernel_proj, morphism );
+    
+    return UniversalMorphismIntoCoimage( morphism, [ cokernel_proj, morphism_from_cokernel ] );
+    
+end : Description := "IsomorphismFromCokernelOfKernelToCoimage using the universal property of the coimage" );
+
+##
 AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
         
   function( morphism )
