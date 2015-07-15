@@ -826,6 +826,20 @@ AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
 end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the inverse of IsomorphismFromKernelOfCokernelToImageObject" );
 
 ##
+AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
+        
+  function( morphism )
+    local kernel_emb, morphism_to_kernel;
+    
+    kernel_emb := KernelEmb( CokernelProj( morphism ) );
+    
+    morphism_to_kernel := MonoAsKernelLift( kernel_emb, morphism );
+    
+    return UniversalMorphismFromImage( morphism, [ morphism_to_kernel, kernel_emb ] );
+    
+end : Description := "IsomorphismFromImageObjectToKernelOfCokernel using the universal property of the image" );
+
+##
 AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
         
   function( morphism )
