@@ -542,6 +542,31 @@ end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
 );
 
 ##
+AddWithGivenDerivationPairToCAP( CoimageProjection,
+  
+  function( mor )
+    local coimage_projection;
+    
+    coimage_projection := CokernelProj( KernelEmb( mor ) );
+    
+    return PreCompose( coimage_projection,
+                       IsomorphismFromCokernelOfKernelToCoimage( mor ) );
+    
+  end,
+  
+  ## FIXME: this function is the canonical WithGiven function
+  function( mor, coimage )
+    local coimage_projection;
+    
+    coimage_projection := CokernelProj( KernelEmb( mor ) );
+    
+    return PreCompose( coimage_projection,
+                       IsomorphismFromCokernelOfKernelToCoimage( mor ) );
+    
+end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "CoimageProjection as the cokernel projection of the kernel embedding" );
+
+##
 AddWithGivenDerivationPairToCAP( CoastrictionToImage,
                       
   function( morphism )
@@ -561,6 +586,27 @@ AddWithGivenDerivationPairToCAP( CoastrictionToImage,
     return MonoAsKernelLift( image_embedding, morphism );
   
 end : Description := "CoastrictionToImage using that image embedding can be seen as a kernel" );
+
+##
+AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
+          
+  function( morphism )
+    local coimage_projection;
+    
+    coimage_projection := CoimageProjection( morphism );
+    
+    return EpiAsCokernelColift( coimage_projection, morphism );
+    
+  end,
+  
+  function( morphism, coimage )
+    local coimage_projection;
+    
+    coimage_projection := CoimageProjectionWithGivenCoimage( morphism, coimage );
+    
+    return EpiAsCokernelColift( coimage_projection, coimage );
+    
+end : Description := "AstrictionToCoimage using that coimage projection can be seen as a cokernel" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
@@ -583,6 +629,26 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
     
 end : Description := "UniversalMorphismFromImage using ImageEmbedding and MonoAsKernelLift" );
 
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
+  
+  function( morphism, test_factorization )
+    local coimage_projection;
+    
+    coimage_projection := CoimageProjection( morphism );
+    
+    return EpiAsCokernelColift( test_factorization[1], coimage_projection );
+    
+  end,
+  
+  function( morphism, test_factorization, coimage )
+    local coimage_projection;
+    
+    coimage_projection := CoimageProjectionWithGivenCoimage( morphism, coimage );
+    
+    return EpiAsCokernelColift( test_factorization[1], coimage_projection );
+    
+end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and EpiAsCokernelColift" );
 
 ###########################
 ##
@@ -947,6 +1013,24 @@ AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
     return Inverse( IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
     
 end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the inverse of IsomorphismFromKernelOfCokernelToImageObject" );
+
+##
+AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
+        
+  function( morphism )
+    
+    return Inverse( IsomorphismFromCoimageToCokernelOfKernel( morphism ) );
+    
+end : Description := "IsomorphismFromCokernelOfKernelToCoimage as the inverse of IsomorphismFromCoimageToCokernelOfKernel" );
+
+##
+AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
+        
+  function( morphism )
+    
+    return Inverse( IsomorphismFromCokernelOfKernelToCoimage( morphism ) );
+    
+end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the inverse of IsomorphismFromCokernelOfKernelToCoimage" );
 
 
 ##
@@ -1615,13 +1699,55 @@ AddDerivationToCAP( ImageObject,
                     [ [ ImageEmbedding, 1 ] ],
                     
   function( mor )
-    local image;
     
-    image := Source( ImageEmbedding( mor ) );
-    
-    return image;
+    return Source( ImageEmbedding( mor ) );
     
 end : Description := "ImageObject as the source of ImageEmbedding" );
+
+##
+AddDerivationToCAP( ImageObject,
+                    
+  function( morphism )
+    
+    return Source( IsomorphismFromImageObjectToKernelOfCokernel( morphism ) );
+    
+end : Description := "ImageObject as the source of IsomorphismFromImageObjectToKernelOfCokernel" );
+
+##
+AddDerivationToCAP( ImageObject,
+                  
+  function( morphism )
+    
+    return Range( IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
+    
+end : Description := "ImageObject as the range of IsomorphismFromKernelOfCokernelToImageObject" );
+
+##
+AddDerivationToCAP( Coimage,
+        
+  function( morphism )
+    
+    return Range( CoimageProjection( morphism ) );
+    
+end : Description := "Coimage as the range of CoimageProjection" );
+
+##
+AddDerivationToCAP( Coimage,
+        
+  function( morphism )
+    
+    return Range( IsomorphismFromCokernelOfKernelToCoimage( morphism ) );
+    
+end : Description := "Coimage as the range of IsomorphismFromCokernelOfKernelToCoimage" );
+
+##
+AddDerivationToCAP( Coimage,
+        
+  function( morphism )
+    
+    return Source( IsomorphismFromCoimageToCokernelOfKernel( morphism ) );
+    
+end : Description := "Coimage as the source of IsomorphismFromCoimageToCokernelOfKernel" );
 
 ###########################
 ##

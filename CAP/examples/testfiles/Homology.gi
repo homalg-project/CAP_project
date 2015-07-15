@@ -7,7 +7,7 @@ LoadPackage( "ModulePresentationsForCAP" );
 LoadPackage( "HomologicalAlgebraForCAP" );
 LoadPackage( "RingsForHomalg" );
 
-#ActivateDerivationInfo();
+ActivateDerivationInfo();
 #! @Example
 ZZ := HomalgRingOfIntegersInSingular( );
 #! Z
