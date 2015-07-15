@@ -1775,6 +1775,30 @@ AddFinalDerivation( IsomorphismFromImageObjectToKernelOfCokernel,
     
 end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
 
+##
+AddFinalDerivation( IsomorphismFromKernelOfCokernelToImageObject,
+                    [ [ KernelObject, 1 ],
+                      [ CokernelProj, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ ImageObject,
+                      ImageEmbedding,
+                      ImageEmbeddingWithGivenImageObject,
+                      CoastrictionToImage,
+                      CoastrictionToImageWithGivenImageObject,
+                      UniversalMorphismFromImage,
+                      UniversalMorphismFromImageWithGivenImageObject,
+                      IsomorphismFromImageObjectToKernelOfCokernel ],
+                    
+  function( mor )
+    local kernel_of_cokernel;
+    
+    kernel_of_cokernel := KernelObject( CokernelProj( mor ) );
+    
+    return IdentityMorphism( kernel_of_cokernel );
+    
+end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the identity of the kernel of the cokernel" );
+
+
 ## Final methods for initial object
 
 ##

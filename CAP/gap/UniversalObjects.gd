@@ -2196,6 +2196,22 @@ DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
 DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
                   [ IsCapCategory, IsList ] );
 
+
+DeclareOperation( "IsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategory, IsList ] );
+
 ## FIXME: Image is a function (rename: ImageObject -> Image)
 DeclareAttributeWithToDoForIsWellDefined( "ImageObject",
                                           IsCapCategoryMorphism );
