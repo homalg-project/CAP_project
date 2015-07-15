@@ -857,6 +857,24 @@ end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as
 
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
+          
+  function( diagram )
+    local kernel_emb, sources_of_diagram, test_source;
+    
+    kernel_emb := KernelEmb( DirectSumDiagonalDifference( diagram ) );
+    
+    sources_of_diagram := List( diagram, Source );
+    
+    test_source := List( [ 1 .. Length( diagram ) ],
+                         i -> PreCompose( kernel_emb, ProjectionInFactorOfDirectSum( sources_of_diagram, i ) ) );
+    
+    return UniversalMorphismIntoFiberProduct( diagram, test_source );
+    
+end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct using the universal property of the fiber product" );
+
+
+##
+AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
                     [ [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
                       [ Inverse, 1 ] ],
                       
