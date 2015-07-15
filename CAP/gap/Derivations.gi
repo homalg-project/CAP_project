@@ -304,8 +304,8 @@ InstallMethod( AddDerivationPair,
                        target_op1,
                        target_op2,
                        [ ],
-                       [ [ implementations_with_extra_filters1, [ ] ] ],
-                       [ [ implementations_with_extra_filters2, [ ] ] ] );
+                       implementations_with_extra_filters1,
+                       implementations_with_extra_filters2 );
                    
 end );
 
@@ -391,10 +391,19 @@ InstallGlobalFunction( AddDerivationPairToCAP,
     
 end );
 
+BindGlobal( "CAP_INTERNAL_CREATE_WITH_GIVEN_FUNCTION_BY_REDUCTION",
+  
+  function( func )
+    
+    return function( arg ) return CallFuncList( func, arg{[ 1 .. Length( arg ) - 1 ]} ); end;
+    
+end );
+
+
 InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
   
   function( arg )
-    local op_without_given, op_with_given, recnames, new_arg, i;
+    local op_without_given, op_with_given, recnames, new_arg, i, test_arg, func_arg;
     
     op_without_given := NameFunction( arg[ 1 ] );
     
@@ -410,6 +419,31 @@ InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
         fi;
         
     od;
+    
+    ## Check wether arguments need to be filled
+    
+    test_arg := arg[ Length( arg ) - 1 ];
+    
+    if Length( arg ) = 2 or ( not IsFunction( test_arg ) and not ( IsList( test_arg ) and IsList( test_arg[ 1 ] ) ) ) then
+        ## need to fill function
+        
+        func_arg := arg[ Length( arg ) ];
+        
+        if IsFunction( func_arg ) then
+            
+            func_arg := CAP_INTERNAL_CREATE_WITH_GIVEN_FUNCTION_BY_REDUCTION( func_arg );
+            
+            Add( arg, func_arg );
+            
+        elif IsList( func_arg ) then
+            
+            func_arg := List( func_arg, i -> [ CAP_INTERNAL_CREATE_WITH_GIVEN_FUNCTION_BY_REDUCTION( i[ 1 ] ), i[ 2 ] ] );
+            
+            Add( arg, func_arg );
+            
+        fi;
+        
+    fi;
     
     new_arg := Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH, arg[ 1 ], ValueGlobal( op_with_given ) ], arg{[ 2 .. Length( arg ) ]} );
     
