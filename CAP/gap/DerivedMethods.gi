@@ -872,7 +872,19 @@ AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
     
 end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct using the universal property of the fiber product" );
 
-
+##
+AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
+          
+  function( diagram )
+    local direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum;
+    
+    direct_sum_diagonal_difference := DirectSumDiagonalDifference( diagram );
+    
+    fiber_product_embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
+    
+    return KernelLift( direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum );
+    
+end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference using the universal property of the kernel" );
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
                     [ [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
@@ -1216,6 +1228,19 @@ AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
     
 end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectSumDiagonalDifference" );
 
+##
+AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
+        
+  function( diagram )
+    local sources_of_diagram, test_source;
+    
+    sources_of_diagram := List( diagram, Source );
+    
+    test_source := List( [ 1 .. Length( diagram ) ], i -> ProjectionInFactorOfFiberProduct( diagram, i ) );
+    
+    return UniversalMorphismIntoDirectSum( sources_of_diagram, test_source );
+
+end : Description := "FiberProductEmbeddingInDirectSum using the universal property of the direct sum" );
 
 ##
 AddDerivationToCAP( DirectSumProjectionInPushout,
