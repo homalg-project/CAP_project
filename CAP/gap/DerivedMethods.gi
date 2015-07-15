@@ -604,7 +604,7 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
     
     coimage_projection := CoimageProjectionWithGivenCoimage( morphism, coimage );
     
-    return EpiAsCokernelColift( coimage_projection, coimage );
+    return EpiAsCokernelColift( coimage_projection, morphism );
     
 end : Description := "AstrictionToCoimage using that coimage projection can be seen as a cokernel" );
 
