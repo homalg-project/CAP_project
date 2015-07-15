@@ -890,6 +890,20 @@ AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
 end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference using the universal property of the pushout" );
 
 ##
+AddDerivationToCAP( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
+          
+  function( diagram )
+    local direct_sum_codiagonal_difference, direct_sum_projection_in_pushout;
+    
+    direct_sum_codiagonal_difference := DirectSumCodiagonalDifference( diagram );
+    
+    direct_sum_projection_in_pushout := DirectSumProjectionInPushout( diagram );
+    
+    return CokernelColift( direct_sum_codiagonal_difference, direct_sum_projection_in_pushout );
+    
+end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout using the universal property of the cokernel" );
+
+##
 AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
           
   function( diagram )
