@@ -873,6 +873,23 @@ AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
 end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct using the universal property of the fiber product" );
 
 ##
+AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
+          
+  function( diagram )
+    local cokernel_proj, ranges_of_diagram, test_sink;
+    
+    cokernel_proj := CokernelProj( DirectSumCodiagonalDifference( diagram ) );
+    
+    ranges_of_diagram := List( diagram, Range );
+    
+    test_sink := List( [ 1 .. Length( diagram ) ],
+                       i -> PreCompose( InjectionOfCofactorOfDirectSum( ranges_of_diagram, i ), cokernel_proj ) );
+    
+    return UniversalMorphismFromPushout( diagram, test_sink );
+    
+end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference using the universal property of the pushout" );
+
+##
 AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
           
   function( diagram )
@@ -885,6 +902,7 @@ AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
     return KernelLift( direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum );
     
 end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference using the universal property of the kernel" );
+
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
                     [ [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
