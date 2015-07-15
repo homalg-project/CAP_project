@@ -169,21 +169,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
     
     return PreCompose( embedding_in_direct_sum, projection );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, projection_number, pullback )
-    local embedding_in_direct_sum, direct_product_diagram, projection;
-    
-    embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
-    
-    direct_product_diagram := List( diagram, Source );
-    
-    projection := ProjectionInFactorOfDirectSum( direct_product_diagram, projection_number );
-    
-    return PreCompose( embedding_in_direct_sum, projection );
-    
-end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
+  end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
 
 ##
 AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
@@ -199,21 +185,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
     
     return PreCompose( injection, projection_from_direct_sum );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, injection_number, pushout )
-    local projection_from_direct_sum, direct_sum_diagram, injection;
-    
-    projection_from_direct_sum := DirectSumProjectionInPushout( diagram );
-    
-    direct_sum_diagram := List( diagram, Range );
-    
-    injection := InjectionOfCofactorOfDirectSum( direct_sum_diagram, injection_number );
-    
-    return PreCompose( injection, projection_from_direct_sum );
-    
-end : Description := "InjectionOfCofactorOfPushout by composing the direct sum injection with the direct sum projection to the pushout" );
+  end : Description := "InjectionOfCofactorOfPushout by composing the direct sum injection with the direct sum projection to the pushout" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromZeroObject,
@@ -226,18 +198,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromZeroObject,
     return PreCompose( IsomorphismFromZeroObjectToInitialObject( category ),
                        UniversalMorphismFromInitialObject( obj ) );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( obj, zero_object )
-    local category;
-    
-    category := CapCategory( obj );
-    
-    return PreCompose( IsomorphismFromZeroObjectToInitialObject( category ),
-                       UniversalMorphismFromInitialObject( obj ) );
-    
-end : Description := "UniversalMorphismFromZeroObject using UniversalMorphismFromInitialObject" );
+  end : Description := "UniversalMorphismFromZeroObject using UniversalMorphismFromInitialObject" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
@@ -249,18 +210,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
     
     return PreCompose( UniversalMorphismIntoTerminalObject( obj ),
                        IsomorphismFromTerminalObjectToZeroObject( category ) );
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( obj, zero_object )
-    local category;
-    
-    category := CapCategory( obj );
-    
-    return PreCompose( UniversalMorphismIntoTerminalObject( obj ),
-                       IsomorphismFromTerminalObjectToZeroObject( category ) );
-    
-end : Description := "UniversalMorphismIntoZeroObject using UniversalMorphismIntoTerminalObject" );
+  end : Description := "UniversalMorphismIntoZeroObject using UniversalMorphismIntoTerminalObject" );
 
 ##
 AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
@@ -270,15 +220,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
     return PreCompose( IsomorphismFromDirectSumToDirectProduct( diagram ),
                        ProjectionInFactorOfDirectProduct( diagram, projection_number ) );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, projection_number, direct_sum )
-    
-    return PreCompose( IsomorphismFromDirectSumToDirectProduct( diagram ),
-                       ProjectionInFactorOfDirectProduct( diagram, projection_number ) );
-    
-end : Description := "ProjectionInFactorOfDirectSum using ProjectionInFactorOfDirectProduct" );
+  end : Description := "ProjectionInFactorOfDirectSum using ProjectionInFactorOfDirectProduct" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
@@ -287,15 +229,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
     
     return PreCompose( UniversalMorphismIntoDirectProduct( diagram, source ),
                        IsomorphismFromDirectProductToDirectSum( diagram ) );
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, source, direct_sum )
-    
-    return PreCompose( UniversalMorphismIntoDirectProduct( diagram, source ),
-                       IsomorphismFromDirectProductToDirectSum( diagram ) );
-    
-end : Description := "UniversalMorphismIntoDirectSum using UniversalMorphismIntoDirectProduct" );
+  end : Description := "UniversalMorphismIntoDirectSum using UniversalMorphismIntoDirectProduct" );
 
 ##
 AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
@@ -304,15 +238,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
     
     return PreCompose( InjectionOfCofactorOfCoproduct( diagram, injection_number ),
                        IsomorphismFromCoproductToDirectSum( diagram ) );
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, injection_number, direct_sum )
-    
-    return PreCompose( InjectionOfCofactorOfCoproduct( diagram, injection_number ),
-                       IsomorphismFromCoproductToDirectSum( diagram ) );
-    
-end : Description := "InjectionOfCofactorOfDirectSum using InjectionOfCofactorOfCoproduct" );
+  end : Description := "InjectionOfCofactorOfDirectSum using InjectionOfCofactorOfCoproduct" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
@@ -321,15 +247,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
     
     return PreCompose( IsomorphismFromDirectSumToCoproduct( diagram ),
                        UniversalMorphismFromCoproduct( diagram, sink ) );
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, sink, direct_sum )
-    
-    return PreCompose( IsomorphismFromDirectSumToCoproduct( diagram ),
-                       UniversalMorphismFromCoproduct( diagram, sink ) );
-    
-end : Description := "UniversalMorphismFromDirectSum using UniversalMorphismFromCoproduct" );
+  end : Description := "UniversalMorphismFromDirectSum using UniversalMorphismFromCoproduct" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
@@ -342,18 +260,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
     return PreCompose( UniversalMorphismIntoZeroObject( obj ),
                        IsomorphismFromZeroObjectToTerminalObject( category ) );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( obj, terminal_object )
-    local category;
-    
-    category := CapCategory( obj );
-    
-    return PreCompose( UniversalMorphismIntoZeroObject( obj ),
-                       IsomorphismFromZeroObjectToTerminalObject( category ) );
-    
-end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
+  end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromInitialObject,
@@ -366,18 +273,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromInitialObject,
     return PreCompose( IsomorphismFromInitialObjectToZeroObject( category ),
                        UniversalMorphismFromZeroObject( obj ) );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( obj, initial_object )
-    local category;
-    
-    category := CapCategory( obj );
-    
-    return PreCompose( IsomorphismFromInitialObjectToZeroObject( category ),
-                       UniversalMorphismFromZeroObject( obj ) );
-    
-end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
+  end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
 
 ##
 AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectProduct,
@@ -386,15 +282,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectProduct,
     
     return PreCompose( IsomorphismFromDirectProductToDirectSum( diagram ),
                        ProjectionInFactorOfDirectSum( diagram, projection_number ) );
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, projection_number )
-    
-    return PreCompose( IsomorphismFromDirectProductToDirectSum( diagram ),
-                       ProjectionInFactorOfDirectSum( diagram, projection_number ) );
-    
-end : Description := "ProjectionInFactorOfDirectProduct using ProjectionInFactorOfDirectSum" );
+  end : Description := "ProjectionInFactorOfDirectProduct using ProjectionInFactorOfDirectSum" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectProduct,
@@ -404,15 +292,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectProduct,
     return PreCompose( UniversalMorphismIntoDirectSum( diagram, source ),
                        IsomorphismFromDirectSumToDirectProduct( diagram ) );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, source, direct_product )
-    
-    return PreCompose( UniversalMorphismIntoDirectSum( diagram, source ),
-                       IsomorphismFromDirectSumToDirectProduct( diagram ) );
-    
-end : Description := "UniversalMorphismIntoDirectProduct using UniversalMorphismIntoDirectSum" );
+  end : Description := "UniversalMorphismIntoDirectProduct using UniversalMorphismIntoDirectSum" );
 
 ##
 AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfCoproduct,
@@ -421,14 +301,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfCoproduct,
     
     return PreCompose( InjectionOfCofactorOfDirectSum( diagram, injection_number ),
                        IsomorphismFromDirectSumToCoproduct( diagram ) );
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, injection_number, coproduct )
-    
-    return PreCompose( InjectionOfCofactorOfDirectSum( diagram, injection_number ),
-                       IsomorphismFromDirectSumToCoproduct( diagram ) );
-end : Description := "InjectionOfCofactorOfCoproduct using InjectionOfCofactorOfDirectSum" );
+  end : Description := "InjectionOfCofactorOfCoproduct using InjectionOfCofactorOfDirectSum" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoproduct,
@@ -437,15 +310,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoproduct,
     
     return PreCompose( IsomorphismFromCoproductToDirectSum( diagram ),
                        UniversalMorphismFromDirectSum( diagram, sink ) );
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, sink, coproduct )
-    
-    return PreCompose( IsomorphismFromCoproductToDirectSum( diagram ),
-                       UniversalMorphismFromDirectSum( diagram, sink ) );
-
-end : Description := "UniversalMorphismFromCoproduct using UniversalMorphismFromDirectSum" );
+  end : Description := "UniversalMorphismFromCoproduct using UniversalMorphismFromDirectSum" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoFiberProduct,
@@ -464,24 +329,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoFiberProduct,
              IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( diagram )
            );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, source, fiber_product )
-    local test_function, direct_sum_diagonal_difference, kernel_lift;
-    
-    test_function := CallFuncList( UniversalMorphismIntoDirectSum, source );
-    
-    direct_sum_diagonal_difference := DirectSumDiagonalDifference( diagram );
-    
-    kernel_lift := KernelLift( direct_sum_diagonal_difference, test_function );
-    
-    return PreCompose(
-             kernel_lift,
-             IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( diagram )
-           );
-    
-end : Description := "UniversalMorphismIntoFiberProduct using the universality of the kernel representation of the pullback" );
+  end : Description := "UniversalMorphismIntoFiberProduct using the universality of the kernel representation of the pullback" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromPushout,
@@ -498,22 +346,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromPushout,
     return PreCompose( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ),
                        cokernel_colift );
     
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( diagram, sink, pushout )
-    local test_function, direct_sum_codiagonal_difference, cokernel_colift;
-    
-    test_function := CallFuncList( UniversalMorphismFromDirectSum, sink );
-    
-    direct_sum_codiagonal_difference := DirectSumCodiagonalDifference( diagram );
-    
-    cokernel_colift := CokernelColift( direct_sum_codiagonal_difference, test_function );
-    
-    return PreCompose( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ),
-                       cokernel_colift );
-    
-end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
+  end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
 
 ##
 AddWithGivenDerivationPairToCAP( ImageEmbedding,
@@ -526,18 +359,7 @@ AddWithGivenDerivationPairToCAP( ImageEmbedding,
     return PreCompose( IsomorphismFromImageObjectToKernelOfCokernel( mor ),
                        image_embedding );
   
-  end,
-  
-  ## FIXME: this function is the canonical WithGiven function
-  function( mor, image )
-    local image_embedding;
-    
-    image_embedding := KernelEmb( CokernelProj( mor ) );
-    
-    return PreCompose( IsomorphismFromImageObjectToKernelOfCokernel( mor ),
-                       image_embedding );
-  
-end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+  end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
       Description := "ImageEmbedding as the kernel embedding of the cokernel projection"
 );
 
