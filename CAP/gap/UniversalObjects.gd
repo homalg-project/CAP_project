@@ -2384,7 +2384,38 @@ DeclareFilter( "WasCreatedAsImageObject" );
 ##
 ####################################
 
-## FIXME: Image is a function (rename: ImageObject -> Image)
+DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "IsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategory, IsList ] );
+
+
 DeclareAttributeWithToDoForIsWellDefined( "Coimage",
                                           IsCapCategoryMorphism );
 
