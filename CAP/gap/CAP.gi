@@ -488,7 +488,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_PRINT_FUNCTION,
     category_function := function( category )
       local string;
       
-      string := "homalg category";
+      string := "CAP category";
       
       if HasName( category ) then
           

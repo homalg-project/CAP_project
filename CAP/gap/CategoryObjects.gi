@@ -247,27 +247,6 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
                                              PrintString := "projective",
                                              Adjective := true ) ] ) );
     
-    AddRelationToGraph( print_graph,
-                    rec( Range := [ rec( Conditions := "WasCreatedAsDirectProduct",
-                                         PrintString := "is direct product",
-                                         ComputeLevel := 5
-                                       ) ],
-                         Source := [ rec( Conditions := "WasCreatedAsDirectSum",
-                                          PrintString := "is direct sum",
-                                          ComputeLevel := 5
-                                        ) ] ) );
-    
-    AddNodeToGraph( print_graph,
-                    rec( Conditions := "WasCreatedAsCokernel",
-                         PrintString := "is cokernel",
-                         ComputeLevel := 5
-                       ) );
-    
-    AddNodeToGraph( print_graph,
-                    rec( Conditions := "WasCreatedAsKernelObject",
-                         PrintString := "is kernel",
-                         ComputeLevel := 5
-                       ) );
     
     InstallPrintFunctionsOutOfPrintingGraph( print_graph );
     
