@@ -2142,6 +2142,24 @@ IsomorphismFromImageObjectToKernelOfCokernel := rec(
   cache_name := "IsomorphismFromImageObjectToKernelOfCokernel",
   return_type := "morphism" ),
 
+IsomorphismFromKernelOfCokernelToImageObject := rec(
+  installation_name := "IsomorphismFromKernelOfCokernelToImageObject",
+  filter_list := [ "morphism" ],
+  cache_name := "IsomorphismFromKernelOfCokernelToImageObject",
+  return_type := "morphism" ),
+
+IsomorphismFromCoimageToCokernelOfKernel := rec(
+  installation_name := "IsomorphismFromCoimageToCokernelOfKernel",
+  filter_list := [ "morphism" ],
+  cache_name := "IsomorphismFromCoimageToCokernelOfKernel",
+  return_type := "morphism" ),
+
+IsomorphismFromCokernelOfKernelToCoimage := rec(
+  installation_name := "IsomorphismFromCokernelOfKernelToCoimage",
+  filter_list := [ "morphism" ],
+  cache_name := "IsomorphismFromCokernelOfKernelToCoimage",
+  return_type := "morphism" ),
+
 IsomorphismFromDirectSumToDirectProduct := rec(
   installation_name := "IsomorphismFromDirectSumToDirectProductOp",
   filter_list := [ IsList, "object" ],

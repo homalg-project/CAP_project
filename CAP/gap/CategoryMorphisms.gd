@@ -498,7 +498,7 @@ DeclareOperation( "MonoAsKernelLift",
 #! @Description
 #! This operation takes an epimorphism $\epsilon: A \rightarrow C$
 #! and a test morphism $\tau: A \rightarrow T$ and tries
-#! to compute a colift $u: T \rightarrow K$ such that
+#! to compute a colift $u: C \rightarrow T$ such that
 #! $u \circ \epsilon = \tau$. If this is not possible the method 
 #! will return fail.
 #! @Returns $u$

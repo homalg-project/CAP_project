@@ -364,6 +364,20 @@ AddWithGivenDerivationPairToCAP( ImageEmbedding,
 );
 
 ##
+AddWithGivenDerivationPairToCAP( CoimageProjection,
+  
+  function( mor )
+    local coimage_projection;
+    
+    coimage_projection := CokernelProj( KernelEmb( mor ) );
+    
+    return PreCompose( coimage_projection,
+                       IsomorphismFromCokernelOfKernelToCoimage( mor ) );
+    
+end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "CoimageProjection as the cokernel projection of the kernel embedding" );
+
+##
 AddWithGivenDerivationPairToCAP( CoastrictionToImage,
                       
   function( morphism )
@@ -383,6 +397,27 @@ AddWithGivenDerivationPairToCAP( CoastrictionToImage,
     return MonoAsKernelLift( image_embedding, morphism );
   
 end : Description := "CoastrictionToImage using that image embedding can be seen as a kernel" );
+
+##
+AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
+          
+  function( morphism )
+    local coimage_projection;
+    
+    coimage_projection := CoimageProjection( morphism );
+    
+    return EpiAsCokernelColift( coimage_projection, morphism );
+    
+  end,
+  
+  function( morphism, coimage )
+    local coimage_projection;
+    
+    coimage_projection := CoimageProjectionWithGivenCoimage( morphism, coimage );
+    
+    return EpiAsCokernelColift( coimage_projection, morphism );
+    
+end : Description := "AstrictionToCoimage using that coimage projection can be seen as a cokernel" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
@@ -405,6 +440,26 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
     
 end : Description := "UniversalMorphismFromImage using ImageEmbedding and MonoAsKernelLift" );
 
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
+  
+  function( morphism, test_factorization )
+    local coimage_projection;
+    
+    coimage_projection := CoimageProjection( morphism );
+    
+    return EpiAsCokernelColift( test_factorization[1], coimage_projection );
+    
+  end,
+  
+  function( morphism, test_factorization, coimage )
+    local coimage_projection;
+    
+    coimage_projection := CoimageProjectionWithGivenCoimage( morphism, coimage );
+    
+    return EpiAsCokernelColift( test_factorization[1], coimage_projection );
+    
+end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and EpiAsCokernelColift" );
 
 ###########################
 ##
@@ -753,6 +808,71 @@ AddDerivationToCAP( EpiAsCokernelColift,
 end : Description := "EpiAsCokernelColift using Colift" );
 
 ##
+AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,
+        
+  function( morphism )
+    
+    return Inverse( IsomorphismFromImageObjectToKernelOfCokernel( morphism ) );
+    
+end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the inverse of IsomorphismFromImageObjectToKernelOfCokernel" );
+
+##
+AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
+        
+  function( morphism )
+    
+    return Inverse( IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
+    
+end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the inverse of IsomorphismFromKernelOfCokernelToImageObject" );
+
+##
+AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
+        
+  function( morphism )
+    local kernel_emb, morphism_to_kernel;
+    
+    kernel_emb := KernelEmb( CokernelProj( morphism ) );
+    
+    morphism_to_kernel := MonoAsKernelLift( kernel_emb, morphism );
+    
+    return UniversalMorphismFromImage( morphism, [ morphism_to_kernel, kernel_emb ] );
+    
+end : Description := "IsomorphismFromImageObjectToKernelOfCokernel using the universal property of the image" );
+
+##
+AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
+        
+  function( morphism )
+    
+    return Inverse( IsomorphismFromCoimageToCokernelOfKernel( morphism ) );
+    
+end : Description := "IsomorphismFromCokernelOfKernelToCoimage as the inverse of IsomorphismFromCoimageToCokernelOfKernel" );
+
+##
+AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
+        
+  function( morphism )
+    local cokernel_proj, morphism_from_cokernel;
+    
+    cokernel_proj := CokernelProj( KernelEmb( morphism ) );
+    
+    morphism_from_cokernel := EpiAsCokernelColift( cokernel_proj, morphism );
+    
+    return UniversalMorphismIntoCoimage( morphism, [ cokernel_proj, morphism_from_cokernel ] );
+    
+end : Description := "IsomorphismFromCokernelOfKernelToCoimage using the universal property of the coimage" );
+
+##
+AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
+        
+  function( morphism )
+    
+    return Inverse( IsomorphismFromCokernelOfKernelToCoimage( morphism ) );
+    
+end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the inverse of IsomorphismFromCokernelOfKernelToCoimage" );
+
+
+##
 AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
                     [ [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ],
                       [ Inverse, 1 ] ],
@@ -762,6 +882,68 @@ AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
     return Inverse( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( diagram ) );
     
 end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the inverse of IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct" );
+
+##
+AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
+          
+  function( diagram )
+    local kernel_emb, sources_of_diagram, test_source;
+    
+    kernel_emb := KernelEmb( DirectSumDiagonalDifference( diagram ) );
+    
+    sources_of_diagram := List( diagram, Source );
+    
+    test_source := List( [ 1 .. Length( diagram ) ],
+                         i -> PreCompose( kernel_emb, ProjectionInFactorOfDirectSum( sources_of_diagram, i ) ) );
+    
+    return UniversalMorphismIntoFiberProduct( diagram, test_source );
+    
+end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct using the universal property of the fiber product" );
+
+##
+AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
+          
+  function( diagram )
+    local cokernel_proj, ranges_of_diagram, test_sink;
+    
+    cokernel_proj := CokernelProj( DirectSumCodiagonalDifference( diagram ) );
+    
+    ranges_of_diagram := List( diagram, Range );
+    
+    test_sink := List( [ 1 .. Length( diagram ) ],
+                       i -> PreCompose( InjectionOfCofactorOfDirectSum( ranges_of_diagram, i ), cokernel_proj ) );
+    
+    return UniversalMorphismFromPushout( diagram, test_sink );
+    
+end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference using the universal property of the pushout" );
+
+##
+AddDerivationToCAP( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
+          
+  function( diagram )
+    local direct_sum_codiagonal_difference, direct_sum_projection_in_pushout;
+    
+    direct_sum_codiagonal_difference := DirectSumCodiagonalDifference( diagram );
+    
+    direct_sum_projection_in_pushout := DirectSumProjectionInPushout( diagram );
+    
+    return CokernelColift( direct_sum_codiagonal_difference, direct_sum_projection_in_pushout );
+    
+end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout using the universal property of the cokernel" );
+
+##
+AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
+          
+  function( diagram )
+    local direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum;
+    
+    direct_sum_diagonal_difference := DirectSumDiagonalDifference( diagram );
+    
+    fiber_product_embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
+    
+    return KernelLift( direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum );
+    
+end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference using the universal property of the kernel" );
 
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
@@ -1106,6 +1288,19 @@ AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
     
 end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectSumDiagonalDifference" );
 
+##
+AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
+        
+  function( diagram )
+    local sources_of_diagram, test_source;
+    
+    sources_of_diagram := List( diagram, Source );
+    
+    test_source := List( [ 1 .. Length( diagram ) ], i -> ProjectionInFactorOfFiberProduct( diagram, i ) );
+    
+    return UniversalMorphismIntoDirectSum( sources_of_diagram, test_source );
+
+end : Description := "FiberProductEmbeddingInDirectSum using the universal property of the direct sum" );
 
 ##
 AddDerivationToCAP( DirectSumProjectionInPushout,
@@ -1124,6 +1319,20 @@ AddDerivationToCAP( DirectSumProjectionInPushout,
     
 end : Description := "DirectSumProjectionInPushout as the cokernel projection of DirectSumCodiagonalDifference" );
 
+##
+AddDerivationToCAP( DirectSumProjectionInPushout,
+        
+  function( diagram )
+    local ranges_of_diagram, test_sink;
+    
+    ranges_of_diagram := List( diagram, Range );
+    
+    test_sink := List( [ 1 .. Length( diagram ) ], i -> InjectionOfCofactorOfPushout( diagram, i ) );
+    
+    return UniversalMorphismFromDirectSum( ranges_of_diagram, test_sink );
+    
+end : Description := "DirectSumProjectionInPushout using the universal property of the direct sum" );
+
 
 ##
 AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
@@ -1136,6 +1345,15 @@ AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
     
 end : CategoryFilter := IsAdditiveCategory,
       Description := "IsomorphismFromInitialObjectToZeroObject as the unique morphism from initial object to zero object" );
+
+##
+AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
+        
+  function( category )
+    
+    return UniversalMorphismIntoZeroObject( InitialObject( category ) );
+    
+end : Description := "IsomorphismFromInitialObjectToZeroObject using the universal property of the zero object" );
 
 ##
 AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
@@ -1158,6 +1376,15 @@ AddDerivationToCAP( IsomorphismFromZeroObjectToInitialObject,
 end : Description := "IsomorphismFromZeroObjectToInitialObject as the inverse of IsomorphismFromInitialObjectToZeroObject" );
 
 ##
+AddDerivationToCAP( IsomorphismFromZeroObjectToInitialObject,
+         
+  function( category )
+    
+    return UniversalMorphismFromZeroObject( InitialObject( category ) );
+    
+end : Description := "IsomorphismFromZeroObjectToInitialObject using the universal property of the zero object" );
+
+##
 AddDerivationToCAP( IsomorphismFromZeroObjectToTerminalObject,
                     [ [ UniversalMorphismIntoTerminalObject, 1 ],
                       [ ZeroObject, 1 ] ],
@@ -1169,6 +1396,15 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "IsomorphismFromZeroObjectToTerminalObject as the unique morphism from zero object to terminal object" );
 
 ##
+AddDerivationToCAP( IsomorphismFromZeroObjectToTerminalObject,
+        
+  function( category )
+    
+    return UniversalMorphismFromZeroObject( TerminalObject( category ) );
+    
+end : Description := "IsomorphismFromZeroObjectToTerminalObject using the universal property of the zero object" );
+
+##
 AddDerivationToCAP( IsomorphismFromTerminalObjectToZeroObject,
                     [ [ Inverse, 1 ],
                       [ IsomorphismFromZeroObjectToTerminalObject, 1 ] ],
@@ -1177,6 +1413,15 @@ AddDerivationToCAP( IsomorphismFromTerminalObjectToZeroObject,
     return Inverse( IsomorphismFromZeroObjectToTerminalObject( category ) );
     
 end : Description := "IsomorphismFromTerminalObjectToZeroObject as the inverse of IsomorphismFromZeroObjectToTerminalObject" );
+
+##
+AddDerivationToCAP( IsomorphismFromTerminalObjectToZeroObject,
+        
+  function( category )
+    
+    return UniversalMorphismIntoZeroObject( TerminalObject( category ) );
+    
+end : Description := "IsomorphismFromTerminalObjectToZeroObject using the universal property of the zero object" );
 
 ##
 AddDerivationToCAP( IsomorphismFromZeroObjectToTerminalObject,
@@ -1418,13 +1663,55 @@ AddDerivationToCAP( ImageObject,
                     [ [ ImageEmbedding, 1 ] ],
                     
   function( mor )
-    local image;
     
-    image := Source( ImageEmbedding( mor ) );
-    
-    return image;
+    return Source( ImageEmbedding( mor ) );
     
 end : Description := "ImageObject as the source of ImageEmbedding" );
+
+##
+AddDerivationToCAP( ImageObject,
+                    
+  function( morphism )
+    
+    return Source( IsomorphismFromImageObjectToKernelOfCokernel( morphism ) );
+    
+end : Description := "ImageObject as the source of IsomorphismFromImageObjectToKernelOfCokernel" );
+
+##
+AddDerivationToCAP( ImageObject,
+                  
+  function( morphism )
+    
+    return Range( IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
+    
+end : Description := "ImageObject as the range of IsomorphismFromKernelOfCokernelToImageObject" );
+
+##
+AddDerivationToCAP( Coimage,
+        
+  function( morphism )
+    
+    return Range( CoimageProjection( morphism ) );
+    
+end : Description := "Coimage as the range of CoimageProjection" );
+
+##
+AddDerivationToCAP( Coimage,
+        
+  function( morphism )
+    
+    return Range( IsomorphismFromCokernelOfKernelToCoimage( morphism ) );
+    
+end : Description := "Coimage as the range of IsomorphismFromCokernelOfKernelToCoimage" );
+
+##
+AddDerivationToCAP( Coimage,
+        
+  function( morphism )
+    
+    return Source( IsomorphismFromCoimageToCokernelOfKernel( morphism ) );
+    
+end : Description := "Coimage as the source of IsomorphismFromCoimageToCokernelOfKernel" );
 
 ###########################
 ##
@@ -1586,7 +1873,8 @@ AddFinalDerivation( IsomorphismFromImageObjectToKernelOfCokernel,
                       CoastrictionToImageWithGivenImageObject,
                       UniversalMorphismFromImage,
                       UniversalMorphismFromImageWithGivenImageObject,
-                      IsomorphismFromImageObjectToKernelOfCokernel ],
+                      IsomorphismFromImageObjectToKernelOfCokernel,
+                      IsomorphismFromKernelOfCokernelToImageObject ],
                     
   function( mor )
     local kernel_of_cokernel;
@@ -1596,6 +1884,81 @@ AddFinalDerivation( IsomorphismFromImageObjectToKernelOfCokernel,
     return IdentityMorphism( kernel_of_cokernel );
     
 end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
+
+##
+AddFinalDerivation( IsomorphismFromKernelOfCokernelToImageObject,
+                    [ [ KernelObject, 1 ],
+                      [ CokernelProj, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ ImageObject,
+                      ImageEmbedding,
+                      ImageEmbeddingWithGivenImageObject,
+                      CoastrictionToImage,
+                      CoastrictionToImageWithGivenImageObject,
+                      UniversalMorphismFromImage,
+                      UniversalMorphismFromImageWithGivenImageObject,
+                      IsomorphismFromImageObjectToKernelOfCokernel,
+                      IsomorphismFromKernelOfCokernelToImageObject ],
+                    
+  function( mor )
+    local kernel_of_cokernel;
+    
+    kernel_of_cokernel := KernelObject( CokernelProj( mor ) );
+    
+    return IdentityMorphism( kernel_of_cokernel );
+    
+end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the identity of the kernel of the cokernel" );
+
+## Final methods for Coimage
+
+##
+AddFinalDerivation( IsomorphismFromCoimageToCokernelOfKernel,
+                    [ [ Cokernel, 1 ],
+                      [ KernelEmb, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ Coimage,
+                      CoimageProjection,
+                      CoimageProjectionWithGivenCoimage,
+                      AstrictionToCoimage,
+                      AstrictionToCoimageWithGivenCoimage,
+                      UniversalMorphismIntoCoimage,
+                      UniversalMorphismIntoCoimageWithGivenCoimage,
+                      IsomorphismFromCoimageToCokernelOfKernel,
+                      IsomorphismFromCokernelOfKernelToCoimage ],
+                    
+  function( mor )
+    local cokernel_of_kernel;
+    
+    cokernel_of_kernel := Cokernel( KernelEmb( mor ) );
+    
+    return IdentityMorphism( cokernel_of_kernel );
+    
+end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the identity of the cokernel of the kernel" );
+
+##
+AddFinalDerivation( IsomorphismFromCokernelOfKernelToCoimage,
+                    [ [ Cokernel, 1 ],
+                      [ KernelEmb, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ Coimage,
+                      CoimageProjection,
+                      CoimageProjectionWithGivenCoimage,
+                      AstrictionToCoimage,
+                      AstrictionToCoimageWithGivenCoimage,
+                      UniversalMorphismIntoCoimage,
+                      UniversalMorphismIntoCoimageWithGivenCoimage,
+                      IsomorphismFromCoimageToCokernelOfKernel,
+                      IsomorphismFromCokernelOfKernelToCoimage ],
+                    
+  function( mor )
+    local cokernel_of_kernel;
+    
+    cokernel_of_kernel := Cokernel( KernelEmb( mor ) );
+    
+    return IdentityMorphism( cokernel_of_kernel );
+    
+end : Description := "IsomorphismFromCokernelOfKernelToCoimage as the identity of the cokernel of the kernel" );
+
 
 ## Final methods for initial object
 

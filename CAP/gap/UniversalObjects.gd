@@ -2196,6 +2196,22 @@ DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
 DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
                   [ IsCapCategory, IsList ] );
 
+
+DeclareOperation( "IsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
+                  [ IsCapCategory, IsList ] );
+
 ## FIXME: Image is a function (rename: ImageObject -> Image)
 DeclareAttributeWithToDoForIsWellDefined( "ImageObject",
                                           IsCapCategoryMorphism );
@@ -2368,7 +2384,38 @@ DeclareFilter( "WasCreatedAsImageObject" );
 ##
 ####################################
 
-## FIXME: Image is a function (rename: ImageObject -> Image)
+DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "IsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
+                  [ IsCapCategory, IsList ] );
+
+
 DeclareAttributeWithToDoForIsWellDefined( "Coimage",
                                           IsCapCategoryMorphism );
 
