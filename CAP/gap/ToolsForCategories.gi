@@ -388,21 +388,6 @@ end );
 ##
 #####################################
 
-# InstallAdd( 
-# 
-#   rec(
-#   function_name := "KernelEmb"
-#   install_name := "KernelEmb",
-#   filter_list := [ "morphism" ],
-#   cache_name := "KernelEmb",
-#   pre_function := func,
-#   redirect_function := func,
-#   post_function := func,
-#   well_defined_todo := false
-#    ),
-    
-    ## redirect function bauen
-
 InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
   
   function( list, category )
