@@ -368,9 +368,6 @@ InstallGlobalFunction( DeclareFamilyProperty,
     
 end );
 
-#
-InstallValue( CAP_INTERNAL_METHOD_IMPLICATION_LIST, [ ] );
-
 BindGlobal( "CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING",
   
   function( string )
@@ -382,29 +379,6 @@ BindGlobal( "CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING",
     fi;
     
     return string;
-    
-end );
-
-InstallGlobalFunction( InstallTrueMethodAndStoreImplication,
-  
-  function( range, source )
-    local names_source, names_range, i, remove_can_compute;
-    
-    InstallTrueMethod( range, source );
-    
-    names_range := NamesFilter( range );
-    
-    names_range := Filtered( names_range, i -> PositionSublist( i, "Tester(" ) = fail );
-    
-    Apply( names_range, CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING );
-    
-    names_source := NamesFilter( source );
-    
-    names_source := Filtered( names_source, i -> PositionSublist( i, "Tester(" ) = fail );
-    
-    Apply( names_source, CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING );
-    
-    Add( CAP_INTERNAL_METHOD_IMPLICATION_LIST, [ names_range, names_source ] );
     
 end );
 

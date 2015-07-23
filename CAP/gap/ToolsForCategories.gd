@@ -47,11 +47,6 @@ DeclareGlobalFunction( "DeclareAttributeWithToDoForIsWellDefined" );
 #!
 DeclareGlobalFunction( "DeclareFamilyProperty" );
 
-DeclareGlobalVariable( "CAP_INTERNAL_METHOD_IMPLICATION_LIST" );
-
-#!
-DeclareGlobalFunction( "InstallTrueMethodAndStoreImplication" );
-
 
 DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS" );
 DeclareGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS" );
