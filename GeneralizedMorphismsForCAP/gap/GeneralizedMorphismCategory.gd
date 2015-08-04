@@ -133,8 +133,8 @@ InstallTrueMethod( HasHonestSource, IsHonest );
 ####################################
 
 DeclareAttribute( "IdempotentDefinedBySubobject",
-                  IsSubobject );
+                  IsCapCategoryMorphism );
 
 DeclareAttribute( "IdempotentDefinedByFactorobject",
-                  IsFactorobject );
+                  IsCapCategoryMorphism );
 

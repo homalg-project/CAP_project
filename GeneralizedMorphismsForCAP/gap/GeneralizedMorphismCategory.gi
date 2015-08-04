@@ -30,125 +30,260 @@ BindGlobal( "TheTypeOfGeneralizedMorphism",
 ####################################
 
 ##
-InstallGlobalFunction( CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGORY,
-                       
-  function( )
-    local prop_list_pairs, prop_list_solo, i, concat_string, i_concat, internal_list;
-    
-    prop_list_pairs := [ ];
-    
-    prop_list_solo := [ ];
-    
-    concat_string := "InUnderlyingHonestCategory";
-    
-    internal_list := Concatenation( 
-                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForAllCategories,
-                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForSpecialCategories,
-                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories
-                     );
-    
-    for i in internal_list do
-        
-        i_concat := Concatenation( i, concat_string );
-        
-        ## FIXME: This syntax needs to be fixed.
-        Add( prop_list_pairs, [ i, [ i, i_concat ] ] );
-        
-        Add( prop_list_solo, i_concat );
-        
-        DeclareProperty( i_concat, IsCapCategory );
-        
-        DeclareProperty( i_concat, IsCapCategoryCell );
-        
-    od;
-    
-    InstallValue( GENERALIZED_MORPHISM_CATEGORY_PROPAGATION_LIST, prop_list_pairs );
-    
-    InstallValue( GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST, prop_list_solo );
-    
-end );
-
-CREATE_PROPAGATION_LISTS_FOR_GENERALIZED_MORPHISM_CATEGORY( );
-
-##
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
                        
   function( category )
     local entry, underlying_honest_category;
     
-    ## Entries between honest and generalized morphism category
-    
-    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "UnderlyingHonestCategory" ] ],
-                                                         [ [ UnderlyingHonestCategory, category ], category ],
-                                                         GENERALIZED_MORPHISM_CATEGORY_PROPAGATION_LIST
-                                                       );
-    
-    AddToToDoList( entry );
-    
-    category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS := GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST;
-    
-    category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM := GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST;
-    
     underlying_honest_category := UnderlyingHonestCategory( category );
     
-    if CanComputeIsEqualForObjects( underlying_honest_category ) then
+    AddIsEqualForObjects( category,
       
-      AddIsEqualForObjects( category,
-        
-        function( object_1, object_2 )
+      function( object_1, object_2 )
           
           return IsEqualForObjects( UnderlyingHonestObject( object_1 ), UnderlyingHonestObject( object_2 ) );
           
-      end );
+    end );
+    
+    AddIsCongruentForMorphisms( category,
+                                
+      function( generalized_morphism1, generalized_morphism2 )
+        local subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
+        
+        subobject1 := Domain( generalized_morphism1 );
+        
+        subobject2 := Domain( generalized_morphism2 );
+        
+        if not IsEqualAsSubobjects( subobject1, subobject2 ) then
+          
+          return false;
+          
+        fi;
+        
+        factorobject1 := Codomain( generalized_morphism1 );
+        
+        factorobject2 := Codomain( generalized_morphism2 );
+        
+        if not IsEqualAsFactorobjects( factorobject1, factorobject2 ) then
+        
+          return false;
+        
+        fi;
+        
+        isomorphism_of_subobjects := MonoAsKernelLift( subobject2, subobject1 );
+        
+        isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
+        
+        return IsCongruentForMorphisms( AssociatedMorphism( generalized_morphism1 ), 
+                                  PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) 
+                                  );
+  
+    end );
+    
+    ## PreCompose
+    
+    
+    AddPreCompose( category, [
       
+      [ function( mor1, mor2 )
+          
+          return GeneralizedMorphism( SourceAid( mor1 ), PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ), RangeAid( mor2 ) );
+          
+      end, [ HasHonestRange, HasHonestSource ] ],
+      
+      
+      [ function( mor1, mor2 )
+          local category, pullback_diagram, new_source_aid, new_morphism_aid;
+          
+          pullback_diagram := [ MorphismAid( mor1 ), SourceAid( mor2 ) ];
+          
+          new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
+          
+          new_morphism_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), MorphismAid( mor2 ) );
+          
+          return GeneralizedMorphismWithSourceAid( new_source_aid, new_morphism_aid );
+          
+      end, [ HasHonestRange, HasHonestRange ] ],
+      
+      
+      [ function( mor1, mor2 )
+          local category, diagram, injection_of_cofactor1, injection_of_cofactor2, new_morphism_aid, new_range_aid;
+          
+          diagram := [ RangeAid( mor1 ), MorphismAid( mor2 ) ];
+          
+          injection_of_cofactor1 :=
+            InjectionOfCofactorOfPushout( diagram, 1 );
+          
+          injection_of_cofactor2 :=
+            InjectionOfCofactorOfPushout( diagram, 2 );
+          
+          new_morphism_aid := PreCompose( MorphismAid( mor1 ), injection_of_cofactor1 );
+          
+          new_range_aid := PreCompose( RangeAid( mor2 ), injection_of_cofactor2 );
+          
+          return GeneralizedMorphismWithRangeAid( new_morphism_aid, new_range_aid );
+          
+      end, [ HasHonestSource, HasHonestSource ] ],
+      
+      
+      [ function( mor1, mor2 )
+          local category;
+          
+          return AsGeneralizedMorphism( PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ) );
+          
+      end, [ IsHonest, IsHonest ] ],
+      
+      
+      [ function( mor1, mor2 )
+          local generalized_mor_factor_sub, pullback_diagram, pushout_diagram, new_associated, new_source_aid, new_range_aid;
+          
+          generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobject( RangeAid( mor1 ), SourceAid( mor2 ) );
+          
+          pullback_diagram := [ MorphismAid( mor1 ), SourceAid( generalized_mor_factor_sub ) ];
+          
+          pushout_diagram := [ RangeAid( generalized_mor_factor_sub ), MorphismAid( mor2 ) ];
+          
+          new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
+          
+          new_associated := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), InjectionOfCofactorOfPushout( pushout_diagram, 1 ) );
+          
+          new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactorOfPushout( pushout_diagram, 2 ) );
+          
+          return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
+          
+      end, [ ] ] ] );
+    
+    
+    ## AdditionForMorphisms
+    
+    AddAdditionForMorphisms( category,
+                             
+      function( mor1, mor2 )
+        local return_value, pullback_of_sourceaids_diagram, pushout_of_rangeaids_diagram, restricted_mor1, restricted_mor2;
+        
+        pullback_of_sourceaids_diagram := [ SourceAid( mor1 ), SourceAid( mor2 ) ];
+        
+        pushout_of_rangeaids_diagram := [ RangeAid( mor1 ), RangeAid( mor2 ) ];
+        
+        restricted_mor1 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), MorphismAid( mor1 ) );
+        
+        restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) );
+        
+        restricted_mor2 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 2 ), MorphismAid( mor2 ) );
+        
+        restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 2 ) );
+        
+        return_value := GeneralizedMorphism( 
+                          PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), SourceAid( mor1 ) ),
+                          restricted_mor1 + restricted_mor2,
+                          PreCompose( RangeAid( mor1 ), InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) )
+                        );
+        
+        return return_value;
+      
+    end );
+    
+    
+    ## identity
+    
+    AddIdentityMorphism( category,
+    
+      function( generalized_object )
+        local identity_morphism;
+        
+        identity_morphism := IdentityMorphism( UnderlyingHonestObject( generalized_object ) );
+        
+        return AsGeneralizedMorphism( identity_morphism );
+        
+    end );
+    
+    if CurrentOperationWeight( underlying_honest_category!.derivations_weight_list, "IsWellDefinedForObjects" ) < infinity then
+        
+        AddIsWellDefinedForObjects( category,
+          
+          function( object )
+              
+              return IsWellDefined( UnderlyingHonestObject( object ) );
+              
+          end );
+          
+    fi;
+    
+    if CurrentOperationWeight( underlying_honest_category!.derivations_weight_list, "IsWellDefinedForMorphisms" ) < infinity then
+        
+        AddIsWellDefinedForMorphisms( category,
+                                      
+          function( generalized_morphism )
+            local category;
+            
+            category := CapCategory( SourceAid( generalized_morphism ) );
+            
+            if not ForAll( [ MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ],
+                        x -> IsIdenticalObj( CapCategory( x ), category ) ) then
+              
+              return false;
+              
+            fi;
+            
+            if not ( ForAll( [ SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ],
+                    IsWellDefined ) ) then
+              
+              return false;
+              
+            fi;
+            
+            return true;
+            
+        end );
+        
     fi;
     
     
-    ## FIXME: not necessarily set to false
-    if CanComputeIsEqualAsSubobjects( underlying_honest_category )
-       and CanComputeIsEqualAsFactorobjects( underlying_honest_category )
-       and CanComputeMonoAsKernelLift( underlying_honest_category )
-       and CanComputeEpiAsCokernelColift( underlying_honest_category )
-       and CanComputeIsCongruentForMorphisms( underlying_honest_category )
-       and CanComputePreCompose( underlying_honest_category )
-       and CanComputeDomainAssociatedMorphismCodomainTriple( category ) then
-       
-       AddIsCongruentForMorphisms( category,
-                                  
-         function( generalized_morphism1, generalized_morphism2 )
-           local subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
-           
-           subobject1 := Domain( generalized_morphism1 );
-           
-           subobject2 := Domain( generalized_morphism2 );
-           
-           if not IsEqualAsSubobjects( subobject1, subobject2 ) then
-             
-             return false;
-             
-           fi;
-           
-           factorobject1 := Codomain( generalized_morphism1 );
-           
-           factorobject2 := Codomain( generalized_morphism2 );
-           
-           if not IsEqualAsFactorobjects( factorobject1, factorobject2 ) then
-           
-             return false;
-           
-           fi;
-           
-           isomorphism_of_subobjects := MonoAsKernelLift( subobject2, subobject1 );
-           
-           isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
-           
-           return IsCongruentForMorphisms( AssociatedMorphism( generalized_morphism1 ), 
-                                      PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) 
-                                     );
-      
-       end );
-      
-    fi;
+    ## Additional method for a category, when generalized morphism category is present.
+    
+    InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
+                                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ),
+                                    IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
+                                    
+      function( factor, subobject )
+        local composition, image_embedding, coastriction_to_image;
+        
+        composition := PreCompose( subobject, factor );
+        
+        coastriction_to_image := CoastrictionToImage( composition );
+        
+        image_embedding := ImageEmbedding( composition );
+        
+        return GeneralizedMorphism( image_embedding, IdentityMorphism( Range( coastriction_to_image ) ), coastriction_to_image );
+        
+    end );
+    
+    InstallMethod( IdempotentDefinedBySubobject,
+                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
+                  
+      function( subobject )
+        
+        return GeneralizedMorphismWithSourceAid( subobject, subobject );
+        
+    end );
+    
+    InstallMethod( IdempotentDefinedByFactorobject,
+                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
+                  
+      function( factorobject )
+        
+        return GeneralizedMorphismWithRangeAid( factorobject, factorobject );
+        
+    end );
+    
+    InstallMethod( GeneralizedInverse,
+                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
+                  
+      function( morphism )
+        
+        return PseudoInverse( AsGeneralizedMorphism( morphism ) );
+        
+    end );
     
     return;
     
@@ -159,13 +294,48 @@ InstallMethod( GeneralizedMorphismCategory,
                [ IsCapCategory ],
                
   function( category )
-    local name, generalized_morphism_category;
+    local name, generalized_morphism_category, category_weight_list, i, preconditions;
     
-    if not IsAbelianCategory( category ) then
-      
-      Error( "the category must be abelian" );
+    if not IsFinalized( category ) then
+        
+        Error( "category must be finalized" );
+        
+        return;
+        
+    elif not IsAbelianCategory( category ) then
+        
+        Error( "the category must be abelian" );
+        
+        return;
       
     fi;
+    
+    preconditions := [ "IsEqualAsSubobjects",
+                       "IsEqualAsFactorobjects",
+                       "MonoAsKernelLift",
+                       "EpiAsCokernelColift",
+                       "PreCompose",
+                       "IdentityMorphism",
+                       "FiberProduct",
+                       "Pushout",
+                       "ProjectionInFactorOfFiberProduct",
+                       "InjectionOfCofactorOfPushout",
+                       "AdditionForMorphisms",
+                       "CoastrictionToImage",
+                       "ImageEmbedding" ];
+    
+    category_weight_list := category!.derivations_weight_list;
+    
+    for i in preconditions do
+        
+        if CurrentOperationWeight( category_weight_list, i ) = infinity then
+            
+            Error( Concatenation( "category must be able to compute ", i ) );
+            return;
+            
+        fi;
+        
+    od;
     
     name := Name( category );
     
@@ -181,7 +351,6 @@ InstallMethod( GeneralizedMorphismCategory,
     
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategory );
     
-    ## FIXME: Use Adds (e.g. for PreCompose) and finalize after that!
     Finalize( generalized_morphism_category );
     
     return generalized_morphism_category;
@@ -248,7 +417,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
-                                  [ IsCapCategoryMorphism and CanComputeIdentityMorphism, IsCapCategoryMorphism ],
+                                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( source_aid, morphism_aid )
     local generalized_morphism;
@@ -269,7 +438,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( GeneralizedMorphismWithRangeAid,
-                                  [ IsCapCategoryMorphism and CanComputeIdentityMorphism, IsCapCategoryMorphism ],
+                                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( morphism_aid, range_aid )
     local generalized_morphism, generalized_category;
@@ -290,7 +459,7 @@ end );
 
 ##
 InstallMethod( AsGeneralizedMorphism,
-               [ IsCapCategoryMorphism and CanComputeIdentityMorphism ],
+               [ IsCapCategoryMorphism ],
                
   function( morphism_aid )
     local generalized_morphism;
@@ -303,159 +472,6 @@ InstallMethod( AsGeneralizedMorphism,
     
 end );
 
-####################################
-##
-## PreCompose
-##
-####################################
-
-##
-InstallMethodWithCacheFromObject( PreCompose,
-                                  [ IsGeneralizedMorphism 
-                                    and HasHonestRange
-                                    and CanComputePreComposeInUnderlyingHonestCategory,
-                                    IsGeneralizedMorphism and HasHonestSource ],
-                                    
-  function( mor1, mor2 )
-    local category;
-    
-    category := CapCategory( mor1 );
-    
-    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
-        
-        Error( "morphisms are not composable" );
-        
-    fi;
-    
-    return GeneralizedMorphism( SourceAid( mor1 ), PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ), RangeAid( mor2 ) );
-    
-end );
-
-##
-InstallMethodWithCacheFromObject( PreCompose,
-                                       [ IsGeneralizedMorphism 
-                                         and HasHonestRange
-                                         and CanComputePreComposeInUnderlyingHonestCategory
-                                         and CanComputeFiberProductInUnderlyingHonestCategory,
-                                         IsGeneralizedMorphism and HasHonestRange ],
-                                       
-  function( mor1, mor2 )
-    local category, pullback_diagram, new_source_aid, new_morphism_aid;
-    
-    category := CapCategory( mor1 );
-    
-    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
-        
-        Error( "morphisms are not composable" );
-        
-    fi;
-    
-    pullback_diagram := [ MorphismAid( mor1 ), SourceAid( mor2 ) ];
-    
-    new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
-    
-    new_morphism_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), MorphismAid( mor2 ) );
-    
-    return GeneralizedMorphismWithSourceAid( new_source_aid, new_morphism_aid );
-    
-end );
-
-##
-InstallMethodWithCacheFromObject( PreCompose,
-                                  [ IsGeneralizedMorphism
-                                    and HasHonestSource
-                                    and CanComputePreComposeInUnderlyingHonestCategory
-                                    and CanComputePushoutInUnderlyingHonestCategory,
-                                  IsGeneralizedMorphism and HasHonestSource ],
-                                  
-  function( mor1, mor2 )
-    local category, diagram, injection_of_cofactor1, injection_of_cofactor2, new_morphism_aid, new_range_aid;
-    
-    category := CapCategory( mor1 );
-    
-    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
-        
-        Error( "morphisms are not composable" );
-        
-    fi;
-    
-    diagram := [ RangeAid( mor1 ), MorphismAid( mor2 ) ];
-    
-    injection_of_cofactor1 :=
-      InjectionOfCofactorOfPushout( diagram, 1 );
-    
-    injection_of_cofactor2 :=
-      InjectionOfCofactorOfPushout( diagram, 2 );
-    
-    new_morphism_aid := PreCompose( MorphismAid( mor1 ), injection_of_cofactor1 );
-    
-    new_range_aid := PreCompose( RangeAid( mor2 ), injection_of_cofactor2 );
-    
-    return GeneralizedMorphismWithRangeAid( new_morphism_aid, new_range_aid );
-    
-end );
-
-##
-InstallMethodWithCacheFromObject( PreCompose,
-                                  [ IsGeneralizedMorphism
-                                    and IsHonest
-                                    and CanComputePreComposeInUnderlyingHonestCategory,
-                                  IsGeneralizedMorphism and IsHonest ],
-                                  
-  function( mor1, mor2 )
-    local category;
-    
-    category := CapCategory( mor1 );
-    
-    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
-        
-        Error( "morphisms are not composable" );
-        
-    fi;
-    
-    return AsGeneralizedMorphism( PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ) );
-    
-end );
-
-##
-InstallTrueMethod( CanComputePreCompose,
-                   CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
-                   and CanComputeFiberProductInUnderlyingHonestCategory
-                   and CanComputePushoutInUnderlyingHonestCategory
-                   and CanComputePreComposeInUnderlyingHonestCategory );
-
-InstallMethodWithCacheFromObject( PreCompose,
-                                  [ IsGeneralizedMorphism 
-                                    and CanComputeGeneralizedMorphismFromFactorToSubobjectInUnderlyingHonestCategory
-                                    and CanComputeFiberProductInUnderlyingHonestCategory
-                                    and CanComputePushoutInUnderlyingHonestCategory
-                                    and CanComputePreComposeInUnderlyingHonestCategory,
-                                    IsGeneralizedMorphism ],
-                                    
-  function( mor1, mor2 )
-    local generalized_mor_factor_sub, pullback_diagram, pushout_diagram, new_associated, new_source_aid, new_range_aid;
-    
-    if not IsEqualForObjects( Range( mor1 ), Source( mor2 ) ) then
-        
-        Error( "morphisms are not composable" );
-        
-    fi;
-    
-    generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobject( RangeAid( mor1 ), SourceAid( mor2 ) );
-    
-    pullback_diagram := [ MorphismAid( mor1 ), SourceAid( generalized_mor_factor_sub ) ];
-    
-    pushout_diagram := [ RangeAid( generalized_mor_factor_sub ), MorphismAid( mor2 ) ];
-    
-    new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
-    
-    new_associated := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), InjectionOfCofactorOfPushout( pushout_diagram, 1 ) );
-    
-    new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactorOfPushout( pushout_diagram, 2 ) );
-    
-    return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
-    
-end );
 
 ####################################
 ##
@@ -463,44 +479,8 @@ end );
 ##
 ####################################
 
-##
-InstallTrueMethod( CanComputeGeneralizedMorphismFromFactorToSubobject,
-                   CanComputePreCompose
-                   and CanComputeImageEmbedding
-                   and CanComputeCoastrictionToImage
-                   and CanComputeIdentityMorphism );
-
-InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
-                                  [ IsCapCategoryMorphism
-                                    and CanComputePreCompose
-                                    and CanComputeImageEmbedding
-                                    and CanComputeCoastrictionToImage
-                                    and CanComputeIdentityMorphism,
-                                    IsCapCategoryMorphism ],
-                                    
-  function( factor, subobject )
-    local composition, image_embedding, coastriction_to_image;
-    
-    composition := PreCompose( subobject, factor );
-    
-    coastriction_to_image := CoastrictionToImage( composition );
-    
-    image_embedding := ImageEmbedding( composition );
-    
-    return GeneralizedMorphism( image_embedding, IdentityMorphism( Range( coastriction_to_image ) ), coastriction_to_image );
-    
-end );
-
-
-##
-InstallTrueMethod( CanComputeHonestRepresentative,
-                   CanComputePreComposeInUnderlyingHonestCategory
-                   and CanComputeInverseImmutableInUnderlyingHonestCategory );
-
 InstallMethod( HonestRepresentative,
-               [ IsGeneralizedMorphism
-                 and CanComputePreComposeInUnderlyingHonestCategory
-                 and CanComputeInverseImmutableInUnderlyingHonestCategory ],
+               [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
     
@@ -511,81 +491,14 @@ InstallMethod( HonestRepresentative,
     
 end );
 
-##
-InstallTrueMethod( CanComputeAdditionForMorphisms,
-                   CanComputeFiberProductInUnderlyingHonestCategory
-                   and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory
-                   and CanComputePushoutInUnderlyingHonestCategory
-                   and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
-                   and CanComputePreComposeInUnderlyingHonestCategory
-                   and CanComputeAdditionForMorphismsInUnderlyingHonestCategory );
-
-InstallMethodWithCacheFromObject( \+,
-                                 [ IsGeneralizedMorphism
-                                   and CanComputeFiberProductInUnderlyingHonestCategory
-                                   and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory
-                                   and CanComputePushoutInUnderlyingHonestCategory
-                                   and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
-                                   and CanComputePreComposeInUnderlyingHonestCategory
-                                   and CanComputeAdditionForMorphismsInUnderlyingHonestCategory, 
-                                   IsGeneralizedMorphism ],
-                                 
-  function( mor1, mor2 )
-    local return_value, pullback_of_sourceaids_diagram, pushout_of_rangeaids_diagram, restricted_mor1, restricted_mor2;
-    
-    if not IsEqualForObjects( Source( mor1 ), Source( mor2 ) ) or not IsEqualForObjects( Range( mor1 ), Range( mor2 ) ) then
-        
-        Error( "morphisms are not addable" );
-        
-    fi;
-    
-    pullback_of_sourceaids_diagram := [ SourceAid( mor1 ), SourceAid( mor2 ) ];
-    
-    pushout_of_rangeaids_diagram := [ RangeAid( mor1 ), RangeAid( mor2 ) ];
-    
-    restricted_mor1 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), MorphismAid( mor1 ) );
-    
-    restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) );
-    
-    restricted_mor2 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 2 ), MorphismAid( mor2 ) );
-    
-    restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 2 ) );
-    
-    return_value := GeneralizedMorphism( 
-                      PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), SourceAid( mor1 ) ),
-                      restricted_mor1 + restricted_mor2,
-                      PreCompose( RangeAid( mor1 ), InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) )
-                    );
-    
-    return return_value;
-    
-end );
-
 ###########################
 ##
 ## Domain, Associated Morphism, Codomain
 ##
 ###########################
 
-##
-InstallTrueMethod( CanComputeDomainAssociatedMorphismCodomainTriple,
-                   CanComputePushoutInUnderlyingHonestCategory
-                   and CanComputePreComposeInUnderlyingHonestCategory
-                   and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
-                   and CanComputeCoastrictionToImageInUnderlyingHonestCategory
-                   and CanComputeFiberProductInUnderlyingHonestCategory
-                   and CanComputeImageEmbeddingInUnderlyingHonestCategory
-                   and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory );
-
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphism
-                 and CanComputePushoutInUnderlyingHonestCategory
-                 and CanComputePreComposeInUnderlyingHonestCategory
-                 and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
-                 and CanComputeCoastrictionToImageInUnderlyingHonestCategory
-                 and CanComputeFiberProductInUnderlyingHonestCategory
-                 and CanComputeImageEmbeddingInUnderlyingHonestCategory
-                 and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory ],
+               [ IsGeneralizedMorphism ],
                  
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, pushout_diagram, composition, codomain, pullback_diagram, domain, associated_morphism;
@@ -625,12 +538,7 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphism
-                 and CanComputeImageEmbeddingInUnderlyingHonestCategory
-                 and CanComputePushoutInUnderlyingHonestCategory
-                 and CanComputeCoastrictionToImageInUnderlyingHonestCategory
-                 and CanComputeInjectionOfCofactorOfPushoutInUnderlyingHonestCategory
-                 and HasHonestRange ],
+               [ IsGeneralizedMorphism and HasHonestRange ],
                  
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, domain, pushout_diagram, associated_morphism, codomain;
@@ -663,12 +571,7 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphism
-                 and CanComputeCoastrictionToImageInUnderlyingHonestCategory
-                 and CanComputeFiberProductInUnderlyingHonestCategory
-                 and CanComputeImageEmbeddingInUnderlyingHonestCategory
-                 and CanComputeProjectionInFactorOfFiberProductInUnderlyingHonestCategory
-                 and HasHonestSource ],
+               [ IsGeneralizedMorphism and HasHonestSource ],
                  
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, codomain, pullback_diagram, domain, associated_morphism;
@@ -704,7 +607,6 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
                [ IsGeneralizedMorphism
                  and HasHonestSource
                  and HasHonestRange ],
-                 9999,
                  
   function( generalized_morphism )
     
@@ -731,11 +633,8 @@ end;
 
 MakeReadOnlyGlobal( "Domain" );
 
-##
-InstallTrueMethod( CanComputeDomain, CanComputeDomainAssociatedMorphismCodomainTriple );
-
 InstallMethod( DomainOp,
-               [ IsGeneralizedMorphism and CanComputeDomainAssociatedMorphismCodomainTriple ],
+               [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
     local domain;
@@ -748,11 +647,8 @@ InstallMethod( DomainOp,
     
 end );
 
-##
-InstallTrueMethod( CanComputeAssociatedMorphism, CanComputeDomainAssociatedMorphismCodomainTriple );
-
 InstallMethod( AssociatedMorphism,
-               [ IsGeneralizedMorphism and CanComputeDomainAssociatedMorphismCodomainTriple ],
+               [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
     
@@ -760,11 +656,8 @@ InstallMethod( AssociatedMorphism,
     
 end );
 
-##
-InstallTrueMethod( CanComputeCodomain, CanComputeDomainAssociatedMorphismCodomainTriple );
-
 InstallMethod( Codomain,
-               [ IsGeneralizedMorphism and CanComputeDomainAssociatedMorphismCodomainTriple ],
+               [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
     local codomain;
@@ -774,22 +667,6 @@ InstallMethod( Codomain,
     SetIsEpimorphism( codomain, true );
     
     return codomain;
-    
-end );
-
-##
-InstallTrueMethod( CanComputeIdentityMorphism, CanComputeIdentityMorphismInUnderlyingHonestCategory );
-
-InstallMethodWithCacheFromObject( IdentityMorphism,
-                                  [ IsGeneralizedMorphismCategoryObjectRep
-                                    and CanComputeIdentityMorphismInUnderlyingHonestCategory ],
-                                  
-  function( generalized_object )
-    local identity_morphism;
-    
-    identity_morphism := IdentityMorphism( UnderlyingHonestObject( generalized_object ) );
-    
-    return AsGeneralizedMorphism( identity_morphism );
     
 end );
 
@@ -805,19 +682,6 @@ end );
 ##
 InstallMethod( PseudoInverse,
                [ IsGeneralizedMorphism
-                 and HasHonestSource ],
-               9999,
-               
-  function( generalized_morphism )
-    
-    return GeneralizedMorphismWithRangeAid( RangeAid( generalized_morphism ),
-                                            MorphismAid( generalized_morphism ) );
-    
-end );
-
-##
-InstallMethod( PseudoInverse,
-               [ IsGeneralizedMorphism
                  and HasHonestRange ],
                  
   function( generalized_morphism )
@@ -826,10 +690,6 @@ InstallMethod( PseudoInverse,
                                              SourceAid( generalized_morphism ) );
     
 end );
-
-##
-InstallTrueMethod( CanComputePseudoInverse,
-                   CanComputePreCompose ); 
 
 InstallMethod( PseudoInverse,
                [ IsGeneralizedMorphism ],
@@ -849,91 +709,13 @@ InstallMethod( PseudoInverse,
     
 end );
 
-##
-InstallMethod( GeneralizedInverse,
-               [ IsCapCategoryMorphism ],
-               
-  function( morphism )
-    
-    return PseudoInverse( AsGeneralizedMorphism( morphism ) );
-    
-end );
-
-###########################
-##
-## IsWellDefined
-##
-###########################
-
-##
-InstallTrueMethod( CanComputeIsWellDefinedForObjects, CanComputeIsWellDefinedForObjectsInUnderlyingHonestCategory );
-
-InstallMethod( IsWellDefined,
-               [ IsGeneralizedMorphismCategoryObjectRep
-                 and CanComputeIsWellDefinedForObjectsInUnderlyingHonestCategory ],
-               
-  function( object )
-    
-    return IsWellDefined( UnderlyingHonestObject( object ) );
-    
-end );
-
-##
-InstallTrueMethod( CanComputeIsWellDefinedForMorphisms, CanComputeIsWellDefinedForMorphismsInUnderlyingHonestCategory );
-
-InstallMethod( IsWellDefined,
-               [ IsGeneralizedMorphismRep
-                 and CanComputeIsWellDefinedForMorphismsInUnderlyingHonestCategory ],
+InstallMethod( PseudoInverse,
+               [ IsGeneralizedMorphism
+                 and HasHonestSource ],
                
   function( generalized_morphism )
-    local category;
     
-    category := CapCategory( SourceAid( generalized_morphism ) );
-    
-    if not ForAll( [ MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ],
-                 x -> IsIdenticalObj( CapCategory( x ), category ) ) then
-      
-      return false;
-      
-    fi;
-    
-    if not ( ForAll( [ SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ],
-             IsWellDefined ) ) then
-      
-      return false;
-      
-    fi;
-    
-    return true;
+    return GeneralizedMorphismWithRangeAid( RangeAid( generalized_morphism ),
+                                            MorphismAid( generalized_morphism ) );
     
 end );
-
-
-
-####################################
-##
-## Idempotents
-##
-####################################
-
-##
-InstallMethod( IdempotentDefinedBySubobject,
-               [ IsSubobject ],
-               
-  function( subobject )
-    
-    return GeneralizedMorphismWithSourceAid( subobject, subobject );
-    
-end );
-
-##
-InstallMethod( IdempotentDefinedByFactorobject,
-               [ IsFactorobject ],
-               
-  function( factorobject )
-    
-    return GeneralizedMorphismWithRangeAid( factorobject, factorobject );
-    
-end );
-
-
