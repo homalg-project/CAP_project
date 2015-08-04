@@ -2108,20 +2108,20 @@ AddFinalDerivation( IsomorphismFromDirectSumToCoproduct,
     
 end : Description := "IsomorphismFromDirectSumToCoproduct as the identity of the direct sum" );
 
-## Final methods for PreCompose
-##
-AddFinalDerivation( PreCompose,
-                    [ [ PreCompose, 1 ] ], ## this derivation must have the same weight as the already installed PreCompose
-                    [ ],
-                    
-  [ 
-    [ function( mor_1, mor_2 ) return mor_1; end, [ , IsIdenticalToIdentityMorphism ] ],
-    
-    [ function( mor_1, mor_2 ) return mor_2; end, [ IsIdenticalToIdentityMorphism, ] ]
-    
-  ]
-  
-: Weight := 0  );
+# ## Final methods for PreCompose
+# ##
+# AddFinalDerivation( PreCompose,
+#                     [ [ PreCompose, 1 ] ], ## this derivation must have the same weight as the already installed PreCompose
+#                     [ ],
+#                     
+#   [ 
+#     [ function( mor_1, mor_2 ) return mor_1; end, [ , IsIdenticalToIdentityMorphism ] ],
+#     
+#     [ function( mor_1, mor_2 ) return mor_2; end, [ IsIdenticalToIdentityMorphism, ] ]
+#     
+#   ]
+#   
+# : Weight := 0  );
 
 ## Final method for IsEqualForObjects
 ##
