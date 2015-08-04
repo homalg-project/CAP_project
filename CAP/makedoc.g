@@ -1,7 +1,7 @@
 LoadPackage("AutoDoc");
 
 AutoDoc( "CAP" : scaffold := true, autodoc :=
-         rec( scan_dirs := [ "gap", "examples/testfiles" ] ),
+         rec( scan_dirs := [ "gap", "examples/testfiles", "doc" ] ),
          maketest := rec( folder := ".",
                           commands :=
                             [ "LoadPackage( \"CAP\" );",

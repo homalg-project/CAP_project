@@ -1,0 +1,198 @@
+@Chapter Add functions
+
+This section describes the overall structure of Add-functions and the functions installed by them.
+
+@Section Functions installed by add
+
+Add functions (up to some exceptions) have the following syntax
+
+DeclareOperation( "AddSomeFunc",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+The first argument is the category to which some function (e.g. KernelObject)
+is added, the second is a list containing pairs of functions and additional
+filters for the arguments, (e.g. if one argument is a morphism, an additional filter could be IsMomomorphism).
+The third is a weight which will then be the weight for SomeFunc. This is described later.
+If only one function is to be installed, the list can be replaced by the function.
+Via InstallMethod, CAP installs the given function(s) as methods for the install name of SomeFunc,
+as listed in the MethodRecord. If no install name is given, the name SomeFunc is used.
+
+All installed methods follow the following steps, described below:
+* Redirect function
+* Prefunction
+* Function
+* Logic
+* Postfunction
+* Addfunction
+
+Every other part, except from function, does only depend on the name SomeFunc. We now explain the steps in detail.
+
+* Redirect function: The redirect is used to redirect the computation from the given functions to some other symbol.
+  If there is for example a with given method for some universal property, and the universal object is already computed,
+  the redirect function might detect such a thing, calls the with given operation with the universal object as additional
+  argument and then returns the value. In general, the redirect can be an arbitrary function. It is called with the same
+  arguments as the operation SomeFunc itself and can return an array containing [ true, something ], which will cause
+  the installed method to simply return the object something, or [ false ]. If the output is false, the computation will
+  continue with the step Prefunction. Additionally, for every category and every name like SomeFunc, there is a boolean,
+  stored in the categorys redirects component under the name of SomeFunc, which, when it is false, will prevent the
+  redirect function from being executed.
+
+* Prefunction: The prefunction should be used for error handling and soft checks of the sanity of the input to SomeFunc
+  (e.g. for KernelLift it should check wether range and source of the morphims coincide). Generally, the prefunction is defined
+  in the method record and only depend on the name SomeFunc. It is called with the same input as the function itself, and
+  should return either [ true ], which continues the computation, or [ false, "message" ], which will cause an error with
+  message "message" and some additional information.
+
+* Function: This will launch the function(s) given as arguments. The result should be as specified in the type of
+  SomeFunc. The resulting object is now named the result.
+
+* Logic: For every function, some logical todos can be implemented in a logic texfile for the category. If there is
+  some logic written down in a file belonging to the category, or belonging to some type of category. Please see the
+  description of logic for more details. If there is some logic and some predicate relations for the function SomeFunc,
+  it is installed in this step for the result.
+
+* Postfunction: The postfunction called with the arguments of the function and the result. It can be an arbitrary function doing
+  some cosmetics. If for example SomeFunc is KernelEmbedding, it will set the KernelObject of the input morphism to result.
+  The postfunction is also taken from the method record and does only depend on the name SomeFunc.
+
+* Addfunction: If the result is a category cell, it is added to the category for which the function was installed.
+
+@Section Add method
+
+Except from installing a new method for the name SomeFunc, an Add method does slightly more.
+Every Add method has the same structure. The steps in the Add method are as follows:
+
+* Weight check: If the current weight of the operation is lower than the given weight of the new functions,
+                then the add function returns and installs nothing.
+
+* Option check: There are two possible options for every add method: SetPrimitive and IsDerivation.
+  * SetPrimitive should be a boolean, the default is true. If SetPrimitive is false, then the
+    current call of this add will not set the installed function to be primitive. This is used for derivations.
+  * IsDerivation should be a boolean, default is false. If it is true, the add method assumes that the given
+    function is a derivation and does not try to install a corresponding pair (See below).
+
+* Standard weight: If the weight parameter is -1, the Standard weight is assumed, which is 100.
+
+* Checking for pairs: If the function is not a with given operation, has a corresponding with given or is a with given,
+                      and is newly installed, i.e. the current installation weight which is given to the add function
+                      is less than the current weight, the add method is going to install a corresponding pair function,
+                      i.e. a function for the corresponding with or without given method, which redirects to the currently
+                      installed functions. It also deactivates the redirect for this function.
+                      Note that the pair install is only done for primitive functions, and if the current weight is
+                      higher than the given weight.
+
+* Can compute: Set the corresponding can compute of the category to true
+
+* Install methods: Decide on the methods used to install the function. Check wether InstallMethodWithCache, InstallMethodWithToDoForIsWellDefined,
+                   both, or simply InstallMethod is used. This is decided by the ToDo and the caching flags.
+
+* Installation: Next, the method to install the functions is created. It creates the correct filter list, by merging the standard filters
+                for the operation with the particular filters for the given functions, then installs the method as described above.
+
+* SetPrimitive: If the set primitive flag is true, it is set as primitive in the weight list of the category.
+
+* Pair install: If there is a function pair, as described above, it is installed.
+
+After calling an add method, the corresponding Operation is availible in the category. Also, some derivations, which are triggered by the setting
+of the primitive value, might be availible.
+
+
+@Section InstallAdd function
+
+Almost all Add methods in the CAP kernel are installed by the CapInternalInstallAdd operation.
+The definition of this function is as follows:
+
+DeclareOperation( "CapInternalInstallAdd",
+                  [ IsRecord ] );
+
+The record can have the following components, used as described:
+
+* function_name: The name of the function. This does not have to coincide with the installation name. It is used for the
+                 CanCompute flags, and the derivation weight.
+
+* installation_name (optional): A string which is the name of the operation for which the
+                                functions given to the Add method are installed as methods.
+
+* pre_function (optional): A function which is used as the prefunction of the installed methods, as described above.
+
+* redirect_function (optional): A function which is used as the redirect function of the installed methods, as described above.
+
+* post_function (optional): A function which is used as the postfunction of the installed methods, as described above.
+
+* filter_list: A list containing the basic filters for the methods installed by the add methods. Possible are filters, or
+               the strings category, object, morphism, or twocell, which will then be replaced at the time the add method is
+               called with the corresponding filters of the category.
+
+* well_defined_todo (optional): A boolean, default value is true, which states wether there should be to do list entries
+                                which propagate well definedness from the input of the installed methods to their output.
+                                Please note that true only makes sense if at least one argument and the output of the
+                                installed method is a cell.
+
+* cache_name (optional): The name of the cache which is used for the installed methods. If no cache name is given, the caching
+                         for the operation is deactivated completely.
+
+* argument_list (optional): A list containing integers, which defines which arguments should be used for the additional functions, (e.g redirect, pre, ...).
+                            This is important for the Op method contructions. If no argument list is given, all arguments are used.
+
+* return_type (optional): The return type can be object, morphism, or twocell. If it is one of those, the correct add function (see above) is
+                          used for the result of the computation. Otherwise, no add function is used after all.
+
+* is_with_given: Boolean, marks wether the function which is to be installed a with given function or not.
+
+* with_given_without_given_name_pair (optional): If the currently installed operation has a corresponding with given operation or
+                                                 is the with given of another operation, the names of both should be in this list.
+
+
+Using all those entries, the operation CapInternalInstallAdd installs add methods as described above. It first provides a
+sanity check for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and
+with an optional third parameter for the weight.
+
+
+@Section Install all adds
+
+The function CAP_INTERNAL_INSTALL_ALL_ADDS does not take any arguments, it is an auxiliary function which iterates over the
+CAP_INTERNAL_METHOD_NAME_RECORD and calls, after some cosmetics, the CapInternalInstallAdd with the corresponding method record entry.
+The steps below are performed for every entry of the method record:
+
+* No install check: If the no_install component in the record is set to true, the loop continues with the next
+                    entry, since this flag indicates that there should be no add function for this operation.
+
+* Cache check: If there is no cache_name, set it to the name of the method record entry.
+
+* Function name: Set the component function_name to the entry name.
+
+* Redirect: Since the redirect function needs the category to work correctly, the given redirects in the method records are
+            packed up to discard the last argument, which is the category.
+
+* arg_list: Next, an argument list for redirect and post function is created, by looking at the filter list in the record.
+            If the first one is a list, the first and the last (method selection argument) is used, otherwise only the first.
+
+* WithGiven special case: If the current entry belongs to a WithGiven operation, the with_given_without_given_name_pair is set,
+                          the with given flag is set to true, and the CapInternalInstallAdd is called with the record. The loop
+                          then continues.
+
+* Non universal object special case: If the Operation does not have a universal type, i.e. does not belong to a universal
+                                     construction, CapInternalInstallAdd is called with the record. The loop then continues.
+
+Please note that we are now in the case where the operation belongs to a universal construction, (e.g. KernelLift) and is not
+a WithGiven type of operation.
+
+* argument_list: If the method is an Op construction, i.e. has a method selection object, the argument list is set to all but the
+                 last object and then used as above. Otherwise, the argument_list is set to all arguments.
+
+* If the Operation constructs a universal object, the postfunction is created and then CapInternalInstallAdd is called.
+
+* If the Operation constructs a universal morphism, the redirect is created and stored in the record.
+  Also, the postfunction is created. Then CapInternalInstallAdd is called.
+
+After one call of this function, all add methods are installed correctly. A second call should not do anything.
+
+
+
+
+
+
+
+
+
+
