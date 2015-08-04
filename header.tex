@@ -1,0 +1,123 @@
+% \usepackage[latin1]{inputenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{a4wide}
+
+\usepackage{mathabx}
+\usepackage{mathrsfs}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{colortbl}
+
+\usepackage[all]{xy}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{fancyvrb}
+
+\usepackage{graphicx}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{accents} %% \undertilde
+
+\usepackage{enumerate}
+\usepackage{wrapfig}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{shapes,arrows,matrix,backgrounds,positioning,plotmarks,calc,patterns,matrix,decorations.pathreplacing,decorations.pathmorphing,decorations.text}
+\usepackage[colorinlistoftodos,shadow]{todonotes}
+
+\usepackage{multirow}
+\usepackage{mdwlist}
+
+\usepackage{stmaryrd}
+\usepackage{mathdots} %for iddots
+
+\usepackage{fancyvrb}
+
+\usepackage[toc,page]{appendix}
+\usepackage{float}
+
+\usepackage{extarrows}
+\usepackage{enumitem}
+
+\newtheoremstyle{mytheoremstyle} % name
+    {5pt}                    % Space above
+    {5pt}                    % Space below
+    {\itshape}                   % Body font
+    {\parindent}                           % Indent amount (empty = no indent, \parindent = para indent)
+    {\bf}                   % Theorem head font
+    {.}                          % Punctuation after theorem head
+    {.5em}                       % Space after thm head: " " = normal interword space; \newline = linebreak
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+    
+\newtheoremstyle{mytdefintionstyle} % name
+    {5pt}                    % Space above
+    {5pt}                    % Space below
+    {\rm}                   % Body font
+    {\parindent}                           % Indent amount
+    {\bf}                   % Theorem head font
+    {.}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{mytheoremstyle}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+
+\theoremstyle{mytdefintionstyle}
+
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{notation}{Notation}
+\newtheorem{type}[theorem]{Typing}
+\newtheorem{documentation}[theorem]{Documentation}
+\newtheorem{computation}[theorem]{Computation}
+\newtheorem*{convention}{Convention}
+\newtheorem{sequent}[theorem]{Sequent}
+
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+
+
+%% \theoremstyle{definition}
+
+
+\newtheoremstyle{exmp_contd} 
+{\topsep} {\topsep}% 
+{\upshape}% Body font 
+{}% Indent amount (empty = no indent, \parindent = para indent) 
+{\bfseries}% Thm head font
+{}% Punctuation after thm head 
+{ }% Space after thm head (\newline = linebreak) 
+{\thmname{#1}\,\thmnumber{ #2}\thmnote{#3}\enspace(continued)}% Thm head spec 
+
+\theoremstyle{exmp_contd} 
+\newtheorem*{exmp_contd}{Example}
+
+%\makeindex
+\usepackage{xspace}
+\input{pre.tex}
+
+% Einige Huepfskripte; zum kurzzeitigen Verlassen der Matrix
+% setzt Text relativ zur position #2=x, #3=y
+\newcommand{\jumpxy}[3]{\save[]+<#2, #3>*{#1} \restore}
+%#2 = rel. Richtung
+\newcommand{\jumpdir}[2]{\save[]+#2*{#1} \restore}
+%z.B. ist \jumpdir{TEXT}{/:a(35) +1cm/} moeglich usw....
+
+\setlength{\marginparwidth}{2cm}
+%\reversemarginpar
