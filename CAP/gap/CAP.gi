@@ -21,6 +21,16 @@ InstallTrueMethod( IsAdditiveCategory, IsPreAbelianCategory );
 
 InstallTrueMethod( IsPreAbelianCategory, IsAbelianCategory );
 
+
+## for monoidal categories
+InstallTrueMethod( IsMonoidalCategory, IsBraidedMonoidalCategory );
+
+InstallTrueMethod( IsBraidedMonoidalCategory, IsSymmetricMonoidalCategory );
+
+InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricClosedMonoidalCategory );
+
+InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsRigidSymmetricClosedMonoidalCategory );
+
 ######################################
 ##
 ## Technical stuff

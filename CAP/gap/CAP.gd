@@ -75,7 +75,12 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "IsAbCategory",
                 "IsAdditiveCategory", 
                 "IsPreAbelianCategory", 
-                "IsAbelianCategory"
+                "IsAbelianCategory",
+                "IsMonoidalCategory",
+                "IsBraidedMonoidalCategory",
+                "IsSymmetricMonoidalCategory",
+                "IsSymmetricClosedMonoidalCategory",
+                "IsRigidSymmetricClosedMonoidalCategory"
               ],
               
               CanComputeForSpecialCategories := [
