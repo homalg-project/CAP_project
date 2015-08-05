@@ -2199,14 +2199,21 @@ DirectSumCodiagonalDifference := rec(
   no_install := true,
   return_type := "morphism",
   dual_operation := "DirectSumDiagonalDifference" ),
-  
+
 DirectSumProjectionInPushout := rec(
   installation_name := "DirectSumProjectionInPushoutOp",
   filter_list := [ IsList, "morphism" ],
   argument_list := [ 1 ],
   cache_name := "DirectSumProjectionInPushoutOp",
   return_type := "morphism",
-  dual_operation := "FiberProductEmbeddingInDirectSum" )
-  )
+  dual_operation := "FiberProductEmbeddingInDirectSum" ),
 
+## Basic Operations for Monoidal Categories
+
+TensorProductOnObjects := rec( 
+  installation_name := "TensorProductOnObjects",
+  filter_list := [ "object", "object" ],
+  cache_name := "TensorProductOnObjects",
+  return_type := "object" )
+  )
 );
