@@ -397,70 +397,70 @@ DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
 
 
 ##
-DeclareOperation( "EvaluationMap",
+DeclareOperation( "EvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddEvaluationMap",
+DeclareOperation( "AddEvaluationMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddEvaluationMap",
+DeclareOperation( "AddEvaluationMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddEvaluationMap",
+DeclareOperation( "AddEvaluationMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddEvaluationMap",
+DeclareOperation( "AddEvaluationMorphism",
                   [ IsCapCategory, IsList ] );
 
 
 ## the last argument is the source
-DeclareOperation( "EvaluationMapWithGivenSource",
+DeclareOperation( "EvaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddEvaluationMapWithGivenSource",
+DeclareOperation( "AddEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddEvaluationMapWithGivenSource",
+DeclareOperation( "AddEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddEvaluationMapWithGivenSource",
+DeclareOperation( "AddEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddEvaluationMapWithGivenSource",
+DeclareOperation( "AddEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsList ] );
 
 
 ##
-DeclareOperation( "CoevaluationMap",
+DeclareOperation( "CoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddCoevaluationMap",
+DeclareOperation( "AddCoevaluationMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoevaluationMap",
+DeclareOperation( "AddCoevaluationMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCoevaluationMap",
+DeclareOperation( "AddCoevaluationMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoevaluationMap",
+DeclareOperation( "AddCoevaluationMorphism",
                   [ IsCapCategory, IsList ] );
 
 
 ## the last argument is the range
-DeclareOperation( "CoevaluationMapWithGivenRange",
+DeclareOperation( "CoevaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddCoevaluationMapWithGivenRange",
+DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoevaluationMapWithGivenRange",
+DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCoevaluationMapWithGivenRange",
+DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoevaluationMapWithGivenRange",
+DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsList ] );
 
 
