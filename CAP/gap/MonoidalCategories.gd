@@ -17,7 +17,7 @@
 ####################################
 
 ## TensorProductOnObjects
-DeclareOperation( "TensorProductOnObjects",
+DeclareOperationWithCache( "TensorProductOnObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 DeclareOperation( "AddTensorProductOnObjects",
