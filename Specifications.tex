@@ -1,5 +1,78 @@
-\section{Sets and Functions}
+\section{Categories}
 
-\section{Equality}
+Classically, a category consists of a class of objects, a set of morphisms, identity morphisms, and a composition function
+satisfying some simple axioms. In $\CapPkg$, we use a slightly different notion of a category.
 
-\section{Compatibility}
+\begin{definition}
+ A \CapPkg category $\mathbf{C}$ consists of the following data:
+ \begin{enumerate}
+  \item A set $\Obj_{\mathbf{C}}$ of \textbf{objects}.
+  \item For every pair $a,b \in \Obj_{\mathbf{C}}$, a set $\Hom_{\mathbf{C}}( a, b )$ of \textbf{morphisms}.
+  \item For every pair $a,b \in \Obj_{\mathbf{C}}$, an equivalence relation $\sim_{a,b}$ on $\Hom_{\mathbf{C}}( a, b )$
+  called \textbf{congruence for morphisms}.
+  \item For every $a \in \Obj_{\mathbf{C}}$, an \textbf{identity morphism} $\id_a \in \Hom_{\mathbf{C}}( a, a )$.
+  \item For every triple $a, b, c \in \Obj_{\mathbf{C}}$, a \textbf{composition function}
+  \[
+   \circ: \Hom_{\mathbf{C}}( b, c ) \times \Hom_{\mathbf{C}}( a, b ) \rightarrow \Hom_{\mathbf{C}}( a, c )
+  \]
+  compatible with the congruence, i.e., 
+  if $\alpha, \alpha' \in \Hom_{C}( a, b )$, 
+  $\beta, \beta' \in \Hom_{C}( b, c )$,
+  $\alpha \sim_{a,b} \alpha'$ 
+  and $\beta \sim_{b,c} \beta'$, 
+  then $\beta \circ \alpha \sim_{a,c} \beta' \circ \alpha'$.
+  \item For all $a, b \in \Obj_{\mathbf{C}}$, 
+        $\alpha \in \Hom_{\mathbf{C}}( a, b )$, 
+        we have 
+        \[
+        \left( \id_{b} \circ \alpha \right) \sim_{a,b} \alpha
+        \]
+        and
+        \[
+        \alpha \sim_{a,b} \left( \alpha \circ \id_{a} \right).
+        \]
+  \item For all $a,b,c,d \in \Obj_{\mathbf{C}}$, 
+        $\alpha \in \Hom_{\mathbf{C}}( a, b )$, 
+        $\beta \in \Hom_{\mathbf{C}}( b, c )$, 
+        $\gamma \in \Hom_{\mathbf{C}}( c, d )$,
+        we have
+        \[
+        \left(( \gamma \circ \beta ) \circ \alpha \right) \sim_{a,d} \left( \gamma \circ ( \beta \circ \alpha ) \right)
+        \]
+ \end{enumerate}
+\end{definition}
+
+So the main differences between a $\CapPkg$ category and a classical category are:
+\begin{enumerate}
+ \item A $\CapPkg$ category has a set of objects, not a class.
+ \item A $\CapPkg$ cateogry has as an additional part of its datum a congruence for morphisms, and the
+ axioms are stated with respect to this congruence, and not with respect to equality.
+\end{enumerate}
+
+We will see that the congruence for morphisms actually makes the implementation of some categories easier (for example
+the category of presentations).
+
+\begin{remark}
+ Passing to the quotient sets $\Hom_{C}( a, b )/\sim_{a,b}$ gives rise to a classical category $\mathbf{D}$, because
+ all constructions and axioms respects the congruence.
+ It is usually the case that we actually want to study $\mathbf{D}$, but that it is easier to implement a $\CapPkg$ category $\mathbf{C}$
+ giving rise to $\mathbf{D}$.
+\end{remark}
+
+\begin{remark}
+ In terms of higher category theory, a $\CapPkg$ category is a $2$-category such that the $2$-morphism sets are either empty or a singleton.
+\end{remark}
+
+\begin{convention}
+ Throughout this manual we will use \textit{category} as a short term for a \CapPkg category. 
+ If we want to refer to the classical notion of a category (e.g. used in \cite{MLCWM}) we will use the term \textit{classical category}.
+\end{convention}
+
+
+\section{Equality Specifications}
+
+\subsection{\GAP Sets and \GAP Maps}
+
+\section{Typing Specifications}
+
+\section{Mathematical Specifications}
