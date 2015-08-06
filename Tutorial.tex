@@ -1,0 +1,38 @@
+Although \CapPkg offers many features and many possibilities to tweak computations,
+it is fairly simple to integrate already existing data types and algorithms in \GAP
+into the \CapPkg setup. In this chapter we give you a hand at the very first steps, using some
+examples and explaining the use and the effect of the commands in it.
+
+\section{The category of groups}
+
+When implementing a category in \CapPkg, one should always have the corresponding classical
+category in mind. In this example we start with the category of groups. The objects in this
+category will be the groups, the morphisms will be the homomorphisms of groups. Every category
+in \CapPkg is presented by a category \GAP object. We start by creating this object.
+
+\input{GAP_tex/group_example/CreateCategory_main}
+
+The string is just the name of the category we have created, and the object the variable
+\texttt{grps} refers to stores information about the category. We can now continue by
+telling the category how operations on the objects or morphisms are performed by adding
+functions the category. First, there should be a compose method for morphisms. In \GAP
+morphisms of groups are composed via the \texttt{*} operator, so we use the two
+argument function \texttt{\textbackslash *} as function for \textrm{PreCompose}.
+
+\input{GAP_tex/group_example/AddPreCompose_main}
+
+Now the composition of two morphisms will be computed by the \texttt{\textbackslash *} operation.
+Another thing every category needs is a function to compute the identity morphism. For this
+category of groups this can be done as follows.
+
+\input{GAP_tex/group_example/AddIdentityMorphism_main}
+
+The command used above exactly creates the identity morphism of a group. Since the category
+has now all the functions we wanted it to have, we can finalize it.
+
+\input{GAP_tex/group_example/Finalize_main}
+
+Finalizing a category is necessary after adding all the wanted operation and befor constructing objects
+for it. We can now create a group and tell the system that the group should be an object in the category.
+
+\input{GAP_tex/group_example/AddGroup_main}
