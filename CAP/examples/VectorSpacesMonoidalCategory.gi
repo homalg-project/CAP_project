@@ -721,6 +721,17 @@ AddTensorProductOnMorphisms( vecspaces,
     
 end );
 
+##
+AddAssociatorRightToLeft( vecspaces,
+  
+  function( right_associated_object, object_1, object_2, object_3, left_associated_object )
+    
+    return VectorSpaceMorphism( right_associated_object, 
+                                HomalgIdentityMatrix( Dimension( right_associated_object ), VECTORSPACES_FIELD ), 
+                                left_associated_object );
+    
+end );
+
 Finalize( vecspaces );
 
 z := ZeroObject( vecspaces );

@@ -1760,6 +1760,34 @@ AddDerivationToCAP( VerticalPreCompose,
 end : Description := "VerticalPreCompose using VerticalPostCompose" );
 
 ####################################
+## Derived Methods for Monoidal Categories
+####################################
+
+##
+AddDerivationToCAP( AssociatorLeftToRight,
+                    
+  function( left_associated_object, object_1, object_2, object_3, right_associated_object )
+    
+    return Inverse( AssociatorRightToLeft( right_associated_object, 
+                                           object_1, object_2, object_3,
+                                           left_associated_object )
+                  );
+    
+end : Description := "AssociatorLeftToRight as the inverse of AssociatorRightToLeft" );
+
+##
+AddDerivationToCAP( AssociatorRightToLeft,
+                    
+  function( right_associated_object, object_1, object_2, object_3, left_associated_object )
+    
+    return Inverse( AssociatorLeftToRight( left_associated_object, 
+                                           object_1, object_2, object_3,
+                                           right_associated_object )
+                  );
+    
+end : Description := "AssociatorRightToLeft as the inverse of AssociatorLeftToRight" );
+
+####################################
 ## Final derived methods
 ####################################
 

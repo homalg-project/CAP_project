@@ -56,6 +56,9 @@ DeclareOperation( "AddTensorProductOnMorphisms",
 DeclareOperation( "AssociatorRightToLeft",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+DeclareOperation( "AssociatorRightToLeft",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddAssociatorRightToLeft",
                   [ IsCapCategory, IsFunction ] );
 
@@ -68,25 +71,15 @@ DeclareOperation( "AddAssociatorRightToLeft",
 DeclareOperation( "AddAssociatorRightToLeft",
                   [ IsCapCategory, IsList ] );
 
-# DeclareOperation( "AssociatorRightToLeftWithGivenTensorProducts",
-#                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-# 
-# DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
-#                   [ IsCapCategory, IsFunction ] );
-# 
-# DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
-#                   [ IsCapCategory, IsFunction, IsInt ] );
-# 
-# DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
-#                   [ IsCapCategory, IsList, IsInt ] );
-# 
-# DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
-#                   [ IsCapCategory, IsList ] );
+
 
 ##
 DeclareOperation( "AssociatorLeftToRight",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+DeclareOperation( "AssociatorLeftToRight",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddAssociatorLeftToRight",
                   [ IsCapCategory, IsFunction ] );
 
@@ -98,22 +91,6 @@ DeclareOperation( "AddAssociatorLeftToRight",
 
 DeclareOperation( "AddAssociatorLeftToRight",
                   [ IsCapCategory, IsList ] );
-
-
-# DeclareOperation( "AssociatorLeftToRightWithGivenTensorProducts",
-#                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-# 
-# DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
-#                   [ IsCapCategory, IsFunction ] );
-# 
-# DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
-#                   [ IsCapCategory, IsFunction, IsInt ] );
-# 
-# DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
-#                   [ IsCapCategory, IsList, IsInt ] );
-# 
-# DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
-#                   [ IsCapCategory, IsList ] );
 
 
 ##

@@ -10,6 +10,7 @@
 ##
 #############################################################################
 
+##
 InstallMethod( TensorProductOnMorphisms,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
@@ -22,3 +23,28 @@ InstallMethod( TensorProductOnMorphisms,
     
 end );
 
+##
+InstallMethod( AssociatorRightToLeft,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2, object_3 )
+    
+    return AssociatorRightToLeft( TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ),
+                                  object_1, object_2, object_3,
+                                  TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ) 
+                                );
+    
+end );
+
+##
+InstallMethod( AssociatorLeftToRight,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2, object_3 )
+    
+    return AssociatorLeftToRight( TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ),
+                                  object_1, object_2, object_3,
+                                  TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ) 
+                                );
+    
+end );
