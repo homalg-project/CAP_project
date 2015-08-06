@@ -716,8 +716,6 @@ Finalize( vecspaces );
 
 z := ZeroObject( vecspaces );
 
-IsZero( z );
-
 a := QVectorSpace( 1 );
 
 b := QVectorSpace( 2 );
