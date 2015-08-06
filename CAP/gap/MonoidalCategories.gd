@@ -114,67 +114,42 @@ DeclareOperation( "AddTensorUnit",
 DeclareAttribute( "LeftUnitor",
                   IsCapCategoryObject );
 
-DeclareOperation( "AddLeftUnitor",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddLeftUnitor",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddLeftUnitor",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddLeftUnitor",
-                  [ IsCapCategory, IsList ] );
-
-
 # the second argument is the given tensor product
-DeclareOperation( "LeftUnitorWithGivenTensorProduct",
+DeclareOperation( "LeftUnitor",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddLeftUnitorWithGivenTensorProduct",
+DeclareOperation( "AddLeftUnitor",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftUnitorWithGivenTensorProduct",
+DeclareOperation( "AddLeftUnitor",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftUnitorWithGivenTensorProduct",
+DeclareOperation( "AddLeftUnitor",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftUnitorWithGivenTensorProduct",
+DeclareOperation( "AddLeftUnitor",
                   [ IsCapCategory, IsList ] );
+
 
 
 ##
 DeclareAttribute( "LeftUnitorInverse",
                   IsCapCategoryObject );
 
-DeclareOperation( "AddLeftUnitorInverse",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddLeftUnitorInverse",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddLeftUnitorInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddLeftUnitorInverse",
-                  [ IsCapCategory, IsList ] );
-
-
 # the second argument is the given tensor product
-DeclareOperation( "LeftUnitorInverseWithGivenTensorProduct",
+DeclareOperation( "LeftUnitorInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddLeftUnitorInverseWithGivenTensorProduct",
+DeclareOperation( "AddLeftUnitorInverse",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftUnitorInverseWithGivenTensorProduct",
+DeclareOperation( "AddLeftUnitorInverse",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftUnitorInverseWithGivenTensorProduct",
+DeclareOperation( "AddLeftUnitorInverse",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftUnitorInverseWithGivenTensorProduct",
+DeclareOperation( "AddLeftUnitorInverse",
                   [ IsCapCategory, IsList ] );
 
 
@@ -182,33 +157,20 @@ DeclareOperation( "AddLeftUnitorInverseWithGivenTensorProduct",
 DeclareAttribute( "RightUnitor",
                   IsCapCategoryObject );
 
-DeclareOperation( "AddRightUnitor",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRightUnitor",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRightUnitor",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRightUnitor",
-                  [ IsCapCategory, IsList ] );
-
-
 # the second argument is the given tensor product
-DeclareOperation( "RightUnitorWithGivenTensorProduct",
+DeclareOperation( "RightUnitor",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
+DeclareOperation( "AddRightUnitor",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
+DeclareOperation( "AddRightUnitor",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
+DeclareOperation( "AddRightUnitor",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
+DeclareOperation( "AddRightUnitor",
                   [ IsCapCategory, IsList ] );
 
 
@@ -216,33 +178,20 @@ DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
 DeclareAttribute( "RightUnitorInverse",
                   IsCapCategoryObject );
 
-DeclareOperation( "AddRightUnitorInverse",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRightUnitorInverse",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRightUnitorInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRightUnitorInverse",
-                  [ IsCapCategory, IsList ] );
-
-
-# # the second argument is the given tensor product
-DeclareOperation( "RightUnitorInverseWithGivenTensorProduct",
+# the second argument is the given tensor product
+DeclareOperation( "RightUnitorInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddRightUnitorInverseWithGivenTensorProduct",
+DeclareOperation( "AddRightUnitorInverse",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddRightUnitorInverseWithGivenTensorProduct",
+DeclareOperation( "AddRightUnitorInverse",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddRightUnitorInverseWithGivenTensorProduct",
+DeclareOperation( "AddRightUnitorInverse",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddRightUnitorInverseWithGivenTensorProduct",
+DeclareOperation( "AddRightUnitorInverse",
                   [ IsCapCategory, IsList ] );
 
 

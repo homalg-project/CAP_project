@@ -2234,5 +2234,35 @@ AssociatorLeftToRight := rec(
   cache_name := "AssociatorLeftToRight",
   return_type := "morphism" ),
 
+TensorUnit := rec(
+  installation_name := "TensorUnit",
+  filter_list := [ "category" ],
+  cache_name := "TensorUnit",
+  return_type := "object" ),
+
+LeftUnitor := rec(
+  installation_name := "LeftUnitor",
+  filter_list := [ "object", "object" ],
+  cache_name := "LeftUnitor",
+  return_type := "morphism" ),
+
+LeftUnitorInverse := rec(
+  installation_name := "LeftUnitorInverse",
+  filter_list := [ "object", "object" ],
+  cache_name := "LeftUnitorInverse",
+  return_type := "morphism" ),
+
+RightUnitor := rec(
+  installation_name := "RightUnitor",
+  filter_list := [ "object", "object" ],
+  cache_name := "RightUnitor",
+  return_type := "morphism" ),
+
+RightUnitorInverse := rec(
+  installation_name := "RightUnitorInverse",
+  filter_list := [ "object", "object" ],
+  cache_name := "RightUnitorInverse",
+  return_type := "morphism" ),
+
   )
 );

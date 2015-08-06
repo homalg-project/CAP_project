@@ -48,3 +48,57 @@ InstallMethod( AssociatorLeftToRight,
                                 );
     
 end );
+
+##
+InstallMethod( LeftUnitor,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    local category;
+    
+    category := CapCategory( object );
+    
+    return LeftUnitor( object, TensorProductOnObjects( TensorUnit( category ), object ) );
+    
+end );
+
+##
+InstallMethod( LeftUnitorInverse,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    local category;
+    
+    category := CapCategory( object );
+    
+    return LeftUnitorInverse( object, TensorProductOnObjects( TensorUnit( category ), object ) );
+    
+end );
+
+##
+InstallMethod( RightUnitor,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    local category;
+    
+    category := CapCategory( object );
+    
+    return RightUnitor( object, TensorProductOnObjects( object, TensorUnit( category ) ) );
+    
+end );
+
+##
+InstallMethod( RightUnitorInverse,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    local category;
+    
+    category := CapCategory( object );
+    
+    return RightUnitorInverse( object, TensorProductOnObjects( object, TensorUnit( category ) ) );
+    
+end );
+
+

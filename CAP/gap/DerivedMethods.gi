@@ -1787,6 +1787,42 @@ AddDerivationToCAP( AssociatorRightToLeft,
     
 end : Description := "AssociatorRightToLeft as the inverse of AssociatorLeftToRight" );
 
+##
+AddDerivationToCAP( LeftUnitor,
+                  
+  function( object, unit_tensored_object )
+    
+    return Inverse( LeftUnitorInverse( object, unit_tensored_object ) );
+    
+end : Description := "LeftUnitor as the inverse of LeftUnitorInverse" );
+
+##
+AddDerivationToCAP( LeftUnitorInverse,
+                  
+  function( object, unit_tensored_object )
+    
+    return Inverse( LeftUnitor( object, unit_tensored_object ) );
+    
+end : Description := "LeftUnitorInverse as the inverse of LeftUnitor" );
+
+##
+AddDerivationToCAP( RightUnitor,
+                  
+  function( object, object_tensored_unit )
+    
+    return Inverse( RightUnitorInverse( object, object_tensored_unit ) );
+    
+end : Description := "RightUnitor as the inverse of RightUnitorInverse" );
+
+##
+AddDerivationToCAP( RightUnitorInverse,
+                  
+  function( object, object_tensored_unit )
+    
+    return Inverse( RightUnitor( object, object_tensored_unit ) );
+    
+end : Description := "RightUnitorInverse as the inverse of RightUnitor" );
+
 ####################################
 ## Final derived methods
 ####################################

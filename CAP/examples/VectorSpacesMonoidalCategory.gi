@@ -732,6 +732,36 @@ AddAssociatorRightToLeft( vecspaces,
     
 end );
 
+##
+AddTensorUnit( vecspaces,
+  
+  function( )
+    
+    return QVectorSpace( 1 );
+    
+end );
+
+##
+AddLeftUnitor( vecspaces,
+  
+  function( object, unit_tensored_object )
+    
+    return VectorSpaceMorphism( unit_tensored_object, 
+                                HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
+                                object );
+    
+end );
+
+##
+AddRightUnitor( vecspaces,
+  
+  function( object, object_tensored_unit )
+    
+    return VectorSpaceMorphism( object_tensored_unit, 
+                                HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
+                                object );
+end );
+
 Finalize( vecspaces );
 
 z := ZeroObject( vecspaces );
