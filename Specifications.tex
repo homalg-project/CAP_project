@@ -157,6 +157,44 @@ The basic operation \texttt{IsEqualForMorphisms} has a special specification.
  Every basic operation has to match its type.
 \end{specification}
 
+Every basic operation symbol has a type. To be more precise, it has a (dependent) function type.
+
+\begin{example}
+ The type of $\IsZeroForObjects$ is
+ \[
+  \Obj \rightarrow \Bool.
+ \]
+ Given a term of type $\Obj$, the basic operation symbol $\IsZeroForObjects$ returns a term of type $\Bool$.
+\end{example}
+
+\begin{example}
+ For $a,b: \Obj$, the type of $\KernelObject$ is
+ \[
+  \Hom(a,b) \rightarrow \Obj.
+ \]
+ Given a term of type $\Hom(a,b)$, the basic operation symbol $\KernelObject$ returns a term of type $\Obj$.
+\end{example}
+
+\begin{example}
+ For $a,b: \Obj$, the type of $\KernelEmb$ is
+ \[
+  \prod_{\phi: \Hom(a,b)} \Hom( \KernelObject(\phi), a ).
+ \]
+ Given a term of type $\Hom(a,b)$, the basic operation symbol $\KernelEmb$ returns a term of type $\Hom( \KernelObject(\phi), a )$.
+ Thus $\KernelEmb$ has a dependent function type, because the type of its output depends on the input term.
+\end{example}
+
+For a basic operation to match its typing specification, it has to
+\begin{enumerate}
+ \item accept only input specified by its type, and throw an error otherwise,
+ \item compute only output specified by its type.
+\end{enumerate}
+
+The first item is \todo{specify when not, for example for performance}(almost) always handled by \CapPkg.
+If we add a basic operation to \CapPkg via an add function, \CapPkg ensures that every call of that
+basic operation first triggers a type checking. The meaning and implications of the second item have to be analyzed carefully.
+
+
 \section{Mathematical Specifications}
 
 \begin{specification}
