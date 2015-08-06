@@ -3,7 +3,7 @@
 Classically, a category consists of a class of objects, a set of morphisms, identity morphisms, and a composition function
 satisfying some simple axioms. In $\CapPkg$, we use a slightly different notion of a category.
 
-\begin{definition}
+\begin{definition}\label{definition:CapCategory}
  A \CapPkg category $\mathbf{C}$ consists of the following data:
  \begin{enumerate}
   \item A set $\Obj_{\mathbf{C}}$ of \textbf{objects}.
@@ -65,7 +65,7 @@ the category of presentations).
 
 \begin{convention}
  Throughout this manual we will use \textit{category} as a short term for a \CapPkg category. 
- If we want to refer to the classical notion of a category (e.g. used in \cite{MLCWM}) we will use the term \textit{classical category}.
+ If we want to refer to the classical notion of a category (i.e. the one used in \cite{MLCWM}) we will use the term \textit{classical category}.
 \end{convention}
 
 
@@ -74,6 +74,80 @@ the category of presentations).
 \begin{specification}
  Every basic operation has to yield equal output for given equal input.
 \end{specification}
+
+Every basic operation takes finitely many arguments as an input and computes one single output.
+Each input argument has one of the following types:
+\begin{enumerate}
+ \item $\Int$, an integer.
+ \item $\Bool$, a boolean.
+ \item $\Obj$, an object of a category.
+ \item $\Hom( a, b )$, a morphism with source and range given by objects $a$ and $b$, respectively (this is a dependent type).
+ \item $\ListObj$, a finite list of objects.
+ \item $\ListMor$, a finite list of morphisms which possibly have different sources or ranges.
+\end{enumerate}
+These are also the possible output types except that an output never is a list. \\
+We now specify what it means for two terms of the same type to be equal.
+\begin{enumerate}
+ \item For $\Int$ and $\Bool$, equality is given by the equality operations in $\GAP$.
+ \item For $\ListObj$ and $\ListMor$, equality is given by entrywise equality.
+ \item For $\Obj$, equality is given by the basic operation \texttt{IsEqualForObjects}.
+ \item For $\Hom( a, b )$, equality is given by the basic operation \texttt{IsEqualForMorphisms}.
+\end{enumerate}
+
+Like every basic operation, \texttt{IsEqualForObjects} and \texttt{IsEqualForMorphisms} can be added to 
+a category object using the corresponding add functions \texttt{AddIsEqualForObjects} and \texttt{AddIsEqualForMorphisms}.
+
+\begin{remark}
+ The basic operations \texttt{IsEqualForObjects} and \texttt{IsEqualForMorphisms} play the role
+ of the equality functions of the sets $\Obj_{\mathbf{C}}$ and $\Hom_{\mathbf{C}}(a,b)$ in definition
+ \ref{definition:CapCategory}. In particular, \texttt{IsEqualForMorphisms} shall not be confused
+ with congruence for morphisms.
+\end{remark}
+
+
+\subsection{Specifications for \texttt{IsEqualForObjects}}
+The basic operation \texttt{IsEqualForObjects} has a special specification.
+
+\begin{specification}[\texttt{IsEqualForObjects}]
+~
+ \begin{enumerate}
+  \item Input: two objects ($\Obj$).
+  \item Output: a boolean ($\Bool$).
+  \item \texttt{IsEqualForObjects} has to respect the \GAP function \texttt{IsIdenticalObj}, i.e., 
+  for objects $a, a', b, b'$ such that \texttt{IsIdenticalObj}($a$, $a'$) and \texttt{IsIdenticalObj}($b$, $b'$) holds,
+  \texttt{IsEqualForObjects}($a$, $b$) and \texttt{IsEqualForObjects}($a'$, $b'$) yield equal booleans.
+  \item \texttt{IsEqualForObjects} has to give rise to an equivalence relation on the set of all objects together
+  with \texttt{IsEqualForObjects} as an equality function.\todo{\GAP sets}
+ \end{enumerate}
+\end{specification}
+
+\begin{remark}
+ It is allowed for \texttt{IsEqualForObjects} to return \texttt{fail}. This is interpreted by \CapPkg as
+ \textit{``I don't know if the two objects are equal''}.
+\end{remark}
+
+\subsection{Specifications for \texttt{IsEqualForMorphisms}}
+The basic operation \texttt{IsEqualForMorphisms} has a special specification.
+
+\begin{specification}[\texttt{IsEqualForMorphisms}]
+~
+ \begin{enumerate}
+  \item Input: two morphisms ($\Hom(a,b)$) having equal sources and ranges.
+  \item Output: a boolean ($\Bool$).
+  \item \texttt{IsEqualForMorphisms} has to respect the \GAP function \texttt{IsIdenticalObj}, i.e., 
+  for morphisms $\alpha, \alpha', \beta, \beta'$ such that \texttt{IsIdenticalObj}($\alpha$, $\alpha'$) and \texttt{IsIdenticalObj}($\beta$, $\beta'$) holds,
+  \texttt{IsEqualForMorphisms}($\alpha$, $\beta$) and \texttt{IsEqualForMorphisms}($\alpha'$, $\beta'$) yield equal booleans.
+  \item \texttt{IsEqualForMorphisms} has to give rise to an equivalence relation on the set of all morphisms with prescribed source and range together
+  with \texttt{IsEqualForObjects} as an equality function.\todo{\GAP sets}
+ \end{enumerate}
+\end{specification}
+
+\begin{remark}
+ It is allowed for \texttt{IsEqualForMorphisms} to return \texttt{fail}. This is interpreted by \CapPkg as
+ \textit{``I don't know if the two morphisms are equal''}.
+\end{remark}
+
+
 
 \subsection{\GAP Sets and \GAP Maps}
 
@@ -88,3 +162,5 @@ the category of presentations).
 \begin{specification}
  Every basic operation has to compute what it is supposed to compute.
 \end{specification}
+
+\section{The Importance of Specifications}
