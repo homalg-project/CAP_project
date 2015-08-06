@@ -712,6 +712,15 @@ AddTensorProductOnObjects( vecspaces,
 
 );
 
+##
+AddTensorProductOnMorphisms( vecspaces,
+  
+  function( new_source, morphism_1, morphism_2, new_range )
+    
+    return VectorSpaceMorphism( new_source, KroneckerMat( morphism_1!.morphism, morphism_2!.morphism ), new_range );
+    
+end );
+
 Finalize( vecspaces );
 
 z := ZeroObject( vecspaces );
@@ -722,4 +731,8 @@ b := QVectorSpace( 2 );
 
 c := QVectorSpace( 3 );
 
+alpha := VectorSpaceMorphism( a, [ [ 1, 0 ] ], b );
 
+beta := VectorSpaceMorphism( b, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], c );
+
+gamma := VectorSpaceMorphism( c, [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], c );

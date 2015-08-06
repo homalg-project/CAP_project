@@ -36,33 +36,21 @@ DeclareOperation( "AddTensorProductOnObjects",
 DeclareOperation( "TensorProductOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "AddTensorProductOnMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddTensorProductOnMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddTensorProductOnMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddTensorProductOnMorphisms",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "TensorProductOnMorphismsWithGivenTensorProducts",
+DeclareOperation( "TensorProductOnMorphisms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-DeclareOperation( "AddTensorProductOnMorphismsWithGivenTensorProducts",
+DeclareOperation( "AddTensorProductOnMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddTensorProductOnMorphismsWithGivenTensorProducts",
+DeclareOperation( "AddTensorProductOnMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddTensorProductOnMorphismsWithGivenTensorProducts",
+DeclareOperation( "AddTensorProductOnMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductOnMorphismsWithGivenTensorProducts",
+DeclareOperation( "AddTensorProductOnMorphisms",
                   [ IsCapCategory, IsList ] );
+
 
 ##
 DeclareOperation( "AssociatorRightToLeft",

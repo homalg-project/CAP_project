@@ -2218,54 +2218,8 @@ TensorProductOnObjects := rec(
 
 TensorProductOnMorphisms := rec(
   installation_name := "TensorProductOnMorphisms",
-  filter_list := [ "morphism", "morphism" ],
-  cache_name := "TensorProductOnMorphisms",
-  return_type := "morphism",
-  redirect_function := function( morphism_1, morphism_2 )
-    local category, cache, arg_list, has_return;
-    
-    category := CapCategory( morphism_1 );
-    
-    cache := GET_METHOD_CACHE( category, "TensorProductOnObjects", 2 );
-    
-    arg_list := [ Source( morphism_1 ), Source( morphism_2 ) ];
-    
-    has_return := CallFuncList( CacheValue, [ cache, arg_list ] );
-    
-    if has_return = SuPeRfail then
-      
-      arg_list := [ Range( morphism_1 ), Range( morphism_2 ) ];
-      
-      has_return := CallFuncList( CacheValue, [ cache, arg_list ] );
-      
-      if has_return = SuPeRfail then
-        
-        return [ false ];
-        
-      fi;
-      
-    fi;
-    
-    return [ true, TensorProductOnMorphismsWithGivenTensorProducts( 
-                     TensorProductOnObjects( Source( morphism_1 ), Source( morphism_2 ) ),
-                     morphism_1,
-                     morphism_2,
-                     TensorProductOnObjects( Range( morphism_1 ), Range( morphism_2 ) ) ) ];
-    
-  end,
-  
-  post_function := function( morphism_1, morphism_2, tensor_morphism )
-    
-    SetTensorProductOnObjects( Source( morphism_1 ), Source( morphism_2 ), Source( tensor_morphism ) );
-    
-    SetTensorProductOnObjects( Range( morphism_1 ), Range( morphism_2 ), Range( tensor_morphism ) );
-    
-  end ),
-
-TensorProductOnMorphismsWithGivenTensorProducts := rec(
-  installation_name := "TensorProductOnMorphismsWithGivenTensorProducts",
   filter_list := [ "object", "morphism", "morphism", "object" ],
-  cache_name := "TensorProductOnMorphismsWithGivenTensorProducts",
+  cache_name := "TensorProductOnMorphisms",
   return_type := "morphism" )
 
   )
