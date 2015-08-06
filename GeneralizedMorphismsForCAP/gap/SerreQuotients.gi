@@ -25,6 +25,139 @@ BindGlobal( "TheTypeOfSerreQuotientCategoryMorphism",
 
 #############################################
 ##
+## Installation method
+##
+#############################################
+
+BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
+  
+  function( category )
+    local membership_function;
+    
+    membership_function := SubcategoryMembershipTestFunctionForSerreQuotient( category );
+    
+    AddIsCongruentForMorphisms( category,
+      
+      function( morphism1, morphism2 )
+        local underlying_general, new_morphism_aid new_general, sum_general,
+              sum_associated, sum_image;
+        
+        underlying_general := UnderlyingGeneralizedMorphism( morphism2 );
+        
+        new_morphism_aid := AdditiveInverse( MorphismAid( underlying_general ) );
+        
+        new_general := GeneralizedMorphism( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
+        
+        sum_general := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ), new_general );
+        
+        sum_associated := AssociatedMorphism( sum_general );
+        
+        sum_image := ImageObject( sum_associated );
+        
+        return membership_function( sum_image );
+        
+    end );
+    
+    AddIsEqualForObjects( category,
+      
+      function( obj1, obj2 )
+        
+        return IsEqualForObjects( UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
+        
+    end );
+    
+    AddIsZeroForObjects( category,
+      
+      function( obj )
+        
+        return membership_function( UnderlyingHonestObject( obj ) );
+        
+    end );
+    
+    AddPrecompose( category,
+      
+      function( morphism1, morphism2 )
+        local composition;
+        
+        composition := PreCompose( UnderlyingGeneralizedMorphism( morphism1 ),
+                                   UnderlyingGeneralizedMorphism( morphism2 ) );
+        
+        return SerreQuotientCategoryMorphism( category, composition );
+        
+    end );
+    
+    AddAdditionForMorphisms( category,
+      
+      function( morphism1, morphism2 )
+        local sum;
+        
+        sum := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ),
+                                     UnderlyingGeneralizedMorphism( morphism2 ) );
+        
+        return SerreQuotientCategoryMorphism( category, sum );
+        
+    end );
+    
+    AddIsZeroForMorphisms( category,
+      
+      function( morphism )
+        local associated, image;
+        
+        associated := AssociatedMorphism( UnderlyingGeneralizedMorphism( morphism1 ) );
+        
+        image := ImageObject( associated );
+        
+        return membership_function( image );
+        
+    end );
+    
+    AddAdditiveInverseForMorphisms( category,
+      
+      function( morphism )
+        local underlying_general, new_morphism_aid, new_general;
+        
+        underlying_general := UnderlyingGeneralizedMorphism( morphism );
+        
+        new_morphism_aid := AdditiveInverse( MorphismAid( underlying_general ) );
+        
+        new_general := GeneralizedMorphism( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
+        
+        return SerreQuotientCategoryMorphism( category, new_general );
+        
+    end );
+    
+    AddZeroMorphism( category,
+      
+      function( source, range )
+        local source_aid, range_aid, morphism_aid;
+        
+        source := UnderlyingHonestObject( source );
+        
+        range := UnderlyingHonestObject( range );
+        
+        source_aid := IdentityMorphism( source );
+        
+        range_aid := IdentityMorphism( range );
+        
+        morphism_aid := ZeroMorphism( source, range );
+        
+        return SerreQuotientCategoryMorphism( category, source_aid, morphism_aid, range_aid );
+        
+    end );
+    
+    AddZeroObject( category,
+      
+      function( )
+        
+        return AsSerreQuotientObject( category, ZeroObject( UnderlyingHonestCategory( category ) ) );
+        
+    end );
+    
+    
+    
+
+#############################################
+##
 ## Constructor
 ##
 #############################################
@@ -60,14 +193,6 @@ InstallMethodWithCacheFromObject( SerreQuotientCategory,
     SetUnderlyingGeneralizedMorphismCategory( serre_category, GeneralizedMorphismCategory( category ) );
     
     SetSubcategoryMembershipTestFunctionForSerreQuotient( serre_category, test_function );
-    
-    AddIsZeroForObjects( serre_category,
-                         
-      function( obj )
-        
-        return test_function( UnderlyingHonestObject( obj ) );
-        
-    end );
     
     return serre_category;
     
@@ -120,12 +245,6 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
                              Range, AsSerreQuotientObject( UnderlyingHonestObject( Range( gen_morphism ) ) ) );
     
     SetUnderlyingGeneralizedMorphism( serre_morphism, gen_morphism );
-    
-    SetSourceAid( serre_morphism, SourceAid( gen_morphism ) );
-    
-    SetRangeAid( serre_morphism, RangeAid( gen_morphism ) );
-    
-    SetMorphismAid( serre_morphism, MorphismAid( gen_morphism ) );
     
     return serre_morphism;
     
