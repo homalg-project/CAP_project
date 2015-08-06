@@ -80,20 +80,20 @@ DeclareOperation( "AddAssociatorRightToLeft",
 DeclareOperation( "AddAssociatorRightToLeft",
                   [ IsCapCategory, IsList ] );
 
-DeclareOperation( "AssociatorRightToLeftWithGivenTensorProducts",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-
-DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
-                  [ IsCapCategory, IsList ] );
+# DeclareOperation( "AssociatorRightToLeftWithGivenTensorProducts",
+#                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+# 
+# DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
+#                   [ IsCapCategory, IsFunction ] );
+# 
+# DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
+#                   [ IsCapCategory, IsFunction, IsInt ] );
+# 
+# DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
+#                   [ IsCapCategory, IsList, IsInt ] );
+# 
+# DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
+#                   [ IsCapCategory, IsList ] );
 
 ##
 DeclareOperation( "AssociatorLeftToRight",
@@ -112,20 +112,20 @@ DeclareOperation( "AddAssociatorLeftToRight",
                   [ IsCapCategory, IsList ] );
 
 
-DeclareOperation( "AssociatorLeftToRightWithGivenTensorProducts",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-
-DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
-                  [ IsCapCategory, IsList ] );
+# DeclareOperation( "AssociatorLeftToRightWithGivenTensorProducts",
+#                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+# 
+# DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
+#                   [ IsCapCategory, IsFunction ] );
+# 
+# DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
+#                   [ IsCapCategory, IsFunction, IsInt ] );
+# 
+# DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
+#                   [ IsCapCategory, IsList, IsInt ] );
+# 
+# DeclareOperation( "AddAssociatorLeftToRightWithGivenTensorProducts",
+#                   [ IsCapCategory, IsList ] );
 
 
 ##
@@ -413,21 +413,21 @@ DeclareOperation( "AddEvaluationMorphism",
                   [ IsCapCategory, IsList ] );
 
 
-## the last argument is the source
-DeclareOperation( "EvaluationMorphismWithGivenSource",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-
-DeclareOperation( "AddEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsList ] );
+# ## the last argument is the source
+# DeclareOperation( "EvaluationMorphismWithGivenSource",
+#                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+# 
+# DeclareOperation( "AddEvaluationMorphismWithGivenSource",
+#                   [ IsCapCategory, IsFunction ] );
+# 
+# DeclareOperation( "AddEvaluationMorphismWithGivenSource",
+#                   [ IsCapCategory, IsFunction, IsInt ] );
+# 
+# DeclareOperation( "AddEvaluationMorphismWithGivenSource",
+#                   [ IsCapCategory, IsList, IsInt ] );
+# 
+# DeclareOperation( "AddEvaluationMorphismWithGivenSource",
+#                   [ IsCapCategory, IsList ] );
 
 
 ##
@@ -447,21 +447,21 @@ DeclareOperation( "AddCoevaluationMorphism",
                   [ IsCapCategory, IsList ] );
 
 
-## the last argument is the range
-DeclareOperation( "CoevaluationMorphismWithGivenRange",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-
-DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsList ] );
+# ## the last argument is the range
+# DeclareOperation( "CoevaluationMorphismWithGivenRange",
+#                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+# 
+# DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
+#                   [ IsCapCategory, IsFunction ] );
+# 
+# DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
+#                   [ IsCapCategory, IsFunction, IsInt ] );
+# 
+# DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
+#                   [ IsCapCategory, IsList, IsInt ] );
+# 
+# DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
+#                   [ IsCapCategory, IsList ] );
 
 
 ##
@@ -595,21 +595,21 @@ DeclareOperation( "AddEvaluationForDual",
                   [ IsCapCategory, IsList ] );
 
 
-## the second argument is the tensor product
-DeclareOperation( "EvaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList ] );
+# ## the second argument is the tensor product
+# DeclareOperation( "EvaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+# 
+# DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategory, IsFunction ] );
+# 
+# DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategory, IsFunction, IsInt ] );
+# 
+# DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategory, IsList, IsInt ] );
+# 
+# DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategory, IsList ] );
 
 
 DeclareAttribute( "CoevaluationForDual",
@@ -628,20 +628,20 @@ DeclareOperation( "AddCoevaluationForDual",
                   [ IsCapCategory, IsList ] );
 
 
-DeclareOperation( "CoevaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList ] );
+# DeclareOperation( "CoevaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+# 
+# DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategory, IsFunction ] );
+# 
+# DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategory, IsFunction, IsInt ] );
+# 
+# DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategory, IsList, IsInt ] );
+# 
+# DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
+#                   [ IsCapCategory, IsList ] );
 
 
 ##
@@ -661,20 +661,20 @@ DeclareOperation( "AddMorphismToBidual",
                   [ IsCapCategory, IsList ] );
 
 
-DeclareOperation( "MorphismToBidualWithGivenBidual",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-DeclareOperation( "AddMorphismToBidualWithGivenBidual",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismToBidualWithGivenBidual",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismToBidualWithGivenBidual",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismToBidualWithGivenBidual",
-                  [ IsCapCategory, IsList ] );
+# DeclareOperation( "MorphismToBidualWithGivenBidual",
+#                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+# 
+# DeclareOperation( "AddMorphismToBidualWithGivenBidual",
+#                   [ IsCapCategory, IsFunction ] );
+# 
+# DeclareOperation( "AddMorphismToBidualWithGivenBidual",
+#                   [ IsCapCategory, IsFunction, IsInt ] );
+# 
+# DeclareOperation( "AddMorphismToBidualWithGivenBidual",
+#                   [ IsCapCategory, IsList, IsInt ] );
+# 
+# DeclareOperation( "AddMorphismToBidualWithGivenBidual",
+#                   [ IsCapCategory, IsList ] );
 
 
 ##
