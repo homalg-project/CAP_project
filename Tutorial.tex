@@ -36,3 +36,27 @@ Finalizing a category is necessary after adding all the wanted operation and bef
 for it. We can now create a group and tell the system that the group should be an object in the category.
 
 \input{GAP_tex/group_example/AddGroup_main}
+
+Now those groups are by \CapPkg considered objects in the category \texttt{grps}, and we can
+ask them about their category. Also, they are now part of the \GAP filter \texttt{IsCapCategoryObject}.
+
+\input{GAP_tex/group_example/GroupFilter_main}
+
+Now manipulation of the groups is possible using the functions we have already provided to the category.
+It is possible to construct the identity of a group, and compose it with itself.
+
+\input{GAP_tex/group_example/IdentityMorphism_main}
+
+Of course, one can also create a morphism between \texttt{S3} and \texttt{S4} and add it to the category.
+After that, we can also compose it with the identity morphism.
+
+\input{GAP_tex/group_example/AdditionalMorphism_main}
+
+Please note that the constructors for objects and morphisms used in this example are the ones provided
+by \GAP itself, and the only ``change'' done to the data structure was adding it to the category.
+This is one of the design principles of \CapPkg. Already existing data structures and algorithms
+can be integrated into the system with little to no effort, which makes it possible to integrate \CapPkg
+into many existing projects.
+
+This example was pretty basic and only a way to show the very basic structure of \CapPkg. The next example
+will construct a more sophisticated category and some of the computational tools in \CapPkg.
