@@ -1768,6 +1768,66 @@ AddDerivationToCAP( AssociatorLeftToRight,
                     
   function( left_associated_object, object_1, object_2, object_3, right_associated_object )
     
+    return IdentityMorphism( left_associated_object );
+    
+end : CategoryFilter := IsStrictMonoidalCategory,
+      Description := "AssociatorLeftToRight as the identity morphism" );
+
+##
+AddDerivationToCAP( AssociatorRightToLeft,
+                    
+  function( right_associated_object, object_1, object_2, object_3, left_associated_object )
+    
+    return IdentityMorphism( right_associated_object );
+    
+end : CategoryFilter := IsStrictMonoidalCategory,
+      Description := "AssociatorRightToLeft as the identity morphism" );
+
+##
+AddDerivationToCAP( LeftUnitor,
+                    
+  function( object, unit_tensored_object )
+    
+    return IdentityMorphism( object );
+      
+end : CategoryFilter := IsStrictMonoidalCategory,
+      Description := "LeftUnitor as the identity morphism" );
+
+##
+AddDerivationToCAP( LeftUnitorInverse,
+                  
+  function( object, unit_tensored_object )
+    
+    return IdentityMorphism( object );
+    
+end : CategoryFilter := IsStrictMonoidalCategory,
+      Description := "LeftUnitorInverse as the identity morphism" );
+
+##
+AddDerivationToCAP( RightUnitor,
+                    
+  function( object, object_tensored_unit )
+    
+    return IdentityMorphism( object );
+    
+end : CategoryFilter := IsStrictMonoidalCategory,
+      Description := "RightUnitor as the identity morphism" );
+
+##
+AddDerivationToCAP( RightUnitorInverse,
+                    
+  function( object, object_tensored_unit )
+    
+    return IdentityMorphism( object );
+    
+end : CategoryFilter := IsStrictMonoidalCategory,
+      Description := "RightUnitorInverse as the identity morphism" );
+
+##
+AddDerivationToCAP( AssociatorLeftToRight,
+                    
+  function( left_associated_object, object_1, object_2, object_3, right_associated_object )
+    
     return Inverse( AssociatorRightToLeft( right_associated_object, 
                                            object_1, object_2, object_3,
                                            left_associated_object )

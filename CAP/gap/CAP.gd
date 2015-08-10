@@ -80,7 +80,8 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "IsBraidedMonoidalCategory",
                 "IsSymmetricMonoidalCategory",
                 "IsSymmetricClosedMonoidalCategory",
-                "IsRigidSymmetricClosedMonoidalCategory"
+                "IsRigidSymmetricClosedMonoidalCategory",
+                "IsStrictMonoidalCategory"
               ],
               
               CanComputeForSpecialCategories := [

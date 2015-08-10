@@ -58,6 +58,14 @@ DeclareOperation( "VectorSpaceMorphism",
 ##this has an effect on the constructors below!
 vecspaces := CreateCapCategory( "VectorSpacesMonoidalCategory" );
 
+## set all properties of the category in the beginning 
+SetIsAbelianCategory( vecspaces, true );
+
+SetIsStrictMonoidalCategory( vecspaces, true );
+
+SetIsRigidSymmetricClosedMonoidalCategory( vecspaces, true );
+##
+
 VECTORSPACES_FIELD := HomalgFieldOfRationals( );
 
 #######################################
@@ -721,16 +729,16 @@ AddTensorProductOnMorphisms( vecspaces,
     
 end );
 
-##
-AddAssociatorRightToLeft( vecspaces,
-  
-  function( right_associated_object, object_1, object_2, object_3, left_associated_object )
-    
-    return VectorSpaceMorphism( right_associated_object, 
-                                HomalgIdentityMatrix( Dimension( right_associated_object ), VECTORSPACES_FIELD ), 
-                                left_associated_object );
-    
-end );
+# ##
+# AddAssociatorRightToLeft( vecspaces,
+#   
+#   function( right_associated_object, object_1, object_2, object_3, left_associated_object )
+#     
+#     return VectorSpaceMorphism( right_associated_object, 
+#                                 HomalgIdentityMatrix( Dimension( right_associated_object ), VECTORSPACES_FIELD ), 
+#                                 left_associated_object );
+#     
+# end );
 
 ##
 AddTensorUnit( vecspaces,
@@ -741,26 +749,26 @@ AddTensorUnit( vecspaces,
     
 end );
 
-##
-AddLeftUnitor( vecspaces,
-  
-  function( object, unit_tensored_object )
-    
-    return VectorSpaceMorphism( unit_tensored_object, 
-                                HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
-                                object );
-    
-end );
-
-##
-AddRightUnitor( vecspaces,
-  
-  function( object, object_tensored_unit )
-    
-    return VectorSpaceMorphism( object_tensored_unit, 
-                                HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
-                                object );
-end );
+# ##
+# AddLeftUnitor( vecspaces,
+#   
+#   function( object, unit_tensored_object )
+#     
+#     return VectorSpaceMorphism( unit_tensored_object, 
+#                                 HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
+#                                 object );
+#     
+# end );
+# 
+# ##
+# AddRightUnitor( vecspaces,
+#   
+#   function( object, object_tensored_unit )
+#     
+#     return VectorSpaceMorphism( object_tensored_unit, 
+#                                 HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
+#                                 object );
+# end );
 
 Finalize( vecspaces );
 
