@@ -1,0 +1,38 @@
+\begin{small}
+\begin{Verbatim}[commandchars=!@\%,frame=single]
+LoadPackage( "CAP" );
+
+LoadPackage( "MatricesForHomalg" );
+
+DeclareRepresentation( "IsHomalgRationalVectorSpaceRep",
+                       IsCapCategoryObjectRep,
+                       [ ] );
+
+BindGlobal( "TheTypeOfHomalgRationalVectorSpaces",
+        NewType( TheFamilyOfCapCategoryObjects,
+                IsHomalgRationalVectorSpaceRep ) );
+
+DeclareRepresentation( "IsHomalgRationalVectorSpaceMorphismRep",
+                       IsCapCategoryMorphismRep,
+                       [ ] );
+
+BindGlobal( "TheTypeOfHomalgRationalVectorSpaceMorphism",
+        NewType( TheFamilyOfCapCategoryMorphisms,
+                IsHomalgRationalVectorSpaceMorphismRep ) );
+
+DeclareAttribute( "Dimension",
+                  IsHomalgRationalVectorSpaceRep );
+
+DeclareOperation( "QVectorSpace",
+                  [ IsInt ] );
+
+DeclareOperation( "VectorSpaceMorphism",
+                  [ IsHomalgRationalVectorSpaceRep, IsObject,
+                    IsHomalgRationalVectorSpaceRep ] );
+
+BindGlobal( "vecspaces", CreateCapCategory( "VectorSpaces" ) );
+
+BindGlobal( "VECTORSPACES_FIELD", HomalgFieldOfRationals( ) );
+
+\end{Verbatim}
+\end{small}
