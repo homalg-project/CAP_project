@@ -104,8 +104,23 @@ a category object using the corresponding add functions \texttt{AddIsEqualForObj
  with congruence for morphisms.
 \end{remark}
 
+\begin{remark}\label{remark:realization_of_types}
+ The above listed types are differently realized in \CapPkg.
+ \begin{itemize}
+  \item For $\Int$, we use the realization of \GAP
+  \item For $\Bool$, we use the realization of \GAP, but only the values \texttt{true} and \texttt{false}
+  are allowed (exception: equality functions, see \ref{subsection:specifiactions_is_equal_for_objects} and \ref{subsection:specifiactions_is_equal_for_morphisms}).
+  \item For $\Obj$, there is a \GAP filter \texttt{IsCapCategoryObject}.
+  \item The dependent type $\Hom( a, b )$ is realized by \GAP objects within
+ the filter \texttt{IsCapCategoryMorphism} having objects set
+ for their attributes \texttt{Source} and \texttt{Range}.
+  \item There are no special \GAP filters for $\ListObj$ and $\ListMor$, simply the \GAP \texttt{IsList}
+  is used.
+ \end{itemize}
+\end{remark}
 
-\subsection{Specifications for \texttt{IsEqualForObjects}}
+
+\subsection{Specifications for \texttt{IsEqualForObjects}}\label{subsection:specifiactions_is_equal_for_objects}
 The basic operation \texttt{IsEqualForObjects} has a special specification.
 
 \begin{specification}[\texttt{IsEqualForObjects}]
@@ -126,7 +141,7 @@ The basic operation \texttt{IsEqualForObjects} has a special specification.
  \textit{``I don't know if the two objects are equal''}.
 \end{remark}
 
-\subsection{Specifications for \texttt{IsEqualForMorphisms}}
+\subsection{Specifications for \texttt{IsEqualForMorphisms}}\label{subsection:specifiactions_is_equal_for_morphisms}
 The basic operation \texttt{IsEqualForMorphisms} has a special specification.
 
 \begin{specification}[\texttt{IsEqualForMorphisms}]
@@ -159,7 +174,7 @@ The basic operation \texttt{IsEqualForMorphisms} has a special specification.
 
 Every basic operation symbol has a type. To be more precise, it has a (dependent) function type.
 
-\begin{example}
+\begin{example}\label{example:simple_typing}
  The type of $\IsZeroForObjects$ is
  \[
   \Obj \rightarrow \Bool.
@@ -167,7 +182,7 @@ Every basic operation symbol has a type. To be more precise, it has a (dependent
  Given a term of type $\Obj$, the basic operation symbol $\IsZeroForObjects$ returns a term of type $\Bool$.
 \end{example}
 
-\begin{example}
+\begin{example}\label{example:simple_typing_with_morphism_input}
  For $a,b: \Obj$, the type of $\KernelObject$ is
  \[
   \Hom(a,b) \rightarrow \Obj.
@@ -175,7 +190,7 @@ Every basic operation symbol has a type. To be more precise, it has a (dependent
  Given a term of type $\Hom(a,b)$, the basic operation symbol $\KernelObject$ returns a term of type $\Obj$.
 \end{example}
 
-\begin{example}
+\begin{example}\label{example:dependent_typing}
  For $a,b: \Obj$, the type of $\KernelEmb$ is
  \[
   \prod_{\phi: \Hom(a,b)} \Hom( \KernelObject(\phi), a ).
@@ -190,9 +205,46 @@ For a basic operation to match its typing specification, it has to
  \item compute only output specified by its type.
 \end{enumerate}
 
-The first item is \todo{specify when not, for example for performance}(almost) always handled by \CapPkg.
+\todo{specify when not, for example for performance}The first item is (almost) always handled by \CapPkg.
 If we add a basic operation to \CapPkg via an add function, \CapPkg ensures that every call of that
-basic operation first triggers a type checking. The meaning and implications of the second item have to be analyzed carefully.
+basic operation first triggers a type checking.
+\\
+The meaning and implications of the second item have to be analyzed carefully.
+\begin{example}[\ref{example:simple_typing} continued]
+ The output has to be a boolean (c.f. remark \ref{remark:realization_of_types}).
+\end{example}
+
+\begin{example}[\ref{example:simple_typing_with_morphism_input} continued]
+ The output has to be an object (c.f. remark \ref{remark:realization_of_types}).
+\end{example}
+
+\begin{example}[\ref{example:dependent_typing}]
+ The output type depends on the given input. Let $a$ denote the source, $b$ denote the range of the input morphism $\phi$.
+ Then the range of the output morphism has to be equal (\texttt{IsEqualForObjects}) to $a$.
+ The source of the output morphism has to be equal (\texttt{IsEqualForObjects}) to the output of $\KernelObject(\phi)$.
+\end{example}
+
+As seen in example \ref{example:dependent_typing}, basic operation symbols (like $\KernelObject$) can be part of
+the type of other basic operations (like $\prod_{\phi: \Hom(a,b)} \Hom( \KernelObject(\phi), a )$).
+To implement a coherent model of all basic operations, we have to take care that such dependences are fulfilled.
+Fortunately, \CapPkg provides tools to help us with this task.
+
+\begin{example}
+ Strategies of an implementation of $\KernelObject$ and $\KernelEmb$ with the correct types:
+ \begin{enumerate}
+  \item Only implement $\KernelEmb$. \CapPkg will automatically derive (c.f. section \ref{section:derivations}) the basic operation
+        $\KernelObject$ coherently for you (as the source of $\KernelEmb$).
+  \item Implement $\KernelObject$ and the helper basic operation $\KernelEmbWithGivenKernelObject$.
+        This is an operation getting as an input a morphism $\phi$ and the result of $\KernelObject( \phi )$,
+        which we can then use to construct a morphism with $\KernelObject( \phi )$ as its source. \todo{section on WithGiven}
+        \CapPkg will automatically derive (c.f. section \ref{section:derivations}) the basic operation
+        $\KernelEmb$ coherently for you (by calling $\KernelEmbWithGivenKernelObject$ with the output of $\KernelObject$ as an input).
+  \item Implement $\KernelObject$, $\KernelEmb$, and $\KernelEmbWithGivenKernelObject$, and enable caching for these functions (c.f. chapter \ref{chapter:caching}).
+        There is a \todo{reference for redirection} redirection mechanism of \CapPkg that guarantees a correct typing.
+ \end{enumerate}
+ Of course, you always can only implement $\KernelObject$ and $\KernelEmb$, and prove the correct typing manually.
+\end{example}
+
 
 
 \section{Mathematical Specifications}
