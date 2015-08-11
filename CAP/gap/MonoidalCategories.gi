@@ -121,3 +121,162 @@ InstallMethod( BraidingInverse,
     
 end );
 
+##
+InstallMethod( InternalHomOnMorphisms,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( morphism_1, morphism_2 )
+    
+    return InternalHomOnMorphisms( InternalHomOnObjects( Range( morphism_1 ), Source( morphism_2 ) ),
+                                   morphism_1, morphism_2,
+                                   InternalHomOnObjects( Source( morphism_1 ), Range( morphism_2 ) )
+                                 );
+    
+end );
+
+##
+InstallMethod( EvaluationMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    
+    return EvaluationMorphism( object_1, object_2,
+                               TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), object_1 )
+                             );
+    
+end );
+
+##
+InstallMethod( CoevaluationMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    
+    return CoevaluationMorphism( object_1, object_2,
+                                 InternalHomOnObjects( object_1, TensorProductOnObjects( object_2, object_1 ) )
+                               );
+    
+end );
+
+##
+InstallMethod( MonoidalPreComposeMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2, object_3 )
+    
+    return MonoidalPreComposeMorphism( TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), InternalHomOnObjects( object_2, object_3 ) ),
+                                       object_1, object_2, object_3,
+                                       InternalHomOnObjects( object_1, object_3 )
+                                     );
+    
+end );
+
+##
+InstallMethod( MonoidalPostComposeMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2, object_3 )
+    
+    return MonoidalPostComposeMorphism( TensorProductOnObjects( InternalHomOnObjects( object_2, object_3 ), InternalHomOnObjects( object_1, object_2 ) ),
+                                        object_1, object_2, object_3,
+                                        InternalHomOnObjects( object_1, object_3 )
+                                      );
+    
+end );
+
+##
+InstallMethod( DualOnMorphisms,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    
+    return DualOnMorphisms( DualOnObjects( Range( morphism ) ),
+                            morphism,
+                            DualOnObjects( Source( morphism ) )
+                          );
+    
+end );
+
+##
+InstallMethod( EvaluationForDual,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    
+    return EvaluationForDual( object, TensorProductOnObjects( DualOnObjects( object ), object ) );
+    
+end );
+
+##
+InstallMethod( CoevaluationForDual,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    
+    return CoevaluationForDual( object, TensorProductOnObjects( object, DualOnObjects( object ) ) );
+    
+end );
+
+##
+InstallMethod( MorphismToBidual,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    
+    return MorphismToBidual( object, DualOnObjects( DualOnObjects( object ) ) );
+    
+end );
+
+##
+InstallMethod( TensorProductInternalHomCompatibilityMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1_1, object_1_2, object_2_1, object_2_2 )
+    
+    return TensorProductInternalHomCompatibilityMorphism(
+             TensorProductOnObjects( InternalHomOnObjects( object_1_1, object_1_2 ), InternalHomOnObjects( object_2_1, object_2_2 ) ),
+             object_1_1, object_1_2, object_2_1, object_2_2,
+             InternalHomOnObjects( TensorProductOnObjects( object_1_1, object_2_1 ), TensorProductOnObjects( object_1_2, object_2_2 ) )
+           );
+    
+end );
+
+##
+InstallMethod( TensorProductDualityCompatibilityMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    
+    return TensorProductDualityCompatibilityMorphism( DualOnObjects( TensorProductOnObjects( object_1, object_2 ) ),
+                                                      object_1, object_2,
+                                                      TensorProductOnObjects( DualOnObjects( object_1 ), DualOnObjects( object_2 ) )
+                                                    );
+    
+end );
+
+##
+InstallMethod( MorphismFromTensorProductToInternalHom,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    
+    return MorphismFromTensorProductToInternalHom( TensorProductOnObjects( DualOnObjects( object_1 ), object_2 ),
+                                                   object_1, object_2,
+                                                   InternalHomOnObjects( object_1, object_2 )
+                                                 );
+    
+end );
+
+##
+InstallMethod( MorphismFromInternalHomToTensorProduct,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    
+    return MorphismFromInternalHomToTensorProduct( InternalHomOnObjects( object_1, object_2 ),
+                                                   object_1, object_2,
+                                                   TensorProductOnObjects( DualOnObjects( object_1 ), object_2 )
+                                                 );
+    
+end );
+

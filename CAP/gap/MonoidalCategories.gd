@@ -255,39 +255,29 @@ DeclareOperation( "AddInternalHomOnObjects",
 DeclareOperation( "InternalHomOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "AddInternalHomOnMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInternalHomOnMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInternalHomOnMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInternalHomOnMorphisms",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "InternalHomOnMorphismsWithGivenInternalHoms",
+DeclareOperation( "InternalHomOnMorphisms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
+DeclareOperation( "AddInternalHomOnMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
+DeclareOperation( "AddInternalHomOnMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
+DeclareOperation( "AddInternalHomOnMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
+DeclareOperation( "AddInternalHomOnMorphisms",
                   [ IsCapCategory, IsList ] );
-
 
 ##
 DeclareOperation( "EvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+## the last argument is the source
+DeclareOperation( "EvaluationMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddEvaluationMorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -299,29 +289,15 @@ DeclareOperation( "AddEvaluationMorphism",
 
 DeclareOperation( "AddEvaluationMorphism",
                   [ IsCapCategory, IsList ] );
-
-
-# ## the last argument is the source
-# DeclareOperation( "EvaluationMorphismWithGivenSource",
-#                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-# 
-# DeclareOperation( "AddEvaluationMorphismWithGivenSource",
-#                   [ IsCapCategory, IsFunction ] );
-# 
-# DeclareOperation( "AddEvaluationMorphismWithGivenSource",
-#                   [ IsCapCategory, IsFunction, IsInt ] );
-# 
-# DeclareOperation( "AddEvaluationMorphismWithGivenSource",
-#                   [ IsCapCategory, IsList, IsInt ] );
-# 
-# DeclareOperation( "AddEvaluationMorphismWithGivenSource",
-#                   [ IsCapCategory, IsList ] );
-
 
 ##
 DeclareOperation( "CoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+## the last argument is the range
+DeclareOperation( "CoevaluationMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddCoevaluationMorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -333,23 +309,6 @@ DeclareOperation( "AddCoevaluationMorphism",
 
 DeclareOperation( "AddCoevaluationMorphism",
                   [ IsCapCategory, IsList ] );
-
-
-# ## the last argument is the range
-# DeclareOperation( "CoevaluationMorphismWithGivenRange",
-#                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-# 
-# DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
-#                   [ IsCapCategory, IsFunction ] );
-# 
-# DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
-#                   [ IsCapCategory, IsFunction, IsInt ] );
-# 
-# DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
-#                   [ IsCapCategory, IsList, IsInt ] );
-# 
-# DeclareOperation( "AddCoevaluationMorphismWithGivenRange",
-#                   [ IsCapCategory, IsList ] );
 
 
 ##
@@ -389,6 +348,9 @@ DeclareOperation( "AddInternalHomToTensorProductAdjunctionMap",
 DeclareOperation( "MonoidalPreComposeMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+DeclareOperation( "MonoidalPreComposeMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddMonoidalPreComposeMorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -404,6 +366,9 @@ DeclareOperation( "AddMonoidalPreComposeMorphism",
 
 DeclareOperation( "MonoidalPostComposeMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "MonoidalPostComposeMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 DeclareOperation( "AddMonoidalPostComposeMorphism",
                   [ IsCapCategory, IsFunction ] );
@@ -434,42 +399,33 @@ DeclareOperation( "AddDualOnObjects",
 DeclareOperation( "AddDualOnObjects",
                   [ IsCapCategory, IsList ] );
 
-
+##
 DeclareAttribute( "DualOnMorphisms",
                   IsCapCategoryMorphism );
 
-DeclareOperation( "AddDualOnMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDualOnMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDualOnMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDualOnMorphisms",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "DualOnMorphismsWithGivenDuals",
+DeclareOperation( "DualOnMorphisms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-DeclareOperation( "AddDualOnMorphismsWithGivenDuals",
+DeclareOperation( "AddDualOnMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddDualOnMorphismsWithGivenDuals",
+DeclareOperation( "AddDualOnMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddDualOnMorphismsWithGivenDuals",
+DeclareOperation( "AddDualOnMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddDualOnMorphismsWithGivenDuals",
+DeclareOperation( "AddDualOnMorphisms",
                   [ IsCapCategory, IsList ] );
 
-
+##
 DeclareAttribute( "EvaluationForDual",
                   IsCapCategoryObject );
 
+## the second argument is the tensor product
+DeclareOperation( "EvaluationForDual",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddEvaluationForDual",
                   [ IsCapCategory, IsFunction ] );
 
@@ -482,27 +438,14 @@ DeclareOperation( "AddEvaluationForDual",
 DeclareOperation( "AddEvaluationForDual",
                   [ IsCapCategory, IsList ] );
 
-
-# ## the second argument is the tensor product
-# DeclareOperation( "EvaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-# 
-# DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategory, IsFunction ] );
-# 
-# DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategory, IsFunction, IsInt ] );
-# 
-# DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategory, IsList, IsInt ] );
-# 
-# DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategory, IsList ] );
-
-
+##
 DeclareAttribute( "CoevaluationForDual",
                   IsCapCategoryObject );
 
+## the second argument is the tensor product
+DeclareOperation( "CoevaluationForDual",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddCoevaluationForDual",
                   [ IsCapCategory, IsFunction ] );
 
@@ -514,28 +457,16 @@ DeclareOperation( "AddCoevaluationForDual",
 
 DeclareOperation( "AddCoevaluationForDual",
                   [ IsCapCategory, IsList ] );
-
-
-# DeclareOperation( "CoevaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-# 
-# DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategory, IsFunction ] );
-# 
-# DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategory, IsFunction, IsInt ] );
-# 
-# DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategory, IsList, IsInt ] );
-# 
-# DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
-#                   [ IsCapCategory, IsList ] );
 
 
 ##
 DeclareAttribute( "MorphismToBidual",
                   IsCapCategoryObject );
 
+## the second argument is the bidual
+DeclareOperation( "MorphismToBidual",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddMorphismToBidual",
                   [ IsCapCategory, IsFunction ] );
 
@@ -549,25 +480,13 @@ DeclareOperation( "AddMorphismToBidual",
                   [ IsCapCategory, IsList ] );
 
 
-# DeclareOperation( "MorphismToBidualWithGivenBidual",
-#                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-# 
-# DeclareOperation( "AddMorphismToBidualWithGivenBidual",
-#                   [ IsCapCategory, IsFunction ] );
-# 
-# DeclareOperation( "AddMorphismToBidualWithGivenBidual",
-#                   [ IsCapCategory, IsFunction, IsInt ] );
-# 
-# DeclareOperation( "AddMorphismToBidualWithGivenBidual",
-#                   [ IsCapCategory, IsList, IsInt ] );
-# 
-# DeclareOperation( "AddMorphismToBidualWithGivenBidual",
-#                   [ IsCapCategory, IsList ] );
-
 
 ##
 DeclareOperation( "TensorProductInternalHomCompatibilityMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "TensorProductInternalHomCompatibilityMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphism",
                   [ IsCapCategory, IsFunction ] );
@@ -586,6 +505,9 @@ DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphism",
 DeclareOperation( "TensorProductDualityCompatibilityMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+DeclareOperation( "TensorProductDualityCompatibilityMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddTensorProductDualityCompatibilityMorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -603,6 +525,9 @@ DeclareOperation( "AddTensorProductDualityCompatibilityMorphism",
 DeclareOperation( "MorphismFromTensorProductToInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+DeclareOperation( "MorphismFromTensorProductToInternalHom",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 DeclareOperation( "AddMorphismFromTensorProductToInternalHom",
                   [ IsCapCategory, IsFunction ] );
 
@@ -619,6 +544,9 @@ DeclareOperation( "AddMorphismFromTensorProductToInternalHom",
 ##
 DeclareOperation( "MorphismFromInternalHomToTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "MorphismFromInternalHomToTensorProduct",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 DeclareOperation( "AddMorphismFromInternalHomToTensorProduct",
                   [ IsCapCategory, IsFunction ] );
@@ -652,7 +580,7 @@ DeclareOperation( "AddTraceMap",
 
 ##
 DeclareAttribute( "RankMorphism",
-                  IsCapCategoryMorphism );
+                  IsCapCategoryObject );
 
 DeclareOperation( "AddRankMorphism",
                   [ IsCapCategory, IsFunction ] );

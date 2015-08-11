@@ -2276,7 +2276,119 @@ BraidingInverse := rec(
   cache_name := "BraidingInverse",
   return_type := "morphism" ),
 
+InternalHomOnObjects := rec(
+  installation_name := "InternalHomOnObjects",
+  filter_list := [ "object", "object" ],
+  cache_name := "InternalHomOnObjects",
+  return_type := "object" ),
 
+InternalHomOnMorphisms := rec(
+  installation_name := "InternalHomOnMorphisms",
+  filter_list := [ "object", "morphism", "morphism", "object" ],
+  cache_name := "InternalHomOnMorphisms",
+  return_type := "morphism" ),
 
+EvaluationMorphism := rec(
+  installation_name := "EvaluationMorphism",
+  filter_list := [ "object", "object", "object" ],
+  cache_name := "EvaluationMorphism",
+  return_type := "morphism" ),
+
+CoevaluationMorphism := rec(
+  installation_name := "CoevaluationMorphism",
+  filter_list := [ "object", "object", "object" ],
+  cache_name := "CoevaluationMorphism",
+  return_type := "morphism" ),
+
+TensorProductToInternalHomAdjunctionMap := rec(
+  installation_name := "TensorProductToInternalHomAdjunctionMap",
+  filter_list := [ "object", "object", "object" ],
+  cache_name := "TensorProductToInternalHomAdjunctionMap",
+  return_type := "morphism" ),
+
+InternalHomToTensorProductAdjunctionMap := rec(
+  installation_name := "InternalHomToTensorProductAdjunctionMap",
+  filter_list := [ "object", "object", "object" ],
+  cache_name := "InternalHomToTensorProductAdjunctionMap",
+  return_type := "morphism" ),
+
+MonoidalPreComposeMorphism := rec(
+  installation_name := "MonoidalPreComposeMorphism",
+  filter_list := [ "object", "object", "object", "object", "object" ],
+  cache_name := "MonoidalPreComposeMorphism",
+  return_type := "morphism" ),
+
+MonoidalPostComposeMorphism := rec(
+  installation_name := "MonoidalPostComposeMorphism",
+  filter_list := [ "object", "object", "object", "object", "object" ],
+  cache_name := "MonoidalPostComposeMorphism",
+  return_type := "morphism" ),
+
+DualOnObjects := rec(
+  installation_name := "DualOnObjects",
+  filter_list := [ "object" ],
+  cache_name := "DualOnObjects",
+  return_type := "object" ),
+
+DualOnMorphisms := rec(
+  installation_name := "DualOnMorphisms",
+  filter_list := [ "object", "morphism", "object" ],
+  cache_name := "DualOnMorphisms",
+  return_type := "morphism" ),
+
+EvaluationForDual := rec(
+  installation_name := "EvaluationForDual",
+  filter_list := [ "object", "object" ],
+  cache_name := "EvaluationForDual",
+  return_type := "morphism" ),
+
+CoevaluationForDual := rec(
+  installation_name := "CoevaluationForDual",
+  filter_list := [ "object", "object" ],
+  cache_name := "CoevaluationForDual",
+  return_type := "morphism" ),
+
+MorphismToBidual := rec(
+  installation_name := "MorphismToBidual",
+  filter_list := [ "object", "object" ],
+  cache_name := "MorphismToBidual",
+  return_type := "morphism" ),
+
+TensorProductInternalHomCompatibilityMorphism := rec(
+  installation_name := "TensorProductInternalHomCompatibilityMorphism",
+  filter_list := [ "object", "object", "object", "object", "object", "object" ],
+  cache_name := "TensorProductInternalHomCompatibilityMorphism",
+  return_type := "morphism" ),
+
+TensorProductDualityCompatibilityMorphism := rec(
+  installation_name := "TensorProductDualityCompatibilityMorphism",
+  filter_list := [ "object", "object", "object", "object" ],
+  cache_name := "TensorProductDualityCompatibilityMorphism",
+  return_type := "morphism" ),
+
+MorphismFromTensorProductToInternalHom := rec(
+  installation_name := "MorphismFromTensorProductToInternalHom",
+  filter_list := [ "object", "object", "object", "object" ],
+  cache_name := "MorphismFromTensorProductToInternalHom",
+  return_type := "morphism" ),
+
+MorphismFromInternalHomToTensorProduct := rec(
+  installation_name := "MorphismFromInternalHomToTensorProduct",
+  filter_list := [ "object", "object", "object", "object" ],
+  cache_name := "MorphismFromInternalHomToTensorProduct",
+  return_type := "morphism" ),
+
+TraceMap := rec(
+  installation_name := "TraceMap",
+  filter_list := [ "morphism" ],
+  cache_name := "TraceMap",
+  return_type := "morphism" ),
+
+RankMorphism := rec(
+  installation_name := "RankMorphism",
+  filter_list := [ "object" ],
+  cache_name := "RankMorphism",
+  return_type := "morphism" )
+  
   )
 );
