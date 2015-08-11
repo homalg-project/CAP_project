@@ -770,6 +770,30 @@ end );
 #                                 object );
 # end );
 
+##
+AddBraiding( vecspaces,
+  
+  function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+    local permutation_matrix, dim, dim_1, dim_2;
+    
+    dim_1 := Dimension( object_1 );
+    
+    dim_2 := Dimension( object_2 );
+    
+    dim := Dimension( object_1_tensored_object_2 );
+    
+    permutation_matrix := PermutationMat( 
+                            PermList( List( [ 1 .. dim ], i -> ( RemInt( i - 1, dim_2 ) * dim_1 + QuoInt( i - 1, dim_2 ) + 1 ) ) ),
+                            dim 
+                          );
+    
+    return VectorSpaceMorphism( object_1_tensored_object_2,
+                                HomalgMatrix( permutation_matrix, dim, dim, VECTORSPACES_FIELD ),
+                                object_2_tensored_object_1
+                              );
+    
+end );
+
 Finalize( vecspaces );
 
 z := ZeroObject( vecspaces );

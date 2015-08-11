@@ -2264,5 +2264,19 @@ RightUnitorInverse := rec(
   cache_name := "RightUnitorInverse",
   return_type := "morphism" ),
 
+Braiding := rec(
+  installation_name := "Braiding",
+  filter_list := [ "object", "object", "object", "object" ],
+  cache_name := "Braiding",
+  return_type := "morphism" ),
+
+BraidingInverse := rec(
+  installation_name := "BraidingInverse",
+  filter_list := [ "object", "object", "object", "object" ],
+  cache_name := "BraidingInverse",
+  return_type := "morphism" ),
+
+
+
   )
 );

@@ -1883,6 +1883,30 @@ AddDerivationToCAP( RightUnitorInverse,
     
 end : Description := "RightUnitorInverse as the inverse of RightUnitor" );
 
+##
+AddDerivationToCAP( Braiding,
+                  
+  function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+    
+    return BraidingInverse( object_1_tensored_object_2,
+                            object_2, object_1,
+                            object_2_tensored_object_1 );
+    
+end : CategoryFilter := IsSymmetricMonoidalCategory,
+      Description := "Braiding using BraidingInverse" );
+
+##
+AddDerivationToCAP( BraidingInverse,
+                  
+  function( object_2_tensored_object_1, object_1, object_2, object_1_tensored_object_2 )
+    
+    return Braiding( object_2_tensored_object_1,
+                     object_2, object_1, 
+                     object_1_tensored_object_2 );
+    
+end : CategoryFilter := IsSymmetricMonoidalCategory,
+      Description := "Braiding using BraidingInverse" );
+
 ####################################
 ## Final derived methods
 ####################################

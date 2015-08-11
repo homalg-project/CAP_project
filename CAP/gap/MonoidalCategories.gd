@@ -199,32 +199,19 @@ DeclareOperation( "AddRightUnitorInverse",
 DeclareOperation( "Braiding",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddBraiding",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddBraiding",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddBraiding",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddBraiding",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "BraidingWithGivenTensorProducts",
+DeclareOperation( "Braiding",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddBraidingWithGivenTensorProducts",
+DeclareOperation( "AddBraiding",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddBraidingWithGivenTensorProducts",
+DeclareOperation( "AddBraiding",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddBraidingWithGivenTensorProducts",
+DeclareOperation( "AddBraiding",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddBraidingWithGivenTensorProducts",
+DeclareOperation( "AddBraiding",
                   [ IsCapCategory, IsList ] );
 
 
@@ -232,32 +219,19 @@ DeclareOperation( "AddBraidingWithGivenTensorProducts",
 DeclareOperation( "BraidingInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddBraidingInverse",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddBraidingInverse",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddBraidingInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddBraidingInverse",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "BraidingInverseWithGivenTensorProducts",
+DeclareOperation( "BraidingInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
-DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
+DeclareOperation( "AddBraidingInverse",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
+DeclareOperation( "AddBraidingInverse",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
+DeclareOperation( "AddBraidingInverse",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
+DeclareOperation( "AddBraidingInverse",
                   [ IsCapCategory, IsList ] );
 
 

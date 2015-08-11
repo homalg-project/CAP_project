@@ -101,4 +101,23 @@ InstallMethod( RightUnitorInverse,
     
 end );
 
+##
+InstallMethod( Braiding,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    
+    return Braiding( TensorProductOnObjects( object_1, object_2 ), object_1, object_2, TensorProductOnObjects( object_2, object_1 ) );
+    
+end );
+
+##
+InstallMethod( BraidingInverse,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    
+    return Braiding( TensorProductOnObjects( object_2, object_1 ), object_1, object_2, TensorProductOnObjects( object_1, object_2 ) );
+    
+end );
 
