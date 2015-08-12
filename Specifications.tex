@@ -301,3 +301,19 @@ specifications. We give an example to illustrate what this means.
 
 
 \section{The Importance of Specifications}
+
+Once we have implemented a category matching all specifications, we can benefit
+from all the constructions $\CapPkg$ automatically performs for us. 
+$\CapPkg$ is able to use categories in order to construct new ones. It is also
+able to derive algorithms using the basic operations as building blocks.
+The correctness of all these automatic constructions heavily depends on 
+the correctness of its building blocks.
+\begin{enumerate}
+ \item Equality specifications: necessary to interpret basic operations in set theory.
+ Not matching these specifications means dealing with randomness. 
+ \item Typing specifications: necessary to safely concatenate basic operations.
+ \item Mathematical specifiactions: necessary because we want to model our mathematical
+ notions correctly.
+\end{enumerate}
+
+
