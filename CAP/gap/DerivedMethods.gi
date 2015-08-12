@@ -1973,6 +1973,28 @@ AddDerivationToCAP( InternalHomOnMorphisms,
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "InternalHomOnMorphisms using functorality of Dual and TensorProduct" );
 
+##
+AddDerivationToCAP( MorphismFromBidual,
+                  
+  function( object, bidual )
+    
+    return Inverse( MorphismToBidual( object, bidual ) );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "MorphismFromBidual as the inverse of MorphismToBidual" );
+
+##
+AddDerivationToCAP( MorphismToBidual,
+                  
+  function( object, bidual )
+    
+    return Inverse( MorphismFromBidual( object, bidual ) );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "MorphismToBidual as the inverse of MorphismFromBidual" );
+
+##
+
 
 ####################################
 ## Final derived methods

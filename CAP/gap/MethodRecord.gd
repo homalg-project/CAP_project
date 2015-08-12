@@ -2338,13 +2338,13 @@ DualOnMorphisms := rec(
 
 EvaluationForDual := rec(
   installation_name := "EvaluationForDual",
-  filter_list := [ "object", "object" ],
+  filter_list := [ "object", "object", "object" ],
   cache_name := "EvaluationForDual",
   return_type := "morphism" ),
 
 CoevaluationForDual := rec(
   installation_name := "CoevaluationForDual",
-  filter_list := [ "object", "object" ],
+  filter_list := [ "object", "object", "object" ],
   cache_name := "CoevaluationForDual",
   return_type := "morphism" ),
 
@@ -2352,6 +2352,12 @@ MorphismToBidual := rec(
   installation_name := "MorphismToBidual",
   filter_list := [ "object", "object" ],
   cache_name := "MorphismToBidual",
+  return_type := "morphism" ),
+
+MorphismFromBidual := rec(
+  installation_name := "MorphismFromBidual",
+  filter_list := [ "object", "object" ],
+  cache_name := "MorphismFromBidual",
   return_type := "morphism" ),
 
 TensorProductInternalHomCompatibilityMorphism := rec(

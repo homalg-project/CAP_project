@@ -202,8 +202,14 @@ InstallMethod( EvaluationForDual,
                [ IsCapCategoryObject ],
                
   function( object )
+    local category;
     
-    return EvaluationForDual( object, TensorProductOnObjects( DualOnObjects( object ), object ) );
+    category := CapCategory( object );
+    
+    return EvaluationForDual( TensorProductOnObjects( DualOnObjects( object ), object ), 
+                              object,
+                              TensorUnit( category ) 
+                            );
     
 end );
 
@@ -212,8 +218,14 @@ InstallMethod( CoevaluationForDual,
                [ IsCapCategoryObject ],
                
   function( object )
+    local category;
     
-    return CoevaluationForDual( object, TensorProductOnObjects( object, DualOnObjects( object ) ) );
+    category := CapCategory( object );
+    
+    return CoevaluationForDual( TensorUnit( category ),
+                                object, 
+                                TensorProductOnObjects( object, DualOnObjects( object ) ) 
+                              );
     
 end );
 

@@ -808,6 +808,83 @@ AddDualOnMorphisms( vecspaces,
     
 end );
 
+##
+AddEvaluationForDual( vecspaces,
+  
+  function( tensor_object, object, unit )
+    local dimension, row, zero_row, i;
+    
+    dimension := Dimension( object );
+    
+    row := [ ];
+    
+    zero_row := List( [ 1 .. dimension ], i -> 0 );
+    
+    for i in [ 1 .. dimension - 1 ] do
+      
+      Add( row, 1 );
+      
+      Append( row, zero_row );
+      
+    od;
+    
+    if dimension > 0 then 
+      
+      Add( row, 1 );
+      
+    fi;
+    
+    return VectorSpaceMorphism( tensor_object,
+                                row,
+                                unit );
+                                
+end );
+
+##
+AddCoevaluationForDual( vecspaces,
+  
+  function( unit, object, tensor_object )
+    
+    local dimension, row, zero_row, i;
+    
+    dimension := Dimension( object );
+    
+    row := [ ];
+    
+    zero_row := List( [ 1 .. dimension ], i -> 0 );
+    
+    for i in [ 1 .. dimension - 1 ] do
+      
+      Add( row, 1 );
+      
+      Append( row, zero_row );
+      
+    od;
+    
+    if dimension > 0 then 
+      
+      Add( row, 1 );
+      
+    fi;
+    
+    return VectorSpaceMorphism( tensor_object,
+                                HomalgMatrix( row, 1, dimension, VECTORSPACES_FIELD ),
+                                unit );
+    
+end );
+
+# ##
+# AddMorphismToBidual( vecspaces,
+#   
+#   function( object, bidual_of_object )
+#     
+#     return VectorSpaceMorphism( object,
+#                                 HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ),
+#                                 bidual_of_object
+#                               );
+#     
+# end );
+
 Finalize( vecspaces );
 
 z := ZeroObject( vecspaces );

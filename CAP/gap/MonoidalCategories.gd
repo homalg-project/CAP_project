@@ -444,9 +444,9 @@ DeclareOperation( "AddDualOnMorphisms",
 DeclareAttribute( "EvaluationForDual",
                   IsCapCategoryObject );
 
-## the second argument is the tensor product
+## [ Dual( a ) tensored a, a, TensorUnit ]
 DeclareOperation( "EvaluationForDual",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 DeclareOperation( "AddEvaluationForDual",
                   [ IsCapCategory, IsFunction ] );
@@ -464,9 +464,9 @@ DeclareOperation( "AddEvaluationForDual",
 DeclareAttribute( "CoevaluationForDual",
                   IsCapCategoryObject );
 
-## the second argument is the tensor product
+## [ 1, a, a tensored Dual( a ) ]
 DeclareOperation( "CoevaluationForDual",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 DeclareOperation( "AddCoevaluationForDual",
                   [ IsCapCategory, IsFunction ] );
@@ -501,7 +501,25 @@ DeclareOperation( "AddMorphismToBidual",
 DeclareOperation( "AddMorphismToBidual",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareAttribute( "MorphismFromBidual",
+                  IsCapCategoryObject );
 
+## the second argument is the bidual
+DeclareOperation( "MorphismFromBidual",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "AddMorphismFromBidual",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromBidual",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromBidual",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromBidual",
+                  [ IsCapCategory, IsList ] );
 
 ##
 DeclareOperation( "TensorProductInternalHomCompatibilityMorphism",
