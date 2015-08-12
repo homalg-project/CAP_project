@@ -112,3 +112,53 @@ The equalities in \CapPkg do not need to be \texttt{true} or \texttt{false}, but
 which will be interpreted as non decidable. This is used for example for complexes.
 
 \input{GAP_tex/vecspaces_example/Equalities}
+
+Next we implement some additional functions in the category of vector spaces. We start by definining functions for the kernel.
+A proper implementation needs at least two functions. One for \texttt{KernelEmb}, which can compute the embedding of the kernel
+into the source of the given morphism. From this function then automatically a function for \texttt{KernelObject} is derived, which
+computes the embedding and returns the source of this morphism. The second one, \texttt{KernelLift}, implements the universal property of the kernel.
+The diagram of the kernel looks like this:
+\begin{center}
+\begin{tikzpicture}[description/.style={fill=white,inner sep=2pt}]
+  \matrix (m) [matrix of math nodes, row sep=3em,
+               column sep=2.5em, text height=1.5ex, text depth=0.25ex]
+  { \mathrm{KernelObject} \left( \alpha \right) & & \\
+    & A & B \\
+    T & & \\ };
+  \path[->] (m-1-1) edge node[auto]{$\mathrm{KernelEmb} \left( \alpha \right)$} (m-2-2);
+  \path[->] (m-2-2) edge node[auto]{$\alpha$} (m-2-3);
+  \path[->] (m-3-1) edge node[auto]{$\beta$} (m-2-2);
+  \path[->, dashed] (m-3-1) edge node[auto]{$\mathrm{KernelLift} \left( \alpha, \beta \right)$} (m-1-1);
+  \path[->] (m-3-1) edge[bend right] node[auto]{$0$} (m-2-3);
+\end{tikzpicture}
+\end{center}
+
+Please note that it is important that the range of the output morphism of the function we give to \texttt{KernelLift},
+under equal first argument, must coincide with the source of the output morphism of the function given to \texttt{KernelEmb}.
+In our case this simply means they need to have the same dimension.
+
+\input{GAP_tex/vecspaces_example/Kernel}
+
+There are two things to mention here.
+First thing, instead of \texttt{KernelLift} we could also have installed another method,
+called \texttt{KernelLiftWithGivenKernelObject}. The result would again be an implementation of \texttt{KernelLift}, but those
+\texttt{WithGiven} operations \todo{reference} offer an advantage. Instead of calling a function with only $\alpha$ and $\beta$, there
+would be a third argument, which should be equal to the output of \texttt{KernelObject} and then serves as the range of the output morphism.
+This can be done to ensure better compatibility if the given equality function for objects might not be complete, or to save computation time.
+Please have a look at \todo{reference} for more details about the \texttt{WithGiven} functions.
+
+Also, the function given for \texttt{KernelLift} does at the beginning the the same as the function given for \texttt{KernelEmb}. This might to
+a unnecessary computation. So, in this context, it would be better to provide a more general function for \texttt{MonoAsKernelLift}.
+The input for this function would be a mono, and some morphism, would then provide a lift. The function for \texttt{KernelLift} would then be derived
+from this operation and \texttt{KernelEmb}, by computing
+\[
+ \mathrm{MonoAsKernelLift} \left( \mathrm{KernelEmb} \left( \alpha \right), \beta \right).
+\]
+For more information about this system, please refer to the chapter about derivations \todo{reference}.
+An implementation of the kernel would then instead look like this.
+
+\input{GAP_tex/vecspaces_example/KernelAlternative}
+
+We now see the code duplication from above disappear.
+
+
