@@ -2302,13 +2302,13 @@ CoevaluationMorphism := rec(
 
 TensorProductToInternalHomAdjunctionMap := rec(
   installation_name := "TensorProductToInternalHomAdjunctionMap",
-  filter_list := [ "object", "object", "object" ],
+  filter_list := [ "object", "object", "morphism" ],
   cache_name := "TensorProductToInternalHomAdjunctionMap",
   return_type := "morphism" ),
 
 InternalHomToTensorProductAdjunctionMap := rec(
   installation_name := "InternalHomToTensorProductAdjunctionMap",
-  filter_list := [ "object", "object", "object" ],
+  filter_list := [ "object", "object", "morphism" ],
   cache_name := "InternalHomToTensorProductAdjunctionMap",
   return_type := "morphism" ),
 

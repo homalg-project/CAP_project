@@ -271,10 +271,16 @@ DeclareOperation( "AddInternalHomOnMorphisms",
                   [ IsCapCategory, IsList ] );
 
 ##
+#! @Description
+#! The arguments are two objects $a, b$.
+#! The output is the evaluation morphism $\mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b$, i.e.,
+#! the counit of the tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes a, b )$.
+#! @Arguments a,b
 DeclareOperation( "EvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## the last argument is the source
+## 3rd argument is $\mathrm{\underline{Hom}}(a,b) \otimes a$
 DeclareOperation( "EvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -291,10 +297,16 @@ DeclareOperation( "AddEvaluationMorphism",
                   [ IsCapCategory, IsList ] );
 
 ##
+#! @Description
+#! The arguments are two objects $a,b$.
+#! The output is the coevaluation morphism $a \rightarrow \mathrm{\underline{Hom}(b, a \otimes b)}$, i.e.,
+#! the unit of the tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )$.
+#! @Arguments a,b
 DeclareOperation( "CoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## the last argument is the range
+## the last argument is $\mathrm{\underline{Hom}}(b, a \otimes b)$
 DeclareOperation( "CoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -311,9 +323,14 @@ DeclareOperation( "AddCoevaluationMorphism",
                   [ IsCapCategory, IsList ] );
 
 
-##
+#! @Description
+#! The arguments are objects $a,b$ and a morphism $f: a \otimes b \rightarrow c$.
+#! The output is a morphism $g: a \rightarrow \mathrm{\underline{Hom}}(b,c)$
+#! corresponding to $f$ under the tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b,c) )$.
+#! @Arguments a, b, f
 DeclareOperation( "TensorProductToInternalHomAdjunctionMap",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 DeclareOperation( "AddTensorProductToInternalHomAdjunctionMap",
                   [ IsCapCategory, IsFunction ] );
@@ -327,9 +344,14 @@ DeclareOperation( "AddTensorProductToInternalHomAdjunctionMap",
 DeclareOperation( "AddTensorProductToInternalHomAdjunctionMap",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The arguments are objects $b,c$ and a morphism $g: a \rightarrow \mathrm{\underline{Hom}}(b,c)$.
+#! The output is a morphism $f: a \otimes b \rightarrow c$ corresponding to $g$ under the
+#! tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, c)$.
+#! @Arguments b, c, g
 DeclareOperation( "InternalHomToTensorProductAdjunctionMap",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 DeclareOperation( "AddInternalHomToTensorProductAdjunctionMap",
                   [ IsCapCategory, IsFunction ] );

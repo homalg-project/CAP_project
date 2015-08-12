@@ -1907,6 +1907,36 @@ AddDerivationToCAP( BraidingInverse,
 end : CategoryFilter := IsSymmetricMonoidalCategory,
       Description := "Braiding using BraidingInverse" );
 
+##
+AddDerivationToCAP( TensorProductToInternalHomAdjunctionMap,
+                    
+  function( object_1, object_2, morphism )
+    local coevaluation, internal_hom_on_morphisms;
+    
+    coevaluation := CoevaluationMorphism( object_1, object_2 );
+    
+    internal_hom_on_morphisms := InternalHomOnMorphisms( IdentityMorphism( object_2 ), morphism );
+    
+    return PreCompose( coevaluation, internal_hom_on_morphisms );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "TensorProductToInternalHomAdjunctionMap using CoevaluationMorphism and InternalHom" );
+
+##
+AddDerivationToCAP( InternalHomToTensorProductAdjunctionMap,
+                    
+  function( object_1, object_2, morphism )
+    local evaluation, tensor_product_on_morphisms;
+    
+    tensor_product_on_morphisms := TensorProductOnMorphisms( morphism, IdentityMorphism( object_1 ) );
+    
+    evaluation := EvaluationMorphism( object_1, object_2 );
+    
+    return PreCompose( tensor_product_on_morphisms, evaluation );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "InternalHomToTensorProductAdjunctionMap using TensorProductOnMorphisms and EvaluationMorphism" );
+
 ####################################
 ## Final derived methods
 ####################################
