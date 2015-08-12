@@ -1994,7 +1994,142 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "MorphismToBidual as the inverse of MorphismFromBidual" );
 
 ##
+AddDerivationToCAP( EvaluationMorphism,
+                  
+  function( object_1, object_2, internal_hom_tensored_object_1 )
+    local morphism;
+    
+    morphism := TensorProductOnMorphisms( 
+                  IsomorphismFromInternalHomToTensorProduct( object_1, object_2 ),
+                  IdentityMorphism( object_1 )
+                );
+    
+    morphism := PreCompose( morphism,
+                  TensorProductOnMorphisms(
+                    Braiding( DualOnObjects( object_1 ), object_2 ),
+                    IdentityMorphism( object_1 ) )
+                );
+    
+    morphism := PreCompose( morphism,
+                  AssociatorLeftToRight( object_2, DualOnObjects( object_1 ), object_1 )
+                );
+    
+    morphism := PreCompose( morphism,
+                  TensorProductOnMorphisms(
+                    IdentityMorphism( object_2 ),
+                    EvaluationForDual( object_1 ) )
+                );
+    
+    morphism := PreCompose( morphism,
+                  RightUnitor( object_2 )
+                );
+    
+    return morphism;
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "EvaluationMorphism using the rigidity of the monoidal category" );
 
+##
+AddDerivationToCAP( EvaluationMorphism,
+                    
+  function( object_1, object_2, internal_hom_tensored_object_1 )
+    local morphism;
+    
+    morphism := TensorProductOnMorphisms( 
+                  IsomorphismFromInternalHomToTensorProduct( object_1, object_2 ),
+                  IdentityMorphism( object_1 )
+                );
+    
+    morphism := PreCompose( morphism,
+                  TensorProductOnMorphisms(
+                    Braiding( DualOnObjects( object_1 ), object_2 ),
+                    IdentityMorphism( object_1 ) )
+                );
+    
+    morphism := PreCompose( morphism,
+                  TensorProductOnMorphisms(
+                    IdentityMorphism( object_2 ),
+                    EvaluationForDual( object_1 ) )
+                );
+    
+    return morphism;
+      
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
+      Description := "EvaluationMorphism using the rigidity and strictness of the monoidal category" );
+
+##
+AddDerivationToCAP( CoevaluationMorphism,
+                    
+  function( object_1, object_2, internal_hom )
+    local morphism;
+    
+    morphism := LeftUnitorInverse( object_1 );
+    
+    morphism := PreCompose( morphism,
+                  TensorProductOnMorphisms(
+                    CoevaluationForDual( object_2 ),
+                    IdentityMorphism( object_1 ) )
+                );
+    
+    morphism := PreCompose( morphism,
+                  TensorProductOnMorphisms(
+                    Braiding( object_2, DualOnObjects( object_2 ) ),
+                    IdentityMorphism( object_1 ) )
+                );
+    
+    morphism := PreCompose( morphism,
+                  AssociatorLeftToRight( DualOnObjects( object_2 ), object_2, object_1 )
+                );
+    
+    morphism := PreCompose( morphism,
+                  TensorProductOnMorphisms(
+                    IdentityMorphism( DualOnObjects( object_2 ) ),
+                    Braiding( object_2, object_1 ) )
+                );
+    
+    morphism := PreCompose( morphism,
+                  IsomorphismFromTensorProductToInternalHom(
+                    DualOnObjects( object_2 ),
+                    TensorProductOnObjects( object_1, object_2 ) )
+                );
+    
+    return morphism;
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "CoevaluationMorphism using the rigidity of the monoidal category" );
+
+##
+AddDerivationToCAP( CoevaluationMorphism,
+                    
+  function( object_1, object_2, internal_hom )
+    local morphism;
+    
+    morphism := TensorProductOnMorphisms(
+                    CoevaluationForDual( object_2 ),
+                    IdentityMorphism( object_1 ) );
+    
+    morphism := PreCompose( morphism,
+                  TensorProductOnMorphisms(
+                    Braiding( object_2, DualOnObjects( object_2 ) ),
+                    IdentityMorphism( object_1 ) )
+                );
+    
+    morphism := PreCompose( morphism,
+                  TensorProductOnMorphisms(
+                    IdentityMorphism( DualOnObjects( object_2 ) ),
+                    Braiding( object_2, object_1 ) )
+                );
+    
+    morphism := PreCompose( morphism,
+                  IsomorphismFromTensorProductToInternalHom(
+                    DualOnObjects( object_2 ),
+                    TensorProductOnObjects( object_1, object_2 ) )
+                );
+    
+    return morphism;
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
+      Description := "CoevaluationMorphism using the rigidity of the monoidal category" );
 
 ####################################
 ## Final derived methods
