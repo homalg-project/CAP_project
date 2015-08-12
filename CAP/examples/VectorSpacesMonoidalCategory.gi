@@ -794,6 +794,20 @@ AddBraiding( vecspaces,
     
 end );
 
+##
+AddDualOnObjects( vecspaces, space -> space );
+
+##
+AddDualOnMorphisms( vecspaces,
+  
+  function( dual_source, morphism, dual_range )
+    
+    return VectorSpaceMorphism( dual_source,
+                                Involution( morphism!.morphism ),
+                                dual_range );
+    
+end );
+
 Finalize( vecspaces );
 
 z := ZeroObject( vecspaces );

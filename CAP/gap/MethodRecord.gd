@@ -2388,7 +2388,18 @@ RankMorphism := rec(
   installation_name := "RankMorphism",
   filter_list := [ "object" ],
   cache_name := "RankMorphism",
-  return_type := "morphism" )
-  
+  return_type := "morphism" ),
+
+IsomorphismFromTensorProductToInternalHom := rec(
+  installation_name := "IsomorphismFromTensorProductToInternalHom",
+  filter_list := [ "object", "object" ],
+  cache_name := "IsomorphismFromTensorProductToInternalHom",
+  return_type := "morphism" ),
+
+IsomorphismFromInternalHomToTensorProduct := rec(
+  installation_name := "IsomorphismFromInternalHomToTensorProduct",
+  filter_list := [ "object", "object" ],
+  cache_name := "IsomorphismFromInternalHomToTensorProduct",
+  return_type := "morphism" ),
   )
 );

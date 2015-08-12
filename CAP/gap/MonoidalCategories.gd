@@ -562,6 +562,21 @@ DeclareOperation( "AddMorphismFromTensorProductToInternalHom",
 DeclareOperation( "AddMorphismFromTensorProductToInternalHom",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareOperation( "IsomorphismFromTensorProductToInternalHom",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "AddIsomorphismFromTensorProductToInternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromTensorProductToInternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromTensorProductToInternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromTensorProductToInternalHom",
+                  [ IsCapCategory, IsList ] );
 
 ##
 DeclareOperation( "MorphismFromInternalHomToTensorProduct",
@@ -582,6 +597,21 @@ DeclareOperation( "AddMorphismFromInternalHomToTensorProduct",
 DeclareOperation( "AddMorphismFromInternalHomToTensorProduct",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareOperation( "IsomorphismFromInternalHomToTensorProduct",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToTensorProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToTensorProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToTensorProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToTensorProduct",
+                  [ IsCapCategory, IsList ] );
 
 ##
 DeclareAttribute( "TraceMap",
