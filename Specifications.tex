@@ -1,4 +1,4 @@
-\section{Categories}
+\section{Categories}\label{section:categories}
 
 Classically, a category consists of a class of objects, a set of morphisms, identity morphisms, and a composition function
 satisfying some simple axioms. In $\CapPkg$, we use a slightly different notion of a category.
@@ -251,6 +251,53 @@ Fortunately, \CapPkg provides tools to help us with this task.
 
 \begin{specification}
  Every basic operation has to compute what it is supposed to compute.
-\end{specification}
+\end{specification} 
+
+In \CapPkg, we want to model categories together with categorical constructions.
+In order to implement a coherent model of a category, the basic operations that we provide have to match all mathematical
+specifications. We give an example to illustrate what this means.
+
+\begin{example}
+ We want to implement $\KernelObject$, $\KernelEmb$, and $\KernelLift$.
+ Let us take a look at the definition of a kernel in a category $\mathbf{C}$. \\
+ For a given morphism $\alpha: A \rightarrow B$ in $\mathbf{C}$, a kernel of $\alpha$ consists of three parts:
+ \begin{enumerate}
+  \item an object $K \in \mathbf{C}$,
+  \item a morphism $\iota: K \rightarrow A$ such that $\alpha \circ \iota \sim_{K,B} 0$,
+  \item a dependent function $u$ mapping every morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$ to
+  a morphism $u(\tau): T \rightarrow K$ such that $\iota \circ u( \tau ) \sim_{T,A} \tau$. 
+ \end{enumerate}
+ The triple $( K, \iota, u )$ is called a \textbf{kernel of $\phi$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms. The situation can be depicted as follows:
+ 
+ \begin{center}
+\begin{tikzpicture}[label/.style={postaction={
+      decorate,
+      decoration={markings, mark=at position .5 with \node #1;}}}]
+      \coordinate (r) at (1.5,0);
+      \coordinate (u) at (0,0.75);
+      
+      \node (M) {$A$};
+      \node (N) at ($(M)+(r)$) {$B$};
+      \node (K) at ($(M)-(r)+(u)$) {$K$};
+      \node (L) at ($(K)-2*(u)$) {$T$};
+      \draw[->,thick] (M) -- node[above]{$\alpha$} (N);
+      \draw[->, thick] (K) to [bend left] node[above] {$0$}(N);
+      \draw[objects,right hook->,thick] (K) -- node[above]{$\iota$} (M);
+      \draw[->,thick] (L) -- node[above]{$\tau$} (M);
+      \draw[->, thick] (L) to [bend right] node[below] {$0$}(N);
+      \draw[objects,->,dotted,thick] (L) -- node[left]{$u( \tau )$} (K);
+\end{tikzpicture}
+\end{center}
+ 
+ We call $K, \iota, u( \tau ) $ a $\KernelObject$, $\KernelEmb$, $\KernelLift$, respectively.
+ Thus for implementing these basic operations properly, they have to yield outputs which together form a kernel of $\phi$.
+\end{example}
+
+\begin{remark}
+ We note that the universal property of the kernel is formulated with the notion of congruence for morphisms,
+ not with equality of morphisms. This is again due to our notion of a category, see section \ref{section:categories}.
+\end{remark}
+
 
 \section{The Importance of Specifications}
