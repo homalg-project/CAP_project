@@ -280,7 +280,10 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeTraceMap",
                 "CanComputeRankMorphism",
                 "CanComputeIsomorphismFromTensorProductToInternalHom",
-                "CanComputeIsomorphismFromInternalHomToTensorProduct"
+                "CanComputeIsomorphismFromInternalHomToTensorProduct",
+                "CanComputeIsomorphismFromInternalHomToDual",
+                "CanComputeIsomorphismFromDualToInternalHom",
+                "CanComputeUniversalPropertyOfDual"
                 ] )
 );
 

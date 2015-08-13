@@ -665,3 +665,54 @@ DeclareOperation( "AddRankMorphism",
                   [ IsCapCategory, IsList ] );
 
 
+##
+DeclareAttribute( "IsomorphismFromDualToInternalHom",
+                  IsCapCategoryObject );
+
+DeclareOperation( "AddIsomorphismFromDualToInternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromDualToInternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDualToInternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDualToInternalHom",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareAttribute( "IsomorphismFromInternalHomToDual",
+                  IsCapCategoryObject );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToDual",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToDual",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToDual",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToDual",
+                  [ IsCapCategory, IsList ] );
+
+
+## input: (t, a, mu: t tensor a -> 1)
+##
+DeclareOperation( "UniversalPropertyOfDual",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddUniversalPropertyOfDual",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalPropertyOfDual",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfDual",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfDual",
+                  [ IsCapCategory, IsList ] );
+
+

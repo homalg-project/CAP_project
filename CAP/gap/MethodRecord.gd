@@ -2407,5 +2407,24 @@ IsomorphismFromInternalHomToTensorProduct := rec(
   filter_list := [ "object", "object" ],
   cache_name := "IsomorphismFromInternalHomToTensorProduct",
   return_type := "morphism" ),
+  
+IsomorphismFromInternalHomToDual := rec(
+  installation_name := "IsomorphismFromInternalHomToDual",
+  filter_list := [ "object" ],
+  cache_name := "IsomorphismFromInternalHomToDual",
+  return_type := "morphism" ),
+
+IsomorphismFromDualToInternalHom := rec(
+  installation_name := "IsomorphismFromDualToInternalHom",
+  filter_list := [ "object" ],
+  cache_name := "IsomorphismFromDualToInternalHom",
+  return_type := "morphism" ),
+
+UniversalPropertyOfDual := rec(
+  installation_name := "UniversalPropertyOfDual",
+  filter_list := [ "object", "object", "morphism" ],
+  cache_name := "UniversalPropertyOfDual",
+  return_type := "morphism" )
+
   )
 );

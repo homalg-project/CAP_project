@@ -2131,6 +2131,21 @@ AddDerivationToCAP( CoevaluationMorphism,
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
       Description := "CoevaluationMorphism using the rigidity of the monoidal category" );
 
+##
+AddDerivationToCAP( UniversalPropertyOfDual,
+                    
+  function( object_1, object_2, test_morphism )
+    local adjoint_morphism;
+    
+    adjoint_morphism := TensorProductToInternalHomAdjunctionMap( object_1, object_2, test_morphism );
+    
+    return PreCompose( adjoint_morphism,
+                       IsomorphismFromInternalHomToDual( object_2 )
+                     );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "UniversalPropertyOfDual using the hom tensor adjunction" );
+
 ####################################
 ## Final derived methods
 ####################################
@@ -2165,7 +2180,6 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromTensorProductToInternalHom as the identity of (Dual(a) tensored b)" );
 
 ##
-##
 AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
                     [ [ IdentityMorphism, 1 ],
                       [ DualOnObjects, 1 ],
@@ -2191,6 +2205,64 @@ AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromInternalHomToTensorProduct as the identity of (Dual(a) tensored b)" );
+
+## The next to derivations have the same conditions as IsomorphismFromInternalHomToTensorProduct,
+## because if the InternalHom is constructed via the final derivation, these
+## final derivation shall also be implemented
+##
+AddFinalDerivation( IsomorphismFromInternalHomToDual,
+                    [ [ IdentityMorphism, 1 ],
+                      [ DualOnObjects, 1 ],
+                      [ TensorProductOnObjects, 1 ] ],
+                    [ InternalHomOnObjects,
+                      InternalHomOnMorphisms,
+                      EvaluationMorphism,
+                      CoevaluationMorphism,
+                      TensorProductToInternalHomAdjunctionMap,
+                      InternalHomToTensorProductAdjunctionMap,
+                      MonoidalPreComposeMorphism,
+                      MonoidalPostComposeMorphism,
+                      TensorProductInternalHomCompatibilityMorphism,
+                      TensorProductDualityCompatibilityMorphism,
+                      MorphismFromTensorProductToInternalHom,
+                      MorphismFromInternalHomToTensorProduct,
+                      IsomorphismFromTensorProductToInternalHom,
+                      IsomorphismFromInternalHomToTensorProduct ],
+                    
+  function( object )
+    
+    return IdentityMorphism( DualOnObjects( object ) );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "IsomorphismFromInternalHomToDual as the identity of the Dual" );
+
+##
+AddFinalDerivation( IsomorphismFromDualToInternalHom,
+                    [ [ IdentityMorphism, 1 ],
+                      [ DualOnObjects, 1 ],
+                      [ TensorProductOnObjects, 1 ] ],
+                    [ InternalHomOnObjects,
+                      InternalHomOnMorphisms,
+                      EvaluationMorphism,
+                      CoevaluationMorphism,
+                      TensorProductToInternalHomAdjunctionMap,
+                      InternalHomToTensorProductAdjunctionMap,
+                      MonoidalPreComposeMorphism,
+                      MonoidalPostComposeMorphism,
+                      TensorProductInternalHomCompatibilityMorphism,
+                      TensorProductDualityCompatibilityMorphism,
+                      MorphismFromTensorProductToInternalHom,
+                      MorphismFromInternalHomToTensorProduct,
+                      IsomorphismFromTensorProductToInternalHom,
+                      IsomorphismFromInternalHomToTensorProduct ],
+                    
+  function( object )
+    
+    return IdentityMorphism( DualOnObjects( object ) );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "IsomorphismFromDualToInternalHom as the identity of the Dual" );
+
 
 ## Final methods for FiberProduct
 
