@@ -142,10 +142,10 @@ In our case this simply means they need to have the same dimension.
 There are two things to mention here.
 First thing, instead of \texttt{KernelLift} we could also have installed another method,
 called \texttt{KernelLiftWithGivenKernelObject}. The result would again be an implementation of \texttt{KernelLift}, but those
-\texttt{WithGiven} operations \todo{reference} offer an advantage. Instead of calling a function with only $\alpha$ and $\beta$, there
+\texttt{WithGiven} operations offer an advantage. Instead of calling a function with only $\alpha$ and $\beta$, there
 would be a third argument, which should be equal to the output of \texttt{KernelObject} and then serves as the range of the output morphism.
 This can be done to ensure better compatibility if the given equality function for objects might not be complete, or to save computation time.
-Please have a look at \todo{reference} for more details about the \texttt{WithGiven} functions.
+Please have a look at \ref{chapter:constructions} for more details about the \texttt{WithGiven} functions.
 
 Also, the function given for \texttt{KernelLift} does at the beginning the the same as the function given for \texttt{KernelEmb}. This might to
 a unnecessary computation. So, in this context, it would be better to provide a more general function for \texttt{MonoAsKernelLift}.
@@ -154,11 +154,14 @@ from this operation and \texttt{KernelEmb}, by computing
 \[
  \mathrm{MonoAsKernelLift} \left( \mathrm{KernelEmb} \left( \alpha \right), \beta \right).
 \]
-For more information about this system, please refer to the chapter about derivations \todo{reference}.
+For more information about this system, please refer to the derivations section \ref{section:derivations}.
 An implementation of the kernel would then instead look like this.
 
 \input{GAP_tex/vecspaces_example/KernelAlternative}
 
 We now see the code duplication from above disappear.
 
+We now continue by adding more functionality to the category. Dual to our second implementation of the kernel,
+we will provide functions for the cokernel.
 
+\input{GAP_tex/vecspaces_example/Cokernel}
