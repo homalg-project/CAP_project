@@ -715,4 +715,35 @@ DeclareOperation( "AddUniversalPropertyOfDual",
 DeclareOperation( "AddUniversalPropertyOfDual",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareAttribute( "LambdaIntroduction",
+                  IsCapCategoryMorphism );
+
+DeclareOperation( "AddLambdaIntroduction",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLambdaIntroduction",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLambdaIntroduction",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLambdaIntroduction",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareOperation( "LambdaElimination",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddLambdaElimination",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLambdaElimination",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLambdaElimination",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLambdaElimination",
+                  [ IsCapCategory, IsList ] );
 

@@ -283,7 +283,9 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsomorphismFromInternalHomToTensorProduct",
                 "CanComputeIsomorphismFromInternalHomToDual",
                 "CanComputeIsomorphismFromDualToInternalHom",
-                "CanComputeUniversalPropertyOfDual"
+                "CanComputeUniversalPropertyOfDual",
+                "CanComputeLambdaIntroduction",
+                "CanComputeLambdaElimination",
                 ] )
 );
 

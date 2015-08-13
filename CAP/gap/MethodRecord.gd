@@ -2424,7 +2424,20 @@ UniversalPropertyOfDual := rec(
   installation_name := "UniversalPropertyOfDual",
   filter_list := [ "object", "object", "morphism" ],
   cache_name := "UniversalPropertyOfDual",
-  return_type := "morphism" )
+  return_type := "morphism" ),
+
+LambdaIntroduction := rec(
+  installation_name := "LambdaIntroduction",
+  filter_list := [ "morphism" ],
+  cache_name := "LambdaIntroduction",
+  return_type := "morphism" ),
+
+LambdaElimination := rec(
+  installation_name := "LambdaElimination",
+  filter_list := [ "object", "object", "morphism" ],
+  cache_name := "LambdaElimination",
+  return_type := "morphism" ),
+
 
   )
 );

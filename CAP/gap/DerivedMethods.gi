@@ -2243,6 +2243,68 @@ AddDerivationToCAP( IsomorphismFromTensorProductToInternalHom,
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromTensorProductToInternalHom using MorphismFromTensorProductToInternalHom" );
 
+##
+AddDerivationToCAP( EvaluationForDual,
+                  
+  function( tensor_object, object, unit )
+    
+    return TensorProductToInternalHomAdjunctionMap( object, unit,
+                                                    IsomorphismFromDualToInternalHom( object ) );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "EvaluationForDual using the tensor hom adjunction and IsomorphismFromDualToInternalHom" );
+
+
+##
+AddDerivationToCAP( CoevaluationForDual,
+                    
+  function( unit, object, tensor_object )
+    local morphism;
+    
+    morphism := IdentityMorphism( object );
+    
+    morphism := LambdaIntroduction( morphism );
+    
+    morphism := PreCompose( morphism,
+                            IsomorphismFromInternalHomToTensorProduct( object, object ) );
+    
+    morphism := PreCompose( morphism,
+                            Braiding( DualOnObjects( object ), object ) );
+    
+    return morphism;
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "CoevaluationForDual using LambdaIntroduction on the identity and IsomorphismFromInternalHomToTensorProduct" );
+
+##
+AddDerivationToCAP( LambdaIntroduction,
+                  
+  function( morphism )
+    local result_morphism, category, source;
+    
+    category := CapCategory( morphism );
+    
+    source := Source( morphism );
+    
+    result_morphism := PreCompose( LeftUnitor( source ), morphism );
+    
+    return TensorProductToInternalHomAdjunctionMap( TensorUnit( category ), source, result_morphism );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "LambdaIntroduction using the tensor hom adjunction and left unitor" );
+
+##
+AddDerivationToCAP( LambdaElimination,
+                  
+  function( object_1, object_2, morphism )
+    local result_morphism;
+    
+    result_morphism := InternalHomToTensorProductAdjunctionMap( object_1, object_2, morphism );
+    
+    return PreCompose( LeftUnitorInverse( object_1 ), result_morphism );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "LambdaElimination using the tensor hom adjunction and left unitor" );
 
 ####################################
 ## Final derived methods
