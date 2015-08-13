@@ -1455,35 +1455,39 @@ DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! Given finitely many morphisms $\alpha_i: A \rightarrow B_i$ this method
-#! returns the unique morphism $\alpha: A \rightarrow \prod_j B_j$ such that
+#! Given finitely many morphisms $\alpha_i: A \rightarrow P_i$ this method
+#! returns the unique morphism $\alpha: A \rightarrow \prod_j P_j$ such that
 #! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
-#! $\prod_j B_j \rightarrow B_i$.
-#! @Returns IsCapCategoryMorphism
+#! $\prod_j P_j \rightarrow P_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A, \prod_j P_j)$
 #! @Arguments alpha_i
 DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 
-# TODO: Fix this documentation (new argument)
-# @Description
-# Given finitely many morphisms $D = (\alpha_i: A \rightarrow B_i)$ as a
-# list of objects, this method
-# returns a unique morphism $\alpha: A \rightarrow \prod_j B_j$ such that
-# $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
-# $\prod_j B_j \rightarrow B_i$. The second argument $M$ is needed for the method selection.
-# @Returns IsCapCategoryMorphism
-# @Arguments D, M
+
+#! @Description
+#! The arguments are a list of objects $L = (P_1, \dots, P_n)$,
+#! a list of morphisms $D = (\alpha_i: A \rightarrow P_i)$,
+#! and an object $M$ only needed for method selection.
+#! This method
+#! returns the unique morphism $\alpha: A \rightarrow \prod_j P_j$ such that
+#! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
+#! $\prod_j P_j \rightarrow P_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A,\prod_j P_j)$
+#! @Arguments L, D, M
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 # TODO: Fix this documentation (new argument)
 #! @Description
-#! Given finitely many morphisms $D = (\alpha_i: A \rightarrow B_i)$ as a
-#! list of objects, and given the direct product $P = \prod_j B_j$, this method
-#! returns the unique morphism $\alpha: A \rightarrow P$ such that
+#! The arguments are a list of objects $L = (P_1, \dots, P_n)$,
+#! a list of morphisms $D = (\alpha_i: A \rightarrow P_i)$,
+#! and the direct product $P = \prod_j P_j$.
+#! This method
+#! returns the unique morphism $\alpha: A \rightarrow \prod_j P_j$ such that
 #! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
-#! $P \rightarrow B_i$.
-#! @Returns IsCapCategoryMorphism
-#! @Arguments D, P
+#! $\prod_j P_j \rightarrow P_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A,P)$
+#! @Arguments L, D, P
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
