@@ -2306,6 +2306,37 @@ AddDerivationToCAP( LambdaElimination,
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "LambdaElimination using the tensor hom adjunction and left unitor" );
 
+##
+AddDerivationToCAP( TraceMap,
+                    
+  function( morphism )
+    local result_morphism, object;
+    
+    result_morphism := LambdaIntroduction( morphism );
+    
+    object := Source( morphism );
+    
+    result_morphism := PreCompose( result_morphism,
+                                   IsomorphismFromInternalHomToTensorProduct( object, object ) );
+    
+    return PreCompose( result_morphism,
+                       EvaluationForDual( object ) );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "TraceMap composing the lambda abstraction with the evaluation" );
+
+##
+AddDerivationToCAP( RankMorphism,
+                    
+  function( object )
+    
+    return TraceMap( IdentityMorphism( object ) );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "Rank of an object as the trace of its identity" );
+
+
+
 ####################################
 ## Final derived methods
 ####################################
