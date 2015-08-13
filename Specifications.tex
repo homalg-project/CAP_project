@@ -1,3 +1,21 @@
+In \CapPkg, we want to model categories.
+In order to do this correctly, we have to implement the basic operations
+of a category with respect to specifications dictated by \CapPkg.
+In this chapter, we will see in detail what these specifications are.
+
+This chapter is organized as follows:
+
+In the first section, we define the notion of a category, so that it becomes
+clear what kind of mathematical object we want to model.
+
+In the second section, we define \GAP sets and \GAP maps, in order to have semantics
+for the basic operations symbols.
+
+Afterwards, we begin with the enumeration of all specifiactions, which are
+the equality specifiactions, typing specifiactions, and mathematical specifiactions.
+
+We conclude with a statement about the importance of specifiactions.
+
 \section{Categories}\label{section:categories}
 
 Classically, a category consists of a class of objects, a set of morphisms, identity morphisms, and a composition function
@@ -68,6 +86,81 @@ the category of presentations).
  If we want to refer to the classical notion of a category (i.e. the one used in \cite{MLCWM}) we will use the term \textit{classical category}.
 \end{convention}
 
+\section{\GAP Sets and \GAP Maps}
+
+In this section, we will first define \GAP sets and \GAP maps and
+then associate to such objects actual sets and maps. 
+Such a translation between objects on the computer and mathematical objects
+is necessary for modelling mathematics on the computer.
+
+\begin{remark}
+ For our definitions to be consistent, we have to fix
+ a set $\mathcal{U}$ containing all \GAP objects up to \texttt{IsIdenticalObj}
+ which are relevant for the discussion (e.g. within a current session). 
+ We call such a $\mathcal{U}$ a \textbf{\GAP universe}.
+ We further define the set $\Bool := \{ \texttt{true}, \texttt{false} \}$.
+\end{remark}
+
+
+\begin{definition}
+ A \textbf{\GAP set} is a pair $(P, =_P)$ consisting of
+ \begin{itemize}
+  \item a \GAP function $P$
+  \item a binary \GAP operation $=_P$
+ \end{itemize}
+both having values in $\Bool$, such that
+\begin{enumerate}
+ \item $P$ defines a map $\mathcal{U} \rightarrow \Bool$,
+ \item $=_P$ defines a map $\{ ( a,b ) \in \mathcal{U} \times \mathcal{U} ~|~ P(a) = P(b) = \texttt{true} \} \rightarrow \Bool$,
+ \item $=_P$ defines an equivalence relation on $\{ a \in \mathcal{U} ~|~ P(a) = \texttt{true} \}$.
+\end{enumerate}
+\end{definition}
+
+\begin{notation}
+ For a \GAP object $x$ such that $P(x) = \texttt{true}$, we simply write $x \in P$.
+\end{notation}
+
+\begin{definition}
+ A \textbf{\GAP map} between \GAP sets $(P, =_P)$, $(Q, =_Q)$ is a \GAP operation $\Omega$, such that
+ \begin{enumerate}
+  \item for $p \in P$, we have $\Omega( p ) \in Q$,
+  \item for $p =_P p'$, we have $\Omega( p ) =_Q \Omega( p')$,
+  \item for $y \not\in P$, $\Omega( y )$ throws an error.
+ \end{enumerate}
+ For a natural number $n \in \N$, we define $n$-ary \GAP maps analogously, i.e., 
+ they respect equality componentwise.
+\end{definition}
+
+\begin{remark}\label{remark:implementation_of_gap_maps}[Implementation of a \GAP map]
+ Let $\Omega$ be a \GAP operation installed via the \GAP methods $\mu_1, \dots, \mu_n$.
+ Then $\Omega$ defines a \GAP map $(P,=_P) \rightarrow (Q, =_Q)$ if and only if the following three conditions are satisfied:
+ \begin{enumerate}
+  \item $\mu_k( p ) =_Q \mu_l( p )$ for $p \in P$ and applicable methods $\mu_k, \mu_l$, where $k,l \in \{ 1 \dots n \}$.
+  \item For every $p \in P$ there exists an $i \in \{ 1 \dots n \}$ such that $p$ lies in the filter of $\mu_i$ (i.e., 
+  the filters of the methods cover $P$).
+  \item $\Omega(y)$ throws an error for $y \not \in P$.
+ \end{enumerate}
+ The first item can always be technically realized by caching, but note that this is in general not the best strategy.
+ The second item is satisfied in particular if there is a ``fallback method'' which is applicable for all $p \in P$.
+ The third item will usually be automatically realized by $\CapPkg$ for all basic operations.
+\end{remark}
+
+In order to model concatenations of maps, we have to define a notion of concatenation of \GAP maps.
+
+\begin{definition}
+ A sequence of \GAP maps of length greater then one
+ \[
+ \Omega_1: (P_1, =_{\mathrm{P_1}}) \rightarrow (P_2, =_{\mathrm{P_2}}), ~\Omega_2: (P_2, =_{\mathrm{P_2}}) \rightarrow (P_3, =_{\mathrm{P_3}}), \dots,
+ \]
+ is called a \textbf{concatenation of \GAP maps}.
+\end{definition}
+
+\begin{remark}
+ If we would rely on weak caching in order to satisfy the first item in remark \ref{remark:implementation_of_gap_maps},
+ a concatenation of \GAP maps would not necessarily yield equal output for equal input.
+ \todo{give an example}
+\end{remark}
+
 
 \section{Equality Specifications}
 
@@ -109,7 +202,7 @@ a category object using the corresponding add functions \texttt{AddIsEqualForObj
  \begin{itemize}
   \item For $\Int$, we use the realization of \GAP
   \item For $\Bool$, we use the realization of \GAP, but only the values \texttt{true} and \texttt{false}
-  are allowed (exception: equality functions, see \ref{subsection:specifiactions_is_equal_for_objects} and \ref{subsection:specifiactions_is_equal_for_morphisms}).
+  are allowed (exception: equality functions, see \ref{subsection:specifications_is_equal_for_objects} and \ref{subsection:specifications_is_equal_for_morphisms}).
   \item For $\Obj$, there is a \GAP filter \texttt{IsCapCategoryObject}.
   \item The dependent type $\Hom( a, b )$ is realized by \GAP objects within
  the filter \texttt{IsCapCategoryMorphism} having objects set
@@ -120,7 +213,7 @@ a category object using the corresponding add functions \texttt{AddIsEqualForObj
 \end{remark}
 
 
-\subsection{Specifications for \texttt{IsEqualForObjects}}\label{subsection:specifiactions_is_equal_for_objects}
+\subsection{Specifications for \texttt{IsEqualForObjects}}\label{subsection:specifications_is_equal_for_objects}
 The basic operation \texttt{IsEqualForObjects} has a special specification.
 
 \begin{specification}[\texttt{IsEqualForObjects}]
@@ -141,7 +234,7 @@ The basic operation \texttt{IsEqualForObjects} has a special specification.
  \textit{``I don't know if the two objects are equal''}.
 \end{remark}
 
-\subsection{Specifications for \texttt{IsEqualForMorphisms}}\label{subsection:specifiactions_is_equal_for_morphisms}
+\subsection{Specifications for \texttt{IsEqualForMorphisms}}\label{subsection:specifications_is_equal_for_morphisms}
 The basic operation \texttt{IsEqualForMorphisms} has a special specification.
 
 \begin{specification}[\texttt{IsEqualForMorphisms}]
@@ -253,7 +346,6 @@ Fortunately, \CapPkg provides tools to help us with this task.
  Every basic operation has to compute what it is supposed to compute.
 \end{specification} 
 
-In \CapPkg, we want to model categories together with categorical constructions.
 In order to implement a coherent model of a category, the basic operations that we provide have to match all mathematical
 specifications. We give an example to illustrate what this means.
 
@@ -312,7 +404,7 @@ the correctness of its building blocks.
  \item Equality specifications: necessary to interpret basic operations in set theory.
  Not matching these specifications means dealing with randomness. 
  \item Typing specifications: necessary to safely concatenate basic operations.
- \item Mathematical specifiactions: necessary because we want to model our mathematical
+ \item Mathematical specifications: necessary because we want to model our mathematical
  notions correctly.
 \end{enumerate}
 
