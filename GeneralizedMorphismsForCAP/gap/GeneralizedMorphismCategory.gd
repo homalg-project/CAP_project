@@ -70,6 +70,9 @@ DeclareOperation( "GeneralizedMorphismFromFactorToSubobject",
 DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
                                           IsGeneralizedMorphism );
 
+DeclareOperation( "CommonRestriction",
+                  [ IsGeneralizedMorphism, IsGeneralizedMorphism ] );
+
 ####################################
 ##
 ## Attributes
