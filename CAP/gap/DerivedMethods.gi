@@ -2203,6 +2203,47 @@ AddDerivationToCAP( DualOnMorphisms,
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "DualOnMorphisms using InternalHomOnMorphisms and IsomorphismFromDualToInternalHom" );
 
+##
+AddDerivationToCAP( MorphismFromTensorProductToInternalHom,
+                  
+  function( tensor_object, object_1, object_2, internal_hom )
+    
+    return IsomorphismFromTensorProductToInternalHom( object_1, object_2 );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "MorphismFromTensorProductToInternalHom using IsomorphismFromTensorProductToInternalHom" );
+
+##
+AddDerivationToCAP( MorphismFromInternalHomToTensorProduct,
+                  
+  function( tensor_object, object_1, object_2, internal_hom )
+    
+    return IsomorphismFromInternalHomToTensorProduct( object_1, object_2 );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "MorphismFromInternalHomToTensorProduct using IsomorphismFromInternalHomToTensorProduct" );
+
+##
+AddDerivationToCAP( IsomorphismFromInternalHomToTensorProduct,
+                    
+  function( object_1, object_2 )
+    
+    return MorphismFromInternalHomToTensorProduct( object_1, object_2 );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "IsomorphismFromInternalHomToTensorProduct using MorphismFromInternalHomToTensorProduct" );
+
+##
+AddDerivationToCAP( IsomorphismFromTensorProductToInternalHom,
+                    
+  function( object_1, object_2 )
+    
+    return MorphismFromTensorProductToInternalHom( object_1, object_2 );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "IsomorphismFromTensorProductToInternalHom using MorphismFromTensorProductToInternalHom" );
+
+
 ####################################
 ## Final derived methods
 ####################################
