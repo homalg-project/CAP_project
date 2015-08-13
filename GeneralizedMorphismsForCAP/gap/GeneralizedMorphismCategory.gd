@@ -71,7 +71,7 @@ DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
                                           IsGeneralizedMorphism );
 
 DeclareOperation( "CommonRestriction",
-                  [ IsGeneralizedMorphism, IsGeneralizedMorphism ] );
+                  [ IsList ] );
 
 ####################################
 ##

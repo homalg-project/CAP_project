@@ -670,6 +670,75 @@ InstallMethod( Codomain,
     
 end );
 
+InstallMethodWithCacheFromObject( CommonRestriction,
+                                  [ IsList ],
+                                  
+  function( morphism_list )
+    local test_source, source_aid_list, associated_compose_list
+          current_pullback_left, current_pullback_right, i, j;
+    
+    if not ForAll( morphism_list, IsGeneralizedMorphism ) then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    if Length( morphism_list ) = 1 then
+        
+        return morphism_list;
+        
+    fi;
+    
+    test_source := Source( morphism_list[ 1 ] );
+    
+    if not ForAll( [ 2 .. Length( morphism_list ) ], i -> IsEqualForObjects( Source( morphism_list[ i ] ), test_source ) = true ) then
+        
+        Error( "no common restriction" );
+        
+    fi;
+    
+    source_aid_list := List( morphism_list, Domain );
+    
+    associated_compose_list := [ ];
+    
+    for i in [ 2 .. Length( morphism_list ) ] do
+        
+        current_pullback_left := ProjectionInFactorOfFiberProduct( [ source_aid_list[ i - 1 ], source_aid_list[ i ] ], 1 );
+        
+        current_pullback_right := ProjectionInFactorOfFiberProduct( [ source_aid_list[ i - 1 ], source_aid_list[ i ] ], 2 );
+        
+        for j in [ 1 .. i - 1 ] do
+            
+            source_aid_list[ j ] := PreCompose( current_pullback_left, source_aid_list[ j ] );
+            
+            if not IsBound( associated_compose_list[ j ] ) then
+                associated_compose_list[ j ] := current_pullback_left;
+            else
+                associated_compose_list[ j ] := PreCompose( current_pullback_left, associated_compose_list[ j ] );
+            fi;
+            
+        od;
+        
+        source_aid_list[ i ] := PreCompose( current_pullback_right, source_aid_list[ i ] );
+        
+        associated_compose_list[ i ] := current_pullback_right;
+        
+    od;
+    
+    morphism_list := List( morphism_list, DomainAssociatedMorphismCodomainTriple );
+    
+    for i in [ 1 .. Length( morphism_list ) ] do
+        
+        morphism_list[ i ][ 1 ] := source_aid_list[ i ];
+        
+        morphism_list[ i ][ 2 ] := PreCompose( associated_compose_list[ i ], morphism_list[ i ][ 2 ] );
+        
+    od;
+    
+    return List( morphism_list, i -> CallFuncList( GeneralizedMorphism, i ) );
+    
+end );
+
 ###########################
 ##
 ## Pseudo-Inverse
