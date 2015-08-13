@@ -273,6 +273,31 @@ InstallMethod( Zero,
     
 end );
 
+InstallMethod( PreCompose,
+               [ IsList ],
+               
+  function( morphism_list )
+    local length, result_morphism, i;
+    
+    length := Length( morphism_list );
+    
+    if length = 0 then
+      
+      Error( "non empty list expected" );
+      
+    fi;
+    
+    result_morphism := morphism_list[1];
+    
+    for i in [ 2 .. length ] do
+      
+      result_morphism := PreCompose( result_morphism, morphism_list[i] );
+      
+    od;
+    
+    return result_morphism;
+    
+end );
 ######################################
 ##
 ## Morphism transport

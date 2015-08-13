@@ -451,6 +451,9 @@ DeclareOperation( "AddCodominates",
 DeclareOperation( "PreCompose",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+DeclareOperation( "PreCompose",
+                  [ IsList ] );
+
 ###################################
 ##
 ## IsWellDefined
