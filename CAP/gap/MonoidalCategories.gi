@@ -240,6 +240,16 @@ InstallMethod( MorphismToBidual,
 end );
 
 ##
+InstallMethod( MorphismFromBidual,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    
+    return MorphismFromBidual( object, DualOnObjects( DualOnObjects( object ) ) );
+    
+end );
+
+##
 InstallMethod( TensorProductInternalHomCompatibilityMorphism,
                [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
                

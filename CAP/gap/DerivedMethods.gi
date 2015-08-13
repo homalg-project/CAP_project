@@ -2146,6 +2146,22 @@ AddDerivationToCAP( UniversalPropertyOfDual,
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "UniversalPropertyOfDual using the hom tensor adjunction" );
 
+##
+AddDerivationToCAP( MorphismToBidual,
+                  
+  function( object, bidual )
+    local morphism;
+    
+    morphism := Braiding( object, DualOnObjects( object ) );
+    
+    morphism := PreCompose( morphism,
+                            EvaluationForDual( object ) );
+    
+    return UniversalPropertyOfDual( object, DualOnObjects( object ), morphism );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "MorphismToBidual using the braiding and the universal property of the dual" );
+
 ####################################
 ## Final derived methods
 ####################################

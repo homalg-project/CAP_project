@@ -67,7 +67,7 @@ SetIsRigidSymmetricClosedMonoidalCategory( vecspaces, true );
 ##
 
 VECTORSPACES_FIELD := HomalgFieldOfRationals( );
-
+# ActivateDerivationInfo();
 #######################################
 ##
 ## Categorical Implementations
@@ -208,7 +208,7 @@ end );
 AddIdentityMorphism( vecspaces,
                      
   function( obj )
-
+#     return VectorSpaceMorphism( obj, IdentityMat( Dimension( obj ) ), obj );
     return VectorSpaceMorphism( obj, HomalgIdentityMatrix( Dimension( obj ), VECTORSPACES_FIELD ), obj );
     
 end );
