@@ -64,12 +64,17 @@ will construct a more sophisticated category and some of the computational tools
 
 \section{The category of rational vector spaces}
 
-In this section, we will create the category of finite dimensional rational vector spaces. We are going
+In this section, we will create the category of finite dimensional rational vector spaces as an
+example of an abelian category. We are going
 to realize this category as a sceletal category, i.e., the objects will be the nonnegative integers,
 representing the dimension of the vector space, and we use appropriate matrices as morphisms. We start
 by loading \CapPkg and the packages of the \texttt{homalg} project, and creating appropriate data structures
 for the objects and morphisms of the category. The first part of this tutorial is taken from a file and not from
-an interactive session.
+an interactive session. Please note that for the sake of completeness, all the necessary code to create the
+functions is displayed. This might seem confusing or simply to much. If you only want to have a look how a \CapPkg category
+is initialized, only look at the headers of the functions. Also, once the whole process of creation is finished,
+there are examples for computations in the category. If you are interested in the capability of \CapPkg, please
+continue at \todo{reference}.
 
 In the first part, after loading the packages, we create types and representations for the objects
 and morphisms of the category. Those are needed since we want to provide the data structure. For simplicity,
@@ -165,3 +170,30 @@ We now continue by adding more functionality to the category. Dual to our second
 we will provide functions for the cokernel.
 
 \input{GAP_tex/vecspaces_example/Cokernel}
+
+The next step is implementing functions for the \textrm{ZeroObject} in the category, i.e. the vector space
+of dimension 0. A proper implementation here needs three algorithms. One, without any arguments, returns the
+zero object of the category. The other two should, given one object, compute the unique morphisms from and into
+the zero object. Those are named \texttt{UniversalMorphismIntoZeroObject} and \texttt{UniversalMorphismFromZeroObject}.
+For those there are again two choices, either using the \texttt{WithGiven} operations or not.
+For our example we do both, providing functions for the \texttt{WithGiven} operations and for the ones that
+need to compute their own zero object. Please note that this is again possible because of the installed equality of objects.
+
+\input{GAP_tex/vecspaces_example/ZeroObject}
+
+Now we turn the set of homomorphisms between two objects into an Abelian group. For this, we need to define the addition of
+two morphisms having the same sources and ranges, the additive inverse of a morphism, and the zero morphism between two objects.
+
+\input{GAP_tex/vecspaces_example/HomSets}
+
+The installation of \texttt{ZeroMorphism} is not necessary here, since we have the zero object and the corresponding
+universal morphisms, this method could also be derived from those. Of course, providing a prmitive implementation might
+increase the speed of some computations.
+
+The last thing left to implement is the direct sum and its universal properties. After that, we can tell the system that the
+category is abelian, finalize it, and start computations. The direct sum needs, for a proper implementation, at least five
+functions. At first, the direct sum of objects needs to be created. Then there are injections of the components and projections
+to the factors. Finally, since the direct sum is product and coproduct at the same time, there are two universal properties to be implemented.
+For details please have a look at \ref{chapter:constructions}.
+
+\input{GAP_tex/vecspaces_example/DirectSum}
