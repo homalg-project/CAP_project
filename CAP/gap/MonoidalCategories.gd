@@ -422,9 +422,21 @@ DeclareOperation( "AddBraidingInverse",
 
 
 ##
+#! @Description
+#! The arguments are two objects $a,b$.
+#! The output is the internal hom object $\underline{\mathrm{Hom}}(a,b)$.
+#! @Returns an object
+#! @Arguments a, b
 DeclareOperation( "InternalHomOnObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>InternalHomOnObjects</C>.
+#! $f: (a,b) \mapsto \underline{\mathrm{Hom}}(a,b)$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddInternalHomOnObjects",
                   [ IsCapCategory, IsFunction ] );
 
@@ -437,13 +449,31 @@ DeclareOperation( "AddInternalHomOnObjects",
 DeclareOperation( "AddInternalHomOnObjects",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
+#! The output is the internal hom morphism $\underline{\mathrm{Hom}}(\alpha,\beta)$.
+#! @Returns a morphism in $\mathrm{Hom}( \underline{\mathrm{Hom}}(a',b), \underline{\mathrm{Hom}}(a,b') )$
+#! @Arguments alpha, beta
 DeclareOperation( "InternalHomOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are an object $s = \underline{\mathrm{Hom}}(a',b)$,
+#! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$,
+#! and an object $r = \underline{\mathrm{Hom}}(a,b')$.
+#! The output is the internal hom morphism $\underline{\mathrm{Hom}}(\alpha,\beta)$.
+#! @Returns a morphism in $\mathrm{Hom}( \underline{\mathrm{Hom}}(a',b), \underline{\mathrm{Hom}}(a,b') )$
+#! @Arguments s, alpha, beta, r
 DeclareOperation( "InternalHomOnMorphisms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>InternalHomOnMorphisms</C>.
+#! $f: (\underline{\mathrm{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \underline{\mathrm{Hom}}(a,b') ) \mapsto \underline{\mathrm{Hom}}(\alpha,\beta)$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddInternalHomOnMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
