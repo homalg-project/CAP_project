@@ -302,3 +302,29 @@ InstallMethod( MorphismFromInternalHomToTensorProduct,
     
 end );
 
+##
+InstallMethod( IsomorphismFromInternalHomToObject,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    local category;
+    
+    category := CapCategory( object );
+    
+    return IsomorphismFromInternalHomToObject( object, InternalHomOnObjects( TensorUnit( category ), object ) );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromObjectToInternalHom,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    local category;
+    
+    category := CapCategory( object );
+    
+    return IsomorphismFromObjectToInternalHom( object, InternalHomOnObjects( TensorUnit( category ), object ) );
+    
+end );
+

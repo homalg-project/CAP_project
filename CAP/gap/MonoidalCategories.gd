@@ -751,3 +751,42 @@ DeclareOperation( "AddLambdaElimination",
 DeclareOperation( "AddLambdaElimination",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareOperation( "IsomorphismFromObjectToInternalHom",
+                  [ IsCapCategoryObject ] );
+
+DeclareOperation( "IsomorphismFromObjectToInternalHom",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "AddIsomorphismFromObjectToInternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromObjectToInternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromObjectToInternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromObjectToInternalHom",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareOperation( "IsomorphismFromInternalHomToObject",
+                  [ IsCapCategoryObject] );
+
+DeclareOperation( "IsomorphismFromInternalHomToObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalHomToObject",
+                  [ IsCapCategory, IsList ] );
+
+
