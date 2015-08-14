@@ -17,9 +17,22 @@
 ####################################
 
 ## TensorProductOnObjects
+
+#! @Description
+#! The arguments are two objects $a, b$.
+#! The output is the tensor product $a \otimes b$.
+#! @Returns an object
+#! @Arguments a,b
 DeclareOperationWithCache( "TensorProductOnObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>TensorProductOnObjects</C>.
+#! $f: (a,b) \mapsto a \otimes b$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddTensorProductOnObjects",
                   [ IsCapCategory, IsFunction ] );
 
@@ -33,12 +46,32 @@ DeclareOperation( "AddTensorProductOnObjects",
                   [ IsCapCategory, IsList ] );
 
 ## TensorProductOnMorphisms
+
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
+#! The output is the tensor product $\alpha \otimes \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, a' \otimes b')$
+#! @Arguments alpha, beta
 DeclareOperation( "TensorProductOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are an object $s = a \otimes b$,
+#! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$,
+#! and an object $r = a' \otimes b'$.
+#! The output is the tensor product $\alpha \otimes \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, a' \otimes b')$
+#! @Arguments s, alpha, beta, r
 DeclareOperation( "TensorProductOnMorphisms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>TensorProductOnMorphisms</C>.
+#! $f: ( \alpha, \beta ) \mapsto \alpha \otimes \beta$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddTensorProductOnMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
@@ -53,12 +86,31 @@ DeclareOperation( "AddTensorProductOnMorphisms",
 
 
 ##
+#! @Description
+#! The arguments are three objects $a,b,c$.
+#! The output is the associator $\alpha_{a,(b,c)}: a \otimes (b \otimes c) \rightarrow (a \otimes b) \otimes c$.
+#! @Returns a morphism in $\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b) \otimes c )$.
+#! @Arguments a, b, c
 DeclareOperation( "AssociatorRightToLeft",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are an object $s = a \otimes (b \otimes c)$,
+#! three objects $a,b,c$,
+#! and an object $r = (a \otimes b) \otimes c$.
+#! The output is the associator $\alpha_{a,(b,c)}: a \otimes (b \otimes c) \rightarrow (a \otimes b) \otimes c$.
+#! @Returns a morphism in $\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b) \otimes c )$.
+#! @Arguments s, a, b, c, r
 DeclareOperation( "AssociatorRightToLeft",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>AssociatorRightToLeft</C>.
+#! $f: ( a \otimes (b \otimes c), a, b, c, (a \otimes b) \otimes c ) \mapsto \alpha_{a,(b,c)}$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddAssociatorRightToLeft",
                   [ IsCapCategory, IsFunction ] );
 
@@ -74,12 +126,31 @@ DeclareOperation( "AddAssociatorRightToLeft",
 
 
 ##
+#! @Description
+#! The arguments are three objects $a,b,c$.
+#! The output is the associator $\alpha_{(a,b),c}: (a \otimes b) \otimes c \rightarrow a \otimes (b \otimes c)$.
+#! @Returns a morphism in $\mathrm{Hom}( (a \otimes b) \otimes c \rightarrow a \otimes (b \otimes c) )$.
+#! @Arguments a, b, c
 DeclareOperation( "AssociatorLeftToRight",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are an object $s = (a \otimes b) \otimes c$,
+#! three objects $a,b,c$,
+#! and an object $r = a \otimes (b \otimes c)$.
+#! The output is the associator $\alpha_{(a,b),c}: (a \otimes b) \otimes c \rightarrow a \otimes (b \otimes c)$.
+#! @Returns a morphism in $\mathrm{Hom}( (a \otimes b) \otimes c \rightarrow a \otimes (b \otimes c) )$.
+#! @Arguments s, a, b, c, r
 DeclareOperation( "AssociatorLeftToRight",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>AssociatorLeftToRight</C>.
+#! $f: ( a \otimes b ) \otimes c, a, b, c, a \otimes (b \otimes c ) \mapsto \alpha_{(a,b),c}$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddAssociatorLeftToRight",
                   [ IsCapCategory, IsFunction ] );
 
@@ -94,9 +165,21 @@ DeclareOperation( "AddAssociatorLeftToRight",
 
 
 ##
+#! @Description
+#! The argument is a category $\mathbf{C}$.
+#! The output is the tensor unit $1$ of $\mathbf{C}$.
+#! @Returns an object
+#! @Arguments C
 DeclareAttribute( "TensorUnit",
                   IsCapCategory );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>TensorUnit</C>.
+#! $f: ( ) \mapsto 1$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddTensorUnit",
                   [ IsCapCategory, IsFunction ] );
 
@@ -111,13 +194,29 @@ DeclareOperation( "AddTensorUnit",
 
 
 ##
+#! @Description
+#! The argument is an object $a$.
+#! The output is the left unitor $\lambda_a: 1 \otimes a \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}(1 \otimes a, a )$
+#! @Arguments a
 DeclareAttribute( "LeftUnitor",
                   IsCapCategoryObject );
 
-# the second argument is the given tensor product
+#! @Description
+#! The arguments are an object $a$ and an object $s = 1 \otimes a$.
+#! The output is the left unitor $\lambda_a: 1 \otimes a \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}(1 \otimes a, a )$
+#! @Arguments a, s
 DeclareOperation( "LeftUnitor",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>LeftUnitor</C>.
+#! $f: (a, 1 \otimes a) \mapsto \lambda_a$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddLeftUnitor",
                   [ IsCapCategory, IsFunction ] );
 
@@ -133,13 +232,29 @@ DeclareOperation( "AddLeftUnitor",
 
 
 ##
+#! @Description
+#! The argument is an object $a$.
+#! The output is the inverse of the left unitor $\lambda_a^{-1}: a \rightarrow 1 \otimes a$.
+#! @Returns a morphism in $\mathrm{Hom}(a, 1 \otimes a)$
+#! @Arguments a
 DeclareAttribute( "LeftUnitorInverse",
                   IsCapCategoryObject );
 
-# the second argument is the given tensor product
+#! @Description
+#! The argument is an object $a$ and an object $r = 1 \otimes a$.
+#! The output is the inverse of the left unitor $\lambda_a^{-1}: a \rightarrow 1 \otimes a$.
+#! @Returns a morphism in $\mathrm{Hom}(a, 1 \otimes a)$
+#! @Arguments a, r
 DeclareOperation( "LeftUnitorInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>LeftUnitorInverse</C>.
+#! $f: (a, 1 \otimes a) \mapsto \lambda_a^{-1}$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddLeftUnitorInverse",
                   [ IsCapCategory, IsFunction ] );
 
@@ -154,13 +269,29 @@ DeclareOperation( "AddLeftUnitorInverse",
 
 
 ##
+#! @Description
+#! The argument is an object $a$.
+#! The output is the right unitor $\rho_a: a \otimes 1 \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes 1, a )$
+#! @Arguments a
 DeclareAttribute( "RightUnitor",
                   IsCapCategoryObject );
 
-# the second argument is the given tensor product
+#! @Description
+#! The arguments are an object $a$ and an object $s = a \otimes 1$.
+#! The output is the right unitor $\rho_a: a \otimes 1 \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes 1, a )$
+#! @Arguments a, s
 DeclareOperation( "RightUnitor",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>RightUnitor</C>.
+#! $f: (a, a \otimes 1) \mapsto \rho_a$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddRightUnitor",
                   [ IsCapCategory, IsFunction ] );
 
@@ -175,13 +306,30 @@ DeclareOperation( "AddRightUnitor",
 
 
 ##
+#! @Description
+#! The argument is an object $a$.
+#! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \otimes 1$.
+#! @Returns a morphism in $\mathrm{Hom}( a, a \otimes 1 )$
+#! @Arguments a
 DeclareAttribute( "RightUnitorInverse",
                   IsCapCategoryObject );
 
 # the second argument is the given tensor product
+#! @Description
+#! The arguments are an object $a$ and an object $r = a \otimes 1$.
+#! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \otimes 1$.
+#! @Returns a morphism in $\mathrm{Hom}( a, a \otimes 1 )$
+#! @Arguments a, r
 DeclareOperation( "RightUnitorInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>RightUnitorInverse</C>.
+#! $f: (a, a \otimes 1) \mapsto \rho_a^{-1}$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddRightUnitorInverse",
                   [ IsCapCategory, IsFunction ] );
 
@@ -196,12 +344,31 @@ DeclareOperation( "AddRightUnitorInverse",
 
 
 ##
+#! @Description
+#! The arguments are two objects $a,b$.
+#! The output is the braiding $ B_{a,b}: a \otimes b \rightarrow b \otimes a$.
+#! @Returns a morphism in $\mathrm{Hom}( a \otimes b, b \otimes a )$.
+#! @Arguments a,b
 DeclareOperation( "Braiding",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are an object $s = a \otimes b$, 
+#! two objects $a,b$,
+#! and an object $r = b \otimes a$.
+#! The output is the braiding $ B_{a,b}: a \otimes b \rightarrow b \otimes a$.
+#! @Returns a morphism in $\mathrm{Hom}( a \otimes b, b \otimes a )$.
+#! @Arguments s,a,b,r
 DeclareOperation( "Braiding",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>Braiding</C>.
+#! $f: (a \otimes b, a, b, b \otimes a) \rightarrow B_{a,b}$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddBraiding",
                   [ IsCapCategory, IsFunction ] );
 
@@ -216,12 +383,31 @@ DeclareOperation( "AddBraiding",
 
 
 ##
+#! @Description
+#! The arguments are two objects $a,b$.
+#! The output is the inverse of the braiding $ B_{a,b}^{-1}: b \otimes a \rightarrow a \otimes b$.
+#! @Returns a morphism in $\mathrm{Hom}( b \otimes a, a \otimes b )$.
+#! @Arguments a,b
 DeclareOperation( "BraidingInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are an object $s = b \otimes a$, 
+#! two objects $a,b$,
+#! and an object $r = a \otimes b$.
+#! The output is the braiding $ B_{a,b}^{-1}: b \otimes a \rightarrow a \otimes b$.
+#! @Returns a morphism in $\mathrm{Hom}( b \otimes a, a \otimes b )$.
+#! @Arguments s,a,b,r
 DeclareOperation( "BraidingInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $f$.
+#! This operations adds the given function $f$ 
+#! to the category for the basic operation <C>BraidingInverse</C>.
+#! $f: (b \otimes a, a, b, a \otimes b) \rightarrow B_{a,b}^{-1}$.
+#! @Returns nothing
+#! @Arguments C, f
 DeclareOperation( "AddBraidingInverse",
                   [ IsCapCategory, IsFunction ] );
 
