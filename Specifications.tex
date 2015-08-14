@@ -86,7 +86,7 @@ the category of presentations).
  If we want to refer to the classical notion of a category (i.e. the one used in \cite{MLCWM}) we will use the term \textit{classical category}.
 \end{convention}
 
-\section{\GAP Sets and \GAP Maps}
+\section{\GAP Sets and \GAP Maps}\label{section:gap_sets}
 
 In this section, we will first define \GAP sets and \GAP maps and
 then associate to such objects actual sets and maps. 
@@ -112,7 +112,7 @@ both having values in $\Bool$, such that
 \begin{enumerate}
  \item $P$ defines a map $\mathcal{U} \rightarrow \Bool$,
  \item $=_P$ defines a map $\{ ( a,b ) \in \mathcal{U} \times \mathcal{U} ~|~ P(a) = P(b) = \texttt{true} \} \rightarrow \Bool$,
- \item $=_P$ defines an equivalence relation on $\{ a \in \mathcal{U} ~|~ P(a) = \texttt{true} \}$.
+ \item $=_P$ defines an equivalence relation $\sim_{=_P}$ on $\{ a \in \mathcal{U} ~|~ P(a) = \texttt{true} \}$.
 \end{enumerate}
 \end{definition}
 
@@ -155,36 +155,97 @@ In order to model concatenations of maps, we have to define a notion of concaten
  is called a \textbf{concatenation of \GAP maps}.
 \end{definition}
 
-\begin{remark}
+\begin{example}
  If we would rely on weak caching in order to satisfy the first item in remark \ref{remark:implementation_of_gap_maps},
  a concatenation of \GAP maps would not necessarily yield equal output for equal input.
- \todo{give an example}
-\end{remark}
+ Here is an example of what can go wrong:
+ 
+ Let $R$ be a ring. We take matrices $M \in R^{n \times m}$ for integers $n,m$ as a data structure of
+ modules over $R$, where the matrix $M$ shall represent the quotient module $R^{ 1 \times m }/ M$.
+ Two modules are considered equal (\texttt{IsEqualForObjects}) if their representing matrices are equal.
+ 
+ So for example, if we take $A = ( 0 )$ and $B = ( 1 )$, then $A$ represents a module isomorphic to $R$, 
+ $B$ represents a module isomorphic to the zero module.
+ A canonical way to implement the direct sum of two modules would be to construct a diagonal block matrix,
+ so that applying $A \oplus -$ twice to $B$ yields
+ \[
+  \mathtt{result_1 := }
+  A \oplus( A \oplus B ) =
+  A \oplus
+  \begin{pmatrix}
+   0 & 0 \\
+   0 & 1
+  \end{pmatrix} =
+  \begin{pmatrix}
+   0 & 0 & 0 \\
+   0 & 0 & 0 \\
+   0 & 0 & 1
+  \end{pmatrix}.
+ \]
+ If $A \oplus - $ works with a weak cache, the result of $A \oplus B$ might get lost, even though we still can access $\mathtt{result_1}$.
+ Now assume that the attribute $\texttt{IsZero}$ becomes known for $B$, and assume furthermore that there is a special implementation
+ for $A \oplus -$ which just returns $A$ in that case, we suddenly have
+ \[
+  \mathtt{result_2 := }
+  A \oplus( A \oplus B ) =
+  A \oplus A =
+  \begin{pmatrix}
+   0 & 0 \\
+   0 & 0 
+  \end{pmatrix},
+ \]
+leaving us with two saved results from syntactically identical expressions
+having non equal evaluations.
+\end{example}
 
+We now associate to every \GAP set and every \GAP map a corresponding object in set theory.
+
+\begin{definition}
+ Let $(P, =_P)$ be a \GAP set. We define the \textbf{associated set} by
+ \[
+  \overline{P} := \{ x \in \mathcal{U} ~|~ x \in P \} / \sim_{ =_P }.
+ \]
+ The equivalence class of an object $x \in P$ is denoted by $\overline{x}$.
+\end{definition}
+
+\begin{definition}
+ Let $\alpha: (P, =_P) \rightarrow (Q, =_Q)$ be a \GAP map. We define the \textbf{associated map} by
+ \[
+  \overline{\alpha} := \{ (\overline{p}, \overline{q}) ~|~ p \in P, q \in Q, \alpha( p ) =_{Q} q \} \subseteq \overline{P} \times \overline{Q}.
+ \]
+\end{definition}
+
+The definitions of the associated $n$-ary maps for $n \in \N$ and for the associated concatenation map are similar.
 
 \section{Equality Specifications}
 
 \begin{specification}
  Every basic operation has to yield equal output for given equal input.
-\end{specification}
+ \end{specification}
 
-Every basic operation takes finitely many arguments as an input and computes one single output.
+Stated in the terminology of section \ref{section:gap_sets}: Every basic operation has to be a \GAP map.
+\\ \\
+Realizing a basic operation as a \GAP map means that we first have to understand its domain and codomain,
+which are \GAP sets.
+So let $\mathbf{C}$ be a category object, i.e., a category realized as a \GAP object in $\CapPkg$.
+Every basic operation of $\mathbf{C}$ takes finitely many arguments as an input and computes one single output.
 Each input argument has one of the following types:
 \begin{enumerate}
  \item $\Int$, an integer.
  \item $\Bool$, a boolean.
- \item $\Obj$, an object of a category.
- \item $\Hom( a, b )$, a morphism with source and range given by objects $a$ and $b$, respectively (this is a dependent type).
- \item $\ListObj$, a finite list of objects.
- \item $\ListMor$, a finite list of morphisms which possibly have different sources or ranges.
+ \item $\Obj_{\mathbf{C}}$, an object of $\mathbf{C}$.
+ \item $\Hom_{\mathbf{C}}( a, b )$, a morphism with source and range given by objects $a$ and $b$ in $\mathbf{C}$, respectively (this is a dependent type).
+       We write $\Mor_{\mathbf{C}} := \sum_{a,b: \Obj_{\mathbf{C}}} \Hom_{\mathbf{C}}( a, b )$ for the type of all morphisms.
+ \item $\ListObj_{\mathbf{C}}$, a finite list of objects.
+ \item $\ListMor_{\mathbf{C}}$, a finite list of morphisms which possibly have different sources or ranges.
 \end{enumerate}
 These are also the possible output types except that an output never is a list. \\
 We now specify what it means for two terms of the same type to be equal.
 \begin{enumerate}
  \item For $\Int$ and $\Bool$, equality is given by the equality operations in $\GAP$.
- \item For $\ListObj$ and $\ListMor$, equality is given by entrywise equality.
- \item For $\Obj$, equality is given by the basic operation \texttt{IsEqualForObjects}.
- \item For $\Hom( a, b )$, equality is given by the basic operation \texttt{IsEqualForMorphisms}.
+ \item For $\ListObj_{\mathbf{C}}$ and $\ListMor_{\mathbf{C}}$, equality is given by entrywise equality.
+ \item For $\Obj_{\mathbf{C}}$, equality is given by the basic operation \texttt{IsEqualForObjects}.
+ \item For $\Hom_{\mathbf{C}}( a, b )$, equality is given by the basic operation \texttt{IsEqualForMorphisms}.
 \end{enumerate}
 
 Like every basic operation, \texttt{IsEqualForObjects} and \texttt{IsEqualForMorphisms} can be added to 
@@ -200,18 +261,17 @@ a category object using the corresponding add functions \texttt{AddIsEqualForObj
 \begin{remark}\label{remark:realization_of_types}
  The above listed types are differently realized in \CapPkg.
  \begin{itemize}
-  \item For $\Int$, we use the realization of \GAP
+  \item For $\Int$, we use the realization of \GAP.
   \item For $\Bool$, we use the realization of \GAP, but only the values \texttt{true} and \texttt{false}
   are allowed (exception: equality functions, see \ref{subsection:specifications_is_equal_for_objects} and \ref{subsection:specifications_is_equal_for_morphisms}).
-  \item For $\Obj$, there is a \GAP filter \texttt{IsCapCategoryObject}.
-  \item The dependent type $\Hom( a, b )$ is realized by \GAP objects within
- the filter \texttt{IsCapCategoryMorphism} having objects set
- for their attributes \texttt{Source} and \texttt{Range}.
-  \item There are no special \GAP filters for $\ListObj$ and $\ListMor$, simply the \GAP \texttt{IsList}
+  \item For $\Obj_{\mathbf{C}}$, there is a \GAP filter \texttt{ObjectFilter}($\mathbf{C}$).
+  \item The type $\Mor$ is realized by \GAP objects within the filter \texttt{MorphismFilter}($\mathbf{C}$). 
+  The dependent type $\Hom_{\mathbf{C}}( a, b )$ is realized by objects of type $\Mor$ having the objects $a$, $b$ set
+ for their attributes \texttt{Source} and \texttt{Range}. 
+  \item There are no special \GAP filters for $\ListObj_{\mathbf{C}}$ and $\ListMor_{\mathbf{C}}$, simply the \GAP \texttt{IsList}
   is used.
- \end{itemize}
+\end{itemize}
 \end{remark}
-
 
 \subsection{Specifications for \texttt{IsEqualForObjects}}\label{subsection:specifications_is_equal_for_objects}
 The basic operation \texttt{IsEqualForObjects} has a special specification.
@@ -225,8 +285,9 @@ The basic operation \texttt{IsEqualForObjects} has a special specification.
   for objects $a, a', b, b'$ such that \texttt{IsIdenticalObj}($a$, $a'$) and \texttt{IsIdenticalObj}($b$, $b'$) holds,
   \texttt{IsEqualForObjects}($a$, $b$) and \texttt{IsEqualForObjects}($a'$, $b'$) yield equal booleans.
   \item \texttt{IsEqualForObjects} has to give rise to an equivalence relation on the set of all objects together
-  with \texttt{IsEqualForObjects} as an equality function.\todo{\GAP sets}
+  with \texttt{IsEqualForObjects} as an equality function.
  \end{enumerate}
+ In short: The pair $( \Obj, \texttt{IsEqualForObjects} )$ has to become a \GAP set, see section \ref{section:gap_sets}.
 \end{specification}
 
 \begin{remark}
@@ -237,24 +298,25 @@ The basic operation \texttt{IsEqualForObjects} has a special specification.
 \subsection{Specifications for \texttt{IsEqualForMorphisms}}\label{subsection:specifications_is_equal_for_morphisms}
 The basic operation \texttt{IsEqualForMorphisms} has a special specification.
 
-\begin{specification}[\texttt{IsEqualForMorphisms}]
-~
+\begin{specification}[$\mathtt{IsEqualForMorphisms}$]
+Let $a, b: \Obj$. 
  \begin{enumerate}
-  \item Input: two morphisms ($\Hom(a,b)$) having equal sources and ranges.
+  \item Input: two morphisms ($\Hom(a,b)$) (having equal sources and ranges).
   \item Output: a boolean ($\Bool$).
   \item \texttt{IsEqualForMorphisms} has to respect the \GAP function \texttt{IsIdenticalObj}, i.e., 
   for morphisms $\alpha, \alpha', \beta, \beta'$ such that \texttt{IsIdenticalObj}($\alpha$, $\alpha'$) and \texttt{IsIdenticalObj}($\beta$, $\beta'$) holds,
   \texttt{IsEqualForMorphisms}($\alpha$, $\beta$) and \texttt{IsEqualForMorphisms}($\alpha'$, $\beta'$) yield equal booleans.
   \item \texttt{IsEqualForMorphisms} has to give rise to an equivalence relation on the set of all morphisms with prescribed source and range together
-  with \texttt{IsEqualForObjects} as an equality function.\todo{\GAP sets}
+  with \texttt{IsEqualForObjects} as an equality function.
  \end{enumerate}
+ The pair $( \Hom(a,b), \texttt{IsEqualForMorphisms} )$ has to become a \GAP set
+ (assuming we restrict \texttt{IsEqualForMorphisms} to $\Hom(a,b)$), see section \ref{section:gap_sets}.
 \end{specification}
 
 \begin{remark}
  It is allowed for \texttt{IsEqualForMorphisms} to return \texttt{fail}. This is interpreted by \CapPkg as
  \textit{``I don't know if the two morphisms are equal''}.
 \end{remark}
-
 
 
 \subsection{\GAP Sets and \GAP Maps}
@@ -266,6 +328,8 @@ The basic operation \texttt{IsEqualForMorphisms} has a special specification.
 \end{specification}
 
 Every basic operation symbol has a type. To be more precise, it has a (dependent) function type.
+We refer to the first chapter of \cite{hottbook} for a good summary of dependent type theory,
+although in is not necessary in order to understand the following examples.
 
 \begin{example}\label{example:simple_typing}
  The type of $\IsZeroForObjects$ is
