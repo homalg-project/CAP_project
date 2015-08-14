@@ -2597,6 +2597,36 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
 #   
 # end : CategoryFilter := IsSymmetricClosedMonoidalCategory 
 
+##
+AddDerivationToCAP( EvaluationMorphism,
+                  
+  function( object_1, object_2, tensor_object )
+    
+    return InternalHomToTensorProductAdjunctionMap(
+             object_1,
+             object_2,
+             IdentityMorphism( InternalHomOnObjects( object_1, object_2 ) )
+           );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "EvaluationMorphism using the tenor hom adjunction on the identity" );
+
+##
+AddDerivationToCAP( CoevaluationMorphism,
+                  
+  function( object_1, object_2, internal_hom )
+    
+    return TensorProductToInternalHomAdjunctionMap(
+             object_1,
+             object_2,
+             IdentityMorphism( TensorProductOnObjects( object_1, object_2 ) )
+           );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "CoevaluationMorphism using the tensor hom adjunction on the identity" );
+
+
+
 ####################################
 ## Final derived methods
 ####################################
