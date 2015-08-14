@@ -363,3 +363,39 @@ AddUniversalMorphismIntoDirectSum( vecspaces,
     return VectorSpaceMorphism( Source( sink[1] ), universal_morphism, direct_product );
   
 end );
+
+
+SetIsAbelianCategory( vecspaces, true );
+
+Finalize( vecspaces );
+
+
+InstallMethod( ViewObj,
+               [ IsHomalgRationalVectorSpaceRep ],
+
+  function( obj )
+
+    Print( "<A rational vector space of dimension ", String( Dimension( obj ) ), ">" );
+
+end );
+
+InstallMethod( ViewObj,
+               [ IsHomalgRationalVectorSpaceMorphismRep ],
+
+  function( obj )
+
+    Print( "A rational vector space homomorphism with matrix: \n" );
+  
+    Display( obj!.morphism );
+
+end );
+
+## Example
+
+V := QVectorSpace( 2 );
+
+W := QVectorSpace( 3 );
+
+alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
+
+

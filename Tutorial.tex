@@ -197,3 +197,18 @@ to the factors. Finally, since the direct sum is product and coproduct at the sa
 For details please have a look at \ref{chapter:constructions}.
 
 \input{GAP_tex/vecspaces_example/DirectSum}
+
+Now we set the category to abelian, to tell the system that every property of an abelian category holds, and
+finalize it.
+
+\input{GAP_tex/vecspaces_example/Finalize}
+
+The finalize step is in this case very important. It triggers further derivations of methods, which depend on the fact that
+some operations are not installed previously, and will not be installed anymore. Also it makes it possible to construct further
+categories, like the category of complexes. We now initialize an interactive session with this implementation of vector spaces
+and start by creating some morphisms.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/CreateMorphisms_main}
+\end{small}
+
