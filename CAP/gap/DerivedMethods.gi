@@ -2335,7 +2335,111 @@ AddDerivationToCAP( RankMorphism,
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "Rank of an object as the trace of its identity" );
 
+##
+AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphism,
+                    
+  function( a1, b1, a2, b2, new_source_and_range_list )
+    local morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
+    
+    int_hom_a1_b1 := InternalHomOnObjects( a1, b1 );
+    
+    int_hom_a2_b2 := InternalHomOnObjects( a2, b2 );
+    
+    id_a2 := IdentityMorphism( a2 );
+    
+    tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2 := 
+      TensorProductOnObjects( int_hom_a1_b1, int_hom_a2_b2 );
+    
+    morphism := PreCompose(
+      [
+        AssociatorRightToLeft(
+          tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2,
+          a1,
+          a2 ),
+          
+          TensorProductOnMorphisms(
+            AssociatorLeftToRight( int_hom_a1_b1, int_hom_a2_b2, a1 ),
+            id_a2 ),
+          
+          TensorProductOnMorphisms(
+            TensorProductOnMorphisms(
+              IdentityMorphism( int_hom_a1_b1 ),
+              Braiding( int_hom_a2_b2, a1 )
+            ),
+            id_a2 ),
+          
+          TensorProductOnMorphisms(
+            AssociatorRightToLeft( int_hom_a1_b1, a1, int_hom_a2_b2 ),
+            id_a2 ),
+          
+          TensorProductOnMorphisms(
+            TensorProductOnMorphisms(
+              EvaluationMorphism( a1, b1 ),
+              IdentityMorphism( int_hom_a2_b2 ) ),
+            id_a2 ),
+          
+          AssociatorLeftToRight( b1, int_hom_a2_b2, a2 ),
+          
+          TensorProductOnMorphisms(
+            IdentityMorphism( b1 ),
+            EvaluationMorphism( a2, b2 )
+          )
+      ]
+    );
+    
+    return TensorProductToInternalHomAdjunctionMap(
+             tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2,
+             TensorProductOnObjects( a1, a2 ),
+             morphism );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "TensorProductInternalHomCompatibilityMorphism using associator, braiding an the evaluation morphism" );
 
+##
+AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphism,
+                    
+  function( a1, b1, a2, b2, new_source_and_range_list )
+    local morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
+    
+    int_hom_a1_b1 := InternalHomOnObjects( a1, b1 );
+    
+    int_hom_a2_b2 := InternalHomOnObjects( a2, b2 );
+    
+    id_a2 := IdentityMorphism( a2 );
+    
+    tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2 := 
+      TensorProductOnObjects( int_hom_a1_b1, int_hom_a2_b2 );
+    
+    morphism := PreCompose(
+      [
+          
+          TensorProductOnMorphisms(
+            TensorProductOnMorphisms(
+              IdentityMorphism( int_hom_a1_b1 ),
+              Braiding( int_hom_a2_b2, a1 )
+            ),
+            id_a2 ),
+          
+          TensorProductOnMorphisms(
+            TensorProductOnMorphisms(
+              EvaluationMorphism( a1, b1 ),
+              IdentityMorphism( int_hom_a2_b2 ) ),
+            id_a2 ),
+          
+          TensorProductOnMorphisms(
+            IdentityMorphism( b1 ),
+            EvaluationMorphism( a2, b2 )
+          )
+      ]
+    );
+    
+    return TensorProductToInternalHomAdjunctionMap(
+             tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2,
+             TensorProductOnObjects( a1, a2 ),
+             morphism );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
+      Description := "TensorProductInternalHomCompatibilityMorphism using braiding an the evaluation morphism" );
 
 ####################################
 ## Final derived methods

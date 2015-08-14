@@ -525,8 +525,12 @@ DeclareOperation( "AddMorphismFromBidual",
 DeclareOperation( "TensorProductInternalHomCompatibilityMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+##
+## The new_source and new_range arguments are the first and second element of the list.
+## This construction is due to the fact that the maximal number of arguments for an operation is 6,
+## but a basic operation with 6 arguments would install a setter having 7 arguments.
 DeclareOperation( "TensorProductInternalHomCompatibilityMorphism",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsList ] );
 
 DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphism",
                   [ IsCapCategory, IsFunction ] );

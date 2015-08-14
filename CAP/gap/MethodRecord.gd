@@ -2362,7 +2362,7 @@ MorphismFromBidual := rec(
 
 TensorProductInternalHomCompatibilityMorphism := rec(
   installation_name := "TensorProductInternalHomCompatibilityMorphism",
-  filter_list := [ "object", "object", "object", "object", "object", "object" ],
+  filter_list := [ "object", "object", "object", "object", IsList ],
   cache_name := "TensorProductInternalHomCompatibilityMorphism",
   return_type := "morphism" ),
 
