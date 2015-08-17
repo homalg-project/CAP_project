@@ -7,3 +7,33 @@
 ##
 ##
 #############################################################################
+
+####################################
+##
+## GAP Category
+##
+####################################
+
+DeclareCategory( "IsVectorSpaceMorphism",
+                 IsCapCategoryMorphism );
+
+####################################
+##
+## Constructors
+##
+####################################
+
+DeclareOperation( "VectorSpaceMorphism",
+                  [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ] );
+
+####################################
+##
+## Attributes
+##
+####################################
+
+DeclareAttribute( "UnderlyingFieldForHomalg",
+                  IsVectorSpaceMorphism );
+
+DeclareAttribute( "UnderlyingHomalgMatrix",
+                  IsVectorSpaceMorphism );

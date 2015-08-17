@@ -31,11 +31,18 @@ BindGlobal( "TheTypeOfVectorSpaceObjects",
 ##
 ####################################
 
+##
 InstallMethod( VectorSpaceObject,
                [ IsInt, IsFieldForHomalg ],
                
   function( dimension, homalg_field )
     local category, vector_space_object;
+    
+    if dimension < 0 then
+      
+      return Error( "first argument must be a non-negative integer" );
+      
+    fi;
     
     category := MatrixCategory( homalg_field );
     
@@ -58,6 +65,7 @@ end );
 ##
 ####################################
 
+##
 InstallMethod( ViewObj,
                [ IsVectorSpaceObject ],
 
