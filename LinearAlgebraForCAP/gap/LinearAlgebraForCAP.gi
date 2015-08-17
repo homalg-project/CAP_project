@@ -34,7 +34,12 @@ InstallMethod( MatrixCategory,
     INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY( category );
     
     ## TODO: Logic for MatrixCategory
-    
+    AddPredicateImplicationFileToCategory( category,
+      Filename(
+        DirectoriesPackageLibrary( "LinearAlgebraForCAP", "LogicForMatrixCategory" ),
+        "PredicateImplicationsForMatrixCategory.tex" )
+    );
+     
     Finalize( category );
     
     return category;
@@ -325,14 +330,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddCokernel( category,
       function( morphism )
-        local homalg_matrix;
+        local homalg_field, homalg_matrix;
+        
+        homalg_field := UnderlyingFieldForHomalg( morphism );
         
         homalg_matrix := UnderlyingHomalgMatrix( morphism );
         
-        return VectorSpaceObject( NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+        return VectorSpaceObject( NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ), homalg_field );
         
     end );
-    
     
     ##
     AddCokernelProj( category,
@@ -527,7 +533,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         fi;
         
         return VectorSpaceMorphism( tensor_object,
-                                    HomalgMatrix( column, dimension, 1, homalg_field ),
+                                    HomalgMatrix( column, Dimension( tensor_object ), 1, homalg_field ),
                                     unit );
         
     end );
@@ -561,7 +567,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         fi;
         
         return VectorSpaceMorphism( unit,
-                                    HomalgMatrix( row, 1, dimension, homalg_field ),
+                                    HomalgMatrix( row, 1, Dimension( tensor_object ), homalg_field ),
                                     tensor_object );
         
     end );

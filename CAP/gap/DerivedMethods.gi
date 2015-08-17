@@ -468,6 +468,15 @@ end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and E
 ###########################
 
 ##
+AddDerivationToCAP( IsEndomorphism,
+                      
+  function( morphism )
+    
+    return IsEqualForObjects( Source( morphism ), Range( morphism ) );
+    
+end : Description := "IsEndomorphism by deciding whether source and range are equal as objects" );
+
+##
 AddDerivationToCAP( IsZeroForMorphisms,
                       
   function( morphism )

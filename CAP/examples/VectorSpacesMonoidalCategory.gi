@@ -868,7 +868,7 @@ AddCoevaluationForDual( vecspaces,
     fi;
     
     return VectorSpaceMorphism( unit,
-                                HomalgMatrix( row, 1, dimension, VECTORSPACES_FIELD ),
+                                HomalgMatrix( row, 1, Dimension( tensor_object ), VECTORSPACES_FIELD ),
                                 tensor_object );
     
 end );
