@@ -73,6 +73,9 @@ DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
 DeclareOperation( "CommonRestriction",
                   [ IsList ] );
 
+DeclareOperation( "CommonCoastriction",
+                  [ IsList ] );
+
 ####################################
 ##
 ## Attributes
