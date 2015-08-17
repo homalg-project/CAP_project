@@ -212,7 +212,47 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
         
     end );
     
-    ## Universal property of direct sum still missing.
+    AddUniversalMorphismIntoDirectSum( category,
+      
+      function( morphism_list )
+        local generalized_morphisms, source_aid, associated, range_aid;
+        
+        generalized_morphisms := List( generalized_morphisms, UnderlyingGeneralizedMorphism );
+        
+        generalized_morphisms := CommonRestriction( generalized_morphisms );
+        
+        generalized_morphisms := List( generalized_morphisms, DomainAssociatedMorphismCodomainTriple );
+        
+        source_aid := generalized_morphisms[ 1 ][ 1 ];
+        
+        associated := UniversalMorphismIntoDirectSum( List( generalized_morphisms, i -> i[ 2 ] ) );
+        
+        range_aid := DirectSumFunctorial( List( generalized_morphisms, i -> i[ 3 ] ) );
+        
+        return SerreQuotientCategoryMorphism( category, source_aid, associated, range_aid );
+        
+    end );
+    
+    AddUniversalMorphismFromDirectSum( category,
+      
+      function( morphism_list )
+        local generalized_morphisms, source_aid, associated, range_aid;
+        
+        generalized_morphisms := List( generalized_morphisms, UnderlyingGeneralizedMorphism );
+        
+        generalized_morphisms := CommonCoastriction( generalized_morphisms );
+        
+        generalized_morphisms := List( generalized_morphisms, DomainAssociatedMorphismCodomainTriple );
+        
+        range_aid := generalized_morphisms[ 1 ][ 3 ];
+        
+        associated := UniversalMorphismFromDirectSum( List( generalized_morphisms, i -> i[ 2 ] ) );
+        
+        source_aid := DirectSumFunctorial( List( generalized_morphisms, i -> i[ 1 ] ) );
+        
+        return SerreQuotientCategoryMorphism( category, source_aid, associated, range_aid );
+        
+    end );
     
     ## Kernel
     
