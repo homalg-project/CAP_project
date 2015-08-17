@@ -398,4 +398,12 @@ W := QVectorSpace( 3 );
 
 alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 
+KernelEmb( alpha );
 
+Cokernel( alpha );
+
+CokernelProj( alpha );
+
+alpha + alpha;
+
+- alpha;

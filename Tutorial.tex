@@ -212,3 +212,16 @@ and start by creating some morphisms.
 \input{GAP_tex/vecspaces_example/CreateMorphisms_main}
 \end{small}
 
+Unsuprisingly, we can now compute some of the stuff we told the system how to compute, for example the \texttt{KernelEmb},
+which is the embedding of the kernel. Also, the cokernel and its projection can be computed. Those computations will
+be carried out using the functions we have given to the system. It is also possible to use the standard arithmetic on the morphism.
+Even if the added functions have different names, e.g., \texttt{AdditionForMorphisms}, it is possible to use the \GAP arithmetic
+operations, e.g., \texttt{+}, for it.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/KernelExample_main}
+\end{small}
+
+
+
+
