@@ -27,12 +27,12 @@ DeclareOperationWithCache( "TensorProductOnObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>TensorProductOnObjects</C>.
-#! $f: (a,b) \mapsto a \otimes b$.
+#! $F: (a,b) \mapsto a \otimes b$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddTensorProductOnObjects",
                   [ IsCapCategory, IsFunction ] );
 
@@ -66,12 +66,12 @@ DeclareOperation( "TensorProductOnMorphisms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>TensorProductOnMorphisms</C>.
-#! $f: ( \alpha, \beta ) \mapsto \alpha \otimes \beta$.
+#! $F: ( a \otimes b, \alpha: a \rightarrow a', \beta: b \rightarrow b', a' \otimes b' ) \mapsto \alpha \otimes \beta$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddTensorProductOnMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
@@ -105,12 +105,12 @@ DeclareOperation( "AssociatorRightToLeft",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>AssociatorRightToLeft</C>.
-#! $f: ( a \otimes (b \otimes c), a, b, c, (a \otimes b) \otimes c ) \mapsto \alpha_{a,(b,c)}$.
+#! $F: ( a \otimes (b \otimes c), a, b, c, (a \otimes b) \otimes c ) \mapsto \alpha_{a,(b,c)}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddAssociatorRightToLeft",
                   [ IsCapCategory, IsFunction ] );
 
@@ -145,12 +145,12 @@ DeclareOperation( "AssociatorLeftToRight",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>AssociatorLeftToRight</C>.
-#! $f: ( a \otimes b ) \otimes c, a, b, c, a \otimes (b \otimes c ) \mapsto \alpha_{(a,b),c}$.
+#! $F: (( a \otimes b ) \otimes c, a, b, c, a \otimes (b \otimes c )) \mapsto \alpha_{(a,b),c}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddAssociatorLeftToRight",
                   [ IsCapCategory, IsFunction ] );
 
@@ -174,12 +174,12 @@ DeclareAttribute( "TensorUnit",
                   IsCapCategory );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>TensorUnit</C>.
-#! $f: ( ) \mapsto 1$.
+#! $F: ( ) \mapsto 1$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddTensorUnit",
                   [ IsCapCategory, IsFunction ] );
 
@@ -211,12 +211,12 @@ DeclareOperation( "LeftUnitor",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>LeftUnitor</C>.
-#! $f: (a, 1 \otimes a) \mapsto \lambda_a$.
+#! $F: (a, 1 \otimes a) \mapsto \lambda_a$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddLeftUnitor",
                   [ IsCapCategory, IsFunction ] );
 
@@ -249,12 +249,12 @@ DeclareOperation( "LeftUnitorInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>LeftUnitorInverse</C>.
-#! $f: (a, 1 \otimes a) \mapsto \lambda_a^{-1}$.
+#! $F: (a, 1 \otimes a) \mapsto \lambda_a^{-1}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddLeftUnitorInverse",
                   [ IsCapCategory, IsFunction ] );
 
@@ -286,12 +286,12 @@ DeclareOperation( "RightUnitor",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>RightUnitor</C>.
-#! $f: (a, a \otimes 1) \mapsto \rho_a$.
+#! $F: (a, a \otimes 1) \mapsto \rho_a$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddRightUnitor",
                   [ IsCapCategory, IsFunction ] );
 
@@ -324,12 +324,12 @@ DeclareOperation( "RightUnitorInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>RightUnitorInverse</C>.
-#! $f: (a, a \otimes 1) \mapsto \rho_a^{-1}$.
+#! $F: (a, a \otimes 1) \mapsto \rho_a^{-1}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddRightUnitorInverse",
                   [ IsCapCategory, IsFunction ] );
 
@@ -363,12 +363,12 @@ DeclareOperation( "Braiding",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>Braiding</C>.
-#! $f: (a \otimes b, a, b, b \otimes a) \rightarrow B_{a,b}$.
+#! $F: (a \otimes b, a, b, b \otimes a) \rightarrow B_{a,b}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddBraiding",
                   [ IsCapCategory, IsFunction ] );
 
@@ -402,12 +402,12 @@ DeclareOperation( "BraidingInverse",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>BraidingInverse</C>.
-#! $f: (b \otimes a, a, b, a \otimes b) \rightarrow B_{a,b}^{-1}$.
+#! $F: (b \otimes a, a, b, a \otimes b) \rightarrow B_{a,b}^{-1}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddBraidingInverse",
                   [ IsCapCategory, IsFunction ] );
 
@@ -431,12 +431,12 @@ DeclareOperation( "InternalHomOnObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>InternalHomOnObjects</C>.
-#! $f: (a,b) \mapsto \underline{\mathrm{Hom}}(a,b)$.
+#! $F: (a,b) \mapsto \underline{\mathrm{Hom}}(a,b)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddInternalHomOnObjects",
                   [ IsCapCategory, IsFunction ] );
 
@@ -451,7 +451,8 @@ DeclareOperation( "AddInternalHomOnObjects",
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
-#! The output is the internal hom morphism $\underline{\mathrm{Hom}}(\alpha,\beta)$.
+#! The output is the internal hom morphism
+#! $\underline{\mathrm{Hom}}(\alpha,\beta): \underline{\mathrm{Hom}}(a',b) \rightarrow \underline{\mathrm{Hom}}(a,b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \underline{\mathrm{Hom}}(a',b), \underline{\mathrm{Hom}}(a,b') )$
 #! @Arguments alpha, beta
 DeclareOperation( "InternalHomOnMorphisms",
@@ -461,19 +462,20 @@ DeclareOperation( "InternalHomOnMorphisms",
 #! The arguments are an object $s = \underline{\mathrm{Hom}}(a',b)$,
 #! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$,
 #! and an object $r = \underline{\mathrm{Hom}}(a,b')$.
-#! The output is the internal hom morphism $\underline{\mathrm{Hom}}(\alpha,\beta)$.
+#! The output is the internal hom morphism 
+#! $\underline{\mathrm{Hom}}(\alpha,\beta): \underline{\mathrm{Hom}}(a',b) \rightarrow \underline{\mathrm{Hom}}(a,b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \underline{\mathrm{Hom}}(a',b), \underline{\mathrm{Hom}}(a,b') )$
 #! @Arguments s, alpha, beta, r
 DeclareOperation( "InternalHomOnMorphisms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>InternalHomOnMorphisms</C>.
-#! $f: (\underline{\mathrm{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \underline{\mathrm{Hom}}(a,b') ) \mapsto \underline{\mathrm{Hom}}(\alpha,\beta)$.
+#! $F: (\underline{\mathrm{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \underline{\mathrm{Hom}}(a,b') ) \mapsto \underline{\mathrm{Hom}}(\alpha,\beta)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddInternalHomOnMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
@@ -507,12 +509,12 @@ DeclareOperation( "EvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>EvaluationMorphism</C>.
-#! $f: (a, b, \mathrm{\underline{Hom}}(a,b) \otimes a) \mapsto \mathrm{ev}_{a,b}$.
+#! $F: (a, b, \mathrm{\underline{Hom}}(a,b) \otimes a) \mapsto \mathrm{ev}_{a,b}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddEvaluationMorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -546,12 +548,12 @@ DeclareOperation( "CoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $f$.
-#! This operations adds the given function $f$ 
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>CoevaluationMorphism</C>.
-#! $f: (a, b, \mathrm{\underline{Hom}}(b, a \otimes b)) \mapsto \mathrm{coev}_{a,b}$.
+#! $F: (a, b, \mathrm{\underline{Hom}}(b, a \otimes b)) \mapsto \mathrm{coev}_{a,b}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddCoevaluationMorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -626,7 +628,7 @@ DeclareOperation( "AddInternalHomToTensorProductAdjunctionMap",
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the precomposition morphism
-#! $\mathrm{precom}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
+#! $\mathrm{MonoidalPreComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "MonoidalPreComposeMorphism",
@@ -638,7 +640,7 @@ DeclareOperation( "MonoidalPreComposeMorphism",
 #! three objects $a,b,c$,
 #! and an object $r = \mathrm{\underline{Hom}}(a,c)$.
 #! The output is the precomposition morphism
-#! $\mathrm{precom}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
+#! $\mathrm{MonoidalPreComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )$.
 #! @Arguments s,a,b,c,r
 DeclareOperation( "MonoidalPreComposeMorphism",
@@ -648,7 +650,7 @@ DeclareOperation( "MonoidalPreComposeMorphism",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>MonoidalPreComposeMorphism</C>.
-#! $F: (\mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{precom}_{a,b,c}$.
+#! $F: (\mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPreComposeMorphism}_{a,b,c}$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMonoidalPreComposeMorphism",
@@ -667,7 +669,7 @@ DeclareOperation( "AddMonoidalPreComposeMorphism",
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the postcomposition morphism
-#! $\mathrm{postcom}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
+#! $\mathrm{MonoidalPostComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "MonoidalPostComposeMorphism",
@@ -679,7 +681,7 @@ DeclareOperation( "MonoidalPostComposeMorphism",
 #! three objects $a,b,c$,
 #! and an object $r = \mathrm{\underline{Hom}}(a,c)$.
 #! The output is the postcomposition morphism
-#! $\mathrm{postcom}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
+#! $\mathrm{MonoidalPostComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )$.
 #! @Arguments s,a,b,c,r
 DeclareOperation( "MonoidalPostComposeMorphism",
@@ -689,7 +691,7 @@ DeclareOperation( "MonoidalPostComposeMorphism",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>MonoidalPostComposeMorphism</C>.
-#! $F: (\mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{precom}_{a,b,c}$.
+#! $F: (\mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPostComposeMorphism}_{a,b,c}$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMonoidalPostComposeMorphism",
@@ -985,7 +987,7 @@ DeclareOperation( "TensorProductDualityCompatibilityMorphism",
 #! The output is the natural morphism
 #! $\mathrm{TensorProductDualityCompatibilityMorphism}_{a,b}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes b^{\vee}, (a \otimes b)^{\vee} )$.
-#! @Arguments a,b
+#! @Arguments s,a,b,r
 DeclareOperation( "TensorProductDualityCompatibilityMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -1024,7 +1026,7 @@ DeclareOperation( "MorphismFromTensorProductToInternalHom",
 #! and an object $r = \mathrm{\underline{Hom}}(a,b)$.
 #! The output is the natural morphism $\mathrm{MorphismFromTensorProductToInternalHom}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )$.
-#! @Arguments a,b
+#! @Arguments s,a,b,r
 DeclareOperation( "MorphismFromTensorProductToInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -1158,7 +1160,7 @@ DeclareAttribute( "TraceMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>TraceMap</C>.
-#! $F: ( \alpha ) \mapsto \mathrm{trace}_{\alpha}$
+#! $F: \alpha \mapsto \mathrm{trace}_{\alpha}$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTraceMap",
@@ -1187,7 +1189,7 @@ DeclareAttribute( "RankMorphism",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>RankMorphism</C>.
-#! $F: ( a ) \mapsto \mathrm{rank}_{a}$
+#! $F: a \mapsto \mathrm{rank}_{a}$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddRankMorphism",
@@ -1217,7 +1219,7 @@ DeclareAttribute( "IsomorphismFromDualToInternalHom",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromDualToInternalHom</C>.
-#! $F: ( a ) \mapsto \mathrm{IsomorphismFromDualToInternalHom}_{a}$
+#! $F: a \mapsto \mathrm{IsomorphismFromDualToInternalHom}_{a}$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromDualToInternalHom",
@@ -1246,7 +1248,7 @@ DeclareAttribute( "IsomorphismFromInternalHomToDual",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromInternalHomToDual</C>.
-#! $F: ( a ) \mapsto \mathrm{IsomorphismFromInternalHomToDual}_{a}$
+#! $F: a \mapsto \mathrm{IsomorphismFromInternalHomToDual}_{a}$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromInternalHomToDual",
