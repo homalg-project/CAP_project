@@ -4,4 +4,8 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "LinearAlgebraForCAP", "gap/LinearAlgebraForCAP.gd");
+ReadPackage( "LinearAlgebraForCAP", "gap/LinearAlgebraForCAP.gd" );
+
+ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryObject.gd" );
+
+ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryMorphisms.gd" );

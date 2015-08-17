@@ -3,4 +3,8 @@
 #
 # Reading the implementation part of the package.
 #
-ReadPackage( "LinearAlgebraForCAP", "gap/LinearAlgebraForCAP.gi");
+ReadPackage( "LinearAlgebraForCAP", "gap/LinearAlgebraForCAP.gi" );
+
+ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryObject.gi" );
+
+ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryMorphism.gi" );
