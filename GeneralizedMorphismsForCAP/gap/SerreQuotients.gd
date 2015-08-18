@@ -77,6 +77,9 @@ DeclareOperation( "SerreQuotientCategory",
 DeclareOperation( "SerreQuotientCategory",
                   [ IsCapCategory, IsFunction ] );
 
+DeclareOperation( "\/",
+                  [ IsCapCategory, IsFunction ] );
+
 DeclareOperation( "AsSerreQuotientCategoryObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
