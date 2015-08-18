@@ -92,6 +92,16 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
         
     end );
     
+    ## IdentityMorphism
+    
+    AddIdentityMorphism( category,
+      
+      function( object )
+        
+        return AsSerreQuotientCategoryMorphism( category, IdentityMorphism( UnderlyingHonestObject( object ) ) );
+        
+    end );
+    
     ## Addition for morphisms
     
     AddAdditionForMorphisms( category,
@@ -297,7 +307,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
         
         cokernel_mor := PreCompose( Codomain( underlying_general ), cokernel_mor );
         
-        return SerreQuotientCategoryMorphism( category, cokernel_mor );
+        return AsSerreQuotientCategoryMorphism( category, cokernel_mor );
         
     end );
     
@@ -321,6 +331,11 @@ end );
 ## Constructor
 ##
 #############################################
+
+InstallMethod( \/,
+               [ IsCapCategory, IsFunction ],
+               
+  SerreQuotientCategory );
 
 InstallMethod( SerreQuotientCategory,
                [ IsCapCategory, IsFunction ],
@@ -354,6 +369,12 @@ InstallMethodWithCacheFromObject( SerreQuotientCategory,
     
     SetSubcategoryMembershipTestFunctionForSerreQuotient( serre_category, test_function );
     
+    SetIsAbelianCategory( serre_category, true );
+    
+    CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT( serre_category );
+    
+    Finalize( serre_category );
+    
     return serre_category;
     
 end );
@@ -382,6 +403,8 @@ InstallMethodWithCacheFromObject( AsSerreQuotientObject,
     
     AddToToDoList( ToDoListEntryForEqualAttributes( serre_object, "IsWellDefined", object, "IsWellDefined" ) );
     
+    AddObject( serre_category, serre_object );
+    
     return serre_object;
     
 end );
@@ -401,10 +424,12 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
     serre_morphism := rec( );
     
     ObjectifyWithAttributes( serre_morphism, TheTypeOfSerreQuotientCategoryMorphism,
-                             Source, AsSerreQuotientObject( UnderlyingHonestObject( Source( gen_morphism ) ) ),
-                             Range, AsSerreQuotientObject( UnderlyingHonestObject( Range( gen_morphism ) ) ) );
+                             Source, AsSerreQuotientObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
+                             Range, AsSerreQuotientObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ) );
     
     SetUnderlyingGeneralizedMorphism( serre_morphism, gen_morphism );
+    
+    AddMorphism( serre_category, serre_morphism );
     
     return serre_morphism;
     
