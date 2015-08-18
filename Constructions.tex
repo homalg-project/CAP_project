@@ -1,7 +1,69 @@
-\section{Basic constructions}
+\CapPkg supports categorical constructions 
+for a category $\mathbf{C}$
+of the following types:
 
-\section{Universal objects}\label{section:universalobjects}
+\begin{itemize}
+ \item Basic constructions which only depend on the fact that $\mathbf{C}$ is category,
+ such as composition ($\PreCompose$), identity ($\IdentityMorphism$), decisions whether
+ a morphism is a mono, epi, or iso ($\IsMonomorphism, \IsEpimorphism, \IsIsomorphism$).
+ \item Some limit and colimit constructions, such as direct product ($\DirectProduct$),
+ coproduct ($\Coproduct$), fiber product ($\FiberProduct$), pushout ($\Pushout$),
+ kernel ($\KernelObject$), cokernel ($\Cokernel$).
+ \item Constructions for monoidal categories, such as tensor product ($\TensorProductOnObjects$, $\TensorProductOnMorphisms$),
+ unitors ($\LeftUnitor$, $\RightUnitor$), associators \\($\AssociatorLeftToRight$, $\AssociatorRightToLeft$),
+ internal hom ($\InternalHomOnObjects$, $\InternalHomOnMorphisms$).
+\end{itemize}
 
-\section{Monoidal categories}
+\begin{notation}
+ For the definition of a category, see chapter \ref{chapter:specifications}, section \ref{section:categories}.
+\end{notation}
+
+
+\section{Basic Constructions}
+
+\section{Limits and Colimits}\label{section:universalobjects}
+
+In \CapPkg, support is given for the implementation of some special kinds of limits and
+colimits. We first give the definition of a limit and a colimit.
+Let $\mathbf{C}$ be a category. Let $\mathbf{I}$ be another category (called an \textbf{index category}) and $D: \mathbf{I} \rightarrow \mathbf{C}$
+a functor (called a \textbf{diagram}). 
+\begin{definition} 
+ A \textbf{source} of $D$ is a collection of morphisms $( s_i: S \rightarrow D_i)_{i \in \mathbf{I}}$ such that
+ $\left( D( i \rightarrow j ) \circ s_i \right) \sim_{S,D_j} s_j$ for every arrow $(i \rightarrow j) \in \mathbf{I}$.
+\end{definition}
+ 
+\begin{definition}
+ A triple $(L, \lambda, u)$ consisting of the following data:
+ \begin{enumerate}
+  \item an object $L \in \mathbf{C}$,
+  \item a source $\lambda = ( \lambda_i: L \rightarrow D_i)_{i \in \mathbf{I}}$,
+  \item a dependent function $u$ mapping every source $\tau = ( \tau_i: T \rightarrow D_i )_{i \in \mathbf{I}}$
+        to a morphism $u( \tau ): T \rightarrow L$ such that
+        $\lambda_i \circ u( \tau ) \sim_{T,D_i} \tau_i$,
+ \end{enumerate}
+ is called a \textbf{limit of the diagram $D$}, if the morphisms $u(\tau)$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\begin{definition}
+ A \textbf{sink} of $D$ is a collection of morphisms $( s_i: D_i \rightarrow S )_{i \in \mathbf{I}}$
+ such that $\left(s_i \circ D( i \rightarrow j )\right) \sim_{D_i, S} s_j$ for every arrow $(i \rightarrow j) \in \mathbf{I}$.
+\end{definition}
+
+
+\begin{definition}
+ A triple $(C, c, u)$ consisting of the following data:
+ \begin{enumerate}
+  \item an object $C \in \mathbf{C}$,
+  \item a sink $c = ( c_i: D_i \rightarrow C )_{i \in \mathbf{I}}$,
+  \item a dependent function $u$ mapping every source $\tau = ( \tau_i: D_i \rightarrow T )_{i \in \mathbf{I}}$
+        to a morphism $u( \tau ): C \rightarrow T$ such that
+        $u(\tau) \circ c_{i} \sim_{D_i,T} \tau_i$,
+ \end{enumerate}
+ is called a \textbf{colimit of the diagram $D$}, if the morphisms $u(\tau)$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\section{Monoidal Categories}
 
 \section{Derivations}\label{section:derivations}
