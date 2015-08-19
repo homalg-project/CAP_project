@@ -238,6 +238,17 @@ in the category using the \texttt{InstalledMethodsOfCategory} command.
 \input{GAP_tex/vecspaces_example/ViewOperations_main}
 \end{small}
 
+One can now also carry out less obvious computations. In the next example we compute the intersection of two 2 dimensional
+subspaces of a 3 dimensional vectorspace. Please note that the steps for this computation are completely general, and
+can also be used for the intersection of arbitrary subobjects, for example ideals or submodules. We present the
+subspaces as images of two morphisms $\alpha$ and $\beta$, compute their \textrm{FiberProduct} and compose its embedding
+in the source of $\alpha$ with $\alpha$ itself. The resulting morphism represents the intersection of the image of $\alpha$
+and $\beta$ in their range.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/IntersectionExample_main} 
+\end{small}
+
 
 
 

@@ -412,3 +412,13 @@ IsMonomorphism( alpha );
 IsEpimorphism( alpha );
 
 alpha_image := ImageEmbedding( alpha );
+
+alpha := VectorSpaceMorphism( V, [ [ 1, 0, 0 ], [ 0, 1, 1 ] ], W );
+
+beta := VectorSpaceMorphism( V, [ [ 1, 1, 0 ], [ 0, 0, 1 ] ], W );
+
+fiberproduct := FiberProduct( alpha, beta );
+
+projection := ProjectionInFactor( fiberproduct, 1 );
+
+intersection := PreCompose( projection, alpha );
