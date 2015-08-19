@@ -65,15 +65,23 @@ end );
 ##
 ####################################
 
+InstallMethod( String,
+              [ IsVectorSpaceObject ],
+              
+  function( vector_space_object )
+    
+    return Concatenation( "A vector space object over ",
+                          RingName( UnderlyingFieldForHomalg( vector_space_object ) ),
+                          " of dimension ", String( Dimension( vector_space_object ) ) );
+    
+end );
 ##
 InstallMethod( ViewObj,
                [ IsVectorSpaceObject ],
 
   function( vector_space_object )
 
-    Print( "<A vector space object over ",
-           RingName( UnderlyingFieldForHomalg( vector_space_object ) ),
-           " of dimension ", String( Dimension( vector_space_object ) ), ">" );
+    Print( Concatenation( "<", String( vector_space_object ), ">" ) );
 
 end );
 

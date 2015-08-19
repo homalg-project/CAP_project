@@ -8,3 +8,19 @@
 #! @Chapter Coactions
 ##
 #############################################################################
+
+####################################
+##
+## Constructors
+##
+####################################
+
+DeclareOperation( "LeftCoactionsCategory",
+                  [ IsCapCategory, IsCapCategoryObject ] );
+
+DeclareOperation( "RightCoactionsCategory",
+                  [ IsCapCategory, IsCapCategoryObject ] );
+
+DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_LEFT_COACTIONS_CATEGORY" );
+
+DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_COACTIONS_CATEGORY" );
