@@ -26,7 +26,7 @@ of the following types:
 In \CapPkg, support is given for the implementation of some special kinds of limits and
 colimits. We first give the definition of a limit and a colimit.
 Let $\mathbf{C}$ be a category. Let $\mathbf{I}$ be another category (called an \textbf{index category}) and $D: \mathbf{I} \rightarrow \mathbf{C}$
-a functor (called a \textbf{diagram}). 
+be a functor (called a \textbf{diagram}). 
 \begin{definition} 
  A \textbf{source} of $D$ is a collection of morphisms $( s_i: S \rightarrow D_i)_{i \in \mathbf{I}}$ such that
  $\left( D( i \rightarrow j ) \circ s_i \right) \sim_{S,D_j} s_j$ for every arrow $(i \rightarrow j) \in \mathbf{I}$.
@@ -63,6 +63,91 @@ a functor (called a \textbf{diagram}).
  is called a \textbf{colimit of the diagram $D$}, if the morphisms $u(\tau)$ are uniquely determined up to
  congruence of morphisms.
 \end{definition}
+
+\begin{example}
+ Examples of limits are kernels, direct products, fiber products.
+\end{example}
+
+\begin{example}
+ Examples of colimits are cokernels, coproducts, pushouts.
+\end{example}
+
+\subsection{Limits in \CapPkg}
+
+For every limit $\left(L, \lambda = ( \lambda_i: L \rightarrow D_i)_{i \in \mathbf{I}} \right)$ in \CapPkg, 
+there are three basic operations.
+
+\begin{enumerate}
+ \item A basic operation returning the limit object. The argument is the diagram:
+ \[
+  D \mapsto L.
+ \]
+ \item A basic operation returning the limit source. The argument is the diagram:
+ \[
+  D \mapsto \lambda.
+ \]
+ \item A basic operation returning the morphism given by the universal property. 
+       The arguments are the diagram and a test source:
+ \[
+  ( D, \tau ) \mapsto u(\tau).
+ \]
+\end{enumerate}
+
+\begin{example}
+ In the case of a kernel, the three basic operations in question are
+ \begin{enumerate}
+  \item $\KernelObject$,
+  \item $\KernelEmb$,
+  \item $\KernelLift$.
+ \end{enumerate} 
+\end{example}
+
+In addition, there are two more basic operations which are variants of the second
+and the third basic operation one.
+
+\begin{enumerate}
+ \item A basic operation returning the limit source. The arguments are the diagram
+       and an object equal ($\IsEqualForObjects$) to the limit object:
+       \[
+        ( D, L ) \mapsto \lambda.
+       \]
+  \item A basic operation returning the morphism given by the universal property.
+        The arguments are the diagram, a test source, and an object equal ($\IsEqualForObjects$)
+        to the limit object:
+        \[
+         ( D, \tau, L ) \mapsto u( \tau ).
+        \]
+\end{enumerate}
+
+\begin{example}
+ In the case of a kernel, the two variants in question are
+ \begin{enumerate}
+  \item $\KernelEmbWithGivenKernelObject$,
+  \item $\KernelLiftWithGivenKernelObject$.
+ \end{enumerate} 
+\end{example}
+
+We call such basic operations \texttt{WithGiven} operations.
+We recommend not to call the \texttt{WithGiven} operations but only to implement them
+as helpers in the following sense:
+Depending on which of the above five basic operations are implemented, \CapPkg
+automatically tries to fill in the missing operations:
+
+\begin{itemize}
+ \item Given $D \mapsto L$ and $( D, L ) \mapsto \lambda$, \CapPkg derives $D \mapsto \lambda$.
+ \item Given $D \mapsto L$ and $( D, \tau, L ) \mapsto u( \tau )$, \CapPkg derives $( D, \tau ) \mapsto u(\tau)$.
+\end{itemize}
+
+Moreover, if the three basic operations $D \mapsto L$, $D \mapsto \lambda$, and $( D, L ) \mapsto \lambda$
+are all given, then \CapPkg automatically enhances $D \mapsto \lambda$ with a \textbf{redirect function}.
+The redirect function first looks if the limit object $L$ is already in the cache of $D \mapsto L$
+(compared with a user given equality function, default option is $\IsEqualForObjects$).
+If this is the case, \CapPkg automatically calls the \texttt{WithGiven} operation $( D, L ) \mapsto \lambda$
+with the input $L$ found in the cache.
+
+Analogously, \CapPkg enhances $( D, \tau ) \mapsto u(\tau)$ with a redirect function if
+the three basic operations $D \mapsto L, ( D, \tau ) \mapsto u(\tau), ( D, \tau, L ) \mapsto u( \tau )$ are all given.
+
 
 \section{Monoidal Categories}
 
