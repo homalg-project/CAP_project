@@ -1907,7 +1907,6 @@ KernelObjectFunctorial := rec(
   installation_name := "KernelObjectFunctorial",
   filter_list := [ "morphism", "morphism", "morphism" ],
   cache_name := "KernelObjectFunctorial",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "CokernelFunctorial" ), #there is no Add-method
 
@@ -1915,7 +1914,6 @@ CokernelFunctorial := rec(
   installation_name := "CokernelFunctorial",
   filter_list := [ "morphism", "morphism", "morphism" ],
   cache_name := "CokernelFunctorial",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "KernelObjectFunctorial" ), #there is no Add-method
 
@@ -1923,7 +1921,6 @@ TerminalObjectFunctorial := rec(
   installation_name := "TerminalObjectFunctorial",
   filter_list := [ "category" ],
   cache_name := "TerminalObjectFunctorial",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "InitialObjectFunctorial" ),
 
@@ -1931,7 +1928,6 @@ InitialObjectFunctorial := rec(
   installation_name := "InitialObjectFunctorial",
   filter_list := [ "category" ],
   cache_name := "InitialObjectFunctorial",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "TerminalObjectFunctorial" ),
 
@@ -1939,7 +1935,6 @@ DirectProductFunctorial := rec(
   installation_name := "DirectProductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectProductFunctorialOp",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "CoproductFunctorial" ), #there is no Add-method
 
@@ -1947,7 +1942,6 @@ CoproductFunctorial := rec(
   installation_name := "CoproductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "CoproductFunctorialOp",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "DirectProductFunctorial" ), #there is no Add-method
 
@@ -1956,14 +1950,12 @@ DirectSumFunctorial := rec(
   argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumFunctorialOp",
-  no_install := true,
   return_type := "morphism" ), #there is no Add-method
 
 FiberProductFunctorial := rec(
   installation_name := "FiberProductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "FiberProductFunctorialOp",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "PushoutFunctorial" ), #there is no Add-method
 
@@ -1971,7 +1963,6 @@ PushoutFunctorial := rec(
   installation_name := "PushoutFunctorialOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "PushoutFunctorialOp",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "FiberProductFunctorial" ), #there is no Add-method
 

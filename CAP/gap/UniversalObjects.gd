@@ -261,6 +261,17 @@ DeclareOperation( "KernelObjectFunctorial",
 DeclareOperation( "KernelObjectFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+DeclareOperation( "AddKernelObjectFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddKernelObjectFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddKernelObjectFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddKernelObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
 #! @Chapter Technical Details
@@ -452,6 +463,18 @@ DeclareOperation( "CokernelFunctorial",
 #! @Arguments alpha, nu, alpha_p
 DeclareOperation( "CokernelFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddCokernelFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCokernelFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCokernelFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCokernelFunctorial",
+                  [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
 #! @Chapter Technical Details
@@ -786,6 +809,18 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
 DeclareAttribute( "TerminalObjectFunctorial",
                   IsCapCategory );
 
+DeclareOperation( "AddTerminalObjectFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTerminalObjectFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTerminalObjectFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTerminalObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
+
 ## WasCreatedAs Filter
 
 #! @Chapter Technical Details
@@ -915,6 +950,18 @@ DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
 #! @Arguments C
 DeclareAttribute( "InitialObjectFunctorial",
                   IsCapCategory );
+
+DeclareOperation( "AddInitialObjectFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInitialObjectFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInitialObjectFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInitialObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
 
@@ -1206,6 +1253,18 @@ DeclareOperation( "AddDirectSum",
 DeclareOperation( "DirectSumFunctorial",
                   [ IsList ] );
 
+DeclareOperation( "AddDirectSumFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectSumFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectSumFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectSumFunctorial",
+                  [ IsCapCategory, IsList ] );
+
 #! @Description
 #! This method takes $L = [ \mu_1, \dots, \mu_n ]$ and a morphism $m$ for the method selection.
 #! @Returns $\phi$
@@ -1376,6 +1435,20 @@ DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
 #! @Arguments L
 DeclareOperation( "CoproductFunctorial",
                   [ IsList ] );
+
+DeclareOperation( "AddCoproductFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoproductFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoproductFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoproductFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+
 
 DeclareOperation( "CoproductFunctorialOp",
                   [ IsList, IsCapCategoryMorphism ] );
@@ -1596,6 +1669,19 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
 #! @Arguments L
 DeclareOperation( "DirectProductFunctorial",
                   [ IsList ] );
+
+DeclareOperation( "AddDirectProductFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectProductFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectProductFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectProductFunctorial",
+                  [ IsCapCategory, IsList ] );
+
 
 DeclareOperation( "DirectProductFunctorialOp",
                   [ IsList, IsCapCategoryMorphism ] );
@@ -1899,6 +1985,17 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
 DeclareOperation( "FiberProductFunctorial",
                   [ IsList ] );
 
+DeclareOperation( "AddFiberProductFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddFiberProductFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddFiberProductFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddFiberProductFunctorial",
+                  [ IsCapCategory, IsList ] );
 
 #! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ 
 #! and $\beta$ as an input.
@@ -2146,6 +2243,17 @@ DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
 DeclareOperation( "PushoutFunctorial",
                   [ IsList ] );
 
+DeclareOperation( "AddPushoutFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPushoutFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPushoutFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPushoutFunctorial",
+                  [ IsCapCategory, IsList ] );
 
 #! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ 
 #! and $\beta$ as an input.
@@ -2545,6 +2653,8 @@ DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
 
 DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
                   [ IsCapCategory, IsList ] );
+
+
 
 
 ## WasCreatedAs Filter
