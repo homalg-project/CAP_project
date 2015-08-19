@@ -136,7 +136,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
       
       function( category, method_list, weight )
         local install_func, replaced_filter_list, install_method, popper, i, set_primitive, install_remaining_pair, is_derivation,
-              install_pair_func, pair_name, pair_func;
+              install_pair_func, pair_name, pair_func, is_pair_func, pair_func_push;
         
         ## If there already is a faster method, do nothing!
         if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
@@ -151,6 +151,17 @@ InstallGlobalFunction( CapInternalInstallAdd,
         is_derivation := ValueOption( "IsDerivation" );
         if is_derivation <> true then
             is_derivation := false;
+        fi;
+        
+        is_pair_func := ValueOption( "IsPairFunc" );
+        if is_pair_func <> true then
+            is_pair_func := false;
+        fi;
+        
+        pair_func_push := false;
+        if is_pair_func then
+            PushOptions( rec( IsPairFunc := false ) );
+            pair_func_push := true;
         fi;
         
         if weight = -1 then
@@ -170,7 +181,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 install_pair_func := true;
                 pair_func := CAP_INTERNAL_CREATE_OTHER_PAIR_FUNC( record );
                 category!.redirects.( record.with_given_without_given_name_pair[ 1 ] ) := false;
-            else
+            elif not is_pair_func then
                 category!.redirects.( record.with_given_without_given_name_pair[ 1 ] ) := true;
             fi;
             
@@ -247,11 +258,17 @@ InstallGlobalFunction( CapInternalInstallAdd,
             PopOptions();
         fi;
         
+        if pair_func_push then
+            PopOptions();
+        fi;
+        
         if set_primitive then
             AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
             
             if install_pair_func = true then
+                PushOptions( rec( IsPairFunc := true ) );
                 CallFuncList( ValueGlobal( Concatenation( "Add", pair_name ) ),[ category, [ [ pair_func, [ ] ] ], weight ] );
+                PopOptions();
             fi;
             
         fi;
