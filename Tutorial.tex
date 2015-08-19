@@ -89,8 +89,10 @@ added as obejcts to the category.
 
 \input{GAP_tex/vecspaces_example/Declarations}
 
-After the declarations of the constructors we create a global category \GAP object, which will be the category
+After the declarations of the constructors we created a global category \GAP object, which will be the category
 of vector spaces and where we add all the objects and morphisms to, already in their constructors, which we create now.
+Since we are going to create an Abelian category, we tell the system that we are doing this, to have all the computational
+properties of an Abelian category.
 
 \input{GAP_tex/vecspaces_example/Declarations2}
 
@@ -198,8 +200,7 @@ For details please have a look at \ref{chapter:constructions}.
 
 \input{GAP_tex/vecspaces_example/DirectSum}
 
-Now we set the category to abelian, to tell the system that every property of an abelian category holds, and
-finalize it.
+Now we can finalize the category.
 
 \input{GAP_tex/vecspaces_example/Finalize}
 
@@ -222,6 +223,12 @@ operations, e.g., \texttt{+}, for it.
 \input{GAP_tex/vecspaces_example/KernelExample_main}
 \end{small}
 
+The fact that such functions work properly are not suprising at all. But \CapPkg has the power to derive
+further constructions from the given functions. Here are some examples of methods now applicable.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/DerivedMethodsExample_main}
+\end{small}
 
 
 

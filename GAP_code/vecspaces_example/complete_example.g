@@ -29,6 +29,8 @@ DeclareOperation( "VectorSpaceMorphism",
 
 BindGlobal( "vecspaces", CreateCapCategory( "VectorSpaces" ) );
 
+SetIsAbelianCategory( vecspaces, true );
+
 BindGlobal( "VECTORSPACES_FIELD", HomalgFieldOfRationals( ) );
 
 ##
@@ -364,9 +366,6 @@ AddUniversalMorphismIntoDirectSum( vecspaces,
   
 end );
 
-
-SetIsAbelianCategory( vecspaces, true );
-
 Finalize( vecspaces );
 
 
@@ -407,3 +406,9 @@ CokernelProj( alpha );
 alpha + alpha;
 
 - alpha;
+
+IsMonomorphism( alpha );
+
+IsEpimorphism( alpha );
+
+alpha_image := ImageEmbedding( alpha );

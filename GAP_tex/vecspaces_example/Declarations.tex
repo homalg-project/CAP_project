@@ -32,6 +32,8 @@ DeclareOperation( "VectorSpaceMorphism",
 
 BindGlobal( "vecspaces", CreateCapCategory( "VectorSpaces" ) );
 
+SetIsAbelianCategory( vecspaces, true );
+
 BindGlobal( "VECTORSPACES_FIELD", HomalgFieldOfRationals( ) );
 
 \end{Verbatim}
