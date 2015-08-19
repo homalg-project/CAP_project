@@ -25,6 +25,18 @@ BindGlobal( "TheTypeOfGeneralizedMorphism",
 
 ####################################
 ##
+## True implications
+##
+####################################
+
+InstallTrueMethod( IsHonest, HasHonestSource and HasHonestRange );
+
+InstallTrueMethod( HasHonestRange, IsHonest );
+
+InstallTrueMethod( HasHonestSource, IsHonest );
+
+####################################
+##
 ## Constructors
 ##
 ####################################
@@ -131,7 +143,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
           
           return AsGeneralizedMorphism( PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ) );
           
-      end, [ IsHonest, IsHonest ] ],
+      end, [ HasHonestRange and HasHonestSource, HasHonestRange and HasHonestSource ] ],
       
       
       [ function( mor1, mor2 )
