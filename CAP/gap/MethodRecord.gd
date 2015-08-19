@@ -1953,6 +1953,7 @@ CoproductFunctorial := rec(
 
 DirectSumFunctorial := rec(
   installation_name := "DirectSumFunctorialOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumFunctorialOp",
   no_install := true,

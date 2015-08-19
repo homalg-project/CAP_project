@@ -227,6 +227,8 @@ InstallGlobalFunction( UniversalMorphismFromCoproduct,
        
        return UniversalMorphismFromCoproductOp( arg[1], arg[2], arg[1][1] );
        
+    elif Length( arg ) = 1 and IsList( arg[ 1 ] ) then
+        arg := arg[ 1 ];
     fi;
     
     diagram := List( arg, Source );
@@ -385,6 +387,8 @@ InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
        
        return UniversalMorphismIntoDirectProductOp( arg[1], arg[2], arg[1][1] );
        
+    elif Length( arg ) = 1 and IsList( arg[ 1 ] ) then
+        arg := arg[ 1 ];
     fi;
     
     ##convenience: UniversalMorphismIntoDirectProduct( test_projection_1, ..., test_projection_k )
@@ -496,6 +500,8 @@ InstallGlobalFunction( UniversalMorphismFromDirectSum,
        
        return UniversalMorphismFromDirectSumOp( arg[1], arg[2], arg[1][1] );
        
+    elif Length( arg ) = 1 and IsList( arg[ 1 ] ) then
+        arg := arg[ 1 ];
     fi;
     
     diagram := List( arg, Source );
@@ -516,6 +522,8 @@ InstallGlobalFunction( UniversalMorphismIntoDirectSum,
        
        return UniversalMorphismIntoDirectSumOp( arg[1], arg[2], arg[1][1] );
        
+    elif Length( arg ) = 1 and IsList( arg[ 1 ] ) then
+        arg := arg[ 1 ];
     fi;
     
     ##convenience: UniversalMorphismIntoDirectSum( test_projection_1, ..., test_projection_k )

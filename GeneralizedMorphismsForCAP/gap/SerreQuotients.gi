@@ -224,10 +224,10 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
     
     AddUniversalMorphismIntoDirectSum( category,
       
-      function( morphism_list )
-        local generalized_morphisms, source_aid, associated, range_aid;
+      function( diagram, morphism_list )
+        local generalized_morphisms, source_aid, associated, range_aid, associated_list;
         
-        generalized_morphisms := List( generalized_morphisms, UnderlyingGeneralizedMorphism );
+        generalized_morphisms := List( morphism_list, UnderlyingGeneralizedMorphism );
         
         generalized_morphisms := CommonRestriction( generalized_morphisms );
         
@@ -235,7 +235,9 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
         
         source_aid := generalized_morphisms[ 1 ][ 1 ];
         
-        associated := UniversalMorphismIntoDirectSum( List( generalized_morphisms, i -> i[ 2 ] ) );
+        associated_list := List( generalized_morphisms, i -> i[ 2 ] );
+        
+        associated := UniversalMorphismIntoDirectSum( associated_list );
         
         range_aid := DirectSumFunctorial( List( generalized_morphisms, i -> i[ 3 ] ) );
         
@@ -245,10 +247,10 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
     
     AddUniversalMorphismFromDirectSum( category,
       
-      function( morphism_list )
+      function( diagram, morphism_list )
         local generalized_morphisms, source_aid, associated, range_aid;
         
-        generalized_morphisms := List( generalized_morphisms, UnderlyingGeneralizedMorphism );
+        generalized_morphisms := List( morphism_list, UnderlyingGeneralizedMorphism );
         
         generalized_morphisms := CommonCoastriction( generalized_morphisms );
         

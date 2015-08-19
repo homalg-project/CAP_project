@@ -73,8 +73,14 @@ DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
 DeclareOperation( "CommonRestriction",
                   [ IsList ] );
 
+DeclareOperation( "CommonRestrictionOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
 DeclareOperation( "CommonCoastriction",
                   [ IsList ] );
+
+DeclareOperation( "CommonCoastrictionOp",
+                  [ IsList, IsCapCategoryMorphism ] );
 
 ####################################
 ##

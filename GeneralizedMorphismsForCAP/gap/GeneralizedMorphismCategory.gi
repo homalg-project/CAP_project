@@ -670,10 +670,25 @@ InstallMethod( Codomain,
     
 end );
 
-InstallMethodWithCacheFromObject( CommonRestriction,
-                                  [ IsList ],
-                                  
+InstallMethod( CommonRestriction,
+               [ IsList ],
+               
   function( morphism_list )
+    
+    if morphism_list = [ ] then
+        
+        return morphism_list;
+        
+    fi;
+    
+    return CommonRestrictionOp( morphism_list, morphism_list[ 1 ] );
+    
+end );
+
+InstallMethodWithCacheFromObject( CommonRestrictionOp,
+                                  [ IsList, IsGeneralizedMorphismRep ],
+                                  
+  function( morphism_list, cacher )
     local test_source, source_aid_list, associated_compose_list,
           current_pullback_left, current_pullback_right, i, j;
     
@@ -727,6 +742,8 @@ InstallMethodWithCacheFromObject( CommonRestriction,
     
     morphism_list := List( morphism_list, DomainAssociatedMorphismCodomainTriple );
     
+    morphism_list := List( morphism_list, ShallowCopy );
+    
     for i in [ 1 .. Length( morphism_list ) ] do
         
         morphism_list[ i ][ 1 ] := source_aid_list[ i ];
@@ -737,12 +754,27 @@ InstallMethodWithCacheFromObject( CommonRestriction,
     
     return List( morphism_list, i -> CallFuncList( GeneralizedMorphism, i ) );
     
+end : ArgumentNumber := 2 );
+
+InstallMethod( CommonCoastriction,
+               [ IsList ],
+               
+  function( morphism_list )
+    
+    if morphism_list = [ ] then
+        
+        return morphism_list;
+        
+    fi;
+    
+    return CommonCoastrictionOp( morphism_list, morphism_list[ 1 ] );
+    
 end );
 
-InstallMethodWithCacheFromObject( CommonCoastriction,
-                                  [ IsList ],
+InstallMethodWithCacheFromObject( CommonCoastrictionOp,
+                                  [ IsList, IsGeneralizedMorphismRep ],
                                   
-  function( morphism_list )
+  function( morphism_list, cacher )
     local test_range, codomain_list, associated_compose_list,
           current_pushout_left, current_pushout_right, i, j;
     
@@ -796,6 +828,8 @@ InstallMethodWithCacheFromObject( CommonCoastriction,
     
     morphism_list := List( morphism_list, DomainAssociatedMorphismCodomainTriple );
     
+    morphism_list := List( morphism_list, ShallowCopy );
+    
     for i in [ 1 .. Length( morphism_list ) ] do
         
         morphism_list[ i ][ 4 ] := codomain_list[ i ];
@@ -806,7 +840,7 @@ InstallMethodWithCacheFromObject( CommonCoastriction,
     
     return List( morphism_list, i -> CallFuncList( GeneralizedMorphism, i ) );
     
-end );
+end : ArgumentNumber := 2 );
 
 ###########################
 ##
