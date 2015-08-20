@@ -248,3 +248,43 @@ and $\beta$ in their range.
 \begin{small}
 \input{GAP_tex/vecspaces_example/IntersectionExample_main} 
 \end{small}
+
+But the computational powers of \CapPkg do not end at this point. Using the extensions of \CapPkg, like \texttt{HomologicalAlgebraForCap},
+we can use the given algorithms to compute complicated diagram chases and invariants with very low effort. First,
+we compute the connecting homomorphism in the Snake lemma applied to the following diagram.
+
+\begin{center}   
+ \begin{tikzpicture}[mystyle/.style={scale=.7}]
+  \matrix[matrix of math nodes,column sep={60pt,between origins},row
+    sep={50pt,between origins}] (s)
+  {
+    &|[name=A]| \mathbb{Z}^1 &|[name=B]| \mathbb{Z}^3 &|[name=C]| \mathbb{Z}^2 &|[name=01]| 0 \phantom{\mathbb{Z}^2}  \\
+    |[name=02]| \phantom{\mathbb{Z}^2} 0 &|[name=A']| \mathbb{Z}^2 &|[name=B']| \mathbb{Z}^3 &|[name=C']| \mathbb{Z}^1 \\
+  }; 
+              
+              \path[->,thick] (C) edge (01);
+              \path[->,thick] (02) edge (A');
+              
+              %% Second part
+              
+              \path[->,thick] (A) edge node[mystyle,anchor=south] {$ \left( \begin{array}{ccc} 1 & 0 & 0 \\ \end{array} \right) $} (B);
+              \path[->,thick] (B) edge node[mystyle,anchor=south] {$ \left( \begin{array}{cc} 0 & 0 \\ 1 & 0 \\ 0 & 1 \\ \end{array} \right) $} (C);
+              \path[->,thick] (A) edge node[mystyle,anchor=east] {$ \left( \begin{array}{cc} 1 & 0 \\ \end{array} \right) $} (A');
+              \path[->,thick] (B) edge node[anchor=west] {$ \textrm{Id}$} (B');
+              \path[->,thick] (C) edge node[mystyle,anchor=west] {$ \left( \begin{array}{c} 0 \\ 1 \\ \end{array} \right) $} (C');
+              \path[->,thick] (02) edge (A');
+              \path[->,thick] (A') edge node[mystyle,anchor=north] {$ \left( \begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \\ \end{array} \right) $} (B');
+              \path[->,thick] (B') edge node[mystyle,anchor=north] {$ \left( \begin{array}{c} 0 \\ 0 \\ 1 \\ \end{array} \right) $} (C');
+  \end{tikzpicture}
+\end{center}
+
+In the example, we are going to name the morphisms in the upper chain $\alpha_1$ and $\alpha_2$, in the lower chain $\beta_1$ and $\beta_2$,
+and the connecting ones $\gamma_1$, $\gamma_2$, and $\gamma_3$. Please note that for the computation only $\alpha_2$, $\beta_1$ and the connections
+are needed.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/SnakeLemma_main} 
+\end{small}
+
+After those examples of computational power we end this tutorial for the Abelian category in \CapPkg.
+

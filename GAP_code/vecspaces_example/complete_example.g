@@ -143,6 +143,16 @@ AddKernelLift( vecspaces,
     
 end );
 
+AddMonoAsKernelLift( vecspaces,
+
+  function( monomorphism, test_morphism )
+
+    return VectorSpaceMorphism( Source( test_morphism ),
+           RightDivide( test_morphism!.morphism, monomorphism!.morphism ),
+           Source( monomorphism ) );
+
+end );
+
 AddCokernelProj( vecspaces,
 
   function( morphism )
@@ -422,3 +432,23 @@ fiberproduct := FiberProduct( alpha, beta );
 projection := ProjectionInFactor( fiberproduct, 1 );
 
 intersection := PreCompose( projection, alpha );
+
+LoadPackage( "HomologicalAlgebraForCAP" );
+
+V1 := QVectorSpace( 1 );
+
+V2 := QVectorSpace( 2 );
+
+V3 := QVectorSpace( 3 );
+
+alpha2 := VectorSpaceMorphism( V3, [ [ 0, 0 ], [ 1, 0 ], [ 0, 1 ] ], V2 );
+
+beta1 := VectorSpaceMorphism( V2, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], V3 );
+
+gamma1 := VectorSpaceMorphism( V1, [ [ 1, 0 ] ], V2 );
+
+gamma2 := IdentityMorphism( V3 );
+
+gamma3 := VectorSpaceMorphism( V2, [ [ 0 ], [ 1 ] ], V1 );
+
+snake := SnakeLemmaConnectingHomomorphism( alpha2, gamma1, gamma2, gamma3, beta1 );

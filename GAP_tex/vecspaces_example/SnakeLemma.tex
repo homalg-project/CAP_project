@@ -1,0 +1,49 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx}
+\usepackage{a4wide}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+
+\title{GAP Code}
+\author{}
+
+\begin{document}
+\maketitle
+
+\begin{Verbatim}[commandchars=!@\%,frame=single]
+!color@blue%@gap>%!color@red%@ LoadPackage( "HomologicalAlgebraForCAP" );%
+true
+!color@blue%@gap>%!color@red%@ V1 := QVectorSpace( 1 );%
+<A rational vector space of dimension 1>
+!color@blue%@gap>%!color@red%@ V2 := QVectorSpace( 2 );%
+<A rational vector space of dimension 2>
+!color@blue%@gap>%!color@red%@ V3 := QVectorSpace( 3 );%
+<A rational vector space of dimension 3>
+!color@blue%@gap>%!color@red%@ alpha2 := VectorSpaceMorphism( V3, [ [ 0, 0 ], [ 1, 0 ], [ 0, 1 ] ], V2 );%
+A rational vector space homomorphism with matrix: 
+[ [  0,  0 ],
+  [  1,  0 ],
+  [  0,  1 ] ]
+!color@blue%@gap>%!color@red%@ beta1 := VectorSpaceMorphism( V2, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], V3 );%
+A rational vector space homomorphism with matrix: 
+[ [  1,  0,  0 ],
+  [  0,  1,  0 ] ]
+!color@blue%@gap>%!color@red%@ gamma1 := VectorSpaceMorphism( V1, [ [ 1, 0 ] ], V2 );%
+A rational vector space homomorphism with matrix: 
+[ [  1,  0 ] ]
+!color@blue%@gap>%!color@red%@ gamma2 := IdentityMorphism( V3 );%
+A rational vector space homomorphism with matrix: 
+[ [  1,  0,  0 ],
+  [  0,  1,  0 ],
+  [  0,  0,  1 ] ]
+!color@blue%@gap>%!color@red%@ gamma3 := VectorSpaceMorphism( V2, [ [ 0 ], [ 1 ] ], V1 );%
+A rational vector space homomorphism with matrix: 
+[ [  0 ],
+  [  1 ] ]
+!color@blue%@gap>%!color@red%@ snake := SnakeLemmaConnectingHomomorphism( alpha2, gamma1, gamma2,%
+!color@blue%@>%!color@red%@ gamma3, beta1 );%
+A rational vector space homomorphism with matrix: 
+[ [  1 ] ]
+\end{Verbatim}
+\end{document}
