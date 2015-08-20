@@ -437,8 +437,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
     
 end );
 
-InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
-                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( serre_category, source_aid, associated, range_aid )
     
@@ -446,8 +446,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphism,
     
 end );
 
-InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphismWithSourceAid,
-                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+InstallMethod( SerreQuotientCategoryMorphismWithSourceAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( serre_category, source_aid, associated )
     
@@ -455,8 +455,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphismWithSourceAid,
     
 end );
 
-InstallMethodWithCacheFromObject( SerreQuotientCategoryMorphismWithRangeAid,
-                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+InstallMethod( SerreQuotientCategoryMorphismWithRangeAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( serre_category, associated, range_aid )
     
