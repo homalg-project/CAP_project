@@ -17,10 +17,12 @@
 
 ##
 InstallMethod( LeftActionsCategory,
-               [ IsCapCategory, IsCapCategoryObject ],
+               [ IsCapCategoryObject ],
                
-  function( underlying_monoidal_category, acting_object )
-    local left_actions_category;
+  function( acting_object )
+    local underlying_monoidal_category, left_actions_category;
+    
+    underlying_monoidal_category := CapCategory( acting_object );
     
     if not IsMonoidalCategory( underlying_monoidal_category ) then
       
@@ -48,11 +50,13 @@ end );
 
 ##
 InstallMethod( RightActionsCategory,
-               [ IsCapCategory, IsCapCategoryObject ],
+               [ IsCapCategoryObject ],
                
-  function( underlying_monoidal_category, acting_object )
-    local right_actions_category;
+  function( acting_object )
+    local underlying_monoidal_category, right_actions_category;
     
+    underlying_monoidal_category := CapCategory( acting_object );
+
     if not IsMonoidalCategory( underlying_monoidal_category ) then
       
       Error( "the underlying category has to be a monoidal category" );

@@ -15,11 +15,11 @@
 ##
 ####################################
 
-DeclareOperation( "LeftActionsCategory",
-                  [ IsCapCategory, IsCapCategoryObject ] );
+DeclareAttribute( "LeftActionsCategory",
+                  IsCapCategoryObject );
 
-DeclareOperation( "RightActionsCategory",
-                  [ IsCapCategory, IsCapCategoryObject ] );
+DeclareAttribute( "RightActionsCategory",
+                  IsCapCategoryObject );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_LEFT_ACTIONS_CATEGORY" );
 

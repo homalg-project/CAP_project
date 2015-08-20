@@ -7,3 +7,50 @@
 ##
 ##
 #############################################################################
+
+####################################
+##
+## GAP Category
+##
+####################################
+
+DeclareCategory( "IsLeftOrRightCoactionObject",
+                 IsCapCategoryObject );
+
+DeclareCategory( "IsLeftCoactionObject",
+                 IsLeftOrRightCoactionObject );
+
+DeclareCategory( "IsRightCoactionObject",
+                 IsLeftOrRightCoactionObject );
+
+#############################
+##
+## Constructors
+##
+#############################
+
+DeclareGlobalFunction( "LeftOrRightCoactionObject" );
+
+DeclareOperation( "LeftCoactionObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "RightCoactionObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+####################################
+##
+## Attributes
+##
+####################################
+
+DeclareAttribute( "StructureMorphism",
+                  IsLeftOrRightCoactionObject );
+
+DeclareAttribute( "UnderlyingCoactingObject",
+                  IsLeftOrRightCoactionObject );
+
+DeclareAttribute( "UnderlyingObject",
+                  IsLeftOrRightCoactionObject );
+
+DeclareAttribute( "UnderlyingCategory",
+                  IsLeftOrRightCoactionObject );

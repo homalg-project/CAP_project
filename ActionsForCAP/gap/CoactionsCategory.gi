@@ -16,10 +16,12 @@
 
 ##
 InstallMethod( LeftCoactionsCategory,
-               [ IsCapCategory, IsCapCategoryObject ],
+               [ IsCapCategoryObject ],
                
-  function( underlying_monoidal_category, acting_object )
-    local left_coactions_category;
+  function( acting_object )
+    local underlying_monoidal_category, left_coactions_category;
+    
+    underlying_monoidal_category := CapCategory( acting_object );
     
     if not IsMonoidalCategory( underlying_monoidal_category ) then
       
@@ -47,10 +49,12 @@ end );
 
 ##
 InstallMethod( RightCoactionsCategory,
-               [ IsCapCategory, IsCapCategoryObject ],
+               [ IsCapCategoryObject ],
                
-  function( underlying_monoidal_category, acting_object )
-    local right_coactions_category;
+  function( acting_object )
+    local underlying_monoidal_category, right_coactions_category;
+    
+    underlying_monoidal_category := CapCategory( acting_object );
     
     if not IsMonoidalCategory( underlying_monoidal_category ) then
       
