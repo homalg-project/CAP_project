@@ -148,6 +148,55 @@ with the input $L$ found in the cache.
 Analogously, \CapPkg enhances $( D, \tau ) \mapsto u(\tau)$ with a redirect function if
 the three basic operations $D \mapsto L, ( D, \tau ) \mapsto u(\tau), ( D, \tau, L ) \mapsto u( \tau )$ are all given.
 
+We will now define the limits and colimits available in \CapPkg.
+
+\subsection{Direct Product}
+
+\begin{definition}
+ For a given list of objects $D = ( P_1, \dots, P_n )$, a direct product of $D$ consists of three parts:
+ \begin{enumerate}
+  \item an object $P$,
+  \item a list of morphisms $\pi = ( \pi_i: P \rightarrow P_i )_{i = 1 \dots n}$ 
+  \item a dependent function $u$ mapping each list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$ 
+  to a morphism $u(\tau): T \rightarrow P$ such that $\pi_i \circ u( \tau ) \sim_{T,P_i} \tau_i$ for all $i = 1, \dots, n$.
+ \end{enumerate}
+ The triple $( P, \pi, u )$ is called a \textbf{direct product of $D$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\subsection{Coproduct}
+
+\begin{definition}
+ For a given list of objects $D = ( C_1, \dots, C_n )$, a coproduct of $D$ consists of three parts:
+ \begin{enumerate}
+  \item an object $C$,
+  \item a list of morphisms $\iota = ( \iota_i: C_i \rightarrow C )_{i = 1 \dots n}$
+  \item a dependent function $u$ mapping each list of morphisms $\tau = ( \tau_i: C_i \rightarrow T )$
+  to a morphism $u( \tau ): C \rightarrow T$ such that $u( \tau ) \circ \iota_i \sim_{C_i, T} \tau_i$ for all $i = 1, \dots, n$.
+ \end{enumerate}
+ The triple $( C, \iota, u )$ is called a \textbf{coproduct of $D$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\subsection{Fiber Product}
+
+\begin{definition}
+ For a given list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$, 
+ a fiber product of $D$ consists of three parts:
+ \begin{enumerate}
+  \item an object $P$,
+  \item a list of morphisms $\pi = ( \pi_i: P \rightarrow P_i )_{i = 1 \dots n}$ such that
+        $\beta_i \circ \pi_i  \sim_{P, B} \beta_j \circ \pi_j$ for all pairs $i,j$.
+  \item a dependent function $u$ mapping each list of morphisms
+        $\tau = ( \tau_i: T \rightarrow P_i )$ such that
+        $\beta_i \circ \tau_i  \sim_{P, B} \beta_j \circ \tau_j$ for all pairs $i,j$
+        to a morphism $u( \tau ): T \rightarrow P$ such that
+        $\pi_i \circ u( \tau ) \sim_{T, P_i} \tau_i$ for all $i = 1, \dots, n$.
+ \end{enumerate}
+ The triple $( P, \pi, u )$ is called a \textbf{fiber product of $D$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
 
 \section{Monoidal Categories}
 
