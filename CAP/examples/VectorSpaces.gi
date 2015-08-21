@@ -670,6 +670,8 @@ AddIsEqualForObjects( vecspaces,
     
 end );
 
+Finalize( vecspaces );
+
 #######################################
 ##
 ## View and Display
@@ -1014,17 +1016,17 @@ ApplyNaturalTransformation( composition_of_double_swap_components, A );
 # @EndTheorem
 # @Proof
 # bla bla bla bla
-# @EndProof
-
-eval_rule := rec( command := "PreCompose",
-                  commands_to_check := [ [ [ 1 ], "UniversalMorphismIntoFiberProduct" ],
-                                         [ [ 2 ], "ProjectionInFactorOfFiberProduct" ] ],
-                  cells_to_check := [ [ [ 1, 1, 1 ], [ 2, 1, 1 ] ],
-                                      [ [ 1, 1, 2 ], [ 2, 1, 2 ] ],
-                                      [ [ 2, 2 ], 2 ]
-                                    ],
-                  part_to_replace := [ 1, 2, 1 ],
-                  ## TODO:
-                  part_for_is_well_defined := [ [ "IsCongruentForMorphisms", [ [ "PreCompose", [ [ 1, 2, 1 ], [ 1, 1, 1 ] ] ], [ "PreCompose", [ [ 1, 2, 2 ], [ 1, 1, 2 ] ] ] ] ] ] );
-
-eval_rule := REMOVE_CHARACTERS_FROM_LATEX( "A, B:Obj, tau_A, tau_B:Mor |~ &()vdash &Precompose(InjectionOfCofactorOfCoproduct( [A, B], 1 ),&UniversalMorphismFromCoproduct( [A,B], [tau_A, tau_B] ) ) = tau_A" );
+# # @EndProof
+# 
+# eval_rule := rec( command := "PreCompose",
+#                   commands_to_check := [ [ [ 1 ], "UniversalMorphismIntoFiberProduct" ],
+#                                          [ [ 2 ], "ProjectionInFactorOfFiberProduct" ] ],
+#                   cells_to_check := [ [ [ 1, 1, 1 ], [ 2, 1, 1 ] ],
+#                                       [ [ 1, 1, 2 ], [ 2, 1, 2 ] ],
+#                                       [ [ 2, 2 ], 2 ]
+#                                     ],
+#                   part_to_replace := [ 1, 2, 1 ],
+#                   ## TODO:
+#                   part_for_is_well_defined := [ [ "IsCongruentForMorphisms", [ [ "PreCompose", [ [ 1, 2, 1 ], [ 1, 1, 1 ] ] ], [ "PreCompose", [ [ 1, 2, 2 ], [ 1, 1, 2 ] ] ] ] ] ] );
+# 
+# eval_rule := REMOVE_CHARACTERS_FROM_LATEX( "A, B:Obj, tau_A, tau_B:Mor |~ &()vdash &Precompose(InjectionOfCofactorOfCoproduct( [A, B], 1 ),&UniversalMorphismFromCoproduct( [A,B], [tau_A, tau_B] ) ) = tau_A" );

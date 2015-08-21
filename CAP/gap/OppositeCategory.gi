@@ -262,6 +262,8 @@ InstallMethod( Opposite,
     
     INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
     
+    Finalize( opposite_category );
+    
     return opposite_category;
     
 end );
