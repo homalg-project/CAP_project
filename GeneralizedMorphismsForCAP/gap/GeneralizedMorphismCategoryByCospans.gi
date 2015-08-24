@@ -30,7 +30,7 @@ BindGlobal( "TheTypeOfGeneralizedMorphismByCospan",
 ####################################
 
 ##
-InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
+InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_COSPANS,
                        
   function( category )
     local entry, underlying_honest_category;
@@ -71,7 +71,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
     
     AddPreCompose( category, [
       
-      [ function( morphism1, morphism2 ),
+      [ function( morphism1, morphism2 )
           local pushout_diagram, injection_left, injection_right;
           
           pushout_diagram := [ ReversedArrow( morphism1 ), Arrow( morphism2 ) ];
@@ -84,7 +84,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
           
       end, [ ] ],
       
-      [ function( morphism1, morphism2 ),
+      [ function( morphism1, morphism2 )
           local arrow, reversed_arrow;
           
           arrow := PreCompose( Arrow( morphism1 ), Arrow( morphism2 ) );
@@ -93,7 +93,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
           
       end, [ IsHonest, IsHonest ] ],
       
-      [ function( morphism1, morphism2 ),
+      [ function( morphism1, morphism2 )
           local arrow;
           
           arrow := PreCompose( Arrow( morphism1 ), Arrow( morphism2 ) );
@@ -108,7 +108,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
     AddAdditionForMorphisms( category, [
                              
       [ function( morphism1, morphism2 )
-          local pushout_diagram, pushout_left, pushout_right;
+          local pushout_diagram, pushout_left, pushout_right, arrow, reversed_arrow;
           
           pushout_diagram := [ ReversedArrow( morphism1 ), ReversedArrow( morphism2 ) ];
           
@@ -377,7 +377,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByCospan,
     
     SetReversedArrow( generalized_morphism, reversed_arrow );
     
-    generalized_category := GeneralizedMorphismCategoryByCospans( CapCategory( morphism_aid ) );
+    generalized_category := GeneralizedMorphismCategoryByCospans( CapCategory( arrow ) );
     
     Add( generalized_category, generalized_morphism );
     
@@ -414,7 +414,7 @@ InstallMethod( IsHonest,
     
     reversed_arrow := ReversedArrow( morphism );
     
-    if not IsEqualForObject( Source( reversed_arrow ), Range( reversed_arrow ) ) then
+    if not IsEqualForObjects( Source( reversed_arrow ), Range( reversed_arrow ) ) then
         
         return false;
         
@@ -457,7 +457,7 @@ InstallMethod( PseudoInverse,
 end );
 
 InstallMethod( GeneralizedInverseByCospan,
-               IsCapCategoryMorphism,
+               [ IsCapCategoryMorphism ],
                
   function( morphism )
     

@@ -21,19 +21,23 @@ DeclareCategory( "IsGeneralizedMorphismByCospan",
 ##
 ####################################
 
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_COSPANS" );
+
+DeclareFilter( "WasCreatedAsGeneralizedMorphismCategoryByCospans" );
+
 ####################################
 ##
 ## Attributes
 ##
 ####################################
 
-DeclareAttribute( "IsHonest",
+DeclareProperty( "IsHonest",
                   IsGeneralizedMorphismByCospan );
 
 DeclareAttribute( "Arrow",
                   IsGeneralizedMorphismByCospan );
 
-DeclareAttribute( "ReverseArrow",
+DeclareAttribute( "ReversedArrow",
                   IsGeneralizedMorphismByCospan );
 
 DeclareAttribute( "NormalizedCospanTuple",
@@ -45,8 +49,25 @@ DeclareAttribute( "PseudoInverse",
 DeclareAttribute( "GeneralizedInverseByCospan",
                   IsCapCategoryMorphism );
 
+DeclareAttribute( "NormalizedCospan",
+                  IsGeneralizedMorphismByCospan );
+
 ####################################
 ##
 ## Constructors
 ##
 ####################################
+
+DeclareOperation( "GeneralizedMorphismByCospan",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareAttribute( "AsGeneralizedMorphismByCospan",
+                  IsCapCategoryMorphism );
+
+DeclareAttribute( "GeneralizedMorphismCategoryByCospans",
+                  IsCapCategory );
+
+DeclareAttribute( "GeneralizedMorphismByCospansObject",
+                  IsCapCategoryObject );
+
+
