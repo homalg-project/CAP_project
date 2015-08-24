@@ -286,5 +286,27 @@ are needed.
 \input{GAP_tex/vecspaces_example/SnakeLemma_main} 
 \end{small}
 
-After those examples of computational power we end this tutorial for the Abelian category in \CapPkg.
+Another nice feature of \CapPkg are functors. The functors in \CapPkg should represent mathematical functors between categories and are modeled
+as morphisms in the \CapPkg category of categories, \texttt{CapCat}. They provide a good way to communicate between different data structures inplemented
+by someone in the \CapPkg eviroment. Then they are functors between different categories. Also, it is useful to implement some internal operations
+in a category as endofunctors, since functors can be manipulated like morphisms, i.e. composed, etc. Also, natural transformations can be implemented in
+\CapPkg. Generally, functors in \CapPkg need two functions, a function describing the action on the objects, and a function describing the actions on the
+morphism. Also, we need to tell the system in which component the functor is co and in which the functor is contravariant. Covariant is hereby the standard
+case, so we do not need to specify it.
+In the next example, we create, as a first example, the identity functor of the previously created category of vector spaces. This is somehow the easiest functor,
+since it does not require any manipulation at all. We start by creating the functor object, and then adding the object and the morphism function to it.
 
+\begin{small}
+\input{GAP_tex/vecspaces_example/IdentityFunctor_main} 
+\end{small}
+
+Even if this example is trivial, we already see one of the main points to keep in mind when creating functors. Although the functor only takes one argument,
+the morphism function takes three. This is due to the fact that morphism functions in functors are always kind of \texttt{WithGiven} functions. The first
+argument here is the image of the source(s) of the morphism(s) given to the object function of the functor, the last is the image of the range(s).
+
+It was already mentioned that functors are morphisms in a specific category, and every \CapPkg category has a specific object in this category.
+Of course, a method for the identity morphism is implemented in \texttt{CapCat}, so we can have the same result with less effort.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/IdentityFunctor2_main} 
+\end{small}

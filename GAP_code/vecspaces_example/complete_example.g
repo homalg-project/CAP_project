@@ -452,3 +452,11 @@ gamma2 := IdentityMorphism( V3 );
 gamma3 := VectorSpaceMorphism( V2, [ [ 0 ], [ 1 ] ], V1 );
 
 snake := SnakeLemmaConnectingHomomorphism( alpha2, gamma1, gamma2, gamma3, beta1 );
+
+id_functor := CapFunctor( "Identity of vecspaces", vecspaces, vecspaces );
+
+AddObjectFunction( id_functor, IdFunc );
+
+AddMorphismFunction( id_functor, function( obj1, mor, obj2 ) return mor; end );
+
+id_functor := IdentityMorphism( AsCatObject( vecspaces ) );
