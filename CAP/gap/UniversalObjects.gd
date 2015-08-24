@@ -465,6 +465,13 @@ DeclareOperation( "CokernelFunctorial",
 DeclareOperation( "CokernelFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CokernelFunctorial</C>.
+#! $F: (\alpha, \nu, \alpha') \mapsto (\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' ))$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddCokernelFunctorial",
                   [ IsCapCategory, IsFunction ] );
 
