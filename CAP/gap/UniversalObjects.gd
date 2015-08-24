@@ -46,7 +46,7 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelObject",
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the kernel embedding $\iota: \mathrm{KernelObject}(\alpha) \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{KernelObject}(\alpha),A)$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{KernelObject}(\alpha),A)$
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
                                           IsCapCategoryMorphism );
@@ -55,7 +55,7 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
 #! This is a convenience method.
 #! The argument is an object $K$ that was created as a kernel.
 #! The output is the kernel embedding $\iota: K \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(K,A)$.
+#! @Returns a morphism in $\mathrm{Hom}(K,A)$
 #! @Arguments K
 DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
                                           IsCapCategoryObject );
@@ -64,7 +64,7 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
 #! The arguments are a morphism $\alpha: A \rightarrow B$
 #! and an object $K = \mathrm{KernelObject}(\alpha)$.
 #! The output is the kernel embedding $\iota: K \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(K,A)$.
+#! @Returns a morphism in $\mathrm{Hom}(K,A)$
 #! @Arguments alpha, K
 DeclareOperation( "KernelEmbWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -75,7 +75,7 @@ DeclareOperation( "KernelEmbWithGivenKernelObject",
 #! and a test morphism $\tau: T \rightarrow A$.
 #! The output is the morphism $u(\tau): T \rightarrow K$
 #! given by the universal property of the kernel.
-#! @Returns a morphism in $\mathrm{Hom}(T,K)$.
+#! @Returns a morphism in $\mathrm{Hom}(T,K)$
 #! @Arguments K, tau
 DeclareOperation( "KernelLift",
                   [ IsCapCategoryObject, IsCapCategoryMorphism ] );
@@ -85,7 +85,7 @@ DeclareOperation( "KernelLift",
 #! and a test morphism $\tau: T \rightarrow A$.
 #! The output is the morphism $u(\tau): T \rightarrow \mathrm{KernelObject}(\alpha)$
 #! given by the universal property of the kernel.
-#! @Returns a morphism in $\mathrm{Hom}(T,\mathrm{KernelObject}(\alpha))$.
+#! @Returns a morphism in $\mathrm{Hom}(T,\mathrm{KernelObject}(\alpha))$
 #! @Arguments alpha, tau
 DeclareOperation( "KernelLift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -96,7 +96,7 @@ DeclareOperation( "KernelLift",
 #! and an object $K = \mathrm{KernelObject}(\alpha)$.
 #! The output is the morphism $u(\tau): T \rightarrow K$
 #! given by the universal property of the kernel.
-#! @Returns a morphism in $\mathrm{Hom}(T,K)$.
+#! @Returns a morphism in $\mathrm{Hom}(T,K)$
 #! @Arguments alpha, tau, K
 DeclareOperation( "KernelLiftWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -208,7 +208,7 @@ DeclareOperation( "AddKernelLiftWithGivenKernelObject",
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
 #! given by the functorality of the kernel.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$
 #! @Arguments L
 DeclareOperation( "KernelObjectFunctorial",
                   [ IsList ] );
@@ -219,7 +219,7 @@ DeclareOperation( "KernelObjectFunctorial",
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
 #! given by the functorality of the kernel.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$
 #! @Arguments alpha, mu, alpha_prime
 DeclareOperation( "KernelObjectFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -318,7 +318,7 @@ DeclareOperation( "CokernelProjWithGivenCokernel",
 #! and a test morphism $\tau: B \rightarrow T$.
 #! The output is the morphism $u(\tau): K \rightarrow T$
 #! given by the universal property of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(K,T)$.
+#! @Returns a morphism in $\mathrm{Hom}(K,T)$
 #! @Arguments K, tau
 DeclareOperation( "CokernelColift",
                   [ IsCapCategoryObject, IsCapCategoryMorphism ] );
@@ -328,7 +328,7 @@ DeclareOperation( "CokernelColift",
 #! and a test morphism $\tau: B \rightarrow T$.
 #! The output is the morphism $u(\tau): \mathrm{Cokernel}(\alpha) \rightarrow T$
 #! given by the universal property of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}(\alpha),T)$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}(\alpha),T)$
 #! @Arguments alpha, tau
 DeclareOperation( "CokernelColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -339,7 +339,7 @@ DeclareOperation( "CokernelColift",
 #! and an object $K = \mathrm{Cokernel}(\alpha)$.
 #! The output is the morphism $u(\tau): K \rightarrow T$
 #! given by the universal property of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(K,T)$.
+#! @Returns a morphism in $\mathrm{Hom}(K,T)$
 #! @Arguments alpha, tau, K
 DeclareOperation( "CokernelColiftWithGivenCokernel",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -444,17 +444,12 @@ DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsCapCategory, IsList ] );
 
 
-#! @Section Functorial methods for cokernel
-
-
-
-
 #! @Description
 #! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu:A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$.
 #! The output is the morphism
 #! $\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' )$
 #! given by the functorality of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}( \alpha ), \mathrm{Cokernel}( \alpha' ))$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}( \alpha ), \mathrm{Cokernel}( \alpha' ))$
 #! @Arguments L
 DeclareOperation( "CokernelFunctorial",
                   [ IsList ] );
@@ -465,7 +460,7 @@ DeclareOperation( "CokernelFunctorial",
 #! The output is the morphism
 #! $\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' )$
 #! given by the functorality of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}( \alpha ), \mathrm{Cokernel}( \alpha' ))$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}( \alpha ), \mathrm{Cokernel}( \alpha' ))$
 #! @Arguments alpha, nu, alpha_prime
 DeclareOperation( "CokernelFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -497,7 +492,7 @@ DeclareFilter( "WasCreatedAsCokernel" );
 
 ####################################
 ##
-#! @Section Zero object
+#! @Section Zero Object
 ##
 ####################################
 
@@ -532,7 +527,7 @@ DeclareAttribute( "ZeroObject",
 #! This is a convenience method.
 #! The argument is an object $A$.
 #! It calls $\mathrm{UniversalMorphismFromZeroObject}$ on $A$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, A)$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, A)$
 #! @Arguments A
 DeclareAttribute( "MorphismFromZeroObject",
                   IsCapCategoryObject );
@@ -541,7 +536,7 @@ DeclareAttribute( "MorphismFromZeroObject",
 #! This is a convenience method.
 #! The argument is an object $A$.
 #! It calls $\mathrm{UniversalMorphismIntoZeroObject}$ on $A$.
-#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{ZeroObject})$.
+#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{ZeroObject})$
 #! @Arguments A
 DeclareAttribute( "MorphismIntoZeroObject",
                   IsCapCategoryObject );
@@ -549,7 +544,7 @@ DeclareAttribute( "MorphismIntoZeroObject",
 #! @Description
 #! The argument is an object $A$.
 #! The output is the universal morphism $u_{\mathrm{out}}: \mathrm{ZeroObject} \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, A)$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, A)$
 #! @Arguments A
 DeclareAttribute( "UniversalMorphismFromZeroObject",
                   IsCapCategoryObject );
@@ -558,7 +553,7 @@ DeclareAttribute( "UniversalMorphismFromZeroObject",
 #! The arguments are an object $A$,
 #! and a zero object $Z = \mathrm{ZeroObject}$.
 #! The output is the universal morphism $u_{\mathrm{out}}: Z \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(Z, A)$.
+#! @Returns a morphism in $\mathrm{Hom}(Z, A)$
 #! @Arguments A
 DeclareOperation( "UniversalMorphismFromZeroObjectWithGivenZeroObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -566,7 +561,7 @@ DeclareOperation( "UniversalMorphismFromZeroObjectWithGivenZeroObject",
 #! @Description
 #! The argument is an object $A$.
 #! The output is the universal morphism $u_{\mathrm{in}}: A \rightarrow \mathrm{ZeroObject}$.
-#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{ZeroObject})$.
+#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{ZeroObject})$
 #! @Arguments A
 DeclareAttribute( "UniversalMorphismIntoZeroObject",
                   IsCapCategoryObject );
@@ -575,7 +570,7 @@ DeclareAttribute( "UniversalMorphismIntoZeroObject",
 #! The arguments are an object $A$,
 #! and a zero object $Z = \mathrm{ZeroObject}$.
 #! The output is the universal morphism $u_{\mathrm{in}}: A \rightarrow Z$.
-#! @Returns a morphism in $\mathrm{Hom}(A, Z)$.
+#! @Returns a morphism in $\mathrm{Hom}(A, Z)$
 #! @Arguments A
 DeclareOperation( "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -583,7 +578,7 @@ DeclareOperation( "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
 #! @Description
 #! The argument is a category $C$.
 #! The output is the unique isomorphism $\mathrm{ZeroObject} \rightarrow \mathrm{InitialObject}$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, \mathrm{InitialObject})$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, \mathrm{InitialObject})$
 #! @Arguments C
 DeclareAttribute( "IsomorphismFromZeroObjectToInitialObject",
                   IsCapCategory );
@@ -591,7 +586,7 @@ DeclareAttribute( "IsomorphismFromZeroObjectToInitialObject",
 #! @Description
 #! The argument is a category $C$.
 #! The output is the unique isomorphism $\mathrm{InitialObject} \rightarrow \mathrm{ZeroObject}$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{InitialObject}, \mathrm{ZeroObject})$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{InitialObject}, \mathrm{ZeroObject})$
 #! @Arguments C
 DeclareAttribute( "IsomorphismFromInitialObjectToZeroObject",
                   IsCapCategory );
@@ -599,7 +594,7 @@ DeclareAttribute( "IsomorphismFromInitialObjectToZeroObject",
 #! @Description
 #! The argument is a category $C$.
 #! The output is the unique isomorphism $\mathrm{ZeroObject} \rightarrow \mathrm{TerminalObject}$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, \mathrm{TerminalObject})$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, \mathrm{TerminalObject})$
 #! @Arguments C
 DeclareAttribute( "IsomorphismFromZeroObjectToTerminalObject",
                   IsCapCategory );
@@ -607,7 +602,7 @@ DeclareAttribute( "IsomorphismFromZeroObjectToTerminalObject",
 #! @Description
 #! The argument is a category $C$.
 #! The output is the unique isomorphism $\mathrm{TerminalObject} \rightarrow \mathrm{ZeroObject}$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{TerminalObject}, \mathrm{ZeroObject})$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{TerminalObject}, \mathrm{ZeroObject})$
 #! @Arguments C
 DeclareAttribute( "IsomorphismFromTerminalObjectToZeroObject",
                   IsCapCategory );
@@ -807,47 +802,53 @@ DeclareFilter( "WasCreatedAsZeroObject" );
 
 ####################################
 ##
-#! @Section Terminal object
+#! @Section Terminal Object
 ##
 ####################################
 
 #! A terminal object consists of two parts:
 #! * an object $T$,
-#! * a function $u$ mapping each object $A$ to a morphism $u( \tau ): A \rightarrow T$.
-#! The pair $( T, u )$ is called a <Emph>terminal object</Emph> if the morphisms $u( \tau )$ are uniquely determined up to
+#! * a function $u$ mapping each object $A$ to a morphism $u( A ): A \rightarrow T$.
+#! The pair $( T, u )$ is called a <Emph>terminal object</Emph> if the morphisms $u( A )$ are uniquely determined up to
 #! congruence of morphisms.
+#! $\\$
+#! $\mathrm{TerminalObject}$ is a functorial operation. This just means:
+#! There exists a unique morphism $T \rightarrow T$.
 
 ## Main Operations and Attributes
 
-#! @BeginGroup 
-
 #! @Description
-#! Terminal object of a category $C$
-#! @Returns IsCapCategoryObject
+#! The argument is a category $C$.
+#! The output is a terminal object $T$ of $C$.
+#! @Returns an object
 #! @Arguments C
 DeclareAttribute( "TerminalObject",
                   IsCapCategory );
 
 #! @Description
-#! or of a cell $c$ in $C$
+#! This is a convenience method.
+#! The argument is a cell $c$.
+#! The output is a terminal object $T$ of the
+#! category $C$ for which $c \in C$.
+#! @Returns an object
 #! @Arguments c
 DeclareAttribute( "TerminalObject",
                   IsCapCategoryCell );
 
-#! @EndGroup 
 
 #! @Description
-#! Given an object $A$ this method returns the unique morphism $u: A \rightarrow T$ from 
-#! $A$ into the terminal object $T$ of the category of $A$
-#! @Returns IsCapCategoryMorphism
+#! The argument is an object $A$.
+#! The output is the universal morphism $u(A): A \rightarrow \mathrm{TerminalObject}$.
+#! @Returns a morphism in $\mathrm{Hom}( A, \mathrm{TerminalObject} )$
 #! @Arguments A
 DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismIntoTerminalObject",
                                           IsCapCategoryObject );
 
 #! @Description
-#! Given an object $A$ and a terminal object $T$ this method returns the unique morphism $u: A \rightarrow T$ from 
-#! $A$ to $T$
-#! @Returns IsCapCategoryMorphism
+#! The argument are an object $A$,
+#! and an object $T = \mathrm{TerminalObject}$.
+#! The output is the universal morphism $u(A): A \rightarrow T$.
+#! @Returns a morphism in $\mathrm{Hom}( A, T )$
 #! @Arguments A, T
 DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -856,9 +857,12 @@ DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
 
 
 #! @Description
-#! This operation adds the given function $f$: (no argument) $\mapsto T$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>TerminalObject</C>.
+#! $F: () \mapsto T$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddTerminalObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -873,9 +877,12 @@ DeclareOperation( "AddTerminalObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! This operation adds the given function $f: A \mapsto u$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoTerminalObject</C>.
+#! $F: A \mapsto u(A)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -890,9 +897,12 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
 
 
 #! @Description
-#! This operation adds the given function $f: (A, T) \mapsto u$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoTerminalObjectWithGivenTerminalObject</C>.
+#! $F: (A,T) \mapsto u(A)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -906,19 +916,22 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
                   [ IsCapCategory, IsList ] );
 
 
-#! @Section Functorial methods for terminal object
-
-#! Terminal object is a functorial operation. This means:
-#! There exists a unique morphisms $\phi: T \rightarrow T$.
-
 
 #! @Description
-#! This method takes a category $C$ as an input.
-#! @Returns $\phi$
+#! The argument is a category $C$.
+#! The output is the unique morphism $\mathrm{TerminalObject} \rightarrow \mathrm{TerminalObject}$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{TerminalObject}, \mathrm{TerminalObject} )$
 #! @Arguments C
 DeclareAttribute( "TerminalObjectFunctorial",
                   IsCapCategory );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>TerminalObjectFunctorial</C>.
+#! $F: () \mapsto (T \rightarrow T)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddTerminalObjectFunctorial",
                   [ IsCapCategory, IsFunction ] );
 
@@ -956,58 +969,64 @@ DeclareFilter( "WasCreatedAsTerminalObject" );
 #! * a function $u$ mapping each object $A$ to a morphism $u( A ): I \rightarrow A$.
 #! The pair $(I,u)$ is called a \textbf{initial object} if the morphisms $u(A)$ are uniquely determined up to
 #! congruence of morphisms.
+#!
+#! $\mathrm{TerminalObject}$ is a functorial operation. This just means:
+#! There exists a unique morphisms $I \rightarrow I$.
 
 ## Main Operations and Attributes
 
-#! @BeginGroup 
 
 #! @Description
-#! Initial object of a category $C$
-#! @Returns IsCapCategoryObject
+#! The argument is a category $C$.
+#! The output is an initial object $I$ of $C$.
+#! @Returns an object
 #! @Arguments C
 DeclareAttribute( "InitialObject",
                   IsCapCategory );
 
 #! @Description
-#! or of a cell $c$ in $C$
+#! This is a convenience method.
+#! The argument is a cell $c$.
+#! The output is an initial object $I$ of the category $C$
+#! for which $c \in C$.
+#! @Returns an object
 #! @Arguments c
 DeclareAttribute( "InitialObject",
                   IsCapCategoryCell );
 
-#! @EndGroup 
 
 #! @Description
-#! Given an object $A$ this method returns the unique morphism $u: I \rightarrow A$
-#! from the initial object $I$ of the category of $A$ to $A$.
-#! @Returns IsCapCategoryMorphism
+#! The argument is an object $A$.
+#! The output is the universal morphism $u(A): \mathrm{InitialObject} \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{InitialObject} \rightarrow A)$.
 #! @Arguments A
 DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismFromInitialObject",
                                           IsCapCategoryObject );
 
 #! @Description
-#! Given an object $A$ and an initial object $I$ this method returns the unique morphism $u: I \rightarrow A$ from 
-#! $I$ to $A$
-#! @Returns IsCapCategoryMorphism
+#! The arguments are an object $A$,
+#! and an object $I = \mathrm{InitialObject}$.
+#! The output is the universal morphism $u(A): \mathrm{InitialObject} \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{InitialObject} \rightarrow A)$.
 #! @Arguments A, I
 DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## Add Operations
 
-#! @AutoDoc
-#! @BeginGroup
-
 #! @Description
-#! This operation adds the given function $f$: (no argument) $\mapsto I$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InitialObject</C>.
+#! $F: () \mapsto I$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddInitialObject",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddInitialObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-## don't document this function
 DeclareOperation( "AddInitialObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
@@ -1015,9 +1034,12 @@ DeclareOperation( "AddInitialObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! This operation adds the given function $f: A \mapsto u$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromInitialObject</C>.
+#! $F: A \mapsto u(A)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromInitialObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1030,11 +1052,13 @@ DeclareOperation( "AddUniversalMorphismFromInitialObject",
 DeclareOperation( "AddUniversalMorphismFromInitialObject",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: (A, T) \mapsto u$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromInitialObjectWithGivenInitialObject</C>.
+#! $F: (A,I) \mapsto u(A)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1047,23 +1071,21 @@ DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
 DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategory, IsList ] );
 
-#! @EndGroup
-
-#! @EndAutoDoc
-
-#! @Section Functorial methods for initial object
-
-#! Terminal object is a functorial operation. This means:
-#! There exists a unique morphisms $\phi: I \rightarrow I$.
-
-
 #! @Description
-#! This method takes a category $C$ as an input.
-#! @Returns $\phi$
+#! The argument is a category $C$.
+#! The output is the unique morphism $\mathrm{InitialObject} \rightarrow \mathrm{InitialObject}$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{InitialObject}, \mathrm{InitialObject} )$
 #! @Arguments C
 DeclareAttribute( "InitialObjectFunctorial",
                   IsCapCategory );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InitialObjectFunctorial</C>.
+#! $F: () \rightarrow ( I \rightarrow I )$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddInitialObjectFunctorial",
                   [ IsCapCategory, IsFunction ] );
 
