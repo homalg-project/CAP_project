@@ -6,78 +6,8 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Universal Objects
-#! NOTE: This text has to updated, since caching is not inevitable due to IsEqualForObjects and IsCongruentForMorphisms.
-#! Let $I$ and $A$ be categories. A functor $D: I \rightarrow A$ is sometimes also called
-#! a diagram with index category $I$.
-#! A limit of a diagram $D$ is an object $X$ together with a collection of morphisms
-#! $(s_i: X \rightarrow D_i)_{i \in I}$, called a source, such that for every other source
-#! $(t_i: T \rightarrow D_i)_{i \in I}$, there exists a unique morphism $u: T \rightarrow X$ such that
-#! $s_i \circ u = t_i$ for all $i$. 
-#! Dually, a colimit of a diagram $D$ is an object $X$ together with a collection of morphisms
-#! $(s_i: D_i \rightarrow X)_{i \in I}$, called a sink, such that for every other sink
-#! $(t_i: D_i \rightarrow T)_{i \in I}$, there exists a unique morphism $u: X \rightarrow T$ such that
-#! $u \circ s_i = t_i$ for all $i$. 
-#! We call such objects universal.
-#! For every universal object $X$, there are 5 methods which can be installed:
-#! * $D \mapsto X$: Constructor of $X$ with a diagram $D$ (i.e. a list of morphisms and objects) as an input 
-#! * $D \mapsto s_i$: Constructor of source/sink data with input $D$
-#! * $(D,X) \mapsto s_i$: Constructor of source/sink data with input $D$ and $X$
-#! * $(D, t_i) \mapsto u$: Constructor of universal property morphism with input $D$ and a test source/sink $T$
-#! * $(D, t_i, X) \mapsto u$: Constructor of universal property morphism with input $D$ and a test source/sink $T$ and $X$
-#! The convention in CAP is: every diagram $D$ should only have one universal object $X$.
-#! Thus every computed $X$ will be cached. For example, if you compute the pullback object of a given
-#! diagram twice, you will get identical objects (IsIdenticalObj will return true).
-#! <Br/>
-#! This convention becomes inevitable if you build functors out of universal objects, because 
-#! functors are in particular mathematical maps which only allow exactly one output for one given input.
-#! <Br/>
-#! This convention also clarifies the relevance of the constructors which have $D$ and $X$ as an input:
-#! if you have a constructor for $D \mapsto X$, you must also have a constructor
-#! for $(D,X) \mapsto s_i$ in order to compute the $s_i$. Because if you first construct $X$
-#! from $D$, $X$ is once and for all cached as the universal object of $D$. In particular, the
-#! maps $s_i$ must have source/ range identical to $X$. But this can only be guaranteed by
-#! having $X$ as part of the input in the constructor of the $s_i$.
-#! <Br/>
-#! The following combinations of implementations of the above constructors allow a full functionality 
-#! of the universal object in question:
-#! * implement all constructors
-#! * implement $D \mapsto s_i$ and $(D, t_i, X) \mapsto u$
-#! * implement $D \mapsto X$, $(D,X) \mapsto s_i$ and $(D, t_i, X) \mapsto u$
-#! * implement $D \mapsto X$, $D \mapsto s_i$, $(D,X) \mapsto s_i$ and $(D, t_i, X) \mapsto u$
-#! * implement $D \mapsto X$, $(D,X) \mapsto s_i$, $(D, t_i) \mapsto u$ and $(D, t_i, X) \mapsto u$
-#! Sometimes, there are even shorter ways: in an abelian category, all you have to implement 
-#! for a kernel is:
-#! * KernelEmb
-#! * MonoAsKernelLift
-#! One note: a derived method should never use constructors with given $X$ as an input.
-#! The internals of CAP will take care that no confusion accurs. For example: if you
-#! call KernelEmb of a morphism $\alpha$, CAP works as follows:
-#! * Check the cache: is the kernel embedding of $\alpha$ already computed? If yes, return this cached embedding.
-#! * Otherwise, check if the kernel object of $\alpha$ is already computed. If yes, call KernelEmbWithGivenKernelObject( $\alpha$ ). If no, call KernelEmb( $\alpha$ ).
-#! 
-#! One further note: every universal object stores if it was created as such and therefore can be used to access universal property morphisms (if computable).
+##
 #############################################################################
-
-####################################
-##
-#! @Section Type system
-##
-####################################
-
-#! Explaination of methods of the form $\texttt{Add}F( f, C )$ for a function name $F$ (e.g. KernelLift, DirectProduct),
-#! a function $f$ and a CapCategory $C$:
-#! The method $\texttt{Add}F( f, C )$ installs the method with the name $F$ properly such that it can be
-#! used within the context of the given category $C$. 
-#! Valid types for the (multiple) arguments of $F$ are:
-#! * CapCategoryObject
-#! * CapCategoryMorphism
-#! * List containing only CapCategoryObjects
-#! * List containing only CapCategoryMorphisms
-#! * Integer
-#! Valid types for the output of $F$ are:
-#! * CapCategoryObject
-#! * CapCategoryMorphism.
-#! Note the name convention: If $\texttt{Add}F$ is a method, then so is $F$.
 
 
 ## needed for multiple genesis
@@ -90,10 +20,13 @@ DeclareOperation( "AddToGenesis",
 ##
 ####################################
 
-#! Let $\alpha: A \rightarrow B$ be a morphism. A kernel of $\alpha$ is a morphism
-#! $\iota: K \rightarrow A$ such that $\alpha \circ \iota = 0$ and such that for 
-#! every test morphism $\tau: T \rightarrow A$ with $\alpha \circ \tau = 0$, there
-#! exists a unique morphism $u: T \rightarrow K$ such that $\iota \circ u = \tau$.
+#! For a given morphism $\alpha: A \rightarrow B$, a kernel of $\alpha$ consists of three parts:
+#! * an object $K$,
+#! * a morphism $\iota: K \rightarrow A$ such that $\alpha \circ \iota \sim_{K,B} 0$,
+#! * a dependent function $u$ mapping each morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$ to a morphism $u(\tau): T \rightarrow K$ such that $\iota \circ u( \tau ) \sim_{T,A} \tau$. 
+#! The triple $( K, \iota, u )$ is called a <Emph>kernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
+#! congruence of morphisms.
+
 
 ## Main Operations and Attributes
 #! @Description
@@ -292,10 +225,12 @@ DeclareFilter( "WasCreatedAsKernelObject" );
 ##
 ####################################
 
-#! Let $\alpha: A \rightarrow B$ be a morphism. A cokernel of $\alpha$ is a morphism
-#! $\epsilon: B \rightarrow K$ such that $\epsilon \circ \alpha = 0$ and such that for 
-#! every test morphism $\tau: B \rightarrow T$ with $\tau \circ \alpha = 0$, there
-#! exists a unique morphism $u: K \rightarrow T$ such that $u \circ \epsilon  = \tau$.
+#! For a given morphism $\alpha: A \rightarrow B$, a cokernel of $\alpha$ consists of three parts:
+#! * an object $K$,
+#! * a morphism $\epsilon: B \rightarrow K$ such that $\epsilon \circ \alpha \sim_{A,K} 0$,
+#! * a dependent function $u$ mapping each $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$ to a morphism $u(\tau):K \rightarrow T$ such that $u(\tau) \circ \epsilon \sim_{B,T} \tau$.
+#! The triple $( K, \epsilon, u )$ is called a <Emph>cokernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
+#! congruence of morphisms.
 
 
 ## Main Operations and Attributes
@@ -495,7 +430,12 @@ DeclareFilter( "WasCreatedAsCokernel" );
 ##
 ####################################
 
-#! A zero object of a category $C$ is an object $Z$ which is an initial and a terminal object.
+#! A zero object consists of three parts:
+#! * an object $Z$,
+#! * a function $u_{\mathrm{in}}$ mapping each object $A$ to a morphism $u_{\mathrm{in}}(A): A \rightarrow Z$,
+#! * a function $u_{\mathrm{out}}$ mapping each object $A$ to a morphism $u_{\mathrm{out}}(A): Z \rightarrow A$.
+#! The triple $(Z, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>zero object</Emph> if the morphisms 
+#! $u_{\mathrm{in}}(A)$, $u_{\mathrm{out}}(A)$ are uniquely determined up to congruence of morphisms.
 
 ## Main Operations and Attributes
 
@@ -704,8 +644,11 @@ DeclareProperty( "IS_IMPLIED_ZERO_OBJECT",
 ##
 ####################################
 
-#! An object $T$ of a category $C$ is called terminal if for every object $A$
-#! there exists a unique morphism $u: A \rightarrow T$.
+#! A terminal object consists of two parts:
+#! * an object $T$,
+#! * a function $u$ mapping each object $A$ to a morphism $u( \tau ): A \rightarrow T$.
+#! The pair $( T, u )$ is called a <Emph>terminal object</Emph> if the morphisms $u( \tau )$ are uniquely determined up to
+#! congruence of morphisms.
 
 ## Main Operations and Attributes
 
@@ -841,8 +784,11 @@ DeclareFilter( "WasCreatedAsTerminalObject" );
 ##
 ####################################
 
-#! An object $I$ of a category $C$ is called initial if for every object $A$
-#! there exists a unique morphism $u: I \rightarrow A$.
+#! An initial object consists of two parts:
+#! * an object $I$,
+#! * a function $u$ mapping each object $A$ to a morphism $u( A ): I \rightarrow A$.
+#! The pair $(I,u)$ is called a \textbf{initial object} if the morphisms $u(A)$ are uniquely determined up to
+#! congruence of morphisms.
 
 ## Main Operations and Attributes
 
@@ -979,18 +925,28 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 
 ####################################
 ##
-#! @Section Direct sum
+#! @Section Direct Sum
 ##
 ####################################
 
-#! Let $C$ be an additive category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
-#! Now take $(S_1, \dots, S_n) \in C^n$. An object $S$ equipped with morphisms $\pi_i: S \rightarrow S_i$ and
-#! $\iota_i: S_i \rightarrow S$ is called direct sum of
-#! $(S_1, \dots, S_n)$ if
-#! - $\sum_{i = 1}^n (\iota_i \circ \pi_i) = \mathrm{id}_S$,
-#! - for all $i,j \in \{ 1 \dots n \}$: $\pi_j\iota_i  = \delta_{ij}\mathrm{id}_{S_i}$, where $\delta_{ij}$ denotes the Kronecker delta.
-#! Note: this implies that $S$ is a direct product with respect to the $\pi_i$ and a coproduct with
-#! respect to the $\iota_i$.
+#! For a given list $D = (S_1, \dots, S_n)$, a direct sum consists of five parts:
+#! * an object $S$,
+#! * a list of morphisms $\pi = (\pi_i: S \rightarrow S_i)_{i = 1 \dots n}$,
+#! * a list of morphisms $\iota = (\iota_i: S_i \rightarrow S)_{i = 1 \dots n}$,
+#! * a dependent function $u_{\mathrm{in}}$ mapping every list $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$
+#!  to a morphism $u_{\mathrm{in}}(\tau): T \rightarrow S$ such that
+#!  $\pi_i \circ u_{\mathrm{in}}(\tau) \sim_{T,S_i} \tau_i$ for all $i = 1, \dots, n$.
+#! * a dependent function $u_{\mathrm{out}}$ mapping every list $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$
+#!  to a morphism $u_{\mathrm{out}}(\tau): S \rightarrow T$ such that
+#!   $u_{\mathrm{out}}(\tau) \circ \iota_i \sim_{S_i, T} \tau_i$ for all $i = 1, \dots, n$,
+#! such that
+#! * $\sum_{i=1}^{n} \iota_i \circ \pi_i = \mathrm{id}_S$,
+#! * $\pi_j \circ \iota_i = \delta_{i,j}$,
+#! where $\delta_{i,j} \in \mathrm{Hom}( S_i, S_j )$ is the identity if $i=j$, and $0$ otherwise.
+#! The $5$-tuple $(S, \pi, \iota, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>direct sum</Emph> of $D$
+#! if the morphisms 
+#! $u_{\mathrm{in}}(\tau)$, $u_{\mathrm{out}}(\tau)$ are uniquely determined up to congruence of morphisms.
+
 
 ## Main Operations and Attributes
 
@@ -1297,11 +1253,13 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 ##
 ####################################
 
-#! Let $C$ be a category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
-#! Now take $(I_1, \dots, I_n) \in C^n$. An object $I$ equipped with morphisms 
-#! $(\iota_i: I_i \rightarrow I)_{i = 1 \dots n} \in C^n$ is called a coproduct of
-#! $(I_1, \dots, I_n)$ if for every collection of morphisms $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n} \in C^n$
-#! there exists a unique morphism $u: I \rightarrow T$ such that $\tau_i = u \circ \iota_i$ for all $i = 1 \dots n$.
+#! For a given list of objects $D = ( I_1, \dots, I_n )$, a coproduct of $D$ consists of three parts:
+#! * an object $I$,
+#! * a list of morphisms $\iota = ( \iota_i: I_i \rightarrow I )_{i = 1 \dots n}$
+#! * a dependent function $u$ mapping each list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$
+#!  to a morphism $u( \tau ): I \rightarrow T$ such that $u( \tau ) \circ \iota_i \sim_{I_i, T} \tau_i$ for all $i = 1, \dots, n$.
+#! The triple $( I, \iota, u )$ is called a <Emph>coproduct</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
+#! congruence of morphisms.
 
 ## Main Operations and Attributes
 
@@ -1475,19 +1433,13 @@ DeclareFilter( "WasCreatedAsCoproduct" );
 ##
 ####################################
 
-#! Let $C$ be a category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
-#! Now take $(P_1, \dots, P_n) \in C^n$. An object $P$ equipped with morphisms 
-#! $(\pi_i: P \rightarrow P_i)_{i = 1 \dots n} \in C^n$ is called a direct product of
-#! $(P_1, \dots, P_n)$ if for every collection of morphisms $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n} \in C^n$
-#! there exists a unique morphism $u: T \rightarrow P$ such that $\tau_i = \pi_i \circ u $ for all $i = 1 \dots n$.
-
-
-## Main Operations and Attributes
-# the first argument (diagram) is an object of the product category. This is superior to a list of objects
-# because:
-# *IsWellDefined will be handled properly
-# *no caching issues?
-
+#! For a given list of objects $D = ( P_1, \dots, P_n )$, a direct product of $D$ consists of three parts:
+#! * an object $P$,
+#! * a list of morphisms $\pi = ( \pi_i: P \rightarrow P_i )_{i = 1 \dots n}$ 
+#! * a dependent function $u$ mapping each list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$ 
+#!  to a morphism $u(\tau): T \rightarrow P$ such that $\pi_i \circ u( \tau ) \sim_{T,P_i} \tau_i$ for all $i = 1, \dots, n$.
+#! The triple $( P, \pi, u )$ is called a <Emph>direct product</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
+#! congruence of morphisms.
 
 ## Main Operations and Attributes
 #! @Description
@@ -1703,16 +1655,22 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 
 ####################################
 ##
-#! @Section FiberProduct
+#! @Section Fiber Product
 ##
 ####################################
 
-#! Let $C$ be a category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
-#! Now take $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n} \in C^n$. An object $P$ equipped with morphisms 
-#! $(\pi_i: P \rightarrow P_i)_{i = 1 \dots n} \in C^n$ is called a pullback of
-#! $(\beta_i)_{i = 1 \dots n}$ if for every collection of morphisms $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n} \in C^n$
-#! with the property $\beta_i \circ \tau_i = \beta_j \circ \tau_j$ for all $i,j = 1, \dots, n$,
-#! there exists a unique morphism $u: T \rightarrow P$ such that $\tau_i = \pi_i \circ u $ for all $i = 1 \dots n$.
+#! For a given list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$, 
+#! a fiber product of $D$ consists of three parts:
+#! * an object $P$,
+#! * a list of morphisms $\pi = ( \pi_i: P \rightarrow P_i )_{i = 1 \dots n}$ such that
+#!  $\beta_i \circ \pi_i  \sim_{P, B} \beta_j \circ \pi_j$ for all pairs $i,j$.
+#! * a dependent function $u$ mapping each list of morphisms
+#!  $\tau = ( \tau_i: T \rightarrow P_i )$ such that
+#!  $\beta_i \circ \tau_i  \sim_{P, B} \beta_j \circ \tau_j$ for all pairs $i,j$
+#!  to a morphism $u( \tau ): T \rightarrow P$ such that
+#!  $\pi_i \circ u( \tau ) \sim_{T, P_i} \tau_i$ for all $i = 1, \dots, n$.
+#! The triple $( P, \pi, u )$ is called a <Emph>fiber product</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
+#! congruence of morphisms.
 
 ## Main Operations and Attributes
 
@@ -2024,13 +1982,18 @@ DeclareFilter( "WasCreatedAsFiberProduct" );
 ##
 ####################################
 
-#! Let $C$ be a category. Let $n \in \mathbb{N}$. Denote by $C^n$ the $n$-th direct product of $C$ with itself. 
-#! Now take $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n} \in C^n$. An object $I$ equipped with morphisms 
-#! $(\iota_i: I_i \rightarrow I)_{i = 1 \dots n} \in C^n$ is called a pushout of
-#! $(\beta_i)_{i = 1 \dots n}$ if for every collection of morphisms $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n} \in C^n$
-#! with the property $\tau_i \circ \beta_i  = \tau_j \circ \beta_j $ for all $i,j = 1, \dots, n$,
-#! there exists a unique morphism $u: I \rightarrow T$ such that $\tau_i = u \circ \iota_i$ for all $i = 1 \dots n$.
-
+#! For a given list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+#! a pushout of $D$ consists of three parts:
+#! * an object $I$,
+#! * a list of morphisms $\iota = ( \iota_i: I_i \rightarrow I )_{i = 1 \dots n}$ such that
+#!  $\iota_i \circ \beta_i \sim_{B,I} \iota_j \circ \beta_j$ for all pairs $i,j$,
+#! * a dependent function $u$ mapping each list of morphisms
+#!  $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
+#!  $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$
+#!  to a morphism $u( \tau ): I \rightarrow T$ such that
+#!  $u( \tau ) \circ \iota_i \sim_{I_i, T} \tau_i$ for all $i = 1, \dots, n$.
+#! The triple $( I, \iota, u )$ is called a <Emph>pushout</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
+#! congruence of morphisms.
 
 ##
 DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
@@ -2283,13 +2246,17 @@ DeclareFilter( "WasCreatedAsPushout" );
 ##
 ####################################
 
-#! Let $\alpha: A \rightarrow B$ be a morphism. The image of $\alpha$ is
-#! the smallest monomorphism $\iota: I \hookrightarrow B$ through which $\alpha$ factors, i.e.,
-#! such that there exists a morphism $c: A \rightarrow I$ with $\iota \circ c = \alpha$.
-#! Smallest in this context means that for every other factorization of $\alpha = \tau_2 \circ \tau_1$
-#! with $\tau_1: A \rightarrow T, \tau_2: T \rightarrow B$
-#! where $\tau_2$ is a monomorphism, there exists a unique morphism $u: I \rightarrow T$
-#! such that $\iota = \tau_2 \circ u$ and $\tau_1 = u \circ c$.
+#! For a given morphism $\alpha: A \rightarrow B$, an image of $\alpha$ consists of four parts:
+#! * an object $I$,
+#! * a morphism $c: A \rightarrow I$,
+#! * a monomorphism $\iota: I \hookrightarrow B$ such that $\iota \circ c \sim_{A,B} \alpha$,
+#! * a dependent function $u$ mapping each pair of morphisms $\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )$
+#!  where $\tau_2$ is a monomorphism
+#!  such that $\tau_2 \circ \tau_1 \sim_{A,T} \alpha$ to a morphism
+#!  $u(\tau): I \rightarrow T$ such that
+#!  $\tau_2 \circ u(\tau) \sim_{I,B} \iota$ and $u(\tau) \circ c \sim_{A,T} \tau_1$.
+#! The $4$-tuple $( I, c, \iota, u )$ is called an <Emph>image</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
+#! congruence of morphisms.
 
 ## Main Operations and Attributes
 
@@ -2495,6 +2462,18 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #! @Section Coimage
 ##
 ####################################
+
+#! For a given morphism $\alpha: A \rightarrow B$, a coimage of $\alpha$ consists of four parts:
+#! * an object $C$,
+#! * an epimorphism $\pi: A \twoheadrightarrow C$,
+#! * a morphism $a: C \rightarrow B$ such that $a \circ \pi \sim_{A,B} \alpha$,
+#! * a dependent function $u$ mapping each pair of morphisms $\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )$
+#!  where $\tau_1$ is an epimorphism
+#!  such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$ to a morphism
+#!  $u(\tau): T \rightarrow C$ such that
+#!  $u( \tau ) \circ \tau_1 \sim_{A,C} \pi$ and $a \circ u( \tau ) \sim_{T,B} \tau_2$.
+#! The $4$-tuple $( C, \pi, a, u )$ is called a <Emph>coimage</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
+#! congruence of morphisms.
 
 DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
                   [ IsCapCategoryMorphism ] );
