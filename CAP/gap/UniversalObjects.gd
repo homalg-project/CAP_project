@@ -21,65 +21,82 @@ DeclareOperation( "AddToGenesis",
 ####################################
 
 #! For a given morphism $\alpha: A \rightarrow B$, a kernel of $\alpha$ consists of three parts:
-#! * an object $K$,
+#! * an object $K$, 
 #! * a morphism $\iota: K \rightarrow A$ such that $\alpha \circ \iota \sim_{K,B} 0$,
 #! * a dependent function $u$ mapping each morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$ to a morphism $u(\tau): T \rightarrow K$ such that $\iota \circ u( \tau ) \sim_{T,A} \tau$. 
 #! The triple $( K, \iota, u )$ is called a <Emph>kernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
+#! We denote the object $K$ of such a triple by $\mathrm{KernelObject}(\alpha)$.
+#! $\\$
+#! $\mathrm{KernelObject}$ is a functorial operation. This means:
+#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
+#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
+#! we obtain a morphism $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$.
 
 
 ## Main Operations and Attributes
 #! @Description
-#!  Kernel of a given morphism.
-#! @Returns IsCapCategoryObject
+#! The argument is a morphism $\alpha$.
+#! The output is the kernel $K$ of $\alpha$.
+#! @Returns an object
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "KernelObject",
                                           IsCapCategoryMorphism );
 
 #! @Description
-#! Embedding of the kernel of a given morphism $\alpha$ into the source of $\alpha$.
-#! @Returns IsCapCategoryMorphism
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the kernel embedding $\iota: \mathrm{KernelObject}(\alpha) \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{KernelObject}(\alpha),A)$.
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
                                           IsCapCategoryMorphism );
 
 #! @Description
-#! Kernel embedding of an object which was created as a kernel.
-#! @Returns IsCapCategoryMorphism
+#! This is a convenience method.
+#! The argument is an object $K$ that was created as a kernel.
+#! The output is the kernel embedding $\iota: K \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(K,A)$.
 #! @Arguments K
 DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
                                           IsCapCategoryObject );
 
 #! @Description
-#! Embedding of a given kernel $K$ of a given morphism $\alpha$ into the source of $\alpha$.
-#! @Returns IsCapCategoryMorphism
+#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! and an object $K = \mathrm{KernelObject}(\alpha)$.
+#! The output is the kernel embedding $\iota: K \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(K,A)$.
 #! @Arguments alpha, K
 DeclareOperation( "KernelEmbWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-# @Description
-#! Given a kernel $K$ of a morphism $\alpha:A \rightarrow B$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
-#! returns the unique morphism $u: T \rightarrow K$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
-#! denotes the kernel embedding.
-#! @Returns IsCapCategoryMorphism
+#! @Description
+#! This is a convenience method.
+#! The arguments are an object $K = \mathrm{KernelObject}(\alpha)$
+#! and a test morphism $\tau: T \rightarrow A$.
+#! The output is the morphism $u(\tau): T \rightarrow \mathrm{KernelObject}(\alpha)$
+#! given by the universal property of the kernel.
+#! @Returns a morphism in $\mathrm{Hom}(T,K)$.
 #! @Arguments K, tau
 DeclareOperation( "KernelLift",
                   [ IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! Given a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
-#! returns the unique morphism $u: T \rightarrow K$ such that $\tau = \epsilon \circ u$, where $\epsilon: \mathrm{Kern}(\alpha) \rightarrow A$
-#! denotes the kernel embedding.
-#! @Returns IsCapCategoryMorphism
+#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! and a test morphism $\tau: T \rightarrow A$.
+#! The output is the morphism $u(\tau): T \rightarrow \mathrm{KernelObject}(\alpha)$
+#! given by the universal property of the kernel.
+#! @Returns a morphism in $\mathrm{Hom}(T,\mathrm{KernelObject}(\alpha))$.
 #! @Arguments alpha, tau
 DeclareOperation( "KernelLift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! Given a morphism $\alpha: A \rightarrow B$ with a kernel $K$ and a testmorphism $\tau: T \rightarrow A$ such that $\alpha \circ \tau = 0$, this method
-#! returns the unique morphism $u: T \rightarrow K$ such that $\tau = \epsilon \circ u$, where $\epsilon: K \rightarrow A$
-#! denotes the kernel embedding.
-#! @Returns IsCapCategoryMorphism
+#! The arguments are a morphism $\alpha: A \rightarrow B$,
+#! a test morphism $\tau: T \rightarrow A$,
+#! and an object $K = \mathrm{KernelObject}(\alpha)$.
+#! The output is the morphism $u(\tau): T \rightarrow K$
+#! given by the universal property of the kernel.
+#! @Returns a morphism in $\mathrm{Hom}(T,K)$.
 #! @Arguments alpha, tau, K
 DeclareOperation( "KernelLiftWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -88,9 +105,12 @@ DeclareOperation( "KernelLiftWithGivenKernelObject",
 ## Add Operations
 
 #! @Description
-#! This operation adds the given function $f: \alpha \mapsto K$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>KernelObject</C>.
+#! $F: \alpha \mapsto \mathrm{KernelObject}(\alpha)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -105,9 +125,12 @@ DeclareOperation( "AddKernelObject",
 
 
 #! @Description
-#! This operation adds the given function $f: \alpha \mapsto \iota$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>KernelEmb</C>.
+#! $F: \alpha \mapsto \iota$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddKernelEmb",
                   [ IsCapCategory, IsFunction ] );
 
@@ -122,9 +145,12 @@ DeclareOperation( "AddKernelEmb",
 
 
 #! @Description
-#! This operation adds the given function $f: (\alpha, K) \mapsto \iota$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>KernelEmbWithGivenKernelObject</C>.
+#! $F: (\alpha, K) \mapsto \iota$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddKernelEmbWithGivenKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -139,9 +165,12 @@ DeclareOperation( "AddKernelEmbWithGivenKernelObject",
 
 
 #! @Description
-#! This operation adds the given function $f: (\alpha, \tau) \mapsto u$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>KernelLift</C>.
+#! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddKernelLift",
                   [ IsCapCategory, IsFunction ] );
 
@@ -156,9 +185,12 @@ DeclareOperation( "AddKernelLift",
 
 
 #! @Description
-#! This operation adds the given function $f: (\alpha, \tau, K) \mapsto u$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>KernelLiftWithGivenKernelObject</C>.
+#! $F: (\alpha, \tau, K) \mapsto u$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddKernelLiftWithGivenKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -171,29 +203,34 @@ DeclareOperation( "AddKernelLiftWithGivenKernelObject",
 DeclareOperation( "AddKernelLiftWithGivenKernelObject",
                   [ IsCapCategory, IsList ] );
 
-
-#! @Section Functorial methods for kernel
-
-#! KernelObject is a functorial operation. This means:
-#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
-#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha = \alpha' \circ \mu$,
-#! we obtain a morphism $\phi: \mathrm{Kernel}( \alpha ) \rightarrow \mathrm{Kernel}( \alpha' )$.
-
-
 #! @Description
-#! This method takes $L = [ \alpha, [ \mu, \nu ], \alpha' ]$ as an input.
-#! @Returns $\phi$
+#! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu: A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$ of morphisms.
+#! The output is the morphism
+#! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
+#! given by the functorality of the kernel.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$.
 #! @Arguments L
 DeclareOperation( "KernelObjectFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! For the computation of $\phi$, you do not need $\nu$.
-#! @Returns $\phi$
-#! @Arguments alpha, mu, alpha_p
+#! The arguments are three morphism
+#! $\alpha: A \rightarrow B$, $\mu: A \rightarrow A'$, $\alpha': A' \rightarrow B'$.
+#! The output is the morphism
+#! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
+#! given by the functorality of the kernel.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$.
+#! @Arguments alpha, mu, alpha_prime
 DeclareOperation( "KernelObjectFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>KernelObjectFunctorial</C>.
+#! $F: (\alpha, \mu, \alpha') \mapsto (\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' ))$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddKernelObjectFunctorial",
                   [ IsCapCategory, IsFunction ] );
 
