@@ -91,4 +91,3 @@ InstallMethod( RightActionObject,
     return LeftOrRightActionObject( structure_morphism, acting_object, false );
     
 end );
-

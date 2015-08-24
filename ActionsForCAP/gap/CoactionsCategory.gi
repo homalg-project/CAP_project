@@ -23,7 +23,11 @@ InstallMethod( LeftCoactionsCategory,
     
     underlying_monoidal_category := CapCategory( acting_object );
     
-    if not IsMonoidalCategory( underlying_monoidal_category ) then
+    if not IsFinalized( underlying_monoidal_category ) then
+      
+      Error( "the underlying category must be finalized" );
+      
+    elif not IsMonoidalCategory( underlying_monoidal_category ) then
       
       Error( "the underlying category has to be a monoidal category" );
       
@@ -56,7 +60,11 @@ InstallMethod( RightCoactionsCategory,
     
     underlying_monoidal_category := CapCategory( acting_object );
     
-    if not IsMonoidalCategory( underlying_monoidal_category ) then
+    if not IsFinalized( underlying_monoidal_category ) then
+      
+      Error( "the underlying category must be finalized" );
+      
+    elif not IsMonoidalCategory( underlying_monoidal_category ) then
       
       Error( "the underlying category has to be a monoidal category" );
       
