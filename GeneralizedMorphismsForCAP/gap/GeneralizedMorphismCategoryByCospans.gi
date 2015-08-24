@@ -222,7 +222,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
         
         factor := AsGeneralizedMorphismByCospan( factor );
         
-        subobject := AsGeneralizedMorphism( subobject );
+        subobject := AsGeneralizedMorphismByCospan( subobject );
         
         return PreCompose( PseudoInverse( factor ), PseudoInverse( subobject ) );
         
