@@ -71,9 +71,9 @@ DeclareOperation( "KernelEmbWithGivenKernelObject",
 
 #! @Description
 #! This is a convenience method.
-#! The arguments are an object $K = \mathrm{KernelObject}(\alpha)$
+#! The arguments are an object $K$ which was created as a kernel,
 #! and a test morphism $\tau: T \rightarrow A$.
-#! The output is the morphism $u(\tau): T \rightarrow \mathrm{KernelObject}(\alpha)$
+#! The output is the morphism $u(\tau): T \rightarrow K$
 #! given by the universal property of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}(T,K)$.
 #! @Arguments K, tau
@@ -268,70 +268,92 @@ DeclareFilter( "WasCreatedAsKernelObject" );
 #! * a dependent function $u$ mapping each $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$ to a morphism $u(\tau):K \rightarrow T$ such that $u(\tau) \circ \epsilon \sim_{B,T} \tau$.
 #! The triple $( K, \epsilon, u )$ is called a <Emph>cokernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
+#! $\\$
+#! $\mathrm{Cokernel}$ is a functorial operation. This means:
+#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
+#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
+#! we obtain a morphism $\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' )$.
+
 
 
 ## Main Operations and Attributes
 #! @Description
-#!  Cokernel of a given morphism.
-#! @Returns IsCapCategoryObject
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the cokernel $K$ of $\alpha$.
+#! @Returns an object
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "Cokernel",
                                           IsCapCategoryMorphism );
 
 #! @Description
-#! Projection $B \twoheadrightarrow \mathrm{Coker}(\alpha)$ into the cokernel of a given morphism $\alpha: A \rightarrow B$.
-#! @Returns IsCapCategoryMorphism
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{Cokernel}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}(B, \mathrm{Cokernel}( \alpha ))$
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
                                           IsCapCategoryMorphism );
 
 #! @Description
-#! Cokernel projection of an object which was created as a cokernel.
-#! @Returns IsCapCategoryMorphism
+#! This is a convenience method.
+#! The argument is an object $K$ which was created as a cokernel.
+#! The output is the cokernel projection $\epsilon: B \rightarrow K$.
+#! @Returns a morphism in $\mathrm{Hom}(B, K)$
 #! @Arguments K
 DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
                                           IsCapCategoryObject );
 
 #! @Description
-#! Projection $B \twoheadrightarrow K$ of a given cokernel $K$ of a given morphism $\alpha: A \rightarrow B$.
-#! @Returns IsCapCategoryMorphism
+#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! and an object $K = \mathrm{Cokernel}(\alpha)$.
+#! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{Cokernel}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}(B, K)$
 #! @Arguments alpha, K
 DeclareOperation( "CokernelProjWithGivenCokernel",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
 #! @Description
-#! Given a cokernel $K$ of a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: B \rightarrow T$ such that $\tau \circ \alpha = 0$, this method
-#! returns the unique morphism $u: \mathrm{Coker}(\alpha) \rightarrow T$ such that $\tau = u \circ \epsilon$, where 
-#! $\epsilon: B \rightarrow \mathrm{Coker}(\alpha)$ denotes the cokernel projection.
-#! @Returns IsCapCategoryMorphism
+#! This is a convenience method.
+#! The arguments are an object $K$ which was created as a cokernel,
+#! and a test morphism $\tau: B \rightarrow T$.
+#! The output is the morphism $u(\tau): K \rightarrow T$
+#! given by the universal property of the cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(K,T)$.
 #! @Arguments K, tau
 DeclareOperation( "CokernelColift",
                   [ IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! Given a morphism $\alpha: A \rightarrow B$ and a testmorphism $\tau: B \rightarrow T$ such that $\tau \circ \alpha = 0$, this method
-#! returns the unique morphism $u: \mathrm{Coker}(\alpha) \rightarrow T$ such that $\tau = u \circ \epsilon$, where 
-#! $\epsilon: B \rightarrow \mathrm{Coker}(\alpha)$ denotes the cokernel projection.
-#! @Returns IsCapCategoryMorphism
+#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! and a test morphism $\tau: B \rightarrow T$.
+#! The output is the morphism $u(\tau): \mathrm{Cokernel}(\alpha) \rightarrow T$
+#! given by the universal property of the cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}(\alpha),T)$.
 #! @Arguments alpha, tau
 DeclareOperation( "CokernelColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
 #! @Description
-#! Given a morphism $\alpha: A \rightarrow B$ with its cokernel $K$ and a testmorphism $\tau: B \rightarrow T$ 
-#! such that $\tau \circ \alpha = 0$, this method returns the unique morphism $u: K \rightarrow T$ such that 
-#! $\tau = u \circ \epsilon$, where $\epsilon: B \rightarrow K$ denotes the cokernel projection.
-#! @Returns IsCapCategoryMorphism
+#! The arguments are a morphism $\alpha: A \rightarrow B$,
+#! a test morphism $\tau: B \rightarrow T$,
+#! and an object $K = \mathrm{Cokernel}(\alpha)$.
+#! The output is the morphism $u(\tau): K \rightarrow T$
+#! given by the universal property of the cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(K,T)$.
 #! @Arguments alpha, tau, K
 DeclareOperation( "CokernelColiftWithGivenCokernel",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
 ## Add Operations
+
 #! @Description
-#! This operation adds the given function $f: \alpha \mapsto K$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Cokernel</C>.
+#! $F: \alpha \mapsto K$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddCokernel",
                   [ IsCapCategory, IsFunction ] );
 
@@ -344,11 +366,13 @@ DeclareOperation( "AddCokernel",
 DeclareOperation( "AddCokernel",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: \alpha \mapsto \epsilon$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CokernelProj</C>.
+#! $F: \alpha \mapsto \epsilon$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddCokernelProj",
                   [ IsCapCategory, IsFunction ] );
 
@@ -363,9 +387,12 @@ DeclareOperation( "AddCokernelProj",
 
 
 #! @Description
-#! This operation adds the given function $f: (\alpha, K) \mapsto \epsilon$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CokernelProj</C>.
+#! $F: (\alpha, K) \mapsto \epsilon$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddCokernelProjWithGivenCokernel",
                   [ IsCapCategory, IsFunction ] );
 
@@ -378,11 +405,13 @@ DeclareOperation( "AddCokernelProjWithGivenCokernel",
 DeclareOperation( "AddCokernelProjWithGivenCokernel",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: (\alpha, \tau) \mapsto u$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CokernelProj</C>.
+#! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddCokernelColift",
                   [ IsCapCategory, IsFunction ] );
 
@@ -395,12 +424,13 @@ DeclareOperation( "AddCokernelColift",
 DeclareOperation( "AddCokernelColift",
                   [ IsCapCategory, IsList ] );
 
-
-
 #! @Description
-#! This operation adds the given function $f: (\alpha, \tau, K) \mapsto u$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CokernelProj</C>.
+#! $F: (\alpha, \tau, K) \mapsto u(\tau)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddCokernelColiftWithGivenCokernel",
                   [ IsCapCategory, IsFunction ] );
 
@@ -416,23 +446,27 @@ DeclareOperation( "AddCokernelColiftWithGivenCokernel",
 
 #! @Section Functorial methods for cokernel
 
-#! Cokernel is a functorial operation. This means:
-#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
-#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha = \alpha' \circ \mu$,
-#! we obtain a morphism $\phi: \mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' )$.
+
 
 
 #! @Description
-#! This method takes $L = [ \alpha, [ \mu, \nu ], \alpha' ]$ as an input.
-#! @Returns $\phi$
+#! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu:A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$.
+#! The output is the morphism
+#! $\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' )$
+#! given by the functorality of the cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}( \alpha ), \mathrm{Cokernel}( \alpha' ))$.
 #! @Arguments L
 DeclareOperation( "CokernelFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! For the computation of $\phi$, you do not need $\mu$.
-#! @Returns $\phi$
-#! @Arguments alpha, nu, alpha_p
+#! The arguments are three morphisms
+#! $\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'$.
+#! The output is the morphism
+#! $\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' )$
+#! given by the functorality of the cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}( \alpha ), \mathrm{Cokernel}( \alpha' ))$.
+#! @Arguments alpha, nu, alpha_prime
 DeclareOperation( "CokernelFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
@@ -476,79 +510,124 @@ DeclareFilter( "WasCreatedAsCokernel" );
 
 ## Main Operations and Attributes
 
-#! @BeginGroup 
-
 #! @Description
-#! Zero object of a category $C$
-#! @Returns IsCapCategoryObject
+#! The argument is a category $C$.
+#! The output is a zero object $Z$ of $C$.
+#! @Returns an object
 #! @Arguments C
 DeclareAttribute( "ZeroObject",
                   IsCapCategory );
 
 #! @Description
-#! or of a cell $c$ in $C$
+#! This is a convenience method.
+#! The argument is a cell $c$.
+#! The output is a zero object $Z$ of the
+#! category $C$ for which $c \in C$.
+#! @Returns an object
 #! @Arguments c
 DeclareAttribute( "ZeroObject",
                   IsCapCategoryCell );
 
+#! @Description
+#! This is a convenience method.
+#! The argument is an object $A$.
+#! It calls $\mathrm{UniversalMorphismFromZeroObject}$ on $A$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, A)$.
+#! @Arguments A
 DeclareAttribute( "MorphismFromZeroObject",
                   IsCapCategoryObject );
 
+#! @Description
+#! This is a convenience method.
+#! The argument is an object $A$.
+#! It calls $\mathrm{UniversalMorphismIntoZeroObject}$ on $A$.
+#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{ZeroObject})$.
+#! @Arguments A
 DeclareAttribute( "MorphismIntoZeroObject",
                   IsCapCategoryObject );
 
+#! @Description
+#! The argument is an object $A$.
+#! The output is the universal morphism $u_{\mathrm{out}}: \mathrm{ZeroObject} \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, A)$.
+#! @Arguments A
 DeclareAttribute( "UniversalMorphismFromZeroObject",
                   IsCapCategoryObject );
 
+#! @Description
+#! The arguments are an object $A$,
+#! and a zero object $Z = \mathrm{ZeroObject}$.
+#! The output is the universal morphism $u_{\mathrm{out}}: Z \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(Z, A)$.
+#! @Arguments A
 DeclareOperation( "UniversalMorphismFromZeroObjectWithGivenZeroObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is an object $A$.
+#! The output is the universal morphism $u_{\mathrm{in}}: A \rightarrow \mathrm{ZeroObject}$.
+#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{ZeroObject})$.
+#! @Arguments A
 DeclareAttribute( "UniversalMorphismIntoZeroObject",
                   IsCapCategoryObject );
 
+#! @Description
+#! The arguments are an object $A$,
+#! and a zero object $Z = \mathrm{ZeroObject}$.
+#! The output is the universal morphism $u_{\mathrm{in}}: A \rightarrow Z$.
+#! @Returns a morphism in $\mathrm{Hom}(A, Z)$.
+#! @Arguments A
 DeclareOperation( "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is a category $C$.
+#! The output is the unique isomorphism $\mathrm{ZeroObject} \rightarrow \mathrm{InitialObject}$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, \mathrm{InitialObject})$.
+#! @Arguments C
 DeclareAttribute( "IsomorphismFromZeroObjectToInitialObject",
                   IsCapCategory );
 
+#! @Description
+#! The argument is a category $C$.
+#! The output is the unique isomorphism $\mathrm{InitialObject} \rightarrow \mathrm{ZeroObject}$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{InitialObject}, \mathrm{ZeroObject})$.
+#! @Arguments C
 DeclareAttribute( "IsomorphismFromInitialObjectToZeroObject",
                   IsCapCategory );
 
+#! @Description
+#! The argument is a category $C$.
+#! The output is the unique isomorphism $\mathrm{ZeroObject} \rightarrow \mathrm{TerminalObject}$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, \mathrm{TerminalObject})$.
+#! @Arguments C
 DeclareAttribute( "IsomorphismFromZeroObjectToTerminalObject",
                   IsCapCategory );
 
+#! @Description
+#! The argument is a category $C$.
+#! The output is the unique isomorphism $\mathrm{TerminalObject} \rightarrow \mathrm{ZeroObject}$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{TerminalObject}, \mathrm{ZeroObject})$.
+#! @Arguments C
 DeclareAttribute( "IsomorphismFromTerminalObjectToZeroObject",
                   IsCapCategory );
 
-#! @EndGroup 
-
-
-## Function Attributes
-
-#! @BeginGroup
-
-#! @Description
-#! These attributes store the implementations of the basic algorithms for a terminal object.
-#! @Arguments C
-DeclareAttribute( "ZeroObjectFunction",
-                  IsCapCategory );
-
-#! @EndGroup
-
 ## Add Operations
 
+
 #! @Description
-#! This operation adds the given function $f$: (no argument) $\mapsto Z$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ZeroObject</C>.
+#! $F: () \mapsto \mathrm{ZeroObject}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-## don't document this function
 DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
@@ -556,7 +635,13 @@ DeclareOperation( "AddZeroObject",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoZeroObject</C>.
+#! $F: A \mapsto u_{\mathrm{in}}(A)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoZeroObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -569,6 +654,13 @@ DeclareOperation( "AddUniversalMorphismIntoZeroObject",
 DeclareOperation( "AddUniversalMorphismIntoZeroObject",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoZeroObjectWithGivenZeroObject</C>.
+#! $F: (A, Z) \mapsto u_{\mathrm{in}}(A)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -582,7 +674,13 @@ DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromZeroObject</C>.
+#! $F: A \mapsto u_{\mathrm{out}}(A)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromZeroObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -595,6 +693,14 @@ DeclareOperation( "AddUniversalMorphismFromZeroObject",
 DeclareOperation( "AddUniversalMorphismFromZeroObject",
                   [ IsCapCategory, IsList ] );
 
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromZeroObjectWithGivenZeroObject</C>.
+#! $F: (A,Z) \mapsto u_{\mathrm{out}}(A)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -608,7 +714,13 @@ DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromZeroObjectToInitialObject</C>.
+#! $F: () \mapsto (\mathrm{ZeroObject} \rightarrow \mathrm{InitialObject})$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -621,6 +733,13 @@ DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
 DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromInitialObjectToZeroObject</C>.
+#! $F: () \mapsto ( \mathrm{InitialObject} \rightarrow \mathrm{ZeroObject})$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -634,7 +753,13 @@ DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromZeroObjectToTerminalObject</C>.
+#! $F: () \mapsto (\mathrm{ZeroObject} \rightarrow \mathrm{TerminalObject})$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -647,6 +772,13 @@ DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
 DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromTerminalObjectToZeroObject</C>.
+#! $F: () \mapsto ( \mathrm{TerminalObject} \rightarrow \mathrm{ZeroObject})$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -671,8 +803,6 @@ DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
 #! because by default, a filter is set to false.
 DeclareFilter( "WasCreatedAsZeroObject" );
 
-DeclareProperty( "IS_IMPLIED_ZERO_OBJECT", 
-                 IsCapCategoryObject );
 #! @Chapter Universal Objects
 
 ####################################
