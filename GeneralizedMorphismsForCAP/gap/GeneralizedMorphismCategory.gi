@@ -844,7 +844,7 @@ InstallMethodWithCacheFromObject( CommonCoastrictionOp,
     
     for i in [ 1 .. Length( morphism_list ) ] do
         
-        morphism_list[ i ][ 4 ] := codomain_list[ i ];
+        morphism_list[ i ][ 3 ] := codomain_list[ i ];
         
         morphism_list[ i ][ 2 ] := PreCompose( morphism_list[ i ][ 2 ], associated_compose_list[ i ] );
         
