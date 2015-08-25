@@ -1125,7 +1125,7 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 ##
 ####################################
 
-#! For a given list $D = (S_1, \dots, S_n)$, a direct sum consists of five parts:
+#! For a given list $D = (S_1, \dots, S_n)$ in an Ab-category, a direct sum consists of five parts:
 #! * an object $S$,
 #! * a list of morphisms $\pi = (\pi_i: S \rightarrow S_i)_{i = 1 \dots n}$,
 #! * a list of morphisms $\iota = (\iota_i: S_i \rightarrow S)_{i = 1 \dots n}$,
@@ -1139,245 +1139,500 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 #! * $\sum_{i=1}^{n} \iota_i \circ \pi_i = \mathrm{id}_S$,
 #! * $\pi_j \circ \iota_i = \delta_{i,j}$,
 #! where $\delta_{i,j} \in \mathrm{Hom}( S_i, S_j )$ is the identity if $i=j$, and $0$ otherwise.
-#! The $5$-tuple $(S, \pi, \iota, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>direct sum</Emph> of $D$
-#! if the morphisms 
-#! $u_{\mathrm{in}}(\tau)$, $u_{\mathrm{out}}(\tau)$ are uniquely determined up to congruence of morphisms.
+#! The $5$-tuple $(S, \pi, \iota, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>direct sum</Emph> of $D$.
+#! $\\$
+#! $\mathrm{DirectSum}$ is a functorial operation. This means:
+#! For $(\mu_i: S_i \rightarrow S'_i)_{i=1\dots n}$,
+#! we obtain a morphism $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$.
 
 
 ## Main Operations and Attributes
 
+#! @Description
+#! The argument is a list of objects $D = (S_1, \dots, S_n)$
+#! and an object for method selection.
+#! The output is the direct sum $\bigoplus_{i=1}^n S_i$.
+#! @Returns an object
+#! @Arguments D, method_selection_object
 DeclareOperationWithCache( "DirectSumOp",
                            [ IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
+#! and an integer $k$.
+#! The output is the $k$-th projection
+#! $\pi_k: \bigoplus_{i=1}^n S_i \rightarrow S_k$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, S_k )$
+#! @Arguments D,k
 DeclareOperation( "ProjectionInFactorOfDirectSum",
                   [ IsList, IsInt ] );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! an integer $k$,
+#! and an object for method selection.
+#! The output is the $k$-th projection
+#! $\pi_k: \bigoplus_{i=1}^n S_i \rightarrow S_k$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, S_k )$
+#! @Arguments D,k, method_selection_object
 DeclareOperation( "ProjectionInFactorOfDirectSumOp",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! an integer $k$,
+#! and an object $S = \bigoplus_{i=1}^n S_i$.
+#! The output is the $k$-th projection
+#! $\pi_k: S \rightarrow S_k$.
+#! @Returns a morphism in $\mathrm{Hom}( S, S_k )$
+#! @Arguments D,k,S
 DeclareOperation( "ProjectionInFactorOfDirectSumWithGivenDirectSum",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
+#! and an integer $k$.
+#! The output  is the $k$-th injection
+#! $\iota_k: S_k \rightarrow \bigoplus_{i=1}^n S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( S_k, \bigoplus_{i=1}^n S_i )$
+#! @Arguments D,k
 DeclareOperation( "InjectionOfCofactorOfDirectSum",
                   [ IsList, IsInt ] );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! an integer $k$,
+#! and an object for method selection.
+#! The output  is the $k$-th injection
+#! $\iota_k: S_k \rightarrow \bigoplus_{i=1}^n S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( S_k, \bigoplus_{i=1}^n S_i )$
+#! @Arguments D,k,method_selection_object
 DeclareOperation( "InjectionOfCofactorOfDirectSumOp",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! an integer $k$,
+#! and an object $S = \bigoplus_{i=1}^n S_i$.
+#! The output  is the $k$-th injection
+#! $\iota_k: S_k \rightarrow S$.
+#! @Returns a morphism in $\mathrm{Hom}( S_k, S )$
+#! @Arguments D,k,S
 DeclareOperation( "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
+#! @Description
+#! This is a convenience method.
+#! There are three different ways to use this method:
+#! * The arguments are a list of objects $D = (S_1, \dots, S_n)$
+#!  and a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$.
+#! * The argument is a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$.
+#! * The arguments are morphisms $\tau_1: T \rightarrow S_1, \dots, \tau_n: T \rightarrow S_n$.
+#! The output is the morphism
+#! $u_{\mathrm{in}}(\tau): T \rightarrow \bigoplus_{i=1}^n S_i$
+#! given by the universal property of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}(T, \bigoplus_{i=1}^n S_i)$
 DeclareGlobalFunction( "UniversalMorphismIntoDirectSum" );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$,
+#! and an object for method selection.
+#! The output is the morphism
+#! $u_{\mathrm{in}}(\tau): T \rightarrow \bigoplus_{i=1}^n S_i$
+#! given by the universal property of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}(T, \bigoplus_{i=1}^n S_i)$
+#! @Arguments D,tau,method_selection_object
 DeclareOperation( "UniversalMorphismIntoDirectSumOp",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$,
+#! and an object $S = \bigoplus_{i=1}^n S_i$.
+#! The output is the morphism
+#! $u_{\mathrm{in}}(\tau): T \rightarrow S$
+#! given by the universal property of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}(T, S)$
+#! @Arguments D,tau,S
 DeclareOperation( "UniversalMorphismIntoDirectSumWithGivenDirectSum",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! This is a convenience method.
+#! There are three different ways to use this method:
+#! * The arguments are a list of objects $D = (S_1, \dots, S_n)$
+#!  and a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$.
+#! * The argument is a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$.
+#! * The arguments are morphisms $S_1 \rightarrow T, \dots, S_n \rightarrow T$.
+#! The output is the morphism
+#! $u_{\mathrm{out}}(\tau): \bigoplus_{i=1}^n S_i \rightarrow T$
+#! given by the universal property of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^n S_i, T)$
 DeclareGlobalFunction( "UniversalMorphismFromDirectSum" );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$,
+#! and an object for method selection.
+#! The output is the morphism
+#! $u_{\mathrm{out}}(\tau): \bigoplus_{i=1}^n S_i \rightarrow T$
+#! given by the universal property of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^n S_i, T)$
+#! @Arguments D, tau, method_selection_object
 DeclareOperation( "UniversalMorphismFromDirectSumOp",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$,
+#! and an object $S = \bigoplus_{i=1}^n S_i$.
+#! The output is the morphism
+#! $u_{\mathrm{out}}(\tau): S \rightarrow T$
+#! given by the universal property of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}(S, T)$
+#! @Arguments D, tau, S
 DeclareOperation( "UniversalMorphismFromDirectSumWithGivenDirectSum",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is a list of objects $D = (S_1, \dots, S_n)$.
+#! The output is the canonical isomorphism
+#! $\bigoplus_{i=1}^n S_i \rightarrow \prod_{i=1}^{n}S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \prod_{i=1}^{n}S_i )$
+#! @Arguments D
 DeclareOperation( "IsomorphismFromDirectSumToDirectProduct",
                   [ IsList ] );
 
+#! @Description
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
+#! and an object for method selection.
+#! The output is the canonical isomorphism
+#! $\bigoplus_{i=1}^n S_i \rightarrow \prod_{i=1}^{n}S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \prod_{i=1}^{n}S_i )$
+#! @Arguments D, method_selection_object
 DeclareOperation( "IsomorphismFromDirectSumToDirectProductOp",
                   [ IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is a list of objects $D = (S_1, \dots, S_n)$.
+#! The output is the canonical isomorphism
+#! $\prod_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \prod_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
+#! @Arguments D
 DeclareOperation( "IsomorphismFromDirectProductToDirectSum",
                   [ IsList ] );
 
+#! @Description
+#! The argument is a list of objects $D = (S_1, \dots, S_n)$
+#! and an object for method selection.
+#! The output is the canonical isomorphism
+#! $\prod_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \prod_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
+#! @Arguments D, method_selection_object
 DeclareOperation( "IsomorphismFromDirectProductToDirectSumOp",
                   [ IsList, IsCapCategoryObject ] );
 
-
+#! @Description
+#! The argument is a list of objects $D = (S_1, \dots, S_n)$.
+#! The output is the canonical isomorphism
+#! $\bigoplus_{i=1}^n S_i \rightarrow \bigsqcup_{i=1}^{n}S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigsqcup_{i=1}^{n}S_i )$
+#! @Arguments D
 DeclareOperation( "IsomorphismFromDirectSumToCoproduct",
                   [ IsList ] );
 
+#! @Description
+#! The argument is a list of objects $D = (S_1, \dots, S_n)$
+#! and an object for method selection.
+#! The output is the canonical isomorphism
+#! $\bigoplus_{i=1}^n S_i \rightarrow \bigsqcup_{i=1}^{n}S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigsqcup_{i=1}^{n}S_i )$
+#! @Arguments D, method_selection_object
 DeclareOperation( "IsomorphismFromDirectSumToCoproductOp",
                   [ IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is a list of objects $D = (S_1, \dots, S_n)$.
+#! The output is the canonical isomorphism
+#! $\bigsqcup_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigsqcup_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
+#! @Arguments D
 DeclareOperation( "IsomorphismFromCoproductToDirectSum",
                   [ IsList ] );
 
+#! @Description
+#! The argument is a list of objects $D = (S_1, \dots, S_n)$
+#! and an object for method selection.
+#! The output is the canonical isomorphism
+#! $\bigsqcup_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigsqcup_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
+#! @Arguments D, method_selection_object
 DeclareOperation( "IsomorphismFromCoproductToDirectSumOp",
                   [ IsList, IsCapCategoryObject ] );
 
 
-## convenience methods
-
+#! @Description
+#! The argument is a list of lists of morphisms
+#! $M = ( ( \phi_{i,j}: A_i \rightarrow A_j )_{j = 1 \dots n} )_{i = 1 \dots m}$.
+#! The output is the morphism
+#! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n A_j$
+#! defined by the matrix $M$.
+#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n A_j)$
+#! @Arguments M
 DeclareOperationWithCache( "MorphismBetweenDirectSums",
                            [ IsList ] );
 
+#! @Description
+#! The arguments are a list
+#! $M = ( \phi_{1,1}, \phi_{1,2}, \dots, \phi_{1,n}, \phi_{2,1}, \dots, \phi_{m,n} )$
+#! of morphisms $\phi_{i,j}: A_i \rightarrow A_j$,
+#! an integer $m$,
+#! an integer $n$,
+#! and a method selection morphism.
+#! The output is the morphism
+#! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n A_j$
+#! defined by the list $M$ regarded as a matrix of dimension $m \times n$.
+#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n A_j)$
+#! @Arguments M, m, n, method_selection_morphism
 DeclareOperationWithCache( "MorphismBetweenDirectSumsOp",
                            [ IsList, IsInt, IsInt, IsCapCategoryMorphism ] );
 
-
-DeclareOperation( "AddProjectionInFactorOfDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddUniversalMorphismFromDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
-#! This operation adds the given function $f: ( (S_1, \dots, S_n) ) \mapsto S$ to the category $C$,
-#! where $(S_1, \dots, S_n)$ is a list of objects in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInFactorOfDirectSum</C>.
+#! $F: (D,k) \mapsto \pi_{k}$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
+DeclareOperation( "AddProjectionInFactorOfDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInFactorOfDirectSumWithGivenDirectSum</C>.
+#! $F: (D,k,S) \mapsto \pi_{k}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfCofactorOfDirectSum</C>.
+#! $F: (D,k) \mapsto \iota_{k}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfCofactorOfDirectSumWithGivenDirectSum</C>.
+#! $F: (D,k,S) \mapsto \iota_{k}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoDirectSum</C>.
+#! $F: (D,\tau) \mapsto u_{\mathrm{in}}(\tau)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoDirectSumWithGivenDirectSum</C>.
+#! $F: (D,\tau,S) \mapsto u_{\mathrm{in}}(\tau)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromDirectSum</C>.
+#! $F: (D,\tau) \mapsto u_{\mathrm{out}}(\tau)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismFromDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromDirectSumWithGivenDirectSum</C>.
+#! $F: (D,\tau,S) \mapsto u_{\mathrm{out}}(\tau)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromDirectSumToDirectProduct</C>.
+#! $F: D \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \prod_{i=1}^{n}S_i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromDirectProductToDirectSum</C>.
+#! $F: D \mapsto ( \prod_{i=1}^{n}S_i \rightarrow  \bigoplus_{i=1}^n S_i )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromDirectSumToCoproduct</C>.
+#! $F: D \mapsto ( \bigoplus_{i=1}^n S_i \rightarrow \bigsqcup_{i=1}^{n}S_i )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromCoproductToDirectSum</C>.
+#! $F: D \mapsto ( \bigsqcup_{i=1}^{n}S_i \rightarrow  \bigoplus_{i=1}^n S_i )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>DirectSum</C>.
+#! $F: D \mapsto \bigoplus_{i=1}^n S_i$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddDirectSum",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1390,21 +1645,23 @@ DeclareOperation( "AddDirectSum",
 DeclareOperation( "AddDirectSum",
                   [ IsCapCategory, IsList ] );
 
-
-#! @Section Functorial methods for direct sum
-
-#! Direct sum is a functorial operation. This means:
-#! For $(\mu_i: S_i \rightarrow S'_i)_{i=1\dots n}$,
-#! we obtain a morphism $\phi: \mathrm{DirectSum}( S_1, \dots, S_n ) \rightarrow \mathrm{DirectSum}( S_1', \dots, S_n' )$.
-
-
 #! @Description
-#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ as an input.
-#! @Returns $\phi$
+#! The argument is a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$.
+#! The output is a morphism
+#! $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$
+#! given by the functorality of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigoplus_{i=1}^n S_i' )$
 #! @Arguments L
 DeclareOperation( "DirectSumFunctorial",
                   [ IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>DirectSumFunctorial</C>.
+#! $F: (( \mu_1, \dots, \mu_n )) \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddDirectSumFunctorial",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1418,9 +1675,13 @@ DeclareOperation( "AddDirectSumFunctorial",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ and a morphism $m$ for the method selection.
-#! @Returns $\phi$
-#! @Arguments L, m
+#! The arguments are a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$
+#! and a method selection morphism.
+#! The output is a morphism
+#! $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$
+#! given by the functorality of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigoplus_{i=1}^n S_i' )$
+#! @Arguments L, method_selection_morphism
 DeclareOperation( "DirectSumFunctorialOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
