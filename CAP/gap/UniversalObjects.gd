@@ -72,7 +72,7 @@ DeclareOperation( "KernelEmbWithGivenKernelObject",
 #! @Description
 #! This is a convenience method.
 #! The arguments are an object $K$ which was created as a kernel,
-#! and a test morphism $\tau: T \rightarrow A$.
+#! and a test morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$.
 #! The output is the morphism $u(\tau): T \rightarrow K$
 #! given by the universal property of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}(T,K)$
@@ -82,7 +82,7 @@ DeclareOperation( "KernelLift",
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
-#! and a test morphism $\tau: T \rightarrow A$.
+#! and a test morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$.
 #! The output is the morphism $u(\tau): T \rightarrow \mathrm{KernelObject}(\alpha)$
 #! given by the universal property of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}(T,\mathrm{KernelObject}(\alpha))$
@@ -92,7 +92,7 @@ DeclareOperation( "KernelLift",
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$,
-#! a test morphism $\tau: T \rightarrow A$,
+#! a test morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$,
 #! and an object $K = \mathrm{KernelObject}(\alpha)$.
 #! The output is the morphism $u(\tau): T \rightarrow K$
 #! given by the universal property of the kernel.
@@ -316,7 +316,7 @@ DeclareOperation( "CokernelProjWithGivenCokernel",
 #! @Description
 #! This is a convenience method.
 #! The arguments are an object $K$ which was created as a cokernel,
-#! and a test morphism $\tau: B \rightarrow T$.
+#! and a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$.
 #! The output is the morphism $u(\tau): K \rightarrow T$
 #! given by the universal property of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(K,T)$
@@ -326,7 +326,7 @@ DeclareOperation( "CokernelColift",
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
-#! and a test morphism $\tau: B \rightarrow T$.
+#! and a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$.
 #! The output is the morphism $u(\tau): \mathrm{Cokernel}(\alpha) \rightarrow T$
 #! given by the universal property of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}(\alpha),T)$
@@ -336,7 +336,7 @@ DeclareOperation( "CokernelColift",
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$,
-#! a test morphism $\tau: B \rightarrow T$,
+#! a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$,
 #! and an object $K = \mathrm{Cokernel}(\alpha)$.
 #! The output is the morphism $u(\tau): K \rightarrow T$
 #! given by the universal property of the cokernel.
@@ -2243,26 +2243,50 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 #!  $\beta_i \circ \pi_i  \sim_{P, B} \beta_j \circ \pi_j$ for all pairs $i,j$.
 #! * a dependent function $u$ mapping each list of morphisms
 #!  $\tau = ( \tau_i: T \rightarrow P_i )$ such that
-#!  $\beta_i \circ \tau_i  \sim_{P, B} \beta_j \circ \tau_j$ for all pairs $i,j$
+#!  $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$
 #!  to a morphism $u( \tau ): T \rightarrow P$ such that
 #!  $\pi_i \circ u( \tau ) \sim_{T, P_i} \tau_i$ for all $i = 1, \dots, n$.
 #! The triple $( P, \pi, u )$ is called a <Emph>fiber product</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
+#! We denote the object $P$ of such a triple by $\mathrm{FiberProduct}(D)$.
+#! $\\$
+#! $\mathrm{FiberProduct}$ is a functorial operation. This means:
+#! For a second diagram $D' = (\beta_i': P_i' \rightarrow B')_{i = 1 \dots n}$ and a natural morphism
+#! between pullback diagrams (i.e., a collection of morphisms
+#! $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$)
+#! we obtain a morphism $\mathrm{FiberProduct}( D ) \rightarrow \mathrm{FiberProduct}( D' )$.
 
 ## Main Operations and Attributes
 
-# FIXME:
-# Declared as an operation in MatricesForCap!
-# DeclareGlobalFunction( "FiberProduct" );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
+#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
+#! @Arguments D
 DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
                   [ IsList ] );
-##
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
+#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
+#! @Arguments D, method_selection_morphism
 DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
-##
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromFiberProductToKernelOfDiagonalDifference</C>.
+#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \Delta$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
                   [ IsCapCategory, IsFunction ] );
 ##
@@ -2275,14 +2299,34 @@ DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
 DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
                   [ IsCapCategory, IsList ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
+#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
+#! @Arguments D
 DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
                   [ IsList ] );
-##
+
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
+#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
+#! @Arguments D
 DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
-##
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</C>.
+#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \Delta \rightarrow \mathrm{FiberProduct}(D)$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2299,23 +2343,53 @@ DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
                   [ IsCapCategory, IsList ] );
 
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\bigoplus_{i=1}^n P_i \rightarrow B$
+#! such that its kernel equalizes the $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n P_i, B )$
+#! @Arguments D
 DeclareOperation( "DirectSumDiagonalDifference",
                   [ IsList ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\bigoplus_{i=1}^n P_i \rightarrow B$
+#! such that its kernel equalizes the $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n P_i, B )$
+#! @Arguments D, method_selection_morphism
 DeclareOperationWithCache( "DirectSumDiagonalDifferenceOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
+#! The output is the natural embedding
+#! $\mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), \bigoplus_{i=1}^n P_i )$
+#! @Arguments D
 DeclareOperation( "FiberProductEmbeddingInDirectSum",
                   [ IsList ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is the natural embedding
+#! $\mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), \bigoplus_{i=1}^n P_i )$
+#! @Arguments D, method_selection_morphism
 DeclareOperationWithCache( "FiberProductEmbeddingInDirectSumOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
-##
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>FiberProductEmbeddingInDirectSum</C>.
+#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2331,90 +2405,113 @@ DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! This function either accepts a list $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
-#! of morphisms or 
-#! arbitrary many arrows $\beta_i: P_i \rightarrow B$ as an input and returns
-#! the pullback $P$.
-#! @Returns IsCapCategoryObject
-#! @Arguments D, j
+#! This is a convenience method.
+#! There are two different ways to use this method:
+#! * The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
+#! * The arguments are morphisms $\beta_1: P_1 \rightarrow B, \dots, \beta_n: P_n \rightarrow B$.
+#! The output is the fiber product $\mathrm{FiberProduct}(D)$.
+#! @Returns an object
 DeclareGlobalFunction( "FiberProduct" );
 
 #! @Description
-#! This function takes $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
-#! as an input and a morphism for the method selection and returns the pullback $P$ of $D$.
-#! @Returns IsCapCategoryObject
-#! @Arguments D, j
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is the fiber product $\mathrm{FiberProduct}(D)$.
+#! @Returns an object
+#! @Arguments D, method_selection_morphism
 DeclareOperationWithCache( "FiberProductOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
-#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and an integer $j$
-#! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
-#! @Returns IsCapCategoryMorphism
-#! @Arguments D, j
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and an integer $k$.
+#! The output is the $k$-th projection
+#! $\pi_{k}: \mathrm{FiberProduct}(D) \rightarrow P_k$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), P_k )$
+#! @Arguments D,k
 DeclareOperation( "ProjectionInFactorOfFiberProduct",
                   [ IsList, IsInt ] );
 
 #! @Description
-#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$, an integer $j$,
-#! and a morphism $m$ used for the method selection,
-#! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
-#! @Returns IsCapCategoryMorphism
-#! @Arguments D, j, m
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
+#! an integer $k$,
+#! and a morphism for method selection.
+#! The output is the $k$-th projection
+#! $\pi_{k}: \mathrm{FiberProduct}(D) \rightarrow P_k$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), P_k )$
+#! @Arguments D,k,method_selection_morphism
 DeclareOperation( "ProjectionInFactorOfFiberProductOp",
                   [ IsList, IsInt, IsCapCategoryMorphism ] );
 
 #! @Description
-#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$, an integer $j$,
-#! and a pullback $P$
-#! this method returns the $j-th$ projection $\pi_j$ into the pullback $P$ of $D$.
-#! @Returns IsCapCategoryMorphism
-#! @Arguments D, j, m
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
+#! an integer $k$,
+#! and an object $P = \mathrm{FiberProduct}(D)$.
+#! The output is the $k$-th projection
+#! $\pi_{k}: P \rightarrow P_k$.
+#! @Returns a morphism in $\mathrm{Hom}( P, P_k )$
+#! @Arguments D,k,P
 DeclareOperation( "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! This convenience method may be used in three ways:
-#! 1) The input is a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
-#! and a test source $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ and computes
-#! the universal morphism $u$ into the pullback of $D$. 
-#! 2) The input is a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$
-#! and arbitrary many morphisms $\tau_i: T \rightarrow P_i$ which define a test source and
-#! computes the universal morphism $u$ into the pullback of $D$. 
-#! 3) The input is an object $P$ which is a pullback 
-#! and arbitrary many morphisms $\tau_i: T \rightarrow P_i$ which define a test source and
-#! computes the universal morphism $u$ into the pullback $P$
-#! @Returns IsCapCategoryMorphism
+#! This is a convenience method.
+#! There are three different ways to use this method:
+#! * The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#!  and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$
+#!  such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$.
+#!  The output is the morphism
+#!  $u( \tau ): T \rightarrow \mathrm{FiberProduct}(D)$
+#!  given by the universal property of the fiber product.
+#! * The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#!  and morphisms $\tau_1: T \rightarrow P_1, \dots, \tau_n: T \rightarrow P_n$
+#!  such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$.
+#!  The output is the morphism
+#!  $u( \tau ): T \rightarrow \mathrm{FiberProduct}(D)$
+#!  given by the universal property of the fiber product.
+#! * The arguments are an object $P$ which was created as a pullback from a list $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#!  and morphisms $\tau_1: T \rightarrow P_1, \dots, \tau_n: T \rightarrow P_n$
+#!  such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$.
+#!  The output is the morphism
+#!  $u( \tau ): T \rightarrow P$
+#!  given by the universal property of the fiber product.
 DeclareGlobalFunction( "UniversalMorphismIntoFiberProduct" );
 
 #! @Description
-#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$,
-#! a test source $T = ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ and a morphism $m$ for the method selection,
-#! this method computes
-#! the universal morphism $u$ into the pullback of $D$. 
-#! @Returns IsCapCategoryMorphism
-#! @Arguments D, T, m
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
+#! a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$
+#! such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$,
+#! and a morphism for method selection.
+#! The output is the morphism
+#! $u( \tau ): T \rightarrow \mathrm{FiberProduct}(D)$
+#! given by the universal property of the fiber product.
+#! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{FiberProduct}(D) )$
+#! @Arguments D, tau, method_selection_morphism
 DeclareOperation( "UniversalMorphismIntoFiberProductOp",
                   [ IsList, IsList, IsCapCategoryMorphism ] );
 
 #! @Description
-#! Given a list of morphisms $D = (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$,
-#! a test source $T = ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ and a pullback $P$ of $D$
-#! this method computes
-#! the universal morphism $u$ into the pullback $P$.
-#! @Returns IsCapCategoryMorphism
-#! @Arguments D, T, P
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
+#! a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$
+#! such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$,
+#! and an object $P = \mathrm{FiberProduct}(D)$.
+#! The output is the morphism
+#! $u( \tau ): T \rightarrow P$
+#! given by the universal property of the fiber product.
+#! @Returns a morphism in $\mathrm{Hom}( T, P )$
+#! @Arguments D, tau, P
 DeclareOperation( "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Add Operations
 
-
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$ to the category $C$
-#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>FiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2427,12 +2524,13 @@ DeclareOperation( "AddFiberProduct",
 DeclareOperation( "AddFiberProduct",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, i ) \mapsto \pi_i$ to the category $C$
-#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInFactorOfFiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \pi_k$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddProjectionInFactorOfFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2445,12 +2543,13 @@ DeclareOperation( "AddProjectionInFactorOfFiberProduct",
 DeclareOperation( "AddProjectionInFactorOfFiberProduct",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, i, P ) \mapsto \pi_i$ to the category $C$
-#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInFactorOfFiberProductWithGivenFiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k,P ) \mapsto \pi_k$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2465,11 +2564,12 @@ DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
 
 
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}  ) \mapsto u$ 
-#! to the category $C$
-#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ are lists of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoFiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2484,11 +2584,12 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
 
 
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}, P ) \mapsto u$ 
-#! to the category $C$
-#! where $(\beta_i: P_i \rightarrow B)_{i = 1 \dots n}$ and $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ are lists of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoFiberProductWithGivenFiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau, P  ) \mapsto u(\tau)$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2501,25 +2602,26 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
 DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsList ] );
 
-
-#! @Section Functorial methods for pullback
-
-#! FiberProduct is a functorial operation. This means:
-#! For a second diagram $\beta_i': P_i' \rightarrow B'$ and a natural morphism
-#! between pullback diagrams (i.e., a collection of morphisms
-#! $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
-#! such that $\beta_i' \circ \mu_i = \beta \circ \beta_i$ for $i = 1, \dots n$)
-#! we obtain a morphism $\phi: \mathrm{FiberProduct}( \beta_1, \dots, \beta_n ) \rightarrow \mathrm{FiberProduct}( \beta_1', \dots, \beta_n' )$.
-
-
 #! @Description
-#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ as an input.
-#! Note that $\beta$ is not needed for the computation of $\phi$.
-#! @Returns $\phi$
+#! The argument is a list of triples of morphisms
+#! $L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )$
+#! such that there exists a morphism $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$.
+#! The output is the morphism
+#! $\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$
+#! given by the functorality of the fiber product.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ))$
 #! @Arguments L
 DeclareOperation( "FiberProductFunctorial",
                   [ IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>FiberProductFunctorial</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} ) \mapsto (\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) )$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddFiberProductFunctorial",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2532,10 +2634,17 @@ DeclareOperation( "AddFiberProductFunctorial",
 DeclareOperation( "AddFiberProductFunctorial",
                   [ IsCapCategory, IsList ] );
 
-#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ 
-#! and $\beta$ as an input.
-#! @Returns $\phi$
-#! @Arguments L, beta
+#! @Description
+#! The arguments are a list of triples of morphisms
+#! $L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )$
+#! such that there exists a morphism $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$,
+#! and a morphism for method selection.
+#! The output is the morphism
+#! $\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$
+#! given by the functorality of the fiber product.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ))$
+#! @Arguments L, method_selection_morphism
 DeclareOperation( "FiberProductFunctorialOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
