@@ -148,6 +148,251 @@ with the input $L$ found in the cache.
 Analogously, \CapPkg enhances $( D, \tau ) \mapsto u(\tau)$ with a redirect function if
 the three basic operations $D \mapsto L, ( D, \tau ) \mapsto u(\tau), ( D, \tau, L ) \mapsto u( \tau )$ are all given.
 
+We will now define the limits and colimits available in \CapPkg.
+
+\subsection{Direct Product}
+
+\begin{definition}
+ For a given list of objects $D = ( P_1, \dots, P_n )$, a direct product of $D$ consists of three parts:
+ \begin{enumerate}
+  \item an object $P$,
+  \item a list of morphisms $\pi = ( \pi_i: P \rightarrow P_i )_{i = 1 \dots n}$ 
+  \item a dependent function $u$ mapping each list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$ 
+  to a morphism $u(\tau): T \rightarrow P$ such that $\pi_i \circ u( \tau ) \sim_{T,P_i} \tau_i$ for all $i = 1, \dots, n$.
+ \end{enumerate}
+ The triple $( P, \pi, u )$ is called a \textbf{direct product of $D$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\subsection{Coproduct}
+
+\begin{definition}
+ For a given list of objects $D = ( I_1, \dots, I_n )$, a coproduct of $D$ consists of three parts:
+ \begin{enumerate}
+  \item an object $I$,
+  \item a list of morphisms $\iota = ( \iota_i: I_i \rightarrow I )_{i = 1 \dots n}$
+  \item a dependent function $u$ mapping each list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$
+  to a morphism $u( \tau ): I \rightarrow T$ such that $u( \tau ) \circ \iota_i \sim_{I_i, T} \tau_i$ for all $i = 1, \dots, n$.
+ \end{enumerate}
+ The triple $( I, \iota, u )$ is called a \textbf{coproduct of $D$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\subsection{Fiber Product}
+
+\begin{definition}
+ For a given list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$, 
+ a fiber product of $D$ consists of three parts:
+ \begin{enumerate}
+  \item an object $P$,
+  \item a list of morphisms $\pi = ( \pi_i: P \rightarrow P_i )_{i = 1 \dots n}$ such that
+        $\beta_i \circ \pi_i  \sim_{P, B} \beta_j \circ \pi_j$ for all pairs $i,j$.
+  \item a dependent function $u$ mapping each list of morphisms
+        $\tau = ( \tau_i: T \rightarrow P_i )$ such that
+        $\beta_i \circ \tau_i  \sim_{P, B} \beta_j \circ \tau_j$ for all pairs $i,j$
+        to a morphism $u( \tau ): T \rightarrow P$ such that
+        $\pi_i \circ u( \tau ) \sim_{T, P_i} \tau_i$ for all $i = 1, \dots, n$.
+ \end{enumerate}
+ The triple $( P, \pi, u )$ is called a \textbf{fiber product of $D$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\subsection{Pushout}
+
+\begin{definition}
+ For a given list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+ a pushout of $D$ consists of three parts:
+ \begin{enumerate}
+  \item an object $I$,
+  \item a list of morphisms $\iota = ( \iota_i: I_i \rightarrow I )_{i = 1 \dots n}$ such that
+        $\iota_i \circ \beta_i \sim_{B,I} \iota_j \circ \beta_j$ for all pairs $i,j$,
+  \item a dependent function $u$ mapping each list of morphisms
+        $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
+        $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$
+        to a morphism $u( \tau ): I \rightarrow T$ such that
+        $u( \tau ) \circ \iota_i \sim_{I_i, T} \tau_i$ for all $i = 1, \dots, n$.
+ \end{enumerate}
+  The triple $( I, \iota, u )$ is called a \textbf{pushout of $D$} if the morphisms $u( \tau )$ are uniquely determined up to
+  congruence of morphisms.
+\end{definition}
+
+\subsection{Kernel}
+
+\begin{definition}
+  For a given morphism $\alpha: A \rightarrow B$, a kernel of $\alpha$ consists of three parts:
+ \begin{enumerate}
+  \item an object $K$,
+  \item a morphism $\iota: K \rightarrow A$ such that $\alpha \circ \iota \sim_{K,B} 0$,
+  \item a dependent function $u$ mapping each morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$ to
+  a morphism $u(\tau): T \rightarrow K$ such that $\iota \circ u( \tau ) \sim_{T,A} \tau$. 
+ \end{enumerate}
+ The triple $( K, \iota, u )$ is called a \textbf{kernel of $\alpha$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms. The situation can be depicted as follows:
+ 
+ \begin{center}
+\begin{tikzpicture}[label/.style={postaction={
+      decorate,
+      decoration={markings, mark=at position .5 with \node #1;}}}]
+      \coordinate (r) at (1.5,0);
+      \coordinate (u) at (0,0.75);
+      
+      \node (M) {$A$};
+      \node (N) at ($(M)+(r)$) {$B$};
+      \node (K) at ($(M)-(r)+(u)$) {$K$};
+      \node (L) at ($(K)-2*(u)$) {$T$};
+      \draw[->,thick] (M) -- node[above]{$\alpha$} (N);
+      \draw[->, thick] (K) to [bend left] node[above] {$0$}(N);
+      \draw[right hook->,thick] (K) -- node[above]{$\iota$} (M);
+      \draw[->,thick] (L) -- node[above]{$\tau$} (M);
+      \draw[->, thick] (L) to [bend right] node[below] {$0$}(N);
+      \draw[->,dotted,thick] (L) -- node[left]{$u( \tau )$} (K);
+\end{tikzpicture}
+\end{center}
+\end{definition}
+
+\subsection{Cokernel}
+
+\begin{definition}
+ For a given morphism $\alpha: A \rightarrow B$, a cokernel of $\alpha$ consists of three parts:
+ \begin{enumerate}
+  \item an object $K$,
+  \item a morphism $\epsilon: B \rightarrow K$ such that $\epsilon \circ \alpha \sim_{A,K} 0$,
+  \item a dependent function $u$ mapping each $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$
+        to a morphism $u(\tau):K \rightarrow T$ such that $u(\tau) \circ \epsilon \sim_{B,T} \tau$.
+ \end{enumerate}
+  The triple $( K, \epsilon, u )$ is called a \textbf{cokernel of $\alpha$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\subsection{Terminal Object}
+
+\begin{definition}
+ A terminal object consists of two parts:
+ \begin{enumerate}
+  \item an object $T$,
+  \item a function $u$ mapping each object $A$ to a morphism $u( \tau ): A \rightarrow T$.
+ \end{enumerate}
+ The pair $( T, u )$ is called a \textbf{terminal object} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\begin{remark}
+ The corresonding diagram $D$ is given by the unique functor $\empty \rightarrow \mathbf{A}$.
+ Thus the source of a terminal object can be omited.
+\end{remark}
+
+\subsection{Initial Object}
+
+\begin{definition}
+ An initial object consists of two parts:
+ \begin{enumerate}
+  \item an object $I$,
+  \item a function $u$ mapping each object $A$ to a morphism $u( A ): I \rightarrow A$.
+ \end{enumerate}
+  The pair $(I,u)$ is called a \textbf{initial object} if the morphisms $u(A)$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\subsection{Zero Object}
+
+Roughly speaking, a zero object is both an inital and a terminal object.
+Of course, the constructive definition of a zero object has to include
+algorithms (or witnesses) of being initial and being terminal.
+
+\begin{definition}
+  A zero object consists of three parts:
+  \begin{enumerate}
+   \item an object $Z$,
+   \item a function $u_{\mathrm{in}}$ mapping each object $A$ to a morphism $u_{\mathrm{in}}(A): A \rightarrow Z$,
+   \item a function $u_{\mathrm{out}}$ mapping each object $A$ to a morphism $u_{\mathrm{out}}(A): Z \rightarrow A$.
+  \end{enumerate}
+  The triple $(Z, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a \textbf{zero object} if the morphisms 
+  $u_{\mathrm{in}}(A)$, $u_{\mathrm{out}}(A)$ are uniquely determined up to congruence of morphisms.
+\end{definition}
+
+
+\subsection{Direct Sum}
+
+Roughly speaking, a direct sum is an object in an additive category which is both a direct product and
+a coproduct such that the injections and projections are compatible.
+We now state the constructive definition.
+
+\begin{definition}\label{definition:direct_sum}
+ For a given list $D = (S_1, \dots, S_n)$, a direct sum consists of five parts:
+ \begin{enumerate}
+  \item an object $S$,
+  \item a list of morphisms $\pi = (\pi_i: S \rightarrow S_i)_{i = 1 \dots n}$,
+  \item a list of morphisms $\iota = (\iota_i: S_i \rightarrow S)_{i = 1 \dots n}$,
+  \item a dependent function $u_{\mathrm{in}}$ mapping every list $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$
+        to a morphism $u_{\mathrm{in}}: T \rightarrow S$ such that
+        $\pi_i \circ u_{\mathrm{in}} \sim_{T,S_i} \tau_i$ for all $i = 1, \dots, n$.
+  \item a dependent function $u_{\mathrm{out}}$ mapping every list $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$
+        to a morphism $u_{\mathrm{out}}: S \rightarrow T$ such that
+        $u_{\mathrm{out}} \circ \iota_i \sim_{S_i, T} \tau_i$ for all $i = 1, \dots, n$,
+ \end{enumerate}
+ such that
+ \begin{enumerate}
+  \item $\sum_{i=1}^{n} \iota_i \circ \pi_i = \id_S$,
+  \item $\pi_j \circ \iota_i = \delta_{i,j}$,
+ \end{enumerate}
+  where $\delta_{i,j} \in \Hom( S_i, S_j )$ is the identity if $i=j$, and $0$ otherwise.
+  The $5$-tuple $(S, \pi, \iota, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a \textbf{direct sum of $D$}
+  if the morphisms 
+  $u_{\mathrm{in}}(\tau)$, $u_{\mathrm{out}}(\tau)$ are uniquely determined up to congruence of morphisms.
+\end{definition}
+
+\begin{remark}
+ Given a triple $( S, \pi, \iota )$ satisfying the conditions of definition \ref{definition:direct_sum},
+ we can construct $u_{\mathrm{in}}$, $u_{\mathrm{out}}$ in unique way up to congruence of morphisms
+ such that $( S, \pi, \iota, u_{\mathrm{in}}, u_{\mathrm{out}} )$ is a direct sum.
+\end{remark}
+
+
+\subsection{Image}
+
+\begin{definition}
+ For a given morphism $\alpha: A \rightarrow B$, an image of $\alpha$ consists of four parts:
+ \begin{enumerate}
+  \item an object $I$,
+  \item a morphism $c: A \rightarrow I$,
+  \item a monomorphism $\iota: I \hookrightarrow B$ such that $\iota \circ c \sim_{A,B} \alpha$,
+  \item a dependent function $u$ mapping every pair of morphisms $\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )$
+  where $\tau_2$ is a monomorphism
+  such that $\tau_2 \circ \tau_1 \sim_{A,T} \alpha$ to a morphism
+  $u(\tau): I \rightarrow T$ such that
+  $\tau_2 \circ u(\tau) \sim_{I,B} \iota$ and $u(\tau) \circ c \sim_{A,T} \tau_1$.
+ \end{enumerate}
+  The $4$-tuple $( I, c, \iota, u )$ is called an \textbf{image of $\alpha$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+\subsection{Coimage}
+
+% #! Let $\alpha: A \rightarrow B$ be a morphism. The image of $\alpha$ is
+% #! the smallest monomorphism $\iota: I \hookrightarrow B$ through which $\alpha$ factors, i.e.,
+% #! such that there exists a morphism $c: A \rightarrow I$ with $\iota \circ c = \alpha$.
+% #! Smallest in this context means that for every other factorization of $\alpha = \tau_2 \circ \tau_1$
+% #! with $\tau_1: A \rightarrow T, \tau_2: T \rightarrow B$
+% #! where $\tau_2$ is a monomorphism, there exists a unique morphism $u: I \rightarrow T$
+% #! such that $\iota = \tau_2 \circ u$ and $\tau_1 = u \circ c$.
+
+\begin{definition}
+ For a given morphism $\alpha: A \rightarrow B$, a coimage of $\alpha$ consists of four parts:
+ \begin{enumerate}
+  \item an object $C$,
+  \item an epimorphism $\pi: A \twoheadrightarrow C$,
+  \item a morphism $a: C \rightarrow B$ such that $a \circ \pi \sim_{A,B} \alpha$,
+  \item a dependent function $u$ mapping every pair of morphisms $\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )$
+  where $\tau_1$ is an epimorphism
+  such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$ to a morphism
+  $u(\tau): T \rightarrow C$ such that
+  $u( \tau ) \circ \tau_1 \sim_{A,C} \pi$ and $a \circ u( \tau ) \sim_{T,B} \tau_2$.
+ \end{enumerate}
+  The $4$-tuple $( C, \pi, a, u )$ is called a \textbf{coimage of $\alpha$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms.
+\end{definition}
+
+
 
 \section{Monoidal Categories}
 
