@@ -2680,16 +2680,43 @@ DeclareFilter( "WasCreatedAsFiberProduct" );
 #!  $u( \tau ) \circ \iota_i \sim_{I_i, T} \tau_i$ for all $i = 1, \dots, n$.
 #! The triple $( I, \iota, u )$ is called a <Emph>pushout</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
+#! We denote the object $I$ of such a triple by $\mathrm{Pushout}(D)$.
+#! $\\$
+#! $\mathrm{Pushout}$ is a functorial operation. This means:
+#! For a second diagram $D' = (\beta_i': B' \rightarrow I_i')_{i = 1 \dots n}$ and a natural morphism
+#! between pushout diagrams (i.e., a collection of morphisms
+#! $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$)
+#! we obtain a morphism $\mathrm{Pushout}( D ) \rightarrow \mathrm{Pushout}( D' )$.
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\mathrm{Pushout}(D) \rightarrow \Delta$,
+#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
+#! @Arguments D
 DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
                   [ IsList ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\mathrm{Pushout}(D) \rightarrow \Delta$,
+#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
+#! @Arguments D, method_selection_morphism
 DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
-##
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromPushoutToCokernelOfDiagonalDifference</C>.
+#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}(D) \rightarrow \Delta)$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
                   [ IsCapCategory, IsFunction ] );
 ##
@@ -2702,15 +2729,34 @@ DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
 DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
                   [ IsCapCategory, IsList ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\Delta \rightarrow \mathrm{Pushout}(D)$,
+#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
+#! @Arguments D
 DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
                   [ IsList ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\Delta \rightarrow \mathrm{Pushout}(D)$,
+#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
+#! @Arguments D, method_selection_morphism
 DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
-##
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromCokernelOfDiagonalDifferenceToPushout</C>.
+#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\Delta \rightarrow \mathrm{Pushout}(D))$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
                   [ IsCapCategory, IsFunction ] );
 ##
@@ -2723,26 +2769,53 @@ DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
 DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
                   [ IsCapCategory, IsList ] );
 
-
-
-## Main Operations and Attributes
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $B \rightarrow \bigoplus_{i=1}^n I_i$
+#! such that its cokernel coequalizes the $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(B, \bigoplus_{i=1}^n I_i)$
+#! @Arguments D
 DeclareOperation( "DirectSumCodiagonalDifference",
                   [ IsList ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $B \rightarrow \bigoplus_{i=1}^n I_i$
+#! such that its cokernel coequalizes the $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(B, \bigoplus_{i=1}^n I_i)$
+#! @Arguments D, method_selection_morphism
 DeclareOperationWithCache( "DirectSumCodiagonalDifferenceOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
+#! The output is the natural projection
+#! $\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n I_i, \mathrm{Pushout}(D) )$
+#! @Arguments D
 DeclareOperation( "DirectSumProjectionInPushout",
                   [ IsList ] );
 
-##
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is the natural projection
+#! $\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n I_i, \mathrm{Pushout}(D) )$
+#! @Arguments D, method_selection_morphism
 DeclareOperationWithCache( "DirectSumProjectionInPushoutOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
-##
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>DirectSumProjectionInPushout</C>.
+#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D))$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddDirectSumProjectionInPushout",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2757,38 +2830,115 @@ DeclareOperation( "AddDirectSumProjectionInPushout",
 DeclareOperation( "AddDirectSumProjectionInPushout",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! This is a convenience method.
+#! There are two different ways to use this method:
+#! * The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
+#! * The arguments are morphisms $\beta_1: B \rightarrow I_1, \dots, \beta_n: B \rightarrow I_n$.
+#! The output is the pushout $\mathrm{Pushout}(D)$.
+#! @Returns an object
 DeclareGlobalFunction( "Pushout" );
 
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is the pushout $\mathrm{Pushout}(D)$.
+#! @Returns an object
+#! @Arguments D
 DeclareOperationWithCache( "PushoutOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
-## DeclareGlobalFunction( "InjectionOfCofactor" ); to be adjusted
 
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and an integer $k$.
+#! The output is the $k$-th injection
+#! $\iota_k: I_k \rightarrow \mathrm{Pushout}( D )$.
+#! @Returns a morphism in $\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )$.
+#! @Arguments D, k
 DeclareOperation( "InjectionOfCofactorOfPushout",
                   [ IsList, IsInt ] );
 
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+#! an integer $k$,
+#! and a morphism for method selection.
+#! The output is the $k$-th injection
+#! $\iota_k: I_k \rightarrow \mathrm{Pushout}( D )$.
+#! @Returns a morphism in $\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )$.
+#! @Arguments D, k, method_selection_morphism
 DeclareOperation( "InjectionOfCofactorOfPushoutOp",
                   [ IsList, IsInt, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+#! an integer $k$,
+#! and an object $I = \mathrm{Pushout}(D)$.
+#! The output is the $k$-th injection
+#! $\iota_k: I_k \rightarrow \mathrm{Pushout}( D )$.
+#! @Returns a morphism in $\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )$.
+#! @Arguments D, k, I
 DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
+#! @Description
+#! This is a convenience method.
+#! There are three different ways to use this method:
+#! * The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#!  and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
+#!  $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$.
+#!  The output is the morphism
+#!  $u( \tau ): \mathrm{Pushout}(D) \rightarrow T$
+#!  given by the universal property of the pushout.
+#! * The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#!  and morphisms $\tau_1: I_1 \rightarrow T, \dots, \tau_n: I_n \rightarrow T$ such that
+#!  $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$.
+#!  The output is the morphism
+#!  $u( \tau ): \mathrm{Pushout}(D) \rightarrow T$
+#!  given by the universal property of the pushout.
+#! * The arguments are an object $I$ which was created as a pushout from a list $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#!  and morphisms $\tau_1: I_1 \rightarrow T, \dots, \tau_n: I_n \rightarrow T$ such that
+#!  $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$.
+#!  The output is the morphism
+#!  $u( \tau ): I \rightarrow T$
+#!  given by the universal property of the pushout.
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+#! a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
+#! $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$,
+#! and a morphism for method selection.
+#! The output is the morphism
+#! $u( \tau ): \mathrm{Pushout}(D) \rightarrow T$
+#! given by the universal property of the pushout.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), T )$
+#! @Arguments D, tau, method_selection_morphism
 DeclareOperation( "UniversalMorphismFromPushoutOp",
                   [ IsList, IsList, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+#! a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
+#! $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$,
+#! and an object $I = \mathrm{Pushout}(D)$.
+#! The output is the morphism
+#! $u( \tau ): I \rightarrow T$
+#! given by the universal property of the pushout.
+#! @Returns a morphism in $\mathrm{Hom}( I, T )$
+#! @Arguments D, tau, I
 DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Add Operations
 
-
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$ to the category $C$
-#! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Pushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddPushout",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2801,12 +2951,13 @@ DeclareOperation( "AddPushout",
 DeclareOperation( "AddPushout",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, i ) \mapsto \iota_i$ to the category $C$
-#! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfCofactorOfPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \iota_k$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddInjectionOfCofactorOfPushout",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2821,10 +2972,12 @@ DeclareOperation( "AddInjectionOfCofactorOfPushout",
 
 
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, i, I ) \mapsto \iota_i$ to the category $C$
-#! where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfCofactorOfPushoutWithGivenPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \iota_k$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2837,12 +2990,13 @@ DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
 DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n} ) \mapsto u$ 
-#! to the category $C$ where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ and $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ are lists of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromPushout",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2855,12 +3009,13 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
 DeclareOperation( "AddUniversalMorphismFromPushout",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}, I ) \mapsto u$ 
-#! to the category $C$ where $(\beta_i: B \rightarrow I_i)_{i = 1 \dots n}$ and $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ are lists of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau, I ) \mapsto u(\tau)$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2874,24 +3029,26 @@ DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
                   [ IsCapCategory, IsList ] );
 
 
-#! @Section Functorial methods for pushout
-
-#! FiberProduct is a functorial operation. This means:
-#! For a second diagram $\beta_i': B' \rightarrow I_i'$ and a natural morphism
-#! between pushout diagrams (i.e., a collection of morphisms
-#! $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
-#! such that $\beta_i' \circ \beta = \mu_i \circ \beta_i$ for $i = 1, \dots n$)
-#! we obtain a morphism $\phi: \mathrm{Pushout}( \beta_1, \dots, \beta_n ) \rightarrow \mathrm{Pushout}( \beta_1', \dots, \beta_n' )$.
-
-
 #! @Description
-#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ as an input.
-#! Note that $\beta$ is not needed for the computation of $\phi$.
-#! @Returns $\phi$
+#! The argument is a list
+#! $L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )$
+#! such that there exists a morphism $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$.
+#! The output is the morphism
+#! $\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$
+#! given by the functorality of the pushout.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n ), \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ))$
 #! @Arguments L
 DeclareOperation( "PushoutFunctorial",
                   [ IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>PushoutFunctorial</C>.
+#! $F: ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) )$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddPushoutFunctorial",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2904,10 +3061,17 @@ DeclareOperation( "AddPushoutFunctorial",
 DeclareOperation( "AddPushoutFunctorial",
                   [ IsCapCategory, IsList ] );
 
-#! This method takes $L = [ [ \beta_1, \mu_1, \beta_1' ], \dots, [ \beta_n, \mu_n, \beta_n' ] ]$ 
-#! and $\beta$ as an input.
-#! @Returns $\phi$
-#! @Arguments L, beta
+#! @Description
+#! The argument is a list
+#! $L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )$
+#! such that there exists a morphism $\beta: B \rightarrow B'$
+#! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$,
+#! and a morphism for method selection.
+#! The output is the morphism
+#! $\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$
+#! given by the functorality of the pushout.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n ), \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ))$
+#! @Arguments L, method_selection_morphism
 DeclareOperation( "PushoutFunctorialOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
