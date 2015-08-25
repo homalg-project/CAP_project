@@ -23,9 +23,18 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
       [ "GeneralizedMorphismCategory", "GeneralizedMorphismCategoryByThreeArrows", "GeneralizedMorphismCategoryByCospans" ],
       [ "GeneralizedMorphism", "GeneralizedMorphismByThreeArrows", "GeneralizedMorphismByCospan" ],
       [ "GeneralizedMorphismObject", "GeneralizedMorphismByThreeArrowsObject", "GeneralizedMorphismByCospanObject" ],
+      [ "AsGeneralizedMorphism", "AsGeneralizedMorphismByThreeArrows", "AsGeneralizedMorphismByCospan" ],
       [ "GeneralizedInverse", "GeneralizedInverseByThreeArrows", "GeneralizedInverseByCospan" ],
       [ "MorphismFromFactorToSubobject", "MorphismFromFactorToSubobjectByThreeArrows", "MorphismFromFactorToSubobjectByCospan" ],
-      [ "IdempotentDefinedBySubobject", "IdempotentDefinedBySubobjectByThreeArrows", "IdempotentDefinedBySubobjectByCospan" ] ];
+      [ "IdempotentDefinedBySubobject", "IdempotentDefinedBySubobjectByThreeArrows", "IdempotentDefinedBySubobjectByCospan" ],
+      # Serre Quotient
+      [ "AsSerreQuotientObject", "AsSerreQuotientByThreeArrowsObject" ],
+      [ "SerreQuotientCategory", "SerreQuotientCategoryByThreeArrows" ],
+      [ "SerreQuotientCategoryMorphism", "SerreQuotientCategoryByThreeArrowsMorphism" ],
+      [ "AsSerreQuotientCategoryMorphism", "AsSerreQuotientCategoryByThreeArrowsMorphism" ] ];
+      
+      
+      ];
     
     for i in generalized_morphism_translation_list do
         

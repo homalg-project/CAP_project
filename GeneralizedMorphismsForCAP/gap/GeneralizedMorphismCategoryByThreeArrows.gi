@@ -99,7 +99,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
       
       [ function( mor1, mor2 )
           
-          return GeneralizedMorphism( SourceAid( mor1 ), PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ), RangeAid( mor2 ) );
+          return GeneralizedMorphismByThreeArrows( SourceAid( mor1 ), PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ), RangeAid( mor2 ) );
           
       end, [ HasHonestRange, HasHonestSource ] ],
       
@@ -113,7 +113,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
           new_morphism_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), MorphismAid( mor2 ) );
           
-          return GeneralizedMorphismWithSourceAid( new_source_aid, new_morphism_aid );
+          return GeneralizedMorphismByThreeArrowsWithSourceAid( new_source_aid, new_morphism_aid );
           
       end, [ HasHonestRange, HasHonestRange ] ],
       
@@ -133,7 +133,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
           new_range_aid := PreCompose( RangeAid( mor2 ), injection_of_cofactor2 );
           
-          return GeneralizedMorphismWithRangeAid( new_morphism_aid, new_range_aid );
+          return GeneralizedMorphismByThreeArrowsWithRangeAid( new_morphism_aid, new_range_aid );
           
       end, [ HasHonestSource, HasHonestSource ] ],
       
@@ -149,7 +149,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
       [ function( mor1, mor2 )
           local generalized_mor_factor_sub, pullback_diagram, pushout_diagram, new_associated, new_source_aid, new_range_aid;
           
-          generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobject( RangeAid( mor1 ), SourceAid( mor2 ) );
+          generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobjectByThreeArrows( RangeAid( mor1 ), SourceAid( mor2 ) );
           
           pullback_diagram := [ MorphismAid( mor1 ), SourceAid( generalized_mor_factor_sub ) ];
           
@@ -161,7 +161,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
           new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactorOfPushout( pushout_diagram, 2 ) );
           
-          return GeneralizedMorphism( new_source_aid, new_associated, new_range_aid );
+          return GeneralizedMorphismByThreeArrows( new_source_aid, new_associated, new_range_aid );
           
       end, [ ] ] ] );
     
@@ -185,7 +185,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
         restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 2 ) );
         
-        return_value := GeneralizedMorphism( 
+        return_value := GeneralizedMorphismByThreeArrows(
                           PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), SourceAid( mor1 ) ),
                           restricted_mor1 + restricted_mor2,
                           PreCompose( RangeAid( mor1 ), InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) )
@@ -253,7 +253,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
     
     ## Additional method for a category, when generalized morphism category is present.
     
-    InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
+    InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobjectByThreeArrows,
                                   [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ),
                                     IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
                                     
@@ -266,25 +266,25 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
         image_embedding := ImageEmbedding( composition );
         
-        return GeneralizedMorphism( image_embedding, IdentityMorphism( Range( coastriction_to_image ) ), coastriction_to_image );
+        return GeneralizedMorphismByThreeArrows( image_embedding, IdentityMorphism( Range( coastriction_to_image ) ), coastriction_to_image );
         
     end );
     
-    InstallMethod( IdempotentDefinedBySubobject,
+    InstallMethod( IdempotentDefinedBySubobjectByThreeArrows,
                   [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
                   
       function( subobject )
         
-        return GeneralizedMorphismWithSourceAid( subobject, subobject );
+        return GeneralizedMorphismByThreeArrowsWithSourceAid( subobject, subobject );
         
     end );
     
-    InstallMethod( IdempotentDefinedByFactorobject,
+    InstallMethod( IdempotentDefinedByFactorobjectByThreeArrows,
                   [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
                   
       function( factorobject )
         
-        return GeneralizedMorphismWithRangeAid( factorobject, factorobject );
+        return GeneralizedMorphismByThreeArrowsWithRangeAid( factorobject, factorobject );
         
     end );
     
@@ -391,7 +391,7 @@ InstallMethod( GeneralizedMorphismByThreeArrowsObject,
 end );
 
 ##
-InstallMethodWithCacheFromObject( GeneralizedMorphism,
+InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrows,
                                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( source_aid, morphism_aid, range_aid )
@@ -428,7 +428,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphism,
 end );
 
 ##
-InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
+InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrowsWithSourceAid,
                                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( source_aid, morphism_aid )
@@ -440,7 +440,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
         
     fi;
     
-    generalized_morphism := GeneralizedMorphism( source_aid, morphism_aid, IdentityMorphism( Range( morphism_aid ) ) );
+    generalized_morphism := GeneralizedMorphismByThreeArrows( source_aid, morphism_aid, IdentityMorphism( Range( morphism_aid ) ) );
     
     SetHasHonestRange( generalized_morphism, true );
     
@@ -449,7 +449,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismWithSourceAid,
 end );
 
 ##
-InstallMethodWithCacheFromObject( GeneralizedMorphismWithRangeAid,
+InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrowsWithRangeAid,
                                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( morphism_aid, range_aid )
@@ -461,7 +461,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismWithRangeAid,
         
     fi;
     
-    generalized_morphism := GeneralizedMorphism( IdentityMorphism( Source( morphism_aid ) ), morphism_aid, range_aid );
+    generalized_morphism := GeneralizedMorphismByThreeArrows( IdentityMorphism( Source( morphism_aid ) ), morphism_aid, range_aid );
     
     SetHasHonestSource( generalized_morphism, true );
     
@@ -476,7 +476,7 @@ InstallMethod( AsGeneralizedMorphismByThreeArrows,
   function( morphism_aid )
     local generalized_morphism;
     
-    generalized_morphism := GeneralizedMorphism( IdentityMorphism( Source( morphism_aid ) ), morphism_aid, IdentityMorphism( Range( morphism_aid ) ) );
+    generalized_morphism := GeneralizedMorphismByThreeArrows( IdentityMorphism( Source( morphism_aid ) ), morphism_aid, IdentityMorphism( Range( morphism_aid ) ) );
     
     SetIsHonest( generalized_morphism, true );
     
@@ -764,7 +764,7 @@ InstallMethodWithCacheFromObject( CommonRestrictionOp,
         
     od;
     
-    return List( morphism_list, i -> CallFuncList( GeneralizedMorphism, i ) );
+    return List( morphism_list, i -> CallFuncList( GeneralizedMorphismByThreeArrows, i ) );
     
 end : ArgumentNumber := 2 );
 
@@ -850,7 +850,7 @@ InstallMethodWithCacheFromObject( CommonCoastrictionOp,
         
     od;
     
-    return List( morphism_list, i -> CallFuncList( GeneralizedMorphism, i ) );
+    return List( morphism_list, i -> CallFuncList( GeneralizedMorphismByThreeArrows, i ) );
     
 end : ArgumentNumber := 2 );
 
@@ -870,7 +870,7 @@ InstallMethod( PseudoInverse,
                  
   function( generalized_morphism )
     
-    return GeneralizedMorphismWithSourceAid( MorphismAid( generalized_morphism ),
+    return GeneralizedMorphismByThreeArrowsWithSourceAid( MorphismAid( generalized_morphism ),
                                              SourceAid( generalized_morphism ) );
     
 end );
@@ -883,10 +883,10 @@ InstallMethod( PseudoInverse,
     
     source_aid := SourceAid( generalized_morphism );
     
-    factor1 := GeneralizedMorphismWithSourceAid( source_aid, 
+    factor1 := GeneralizedMorphismByThreeArrowsWithSourceAid( source_aid, 
                                                 IdentityMorphism( Source( source_aid ) ) );
     
-    factor2 := GeneralizedMorphismWithRangeAid( MorphismAid( generalized_morphism ),
+    factor2 := GeneralizedMorphismByThreeArrowsWithRangeAid( MorphismAid( generalized_morphism ),
                                                 RangeAid( generalized_morphism ) );
     
     return PreCompose( PseudoInverse( factor2 ), PseudoInverse( factor1 ) );
@@ -899,7 +899,7 @@ InstallMethod( PseudoInverse,
                
   function( generalized_morphism )
     
-    return GeneralizedMorphismWithRangeAid( RangeAid( generalized_morphism ),
+    return GeneralizedMorphismByThreeArrowsWithRangeAid( RangeAid( generalized_morphism ),
                                             MorphismAid( generalized_morphism ) );
     
 end );

@@ -9,10 +9,10 @@
 ##
 #############################################################################
 
-DeclareCategory( "IsSerreQuotientCategoryObject",
+DeclareCategory( "IsSerreQuotientCategoryByThreeArrowsObject",
                  IsCapCategoryObject );
 
-DeclareCategory( "IsSerreQuotientCategoryMorphism",
+DeclareCategory( "IsSerreQuotientCategoryByThreeArrowsMorphism",
                  IsCapCategoryMorphism );
 
 ##############################################
@@ -38,17 +38,17 @@ DeclareAttribute( "UnderlyingGeneralizedMorphismCategory",
 ##
 ##############################################
 
-DeclareOperation( "AsSerreQuotientObject",
+DeclareOperation( "AsSerreQuotientByThreeArrowsObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
 DeclareAttribute( "UnderlyingGeneralizedObject",
-                  IsSerreQuotientCategoryObject );
+                  IsSerreQuotientCategoryByThreeArrowsObject );
 
 DeclareAttribute( "UnderlyingHonestObject",
-                  IsSerreQuotientCategoryObject );
+                  IsSerreQuotientCategoryByThreeArrowsObject );
 
 DeclareAttribute( "UnderlyingGeneralizedMorphism",
-                  IsSerreQuotientCategoryMorphism );
+                  IsSerreQuotientCategoryByThreeArrowsMorphism );
 
 ##############################################
 ##
@@ -57,13 +57,13 @@ DeclareAttribute( "UnderlyingGeneralizedMorphism",
 ##############################################
 
 DeclareAttribute( "SourceAid",
-                  IsSerreQuotientCategoryMorphism );
+                  IsSerreQuotientCategoryByThreeArrowsMorphism );
 
 DeclareAttribute( "RangeAid",
-                  IsSerreQuotientCategoryMorphism );
+                  IsSerreQuotientCategoryByThreeArrowsMorphism );
 
 DeclareAttribute( "MorphismAid",
-                  IsSerreQuotientCategoryMorphism );
+                  IsSerreQuotientCategoryByThreeArrowsMorphism );
 
 ##############################################
 ##
@@ -71,30 +71,30 @@ DeclareAttribute( "MorphismAid",
 ##
 ##############################################
 
-DeclareOperation( "SerreQuotientCategory",
+DeclareOperation( "SerreQuotientCategoryByThreeArrows",
                   [ IsCapCategory, IsFunction, IsString ] );
 
-DeclareOperation( "SerreQuotientCategory",
+DeclareOperation( "SerreQuotientCategoryByThreeArrows",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "\/",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AsSerreQuotientCategoryObject",
+DeclareOperation( "AsSerreQuotientCategoryByThreeArrowsObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
-DeclareOperation( "SerreQuotientCategoryMorphism",
+DeclareOperation( "SerreQuotientCategoryByThreeArrowsMorphism",
                   [ IsCapCategory, IsGeneralizedMorphism ] );
 
-DeclareOperation( "SerreQuotientCategoryMorphism",
+DeclareOperation( "SerreQuotientCategoryByThreeArrowsMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "SerreQuotientCategoryMorphismWithSourceAid",
+DeclareOperation( "SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "SerreQuotientCategoryMorphismWithRangeAid",
+DeclareOperation( "SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "AsSerreQuotientCategoryMorphism",
+DeclareOperation( "AsSerreQuotientCategoryByThreeArrowsMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism ] );
 
