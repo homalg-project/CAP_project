@@ -1717,40 +1717,111 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #!  to a morphism $u( \tau ): I \rightarrow T$ such that $u( \tau ) \circ \iota_i \sim_{I_i, T} \tau_i$ for all $i = 1, \dots, n$.
 #! The triple $( I, \iota, u )$ is called a <Emph>coproduct</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
+#! $\\$
+#! $\mathrm{Coproduct}$ is a functorial operation. This means:
+#! For $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$,
+#! we obtain a morphism $\mathrm{Coproduct}( I_1, \dots, I_n ) \rightarrow \mathrm{Coproduct}( I_1', \dots, I_n' )$.
+
+
 
 ## Main Operations and Attributes
 
+#! @Description
+#! This is a convenience method.
+#! There are two different ways to use this method:
+#! * The argument is a list of objects $D = ( I_1, \dots, I_n )$.
+#! * The arguments are objects $I_1, \dots, I_n$.
+#! The output is the coproduct $\bigsqcup_{i=1}^n I_i$.
+#! @Returns an object
 DeclareGlobalFunction( "Coproduct" );
 
+#! @Description
+#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$
+#! and a method selection object.
+#! The output is the coproduct $\bigsqcup_{i=1}^n I_i$.
+#! @Returns an object
+#! @Arguments D, method_selection_object
 DeclareOperationWithCache( "CoproductOp",
                            [ IsList, IsCapCategoryObject ] );
 
-DeclareGlobalFunction( "InjectionOfCofactor" );
-
+#! @Description
+#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$
+#! and an integer $k$.
+#! The output is the $k$-th injection
+#! $\iota_k: I_k \rightarrow \bigsqcup_{i=1}^n I_i$.
+#! @Returns a morphism in $\mathrm{Hom}(I_k, \bigsqcup_{i=1}^n I_i)$
+#! @Arguments D,k
 DeclareOperation( "InjectionOfCofactorOfCoproduct",
                   [ IsList, IsInt ] );
 
+#! @Description
+#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
+#! an integer $k$,
+#! and a method selection object.
+#! The output is the $k$-th injection
+#! $\iota_k: I_k \rightarrow \bigsqcup_{i=1}^n I_i$.
+#! @Returns a morphism in $\mathrm{Hom}(I_k, \bigsqcup_{i=1}^n I_i)$
+#! @Arguments D,k,method_selection_object
 DeclareOperation( "InjectionOfCofactorOfCoproductOp",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
+#! an integer $k$,
+#! and an object $I = \bigsqcup_{i=1}^n I_i$.
+#! The output is the $k$-th injection
+#! $\iota_k: I_k \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}(I_k, I)$
+#! @Arguments D,k,I
 DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
+#! @Description
+#! This is a convenience method.
+#! There are three different ways to use this method.
+#! * The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
+#!  a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
+#! * The argument is a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
+#! * The arguments are morphisms $\tau_1: I_1 \rightarrow T, \dots, \tau_n: I_n \rightarrow T$
+#! The output is the morphism
+#! $u( \tau ): \bigsqcup_{i=1}^n I_i \rightarrow T$
+#! given by the universal property of the coproduct.
+#! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, T)$
 DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
 
+#! @Description
+#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
+#! a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$,
+#! and a method selection object.
+#! The output is the morphism
+#! $u( \tau ): \bigsqcup_{i=1}^n I_i \rightarrow T$
+#! given by the universal property of the coproduct.
+#! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, T)$
+#! @Arguments D, tau, method_selection_object
 DeclareOperation( "UniversalMorphismFromCoproductOp",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
+#! a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$,
+#! and an object $I = \bigsqcup_{i=1}^n I_i$.
+#! The output is the morphism
+#! $u( \tau ): I \rightarrow T$
+#! given by the universal property of the coproduct.
+#! @Returns a morphism in $\mathrm{Hom}(I, T)$
+#! @Arguments D, tau, method_selection_object
 DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Add Operations
 
 #! @Description
-#! This operation adds the given function $f: ( (I_1, \dots, I_n) ) \mapsto I$ to the category $C$
-#! where $(I_1, \dots, I_n)$ is a list of objects in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Coproduct</C>.
+#! $F: ( (I_1, \dots, I_n) ) \mapsto I$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1765,10 +1836,12 @@ DeclareOperation( "AddCoproduct",
 
 
 #! @Description
-#! This operation adds the given function $f: ( (I_1, \dots, I_n), i ) \mapsto \iota_i$ to the category $C$
-#! where $(I_1, \dots, I_n)$ is a list of objects in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfCofactorOfCoproduct</C>.
+#! $F: ( (I_1, \dots, I_n), i ) \mapsto \iota_i$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1783,10 +1856,12 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
 
 
 #! @Description
-#! This operation adds the given function $f: ( (I_1, \dots, I_n), i, I ) \mapsto \iota_i$ to the category $C$
-#! where $(I_1, \dots, I_n)$ is a list of objects in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfCofactorOfCoproductWithGivenCoproduct</C>.
+#! $F: ( (I_1, \dots, I_n), i, I ) \mapsto \iota_i$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1800,12 +1875,13 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsList ] );
 
 
-#FIXME: it is inconsistent with the convention that the diagram does not have to be given as an input!
 #! @Description
-#! This operation adds the given function $f: ( ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}  ) \mapsto u$ to the category $C$
-#! where $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromCoproduct</C>.
+#! $F: ( (I_1, \dots, I_n), \tau ) \mapsto u( \tau )$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1820,10 +1896,12 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
 
 
 #! @Description
-#! This operation adds the given function $f: ( ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}, I  ) \mapsto u$ to the category $C$
-#! where $( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromCoproductWithGivenCoproduct</C>.
+#! $F: ( (I_1, \dots, I_n), \tau, I ) \mapsto u( \tau )$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1836,21 +1914,23 @@ DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
 DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsList ] );
 
-
-#! @Section Functorial methods for coproduct
-
-#! Coproduct is a functorial operation. This means:
-#! For $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$,
-#! we obtain a morphism $\phi: \mathrm{Coproduct}( I_1, \dots, I_n ) \rightarrow \mathrm{Coproduct}( I_1', \dots, I_n' )$.
-
-
 #! @Description
-#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ as an input.
-#! @Returns $\phi$
+#! The argument is a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$.
+#! The output is a morphism
+#! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
+#! given by the functorality of the coproduct.
+#! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, \bigsqcup_{i=1}^n I_i')$
 #! @Arguments L
 DeclareOperation( "CoproductFunctorial",
                   [ IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoproductFunctorial</C>.
+#! $F: ( \mu_1, \dots, \mu_n) \rightarrow (\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i')$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddCoproductFunctorial",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1864,7 +1944,14 @@ DeclareOperation( "AddCoproductFunctorial",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$
+#! and a method selection morphism.
+#! The output is a morphism
+#! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
+#! given by the functorality of the coproduct.
+#! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, \bigsqcup_{i=1}^n I_i')$
+#! @Arguments L, method_selection_morphism
 DeclareOperation( "CoproductFunctorialOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
@@ -3101,6 +3188,32 @@ DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
 
 DeclareFilter( "WasCreatedAsCoimage" );
 #! @Chapter Universal Objects
+
+####################################
+##
+#! @Section Convenience Methods
+##
+####################################
+
+#! @Description
+#! This is a convenience method.
+#! There are five different ways to use this method:
+#! * The arguments are an object $S$ which was created as a direct sum
+#!  and an integer $k$.
+#!  The output is the $k$-th injection $\iota_{k}: S_k \rightarrow S$.
+#! * The arguments are an object $I$ which was created as a coproduct
+#!  and an integer $k$.
+#!  The output is the $k$-th injection $\iota_{k}: I_k \rightarrow I$.
+#! * The arguments are an object $I$ which was created as a pushout
+#!  and an integer $k$.
+#!  The output is the $k$-th injection $\iota_{k}: I_k \rightarrow I$.
+#! * The arguments are a list of objects $D = ( I_1, \dots, I_n )$
+#!  and an integer $k$.
+#!  The output is the $k$-th injection $\iota_{k}: I_k \rightarrow \bigsqcup_{i=1}^n I_i$.
+#! * The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#!  and an integer $k$.
+#!  The output is the $k$-th injection $\iota_{k}: I_k \rightarrow \mathrm{Pushout}(D)$.
+DeclareGlobalFunction( "InjectionOfCofactor" );
 
 ####################################
 ##
