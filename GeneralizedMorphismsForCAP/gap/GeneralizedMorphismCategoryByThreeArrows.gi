@@ -141,7 +141,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
       [ function( mor1, mor2 )
           local category;
           
-          return AsGeneralizedMorphism( PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ) );
+          return AsGeneralizedMorphismByThreeArrows( PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ) );
           
       end, [ HasHonestRange and HasHonestSource, HasHonestRange and HasHonestSource ] ],
       
@@ -205,7 +205,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
         
         identity_morphism := IdentityMorphism( UnderlyingHonestObject( generalized_object ) );
         
-        return AsGeneralizedMorphism( identity_morphism );
+        return AsGeneralizedMorphismByThreeArrows( identity_morphism );
         
     end );
     
@@ -293,7 +293,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
                   
       function( morphism )
         
-        return PseudoInverse( AsGeneralizedMorphism( morphism ) );
+        return PseudoInverse( AsGeneralizedMorphismByThreeArrows( morphism ) );
         
     end );
     
@@ -361,7 +361,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
-    SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryByThreeArrows );
+    SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismByThreeArrowsCategoryByThreeArrows );
     
     Finalize( generalized_morphism_category );
     
@@ -470,7 +470,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismWithRangeAid,
 end );
 
 ##
-InstallMethod( AsGeneralizedMorphism,
+InstallMethod( AsGeneralizedMorphismByThreeArrows,
                [ IsCapCategoryMorphism ],
                
   function( morphism_aid )

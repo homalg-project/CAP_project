@@ -61,7 +61,7 @@ DeclareOperation( "GeneralizedMorphismWithSourceAid",
 DeclareOperation( "GeneralizedMorphismWithRangeAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareAttributeWithToDoForIsWellDefined( "AsGeneralizedMorphism",
+DeclareAttributeWithToDoForIsWellDefined( "AsGeneralizedMorphismByThreeArrows",
                                           IsCapCategoryMorphism );
 
 DeclareOperation( "GeneralizedMorphismFromFactorToSubobject",
