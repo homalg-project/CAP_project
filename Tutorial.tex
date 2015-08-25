@@ -308,5 +308,17 @@ It was already mentioned that functors are morphisms in a specific category, and
 Of course, a method for the identity morphism is implemented in \texttt{CapCat}, so we can have the same result with less effort.
 
 \begin{small}
-\input{GAP_tex/vecspaces_example/IdentityFunctor2_main} 
+\input{GAP_tex/vecspaces_example/IdentityFunctor2_main}
+\end{small}
+
+The identity functor is not of much use, but interesting to show how a functor is created in general. We will now create a second functor. It will
+map a vector space $V$ to its direct sum with itself, i.e. $V \oplus V$, and provides the diagonal of a morphism. The functor is created as follows.
+
+\input{GAP_tex/vecspaces_example/DoubleFunctor}
+
+Since we have given this functor functions about how to act on objects or morphisms, we can actually apply it to such. We can also compose it with itself
+and then again apply it to objects or morphisms.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/ApplyDoubleFunctor_main}
 \end{small}
