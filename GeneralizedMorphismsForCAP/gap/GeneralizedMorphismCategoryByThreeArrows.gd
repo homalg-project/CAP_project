@@ -9,7 +9,7 @@
 ##
 #############################################################################
 
-DeclareCategory( "IsGeneralizedMorphismCategoryObject",
+DeclareCategory( "IsGeneralizedMorphismCategoryByThreeArrowsObject",
                  IsCapCategoryObject );
 
 DeclareCategory( "IsGeneralizedMorphism",
@@ -27,7 +27,7 @@ DeclareGlobalVariable( "GENERALIZED_MORPHISM_CATEGORY_PROPAGATION_LIST" );
 
 DeclareGlobalVariable( "GENERALIZED_MORPHISM_CATEGORY_CELL_PROPAGATION_LIST" );
 
-DeclareFilter( "WasCreatedAsGeneralizedMorphismCategory" );
+DeclareFilter( "WasCreatedAsGeneralizedMorphismCategoryByThreeArrows" );
 
 DeclareProperty( "INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms",
                  IsCapCategory );
@@ -38,7 +38,7 @@ DeclareProperty( "INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms",
 ##
 ####################################
 
-DeclareAttribute( "GeneralizedMorphismCategory",
+DeclareAttribute( "GeneralizedMorphismCategoryByThreeArrows",
                   IsCapCategory );
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY" );
@@ -50,7 +50,7 @@ DeclareAttributeWithToDoForIsWellDefined( "GeneralizedMorphismObject",
                                           IsCapCategoryObject );
 
 DeclareAttribute( "UnderlyingHonestObject",
-                  IsGeneralizedMorphismCategoryObject );
+                  IsGeneralizedMorphismCategoryByThreeArrowsObject );
 
 DeclareOperation( "GeneralizedMorphism",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -127,7 +127,7 @@ DeclareProperty( "HasHonestSource",
 DeclareProperty( "HasHonestRange",
                   IsGeneralizedMorphism );
 
-DeclareAttribute( "SubcategoryMembershipFunctionForGeneralizedMorphismCategory",
+DeclareAttribute( "SubcategoryMembershipFunctionForGeneralizedMorphismCategoryByThreeArrows",
                   IsCapCategory );
 
 InstallTrueMethod( IsHonest, HasHonestRange and HasHonestSource );

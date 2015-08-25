@@ -7,13 +7,13 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsGeneralizedMorphismCategoryObjectRep",
-                       IsCapCategoryObjectRep and IsGeneralizedMorphismCategoryObject,
+DeclareRepresentation( "IsGeneralizedMorphismCategoryByThreeArrowsObjectRep",
+                       IsCapCategoryObjectRep and IsGeneralizedMorphismCategoryByThreeArrowsObject,
                        [ ] );
 
-BindGlobal( "TheTypeOfGeneralizedMorphismCategoryObject",
+BindGlobal( "TheTypeOfGeneralizedMorphismCategoryByThreeArrowsObject",
         NewType( TheFamilyOfCapCategoryObjects,
-                IsGeneralizedMorphismCategoryObjectRep ) );
+                IsGeneralizedMorphismCategoryByThreeArrowsObjectRep ) );
 
 DeclareRepresentation( "IsGeneralizedMorphismRep",
                        IsCapCategoryMorphismRep and IsGeneralizedMorphism,
@@ -302,7 +302,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
 end );
 
 ##
-InstallMethod( GeneralizedMorphismCategory,
+InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
                [ IsCapCategory ],
                
   function( category )
@@ -361,7 +361,7 @@ InstallMethod( GeneralizedMorphismCategory,
     
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
-    SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategory );
+    SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryByThreeArrows );
     
     Finalize( generalized_morphism_category );
     
@@ -377,10 +377,10 @@ InstallMethod( GeneralizedMorphismObject,
     
     gen_object := rec( );
     
-    ObjectifyWithAttributes( gen_object, TheTypeOfGeneralizedMorphismCategoryObject,
+    ObjectifyWithAttributes( gen_object, TheTypeOfGeneralizedMorphismCategoryByThreeArrowsObject,
                              UnderlyingHonestObject, object );
     
-    generalized_category := GeneralizedMorphismCategory( CapCategory( object ) );
+    generalized_category := GeneralizedMorphismCategoryByThreeArrows( CapCategory( object ) );
     
     Add( generalized_category, gen_object );
     
@@ -419,7 +419,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphism,
     
     SetMorphismAid( generalized_morphism, morphism_aid );
     
-    generalized_category := GeneralizedMorphismCategory( CapCategory( morphism_aid ) );
+    generalized_category := GeneralizedMorphismCategoryByThreeArrows( CapCategory( morphism_aid ) );
     
     Add( generalized_category, generalized_morphism );
     
@@ -487,7 +487,7 @@ end );
 
 ####################################
 ##
-## Methods for GeneralizedMorphismCategory
+## Methods for GeneralizedMorphismCategoryByThreeArrows
 ##
 ####################################
 
