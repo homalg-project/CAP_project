@@ -115,7 +115,7 @@ DeclareAttributeWithToDoForIsWellDefined( "PseudoInverse",
 ##
 ## When calling this method on a generalized morphism, the effect
 ## differs from the effect of PseudoInverse.
-DeclareAttributeWithToDoForIsWellDefined( "GeneralizedInverse",
+DeclareAttributeWithToDoForIsWellDefined( "GeneralizedInverseByThreeArrows",
                                           IsCapCategoryMorphism );
 
 DeclareProperty( "IsHonest",

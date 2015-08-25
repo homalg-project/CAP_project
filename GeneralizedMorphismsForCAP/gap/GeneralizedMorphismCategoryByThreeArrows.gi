@@ -288,7 +288,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
         
     end );
     
-    InstallMethod( GeneralizedInverse,
+    InstallMethod( GeneralizedInverseByThreeArrows,
                   [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
                   
       function( morphism )
