@@ -369,7 +369,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
 end );
 
-InstallMethod( GeneralizedMorphismObject,
+InstallMethod( GeneralizedMorphismByThreeArrowsObject,
                [ IsCapCategoryObject ],
                                        
   function( object )
@@ -410,8 +410,8 @@ InstallMethodWithCacheFromObject( GeneralizedMorphism,
     generalized_morphism := rec( );
     
     ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphism,
-                             Source, GeneralizedMorphismObject( Range( source_aid ) ),
-                             Range, GeneralizedMorphismObject( Source( range_aid ) ) );
+                             Source, GeneralizedMorphismByThreeArrowsObject( Range( source_aid ) ),
+                             Range, GeneralizedMorphismByThreeArrowsObject( Source( range_aid ) ) );
     
     SetSourceAid( generalized_morphism, source_aid );
     

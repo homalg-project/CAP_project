@@ -46,7 +46,7 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY" );
 DeclareAttribute( "UnderlyingHonestCategory",
                   IsCapCategory );
 
-DeclareAttributeWithToDoForIsWellDefined( "GeneralizedMorphismObject",
+DeclareAttributeWithToDoForIsWellDefined( "GeneralizedMorphismByThreeArrowsObject",
                                           IsCapCategoryObject );
 
 DeclareAttribute( "UnderlyingHonestObject",
