@@ -213,7 +213,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
     
     ## Additional method for a category, when generalized morphism category is present.
     
-    InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobject,
+    InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobjectByCospan,
                                   [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ),
                                     IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
                                     
@@ -228,30 +228,33 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
         
     end );
     
-    InstallMethod( IdempotentDefinedBySubobject,
+    InstallMethod( IdempotentDefinedBySubobjectByCospan,
                   [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
                   
       function( subobject )
+        local generalized;
         
-        return GeneralizedMorphismWithSourceAid( subobject, subobject );
+        generalized := AsGeneralizedMorphismByCospan( subobject );
+        
+        return PreCompose( PseudoInverse( generalized ), generalized );
         
     end );
     
-    InstallMethod( IdempotentDefinedByFactorobject,
+    InstallMethod( IdempotentDefinedByFactorobjectByCospan,
                   [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
                   
       function( factorobject )
         
-        return GeneralizedMorphismWithRangeAid( factorobject, factorobject );
+        return GeneralizedMorphismByCospan( factorobject, factorobject );
         
     end );
     
-    InstallMethod( GeneralizedInverse,
+    InstallMethod( GeneralizedInverseByCospan,
                   [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
                   
       function( morphism )
         
-        return PseudoInverse( AsGeneralizedMorphism( morphism ) );
+        return PseudoInverse( AsGeneralizedMorphismByCospan( morphism ) );
         
     end );
     

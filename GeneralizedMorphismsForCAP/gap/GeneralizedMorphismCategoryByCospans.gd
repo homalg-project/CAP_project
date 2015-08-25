@@ -49,6 +49,12 @@ DeclareAttribute( "PseudoInverse",
 DeclareAttribute( "GeneralizedInverseByCospan",
                   IsCapCategoryMorphism );
 
+DeclareAttribute( "IdempotentDefinedBySubobjectByCospan",
+                  IsCapCategoryMorphism );
+
+DeclareAttribute( "IdempotentDefinedByFactorobjectByCospan",
+                  IsCapCategoryMorphism );
+
 DeclareAttribute( "NormalizedCospan",
                   IsGeneralizedMorphismByCospan );
 
