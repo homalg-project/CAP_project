@@ -3342,7 +3342,7 @@ DeclareOperation( "AddCoastrictionToImage",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>CoastrictionToImage</C>.
+#! to the category for the basic operation <C>CoastrictionToImageWithGivenImageObject</C>.
 #! $F: (\alpha,I) \mapsto c$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -3381,7 +3381,7 @@ DeclareOperation( "AddUniversalMorphismFromImage",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromImage</C>.
+#! to the category for the basic operation <C>UniversalMorphismFromImageWithGivenImageObject</C>.
 #! $F: (\alpha, \tau, I) \mapsto u(\tau)$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -3428,11 +3428,24 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #!  $u( \tau ) \circ \tau_1 \sim_{A,C} \pi$ and $a \circ u( \tau ) \sim_{T,B} \tau_2$.
 #! The $4$-tuple $( C, \pi, a, u )$ is called a <Emph>coimage</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
-#! 
+#! We denote the object $C$ of such a $4$-tuple by $\mathrm{coim}(\alpha)$.
 
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the canonical morphism
+#! $\mathrm{coim}( \alpha ) \rightarrow \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{coim}( \alpha ), \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ) )$.
+#! @Arguments alpha
 DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
                   [ IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromCoimageToCokernelOfKernel</C>.
+#! $F: \alpha \mapsto ( \mathrm{coim}( \alpha ) \rightarrow \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ) )$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3445,10 +3458,22 @@ DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
 DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the canonical morphism
+#! $\mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ), \mathrm{coim}( \alpha ) )$.
+#! @Arguments alpha
 DeclareOperation( "IsomorphismFromCokernelOfKernelToCoimage",
                   [ IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromCokernelOfKernelToCoimage</C>.
+#! $F: \alpha \mapsto ( \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha ) )$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3461,38 +3486,110 @@ DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
 DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is the coimage $\mathrm{coim}( \alpha )$.
+#! @Returns an object
+#! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "Coimage",
                                           IsCapCategoryMorphism );
 
-#convenience function
+#! @Description
+#! This is a convenience method.
+#! The argument is an object $C$ which was created as a coimage
+#! of a morphism $\alpha: A \rightarrow B$.
+#! The output is the coimage projection
+#! $\pi: A \twoheadrightarrow C$.
+#! @Returns a morphism in $\mathrm{Hom}(A, C)$
+#! @Arguments C
 DeclareAttributeWithToDoForIsWellDefined( "CoimageProjection",
                                           IsCapCategoryObject );
 
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the coimage projection
+#! $\pi: A \twoheadrightarrow \mathrm{coim}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{coim}( \alpha ))$
+#! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "CoimageProjection",
                                           IsCapCategoryMorphism );
 
-#convenience function
-DeclareAttributeWithToDoForIsWellDefined( "AstrictionToCoimage",
-                                          IsCapCategoryObject );
-
-DeclareAttributeWithToDoForIsWellDefined( "AstrictionToCoimage",
-                                          IsCapCategoryMorphism );
-
+#! @Description
+#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! and an object $C = \mathrm{coim}(\alpha)$.
+#! The output is the coimage projection
+#! $\pi: A \twoheadrightarrow C$.
+#! @Returns a morphism in $\mathrm{Hom}(A, C)$
+#! @Arguments alpha, C
 DeclareOperation( "CoimageProjectionWithGivenCoimage",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! This is a convenience method.
+#! The argument is an object $C$ which was created as a coimage
+#! of a morphism $\alpha: A \rightarrow B$.
+#! The output is the astriction to coimage
+#! $a: C \rightarrow B$.
+#! @Returns a morphism in $\mathrm{Hom}(C,B)$
+#! @Arguments C
+DeclareAttributeWithToDoForIsWellDefined( "AstrictionToCoimage",
+                                          IsCapCategoryObject );
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the astriction to coimage
+#! $a: \mathrm{coim}( \alpha ) \rightarrow B$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{coim}( \alpha ),B)$
+#! @Arguments alpha
+DeclareAttributeWithToDoForIsWellDefined( "AstrictionToCoimage",
+                                          IsCapCategoryMorphism );
+
+#! @Description
+#! The argument are a morphism $\alpha: A \rightarrow B$
+#! and an object $C = \mathrm{coim}( \alpha )$.
+#! The output is the astriction to coimage
+#! $a: C \rightarrow B$.
+#! @Returns a morphism in $\mathrm{Hom}(C,B)$
+#! @Arguments alpha, C
 DeclareOperation( "AstrictionToCoimageWithGivenCoimage",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! and a pair of morphisms
+#! $\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )$
+#! where $\tau_1$ is an epimorphism
+#! such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$.
+#! The output is the morphism
+#! $u(\tau): T \rightarrow \mathrm{coim}( \alpha )$
+#! given by the universal property of the coimage.
+#! @Returns a morphism in $\mathrm{Hom}(T, \mathrm{coim}( \alpha ))$
+#! @Arguments alpha, tau
 DeclareOperation( "UniversalMorphismIntoCoimage",
                   [ IsCapCategoryMorphism, IsList ] );
 
+#! @Description
+#! The arguments are a morphism $\alpha: A \rightarrow B$,
+#! a pair of morphisms
+#! $\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )$
+#! where $\tau_1$ is an epimorphism
+#! such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$,
+#! and an object $C = \mathrm{coim}( \alpha )$.
+#! The output is the morphism
+#! $u(\tau): T \rightarrow C$
+#! given by the universal property of the coimage.
+#! @Returns a morphism in $\mathrm{Hom}(T, C)$
+#! @Arguments alpha, tau, C
 DeclareOperation( "UniversalMorphismIntoCoimageWithGivenCoimage",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
-## Add Operations
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Coimage</C>.
+#! $F: \alpha \mapsto C$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddCoimage",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3506,7 +3603,13 @@ DeclareOperation( "AddCoimage",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoimageProjection</C>.
+#! $F: \alpha \mapsto \pi$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddCoimageProjection",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3520,7 +3623,13 @@ DeclareOperation( "AddCoimageProjection",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoimageProjectionWithGivenCoimage</C>.
+#! $F: (\alpha,C) \mapsto \pi$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3534,7 +3643,13 @@ DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>AstrictionToCoimage</C>.
+#! $F: \alpha \mapsto a$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddAstrictionToCoimage",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3548,7 +3663,13 @@ DeclareOperation( "AddAstrictionToCoimage",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>AstrictionToCoimageWithGivenCoimage</C>.
+#! $F: (\alpha,C) \mapsto a$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3562,7 +3683,13 @@ DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoCoimage</C>.
+#! $F: (\alpha, \tau) \mapsto u(\tau)$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoCoimage",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3575,7 +3702,13 @@ DeclareOperation( "AddUniversalMorphismIntoCoimage",
 DeclareOperation( "AddUniversalMorphismIntoCoimage",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoCoimageWithGivenCoimage</C>.
+#! $F: (\alpha, \tau,C) \mapsto u(\tau)$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
                   [ IsCapCategory, IsFunction ] );
 
