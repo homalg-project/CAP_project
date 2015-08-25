@@ -268,6 +268,7 @@ DeclareFilter( "WasCreatedAsKernelObject" );
 #! * a dependent function $u$ mapping each $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$ to a morphism $u(\tau):K \rightarrow T$ such that $u(\tau) \circ \epsilon \sim_{B,T} \tau$.
 #! The triple $( K, \epsilon, u )$ is called a <Emph>cokernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
+#! We denote the object $K$ of such a triple by $\mathrm{Cokernel}(\alpha)$.
 #! $\\$
 #! $\mathrm{Cokernel}$ is a functorial operation. This means:
 #! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
@@ -509,6 +510,7 @@ DeclareFilter( "WasCreatedAsCokernel" );
 #! * a function $u_{\mathrm{out}}$ mapping each object $A$ to a morphism $u_{\mathrm{out}}(A): Z \rightarrow A$.
 #! The triple $(Z, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>zero object</Emph> if the morphisms 
 #! $u_{\mathrm{in}}(A)$, $u_{\mathrm{out}}(A)$ are uniquely determined up to congruence of morphisms.
+#! We denote the object $Z$ of such a triple by $\mathrm{ZeroObject}$.
 
 ## Main Operations and Attributes
 
@@ -818,6 +820,7 @@ DeclareFilter( "WasCreatedAsZeroObject" );
 #! * a function $u$ mapping each object $A$ to a morphism $u( A ): A \rightarrow T$.
 #! The pair $( T, u )$ is called a <Emph>terminal object</Emph> if the morphisms $u( A )$ are uniquely determined up to
 #! congruence of morphisms.
+#! We denote the object $T$ of such a pair by $\mathrm{TerminalObject}$.
 #! $\\$
 #! $\mathrm{TerminalObject}$ is a functorial operation. This just means:
 #! There exists a unique morphism $T \rightarrow T$.
@@ -974,9 +977,10 @@ DeclareFilter( "WasCreatedAsTerminalObject" );
 #! An initial object consists of two parts:
 #! * an object $I$,
 #! * a function $u$ mapping each object $A$ to a morphism $u( A ): I \rightarrow A$.
-#! The pair $(I,u)$ is called a \textbf{initial object} if the morphisms $u(A)$ are uniquely determined up to
+#! The pair $(I,u)$ is called a <Emph>initial object</Emph> if the morphisms $u(A)$ are uniquely determined up to
 #! congruence of morphisms.
-#!
+#! We denote the object $I$ of such a triple by $\mathrm{InitialObject}$.
+#! $\\$
 #! $\mathrm{TerminalObject}$ is a functorial operation. This just means:
 #! There exists a unique morphisms $I \rightarrow I$.
 
@@ -1140,6 +1144,7 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 #! * $\pi_j \circ \iota_i = \delta_{i,j}$,
 #! where $\delta_{i,j} \in \mathrm{Hom}( S_i, S_j )$ is the identity if $i=j$, and $0$ otherwise.
 #! The $5$-tuple $(S, \pi, \iota, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>direct sum</Emph> of $D$.
+#! We denote the object $S$ of such a $5$-tuple by $\bigoplus_{i=1}^n S_i$.
 #! $\\$
 #! $\mathrm{DirectSum}$ is a functorial operation. This means:
 #! For $(\mu_i: S_i \rightarrow S'_i)_{i=1\dots n}$,
@@ -1717,10 +1722,11 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #!  to a morphism $u( \tau ): I \rightarrow T$ such that $u( \tau ) \circ \iota_i \sim_{I_i, T} \tau_i$ for all $i = 1, \dots, n$.
 #! The triple $( I, \iota, u )$ is called a <Emph>coproduct</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
+#! We denote the object $I$ of such a triple by $\bigsqcup_{i=1}^n I_i$.
 #! $\\$
 #! $\mathrm{Coproduct}$ is a functorial operation. This means:
 #! For $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$,
-#! we obtain a morphism $\mathrm{Coproduct}( I_1, \dots, I_n ) \rightarrow \mathrm{Coproduct}( I_1', \dots, I_n' )$.
+#! we obtain a morphism $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$.
 
 
 
@@ -1984,89 +1990,102 @@ DeclareFilter( "WasCreatedAsCoproduct" );
 #!  to a morphism $u(\tau): T \rightarrow P$ such that $\pi_i \circ u( \tau ) \sim_{T,P_i} \tau_i$ for all $i = 1, \dots, n$.
 #! The triple $( P, \pi, u )$ is called a <Emph>direct product</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
+#! We denote the object $P$ of such a triple by $\prod_{i=1}^n P_i$.
+#! $\\$
+#! $\mathrm{DirectProduct}$ is a functorial operation. This means:
+#! For $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
+#! we obtain a morphism $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$.
+
 
 ## Main Operations and Attributes
 #! @Description
-#! Direct product of a given diagram $D$, where $D$ is a list of objects.
-#! The second argument $M$ is an object needed for the method
-#! selection.
-#! @Returns IsCapCategoryObject
-#! @Arguments D, M
+#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$
+#! and an object for method selection.
+#! The output is the direct product $\prod_{i=1}^n P_i$.
+#! @Returns an object
+#! @Arguments D
 DeclareOperationWithCache( "DirectProductOp",
                            [ IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! Projection in the $i$-th factor of the direct product given by $D$.
-#! $D$ can either be an object created as a direct product or a list
-#! of objects $D = (A_i)$ representing a diagram.
-#! @Returns IsCapCategoryMorphism
-#! @Arguments D, i
-DeclareGlobalFunction( "ProjectionInFactor" );
-
+#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$
+#! and an integer $k$.
+#! The output is the $k$-th projection
+#! $\pi_k: \prod_{i=1}^n P_i \rightarrow P_k$.
+#! @Returns a morphism in $\mathrm{Hom}(\prod_{i=1}^n P_i, P_k)$
+#! @Arguments D,k
 DeclareOperation( "ProjectionInFactorOfDirectProduct",
                   [ IsList, IsInt ] );
+
 #! @Description
-#! Projection in the $i$-th factor of the direct product given by $D$.
-#! $D$ can either be an object created as a direct product or a list
-#! of objects representing a diagram. The third argument $M$
-#! is an object needed for the method selection.
-#! @Returns IsCapCategoryMorphism
-#! @Arguments D, i, M
+#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,
+#! an integer $k$,
+#! and an object for method selection.
+#! The output is the $k$-th projection
+#! $\pi_k: \prod_{i=1}^n P_i \rightarrow P_k$.
+#! @Returns a morphism in $\mathrm{Hom}(\prod_{i=1}^n P_i, P_k)$
+#! @Arguments D,k,method_selection_object
 DeclareOperation( "ProjectionInFactorOfDirectProductOp",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! Projection in the $i$-th factor of the direct product $P = \prod_j A_j$ 
-#! given by a list of objects $D = (A_j)$.
-#! @Returns IsCapCategoryMorphism
-#! @Arguments D, i, P
+#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,
+#! an integer $k$,
+#! and an object $P = \prod_{i=1}^n P_i$.
+#! The output is the $k$-th projection
+#! $\pi_k: P \rightarrow P_k$.
+#! @Returns a morphism in $\mathrm{Hom}(P, P_k)$
+#! @Arguments D,k,P
 DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! Given finitely many morphisms $\alpha_i: A \rightarrow P_i$ this method
-#! returns the unique morphism $\alpha: A \rightarrow \prod_j P_j$ such that
-#! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
-#! $\prod_j P_j \rightarrow P_i$.
-#! @Returns a morphism in $\mathrm{Hom}(A, \prod_j P_j)$
-#! @Arguments alpha_i
+#! This is a convenience method.
+#! There are three different ways to use this method.
+#! * The arguments are a list of objects $D = ( P_1, \dots, P_n )$
+#!  and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$.
+#! * The argument is a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$.
+#! * The arguments are morphisms $\tau_1: T \rightarrow P_1, \dots, \tau_n: T \rightarrow P_n$.
+#! The output is the morphism
+#! $u(\tau): T \rightarrow \prod_{i=1}^n P_i$
+#! given by the universal property of the direct product.
+#! @Returns a morphism in $\mathrm{Hom}(T, \prod_{i=1}^n P_i)$
 DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 
 
 #! @Description
-#! The arguments are a list of objects $L = (P_1, \dots, P_n)$,
-#! a list of morphisms $D = (\alpha_i: A \rightarrow P_i)$,
-#! and an object $M$ only needed for method selection.
-#! This method
-#! returns the unique morphism $\alpha: A \rightarrow \prod_j P_j$ such that
-#! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
-#! $\prod_j P_j \rightarrow P_i$.
-#! @Returns a morphism in $\mathrm{Hom}(A,\prod_j P_j)$
-#! @Arguments L, D, M
+#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,
+#! a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$,
+#! and an object for method selection.
+#! The output is the morphism
+#! $u(\tau): T \rightarrow \prod_{i=1}^n P_i$
+#! given by the universal property of the direct product.
+#! @Returns a morphism in $\mathrm{Hom}(T, \prod_{i=1}^n P_i)$
+#! @Arguments D, tau, method_selection_object
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
-# TODO: Fix this documentation (new argument)
 #! @Description
-#! The arguments are a list of objects $L = (P_1, \dots, P_n)$,
-#! a list of morphisms $D = (\alpha_i: A \rightarrow P_i)$,
-#! and the direct product $P = \prod_j P_j$.
-#! This method
-#! returns the unique morphism $\alpha: A \rightarrow \prod_j P_j$ such that
-#! $\pi_i \circ \alpha = \alpha_i$, where $\pi_i$ denotes the $i$-th projection
-#! $\prod_j P_j \rightarrow P_i$.
-#! @Returns a morphism in $\mathrm{Hom}(A,P)$
-#! @Arguments L, D, P
+#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,
+#! a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$,
+#! and an object $P = \prod_{i=1}^n P_i$.
+#! The output is the morphism
+#! $u(\tau): T \rightarrow \prod_{i=1}^n P_i$
+#! given by the universal property of the direct product.
+#! @Returns a morphism in $\mathrm{Hom}(T, \prod_{i=1}^n P_i)$
+#! @Arguments D, tau, P
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 ## Add Operations
 
 #! @Description
-#! This operation adds the given function $f: ( (P_1, \dots, P_n) ) \mapsto P$ to the category $C$
-#! where $(P_1, \dots, P_n)$ is a list of objects in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>DirectProduct</C>.
+#! $F: ( (P_1, \dots, P_n) ) \mapsto P$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2079,12 +2098,13 @@ DeclareOperation( "AddDirectProduct",
 DeclareOperation( "AddDirectProduct",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: ( (P_1, \dots, P_n), i ) \mapsto \pi_i$ to the category $C$
-#! where $(P_1, \dots, P_n)$ is a list of objects in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInFactorOfDirectProduct</C>.
+#! $F: ( (P_1, \dots, P_n),k ) \mapsto \pi_k$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddProjectionInFactorOfDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2097,12 +2117,13 @@ DeclareOperation( "AddProjectionInFactorOfDirectProduct",
 DeclareOperation( "AddProjectionInFactorOfDirectProduct",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: ( (P_1, \dots, P_n), i, P ) \mapsto \pi_i$ to the category $C$
-#! where $(P_1, \dots, P_n)$ is a list of objects in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInFactorOfDirectProductWithGivenDirectProduct</C>.
+#! $F: ( (P_1, \dots, P_n),k,P ) \mapsto \pi_k$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2115,12 +2136,13 @@ DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
 DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: ( ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n} ) \mapsto u$ to the category $C$
-#! where $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoDirectProduct</C>.
+#! $F: ( (P_1, \dots, P_n), \tau ) \mapsto u( \tau )$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2135,10 +2157,12 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
 
 
 #! @Description
-#! This operation adds the given function $f: ( ( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}, P ) \mapsto u$ to the category $C$
-#! where $( \tau_i: T \rightarrow P_i )_{i = 1 \dots n}$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoDirectProductWithGivenDirectProduct</C>.
+#! $F: ( (P_1, \dots, P_n), \tau, P ) \mapsto u( \tau )$
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2151,21 +2175,23 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
 DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsList ] );
 
-
-#! @Section Functorial methods for direct product
-
-#! DirectProduct is a functorial operation. This means:
-#! For $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
-#! we obtain a morphism $\phi: \mathrm{DirectProduct}( P_1, \dots, P_n ) \rightarrow \mathrm{DirectProduct}( P_1', \dots, P_n' )$.
-
-
 #! @Description
-#! This method takes $L = [ \mu_1, \dots, \mu_n ]$ as an input.
-#! @Returns $\phi$
+#! The argument is a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$.
+#! The output is a morphism
+#! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
+#! given by the functorality of the direct product.
+#! @Returns a morphism in $\mathrm{Hom}( P_i, \prod_{i=1}^n P_i' )$
 #! @Arguments L
 DeclareOperation( "DirectProductFunctorial",
                   [ IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>DirectProductFunctorial</C>.
+#! $F: ( (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n} ) \mapsto (\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i')$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddDirectProductFunctorial",
                   [ IsCapCategory, IsFunction ] );
 
@@ -2178,7 +2204,14 @@ DeclareOperation( "AddDirectProductFunctorial",
 DeclareOperation( "AddDirectProductFunctorial",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The arguments are a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
+#! given by the functorality of the direct product.
+#! @Returns a morphism in $\mathrm{Hom}( P_i, \prod_{i=1}^n P_i' )$
+#! @Arguments L, method_selection_morphism
 DeclareOperation( "DirectProductFunctorialOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
@@ -3214,6 +3247,26 @@ DeclareFilter( "WasCreatedAsCoimage" );
 #!  and an integer $k$.
 #!  The output is the $k$-th injection $\iota_{k}: I_k \rightarrow \mathrm{Pushout}(D)$.
 DeclareGlobalFunction( "InjectionOfCofactor" );
+
+#! @Description
+#! This is a convenience method.
+#! There are five different ways to use this method:
+#! * The arguments are an object $S$ which was created as a direct sum
+#!  and an integer $k$.
+#!  The output is the $k$-th projection $\pi_{k}: S \rightarrow S_k$.
+#! * The arguments are an object $P$ which was created as a direct product
+#!  and an integer $k$.
+#!  The output is the $k$-th projection $\pi_{k}: P \rightarrow P_k$.
+#! * The arguments are an object $P$ which was created as a fiber product
+#!  and an integer $k$.
+#!  The output is the $k$-th projection $\pi_{k}: P \rightarrow P_k$.
+#! * The arguments are a list of objects $D = ( P_1, \dots, P_n )$
+#!  and an integer $k$.
+#!  The output is the $k$-th projection $\pi_{k}: \prod_{i=1}^n P_i \rightarrow P_k$.
+#! * The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#!  and an integer $k$.
+#!  The output is the $k$-th projection $\pi_{k}: \mathrm{FiberProduct}(D) \rightarrow P_k$.
+DeclareGlobalFunction( "ProjectionInFactor" );
 
 ####################################
 ##
