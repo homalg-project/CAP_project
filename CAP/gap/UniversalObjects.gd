@@ -3102,17 +3102,30 @@ DeclareFilter( "WasCreatedAsPushout" );
 #! * a monomorphism $\iota: I \hookrightarrow B$ such that $\iota \circ c \sim_{A,B} \alpha$,
 #! * a dependent function $u$ mapping each pair of morphisms $\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )$
 #!  where $\tau_2$ is a monomorphism
-#!  such that $\tau_2 \circ \tau_1 \sim_{A,T} \alpha$ to a morphism
+#!  such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$ to a morphism
 #!  $u(\tau): I \rightarrow T$ such that
 #!  $\tau_2 \circ u(\tau) \sim_{I,B} \iota$ and $u(\tau) \circ c \sim_{A,T} \tau_1$.
 #! The $4$-tuple $( I, c, \iota, u )$ is called an <Emph>image</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
-
+#! We denote the object $I$ of such a $4$-tuple by $\mathrm{im}(\alpha)$.
 ## Main Operations and Attributes
 
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is the canonical morphism
+#! $\mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{im}(\alpha), \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ) )$
+#! @Arguments alpha
 DeclareOperation( "IsomorphismFromImageObjectToKernelOfCokernel",
                   [ IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromImageObjectToKernelOfCokernel</C>.
+#! $F: \alpha \mapsto ( \mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ) )$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3125,10 +3138,22 @@ DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
 DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is the canonical morphism
+#! $\mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ) \rightarrow \mathrm{im}(\alpha)$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ), \mathrm{im}(\alpha) )$
+#! @Arguments alpha
 DeclareOperation( "IsomorphismFromKernelOfCokernelToImageObject",
                   [ IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromKernelOfCokernelToImageObject</C>.
+#! $F: \alpha \mapsto ( \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ) \rightarrow \mathrm{im}(\alpha) )$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3141,42 +3166,110 @@ DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
 DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
                   [ IsCapCategory, IsList ] );
 
-## FIXME: Image is a function (rename: ImageObject -> Image)
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is the image $\mathrm{im}( \alpha )$.
+#! @Returns an object
+#! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "ImageObject",
                                           IsCapCategoryMorphism );
 
-#convenience function
+#! @Description
+#! This is a convenience method.
+#! The argument is an object $I$ which was created as an image object
+#! of a morphism $\alpha: A \rightarrow B$.
+#! The output is the image embedding
+#! $\iota: I \hookrightarrow B$.
+#! @Returns a morphism in $\mathrm{Hom}(I,B)$.
+#! @Arguments I
 DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
                                           IsCapCategoryObject );
 
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the image embedding
+#! $\iota: \mathrm{im}(\alpha) \hookrightarrow B$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{im}(\alpha), B)$
+#! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
                                           IsCapCategoryMorphism );
 
-#convenience function
-DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
-                                          IsCapCategoryObject );
-
-DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
-                                          IsCapCategoryMorphism );
-
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$
+#! and an object $I = \mathrm{im}( \alpha )$.
+#! The output is the image embedding
+#! $\iota: I \hookrightarrow B$.
+#! @Returns a morphism in $\mathrm{Hom}(I, B)$
+#! @Arguments alpha, I
 DeclareOperation( "ImageEmbeddingWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! This is a convenience method.
+#! The argument is an object $I$ which was created as an image object
+#! of a morphism $\alpha: A \rightarrow B$.
+#! The output is the coastriction to image
+#! $c: A \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}(A, I)$
+#! @Arguments I
+DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
+                                          IsCapCategoryObject );
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the coastriction to image
+#! $c: A \rightarrow \mathrm{im}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{im}( \alpha ))$
+#! @Arguments alpha
+DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
+                                          IsCapCategoryMorphism );
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$
+#! and an object $I = \mathrm{im}( \alpha )$.
+#! The output is the coastriction to image
+#! $c: A \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}(A, I)$
+#! @Arguments alpha, I
 DeclareOperation( "CoastrictionToImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! and a pair of morphisms 
+#! $\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )$
+#! where $\tau_2$ is a monomorphism
+#! such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$.
+#! The output is the morphism
+#! $u(\tau): \mathrm{im}(\alpha) \rightarrow T$
+#! given by the universal property of the image.
+#! @Arguments alpha, tau
 DeclareOperation( "UniversalMorphismFromImage",
                   [ IsCapCategoryMorphism, IsList ] );
 
+#! @Description
+#! The arguments are a morphism $\alpha: A \rightarrow B$,
+#! a pair of morphisms 
+#! $\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )$
+#! where $\tau_2$ is a monomorphism
+#! such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$,
+#! and an object $I = \mathrm{im}( \alpha )$.
+#! The output is the morphism
+#! $u(\tau): \mathrm{im}(\alpha) \rightarrow T$
+#! given by the universal property of the image.
+#! @Arguments alpha, tau, I
 DeclareOperation( "UniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
 ## Add Operations
 
 #! @Description
-#! This operation adds the given function $f: \alpha \mapsto I$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ImageObject</C>.
+#! $F: \alpha \mapsto I$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddImageObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3189,11 +3282,13 @@ DeclareOperation( "AddImageObject",
 DeclareOperation( "AddImageObject",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: \alpha \mapsto \iota$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ImageEmbedding</C>.
+#! $F: \alpha \mapsto \iota$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddImageEmbedding",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3206,11 +3301,13 @@ DeclareOperation( "AddImageEmbedding",
 DeclareOperation( "AddImageEmbedding",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: (\alpha, I) \mapsto \iota$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ImageEmbeddingWithGivenImageObject</C>.
+#! $F: (\alpha,I) \mapsto \iota$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3223,11 +3320,13 @@ DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
 DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: \alpha \mapsto c$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoastrictionToImage</C>.
+#! $F: \alpha \mapsto c$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddCoastrictionToImage",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3240,11 +3339,13 @@ DeclareOperation( "AddCoastrictionToImage",
 DeclareOperation( "AddCoastrictionToImage",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: (\alpha, I) \mapsto c$ to the category $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoastrictionToImage</C>.
+#! $F: (\alpha,I) \mapsto c$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3257,12 +3358,13 @@ DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
 DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
-#! This operation adds the given function $f: (\alpha, [\tau_1, \tau_2]) \mapsto u$ to the category $C$.
-#! Note that $[\tau_1, \tau_2]$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromImage</C>.
+#! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromImage",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3277,10 +3379,12 @@ DeclareOperation( "AddUniversalMorphismFromImage",
 
 
 #! @Description
-#! This operation adds the given function $f: (\alpha, [\tau_1, \tau_2], I) \mapsto u$ to the category $C$.
-#! Note that $[\tau_1, \tau_2]$ is a list of morphisms in $C$.
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromImage</C>.
+#! $F: (\alpha, \tau, I) \mapsto u(\tau)$.
 #! @Returns nothing
-#! @Arguments C, f
+#! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -3324,6 +3428,7 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #!  $u( \tau ) \circ \tau_1 \sim_{A,C} \pi$ and $a \circ u( \tau ) \sim_{T,B} \tau_2$.
 #! The $4$-tuple $( C, \pi, a, u )$ is called a <Emph>coimage</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
+#! 
 
 DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
                   [ IsCapCategoryMorphism ] );
