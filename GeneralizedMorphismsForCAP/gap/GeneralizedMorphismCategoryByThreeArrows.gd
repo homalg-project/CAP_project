@@ -41,7 +41,7 @@ DeclareProperty( "INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms",
 DeclareAttribute( "GeneralizedMorphismCategoryByThreeArrows",
                   IsCapCategory );
 
-DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY" );
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROWS_CATEGORY" );
 
 DeclareAttribute( "UnderlyingHonestCategory",
                   IsCapCategory );

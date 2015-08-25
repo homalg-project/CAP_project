@@ -42,7 +42,7 @@ InstallTrueMethod( HasHonestSource, IsHonest );
 ####################################
 
 ##
-InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY,
+InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROWS_CATEGORY,
                        
   function( category )
     local entry, underlying_honest_category;
@@ -357,7 +357,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
-    INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY( generalized_morphism_category );
+    INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROWS_CATEGORY( generalized_morphism_category );
     
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
