@@ -26,3 +26,17 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
       [ "GeneralizedInverse", "GeneralizedInverseByThreeArrows", "GeneralizedInverseByCospan" ],
       [ "MorphismFromFactorToSubobject", "MorphismFromFactorToSubobjectByThreeArrows", "MorphismFromFactorToSubobjectByCospan" ],
       [ "IdempotentDefinedBySubobject", "IdempotentDefinedBySubobjectByThreeArrows", "IdempotentDefinedBySubobjectByCospan" ] ];
+    
+    for i in generalized_morphism_translation_list do
+        
+        if IsBoundGlobal( i[ 1 ] ) then
+            UnbindGlobal( i[ 1 ] );
+        fi;
+        
+        BindGlobal( i[ 1 ], ValueGlobal( i[ type ] ) );
+        
+    od;
+    
+end );
+
+SwitchGeneralizedMorphismStandard( "cospan" );
