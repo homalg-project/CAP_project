@@ -13,7 +13,7 @@
 #!  For every category, the corresponding object in Cat can be obtained via <C>AsCatObject</C>.
 #!  The implemetation of the category of categories offers a data structure for functors.
 #!  Those are implemented as morphisms in this category, so functors can be handled like
-#!  morphisms in a category. Also convinience functions to install functors as methods are
+#!  morphisms in a category. Also convenience functions to install functors as methods are
 #!  implemented (in order to avoid <C>ApplyFunctor</C>).
 ##
 #############################################################################

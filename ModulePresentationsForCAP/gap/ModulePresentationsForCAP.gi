@@ -139,6 +139,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
+    ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT( category );
+    
 end );
 
 ##
@@ -175,6 +177,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT( category );
     
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
+    
+    ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT( category );
     
 end );
 
@@ -975,6 +979,68 @@ InstallGlobalFunction( ADD_IDENTITY_RIGHT,
         matrix := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( object ) ), category!.ring_for_representation_category );
         
         return PresentationMorphism( object, matrix, object );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT,
+                      
+  function( category )
+    
+    AddTensorProductOnObjects( category,
+      
+      function( object_1, object_2 )
+        local identity_1, identity_2, presentation_matrix_1, presentation_matrix_2, presentation_matrix;
+        
+        presentation_matrix_1 := UnderlyingMatrix( object_1 );
+        
+        presentation_matrix_2 := UnderlyingMatrix( object_2 );
+        
+        identity_1 := 
+          HomalgIdentityMatrix( NrColumns( presentation_matrix_1 ), category!.ring_for_representation_category );
+        
+        identity_2 := 
+          HomalgIdentityMatrix( NrColumns( presentation_matrix_2 ), category!.ring_for_representation_category );
+        
+        presentation_matrix := UnionOfRows(
+                                 KroneckerMat( identity_1, presentation_matrix_2 ),
+                                 KroneckerMat( identity_2, presentation_matrix_1 )
+                               );
+        
+        return AsLeftPresentation( presentation_matrix );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT,
+                      
+  function( category )
+    
+    AddTensorProductOnObjects( category,
+      
+      function( object_1, object_2 )
+        local identity_1, identity_2, presentation_matrix_1, presentation_matrix_2, presentation_matrix;
+        
+        presentation_matrix_1 := UnderlyingMatrix( object_1 );
+        
+        presentation_matrix_2 := UnderlyingMatrix( object_2 );
+        
+        identity_1 := 
+          HomalgIdentityMatrix( NrRows( presentation_matrix_1 ), category!.ring_for_representation_category );
+        
+        identity_2 := 
+          HomalgIdentityMatrix( NrRows( presentation_matrix_2 ), category!.ring_for_representation_category );
+        
+        presentation_matrix := UnionOfColumns(
+                                 KroneckerMat( identity_1, presentation_matrix_2 ),
+                                 KroneckerMat( identity_2, presentation_matrix_1 )
+                               );
+        
+        return AsRightPresentation( presentation_matrix );
         
     end );
     
