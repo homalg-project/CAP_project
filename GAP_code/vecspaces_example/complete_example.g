@@ -433,7 +433,7 @@ projection := ProjectionInFactor( fiberproduct, 1 );
 
 intersection := PreCompose( projection, alpha );
 
-LoadPackage( "HomologicalAlgebraForCAP" );
+# LoadPackage( "HomologicalAlgebraForCAP" );
 
 V1 := QVectorSpace( 1 );
 
@@ -451,7 +451,7 @@ gamma2 := IdentityMorphism( V3 );
 
 gamma3 := VectorSpaceMorphism( V2, [ [ 0 ], [ 1 ] ], V1 );
 
-snake := SnakeLemmaConnectingHomomorphism( alpha2, gamma1, gamma2, gamma3, beta1 );
+# snake := SnakeLemmaConnectingHomomorphism( alpha2, gamma1, gamma2, gamma3, beta1 );
 
 id_functor := CapFunctor( "Identity of vecspaces", vecspaces, vecspaces );
 
@@ -487,3 +487,44 @@ AddMorphismFunction( double_functor,
     return VectorSpaceMorphism( new_source, matr, new_range );
     
 end );
+
+V2;
+
+ApplyFunctor( double_functor, V2 );
+
+alpha2;
+
+ApplyFunctor( double_functor, alpha2 );
+
+quadruple_functor := PreCompose( double_functor, double_functor );
+
+ApplyFunctor( double_functor, V2 );
+
+ApplyFunctor( quadruple_functor, alpha2 );
+
+double_swap_components := NaturalTransformation( "double swap components", 
+                            double_functor, double_functor );
+
+AddNaturalTransformationFunction( double_swap_components,
+  
+  function( doubled_source, obj, doubled_range )
+    local zero_morphism, one_morphism;
+    
+    zero_morphism := ZeroMorphism( obj, obj );
+    
+    one_morphism := IdentityMorphism( obj );
+    
+    return MorphismBetweenDirectSums( [ [ zero_morphism, one_morphism ],
+                                        [ one_morphism, zero_morphism ] ] );
+    
+end );
+
+ApplyNaturalTransformation( double_swap_components, V2 );
+
+h_composition := HorizontalPreCompose( double_swap_components, double_swap_components );
+
+ApplyNaturalTransformation( h_composition, V2 );
+
+v_composition := VerticalPreCompose( double_swap_components, double_swap_components );
+
+ApplyNaturalTransformation( v_composition, V2 );

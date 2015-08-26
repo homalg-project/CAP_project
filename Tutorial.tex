@@ -322,3 +322,33 @@ and then again apply it to objects or morphisms.
 \begin{small}
 \input{GAP_tex/vecspaces_example/ApplyDoubleFunctor_main}
 \end{small}
+
+As said, since functors are morphisms, it is also possible to manipulate functors like morphisms. In the next example, we compose the double functor with itself
+to get a quadruble functor.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/QuadrupleFunctor_main}
+\end{small}
+
+Some functors are more important for applications than others. If some data structure is implemented in the \CapPkg setup, and if some functors are implemented
+in this setup, one might want them to work like methods, and does not want to use \texttt{ApplyFunctor} all the time. This is possible using the \texttt{InstallFunctor}
+command. The example also shows an interesting fact about the caching. Both the functor used with \texttt{ApplyFunctor} and the installed version use the same cache. This
+gives a bit more consistency and might save computation time. Also, it ensures the interchangeability of both ways of applying the functor.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/InstallFunctor_main}
+\end{small}
+
+At last, we want to show natural transformations in \CapPkg and the manipulation which is possible for them. For this, we create the natural transformation which
+swaps the components in the double functor, i.e., for some vector space $V$ it creates the morphism $V \oplus V \rightarrow V \oplus V$, $\left( x,y \right) \mapsto \left( y,x \right)$.
+A natural transformation only needs one function, which returns for an object the correct morphism.
+
+\input{GAP_tex/vecspaces_example/NaturalTrafo}
+
+Of course, we can apply the natural transformation to objects. But it is also possible to compute the vertical and the horizontal composition of natural transformations.
+In the next and last example we compute both the horizontal and the vertical composition of the natural transformation we created with itself. We leave it to the
+reader to verify the results.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/NaturalTrafoApply_main}
+\end{small}
