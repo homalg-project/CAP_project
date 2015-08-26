@@ -20,6 +20,14 @@ InstallMethod( LeftPresentations,
     
     SetIsAbelianCategory( category, true );
     
+    if IsCommutative( ring ) then
+      
+      SetIsSymmetricClosedMonoidalCategory( category, true );
+      
+      SetIsStrictMonoidalCategory( category, true );
+    
+    fi;
+    
     ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
     
     AddCategoryToFamily( category, "ModuleCategory" );
@@ -64,6 +72,14 @@ InstallMethod( RightPresentations,
     ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
     
     SetIsAbelianCategory( category, true );
+    
+    if IsCommutative( ring ) then
+      
+      SetIsSymmetricClosedMonoidalCategory( category, true );
+      
+      SetIsStrictMonoidalCategory( category, true );
+    
+    fi;
     
     AddCategoryToFamily( category, "ModuleCategory" );
     
@@ -139,7 +155,19 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
-    ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT( category );
+    if IsCommutative( category!.ring_for_representation_category ) then
+      
+      ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT( category );
+      
+      ADD_TENSOR_PRODUCT_ON_MORPHISMS( category );
+      
+      ADD_TENSOR_UNIT_LEFT( category );
+      
+      ADD_INTERNAL_HOM_ON_OBJECTS_LEFT( category );
+      
+      ADD_INTERNAL_HOM_ON_MORPHISMS_LEFT( category );
+      
+    fi;
     
 end );
 
@@ -178,7 +206,19 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
-    ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT( category );
+    if IsCommutative( category!.ring_for_representation_category ) then
+      
+      ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT( category );
+      
+      ADD_TENSOR_PRODUCT_ON_MORPHISMS( category );
+      
+      ADD_TENSOR_UNIT_RIGHT( category );
+      
+      ADD_INTERNAL_HOM_ON_OBJECTS_RIGHT( category );
+      
+      ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT( category );
+      
+    fi;
     
 end );
 
@@ -1044,4 +1084,151 @@ InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT,
         
     end );
     
+end );
+
+##
+InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_MORPHISMS,
+                      
+  function( category )
+    
+    AddTensorProductOnMorphisms( category,
+      
+      function( new_source, morphism_1, morphism_2, new_range )
+        
+        return PresentationMorphism( new_source, 
+                                     KroneckerMat( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) ),
+                                     new_range );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_TENSOR_UNIT_LEFT,
+                      
+  function( category )
+    
+    AddTensorUnit( category,
+      
+      function( )
+        local homalg_ring;
+        
+        homalg_ring := category!.ring_for_representation_category;
+        
+        return AsLeftPresentation( HomalgZeroMatrix( 0, 1, homalg_ring ) );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_TENSOR_UNIT_RIGHT,
+                      
+  function( category )
+    
+    AddTensorUnit( category,
+      
+      function( )
+        local homalg_ring;
+        
+        homalg_ring := category!.ring_for_representation_category;
+        
+        return AsRightPresentation( HomalgZeroMatrix( 1, 0, homalg_ring ) );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_INTERNAL_HOM_ON_OBJECTS_LEFT,
+                      
+  function( category )
+    
+    ## WARNING: The given function uses basic operations.
+    AddInternalHomOnObjects( category,
+      
+      function( object_1, object_2 )
+        
+        return Source( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( object_1, object_2 ) );
+    
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_INTERNAL_HOM_ON_OBJECTS_RIGHT,
+                      
+  function( category )
+    
+    ## WARNING: The given function uses basic operations.
+    AddInternalHomOnObjects( category,
+      
+      function( object_1, object_2 )
+        
+        return Source( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( object_1, object_2 ) );
+    
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_LEFT,
+                      
+  function( category )
+    
+    ## WARNING: The given function uses basic operations.
+    AddInternalHomOnMorphisms( category,
+      
+      function( new_source, morphism_1, morphism_2, new_range )
+        local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
+        
+        internal_hom_embedding_source := 
+          INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( Range( morphism_1 ), Source( morphism_2 ) );
+        
+        internal_hom_embedding_range :=
+          INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( Source( morphism_1 ), Range( morphism_2 ) );
+        
+        morphism_between_tensor_products := 
+          PresentationMorphism(
+            Range( internal_hom_embedding_source ),
+            KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
+            Range( internal_hom_embedding_range )
+          );
+        
+        return MonoAsKernelLift( internal_hom_embedding_range,
+                                 PreCompose( internal_hom_embedding_source, morphism_between_tensor_products ) );
+        
+    end );
+
+end );
+
+##
+InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
+                      
+  function( category )
+    
+    ## WARNING: The given function uses basic operations.
+    AddInternalHomOnMorphisms( category,
+      
+      function( new_source, morphism_1, morphism_2, new_range )
+        local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
+        
+        internal_hom_embedding_source := 
+          INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( Range( morphism_1 ), Source( morphism_2 ) );
+        
+        internal_hom_embedding_range :=
+          INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( Source( morphism_1 ), Range( morphism_2 ) );
+        
+        morphism_between_tensor_products := 
+          PresentationMorphism(
+            Range( internal_hom_embedding_source ),
+            KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
+            Range( internal_hom_embedding_range )
+          );
+        
+        return MonoAsKernelLift( internal_hom_embedding_range,
+                                 PreCompose( internal_hom_embedding_source, morphism_between_tensor_products ) );
+        
+    end );
+
 end );

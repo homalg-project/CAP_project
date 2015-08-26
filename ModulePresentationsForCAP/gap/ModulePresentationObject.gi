@@ -107,3 +107,72 @@ InstallMethod( FreeRightPresentation,
     return AsRightPresentation( HomalgZeroMatrix( rank, 0, homalg_ring ) );
     
 end );
+
+##############################################
+##
+## Non categorical methods
+##
+##############################################
+
+##
+InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT,
+                                  [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ],
+                                  
+  function( object_1, object_2 )
+    local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
+          free_module_source, free_module_range, differential;
+    
+    underlying_matrix_1 := UnderlyingMatrix( object_1 );
+    
+    transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
+    
+    identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
+    
+    differential_matrix := KroneckerMat( transposed_underlying_matrix_1, identity_matrix_2 );
+    
+    homalg_ring := UnderlyingHomalgRing( object_1 );
+    
+    free_module_source := FreeLeftPresentation( NrColumns( underlying_matrix_1 ), homalg_ring );
+    
+    free_module_range := FreeLeftPresentation( NrRows( underlying_matrix_1 ), homalg_ring );
+    
+    differential :=  PresentationMorphism( TensorProductOnObjects( free_module_source, object_2 ),
+                                           differential_matrix,
+                                           TensorProductOnObjects( free_module_range, object_2 )
+                                         );
+    
+    return KernelEmb( differential );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT,
+                                  [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ],
+                                  
+  function( object_1, object_2 )
+    local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
+          free_module_source, free_module_range, differential;
+    
+    underlying_matrix_1 := UnderlyingMatrix( object_1 );
+    
+    transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
+    
+    identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
+    
+    differential_matrix := KroneckerMat( transposed_underlying_matrix_1, identity_matrix_2 );
+    
+    homalg_ring := UnderlyingHomalgRing( object_1 );
+    
+    free_module_source := FreeRightPresentation( NrRows( underlying_matrix_1 ), homalg_ring );
+    
+    free_module_range := FreeRightPresentation( NrColumns( underlying_matrix_1 ), homalg_ring );
+    
+    differential :=  PresentationMorphism( TensorProductOnObjects( free_module_source, object_2 ),
+                                           differential_matrix,
+                                           TensorProductOnObjects( free_module_range, object_2 )
+                                         );
+    
+    return KernelEmb( differential );
+    
+end );
+
