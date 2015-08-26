@@ -189,7 +189,7 @@ We will now define the limits and colimits available in \CapPkg.
         $\beta_i \circ \pi_i  \sim_{P, B} \beta_j \circ \pi_j$ for all pairs $i,j$.
   \item a dependent function $u$ mapping each list of morphisms
         $\tau = ( \tau_i: T \rightarrow P_i )$ such that
-        $\beta_i \circ \tau_i  \sim_{P, B} \beta_j \circ \tau_j$ for all pairs $i,j$
+        $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$
         to a morphism $u( \tau ): T \rightarrow P$ such that
         $\pi_i \circ u( \tau ) \sim_{T, P_i} \tau_i$ for all $i = 1, \dots, n$.
  \end{enumerate}
@@ -270,14 +270,14 @@ We will now define the limits and colimits available in \CapPkg.
  A terminal object consists of two parts:
  \begin{enumerate}
   \item an object $T$,
-  \item a function $u$ mapping each object $A$ to a morphism $u( \tau ): A \rightarrow T$.
+  \item a function $u$ mapping each object $A$ to a morphism $u( A ): A \rightarrow T$.
  \end{enumerate}
- The pair $( T, u )$ is called a \textbf{terminal object} if the morphisms $u( \tau )$ are uniquely determined up to
+ The pair $( T, u )$ is called a \textbf{terminal object} if the morphisms $u( A )$ are uniquely determined up to
  congruence of morphisms.
 \end{definition}
 
 \begin{remark}
- The corresonding diagram $D$ is given by the unique functor $\empty \rightarrow \mathbf{A}$.
+ The correspondingding diagram $D$ is given by the unique functor $\empty \rightarrow \mathbf{A}$.
  Thus the source of a terminal object can be omited.
 \end{remark}
 
@@ -324,11 +324,11 @@ We now state the constructive definition.
   \item a list of morphisms $\pi = (\pi_i: S \rightarrow S_i)_{i = 1 \dots n}$,
   \item a list of morphisms $\iota = (\iota_i: S_i \rightarrow S)_{i = 1 \dots n}$,
   \item a dependent function $u_{\mathrm{in}}$ mapping every list $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$
-        to a morphism $u_{\mathrm{in}}: T \rightarrow S$ such that
-        $\pi_i \circ u_{\mathrm{in}} \sim_{T,S_i} \tau_i$ for all $i = 1, \dots, n$.
+        to a morphism $u_{\mathrm{in}}(\tau): T \rightarrow S$ such that
+        $\pi_i \circ u_{\mathrm{in}}(\tau) \sim_{T,S_i} \tau_i$ for all $i = 1, \dots, n$.
   \item a dependent function $u_{\mathrm{out}}$ mapping every list $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$
-        to a morphism $u_{\mathrm{out}}: S \rightarrow T$ such that
-        $u_{\mathrm{out}} \circ \iota_i \sim_{S_i, T} \tau_i$ for all $i = 1, \dots, n$,
+        to a morphism $u_{\mathrm{out}}(\tau): S \rightarrow T$ such that
+        $u_{\mathrm{out}}(\tau) \circ \iota_i \sim_{S_i, T} \tau_i$ for all $i = 1, \dots, n$,
  \end{enumerate}
  such that
  \begin{enumerate}
@@ -356,9 +356,9 @@ We now state the constructive definition.
   \item an object $I$,
   \item a morphism $c: A \rightarrow I$,
   \item a monomorphism $\iota: I \hookrightarrow B$ such that $\iota \circ c \sim_{A,B} \alpha$,
-  \item a dependent function $u$ mapping every pair of morphisms $\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )$
+  \item a dependent function $u$ mapping each pair of morphisms $\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )$
   where $\tau_2$ is a monomorphism
-  such that $\tau_2 \circ \tau_1 \sim_{A,T} \alpha$ to a morphism
+  such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$ to a morphism
   $u(\tau): I \rightarrow T$ such that
   $\tau_2 \circ u(\tau) \sim_{I,B} \iota$ and $u(\tau) \circ c \sim_{A,T} \tau_1$.
  \end{enumerate}
@@ -368,21 +368,13 @@ We now state the constructive definition.
 
 \subsection{Coimage}
 
-% #! Let $\alpha: A \rightarrow B$ be a morphism. The image of $\alpha$ is
-% #! the smallest monomorphism $\iota: I \hookrightarrow B$ through which $\alpha$ factors, i.e.,
-% #! such that there exists a morphism $c: A \rightarrow I$ with $\iota \circ c = \alpha$.
-% #! Smallest in this context means that for every other factorization of $\alpha = \tau_2 \circ \tau_1$
-% #! with $\tau_1: A \rightarrow T, \tau_2: T \rightarrow B$
-% #! where $\tau_2$ is a monomorphism, there exists a unique morphism $u: I \rightarrow T$
-% #! such that $\iota = \tau_2 \circ u$ and $\tau_1 = u \circ c$.
-
 \begin{definition}
  For a given morphism $\alpha: A \rightarrow B$, a coimage of $\alpha$ consists of four parts:
  \begin{enumerate}
   \item an object $C$,
   \item an epimorphism $\pi: A \twoheadrightarrow C$,
   \item a morphism $a: C \rightarrow B$ such that $a \circ \pi \sim_{A,B} \alpha$,
-  \item a dependent function $u$ mapping every pair of morphisms $\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )$
+  \item a dependent function $u$ mapping each pair of morphisms $\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )$
   where $\tau_1$ is an epimorphism
   such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$ to a morphism
   $u(\tau): T \rightarrow C$ such that
@@ -394,6 +386,178 @@ We now state the constructive definition.
 
 
 
-\section{Monoidal Categories}
+\section{Categories with more Structure}
+
+\CapPkg supports various notions of categories with additional structure.
+If we want to implement such categories, we set the corresponding
+\GAP properties to true right after the call of the constructor
+\texttt{CreateCapCategory}.
+
+\subsection{Categories Enriched over Commutative Regular Semigroups}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsEnrichedOverCommutativeRegularSemigroup}.  
+ \end{center}
+\end{documentation}
+
+
+\subsection{Ab-Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsAbCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ A category $\mathbf{C}$ enriched over abelian groups is called an \textbf{$\mathbf{Ab}$-category}, i.e.,
+ every set of homomorphisms is equipped with a structure of an abelian group
+ such that composition is bilinear.
+\end{definition}
+
+Basic operations for $\mathbf{Ab}$-categories coming from the existenial quantifiers
+in the definition.
+\begin{itemize}
+ \item \texttt{ZeroMorphism}
+ \item \texttt{IsZeroForMorphisms}
+ \item \texttt{AdditionForMorphisms}
+ \item \texttt{AdditiveInverseForMorphisms}
+\end{itemize}
+
+\subsection{Additive Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsAdditiveCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ An $\mathbf{Ab}$-category $\mathbf{C}$ is called \textbf{additive}
+ if it has a zero object and direct sums for all pairs of objects.
+\end{definition}
+
+Basic operations for additive categories coming from the existenial quantifiers
+in the definition
+(in addition to the basic operations for $\mathbf{Ab}$-categories):
+\begin{itemize}
+ \item \texttt{ZeroObject}
+ \item \texttt{UniversalMorphismFromZeroObject}
+ \item \texttt{UniversalMorphismIntoZeroObject}
+ \item \texttt{DirectSum}
+ \item \texttt{ProjectionInFactorOfDirectSum}
+ \item \texttt{InjectionOfCofactorOfDirectSum}
+ \item \texttt{UniversalMorphismIntoDirectSum}
+ \item \texttt{UniversalMorphismFromDirectSum}
+\end{itemize}
+
+
+\subsection{Preabelian Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsPreAbelianCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}
+ An additive category $\mathbf{C}$ is called \textbf{preabelian} 
+ if it has kernels and cokernels for every morphism.
+\end{definition}
+
+Basic operations for preadditive categories coming from the existenial quantifiers
+in the definition
+(in addition to the basic operations for additive categories):
+\begin{itemize}
+ \item \texttt{KernelObject}
+ \item \texttt{KernelEmb}
+ \item \texttt{KernelLift}
+ \item \texttt{Cokernel}
+ \item \texttt{CokernelProj}
+ \item \texttt{CokernelColift}
+\end{itemize}
+
+
+\subsection{Abelian Categories}[\cite{MLCWM}]
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsAbelianCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}
+ A preabelian category $\mathbf{C}$ is called \textbf{abelian}
+ if every monomorphism can be regarded as a kernel embedding
+ and every epimorphism can be regarded cokernel projection.
+\end{definition}
+
+Basic operations for abelian categories coming from the existenial quantifiers
+in the definition
+(in addition to the basic operations for preabelian categories):
+\begin{itemize}
+ \item \texttt{MonoAsKernelLift}
+ \item \texttt{EpiAsCokernelColift}
+\end{itemize}
+
+\subsection{Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\subsection{Braided Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsBraidedMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\subsection{Symmetric Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsSymmetricMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\subsection{Symmetric Closed Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsSymmetricClosedMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\subsection{Rigid Symmetric Closed Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsRigidSymmetricClosedMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\subsection{Strict Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsStrictMonoidalCategory}.  
+ \end{center}
+\end{documentation}
 
 \section{Derivations}\label{section:derivations}
