@@ -21,7 +21,7 @@ DeclareCategory( "IsSerreQuotientCategoryByThreeArrowsMorphism",
 ##
 ##############################################
 
-DeclareFilter( "WasCreatedAsSerreQuotientCategory" );
+DeclareFilter( "WasCreatedAsSerreQuotientCategoryByThreeArrows" );
 
 DeclareAttribute( "SubcategoryMembershipTestFunctionForSerreQuotient",
                   IsCapCategory );

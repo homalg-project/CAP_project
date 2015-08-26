@@ -5,3 +5,4 @@ ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategoryByCos
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotients.gd");
 
+ReadPackage( "GeneralizedMorphismsForCAP", "gap/Switcher.gd");

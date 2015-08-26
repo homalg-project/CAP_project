@@ -412,7 +412,7 @@ InstallMethodWithCacheFromObject( AsSerreQuotientByThreeArrowsObject,
 end );
 
 InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrowsMorphism,
-                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsGeneralizedMorphism ],
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsGeneralizedMorphismByThreeArrows ],
                                   
   function( serre_category, gen_morphism )
     local honest_category, serre_morphism;
@@ -442,7 +442,7 @@ InstallMethod( SerreQuotientCategoryByThreeArrowsMorphism,
                                   
   function( serre_category, source_aid, associated, range_aid )
     
-    return SerreQuotientCategoryByThreeArrowsMorphism( serre_category, GeneralizedMorphism( source_aid, associated, range_aid ) );
+    return SerreQuotientCategoryByThreeArrowsMorphism( serre_category, GeneralizedMorphismByThreeArrows( source_aid, associated, range_aid ) );
     
 end );
 
@@ -451,16 +451,16 @@ InstallMethod( SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid,
                                   
   function( serre_category, source_aid, associated )
     
-    return SerreQuotientCategoryByThreeArrowsMorphism( serre_category, GeneralizedMorphismWithSourceAid( source_aid, associated ) );
+    return SerreQuotientCategoryByThreeArrowsMorphism( serre_category, GeneralizedMorphismByThreeArrowsWithSourceAid( source_aid, associated ) );
     
 end );
 
 InstallMethod( SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid,
-               [ IsCapCategory and WasCreatedAsSerreQuotientCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( serre_category, associated, range_aid )
     
-    return SerreQuotientCategoryByThreeArrowsMorphism( serre_category, GeneralizedMorphismWithRangeAid( associated, range_aid ) );
+    return SerreQuotientCategoryByThreeArrowsMorphism( serre_category, GeneralizedMorphismByThreeArrowsWithRangeAid( associated, range_aid ) );
     
 end );
 
@@ -469,6 +469,6 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByThreeArrowsMorphism,
                                   
   function( serre_category, associated )
     
-    return SerreQuotientCategoryByThreeArrowsMorphism( serre_category, AsGeneralizedMorphism( associated ) );
+    return SerreQuotientCategoryByThreeArrowsMorphism( serre_category, AsGeneralizedMorphismByThreeArrows( associated ) );
     
 end );

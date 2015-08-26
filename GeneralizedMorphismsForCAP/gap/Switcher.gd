@@ -3,7 +3,7 @@
 BindGlobal( "SwitchGeneralizedMorphismStandard",
   
   function( type )
-    local generalized_morphism_translation_list;
+    local generalized_morphism_translation_list, i;
     
     if IsString( type ) then
         if LowercaseString( type ) = "threearrow" then
@@ -25,14 +25,13 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
       [ "GeneralizedMorphismObject", "GeneralizedMorphismByThreeArrowsObject", "GeneralizedMorphismByCospanObject" ],
       [ "AsGeneralizedMorphism", "AsGeneralizedMorphismByThreeArrows", "AsGeneralizedMorphismByCospan" ],
       [ "GeneralizedInverse", "GeneralizedInverseByThreeArrows", "GeneralizedInverseByCospan" ],
-      [ "MorphismFromFactorToSubobject", "MorphismFromFactorToSubobjectByThreeArrows", "MorphismFromFactorToSubobjectByCospan" ],
+      [ "GeneralizedMorphismFromFactorToSubobject", "GeneralizedMorphismFromFactorToSubobjectByThreeArrows", "GeneralizedMorphismFromFactorToSubobjectByCospan" ],
       [ "IdempotentDefinedBySubobject", "IdempotentDefinedBySubobjectByThreeArrows", "IdempotentDefinedBySubobjectByCospan" ],
       # Serre Quotient
       [ "AsSerreQuotientObject", "AsSerreQuotientByThreeArrowsObject" ],
       [ "SerreQuotientCategory", "SerreQuotientCategoryByThreeArrows" ],
       [ "SerreQuotientCategoryMorphism", "SerreQuotientCategoryByThreeArrowsMorphism" ],
       [ "AsSerreQuotientCategoryMorphism", "AsSerreQuotientCategoryByThreeArrowsMorphism" ] ];
-      ];
     
     for i in generalized_morphism_translation_list do
         
