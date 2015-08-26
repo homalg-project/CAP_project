@@ -84,7 +84,7 @@ DeclareOperation( "AsSerreQuotientCategoryByThreeArrowsObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
 DeclareOperation( "SerreQuotientCategoryByThreeArrowsMorphism",
-                  [ IsCapCategory, IsGeneralizedMorphism ] );
+                  [ IsCapCategory, IsGeneralizedMorphismByThreeArrows ] );
 
 DeclareOperation( "SerreQuotientCategoryByThreeArrowsMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );

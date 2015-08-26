@@ -15,13 +15,13 @@ BindGlobal( "TheTypeOfGeneralizedMorphismCategoryByThreeArrowsObject",
         NewType( TheFamilyOfCapCategoryObjects,
                 IsGeneralizedMorphismCategoryByThreeArrowsObjectRep ) );
 
-DeclareRepresentation( "IsGeneralizedMorphismRep",
-                       IsCapCategoryMorphismRep and IsGeneralizedMorphism,
+DeclareRepresentation( "IsGeneralizedMorphismByThreeArrowsRep",
+                       IsCapCategoryMorphismRep and IsGeneralizedMorphismByThreeArrows,
                        [ ] );
 
 BindGlobal( "TheTypeOfGeneralizedMorphism",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsGeneralizedMorphismRep ) );
+                IsGeneralizedMorphismByThreeArrowsRep ) );
 
 ####################################
 ##
@@ -361,7 +361,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
-    SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismByThreeArrowsCategoryByThreeArrows );
+    SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryByThreeArrows );
     
     Finalize( generalized_morphism_category );
     
@@ -492,7 +492,7 @@ end );
 ####################################
 
 InstallMethod( HonestRepresentative,
-               [ IsGeneralizedMorphism ],
+               [ IsGeneralizedMorphismByThreeArrows ],
                
   function( generalized_morphism )
     
@@ -510,7 +510,7 @@ end );
 ###########################
 
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphism ],
+               [ IsGeneralizedMorphismByThreeArrows ],
                  
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, pushout_diagram, composition, codomain, pullback_diagram, domain, associated_morphism;
@@ -550,8 +550,8 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphism and HasHonestRange ],
-                 
+               [ IsGeneralizedMorphismByThreeArrows and HasHonestRange ],
+               
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, domain, pushout_diagram, associated_morphism, codomain;
     
@@ -583,7 +583,7 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphism and HasHonestSource ],
+               [ IsGeneralizedMorphismByThreeArrows and HasHonestSource ],
                  
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, codomain, pullback_diagram, domain, associated_morphism;
@@ -616,7 +616,7 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphism
+               [ IsGeneralizedMorphismByThreeArrows
                  and HasHonestSource
                  and HasHonestRange ],
                  
@@ -633,7 +633,7 @@ MakeReadWriteGlobal( "Domain" );
 
 Domain := function( arg )
   
-  if Length( arg ) = 1 and IsGeneralizedMorphism( arg[1] ) then
+  if Length( arg ) = 1 and IsGeneralizedMorphismByThreeArrows( arg[1] ) then
       
       return DomainOp( arg[ 1 ] );
       
@@ -646,7 +646,7 @@ end;
 MakeReadOnlyGlobal( "Domain" );
 
 InstallMethod( DomainOp,
-               [ IsGeneralizedMorphism ],
+               [ IsGeneralizedMorphismByThreeArrows ],
                
   function( generalized_morphism )
     local domain;
@@ -660,7 +660,7 @@ InstallMethod( DomainOp,
 end );
 
 InstallMethod( AssociatedMorphism,
-               [ IsGeneralizedMorphism ],
+               [ IsGeneralizedMorphismByThreeArrows ],
                
   function( generalized_morphism )
     
@@ -669,7 +669,7 @@ InstallMethod( AssociatedMorphism,
 end );
 
 InstallMethod( Codomain,
-               [ IsGeneralizedMorphism ],
+               [ IsGeneralizedMorphismByThreeArrows ],
                
   function( generalized_morphism )
     local codomain;
@@ -698,13 +698,13 @@ InstallMethod( CommonRestriction,
 end );
 
 InstallMethodWithCacheFromObject( CommonRestrictionOp,
-                                  [ IsList, IsGeneralizedMorphismRep ],
+                                  [ IsList, IsGeneralizedMorphismByThreeArrows ],
                                   
   function( morphism_list, cacher )
     local test_source, source_aid_list, associated_compose_list,
           current_pullback_left, current_pullback_right, i, j;
     
-    if not ForAll( morphism_list, IsGeneralizedMorphism ) then
+    if not ForAll( morphism_list, IsGeneralizedMorphismByThreeArrows ) then
         
         TryNextMethod();
         
@@ -784,13 +784,13 @@ InstallMethod( CommonCoastriction,
 end );
 
 InstallMethodWithCacheFromObject( CommonCoastrictionOp,
-                                  [ IsList, IsGeneralizedMorphismRep ],
+                                  [ IsList, IsGeneralizedMorphismByThreeArrows ],
                                   
   function( morphism_list, cacher )
     local test_range, codomain_list, associated_compose_list,
           current_pushout_left, current_pushout_right, i, j;
     
-    if not ForAll( morphism_list, IsGeneralizedMorphism ) then
+    if not ForAll( morphism_list, IsGeneralizedMorphismByThreeArrows ) then
         
         TryNextMethod();
         
@@ -865,7 +865,7 @@ end : ArgumentNumber := 2 );
 ## than pullbacks.
 ##
 InstallMethod( PseudoInverse,
-               [ IsGeneralizedMorphism
+               [ IsGeneralizedMorphismByThreeArrows
                  and HasHonestRange ],
                  
   function( generalized_morphism )
@@ -876,7 +876,7 @@ InstallMethod( PseudoInverse,
 end );
 
 InstallMethod( PseudoInverse,
-               [ IsGeneralizedMorphism ],
+               [ IsGeneralizedMorphismByThreeArrows ],
                  
   function( generalized_morphism )
     local source_aid, factor1, factor2;
@@ -894,7 +894,7 @@ InstallMethod( PseudoInverse,
 end );
 
 InstallMethod( PseudoInverse,
-               [ IsGeneralizedMorphism
+               [ IsGeneralizedMorphismByThreeArrows
                  and HasHonestSource ],
                
   function( generalized_morphism )

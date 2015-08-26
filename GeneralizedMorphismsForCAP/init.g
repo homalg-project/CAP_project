@@ -1,5 +1,5 @@
 
-ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategory.gd");
+ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategoryByThreeArrows.gd");
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategoryByCospans.gd");
 

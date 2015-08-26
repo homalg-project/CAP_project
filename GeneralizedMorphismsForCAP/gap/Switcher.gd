@@ -32,8 +32,6 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
       [ "SerreQuotientCategory", "SerreQuotientCategoryByThreeArrows" ],
       [ "SerreQuotientCategoryMorphism", "SerreQuotientCategoryByThreeArrowsMorphism" ],
       [ "AsSerreQuotientCategoryMorphism", "AsSerreQuotientCategoryByThreeArrowsMorphism" ] ];
-      
-      
       ];
     
     for i in generalized_morphism_translation_list do
@@ -48,4 +46,4 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
     
 end );
 
-SwitchGeneralizedMorphismStandard( "cospan" );
+SwitchGeneralizedMorphismStandard( "threearrow" );

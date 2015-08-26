@@ -12,7 +12,7 @@
 DeclareCategory( "IsGeneralizedMorphismCategoryByThreeArrowsObject",
                  IsCapCategoryObject );
 
-DeclareCategory( "IsGeneralizedMorphism",
+DeclareCategory( "IsGeneralizedMorphismByThreeArrows",
                  IsCapCategoryMorphism );
 
 ####################################
@@ -52,23 +52,23 @@ DeclareAttributeWithToDoForIsWellDefined( "GeneralizedMorphismByThreeArrowsObjec
 DeclareAttribute( "UnderlyingHonestObject",
                   IsGeneralizedMorphismCategoryByThreeArrowsObject );
 
-DeclareOperation( "GeneralizedMorphism",
+DeclareOperation( "GeneralizedMorphismByThreeArrows",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "GeneralizedMorphismWithSourceAid",
+DeclareOperation( "GeneralizedMorphismByThreeArrowsWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "GeneralizedMorphismWithRangeAid",
+DeclareOperation( "GeneralizedMorphismByThreeArrowsWithRangeAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareAttributeWithToDoForIsWellDefined( "AsGeneralizedMorphismByThreeArrows",
                                           IsCapCategoryMorphism );
 
-DeclareOperation( "GeneralizedMorphismFromFactorToSubobject",
+DeclareOperation( "GeneralizedMorphismFromFactorToSubobjectByThreeArrows",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
-                                          IsGeneralizedMorphism );
+                                          IsGeneralizedMorphismByThreeArrows );
 
 DeclareOperation( "CommonRestriction",
                   [ IsList ] );
@@ -89,28 +89,28 @@ DeclareOperation( "CommonCoastrictionOp",
 ####################################
 
 DeclareAttributeWithToDoForIsWellDefined( "SourceAid",
-                                          IsGeneralizedMorphism );
+                                          IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "RangeAid",
-                                          IsGeneralizedMorphism );
+                                          IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "MorphismAid",
-                                          IsGeneralizedMorphism );
+                                          IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "DomainOp",
-                                          IsGeneralizedMorphism );
+                                          IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "Codomain",
-                                          IsGeneralizedMorphism );
+                                          IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "AssociatedMorphism",
-                                          IsGeneralizedMorphism );
+                                          IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "DomainAssociatedMorphismCodomainTriple",
-                                          IsGeneralizedMorphism );
+                                          IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "PseudoInverse",
-                                          IsGeneralizedMorphism );
+                                          IsGeneralizedMorphismByThreeArrows );
 
 ##
 ## When calling this method on a generalized morphism, the effect
@@ -119,13 +119,13 @@ DeclareAttributeWithToDoForIsWellDefined( "GeneralizedInverseByThreeArrows",
                                           IsCapCategoryMorphism );
 
 DeclareProperty( "IsHonest",
-                  IsGeneralizedMorphism );
+                  IsGeneralizedMorphismByThreeArrows );
 
 DeclareProperty( "HasHonestSource",
-                  IsGeneralizedMorphism );
+                  IsGeneralizedMorphismByThreeArrows );
 
 DeclareProperty( "HasHonestRange",
-                  IsGeneralizedMorphism );
+                  IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttribute( "SubcategoryMembershipFunctionForGeneralizedMorphismCategoryByThreeArrows",
                   IsCapCategory );
@@ -144,9 +144,9 @@ InstallTrueMethod( HasHonestSource, IsHonest );
 ##
 ####################################
 
-DeclareAttribute( "IdempotentDefinedBySubobject",
+DeclareAttribute( "IdempotentDefinedBySubobjectByThreeArrows",
                   IsCapCategoryMorphism );
 
-DeclareAttribute( "IdempotentDefinedByFactorobject",
+DeclareAttribute( "IdempotentDefinedByFactorobjectByThreeArrows",
                   IsCapCategoryMorphism );
 

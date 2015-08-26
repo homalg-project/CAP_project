@@ -64,6 +64,15 @@ DeclareAttribute( "NormalizedCospan",
 ##
 ####################################
 
+DeclareOperation( "GeneralizedMorphismFromFactorToSubobjectByCospan",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+####################################
+##
+## Constructors
+##
+####################################
+
 DeclareOperation( "GeneralizedMorphismByCospan",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
