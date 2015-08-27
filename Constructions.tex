@@ -418,7 +418,7 @@ If we want to implement such categories, we set the corresponding
  such that composition is bilinear.
 \end{definition}
 
-Basic operations for $\mathbf{Ab}$-categories coming from the existenial quantifiers
+Basic operations for $\mathbf{Ab}$-categories coming from the existential quantifiers
 in the definition.
 \begin{itemize}
  \item \texttt{ZeroMorphism}
@@ -441,7 +441,7 @@ in the definition.
  if it has a zero object and direct sums for all pairs of objects.
 \end{definition}
 
-Basic operations for additive categories coming from the existenial quantifiers
+Basic operations for additive categories coming from the existential quantifiers
 in the definition
 (in addition to the basic operations for $\mathbf{Ab}$-categories):
 \begin{itemize}
@@ -470,7 +470,7 @@ in the definition
  if it has kernels and cokernels for every morphism.
 \end{definition}
 
-Basic operations for preadditive categories coming from the existenial quantifiers
+Basic operations for preadditive categories coming from the existential quantifiers
 in the definition
 (in addition to the basic operations for additive categories):
 \begin{itemize}
@@ -498,7 +498,7 @@ in the definition
  and every epimorphism can be regarded cokernel projection.
 \end{definition}
 
-Basic operations for abelian categories coming from the existenial quantifiers
+Basic operations for abelian categories coming from the existential quantifiers
 in the definition
 (in addition to the basic operations for preabelian categories):
 \begin{itemize}
@@ -515,6 +515,63 @@ in the definition
  \end{center}
 \end{documentation}
 
+\begin{definition}[\cite{MLCWM}]
+ A $6$-tuple $( \mathbf{C}, \otimes, 1, \alpha, \lambda, \rho )$
+ consisting of 
+ \begin{itemize}
+  \item a category $\mathbf{C}$, 
+  \item a functor $\otimes: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}$,
+  \item an object $1 \in \mathbf{C}$, 
+  \item a natural isomorphism $\alpha_{a,b,c}: a \otimes (b \otimes c) \cong (a \otimes b) \otimes c$,
+  \item a natural isomorphism $\lambda_{a}: 1 \otimes a \cong a$, 
+  \item a natural isomorphism $\rho_{a}: a \otimes 1 \cong a$,
+ \end{itemize}
+ is called a \textbf{monoidal category} if the pentagonal diagram
+ \begin{center} 
+ \begin{tikzpicture}[commutative diagrams/every diagram]
+\node (P0) at (90:2.8cm) {$ a \otimes ( b \otimes ( c \otimes d ) )$};
+\node (P1) at (90+72:2.5cm) {$a \otimes ( ( b \otimes c ) \otimes d )$} ;
+\node (P2) at (90+2*72:2.5cm) {\makebox[5ex][r]{$( a \otimes ( b \otimes c ) ) \otimes d$}};
+\node (P3) at (90+3*72:2.5cm) {\makebox[5ex][l]{$((a \otimes b) \otimes c) \otimes d$}};
+\node (P4) at (90+4*72:2.5cm) {$( a \otimes b ) \otimes ( c \otimes d )$};
+\path[commutative diagrams/.cd, every arrow, every label]
+(P0) edge node[swap] {$\id \otimes \alpha_{b,c,d}$} (P1)
+(P1) edge node[swap] {$\alpha_{a, b \otimes c, d}$} (P2)
+(P2) edge node {$\alpha_{a,b,c} \otimes \id$} (P3)
+(P4) edge node {$\alpha_{a \otimes b, c, d}$} (P3)
+(P0) edge node {$\alpha_{a,b,c \otimes d}$} (P4);
+\end{tikzpicture}
+\end{center}
+
+and the triangular diagram
+
+ \begin{center}
+  \begin{tikzcd}
+  a \otimes (1 \otimes c) \arrow{r}{\alpha_{a,1,c}} \arrow{dr}[description]{\id \otimes \lambda_{c}}
+  &(a \otimes 1) \otimes c \arrow{d}[right]{\rho_{a} \otimes \id} \\
+  &a \otimes c
+  \end{tikzcd}
+ \end{center}
+
+commute.
+\end{definition}
+
+Basic operations for monoidal categories coming from the existential quantifiers
+in the definition:
+\begin{itemize}
+ \item \texttt{TensorProductOnObjects}
+ \item \texttt{TensorProductOnMorphisms}
+ \item \texttt{TensorUnit}
+ \item \texttt{AssociatorLeftToRight}
+ \item \texttt{AssociatorRightToLeft}
+ \item \texttt{LeftUnitor}
+ \item \texttt{LeftUnitorInverse}
+ \item \texttt{RightUnitor}
+ \item \texttt{RightUnitorInverse}
+ 
+\end{itemize}
+
+
 \subsection{Braided Monoidal Categories}
 
 \begin{documentation}
@@ -523,6 +580,51 @@ in the definition
   \texttt{IsBraidedMonoidalCategory}.  
  \end{center}
 \end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ A monoidal category $\mathbf{C}$ equipped with a natural isomorphism
+ \[
+  B_{a,b}: a \otimes b \cong b \otimes a
+ \]
+ is called a \textbf{braided monoidal category}
+ if the following diagrams commute:
+ 
+ \begin{itemize}
+  \item Compatibility with the tensor unit:
+  \begin{center}
+    \begin{tikzcd}
+    a \otimes 1 \arrow{r}{B_{a,1}} \arrow{dr}[left]{\rho_a} & 1 \otimes a \arrow{d}{\lambda_a} \\
+    & a
+    \end{tikzcd}
+  \end{center}
+ 
+  \item Swapping $b,c$ in the term $(a \otimes b) \otimes c$:
+  \begin{center}
+    \begin{tikzcd}
+    (a \otimes b) \otimes c \arrow{r}{B} \arrow{d}{\alpha^{-1}} & c \otimes ( a \otimes b ) \arrow{d}{\alpha} \\
+    a \otimes ( b \otimes c ) \arrow{d}{\id \otimes B} & ( c \otimes a ) \otimes b \arrow{d}{B \otimes \id} \\
+    a \otimes ( c \otimes b ) \arrow{r}{\alpha} & ( a \otimes c ) \otimes b
+    \end{tikzcd}
+  \end{center}
+  
+  \item Swapping $a,b$ in the term $a \otimes (b \otimes c)$:
+  \begin{center}
+    \begin{tikzcd}
+    a \otimes ( b \otimes c ) \arrow{r}{B} \arrow{d}{\alpha} & ( b \otimes c ) \otimes a \arrow{d}{\alpha^{-1}} \\
+    ( a \otimes b ) \otimes c \arrow{d}{B \otimes \id} & b \otimes ( c \otimes a ) \arrow{d}{\id \otimes B} \\
+    ( b \otimes a ) \otimes c \arrow{r}{\alpha} & b \otimes ( a \otimes c )
+    \end{tikzcd}
+  \end{center}
+ \end{itemize}
+\end{definition}
+
+Basic operations for braided monoidal categories coming from the existential quantifiers
+in the definition
+(in addition to the basic operations for monoidal categories):
+\begin{itemize}
+ \item \texttt{Braiding}
+ \item \texttt{BraidingInverse}
+\end{itemize}
 
 \subsection{Symmetric Monoidal Categories}
 
@@ -533,6 +635,12 @@ in the definition
  \end{center}
 \end{documentation}
 
+\begin{definition}[\cite{MLCWM}]
+ A braided monoidal category $\mathbf{C}$ is called \textbf{symmetric monoidal category}
+ if $B_{a,b}^{-1} = B_{b,a}$.
+\end{definition}
+
+
 \subsection{Symmetric Closed Monoidal Categories}
 
 \begin{documentation}
@@ -541,6 +649,30 @@ in the definition
   \texttt{IsSymmetricClosedMonoidalCategory}.  
  \end{center}
 \end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ A symmetric monoidal category $\mathbf{C}$
+ which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
+ a right adjoint (denoted by $\underline{\Hom}(b,-)$)
+ is called a \textbf{symmetric closed monoidal category} or simply \textbf{closed category}.
+\end{definition}
+
+\begin{remark}
+ The family of right adjoints defines a bifunctor
+ $\underline{\Hom}(-,-): \mathbf{C}^{\mathrm{op}} \times \mathbf{C} \rightarrow \mathbf{C}$
+ which we consider as a part of the datum of a closed category.
+\end{remark}
+
+
+Basic operations for symmetric closed monoidal categories coming from the existential quantifiers
+in the definition
+(in addition to the basic operations for symmetric monoidal categories):
+\begin{itemize}
+  \item \texttt{InternalHomOnObjects}
+  \item \texttt{InternalHomOnMorphisms}
+  \item \texttt{EvaluationMorphism}
+  \item \texttt{CoevaluationMorphism}
+\end{itemize}
 
 \subsection{Rigid Symmetric Closed Monoidal Categories}
 
