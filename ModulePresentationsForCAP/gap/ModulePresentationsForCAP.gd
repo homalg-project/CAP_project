@@ -53,6 +53,10 @@ DeclareGlobalFunction( "ADD_INTERNAL_HOM_ON_OBJECTS_LEFT" );
 
 DeclareGlobalFunction( "ADD_INTERNAL_HOM_ON_MORPHISMS_LEFT" );
 
+DeclareGlobalFunction( "ADD_BRAIDING_LEFT" );
+
+DeclareGlobalFunction( "ADD_EVALUATION_MORPHISM_LEFT" );
+
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
 
@@ -81,6 +85,10 @@ DeclareGlobalFunction( "ADD_TENSOR_UNIT_RIGHT" );
 DeclareGlobalFunction( "ADD_INTERNAL_HOM_ON_OBJECTS_RIGHT" );
 
 DeclareGlobalFunction( "ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT" );
+
+DeclareGlobalFunction( "ADD_BRAIDING_RIGHT" );
+
+DeclareGlobalFunction( "ADD_EVALUATION_MORPHISM_RIGHT" );
 
 
 DeclareGlobalFunction( "ADD_IS_WELL_DEFINED_FOR_OBJECTS" );
