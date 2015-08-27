@@ -57,6 +57,8 @@ DeclareGlobalFunction( "ADD_BRAIDING_LEFT" );
 
 DeclareGlobalFunction( "ADD_EVALUATION_MORPHISM_LEFT" );
 
+DeclareGlobalFunction( "ADD_COEVALUATION_MORPHISM_LEFT" );
+
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
 
@@ -89,6 +91,8 @@ DeclareGlobalFunction( "ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT" );
 DeclareGlobalFunction( "ADD_BRAIDING_RIGHT" );
 
 DeclareGlobalFunction( "ADD_EVALUATION_MORPHISM_RIGHT" );
+
+DeclareGlobalFunction( "ADD_COEVALUATION_MORPHISM_RIGHT" );
 
 
 DeclareGlobalFunction( "ADD_IS_WELL_DEFINED_FOR_OBJECTS" );

@@ -69,8 +69,6 @@ InstallMethod( RightPresentations,
     
     category!.ring_for_representation_category := ring;
     
-    ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
-    
     SetIsAbelianCategory( category, true );
     
     if IsCommutative( ring ) then
@@ -80,6 +78,8 @@ InstallMethod( RightPresentations,
       SetIsStrictMonoidalCategory( category, true );
     
     fi;
+    
+    ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
     
     AddCategoryToFamily( category, "ModuleCategory" );
     
@@ -171,6 +171,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
       
       ADD_EVALUATION_MORPHISM_LEFT( category );
       
+      ADD_COEVALUATION_MORPHISM_LEFT( category );
+      
     fi;
     
 end );
@@ -225,6 +227,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
       ADD_BRAIDING_RIGHT( category );
       
       ADD_EVALUATION_MORPHISM_RIGHT( category );
+      
+      ADD_COEVALUATION_MORPHISM_RIGHT( category );
       
     fi;
     
@@ -427,7 +431,9 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
     
     AddLift( category,
       
-      function( alpha, beta )
+        ## TODO: Reference for the conventions for Lift
+#       function( alpha, beta )
+        function( beta, alpha )
         local lift;
         
         lift := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( alpha ) ) );
@@ -1296,7 +1302,7 @@ InstallGlobalFunction( ADD_BRAIDING_RIGHT,
                               );
         
         return PresentationMorphism( object_1_tensored_object_2,
-                                     HomalgMatrix( permutation_matrix, rank, rank, homalg_ring ),
+                                     Involution( HomalgMatrix( permutation_matrix, rank, rank, homalg_ring ) ), ## transposed of the left case
                                      object_2_tensored_object_1 );
         
     end );
@@ -1382,7 +1388,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_RIGHT,
         
         morphism := TensorProductOnMorphisms( morphism, IdentityMorphism( object_1 ) );
         
-        ## Computation of F^{\vee} \otimes F \rightarrow 1
+        ## Construction of F^{\vee} \otimes F \rightarrow 1
         row := [ ];
         
         zero_row := List( [ 1 .. rank_1 ], i -> 0 );
@@ -1415,8 +1421,117 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_RIGHT,
     
 end );
 
+##
+InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
+  
+  function( category )
+    
+    AddCoevaluationMorphism( category,
+      
+      function( object_1, object_2, internal_hom )
+        local homalg_ring, object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
+              row, zero_row, i, matrix, rank_1, lifted_coevaluation;
+        
+        homalg_ring := category!.ring_for_representation_category;
+        
+        object_1_tensored_object_2 := TensorProductOnObjects( object_1, object_2 );
+        
+        internal_hom_embedding := INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( object_2, object_1_tensored_object_2 );
+        
+        rank_2 := NrColumns( UnderlyingMatrix( object_2 ) );
+        
+        free_module := FreeLeftPresentation( rank_2, homalg_ring );
+        
+        morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_1_tensored_object_2 ) );
+        
+        ## Construction of 1 \rightarrow F \otimes F^{\vee}
+        
+        row := [ ];
+        
+        zero_row := List( [ 1 .. rank_2 ], i -> 0 );
+        
+        for i in [ 1 .. rank_2 - 1 ] do
+          
+          Add( row, 1 );
+          
+          Append( row, zero_row );
+          
+        od;
+        
+        if rank_2 > 0 then 
+          
+          Add( row, 1 );
+          
+        fi;
+        
+        matrix := HomalgMatrix( row, 1, rank_2 * rank_2, homalg_ring );
+        
+        rank_1 := NrColumns( UnderlyingMatrix( object_1 ) );
+        
+        matrix := KroneckerMat( HomalgIdentityMatrix( rank_1, homalg_ring ), matrix );
+        
+        lifted_coevaluation := PresentationMorphism( object_1, matrix, Range( morphism ) );
+        
+        return MonoAsKernelLift( morphism, lifted_coevaluation );
+        
+    end );
+    
+end );
 
-
-
-
+##
+InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
+  
+  function( category )
+    
+    AddCoevaluationMorphism( category,
+      
+      function( object_1, object_2, internal_hom )
+        local homalg_ring, object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
+              column, zero_column, i, matrix, rank_1, lifted_coevaluation;
+        
+        homalg_ring := category!.ring_for_representation_category;
+        
+        object_1_tensored_object_2 := TensorProductOnObjects( object_1, object_2 );
+        
+        internal_hom_embedding := INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( object_2, object_1_tensored_object_2 );
+        
+        rank_2 := NrRows( UnderlyingMatrix( object_2 ) );
+        
+        free_module := FreeRightPresentation( rank_2, homalg_ring );
+        
+        morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_1_tensored_object_2 ) );
+        
+        ## Construction of 1 \rightarrow F \otimes F^{\vee}
+        
+        column := [ ];
+        
+        zero_column := List( [ 1 .. rank_2 ], i -> 0 );
+        
+        for i in [ 1 .. rank_2 - 1 ] do
+          
+          Add( column, 1 );
+          
+          Append( column, zero_column );
+          
+        od;
+        
+        if rank_2 > 0 then 
+          
+          Add( column, 1 );
+          
+        fi;
+        
+        matrix := HomalgMatrix( column, rank_2 * rank_2, 1, homalg_ring );
+        
+        rank_1 := NrRows( UnderlyingMatrix( object_1 ) );
+        
+        matrix := KroneckerMat( HomalgIdentityMatrix( rank_1, homalg_ring ), matrix );
+        
+        lifted_coevaluation := PresentationMorphism( object_1, matrix, Range( morphism ) );
+        
+        return MonoAsKernelLift( morphism, lifted_coevaluation );
+        
+    end );
+    
+end );
 
