@@ -467,3 +467,50 @@ InstallMethod( GeneralizedInverseByCospan,
     return GeneralizedMorphismByCospan( IdentityMorphism( Range( morphism ) ), morphism );
     
 end );
+
+######################################
+##
+## Compatibility
+##
+######################################
+
+InstallMethod( GeneralizedMorphismByCospan,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( source_aid, morphism_aid, range_aid )
+    local morphism1, morphism2;
+    
+    morphism1 := PseudoInverse( AsGeneralizedMorphismByCospan( source_aid ) );
+    
+    morphism2 := GeneralizedMorphismByCospan( morphism_aid, range_aid );
+    
+    return PreCompose( morphism1, morphism2 );
+    
+end );
+
+InstallMethodWithCacheFromObject( DomainAssociatedMorphismCodomainTriple,
+                                  [ IsGeneralizedMorphismByCospan ],
+                                  
+  function( morphism )
+    local three_arrow;
+    
+    three_arrow := GeneralizedMorphismByThreeArrowsWithRangeAid( Arrow( morphism ), ReversedArrow( morphism ) );
+    
+    return DomainAssociatedMorphismCodomainTriple( three_arrow );
+    
+end );
+
+InstallMethod( GeneralizedMorphismByCospanWithSourceAid,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( source_aid, morphism_aid )
+    local morphism1, morphism2;
+    
+    morphism1 := GeneralizedInverseByCospan( source_aid );
+    
+    morphism2 := AsGeneralizedMorphismByCospan( morphism_aid );
+    
+    return PreCompose( morphism1, morphism2 );
+    
+end );
+    
