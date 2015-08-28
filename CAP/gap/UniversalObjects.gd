@@ -27,7 +27,7 @@ DeclareOperation( "AddToGenesis",
 #! The triple $( K, \iota, u )$ is called a <Emph>kernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $K$ of such a triple by $\mathrm{KernelObject}(\alpha)$.
-#! $\\$
+#! $\\ $
 #! $\mathrm{KernelObject}$ is a functorial operation. This means:
 #! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
@@ -269,7 +269,7 @@ DeclareFilter( "WasCreatedAsKernelObject" );
 #! The triple $( K, \epsilon, u )$ is called a <Emph>cokernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $K$ of such a triple by $\mathrm{Cokernel}(\alpha)$.
-#! $\\$
+#! $\\ $
 #! $\mathrm{Cokernel}$ is a functorial operation. This means:
 #! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
@@ -821,7 +821,7 @@ DeclareFilter( "WasCreatedAsZeroObject" );
 #! The pair $( T, u )$ is called a <Emph>terminal object</Emph> if the morphisms $u( A )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $T$ of such a pair by $\mathrm{TerminalObject}$.
-#! $\\$
+#! $\\ $
 #! $\mathrm{TerminalObject}$ is a functorial operation. This just means:
 #! There exists a unique morphism $T \rightarrow T$.
 
@@ -980,7 +980,7 @@ DeclareFilter( "WasCreatedAsTerminalObject" );
 #! The pair $(I,u)$ is called a <Emph>initial object</Emph> if the morphisms $u(A)$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $I$ of such a triple by $\mathrm{InitialObject}$.
-#! $\\$
+#! $\\ $
 #! $\mathrm{TerminalObject}$ is a functorial operation. This just means:
 #! There exists a unique morphisms $I \rightarrow I$.
 
@@ -1145,7 +1145,7 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 #! where $\delta_{i,j} \in \mathrm{Hom}( S_i, S_j )$ is the identity if $i=j$, and $0$ otherwise.
 #! The $5$-tuple $(S, \pi, \iota, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>direct sum</Emph> of $D$.
 #! We denote the object $S$ of such a $5$-tuple by $\bigoplus_{i=1}^n S_i$.
-#! $\\$
+#! $\\ $
 #! $\mathrm{DirectSum}$ is a functorial operation. This means:
 #! For $(\mu_i: S_i \rightarrow S'_i)_{i=1\dots n}$,
 #! we obtain a morphism $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$.
@@ -1723,7 +1723,7 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #! The triple $( I, \iota, u )$ is called a <Emph>coproduct</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $I$ of such a triple by $\bigsqcup_{i=1}^n I_i$.
-#! $\\$
+#! $\\ $
 #! $\mathrm{Coproduct}$ is a functorial operation. This means:
 #! For $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$,
 #! we obtain a morphism $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$.
@@ -1991,7 +1991,7 @@ DeclareFilter( "WasCreatedAsCoproduct" );
 #! The triple $( P, \pi, u )$ is called a <Emph>direct product</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $P$ of such a triple by $\prod_{i=1}^n P_i$.
-#! $\\$
+#! $\\ $
 #! $\mathrm{DirectProduct}$ is a functorial operation. This means:
 #! For $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
 #! we obtain a morphism $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$.
@@ -2249,7 +2249,7 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 #! The triple $( P, \pi, u )$ is called a <Emph>fiber product</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $P$ of such a triple by $\mathrm{FiberProduct}(D)$.
-#! $\\$
+#! $\\ $
 #! $\mathrm{FiberProduct}$ is a functorial operation. This means:
 #! For a second diagram $D' = (\beta_i': P_i' \rightarrow B')_{i = 1 \dots n}$ and a natural morphism
 #! between pullback diagrams (i.e., a collection of morphisms
@@ -2681,7 +2681,7 @@ DeclareFilter( "WasCreatedAsFiberProduct" );
 #! The triple $( I, \iota, u )$ is called a <Emph>pushout</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $I$ of such a triple by $\mathrm{Pushout}(D)$.
-#! $\\$
+#! $\\ $
 #! $\mathrm{Pushout}$ is a functorial operation. This means:
 #! For a second diagram $D' = (\beta_i': B' \rightarrow I_i')_{i = 1 \dots n}$ and a natural morphism
 #! between pushout diagrams (i.e., a collection of morphisms
