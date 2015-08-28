@@ -10,10 +10,10 @@
 #############################################################################
 
 DeclareCategory( "IsGeneralizedMorphismCategoryByCospansObject",
-                 IsCapCategoryObject );
+                 IsGeneralizedMorphismCategoryObject );
 
 DeclareCategory( "IsGeneralizedMorphismByCospan",
-                 IsCapCategoryMorphism );
+                 IsGeneralizedMorphism );
 
 ####################################
 ##
@@ -74,6 +74,12 @@ DeclareOperation( "GeneralizedMorphismFromFactorToSubobjectByCospan",
 ####################################
 
 DeclareOperation( "GeneralizedMorphismByCospan",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "GeneralizedMorphismByCospan",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "GeneralizedMorphismByCospanWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareAttribute( "AsGeneralizedMorphismByCospan",

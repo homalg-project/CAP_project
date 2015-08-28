@@ -22,20 +22,24 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
     generalized_morphism_translation_list := [
       [ "GeneralizedMorphismCategory", "GeneralizedMorphismCategoryByThreeArrows", "GeneralizedMorphismCategoryByCospans" ],
       [ "GeneralizedMorphism", "GeneralizedMorphismByThreeArrows", "GeneralizedMorphismByCospan" ],
-      [ "GeneralizedMorphismObject", "GeneralizedMorphismByThreeArrowsObject", "GeneralizedMorphismByCospanObject" ],
+      [ "GeneralizedMorphismObject", "GeneralizedMorphismByThreeArrowsObject", "GeneralizedMorphismByCospansObject" ],
       [ "AsGeneralizedMorphism", "AsGeneralizedMorphismByThreeArrows", "AsGeneralizedMorphismByCospan" ],
       [ "GeneralizedInverse", "GeneralizedInverseByThreeArrows", "GeneralizedInverseByCospan" ],
       [ "GeneralizedMorphismFromFactorToSubobject", "GeneralizedMorphismFromFactorToSubobjectByThreeArrows", "GeneralizedMorphismFromFactorToSubobjectByCospan" ],
       [ "IdempotentDefinedBySubobject", "IdempotentDefinedBySubobjectByThreeArrows", "IdempotentDefinedBySubobjectByCospan" ],
+      [ "IdempotentDefinedByFactorobject", "IdempotentDefinedByFactorobjectByThreeArrows", "IdempotentDefinedByFactorobjectByCospan" ],
+      [ "GeneralizedMorphismWithRangeAid", "GeneralizedMorphismByThreeArrowsWithRangeAid", "GeneralizedMorphismByCospan" ],
+      [ "GeneralizedMorphismWithSourceAid", "GeneralizedMorphismByThreeArrowsWithSourceAid", "GeneralizedMorphismByCospanWithSourceAid" ],
       # Serre Quotient
-      [ "AsSerreQuotientObject", "AsSerreQuotientByThreeArrowsObject" ],
-      [ "SerreQuotientCategory", "SerreQuotientCategoryByThreeArrows" ],
-      [ "SerreQuotientCategoryMorphism", "SerreQuotientCategoryByThreeArrowsMorphism" ],
-      [ "AsSerreQuotientCategoryMorphism", "AsSerreQuotientCategoryByThreeArrowsMorphism" ] ];
+      [ "AsSerreQuotientObject", "AsSerreQuotientByThreeArrowsObject", "AsSerreQuotientByThreeArrowsObject" ],
+      [ "SerreQuotientCategory", "SerreQuotientCategoryByThreeArrows", "AsSerreQuotientByThreeArrowsObject" ],
+      [ "SerreQuotientCategoryMorphism", "SerreQuotientCategoryByThreeArrowsMorphism", "AsSerreQuotientByThreeArrowsObject" ],
+      [ "AsSerreQuotientCategoryMorphism", "AsSerreQuotientCategoryByThreeArrowsMorphism", "AsSerreQuotientByThreeArrowsObject" ] ];
     
     for i in generalized_morphism_translation_list do
         
         if IsBoundGlobal( i[ 1 ] ) then
+            MakeReadWriteGlobal( i[ 1 ] );
             UnbindGlobal( i[ 1 ] );
         fi;
         

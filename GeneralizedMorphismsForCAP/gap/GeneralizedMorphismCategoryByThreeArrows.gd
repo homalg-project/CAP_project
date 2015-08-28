@@ -10,10 +10,10 @@
 #############################################################################
 
 DeclareCategory( "IsGeneralizedMorphismCategoryByThreeArrowsObject",
-                 IsCapCategoryObject );
+                 IsGeneralizedMorphismCategoryObject );
 
 DeclareCategory( "IsGeneralizedMorphismByThreeArrows",
-                 IsCapCategoryMorphism );
+                 IsGeneralizedMorphism );
 
 ####################################
 ##
@@ -55,6 +55,9 @@ DeclareAttribute( "UnderlyingHonestObject",
 DeclareOperation( "GeneralizedMorphismByThreeArrows",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+DeclareOperation( "GeneralizedMorphismByThreeArrows",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
 DeclareOperation( "GeneralizedMorphismByThreeArrowsWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
@@ -95,18 +98,6 @@ DeclareAttributeWithToDoForIsWellDefined( "RangeAid",
                                           IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "MorphismAid",
-                                          IsGeneralizedMorphismByThreeArrows );
-
-DeclareAttributeWithToDoForIsWellDefined( "DomainOp",
-                                          IsGeneralizedMorphismByThreeArrows );
-
-DeclareAttributeWithToDoForIsWellDefined( "Codomain",
-                                          IsGeneralizedMorphismByThreeArrows );
-
-DeclareAttributeWithToDoForIsWellDefined( "AssociatedMorphism",
-                                          IsGeneralizedMorphismByThreeArrows );
-
-DeclareAttributeWithToDoForIsWellDefined( "DomainAssociatedMorphismCodomainTriple",
                                           IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "PseudoInverse",

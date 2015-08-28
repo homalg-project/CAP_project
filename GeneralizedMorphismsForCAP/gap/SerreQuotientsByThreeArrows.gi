@@ -366,7 +366,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
     
     preconditions := [ "IsEqualForObjects",
                        "ImageObject",
-                       "AddAdditiveInverseForMorphisms",
+                       "AdditiveInverseForMorphisms",
                        "IdentityMorphism",
                        "ZeroMorphism",
                        "DirectSum",
