@@ -2358,6 +2358,12 @@ TensorProductInternalHomCompatibilityMorphism := rec(
   cache_name := "TensorProductInternalHomCompatibilityMorphism",
   return_type := "morphism" ),
 
+TensorProductInternalHomCompatibilityMorphismInverse := rec(
+  installation_name := "TensorProductInternalHomCompatibilityMorphismInverse",
+  filter_list := [ "object", "object", "object", "object", IsList ],
+  cache_name := "TensorProductInternalHomCompatibilityMorphismInverse",
+  return_type := "morphism" ),
+
 TensorProductDualityCompatibilityMorphism := rec(
   installation_name := "TensorProductDualityCompatibilityMorphism",
   filter_list := [ "object", "object", "object", "object" ],
