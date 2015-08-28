@@ -2963,7 +2963,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
     
     category := CapCategory( object );
     
-    return IdentityMorphism( InternalHomOnObjects( object ), TensorUnit( category ) );
+    return IdentityMorphism( InternalHomOnObjects( object, TensorUnit( category ) ) );
     
 end : CategoryFilter := IsSymmetricMonoidalCategory,
       Description := "IsomorphismFromDualToInternalHom as the identity of Hom(a,1)" );
@@ -2990,7 +2990,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
     
     category := CapCategory( object );
     
-    return IdentityMorphism( InternalHomOnObjects( object ), TensorUnit( category ) );
+    return IdentityMorphism( InternalHomOnObjects( object, TensorUnit( category ) ) );
     
 end : CategoryFilter := IsSymmetricMonoidalCategory,
       Description := "IsomorphismFromInternalHomToDual as the identity of Hom(a,1)" );

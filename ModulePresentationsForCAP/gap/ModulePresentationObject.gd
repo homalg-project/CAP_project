@@ -65,3 +65,15 @@ DeclareAttribute( "UnderlyingMatrix",
 
 DeclareAttribute( "UnderlyingHomalgRing",
                   IsLeftOrRightPresentation );
+
+##############################################
+##
+## Non categorical methods
+##
+##############################################
+
+DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT",
+                           [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ] );
+
+DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT",
+                           [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ] );
