@@ -393,6 +393,25 @@ If we want to implement such categories, we set the corresponding
 \GAP properties to true right after the call of the constructor
 \texttt{CreateCapCategory}.
 
+\begin{example}
+ Let $k$ be a field. The category of finite dimensional vector spaces over $k$
+ is an abelian category. It is realized in the \CapPkg package \texttt{LinearAlgebraForCAP}.
+ Furthermore, it can be enhanced with a tensor product such that it becomes a
+ rigid symmetric closed monoidal category.
+\end{example}
+
+\begin{example}
+ Let $R$ be a ring. The category of finitely presented modules over $R$
+ is an abelian category. It is realized in the \CapPkg package \texttt{ModulePresentationsForCAP}.
+ Furthermore, if $R$ is commutative, it can be enhanced with a tensor product such that it becomes a
+ symmetric closed monoidal category.
+\end{example}
+
+\begin{example}
+ The generalized morphism category is enriched over commutative regular semigroups.
+ It is realized in the \CapPkg package \texttt{GeneralizedMorphismsForCAP}.
+\end{example}
+
 \subsection{Categories Enriched over Commutative Regular Semigroups}
 
 \begin{documentation}
@@ -401,6 +420,14 @@ If we want to implement such categories, we set the corresponding
   \texttt{IsEnrichedOverCommutativeRegularSemigroup}.  
  \end{center}
 \end{documentation}
+
+\begin{definition}
+ The definition of a category enriched over commutative regular semigroups
+ can be found in \cite{BL_GabrielMorphisms} (where this property is called
+ \textit{enriched over commutative inverse monoids)}.
+\end{definition}
+
+
 
 
 \subsection{Ab-Categories}
@@ -683,6 +710,27 @@ in the definition
  \end{center}
 \end{documentation}
 
+\begin{definition}\cite{Deligne}
+ A symmetric closed monoidal category $\mathbf{C}$ satisfying
+ \begin{enumerate}
+  \item the natural morphism
+  $\underline{\Hom}(a_1,b_1) \otimes \underline{\Hom}(a_2,b_2) \rightarrow \underline{\Hom}(a_1 \otimes a_2,b_1 \otimes b_2)$
+  is an isomorphism,
+  \item the natural morphism
+  $a \rightarrow \underline{\Hom}(\underline{\Hom}(a, 1), 1)$
+  is an isomorphism
+ \end{enumerate}
+ is called a \textbf{rigid symmetric closed monoidal category}.
+\end{definition}
+
+Basic operations for rigid symmetric closed monoidal categories coming from the existential quantifiers
+in the definition
+(in addition to the basic operations for symmetric closed monoidal categories):
+\begin{itemize}
+  \item \texttt{TensorProductInternalHomCompatibilityMorphismInverse}
+  \item \texttt{MorphismFromBidual}
+\end{itemize}
+
 \subsection{Strict Monoidal Categories}
 
 \begin{documentation}
@@ -691,5 +739,18 @@ in the definition
   \texttt{IsStrictMonoidalCategory}.  
  \end{center}
 \end{documentation}
+
+\begin{definition}
+ A monoidal category $\mathbf{C}$ is called \textbf{strict}
+ if the associator and the unitors are identities.
+\end{definition}
+
+\begin{remark}
+ Note that being a strict monoidal category is
+ a set theoretic property, but
+ not a categorical property
+ since it is not preserved by equivalences of categories.
+\end{remark}
+
 
 \section{Derivations}\label{section:derivations}
