@@ -1,0 +1,508 @@
+#############################################################################
+##
+##                                               CAP package
+##
+##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
+##                  Sebastian Posur,   RWTH Aachen
+##
+#############################################################################
+
+DeclareRepresentation( "IsSerreQuotientCategoryByCospansObjectRep",
+                       IsCapCategoryObjectRep and IsSerreQuotientCategoryByCospansObject,
+                       [ ] );
+
+BindGlobal( "TheTypeOfSerreQuotientCategoryByCospansObject",
+        NewType( TheFamilyOfCapCategoryObjects,
+                IsSerreQuotientCategoryByCospansObjectRep ) );
+
+DeclareRepresentation( "IsSerreQuotientCategoryByCospansMorphismRep",
+                       IsCapCategoryMorphismRep and IsSerreQuotientCategoryByCospansMorphism,
+                       [ ] );
+
+BindGlobal( "TheTypeOfSerreQuotientCategoryByCospansMorphism",
+        NewType( TheFamilyOfCapCategoryMorphisms,
+                 IsSerreQuotientCategoryByCospansMorphismRep ) );
+
+#############################################
+##
+## Installation method
+##
+#############################################
+
+BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS",
+  
+  function( category )
+    local membership_function;
+    
+    membership_function := SubcategoryMembershipTestFunctionForSerreQuotient( category );
+    
+    ## Equalities
+    
+    AddIsCongruentForMorphisms( category,
+      
+      function( morphism1, morphism2 )
+        local underlying_general, new_morphism_aid, new_general, sum_general,
+              sum_associated, sum_image;
+        
+        underlying_general := UnderlyingGeneralizedMorphism( morphism2 );
+        
+        new_morphism_aid := AdditiveInverse( MorphismAid( underlying_general ) );
+        
+        new_general := GeneralizedMorphismByCospans( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
+        
+        sum_general := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ), new_general );
+        
+        sum_associated := AssociatedMorphism( sum_general );
+        
+        sum_image := ImageObject( sum_associated );
+        
+        return membership_function( sum_image );
+        
+    end );
+    
+    AddIsEqualForObjects( category,
+      
+      function( obj1, obj2 )
+        
+        return IsEqualForObjects( UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
+        
+    end );
+    
+    ## Is Zero
+    
+    AddIsZeroForObjects( category,
+      
+      function( obj )
+        
+        return membership_function( UnderlyingHonestObject( obj ) );
+        
+    end );
+    
+    ## PreCompose
+    
+    AddPreCompose( category,
+      
+      function( morphism1, morphism2 )
+        local composition;
+        
+        composition := PreCompose( UnderlyingGeneralizedMorphism( morphism1 ),
+                                   UnderlyingGeneralizedMorphism( morphism2 ) );
+        
+        return SerreQuotientCategoryByCospansMorphism( category, composition );
+        
+    end );
+    
+    ## IdentityMorphism
+    
+    AddIdentityMorphism( category,
+      
+      function( object )
+        
+        return AsSerreQuotientCategoryByCospansMorphism( category, IdentityMorphism( UnderlyingHonestObject( object ) ) );
+        
+    end );
+    
+    ## Addition for morphisms
+    
+    AddAdditionForMorphisms( category,
+      
+      function( morphism1, morphism2 )
+        local sum;
+        
+        sum := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ),
+                                     UnderlyingGeneralizedMorphism( morphism2 ) );
+        
+        return SerreQuotientCategoryByCospansMorphism( category, sum );
+        
+    end );
+    
+    ## IsZeroForMorphisms
+    
+    AddIsZeroForMorphisms( category,
+      
+      function( morphism )
+        local associated, image;
+        
+        associated := AssociatedMorphism( UnderlyingGeneralizedMorphism( morphism ) );
+        
+        image := ImageObject( associated );
+        
+        return membership_function( image );
+        
+    end );
+    
+    ## Additive inverse for morphisms (works without normalization)
+    
+    AddAdditiveInverseForMorphisms( category,
+      
+      function( morphism )
+        local underlying_general, new_morphism_aid, new_general;
+        
+        underlying_general := UnderlyingGeneralizedMorphism( morphism );
+        
+        new_morphism_aid := AdditiveInverse( MorphismAid( underlying_general ) );
+        
+        new_general := GeneralizedMorphismByCospans( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
+        
+        return SerreQuotientCategoryByCospansMorphism( category, new_general );
+        
+    end );
+    
+    ## Zero morphism
+    
+    AddZeroMorphism( category,
+      
+      function( source, range )
+        local source_aid, range_aid, morphism_aid;
+        
+        source := UnderlyingHonestObject( source );
+        
+        range := UnderlyingHonestObject( range );
+        
+        source_aid := IdentityMorphism( source );
+        
+        range_aid := IdentityMorphism( range );
+        
+        morphism_aid := ZeroMorphism( source, range );
+        
+        return SerreQuotientCategoryByCospansMorphism( category, source_aid, morphism_aid, range_aid );
+        
+    end );
+    
+    ## Zero object
+    
+    AddZeroObject( category,
+      
+      function( )
+        
+        return AsSerreQuotientByCospansObject( category, ZeroObject( UnderlyingHonestCategory( category ) ) );
+        
+    end );
+    
+    ## direct sum
+    
+    AddDirectSum( category,
+      
+      function( obj_list )
+        local honest_list;
+        
+        honest_list := List( obj_list, UnderlyingHonestObject );
+        
+        return CallFuncList( DirectSum, honest_list );
+        
+    end );
+    
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
+      
+      function( product_object, component_number, direct_sum_object )
+        local underlying_objects, underlying_direct_sum, honest_projection;
+        
+        underlying_objects := List( product_object, UnderlyingHonestObject );
+        
+        underlying_direct_sum := UnderlyingHonestObject( direct_sum_object );
+        
+        honest_projection := ProjectionInFactorOfDirectSumWithGivenDirectSum( underlying_objects, component_number, underlying_direct_sum );
+        
+        return AsSerreQuotientCategoryByCospansMorphism( category, honest_projection );
+        
+    end );
+    
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
+      
+      function( object_product_list, injection_number, direct_sum_object )
+        local underlying_objects, underlying_direct_sum, honest_injection;
+        
+        underlying_objects := List( object_product_list, UnderlyingHonestObject );
+        
+        underlying_direct_sum := UnderlyingHonestObject( direct_sum_object );
+        
+        honest_injection := AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( underlying_objects, injection_number, underlying_direct_sum );
+        
+        return AsSerreQuotientCategoryByCospansMorphism( category, honest_injection );
+        
+    end );
+    
+    AddUniversalMorphismIntoDirectSum( category,
+      
+      function( diagram, morphism_list )
+        local generalized_morphisms, source_aid, associated, range_aid, associated_list;
+        
+        generalized_morphisms := List( morphism_list, UnderlyingGeneralizedMorphism );
+        
+        generalized_morphisms := CommonRestriction( generalized_morphisms );
+        
+        generalized_morphisms := List( generalized_morphisms, DomainAssociatedMorphismCodomainTriple );
+        
+        source_aid := generalized_morphisms[ 1 ][ 1 ];
+        
+        associated_list := List( generalized_morphisms, i -> i[ 2 ] );
+        
+        associated := UniversalMorphismIntoDirectSum( associated_list );
+        
+        range_aid := DirectSumFunctorial( List( generalized_morphisms, i -> i[ 3 ] ) );
+        
+        return SerreQuotientCategoryByCospansMorphism( category, source_aid, associated, range_aid );
+        
+    end );
+    
+    AddUniversalMorphismFromDirectSum( category,
+      
+      function( diagram, morphism_list )
+        local generalized_morphisms, source_aid, associated, range_aid;
+        
+        generalized_morphisms := List( morphism_list, UnderlyingGeneralizedMorphism );
+        
+        generalized_morphisms := CommonCoastriction( generalized_morphisms );
+        
+        generalized_morphisms := List( generalized_morphisms, DomainAssociatedMorphismCodomainTriple );
+        
+        range_aid := generalized_morphisms[ 1 ][ 3 ];
+        
+        associated := UniversalMorphismFromDirectSum( List( generalized_morphisms, i -> i[ 2 ] ) );
+        
+        source_aid := DirectSumFunctorial( List( generalized_morphisms, i -> i[ 1 ] ) );
+        
+        return SerreQuotientCategoryByCospansMorphism( category, source_aid, associated, range_aid );
+        
+    end );
+    
+    ## Kernel
+    
+    AddKernelEmb( category,
+      
+      function( morphism )
+        local underlying_general, kernel_mor;
+        
+        underlying_general := UnderlyingGeneralizedMorphism( morphism );
+        
+        kernel_mor := KernelEmb( AssociatedMorphism( underlying_general ) );
+        
+        kernel_mor := PreCompose( kernel_mor, Domain( underlying_general ) );
+        
+        return AsSerreQuotientCategoryByCospansMorphism( category, kernel_mor );
+        
+    end );
+    
+    AddMonoAsKernelLift( category,
+      
+      function( monomorphism, test_morphism )
+        local inverse_of_mono, composition;
+        
+        inverse_of_mono := PseudoInverse( UnderlyingGeneralizedMorphism( monomorphism ) );
+        
+        composition := PreCompose( UnderlyingGeneralizedMorphism( test_morphism ), inverse_of_mono );
+        
+        return SerreQuotientCategoryByCospansMorphism( category, composition );
+        
+    end );
+    
+    ## Cokernel
+    
+    AddCokernelProj( category,
+      
+      function( morphism )
+        local underlying_general, cokernel_mor;
+        
+        underlying_general := UnderlyingGeneralizedMorphism( morphism );
+        
+        cokernel_mor := CokernelProj( AssociatedMorphism( underlying_general ) );
+        
+        cokernel_mor := PreCompose( Codomain( underlying_general ), cokernel_mor );
+        
+        return AsSerreQuotientCategoryByCospansMorphism( category, cokernel_mor );
+        
+    end );
+    
+    AddEpiAsCokernelColift( category,
+      
+      function( epimorphism, test_morphism )
+        local inverse_of_epi, composition;
+        
+        inverse_of_epi := PseudoInverse( UnderlyingGeneralizedMorphism( epimorphism ) );
+        
+        composition := PreCompose( inverse_of_epi, UnderlyingGeneralizedMorphism( test_morphism ) );
+        
+        return SerreQuotientCategoryByCospansMorphism( category, composition );
+        
+    end );
+    
+end );
+
+#############################################
+##
+## Constructor
+##
+#############################################
+
+InstallMethod( \/,
+               [ IsCapCategory, IsFunction ],
+               
+  SerreQuotientCategory );
+
+InstallMethod( SerreQuotientCategoryByCospans,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, test_function )
+    local name;
+    
+    name := NameFunction( test_function );
+    
+    return SerreQuotientCategoryByCospans( category, test_function, Concatenation( "test function with name: ", name ) );
+    
+end );
+
+InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
+                                  [ IsCapCategory, IsFunction, IsString ],
+                                  
+  function( category, test_function, function_name )
+    local serre_category, gen_category, name, preconditions, category_weight_list, i;
+    
+    if not HasIsFinalized( category ) or not IsFinalized( category ) then
+        
+        Error( "category must be finalized" );
+        return;
+        
+    fi;
+    
+    preconditions := [ "IsEqualForObjects",
+                       "ImageObject",
+                       "AdditiveInverseForMorphisms",
+                       "IdentityMorphism",
+                       "ZeroMorphism",
+                       "DirectSum",
+                       "ProjectionInFactorOfDirectSumWithGivenDirectSum",
+                       "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
+                       "UniversalMorphismFromDirectSum",
+                       "UniversalMorphismIntoDirectSum",
+                       "DirectSumFunctorial",
+                       "KernelEmb",
+                       "CokernelProj" ];
+    
+    category_weight_list := category!.derivations_weight_list;
+    
+    for i in preconditions do
+        
+        if CurrentOperationWeight( category_weight_list, i ) = infinity then
+            
+            Error( Concatenation( "category must be able to compute ", i ) );
+            return;
+            
+        fi;
+        
+    od;
+    
+    name := Name( category );
+    
+    name := Concatenation( "The Serre quotient category of ", name, " by ", function_name );
+    
+    serre_category := CreateCapCategory( name );
+    
+    SetFilterObj( serre_category, WasCreatedAsSerreQuotientCategoryByCospans );
+    
+    SetUnderlyingHonestCategory( serre_category, category );
+    
+    SetUnderlyingGeneralizedMorphismCategory( serre_category, GeneralizedMorphismCategory( category ) );
+    
+    SetSubcategoryMembershipTestFunctionForSerreQuotient( serre_category, test_function );
+    
+    SetIsAbelianCategory( serre_category, true );
+    
+    CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS( serre_category );
+    
+    Finalize( serre_category );
+    
+    return serre_category;
+    
+end );
+
+InstallMethodWithCacheFromObject( AsSerreQuotientByCospansObject,
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryObject ],
+                                  
+  function( serre_category, object )
+    local honest_category, serre_object;
+    
+    honest_category := UnderlyingHonestCategory( serre_category );
+    
+    if not IsIdenticalObj( honest_category, CapCategory( object ) ) then
+        
+        Error( "object does not belong to underlying honest category of serre quotient" );
+        
+    fi;
+    
+    serre_object := rec( );
+    
+    ObjectifyWithAttributes( serre_object, TheTypeOfSerreQuotientCategoryByCospansObject );
+    
+    SetUnderlyingHonestObject( serre_object, object );
+    
+    SetUnderlyingGeneralizedObject( serre_object, GeneralizedMorphismByCospansObject( object ) );
+    
+    AddToToDoList( ToDoListEntryForEqualAttributes( serre_object, "IsWellDefined", object, "IsWellDefined" ) );
+    
+    AddObject( serre_category, serre_object );
+    
+    return serre_object;
+    
+end );
+
+InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospansMorphism,
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsGeneralizedMorphismByCospans ],
+                                  
+  function( serre_category, gen_morphism )
+    local honest_category, serre_morphism;
+    
+    if not IsIdenticalObj( UnderlyingGeneralizedMorphismCategory( serre_category ), CapCategory( gen_morphism ) ) then
+        
+        Error( "generalized morphism has wrong category" );
+        
+    fi;
+    
+    serre_morphism := rec( );
+    
+    ObjectifyWithAttributes( serre_morphism, TheTypeOfSerreQuotientCategoryByCospansMorphism,
+                             Source, AsSerreQuotientByCospansObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
+                             Range, AsSerreQuotientByCospansObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ) );
+    
+    SetUnderlyingGeneralizedMorphism( serre_morphism, gen_morphism );
+    
+    AddMorphism( serre_category, serre_morphism );
+    
+    return serre_morphism;
+    
+end );
+
+InstallMethod( SerreQuotientCategoryByCospansMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  function( serre_category, source_aid, associated, range_aid )
+    
+    return SerreQuotientCategoryByCospansMorphism( serre_category, GeneralizedMorphismByCospans( source_aid, associated, range_aid ) );
+    
+end );
+
+InstallMethod( SerreQuotientCategoryByCospansMorphismWithSourceAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  function( serre_category, source_aid, associated )
+    
+    return SerreQuotientCategoryByCospansMorphism( serre_category, GeneralizedMorphismByCospansWithSourceAid( source_aid, associated ) );
+    
+end );
+
+InstallMethod( SerreQuotientCategoryByCospansMorphismWithRangeAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  function( serre_category, associated, range_aid )
+    
+    return SerreQuotientCategoryByCospansMorphism( serre_category, GeneralizedMorphismByCospansWithRangeAid( associated, range_aid ) );
+    
+end );
+
+InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByCospansMorphism,
+                                  [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism ],
+                                  
+  function( serre_category, associated )
+    
+    return SerreQuotientCategoryByCospansMorphism( serre_category, AsGeneralizedMorphismByCospans( associated ) );
+    
+end );
