@@ -206,6 +206,8 @@ InstallMethodWithCacheFromObject( ProductOp,
     
     CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY( product_category );
     
+    Finalize( product_category );
+    
     return product_category;
     
 end : ArgumentNumber := 2 );

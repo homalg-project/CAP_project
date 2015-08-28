@@ -189,3 +189,5 @@ InstallMethod( FunctorFromTerminalCategory,
   morphism -> FunctorFromTerminalCategory( Source( morphism ) )
   
 );
+
+Finalize( CAP_INTERNAL_TERMINAL_CATEGORY );
