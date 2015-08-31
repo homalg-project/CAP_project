@@ -36,3 +36,12 @@ DeclareAttribute( "UnderlyingHomalgRing",
 
 DeclareAttribute( "UnderlyingMatrix",
                   IsLeftOrRightPresentationMorphism );
+
+##############################################
+##
+## Non categorical methods
+##
+##############################################
+
+DeclareOperation( "StandardGeneratorMorphism",
+                  [ IsLeftOrRightPresentation, IsInt ] );
