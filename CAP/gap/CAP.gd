@@ -417,83 +417,20 @@ DeclareAttribute( "CanComputeFilter",
 
 #! @EndGroup
 
-DeclareAttribute( "UnderlyingCategory",
-                  IsCapCategory );
-
 #############################################
 ##
 #! @Section Well defined
 ##
 #############################################
 
+#! @Description
+#! The argument is a cell $c$.
+#! The output is <C>true</C> if $c$ is well-defined,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments c
 DeclareProperty( "IsWellDefined",
                  IsCapCategoryCell );
-
-#############################################
-##
-#! @Section Add functions
-##
-#############################################
-
-#!  All functions in this section install several functions for objects and morphisms 
-#!  belonging to a category.
-
-####################################
-##
-## Identity morphism
-##
-####################################
-
-#! @BeginGroup IdentityMorphismFunction_installer
-
-#! @Description
-#!  Installs the function which returns the Identity morphism of an object. The argument <A>func</A> must be a function with one
-#!  argument which returns a morphism with source and target are the argument.
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @EndGroup
-
-
-####################################
-##
-## Inverse
-##
-####################################
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsList ] );
-
-DeclareOperation( "AddInverseImmutable",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInverseImmutable",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInverseImmutable",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInverseImmutable",
-                  [ IsCapCategory, IsList ] );
 
 
 ####################################

@@ -5,7 +5,7 @@
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @Chapter Category morphism
+#! @Chapter Morphisms
 #!  Any GAP object satisfying <C>IsCapCategoryMorphism</C> can be added to a category
 #!  and then becomes a morphism in this category.
 #!  Any morphism can belong to one or no category.
@@ -16,13 +16,6 @@
 ##
 #############################################################################
 
-###################################
-##
-#! @Section Categories
-##
-###################################
-
-## Moved to CAP.gd
 
 ###################################
 ##
@@ -591,6 +584,27 @@ DeclareOperation( "AddAdditiveInverseForMorphisms",
 DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsList ] );
 
+###################################
+##
+## Zero Morphism
+##
+###################################
+
+DeclareOperation( "ZeroMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsCapCategory, IsList ] );
+
 
 ###################################
 ##
@@ -741,9 +755,37 @@ DeclareOperation( "AddCodominates",
 
 ###################################
 ##
-#! @Section Composition of Morphisms
+#! @Section Identity Morphism and Composition of Morphisms
 ##
 ###################################
+
+#! @Description
+#! The argument is an object $a$.
+#! The output is its identity morphism $\mathrm{id}_a$.
+#! @Returns a morphism in $\mathrm{Hom}(a,a)$
+#! @Arguments a
+DeclareAttributeWithToDoForIsWellDefined( "IdentityMorphism",
+                                          IsCapCategoryObject );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IdentityMorphism</C>.
+#! $F: a \mapsto \mathrm{id}_a$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIdentityMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIdentityMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIdentityMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIdentityMorphism",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow b$, $\beta: b \rightarrow c$.
@@ -825,7 +867,7 @@ DeclareOperation( "AddPostCompose",
 
 ###################################
 ##
-#! @Section IsWellDefined
+#! @Section Well-Definedness of Morphisms
 ##
 ###################################
 
@@ -1002,6 +1044,50 @@ DeclareOperation( "AddColift",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddColift",
+                  [ IsCapCategory, IsList ] );
+
+
+####################################
+##
+#! @Section Inverses
+##
+####################################
+
+#! Let $\alpha: a \rightarrow b$ be a morphism. An inverse of $\alpha$
+#! is a morphism $\alpha^{-1}: b \rightarrow a$ such that
+#! $\alpha \circ \alpha^{-1} \sim_{b,b} \mathrm{id}_b$
+#! and $\alpha^{-1} \circ \alpha \sim_{a,a} \mathrm{id}_a$.
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Inverse</C>.
+#! $F: \alpha \mapsto \alpha^{-1}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInverse",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInverse",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInverse",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInverse",
+                  [ IsCapCategory, IsList ] );
+
+## these are the Add functions which are actually called.
+DeclareOperation( "AddInverseImmutable",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInverseImmutable",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInverseImmutable",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInverseImmutable",
                   [ IsCapCategory, IsList ] );
 
 ###################################
