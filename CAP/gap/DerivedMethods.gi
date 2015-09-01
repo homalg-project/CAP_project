@@ -468,6 +468,18 @@ end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and E
 ###########################
 
 ##
+AddDerivationToCAP( IsOne,
+                    
+  function( morphism )
+    local object;
+    
+    object := Source( morphism );
+    
+    return IsCongruentForMorphisms( IdentityMorphism( object ), morphism );
+    
+end : Description := "IsOne by comparing with the identity morphism" );
+
+##
 AddDerivationToCAP( IsEndomorphism,
                       
   function( morphism )

@@ -39,7 +39,7 @@ DeclareAttribute( "UnderlyingMatrix",
 
 ##############################################
 ##
-## Non categorical methods
+## Non-categorical methods
 ##
 ##############################################
 

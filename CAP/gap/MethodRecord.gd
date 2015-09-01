@@ -1752,7 +1752,23 @@ IsOne := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  property_of := "morphism" ),
+  property_of := "morphism",
+  pre_function := function( morphism )
+    
+    if IsEqualForObjects( Source( morphism ), Range( morphism ) ) = fail then
+      
+      return [ false, "cannot decide whether morphism is the identity" ];
+      
+    fi;
+    
+    if not IsEqualForObjects( Source( morphism ), Range( morphism ) ) then
+        
+        return [ false, "source and range of the given morphism are not equal" ];
+        
+    fi;
+    
+    return [ true ];
+  end ),
 
 IsSplitMonomorphism := rec(
   installation_name := "IsSplitMonomorphism",

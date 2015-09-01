@@ -6,15 +6,13 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 #! @Chapter Category morphism
-#!  Any GAP object which is IsCapCategoryMorphism can be added to a category
+#!  Any GAP object satisfying <C>IsCapCategoryMorphism</C> can be added to a category
 #!  and then becomes a morphism in this category.
 #!  Any morphism can belong to one or no category.
 #!  After a GAP object is added to the category, it knows which things can be
 #!  computed in its category and to which category it belongs.
-#!  It knows categorial properties and attributes, and the functions for existential quantifiers
+#!  It knows categorical properties and attributes, and the functions for existential quantifiers
 #!  can be applied to the morphism.
-#!  If an GAP object in the category was constructed by a categorial construction
-#!  it knows its Genesis.
 ##
 #############################################################################
 
@@ -28,17 +26,32 @@
 
 ###################################
 ##
-#! @Section Functions for all objects
+#! @Section Attributes for the Type of Morphisms
 ##
 ###################################
 
-#! @Group Category getter
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is the category $\mathbf{C}$
+#! to which $\alpha$ was added.
+#! @Returns a category
+#! @Arguments alpha
 DeclareAttribute( "CapCategory",
                   IsCapCategoryMorphism );
 
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$.
+#! The output is its source $a$.
+#! @Returns an object
+#! @Arguments alpha
 DeclareAttribute( "Source",
                   IsCapCategoryMorphism );
 
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$.
+#! The output is its range $b$.
+#! @Returns an object
+#! @Arguments alpha
 DeclareAttribute( "Range",
                   IsCapCategoryMorphism );
 
@@ -66,14 +79,27 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 
 ###################################
 ##
-## Properties
+#! @Section Categorical Properties of Morphisms
 ##
 ###################################
 
-##
+## TODO
+# @Description
+# The argument is a morphism $\alpha$.
+# The output is <C>true</C> if $\alpha$ is a monomorphism,
+# otherwise the output is <C>false</C>.
+# @Returns a boolean
+# @Arguments alpha
 DeclareFamilyProperty( "IsMonomorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsMonomorphism</C>.
+#! $F: \alpha \mapsto \mathtt{IsMonomorphism}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsMonomorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -86,13 +112,27 @@ DeclareOperation( "AddIsMonomorphism",
 DeclareOperation( "AddIsMonomorphism",
                   [ IsCapCategory, IsList ] );
 
-DeclareSynonymAttr( "IsSubobject",
-                    IsMonomorphism );
 
-##
+
+
+
+## TODO
+# @Description
+# The argument is a morphism $\alpha$.
+# The output is <C>true</C> if $\alpha$ is an epimorphism,
+# otherwise the output is <C>false</C>.
+# @Returns a boolean
+# @Arguments alpha
 DeclareFamilyProperty( "IsEpimorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsEpimorphism</C>.
+#! $F: \alpha \mapsto \mathtt{IsEpimorphism}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsEpimorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -105,13 +145,25 @@ DeclareOperation( "AddIsEpimorphism",
 DeclareOperation( "AddIsEpimorphism",
                   [ IsCapCategory, IsList ] );
 
-DeclareSynonymAttr( "IsFactorobject",
-                    IsEpimorphism );
 
-##
+
+## TODO
+# @Description
+# The argument is a morphism $\alpha$.
+# The output is <C>true</C> if $\alpha$ is an isomorphism,
+# otherwise the output is <C>false</C>.
+# @Returns a boolean
+# @Arguments alpha
 DeclareFamilyProperty( "IsIsomorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsIsomorphism</C>.
+#! $F: \alpha \mapsto \mathtt{IsIsomorphism}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsIsomorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -124,42 +176,25 @@ DeclareOperation( "AddIsIsomorphism",
 DeclareOperation( "AddIsIsomorphism",
                   [ IsCapCategory, IsList ] );
 
-##
-DeclareFamilyProperty( "IsEndomorphism",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
 
-DeclareOperation( "AddIsEndomorphism",
-                  [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsEndomorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEndomorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEndomorphism",
-                  [ IsCapCategory, IsList ] );
-
-##
-DeclareFamilyProperty( "IsAutomorphism",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
-
-DeclareOperation( "AddIsAutomorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsAutomorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsAutomorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsAutomorphism",
-                  [ IsCapCategory, IsList ] );
-
-##
+## TODO
+# @Description
+# The argument is a morphism $\alpha$.
+# The output is <C>true</C> if $\alpha$ is a split monomorphism,
+# otherwise the output is <C>false</C>.
+# @Returns a boolean
+# @Arguments alpha
 DeclareFamilyProperty( "IsSplitMonomorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsSplitMonomorphism</C>.
+#! $F: \alpha \mapsto \mathtt{IsSplitMonomorphism}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsSplitMonomorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -172,10 +207,23 @@ DeclareOperation( "AddIsSplitMonomorphism",
 DeclareOperation( "AddIsSplitMonomorphism",
                   [ IsCapCategory, IsList ] );
 
-##
+## TODO
+# @Description
+# The argument is a morphism $\alpha$.
+# The output is <C>true</C> if $\alpha$ is a split epimorphism,
+# otherwise the output is <C>false</C>.
+# @Returns a boolean
+# @Arguments alpha
 DeclareFamilyProperty( "IsSplitEpimorphism",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsSplitEpimorphism</C>.
+#! $F: \alpha \mapsto \mathtt{IsSplitEpimorphism}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsSplitEpimorphism",
                   [ IsCapCategory, IsFunction ] );
 
@@ -188,10 +236,23 @@ DeclareOperation( "AddIsSplitEpimorphism",
 DeclareOperation( "AddIsSplitEpimorphism",
                   [ IsCapCategory, IsList ] );
 
-## TODO: IsIdentity
+## TODO
+# @Description
+# The argument is a morphism $\alpha: a \rightarrow a$.
+# The output is <C>true</C> if $\alpha$ is congruent to the identity of $a$,
+# otherwise the output is <C>false</C>.
+# @Returns a boolean
+# @Arguments alpha
 DeclareFamilyProperty( "IsOne",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsOne</C>.
+#! $F: \alpha \mapsto \mathtt{IsOne}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsOne",
                   [ IsCapCategory, IsFunction ] );
 
@@ -204,10 +265,23 @@ DeclareOperation( "AddIsOne",
 DeclareOperation( "AddIsOne",
                   [ IsCapCategory, IsList ] );
 
-##
+## TODO
+# @Description
+# The argument is a morphism $\alpha: a \rightarrow a$.
+# The output is <C>true</C> if $\alpha^2 \sim_{a,a} \alpha$,
+# otherwise the output is <C>false</C>.
+# @Returns a boolean
+# @Arguments alpha
 DeclareFamilyProperty( "IsIdempotent",
                        IsCapCategoryMorphism, "morphism" : reinstall := false );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsIdempotent</C>.
+#! $F: \alpha \mapsto \mathtt{IsIdempotent}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddIsIdempotent",
                   [ IsCapCategory, IsFunction ] );
 
@@ -218,27 +292,110 @@ DeclareOperation( "AddIsIdempotent",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddIsIdempotent",
-                  [ IsCapCategory, IsList ] );
-
-##
-DeclareProperty( "IsIdenticalToIdentityMorphism",
-                 IsCapCategoryMorphism );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
                   [ IsCapCategory, IsList ] );
 
 ###################################
 ##
-#! @Section Morphism add functions
+#! @Section Non-Categorical Properties of Morphisms
+##
+###################################
+
+#! Non-categorical properties are not stable under equivalences of categories.
+
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$.
+#! The output is <C>true</C> if $\alpha = \mathrm{id}_a$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsIdenticalToIdentityMorphism",
+                 IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsIdenticalToIdentityMorphism</C>.
+#! $F: \alpha \mapsto \mathtt{IsIdenticalToIdentityMorphism}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsIdenticalToIdentityMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsIdenticalToIdentityMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsIdenticalToIdentityMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsIdenticalToIdentityMorphism",
+                  [ IsCapCategory, IsList ] );
+
+## TODO
+## This is not a categorical property because non-endomorphisms 
+## can be mapped to endomorphisms under equivalences of categories.
+# @Description
+# The argument is a morphism $\alpha$.
+# The output is <C>true</C> if $\alpha$ is an endomorphism,
+# otherwise the output is <C>false</C>.
+# @Returns a boolean
+# @Arguments alpha
+DeclareFamilyProperty( "IsEndomorphism",
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsEndomorphism</C>.
+#! $F: \alpha \mapsto \mathtt{IsEndomorphism}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsEndomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEndomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEndomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEndomorphism",
+                  [ IsCapCategory, IsList ] );
+
+## TODO
+## This is not a categorical property because non-endomorphisms 
+## can be mapped to endomorphisms under equivalences of categories.
+# @Description
+# The argument is a morphism $\alpha$.
+# The output is <C>true</C> if $\alpha$ is an automorphism,
+# otherwise the output is <C>false</C>.
+# @Returns a boolean
+# @Arguments alpha
+DeclareFamilyProperty( "IsAutomorphism",
+                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsAutomorphism</C>.
+#! $F: \alpha \mapsto \mathtt{IsAutomorphism}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsAutomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsAutomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsAutomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsAutomorphism",
+                  [ IsCapCategory, IsList ] );
+
+
+###################################
+##
+#! @Section Adding Morphisms to a Category
 ##
 ###################################
 
@@ -250,168 +407,292 @@ DeclareOperation( "AddMorphism",
 
 ###################################
 ##
-#! @Section Constructive Hom-sets functions
+#! @Section Equality and Congruence for Morphisms
 ##
 ###################################
 
 
-## IsCongruentForMorphisms
-DeclareOperation( "AddIsCongruentForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsCongruentForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsCongruentForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsCongruentForMorphisms",
-                  [ IsCapCategory, IsList ] );
-
+#! @Description
+#! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
+#! The output is <C>true</C> if $\alpha \sim_{a,b} \beta$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha, beta
 DeclareOperation( "IsCongruentForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-## IsEqualForMorphisms
-DeclareOperation( "AddIsEqualForMorphisms",
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsCongruentForMorphisms</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{IsCongruentForMorphisms}(\alpha, \beta)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsCongruentForMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsEqualForMorphisms",
+DeclareOperation( "AddIsCongruentForMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsEqualForMorphisms",
+DeclareOperation( "AddIsCongruentForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsEqualForMorphisms",
+DeclareOperation( "AddIsCongruentForMorphisms",
                   [ IsCapCategory, IsList ] );
 
 
-DeclareOperation( "AddIsEqualForMorphismsOnMor",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEqualForMorphismsOnMor",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEqualForMorphismsOnMor",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEqualForMorphismsOnMor",
-                  [ IsCapCategory, IsList ] );
-
-
-
+#! @Description
+#! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
+#! The output is <C>true</C> if $\alpha = \beta$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha, beta
 DeclareOperation( "IsEqualForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsEqualForMorphisms</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphisms}(\alpha, \beta)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsEqualForMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualForMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEqualForMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow b, \beta: c \rightarrow d$.
+#! The output is <C>true</C> if $\alpha = \beta$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha, beta
 DeclareOperation( "IsEqualForMorphismsOnMor",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsEqualForMorphismsOnMor</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphismsOnMor}(\alpha, \beta)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsEqualForMorphismsOnMor",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualForMorphismsOnMor",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualForMorphismsOnMor",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEqualForMorphismsOnMor",
+                  [ IsCapCategory, IsList ] );
+
+
+## adds the given string to PROPAGATION_LIST_FOR_EQUAL_MORPHISMS
 DeclareOperation( "AddPropertyToMatchAtIsCongruentForMorphisms",
                   [ IsCapCategory, IsString ] );
 
-DeclareOperation( "AddIsZeroForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
+###################################
+##
+#! @Section Basic Operations for Morphisms in Ab-Categories
+##
+###################################
 
-DeclareOperation( "AddIsZeroForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsZeroForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsZeroForMorphisms",
-                  [ IsCapCategory, IsList ] );
-
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$.
+#! The output is <C>true</C> if $\alpha \sim_{a,b} 0$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
 DeclareOperation( "IsZeroForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
-
-DeclareOperation( "AddAdditionForMorphisms",
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsZeroForMorphisms</C>.
+#! $F: \alpha \mapsto \mathtt{IsZeroForMorphisms}(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsZeroForMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddAdditionForMorphisms",
+DeclareOperation( "AddIsZeroForMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddAdditionForMorphisms",
+DeclareOperation( "AddIsZeroForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddAdditionForMorphisms",
+DeclareOperation( "AddIsZeroForMorphisms",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
+#! The output is the addition $\alpha + \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! @Arguments alpha, beta
 DeclareOperation( "AdditionForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-
-DeclareOperation( "AddAdditiveInverseForMorphisms",
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>AdditionForMorphisms</C>.
+#! $F: (\alpha, \beta) \mapsto \alpha + \beta$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddAdditionForMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddAdditiveInverseForMorphisms",
+DeclareOperation( "AddAdditionForMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddAdditiveInverseForMorphisms",
+DeclareOperation( "AddAdditionForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddAdditiveInverseForMorphisms",
+DeclareOperation( "AddAdditionForMorphisms",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$.
+#! The output is its additive inverse $-\alpha$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! @Arguments alpha
 DeclareOperation( "AdditiveInverseForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
-
-
-DeclareOperation( "AddZeroMorphism",
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>AdditiveInverseForMorphisms</C>.
+#! $F: \alpha \mapsto -\alpha$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddZeroMorphism",
+DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddZeroMorphism",
+DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddZeroMorphism",
+DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsList ] );
 
 
-DeclareOperation( "TransportHom",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
 ###################################
 ##
-#! @Section Subobject functions
+#! @Section Subobject and Factorobject Operations
 ##
 ###################################
 
-DeclareOperation( "AddIsEqualAsSubobjects",
-                  [ IsCapCategory, IsFunction ] );
+#! Subobjects of an object $c$ are monomorphisms
+#! with range $c$ and a special function for comparision.
+#! Similarly, factorobjects of an object $c$ are epimorphisms
+#! with source $c$ and a special function for comparision.
 
-DeclareOperation( "AddIsEqualAsSubobjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
+## TODO
+# @Description
+# This is a synonym for <C>IsMonomorphism</C>.
+DeclareSynonymAttr( "IsSubobject",
+                    IsMonomorphism );
 
-DeclareOperation( "AddIsEqualAsSubobjects",
-                  [ IsCapCategory, IsList, IsInt ] );
+## TODO
+# @Description
+# This is a synonym for <C>IsEpimorphism</C>.
+DeclareSynonymAttr( "IsFactorobject",
+                    IsEpimorphism );
 
-DeclareOperation( "AddIsEqualAsSubobjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @Description
+#! The arguments are two subobjects $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
+#! The output is <C>true</C> if there exists an isomorphism $\iota: a \rightarrow b$
+#! such that $\beta \circ \iota \sim_{a,c} \alpha$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha, beta
 DeclareOperation( "IsEqualAsSubobjects",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "AddIsEqualAsFactorobjects",
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsEqualAsSubobjects</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualAsSubobjects}(\alpha,\beta)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsEqualAsSubobjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsEqualAsFactorobjects",
+DeclareOperation( "AddIsEqualAsSubobjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsEqualAsFactorobjects",
+DeclareOperation( "AddIsEqualAsSubobjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsEqualAsFactorobjects",
+DeclareOperation( "AddIsEqualAsSubobjects",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are two factorobjects $\alpha: c \rightarrow a$, $\beta: c \rightarrow b$.
+#! The output is <C>true</C> if there exists an isomorphism $\iota: b \rightarrow a$
+#! such that $\iota \circ \beta \sim_{c,a} \alpha$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha, beta
 DeclareOperation( "IsEqualAsFactorobjects",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsEqualAsFactorobjects</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualAsFactorobjects}(\alpha,\beta)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsEqualAsFactorobjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualAsFactorobjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualAsFactorobjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEqualAsFactorobjects",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! In short: Returns <C>true</C> iff $\alpha$ is smaller than $\beta$.
+#! $\\ $
+#! Full description: The arguments are two subobjects $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
+#! The output is <C>true</C> if there exists a morphism $\iota: a \rightarrow b$
+#! such that $\beta \circ \iota \sim_{a,c} \alpha$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha, beta
 DeclareOperation( "Dominates",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Dominates</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{Dominates}(\alpha,\beta)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddDominates",
                   [ IsCapCategory, IsFunction ] );
 
@@ -425,10 +706,26 @@ DeclareOperation( "AddDominates",
                   [ IsCapCategory, IsList ] );
 
 
-
+#! @Description
+#! In short: Returns <C>true</C> iff $\alpha$ is smaller than $\beta$.
+#! $\\ $
+#! Full description: 
+#! The arguments are two factorobjects $\alpha: c \rightarrow a$, $\beta: c \rightarrow b$.
+#! The output is <C>true</C> if there exists a morphism $\iota: b \rightarrow a$
+#! such that $\iota \circ \beta \sim_{c,a} \alpha$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha, beta
 DeclareOperation( "Codominates",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Codominates</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{Codominates}(\alpha,\beta)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddCodominates",
                   [ IsCapCategory, IsFunction ] );
 
@@ -444,82 +741,226 @@ DeclareOperation( "AddCodominates",
 
 ###################################
 ##
-#! @Section Morphism functions
+#! @Section Composition of Morphisms
 ##
 ###################################
 
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow b$, $\beta: b \rightarrow c$.
+#! The output is the composition $\beta \circ \alpha: a \rightarrow c$.
+#! @Returns a morphism in $\mathrm{Hom}( a, c )$
+#! @Arguments alpha, beta
 DeclareOperation( "PreCompose",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! This is a convenience method.
+#! The argument is a list of morphisms
+#! $L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )$.
+#! The output is the composition 
+#! $\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )$.
+#! @Returns a morphism in $\mathrm{Hom}(a_1, a_{n+1})$
+#! @Arguments L
 DeclareOperation( "PreCompose",
                   [ IsList ] );
 
-###################################
-##
-## IsWellDefined
-##
-###################################
-
-DeclareOperation( "AddIsWellDefinedForMorphisms",
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>PreCompose</C>.
+#! $F: (\alpha, \beta) \mapsto \beta \circ \alpha$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsWellDefinedForMorphisms",
+DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsWellDefinedForMorphisms",
+DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsWellDefinedForMorphisms",
+DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsList ] );
 
+
+#! @Description
+#! The arguments are two morphisms $\beta: b \rightarrow c$, $\alpha: a \rightarrow b$.
+#! The output is the composition $\beta \circ \alpha: a \rightarrow c$.
+#! @Returns a morphism in $\mathrm{Hom}( a, c )$
+#! @Arguments beta, alpha
+DeclareOperation( "PostCompose",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! This is a convenience method.
+#! The argument is a list of morphisms
+#! $L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )$.
+#! The output is the composition 
+#! $((\alpha_{n} \circ  \alpha_{n-1}) \circ \dots  \alpha_2) \circ \alpha_1$.
+#! @Returns a morphism in $\mathrm{Hom}(a_1, a_{n+1})$
+#! @Arguments L
+DeclareOperation( "PostCompose",
+                  [ IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>PostCompose</C>.
+#! $F: (\alpha, \beta) \mapsto \alpha \circ \beta$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPostCompose",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPostCompose",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPostCompose",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPostCompose",
+                  [ IsCapCategory, IsList ] );
+
+
+###################################
+##
+#! @Section IsWellDefined
+##
+###################################
+
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is <C>true</C> if $\alpha$ is well-defined,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
 DeclareOperation( "IsWellDefinedForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsWellDefinedForMorphisms</C>.
+#! $F: \alpha \mapsto \mathtt{IsWellDefinedForMorphisms}( \alpha )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsWellDefinedForMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsWellDefinedForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsWellDefinedForMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsWellDefinedForMorphisms",
+                  [ IsCapCategory, IsList ] );
+
 ###################################
 ##
-## Monomorphism as kernel lift
+#! @Section Basic Operations for Morphisms in Abelian Categories
 ##
 ###################################
 
+
 #! @Description
-#! This operation takes a monomorphism $\iota: K \rightarrow A$
-#! and a test morphism $\tau: T \rightarrow A$ and tries
-#! to compute a lift $u: T \rightarrow K$ such that
-#! $\iota \circ u = \tau$. If this is not possible the method 
-#! will return fail.
-#! @Returns $u$
-#! @Arguments monomorphism, test_morphism
+#! The arguments are a monomorphism $\iota: k \hookrightarrow a$
+#! and a morphism $\tau: t \rightarrow a$
+#! such that there is a morphism $u: t \rightarrow k$ with
+#! $\iota \circ u \sim_{t,a} \tau$.
+#! The output is such a $u$.
+#! @Returns a morphism in $\mathrm{Hom}(t,k)$
+#! @Arguments iota, tau
 DeclareOperation( "MonoAsKernelLift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-####################################
-##
-## Epismorphism as cokernel lift
-##
-####################################
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MonoAsKernelLift</C>.
+#! The function $F$ maps a pair $(\iota, \tau)$ to a lift $u$ if it
+#! exists, and to <C>fail</C> otherwise.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMonoAsKernelLift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonoAsKernelLift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonoAsKernelLift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonoAsKernelLift",
+                  [ IsCapCategory, IsList ] );
 
 #! @Description
-#! This operation takes an epimorphism $\epsilon: A \rightarrow C$
-#! and a test morphism $\tau: A \rightarrow T$ and tries
-#! to compute a colift $u: C \rightarrow T$ such that
-#! $u \circ \epsilon = \tau$. If this is not possible the method 
-#! will return fail.
-#! @Returns $u$
-#! @Arguments epimorphism, test_morphism
+#! The arguments are an epimorphism $\epsilon: a \rightarrow c$
+#! and a morphism $\tau: a \rightarrow t$
+#! such that there is a morphism $u: c \rightarrow t$ with
+#! $u \circ \epsilon \sim_{a,t} \tau$.
+#! The output is such a $u$.
+#! @Returns a morphism in $\mathrm{Hom}(c,t)$
+#! @Arguments iota, tau
 DeclareOperation( "EpiAsCokernelColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>EpiAsCokernelColift</C>.
+#! The function $F$ maps a pair $(\epsilon, \tau)$ to a lift $u$ if it
+#! exists, and to <C>fail</C> otherwise.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEpiAsCokernelColift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEpiAsCokernelColift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEpiAsCokernelColift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpiAsCokernelColift",
+                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##
-## Lift/ Colift
+#! @Section Lift/ Colift
 ##
 ###################################
 
-##
+#! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$,
+#!  we call each morphism $\alpha / \beta: a \rightarrow b$ such that
+#!  $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$ a <Emph>lift of $\alpha$ along $\beta$</Emph>.
+#! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$,
+#!  we call each morphism $\alpha \backslash \beta: c \rightarrow b$ such that
+#!  $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$ a <Emph> colift of $\beta$ along $\alpha$</Emph>.
+#! Note that such lifts (or colifts) do not have to be unique. So in general,
+#! we do not expect that algorithms computing lifts (or colifts) do this in a functorial way.
+#! Thus the operations $\mathtt{Lift}$ and $\mathtt{Colift}$ are not regarded as 
+#! categorical operations, but only as set-theoretic operations.
+
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$
+#! such that there is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$, i.e.,
+#! a morphism such that $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$.
+#! The output is such a lift.
+#! @Returns a morphism in $\mathrm{Hom}(a,c)$
+#! @Arguments alpha, beta
 DeclareOperation( "Lift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Lift</C>.
+#! The function $F$ maps a pair $(\alpha, \beta)$ to a lift $\alpha / \beta$ if it
+#! exists, and to <C>fail</C> otherwise.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddLift",
                   [ IsCapCategory, IsFunction ] );
 
@@ -533,9 +974,24 @@ DeclareOperation( "AddLift",
                   [ IsCapCategory, IsList ] );
 
 ##
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$
+#! such that there is a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$., i.e.,
+#! a morphism such that $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$.
+#! The output is such a colift.
+#! @Returns a morphism in $\mathrm{Hom}(c,b)$
+#! @Arguments alpha, beta
 DeclareOperation( "Colift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Colift</C>.
+#! The function $F$ maps a pair $(\alpha, \beta)$ to a colift $\alpha \backslash \beta$ if it
+#! exists, and to <C>fail</C> otherwise.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddColift",
                   [ IsCapCategory, IsFunction ] );
 
@@ -550,10 +1006,14 @@ DeclareOperation( "AddColift",
 
 ###################################
 ##
-#! @Section Implied operations
+#! @Section Transport Operations
 ##
 ###################################
 
+## mor: x -> y
+## equality_source: x -> x'
+## equality_range: y -> y'
+## TransportHom( mor, equality_source, equality_range ): x' -> y'
+DeclareOperation( "TransportHom",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "PostCompose",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );

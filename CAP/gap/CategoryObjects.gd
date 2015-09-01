@@ -184,7 +184,7 @@ DeclareOperation( "IsZeroForObjects",
 
 ###################################
 ##
-#! @Section Add function
+#! @Section Adding Objects to a Category
 ##
 ###################################
 
@@ -218,6 +218,18 @@ DeclareAttributeWithToDoForIsWellDefined( "IdentityMorphism",
 
 DeclareOperation( "ZeroMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddZeroMorphism",
+                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##
