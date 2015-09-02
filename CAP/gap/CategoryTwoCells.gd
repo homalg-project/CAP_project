@@ -14,7 +14,7 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL" );
 
 ######################################
 ##
-#! @Section Attributes for the Type of Morphisms
+#! @Section Attributes for the Type of 2-Cells
 ##
 ######################################
 
