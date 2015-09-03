@@ -21,6 +21,42 @@ of the following types:
 
 \section{Basic Constructions}
 
+\subsection{Categorical Properties of Morphisms}
+
+In \CapPkg, support is given for the implementation of the following categorical properties
+of morphisms.
+
+
+\begin{definition}
+A morphism $\alpha: b \rightarrow c$ is called a \textbf{monomorphism} if for every pair of morphisms 
+$\beta, \gamma: a \rightarrow b$ such that $\alpha \circ \beta \sim_{a,c} \alpha \circ \gamma$,
+we have $\beta \sim_{a,b} \gamma$.
+\end{definition}
+
+
+\begin{definition}
+ A morphism $\alpha: a \rightarrow b$ is called an \textbf{epimorphism} if for every pair of morphisms
+ $\beta, \gamma: b \rightarrow c$ such that $\beta \circ \alpha \sim_{a,c} \gamma \circ \alpha$,
+ we have $\beta \sim_{b,c} \gamma$.
+\end{definition}
+
+\begin{definition}
+ A morphism $\alpha: a \rightarrow b$ is called an \textbf{isomorphism} if there is a morphism $\beta: b \rightarrow a$
+ such that $\alpha \circ \beta \sim_{b,b} \id_{b}$ and $\beta \circ \alpha \sim_{a,a} \id_{a}$.
+\end{definition}
+
+\begin{definition}
+ A morphism $\alpha: a \rightarrow b$ is called a \textbf{split monomorphism} if there is a morphism $\beta: b \rightarrow a$
+ such that $\beta \circ \alpha \sim_{a,a} \mathrm{id}_{a}$.
+\end{definition}
+
+\begin{definition}
+ A morphism $\alpha: a \rightarrow b$ is called a \textbf{split epimorphism} if there is a morphism $\beta: b \rightarrow a$
+ such that $\alpha \circ \beta \sim_{b,b} \mathrm{id}_{b}$.
+\end{definition}
+
+
+
 \section{Limits and Colimits}\label{section:universalobjects}
 
 In \CapPkg, support is given for the implementation of some special kinds of limits and
@@ -639,7 +675,7 @@ in the definition:
     \begin{tikzcd}
     a \otimes ( b \otimes c ) \arrow{r}{B} \arrow{d}{\alpha} & ( b \otimes c ) \otimes a \arrow{d}{\alpha^{-1}} \\
     ( a \otimes b ) \otimes c \arrow{d}{B \otimes \id} & b \otimes ( c \otimes a ) \arrow{d}{\id \otimes B} \\
-    ( b \otimes a ) \otimes c \arrow{r}{\alpha} & b \otimes ( a \otimes c )
+    ( b \otimes a ) \otimes c \arrow{r}{\alpha^{-1}} & b \otimes ( a \otimes c )
     \end{tikzcd}
   \end{center}
  \end{itemize}
