@@ -11,10 +11,10 @@ clear what kind of mathematical object we want to model.
 In the second section, we define \GAP sets and \GAP maps, in order to have semantics
 for the basic operation symbols.
 
-Afterwards, we begin with the enumeration of all specifiactions, which are
-the equality specifiactions, typing specifiactions, and mathematical specifiactions.
+Afterwards, we begin with the enumeration of all specifications, which are
+the equality specifications, typing specifications, and mathematical specifications.
 
-We conclude with a statement about the importance of specifiactions.
+We conclude with a statement about the importance of specifications.
 
 \section{Categories}\label{section:categories}
 
@@ -63,7 +63,7 @@ satisfying some simple axioms. In $\CapPkg$, we use a slightly different notion 
 So the main differences between a $\CapPkg$ category and a classical category are:
 \begin{enumerate}
  \item A $\CapPkg$ category has a set of objects, not a class.
- \item A $\CapPkg$ cateogry has as an additional part of its datum a congruence for morphisms, and the
+ \item A $\CapPkg$ category has as an additional part of its datum a congruence for morphisms, and the
  axioms are stated with respect to this congruence, and not with respect to equality.
 \end{enumerate}
 
@@ -91,7 +91,7 @@ the category of presentations).
 In this section, we will first define \GAP sets and \GAP maps and
 then associate to such objects actual sets and maps. 
 Such a translation between objects on the computer and mathematical objects
-is necessary for modelling mathematics on the computer.
+is necessary for modeling mathematics on the computer.
 
 \begin{remark}
  For our definitions to be consistent, we have to fix
@@ -128,7 +128,7 @@ both having values in $\Bool$, such that
   \item for $y \not\in P$, $\Omega( y )$ throws an error.
  \end{enumerate}
  For a natural number $n \in \N$, we define $n$-ary \GAP maps analogously, i.e., 
- they respect equality componentwise.
+ they respect equality component-wise.
 \end{definition}
 
 \begin{remark}\label{remark:implementation_of_gap_maps}[Implementation of a \GAP map]
@@ -232,7 +232,7 @@ Every basic operation of $\mathbf{C}$ takes finitely many arguments as an input 
 Each input argument has one of the following types:
 \begin{enumerate}
  \item $\Int$, an integer.
- \item $\Bool$, a boolean.
+ \item $\Bool$, a Boolean.
  \item $\Obj_{\mathbf{C}}$, an object of $\mathbf{C}$.
  \item $\Hom_{\mathbf{C}}( a, b )$, a morphism with source and range given by objects $a$ and $b$ in $\mathbf{C}$, respectively (this is a dependent type).
        We write $\Mor_{\mathbf{C}} := \sum_{a,b: \Obj_{\mathbf{C}}} \Hom_{\mathbf{C}}( a, b )$ for the type of all morphisms.
@@ -243,7 +243,7 @@ These are also the possible output types except that an output never is a list. 
 We now specify what it means for two terms of the same type to be equal.
 \begin{enumerate}
  \item For $\Int$ and $\Bool$, equality is given by the equality operations in $\GAP$.
- \item For $\ListObj_{\mathbf{C}}$ and $\ListMor_{\mathbf{C}}$, equality is given by entrywise equality.
+ \item For $\ListObj_{\mathbf{C}}$ and $\ListMor_{\mathbf{C}}$, equality is given by entry-wise equality.
  \item For $\Obj_{\mathbf{C}}$, equality is given by the basic operation \texttt{IsEqualForObjects}.
  \item For $\Hom_{\mathbf{C}}( a, b )$, equality is given by the basic operation \texttt{IsEqualForMorphisms}.
 \end{enumerate}
@@ -280,10 +280,10 @@ The basic operation \texttt{IsEqualForObjects} has a special specification.
 ~
  \begin{enumerate}
   \item Input: two objects ($\Obj$).
-  \item Output: a boolean ($\Bool$).
+  \item Output: a Boolean ($\Bool$).
   \item \texttt{IsEqualForObjects} has to respect the \GAP function \texttt{IsIdenticalObj}, i.e., 
   for objects $a, a', b, b'$ such that \texttt{IsIdenticalObj}($a$, $a'$) and \texttt{IsIdenticalObj}($b$, $b'$) holds,
-  \texttt{IsEqualForObjects}($a$, $b$) and \texttt{IsEqualForObjects}($a'$, $b'$) yield equal booleans.
+  \texttt{IsEqualForObjects}($a$, $b$) and \texttt{IsEqualForObjects}($a'$, $b'$) yield equal Booleans.
   \item \texttt{IsEqualForObjects} has to give rise to an equivalence relation on the set of all objects together
   with \texttt{IsEqualForObjects} as an equality function.
  \end{enumerate}
@@ -302,10 +302,10 @@ The basic operation \texttt{IsEqualForMorphisms} has a special specification.
 Let $a, b: \Obj$. 
  \begin{enumerate}
   \item Input: two morphisms ($\Hom(a,b)$) (having equal sources and ranges).
-  \item Output: a boolean ($\Bool$).
+  \item Output: a Boolean ($\Bool$).
   \item \texttt{IsEqualForMorphisms} has to respect the \GAP function \texttt{IsIdenticalObj}, i.e., 
   for morphisms $\alpha, \alpha', \beta, \beta'$ such that \texttt{IsIdenticalObj}($\alpha$, $\alpha'$) and \texttt{IsIdenticalObj}($\beta$, $\beta'$) holds,
-  \texttt{IsEqualForMorphisms}($\alpha$, $\beta$) and \texttt{IsEqualForMorphisms}($\alpha'$, $\beta'$) yield equal booleans.
+  \texttt{IsEqualForMorphisms}($\alpha$, $\beta$) and \texttt{IsEqualForMorphisms}($\alpha'$, $\beta'$) yield equal Booleans.
   \item \texttt{IsEqualForMorphisms} has to give rise to an equivalence relation on the set of all morphisms with prescribed source and range together
   with \texttt{IsEqualForObjects} as an equality function.
  \end{enumerate}
@@ -365,7 +365,7 @@ basic operation first triggers a type checking for the input.
 \\
 The meaning and implications of the second item have to be analyzed carefully.
 \begin{example}[\ref{example:simple_typing} continued]
- The output has to be a boolean (c.f. remark \ref{remark:realization_of_types}).
+ The output has to be a Boolean (c.f. remark \ref{remark:realization_of_types}).
 \end{example}
 
 \begin{example}[\ref{example:simple_typing_with_morphism_input} continued]
