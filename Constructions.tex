@@ -21,6 +21,42 @@ of the following types:
 
 \section{Basic Constructions}
 
+\subsection{Categorical Properties of Morphisms}
+
+In \CapPkg, support is given for the implementation of the following categorical properties
+of morphisms.
+
+
+\begin{definition}
+A morphism $\alpha: b \rightarrow c$ is called a \textbf{monomorphism} if for every pair of morphisms 
+$\beta, \gamma: a \rightarrow b$ such that $\alpha \circ \beta \sim_{a,c} \alpha \circ \gamma$,
+we have $\beta \sim_{a,b} \gamma$.
+\end{definition}
+
+
+\begin{definition}
+ A morphism $\alpha: a \rightarrow b$ is called an \textbf{epimorphism} if for every pair of morphisms
+ $\beta, \gamma: b \rightarrow c$ such that $\beta \circ \alpha \sim_{a,c} \gamma \circ \alpha$,
+ we have $\beta \sim_{b,c} \gamma$.
+\end{definition}
+
+\begin{definition}
+ A morphism $\alpha: a \rightarrow b$ is called an \textbf{isomorphism} if there is a morphism $\beta: b \rightarrow a$
+ such that $\alpha \circ \beta \sim_{b,b} \id_{b}$ and $\beta \circ \alpha \sim_{a,a} \id_{a}$.
+\end{definition}
+
+\begin{definition}
+ A morphism $\alpha: a \rightarrow b$ is called a \textbf{split monomorphism} if there is a morphism $\beta: b \rightarrow a$
+ such that $\beta \circ \alpha \sim_{a,a} \mathrm{id}_{a}$.
+\end{definition}
+
+\begin{definition}
+ A morphism $\alpha: a \rightarrow b$ is called a \textbf{split epimorphism} if there is a morphism $\beta: b \rightarrow a$
+ such that $\alpha \circ \beta \sim_{b,b} \mathrm{id}_{b}$.
+\end{definition}
+
+
+
 \section{Limits and Colimits}\label{section:universalobjects}
 
 In \CapPkg, support is given for the implementation of some special kinds of limits and
@@ -139,7 +175,7 @@ automatically tries to fill in the missing operations:
 \end{itemize}
 
 Moreover, if the three basic operations $D \mapsto L$, $D \mapsto \lambda$, and $( D, L ) \mapsto \lambda$
-are all given, then \CapPkg automatically enhances $D \mapsto \lambda$ with a \textbf{redirect function}.
+are all given, then \CapPkg automatically enhances $D \mapsto \lambda$ with a \textbf{redirect function}\label{in_text:redirect}.
 The redirect function first looks if the limit object $L$ is already in the cache of $D \mapsto L$
 (compared with a user given equality function, default option is $\IsEqualForObjects$).
 If this is the case, \CapPkg automatically calls the \texttt{WithGiven} operation $( D, L ) \mapsto \lambda$
@@ -189,7 +225,7 @@ We will now define the limits and colimits available in \CapPkg.
         $\beta_i \circ \pi_i  \sim_{P, B} \beta_j \circ \pi_j$ for all pairs $i,j$.
   \item a dependent function $u$ mapping each list of morphisms
         $\tau = ( \tau_i: T \rightarrow P_i )$ such that
-        $\beta_i \circ \tau_i  \sim_{P, B} \beta_j \circ \tau_j$ for all pairs $i,j$
+        $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$
         to a morphism $u( \tau ): T \rightarrow P$ such that
         $\pi_i \circ u( \tau ) \sim_{T, P_i} \tau_i$ for all $i = 1, \dots, n$.
  \end{enumerate}
@@ -270,14 +306,14 @@ We will now define the limits and colimits available in \CapPkg.
  A terminal object consists of two parts:
  \begin{enumerate}
   \item an object $T$,
-  \item a function $u$ mapping each object $A$ to a morphism $u( \tau ): A \rightarrow T$.
+  \item a function $u$ mapping each object $A$ to a morphism $u( A ): A \rightarrow T$.
  \end{enumerate}
- The pair $( T, u )$ is called a \textbf{terminal object} if the morphisms $u( \tau )$ are uniquely determined up to
+ The pair $( T, u )$ is called a \textbf{terminal object} if the morphisms $u( A )$ are uniquely determined up to
  congruence of morphisms.
 \end{definition}
 
 \begin{remark}
- The corresonding diagram $D$ is given by the unique functor $\empty \rightarrow \mathbf{A}$.
+ The correspondingding diagram $D$ is given by the unique functor $\empty \rightarrow \mathbf{A}$.
  Thus the source of a terminal object can be omited.
 \end{remark}
 
@@ -324,11 +360,11 @@ We now state the constructive definition.
   \item a list of morphisms $\pi = (\pi_i: S \rightarrow S_i)_{i = 1 \dots n}$,
   \item a list of morphisms $\iota = (\iota_i: S_i \rightarrow S)_{i = 1 \dots n}$,
   \item a dependent function $u_{\mathrm{in}}$ mapping every list $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$
-        to a morphism $u_{\mathrm{in}}: T \rightarrow S$ such that
-        $\pi_i \circ u_{\mathrm{in}} \sim_{T,S_i} \tau_i$ for all $i = 1, \dots, n$.
+        to a morphism $u_{\mathrm{in}}(\tau): T \rightarrow S$ such that
+        $\pi_i \circ u_{\mathrm{in}}(\tau) \sim_{T,S_i} \tau_i$ for all $i = 1, \dots, n$.
   \item a dependent function $u_{\mathrm{out}}$ mapping every list $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$
-        to a morphism $u_{\mathrm{out}}: S \rightarrow T$ such that
-        $u_{\mathrm{out}} \circ \iota_i \sim_{S_i, T} \tau_i$ for all $i = 1, \dots, n$,
+        to a morphism $u_{\mathrm{out}}(\tau): S \rightarrow T$ such that
+        $u_{\mathrm{out}}(\tau) \circ \iota_i \sim_{S_i, T} \tau_i$ for all $i = 1, \dots, n$,
  \end{enumerate}
  such that
  \begin{enumerate}
@@ -356,9 +392,9 @@ We now state the constructive definition.
   \item an object $I$,
   \item a morphism $c: A \rightarrow I$,
   \item a monomorphism $\iota: I \hookrightarrow B$ such that $\iota \circ c \sim_{A,B} \alpha$,
-  \item a dependent function $u$ mapping every pair of morphisms $\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )$
+  \item a dependent function $u$ mapping each pair of morphisms $\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )$
   where $\tau_2$ is a monomorphism
-  such that $\tau_2 \circ \tau_1 \sim_{A,T} \alpha$ to a morphism
+  such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$ to a morphism
   $u(\tau): I \rightarrow T$ such that
   $\tau_2 \circ u(\tau) \sim_{I,B} \iota$ and $u(\tau) \circ c \sim_{A,T} \tau_1$.
  \end{enumerate}
@@ -368,21 +404,13 @@ We now state the constructive definition.
 
 \subsection{Coimage}
 
-% #! Let $\alpha: A \rightarrow B$ be a morphism. The image of $\alpha$ is
-% #! the smallest monomorphism $\iota: I \hookrightarrow B$ through which $\alpha$ factors, i.e.,
-% #! such that there exists a morphism $c: A \rightarrow I$ with $\iota \circ c = \alpha$.
-% #! Smallest in this context means that for every other factorization of $\alpha = \tau_2 \circ \tau_1$
-% #! with $\tau_1: A \rightarrow T, \tau_2: T \rightarrow B$
-% #! where $\tau_2$ is a monomorphism, there exists a unique morphism $u: I \rightarrow T$
-% #! such that $\iota = \tau_2 \circ u$ and $\tau_1 = u \circ c$.
-
 \begin{definition}
  For a given morphism $\alpha: A \rightarrow B$, a coimage of $\alpha$ consists of four parts:
  \begin{enumerate}
   \item an object $C$,
   \item an epimorphism $\pi: A \twoheadrightarrow C$,
   \item a morphism $a: C \rightarrow B$ such that $a \circ \pi \sim_{A,B} \alpha$,
-  \item a dependent function $u$ mapping every pair of morphisms $\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )$
+  \item a dependent function $u$ mapping each pair of morphisms $\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )$
   where $\tau_1$ is an epimorphism
   such that $\tau_2 \circ \tau_1 \sim_{A,B} \alpha$ to a morphism
   $u(\tau): T \rightarrow C$ such that
@@ -394,6 +422,371 @@ We now state the constructive definition.
 
 
 
-\section{Monoidal Categories}
+\section{Categories with more Structure}
+
+\CapPkg supports various notions of categories with additional structure.
+If we want to implement such categories, we set the corresponding
+\GAP properties to true right after the call of the constructor
+\texttt{CreateCapCategory}.
+
+\begin{example}
+ Let $k$ be a field. The category of finite dimensional vector spaces over $k$
+ is an abelian category. It is realized in the \CapPkg package \texttt{LinearAlgebraForCAP}.
+ Furthermore, it can be enhanced with a tensor product such that it becomes a
+ rigid symmetric closed monoidal category.
+\end{example}
+
+\begin{example}
+ Let $R$ be a ring. The category of finitely presented modules over $R$
+ is an abelian category. It is realized in the \CapPkg package \texttt{ModulePresentationsForCAP}.
+ Furthermore, if $R$ is commutative, it can be enhanced with a tensor product such that it becomes a
+ symmetric closed monoidal category.
+\end{example}
+
+\begin{example}
+ The generalized morphism category is enriched over commutative regular semigroups.
+ It is realized in the \CapPkg package \texttt{GeneralizedMorphismsForCAP}.
+\end{example}
+
+\subsection{Categories Enriched over Commutative Regular Semigroups}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsEnrichedOverCommutativeRegularSemigroup}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}
+ The definition of a category enriched over commutative regular semigroups
+ can be found in \cite{BL_GabrielMorphisms} (where this property is called
+ \textit{enriched over commutative inverse monoids)}.
+\end{definition}
+
+
+
+
+\subsection{Ab-Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsAbCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ A category $\mathbf{C}$ enriched over abelian groups is called an \textbf{$\mathbf{Ab}$-category}, i.e.,
+ every set of homomorphisms is equipped with a structure of an abelian group
+ such that composition is bilinear.
+\end{definition}
+
+Basic operations for $\mathbf{Ab}$-categories coming from the existential quantifiers
+in the definition.
+\begin{itemize}
+ \item \texttt{ZeroMorphism}
+ \item \texttt{IsZeroForMorphisms}
+ \item \texttt{AdditionForMorphisms}
+ \item \texttt{AdditiveInverseForMorphisms}
+\end{itemize}
+
+\subsection{Additive Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsAdditiveCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ An $\mathbf{Ab}$-category $\mathbf{C}$ is called \textbf{additive}
+ if it has a zero object and direct sums for all pairs of objects.
+\end{definition}
+
+Basic operations for additive categories coming from the existential quantifiers
+in the definition
+(in addition to the basic operations for $\mathbf{Ab}$-categories):
+\begin{itemize}
+ \item \texttt{ZeroObject}
+ \item \texttt{UniversalMorphismFromZeroObject}
+ \item \texttt{UniversalMorphismIntoZeroObject}
+ \item \texttt{DirectSum}
+ \item \texttt{ProjectionInFactorOfDirectSum}
+ \item \texttt{InjectionOfCofactorOfDirectSum}
+ \item \texttt{UniversalMorphismIntoDirectSum}
+ \item \texttt{UniversalMorphismFromDirectSum}
+\end{itemize}
+
+
+\subsection{Preabelian Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsPreAbelianCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}
+ An additive category $\mathbf{C}$ is called \textbf{preabelian} 
+ if it has kernels and cokernels for every morphism.
+\end{definition}
+
+Basic operations for preadditive categories coming from the existential quantifiers
+in the definition
+(in addition to the basic operations for additive categories):
+\begin{itemize}
+ \item \texttt{KernelObject}
+ \item \texttt{KernelEmb}
+ \item \texttt{KernelLift}
+ \item \texttt{Cokernel}
+ \item \texttt{CokernelProj}
+ \item \texttt{CokernelColift}
+\end{itemize}
+
+
+\subsection{Abelian Categories}[\cite{MLCWM}]
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsAbelianCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}
+ A preabelian category $\mathbf{C}$ is called \textbf{abelian}
+ if every monomorphism can be regarded as a kernel embedding
+ and every epimorphism can be regarded cokernel projection.
+\end{definition}
+
+Basic operations for abelian categories coming from the existential quantifiers
+in the definition
+(in addition to the basic operations for preabelian categories):
+\begin{itemize}
+ \item \texttt{MonoAsKernelLift}
+ \item \texttt{EpiAsCokernelColift}
+\end{itemize}
+
+\subsection{Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ A $6$-tuple $( \mathbf{C}, \otimes, 1, \alpha, \lambda, \rho )$
+ consisting of 
+ \begin{itemize}
+  \item a category $\mathbf{C}$, 
+  \item a functor $\otimes: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}$,
+  \item an object $1 \in \mathbf{C}$, 
+  \item a natural isomorphism $\alpha_{a,b,c}: a \otimes (b \otimes c) \cong (a \otimes b) \otimes c$,
+  \item a natural isomorphism $\lambda_{a}: 1 \otimes a \cong a$, 
+  \item a natural isomorphism $\rho_{a}: a \otimes 1 \cong a$,
+ \end{itemize}
+ is called a \textbf{monoidal category} if the pentagonal diagram
+ \begin{center} 
+ \begin{tikzpicture}[commutative diagrams/every diagram]
+\node (P0) at (90:2.8cm) {$ a \otimes ( b \otimes ( c \otimes d ) )$};
+\node (P1) at (90+72:2.5cm) {$a \otimes ( ( b \otimes c ) \otimes d )$} ;
+\node (P2) at (90+2*72:2.5cm) {\makebox[5ex][r]{$( a \otimes ( b \otimes c ) ) \otimes d$}};
+\node (P3) at (90+3*72:2.5cm) {\makebox[5ex][l]{$((a \otimes b) \otimes c) \otimes d$}};
+\node (P4) at (90+4*72:2.5cm) {$( a \otimes b ) \otimes ( c \otimes d )$};
+\path[commutative diagrams/.cd, every arrow, every label]
+(P0) edge node[swap] {$\id \otimes \alpha_{b,c,d}$} (P1)
+(P1) edge node[swap] {$\alpha_{a, b \otimes c, d}$} (P2)
+(P2) edge node {$\alpha_{a,b,c} \otimes \id$} (P3)
+(P4) edge node {$\alpha_{a \otimes b, c, d}$} (P3)
+(P0) edge node {$\alpha_{a,b,c \otimes d}$} (P4);
+\end{tikzpicture}
+\end{center}
+
+and the triangular diagram
+
+ \begin{center}
+  \begin{tikzcd}
+  a \otimes (1 \otimes c) \arrow{r}{\alpha_{a,1,c}} \arrow{dr}[description]{\id \otimes \lambda_{c}}
+  &(a \otimes 1) \otimes c \arrow{d}[right]{\rho_{a} \otimes \id} \\
+  &a \otimes c
+  \end{tikzcd}
+ \end{center}
+
+commute.
+\end{definition}
+
+Basic operations for monoidal categories coming from the existential quantifiers
+in the definition:
+\begin{itemize}
+ \item \texttt{TensorProductOnObjects}
+ \item \texttt{TensorProductOnMorphisms}
+ \item \texttt{TensorUnit}
+ \item \texttt{AssociatorLeftToRight}
+ \item \texttt{AssociatorRightToLeft}
+ \item \texttt{LeftUnitor}
+ \item \texttt{LeftUnitorInverse}
+ \item \texttt{RightUnitor}
+ \item \texttt{RightUnitorInverse}
+ 
+\end{itemize}
+
+
+\subsection{Braided Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsBraidedMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ A monoidal category $\mathbf{C}$ equipped with a natural isomorphism
+ \[
+  B_{a,b}: a \otimes b \cong b \otimes a
+ \]
+ is called a \textbf{braided monoidal category}
+ if the following diagrams commute:
+ 
+ \begin{itemize}
+  \item Compatibility with the tensor unit:
+  \begin{center}
+    \begin{tikzcd}
+    a \otimes 1 \arrow{r}{B_{a,1}} \arrow{dr}[left]{\rho_a} & 1 \otimes a \arrow{d}{\lambda_a} \\
+    & a
+    \end{tikzcd}
+  \end{center}
+ 
+  \item Swapping $b,c$ in the term $(a \otimes b) \otimes c$:
+  \begin{center}
+    \begin{tikzcd}
+    (a \otimes b) \otimes c \arrow{r}{B} \arrow{d}{\alpha^{-1}} & c \otimes ( a \otimes b ) \arrow{d}{\alpha} \\
+    a \otimes ( b \otimes c ) \arrow{d}{\id \otimes B} & ( c \otimes a ) \otimes b \arrow{d}{B \otimes \id} \\
+    a \otimes ( c \otimes b ) \arrow{r}{\alpha} & ( a \otimes c ) \otimes b
+    \end{tikzcd}
+  \end{center}
+  
+  \item Swapping $a,b$ in the term $a \otimes (b \otimes c)$:
+  \begin{center}
+    \begin{tikzcd}
+    a \otimes ( b \otimes c ) \arrow{r}{B} \arrow{d}{\alpha} & ( b \otimes c ) \otimes a \arrow{d}{\alpha^{-1}} \\
+    ( a \otimes b ) \otimes c \arrow{d}{B \otimes \id} & b \otimes ( c \otimes a ) \arrow{d}{\id \otimes B} \\
+    ( b \otimes a ) \otimes c \arrow{r}{\alpha^{-1}} & b \otimes ( a \otimes c )
+    \end{tikzcd}
+  \end{center}
+ \end{itemize}
+\end{definition}
+
+Basic operations for braided monoidal categories coming from the existential quantifiers
+in the definition
+(in addition to the basic operations for monoidal categories):
+\begin{itemize}
+ \item \texttt{Braiding}
+ \item \texttt{BraidingInverse}
+\end{itemize}
+
+\subsection{Symmetric Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsSymmetricMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ A braided monoidal category $\mathbf{C}$ is called \textbf{symmetric monoidal category}
+ if $B_{a,b}^{-1} = B_{b,a}$.
+\end{definition}
+
+
+\subsection{Symmetric Closed Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsSymmetricClosedMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}[\cite{MLCWM}]
+ A symmetric monoidal category $\mathbf{C}$
+ which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
+ a right adjoint (denoted by $\underline{\Hom}(b,-)$)
+ is called a \textbf{symmetric closed monoidal category} or simply \textbf{closed category}.
+\end{definition}
+
+\begin{remark}
+ The family of right adjoints defines a bifunctor
+ $\underline{\Hom}(-,-): \mathbf{C}^{\mathrm{op}} \times \mathbf{C} \rightarrow \mathbf{C}$
+ which we consider as a part of the datum of a closed category.
+\end{remark}
+
+
+Basic operations for symmetric closed monoidal categories coming from the existential quantifiers
+in the definition
+(in addition to the basic operations for symmetric monoidal categories):
+\begin{itemize}
+  \item \texttt{InternalHomOnObjects}
+  \item \texttt{InternalHomOnMorphisms}
+  \item \texttt{EvaluationMorphism}
+  \item \texttt{CoevaluationMorphism}
+\end{itemize}
+
+\subsection{Rigid Symmetric Closed Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsRigidSymmetricClosedMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}\cite{Deligne}
+ A symmetric closed monoidal category $\mathbf{C}$ satisfying
+ \begin{enumerate}
+  \item the natural morphism
+  $\underline{\Hom}(a_1,b_1) \otimes \underline{\Hom}(a_2,b_2) \rightarrow \underline{\Hom}(a_1 \otimes a_2,b_1 \otimes b_2)$
+  is an isomorphism,
+  \item the natural morphism
+  $a \rightarrow \underline{\Hom}(\underline{\Hom}(a, 1), 1)$
+  is an isomorphism
+ \end{enumerate}
+ is called a \textbf{rigid symmetric closed monoidal category}.
+\end{definition}
+
+Basic operations for rigid symmetric closed monoidal categories coming from the existential quantifiers
+in the definition
+(in addition to the basic operations for symmetric closed monoidal categories):
+\begin{itemize}
+  \item \texttt{TensorProductInternalHomCompatibilityMorphismInverse}
+  \item \texttt{MorphismFromBidual}
+\end{itemize}
+
+\subsection{Strict Monoidal Categories}
+
+\begin{documentation}
+ The corresponding \GAP property is given by
+ \begin{center}
+  \texttt{IsStrictMonoidalCategory}.  
+ \end{center}
+\end{documentation}
+
+\begin{definition}
+ A monoidal category $\mathbf{C}$ is called \textbf{strict}
+ if the associator and the unitors are identities.
+\end{definition}
+
+\begin{remark}
+ Note that being a strict monoidal category is
+ a set theoretic property, but
+ not a categorical property
+ since it is not preserved by equivalences of categories.
+\end{remark}
+
 
 \section{Derivations}\label{section:derivations}
