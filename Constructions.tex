@@ -175,7 +175,7 @@ automatically tries to fill in the missing operations:
 \end{itemize}
 
 Moreover, if the three basic operations $D \mapsto L$, $D \mapsto \lambda$, and $( D, L ) \mapsto \lambda$
-are all given, then \CapPkg automatically enhances $D \mapsto \lambda$ with a \textbf{redirect function}.
+are all given, then \CapPkg automatically enhances $D \mapsto \lambda$ with a \textbf{redirect function}\label{in_text:redirect}.
 The redirect function first looks if the limit object $L$ is already in the cache of $D \mapsto L$
 (compared with a user given equality function, default option is $\IsEqualForObjects$).
 If this is the case, \CapPkg automatically calls the \texttt{WithGiven} operation $( D, L ) \mapsto \lambda$
