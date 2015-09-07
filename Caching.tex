@@ -1,0 +1,31 @@
+In this chapter, we will have a closer look at the caching
+which is used in \CapPkg. Almost every function in \CapPkg is cached,
+this means, consecutive calls with the same arguments lead to identical results.
+
+\section{The role of caches}
+
+Caching in \CapPkg is mainly done for two reasons: speed and compatibility.
+
+\section{Types of caching}
+
+In \CapPkg, we generally use two types of caching: The \GAP internal attribute/property caching and
+the caches implemented in \CapPkg. They differ mainly in two aspects, namely the way arguments of
+functions are compared and how many arguments a cached function can have. We want to compare the two
+ways of caching.
+
+\subsection{Internal attribute caching}
+\begin{enumerate}
+ \item Only for one argument functions
+ \item Compares arguments by \texttt{IsIdenticalObj}
+ \item Always stores the result
+\end{enumerate}
+
+\subsection{\CapPkg caching}
+\begin{enumerate}
+ \item Arbitrary argument function
+ \item Compares arguments by \texttt{IsEqualForCache}, which can be implemented seperately for different types of objects.
+ \item Stores the result, or just keeps a weak pointer, or can be disabled completely.
+\end{enumerate}
+
+Those properties of the \CapPkg caches are needed.
+
