@@ -74,7 +74,7 @@ an interactive session. Please note that for the sake of completeness, all the n
 functions is displayed. This might seem confusing or simply to much. If you only want to have a look how a \CapPkg category
 is initialized, only look at the headers of the functions. Also, once the whole process of creation is finished,
 there are examples for computations in the category. If you are interested in the capability of \CapPkg, please
-continue at \todo{reference}.
+continue at \ref{chapter:specifications}.
 
 In the first part, after loading the packages, we create types and representations for the objects
 and morphisms of the category. Those are needed since we want to provide the data structure. For simplicity,
@@ -113,7 +113,7 @@ to create is a skeletal category, i.e., vector spaces of the same dimension are 
 two consecutive calls of the object constructor will not lead to equal objects, since there is no comparison function.
 \CapPkg offers facilities to give correct comparison functions for objects and morphisms to the category. If no function
 is given, the \GAP function \texttt{IsIdenticalObj} is used. However, giving the right equality function to the
-category is important, please see the \todo{reference} section about equalities for details. We will now add equalities
+category is important, please see section \ref{section:equality_specifications} about equalities for details. We will now add equalities
 for objects and morphisms. Objects will be compared by their dimension, for morphisms the matrices will be compared entry-wise.
 The equalities in \CapPkg do not need to be \texttt{true} or \texttt{false}, but are also allowed to return \texttt{fail},
 which will be interpreted as non decidable. This is used for example for complexes.
