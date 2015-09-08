@@ -5,7 +5,7 @@
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @Chapter Categories for homalg
+#! @Chapter CAP Categories
 #!  Categories are the main GAP objects in CAP.
 #!  They are used to associate GAP objects which represent objects and
 #!  morphisms with their category. By associating an GAP object to the
@@ -306,7 +306,7 @@ InstallValue( CATEGORIES_FAMILY_PROPERTIES,
 
 
 #! @Description
-#!  The category of homalg categories. Objects of this type handle
+#!  The category of CAP categories. Objects of this type handle
 #!  the category information, the caching, and filters for objects in the category.
 #!  Please note that the object itself is not related to methods, you only need it
 #!  as a handler and a presentation of the category.
@@ -370,7 +370,7 @@ DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
 #! @BeginGroup CreateCapCategory_Constructor
 
 #! @Description
-#!  Creates a new homalg category from scratch.
+#!  Creates a new CAP category from scratch.
 #!  The name is optional. If no name is given, the
 #!  name will be set to a generic but unique name.
 DeclareOperation( "CreateCapCategory",
