@@ -7,7 +7,7 @@
 ##
 #############################################################################
 
-#!
+
 DeclareGlobalFunction( "CapInternalInstallAdd" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_ALL_ADDS" );
