@@ -32,7 +32,7 @@ has now all the functions we wanted it to have, we can finalize it.
 
 \input{GAP_tex/group_example/Finalize_main}
 
-Finalizing a category is necessary after adding all the wanted operation and befor constructing objects
+Finalizing a category is necessary after adding all the wanted operation and before constructing objects
 for it. We can now create a group and tell the system that the group should be an object in the category.
 
 \input{GAP_tex/group_example/AddGroup_main}
@@ -66,7 +66,7 @@ will construct a more sophisticated category and some of the computational tools
 
 In this section, we will create the category of finite dimensional rational vector spaces as an
 example of an abelian category. We are going
-to realize this category as a sceletal category, i.e., the objects will be the nonnegative integers,
+to realize this category as a skeletal category, i.e., the objects will be the non-negative integers,
 representing the dimension of the vector space, and we use appropriate matrices as morphisms. We start
 by loading \CapPkg and the packages of the \texttt{homalg} project, and creating appropriate data structures
 for the objects and morphisms of the category. The first part of this tutorial is taken from a file and not from
@@ -74,7 +74,7 @@ an interactive session. Please note that for the sake of completeness, all the n
 functions is displayed. This might seem confusing or simply to much. If you only want to have a look how a \CapPkg category
 is initialized, only look at the headers of the functions. Also, once the whole process of creation is finished,
 there are examples for computations in the category. If you are interested in the capability of \CapPkg, please
-continue at \todo{reference}.
+continue at \ref{chapter:specifications}.
 
 In the first part, after loading the packages, we create types and representations for the objects
 and morphisms of the category. Those are needed since we want to provide the data structure. For simplicity,
@@ -85,7 +85,7 @@ for objects and morphisms. The object constructor only has one attribute, which 
 The morphism constructor has three arguments. A vector space, which is the \texttt{Source} of the morphism, a matrix
 representing the morphism, and a second vector space, which is the \texttt{Range} of the morphism. Note that every morphism
 which should be added to the category needs the \GAP attributes \texttt{Source} and \texttt{Range}, which will also be
-added as obejcts to the category.
+added as objects to the category.
 
 \input{GAP_tex/vecspaces_example/Declarations}
 
@@ -99,7 +99,7 @@ properties of an Abelian category.
 Those constructors are straight forward, they create the objects and morphisms with the desired attributes and then
 add those to our previously created category. Since the objects, because of their type, already imply the \GAP filters
 \texttt{IsCapCategoryObject} and \texttt{IsCapCategoryMorphism} respectively, we can use the operation \texttt{Add} instead
-of \texttt{AddObject} and \texttt{AddMorphism}. Since \texttt{Add} is called in the constructor, the resulting obejcts and
+of \texttt{AddObject} and \texttt{AddMorphism}. Since \texttt{Add} is called in the constructor, the resulting objects and
 morphisms are automatically part of the category, and after finishing up the category all the operations from the
 category will be applicable to them.
 
@@ -109,18 +109,18 @@ We now continue by adding functions to the category, starting with the same oper
 
 Those functions are straight forward and do not require any additional explanation except the code. Before we continue
 adding additional operations, there is another thing we have to take care of. The category of vector spaces we wanted
-to create is a sceletal category, i.e., vector spaces of the same dimension are supposed to be equal. At the moment
+to create is a skeletal category, i.e., vector spaces of the same dimension are supposed to be equal. At the moment
 two consecutive calls of the object constructor will not lead to equal objects, since there is no comparison function.
 \CapPkg offers facilities to give correct comparison functions for objects and morphisms to the category. If no function
 is given, the \GAP function \texttt{IsIdenticalObj} is used. However, giving the right equality function to the
-category is important, please see the \todo{reference} section about equalities for details. We will now add equalities
-for objects and morphisms. Objects will be compared by their dimension, for morphisms the matrices will be compared entrywise.
+category is important, please see section \ref{section:equality_specifications} about equalities for details. We will now add equalities
+for objects and morphisms. Objects will be compared by their dimension, for morphisms the matrices will be compared entry-wise.
 The equalities in \CapPkg do not need to be \texttt{true} or \texttt{false}, but are also allowed to return \texttt{fail},
 which will be interpreted as non decidable. This is used for example for complexes.
 
 \input{GAP_tex/vecspaces_example/Equalities}
 
-Next we implement some additional functions in the category of vector spaces. We start by definining functions for the kernel.
+Next we implement some additional functions in the category of vector spaces. We start by defining functions for the kernel.
 A proper implementation needs at least two functions. One for \texttt{KernelEmb}, which can compute the embedding of the kernel
 into the source of the given morphism. From this function then automatically a function for \texttt{KernelObject} is derived, which
 computes the embedding and returns the source of this morphism. The second one, \texttt{KernelLift}, implements the universal property of the kernel.
@@ -189,7 +189,7 @@ two morphisms having the same sources and ranges, the additive inverse of a morp
 \input{GAP_tex/vecspaces_example/HomSets}
 
 The installation of \texttt{ZeroMorphism} is not necessary here, since we have the zero object and the corresponding
-universal morphisms, this method could also be derived from those. Of course, providing a prmitive implementation might
+universal morphisms, this method could also be derived from those. Of course, providing a primitive implementation might
 increase the speed of some computations.
 
 The last thing left to implement is the direct sum and its universal properties. After that, we can tell the system that the
@@ -213,7 +213,7 @@ and start by creating some morphisms.
 \input{GAP_tex/vecspaces_example/CreateMorphisms_main}
 \end{small}
 
-Unsuprisingly, we can now compute some of the stuff we told the system how to compute, for example the \texttt{KernelEmb},
+Unsurprisingly, we can now compute some of the stuff we told the system how to compute, for example the \texttt{KernelEmb},
 which is the embedding of the kernel. Also, the cokernel and its projection can be computed. Those computations will
 be carried out using the functions we have given to the system. It is also possible to use the standard arithmetic on the morphism.
 Even if the added functions have different names, e.g., \texttt{AdditionForMorphisms}, it is possible to use the \GAP arithmetic
@@ -223,7 +223,7 @@ operations, e.g., \texttt{+}, for it.
 \input{GAP_tex/vecspaces_example/KernelExample_main}
 \end{small}
 
-The fact that such functions work properly are not suprising at all. But \CapPkg has the power to derive
+The fact that such functions work properly are not surprising at all. But \CapPkg has the power to derive
 further constructions from the given functions. Here are some examples of methods now applicable.
 
 \begin{small}
@@ -239,7 +239,7 @@ in the category using the \texttt{InstalledMethodsOfCategory} command.
 \end{small}
 
 One can now also carry out less obvious computations. In the next example we compute the intersection of two 2 dimensional
-subspaces of a 3 dimensional vectorspace. Please note that the steps for this computation are completely general, and
+subspaces of a 3 dimensional vector space. Please note that the steps for this computation are completely general, and
 can also be used for the intersection of arbitrary subobjects, for example ideals or submodules. We present the
 subspaces as images of two morphisms $\alpha$ and $\beta$, compute their \textrm{FiberProduct} and compose its embedding
 in the source of $\alpha$ with $\alpha$ itself. The resulting morphism represents the intersection of the image of $\alpha$
@@ -287,8 +287,8 @@ are needed.
 \end{small}
 
 Another nice feature of \CapPkg are functors. The functors in \CapPkg should represent mathematical functors between categories and are modeled
-as morphisms in the \CapPkg category of categories, \texttt{CapCat}. They provide a good way to communicate between different data structures inplemented
-by someone in the \CapPkg eviroment. Then they are functors between different categories. Also, it is useful to implement some internal operations
+as morphisms in the \CapPkg category of categories, \texttt{CapCat}. They provide a good way to communicate between different data structures implemented
+by someone in the \CapPkg environment. Then they are functors between different categories. Also, it is useful to implement some internal operations
 in a category as endofunctors, since functors can be manipulated like morphisms, i.e. composed, etc. Also, natural transformations can be implemented in
 \CapPkg. Generally, functors in \CapPkg need two functions, a function describing the action on the objects, and a function describing the actions on the
 morphism. Also, we need to tell the system in which component the functor is co and in which the functor is contravariant. Covariant is hereby the standard
