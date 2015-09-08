@@ -24,14 +24,6 @@ BindGlobal( "TheTypeOfCapCategoryObjects",
         NewType( TheFamilyOfCapCategoryObjects,
                 IsCapCategoryObjectRep ) );
 
-######################################
-##
-## Immediate Methods
-##
-######################################
-
-InstallTrueMethod( IsInjective and IsProjective, IsCapCategoryObject and IsZero );
-
 #######################################
 ##
 ## Technical implications
