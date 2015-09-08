@@ -5,16 +5,33 @@
 ##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @Chapter Monoidal Categories
+#! @Chapter Tensor Product and Internal Hom
 #!
 ##
 #############################################################################
 
 ####################################
 ##
-#! @Section Basic Operations for Monoidal Categories
+#! @Section Monoidal Categories
 ##
 ####################################
+
+#! A $6$-tuple $( \mathbf{C}, \otimes, 1, \alpha, \lambda, \rho )$
+#!  consisting of 
+#! * a category $\mathbf{C}$, 
+#! * a functor $\otimes: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}$,
+#! * an object $1 \in \mathbf{C}$, 
+#! * a natural isomorphism $\alpha_{a,b,c}: a \otimes (b \otimes c) \cong (a \otimes b) \otimes c$,
+#! * a natural isomorphism $\lambda_{a}: 1 \otimes a \cong a$, 
+#! * a natural isomorphism $\rho_{a}: a \otimes 1 \cong a$,
+#! is called a <Emph>monoidal category</Emph>, if
+#! * for all objects $a,b,c,d$, the pentagon identity holds:
+#!  $(\alpha_{a,b,c} \otimes \mathrm{id}_d) \circ \alpha_{a,b \otimes c, d} \circ ( \mathrm{id}_a \otimes \alpha_{b,c,d} ) = \alpha_{a \otimes b, c, d} \circ \alpha_{a,b,c \otimes d}$,
+#! * for all objects $a,c$, the triangle identity holds:
+#!  $( \rho_a \otimes \mathrm{id}_c ) \circ \alpha_{a,1,c} = \mathrm{id}_a \otimes \lambda_c$.
+
+#! The corresponding GAP property is given by
+#! <C>IsMonoidalCategory</C>.
 
 ## TensorProductOnObjects
 
@@ -342,7 +359,22 @@ DeclareOperation( "AddRightUnitorInverse",
 DeclareOperation( "AddRightUnitorInverse",
                   [ IsCapCategory, IsList ] );
 
+####################################
+##
+#! @Section Braided Monoidal Categories
+##
+####################################
 
+#! A monoidal category $\mathbf{C}$ equipped with a natural isomorphism
+#! $B_{a,b}: a \otimes b \cong b \otimes a$
+#! is called a <Emph>braided monoidal category</Emph>
+#! if
+#! * $\lambda_a \circ B_{a,1} = \rho_a$,
+#! * $(B_{c,a} \otimes \mathrm{id}_b) \circ \alpha_{c,a,b} \circ B_{a \otimes b,c} = \alpha_{a,c,b} \circ ( \mathrm{id}_a \otimes B_{b,c}) \circ \alpha^{-1}_{a,b,c}$,
+#! * $( \mathrm{id}_b \otimes B_{c,a} ) \circ \alpha^{-1}_{b,c,a} \circ B_{a,b \otimes c} = \alpha^{-1}_{b,a,c} \circ (B_{a,b} \otimes \mathrm{id}_c) \circ \alpha_{a,b,c}$.
+
+#! The corresponding GAP property is given by
+#! <C>IsBraidedMonoidalCategory</C>.
 ##
 #! @Description
 #! The arguments are two objects $a,b$.
@@ -420,6 +452,30 @@ DeclareOperation( "AddBraidingInverse",
 DeclareOperation( "AddBraidingInverse",
                   [ IsCapCategory, IsList ] );
 
+####################################
+##
+#! @Section Symmetric Monoidal Categories
+##
+####################################
+
+#! A braided monoidal category $\mathbf{C}$ is called <Emph>symmetric monoidal category</Emph>
+#! if $B_{a,b}^{-1} = B_{b,a}$.
+#! The corresponding GAP property is given by
+#! <C>IsSymmetricMonoidalCategory</C>.
+
+####################################
+##
+#! @Section Symmetric Closed Monoidal Categories
+##
+####################################
+
+#! A symmetric monoidal category $\mathbf{C}$
+#! which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
+#! a right adjoint (denoted by $\underline{\mathrm{Hom}}(b,-)$)
+#! is called a <Emph>symmetric closed monoidal category</Emph>.
+
+#! The corresponding GAP property is given by
+#! <C>IsSymmetricClosedMonoidalCategory</C>.
 
 ##
 #! @Description
@@ -891,43 +947,6 @@ DeclareOperation( "AddMorphismToBidual",
 
 ##
 #! @Description
-#! The argument is an object $a$.
-#! The output is the inverse of the morphism to the bidual $(a^{\vee})^{\vee} \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}((a^{\vee})^{\vee},a)$.
-#! @Arguments a
-DeclareAttribute( "MorphismFromBidual",
-                  IsCapCategoryObject );
-
-#! @Description
-#! The argument is an object $a$,
-#! and an object $s = (a^{\vee})^{\vee}$.
-#! The output is the inverse of the morphism to the bidual $(a^{\vee})^{\vee} \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}((a^{\vee})^{\vee},a)$.
-#! @Arguments a
-DeclareOperation( "MorphismFromBidual",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromBidual</C>.
-#! $F: (a, (a^{\vee})^{\vee}) \mapsto ((a^{\vee})^{\vee} \rightarrow a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromBidual",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromBidual",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromBidual",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromBidual",
-                  [ IsCapCategory, IsList ] );
-
-##
-#! @Description
 #! The arguments are four objects $a, a', b, b'$.
 #! The output is the natural morphism
 #! $\mathrm{TensorProductInternalHomCompatibilityMorphism}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')$.
@@ -968,52 +987,6 @@ DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphism",
 
 DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphism",
                   [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
-#! The arguments are four objects $a, a', b, b'$.
-#! The output is the natural morphism
-#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverse}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))$.
-#! @Arguments a,a',b,b'
-DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-
-##
-## The new_source and new_range arguments are the first and second element of the list.
-## This construction is due to the fact that the maximal number of arguments for an operation is 6,
-## but a basic operation with 6 arguments would install a setter having 7 arguments.
-#! @Description
-#! The arguments are four objects $a, a', b, b'$,
-#! and a list $L = [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]$.
-#! The output is the natural morphism
-#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverse}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))$.
-#! @Arguments a,a',b,b',L
-DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>TensorProductInternalHomCompatibilityMorphismInverse</C>.
-#! $F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphismInverse}_{a,a',b,b'}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
-                  [ IsCapCategory, IsList ] );
-
-
 
 ##
 #! @Description
@@ -1472,4 +1445,98 @@ DeclareOperation( "AddIsomorphismFromInternalHomToObject",
 DeclareOperation( "AddIsomorphismFromInternalHomToObject",
                   [ IsCapCategory, IsList ] );
 
+####################################
+##
+#! @Section Rigid Symmetric Closed Monoidal Categories
+##
+####################################
+
+#! A symmetric closed monoidal category $\mathbf{C}$ satisfying
+#! * the natural morphism
+#!  $\underline{\mathrm{Hom}}(a_1,b_1) \otimes \underline{\mathrm{Hom}}(a_2,b_2) \rightarrow \underline{\mathrm{Hom}}(a_1 \otimes a_2,b_1 \otimes b_2)$
+#!  is an isomorphism,
+#! * the natural morphism
+#!  $a \rightarrow \underline{\mathrm{Hom}}(\underline{\mathrm{Hom}}(a, 1), 1)$
+#!  is an isomorphism
+#! is called a <Emph>rigid symmetric closed monoidal category</Emph>.
+
+##
+#! @Description
+#! The arguments are four objects $a, a', b, b'$.
+#! The output is the natural morphism
+#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverse}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))$.
+#! @Arguments a,a',b,b'
+DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+##
+## The new_source and new_range arguments are the first and second element of the list.
+## This construction is due to the fact that the maximal number of arguments for an operation is 6,
+## but a basic operation with 6 arguments would install a setter having 7 arguments.
+#! @Description
+#! The arguments are four objects $a, a', b, b'$,
+#! and a list $L = [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]$.
+#! The output is the natural morphism
+#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverse}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))$.
+#! @Arguments a,a',b,b',L
+DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>TensorProductInternalHomCompatibilityMorphismInverse</C>.
+#! $F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphismInverse}_{a,a',b,b'}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
+                  [ IsCapCategory, IsList ] );
+
+##
+#! @Description
+#! The argument is an object $a$.
+#! The output is the inverse of the morphism to the bidual $(a^{\vee})^{\vee} \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}((a^{\vee})^{\vee},a)$.
+#! @Arguments a
+DeclareAttribute( "MorphismFromBidual",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The argument is an object $a$,
+#! and an object $s = (a^{\vee})^{\vee}$.
+#! The output is the inverse of the morphism to the bidual $(a^{\vee})^{\vee} \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}((a^{\vee})^{\vee},a)$.
+#! @Arguments a
+DeclareOperation( "MorphismFromBidual",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromBidual</C>.
+#! $F: (a, (a^{\vee})^{\vee}) \mapsto ((a^{\vee})^{\vee} \rightarrow a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromBidual",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromBidual",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromBidual",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromBidual",
+                  [ IsCapCategory, IsList ] );
 

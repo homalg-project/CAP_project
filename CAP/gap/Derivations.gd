@@ -5,7 +5,7 @@
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @Chapter Managing derived methods
+#! @Chapter Managing Derived Methods
 #!
 ##
 #############################################################################
@@ -13,7 +13,7 @@
 
 ####################################
 ##
-#! @Section Info class
+#! @Section Info Class
 ##
 ####################################
 
@@ -30,7 +30,7 @@ DeclareGlobalFunction( "DeactivateDerivationInfo" );
 
 ####################################
 ##
-#! @Section Derivation objects
+#! @Section Derivation Objects
 ##
 ####################################
 
@@ -154,7 +154,7 @@ DeclareOperation( "DerivationResultWeight",
 
 ####################################
 ##
-#! @Section Derivation graphs
+#! @Section Derivation Graphs
 ##
 ####################################
 
@@ -219,7 +219,7 @@ DeclareOperation( "DerivationsOfOperation", [ IsDerivedMethodGraph, IsString ] )
 
 ####################################
 ##
-#! @Section Managing derivations in a category
+#! @Section Managing Derivations in a Category
 ##
 ####################################
 
@@ -315,7 +315,7 @@ DeclareOperation( "PrintTreeRec",
 
 ####################################
 ##
-#! @Section Min heaps for strings
+#! @Section Min Heaps for Strings
 ##
 ####################################
 

@@ -9,7 +9,7 @@
 ##
 #############################################################################
 
-#! @Section Install functions for IsWellDefined
+#! @Section Install Functions for IsWellDefined
 
 #! @Description
 #!  The IsWellDefined filter is a basic function of CAP.

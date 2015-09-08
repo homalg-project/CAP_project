@@ -37,6 +37,9 @@ DeclareCategory( "IsZFunctorMorphism",
 DeclareAttribute( "ZFunctorCategory",
                   IsCapCategory );
 
+DeclareAttribute( "UnderlyingCategory",
+                  IsCapCategory );
+
 ####################################
 ##
 ## Getter

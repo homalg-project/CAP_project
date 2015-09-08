@@ -1,6 +1,6 @@
-#! @Chapter Examples and tests
+#! @Chapter Examples and Tests
 
-#! @Section Monoidal categories
+#! @Section Monoidal Categories
 
 LoadPackage( "ModulePresentationsForCAP" );
 

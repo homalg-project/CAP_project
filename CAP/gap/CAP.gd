@@ -5,44 +5,18 @@
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @Chapter Categories for homalg
+#! @Chapter CAP Categories
 #!  Categories are the main GAP objects in CAP.
 #!  They are used to associate GAP objects which represent objects and
-#!  morphisms with their category. By associating an GAP object to the
-#!  category, one of two filters belonging to the category (Object/MorphismFilter)
+#!  morphisms with their category. By associating a GAP object to the
+#!  category, one of two filters belonging to the category (ObjectFilter/MorphismFilter)
 #!  are set to true.
-#!  The GAP object of the category then acts like the type of the objects,
-#!  so categories should be seen as the type of their objects.
 #!  Via Add methods, functions for specific existential quantifiers can be
 #!  associated to the category and after that can be applied to GAP objects in the category.
 #!  A GAP category object also knows which constructions
 #!  are currently possible in this category.
 ##
 #############################################################################
-
-####################################
-##
-#! @Section Computable categories
-##
-####################################
-
-#! Let $C$ denote a category in CAP.
-
-####################################
-##
-#! @Section Computable categories
-##
-####################################
-
-#! We say $C$ is a $\textbf{computable category}$ if it passes the following filters:
-#! * $\texttt{CanComputeIsCongruentForMorphisms}$
-#! * $\texttt{CanComputePreCompose}$
-#! * $\texttt{CanComputeIdentityMorphism}$
-
-#! We say $C$ is a $\textbf{computable category}$ if it passes the following filters:
-#! * $\texttt{CanComputeIsCongruentForMorphisms}$
-#! * $\texttt{CanComputePreCompose}$
-#! * $\texttt{CanComputeIdentityMorphism}$
 
 
 ###################################
@@ -306,7 +280,7 @@ InstallValue( CATEGORIES_FAMILY_PROPERTIES,
 
 
 #! @Description
-#!  The category of homalg categories. Objects of this type handle
+#!  The category of CAP categories. Objects of this type handle
 #!  the category information, the caching, and filters for objects in the category.
 #!  Please note that the object itself is not related to methods, you only need it
 #!  as a handler and a presentation of the category.
@@ -370,7 +344,7 @@ DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
 #! @BeginGroup CreateCapCategory_Constructor
 
 #! @Description
-#!  Creates a new homalg category from scratch.
+#!  Creates a new CAP category from scratch.
 #!  The name is optional. If no name is given, the
 #!  name will be set to a generic but unique name.
 DeclareOperation( "CreateCapCategory",
@@ -383,7 +357,7 @@ DeclareOperation( "CreateCapCategory",
 
 ###################################
 ##
-#! @Section Internal attributes
+#! @Section Internal Attributes
 ##
 ###################################
 
@@ -417,163 +391,20 @@ DeclareAttribute( "CanComputeFilter",
 
 #! @EndGroup
 
-DeclareAttribute( "UnderlyingCategory",
-                  IsCapCategory );
-
 #############################################
 ##
-#! @Section Well defined
+#! @Section Well-Definedness of Cells
 ##
 #############################################
 
+#! @Description
+#! The argument is a cell $c$.
+#! The output is <C>true</C> if $c$ is well-defined,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments c
 DeclareProperty( "IsWellDefined",
                  IsCapCategoryCell );
-
-#############################################
-##
-#! @Section Add functions
-##
-#############################################
-
-#!  All functions in this section install several functions for objects and morphisms 
-#!  belonging to a category.
-
-####################################
-##
-## Identity morphism
-##
-####################################
-
-#! @BeginGroup IdentityMorphismFunction_installer
-
-#! @Description
-#!  Installs the function which returns the Identity morphism of an object. The argument <A>func</A> must be a function with one
-#!  argument which returns a morphism with source and target are the argument.
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @EndGroup
-
-####################################
-##
-## Precompose
-##
-####################################
-
-#! @BeginGroup PreComposeFunction_installer
-
-#! @Description
-#!  Installs the function which returns the pre-composition of two morphisms. Argument <A>func</A> must be a function which returns
-#!  the composition of its two arguments, i.e. if the arguments are two morphisms <A>phi</A>: $A \rightarrow B$ and <A>psi</A>: $B \rightarrow C$ it
-#!  has to return a morphism $\phi\psi : A \rightarrow C$. Source and target of this morphism will be set automatically. This function also installs
-#!  PostCompose, which is just CoPreCompose.
-
-DeclareOperation( "AddPreCompose",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPreCompose",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPreCompose",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPreCompose",
-                  [ IsCapCategory, IsList ] );
-
-DeclareOperation( "AddPostCompose",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPostCompose",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPostCompose",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPostCompose",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @EndGroup
-
-
-####################################
-##
-## Monomorphism as kernel lift
-##
-####################################
-
-
-DeclareOperation( "AddMonoAsKernelLift",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMonoAsKernelLift",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMonoAsKernelLift",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMonoAsKernelLift",
-                  [ IsCapCategory, IsList ] );
-
-
-####################################
-##
-## Epismorphism as cokernel lift
-##
-####################################
-
-DeclareOperation( "AddEpiAsCokernelColift",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEpiAsCokernelColift",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEpiAsCokernelColift",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEpiAsCokernelColift",
-                  [ IsCapCategory, IsList ] );
-
-
-####################################
-##
-## Inverse
-##
-####################################
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsList ] );
-
-DeclareOperation( "AddInverseImmutable",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInverseImmutable",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInverseImmutable",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInverseImmutable",
-                  [ IsCapCategory, IsList ] );
 
 
 ####################################

@@ -275,31 +275,28 @@ InstallMethod( AddCategoryToFamily,
     
 end );
 
-
-## FIXME: this derivation leads to circuits <- not anymore
-##
-# InstallTrueMethodAndStoreImplication( CanComputeEpiAsCokernelColift, 
-#                                       CanComputeKernelEmb
-#                                       and CanComputeCokernelColift
-#                                       and CanComputePreCompose
-#                                       and CanComputeInverseImmutable );
-# 
-
-
 ####################################
 ##
 ## Inverse
 ##
 ####################################
 
+##
 InstallMethod( AddInverse,
                [ IsCapCategory, IsFunction ],
                AddInverseImmutable );
 
+##
 InstallMethod( AddInverse,
                [ IsCapCategory, IsFunction, IsInt ],
                AddInverseImmutable );
 
+##
+InstallMethod( AddInverse,
+               [ IsCapCategory, IsList ],
+               AddInverseImmutable );
+
+##
 InstallMethod( AddInverse,
                [ IsCapCategory, IsList, IsInt ],
                AddInverseImmutable );

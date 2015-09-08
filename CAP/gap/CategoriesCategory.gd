@@ -6,7 +6,7 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 ##
-#! @Chapter Category of categories
+#! @Chapter Category of Categories
 #!  Categories itself with functors as morphisms form a category.
 #!  So the data structure of <C>CapCategory</C>s is designed to be objects in a
 #!  category. This category is implemented in <C>CapCat</C>.
@@ -20,7 +20,7 @@
 
 ####################################
 ##
-#! @Section The category Cat
+#! @Section The Category Cat
 ##
 ####################################
 
@@ -45,7 +45,7 @@ DeclareGlobalFunction( "CAP_INTERNAL_CREATE_Cat" );
 ####################################
 
 #! @Description
-#!  The GAP category of homalg categories seen as object in Cat.
+#!  The GAP category of CAP categories seen as object in Cat.
 DeclareCategory( "IsCapCategoryAsCatObject",
                  IsCapCategoryObject );
 
@@ -64,10 +64,10 @@ DeclareCategory( "IsCapNaturalTransformation",
 ####################################
 
 #! @Description
-#!  Given a homalg category, this method returns the corresponding object in Cat.
+#!  Given a CAP category, this method returns the corresponding object in Cat.
 #!  For technical reasons, the filter <C>IsCapCategory</C> must not imply the filter <C>IsCapCategoryObject</C>.
 #!  For example, if <C>InitialObject</C> is applied to an object, it returns the initial object of its category. If it is
-#!  applied to a category, it returns the initial object of the category. If a homalg category would be
+#!  applied to a category, it returns the initial object of the category. If a CAP category would be
 #!  a category object itself, this would be ambiguous.
 #!  So categories must be wrapped in a CatObject to be an object in Cat.
 #!  This method returns the wrapper object. The category can be reobtained by <C>AsCapCategory</C>.
@@ -75,7 +75,7 @@ DeclareAttributeWithToDoForIsWellDefined( "AsCatObject",
                                           IsCapCategory );
 
 #! @Description
-#!  For an object in Cat, this method returns the underlying homalg category. This method is inverse to <C>AsCatObject</C>, i.e.
+#!  For an object in Cat, this method returns the underlying CAP category. This method is inverse to <C>AsCatObject</C>, i.e.
 #!  AsCapCategory( AsCatObject( A ) ) = A.
 DeclareAttribute( "AsCapCategory",
                   IsCapCategoryAsCatObject );
@@ -101,7 +101,7 @@ DeclareAttribute( "AsCapCategory",
 #! @BeginGroup
 
 #! @Description
-#!  These methods construct a homalg functor, i.e. a morphism in Cat.
+#!  These methods construct a CAP functor, i.e. a morphism in Cat.
 #!  Name should be an unique name for the functor, it is also used when the functor is
 #!  installed as a method. <A>A</A> and <A>B</A> are source and target.
 #!  Both can be given as object in Cat or as category itself.
@@ -270,7 +270,7 @@ DeclareOperationWithCache( "HorizontalPreComposeFunctorWithNaturalTransformation
 ####################################
 ##
 #! @Chapter Technical Details
-#! @Section The category Cat
+#! @Section The Category Cat
 ##
 ####################################
 

@@ -68,7 +68,7 @@ DeclareAttribute( "UnderlyingHomalgRing",
 
 ##############################################
 ##
-## Non categorical methods
+## Non-categorical methods
 ##
 ##############################################
 

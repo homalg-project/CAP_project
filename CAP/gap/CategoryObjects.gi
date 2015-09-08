@@ -5,8 +5,6 @@
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @Chapter Categories for homalg
-##
 #############################################################################
 
 ######################################

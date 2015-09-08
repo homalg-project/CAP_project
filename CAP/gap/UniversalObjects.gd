@@ -27,6 +27,8 @@ DeclareOperation( "AddToGenesis",
 #! The triple $( K, \iota, u )$ is called a <Emph>kernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $K$ of such a triple by $\mathrm{KernelObject}(\alpha)$.
+#! We say that the morphism $u(\tau)$ is induced by the
+#! <Emph>universal property of the kernel</Emph>.
 #! $\\ $
 #! $\mathrm{KernelObject}$ is a functorial operation. This means:
 #! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
@@ -269,6 +271,8 @@ DeclareFilter( "WasCreatedAsKernelObject" );
 #! The triple $( K, \epsilon, u )$ is called a <Emph>cokernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $K$ of such a triple by $\mathrm{Cokernel}(\alpha)$.
+#! We say that the morphism $u(\tau)$ is induced by the
+#! <Emph>universal property of the cokernel</Emph>.
 #! $\\ $
 #! $\mathrm{Cokernel}$ is a functorial operation. This means:
 #! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
@@ -511,7 +515,8 @@ DeclareFilter( "WasCreatedAsCokernel" );
 #! The triple $(Z, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>zero object</Emph> if the morphisms 
 #! $u_{\mathrm{in}}(A)$, $u_{\mathrm{out}}(A)$ are uniquely determined up to congruence of morphisms.
 #! We denote the object $Z$ of such a triple by $\mathrm{ZeroObject}$.
-
+#! We say that the morphisms $u_{\mathrm{in}}(A)$ and $u_{\mathrm{out}}(A)$ are induced by the
+#! <Emph>universal property of the zero object</Emph>.
 ## Main Operations and Attributes
 
 #! @Description
@@ -821,6 +826,8 @@ DeclareFilter( "WasCreatedAsZeroObject" );
 #! The pair $( T, u )$ is called a <Emph>terminal object</Emph> if the morphisms $u( A )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $T$ of such a pair by $\mathrm{TerminalObject}$.
+#! We say that the morphism $u( A )$ is induced by the
+#! <Emph>universal property of the terminal object</Emph>.
 #! $\\ $
 #! $\mathrm{TerminalObject}$ is a functorial operation. This just means:
 #! There exists a unique morphism $T \rightarrow T$.
@@ -980,8 +987,10 @@ DeclareFilter( "WasCreatedAsTerminalObject" );
 #! The pair $(I,u)$ is called a <Emph>initial object</Emph> if the morphisms $u(A)$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $I$ of such a triple by $\mathrm{InitialObject}$.
+#! We say that the morphism $u( A )$ is induced by the
+#! <Emph>universal property of the initial object</Emph>.
 #! $\\ $
-#! $\mathrm{TerminalObject}$ is a functorial operation. This just means:
+#! $\mathrm{InitialObject}$ is a functorial operation. This just means:
 #! There exists a unique morphisms $I \rightarrow I$.
 
 ## Main Operations and Attributes
@@ -1145,6 +1154,8 @@ DeclareFilter( "WasCreatedAsInitialObject" );
 #! where $\delta_{i,j} \in \mathrm{Hom}( S_i, S_j )$ is the identity if $i=j$, and $0$ otherwise.
 #! The $5$-tuple $(S, \pi, \iota, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>direct sum</Emph> of $D$.
 #! We denote the object $S$ of such a $5$-tuple by $\bigoplus_{i=1}^n S_i$.
+#! We say that the morphisms $u_{\mathrm{in}}(\tau), u_{\mathrm{out}}(\tau)$ are induced by the
+#! <Emph>universal property of the direct sum</Emph>.
 #! $\\ $
 #! $\mathrm{DirectSum}$ is a functorial operation. This means:
 #! For $(\mu_i: S_i \rightarrow S'_i)_{i=1\dots n}$,
@@ -1723,6 +1734,8 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #! The triple $( I, \iota, u )$ is called a <Emph>coproduct</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $I$ of such a triple by $\bigsqcup_{i=1}^n I_i$.
+#! We say that the morphism $u( \tau )$ is induced by the
+#! <Emph>universal property of the coproduct</Emph>.
 #! $\\ $
 #! $\mathrm{Coproduct}$ is a functorial operation. This means:
 #! For $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$,
@@ -1991,6 +2004,8 @@ DeclareFilter( "WasCreatedAsCoproduct" );
 #! The triple $( P, \pi, u )$ is called a <Emph>direct product</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $P$ of such a triple by $\prod_{i=1}^n P_i$.
+#! We say that the morphism $u( \tau )$ is induced by the
+#! <Emph>universal property of the direct product</Emph>.
 #! $\\ $
 #! $\mathrm{DirectProduct}$ is a functorial operation. This means:
 #! For $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
@@ -2249,6 +2264,8 @@ DeclareFilter( "WasCreatedAsDirectProduct" );
 #! The triple $( P, \pi, u )$ is called a <Emph>fiber product</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $P$ of such a triple by $\mathrm{FiberProduct}(D)$.
+#! We say that the morphism $u( \tau )$ is induced by the
+#! <Emph>universal property of the fiber product</Emph>.
 #! $\\ $
 #! $\mathrm{FiberProduct}$ is a functorial operation. This means:
 #! For a second diagram $D' = (\beta_i': P_i' \rightarrow B')_{i = 1 \dots n}$ and a natural morphism
@@ -2681,6 +2698,8 @@ DeclareFilter( "WasCreatedAsFiberProduct" );
 #! The triple $( I, \iota, u )$ is called a <Emph>pushout</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $I$ of such a triple by $\mathrm{Pushout}(D)$.
+#! We say that the morphism $u( \tau )$ is induced by the
+#! <Emph>universal property of the pushout</Emph>.
 #! $\\ $
 #! $\mathrm{Pushout}$ is a functorial operation. This means:
 #! For a second diagram $D' = (\beta_i': B' \rightarrow I_i')_{i = 1 \dots n}$ and a natural morphism
@@ -3108,6 +3127,8 @@ DeclareFilter( "WasCreatedAsPushout" );
 #! The $4$-tuple $( I, c, \iota, u )$ is called an <Emph>image</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $I$ of such a $4$-tuple by $\mathrm{im}(\alpha)$.
+#! We say that the morphism $u( \tau )$ is induced by the
+#! <Emph>universal property of the image</Emph>.
 ## Main Operations and Attributes
 
 #! @Description
@@ -3429,6 +3450,8 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #! The $4$-tuple $( C, \pi, a, u )$ is called a <Emph>coimage</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $C$ of such a $4$-tuple by $\mathrm{coim}(\alpha)$.
+#! We say that the morphism $u( \tau )$ is induced by the
+#! <Emph>universal property of the coimage</Emph>.
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.

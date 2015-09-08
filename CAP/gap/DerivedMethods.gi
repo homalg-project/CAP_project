@@ -468,6 +468,18 @@ end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and E
 ###########################
 
 ##
+AddDerivationToCAP( IsOne,
+                    
+  function( morphism )
+    local object;
+    
+    object := Source( morphism );
+    
+    return IsCongruentForMorphisms( IdentityMorphism( object ), morphism );
+    
+end : Description := "IsOne by comparing with the identity morphism" );
+
+##
 AddDerivationToCAP( IsEndomorphism,
                       
   function( morphism )
@@ -2193,6 +2205,33 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "MorphismToBidual using the braiding and the universal property of the dual" );
 
 ##
+AddDerivationToCAP( MorphismToBidual,
+                    
+  function( object, bidual )
+    local morphism, dual_object, tensor_unit;
+    
+    dual_object := DualOnObjects( object );
+    
+    tensor_unit := TensorUnit( CapCategory( object ) );
+    
+    morphism := PreCompose( [
+                  CoevaluationMorphism( object, dual_object ),
+                  
+                  InternalHomOnMorphisms(
+                    IdentityMorphism( dual_object ),
+                    Braiding( object, dual_object ) ),
+                  
+                  InternalHomOnMorphisms(
+                    IdentityMorphism( dual_object ),
+                    EvaluationMorphism( object, tensor_unit ) )
+                ] );
+    
+    return morphism;
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "MorphismToBidual using Coevaluation, InternalHom, and Evaluation" );
+
+##
 AddDerivationToCAP( DualOnObjects,
                   
   function( object )
@@ -2278,7 +2317,7 @@ AddDerivationToCAP( EvaluationForDual,
                   
   function( tensor_object, object, unit )
     
-    return TensorProductToInternalHomAdjunctionMap( object, unit,
+    return InternalHomToTensorProductAdjunctionMap( object, unit,
                                                     IsomorphismFromDualToInternalHom( object ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,

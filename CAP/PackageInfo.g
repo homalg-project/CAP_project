@@ -2,7 +2,7 @@ SetPackageInfo( rec(
 
 PackageName := "CAP",
 
-Subtitle := "TODO",
+Subtitle := "Categories, Algorithms, Programming",
 
 Version := Maximum( [
   "2015.07.15", ## Sebas' version
@@ -78,7 +78,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "TODO",
+  LongTitle := "Categories, Algorithms, Programming",
 ),
 
 Dependencies := rec(
