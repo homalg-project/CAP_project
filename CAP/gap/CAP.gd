@@ -8,41 +8,15 @@
 #! @Chapter CAP Categories
 #!  Categories are the main GAP objects in CAP.
 #!  They are used to associate GAP objects which represent objects and
-#!  morphisms with their category. By associating an GAP object to the
-#!  category, one of two filters belonging to the category (Object/MorphismFilter)
+#!  morphisms with their category. By associating a GAP object to the
+#!  category, one of two filters belonging to the category (ObjectFilter/MorphismFilter)
 #!  are set to true.
-#!  The GAP object of the category then acts like the type of the objects,
-#!  so categories should be seen as the type of their objects.
 #!  Via Add methods, functions for specific existential quantifiers can be
 #!  associated to the category and after that can be applied to GAP objects in the category.
 #!  A GAP category object also knows which constructions
 #!  are currently possible in this category.
 ##
 #############################################################################
-
-####################################
-##
-#! @Section Computable categories
-##
-####################################
-
-#! Let $C$ denote a category in CAP.
-
-####################################
-##
-#! @Section Computable categories
-##
-####################################
-
-#! We say $C$ is a $\textbf{computable category}$ if it passes the following filters:
-#! * $\texttt{CanComputeIsCongruentForMorphisms}$
-#! * $\texttt{CanComputePreCompose}$
-#! * $\texttt{CanComputeIdentityMorphism}$
-
-#! We say $C$ is a $\textbf{computable category}$ if it passes the following filters:
-#! * $\texttt{CanComputeIsCongruentForMorphisms}$
-#! * $\texttt{CanComputePreCompose}$
-#! * $\texttt{CanComputeIdentityMorphism}$
 
 
 ###################################
@@ -383,7 +357,7 @@ DeclareOperation( "CreateCapCategory",
 
 ###################################
 ##
-#! @Section Internal attributes
+#! @Section Internal Attributes
 ##
 ###################################
 
@@ -419,7 +393,7 @@ DeclareAttribute( "CanComputeFilter",
 
 #############################################
 ##
-#! @Section Well defined
+#! @Section Well-Definedness of Cells
 ##
 #############################################
 

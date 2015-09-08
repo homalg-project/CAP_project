@@ -1,6 +1,6 @@
-#! @Chapter Examples and tests
+#! @Chapter Examples and Tests
 
-#! @Section Generalized morphisms category
+#! @Section Generalized Morphisms Category
 
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then

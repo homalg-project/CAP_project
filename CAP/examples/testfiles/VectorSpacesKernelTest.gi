@@ -1,6 +1,6 @@
-#! @Chapter Examples and tests
+#! @Chapter Examples and Tests
 
-#! @Section kernel
+#! @Section Kernel
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
   

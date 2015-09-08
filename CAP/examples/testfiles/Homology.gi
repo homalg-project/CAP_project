@@ -1,4 +1,4 @@
-#! @Chapter Examples and tests
+#! @Chapter Examples and Tests
 
 #! @Section Spectral sequences
 

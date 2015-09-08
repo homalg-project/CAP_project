@@ -6,7 +6,7 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##
 ##
-#! @Chapter Category of categories
+#! @Chapter Category of Categories
 #!  Categories itself with functors as morphisms form a category.
 #!  So the data structure of <C>CapCategory</C>s is designed to be objects in a
 #!  category. This category is implemented in <C>CapCat</C>.
@@ -20,7 +20,7 @@
 
 ####################################
 ##
-#! @Section The category Cat
+#! @Section The Category Cat
 ##
 ####################################
 
@@ -270,7 +270,7 @@ DeclareOperationWithCache( "HorizontalPreComposeFunctorWithNaturalTransformation
 ####################################
 ##
 #! @Chapter Technical Details
-#! @Section The category Cat
+#! @Section The Category Cat
 ##
 ####################################
 

@@ -1,8 +1,8 @@
-@Chapter Add functions
+@Chapter Add Functions
 
 This section describes the overall structure of Add-functions and the functions installed by them.
 
-@Section Functions installed by add
+@Section Functions Installed by Add
 
 Add functions (up to some exceptions) have the following syntax
 
@@ -57,7 +57,7 @@ Every other part, except from function, does only depend on the name SomeFunc. W
 
 * Addfunction: If the result is a category cell, it is added to the category for which the function was installed.
 
-@Section Add method
+@Section Add Method
 
 Except from installing a new method for the name SomeFunc, an Add method does slightly more.
 Every Add method has the same structure. The steps in the Add method are as follows:
@@ -97,7 +97,7 @@ After calling an add method, the corresponding Operation is availible in the cat
 of the primitive value, might be availible.
 
 
-@Section InstallAdd function
+@Section InstallAdd Function
 
 Almost all Add methods in the CAP kernel are installed by the CapInternalInstallAdd operation.
 The definition of this function is as follows:
@@ -148,7 +148,7 @@ sanity check for all the entries described, then installs the Add method in 4 wa
 with an optional third parameter for the weight.
 
 
-@Section Install all adds
+@Section Install All Adds
 
 The function CAP_INTERNAL_INSTALL_ALL_ADDS does not take any arguments, it is an auxiliary function which iterates over the
 CAP_INTERNAL_METHOD_NAME_RECORD and calls, after some cosmetics, the CapInternalInstallAdd with the corresponding method record entry.
