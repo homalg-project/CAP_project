@@ -360,7 +360,12 @@ For a basic operation to match its typing specification, it has to
  \item compute only output specified by its type.
 \end{enumerate}
 
-\todo{specify when not, for example for performance}The first item is (almost) always handled by \CapPkg.
+%\todo{specify when not, for example for performance}
+%There should be different modi in \CapPkg:
+% 1) no type checking
+% 2) medium type checking (default)
+% 3) full type checking
+The first item is (almost) always handled by \CapPkg.
 If we add a basic operation to \CapPkg via an add function, \CapPkg ensures that every call of that
 basic operation first triggers a type checking for the input.
 \\
@@ -391,7 +396,7 @@ Fortunately, \CapPkg provides tools to help us with this task.
         $\KernelObject$ coherently for you (as the source of $\KernelEmb$).
   \item Implement $\KernelObject$ and the helper basic operation $\KernelEmbWithGivenKernelObject$.
         This is an operation getting as an input a morphism $\phi$ and the result of $\KernelObject( \phi )$,
-        which we can then use to construct a morphism with $\KernelObject( \phi )$ as its source. \todo{section on WithGiven}
+        which we can then use to construct a morphism with $\KernelObject( \phi )$ as its source (c.f. \ref{in_text:with_given}).
         \CapPkg will automatically derive (c.f. section \ref{section:derivations}) the basic operation
         $\KernelEmb$ coherently for you (by calling $\KernelEmbWithGivenKernelObject$ with the output of $\KernelObject$ as an input).
   \item Implement $\KernelObject$, $\KernelEmb$, and $\KernelEmbWithGivenKernelObject$, and enable caching for these functions (c.f. chapter \ref{chapter:caching}).
