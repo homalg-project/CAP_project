@@ -366,7 +366,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismBySpan,
     
     if not IsEqualForObjects( Source( arrow ), Source( reversed_arrow ) ) then
         
-        Error( "Ranges of morphisms must coincide" );
+        Error( "Sources of morphisms must coincide" );
         
     fi;
 
@@ -455,7 +455,7 @@ InstallMethod( PseudoInverse,
                
   function( morphism )
     
-    return GeneralizedMorphismBySpan( ReversedArrow( morphism ), Arrow( morphism ) );
+    return GeneralizedMorphismBySpan( Arrow( morphism ), ReversedArrow( morphism ) );
     
 end );
 
@@ -510,7 +510,7 @@ InstallMethod( GeneralizedMorphismBySpanWithRangeAid,
     
     morphism2 := AsGeneralizedMorphismBySpan( morphism_aid );
     
-    return PreCompose( morphism1, morphism2 );
+    return PreCompose( morphism2, morphism1 );
     
 end );
     

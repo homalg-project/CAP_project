@@ -31,10 +31,10 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
       [ "GeneralizedMorphismWithRangeAid", "GeneralizedMorphismByThreeArrowsWithRangeAid", "GeneralizedMorphismByCospan", "GeneralizedMorphismBySpanWithRangeAid" ],
       [ "GeneralizedMorphismWithSourceAid", "GeneralizedMorphismByThreeArrowsWithSourceAid", "GeneralizedMorphismByCospanWithSourceAid", "GeneralizedMorphismBySpan" ],
       # Serre Quotient
-      [ "AsSerreQuotientObject", "AsSerreQuotientByThreeArrowsObject", "AsSerreQuotientByThreeArrowsObject" ],
-      [ "SerreQuotientCategory", "SerreQuotientCategoryByThreeArrows", "AsSerreQuotientByThreeArrowsObject" ],
-      [ "SerreQuotientCategoryMorphism", "SerreQuotientCategoryByThreeArrowsMorphism", "AsSerreQuotientByThreeArrowsObject" ],
-      [ "AsSerreQuotientCategoryMorphism", "AsSerreQuotientCategoryByThreeArrowsMorphism", "AsSerreQuotientByThreeArrowsObject" ] ];
+      [ "AsSerreQuotientObject", "AsSerreQuotientByThreeArrowsObject" ],
+      [ "SerreQuotientCategory", "SerreQuotientCategoryByThreeArrows" ],
+      [ "SerreQuotientCategoryMorphism", "SerreQuotientCategoryByThreeArrowsMorphism" ],
+      [ "AsSerreQuotientCategoryMorphism", "AsSerreQuotientCategoryByThreeArrowsMorphism" ] ];
     
     for i in generalized_morphism_translation_list do
         
@@ -43,7 +43,9 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
             UnbindGlobal( i[ 1 ] );
         fi;
         
-        BindGlobal( i[ 1 ], ValueGlobal( i[ type ] ) );
+        if IsBound( i[ type ] ) then
+            BindGlobal( i[ 1 ], ValueGlobal( i[ type ] ) );
+        fi;
         
     od;
     
