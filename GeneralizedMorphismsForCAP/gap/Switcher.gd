@@ -20,21 +20,21 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
     fi;
     
     generalized_morphism_translation_list := [
-      [ "GeneralizedMorphismCategory", "GeneralizedMorphismCategoryByThreeArrows", "GeneralizedMorphismCategoryByCospans" ],
-      [ "GeneralizedMorphism", "GeneralizedMorphismByThreeArrows", "GeneralizedMorphismByCospan" ],
-      [ "GeneralizedMorphismObject", "GeneralizedMorphismByThreeArrowsObject", "GeneralizedMorphismByCospansObject" ],
-      [ "AsGeneralizedMorphism", "AsGeneralizedMorphismByThreeArrows", "AsGeneralizedMorphismByCospan" ],
-      [ "GeneralizedInverse", "GeneralizedInverseByThreeArrows", "GeneralizedInverseByCospan" ],
-      [ "GeneralizedMorphismFromFactorToSubobject", "GeneralizedMorphismFromFactorToSubobjectByThreeArrows", "GeneralizedMorphismFromFactorToSubobjectByCospan" ],
-      [ "IdempotentDefinedBySubobject", "IdempotentDefinedBySubobjectByThreeArrows", "IdempotentDefinedBySubobjectByCospan" ],
-      [ "IdempotentDefinedByFactorobject", "IdempotentDefinedByFactorobjectByThreeArrows", "IdempotentDefinedByFactorobjectByCospan" ],
-      [ "GeneralizedMorphismWithRangeAid", "GeneralizedMorphismByThreeArrowsWithRangeAid", "GeneralizedMorphismByCospan" ],
-      [ "GeneralizedMorphismWithSourceAid", "GeneralizedMorphismByThreeArrowsWithSourceAid", "GeneralizedMorphismByCospanWithSourceAid" ],
+      [ "GeneralizedMorphismCategory", "GeneralizedMorphismCategoryByThreeArrows", "GeneralizedMorphismCategoryByCospans", "GeneralizedMorphismCategoryBySpans" ],
+      [ "GeneralizedMorphism", "GeneralizedMorphismByThreeArrows", "GeneralizedMorphismByCospan", "GeneralizedMorphismBySpan" ],
+      [ "GeneralizedMorphismObject", "GeneralizedMorphismByThreeArrowsObject", "GeneralizedMorphismByCospansObject", "GeneralizedMorphismBySpansObject" ],
+      [ "AsGeneralizedMorphism", "AsGeneralizedMorphismByThreeArrows", "AsGeneralizedMorphismByCospan", "AsGeneralizedMorphismBySpan" ],
+      [ "GeneralizedInverse", "GeneralizedInverseByThreeArrows", "GeneralizedInverseByCospan", "GeneralizedInverseBySpan" ],
+      [ "GeneralizedMorphismFromFactorToSubobject", "GeneralizedMorphismFromFactorToSubobjectByThreeArrows", "GeneralizedMorphismFromFactorToSubobjectByCospan", "GeneralizedMorphismFromFactorToSubobjectBySpan" ],
+      [ "IdempotentDefinedBySubobject", "IdempotentDefinedBySubobjectByThreeArrows", "IdempotentDefinedBySubobjectByCospan", "IdempotentDefinedBySubobjectBySpan" ],
+      [ "IdempotentDefinedByFactorobject", "IdempotentDefinedByFactorobjectByThreeArrows", "IdempotentDefinedByFactorobjectByCospan", "IdempotentDefinedByFactorobjectBySpan" ],
+      [ "GeneralizedMorphismWithRangeAid", "GeneralizedMorphismByThreeArrowsWithRangeAid", "GeneralizedMorphismByCospan", "GeneralizedMorphismBySpanWithRangeAid" ],
+      [ "GeneralizedMorphismWithSourceAid", "GeneralizedMorphismByThreeArrowsWithSourceAid", "GeneralizedMorphismByCospanWithSourceAid", "GeneralizedMorphismBySpan" ],
       # Serre Quotient
-      [ "AsSerreQuotientObject", "AsSerreQuotientByThreeArrowsObject", "AsSerreQuotientByThreeArrowsObject" ],
-      [ "SerreQuotientCategory", "SerreQuotientCategoryByThreeArrows", "AsSerreQuotientByThreeArrowsObject" ],
-      [ "SerreQuotientCategoryMorphism", "SerreQuotientCategoryByThreeArrowsMorphism", "AsSerreQuotientByThreeArrowsObject" ],
-      [ "AsSerreQuotientCategoryMorphism", "AsSerreQuotientCategoryByThreeArrowsMorphism", "AsSerreQuotientByThreeArrowsObject" ] ];
+      [ "AsSerreQuotientObject", "AsSerreQuotientByThreeArrowsObject" ],
+      [ "SerreQuotientCategory", "SerreQuotientCategoryByThreeArrows" ],
+      [ "SerreQuotientCategoryMorphism", "SerreQuotientCategoryByThreeArrowsMorphism" ],
+      [ "AsSerreQuotientCategoryMorphism", "AsSerreQuotientCategoryByThreeArrowsMorphism" ] ];
     
     for i in generalized_morphism_translation_list do
         
@@ -43,7 +43,9 @@ BindGlobal( "SwitchGeneralizedMorphismStandard",
             UnbindGlobal( i[ 1 ] );
         fi;
         
-        BindGlobal( i[ 1 ], ValueGlobal( i[ type ] ) );
+        if IsBound( i[ type ] ) then
+            BindGlobal( i[ 1 ], ValueGlobal( i[ type ] ) );
+        fi;
         
     od;
     
