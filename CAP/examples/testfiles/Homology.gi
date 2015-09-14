@@ -1,6 +1,6 @@
 #! @Chapter Examples and Tests
 
-#! @Section Spectral sequences
+#! @Section Spectral Sequences
 
 
 LoadPackage( "ModulePresentationsForCAP" );
