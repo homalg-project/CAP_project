@@ -24,7 +24,7 @@ alpha := VectorSpaceMorphism( A, [ [ 1, 2 ] ], B );
 #! [ [  1,  2 ] ]
 #! 
 g := GeneralizedMorphism( alpha, alpha, alpha );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForIsWellDefinedTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForIsWellDefinedTest>
 IsWellDefined( alpha );
 #! true
 IsWellDefined( g );

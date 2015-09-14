@@ -216,7 +216,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
     object_function := function( object )
       local string;
         
-        string := "object in the category ";
+        string := "object in ";
         
         Append( string, Name( CapCategory( object ) ) );
         

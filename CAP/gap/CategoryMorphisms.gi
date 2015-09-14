@@ -396,7 +396,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_PRINT,
     morphism_function := function( object )
       local string;
         
-        string := "morphism in the category ";
+        string := "morphism in ";
         
         Append( string, Name( CapCategory( object ) ) );
         
