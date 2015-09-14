@@ -80,7 +80,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
           
           injection_right := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
           
-          return GeneralizedMorphismByCospan( PreCompose( Arrow( morphism1 ), injection_left ), PreCompose( ReversedArrow( morphism1 ), injection_right ) );
+          return GeneralizedMorphismByCospan( PreCompose( Arrow( morphism1 ), injection_left ), PreCompose( ReversedArrow( morphism2 ), injection_right ) );
           
       end, [ ] ],
       
