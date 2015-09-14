@@ -372,7 +372,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByCospan,
 
     generalized_morphism := rec( );
     
-    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphism,
+    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphismByCospan,
                              Source, GeneralizedMorphismByCospansObject( Source( arrow ) ),
                              Range, GeneralizedMorphismByCospansObject( Source( reversed_arrow ) ) );
     

@@ -19,7 +19,7 @@ DeclareRepresentation( "IsGeneralizedMorphismByThreeArrowsRep",
                        IsCapCategoryMorphismRep and IsGeneralizedMorphismByThreeArrows,
                        [ ] );
 
-BindGlobal( "TheTypeOfGeneralizedMorphism",
+BindGlobal( "TheTypeOfGeneralizedMorphismByThreeArrows",
         NewType( TheFamilyOfCapCategoryMorphisms,
                 IsGeneralizedMorphismByThreeArrowsRep ) );
 
@@ -409,7 +409,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrows,
 
     generalized_morphism := rec( );
     
-    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphism,
+    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphismByThreeArrows,
                              Source, GeneralizedMorphismByThreeArrowsObject( Range( source_aid ) ),
                              Range, GeneralizedMorphismByThreeArrowsObject( Source( range_aid ) ) );
     
