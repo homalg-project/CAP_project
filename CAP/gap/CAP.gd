@@ -341,19 +341,22 @@ DeclareGlobalFunction( "CREATE_CAP_CATEGORY_FILTERS" );
 
 DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
 
-#! @BeginGroup CreateCapCategory_Constructor
-
 #! @Description
-#!  Creates a new CAP category from scratch.
-#!  The name is optional. If no name is given, the
-#!  name will be set to a generic but unique name.
+#! Creates a new CAP category from scratch.
+#! It gets a generic (but unique) name.
+#! @Arguments
+#! @Returns a category
 DeclareOperation( "CreateCapCategory",
                   [ ] );
 
-#!
+#! @Description
+#! The argument is a string $s$.
+#! This operation creates a new CAP category from scratch.
+#! Its name is set to $s$.
+#! @Arguments s
+#! @Returns a category
 DeclareOperation( "CreateCapCategory",
                   [ IsString ] );
-#! @EndGroup
 
 ###################################
 ##
