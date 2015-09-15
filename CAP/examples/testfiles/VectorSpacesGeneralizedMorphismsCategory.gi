@@ -41,7 +41,7 @@ c1_associated := VectorSpaceMorphism( B_1, [ [ 1, 1 ] ], C_1 );
 #! [ [  1,  1 ] ]
 #! 
 c1 := GeneralizedMorphism( c1_source_aid, c1_associated, c1_range_aid );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 B_2 := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>
 C_2 := QVectorSpace( 2 );
@@ -63,7 +63,7 @@ c2_associated := VectorSpaceMorphism( B_2, [ [ 6, 6 ] ], C_2 );
 #! [ [  6,  6 ] ]
 #! 
 c2 := GeneralizedMorphism( c2_source_aid, c2_associated, c2_range_aid );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 IsCongruentForMorphisms( c1, c2 );
 #! true
 IsCongruentForMorphisms( c1, c1 );
@@ -73,13 +73,13 @@ c3_associated := VectorSpaceMorphism( B_1, [ [ 2, 2 ] ], C_1 );
 #! [ [  2,  2 ] ]
 #! 
 c3 := GeneralizedMorphism( c1_source_aid, c3_associated, c1_range_aid );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 IsCongruentForMorphisms( c1, c3 );
 #! false
 IsCongruentForMorphisms( c2, c3 );
 #! false
 c1 + c2;
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 MorphismAid( c1 + c2 );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  12,  12 ] ]
@@ -108,7 +108,7 @@ phi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 1, 2 ] ], B );
 #! [ [  1,  2 ] ]
 #! 
 phi_tilde := GeneralizedMorphismWithSourceAid( phi_tilde_source_aid, phi_tilde_associated );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 psi_tilde_associated := IdentityMorphism( B );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1,  0 ],
@@ -120,9 +120,9 @@ psi_tilde_source_aid := VectorSpaceMorphism( B, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], C 
 #!   [  0,  1,  0 ] ]
 #! 
 psi_tilde := GeneralizedMorphismWithSourceAid( psi_tilde_source_aid, psi_tilde_associated );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 composition := PreCompose( phi_tilde, psi_tilde );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 MorphismAid( composition );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1/2,    1 ] ]
@@ -155,7 +155,7 @@ phi2_tilde_range_aid := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 1 ], [ 1, 1 ] ]
 #!   [  1,  1 ] ]
 #! 
 phi2_tilde := GeneralizedMorphismWithRangeAid( phi2_tilde_associated, phi2_tilde_range_aid );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 psi2_tilde_associated := VectorSpaceMorphism( C, [ [ 1 ], [ 3 ], [ 4 ] ], A );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1 ],
@@ -168,9 +168,9 @@ psi2_tilde_range_aid := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ] ], A );
 #!   [  1 ] ]
 #! 
 psi2_tilde := GeneralizedMorphismWithRangeAid( psi2_tilde_associated, psi2_tilde_range_aid );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 composition2 := PreCompose( phi2_tilde, psi2_tilde );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 MorphismAid( composition2 );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  16 ] ]
@@ -239,15 +239,15 @@ C_onto_Cfac := VectorSpaceMorphism( C, [ [ 1 ], [ 2 ], [ 3 ] ], Cfac );
 #!   [  3 ] ]
 #! 
 generalized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 generalized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 IsWellDefined( generalized_morphism1 );
 #! true
 IsWellDefined( generalized_morphism2 );
 #! true
 p := PreCompose( generalized_morphism1, generalized_morphism2 );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 SourceAid( p );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  -1,   1,   0 ],
@@ -307,15 +307,15 @@ C_onto_Cfac := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 2 ], [ 3, 3 ] ], Cfac );
 #!   [  3,  3 ] ]
 #! 
 generalized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 generalized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 IsWellDefined( generalized_morphism1 );
 #! true
 IsWellDefined( generalized_morphism2 );
 #! true
 p := PreCompose( generalized_morphism1, generalized_morphism2 );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 SourceAid( p );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  -1,   1,   0 ],
@@ -357,7 +357,7 @@ phi_tilde_range_aid := VectorSpaceMorphism( B, [ [ 1, 2 ], [ 3, 4 ] ], B );
 #!   [  3,  4 ] ]
 #!
 phi_tilde := GeneralizedMorphism( phi_tilde_source_aid, phi_tilde_associated, phi_tilde_range_aid );
-#! <A morphism in the category Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
+#! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 HonestRepresentative( phi_tilde );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  -1/4,   1/4 ] ]
