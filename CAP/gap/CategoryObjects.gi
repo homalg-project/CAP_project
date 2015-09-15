@@ -224,7 +224,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
         
     end;
     
-    print_graph := CreatePrintingGraph( IsCapCategoryObject, object_function );
+    print_graph := CreatePrintingGraph( IsCapCategoryObject and HasCapCategory, object_function );
     
     AddRelationToGraph( print_graph,
                         rec( Source := [ rec( Conditions := "IsZero",

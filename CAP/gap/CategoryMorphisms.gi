@@ -404,7 +404,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_PRINT,
         
     end;
     
-    print_graph := CreatePrintingGraph( IsCapCategoryMorphism, morphism_function );
+    print_graph := CreatePrintingGraph( IsCapCategoryMorphism and HasCapCategory, morphism_function );
     
     AddRelationToGraph( print_graph,
                         rec( Source := [ rec( Conditions := "IsIsomorphism",
