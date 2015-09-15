@@ -70,9 +70,6 @@ DeclareAttributeWithToDoForIsWellDefined( "AsGeneralizedMorphismByThreeArrows",
 DeclareOperation( "GeneralizedMorphismFromFactorToSubobjectByThreeArrows",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
-                                          IsGeneralizedMorphismByThreeArrows );
-
 DeclareOperation( "CommonRestriction",
                   [ IsList ] );
 

@@ -480,6 +480,8 @@ InstallMethod( AsGeneralizedMorphismByThreeArrows,
     
     SetIsHonest( generalized_morphism, true );
     
+    SetHonestRepresentative( generalized_morphism, morphism_aid );
+    
     return generalized_morphism;
     
 end );

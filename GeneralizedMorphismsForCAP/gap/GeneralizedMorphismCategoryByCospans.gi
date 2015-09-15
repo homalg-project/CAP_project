@@ -468,6 +468,27 @@ InstallMethod( GeneralizedInverseByCospan,
     
 end );
 
+InstallMethod( HonestRepresentative,
+               [ IsGeneralizedMorphismByCospan ],
+               
+  function( generalized_morphism )
+    local normalization;
+    
+    normalization := NormalizedCospanTuple( generalized_morphism );
+    
+    return PreCompose( normalization[ 1 ], Inverse( normalization[ 2 ] ) );
+    
+end );
+
+InstallMethod( IsHonest,
+               [ IsGeneralizedMorphismByCospan ],
+               
+  function( generalized_morphism )
+    
+    return IsIsomorphism( NormalizedCospanTuple( generalized_morphism )[ 2 ] );
+    
+end );
+
 ######################################
 ##
 ## Compatibility
