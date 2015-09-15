@@ -24,8 +24,8 @@ DeclareAttributeWithToDoForIsWellDefined( "Codomain",
 DeclareAttributeWithToDoForIsWellDefined( "AssociatedMorphism",
                                           IsGeneralizedMorphism );
 
-DeclareAttributeWithToDoForIsWellDefined( "DomainAssociatedMorphismCodomainTriple",
-                                          IsGeneralizedMorphism );
+DeclareAttribute( "DomainAssociatedMorphismCodomainTriple",
+                  IsGeneralizedMorphism );
 
 DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
                                           IsGeneralizedMorphism );
