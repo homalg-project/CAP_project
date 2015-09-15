@@ -184,6 +184,13 @@ InstallMethod( IsFinalized,
             
             current_final_derivation.option_function( category );
             
+            Info( DerivationInfo, 1, Concatenation( "install(",
+                                          String( weight ),
+                                          ") ",
+                                          NameFunction( current_final_derivation.name ),
+                                          ": ",
+                                          current_final_derivation.description, "\n" ) );
+            
         od;
         
         ## Remove all already installed entries

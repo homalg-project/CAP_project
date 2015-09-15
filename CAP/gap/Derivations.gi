@@ -781,6 +781,8 @@ InstallGlobalFunction( InstalledMethodsOfCategory,
     
     list_of_methods := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
     
+    list_of_methods := AsSortedList( list_of_methods );
+    
     can_compute := [ ];
     cannot_compute := [ ];
     
@@ -799,13 +801,13 @@ InstallGlobalFunction( InstalledMethodsOfCategory,
     Print( "Can do the following basic methods at the moment:\n" );
     
     for i in can_compute do
-        Print( "* ", i[ 1 ], ", weight ", String( i[ 2 ] ), "\n" );
+        Print( "+ ", i[ 1 ], ", weight ", String( i[ 2 ] ), "\n" );
     od;
     
     Print( "\nThe following is still missing:\n" );
     
     for i in cannot_compute do
-        Print( "* ", i, "\n" );
+        Print( "- ", i, "\n" );
     od;
     
     Print( "\nPlease use PossibleDerivationsOfMethod( <category>, <name> ) do get\n",
