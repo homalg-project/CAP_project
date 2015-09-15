@@ -497,8 +497,8 @@ InstallMethod( HonestRepresentative,
   function( generalized_morphism )
     
     return PreCompose(
-             PreCompose( Inverse( SourceAid( generalized_morphism ) ), MorphismAid( generalized_morphism ) ), 
-             Inverse( RangeAid( generalized_morphism ) ) 
+             PreCompose( Inverse( Domain( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
+             Inverse( Codomain( generalized_morphism ) ) 
            );
     
 end );
