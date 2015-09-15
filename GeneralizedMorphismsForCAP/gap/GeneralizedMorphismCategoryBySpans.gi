@@ -399,6 +399,8 @@ InstallMethod( AsGeneralizedMorphismBySpan,
     
     SetIsHonest( generalized_morphism, true );
     
+    SetHonestRepresentative( generalized_morphism, arrow );
+    
     return generalized_morphism;
     
 end );
@@ -465,6 +467,27 @@ InstallMethod( GeneralizedInverseBySpan,
   function( morphism )
     
     return GeneralizedMorphismBySpan( morphism, IdentityMorphism( Source( morphism ) ) );
+    
+end );
+
+InstallMethod( HonestRepresentative,
+               [ IsGeneralizedMorphismBySpan ],
+               
+  function( morphism )
+    local normalization;
+    
+    normalization := NormalizedSpanTuple( morphism );
+    
+    return PreCompose( Inverse( normalization[ 1 ] ), normalization[ 2 ] );
+    
+end );
+
+InstallMethod( IsHonest,
+               [ IsGeneralizedMorphismBySpan ],
+               
+  function( morphism )
+    
+    return IsIsomorphism( NormalizedSpanTuple( morphism )[ 1 ] );
     
 end );
 
