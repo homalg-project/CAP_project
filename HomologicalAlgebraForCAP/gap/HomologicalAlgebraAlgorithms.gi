@@ -51,17 +51,7 @@ InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphism,
             morphism_middle_right,
             morphism_down_left )
       local generalized_morphism1, generalized_morphism2, cokernel_proj, composition,
-            domain, inverse_domain, associated_morphism, codomain, inverse_codomain;
-            
-#     composition := GeneralizedMorphism( morphism_up_right,
-#                                         morphism_middle_middle,
-#                                         morphism_down_left );
-#     
-#     associated_morphism := AssociatedMorphism( composition );
-#     
-#     return associated_morphism;
-
-###################
+            domain, inverse_domain, honest_representative, codomain, inverse_codomain;
 
     generalized_morphism1 := GeneralizedMorphismWithRangeAid( KernelEmb( morphism_middle_right ), morphism_up_right );
     
@@ -73,9 +63,9 @@ InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphism,
     
     composition := PreCompose( composition, cokernel_proj );
     
-    associated_morphism := AssociatedMorphism( composition );
+    honest_representative := HonestRepresentative( composition );
     
-    return associated_morphism;
+    return honest_representative;
     
 end );
 
