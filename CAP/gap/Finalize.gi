@@ -184,6 +184,13 @@ InstallMethod( IsFinalized,
             
             current_final_derivation.option_function( category );
             
+            Info( DerivationInfo, 1, Concatenation( "install(",
+                                          String( weight ),
+                                          ") ",
+                                          NameFunction( current_final_derivation.name ),
+                                          ": ",
+                                          current_final_derivation.description, "\n" ) );
+            
         od;
         
         ## Remove all already installed entries
@@ -194,42 +201,3 @@ InstallMethod( IsFinalized,
     return true;
     
 end );
-
-
-# Obsolete
-# BindGlobal( "CAP_INTERNAL_CREATE_WITH_GIVEN_FINAL_DERIVATIONS",
-#   
-#   function( )
-#     local recnames, current_recname, universal_object, clean_name, add_function, with_given_position;
-#     
-#     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
-#     
-#     add_function := function( name_with_given, universal_object, name_without_with_given )
-#         
-#         AddFinalDerivation( name_with_given,
-#                             [ [ name_without_with_given, 1 ], [ universal_object, 0 ] ],
-#                             [ name_with_given ],
-#                             function( arg ) return CallFuncList( name_without_with_given, arg{[ 1 .. Length( arg ) - 1 ]} ); end :
-#                             CategoryOptionFunction := function( category ) category!.redirects.( NameFunction( name_without_with_given ) ) := false; end );
-#                             
-#     end;
-#     
-#     for current_recname in recnames do
-#         
-#         ## Note that the clean name will be the function_name, not the install_name
-#         
-#         with_given_position := PositionSublist( current_recname, "WithGiven" );
-#         
-#         if with_given_position = fail then continue; fi;
-#         
-#         clean_name := current_recname{[ 1 .. with_given_position - 1 ]};
-#         
-#         universal_object := current_recname{[ with_given_position + 9 .. Length( current_recname ) ]};
-#         
-#         add_function( ValueGlobal( current_recname ), ValueGlobal( universal_object ), ValueGlobal( clean_name ) );
-#         
-#     od;
-#     
-# end );
-# 
-# CAP_INTERNAL_CREATE_WITH_GIVEN_FINAL_DERIVATIONS();
