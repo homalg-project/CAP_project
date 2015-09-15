@@ -63,8 +63,6 @@ InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphism,
     
     composition := PreCompose( composition, cokernel_proj );
     
-    Error( "test" );
-    
     honest_representative := HonestRepresentative( composition );
     
     return honest_representative;
