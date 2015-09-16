@@ -392,4 +392,8 @@ DeclareOperation( "Heapify", [ IsStringMinHeap, IsPosInt ] );
 DeclareGlobalFunction( "InstalledMethodsOfCategory" );
 DeclareGlobalFunction( "DerivationsOfMethodByCategory" );
 
+DeclareGlobalFunction( "CAP_INTERNAL_LIST_INSTALLED_OPERATIONS_OF_CATEGORY" );
+DeclareGlobalFunction( "ListInstalledOperationsOfCategory" );
+DeclareGlobalFunction( "ListPrimitivelyInstalledOperationsOfCategory" );
+
 DeclareGlobalFunction( "CAP_INTERNAL_DERIVATION_SANITY_CHECK" );

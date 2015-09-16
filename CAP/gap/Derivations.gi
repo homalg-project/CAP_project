@@ -906,6 +906,45 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
     
 end );
 
+InstallGlobalFunction( ListPrimitivelyInstalledOperationsOfCategory,
+  
+  i -> CAP_INTERNAL_LIST_INSTALLED_OPERATIONS_OF_CATEGORY( i, true ) );
+
+InstallGlobalFunction( ListInstalledOperationsOfCategory,
+  
+  i -> CAP_INTERNAL_LIST_INSTALLED_OPERATIONS_OF_CATEGORY( i, false ) );
+
+InstallGlobalFunction( CAP_INTERNAL_LIST_INSTALLED_OPERATIONS_OF_CATEGORY,
+  
+  function( category, primitive )
+    local weight_list, list_of_methods, list_of_installed_methods;
+    
+    if IsCapCategoryCell( category ) then
+        category := CapCategory( category );
+    fi;
+    
+    if not IsCapCategory( category ) then
+        Error( "input is not a category (cell)" );
+        return;
+    fi;
+    
+    weight_list := category!.derivations_weight_list;
+    
+    list_of_methods := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
+    
+    list_of_methods := AsSortedList( list_of_methods );
+    
+    if primitive then
+        list_of_methods := Filtered( list_of_methods, i -> DerivationOfOperation( weight_list, i ) <> fail
+                                                           and CurrentOperationWeight( weight_list, i ) < infinity );
+    else
+        list_of_methods := Filtered( list_of_methods, i -> CurrentOperationWeight( weight_list, i ) < infinity );
+    fi;
+    
+    return list_of_methods;
+    
+end );
+      
 
 InstallGlobalFunction( CAP_INTERNAL_DERIVATION_SANITY_CHECK,
                        
