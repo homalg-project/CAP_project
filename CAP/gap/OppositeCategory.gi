@@ -187,6 +187,21 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     
     category_weight_list := category!.derivations_weight_list;
     
+    create_func := function( dual_name )
+        
+        return function( arg )
+            local op_arg, result;
+            
+            op_arg := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+            
+            result := CallFuncList( ValueGlobal( dual_name ), op_arg );
+            
+            return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
+            
+        end;
+        
+    end;
+    
     for current_recname in recnames do
         
         current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
@@ -214,21 +229,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         if CurrentOperationWeight( category_weight_list, dual_name ) = infinity then
             continue;
         fi;
-        
-        create_func := function( dual_name )
-            
-            return function( arg )
-                local op_arg, result;
-                
-                op_arg := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-                
-                result := CallFuncList( ValueGlobal( dual_name ), op_arg );
-                
-                return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
-                
-            end;
-            
-        end;
         
         func := create_func( dual_name );
         
