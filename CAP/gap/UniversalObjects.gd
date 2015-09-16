@@ -2382,6 +2382,28 @@ DeclareOperationWithCache( "DirectSumDiagonalDifferenceOp",
                            [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>DirectSumDiagonalDifference</C>.
+#! $F: ( D ) \mapsto \mathrm{DirectSumDiagonalDifference}(D)$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectSumDiagonalDifference",
+                  [ IsCapCategory, IsFunction ] );
+
+##
+DeclareOperation( "AddDirectSumDiagonalDifference",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+##
+DeclareOperation( "AddDirectSumDiagonalDifference",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+##
+DeclareOperation( "AddDirectSumDiagonalDifference",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
 #! The output is the natural embedding
 #! $\mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$.
@@ -2808,6 +2830,26 @@ DeclareOperation( "DirectSumCodiagonalDifference",
 #! @Arguments D, method_selection_morphism
 DeclareOperationWithCache( "DirectSumCodiagonalDifferenceOp",
                            [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>DirectSumCodiagonalDifference</C>.
+#! $F: ( D ) \mapsto \mathrm{DirectSumCodiagonalDifference}(D)$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectSumCodiagonalDifference",
+                  [ IsCapCategory, IsFunction ] );
+##
+DeclareOperation( "AddDirectSumCodiagonalDifference",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+##
+DeclareOperation( "AddDirectSumCodiagonalDifference",
+                  [ IsCapCategory, IsList, IsInt ] );
+##
+DeclareOperation( "AddDirectSumCodiagonalDifference",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.

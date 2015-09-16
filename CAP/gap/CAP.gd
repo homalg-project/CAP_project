@@ -280,10 +280,11 @@ InstallValue( CATEGORIES_FAMILY_PROPERTIES,
 
 
 #! @Description
-#!  The category of CAP categories. Objects of this type handle
+#!  The GAP category of CAP categories. Objects of this type handle
 #!  the category information, the caching, and filters for objects in the category.
 #!  Please note that the object itself is not related to methods, you only need it
 #!  as a handler and a presentation of the category.
+#! @Arguments object
 DeclareCategory( "IsCapCategory",
                  IsObject );
 

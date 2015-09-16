@@ -2100,7 +2100,6 @@ DirectSumDiagonalDifference := rec(
   installation_name := "DirectSumDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumDiagonalDifferenceOp",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "DirectSumCodiagonalDifference" ),
   
@@ -2204,7 +2203,6 @@ DirectSumCodiagonalDifference := rec(
   installation_name := "DirectSumCodiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumCodiagonalDifferenceOp",
-  no_install := true,
   return_type := "morphism",
   dual_operation := "DirectSumDiagonalDifference" ),
 
