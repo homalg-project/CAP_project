@@ -346,6 +346,7 @@ DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
 #! It gets a generic (but unique) name.
 #! @Arguments
 #! @Returns a category
+#! @Label 
 DeclareOperation( "CreateCapCategory",
                   [ ] );
 
@@ -364,35 +365,58 @@ DeclareOperation( "CreateCapCategory",
 ##
 ###################################
 
-#! @BeginGroup Filter_Attributes
+#! Each category $C$ stores various filters.
+#! They are used to apply the right functions in the method selection.
 
+## This filter is used by the installation
+## of the Add methods for the terminal object.
 #! @Description
-#!  Contain filter for objects and morphisms in this category.
-#!  These filters are set true once an object or morphism is added to the
-#!  category. These filters are used to apply the right functions in the method selection.
+#! The argument is a cateogry $C$.
+#! The output is a filter in which $C$ lies.
+#! @Arguments C
+#! @Returns a filter
 DeclareAttribute( "CategoryFilter",
                   IsCapCategory );
 
-#!
+#! @Description
+#! The argument is a cateogry $C$.
+#! The output is a filter in which all cells
+#! of $C$ shall lie.
+#! @Arguments C
+#! @Returns a filter
 DeclareAttribute( "CellFilter",
                   IsCapCategory );
 
-#!
+#! @Description
+#! The argument is a cateogry $C$.
+#! The output is a filter in which all objects
+#! of $C$ shall lie.
+#! @Arguments C
+#! @Returns a filter
 DeclareAttribute( "ObjectFilter",
                   IsCapCategory );
 
-#!
+#! @Description
+#! The argument is a cateogry $C$.
+#! The output is a filter in which all morphisms
+#! of $C$ shall lie.
+#! @Arguments C
+#! @Returns a filter
 DeclareAttribute( "MorphismFilter",
                   IsCapCategory );
 
-#!
+#! @Description
+#! The argument is a cateogry $C$.
+#! The output is a filter in which all $2$-cells
+#! of $C$ shall lie.
+#! @Arguments C
+#! @Returns a filter
 DeclareAttribute( "TwoCellFilter",
                   IsCapCategory );
 
+## Internal Filter for the CanCompute Management.
 DeclareAttribute( "CanComputeFilter",
                   IsCapCategory );
-
-#! @EndGroup
 
 #############################################
 ##
