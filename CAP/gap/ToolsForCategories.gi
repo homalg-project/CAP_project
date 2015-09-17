@@ -618,4 +618,81 @@ InstallGlobalFunction( CAP_INTERNAL_MERGE_PRECONDITIONS_LIST,
     return list2;
     
 end );
-                
+
+InstallGlobalFunction( CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS,
+  
+  function( translation_list, function_input )
+    local input_list, output_list, current_output, return_list, input_position, list_position, i;
+    
+    if not Length( translation_list ) = 2 then
+        Error( "invalid translation list" );
+    fi;
+    
+    output_list := translation_list[ 2 ];
+    
+    output_list := List( output_list, i -> SplitString( i, "_" ) );
+    
+    input_list := translation_list[ 1 ];
+    
+    return_list := [ ];
+    
+    for i in [ 1 .. Length( output_list ) ] do
+        
+        current_output := output_list[ i ];
+        
+        input_position := Position( input_list, current_output[ 1 ] );
+        
+        if input_position = fail then
+            
+            return_list[ i ] := fail;
+            
+            continue;
+            
+        fi;
+        
+        if Length( current_output ) = 1 then
+            
+           return_list[ i ] := function_input[ input_position ];
+           
+        elif Length( current_output ) = 2 then
+            
+            if current_output[ 2 ] = "1" then
+                return_list[ i ] := Source( function_input[ input_position ] );
+            elif current_output[ 2 ] = "2" then
+                return_list[ i ] := Range( function_input[ input_position ] );
+            elif Position( input_list, current_output[ 2 ] ) <> fail then
+                return_list[ i ] := function_input[ input_position ][ function_input[ Position( input_list, current_output[ 2 ] ) ] ];
+            else
+                Error( "wrong input type" );
+            fi;
+            
+        elif Length( current_output ) = 3 then
+            
+            list_position := Position( input_list, current_output[ 2 ] );
+            
+            if list_position = fail then
+                Error( "list index variable not found" );
+            fi;
+            
+            list_position := function_input[ list_position ];
+            
+            if current_output[ 3 ] = "1" then
+                return_list[ i ] := Source( function_input[ input_position ][ list_position ] );
+            elif current_output[ 3 ] = "2" then
+                return_list[ i ] := Range( function_input[ input_position ][ list_position ] );
+            else
+                Error( "wrong output syntax" );
+            fi;
+            
+        else
+            
+            Error( "wrong entry length" );
+            
+        fi;
+        
+    od;
+    
+    return return_list;
+    
+end );
+
