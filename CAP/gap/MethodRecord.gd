@@ -78,6 +78,7 @@ IdentityMorphism := rec(
   end ),
 
 InverseImmutable := rec(
+# Type check for IsIsomorphism
   installation_name := "InverseOp",
   filter_list := [ "morphism" ],
   return_type := "morphism" ),
