@@ -68,13 +68,13 @@ In this section, we will create the category of finite dimensional rational vect
 example of an abelian category. We are going
 to realize this category as a skeletal category, i.e., the objects will be the non-negative integers,
 representing the dimension of the vector space, and we use appropriate matrices as morphisms. We start
-by loading \CapPkg and the packages of the \texttt{homalg} project, and creating appropriate data structures
+by loading \CapPkg and the package \texttt{MatricesForHomalg} of the \texttt{homalg} project, and creating appropriate data structures
 for the objects and morphisms of the category. The first part of this tutorial is taken from a file and not from
 an interactive session. Please note that for the sake of completeness, all the necessary code to create the
-functions is displayed. This might seem confusing or simply to much. If you only want to have a look how a \CapPkg category
+functions is displayed. This might seem confusing or simply too much. If you only want to have a look how a \CapPkg category
 is initialized, only look at the headers of the functions. Also, once the whole process of creation is finished,
 there are examples for computations in the category. If you are interested in the capability of \CapPkg, please
-continue at \ref{chapter:specifications}.
+continue at \ref{chapter:specifications}. %verwirrend
 
 In the first part, after loading the packages, we create types and representations for the objects
 and morphisms of the category. Those are needed since we want to provide the data structure. For simplicity,
@@ -152,9 +152,9 @@ called \texttt{KernelLiftWithGivenKernelObject}. The result would again be an im
 \texttt{WithGiven} operations offer an advantage. Instead of calling a function with only $\alpha$ and $\beta$, there
 would be a third argument, which should be equal to the output of \texttt{KernelObject} and then serves as the range of the output morphism.
 This can be done to ensure better compatibility if the given equality function for objects might not be complete, or to save computation time.
-Please have a look at \ref{chapter:constructions} for more details about the \texttt{WithGiven} functions.
+Please have a look at \ref{in_text:with_given} for more details about the \texttt{WithGiven} functions.
 
-Also, the function given for \texttt{KernelLift} does at the beginning the the same as the function given for \texttt{KernelEmb}. This might to
+Also, the function given for \texttt{KernelLift} does at the beginning the same as the function given for \texttt{KernelEmb}. This might to
 a unnecessary computation. So, in this context, it would be better to provide a more general function for \texttt{MonoAsKernelLift}.
 The input for this function would be a mono, and some morphism, would then provide a lift. The function for \texttt{KernelLift} would then be derived
 from this operation and \texttt{KernelEmb}, by computing
@@ -258,8 +258,8 @@ we compute the connecting homomorphism in the Snake lemma applied to the followi
   \matrix[matrix of math nodes,column sep={60pt,between origins},row
     sep={50pt,between origins}] (s)
   {
-    &|[name=A]| \mathbb{Z}^1 &|[name=B]| \mathbb{Z}^3 &|[name=C]| \mathbb{Z}^2 &|[name=01]| 0 \phantom{\mathbb{Z}^2}  \\
-    |[name=02]| \phantom{\mathbb{Z}^2} 0 &|[name=A']| \mathbb{Z}^2 &|[name=B']| \mathbb{Z}^3 &|[name=C']| \mathbb{Z}^1 \\
+    &|[name=A]| \mathbb{Q}^1 &|[name=B]| \mathbb{Q}^3 &|[name=C]| \mathbb{Q}^2 &|[name=01]| 0 \phantom{\mathbb{Q}^2}  \\
+    |[name=02]| \phantom{\mathbb{Q}^2} 0 &|[name=A']| \mathbb{Q}^2 &|[name=B']| \mathbb{Q}^3 &|[name=C']| \mathbb{Q}^1 \\
   }; 
               
               \path[->,thick] (C) edge (01);
@@ -291,7 +291,7 @@ as morphisms in the \CapPkg category of categories, \texttt{CapCat}. They provid
 by someone in the \CapPkg environment. Then they are functors between different categories. Also, it is useful to implement some internal operations
 in a category as endofunctors, since functors can be manipulated like morphisms, i.e. composed, etc. Also, natural transformations can be implemented in
 \CapPkg. Generally, functors in \CapPkg need two functions, a function describing the action on the objects, and a function describing the actions on the
-morphism. Also, we need to tell the system in which component the functor is co and in which the functor is contravariant. Covariant is hereby the standard
+morphism. Also, we need to tell the system in which component the functor is covariant and in which the functor is contravariant. Covariant is hereby the standard
 case, so we do not need to specify it.
 In the next example, we create, as a first example, the identity functor of the previously created category of vector spaces. This is somehow the easiest functor,
 since it does not require any manipulation at all. We start by creating the functor object, and then adding the object and the morphism function to it.
@@ -301,7 +301,8 @@ since it does not require any manipulation at all. We start by creating the func
 \end{small}
 
 Even if this example is trivial, we already see one of the main points to keep in mind when creating functors. Although the functor only takes one argument,
-the morphism function takes three. This is due to the fact that morphism functions in functors are always kind of \texttt{WithGiven} functions. The first
+the morphism function takes three. This is due to the fact that morphism functions in functors are always kind of \texttt{WithGiven} functions
+(see \ref{in_text:with_given}). The first
 argument here is the image of the source(s) of the morphism(s) given to the object function of the functor, the last is the image of the range(s).
 
 It was already mentioned that functors are morphisms in a specific category, and every \CapPkg category has a specific object in this category.
