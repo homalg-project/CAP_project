@@ -935,7 +935,7 @@ InstallGlobalFunction( CAP_INTERNAL_LIST_INSTALLED_OPERATIONS_OF_CATEGORY,
     list_of_methods := AsSortedList( list_of_methods );
     
     if primitive then
-        list_of_methods := Filtered( list_of_methods, i -> DerivationOfOperation( weight_list, i ) <> fail
+        list_of_methods := Filtered( list_of_methods, i -> DerivationOfOperation( weight_list, i ) = fail
                                                            and CurrentOperationWeight( weight_list, i ) < infinity );
     else
         list_of_methods := Filtered( list_of_methods, i -> CurrentOperationWeight( weight_list, i ) < infinity );
