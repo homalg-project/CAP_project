@@ -1787,6 +1787,18 @@ IsSplitEpimorphism := rec(
   property_of := "morphism" ),
 
 IsIdempotent := rec(
+   pre_function := function( morphism )
+    
+    #do not use IsEndomorphism( morphism ) here because you don't know if
+    #the user has given an own IsEndomorphism function
+    if not IsEqualForObjects( Source( morphism ), Range( morphism ) ) then 
+      
+      return [ false, "the given morphism has to be an endomorphism" ];
+      
+    fi;
+    
+    return [ true ];
+  end,
   installation_name := "IsIdempotent",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
