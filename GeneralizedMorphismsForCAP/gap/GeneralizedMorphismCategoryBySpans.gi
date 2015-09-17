@@ -318,7 +318,7 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
     
     name := Name( category );
     
-    name := Concatenation( "Span generalized morphism category of ", name );
+    name := Concatenation( "Generalized morphism category of ", name, " by span" );
     
     generalized_morphism_category := CreateCapCategory( name );
     

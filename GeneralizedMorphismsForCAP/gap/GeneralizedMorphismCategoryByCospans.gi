@@ -318,7 +318,7 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
     
     name := Name( category );
     
-    name := Concatenation( "Cospan generalized morphism category of ", name );
+    name := Concatenation( "Generalized morphism category of ", name, " by cospan" );
     
     generalized_morphism_category := CreateCapCategory( name );
     

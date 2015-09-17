@@ -319,9 +319,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddMonoAsKernelLift( category,
       function( monomorphism, test_morphism )
+        local right_divide;
+        
+        right_divide := RightDivide( UnderlyingHomalgMatrix( test_morphism ), UnderlyingHomalgMatrix( monomorphism ) );
+        
+        if right_divide = fail then
+          
+          return fail;
+          
+        fi;
         
         return VectorSpaceMorphism( Source( test_morphism ),
-                                    RightDivide( UnderlyingHomalgMatrix( test_morphism ), UnderlyingHomalgMatrix( monomorphism ) ),
+                                    right_divide,
                                     Source( monomorphism ) );
         
     end );
@@ -368,9 +377,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddEpiAsCokernelColift( category,
       function( epimorphism, test_morphism )
+        local left_divide;
+        
+        left_divide := LeftDivide( UnderlyingHomalgMatrix( epimorphism ), UnderlyingHomalgMatrix( test_morphism ) );
+        
+        if left_divide = fail then
+          
+          return fail;
+          
+        fi;
         
         return VectorSpaceMorphism( Range( epimorphism ),
-                                    LeftDivide( UnderlyingHomalgMatrix( epimorphism ), UnderlyingHomalgMatrix( test_morphism ) ),
+                                    left_divide,
                                     Range( test_morphism ) );
         
     end );

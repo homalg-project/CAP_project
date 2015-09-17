@@ -489,6 +489,15 @@ AddDerivationToCAP( IsEndomorphism,
 end : Description := "IsEndomorphism by deciding whether source and range are equal as objects" );
 
 ##
+AddDerivationToCAP( IsAutomorphism,
+                    
+  function( morphism )
+    
+    return IsIsomorphism( morphism ) and IsEndomorphism( morphism );
+    
+end : Description := "IsAutomorphism by checking IsIsomorphism and IsEndomorphism");
+
+##
 AddDerivationToCAP( IsZeroForMorphisms,
                       
   function( morphism )
@@ -524,6 +533,27 @@ AddDerivationToCAP( IsZeroForObjects,
 end : Description := "IsZeroForObjects by comparing identity morphism with zero morphism" );
 
 ##
+AddDerivationToCAP( IsTerminal,
+                  
+  function( object )
+    
+    return IsZeroForObjects( object );
+    
+end : Description := "IsTerminal using IsZeroForObjects",
+      CategoryFilter := IsAdditiveCategory ); #Ab-Category?
+
+##
+AddDerivationToCAP( IsInitial,
+                  
+  function( object )
+    
+    return IsZeroForObjects( object );
+    
+end : Description := "IsInitial using IsZeroForObjects",
+      CategoryFilter := IsAdditiveCategory ); #Ab-Category?
+
+
+##
 AddDerivationToCAP( IsEqualForMorphismsOnMor,
                     [ [ IsEqualForMorphisms, 1 ],
                       [ IsEqualForObjects, 2 ] ],
@@ -557,6 +587,14 @@ AddDerivationToCAP( IsEqualForMorphismsOnMor,
     return IsEqualForMorphisms( morphism_1, morphism_2 );
     
 end : Description := "IsEqualForMorphismsOnMor using IsEqualForMorphisms" );
+
+##
+AddDerivationToCAP( IsIdempotent,
+  function( morphism )
+    
+    return IsCongruentForMorphisms( PreCompose( morphism, morphism ), morphism );
+    
+end : Description := "IsIdempotent by comparing the square of the morphism with itself" );
 
 ##
 AddDerivationToCAP( IsMonomorphism,
