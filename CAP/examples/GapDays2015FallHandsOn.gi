@@ -130,12 +130,18 @@ end );
 ##
 #################################
 
+# ActivateDerivationInfo();
+
+##
 identity_morphism := function( obj )
 
     return VectorSpaceMorphism( obj, HomalgIdentityMatrix( Dimension( obj ), VECTORSPACES_FIELD ), obj );
     
 end;
 
+AddIdentityMorphism( vecspaces, identity_morphism );
+
+##
 pre_compose := function( mor_left, mor_right )
     local composition;
 
@@ -145,18 +151,27 @@ pre_compose := function( mor_left, mor_right )
 
 end;
 
+AddPreCompose( vecspaces, pre_compose );
+
+##
 is_equal_for_objects := function( vecspace_1, vecspace_2 )
     
     return Dimension( vecspace_1 ) = Dimension( vecspace_2 );
     
 end;
 
+AddIsEqualForObjects( vecspaces, is_equal_for_objects );
+
+##
 is_equal_for_morphisms := function( a, b )
   
     return a!.morphism = b!.morphism;
   
 end;
 
+AddIsEqualForMorphisms( vecspaces, is_equal_for_morphisms );
+
+##
 kernel_emb := function( morphism )
     local kernel_emb, kernel_obj;
     
@@ -168,6 +183,9 @@ kernel_emb := function( morphism )
     
 end;
 
+AddKernelEmb( vecspaces, kernel_emb );
+
+##
 mono_as_kernel_lift := function( monomorphism, test_morphism )
 
     return VectorSpaceMorphism( Source( test_morphism ),
@@ -176,6 +194,9 @@ mono_as_kernel_lift := function( monomorphism, test_morphism )
 
 end;
 
+AddMonoAsKernelLift( vecspaces, mono_as_kernel_lift );
+
+##
 cokernel_proj := function( morphism )
     local cokernel_proj, cokernel_obj;
 
@@ -188,6 +209,9 @@ cokernel_proj := function( morphism )
 
 end;
 
+AddCokernelProj( vecspaces, cokernel_proj );
+
+##
 epi_as_cokernel_colift := function( epimorphism, test_morphism )
     
     return VectorSpaceMorphism( Range( epimorphism ),
@@ -196,12 +220,18 @@ epi_as_cokernel_colift := function( epimorphism, test_morphism )
     
 end;
 
+AddEpiAsCokernelColift( vecspaces, epi_as_cokernel_colift );
+
+##
 zero_object := function( )
 
     return QVectorSpace( 0 );
 
 end;
 
+AddZeroObject( vecspaces, zero_object );
+
+##
 universal_morphism_into_zero_object := function( source )
 
     return VectorSpaceMorphism( source,
@@ -210,6 +240,9 @@ universal_morphism_into_zero_object := function( source )
     
 end;
 
+AddUniversalMorphismIntoZeroObject( vecspaces, universal_morphism_into_zero_object );
+
+##
 universal_morphism_into_zero_object_with_given_zero_object := function( source, terminal_object )
 
     return VectorSpaceMorphism( source,
@@ -218,6 +251,9 @@ universal_morphism_into_zero_object_with_given_zero_object := function( source, 
     
 end;
 
+AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( vecspaces, universal_morphism_into_zero_object_with_given_zero_object );
+
+##
 universal_morphism_from_zero_object := function( sink )
     
     return VectorSpaceMorphism( QVectorSpace( 0 ),
@@ -226,6 +262,9 @@ universal_morphism_from_zero_object := function( sink )
     
 end;
 
+AddUniversalMorphismFromZeroObject( vecspaces, universal_morphism_from_zero_object );
+
+##
 universal_morphism_from_zero_object_with_given_zero_object := function( sink, initial_object )
     
     return VectorSpaceMorphism( initial_object,
@@ -234,6 +273,9 @@ universal_morphism_from_zero_object_with_given_zero_object := function( sink, in
     
 end;
 
+AddUniversalMorphismFromZeroObjectWithGivenZeroObject( vecspaces, universal_morphism_from_zero_object_with_given_zero_object );
+
+##
 addition_for_morphisms := function( a, b )
     
     return VectorSpaceMorphism( Source( a ),
@@ -242,6 +284,9 @@ addition_for_morphisms := function( a, b )
     
 end;
 
+AddAdditionForMorphisms( vecspaces, addition_for_morphisms );
+
+##
 additive_inverse_for_morphisms := function( a )
     
     return VectorSpaceMorphism( Source( a ),
@@ -250,6 +295,9 @@ additive_inverse_for_morphisms := function( a )
     
 end;
 
+AddAdditiveInverseForMorphisms( vecspaces, additive_inverse_for_morphisms );
+
+##
 zero_morphism := function( a, b )
     
     return VectorSpaceMorphism( a,
@@ -260,6 +308,9 @@ zero_morphism := function( a, b )
     
 end;
 
+AddZeroObject( vecspaces, zero_morphism );
+
+##
 direct_sum := function( object_product_list )
     local dim;
     
@@ -269,6 +320,9 @@ direct_sum := function( object_product_list )
   
 end;
 
+AddDirectSum( vecspaces, direct_sum );
+
+##
 injection_of_cofactor_of_direct_sum := function( object_product_list, injection_number )
     local components, dim, dim_pre, dim_post, dim_cofactor, coproduct, number_of_objects, injection_of_cofactor;
     
@@ -298,6 +352,9 @@ injection_of_cofactor_of_direct_sum := function( object_product_list, injection_
 
 end;
 
+AddInjectionOfCofactorOfDirectSum( vecspaces, injection_of_cofactor_of_direct_sum );
+
+##
 universal_morphism_from_direct_sum := function( diagram, sink )
     local dim, coproduct, components, universal_morphism, morphism;
     
@@ -319,6 +376,9 @@ universal_morphism_from_direct_sum := function( diagram, sink )
   
 end;
 
+AddUniversalMorphismFromDirectSum( vecspaces, universal_morphism_from_direct_sum );
+
+##
 projection_in_factor_of_direct_sum := function( object_product_list, projection_number )
     local components, dim, dim_pre, dim_post, dim_factor, direct_product, number_of_objects, projection_in_factor;
     
@@ -348,6 +408,9 @@ projection_in_factor_of_direct_sum := function( object_product_list, projection_
 
 end;
 
+AddProjectionInFactorOfDirectSum( vecspaces, projection_in_factor_of_direct_sum );
+
+##
 universal_morphism_into_direct_sum := function( diagram, sink )
     local dim, direct_product, components, universal_morphism, morphism;
     
@@ -369,13 +432,15 @@ universal_morphism_into_direct_sum := function( diagram, sink )
   
 end;
 
+AddUniversalMorphismIntoDirectSum( vecspaces, universal_morphism_into_direct_sum );
+
 #################################
 ##
 ## Finalize category
 ##
 #################################
 
-# Finalize( vecspaces );
+Finalize( vecspaces );
 
 #################################
 ##

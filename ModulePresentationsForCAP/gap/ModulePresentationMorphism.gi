@@ -47,10 +47,46 @@ InstallMethod( PresentationMorphism,
     
     left := IsLeftPresentation( source );
     
+    if not IsCapCategory( source ) = IsCapCategory( range ) then
+      
+      Error( "source and range must lie in the same category" );
+      
+    fi;
+    
     if not IsIdenticalObj( UnderlyingHomalgRing( source ), HomalgRing( matrix ) ) then
         
         Error( "matrix can not present a morphism between these objects" );
         
+    fi;
+    
+    if left then
+      
+      if NrRows( matrix ) <> NrColumns( UnderlyingMatrix( source ) ) then
+          
+          Error( "the number of rows of the given matrix is incorrect" );
+          
+      fi;
+      
+      if NrColumns( matrix ) <> NrColumns( UnderlyingMatrix( range ) ) then
+        
+        Error( "the number of columns of the given matrix is incorrect" );
+        
+      fi;
+      
+    else
+      
+      if NrColumns( matrix ) <> NrRows( UnderlyingMatrix( source ) ) then
+        
+        Error( "the number of columns of the given matrix is incorrect" );
+        
+      fi;
+      
+      if NrRows( matrix ) <> NrRows( UnderlyingMatrix( range ) ) then
+        
+        Error( "the number of rows of the given matrix is incorrect" );
+        
+      fi;
+      
     fi;
     
     morphism := rec( );
