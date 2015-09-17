@@ -371,21 +371,11 @@ end;
 
 #################################
 ##
-## Add functions to category
-##
-#################################
-
-AddIdentityMorphism( vecspaces, identity_morphism );
-
-## TODO!!!
-
-#################################
-##
 ## Finalize category
 ##
 #################################
 
-Finalize( vecspaces );
+# Finalize( vecspaces );
 
 #################################
 ##
@@ -393,136 +383,136 @@ Finalize( vecspaces );
 ##
 #################################
 
-V := QVectorSpace( 2 );
-
-W := QVectorSpace( 3 );
-
-alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
-
-KernelEmb( alpha );
-
-Cokernel( alpha );
-
-CokernelProj( alpha );
-
-alpha + alpha;
-
-- alpha;
-
-IsMonomorphism( alpha );
-
-IsEpimorphism( alpha );
-
-alpha_image := ImageEmbedding( alpha );
-
-alpha := VectorSpaceMorphism( V, [ [ 1, 0, 0 ], [ 0, 1, 1 ] ], W );
-
-beta := VectorSpaceMorphism( V, [ [ 1, 1, 0 ], [ 0, 0, 1 ] ], W );
-
-fiberproduct := FiberProduct( alpha, beta );
-
-projection := ProjectionInFactor( fiberproduct, 1 );
-
-intersection := PreCompose( projection, alpha );
-
-LoadPackage( "HomologicalAlgebraForCAP" );
-
-V1 := QVectorSpace( 1 );
-
-V2 := QVectorSpace( 2 );
-
-V3 := QVectorSpace( 3 );
-
-alpha2 := VectorSpaceMorphism( V3, [ [ 0, 0 ], [ 1, 0 ], [ 0, 1 ] ], V2 );
-
-beta1 := VectorSpaceMorphism( V2, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], V3 );
-
-gamma1 := VectorSpaceMorphism( V1, [ [ 1, 0 ] ], V2 );
-
-gamma2 := IdentityMorphism( V3 );
-
-gamma3 := VectorSpaceMorphism( V2, [ [ 0 ], [ 1 ] ], V1 );
-
-snake := SnakeLemmaConnectingHomomorphism( alpha2, gamma1, gamma2, gamma3, beta1 );
-
-########################################
-##
-## Create Functors & natural transformations
-##
-########################################
-
-id_functor := CapFunctor( "Identity of vecspaces", vecspaces, vecspaces );
-
-AddObjectFunction( id_functor, IdFunc );
-
-AddMorphismFunction( id_functor, function( obj1, mor, obj2 ) return mor; end );
-
-id_functor := IdentityMorphism( AsCatObject( vecspaces ) );
-
-double_functor := CapFunctor( "DoubleOfVecspaces", 
-                              vecspaces, vecspaces );
-
-AddObjectFunction( double_functor,
-                   
-  function( obj )
-    
-    return QVectorSpace( 2 * Dimension( obj ) );
-    
-end );
-
-AddMorphismFunction( double_functor,
-                     
-  function( new_source, mor, new_range )
-    local matr, matr1;
-    
-    matr := EntriesOfHomalgMatrixAsListList( mor!.morphism );
-    
-    matr := Concatenation( List( matr,
-                           i -> Concatenation( i, ListWithIdenticalEntries( Length( i ), 0 ) ) ),
-                           List( matr,
-                           i -> Concatenation( ListWithIdenticalEntries( Length( i ), 0 ), i ) ) );
-    
-    return VectorSpaceMorphism( new_source, matr, new_range );
-    
-end );
-
-V2;
-
-ApplyFunctor( double_functor, V2 );
-
-alpha2;
-
-ApplyFunctor( double_functor, alpha2 );
-
-quadruple_functor := PreCompose( double_functor, double_functor );
-
-ApplyFunctor( double_functor, V2 );
-
-ApplyFunctor( quadruple_functor, alpha2 );
-
-double_swap_components := NaturalTransformation( "double swap components", 
-                            double_functor, double_functor );
-
-AddNaturalTransformationFunction( double_swap_components,
-  
-  function( doubled_source, obj, doubled_range )
-    local zero_morphism, one_morphism;
-    
-    zero_morphism := ZeroMorphism( obj, obj );
-    
-    one_morphism := IdentityMorphism( obj );
-    
-    return MorphismBetweenDirectSums( [ [ zero_morphism, one_morphism ],
-                                        [ one_morphism, zero_morphism ] ] );
-    
-end );
-
-ApplyNaturalTransformation( double_swap_components, V2 );
-
-h_composition := HorizontalPreCompose( double_swap_components, double_swap_components );
-
-ApplyNaturalTransformation( h_composition, V2 );
-
-v_composition := VerticalPreCompose( double_swap_components, double_swap_components );
-
-ApplyNaturalTransformation( v_composition, V2 );
+# V := QVectorSpace( 2 );
+# 
+# W := QVectorSpace( 3 );
+# 
+# alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
+# 
+# KernelEmb( alpha );
+# 
+# Cokernel( alpha );
+# 
+# CokernelProj( alpha );
+# 
+# alpha + alpha;
+# 
+# - alpha;
+# 
+# IsMonomorphism( alpha );
+# 
+# IsEpimorphism( alpha );
+# 
+# alpha_image := ImageEmbedding( alpha );
+# 
+# alpha := VectorSpaceMorphism( V, [ [ 1, 0, 0 ], [ 0, 1, 1 ] ], W );
+# 
+# beta := VectorSpaceMorphism( V, [ [ 1, 1, 0 ], [ 0, 0, 1 ] ], W );
+# 
+# fiberproduct := FiberProduct( alpha, beta );
+# 
+# projection := ProjectionInFactor( fiberproduct, 1 );
+# 
+# intersection := PreCompose( projection, alpha );
+# 
+# LoadPackage( "HomologicalAlgebraForCAP" );
+# 
+# V1 := QVectorSpace( 1 );
+# 
+# V2 := QVectorSpace( 2 );
+# 
+# V3 := QVectorSpace( 3 );
+# 
+# alpha2 := VectorSpaceMorphism( V3, [ [ 0, 0 ], [ 1, 0 ], [ 0, 1 ] ], V2 );
+# 
+# beta1 := VectorSpaceMorphism( V2, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], V3 );
+# 
+# gamma1 := VectorSpaceMorphism( V1, [ [ 1, 0 ] ], V2 );
+# 
+# gamma2 := IdentityMorphism( V3 );
+# 
+# gamma3 := VectorSpaceMorphism( V2, [ [ 0 ], [ 1 ] ], V1 );
+# 
+# snake := SnakeLemmaConnectingHomomorphism( alpha2, gamma1, gamma2, gamma3, beta1 );
+# 
+# ########################################
+# ##
+# ## Create Functors & natural transformations
+# ##
+# ########################################
+# 
+# id_functor := CapFunctor( "Identity of vecspaces", vecspaces, vecspaces );
+# 
+# AddObjectFunction( id_functor, IdFunc );
+# 
+# AddMorphismFunction( id_functor, function( obj1, mor, obj2 ) return mor; end );
+# 
+# id_functor := IdentityMorphism( AsCatObject( vecspaces ) );
+# 
+# double_functor := CapFunctor( "DoubleOfVecspaces", 
+#                               vecspaces, vecspaces );
+# 
+# AddObjectFunction( double_functor,
+#                    
+#   function( obj )
+#     
+#     return QVectorSpace( 2 * Dimension( obj ) );
+#     
+# end );
+# 
+# AddMorphismFunction( double_functor,
+#                      
+#   function( new_source, mor, new_range )
+#     local matr, matr1;
+#     
+#     matr := EntriesOfHomalgMatrixAsListList( mor!.morphism );
+#     
+#     matr := Concatenation( List( matr,
+#                            i -> Concatenation( i, ListWithIdenticalEntries( Length( i ), 0 ) ) ),
+#                            List( matr,
+#                            i -> Concatenation( ListWithIdenticalEntries( Length( i ), 0 ), i ) ) );
+#     
+#     return VectorSpaceMorphism( new_source, matr, new_range );
+#     
+# end );
+# 
+# V2;
+# 
+# ApplyFunctor( double_functor, V2 );
+# 
+# alpha2;
+# 
+# ApplyFunctor( double_functor, alpha2 );
+# 
+# quadruple_functor := PreCompose( double_functor, double_functor );
+# 
+# ApplyFunctor( double_functor, V2 );
+# 
+# ApplyFunctor( quadruple_functor, alpha2 );
+# 
+# double_swap_components := NaturalTransformation( "double swap components", 
+#                             double_functor, double_functor );
+# 
+# AddNaturalTransformationFunction( double_swap_components,
+#   
+#   function( doubled_source, obj, doubled_range )
+#     local zero_morphism, one_morphism;
+#     
+#     zero_morphism := ZeroMorphism( obj, obj );
+#     
+#     one_morphism := IdentityMorphism( obj );
+#     
+#     return MorphismBetweenDirectSums( [ [ zero_morphism, one_morphism ],
+#                                         [ one_morphism, zero_morphism ] ] );
+#     
+# end );
+# 
+# ApplyNaturalTransformation( double_swap_components, V2 );
+# 
+# h_composition := HorizontalPreCompose( double_swap_components, double_swap_components );
+# 
+# ApplyNaturalTransformation( h_composition, V2 );
+# 
+# v_composition := VerticalPreCompose( double_swap_components, double_swap_components );
+# 
+# ApplyNaturalTransformation( v_composition, V2 );
