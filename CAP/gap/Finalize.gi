@@ -187,7 +187,7 @@ InstallMethod( IsFinalized,
             ## Add method
             add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_final_derivation.name ) ] ) );
             
-            add_name( category, current_final_derivation.function_list, weight );
+            add_name( category, current_final_derivation.function_list, weight : IsFinalDerivation := true );
             
             current_final_derivation.option_function( category );
             

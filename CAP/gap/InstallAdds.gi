@@ -243,8 +243,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
                 add_function( category, result );
                 
-                
                 return result;
+                
             end );
             
         end;
@@ -264,6 +264,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         if set_primitive then
             AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
+            
+            if not is_pair_func and not ValueOption( "IsFinalDerivation" ) = true then
+                category!.primitive_operations.( function_name ) := true;
+            fi;
             
             if install_pair_func = true then
                 PushOptions( rec( IsPairFunc := true ) );

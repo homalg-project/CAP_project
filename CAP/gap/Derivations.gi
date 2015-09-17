@@ -908,15 +908,26 @@ end );
 
 InstallGlobalFunction( ListPrimitivelyInstalledOperationsOfCategory,
   
-  i -> CAP_INTERNAL_LIST_INSTALLED_OPERATIONS_OF_CATEGORY( i, true ) );
+  function( cat )
+    local names;
+    
+    if IsCapCategoryCell( cat ) then
+        cat := CapCategory( cat );
+    fi;
+    
+    if not IsCapCategory( cat ) then
+        Error( "input must be category or cell" );
+    fi;
+    
+    names := RecNames( cat!.primitive_operations );
+    
+    return AsSortedList( names );
+    
+end );
 
 InstallGlobalFunction( ListInstalledOperationsOfCategory,
   
-  i -> CAP_INTERNAL_LIST_INSTALLED_OPERATIONS_OF_CATEGORY( i, false ) );
-
-InstallGlobalFunction( CAP_INTERNAL_LIST_INSTALLED_OPERATIONS_OF_CATEGORY,
-  
-  function( category, primitive )
+  function( category )
     local weight_list, list_of_methods, list_of_installed_methods;
     
     if IsCapCategoryCell( category ) then
@@ -934,12 +945,7 @@ InstallGlobalFunction( CAP_INTERNAL_LIST_INSTALLED_OPERATIONS_OF_CATEGORY,
     
     list_of_methods := AsSortedList( list_of_methods );
     
-    if primitive then
-        list_of_methods := Filtered( list_of_methods, i -> DerivationOfOperation( weight_list, i ) = fail
-                                                           and CurrentOperationWeight( weight_list, i ) < infinity );
-    else
-        list_of_methods := Filtered( list_of_methods, i -> CurrentOperationWeight( weight_list, i ) < infinity );
-    fi;
+    list_of_methods := Filtered( list_of_methods, i -> CurrentOperationWeight( weight_list, i ) < infinity );
     
     return list_of_methods;
     
