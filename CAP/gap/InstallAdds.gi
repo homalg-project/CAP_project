@@ -136,7 +136,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
       
       function( category, method_list, weight )
         local install_func, replaced_filter_list, install_method, popper, i, set_primitive, install_remaining_pair, is_derivation,
-              install_pair_func, pair_name, pair_func, is_pair_func, pair_func_push;
+              install_pair_func, pair_name, pair_func, is_pair_func, pair_func_push, number_of_proposed_arguments, current_function_number,
+              current_function_argument_number;
         
         ## If there already is a faster method, do nothing!
         if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
@@ -207,6 +208,25 @@ InstallGlobalFunction( CapInternalInstallAdd,
             install_method := InstallMethod;
             popper := false;
         fi;
+        
+        ## Nr arguments sanity check
+        
+        number_of_proposed_arguments := Length( argument_list );
+        
+        for current_function_number in [ 1 .. Length( method_list ) ] do
+            
+            current_function_argument_number := NumberArgumentsFunction( method_list[ current_function_number ][ 1 ] );
+            
+            if current_function_argument_number = -1 then
+                continue;
+            fi;
+            
+            if current_function_argument_number <> number_of_proposed_arguments then
+                Error( "In ", add_name, ": given function ", String( current_function_number ), " has ", String( current_function_argument_number ),
+                       " arguments but should have ", String( number_of_proposed_arguments ) );
+            fi;
+            
+        od;
         
         install_func := function( func_to_install, filter_list )
           local new_filter_list;
