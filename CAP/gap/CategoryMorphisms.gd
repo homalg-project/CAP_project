@@ -944,7 +944,7 @@ DeclareOperation( "AddMonoAsKernelLift",
 #! $u \circ \epsilon \sim_{a,t} \tau$.
 #! The output is such a $u$.
 #! @Returns a morphism in $\mathrm{Hom}(c,t)$
-#! @Arguments iota, tau
+#! @Arguments epsilon, tau
 DeclareOperation( "EpiAsCokernelColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
