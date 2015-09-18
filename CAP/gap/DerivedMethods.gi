@@ -1245,7 +1245,7 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
                       [ AdditiveInverseForMorphisms,1 ],
                       [ AdditionForMorphisms, 1 ] ],
                     
-  function( diagram, method_selection_morphism )
+  function( diagram )
     local direct_sum_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2;
     
     direct_sum_diagram := List( diagram, Source );
@@ -1272,7 +1272,7 @@ AddDerivationToCAP( FiberProductFunctorial,
                       [ ProjectionInFactorOfFiberProduct, 2 ], ## Length( morphism_of_morphisms ) would be the right number,
                       [ UniversalMorphismIntoFiberProduct, 1 ] ],
                                   
-  function( morphism_of_morphisms, base_morphism )
+  function( morphism_of_morphisms )
     local pullback_diagram, source, diagram;
         
         pullback_diagram := List( morphism_of_morphisms, mor -> mor[1] );
@@ -1293,7 +1293,7 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
                       [ AdditiveInverseForMorphisms, 1 ],
                       [ AdditionForMorphisms, 1 ] ],
                     
-  function( diagram, method_selection_morphism )
+  function( diagram )
     local cobase, direct_sum_diagram, number_of_morphisms, list_of_morphisms, mor1, mor2;
     
     direct_sum_diagram := List( diagram, Range );
@@ -1317,7 +1317,7 @@ AddDerivationToCAP( PushoutFunctorial,
                       [ InjectionOfCofactorOfPushout, 2 ], ## Length( morphism_of_morphisms ) would be the correct number here
                       [ UniversalMorphismFromPushout, 1 ] ],
                                   
-  function( morphism_of_morphisms, cobase_morphism )
+  function( morphism_of_morphisms )
     local pushout_diagram, sink, diagram;
         
         pushout_diagram := List( morphism_of_morphisms, mor -> mor[3] );

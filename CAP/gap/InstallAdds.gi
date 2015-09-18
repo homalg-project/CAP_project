@@ -450,11 +450,14 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             
         fi;
         
-        if Length( current_rec.filter_list ) > 1 and
-           ForAll( [ 1 .. Length( current_rec.filter_list ) - 1 ], i -> current_rec.filter_list[ i ] = IsInt or current_rec.filter_list[ i ] = IsList ) then
-            current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) - 1 ];
-        else
-            current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) ];
+        
+        if not IsBound( current_rec.argument_list ) then
+            if Length( current_rec.filter_list ) > 1 and
+              ForAll( [ 1 .. Length( current_rec.filter_list ) - 1 ], i -> current_rec.filter_list[ i ] = IsInt or current_rec.filter_list[ i ] = IsList ) then
+                current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) - 1 ];
+            else
+                current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) ];
+            fi;
         fi;
         
         if IsBound( current_rec.universal_type ) and not IsBound( current_rec.universal_object_position ) then
