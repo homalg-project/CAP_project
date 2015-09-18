@@ -84,6 +84,7 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">= 2015.06.20" ],
                            [ "CAP", ">= 2015.08.17" ],
+                           [ "ToolsForHomalg", ">=2015.09.18" ]
                            ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
