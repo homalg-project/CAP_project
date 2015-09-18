@@ -361,6 +361,7 @@ DirectSum := rec(
 
 ProjectionInFactorOfDirectSum := rec(
   installation_name := "ProjectionInFactorOfDirectSumOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "ProjectionInFactorOfDirectSumOp",
   universal_object_position := "Source",
@@ -378,6 +379,7 @@ ProjectionInFactorOfDirectSumWithGivenDirectSum := rec(
 
 UniversalMorphismIntoDirectSum := rec(
   installation_name := "UniversalMorphismIntoDirectSumOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismIntoDirectSumOp",
   universal_object_position := "Range",
@@ -445,6 +447,7 @@ UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
 
 InjectionOfCofactorOfDirectSum := rec(
   installation_name := "InjectionOfCofactorOfDirectSumOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "InjectionOfCofactorOfDirectSumOp",
   universal_object_position := "Range",
@@ -462,6 +465,7 @@ InjectionOfCofactorOfDirectSumWithGivenDirectSum := rec(
 
 UniversalMorphismFromDirectSum := rec(
   installation_name := "UniversalMorphismFromDirectSumOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismFromDirectSumOp",
   universal_object_position := "Source",
@@ -640,6 +644,7 @@ UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
 
 DirectProduct := rec(
   installation_name := "DirectProductOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "object" ],
   cache_name := "DirectProductOp",
   universal_type := "Limit",
@@ -648,6 +653,7 @@ DirectProduct := rec(
 
 ProjectionInFactorOfDirectProduct := rec(
   installation_name := "ProjectionInFactorOfDirectProductOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "ProjectionInFactorOfDirectProductOp",
   universal_object_position := "Source",
@@ -665,6 +671,7 @@ ProjectionInFactorOfDirectProductWithGivenDirectProduct := rec(
 
 UniversalMorphismIntoDirectProduct := rec(
   installation_name := "UniversalMorphismIntoDirectProductOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismIntoDirectProductOp",
   universal_object_position := "Range",
@@ -966,6 +973,7 @@ AdditiveInverseForMorphisms := rec(
 
 Coproduct := rec(
   installation_name := "CoproductOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "object" ],
   cache_name := "CoproductOp",
   universal_type := "Colimit",
@@ -974,6 +982,7 @@ Coproduct := rec(
 
 InjectionOfCofactorOfCoproduct := rec(
   installation_name := "InjectionOfCofactorOfCoproductOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "object" ],
   cache_name := "InjectionOfCofactorOfCoproductOp",
   universal_object_position := "Range",
@@ -991,6 +1000,7 @@ InjectionOfCofactorOfCoproductWithGivenCoproduct := rec(
 
 UniversalMorphismFromCoproduct := rec(
   installation_name := "UniversalMorphismFromCoproductOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismFromCoproductOp",
   universal_object_position := "Source",
@@ -1126,6 +1136,7 @@ Codominates := rec(
 
 FiberProduct := rec(
   installation_name := "FiberProductOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "FiberProductOp",
   universal_type := "Limit",
@@ -1154,6 +1165,7 @@ FiberProduct := rec(
 
 ProjectionInFactorOfFiberProduct := rec(
   installation_name := "ProjectionInFactorOfFiberProductOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "morphism" ],
   cache_name := "ProjectionInFactorOfFiberProductOp",
   universal_object_position := "Source",
@@ -1219,6 +1231,7 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
 
 UniversalMorphismIntoFiberProduct := rec(
   installation_name := "UniversalMorphismIntoFiberProductOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "morphism" ],
   cache_name := "UniversalMorphismIntoFiberProductOp",
   universal_object_position := "Range",
@@ -1336,6 +1349,7 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
 
 Pushout := rec(
   installation_name := "PushoutOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "PushoutOp",
   universal_type := "Colimit",
@@ -1364,6 +1378,7 @@ Pushout := rec(
 
 InjectionOfCofactorOfPushout := rec(
   installation_name := "InjectionOfCofactorOfPushoutOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "morphism" ],
   cache_name := "InjectionOfCofactorOfPushoutOp",
   universal_object_position := "Range",
@@ -1429,6 +1444,7 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
 
 UniversalMorphismFromPushout := rec(
   installation_name := "UniversalMorphismFromPushoutOp",
+  argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "morphism" ],
   cache_name := "UniversalMorphismFromPushoutOp",
   universal_object_position := "Source",
@@ -1963,12 +1979,14 @@ InitialObjectFunctorial := rec(
 DirectProductFunctorial := rec(
   installation_name := "DirectProductFunctorialOp",
   filter_list := [ IsList, "morphism" ],
+  argument_list := [ 1 ],
   cache_name := "DirectProductFunctorialOp",
   return_type := "morphism",
   dual_operation := "CoproductFunctorial" ), #there is no Add-method
 
 CoproductFunctorial := rec(
   installation_name := "CoproductFunctorialOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "CoproductFunctorialOp",
   return_type := "morphism",
@@ -1983,6 +2001,7 @@ DirectSumFunctorial := rec(
 
 FiberProductFunctorial := rec(
   installation_name := "FiberProductFunctorialOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "FiberProductFunctorialOp",
   return_type := "morphism",
@@ -1990,6 +2009,7 @@ FiberProductFunctorial := rec(
 
 PushoutFunctorial := rec(
   installation_name := "PushoutFunctorialOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "PushoutFunctorialOp",
   return_type := "morphism",
@@ -2111,6 +2131,7 @@ IsWellDefinedForTwoCells := rec(
   
 DirectSumDiagonalDifference := rec(
   installation_name := "DirectSumDiagonalDifferenceOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumDiagonalDifferenceOp",
   return_type := "morphism",
@@ -2214,6 +2235,7 @@ IsomorphismFromCoproductToDirectSum := rec(
 
 DirectSumCodiagonalDifference := rec(
   installation_name := "DirectSumCodiagonalDifferenceOp",
+  argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   cache_name := "DirectSumCodiagonalDifferenceOp",
   return_type := "morphism",
