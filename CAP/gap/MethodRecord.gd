@@ -356,8 +356,25 @@ DirectSum := rec(
   argument_list := [ 1 ],
   cache_name := "DirectSumOp",
   universal_type := "LimitColimit",
-  return_type := "object"
-  ),
+  return_type := "object",
+  pre_function := function( diagram, selection_morphism )
+      local category;
+      
+      category := CapCategory( selection_morphism );
+      
+      if not ForAll( diagram, i -> IsIdenticalObj( category, CapCategory( i ) ) ) then
+          
+          return [ false, "not all given objects lie in the same category" ];
+          
+      elif not ForAll( diagram, IsCapCategoryObject ) then
+          
+          return [ false, "not all elements of diagram are objects" ];
+          
+      fi;
+      
+      return [ true ];
+      
+  end ),
 
 ProjectionInFactorOfDirectSum := rec(
   installation_name := "ProjectionInFactorOfDirectSumOp",
@@ -649,7 +666,25 @@ DirectProduct := rec(
   cache_name := "DirectProductOp",
   universal_type := "Limit",
   return_type := "object",
-  dual_operation := "Coproduct" ),
+  dual_operation := "Coproduct",
+  pre_function := function( diagram, selection_morphism )
+      local category;
+      
+      category := CapCategory( selection_morphism );
+      
+      if not ForAll( diagram, i -> IsIdenticalObj( category, CapCategory( i ) ) ) then
+          
+          return [ false, "not all given objects lie in the same category" ];
+          
+      elif not ForAll( diagram, IsCapCategoryObject ) then
+          
+          return [ false, "not all elements of diagram are objects" ];
+          
+      fi;
+      
+      return [ true ];
+      
+  end ),
 
 ProjectionInFactorOfDirectProduct := rec(
   installation_name := "ProjectionInFactorOfDirectProductOp",

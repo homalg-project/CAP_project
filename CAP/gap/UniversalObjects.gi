@@ -348,33 +348,6 @@ end );
 ## Convenience methods
 ####################################
 
-## GAP-Hack in order to avoid the pre-installed GAP-method DirectProduct
-BindGlobal( "CAP_INTERNAL_DIRECT_PRODUCT_SAVE", DirectProduct );
-
-MakeReadWriteGlobal( "DirectProduct" );
-
-DirectProduct := function( arg )
-  
-  if Length( arg ) = 1
-     and IsList( arg[1] ) 
-     and ForAll( arg[1], IsCapCategoryObject ) then
-     
-     return DirectProductOp( arg[1], arg[1][1] );
-     
-  fi;
-  
-  if ( ForAll( arg, IsCapCategory ) or ForAll( arg, IsCapCategoryObject ) or ForAll( arg, IsCapCategoryMorphism ) ) and Length( arg ) > 0 then
-      
-      return DirectProductOp( arg, arg[ 1 ] );
-      
-  fi;
-  
-  return CallFuncList( CAP_INTERNAL_DIRECT_PRODUCT_SAVE, arg );
-  
-end;
-
-MakeReadOnlyGlobal( "DirectProduct" );
-
 ##
 InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
 
@@ -440,33 +413,6 @@ end );
 ####################################
 ## Convenience methods
 ####################################
-
-## GAP-Hack in order to avoid the pre-installed GAP-method DirectSum
-BindGlobal( "CAP_INTERNAL_DIRECT_SUM_SAVE", DirectSum );
-
-MakeReadWriteGlobal( "DirectSum" );
-
-DirectSum := function( arg )
-  
-  if Length( arg ) = 1
-     and IsList( arg[1] )
-     and ForAll( arg[1], IsCapCategoryObject ) then
-     
-     return DirectSumOp( arg[1], arg[1][1] );
-     
-   fi;
-  
-  if ( ForAll( arg, IsCapCategory ) or ForAll( arg, IsCapCategoryObject ) or ForAll( arg, IsCapCategoryMorphism ) ) and Length( arg ) > 0 then
-      
-      return DirectSumOp( arg, arg[ 1 ] );
-      
-  fi;
-  
-  return CallFuncList( CAP_INTERNAL_DIRECT_SUM_SAVE, arg );
-  
-end;
-
-MakeReadOnlyGlobal( "DirectSum" );
 
 ##
 InstallMethod( ProjectionInFactorOfDirectSum,
