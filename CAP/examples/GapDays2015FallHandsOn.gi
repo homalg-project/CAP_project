@@ -308,7 +308,7 @@ zero_morphism := function( a, b )
     
 end;
 
-AddZeroObject( vecspaces, zero_morphism );
+AddZeroMorphism( vecspaces, zero_morphism );
 
 ##
 direct_sum := function( object_product_list )
