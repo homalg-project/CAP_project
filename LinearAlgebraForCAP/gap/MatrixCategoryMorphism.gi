@@ -88,15 +88,17 @@ end );
 ####################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( Display,
                [ IsVectorSpaceMorphism ],
-
+               # FIXME: Fix the rank in GenericView and delete this afterwards
+               9999,
+               
   function( vector_space_morphism )
-
-    Print( "A vector space homomorphism over ", 
-    RingName( UnderlyingFieldForHomalg( vector_space_morphism ) ),
-    " with matrix: \n" );
     
     Display( UnderlyingHomalgMatrix( vector_space_morphism ) );
+    
+    Print( "\n" );
+    
+    Print( StringMutable( vector_space_morphism ) );
     
 end );

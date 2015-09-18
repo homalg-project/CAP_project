@@ -700,3 +700,30 @@ InstallGlobalFunction( CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS,
     
 end );
 
+##
+InstallGlobalFunction( ListKnownCategoricalProperties,
+                      
+  function( category )
+    local list, name;
+    
+    if not IsCapCategory( category ) then
+      
+      Error( "the input is not a category" );
+      
+    fi;
+    
+    list := [ ];
+    
+    for name in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST!.MathematicalPropertiesOfCategories do
+      
+      if Tester( ValueGlobal( name ) )( category ) and ValueGlobal( name )( category ) then
+        
+        Add( list, name );
+      
+      fi;
+      
+    od;
+    
+    return list;
+    
+end );
