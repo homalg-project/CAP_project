@@ -270,14 +270,14 @@ DeclareFilter( "WasCreatedAsKernelObject" );
 #! * a dependent function $u$ mapping each $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$ to a morphism $u(\tau):K \rightarrow T$ such that $u(\tau) \circ \epsilon \sim_{B,T} \tau$.
 #! The triple $( K, \epsilon, u )$ is called a <Emph>cokernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
-#! We denote the object $K$ of such a triple by $\mathrm{Cokernel}(\alpha)$.
+#! We denote the object $K$ of such a triple by $\mathrm{CokernelObject}(\alpha)$.
 #! We say that the morphism $u(\tau)$ is induced by the
 #! <Emph>universal property of the cokernel</Emph>.
 #! $\\ $
-#! $\mathrm{Cokernel}$ is a functorial operation. This means:
+#! $\mathrm{CokernelObject}$ is a functorial operation. This means:
 #! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
-#! we obtain a morphism $\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' )$.
+#! we obtain a morphism $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$.
 
 
 
@@ -287,13 +287,13 @@ DeclareFilter( "WasCreatedAsKernelObject" );
 #! The output is the cokernel $K$ of $\alpha$.
 #! @Returns an object
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "Cokernel",
+DeclareAttributeWithToDoForIsWellDefined( "CokernelObject",
                                           IsCapCategoryMorphism );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
-#! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{Cokernel}( \alpha )$.
-#! @Returns a morphism in $\mathrm{Hom}(B, \mathrm{Cokernel}( \alpha ))$
+#! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{CokernelObject}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}(B, \mathrm{CokernelObject}( \alpha ))$
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
                                           IsCapCategoryMorphism );
@@ -309,11 +309,11 @@ DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
-#! and an object $K = \mathrm{Cokernel}(\alpha)$.
-#! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{Cokernel}( \alpha )$.
+#! and an object $K = \mathrm{CokernelObject}(\alpha)$.
+#! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{CokernelObject}( \alpha )$.
 #! @Returns a morphism in $\mathrm{Hom}(B, K)$
 #! @Arguments alpha, K
-DeclareOperation( "CokernelProjWithGivenCokernel",
+DeclareOperation( "CokernelProjWithGivenCokernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
@@ -331,9 +331,9 @@ DeclareOperation( "CokernelColift",
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
 #! and a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$.
-#! The output is the morphism $u(\tau): \mathrm{Cokernel}(\alpha) \rightarrow T$
+#! The output is the morphism $u(\tau): \mathrm{CokernelObject}(\alpha) \rightarrow T$
 #! given by the universal property of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}(\alpha),T)$
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}(\alpha),T)$
 #! @Arguments alpha, tau
 DeclareOperation( "CokernelColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -341,12 +341,12 @@ DeclareOperation( "CokernelColift",
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$,
 #! a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$,
-#! and an object $K = \mathrm{Cokernel}(\alpha)$.
+#! and an object $K = \mathrm{CokernelObject}(\alpha)$.
 #! The output is the morphism $u(\tau): K \rightarrow T$
 #! given by the universal property of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(K,T)$
 #! @Arguments alpha, tau, K
-DeclareOperation( "CokernelColiftWithGivenCokernel",
+DeclareOperation( "CokernelColiftWithGivenCokernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
@@ -355,20 +355,20 @@ DeclareOperation( "CokernelColiftWithGivenCokernel",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>Cokernel</C>.
+#! to the category for the basic operation <C>CokernelObject</C>.
 #! $F: \alpha \mapsto K$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCokernel",
+DeclareOperation( "AddCokernelObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernel",
+DeclareOperation( "AddCokernelObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernel",
+DeclareOperation( "AddCokernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCokernel",
+DeclareOperation( "AddCokernelObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -398,16 +398,16 @@ DeclareOperation( "AddCokernelProj",
 #! $F: (\alpha, K) \mapsto \epsilon$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCokernelProjWithGivenCokernel",
+DeclareOperation( "AddCokernelProjWithGivenCokernelObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernelProjWithGivenCokernel",
+DeclareOperation( "AddCokernelProjWithGivenCokernelObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernelProjWithGivenCokernel",
+DeclareOperation( "AddCokernelProjWithGivenCokernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCokernelProjWithGivenCokernel",
+DeclareOperation( "AddCokernelProjWithGivenCokernelObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -436,25 +436,25 @@ DeclareOperation( "AddCokernelColift",
 #! $F: (\alpha, \tau, K) \mapsto u(\tau)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCokernelColiftWithGivenCokernel",
+DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
                   [ IsCapCategory, IsList ] );
 
 
 #! @Description
 #! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu:A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$.
 #! The output is the morphism
-#! $\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' )$
+#! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
 #! given by the functorality of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}( \alpha ), \mathrm{Cokernel}( \alpha' ))$
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))$
 #! @Arguments L
 DeclareOperation( "CokernelFunctorial",
                   [ IsList ] );
@@ -463,9 +463,9 @@ DeclareOperation( "CokernelFunctorial",
 #! The arguments are three morphisms
 #! $\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'$.
 #! The output is the morphism
-#! $\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' )$
+#! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
 #! given by the functorality of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Cokernel}( \alpha ), \mathrm{Cokernel}( \alpha' ))$
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))$
 #! @Arguments alpha, nu, alpha_prime
 DeclareOperation( "CokernelFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -474,7 +474,7 @@ DeclareOperation( "CokernelFunctorial",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>CokernelFunctorial</C>.
-#! $F: (\alpha, \nu, \alpha') \mapsto (\mathrm{Cokernel}( \alpha ) \rightarrow \mathrm{Cokernel}( \alpha' ))$.
+#! $F: (\alpha, \nu, \alpha') \mapsto (\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' ))$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCokernelFunctorial",
@@ -496,9 +496,9 @@ DeclareOperation( "AddCokernelFunctorial",
 
 #! @Description 
 #! When created, this filter is set to true for a cokernel object. 
-#! Note that we chose <C>WasCreatedAsCokernel</C> to be a filter rather than a property,
+#! Note that we chose <C>WasCreatedAsCokernelObject</C> to be a filter rather than a property,
 #! because by default, a filter is set to false. 
-DeclareFilter( "WasCreatedAsCokernel" );
+DeclareFilter( "WasCreatedAsCokernelObject" );
 
 #! @Chapter Universal Objects
 
@@ -3498,8 +3498,8 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical morphism
-#! $\mathrm{coim}( \alpha ) \rightarrow \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) )$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{coim}( \alpha ), \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ) )$.
+#! $\mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{coim}( \alpha ), \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ) )$.
 #! @Arguments alpha
 DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
                   [ IsCapCategoryMorphism ] );
@@ -3508,7 +3508,7 @@ DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCoimageToCokernelOfKernel</C>.
-#! $F: \alpha \mapsto ( \mathrm{coim}( \alpha ) \rightarrow \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ) )$.
+#! $F: \alpha \mapsto ( \mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ) )$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
@@ -3526,8 +3526,8 @@ DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical morphism
-#! $\mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha )$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ), \mathrm{coim}( \alpha ) )$.
+#! $\mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ), \mathrm{coim}( \alpha ) )$.
 #! @Arguments alpha
 DeclareOperation( "IsomorphismFromCokernelOfKernelToCoimage",
                   [ IsCapCategoryMorphism ] );
@@ -3536,7 +3536,7 @@ DeclareOperation( "IsomorphismFromCokernelOfKernelToCoimage",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCokernelOfKernelToCoimage</C>.
-#! $F: \alpha \mapsto ( \mathrm{Cokernel}( \mathrm{KernelEmb}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha ) )$.
+#! $F: \alpha \mapsto ( \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha ) )$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",

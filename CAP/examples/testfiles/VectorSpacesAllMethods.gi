@@ -147,7 +147,7 @@ AddKernelEmbWithGivenKernelObject( vecspaces,
 end );
 
 ##
-AddCokernel( vecspaces,
+AddCokernelObject( vecspaces,
 
   function( morphism )
     local homalg_matrix;
@@ -174,7 +174,7 @@ AddCokernelProj( vecspaces,
 end );
 
 ##
-AddCokernelProjWithGivenCokernel( vecspaces,
+AddCokernelProjWithGivenCokernelObject( vecspaces,
 
   function( morphism, cokernel )
     local cokernel_proj;

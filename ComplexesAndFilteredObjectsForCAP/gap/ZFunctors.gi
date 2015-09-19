@@ -392,13 +392,13 @@ BindGlobal( "ADD_COKERNEL_IN_Z_FUNCTORS",
   function( category )
       local object_func, differential_func, cokernel_object;
 
-      AddCokernel( ZFunctorCategory( category ),
+      AddCokernelObject( ZFunctorCategory( category ),
         
         function( morphism )
           
           object_func := function( index )
               
-              return Cokernel( morphism[ index ] );
+              return CokernelObject( morphism[ index ] );
               
           end;
           
@@ -431,7 +431,7 @@ BindGlobal( "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS",
   function( category )
       local morphism_func, cokernel_proj;
 
-      AddCokernelProjWithGivenCokernel( ZFunctorCategory( category ),
+      AddCokernelProjWithGivenCokernelObject( ZFunctorCategory( category ),
         
         function( morphism, cokernel )
           
@@ -454,7 +454,7 @@ BindGlobal( "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS",
   function( category )
       local morphism_func, cokernel_colift;
 
-      AddCokernelColiftWithGivenCokernel( ZFunctorCategory( category ),
+      AddCokernelColiftWithGivenCokernelObject( ZFunctorCategory( category ),
         
         function( morphism, test_morphism, cokernel )
           
@@ -992,7 +992,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeKernelLift" ], function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeCokernel", "CanComputeCokernelFunctorial" ], function( ) ADD_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeCokernelObject", "CanComputeCokernelFunctorial" ], function( ) ADD_COKERNEL_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeCokernelProj" ], function( ) ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
         

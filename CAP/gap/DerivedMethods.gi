@@ -27,7 +27,7 @@ AddWithGivenDerivationPairToCAP( CokernelColift,
 
   function( mor, test_morphism, cokernel )
       
-      return ColiftAlongEpimorphism( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
+      return ColiftAlongEpimorphism( CokernelProjWithGivenCokernelObject( mor, cokernel ), test_morphism );
       
 end : Description := "CokernelColift using ColiftAlongEpimorphism and CokernelProj" );
 
@@ -629,10 +629,10 @@ end : Description := "IsMonomorphism by deciding if the diagonal morphism is an 
 ##
 AddDerivationToCAP( IsEpimorphism,
                     [ [ IsZeroForObjects, 1 ],
-                      [ Cokernel, 1 ] ],
+                      [ CokernelObject, 1 ] ],
   function( morphism )
     
-    return IsZero( Cokernel( morphism ) );
+    return IsZero( CokernelObject( morphism ) );
     
 end : CategoryFilter := IsAdditiveCategory,
       Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
@@ -1609,14 +1609,14 @@ AddDerivationToCAP( KernelObject,
 end : Description := "KernelObject as the source of KernelEmb" );
 
 ##
-AddDerivationToCAP( Cokernel,
+AddDerivationToCAP( CokernelObject,
                     [ [ CokernelProj, 1 ] ],
                                   
   function( mor )
     
     return Range( CokernelProj( mor ) );
     
-end : Description := "Cokernel as the range of CokernelProj" );
+end : Description := "CokernelObject as the range of CokernelProj" );
 
 ##
 AddDerivationToCAP( Coproduct,
@@ -3135,7 +3135,7 @@ end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as
 
 ##
 AddFinalDerivation( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
-                    [ [ Cokernel, 1 ],
+                    [ [ CokernelObject, 1 ],
                       [ DirectSumCodiagonalDifference, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Pushout,
@@ -3150,7 +3150,7 @@ AddFinalDerivation( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
   function( diagram )
     local cokernel_of_diagonal_difference;
     
-    cokernel_of_diagonal_difference := Cokernel( DirectSumCodiagonalDifference( diagram ) );
+    cokernel_of_diagonal_difference := CokernelObject( DirectSumCodiagonalDifference( diagram ) );
     
     return IdentityMorphism( cokernel_of_diagonal_difference );
     
@@ -3158,7 +3158,7 @@ end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as th
 
 ##
 AddFinalDerivation( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
-                    [ [ Cokernel, 1 ],
+                    [ [ CokernelObject, 1 ],
                       [ DirectSumCodiagonalDifference, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Pushout,
@@ -3173,7 +3173,7 @@ AddFinalDerivation( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
   function( diagram )
     local cokernel_of_diagonal_difference;
     
-    cokernel_of_diagonal_difference := Cokernel( DirectSumCodiagonalDifference( diagram ) );
+    cokernel_of_diagonal_difference := CokernelObject( DirectSumCodiagonalDifference( diagram ) );
     
     return IdentityMorphism( cokernel_of_diagonal_difference );
     
@@ -3233,7 +3233,7 @@ end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the identi
 
 ##
 AddFinalDerivation( IsomorphismFromCoimageToCokernelOfKernel,
-                    [ [ Cokernel, 1 ],
+                    [ [ CokernelObject, 1 ],
                       [ KernelEmb, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Coimage,
@@ -3249,7 +3249,7 @@ AddFinalDerivation( IsomorphismFromCoimageToCokernelOfKernel,
   function( mor )
     local cokernel_of_kernel;
     
-    cokernel_of_kernel := Cokernel( KernelEmb( mor ) );
+    cokernel_of_kernel := CokernelObject( KernelEmb( mor ) );
     
     return IdentityMorphism( cokernel_of_kernel );
     
@@ -3257,7 +3257,7 @@ end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the identity o
 
 ##
 AddFinalDerivation( IsomorphismFromCokernelOfKernelToCoimage,
-                    [ [ Cokernel, 1 ],
+                    [ [ CokernelObject, 1 ],
                       [ KernelEmb, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Coimage,
@@ -3273,7 +3273,7 @@ AddFinalDerivation( IsomorphismFromCokernelOfKernelToCoimage,
   function( mor )
     local cokernel_of_kernel;
     
-    cokernel_of_kernel := Cokernel( KernelEmb( mor ) );
+    cokernel_of_kernel := CokernelObject( KernelEmb( mor ) );
     
     return IdentityMorphism( cokernel_of_kernel );
     

@@ -274,11 +274,11 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               
       function( category )
 
-          AddCokernel( category_getter( category ),
+          AddCokernelObject( category_getter( category ),
             
             function( morphism )
               
-              return object_constructor( Cokernel( UnderlyingZFunctorCell( morphism ) ) );
+              return object_constructor( CokernelObject( UnderlyingZFunctorCell( morphism ) ) );
               
           end );
         
@@ -289,7 +289,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
       
       function( category )
 
-          AddCokernelProjWithGivenCokernel( category_getter( category ),
+          AddCokernelProjWithGivenCokernelObject( category_getter( category ),
             
             function( morphism, cokernel )
               local source;
@@ -307,7 +307,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
       
       function( category )
 
-          AddCokernelColiftWithGivenCokernel( category_getter( category ),
+          AddCokernelColiftWithGivenCokernelObject( category_getter( category ),
             
             function( morphism, test_morphism, cokernel )
               local range;
@@ -725,7 +725,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             
             [ [ "CanComputeKernelLift" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeCokernel" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            [ [ "CanComputeCokernelObject" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
             [ [ "CanComputeCokernelProj" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
@@ -1320,7 +1320,7 @@ InstallMethod( HomologyFunctorOp,
           
           kernel_lift := KernelLift( post_differential, image_embedding );
           
-          return Cokernel( kernel_lift );
+          return CokernelObject( kernel_lift );
           
       end );
       
@@ -1389,7 +1389,7 @@ InstallMethod( CohomologyFunctorOp,
           
           kernel_lift := KernelLift( post_differential, image_embedding );
           
-          return Cokernel( kernel_lift );
+          return CokernelObject( kernel_lift );
           
       end );
       

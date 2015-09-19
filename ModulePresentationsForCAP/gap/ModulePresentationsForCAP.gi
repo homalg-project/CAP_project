@@ -615,7 +615,7 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
         
     end );
     
-    AddCokernelProjWithGivenCokernel( category,
+    AddCokernelProjWithGivenCokernelObject( category,
                      
       function( morphism, cokernel_object )
         local projection;
@@ -626,7 +626,7 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
         
     end );
     
-    AddCokernelColiftWithGivenCokernel( category,
+    AddCokernelColiftWithGivenCokernelObject( category,
       
       function( morphism, test_morphism, cokernel_object )
         
@@ -656,7 +656,7 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
         
     end );
     
-    AddCokernelProjWithGivenCokernel( category,
+    AddCokernelProjWithGivenCokernelObject( category,
                      
       function( morphism, cokernel_object )
         local projection;
@@ -667,7 +667,7 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
         
     end );
     
-    AddCokernelColiftWithGivenCokernel( category,
+    AddCokernelColiftWithGivenCokernelObject( category,
       
       function( morphism, test_morphism, cokernel_object )
         

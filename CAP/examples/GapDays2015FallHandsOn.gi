@@ -456,7 +456,7 @@ Finalize( vecspaces );
 # 
 # KernelEmb( alpha );
 # 
-# Cokernel( alpha );
+# CokernelObject( alpha );
 # 
 # CokernelProj( alpha );
 # 

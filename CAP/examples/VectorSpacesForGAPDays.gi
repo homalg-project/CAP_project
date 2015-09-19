@@ -179,7 +179,7 @@ AddKernelEmbWithGivenKernelObject( QVectorSpaces,
 end );
 
 ##
-AddCokernel( QVectorSpaces,
+AddCokernelObject( QVectorSpaces,
 
   function( morphism )
     local homalg_matrix;
@@ -191,7 +191,7 @@ AddCokernel( QVectorSpaces,
 end );
 
 ##
-AddCokernelProjWithGivenCokernel( QVectorSpaces,
+AddCokernelProjWithGivenCokernelObject( QVectorSpaces,
 
   function( morphism, cokernel )
     local cokernel_proj;

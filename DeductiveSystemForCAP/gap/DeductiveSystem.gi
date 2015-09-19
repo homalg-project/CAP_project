@@ -253,11 +253,11 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddCokernel( deductive_system,
+    AddCokernelObject( deductive_system,
                  
       function( morphism )
         
-        return DeductiveSystemObject( "Cokernel", [ morphism ] );
+        return DeductiveSystemObject( "CokernelObject", [ morphism ] );
         
     end );
     
@@ -265,11 +265,11 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                      
       function( morphism )
         
-        return DeductiveSystemMorphism( Range( morphism ), "CokernelProj", [ morphism ], Cokernel( morphism ) );
+        return DeductiveSystemMorphism( Range( morphism ), "CokernelProj", [ morphism ], CokernelObject( morphism ) );
         
     end );
     
-    AddCokernelProjWithGivenCokernel( deductive_system,
+    AddCokernelProjWithGivenCokernelObject( deductive_system,
                                       
       function( morphism, cokernel )
         
@@ -281,11 +281,11 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
                        
       function( morphism, test_morphism )
         
-        return DeductiveSystemMorphism( Cokernel( morphism ), "CokernelColift", [ morphism, test_morphism ], Range( test_morphism ) );
+        return DeductiveSystemMorphism( CokernelObject( morphism ), "CokernelColift", [ morphism, test_morphism ], Range( test_morphism ) );
         
     end );
     
-    AddCokernelColiftWithGivenCokernel( deductive_system,
+    AddCokernelColiftWithGivenCokernelObject( deductive_system,
                                         
       function( morphism, test_morphism, cokernel )
         

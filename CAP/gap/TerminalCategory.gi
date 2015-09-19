@@ -105,7 +105,7 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
     
     obj_function_list := [ AddZeroObject,
                            AddKernelObject,
-                           AddCokernel,
+                           AddCokernelObject,
                            AddDirectProduct ];
     
     obj_func := function( arg ) return UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY ); end;
@@ -125,9 +125,9 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
                                 AddKernelEmbWithGivenKernelObject,
                                 AddKernelLiftWithGivenKernelObject,
                                 AddCokernelProj,
-                                AddCokernelProjWithGivenCokernel,
+                                AddCokernelProjWithGivenCokernelObject,
                                 AddCokernelColift,
-                                AddCokernelColiftWithGivenCokernel,
+                                AddCokernelColiftWithGivenCokernelObject,
                                 AddProjectionInFactorOfDirectProduct,
                                 AddProjectionInFactorOfDirectProductWithGivenDirectProduct,
                                 AddUniversalMorphismIntoDirectProduct,

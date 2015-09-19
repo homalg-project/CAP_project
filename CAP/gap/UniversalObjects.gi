@@ -89,17 +89,17 @@ InstallMethod( CokernelColift,
                
   function( cokernel, test_morphism )
   
-    return CokernelColift( Genesis( cokernel )!.CokernelDiagram, test_morphism );
+    return CokernelColift( Genesis( cokernel )!.CokernelObjectDiagram, test_morphism );
   
 end );
 
 ##
 InstallMethod( CokernelProj,
-               [ IsCapCategoryObject and WasCreatedAsCokernel ],
+               [ IsCapCategoryObject and WasCreatedAsCokernelObject ],
                
   function( cokernel )
     
-    return CokernelProj( Genesis( cokernel )!.CokernelDiagram );
+    return CokernelProj( Genesis( cokernel )!.CokernelObjectDiagram );
     
 end );
 
