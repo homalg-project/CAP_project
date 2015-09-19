@@ -461,9 +461,10 @@ InstallMethod( CreateCapCategory,
     
 end );
 
-InstallMethodWithCache( CreateCapCategory,
-                        [ IsString ],
-                        
+##
+InstallMethod( CreateCapCategory,
+               [ IsString ],
+               
   function( name )
     local category;
     

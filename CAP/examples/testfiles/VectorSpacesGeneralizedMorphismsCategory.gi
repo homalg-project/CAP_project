@@ -8,7 +8,7 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
   ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );;
 
 fi;
-ActivateDerivationInfo();
+# ActivateDerivationInfo();
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
@@ -144,6 +144,12 @@ vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
 ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
 #! true
+A := QVectorSpace( 1 );
+#! <A rational vector space of dimension 1>
+B := QVectorSpace( 2 );
+#! <A rational vector space of dimension 2>
+C := QVectorSpace( 3 );
+#! <A rational vector space of dimension 3>
 phi2_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 5 ] ], B );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1,  5 ] ]

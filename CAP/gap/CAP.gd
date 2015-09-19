@@ -364,7 +364,7 @@ DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
 
 #! @Description
 #! Creates a new CAP category from scratch.
-#! It gets a generic (but unique) name.
+#! It gets a generic name.
 #! @Arguments
 #! @Returns a category
 #! @Label 
@@ -378,7 +378,7 @@ DeclareOperation( "CreateCapCategory",
 #! @Arguments s
 #! @Returns a category
 DeclareOperation( "CreateCapCategory",
-                  [ IsString ] );
+                           [ IsString ] );
 
 ###################################
 ##
