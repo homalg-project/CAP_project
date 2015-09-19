@@ -339,19 +339,19 @@ BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
       
 end );
 
-## KernelEmbWithGivenKernelObject
+## KernelEmbeddingWithGivenKernelObject
 BindGlobal( "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
   
   function( category )
       local morphism_func, kernel_emb;
 
-      AddKernelEmbWithGivenKernelObject( ZFunctorCategory( category ),
+      AddKernelEmbeddingWithGivenKernelObject( ZFunctorCategory( category ),
         
         function( morphism, kernel )
           
           morphism_func := function( index )
               
-              return KernelEmb( morphism[ index ] );
+              return KernelEmbedding( morphism[ index ] );
               
           end;
           
@@ -988,7 +988,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeKernelObject", "CanComputeKernelObjectFunctorial" ], function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeKernelEmb" ], function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeKernelEmbedding" ], function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeKernelLift" ], function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
         

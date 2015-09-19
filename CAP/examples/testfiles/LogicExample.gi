@@ -20,7 +20,7 @@ alpha := InDeductiveSystem( alpha );
 
 ## operations
 
-# k := KernelEmb( alpha );
+# k := KernelEmbedding( alpha );
 
 k := alpha;
 

@@ -94,19 +94,19 @@ KernelObject := rec(
   return_type := "object",
   dual_operation := "CokernelObject" ),
 
-KernelEmb := rec(
-  installation_name := "KernelEmb",
+KernelEmbedding := rec(
+  installation_name := "KernelEmbedding",
   filter_list := [ "morphism" ],
   universal_object_position := "Source",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CokernelProjection" ),
 
-KernelEmbWithGivenKernelObject := rec(
-  installation_name := "KernelEmbWithGivenKernelObject",
+KernelEmbeddingWithGivenKernelObject := rec(
+  installation_name := "KernelEmbeddingWithGivenKernelObject",
   filter_list := [ "morphism", "object" ],
   io_type := [ [ "alpha", "K" ], [ "K", "alpha_source" ] ],
-  cache_name := "KernelEmbWithGivenKernelObject",
+  cache_name := "KernelEmbeddingWithGivenKernelObject",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CokernelProjectionWithGivenCokernelObject"),
@@ -141,7 +141,7 @@ CokernelProjection := rec(
   universal_object_position := "Range",
   universal_type := "Colimit",
   return_type := "morphism",
-  dual_operation := "KernelEmb" ),
+  dual_operation := "KernelEmbedding" ),
 
 CokernelProjectionWithGivenCokernelObject := rec(
   installation_name := "CokernelProjectionWithGivenCokernelObject",
@@ -150,7 +150,7 @@ CokernelProjectionWithGivenCokernelObject := rec(
   cache_name := "CokernelProjectionWithGivenCokernelObject",
   universal_type := "Colimit",
   return_type := "morphism",
-  dual_operation := "KernelEmbWithGivenKernelObject" ),
+  dual_operation := "KernelEmbeddingWithGivenKernelObject" ),
 
 CokernelColift := rec(
   installation_name := "CokernelColift",

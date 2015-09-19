@@ -141,7 +141,7 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT,
                                            TensorProductOnObjects( free_module_range, object_2 )
                                          );
     
-    return KernelEmb( differential );
+    return KernelEmbedding( differential );
     
 end );
 
@@ -172,7 +172,7 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT
                                            TensorProductOnObjects( free_module_range, object_2 )
                                          );
     
-    return KernelEmb( differential );
+    return KernelEmbedding( differential );
     
 end );
 

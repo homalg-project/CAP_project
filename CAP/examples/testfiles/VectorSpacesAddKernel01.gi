@@ -1,7 +1,7 @@
 ## Implemented:
 ## - AddKernel
-## - AddKernelEmb
-## - AddKernelEmbWithGivenKernelObject
+## - AddKernelEmbedding
+## - AddKernelEmbeddingWithGivenKernelObject
 ## - AddKernelLift
 ## - AddKernelLiftWithGivenKernelObject
 
@@ -30,7 +30,7 @@ AddKernelObject( vecspaces,
 end );
 
 ##
-AddKernelEmb( vecspaces,
+AddKernelEmbedding( vecspaces,
 
   function( morphism )
     local kernel_emb, kernel_obj;
@@ -44,7 +44,7 @@ AddKernelEmb( vecspaces,
 end );
 
 ##
-AddKernelEmbWithGivenKernelObject( vecspaces,
+AddKernelEmbeddingWithGivenKernelObject( vecspaces,
 
   function( morphism, kernel )
     local kernel_emb;

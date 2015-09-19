@@ -50,12 +50,12 @@ InstallMethod( KernelLift,
 end );
 
 ##
-InstallMethod( KernelEmb,
+InstallMethod( KernelEmbedding,
                [ IsCapCategoryObject and WasCreatedAsKernelObject ],
                
   function( kernel )
   
-    return KernelEmb( Genesis( kernel )!.KernelObjectDiagram );
+    return KernelEmbedding( Genesis( kernel )!.KernelObjectDiagram );
     
 end );
 

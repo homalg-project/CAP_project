@@ -50,7 +50,7 @@ end;
         
         
 ## Differences between general Add-Method and the former implementation:
-- KernelEmb/ KernelEmbWithGivenKernel: 
+- KernelEmbedding/ KernelEmbeddingWithGivenKernel: 
   SetIsMonomorphism( kernel_emb, true );
 
 - CokernelProjection/ CokernelProjectionWithGivenCokernel

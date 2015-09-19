@@ -221,19 +221,19 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddKernelEmb( deductive_system,
+    AddKernelEmbedding( deductive_system,
                   
       function( morphism )
         
-        return DeductiveSystemMorphism( KernelObject( morphism ), "KernelEmb", [ morphism ], Source( morphism ) );
+        return DeductiveSystemMorphism( KernelObject( morphism ), "KernelEmbedding", [ morphism ], Source( morphism ) );
         
     end );
     
-    AddKernelEmbWithGivenKernelObject( deductive_system,
+    AddKernelEmbeddingWithGivenKernelObject( deductive_system,
                                  
       function( morphism, kernel )
         
-        return DeductiveSystemMorphism( kernel, "KernelEmb", [ morphism ], Source( morphism ) );
+        return DeductiveSystemMorphism( kernel, "KernelEmbedding", [ morphism ], Source( morphism ) );
         
     end );
     

@@ -21,7 +21,7 @@ InstallMethod( EpiMonoFactorization,
   function( morphism )
     local kernel_embedding, epimorphism, monomorphism;
     
-    kernel_embedding := KernelEmb( morphism );
+    kernel_embedding := KernelEmbedding( morphism );
     
     epimorphism := CokernelProjection( kernel_embedding );
     
@@ -53,7 +53,7 @@ InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphism,
       local generalized_morphism1, generalized_morphism2, cokernel_proj, composition,
             domain, inverse_domain, honest_representative, codomain, inverse_codomain;
 
-    generalized_morphism1 := GeneralizedMorphismWithRangeAid( KernelEmb( morphism_middle_right ), morphism_up_right );
+    generalized_morphism1 := GeneralizedMorphismWithRangeAid( KernelEmbedding( morphism_middle_right ), morphism_up_right );
     
     generalized_morphism2 := GeneralizedMorphismWithRangeAid( morphism_middle_middle, morphism_down_left );
     
@@ -71,7 +71,7 @@ end );
 
 ## Alternative implementation:
 
-#     generalized_morphism1 := GeneralizedMorphismWithRangeAid( KernelEmb( morphism_middle_right ), morphism_up_right );
+#     generalized_morphism1 := GeneralizedMorphismWithRangeAid( KernelEmbedding( morphism_middle_right ), morphism_up_right );
 #     
 #     generalized_morphism2 := GeneralizedMorphismWithRangeAid( morphism_middle_middle, morphism_down_left );
 #     
@@ -179,7 +179,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalCocomplex,
     
     differential := AsGeneralizedMorphism( Differential( bicomplex, p + ( page - 1 ) )[ q - ( page - 1 ) ] );
     
-    idempotent_source := IdempotentDefinedBySubobject( KernelEmb( vertical_differential ) );
+    idempotent_source := IdempotentDefinedBySubobject( KernelEmbedding( vertical_differential ) );
     
     idempotent_range := IdempotentDefinedByFactorobject( CokernelProjection( Differential( bicomplex[p + page], q - page ) ) );
     
@@ -271,7 +271,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalComplex,
     
     differential := AsGeneralizedMorphism( Differential( bicomplex, p - page + 1 )[ q + ( page - 1 ) ] );
     
-    idempotent_source := IdempotentDefinedBySubobject( KernelEmb( vertical_differential ) );
+    idempotent_source := IdempotentDefinedBySubobject( KernelEmbedding( vertical_differential ) );
     
     idempotent_range := IdempotentDefinedByFactorobject( CokernelProjection( Differential( bicomplex[p - page], q + page ) ) );
     

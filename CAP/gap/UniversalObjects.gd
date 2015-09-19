@@ -50,7 +50,7 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelObject",
 #! The output is the kernel embedding $\iota: \mathrm{KernelObject}(\alpha) \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{KernelObject}(\alpha),A)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
+DeclareAttributeWithToDoForIsWellDefined( "KernelEmbedding",
                                           IsCapCategoryMorphism );
 
 #! @Description
@@ -59,7 +59,7 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
 #! The output is the kernel embedding $\iota: K \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(K,A)$
 #! @Arguments K
-DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
+DeclareAttributeWithToDoForIsWellDefined( "KernelEmbedding",
                                           IsCapCategoryObject );
 
 #! @Description
@@ -68,7 +68,7 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelEmb",
 #! The output is the kernel embedding $\iota: K \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(K,A)$
 #! @Arguments alpha, K
-DeclareOperation( "KernelEmbWithGivenKernelObject",
+DeclareOperation( "KernelEmbeddingWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -129,40 +129,40 @@ DeclareOperation( "AddKernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>KernelEmb</C>.
+#! to the category for the basic operation <C>KernelEmbedding</C>.
 #! $F: \alpha \mapsto \iota$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddKernelEmb",
+DeclareOperation( "AddKernelEmbedding",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddKernelEmb",
+DeclareOperation( "AddKernelEmbedding",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddKernelEmb",
+DeclareOperation( "AddKernelEmbedding",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddKernelEmb",
+DeclareOperation( "AddKernelEmbedding",
                   [ IsCapCategory, IsList ] );
 
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>KernelEmbWithGivenKernelObject</C>.
+#! to the category for the basic operation <C>KernelEmbeddingWithGivenKernelObject</C>.
 #! $F: (\alpha, K) \mapsto \iota$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddKernelEmbWithGivenKernelObject",
+DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddKernelEmbWithGivenKernelObject",
+DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddKernelEmbWithGivenKernelObject",
+DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddKernelEmbWithGivenKernelObject",
+DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
                   [ IsCapCategory, IsList ] );
 
 
@@ -3498,8 +3498,8 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical morphism
-#! $\mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) )$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{coim}( \alpha ), \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ) )$.
+#! $\mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{coim}( \alpha ), \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) )$.
 #! @Arguments alpha
 DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
                   [ IsCapCategoryMorphism ] );
@@ -3508,7 +3508,7 @@ DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCoimageToCokernelOfKernel</C>.
-#! $F: \alpha \mapsto ( \mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ) )$.
+#! $F: \alpha \mapsto ( \mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) )$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
@@ -3526,8 +3526,8 @@ DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical morphism
-#! $\mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha )$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ), \mathrm{coim}( \alpha ) )$.
+#! $\mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ), \mathrm{coim}( \alpha ) )$.
 #! @Arguments alpha
 DeclareOperation( "IsomorphismFromCokernelOfKernelToCoimage",
                   [ IsCapCategoryMorphism ] );
@@ -3536,7 +3536,7 @@ DeclareOperation( "IsomorphismFromCokernelOfKernelToCoimage",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCokernelOfKernelToCoimage</C>.
-#! $F: \alpha \mapsto ( \mathrm{CokernelObject}( \mathrm{KernelEmb}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha ) )$.
+#! $F: \alpha \mapsto ( \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha ) )$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",

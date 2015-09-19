@@ -232,19 +232,19 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
     end );
 
-    ## KernelEmbWithGivenKernelObject
+    ## KernelEmbeddingWithGivenKernelObject
     BindGlobal( Concatenation( "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ),
       
       function( category )
 
-          AddKernelEmbWithGivenKernelObject( category_getter( category ),
+          AddKernelEmbeddingWithGivenKernelObject( category_getter( category ),
             
             function( morphism, kernel )
               local range;
               
               range := Source( morphism );
               
-              return morphism_constructor( kernel, KernelEmb( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( kernel ) ), range );
+              return morphism_constructor( kernel, KernelEmbedding( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( kernel ) ), range );
               
           end );
           
@@ -721,7 +721,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             
             [ [ "CanComputeKernelObject" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_OBJECT_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeKernelEmb" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            [ [ "CanComputeKernelEmbedding" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
             [ [ "CanComputeKernelLift" ], function( ) ValueGlobal( Concatenation(  "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             

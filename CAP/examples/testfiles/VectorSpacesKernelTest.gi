@@ -36,9 +36,9 @@ k_lift := KernelLift( k, tau );
 #! [ [  2 ],
 #!   [  2 ] ]
 #! 
-HasKernelEmb( k );
+HasKernelEmbedding( k );
 #! false
-KernelEmb( k );
+KernelEmbedding( k );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1,  1 ] ]
 #! 
@@ -72,7 +72,7 @@ k_lift := KernelLift( k, tau );
 #! [ [  2 ],
 #!   [  2 ] ]
 #! 
-HasKernelEmb( k );
+HasKernelEmbedding( k );
 #! false
 #! @EndExample
 
@@ -92,7 +92,7 @@ alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 #! 
 k := KernelObject( alpha );
 #! <A rational vector space of dimension 1>
-k_emb := KernelEmb( k );
+k_emb := KernelEmbedding( k );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1,  1 ] ]
 #! 
@@ -107,7 +107,7 @@ beta := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 #! [ [   1,   1,   1 ],
 #!   [  -1,  -1,  -1 ] ]
 #! 
-k_emb := KernelEmb( beta );
+k_emb := KernelEmbedding( beta );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1,  1 ] ]
 #! 

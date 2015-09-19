@@ -355,7 +355,7 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
                        
   function( category )
     
-    AddKernelEmb( category,
+    AddKernelEmbedding( category,
       
       function( morphism )
         local kernel, embedding;
@@ -370,7 +370,7 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
     end );
     
-    AddKernelEmbWithGivenKernelObject( category,
+    AddKernelEmbeddingWithGivenKernelObject( category,
       
       function( morphism, kernel )
         local embedding;
@@ -403,7 +403,7 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
                        
   function( category )
     
-    AddKernelEmb( category,
+    AddKernelEmbedding( category,
       
       function( morphism )
         local kernel, embedding;
@@ -418,7 +418,7 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         
     end );
     
-    AddKernelEmbWithGivenKernelObject( category,
+    AddKernelEmbeddingWithGivenKernelObject( category,
       
       function( morphism, kernel )
         local embedding;

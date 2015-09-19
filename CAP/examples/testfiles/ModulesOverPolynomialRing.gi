@@ -32,9 +32,9 @@ eps2 := InDeductiveSystem( eps2 );
 
 ## Computation
 
-kernelemb1 := KernelEmb( eps1 );
+kernelemb1 := KernelEmbedding( eps1 );
 
-kernelemb2 := KernelEmb( eps2 );
+kernelemb2 := KernelEmbedding( eps2 );
 
 P := FiberProduct( kernelemb1, kernelemb2 );
 

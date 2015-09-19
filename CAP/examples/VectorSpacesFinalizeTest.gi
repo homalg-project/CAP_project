@@ -31,7 +31,7 @@ end );
 ## Methods needed for FiberProductEmbeddingInDirectSum:
 
 ##
-AddKernelEmb( vecspaces,
+AddKernelEmbedding( vecspaces,
 
   function( morphism )
     local kernel_emb, kernel_obj;

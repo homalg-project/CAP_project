@@ -7,15 +7,15 @@
 AddWithGivenDerivationPairToCAP( KernelLift,
   function( mor, test_morphism )
     
-    return LiftAlongMonomorphism( KernelEmb( mor ), test_morphism );
+    return LiftAlongMonomorphism( KernelEmbedding( mor ), test_morphism );
     
   end,
   
   function( mor, test_morphism, kernel )
     
-    return LiftAlongMonomorphism( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
+    return LiftAlongMonomorphism( KernelEmbeddingWithGivenKernelObject( mor, kernel ), test_morphism );
     
-end : Description := "KernelLift using LiftAlongMonomorphism and KernelEmb" );
+end : Description := "KernelLift using LiftAlongMonomorphism and KernelEmbedding" );
 
 ##
 AddWithGivenDerivationPairToCAP( CokernelColift,
@@ -354,7 +354,7 @@ AddWithGivenDerivationPairToCAP( ImageEmbedding,
   function( mor )
     local image_embedding;
     
-    image_embedding := KernelEmb( CokernelProjection( mor ) );
+    image_embedding := KernelEmbedding( CokernelProjection( mor ) );
     
     return PreCompose( IsomorphismFromImageObjectToKernelOfCokernel( mor ),
                        image_embedding );
@@ -369,7 +369,7 @@ AddWithGivenDerivationPairToCAP( CoimageProjection,
   function( mor )
     local coimage_projection;
     
-    coimage_projection := CokernelProjection( KernelEmb( mor ) );
+    coimage_projection := CokernelProjection( KernelEmbedding( mor ) );
     
     return PreCompose( coimage_projection,
                        IsomorphismFromCokernelOfKernelToCoimage( mor ) );
@@ -723,15 +723,15 @@ end : Description := "Dominates(sub1, sub2) by deciding if sub1 composed with Co
 
 ##
 AddDerivationToCAP( Codominates,
-                    [ [ KernelEmb, 2 ],
+                    [ [ KernelEmbedding, 2 ],
                       [ Dominates, 1 ] ],
                                   
   function( factor1, factor2 )
     local kernel_embedding_1, kernel_embedding_2;
     
-    kernel_embedding_1 := KernelEmb( factor1 );
+    kernel_embedding_1 := KernelEmbedding( factor1 );
     
-    kernel_embedding_2 := KernelEmb( factor2 );
+    kernel_embedding_2 := KernelEmbedding( factor2 );
     
     return Dominates( kernel_embedding_2, kernel_embedding_1 );
     
@@ -739,20 +739,20 @@ end : Description := "Codominates using Dominates and duality by kernel" );
 
 ##
 AddDerivationToCAP( Codominates,
-                    [ [ KernelEmb, 1 ],
+                    [ [ KernelEmbedding, 1 ],
                       [ PreCompose, 1 ],
                       [ IsZeroForMorphisms, 1 ] ],
                                   
   function( factor1, factor2 )
     local kernel_embedding, composition;
     
-    kernel_embedding := KernelEmb( factor2 );
+    kernel_embedding := KernelEmbedding( factor2 );
     
     composition := PreCompose( kernel_embedding, factor1 );
     
     return IsZero( composition );
     
-end : Description := "Codominates(factor1, factor2) by deciding if KernelEmb(factor2) composed with factor1 is zero" );
+end : Description := "Codominates(factor1, factor2) by deciding if KernelEmbedding(factor2) composed with factor1 is zero" );
 
 ###########################
 ##
@@ -890,7 +890,7 @@ AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
   function( morphism )
     local kernel_emb, morphism_to_kernel;
     
-    kernel_emb := KernelEmb( CokernelProjection( morphism ) );
+    kernel_emb := KernelEmbedding( CokernelProjection( morphism ) );
     
     morphism_to_kernel := LiftAlongMonomorphism( kernel_emb, morphism );
     
@@ -913,7 +913,7 @@ AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
   function( morphism )
     local cokernel_proj, morphism_from_cokernel;
     
-    cokernel_proj := CokernelProjection( KernelEmb( morphism ) );
+    cokernel_proj := CokernelProjection( KernelEmbedding( morphism ) );
     
     morphism_from_cokernel := ColiftAlongEpimorphism( cokernel_proj, morphism );
     
@@ -948,7 +948,7 @@ AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
   function( diagram )
     local kernel_emb, sources_of_diagram, test_source;
     
-    kernel_emb := KernelEmb( DirectSumDiagonalDifference( diagram ) );
+    kernel_emb := KernelEmbedding( DirectSumDiagonalDifference( diagram ) );
     
     sources_of_diagram := List( diagram, Source );
     
@@ -1038,7 +1038,7 @@ AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
 end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the inverse of IsomorphismFromCokernelOfDiagonalDifferenceToPushout" );
 
 AddDerivationToCAP( ColiftAlongEpimorphism,
-                    [ [ KernelEmb, 1 ],
+                    [ [ KernelEmbedding, 1 ],
                       [ CokernelColift, 2 ],
                       [ PreCompose, 1 ],
                       [ Inverse, 1 ] ],
@@ -1046,7 +1046,7 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
   function( epimorphism, test_morphism )
     local kernel_emb, cokernel_colift_to_range_of_epimorphism, cokernel_colift_to_range_of_test_morphism, inverse;
     
-    kernel_emb := KernelEmb( epimorphism );
+    kernel_emb := KernelEmbedding( epimorphism );
     
     cokernel_colift_to_range_of_epimorphism :=
       CokernelColift( kernel_emb, epimorphism );
@@ -1071,13 +1071,13 @@ end );
 AddDerivationToCAP( KernelObjectFunctorial,
                     [ [ KernelLift, 1 ],
                       [ PreCompose, 1 ],
-                      [ KernelEmb, 1 ] ],
+                      [ KernelEmbedding, 1 ] ],
                                   
   function( alpha, mu, alpha_p )
     
     return KernelLift(
                 alpha_p,
-                PreCompose( KernelEmb( alpha ), mu )
+                PreCompose( KernelEmbedding( alpha ), mu )
               );
     
 end : Description := "KernelObjectFunctorial using the universality of the kernel" );
@@ -1332,7 +1332,7 @@ end : Description := "PushoutFunctorial using the universality of the pushout" )
 
 ##
 AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
-                    [ [ KernelEmb, 1 ],
+                    [ [ KernelEmbedding, 1 ],
                       [ DirectSumDiagonalDifference, 1 ],
                       [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
                       [ PreCompose, 1 ] ],
@@ -1340,7 +1340,7 @@ AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
   function( diagram )
     local kernel_of_diagonal_difference;
     
-    kernel_of_diagonal_difference := KernelEmb( DirectSumDiagonalDifference( diagram ) );
+    kernel_of_diagonal_difference := KernelEmbedding( DirectSumDiagonalDifference( diagram ) );
     
     return PreCompose( IsomorphismFromFiberProductToKernelOfDiagonalDifference( diagram ),
                        kernel_of_diagonal_difference );
@@ -1600,13 +1600,13 @@ end : Description := "IsomorphismFromDirectSumToCoproduct as the inverse of Isom
 
 ##
 AddDerivationToCAP( KernelObject,
-                    [ [ KernelEmb, 1 ] ],
+                    [ [ KernelEmbedding, 1 ] ],
                     
   function( mor )
     
-    return Source( KernelEmb( mor ) );
+    return Source( KernelEmbedding( mor ) );
     
-end : Description := "KernelObject as the source of KernelEmb" );
+end : Description := "KernelObject as the source of KernelEmbedding" );
 
 ##
 AddDerivationToCAP( CokernelObject,
@@ -3234,7 +3234,7 @@ end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the identi
 ##
 AddFinalDerivation( IsomorphismFromCoimageToCokernelOfKernel,
                     [ [ CokernelObject, 1 ],
-                      [ KernelEmb, 1 ],
+                      [ KernelEmbedding, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Coimage,
                       CoimageProjection,
@@ -3249,7 +3249,7 @@ AddFinalDerivation( IsomorphismFromCoimageToCokernelOfKernel,
   function( mor )
     local cokernel_of_kernel;
     
-    cokernel_of_kernel := CokernelObject( KernelEmb( mor ) );
+    cokernel_of_kernel := CokernelObject( KernelEmbedding( mor ) );
     
     return IdentityMorphism( cokernel_of_kernel );
     
@@ -3258,7 +3258,7 @@ end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the identity o
 ##
 AddFinalDerivation( IsomorphismFromCokernelOfKernelToCoimage,
                     [ [ CokernelObject, 1 ],
-                      [ KernelEmb, 1 ],
+                      [ KernelEmbedding, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Coimage,
                       CoimageProjection,
@@ -3273,7 +3273,7 @@ AddFinalDerivation( IsomorphismFromCokernelOfKernelToCoimage,
   function( mor )
     local cokernel_of_kernel;
     
-    cokernel_of_kernel := CokernelObject( KernelEmb( mor ) );
+    cokernel_of_kernel := CokernelObject( KernelEmbedding( mor ) );
     
     return IdentityMorphism( cokernel_of_kernel );
     

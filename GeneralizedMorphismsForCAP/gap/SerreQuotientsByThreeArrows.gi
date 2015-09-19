@@ -268,14 +268,14 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     ## Kernel
     
-    AddKernelEmb( category,
+    AddKernelEmbedding( category,
       
       function( morphism )
         local underlying_general, kernel_mor;
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        kernel_mor := KernelEmb( AssociatedMorphism( underlying_general ) );
+        kernel_mor := KernelEmbedding( AssociatedMorphism( underlying_general ) );
         
         kernel_mor := PreCompose( kernel_mor, Domain( underlying_general ) );
         
@@ -375,7 +375,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
                        "UniversalMorphismFromDirectSum",
                        "UniversalMorphismIntoDirectSum",
                        "DirectSumFunctorial",
-                       "KernelEmb",
+                       "KernelEmbedding",
                        "CokernelProjection" ];
     
     category_weight_list := category!.derivations_weight_list;

@@ -167,7 +167,7 @@ AddKernelObject( QVectorSpaces,
 end );
 
 ##
-AddKernelEmbWithGivenKernelObject( QVectorSpaces,
+AddKernelEmbeddingWithGivenKernelObject( QVectorSpaces,
 
   function( morphism, kernel )
     local kernel_emb;

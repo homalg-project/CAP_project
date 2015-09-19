@@ -291,7 +291,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddKernelEmb( category,
+    AddKernelEmbedding( category,
       function( morphism )
         local kernel_emb, homalg_field, kernel_object;
         
@@ -306,7 +306,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddKernelEmbWithGivenKernelObject( category,
+    AddKernelEmbeddingWithGivenKernelObject( category,
       function( morphism, kernel )
         local kernel_emb;
         

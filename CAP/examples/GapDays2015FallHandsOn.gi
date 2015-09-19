@@ -183,7 +183,7 @@ kernel_emb := function( morphism )
     
 end;
 
-AddKernelEmb( vecspaces, kernel_emb );
+AddKernelEmbedding( vecspaces, kernel_emb );
 
 ##
 mono_as_kernel_lift := function( monomorphism, test_morphism )
@@ -454,7 +454,7 @@ Finalize( vecspaces );
 # 
 # alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 # 
-# KernelEmb( alpha );
+# KernelEmbedding( alpha );
 # 
 # CokernelObject( alpha );
 # 
