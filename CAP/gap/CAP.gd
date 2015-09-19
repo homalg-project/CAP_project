@@ -281,22 +281,42 @@ InstallValue( CATEGORIES_FAMILY_PROPERTIES,
 
 #! @Description
 #!  The GAP category of CAP categories. Objects of this type handle
-#!  the category information, the caching, and filters for objects in the category.
+#!  the CAP category information, the caching, and filters for objects in the CAP category.
 #!  Please note that the object itself is not related to methods, you only need it
-#!  as a handler and a presentation of the category.
+#!  as a handler and a presentation of the CAP category.
 #! @Arguments object
 DeclareCategory( "IsCapCategory",
                  IsObject );
 
+#! @Description
+#! The GAP category of CAP category cells.
+#! Every object, morphism, and $2$-cell
+#! of a CAP category lies in this GAP category.
+#! @Arguments object
 DeclareCategory( "IsCapCategoryCell",
                  IsObject );
 
+#! @Description
+#! The GAP category of CAP category objects.
+#! Every object of a CAP category lies in
+#! this GAP category.
+#! @Arguments object
 DeclareCategory( "IsCapCategoryObject",
                  IsCapCategoryCell );
 
+#! @Description
+#! The GAP category of CAP category morphisms.
+#! Every morphism of a CAP category lies in
+#! this GAP category.
+#! @Arguments object
 DeclareCategory( "IsCapCategoryMorphism",
                  IsCapCategoryCell and IsAdditiveElementWithInverse );
 
+#! @Description
+#! The GAP category of CAP category $2$-cells.
+#! Every $2$-cell of a CAP category lies in
+#! this GAP category.
+#! @Arguments object
 DeclareCategory( "IsCapCategoryTwoCell",
                  IsCapCategoryCell );
 
