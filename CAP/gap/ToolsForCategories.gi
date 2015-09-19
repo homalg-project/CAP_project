@@ -656,9 +656,9 @@ InstallGlobalFunction( CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS,
            
         elif Length( current_output ) = 2 then
             
-            if current_output[ 2 ] = "1" then
+            if LowercaseString( current_output[ 2 ] ) = "source" then
                 return_list[ i ] := Source( function_input[ input_position ] );
-            elif current_output[ 2 ] = "2" then
+            elif LowercaseString( current_output[ 2 ] ) = "range" then
                 return_list[ i ] := Range( function_input[ input_position ] );
             elif Position( input_list, current_output[ 2 ] ) <> fail then
                 return_list[ i ] := function_input[ input_position ][ function_input[ Position( input_list, current_output[ 2 ] ) ] ];
@@ -680,9 +680,9 @@ InstallGlobalFunction( CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS,
             
             list_position := function_input[ list_position ];
             
-            if current_output[ 3 ] = "1" then
+            if LowercaseString( current_output[ 2 ] ) = "source" then
                 return_list[ i ] := Source( function_input[ input_position ][ list_position ] );
-            elif current_output[ 3 ] = "2" then
+            elif LowercaseString( current_output[ 2 ] ) = "range" then
                 return_list[ i ] := Range( function_input[ input_position ][ list_position ] );
             else
                 Error( "wrong output syntax" );
