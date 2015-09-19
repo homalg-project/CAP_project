@@ -2379,18 +2379,21 @@ InternalHomOnObjects := rec(
 InternalHomOnMorphisms := rec(
   installation_name := "InternalHomOnMorphisms",
   filter_list := [ "object", "morphism", "morphism", "object" ],
+  io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
   cache_name := "InternalHomOnMorphisms",
   return_type := "morphism" ),
 
 EvaluationMorphism := rec(
   installation_name := "EvaluationMorphism",
   filter_list := [ "object", "object", "object" ],
+  io_type := [ [ "a", "b", "s" ], [ "s", "b" ] ],
   cache_name := "EvaluationMorphism",
   return_type := "morphism" ),
 
 CoevaluationMorphism := rec(
   installation_name := "CoevaluationMorphism",
   filter_list := [ "object", "object", "object" ],
+  io_type := [ [ "a", "b", "r" ], [ "a", "r" ] ],
   cache_name := "CoevaluationMorphism",
   return_type := "morphism" ),
 
