@@ -590,9 +590,21 @@ DeclareOperation( "AddAdditiveInverseForMorphisms",
 ##
 ###################################
 
+#! @Description
+#! The arguments are two objects $a$ and $b$.
+#! The output is the zero morphism $0: a \rightarrow b$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! @Arguments a, b
 DeclareOperation( "ZeroMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ZeroMorphism</C>.
+#! $F: (a,b) \mapsto (0: a \rightarrow b)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddZeroMorphism",
                   [ IsCapCategory, IsFunction ] );
 
