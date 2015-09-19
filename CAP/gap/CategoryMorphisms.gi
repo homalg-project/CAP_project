@@ -447,6 +447,11 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_PRINT,
                                              PrintString := "epi",
                                              Adjective := true ) ] ) );
     
+    AddNodeToGraph( print_graph,
+                    rec( Conditions := "IsZero",
+                         PrintString := "zero",
+                         Adjective := true ) );
+    
     InstallPrintFunctionsOutOfPrintingGraph( print_graph );
     
 end );
