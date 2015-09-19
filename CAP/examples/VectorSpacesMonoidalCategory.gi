@@ -244,7 +244,7 @@ AddLiftAlongMonomorphism( vecspaces,
 end );
 
 ##
-AddEpiAsCokernelColift( vecspaces,
+AddColiftAlongEpimorphism( vecspaces,
   
   function( epimorphism, test_morphism )
     

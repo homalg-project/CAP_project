@@ -313,7 +313,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
     end );
     
-    AddEpiAsCokernelColift( category,
+    AddColiftAlongEpimorphism( category,
       
       function( epimorphism, test_morphism )
         local inverse_of_epi, composition;

@@ -16,12 +16,12 @@ LiftAlongMonomorphism := rec(
     fi;
     
   end,
-  dual_operation := "EpiAsCokernelColift" ),
+  dual_operation := "ColiftAlongEpimorphism" ),
 
-EpiAsCokernelColift := rec(
-  installation_name := "EpiAsCokernelColift",
+ColiftAlongEpimorphism := rec(
+  installation_name := "ColiftAlongEpimorphism",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "EpiAsCokernelColift",
+  cache_name := "ColiftAlongEpimorphism",
   return_type := "morphism",
   post_function := function( alpha, beta, colift )
     

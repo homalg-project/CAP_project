@@ -220,7 +220,7 @@ epi_as_cokernel_colift := function( epimorphism, test_morphism )
     
 end;
 
-AddEpiAsCokernelColift( vecspaces, epi_as_cokernel_colift );
+AddColiftAlongEpimorphism( vecspaces, epi_as_cokernel_colift );
 
 ##
 zero_object := function( )

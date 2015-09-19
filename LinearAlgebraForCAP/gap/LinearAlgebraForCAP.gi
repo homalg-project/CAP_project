@@ -375,7 +375,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddEpiAsCokernelColift( category,
+    AddColiftAlongEpimorphism( category,
       function( epimorphism, test_morphism )
         local left_divide;
         

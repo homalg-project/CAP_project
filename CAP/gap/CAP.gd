@@ -85,7 +85,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
               
               CanComputeForAllCategories := [ 
                 "CanComputeLiftAlongMonomorphism",
-                "CanComputeEpiAsCokernelColift",
+                "CanComputeColiftAlongEpimorphism",
                 "CanComputeIdentityMorphism",
                 "CanComputeInverseImmutable",
                 "CanComputeKernelObject",

@@ -277,18 +277,18 @@ BindGlobal( "ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS",
     end );
   end );
 
-## EpiAsCokernelColift
+## ColiftAlongEpimorphism
 ##
 BindGlobal( "ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS",
           
   function( category )
     local morphism_func, epi_as_cokernel_colift;
     
-    AddEpiAsCokernelColift( ZFunctorCategory( category ),
+    AddColiftAlongEpimorphism( ZFunctorCategory( category ),
                          
       function( epimorphism, test_morphism )
         
-        morphism_func := function( index ) return EpiAsCokernelColift( epimorphism[ index ], test_morphism[ index ] );
+        morphism_func := function( index ) return ColiftAlongEpimorphism( epimorphism[ index ], test_morphism[ index ] );
         
       end;
       
@@ -1044,7 +1044,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeLiftAlongMonomorphism" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeColiftAlongEpimorphism" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeAdditionForMorphisms" ], function( ) ADD_ADDITION_FOR_MORPHISMS_IN_Z_FUNCTORS( category ); end ],
         

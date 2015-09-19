@@ -21,15 +21,15 @@ end : Description := "KernelLift using LiftAlongMonomorphism and KernelEmb" );
 AddWithGivenDerivationPairToCAP( CokernelColift,
   function( mor, test_morphism )
     
-    return EpiAsCokernelColift( CokernelProj( mor ), test_morphism );
+    return ColiftAlongEpimorphism( CokernelProj( mor ), test_morphism );
     
   end,
 
   function( mor, test_morphism, cokernel )
       
-      return EpiAsCokernelColift( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
+      return ColiftAlongEpimorphism( CokernelProjWithGivenCokernel( mor, cokernel ), test_morphism );
       
-end : Description := "CokernelColift using EpiAsCokernelColift and CokernelProj" );
+end : Description := "CokernelColift using ColiftAlongEpimorphism and CokernelProj" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
@@ -406,7 +406,7 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
     
     coimage_projection := CoimageProjection( morphism );
     
-    return EpiAsCokernelColift( coimage_projection, morphism );
+    return ColiftAlongEpimorphism( coimage_projection, morphism );
     
   end,
   
@@ -415,7 +415,7 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
     
     coimage_projection := CoimageProjectionWithGivenCoimage( morphism, coimage );
     
-    return EpiAsCokernelColift( coimage_projection, morphism );
+    return ColiftAlongEpimorphism( coimage_projection, morphism );
     
 end : Description := "AstrictionToCoimage using that coimage projection can be seen as a cokernel" );
 
@@ -448,7 +448,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
     
     coimage_projection := CoimageProjection( morphism );
     
-    return EpiAsCokernelColift( test_factorization[1], coimage_projection );
+    return ColiftAlongEpimorphism( test_factorization[1], coimage_projection );
     
   end,
   
@@ -457,9 +457,9 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
     
     coimage_projection := CoimageProjectionWithGivenCoimage( morphism, coimage );
     
-    return EpiAsCokernelColift( test_factorization[1], coimage_projection );
+    return ColiftAlongEpimorphism( test_factorization[1], coimage_projection );
     
-end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and EpiAsCokernelColift" );
+end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and ColiftAlongEpimorphism" );
 
 ###########################
 ##
@@ -810,16 +810,16 @@ end : Description := "Inverse using LiftAlongMonomorphism of an identity morphis
 ##
 AddDerivationToCAP( Inverse,
                     [ [ IdentityMorphism, 1 ],
-                      [ EpiAsCokernelColift, 1 ] ],
+                      [ ColiftAlongEpimorphism, 1 ] ],
                                        
   function( mor )
     local identity_of_source;
     
     identity_of_source := IdentityMorphism( Source( mor ) );
     
-    return EpiAsCokernelColift( mor, identity_of_source );
+    return ColiftAlongEpimorphism( mor, identity_of_source );
       
-end : Description := "Inverse using EpiAsCokernelColift of an identity morphism" );
+end : Description := "Inverse using ColiftAlongEpimorphism of an identity morphism" );
 
 
 ##
@@ -857,14 +857,14 @@ AddDerivationToCAP( LiftAlongMonomorphism,
 end : Description := "LiftAlongMonomorphism using Lift" );
 
 ##
-AddDerivationToCAP( EpiAsCokernelColift,
+AddDerivationToCAP( ColiftAlongEpimorphism,
                     [ [ Colift, 1 ] ],
                     
   function( alpha, beta )
     
     return Colift( alpha, beta );
     
-end : Description := "EpiAsCokernelColift using Colift" );
+end : Description := "ColiftAlongEpimorphism using Colift" );
 
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,
@@ -915,7 +915,7 @@ AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
     
     cokernel_proj := CokernelProj( KernelEmb( morphism ) );
     
-    morphism_from_cokernel := EpiAsCokernelColift( cokernel_proj, morphism );
+    morphism_from_cokernel := ColiftAlongEpimorphism( cokernel_proj, morphism );
     
     return UniversalMorphismIntoCoimage( morphism, [ cokernel_proj, morphism_from_cokernel ] );
     
@@ -1037,7 +1037,7 @@ AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
     
 end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the inverse of IsomorphismFromCokernelOfDiagonalDifferenceToPushout" );
 
-AddDerivationToCAP( EpiAsCokernelColift,
+AddDerivationToCAP( ColiftAlongEpimorphism,
                     [ [ KernelEmb, 1 ],
                       [ CokernelColift, 2 ],
                       [ PreCompose, 1 ],

@@ -957,27 +957,27 @@ DeclareOperation( "AddLiftAlongMonomorphism",
 #! The output is such a $u$.
 #! @Returns a morphism in $\mathrm{Hom}(c,t)$
 #! @Arguments epsilon, tau
-DeclareOperation( "EpiAsCokernelColift",
+DeclareOperation( "ColiftAlongEpimorphism",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>EpiAsCokernelColift</C>.
+#! to the category for the basic operation <C>ColiftAlongEpimorphism</C>.
 #! The function $F$ maps a pair $(\epsilon, \tau)$ to a lift $u$ if it
 #! exists, and to <C>fail</C> otherwise.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddEpiAsCokernelColift",
+DeclareOperation( "AddColiftAlongEpimorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddEpiAsCokernelColift",
+DeclareOperation( "AddColiftAlongEpimorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddEpiAsCokernelColift",
+DeclareOperation( "AddColiftAlongEpimorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddEpiAsCokernelColift",
+DeclareOperation( "AddColiftAlongEpimorphism",
                   [ IsCapCategory, IsList ] );
 
 ###################################
