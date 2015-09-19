@@ -2311,7 +2311,7 @@ TensorProductOnObjects := rec(
 TensorProductOnMorphisms := rec(
   installation_name := "TensorProductOnMorphisms",
   filter_list := [ "object", "morphism", "morphism", "object" ],
-  io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
+  io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
   cache_name := "TensorProductOnMorphisms",
   return_type := "morphism" ),
 
@@ -2426,7 +2426,7 @@ DualOnObjects := rec(
 
 DualOnMorphisms := rec(
   installation_name := "DualOnMorphisms",
-  io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
+  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   filter_list := [ "object", "morphism", "object" ],
   cache_name := "DualOnMorphisms",
   return_type := "morphism" ),
