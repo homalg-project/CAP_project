@@ -284,19 +284,19 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
     end );
 
-    ## CokernelProjWithGivenCokernel
+    ## CokernelProjectionWithGivenCokernel
     BindGlobal( Concatenation( "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ),
       
       function( category )
 
-          AddCokernelProjWithGivenCokernelObject( category_getter( category ),
+          AddCokernelProjectionWithGivenCokernelObject( category_getter( category ),
             
             function( morphism, cokernel )
               local source;
               
               source := Range( morphism );
               
-              return morphism_constructor( source, CokernelProj( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( cokernel ) ), cokernel );
+              return morphism_constructor( source, CokernelProjection( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( cokernel ) ), cokernel );
               
           end );
           
@@ -727,7 +727,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             
             [ [ "CanComputeCokernelObject" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
-            [ [ "CanComputeCokernelProj" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
+            [ [ "CanComputeCokernelProjection" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
             [ [ "CanComputeCokernelColift" ], function( ) ValueGlobal( Concatenation(  "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) )( category ); end ],
             
@@ -1351,7 +1351,7 @@ InstallMethod( HomologyFunctorOp,
             
             kernel_lift_range := KernelLift( alpha_p, image_embedding_range );
             
-            cokernel_proj_range := CokernelProj( kernel_lift_range );
+            cokernel_proj_range := CokernelProjection( kernel_lift_range );
             
             return CokernelColift( kernel_lift_source,
                                    PreCompose( mor_between_kernel, cokernel_proj_range )
@@ -1420,7 +1420,7 @@ InstallMethod( CohomologyFunctorOp,
             
             kernel_lift_range := KernelLift( alpha_p, image_embedding_range );
             
-            cokernel_proj_range := CokernelProj( kernel_lift_range );
+            cokernel_proj_range := CokernelProjection( kernel_lift_range );
             
             return CokernelColift( kernel_lift_source,
                                    PreCompose( mor_between_kernel, cokernel_proj_range )

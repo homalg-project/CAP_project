@@ -23,7 +23,7 @@ InstallMethod( EpiMonoFactorization,
     
     kernel_embedding := KernelEmb( morphism );
     
-    epimorphism := CokernelProj( kernel_embedding );
+    epimorphism := CokernelProjection( kernel_embedding );
     
     monomorphism := CokernelColift( kernel_embedding, morphism );
     
@@ -57,7 +57,7 @@ InstallMethodWithCacheFromObject( SnakeLemmaConnectingHomomorphism,
     
     generalized_morphism2 := GeneralizedMorphismWithRangeAid( morphism_middle_middle, morphism_down_left );
     
-    cokernel_proj := AsGeneralizedMorphism( CokernelProj( morphism_middle_left ) );
+    cokernel_proj := AsGeneralizedMorphism( CokernelProjection( morphism_middle_left ) );
     
     composition := PreCompose( generalized_morphism1, generalized_morphism2 );
     
@@ -75,7 +75,7 @@ end );
 #     
 #     generalized_morphism2 := GeneralizedMorphismWithRangeAid( morphism_middle_middle, morphism_down_left );
 #     
-#     cokernel_proj := AsGeneralizedMorphism( CokernelProj( morphism_middle_left ) );
+#     cokernel_proj := AsGeneralizedMorphism( CokernelProjection( morphism_middle_left ) );
 #     
 #     composition := PreCompose( generalized_morphism1, generalized_morphism2 );
 #     
@@ -181,7 +181,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalCocomplex,
     
     idempotent_source := IdempotentDefinedBySubobject( KernelEmb( vertical_differential ) );
     
-    idempotent_range := IdempotentDefinedByFactorobject( CokernelProj( Differential( bicomplex[p + page], q - page ) ) );
+    idempotent_range := IdempotentDefinedByFactorobject( CokernelProjection( Differential( bicomplex[p + page], q - page ) ) );
     
     generalized_morphism_given_by_cospans := IdentityMorphism( Source( differential ) );
     
@@ -273,7 +273,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfTotalComplex,
     
     idempotent_source := IdempotentDefinedBySubobject( KernelEmb( vertical_differential ) );
     
-    idempotent_range := IdempotentDefinedByFactorobject( CokernelProj( Differential( bicomplex[p - page], q + page ) ) );
+    idempotent_range := IdempotentDefinedByFactorobject( CokernelProjection( Differential( bicomplex[p - page], q + page ) ) );
     
     generalized_morphism_given_by_cospans := IdentityMorphism( Source( differential ) );
     
@@ -355,7 +355,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfAscendingFilteredComp
     
     embedding := Embedding( complex[n], p - 1 );
     
-    generalized_embedding := PseudoInverse( AsGeneralizedMorphism( CokernelProj( embedding ) ) );
+    generalized_embedding := PseudoInverse( AsGeneralizedMorphism( CokernelProjection( embedding ) ) );
     
     embedding := IdentityMorphism( complex[n-1][p-r] );
       
@@ -365,7 +365,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfAscendingFilteredComp
       
     od;
     
-    projection := CokernelProj( Embedding( complex[n-1],p-r-1 ) );
+    projection := CokernelProjection( Embedding( complex[n-1],p-r-1 ) );
     
     generalized_projection := GeneralizedMorphismWithSourceAid( embedding, projection );
     
@@ -434,7 +434,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfDescendingFilteredCoc
     
     embedding := Embedding( cocomplex[n], p + 1 );
     
-    generalized_embedding := PseudoInverse( AsGeneralizedMorphism( CokernelProj( embedding ) ) );
+    generalized_embedding := PseudoInverse( AsGeneralizedMorphism( CokernelProjection( embedding ) ) );
     
     embedding := IdentityMorphism( cocomplex[n+1][p+r] );
       
@@ -444,7 +444,7 @@ InstallMethodWithCacheFromObject( GeneralizedDifferentialOfDescendingFilteredCoc
       
     od;
     
-    projection := CokernelProj( Embedding( cocomplex[n+1],p+r+1 ) );
+    projection := CokernelProjection( Embedding( cocomplex[n+1],p+r+1 ) );
     
     generalized_projection := GeneralizedMorphismWithSourceAid( embedding, projection );
     

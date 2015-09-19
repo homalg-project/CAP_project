@@ -53,7 +53,7 @@ end;
 - KernelEmb/ KernelEmbWithGivenKernel: 
   SetIsMonomorphism( kernel_emb, true );
 
-- CokernelProj/ CokernelProjWithGivenCokernel
+- CokernelProjection/ CokernelProjectionWithGivenCokernel
   SetIsEpimorphism( cokernel_proj, true );
   
 - InjectionOfCofactorOfCoproduct/ InjectionOfCofactorOfCoproductWithGivenCoproduct

@@ -191,7 +191,7 @@ AddCokernelObject( QVectorSpaces,
 end );
 
 ##
-AddCokernelProjWithGivenCokernelObject( QVectorSpaces,
+AddCokernelProjectionWithGivenCokernelObject( QVectorSpaces,
 
   function( morphism, cokernel )
     local cokernel_proj;

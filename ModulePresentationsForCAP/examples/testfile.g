@@ -22,7 +22,7 @@ phi := HomalgMatrix( [ [ 4 ] ], ZZ );
 
 phi := PresentationMorphism( A, phi, A );
 
-epsilon := CokernelProj( phi );
+epsilon := CokernelProjection( phi );
 
 tau := HomalgMatrix( [ [ 2 ] ], ZZ );
 B := AsLeftPresentation( HomalgMatrix( [ [ 8 ] ], ZZ ) );

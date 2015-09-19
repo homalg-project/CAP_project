@@ -298,14 +298,14 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     ## Cokernel
     
-    AddCokernelProj( category,
+    AddCokernelProjection( category,
       
       function( morphism )
         local underlying_general, cokernel_mor;
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        cokernel_mor := CokernelProj( AssociatedMorphism( underlying_general ) );
+        cokernel_mor := CokernelProjection( AssociatedMorphism( underlying_general ) );
         
         cokernel_mor := PreCompose( Codomain( underlying_general ), cokernel_mor );
         
@@ -376,7 +376,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
                        "UniversalMorphismIntoDirectSum",
                        "DirectSumFunctorial",
                        "KernelEmb",
-                       "CokernelProj" ];
+                       "CokernelProjection" ];
     
     category_weight_list := category!.derivations_weight_list;
     

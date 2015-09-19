@@ -349,7 +349,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddCokernelProj( category,
+    AddCokernelProjection( category,
       function( morphism )
         local cokernel_proj, homalg_field, cokernel_obj;
         
@@ -364,7 +364,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddCokernelProjWithGivenCokernelObject( category,
+    AddCokernelProjectionWithGivenCokernelObject( category,
       function( morphism, cokernel )
         local cokernel_proj;
         

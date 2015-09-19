@@ -33,7 +33,7 @@ SetIsAbelianCategory( CapCategory( alpha1 ), true );
 
 ##
 
-cokernel_proj_1 := CokernelProj( alpha1 );
+cokernel_proj_1 := CokernelProjection( alpha1 );
 
 identity_B := IdentityMorphism( B );
 

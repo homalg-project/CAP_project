@@ -94,12 +94,12 @@ InstallMethod( CokernelColift,
 end );
 
 ##
-InstallMethod( CokernelProj,
+InstallMethod( CokernelProjection,
                [ IsCapCategoryObject and WasCreatedAsCokernelObject ],
                
   function( cokernel )
     
-    return CokernelProj( Genesis( cokernel )!.CokernelObjectDiagram );
+    return CokernelProjection( Genesis( cokernel )!.CokernelObjectDiagram );
     
 end );
 

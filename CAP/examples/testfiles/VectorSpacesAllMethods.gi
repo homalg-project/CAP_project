@@ -160,7 +160,7 @@ end );
 
 
 ##
-AddCokernelProj( vecspaces,
+AddCokernelProjection( vecspaces,
 
   function( morphism )
     local cokernel_proj, cokernel_obj;
@@ -174,7 +174,7 @@ AddCokernelProj( vecspaces,
 end );
 
 ##
-AddCokernelProjWithGivenCokernelObject( vecspaces,
+AddCokernelProjectionWithGivenCokernelObject( vecspaces,
 
   function( morphism, cokernel )
     local cokernel_proj;

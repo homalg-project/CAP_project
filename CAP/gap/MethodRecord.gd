@@ -100,7 +100,7 @@ KernelEmb := rec(
   universal_object_position := "Source",
   universal_type := "Limit",
   return_type := "morphism",
-  dual_operation := "CokernelProj" ),
+  dual_operation := "CokernelProjection" ),
 
 KernelEmbWithGivenKernelObject := rec(
   installation_name := "KernelEmbWithGivenKernelObject",
@@ -109,7 +109,7 @@ KernelEmbWithGivenKernelObject := rec(
   cache_name := "KernelEmbWithGivenKernelObject",
   universal_type := "Limit",
   return_type := "morphism",
-  dual_operation := "CokernelProjWithGivenCokernelObject"),
+  dual_operation := "CokernelProjectionWithGivenCokernelObject"),
 
 KernelLift := rec(
   installation_name := "KernelLift",
@@ -135,19 +135,19 @@ CokernelObject := rec(
   return_type := "object",
   dual_operation := "KernelObject" ),
 
-CokernelProj := rec(
-  installation_name := "CokernelProj",
+CokernelProjection := rec(
+  installation_name := "CokernelProjection",
   filter_list := [ "morphism" ],
   universal_object_position := "Range",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "KernelEmb" ),
 
-CokernelProjWithGivenCokernelObject := rec(
-  installation_name := "CokernelProjWithGivenCokernelObject",
+CokernelProjectionWithGivenCokernelObject := rec(
+  installation_name := "CokernelProjectionWithGivenCokernelObject",
   filter_list := [ "morphism", "object" ],
   io_type := [ [ "alpha", "K" ], [ "alpha_range", "K" ] ],
-  cache_name := "CokernelProjWithGivenCokernelObject",
+  cache_name := "CokernelProjectionWithGivenCokernelObject",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "KernelEmbWithGivenKernelObject" ),

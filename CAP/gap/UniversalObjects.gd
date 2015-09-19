@@ -295,7 +295,7 @@ DeclareAttributeWithToDoForIsWellDefined( "CokernelObject",
 #! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{CokernelObject}( \alpha )$.
 #! @Returns a morphism in $\mathrm{Hom}(B, \mathrm{CokernelObject}( \alpha ))$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
+DeclareAttributeWithToDoForIsWellDefined( "CokernelProjection",
                                           IsCapCategoryMorphism );
 
 #! @Description
@@ -304,7 +304,7 @@ DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
 #! The output is the cokernel projection $\epsilon: B \rightarrow K$.
 #! @Returns a morphism in $\mathrm{Hom}(B, K)$
 #! @Arguments K
-DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
+DeclareAttributeWithToDoForIsWellDefined( "CokernelProjection",
                                           IsCapCategoryObject );
 
 #! @Description
@@ -313,7 +313,7 @@ DeclareAttributeWithToDoForIsWellDefined( "CokernelProj",
 #! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{CokernelObject}( \alpha )$.
 #! @Returns a morphism in $\mathrm{Hom}(B, K)$
 #! @Arguments alpha, K
-DeclareOperation( "CokernelProjWithGivenCokernelObject",
+DeclareOperation( "CokernelProjectionWithGivenCokernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
@@ -374,46 +374,46 @@ DeclareOperation( "AddCokernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>CokernelProj</C>.
+#! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: \alpha \mapsto \epsilon$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCokernelProj",
+DeclareOperation( "AddCokernelProjection",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernelProj",
+DeclareOperation( "AddCokernelProjection",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernelProj",
+DeclareOperation( "AddCokernelProjection",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCokernelProj",
+DeclareOperation( "AddCokernelProjection",
                   [ IsCapCategory, IsList ] );
 
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>CokernelProj</C>.
+#! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: (\alpha, K) \mapsto \epsilon$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCokernelProjWithGivenCokernelObject",
+DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernelProjWithGivenCokernelObject",
+DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernelProjWithGivenCokernelObject",
+DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCokernelProjWithGivenCokernelObject",
+DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>CokernelProj</C>.
+#! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -432,7 +432,7 @@ DeclareOperation( "AddCokernelColift",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>CokernelProj</C>.
+#! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: (\alpha, \tau, K) \mapsto u(\tau)$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -3176,8 +3176,8 @@ DeclareFilter( "WasCreatedAsPushout" );
 #! @Description
 #! The argument is a morphism $\alpha$.
 #! The output is the canonical morphism
-#! $\mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) )$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{im}(\alpha), \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ) )$
+#! $\mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{im}(\alpha), \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) )$
 #! @Arguments alpha
 DeclareOperation( "IsomorphismFromImageObjectToKernelOfCokernel",
                   [ IsCapCategoryMorphism ] );
@@ -3186,7 +3186,7 @@ DeclareOperation( "IsomorphismFromImageObjectToKernelOfCokernel",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromImageObjectToKernelOfCokernel</C>.
-#! $F: \alpha \mapsto ( \mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ) )$
+#! $F: \alpha \mapsto ( \mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) )$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
@@ -3204,8 +3204,8 @@ DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
 #! @Description
 #! The argument is a morphism $\alpha$.
 #! The output is the canonical morphism
-#! $\mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ) \rightarrow \mathrm{im}(\alpha)$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ), \mathrm{im}(\alpha) )$
+#! $\mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) \rightarrow \mathrm{im}(\alpha)$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ), \mathrm{im}(\alpha) )$
 #! @Arguments alpha
 DeclareOperation( "IsomorphismFromKernelOfCokernelToImageObject",
                   [ IsCapCategoryMorphism ] );
@@ -3214,7 +3214,7 @@ DeclareOperation( "IsomorphismFromKernelOfCokernelToImageObject",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromKernelOfCokernelToImageObject</C>.
-#! $F: \alpha \mapsto ( \mathrm{KernelObject}( \mathrm{CokernelProj}( \alpha ) ) \rightarrow \mathrm{im}(\alpha) )$
+#! $F: \alpha \mapsto ( \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) \rightarrow \mathrm{im}(\alpha) )$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",

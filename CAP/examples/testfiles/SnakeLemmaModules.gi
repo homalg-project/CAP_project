@@ -27,9 +27,9 @@ alpha2 := PresentationMorphism( A2, HomalgMatrix( [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], 
 # SetIsAbelianCategory( CapCategory( B ), true );
 
 
-cokernel_proj_1 := CokernelProj( alpha1 );
+cokernel_proj_1 := CokernelProjection( alpha1 );
 
-cokernel_proj_2 := CokernelProj( alpha2 );
+cokernel_proj_2 := CokernelProjection( alpha2 );
 
 identity_B := IdentityMorphism( B );
 

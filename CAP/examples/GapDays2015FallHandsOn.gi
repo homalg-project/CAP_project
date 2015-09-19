@@ -209,7 +209,7 @@ cokernel_proj := function( morphism )
 
 end;
 
-AddCokernelProj( vecspaces, cokernel_proj );
+AddCokernelProjection( vecspaces, cokernel_proj );
 
 ##
 epi_as_cokernel_colift := function( epimorphism, test_morphism )
@@ -458,7 +458,7 @@ Finalize( vecspaces );
 # 
 # CokernelObject( alpha );
 # 
-# CokernelProj( alpha );
+# CokernelProjection( alpha );
 # 
 # alpha + alpha;
 # 
