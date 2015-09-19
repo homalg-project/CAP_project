@@ -46,14 +46,19 @@ DeclareGlobalFunction( "CAP_INTERNAL_CREATE_Cat" );
 
 #! @Description
 #!  The GAP category of CAP categories seen as object in Cat.
+#! @Arguments object
 DeclareCategory( "IsCapCategoryAsCatObject",
                  IsCapCategoryObject );
 
 #! @Description
 #!  The GAP category of functors.
+#! @Arguments object
 DeclareCategory( "IsCapFunctor",
                  IsCapCategoryMorphism );
 
+#! @Description
+#! The GAP category of natural transformations.
+#! @Arguments object
 DeclareCategory( "IsCapNaturalTransformation",
                  IsCapCategoryTwoCell );
 
@@ -64,19 +69,21 @@ DeclareCategory( "IsCapNaturalTransformation",
 ####################################
 
 #! @Description
-#!  Given a CAP category, this method returns the corresponding object in Cat.
+#!  Given a CAP category $C$, this method returns the corresponding object in Cat.
 #!  For technical reasons, the filter <C>IsCapCategory</C> must not imply the filter <C>IsCapCategoryObject</C>.
 #!  For example, if <C>InitialObject</C> is applied to an object, it returns the initial object of its category. If it is
 #!  applied to a category, it returns the initial object of the category. If a CAP category would be
 #!  a category object itself, this would be ambiguous.
 #!  So categories must be wrapped in a CatObject to be an object in Cat.
 #!  This method returns the wrapper object. The category can be reobtained by <C>AsCapCategory</C>.
+#! @Arguments C
 DeclareAttributeWithToDoForIsWellDefined( "AsCatObject",
                                           IsCapCategory );
 
 #! @Description
-#!  For an object in Cat, this method returns the underlying CAP category. This method is inverse to <C>AsCatObject</C>, i.e.
+#!  For an object $C$ in Cat, this method returns the underlying CAP category. This method is inverse to <C>AsCatObject</C>, i.e.
 #!  AsCapCategory( AsCatObject( A ) ) = A.
+#! @Arguments C
 DeclareAttribute( "AsCapCategory",
                   IsCapCategoryAsCatObject );
 
@@ -136,14 +143,11 @@ DeclareOperation( "CapFunctor",
 ##
 ####################################
 
-#! @BeginGroup
-
 #! @Description
 #!  This operation adds a function to the functor which can then be applied to
 #!  objects in the source. The given function <A>function</A> has to take one argument which
 #!  must be an object in the source category and should return a CapCategoryObject. The object
 #!  is automatically added to the range of the functor when it is applied to the object.
-#!  The function is stored in the attribute <C>ObjectFunction</C> of <A>functor</A>.
 #! @Arguments functor, function
 DeclareOperation( "AddObjectFunction",
                   [ IsCapFunctor, IsFunction ] );
@@ -152,32 +156,37 @@ DeclareOperation( "AddObjectFunction",
                   [ IsCapFunctor, IsList ] );
 
 
-#!
+#! @Description
+#! The argument is a functor $F$.
+#! The output is the GAP operation
+#! realizing the action of $F$ on objects.
+#! @Arguments F
+#! @Returns a GAP operation
 DeclareAttribute( "FunctorObjectOperation",
                   IsCapFunctor );
 
-
-#! @EndGroup
-
-#! @BeginGroup
 
 #! @Description
 #!  This operation adds a function to the functor which can then be applied to
 #!  morphisms in the source. The given function <A>function</A> has to take three arguments $A, \tau, B$.
 #!  When the funtor <A>functor</A> is applied to the morphism $\tau$, $A$ is the result of <A>functor</A>
 #!  applied to the source of $\tau$, $B$ is the result of <A>functor</A> applied to the range.
-#!  The function is stored in the attribute <C>MorphismFunction</C> of <A>functor</A>.
+#! @Arguments functor, function
 DeclareOperation( "AddMorphismFunction",
                   [ IsCapFunctor, IsFunction ] );
 
 DeclareOperation( "AddMorphismFunction",
                   [ IsCapFunctor, IsList ] );
 
-#!
+#! @Description
+#! The argument is a functor $F$.
+#! The output is the GAP operation
+#! realizing the action of $F$ on morphisms.
+#! @Arguments F
+#! @Returns a GAP operation
 DeclareAttribute( "FunctorMorphismOperation",
                   IsCapFunctor );
 
-#! @EndGroup
 
 ####################################
 ##
