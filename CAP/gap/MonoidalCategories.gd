@@ -922,7 +922,7 @@ DeclareAttribute( "MorphismToBidual",
 #! and an object $r = (a^{\vee})^{\vee}$.
 #! The output is the morphism to the bidual $a \rightarrow (a^{\vee})^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(a, (a^{\vee})^{\vee})$.
-#! @Arguments a
+#! @Arguments a, r
 DeclareOperation( "MorphismToBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
