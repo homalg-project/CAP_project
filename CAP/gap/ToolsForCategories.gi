@@ -668,7 +668,11 @@ InstallGlobalFunction( CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS,
             
         elif Length( current_output ) = 3 then
             
-            list_position := Position( input_list, current_output[ 2 ] );
+            if ForAll( current_output[ 2 ], i -> i in "0123456789" ) then
+                list_position := Int( current_output[ 2 ] );
+            else
+                list_position := Position( input_list, current_output[ 2 ] );
+            fi;
             
             if list_position = fail then
                 Error( "list index variable not found" );
