@@ -568,7 +568,7 @@ DeclareAttribute( "UniversalMorphismFromZeroObject",
 #! and a zero object $Z = \mathrm{ZeroObject}$.
 #! The output is the universal morphism $u_{\mathrm{out}}: Z \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(Z, A)$
-#! @Arguments A
+#! @Arguments A, Z
 DeclareOperation( "UniversalMorphismFromZeroObjectWithGivenZeroObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -585,7 +585,7 @@ DeclareAttribute( "UniversalMorphismIntoZeroObject",
 #! and a zero object $Z = \mathrm{ZeroObject}$.
 #! The output is the universal morphism $u_{\mathrm{in}}: A \rightarrow Z$.
 #! @Returns a morphism in $\mathrm{Hom}(A, Z)$
-#! @Arguments A
+#! @Arguments A, Z
 DeclareOperation( "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
