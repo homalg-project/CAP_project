@@ -82,7 +82,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
         fi;
         
-        isomorphism_of_subobjects := MonoAsKernelLift( subobject2, subobject1 );
+        isomorphism_of_subobjects := LiftAlongMonomorphism( subobject2, subobject1 );
         
         isomorphism_of_factorobjects := EpiAsCokernelColift( factorobject2, factorobject1 );
         
@@ -324,7 +324,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     preconditions := [ "IsEqualAsSubobjects",
                        "IsEqualAsFactorobjects",
-                       "MonoAsKernelLift",
+                       "LiftAlongMonomorphism",
                        "EpiAsCokernelColift",
                        "PreCompose",
                        "IdentityMorphism",

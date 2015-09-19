@@ -7,15 +7,15 @@
 AddWithGivenDerivationPairToCAP( KernelLift,
   function( mor, test_morphism )
     
-    return MonoAsKernelLift( KernelEmb( mor ), test_morphism );
+    return LiftAlongMonomorphism( KernelEmb( mor ), test_morphism );
     
   end,
   
   function( mor, test_morphism, kernel )
     
-    return MonoAsKernelLift( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
+    return LiftAlongMonomorphism( KernelEmbWithGivenKernelObject( mor, kernel ), test_morphism );
     
-end : Description := "KernelLift using MonoAsKernelLift and KernelEmb" );
+end : Description := "KernelLift using LiftAlongMonomorphism and KernelEmb" );
 
 ##
 AddWithGivenDerivationPairToCAP( CokernelColift,
@@ -385,7 +385,7 @@ AddWithGivenDerivationPairToCAP( CoastrictionToImage,
     
     image_embedding := ImageEmbedding( morphism );
     
-    return MonoAsKernelLift( image_embedding, morphism );
+    return LiftAlongMonomorphism( image_embedding, morphism );
   
   end,
   
@@ -394,7 +394,7 @@ AddWithGivenDerivationPairToCAP( CoastrictionToImage,
     
     image_embedding := ImageEmbeddingWithGivenImageObject( morphism, image );
     
-    return MonoAsKernelLift( image_embedding, morphism );
+    return LiftAlongMonomorphism( image_embedding, morphism );
   
 end : Description := "CoastrictionToImage using that image embedding can be seen as a kernel" );
 
@@ -427,7 +427,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
     
     image_embedding := ImageEmbedding( morphism );
     
-    return MonoAsKernelLift( test_factorization[2], image_embedding );
+    return LiftAlongMonomorphism( test_factorization[2], image_embedding );
     
   end,
   
@@ -436,9 +436,9 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
     
     image_embedding := ImageEmbeddingWithGivenImageObject( morphism, image );
     
-    return MonoAsKernelLift( test_factorization[2], image_embedding );
+    return LiftAlongMonomorphism( test_factorization[2], image_embedding );
     
-end : Description := "UniversalMorphismFromImage using ImageEmbedding and MonoAsKernelLift" );
+end : Description := "UniversalMorphismFromImage using ImageEmbedding and LiftAlongMonomorphism" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
@@ -796,16 +796,16 @@ end : Description := "PreCompose using PostCompose and swapping arguments" );
 ##
 AddDerivationToCAP( Inverse,
                     [ [ IdentityMorphism, 1 ],
-                      [ MonoAsKernelLift, 1 ] ],
+                      [ LiftAlongMonomorphism, 1 ] ],
                                        
   function( mor )
     local identity_of_range;
         
         identity_of_range := IdentityMorphism( Range( mor ) );
         
-        return MonoAsKernelLift( mor, identity_of_range );
+        return LiftAlongMonomorphism( mor, identity_of_range );
         
-end : Description := "Inverse using MonoAsKernelLift of an identity morphism" );
+end : Description := "Inverse using LiftAlongMonomorphism of an identity morphism" );
 
 ##
 AddDerivationToCAP( Inverse,
@@ -846,7 +846,7 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "AdditionForMorphisms(mor1, mor2) as the composition of (mor1,mor2) with the codiagonal morphism" );
 
 ##
-AddDerivationToCAP( MonoAsKernelLift,
+AddDerivationToCAP( LiftAlongMonomorphism,
                     [ [ Lift, 1 ] ],
                     
   function( alpha, beta )
@@ -854,7 +854,7 @@ AddDerivationToCAP( MonoAsKernelLift,
     ## Caution with the order of the arguments!
     return Lift( beta, alpha );
     
-end : Description := "MonoAsKernelLift using Lift" );
+end : Description := "LiftAlongMonomorphism using Lift" );
 
 ##
 AddDerivationToCAP( EpiAsCokernelColift,
@@ -892,7 +892,7 @@ AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
     
     kernel_emb := KernelEmb( CokernelProj( morphism ) );
     
-    morphism_to_kernel := MonoAsKernelLift( kernel_emb, morphism );
+    morphism_to_kernel := LiftAlongMonomorphism( kernel_emb, morphism );
     
     return UniversalMorphismFromImage( morphism, [ morphism_to_kernel, kernel_emb ] );
     

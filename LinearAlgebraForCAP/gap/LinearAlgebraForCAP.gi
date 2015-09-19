@@ -317,7 +317,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddMonoAsKernelLift( category,
+    AddLiftAlongMonomorphism( category,
       function( monomorphism, test_morphism )
         local right_divide;
         

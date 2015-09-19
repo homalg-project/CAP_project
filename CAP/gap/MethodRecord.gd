@@ -1,10 +1,10 @@
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD" );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
-MonoAsKernelLift := rec(
-  installation_name := "MonoAsKernelLift",
+LiftAlongMonomorphism := rec(
+  installation_name := "LiftAlongMonomorphism",
   filter_list := [ "morphism", "morphism" ],
-  cache_name := "MonoAsKernelLift",
+  cache_name := "LiftAlongMonomorphism",
   return_type := "morphism",
   
   post_function := function( alpha, beta, lift )
@@ -32,7 +32,7 @@ EpiAsCokernelColift := rec(
     fi;
     
   end,
-  dual_operation := "MonoAsKernelLift" ),
+  dual_operation := "LiftAlongMonomorphism" ),
 
 Lift := rec(
   installation_name := "Lift",

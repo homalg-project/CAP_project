@@ -291,7 +291,7 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
     
     preconditions := [ "IsEqualAsSubobjects",
                        "IsEqualAsFactorobjects",
-                       "MonoAsKernelLift",
+                       "LiftAlongMonomorphism",
                        "EpiAsCokernelColift",
                        "PreCompose",
                        "IdentityMorphism",

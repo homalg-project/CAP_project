@@ -283,7 +283,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
     end );
     
-    AddMonoAsKernelLift( category,
+    AddLiftAlongMonomorphism( category,
       
       function( monomorphism, test_morphism )
         local inverse_of_mono, composition;

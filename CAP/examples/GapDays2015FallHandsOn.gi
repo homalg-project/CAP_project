@@ -194,7 +194,7 @@ mono_as_kernel_lift := function( monomorphism, test_morphism )
 
 end;
 
-AddMonoAsKernelLift( vecspaces, mono_as_kernel_lift );
+AddLiftAlongMonomorphism( vecspaces, mono_as_kernel_lift );
 
 ##
 cokernel_proj := function( morphism )

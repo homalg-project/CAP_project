@@ -255,18 +255,18 @@ BindGlobal( "ADD_INVERSE_IN_Z_FUNCTORS",
     end );
   end );
 
-## MonoAsKernelLift
+## LiftAlongMonomorphism
 ##
 BindGlobal( "ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS",
           
   function( category )
     local morphism_func, mono_as_kernel_lift;
     
-    AddMonoAsKernelLift( ZFunctorCategory( category ),
+    AddLiftAlongMonomorphism( ZFunctorCategory( category ),
                          
       function( monomorphism, test_morphism )
         
-        morphism_func := function( index ) return MonoAsKernelLift( monomorphism[ index ], test_morphism[ index ] );
+        morphism_func := function( index ) return LiftAlongMonomorphism( monomorphism[ index ], test_morphism[ index ] );
         
       end;
       
@@ -1042,7 +1042,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "CanComputeInverseImmutable" ], function( ) ADD_INVERSE_IN_Z_FUNCTORS( category ); end ],
         
-        [ [ "CanComputeMonoAsKernelLift" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CanComputeLiftAlongMonomorphism" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS( category ); end ],
         
         [ [ "CanComputeEpiAsCokernelColift" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS( category ); end ],
         

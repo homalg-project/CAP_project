@@ -926,27 +926,27 @@ DeclareOperation( "AddIsWellDefinedForMorphisms",
 #! The output is such a $u$.
 #! @Returns a morphism in $\mathrm{Hom}(t,k)$
 #! @Arguments iota, tau
-DeclareOperation( "MonoAsKernelLift",
+DeclareOperation( "LiftAlongMonomorphism",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>MonoAsKernelLift</C>.
+#! to the category for the basic operation <C>LiftAlongMonomorphism</C>.
 #! The function $F$ maps a pair $(\iota, \tau)$ to a lift $u$ if it
 #! exists, and to <C>fail</C> otherwise.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddMonoAsKernelLift",
+DeclareOperation( "AddLiftAlongMonomorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddMonoAsKernelLift",
+DeclareOperation( "AddLiftAlongMonomorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddMonoAsKernelLift",
+DeclareOperation( "AddLiftAlongMonomorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMonoAsKernelLift",
+DeclareOperation( "AddLiftAlongMonomorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

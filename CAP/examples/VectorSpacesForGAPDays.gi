@@ -137,7 +137,7 @@ end );
 #######################################
 
 ##
-AddMonoAsKernelLift( QVectorSpaces,
+AddLiftAlongMonomorphism( QVectorSpaces,
 
   function( monomorphism, test_morphism )
 

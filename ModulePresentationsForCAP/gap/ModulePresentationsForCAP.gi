@@ -1209,7 +1209,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_LEFT,
             Range( internal_hom_embedding_range )
           );
         
-        return MonoAsKernelLift( internal_hom_embedding_range,
+        return LiftAlongMonomorphism( internal_hom_embedding_range,
                                  PreCompose( internal_hom_embedding_source, morphism_between_tensor_products ) );
         
     end );
@@ -1240,7 +1240,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
             Range( internal_hom_embedding_range )
           );
         
-        return MonoAsKernelLift( internal_hom_embedding_range,
+        return LiftAlongMonomorphism( internal_hom_embedding_range,
                                  PreCompose( internal_hom_embedding_source, morphism_between_tensor_products ) );
         
     end );
@@ -1472,7 +1472,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
         
         lifted_coevaluation := PresentationMorphism( object_1, matrix, Range( morphism ) );
         
-        return MonoAsKernelLift( morphism, lifted_coevaluation );
+        return LiftAlongMonomorphism( morphism, lifted_coevaluation );
         
     end );
     
@@ -1529,7 +1529,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
         
         lifted_coevaluation := PresentationMorphism( object_1, matrix, Range( morphism ) );
         
-        return MonoAsKernelLift( morphism, lifted_coevaluation );
+        return LiftAlongMonomorphism( morphism, lifted_coevaluation );
         
     end );
     
