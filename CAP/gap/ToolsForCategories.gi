@@ -678,11 +678,9 @@ InstallGlobalFunction( CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS,
                 Error( "list index variable not found" );
             fi;
             
-            list_position := function_input[ list_position ];
-            
-            if LowercaseString( current_output[ 2 ] ) = "source" then
+            if LowercaseString( current_output[ 3 ] ) = "source" then
                 return_list[ i ] := Source( function_input[ input_position ][ list_position ] );
-            elif LowercaseString( current_output[ 2 ] ) = "range" then
+            elif LowercaseString( current_output[ 3 ] ) = "range" then
                 return_list[ i ] := Range( function_input[ input_position ][ list_position ] );
             else
                 Error( "wrong output syntax" );
