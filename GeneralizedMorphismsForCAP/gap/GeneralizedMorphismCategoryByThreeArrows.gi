@@ -25,18 +25,6 @@ BindGlobal( "TheTypeOfGeneralizedMorphismByThreeArrows",
 
 ####################################
 ##
-## True implications
-##
-####################################
-
-InstallTrueMethod( IsHonest, HasHonestSource and HasHonestRange );
-
-InstallTrueMethod( HasHonestRange, IsHonest );
-
-InstallTrueMethod( HasHonestSource, IsHonest );
-
-####################################
-##
 ## Constructors
 ##
 ####################################
@@ -101,7 +89,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
           return GeneralizedMorphismByThreeArrows( SourceAid( mor1 ), PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ), RangeAid( mor2 ) );
           
-      end, [ HasHonestRange, HasHonestSource ] ],
+      end, [ HasIdentityAsRangeAid, HasIdentityAsSourceAid ] ],
       
       
       [ function( mor1, mor2 )
@@ -115,7 +103,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
           return GeneralizedMorphismByThreeArrowsWithSourceAid( new_source_aid, new_morphism_aid );
           
-      end, [ HasHonestRange, HasHonestRange ] ],
+      end, [ HasIdentityAsRangeAid, HasIdentityAsRangeAid ] ],
       
       
       [ function( mor1, mor2 )
@@ -135,7 +123,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
           return GeneralizedMorphismByThreeArrowsWithRangeAid( new_morphism_aid, new_range_aid );
           
-      end, [ HasHonestSource, HasHonestSource ] ],
+      end, [ HasIdentityAsSourceAid, HasIdentityAsSourceAid ] ],
       
       
       [ function( mor1, mor2 )
@@ -143,7 +131,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
           return AsGeneralizedMorphismByThreeArrows( PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ) );
           
-      end, [ HasHonestRange and HasHonestSource, HasHonestRange and HasHonestSource ] ],
+      end, [ HasIdentityAsRangeAid and HasIdentityAsSourceAid, HasIdentityAsRangeAid and HasIdentityAsSourceAid ] ],
       
       
       [ function( mor1, mor2 )
@@ -444,6 +432,8 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrowsWithSourceAid,
     
     SetHasHonestRange( generalized_morphism, true );
     
+    SetFilterObj( generalized_morphism, HasIdentityAsRangeAid );
+    
     return generalized_morphism;
     
 end );
@@ -465,6 +455,8 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrowsWithRangeAid,
     
     SetHasHonestSource( generalized_morphism, true );
     
+    SetFilterObj( generalized_morphism, HasIdentityAsSourceAid );
+    
     return generalized_morphism;
     
 end );
@@ -479,6 +471,8 @@ InstallMethod( AsGeneralizedMorphismByThreeArrows,
     generalized_morphism := GeneralizedMorphismByThreeArrows( IdentityMorphism( Source( morphism_aid ) ), morphism_aid, IdentityMorphism( Range( morphism_aid ) ) );
     
     SetIsHonest( generalized_morphism, true );
+    
+    SetFilterObj( generalized_morphism, HasIdentitiesAsReversedArrows );
     
     SetHonestRepresentative( generalized_morphism, morphism_aid );
     
@@ -552,7 +546,7 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphismByThreeArrows and HasHonestRange ],
+               [ IsGeneralizedMorphismByThreeArrows and HasIdentityAsRangeAid ],
                
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, domain, pushout_diagram, associated_morphism, codomain;
@@ -585,7 +579,7 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphismByThreeArrows and HasHonestSource ],
+               [ IsGeneralizedMorphismByThreeArrows and HasIdentityAsSourceAid ],
                  
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, codomain, pullback_diagram, domain, associated_morphism;
@@ -619,8 +613,8 @@ end );
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
                [ IsGeneralizedMorphismByThreeArrows
-                 and HasHonestSource
-                 and HasHonestRange ],
+                 and HasIdentityAsSourceAid
+                 and HasIdentityAsRangeAid ],
                  
   function( generalized_morphism )
     
@@ -812,7 +806,7 @@ end : ArgumentNumber := 2 );
 ##
 InstallMethod( PseudoInverse,
                [ IsGeneralizedMorphismByThreeArrows
-                 and HasHonestRange ],
+                 and HasIdentityAsRangeAid ],
                  
   function( generalized_morphism )
     
@@ -841,7 +835,7 @@ end );
 
 InstallMethod( PseudoInverse,
                [ IsGeneralizedMorphismByThreeArrows
-                 and HasHonestSource ],
+                 and HasIdentityAsSourceAid ],
                
   function( generalized_morphism )
     

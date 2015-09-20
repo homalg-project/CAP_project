@@ -9,6 +9,9 @@
 ##
 #############################################################################
 
+
+DeclareFilter( "HasIdentityAsReversedArrow" );
+
 DeclareCategory( "IsGeneralizedMorphismCategoryObject",
                  IsCapCategoryObject );
 
