@@ -828,19 +828,22 @@ end );
 ####################################
 
 ##
-InstallGlobalFunction( Pushout,
-  
-  function( arg )
+InstallMethod( Pushout,
+               [ IsList ],
+                
+  function( diagram )
     
-    if Length( arg ) = 1
-       and IsList( arg[1] )
-       and ForAll( arg[1], IsCapCategoryMorphism ) then
-       
-       return PushoutOp( arg[1], arg[1][1] );
-       
-     fi;
+    return PushoutOp( diagram, diagram[1] );
     
-    return PushoutOp( arg, arg[ 1 ] );
+end );
+
+##
+InstallMethod( Pushout,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2 )
+    
+    return PushoutOp( [ mor1, mor2 ], mor1 );
     
 end );
 

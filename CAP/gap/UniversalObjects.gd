@@ -2892,13 +2892,21 @@ DeclareOperation( "AddDirectSumProjectionInPushout",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! This is a convenience method.
-#! There are two different ways to use this method:
-#! * The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! * The arguments are morphisms $\beta_1: B \rightarrow I_1, \dots, \beta_n: B \rightarrow I_n$.
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
 #! The output is the pushout $\mathrm{Pushout}(D)$.
 #! @Returns an object
-DeclareGlobalFunction( "Pushout" );
+#! @Arguments D
+DeclareOperation( "Pushout",
+                   [ IsList ] );
+
+#! @Description
+#! This is a convenience method.
+#! The arguments are a morphism $\alpha$ and a morphism $\beta$.
+#! The output is the pushout $\mathrm{Pushout}(\alpha, \beta)$.
+#! @Returns an object
+#! @Arguments D
+DeclareOperation( "Pushout",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
