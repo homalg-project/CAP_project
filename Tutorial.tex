@@ -155,11 +155,11 @@ This can be done to ensure better compatibility if the given equality function f
 Please have a look at \ref{in_text:with_given} for more details about the \texttt{WithGiven} functions.
 
 Also, the function given for \texttt{KernelLift} does at the beginning the same as the function given for \texttt{KernelEmb}. This might to
-a unnecessary computation. So, in this context, it would be better to provide a more general function for \texttt{MonoAsKernelLift}.
+a unnecessary computation. So, in this context, it would be better to provide a more general function for \texttt{LiftAlongMonomorphism}.
 The input for this function would be a mono, and some morphism, would then provide a lift. The function for \texttt{KernelLift} would then be derived
 from this operation and \texttt{KernelEmb}, by computing
 \[
- \mathrm{MonoAsKernelLift} \left( \mathrm{KernelEmb} \left( \alpha \right), \beta \right).
+ \mathrm{LiftAlongMonomorphism} \left( \mathrm{KernelEmb} \left( \alpha \right), \beta \right).
 \]
 For more information about this system, please refer to the derivations section \ref{section:derivations}.
 An implementation of the kernel would then instead look like this.

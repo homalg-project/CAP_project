@@ -143,7 +143,7 @@ AddKernelLift( vecspaces,
     
 end );
 
-AddMonoAsKernelLift( vecspaces,
+AddLiftAlongMonomorphism( vecspaces,
 
   function( monomorphism, test_morphism )
 
@@ -167,7 +167,7 @@ AddCokernelProj( vecspaces,
 
 end );
 
-AddEpiAsCokernelColift( vecspaces,
+AddColiftAlongEpimorphism( vecspaces,
   
   function( epimorphism, test_morphism )
     

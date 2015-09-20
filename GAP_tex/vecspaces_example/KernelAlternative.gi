@@ -11,7 +11,7 @@ AddKernelEmb( vecspaces,
     
 end );
 
-AddMonoAsKernelLift( vecspaces,
+AddLiftAlongMonomorphism( vecspaces,
 
   function( monomorphism, test_morphism )
 
