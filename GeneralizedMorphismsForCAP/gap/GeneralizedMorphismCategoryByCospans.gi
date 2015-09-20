@@ -91,7 +91,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
           
           return AsGeneralizedMorphismByCospan( arrow );
           
-      end, [ IsHonest, IsHonest ] ],
+      end, [ HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ],
       
       [ function( morphism1, morphism2 )
           local arrow;
@@ -100,7 +100,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
           
           return GeneralizedMorphismByCospan( arrow, ReversedArrow( morphism2 ) );
           
-      end, [ IsHonest, ] ] ] );
+      end, [ HasIdentityAsReversedArrow, ] ] ] );
     
     
     ## AdditionForMorphisms
@@ -128,7 +128,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
           
           return AsGeneralizedMorphismByCospan( Arrow( morphism1 ) + Arrow( morphism2 ) );
           
-      end, [ IsHonest, IsHonest ] ] ] );
+      end, [ HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
       
     AddAdditiveInverseForMorphisms( category, [
                                     
@@ -142,7 +142,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
           
           return AsGeneralizedMorphismByCospan( - Arrow( morphism ) );
           
-      end, [ IsHonest ] ] ] );
+      end, [ HasIdentityAsReversedArrow ] ] ] );
     
     AddZeroMorphism( category,
       
@@ -398,6 +398,8 @@ InstallMethod( AsGeneralizedMorphismByCospan,
     generalized_morphism := GeneralizedMorphismByCospan( arrow, IdentityMorphism( Range( arrow ) ) );
     
     SetIsHonest( generalized_morphism, true );
+    
+    SetFilterObj( generalized_morphism, HasIdentityAsReversedArrow );
     
     return generalized_morphism;
     
