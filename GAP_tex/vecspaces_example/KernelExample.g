@@ -4,7 +4,7 @@ A rational vector space homomorphism with matrix:
 [ [  1,  1 ] ]
 gap> Cokernel( alpha );
 <A rational vector space of dimension 2>
-gap> CokernelProj( alpha );
+gap> CokernelProjection( alpha );
 A rational vector space homomorphism with matrix: 
 [ [  -1,  -1 ],
   [   1,   0 ],

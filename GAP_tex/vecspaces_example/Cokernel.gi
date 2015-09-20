@@ -1,4 +1,4 @@
-AddCokernelProj( vecspaces,
+AddCokernelProjection( vecspaces,
 
   function( morphism )
     local cokernel_proj, cokernel_obj;

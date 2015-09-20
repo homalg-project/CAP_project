@@ -153,7 +153,7 @@ AddLiftAlongMonomorphism( vecspaces,
 
 end );
 
-AddCokernelProj( vecspaces,
+AddCokernelProjection( vecspaces,
 
   function( morphism )
     local cokernel_proj, cokernel_obj;
@@ -411,7 +411,7 @@ KernelEmb( alpha );
 
 Cokernel( alpha );
 
-CokernelProj( alpha );
+CokernelProjection( alpha );
 
 alpha + alpha;
 
