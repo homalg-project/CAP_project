@@ -2,7 +2,7 @@
 gap> KernelEmb( alpha );
 A rational vector space homomorphism with matrix:
 [ [  1,  1 ] ]
-gap> Cokernel( alpha );
+gap> CokernelObject( alpha );
 <A rational vector space of dimension 2>
 gap> CokernelProjection( alpha );
 A rational vector space homomorphism with matrix: 

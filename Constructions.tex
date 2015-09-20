@@ -8,7 +8,7 @@ of the following types:
  a morphism is a mono, epi, or iso ($\IsMonomorphism, \IsEpimorphism, \IsIsomorphism$).
  \item Some limit and colimit constructions, such as direct product ($\DirectProduct$),
  coproduct ($\Coproduct$), fiber product ($\FiberProduct$), pushout ($\Pushout$),
- kernel ($\KernelObject$), cokernel ($\Cokernel$).
+ kernel ($\KernelObject$), cokernel ($\CokernelObject$).
  \item Constructions for monoidal categories, such as tensor product ($\TensorProductOnObjects$, $\TensorProductOnMorphisms$),
  unitors ($\LeftUnitor$, $\RightUnitor$), associators \\($\AssociatorLeftToRight$, $\AssociatorRightToLeft$),
  internal hom ($\InternalHomOnObjects$, $\InternalHomOnMorphisms$).
@@ -291,7 +291,7 @@ We will now define the limits and colimits available in \CapPkg.
 \end{center}
 \end{definition}
 
-\subsection{Cokernel}
+\subsection{CokernelObject}
 
 \begin{definition}
  For a given morphism $\alpha: A \rightarrow B$, a cokernel of $\alpha$ consists of three parts:
@@ -545,7 +545,7 @@ in the definition
  \item \texttt{KernelObject}
  \item \texttt{KernelEmb}
  \item \texttt{KernelLift}
- \item \texttt{Cokernel}
+ \item \texttt{CokernelObject}
  \item \texttt{CokernelProjection}
  \item \texttt{CokernelColift}
 \end{itemize}

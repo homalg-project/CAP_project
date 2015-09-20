@@ -409,7 +409,7 @@ alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 
 KernelEmb( alpha );
 
-Cokernel( alpha );
+CokernelObject( alpha );
 
 CokernelProjection( alpha );
 
