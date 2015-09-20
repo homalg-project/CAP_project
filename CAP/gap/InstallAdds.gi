@@ -436,6 +436,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             
             current_rec!.with_given_without_given_name_pair := [ current_recname{[ 1 .. PositionSublist( current_recname, "WithGiven" ) - 1 ]}, current_recname ];
             
+            current_rec!.universal_object :=
+              current_recname{[ PositionSublist( current_recname, "WithGiven" ) + 9 .. Length( current_recname ) ]};
+            
             current_rec!.is_with_given := true;
             
             CapInternalInstallAdd( current_rec );
