@@ -411,7 +411,7 @@ end );
 ##
 #################################
 
-InstallMethod( IsHonest,
+InstallMethod( HasIdentityAsReversedArrow,
                [ IsGeneralizedMorphismByCospan ],
                
   function( morphism )

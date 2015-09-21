@@ -413,7 +413,7 @@ end );
 ##
 #################################
 
-InstallMethod( IsHonest,
+InstallMethod( HasIdentityAsReversedArrow,
                [ IsGeneralizedMorphismBySpan ],
                
   function( morphism )
