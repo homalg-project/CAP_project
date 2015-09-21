@@ -16,6 +16,12 @@ DeclareCategory( "IsGeneralizedMorphismCategoryObject",
 DeclareCategory( "IsGeneralizedMorphism",
                  IsCapCategoryMorphism );
 
+####################################
+##
+## Attributes and Properties
+##
+####################################
+
 DeclareAttributeWithToDoForIsWellDefined( "DomainOp",
                                           IsGeneralizedMorphism );
 
@@ -31,3 +37,17 @@ DeclareAttribute( "DomainAssociatedMorphismCodomainTriple",
 DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
                                           IsGeneralizedMorphism );
 
+DeclareProperty( "IsHonest",
+                  IsGeneralizedMorphism );
+
+DeclareProperty( "HasFullDomain",
+                 IsGeneralizedMorphism );
+
+DeclareProperty( "HasFullCodomain",
+                 IsGeneralizedMorphism );
+
+DeclareProperty( "IsSingleValued",
+                 IsGeneralizedMorphism );
+
+DeclareProperty( "IsTotal",
+                 IsGeneralizedMorphism );

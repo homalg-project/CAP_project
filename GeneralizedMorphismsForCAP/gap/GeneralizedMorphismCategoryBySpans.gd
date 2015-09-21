@@ -34,9 +34,6 @@ DeclareProperty( "HasIdentityAsReversedArrow",
 ##
 ####################################
 
-DeclareProperty( "IsHonest",
-                  IsGeneralizedMorphismBySpan );
-
 DeclareAttribute( "Arrow",
                   IsGeneralizedMorphismBySpan );
 

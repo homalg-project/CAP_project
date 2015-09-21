@@ -483,6 +483,7 @@ end );
 ##
 ####################################
 
+##
 InstallMethod( HonestRepresentative,
                [ IsGeneralizedMorphismByThreeArrows ],
                
@@ -492,6 +493,26 @@ InstallMethod( HonestRepresentative,
              PreCompose( Inverse( Domain( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
              Inverse( Codomain( generalized_morphism ) ) 
            );
+    
+end );
+
+##
+InstallMethod( HasFullCodomain,
+               [ IsGeneralizedMorphismByThreeArrows ],
+               
+  function( generalized_morphism )
+    
+    return IsIsomorphism( Codomain( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( HasFullDomain,
+               [ IsGeneralizedMorphismByThreeArrows ],
+               
+  function( generalized_morphism )
+    
+    return IsIsomorphism( Domain( generalized_morphism ) );
     
 end );
 

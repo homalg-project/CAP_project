@@ -121,9 +121,6 @@ DeclareAttributeWithToDoForIsWellDefined( "PseudoInverse",
 DeclareAttributeWithToDoForIsWellDefined( "GeneralizedInverseByThreeArrows",
                                           IsCapCategoryMorphism );
 
-DeclareProperty( "IsHonest",
-                  IsGeneralizedMorphismByThreeArrows );
-
 DeclareProperty( "HasHonestSource",
                   IsGeneralizedMorphismByThreeArrows );
 

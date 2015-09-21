@@ -64,3 +64,47 @@ InstallMethod( Codomain,
     return codomain;
     
 end );
+
+##
+InstallMethod( IsHonest,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return HasFullDomain( generalized_morphism ) and HasFullCodomain( generalized_morphism );
+    
+end );
+
+##
+InstallImmediateMethod( IsSingleValued,
+                        IsGeneralizedMorphism and HasHasFullCodomain,
+                        0,
+                        HasFullCodomain );
+
+##
+InstallImmediateMethod( HasFullCodomain,
+                        IsGeneralizedMorphism and HasIsSingleValued,
+                        0,
+                        IsSingleValued );
+
+##
+InstallImmediateMethod( IsTotal,
+                        IsGeneralizedMorphism and HasHasFullDomain,
+                        0,
+                        HasFullDomain );
+
+##
+InstallImmediateMethod( HasFullDomain,
+                        IsGeneralizedMorphism and HasIsTotal,
+                        0,
+                        IsTotal );
+
+##
+InstallMethod( IsSingleValued, 
+               [ IsGeneralizedMorphism ],
+               HasFullCodomain );
+
+##
+InstallMethod( IsTotal,
+               [ IsGeneralizedMorphism ],
+               HasFullDomain );

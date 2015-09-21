@@ -484,12 +484,26 @@ InstallMethod( HonestRepresentative,
     
 end );
 
-InstallMethod( IsHonest,
+##
+InstallMethod( HasFullDomain,
                [ IsGeneralizedMorphismBySpan ],
                
-  function( morphism )
+  function( generalized_morphism )
     
-    return IsIsomorphism( NormalizedSpanTuple( morphism )[ 1 ] );
+    return IsEpimorphism( ReversedArrow( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( HasFullCodomain,
+               [ IsGeneralizedMorphismBySpan ],
+               
+  function( generalized_morphism )
+    local kernel_embedding;
+    
+    kernel_embedding := KernelEmbedding( ReversedArrow( generalized_morphism ) );
+    
+    return IsZero( PreCompose( kernel_embedding, Arrow( generalized_morphism ) ) );
     
 end );
 

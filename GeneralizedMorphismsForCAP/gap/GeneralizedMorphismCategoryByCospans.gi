@@ -482,12 +482,26 @@ InstallMethod( HonestRepresentative,
     
 end );
 
-InstallMethod( IsHonest,
+##
+InstallMethod( HasFullCodomain,
                [ IsGeneralizedMorphismByCospan ],
                
   function( generalized_morphism )
     
-    return IsIsomorphism( NormalizedCospanTuple( generalized_morphism )[ 2 ] );
+    return IsMonomorphism( ReversedArrow( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( HasFullDomain,
+               [ IsGeneralizedMorphismByCospan ],
+               
+  function( generalized_morphism )
+    local cokernel_projection;
+    
+    cokernel_projection := CokernelProjection( ReversedArrow( generalized_morphism ) );
+    
+    return IsZero( PreCompose( Arrow( generalized_morphism ), cokernel_projection ) );
     
 end );
 
