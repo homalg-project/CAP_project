@@ -32,11 +32,14 @@ DeclareFilter( "WasCreatedAsGeneralizedMorphismCategoryByThreeArrows" );
 DeclareProperty( "INSTALL_TODO_LIST_FOR_CanComputeIsWellDefinedForMorphisms",
                  IsCapCategory );
 
-DeclareFilter( "HasIdentitiesAsReversedArrows" );
+DeclareProperty( "HasIdentitiesAsReversedArrows",
+                 IsGeneralizedMorphismByThreeArrows );
 
-DeclareFilter( "HasIdentityAsSourceAid" );
+DeclareProperty( "HasIdentityAsSourceAid",
+                 IsGeneralizedMorphismByThreeArrows );
 
-DeclareFilter( "HasIdentityAsRangeAid" );
+DeclareProperty( "HasIdentityAsRangeAid",
+                 IsGeneralizedMorphismByThreeArrows );
 
 InstallTrueMethod( HasIdentitiesAsReversedArrows, HasIdentityAsRangeAid and HasIdentityAsSourceAid );
 

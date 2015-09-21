@@ -399,7 +399,7 @@ InstallMethod( AsGeneralizedMorphismByCospan,
     
     SetIsHonest( generalized_morphism, true );
     
-    SetFilterObj( generalized_morphism, HasIdentityAsReversedArrow );
+    SetHasIdentityAsReversedArrow( generalized_morphism, true );
     
     return generalized_morphism;
     

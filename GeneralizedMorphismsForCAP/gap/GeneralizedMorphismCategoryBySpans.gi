@@ -399,7 +399,7 @@ InstallMethod( AsGeneralizedMorphismBySpan,
     
     SetIsHonest( generalized_morphism, true );
     
-    SetFilterObj( generalized_morphism, HasIdentityAsReversedArrow );
+    SetHasIdentityAsReversedArrow( generalized_morphism, true );
     
     SetHonestRepresentative( generalized_morphism, arrow );
     

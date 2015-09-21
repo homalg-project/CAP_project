@@ -430,7 +430,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrowsWithSourceAid,
     
     generalized_morphism := GeneralizedMorphismByThreeArrows( source_aid, morphism_aid, IdentityMorphism( Range( morphism_aid ) ) );
     
-    SetFilterObj( generalized_morphism, HasIdentityAsRangeAid );
+    SetHasIdentityAsRangeAid( generalized_morphism, true );
     
     return generalized_morphism;
     
@@ -451,7 +451,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrowsWithRangeAid,
     
     generalized_morphism := GeneralizedMorphismByThreeArrows( IdentityMorphism( Source( morphism_aid ) ), morphism_aid, range_aid );
     
-    SetFilterObj( generalized_morphism, HasIdentityAsSourceAid );
+    SetHasIdentityAsSourceAid( generalized_morphism, true );
     
     return generalized_morphism;
     
@@ -468,7 +468,7 @@ InstallMethod( AsGeneralizedMorphismByThreeArrows,
     
     SetIsHonest( generalized_morphism, true );
     
-    SetFilterObj( generalized_morphism, HasIdentitiesAsReversedArrows );
+    SetHasIdentitiesAsReversedArrows( generalized_morphism, true );
     
     SetHonestRepresentative( generalized_morphism, morphism_aid );
     
