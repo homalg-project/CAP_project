@@ -277,7 +277,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         kernel_mor := KernelEmbedding( AssociatedMorphism( underlying_general ) );
         
-        kernel_mor := PreCompose( kernel_mor, Domain( underlying_general ) );
+        kernel_mor := PreCompose( kernel_mor, DomainOfGeneralizedMorphism( underlying_general ) );
         
         return AsSerreQuotientCategoryByCospansMorphism( category, kernel_mor );
         

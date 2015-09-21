@@ -58,7 +58,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
               
               CanComputeForSpecialCategories := [
                 "CanComputeDomainAssociatedMorphismCodomainTriple",
-                "CanComputeDomain",
+                "CanComputeDomainOfGeneralizedMorphism",
                 "CanComputeCodomain",
                 "CanComputeAssociatedMorphism",
                 "CanComputePseudoInverse",

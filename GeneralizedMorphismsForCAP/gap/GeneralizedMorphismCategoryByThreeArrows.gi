@@ -50,9 +50,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
       function( generalized_morphism1, generalized_morphism2 )
         local subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
         
-        subobject1 := Domain( generalized_morphism1 );
+        subobject1 := DomainOfGeneralizedMorphism( generalized_morphism1 );
         
-        subobject2 := Domain( generalized_morphism2 );
+        subobject2 := DomainOfGeneralizedMorphism( generalized_morphism2 );
         
         if not IsEqualAsSubobjects( subobject1, subobject2 ) then
           
@@ -490,7 +490,7 @@ InstallMethod( HonestRepresentative,
   function( generalized_morphism )
     
     return PreCompose(
-             PreCompose( Inverse( Domain( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
+             PreCompose( Inverse( DomainOfGeneralizedMorphism( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
              Inverse( Codomain( generalized_morphism ) ) 
            );
     
@@ -518,7 +518,7 @@ end );
 
 ###########################
 ##
-## Domain, Associated Morphism, Codomain
+## DomainOfGeneralizedMorphism, Associated Morphism, Codomain
 ##
 ###########################
 
@@ -681,7 +681,7 @@ InstallMethodWithCacheFromObject( CommonRestrictionOp,
         
     fi;
     
-    source_aid_list := List( morphism_list, Domain );
+    source_aid_list := List( morphism_list, DomainOfGeneralizedMorphism );
     
     associated_compose_list := [ ];
     

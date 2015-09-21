@@ -22,7 +22,7 @@ DeclareCategory( "IsGeneralizedMorphism",
 ##
 ####################################
 
-DeclareAttributeWithToDoForIsWellDefined( "DomainOp",
+DeclareAttributeWithToDoForIsWellDefined( "DomainOfGeneralizedMorphism",
                                           IsGeneralizedMorphism );
 
 DeclareAttributeWithToDoForIsWellDefined( "Codomain",
