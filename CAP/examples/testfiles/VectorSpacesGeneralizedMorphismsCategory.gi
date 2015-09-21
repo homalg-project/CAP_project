@@ -80,7 +80,7 @@ IsCongruentForMorphisms( c2, c3 );
 #! false
 c1 + c2;
 #! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
-MorphismAid( c1 + c2 );
+Arrow( c1 + c2 );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  12,  12 ] ]
 #! 
@@ -123,7 +123,7 @@ psi_tilde := GeneralizedMorphismWithSourceAid( psi_tilde_source_aid, psi_tilde_a
 #! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 composition := PreCompose( phi_tilde, psi_tilde );
 #! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
-MorphismAid( composition );
+Arrow( composition );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1/2,    1 ] ]
 #! 
@@ -177,7 +177,7 @@ psi2_tilde := GeneralizedMorphismWithRangeAid( psi2_tilde_associated, psi2_tilde
 #! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
 composition2 := PreCompose( phi2_tilde, psi2_tilde );
 #! <A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>
-MorphismAid( composition2 );
+Arrow( composition2 );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  16 ] ]
 #! 
@@ -259,7 +259,7 @@ SourceAid( p );
 #! [ [  -1,   1,   0 ],
 #!   [   1,   0,   0 ] ]
 #! 
-MorphismAid( p );
+Arrow( p );
 #! A rational vector space homomorphism with matrix: 
 #! (an empty 2 x 0 matrix)
 #! 
@@ -327,7 +327,7 @@ SourceAid( p );
 #! [ [  -1,   1,   0 ],
 #!   [   1,   0,   0 ] ]
 #! 
-MorphismAid( p );
+Arrow( p );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  0 ],
 #!   [  0 ] ]

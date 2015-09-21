@@ -106,7 +106,7 @@ DeclareAttributeWithToDoForIsWellDefined( "SourceAid",
 DeclareAttributeWithToDoForIsWellDefined( "RangeAid",
                                           IsGeneralizedMorphismByThreeArrows );
 
-DeclareAttributeWithToDoForIsWellDefined( "MorphismAid",
+DeclareAttributeWithToDoForIsWellDefined( "Arrow",
                                           IsGeneralizedMorphismByThreeArrows );
 
 DeclareAttributeWithToDoForIsWellDefined( "PseudoInverse",
