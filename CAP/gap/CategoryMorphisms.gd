@@ -1002,7 +1002,7 @@ DeclareOperation( "AddColiftAlongEpimorphism",
 #! such that there is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$, i.e.,
 #! a morphism such that $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$.
 #! The output is such a lift.
-#! @Returns a morphism in $\mathrm{Hom}(a,c)$
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments alpha, beta
 DeclareOperation( "Lift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
