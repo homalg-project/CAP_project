@@ -87,7 +87,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
       
       [ function( mor1, mor2 )
           
-          return GeneralizedMorphismByThreeArrows( SourceAid( mor1 ), PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ), RangeAid( mor2 ) );
+          return GeneralizedMorphismByThreeArrows( SourceAid( mor1 ), PreCompose( Arrow( mor1 ), Arrow( mor2 ) ), RangeAid( mor2 ) );
           
       end, [ HasIdentityAsRangeAid, HasIdentityAsSourceAid ] ],
       
@@ -95,11 +95,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
       [ function( mor1, mor2 )
           local category, pullback_diagram, new_source_aid, new_morphism_aid;
           
-          pullback_diagram := [ MorphismAid( mor1 ), SourceAid( mor2 ) ];
+          pullback_diagram := [ Arrow( mor1 ), SourceAid( mor2 ) ];
           
           new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
           
-          new_morphism_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), MorphismAid( mor2 ) );
+          new_morphism_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), Arrow( mor2 ) );
           
           return GeneralizedMorphismByThreeArrowsWithSourceAid( new_source_aid, new_morphism_aid );
           
@@ -109,7 +109,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
       [ function( mor1, mor2 )
           local category, diagram, injection_of_cofactor1, injection_of_cofactor2, new_morphism_aid, new_range_aid;
           
-          diagram := [ RangeAid( mor1 ), MorphismAid( mor2 ) ];
+          diagram := [ RangeAid( mor1 ), Arrow( mor2 ) ];
           
           injection_of_cofactor1 :=
             InjectionOfCofactorOfPushout( diagram, 1 );
@@ -117,7 +117,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           injection_of_cofactor2 :=
             InjectionOfCofactorOfPushout( diagram, 2 );
           
-          new_morphism_aid := PreCompose( MorphismAid( mor1 ), injection_of_cofactor1 );
+          new_morphism_aid := PreCompose( Arrow( mor1 ), injection_of_cofactor1 );
           
           new_range_aid := PreCompose( RangeAid( mor2 ), injection_of_cofactor2 );
           
@@ -129,7 +129,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
       [ function( mor1, mor2 )
           local category;
           
-          return AsGeneralizedMorphismByThreeArrows( PreCompose( MorphismAid( mor1 ), MorphismAid( mor2 ) ) );
+          return AsGeneralizedMorphismByThreeArrows( PreCompose( Arrow( mor1 ), Arrow( mor2 ) ) );
           
       end, [ HasIdentityAsRangeAid and HasIdentityAsSourceAid, HasIdentityAsRangeAid and HasIdentityAsSourceAid ] ],
       
@@ -139,9 +139,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
           generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobjectByThreeArrows( RangeAid( mor1 ), SourceAid( mor2 ) );
           
-          pullback_diagram := [ MorphismAid( mor1 ), SourceAid( generalized_mor_factor_sub ) ];
+          pullback_diagram := [ Arrow( mor1 ), SourceAid( generalized_mor_factor_sub ) ];
           
-          pushout_diagram := [ RangeAid( generalized_mor_factor_sub ), MorphismAid( mor2 ) ];
+          pushout_diagram := [ RangeAid( generalized_mor_factor_sub ), Arrow( mor2 ) ];
           
           new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
           
@@ -165,11 +165,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
         pushout_of_rangeaids_diagram := [ RangeAid( mor1 ), RangeAid( mor2 ) ];
         
-        restricted_mor1 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), MorphismAid( mor1 ) );
+        restricted_mor1 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), Arrow( mor1 ) );
         
         restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) );
         
-        restricted_mor2 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 2 ), MorphismAid( mor2 ) );
+        restricted_mor2 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 2 ), Arrow( mor2 ) );
         
         restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 2 ) );
         
@@ -218,14 +218,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
             
             category := CapCategory( SourceAid( generalized_morphism ) );
             
-            if not ForAll( [ MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ],
+            if not ForAll( [ Arrow( generalized_morphism ), RangeAid( generalized_morphism ) ],
                         x -> IsIdenticalObj( CapCategory( x ), category ) ) then
               
               return false;
               
             fi;
             
-            if not ( ForAll( [ SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ],
+            if not ( ForAll( [ SourceAid( generalized_morphism ), Arrow( generalized_morphism ), RangeAid( generalized_morphism ) ],
                     IsWellDefined ) ) then
               
               return false;
@@ -405,7 +405,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrows,
     
     SetRangeAid( generalized_morphism, range_aid );
     
-    SetMorphismAid( generalized_morphism, morphism_aid );
+    SetArrow( generalized_morphism, morphism_aid );
     
     generalized_category := GeneralizedMorphismCategoryByThreeArrows( CapCategory( morphism_aid ) );
     
@@ -509,7 +509,7 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     source_aid := SourceAid( generalized_morphism );
     
-    morphism_aid := MorphismAid( generalized_morphism );
+    morphism_aid := Arrow( generalized_morphism );
     
     range_aid := RangeAid( generalized_morphism );
     
@@ -524,7 +524,7 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     #non-trivial SourceAid and non-trivial RangeAid
     
-    pushout_diagram := [ SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ) ];
+    pushout_diagram := [ SourceAid( generalized_morphism ), Arrow( generalized_morphism ) ];
     
     composition := PreCompose( RangeAid( generalized_morphism ), InjectionOfCofactorOfPushout( pushout_diagram, 2 ) );
     
@@ -549,7 +549,7 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     source_aid := SourceAid( generalized_morphism );
     
-    morphism_aid := MorphismAid( generalized_morphism );
+    morphism_aid := Arrow( generalized_morphism );
     
     range_aid := RangeAid( generalized_morphism );
     
@@ -582,7 +582,7 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
     source_aid := SourceAid( generalized_morphism );
     
-    morphism_aid := MorphismAid( generalized_morphism );
+    morphism_aid := Arrow( generalized_morphism );
     
     range_aid := RangeAid( generalized_morphism );
     
@@ -614,7 +614,7 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
                  
   function( generalized_morphism )
     
-    return [ SourceAid( generalized_morphism ), MorphismAid( generalized_morphism ), RangeAid( generalized_morphism ) ];
+    return [ SourceAid( generalized_morphism ), Arrow( generalized_morphism ), RangeAid( generalized_morphism ) ];
     
 end );
 
@@ -806,7 +806,7 @@ InstallMethod( PseudoInverse,
                  
   function( generalized_morphism )
     
-    return GeneralizedMorphismByThreeArrowsWithSourceAid( MorphismAid( generalized_morphism ),
+    return GeneralizedMorphismByThreeArrowsWithSourceAid( Arrow( generalized_morphism ),
                                              SourceAid( generalized_morphism ) );
     
 end );
@@ -822,7 +822,7 @@ InstallMethod( PseudoInverse,
     factor1 := GeneralizedMorphismByThreeArrowsWithSourceAid( source_aid, 
                                                 IdentityMorphism( Source( source_aid ) ) );
     
-    factor2 := GeneralizedMorphismByThreeArrowsWithRangeAid( MorphismAid( generalized_morphism ),
+    factor2 := GeneralizedMorphismByThreeArrowsWithRangeAid( Arrow( generalized_morphism ),
                                                 RangeAid( generalized_morphism ) );
     
     return PreCompose( PseudoInverse( factor2 ), PseudoInverse( factor1 ) );
@@ -836,7 +836,7 @@ InstallMethod( PseudoInverse,
   function( generalized_morphism )
     
     return GeneralizedMorphismByThreeArrowsWithRangeAid( RangeAid( generalized_morphism ),
-                                            MorphismAid( generalized_morphism ) );
+                                            Arrow( generalized_morphism ) );
     
 end );
 

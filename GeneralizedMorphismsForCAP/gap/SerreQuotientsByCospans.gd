@@ -62,7 +62,7 @@ DeclareAttribute( "SourceAid",
 DeclareAttribute( "RangeAid",
                   IsSerreQuotientCategoryByCospansMorphism );
 
-DeclareAttribute( "MorphismAid",
+DeclareAttribute( "Arrow",
                   IsSerreQuotientCategoryByCospansMorphism );
 
 ##############################################

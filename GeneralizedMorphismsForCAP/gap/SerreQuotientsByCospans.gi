@@ -46,7 +46,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism2 );
         
-        new_morphism_aid := AdditiveInverse( MorphismAid( underlying_general ) );
+        new_morphism_aid := AdditiveInverse( Arrow( underlying_general ) );
         
         new_general := GeneralizedMorphismByCospans( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
         
@@ -140,7 +140,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        new_morphism_aid := AdditiveInverse( MorphismAid( underlying_general ) );
+        new_morphism_aid := AdditiveInverse( Arrow( underlying_general ) );
         
         new_general := GeneralizedMorphismByCospans( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
         

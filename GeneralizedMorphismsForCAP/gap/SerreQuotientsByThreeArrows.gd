@@ -62,7 +62,7 @@ DeclareAttribute( "SourceAid",
 DeclareAttribute( "RangeAid",
                   IsSerreQuotientCategoryByThreeArrowsMorphism );
 
-DeclareAttribute( "MorphismAid",
+DeclareAttribute( "Arrow",
                   IsSerreQuotientCategoryByThreeArrowsMorphism );
 
 ##############################################
