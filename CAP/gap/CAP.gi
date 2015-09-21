@@ -127,32 +127,6 @@ BindGlobal( "TheTypeOfCapCategories",
 #####################################
 
 ##
-InstallGlobalFunction( INSTALL_CAN_COMPUTE_TO_DO_LISTS,
-                       
-  function( category )
-    local i, entry_func, internal_list;
-    
-    entry_func := function( category, filter_name )
-        
-        return ToDoListEntry( [ [ category, filter_name, true ] ], function( ) InstallTrueMethod( ValueGlobal( filter_name ), CanComputeFilter( category ) ); end );
-        
-    end;
-    
-    internal_list := Concatenation( 
-                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForAllCategories,
-                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.CanComputeForSpecialCategories,
-                       CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories
-                     );
-    
-    for i in internal_list do
-        
-        AddToToDoList( entry_func( category, i ) );
-        
-    od;
-    
-end );
-
-##
 InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
                        
   function( category )
@@ -189,12 +163,6 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
     InstallTrueMethod( cell_filter, filter_name );
     
     SetTwoCellFilter( category, filter_name );
-    
-    filter_name := NewFilter( Concatenation( name, "CanComputeFilter" ) );
-    
-    SetCanComputeFilter( category, filter_name );
-    
-    InstallTrueMethod( filter_name, cell_filter );
     
 end );
 
@@ -473,8 +441,6 @@ InstallMethod( CreateCapCategory,
     category := CREATE_CAP_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
     
     CREATE_CAP_CATEGORY_FILTERS( category );
-    
-    INSTALL_CAN_COMPUTE_TO_DO_LISTS( category );
     
     AddCategoryToFamily( category, "general" );
     

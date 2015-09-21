@@ -37,8 +37,6 @@ DeclareGlobalVariable( "CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );
 
-DeclareGlobalFunction( "INSTALL_CAN_COMPUTE_TO_DO_LISTS" );
-
 DeclareGlobalVariable( "CAP_INTERNAL_DERIVATION_GRAPH" );
 
 
@@ -433,10 +431,6 @@ DeclareAttribute( "MorphismFilter",
 #! @Arguments C
 #! @Returns a filter
 DeclareAttribute( "TwoCellFilter",
-                  IsCapCategory );
-
-## Internal Filter for the CanCompute Management.
-DeclareAttribute( "CanComputeFilter",
                   IsCapCategory );
 
 #############################################
