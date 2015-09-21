@@ -18,7 +18,7 @@ Domain := function( arg )
   
   if Length( arg ) = 1 and IsGeneralizedMorphism( arg[1] ) then
       
-      return DomainOp( arg[ 1 ] );
+      return DomainOfGeneralizedMorphism( arg[ 1 ] );
       
   fi;
   
@@ -26,9 +26,7 @@ Domain := function( arg )
   
 end;
 
-MakeReadOnlyGlobal( "Domain" );
-
-InstallMethod( DomainOp,
+InstallMethod( DomainOfGeneralizedMorphism,
                [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )

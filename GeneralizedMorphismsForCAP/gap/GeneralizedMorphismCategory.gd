@@ -16,7 +16,7 @@ DeclareCategory( "IsGeneralizedMorphismCategoryObject",
 DeclareCategory( "IsGeneralizedMorphism",
                  IsCapCategoryMorphism );
 
-DeclareAttributeWithToDoForIsWellDefined( "DomainOp",
+DeclareAttributeWithToDoForIsWellDefined( "DomainOfGeneralizedMorphism",
                                           IsGeneralizedMorphism );
 
 DeclareAttributeWithToDoForIsWellDefined( "Codomain",
