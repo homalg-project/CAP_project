@@ -330,6 +330,12 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
     
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryBySpans );
     
+    AddPredicateImplicationFileToCategory( generalized_morphism_category,
+      Filename(
+        DirectoriesPackageLibrary( "GeneralizedMorphismsForCAP", "LogicForGeneralizedMorphismCategory" ),
+        "PredicateImplicationsForGeneralizedMorphismCategory.tex" )
+    );
+    
     Finalize( generalized_morphism_category );
     
     return generalized_morphism_category;
