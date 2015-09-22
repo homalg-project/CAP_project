@@ -435,6 +435,23 @@ DeclareAttribute( "TwoCellFilter",
 
 #############################################
 ##
+#! @Section Tool functions
+##
+#############################################
+
+
+#! @Description
+#! The argument is a category $C$ and a string $s$,
+#! which should be the name of a primitive operation, e.g., PreCompose.
+#! If applying this method is possible in $C$, the method returns <C>true</C>, <C>false</C> otherwise.
+#! If the string is not the name of a primitive operation, an error is raised.
+#! @Returns <C>true</C> or <C>false</C>
+#! @Arguments C,s
+DeclareOperation( "CanCompute",
+                  [ IsCapCategory, IsString ] );
+
+#############################################
+##
 #! @Section Well-Definedness of Cells
 ##
 #############################################
@@ -447,7 +464,6 @@ DeclareAttribute( "TwoCellFilter",
 #! @Arguments c
 DeclareProperty( "IsWellDefined",
                  IsCapCategoryCell );
-
 
 ####################################
 ##

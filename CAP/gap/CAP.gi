@@ -450,6 +450,25 @@ InstallMethod( CreateCapCategory,
     
 end );
 
+InstallMethod( CanCompute,
+               [ IsCapCategory, IsString ],
+               
+  function( category, string )
+    local weight_list;
+    
+    if not string in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+        
+        Error( "string is not the name of an operation" );
+        
+    fi;
+    
+    weight_list := category!.derivations_weight_list;
+    
+    return not CurrentOperationWeight( weight_list, string ) = infinity;
+    
+end );
+
+
 #######################################
 ##
 ## ViewObj
