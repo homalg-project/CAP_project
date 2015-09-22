@@ -1377,8 +1377,8 @@ DeclareOperation( "AddLambdaElimination",
 #! The output is the natural isomorphism $a \rightarrow \mathrm{\underline{Hom}}(1,a)$.
 #! @Returns a morphism in $\mathrm{Hom}(a, \mathrm{\underline{Hom}}(1,a))$.
 #! @Arguments a
-DeclareOperation( "IsomorphismFromObjectToInternalHom",
-                  [ IsCapCategoryObject ] );
+DeclareAttribute( "IsomorphismFromObjectToInternalHom",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The argument is an object $a$,
@@ -1414,8 +1414,8 @@ DeclareOperation( "AddIsomorphismFromObjectToInternalHom",
 #! The output is the natural isomorphism $\mathrm{\underline{Hom}}(1,a) \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{Hom}}(1,a),a)$.
 #! @Arguments a
-DeclareOperation( "IsomorphismFromInternalHomToObject",
-                  [ IsCapCategoryObject] );
+DeclareAttribute( "IsomorphismFromInternalHomToObject",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The argument is an object $a$,

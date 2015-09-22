@@ -3187,8 +3187,8 @@ DeclareFilter( "WasCreatedAsPushout" );
 #! $\mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) )$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{im}(\alpha), \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) )$
 #! @Arguments alpha
-DeclareOperation( "IsomorphismFromImageObjectToKernelOfCokernel",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "IsomorphismFromImageObjectToKernelOfCokernel",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3215,8 +3215,8 @@ DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
 #! $\mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) \rightarrow \mathrm{im}(\alpha)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ), \mathrm{im}(\alpha) )$
 #! @Arguments alpha
-DeclareOperation( "IsomorphismFromKernelOfCokernelToImageObject",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "IsomorphismFromKernelOfCokernelToImageObject",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3509,8 +3509,8 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #! $\mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) )$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{coim}( \alpha ), \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) )$.
 #! @Arguments alpha
-DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "IsomorphismFromCoimageToCokernelOfKernel",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3537,8 +3537,8 @@ DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
 #! $\mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha )$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ), \mathrm{coim}( \alpha ) )$.
 #! @Arguments alpha
-DeclareOperation( "IsomorphismFromCokernelOfKernelToCoimage",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "IsomorphismFromCokernelOfKernelToCoimage",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
