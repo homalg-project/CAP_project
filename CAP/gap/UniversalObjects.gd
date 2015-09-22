@@ -3503,6 +3503,46 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #! We say that the morphism $u( \tau )$ is induced by the
 #! <Emph>universal property of the coimage</Emph>.
 
+##
+DeclareAttribute( "MorphismFromCoimageToImage",
+                  IsCapCategoryMorphism );
+
+DeclareOperation( "MorphismFromCoimageToImage",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareAttribute( "InverseMorphismFromCoimageToImage",
+                  IsCapCategoryMorphism );
+
+DeclareOperation( "InverseMorphismFromCoimageToImage",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList ] );
+
+
+
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical morphism

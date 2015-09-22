@@ -952,6 +952,35 @@ InstallMethod( CoastrictionToImage,
     
 end );
 
+####################################
+##
+## Coimage
+##
+####################################
+
+####################################
+## Convenience methods
+####################################
+
+##
+InstallMethod( MorphismFromCoimageToImage,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    
+    return MorphismFromCoimageToImage( Coimage( morphism ), morphism, ImageObject( morphism ) );
+    
+end );
+
+##
+InstallMethod( InverseMorphismFromCoimageToImage,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    
+    return InverseMorphismFromCoimageToImage( Coimage( morphism ), morphism, ImageObject( morphism ) );
+    
+end );
 
 ####################################
 ##

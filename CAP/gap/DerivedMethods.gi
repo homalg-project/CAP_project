@@ -2910,6 +2910,34 @@ AddDerivationToCAP( MonoidalPreComposeMorphism,
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "MonoidalPreComposeMorphism using MonoidalPostComposeMorphism and braiding" );
 
+##
+AddDerivationToCAP( MorphismFromCoimageToImage,
+                    
+  ##CoimageObject, ImageObject as Assumptions
+  function( coimage, morphism, image )
+    local coimage_projection, cokernel_projection, kernel_lift;
+    
+    cokernel_projection := CokernelProjection( morphism );
+    
+    coimage_projection := CoimageProjection( morphism );
+    
+    kernel_lift := KernelLift( cokernel_projection , AstrictionToCoimage( morphism ) );
+    
+    return PreCompose( kernel_lift, IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
+    
+end : CategoryFilter := IsPreAbelianCategory,
+      Description := "MorphismFromCoimageToImage using that images are given by kernels of cokernels" );
+
+##
+AddDerivationToCAP( InverseMorphismFromCoimageToImage,
+                    
+  function( coimage, morphism, image )
+    
+    return Inverse( MorphismFromCoimageToImage( morphism ) );
+    
+end : CategoryFilter := IsAbelianCategory,
+      Description := "InverseMorphismFromCoimageToImage as the inverse of MorphismFromCoimageToImage" );
+
 ####################################
 ## Final derived methods
 ####################################
