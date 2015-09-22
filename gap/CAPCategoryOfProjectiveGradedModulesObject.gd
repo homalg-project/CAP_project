@@ -15,8 +15,16 @@
 ##
 ####################################
 
-DeclareCategory( "IsCAPCategoryOfProjectiveGradedModulesObject",
+
+DeclareCategory( "IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject",
                  IsCapCategoryObject );
+
+DeclareCategory( "IsCAPCategoryOfProjectiveGradedLeftModulesObject",
+                 IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject );
+
+DeclareCategory( "IsCAPCategoryOfProjectiveGradedRightModulesObject",
+                 IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject );
+
 
 ####################################
 ##
@@ -24,7 +32,12 @@ DeclareCategory( "IsCAPCategoryOfProjectiveGradedModulesObject",
 ##
 ####################################
 
-DeclareOperation( "CAPCategoryOfProjectiveGradedModulesObject",
+DeclareGlobalFunction( "CAPCategoryOfProjectiveGradedLeftOrRightModulesObject" );
+
+DeclareOperation( "CAPCategoryOfProjectiveGradedLeftModulesObject",
+                  [ IsList, IsHomalgGradedRing ] );
+
+DeclareOperation( "CAPCategoryOfProjectiveGradedRightModulesObject",
                   [ IsList, IsHomalgGradedRing ] );
 
 ####################################
@@ -34,13 +47,13 @@ DeclareOperation( "CAPCategoryOfProjectiveGradedModulesObject",
 ####################################
 
 DeclareAttribute( "UnderlyingHomalgGradedRing",
-                  IsCAPCategoryOfProjectiveGradedModulesObject );
+                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject );
 
 DeclareAttribute( "DegreeList",
-                  IsCAPCategoryOfProjectiveGradedModulesObject );
+                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject );
                   
 DeclareAttribute( "RankOfObject",
-                  IsCAPCategoryOfProjectiveGradedModulesObject );
+                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject );
                   
 ########################################################
 ##
@@ -48,5 +61,5 @@ DeclareAttribute( "RankOfObject",
 ##
 ########################################################
                 
-DeclareOperation( "INTERNAL_SIMPLIFY_DATA_STRUCTURE",
-                  [ IsList ] );                 
+DeclareOperation( "CAP_CATEGORY_OF_PROJECTIVE_GRADED_MODULES_INTERNAL_SIMPLIFY_DATA_STRUCTURE",
+                  [ IsList ] );

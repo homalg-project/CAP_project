@@ -15,16 +15,27 @@
 ##
 ####################################
 
-DeclareRepresentation( "IsCAPCategoryOfProjectiveGradedModulesObjectRep",
-                       IsCAPCategoryOfProjectiveGradedModulesObject and IsAttributeStoringRep,
+DeclareRepresentation( "IsCAPCategoryOfProjectiveGradedLeftModulesObjectRep",
+                       IsCAPCategoryOfProjectiveGradedLeftModulesObject and IsAttributeStoringRep,
                        [ ] );
 
-BindGlobal( "TheFamilyOfCAPCategoryOfProjectiveGradedModulesObjects",
-        NewFamily( "TheFamilyOfCAPCategoryOfProjectiveGradedModulesObjects" ) );
+BindGlobal( "TheFamilyOfCAPCategoryOfProjectiveGradedLeftModulesObjects",
+        NewFamily( "TheFamilyOfCAPCategoryOfProjectiveGradedLeftModulesObjects" ) );
 
-BindGlobal( "TheTypeOfCAPCategoryOfProjectiveGradedModulesObjects",
-        NewType( TheFamilyOfCAPCategoryOfProjectiveGradedModulesObjects,
-                IsCAPCategoryOfProjectiveGradedModulesObjectRep ) );
+BindGlobal( "TheTypeOfCAPCategoryOfProjectiveGradedLeftModulesObjects",
+        NewType( TheFamilyOfCAPCategoryOfProjectiveGradedLeftModulesObjects,
+                IsCAPCategoryOfProjectiveGradedLeftModulesObjectRep ) );
+
+DeclareRepresentation( "IsCAPCategoryOfProjectiveGradedRightModulesObjectRep",
+                       IsCAPCategoryOfProjectiveGradedRightModulesObject and IsAttributeStoringRep,
+                       [ ] );
+
+BindGlobal( "TheFamilyOfCAPCategoryOfProjectiveGradedRightModulesObjects",
+        NewFamily( "TheFamilyOfCAPCategoryOfProjectiveGradedRightModulesObjects" ) );
+
+BindGlobal( "TheTypeOfCAPCategoryOfProjectiveGradedRightModulesObjects",
+        NewType( TheFamilyOfCAPCategoryOfProjectiveGradedRightModulesObjects,
+                IsCAPCategoryOfProjectiveGradedRightModulesObjectRep ) );
 
 ####################################
 ##
@@ -33,12 +44,11 @@ BindGlobal( "TheTypeOfCAPCategoryOfProjectiveGradedModulesObjects",
 ####################################
 
 ##
-InstallMethod( CAPCategoryOfProjectiveGradedModulesObject,
-               [ IsList, IsHomalgGradedRing ],
+InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
                
-  function( degree_list, homalg_graded_ring )
+  function( degree_list, homalg_graded_ring, left )
     local A, nrGenerators, i, buffer, buffer_homalg_module_element, category, category_of_projective_graded_modules_object, 
-         rank;
+         rank, type;
         
     # extract the degree group of the ring and its number of generators
     A := DegreeGroup( homalg_graded_ring );
@@ -94,28 +104,50 @@ InstallMethod( CAPCategoryOfProjectiveGradedModulesObject,
     # no sort this data (unless it is trivial)
     if Length( degree_list ) > 1 then
     
-      degree_list := INTERNAL_SIMPLIFY_DATA_STRUCTURE( degree_list );
+      degree_list := CAP_CATEGORY_OF_PROJECTIVE_GRADED_MODULES_INTERNAL_SIMPLIFY_DATA_STRUCTURE( degree_list );
     
     fi;
-    
-    # construct the category of projective graded modules over the given homalg_graded_ring
-    category := CAPCategoryOfProjectiveGradedModules( homalg_graded_ring );
-    
+
+    # now construct the correct category and type for the object
+    if left = true then
+        type := TheTypeOfCAPCategoryOfProjectiveGradedLeftModulesObjects;
+        #category := IsCAPCategoryOfProjectiveGradedLeftModules( homalg_graded_ring );
+    else
+        type := TheTypeOfCAPCategoryOfProjectiveGradedRightModulesObjects;
+        #category := IsCAPCategoryOfProjectiveGradedRightModules( homalg_graded_ring );
+    fi;
+        
     # now construct the object
     category_of_projective_graded_modules_object := rec( );
     rank := Sum( List( degree_list, x -> x[ 2 ] ) );    
-    ObjectifyWithAttributes( category_of_projective_graded_modules_object, TheTypeOfCAPCategoryOfProjectiveGradedModulesObjects,
+    ObjectifyWithAttributes( category_of_projective_graded_modules_object, type,
                              DegreeList, degree_list,
                              RankOfObject, rank,
                              UnderlyingHomalgGradedRing, homalg_graded_ring
     );
 
     # add the object to the category
-    Add( category, category_of_projective_graded_modules_object );
+    #Add( category, category_of_projective_graded_modules_object );
     
     # and return the object
     return category_of_projective_graded_modules_object;
     
+end );
+
+InstallMethod( CAPCategoryOfProjectiveGradedLeftModulesObject,
+               [ IsList, IsHomalgGradedRing ],
+  function( degree_list, homalg_graded_ring )
+  
+    return CAPCategoryOfProjectiveGradedLeftOrRightModulesObject( degree_list, homalg_graded_ring, true );
+
+end );
+
+InstallMethod( CAPCategoryOfProjectiveGradedRightModulesObject,
+               [ IsList, IsHomalgGradedRing ],
+  function( degree_list, homalg_graded_ring )
+  
+    return CAPCategoryOfProjectiveGradedLeftOrRightModulesObject( degree_list, homalg_graded_ring, false );
+
 end );
 
 ####################################
@@ -125,17 +157,26 @@ end );
 ####################################
 
 InstallMethod( String,
-              [ IsCAPCategoryOfProjectiveGradedModulesObject ],
+              [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
               
   function( category_of_projective_graded_modules_object )
     
-    return Concatenation( "A projective graded module ",
-                          #RingName( UnderlyingHomalgGradedRing( category_of_projective_graded_modules_object ) )
-                          " of rank ", String( RankOfObject( category_of_projective_graded_modules_object ) )
-                          #" and degrees ", String( DegreeList( category_of_projective_graded_modules_object ) ) 
-                          );
+    if IsCAPCategoryOfProjectiveGradedLeftModulesObject( category_of_projective_graded_modules_object ) then
+        
+       return Concatenation( "A projective graded left module of rank ", 
+                              String( RankOfObject( category_of_projective_graded_modules_object ) )
+                            );
 
+    else
+    
+       return Concatenation( "A projective graded right module of rank ", 
+                              String( RankOfObject( category_of_projective_graded_modules_object ) )
+                            );
+    
+    fi;
+                            
 end );
+
 
 ####################################
 ##
@@ -144,24 +185,43 @@ end );
 ####################################
 
 InstallMethod( Display,
-               [ IsCAPCategoryOfProjectiveGradedModulesObject ],
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
                
   function( category_of_projective_graded_modules_object )
 
-    Print( Concatenation( "A projective graded module over ",
-                          RingName( UnderlyingHomalgGradedRing( category_of_projective_graded_modules_object ) ),
-                          " of rank ", String( RankOfObject( category_of_projective_graded_modules_object ) ),
-                          " and degrees: \n" ) 
-                          );
+    if IsCAPCategoryOfProjectiveGradedLeftModulesObject( category_of_projective_graded_modules_object ) then
+          
+      Print( Concatenation( "A projective graded left module over ",
+                            RingName( UnderlyingHomalgGradedRing( category_of_projective_graded_modules_object ) ),
+                            " of rank ", String( RankOfObject( category_of_projective_graded_modules_object ) ),
+                            " and degrees: \n" ) 
+                            );
     
-    ViewObj( DegreeList( category_of_projective_graded_modules_object ) );
+      ViewObj( DegreeList( category_of_projective_graded_modules_object ) );
     
+    else
+    
+      Print( Concatenation( "A projective graded right module over ",
+                            RingName( UnderlyingHomalgGradedRing( category_of_projective_graded_modules_object ) ),
+                            " of rank ", String( RankOfObject( category_of_projective_graded_modules_object ) ),
+                            " and degrees: \n" ) 
+                            );
+    
+      ViewObj( DegreeList( category_of_projective_graded_modules_object ) );
+
+    fi;
+   
 end );
 
 
+####################################
 ##
+## ViewObj
+##
+####################################
+
 InstallMethod( ViewObj,
-               [ IsCAPCategoryOfProjectiveGradedModulesObject ], 
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
 
   function( category_of_projective_graded_modules_object )
 
@@ -176,7 +236,7 @@ end );
 ##################################################
 
 InstallMethod( Rank,
-               [ IsCAPCategoryOfProjectiveGradedModulesObject ],
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
 
   RankOfObject );
   
@@ -186,7 +246,7 @@ InstallMethod( Rank,
 ##
 ##################################################
 
-InstallMethod( INTERNAL_SIMPLIFY_DATA_STRUCTURE,
+InstallMethod( CAP_CATEGORY_OF_PROJECTIVE_GRADED_MODULES_INTERNAL_SIMPLIFY_DATA_STRUCTURE,
                [ IsList ],
   function( unsorted_degree_list )
     local i, old_degree_list, new_degree_list, counter, comparer;

@@ -4,6 +4,6 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModules.gd" );
+#ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModules.gd" );
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesObject.gd" );
-ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesMorphism.gd" );
+#ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesMorphism.gd" );
