@@ -258,10 +258,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
                 INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result );
                 
+                ## Those three commands do not commute
+                add_function( category, result );
                 Add( arg, result );
                 CallFuncList( post_function, arg );
-                
-                add_function( category, result );
                 
                 return result;
                 
