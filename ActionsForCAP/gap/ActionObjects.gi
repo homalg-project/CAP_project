@@ -62,7 +62,7 @@ InstallGlobalFunction( LeftOrRightActionObject,
     ObjectifyWithAttributes( action_object, type,
                              StructureMorphism, structure_morphism,
                              UnderlyingActingObject, acting_object,
-                             UnderlyingObject, Range( structure_morphism ),
+                             ActionDomain, Range( structure_morphism ),
                              UnderlyingCategory, CapCategory( acting_object )
                            );
     

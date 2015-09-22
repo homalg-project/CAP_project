@@ -49,7 +49,7 @@ DeclareAttribute( "StructureMorphism",
 DeclareAttribute( "UnderlyingActingObject",
                   IsLeftOrRightActionObject );
 
-DeclareAttribute( "UnderlyingObject",
+DeclareAttribute( "ActionDomain",
                   IsLeftOrRightActionObject );
 
 DeclareAttribute( "UnderlyingCategory",

@@ -129,7 +129,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     AddIsEqualForObjects( category,
       function( action_object_1, action_object_2 )
         
-        return IsEqualForObjects( UnderlyingObject( action_object_1 ), UnderlyingObject( action_object_2 ) )
+        return IsEqualForObjects( ActionDomain( action_object_1 ), ActionDomain( action_object_2 ) )
                and
                IsCongruentForMorphisms( StructureMorphism( action_object_1 ), StructureMorphism( action_object_2 ) );
         
@@ -161,7 +161,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         function( action_object )
           
           return ActionMorphism( action_object,
-                                 IdentityMorphism( UnderlyingObject( action_object ) ),
+                                 IdentityMorphism( ActionDomain( action_object ) ),
                                  action_object );
           
       end );
@@ -200,7 +200,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
               length, identity_of_acting_object, structure_morphism;
         
         underlying_objects_diagram :=
-          List( diagram, UnderlyingObject );
+          List( diagram, ActionDomain );
         
         length := Length( diagram );
         
@@ -234,7 +234,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
         local underlying_projection;
         
         underlying_projection := ProjectionInFactorOfDirectProduct(
-                                   List( diagram, UnderlyingObject ), projection_number );
+                                   List( diagram, ActionDomain ), projection_number );
         
         return ActionMorphism( direct_product,
                                underlying_projection,
@@ -248,7 +248,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
         local underlying_universal_morphism;
         
         underlying_universal_morphism := UniversalMorphismIntoDirectProduct(
-                                           List( diagram, UnderlyingObject ),
+                                           List( diagram, ActionDomain ),
                                            List( test_source, UnderlyingMorphism ) );
         
         return ActionMorphism( Source( test_source[1] ),
