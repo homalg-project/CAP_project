@@ -48,9 +48,6 @@ DeclareAttribute( "Source",
 DeclareAttribute( "Range",
                   IsCapCategoryMorphism );
 
-DeclareAttribute( "UnderlyingObject",
-                  IsCapCategoryMorphism );
-
 # this attribute is also an implied operation
 
 DeclareOperation( "InverseOp",

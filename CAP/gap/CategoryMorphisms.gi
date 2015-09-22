@@ -101,24 +101,6 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,
 
 ######################################
 ##
-## Subobjects and factorobjects
-##
-######################################
-
-##
-InstallMethod( UnderlyingObject,
-               [ IsCapCategoryMorphism and IsSubobject ],
-               
-  Source );
-
-##
-InstallMethod( UnderlyingObject,
-               [ IsCapCategoryMorphism and IsFactorobject ],
-               
-  Range );
-
-######################################
-##
 ## Operations
 ##
 ######################################

@@ -121,23 +121,8 @@ DeclareAttributeWithToDoForIsWellDefined( "PseudoInverse",
 DeclareAttributeWithToDoForIsWellDefined( "GeneralizedInverseByThreeArrows",
                                           IsCapCategoryMorphism );
 
-DeclareProperty( "IsHonest",
-                  IsGeneralizedMorphismByThreeArrows );
-
-DeclareProperty( "HasHonestSource",
-                  IsGeneralizedMorphismByThreeArrows );
-
-DeclareProperty( "HasHonestRange",
-                  IsGeneralizedMorphismByThreeArrows );
-
 DeclareAttribute( "SubcategoryMembershipFunctionForGeneralizedMorphismCategoryByThreeArrows",
                   IsCapCategory );
-
-InstallTrueMethod( IsHonest, HasHonestRange and HasHonestSource );
-
-InstallTrueMethod( HasHonestRange, IsHonest );
-
-InstallTrueMethod( HasHonestSource, IsHonest );
 
 ####################################
 ##

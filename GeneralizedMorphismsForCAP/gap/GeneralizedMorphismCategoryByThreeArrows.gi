@@ -351,6 +351,12 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryByThreeArrows );
     
+    AddPredicateImplicationFileToCategory( generalized_morphism_category,
+      Filename(
+        DirectoriesPackageLibrary( "GeneralizedMorphismsForCAP", "LogicForGeneralizedMorphismCategory" ),
+        "PredicateImplicationsForGeneralizedMorphismCategory.tex" )
+    );
+    
     Finalize( generalized_morphism_category );
     
     return generalized_morphism_category;
@@ -483,6 +489,7 @@ end );
 ##
 ####################################
 
+##
 InstallMethod( HonestRepresentative,
                [ IsGeneralizedMorphismByThreeArrows ],
                
@@ -492,6 +499,26 @@ InstallMethod( HonestRepresentative,
              PreCompose( Inverse( DomainOfGeneralizedMorphism( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
              Inverse( Codomain( generalized_morphism ) ) 
            );
+    
+end );
+
+##
+InstallMethod( HasFullCodomain,
+               [ IsGeneralizedMorphismByThreeArrows ],
+               
+  function( generalized_morphism )
+    
+    return IsIsomorphism( Codomain( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( HasFullDomain,
+               [ IsGeneralizedMorphismByThreeArrows ],
+               
+  function( generalized_morphism )
+    
+    return IsIsomorphism( Domain( generalized_morphism ) );
     
 end );
 

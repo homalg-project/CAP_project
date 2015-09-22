@@ -63,7 +63,7 @@ InstallGlobalFunction( LeftOrRightCoactionObject,
     ObjectifyWithAttributes( coaction_object, type,
                              StructureMorphism, structure_morphism,
                              UnderlyingActingObject, coacting_object,
-                             UnderlyingObject, Source( structure_morphism ),
+                             ActionDomain, Source( structure_morphism ),
                              UnderlyingCategory, CapCategory( coacting_object )
                            );
     
