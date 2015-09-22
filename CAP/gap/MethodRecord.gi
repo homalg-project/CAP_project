@@ -1755,6 +1755,18 @@ UniversalMorphismIntoCoimageWithGivenCoimage := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromImageWithGivenImageObject" ),
 
+MorphismFromCoimageToImage := rec(
+  installation_name := "MorphismFromCoimageToImage",
+  filter_list := [ "object", "morphism", "object" ],
+  cache_name := "MorphismFromCoimageToImage",
+  return_type := "morphism" ),
+
+InverseMorphismFromCoimageToImage := rec(
+  installation_name := "InverseMorphismFromCoimageToImage",
+  filter_list := [ "object", "morphism", "object" ],
+  cache_name := "InverseMorphismFromCoimageToImage",
+  return_type := "morphism" ),
+
 IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],

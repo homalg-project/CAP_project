@@ -3187,8 +3187,8 @@ DeclareFilter( "WasCreatedAsPushout" );
 #! $\mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) )$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{im}(\alpha), \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) )$
 #! @Arguments alpha
-DeclareOperation( "IsomorphismFromImageObjectToKernelOfCokernel",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "IsomorphismFromImageObjectToKernelOfCokernel",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3215,8 +3215,8 @@ DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
 #! $\mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) \rightarrow \mathrm{im}(\alpha)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ), \mathrm{im}(\alpha) )$
 #! @Arguments alpha
-DeclareOperation( "IsomorphismFromKernelOfCokernelToImageObject",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "IsomorphismFromKernelOfCokernelToImageObject",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3503,14 +3503,54 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #! We say that the morphism $u( \tau )$ is induced by the
 #! <Emph>universal property of the coimage</Emph>.
 
+##
+DeclareAttribute( "MorphismFromCoimageToImage",
+                  IsCapCategoryMorphism );
+
+DeclareOperation( "MorphismFromCoimageToImage",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareAttribute( "InverseMorphismFromCoimageToImage",
+                  IsCapCategoryMorphism );
+
+DeclareOperation( "InverseMorphismFromCoimageToImage",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList ] );
+
+
+
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical morphism
 #! $\mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) )$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{coim}( \alpha ), \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) )$.
 #! @Arguments alpha
-DeclareOperation( "IsomorphismFromCoimageToCokernelOfKernel",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "IsomorphismFromCoimageToCokernelOfKernel",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3537,8 +3577,8 @@ DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
 #! $\mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha )$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ), \mathrm{coim}( \alpha ) )$.
 #! @Arguments alpha
-DeclareOperation( "IsomorphismFromCokernelOfKernelToCoimage",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "IsomorphismFromCokernelOfKernelToCoimage",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.

@@ -203,6 +203,8 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeAstrictionToCoimageWithGivenCoimage",
                 "CanComputeUniversalMorphismIntoCoimage",
                 "CanComputeUniversalMorphismIntoCoimageWithGivenCoimage",
+                "CanComputeMorphismFromCoimageToImage",
+                "CanComputeInverseMorphismFromCoimageToImage",
                 
                 "CanComputeTensorProductOnObjects",
                 "CanComputeTensorProductOnMorphisms",
