@@ -29,7 +29,8 @@ InstallMethod( CAPCategoryOfProjectiveGradedModules,
      
     INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_MODULES( category ); 
     
-    ## TODO: Logic for MatrixCategory
+    ## TODO: Logic for CAPCategoryOfProjectiveGradedModules
+    
     #AddPredicateImplicationFileToCategory( category,
     #  Filename(
     #    DirectoriesPackageLibrary( "LinearAlgebraForCAP", "LogicForMatrixCategory" ),
@@ -311,39 +312,39 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_M
     ##
     AddKernelObject( category,
       function( morphism )
-        local homalg_graded_ring, morphism_matrix, kernel_matrix, degrees_of_kernel_matrix_rows, degrees_of_source_compact,
-             degrees_of_source_flattened, i, j, degrees_of_kernel_object;
+        local homalg_graded_ring, kernel_matrix, degrees_of_kernel_matrix_rows, i, degrees_of_kernel_object, counter, counter2;
         
         # extract the underlying homalg_graded_ring
         homalg_graded_ring := UnderlyingHomalgGradedRing( morphism );        
         
-        # and the underlying homalg matrix of this morphism
-        morphism_matrix := UnderlyingHomalgMatrix( morphism );
-        
-        # then compute the syzygies of rows, which forms the 'kernel matrix'
-        kernel_matrix := SyzygiesOfRows( morphism_matrix );
+        # then compute the syzygies of rows, which form the 'kernel matrix'
+        kernel_matrix := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
         
         # compute the degrees of the rows of the kernel matrix
         degrees_of_kernel_matrix_rows := NonTrivialDegreePerRow( kernel_matrix );
 
-        # flatten out the degrees of the source of morphism
-        degrees_of_source_compact := DegreeList( Source( morphism ) );
-        degrees_of_source_flattened := [];
-        for i in [ 1 .. Length( degrees_of_source_compact ) ] do
+        # initialise the degree list of the kernel_object
+        degrees_of_kernel_object := List( [ 1 .. Length( degrees_of_kernel_matrix_rows ) ] );
         
-          for j in [ 1 .. degrees_of_source_compact[ i ][ 2 ] ] do
+        # and now compute the degrees of the kernel_object
+        counter := 1;
+        counter2 := 1;
+        for i in [ 1 .. Length( degrees_of_kernel_matrix_rows ) ] do
+        
+          degrees_of_kernel_object[ i ] := [ DegreeList( Source( morphism ) )[ counter ][ 1 ]
+                                                                                      + degrees_of_kernel_matrix_rows[ i ], 1 ];
+        
+          counter2 := counter2 + 1;
+          if counter2 > DegreeList( Source( morphism ) )[ counter ][ 2 ] then
           
-            Add( degrees_of_source_flattened, degrees_of_source_compact[ i ][ 1 ] );
+            counter2 := 1;
+            counter := counter + 1;
           
-          od;
+          fi;
         
         od;
-        
-        # from this we can compute the degrees of the kernel_object
-        degrees_of_kernel_object := List( [ 1 .. Length( degrees_of_kernel_matrix_rows ) ], 
-            i -> [ degrees_of_source_flattened[ i ] + degrees_of_kernel_matrix_rows[ i ], 1 ] );
-               
-        # and return the kernel_object
+                       
+        # and construct this object
         return CAPCategoryOfProjectiveGradedModulesObject( degrees_of_kernel_object, homalg_graded_ring );
         
     end );
@@ -351,38 +352,40 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_M
     ##
     AddKernelEmbedding( category,
       function( morphism )
-
-        local homalg_graded_ring, morphism_matrix, kernel_matrix, degrees_of_kernel_matrix_rows, degrees_of_source_compact,
-             degrees_of_source_flattened, i, j, degrees_of_kernel_object, kernel_object;
-        
+        local homalg_graded_ring, kernel_matrix, degrees_of_kernel_matrix_rows, i, degrees_of_kernel_object, counter, counter2,
+             kernel_object;
+             
         # extract the underlying homalg_graded_ring
         homalg_graded_ring := UnderlyingHomalgGradedRing( morphism );        
         
-        # and the underlying homalg matrix of this morphism
-        morphism_matrix := UnderlyingHomalgMatrix( morphism );
-        
-        # then compute the syzygies of rows, which forms the 'kernel matrix'
-        kernel_matrix := SyzygiesOfRows( morphism_matrix );
+        # then compute the syzygies of rows, which form the 'kernel matrix'
+        kernel_matrix := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
         
         # compute the degrees of the rows of the kernel matrix
         degrees_of_kernel_matrix_rows := NonTrivialDegreePerRow( kernel_matrix );
 
-        # flatten out the degrees of the source of morphism
-        degrees_of_source_compact := DegreeList( Source( morphism ) );
-        degrees_of_source_flattened := [];
-        for i in [ 1 .. Length( degrees_of_source_compact ) ] do
+        # initialise the degree list of the kernel_object
+        degrees_of_kernel_object := List( [ 1 .. Length( degrees_of_kernel_matrix_rows ) ] );
         
-          for j in [ 1 .. degrees_of_source_compact[ i ][ 2 ] ] do
+        # and now compute the degrees of the kernel_object
+        counter := 1;
+        counter2 := 1;
+        for i in [ 1 .. Length( degrees_of_kernel_matrix_rows ) ] do
+        
+          degrees_of_kernel_object[ i ] := [ DegreeList( Source( morphism ) )[ counter ][ 1 ]
+                                                                                      + degrees_of_kernel_matrix_rows[ i ], 1 ];
+        
+          counter2 := counter2 + 1;
+          if counter2 > DegreeList( Source( morphism ) )[ counter ][ 2 ] then
           
-            Add( degrees_of_source_flattened, degrees_of_source_compact[ i ][ 1 ] );
+            counter2 := 1;
+            counter := counter + 1;
           
-          od;
+          fi;
         
         od;
-        
-        # from this we can compute the degrees of the kernel_object
-        degrees_of_kernel_object := List( [ 1 .. Length( degrees_of_kernel_matrix_rows ) ], 
-             i -> [ degrees_of_source_flattened[ i ] + degrees_of_kernel_matrix_rows[ i ], 1 ] );
+                       
+        # and construct this object
         kernel_object := CAPCategoryOfProjectiveGradedModulesObject( degrees_of_kernel_object, homalg_graded_ring );
                
         # and return the kernel embedding
@@ -428,82 +431,65 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_M
     ##
     AddCokernelObject( category,
       function( morphism )
-        local homalg_graded_ring, morphism_matrix, cokernel_matrix, degrees_of_cokernel_matrix_columns, degrees_of_range_compact,
-             degrees_of_range_flattened, i, j, degrees_of_cokernel_object;
-        
+        local homalg_graded_ring, cokernel_matrix, degrees_of_cokernel_matrix_columns, i, degrees_of_cokernel_object;
+             
         # extract the underlying homalg_graded_ring
         homalg_graded_ring := UnderlyingHomalgGradedRing( morphism );        
         
-        # and the underlying homalg matrix of this morphism
-        morphism_matrix := UnderlyingHomalgMatrix( morphism );
+        # then compute the syzygies of rows, which form the 'kernel matrix'
+        cokernel_matrix := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
         
-        # then compute the syzygies of rows, which forms the 'cokernel matrix'
-        cokernel_matrix := SyzygiesOfColumns( morphism_matrix );
-        
-        # compute the degrees of the rows of the cokernel matrix
+        # compute the degrees of the rows of the kernel matrix
         degrees_of_cokernel_matrix_columns := NonTrivialDegreePerColumn( cokernel_matrix );
 
-        # flatten out the degrees of the source of morphism
-        degrees_of_range_compact := DegreeList( Source( morphism ) );
-        degrees_of_range_flattened := [];
-        for i in [ 1 .. Length( degrees_of_range_compact ) ] do
+        # initialise the degree list of the kernel_object
+        degrees_of_cokernel_object := List( [ 1 .. Length( degrees_of_cokernel_matrix_columns ) ] );
         
-          for j in [ 1 .. degrees_of_range_compact[ i ][ 2 ] ] do
-          
-            Add( degrees_of_range_flattened, degrees_of_range_compact[ i ][ 1 ] );
-          
-          od;
+        # and now compute the degrees of the kernel_object
+        for i in [ 1 .. Length( degrees_of_cokernel_matrix_columns ) ] do
         
+          degrees_of_cokernel_object[ i ] := [ DegreeList( Source( morphism ) )[ 1 ][ 1 ]
+                                                                                 - degrees_of_cokernel_matrix_columns[ i ], 1 ];
+          
         od;
         
-        # from this we can compute the degrees of the cokernel_object
-        degrees_of_cokernel_object := List( [ 1 .. Length( degrees_of_cokernel_matrix_columns ) ], 
-                                        i -> [ degrees_of_range_flattened[ i ] - degrees_of_cokernel_matrix_columns[ i ], 1 ] );
-               
-        # and return the cokernel_object
+        # and return the cokernel object
         return CAPCategoryOfProjectiveGradedModulesObject( degrees_of_cokernel_object, homalg_graded_ring );
-        
+               
     end );
-    
+          
     ##
     AddCokernelProjection( category,
       function( morphism )
-        local homalg_graded_ring, morphism_matrix, cokernel_matrix, degrees_of_cokernel_matrix_columns, degrees_of_range_compact,
-             degrees_of_range_flattened, i, j, degrees_of_cokernel_object, cokernel_object;
-        
+        local homalg_graded_ring, cokernel_matrix, degrees_of_cokernel_matrix_columns, i, degrees_of_cokernel_object, 
+             cokernel_object;
+             
         # extract the underlying homalg_graded_ring
         homalg_graded_ring := UnderlyingHomalgGradedRing( morphism );        
         
-        # and the underlying homalg matrix of this morphism
-        morphism_matrix := UnderlyingHomalgMatrix( morphism );
+        # then compute the syzygies of rows, which form the 'kernel matrix'
+        cokernel_matrix := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
         
-        # then compute the syzygies of rows, which forms the 'cokernel matrix'
-        cokernel_matrix := SyzygiesOfColumns( morphism_matrix );
-        
-        # compute the degrees of the rows of the cokernel matrix
+        # compute the degrees of the rows of the kernel matrix
         degrees_of_cokernel_matrix_columns := NonTrivialDegreePerColumn( cokernel_matrix );
 
-        # flatten out the degrees of the source of morphism
-        degrees_of_range_compact := DegreeList( Source( morphism ) );
-        degrees_of_range_flattened := [];
-        for i in [ 1 .. Length( degrees_of_range_compact ) ] do
+        # initialise the degree list of the kernel_object
+        degrees_of_cokernel_object := List( [ 1 .. Length( degrees_of_cokernel_matrix_columns ) ] );
         
-          for j in [ 1 .. degrees_of_range_compact[ i ][ 2 ] ] do
-          
-            Add( degrees_of_range_flattened, degrees_of_range_compact[ i ][ 1 ] );
-          
-          od;
+        # and now compute the degrees of the kernel_object
+        for i in [ 1 .. Length( degrees_of_cokernel_matrix_columns ) ] do
         
+          degrees_of_cokernel_object[ i ] := [ DegreeList( Source( morphism ) )[ 1 ][ 1 ]
+                                                                                 - degrees_of_cokernel_matrix_columns[ i ], 1 ];
+          
         od;
         
-        # from this we can compute the degrees of the cokernel_object
-        degrees_of_cokernel_object := List( [ 1 .. Length( degrees_of_cokernel_matrix_columns ) ], 
-                                        i -> [ degrees_of_range_flattened[ i ] - degrees_of_cokernel_matrix_columns[ i ], 1 ] );
+        # and return the cokernel object
         cokernel_object := CAPCategoryOfProjectiveGradedModulesObject( degrees_of_cokernel_object, homalg_graded_ring );
-        
+
         # and return the cokernel projection
         return CAPCategoryOfProjectiveGradedModulesMorphism( Range( morphism ), cokernel_matrix, cokernel_object );
-        
+    
     end );
     
     ##

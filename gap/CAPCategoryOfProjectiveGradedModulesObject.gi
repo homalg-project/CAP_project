@@ -39,7 +39,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedModulesObject,
   function( degree_list, homalg_graded_ring )
     local A, nrGenerators, i, buffer, buffer_homalg_module_element, category, category_of_projective_graded_modules_object, 
          rank;
-    
+        
     # extract the degree group of the ring and its number of generators
     A := DegreeGroup( homalg_graded_ring );
     nrGenerators := NrGenerators( A );    
@@ -89,6 +89,14 @@ InstallMethod( CAPCategoryOfProjectiveGradedModulesObject,
       fi;
     
     od;
+    
+    # the entered degree_list has passed all consistency checks
+    # no sort this data (unless it is trivial)
+    if Length( degree_list ) > 1 then
+    
+      degree_list := INTERNAL_SIMPLIFY_DATA_STRUCTURE( degree_list );
+    
+    fi;
     
     # construct the category of projective graded modules over the given homalg_graded_ring
     category := CAPCategoryOfProjectiveGradedModules( homalg_graded_ring );
@@ -170,4 +178,53 @@ end );
 InstallMethod( Rank,
                [ IsCAPCategoryOfProjectiveGradedModulesObject ],
 
-  RankOfObject );                        
+  RankOfObject );
+  
+##################################################
+##
+## Attributes
+##
+##################################################
+
+InstallMethod( INTERNAL_SIMPLIFY_DATA_STRUCTURE,
+               [ IsList ],
+  function( unsorted_degree_list )
+    local i, old_degree_list, new_degree_list, counter, comparer;
+  
+    # run once accross the degree list and add successive equal degrees
+    # example:
+    # [[ a, 1 ], [ a,1 ], [ b, 1 ], [a,2]] -> [[ a,2 ], [b,1 ], [ a,2]]
+    # BUT this gets not simplified to say [[ a,4 ], [ b, 1 ]]
+    
+    # here is the algorithm
+    new_degree_list := [];
+    counter := unsorted_degree_list[ 1 ][ 2 ];
+    comparer := unsorted_degree_list[ 1 ][ 1 ];
+    for i in [ 2 .. Length( unsorted_degree_list ) ] do
+    
+      # compare with the next element
+      if unsorted_degree_list[ i ][ 1 ] <> comparer then
+      
+        Add( new_degree_list, [ comparer, counter ] );
+        comparer := unsorted_degree_list[ i ][ 1 ];
+        counter := unsorted_degree_list[ i ][ 2 ];
+      
+      else
+      
+        counter := counter + unsorted_degree_list[ i ][ 2 ];
+      
+      fi;
+    
+      # and now react to reaching the end of the list
+      if i = Length( unsorted_degree_list ) then
+      
+        Add( new_degree_list, [ comparer, counter ] );
+      
+      fi;
+    
+    od;
+    
+    # return new_degree_list
+    return new_degree_list;
+    
+end );

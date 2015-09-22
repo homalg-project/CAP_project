@@ -20,3 +20,4 @@ DeclareAttribute( "CAPCategoryOfProjectiveGradedModules",
                   IsHomalgGradedRing );
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_MODULES" );
+

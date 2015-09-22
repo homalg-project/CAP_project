@@ -41,3 +41,12 @@ DeclareAttribute( "DegreeList",
                   
 DeclareAttribute( "RankOfObject",
                   IsCAPCategoryOfProjectiveGradedModulesObject );
+                  
+########################################################
+##
+## Operation to sort degree_lists when we construct them
+##
+########################################################
+                
+DeclareOperation( "INTERNAL_SIMPLIFY_DATA_STRUCTURE",
+                  [ IsList ] );                 
