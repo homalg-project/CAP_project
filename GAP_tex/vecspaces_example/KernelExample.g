@@ -1,5 +1,5 @@
 ## gapcolor ##
-gap> KernelEmb( alpha );
+gap> KernelEmbedding( alpha );
 A rational vector space homomorphism with matrix:
 [ [  1,  1 ] ]
 gap> CokernelObject( alpha );

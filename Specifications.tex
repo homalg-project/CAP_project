@@ -346,12 +346,12 @@ We refer to the first chapter of \cite{hottbook} for a good summary of dependent
 \end{example}
 
 \begin{example}\label{example:dependent_typing}
- For $a,b: \Obj$, the type of $\KernelEmb$ is
+ For $a,b: \Obj$, the type of $\KernelEmbedding$ is
  \[
   \prod_{\phi: \Hom(a,b)} \Hom( \KernelObject(\phi), a ).
  \]
- Given a term of type $\Hom(a,b)$, the basic operation symbol $\KernelEmb$ returns a term of type $\Hom( \KernelObject(\phi), a )$.
- Thus $\KernelEmb$ has a dependent function type, because the type of its output depends on the input term.
+ Given a term of type $\Hom(a,b)$, the basic operation symbol $\KernelEmbedding$ returns a term of type $\Hom( \KernelObject(\phi), a )$.
+ Thus $\KernelEmbedding$ has a dependent function type, because the type of its output depends on the input term.
 \end{example}
 
 For a basic operation to match its typing specification, it has to
@@ -390,19 +390,19 @@ To implement a coherent model of all basic operations, we have to take care that
 Fortunately, \CapPkg provides tools to help us with this task.
 
 \begin{example}
- Strategies of an implementation of $\KernelObject$ and $\KernelEmb$ with the correct types:
+ Strategies of an implementation of $\KernelObject$ and $\KernelEmbedding$ with the correct types:
  \begin{enumerate}
-  \item Only implement $\KernelEmb$. \CapPkg will automatically derive (c.f. section \ref{section:derivations}) the basic operation
-        $\KernelObject$ coherently for you (as the source of $\KernelEmb$).
-  \item Implement $\KernelObject$ and the helper basic operation $\KernelEmbWithGivenKernelObject$.
+  \item Only implement $\KernelEmbedding$. \CapPkg will automatically derive (c.f. section \ref{section:derivations}) the basic operation
+        $\KernelObject$ coherently for you (as the source of $\KernelEmbedding$).
+  \item Implement $\KernelObject$ and the helper basic operation $\KernelEmbeddingWithGivenKernelObject$.
         This is an operation getting as an input a morphism $\phi$ and the result of $\KernelObject( \phi )$,
         which we can then use to construct a morphism with $\KernelObject( \phi )$ as its source (c.f. \ref{in_text:with_given}).
         \CapPkg will automatically derive (c.f. section \ref{section:derivations}) the basic operation
-        $\KernelEmb$ coherently for you (by calling $\KernelEmbWithGivenKernelObject$ with the output of $\KernelObject$ as an input).
-  \item Implement $\KernelObject$, $\KernelEmb$, and $\KernelEmbWithGivenKernelObject$, and enable caching for these functions (c.f. chapter \ref{chapter:caching}).
+        $\KernelEmbedding$ coherently for you (by calling $\KernelEmbeddingWithGivenKernelObject$ with the output of $\KernelObject$ as an input).
+  \item Implement $\KernelObject$, $\KernelEmbedding$, and $\KernelEmbeddingWithGivenKernelObject$, and enable caching for these functions (c.f. chapter \ref{chapter:caching}).
         There is a redirection mechanism (see \ref{in_text:redirect}) of \CapPkg that guarantees a correct typing.
  \end{enumerate}
- Of course, you always can only implement $\KernelObject$ and $\KernelEmb$, and prove the correct typing manually.
+ Of course, you always can only implement $\KernelObject$ and $\KernelEmbedding$, and prove the correct typing manually.
 \end{example}
 
 
@@ -417,7 +417,7 @@ In order to implement a coherent model of a category, the basic operations that 
 specifications. We give an example to illustrate what this means.
 
 \begin{example}
- We want to implement $\KernelObject$, $\KernelEmb$, and $\KernelLift$.
+ We want to implement $\KernelObject$, $\KernelEmbedding$, and $\KernelLift$.
  Let us take a look at the definition of a kernel in a category $\mathbf{C}$. \\
  For a given morphism $\alpha: A \rightarrow B$ in $\mathbf{C}$, a kernel of $\alpha$ consists of three parts:
  \begin{enumerate}
@@ -449,7 +449,7 @@ specifications. We give an example to illustrate what this means.
 \end{tikzpicture}
 \end{center}
  
- We call $K, \iota, u( \tau ) $ a $\KernelObject$, $\KernelEmb$, $\KernelLift$, respectively.
+ We call $K, \iota, u( \tau ) $ a $\KernelObject$, $\KernelEmbedding$, $\KernelLift$, respectively.
  Thus for implementing these basic operations properly, they have to yield outputs which together form a kernel of $\phi$.
 \end{example}
 

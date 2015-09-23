@@ -1,4 +1,4 @@
-AddKernelEmb( vecspaces,
+AddKernelEmbedding( vecspaces,
 
   function( morphism )
     local kernel_emb, kernel_obj;

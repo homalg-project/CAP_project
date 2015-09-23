@@ -117,7 +117,7 @@ AddIsEqualForMorphisms( vecspaces,
   
 end );
 
-AddKernelEmb( vecspaces,
+AddKernelEmbedding( vecspaces,
 
   function( morphism )
     local kernel_emb, kernel_obj;
@@ -407,7 +407,7 @@ W := QVectorSpace( 3 );
 
 alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 
-KernelEmb( alpha );
+KernelEmbedding( alpha );
 
 CokernelObject( alpha );
 
