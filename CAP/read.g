@@ -1,6 +1,8 @@
 ## CAP.gi uses implementations in this file.
 ReadPackage( "CAP", "gap/MethodRecord.gi");
 
+ReadPackage( "CAP", "gap/ConstructiveCategoriesRecord.gi" );
+
 ReadPackage( "CAP", "gap/Derivations.gi");
 
 ReadPackage( "CAP", "gap/CAP.gi");

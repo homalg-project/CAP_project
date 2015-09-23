@@ -452,6 +452,18 @@ DeclareAttribute( "TwoCellFilter",
 DeclareOperation( "CanCompute",
                   [ IsCapCategory, IsString ] );
 
+#! @Description
+#! The arguments are a category $C$ and a string $s$.
+#! If $s$ is a categorical property (e.g. <C>"IsAbelianCategory"</C>),
+#! the output is a list of strings with basic operations
+#! which are missing in $C$ to have the categorical property 
+#! constructively.
+#! If $s$ is not a categorical property, an error is raised.
+#! @Returns a list
+#! @Arguments C,s
+DeclareOperation( "CheckConstructivenessOfCategory",
+                  [ IsCapCategory, IsString ] );
+
 #############################################
 ##
 #! @Section Well-Definedness of Cells

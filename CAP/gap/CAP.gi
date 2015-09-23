@@ -468,7 +468,34 @@ InstallMethod( CanCompute,
     
 end );
 
-
+##
+InstallMethod( CheckConstructivenessOfCategory,
+               [ IsCapCategory, IsString ],
+               
+  function( category, string )
+    local category_property, result_list;
+    
+    if not string in RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ) then
+      
+      Error( "the given string is not a property of a category" );
+    
+    fi;
+    
+    result_list := [];
+    
+    for category_property in CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(string) do
+      
+      if not CanCompute( category, category_property ) then
+        
+        Add( result_list, category_property );
+        
+      fi;
+      
+    od;
+    
+    return result_list;
+    
+end );
 #######################################
 ##
 ## ViewObj
