@@ -111,10 +111,10 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
     # now construct the correct category and type for the object
     if left = true then
         type := TheTypeOfCAPCategoryOfProjectiveGradedLeftModulesObjects;
-        #category := IsCAPCategoryOfProjectiveGradedLeftModules( homalg_graded_ring );
+        category := CAPCategoryOfProjectiveGradedLeftModules( homalg_graded_ring );
     else
         type := TheTypeOfCAPCategoryOfProjectiveGradedRightModulesObjects;
-        #category := IsCAPCategoryOfProjectiveGradedRightModules( homalg_graded_ring );
+        category := CAPCategoryOfProjectiveGradedRightModules( homalg_graded_ring );
     fi;
         
     # now construct the object
@@ -127,7 +127,7 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
     );
 
     # add the object to the category
-    #Add( category, category_of_projective_graded_modules_object );
+    Add( category, category_of_projective_graded_modules_object );
     
     # and return the object
     return category_of_projective_graded_modules_object;

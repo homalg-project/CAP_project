@@ -16,8 +16,18 @@
 ##
 ####################################
 
-DeclareAttribute( "CAPCategoryOfProjectiveGradedModules",
+DeclareAttribute( "CAPCategoryOfProjectiveGradedLeftModules",
+                  IsHomalgGradedRing );
+                  
+DeclareAttribute( "CAPCategoryOfProjectiveGradedRightModules",
                   IsHomalgGradedRing );
 
-DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_MODULES" );
+####################################
+##
+## Install the categories
+##
+####################################
+                  
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES" );
 
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES" );

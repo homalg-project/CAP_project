@@ -1,3 +1,24 @@
+# TODO:
+
+
+# when zero object is entered in fancy fashion, I should immediately reduce the input
+
+
+# convenience constructer: Z -> homalgRing( ClassGroup( homalg_graded_ring ) );
+
+
+# add hard checks to verify that an object/morphism really belongs to this category
+
+
+# two graded module morphism are NOT identical when the have the same mapping matrix, for this does not fix the degrees of the
+# source or range respectively
+# -> thus is AddIsCongruentForMorphism the correct commmand?
+# or should I use AddIsIdenticalForMorphism in addition to a check that the source/ range objects are identical as objects???
+
+
+# go through the implementation of the right modules in detail and verify each row <-> column and transpoed swap and try to
+# right more efficient algorithms
+
 #############################################################################
 ##
 ##                  CAPCategoryOfProjectiveGradedModules package

@@ -14,17 +14,24 @@
 ##
 ####################################
 
-DeclareCategory( "IsCAPCategoryOfProjectiveGradedModulesMorphism",
+DeclareCategory( "IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
                  IsCapCategoryMorphism );
 
+DeclareCategory( "IsCAPCategoryOfProjectiveGradedLeftModulesMorphism",
+                 IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
+
+DeclareCategory( "IsCAPCategoryOfProjectiveGradedRightModulesMorphism",
+                 IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
+                 
 ####################################
 ##
 ## Constructors
 ##
 ####################################
 
-DeclareOperation( "CAPCategoryOfProjectiveGradedModulesMorphism",
-               [ IsCAPCategoryOfProjectiveGradedModulesObject, IsHomalgMatrix, IsCAPCategoryOfProjectiveGradedModulesObject ] );
+DeclareOperation( "CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
+                                                                    IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ] );
 
 ####################################
 ##
@@ -33,7 +40,7 @@ DeclareOperation( "CAPCategoryOfProjectiveGradedModulesMorphism",
 ####################################
 
 DeclareAttribute( "UnderlyingHomalgGradedRing",
-                  IsCAPCategoryOfProjectiveGradedModulesMorphism );
+                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
 
 DeclareAttribute( "UnderlyingHomalgMatrix",
-                  IsCAPCategoryOfProjectiveGradedModulesMorphism );
+                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
