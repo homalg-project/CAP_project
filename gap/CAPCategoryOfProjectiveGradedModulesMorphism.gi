@@ -142,11 +142,36 @@ InstallMethod( ViewObj,
   function( cap_category_of_projective_graded_modules_morphism )
 
     if IsCAPCategoryOfProjectiveGradedLeftModulesMorphism( cap_category_of_projective_graded_modules_morphism ) then
+
+      Print( "A morphism in the category of projective graded right modules over ",
+              RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ) );    
+    
+    else
+
+      Print( "A morphism in the category of projective graded right modules over ",
+              RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ) );    
+
+    fi;
+      
+end );
+
+####################################
+##
+## Display
+##
+####################################
+
+InstallMethod( Display,
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism ], 999, # FIX ME FIX ME
+               
+  function( cap_category_of_projective_graded_modules_morphism )
+
+    if IsCAPCategoryOfProjectiveGradedLeftModulesMorphism( cap_category_of_projective_graded_modules_morphism ) then
   
       Print( "A morphism in the category of projective graded left modules over ", 
                                    RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ),
                                    " with matrix: \n" );
-    
+      
       Display( UnderlyingHomalgMatrix( cap_category_of_projective_graded_modules_morphism ) );
     
     else
@@ -158,5 +183,5 @@ InstallMethod( ViewObj,
       Display( UnderlyingHomalgMatrix( cap_category_of_projective_graded_modules_morphism ) );
 
     fi;
-      
+   
 end );

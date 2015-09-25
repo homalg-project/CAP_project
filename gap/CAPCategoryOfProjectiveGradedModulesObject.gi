@@ -75,7 +75,7 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
           return false;
                 
         fi;
-        buffer_homalg_module_element := HomalgModuleElement( HomalgMatrix( [ buffer ], HOMALG_MATRICES.ZZ ), A );
+        buffer_homalg_module_element := HomalgModuleElement( HomalgMatrix( [ buffer ], HomalgRing( A ) ), A );
         
         # and replace the original entry
         degree_list[ i ][ 1 ] := buffer_homalg_module_element;
@@ -119,17 +119,31 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
         
     # now construct the object
     category_of_projective_graded_modules_object := rec( );
-    rank := Sum( List( degree_list, x -> x[ 2 ] ) );    
-    ObjectifyWithAttributes( category_of_projective_graded_modules_object, type,
+    rank := Sum( List( degree_list, x -> x[ 2 ] ) );
+    
+    # check if the object is the zero object, and if so format it with the empty degree_list
+    if rank = 0 then
+
+      ObjectifyWithAttributes( category_of_projective_graded_modules_object, type,
+                             DegreeList, [ ],
+                             RankOfObject, rank,
+                             UnderlyingHomalgGradedRing, homalg_graded_ring
+      );
+        
+    else
+    
+      ObjectifyWithAttributes( category_of_projective_graded_modules_object, type,
                              DegreeList, degree_list,
                              RankOfObject, rank,
                              UnderlyingHomalgGradedRing, homalg_graded_ring
-    );
+      );
 
-    # add the object to the category
+    fi;
+    
+    # now add the object to the category
     Add( category, category_of_projective_graded_modules_object );
     
-    # and return the object
+    # and return it
     return category_of_projective_graded_modules_object;
     
 end );
@@ -185,7 +199,7 @@ end );
 ####################################
 
 InstallMethod( Display,
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ], 999, # FIX ME FIX ME FIX ME
                
   function( category_of_projective_graded_modules_object )
 
@@ -204,7 +218,7 @@ InstallMethod( Display,
       Print( Concatenation( "A projective graded right module over ",
                             RingName( UnderlyingHomalgGradedRing( category_of_projective_graded_modules_object ) ),
                             " of rank ", String( RankOfObject( category_of_projective_graded_modules_object ) ),
-                            " and degrees: \n" ) 
+                            " and degrees: \n" )
                             );
     
       ViewObj( DegreeList( category_of_projective_graded_modules_object ) );

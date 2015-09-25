@@ -1,12 +1,6 @@
 # TODO:
 
 
-# when zero object is entered in fancy fashion, I should immediately reduce the input
-
-
-# convenience constructer: Z -> homalgRing( ClassGroup( homalg_graded_ring ) );
-
-
 # add hard checks to verify that an object/morphism really belongs to this category
 
 
