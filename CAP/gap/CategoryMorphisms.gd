@@ -1101,6 +1101,41 @@ DeclareOperation( "AddInverseImmutable",
 
 ###################################
 ##
+#! @Section Tool functions for caches
+##
+###################################
+
+#! @Description
+#!  Compares two objects in the cache
+#! @Arguments phi, psi
+#! @Returns true or false
+DeclareOperation( "IsEqualForCacheForMorphisms",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  By default, CAP uses caches to store the values of Categorical operations.
+#!  To get a value out of the cache, one needs to compare the input of a basic operation
+#!  with its previous input. To compare morphisms in the category, IsEqualForCacheForMorphism is
+#!  used. By default this is an alias for IsEqualForMorphismsOnMor, where fail is substituted by false.
+#!  If you add a function, this function
+#!  used instead. A function $F: a,b \mapsto bool$ is expected here. The output has to be
+#!  true or false. Fail is not allowed in this context.
+#! @Returns northing
+#! @Arguments c,F
+DeclareOperation( "AddIsEqualForCacheForMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualForCacheForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualForCacheForMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEqualForCacheForMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+###################################
+##
 #! @Section Transport Operations
 ##
 ###################################

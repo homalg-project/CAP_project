@@ -39,7 +39,7 @@ DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_DERIVATION_GRAPH" );
 
-
+## FIXME: GET RID OF THIS!!!
 InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
               rec( 
               MathematicalPropertiesOfCategories := [
@@ -262,7 +262,9 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeLambdaElimination",
                 "CanComputeIsomorphismFromObjectToInternalHom",
                 "CanComputeIsomorphismFromInternalHomToObject",
-                "CanComputeTensorProductInternalHomCompatibilityMorphismInverse"
+                "CanComputeTensorProductInternalHomCompatibilityMorphismInverse",
+                "CanComputeIsEqualForCacheForObjects",
+                "CanComputeIsEqualForCacheForMorphisms"
                 ] )
 );
 
@@ -335,8 +337,6 @@ BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
     for i in internal_list do
         
         DeclareProperty( i, IsCapCategory );
-        
-        DeclareProperty( i, IsCapCategoryCell );
         
     od;
     

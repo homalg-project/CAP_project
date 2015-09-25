@@ -179,23 +179,6 @@ InstallMethod( IsWellDefinedForObjects,
 );
 
 ##
-InstallMethod( IsEqualForCache,
-               [ IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2 )
-    local result;
-    
-    result := IsEqualForObjects( object_1, object_2 );
-    
-    if result = fail then
-        return false;
-    fi;
-    
-    return result;
-    
-end );
-
-##
 InstallMethod( IsZeroForObjects,
                [ IsCapCategoryObject ],
                   

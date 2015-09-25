@@ -203,7 +203,9 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.caches := rec( IsEqualForObjects := "none",
                             IsEqualForMorphisms := "none",
-                            IsEqualForMorphismsOnMor := "none" );
+                            IsEqualForMorphismsOnMor := "none",
+                            IsEqualForCacheForObjects := "none",
+                            IsEqualForCacheForMorphisms := "none" );
     
     obj_rec!.redirects := rec( );
     

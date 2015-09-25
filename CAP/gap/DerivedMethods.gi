@@ -2938,6 +2938,15 @@ AddDerivationToCAP( InverseMorphismFromCoimageToImage,
 end : CategoryFilter := IsAbelianCategory,
       Description := "InverseMorphismFromCoimageToImage as the inverse of MorphismFromCoimageToImage" );
 
+AddDerivationToCAP( IsEqualForCacheForObjects,
+  
+  function( object_1, object_2 )
+    local ret_value;
+    
+    return IsEqualForObjects( object_1, object_2 ) = true;
+    
+end );
+
 ####################################
 ## Final derived methods
 ####################################
@@ -3456,21 +3465,6 @@ AddFinalDerivation( IsomorphismFromDirectSumToCoproduct,
     
 end : Description := "IsomorphismFromDirectSumToCoproduct as the identity of the direct sum" );
 
-# ## Final methods for PreCompose
-# ##
-# AddFinalDerivation( PreCompose,
-#                     [ [ PreCompose, 1 ] ], ## this derivation must have the same weight as the already installed PreCompose
-#                     [ ],
-#                     
-#   [ 
-#     [ function( mor_1, mor_2 ) return mor_1; end, [ , IsIdenticalToIdentityMorphism ] ],
-#     
-#     [ function( mor_1, mor_2 ) return mor_2; end, [ IsIdenticalToIdentityMorphism, ] ]
-#     
-#   ]
-#   
-# : Weight := 0  );
-
 ## Final method for IsEqualForObjects
 ##
 AddFinalDerivation( IsEqualForObjects,
@@ -3508,13 +3502,20 @@ AddFinalDerivation( IsEqualForMorphisms,
                     [ [ IsCongruentForMorphisms, 1 ] ],
                     [ IsEqualForMorphisms ],
                     
-  IsCongruentForMorphisms : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms",
-                        CategoryOptionFunction := function( category )
-                            
-                            InstallMethod( IsEqualForCache,
-                                           [ IsCapCategoryMorphism and MorphismFilter( category ),
-                                             IsCapCategoryMorphism and MorphismFilter( category ) ],
-                                IsIdenticalObj );
-                        end );
+  IsCongruentForMorphisms : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms" );
 
+AddFinalDerivation( IsEqualForCacheForMorphisms,
+                    [ [ IsEqualForMorphismsOnMor, 1 ] ],
+                    [ ],
+                    
+  function( mor1, mor2 )
+    
+    return IsEqualForMorphismsOnMor( mor1, mor2 ) = true;
+    
+end );
 
+AddFinalDerivation( IsEqualForCacheForMorphisms,
+                    [ [ IsCongruentForMorphisms, 1 ] ],
+                    [ IsEqualForMorphisms ],
+                    
+  IsIdenticalObj );
