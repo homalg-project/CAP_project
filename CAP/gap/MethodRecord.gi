@@ -967,16 +967,30 @@ IsEqualForObjects := rec(
   
   post_function := function( object_1, object_2, return_value )
     
-    if return_value = true then
-      
-      INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object_1, object_2 );
-      
+    if return_value = true and not IsIdenticalObj( object_1, object_2 ) then
+        
+        INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object_1, object_2 );
+        
     fi;
     
   end,
   
   return_type := "bool" ),
+  
+IsEqualForCacheForObjects := rec(
+  installation_name := "IsEqualForCache",
+  filter_list := [ "object", "object" ],
+  cache_name := "IsEqualForCacheForObjects",
+  well_defined_todo := false,
+  return_type := "bool" ),
 
+IsEqualForCacheForMorphisms := rec(
+  installation_name := "IsEqualForCache",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "IsEqualForCacheForMorphisms",
+  well_defined_todo := false,
+  return_type := "bool" ),
+  
 IsZeroForMorphisms := rec(
   installation_name := "IsZero",
   filter_list := [ "morphism" ],
