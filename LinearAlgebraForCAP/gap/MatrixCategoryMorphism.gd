@@ -15,6 +15,10 @@
 ##
 ####################################
 
+#! @Description
+#! The GAP category of morphisms in the category
+#! of matrices of a field $F$.
+#! @Arguments object
 DeclareCategory( "IsVectorSpaceMorphism",
                  IsCapCategoryMorphism );
 
