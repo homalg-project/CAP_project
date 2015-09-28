@@ -5,17 +5,31 @@
 ##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
+#! @Chapter Module Presentations
+##
 #############################################################################
 
 ##############################################
 ##
-## Category
+#! @Section Constructors
 ##
 ##############################################
 
+#! @Description
+#! The argument is a homalg ring $R$.
+#! The output is the category of free left presentations
+#! over $R$.
+#! @Returns a category
+#! @Arguments R
 DeclareAttribute( "LeftPresentations",
                   IsHomalgRing );
 
+#! @Description
+#! The argument is a homalg ring $R$.
+#! The output is the category of free right presentations
+#! over $R$.
+#! @Returns a category
+#! @Arguments R
 DeclareAttribute( "RightPresentations",
                   IsHomalgRing );
 
