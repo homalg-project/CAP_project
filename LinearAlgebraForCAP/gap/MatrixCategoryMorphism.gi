@@ -88,6 +88,37 @@ end );
 ####################################
 
 ##
+InstallMethod( \*,
+                  [ IsRingElement, IsVectorSpaceMorphism ],
+                  
+  function( ring_element, morphism )
+    
+    return VectorSpaceMorphism( Source( morphism ),
+                                ring_element * UnderlyingHomalgMatrix( morphism ),
+                                Range( morphism ) );
+    
+end );
+
+## TODO: multiplication matrix * scalar in MatricesForHomalg
+# InstallMethod( \*,
+#                   [ IsVectorSpaceMorphism, IsRingElement ],
+#                   
+#   function( morphism, ring_element )
+#     
+#     return VectorSpaceMorphism( Source( morphism ),
+#                                 UnderlyingHomalgMatrix( morphism ) * ring_element,
+#                                 Range( morphism ) );
+#     
+# end );
+
+
+####################################
+##
+## View
+##
+####################################
+
+##
 InstallMethod( Display,
                [ IsVectorSpaceMorphism ],
                # FIXME: Fix the rank in GenericView and delete this afterwards

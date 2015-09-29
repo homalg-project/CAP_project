@@ -111,6 +111,37 @@ end );
 
 ##############################################
 ##
+## Arithmetics
+##
+##############################################
+
+##
+InstallMethod( \*,
+               [ IsRingElement, IsLeftPresentationMorphism ],
+               
+  function( ring_element, left_presentation )
+    
+    return PresentationMorphism( Source( left_presentation ),
+                                 ring_element * UnderlyingMatrix( left_presentation ),
+                                 Range( left_presentation ) );
+    
+end );
+
+## TODO: multiplication matrix * scalar in MatricesForHomalg
+# InstallMethod( \*,
+#                [ IsRightPresentationMorphism, IsRingElement ],
+#                
+#   function( right_presentation, ring_element )
+#     
+#     return PresentationMorphism( Source( right_presentation ),
+#                                  UnderlyingMatrix( right_presentation ) * ring_element,
+#                                  Range( right_presentation ) );
+#     
+# end );
+
+
+##############################################
+##
 ## Non categorical methods
 ##
 ##############################################

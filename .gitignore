@@ -31,10 +31,11 @@ public_html.version
 */doc/*.pnr
 */doc/*.tex
 */doc/*.toc
-*/doc/*.out                                                                                                                                                                                                  
-*/doc/manual.lab                                                                                                                                                                                             
-*.DS_Store                                                                                                                                                                                                 
-*/doc/*.xml                                                                                                                                                                                                  
-maketest.g                                                                                                                                                                                                 
-parsertest.g                                                                                                                                                                                               
+*/doc/*.out
+*/doc/manual.lab
+*.DS_Store
+doc/*.xml
+*/doc/*.xml
+maketest.g
+parsertest.g
 judgement_test
