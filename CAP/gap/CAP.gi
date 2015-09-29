@@ -377,7 +377,7 @@ InstallGlobalFunction( SetCachingOfCategory,
     
     for current_name in RecNames( category!.caches ) do
         
-        if current_name in [ "IsEqualForMorphisms", "IsEqualForObjects", "IsEqualForMorphismsOnMor" ] then
+        if current_name in [ "IsEqualForMorphisms", "IsEqualForObjects", "IsEqualForMorphismsOnMor", "IsEqualForCacheForMorphisms", "IsEqualForCacheForObjects" ] then
             continue; ## Those are needed for comparison in caches
         fi;
         
