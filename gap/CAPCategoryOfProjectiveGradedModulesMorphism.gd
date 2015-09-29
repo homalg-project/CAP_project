@@ -31,7 +31,7 @@ DeclareCategory( "IsCAPCategoryOfProjectiveGradedRightModulesMorphism",
 
 DeclareOperation( "CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
-                                                                    IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ] );
+                                                                 IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ] );
 
 ####################################
 ##

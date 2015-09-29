@@ -835,11 +835,57 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                                                        );
         
     end );
+
+    ## Lift
+    ## Lift
+    # the lift of morphism2 along morphism1, i.e. morphism1: K -> M, morphism2: L -> M, then lift( 1,2 ): L -> K    
+    AddLift( category,
+      function( morphism1, morphism2 )
+        local right_divide;
+        
+        # try to find a lift
+        right_divide := RightDivide( UnderlyingHomalgMatrix( morphism2 ), UnderlyingHomalgMatrix( morphism1 ) );
+
+        # check if this failed
+        if right_divide = fail then
+          
+          return fail;
+          
+        fi;
+        
+        # and if not, then construct the lift-morphism
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism2 ),
+                                                                        right_divide,
+                                                                        Source( morphism1 ) );
+        
+    end );
+    
+    ## Colift
+    ## Colift
+    # the colift of morphism2 along morphism1, i.e. morphism1: N -> C, morphism2: N -> L, then colift( 1,2 ): C -> L
+    AddColift( category,
+      function( morphism1, morphism2 )
+        local left_divide;
+        
+        # try to find a matrix that performs the colift
+        left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
+
+        # check if this worked
+        if left_divide = fail then
+          
+          return fail;
+          
+        fi;
+        
+        # if it did work, return the corresponding morphism
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism1 ),
+                                                                        left_divide,
+                                                                        Range( morphism2 ) 
+                                                                       );
+           
+    end );
     
 end );
-
-
-
 
 
 ####################################################################
@@ -1605,5 +1651,54 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
                                                                         Range( test_morphism ) );
         
     end );
+    
+    ## Lift
+    ## Lift
+    # the lift of morphism2 along morphism1, i.e. morphism1: K -> M, morphism2: L -> M, then lift( 1,2 ): L -> K        
+    AddLift( category,
+      function( morphism1, morphism2 )
+        local left_divide;
+        
+        # try to find a lift
+        left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism2 ), UnderlyingHomalgMatrix( morphism1 ) );
+
+        # check if this failed
+        if left_divide = fail then
+          
+          return fail;
+          
+        fi;
+        
+        # and if not, then construct the lift-morphism
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism2 ),
+                                                                        left_divide,
+                                                                        Source( morphism1 ) );
+        
+    end );    
+
+    ## Colift
+    ## Colift
+    # the colift of morphism2 along morphism1, i.e. morphism1: N -> C, morphism2: N -> L, then colift( 1,2 ): C -> L
+    AddColift( category,
+      function( morphism1, morphism2 )
+        local right_divide;
+        
+        # try to find a matrix that performs the colift
+        right_divide := RightDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
+
+        # check if this worked
+        if right_divide = fail then
+          
+          return fail;
+          
+        fi;
+        
+        # if it did work, return the corresponding morphism
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism1 ),
+                                                                        right_divide,
+                                                                        Range( morphism2 ) );
+        
+    end );
+    
     
 end );
