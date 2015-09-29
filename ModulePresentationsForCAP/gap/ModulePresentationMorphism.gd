@@ -39,6 +39,21 @@ DeclareAttribute( "UnderlyingHomalgRing",
 DeclareAttribute( "UnderlyingMatrix",
                   IsLeftOrRightPresentationMorphism );
 
+#############################
+##
+## Arithmetics
+##
+#############################
+
+##
+DeclareOperation( "\*",
+                  [ IsRingElement, IsLeftPresentationMorphism ] );
+
+##
+DeclareOperation( "\*",
+                  [ IsRightPresentationMorphism, IsRingElement ] );
+
+
 ##############################################
 ##
 ## Non-categorical methods
