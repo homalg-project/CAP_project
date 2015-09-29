@@ -84,7 +84,7 @@ InstallGlobalFunction( GET_METHOD_CACHE,
         cache := CreateWeakCachingObject( number );
     elif cache_type = "crisp" then
         cache := CreateCrispCachingObject( number );
-    elif cache_type = "none" then
+    elif cache_type = "none" or cache_type = "never" then
         cache := CreateCrispCachingObject( number );
         DeactivateCachingObject( cache );
     else
@@ -201,11 +201,11 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.derivations_weight_list := MakeOperationWeightList( obj_rec, CAP_INTERNAL_DERIVATION_GRAPH );
     
-    obj_rec!.caches := rec( IsEqualForObjects := "none",
-                            IsEqualForMorphisms := "none",
-                            IsEqualForMorphismsOnMor := "none",
-                            IsEqualForCacheForObjects := "none",
-                            IsEqualForCacheForMorphisms := "none" );
+    obj_rec!.caches := rec( IsEqualForObjects := "never",
+                            IsEqualForMorphisms := "never",
+                            IsEqualForMorphismsOnMor := "never",
+                            IsEqualForCacheForObjects := "never",
+                            IsEqualForCacheForMorphisms := "never" );
     
     obj_rec!.redirects := rec( );
     
@@ -292,8 +292,8 @@ InstallMethod( SetCaching,
         
     fi;
     
-    if not IsBound( category!.caches.( function_name ) )
-       or IsString( category!.caches.( function_name ) ) then
+    if not IsBound( category!.caches.( function_name ) ) or
+        ( IsString( category!.caches.( function_name ) ) and category!.caches.( function_name ) <> "never" ) then
         
         category!.caches.( function_name ) := caching_info;
         
