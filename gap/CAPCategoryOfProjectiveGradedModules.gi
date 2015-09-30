@@ -1070,7 +1070,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
           
                 # and check if all non-trivial entries have degrees that matches reference - if not return false
                 if ( EntriesOfHomalgMatrixAsListList( morphism_matrix )[ i ][ j ] <> Zero( HomalgRing( morphism_matrix ) ) )
-                                                                     and ( degrees_of_entries_matrix[ i ][ j ] <> comparer ) then
+                                                                 and ( degrees_of_entries_matrix[ i ][ j ] <> comparer ) then
               
                   return false;
               
