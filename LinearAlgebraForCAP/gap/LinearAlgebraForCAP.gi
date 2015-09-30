@@ -68,7 +68,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        return UnderlyingHomalgMatrix( morphism_1 ) = UnderlyingHomalgMatrix( morphism_2 );
+        return UnderlyingMatrix( morphism_1 ) = UnderlyingMatrix( morphism_2 );
         
     end );
     
@@ -91,7 +91,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( morphism_1, morphism_2 )
         local composition;
 
-        composition := UnderlyingHomalgMatrix( morphism_1 ) * UnderlyingHomalgMatrix( morphism_2 );
+        composition := UnderlyingMatrix( morphism_1 ) * UnderlyingMatrix( morphism_2 );
 
         return VectorSpaceMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
 
@@ -102,7 +102,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddIsZeroForMorphisms( category,
       function( morphism )
         
-        return IsZero( UnderlyingHomalgMatrix( morphism ) );
+        return IsZero( UnderlyingMatrix( morphism ) );
         
     end );
     
@@ -111,7 +111,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( morphism_1, morphism_2 )
         
         return VectorSpaceMorphism( Source( morphism_1 ),
-                                    UnderlyingHomalgMatrix( morphism_1 ) + UnderlyingHomalgMatrix( morphism_2 ),
+                                    UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ),
                                     Range( morphism_2 ) );
         
     end );
@@ -121,7 +121,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( morphism )
         
         return VectorSpaceMorphism( Source( morphism ),
-                                    (-1) * UnderlyingHomalgMatrix( morphism ),
+                                    (-1) * UnderlyingMatrix( morphism ),
                                     Range( morphism ) );
         
     end );
@@ -218,12 +218,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( diagram, sink, direct_sum )
         local underlying_matrix_of_universal_morphism, morphism;
         
-        underlying_matrix_of_universal_morphism := UnderlyingHomalgMatrix( sink[1] );
+        underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
         
         for morphism in sink{ [ 2 .. Length( sink ) ] } do
           
           underlying_matrix_of_universal_morphism := 
-            UnionOfColumns( underlying_matrix_of_universal_morphism, UnderlyingHomalgMatrix( morphism ) );
+            UnionOfColumns( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
           
         od;
         
@@ -263,12 +263,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( diagram, sink, coproduct )
         local underlying_matrix_of_universal_morphism, morphism;
         
-        underlying_matrix_of_universal_morphism := UnderlyingHomalgMatrix( sink[1] );
+        underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
         
         for morphism in sink{ [ 2 .. Length( sink ) ] } do
           
           underlying_matrix_of_universal_morphism := 
-            UnionOfRows( underlying_matrix_of_universal_morphism, UnderlyingHomalgMatrix( morphism ) );
+            UnionOfRows( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
           
         od;
         
@@ -284,7 +284,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         homalg_field := UnderlyingFieldForHomalg( morphism );
         
-        homalg_matrix := UnderlyingHomalgMatrix( morphism );
+        homalg_matrix := UnderlyingMatrix( morphism );
         
         return VectorSpaceObject( NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ), homalg_field );
         
@@ -295,7 +295,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( morphism )
         local kernel_emb, homalg_field, kernel_object;
         
-        kernel_emb := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
+        kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
         
         homalg_field := UnderlyingFieldForHomalg( morphism );
         
@@ -310,7 +310,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( morphism, kernel )
         local kernel_emb;
         
-        kernel_emb := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
+        kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
         
         return VectorSpaceMorphism( kernel, kernel_emb, Source( morphism ) );
         
@@ -321,7 +321,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( monomorphism, test_morphism )
         local right_divide;
         
-        right_divide := RightDivide( UnderlyingHomalgMatrix( test_morphism ), UnderlyingHomalgMatrix( monomorphism ) );
+        right_divide := RightDivide( UnderlyingMatrix( test_morphism ), UnderlyingMatrix( monomorphism ) );
         
         if right_divide = fail then
           
@@ -342,7 +342,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         homalg_field := UnderlyingFieldForHomalg( morphism );
         
-        homalg_matrix := UnderlyingHomalgMatrix( morphism );
+        homalg_matrix := UnderlyingMatrix( morphism );
         
         return VectorSpaceObject( NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ), homalg_field );
         
@@ -353,7 +353,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( morphism )
         local cokernel_proj, homalg_field, cokernel_obj;
         
-        cokernel_proj := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
+        cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
         
         homalg_field := UnderlyingFieldForHomalg( morphism );
         
@@ -368,7 +368,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( morphism, cokernel )
         local cokernel_proj;
         
-        cokernel_proj := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
+        cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
         
         return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel );
         
@@ -379,7 +379,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( epimorphism, test_morphism )
         local left_divide;
         
-        left_divide := LeftDivide( UnderlyingHomalgMatrix( epimorphism ), UnderlyingHomalgMatrix( test_morphism ) );
+        left_divide := LeftDivide( UnderlyingMatrix( epimorphism ), UnderlyingMatrix( test_morphism ) );
         
         if left_divide = fail then
           
@@ -406,7 +406,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddIsMonomorphism( category,
       function( morphism )
       
-        return RowRankOfMatrix( UnderlyingHomalgMatrix( morphism ) ) = Dimension( Source( morphism ) );
+        return RowRankOfMatrix( UnderlyingMatrix( morphism ) ) = Dimension( Source( morphism ) );
       
     end );
     
@@ -414,7 +414,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddIsEpimorphism( category,
       function( morphism )
         
-        return ColumnRankOfMatrix( UnderlyingHomalgMatrix( morphism ) ) = Dimension( Range( morphism ) );
+        return ColumnRankOfMatrix( UnderlyingMatrix( morphism ) ) = Dimension( Range( morphism ) );
         
     end );
     
@@ -423,7 +423,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( morphism )
         
         return Dimension( Range( morphism ) ) = Dimension( Source( morphism ) )
-               and ColumnRankOfMatrix( UnderlyingHomalgMatrix( morphism ) ) = Dimension( Range( morphism ) );
+               and ColumnRankOfMatrix( UnderlyingMatrix( morphism ) ) = Dimension( Range( morphism ) );
         
     end );
     
@@ -467,7 +467,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( new_source, morphism_1, morphism_2, new_range )
         
         return VectorSpaceMorphism( new_source,
-                                    KroneckerMat( UnderlyingHomalgMatrix( morphism_1 ), UnderlyingHomalgMatrix( morphism_2 ) ),
+                                    KroneckerMat( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) ),
                                     new_range );
         
     end );
@@ -517,7 +517,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( dual_source, morphism, dual_range )
         
         return VectorSpaceMorphism( dual_source,
-                                    Involution( UnderlyingHomalgMatrix( morphism ) ),
+                                    Involution( UnderlyingMatrix( morphism ) ),
                                     dual_range );
         
     end );
