@@ -464,7 +464,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         local underlying_matrix_of_universal_morphism, morphism;
         
         # construct the homalg matrix to represent the universal morphism
-        underlying_matrix_of_universal_morphism := UnderlyingHomalgMatrix( sink[1] );
+        underlying_matrix_of_universal_morphism := UnderlyingHomalgMatrix( sink[ 1 ] );
         
         for morphism in sink{ [ 2 .. Length( sink ) ] } do
           
