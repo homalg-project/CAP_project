@@ -99,17 +99,17 @@ InstallMethod( \*,
     
 end );
 
-## TODO: multiplication matrix * scalar in MatricesForHomalg
-# InstallMethod( \*,
-#                   [ IsVectorSpaceMorphism, IsRingElement ],
-#                   
-#   function( morphism, ring_element )
-#     
-#     return VectorSpaceMorphism( Source( morphism ),
-#                                 UnderlyingMatrix( morphism ) * ring_element,
-#                                 Range( morphism ) );
-#     
-# end );
+##
+InstallMethod( \*,
+                  [ IsVectorSpaceMorphism, IsRingElement ],
+                  
+  function( morphism, ring_element )
+    
+    return VectorSpaceMorphism( Source( morphism ),
+                                UnderlyingMatrix( morphism ) * ring_element,
+                                Range( morphism ) );
+    
+end );
 
 
 ####################################
