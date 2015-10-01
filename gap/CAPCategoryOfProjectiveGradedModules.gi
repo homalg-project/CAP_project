@@ -360,9 +360,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
       function( morphism )
         
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism ),
-                                                             (-1) * UnderlyingHomalgMatrix( morphism ),
-                                                             Range( morphism )
-                                                             );
+                                     MinusOne( UnderlyingHomalgGradedRing( morphism ) ) * UnderlyingHomalgMatrix( morphism ),
+                                     Range( morphism )
+                                     );
     end );
     
     ##
@@ -382,8 +382,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     AddZeroObject( category,
       function( )
         
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesObject( 
-                                             [ ], category!.homalg_graded_ring_for_category_of_projective_graded_right_modules );
+        return CAPCategoryOfProjectiveGradedLeftModulesObject( 
+                                          [ ], category!.homalg_graded_ring_for_category_of_projective_graded_left_modules );
     end );
     
     ##
@@ -1204,7 +1204,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
       function( )
         
         return CAPCategoryOfProjectiveGradedRightModulesObject( 
-                                                   [ ], category!.homalg_graded_ring_for_category_of_projective_graded_modules );
+                                         [ ], category!.homalg_graded_ring_for_category_of_projective_graded_right_modules );
     end );    
     
     ##
