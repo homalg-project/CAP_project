@@ -194,10 +194,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     end );
     
     AddIsWellDefinedForMorphisms( category,
-      
-      function( morphism )
-        local source, range, morphism_matrix, func, degrees_of_entries_matrix, comparer,
-             non_trivial_entries_per_column, dummy_range_degrees, i, j, row_of_source_degrees, row_of_range_degrees;
+
+          function( morphism )
+        local source, range, morphism_matrix, morphism_matrix_entries, func, degrees_of_entries_matrix, degree_group, 
+             source_degrees, range_degrees, buffer_col, dummy_range_degrees, i, j;
+             
         
         # extract source and range
         source := Source( morphism );        
@@ -210,118 +211,121 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           return false;
         
         fi;
-        
-        # next up is a check of the mapping matrix        
-        morphism_matrix := UnderlyingHomalgMatrix( morphism );
-        
-        # first check if the dimensions of the matrix fit with the ranks of the source and range modules
-        if not ( Rank( source ) = NrRows( morphism_matrix )
-                 and NrColumns( morphism_matrix ) = Rank( range ) ) then
-          
-          return false;
-          
-        fi;
-        
-        # next check that the underlying homalg_graded_rings are identical 
+
+        # next check that the underlying homalg_graded_rings are identical
         if not ( IsIdenticalObj( UnderlyingHomalgGradedRing( source ), UnderlyingHomalgGradedRing( morphism ) ) and
                         IsIdenticalObj( UnderlyingHomalgGradedRing( morphism ), UnderlyingHomalgGradedRing( range ) ) ) then
         
           return false;
         
         fi;
-                
-        # now compute the degrees of all entries in the morphism_matrix
-        # I use the DegreeOfEntriesFunction of the underlying non-graded ring
-        # in particular I hope that this function raises and error is the entries are not homogeneous
-        func := DegreesOfEntriesFunction( UnderlyingHomalgGradedRing( source ) );
-        degrees_of_entries_matrix := func( morphism_matrix );
         
-        # now check that in every column the degrees of the non-trivial entries coincide
-        # this is only needed if at least two rows exists, so
-        non_trivial_entries_per_column := PositionOfFirstNonZeroEntryPerColumn( morphism_matrix );        
-        if NrRows( morphism_matrix ) > 1 then
-        
-          for i in [ 1 .. NrColumns( morphism_matrix ) ] do
-          
-            if not non_trivial_entries_per_column[ i ] = 0 then
-          
-              # fix reference
-              comparer := degrees_of_entries_matrix[ non_trivial_entries_per_column[ i ] ][ i ];
-        
-              for j in [ non_trivial_entries_per_column[ i ] + 1 .. NrRows( morphism_matrix ) ] do
-          
-                # and check if all non-trivial entries have degrees that matches reference - if not return false
-                if ( EntriesOfHomalgMatrixAsListList( morphism_matrix )[ j ][ i ] <> Zero( HomalgRing( morphism_matrix ) ) )
-                                                                     and ( degrees_of_entries_matrix[ j ][ i ] <> comparer ) then
-              
-                  return false;
-              
-                fi;
-          
-              od;
-              
-            fi;
-        
-          od;
-          
-        fi;
-        
-        # turn the degrees of the source into a vector 
-        row_of_source_degrees := [];
-        for i in [ 1 .. Length( DegreeList( source ) ) ] do
-        
-          for j in [ 1 .. DegreeList( source )[ i ][ 2 ] ] do
-          
-            Add( row_of_source_degrees, DegreeList( source )[ i ][ 1 ] );
-          
-          od;
-        
-        od;
-
-        # turn the range-degrees into a vector, that we compare with the above computed dummy_range_degrees
-        row_of_range_degrees := [];
-        for i in [ 1 .. Length( DegreeList( range ) ) ] do
-        
-          for j in [ 1 .. DegreeList( range )[ i ][ 2 ] ] do
-          
-            Add( row_of_range_degrees, DegreeList( range )[ i ][ 1 ] );
-          
-          od;
-        
-        od;
-                
-        # compute a vector of degrees that the range SHOULD have
-        dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
-        for i in [ 1 .. Rank( range ) ] do
-        
-          # if a column is zero, then it is automatically well-defined, so set dummy_range_degrees to the range_degree value
-          if non_trivial_entries_per_column[ i ] = 0 then
-          
-            dummy_range_degrees[ i ] := row_of_range_degrees[ i ];
-        
-        
-          else
-          
-            # we can make a non-trivial prediction based on the source degrees and the degrees of the matrix entries
-            dummy_range_degrees[ i ] := row_of_source_degrees[ non_trivial_entries_per_column[ i ] ] 
-                                                         - degrees_of_entries_matrix[ non_trivial_entries_per_column[ i ] ][ i ];
-        
-          fi;
-        
-        od;        
-        
-        # and now perform the final check
-        if not ( row_of_range_degrees = dummy_range_degrees ) then
+        # and that source and range are defined in the same category
+        if not IsIdenticalObj( CapCategory( source ), CapCategory( range ) ) then
         
           return false;
         
         fi;
         
-        # all tests have been passed, so return true
-        return true;
+        # check if the mapping is non-trivial, for otherwise we are done already
+        if ( Rank( source ) = 0 or Rank( range ) = 0 ) then
+        
+          return true;
+        
+        else
+        
+          # extract the mapping matrix        
+          morphism_matrix := UnderlyingHomalgMatrix( morphism );
+          morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
+
+          # then check if the dimensions of the matrix fit with the ranks of the source and range modules
+          if not ( Rank( source ) = NrRows( morphism_matrix )
+                   and NrColumns( morphism_matrix ) = Rank( range ) ) then
+          
+            return false;
+          
+          fi;
+          
+          # subsequently compute the degrees of all entries in the morphism_matrix
+          # I use the DegreeOfEntriesFunction of the underlying graded ring
+          # in particular I hope that this function raises and error if one of the entries is not homogeneous
+          func := DegreesOfEntriesFunction( UnderlyingHomalgGradedRing( source ) );
+          degrees_of_entries_matrix := func( morphism_matrix );
+        
+          # turn the degrees of the source into a column vector (that is how I think about right-modules)
+          source_degrees := [];
+          for i in [ 1 .. Length( DegreeList( source ) ) ] do
+          
+            for j in [ 1 .. DegreeList( source )[ i ][ 2 ] ] do
+          
+              Add( source_degrees, DegreeList( source )[ i ][ 1 ] );
+          
+            od;
+          
+          od;
+
+          # turn the range-degrees into a column vector, that we will compare with the ranges dictated by the mapping matrix
+          range_degrees := [];
+          for i in [ 1 .. Length( DegreeList( range ) ) ] do
+        
+            for j in [ 1 .. DegreeList( range )[ i ][ 2 ] ] do
+          
+              Add( range_degrees, DegreeList( range )[ i ][ 1 ] );
+          
+            od;
+        
+          od;
+
+          # compute the dummy_range_degrees whilst checking at the same time that the mapping is well-defined
+          # the only question left after this test is if the range of the well-defined map is really the range
+          # specified for the mapping
+          dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
+          for i in [ 1 .. Rank( range ) ] do
+          
+            # initialise the i-th buffer row
+            buffer_col := List( [ 1 .. Rank( source ) ] );
+
+            # compute its entries
+            for j in [ 1 .. Rank( source ) ] do
+                        
+              if morphism_matrix_entries[ j ][ i ] = Zero( HomalgRing( morphism_matrix ) ) then
+              
+                buffer_col[ j ] := range_degrees[ i ];
+
+              else
+              
+                buffer_col[ j ] := source_degrees[ j ] - degrees_of_entries_matrix[ j ][ i ];
+                
+              fi;
+            
+            od;
+
+            # check that the degrees in buffer_row are all the same, for if not the mapping is not well-defined
+            if Length( DuplicateFreeList( buffer_col ) ) > 1 then
+            
+              return false;
+              
+            fi;
+            
+            # otherwise add this common degree to the dummy_range_degrees
+            dummy_range_degrees[ i ] := buffer_col[ 1 ];
+          
+          od;
+                  
+          # and now perform the final check
+          if not ( range_degrees = dummy_range_degrees ) then
+          
+            return false;
+        
+          fi;
+          
+          # all tests have been passed, so return true
+          return true;
+        
+        fi;
         
     end );
-        
+            
     ## Basic Operations for an Additive Category
     ## Basic Operations for an Additive Category
 
@@ -1013,8 +1017,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     AddIsWellDefinedForMorphisms( category,
       
       function( morphism )
-        local source, range, morphism_matrix, func, degrees_of_entries_matrix, comparer,
-             non_trivial_entries_per_row, dummy_range_degrees, i, j, col_of_source_degrees, col_of_range_degrees;
+        local source, range, morphism_matrix, morphism_matrix_entries, func, degrees_of_entries_matrix, degree_group, 
+             source_degrees, range_degrees, buffer_row, dummy_range_degrees, i, j;
+             
         
         # extract source and range
         source := Source( morphism );        
@@ -1027,117 +1032,120 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
           return false;
         
         fi;
-        
-        # next up is a check of the mapping matrix        
-        morphism_matrix := UnderlyingHomalgMatrix( morphism );
-        
-        # first check if the dimensions of the matrix fit with the ranks of the source and range modules
-        if not ( Rank( source ) = NrColumns( morphism_matrix )
-                 and NrRows( morphism_matrix ) = Rank( range ) ) then
-          
-          return false;
-          
-        fi;
-        
-        # next check that the underlying homalg_graded_rings are identical 
+
+        # next check that the underlying homalg_graded_rings are identical
         if not ( IsIdenticalObj( UnderlyingHomalgGradedRing( source ), UnderlyingHomalgGradedRing( morphism ) ) and
                         IsIdenticalObj( UnderlyingHomalgGradedRing( morphism ), UnderlyingHomalgGradedRing( range ) ) ) then
         
           return false;
         
         fi;
-             
-        # now compute the degrees of all entries in the morphism_matrix
-        # I use the DegreeOfEntriesFunction of the underlying non-graded ring
-        # in particular I hope that this function raises and error is the entries are not homogeneous
-        func := DegreesOfEntriesFunction( UnderlyingHomalgGradedRing( source ) );
-        degrees_of_entries_matrix := func( morphism_matrix );
         
-        # now check that in every column the degrees of the non-trivial entries coincide
-        # this is only needed if at least two rows exists, so
-        non_trivial_entries_per_row := PositionOfFirstNonZeroEntryPerRow( morphism_matrix );
-        if NrColumns( morphism_matrix ) > 1 then
-        
-          for i in [ 1 .. NrRows( morphism_matrix ) ] do
-          
-            # if the row is trivial, then skip it
-            if not non_trivial_entries_per_row[ i ] = 0 then
-            
-              # fix reference
-              comparer := degrees_of_entries_matrix[ i ][ non_trivial_entries_per_row[ i ] ];
-        
-              for j in [ non_trivial_entries_per_row[ i ] + 1 .. NrColumns( morphism_matrix ) ] do
-          
-                # and check if all non-trivial entries have degrees that matches reference - if not return false
-                if ( EntriesOfHomalgMatrixAsListList( morphism_matrix )[ i ][ j ] <> Zero( HomalgRing( morphism_matrix ) ) )
-                                                                 and ( degrees_of_entries_matrix[ i ][ j ] <> comparer ) then
-              
-                  return false;
-              
-                fi;
-          
-              od;
-
-            fi;
-              
-          od;
-          
-        fi;
-        
-        # turn the degrees of the source into a vector 
-        col_of_source_degrees := [];
-        for i in [ 1 .. Length( DegreeList( source ) ) ] do
-        
-          for j in [ 1 .. DegreeList( source )[ i ][ 2 ] ] do
-          
-            Add( col_of_source_degrees, DegreeList( source )[ i ][ 1 ] );
-          
-          od;
-        
-        od;
-
-        # turn the range-degrees into a vector, that we compare with the above computed dummy_range_degrees
-        col_of_range_degrees := [];
-        for i in [ 1 .. Length( DegreeList( range ) ) ] do
-        
-          for j in [ 1 .. DegreeList( range )[ i ][ 2 ] ] do
-          
-            Add( col_of_range_degrees, DegreeList( range )[ i ][ 1 ] );
-          
-          od;
-        
-        od;
-                
-        # compute a vector of degrees that the range SHOULD have
-        dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
-        for i in [ 1 .. Rank( range ) ] do
-        
-          # if an entire row contains zeros, it is automatically well-define, so set it to the range value
-          if non_trivial_entries_per_row[ i ] = 0 then
-          
-            dummy_range_degrees[ i ] := col_of_range_degrees[ i ];
-          
-          else
-          
-            # we can make a non-trivial prediction based on the degrees of the source and the matrix, namely          
-            dummy_range_degrees[ i ] := col_of_source_degrees[ non_trivial_entries_per_row[ i ] ] 
-                                                         - degrees_of_entries_matrix[ i ][ non_trivial_entries_per_row[ i ] ];
-        
-          fi;
-        
-        od;
-        
-        # and now perform the final check
-        if not ( col_of_range_degrees = dummy_range_degrees ) then
+        # and that source and range are defined in the same category
+        if not IsIdenticalObj( CapCategory( source ), CapCategory( range ) ) then
         
           return false;
         
         fi;
         
-        # all tests have been passed, so return true
-        return true;
+        # check if the mapping is non-trivial, for otherwise we are done already
+        if ( Rank( source ) = 0 or Rank( range ) = 0 ) then
         
-    end );    
+          return true;
+        
+        else
+        
+          # extract the mapping matrix        
+          morphism_matrix := UnderlyingHomalgMatrix( morphism );
+          morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
+
+          # then check if the dimensions of the matrix fit with the ranks of the source and range modules
+          if not ( Rank( source ) = NrColumns( morphism_matrix )
+                   and NrRows( morphism_matrix ) = Rank( range ) ) then
+          
+            return false;
+          
+          fi;
+                    
+          # subsequently compute the degrees of all entries in the morphism_matrix
+          # I use the DegreeOfEntriesFunction of the underlying graded ring
+          # in particular I hope that this function raises and error if one of the entries is not homogeneous
+          func := DegreesOfEntriesFunction( UnderlyingHomalgGradedRing( source ) );
+          degrees_of_entries_matrix := func( morphism_matrix );
+        
+          # turn the degrees of the source into a column vector (that is how I think about right-modules)
+          source_degrees := [];
+          for i in [ 1 .. Length( DegreeList( source ) ) ] do
+        
+            for j in [ 1 .. DegreeList( source )[ i ][ 2 ] ] do
+          
+              Add( source_degrees, DegreeList( source )[ i ][ 1 ] );
+          
+            od;
+        
+          od;
+
+          # turn the range-degrees into a column vector, that we will compare with the ranges dictated by the mapping matrix
+          range_degrees := [];
+          for i in [ 1 .. Length( DegreeList( range ) ) ] do
+        
+            for j in [ 1 .. DegreeList( range )[ i ][ 2 ] ] do
+          
+              Add( range_degrees, DegreeList( range )[ i ][ 1 ] );
+          
+            od;
+        
+          od;
+
+          # compute the dummy_range_degrees whilst checking at the same time that the mapping is well-defined
+          # the only question left after this test is if the range of the well-defined map is really the range
+          # specified for the mapping
+          dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
+          for i in [ 1 .. Rank( range ) ] do
+          
+            # initialise the i-th buffer row
+            buffer_row := List( [ 1 .. Rank( source ) ] );
+
+            # compute its entries
+            for j in [ 1 .. Rank( source ) ] do
+                        
+              if morphism_matrix_entries[ i ][ j ] = Zero( HomalgRing( morphism_matrix ) ) then
+              
+                buffer_row[ j ] := range_degrees[ i ];
+
+              else
+              
+                buffer_row[ j ] := source_degrees[ j ] - degrees_of_entries_matrix[ i ][ j ];
+                
+              fi;
+            
+            od;
+
+            # check that the degrees in buffer_row are all the same, for if not the mapping is not well-defined
+            if Length( DuplicateFreeList( buffer_row ) ) > 1 then
+            
+              return false;
+              
+            fi;
+            
+            # otherwise add this common degree to the dummy_range_degrees
+            dummy_range_degrees[ i ] := buffer_row[ 1 ];
+          
+          od;
+                  
+          # and now perform the final check
+          if not ( range_degrees = dummy_range_degrees ) then
+          
+            return false;
+        
+          fi;
+          
+          # all tests have been passed, so return true
+          return true;
+        
+        fi;
+        
+    end ); 
     
     ## Basic Operations for an Additive Category
     ## Basic Operations for an Additive Category
