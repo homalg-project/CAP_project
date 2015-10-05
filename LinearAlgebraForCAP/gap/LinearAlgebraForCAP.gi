@@ -54,6 +54,9 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
   
   function( category )
+    local homalg_field;
+    
+    homalg_field := category!.field_for_matrix_category;
     
     ##
     AddIsEqualForCacheForObjects( category,
@@ -117,7 +120,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
             
             return right_morphism;
             
-          end, [ IsIdenticalToIdentityMorphism, ] ]
+          end, [ IsIdenticalToIdentityMorphism, ] ],
+        
+        [ function( left_morphism, zero_morphism )
+            
+            return VectorSpaceMorphism( Source( left_morphism ),
+                                        HomalgZeroMatrix( NrRows( left_morphism ), NrColumns( zero_morphism ), homalg_field ),
+                                        Range( zero_morphism ) );
+          
+          end, [ , IsZero ] ],
+        
+        [ function( zero_morphism, right_morphism )
+            
+            return VectorSpaceMorphism( Source( zero_morphism ),
+                                        HomalgZeroMatrix( NrRows( zero_morphism ), NrColumns( right_morphism ), homalg_field ),
+                                        Range( right_morphism ) );
+          
+          end, [ IsZero, ] ],
       ]
     
     );
