@@ -55,6 +55,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
   
   function( category )
     
+    ##
+    AddIsEqualForCacheForObjects( category,
+      IsIdenticalObj );
+    
+    ##
+    AddIsEqualForCacheForMorphisms( category,
+      IsIdenticalObj );
+    
+    
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
