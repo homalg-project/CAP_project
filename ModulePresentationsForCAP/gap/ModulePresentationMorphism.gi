@@ -127,17 +127,17 @@ InstallMethod( \*,
     
 end );
 
-## TODO: multiplication matrix * scalar in MatricesForHomalg
-# InstallMethod( \*,
-#                [ IsRightPresentationMorphism, IsRingElement ],
-#                
-#   function( right_presentation, ring_element )
-#     
-#     return PresentationMorphism( Source( right_presentation ),
-#                                  UnderlyingMatrix( right_presentation ) * ring_element,
-#                                  Range( right_presentation ) );
-#     
-# end );
+##
+InstallMethod( \*,
+               [ IsRightPresentationMorphism, IsRingElement ],
+               
+  function( right_presentation, ring_element )
+    
+    return PresentationMorphism( Source( right_presentation ),
+                                 UnderlyingMatrix( right_presentation ) * ring_element,
+                                 Range( right_presentation ) );
+    
+end );
 
 
 ##############################################
@@ -205,3 +205,26 @@ InstallMethod( StandardGeneratorMorphism,
     return PresentationMorphism( tensor_unit, matrix, module_presentation );
     
 end );
+
+####################################
+##
+## View
+##
+####################################
+
+##
+InstallMethod( Display,
+               [ IsLeftOrRightPresentationMorphism ],
+               # FIXME: Fix the rank in GenericView and delete this afterwards
+               9999,
+               
+  function( morphism )
+    
+    Display( UnderlyingMatrix( morphism ) );
+    
+    Print( "\n" );
+    
+    Print( StringMutable( morphism ) );
+    
+end );
+

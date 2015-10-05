@@ -72,7 +72,7 @@ InstallMethod( VectorSpaceMorphism,
                              Source, source,
                              Range, range,
                              UnderlyingFieldForHomalg, homalg_field,
-                             UnderlyingHomalgMatrix, homalg_matrix
+                             UnderlyingMatrix, homalg_matrix
     );
 
     Add( category, vector_space_morphism );
@@ -83,7 +83,7 @@ end );
 
 ####################################
 ##
-## View
+## Multiplication With Scalars
 ##
 ####################################
 
@@ -94,22 +94,22 @@ InstallMethod( \*,
   function( ring_element, morphism )
     
     return VectorSpaceMorphism( Source( morphism ),
-                                ring_element * UnderlyingHomalgMatrix( morphism ),
+                                ring_element * UnderlyingMatrix( morphism ),
                                 Range( morphism ) );
     
 end );
 
-## TODO: multiplication matrix * scalar in MatricesForHomalg
-# InstallMethod( \*,
-#                   [ IsVectorSpaceMorphism, IsRingElement ],
-#                   
-#   function( morphism, ring_element )
-#     
-#     return VectorSpaceMorphism( Source( morphism ),
-#                                 UnderlyingHomalgMatrix( morphism ) * ring_element,
-#                                 Range( morphism ) );
-#     
-# end );
+##
+InstallMethod( \*,
+                  [ IsVectorSpaceMorphism, IsRingElement ],
+                  
+  function( morphism, ring_element )
+    
+    return VectorSpaceMorphism( Source( morphism ),
+                                UnderlyingMatrix( morphism ) * ring_element,
+                                Range( morphism ) );
+    
+end );
 
 
 ####################################
@@ -126,7 +126,7 @@ InstallMethod( Display,
                
   function( vector_space_morphism )
     
-    Display( UnderlyingHomalgMatrix( vector_space_morphism ) );
+    Display( UnderlyingMatrix( vector_space_morphism ) );
     
     Print( "\n" );
     

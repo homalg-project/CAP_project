@@ -59,7 +59,7 @@ DeclareAttribute( "UnderlyingFieldForHomalg",
 #! The output is its underlying matrix $M$.
 #! @Returns a homalg matrix
 #! @Arguments alpha
-DeclareAttribute( "UnderlyingHomalgMatrix",
+DeclareAttribute( "UnderlyingMatrix",
                   IsVectorSpaceMorphism );
 
 ####################################

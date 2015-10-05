@@ -176,3 +176,25 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT
     
 end );
 
+
+####################################
+##
+## View
+##
+####################################
+
+##
+InstallMethod( Display,
+               [ IsLeftOrRightPresentation ],
+               # FIXME: Fix the rank in GenericView and delete this afterwards
+               9999,
+               
+  function( object )
+    
+    Display( UnderlyingMatrix( object ) );
+    
+    Print( "\n" );
+    
+    Print( StringMutable( object ) );
+    
+end );
