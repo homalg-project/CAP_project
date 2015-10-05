@@ -333,6 +333,10 @@ InstallGlobalFunction( ADD_IS_IDENTICAL_FOR_MORPHISMS,
         
     end );
     
+#     AddIsEqualForCacheForObjects( category, IsIdenticalObj );
+#     
+#     AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
+    
 end );
 
 ##
@@ -455,11 +459,27 @@ InstallGlobalFunction( ADD_PRECOMPOSE_LEFT,
     
     AddPreCompose( category,
                    
-      function( left_morphism, right_morphism )
+      [ 
+        [ function( left_morphism, right_morphism )
+            
+            return PresentationMorphism( Source( left_morphism ), UnderlyingMatrix( left_morphism ) * UnderlyingMatrix( right_morphism ), Range( right_morphism ) );
+            
+          end, [ , ] ],
         
-        return PresentationMorphism( Source( left_morphism ), UnderlyingMatrix( left_morphism ) * UnderlyingMatrix( right_morphism ), Range( right_morphism ) );
+        [ function( left_morphism, identity_morphism )
+            
+            return left_morphism;
+            
+          end, [ , IsIdenticalToIdentityMorphism ] ],
         
-    end );
+        [ function( identity_morphism, right_morphism )
+            
+            return right_morphism;
+            
+          end, [ IsIdenticalToIdentityMorphism, ] ]
+      ]
+      
+    );
     
 end );
 
@@ -469,12 +489,29 @@ InstallGlobalFunction( ADD_PRECOMPOSE_RIGHT,
   function( category )
     
     AddPreCompose( category,
-                   
-      function( left_morphism, right_morphism )
+      
+      [ 
         
-        return PresentationMorphism( Source( left_morphism ), UnderlyingMatrix( right_morphism ) * UnderlyingMatrix( left_morphism ), Range( right_morphism ) );
+        [ function( left_morphism, right_morphism )
+          
+          return PresentationMorphism( Source( left_morphism ), UnderlyingMatrix( right_morphism ) * UnderlyingMatrix( left_morphism ), Range( right_morphism ) );
+          
+          end, [ , ] ],
         
-    end );
+        [ function( left_morphism, identity_morphism )
+            
+            return left_morphism;
+            
+          end, [ , IsIdenticalToIdentityMorphism ] ],
+        
+        [ function( identity_morphism, right_morphism )
+            
+            return right_morphism;
+            
+          end, [ IsIdenticalToIdentityMorphism, ] ]
+      ]
+      
+    );
     
 end );
 
