@@ -320,6 +320,35 @@ DeclareOperation( "AddIsIdenticalToIdentityMorphism",
 DeclareOperation( "AddIsIdenticalToIdentityMorphism",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$.
+#! The output is <C>true</C> if $\alpha = 0$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsIdenticalToZeroMorphism",
+                 IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsIdenticalToZeroMorphism</C>.
+#! $F: \alpha \mapsto \mathtt{IsIdenticalToZeroMorphism }(\alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsIdenticalToZeroMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsIdenticalToZeroMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsIdenticalToZeroMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsIdenticalToZeroMorphism",
+                  [ IsCapCategory, IsList ] );
+
+
 ## TODO
 ## This is not a categorical property because non-endomorphisms 
 ## can be mapped to endomorphisms under equivalences of categories.

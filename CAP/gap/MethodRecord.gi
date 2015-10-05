@@ -83,6 +83,8 @@ IdentityMorphism := rec(
   filter_list := [ "object" ],
   io_type := [ [ "a" ], [ "a", "a" ] ],
   return_type := "morphism",
+  
+  ## TODO: maybe convert to a logic entry 
   post_function := function( object, identity_morphism )
     
     SetIsIdenticalToIdentityMorphism( identity_morphism, true );
@@ -369,7 +371,14 @@ ZeroMorphism := rec(
   filter_list := [ "object", "object" ],
   io_type := [ [ "a", "b" ], [ "a", "b" ] ],
   cache_name := "ZeroMorphism",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  
+  ## TODO: maybe convert to a logic entry 
+  post_function := function( source, range, zero_morphism )
+    
+    SetIsIdenticalToZeroMorphism( zero_morphism, true );
+    
+  end ),
 
 DirectSum := rec(
   installation_name := "DirectSumOp",
@@ -1944,6 +1953,13 @@ IsInitial := rec(
 
 IsIdenticalToIdentityMorphism := rec(
   installation_name := "IsIdenticalToIdentityMorphism",
+  filter_list := [ "morphism" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  property_of := "morphism" ),
+
+IsIdenticalToZeroMorphism := rec(
+  installation_name := "IsIdenticalToZeroMorphism",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",

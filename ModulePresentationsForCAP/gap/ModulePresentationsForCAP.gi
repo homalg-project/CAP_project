@@ -456,6 +456,9 @@ end );
 InstallGlobalFunction( ADD_PRECOMPOSE_LEFT,
                        
   function( category )
+    local ring;
+    
+    ring := category!.ring_for_representation_category;
     
     AddPreCompose( category,
                    
@@ -476,7 +479,23 @@ InstallGlobalFunction( ADD_PRECOMPOSE_LEFT,
             
             return right_morphism;
             
-          end, [ IsIdenticalToIdentityMorphism, ] ]
+          end, [ IsIdenticalToIdentityMorphism, ] ],
+        
+        [ function( left_morphism, zero_morphism )
+            
+            return PresentationMorphism( Source( left_morphism ),
+                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
+                                         Range( zero_morphism ) );
+          
+          end, [ , IsIdenticalToZeroMorphism ] ],
+        
+        [ function( zero_morphism, right_morphism )
+            
+            return PresentationMorphism( Source( zero_morphism ),
+                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), ring ),
+                                         Range( right_morphism ) );
+          
+          end, [ IsIdenticalToZeroMorphism, ] ],
       ]
       
     );
@@ -487,6 +506,9 @@ end );
 InstallGlobalFunction( ADD_PRECOMPOSE_RIGHT,
                        
   function( category )
+    local ring;
+    
+    ring := category!.ring_for_representation_category;
     
     AddPreCompose( category,
       
@@ -508,7 +530,24 @@ InstallGlobalFunction( ADD_PRECOMPOSE_RIGHT,
             
             return right_morphism;
             
-          end, [ IsIdenticalToIdentityMorphism, ] ]
+          end, [ IsIdenticalToIdentityMorphism, ] ],
+        
+        
+        [ function( left_morphism, zero_morphism )
+            
+            return PresentationMorphism( Source( left_morphism ),
+                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( left_morphism ) ), ring ),
+                                         Range( zero_morphism ) );
+          
+          end, [ , IsIdenticalToZeroMorphism ] ],
+        
+        [ function( zero_morphism, right_morphism )
+            
+            return PresentationMorphism( Source( zero_morphism ),
+                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( right_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
+                                         Range( right_morphism ) );
+          
+          end, [ IsIdenticalToZeroMorphism, ] ],
       ]
       
     );
