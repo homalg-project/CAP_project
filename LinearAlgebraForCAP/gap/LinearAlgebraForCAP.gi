@@ -96,15 +96,31 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddPreCompose( category,
-
-      function( morphism_1, morphism_2 )
-        local composition;
-
-        composition := UnderlyingMatrix( morphism_1 ) * UnderlyingMatrix( morphism_2 );
-
-        return VectorSpaceMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
-
-    end );
+      
+      [ 
+        [ function( morphism_1, morphism_2 )
+            local composition;
+            
+            composition := UnderlyingMatrix( morphism_1 ) * UnderlyingMatrix( morphism_2 );
+            
+            return VectorSpaceMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
+            
+          end, [ , ] ],
+        
+        [ function( left_morphism, identity_morphism )
+            
+            return left_morphism;
+            
+          end, [ , IsIdenticalToIdentityMorphism ] ],
+        
+        [ function( identity_morphism, right_morphism )
+            
+            return right_morphism;
+            
+          end, [ IsIdenticalToIdentityMorphism, ] ]
+      ]
+    
+    );
     
     ## Basic Operations for an Additive Category
     ##
