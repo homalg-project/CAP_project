@@ -501,3 +501,20 @@ DeclareGlobalFunction( "SetCachingOfCategory" );
 DeclareGlobalFunction( "SetCachingOfCategoryWeak" );
 DeclareGlobalFunction( "SetCachingOfCategoryCrisp" );
 DeclareGlobalFunction( "DeactivateCachingOfCategory" );
+
+####################################
+##
+#! @Section Type check
+##
+####################################
+
+#! @BeginGroup
+#! @Description
+#!  Most basic operations have a prefunction, which does a (sometimes partial)
+#!  typecheck at the beginning of the operation. These functions enable or disable this check
+#!  for a category. (Enabled by default)
+#! @Arguments category
+DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
+#! @EndGroup
+

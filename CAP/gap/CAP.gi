@@ -213,6 +213,8 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.default_cache_type := "weak";
     
+    obj_rec!.prefunction_check := true;
+    
     return obj_rec;
     
 end );
@@ -498,6 +500,29 @@ InstallMethod( CheckConstructivenessOfCategory,
     return result_list;
     
 end );
+
+####################################
+##
+## Type check
+##
+####################################
+
+InstallGlobalFunction( DisableBasicOperationTypeCheck,
+  
+  function( category )
+    
+    category!.prefunction_check := false;
+    
+end );
+
+InstallGlobalFunction( EnableBasicOperationTypeCheck,
+  
+  function( category )
+  
+    category!.prefunction_check := true;
+    
+end );
+
 #######################################
 ##
 ## ViewObj
