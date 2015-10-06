@@ -260,7 +260,7 @@ DeclareOperation( "AddIsZeroForObjects",
 #! @Arguments phi, psi
 #! @Returns true or false
 DeclareOperation( "IsEqualForCacheForObjects",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #!  By default, CAP uses caches to store the values of Categorical operations.

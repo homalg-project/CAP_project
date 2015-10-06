@@ -184,6 +184,12 @@ InstallMethod( IsZeroForObjects,
                   
 IsZero );
 
+##
+InstallMethod( IsEqualForCacheForObjects,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  IsEqualForCache );
+
 ###########################
 ##
 ## Print

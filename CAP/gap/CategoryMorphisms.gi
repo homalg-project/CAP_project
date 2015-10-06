@@ -168,6 +168,12 @@ InstallMethod( AdditiveInverseForMorphisms,
                   
 AdditiveInverse );
 
+##
+InstallMethod( IsEqualForCacheForMorphisms,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  IsEqualForCache );
+
 
 ######################################
 ##
