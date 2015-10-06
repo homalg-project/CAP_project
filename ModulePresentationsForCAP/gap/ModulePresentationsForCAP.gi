@@ -333,9 +333,9 @@ InstallGlobalFunction( ADD_IS_IDENTICAL_FOR_MORPHISMS,
         
     end );
     
-#     AddIsEqualForCacheForObjects( category, IsIdenticalObj );
-#     
-#     AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
+    AddIsEqualForCacheForObjects( category, IsIdenticalObj );
+    
+    AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
     
 end );
 
