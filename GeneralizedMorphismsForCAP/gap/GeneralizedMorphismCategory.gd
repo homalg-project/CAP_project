@@ -34,7 +34,7 @@ DeclareCategory( "IsGeneralizedMorphism",
 
 ####################################
 ##
-#! @Section Attributes of Generalized Morphisms
+#! @Section Attributes
 ##
 ####################################
 
@@ -66,7 +66,7 @@ DeclareAttributeWithToDoForIsWellDefined( "AssociatedMorphism",
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
 #! The output is a triple $( d \hookrightarrow a, d \rightarrow c, b \twoheadrightarrow c )$
 #! consisting of its domain, associated morphism, and codomain.
-#! @Returns a triple of morphisms
+#! @Returns a triple of morphisms in $\mathbf{A}$
 #! @Arguments alpha
 DeclareAttribute( "DomainAssociatedMorphismCodomainTriple",
                   IsGeneralizedMorphism );
@@ -79,9 +79,36 @@ DeclareAttribute( "DomainAssociatedMorphismCodomainTriple",
 #! @Arguments alpha
 DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
                                           IsGeneralizedMorphism );
+
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b \in \mathbf{A}$.
+#! The output is its generalized inverse $b \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,a)$
+#! @Arguments alpha
+DeclareAttribute( "GeneralizedInverse",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The argument is a subobject $\alpha: a \hookrightarrow b \in \mathbf{A}$.
+#! The output is the idempotent $b \rightarrow b \in \mathbf{G(A)}$
+#! defined by $\alpha$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,b)$
+#! @Arguments alpha
+DeclareAttribute( "IdempotentDefinedBySubobject",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The argument is a factorobject $\alpha: b \twoheadrightarrow a \in \mathbf{A}$.
+#! The output is the idempotent $b \rightarrow b \in \mathbf{G(A)}$
+#! defined by $\alpha$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,b)$
+#! @Arguments alpha
+DeclareAttribute( "IdempotentDefinedByFactorobject",
+                  IsCapCategoryMorphism );
+
 ####################################
 ##
-#! @Section Properties of Generalized Morphisms
+#! @Section Properties
 ##
 ####################################
 
