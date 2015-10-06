@@ -89,9 +89,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddIdentityMorphism( category,
       
       function( object )
-        local homalg_field;
-        
-        homalg_field := UnderlyingFieldForHomalg( object );
         
         return VectorSpaceMorphism( object, HomalgIdentityMatrix( Dimension( object ), homalg_field ), object );
         
@@ -173,9 +170,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddZeroMorphism( category,
       function( source, range )
-        local homalg_field;
-        
-        homalg_field := UnderlyingFieldForHomalg( source );
         
         return VectorSpaceMorphism( source,
                                     HomalgZeroMatrix( Dimension( source ), Dimension( range ), homalg_field ),
@@ -187,16 +181,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddZeroObject( category,
       function( )
         
-        return VectorSpaceObject( 0, category!.field_for_matrix_category );
+        return VectorSpaceObject( 0, homalg_field );
         
     end );
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
       function( sink, zero_object )
-        local homalg_field, morphism;
-        
-        homalg_field := UnderlyingFieldForHomalg( zero_object );
+        local morphism;
         
         morphism := VectorSpaceMorphism( sink, HomalgZeroMatrix( Dimension( sink ), 0, homalg_field ), zero_object );
         
@@ -207,9 +199,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
       function( source, zero_object )
-        local homalg_field, morphism;
-        
-        homalg_field := UnderlyingFieldForHomalg( zero_object );
+        local morphism;
         
         morphism := VectorSpaceMorphism( zero_object, HomalgZeroMatrix( 0, Dimension( source ), homalg_field ), source );
         
@@ -220,9 +210,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddDirectSum( category,
       function( object_list )
-      local dimension, homalg_field;
-      
-      homalg_field := UnderlyingFieldForHomalg( object_list[1] );
+      local dimension;
       
       dimension := Sum( List( object_list, object -> Dimension( object ) ) );
       
@@ -233,9 +221,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
       function( object_list, projection_number, direct_sum_object )
-        local homalg_field, dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
-        
-        homalg_field := UnderlyingFieldForHomalg( direct_sum_object );
+        local dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
         
         number_of_objects := Length( object_list );
         
@@ -278,9 +264,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
       function( object_list, injection_number, coproduct )
-        local homalg_field, dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
-        
-        homalg_field := UnderlyingFieldForHomalg( coproduct );
+        local dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
         
         number_of_objects := Length( object_list );
         
@@ -324,9 +308,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddKernelObject( category,
       function( morphism )
-        local homalg_field, homalg_matrix;
-        
-        homalg_field := UnderlyingFieldForHomalg( morphism );
+        local homalg_matrix;
         
         homalg_matrix := UnderlyingMatrix( morphism );
         
@@ -337,11 +319,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddKernelEmbedding( category,
       function( morphism )
-        local kernel_emb, homalg_field, kernel_object;
+        local kernel_emb, kernel_object;
         
         kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
-        
-        homalg_field := UnderlyingFieldForHomalg( morphism );
         
         kernel_object := VectorSpaceObject( NrRows( kernel_emb ), homalg_field );
         
@@ -382,9 +362,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddCokernelObject( category,
       function( morphism )
-        local homalg_field, homalg_matrix;
-        
-        homalg_field := UnderlyingFieldForHomalg( morphism );
+        local homalg_matrix;
         
         homalg_matrix := UnderlyingMatrix( morphism );
         
@@ -395,11 +373,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddCokernelProjection( category,
       function( morphism )
-        local cokernel_proj, homalg_field, cokernel_obj;
+        local cokernel_proj, cokernel_obj;
         
         cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
-        
-        homalg_field := UnderlyingFieldForHomalg( morphism );
         
         cokernel_obj := VectorSpaceObject( NrColumns( cokernel_proj ), homalg_field );
         
@@ -476,9 +452,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddTensorProductOnObjects( category,
       [ 
         [ function( object_1, object_2 )
-            local homalg_field;
-            
-            homalg_field := UnderlyingFieldForHomalg( object_1 );
             
             return VectorSpaceObject( Dimension( object_1 ) * Dimension( object_2 ), homalg_field );
             
@@ -520,9 +493,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddTensorUnit( category,
       
       function( )
-        local homalg_field;
-        
-        homalg_field := category!.field_for_matrix_category;
         
         return VectorSpaceObject( 1, homalg_field );
         
@@ -531,9 +501,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddBraiding( category,
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
-        local homalg_field, permutation_matrix, dim, dim_1, dim_2;
-        
-        homalg_field := UnderlyingFieldForHomalg( object_1 );
+        local permutation_matrix, dim, dim_1, dim_2;
         
         dim_1 := Dimension( object_1 );
         
@@ -569,9 +537,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddEvaluationForDual( category,
       function( tensor_object, object, unit )
-        local homalg_field, dimension, column, zero_column, i;
-        
-        homalg_field := UnderlyingFieldForHomalg( object );
+        local dimension, column, zero_column, i;
         
         dimension := Dimension( object );
         
@@ -603,9 +569,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddCoevaluationForDual( category,
       
       function( unit, object, tensor_object )
-        local homalg_field, dimension, row, zero_row, i;
-        
-        homalg_field := UnderlyingFieldForHomalg( object );
+        local dimension, row, zero_row, i;
         
         dimension := Dimension( object );
         
@@ -636,9 +600,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddMorphismToBidual( category,
       function( object, bidual_of_object )
-        local homalg_field;
-        
-        homalg_field := UnderlyingFieldForHomalg( object );
         
         return VectorSpaceMorphism( object,
                                     HomalgIdentityMatrix( Dimension( object ), homalg_field ),
