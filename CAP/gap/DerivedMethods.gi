@@ -519,7 +519,16 @@ AddDerivationToCAP( IsIdenticalToIdentityMorphism,
     return IsEqualForMorphismsOnMor( morphism, IdentityMorphism( Source( morphism ) ) );
     
 end : Description := "IsIdenticalToIdentityMorphism using IsEqualForMorphismsOnMor and IdentityMorphism" );
-  
+
+##
+AddDerivationToCAP( IsIdenticalToZeroMorphism,
+                    
+  function( morphism )
+    
+    return IsEqualForMorphismsOnMor( morphism, ZeroMorphism( Source( morphism ), Range( morphism ) ) );
+    
+end : Description := "IsIdenticalToZeroMorphism using IsEqualForMorphismsOnMor and ZeroMorphism" );
+
 ##
 AddDerivationToCAP( IsZeroForObjects,
                     [ [ IsCongruentForMorphisms, 1 ],
