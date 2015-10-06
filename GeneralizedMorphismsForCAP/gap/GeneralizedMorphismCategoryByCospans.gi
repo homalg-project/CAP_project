@@ -216,54 +216,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
         
     fi;
     
-    
-    ## Additional method for a category, when generalized morphism category is present.
-    
-    InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobjectByCospan,
-                                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ),
-                                    IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                                    
-      function( factor, subobject )
-        local pushout_diagram;
-        
-        factor := AsGeneralizedMorphismByCospan( factor );
-        
-        subobject := AsGeneralizedMorphismByCospan( subobject );
-        
-        return PreCompose( PseudoInverse( factor ), PseudoInverse( subobject ) );
-        
-    end );
-    
-    InstallMethod( IdempotentDefinedBySubobjectByCospan,
-                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                  
-      function( subobject )
-        local generalized;
-        
-        generalized := AsGeneralizedMorphismByCospan( subobject );
-        
-        return PreCompose( PseudoInverse( generalized ), generalized );
-        
-    end );
-    
-    InstallMethod( IdempotentDefinedByFactorobjectByCospan,
-                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                  
-      function( factorobject )
-        
-        return GeneralizedMorphismByCospan( factorobject, factorobject );
-        
-    end );
-    
-    InstallMethod( GeneralizedInverseByCospan,
-                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                  
-      function( morphism )
-        
-        return PseudoInverse( AsGeneralizedMorphismByCospan( morphism ) );
-        
-    end );
-    
     return;
     
 end );
@@ -514,6 +466,50 @@ InstallMethod( HasFullDomain,
     cokernel_projection := CokernelProjection( ReversedArrow( generalized_morphism ) );
     
     return IsZero( PreCompose( Arrow( generalized_morphism ), cokernel_projection ) );
+    
+end );
+
+InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobjectByCospan,
+                              [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                
+  function( factor, subobject )
+    local pushout_diagram;
+    
+    factor := AsGeneralizedMorphismByCospan( factor );
+    
+    subobject := AsGeneralizedMorphismByCospan( subobject );
+    
+    return PreCompose( PseudoInverse( factor ), PseudoInverse( subobject ) );
+    
+end );
+
+InstallMethod( IdempotentDefinedBySubobjectByCospan,
+              [ IsCapCategoryMorphism ],
+              
+  function( subobject )
+    local generalized;
+    
+    generalized := AsGeneralizedMorphismByCospan( subobject );
+    
+    return PreCompose( PseudoInverse( generalized ), generalized );
+    
+end );
+
+InstallMethod( IdempotentDefinedByFactorobjectByCospan,
+              [ IsCapCategoryMorphism ],
+              
+  function( factorobject )
+    
+    return GeneralizedMorphismByCospan( factorobject, factorobject );
+    
+end );
+
+InstallMethod( GeneralizedInverseByCospan,
+              [ IsCapCategoryMorphism ],
+              
+  function( morphism )
+    
+    return PseudoInverse( AsGeneralizedMorphismByCospan( morphism ) );
     
 end );
 

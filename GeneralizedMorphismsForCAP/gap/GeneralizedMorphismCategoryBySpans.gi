@@ -219,51 +219,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
     
     ## Additional method for a category, when generalized morphism category is present.
     
-    InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobjectBySpan,
-                                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ),
-                                    IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                                    
-      function( factor, subobject )
-        local pushout_diagram;
-        
-        factor := AsGeneralizedMorphismBySpan( factor );
-        
-        subobject := AsGeneralizedMorphismBySpan( subobject );
-        
-        return PreCompose( PseudoInverse( factor ), PseudoInverse( subobject ) );
-        
-    end );
-    
-    InstallMethod( IdempotentDefinedBySubobjectBySpan,
-                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                  
-      function( subobject )
-        
-        return GeneralizedMorphismBySpan( subobject, subobject );
-        
-    end );
-    
-    InstallMethod( IdempotentDefinedByFactorobjectBySpan,
-                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                  
-      function( factorobject )
-        local generalized;
-        
-        generalized := AsGeneralizedMorphismBySpan( factorobject );
-        
-        return PreCompose( PseudoInverse( factorobject ), factorobject );
-        
-    end );
-    
-    InstallMethod( GeneralizedInverseBySpan,
-                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                  
-      function( morphism )
-        
-        return PseudoInverse( AsGeneralizedMorphismBySpan( morphism ) );
-        
-    end );
-    
     return;
     
 end );
@@ -516,6 +471,50 @@ InstallMethod( HasFullCodomain,
     kernel_embedding := KernelEmbedding( ReversedArrow( generalized_morphism ) );
     
     return IsZero( PreCompose( kernel_embedding, Arrow( generalized_morphism ) ) );
+    
+end );
+
+InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobjectBySpan,
+                              [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                
+  function( factor, subobject )
+    local pushout_diagram;
+    
+    factor := AsGeneralizedMorphismBySpan( factor );
+    
+    subobject := AsGeneralizedMorphismBySpan( subobject );
+    
+    return PreCompose( PseudoInverse( factor ), PseudoInverse( subobject ) );
+    
+end );
+
+InstallMethod( IdempotentDefinedBySubobjectBySpan,
+              [ IsCapCategoryMorphism ],
+              
+  function( subobject )
+    
+    return GeneralizedMorphismBySpan( subobject, subobject );
+    
+end );
+
+InstallMethod( IdempotentDefinedByFactorobjectBySpan,
+              [ IsCapCategoryMorphism ],
+              
+  function( factorobject )
+    local generalized;
+    
+    generalized := AsGeneralizedMorphismBySpan( factorobject );
+    
+    return PreCompose( PseudoInverse( factorobject ), factorobject );
+    
+end );
+
+InstallMethod( GeneralizedInverseBySpan,
+              [ IsCapCategoryMorphism ],
+              
+  function( morphism )
+    
+    return PseudoInverse( AsGeneralizedMorphismBySpan( morphism ) );
     
 end );
 
