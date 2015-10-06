@@ -39,6 +39,14 @@ DeclareCategory( "IsGeneralizedMorphism",
 ####################################
 
 #! @Description
+#! The argument is an object $a$ in the generalized morphism category.
+#! The output is its underlying honest object
+#! @Returns an object in $\mathbf{A}$
+#! @Arguments a
+DeclareAttribute( "UnderlyingHonestObject",
+                  IsGeneralizedMorphismCategoryObject );
+
+#! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
 #! The output is its domain $d \hookrightarrow a \in \mathbf{A}$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( d, a )$
@@ -105,6 +113,21 @@ DeclareAttribute( "IdempotentDefinedBySubobject",
 #! @Arguments alpha
 DeclareAttribute( "IdempotentDefinedByFactorobject",
                   IsCapCategoryMorphism );
+
+####################################
+##
+#! @Section Operations
+##
+####################################
+
+#! @Description
+#! The arguments are a a factorobject $\beta: b \twoheadrightarrow c$,
+#! and a subobject $\alpha: a \hookrightarrow b$.
+#! The output is the generalized morphism from the factorobject to the subobject.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(c,a)$
+#! @Arguments beta, alpha
+DeclareOperation( "GeneralizedMorphismFromFactorToSubobject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ####################################
 ##

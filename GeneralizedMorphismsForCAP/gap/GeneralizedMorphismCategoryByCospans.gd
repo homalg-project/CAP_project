@@ -49,6 +49,14 @@ DeclareProperty( "HasIdentityAsReversedArrow",
 ####################################
 
 #! @Description
+#! The argument is an object $a$ in the generalized morphism category by cospans.
+#! The output is its underlying honest object
+#! @Returns an object in $\mathbf{A}$
+#! @Arguments a
+DeclareAttribute( "UnderlyingHonestObject",
+                  IsGeneralizedMorphismCategoryByCospansObject );
+
+#! @Description
 #! The argument is a generalized morphism $\alpha$ by 
 #! a cospan $a \rightarrow b \leftarrow c$.
 #! The output is its arrow $a \rightarrow b$.
@@ -92,46 +100,107 @@ DeclareAttribute( "PseudoInverse",
 DeclareAttribute( "GeneralizedInverseByCospan",
                   IsCapCategoryMorphism );
 
-
+#! @Description
+#! The argument is a subobject $\alpha: a \hookrightarrow b \in \mathbf{A}$.
+#! The output is the idempotent $b \rightarrow b \in \mathbf{G(A)}$ by cospan
+#! defined by $\alpha$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,b)$
+#! @Arguments alpha
 DeclareAttribute( "IdempotentDefinedBySubobjectByCospan",
                   IsCapCategoryMorphism );
 
+#! @Description
+#! The argument is a factorobject $\alpha: b \twoheadrightarrow a \in \mathbf{A}$.
+#! The output is the idempotent $b \rightarrow b \in \mathbf{G(A)}$ by cospan
+#! defined by $\alpha$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,b)$
+#! @Arguments alpha
 DeclareAttribute( "IdempotentDefinedByFactorobjectByCospan",
                   IsCapCategoryMorphism );
 
+#! @Description
+#! The argument is a generalized morphism $\alpha: a \rightarrow b$ by 
+#! a cospan. The output is its normalization by cospan.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,b)$
+#! @Arguments alpha
 DeclareAttribute( "NormalizedCospan",
                   IsGeneralizedMorphismByCospan );
 
 ####################################
 ##
-## Constructors
+#! @Section Operations
 ##
 ####################################
 
+#! @Description
+#! The arguments are a a factorobject $\beta: b \twoheadrightarrow c$,
+#! and a subobject $\alpha: a \hookrightarrow b$.
+#! The output is the generalized morphism by cospan from the factorobject to the subobject.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(c,a)$
+#! @Arguments beta, alpha
 DeclareOperation( "GeneralizedMorphismFromFactorToSubobjectByCospan",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ####################################
 ##
-## Constructors
+#! @Section Constructors
 ##
 ####################################
 
+#! @Description
+#! The arguments are morphisms $\alpha: a \rightarrow b$ and $\beta: c \rightarrow b$ in $\mathbf{A}$.
+#! The output is a generalized morphism by cospan
+#! with arrow $\alpha$ and reversed arrow $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,c)$
+#! @Arguments alpha, beta
 DeclareOperation( "GeneralizedMorphismByCospan",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are morphisms $\alpha: a \leftarrow b$,
+#! $\beta: b \rightarrow c$,
+#! and $\gamma: c \leftarrow d$ in $\mathbf{A}$.
+#! The output is a generalized morphism by cospan
+#! defined by the composition the given three arrows 
+#! regarded as generalized morphisms.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,d)$
+#! @Arguments alpha, beta, gamma
 DeclareOperation( "GeneralizedMorphismByCospan",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are morphisms $\alpha: a \leftarrow b$,
+#! and $\beta: b \rightarrow c$ in $\mathbf{A}$.
+#! The output is a generalized morphism by cospan
+#! defined by the composition the given two arrows
+#! regarded as generalized morphisms.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,c)$
+#! @Arguments alpha, beta, gamma
 DeclareOperation( "GeneralizedMorphismByCospanWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$ in $\mathbf{A}$.
+#! The output is the honest generalized morphism by cospan defined by $\alpha$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,b)$
+#! @Arguments alpha
 DeclareAttribute( "AsGeneralizedMorphismByCospan",
                   IsCapCategoryMorphism );
 
+#! @Description
+#! The argument is an abelian category $\mathbf{A}$.
+#! The output is its generalized morphism category $\mathbf{G(A)}$ by cospans.
+#! @Returns a category
+#! @Arguments A
 DeclareAttribute( "GeneralizedMorphismCategoryByCospans",
                   IsCapCategory );
 
+#! @Description
+#! The argument is an object $a$ in an abelian category $\mathbf{A}$.
+#! The output is the object in the generalized morphism category by cospans
+#! whose underlying honest object is $a$.
+#! @Returns an object in $\mathbf{G(A)}$
+#! @Arguments a
 DeclareAttribute( "GeneralizedMorphismByCospansObject",
                   IsCapCategoryObject );
 
