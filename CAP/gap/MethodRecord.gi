@@ -82,14 +82,7 @@ IdentityMorphism := rec(
   installation_name := "IdentityMorphism",
   filter_list := [ "object" ],
   io_type := [ [ "a" ], [ "a", "a" ] ],
-  return_type := "morphism",
-  
-  ## TODO: maybe convert to a logic entry 
-  post_function := function( object, identity_morphism )
-    
-    SetIsIdenticalToIdentityMorphism( identity_morphism, true );
-    
-  end ),
+  return_type := "morphism" ),
 
 InverseImmutable := rec(
 # Type check for IsIsomorphism
@@ -371,14 +364,7 @@ ZeroMorphism := rec(
   filter_list := [ "object", "object" ],
   io_type := [ [ "a", "b" ], [ "a", "b" ] ],
   cache_name := "ZeroMorphism",
-  return_type := "morphism",
-  
-  ## TODO: maybe convert to a logic entry 
-  post_function := function( source, range, zero_morphism )
-    
-    SetIsIdenticalToZeroMorphism( zero_morphism, true );
-    
-  end ),
+  return_type := "morphism" ),
 
 DirectSum := rec(
   installation_name := "DirectSumOp",
