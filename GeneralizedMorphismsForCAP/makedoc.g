@@ -1,7 +1,23 @@
-#if fail = LoadPackage("AutoDoc", ">= 2014.03.27") then
-#    Error("AutoDoc version 2014.03.27 is required.");
-#fi;
 #
-#AutoDoc( "GeneralizedMorphismsForCAP" : scaffold := true, autodoc := true );
+# GeneralizedMorphismsForCAP: Implementations of generalized morphisms for the CAP project
+#
+LoadPackage( "AutoDoc" );
+
+AutoDoc( "GeneralizedMorphismsForCAP" : scaffold := true, autodoc :=
+         rec( files := [ "doc/Intros.autodoc" ],
+         scan_dirs := [ "gap", "examples", "doc" ] ),
+         maketest := rec( folder := ".",
+                          commands :=
+                            [ "LoadPackage( \"CAP\" );",
+                              "LoadPackage( \"IO_ForHomalg\" );",
+                              "LoadPackage( \"GaussForHomalg\" );",
+                              "LoadPackage( \"GeneralizedMorphismsForCAP\" );",
+                              "HOMALG_IO.show_banners := false;",
+                              "HOMALG_IO.suppress_PID := true;",
+                              "HOMALG_IO.use_common_stream := true;",
+                             ]
+                           )
+);
+
 
 QUIT;

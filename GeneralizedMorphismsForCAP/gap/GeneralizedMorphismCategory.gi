@@ -5,8 +5,6 @@
 ##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @Chapter Generalized morphism category
-##
 #############################################################################
 
 ## GAP-Hack in order to avoid the pre-installed GAP-method Domain
