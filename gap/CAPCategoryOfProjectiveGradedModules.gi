@@ -1318,10 +1318,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           # have to compute the colift
           return Colift( morphism_list[ 2 ], 
                        PreCompose( morphism_list[ 1 ],                       
-                                    CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism_list[ 1 ] ),
-                                                                                             embedding1_matrix,
-                                                                                             pushout_object
-                                                                                            )
+                                   CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ 1 ] ),
+                                                                                            embedding1_matrix,
+                                                                                            pushout_object
+                                                                                           )
                                   )
                       );
         
@@ -2584,8 +2584,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
 
           # have to compute the colift
           return Colift( morphism_list[ 2 ], 
-                       PreCompose( morphism_list[ 1 ],                       
-                                    CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism_list[ 1 ] ),
+                       PreCompose( morphism_list[ 1 ],
+                                    CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ 1 ] ),
                                                                                              embedding1_matrix,
                                                                                              pushout_object
                                                                                             )
