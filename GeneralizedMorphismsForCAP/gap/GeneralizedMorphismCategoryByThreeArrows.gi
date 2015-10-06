@@ -241,50 +241,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
     
     ## Additional method for a category, when generalized morphism category is present.
     
-    InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobjectByThreeArrows,
-                                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ),
-                                    IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                                    
-      function( factor, subobject )
-        local composition, image_embedding, coastriction_to_image;
-        
-        composition := PreCompose( subobject, factor );
-        
-        coastriction_to_image := CoastrictionToImage( composition );
-        
-        image_embedding := ImageEmbedding( composition );
-        
-        return GeneralizedMorphismByThreeArrows( image_embedding, IdentityMorphism( Range( coastriction_to_image ) ), coastriction_to_image );
-        
-    end );
-    
-    InstallMethod( IdempotentDefinedBySubobjectByThreeArrows,
-                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                  
-      function( subobject )
-        
-        return GeneralizedMorphismByThreeArrowsWithSourceAid( subobject, subobject );
-        
-    end );
-    
-    InstallMethod( IdempotentDefinedByFactorobjectByThreeArrows,
-                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                  
-      function( factorobject )
-        
-        return GeneralizedMorphismByThreeArrowsWithRangeAid( factorobject, factorobject );
-        
-    end );
-    
-    InstallMethod( GeneralizedInverseByThreeArrows,
-                  [ IsCapCategoryMorphism and MorphismFilter( underlying_honest_category ) ],
-                  
-      function( morphism )
-        
-        return PseudoInverse( AsGeneralizedMorphismByThreeArrows( morphism ) );
-        
-    end );
-    
     return;
     
 end );
@@ -864,6 +820,49 @@ InstallMethod( PseudoInverse,
     
     return GeneralizedMorphismByThreeArrowsWithRangeAid( RangeAid( generalized_morphism ),
                                             Arrow( generalized_morphism ) );
+    
+end );
+
+InstallMethodWithCacheFromObject( GeneralizedMorphismFromFactorToSubobjectByThreeArrows,
+                              [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                
+  function( factor, subobject )
+    local composition, image_embedding, coastriction_to_image;
+    
+    composition := PreCompose( subobject, factor );
+    
+    coastriction_to_image := CoastrictionToImage( composition );
+    
+    image_embedding := ImageEmbedding( composition );
+    
+    return GeneralizedMorphismByThreeArrows( image_embedding, IdentityMorphism( Range( coastriction_to_image ) ), coastriction_to_image );
+    
+end );
+
+InstallMethod( IdempotentDefinedBySubobjectByThreeArrows,
+              [ IsCapCategoryMorphism ],
+              
+  function( subobject )
+    
+    return GeneralizedMorphismByThreeArrowsWithSourceAid( subobject, subobject );
+    
+end );
+
+InstallMethod( IdempotentDefinedByFactorobjectByThreeArrows,
+              [ IsCapCategoryMorphism ],
+              
+  function( factorobject )
+    
+    return GeneralizedMorphismByThreeArrowsWithRangeAid( factorobject, factorobject );
+    
+end );
+
+InstallMethod( GeneralizedInverseByThreeArrows,
+              [ IsCapCategoryMorphism ],
+              
+  function( morphism )
+    
+    return PseudoInverse( AsGeneralizedMorphismByThreeArrows( morphism ) );
     
 end );
 
