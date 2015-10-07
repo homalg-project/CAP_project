@@ -12,6 +12,7 @@ AutoDoc( "GeneralizedMorphismsForCAP" : scaffold := true, autodoc :=
                               "LoadPackage( \"IO_ForHomalg\" );",
                               "LoadPackage( \"GaussForHomalg\" );",
                               "LoadPackage( \"GeneralizedMorphismsForCAP\" );",
+                              "LoadPackage( \"LinearAlgebraForCAP\" );",
                               "HOMALG_IO.show_banners := false;",
                               "HOMALG_IO.suppress_PID := true;",
                               "HOMALG_IO.use_common_stream := true;",
