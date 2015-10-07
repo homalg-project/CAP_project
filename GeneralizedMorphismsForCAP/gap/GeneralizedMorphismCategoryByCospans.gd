@@ -63,7 +63,7 @@ DeclareProperty( "HasIdentityAsReversedArrow",
 
 #! @Description
 #! The argument is an object $a$ in the generalized morphism category by cospans.
-#! The output is its underlying honest object
+#! The output is its underlying honest object.
 #! @Returns an object in $\mathbf{A}$
 #! @Arguments a
 DeclareAttribute( "UnderlyingHonestObject",

@@ -88,6 +88,9 @@ DeclareAttribute( "DomainAssociatedMorphismCodomainTriple",
 DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
                                           IsGeneralizedMorphism );
 
+##
+## When calling this method on a generalized morphism, the effect
+## differs from the effect of PseudoInverse.
 #! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b \in \mathbf{A}$.
 #! The output is its generalized inverse $b \rightarrow a$.
@@ -113,6 +116,14 @@ DeclareAttribute( "IdempotentDefinedBySubobject",
 #! @Arguments alpha
 DeclareAttribute( "IdempotentDefinedByFactorobject",
                   IsCapCategoryMorphism );
+
+#! @Description
+#! The argument is a generalized morphism category $C = \mathbf{G(A)}$.
+#! The output is $\mathbf{A}$.
+#! @Returns a category
+#! @Arguments C
+DeclareAttribute( "UnderlyingHonestCategory",
+                  IsCapCategory );
 
 ####################################
 ##
