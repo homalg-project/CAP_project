@@ -182,14 +182,15 @@ PreCompose := rec(
   cache_name := "PreCompose",
   
   pre_function := function( mor_left, mor_right )
+    local is_equal_for_objects;
     
-    if IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) = fail then
+    is_equal_for_objects := IsEqualForObjects( Range( mor_left ), Source( mor_right ) );
+    
+    if is_equal_for_objects = fail then
       
       return [ false, "cannot decide whether morphisms are composable" ];
       
-    fi;
-    
-    if not IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) then
+    elif is_equal_for_objects = false then
         
         return [ false, "morphisms not composable" ];
         
@@ -206,14 +207,15 @@ PostCompose := rec(
   cache_name := "PostCompose",
   
   pre_function := function( mor_right, mor_left )
+    local is_equal_for_objects;
     
-    if IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) = fail then
+    is_equal_for_objects := IsEqualForObjects( Range( mor_left ), Source( mor_right ) );
+    
+    if is_equal_for_objects = fail then
       
       return [ false, "cannot decide whether morphisms are composable" ];
       
-    fi;
-    
-    if not IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) then
+    elif is_equal_for_objects = false then
         
         return [ false, "morphisms not composable" ];
         
@@ -1246,7 +1248,7 @@ ProjectionInFactorOfFiberProduct := rec(
   pre_function := function( diagram, projection_number, method_selection_morphism )
     local base, current_morphism, current_value;
     
-    if not projection_number in [ 1 .. Length( diagram ) ] then
+    if projection_number < 1 or projection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( projection_number ), "th projection" ) ];
     fi;
     
@@ -1278,7 +1280,7 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   pre_function := function( diagram, projection_number, pullback )
     local base, current_morphism, current_value;
     
-    if not projection_number in [ 1 .. Length( diagram ) ] then
+    if projection_number < 1 or projection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( projection_number ), "th projection" ) ];
     fi;
     
@@ -1459,7 +1461,7 @@ InjectionOfCofactorOfPushout := rec(
   pre_function := function( diagram, injection_number, method_selection_morphism )
     local cobase, current_morphism, current_value;
     
-    if not injection_number in [ 1 .. Length( diagram ) ] then
+    if injection_number < 1 or injection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( injection_number ), "th injection" ) ];
     fi;
     
@@ -1491,7 +1493,7 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
   pre_function := function( diagram, injection_number, pushout )
     local cobase, current_morphism, current_value;
     
-    if not injection_number in [ 1 .. Length( diagram ) ] then
+    if injection_number < 1 or injection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( injection_number ), "th injection" ) ];
     fi;
     
@@ -1854,14 +1856,17 @@ IsOne := rec(
   return_type := "bool",
   property_of := "morphism",
   pre_function := function( morphism )
+    local is_equal_for_objects;
     
-    if IsEqualForObjects( Source( morphism ), Range( morphism ) ) = fail then
+    is_equal_for_objects := IsEqualForObjects( Source( morphism ), Range( morphism ) );
+    
+    if is_equal_for_objects = fail then
       
       return [ false, "cannot decide whether morphism is the identity" ];
       
     fi;
     
-    if not IsEqualForObjects( Source( morphism ), Range( morphism ) ) then
+    if is_equal_for_objects = false then
         
         return [ false, "source and range of the given morphism are not equal" ];
         
