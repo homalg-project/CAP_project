@@ -39,6 +39,19 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_C
 
 DeclareFilter( "WasCreatedAsGeneralizedMorphismCategoryByCospans" );
 
+####################################
+##
+#! @Section Properties
+##
+####################################
+
+#! @Description
+#! The argument is a generalized morphism $\alpha$ by 
+#! a cospan $a \rightarrow b \leftarrow c$.
+#! The output is <C>true</C> if $b \leftarrow c$
+#! is congruent to an identity morphism,
+#! <C>false</C> otherwise.
+#! @Arguments alpha
 DeclareProperty( "HasIdentityAsReversedArrow",
                  IsGeneralizedMorphismByCospan );
 
@@ -61,7 +74,7 @@ DeclareAttribute( "UnderlyingHonestObject",
 #! a cospan $a \rightarrow b \leftarrow c$.
 #! The output is its arrow $a \rightarrow b$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}(a,c)$
-#! @Arguments object
+#! @Arguments alpha
 DeclareAttribute( "Arrow",
                   IsGeneralizedMorphismByCospan );
 
@@ -70,7 +83,7 @@ DeclareAttribute( "Arrow",
 #! a cospan $a \rightarrow b \leftarrow c$.
 #! The output is its reversed arrow $b \leftarrow c$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}(c,b)$
-#! @Arguments object
+#! @Arguments alpha
 DeclareAttribute( "ReversedArrow",
                   IsGeneralizedMorphismByCospan );
 
@@ -79,7 +92,7 @@ DeclareAttribute( "ReversedArrow",
 #! a cospan.
 #! The output is its normalized cospan pair $(a \rightarrow d, d \leftarrow b)$.
 #! @Returns a pair of morphisms in $\mathbf{A}$.
-#! @Arguments object
+#! @Arguments alpha
 DeclareAttribute( "NormalizedCospanTuple",
                   IsGeneralizedMorphismByCospan );
 
@@ -175,7 +188,7 @@ DeclareOperation( "GeneralizedMorphismByCospan",
 #! defined by the composition the given two arrows
 #! regarded as generalized morphisms.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,c)$
-#! @Arguments alpha, beta, gamma
+#! @Arguments alpha, beta
 DeclareOperation( "GeneralizedMorphismByCospanWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
