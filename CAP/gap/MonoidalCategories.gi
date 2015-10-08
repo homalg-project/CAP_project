@@ -58,7 +58,7 @@ InstallMethod( LeftUnitor,
     
     category := CapCategory( object );
     
-    return LeftUnitor( object, TensorProductOnObjects( TensorUnit( category ), object ) );
+    return LeftUnitorWithGivenTensorProduct( object, TensorProductOnObjects( TensorUnit( category ), object ) );
     
 end );
 

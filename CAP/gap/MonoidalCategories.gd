@@ -224,26 +224,26 @@ DeclareAttribute( "LeftUnitor",
 #! The output is the left unitor $\lambda_a: 1 \otimes a \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(1 \otimes a, a )$
 #! @Arguments a, s
-DeclareOperation( "LeftUnitor",
+DeclareOperation( "LeftUnitorWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>LeftUnitor</C>.
+#! to the category for the basic operation <C>LeftUnitorWithGivenTensorProduct</C>.
 #! $F: (a, 1 \otimes a) \mapsto \lambda_a$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftUnitor",
+DeclareOperation( "AddLeftUnitorWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftUnitor",
+DeclareOperation( "AddLeftUnitorWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftUnitor",
+DeclareOperation( "AddLeftUnitorWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftUnitor",
+DeclareOperation( "AddLeftUnitorWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 

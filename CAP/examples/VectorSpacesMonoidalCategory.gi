@@ -750,7 +750,7 @@ AddTensorUnit( vecspaces,
 end );
 
 # ##
-# AddLeftUnitor( vecspaces,
+# AddLeftUnitorWithGivenTensorProduct( vecspaces,
 #   
 #   function( object, unit_tensored_object )
 #     
