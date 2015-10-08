@@ -730,7 +730,7 @@ AddTensorProductOnMorphismsWithGivenTensorProducts( vecspaces,
 end );
 
 # ##
-# AddAssociatorRightToLeft( vecspaces,
+# AddAssociatorRightToLeftWithGivenTensorProducts( vecspaces,
 #   
 #   function( right_associated_object, object_1, object_2, object_3, left_associated_object )
 #     

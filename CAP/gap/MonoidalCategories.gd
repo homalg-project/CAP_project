@@ -118,26 +118,26 @@ DeclareOperation( "AssociatorRightToLeft",
 #! The output is the associator $\alpha_{a,(b,c)}: a \otimes (b \otimes c) \rightarrow (a \otimes b) \otimes c$.
 #! @Returns a morphism in $\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b) \otimes c )$.
 #! @Arguments s, a, b, c, r
-DeclareOperation( "AssociatorRightToLeft",
+DeclareOperation( "AssociatorRightToLeftWithGivenTensorProducts",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>AssociatorRightToLeft</C>.
+#! to the category for the basic operation <C>AssociatorRightToLeftWithGivenTensorProducts</C>.
 #! $F: ( a \otimes (b \otimes c), a, b, c, (a \otimes b) \otimes c ) \mapsto \alpha_{a,(b,c)}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddAssociatorRightToLeft",
+DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddAssociatorRightToLeft",
+DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddAssociatorRightToLeft",
+DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddAssociatorRightToLeft",
+DeclareOperation( "AddAssociatorRightToLeftWithGivenTensorProducts",
                   [ IsCapCategory, IsList ] );
 
 

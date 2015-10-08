@@ -1842,7 +1842,7 @@ end : CategoryFilter := IsStrictMonoidalCategory,
       Description := "AssociatorLeftToRight as the identity morphism" );
 
 ##
-AddDerivationToCAP( AssociatorRightToLeft,
+AddDerivationToCAP( AssociatorRightToLeftWithGivenTensorProducts,
                     
   function( right_associated_object, object_1, object_2, object_3, left_associated_object )
     
@@ -1896,15 +1896,16 @@ AddDerivationToCAP( AssociatorLeftToRight,
                     
   function( left_associated_object, object_1, object_2, object_3, right_associated_object )
     
-    return Inverse( AssociatorRightToLeft( right_associated_object, 
-                                           object_1, object_2, object_3,
-                                           left_associated_object )
+    return Inverse( AssociatorRightToLeftWithGivenTensorProducts(
+                      right_associated_object,
+                      object_1, object_2, object_3,
+                      left_associated_object )
                   );
     
-end : Description := "AssociatorLeftToRight as the inverse of AssociatorRightToLeft" );
+end : Description := "AssociatorLeftToRight as the inverse of AssociatorRightToLeftWithGivenTensorProducts" );
 
 ##
-AddDerivationToCAP( AssociatorRightToLeft,
+AddDerivationToCAP( AssociatorRightToLeftWithGivenTensorProducts,
                     
   function( right_associated_object, object_1, object_2, object_3, left_associated_object )
     
@@ -1913,7 +1914,7 @@ AddDerivationToCAP( AssociatorRightToLeft,
                                            right_associated_object )
                   );
     
-end : Description := "AssociatorRightToLeft as the inverse of AssociatorLeftToRight" );
+end : Description := "AssociatorRightToLeftWithGivenTensorProducts as the inverse of AssociatorLeftToRight" );
 
 ##
 AddDerivationToCAP( LeftUnitor,

@@ -2359,10 +2359,10 @@ TensorProductOnMorphismsWithGivenTensorProducts := rec(
   cache_name := "TensorProductOnMorphismsWithGivenTensorProducts",
   return_type := "morphism" ),
 
-AssociatorRightToLeft := rec(
-  installation_name := "AssociatorRightToLeft",
+AssociatorRightToLeftWithGivenTensorProducts := rec(
+  installation_name := "AssociatorRightToLeftWithGivenTensorProducts",
   filter_list := [ "object", "object", "object", "object", "object" ],
-  cache_name := "AssociatorRightToLeft",
+  cache_name := "AssociatorRightToLeftWithGivenTensorProducts",
   return_type := "morphism" ),
 
 AssociatorLeftToRight := rec(

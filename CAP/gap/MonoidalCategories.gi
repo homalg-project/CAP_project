@@ -29,7 +29,7 @@ InstallMethod( AssociatorRightToLeft,
                
   function( object_1, object_2, object_3 )
     
-    return AssociatorRightToLeft( TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ),
+    return AssociatorRightToLeftWithGivenTensorProducts( TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ),
                                   object_1, object_2, object_3,
                                   TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ) 
                                 );
