@@ -761,7 +761,7 @@ end );
 # end );
 # 
 # ##
-# AddRightUnitor( vecspaces,
+# AddRightUnitorWithGivenTensorProduct( vecspaces,
 #   
 #   function( object, object_tensored_unit )
 #     

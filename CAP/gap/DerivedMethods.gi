@@ -1872,14 +1872,14 @@ end : CategoryFilter := IsStrictMonoidalCategory,
       Description := "LeftUnitorInverseWithGivenTensorProduct as the identity morphism" );
 
 ##
-AddDerivationToCAP( RightUnitor,
+AddDerivationToCAP( RightUnitorWithGivenTensorProduct,
                     
   function( object, object_tensored_unit )
     
     return IdentityMorphism( object );
     
 end : CategoryFilter := IsStrictMonoidalCategory,
-      Description := "RightUnitor as the identity morphism" );
+      Description := "RightUnitorWithGivenTensorProduct as the identity morphism" );
 
 ##
 AddDerivationToCAP( RightUnitorInverse,
@@ -1936,22 +1936,22 @@ AddDerivationToCAP( LeftUnitorInverseWithGivenTensorProduct,
 end : Description := "LeftUnitorInverseWithGivenTensorProduct as the inverse of LeftUnitorWithGivenTensorProduct" );
 
 ##
-AddDerivationToCAP( RightUnitor,
+AddDerivationToCAP( RightUnitorWithGivenTensorProduct,
                   
   function( object, object_tensored_unit )
     
     return Inverse( RightUnitorInverse( object, object_tensored_unit ) );
     
-end : Description := "RightUnitor as the inverse of RightUnitorInverse" );
+end : Description := "RightUnitorWithGivenTensorProduct as the inverse of RightUnitorInverse" );
 
 ##
 AddDerivationToCAP( RightUnitorInverse,
                   
   function( object, object_tensored_unit )
     
-    return Inverse( RightUnitor( object, object_tensored_unit ) );
+    return Inverse( RightUnitorWithGivenTensorProduct( object, object_tensored_unit ) );
     
-end : Description := "RightUnitorInverse as the inverse of RightUnitor" );
+end : Description := "RightUnitorInverse as the inverse of RightUnitorWithGivenTensorProduct" );
 
 ##
 AddDerivationToCAP( Braiding,

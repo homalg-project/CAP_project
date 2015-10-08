@@ -299,26 +299,26 @@ DeclareAttribute( "RightUnitor",
 #! The output is the right unitor $\rho_a: a \otimes 1 \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(a \otimes 1, a )$
 #! @Arguments a, s
-DeclareOperation( "RightUnitor",
+DeclareOperation( "RightUnitorWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>RightUnitor</C>.
+#! to the category for the basic operation <C>RightUnitorWithGivenTensorProduct</C>.
 #! $F: (a, a \otimes 1) \mapsto \rho_a$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddRightUnitor",
+DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddRightUnitor",
+DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddRightUnitor",
+DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddRightUnitor",
+DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 

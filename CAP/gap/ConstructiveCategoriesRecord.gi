@@ -51,7 +51,7 @@ IsMonoidalCategory  := Concatenation( [
 "AssociatorRightToLeftWithGivenTensorProducts",
 "LeftUnitorWithGivenTensorProduct",
 "LeftUnitorInverseWithGivenTensorProduct",
-"RightUnitor",
+"RightUnitorWithGivenTensorProduct",
 "RightUnitorInverse"
 ], ~.EveryCategory ),
 
