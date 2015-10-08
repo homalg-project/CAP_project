@@ -2051,7 +2051,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "InternalHomOnObjects as the range of IsomorphismFromTensorProductToInternalHom" );
 
 ##
-AddDerivationToCAP( InternalHomOnMorphisms,
+AddDerivationToCAP( InternalHomOnMorphismsWithGivenInternalHoms,
                   
   function( internal_hom_source, morphism_1, morphism_2, internal_hom_range )
     local dual_morphism;
@@ -2064,7 +2064,7 @@ AddDerivationToCAP( InternalHomOnMorphisms,
                      );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "InternalHomOnMorphisms using functorality of Dual and TensorProduct" );
+      Description := "InternalHomOnMorphismsWithGivenInternalHoms using functorality of Dual and TensorProduct" );
 
 ##
 AddDerivationToCAP( MorphismFromBidual,
@@ -2972,7 +2972,7 @@ AddFinalDerivation( IsomorphismFromTensorProductToInternalHom,
                       [ DualOnObjects, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalHomOnObjects,
-                      InternalHomOnMorphisms,
+                      InternalHomOnMorphismsWithGivenInternalHoms,
                       EvaluationMorphism,
                       CoevaluationMorphism,
                       TensorProductToInternalHomAdjunctionMap,
@@ -2999,7 +2999,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
                       [ DualOnObjects, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalHomOnObjects,
-                      InternalHomOnMorphisms,
+                      InternalHomOnMorphismsWithGivenInternalHoms,
                       EvaluationMorphism,
                       CoevaluationMorphism,
                       TensorProductToInternalHomAdjunctionMap,
@@ -3029,7 +3029,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       [ DualOnObjects, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalHomOnObjects,
-                      InternalHomOnMorphisms,
+                      InternalHomOnMorphismsWithGivenInternalHoms,
                       EvaluationMorphism,
                       CoevaluationMorphism,
                       TensorProductToInternalHomAdjunctionMap,
@@ -3056,7 +3056,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       [ DualOnObjects, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalHomOnObjects,
-                      InternalHomOnMorphisms,
+                      InternalHomOnMorphismsWithGivenInternalHoms,
                       EvaluationMorphism,
                       CoevaluationMorphism,
                       TensorProductToInternalHomAdjunctionMap,

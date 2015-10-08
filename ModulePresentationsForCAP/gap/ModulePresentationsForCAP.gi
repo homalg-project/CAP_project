@@ -1303,7 +1303,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_LEFT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddInternalHomOnMorphisms( category,
+    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
       function( new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
@@ -1334,7 +1334,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddInternalHomOnMorphisms( category,
+    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
       function( new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;

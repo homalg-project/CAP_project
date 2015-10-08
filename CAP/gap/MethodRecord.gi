@@ -2420,11 +2420,11 @@ InternalHomOnObjects := rec(
   cache_name := "InternalHomOnObjects",
   return_type := "object" ),
 
-InternalHomOnMorphisms := rec(
-  installation_name := "InternalHomOnMorphisms",
+InternalHomOnMorphismsWithGivenInternalHoms := rec(
+  installation_name := "InternalHomOnMorphismsWithGivenInternalHoms",
   filter_list := [ "object", "morphism", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
-  cache_name := "InternalHomOnMorphisms",
+  cache_name := "InternalHomOnMorphismsWithGivenInternalHoms",
   return_type := "morphism" ),
 
 EvaluationMorphism := rec(

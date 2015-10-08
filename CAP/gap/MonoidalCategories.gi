@@ -127,7 +127,7 @@ InstallMethod( InternalHomOnMorphisms,
                
   function( morphism_1, morphism_2 )
     
-    return InternalHomOnMorphisms( InternalHomOnObjects( Range( morphism_1 ), Source( morphism_2 ) ),
+    return InternalHomOnMorphismsWithGivenInternalHoms( InternalHomOnObjects( Range( morphism_1 ), Source( morphism_2 ) ),
                                    morphism_1, morphism_2,
                                    InternalHomOnObjects( Source( morphism_1 ), Range( morphism_2 ) )
                                  );

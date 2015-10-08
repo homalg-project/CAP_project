@@ -522,26 +522,26 @@ DeclareOperation( "InternalHomOnMorphisms",
 #! $\underline{\mathrm{Hom}}(\alpha,\beta): \underline{\mathrm{Hom}}(a',b) \rightarrow \underline{\mathrm{Hom}}(a,b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \underline{\mathrm{Hom}}(a',b), \underline{\mathrm{Hom}}(a,b') )$
 #! @Arguments s, alpha, beta, r
-DeclareOperation( "InternalHomOnMorphisms",
+DeclareOperation( "InternalHomOnMorphismsWithGivenInternalHoms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>InternalHomOnMorphisms</C>.
+#! to the category for the basic operation <C>InternalHomOnMorphismsWithGivenInternalHoms</C>.
 #! $F: (\underline{\mathrm{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \underline{\mathrm{Hom}}(a,b') ) \mapsto \underline{\mathrm{Hom}}(\alpha,\beta)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddInternalHomOnMorphisms",
+DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInternalHomOnMorphisms",
+DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInternalHomOnMorphisms",
+DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInternalHomOnMorphisms",
+DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
                   [ IsCapCategory, IsList ] );
 
 ##
