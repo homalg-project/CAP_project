@@ -2756,7 +2756,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "CoevaluationMorphismWithGivenRange using the tensor hom adjunction on the identity" );
 
 ##
-AddDerivationToCAP( MonoidalPreComposeMorphism,
+AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
                   
   function( new_source, x, y, z, new_range )
     local hom_x_y, hom_y_z, morphism;
@@ -2795,10 +2795,10 @@ AddDerivationToCAP( MonoidalPreComposeMorphism,
            );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "MonoidalPreComposeMorphism using associator, braiding, evaluation, and tensor hom adjunction" );
+      Description := "MonoidalPreComposeMorphismWithGivenObjects using associator, braiding, evaluation, and tensor hom adjunction" );
 
 ##
-AddDerivationToCAP( MonoidalPreComposeMorphism,
+AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
                   
   function( new_source, x, y, z, new_range )
     local hom_x_y, hom_y_z, morphism;
@@ -2834,7 +2834,7 @@ AddDerivationToCAP( MonoidalPreComposeMorphism,
            );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
-      Description := "MonoidalPreComposeMorphism using, braiding, evaluation, and tensor hom adjunction" );
+      Description := "MonoidalPreComposeMorphismWithGivenObjects using, braiding, evaluation, and tensor hom adjunction" );
 
 ##
 AddDerivationToCAP( MonoidalPostComposeMorphism,
@@ -2911,7 +2911,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "MonoidalPostComposeMorphism using MonoidalPreComposeMorphism and braiding" );
 
 ##
-AddDerivationToCAP( MonoidalPreComposeMorphism,
+AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
                     
   function( new_source, x, y, z, new_range )
     local braiding;
@@ -2921,7 +2921,7 @@ AddDerivationToCAP( MonoidalPreComposeMorphism,
     return PreCompose( braiding, MonoidalPostComposeMorphism( x, y, z ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "MonoidalPreComposeMorphism using MonoidalPostComposeMorphism and braiding" );
+      Description := "MonoidalPreComposeMorphismWithGivenObjects using MonoidalPostComposeMorphism and braiding" );
 
 ##
 AddDerivationToCAP( MorphismFromCoimageToImage,
@@ -2977,7 +2977,7 @@ AddFinalDerivation( IsomorphismFromTensorProductToInternalHom,
                       CoevaluationMorphismWithGivenRange,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
-                      MonoidalPreComposeMorphism,
+                      MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphism,
                       TensorProductInternalHomCompatibilityMorphism,
                       TensorProductDualityCompatibilityMorphism,
@@ -3004,7 +3004,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
                       CoevaluationMorphismWithGivenRange,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
-                      MonoidalPreComposeMorphism,
+                      MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphism,
                       TensorProductInternalHomCompatibilityMorphism,
                       TensorProductDualityCompatibilityMorphism,
@@ -3034,7 +3034,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       CoevaluationMorphismWithGivenRange,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
-                      MonoidalPreComposeMorphism,
+                      MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphism,
                       TensorProductInternalHomCompatibilityMorphism,
                       TensorProductDualityCompatibilityMorphism,
@@ -3061,7 +3061,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       CoevaluationMorphismWithGivenRange,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
-                      MonoidalPreComposeMorphism,
+                      MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphism,
                       TensorProductInternalHomCompatibilityMorphism,
                       TensorProductDualityCompatibilityMorphism,

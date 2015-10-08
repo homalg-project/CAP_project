@@ -684,7 +684,7 @@ DeclareOperation( "AddInternalHomToTensorProductAdjunctionMap",
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the precomposition morphism
-#! $\mathrm{MonoidalPreComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
+#! $\mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "MonoidalPreComposeMorphism",
@@ -696,29 +696,29 @@ DeclareOperation( "MonoidalPreComposeMorphism",
 #! three objects $a,b,c$,
 #! and an object $r = \mathrm{\underline{Hom}}(a,c)$.
 #! The output is the precomposition morphism
-#! $\mathrm{MonoidalPreComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
+#! $\mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )$.
 #! @Arguments s,a,b,c,r
-DeclareOperation( "MonoidalPreComposeMorphism",
+DeclareOperation( "MonoidalPreComposeMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>MonoidalPreComposeMorphism</C>.
-#! $F: (\mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPreComposeMorphism}_{a,b,c}$.
+#! to the category for the basic operation <C>MonoidalPreComposeMorphismWithGivenObjects</C>.
+#! $F: (\mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddMonoidalPreComposeMorphism",
+DeclareOperation( "AddMonoidalPreComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddMonoidalPreComposeMorphism",
+DeclareOperation( "AddMonoidalPreComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddMonoidalPreComposeMorphism",
+DeclareOperation( "AddMonoidalPreComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMonoidalPreComposeMorphism",
+DeclareOperation( "AddMonoidalPreComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 ##

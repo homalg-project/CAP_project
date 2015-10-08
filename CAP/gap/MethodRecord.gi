@@ -2453,10 +2453,10 @@ InternalHomToTensorProductAdjunctionMap := rec(
   cache_name := "InternalHomToTensorProductAdjunctionMap",
   return_type := "morphism" ),
 
-MonoidalPreComposeMorphism := rec(
-  installation_name := "MonoidalPreComposeMorphism",
+MonoidalPreComposeMorphismWithGivenObjects := rec(
+  installation_name := "MonoidalPreComposeMorphismWithGivenObjects",
   filter_list := [ "object", "object", "object", "object", "object" ],
-  cache_name := "MonoidalPreComposeMorphism",
+  cache_name := "MonoidalPreComposeMorphismWithGivenObjects",
   return_type := "morphism" ),
 
 MonoidalPostComposeMorphism := rec(

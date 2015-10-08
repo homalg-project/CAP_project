@@ -164,7 +164,7 @@ InstallMethod( MonoidalPreComposeMorphism,
                
   function( object_1, object_2, object_3 )
     
-    return MonoidalPreComposeMorphism( TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), InternalHomOnObjects( object_2, object_3 ) ),
+    return MonoidalPreComposeMorphismWithGivenObjects( TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), InternalHomOnObjects( object_2, object_3 ) ),
                                        object_1, object_2, object_3,
                                        InternalHomOnObjects( object_1, object_3 )
                                      );
