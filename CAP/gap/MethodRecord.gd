@@ -8,3 +8,5 @@
 #############################################################################
 
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD" );
+
+DeclareGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD" );

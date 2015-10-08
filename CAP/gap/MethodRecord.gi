@@ -2602,3 +2602,35 @@ IsomorphismFromInternalHomToObject := rec(
   return_type := "morphism" ),
   )
 );
+
+InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
+  function( )
+    local recnames, current_recname, current_rec, position, without_given_name;
+    
+    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    
+    for current_recname in recnames do
+      
+      current_rec := CAP_INTERNAL_METHOD_NAME_RECORD.(current_recname);
+      
+      position := PositionSublist( current_recname, "WithGiven" );
+      
+      current_rec.is_with_given := false;
+      
+      if position <> fail then
+         
+         without_given_name := current_recname{[ 1 .. position - 1 ]};
+         
+         if without_given_name in recnames then
+           
+           current_rec.is_with_given := true;
+           
+         fi;
+         
+      fi;
+      
+    od;
+    
+end );
+
+CAP_INTERNAL_ENHANCE_NAME_RECORD();
