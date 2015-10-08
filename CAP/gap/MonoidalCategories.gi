@@ -107,7 +107,7 @@ InstallMethod( Braiding,
                
   function( object_1, object_2 )
     
-    return Braiding( TensorProductOnObjects( object_1, object_2 ), object_1, object_2, TensorProductOnObjects( object_2, object_1 ) );
+    return BraidingWithGivenTensorProducts( TensorProductOnObjects( object_1, object_2 ), object_1, object_2, TensorProductOnObjects( object_2, object_1 ) );
     
 end );
 
@@ -117,7 +117,7 @@ InstallMethod( BraidingInverse,
                
   function( object_1, object_2 )
     
-    return Braiding( TensorProductOnObjects( object_2, object_1 ), object_1, object_2, TensorProductOnObjects( object_1, object_2 ) );
+    return BraidingWithGivenTensorProducts( TensorProductOnObjects( object_2, object_1 ), object_1, object_2, TensorProductOnObjects( object_1, object_2 ) );
     
 end );
 

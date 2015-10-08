@@ -391,26 +391,26 @@ DeclareOperation( "Braiding",
 #! The output is the braiding $ B_{a,b}: a \otimes b \rightarrow b \otimes a$.
 #! @Returns a morphism in $\mathrm{Hom}( a \otimes b, b \otimes a )$.
 #! @Arguments s,a,b,r
-DeclareOperation( "Braiding",
+DeclareOperation( "BraidingWithGivenTensorProducts",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>Braiding</C>.
+#! to the category for the basic operation <C>BraidingWithGivenTensorProducts</C>.
 #! $F: (a \otimes b, a, b, b \otimes a) \rightarrow B_{a,b}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddBraiding",
+DeclareOperation( "AddBraidingWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddBraiding",
+DeclareOperation( "AddBraidingWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddBraiding",
+DeclareOperation( "AddBraidingWithGivenTensorProducts",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddBraiding",
+DeclareOperation( "AddBraidingWithGivenTensorProducts",
                   [ IsCapCategory, IsList ] );
 
 

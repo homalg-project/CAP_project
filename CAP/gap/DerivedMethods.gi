@@ -1954,7 +1954,7 @@ AddDerivationToCAP( RightUnitorInverseWithGivenTensorProduct,
 end : Description := "RightUnitorInverseWithGivenTensorProduct as the inverse of RightUnitorWithGivenTensorProduct" );
 
 ##
-AddDerivationToCAP( Braiding,
+AddDerivationToCAP( BraidingWithGivenTensorProducts,
                   
   function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
     
@@ -1963,19 +1963,20 @@ AddDerivationToCAP( Braiding,
                             object_2_tensored_object_1 );
     
 end : CategoryFilter := IsSymmetricMonoidalCategory,
-      Description := "Braiding using BraidingInverse" );
+      Description := "BraidingWithGivenTensorProducts using BraidingInverse" );
 
 ##
 AddDerivationToCAP( BraidingInverse,
                   
   function( object_2_tensored_object_1, object_1, object_2, object_1_tensored_object_2 )
     
-    return Braiding( object_2_tensored_object_1,
-                     object_2, object_1, 
+    return BraidingWithGivenTensorProducts(
+                     object_2_tensored_object_1,
+                     object_2, object_1,
                      object_1_tensored_object_2 );
     
 end : CategoryFilter := IsSymmetricMonoidalCategory,
-      Description := "Braiding using BraidingInverse" );
+      Description := "BraidingInverse using BraidingWithGivenTensorProducts" );
 
 ##
 AddDerivationToCAP( BraidingInverse,
@@ -1988,14 +1989,14 @@ end : CategoryFilter := IsBraidedMonoidalCategory,
       Description := "BraidingInverse as the inverse of the braiding" );
 
 ##
-AddDerivationToCAP( Braiding,
+AddDerivationToCAP( BraidingWithGivenTensorProducts,
                   
   function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
     
     return Inverse( BraidingInverse( object_1, object_2 ) );
     
 end : CategoryFilter := IsBraidedMonoidalCategory,
-      Description := "Braiding as the inverse of BraidingInverse" );
+      Description := "BraidingWithGivenTensorProducts as the inverse of BraidingInverse" );
 
 
 ##

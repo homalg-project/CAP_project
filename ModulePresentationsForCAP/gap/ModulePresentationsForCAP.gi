@@ -1364,7 +1364,7 @@ InstallGlobalFunction( ADD_BRAIDING_LEFT,
                       
   function( category )
     
-    AddBraiding( category,
+    AddBraidingWithGivenTensorProducts( category,
       
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;
@@ -1395,7 +1395,7 @@ InstallGlobalFunction( ADD_BRAIDING_RIGHT,
                       
   function( category )
     
-    AddBraiding( category,
+    AddBraidingWithGivenTensorProducts( category,
       
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;

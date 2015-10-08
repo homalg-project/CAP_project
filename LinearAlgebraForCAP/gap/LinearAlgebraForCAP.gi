@@ -499,7 +499,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddBraiding( category,
+    AddBraidingWithGivenTensorProducts( category,
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local permutation_matrix, dim, dim_1, dim_2;
         

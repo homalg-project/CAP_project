@@ -2401,11 +2401,11 @@ RightUnitorInverseWithGivenTensorProduct := rec(
   cache_name := "RightUnitorInverseWithGivenTensorProduct",
   return_type := "morphism" ),
 
-Braiding := rec(
-  installation_name := "Braiding",
+BraidingWithGivenTensorProducts := rec(
+  installation_name := "BraidingWithGivenTensorProducts",
   filter_list := [ "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
-  cache_name := "Braiding",
+  cache_name := "BraidingWithGivenTensorProducts",
   return_type := "morphism" ),
 
 BraidingInverse := rec(

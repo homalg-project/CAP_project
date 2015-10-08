@@ -771,7 +771,7 @@ end );
 # end );
 
 ##
-AddBraiding( vecspaces,
+AddBraidingWithGivenTensorProducts( vecspaces,
   
   function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
     local permutation_matrix, dim, dim_1, dim_2;
