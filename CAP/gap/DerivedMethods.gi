@@ -2303,7 +2303,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "DualOnObjects as the range of IsomorphismFromInternalHomToDual" );
 
 ##
-AddDerivationToCAP( DualOnMorphisms,
+AddDerivationToCAP( DualOnMorphismsWithGivenDuals,
                   
   function( new_source, morphism, new_range )
     local category, result_morphism;
@@ -2321,7 +2321,7 @@ AddDerivationToCAP( DualOnMorphisms,
     return result_morphism;
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "DualOnMorphisms using InternalHomOnMorphisms and IsomorphismFromDualToInternalHom" );
+      Description := "DualOnMorphismsWithGivenDuals using InternalHomOnMorphisms and IsomorphismFromDualToInternalHom" );
 
 ##
 AddDerivationToCAP( MorphismFromTensorProductToInternalHom,
@@ -3083,7 +3083,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       [ InternalHomOnObjects, 1 ],
                       [ TensorUnit, 1 ] ],
                     [ DualOnObjects,
-                      DualOnMorphisms,
+                      DualOnMorphismsWithGivenDuals,
                       MorphismToBidual,
                       MorphismFromBidual,
                       IsomorphismFromDualToInternalHom,
@@ -3110,7 +3110,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       [ InternalHomOnObjects, 1 ],
                       [ TensorUnit, 1 ] ],
                     [ DualOnObjects,
-                      DualOnMorphisms,
+                      DualOnMorphismsWithGivenDuals,
                       MorphismToBidual,
                       MorphismFromBidual,
                       IsomorphismFromDualToInternalHom,

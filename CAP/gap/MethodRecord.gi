@@ -2471,11 +2471,11 @@ DualOnObjects := rec(
   cache_name := "DualOnObjects",
   return_type := "object" ),
 
-DualOnMorphisms := rec(
-  installation_name := "DualOnMorphisms",
+DualOnMorphismsWithGivenDuals := rec(
+  installation_name := "DualOnMorphismsWithGivenDuals",
   io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   filter_list := [ "object", "morphism", "object" ],
-  cache_name := "DualOnMorphisms",
+  cache_name := "DualOnMorphismsWithGivenDuals",
   return_type := "morphism" ),
 
 EvaluationForDual := rec(

@@ -807,26 +807,26 @@ DeclareAttribute( "DualOnMorphisms",
 #! The output is the dual morphism $\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( b^{\vee}, a^{\vee} )$.
 #! @Arguments s,alpha,r
-DeclareOperation( "DualOnMorphisms",
+DeclareOperation( "DualOnMorphismsWithGivenDuals",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>DualOnMorphisms</C>.
+#! to the category for the basic operation <C>DualOnMorphismsWithGivenDuals</C>.
 #! $F: (b^{\vee},\alpha,a^{\vee}) \mapsto \alpha^{\vee}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddDualOnMorphisms",
+DeclareOperation( "AddDualOnMorphismsWithGivenDuals",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddDualOnMorphisms",
+DeclareOperation( "AddDualOnMorphismsWithGivenDuals",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddDualOnMorphisms",
+DeclareOperation( "AddDualOnMorphismsWithGivenDuals",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddDualOnMorphisms",
+DeclareOperation( "AddDualOnMorphismsWithGivenDuals",
                   [ IsCapCategory, IsList ] );
 
 ##

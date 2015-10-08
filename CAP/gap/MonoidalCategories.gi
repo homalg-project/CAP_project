@@ -190,7 +190,7 @@ InstallMethod( DualOnMorphisms,
                
   function( morphism )
     
-    return DualOnMorphisms( DualOnObjects( Range( morphism ) ),
+    return DualOnMorphismsWithGivenDuals( DualOnObjects( Range( morphism ) ),
                             morphism,
                             DualOnObjects( Source( morphism ) )
                           );

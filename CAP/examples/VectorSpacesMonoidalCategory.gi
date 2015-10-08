@@ -798,7 +798,7 @@ end );
 AddDualOnObjects( vecspaces, space -> space );
 
 ##
-AddDualOnMorphisms( vecspaces,
+AddDualOnMorphismsWithGivenDuals( vecspaces,
   
   function( dual_source, morphism, dual_range )
     

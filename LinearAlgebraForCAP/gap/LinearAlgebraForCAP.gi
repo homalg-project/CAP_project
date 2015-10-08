@@ -525,7 +525,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddDualOnObjects( category, space -> space );
     
     ##
-    AddDualOnMorphisms( category,
+    AddDualOnMorphismsWithGivenDuals( category,
       function( dual_source, morphism, dual_range )
         
         return VectorSpaceMorphism( dual_source,
