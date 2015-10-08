@@ -598,7 +598,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddMorphismToBidual( category,
+    AddMorphismToBidualWithGivenBidual( category,
       function( object, bidual_of_object )
         
         return VectorSpaceMorphism( object,

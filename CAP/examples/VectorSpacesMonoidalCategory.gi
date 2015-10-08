@@ -874,7 +874,7 @@ AddCoevaluationForDual( vecspaces,
 end );
 
 # ##
-# AddMorphismToBidual( vecspaces,
+# AddMorphismToBidualWithGivenBidual( vecspaces,
 #   
 #   function( object, bidual_of_object )
 #     

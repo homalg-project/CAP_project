@@ -2492,11 +2492,11 @@ CoevaluationForDual := rec(
   cache_name := "CoevaluationForDual",
   return_type := "morphism" ),
 
-MorphismToBidual := rec(
-  installation_name := "MorphismToBidual",
+MorphismToBidualWithGivenBidual := rec(
+  installation_name := "MorphismToBidualWithGivenBidual",
   filter_list := [ "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  cache_name := "MorphismToBidual",
+  cache_name := "MorphismToBidualWithGivenBidual",
   return_type := "morphism" ),
 
 MorphismFromBidual := rec(

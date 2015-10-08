@@ -2071,20 +2071,20 @@ AddDerivationToCAP( MorphismFromBidual,
                   
   function( object, bidual )
     
-    return Inverse( MorphismToBidual( object, bidual ) );
+    return Inverse( MorphismToBidualWithGivenBidual( object, bidual ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismFromBidual as the inverse of MorphismToBidual" );
+      Description := "MorphismFromBidual as the inverse of MorphismToBidualWithGivenBidual" );
 
 ##
-AddDerivationToCAP( MorphismToBidual,
+AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                   
   function( object, bidual )
     
     return Inverse( MorphismFromBidual( object, bidual ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismToBidual as the inverse of MorphismFromBidual" );
+      Description := "MorphismToBidualWithGivenBidual as the inverse of MorphismFromBidual" );
 
 ##
 AddDerivationToCAP( EvaluationMorphismWithGivenSource,
@@ -2240,7 +2240,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "UniversalPropertyOfDual using the hom tensor adjunction" );
 
 ##
-AddDerivationToCAP( MorphismToBidual,
+AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                   
   function( object, bidual )
     local morphism;
@@ -2253,10 +2253,10 @@ AddDerivationToCAP( MorphismToBidual,
     return UniversalPropertyOfDual( object, DualOnObjects( object ), morphism );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "MorphismToBidual using the braiding and the universal property of the dual" );
+      Description := "MorphismToBidualWithGivenBidual using the braiding and the universal property of the dual" );
 
 ##
-AddDerivationToCAP( MorphismToBidual,
+AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                     
   function( object, bidual )
     local morphism, dual_object, tensor_unit;
@@ -2280,7 +2280,7 @@ AddDerivationToCAP( MorphismToBidual,
     return morphism;
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "MorphismToBidual using Coevaluation, InternalHom, and Evaluation" );
+      Description := "MorphismToBidualWithGivenBidual using Coevaluation, InternalHom, and Evaluation" );
 
 ##
 AddDerivationToCAP( DualOnObjects,
@@ -3084,7 +3084,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       [ TensorUnit, 1 ] ],
                     [ DualOnObjects,
                       DualOnMorphismsWithGivenDuals,
-                      MorphismToBidual,
+                      MorphismToBidualWithGivenBidual,
                       MorphismFromBidual,
                       IsomorphismFromDualToInternalHom,
                       IsomorphismFromInternalHomToDual,
@@ -3111,7 +3111,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       [ TensorUnit, 1 ] ],
                     [ DualOnObjects,
                       DualOnMorphismsWithGivenDuals,
-                      MorphismToBidual,
+                      MorphismToBidualWithGivenBidual,
                       MorphismFromBidual,
                       IsomorphismFromDualToInternalHom,
                       IsomorphismFromInternalHomToDual,
