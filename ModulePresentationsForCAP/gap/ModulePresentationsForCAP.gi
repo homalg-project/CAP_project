@@ -1543,7 +1543,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    AddCoevaluationMorphism( category,
+    AddCoevaluationMorphismWithGivenRange( category,
       
       function( object_1, object_2, internal_hom )
         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
@@ -1601,7 +1601,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    AddCoevaluationMorphism( category,
+    AddCoevaluationMorphismWithGivenRange( category,
       
       function( object_1, object_2, internal_hom )
         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,

@@ -2434,11 +2434,11 @@ EvaluationMorphismWithGivenSource := rec(
   cache_name := "EvaluationMorphismWithGivenSource",
   return_type := "morphism" ),
 
-CoevaluationMorphism := rec(
-  installation_name := "CoevaluationMorphism",
+CoevaluationMorphismWithGivenRange := rec(
+  installation_name := "CoevaluationMorphismWithGivenRange",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "a", "b", "r" ], [ "a", "r" ] ],
-  cache_name := "CoevaluationMorphism",
+  cache_name := "CoevaluationMorphismWithGivenRange",
   return_type := "morphism" ),
 
 TensorProductToInternalHomAdjunctionMap := rec(

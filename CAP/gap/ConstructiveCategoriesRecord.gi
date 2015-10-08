@@ -66,7 +66,7 @@ IsSymmetricClosedMonoidalCategory  := Concatenation( [
 "InternalHomOnObjects",
 "InternalHomOnMorphismsWithGivenInternalHoms",
 "EvaluationMorphismWithGivenSource",
-"CoevaluationMorphism"
+"CoevaluationMorphismWithGivenRange"
 ], ~.IsSymmetricMonoidalCategory ),
 
 IsRigidSymmetricClosedMonoidalCategory  := Concatenation( [ 

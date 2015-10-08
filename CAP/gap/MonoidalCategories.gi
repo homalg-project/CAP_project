@@ -152,7 +152,7 @@ InstallMethod( CoevaluationMorphism,
                
   function( object_1, object_2 )
     
-    return CoevaluationMorphism( object_1, object_2,
+    return CoevaluationMorphismWithGivenRange( object_1, object_2,
                                  InternalHomOnObjects( object_1, TensorProductOnObjects( object_2, object_1 ) )
                                );
     

@@ -2151,7 +2151,7 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoi
       Description := "EvaluationMorphismWithGivenSource using the rigidity and strictness of the monoidal category" );
 
 ##
-AddDerivationToCAP( CoevaluationMorphism,
+AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     
   function( object_1, object_2, internal_hom )
     local morphism;
@@ -2189,10 +2189,10 @@ AddDerivationToCAP( CoevaluationMorphism,
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "CoevaluationMorphism using the rigidity of the monoidal category" );
+      Description := "CoevaluationMorphismWithGivenRange using the rigidity of the monoidal category" );
 
 ##
-AddDerivationToCAP( CoevaluationMorphism,
+AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     
   function( object_1, object_2, internal_hom )
     local morphism;
@@ -2222,7 +2222,7 @@ AddDerivationToCAP( CoevaluationMorphism,
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
-      Description := "CoevaluationMorphism using the rigidity of the monoidal category" );
+      Description := "CoevaluationMorphismWithGivenRange using the rigidity of the monoidal category" );
 
 ##
 AddDerivationToCAP( UniversalPropertyOfDual,
@@ -2742,7 +2742,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "EvaluationMorphismWithGivenSource using the tenor hom adjunction on the identity" );
 
 ##
-AddDerivationToCAP( CoevaluationMorphism,
+AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                   
   function( object_1, object_2, internal_hom )
     
@@ -2753,7 +2753,7 @@ AddDerivationToCAP( CoevaluationMorphism,
            );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "CoevaluationMorphism using the tensor hom adjunction on the identity" );
+      Description := "CoevaluationMorphismWithGivenRange using the tensor hom adjunction on the identity" );
 
 ##
 AddDerivationToCAP( MonoidalPreComposeMorphism,
@@ -2974,7 +2974,7 @@ AddFinalDerivation( IsomorphismFromTensorProductToInternalHom,
                     [ InternalHomOnObjects,
                       InternalHomOnMorphismsWithGivenInternalHoms,
                       EvaluationMorphismWithGivenSource,
-                      CoevaluationMorphism,
+                      CoevaluationMorphismWithGivenRange,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
                       MonoidalPreComposeMorphism,
@@ -3001,7 +3001,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
                     [ InternalHomOnObjects,
                       InternalHomOnMorphismsWithGivenInternalHoms,
                       EvaluationMorphismWithGivenSource,
-                      CoevaluationMorphism,
+                      CoevaluationMorphismWithGivenRange,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
                       MonoidalPreComposeMorphism,
@@ -3031,7 +3031,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                     [ InternalHomOnObjects,
                       InternalHomOnMorphismsWithGivenInternalHoms,
                       EvaluationMorphismWithGivenSource,
-                      CoevaluationMorphism,
+                      CoevaluationMorphismWithGivenRange,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
                       MonoidalPreComposeMorphism,
@@ -3058,7 +3058,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                     [ InternalHomOnObjects,
                       InternalHomOnMorphismsWithGivenInternalHoms,
                       EvaluationMorphismWithGivenSource,
-                      CoevaluationMorphism,
+                      CoevaluationMorphismWithGivenRange,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
                       MonoidalPreComposeMorphism,
