@@ -71,7 +71,7 @@ InstallMethod( LeftUnitorInverse,
     
     category := CapCategory( object );
     
-    return LeftUnitorInverse( object, TensorProductOnObjects( TensorUnit( category ), object ) );
+    return LeftUnitorInverseWithGivenTensorProduct( object, TensorProductOnObjects( TensorUnit( category ), object ) );
     
 end );
 

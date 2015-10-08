@@ -262,26 +262,26 @@ DeclareAttribute( "LeftUnitorInverse",
 #! The output is the inverse of the left unitor $\lambda_a^{-1}: a \rightarrow 1 \otimes a$.
 #! @Returns a morphism in $\mathrm{Hom}(a, 1 \otimes a)$
 #! @Arguments a, r
-DeclareOperation( "LeftUnitorInverse",
+DeclareOperation( "LeftUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>LeftUnitorInverse</C>.
+#! to the category for the basic operation <C>LeftUnitorInverseWithGivenTensorProduct</C>.
 #! $F: (a, 1 \otimes a) \mapsto \lambda_a^{-1}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftUnitorInverse",
+DeclareOperation( "AddLeftUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftUnitorInverse",
+DeclareOperation( "AddLeftUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftUnitorInverse",
+DeclareOperation( "AddLeftUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftUnitorInverse",
+DeclareOperation( "AddLeftUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 
