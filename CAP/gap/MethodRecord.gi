@@ -2408,10 +2408,10 @@ BraidingWithGivenTensorProducts := rec(
   cache_name := "BraidingWithGivenTensorProducts",
   return_type := "morphism" ),
 
-BraidingInverse := rec(
-  installation_name := "BraidingInverse",
+BraidingInverseWithGivenTensorProducts := rec(
+  installation_name := "BraidingInverseWithGivenTensorProducts",
   filter_list := [ "object", "object", "object", "object" ],
-  cache_name := "BraidingInverse",
+  cache_name := "BraidingInverseWithGivenTensorProducts",
   return_type := "morphism" ),
 
 InternalHomOnObjects := rec(

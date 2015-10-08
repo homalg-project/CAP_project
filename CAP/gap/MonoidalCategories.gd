@@ -430,26 +430,26 @@ DeclareOperation( "BraidingInverse",
 #! The output is the braiding $ B_{a,b}^{-1}: b \otimes a \rightarrow a \otimes b$.
 #! @Returns a morphism in $\mathrm{Hom}( b \otimes a, a \otimes b )$.
 #! @Arguments s,a,b,r
-DeclareOperation( "BraidingInverse",
+DeclareOperation( "BraidingInverseWithGivenTensorProducts",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>BraidingInverse</C>.
+#! to the category for the basic operation <C>BraidingInverseWithGivenTensorProducts</C>.
 #! $F: (b \otimes a, a, b, a \otimes b) \rightarrow B_{a,b}^{-1}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddBraidingInverse",
+DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddBraidingInverse",
+DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddBraidingInverse",
+DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddBraidingInverse",
+DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
                   [ IsCapCategory, IsList ] );
 
 ####################################

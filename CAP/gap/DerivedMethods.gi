@@ -1958,15 +1958,16 @@ AddDerivationToCAP( BraidingWithGivenTensorProducts,
                   
   function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
     
-    return BraidingInverse( object_1_tensored_object_2,
+    return BraidingInverseWithGivenTensorProducts(
+                            object_1_tensored_object_2,
                             object_2, object_1,
                             object_2_tensored_object_1 );
     
 end : CategoryFilter := IsSymmetricMonoidalCategory,
-      Description := "BraidingWithGivenTensorProducts using BraidingInverse" );
+      Description := "BraidingWithGivenTensorProducts using BraidingInverseWithGivenTensorProducts" );
 
 ##
-AddDerivationToCAP( BraidingInverse,
+AddDerivationToCAP( BraidingInverseWithGivenTensorProducts,
                   
   function( object_2_tensored_object_1, object_1, object_2, object_1_tensored_object_2 )
     
@@ -1976,23 +1977,23 @@ AddDerivationToCAP( BraidingInverse,
                      object_1_tensored_object_2 );
     
 end : CategoryFilter := IsSymmetricMonoidalCategory,
-      Description := "BraidingInverse using BraidingWithGivenTensorProducts" );
+      Description := "BraidingInverseWithGivenTensorProducts using BraidingWithGivenTensorProducts" );
 
 ##
-AddDerivationToCAP( BraidingInverse,
+AddDerivationToCAP( BraidingInverseWithGivenTensorProducts,
                   
   function( object_2_tensored_object_1, object_1, object_2, object_1_tensored_object_2 )
-    
+    ##TODO: Use BraidingWithGiven
     return Inverse( Braiding( object_1, object_2 ) );
     
 end : CategoryFilter := IsBraidedMonoidalCategory,
-      Description := "BraidingInverse as the inverse of the braiding" );
+      Description := "BraidingInverseWithGivenTensorProducts as the inverse of the braiding" );
 
 ##
 AddDerivationToCAP( BraidingWithGivenTensorProducts,
                   
   function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
-    
+    ##TODO: Use BraidingInverseWithGiven
     return Inverse( BraidingInverse( object_1, object_2 ) );
     
 end : CategoryFilter := IsBraidedMonoidalCategory,

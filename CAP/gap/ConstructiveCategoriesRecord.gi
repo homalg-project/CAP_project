@@ -57,7 +57,7 @@ IsMonoidalCategory  := Concatenation( [
 
 IsBraidedMonoidalCategory  := Concatenation( [
 "BraidingWithGivenTensorProducts",
-"BraidingInverse"
+"BraidingInverseWithGivenTensorProducts"
 ], ~.IsMonoidalCategory ),
 
 IsSymmetricMonoidalCategory  := Concatenation( [ ], ~.IsBraidedMonoidalCategory ),
