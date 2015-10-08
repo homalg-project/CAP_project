@@ -1832,14 +1832,14 @@ end : Description := "VerticalPreCompose using VerticalPostCompose" );
 ####################################
 
 ##
-AddDerivationToCAP( AssociatorLeftToRight,
+AddDerivationToCAP( AssociatorLeftToRightWithGivenTensorProducts,
                     
   function( left_associated_object, object_1, object_2, object_3, right_associated_object )
     
     return IdentityMorphism( left_associated_object );
     
 end : CategoryFilter := IsStrictMonoidalCategory,
-      Description := "AssociatorLeftToRight as the identity morphism" );
+      Description := "AssociatorLeftToRightWithGivenTensorProducts as the identity morphism" );
 
 ##
 AddDerivationToCAP( AssociatorRightToLeftWithGivenTensorProducts,
@@ -1892,7 +1892,7 @@ end : CategoryFilter := IsStrictMonoidalCategory,
       Description := "RightUnitorInverse as the identity morphism" );
 
 ##
-AddDerivationToCAP( AssociatorLeftToRight,
+AddDerivationToCAP( AssociatorLeftToRightWithGivenTensorProducts,
                     
   function( left_associated_object, object_1, object_2, object_3, right_associated_object )
     
@@ -1902,19 +1902,20 @@ AddDerivationToCAP( AssociatorLeftToRight,
                       left_associated_object )
                   );
     
-end : Description := "AssociatorLeftToRight as the inverse of AssociatorRightToLeftWithGivenTensorProducts" );
+end : Description := "AssociatorLeftToRightWithGivenTensorProducts as the inverse of AssociatorRightToLeftWithGivenTensorProducts" );
 
 ##
 AddDerivationToCAP( AssociatorRightToLeftWithGivenTensorProducts,
                     
   function( right_associated_object, object_1, object_2, object_3, left_associated_object )
     
-    return Inverse( AssociatorLeftToRight( left_associated_object, 
-                                           object_1, object_2, object_3,
-                                           right_associated_object )
+    return Inverse( AssociatorLeftToRightWithGivenTensorProducts(
+                      left_associated_object,
+                      object_1, object_2, object_3,
+                      right_associated_object )
                   );
     
-end : Description := "AssociatorRightToLeftWithGivenTensorProducts as the inverse of AssociatorLeftToRight" );
+end : Description := "AssociatorRightToLeftWithGivenTensorProducts as the inverse of AssociatorLeftToRightWithGivenTensorProducts" );
 
 ##
 AddDerivationToCAP( LeftUnitor,

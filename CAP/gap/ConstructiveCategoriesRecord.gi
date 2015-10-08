@@ -47,7 +47,7 @@ IsMonoidalCategory  := Concatenation( [
 "TensorProductOnObjects",
 "TensorProductOnMorphismsWithGivenTensorProducts",
 "TensorUnit",
-"AssociatorLeftToRight",
+"AssociatorLeftToRightWithGivenTensorProducts",
 "AssociatorRightToLeftWithGivenTensorProducts",
 "LeftUnitor",
 "LeftUnitorInverse",
