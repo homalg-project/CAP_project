@@ -16,7 +16,7 @@ InstallMethod( TensorProductOnMorphisms,
                
   function( morphism_1, morphism_2 )
     
-    return TensorProductOnMorphisms( TensorProductOnObjects( Source( morphism_1 ), Source( morphism_2 ) ),
+    return TensorProductOnMorphismsWithGivenTensorProducts( TensorProductOnObjects( Source( morphism_1 ), Source( morphism_2 ) ),
                                      morphism_1, morphism_2,
                                      TensorProductOnObjects( Range( morphism_1 ), Range( morphism_2 ) )
                                    );

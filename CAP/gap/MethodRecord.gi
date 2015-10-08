@@ -2352,11 +2352,11 @@ TensorProductOnObjects := rec(
   cache_name := "TensorProductOnObjects",
   return_type := "object" ),
 
-TensorProductOnMorphisms := rec(
-  installation_name := "TensorProductOnMorphisms",
+TensorProductOnMorphismsWithGivenTensorProducts := rec(
+  installation_name := "TensorProductOnMorphismsWithGivenTensorProducts",
   filter_list := [ "object", "morphism", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
-  cache_name := "TensorProductOnMorphisms",
+  cache_name := "TensorProductOnMorphismsWithGivenTensorProducts",
   return_type := "morphism" ),
 
 AssociatorRightToLeft := rec(

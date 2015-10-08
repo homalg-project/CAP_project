@@ -1217,7 +1217,7 @@ InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_MORPHISMS,
                       
   function( category )
     
-    AddTensorProductOnMorphisms( category,
+    AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       
       function( new_source, morphism_1, morphism_2, new_range )
         

@@ -45,7 +45,7 @@ IsAbelianCategory := Concatenation( [
 
 IsMonoidalCategory  := Concatenation( [
 "TensorProductOnObjects",
-"TensorProductOnMorphisms",
+"TensorProductOnMorphismsWithGivenTensorProducts",
 "TensorUnit",
 "AssociatorLeftToRight",
 "AssociatorRightToLeft",

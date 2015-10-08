@@ -62,7 +62,7 @@ DeclareOperation( "AddTensorProductOnObjects",
 DeclareOperation( "AddTensorProductOnObjects",
                   [ IsCapCategory, IsList ] );
 
-## TensorProductOnMorphisms
+## TensorProductOnMorphismsWithGivenTensorProducts
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
@@ -79,26 +79,26 @@ DeclareOperation( "TensorProductOnMorphisms",
 #! The output is the tensor product $\alpha \otimes \beta$.
 #! @Returns a morphism in $\mathrm{Hom}(a \otimes b, a' \otimes b')$
 #! @Arguments s, alpha, beta, r
-DeclareOperation( "TensorProductOnMorphisms",
+DeclareOperation( "TensorProductOnMorphismsWithGivenTensorProducts",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>TensorProductOnMorphisms</C>.
+#! to the category for the basic operation <C>TensorProductOnMorphismsWithGivenTensorProducts</C>.
 #! $F: ( a \otimes b, \alpha: a \rightarrow a', \beta: b \rightarrow b', a' \otimes b' ) \mapsto \alpha \otimes \beta$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddTensorProductOnMorphisms",
+DeclareOperation( "AddTensorProductOnMorphismsWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddTensorProductOnMorphisms",
+DeclareOperation( "AddTensorProductOnMorphismsWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddTensorProductOnMorphisms",
+DeclareOperation( "AddTensorProductOnMorphismsWithGivenTensorProducts",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductOnMorphisms",
+DeclareOperation( "AddTensorProductOnMorphismsWithGivenTensorProducts",
                   [ IsCapCategory, IsList ] );
 
 

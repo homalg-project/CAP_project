@@ -721,7 +721,7 @@ AddTensorProductOnObjects( vecspaces,
 );
 
 ##
-AddTensorProductOnMorphisms( vecspaces,
+AddTensorProductOnMorphismsWithGivenTensorProducts( vecspaces,
   
   function( new_source, morphism_1, morphism_2, new_range )
     

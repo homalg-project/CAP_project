@@ -479,7 +479,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     );
     
     ##
-    AddTensorProductOnMorphisms( category,
+    AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       
       function( new_source, morphism_1, morphism_2, new_range )
         
