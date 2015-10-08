@@ -2087,7 +2087,7 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "MorphismToBidual as the inverse of MorphismFromBidual" );
 
 ##
-AddDerivationToCAP( EvaluationMorphism,
+AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                   
   function( object_1, object_2, internal_hom_tensored_object_1 )
     local morphism;
@@ -2120,10 +2120,10 @@ AddDerivationToCAP( EvaluationMorphism,
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "EvaluationMorphism using the rigidity of the monoidal category" );
+      Description := "EvaluationMorphismWithGivenSource using the rigidity of the monoidal category" );
 
 ##
-AddDerivationToCAP( EvaluationMorphism,
+AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                     
   function( object_1, object_2, internal_hom_tensored_object_1 )
     local morphism;
@@ -2148,7 +2148,7 @@ AddDerivationToCAP( EvaluationMorphism,
     return morphism;
       
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
-      Description := "EvaluationMorphism using the rigidity and strictness of the monoidal category" );
+      Description := "EvaluationMorphismWithGivenSource using the rigidity and strictness of the monoidal category" );
 
 ##
 AddDerivationToCAP( CoevaluationMorphism,
@@ -2728,7 +2728,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
 # end : CategoryFilter := IsSymmetricClosedMonoidalCategory 
 
 ##
-AddDerivationToCAP( EvaluationMorphism,
+AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                   
   function( object_1, object_2, tensor_object )
     
@@ -2739,7 +2739,7 @@ AddDerivationToCAP( EvaluationMorphism,
            );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "EvaluationMorphism using the tenor hom adjunction on the identity" );
+      Description := "EvaluationMorphismWithGivenSource using the tenor hom adjunction on the identity" );
 
 ##
 AddDerivationToCAP( CoevaluationMorphism,
@@ -2973,7 +2973,7 @@ AddFinalDerivation( IsomorphismFromTensorProductToInternalHom,
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalHomOnObjects,
                       InternalHomOnMorphismsWithGivenInternalHoms,
-                      EvaluationMorphism,
+                      EvaluationMorphismWithGivenSource,
                       CoevaluationMorphism,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
@@ -3000,7 +3000,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalHomOnObjects,
                       InternalHomOnMorphismsWithGivenInternalHoms,
-                      EvaluationMorphism,
+                      EvaluationMorphismWithGivenSource,
                       CoevaluationMorphism,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
@@ -3030,7 +3030,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalHomOnObjects,
                       InternalHomOnMorphismsWithGivenInternalHoms,
-                      EvaluationMorphism,
+                      EvaluationMorphismWithGivenSource,
                       CoevaluationMorphism,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,
@@ -3057,7 +3057,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalHomOnObjects,
                       InternalHomOnMorphismsWithGivenInternalHoms,
-                      EvaluationMorphism,
+                      EvaluationMorphismWithGivenSource,
                       CoevaluationMorphism,
                       TensorProductToInternalHomAdjunctionMap,
                       InternalHomToTensorProductAdjunctionMap,

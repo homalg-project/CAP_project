@@ -1429,7 +1429,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_LEFT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    AddEvaluationMorphism( category,
+    AddEvaluationMorphismWithGivenSource( category,
       
       function( object_1, object_2, internal_hom_tensored_object_1 )
         local internal_hom_embedding, rank_1, morphism, free_module,
@@ -1486,7 +1486,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_RIGHT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    AddEvaluationMorphism( category,
+    AddEvaluationMorphismWithGivenSource( category,
       
       function( object_1, object_2, internal_hom_tensored_object_1 )
         local internal_hom_embedding, rank_1, morphism, free_module,

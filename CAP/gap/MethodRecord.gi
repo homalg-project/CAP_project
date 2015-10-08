@@ -2427,11 +2427,11 @@ InternalHomOnMorphismsWithGivenInternalHoms := rec(
   cache_name := "InternalHomOnMorphismsWithGivenInternalHoms",
   return_type := "morphism" ),
 
-EvaluationMorphism := rec(
-  installation_name := "EvaluationMorphism",
+EvaluationMorphismWithGivenSource := rec(
+  installation_name := "EvaluationMorphismWithGivenSource",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "a", "b", "s" ], [ "s", "b" ] ],
-  cache_name := "EvaluationMorphism",
+  cache_name := "EvaluationMorphismWithGivenSource",
   return_type := "morphism" ),
 
 CoevaluationMorphism := rec(

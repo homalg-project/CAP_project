@@ -561,26 +561,26 @@ DeclareOperation( "EvaluationMorphism",
 #! the counit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes a, b )$.
 #! @Arguments a,b, s
-DeclareOperation( "EvaluationMorphism",
+DeclareOperation( "EvaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>EvaluationMorphism</C>.
+#! to the category for the basic operation <C>EvaluationMorphismWithGivenSource</C>.
 #! $F: (a, b, \mathrm{\underline{Hom}}(a,b) \otimes a) \mapsto \mathrm{ev}_{a,b}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddEvaluationMorphism",
+DeclareOperation( "AddEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddEvaluationMorphism",
+DeclareOperation( "AddEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddEvaluationMorphism",
+DeclareOperation( "AddEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddEvaluationMorphism",
+DeclareOperation( "AddEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsList ] );
 
 ##

@@ -140,7 +140,7 @@ InstallMethod( EvaluationMorphism,
                
   function( object_1, object_2 )
     
-    return EvaluationMorphism( object_1, object_2,
+    return EvaluationMorphismWithGivenSource( object_1, object_2,
                                TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), object_1 )
                              );
     

@@ -65,7 +65,7 @@ IsSymmetricMonoidalCategory  := Concatenation( [ ], ~.IsBraidedMonoidalCategory 
 IsSymmetricClosedMonoidalCategory  := Concatenation( [ 
 "InternalHomOnObjects",
 "InternalHomOnMorphismsWithGivenInternalHoms",
-"EvaluationMorphism",
+"EvaluationMorphismWithGivenSource",
 "CoevaluationMorphism"
 ], ~.IsSymmetricMonoidalCategory ),
 
