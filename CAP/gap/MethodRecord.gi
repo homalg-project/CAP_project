@@ -2459,10 +2459,10 @@ MonoidalPreComposeMorphismWithGivenObjects := rec(
   cache_name := "MonoidalPreComposeMorphismWithGivenObjects",
   return_type := "morphism" ),
 
-MonoidalPostComposeMorphism := rec(
-  installation_name := "MonoidalPostComposeMorphism",
+MonoidalPostComposeMorphismWithGivenObjects := rec(
+  installation_name := "MonoidalPostComposeMorphismWithGivenObjects",
   filter_list := [ "object", "object", "object", "object", "object" ],
-  cache_name := "MonoidalPostComposeMorphism",
+  cache_name := "MonoidalPostComposeMorphismWithGivenObjects",
   return_type := "morphism" ),
 
 DualOnObjects := rec(

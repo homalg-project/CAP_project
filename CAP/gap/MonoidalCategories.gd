@@ -725,7 +725,7 @@ DeclareOperation( "AddMonoidalPreComposeMorphismWithGivenObjects",
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the postcomposition morphism
-#! $\mathrm{MonoidalPostComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
+#! $\mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "MonoidalPostComposeMorphism",
@@ -737,29 +737,29 @@ DeclareOperation( "MonoidalPostComposeMorphism",
 #! three objects $a,b,c$,
 #! and an object $r = \mathrm{\underline{Hom}}(a,c)$.
 #! The output is the postcomposition morphism
-#! $\mathrm{MonoidalPostComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
+#! $\mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )$.
 #! @Arguments s,a,b,c,r
-DeclareOperation( "MonoidalPostComposeMorphism",
+DeclareOperation( "MonoidalPostComposeMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>MonoidalPostComposeMorphism</C>.
-#! $F: (\mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPostComposeMorphism}_{a,b,c}$.
+#! to the category for the basic operation <C>MonoidalPostComposeMorphismWithGivenObjects</C>.
+#! $F: (\mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddMonoidalPostComposeMorphism",
+DeclareOperation( "AddMonoidalPostComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddMonoidalPostComposeMorphism",
+DeclareOperation( "AddMonoidalPostComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddMonoidalPostComposeMorphism",
+DeclareOperation( "AddMonoidalPostComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMonoidalPostComposeMorphism",
+DeclareOperation( "AddMonoidalPostComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 

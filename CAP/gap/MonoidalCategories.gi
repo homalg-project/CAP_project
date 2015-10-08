@@ -177,7 +177,7 @@ InstallMethod( MonoidalPostComposeMorphism,
                
   function( object_1, object_2, object_3 )
     
-    return MonoidalPostComposeMorphism( TensorProductOnObjects( InternalHomOnObjects( object_2, object_3 ), InternalHomOnObjects( object_1, object_2 ) ),
+    return MonoidalPostComposeMorphismWithGivenObjects( TensorProductOnObjects( InternalHomOnObjects( object_2, object_3 ), InternalHomOnObjects( object_1, object_2 ) ),
                                         object_1, object_2, object_3,
                                         InternalHomOnObjects( object_1, object_3 )
                                       );
