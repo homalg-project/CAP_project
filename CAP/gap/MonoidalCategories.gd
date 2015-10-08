@@ -1518,25 +1518,25 @@ DeclareAttribute( "MorphismFromBidual",
 #! The output is the inverse of the morphism to the bidual $(a^{\vee})^{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a^{\vee})^{\vee},a)$.
 #! @Arguments a
-DeclareOperation( "MorphismFromBidual",
+DeclareOperation( "MorphismFromBidualWithGivenBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromBidual</C>.
+#! to the category for the basic operation <C>MorphismFromBidualWithGivenBidual</C>.
 #! $F: (a, (a^{\vee})^{\vee}) \mapsto ((a^{\vee})^{\vee} \rightarrow a)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddMorphismFromBidual",
+DeclareOperation( "AddMorphismFromBidualWithGivenBidual",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddMorphismFromBidual",
+DeclareOperation( "AddMorphismFromBidualWithGivenBidual",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddMorphismFromBidual",
+DeclareOperation( "AddMorphismFromBidualWithGivenBidual",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismFromBidual",
+DeclareOperation( "AddMorphismFromBidualWithGivenBidual",
                   [ IsCapCategory, IsList ] );
 

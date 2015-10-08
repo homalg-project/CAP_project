@@ -245,7 +245,7 @@ InstallMethod( MorphismFromBidual,
                
   function( object )
     
-    return MorphismFromBidual( object, DualOnObjects( DualOnObjects( object ) ) );
+    return MorphismFromBidualWithGivenBidual( object, DualOnObjects( DualOnObjects( object ) ) );
     
 end );
 

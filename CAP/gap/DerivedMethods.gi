@@ -2067,24 +2067,24 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "InternalHomOnMorphismsWithGivenInternalHoms using functorality of Dual and TensorProduct" );
 
 ##
-AddDerivationToCAP( MorphismFromBidual,
+AddDerivationToCAP( MorphismFromBidualWithGivenBidual,
                   
   function( object, bidual )
     
     return Inverse( MorphismToBidualWithGivenBidual( object, bidual ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismFromBidual as the inverse of MorphismToBidualWithGivenBidual" );
+      Description := "MorphismFromBidualWithGivenBidual as the inverse of MorphismToBidualWithGivenBidual" );
 
 ##
 AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                   
   function( object, bidual )
     
-    return Inverse( MorphismFromBidual( object, bidual ) );
+    return Inverse( MorphismFromBidualWithGivenBidual( object, bidual ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismToBidualWithGivenBidual as the inverse of MorphismFromBidual" );
+      Description := "MorphismToBidualWithGivenBidual as the inverse of MorphismFromBidualWithGivenBidual" );
 
 ##
 AddDerivationToCAP( EvaluationMorphismWithGivenSource,
@@ -3085,7 +3085,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                     [ DualOnObjects,
                       DualOnMorphismsWithGivenDuals,
                       MorphismToBidualWithGivenBidual,
-                      MorphismFromBidual,
+                      MorphismFromBidualWithGivenBidual,
                       IsomorphismFromDualToInternalHom,
                       IsomorphismFromInternalHomToDual,
                       UniversalPropertyOfDual,
@@ -3112,7 +3112,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                     [ DualOnObjects,
                       DualOnMorphismsWithGivenDuals,
                       MorphismToBidualWithGivenBidual,
-                      MorphismFromBidual,
+                      MorphismFromBidualWithGivenBidual,
                       IsomorphismFromDualToInternalHom,
                       IsomorphismFromInternalHomToDual,
                       UniversalPropertyOfDual,
