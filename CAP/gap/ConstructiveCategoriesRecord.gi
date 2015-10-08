@@ -52,7 +52,7 @@ IsMonoidalCategory  := Concatenation( [
 "LeftUnitorWithGivenTensorProduct",
 "LeftUnitorInverseWithGivenTensorProduct",
 "RightUnitorWithGivenTensorProduct",
-"RightUnitorInverse"
+"RightUnitorInverseWithGivenTensorProduct"
 ], ~.EveryCategory ),
 
 IsBraidedMonoidalCategory  := Concatenation( [

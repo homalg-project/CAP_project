@@ -337,26 +337,26 @@ DeclareAttribute( "RightUnitorInverse",
 #! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \otimes 1$.
 #! @Returns a morphism in $\mathrm{Hom}( a, a \otimes 1 )$
 #! @Arguments a, r
-DeclareOperation( "RightUnitorInverse",
+DeclareOperation( "RightUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>RightUnitorInverse</C>.
+#! to the category for the basic operation <C>RightUnitorInverseWithGivenTensorProduct</C>.
 #! $F: (a, a \otimes 1) \mapsto \rho_a^{-1}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddRightUnitorInverse",
+DeclareOperation( "AddRightUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddRightUnitorInverse",
+DeclareOperation( "AddRightUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddRightUnitorInverse",
+DeclareOperation( "AddRightUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddRightUnitorInverse",
+DeclareOperation( "AddRightUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 ####################################
