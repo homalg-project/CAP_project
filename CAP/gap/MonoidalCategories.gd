@@ -1423,26 +1423,26 @@ DeclareAttribute( "IsomorphismFromInternalHomToObject",
 #! The output is the natural isomorphism $\mathrm{\underline{Hom}}(1,a) \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{Hom}}(1,a),a)$.
 #! @Arguments a,s
-DeclareOperation( "IsomorphismFromInternalHomToObject",
+DeclareOperation( "IsomorphismFromInternalHomToObjectWithGivenInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromInternalHomToObject</C>.
+#! to the category for the basic operation <C>IsomorphismFromInternalHomToObjectWithGivenInternalHom</C>.
 #! $F: ( a, \mathrm{\underline{Hom}}(1,a) ) \mapsto ( \mathrm{\underline{Hom}}(1,a) \rightarrow a )$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromInternalHomToObject",
+DeclareOperation( "AddIsomorphismFromInternalHomToObjectWithGivenInternalHom",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsomorphismFromInternalHomToObject",
+DeclareOperation( "AddIsomorphismFromInternalHomToObjectWithGivenInternalHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromInternalHomToObject",
+DeclareOperation( "AddIsomorphismFromInternalHomToObjectWithGivenInternalHom",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromInternalHomToObject",
+DeclareOperation( "AddIsomorphismFromInternalHomToObjectWithGivenInternalHom",
                   [ IsCapCategory, IsList ] );
 
 ####################################

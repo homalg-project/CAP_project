@@ -273,6 +273,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeIsomorphismFromObjectToInternalHom",
                 "CanComputeIsomorphismFromObjectToInternalHomWithGivenInternalHom",
                 "CanComputeIsomorphismFromInternalHomToObject",
+                "CanComputeIsomorphismFromInternalHomToObjectWithGivenInternalHom",
                 
                 "CanComputeIsEqualForCacheForObjects",
                 "CanComputeIsEqualForCacheForMorphisms"

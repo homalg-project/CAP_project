@@ -2595,10 +2595,10 @@ IsomorphismFromObjectToInternalHomWithGivenInternalHom := rec(
   cache_name := "IsomorphismFromObjectToInternalHomWithGivenInternalHom",
   return_type := "morphism" ),
 
-IsomorphismFromInternalHomToObject := rec(
-  installation_name := "IsomorphismFromInternalHomToObject",
+IsomorphismFromInternalHomToObjectWithGivenInternalHom := rec(
+  installation_name := "IsomorphismFromInternalHomToObjectWithGivenInternalHom",
   filter_list := [ "object", "object" ],
-  cache_name := "IsomorphismFromInternalHomToObject",
+  cache_name := "IsomorphismFromInternalHomToObjectWithGivenInternalHom",
   return_type := "morphism" ),
   )
 );
