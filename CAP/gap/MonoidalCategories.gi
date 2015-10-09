@@ -483,3 +483,27 @@ InstallMethod( IsomorphismFromObjectToInternalHom,
     
 end );
 
+InstallGlobalFunction( CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MONOIDAL_CATEGORIES,
+  
+  function( func, loop_multiplier )
+    local monoidal_symbols, symbol, list, added_symbol, added_symbols;
+    
+    monoidal_symbols := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( func, RecNames( CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS ), loop_multiplier );
+    
+    list := [ ];
+    
+    for symbol in monoidal_symbols do
+        
+        added_symbols := CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.( symbol[ 1 ] );
+        
+        for added_symbol in added_symbols do
+            
+            Add( list, [ added_symbol[ 1 ], added_symbol[ 2 ] * symbol[ 2 ] ] );
+            
+        od;
+        
+    od;
+    
+    return list;
+    
+end );

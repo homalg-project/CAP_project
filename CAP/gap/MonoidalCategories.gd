@@ -1542,3 +1542,5 @@ DeclareOperation( "AddMorphismFromBidualWithGivenBidual",
 DeclareOperation( "AddMorphismFromBidualWithGivenBidual",
                   [ IsCapCategory, IsList ] );
 
+DeclareGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MONOIDAL_CATEGORIES" );
+
