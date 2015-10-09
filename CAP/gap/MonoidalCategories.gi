@@ -16,10 +16,11 @@ InstallMethod( TensorProductOnMorphisms,
                
   function( morphism_1, morphism_2 )
     
-    return TensorProductOnMorphismsWithGivenTensorProducts( TensorProductOnObjects( Source( morphism_1 ), Source( morphism_2 ) ),
-                                     morphism_1, morphism_2,
-                                     TensorProductOnObjects( Range( morphism_1 ), Range( morphism_2 ) )
-                                   );
+    return TensorProductOnMorphismsWithGivenTensorProducts( 
+             TensorProductOnObjects( Source( morphism_1 ), Source( morphism_2 ) ),
+             morphism_1, morphism_2,
+             TensorProductOnObjects( Range( morphism_1 ), Range( morphism_2 ) )
+           );
     
 end );
 
@@ -29,10 +30,11 @@ InstallMethod( AssociatorRightToLeft,
                
   function( object_1, object_2, object_3 )
     
-    return AssociatorRightToLeftWithGivenTensorProducts( TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ),
-                                  object_1, object_2, object_3,
-                                  TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ) 
-                                );
+    return AssociatorRightToLeftWithGivenTensorProducts( 
+             TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ),
+             object_1, object_2, object_3,
+             TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ) 
+           );
     
 end );
 
@@ -42,10 +44,11 @@ InstallMethod( AssociatorLeftToRight,
                
   function( object_1, object_2, object_3 )
     
-    return AssociatorLeftToRightWithGivenTensorProducts( TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ),
-                                  object_1, object_2, object_3,
-                                  TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ) 
-                                );
+    return AssociatorLeftToRightWithGivenTensorProducts( 
+             TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ),
+             object_1, object_2, object_3,
+             TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ) 
+           );
     
 end );
 
@@ -127,10 +130,11 @@ InstallMethod( InternalHomOnMorphisms,
                
   function( morphism_1, morphism_2 )
     
-    return InternalHomOnMorphismsWithGivenInternalHoms( InternalHomOnObjects( Range( morphism_1 ), Source( morphism_2 ) ),
-                                   morphism_1, morphism_2,
-                                   InternalHomOnObjects( Source( morphism_1 ), Range( morphism_2 ) )
-                                 );
+    return InternalHomOnMorphismsWithGivenInternalHoms( 
+             InternalHomOnObjects( Range( morphism_1 ), Source( morphism_2 ) ),
+             morphism_1, morphism_2,
+             InternalHomOnObjects( Source( morphism_1 ), Range( morphism_2 ) )
+           );
     
 end );
 
@@ -140,9 +144,10 @@ InstallMethod( EvaluationMorphism,
                
   function( object_1, object_2 )
     
-    return EvaluationMorphismWithGivenSource( object_1, object_2,
-                               TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), object_1 )
-                             );
+    return EvaluationMorphismWithGivenSource( 
+             object_1, object_2,
+             TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), object_1 )
+           );
     
 end );
 
@@ -152,9 +157,10 @@ InstallMethod( CoevaluationMorphism,
                
   function( object_1, object_2 )
     
-    return CoevaluationMorphismWithGivenRange( object_1, object_2,
-                                 InternalHomOnObjects( object_1, TensorProductOnObjects( object_2, object_1 ) )
-                               );
+    return CoevaluationMorphismWithGivenRange( 
+             object_1, object_2,
+             InternalHomOnObjects( object_1, TensorProductOnObjects( object_2, object_1 ) )
+           );
     
 end );
 
@@ -164,10 +170,11 @@ InstallMethod( MonoidalPreComposeMorphism,
                
   function( object_1, object_2, object_3 )
     
-    return MonoidalPreComposeMorphismWithGivenObjects( TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), InternalHomOnObjects( object_2, object_3 ) ),
-                                       object_1, object_2, object_3,
-                                       InternalHomOnObjects( object_1, object_3 )
-                                     );
+    return MonoidalPreComposeMorphismWithGivenObjects( 
+             TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), InternalHomOnObjects( object_2, object_3 ) ),
+             object_1, object_2, object_3,
+             InternalHomOnObjects( object_1, object_3 )
+           );
     
 end );
 
@@ -177,10 +184,11 @@ InstallMethod( MonoidalPostComposeMorphism,
                
   function( object_1, object_2, object_3 )
     
-    return MonoidalPostComposeMorphismWithGivenObjects( TensorProductOnObjects( InternalHomOnObjects( object_2, object_3 ), InternalHomOnObjects( object_1, object_2 ) ),
-                                        object_1, object_2, object_3,
-                                        InternalHomOnObjects( object_1, object_3 )
-                                      );
+    return MonoidalPostComposeMorphismWithGivenObjects( 
+             TensorProductOnObjects( InternalHomOnObjects( object_2, object_3 ), InternalHomOnObjects( object_1, object_2 ) ),
+             object_1, object_2, object_3,
+             InternalHomOnObjects( object_1, object_3 )
+           );
     
 end );
 
@@ -190,10 +198,11 @@ InstallMethod( DualOnMorphisms,
                
   function( morphism )
     
-    return DualOnMorphismsWithGivenDuals( DualOnObjects( Range( morphism ) ),
-                            morphism,
-                            DualOnObjects( Source( morphism ) )
-                          );
+    return DualOnMorphismsWithGivenDuals(
+             DualOnObjects( Range( morphism ) ),
+             morphism,
+             DualOnObjects( Source( morphism ) )
+           );
     
 end );
 
@@ -206,10 +215,11 @@ InstallMethod( EvaluationForDual,
     
     category := CapCategory( object );
     
-    return EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( DualOnObjects( object ), object ), 
-                              object,
-                              TensorUnit( category ) 
-                            );
+    return EvaluationForDualWithGivenTensorProduct( 
+             TensorProductOnObjects( DualOnObjects( object ), object ),
+             object,
+             TensorUnit( category )
+           );
     
 end );
 
@@ -222,10 +232,11 @@ InstallMethod( CoevaluationForDual,
     
     category := CapCategory( object );
     
-    return CoevaluationForDualWithGivenTensorProduct( TensorUnit( category ),
-                                object, 
-                                TensorProductOnObjects( object, DualOnObjects( object ) ) 
-                              );
+    return CoevaluationForDualWithGivenTensorProduct( 
+             TensorUnit( category ),
+             object,
+             TensorProductOnObjects( object, DualOnObjects( object ) )
+           );
     
 end );
 
@@ -283,10 +294,11 @@ InstallMethod( TensorProductDualityCompatibilityMorphism,
                
   function( object_1, object_2 )
     
-    return TensorProductDualityCompatibilityMorphismWithGivenObjects( DualOnObjects( TensorProductOnObjects( object_1, object_2 ) ),
-                                                      object_1, object_2,
-                                                      TensorProductOnObjects( DualOnObjects( object_1 ), DualOnObjects( object_2 ) )
-                                                    );
+    return TensorProductDualityCompatibilityMorphismWithGivenObjects(
+             DualOnObjects( TensorProductOnObjects( object_1, object_2 ) ),
+             object_1, object_2,
+             TensorProductOnObjects( DualOnObjects( object_1 ), DualOnObjects( object_2 ) )
+           );
     
 end );
 
@@ -296,10 +308,11 @@ InstallMethod( MorphismFromTensorProductToInternalHom,
                
   function( object_1, object_2 )
     
-    return MorphismFromTensorProductToInternalHomWithGivenObjects( TensorProductOnObjects( DualOnObjects( object_1 ), object_2 ),
-                                                   object_1, object_2,
-                                                   InternalHomOnObjects( object_1, object_2 )
-                                                 );
+    return MorphismFromTensorProductToInternalHomWithGivenObjects( 
+             TensorProductOnObjects( DualOnObjects( object_1 ), object_2 ),
+             object_1, object_2,
+             InternalHomOnObjects( object_1, object_2 )
+           );
     
 end );
 
@@ -309,10 +322,11 @@ InstallMethod( MorphismFromInternalHomToTensorProduct,
                
   function( object_1, object_2 )
     
-    return MorphismFromInternalHomToTensorProductWithGivenObjects( InternalHomOnObjects( object_1, object_2 ),
-                                                   object_1, object_2,
-                                                   TensorProductOnObjects( DualOnObjects( object_1 ), object_2 )
-                                                 );
+    return MorphismFromInternalHomToTensorProductWithGivenObjects(
+             InternalHomOnObjects( object_1, object_2 ),
+             object_1, object_2,
+             TensorProductOnObjects( DualOnObjects( object_1 ), object_2 )
+           );
     
 end );
 
