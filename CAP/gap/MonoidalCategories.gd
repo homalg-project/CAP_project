@@ -885,26 +885,26 @@ DeclareAttribute( "CoevaluationForDual",
 #! The output is the coevaluation morphism $\mathrm{coev}_{a}:1 \rightarrow a \otimes a^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(1,a \otimes a^{\vee})$.
 #! @Arguments s,a,r
-DeclareOperation( "CoevaluationForDual",
+DeclareOperation( "CoevaluationForDualWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>CoevaluationForDual</C>.
+#! to the category for the basic operation <C>CoevaluationForDualWithGivenTensorProduct</C>.
 #! $F: (1, a, a \otimes a^{\vee}) \mapsto \mathrm{coev}_{a}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCoevaluationForDual",
+DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoevaluationForDual",
+DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCoevaluationForDual",
+DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoevaluationForDual",
+DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 

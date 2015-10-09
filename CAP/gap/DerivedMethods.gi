@@ -2376,7 +2376,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
 
 
 ##
-AddDerivationToCAP( CoevaluationForDual,
+AddDerivationToCAP( CoevaluationForDualWithGivenTensorProduct,
                     
   function( unit, object, tensor_object )
     local morphism;
@@ -2394,7 +2394,7 @@ AddDerivationToCAP( CoevaluationForDual,
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "CoevaluationForDual using LambdaIntroduction on the identity and IsomorphismFromInternalHomToTensorProduct" );
+      Description := "CoevaluationForDualWithGivenTensorProduct using LambdaIntroduction on the identity and IsomorphismFromInternalHomToTensorProduct" );
 
 ##
 AddDerivationToCAP( LambdaIntroduction,
@@ -3091,7 +3091,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       UniversalPropertyOfDual,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       EvaluationForDualWithGivenTensorProduct,
-                      CoevaluationForDual,
+                      CoevaluationForDualWithGivenTensorProduct,
                       MorphismFromInternalHomToTensorProduct,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
                  
@@ -3118,7 +3118,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       UniversalPropertyOfDual,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       EvaluationForDualWithGivenTensorProduct,
-                      CoevaluationForDual,
+                      CoevaluationForDualWithGivenTensorProduct,
                       MorphismFromInternalHomToTensorProduct,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
                  

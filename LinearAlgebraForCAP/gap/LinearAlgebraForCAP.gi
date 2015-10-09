@@ -566,7 +566,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddCoevaluationForDual( category,
+    AddCoevaluationForDualWithGivenTensorProduct( category,
       
       function( unit, object, tensor_object )
         local dimension, row, zero_row, i;

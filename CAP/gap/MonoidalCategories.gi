@@ -222,7 +222,7 @@ InstallMethod( CoevaluationForDual,
     
     category := CapCategory( object );
     
-    return CoevaluationForDual( TensorUnit( category ),
+    return CoevaluationForDualWithGivenTensorProduct( TensorUnit( category ),
                                 object, 
                                 TensorProductOnObjects( object, DualOnObjects( object ) ) 
                               );

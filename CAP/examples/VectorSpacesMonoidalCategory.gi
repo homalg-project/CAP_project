@@ -841,7 +841,7 @@ AddEvaluationForDualWithGivenTensorProduct( vecspaces,
 end );
 
 ##
-AddCoevaluationForDual( vecspaces,
+AddCoevaluationForDualWithGivenTensorProduct( vecspaces,
   
   function( unit, object, tensor_object )
     

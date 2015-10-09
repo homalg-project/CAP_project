@@ -2485,11 +2485,11 @@ EvaluationForDualWithGivenTensorProduct := rec(
   cache_name := "EvaluationForDualWithGivenTensorProduct",
   return_type := "morphism" ),
 
-CoevaluationForDual := rec(
-  installation_name := "CoevaluationForDual",
+CoevaluationForDualWithGivenTensorProduct := rec(
+  installation_name := "CoevaluationForDualWithGivenTensorProduct",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
-  cache_name := "CoevaluationForDual",
+  cache_name := "CoevaluationForDualWithGivenTensorProduct",
   return_type := "morphism" ),
 
 MorphismToBidualWithGivenBidual := rec(
