@@ -2334,14 +2334,14 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "MorphismFromTensorProductToInternalHomWithGivenObjects using IsomorphismFromTensorProductToInternalHom" );
 
 ##
-AddDerivationToCAP( MorphismFromInternalHomToTensorProduct,
+AddDerivationToCAP( MorphismFromInternalHomToTensorProductWithGivenObjects,
                   
   function( tensor_object, object_1, object_2, internal_hom )
     
     return IsomorphismFromInternalHomToTensorProduct( object_1, object_2 );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismFromInternalHomToTensorProduct using IsomorphismFromInternalHomToTensorProduct" );
+      Description := "MorphismFromInternalHomToTensorProductWithGivenObjects using IsomorphismFromInternalHomToTensorProduct" );
 
 ##
 AddDerivationToCAP( IsomorphismFromInternalHomToTensorProduct,
@@ -2982,7 +2982,7 @@ AddFinalDerivation( IsomorphismFromTensorProductToInternalHom,
                       TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       MorphismFromTensorProductToInternalHomWithGivenObjects,
-                      MorphismFromInternalHomToTensorProduct,
+                      MorphismFromInternalHomToTensorProductWithGivenObjects,
                       IsomorphismFromTensorProductToInternalHom,
                       IsomorphismFromInternalHomToTensorProduct ],
                     
@@ -3009,7 +3009,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
                       TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       MorphismFromTensorProductToInternalHomWithGivenObjects,
-                      MorphismFromInternalHomToTensorProduct,
+                      MorphismFromInternalHomToTensorProductWithGivenObjects,
                       IsomorphismFromTensorProductToInternalHom,
                       IsomorphismFromInternalHomToTensorProduct ],
                     
@@ -3039,7 +3039,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       MorphismFromTensorProductToInternalHomWithGivenObjects,
-                      MorphismFromInternalHomToTensorProduct,
+                      MorphismFromInternalHomToTensorProductWithGivenObjects,
                       IsomorphismFromTensorProductToInternalHom,
                       IsomorphismFromInternalHomToTensorProduct ],
                     
@@ -3066,7 +3066,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       MorphismFromTensorProductToInternalHomWithGivenObjects,
-                      MorphismFromInternalHomToTensorProduct,
+                      MorphismFromInternalHomToTensorProductWithGivenObjects,
                       IsomorphismFromTensorProductToInternalHom,
                       IsomorphismFromInternalHomToTensorProduct ],
                     
@@ -3092,7 +3092,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       EvaluationForDualWithGivenTensorProduct,
                       CoevaluationForDualWithGivenTensorProduct,
-                      MorphismFromInternalHomToTensorProduct,
+                      MorphismFromInternalHomToTensorProductWithGivenObjects,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
                  
   function( object )
@@ -3119,7 +3119,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       EvaluationForDualWithGivenTensorProduct,
                       CoevaluationForDualWithGivenTensorProduct,
-                      MorphismFromInternalHomToTensorProduct,
+                      MorphismFromInternalHomToTensorProductWithGivenObjects,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
                  
   function( object )

@@ -309,7 +309,7 @@ InstallMethod( MorphismFromInternalHomToTensorProduct,
                
   function( object_1, object_2 )
     
-    return MorphismFromInternalHomToTensorProduct( InternalHomOnObjects( object_1, object_2 ),
+    return MorphismFromInternalHomToTensorProductWithGivenObjects( InternalHomOnObjects( object_1, object_2 ),
                                                    object_1, object_2,
                                                    TensorProductOnObjects( DualOnObjects( object_1 ), object_2 )
                                                  );

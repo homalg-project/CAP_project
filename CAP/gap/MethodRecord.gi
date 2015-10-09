@@ -2529,10 +2529,10 @@ MorphismFromTensorProductToInternalHomWithGivenObjects := rec(
   cache_name := "MorphismFromTensorProductToInternalHomWithGivenObjects",
   return_type := "morphism" ),
 
-MorphismFromInternalHomToTensorProduct := rec(
-  installation_name := "MorphismFromInternalHomToTensorProduct",
+MorphismFromInternalHomToTensorProductWithGivenObjects := rec(
+  installation_name := "MorphismFromInternalHomToTensorProductWithGivenObjects",
   filter_list := [ "object", "object", "object", "object" ],
-  cache_name := "MorphismFromInternalHomToTensorProduct",
+  cache_name := "MorphismFromInternalHomToTensorProductWithGivenObjects",
   return_type := "morphism" ),
 
 TraceMap := rec(

@@ -1099,7 +1099,7 @@ DeclareOperation( "AddIsomorphismFromTensorProductToInternalHom",
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the inverse of $\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}$, namely
-#! $\mathrm{MorphismFromInternalHomToTensorProduct}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
+#! $\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
 #! @Arguments a,b
 DeclareOperation( "MorphismFromInternalHomToTensorProduct",
@@ -1111,29 +1111,29 @@ DeclareOperation( "MorphismFromInternalHomToTensorProduct",
 #! two objects $a,b$,
 #! and an object $r = a^{\vee} \otimes b$.
 #! The output is the inverse of $\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}$, namely
-#! $\mathrm{MorphismFromInternalHomToTensorProduct}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
+#! $\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
 #! @Arguments s,a,b,r
-DeclareOperation( "MorphismFromInternalHomToTensorProduct",
+DeclareOperation( "MorphismFromInternalHomToTensorProductWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromInternalHomToTensorProduct</C>.
-#! $F: ( \mathrm{\underline{Hom}}(a,b),a,b,a^{\vee} \otimes b ) \mapsto \mathrm{MorphismFromInternalHomToTensorProduct}_{a,b}$.
+#! to the category for the basic operation <C>MorphismFromInternalHomToTensorProductWithGivenObjects</C>.
+#! $F: ( \mathrm{\underline{Hom}}(a,b),a,b,a^{\vee} \otimes b ) \mapsto \mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddMorphismFromInternalHomToTensorProduct",
+DeclareOperation( "AddMorphismFromInternalHomToTensorProductWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddMorphismFromInternalHomToTensorProduct",
+DeclareOperation( "AddMorphismFromInternalHomToTensorProductWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddMorphismFromInternalHomToTensorProduct",
+DeclareOperation( "AddMorphismFromInternalHomToTensorProductWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismFromInternalHomToTensorProduct",
+DeclareOperation( "AddMorphismFromInternalHomToTensorProductWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 ##
