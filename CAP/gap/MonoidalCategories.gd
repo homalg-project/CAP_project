@@ -1464,7 +1464,7 @@ DeclareOperation( "AddIsomorphismFromInternalHomToObject",
 #! @Description
 #! The arguments are four objects $a, a', b, b'$.
 #! The output is the natural morphism
-#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverse}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
+#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))$.
 #! @Arguments a,a',b,b'
 DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
@@ -1478,29 +1478,29 @@ DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
 #! The arguments are four objects $a, a', b, b'$,
 #! and a list $L = [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]$.
 #! The output is the natural morphism
-#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverse}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
+#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))$.
 #! @Arguments a,a',b,b',L
-DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
+DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>TensorProductInternalHomCompatibilityMorphismInverse</C>.
-#! $F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphismInverse}_{a,a',b,b'}$.
+#! to the category for the basic operation <C>TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects</C>.
+#! $F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverse",
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 ##

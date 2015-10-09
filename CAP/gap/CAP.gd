@@ -249,6 +249,8 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeMorphismFromBidualWithGivenBidual",
                 "CanComputeTensorProductInternalHomCompatibilityMorphism",
                 "CanComputeTensorProductInternalHomCompatibilityMorphismWithGivenObjects",
+                "CanComputeTensorProductInternalHomCompatibilityMorphismInverse",
+                "CanComputeTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
                 "CanComputeTensorProductDualityCompatibilityMorphism",
                 "CanComputeMorphismFromTensorProductToInternalHom",
                 "CanComputeEvaluationForDual",
@@ -267,7 +269,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeLambdaElimination",
                 "CanComputeIsomorphismFromObjectToInternalHom",
                 "CanComputeIsomorphismFromInternalHomToObject",
-                "CanComputeTensorProductInternalHomCompatibilityMorphismInverse",
+                
                 "CanComputeIsEqualForCacheForObjects",
                 "CanComputeIsEqualForCacheForMorphisms"
                 ] )

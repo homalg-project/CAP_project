@@ -70,7 +70,7 @@ IsSymmetricClosedMonoidalCategory  := Concatenation( [
 ], ~.IsSymmetricMonoidalCategory ),
 
 IsRigidSymmetricClosedMonoidalCategory  := Concatenation( [ 
-"TensorProductInternalHomCompatibilityMorphismInverse",
+"TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
 "MorphismFromBidualWithGivenBidual"
 ], ~.IsSymmetricClosedMonoidalCategory )
 

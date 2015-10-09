@@ -269,7 +269,7 @@ InstallMethod( TensorProductInternalHomCompatibilityMorphismInverse,
                
   function( object_1_1, object_1_2, object_2_1, object_2_2 )
     
-    return TensorProductInternalHomCompatibilityMorphismInverse(
+    return TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects(
              object_1_1, object_1_2, object_2_1, object_2_2,
              [ TensorProductOnObjects( InternalHomOnObjects( object_1_1, object_1_2 ), InternalHomOnObjects( object_2_1, object_2_2 ) ),
                InternalHomOnObjects( TensorProductOnObjects( object_1_1, object_2_1 ), TensorProductOnObjects( object_1_2, object_2_2 ) ) ]

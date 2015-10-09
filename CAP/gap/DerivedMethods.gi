@@ -2456,14 +2456,14 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "Rank of an object as the trace of its identity" );
 
 ##
-AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverse,
+AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects,
                     
   function( a1, b1, a2, b2, new_source_and_range_list )
     
     return Inverse( TensorProductInternalHomCompatibilityMorphismWithGivenObjects( a1, b1, a2, b2, new_source_and_range_list ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "TensorProductInternalHomCompatibilityMorphismInverse as the inverse of TensorProductInternalHomCompatibilityMorphismWithGivenObjects" );
+      Description := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalHomCompatibilityMorphismWithGivenObjects" );
 
 ##
 AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
