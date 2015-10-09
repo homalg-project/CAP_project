@@ -228,18 +228,6 @@ InstallMethodWithCacheFromObject( ProductOp_OnObjects,
     
     Add( category, product_object );
     
-    entry := List( object_list, i -> [ i, "IsWellDefined", true ] );
-    
-    entry := ToDoListEntry( entry, product_object, "IsWellDefined", true );
-    
-    AddToToDoList( entry );
-    
-    for i in object_list do
-        
-        AddToToDoList( ToDoListEntry( [ [ i, "IsWellDefined", false ] ], product_object, "IsWellDefined", false ) );
-        
-    od;
-    
     return product_object;
     
 end : ArgumentNumber := 2 );
@@ -259,18 +247,6 @@ InstallMethodWithCacheFromObject( ProductOp_OnMorphisms,
                            );
     
     Add( category, product_morphism );
-    
-    entry := List( morphism_list, i -> [ i, "IsWellDefined", true ] );
-    
-    entry := ToDoListEntry( entry, product_morphism, "IsWellDefined", true );
-    
-    AddToToDoList( entry );
-    
-    for i in morphism_list do
-        
-        AddToToDoList( ToDoListEntry( [ [ i, "IsWellDefined", false ] ], product_morphism, "IsWellDefined", false ) );
-        
-    od;
     
     return product_morphism;
     
@@ -414,8 +390,8 @@ InstallMethod( Range,
 end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( HorizontalPreCompose,
-                                       [ IsCapCategoryProductTwoCellRep, IsCapCategoryProductTwoCellRep ],
+InstallMethodWithCacheFromObject( HorizontalPreCompose,
+                                  [ IsCapCategoryProductTwoCellRep, IsCapCategoryProductTwoCellRep ],
                
   function( twocell_left, twocell_right )
     local left_comp, right_comp;
@@ -426,11 +402,11 @@ InstallMethodWithToDoForIsWellDefined( HorizontalPreCompose,
     
     return CallFuncList( Product, List( [ 1 .. Length( twocell_left ) ], i -> HorizontalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject);
+end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( VerticalPreCompose,
-                                       [ IsCapCategoryProductTwoCellRep, IsCapCategoryProductTwoCellRep ],
+InstallMethodWithCacheFromObject( VerticalPreCompose,
+                                  [ IsCapCategoryProductTwoCellRep, IsCapCategoryProductTwoCellRep ],
                
   function( twocell_left, twocell_right )
     local left_comp, right_comp;
@@ -441,7 +417,7 @@ InstallMethodWithToDoForIsWellDefined( VerticalPreCompose,
     
     return CallFuncList( Product, List( [ 1 .. Length( twocell_left ) ], i -> VerticalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
     
-end : InstallMethod := InstallMethodWithCacheFromObject );
+end );
 
 
 ###################################

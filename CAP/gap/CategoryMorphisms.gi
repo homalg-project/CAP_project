@@ -71,18 +71,6 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
         
     fi;
     
-    ##Well defined
-    
-    entry := ToDoListEntry( [ [ morphism, "IsWellDefined", true ] ],
-                            [ Source, morphism ], "IsWellDefined", true );
-    
-    AddToToDoList( entry );
-    
-    entry := ToDoListEntry( [ [ morphism, "IsWellDefined", true ] ],
-                            [ Range, morphism ], "IsWellDefined", true );
-    
-    AddToToDoList( entry );
-    
 end );
 
 InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,

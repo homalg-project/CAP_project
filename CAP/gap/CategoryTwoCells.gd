@@ -91,7 +91,7 @@ DeclareOperation( "AddTwoCell",
 #! The output is its identity $2$-cell $\mathrm{id}_{\alpha}: \alpha \rightarrow \alpha$.
 #! @Returns a $2$-cell
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "IdentityTwoCell",
+DeclareAttribute( "IdentityTwoCell",
                                           IsCapCategoryMorphism );
 
 #! @Description

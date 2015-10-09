@@ -802,7 +802,7 @@ DeclareOperation( "AddCodominates",
 #! The output is its identity morphism $\mathrm{id}_a$.
 #! @Returns a morphism in $\mathrm{Hom}(a,a)$
 #! @Arguments a
-DeclareAttributeWithToDoForIsWellDefined( "IdentityMorphism",
+DeclareAttribute( "IdentityMorphism",
                                           IsCapCategoryObject );
 
 #! @Description

@@ -33,6 +33,10 @@ DeclareGlobalFunction( "CATEGORIES_CACHE_GETTER" );
 
 DeclareGlobalFunction( "GET_METHOD_CACHE" );
 
+DeclareGlobalFunction( "SET_VALUE_OF_CATEGORY_CACHE" );
+
+DeclareGlobalFunction( "HAS_VALUE_OF_CATEGORY_CACHE" );
+
 DeclareGlobalVariable( "CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );

@@ -42,16 +42,16 @@ DeclareOperation( "AddToGenesis",
 #! The output is the kernel $K$ of $\alpha$.
 #! @Returns an object
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "KernelObject",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "KernelObject",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the kernel embedding $\iota: \mathrm{KernelObject}(\alpha) \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{KernelObject}(\alpha),A)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "KernelEmbedding",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "KernelEmbedding",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! This is a convenience method.
@@ -59,8 +59,8 @@ DeclareAttributeWithToDoForIsWellDefined( "KernelEmbedding",
 #! The output is the kernel embedding $\iota: K \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(K,A)$
 #! @Arguments K
-DeclareAttributeWithToDoForIsWellDefined( "KernelEmbedding",
-                                          IsCapCategoryObject );
+DeclareAttribute( "KernelEmbedding",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
@@ -287,16 +287,16 @@ DeclareFilter( "WasCreatedAsKernelObject" );
 #! The output is the cokernel $K$ of $\alpha$.
 #! @Returns an object
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "CokernelObject",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "CokernelObject",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{CokernelObject}( \alpha )$.
 #! @Returns a morphism in $\mathrm{Hom}(B, \mathrm{CokernelObject}( \alpha ))$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "CokernelProjection",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "CokernelProjection",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! This is a convenience method.
@@ -304,8 +304,8 @@ DeclareAttributeWithToDoForIsWellDefined( "CokernelProjection",
 #! The output is the cokernel projection $\epsilon: B \rightarrow K$.
 #! @Returns a morphism in $\mathrm{Hom}(B, K)$
 #! @Arguments K
-DeclareAttributeWithToDoForIsWellDefined( "CokernelProjection",
-                                          IsCapCategoryObject );
+DeclareAttribute( "CokernelProjection",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
@@ -858,8 +858,8 @@ DeclareAttribute( "TerminalObject",
 #! The output is the universal morphism $u(A): A \rightarrow \mathrm{TerminalObject}$.
 #! @Returns a morphism in $\mathrm{Hom}( A, \mathrm{TerminalObject} )$
 #! @Arguments A
-DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismIntoTerminalObject",
-                                          IsCapCategoryObject );
+DeclareAttribute( "UniversalMorphismIntoTerminalObject",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The argument are an object $A$,
@@ -1020,8 +1020,8 @@ DeclareAttribute( "InitialObject",
 #! The output is the universal morphism $u(A): \mathrm{InitialObject} \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{InitialObject} \rightarrow A)$.
 #! @Arguments A
-DeclareAttributeWithToDoForIsWellDefined( "UniversalMorphismFromInitialObject",
-                                          IsCapCategoryObject );
+DeclareAttribute( "UniversalMorphismFromInitialObject",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The arguments are an object $A$,
@@ -3242,8 +3242,8 @@ DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
 #! The output is the image $\mathrm{im}( \alpha )$.
 #! @Returns an object
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "ImageObject",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "ImageObject",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! This is a convenience method.
@@ -3253,8 +3253,8 @@ DeclareAttributeWithToDoForIsWellDefined( "ImageObject",
 #! $\iota: I \hookrightarrow B$.
 #! @Returns a morphism in $\mathrm{Hom}(I,B)$.
 #! @Arguments I
-DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
-                                          IsCapCategoryObject );
+DeclareAttribute( "ImageEmbedding",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
@@ -3262,8 +3262,8 @@ DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
 #! $\iota: \mathrm{im}(\alpha) \hookrightarrow B$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{im}(\alpha), B)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "ImageEmbedding",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "ImageEmbedding",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$
@@ -3283,8 +3283,8 @@ DeclareOperation( "ImageEmbeddingWithGivenImageObject",
 #! $c: A \rightarrow I$.
 #! @Returns a morphism in $\mathrm{Hom}(A, I)$
 #! @Arguments I
-DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
-                                          IsCapCategoryObject );
+DeclareAttribute( "CoastrictionToImage",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
@@ -3292,8 +3292,8 @@ DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
 #! $c: A \rightarrow \mathrm{im}( \alpha )$.
 #! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{im}( \alpha ))$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "CoastrictionToImage",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "CoastrictionToImage",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$
@@ -3604,8 +3604,8 @@ DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
 #! The output is the coimage $\mathrm{coim}( \alpha )$.
 #! @Returns an object
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "Coimage",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "Coimage",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! This is a convenience method.
@@ -3615,8 +3615,8 @@ DeclareAttributeWithToDoForIsWellDefined( "Coimage",
 #! $\pi: A \twoheadrightarrow C$.
 #! @Returns a morphism in $\mathrm{Hom}(A, C)$
 #! @Arguments C
-DeclareAttributeWithToDoForIsWellDefined( "CoimageProjection",
-                                          IsCapCategoryObject );
+DeclareAttribute( "CoimageProjection",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
@@ -3624,8 +3624,8 @@ DeclareAttributeWithToDoForIsWellDefined( "CoimageProjection",
 #! $\pi: A \twoheadrightarrow \mathrm{coim}( \alpha )$.
 #! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{coim}( \alpha ))$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "CoimageProjection",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "CoimageProjection",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
@@ -3645,8 +3645,8 @@ DeclareOperation( "CoimageProjectionWithGivenCoimage",
 #! $a: C \rightarrow B$.
 #! @Returns a morphism in $\mathrm{Hom}(C,B)$
 #! @Arguments C
-DeclareAttributeWithToDoForIsWellDefined( "AstrictionToCoimage",
-                                          IsCapCategoryObject );
+DeclareAttribute( "AstrictionToCoimage",
+                  IsCapCategoryObject );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
@@ -3654,8 +3654,8 @@ DeclareAttributeWithToDoForIsWellDefined( "AstrictionToCoimage",
 #! $a: \mathrm{coim}( \alpha ) \rightarrow B$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{coim}( \alpha ),B)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "AstrictionToCoimage",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "AstrictionToCoimage",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The argument are a morphism $\alpha: A \rightarrow B$

@@ -97,6 +97,30 @@ InstallGlobalFunction( GET_METHOD_CACHE,
     
 end );
 
+##
+InstallGlobalFunction( SET_VALUE_OF_CATEGORY_CACHE,
+                       
+  function( category, name, number, key, value )
+    local cache;
+    
+    cache := GET_METHOD_CACHE( category, name, number );
+    
+    SetCacheValue( cache, key, value );
+    
+end );
+
+##
+InstallGlobalFunction( HAS_VALUE_OF_CATEGORY_CACHE,
+                       
+  function( category, name, number, key, value )
+    local cache;
+    
+    cache := GET_METHOD_CACHE( category, name, number );
+    
+    return CacheValue( cache, key, value ) <> SuPeRfail;
+    
+end );
+
 InstallValue( CAP_INTERNAL_DERIVATION_GRAPH,
     
     MakeDerivationGraph( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ) );

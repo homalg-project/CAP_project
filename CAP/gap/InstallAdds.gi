@@ -35,7 +35,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
     local function_name, install_name, add_name, can_compute_name, pre_function,
-          redirect_function, post_function, filter_list, well_defined_todo, caching,
+          redirect_function, post_function, filter_list, caching,
           cache_name, nr_arguments, argument_list, add_function;
     
     function_name := record.function_name;
@@ -73,12 +73,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
     fi;
     
     filter_list := record.filter_list;
-    
-    if IsBound( record.well_defined_todo ) then
-        well_defined_todo := record.well_defined_todo;
-    else
-        well_defined_todo := true;
-    fi;
     
     if IsBound( record.cache_name ) then
         caching := true;
@@ -192,18 +186,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         Setter( ValueGlobal( can_compute_name ) )( category, true );
         
-        if well_defined_todo = true and caching = true then
-            install_method := InstallMethodWithToDoForIsWellDefined;
-            PushOptions( rec( InstallMethod := InstallMethodWithCache,
-                              Cache := GET_METHOD_CACHE( category, cache_name, nr_arguments ) ) );
-            popper := true;
-        elif well_defined_todo = false and caching = true then
+        if caching = true then
             install_method := InstallMethodWithCache;
             PushOptions( rec( Cache := GET_METHOD_CACHE( category, cache_name, nr_arguments )  ) );
             popper := true;
-        elif well_defined_todo = true and caching = false then
-            install_method := InstallMethodWithToDoForIsWellDefined;
-            popper := false;
         else
             install_method := InstallMethod;
             popper := false;
@@ -265,7 +251,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 ## Those three commands do not commute
                 add_function( category, result );
                 Add( arg, result );
-                CallFuncList( post_function, arg );
+                CallFuncList( post_function, Concatenation( [ category ], arg ) );
                 
                 return result;
                 
@@ -310,45 +296,82 @@ end );
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
   function( with_given_name, object_name, has_arguments, with_given_arguments, cache_name )
-    local return_func, has_name, has_function, object_function, with_given_name_function;
-    
-    has_name := Concatenation( "Has", object_name );
-    
-    has_function := ValueGlobal( has_name );
+    local return_func, has_name, has_function, object_function, with_given_name_function, is_attribute, attribute_tester;
     
     object_function := ValueGlobal( object_name );
     
     with_given_name_function := ValueGlobal( with_given_name );
     
-    return function( arg )
-        local has_arg_list, has_return, category, cache;
+    is_attribute := Tester( object_function ) <> false;
+    
+    if not is_attribute then
         
-        category := arg[ 1 ];
-        
-        arg := arg{[ 2 .. Length( arg ) ]};
-        
-        has_arg_list := arg{ has_arguments };
-        
-        cache := GET_METHOD_CACHE( category, cache_name, Length( has_arguments ) );
-        
-        has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
-        
-        if has_return = SuPeRfail then
+        return function( arg )
+            local has_arg_list, has_return, category, cache;
             
-            return [ false ];
+            category := arg[ 1 ];
             
-        fi;
+            arg := arg{[ 2 .. Length( arg ) ]};
+            
+            has_arg_list := arg{ has_arguments };
+            
+            cache := GET_METHOD_CACHE( category, cache_name, Length( has_arguments ) );
+            
+            has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
+            
+            if has_return = SuPeRfail then
+                
+                return [ false ];
+                
+            fi;
+            
+            return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ has_return ] ) ) ];
+            
+        end;
         
-        return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ CallFuncList( object_function, has_arg_list ) ] ) ) ];
+    else
         
-    end;
+        attribute_tester := Tester( object_function );
+        
+        return function( arg )
+            local has_arg_list, has_return, category, cache;
+            
+            category := arg[ 1 ];
+            
+            arg := arg{[ 2 .. Length( arg ) ]};
+            
+            has_arg_list := arg{ has_arguments };
+            
+            if not attribute_tester( has_arg_list ) then
+                
+                cache := GET_METHOD_CACHE( category, cache_name, Length( has_arguments ) );
+                
+                has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
+                
+                if has_return = SuPeRfail then
+                    
+                    return [ false ];
+                    
+                fi;
+                
+            else
+                
+                has_return := CallFuncList( object_function, has_arg_list );
+                
+            fi;
+            
+            return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ has_return ] ) ) ];
+            
+        end;
+        
+    fi;
     
 end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
-  function( source_range_object, object_function_name, object_function_argument_list, object_call_name )
-    local object_getter, set_object, was_created_filter, diagram_name, setter_function;
+  function( source_range_object, object_function_name, object_function_argument_list, object_call_name, object_cache_name )
+    local object_getter, set_object, was_created_filter, diagram_name, setter_function, is_attribute, cache_key_length;
     
     if source_range_object = "Source" then
         object_getter := Source;
@@ -363,32 +386,74 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     
     was_created_filter := ValueGlobal( Concatenation( "WasCreatedAs", object_call_name ) );
     diagram_name := Concatenation( object_call_name, "Diagram" );
-    setter_function := ValueGlobal( Concatenation( "Set", object_function_name ) );
+    setter_function := Setter( ValueGlobal( object_function_name ) );
+    is_attribute := setter_function <> false;
+    cache_key_length := Length( object_function_argument_list );
     
-    return function( arg )
-        local result, object;
+    if not is_attribute then
+    
+        return function( arg )
+            local result, object, category;
+            
+            category := arg[ 1 ];
+            
+            arg := arg{[ 2 .. Length( arg ) ]};
+            
+            result := arg[ Length( arg ) ];
+            Remove( arg );
+            object := object_getter( result );
+            
+            if set_object then
+                  SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
+            fi;
+            
+            ## Those two commands are not commutative
+            AddToGenesis( object, diagram_name, arg[ 1 ] );
+            SetFilterObj( object, was_created_filter );
+            
+        end;
         
-        result := arg[ Length( arg ) ];
-        Remove( arg );
-        object := object_getter( result );
+    else
         
-        if set_object then
-            CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
-        fi;
+        return function( arg )
+            local result, object, category;
+            
+            category := arg[ 1 ];
+            
+            arg := arg{[ 2 .. Length( arg ) ]};
+            
+            result := arg[ Length( arg ) ];
+            Remove( arg );
+            object := object_getter( result );
+            
+            if set_object then
+                SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
+                CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
+            fi;
+            
+            ## Those two commands are not commutative
+            AddToGenesis( object, diagram_name, arg[ 1 ] );
+            SetFilterObj( object, was_created_filter );
+            
+        end;
         
-        ## Those two commands are not commutative
-        AddToGenesis( object, diagram_name, arg[ 1 ] );
-        SetFilterObj( object, was_created_filter );
-        
-    end;
+    fi;
     
 end );
 
-BindGlobal( "CAP_INTERNAL_CREATE_NEW_REDIRECT",
+BindGlobal( "CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN",
   
   function( func )
     
     return function( arg ) return CallFuncList( func, arg{[ 2 .. Length( arg ) ]} ); end;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITHOUT_RETURN",
+  
+  function( func )
+    
+    return function( arg ) CallFuncList( func, arg{[ 2 .. Length( arg ) ]} ); end;
     
 end );
 
@@ -414,7 +479,13 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         
         if IsBound( current_rec.redirect_function ) then
             
-            current_rec.redirect_function := CAP_INTERNAL_CREATE_NEW_REDIRECT( current_rec.redirect_function );
+            current_rec.redirect_function := CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN( current_rec.redirect_function );
+            
+        fi;
+        
+        if IsBound( current_rec.post_function ) then
+            
+            current_rec.post_function := CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITHOUT_RETURN( current_rec.post_function );
             
         fi;
         
@@ -470,7 +541,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
         if IsBound( current_rec.universal_type ) and not IsBound( current_rec.universal_object_position ) then
             
             if not IsBound( current_rec.post_function ) then
-                current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( "id", current_rec.installation_name, arg_list, current_recname ); ##Please note that the third argument is not used
+                current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( "id", current_rec.installation_name, arg_list, current_recname, "irrelevant" ); ##Please note that the third argument is not used
             fi;
             
             CapInternalInstallAdd( current_rec );
@@ -518,7 +589,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             fi;
             
             if not IsBound( current_rec.post_function ) then
-                current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, arg_list, object_name );
+                current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, arg_list, object_name, object_func );
             fi;
             
             CapInternalInstallAdd( current_rec );

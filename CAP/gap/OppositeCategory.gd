@@ -40,7 +40,7 @@ DeclareAttribute( "Opposite",
 DeclareOperation( "Opposite",
                   [ IsCapCategory, IsString ] );
 
-# FIXME: Usage of DeclareAttributeWithToDoForIsWellDefined leads to recursion error
+# FIXME: Usage of DeclareAttribute leads to recursion error
 DeclareAttribute( "Opposite",
                   IsCapCategoryObject );
 

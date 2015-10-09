@@ -312,7 +312,7 @@ UniversalMorphismIntoZeroObject := rec(
     
     zero_object := Range( universal_morphism );
     
-    SetTerminalObject( category, zero_object );
+    SetZeroObject( category, zero_object );
     
     SetFilterObj( zero_object, WasCreatedAsTerminalObject );
     

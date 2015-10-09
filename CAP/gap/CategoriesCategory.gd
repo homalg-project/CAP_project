@@ -77,7 +77,7 @@ DeclareCategory( "IsCapNaturalTransformation",
 #!  So categories must be wrapped in a CatObject to be an object in Cat.
 #!  This method returns the wrapper object. The category can be reobtained by <C>AsCapCategory</C>.
 #! @Arguments C
-DeclareAttributeWithToDoForIsWellDefined( "AsCatObject",
+DeclareAttribute( "AsCatObject",
                                           IsCapCategory );
 
 #! @Description

@@ -122,9 +122,9 @@ end );
 ##################################
 
 ##
-InstallMethodWithToDoForIsWellDefined( Opposite,
-                                       [ IsCapCategoryObject ],
-                                       
+InstallMethod( Opposite,
+               [ IsCapCategoryObject ],
+               
   function( object )
     local opposite_object;
     
@@ -142,9 +142,9 @@ InstallMethodWithToDoForIsWellDefined( Opposite,
 end );
 
 ##
-InstallMethodWithToDoForIsWellDefined( Opposite,
-                                       [ IsCapCategoryMorphism ],
-                                       
+InstallMethod( Opposite,
+               [ IsCapCategoryMorphism ],
+               
   function( morphism )
     local opposite_morphism;
     
