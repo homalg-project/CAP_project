@@ -1032,7 +1032,7 @@ DeclareOperation( "AddTensorProductDualityCompatibilityMorphismWithGivenObjects"
 ##
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the natural morphism $\mathrm{MorphismFromTensorProductToInternalHom}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)$.
+#! The output is the natural morphism $\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )$.
 #! @Arguments a,b
 DeclareOperation( "MorphismFromTensorProductToInternalHom",
@@ -1042,29 +1042,29 @@ DeclareOperation( "MorphismFromTensorProductToInternalHom",
 #! The arguments are an object $s = a^{\vee} \otimes b$,
 #! two objects $a,b$,
 #! and an object $r = \mathrm{\underline{Hom}}(a,b)$.
-#! The output is the natural morphism $\mathrm{MorphismFromTensorProductToInternalHom}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)$.
+#! The output is the natural morphism $\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )$.
 #! @Arguments s,a,b,r
-DeclareOperation( "MorphismFromTensorProductToInternalHom",
+DeclareOperation( "MorphismFromTensorProductToInternalHomWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromTensorProductToInternalHom</C>.
-#! $F: ( a^{\vee} \otimes b, a, b, \mathrm{\underline{Hom}}(a,b) ) \mapsto \mathrm{MorphismFromTensorProductToInternalHom}_{a,b}$.
+#! to the category for the basic operation <C>MorphismFromTensorProductToInternalHomWithGivenObjects</C>.
+#! $F: ( a^{\vee} \otimes b, a, b, \mathrm{\underline{Hom}}(a,b) ) \mapsto \mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddMorphismFromTensorProductToInternalHom",
+DeclareOperation( "AddMorphismFromTensorProductToInternalHomWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddMorphismFromTensorProductToInternalHom",
+DeclareOperation( "AddMorphismFromTensorProductToInternalHomWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddMorphismFromTensorProductToInternalHom",
+DeclareOperation( "AddMorphismFromTensorProductToInternalHomWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismFromTensorProductToInternalHom",
+DeclareOperation( "AddMorphismFromTensorProductToInternalHomWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 ##
@@ -1098,7 +1098,7 @@ DeclareOperation( "AddIsomorphismFromTensorProductToInternalHom",
 ##
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the inverse of $\mathrm{MorphismFromTensorProductToInternalHom}$, namely
+#! The output is the inverse of $\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}$, namely
 #! $\mathrm{MorphismFromInternalHomToTensorProduct}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
 #! @Arguments a,b
@@ -1110,7 +1110,7 @@ DeclareOperation( "MorphismFromInternalHomToTensorProduct",
 #! The arguments are an object $s = \mathrm{\underline{Hom}}(a,b)$,
 #! two objects $a,b$,
 #! and an object $r = a^{\vee} \otimes b$.
-#! The output is the inverse of $\mathrm{MorphismFromTensorProductToInternalHom}$, namely
+#! The output is the inverse of $\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}$, namely
 #! $\mathrm{MorphismFromInternalHomToTensorProduct}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
 #! @Arguments s,a,b,r
