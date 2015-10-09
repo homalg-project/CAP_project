@@ -2517,10 +2517,10 @@ TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects := rec(
   cache_name := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
   return_type := "morphism" ),
 
-TensorProductDualityCompatibilityMorphism := rec(
-  installation_name := "TensorProductDualityCompatibilityMorphism",
+TensorProductDualityCompatibilityMorphismWithGivenObjects := rec(
+  installation_name := "TensorProductDualityCompatibilityMorphismWithGivenObjects",
   filter_list := [ "object", "object", "object", "object" ],
-  cache_name := "TensorProductDualityCompatibilityMorphism",
+  cache_name := "TensorProductDualityCompatibilityMorphismWithGivenObjects",
   return_type := "morphism" ),
 
 MorphismFromTensorProductToInternalHom := rec(

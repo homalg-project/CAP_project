@@ -992,7 +992,7 @@ DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismWithGivenObje
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the natural morphism
-#! $\mathrm{TensorProductDualityCompatibilityMorphism}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}$.
+#! $\mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes b^{\vee}, (a \otimes b)^{\vee} )$.
 #! @Arguments a,b
 DeclareOperation( "TensorProductDualityCompatibilityMorphism",
@@ -1003,29 +1003,29 @@ DeclareOperation( "TensorProductDualityCompatibilityMorphism",
 #! two objects $a,b$,
 #! and an object $r = (a \otimes b)^{\vee}$.
 #! The output is the natural morphism
-#! $\mathrm{TensorProductDualityCompatibilityMorphism}_{a,b}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}$.
+#! $\mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}_{a,b}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes b^{\vee}, (a \otimes b)^{\vee} )$.
 #! @Arguments s,a,b,r
-DeclareOperation( "TensorProductDualityCompatibilityMorphism",
+DeclareOperation( "TensorProductDualityCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>TensorProductDualityCompatibilityMorphism</C>.
-#! $F: ( a^{\vee} \otimes b^{\vee}, a, b, (a \otimes b)^{\vee} ) \mapsto \mathrm{TensorProductDualityCompatibilityMorphism}_{a,b}$.
+#! to the category for the basic operation <C>TensorProductDualityCompatibilityMorphismWithGivenObjects</C>.
+#! $F: ( a^{\vee} \otimes b^{\vee}, a, b, (a \otimes b)^{\vee} ) \mapsto \mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}_{a,b}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddTensorProductDualityCompatibilityMorphism",
+DeclareOperation( "AddTensorProductDualityCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddTensorProductDualityCompatibilityMorphism",
+DeclareOperation( "AddTensorProductDualityCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddTensorProductDualityCompatibilityMorphism",
+DeclareOperation( "AddTensorProductDualityCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductDualityCompatibilityMorphism",
+DeclareOperation( "AddTensorProductDualityCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 

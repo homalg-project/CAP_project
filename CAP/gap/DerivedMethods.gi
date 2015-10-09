@@ -2572,7 +2572,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCa
       Description := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects using braiding an the evaluation morphism" );
 
 ##
-AddDerivationToCAP( TensorProductDualityCompatibilityMorphism,
+AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
                   
   function( new_source, object_1, object_2, new_range )
     local morphism, unit, tensor_product_on_object_1_and_object_2;
@@ -2602,10 +2602,10 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphism,
     return morphism;
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "TensorProductDualityCompatibilityMorphism using left unitoar, and compatibility of tensor product and internal hom" );
+      Description := "TensorProductDualityCompatibilityMorphismWithGivenObjects using left unitoar, and compatibility of tensor product and internal hom" );
 
 ##
-AddDerivationToCAP( TensorProductDualityCompatibilityMorphism,
+AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
                   
   function( new_source, object_1, object_2, new_range )
     local morphism, unit, tensor_product_on_object_1_and_object_2;
@@ -2631,7 +2631,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphism,
     return morphism;
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
-      Description := "TensorProductDualityCompatibilityMorphism using compatibility of tensor product and internal hom" );
+      Description := "TensorProductDualityCompatibilityMorphismWithGivenObjects using compatibility of tensor product and internal hom" );
 
 ##
 AddDerivationToCAP( IsomorphismFromInternalHomToObject,
@@ -2980,7 +2980,7 @@ AddFinalDerivation( IsomorphismFromTensorProductToInternalHom,
                       MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphismWithGivenObjects,
                       TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
-                      TensorProductDualityCompatibilityMorphism,
+                      TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       MorphismFromTensorProductToInternalHom,
                       MorphismFromInternalHomToTensorProduct,
                       IsomorphismFromTensorProductToInternalHom,
@@ -3007,7 +3007,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
                       MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphismWithGivenObjects,
                       TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
-                      TensorProductDualityCompatibilityMorphism,
+                      TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       MorphismFromTensorProductToInternalHom,
                       MorphismFromInternalHomToTensorProduct,
                       IsomorphismFromTensorProductToInternalHom,
@@ -3037,7 +3037,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphismWithGivenObjects,
                       TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
-                      TensorProductDualityCompatibilityMorphism,
+                      TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       MorphismFromTensorProductToInternalHom,
                       MorphismFromInternalHomToTensorProduct,
                       IsomorphismFromTensorProductToInternalHom,
@@ -3064,7 +3064,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphismWithGivenObjects,
                       TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
-                      TensorProductDualityCompatibilityMorphism,
+                      TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       MorphismFromTensorProductToInternalHom,
                       MorphismFromInternalHomToTensorProduct,
                       IsomorphismFromTensorProductToInternalHom,
@@ -3089,7 +3089,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       IsomorphismFromDualToInternalHom,
                       IsomorphismFromInternalHomToDual,
                       UniversalPropertyOfDual,
-                      TensorProductDualityCompatibilityMorphism,
+                      TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       EvaluationForDual,
                       CoevaluationForDual,
                       MorphismFromInternalHomToTensorProduct,
@@ -3116,7 +3116,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       IsomorphismFromDualToInternalHom,
                       IsomorphismFromInternalHomToDual,
                       UniversalPropertyOfDual,
-                      TensorProductDualityCompatibilityMorphism,
+                      TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       EvaluationForDual,
                       CoevaluationForDual,
                       MorphismFromInternalHomToTensorProduct,
