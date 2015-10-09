@@ -2460,13 +2460,13 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverse,
                     
   function( a1, b1, a2, b2, new_source_and_range_list )
     
-    return Inverse( TensorProductInternalHomCompatibilityMorphism( a1, b1, a2, b2, new_source_and_range_list ) );
+    return Inverse( TensorProductInternalHomCompatibilityMorphismWithGivenObjects( a1, b1, a2, b2, new_source_and_range_list ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "TensorProductInternalHomCompatibilityMorphismInverse as the inverse of TensorProductInternalHomCompatibilityMorphism" );
+      Description := "TensorProductInternalHomCompatibilityMorphismInverse as the inverse of TensorProductInternalHomCompatibilityMorphismWithGivenObjects" );
 
 ##
-AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphism,
+AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                     
   function( a1, b1, a2, b2, new_source_and_range_list )
     local morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
@@ -2523,10 +2523,10 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphism,
              morphism );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "TensorProductInternalHomCompatibilityMorphism using associator, braiding an the evaluation morphism" );
+      Description := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects using associator, braiding an the evaluation morphism" );
 
 ##
-AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphism,
+AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                     
   function( a1, b1, a2, b2, new_source_and_range_list )
     local morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
@@ -2569,7 +2569,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphism,
              morphism );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
-      Description := "TensorProductInternalHomCompatibilityMorphism using braiding an the evaluation morphism" );
+      Description := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects using braiding an the evaluation morphism" );
 
 ##
 AddDerivationToCAP( TensorProductDualityCompatibilityMorphism,
@@ -2979,7 +2979,7 @@ AddFinalDerivation( IsomorphismFromTensorProductToInternalHom,
                       InternalHomToTensorProductAdjunctionMap,
                       MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphismWithGivenObjects,
-                      TensorProductInternalHomCompatibilityMorphism,
+                      TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                       TensorProductDualityCompatibilityMorphism,
                       MorphismFromTensorProductToInternalHom,
                       MorphismFromInternalHomToTensorProduct,
@@ -3006,7 +3006,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
                       InternalHomToTensorProductAdjunctionMap,
                       MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphismWithGivenObjects,
-                      TensorProductInternalHomCompatibilityMorphism,
+                      TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                       TensorProductDualityCompatibilityMorphism,
                       MorphismFromTensorProductToInternalHom,
                       MorphismFromInternalHomToTensorProduct,
@@ -3036,7 +3036,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       InternalHomToTensorProductAdjunctionMap,
                       MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphismWithGivenObjects,
-                      TensorProductInternalHomCompatibilityMorphism,
+                      TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                       TensorProductDualityCompatibilityMorphism,
                       MorphismFromTensorProductToInternalHom,
                       MorphismFromInternalHomToTensorProduct,
@@ -3063,7 +3063,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       InternalHomToTensorProductAdjunctionMap,
                       MonoidalPreComposeMorphismWithGivenObjects,
                       MonoidalPostComposeMorphismWithGivenObjects,
-                      TensorProductInternalHomCompatibilityMorphism,
+                      TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                       TensorProductDualityCompatibilityMorphism,
                       MorphismFromTensorProductToInternalHom,
                       MorphismFromInternalHomToTensorProduct,

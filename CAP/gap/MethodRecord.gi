@@ -2505,10 +2505,10 @@ MorphismFromBidualWithGivenBidual := rec(
   cache_name := "MorphismFromBidualWithGivenBidual",
   return_type := "morphism" ),
 
-TensorProductInternalHomCompatibilityMorphism := rec(
-  installation_name := "TensorProductInternalHomCompatibilityMorphism",
+TensorProductInternalHomCompatibilityMorphismWithGivenObjects := rec(
+  installation_name := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
   filter_list := [ "object", "object", "object", "object", IsList ],
-  cache_name := "TensorProductInternalHomCompatibilityMorphism",
+  cache_name := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
   return_type := "morphism" ),
 
 TensorProductInternalHomCompatibilityMorphismInverse := rec(

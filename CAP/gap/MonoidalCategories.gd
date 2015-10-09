@@ -949,7 +949,7 @@ DeclareOperation( "AddMorphismToBidualWithGivenBidual",
 #! @Description
 #! The arguments are four objects $a, a', b, b'$.
 #! The output is the natural morphism
-#! $\mathrm{TensorProductInternalHomCompatibilityMorphism}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')$.
+#! $\mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'))$.
 #! @Arguments a,a',b,b'
 DeclareOperation( "TensorProductInternalHomCompatibilityMorphism",
@@ -963,29 +963,29 @@ DeclareOperation( "TensorProductInternalHomCompatibilityMorphism",
 #! The arguments are four objects $a, a', b, b'$,
 #! and a list $L = [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]$.
 #! The output is the natural morphism
-#! $\mathrm{TensorProductInternalHomCompatibilityMorphism}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')$.
+#! $\mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'))$.
 #! @Arguments a,a',b,b',L
-DeclareOperation( "TensorProductInternalHomCompatibilityMorphism",
+DeclareOperation( "TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>TensorProductInternalHomCompatibilityMorphism</C>.
-#! $F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphism}_{a,a',b,b'}$.
+#! to the category for the basic operation <C>TensorProductInternalHomCompatibilityMorphismWithGivenObjects</C>.
+#! $F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphism",
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphism",
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphism",
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphism",
+DeclareOperation( "AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 ##
