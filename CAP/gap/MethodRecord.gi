@@ -2478,11 +2478,11 @@ DualOnMorphismsWithGivenDuals := rec(
   cache_name := "DualOnMorphismsWithGivenDuals",
   return_type := "morphism" ),
 
-EvaluationForDual := rec(
-  installation_name := "EvaluationForDual",
+EvaluationForDualWithGivenTensorProduct := rec(
+  installation_name := "EvaluationForDualWithGivenTensorProduct",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
-  cache_name := "EvaluationForDual",
+  cache_name := "EvaluationForDualWithGivenTensorProduct",
   return_type := "morphism" ),
 
 CoevaluationForDual := rec(

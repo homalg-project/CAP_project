@@ -846,26 +846,26 @@ DeclareAttribute( "EvaluationForDual",
 #! The output is the evaluation morphism $\mathrm{ev}_{a}: a^{\vee} \otimes a \rightarrow 1$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes a, 1 )$.
 #! @Arguments s,a,r
-DeclareOperation( "EvaluationForDual",
+DeclareOperation( "EvaluationForDualWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>EvaluationForDual</C>.
+#! to the category for the basic operation <C>EvaluationForDualWithGivenTensorProduct</C>.
 #! $F: (a^{\vee} \otimes a, a, 1) \mapsto \mathrm{ev}_{a}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddEvaluationForDual",
+DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddEvaluationForDual",
+DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddEvaluationForDual",
+DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddEvaluationForDual",
+DeclareOperation( "AddEvaluationForDualWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 ##

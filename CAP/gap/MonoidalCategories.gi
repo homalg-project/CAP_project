@@ -206,7 +206,7 @@ InstallMethod( EvaluationForDual,
     
     category := CapCategory( object );
     
-    return EvaluationForDual( TensorProductOnObjects( DualOnObjects( object ), object ), 
+    return EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( DualOnObjects( object ), object ), 
                               object,
                               TensorUnit( category ) 
                             );

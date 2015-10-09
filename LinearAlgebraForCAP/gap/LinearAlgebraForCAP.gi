@@ -535,7 +535,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddEvaluationForDual( category,
+    AddEvaluationForDualWithGivenTensorProduct( category,
       function( tensor_object, object, unit )
         local dimension, column, zero_column, i;
         

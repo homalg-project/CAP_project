@@ -2364,7 +2364,7 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromTensorProductToInternalHom using MorphismFromTensorProductToInternalHom" );
 
 ##
-AddDerivationToCAP( EvaluationForDual,
+AddDerivationToCAP( EvaluationForDualWithGivenTensorProduct,
                   
   function( tensor_object, object, unit )
     
@@ -2372,7 +2372,7 @@ AddDerivationToCAP( EvaluationForDual,
                                                     IsomorphismFromDualToInternalHom( object ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "EvaluationForDual using the tensor hom adjunction and IsomorphismFromDualToInternalHom" );
+      Description := "EvaluationForDualWithGivenTensorProduct using the tensor hom adjunction and IsomorphismFromDualToInternalHom" );
 
 
 ##
@@ -3090,7 +3090,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       IsomorphismFromInternalHomToDual,
                       UniversalPropertyOfDual,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
-                      EvaluationForDual,
+                      EvaluationForDualWithGivenTensorProduct,
                       CoevaluationForDual,
                       MorphismFromInternalHomToTensorProduct,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
@@ -3117,7 +3117,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       IsomorphismFromInternalHomToDual,
                       UniversalPropertyOfDual,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
-                      EvaluationForDual,
+                      EvaluationForDualWithGivenTensorProduct,
                       CoevaluationForDual,
                       MorphismFromInternalHomToTensorProduct,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],

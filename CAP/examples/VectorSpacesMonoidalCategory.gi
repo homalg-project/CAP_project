@@ -809,7 +809,7 @@ AddDualOnMorphismsWithGivenDuals( vecspaces,
 end );
 
 ##
-AddEvaluationForDual( vecspaces,
+AddEvaluationForDualWithGivenTensorProduct( vecspaces,
   
   function( tensor_object, object, unit )
     local dimension, row, zero_row, i;
