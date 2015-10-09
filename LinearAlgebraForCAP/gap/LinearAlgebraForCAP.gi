@@ -479,7 +479,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     );
     
     ##
-    AddTensorProductOnMorphisms( category,
+    AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       
       function( new_source, morphism_1, morphism_2, new_range )
         
@@ -499,7 +499,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddBraiding( category,
+    AddBraidingWithGivenTensorProducts( category,
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local permutation_matrix, dim, dim_1, dim_2;
         
@@ -525,7 +525,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddDualOnObjects( category, space -> space );
     
     ##
-    AddDualOnMorphisms( category,
+    AddDualOnMorphismsWithGivenDuals( category,
       function( dual_source, morphism, dual_range )
         
         return VectorSpaceMorphism( dual_source,
@@ -535,7 +535,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddEvaluationForDual( category,
+    AddEvaluationForDualWithGivenTensorProduct( category,
       function( tensor_object, object, unit )
         local dimension, column, zero_column, i;
         
@@ -566,7 +566,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddCoevaluationForDual( category,
+    AddCoevaluationForDualWithGivenTensorProduct( category,
       
       function( unit, object, tensor_object )
         local dimension, row, zero_row, i;
@@ -598,7 +598,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddMorphismToBidual( category,
+    AddMorphismToBidualWithGivenBidual( category,
       function( object, bidual_of_object )
         
         return VectorSpaceMorphism( object,

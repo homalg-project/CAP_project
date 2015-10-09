@@ -182,14 +182,15 @@ PreCompose := rec(
   cache_name := "PreCompose",
   
   pre_function := function( mor_left, mor_right )
+    local is_equal_for_objects;
     
-    if IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) = fail then
+    is_equal_for_objects := IsEqualForObjects( Range( mor_left ), Source( mor_right ) );
+    
+    if is_equal_for_objects = fail then
       
       return [ false, "cannot decide whether morphisms are composable" ];
       
-    fi;
-    
-    if not IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) then
+    elif is_equal_for_objects = false then
         
         return [ false, "morphisms not composable" ];
         
@@ -206,14 +207,15 @@ PostCompose := rec(
   cache_name := "PostCompose",
   
   pre_function := function( mor_right, mor_left )
+    local is_equal_for_objects;
     
-    if IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) = fail then
+    is_equal_for_objects := IsEqualForObjects( Range( mor_left ), Source( mor_right ) );
+    
+    if is_equal_for_objects = fail then
       
       return [ false, "cannot decide whether morphisms are composable" ];
       
-    fi;
-    
-    if not IsEqualForObjects( Range( mor_left ), Source( mor_right ) ) then
+    elif is_equal_for_objects = false then
         
         return [ false, "morphisms not composable" ];
         
@@ -1246,7 +1248,7 @@ ProjectionInFactorOfFiberProduct := rec(
   pre_function := function( diagram, projection_number, method_selection_morphism )
     local base, current_morphism, current_value;
     
-    if not projection_number in [ 1 .. Length( diagram ) ] then
+    if projection_number < 1 or projection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( projection_number ), "th projection" ) ];
     fi;
     
@@ -1278,7 +1280,7 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   pre_function := function( diagram, projection_number, pullback )
     local base, current_morphism, current_value;
     
-    if not projection_number in [ 1 .. Length( diagram ) ] then
+    if projection_number < 1 or projection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( projection_number ), "th projection" ) ];
     fi;
     
@@ -1459,7 +1461,7 @@ InjectionOfCofactorOfPushout := rec(
   pre_function := function( diagram, injection_number, method_selection_morphism )
     local cobase, current_morphism, current_value;
     
-    if not injection_number in [ 1 .. Length( diagram ) ] then
+    if injection_number < 1 or injection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( injection_number ), "th injection" ) ];
     fi;
     
@@ -1491,7 +1493,7 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
   pre_function := function( diagram, injection_number, pushout )
     local cobase, current_morphism, current_value;
     
-    if not injection_number in [ 1 .. Length( diagram ) ] then
+    if injection_number < 1 or injection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( injection_number ), "th injection" ) ];
     fi;
     
@@ -1854,14 +1856,17 @@ IsOne := rec(
   return_type := "bool",
   property_of := "morphism",
   pre_function := function( morphism )
+    local is_equal_for_objects;
     
-    if IsEqualForObjects( Source( morphism ), Range( morphism ) ) = fail then
+    is_equal_for_objects := IsEqualForObjects( Source( morphism ), Range( morphism ) );
+    
+    if is_equal_for_objects = fail then
       
       return [ false, "cannot decide whether morphism is the identity" ];
       
     fi;
     
-    if not IsEqualForObjects( Source( morphism ), Range( morphism ) ) then
+    if is_equal_for_objects = false then
         
         return [ false, "source and range of the given morphism are not equal" ];
         
@@ -2347,23 +2352,23 @@ TensorProductOnObjects := rec(
   cache_name := "TensorProductOnObjects",
   return_type := "object" ),
 
-TensorProductOnMorphisms := rec(
-  installation_name := "TensorProductOnMorphisms",
+TensorProductOnMorphismsWithGivenTensorProducts := rec(
+  installation_name := "TensorProductOnMorphismsWithGivenTensorProducts",
   filter_list := [ "object", "morphism", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
-  cache_name := "TensorProductOnMorphisms",
+  cache_name := "TensorProductOnMorphismsWithGivenTensorProducts",
   return_type := "morphism" ),
 
-AssociatorRightToLeft := rec(
-  installation_name := "AssociatorRightToLeft",
+AssociatorRightToLeftWithGivenTensorProducts := rec(
+  installation_name := "AssociatorRightToLeftWithGivenTensorProducts",
   filter_list := [ "object", "object", "object", "object", "object" ],
-  cache_name := "AssociatorRightToLeft",
+  cache_name := "AssociatorRightToLeftWithGivenTensorProducts",
   return_type := "morphism" ),
 
-AssociatorLeftToRight := rec(
-  installation_name := "AssociatorLeftToRight",
+AssociatorLeftToRightWithGivenTensorProducts := rec(
+  installation_name := "AssociatorLeftToRightWithGivenTensorProducts",
   filter_list := [ "object", "object", "object", "object", "object" ],
-  cache_name := "AssociatorLeftToRight",
+  cache_name := "AssociatorLeftToRightWithGivenTensorProducts",
   return_type := "morphism" ),
 
 TensorUnit := rec(
@@ -2372,41 +2377,41 @@ TensorUnit := rec(
   cache_name := "TensorUnit",
   return_type := "object" ),
 
-LeftUnitor := rec(
-  installation_name := "LeftUnitor",
+LeftUnitorWithGivenTensorProduct := rec(
+  installation_name := "LeftUnitorWithGivenTensorProduct",
   filter_list := [ "object", "object" ],
-  cache_name := "LeftUnitor",
+  cache_name := "LeftUnitorWithGivenTensorProduct",
   return_type := "morphism" ),
 
-LeftUnitorInverse := rec(
-  installation_name := "LeftUnitorInverse",
+LeftUnitorInverseWithGivenTensorProduct := rec(
+  installation_name := "LeftUnitorInverseWithGivenTensorProduct",
   filter_list := [ "object", "object" ],
-  cache_name := "LeftUnitorInverse",
+  cache_name := "LeftUnitorInverseWithGivenTensorProduct",
   return_type := "morphism" ),
 
-RightUnitor := rec(
-  installation_name := "RightUnitor",
+RightUnitorWithGivenTensorProduct := rec(
+  installation_name := "RightUnitorWithGivenTensorProduct",
   filter_list := [ "object", "object" ],
-  cache_name := "RightUnitor",
+  cache_name := "RightUnitorWithGivenTensorProduct",
   return_type := "morphism" ),
 
-RightUnitorInverse := rec(
-  installation_name := "RightUnitorInverse",
+RightUnitorInverseWithGivenTensorProduct := rec(
+  installation_name := "RightUnitorInverseWithGivenTensorProduct",
   filter_list := [ "object", "object" ],
-  cache_name := "RightUnitorInverse",
+  cache_name := "RightUnitorInverseWithGivenTensorProduct",
   return_type := "morphism" ),
 
-Braiding := rec(
-  installation_name := "Braiding",
+BraidingWithGivenTensorProducts := rec(
+  installation_name := "BraidingWithGivenTensorProducts",
   filter_list := [ "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
-  cache_name := "Braiding",
+  cache_name := "BraidingWithGivenTensorProducts",
   return_type := "morphism" ),
 
-BraidingInverse := rec(
-  installation_name := "BraidingInverse",
+BraidingInverseWithGivenTensorProducts := rec(
+  installation_name := "BraidingInverseWithGivenTensorProducts",
   filter_list := [ "object", "object", "object", "object" ],
-  cache_name := "BraidingInverse",
+  cache_name := "BraidingInverseWithGivenTensorProducts",
   return_type := "morphism" ),
 
 InternalHomOnObjects := rec(
@@ -2415,25 +2420,25 @@ InternalHomOnObjects := rec(
   cache_name := "InternalHomOnObjects",
   return_type := "object" ),
 
-InternalHomOnMorphisms := rec(
-  installation_name := "InternalHomOnMorphisms",
+InternalHomOnMorphismsWithGivenInternalHoms := rec(
+  installation_name := "InternalHomOnMorphismsWithGivenInternalHoms",
   filter_list := [ "object", "morphism", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
-  cache_name := "InternalHomOnMorphisms",
+  cache_name := "InternalHomOnMorphismsWithGivenInternalHoms",
   return_type := "morphism" ),
 
-EvaluationMorphism := rec(
-  installation_name := "EvaluationMorphism",
+EvaluationMorphismWithGivenSource := rec(
+  installation_name := "EvaluationMorphismWithGivenSource",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "a", "b", "s" ], [ "s", "b" ] ],
-  cache_name := "EvaluationMorphism",
+  cache_name := "EvaluationMorphismWithGivenSource",
   return_type := "morphism" ),
 
-CoevaluationMorphism := rec(
-  installation_name := "CoevaluationMorphism",
+CoevaluationMorphismWithGivenRange := rec(
+  installation_name := "CoevaluationMorphismWithGivenRange",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "a", "b", "r" ], [ "a", "r" ] ],
-  cache_name := "CoevaluationMorphism",
+  cache_name := "CoevaluationMorphismWithGivenRange",
   return_type := "morphism" ),
 
 TensorProductToInternalHomAdjunctionMap := rec(
@@ -2448,16 +2453,16 @@ InternalHomToTensorProductAdjunctionMap := rec(
   cache_name := "InternalHomToTensorProductAdjunctionMap",
   return_type := "morphism" ),
 
-MonoidalPreComposeMorphism := rec(
-  installation_name := "MonoidalPreComposeMorphism",
+MonoidalPreComposeMorphismWithGivenObjects := rec(
+  installation_name := "MonoidalPreComposeMorphismWithGivenObjects",
   filter_list := [ "object", "object", "object", "object", "object" ],
-  cache_name := "MonoidalPreComposeMorphism",
+  cache_name := "MonoidalPreComposeMorphismWithGivenObjects",
   return_type := "morphism" ),
 
-MonoidalPostComposeMorphism := rec(
-  installation_name := "MonoidalPostComposeMorphism",
+MonoidalPostComposeMorphismWithGivenObjects := rec(
+  installation_name := "MonoidalPostComposeMorphismWithGivenObjects",
   filter_list := [ "object", "object", "object", "object", "object" ],
-  cache_name := "MonoidalPostComposeMorphism",
+  cache_name := "MonoidalPostComposeMorphismWithGivenObjects",
   return_type := "morphism" ),
 
 DualOnObjects := rec(
@@ -2466,68 +2471,68 @@ DualOnObjects := rec(
   cache_name := "DualOnObjects",
   return_type := "object" ),
 
-DualOnMorphisms := rec(
-  installation_name := "DualOnMorphisms",
+DualOnMorphismsWithGivenDuals := rec(
+  installation_name := "DualOnMorphismsWithGivenDuals",
   io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   filter_list := [ "object", "morphism", "object" ],
-  cache_name := "DualOnMorphisms",
+  cache_name := "DualOnMorphismsWithGivenDuals",
   return_type := "morphism" ),
 
-EvaluationForDual := rec(
-  installation_name := "EvaluationForDual",
+EvaluationForDualWithGivenTensorProduct := rec(
+  installation_name := "EvaluationForDualWithGivenTensorProduct",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
-  cache_name := "EvaluationForDual",
+  cache_name := "EvaluationForDualWithGivenTensorProduct",
   return_type := "morphism" ),
 
-CoevaluationForDual := rec(
-  installation_name := "CoevaluationForDual",
+CoevaluationForDualWithGivenTensorProduct := rec(
+  installation_name := "CoevaluationForDualWithGivenTensorProduct",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
-  cache_name := "CoevaluationForDual",
+  cache_name := "CoevaluationForDualWithGivenTensorProduct",
   return_type := "morphism" ),
 
-MorphismToBidual := rec(
-  installation_name := "MorphismToBidual",
+MorphismToBidualWithGivenBidual := rec(
+  installation_name := "MorphismToBidualWithGivenBidual",
   filter_list := [ "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  cache_name := "MorphismToBidual",
+  cache_name := "MorphismToBidualWithGivenBidual",
   return_type := "morphism" ),
 
-MorphismFromBidual := rec(
-  installation_name := "MorphismFromBidual",
+MorphismFromBidualWithGivenBidual := rec(
+  installation_name := "MorphismFromBidualWithGivenBidual",
   filter_list := [ "object", "object" ],
-  cache_name := "MorphismFromBidual",
+  cache_name := "MorphismFromBidualWithGivenBidual",
   return_type := "morphism" ),
 
-TensorProductInternalHomCompatibilityMorphism := rec(
-  installation_name := "TensorProductInternalHomCompatibilityMorphism",
+TensorProductInternalHomCompatibilityMorphismWithGivenObjects := rec(
+  installation_name := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
   filter_list := [ "object", "object", "object", "object", IsList ],
-  cache_name := "TensorProductInternalHomCompatibilityMorphism",
+  cache_name := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
   return_type := "morphism" ),
 
-TensorProductInternalHomCompatibilityMorphismInverse := rec(
-  installation_name := "TensorProductInternalHomCompatibilityMorphismInverse",
+TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects := rec(
+  installation_name := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
   filter_list := [ "object", "object", "object", "object", IsList ],
-  cache_name := "TensorProductInternalHomCompatibilityMorphismInverse",
+  cache_name := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
   return_type := "morphism" ),
 
-TensorProductDualityCompatibilityMorphism := rec(
-  installation_name := "TensorProductDualityCompatibilityMorphism",
+TensorProductDualityCompatibilityMorphismWithGivenObjects := rec(
+  installation_name := "TensorProductDualityCompatibilityMorphismWithGivenObjects",
   filter_list := [ "object", "object", "object", "object" ],
-  cache_name := "TensorProductDualityCompatibilityMorphism",
+  cache_name := "TensorProductDualityCompatibilityMorphismWithGivenObjects",
   return_type := "morphism" ),
 
-MorphismFromTensorProductToInternalHom := rec(
-  installation_name := "MorphismFromTensorProductToInternalHom",
+MorphismFromTensorProductToInternalHomWithGivenObjects := rec(
+  installation_name := "MorphismFromTensorProductToInternalHomWithGivenObjects",
   filter_list := [ "object", "object", "object", "object" ],
-  cache_name := "MorphismFromTensorProductToInternalHom",
+  cache_name := "MorphismFromTensorProductToInternalHomWithGivenObjects",
   return_type := "morphism" ),
 
-MorphismFromInternalHomToTensorProduct := rec(
-  installation_name := "MorphismFromInternalHomToTensorProduct",
+MorphismFromInternalHomToTensorProductWithGivenObjects := rec(
+  installation_name := "MorphismFromInternalHomToTensorProductWithGivenObjects",
   filter_list := [ "object", "object", "object", "object" ],
-  cache_name := "MorphismFromInternalHomToTensorProduct",
+  cache_name := "MorphismFromInternalHomToTensorProductWithGivenObjects",
   return_type := "morphism" ),
 
 TraceMap := rec(
@@ -2584,16 +2589,48 @@ LambdaElimination := rec(
   cache_name := "LambdaElimination",
   return_type := "morphism" ),
 
-IsomorphismFromObjectToInternalHom := rec(
-  installation_name := "IsomorphismFromObjectToInternalHom",
+IsomorphismFromObjectToInternalHomWithGivenInternalHom := rec(
+  installation_name := "IsomorphismFromObjectToInternalHomWithGivenInternalHom",
   filter_list := [ "object", "object" ],
-  cache_name := "IsomorphismFromObjectToInternalHom",
+  cache_name := "IsomorphismFromObjectToInternalHomWithGivenInternalHom",
   return_type := "morphism" ),
 
-IsomorphismFromInternalHomToObject := rec(
-  installation_name := "IsomorphismFromInternalHomToObject",
+IsomorphismFromInternalHomToObjectWithGivenInternalHom := rec(
+  installation_name := "IsomorphismFromInternalHomToObjectWithGivenInternalHom",
   filter_list := [ "object", "object" ],
-  cache_name := "IsomorphismFromInternalHomToObject",
+  cache_name := "IsomorphismFromInternalHomToObjectWithGivenInternalHom",
   return_type := "morphism" ),
   )
 );
+
+InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
+  function( )
+    local recnames, current_recname, current_rec, position, without_given_name;
+    
+    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    
+    for current_recname in recnames do
+      
+      current_rec := CAP_INTERNAL_METHOD_NAME_RECORD.(current_recname);
+      
+      position := PositionSublist( current_recname, "WithGiven" );
+      
+      current_rec.is_with_given := false;
+      
+      if position <> fail then
+         
+         without_given_name := current_recname{[ 1 .. position - 1 ]};
+         
+         if without_given_name in recnames then
+           
+           current_rec.is_with_given := true;
+           
+         fi;
+         
+      fi;
+      
+    od;
+    
+end );
+
+CAP_INTERNAL_ENHANCE_NAME_RECORD();

@@ -10,45 +10,67 @@
 ##
 #############################################################################
 
+InstallValue( CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS, rec( ) );
+
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.TensorProductOnMorphisms := 
+  [ [ TensorProductOnMorphismsWithGivenTensorProducts, 1 ],
+    [ TensorProductOnObjects, 2 ] ];
 ##
 InstallMethod( TensorProductOnMorphisms,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( morphism_1, morphism_2 )
     
-    return TensorProductOnMorphisms( TensorProductOnObjects( Source( morphism_1 ), Source( morphism_2 ) ),
-                                     morphism_1, morphism_2,
-                                     TensorProductOnObjects( Range( morphism_1 ), Range( morphism_2 ) )
-                                   );
+    return TensorProductOnMorphismsWithGivenTensorProducts( 
+             TensorProductOnObjects( Source( morphism_1 ), Source( morphism_2 ) ),
+             morphism_1, morphism_2,
+             TensorProductOnObjects( Range( morphism_1 ), Range( morphism_2 ) )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.AssociatorRightToLeft := 
+  [ [ AssociatorRightToLeftWithGivenTensorProducts, 1 ],
+    [ TensorProductOnObjects, 4 ] ];
 ##
 InstallMethod( AssociatorRightToLeft,
                [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2, object_3 )
     
-    return AssociatorRightToLeft( TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ),
-                                  object_1, object_2, object_3,
-                                  TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ) 
-                                );
+    return AssociatorRightToLeftWithGivenTensorProducts( 
+             TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ),
+             object_1, object_2, object_3,
+             TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ) 
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.AssociatorLeftToRight := 
+  [ [ AssociatorLeftToRightWithGivenTensorProducts, 1 ],
+    [ TensorProductOnObjects, 4 ] ];
 ##
 InstallMethod( AssociatorLeftToRight,
                [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2, object_3 )
     
-    return AssociatorLeftToRight( TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ),
-                                  object_1, object_2, object_3,
-                                  TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ) 
-                                );
+    return AssociatorLeftToRightWithGivenTensorProducts( 
+             TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ),
+             object_1, object_2, object_3,
+             TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ) 
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.LeftUnitor := 
+  [ [ LeftUnitorWithGivenTensorProduct, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ TensorUnit, 1 ] ];
 ##
 InstallMethod( LeftUnitor,
                [ IsCapCategoryObject ],
@@ -58,10 +80,15 @@ InstallMethod( LeftUnitor,
     
     category := CapCategory( object );
     
-    return LeftUnitor( object, TensorProductOnObjects( TensorUnit( category ), object ) );
+    return LeftUnitorWithGivenTensorProduct( object, TensorProductOnObjects( TensorUnit( category ), object ) );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.LeftUnitorInverse := 
+  [ [ LeftUnitorInverseWithGivenTensorProduct, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ TensorUnit, 1 ] ];
 ##
 InstallMethod( LeftUnitorInverse,
                [ IsCapCategoryObject ],
@@ -71,10 +98,15 @@ InstallMethod( LeftUnitorInverse,
     
     category := CapCategory( object );
     
-    return LeftUnitorInverse( object, TensorProductOnObjects( TensorUnit( category ), object ) );
+    return LeftUnitorInverseWithGivenTensorProduct( object, TensorProductOnObjects( TensorUnit( category ), object ) );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.RightUnitor := 
+  [ [ RightUnitorWithGivenTensorProduct, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ TensorUnit, 1 ] ];
 ##
 InstallMethod( RightUnitor,
                [ IsCapCategoryObject ],
@@ -84,10 +116,15 @@ InstallMethod( RightUnitor,
     
     category := CapCategory( object );
     
-    return RightUnitor( object, TensorProductOnObjects( object, TensorUnit( category ) ) );
+    return RightUnitorWithGivenTensorProduct( object, TensorProductOnObjects( object, TensorUnit( category ) ) );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.RightUnitorInverse := 
+  [ [ RightUnitorInverseWithGivenTensorProduct, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ TensorUnit, 1 ] ];
 ##
 InstallMethod( RightUnitorInverse,
                [ IsCapCategoryObject ],
@@ -97,106 +134,154 @@ InstallMethod( RightUnitorInverse,
     
     category := CapCategory( object );
     
-    return RightUnitorInverse( object, TensorProductOnObjects( object, TensorUnit( category ) ) );
+    return RightUnitorInverseWithGivenTensorProduct( object, TensorProductOnObjects( object, TensorUnit( category ) ) );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.Braiding := 
+  [ [ BraidingWithGivenTensorProducts, 1 ],
+    [ TensorProductOnObjects, 2 ] ];
 ##
 InstallMethod( Braiding,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2 )
     
-    return Braiding( TensorProductOnObjects( object_1, object_2 ), object_1, object_2, TensorProductOnObjects( object_2, object_1 ) );
+    return BraidingWithGivenTensorProducts( TensorProductOnObjects( object_1, object_2 ), object_1, object_2, TensorProductOnObjects( object_2, object_1 ) );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.BraidingInverse := 
+  [ [ BraidingInverseWithGivenTensorProducts, 1 ],
+    [ TensorProductOnObjects, 2 ] ];
 ##
 InstallMethod( BraidingInverse,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2 )
     
-    return Braiding( TensorProductOnObjects( object_2, object_1 ), object_1, object_2, TensorProductOnObjects( object_1, object_2 ) );
+    return BraidingInverseWithGivenTensorProducts( TensorProductOnObjects( object_2, object_1 ), object_1, object_2, TensorProductOnObjects( object_1, object_2 ) );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.InternalHomOnMorphisms := 
+  [ [ InternalHomOnMorphismsWithGivenInternalHoms, 1 ],
+    [ InternalHomOnObjects, 2 ] ];
 ##
 InstallMethod( InternalHomOnMorphisms,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( morphism_1, morphism_2 )
     
-    return InternalHomOnMorphisms( InternalHomOnObjects( Range( morphism_1 ), Source( morphism_2 ) ),
-                                   morphism_1, morphism_2,
-                                   InternalHomOnObjects( Source( morphism_1 ), Range( morphism_2 ) )
-                                 );
+    return InternalHomOnMorphismsWithGivenInternalHoms( 
+             InternalHomOnObjects( Range( morphism_1 ), Source( morphism_2 ) ),
+             morphism_1, morphism_2,
+             InternalHomOnObjects( Source( morphism_1 ), Range( morphism_2 ) )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.EvaluationMorphism := 
+  [ [ EvaluationMorphismWithGivenSource, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ InternalHomOnObjects, 1 ] ];
 ##
 InstallMethod( EvaluationMorphism,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2 )
     
-    return EvaluationMorphism( object_1, object_2,
-                               TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), object_1 )
-                             );
+    return EvaluationMorphismWithGivenSource( 
+             object_1, object_2,
+             TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), object_1 )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.CoevaluationMorphism := 
+  [ [ CoevaluationMorphismWithGivenRange, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ InternalHomOnObjects, 1 ] ];
 ##
 InstallMethod( CoevaluationMorphism,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2 )
     
-    return CoevaluationMorphism( object_1, object_2,
-                                 InternalHomOnObjects( object_1, TensorProductOnObjects( object_2, object_1 ) )
-                               );
+    return CoevaluationMorphismWithGivenRange( 
+             object_1, object_2,
+             InternalHomOnObjects( object_1, TensorProductOnObjects( object_2, object_1 ) )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MonoidalPreComposeMorphism := 
+  [ [ MonoidalPreComposeMorphismWithGivenObjects, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ InternalHomOnObjects, 3 ] ];
 ##
 InstallMethod( MonoidalPreComposeMorphism,
                [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2, object_3 )
     
-    return MonoidalPreComposeMorphism( TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), InternalHomOnObjects( object_2, object_3 ) ),
-                                       object_1, object_2, object_3,
-                                       InternalHomOnObjects( object_1, object_3 )
-                                     );
+    return MonoidalPreComposeMorphismWithGivenObjects( 
+             TensorProductOnObjects( InternalHomOnObjects( object_1, object_2 ), InternalHomOnObjects( object_2, object_3 ) ),
+             object_1, object_2, object_3,
+             InternalHomOnObjects( object_1, object_3 )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MonoidalPostComposeMorphism := 
+  [ [ MonoidalPostComposeMorphismWithGivenObjects, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ InternalHomOnObjects, 3 ] ];
 ##
 InstallMethod( MonoidalPostComposeMorphism,
                [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2, object_3 )
     
-    return MonoidalPostComposeMorphism( TensorProductOnObjects( InternalHomOnObjects( object_2, object_3 ), InternalHomOnObjects( object_1, object_2 ) ),
-                                        object_1, object_2, object_3,
-                                        InternalHomOnObjects( object_1, object_3 )
-                                      );
+    return MonoidalPostComposeMorphismWithGivenObjects( 
+             TensorProductOnObjects( InternalHomOnObjects( object_2, object_3 ), InternalHomOnObjects( object_1, object_2 ) ),
+             object_1, object_2, object_3,
+             InternalHomOnObjects( object_1, object_3 )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.DualOnMorphisms := 
+  [ [ DualOnMorphismsWithGivenDuals, 1 ],
+    [ DualOnObjects, 2 ] ];
 ##
 InstallMethod( DualOnMorphisms,
                [ IsCapCategoryMorphism ],
                
   function( morphism )
     
-    return DualOnMorphisms( DualOnObjects( Range( morphism ) ),
-                            morphism,
-                            DualOnObjects( Source( morphism ) )
-                          );
+    return DualOnMorphismsWithGivenDuals(
+             DualOnObjects( Range( morphism ) ),
+             morphism,
+             DualOnObjects( Source( morphism ) )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.EvaluationForDual := 
+  [ [ EvaluationForDualWithGivenTensorProduct, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ DualOnObjects, 1 ],
+    [ TensorUnit, 1 ] ];
 ##
 InstallMethod( EvaluationForDual,
                [ IsCapCategoryObject ],
@@ -206,13 +291,20 @@ InstallMethod( EvaluationForDual,
     
     category := CapCategory( object );
     
-    return EvaluationForDual( TensorProductOnObjects( DualOnObjects( object ), object ), 
-                              object,
-                              TensorUnit( category ) 
-                            );
+    return EvaluationForDualWithGivenTensorProduct( 
+             TensorProductOnObjects( DualOnObjects( object ), object ),
+             object,
+             TensorUnit( category )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.CoevaluationForDual := 
+  [ [ CoevaluationForDualWithGivenTensorProduct, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ DualOnObjects, 1 ],
+    [ TensorUnit, 1 ] ];
 ##
 InstallMethod( CoevaluationForDual,
                [ IsCapCategoryObject ],
@@ -222,40 +314,54 @@ InstallMethod( CoevaluationForDual,
     
     category := CapCategory( object );
     
-    return CoevaluationForDual( TensorUnit( category ),
-                                object, 
-                                TensorProductOnObjects( object, DualOnObjects( object ) ) 
-                              );
+    return CoevaluationForDualWithGivenTensorProduct( 
+             TensorUnit( category ),
+             object,
+             TensorProductOnObjects( object, DualOnObjects( object ) )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MorphismToBidual := 
+  [ [ MorphismToBidualWithGivenBidual, 1 ],
+    [ DualOnObjects, 2 ] ];
 ##
 InstallMethod( MorphismToBidual,
                [ IsCapCategoryObject ],
                
   function( object )
     
-    return MorphismToBidual( object, DualOnObjects( DualOnObjects( object ) ) );
+    return MorphismToBidualWithGivenBidual( object, DualOnObjects( DualOnObjects( object ) ) );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MorphismFromBidual := 
+  [ [ MorphismFromBidualWithGivenBidual, 1 ],
+    [ DualOnObjects, 2 ] ];
 ##
 InstallMethod( MorphismFromBidual,
                [ IsCapCategoryObject ],
                
   function( object )
     
-    return MorphismFromBidual( object, DualOnObjects( DualOnObjects( object ) ) );
+    return MorphismFromBidualWithGivenBidual( object, DualOnObjects( DualOnObjects( object ) ) );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.TensorProductInternalHomCompatibilityMorphism := 
+  [ [ TensorProductInternalHomCompatibilityMorphismWithGivenObjects, 1 ],
+    [ TensorProductOnObjects, 3 ],
+    [ InternalHomOnObjects, 3 ] ];
 ##
 InstallMethod( TensorProductInternalHomCompatibilityMorphism,
                [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1_1, object_1_2, object_2_1, object_2_2 )
     
-    return TensorProductInternalHomCompatibilityMorphism(
+    return TensorProductInternalHomCompatibilityMorphismWithGivenObjects(
              object_1_1, object_1_2, object_2_1, object_2_2,
              [ TensorProductOnObjects( InternalHomOnObjects( object_1_1, object_1_2 ), InternalHomOnObjects( object_2_1, object_2_2 ) ),
                InternalHomOnObjects( TensorProductOnObjects( object_1_1, object_2_1 ), TensorProductOnObjects( object_1_2, object_2_2 ) ) ]
@@ -263,13 +369,18 @@ InstallMethod( TensorProductInternalHomCompatibilityMorphism,
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.TensorProductInternalHomCompatibilityMorphismInverse := 
+  [ [ TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects, 1 ],
+    [ TensorProductOnObjects, 3 ],
+    [ InternalHomOnObjects, 3 ] ];
 ##
 InstallMethod( TensorProductInternalHomCompatibilityMorphismInverse,
                [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1_1, object_1_2, object_2_1, object_2_2 )
     
-    return TensorProductInternalHomCompatibilityMorphismInverse(
+    return TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects(
              object_1_1, object_1_2, object_2_1, object_2_2,
              [ TensorProductOnObjects( InternalHomOnObjects( object_1_1, object_1_2 ), InternalHomOnObjects( object_2_1, object_2_2 ) ),
                InternalHomOnObjects( TensorProductOnObjects( object_1_1, object_2_1 ), TensorProductOnObjects( object_1_2, object_2_2 ) ) ]
@@ -278,44 +389,69 @@ InstallMethod( TensorProductInternalHomCompatibilityMorphismInverse,
 end );
 
 ##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.TensorProductDualityCompatibilityMorphism := 
+  [ [ TensorProductDualityCompatibilityMorphismWithGivenObjects, 1 ],
+    [ DualOnObjects, 3 ],
+    [ TensorProductOnObjects, 2 ] ];
+##
 InstallMethod( TensorProductDualityCompatibilityMorphism,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2 )
     
-    return TensorProductDualityCompatibilityMorphism( DualOnObjects( TensorProductOnObjects( object_1, object_2 ) ),
-                                                      object_1, object_2,
-                                                      TensorProductOnObjects( DualOnObjects( object_1 ), DualOnObjects( object_2 ) )
-                                                    );
+    return TensorProductDualityCompatibilityMorphismWithGivenObjects(
+             DualOnObjects( TensorProductOnObjects( object_1, object_2 ) ),
+             object_1, object_2,
+             TensorProductOnObjects( DualOnObjects( object_1 ), DualOnObjects( object_2 ) )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MorphismFromTensorProductToInternalHom := 
+  [ [ MorphismFromTensorProductToInternalHomWithGivenObjects, 1 ],
+    [ DualOnObjects, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ InternalHomOnObjects, 1 ] ];
 ##
 InstallMethod( MorphismFromTensorProductToInternalHom,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2 )
     
-    return MorphismFromTensorProductToInternalHom( TensorProductOnObjects( DualOnObjects( object_1 ), object_2 ),
-                                                   object_1, object_2,
-                                                   InternalHomOnObjects( object_1, object_2 )
-                                                 );
+    return MorphismFromTensorProductToInternalHomWithGivenObjects( 
+             TensorProductOnObjects( DualOnObjects( object_1 ), object_2 ),
+             object_1, object_2,
+             InternalHomOnObjects( object_1, object_2 )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MorphismFromInternalHomToTensorProduct := 
+  [ [ MorphismFromInternalHomToTensorProductWithGivenObjects, 1 ],
+    [ DualOnObjects, 1 ],
+    [ TensorProductOnObjects, 1 ],
+    [ InternalHomOnObjects, 1 ] ];
 ##
 InstallMethod( MorphismFromInternalHomToTensorProduct,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2 )
     
-    return MorphismFromInternalHomToTensorProduct( InternalHomOnObjects( object_1, object_2 ),
-                                                   object_1, object_2,
-                                                   TensorProductOnObjects( DualOnObjects( object_1 ), object_2 )
-                                                 );
+    return MorphismFromInternalHomToTensorProductWithGivenObjects(
+             InternalHomOnObjects( object_1, object_2 ),
+             object_1, object_2,
+             TensorProductOnObjects( DualOnObjects( object_1 ), object_2 )
+           );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.IsomorphismFromInternalHomToObject := 
+  [ [ IsomorphismFromInternalHomToObjectWithGivenInternalHom, 1 ],
+    [ TensorUnit, 1 ],
+    [ InternalHomOnObjects, 1 ] ];
 ##
 InstallMethod( IsomorphismFromInternalHomToObject,
                [ IsCapCategoryObject ],
@@ -325,10 +461,15 @@ InstallMethod( IsomorphismFromInternalHomToObject,
     
     category := CapCategory( object );
     
-    return IsomorphismFromInternalHomToObject( object, InternalHomOnObjects( TensorUnit( category ), object ) );
+    return IsomorphismFromInternalHomToObjectWithGivenInternalHom( object, InternalHomOnObjects( TensorUnit( category ), object ) );
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.IsomorphismFromObjectToInternalHom := 
+  [ [ IsomorphismFromObjectToInternalHomWithGivenInternalHom, 1 ],
+    [ TensorUnit, 1 ],
+    [ InternalHomOnObjects, 1 ] ];
 ##
 InstallMethod( IsomorphismFromObjectToInternalHom,
                [ IsCapCategoryObject ],
@@ -338,7 +479,7 @@ InstallMethod( IsomorphismFromObjectToInternalHom,
     
     category := CapCategory( object );
     
-    return IsomorphismFromObjectToInternalHom( object, InternalHomOnObjects( TensorUnit( category ), object ) );
+    return IsomorphismFromObjectToInternalHomWithGivenInternalHom( object, InternalHomOnObjects( TensorUnit( category ), object ) );
     
 end );
 

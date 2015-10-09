@@ -37,6 +37,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
     
     underlying_honest_category := UnderlyingHonestCategory( category );
     
+    ##
+    AddIsEqualForCacheForObjects( category, IsIdenticalObj );
+    
+    ##
+    AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
+    
     AddIsEqualForObjects( category,
       
       function( object_1, object_2 )

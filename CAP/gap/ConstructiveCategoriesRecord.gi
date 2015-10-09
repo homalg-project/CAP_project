@@ -45,33 +45,33 @@ IsAbelianCategory := Concatenation( [
 
 IsMonoidalCategory  := Concatenation( [
 "TensorProductOnObjects",
-"TensorProductOnMorphisms",
+"TensorProductOnMorphismsWithGivenTensorProducts",
 "TensorUnit",
-"AssociatorLeftToRight",
-"AssociatorRightToLeft",
-"LeftUnitor",
-"LeftUnitorInverse",
-"RightUnitor",
-"RightUnitorInverse"
+"AssociatorLeftToRightWithGivenTensorProducts",
+"AssociatorRightToLeftWithGivenTensorProducts",
+"LeftUnitorWithGivenTensorProduct",
+"LeftUnitorInverseWithGivenTensorProduct",
+"RightUnitorWithGivenTensorProduct",
+"RightUnitorInverseWithGivenTensorProduct"
 ], ~.EveryCategory ),
 
 IsBraidedMonoidalCategory  := Concatenation( [
-"Braiding",
-"BraidingInverse"
+"BraidingWithGivenTensorProducts",
+"BraidingInverseWithGivenTensorProducts"
 ], ~.IsMonoidalCategory ),
 
 IsSymmetricMonoidalCategory  := Concatenation( [ ], ~.IsBraidedMonoidalCategory ),
 
 IsSymmetricClosedMonoidalCategory  := Concatenation( [ 
 "InternalHomOnObjects",
-"InternalHomOnMorphisms",
-"EvaluationMorphism",
-"CoevaluationMorphism"
+"InternalHomOnMorphismsWithGivenInternalHoms",
+"EvaluationMorphismWithGivenSource",
+"CoevaluationMorphismWithGivenRange"
 ], ~.IsSymmetricMonoidalCategory ),
 
 IsRigidSymmetricClosedMonoidalCategory  := Concatenation( [ 
-"TensorProductInternalHomCompatibilityMorphismInverse",
-"MorphismFromBidual"
+"TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
+"MorphismFromBidualWithGivenBidual"
 ], ~.IsSymmetricClosedMonoidalCategory )
 
 ) );

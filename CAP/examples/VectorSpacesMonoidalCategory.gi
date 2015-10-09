@@ -721,7 +721,7 @@ AddTensorProductOnObjects( vecspaces,
 );
 
 ##
-AddTensorProductOnMorphisms( vecspaces,
+AddTensorProductOnMorphismsWithGivenTensorProducts( vecspaces,
   
   function( new_source, morphism_1, morphism_2, new_range )
     
@@ -730,7 +730,7 @@ AddTensorProductOnMorphisms( vecspaces,
 end );
 
 # ##
-# AddAssociatorRightToLeft( vecspaces,
+# AddAssociatorRightToLeftWithGivenTensorProducts( vecspaces,
 #   
 #   function( right_associated_object, object_1, object_2, object_3, left_associated_object )
 #     
@@ -750,7 +750,7 @@ AddTensorUnit( vecspaces,
 end );
 
 # ##
-# AddLeftUnitor( vecspaces,
+# AddLeftUnitorWithGivenTensorProduct( vecspaces,
 #   
 #   function( object, unit_tensored_object )
 #     
@@ -761,7 +761,7 @@ end );
 # end );
 # 
 # ##
-# AddRightUnitor( vecspaces,
+# AddRightUnitorWithGivenTensorProduct( vecspaces,
 #   
 #   function( object, object_tensored_unit )
 #     
@@ -771,7 +771,7 @@ end );
 # end );
 
 ##
-AddBraiding( vecspaces,
+AddBraidingWithGivenTensorProducts( vecspaces,
   
   function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
     local permutation_matrix, dim, dim_1, dim_2;
@@ -798,7 +798,7 @@ end );
 AddDualOnObjects( vecspaces, space -> space );
 
 ##
-AddDualOnMorphisms( vecspaces,
+AddDualOnMorphismsWithGivenDuals( vecspaces,
   
   function( dual_source, morphism, dual_range )
     
@@ -809,7 +809,7 @@ AddDualOnMorphisms( vecspaces,
 end );
 
 ##
-AddEvaluationForDual( vecspaces,
+AddEvaluationForDualWithGivenTensorProduct( vecspaces,
   
   function( tensor_object, object, unit )
     local dimension, row, zero_row, i;
@@ -841,7 +841,7 @@ AddEvaluationForDual( vecspaces,
 end );
 
 ##
-AddCoevaluationForDual( vecspaces,
+AddCoevaluationForDualWithGivenTensorProduct( vecspaces,
   
   function( unit, object, tensor_object )
     
@@ -874,7 +874,7 @@ AddCoevaluationForDual( vecspaces,
 end );
 
 # ##
-# AddMorphismToBidual( vecspaces,
+# AddMorphismToBidualWithGivenBidual( vecspaces,
 #   
 #   function( object, bidual_of_object )
 #     

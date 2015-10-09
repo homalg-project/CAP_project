@@ -456,9 +456,9 @@ end );
 InstallGlobalFunction( ADD_PRECOMPOSE_LEFT,
                        
   function( category )
-    local ring;
+    local homalg_ring;
     
-    ring := category!.ring_for_representation_category;
+    homalg_ring := category!.ring_for_representation_category;
     
     AddPreCompose( category,
                    
@@ -484,7 +484,7 @@ InstallGlobalFunction( ADD_PRECOMPOSE_LEFT,
         [ function( left_morphism, zero_morphism )
             
             return PresentationMorphism( Source( left_morphism ),
-                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
+                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_ring ),
                                          Range( zero_morphism ) );
           
           end, [ , IsIdenticalToZeroMorphism ] ],
@@ -492,7 +492,7 @@ InstallGlobalFunction( ADD_PRECOMPOSE_LEFT,
         [ function( zero_morphism, right_morphism )
             
             return PresentationMorphism( Source( zero_morphism ),
-                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), ring ),
+                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), homalg_ring ),
                                          Range( right_morphism ) );
           
           end, [ IsIdenticalToZeroMorphism, ] ],
@@ -506,9 +506,9 @@ end );
 InstallGlobalFunction( ADD_PRECOMPOSE_RIGHT,
                        
   function( category )
-    local ring;
+    local homalg_ring;
     
-    ring := category!.ring_for_representation_category;
+    homalg_ring := category!.ring_for_representation_category;
     
     AddPreCompose( category,
       
@@ -536,7 +536,7 @@ InstallGlobalFunction( ADD_PRECOMPOSE_RIGHT,
         [ function( left_morphism, zero_morphism )
             
             return PresentationMorphism( Source( left_morphism ),
-                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( left_morphism ) ), ring ),
+                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( left_morphism ) ), homalg_ring ),
                                          Range( zero_morphism ) );
           
           end, [ , IsIdenticalToZeroMorphism ] ],
@@ -544,7 +544,7 @@ InstallGlobalFunction( ADD_PRECOMPOSE_RIGHT,
         [ function( zero_morphism, right_morphism )
             
             return PresentationMorphism( Source( zero_morphism ),
-                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( right_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
+                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( right_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_ring ),
                                          Range( right_morphism ) );
           
           end, [ IsIdenticalToZeroMorphism, ] ],
@@ -603,13 +603,16 @@ end );
 InstallGlobalFunction( ADD_ZERO_MORPHISM_LEFT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddZeroMorphism( category,
                      
       function( source, range )
         local matrix;
         
-        matrix := HomalgZeroMatrix( NrColumns( UnderlyingMatrix( source ) ), NrColumns( UnderlyingMatrix( range ) ), category!.ring_for_representation_category );
+        matrix := HomalgZeroMatrix( NrColumns( UnderlyingMatrix( source ) ), NrColumns( UnderlyingMatrix( range ) ), homalg_ring );
         
         return PresentationMorphism( source, matrix, range );
         
@@ -621,13 +624,16 @@ end );
 InstallGlobalFunction( ADD_ZERO_MORPHISM_RIGHT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddZeroMorphism( category,
                      
       function( source, range )
         local matrix;
         
-        matrix := HomalgZeroMatrix( NrRows( UnderlyingMatrix( range ) ), NrRows( UnderlyingMatrix( source ) ), category!.ring_for_representation_category );
+        matrix := HomalgZeroMatrix( NrRows( UnderlyingMatrix( range ) ), NrRows( UnderlyingMatrix( source ) ), homalg_ring );
         
         return PresentationMorphism( source, matrix, range );
         
@@ -675,6 +681,9 @@ end );
 InstallGlobalFunction( ADD_COKERNEL_LEFT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddCokernelProjection( category,
                      
@@ -685,7 +694,7 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
         
         cokernel_object := AsLeftPresentation( cokernel_object );
         
-        projection := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( Range( morphism ) ) ), category!.ring_for_representation_category );
+        projection := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
         
         return PresentationMorphism( Range( morphism ), projection, cokernel_object );
         
@@ -696,7 +705,7 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
       function( morphism, cokernel_object )
         local projection;
         
-        projection := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( Range( morphism ) ) ), category!.ring_for_representation_category );
+        projection := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
         
         return PresentationMorphism( Range( morphism ), projection, cokernel_object );
         
@@ -716,6 +725,9 @@ end );
 InstallGlobalFunction( ADD_COKERNEL_RIGHT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddCokernelProjection( category,
                      
@@ -726,7 +738,7 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
         
         cokernel_object := AsRightPresentation( cokernel_object );
         
-        projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), category!.ring_for_representation_category );
+        projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
         
         return PresentationMorphism( Range( morphism ), projection, cokernel_object );
         
@@ -737,7 +749,7 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
       function( morphism, cokernel_object )
         local projection;
         
-        projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), category!.ring_for_representation_category );
+        projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
         
         return PresentationMorphism( Range( morphism ), projection, cokernel_object );
         
@@ -757,6 +769,9 @@ end );
 InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddDirectSum( category,
                   
@@ -785,9 +800,9 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         dimension_of_factor := object_column_dimension[ component_number ];
         
         projection := List( object_column_dimension, i -> 
-                            HomalgZeroMatrix( i, dimension_of_factor, category!.ring_for_representation_category ) );
+                            HomalgZeroMatrix( i, dimension_of_factor, homalg_ring ) );
         
-        projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
+        projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], homalg_ring );
         
         projection_matrix := projection[ 1 ];
         
@@ -833,9 +848,9 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         
         dimension_of_cofactor := object_column_dimension[ component_number ];
         
-        injection := List( object_column_dimension, i -> HomalgZeroMatrix( dimension_of_cofactor, i, category!.ring_for_representation_category ) );
+        injection := List( object_column_dimension, i -> HomalgZeroMatrix( dimension_of_cofactor, i, homalg_ring ) );
         
-        injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
+        injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], homalg_ring );
         
         injection_matrix := injection[ 1 ];
         
@@ -876,6 +891,9 @@ end );
 InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddDirectSum( category,
                   
@@ -903,9 +921,9 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
         dimension_of_factor := object_column_dimension[ component_number ];
         
-        projection := List( object_column_dimension, i -> HomalgZeroMatrix( dimension_of_factor, i, category!.ring_for_representation_category ) );
+        projection := List( object_column_dimension, i -> HomalgZeroMatrix( dimension_of_factor, i, homalg_ring ) );
         
-        projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
+        projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], homalg_ring );
         
         projection_matrix := projection[ 1 ];
         
@@ -951,9 +969,9 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
         dimension_of_cofactor := object_column_dimension[ component_number ];
         
-        injection := List( object_column_dimension, i -> HomalgZeroMatrix( i, dimension_of_cofactor, category!.ring_for_representation_category ) );
+        injection := List( object_column_dimension, i -> HomalgZeroMatrix( i, dimension_of_cofactor, homalg_ring ) );
         
-        injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], category!.ring_for_representation_category );
+        injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], homalg_ring );
         
         injection_matrix := injection[ 1 ];
         
@@ -994,13 +1012,16 @@ end );
 InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddZeroObject( category,
                    
       function( )
         local matrix;
         
-        matrix := HomalgZeroMatrix( 0, 0, category!.ring_for_representation_category );
+        matrix := HomalgZeroMatrix( 0, 0, homalg_ring );
         
         return AsLeftPresentation( matrix );
         
@@ -1013,7 +1034,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
         
         nr_columns := NrColumns( UnderlyingMatrix( object ) );
         
-        morphism := HomalgZeroMatrix( nr_columns, 0, category!.ring_for_representation_category );
+        morphism := HomalgZeroMatrix( nr_columns, 0, homalg_ring );
         
         return PresentationMorphism( object, morphism, terminal_object );
         
@@ -1026,7 +1047,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
         
         nr_columns := NrColumns( UnderlyingMatrix( object ) );
         
-        morphism := HomalgZeroMatrix( 0, nr_columns, category!.ring_for_representation_category );
+        morphism := HomalgZeroMatrix( 0, nr_columns, homalg_ring );
         
         return PresentationMorphism( initial_object, morphism, object );
         
@@ -1038,13 +1059,16 @@ end );
 InstallGlobalFunction( ADD_ZERO_OBJECT_RIGHT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddZeroObject( category,
                    
       function( )
         local matrix;
         
-        matrix := HomalgZeroMatrix( 0, 0, category!.ring_for_representation_category );
+        matrix := HomalgZeroMatrix( 0, 0, homalg_ring );
         
         return AsRightPresentation( matrix );
         
@@ -1057,7 +1081,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_RIGHT,
         
         nr_rows := NrRows( UnderlyingMatrix( object ) );
         
-        morphism := HomalgZeroMatrix( 0, nr_rows, category!.ring_for_representation_category );
+        morphism := HomalgZeroMatrix( 0, nr_rows, homalg_ring );
         
         return PresentationMorphism( object, morphism, terminal_object );
         
@@ -1070,7 +1094,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_RIGHT,
         
         nr_rows := NrRows( UnderlyingMatrix( object ) );
         
-        morphism := HomalgZeroMatrix( nr_rows, 0, category!.ring_for_representation_category );
+        morphism := HomalgZeroMatrix( nr_rows, 0, homalg_ring );
         
         return PresentationMorphism( initial_object, morphism, object );
         
@@ -1082,13 +1106,16 @@ end );
 InstallGlobalFunction( ADD_IDENTITY_LEFT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddIdentityMorphism( category,
                          
       function( object )
         local matrix;
         
-        matrix := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( object ) ), category!.ring_for_representation_category );
+        matrix := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( object ) ), homalg_ring );
         
         return PresentationMorphism( object, matrix, object );
         
@@ -1100,13 +1127,16 @@ end );
 InstallGlobalFunction( ADD_IDENTITY_RIGHT,
                        
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddIdentityMorphism( category,
                          
       function( object )
         local matrix;
         
-        matrix := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( object ) ), category!.ring_for_representation_category );
+        matrix := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( object ) ), homalg_ring );
         
         return PresentationMorphism( object, matrix, object );
         
@@ -1118,6 +1148,9 @@ end );
 InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT,
                       
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddTensorProductOnObjects( category,
       
@@ -1129,10 +1162,10 @@ InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT,
         presentation_matrix_2 := UnderlyingMatrix( object_2 );
         
         identity_1 := 
-          HomalgIdentityMatrix( NrColumns( presentation_matrix_1 ), category!.ring_for_representation_category );
+          HomalgIdentityMatrix( NrColumns( presentation_matrix_1 ), homalg_ring );
         
         identity_2 := 
-          HomalgIdentityMatrix( NrColumns( presentation_matrix_2 ), category!.ring_for_representation_category );
+          HomalgIdentityMatrix( NrColumns( presentation_matrix_2 ), homalg_ring );
         
         presentation_matrix := UnionOfRows(
                                  KroneckerMat( identity_1, presentation_matrix_2 ),
@@ -1149,6 +1182,9 @@ end );
 InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT,
                       
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddTensorProductOnObjects( category,
       
@@ -1160,10 +1196,10 @@ InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT,
         presentation_matrix_2 := UnderlyingMatrix( object_2 );
         
         identity_1 := 
-          HomalgIdentityMatrix( NrRows( presentation_matrix_1 ), category!.ring_for_representation_category );
+          HomalgIdentityMatrix( NrRows( presentation_matrix_1 ), homalg_ring );
         
         identity_2 := 
-          HomalgIdentityMatrix( NrRows( presentation_matrix_2 ), category!.ring_for_representation_category );
+          HomalgIdentityMatrix( NrRows( presentation_matrix_2 ), homalg_ring );
         
         presentation_matrix := UnionOfColumns(
                                  KroneckerMat( identity_1, presentation_matrix_2 ),
@@ -1181,7 +1217,7 @@ InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_MORPHISMS,
                       
   function( category )
     
-    AddTensorProductOnMorphisms( category,
+    AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       
       function( new_source, morphism_1, morphism_2, new_range )
         
@@ -1197,13 +1233,13 @@ end );
 InstallGlobalFunction( ADD_TENSOR_UNIT_LEFT,
                       
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddTensorUnit( category,
       
       function( )
-        local homalg_ring;
-        
-        homalg_ring := category!.ring_for_representation_category;
         
         return AsLeftPresentation( HomalgZeroMatrix( 0, 1, homalg_ring ) );
         
@@ -1215,13 +1251,13 @@ end );
 InstallGlobalFunction( ADD_TENSOR_UNIT_RIGHT,
                       
   function( category )
+    local homalg_ring;
+    
+    homalg_ring := category!.ring_for_representation_category;
     
     AddTensorUnit( category,
       
       function( )
-        local homalg_ring;
-        
-        homalg_ring := category!.ring_for_representation_category;
         
         return AsRightPresentation( HomalgZeroMatrix( 1, 0, homalg_ring ) );
         
@@ -1267,7 +1303,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_LEFT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddInternalHomOnMorphisms( category,
+    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
       function( new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
@@ -1298,7 +1334,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddInternalHomOnMorphisms( category,
+    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
       function( new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
@@ -1328,7 +1364,7 @@ InstallGlobalFunction( ADD_BRAIDING_LEFT,
                       
   function( category )
     
-    AddBraiding( category,
+    AddBraidingWithGivenTensorProducts( category,
       
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;
@@ -1359,7 +1395,7 @@ InstallGlobalFunction( ADD_BRAIDING_RIGHT,
                       
   function( category )
     
-    AddBraiding( category,
+    AddBraidingWithGivenTensorProducts( category,
       
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;
@@ -1389,14 +1425,15 @@ end );
 InstallGlobalFunction( ADD_EVALUATION_MORPHISM_LEFT,
   
   function( category )
+    local homalg_ring;
     
-    AddEvaluationMorphism( category,
+    homalg_ring := category!.ring_for_representation_category;
+    
+    AddEvaluationMorphismWithGivenSource( category,
       
       function( object_1, object_2, internal_hom_tensored_object_1 )
-        local homalg_ring, internal_hom_embedding, rank_1, morphism, free_module,
+        local internal_hom_embedding, rank_1, morphism, free_module,
               column, zero_column, i, matrix, rank_2, lifted_evaluation;
-        
-        homalg_ring := category!.ring_for_representation_category;
         
         internal_hom_embedding := INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( object_1, object_2 );
         
@@ -1445,14 +1482,15 @@ end );
 InstallGlobalFunction( ADD_EVALUATION_MORPHISM_RIGHT,
   
   function( category )
+    local homalg_ring;
     
-    AddEvaluationMorphism( category,
+    homalg_ring := category!.ring_for_representation_category;
+    
+    AddEvaluationMorphismWithGivenSource( category,
       
       function( object_1, object_2, internal_hom_tensored_object_1 )
-        local homalg_ring, internal_hom_embedding, rank_1, morphism, free_module,
+        local internal_hom_embedding, rank_1, morphism, free_module,
               row, zero_row, i, matrix, rank_2, lifted_evaluation;
-        
-        homalg_ring := category!.ring_for_representation_category;
         
         internal_hom_embedding := INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( object_1, object_2 );
         
@@ -1501,14 +1539,15 @@ end );
 InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
   
   function( category )
+    local homalg_ring;
     
-    AddCoevaluationMorphism( category,
+    homalg_ring := category!.ring_for_representation_category;
+    
+    AddCoevaluationMorphismWithGivenRange( category,
       
       function( object_1, object_2, internal_hom )
-        local homalg_ring, object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
+        local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
               row, zero_row, i, matrix, rank_1, lifted_coevaluation;
-        
-        homalg_ring := category!.ring_for_representation_category;
         
         object_1_tensored_object_2 := TensorProductOnObjects( object_1, object_2 );
         
@@ -1558,14 +1597,15 @@ end );
 InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
   
   function( category )
+    local homalg_ring;
     
-    AddCoevaluationMorphism( category,
+    homalg_ring := category!.ring_for_representation_category;
+    
+    AddCoevaluationMorphismWithGivenRange( category,
       
       function( object_1, object_2, internal_hom )
-        local homalg_ring, object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
+        local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
               column, zero_column, i, matrix, rank_1, lifted_coevaluation;
-        
-        homalg_ring := category!.ring_for_representation_category;
         
         object_1_tensored_object_2 := TensorProductOnObjects( object_1, object_2 );
         
