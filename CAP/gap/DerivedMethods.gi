@@ -2663,7 +2663,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
 #       Description := "IsomorphismFromInternalHomToObject as the inverse of IsomorphismFromObjectToInternalHom" );
 
 ##
-AddDerivationToCAP( IsomorphismFromObjectToInternalHom,
+AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
                   
   function( object, internal_hom )
     local unit, morphism;
@@ -2676,11 +2676,11 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalHom,
                        morphism );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "IsomorphismFromObjectToInternalHom using the evaluation morphism" );
+      Description := "IsomorphismFromObjectToInternalHomWithGivenInternalHom using the evaluation morphism" );
 
 ## TODO: enable
 # ##
-# AddDerivationToCAP( IsomorphismFromObjectToInternalHom,
+# AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
 #                     
 #   function( object, internal_hom )
 #     

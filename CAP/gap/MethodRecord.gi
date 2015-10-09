@@ -2589,10 +2589,10 @@ LambdaElimination := rec(
   cache_name := "LambdaElimination",
   return_type := "morphism" ),
 
-IsomorphismFromObjectToInternalHom := rec(
-  installation_name := "IsomorphismFromObjectToInternalHom",
+IsomorphismFromObjectToInternalHomWithGivenInternalHom := rec(
+  installation_name := "IsomorphismFromObjectToInternalHomWithGivenInternalHom",
   filter_list := [ "object", "object" ],
-  cache_name := "IsomorphismFromObjectToInternalHom",
+  cache_name := "IsomorphismFromObjectToInternalHomWithGivenInternalHom",
   return_type := "morphism" ),
 
 IsomorphismFromInternalHomToObject := rec(

@@ -271,6 +271,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeLambdaIntroduction",
                 "CanComputeLambdaElimination",
                 "CanComputeIsomorphismFromObjectToInternalHom",
+                "CanComputeIsomorphismFromObjectToInternalHomWithGivenInternalHom",
                 "CanComputeIsomorphismFromInternalHomToObject",
                 
                 "CanComputeIsEqualForCacheForObjects",

@@ -338,7 +338,7 @@ InstallMethod( IsomorphismFromObjectToInternalHom,
     
     category := CapCategory( object );
     
-    return IsomorphismFromObjectToInternalHom( object, InternalHomOnObjects( TensorUnit( category ), object ) );
+    return IsomorphismFromObjectToInternalHomWithGivenInternalHom( object, InternalHomOnObjects( TensorUnit( category ), object ) );
     
 end );
 
