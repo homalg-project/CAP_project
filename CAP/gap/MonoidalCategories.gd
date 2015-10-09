@@ -10,6 +10,8 @@
 ##
 #############################################################################
 
+DeclareGlobalVariable( "CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS" );
+
 ####################################
 ##
 #! @Section Monoidal Categories
