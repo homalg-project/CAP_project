@@ -10,7 +10,7 @@
 ##
 #############################################################################
 
-DeclareGlobalVariable( "CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS" );
+DeclareGlobalVariable( "CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS" );
 
 ####################################
 ##

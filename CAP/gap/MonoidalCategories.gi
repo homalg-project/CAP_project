@@ -10,10 +10,10 @@
 ##
 #############################################################################
 
-InstallValue( CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS, rec( ) );
+InstallValue( CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS, rec( ) );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.TensorProductOnMorphisms := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.TensorProductOnMorphisms := 
   [ [ TensorProductOnMorphismsWithGivenTensorProducts, 1 ],
     [ TensorProductOnObjects, 2 ] ];
 ##
@@ -31,7 +31,7 @@ InstallMethod( TensorProductOnMorphisms,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.AssociatorRightToLeft := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.AssociatorRightToLeft := 
   [ [ AssociatorRightToLeftWithGivenTensorProducts, 1 ],
     [ TensorProductOnObjects, 4 ] ];
 ##
@@ -49,7 +49,7 @@ InstallMethod( AssociatorRightToLeft,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.AssociatorLeftToRight := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.AssociatorLeftToRight := 
   [ [ AssociatorLeftToRightWithGivenTensorProducts, 1 ],
     [ TensorProductOnObjects, 4 ] ];
 ##
@@ -67,7 +67,7 @@ InstallMethod( AssociatorLeftToRight,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.LeftUnitor := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.LeftUnitor := 
   [ [ LeftUnitorWithGivenTensorProduct, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ TensorUnit, 1 ] ];
@@ -85,7 +85,7 @@ InstallMethod( LeftUnitor,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.LeftUnitorInverse := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.LeftUnitorInverse := 
   [ [ LeftUnitorInverseWithGivenTensorProduct, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ TensorUnit, 1 ] ];
@@ -103,7 +103,7 @@ InstallMethod( LeftUnitorInverse,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.RightUnitor := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.RightUnitor := 
   [ [ RightUnitorWithGivenTensorProduct, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ TensorUnit, 1 ] ];
@@ -121,7 +121,7 @@ InstallMethod( RightUnitor,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.RightUnitorInverse := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.RightUnitorInverse := 
   [ [ RightUnitorInverseWithGivenTensorProduct, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ TensorUnit, 1 ] ];
@@ -139,7 +139,7 @@ InstallMethod( RightUnitorInverse,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.Braiding := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.Braiding := 
   [ [ BraidingWithGivenTensorProducts, 1 ],
     [ TensorProductOnObjects, 2 ] ];
 ##
@@ -153,7 +153,7 @@ InstallMethod( Braiding,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.BraidingInverse := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.BraidingInverse := 
   [ [ BraidingInverseWithGivenTensorProducts, 1 ],
     [ TensorProductOnObjects, 2 ] ];
 ##
@@ -167,7 +167,7 @@ InstallMethod( BraidingInverse,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.InternalHomOnMorphisms := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.InternalHomOnMorphisms := 
   [ [ InternalHomOnMorphismsWithGivenInternalHoms, 1 ],
     [ InternalHomOnObjects, 2 ] ];
 ##
@@ -185,7 +185,7 @@ InstallMethod( InternalHomOnMorphisms,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.EvaluationMorphism := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.EvaluationMorphism := 
   [ [ EvaluationMorphismWithGivenSource, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ InternalHomOnObjects, 1 ] ];
@@ -203,7 +203,7 @@ InstallMethod( EvaluationMorphism,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.CoevaluationMorphism := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoevaluationMorphism := 
   [ [ CoevaluationMorphismWithGivenRange, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ InternalHomOnObjects, 1 ] ];
@@ -221,7 +221,7 @@ InstallMethod( CoevaluationMorphism,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MonoidalPreComposeMorphism := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MonoidalPreComposeMorphism := 
   [ [ MonoidalPreComposeMorphismWithGivenObjects, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ InternalHomOnObjects, 3 ] ];
@@ -240,7 +240,7 @@ InstallMethod( MonoidalPreComposeMorphism,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MonoidalPostComposeMorphism := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MonoidalPostComposeMorphism := 
   [ [ MonoidalPostComposeMorphismWithGivenObjects, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ InternalHomOnObjects, 3 ] ];
@@ -259,7 +259,7 @@ InstallMethod( MonoidalPostComposeMorphism,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.DualOnMorphisms := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.DualOnMorphisms := 
   [ [ DualOnMorphismsWithGivenDuals, 1 ],
     [ DualOnObjects, 2 ] ];
 ##
@@ -277,7 +277,7 @@ InstallMethod( DualOnMorphisms,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.EvaluationForDual := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.EvaluationForDual := 
   [ [ EvaluationForDualWithGivenTensorProduct, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ DualOnObjects, 1 ],
@@ -300,7 +300,7 @@ InstallMethod( EvaluationForDual,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.CoevaluationForDual := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoevaluationForDual := 
   [ [ CoevaluationForDualWithGivenTensorProduct, 1 ],
     [ TensorProductOnObjects, 1 ],
     [ DualOnObjects, 1 ],
@@ -323,7 +323,7 @@ InstallMethod( CoevaluationForDual,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MorphismToBidual := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MorphismToBidual := 
   [ [ MorphismToBidualWithGivenBidual, 1 ],
     [ DualOnObjects, 2 ] ];
 ##
@@ -337,7 +337,7 @@ InstallMethod( MorphismToBidual,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MorphismFromBidual := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MorphismFromBidual := 
   [ [ MorphismFromBidualWithGivenBidual, 1 ],
     [ DualOnObjects, 2 ] ];
 ##
@@ -351,7 +351,7 @@ InstallMethod( MorphismFromBidual,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.TensorProductInternalHomCompatibilityMorphism := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.TensorProductInternalHomCompatibilityMorphism := 
   [ [ TensorProductInternalHomCompatibilityMorphismWithGivenObjects, 1 ],
     [ TensorProductOnObjects, 3 ],
     [ InternalHomOnObjects, 3 ] ];
@@ -370,7 +370,7 @@ InstallMethod( TensorProductInternalHomCompatibilityMorphism,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.TensorProductInternalHomCompatibilityMorphismInverse := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.TensorProductInternalHomCompatibilityMorphismInverse := 
   [ [ TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects, 1 ],
     [ TensorProductOnObjects, 3 ],
     [ InternalHomOnObjects, 3 ] ];
@@ -389,7 +389,7 @@ InstallMethod( TensorProductInternalHomCompatibilityMorphismInverse,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.TensorProductDualityCompatibilityMorphism := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.TensorProductDualityCompatibilityMorphism := 
   [ [ TensorProductDualityCompatibilityMorphismWithGivenObjects, 1 ],
     [ DualOnObjects, 3 ],
     [ TensorProductOnObjects, 2 ] ];
@@ -408,7 +408,7 @@ InstallMethod( TensorProductDualityCompatibilityMorphism,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MorphismFromTensorProductToInternalHom := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MorphismFromTensorProductToInternalHom := 
   [ [ MorphismFromTensorProductToInternalHomWithGivenObjects, 1 ],
     [ DualOnObjects, 1 ],
     [ TensorProductOnObjects, 1 ],
@@ -428,7 +428,7 @@ InstallMethod( MorphismFromTensorProductToInternalHom,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.MorphismFromInternalHomToTensorProduct := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MorphismFromInternalHomToTensorProduct := 
   [ [ MorphismFromInternalHomToTensorProductWithGivenObjects, 1 ],
     [ DualOnObjects, 1 ],
     [ TensorProductOnObjects, 1 ],
@@ -448,7 +448,7 @@ InstallMethod( MorphismFromInternalHomToTensorProduct,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.IsomorphismFromInternalHomToObject := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.IsomorphismFromInternalHomToObject := 
   [ [ IsomorphismFromInternalHomToObjectWithGivenInternalHom, 1 ],
     [ TensorUnit, 1 ],
     [ InternalHomOnObjects, 1 ] ];
@@ -466,7 +466,7 @@ InstallMethod( IsomorphismFromInternalHomToObject,
 end );
 
 ##
-CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.IsomorphismFromObjectToInternalHom := 
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.IsomorphismFromObjectToInternalHom := 
   [ [ IsomorphismFromObjectToInternalHomWithGivenInternalHom, 1 ],
     [ TensorUnit, 1 ],
     [ InternalHomOnObjects, 1 ] ];
@@ -488,13 +488,13 @@ InstallGlobalFunction( CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MO
   function( func, loop_multiplier )
     local monoidal_symbols, symbol, list, added_symbol, added_symbols;
     
-    monoidal_symbols := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( func, RecNames( CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS ), loop_multiplier );
+    monoidal_symbols := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( func, RecNames( CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS ), loop_multiplier );
     
     list := [ ];
     
     for symbol in monoidal_symbols do
         
-        added_symbols := CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIIONS.( symbol[ 1 ] );
+        added_symbols := CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.( symbol[ 1 ] );
         
         for added_symbol in added_symbols do
             
