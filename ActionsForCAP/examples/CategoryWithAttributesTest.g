@@ -33,7 +33,7 @@ BindGlobal( "TheTypeOfMorphismsWithEndo",
             NewType( TheFamilyOfMorphismsWithEndo,
                      IsMorphismWithEndoRep ) );
 
-##
+
 ##
 Q := HomalgFieldOfRationals();
 vec := MatrixCategory( Q );
@@ -82,7 +82,7 @@ category_with_endo_record := rec(
       return [ ColiftAlongEpimorphism( epi, composition ) ];
   end
 );
-
+# ActivateDerivationInfo();
 endo_cat := CreateCategoryWithAttributes( category_with_endo_record );
 
 ObjConstr := category_with_endo_record.object_constructor;

@@ -30,7 +30,7 @@ DeclareAttribute( "UnderlyingCategory",
                   IsCategoryWithAttributesObject );
 
 DeclareAttribute( "UnderlyingCell",
-                  IsCategoryWithAttributesObject );
+                  IsObject );
 
 DeclareAttribute( "ObjectAttributesAsList",
                   IsCategoryWithAttributesObject );
@@ -42,9 +42,6 @@ DeclareAttribute( "ObjectAttributesAsList",
 ####################################
 
 DeclareAttribute( "UnderlyingCategory",
-                  IsCategoryWithAttributesMorphism );
-
-DeclareAttribute( "UnderlyingCell",
                   IsCategoryWithAttributesMorphism );
 
 ####################################
