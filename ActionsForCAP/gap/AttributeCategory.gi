@@ -122,8 +122,10 @@ end );
 ##
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
   function( structure_record )
-    local category_with_attributes, object_constructor, morphism_constructor,
-          direct_sum_attributes_operation;
+    local category_with_attributes, object_constructor, morphism_constructor, list_of_installed_operations,
+          direct_sum_attributes_operation, create_function_primitive_type, create_function_object,
+          create_function_morphism_no_new_object, create_function_morphism_new_source, 
+          create_function_morphism_new_range, attributes, recnames, name, func, pos;
     
     category_with_attributes := structure_record.category_with_attributes;
     
@@ -131,6 +133,162 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
     
     morphism_constructor := structure_record.morphism_constructor;
     
+    create_function_primitive_type :=
+      function( operation_name )
+        local operation;
+        
+        operation := ValueGlobal( operation_name );
+        
+        return
+          function( arg )
+            local underlying_arg;
+            
+            underlying_arg := List( arg, UnderlyingCell );
+            
+            return CallFuncList( operation, underlying_arg );
+            
+          end;
+          
+        end;
+    
+    create_function_object :=
+      function( operation_name, attributes_function )
+        local operation;
+        
+        operation := ValueGlobal( operation_name );
+        
+        return
+          function( arg )
+            local underlying_arg, underlying_return, attributes;
+            
+            underlying_arg := List( arg, UnderlyingCell );
+            
+            underlying_return := CallFuncList( operation, underlying_arg );
+            
+            attributes := CallFuncList( attributes_function, [ arg[1], underlying_return ] );
+            
+            return CallFuncList( object_constructor, [ underlying_return, attributes ] );
+          
+          end;
+          
+        end;
+    
+    create_function_morphism_no_new_object :=
+      function( operation_name )
+        local operation, type;
+        
+        operation := ValueGlobal( operation_name );
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).io_type;
+        
+        return
+          function( arg )
+            local underlying_arg, underlying_return, source_range_pair, source, range;
+            
+            underlying_arg:= List( arg, UnderlyingCell );
+            
+            underlying_return := CallFuncList( operation, underlying_arg );
+            
+            source_range_pair := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
+            source := source_range_pair[1];
+            
+            range := source_range_pair[2];
+            
+            return CallFuncList( morphism_constructor, [ source, underlying_return, range ] );
+            
+          end;
+          
+      end;
+    
+    create_function_morphism_new_source :=
+      function( operation_name, attributes_function )
+        local operation, type;
+        
+        operation := ValueGlobal( operation_name );
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).io_type;
+        
+        return
+          function( arg )
+            local underlying_arg, underlying_return, source_range_pair, source, range;
+            
+            underlying_arg:= List( arg, UnderlyingCell );
+            
+            underlying_return := CallFuncList( operation, underlying_arg );
+            
+            source_range_pair := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
+            range := source_range_pair[2];
+            
+            attributes := CallFuncList( attributes_function, [ arg[1], underlying_return ] );
+            
+            source := CallFuncList( object_constructor, [ Source( underlying_return ), attributes ] );
+            
+            return CallFuncList( morphism_constructor, [ source, underlying_return, range ] );
+            
+          end;
+          
+      end;
+    
+    create_function_morphism_new_range :=
+      function( operation_name, attributes_function )
+        local operation, type;
+        
+        operation := ValueGlobal( operation_name );
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).io_type;
+        
+        return
+          function( arg )
+            local underlying_arg, underlying_return, source_range_pair, source, range;
+            
+            underlying_arg:= List( arg, UnderlyingCell );
+            
+            underlying_return := CallFuncList( operation, underlying_arg );
+            
+            source_range_pair := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
+            source := source_range_pair[1];
+            
+            attributes := CallFuncList( attributes_function, [ arg[1], underlying_return ] );
+            
+            range := CallFuncList( object_constructor, [ Range( underlying_return ), attributes ] );
+            
+            return CallFuncList( morphism_constructor, [ source, underlying_return, range ] );
+            
+          end;
+          
+      end;
+    
+    recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( UnderlyingCategory( category_with_attributes ) ) );
+    
+    for func in [
+            "IsEqualForObjects",
+            "IsEqualForMorphisms",
+            "IsCongruentForMorphisms",
+            "IsEqualForCacheForObjects",
+            "IsEqualForCacheForMorphisms"
+            ] do
+        
+        pos := Position( recnames, func );
+        if not pos = fail then
+            Remove( recnames, pos );
+        fi;
+        
+    od;
+    
+    for name in recnames do
+        
+        entry := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        
+        if entry.return_type = "bool" and IsBound( entry.is_reflected_by_faithful_functor ) then
+        
+        fi;
+        
+    od;
+    
+    ## iterate over all operations
     
     ## Example: DirectSum
     
@@ -140,7 +298,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
       function( obj_list )
         local direct_sum, direct_sum_attributes;
         
-        direct_sum := DirectSum( List( obj_list, ObjectWithoutAttributes ) );
+        direct_sum := DirectSum( List( obj_list, UnderlyingCell ) );
         
         direct_sum_attributes := direct_sum_attributes_operation( obj_list, direct_sum );
         
@@ -172,7 +330,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
           uses := [ "KernelEmbedding" ],
           derivation := function( kernel_diagram, kernel_object )
               
-              return lift_operation( KernelEmbedding( UnderlyingMorphism( kernel_diagram ) ), Source( kernel_diagram ) );
+              return lift_operation( KernelEmbedding( UnderlyingCell( kernel_diagram ) ), Source( kernel_diagram ) );
               
         end );
         
@@ -180,7 +338,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
           uses := [ "ImageEmbedding" ],
           derivation := function( image_diagram, image_object )
               
-              return lift_operation( ImageEmbedding( UnderlyingMorphism( image_diagram ) ), Range( image_diagram ) );
+              return lift_operation( ImageEmbedding( UnderlyingCell( image_diagram ) ), Range( image_diagram ) );
               
         end );
         
@@ -189,7 +347,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
           derivation := function( diagram, fiber_product )
               local underlying_diagram, direct_sum_diagram;
               
-              underlying_diagram := List( diagram, UnderlyingMorphism );
+              underlying_diagram := List( diagram, UnderlyingCell );
               
               direct_sum_diagram := List( diagram, Source );
               
@@ -206,7 +364,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
           uses := [ "CokernelProjection" ],
           derivation := function( cokernel_diagram, cokernel_object )
               
-              return colift_operation( CokernelProjection( UnderlyingMorphism( cokernel_diagram ) ), Range( cokernel_diagram ) );
+              return colift_operation( CokernelProjection( UnderlyingCell( cokernel_diagram ) ), Range( cokernel_diagram ) );
               
         end );
         
@@ -214,7 +372,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
           uses := [ "CoimageProjection" ],
           derivation := function( coimage_diagram, coimage_object )
               
-              return colift_operation( CoimageProjection( UnderlyingMorphism( coimage_diagram ) ), Source( coimage_diagram ) );
+              return colift_operation( CoimageProjection( UnderlyingCell( coimage_diagram ) ), Source( coimage_diagram ) );
               
         end );
         
@@ -223,7 +381,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
           derivation := function( diagram, pushout )
               local underlying_diagram, direct_sum_diagram;
               
-              underlying_diagram := List( diagram, UnderlyingMorphism );
+              underlying_diagram := List( diagram, UnderlyingCell );
               
               direct_sum_diagram := List( diagram, Range );
               
@@ -314,7 +472,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_CONSTRUCTOR_FOR_CATEGORY_WIT
         attribute_morphism := rec( );
         
         ObjectifyWithAttributes( attribute_morphism,  structure_record.morphism_type,
-                                 UnderlyingMorphism, morphism,
+                                 UnderlyingCell, morphism,
                                  Source, source,
                                  Range, range,
                                  UnderlyingCategory, underlying_category
@@ -354,7 +512,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_CONSTRUCTOR_FOR_CATEGORY_WITH_
         attribute_object := rec( );
         
         ObjectifyWithAttributes( attribute_object, structure_record.object_type,
-                                 ObjectWithoutAttributes, object,
+                                 UnderlyingCell, object,
                                  ObjectAttributesAsList, attributes,
                                  UnderlyingCategory, underlying_category
                                );
