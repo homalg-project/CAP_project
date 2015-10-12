@@ -261,7 +261,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
             
             range := source_range_pair[2];
             
-            attributes := CallFuncList( attributes_function, [ arg[1], underlying_return ] );
+            attributes := CallFuncList( attributes_function, [ arg[1], Source( underlying_return ) ] );
             
             source := CallFuncList( object_constructor, [ Source( underlying_return ), attributes ] );
             
@@ -291,7 +291,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
             
             source := source_range_pair[1];
             
-            attributes := CallFuncList( attributes_function, [ arg[1], underlying_return ] );
+            attributes := CallFuncList( attributes_function, [ arg[1], Range( underlying_return ) ] );
             
             range := CallFuncList( object_constructor, [ Range( underlying_return ), attributes ] );
             
