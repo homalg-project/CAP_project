@@ -46,14 +46,34 @@ InstallValue( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTE
       installation_name := "CategoryWithAttributesImageObjectAttributesOperation",
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
     
-    FiberProduct := rec( 
+    FiberProduct := rec(
       function_name := "fiber_product_attributes_function",
       operation_name := "fiber_product_cache_operation",
       installation_name := "CategoryWithAttributesFiberProductAttributesOperation",
-      filter_list := [ "list", "object_filter_of_underlying_category" ] )
+      filter_list := [ "list", "object_filter_of_underlying_category" ] ),
+    
+    CokernelObject := rec(
+      function_name := "cokernel_object_attributes_function",
+      operation_name := "cokernel_object_cache_operation",
+      installation_name := "CategoryWithAttributesCokernelObjectAttributesOperation",
+      filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
+    
+    CoimageObject := rec(
+      function_name := "coimage_object_attributes_function",
+      operation_name := "coimage_object_cache_operation",
+      installation_name := "CategoryWithAttributesCoimageObjectAttributesOperation",
+      filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
+    
+    Pushout := rec(
+      function_name := "pushout_attributes_function",
+      operation_name := "pushout_cache_operation",
+      installation_name := "CategoryWithAttributesPushoutAttributesOperation",
+      filter_list := [ "list", "object_filter_of_underlying_category" ] ),
+    
   )
 );
 
+##
 InstallGlobalFunction( CAP_INTERNAL_CREATE_FILTER_LIST_FOR_CATEGORY_WITH_ATTRIBUTES,
   function( list, category_with_attributes )
     local object_filter, object_filter_of_underlying_category,
@@ -133,12 +153,14 @@ end );
 ##
 InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS,
   function( structure_record )
-    local list_of_installed_operations,
-          lift_operation, function_record, derivation_record, rec_names, current_name, function_record_entry, filter_list, operation;
+    local list_of_installed_operations, lift_operation, colift_operation, function_record, 
+          derivation_record, rec_names, current_name, function_record_entry, filter_list, operation;
     
     list_of_installed_operations := ListInstalledOperationsOfCategory( structure_record.underlying_category );
     
     lift_operation := structure_record.lift_attributes_cache_operation;
+    
+    colift_operation := structure_record.colift_attributes_cache_operation;
     
     function_record := CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTES;
     
@@ -173,6 +195,40 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
               
               return lift_operation( FiberProductEmbeddingInDirectSum( underlying_diagram ),
                                       DirectSum( direct_sum_diagram ) );
+              
+        end );
+        
+    fi;
+    
+    if IsBound( colift_operation ) then
+        
+        derivation_record.CokernelObject := rec(
+          uses := [ "CokernelProjection" ],
+          derivation := function( cokernel_diagram, cokernel_object )
+              
+              return colift_operation( CokernelProjection( UnderlyingMorphism( cokernel_diagram ) ), Range( cokernel_diagram ) );
+              
+        end );
+        
+        derivation_record.CoimageObject := rec(
+          uses := [ "CoimageProjection" ],
+          derivation := function( coimage_diagram, coimage_object )
+              
+              return colift_operation( CoimageProjection( UnderlyingMorphism( coimage_diagram ) ), Source( coimage_diagram ) );
+              
+        end );
+        
+        derivation_record.Pushout := rec(
+          uses := [ "DirectSumProjectionInPushout", "DirectSum" ],
+          derivation := function( diagram, pushout )
+              local underlying_diagram, direct_sum_diagram;
+              
+              underlying_diagram := List( diagram, UnderlyingMorphism );
+              
+              direct_sum_diagram := List( diagram, Range );
+              
+              return colift_operation( DirectSumProjectionInPushout( underlying_diagram ),
+                                       DirectSum( direct_sum_diagram ) );
               
         end );
         
