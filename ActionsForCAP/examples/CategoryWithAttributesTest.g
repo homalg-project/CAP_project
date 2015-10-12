@@ -51,7 +51,7 @@ category_with_endo_record := rec(
   end,
   
   direct_sum_attributes_function :=
-    function( obj_list, direct_sum_obj )
+    function( obj_list, underlying_direct_sum )
       local attr_list;
       
       attr_list := List( obj_list, obj -> ObjectAttributesAsList( obj )[1] );
@@ -80,11 +80,30 @@ category_with_endo_record := rec(
       composition := PreCompose( source_endo, epi );
       
       return [ ColiftAlongEpimorphism( epi, composition ) ];
+  end,
+  
+  tensor_product_attributes_function :=
+    function( obj1, obj2, underlying_tensor_product )
+      local endo1, endo2;
+      
+      endo1 := ObjectAttributesAsList( obj1 )[1];
+      
+      endo2 := ObjectAttributesAsList( obj2 )[1];
+      
+      return [ TensorProductOnMorphisms( endo1, endo2 ) ];
+      
+  end,
+  
+  tensor_unit_attributes_function := 
+    function( unit )
+    
+    return [ IdentityMorphism( unit ) ];
+    
   end
 );
 # ActivateDerivationInfo();
 endo_cat := CreateCategoryWithAttributes( category_with_endo_record );
-
+## not finalized yet
 ObjConstr := category_with_endo_record.object_constructor;
 
 V := VectorSpaceObject( 3, Q );

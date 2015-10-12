@@ -15,61 +15,72 @@ InstallValue( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTE
       operation_name := "DirectSum",
       installation_name := "CategoryWithAttributesDirectSumAttributesOperation",
       filter_list := [ "list", "object_filter_of_underlying_category" ] ),
-  
+      
   ZeroObject := rec(
       function_name := "zero_object_attributes_function",
       operation_name := "ZeroObject",
       installation_name := "CategoryWithAttributesZeroObjectAttributesOperation",
       filter_list := [ "object_filter_of_underlying_category" ] ),
-   
-   Lift := rec(
+      
+  Lift := rec(
       function_name := "lift_attributes_function",
       operation_name := "Lift",
       installation_name := "CategoryWithAttributesLiftAttributesOperation",
       filter_list := [ "morphism_filter_of_underlying_category", "object_filter" ] ),
-    
-    Colift := rec(
+      
+  Colift := rec(
       function_name := "colift_attributes_function",
       operation_name := "Colift",
       installation_name := "CategoryWithAttributesColiftAttributesOperation",
       filter_list := [ "morphism_filter_of_underlying_category", "object_filter" ] ),
-    
-    KernelObject := rec(
+      
+  KernelObject := rec(
       function_name := "kernel_object_attributes_function",
       operation_name := "KernelObject",
       installation_name := "CategoryWithAttributesKernelObjectAttributesOperation",
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
-    
-    ImageObject := rec(
+      
+  ImageObject := rec(
       function_name := "image_object_attributes_function",
       operation_name := "ImageObject",
       installation_name := "CategoryWithAttributesImageObjectAttributesOperation",
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
-    
-    FiberProduct := rec(
+      
+  FiberProduct := rec(
       function_name := "fiber_product_attributes_function",
       operation_name := "FiberProduct",
       installation_name := "CategoryWithAttributesFiberProductAttributesOperation",
       filter_list := [ "list", "object_filter_of_underlying_category" ] ),
-    
-    CokernelObject := rec(
+      
+  CokernelObject := rec(
       function_name := "cokernel_object_attributes_function",
       operation_name := "CokernelObject",
       installation_name := "CategoryWithAttributesCokernelObjectAttributesOperation",
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
-    
-    CoimageObject := rec(
+      
+  CoimageObject := rec(
       function_name := "coimage_object_attributes_function",
       operation_name := "Coimage",
       installation_name := "CategoryWithAttributesCoimageObjectAttributesOperation",
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
-    
-    Pushout := rec(
+      
+  Pushout := rec(
       function_name := "pushout_attributes_function",
       operation_name := "Pushout",
       installation_name := "CategoryWithAttributesPushoutAttributesOperation",
       filter_list := [ "list", "object_filter_of_underlying_category" ] ),
-    
+      
+  TensorProductOnObjects := rec(
+      function_name := "tensor_product_attributes_function",
+      operation_name := "TensorProductOnObjects",
+      installation_name := "CategoryWithAttributesTensorProductAttributesOperation",
+      filter_list := [ "object_filter", "object_filter", "object_filter_of_underlying_category" ] ),
+      
+  TensorUnit := rec(
+      function_name := "tensor_unit_attributes_function",
+      operation_name := "TensorUnit",
+      installation_name := "CategoryWithAttributesTensorUnitAttributesOperation",
+      filter_list := [ "object_filter_of_underlying_category" ] ),
   )
 );
 
@@ -185,7 +196,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
             
             underlying_return := CallFuncList( operation, underlying_arg );
             
-            attributes := CallFuncList( attributes_function, [ arg[1], underlying_return ] );
+            attributes := CallFuncList( attributes_function, Concatenation( arg, [ underlying_return ] ) );
             
             return CallFuncList( object_constructor, [ underlying_return, attributes ] );
           
@@ -261,7 +272,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
             
             range := source_range_pair[2];
             
-            attributes := CallFuncList( attributes_function, [ arg[1], Source( underlying_return ) ] );
+            attributes := CallFuncList( attributes_function, Concatenation( arg, [ Source( underlying_return ) ] ) );
             
             source := CallFuncList( object_constructor, [ Source( underlying_return ), attributes ] );
             
@@ -291,7 +302,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
             
             source := source_range_pair[1];
             
-            attributes := CallFuncList( attributes_function, [ arg[1], Range( underlying_return ) ] );
+            attributes := CallFuncList( attributes_function, Concatenation( arg, [ Range( underlying_return ) ] ) );
             
             range := CallFuncList( object_constructor, [ Range( underlying_return ), attributes ] );
             
@@ -388,7 +399,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
 end );
 
 ##
-InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS,
+InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS_FOR_CATEGORY_WITH_ATTRIBUTES,
   function( structure_record )
     local list_of_installed_operations, lift_operation, colift_operation, function_record, 
           derivation_record, rec_names, current_name, function_record_entry, filter_list, operation;
@@ -656,7 +667,7 @@ InstallGlobalFunction( CreateCategoryWithAttributes,
     CAP_INTERNAL_EQUIP_STRUCTURE_FUNCTIONS_WITH_CACHE_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
     
     ## 
-    CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS( structure_record );
+    CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
     
     ## install Adds
     CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
