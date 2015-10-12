@@ -1292,6 +1292,7 @@ DeclareOperation( "AddIsomorphismFromInternalHomToDual",
 #! The output is the morphism $t \rightarrow a^{\vee}$
 #! given by the universal property of $a^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(t, a^{\vee})$.
+#! @Arguments t, a, alpha
 DeclareOperation( "UniversalPropertyOfDual",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
@@ -1519,7 +1520,7 @@ DeclareAttribute( "MorphismFromBidual",
 #! and an object $s = (a^{\vee})^{\vee}$.
 #! The output is the inverse of the morphism to the bidual $(a^{\vee})^{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a^{\vee})^{\vee},a)$.
-#! @Arguments a
+#! @Arguments a, s
 DeclareOperation( "MorphismFromBidualWithGivenBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 

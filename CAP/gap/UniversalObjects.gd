@@ -1828,7 +1828,7 @@ DeclareOperation( "UniversalMorphismFromCoproductOp",
 #! $u( \tau ): I \rightarrow T$
 #! given by the universal property of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(I, T)$
-#! @Arguments D, tau, method_selection_object
+#! @Arguments D, tau, I
 DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
@@ -2195,7 +2195,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
 #! given by the functorality of the direct product.
-#! @Returns a morphism in $\mathrm{Hom}( P_i, \prod_{i=1}^n P_i' )$
+#! @Returns a morphism in $\mathrm{Hom}( \prod_{i=1}^n P_i, \prod_{i=1}^n P_i' )$
 #! @Arguments L
 DeclareOperation( "DirectProductFunctorial",
                   [ IsList ] );
@@ -3314,6 +3314,7 @@ DeclareOperation( "CoastrictionToImageWithGivenImageObject",
 #! The output is the morphism
 #! $u(\tau): \mathrm{im}(\alpha) \rightarrow T$
 #! given by the universal property of the image.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{im}(\alpha), T)$
 #! @Arguments alpha, tau
 DeclareOperation( "UniversalMorphismFromImage",
                   [ IsCapCategoryMorphism, IsList ] );
@@ -3328,6 +3329,7 @@ DeclareOperation( "UniversalMorphismFromImage",
 #! The output is the morphism
 #! $u(\tau): \mathrm{im}(\alpha) \rightarrow T$
 #! given by the universal property of the image.
+#! @Returns a morphism in $\mathrm{Hom}(I, T)$
 #! @Arguments alpha, tau, I
 DeclareOperation( "UniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
@@ -3503,42 +3505,83 @@ DeclareFilter( "WasCreatedAsImageObject" );
 #! We say that the morphism $u( \tau )$ is induced by the
 #! <Emph>universal property of the coimage</Emph>.
 
-##
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the canonical morphism (in a preabelian category)
+#! $\mathrm{coim}(\alpha) \rightarrow \mathrm{im}(\alpha)$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{coim}(\alpha), \mathrm{im}(\alpha))$
+#! @Arguments alpha
 DeclareAttribute( "MorphismFromCoimageToImage",
                   IsCapCategoryMorphism );
 
-DeclareOperation( "MorphismFromCoimageToImage",
+#! @Description
+#! The argument is an object $C = \mathrm{coim}(\alpha)$,
+#! a morphism $\alpha: A \rightarrow B$,
+#! and an object $I = \mathrm{im}(\alpha)$.
+#! The output is the canonical morphism (in a preabelian category)
+#! $C \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}(C,I)$
+#! @Arguments alpha
+DeclareOperation( "MorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-DeclareOperation( "AddMorphismFromCoimageToImage",
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromCoimageToImageWithGivenObjects</C>.
+#! $F: (C, \alpha, I) \mapsto ( C \rightarrow I )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddMorphismFromCoimageToImage",
+DeclareOperation( "AddMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddMorphismFromCoimageToImage",
+DeclareOperation( "AddMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismFromCoimageToImage",
+DeclareOperation( "AddMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
-##
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the inverse of the canonical morphism (in an abelian category)
+#! $\mathrm{im}(\alpha) \rightarrow \mathrm{coim}(\alpha)$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{im}(\alpha), \mathrm{coim}(\alpha))$
+#! @Arguments alpha
 DeclareAttribute( "InverseMorphismFromCoimageToImage",
                   IsCapCategoryMorphism );
 
-DeclareOperation( "InverseMorphismFromCoimageToImage",
+#! @Description
+#! The argument is an object $C = \mathrm{coim}(\alpha)$,
+#! a morphism $\alpha: A \rightarrow B$,
+#! and an object $I = \mathrm{im}(\alpha)$.
+#! The output is the inverse of the canonical morphism (in an abelian category)
+#! $I \rightarrow C$.
+#! @Returns a morphism in $\mathrm{Hom}(I,C)$
+#! @Arguments alpha
+DeclareOperation( "InverseMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromCoimageToImageWithGivenObjects</C>.
+#! $F: (C, \alpha, I) \mapsto ( I \rightarrow C )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInverseMorphismFromCoimageToImage",
+DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 
