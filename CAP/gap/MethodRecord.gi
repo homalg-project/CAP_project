@@ -993,7 +993,8 @@ IsZeroForMorphisms := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  property_of := "morphism" ),
+  property_of := "morphism",
+  is_reflected_by_faithful_functor := true ),
 
 AdditionForMorphisms := rec(
   installation_name := "\+",
@@ -1818,7 +1819,8 @@ IsMonomorphism := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEpimorphism",
-  property_of := "morphism" ),
+  property_of := "morphism",
+  is_reflected_by_faithful_functor := true ),
 
 IsEpimorphism := rec(
   installation_name := "IsEpimorphism",
@@ -1826,7 +1828,8 @@ IsEpimorphism := rec(
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsMonomorphism",
-  property_of := "morphism" ),
+  property_of := "morphism",
+  is_reflected_by_faithful_functor := true ),
 
 IsIsomorphism := rec(
   installation_name := "IsIsomorphism",
