@@ -9,6 +9,97 @@
 #############################################################################
 
 ##
+InstallValue( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTES, rec(
+  DirectSum := rec(
+      function_name := "direct_sum_attributes_function",
+      operation_name := "direct_sum_attributes_cache_operation",
+      installation_name := "CategoryWithAttributesDirectSumAttributesOperation",
+      filter_list := [ "list", "object_filter_of_underlying_category" ] ),
+  
+  ZeroObject := rec(
+      function_name := "zero_object_attributes_function",
+      operation_name := "zero_object_attributes_cache_operation",
+      installation_name := "CategoryWithAttributesZeroObjectAttributesOperation",
+      filter_list := [ "object_filter_of_underlying_category" ] ),
+   
+   Lift := rec(
+      function_name := "lift_attributes_function",
+      operation_name := "lift_attributes_cache_operation",
+      installation_name := "CategoryWithAttributesLiftAttributesOperation",
+      filter_list := [ "morphism_filter_of_underlying_category", "object_filter" ] ),
+    
+    Colift := rec(
+      function_name := "colift_attributes_function",
+      operation_name := "colift_attributes_cache_operation",
+      installation_name := "CategoryWithAttributesColiftAttributesOperation",
+      filter_list := [ "morphism_filter_of_underlying_category", "object_filter" ] ),
+    
+    KernelObject := rec(
+      function_name := "kernel_object_attributes_function",
+      operation_name := "kernel_object_cache_operation",
+      installation_name := "CategoryWithAttributesKernelObjectAttributesOperation",
+      filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
+    
+    ImageObject := rec(
+      function_name := "image_object_attributes_function",
+      operation_name := "image_object_cache_operation",
+      installation_name := "CategoryWithAttributesImageObjectAttributesOperation",
+      filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
+    
+    FiberProduct := rec( 
+      function_name := "fiber_product_attributes_function",
+      operation_name := "fiber_product_cache_operation",
+      installation_name := "CategoryWithAttributesFiberProductAttributesOperation",
+      filter_list := [ "list", "object_filter_of_underlying_category" ] )
+  )
+);
+
+InstallGlobalFunction( CAP_INTERNAL_CREATE_FILTER_LIST_FOR_CATEGORY_WITH_ATTRIBUTES,
+  function( list, category_with_attributes )
+    local object_filter, object_filter_of_underlying_category,
+          morphism_filter, morphism_filter_of_underlying_category, return_list, entry;
+    
+    object_filter := ObjectFilter( category_with_attributes );
+    
+    object_filter_of_underlying_category := ObjectFilter( UnderlyingCategory( category_with_attributes ) );
+    
+    morphism_filter := MorphismFilter( category_with_attributes );
+    
+    morphism_filter_of_underlying_category := MorphismFilter( UnderlyingCategory( category_with_attributes ) );
+    
+    return_list := [];
+    
+    for entry in list do
+        
+        if entry = "list" then
+            
+            Add( return_list, IsList );
+            
+        elif entry = "object_filter_of_underlying_category" then
+            
+            Add( return_list, object_filter_of_underlying_category );
+            
+        elif entry = "morphism_filter_of_underlying_category" then
+            
+            Add( return_list, morphism_filter_of_underlying_category );
+            
+        elif entry = "object_filter" then
+            
+            Add( return_list, object_filter );
+            
+        elif entry = "morphism_filter" then
+            
+            Add( return_list, morphism_filter );
+            
+        fi;
+        
+    od;
+    
+    return return_list;
+    
+end );
+
+##
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
   function( structure_record )
     local category_with_attributes, object_constructor, morphism_constructor,
@@ -40,106 +131,70 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
 end );
 
 ##
-InstallGlobalFunction( CAP_INTERNAL_CREATE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS,
+InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS,
   function( structure_record )
-   local underlying_category, list_of_installed_operations, object_filter, morphism_filter_of_underlying_category,
-         lift_operation, category_with_attributes, object_filter_of_underlying_category, morphism_filter, filter_list, operation;
-   
-   underlying_category := structure_record.underlying_category;
-   
-   category_with_attributes := structure_record.category_with_attributes;
-   
-   list_of_installed_operations := ListInstalledOperationsOfCategory( underlying_category );
-   
-   object_filter := ObjectFilter( structure_record.category_with_attributes );
-   
-   object_filter_of_underlying_category := ObjectFilter( underlying_category );
-   
-   morphism_filter_of_underlying_category := MorphismFilter( underlying_category );
-   
-   morphism_filter := MorphismFilter( category_with_attributes );
-   
-   lift_operation := structure_record.lift_attributes_cache_operation;
-   
-   if IsBound( lift_operation ) then
-       
-       if not IsBound( structure_record.kernel_object_attributes_function )
-          and "KernelEmbedding" in list_of_installed_operations then
-           
-           filter_list := [ morphism_filter, object_filter_of_underlying_category ];
-           
-           operation := NewOperation( "CategoryWithAttributesKernelObjectAttributesOperation", filter_list );
-           
-           InstallMethodWithCache( operation, filter_list,
-             function( kernel_diagram, kernel_object )
-               
-               return lift_operation( KernelEmbedding( UnderlyingMorphism( kernel_diagram ) ), Source( kernel_diagram ) );
-               
-           end );
-           
-           structure_record.kernel_object_cache_operation := operation;
-           
-       fi;
-       
-       if not IsBound( structure_record.image_object_attributes_function )
-          and "ImageEmbedding" in list_of_installed_operations then
-           
-           filter_list := [ morphism_filter, object_filter_of_underlying_category ];
-           
-           operation := NewOperation( "CategoryWithAttributesImageObjectAttributesOperation", filter_list );
-           
-           InstallMethodWithCache( operation, filter_list,
-             function( image_diagram, image_object )
-               
-               return lift_operation( ImageEmbedding( UnderlyingMorphism( image_diagram ) ), Range( image_diagram ) );
-               
-           end );
-           
-           structure_record.image_object_cache_operation := operation;
-           
-       fi;
-       
-       if  not IsBound( structure_record.fiber_product_attributes_function )
-           and "FiberProductEmbeddingInDirectSum" in list_of_installed_operations then
-           
-           filter_list := [ IsList, object_filter_of_underlying_category ];
-           
-           operation := NewOperation( "CategoryWithAttributesFiberProductAttributesOperation", filter_list );
-           
-           InstallMethodWithCache( operation, filter_list,
-             function( diagram, fiber_product )
-               local underlying_diagram, direct_sum_diagram;
-               
-               underlying_diagram := List( diagram, UnderlyingMorphism );
-               
-               direct_sum_diagram := List( diagram, Source );
-               
-               return lift_operation( FiberProductEmbeddingInDirectSum( underlying_diagram ),
-                                      DirectSum( direct_sum_diagram ) );
-               
-           end );
-           
-           structure_record.fiber_product_cache_operation := operation;
-           
-       fi;
-   fi;
-   
-end );
-
-##
-InstallGlobalFunction( CAP_INTERNAL_EQUIP_STRUCTURE_FUNCTIONS_WITH_CACHE_FOR_CATEGORY_WITH_ATTRIBUTES,
-  function( structure_record )
-    local entry, operation;
+    local list_of_installed_operations,
+          lift_operation, function_record, derivation_record, rec_names, current_name, function_record_entry, filter_list, operation;
     
-    for entry in structure_record.structure_function_list do
+    list_of_installed_operations := ListInstalledOperationsOfCategory( structure_record.underlying_category );
+    
+    lift_operation := structure_record.lift_attributes_cache_operation;
+    
+    function_record := CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTES;
+    
+    derivation_record := rec( );
+    
+    if IsBound( lift_operation ) then
         
-        if IsBound( structure_record.(entry[1]) ) then
+        derivation_record.KernelObject := rec(
+          uses := [ "KernelEmbedding" ],
+          derivation := function( kernel_diagram, kernel_object )
+              
+              return lift_operation( KernelEmbedding( UnderlyingMorphism( kernel_diagram ) ), Source( kernel_diagram ) );
+              
+        end );
+        
+        derivation_record.ImageObject := rec(
+          uses := [ "ImageEmbedding" ],
+          derivation := function( image_diagram, image_object )
+              
+              return lift_operation( ImageEmbedding( UnderlyingMorphism( image_diagram ) ), Range( image_diagram ) );
+              
+        end );
+        
+        derivation_record.FiberProduct := rec(
+          uses := [ "FiberProductEmbeddingInDirectSum", "DirectSum" ],
+          derivation := function( diagram, fiber_product )
+              local underlying_diagram, direct_sum_diagram;
+              
+              underlying_diagram := List( diagram, UnderlyingMorphism );
+              
+              direct_sum_diagram := List( diagram, Source );
+              
+              return lift_operation( FiberProductEmbeddingInDirectSum( underlying_diagram ),
+                                      DirectSum( direct_sum_diagram ) );
+              
+        end );
+        
+    fi;
+    
+    rec_names := RecNames( derivation_record );
+    
+    for current_name in rec_names do
+        
+        function_record_entry := function_record.(current_name);
+        
+        if not IsBound( structure_record.(function_record_entry.function_name) )
+           and ForAll( derivation_record.(current_name).uses, f -> f in list_of_installed_operations ) then
             
-            operation := NewOperation( entry[3], entry[4] );
+            filter_list := CAP_INTERNAL_CREATE_FILTER_LIST_FOR_CATEGORY_WITH_ATTRIBUTES(
+                             function_record_entry.filter_list, structure_record.category_with_attributes );
             
-            InstallMethodWithCache( operation, entry[4], structure_record.(entry[1]) );
+            operation := NewOperation( function_record_entry.installation_name, filter_list );
             
-            structure_record.(entry[2]) := operation;
+            InstallMethodWithCache( operation, filter_list, derivation_record.(current_name).derivation );
+            
+            structure_record.(function_record_entry.operation_name) := operation;
         fi;
         
     od;
@@ -147,58 +202,29 @@ InstallGlobalFunction( CAP_INTERNAL_EQUIP_STRUCTURE_FUNCTIONS_WITH_CACHE_FOR_CAT
 end );
 
 ##
-InstallGlobalFunction( CAP_INTERNAL_CREATE_STRUCTURE_FUNCTION_LIST,
+InstallGlobalFunction( CAP_INTERNAL_EQUIP_STRUCTURE_FUNCTIONS_WITH_CACHE_FOR_CATEGORY_WITH_ATTRIBUTES,
   function( structure_record )
-    local object_filter, morphism_filter, object_filter_of_underlying_category, morphism_filter_of_underlying_category, structure_function_list;
+    local rec_names, current_name, entry, filter_list, operation;
     
-    object_filter := ObjectFilter( structure_record.category_with_attributes );
+    rec_names := RecNames( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTES );
     
-    object_filter_of_underlying_category := ObjectFilter( structure_record.underlying_category );
-    
-    morphism_filter := MorphismFilter( structure_record.category_with_attributes );
-    
-    morphism_filter_of_underlying_category := MorphismFilter( structure_record.underlying_category );
-    
-    ## TODO: convert this to a record and use it to simplify CAP_INTERNAL_CREATE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS
-    structure_function_list :=
-      [ 
-        [ "direct_sum_attributes_function",
-          "direct_sum_attributes_cache_operation",
-          "CategoryWithAttributesDirectSumAttributesOperation",
-          [ IsList, object_filter_of_underlying_category ] ],
+    for current_name in rec_names do
         
-        [ "zero_object_attributes_function",
-          "zero_object_attributes_cache_operation",
-          "CategoryWithAttributesZeroObjectAttributesOperation",
-          [ object_filter_of_underlying_category ] ],
+        entry := CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTES.(current_name);
         
-        [ "lift_attributes_function",
-          "lift_attributes_cache_operation",
-          "CategoryWithAttributesLiftAttributesOperation",
-          [ morphism_filter_of_underlying_category, object_filter ] ],
+        if IsBound( structure_record.(entry.function_name) ) then
+            
+            filter_list := CAP_INTERNAL_CREATE_FILTER_LIST_FOR_CATEGORY_WITH_ATTRIBUTES( 
+                             entry.filter_list, structure_record.category_with_attributes );
+            
+            operation := NewOperation( entry.installation_name, filter_list );
+            
+            InstallMethodWithCache( operation, filter_list, structure_record.(entry.function_name) );
+            
+            structure_record.(entry.operation_name) := operation;
+        fi;
         
-        [ "colift_attributes_function",
-          "colift_attributes_cache_operation",
-          "CategoryWithAttributesColiftAttributesOperation",
-          [ morphism_filter_of_underlying_category, object_filter ] ],
-        
-        [ "kernel_object_attributes_function",
-          "kernel_object_cache_operation",
-          "CategoryWithAttributesKernelObjectAttributesOperation",
-          [ morphism_filter, object_filter_of_underlying_category ] ],
-        
-        [ "image_object_attributes_function",
-          "image_object_cache_operation",
-          "CategoryWithAttributesImageObjectAttributesOperation",
-          [ morphism_filter, object_filter_of_underlying_category ] ],
-        
-        [ "fiber_product_attributes_function",
-          "fiber_product_cache_operation",
-          "CategoryWithAttributesFiberProductAttributesOperation",
-          [ IsList, object_filter_of_underlying_category ] ],
-      ];
-    
-    structure_record.structure_function_list := structure_function_list;
+    od;
     
 end );
 
@@ -320,6 +346,8 @@ InstallGlobalFunction( CreateCategoryWithAttributes,
     
     category_with_attributes := CreateCapCategory( structure_record.category_name );
     
+    SetUnderlyingCategory( category_with_attributes, structure_record.underlying_category );
+    
     structure_record.category_with_attributes := category_with_attributes;
     
     ## create constructors for objects and morphisms
@@ -330,15 +358,12 @@ InstallGlobalFunction( CreateCategoryWithAttributes,
     if not IsBound( structure_record.morphism_constructor ) then
         CAP_INTERNAL_CREATE_MORPHISM_CONSTRUCTOR_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
     fi;
-    ##
-    
-    CAP_INTERNAL_CREATE_STRUCTURE_FUNCTION_LIST( structure_record );
     
     ## equip given functions with cache
     CAP_INTERNAL_EQUIP_STRUCTURE_FUNCTIONS_WITH_CACHE_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
     
-    ##
-    CAP_INTERNAL_CREATE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS( structure_record );
+    ## 
+    CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS( structure_record );
     
     ## install Adds
     CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
