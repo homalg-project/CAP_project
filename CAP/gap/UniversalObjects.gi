@@ -968,7 +968,7 @@ InstallMethod( MorphismFromCoimageToImage,
                
   function( morphism )
     
-    return MorphismFromCoimageToImage( Coimage( morphism ), morphism, ImageObject( morphism ) );
+    return MorphismFromCoimageToImageWithGivenObjects( Coimage( morphism ), morphism, ImageObject( morphism ) );
     
 end );
 
@@ -978,7 +978,7 @@ InstallMethod( InverseMorphismFromCoimageToImage,
                
   function( morphism )
     
-    return InverseMorphismFromCoimageToImage( Coimage( morphism ), morphism, ImageObject( morphism ) );
+    return InverseMorphismFromCoimageToImageWithGivenObjects( Coimage( morphism ), morphism, ImageObject( morphism ) );
     
 end );
 

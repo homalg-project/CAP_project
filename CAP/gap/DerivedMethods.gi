@@ -2924,7 +2924,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "MonoidalPreComposeMorphismWithGivenObjects using MonoidalPostComposeMorphism and braiding" );
 
 ##
-AddDerivationToCAP( MorphismFromCoimageToImage,
+AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
                     
   ##CoimageObject, ImageObject as Assumptions
   function( coimage, morphism, image )
@@ -2939,17 +2939,17 @@ AddDerivationToCAP( MorphismFromCoimageToImage,
     return PreCompose( kernel_lift, IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
     
 end : CategoryFilter := IsPreAbelianCategory,
-      Description := "MorphismFromCoimageToImage using that images are given by kernels of cokernels" );
+      Description := "MorphismFromCoimageToImageWithGivenObjects using that images are given by kernels of cokernels" );
 
 ##
-AddDerivationToCAP( InverseMorphismFromCoimageToImage,
+AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
                     
   function( coimage, morphism, image )
     
     return Inverse( MorphismFromCoimageToImage( morphism ) );
     
 end : CategoryFilter := IsAbelianCategory,
-      Description := "InverseMorphismFromCoimageToImage as the inverse of MorphismFromCoimageToImage" );
+      Description := "InverseMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage" );
 
 AddDerivationToCAP( IsEqualForCacheForObjects,
   

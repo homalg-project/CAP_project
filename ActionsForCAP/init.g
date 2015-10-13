@@ -3,6 +3,7 @@
 #
 # Reading the declaration part of the package.
 #
+ReadPackage( "ActionsForCAP", "gap/AttributeCategory.gd" );
 
 ReadPackage( "ActionsForCAP", "gap/ActionsCategory.gd" );
 
