@@ -43,14 +43,14 @@ category_with_endo_record := rec(
   object_type := TheTypeOfObjectsWithEndo,
   morphism_type := TheTypeOfMorphismsWithEndo,
   
-  zero_object_attributes_function :=
+  ZeroObject :=
     function( zero_object )
       
       return [ IdentityMorphism( zero_object ) ];
       
   end,
   
-  direct_sum_attributes_function :=
+  DirectSum :=
     function( obj_list, underlying_direct_sum )
       local attr_list;
       
@@ -59,7 +59,7 @@ category_with_endo_record := rec(
       return [ DirectSumFunctorial( attr_list ) ];
   end,
   
-  lift_attributes_function :=
+  Lift :=
     function( mono, range )
       local range_endo, composition;
       
@@ -71,7 +71,7 @@ category_with_endo_record := rec(
       
   end,
   
-  colift_attributes_function :=
+  Colift :=
     function( epi, source )
       local source_endo, composition;
       
@@ -82,7 +82,7 @@ category_with_endo_record := rec(
       return [ ColiftAlongEpimorphism( epi, composition ) ];
   end,
   
-  tensor_product_attributes_function :=
+  TensorProductOnObjects :=
     function( obj1, obj2, underlying_tensor_product )
       local endo1, endo2;
       
@@ -94,22 +94,22 @@ category_with_endo_record := rec(
       
   end,
   
-  tensor_unit_attributes_function := 
+  TensorUnit :=
     function( unit )
     
     return [ IdentityMorphism( unit ) ];
     
   end
 );
-# ActivateDerivationInfo();
-endo_cat := CreateCategoryWithAttributes( category_with_endo_record );
+
+endo_cat_record := CreateCategoryWithAttributes( category_with_endo_record );
 ## not finalized yet
-ObjConstr := category_with_endo_record.object_constructor;
+ObjConstr := endo_cat_record.ObjectConstructor;
 
 V := VectorSpaceObject( 3, Q );
 endV := IdentityMorphism( V );
 VwithEndo := ObjConstr( V, [ endV ] );
 
-MorConstr := category_with_endo_record.morphism_constructor;
+MorConstr :=endo_cat_record.MorphismConstructor;
 
 alpha := MorConstr( VwithEndo, VectorSpaceMorphism( V, HomalgMatrix( [ [ 1, -1, 1 ], [ 1, 1, 1 ], [ 0, 0 , 0 ] ], 3, 3, Q ), V ), VwithEndo );
