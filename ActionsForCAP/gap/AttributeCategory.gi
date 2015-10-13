@@ -593,6 +593,18 @@ InstallGlobalFunction( CreateCategoryWithAttributes,
         CAP_INTERNAL_CREATE_MORPHISM_CONSTRUCTOR_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
     fi;
     
+    ## equip Lift and Colift with cache
+    if IsBound( structure_record.Lift ) then
+        
+        structure_record.Lift := FunctionWithCache( structure_record.Lift );
+    fi;
+    
+    if IsBound( structure_record.Colift ) then
+        
+        structure_record.Colift := FunctionWithCache( structure_record.Colift );
+        
+    fi;
+    
     ##
     CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
     
