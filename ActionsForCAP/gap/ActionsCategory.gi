@@ -49,11 +49,37 @@ InstallMethod( LeftActionsCategory,
     );
     
     ## Constructors
-    
     object_constructor := CreateObjectConstructorForCategoryWithAttributes( structure_record );
+    
+    structure_record.ObjectConstructor := function( object, attributes )
+        local return_object;
+        
+        return_object := object_constructor( object, attributes );
+        
+        SetStructureMorphism( return_object, attributes[1] );
+        
+        SetUnderlyingActingObject( return_object, acting_object );
+        
+        SetActionDomain( return_object, Range( attributes[1] ) );
+        
+        return return_object;
+        
+    end;
     
     morphism_constructor := CreateMorphismConstructorForCategoryWithAttributes( structure_record );
     
+    structure_record.MorphismConstructor := function( source, morphism, range )
+        local return_morphism;
+        
+        return_morphism := morphism_constructor( source, morphism, range );
+        
+        SetUnderlyingActingObject( return_morphism, acting_object );
+        
+        return return_morphism;
+        
+    end;
+    
+    ##
     category_weight_list := underlying_monoidal_category!.derivations_weight_list;
     
     ## Left action for ZeroObject

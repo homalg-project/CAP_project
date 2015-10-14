@@ -91,22 +91,3 @@ InstallMethod( RightActionObject,
     return LeftOrRightActionObject( structure_morphism, acting_object, false );
     
 end );
-
-#############################
-##
-## Attributes
-##
-#############################
-
-##
-InstallMethod( ActionDomain, [ IsLeftOrRightActionObject ], UnderlyingCell );
-
-##
-InstallMethod( StructureMorphism,
-               [ IsLeftOrRightActionObject ],
-               
-  function( object )
-    
-    return ObjectAttributesAsList( object )[1];
-    
-end );
