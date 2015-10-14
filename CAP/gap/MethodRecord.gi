@@ -2695,6 +2695,35 @@ IsomorphismFromInternalHomToObjectWithGivenInternalHom := rec(
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
   cache_name := "IsomorphismFromInternalHomToObjectWithGivenInternalHom",
   return_type := "morphism" ),
+
+
+LeftDistributivityExpandingWithGivenObjects := rec(
+  installation_name := "LeftDistributivityExpandingWithGivenObjects",
+  filter_list := [ "object", "object", IsList, "object" ],
+  io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
+  cache_name := "LeftDistributivityExpandingWithGivenObjects",
+  return_type := "morphism" ),
+
+LeftDistributivityFactoringWithGivenObjects := rec(
+  installation_name := "LeftDistributivityFactoringWithGivenObjects",
+  filter_list := [ "object", "object", IsList, "object" ],
+  io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
+  cache_name := "LeftDistributivityFactoringWithGivenObjects",
+  return_type := "morphism" ),
+
+RightDistributivityExpandingWithGivenObjects := rec(
+  installation_name := "RightDistributivityExpandingWithGivenObjects",
+  filter_list := [ "object", IsList, "object", "object" ],
+  io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
+  cache_name := "RightDistributivityExpandingWithGivenObjects",
+  return_type := "morphism" ),
+
+RightDistributivityFactoringWithGivenObjects := rec(
+  installation_name := "RightDistributivityFactoringWithGivenObjects",
+  filter_list := [ "object", IsList, "object", "object" ],
+  io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
+  cache_name := "RightDistributivityFactoringWithGivenObjects",
+  return_type := "morphism" ),
   )
 );
 

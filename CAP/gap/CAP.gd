@@ -251,6 +251,10 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "CanComputeLambdaElimination",
                 "CanComputeIsomorphismFromObjectToInternalHomWithGivenInternalHom",
                 "CanComputeIsomorphismFromInternalHomToObjectWithGivenInternalHom",
+                "CanComputeLeftDistributivityExpandingWithGivenObjects",
+                "CanComputeLeftDistributivityFactoringWithGivenObjects",
+                "CanComputeRightDistributivityExpandingWithGivenObjects",
+                "CanComputeRightDistributivityFactoringWithGivenObjects",
                 "CanComputeIsEqualForCacheForObjects",
                 "CanComputeIsEqualForCacheForMorphisms"
                 ] )
