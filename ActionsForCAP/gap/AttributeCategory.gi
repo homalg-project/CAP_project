@@ -463,7 +463,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
 end );
 
 ##
-InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_CONSTRUCTOR_FOR_CATEGORY_WITH_ATTRIBUTES,
+InstallGlobalFunction( CreateMorphismConstructorForCategoryWithAttributes,
   function( structure_record )
     local underlying_category, category_with_attributes, object_filter,
           morphism_constructor, morphism_filter_of_underlying_category;
@@ -479,8 +479,6 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_CONSTRUCTOR_FOR_CATEGORY_WIT
     morphism_constructor :=
       NewOperation( "CategoryWithAttributesMorphismConstructorOperation", 
                     [ object_filter, morphism_filter_of_underlying_category, object_filter ] );
-    
-    structure_record.MorphismConstructor := morphism_constructor;
     
     ##
     InstallMethod( morphism_constructor,
@@ -503,10 +501,13 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_CONSTRUCTOR_FOR_CATEGORY_WIT
         return attribute_morphism;
         
     end );
+    
+    return morphism_constructor;
+    
 end );
 
 ##
-InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_CONSTRUCTOR_FOR_CATEGORY_WITH_ATTRIBUTES,
+InstallGlobalFunction( CreateObjectConstructorForCategoryWithAttributes,
   function( structure_record )
     local underlying_category, category_with_attributes, object_filter_of_underlying_category,
           object_constructor;
@@ -521,7 +522,6 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_CONSTRUCTOR_FOR_CATEGORY_WITH_
       NewOperation( "CategoryWithAttributesObjectConstructorOperation", 
                     [ object_filter_of_underlying_category, IsList ] );
     
-    structure_record.ObjectConstructor := object_constructor;
     ##
     InstallMethod( object_constructor,
                    [ object_filter_of_underlying_category, IsList ],
@@ -542,6 +542,8 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_CONSTRUCTOR_FOR_CATEGORY_WITH_
         return attribute_object;
         
     end );
+    
+    return object_constructor;
     
 end );
 
@@ -586,11 +588,11 @@ InstallGlobalFunction( CreateCategoryWithAttributes,
     
     ## create constructors for objects and morphisms
     if not IsBound( structure_record.ObjectConstructor ) then
-        CAP_INTERNAL_CREATE_OBJECT_CONSTRUCTOR_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
+        structure_record.ObjectConstructor := CreateObjectConstructorForCategoryWithAttributes( structure_record );
     fi;
     
     if not IsBound( structure_record.MorphismConstructor ) then
-        CAP_INTERNAL_CREATE_MORPHISM_CONSTRUCTOR_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
+        structure_record.MorphismConstructor := CreateMorphismConstructorForCategoryWithAttributes( structure_record );
     fi;
     
     ## equip Lift and Colift with cache
@@ -611,11 +613,6 @@ InstallGlobalFunction( CreateCategoryWithAttributes,
     ## install Adds
     CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
     
-    return_record := rec(
-      CategoryWithAttributes := category_with_attributes,
-      ObjectConstructor := structure_record.ObjectConstructor,
-      MorphismConstructor := structure_record.MorphismConstructor );
-    
-    return return_record;
+    return category_with_attributes;
     
 end );

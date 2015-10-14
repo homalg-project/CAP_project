@@ -102,14 +102,14 @@ category_with_endo_record := rec(
   end
 );
 
-endo_cat_record := CreateCategoryWithAttributes( category_with_endo_record );
+endo_cat := CreateCategoryWithAttributes( category_with_endo_record );
 ## not finalized yet
-ObjConstr := endo_cat_record.ObjectConstructor;
+ObjConstr := category_with_endo_record.ObjectConstructor;
 
 V := VectorSpaceObject( 3, Q );
 endV := IdentityMorphism( V );
 VwithEndo := ObjConstr( V, [ endV ] );
 
-MorConstr :=endo_cat_record.MorphismConstructor;
+MorConstr :=category_with_endo_record.MorphismConstructor;
 
 alpha := MorConstr( VwithEndo, VectorSpaceMorphism( V, HomalgMatrix( [ [ 1, -1, 1 ], [ 1, 1, 1 ], [ 0, 0 , 0 ] ], 3, 3, Q ), V ), VwithEndo );
