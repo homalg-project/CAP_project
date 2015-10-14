@@ -465,25 +465,14 @@ end );
 ##
 InstallGlobalFunction( CreateMorphismConstructorForCategoryWithAttributes,
   function( structure_record )
-    local underlying_category, category_with_attributes, object_filter,
-          morphism_constructor, morphism_filter_of_underlying_category;
+    local underlying_category, category_with_attributes,
+          morphism_constructor;
     
     underlying_category := structure_record.underlying_category;
     
     category_with_attributes := structure_record.category_with_attributes;
     
-    object_filter := ObjectFilter( category_with_attributes );
-    
-    morphism_filter_of_underlying_category := MorphismFilter( underlying_category );
-    
     morphism_constructor :=
-      NewOperation( "CategoryWithAttributesMorphismConstructorOperation", 
-                    [ object_filter, morphism_filter_of_underlying_category, object_filter ] );
-    
-    ##
-    InstallMethod( morphism_constructor,
-                   [ object_filter, morphism_filter_of_underlying_category, object_filter ],
-                   
       function( source, morphism, range )
         local attribute_morphism;
         
@@ -500,7 +489,7 @@ InstallGlobalFunction( CreateMorphismConstructorForCategoryWithAttributes,
         
         return attribute_morphism;
         
-    end );
+    end;
     
     return morphism_constructor;
     
@@ -509,23 +498,14 @@ end );
 ##
 InstallGlobalFunction( CreateObjectConstructorForCategoryWithAttributes,
   function( structure_record )
-    local underlying_category, category_with_attributes, object_filter_of_underlying_category,
+    local underlying_category, category_with_attributes,
           object_constructor;
     
     underlying_category := structure_record.underlying_category;
     
     category_with_attributes := structure_record.category_with_attributes;
     
-    object_filter_of_underlying_category := ObjectFilter( underlying_category );
-    
-    object_constructor :=
-      NewOperation( "CategoryWithAttributesObjectConstructorOperation", 
-                    [ object_filter_of_underlying_category, IsList ] );
-    
-    ##
-    InstallMethod( object_constructor,
-                   [ object_filter_of_underlying_category, IsList ],
-                   
+    object_constructor := 
       function( object, attributes )
         local attribute_object;
         
@@ -541,7 +521,7 @@ InstallGlobalFunction( CreateObjectConstructorForCategoryWithAttributes,
         
         return attribute_object;
         
-    end );
+    end;
     
     return object_constructor;
     

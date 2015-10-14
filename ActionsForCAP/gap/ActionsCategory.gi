@@ -21,7 +21,8 @@ InstallMethod( LeftActionsCategory,
                
   function( acting_object )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
-          structure_record, left_actions_category, identity_of_acting_object;
+          structure_record, object_constructor, morphism_constructor, 
+          left_actions_category, identity_of_acting_object;
     
     underlying_monoidal_category := CapCategory( acting_object );
     
@@ -46,6 +47,12 @@ InstallMethod( LeftActionsCategory,
       morphism_type := TheTypeOfLeftActionMorphisms,
       category_name := Concatenation( "Category of left actions of <", String( acting_object ), ">" ) 
     );
+    
+    ## Constructors
+    
+    object_constructor := CreateObjectConstructorForCategoryWithAttributes( structure_record );
+    
+    morphism_constructor := CreateMorphismConstructorForCategoryWithAttributes( structure_record );
     
     category_weight_list := underlying_monoidal_category!.derivations_weight_list;
     
