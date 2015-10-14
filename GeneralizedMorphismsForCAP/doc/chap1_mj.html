@@ -59,6 +59,16 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B025572785DACBA">1.4-4 IsSingleValued</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85E05A137F6C759A">1.4-5 IsTotal</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B40ED8B78D067A5">1.5 <span class="Heading">Convenience methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8276ADE97D53B8F0">1.5-1 GeneralizedMorphismCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BCAEAEC78CE8093">1.5-2 GeneralizedMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X846BEA5784436575">1.5-3 GeneralizedMorphismObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F89465C80D5CB2F">1.5-4 AsGeneralizedMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DC1AF448411DFCE">1.5-5 GeneralizedMorphismWithRangeAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D32834C7EA50379">1.5-6 GeneralizedMorphismWithSourceAid</a></span>
+</div></div>
 </div>
 
 <h3>1 <span class="Heading">Generalized Morphism Category</span></h3>
@@ -242,6 +252,60 @@
 <p>Returns: a boolean</p>
 
 <p>The argument is a generalized morphism <span class="SimpleMath">\(\alpha\)</span>. The output is <code class="code">true</code> if the domain of <span class="SimpleMath">\(\alpha\)</span> is an isomorphism, otherwise <code class="code">false</code>.</p>
+
+<p><a id="X7B40ED8B78D067A5" name="X7B40ED8B78D067A5"></a></p>
+
+<h4>1.5 <span class="Heading">Convenience methods</span></h4>
+
+<p>This section contains operations which, depending on the current generalized morphism standard of the system and the category, might point to other Operations. Please use them only as convenience and never in serious code.</p>
+
+<p><a id="X8276ADE97D53B8F0" name="X8276ADE97D53B8F0"></a></p>
+
+<h5>1.5-1 GeneralizedMorphismCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>Creates a new category of generalized morphisms. Might point to GeneralizedMorphismCategoryByThreeArrows, GeneralizedMorphismCategoryByCospans, or GeneralizedMorphismCategoryBySpans</p>
+
+<p><a id="X7BCAEAEC78CE8093" name="X7BCAEAEC78CE8093"></a></p>
+
+<h5>1.5-2 GeneralizedMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphism</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Creates a generalized morphism by three arrows, a generalized morphism by span, or a generalized morphism by cospan, depending on the current standard.</p>
+
+<p><a id="X846BEA5784436575" name="X846BEA5784436575"></a></p>
+
+<h5>1.5-3 GeneralizedMorphismObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismObject</code>( <var class="Arg">A</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: an object in the generalized morphism category</p>
+
+<p>Creates an object in the current generalized morphism category, depending on the standard</p>
+
+<p><a id="X7F89465C80D5CB2F" name="X7F89465C80D5CB2F"></a></p>
+
+<h5>1.5-4 AsGeneralizedMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsGeneralizedMorphism</code>( <var class="Arg">phi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a generalized morphism</p>
+
+<p>Returns the corresponding morphism to phi in the current generalized morphism category.</p>
+
+<p><a id="X7DC1AF448411DFCE" name="X7DC1AF448411DFCE"></a></p>
+
+<h5>1.5-5 GeneralizedMorphismWithRangeAid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismWithRangeAid</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns a generalized morphism with range aid by three arrows or by span, or a generalized morphism by cospan, depending on the standard.</p>
+
+<p><a id="X7D32834C7EA50379" name="X7D32834C7EA50379"></a></p>
+
+<h5>1.5-6 GeneralizedMorphismWithSourceAid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismWithSourceAid</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns a generalized morphism with source aid by three arrows or by cospan, or a generalized morphism by span, depending on the standard.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>

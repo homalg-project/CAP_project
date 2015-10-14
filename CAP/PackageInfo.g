@@ -9,9 +9,9 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
   ## this line prevents merge conflicts
-  "2015.10.05", ## Sebas' version
+  "2015.11.05", ## Sebas' version
   ## this line prevents merge conflicts
-  "2015.10.06", ## Sepp's version
+  "2015.10.14", ## Sepp's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -64,11 +64,11 @@ Persons := [
 Status := "dev",
 
 #PackageWWWHome := "http://www.TODO.INSERT.WEBPAGE.HERE/",
-PackageWWWHome := "http://github.com/homalg-project/CAP/",
+PackageWWWHome := "http://homalg-project.github.io/CAP_project/CAP/",
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "CAP-", ~.Version ),
+ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/CAP-", ~.Version, "/CAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 

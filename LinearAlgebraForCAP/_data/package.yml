@@ -1,6 +1,6 @@
 name: LinearAlgebraForCAP
-version: 2015.10.06
-date: 06/10/2015
+version: 2015.11.05
+date: 05/11/2015
 description: Category of Matrices over a Field for CAP
 
 authors:
@@ -23,21 +23,21 @@ needed-pkgs:
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "MatricesForHomalg"
       version: ">= 2015.06.20"
-      url: "http://homalg.math.rwth-aachen.de/index.php/core-packages/matricesforhomalg"
+      url: "http://homalg-project.github.io/homalg_project/MatricesForHomalg/"
     - name: "CAP"
       version: ">= 2015.08.17"
-      url: "http://github.com/homalg-project/CAP/"
+      url: "http://homalg-project.github.io/CAP_project/CAP/"
     - name: "ToolsForHomalg"
       version: ">=2015.09.18"
-      url: "http://wwwb.math.rwth-aachen.de/~gutsche/gap_packages/ToolsForHomalg"
+      url: "http://homalg-project.github.io/homalg_project/ToolsForHomalg/"
 
-www: http://TODO/
-readme: http://TODO/README
-packageinfo: http://TODO/PackageInfo.g
+www: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/
+readme: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/README
+packageinfo: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: http://TODO/LinearAlgebraForCAP-2015.10.06.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2015.11.05/LinearAlgebraForCAP-2015.11.05.tar.gz
 
 abstract: 
 

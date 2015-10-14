@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2015.10.06
+                                   2015.10.26
   
   
-                                   06/10/2015
+                                   26/10/2015
   
   
                                Sebastian Gutsche
@@ -66,13 +66,16 @@
       1.3-3 ObjectFilter
       1.3-4 MorphismFilter
       1.3-5 TwoCellFilter
-    1.4 [33X[0;0YTool functions[133X
-      1.4-1 CanCompute
-      1.4-2 CheckConstructivenessOfCategory
-    1.5 [33X[0;0YWell-Definedness of Cells[133X
-      1.5-1 IsWellDefined
-    1.6 [33X[0;0YType check[133X
-      1.6-1 DisableBasicOperationTypeCheck
+    1.4 [33X[0;0YLogic switcher[133X
+      1.4-1 CapCategorySwitchLogicOn
+      1.4-2 CapCategorySwitchLogicOff
+    1.5 [33X[0;0YTool functions[133X
+      1.5-1 CanCompute
+      1.5-2 CheckConstructivenessOfCategory
+    1.6 [33X[0;0YWell-Definedness of Cells[133X
+      1.6-1 IsWellDefined
+    1.7 [33X[0;0YType check[133X
+      1.7-1 DisableBasicOperationTypeCheck
   2 [33X[0;0YCategory of Categories[133X
     2.1 [33X[0;0YThe Category Cat[133X
       2.1-1 CapCat
@@ -132,10 +135,10 @@
       3.6-2 AddIsEqualAsSubobjects
       3.6-3 IsEqualAsFactorobjects
       3.6-4 AddIsEqualAsFactorobjects
-      3.6-5 Dominates
-      3.6-6 AddDominates
-      3.6-7 Codominates
-      3.6-8 AddCodominates
+      3.6-5 IsDominating
+      3.6-6 AddIsDominating
+      3.6-7 IsCodominating
+      3.6-8 AddIsCodominating
     3.7 [33X[0;0YIdentity Morphism and Composition of Morphisms[133X
       3.7-1 IdentityMorphism
       3.7-2 AddIdentityMorphism
@@ -317,21 +320,23 @@
       6.6-39 DirectSumFunctorialOp
     6.7 [33X[0;0YCoproduct[133X
       6.7-1 Coproduct
-      6.7-2 CoproductOp
-      6.7-3 InjectionOfCofactorOfCoproduct
-      6.7-4 InjectionOfCofactorOfCoproductOp
-      6.7-5 InjectionOfCofactorOfCoproductWithGivenCoproduct
-      6.7-6 UniversalMorphismFromCoproduct
-      6.7-7 UniversalMorphismFromCoproductOp
-      6.7-8 UniversalMorphismFromCoproductWithGivenCoproduct
-      6.7-9 AddCoproduct
-      6.7-10 AddInjectionOfCofactorOfCoproduct
-      6.7-11 AddInjectionOfCofactorOfCoproductWithGivenCoproduct
-      6.7-12 AddUniversalMorphismFromCoproduct
-      6.7-13 AddUniversalMorphismFromCoproductWithGivenCoproduct
-      6.7-14 CoproductFunctorial
-      6.7-15 AddCoproductFunctorial
-      6.7-16 CoproductFunctorialOp
+      6.7-2 Coproduct
+      6.7-3 Coproduct
+      6.7-4 CoproductOp
+      6.7-5 InjectionOfCofactorOfCoproduct
+      6.7-6 InjectionOfCofactorOfCoproductOp
+      6.7-7 InjectionOfCofactorOfCoproductWithGivenCoproduct
+      6.7-8 UniversalMorphismFromCoproduct
+      6.7-9 UniversalMorphismFromCoproductOp
+      6.7-10 UniversalMorphismFromCoproductWithGivenCoproduct
+      6.7-11 AddCoproduct
+      6.7-12 AddInjectionOfCofactorOfCoproduct
+      6.7-13 AddInjectionOfCofactorOfCoproductWithGivenCoproduct
+      6.7-14 AddUniversalMorphismFromCoproduct
+      6.7-15 AddUniversalMorphismFromCoproductWithGivenCoproduct
+      6.7-16 CoproductFunctorial
+      6.7-17 AddCoproductFunctorial
+      6.7-18 CoproductFunctorialOp
     6.8 [33X[0;0YDirect Product[133X
       6.8-1 DirectProductOp
       6.8-2 ProjectionInFactorOfDirectProduct
@@ -485,6 +490,18 @@
       7.1-23 RightUnitorInverse
       7.1-24 RightUnitorInverseWithGivenTensorProduct
       7.1-25 AddRightUnitorInverseWithGivenTensorProduct
+      7.1-26 LeftDistributivityExpanding
+      7.1-27 LeftDistributivityExpandingWithGivenObjects
+      7.1-28 AddLeftDistributivityExpandingWithGivenObjects
+      7.1-29 LeftDistributivityFactoring
+      7.1-30 LeftDistributivityFactoringWithGivenObjects
+      7.1-31 AddLeftDistributivityFactoringWithGivenObjects
+      7.1-32 RightDistributivityExpanding
+      7.1-33 RightDistributivityExpandingWithGivenObjects
+      7.1-34 AddRightDistributivityExpandingWithGivenObjects
+      7.1-35 RightDistributivityFactoring
+      7.1-36 RightDistributivityFactoringWithGivenObjects
+      7.1-37 AddRightDistributivityFactoringWithGivenObjects
     7.2 [33X[0;0YBraided Monoidal Categories[133X
       7.2-1 Braiding
       7.2-2 BraidingWithGivenTensorProducts
@@ -594,20 +611,21 @@
     8.3 [33X[0;0YDerivation Graphs[133X
       8.3-1 IsDerivedMethodGraph
       8.3-2 MakeDerivationGraph
-      8.3-3 AddDerivation
+      8.3-3 AddOperationsToDerivationGraph
       8.3-4 AddDerivation
       8.3-5 AddDerivation
       8.3-6 AddDerivation
-      8.3-7 AddDerivationPair
+      8.3-7 AddDerivation
       8.3-8 AddDerivationPair
       8.3-9 AddDerivationPair
       8.3-10 AddDerivationPair
-      8.3-11 AddDerivationToCAP
-      8.3-12 AddDerivationPairToCAP
-      8.3-13 AddWithGivenDerivationPairToCAP
-      8.3-14 Operations
-      8.3-15 DerivationsUsingOperation
-      8.3-16 DerivationsOfOperation
+      8.3-11 AddDerivationPair
+      8.3-12 AddDerivationToCAP
+      8.3-13 AddDerivationPairToCAP
+      8.3-14 AddWithGivenDerivationPairToCAP
+      8.3-15 Operations
+      8.3-16 DerivationsUsingOperation
+      8.3-17 DerivationsOfOperation
     8.4 [33X[0;0YManaging Derivations in a Category[133X
       8.4-1 IsOperationWeightList
       8.4-2 MakeOperationWeightList

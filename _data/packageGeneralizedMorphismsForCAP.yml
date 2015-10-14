@@ -1,6 +1,6 @@
 name: GeneralizedMorphismsForCAP
-version: 2015.10.06
-date: 06/10/2015
+version: 2015.11.05
+date: 05/11/2015
 description: Implementations of generalized morphisms for the CAP project
 
 authors:
@@ -23,15 +23,15 @@ needed-pkgs:
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "CAP"
       version: ">=2015.05.08"
-      url: "http://github.com/homalg-project/CAP/"
+      url: "http://homalg-project.github.io/CAP_project/CAP/"
 
-www: 
-readme: README
-packageinfo: PackageInfo.g
+www: http://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/
+readme: http://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/README
+packageinfo: http://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: GeneralizedMorphismsForCAP-2015.10.06.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2015.11.05/GeneralizedMorphismsForCAP-2015.11.05.tar.gz
 
 abstract: 
 

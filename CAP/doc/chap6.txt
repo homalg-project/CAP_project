@@ -1195,19 +1195,29 @@
   
   [1X6.7-1 Coproduct[101X
   
-  [29X[2XCoproduct[102X( [3Xarg[103X ) [32X function
+  [29X[2XCoproduct[102X( [3XD[103X ) [32X attribute
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThis  is  a  convenience  method.  There  are two different ways to use this
-  method:[133X
+  [33X[0;0YThe argument is a list of objects [23XD = ( I_1, \dots, I_n )[123X. The output is the
+  coproduct [23X\bigsqcup_{i=1}^n I_i[123X.[133X
   
-  [30X    [33X[0;6YThe argument is a list of objects [23XD = ( I_1, \dots, I_n )[123X.[133X
+  [1X6.7-2 Coproduct[101X
   
-  [30X    [33X[0;6YThe arguments are objects [23XI_1, \dots, I_n[123X.[133X
+  [29X[2XCoproduct[102X( [3XI1[103X, [3XI2[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThe output is the coproduct [23X\bigsqcup_{i=1}^n I_i[123X.[133X
+  [33X[0;0YThis  is  a  convenience method. The arguments are two objects [23XI_1, I_2[123X. The
+  output is the coproduct [23XI_1 \bigsqcup I_2[123X.[133X
   
-  [1X6.7-2 CoproductOp[101X
+  [1X6.7-3 Coproduct[101X
+  
+  [29X[2XCoproduct[102X( [3XI1[103X, [3XI2[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThis is a convenience method. The arguments are three objects [23XI_1, I_2, I_3[123X.
+  The output is the coproduct [23XI_1 \bigsqcup I_2 \bigsqcup I_3[123X.[133X
+  
+  [1X6.7-4 CoproductOp[101X
   
   [29X[2XCoproductOp[102X( [3XD[103X, [3Xmethod_selection_object[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1215,7 +1225,7 @@
   [33X[0;0YThe  arguments  are  a  list of objects [23XD = ( I_1, \dots, I_n )[123X and a method
   selection object. The output is the coproduct [23X\bigsqcup_{i=1}^n I_i[123X.[133X
   
-  [1X6.7-3 InjectionOfCofactorOfCoproduct[101X
+  [1X6.7-5 InjectionOfCofactorOfCoproduct[101X
   
   [29X[2XInjectionOfCofactorOfCoproduct[102X( [3XD[103X, [3Xk[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I_k, \bigsqcup_{i=1}^n I_i)[123X[133X
@@ -1224,7 +1234,7 @@
   [23Xk[123X.   The   output   is   the   [23Xk[123X-th   injection   [23X\iota_k:  I_k  \rightarrow
   \bigsqcup_{i=1}^n I_i[123X.[133X
   
-  [1X6.7-4 InjectionOfCofactorOfCoproductOp[101X
+  [1X6.7-6 InjectionOfCofactorOfCoproductOp[101X
   
   [29X[2XInjectionOfCofactorOfCoproductOp[102X( [3XD[103X, [3Xk[103X, [3Xmethod_selection_object[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I_k, \bigsqcup_{i=1}^n I_i)[123X[133X
@@ -1233,7 +1243,7 @@
   and a method selection object. The output is the [23Xk[123X-th injection [23X\iota_k: I_k
   \rightarrow \bigsqcup_{i=1}^n I_i[123X.[133X
   
-  [1X6.7-5 InjectionOfCofactorOfCoproductWithGivenCoproduct[101X
+  [1X6.7-7 InjectionOfCofactorOfCoproductWithGivenCoproduct[101X
   
   [29X[2XInjectionOfCofactorOfCoproductWithGivenCoproduct[102X( [3XD[103X, [3Xk[103X, [3XI[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I_k, I)[123X[133X
@@ -1242,7 +1252,7 @@
   and  an  object  [23XI = \bigsqcup_{i=1}^n I_i[123X. The output is the [23Xk[123X-th injection
   [23X\iota_k: I_k \rightarrow I[123X.[133X
   
-  [1X6.7-6 UniversalMorphismFromCoproduct[101X
+  [1X6.7-8 UniversalMorphismFromCoproduct[101X
   
   [29X[2XUniversalMorphismFromCoproduct[102X( [3Xarg[103X ) [32X function
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, T)[123X[133X
@@ -1262,7 +1272,7 @@
   [33X[0;0YThe  output  is  the morphism [23Xu( \tau ): \bigsqcup_{i=1}^n I_i \rightarrow T[123X
   given by the universal property of the coproduct.[133X
   
-  [1X6.7-7 UniversalMorphismFromCoproductOp[101X
+  [1X6.7-9 UniversalMorphismFromCoproductOp[101X
   
   [29X[2XUniversalMorphismFromCoproductOp[102X( [3XD[103X, [3Xtau[103X, [3Xmethod_selection_object[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, T)[123X[133X
@@ -1272,7 +1282,7 @@
   object.  The  output  is  the  morphism  [23Xu(  \tau  ):  \bigsqcup_{i=1}^n I_i
   \rightarrow T[123X given by the universal property of the coproduct.[133X
   
-  [1X6.7-8 UniversalMorphismFromCoproductWithGivenCoproduct[101X
+  [1X6.7-10 UniversalMorphismFromCoproductWithGivenCoproduct[101X
   
   [29X[2XUniversalMorphismFromCoproductWithGivenCoproduct[102X( [3XD[103X, [3Xtau[103X, [3XI[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I, T)[123X[133X
@@ -1282,7 +1292,7 @@
   \bigsqcup_{i=1}^n I_i[123X. The output is the morphism [23Xu( \tau ): I \rightarrow T[123X
   given by the universal property of the coproduct.[133X
   
-  [1X6.7-9 AddCoproduct[101X
+  [1X6.7-11 AddCoproduct[101X
   
   [29X[2XAddCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1291,7 +1301,7 @@
   given  function  [23XF[123X  to  the category for the basic operation [10XCoproduct[110X. [23XF: (
   (I_1, \dots, I_n) ) \mapsto I[123X.[133X
   
-  [1X6.7-10 AddInjectionOfCofactorOfCoproduct[101X
+  [1X6.7-12 AddInjectionOfCofactorOfCoproduct[101X
   
   [29X[2XAddInjectionOfCofactorOfCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1300,7 +1310,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XInjectionOfCofactorOfCoproduct[110X. [23XF: ( (I_1, \dots, I_n), i ) \mapsto \iota_i[123X.[133X
   
-  [1X6.7-11 AddInjectionOfCofactorOfCoproductWithGivenCoproduct[101X
+  [1X6.7-13 AddInjectionOfCofactorOfCoproductWithGivenCoproduct[101X
   
   [29X[2XAddInjectionOfCofactorOfCoproductWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1310,7 +1320,7 @@
   [10XInjectionOfCofactorOfCoproductWithGivenCoproduct[110X. [23XF: ( (I_1, \dots, I_n), i,
   I ) \mapsto \iota_i[123X.[133X
   
-  [1X6.7-12 AddUniversalMorphismFromCoproduct[101X
+  [1X6.7-14 AddUniversalMorphismFromCoproduct[101X
   
   [29X[2XAddUniversalMorphismFromCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1320,7 +1330,7 @@
   [10XUniversalMorphismFromCoproduct[110X.  [23XF:  (  (I_1, \dots, I_n), \tau ) \mapsto u(
   \tau )[123X.[133X
   
-  [1X6.7-13 AddUniversalMorphismFromCoproductWithGivenCoproduct[101X
+  [1X6.7-15 AddUniversalMorphismFromCoproductWithGivenCoproduct[101X
   
   [29X[2XAddUniversalMorphismFromCoproductWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1330,7 +1340,7 @@
   [10XUniversalMorphismFromCoproductWithGivenCoproduct[110X.  [23XF:  (  (I_1, \dots, I_n),
   \tau, I ) \mapsto u( \tau )[123X.[133X
   
-  [1X6.7-14 CoproductFunctorial[101X
+  [1X6.7-16 CoproductFunctorial[101X
   
   [29X[2XCoproductFunctorial[102X( [3XL[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya      morphism     in     [23X\mathrm{Hom}(\bigsqcup_{i=1}^n     I_i,
@@ -1341,7 +1351,7 @@
   \rightarrow   \bigsqcup_{i=1}^n  I_i'[123X  given  by  the  functorality  of  the
   coproduct.[133X
   
-  [1X6.7-15 AddCoproductFunctorial[101X
+  [1X6.7-17 AddCoproductFunctorial[101X
   
   [29X[2XAddCoproductFunctorial[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1351,7 +1361,7 @@
   [10XCoproductFunctorial[110X.    [23XF:    (    \mu_1,    \dots,    \mu_n)    \rightarrow
   (\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i')[123X.[133X
   
-  [1X6.7-16 CoproductFunctorialOp[101X
+  [1X6.7-18 CoproductFunctorialOp[101X
   
   [29X[2XCoproductFunctorialOp[102X( [3XL[103X, [3Xmethod_selection_morphism[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya      morphism     in     [23X\mathrm{Hom}(\bigsqcup_{i=1}^n     I_i,

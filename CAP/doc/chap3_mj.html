@@ -82,10 +82,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A97D3C3869323D1">3.6-2 AddIsEqualAsSubobjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79389FBF86CF87A4">3.6-3 IsEqualAsFactorobjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82DE9AE387425307">3.6-4 AddIsEqualAsFactorobjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BEF09477CDA76D2">3.6-5 Dominates</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81F22CB67B6E5B4D">3.6-6 AddDominates</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8318B0247A26FD1E">3.6-7 Codominates</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83B788BA7D59DA68">3.6-8 AddCodominates</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C21531C7EE65C72">3.6-5 IsDominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X834AC612831DDD11">3.6-6 AddIsDominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C77E9D479C8D502">3.6-7 IsCodominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78E046E387674019">3.6-8 AddIsCodominating</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X82ADC0BF82DA2122">3.7 <span class="Heading">Identity Morphism and Composition of Morphisms</span></a>
 </span>
@@ -472,41 +472,41 @@
 
 <p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEqualAsFactorobjects</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsEqualAsFactorobjects}(\alpha,\beta)\)</span>.</p>
 
-<p><a id="X7BEF09477CDA76D2" name="X7BEF09477CDA76D2"></a></p>
+<p><a id="X7C21531C7EE65C72" name="X7C21531C7EE65C72"></a></p>
 
-<h5>3.6-5 Dominates</h5>
+<h5>3.6-5 IsDominating</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dominates</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDominating</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>In short: Returns <code class="code">true</code> iff <span class="SimpleMath">\(\alpha\)</span> is smaller than <span class="SimpleMath">\(\beta\)</span>. <span class="SimpleMath">\(\\ \)</span> Full description: The arguments are two subobjects <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>. The output is <code class="code">true</code> if there exists a morphism <span class="SimpleMath">\(\iota: a \rightarrow b\)</span> such that <span class="SimpleMath">\(\beta \circ \iota \sim_{a,c} \alpha\)</span>, otherwise the output is <code class="code">false</code>.</p>
 
-<p><a id="X81F22CB67B6E5B4D" name="X81F22CB67B6E5B4D"></a></p>
+<p><a id="X834AC612831DDD11" name="X834AC612831DDD11"></a></p>
 
-<h5>3.6-6 AddDominates</h5>
+<h5>3.6-6 AddIsDominating</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDominates</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsDominating</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">Dominates</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{Dominates}(\alpha,\beta)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsDominating</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsDominating}(\alpha,\beta)\)</span>.</p>
 
-<p><a id="X8318B0247A26FD1E" name="X8318B0247A26FD1E"></a></p>
+<p><a id="X7C77E9D479C8D502" name="X7C77E9D479C8D502"></a></p>
 
-<h5>3.6-7 Codominates</h5>
+<h5>3.6-7 IsCodominating</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Codominates</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCodominating</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>In short: Returns <code class="code">true</code> iff <span class="SimpleMath">\(\alpha\)</span> is smaller than <span class="SimpleMath">\(\beta\)</span>. <span class="SimpleMath">\(\\ \)</span> Full description: The arguments are two factorobjects <span class="SimpleMath">\(\alpha: c \rightarrow a\)</span>, <span class="SimpleMath">\(\beta: c \rightarrow b\)</span>. The output is <code class="code">true</code> if there exists a morphism <span class="SimpleMath">\(\iota: b \rightarrow a\)</span> such that <span class="SimpleMath">\(\iota \circ \beta \sim_{c,a} \alpha\)</span>, otherwise the output is <code class="code">false</code>.</p>
 
-<p><a id="X83B788BA7D59DA68" name="X83B788BA7D59DA68"></a></p>
+<p><a id="X78E046E387674019" name="X78E046E387674019"></a></p>
 
-<h5>3.6-8 AddCodominates</h5>
+<h5>3.6-8 AddIsCodominating</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCodominates</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsCodominating</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">Codominates</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{Codominates}(\alpha,\beta)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsCodominating</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsCodominating}(\alpha,\beta)\)</span>.</p>
 
 <p><a id="X82ADC0BF82DA2122" name="X82ADC0BF82DA2122"></a></p>
 

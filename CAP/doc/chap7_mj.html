@@ -53,6 +53,18 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X82DC825480E87301">7.1-23 RightUnitorInverse</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85A8A87C87B33008">7.1-24 RightUnitorInverseWithGivenTensorProduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8682171F86C6793E">7.1-25 AddRightUnitorInverseWithGivenTensorProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7ACF268E7D82B0C9">7.1-26 LeftDistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7CA18968862D2285">7.1-27 LeftDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X814BA200802D26E4">7.1-28 AddLeftDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X780322FE7E5A626D">7.1-29 LeftDistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X784D8CD685F5F021">7.1-30 LeftDistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7F0A439478576973">7.1-31 AddLeftDistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8409C74778A4313A">7.1-32 RightDistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7DBE629F811DEADC">7.1-33 RightDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A6178C17EFC817A">7.1-34 AddRightDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X86C5C33786C1DC28">7.1-35 RightDistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X795267217F7807CE">7.1-36 RightDistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X842099557CF2036E">7.1-37 AddRightDistributivityFactoringWithGivenObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7D94AD967E6D60F1">7.2 <span class="Heading">Braided Monoidal Categories</span></a>
 </span>
@@ -420,6 +432,114 @@
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightUnitorInverseWithGivenTensorProduct</code>. <span class="SimpleMath">\(F: (a, a \otimes 1) \mapsto \rho_a^{-1}\)</span>.</p>
+
+<p><a id="X7ACF268E7D82B0C9" name="X7ACF268E7D82B0C9"></a></p>
+
+<h5>7.1-26 LeftDistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityExpanding</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a \otimes (b_1 \oplus \dots \oplus b_n), (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n) )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span> and a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>. The output is the left distributivity morphism <span class="SimpleMath">\(a \otimes (b_1 \oplus \dots \oplus b_n) \rightarrow (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)\)</span>.</p>
+
+<p><a id="X7CA18968862D2285" name="X7CA18968862D2285"></a></p>
+
+<h5>7.1-27 LeftDistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = a \otimes (b_1 \oplus \dots \oplus b_n)\)</span>, an object <span class="SimpleMath">\(a\)</span>, a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>, and an object <span class="SimpleMath">\(r = (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)\)</span>. The output is the left distributivity morphism <span class="SimpleMath">\(s \rightarrow r\)</span>.</p>
+
+<p><a id="X814BA200802D26E4" name="X814BA200802D26E4"></a></p>
+
+<h5>7.1-28 AddLeftDistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftDistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftDistributivityExpandingWithGivenObjects</code>. <span class="SimpleMath">\(F: (a \otimes (b_1 \oplus \dots \oplus b_n), a, L, (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)) \mapsto \mathrm{LeftDistributivityExpandingWithGivenObjects}(a,L)\)</span>.</p>
+
+<p><a id="X780322FE7E5A626D" name="X780322FE7E5A626D"></a></p>
+
+<h5>7.1-29 LeftDistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityFactoring</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n), a \otimes (b_1 \oplus \dots \oplus b_n) )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span> and a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>. The output is the left distributivity morphism <span class="SimpleMath">\((a \otimes b_1) \oplus \dots \oplus (a \otimes b_n) \rightarrow a \otimes (b_1 \oplus \dots \oplus b_n)\)</span>.</p>
+
+<p><a id="X784D8CD685F5F021" name="X784D8CD685F5F021"></a></p>
+
+<h5>7.1-30 LeftDistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)\)</span>, an object <span class="SimpleMath">\(a\)</span>, a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>, and an object <span class="SimpleMath">\(r = a \otimes (b_1 \oplus \dots \oplus b_n)\)</span>. The output is the left distributivity morphism <span class="SimpleMath">\(s \rightarrow r\)</span>.</p>
+
+<p><a id="X7F0A439478576973" name="X7F0A439478576973"></a></p>
+
+<h5>7.1-31 AddLeftDistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftDistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftDistributivityFactoringWithGivenObjects</code>. <span class="SimpleMath">\(F: ((a \otimes b_1) \oplus \dots \oplus (a \otimes b_n), a, L, a \otimes (b_1 \oplus \dots \oplus b_n)) \mapsto \mathrm{LeftDistributivityFactoringWithGivenObjects}(a,L)\)</span>.</p>
+
+<p><a id="X8409C74778A4313A" name="X8409C74778A4313A"></a></p>
+
+<h5>7.1-32 RightDistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityExpanding</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (b_1 \oplus \dots \oplus b_n) \otimes a, (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a) )\)</span></p>
+
+<p>The arguments are a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span> and an object <span class="SimpleMath">\(a\)</span>. The output is the right distributivity morphism <span class="SimpleMath">\((b_1 \oplus \dots \oplus b_n) \otimes a \rightarrow (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a)\)</span>.</p>
+
+<p><a id="X7DBE629F811DEADC" name="X7DBE629F811DEADC"></a></p>
+
+<h5>7.1-33 RightDistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = (b_1 \oplus \dots \oplus b_n) \otimes a\)</span>, a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>, an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(r = (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a)\)</span>. The output is the right distributivity morphism <span class="SimpleMath">\(s \rightarrow r\)</span>.</p>
+
+<p><a id="X7A6178C17EFC817A" name="X7A6178C17EFC817A"></a></p>
+
+<h5>7.1-34 AddRightDistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightDistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightDistributivityExpandingWithGivenObjects</code>. <span class="SimpleMath">\(F: ((b_1 \oplus \dots \oplus b_n) \otimes a, L, a, (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a)) \mapsto \mathrm{RightDistributivityExpandingWithGivenObjects}(L,a)\)</span>.</p>
+
+<p><a id="X86C5C33786C1DC28" name="X86C5C33786C1DC28"></a></p>
+
+<h5>7.1-35 RightDistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityFactoring</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a), (b_1 \oplus \dots \oplus b_n) \otimes a)\)</span></p>
+
+<p>The arguments are a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span> and an object <span class="SimpleMath">\(a\)</span>. The output is the right distributivity morphism <span class="SimpleMath">\((b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a) \rightarrow (b_1 \oplus \dots \oplus b_n) \otimes a \)</span>.</p>
+
+<p><a id="X795267217F7807CE" name="X795267217F7807CE"></a></p>
+
+<h5>7.1-36 RightDistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a)\)</span>, a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>, an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(r = (b_1 \oplus \dots \oplus b_n) \otimes a\)</span>. The output is the right distributivity morphism <span class="SimpleMath">\(s \rightarrow r\)</span>.</p>
+
+<p><a id="X842099557CF2036E" name="X842099557CF2036E"></a></p>
+
+<h5>7.1-37 AddRightDistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightDistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightDistributivityFactoringWithGivenObjects</code>. <span class="SimpleMath">\(F: ((b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a), L, a, (b_1 \oplus \dots \oplus b_n) \otimes a) \mapsto \mathrm{RightDistributivityFactoringWithGivenObjects}(L,a)\)</span>.</p>
 
 <p><a id="X7D94AD967E6D60F1" name="X7D94AD967E6D60F1"></a></p>
 

@@ -119,9 +119,24 @@
   [23XC[123X shall lie.[133X
   
   
-  [1X1.4 [33X[0;0YTool functions[133X[101X
+  [1X1.4 [33X[0;0YLogic switcher[133X[101X
   
-  [1X1.4-1 CanCompute[101X
+  [1X1.4-1 CapCategorySwitchLogicOn[101X
+  
+  [29X[2XCapCategorySwitchLogicOn[102X( [3XC[103X ) [32X function
+  
+  [33X[0;0YActivates the predicate implication logic for the category [3XC[103X.[133X
+  
+  [1X1.4-2 CapCategorySwitchLogicOff[101X
+  
+  [29X[2XCapCategorySwitchLogicOff[102X( [3XC[103X ) [32X function
+  
+  [33X[0;0YDeactivates the predicate implication logic for the category [3XC[103X.[133X
+  
+  
+  [1X1.5 [33X[0;0YTool functions[133X[101X
+  
+  [1X1.5-1 CanCompute[101X
   
   [29X[2XCanCompute[102X( [3XC[103X, [3Xs[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
@@ -131,7 +146,7 @@
   in  [23XC[123X,  the  method  returns [10Xtrue[110X, [10Xfalse[110X otherwise. If the string is not the
   name of a primitive operation, an error is raised.[133X
   
-  [1X1.4-2 CheckConstructivenessOfCategory[101X
+  [1X1.5-2 CheckConstructivenessOfCategory[101X
   
   [29X[2XCheckConstructivenessOfCategory[102X( [3XC[103X, [3Xs[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -142,9 +157,9 @@
   constructively. If [23Xs[123X is not a categorical property, an error is raised.[133X
   
   
-  [1X1.5 [33X[0;0YWell-Definedness of Cells[133X[101X
+  [1X1.6 [33X[0;0YWell-Definedness of Cells[133X[101X
   
-  [1X1.5-1 IsWellDefined[101X
+  [1X1.6-1 IsWellDefined[101X
   
   [29X[2XIsWellDefined[102X( [3Xc[103X ) [32X property
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -153,9 +168,9 @@
   the output is [10Xfalse[110X.[133X
   
   
-  [1X1.6 [33X[0;0YType check[133X[101X
+  [1X1.7 [33X[0;0YType check[133X[101X
   
-  [1X1.6-1 DisableBasicOperationTypeCheck[101X
+  [1X1.7-1 DisableBasicOperationTypeCheck[101X
   
   [29X[2XDisableBasicOperationTypeCheck[102X( [3Xcategory[103X ) [32X function
   [29X[2XEnableBasicOperationTypeCheck[102X( [3Xarg[103X ) [32X function

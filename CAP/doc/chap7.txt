@@ -259,6 +259,131 @@
   [10XRightUnitorInverseWithGivenTensorProduct[110X.   [23XF:  (a,  a  \otimes  1)  \mapsto
   \rho_a^{-1}[123X.[133X
   
+  [1X7.1-26 LeftDistributivityExpanding[101X
+  
+  [29X[2XLeftDistributivityExpanding[102X( [3Xa[103X, [3XL[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a \otimes (b_1 \oplus \dots \oplus
+            b_n), (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n) )[123X[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xa[123X and a list of objects [23XL = (b_1, \dots, b_n)[123X.
+  The  output  is the left distributivity morphism [23Xa \otimes (b_1 \oplus \dots
+  \oplus b_n) \rightarrow (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)[123X.[133X
+  
+  [1X7.1-27 LeftDistributivityExpandingWithGivenObjects[101X
+  
+  [29X[2XLeftDistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
+  
+  [33X[0;0YThe  arguments are an object [23Xs = a \otimes (b_1 \oplus \dots \oplus b_n)[123X, an
+  object  [23Xa[123X,  a  list  of  objects [23XL = (b_1, \dots, b_n)[123X, and an object [23Xr = (a
+  \otimes  b_1)  \oplus  \dots  \oplus (a \otimes b_n)[123X. The output is the left
+  distributivity morphism [23Xs \rightarrow r[123X.[133X
+  
+  [1X7.1-28 AddLeftDistributivityExpandingWithGivenObjects[101X
+  
+  [29X[2XAddLeftDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XLeftDistributivityExpandingWithGivenObjects[110X. [23XF: (a \otimes (b_1 \oplus \dots
+  \oplus  b_n),  a,  L,  (a  \otimes b_1) \oplus \dots \oplus (a \otimes b_n))
+  \mapsto \mathrm{LeftDistributivityExpandingWithGivenObjects}(a,L)[123X.[133X
+  
+  [1X7.1-29 LeftDistributivityFactoring[101X
+  
+  [29X[2XLeftDistributivityFactoring[102X( [3Xa[103X, [3XL[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( (a \otimes b_1) \oplus \dots \oplus (a
+            \otimes b_n), a \otimes (b_1 \oplus \dots \oplus b_n) )[123X[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xa[123X and a list of objects [23XL = (b_1, \dots, b_n)[123X.
+  The  output is the left distributivity morphism [23X(a \otimes b_1) \oplus \dots
+  \oplus (a \otimes b_n) \rightarrow a \otimes (b_1 \oplus \dots \oplus b_n)[123X.[133X
+  
+  [1X7.1-30 LeftDistributivityFactoringWithGivenObjects[101X
+  
+  [29X[2XLeftDistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs  = (a \otimes b_1) \oplus \dots \oplus (a
+  \otimes  b_n)[123X,  an object [23Xa[123X, a list of objects [23XL = (b_1, \dots, b_n)[123X, and an
+  object  [23Xr  = a \otimes (b_1 \oplus \dots \oplus b_n)[123X. The output is the left
+  distributivity morphism [23Xs \rightarrow r[123X.[133X
+  
+  [1X7.1-31 AddLeftDistributivityFactoringWithGivenObjects[101X
+  
+  [29X[2XAddLeftDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XLeftDistributivityFactoringWithGivenObjects[110X.  [23XF:  ((a  \otimes  b_1)  \oplus
+  \dots \oplus (a \otimes b_n), a, L, a \otimes (b_1 \oplus \dots \oplus b_n))
+  \mapsto \mathrm{LeftDistributivityFactoringWithGivenObjects}(a,L)[123X.[133X
+  
+  [1X7.1-32 RightDistributivityExpanding[101X
+  
+  [29X[2XRightDistributivityExpanding[102X( [3XL[103X, [3Xa[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (b_1 \oplus \dots \oplus b_n) \otimes
+            a, (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a) )[123X[133X
+  
+  [33X[0;0YThe  arguments  are a list of objects [23XL = (b_1, \dots, b_n)[123X and an object [23Xa[123X.
+  The  output  is  the  right distributivity morphism [23X(b_1 \oplus \dots \oplus
+  b_n)  \otimes a \rightarrow (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes
+  a)[123X.[133X
+  
+  [1X7.1-33 RightDistributivityExpandingWithGivenObjects[101X
+  
+  [29X[2XRightDistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xs = (b_1 \oplus \dots \oplus b_n) \otimes a[123X, a
+  list  of  objects [23XL = (b_1, \dots, b_n)[123X, an object [23Xa[123X, and an object [23Xr = (b_1
+  \otimes  a)  \oplus  \dots  \oplus  (b_n \otimes a)[123X. The output is the right
+  distributivity morphism [23Xs \rightarrow r[123X.[133X
+  
+  [1X7.1-34 AddRightDistributivityExpandingWithGivenObjects[101X
+  
+  [29X[2XAddRightDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XRightDistributivityExpandingWithGivenObjects[110X.  [23XF:  ((b_1 \oplus \dots \oplus
+  b_n)  \otimes  a, L, a, (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a))
+  \mapsto \mathrm{RightDistributivityExpandingWithGivenObjects}(L,a)[123X.[133X
+  
+  [1X7.1-35 RightDistributivityFactoring[101X
+  
+  [29X[2XRightDistributivityFactoring[102X( [3XL[103X, [3Xa[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( (b_1 \otimes a) \oplus \dots \oplus
+            (b_n \otimes a), (b_1 \oplus \dots \oplus b_n) \otimes a)[123X[133X
+  
+  [33X[0;0YThe  arguments  are a list of objects [23XL = (b_1, \dots, b_n)[123X and an object [23Xa[123X.
+  The output is the right distributivity morphism [23X(b_1 \otimes a) \oplus \dots
+  \oplus (b_n \otimes a) \rightarrow (b_1 \oplus \dots \oplus b_n) \otimes a [123X.[133X
+  
+  [1X7.1-36 RightDistributivityFactoringWithGivenObjects[101X
+  
+  [29X[2XRightDistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object [23Xs = (b_1 \otimes a) \oplus \dots \oplus (b_n
+  \otimes  a)[123X,  a  list  of objects [23XL = (b_1, \dots, b_n)[123X, an object [23Xa[123X, and an
+  object  [23Xr = (b_1 \oplus \dots \oplus b_n) \otimes a[123X. The output is the right
+  distributivity morphism [23Xs \rightarrow r[123X.[133X
+  
+  [1X7.1-37 AddRightDistributivityFactoringWithGivenObjects[101X
+  
+  [29X[2XAddRightDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XRightDistributivityFactoringWithGivenObjects[110X.  [23XF:  ((b_1  \otimes  a) \oplus
+  \dots \oplus (b_n \otimes a), L, a, (b_1 \oplus \dots \oplus b_n) \otimes a)
+  \mapsto \mathrm{RightDistributivityFactoringWithGivenObjects}(L,a)[123X.[133X
+  
   
   [1X7.2 [33X[0;0YBraided Monoidal Categories[133X[101X
   

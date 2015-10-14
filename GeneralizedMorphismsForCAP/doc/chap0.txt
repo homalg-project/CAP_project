@@ -6,10 +6,10 @@
          [1X Implementations of generalized morphisms for the CAP project [101X
   
   
-                                   2015.10.06
+                                   2015.11.03
   
   
-                                   06/10/2015
+                                   03/11/2015
   
   
                                 Sebastian Posur
@@ -66,6 +66,13 @@
       1.4-3 HasFullCodomain
       1.4-4 IsSingleValued
       1.4-5 IsTotal
+    1.5 [33X[0;0YConvenience methods[133X
+      1.5-1 GeneralizedMorphismCategory
+      1.5-2 GeneralizedMorphism
+      1.5-3 GeneralizedMorphismObject
+      1.5-4 AsGeneralizedMorphism
+      1.5-5 GeneralizedMorphismWithRangeAid
+      1.5-6 GeneralizedMorphismWithSourceAid
   2 [33X[0;0YGeneralized Morphism Category by Cospans[133X
     2.1 [33X[0;0YGAP Categories[133X
       2.1-1 IsGeneralizedMorphismCategoryByCospansObject

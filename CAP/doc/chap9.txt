@@ -149,8 +149,8 @@
   record can have the following components, used as described:[133X
   
   [30X    [33X[0;6Yfunction_name:  The  name  of  the  function.  This  does  not have to
-        coincide  with  the  installation  name. It is used for the CanCompute
-        flags, and the derivation weight.[133X
+        coincide  with  the  installation  name. It is used for the derivation
+        weight.[133X
   
   [30X    [33X[0;6Yinstallation_name  (optional):  A  string  which  is  the  name of the
         operation  for  which  the  functions  given  to  the  Add  method are

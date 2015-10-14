@@ -336,9 +336,9 @@
   [10XIsEqualAsFactorobjects[110X.        [23XF:        (\alpha,       \beta)       \mapsto
   \mathtt{IsEqualAsFactorobjects}(\alpha,\beta)[123X.[133X
   
-  [1X3.6-5 Dominates[101X
+  [1X3.6-5 IsDominating[101X
   
-  [29X[2XDominates[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [29X[2XIsDominating[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YIn  short:  Returns  [10Xtrue[110X  iff  [23X\alpha[123X  is  smaller  than  [23X\beta[123X.  [23X\\  [123X Full
@@ -347,18 +347,18 @@
   a \rightarrow b[123X such that [23X\beta \circ \iota \sim_{a,c} \alpha[123X, otherwise the
   output is [10Xfalse[110X.[133X
   
-  [1X3.6-6 AddDominates[101X
+  [1X3.6-6 AddIsDominating[101X
   
-  [29X[2XAddDominates[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [29X[2XAddIsDominating[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
-  given  function  [23XF[123X  to  the  category  for the basic operation [10XDominates[110X. [23XF:
-  (\alpha, \beta) \mapsto \mathtt{Dominates}(\alpha,\beta)[123X.[133X
+  given  function  [23XF[123X  to the category for the basic operation [10XIsDominating[110X. [23XF:
+  (\alpha, \beta) \mapsto \mathtt{IsDominating}(\alpha,\beta)[123X.[133X
   
-  [1X3.6-7 Codominates[101X
+  [1X3.6-7 IsCodominating[101X
   
-  [29X[2XCodominates[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [29X[2XIsCodominating[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YIn  short:  Returns  [10Xtrue[110X  iff  [23X\alpha[123X  is  smaller  than  [23X\beta[123X.  [23X\\  [123X Full
@@ -367,14 +367,14 @@
   b \rightarrow a[123X such that [23X\iota \circ \beta \sim_{c,a} \alpha[123X, otherwise the
   output is [10Xfalse[110X.[133X
   
-  [1X3.6-8 AddCodominates[101X
+  [1X3.6-8 AddIsCodominating[101X
   
-  [29X[2XAddCodominates[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [29X[2XAddIsCodominating[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
-  given  function  [23XF[123X  to  the category for the basic operation [10XCodominates[110X. [23XF:
-  (\alpha, \beta) \mapsto \mathtt{Codominates}(\alpha,\beta)[123X.[133X
+  given  function [23XF[123X to the category for the basic operation [10XIsCodominating[110X. [23XF:
+  (\alpha, \beta) \mapsto \mathtt{IsCodominating}(\alpha,\beta)[123X.[133X
   
   
   [1X3.7 [33X[0;0YIdentity Morphism and Composition of Morphisms[133X[101X
