@@ -15,7 +15,7 @@
 ####################################
 
 DeclareCategory( "IsLeftOrRightActionObject",
-                 IsCapCategoryObject );
+                 IsCategoryWithAttributesObject );
 
 DeclareCategory( "IsLeftActionObject",
                  IsLeftOrRightActionObject );

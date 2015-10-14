@@ -20,7 +20,8 @@ InstallMethod( LeftActionsCategory,
                [ IsCapCategoryObject ],
                
   function( acting_object )
-    local underlying_monoidal_category, left_actions_category;
+    local underlying_monoidal_category, preconditions, category_weight_list, i,
+          structure_record, left_actions_category, identity_of_acting_object;
     
     underlying_monoidal_category := CapCategory( acting_object );
     
@@ -32,11 +33,112 @@ InstallMethod( LeftActionsCategory,
       
       Error( "the underlying category has to be a monoidal category" );
       
+    elif not IsAdditiveCategory( underlying_monoidal_category ) then
+      
+      ## TODO: support the general case
+      Error( "only additive categories are supported yet" );
+      
     fi;
     
-    left_actions_category := CreateCapCategory( Concatenation( "Category of left actions of <",
-                                                               String( acting_object ),
-                                                               ">" ) );
+    structure_record := rec(
+      underlying_category := underlying_monoidal_category,
+      object_type := TheTypeOfLeftActionObjects,
+      morphism_type := TheTypeOfLeftActionMorphisms,
+      category_name := Concatenation( "Category of left actions of <", String( acting_object ), ">" ) 
+    );
+    
+    category_weight_list := underlying_monoidal_category!.derivations_weight_list;
+    
+    ## Left action for ZeroObject
+    preconditions := [ "UniversalMorphismIntoZeroObject",
+                       "TensorProductOnObjects" ];
+    
+    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, i ) < infinity ) then
+        
+        structure_record.ZeroObject :=
+          function( underlying_zero_object )
+              
+              return [ UniversalMorphismIntoZeroObject( TensorProductOnObjects( acting_object, underlying_zero_object ) ) ];
+              
+          end;
+    fi;
+    
+    ## Left action for DirectSum
+    preconditions := [ "LeftDistributivityExpanding",
+                       "DirectSum", #belongs to LeftDistributivityExpanding
+                       "DirectSumFunctorial",
+                       "PreCompose" ];
+    
+    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, i ) < infinity ) then
+        
+        structure_record.DirectSum :=
+          function( obj_list, underlying_direct_sum )
+            local left_action_list, underlying_obj_list, structure_morphism;
+            
+            left_action_list := List( obj_list, obj -> ObjectAttributesAsList( obj )[1] );
+            
+            underlying_obj_list := List( obj_list, UnderlyingCell );
+            
+            structure_morphism := 
+              PreCompose( LeftDistributivityExpanding( acting_object, underlying_obj_list ), DirectSumFunctorial( left_action_list ) );
+            
+            return [ structure_morphism ];
+            
+          end;
+        
+    fi;
+    
+    ## Lift left action along monomorphism
+    preconditions := [ "IdentityMorphism",
+                       "PreCompose",
+                       "TensorProductOnMorphisms",
+                       "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
+                       "LiftAlongMonomorphism" ];
+    
+    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, i ) < infinity ) then
+        
+        identity_of_acting_object := IdentityMorphism( acting_object );
+        
+        structure_record.Lift :=
+          function( mono, range )
+            local action_range, to_be_lifted;
+            
+            action_range := ObjectAttributesAsList( range )[1];
+            
+            to_be_lifted := PreCompose( TensorProductOnMorphisms( identity_of_acting_object, mono ), action_range );
+            
+            return [ LiftAlongMonomorphism( mono, to_be_lifted ) ];
+            
+          end;
+        
+    fi;
+    
+    ## Colift left action along epimorphism
+    preconditions := [ "IdentityMorphism",
+                       "PreCompose",
+                       "TensorProductOnMorphisms",
+                       "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
+                       "ColiftAlongEpimorphism" ];
+    
+    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, i ) < infinity ) then
+        
+        identity_of_acting_object := IdentityMorphism( acting_object );
+        
+        structure_record.Colift :=
+          function( epi, source )
+            local action_source, to_be_colifted;
+            
+            action_source := ObjectAttributesAsList( source )[1];
+            
+            to_be_colifted := PreCompose( action_source, TensorProductOnMorphisms( identity_of_acting_object, epi ) );
+            
+            return [ ColiftAlongEpimorphism( epi, to_be_colifted ) ];
+            
+          end;
+        
+    fi;
+    
+    left_actions_category := CreateCategoryWithAttributes( structure_record );
     
     left_actions_category!.acting_object := acting_object;
     
@@ -151,111 +253,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         
     end );
     
-    ##
-    needed_basic_operations := [ "IdentityMorphism" ];
-    
-    if ForAll( needed_basic_operations,
-               basic_operation -> CurrentOperationWeight( category_weight_list, basic_operation ) < infinity ) then
-      
-      AddIdentityMorphism( category,
-        function( action_object )
-          
-          return ActionMorphism( action_object,
-                                 IdentityMorphism( ActionDomain( action_object ) ),
-                                 action_object );
-          
-      end );
-    
-    fi;
-    
-    ##
-    needed_basic_operations := [ "PreCompose" ];
-    
-    if ForAll( needed_basic_operations,
-               basic_operation -> CurrentOperationWeight( category_weight_list, basic_operation ) < infinity ) then
-      
-      AddPreCompose( category,
-        function( morphism_1, morphism_2 )
-          
-          return ActionMorphism( Source( morphism_1 ),
-                                 PreCompose( UnderlyingMorphism( morphism_1 ), UnderlyingMorphism( morphism_2 ) ),
-                                 Range( morphism_2 ) );
-          
-      end );
-      
-    fi;
-    
-    
 end );
 
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
   
   function( left_actions_category )
-    
-    ##
-    AddDirectProduct( left_actions_category,
-      function( diagram )
-        local underlying_objects_diagram, direct_product_underlying_object_projections,
-              length, identity_of_acting_object, structure_morphism;
-        
-        underlying_objects_diagram :=
-          List( diagram, ActionDomain );
-        
-        length := Length( diagram );
-        
-        direct_product_underlying_object_projections :=
-          List( [ 1 .. length ],
-                i -> ProjectionInFactorOfDirectProduct(
-                       underlying_objects_diagram,
-                       i ) );
-        
-        identity_of_acting_object := IdentityMorphism( left_actions_category!.acting_object );
-        
-        structure_morphism :=
-          UniversalMorphismIntoDirectProduct(
-            underlying_objects_diagram,
-            List( [ 1 .. length ],
-                  i -> PreCompose(
-                         TensorProductOnMorphisms( identity_of_acting_object, 
-                                                   direct_product_underlying_object_projections[i] ),
-                         StructureMorphism( diagram[i] )
-                       )
-            )
-        );
-        
-        return LeftActionObject( structure_morphism, left_actions_category!.acting_object );
-        
-    end );
-    
-    ##
-    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( left_actions_category,
-      function( diagram, projection_number, direct_product )
-        local underlying_projection;
-        
-        underlying_projection := ProjectionInFactorOfDirectProduct(
-                                   List( diagram, ActionDomain ), projection_number );
-        
-        return ActionMorphism( direct_product,
-                               underlying_projection,
-                               diagram[ projection_number ] );
-        
-    end );
-    
-    ##
-    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( left_actions_category,
-      function( diagram, test_source, direct_product )
-        local underlying_universal_morphism;
-        
-        underlying_universal_morphism := UniversalMorphismIntoDirectProduct(
-                                           List( diagram, ActionDomain ),
-                                           List( test_source, UnderlyingMorphism ) );
-        
-        return ActionMorphism( Source( test_source[1] ),
-                               underlying_universal_morphism,
-                               direct_product );
-        
-    end );
     
 end );
 
