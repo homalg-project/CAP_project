@@ -2,12 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>CAP project</title>
+    <title>GAP package {{ site.data.packageCAP.name }}</title>
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/styles.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/pygment_trac.css">
     <script type="text/javascript"
-      src="javascripts/scale.fix.js">
+      src="../javascripts/scale.fix.js">
     </script>
     <script type="text/javascript"
       src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -21,11 +21,19 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="header">CAP project</h1>
-        <p class="header">Website of the CAP project</p>
+        <h1 class="header">{{ site.data.packageCAP.name }}</h1>
+        <p class="header">{{ site.data.packageCAP.description }}</p>
+        <p class="header">Version {{site.data.packageCAP.version}}</p>
 
         <ul>
-          <li><a class="buttons github" href="https://github.com/homalg-project/CAP_project">View On GitHub</a></li>
+          {% for item in site.data.packageCAP.downloads %}
+          <li class="download"><a class="buttons" href="{{ item.url }}">Download {{ item.name }}</a></li>
+          {% endfor %}
+          {% if site.github.repository_url %}
+          <li><a class="buttons github" href="{{ site.github.repository_url }}">View On GitHub</a></li>
+          {% elsif site.data.package.github %}
+          <li><a class="buttons github" href="{{ site.data.packageCAP.github }}">View On GitHub</a></li>
+          {% endif %}
         </ul>
 
         <p class="header">This project is maintained by

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (CAP) - Chapter 1: CAP Categories</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
+<p><a id="X7C99ABCB7DEEDE2A" name="X7C99ABCB7DEEDE2A"></a></p>
+<div class="ChapSects"><a href="chap1.html#X7C99ABCB7DEEDE2A">1 <span class="Heading">CAP Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7CC6903E78F24167">1.1 <span class="Heading">Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X852A10417EEF5D0E">1.1-1 IsCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7CCB83B285177E82">1.1-2 IsCapCategoryCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DAEF54180094D1E">1.1-3 IsCapCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86DA006A7B9D3EB9">1.1-4 IsCapCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F3B964286D98710">1.1-5 IsCapCategoryTwoCell</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7ABF649E831D4D8E">1.2 <span class="Heading">Constructor</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86EDB84D7E3F0194">1.2-1 CreateCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X854CC42E828C120D">1.2-2 CreateCapCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X79CE135F7E6EBFEE">1.3 <span class="Heading">Internal Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C7B1EAF7D786508">1.3-1 CategoryFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E88D5D3860AF854">1.3-2 CellFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BD6E2B887F86E9C">1.3-3 ObjectFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F62E0C47C778CBB">1.3-4 MorphismFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X850D0E978090D0C0">1.3-5 TwoCellFilter</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A15CCB67FBCF3E3">1.4 <span class="Heading">Tool functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X851D0435816DDB40">1.4-1 CanCompute</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7ACB9FFA84476BA0">1.4-2 CheckConstructivenessOfCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7DB3D2BD8792ABBC">1.5 <span class="Heading">Well-Definedness of Cells</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X839EA4D7805D4F97">1.5-1 IsWellDefined</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X83E6CD177C796894">1.6 <span class="Heading">Type check</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8747655184DF9BED">1.6-1 DisableBasicOperationTypeCheck</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">CAP Categories</span></h3>
+
+<p>Categories are the main GAP objects in CAP. They are used to associate GAP objects which represent objects and morphisms with their category. By associating a GAP object to the category, one of two filters belonging to the category (ObjectFilter/MorphismFilter) are set to true. Via Add methods, functions for specific existential quantifiers can be associated to the category and after that can be applied to GAP objects in the category. A GAP category object also knows which constructions are currently possible in this category.</p>
+
+<p><a id="X7CC6903E78F24167" name="X7CC6903E78F24167"></a></p>
+
+<h4>1.1 <span class="Heading">Categories</span></h4>
+
+<p><a id="X852A10417EEF5D0E" name="X852A10417EEF5D0E"></a></p>
+
+<h5>1.1-1 IsCapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP categories. Objects of this type handle the CAP category information, the caching, and filters for objects in the CAP category. Please note that the object itself is not related to methods, you only need it as a handler and a presentation of the CAP category.</p>
+
+<p><a id="X7CCB83B285177E82" name="X7CCB83B285177E82"></a></p>
+
+<h5>1.1-2 IsCapCategoryCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryCell</code>( <var class="Arg">object</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP category cells. Every object, morphism, and <span class="Math">2</span>-cell of a CAP category lies in this GAP category.</p>
+
+<p><a id="X7DAEF54180094D1E" name="X7DAEF54180094D1E"></a></p>
+
+<h5>1.1-3 IsCapCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryObject</code>( <var class="Arg">object</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP category objects. Every object of a CAP category lies in this GAP category.</p>
+
+<p><a id="X86DA006A7B9D3EB9" name="X86DA006A7B9D3EB9"></a></p>
+
+<h5>1.1-4 IsCapCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP category morphisms. Every morphism of a CAP category lies in this GAP category.</p>
+
+<p><a id="X7F3B964286D98710" name="X7F3B964286D98710"></a></p>
+
+<h5>1.1-5 IsCapCategoryTwoCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryTwoCell</code>( <var class="Arg">object</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP category <span class="Math">2</span>-cells. Every <span class="Math">2</span>-cell of a CAP category lies in this GAP category.</p>
+
+<p><a id="X7ABF649E831D4D8E" name="X7ABF649E831D4D8E"></a></p>
+
+<h4>1.2 <span class="Heading">Constructor</span></h4>
+
+<p><a id="X86EDB84D7E3F0194" name="X86EDB84D7E3F0194"></a></p>
+
+<h5>1.2-1 CreateCapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapCategory</code>(  )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>Creates a new CAP category from scratch. It gets a generic name.</p>
+
+<p><a id="X854CC42E828C120D" name="X854CC42E828C120D"></a></p>
+
+<h5>1.2-2 CreateCapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapCategory</code>( <var class="Arg">s</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a string <span class="Math">s</span>. This operation creates a new CAP category from scratch. Its name is set to <span class="Math">s</span>.</p>
+
+<p><a id="X79CE135F7E6EBFEE" name="X79CE135F7E6EBFEE"></a></p>
+
+<h4>1.3 <span class="Heading">Internal Attributes</span></h4>
+
+<p>Each category <span class="Math">C</span> stores various filters. They are used to apply the right functions in the method selection.</p>
+
+<p><a id="X7C7B1EAF7D786508" name="X7C7B1EAF7D786508"></a></p>
+
+<h5>1.3-1 CategoryFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which <span class="Math">C</span> lies.</p>
+
+<p><a id="X7E88D5D3860AF854" name="X7E88D5D3860AF854"></a></p>
+
+<h5>1.3-2 CellFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CellFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which all cells of <span class="Math">C</span> shall lie.</p>
+
+<p><a id="X7BD6E2B887F86E9C" name="X7BD6E2B887F86E9C"></a></p>
+
+<h5>1.3-3 ObjectFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which all objects of <span class="Math">C</span> shall lie.</p>
+
+<p><a id="X7F62E0C47C778CBB" name="X7F62E0C47C778CBB"></a></p>
+
+<h5>1.3-4 MorphismFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which all morphisms of <span class="Math">C</span> shall lie.</p>
+
+<p><a id="X850D0E978090D0C0" name="X850D0E978090D0C0"></a></p>
+
+<h5>1.3-5 TwoCellFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TwoCellFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which all <span class="Math">2</span>-cells of <span class="Math">C</span> shall lie.</p>
+
+<p><a id="X7A15CCB67FBCF3E3" name="X7A15CCB67FBCF3E3"></a></p>
+
+<h4>1.4 <span class="Heading">Tool functions</span></h4>
+
+<p><a id="X851D0435816DDB40" name="X851D0435816DDB40"></a></p>
+
+<h5>1.4-1 CanCompute</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanCompute</code>( <var class="Arg">C</var>, <var class="Arg">s</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The argument is a category <span class="Math">C</span> and a string <span class="Math">s</span>, which should be the name of a primitive operation, e.g., PreCompose. If applying this method is possible in <span class="Math">C</span>, the method returns <code class="code">true</code>, <code class="code">false</code> otherwise. If the string is not the name of a primitive operation, an error is raised.</p>
+
+<p><a id="X7ACB9FFA84476BA0" name="X7ACB9FFA84476BA0"></a></p>
+
+<h5>1.4-2 CheckConstructivenessOfCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CheckConstructivenessOfCategory</code>( <var class="Arg">C</var>, <var class="Arg">s</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a string <span class="Math">s</span>. If <span class="Math">s</span> is a categorical property (e.g. <code class="code">"IsAbelianCategory"</code>), the output is a list of strings with basic operations which are missing in <span class="Math">C</span> to have the categorical property constructively. If <span class="Math">s</span> is not a categorical property, an error is raised.</p>
+
+<p><a id="X7DB3D2BD8792ABBC" name="X7DB3D2BD8792ABBC"></a></p>
+
+<h4>1.5 <span class="Heading">Well-Definedness of Cells</span></h4>
+
+<p><a id="X839EA4D7805D4F97" name="X839EA4D7805D4F97"></a></p>
+
+<h5>1.5-1 IsWellDefined</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWellDefined</code>( <var class="Arg">c</var> )</td><td class="tdright">( property )</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a cell <span class="Math">c</span>. The output is <code class="code">true</code> if <span class="Math">c</span> is well-defined, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X83E6CD177C796894" name="X83E6CD177C796894"></a></p>
+
+<h4>1.6 <span class="Heading">Type check</span></h4>
+
+<p><a id="X8747655184DF9BED" name="X8747655184DF9BED"></a></p>
+
+<h5>1.6-1 DisableBasicOperationTypeCheck</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisableBasicOperationTypeCheck</code>( <var class="Arg">category</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableBasicOperationTypeCheck</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Most basic operations have a prefunction, which does a (sometimes partial) typecheck at the beginning of the operation. These functions enable or disable this check for a category. (Enabled by default)</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

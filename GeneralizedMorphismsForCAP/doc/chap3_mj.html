@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (GeneralizedMorphismsForCAP) - Chapter 3: Generalized Morphism Category by Spans</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap3"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap3.html">[MathJax off]</a></p>
+<p><a id="X7D54782279124748" name="X7D54782279124748"></a></p>
+<div class="ChapSects"><a href="chap3_mj.html#X7D54782279124748">3 <span class="Heading">Generalized Morphism Category by Spans</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7D03633A7D98026B">3.1 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78F2B8E882ECF61E">3.1-1 IsGeneralizedMorphismCategoryBySpansObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A5BDCEE78549DFB">3.1-2 IsGeneralizedMorphismBySpan</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X871597447BB998A1">3.2 <span class="Heading">Properties</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A058F5C7F7116DB">3.2-1 HasIdentityAsReversedArrow</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7C701DBF7BAE649A">3.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BDCF7FD7EAE01C3">3.3-1 UnderlyingHonestObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83C847FC86AB508B">3.3-2 Arrow</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X826CC0B57D6F7F3B">3.3-3 ReversedArrow</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8082EEE27FB449E5">3.3-4 NormalizedSpanTuple</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X878EE24487756BD4">3.3-5 PseudoInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X800786037C19DEF5">3.3-6 GeneralizedInverseBySpan</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B8C00217DD3A64C">3.3-7 IdempotentDefinedBySubobjectBySpan</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82D0B42E8413A5FE">3.3-8 IdempotentDefinedByFactorobjectBySpan</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86499E0D83A9D090">3.3-9 NormalizedSpan</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DE8E16C7C2D387B">3.4 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D3675B0866191EC">3.4-1 GeneralizedMorphismFromFactorToSubobjectBySpan</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X86EC0F0A78ECBC10">3.5 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83FA5A4C787261DB">3.5-1 GeneralizedMorphismBySpan</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EAF87447D2A08EE">3.5-2 GeneralizedMorphismBySpan</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79A8B50C7EB5ADE2">3.5-3 GeneralizedMorphismBySpanWithRangeAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79C48BB782BD799F">3.5-4 AsGeneralizedMorphismBySpan</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X812CBF7580098CCF">3.5-5 GeneralizedMorphismCategoryBySpans</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X817694F38145FD9F">3.5-6 GeneralizedMorphismBySpansObject</a></span>
+</div></div>
+</div>
+
+<h3>3 <span class="Heading">Generalized Morphism Category by Spans</span></h3>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>3.1 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X78F2B8E882ECF61E" name="X78F2B8E882ECF61E"></a></p>
+
+<h5>3.1-1 IsGeneralizedMorphismCategoryBySpansObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGeneralizedMorphismCategoryBySpansObject</code>( <var class="Arg">object</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of objects in the generalized morphism category by spans.</p>
+
+<p><a id="X7A5BDCEE78549DFB" name="X7A5BDCEE78549DFB"></a></p>
+
+<h5>3.1-2 IsGeneralizedMorphismBySpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGeneralizedMorphismBySpan</code>( <var class="Arg">object</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of morphisms in the generalized morphism category by spans.</p>
+
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
+
+<h4>3.2 <span class="Heading">Properties</span></h4>
+
+<p><a id="X7A058F5C7F7116DB" name="X7A058F5C7F7116DB"></a></p>
+
+<h5>3.2-1 HasIdentityAsReversedArrow</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HasIdentityAsReversedArrow</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( property )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The argument is a generalized morphism <span class="SimpleMath">\(\alpha\)</span> by a span <span class="SimpleMath">\(a \leftarrow b \rightarrow c\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(a \leftarrow b\)</span> is congruent to an identity morphism, <code class="code">false</code> otherwise.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>3.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7BDCF7FD7EAE01C3" name="X7BDCF7FD7EAE01C3"></a></p>
+
+<h5>3.3-1 UnderlyingHonestObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingHonestObject</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: an object in <span class="SimpleMath">\(\mathbf{A}\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span> in the generalized morphism category by spans. The output is its underlying honest object.</p>
+
+<p><a id="X83C847FC86AB508B" name="X83C847FC86AB508B"></a></p>
+
+<h5>3.3-2 Arrow</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Arrow</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{A}}(b,c)\)</span></p>
+
+<p>The argument is a generalized morphism <span class="SimpleMath">\(\alpha\)</span> by a span <span class="SimpleMath">\(a \leftarrow b \rightarrow c\)</span>. The output is its arrow <span class="SimpleMath">\(b \rightarrow c\)</span>.</p>
+
+<p><a id="X826CC0B57D6F7F3B" name="X826CC0B57D6F7F3B"></a></p>
+
+<h5>3.3-3 ReversedArrow</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReversedArrow</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{A}}(b,a)\)</span></p>
+
+<p>The argument is a generalized morphism <span class="SimpleMath">\(\alpha\)</span> by a span <span class="SimpleMath">\(a \leftarrow b \rightarrow c\)</span>. The output is its reversed arrow <span class="SimpleMath">\(a \leftarrow b\)</span>.</p>
+
+<p><a id="X8082EEE27FB449E5" name="X8082EEE27FB449E5"></a></p>
+
+<h5>3.3-4 NormalizedSpanTuple</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalizedSpanTuple</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a pair of morphisms in <span class="SimpleMath">\(\mathbf{A}\)</span>.</p>
+
+<p>The argument is a generalized morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> by a span. The output is its normalized span pair <span class="SimpleMath">\((a \leftarrow d, d \rightarrow b)\)</span>.</p>
+
+<p><a id="X878EE24487756BD4" name="X878EE24487756BD4"></a></p>
+
+<h5>3.3-5 PseudoInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PseudoInverse</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(b,a)\)</span></p>
+
+<p>The argument is a generalized morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> by a span. The output is its pseudo inverse <span class="SimpleMath">\(b \rightarrow a\)</span>.</p>
+
+<p><a id="X800786037C19DEF5" name="X800786037C19DEF5"></a></p>
+
+<h5>3.3-6 GeneralizedInverseBySpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedInverseBySpan</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(b,a)\)</span></p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b \in \mathbf{A}\)</span>. The output is its generalized inverse <span class="SimpleMath">\(b \rightarrow a\)</span> by span.</p>
+
+<p><a id="X7B8C00217DD3A64C" name="X7B8C00217DD3A64C"></a></p>
+
+<h5>3.3-7 IdempotentDefinedBySubobjectBySpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdempotentDefinedBySubobjectBySpan</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(b,b)\)</span></p>
+
+<p>The argument is a subobject <span class="SimpleMath">\(\alpha: a \hookrightarrow b \in \mathbf{A}\)</span>. The output is the idempotent <span class="SimpleMath">\(b \rightarrow b \in \mathbf{G(A)}\)</span> by span defined by <span class="SimpleMath">\(\alpha\)</span>.</p>
+
+<p><a id="X82D0B42E8413A5FE" name="X82D0B42E8413A5FE"></a></p>
+
+<h5>3.3-8 IdempotentDefinedByFactorobjectBySpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdempotentDefinedByFactorobjectBySpan</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(b,b)\)</span></p>
+
+<p>The argument is a factorobject <span class="SimpleMath">\(\alpha: b \twoheadrightarrow a \in \mathbf{A}\)</span>. The output is the idempotent <span class="SimpleMath">\(b \rightarrow b \in \mathbf{G(A)}\)</span> by span defined by <span class="SimpleMath">\(\alpha\)</span>.</p>
+
+<p><a id="X86499E0D83A9D090" name="X86499E0D83A9D090"></a></p>
+
+<h5>3.3-9 NormalizedSpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalizedSpan</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(a,b)\)</span></p>
+
+<p>The argument is a generalized morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> by a span. The output is its normalization by span.</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>3.4 <span class="Heading">Operations</span></h4>
+
+<p><a id="X7D3675B0866191EC" name="X7D3675B0866191EC"></a></p>
+
+<h5>3.4-1 GeneralizedMorphismFromFactorToSubobjectBySpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismFromFactorToSubobjectBySpan</code>( <var class="Arg">beta</var>, <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(c,a)\)</span></p>
+
+<p>The arguments are a a factorobject <span class="SimpleMath">\(\beta: b \twoheadrightarrow c\)</span>, and a subobject <span class="SimpleMath">\(\alpha: a \hookrightarrow b\)</span>. The output is the generalized morphism by span from the factorobject to the subobject.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>3.5 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X83FA5A4C787261DB" name="X83FA5A4C787261DB"></a></p>
+
+<h5>3.5-1 GeneralizedMorphismBySpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismBySpan</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(a,b)\)</span></p>
+
+<p>The arguments are morphisms <span class="SimpleMath">\(\alpha: a \leftarrow c\)</span> and <span class="SimpleMath">\(\beta: c \rightarrow b\)</span> in <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is a generalized morphism by span with arrow <span class="SimpleMath">\(\beta\)</span> and reversed arrow <span class="SimpleMath">\(\alpha\)</span>.</p>
+
+<p><a id="X7EAF87447D2A08EE" name="X7EAF87447D2A08EE"></a></p>
+
+<h5>3.5-2 GeneralizedMorphismBySpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismBySpan</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(a,d)\)</span></p>
+
+<p>The arguments are morphisms <span class="SimpleMath">\(\alpha: a \leftarrow b\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>, and <span class="SimpleMath">\(\gamma: c \leftarrow d\)</span> in <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is a generalized morphism by span defined by the composition the given three arrows regarded as generalized morphisms.</p>
+
+<p><a id="X79A8B50C7EB5ADE2" name="X79A8B50C7EB5ADE2"></a></p>
+
+<h5>3.5-3 GeneralizedMorphismBySpanWithRangeAid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismBySpanWithRangeAid</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(a,c)\)</span></p>
+
+<p>The arguments are morphisms <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>, and <span class="SimpleMath">\(\beta: b \leftarrow c\)</span> in <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is a generalized morphism by span defined by the composition the given two arrows regarded as generalized morphisms.</p>
+
+<p><a id="X79C48BB782BD799F" name="X79C48BB782BD799F"></a></p>
+
+<h5>3.5-4 AsGeneralizedMorphismBySpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsGeneralizedMorphismBySpan</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(a,b)\)</span></p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> in <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is the honest generalized morphism by span defined by <span class="SimpleMath">\(\alpha\)</span>.</p>
+
+<p><a id="X812CBF7580098CCF" name="X812CBF7580098CCF"></a></p>
+
+<h5>3.5-5 GeneralizedMorphismCategoryBySpans</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismCategoryBySpans</code>( <var class="Arg">A</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is an abelian category <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is its generalized morphism category <span class="SimpleMath">\(\mathbf{G(A)}\)</span> by spans.</p>
+
+<p><a id="X817694F38145FD9F" name="X817694F38145FD9F"></a></p>
+
+<h5>3.5-6 GeneralizedMorphismBySpansObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismBySpansObject</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: an object in <span class="SimpleMath">\(\mathbf{G(A)}\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span> in an abelian category <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is the object in the generalized morphism category by spans whose underlying honest object is <span class="SimpleMath">\(a\)</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

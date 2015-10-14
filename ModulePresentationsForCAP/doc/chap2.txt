@@ -1,0 +1,85 @@
+  
+  [1X2 [33X[0;0YExamples and Tests[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YIntersection of Submodules[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();;[127X[104X
+    [4X[25Xgap>[125X [27XR := Q * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27XF := AsLeftPresentation( HomalgMatrix( [ [ 0 ] ], R ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XI1 := AsLeftPresentation( HomalgMatrix( [ [ "x" ] ], R ) );;[127X[104X
+    [4X[25Xgap>[125X [27XI2 := AsLeftPresentation( HomalgMatrix( [ [ "y" ] ], R ) );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( I1 );[127X[104X
+    [4X[28Xx[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( I2 );[127X[104X
+    [4X[28Xy[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27Xeps1 := PresentationMorphism( F, HomalgMatrix( [ [ 1 ] ], R ), I1 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xeps2 := PresentationMorphism( F, HomalgMatrix( [ [ 1 ] ], R ), I2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xkernelemb1 := KernelEmbedding( eps1 );[127X[104X
+    [4X[28X<A mono morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xkernelemb2 := KernelEmbedding( eps2 );[127X[104X
+    [4X[28X<A mono morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XP := FiberProduct( kernelemb1, kernelemb2 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
+    [4X[28X(an empty 0 x 1 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27Xpi1 := ProjectionInFactor( P, 1 );[127X[104X
+    [4X[28X<A mono morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xcomposite := PreCompose( pi1, kernelemb1 );[127X[104X
+    [4X[28X<A mono morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( composite );[127X[104X
+    [4X[28Xx*y[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA mono morphism in Category of left presentations of Q[x,y][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.2 [33X[0;0YClosed Monoidal Structure[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27XM := AsLeftPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, R ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XN := AsLeftPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, R ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XT := TensorProductOnObjects( M, N );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28X[ [  3 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in Category of left presentations of Z[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( T );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XH := InternalHomOnObjects( DirectSum( M, M ), DirectSum( M, N ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( H );[127X[104X
+    [4X[28X[ [   0,   0,   0,  -2 ],[128X[104X
+    [4X[28X  [   1,   2,   0,   0 ],[128X[104X
+    [4X[28X  [   0,   2,   2,   0 ],[128X[104X
+    [4X[28X  [   2,   3,   0,   2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in Category of left presentations of Z[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := StandardGeneratorMorphism( H, 3 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xl := LambdaElimination( DirectSum( M, M ), DirectSum( M, N ), alpha );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( l );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( l );[127X[104X
+    [4X[28X[ [  -2,   6 ],[128X[104X
+    [4X[28X  [  -1,  -3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of left presentations of Z[128X[104X
+  [4X[32X[104X
+  

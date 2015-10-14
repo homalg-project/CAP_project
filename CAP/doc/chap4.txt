@@ -1,0 +1,142 @@
+  
+  [1X4 [33X[0;0YObjects[133X[101X
+  
+  [33X[0;0YAny  GAP  object which is IsCapCategoryObject can be added to a category and
+  then  becomes an object in this category. Any object can belong to one or no
+  category. After a GAP object is added to the category, it knows which things
+  can  be  computed in its category and to which category it belongs. It knows
+  categorial  properties  and  attributes,  and  the functions for existential
+  quantifiers can be applied to the object.[133X
+  
+  
+  [1X4.1 [33X[0;0YAttributes for the Type of Objects[133X[101X
+  
+  [1X4.1-1 CapCategory[101X
+  
+  [29X[2XCapCategory[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument is an object [23Xa[123X. The output is the category [23X\mathbf{C}[123X to which
+  [23Xa[123X was added.[133X
+  
+  
+  [1X4.2 [33X[0;0YEquality for Objects[133X[101X
+  
+  [1X4.2-1 IsEqualForObjects[101X
+  
+  [29X[2XIsEqualForObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [23Xa[123X  and  [23Xb[123X.  The  output is [10Xtrue[110X if [23Xa = b[123X,
+  otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X4.2-2 AddIsEqualForObjects[101X
+  
+  [29X[2XAddIsEqualForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XIsEqualForObjects[110X.
+  [23XF: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)[123X.[133X
+  
+  
+  [1X4.3 [33X[0;0YCategorical Properties of Objects[133X[101X
+  
+  [1X4.3-1 AddIsProjective[101X
+  
+  [29X[2XAddIsProjective[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XIsProjective[110X. [23XF: a
+  \mapsto \mathtt{IsProjective}(a)[123X.[133X
+  
+  [1X4.3-2 AddIsInjective[101X
+  
+  [29X[2XAddIsInjective[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X to the category for the basic operation [10XIsInjective[110X. [23XF: a
+  \mapsto \mathtt{IsInjective}(a)[123X.[133X
+  
+  [1X4.3-3 AddIsTerminal[101X
+  
+  [29X[2XAddIsTerminal[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to the category for the basic operation [10XIsTerminal[110X. [23XF: a
+  \mapsto \mathtt{IsTerminal}(a)[123X.[133X
+  
+  [1X4.3-4 AddIsInitial[101X
+  
+  [29X[2XAddIsInitial[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to  the category for the basic operation [10XIsInitial[110X. [23XF: a
+  \mapsto \mathtt{IsInitial}(a)[123X.[133X
+  
+  [1X4.3-5 IsZeroForObjects[101X
+  
+  [29X[2XIsZeroForObjects[102X( [3Xa[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xa[123X of a category [23X\mathbf{C}[123X. The output is [10Xtrue[110X if
+  [23Xa[123X  is  isomorphic  to the zero object of [23X\mathbf{C}[123X, otherwise the output is
+  [10Xfalse[110X.[133X
+  
+  [1X4.3-6 AddIsZeroForObjects[101X
+  
+  [29X[2XAddIsZeroForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X to the category for the basic operation [10XIsZeroForObjects[110X.
+  [23XF: a \mapsto \mathtt{IsZeroForObjects}(a)[123X.[133X
+  
+  
+  [1X4.4 [33X[0;0YTool functions for caches[133X[101X
+  
+  [1X4.4-1 IsEqualForCacheForObjects[101X
+  
+  [29X[2XIsEqualForCacheForObjects[102X( [3Xphi[103X, [3Xpsi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YCompares two objects in the cache[133X
+  
+  [1X4.4-2 AddIsEqualForCacheForObjects[101X
+  
+  [29X[2XAddIsEqualForCacheForObjects[102X( [3Xc[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynorthing[133X
+  
+  [33X[0;0YBy  default,  CAP uses caches to store the values of Categorical operations.
+  To  get  a value out of the cache, one needs to compare the input of a basic
+  operation  with  its  previous  input.  To  compare objects in the category,
+  IsEqualForCacheForObject   is   used.  By  default  this  is  an  alias  for
+  IsEqualForObjects,  where  fail  is  substituted  by  false.  If  you  add a
+  function,  this  function  used  instead.  A function [23XF: a,b \mapsto bool[123X is
+  expected  here.  The  output has to be true or false. Fail is not allowed in
+  this context.[133X
+  
+  
+  [1X4.5 [33X[0;0YWell-Definedness of Objects[133X[101X
+  
+  [1X4.5-1 IsWellDefinedForObjects[101X
+  
+  [29X[2XIsWellDefinedForObjects[102X( [3Xa[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output is [10Xtrue[110X if [23Xa[123X is well-defined,
+  otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X4.5-2 AddIsWellDefinedForObjects[101X
+  
+  [29X[2XAddIsWellDefinedForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsWellDefinedForObjects[110X. [23XF: a \mapsto \mathtt{IsWellDefinedForObjects}( a )[123X.[133X
+  

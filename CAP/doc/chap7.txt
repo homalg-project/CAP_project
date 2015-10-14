@@ -1,0 +1,1147 @@
+  
+  [1X7 [33X[0;0YTensor Product and Internal Hom[133X[101X
+  
+  
+  [1X7.1 [33X[0;0YMonoidal Categories[133X[101X
+  
+  [33X[0;0YA [23X6[123X-tuple [23X( \mathbf{C}, \otimes, 1, \alpha, \lambda, \rho )[123X consisting of[133X
+  
+  [30X    [33X[0;6Ya category [23X\mathbf{C}[123X,[133X
+  
+  [30X    [33X[0;6Ya   functor   [23X\otimes:   \mathbf{C}   \times   \mathbf{C}  \rightarrow
+        \mathbf{C}[123X,[133X
+  
+  [30X    [33X[0;6Yan object [23X1 \in \mathbf{C}[123X,[133X
+  
+  [30X    [33X[0;6Ya natural isomorphism [23X\alpha_{a,b,c}: a \otimes (b \otimes c) \cong (a
+        \otimes b) \otimes c[123X,[133X
+  
+  [30X    [33X[0;6Ya natural isomorphism [23X\lambda_{a}: 1 \otimes a \cong a[123X,[133X
+  
+  [30X    [33X[0;6Ya natural isomorphism [23X\rho_{a}: a \otimes 1 \cong a[123X,[133X
+  
+  [33X[0;0Yis called a [13Xmonoidal category[113X, if[133X
+  
+  [30X    [33X[0;6Yfor  all objects [23Xa,b,c,d[123X, the pentagon identity holds: [23X(\alpha_{a,b,c}
+        \otimes  \mathrm{id}_d)  \circ  \alpha_{a,b  \otimes  c,  d}  \circ  (
+        \mathrm{id}_a  \otimes  \alpha_{b,c,d}  ) = \alpha_{a \otimes b, c, d}
+        \circ \alpha_{a,b,c \otimes d}[123X,[133X
+  
+  [30X    [33X[0;6Yfor  all  objects  [23Xa,c[123X,  the triangle identity holds: [23X( \rho_a \otimes
+        \mathrm{id}_c   )   \circ   \alpha_{a,1,c}   =  \mathrm{id}_a  \otimes
+        \lambda_c[123X.[133X
+  
+  [33X[0;0YThe corresponding GAP property is given by [10XIsMonoidalCategory[110X.[133X
+  
+  [1X7.1-1 TensorProductOnObjects[101X
+  
+  [29X[2XTensorProductOnObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [23Xa,  b[123X. The output is the tensor product [23Xa
+  \otimes b[123X.[133X
+  
+  [1X7.1-2 AddTensorProductOnObjects[101X
+  
+  [29X[2XAddTensorProductOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductOnObjects[110X. [23XF: (a,b) \mapsto a \otimes b[123X.[133X
+  
+  [1X7.1-3 TensorProductOnMorphisms[101X
+  
+  [29X[2XTensorProductOnMorphisms[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, a' \otimes b')[123X[133X
+  
+  [33X[0;0YThe  arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  a',  \beta:  b
+  \rightarrow b'[123X. The output is the tensor product [23X\alpha \otimes \beta[123X.[133X
+  
+  [1X7.1-4 TensorProductOnMorphismsWithGivenTensorProducts[101X
+  
+  [29X[2XTensorProductOnMorphismsWithGivenTensorProducts[102X( [3Xs[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, a' \otimes b')[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs  =  a  \otimes b[123X, two morphisms [23X\alpha: a
+  \rightarrow  a',  \beta:  b \rightarrow b'[123X, and an object [23Xr = a' \otimes b'[123X.
+  The output is the tensor product [23X\alpha \otimes \beta[123X.[133X
+  
+  [1X7.1-5 AddTensorProductOnMorphismsWithGivenTensorProducts[101X
+  
+  [29X[2XAddTensorProductOnMorphismsWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductOnMorphismsWithGivenTensorProducts[110X. [23XF: ( a \otimes b, \alpha: a
+  \rightarrow  a',  \beta:  b  \rightarrow  b', a' \otimes b' ) \mapsto \alpha
+  \otimes \beta[123X.[133X
+  
+  [1X7.1-6 AssociatorRightToLeft[101X
+  
+  [29X[2XAssociatorRightToLeft[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b)
+            \otimes c )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  three  objects  [23Xa,b,c[123X.  The  output  is  the associator
+  [23X\alpha_{a,(b,c)}:  a \otimes (b \otimes c) \rightarrow (a \otimes b) \otimes
+  c[123X.[133X
+  
+  [1X7.1-7 AssociatorRightToLeftWithGivenTensorProducts[101X
+  
+  [29X[2XAssociatorRightToLeftWithGivenTensorProducts[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b)
+            \otimes c )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs  = a \otimes (b \otimes c)[123X, three objects
+  [23Xa,b,c[123X,  and  an  object  [23Xr  =  (a  \otimes  b)  \otimes c[123X. The output is the
+  associator  [23X\alpha_{a,(b,c)}: a \otimes (b \otimes c) \rightarrow (a \otimes
+  b) \otimes c[123X.[133X
+  
+  [1X7.1-8 AddAssociatorRightToLeftWithGivenTensorProducts[101X
+  
+  [29X[2XAddAssociatorRightToLeftWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XAssociatorRightToLeftWithGivenTensorProducts[110X.  [23XF: ( a \otimes (b \otimes c),
+  a, b, c, (a \otimes b) \otimes c ) \mapsto \alpha_{a,(b,c)}[123X.[133X
+  
+  [1X7.1-9 AssociatorLeftToRight[101X
+  
+  [29X[2XAssociatorLeftToRight[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (a \otimes b) \otimes c \rightarrow a
+            \otimes (b \otimes c) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  three  objects  [23Xa,b,c[123X.  The  output  is  the associator
+  [23X\alpha_{(a,b),c}:  (a  \otimes b) \otimes c \rightarrow a \otimes (b \otimes
+  c)[123X.[133X
+  
+  [1X7.1-10 AssociatorLeftToRightWithGivenTensorProducts[101X
+  
+  [29X[2XAssociatorLeftToRightWithGivenTensorProducts[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (a \otimes b) \otimes c \rightarrow a
+            \otimes (b \otimes c) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs  = (a \otimes b) \otimes c[123X, three objects
+  [23Xa,b,c[123X,  and  an  object  [23Xr  =  a  \otimes  (b  \otimes c)[123X. The output is the
+  associator  [23X\alpha_{(a,b),c}:  (a \otimes b) \otimes c \rightarrow a \otimes
+  (b \otimes c)[123X.[133X
+  
+  [1X7.1-11 AddAssociatorLeftToRightWithGivenTensorProducts[101X
+  
+  [29X[2XAddAssociatorLeftToRightWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XAssociatorLeftToRightWithGivenTensorProducts[110X. [23XF: (( a \otimes b ) \otimes c,
+  a, b, c, a \otimes (b \otimes c )) \mapsto \alpha_{(a,b),c}[123X.[133X
+  
+  [1X7.1-12 TensorUnit[101X
+  
+  [29X[2XTensorUnit[102X( [3XC[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  argument  is  a category [23X\mathbf{C}[123X. The output is the tensor unit [23X1[123X of
+  [23X\mathbf{C}[123X.[133X
+  
+  [1X7.1-13 AddTensorUnit[101X
+  
+  [29X[2XAddTensorUnit[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XTensorUnit[110X. [23XF: ( )
+  \mapsto 1[123X.[133X
+  
+  [1X7.1-14 LeftUnitor[101X
+  
+  [29X[2XLeftUnitor[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \otimes a, a )[123X[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X. The output is the left unitor [23X\lambda_a: 1
+  \otimes a \rightarrow a[123X.[133X
+  
+  [1X7.1-15 LeftUnitorWithGivenTensorProduct[101X
+  
+  [29X[2XLeftUnitorWithGivenTensorProduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \otimes a, a )[123X[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xa[123X and an object [23Xs = 1 \otimes a[123X. The output is
+  the left unitor [23X\lambda_a: 1 \otimes a \rightarrow a[123X.[133X
+  
+  [1X7.1-16 AddLeftUnitorWithGivenTensorProduct[101X
+  
+  [29X[2XAddLeftUnitorWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XLeftUnitorWithGivenTensorProduct[110X. [23XF: (a, 1 \otimes a) \mapsto \lambda_a[123X.[133X
+  
+  [1X7.1-17 LeftUnitorInverse[101X
+  
+  [29X[2XLeftUnitorInverse[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, 1 \otimes a)[123X[133X
+  
+  [33X[0;0YThe  argument  is  an object [23Xa[123X. The output is the inverse of the left unitor
+  [23X\lambda_a^{-1}: a \rightarrow 1 \otimes a[123X.[133X
+  
+  [1X7.1-18 LeftUnitorInverseWithGivenTensorProduct[101X
+  
+  [29X[2XLeftUnitorInverseWithGivenTensorProduct[102X( [3Xa[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, 1 \otimes a)[123X[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X and an object [23Xr = 1 \otimes a[123X. The output is the
+  inverse of the left unitor [23X\lambda_a^{-1}: a \rightarrow 1 \otimes a[123X.[133X
+  
+  [1X7.1-19 AddLeftUnitorInverseWithGivenTensorProduct[101X
+  
+  [29X[2XAddLeftUnitorInverseWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XLeftUnitorInverseWithGivenTensorProduct[110X.   [23XF:   (a,  1  \otimes  a)  \mapsto
+  \lambda_a^{-1}[123X.[133X
+  
+  [1X7.1-20 RightUnitor[101X
+  
+  [29X[2XRightUnitor[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes 1, a )[123X[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output is the right unitor [23X\rho_a: a
+  \otimes 1 \rightarrow a[123X.[133X
+  
+  [1X7.1-21 RightUnitorWithGivenTensorProduct[101X
+  
+  [29X[2XRightUnitorWithGivenTensorProduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes 1, a )[123X[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xa[123X and an object [23Xs = a \otimes 1[123X. The output is
+  the right unitor [23X\rho_a: a \otimes 1 \rightarrow a[123X.[133X
+  
+  [1X7.1-22 AddRightUnitorWithGivenTensorProduct[101X
+  
+  [29X[2XAddRightUnitorWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XRightUnitorWithGivenTensorProduct[110X. [23XF: (a, a \otimes 1) \mapsto \rho_a[123X.[133X
+  
+  [1X7.1-23 RightUnitorInverse[101X
+  
+  [29X[2XRightUnitorInverse[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, a \otimes 1 )[123X[133X
+  
+  [33X[0;0YThe  argument  is an object [23Xa[123X. The output is the inverse of the right unitor
+  [23X\rho_a^{-1}: a \rightarrow a \otimes 1[123X.[133X
+  
+  [1X7.1-24 RightUnitorInverseWithGivenTensorProduct[101X
+  
+  [29X[2XRightUnitorInverseWithGivenTensorProduct[102X( [3Xa[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, a \otimes 1 )[123X[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xa[123X and an object [23Xr = a \otimes 1[123X. The output is
+  the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \otimes 1[123X.[133X
+  
+  [1X7.1-25 AddRightUnitorInverseWithGivenTensorProduct[101X
+  
+  [29X[2XAddRightUnitorInverseWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XRightUnitorInverseWithGivenTensorProduct[110X.   [23XF:  (a,  a  \otimes  1)  \mapsto
+  \rho_a^{-1}[123X.[133X
+  
+  
+  [1X7.2 [33X[0;0YBraided Monoidal Categories[133X[101X
+  
+  [33X[0;0YA  monoidal category [23X\mathbf{C}[123X equipped with a natural isomorphism [23XB_{a,b}:
+  a \otimes b \cong b \otimes a[123X is called a [13Xbraided monoidal category[113X if[133X
+  
+  [30X    [33X[0;6Y[23X\lambda_a \circ B_{a,1} = \rho_a[123X,[133X
+  
+  [30X    [33X[0;6Y[23X(B_{c,a}   \otimes  \mathrm{id}_b)  \circ  \alpha_{c,a,b}  \circ  B_{a
+        \otimes  b,c}  = \alpha_{a,c,b} \circ ( \mathrm{id}_a \otimes B_{b,c})
+        \circ \alpha^{-1}_{a,b,c}[123X,[133X
+  
+  [30X    [33X[0;6Y[23X(  \mathrm{id}_b  \otimes  B_{c,a}  )  \circ \alpha^{-1}_{b,c,a} \circ
+        B_{a,b   \otimes  c}  =  \alpha^{-1}_{b,a,c}  \circ  (B_{a,b}  \otimes
+        \mathrm{id}_c) \circ \alpha_{a,b,c}[123X.[133X
+  
+  [33X[0;0YThe corresponding GAP property is given by [10XIsBraidedMonoidalCategory[110X.[133X
+  
+  [1X7.2-1 Braiding[101X
+  
+  [29X[2XBraiding[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a \otimes b, b \otimes a )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  two objects [23Xa,b[123X. The output is the braiding [23X B_{a,b}: a
+  \otimes b \rightarrow b \otimes a[123X.[133X
+  
+  [1X7.2-2 BraidingWithGivenTensorProducts[101X
+  
+  [29X[2XBraidingWithGivenTensorProducts[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a \otimes b, b \otimes a )[123X.[133X
+  
+  [33X[0;0YThe  arguments are an object [23Xs = a \otimes b[123X, two objects [23Xa,b[123X, and an object
+  [23Xr  =  b  \otimes  a[123X.  The  output  is  the  braiding  [23X  B_{a,b}: a \otimes b
+  \rightarrow b \otimes a[123X.[133X
+  
+  [1X7.2-3 AddBraidingWithGivenTensorProducts[101X
+  
+  [29X[2XAddBraidingWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XBraidingWithGivenTensorProducts[110X.  [23XF:  (a  \otimes  b,  a,  b,  b  \otimes a)
+  \rightarrow B_{a,b}[123X.[133X
+  
+  [1X7.2-4 BraidingInverse[101X
+  
+  [29X[2XBraidingInverse[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b \otimes a, a \otimes b )[123X.[133X
+  
+  [33X[0;0YThe arguments are two objects [23Xa,b[123X. The output is the inverse of the braiding
+  [23X B_{a,b}^{-1}: b \otimes a \rightarrow a \otimes b[123X.[133X
+  
+  [1X7.2-5 BraidingInverseWithGivenTensorProducts[101X
+  
+  [29X[2XBraidingInverseWithGivenTensorProducts[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b \otimes a, a \otimes b )[123X.[133X
+  
+  [33X[0;0YThe  arguments are an object [23Xs = b \otimes a[123X, two objects [23Xa,b[123X, and an object
+  [23Xr  =  a  \otimes  b[123X.  The  output is the braiding [23X B_{a,b}^{-1}: b \otimes a
+  \rightarrow a \otimes b[123X.[133X
+  
+  [1X7.2-6 AddBraidingInverseWithGivenTensorProducts[101X
+  
+  [29X[2XAddBraidingInverseWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XBraidingInverseWithGivenTensorProducts[110X.  [23XF: (b \otimes a, a, b, a \otimes b)
+  \rightarrow B_{a,b}^{-1}[123X.[133X
+  
+  
+  [1X7.3 [33X[0;0YSymmetric Monoidal Categories[133X[101X
+  
+  [33X[0;0YA braided monoidal category [23X\mathbf{C}[123X is called [13Xsymmetric monoidal category[113X
+  if  [23XB_{a,b}^{-1}  =  B_{b,a}[123X.  The  corresponding  GAP  property is given by
+  [10XIsSymmetricMonoidalCategory[110X.[133X
+  
+  
+  [1X7.4 [33X[0;0YSymmetric Closed Monoidal Categories[133X[101X
+  
+  [33X[0;0YA  symmetric  monoidal  category  [23X\mathbf{C}[123X  which  has  for each functor [23X-
+  \otimes  b:  \mathbf{C}  \rightarrow  \mathbf{C}[123X a right adjoint (denoted by
+  [23X\underline{\mathrm{Hom}}(b,-)[123X)   is   called  a  [13Xsymmetric  closed  monoidal
+  category[113X.     The     corresponding     GAP    property    is    given    by
+  [10XIsSymmetricClosedMonoidalCategory[110X.[133X
+  
+  [1X7.4-1 InternalHomOnObjects[101X
+  
+  [29X[2XInternalHomOnObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects [23Xa,b[123X. The output is the internal hom object
+  [23X\underline{\mathrm{Hom}}(a,b)[123X.[133X
+  
+  [1X7.4-2 AddInternalHomOnObjects[101X
+  
+  [29X[2XAddInternalHomOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XInternalHomOnObjects[110X. [23XF: (a,b) \mapsto \underline{\mathrm{Hom}}(a,b)[123X.[133X
+  
+  [1X7.4-3 InternalHomOnMorphisms[101X
+  
+  [29X[2XInternalHomOnMorphisms[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(  \underline{\mathrm{Hom}}(a',b),
+            \underline{\mathrm{Hom}}(a,b') )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  a',  \beta:  b
+  \rightarrow    b'[123X.    The    output    is    the   internal   hom   morphism
+  [23X\underline{\mathrm{Hom}}(\alpha,\beta):       \underline{\mathrm{Hom}}(a',b)
+  \rightarrow \underline{\mathrm{Hom}}(a,b')[123X.[133X
+  
+  [1X7.4-4 InternalHomOnMorphismsWithGivenInternalHoms[101X
+  
+  [29X[2XInternalHomOnMorphismsWithGivenInternalHoms[102X( [3Xs[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(  \underline{\mathrm{Hom}}(a',b),
+            \underline{\mathrm{Hom}}(a,b') )[123X[133X
+  
+  [33X[0;0YThe   arguments  are  an  object  [23Xs  =  \underline{\mathrm{Hom}}(a',b)[123X,  two
+  morphisms [23X\alpha: a \rightarrow a', \beta: b \rightarrow b'[123X, and an object [23Xr
+  =  \underline{\mathrm{Hom}}(a,b')[123X.  The  output is the internal hom morphism
+  [23X\underline{\mathrm{Hom}}(\alpha,\beta):       \underline{\mathrm{Hom}}(a',b)
+  \rightarrow \underline{\mathrm{Hom}}(a,b')[123X.[133X
+  
+  [1X7.4-5 AddInternalHomOnMorphismsWithGivenInternalHoms[101X
+  
+  [29X[2XAddInternalHomOnMorphismsWithGivenInternalHoms[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XInternalHomOnMorphismsWithGivenInternalHoms[110X.                              [23XF:
+  (\underline{\mathrm{Hom}}(a',b),   \alpha:   a   \rightarrow  a',  \beta:  b
+  \rightarrow      b',      \underline{\mathrm{Hom}}(a,b')      )      \mapsto
+  \underline{\mathrm{Hom}}(\alpha,\beta)[123X.[133X
+  
+  [1X7.4-6 EvaluationMorphism[101X
+  
+  [29X[2XEvaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes
+            a, b )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  two objects [23Xa, b[123X. The output is the evaluation morphism
+  [23X\mathrm{ev}_{a,b}:  \mathrm{\underline{Hom}}(a,b)  \otimes  a \rightarrow b[123X,
+  i.e., the counit of the tensor hom adjunction.[133X
+  
+  [1X7.4-7 EvaluationMorphismWithGivenSource[101X
+  
+  [29X[2XEvaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes
+            a, b )[123X.[133X
+  
+  [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xs   =
+  \mathrm{\underline{Hom}}(a,b)  \otimes  a[123X.  The  output  is  the  evaluation
+  morphism    [23X\mathrm{ev}_{a,b}:   \mathrm{\underline{Hom}}(a,b)   \otimes   a
+  \rightarrow b[123X, i.e., the counit of the tensor hom adjunction.[133X
+  
+  [1X7.4-8 AddEvaluationMorphismWithGivenSource[101X
+  
+  [29X[2XAddEvaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEvaluationMorphismWithGivenSource[110X.  [23XF:  (a, b, \mathrm{\underline{Hom}}(a,b)
+  \otimes a) \mapsto \mathrm{ev}_{a,b}[123X.[133X
+  
+  [1X7.4-9 CoevaluationMorphism[101X
+  
+  [29X[2XCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a,  \mathrm{\underline{Hom}}(b,  a
+            \otimes b) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are two objects [23Xa,b[123X. The output is the coevaluation morphism
+  [23X\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}(b, a \otimes b)}[123X,
+  i.e., the unit of the tensor hom adjunction.[133X
+  
+  [1X7.4-10 CoevaluationMorphismWithGivenRange[101X
+  
+  [29X[2XCoevaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a,  \mathrm{\underline{Hom}}(b,  a
+            \otimes b) )[123X.[133X
+  
+  [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xr   =
+  \mathrm{\underline{Hom}(b,  a  \otimes  b)}[123X.  The output is the coevaluation
+  morphism  [23X\mathrm{coev}_{a,b}:  a  \rightarrow  \mathrm{\underline{Hom}(b, a
+  \otimes b)}[123X, i.e., the unit of the tensor hom adjunction.[133X
+  
+  [1X7.4-11 AddCoevaluationMorphismWithGivenRange[101X
+  
+  [29X[2XAddCoevaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCoevaluationMorphismWithGivenRange[110X.  [23XF: (a, b, \mathrm{\underline{Hom}}(b, a
+  \otimes b)) \mapsto \mathrm{coev}_{a,b}[123X.[133X
+  
+  [1X7.4-12 TensorProductToInternalHomAdjunctionMap[101X
+  
+  [29X[2XTensorProductToInternalHomAdjunctionMap[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b,c) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are objects [23Xa,b[123X and a morphism [23Xf: a \otimes b \rightarrow c[123X.
+  The  output  is  a  morphism  [23Xg: a \rightarrow \mathrm{\underline{Hom}}(b,c)[123X
+  corresponding to [23Xf[123X under the tensor hom adjunction.[133X
+  
+  [1X7.4-13 AddTensorProductToInternalHomAdjunctionMap[101X
+  
+  [29X[2XAddTensorProductToInternalHomAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductToInternalHomAdjunctionMap[110X.   [23XF:   (a,   b,   f:  a  \otimes  b
+  \rightarrow c) \mapsto ( g: a \rightarrow \mathrm{\underline{Hom}}(b,c) )[123X.[133X
+  
+  [1X7.4-14 InternalHomToTensorProductAdjunctionMap[101X
+  
+  [29X[2XInternalHomToTensorProductAdjunctionMap[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, c)[123X.[133X
+  
+  [33X[0;0YThe   arguments   are   objects   [23Xb,c[123X   and  a  morphism  [23Xg:  a  \rightarrow
+  \mathrm{\underline{Hom}}(b,c)[123X.  The  output  is  a  morphism  [23Xf: a \otimes b
+  \rightarrow c[123X corresponding to [23Xg[123X under the tensor hom adjunction.[133X
+  
+  [1X7.4-15 AddInternalHomToTensorProductAdjunctionMap[101X
+  
+  [29X[2XAddInternalHomToTensorProductAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XInternalHomToTensorProductAdjunctionMap[110X.   [23XF:   (b,   c,  g:  a  \rightarrow
+  \mathrm{\underline{Hom}}(b,c)) \mapsto ( g: a \otimes b \rightarrow c )[123X.[133X
+  
+  [1X7.4-16 MonoidalPreComposeMorphism[101X
+  
+  [29X[2XMonoidalPreComposeMorphism[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes
+            \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  three  objects  [23Xa,b,c[123X. The output is the precomposition
+  morphism        [23X\mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}:
+  \mathrm{\underline{Hom}}(a,b)      \otimes     \mathrm{\underline{Hom}}(b,c)
+  \rightarrow \mathrm{\underline{Hom}}(a,c)[123X.[133X
+  
+  [1X7.4-17 MonoidalPreComposeMorphismWithGivenObjects[101X
+  
+  [29X[2XMonoidalPreComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes
+            \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs  =  \mathrm{\underline{Hom}}(a,b) \otimes
+  \mathrm{\underline{Hom}}(b,c)[123X,  three  objects  [23Xa,b,c[123X,  and  an  object  [23Xr =
+  \mathrm{\underline{Hom}}(a,c)[123X.  The  output  is  the precomposition morphism
+  [23X\mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}:
+  \mathrm{\underline{Hom}}(a,b)      \otimes     \mathrm{\underline{Hom}}(b,c)
+  \rightarrow \mathrm{\underline{Hom}}(a,c)[123X.[133X
+  
+  [1X7.4-18 AddMonoidalPreComposeMorphismWithGivenObjects[101X
+  
+  [29X[2XAddMonoidalPreComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMonoidalPreComposeMorphismWithGivenObjects[110X.                               [23XF:
+  (\mathrm{\underline{Hom}}(a,b)                                       \otimes
+  \mathrm{\underline{Hom}}(b,c),a,b,c,\mathrm{\underline{Hom}}(a,c))   \mapsto
+  \mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}[123X.[133X
+  
+  [1X7.4-19 MonoidalPostComposeMorphism[101X
+  
+  [29X[2XMonoidalPostComposeMorphism[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes
+            \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  three  objects [23Xa,b,c[123X. The output is the postcomposition
+  morphism       [23X\mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}:
+  \mathrm{\underline{Hom}}(b,c)      \otimes     \mathrm{\underline{Hom}}(a,b)
+  \rightarrow \mathrm{\underline{Hom}}(a,c)[123X.[133X
+  
+  [1X7.4-20 MonoidalPostComposeMorphismWithGivenObjects[101X
+  
+  [29X[2XMonoidalPostComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes
+            \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs  =  \mathrm{\underline{Hom}}(b,c) \otimes
+  \mathrm{\underline{Hom}}(a,b)[123X,  three  objects  [23Xa,b,c[123X,  and  an  object  [23Xr =
+  \mathrm{\underline{Hom}}(a,c)[123X.  The  output  is the postcomposition morphism
+  [23X\mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}:
+  \mathrm{\underline{Hom}}(b,c)      \otimes     \mathrm{\underline{Hom}}(a,b)
+  \rightarrow \mathrm{\underline{Hom}}(a,c)[123X.[133X
+  
+  [1X7.4-21 AddMonoidalPostComposeMorphismWithGivenObjects[101X
+  
+  [29X[2XAddMonoidalPostComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMonoidalPostComposeMorphismWithGivenObjects[110X.                              [23XF:
+  (\mathrm{\underline{Hom}}(b,c)                                       \otimes
+  \mathrm{\underline{Hom}}(a,b),a,b,c,\mathrm{\underline{Hom}}(a,c))   \mapsto
+  \mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}[123X.[133X
+  
+  [1X7.4-22 DualOnObjects[101X
+  
+  [29X[2XDualOnObjects[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X. The output is its dual object [23Xa^{\vee}[123X.[133X
+  
+  [1X7.4-23 AddDualOnObjects[101X
+  
+  [29X[2XAddDualOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given function [23XF[123X to the category for the basic operation [10XDualOnObjects[110X. [23XF: a
+  \mapsto a^{\vee}[123X.[133X
+  
+  [1X7.4-24 DualOnMorphisms[101X
+  
+  [29X[2XDualOnMorphisms[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b^{\vee}, a^{\vee} )[123X.[133X
+  
+  [33X[0;0YThe  argument  is a morphism [23X\alpha: a \rightarrow b[123X. The output is its dual
+  morphism [23X\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}[123X.[133X
+  
+  [1X7.4-25 DualOnMorphismsWithGivenDuals[101X
+  
+  [29X[2XDualOnMorphismsWithGivenDuals[102X( [3Xs[103X, [3Xalpha[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b^{\vee}, a^{\vee} )[123X.[133X
+  
+  [33X[0;0YThe  argument is an object [23Xs = b^{\vee}[123X, a morphism [23X\alpha: a \rightarrow b[123X,
+  and  an  object [23Xr = a^{\vee}[123X. The output is the dual morphism [23X\alpha^{\vee}:
+  b^{\vee} \rightarrow a^{\vee}[123X.[133X
+  
+  [1X7.4-26 AddDualOnMorphismsWithGivenDuals[101X
+  
+  [29X[2XAddDualOnMorphismsWithGivenDuals[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XDualOnMorphismsWithGivenDuals[110X.    [23XF:    (b^{\vee},\alpha,a^{\vee})   \mapsto
+  \alpha^{\vee}[123X.[133X
+  
+  [1X7.4-27 EvaluationForDual[101X
+  
+  [29X[2XEvaluationForDual[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a^{\vee} \otimes a, 1 )[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is  the  evaluation morphism
+  [23X\mathrm{ev}_{a}: a^{\vee} \otimes a \rightarrow 1[123X.[133X
+  
+  [1X7.4-28 EvaluationForDualWithGivenTensorProduct[101X
+  
+  [29X[2XEvaluationForDualWithGivenTensorProduct[102X( [3Xs[103X, [3Xa[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a^{\vee} \otimes a, 1 )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs = a^{\vee} \otimes a[123X, an object [23Xa[123X, and an
+  object  [23Xr  =  1[123X.  The  output  is  the  evaluation morphism [23X\mathrm{ev}_{a}:
+  a^{\vee} \otimes a \rightarrow 1[123X.[133X
+  
+  [1X7.4-29 AddEvaluationForDualWithGivenTensorProduct[101X
+  
+  [29X[2XAddEvaluationForDualWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEvaluationForDualWithGivenTensorProduct[110X.  [23XF:  (a^{\vee}  \otimes  a,  a,  1)
+  \mapsto \mathrm{ev}_{a}[123X.[133X
+  
+  [1X7.4-30 CoevaluationForDual[101X
+  
+  [29X[2XCoevaluationForDual[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1,a \otimes a^{\vee})[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is the coevaluation morphism
+  [23X\mathrm{coev}_{a}:1 \rightarrow a \otimes a^{\vee}[123X.[133X
+  
+  [1X7.4-31 CoevaluationForDualWithGivenTensorProduct[101X
+  
+  [29X[2XCoevaluationForDualWithGivenTensorProduct[102X( [3Xs[103X, [3Xa[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1,a \otimes a^{\vee})[123X.[133X
+  
+  [33X[0;0YThe  arguments are an object [23Xs = 1[123X, an object [23Xa[123X, and an object [23Xr = a \otimes
+  a^{\vee}[123X.  The  output  is  the  coevaluation  morphism  [23X\mathrm{coev}_{a}:1
+  \rightarrow a \otimes a^{\vee}[123X.[133X
+  
+  [1X7.4-32 AddCoevaluationForDualWithGivenTensorProduct[101X
+  
+  [29X[2XAddCoevaluationForDualWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCoevaluationForDualWithGivenTensorProduct[110X.  [23XF:  (1,  a,  a \otimes a^{\vee})
+  \mapsto \mathrm{coev}_{a}[123X.[133X
+  
+  [1X7.4-33 MorphismToBidual[101X
+  
+  [29X[2XMorphismToBidual[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, (a^{\vee})^{\vee})[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X. The output is the morphism to the bidual [23Xa
+  \rightarrow (a^{\vee})^{\vee}[123X.[133X
+  
+  [1X7.4-34 MorphismToBidualWithGivenBidual[101X
+  
+  [29X[2XMorphismToBidualWithGivenBidual[102X( [3Xa[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, (a^{\vee})^{\vee})[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xa[123X, and an object [23Xr = (a^{\vee})^{\vee}[123X. The
+  output is the morphism to the bidual [23Xa \rightarrow (a^{\vee})^{\vee}[123X.[133X
+  
+  [1X7.4-35 AddMorphismToBidualWithGivenBidual[101X
+  
+  [29X[2XAddMorphismToBidualWithGivenBidual[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismToBidualWithGivenBidual[110X.   [23XF:   (a,  (a^{\vee})^{\vee})  \mapsto  (a
+  \rightarrow (a^{\vee})^{\vee})[123X.[133X
+  
+  [1X7.4-36 TensorProductInternalHomCompatibilityMorphism[101X
+  
+  [29X[2XTensorProductInternalHomCompatibilityMorphism[102X( [3Xa[103X, [3Xa'[103X, [3Xb[103X, [3Xb'[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{\underline{Hom}}(a,a') \otimes
+            \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes
+            b,a' \otimes b'))[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  four  objects  [23Xa,  a', b, b'[123X. The output is the natural
+  morphism
+  [23X\mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}:
+  \mathrm{\underline{Hom}}(a,a')     \otimes    \mathrm{\underline{Hom}}(b,b')
+  \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')[123X.[133X
+  
+  [1X7.4-37 TensorProductInternalHomCompatibilityMorphismWithGivenObjects[101X
+  
+  [29X[2XTensorProductInternalHomCompatibilityMorphismWithGivenObjects[102X( [3Xa[103X, [3Xa'[103X, [3Xb[103X, [3Xb'[103X, [3XL[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{\underline{Hom}}(a,a') \otimes
+            \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes
+            b,a' \otimes b'))[123X.[133X
+  
+  [33X[0;0YThe   arguments  are  four  objects  [23Xa,  a',  b,  b'[123X,  and  a  list  [23XL  =  [
+  \mathrm{\underline{Hom}}(a,a')    \otimes    \mathrm{\underline{Hom}}(b,b'),
+  \mathrm{\underline{Hom}}(a  \otimes  b,a'  \otimes  b') ][123X. The output is the
+  natural                                                             morphism
+  [23X\mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}:
+  \mathrm{\underline{Hom}}(a,a')     \otimes    \mathrm{\underline{Hom}}(b,b')
+  \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')[123X.[133X
+  
+  [1X7.4-38 AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects[101X
+  
+  [29X[2XAddTensorProductInternalHomCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductInternalHomCompatibilityMorphismWithGivenObjects[110X.      [23XF:     (
+  a,a',b,b',          [         \mathrm{\underline{Hom}}(a,a')         \otimes
+  \mathrm{\underline{Hom}}(b,b'),   \mathrm{\underline{Hom}}(a   \otimes  b,a'
+  \otimes                   b')                   ])                   \mapsto
+  \mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}
+  .[133X
+  
+  [1X7.4-39 TensorProductDualityCompatibilityMorphism[101X
+  
+  [29X[2XTensorProductDualityCompatibilityMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( a^{\vee} \otimes b^{\vee}, (a \otimes
+            b)^{\vee} )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
+  [23X\mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}: a^{\vee}
+  \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}[123X.[133X
+  
+  [1X7.4-40 TensorProductDualityCompatibilityMorphismWithGivenObjects[101X
+  
+  [29X[2XTensorProductDualityCompatibilityMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( a^{\vee} \otimes b^{\vee}, (a \otimes
+            b)^{\vee} )[123X.[133X
+  
+  [33X[0;0YThe  arguments are an object [23Xs = a^{\vee} \otimes b^{\vee}[123X, two objects [23Xa,b[123X,
+  and  an  object [23Xr = (a \otimes b)^{\vee}[123X. The output is the natural morphism
+  [23X\mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}_{a,b}:
+  a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}[123X.[133X
+  
+  [1X7.4-41 AddTensorProductDualityCompatibilityMorphismWithGivenObjects[101X
+  
+  [29X[2XAddTensorProductDualityCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductDualityCompatibilityMorphismWithGivenObjects[110X.   [23XF:  (  a^{\vee}
+  \otimes    b^{\vee},    a,    b,    (a    \otimes    b)^{\vee}   )   \mapsto
+  \mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}_{a,b}[123X.[133X
+  
+  [1X7.4-42 MorphismFromTensorProductToInternalHom[101X
+  
+  [29X[2XMorphismFromTensorProductToInternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a^{\vee}    \otimes    b,
+            \mathrm{\underline{Hom}}(a,b) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
+  [23X\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}:
+  a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)[123X.[133X
+  
+  [1X7.4-43 MorphismFromTensorProductToInternalHomWithGivenObjects[101X
+  
+  [29X[2XMorphismFromTensorProductToInternalHomWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a^{\vee}    \otimes    b,
+            \mathrm{\underline{Hom}}(a,b) )[123X.[133X
+  
+  [33X[0;0YThe  arguments are an object [23Xs = a^{\vee} \otimes b[123X, two objects [23Xa,b[123X, and an
+  object [23Xr = \mathrm{\underline{Hom}}(a,b)[123X. The output is the natural morphism
+  [23X\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}:
+  a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)[123X.[133X
+  
+  [1X7.4-44 AddMorphismFromTensorProductToInternalHomWithGivenObjects[101X
+  
+  [29X[2XAddMorphismFromTensorProductToInternalHomWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismFromTensorProductToInternalHomWithGivenObjects[110X.    [23XF:   (   a^{\vee}
+  \otimes     b,     a,    b,    \mathrm{\underline{Hom}}(a,b)    )    \mapsto
+  \mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}[123X.[133X
+  
+  [1X7.4-45 IsomorphismFromTensorProductToInternalHom[101X
+  
+  [29X[2XIsomorphismFromTensorProductToInternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a^{\vee}    \otimes    b,
+            \mathrm{\underline{Hom}}(a,b) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
+  [23X\mathrm{IsomorphismFromTensorProductToInternalHom}_{a,b}: a^{\vee} \otimes b
+  \rightarrow \mathrm{\underline{Hom}}(a,b)[123X.[133X
+  
+  [1X7.4-46 AddIsomorphismFromTensorProductToInternalHom[101X
+  
+  [29X[2XAddIsomorphismFromTensorProductToInternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsomorphismFromTensorProductToInternalHom[110X.    [23XF:    (   a,   b   )   \mapsto
+  \mathrm{IsomorphismFromTensorProductToInternalHom}_{a,b}[123X.[133X
+  
+  [1X7.4-47 MorphismFromInternalHomToTensorProduct[101X
+  
+  [29X[2XMorphismFromInternalHomToTensorProduct[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(   \mathrm{\underline{Hom}}(a,b),
+            a^{\vee} \otimes b )[123X.[133X
+  
+  [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  inverse  of
+  [23X\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}[123X,      namely
+  [23X\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}:
+  \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b[123X.[133X
+  
+  [1X7.4-48 MorphismFromInternalHomToTensorProductWithGivenObjects[101X
+  
+  [29X[2XMorphismFromInternalHomToTensorProductWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(   \mathrm{\underline{Hom}}(a,b),
+            a^{\vee} \otimes b )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xs = \mathrm{\underline{Hom}}(a,b)[123X, two objects
+  [23Xa,b[123X,  and  an  object  [23Xr  = a^{\vee} \otimes b[123X. The output is the inverse of
+  [23X\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}[123X,      namely
+  [23X\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}:
+  \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b[123X.[133X
+  
+  [1X7.4-49 AddMorphismFromInternalHomToTensorProductWithGivenObjects[101X
+  
+  [29X[2XAddMorphismFromInternalHomToTensorProductWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismFromInternalHomToTensorProductWithGivenObjects[110X.         [23XF:         (
+  \mathrm{\underline{Hom}}(a,b),a,b,a^{\vee}     \otimes     b    )    \mapsto
+  \mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}[123X.[133X
+  
+  [1X7.4-50 IsomorphismFromInternalHomToTensorProduct[101X
+  
+  [29X[2XIsomorphismFromInternalHomToTensorProduct[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(   \mathrm{\underline{Hom}}(a,b),
+            a^{\vee} \otimes b )[123X.[133X
+  
+  [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  inverse  of
+  [23X\mathrm{IsomorphismFromTensorProductToInternalHom}[123X,                   namely
+  [23X\mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}:
+  \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b[123X.[133X
+  
+  [1X7.4-51 AddIsomorphismFromInternalHomToTensorProduct[101X
+  
+  [29X[2XAddIsomorphismFromInternalHomToTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsomorphismFromInternalHomToTensorProduct[110X.    [23XF:    (    a,b    )    \mapsto
+  \mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}[123X.[133X
+  
+  [1X7.4-52 TraceMap[101X
+  
+  [29X[2XTraceMap[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1,1)[123X.[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output  is  the trace morphism
+  [23X\mathrm{trace}_{\alpha}: 1 \rightarrow 1[123X.[133X
+  
+  [1X7.4-53 AddTraceMap[101X
+  
+  [29X[2XAddTraceMap[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given function [23XF[123X to the category for the basic operation [10XTraceMap[110X. [23XF: \alpha
+  \mapsto \mathrm{trace}_{\alpha}[123X[133X
+  
+  [1X7.4-54 RankMorphism[101X
+  
+  [29X[2XRankMorphism[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1,1)[123X.[133X
+  
+  [33X[0;0YThe   argument   is   an   object   [23Xa[123X.  The  output  is  the  rank  morphism
+  [23X\mathrm{rank}_a: 1 \rightarrow 1[123X.[133X
+  
+  [1X7.4-55 AddRankMorphism[101X
+  
+  [29X[2XAddRankMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XRankMorphism[110X. [23XF: a
+  \mapsto \mathrm{rank}_{a}[123X[133X
+  
+  [1X7.4-56 IsomorphismFromDualToInternalHom[101X
+  
+  [29X[2XIsomorphismFromDualToInternalHom[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a^{\vee}, \mathrm{Hom}(a,1))[123X.[133X
+  
+  [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
+  [23X\mathrm{IsomorphismFromDualToInternalHom}_{a}:      a^{\vee}     \rightarrow
+  \mathrm{Hom}(a,1)[123X.[133X
+  
+  [1X7.4-57 AddIsomorphismFromDualToInternalHom[101X
+  
+  [29X[2XAddIsomorphismFromDualToInternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsomorphismFromDualToInternalHom[110X.           [23XF:           a           \mapsto
+  \mathrm{IsomorphismFromDualToInternalHom}_{a}[123X[133X
+  
+  [1X7.4-58 IsomorphismFromInternalHomToDual[101X
+  
+  [29X[2XIsomorphismFromInternalHomToDual[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Hom}(a,1), a^{\vee})[123X.[133X
+  
+  [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
+  [23X\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{Hom}(a,1) \rightarrow
+  a^{\vee}[123X.[133X
+  
+  [1X7.4-59 AddIsomorphismFromInternalHomToDual[101X
+  
+  [29X[2XAddIsomorphismFromInternalHomToDual[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsomorphismFromInternalHomToDual[110X.           [23XF:           a           \mapsto
+  \mathrm{IsomorphismFromInternalHomToDual}_{a}[123X[133X
+  
+  [1X7.4-60 UniversalPropertyOfDual[101X
+  
+  [29X[2XUniversalPropertyOfDual[102X( [3Xt[103X, [3Xa[103X, [3Xalpha[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(t, a^{\vee})[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [23Xt,a[123X,  and  a morphism [23X\alpha: t \otimes a
+  \rightarrow  1[123X.  The  output is the morphism [23Xt \rightarrow a^{\vee}[123X given by
+  the universal property of [23Xa^{\vee}[123X.[133X
+  
+  [1X7.4-61 AddUniversalPropertyOfDual[101X
+  
+  [29X[2XAddUniversalPropertyOfDual[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XUniversalPropertyOfDual[110X.  [23XF:  (  t,a,\alpha:  t  \otimes  a  \rightarrow 1 )
+  \mapsto ( t \rightarrow a^{\vee} )[123X.[133X
+  
+  [1X7.4-62 LambdaIntroduction[101X
+  
+  [29X[2XLambdaIntroduction[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( 1, \mathrm{\underline{Hom}}(a,b) )[123X.[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a  \rightarrow b[123X. The output is the
+  corresponding morphism [23X1 \rightarrow \mathrm{\underline{Hom}}(a,b)[123X under the
+  tensor hom adjunction.[133X
+  
+  [1X7.4-63 AddLambdaIntroduction[101X
+  
+  [29X[2XAddLambdaIntroduction[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given function [23XF[123X to the category for the basic operation [10XLambdaIntroduction[110X.
+  [23XF:    (    \alpha:   a   \rightarrow   b   )   \mapsto   (   1   \rightarrow
+  \mathrm{\underline{Hom}}(a,b) )[123X.[133X
+  
+  [1X7.4-64 LambdaElimination[101X
+  
+  [29X[2XLambdaElimination[102X( [3Xa[103X, [3Xb[103X, [3Xalpha[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X, and a morphism [23X\alpha: 1 \rightarrow
+  \mathrm{\underline{Hom}}(a,b)[123X.  The  output  is  a  morphism [23Xa \rightarrow b[123X
+  corresponding to [23X\alpha[123X under the tensor hom adjunction.[133X
+  
+  [1X7.4-65 AddLambdaElimination[101X
+  
+  [29X[2XAddLambdaElimination[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XLambdaElimination[110X.
+  [23XF:  (  a,b,\alpha: 1 \rightarrow \mathrm{\underline{Hom}}(a,b) ) \mapsto ( a
+  \rightarrow b )[123X.[133X
+  
+  [1X7.4-66 IsomorphismFromObjectToInternalHom[101X
+  
+  [29X[2XIsomorphismFromObjectToInternalHom[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \mathrm{\underline{Hom}}(1,a))[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is the natural isomorphism [23Xa
+  \rightarrow \mathrm{\underline{Hom}}(1,a)[123X.[133X
+  
+  [1X7.4-67 IsomorphismFromObjectToInternalHomWithGivenInternalHom[101X
+  
+  [29X[2XIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X( [3Xa[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \mathrm{\underline{Hom}}(1,a))[123X.[133X
+  
+  [33X[0;0YThe    argument    is    an    object    [23Xa[123X,    and    an    object    [23Xr    =
+  \mathrm{\underline{Hom}}(1,a)[123X.  The  output  is  the  natural  isomorphism [23Xa
+  \rightarrow \mathrm{\underline{Hom}}(1,a)[123X.[133X
+  
+  [1X7.4-68 AddIsomorphismFromObjectToInternalHomWithGivenInternalHom[101X
+  
+  [29X[2XAddIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsomorphismFromObjectToInternalHomWithGivenInternalHom[110X.      [23XF:     (     a,
+  \mathrm{\underline{Hom}}(1,a)      )     \mapsto     (     a     \rightarrow
+  \mathrm{\underline{Hom}}(1,a) )[123X.[133X
+  
+  [1X7.4-69 IsomorphismFromInternalHomToObject[101X
+  
+  [29X[2XIsomorphismFromInternalHomToObject[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{\underline{Hom}}(1,a),a)[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is  the  natural isomorphism
+  [23X\mathrm{\underline{Hom}}(1,a) \rightarrow a[123X.[133X
+  
+  [1X7.4-70 IsomorphismFromInternalHomToObjectWithGivenInternalHom[101X
+  
+  [29X[2XIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X( [3Xa[103X, [3Xs[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{\underline{Hom}}(1,a),a)[123X.[133X
+  
+  [33X[0;0YThe    argument    is    an    object    [23Xa[123X,    and    an    object    [23Xs    =
+  \mathrm{\underline{Hom}}(1,a)[123X.   The   output  is  the  natural  isomorphism
+  [23X\mathrm{\underline{Hom}}(1,a) \rightarrow a[123X.[133X
+  
+  [1X7.4-71 AddIsomorphismFromInternalHomToObjectWithGivenInternalHom[101X
+  
+  [29X[2XAddIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsomorphismFromInternalHomToObjectWithGivenInternalHom[110X.      [23XF:     (     a,
+  \mathrm{\underline{Hom}}(1,a)   )  \mapsto  (  \mathrm{\underline{Hom}}(1,a)
+  \rightarrow a )[123X.[133X
+  
+  
+  [1X7.5 [33X[0;0YRigid Symmetric Closed Monoidal Categories[133X[101X
+  
+  [33X[0;0YA symmetric closed monoidal category [23X\mathbf{C}[123X satisfying[133X
+  
+  [30X    [33X[0;6Ythe   natural   morphism   [23X\underline{\mathrm{Hom}}(a_1,b_1)   \otimes
+        \underline{\mathrm{Hom}}(a_2,b_2)                          \rightarrow
+        \underline{\mathrm{Hom}}(a_1   \otimes  a_2,b_1  \otimes  b_2)[123X  is  an
+        isomorphism,[133X
+  
+  [30X    [33X[0;6Ythe          natural          morphism          [23Xa          \rightarrow
+        \underline{\mathrm{Hom}}(\underline{\mathrm{Hom}}(a,   1),  1)[123X  is  an
+        isomorphism[133X
+  
+  [33X[0;0Yis called a [13Xrigid symmetric closed monoidal category[113X.[133X
+  
+  [1X7.5-1 TensorProductInternalHomCompatibilityMorphismInverse[101X
+  
+  [29X[2XTensorProductInternalHomCompatibilityMorphismInverse[102X( [3Xa[103X, [3Xa'[103X, [3Xb[103X, [3Xb'[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{\underline{Hom}}(a \otimes
+            b,a'    \otimes    b'),   \mathrm{\underline{Hom}}(a,a')   \otimes
+            \mathrm{\underline{Hom}}(b,b'))[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  four  objects  [23Xa,  a', b, b'[123X. The output is the natural
+  morphism
+  [23X\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}:
+  \mathrm{\underline{Hom}}(a    \otimes    b,a'    \otimes   b')   \rightarrow
+  \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')[123X.[133X
+  
+  [1X7.5-2 TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[101X
+  
+  [29X[2XTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X( [3Xa[103X, [3Xa'[103X, [3Xb[103X, [3Xb'[103X, [3XL[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{\underline{Hom}}(a \otimes
+            b,a'    \otimes    b'),   \mathrm{\underline{Hom}}(a,a')   \otimes
+            \mathrm{\underline{Hom}}(b,b'))[123X.[133X
+  
+  [33X[0;0YThe   arguments  are  four  objects  [23Xa,  a',  b,  b'[123X,  and  a  list  [23XL  =  [
+  \mathrm{\underline{Hom}}(a,a')    \otimes    \mathrm{\underline{Hom}}(b,b'),
+  \mathrm{\underline{Hom}}(a  \otimes  b,a'  \otimes  b') ][123X. The output is the
+  natural                                                             morphism
+  [23X\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}:
+  \mathrm{\underline{Hom}}(a    \otimes    b,a'    \otimes   b')   \rightarrow
+  \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')[123X.[133X
+  
+  [1X7.5-3 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[101X
+  
+  [29X[2XAddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[110X.  [23XF:  (
+  a,a',b,b',          [         \mathrm{\underline{Hom}}(a,a')         \otimes
+  \mathrm{\underline{Hom}}(b,b'),   \mathrm{\underline{Hom}}(a   \otimes  b,a'
+  \otimes                   b')                   ])                   \mapsto
+  \mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}
+  .[133X
+  
+  [1X7.5-4 MorphismFromBidual[101X
+  
+  [29X[2XMorphismFromBidual[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}((a^{\vee})^{\vee},a)[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an object [23Xa[123X. The output is the inverse of the morphism to
+  the bidual [23X(a^{\vee})^{\vee} \rightarrow a[123X.[133X
+  
+  [1X7.5-5 MorphismFromBidualWithGivenBidual[101X
+  
+  [29X[2XMorphismFromBidualWithGivenBidual[102X( [3Xa[103X, [3Xs[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}((a^{\vee})^{\vee},a)[123X.[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X, and an object [23Xs = (a^{\vee})^{\vee}[123X. The output
+  is  the  inverse of the morphism to the bidual [23X(a^{\vee})^{\vee} \rightarrow
+  a[123X.[133X
+  
+  [1X7.5-6 AddMorphismFromBidualWithGivenBidual[101X
+  
+  [29X[2XAddMorphismFromBidualWithGivenBidual[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismFromBidualWithGivenBidual[110X.   [23XF:   (a,   (a^{\vee})^{\vee})   \mapsto
+  ((a^{\vee})^{\vee} \rightarrow a)[123X.[133X
+  

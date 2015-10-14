@@ -1,0 +1,82 @@
+  
+  
+                          [1X ModulePresentationsForCAP [101X
+  
+  
+                           [1X Category R-pres for CAP [101X
+  
+  
+                                   2015.10.06
+  
+  
+                                   06/10/2015
+  
+  
+                               Sebastian Gutsche
+  
+                                Sebastian Posur
+  
+  
+  
+  Sebastian Gutsche
+      Email:    [7Xmailto:gutsche@mathematik.uni-kl.de[107X
+      Homepage: [7Xhttp://wwwb.math.rwth-aachen.de/~gutsche/[107X
+      Address:  [33X[0;14YDepartment of Mathematics[133X
+                [33X[0;14YUniversity of Kaiserslautern[133X
+                [33X[0;14Y67653 Kaiserslautern[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Sebastian Posur
+      Email:    [7Xmailto:sposur@momo.math.rwth-aachen.de[107X
+      Homepage: [7Xhttp://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php[107X
+      Address:  [33X[0;14YLehrstuhl B für Mathematik RWTH - Aachen[133X
+                [33X[0;14YTemplergraben 64[133X
+                [33X[0;14Y52062 Aachen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (ModulePresentationsForCAP)[101X
+  
+  1 [33X[0;0YModule Presentations[133X
+    1.1 [33X[0;0YFunctors[133X
+      1.1-1 FunctorStandardModuleLeft
+      1.1-2 FunctorStandardModuleRight
+      1.1-3 FunctorLessGeneratorsLeft
+      1.1-4 FunctorLessGeneratorsRight
+    1.2 [33X[0;0YGAP Categories[133X
+      1.2-1 IsLeftOrRightPresentationMorphism
+      1.2-2 IsLeftPresentationMorphism
+      1.2-3 IsRightPresentationMorphism
+      1.2-4 IsLeftOrRightPresentation
+      1.2-5 IsLeftPresentation
+      1.2-6 IsRightPresentation
+    1.3 [33X[0;0YConstructors[133X
+      1.3-1 PresentationMorphism
+      1.3-2 AsLeftPresentation
+      1.3-3 AsRightPresentation
+      1.3-4 AsLeftOrRightPresentation
+      1.3-5 FreeLeftPresentation
+      1.3-6 FreeRightPresentation
+      1.3-7 UnderlyingMatrix
+      1.3-8 UnderlyingHomalgRing
+      1.3-9 LeftPresentations
+      1.3-10 RightPresentations
+    1.4 [33X[0;0YAttributes[133X
+      1.4-1 UnderlyingHomalgRing
+      1.4-2 UnderlyingMatrix
+    1.5 [33X[0;0YNon-Categorical Operations[133X
+      1.5-1 StandardGeneratorMorphism
+    1.6 [33X[0;0YNatural Transformations[133X
+      1.6-1 NaturalIsomorphismFromIdentityToStandardModuleLeft
+      1.6-2 NaturalIsomorphismFromIdentityToStandardModuleRight
+  2 [33X[0;0YExamples and Tests[133X
+    2.1 [33X[0;0YIntersection of Submodules[133X
+    2.2 [33X[0;0YClosed Monoidal Structure[133X
+  
+  
+  [32X

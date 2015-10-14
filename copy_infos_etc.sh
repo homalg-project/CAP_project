@@ -20,7 +20,20 @@ for i in $packages; do
   cd $current_dir
 done
 
+cd _layouts
 for i in $packages; do
-  cp index_default.md ${i}/index.md
+  sed "s|@@package@@|package${i}|g" < default_template > package${i}.html
 done
+cd $current_dir
 
+cd _data
+echo "package_links:" > packages.yml
+for i in $packages; do
+  echo "    - name: ${i}" >> packages.yml
+done
+cd $current_dir
+
+for i in $packages; do
+  cp ${i}/_data/package.yml _data/package${i}.yml
+  sed "s|@@package@@|package${i}|g" < index_default.md > ${i}/index.md
+done

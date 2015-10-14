@@ -1,0 +1,143 @@
+  
+  [1X2 [33X[0;0YCategory of Categories[133X[101X
+  
+  [33X[0;0YCategories  itself  with  functors as morphisms form a category. So the data
+  structure  of  [10XCapCategory[110Xs  is  designed  to be objects in a category. This
+  category  is  implemented  in  [10XCapCat[110X. For every category, the corresponding
+  object  in  Cat  can  be  obtained via [10XAsCatObject[110X. The implemetation of the
+  category  of  categories  offers  a  data  structure for functors. Those are
+  implemented  as  morphisms in this category, so functors can be handled like
+  morphisms  in  a category. Also convenience functions to install functors as
+  methods are implemented (in order to avoid [10XApplyFunctor[110X).[133X
+  
+  
+  [1X2.1 [33X[0;0YThe Category Cat[133X[101X
+  
+  [1X2.1-1 CapCat[101X
+  
+  [29X[2XCapCat[102X[32X global variable
+  
+  [33X[0;0YThis  variable  stores  the category of categories. Every category object is
+  constructed  as  an  object  in  this  category,  so Cat is constructed when
+  loading the package.[133X
+  
+  
+  [1X2.2 [33X[0;0YCategories[133X[101X
+  
+  [1X2.2-1 IsCapCategoryAsCatObject[101X
+  
+  [29X[2XIsCapCategoryAsCatObject[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of CAP categories seen as object in Cat.[133X
+  
+  [1X2.2-2 IsCapFunctor[101X
+  
+  [29X[2XIsCapFunctor[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of functors.[133X
+  
+  [1X2.2-3 IsCapNaturalTransformation[101X
+  
+  [29X[2XIsCapNaturalTransformation[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of natural transformations.[133X
+  
+  
+  [1X2.3 [33X[0;0YConstructors[133X[101X
+  
+  [1X2.3-1 AsCatObject[101X
+  
+  [29X[2XAsCatObject[102X( [3XC[103X ) [32X attribute
+  
+  [33X[0;0YGiven a CAP category [23XC[123X, this method returns the corresponding object in Cat.
+  For  technical  reasons,  the filter [10XIsCapCategory[110X must not imply the filter
+  [10XIsCapCategoryObject[110X.  For example, if [10XInitialObject[110X is applied to an object,
+  it  returns  the  initial  object  of  its  category.  If it is applied to a
+  category,  it  returns the initial object of the category. If a CAP category
+  would  be  a  category object itself, this would be ambiguous. So categories
+  must  be  wrapped in a CatObject to be an object in Cat. This method returns
+  the wrapper object. The category can be reobtained by [10XAsCapCategory[110X.[133X
+  
+  [1X2.3-2 AsCapCategory[101X
+  
+  [29X[2XAsCapCategory[102X( [3XC[103X ) [32X attribute
+  
+  [33X[0;0YFor  an  object  [23XC[123X  in Cat, this method returns the underlying CAP category.
+  This  method is inverse to [10XAsCatObject[110X, i.e. AsCapCategory( AsCatObject( A )
+  ) = A.[133X
+  
+  
+  [1X2.4 [33X[0;0YFunctors[133X[101X
+  
+  [33X[0;0YFunctors  are  morphisms  in Cat, thus they have source and target which are
+  categories. A multivariate functor can be constructed via a product category
+  as  source,  a  presheaf is constructed via the opposite category as source.
+  Moreover,  an  object  and a morphism function can be added to a functor, to
+  apply it to objects or morphisms in the source category.[133X
+  
+  [1X2.4-1 CapFunctor[101X
+  
+  [29X[2XCapFunctor[102X( [3Xname[103X, [3XA[103X, [3XB[103X ) [32X operation
+  [29X[2XCapFunctor[102X( [3Xname[103X, [3XA[103X, [3XB[103X ) [32X operation
+  [29X[2XCapFunctor[102X( [3Xname[103X, [3XA[103X, [3XB[103X ) [32X operation
+  [29X[2XCapFunctor[102X( [3Xname[103X, [3XA[103X, [3XB[103X ) [32X operation
+  [29X[2XCapFunctor[102X( [3Xname[103X, [3XA[103X, [3XB[103X ) [32X operation
+  [29X[2XCapFunctor[102X( [3Xname[103X, [3XA[103X, [3XB[103X ) [32X operation
+  
+  [33X[0;0YThese  methods  construct a CAP functor, i.e. a morphism in Cat. Name should
+  be  an  unique  name  for  the  functor, it is also used when the functor is
+  installed  as  a method. [3XA[103X and [3XB[103X are source and target. Both can be given as
+  object in Cat or as category itself.[133X
+  
+  [1X2.4-2 AddObjectFunction[101X
+  
+  [29X[2XAddObjectFunction[102X( [3Xfunctor[103X, [3Xfunction[103X ) [32X operation
+  
+  [33X[0;0YThis  operation  adds a function to the functor which can then be applied to
+  objects  in the source. The given function [3Xfunction[103X has to take one argument
+  which  must  be  an  object  in  the  source  category  and  should return a
+  CapCategoryObject.  The  object  is  automatically added to the range of the
+  functor when it is applied to the object.[133X
+  
+  [1X2.4-3 FunctorObjectOperation[101X
+  
+  [29X[2XFunctorObjectOperation[102X( [3XF[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya GAP operation[133X
+  
+  [33X[0;0YThe  argument  is a functor [23XF[123X. The output is the GAP operation realizing the
+  action of [23XF[123X on objects.[133X
+  
+  [1X2.4-4 AddMorphismFunction[101X
+  
+  [29X[2XAddMorphismFunction[102X( [3Xfunctor[103X, [3Xfunction[103X ) [32X operation
+  
+  [33X[0;0YThis  operation  adds a function to the functor which can then be applied to
+  morphisms  in  the  source.  The  given  function [3Xfunction[103X has to take three
+  arguments  [23XA,  \tau,  B[123X.  When the funtor [3Xfunctor[103X is applied to the morphism
+  [23X\tau[123X,  [23XA[123X  is  the  result of [3Xfunctor[103X applied to the source of [23X\tau[123X, [23XB[123X is the
+  result of [3Xfunctor[103X applied to the range.[133X
+  
+  [1X2.4-5 FunctorMorphismOperation[101X
+  
+  [29X[2XFunctorMorphismOperation[102X( [3XF[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya GAP operation[133X
+  
+  [33X[0;0YThe  argument  is a functor [23XF[123X. The output is the GAP operation realizing the
+  action of [23XF[123X on morphisms.[133X
+  
+  [1X2.4-6 ApplyFunctor[101X
+  
+  [29X[2XApplyFunctor[102X( [3Xfunc[103X, [3XA[103X ) [32X function
+  [6XReturns:[106X  [33X[0;10YIsCapCategoryCell[133X
+  
+  [33X[0;0YApplies the functor [3Xfunc[103X to the object or morphism [3XA[103X.[133X
+  
+  [1X2.4-7 InstallFunctor[101X
+  
+  [29X[2XInstallFunctor[102X( [3Xfunctor[103X, [3Xmethod_name[103X ) [32X operation
+  
+  [33X[0;0YTODO[133X
+  

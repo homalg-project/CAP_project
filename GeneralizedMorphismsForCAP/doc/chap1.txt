@@ -1,0 +1,165 @@
+  
+  [1X1 [33X[0;0YGeneralized Morphism Category[133X[101X
+  
+  [33X[0;0YLet  [23X\mathbf{A}[123X  be  an abelian category. We denote its generalized morphism
+  category by [23X\mathbf{G(A)}[123X.[133X
+  
+  
+  [1X1.1 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X1.1-1 IsGeneralizedMorphismCategoryObject[101X
+  
+  [29X[2XIsGeneralizedMorphismCategoryObject[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of objects in the generalized morphism category.[133X
+  
+  [1X1.1-2 IsGeneralizedMorphism[101X
+  
+  [29X[2XIsGeneralizedMorphism[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of morphisms in the generalized morphism category.[133X
+  
+  
+  [1X1.2 [33X[0;0YAttributes[133X[101X
+  
+  [1X1.2-1 UnderlyingHonestObject[101X
+  
+  [29X[2XUnderlyingHonestObject[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Yan object in [23X\mathbf{A}[123X[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X in the generalized morphism category. The output
+  is its underlying honest object[133X
+  
+  [1X1.2-2 DomainOfGeneralizedMorphism[101X
+  
+  [29X[2XDomainOfGeneralizedMorphism[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( d, a )[123X[133X
+  
+  [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
+  is its domain [23Xd \hookrightarrow a \in \mathbf{A}[123X.[133X
+  
+  [1X1.2-3 Codomain[101X
+  
+  [29X[2XCodomain[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( b, c )[123X[133X
+  
+  [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
+  is its codomain [23Xb \twoheadrightarrow c \in \mathbf{A}[123X.[133X
+  
+  [1X1.2-4 AssociatedMorphism[101X
+  
+  [29X[2XAssociatedMorphism[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( d, c )[123X[133X
+  
+  [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
+  is its associated morphism [23Xd \rightarrow c \in \mathbf{A}[123X.[133X
+  
+  [1X1.2-5 DomainAssociatedMorphismCodomainTriple[101X
+  
+  [29X[2XDomainAssociatedMorphismCodomainTriple[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya triple of morphisms in [23X\mathbf{A}[123X[133X
+  
+  [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
+  is a triple [23X( d \hookrightarrow a, d \rightarrow c, b \twoheadrightarrow c )[123X
+  consisting of its domain, associated morphism, and codomain.[133X
+  
+  [1X1.2-6 HonestRepresentative[101X
+  
+  [29X[2XHonestRepresentative[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( a, b )[123X[133X
+  
+  [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
+  is  the  honest  representative  in  [23X\mathbf{A}[123X  of  [23X\alpha[123X,  if  it exists,
+  otherwise an error is thrown.[133X
+  
+  [1X1.2-7 GeneralizedInverse[101X
+  
+  [29X[2XGeneralizedInverse[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a \rightarrow b \in \mathbf{A}[123X. The
+  output is its generalized inverse [23Xb \rightarrow a[123X.[133X
+  
+  [1X1.2-8 IdempotentDefinedBySubobject[101X
+  
+  [29X[2XIdempotentDefinedBySubobject[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
+  
+  [33X[0;0YThe  argument is a subobject [23X\alpha: a \hookrightarrow b \in \mathbf{A}[123X. The
+  output  is  the  idempotent  [23Xb  \rightarrow  b  \in \mathbf{G(A)}[123X defined by
+  [23X\alpha[123X.[133X
+  
+  [1X1.2-9 IdempotentDefinedByFactorobject[101X
+  
+  [29X[2XIdempotentDefinedByFactorobject[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
+  
+  [33X[0;0YThe   argument   is  a  factorobject  [23X\alpha:  b  \twoheadrightarrow  a  \in
+  \mathbf{A}[123X.  The  output is the idempotent [23Xb \rightarrow b \in \mathbf{G(A)}[123X
+  defined by [23X\alpha[123X.[133X
+  
+  [1X1.2-10 UnderlyingHonestCategory[101X
+  
+  [29X[2XUnderlyingHonestCategory[102X( [3XC[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument  is  a  generalized  morphism  category [23XC = \mathbf{G(A)}[123X. The
+  output is [23X\mathbf{A}[123X.[133X
+  
+  
+  [1X1.3 [33X[0;0YOperations[133X[101X
+  
+  [1X1.3-1 GeneralizedMorphismFromFactorToSubobject[101X
+  
+  [29X[2XGeneralizedMorphismFromFactorToSubobject[102X( [3Xbeta[103X, [3Xalpha[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(c,a)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  a  factorobject [23X\beta: b \twoheadrightarrow c[123X, and a
+  subobject  [23X\alpha:  a  \hookrightarrow  b[123X.  The  output  is  the generalized
+  morphism from the factorobject to the subobject.[133X
+  
+  
+  [1X1.4 [33X[0;0YProperties[133X[101X
+  
+  [1X1.4-1 IsHonest[101X
+  
+  [29X[2XIsHonest[102X( [3Xalpha[103X ) [32X property
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is a generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if [23X\alpha[123X
+  admits an honest representative, otherwise [10Xfalse[110X.[133X
+  
+  [1X1.4-2 HasFullDomain[101X
+  
+  [29X[2XHasFullDomain[102X( [3Xalpha[103X ) [32X property
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  a  generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if the
+  domain of [23X\alpha[123X is an isomorphism, otherwise [10Xfalse[110X.[133X
+  
+  [1X1.4-3 HasFullCodomain[101X
+  
+  [29X[2XHasFullCodomain[102X( [3Xalpha[103X ) [32X property
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  a  generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if the
+  codomain of [23X\alpha[123X is an isomorphism, otherwise [10Xfalse[110X.[133X
+  
+  [1X1.4-4 IsSingleValued[101X
+  
+  [29X[2XIsSingleValued[102X( [3Xalpha[103X ) [32X property
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  a  generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if the
+  codomain of [23X\alpha[123X is an isomorphism, otherwise [10Xfalse[110X.[133X
+  
+  [1X1.4-5 IsTotal[101X
+  
+  [29X[2XIsTotal[102X( [3Xalpha[103X ) [32X property
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  a  generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if the
+  domain of [23X\alpha[123X is an isomorphism, otherwise [10Xfalse[110X.[133X
+  

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (CAP) - Chapter 4: Objects</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap4"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap4.html">[MathJax off]</a></p>
+<p><a id="X78497E777FB3E402" name="X78497E777FB3E402"></a></p>
+<div class="ChapSects"><a href="chap4_mj.html#X78497E777FB3E402">4 <span class="Heading">Objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7ABD8E5A8408A301">4.1 <span class="Heading">Attributes for the Type of Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C3B8C3D865002C8">4.1-1 CapCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7B4B807A848111AA">4.2 <span class="Heading">Equality for Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8337569D81C0BBEC">4.2-1 IsEqualForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X787F654B82150781">4.2-2 AddIsEqualForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X86CCD70884952468">4.3 <span class="Heading">Categorical Properties of Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X865C78CF789DA86D">4.3-1 AddIsProjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7F7F309F7C67D6CE">4.3-2 AddIsInjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7EDB2D5B7F234ADA">4.3-3 AddIsTerminal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7E6EDA9484F3E6F6">4.3-4 AddIsInitial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X856FA5E084753312">4.3-5 IsZeroForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X78C3E7BF78A9A7D5">4.3-6 AddIsZeroForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7DD668627932185C">4.4 <span class="Heading">Tool functions for caches</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7BAE9BBC874635CB">4.4-1 IsEqualForCacheForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7887D32C7973F4A0">4.4-2 AddIsEqualForCacheForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7820B09C781A90A8">4.5 <span class="Heading">Well-Definedness of Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7F9A38A187D9ABFA">4.5-1 IsWellDefinedForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X859219147B3058B8">4.5-2 AddIsWellDefinedForObjects</a></span>
+</div></div>
+</div>
+
+<h3>4 <span class="Heading">Objects</span></h3>
+
+<p>Any GAP object which is IsCapCategoryObject can be added to a category and then becomes an object in this category. Any object can belong to one or no category. After a GAP object is added to the category, it knows which things can be computed in its category and to which category it belongs. It knows categorial properties and attributes, and the functions for existential quantifiers can be applied to the object.</p>
+
+<p><a id="X7ABD8E5A8408A301" name="X7ABD8E5A8408A301"></a></p>
+
+<h4>4.1 <span class="Heading">Attributes for the Type of Objects</span></h4>
+
+<p><a id="X7C3B8C3D865002C8" name="X7C3B8C3D865002C8"></a></p>
+
+<h5>4.1-1 CapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapCategory</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the category <span class="SimpleMath">\(\mathbf{C}\)</span> to which <span class="SimpleMath">\(a\)</span> was added.</p>
+
+<p><a id="X7B4B807A848111AA" name="X7B4B807A848111AA"></a></p>
+
+<h4>4.2 <span class="Heading">Equality for Objects</span></h4>
+
+<p><a id="X8337569D81C0BBEC" name="X8337569D81C0BBEC"></a></p>
+
+<h5>4.2-1 IsEqualForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a\)</span> and <span class="SimpleMath">\(b\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(a = b\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X787F654B82150781" name="X787F654B82150781"></a></p>
+
+<h5>4.2-2 AddIsEqualForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEqualForObjects</code>. <span class="SimpleMath">\(F: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)\)</span>.</p>
+
+<p><a id="X86CCD70884952468" name="X86CCD70884952468"></a></p>
+
+<h4>4.3 <span class="Heading">Categorical Properties of Objects</span></h4>
+
+<p><a id="X865C78CF789DA86D" name="X865C78CF789DA86D"></a></p>
+
+<h5>4.3-1 AddIsProjective</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsProjective</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsProjective</code>. <span class="SimpleMath">\(F: a \mapsto \mathtt{IsProjective}(a)\)</span>.</p>
+
+<p><a id="X7F7F309F7C67D6CE" name="X7F7F309F7C67D6CE"></a></p>
+
+<h5>4.3-2 AddIsInjective</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsInjective</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsInjective</code>. <span class="SimpleMath">\(F: a \mapsto \mathtt{IsInjective}(a)\)</span>.</p>
+
+<p><a id="X7EDB2D5B7F234ADA" name="X7EDB2D5B7F234ADA"></a></p>
+
+<h5>4.3-3 AddIsTerminal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsTerminal</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsTerminal</code>. <span class="SimpleMath">\(F: a \mapsto \mathtt{IsTerminal}(a)\)</span>.</p>
+
+<p><a id="X7E6EDA9484F3E6F6" name="X7E6EDA9484F3E6F6"></a></p>
+
+<h5>4.3-4 AddIsInitial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsInitial</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsInitial</code>. <span class="SimpleMath">\(F: a \mapsto \mathtt{IsInitial}(a)\)</span>.</p>
+
+<p><a id="X856FA5E084753312" name="X856FA5E084753312"></a></p>
+
+<h5>4.3-5 IsZeroForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZeroForObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span> of a category <span class="SimpleMath">\(\mathbf{C}\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(a\)</span> is isomorphic to the zero object of <span class="SimpleMath">\(\mathbf{C}\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X78C3E7BF78A9A7D5" name="X78C3E7BF78A9A7D5"></a></p>
+
+<h5>4.3-6 AddIsZeroForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsZeroForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsZeroForObjects</code>. <span class="SimpleMath">\(F: a \mapsto \mathtt{IsZeroForObjects}(a)\)</span>.</p>
+
+<p><a id="X7DD668627932185C" name="X7DD668627932185C"></a></p>
+
+<h4>4.4 <span class="Heading">Tool functions for caches</span></h4>
+
+<p><a id="X7BAE9BBC874635CB" name="X7BAE9BBC874635CB"></a></p>
+
+<h5>4.4-1 IsEqualForCacheForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForCacheForObjects</code>( <var class="Arg">phi</var>, <var class="Arg">psi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Compares two objects in the cache</p>
+
+<p><a id="X7887D32C7973F4A0" name="X7887D32C7973F4A0"></a></p>
+
+<h5>4.4-2 AddIsEqualForCacheForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForCacheForObjects</code>( <var class="Arg">c</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: northing</p>
+
+<p>By default, CAP uses caches to store the values of Categorical operations. To get a value out of the cache, one needs to compare the input of a basic operation with its previous input. To compare objects in the category, IsEqualForCacheForObject is used. By default this is an alias for IsEqualForObjects, where fail is substituted by false. If you add a function, this function used instead. A function <span class="SimpleMath">\(F: a,b \mapsto bool\)</span> is expected here. The output has to be true or false. Fail is not allowed in this context.</p>
+
+<p><a id="X7820B09C781A90A8" name="X7820B09C781A90A8"></a></p>
+
+<h4>4.5 <span class="Heading">Well-Definedness of Objects</span></h4>
+
+<p><a id="X7F9A38A187D9ABFA" name="X7F9A38A187D9ABFA"></a></p>
+
+<h5>4.5-1 IsWellDefinedForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWellDefinedForObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(a\)</span> is well-defined, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X859219147B3058B8" name="X859219147B3058B8"></a></p>
+
+<h5>4.5-2 AddIsWellDefinedForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWellDefinedForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsWellDefinedForObjects</code>. <span class="SimpleMath">\(F: a \mapsto \mathtt{IsWellDefinedForObjects}( a )\)</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

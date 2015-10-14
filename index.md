@@ -4,29 +4,25 @@ layout: default
 
 # The CAP project
 
-{{site.data.package.abstract}}
+This is the home of the CAP project. For more information, please see the packages listed below.
 
-The current version of this package is version {{site.data.package.version}}.
-For more information, please refer to [the package manual]({{site.data.package.doc-html}}).
-There is also a [README](README) file.
+## Packages in the CAP project
+
+
+
+{% for package in site.data.packages.package_links %}
+  [{{package.name}}]({{site.baseurl}}/{{package.name}})
+{% endfor %}
+
 
 ## Dependencies
 
-This package requires GAP version {{site.data.package.GAP}}
-{% if site.data.package.needed-pkgs %}
-The following other GAP packages are needed:
-{% for pkg in site.data.package.needed-pkgs %}
-- {% if pkg.url %}<a href="{{ pkg.url }}">{{ pkg.name }}</a>{% else %}{{ pkg.name }}{% endif %} {{ pkg.version }}{% endfor %}
-{% endif %}
-{% if site.data.package.suggested-pkgs %}
-The following additional GAP packages are not required, but suggested:
-{% for pkg in site.data.package.suggested-pkgs %}
-- {% if pkg.url %}<a href="{{ pkg.url }}">{{ pkg.name }}</a>{% else %}{{ pkg.name }}{% endif %} {{ pkg.version }}{% endfor %}
-{% endif %}
+This project requires GAP version {{site.data.packageCAP.GAP}}
+For more information see the packages
 
 
-## Author{% if site.data.package.authors.size != 1 %}s{% endif %}
-{% for person in site.data.package.authors %}
+## Author{% if site.data.packageCAP.authors.size != 1 %}s{% endif %}
+{% for person in site.data.packageCAP.authors %}
 {% if person.url %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}{% unless forloop.last %}, {% endunless %}{% else %}
 {% endfor %}
 

@@ -1,0 +1,178 @@
+  
+  [1X2 [33X[0;0YGeneralized Morphism Category by Cospans[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X2.1-1 IsGeneralizedMorphismCategoryByCospansObject[101X
+  
+  [29X[2XIsGeneralizedMorphismCategoryByCospansObject[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of objects in the generalized morphism category by cospans.[133X
+  
+  [1X2.1-2 IsGeneralizedMorphismByCospan[101X
+  
+  [29X[2XIsGeneralizedMorphismByCospan[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category  of  morphisms  in  the  generalized morphism category by
+  cospans.[133X
+  
+  
+  [1X2.2 [33X[0;0YProperties[133X[101X
+  
+  [1X2.2-1 HasIdentityAsReversedArrow[101X
+  
+  [29X[2XHasIdentityAsReversedArrow[102X( [3Xalpha[103X ) [32X property
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  argument  is  a generalized morphism [23X\alpha[123X by a cospan [23Xa \rightarrow b
+  \leftarrow  c[123X.  The  output  is  [10Xtrue[110X  if  [23Xb \leftarrow c[123X is congruent to an
+  identity morphism, [10Xfalse[110X otherwise.[133X
+  
+  
+  [1X2.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X2.3-1 UnderlyingHonestObject[101X
+  
+  [29X[2XUnderlyingHonestObject[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Yan object in [23X\mathbf{A}[123X[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X in the generalized morphism category by cospans.
+  The output is its underlying honest object.[133X
+  
+  [1X2.3-2 Arrow[101X
+  
+  [29X[2XArrow[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}(a,c)[123X[133X
+  
+  [33X[0;0YThe  argument  is  a generalized morphism [23X\alpha[123X by a cospan [23Xa \rightarrow b
+  \leftarrow c[123X. The output is its arrow [23Xa \rightarrow b[123X.[133X
+  
+  [1X2.3-3 ReversedArrow[101X
+  
+  [29X[2XReversedArrow[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}(c,b)[123X[133X
+  
+  [33X[0;0YThe  argument  is  a generalized morphism [23X\alpha[123X by a cospan [23Xa \rightarrow b
+  \leftarrow c[123X. The output is its reversed arrow [23Xb \leftarrow c[123X.[133X
+  
+  [1X2.3-4 NormalizedCospanTuple[101X
+  
+  [29X[2XNormalizedCospanTuple[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya pair of morphisms in [23X\mathbf{A}[123X.[133X
+  
+  [33X[0;0YThe  argument is a generalized morphism [23X\alpha: a \rightarrow b[123X by a cospan.
+  The output is its normalized cospan pair [23X(a \rightarrow d, d \leftarrow b)[123X.[133X
+  
+  [1X2.3-5 PseudoInverse[101X
+  
+  [29X[2XPseudoInverse[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
+  
+  [33X[0;0YThe  argument is a generalized morphism [23X\alpha: a \rightarrow b[123X by a cospan.
+  The output is its pseudo inverse [23Xb \rightarrow a[123X.[133X
+  
+  [1X2.3-6 GeneralizedInverseByCospan[101X
+  
+  [29X[2XGeneralizedInverseByCospan[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a \rightarrow b \in \mathbf{A}[123X. The
+  output is its generalized inverse [23Xb \rightarrow a[123X by cospan.[133X
+  
+  [1X2.3-7 IdempotentDefinedBySubobjectByCospan[101X
+  
+  [29X[2XIdempotentDefinedBySubobjectByCospan[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
+  
+  [33X[0;0YThe  argument is a subobject [23X\alpha: a \hookrightarrow b \in \mathbf{A}[123X. The
+  output is the idempotent [23Xb \rightarrow b \in \mathbf{G(A)}[123X by cospan defined
+  by [23X\alpha[123X.[133X
+  
+  [1X2.3-8 IdempotentDefinedByFactorobjectByCospan[101X
+  
+  [29X[2XIdempotentDefinedByFactorobjectByCospan[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
+  
+  [33X[0;0YThe   argument   is  a  factorobject  [23X\alpha:  b  \twoheadrightarrow  a  \in
+  \mathbf{A}[123X.  The  output is the idempotent [23Xb \rightarrow b \in \mathbf{G(A)}[123X
+  by cospan defined by [23X\alpha[123X.[133X
+  
+  [1X2.3-9 NormalizedCospan[101X
+  
+  [29X[2XNormalizedCospan[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(a,b)[123X[133X
+  
+  [33X[0;0YThe  argument is a generalized morphism [23X\alpha: a \rightarrow b[123X by a cospan.
+  The output is its normalization by cospan.[133X
+  
+  
+  [1X2.4 [33X[0;0YOperations[133X[101X
+  
+  [1X2.4-1 GeneralizedMorphismFromFactorToSubobjectByCospan[101X
+  
+  [29X[2XGeneralizedMorphismFromFactorToSubobjectByCospan[102X( [3Xbeta[103X, [3Xalpha[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(c,a)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  a  factorobject [23X\beta: b \twoheadrightarrow c[123X, and a
+  subobject  [23X\alpha:  a  \hookrightarrow  b[123X.  The  output  is  the generalized
+  morphism by cospan from the factorobject to the subobject.[133X
+  
+  
+  [1X2.5 [33X[0;0YConstructors[133X[101X
+  
+  [1X2.5-1 GeneralizedMorphismByCospan[101X
+  
+  [29X[2XGeneralizedMorphismByCospan[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(a,c)[123X[133X
+  
+  [33X[0;0YThe arguments are morphisms [23X\alpha: a \rightarrow b[123X and [23X\beta: c \rightarrow
+  b[123X  in  [23X\mathbf{A}[123X. The output is a generalized morphism by cospan with arrow
+  [23X\alpha[123X and reversed arrow [23X\beta[123X.[133X
+  
+  [1X2.5-2 GeneralizedMorphismByCospan[101X
+  
+  [29X[2XGeneralizedMorphismByCospan[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(a,d)[123X[133X
+  
+  [33X[0;0YThe  arguments are morphisms [23X\alpha: a \leftarrow b[123X, [23X\beta: b \rightarrow c[123X,
+  and  [23X\gamma:  c  \leftarrow  d[123X  in  [23X\mathbf{A}[123X.  The output is a generalized
+  morphism  by  cospan  defined  by  the  composition  the  given three arrows
+  regarded as generalized morphisms.[133X
+  
+  [1X2.5-3 GeneralizedMorphismByCospanWithSourceAid[101X
+  
+  [29X[2XGeneralizedMorphismByCospanWithSourceAid[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(a,c)[123X[133X
+  
+  [33X[0;0YThe arguments are morphisms [23X\alpha: a \leftarrow b[123X, and [23X\beta: b \rightarrow
+  c[123X  in  [23X\mathbf{A}[123X. The output is a generalized morphism by cospan defined by
+  the composition the given two arrows regarded as generalized morphisms.[133X
+  
+  [1X2.5-4 AsGeneralizedMorphismByCospan[101X
+  
+  [29X[2XAsGeneralizedMorphismByCospan[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(a,b)[123X[133X
+  
+  [33X[0;0YThe argument is a morphism [23X\alpha: a \rightarrow b[123X in [23X\mathbf{A}[123X. The output
+  is the honest generalized morphism by cospan defined by [23X\alpha[123X.[133X
+  
+  [1X2.5-5 GeneralizedMorphismCategoryByCospans[101X
+  
+  [29X[2XGeneralizedMorphismCategoryByCospans[102X( [3XA[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe   argument  is  an  abelian  category  [23X\mathbf{A}[123X.  The  output  is  its
+  generalized morphism category [23X\mathbf{G(A)}[123X by cospans.[133X
+  
+  [1X2.5-6 GeneralizedMorphismByCospansObject[101X
+  
+  [29X[2XGeneralizedMorphismByCospansObject[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Yan object in [23X\mathbf{G(A)}[123X[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X in an abelian category [23X\mathbf{A}[123X. The output is
+  the  object in the generalized morphism category by cospans whose underlying
+  honest object is [23Xa[123X.[133X
+  

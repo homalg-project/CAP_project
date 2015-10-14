@@ -1,0 +1,86 @@
+  
+  [1X1 [33X[0;0YCategory of Matrices[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YConstructors[133X[101X
+  
+  [1X1.1-1 MatrixCategory[101X
+  
+  [29X[2XMatrixCategory[102X( [3XF[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument is a homalg field [23XF[123X. The output is the matrix category over [23XF[123X.
+  Objects  in  this  category  are  non-negative  integers.  Morphisms  from a
+  non-negative  integer  [23Xm[123X to a non-negative integer [23Xn[123X are given by [23Xm \times n[123X
+  matrices.[133X
+  
+  [1X1.1-2 VectorSpaceMorphism[101X
+  
+  [29X[2XVectorSpaceMorphism[102X( [3XS[103X, [3XM[103X, [3XR[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(S,R)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23XS[123X in the category of matrices over a homalg
+  field  [23XF[123X,  a homalg matrix [23XM[123X over [23XF[123X, and another object [23XR[123X in the category of
+  matrices  over [23XF[123X. The output is the morphism [23XS \rightarrow R[123X in the category
+  of matrices over [23XF[123X whose underlying matrix is given by [23XM[123X.[133X
+  
+  [1X1.1-3 VectorSpaceObject[101X
+  
+  [29X[2XVectorSpaceObject[102X( [3Xd[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments are a non-negative integer [23Xd[123X and a homalg field [23XF[123X. The output
+  is an object in the category of matrices over [23XF[123X of dimension [23Xd[123X.[133X
+  
+  
+  [1X1.2 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X1.2-1 IsVectorSpaceMorphism[101X
+  
+  [29X[2XIsVectorSpaceMorphism[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of morphisms in the category of matrices of a field [23XF[123X.[133X
+  
+  [1X1.2-2 IsVectorSpaceObject[101X
+  
+  [29X[2XIsVectorSpaceObject[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of objects in the category of matrices of a field [23XF[123X.[133X
+  
+  
+  [1X1.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X1.3-1 UnderlyingFieldForHomalg[101X
+  
+  [29X[2XUnderlyingFieldForHomalg[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya homalg field[133X
+  
+  [33X[0;0YThe argument is a morphism [23X\alpha[123X in the matrix category over a homalg field
+  [23XF[123X. The output is the field [23XF[123X.[133X
+  
+  [1X1.3-2 UnderlyingMatrix[101X
+  
+  [29X[2XUnderlyingMatrix[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya homalg matrix[133X
+  
+  [33X[0;0YThe  argument  is  a morphism [23X\alpha[123X in a matrix category. The output is its
+  underlying matrix [23XM[123X.[133X
+  
+  [1X1.3-3 UnderlyingFieldForHomalg[101X
+  
+  [29X[2XUnderlyingFieldForHomalg[102X( [3XA[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya homalg field[133X
+  
+  [33X[0;0YThe  argument  is  an object [23XA[123X in the matrix category over a homalg field [23XF[123X.
+  The output is the field [23XF[123X.[133X
+  
+  [1X1.3-4 Dimension[101X
+  
+  [29X[2XDimension[102X( [3XA[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya non-negative integer[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23XA[123X  in  a  matrix  category. The output is the
+  dimension of [23XA[123X.[133X
+  

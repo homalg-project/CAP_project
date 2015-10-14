@@ -1,0 +1,166 @@
+  
+  [1X1 [33X[0;0YCAP Categories[133X[101X
+  
+  [33X[0;0YCategories  are  the main GAP objects in CAP. They are used to associate GAP
+  objects  which  represent  objects  and  morphisms  with  their category. By
+  associating  a  GAP  object to the category, one of two filters belonging to
+  the category (ObjectFilter/MorphismFilter) are set to true. Via Add methods,
+  functions  for  specific  existential  quantifiers  can be associated to the
+  category and after that can be applied to GAP objects in the category. A GAP
+  category  object  also  knows  which constructions are currently possible in
+  this category.[133X
+  
+  
+  [1X1.1 [33X[0;0YCategories[133X[101X
+  
+  [1X1.1-1 IsCapCategory[101X
+  
+  [29X[2XIsCapCategory[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category  of  CAP  categories. Objects of this type handle the CAP
+  category  information,  the  caching,  and  filters  for  objects in the CAP
+  category.  Please note that the object itself is not related to methods, you
+  only need it as a handler and a presentation of the CAP category.[133X
+  
+  [1X1.1-2 IsCapCategoryCell[101X
+  
+  [29X[2XIsCapCategoryCell[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category of CAP category cells. Every object, morphism, and [23X2[123X-cell
+  of a CAP category lies in this GAP category.[133X
+  
+  [1X1.1-3 IsCapCategoryObject[101X
+  
+  [29X[2XIsCapCategoryObject[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category  of  CAP category objects. Every object of a CAP category
+  lies in this GAP category.[133X
+  
+  [1X1.1-4 IsCapCategoryMorphism[101X
+  
+  [29X[2XIsCapCategoryMorphism[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of CAP category morphisms. Every morphism of a CAP category
+  lies in this GAP category.[133X
+  
+  [1X1.1-5 IsCapCategoryTwoCell[101X
+  
+  [29X[2XIsCapCategoryTwoCell[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category  of  CAP category [23X2[123X-cells. Every [23X2[123X-cell of a CAP category
+  lies in this GAP category.[133X
+  
+  
+  [1X1.2 [33X[0;0YConstructor[133X[101X
+  
+  [1X1.2-1 CreateCapCategory[101X
+  
+  [29X[2XCreateCapCategory[102X(  ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YCreates a new CAP category from scratch. It gets a generic name.[133X
+  
+  [1X1.2-2 CreateCapCategory[101X
+  
+  [29X[2XCreateCapCategory[102X( [3Xs[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument  is a string [23Xs[123X. This operation creates a new CAP category from
+  scratch. Its name is set to [23Xs[123X.[133X
+  
+  
+  [1X1.3 [33X[0;0YInternal Attributes[133X[101X
+  
+  [33X[0;0YEach  category  [23XC[123X  stores  various filters. They are used to apply the right
+  functions in the method selection.[133X
+  
+  [1X1.3-1 CategoryFilter[101X
+  
+  [29X[2XCategoryFilter[102X( [3XC[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe argument is a cateogry [23XC[123X. The output is a filter in which [23XC[123X lies.[133X
+  
+  [1X1.3-2 CellFilter[101X
+  
+  [29X[2XCellFilter[102X( [3XC[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe argument is a cateogry [23XC[123X. The output is a filter in which all cells of [23XC[123X
+  shall lie.[133X
+  
+  [1X1.3-3 ObjectFilter[101X
+  
+  [29X[2XObjectFilter[102X( [3XC[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe argument is a cateogry [23XC[123X. The output is a filter in which all objects of
+  [23XC[123X shall lie.[133X
+  
+  [1X1.3-4 MorphismFilter[101X
+  
+  [29X[2XMorphismFilter[102X( [3XC[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe  argument is a cateogry [23XC[123X. The output is a filter in which all morphisms
+  of [23XC[123X shall lie.[133X
+  
+  [1X1.3-5 TwoCellFilter[101X
+  
+  [29X[2XTwoCellFilter[102X( [3XC[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe argument is a cateogry [23XC[123X. The output is a filter in which all [23X2[123X-cells of
+  [23XC[123X shall lie.[133X
+  
+  
+  [1X1.4 [33X[0;0YTool functions[133X[101X
+  
+  [1X1.4-1 CanCompute[101X
+  
+  [29X[2XCanCompute[102X( [3XC[103X, [3Xs[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  argument  is a category [23XC[123X and a string [23Xs[123X, which should be the name of a
+  primitive  operation,  e.g., PreCompose. If applying this method is possible
+  in  [23XC[123X,  the  method  returns [10Xtrue[110X, [10Xfalse[110X otherwise. If the string is not the
+  name of a primitive operation, an error is raised.[133X
+  
+  [1X1.4-2 CheckConstructivenessOfCategory[101X
+  
+  [29X[2XCheckConstructivenessOfCategory[102X( [3XC[103X, [3Xs[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are  a  category  [23XC[123X  and  a  string [23Xs[123X. If [23Xs[123X is a categorical
+  property  (e.g.  [10X"IsAbelianCategory"[110X),  the output is a list of strings with
+  basic  operations  which  are  missing in [23XC[123X to have the categorical property
+  constructively. If [23Xs[123X is not a categorical property, an error is raised.[133X
+  
+  
+  [1X1.5 [33X[0;0YWell-Definedness of Cells[133X[101X
+  
+  [1X1.5-1 IsWellDefined[101X
+  
+  [29X[2XIsWellDefined[102X( [3Xc[103X ) [32X property
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe argument is a cell [23Xc[123X. The output is [10Xtrue[110X if [23Xc[123X is well-defined, otherwise
+  the output is [10Xfalse[110X.[133X
+  
+  
+  [1X1.6 [33X[0;0YType check[133X[101X
+  
+  [1X1.6-1 DisableBasicOperationTypeCheck[101X
+  
+  [29X[2XDisableBasicOperationTypeCheck[102X( [3Xcategory[103X ) [32X function
+  [29X[2XEnableBasicOperationTypeCheck[102X( [3Xarg[103X ) [32X function
+  
+  [33X[0;0YMost  basic  operations have a prefunction, which does a (sometimes partial)
+  typecheck  at  the  beginning  of  the  operation. These functions enable or
+  disable this check for a category. (Enabled by default)[133X
+  

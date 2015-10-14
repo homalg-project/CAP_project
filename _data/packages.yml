@@ -1,0 +1,5 @@
+package_links:
+    - name: CAP
+    - name: GeneralizedMorphismsForCAP
+    - name: LinearAlgebraForCAP
+    - name: ModulePresentationsForCAP

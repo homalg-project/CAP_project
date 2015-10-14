@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (LinearAlgebraForCAP) - Chapter 1: Category of Matrices</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
+<p><a id="X79A2BF518637FFB7" name="X79A2BF518637FFB7"></a></p>
+<div class="ChapSects"><a href="chap1.html#X79A2BF518637FFB7">1 <span class="Heading">Category of Matrices</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X86EC0F0A78ECBC10">1.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X79D9727280354457">1.1-1 MatrixCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C6DB0457A656406">1.1-2 VectorSpaceMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7EB162887B8F8708">1.1-3 VectorSpaceObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7D03633A7D98026B">1.2 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DAEE1D67CDFA35A">1.2-1 IsVectorSpaceMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7EF7321D794F9050">1.2-2 IsVectorSpaceObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7C701DBF7BAE649A">1.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A25998E79499AE8">1.3-1 UnderlyingFieldForHomalg</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8513433F7DA84E66">1.3-2 UnderlyingMatrix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83D0E5BD8763C8FD">1.3-3 UnderlyingFieldForHomalg</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81C6A5F382A1D4F5">1.3-4 Dimension</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Category of Matrices</span></h3>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>1.1 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X79D9727280354457" name="X79D9727280354457"></a></p>
+
+<h5>1.1-1 MatrixCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixCategory</code>( <var class="Arg">F</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a homalg field <span class="Math">F</span>. The output is the matrix category over <span class="Math">F</span>. Objects in this category are non-negative integers. Morphisms from a non-negative integer <span class="Math">m</span> to a non-negative integer <span class="Math">n</span> are given by <span class="Math">m \times n</span> matrices.</p>
+
+<p><a id="X7C6DB0457A656406" name="X7C6DB0457A656406"></a></p>
+
+<h5>1.1-2 VectorSpaceMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; VectorSpaceMorphism</code>( <var class="Arg">S</var>, <var class="Arg">M</var>, <var class="Arg">R</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(S,R)</span></p>
+
+<p>The arguments are an object <span class="Math">S</span> in the category of matrices over a homalg field <span class="Math">F</span>, a homalg matrix <span class="Math">M</span> over <span class="Math">F</span>, and another object <span class="Math">R</span> in the category of matrices over <span class="Math">F</span>. The output is the morphism <span class="Math">S \rightarrow R</span> in the category of matrices over <span class="Math">F</span> whose underlying matrix is given by <span class="Math">M</span>.</p>
+
+<p><a id="X7EB162887B8F8708" name="X7EB162887B8F8708"></a></p>
+
+<h5>1.1-3 VectorSpaceObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; VectorSpaceObject</code>( <var class="Arg">d</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are a non-negative integer <span class="Math">d</span> and a homalg field <span class="Math">F</span>. The output is an object in the category of matrices over <span class="Math">F</span> of dimension <span class="Math">d</span>.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>1.2 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X7DAEE1D67CDFA35A" name="X7DAEE1D67CDFA35A"></a></p>
+
+<h5>1.2-1 IsVectorSpaceMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsVectorSpaceMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of morphisms in the category of matrices of a field <span class="Math">F</span>.</p>
+
+<p><a id="X7EF7321D794F9050" name="X7EF7321D794F9050"></a></p>
+
+<h5>1.2-2 IsVectorSpaceObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsVectorSpaceObject</code>( <var class="Arg">object</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of objects in the category of matrices of a field <span class="Math">F</span>.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>1.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7A25998E79499AE8" name="X7A25998E79499AE8"></a></p>
+
+<h5>1.3-1 UnderlyingFieldForHomalg</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingFieldForHomalg</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a homalg field</p>
+
+<p>The argument is a morphism <span class="Math">\alpha</span> in the matrix category over a homalg field <span class="Math">F</span>. The output is the field <span class="Math">F</span>.</p>
+
+<p><a id="X8513433F7DA84E66" name="X8513433F7DA84E66"></a></p>
+
+<h5>1.3-2 UnderlyingMatrix</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingMatrix</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a homalg matrix</p>
+
+<p>The argument is a morphism <span class="Math">\alpha</span> in a matrix category. The output is its underlying matrix <span class="Math">M</span>.</p>
+
+<p><a id="X83D0E5BD8763C8FD" name="X83D0E5BD8763C8FD"></a></p>
+
+<h5>1.3-3 UnderlyingFieldForHomalg</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingFieldForHomalg</code>( <var class="Arg">A</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a homalg field</p>
+
+<p>The argument is an object <span class="Math">A</span> in the matrix category over a homalg field <span class="Math">F</span>. The output is the field <span class="Math">F</span>.</p>
+
+<p><a id="X81C6A5F382A1D4F5" name="X81C6A5F382A1D4F5"></a></p>
+
+<h5>1.3-4 Dimension</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">A</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a non-negative integer</p>
+
+<p>The argument is an object <span class="Math">A</span> in a matrix category. The output is the dimension of <span class="Math">A</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

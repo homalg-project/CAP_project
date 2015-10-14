@@ -1,0 +1,618 @@
+  
+  [1X3 [33X[0;0YMorphisms[133X[101X
+  
+  [33X[0;0YAny  GAP  object satisfying [10XIsCapCategoryMorphism[110X can be added to a category
+  and then becomes a morphism in this category. Any morphism can belong to one
+  or  no category. After a GAP object is added to the category, it knows which
+  things  can be computed in its category and to which category it belongs. It
+  knows   categorical   properties  and  attributes,  and  the  functions  for
+  existential quantifiers can be applied to the morphism.[133X
+  
+  
+  [1X3.1 [33X[0;0YAttributes for the Type of Morphisms[133X[101X
+  
+  [1X3.1-1 CapCategory[101X
+  
+  [29X[2XCapCategory[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument is a morphism [23X\alpha[123X. The output is the category [23X\mathbf{C}[123X to
+  which [23X\alpha[123X was added.[133X
+  
+  [1X3.1-2 Source[101X
+  
+  [29X[2XSource[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is a morphism [23X\alpha: a \rightarrow b[123X. The output is its source
+  [23Xa[123X.[133X
+  
+  [1X3.1-3 Range[101X
+  
+  [29X[2XRange[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  argument is a morphism [23X\alpha: a \rightarrow b[123X. The output is its range
+  [23Xb[123X.[133X
+  
+  
+  [1X3.2 [33X[0;0YCategorical Properties of Morphisms[133X[101X
+  
+  [1X3.2-1 AddIsMonomorphism[101X
+  
+  [29X[2XAddIsMonomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XIsMonomorphism[110X. [23XF:
+  \alpha \mapsto \mathtt{IsMonomorphism}(\alpha)[123X.[133X
+  
+  [1X3.2-2 AddIsEpimorphism[101X
+  
+  [29X[2XAddIsEpimorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X to the category for the basic operation [10XIsEpimorphism[110X. [23XF:
+  \alpha \mapsto \mathtt{IsEpimorphism}(\alpha)[123X.[133X
+  
+  [1X3.2-3 AddIsIsomorphism[101X
+  
+  [29X[2XAddIsIsomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X to the category for the basic operation [10XIsIsomorphism[110X. [23XF:
+  \alpha \mapsto \mathtt{IsIsomorphism}(\alpha)[123X.[133X
+  
+  [1X3.2-4 AddIsSplitMonomorphism[101X
+  
+  [29X[2XAddIsSplitMonomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsSplitMonomorphism[110X. [23XF: \alpha \mapsto \mathtt{IsSplitMonomorphism}(\alpha)[123X.[133X
+  
+  [1X3.2-5 AddIsSplitEpimorphism[101X
+  
+  [29X[2XAddIsSplitEpimorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given function [23XF[123X to the category for the basic operation [10XIsSplitEpimorphism[110X.
+  [23XF: \alpha \mapsto \mathtt{IsSplitEpimorphism}(\alpha)[123X.[133X
+  
+  [1X3.2-6 AddIsOne[101X
+  
+  [29X[2XAddIsOne[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to the category for the basic operation [10XIsOne[110X. [23XF: \alpha
+  \mapsto \mathtt{IsOne}(\alpha)[123X.[133X
+  
+  [1X3.2-7 AddIsIdempotent[101X
+  
+  [29X[2XAddIsIdempotent[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to the category for the basic operation [10XIsIdempotent[110X. [23XF:
+  \alpha \mapsto \mathtt{IsIdempotent}(\alpha)[123X.[133X
+  
+  
+  [1X3.3 [33X[0;0YNon-Categorical Properties of Morphisms[133X[101X
+  
+  [33X[0;0YNon-categorical properties are not stable under equivalences of categories.[133X
+  
+  [1X3.3-1 IsIdenticalToIdentityMorphism[101X
+  
+  [29X[2XIsIdenticalToIdentityMorphism[102X( [3Xalpha[103X ) [32X property
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  a morphism [23X\alpha: a \rightarrow b[123X. The output is [10Xtrue[110X if
+  [23X\alpha = \mathrm{id}_a[123X, otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X3.3-2 AddIsIdenticalToIdentityMorphism[101X
+  
+  [29X[2XAddIsIdenticalToIdentityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsIdenticalToIdentityMorphism[110X.           [23XF:          \alpha          \mapsto
+  \mathtt{IsIdenticalToIdentityMorphism}(\alpha)[123X.[133X
+  
+  [1X3.3-3 IsIdenticalToZeroMorphism[101X
+  
+  [29X[2XIsIdenticalToZeroMorphism[102X( [3Xalpha[103X ) [32X property
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  a morphism [23X\alpha: a \rightarrow b[123X. The output is [10Xtrue[110X if
+  [23X\alpha = 0[123X, otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X3.3-4 AddIsIdenticalToZeroMorphism[101X
+  
+  [29X[2XAddIsIdenticalToZeroMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsIdenticalToZeroMorphism[110X.            [23XF:            \alpha           \mapsto
+  \mathtt{IsIdenticalToZeroMorphism }(\alpha)[123X.[133X
+  
+  [1X3.3-5 AddIsEndomorphism[101X
+  
+  [29X[2XAddIsEndomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XIsEndomorphism[110X. [23XF:
+  \alpha \mapsto \mathtt{IsEndomorphism}(\alpha)[123X.[133X
+  
+  [1X3.3-6 AddIsAutomorphism[101X
+  
+  [29X[2XAddIsAutomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XIsAutomorphism[110X. [23XF:
+  \alpha \mapsto \mathtt{IsAutomorphism}(\alpha)[123X.[133X
+  
+  
+  [1X3.4 [33X[0;0YEquality and Congruence for Morphisms[133X[101X
+  
+  [1X3.4-1 IsCongruentForMorphisms[101X
+  
+  [29X[2XIsCongruentForMorphisms[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  arguments  are two morphisms [23X\alpha, \beta: a \rightarrow b[123X. The output
+  is [10Xtrue[110X if [23X\alpha \sim_{a,b} \beta[123X, otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X3.4-2 AddIsCongruentForMorphisms[101X
+  
+  [29X[2XAddIsCongruentForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsCongruentForMorphisms[110X.        [23XF:       (\alpha,       \beta)       \mapsto
+  \mathtt{IsCongruentForMorphisms}(\alpha, \beta)[123X.[133X
+  
+  [1X3.4-3 IsEqualForMorphisms[101X
+  
+  [29X[2XIsEqualForMorphisms[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  arguments  are two morphisms [23X\alpha, \beta: a \rightarrow b[123X. The output
+  is [10Xtrue[110X if [23X\alpha = \beta[123X, otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X3.4-4 AddIsEqualForMorphisms[101X
+  
+  [29X[2XAddIsEqualForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsEqualForMorphisms[110X.         [23XF:        (\alpha,        \beta)        \mapsto
+  \mathtt{IsEqualForMorphisms}(\alpha, \beta)[123X.[133X
+  
+  [1X3.4-5 IsEqualForMorphismsOnMor[101X
+  
+  [29X[2XIsEqualForMorphismsOnMor[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  b,  \beta:  c
+  \rightarrow d[123X. The output is [10Xtrue[110X if [23X\alpha = \beta[123X, otherwise the output is
+  [10Xfalse[110X.[133X
+  
+  [1X3.4-6 AddIsEqualForMorphismsOnMor[101X
+  
+  [29X[2XAddIsEqualForMorphismsOnMor[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsEqualForMorphismsOnMor[110X.       [23XF:       (\alpha,       \beta)       \mapsto
+  \mathtt{IsEqualForMorphismsOnMor}(\alpha, \beta)[123X.[133X
+  
+  
+  [1X3.5 [33X[0;0YBasic Operations for Morphisms in Ab-Categories[133X[101X
+  
+  [1X3.5-1 IsZeroForMorphisms[101X
+  
+  [29X[2XIsZeroForMorphisms[102X( [3Xalpha[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  a morphism [23X\alpha: a \rightarrow b[123X. The output is [10Xtrue[110X if
+  [23X\alpha \sim_{a,b} 0[123X, otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X3.5-2 AddIsZeroForMorphisms[101X
+  
+  [29X[2XAddIsZeroForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given function [23XF[123X to the category for the basic operation [10XIsZeroForMorphisms[110X.
+  [23XF: \alpha \mapsto \mathtt{IsZeroForMorphisms}(\alpha)[123X.[133X
+  
+  [1X3.5-3 AdditionForMorphisms[101X
+  
+  [29X[2XAdditionForMorphisms[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
+  
+  [33X[0;0YThe  arguments  are two morphisms [23X\alpha, \beta: a \rightarrow b[123X. The output
+  is the addition [23X\alpha + \beta[123X.[133X
+  
+  [1X3.5-4 AddAdditionForMorphisms[101X
+  
+  [29X[2XAddAdditionForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XAdditionForMorphisms[110X. [23XF: (\alpha, \beta) \mapsto \alpha + \beta[123X.[133X
+  
+  [1X3.5-5 AdditiveInverseForMorphisms[101X
+  
+  [29X[2XAdditiveInverseForMorphisms[102X( [3Xalpha[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a  \rightarrow b[123X. The output is its
+  additive inverse [23X-\alpha[123X.[133X
+  
+  [1X3.5-6 AddAdditiveInverseForMorphisms[101X
+  
+  [29X[2XAddAdditiveInverseForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XAdditiveInverseForMorphisms[110X. [23XF: \alpha \mapsto -\alpha[123X.[133X
+  
+  [1X3.5-7 ZeroMorphism[101X
+  
+  [29X[2XZeroMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
+  
+  [33X[0;0YThe  arguments are two objects [23Xa[123X and [23Xb[123X. The output is the zero morphism [23X0: a
+  \rightarrow b[123X.[133X
+  
+  [1X3.5-8 AddZeroMorphism[101X
+  
+  [29X[2XAddZeroMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to the category for the basic operation [10XZeroMorphism[110X. [23XF:
+  (a,b) \mapsto (0: a \rightarrow b)[123X.[133X
+  
+  
+  [1X3.6 [33X[0;0YSubobject and Factorobject Operations[133X[101X
+  
+  [33X[0;0YSubobjects  of  an  object  [23Xc[123X  are  monomorphisms with range [23Xc[123X and a special
+  function  for  comparision.  Similarly,  factorobjects  of  an  object [23Xc[123X are
+  epimorphisms with source [23Xc[123X and a special function for comparision.[133X
+  
+  [1X3.6-1 IsEqualAsSubobjects[101X
+  
+  [29X[2XIsEqualAsSubobjects[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  arguments  are  two  subobjects  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  b
+  \rightarrow  c[123X.  The  output is [10Xtrue[110X if there exists an isomorphism [23X\iota: a
+  \rightarrow  b[123X  such that [23X\beta \circ \iota \sim_{a,c} \alpha[123X, otherwise the
+  output is [10Xfalse[110X.[133X
+  
+  [1X3.6-2 AddIsEqualAsSubobjects[101X
+  
+  [29X[2XAddIsEqualAsSubobjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsEqualAsSubobjects[110X.         [23XF:        (\alpha,        \beta)        \mapsto
+  \mathtt{IsEqualAsSubobjects}(\alpha,\beta)[123X.[133X
+  
+  [1X3.6-3 IsEqualAsFactorobjects[101X
+  
+  [29X[2XIsEqualAsFactorobjects[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  arguments  are  two  factorobjects  [23X\alpha:  c  \rightarrow a[123X, [23X\beta: c
+  \rightarrow  b[123X.  The  output is [10Xtrue[110X if there exists an isomorphism [23X\iota: b
+  \rightarrow  a[123X  such that [23X\iota \circ \beta \sim_{c,a} \alpha[123X, otherwise the
+  output is [10Xfalse[110X.[133X
+  
+  [1X3.6-4 AddIsEqualAsFactorobjects[101X
+  
+  [29X[2XAddIsEqualAsFactorobjects[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsEqualAsFactorobjects[110X.        [23XF:        (\alpha,       \beta)       \mapsto
+  \mathtt{IsEqualAsFactorobjects}(\alpha,\beta)[123X.[133X
+  
+  [1X3.6-5 Dominates[101X
+  
+  [29X[2XDominates[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YIn  short:  Returns  [10Xtrue[110X  iff  [23X\alpha[123X  is  smaller  than  [23X\beta[123X.  [23X\\  [123X Full
+  description:  The  arguments  are  two  subobjects  [23X\alpha: a \rightarrow c[123X,
+  [23X\beta: b \rightarrow c[123X. The output is [10Xtrue[110X if there exists a morphism [23X\iota:
+  a \rightarrow b[123X such that [23X\beta \circ \iota \sim_{a,c} \alpha[123X, otherwise the
+  output is [10Xfalse[110X.[133X
+  
+  [1X3.6-6 AddDominates[101X
+  
+  [29X[2XAddDominates[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to  the  category  for the basic operation [10XDominates[110X. [23XF:
+  (\alpha, \beta) \mapsto \mathtt{Dominates}(\alpha,\beta)[123X.[133X
+  
+  [1X3.6-7 Codominates[101X
+  
+  [29X[2XCodominates[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YIn  short:  Returns  [10Xtrue[110X  iff  [23X\alpha[123X  is  smaller  than  [23X\beta[123X.  [23X\\  [123X Full
+  description:  The  arguments  are two factorobjects [23X\alpha: c \rightarrow a[123X,
+  [23X\beta: c \rightarrow b[123X. The output is [10Xtrue[110X if there exists a morphism [23X\iota:
+  b \rightarrow a[123X such that [23X\iota \circ \beta \sim_{c,a} \alpha[123X, otherwise the
+  output is [10Xfalse[110X.[133X
+  
+  [1X3.6-8 AddCodominates[101X
+  
+  [29X[2XAddCodominates[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to  the category for the basic operation [10XCodominates[110X. [23XF:
+  (\alpha, \beta) \mapsto \mathtt{Codominates}(\alpha,\beta)[123X.[133X
+  
+  
+  [1X3.7 [33X[0;0YIdentity Morphism and Composition of Morphisms[133X[101X
+  
+  [1X3.7-1 IdentityMorphism[101X
+  
+  [29X[2XIdentityMorphism[102X( [3Xa[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,a)[123X[133X
+  
+  [33X[0;0YThe   argument  is  an  object  [23Xa[123X.  The  output  is  its  identity  morphism
+  [23X\mathrm{id}_a[123X.[133X
+  
+  [1X3.7-2 AddIdentityMorphism[101X
+  
+  [29X[2XAddIdentityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X to the category for the basic operation [10XIdentityMorphism[110X.
+  [23XF: a \mapsto \mathrm{id}_a[123X.[133X
+  
+  [1X3.7-3 PreCompose[101X
+  
+  [29X[2XPreCompose[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, c )[123X[133X
+  
+  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  b[123X,  [23X\beta:  b
+  \rightarrow  c[123X.  The  output  is  the  composition  [23X\beta  \circ  \alpha:  a
+  \rightarrow c[123X.[133X
+  
+  [1X3.7-4 PreCompose[101X
+  
+  [29X[2XPreCompose[102X( [3XL[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_1, a_{n+1})[123X[133X
+  
+  [33X[0;0YThis  is  a  convenience  method.  The argument is a list of morphisms [23XL = (
+  \alpha_1:  a_1  \rightarrow  a_2,  \alpha_2:  a_2  \rightarrow  a_3,  \dots,
+  \alpha_n:   a_n  \rightarrow  a_{n+1}  )[123X.  The  output  is  the  composition
+  [23X\alpha_{n}  \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) )
+  )[123X.[133X
+  
+  [1X3.7-5 AddPreCompose[101X
+  
+  [29X[2XAddPreCompose[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to  the  category for the basic operation [10XPreCompose[110X. [23XF:
+  (\alpha, \beta) \mapsto \beta \circ \alpha[123X.[133X
+  
+  [1X3.7-6 PostCompose[101X
+  
+  [29X[2XPostCompose[102X( [3Xbeta[103X, [3Xalpha[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, c )[123X[133X
+  
+  [33X[0;0YThe   arguments  are  two  morphisms  [23X\beta:  b  \rightarrow  c[123X,  [23X\alpha:  a
+  \rightarrow  b[123X.  The  output  is  the  composition  [23X\beta  \circ  \alpha:  a
+  \rightarrow c[123X.[133X
+  
+  [1X3.7-7 PostCompose[101X
+  
+  [29X[2XPostCompose[102X( [3XL[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_1, a_{n+1})[123X[133X
+  
+  [33X[0;0YThis  is  a  convenience  method.  The argument is a list of morphisms [23XL = (
+  \alpha_n:  a_n  \rightarrow  a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n,
+  \dots,  \alpha_1:  a_1  \rightarrow  a_2  )[123X.  The  output is the composition
+  [23X((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1[123X.[133X
+  
+  [1X3.7-8 AddPostCompose[101X
+  
+  [29X[2XAddPostCompose[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to  the category for the basic operation [10XPostCompose[110X. [23XF:
+  (\alpha, \beta) \mapsto \alpha \circ \beta[123X.[133X
+  
+  
+  [1X3.8 [33X[0;0YWell-Definedness of Morphisms[133X[101X
+  
+  [1X3.8-1 IsWellDefinedForMorphisms[101X
+  
+  [29X[2XIsWellDefinedForMorphisms[102X( [3Xalpha[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output  is  [10Xtrue[110X  if [23X\alpha[123X is
+  well-defined, otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X3.8-2 AddIsWellDefinedForMorphisms[101X
+  
+  [29X[2XAddIsWellDefinedForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsWellDefinedForMorphisms[110X.            [23XF:            \alpha           \mapsto
+  \mathtt{IsWellDefinedForMorphisms}( \alpha )[123X.[133X
+  
+  
+  [1X3.9 [33X[0;0YBasic Operations for Morphisms in Abelian Categories[133X[101X
+  
+  [1X3.9-1 LiftAlongMonomorphism[101X
+  
+  [29X[2XLiftAlongMonomorphism[102X( [3Xiota[103X, [3Xtau[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(t,k)[123X[133X
+  
+  [33X[0;0YThe  arguments  are a monomorphism [23X\iota: k \hookrightarrow a[123X and a morphism
+  [23X\tau:  t \rightarrow a[123X such that there is a morphism [23Xu: t \rightarrow k[123X with
+  [23X\iota \circ u \sim_{t,a} \tau[123X. The output is such a [23Xu[123X.[133X
+  
+  [1X3.9-2 AddLiftAlongMonomorphism[101X
+  
+  [29X[2XAddLiftAlongMonomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XLiftAlongMonomorphism[110X.  The function [23XF[123X maps a pair [23X(\iota, \tau)[123X to a lift [23Xu[123X
+  if it exists, and to [10Xfail[110X otherwise.[133X
+  
+  [1X3.9-3 ColiftAlongEpimorphism[101X
+  
+  [29X[2XColiftAlongEpimorphism[102X( [3Xepsilon[103X, [3Xtau[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(c,t)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an epimorphism [23X\epsilon: a \rightarrow c[123X and a morphism
+  [23X\tau:  a \rightarrow t[123X such that there is a morphism [23Xu: c \rightarrow t[123X with
+  [23Xu \circ \epsilon \sim_{a,t} \tau[123X. The output is such a [23Xu[123X.[133X
+  
+  [1X3.9-4 AddColiftAlongEpimorphism[101X
+  
+  [29X[2XAddColiftAlongEpimorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XColiftAlongEpimorphism[110X.  The  function  [23XF[123X  maps a pair [23X(\epsilon, \tau)[123X to a
+  lift [23Xu[123X if it exists, and to [10Xfail[110X otherwise.[133X
+  
+  
+  [1X3.10 [33X[0;0YLift/ Colift[133X[101X
+  
+  [30X    [33X[0;6YFor   any  pair  of  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  b
+        \rightarrow  c[123X,  we call each morphism [23X\alpha / \beta: a \rightarrow b[123X
+        such  that  [23X\beta  \circ  (\alpha / \beta) \sim_{a,c} \alpha[123X a [13Xlift of
+        [23X\alpha[123X along [23X\beta[123X[113X.[133X
+  
+  [30X    [33X[0;6YFor   any  pair  of  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  a
+        \rightarrow  b[123X,  we  call  each  morphism  [23X\alpha  \backslash \beta: c
+        \rightarrow  b[123X  such  that  [23X(\alpha  \backslash  \beta)  \circ  \alpha
+        \sim_{a,b} \beta[123X a [13X colift of [23X\beta[123X along [23X\alpha[123X[113X.[133X
+  
+  [33X[0;0YNote  that  such lifts (or colifts) do not have to be unique. So in general,
+  we  do  not expect that algorithms computing lifts (or colifts) do this in a
+  functorial  way.  Thus  the operations [23X\mathtt{Lift}[123X and [23X\mathtt{Colift}[123X are
+  not   regarded   as   categorical  operations,  but  only  as  set-theoretic
+  operations.[133X
+  
+  [1X3.10-1 Lift[101X
+  
+  [29X[2XLift[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
+  
+  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  b
+  \rightarrow  c[123X  such that there is a lift [23X\alpha / \beta: a \rightarrow b[123X of
+  [23X\alpha[123X  along [23X\beta[123X, i.e., a morphism such that [23X\beta \circ (\alpha / \beta)
+  \sim_{a,c} \alpha[123X. The output is such a lift.[133X
+  
+  [1X3.10-2 AddLift[101X
+  
+  [29X[2XAddLift[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XLift[110X. The function
+  [23XF[123X  maps a pair [23X(\alpha, \beta)[123X to a lift [23X\alpha / \beta[123X if it exists, and to
+  [10Xfail[110X otherwise.[133X
+  
+  [1X3.10-3 Colift[101X
+  
+  [29X[2XColift[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(c,b)[123X[133X
+  
+  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  a
+  \rightarrow  b[123X  such  that  there  is  a  colift  [23X\alpha \backslash \beta: c
+  \rightarrow  b[123X  of  [23X\beta[123X  along [23X\alpha[123X., i.e., a morphism such that [23X(\alpha
+  \backslash  \beta)  \circ  \alpha  \sim_{a,b}  \beta[123X.  The  output is such a
+  colift.[133X
+  
+  [1X3.10-4 AddColift[101X
+  
+  [29X[2XAddColift[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to  the  category  for  the  basic operation [10XColift[110X. The
+  function  [23XF[123X  maps a pair [23X(\alpha, \beta)[123X to a colift [23X\alpha \backslash \beta[123X
+  if it exists, and to [10Xfail[110X otherwise.[133X
+  
+  
+  [1X3.11 [33X[0;0YInverses[133X[101X
+  
+  [33X[0;0YLet  [23X\alpha:  a  \rightarrow  b[123X  be  a  morphism.  An inverse of [23X\alpha[123X is a
+  morphism  [23X\alpha^{-1}:  b  \rightarrow  a[123X such that [23X\alpha \circ \alpha^{-1}
+  \sim_{b,b}   \mathrm{id}_b[123X   and   [23X\alpha^{-1}   \circ   \alpha   \sim_{a,a}
+  \mathrm{id}_a[123X.[133X
+  
+  [1X3.11-1 AddInverse[101X
+  
+  [29X[2XAddInverse[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XInverse[110X. [23XF: \alpha
+  \mapsto \alpha^{-1}[123X.[133X
+  
+  
+  [1X3.12 [33X[0;0YTool functions for caches[133X[101X
+  
+  [1X3.12-1 IsEqualForCacheForMorphisms[101X
+  
+  [29X[2XIsEqualForCacheForMorphisms[102X( [3Xphi[103X, [3Xpsi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YCompares two objects in the cache[133X
+  
+  [1X3.12-2 AddIsEqualForCacheForMorphisms[101X
+  
+  [29X[2XAddIsEqualForCacheForMorphisms[102X( [3Xc[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynorthing[133X
+  
+  [33X[0;0YBy  default,  CAP uses caches to store the values of Categorical operations.
+  To  get  a value out of the cache, one needs to compare the input of a basic
+  operation  with  its  previous  input. To compare morphisms in the category,
+  IsEqualForCacheForMorphism  is  used.  By  default  this  is  an  alias  for
+  IsEqualForMorphismsOnMor,  where  fail is substituted by false. If you add a
+  function,  this  function  used  instead.  A function [23XF: a,b \mapsto bool[123X is
+  expected  here.  The  output has to be true or false. Fail is not allowed in
+  this context.[133X
+  

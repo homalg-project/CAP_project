@@ -1,0 +1,230 @@
+  
+  [1X1 [33X[0;0YModule Presentations[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YFunctors[133X[101X
+  
+  [1X1.1-1 FunctorStandardModuleLeft[101X
+  
+  [29X[2XFunctorStandardModuleLeft[102X( [3XR[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is  a homalg ring [23XR[123X. The output is functor which takes a left
+  presentation as input and computes its standard presentation.[133X
+  
+  [1X1.1-2 FunctorStandardModuleRight[101X
+  
+  [29X[2XFunctorStandardModuleRight[102X( [3XR[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is a homalg ring [23XR[123X. The output is functor which takes a right
+  presentation as input and computes its standard presentation.[133X
+  
+  [1X1.1-3 FunctorLessGeneratorsLeft[101X
+  
+  [29X[2XFunctorLessGeneratorsLeft[102X( [3XR[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is  a homalg ring [23XR[123X. The output is functor which takes a left
+  presentation as input and computes it a presentation having less generators.[133X
+  
+  [1X1.1-4 FunctorLessGeneratorsRight[101X
+  
+  [29X[2XFunctorLessGeneratorsRight[102X( [3XR[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is a homalg ring [23XR[123X. The output is functor which takes a right
+  presentation as input and computes it a presentation having less generators.[133X
+  
+  
+  [1X1.2 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X1.2-1 IsLeftOrRightPresentationMorphism[101X
+  
+  [29X[2XIsLeftOrRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe   GAP   category   of  morphisms  in  the  category  of  left  or  right
+  presentations.[133X
+  
+  [1X1.2-2 IsLeftPresentationMorphism[101X
+  
+  [29X[2XIsLeftPresentationMorphism[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of morphisms in the category of left presentations.[133X
+  
+  [1X1.2-3 IsRightPresentationMorphism[101X
+  
+  [29X[2XIsRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of morphisms in the category of right presentations.[133X
+  
+  [1X1.2-4 IsLeftOrRightPresentation[101X
+  
+  [29X[2XIsLeftOrRightPresentation[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category of objects in the category of left presentations or right
+  presentations.[133X
+  
+  [1X1.2-5 IsLeftPresentation[101X
+  
+  [29X[2XIsLeftPresentation[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of objects in the category of left presentations.[133X
+  
+  [1X1.2-6 IsRightPresentation[101X
+  
+  [29X[2XIsRightPresentation[102X( [3Xobject[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of objects in the category of right presentations.[133X
+  
+  
+  [1X1.3 [33X[0;0YConstructors[133X[101X
+  
+  [1X1.3-1 PresentationMorphism[101X
+  
+  [29X[2XPresentationMorphism[102X( [3XA[103X, [3XM[103X, [3XB[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A,B)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an object [23XA[123X, a homalg matrix [23XM[123X, and another object [23XB[123X. [23XA[123X
+  and  [23XB[123X shall either both be objects in the category of left presentations or
+  both  be  objects  in  the  category of right presentations. The output is a
+  morphism  [23XA \rightarrow B[123X in the the category of left or right presentations
+  whose underlying matrix is given by [23XM[123X.[133X
+  
+  [1X1.3-2 AsLeftPresentation[101X
+  
+  [29X[2XAsLeftPresentation[102X( [3XM[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  argument is a homalg matrix [23XM[123X over a ring [23XR[123X. The output is an object in
+  the  category  of  left  presentations  over  [23XR[123X.  This  object  has [23XM[123X as its
+  underlying matrix.[133X
+  
+  [1X1.3-3 AsRightPresentation[101X
+  
+  [29X[2XAsRightPresentation[102X( [3XM[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  argument is a homalg matrix [23XM[123X over a ring [23XR[123X. The output is an object in
+  the  category  of  right  presentations  over  [23XR[123X.  This  object has [23XM[123X as its
+  underlying matrix.[133X
+  
+  [1X1.3-4 AsLeftOrRightPresentation[101X
+  
+  [29X[2XAsLeftOrRightPresentation[102X( [3XM[103X, [3Xl[103X ) [32X function
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments  are  a  homalg  matrix  [23XM[123X and a boolean [23Xl[123X. If [23Xl[123X is [10Xtrue[110X, the
+  output  is  an  object in the category of left presentations. If [23Xl[123X is [10Xfalse[110X,
+  the  output  is  an  object  in the category of right presentations. In both
+  cases, the underlying matrix of the result is [23XM[123X.[133X
+  
+  [1X1.3-5 FreeLeftPresentation[101X
+  
+  [29X[2XFreeLeftPresentation[102X( [3Xr[103X, [3XR[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments  are a non-negative integer [23Xr[123X and a homalg ring [23XR[123X. The output
+  is an object in the category of left presentations over [23XR[123X. It is represented
+  by the [23X0 \times r[123X matrix and thus it is free of rank [23Xr[123X.[133X
+  
+  [1X1.3-6 FreeRightPresentation[101X
+  
+  [29X[2XFreeRightPresentation[102X( [3Xr[103X, [3XR[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments  are a non-negative integer [23Xr[123X and a homalg ring [23XR[123X. The output
+  is  an  object  in  the  category  of  right  presentations  over  [23XR[123X.  It is
+  represented by the [23Xr \times 0[123X matrix and thus it is free of rank [23Xr[123X.[133X
+  
+  [1X1.3-7 UnderlyingMatrix[101X
+  
+  [29X[2XUnderlyingMatrix[102X( [3XA[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya homalg matrix[133X
+  
+  [33X[0;0YThe  argument  is an object [23XA[123X in the category of left or right presentations
+  over a homalg ring [23XR[123X. The output is the underlying matrix which presents [23XA[123X.[133X
+  
+  [1X1.3-8 UnderlyingHomalgRing[101X
+  
+  [29X[2XUnderlyingHomalgRing[102X( [3XA[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya homalg ring[133X
+  
+  [33X[0;0YThe  argument  is an object [23XA[123X in the category of left or right presentations
+  over a homalg ring [23XR[123X. The output is [23XR[123X.[133X
+  
+  [1X1.3-9 LeftPresentations[101X
+  
+  [29X[2XLeftPresentations[102X( [3XR[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument  is  a  homalg ring [23XR[123X. The output is the category of free left
+  presentations over [23XR[123X.[133X
+  
+  [1X1.3-10 RightPresentations[101X
+  
+  [29X[2XRightPresentations[102X( [3XR[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument  is  a homalg ring [23XR[123X. The output is the category of free right
+  presentations over [23XR[123X.[133X
+  
+  
+  [1X1.4 [33X[0;0YAttributes[133X[101X
+  
+  [1X1.4-1 UnderlyingHomalgRing[101X
+  
+  [29X[2XUnderlyingHomalgRing[102X( [3XR[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya homalg ring[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X  in  the  category  of  left or right
+  presentations over a homalg ring [23XR[123X. The output is [23XR[123X.[133X
+  
+  [1X1.4-2 UnderlyingMatrix[101X
+  
+  [29X[2XUnderlyingMatrix[102X( [3Xalpha[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya homalg matrix[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X  in  the  category  of  left or right
+  presentations. The output is its underlying homalg matrix.[133X
+  
+  
+  [1X1.5 [33X[0;0YNon-Categorical Operations[133X[101X
+  
+  [1X1.5-1 StandardGeneratorMorphism[101X
+  
+  [29X[2XStandardGeneratorMorphism[102X( [3XA[103X, [3Xi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(F, A)[123X[133X
+  
+  [33X[0;0YThe  argument  is an object [23XA[123X in the category of left or right presentations
+  over  a  homalg ring [23XR[123X with underlying matrix [23XM[123X and an integer [23Xi[123X. The output
+  is  a morphism [23XF \rightarrow A[123X given by the [23Xi[123X-th row or column of [23XM[123X, where [23XF[123X
+  is a free left or right presentation of rank [23X1[123X.[133X
+  
+  
+  [1X1.6 [33X[0;0YNatural Transformations[133X[101X
+  
+  [1X1.6-1 NaturalIsomorphismFromIdentityToStandardModuleLeft[101X
+  
+  [29X[2XNaturalIsomorphismFromIdentityToStandardModuleLeft[102X( [3XR[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
+            \mathrm{StandardModuleLeft}[123X[133X
+  
+  [33X[0;0YThe argument is a homalg ring [23XR[123X. The output is the natural morphism from the
+  identity functor to the left standard module functor.[133X
+  
+  [1X1.6-2 NaturalIsomorphismFromIdentityToStandardModuleRight[101X
+  
+  [29X[2XNaturalIsomorphismFromIdentityToStandardModuleRight[102X( [3XR[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
+            \mathrm{StandardModuleRight}[123X[133X
+  
+  [33X[0;0YThe argument is a homalg ring [23XR[123X. The output is the natural morphism from the
+  identity functor to the right standard module functor.[133X
+  

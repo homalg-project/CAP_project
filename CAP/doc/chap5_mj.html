@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (CAP) - Chapter 5: Category 2-Cells</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap5"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap5.html">[MathJax off]</a></p>
+<p><a id="X7B2650D983390045" name="X7B2650D983390045"></a></p>
+<div class="ChapSects"><a href="chap5_mj.html#X7B2650D983390045">5 <span class="Heading">Category 2-Cells</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X793836877FCD5EC6">5.1 <span class="Heading">Attributes for the Type of 2-Cells</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X8061EB36809022A4">5.1-1 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7C16D44B8639016B">5.1-2 Range</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7B780EDB7E466121">5.2 <span class="Heading">Identity 2-Cell and Composition of 2-Cells</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X78ED1F327D902924">5.2-1 IdentityTwoCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X85B4A2607CDFC0D2">5.2-2 AddIdentityTwoCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7DD9EB1F80921939">5.2-3 HorizontalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7C759D3A7CB3FA3A">5.2-4 AddHorizontalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X87C942B87C6A161D">5.2-5 HorizontalPostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X80B2FA2F7C2E2BDA">5.2-6 AddHorizontalPostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7D89385B7834B086">5.2-7 VerticalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X85F4507081F229DD">5.2-8 AddVerticalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X79D9FBEA851C4F00">5.2-9 VerticalPostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7AA662D58265F658">5.2-10 AddVerticalPostCompose</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X84A60F017943A943">5.3 <span class="Heading">Well-Definedness for 2-Cells</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X8240AF367C87663F">5.3-1 IsWellDefinedForTwoCells</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7EE52A1587E15D94">5.3-2 AddIsWellDefinedForTwoCells</a></span>
+</div></div>
+</div>
+
+<h3>5 <span class="Heading">Category 2-Cells</span></h3>
+
+<p><a id="X793836877FCD5EC6" name="X793836877FCD5EC6"></a></p>
+
+<h4>5.1 <span class="Heading">Attributes for the Type of 2-Cells</span></h4>
+
+<p><a id="X8061EB36809022A4" name="X8061EB36809022A4"></a></p>
+
+<h5>5.1-1 Source</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">c</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a <span class="SimpleMath">\(2\)</span>-cell <span class="SimpleMath">\(c: \alpha \rightarrow \beta\)</span>. The output is its source <span class="SimpleMath">\(\alpha\)</span>.</p>
+
+<p><a id="X7C16D44B8639016B" name="X7C16D44B8639016B"></a></p>
+
+<h5>5.1-2 Range</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Range</code>( <var class="Arg">c</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a <span class="SimpleMath">\(2\)</span>-cell <span class="SimpleMath">\(c: \alpha \rightarrow \beta\)</span>. The output is its range <span class="SimpleMath">\(\beta\)</span>.</p>
+
+<p><a id="X7B780EDB7E466121" name="X7B780EDB7E466121"></a></p>
+
+<h4>5.2 <span class="Heading">Identity 2-Cell and Composition of 2-Cells</span></h4>
+
+<p><a id="X78ED1F327D902924" name="X78ED1F327D902924"></a></p>
+
+<h5>5.2-1 IdentityTwoCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdentityTwoCell</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a <span class="SimpleMath">\(2\)</span>-cell</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha\)</span>. The output is its identity <span class="SimpleMath">\(2\)</span>-cell <span class="SimpleMath">\(\mathrm{id}_{\alpha}: \alpha \rightarrow \alpha\)</span>.</p>
+
+<p><a id="X85B4A2607CDFC0D2" name="X85B4A2607CDFC0D2"></a></p>
+
+<h5>5.2-2 AddIdentityTwoCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIdentityTwoCell</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IdentityTwoCell</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathrm{id}_{\alpha}\)</span>.</p>
+
+<p><a id="X7DD9EB1F80921939" name="X7DD9EB1F80921939"></a></p>
+
+<h5>5.2-3 HorizontalPreCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HorizontalPreCompose</code>( <var class="Arg">c</var>, <var class="Arg">d</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a <span class="SimpleMath">\(2\)</span>-cell</p>
+
+<p>The arguments are two <span class="SimpleMath">\(2\)</span>-cells <span class="SimpleMath">\(c: \alpha \rightarrow \beta\)</span>, <span class="SimpleMath">\(d: \gamma \rightarrow \delta\)</span> between morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span> and <span class="SimpleMath">\(\gamma, \delta: b \rightarrow c\)</span>. The output is their horizontal composition <span class="SimpleMath">\(d \ast c: (\gamma \circ \alpha) \rightarrow (\delta \circ \beta)\)</span>.</p>
+
+<p><a id="X7C759D3A7CB3FA3A" name="X7C759D3A7CB3FA3A"></a></p>
+
+<h5>5.2-4 AddHorizontalPreCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddHorizontalPreCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">HorizontalPreCompose</code>. <span class="SimpleMath">\(F: (c,d) \mapsto d \ast c\)</span>.</p>
+
+<p><a id="X87C942B87C6A161D" name="X87C942B87C6A161D"></a></p>
+
+<h5>5.2-5 HorizontalPostCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HorizontalPostCompose</code>( <var class="Arg">d</var>, <var class="Arg">c</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a <span class="SimpleMath">\(2\)</span>-cell</p>
+
+<p>The arguments are two <span class="SimpleMath">\(2\)</span>-cells <span class="SimpleMath">\(d: \gamma \rightarrow \delta\)</span>, <span class="SimpleMath">\(c: \alpha \rightarrow \beta\)</span> between morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span> and <span class="SimpleMath">\(\gamma, \delta: b \rightarrow c\)</span>. The output is their horizontal composition <span class="SimpleMath">\(d \ast c: (\gamma \circ \alpha) \rightarrow (\delta \circ \beta)\)</span>.</p>
+
+<p><a id="X80B2FA2F7C2E2BDA" name="X80B2FA2F7C2E2BDA"></a></p>
+
+<h5>5.2-6 AddHorizontalPostCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddHorizontalPostCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">HorizontalPostCompose</code>. <span class="SimpleMath">\(F: (d,c) \mapsto d \ast c\)</span>.</p>
+
+<p><a id="X7D89385B7834B086" name="X7D89385B7834B086"></a></p>
+
+<h5>5.2-7 VerticalPreCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; VerticalPreCompose</code>( <var class="Arg">c</var>, <var class="Arg">d</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a <span class="SimpleMath">\(2\)</span>-cell</p>
+
+<p>The arguments are two <span class="SimpleMath">\(2\)</span>-cells <span class="SimpleMath">\(c: \alpha \rightarrow \beta\)</span>, <span class="SimpleMath">\(d: \beta \rightarrow \gamma\)</span> between morphisms <span class="SimpleMath">\(\alpha, \beta, \gamma: a \rightarrow b\)</span>. The output is their vertical composition <span class="SimpleMath">\(d \circ c: \alpha \rightarrow \gamma\)</span>.</p>
+
+<p><a id="X85F4507081F229DD" name="X85F4507081F229DD"></a></p>
+
+<h5>5.2-8 AddVerticalPreCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddVerticalPreCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">VerticalPreCompose</code>. <span class="SimpleMath">\(F: (c,d) \mapsto d \circ c\)</span>.</p>
+
+<p><a id="X79D9FBEA851C4F00" name="X79D9FBEA851C4F00"></a></p>
+
+<h5>5.2-9 VerticalPostCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; VerticalPostCompose</code>( <var class="Arg">d</var>, <var class="Arg">c</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a <span class="SimpleMath">\(2\)</span>-cell</p>
+
+<p>The arguments are two <span class="SimpleMath">\(2\)</span>-cells <span class="SimpleMath">\(d: \beta \rightarrow \gamma\)</span>, <span class="SimpleMath">\(c: \alpha \rightarrow \beta\)</span> between morphisms <span class="SimpleMath">\(\alpha, \beta, \gamma: a \rightarrow b\)</span>. The output is their vertical composition <span class="SimpleMath">\(d \circ c: \alpha \rightarrow \gamma\)</span>.</p>
+
+<p><a id="X7AA662D58265F658" name="X7AA662D58265F658"></a></p>
+
+<h5>5.2-10 AddVerticalPostCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddVerticalPostCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">VerticalPostCompose</code>. <span class="SimpleMath">\(F: (d,c) \mapsto d \circ c\)</span>.</p>
+
+<p><a id="X84A60F017943A943" name="X84A60F017943A943"></a></p>
+
+<h4>5.3 <span class="Heading">Well-Definedness for 2-Cells</span></h4>
+
+<p><a id="X8240AF367C87663F" name="X8240AF367C87663F"></a></p>
+
+<h5>5.3-1 IsWellDefinedForTwoCells</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWellDefinedForTwoCells</code>( <var class="Arg">c</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a <span class="SimpleMath">\(2\)</span>-cell <span class="SimpleMath">\(c\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(c\)</span> is well-defined, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X7EE52A1587E15D94" name="X7EE52A1587E15D94"></a></p>
+
+<h5>5.3-2 AddIsWellDefinedForTwoCells</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWellDefinedForTwoCells</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsWellDefinedForTwoCells</code>. <span class="SimpleMath">\(F: c \mapsto \mathtt{IsWellDefinedForMorphisms}( c )\)</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

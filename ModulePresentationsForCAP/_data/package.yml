@@ -1,0 +1,43 @@
+name: ModulePresentationsForCAP
+version: 2015.10.06
+date: 06/10/2015
+description: Category R-pres for CAP
+
+authors:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche/
+    - name: Sebastian Posur
+      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
+
+maintainers:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche/
+    - name: Sebastian Posur
+      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
+
+GAP: ">= 4.6"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "MatricesForHomalg"
+      version: ">=0"
+      url: "http://homalg.math.rwth-aachen.de/index.php/core-packages/matricesforhomalg"
+    - name: "CAP"
+      version: ">=0"
+      url: "http://github.com/homalg-project/CAP/"
+
+www: 
+readme: README
+packageinfo: PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: ModulePresentationsForCAP-2015.10.06.tar.gz
+
+abstract: 
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
