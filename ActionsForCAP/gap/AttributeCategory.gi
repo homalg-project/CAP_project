@@ -464,69 +464,57 @@ end );
 
 ##
 InstallGlobalFunction( CreateMorphismConstructorForCategoryWithAttributes,
-  function( structure_record )
-    local underlying_category, category_with_attributes,
-          morphism_constructor;
+  function( underlying_category, category_with_attributes, morphism_type )
     
-    underlying_category := structure_record.underlying_category;
-    
-    morphism_constructor :=
+    return
       function( source, morphism, range )
         local attribute_morphism;
         
         attribute_morphism := rec( );
         
-        ObjectifyWithAttributes( attribute_morphism,  structure_record.morphism_type,
+        ObjectifyWithAttributes( attribute_morphism, morphism_type,
                                  UnderlyingCell, morphism,
                                  Source, source,
                                  Range, range,
                                  UnderlyingCategory, underlying_category
                                );
         
-        Add( structure_record.category_with_attributes, attribute_morphism );
+        Add( category_with_attributes, attribute_morphism );
         
         return attribute_morphism;
         
     end;
     
-    return morphism_constructor;
-    
 end );
 
 ##
 InstallGlobalFunction( CreateObjectConstructorForCategoryWithAttributes,
-  function( structure_record )
-    local underlying_category, category_with_attributes,
-          object_constructor;
+  function( underlying_category, category_with_attributes, object_type )
     
-    underlying_category := structure_record.underlying_category;
-    
-    object_constructor := 
+    return
       function( object, attributes )
         local attribute_object;
         
         attribute_object := rec( );
         
-        ObjectifyWithAttributes( attribute_object, structure_record.object_type,
+        ObjectifyWithAttributes( attribute_object, object_type,
                                  UnderlyingCell, object,
                                  ObjectAttributesAsList, attributes,
                                  UnderlyingCategory, underlying_category
                                );
         
-        Add( structure_record.category_with_attributes, attribute_object );
+        Add( category_with_attributes, attribute_object );
         
         return attribute_object;
         
     end;
     
-    return object_constructor;
-    
 end );
 
 ##
-InstallGlobalFunction( CreateCategoryWithAttributes,
+InstallGlobalFunction( EnhancementWithAttributes,
   function( structure_record )
-    local category_with_attributes, return_record;
+    local underlying_category, category_with_attributes, return_record, object_type, morphism_type;
     
     if not IsBound( structure_record.underlying_category ) then
         
@@ -534,11 +522,27 @@ InstallGlobalFunction( CreateCategoryWithAttributes,
         
     fi;
     
-    if not IsCapCategory( structure_record.underlying_category ) then
+    underlying_category := structure_record.underlying_category;
+    
+    if not IsCapCategory( underlying_category ) then
         
         Error( "underlying_category must be a CAP category" );
     
     fi;
+    
+    if not ( IsBound( structure_record.ObjectConstructor) or IsBound( structure_record.object_type ) ) then
+            
+            Error( "object_type or ObjectConstructor must be bound in the given record" );
+    
+    fi;
+    
+    if not ( IsBound( structure_record.MorphismConstructor) or IsBound( structure_record.morphism_type ) ) then
+            
+            Error( "morphism_type or MorphismConstructor must be bound in the given record" );
+    
+    fi;
+    
+    structure_record := ShallowCopy( structure_record );
     
     ## Declare GAP category for objects, morphisms
     
@@ -552,23 +556,45 @@ InstallGlobalFunction( CreateCategoryWithAttributes,
     
     if not IsBound( structure_record.category_name ) then
         
-        structure_record.category_name := Concatenation( "Category with attributes of ", Name( structure_record.underlying_category ) );
+        if not IsBound( structure_record.category_with_attributes ) then
+            
+            structure_record.category_name := Concatenation( "Category with attributes of ", Name( underlying_category ) );
+            
+        else
+            
+            structure_record.category_name := Name( structure_record.category_with_attributes );
+            
+        fi;
         
     fi;
     
-    category_with_attributes := CreateCapCategory( structure_record.category_name );
+    if not IsBound( structure_record.category_with_attributes ) then
+        
+        structure_record.category_with_attributes := CreateCapCategory( structure_record.category_name );
+        
+    fi;
     
-    SetUnderlyingCategory( category_with_attributes, structure_record.underlying_category );
+    category_with_attributes := structure_record.category_with_attributes;
     
-    structure_record.category_with_attributes := category_with_attributes;
+    SetUnderlyingCategory( category_with_attributes, underlying_category );
     
     ## create constructors for objects and morphisms
     if not IsBound( structure_record.ObjectConstructor ) then
-        structure_record.ObjectConstructor := CreateObjectConstructorForCategoryWithAttributes( structure_record );
+        
+        object_type := structure_record.object_type;
+        
+        structure_record.ObjectConstructor :=
+          CreateObjectConstructorForCategoryWithAttributes( underlying_category, category_with_attributes, object_type );
+        
     fi;
     
     if not IsBound( structure_record.MorphismConstructor ) then
-        structure_record.MorphismConstructor := CreateMorphismConstructorForCategoryWithAttributes( structure_record );
+        
+        morphism_type := structure_record.morphism_type;
+        
+        structure_record.MorphismConstructor :=
+          CreateMorphismConstructorForCategoryWithAttributes( underlying_category, category_with_attributes, morphism_type );
+        
     fi;
     
     ## equip Lift and Colift with cache
@@ -589,6 +615,6 @@ InstallGlobalFunction( CreateCategoryWithAttributes,
     ## install Adds
     CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES( structure_record );
     
-    return category_with_attributes;
+    return [ category_with_attributes, structure_record.ObjectConstructor, structure_record.MorphismConstructor ];
     
 end );

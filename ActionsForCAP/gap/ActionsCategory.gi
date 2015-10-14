@@ -41,15 +41,16 @@ InstallMethod( LeftActionsCategory,
       
     fi;
     
+    left_actions_category := CreateCapCategory( Concatenation( "Category of left actions of <", String( acting_object ), ">" ) );
+    
     structure_record := rec(
       underlying_category := underlying_monoidal_category,
-      object_type := TheTypeOfLeftActionObjects,
-      morphism_type := TheTypeOfLeftActionMorphisms,
-      category_name := Concatenation( "Category of left actions of <", String( acting_object ), ">" ) 
+      category_with_attributes := left_actions_category
     );
     
     ## Constructors
-    object_constructor := CreateObjectConstructorForCategoryWithAttributes( structure_record );
+    object_constructor := CreateObjectConstructorForCategoryWithAttributes(
+                            underlying_monoidal_category, left_actions_category, TheTypeOfLeftActionObjects );
     
     structure_record.ObjectConstructor := function( object, attributes )
         local return_object;
@@ -66,7 +67,8 @@ InstallMethod( LeftActionsCategory,
         
     end;
     
-    morphism_constructor := CreateMorphismConstructorForCategoryWithAttributes( structure_record );
+    morphism_constructor := CreateMorphismConstructorForCategoryWithAttributes(
+                              underlying_monoidal_category, left_actions_category, TheTypeOfLeftActionMorphisms );
     
     structure_record.MorphismConstructor := function( source, morphism, range )
         local return_morphism;
@@ -171,7 +173,7 @@ InstallMethod( LeftActionsCategory,
         
     fi;
     
-    left_actions_category := CreateCategoryWithAttributes( structure_record );
+    EnhancementWithAttributes( structure_record );
     
     ##
     InstallMethod( LeftActionObject,

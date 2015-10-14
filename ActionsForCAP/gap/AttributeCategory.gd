@@ -54,7 +54,7 @@ DeclareGlobalFunction( "CreateObjectConstructorForCategoryWithAttributes" );
 
 DeclareGlobalFunction( "CreateMorphismConstructorForCategoryWithAttributes" );
 
-DeclareGlobalFunction( "CreateCategoryWithAttributes" );
+DeclareGlobalFunction( "EnhancementWithAttributes" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_CREATE_FILTER_LIST_FOR_CATEGORY_WITH_ATTRIBUTES" );
 
