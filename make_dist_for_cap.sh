@@ -70,4 +70,4 @@ for i in $packages; do
 done
 
 git commit -a -m "New version of homepage"
-git push
+git push origin gh-pages
