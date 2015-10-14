@@ -929,7 +929,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
         for i in [ 2 .. Length( objects ) ] do
             
-            projection_matrix := Columns( projection_matrix, projection[ i ] );
+            projection_matrix := UnionOfColumns( projection_matrix, projection[ i ] );
             
         od;
         
