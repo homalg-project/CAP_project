@@ -69,5 +69,6 @@ for i in $packages; do
   sed "s|@@package@@|package${i}|g" < index_default.md > ${i}/index.md
 done
 
+git add *
 git commit -a -m "New version of homepage"
 git push origin gh-pages
