@@ -46,7 +46,7 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "",
+PackageWWWHome := "http://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/",
 
 ArchiveURL     := Concatenation( ~.PackageWWWHome, "ModulePresentationsForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),

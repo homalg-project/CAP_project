@@ -50,7 +50,7 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://TODO/",
+PackageWWWHome := "http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/",
 
 ArchiveURL     := Concatenation( ~.PackageWWWHome, "LinearAlgebraForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
