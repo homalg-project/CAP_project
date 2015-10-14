@@ -10,16 +10,17 @@ for i in $packages; do
 # HACK
 MakeReadWriteGlobal("SetPackageInfo");
 SetPackageInfo:=function(pkg)
-  Print("PKG=\"",pkg.PackageName,"\"\n");
-  Print("VER=\"",pkg.Version,"\"\n");
+  Print("VERSION",pkg.Version);
 end;;
 Read("PackageInfo.g");
 QUIT;
 EOF
 )
-
-  tar czf . ${i}-${VER}.tar.gz
-  rm ../gh-pages/${i}/*tar.gz
-  mv ${PKG}-${VER}.tar.gz ../gh-pages/${i}
+  version=$(cat VERSION)
+  rm VERSION
+  tar czf ../${i}-${version}.tar.gz .
+  cd ..
+  rm gh-pages/${i}/*tar.gz
+  mv ${i}-${version}.tar.gz gh-pages/${i}
   cd $current_dir
 done
