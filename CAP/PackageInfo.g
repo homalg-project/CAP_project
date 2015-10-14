@@ -64,7 +64,7 @@ Persons := [
 Status := "dev",
 
 #PackageWWWHome := "http://www.TODO.INSERT.WEBPAGE.HERE/",
-PackageWWWHome := "http://github.com/homalg-project/CAP_Project/CAP/",
+PackageWWWHome := "http://homalg-project.github.io/CAP_Project/CAP/",
 
 ArchiveFormats := ".tar.gz",
 

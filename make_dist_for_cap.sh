@@ -71,4 +71,4 @@ done
 
 git add *
 git commit -a -m "New version of homepage"
-git push origin gh-pages
+git push homalg gh-pages:gh-pages
