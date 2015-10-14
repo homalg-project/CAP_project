@@ -32,7 +32,13 @@ DeclareCategory( "IsRightActionObject",
 DeclareGlobalFunction( "LeftOrRightActionObject" );
 
 DeclareOperation( "LeftActionObject",
+                  [ IsCapCategoryMorphism, IsCapCategory ] );
+
+DeclareOperation( "LeftActionObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "RightActionObject",
+                  [ IsCapCategoryMorphism, IsCapCategory ] );
 
 DeclareOperation( "RightActionObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );

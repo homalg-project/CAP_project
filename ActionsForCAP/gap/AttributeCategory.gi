@@ -470,8 +470,6 @@ InstallGlobalFunction( CreateMorphismConstructorForCategoryWithAttributes,
     
     underlying_category := structure_record.underlying_category;
     
-    category_with_attributes := structure_record.category_with_attributes;
-    
     morphism_constructor :=
       function( source, morphism, range )
         local attribute_morphism;
@@ -485,7 +483,7 @@ InstallGlobalFunction( CreateMorphismConstructorForCategoryWithAttributes,
                                  UnderlyingCategory, underlying_category
                                );
         
-        Add( category_with_attributes, attribute_morphism );
+        Add( structure_record.category_with_attributes, attribute_morphism );
         
         return attribute_morphism;
         
@@ -503,8 +501,6 @@ InstallGlobalFunction( CreateObjectConstructorForCategoryWithAttributes,
     
     underlying_category := structure_record.underlying_category;
     
-    category_with_attributes := structure_record.category_with_attributes;
-    
     object_constructor := 
       function( object, attributes )
         local attribute_object;
@@ -517,7 +513,7 @@ InstallGlobalFunction( CreateObjectConstructorForCategoryWithAttributes,
                                  UnderlyingCategory, underlying_category
                                );
         
-        Add( category_with_attributes, attribute_object );
+        Add( structure_record.category_with_attributes, attribute_object );
         
         return attribute_object;
         

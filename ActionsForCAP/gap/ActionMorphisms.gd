@@ -29,6 +29,12 @@ DeclareCategory( "IsRightActionMorphism",
 ##
 #############################
 
+DeclareOperation( "LeftActionMorphism",
+                  [ IsLeftActionObject, IsCapCategoryMorphism, IsLeftActionObject ] );
+
+DeclareOperation( "RightActionMorphism",
+                  [ IsRightActionObject, IsCapCategoryMorphism, IsRightActionObject ] );
+
 DeclareOperation( "ActionMorphism",
                   [ IsLeftOrRightActionObject, IsCapCategoryMorphism, IsLeftOrRightActionObject ] );
 

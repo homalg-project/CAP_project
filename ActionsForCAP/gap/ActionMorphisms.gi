@@ -42,43 +42,18 @@ InstallMethod( ActionMorphism,
                
   function( source, underlying_morphism, range )
     local left, action_morphism, type;
-      
-      left := IsLeftActionObject( source );
-      
-      if not IsIdenticalObj( CapCategory( source ), CapCategory( range ) ) then
+    
+    left := IsLeftActionObject( source );
+    
+    if left then
         
-        Error( "the given source and range have to be objects in the same category" );
+        return LeftActionMorphism( source, underlying_morphism, range );
         
-      fi;
-      
-      if not IsIdenticalObj( UnderlyingCategory( source ), CapCategory( underlying_morphism ) ) then
+    else
         
-        Error( "the given morphism has be in the underlying category of the source and range" );
+        return RightActionMorphism( source, underlying_morphism, range );
         
-      fi;
-      
-      action_morphism := rec( );
-      
-      if left = true then
-        
-        type := TheTypeOfLeftActionMorphisms;
-        
-      else
-        
-        type := TheTypeOfRightActionMorphisms;
-        
-      fi;
-      
-      ObjectifyWithAttributes( action_morphism, type,
-                               UnderlyingMorphism, underlying_morphism,
-                               Source, source,
-                               Range, range,
-                               UnderlyingActingObject, UnderlyingActingObject( source )
-                             );
-      
-      Add( CapCategory( source ), action_morphism );
-      
-      return action_morphism;
+    fi;
     
 end );
 

@@ -86,7 +86,7 @@ InstallMethod( LeftActionsCategory,
     preconditions := [ "UniversalMorphismIntoZeroObject",
                        "TensorProductOnObjects" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, i ) < infinity ) then
+    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
         structure_record.ZeroObject :=
           function( underlying_zero_object )
@@ -97,12 +97,12 @@ InstallMethod( LeftActionsCategory,
     fi;
     
     ## Left action for DirectSum
-    preconditions := [ "LeftDistributivityExpanding",
-                       "DirectSum", #belongs to LeftDistributivityExpanding
+    preconditions := [ "LeftDistributivityExpandingWithGivenObjects",
+                       "DirectSum", #belongs to LeftDistributivityExpandingWithGivenObjects
                        "DirectSumFunctorial",
                        "PreCompose" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, i ) < infinity ) then
+    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
         structure_record.DirectSum :=
           function( obj_list, underlying_direct_sum )
@@ -124,11 +124,11 @@ InstallMethod( LeftActionsCategory,
     ## Lift left action along monomorphism
     preconditions := [ "IdentityMorphism",
                        "PreCompose",
-                       "TensorProductOnMorphisms",
+                       "TensorProductOnMorphismsWithGivenTensorProducts",
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "LiftAlongMonomorphism" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, i ) < infinity ) then
+    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
         identity_of_acting_object := IdentityMorphism( acting_object );
         
@@ -149,11 +149,11 @@ InstallMethod( LeftActionsCategory,
     ## Colift left action along epimorphism
     preconditions := [ "IdentityMorphism",
                        "PreCompose",
-                       "TensorProductOnMorphisms",
+                       "TensorProductOnMorphismsWithGivenTensorProducts",
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "ColiftAlongEpimorphism" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, i ) < infinity ) then
+    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
         identity_of_acting_object := IdentityMorphism( acting_object );
         
@@ -173,7 +173,28 @@ InstallMethod( LeftActionsCategory,
     
     left_actions_category := CreateCategoryWithAttributes( structure_record );
     
-    left_actions_category!.acting_object := acting_object;
+    ##
+    InstallMethod( LeftActionObject,
+                   [ IsCapCategoryMorphism and MorphismFilter( underlying_monoidal_category ), 
+                     IsCapCategory and CategoryFilter( left_actions_category ) ],
+                   
+      function( structure_morphism, attribute_category )
+        
+        return structure_record.ObjectConstructor( Range( structure_morphism ), [ structure_morphism ] );
+        
+    end );
+    
+    ##
+    InstallMethod( LeftActionMorphism,
+                   [ IsLeftActionObject and ObjectFilter( left_actions_category ),
+                     IsCapCategoryMorphism and MorphismFilter( underlying_monoidal_category ),
+                     IsLeftActionObject and ObjectFilter( left_actions_category ) ],
+                   
+      function( source, underlying_morphism, range )
+        
+        return structure_record.MorphismConstructor( source, underlying_morphism, range );
+        
+    end );
     
     ## TODO: Set properties of left_actions_category
     
@@ -256,10 +277,6 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
   
   function( category )
-    local category_weight_list, needed_basic_operations;
-    
-    category_weight_list := CapCategory( category!.acting_object )!.derivations_weight_list;
-    
     ##
     AddIsEqualForObjects( category,
       function( action_object_1, action_object_2 )
@@ -274,7 +291,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     AddIsEqualForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        return IsEqualForMorphisms( UnderlyingMorphism( morphism_1 ), UnderlyingMorphism( morphism_2 ) );
+        return IsEqualForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
     end );
     
@@ -282,7 +299,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        return IsCongruentForMorphisms( UnderlyingMorphism( morphism_1 ), UnderlyingMorphism( morphism_2 ) );
+        return IsCongruentForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
     end );
     
