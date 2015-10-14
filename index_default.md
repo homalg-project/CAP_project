@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# The CAP project
+# GAP Package {{site.data.package.name}}
 
 {{site.data.package.abstract}}
 

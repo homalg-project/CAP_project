@@ -10,4 +10,17 @@ for i in $packages; do
   cp -r ../${i}/doc/*.{css,html,js,txt} ${i}/doc
 done
 
+current_dir=$(pwd)
+
+for i in $packages; do
+  cd ${i}
+  mkdir _data
+  cp ../_data/package.yml _data
+  gap ../update.g
+  cd $current_dir
+done
+
+for i in $packages; do
+  cp index_default.md ${i}/index.md
+done
 
