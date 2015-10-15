@@ -483,6 +483,78 @@ InstallMethod( IsomorphismFromObjectToInternalHom,
     
 end );
 
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.LeftDistributivityExpanding := 
+  [ [ TensorProductOnObjects, 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
+    [ DirectSum, 2 ] ];
+##
+InstallMethod( LeftDistributivityExpanding,
+               [ IsCapCategoryObject, IsList ],
+               
+  function( object, summands_list )
+    
+    return LeftDistributivityExpandingWithGivenObjects(
+             TensorProductOnObjects( object, DirectSum( summands_list ) ),
+             object, summands_list,
+             DirectSum( List( summands_list, summand -> TensorProductOnObjects( object, summand ) ) )
+           );
+    
+end );
+
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.LeftDistributivityFactoring := 
+  [ [ TensorProductOnObjects, 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
+    [ DirectSum, 2 ] ];
+##
+InstallMethod( LeftDistributivityFactoring,
+               [ IsCapCategoryObject, IsList ],
+               
+  function( object, summands_list )
+    
+    return LeftDistributivityFactoringWithGivenObjects(
+             DirectSum( List( summands_list, summand -> TensorProductOnObjects( object, summand ) ) ),
+             object, summands_list,
+             TensorProductOnObjects( object, DirectSum( summands_list ) )
+           );
+    
+end );
+
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.RightDistributivityExpanding := 
+  [ [ TensorProductOnObjects, 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
+    [ DirectSum, 2 ] ];
+##
+InstallMethod( RightDistributivityExpanding,
+               [ IsList, IsCapCategoryObject ],
+               
+  function( summands_list, object )
+    
+    return RightDistributivityExpandingWithGivenObjects(
+             TensorProductOnObjects( DirectSum( summands_list ), object ),
+             summands_list, object,
+             DirectSum( List( summands_list, summand -> TensorProductOnObjects( summand, object ) ) )
+           );
+    
+end );
+
+##
+CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.RightDistributivityFactoring := 
+  [ [ TensorProductOnObjects, 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
+    [ DirectSum, 2 ] ];
+##
+InstallMethod( RightDistributivityFactoring,
+               [ IsList, IsCapCategoryObject ],
+               
+  function( summands_list, object )
+    
+    return RightDistributivityFactoringWithGivenObjects(
+             DirectSum( List( summands_list, summand -> TensorProductOnObjects( summand, object ) ) ),
+             summands_list, object,
+             TensorProductOnObjects( DirectSum( summands_list ), object )
+           );
+    
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MONOIDAL_CATEGORIES,
   
   function( func, loop_multiplier )
