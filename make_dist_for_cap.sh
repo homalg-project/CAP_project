@@ -18,8 +18,8 @@ EOF
 
   version=$(cat VERSION)
   rm VERSION
-  tar czvf ../${i}-${version}.tar.gz .
   cd ..
+  tar czvf ${i}-${version}.tar.gz ${i}
   rm gh-pages/${i}/*tar.gz
   mv ${i}-${version}.tar.gz gh-pages/${i}
   cd $current_dir
