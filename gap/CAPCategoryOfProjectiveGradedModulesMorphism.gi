@@ -143,7 +143,7 @@ InstallMethod( ViewObj,
 
     if IsCAPCategoryOfProjectiveGradedLeftModulesMorphism( cap_category_of_projective_graded_modules_morphism ) then
 
-      Print( "A morphism in the category of projective graded right modules over ",
+      Print( "A morphism in the category of projective graded left modules over ",
               RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ) );    
     
     else

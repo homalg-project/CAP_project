@@ -842,13 +842,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
     ## Lift
     ## Lift
-    # the lift of morphism2 along morphism1, i.e. morphism1: K -> M, morphism2: L -> M, then lift( 1,2 ): L -> K    
+    # be mor1: a -> c and mor2: b -> c, then Lift( mor1, mor2 ) = ( a -> b )
     AddLift( category,
       function( morphism1, morphism2 )
         local right_divide;
         
         # try to find a lift
-        right_divide := RightDivide( UnderlyingHomalgMatrix( morphism2 ), UnderlyingHomalgMatrix( morphism1 ) );
+        right_divide := RightDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
 
         # check if this failed
         if right_divide = fail then
@@ -858,15 +858,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         fi;
         
         # and if not, then construct the lift-morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism2 ),
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ),
                                                                         right_divide,
-                                                                        Source( morphism1 ) );
+                                                                        Source( morphism2 ) );
         
     end );
     
     ## Colift
     ## Colift
-    # the colift of morphism2 along morphism1, i.e. morphism1: N -> C, morphism2: N -> L, then colift( 1,2 ): C -> L
+    # be mor1: a -> c and mor2: a -> b then Colift( mor1, mor2 ) = ( c -> b )
     AddColift( category,
       function( morphism1, morphism2 )
         local left_divide;
@@ -1097,12 +1097,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         else
 
           # have to compute the lift
-          return Lift( morphism_list[ 2 ], 
+          return Lift( 
                        PreCompose ( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fibre_product_object, 
                                                                                              projection1_matrix,
                                                                                              Source( morphism_list[ 1 ] )
                                                                                             ) 
-                                    , morphism_list[ 1 ] )
+                                    , morphism_list[ 1 ] ),
+                       morphism_list[ 2 ]
                       );
         
         fi;
@@ -2106,11 +2107,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     
     ## Lift
     ## Lift
-    # the lift of morphism2 along morphism1, i.e. morphism1: K -> M, morphism2: L -> M, then lift( 1,2 ): L -> K        
+    # be mor1: a -> c and mor2: b -> c, then Lift( mor1, mor2 ) = ( a -> b )
     AddLift( category,
       function( morphism1, morphism2 )
         local left_divide;
-        
+
         # try to find a lift
         left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism2 ), UnderlyingHomalgMatrix( morphism1 ) );
 
@@ -2122,21 +2123,21 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         fi;
         
         # and if not, then construct the lift-morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism2 ),
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ),
                                                                         left_divide,
-                                                                        Source( morphism1 ) );
+                                                                        Source( morphism2 ) );
         
     end );    
     
     ## Colift
     ## Colift
-    # the colift of morphism2 along morphism1, i.e. morphism1: N -> C, morphism2: N -> L, then colift( 1,2 ): C -> L
+    # be mor1 : a -> c and mor2: a -> b, then Colift( mor1, mor2 ) = ( c -> b)
     AddColift( category,
       function( morphism1, morphism2 )
         local right_divide;
         
         # try to find a matrix that performs the colift
-        right_divide := RightDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
+        right_divide := RightDivide( UnderlyingHomalgMatrix( morphism2 ), UnderlyingHomalgMatrix( morphism1 ) );
 
         # check if this worked
         if right_divide = fail then
@@ -2360,12 +2361,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         else
 
           # have to compute the lift
-          return Lift( morphism_list[ 2 ], 
+          return Lift( 
                        PreCompose ( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fibre_product_object, 
                                                                                              projection1_matrix,
                                                                                              Source( morphism_list[ 1 ] )
                                                                                             ) 
-                                    , morphism_list[ 1 ] )
+                                    , morphism_list[ 1 ] ),
+                       morphism_list[ 2 ]
                       );
         
         fi;

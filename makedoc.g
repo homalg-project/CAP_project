@@ -5,8 +5,14 @@
 LoadPackage( "AutoDoc" );
 
 AutoDoc( "CAPCategoryOfProjectiveGradedModules" : scaffold := true, autodoc :=
-         rec( files := [ "doc/Intros.autodoc" ],
-         scan_dirs := [ "gap", "examples", "doc" ] ),
+         rec( files := [ "doc/Intros.autodoc", 
+                         "gap/CAPCategoryOfProjectiveGradedModules.gd", 
+                         "gap/CAPCategoryOfProjectiveGradedModulesObject.gd",
+                         "gap/CAPCategoryOfProjectiveGradedModulesMorphism.gd",
+                         "examples/Example.gi" 
+                         ],
+             scan_dirs := []
+             ),
          maketest := rec( folder := ".",
                           commands :=
                             [ "LoadPackage( \"CAP\" );",
