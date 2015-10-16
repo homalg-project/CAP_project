@@ -121,7 +121,7 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
     category_of_projective_graded_modules_object := rec( );
     rank := Sum( List( degree_list, x -> x[ 2 ] ) );
     
-    # check if the object is the zero object, and if so format it with the empty degree_list
+    # check if the object is the zero object, and if so objectify it with the empty degree_list
     if rank = 0 then
 
       ObjectifyWithAttributes( category_of_projective_graded_modules_object, type,

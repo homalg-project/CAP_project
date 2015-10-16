@@ -6,7 +6,7 @@
 ##                  Sebastian Posur,   RWTH Aachen
 ##                  Martin Bies,       ITP Heidelberg
 ##
-##! @Chapter Category of projective graded modules
+#! @Chapter Category of projective graded modules
 ##
 #############################################################################
 
