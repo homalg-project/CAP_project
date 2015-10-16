@@ -27,7 +27,11 @@ Persons := [
     LastName := "Gutsche",
     WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche",
     Email := "gutsche@mathematik.uni-kl.de",
-    PostalAddress := "TODO",
+    PostalAddress := Concatenation(
+               "Department of Mathematics\n",
+               "University of Kaiserslautern\n",
+               "67653 Kaiserslautern\n",
+               "Germany" ),
     Place := "Kaiserslautern",
     Institution := "TU Kaiserslautern",
   ),
