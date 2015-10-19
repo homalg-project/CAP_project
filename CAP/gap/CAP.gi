@@ -123,7 +123,7 @@ end );
 
 InstallValue( CAP_INTERNAL_DERIVATION_GRAPH,
     
-    MakeDerivationGraph( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ) );
+    MakeDerivationGraph( [ ] ) );
 
 
 ######################################

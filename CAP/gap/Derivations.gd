@@ -171,6 +171,14 @@ DeclareCategory( "IsDerivedMethodGraph", IsObject );
 #! @Arguments operations
 DeclareOperation( "MakeDerivationGraph", [ IsDenseList ] );
 
+
+#! @Description Adds a list of operation names <A>operations</A> to a given derivation graph <A>graph</A>.
+#!  This is used in extensions of CAP which want to have their own primitive operations,
+#!  but do not want to pollute the CAP kernel any more. Please use it with caution. If
+#!  a weight list/category was created before it will not be aware of the operations.
+#! @Arguments graph, operations
+DeclareOperation( "AddOperationsToDerivationGraph", [ IsDerivedMethodGraph, IsDenseList ] );
+
 #! @Description
 #!  Add a derivation to a derivation graph.
 #! @Arguments G, d
@@ -201,7 +209,7 @@ DeclareGlobalFunction( "AddWithGivenDerivationPairToCAP" );
 #! @Description
 #!  Gives the operations in the graph <A>G</A>, as a list of strings.
 #! @Arguments G
-DeclareAttribute( "Operations", IsDerivedMethodGraph );
+DeclareAttribute( "Operations", IsDerivedMethodGraph, "mutable" );
 
 #! @Description
 #!  Finds all the derivations in the graph <A>G</A> that use the operation named

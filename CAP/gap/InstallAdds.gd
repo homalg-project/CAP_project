@@ -10,4 +10,4 @@
 
 DeclareGlobalFunction( "CapInternalInstallAdd" );
 
-DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_ALL_ADDS" );
+DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD" );

@@ -457,17 +457,22 @@ BindGlobal( "CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITHOUT_RETURN"
     
 end );
 
-InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
+InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     
-  function( )
+  function( record )
     local recnames, current_recname, current_rec, arg_list, i, with_given_name, with_given_name_length,
           object_name, object_func;
     
-    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    recnames := RecNames( record );
+    
+    AddOperationsToDerivationGraph( CAP_INTERNAL_DERIVATION_GRAPH, recnames );
     
     for current_recname in recnames do
         
-        current_rec := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
+        current_rec := record.( current_recname );
+        
+        ## keep track of it in method name rec
+        CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ) := current_rec;
         
         if IsBound( current_rec.no_install ) and current_rec.no_install = true then
             
@@ -578,7 +583,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
             
             object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
             
-            object_func := CAP_INTERNAL_METHOD_NAME_RECORD.( object_name ).installation_name;
+            object_func := record.( object_name ).installation_name;
             
             if not IsBound( current_rec.redirect_function ) then
               current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list, current_rec.argument_list, object_func );
@@ -598,7 +603,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ALL_ADDS,
     
 end );
 
-CAP_INTERNAL_INSTALL_ALL_ADDS();
+CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD );
 
 ## These methods overwrite the automatically generated methods.
 ## The users do not have to give the category as an argument
