@@ -647,16 +647,3 @@ InstallMethod( AddTerminalObject,
     AddTerminalObject( category, [ [ wrapped_func, [ ] ] ], weight );
     
 end );
-
-##
-InstallMethod( AddTensorUnit,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    local wrapped_func;
-    
-    wrapped_func := function( cat ) return func(); end;
-    
-    AddTensorUnit( category, [ [ wrapped_func, [ ] ] ], weight );
-    
-end );
