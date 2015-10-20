@@ -15,7 +15,7 @@
 ####################################
 
 DeclareCategory( "IsLeftOrRightActionMorphism",
-                 IsCapCategoryMorphism );
+                 IsCategoryWithAttributesMorphism );
 
 DeclareCategory( "IsLeftActionMorphism",
                  IsLeftOrRightActionMorphism );
@@ -28,6 +28,12 @@ DeclareCategory( "IsRightActionMorphism",
 ## Constructors
 ##
 #############################
+
+DeclareOperation( "LeftActionMorphism",
+                  [ IsLeftActionObject, IsCapCategoryMorphism, IsLeftActionObject ] );
+
+DeclareOperation( "RightActionMorphism",
+                  [ IsRightActionObject, IsCapCategoryMorphism, IsRightActionObject ] );
 
 DeclareOperation( "ActionMorphism",
                   [ IsLeftOrRightActionObject, IsCapCategoryMorphism, IsLeftOrRightActionObject ] );

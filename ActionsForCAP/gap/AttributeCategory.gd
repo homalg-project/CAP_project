@@ -50,13 +50,14 @@ DeclareAttribute( "UnderlyingCategory",
 ##
 ####################################
 
-DeclareGlobalFunction( "CreateCategoryWithAttributes" );
+DeclareGlobalFunction( "CreateObjectConstructorForCategoryWithAttributes" );
+
+DeclareGlobalFunction( "CreateMorphismConstructorForCategoryWithAttributes" );
+
+DeclareGlobalFunction( "EnhancementWithAttributes" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_CREATE_FILTER_LIST_FOR_CATEGORY_WITH_ATTRIBUTES" );
 
-DeclareGlobalFunction( "CAP_INTERNAL_CREATE_OBJECT_CONSTRUCTOR_FOR_CATEGORY_WITH_ATTRIBUTES" );
-
-DeclareGlobalFunction( "CAP_INTERNAL_CREATE_MORPHISM_CONSTRUCTOR_FOR_CATEGORY_WITH_ATTRIBUTES" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS_FOR_CATEGORY_WITH_ATTRIBUTES" );
 
