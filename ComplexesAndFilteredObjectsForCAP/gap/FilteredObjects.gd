@@ -12,9 +12,9 @@
 ## Cocomplex: Ascending
 ## Complex: Descending
 
-DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_ASCENDING_FILTERED_OBJECTS_CATEGORY" );
+DeclareGlobalFunction( "INSTALL_OPERATIONS_FOR_ASCENDING_FILTERED_OBJECTS_CATEGORY" );
 
-DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_DESCENDING_FILTERED_OBJECTS_CATEGORY" );
+DeclareGlobalFunction( "INSTALL_OPERATIONS_FOR_DESCENDING_FILTERED_OBJECTS_CATEGORY" );
 
 DeclareCategory( "IsFilteredObjectCategoryCell",
                  IsCapCategoryCell );
