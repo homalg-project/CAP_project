@@ -662,28 +662,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
     
-    ##
-    AddLiftAlongMonomorphism( category,
-      function( monomorphism, test_morphism )
-        local right_divide;
-        
-        # try to find a lift
-        right_divide := RightDivide( UnderlyingHomalgMatrix( test_morphism ), UnderlyingHomalgMatrix( monomorphism ) );
-
-        # check if this failed
-        if right_divide = fail then
-          
-          return fail;
-          
-        fi;
-        
-        # and if not, then construct the lift-morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( test_morphism ),
-                                                                        right_divide,
-                                                                        Source( monomorphism ) );
-        
-    end );
-    
     ## Weak cokernels (added as cokernels)
     ## Weak cokernels (added as cokernels)
 
@@ -814,29 +792,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         cokernel_proj := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
         
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism ), cokernel_proj, cokernel );
-        
-    end );
-
-    ##
-    AddColiftAlongEpimorphism( category,
-      function( epimorphism, test_morphism )
-        local left_divide;
-        
-        # try to find a matrix that performs the colift
-        left_divide := LeftDivide( UnderlyingHomalgMatrix( epimorphism ), UnderlyingHomalgMatrix( test_morphism ) );
-
-        # check if this worked
-        if left_divide = fail then
-          
-          return fail;
-          
-        fi;
-        
-        # if it did work, return the corresponding morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( epimorphism ),
-                                                                        left_divide,
-                                                                        Range( test_morphism ) 
-                                                                       );
         
     end );
 
@@ -1927,34 +1882,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( kernel, kernel_matrix, Source( morphism ) );
         
     end );
-    
-    ##
-    AddLiftAlongMonomorphism( category,
-      function( monomorphism, test_morphism )
-        local left_divide;
         
-        # try to find a lift
-        left_divide := LeftDivide( UnderlyingHomalgMatrix( test_morphism ), UnderlyingHomalgMatrix( monomorphism ) );
-
-        # check if this failed
-        if left_divide = fail then
-          
-          return fail;
-          
-        fi;
-        
-        # and if not, then construct the lift-morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( test_morphism ),
-                                                                        left_divide,
-                                                                        Source( monomorphism ) );
-        
-    end );
-    
     ## Weak cokernels (added as cokernels)
     ## Weak cokernels (added as cokernels)
 
-    ##
-    
+    ##    
     AddCokernelObject( category,
       function( morphism )
         local homalg_graded_ring, cokernel_matrix, cokernel_object, non_zero_entries_index, expanded_degree_list, j, k,
@@ -2080,28 +2012,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         cokernel_proj := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
         
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism ), cokernel_proj, cokernel );
-        
-    end );
-
-    ##
-    AddColiftAlongEpimorphism( category,
-      function( epimorphism, test_morphism )
-        local right_divide;
-        
-        # try to find a matrix that performs the colift
-        right_divide := RightDivide( UnderlyingHomalgMatrix( epimorphism ), UnderlyingHomalgMatrix( test_morphism ) );
-
-        # check if this worked
-        if right_divide = fail then
-          
-          return fail;
-          
-        fi;
-        
-        # if it did work, return the corresponding morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( epimorphism ),
-                                                                        right_divide,
-                                                                        Range( test_morphism ) );
         
     end );
     
