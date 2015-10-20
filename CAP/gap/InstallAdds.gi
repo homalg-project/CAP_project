@@ -131,6 +131,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
               install_pair_func, pair_name, pair_func, is_pair_func, pair_func_push, number_of_proposed_arguments, current_function_number,
               current_function_argument_number;
         
+        if HasIsFinalized( category ) and IsFinalized( category ) then
+            Error( "cannot add methods anymore, category is finalized" );
+        fi;
+        
         ## If there already is a faster method, do nothing!
         if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
             return;
