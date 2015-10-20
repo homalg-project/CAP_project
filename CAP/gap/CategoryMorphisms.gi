@@ -238,10 +238,10 @@ end );
 ##
 ######################################
 
-## FIXME: how to classify this method?
+## FIXME: This might be dangerous
 ##
 InstallMethod( Zero,
-               [ IsCapCategoryMorphism and CanComputeZeroMorphism ],
+               [ IsCapCategoryMorphism ],
                
   function( mor )
     

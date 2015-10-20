@@ -130,8 +130,6 @@ function( d, weight, C )
 #                                                 current_implementation[ 1 ] );
 #       od;
 #       
-#       ValueGlobal( Concatenation( "SetCanCompute", method_name ) )( C, true );
-#       
 #       if nr_arguments > 1 then
 #           PopOptions( );
 #       fi;

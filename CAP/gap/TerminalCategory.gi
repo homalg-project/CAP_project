@@ -153,7 +153,7 @@ INSTALL_TERMINAL_CATEGORY_FUNCTIONS( );
 
 ##
 InstallMethod( FunctorFromTerminalCategory,
-               [ IsCapCategoryObject and CanComputeIdentityMorphism ],
+               [ IsCapCategoryObject ],
                
   function( object )
     local functor;

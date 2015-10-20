@@ -368,20 +368,6 @@ InstallGlobalFunction( DeclareFamilyProperty,
     
 end );
 
-BindGlobal( "CAP_INTERNAL_REMOVE_CAN_COMPUTE_STRING",
-  
-  function( string )
-    
-    if PositionSublist( string, "CanCompute" ) <> fail then
-        
-        return string{[ 11 .. Length( string ) ]};
-        
-    fi;
-    
-    return string;
-    
-end );
-
 #####################################
 ##
 ## Install add

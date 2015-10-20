@@ -9,8 +9,6 @@
 ##
 #############################################################################
 
-#FIXME: Add CanComputePreCompose to assumptions in implied methods
-
 ##
 InstallMethod( AddToGenesis,
                [ IsCapCategoryCell, IsString, IsObject ], 

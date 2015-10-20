@@ -34,7 +34,7 @@ end );
 InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
-    local function_name, install_name, add_name, can_compute_name, pre_function,
+    local function_name, install_name, add_name, pre_function,
           redirect_function, post_function, filter_list, caching,
           cache_name, nr_arguments, argument_list, add_function;
     
@@ -51,8 +51,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
     fi;
     
     add_name := Concatenation( "Add", function_name );
-    
-    can_compute_name := Concatenation( "CanCompute", function_name );
     
     if IsBound( record.pre_function ) then
         pre_function := record.pre_function;
@@ -183,8 +181,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
         fi;
         
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
-        
-        Setter( ValueGlobal( can_compute_name ) )( category, true );
         
         if caching = true then
             install_method := InstallMethodWithCache;
