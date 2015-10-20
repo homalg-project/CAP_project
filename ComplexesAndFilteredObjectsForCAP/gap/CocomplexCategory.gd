@@ -9,9 +9,9 @@
 ##
 #############################################################################
 
-DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_COCOMPLEX_CATEGORY" );
+DeclareGlobalFunction( "INSTALL_OPERATIONS_FOR_COCOMPLEX_CATEGORY" );
 
-DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_COMPLEX_CATEGORY" );
+DeclareGlobalFunction( "INSTALL_OPERATIONS_FOR_COMPLEX_CATEGORY" );
 
 DeclareCategory( "IsCapComplexOrCocomplexCell",
                  IsCapCategoryCell );
