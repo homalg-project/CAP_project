@@ -16,7 +16,7 @@
 ##
 ####################################
 
-DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY" );
+DeclareGlobalFunction( "INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY" );
 
 DeclareCategory( "IsZFunctorCell",
                  IsCapCategoryCell );

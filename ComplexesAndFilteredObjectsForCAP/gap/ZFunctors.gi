@@ -44,6 +44,14 @@ InstallMethod( ZFunctorCategory,
   function( category )
     local name, z_functor_category;
     
+    if not IsFinalized( category ) then
+        
+        Error( "can only create z functor category of finalized category" );
+        
+        return;
+        
+    fi;
+    
     name := Name( category );
     
     name := Concatenation( "Functors from integers into ", name );
@@ -52,7 +60,9 @@ InstallMethod( ZFunctorCategory,
     
     SetUnderlyingCategory( z_functor_category, category );
     
-    INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY( category );
+    SetZFunctorCategory( category, z_functor_category );
+    
+    INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY( category );
     
     Finalize( z_functor_category );
     
@@ -974,94 +984,95 @@ BindGlobal( "ADD_ZERO_MORPHISM_IN_Z_FUNCTORS",
 end );
 
 ##
-InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_ZFUNCTOR_CATEGORY,
+InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
             
   function( category )
-    local todo_list_entries, entry, new_entry;
+    local install_entries, entry, weight_list;
     
-    todo_list_entries := [
-        [ [ "CanComputePreCompose" ], function( ) ADD_PRECOMPOSE_IN_Z_FUNCTORS( category ); end ],
+    install_entries := [
+        [ [ "PreCompose" ], ADD_PRECOMPOSE_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeIdentityMorphism" ], function( ) ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS( category ); end ],
+        [ [ "IdentityMorphism" ], ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeZeroObject" ], function( ) ADD_ZERO_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "ZeroObject" ], ADD_ZERO_OBJECT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeKernelObject", "CanComputeKernelObjectFunctorial" ], function( ) ADD_KERNEL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "KernelObject", "KernelObjectFunctorial" ], ADD_KERNEL_OBJECT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeKernelEmbedding" ], function( ) ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "KernelEmbedding" ], ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeKernelLift" ], function( ) ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "KernelLift" ], ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeCokernelObject", "CanComputeCokernelFunctorial" ], function( ) ADD_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CokernelObject", "CokernelFunctorial" ], ADD_COKERNEL_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeCokernelProjection" ], function( ) ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CokernelProjection" ], ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeCokernelColift" ], function( ) ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS( category ); end ],
+        [ [ "CokernelColift" ], ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeTerminalObject", "CanComputeTerminalObjectFunctorial" ], function( ) ADD_TERMINAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "TerminalObject", "TerminalObjectFunctorial" ], ADD_TERMINAL_OBJECT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeUniversalMorphismIntoTerminalObject" ], function( ) ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "UniversalMorphismIntoTerminalObject" ], ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeInitialObject", "CanComputeInitialObjectFunctorial" ], function( ) ADD_INITIAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "InitialObject", "InitialObjectFunctorial" ], ADD_INITIAL_OBJECT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeUniversalMorphismFromInitialObject" ], function( ) ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "UniversalMorphismFromInitialObject" ], ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeDirectProduct", "CanComputeDirectProductFunctorial" ], function( ) ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "DirectProduct", "DirectProductFunctorial" ], ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeProjectionInFactorOfDirectProduct" ],
-          function( ) ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "ProjectionInFactorOfDirectProduct" ],
+          ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeUniversalMorphismIntoDirectProduct" ],
-          function( ) ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "UniversalMorphismIntoDirectProduct" ],
+          ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeCoproduct", "CanComputeCoproductFunctorial" ], function( ) ADD_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "Coproduct", "CoproductFunctorial" ], ADD_COPRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeInjectionOfCofactorOfCoproduct" ],
-          function( ) ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "InjectionOfCofactorOfCoproduct" ],
+          ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeUniversalMorphismFromCoproduct" ],
-          function( ) ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "UniversalMorphismFromCoproduct" ],
+          ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeDirectSum", "CanComputeDirectSumFunctorial" ], function( ) ADD_DIRECT_SUM_IN_Z_FUNCTORS( category ); end ],
+        [ [ "DirectSum", "DirectSumFunctorial" ], ADD_DIRECT_SUM_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeFiberProduct", "CanComputeFiberProductFunctorial" ], function( ) ADD_FIBER_PRODUCT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "FiberProduct", "FiberProductFunctorial" ], ADD_FIBER_PRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeProjectionInFactorOfFiberProduct" ],
-          function( ) ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS( category ); end ],
+        [ [ "ProjectionInFactorOfFiberProduct" ],
+          ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeUniversalMorphismIntoFiberProduct" ],
-          function( ) ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS( category ); end ],
+        [ [ "UniversalMorphismIntoFiberProduct" ],
+          ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputePushout", "CanComputePushoutFunctorial" ], function( ) ADD_PUSHOUT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "Pushout", "PushoutFunctorial" ], ADD_PUSHOUT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeInjectionOfCofactorOfPushout" ],
-          function( ) ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "InjectionOfCofactorOfPushout" ],
+          ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeUniversalMorphismFromPushout" ],
-          function( ) ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "UniversalMorphismFromPushout" ],
+          ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeInverseImmutable" ], function( ) ADD_INVERSE_IN_Z_FUNCTORS( category ); end ],
+        [ [ "InverseImmutable" ], ADD_INVERSE_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeLiftAlongMonomorphism" ], function( ) ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "LiftAlongMonomorphism" ], ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeColiftAlongEpimorphism" ], function( ) ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS( category ); end ],
+        [ [ "ColiftAlongEpimorphism" ], ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeAdditionForMorphisms" ], function( ) ADD_ADDITION_FOR_MORPHISMS_IN_Z_FUNCTORS( category ); end ],
+        [ [ "AdditionForMorphisms" ], ADD_ADDITION_FOR_MORPHISMS_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeAdditiveInverseForMorphisms" ], function( ) ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_Z_FUNCTORS( category ); end ],
+        [ [ "AdditiveInverseForMorphisms" ], ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_Z_FUNCTORS ],
         
-        [ [ "CanComputeZeroMorphism" ], function( ) ADD_ZERO_MORPHISM_IN_Z_FUNCTORS( category ); end ],
+        [ [ "ZeroMorphism" ], ADD_ZERO_MORPHISM_IN_Z_FUNCTORS ],
         
     ];
     
-    for entry in todo_list_entries do
+    weight_list := category!.derivations_weight_list;
+    
+    for entry in install_entries do
         
-        new_entry := ToDoListEntry(
-          Concatenation( List( entry[1], can_compute -> [ category, can_compute ] ), [ [ category, "ZFunctorCategory" ] ] ),
-          entry[2]
-        );
-        
-        AddToToDoList( new_entry );
+        if ForAll( entry[ 1 ], i -> CurrentOperationWeight( weight_list, i ) < infinity ) then
+            
+            entry[ 2 ]( category );
+            
+        fi;
         
     od;
     
