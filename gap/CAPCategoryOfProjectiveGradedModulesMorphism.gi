@@ -185,3 +185,42 @@ InstallMethod( Display,
     fi;
    
 end );
+
+
+#######################################
+##
+## FullInformationMethod about morphism
+##
+#######################################
+
+InstallMethod( FullInformation,
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism ],
+  function( morphism )
+
+    Print( "\n" );
+    Print( "================================================================================= \n \n" );
+    
+    # Display Source
+    Print( "Source: \n" );
+    Print( "------- \n" );
+    Display( Source( morphism ) );
+    Print( "\n" );
+    Print( "\n" );
+    Print( "--------------------------------------------------------------------------------- \n \n" );
+    
+    # Display the mapping matrix
+    Print( "Mapping matrix: \n" );
+    Print( "--------------- \n" );
+    Display( UnderlyingHomalgMatrix( morphism ) );
+    Print( "\n" );    
+    
+    Print( "--------------------------------------------------------------------------------- \n \n" );
+    
+    # Display the range"
+    Print( "Range: \n" );
+    Print( "------ \n" );
+    Display( Range( morphism ) );
+    Print( "\n \n" );
+    Print( "================================================================================= \n \n" );
+    
+end );

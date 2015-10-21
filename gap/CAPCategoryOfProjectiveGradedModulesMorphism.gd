@@ -78,3 +78,19 @@ DeclareAttribute( "UnderlyingHomalgGradedRing",
 #! @Arguments alpha
 DeclareAttribute( "UnderlyingHomalgMatrix",
                   IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
+
+                  
+#####################################################
+##
+#! @Section Printing all information about a morphism
+##
+#####################################################
+
+#! @Description
+#! The argument is a morphism $m$ in the category of projective graded modules. For such a morphisms it will 
+#! take three command to print source, range and the mapping matrix. This method performs this task immediately.
+#! and prints all this information.
+#! @Returns detailed information about the morphism
+#! @Arguments m
+DeclareOperation( "FullInformation",
+                 [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism ] );
