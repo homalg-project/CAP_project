@@ -32,6 +32,7 @@ DeclareAttribute( "CAPCategoryOfProjectiveGradedLeftModules",
 DeclareAttribute( "CAPCategoryOfProjectiveGradedRightModules",
                   IsHomalgGradedRing );
 
+
 ####################################
 ##
 ## Install the categories
