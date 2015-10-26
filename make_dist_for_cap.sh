@@ -18,6 +18,7 @@ EOF
 
   version=$(cat VERSION)
   rm VERSION
+  make doc
   cd ..
   tar czvf ${i}-${version}.tar.gz ${i}
   rm gh-pages/${i}/*tar.gz
