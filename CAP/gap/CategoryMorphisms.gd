@@ -735,26 +735,26 @@ DeclareOperation( "AddIsEqualAsFactorobjects",
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments alpha, beta
-DeclareOperation( "Dominates",
+DeclareOperation( "IsDominating",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>Dominates</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{Dominates}(\alpha,\beta)$.
+#! to the category for the basic operation <C>IsDominating</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{IsDominating}(\alpha,\beta)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddDominates",
+DeclareOperation( "AddIsDominating",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddDominates",
+DeclareOperation( "AddIsDominating",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddDominates",
+DeclareOperation( "AddIsDominating",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddDominates",
+DeclareOperation( "AddIsDominating",
                   [ IsCapCategory, IsList ] );
 
 
@@ -768,26 +768,26 @@ DeclareOperation( "AddDominates",
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments alpha, beta
-DeclareOperation( "Codominates",
+DeclareOperation( "IsCodominating",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>Codominates</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{Codominates}(\alpha,\beta)$.
+#! to the category for the basic operation <C>IsCodominating</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{IsCodominating}(\alpha,\beta)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCodominates",
+DeclareOperation( "AddIsCodominating",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCodominates",
+DeclareOperation( "AddIsCodominating",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCodominates",
+DeclareOperation( "AddIsCodominating",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCodominates",
+DeclareOperation( "AddIsCodominating",
                   [ IsCapCategory, IsList ] );
 
 

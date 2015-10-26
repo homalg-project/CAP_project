@@ -155,19 +155,19 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddDominates( deductive_system,
+    AddIsDominating( deductive_system,
                   
       function( subobject1, subobject2 )
         
-        return Dominates( Evaluation( subobject1 ), Evaluation( subobject2 ) );
+        return IsDominating( Evaluation( subobject1 ), Evaluation( subobject2 ) );
         
     end );
     
-    AddCodominates( deductive_system,
+    AddIsCodominating( deductive_system,
                     
       function( factorobject1, factorobject2 )
         
-        return Codominates( Evaluation( factorobject1 ), Evaluation( factorobject2 ) );
+        return IsCodominating( Evaluation( factorobject1 ), Evaluation( factorobject2 ) );
         
     end );
     

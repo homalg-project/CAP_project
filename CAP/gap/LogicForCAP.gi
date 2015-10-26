@@ -221,53 +221,19 @@ end );
 
 InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
                        
-  function( arg )
-    local method_name, arguments, result_object,
-          current_argument, crisp_category, deductive_category, theorem_list,
+  function( method_name, arguments, result_object, category )
+    local current_argument, crisp_category, deductive_category, theorem_list,
           current_theorem, todo_list_source, range, is_valid_theorem, sanitized_source,
-          entry, current_source, sanitized_source_list, category;
+          entry, current_source, sanitized_source_list;
     
-    method_name := arg[ 1 ];
-    
-    arguments := arg[ 2 ];
-    
-    result_object := arg[ 3 ];
-    
-    Info( CapLogicInfo, 1, Concatenation( "Creating todo list for operation ", method_name ) );
-    
-    if Length( arg ) = 4 then
-        
-        category := arg[ 4 ];
-        
-    else
-        
-        current_argument := arguments[ 1 ];
-        
-        if IsCapCategory( current_argument ) then
-           
-            category := current_argument;
-            
-        elif IsCapCategoryCell( current_argument ) then
-            
-            category := CapCategory( current_argument );
-            
-        elif IsList( current_argument ) then
-            
-            category := CapCategory( current_argument[ 1 ] );
-            
-        else
-            
-            Error( "Cannot figure out which category to use here" );
-            
-        fi;
-        
-    fi;
     
     if not IsBound( TheoremRecord( category ).( method_name ) ) then
         
         return;
         
     fi;
+    
+    Info( CapLogicInfo, 1, Concatenation( "Creating todo list for operation ", method_name ) );
     
     theorem_list := TheoremRecord( category ).( method_name );
     
@@ -351,9 +317,9 @@ InstallImmediateMethod( CAP_CATEGORY_SOURCE_RANGE_THEOREM_INSTALL_HELPER,
                         
   function( morphism )
     
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ) );
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), CapCategory( morphism ) );
     
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ) );
+    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), CapCategory( morphism ) );
     
     TryNextMethod();
     
