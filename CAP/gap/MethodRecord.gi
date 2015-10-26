@@ -1183,10 +1183,10 @@ IsEqualAsFactorobjects := rec(
   return_type := "bool",
   dual_operation := "IsEqualAsSubobjects" ),
 
-Dominates := rec(
-  installation_name := "Dominates",
+IsDominating := rec(
+  installation_name := "IsDominating",
   filter_list := [ [ "morphism", IsSubobject ], [ "morphism", IsSubobject ] ],
-  cache_name := "Dominates",
+  cache_name := "IsDominating",
   well_defined_todo := false,
   dual_operation := "Codominates",
   
@@ -1214,7 +1214,7 @@ Codominates := rec(
   filter_list := [ [ "morphism", IsFactorobject ], [ "morphism", IsFactorobject ] ],
   cache_name := "Codominates",
   well_defined_todo := false,
-  dual_operation := "Dominates",
+  dual_operation := "IsDominating",
   
   pre_function := function( factor1, factor2 )
     local is_equal_for_objects;

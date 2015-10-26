@@ -735,26 +735,26 @@ DeclareOperation( "AddIsEqualAsFactorobjects",
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments alpha, beta
-DeclareOperation( "Dominates",
+DeclareOperation( "IsDominating",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>Dominates</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{Dominates}(\alpha,\beta)$.
+#! to the category for the basic operation <C>IsDominating</C>.
+#! $F: (\alpha, \beta) \mapsto \mathtt{IsDominating}(\alpha,\beta)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddDominates",
+DeclareOperation( "AddIsDominating",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddDominates",
+DeclareOperation( "AddIsDominating",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddDominates",
+DeclareOperation( "AddIsDominating",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddDominates",
+DeclareOperation( "AddIsDominating",
                   [ IsCapCategory, IsList ] );
 
 
