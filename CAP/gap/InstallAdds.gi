@@ -228,7 +228,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 if not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false then
                     redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
                     if redirect_return[ 1 ] = true then
-                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, redirect_return[ 2 ] );
+                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, redirect_return[ 2 ], category );
                         return redirect_return[ 2 ];
                     fi;
                 fi;
@@ -246,7 +246,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
                 result := CallFuncList( func_to_install, arg{ argument_list } );
                 
-                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result );
+                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result, category );
                 
                 ## Those three commands do not commute
                 add_function( category, result );
