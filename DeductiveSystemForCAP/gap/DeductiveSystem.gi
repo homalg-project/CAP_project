@@ -163,11 +163,11 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddCodominates( deductive_system,
+    AddIsCodominating( deductive_system,
                     
       function( factorobject1, factorobject2 )
         
-        return Codominates( Evaluation( factorobject1 ), Evaluation( factorobject2 ) );
+        return IsCodominating( Evaluation( factorobject1 ), Evaluation( factorobject2 ) );
         
     end );
     

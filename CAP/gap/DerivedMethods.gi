@@ -689,18 +689,18 @@ end : Description := "IsEqualAsSubobjects(sub1, sub2) if sub1 dominates sub2 and
 
 ##
 AddDerivationToCAP( IsEqualAsFactorobjects,
-                    [ [ Codominates, 2 ] ],
+                    [ [ IsCodominating, 2 ] ],
                                   
   function( factor1, factor2 )
     
-    return Codominates( factor1, factor2 ) and Codominates( factor1, factor2 );
+    return IsCodominating( factor1, factor2 ) and IsCodominating( factor1, factor2 );
     
 end : Description := "IsEqualAsFactorobjects(factor1, factor2) if factor1 dominates factor2 and vice versa" );
 
 ##
 AddDerivationToCAP( IsDominating,
                     [ [ CokernelProjection, 2 ],
-                      [ Codominates, 1 ] ],
+                      [ IsCodominating, 1 ] ],
                                   
   function( sub1, sub2 )
     local cokernel_projection_1, cokernel_projection_2;
@@ -709,9 +709,9 @@ AddDerivationToCAP( IsDominating,
     
     cokernel_projection_2 := CokernelProjection( sub2 );
     
-    return Codominates( cokernel_projection_1, cokernel_projection_2 );
+    return IsCodominating( cokernel_projection_1, cokernel_projection_2 );
     
-end : Description := "IsDominating using Codominates and duality by cokernel" );
+end : Description := "IsDominating using IsCodominating and duality by cokernel" );
 
 ##
 AddDerivationToCAP( IsDominating,
@@ -731,7 +731,7 @@ AddDerivationToCAP( IsDominating,
 end : Description := "IsDominating(sub1, sub2) by deciding if sub1 composed with CokernelProjection(sub2) is zero" );
 
 ##
-AddDerivationToCAP( Codominates,
+AddDerivationToCAP( IsCodominating,
                     [ [ KernelEmbedding, 2 ],
                       [ IsDominating, 1 ] ],
                                   
@@ -744,10 +744,10 @@ AddDerivationToCAP( Codominates,
     
     return IsDominating( kernel_embedding_2, kernel_embedding_1 );
     
-end : Description := "Codominates using IsDominating and duality by kernel" );
+end : Description := "IsCodominating using IsDominating and duality by kernel" );
 
 ##
-AddDerivationToCAP( Codominates,
+AddDerivationToCAP( IsCodominating,
                     [ [ KernelEmbedding, 1 ],
                       [ PreCompose, 1 ],
                       [ IsZeroForMorphisms, 1 ] ],
@@ -761,7 +761,7 @@ AddDerivationToCAP( Codominates,
     
     return IsZero( composition );
     
-end : Description := "Codominates(factor1, factor2) by deciding if KernelEmbedding(factor2) composed with factor1 is zero" );
+end : Description := "IsCodominating(factor1, factor2) by deciding if KernelEmbedding(factor2) composed with factor1 is zero" );
 
 ###########################
 ##
