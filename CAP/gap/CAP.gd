@@ -225,6 +225,22 @@ DeclareAttribute( "TwoCellFilter",
 
 #############################################
 ##
+#! @Section Logic switcher
+##
+#############################################
+
+#! @Description
+#!  Activates the predicate implication logic for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicOn" );
+
+#! @Description
+#!  Deactivates the predicate implication logic for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicOff" );
+
+#############################################
+##
 #! @Section Tool functions
 ##
 #############################################

@@ -239,6 +239,8 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.prefunction_check := true;
     
+    obj_rec!.predicate_logic := true;
+    
     return obj_rec;
     
 end );
@@ -544,6 +546,28 @@ InstallGlobalFunction( EnableBasicOperationTypeCheck,
   function( category )
   
     category!.prefunction_check := true;
+    
+end );
+
+#######################################
+##
+## Logic
+##
+#######################################
+
+InstallGlobalFunction( CapCategorySwitchLogicOn,
+  
+  function( category )
+    
+    category!.predicate_logic := true;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicOff,
+  
+  function( category )
+    
+    category!.predicate_logic := false;
     
 end );
 
