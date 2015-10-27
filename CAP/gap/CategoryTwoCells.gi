@@ -25,32 +25,6 @@ BindGlobal( "TheTypeOfCapCategoryTwoCells",
 ####################################
 
 ##
-InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL,
-
-  function( category, twocell )
-    local entry;
-    
-#     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ twocell, "CapCategory" ] ],
-#                                                          [ category, twocell ],
-#                                                          CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST
-#                                                           );
-#     
-#     AddToToDoList( entry );
-    
-    if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_TWOCELL ) then
-        
-        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ twocell, "CapCategory" ] ],
-                                                             [ category, twocell ],
-                                                             category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_TWOCELL
-                                                              );
-        
-        AddToToDoList( entry );
-        
-    fi;
-    
-end );
-
-##
 InstallMethod( Add,
                [ IsCapCategory, IsCapCategoryTwoCell ],
                
@@ -80,8 +54,6 @@ InstallMethod( Add,
     SetFilterObj( twocell, filter );
     
     SetCapCategory( twocell, category );
-
-    INSTALL_TODO_LIST_ENTRIES_FOR_TWOCELL( category, twocell );
     
 end );
 

@@ -48,31 +48,6 @@ BindGlobal( "TheTypeOfCapCategoryMorphisms",
 ##
 #######################################
 
-InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM,
-
-  function( category, morphism )
-    local entry;
-    
-#     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "CapCategory" ] ],
-#                                                          [ category, morphism ],
-#                                                          CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST
-#                                                           );
-#     
-#     AddToToDoList( entry );
-    
-    if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM ) then
-        
-        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "CapCategory" ] ],
-                                                             [ category, morphism ],
-                                                             category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_MORPHISM
-                                                              );
-        
-        AddToToDoList( entry );
-        
-    fi;
-    
-end );
-
 InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,
               [  
                  "IsMonomorphism",
@@ -122,8 +97,6 @@ InstallMethod( Add,
     SetFilterObj( morphism, filter );
     
     SetCapCategory( morphism, category );
-
-    INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM( category, morphism );
     
 end );
 

@@ -61,8 +61,6 @@ DeclareOperation( "InverseOp",
 
 DeclareGlobalFunction( "CAP_INTERNAL_CREATE_MORPHISM_PRINT" );
 
-DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_MORPHISM" );
-
 DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS" );
 
 DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );

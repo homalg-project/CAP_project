@@ -30,33 +30,6 @@ BindGlobal( "TheTypeOfCapCategoryObjects",
 ##
 #######################################
 
-# InstallTrueMethod( WasCreatedAsDirectSum, HasFirstSummand and HasSecondSummand );
-
-InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT,
-                       
-  function( category, object )
-    local entry;
-    
-#     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "CapCategory" ] ],
-#                                                          [ category, object ],
-#                                                          CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST
-#                                                        );
-#  
-#     AddToToDoList( entry );
-    
-    if IsBound( category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS ) then
-        
-        entry := ToDoListEntryToMaintainFollowingAttributes( [ [ object, "CapCategory" ] ],
-                                                             [ category, object ],
-                                                             category!.PROPAGATE_FILTERS_FROM_CATEGORY_TO_OBJECTS
-                                                           );
-        
-        AddToToDoList( entry );
-        
-    fi;
-    
-end );
-
 InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS,
               [  
                  "IsTerminal",
@@ -156,8 +129,6 @@ InstallMethod( Add,
     SetFilterObj( object, filter );
     
     SetCapCategory( object, category );
-    
-    INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT( category, object );
     
 end );
 

@@ -38,8 +38,6 @@ DeclareAttribute( "CapCategory",
 ##
 ###################################
 
-DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OBJECT" );
-
 DeclareGlobalFunction( "CAP_INTERNAL_CREATE_OBJECT_PRINT" );
 
 DeclareAttribute( "Genesis",
