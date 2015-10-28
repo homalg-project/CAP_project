@@ -793,5 +793,35 @@ in the definition
  since it is not preserved by equivalences of categories.
 \end{remark}
 
+\subsection{Dual Objects}
+
+Let $\mathbf{C}$ be symmetric closed  monoidal category, $a \in \mathbf{C}$ an object.
+
+\begin{definition}
+A dual object of $a$ consists of
+\begin{itemize}
+ \item an object $a^{\vee} \in \mathbf{C}$,
+ \item a morphism $\mathrm{ev}_a: a^{\vee} \otimes a \rightarrow 1$ (evaluation)
+\end{itemize}
+such that for every $t \in \mathbf{C}$, the map
+\begin{align*}
+ \Hom_{\mathbf{C}}( t, a^{\vee} ) &\rightarrow \Hom_{\mathbf{C}}( t \otimes a, 1 ) \\
+ \alpha &\mapsto \mathrm{ev}_a \otimes (\alpha \otimes \mathrm{id}_a)
+\end{align*}
+is a bijection.
+If $\mathbf{C}$ is a rigid tensor category, dual objects admit a 
+coevaluation $\mathrm{coev}_a: 1 \rightarrow a \otimes a^{\vee}$, i.e. a morphism such
+that the two compositions (given by only using the natural isomorphisms)
+\[
+ a \rightarrow 1 \otimes a \rightarrow ( a \otimes a^{\vee} ) \otimes a \rightarrow a \otimes ( a^{\vee} \otimes a ) \rightarrow a \otimes 1 \rightarrow a
+\]
+and
+\[
+ a^{\vee} \rightarrow a^{\vee} \otimes 1 \rightarrow a^{\vee} \otimes (a \otimes a^{\vee}) \rightarrow (a^{\vee} \otimes a ) \otimes a \rightarrow 1 \otimes a^{\vee} \rightarrow a^{\vee}
+\]
+are identities.
+\end{definition}
+
+
 
 \section{Derivations}\label{section:derivations}
