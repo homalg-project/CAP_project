@@ -1,5 +1,7 @@
 #! @Chapter Examples and Tests
 
+
+
 #! @Section Constructors of objects and reduction of degree lists
 
 LoadPackage( "ToricVarieties" );;
@@ -16,290 +18,421 @@ ByASmallerPresentation( ClassGroup( P1xP1 ) );
 S := CoxRing( P1xP1 );
 #! Q[x_1,x_2,x_3,x_4]
 #! (weights: [ ( 1, 0 ), ( 1, 0 ), ( 0, 1 ), ( 0, 1 ) ])
-Object := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2] ], S );
+ObjectL := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2] ], S );
 #! <A projective graded left module of rank 2>
-DegreeList( Object );
+DegreeList( ObjectL );
 #! [ [ ( 1, 0 ), 2 ] ]
-Object2 := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2], 
+Object2L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2], 
            [[1,0],3],[[0,1],2],[[1,0],1] ], S );
 #! <A projective graded left module of rank 8>
-DegreeList( Object2 );
+DegreeList( Object2L );
 #! [ [ ( 1, 0 ), 5 ], [ ( 0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ]
+ObjectR := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],2] ], S );
+#! <A projective graded right module of rank 2>
+DegreeList( ObjectR );
+#! [ [ ( 1, 0 ), 2 ] ]
+Object2R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],2], 
+           [[1,0],3],[[0,1],2],[[1,0],1] ], S );
+#! <A projective graded right module of rank 8>
+DegreeList( Object2R );
+#! [ [ ( 1, 0 ), 5 ], [ ( 0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ]
+
 #! @EndExample
+
+
 
 #! @Section Constructors of morphisms
 
 #! @Example
-Q1 := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],1] ], S );
+Q1L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],1] ], S );
 #! <A projective graded left module of rank 1>
-Q2 := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[0,0],2] ], S );
+Q2L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[0,0],2] ], S );
 #! <A projective graded left module of rank 2>
-m1 := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
-      Q1, HomalgMatrix( [["x_1","x_2"]], S ) ,Q2 );
+m1L := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
+      Q1L, HomalgMatrix( [["x_1","x_2"]], S ) ,Q2L );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( Source( m1 ) );
+Display( Source( m1L ) );
 #! A projective graded left module over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
 #! [ [ ( 1, 0 ), 1 ] ]
-Display( Range( m1 ) );
+Display( Range( m1L ) );
 #! A projective graded left module over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
 #! [ [ 0, 2 ] ]
-Display( UnderlyingHomalgMatrix( m1 ) );
+Display( UnderlyingHomalgMatrix( m1L ) );
 #! x_1,x_2
+#! (over a graded ring)
+Q1R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],1] ], S );
+#! <A projective graded right module of rank 1>
+Q2R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[0,0],2] ], S );
+#! <A projective graded right module of rank 2>
+m1R := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
+      Q1R, HomalgMatrix( [["x_1"],["x_2"]], S ) ,Q2R );
+#! A morphism in the category of projective graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+Display( Source( m1R ) );
+#! A projective graded right module over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
+#! [ [ ( 1, 0 ), 1 ] ]
+Display( Range( m1R ) );
+#! A projective graded right module over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
+#! [ [ 0, 2 ] ]
+Display( UnderlyingHomalgMatrix( m1R ) );
+#! x_1,
+#! x_2
 #! (over a graded ring)
 
 #! @EndExample
+
+
+
+#! @Section The GAP categories
+
+#! @Example
+
+categoryL := CapCategory( Q1L );
+#! CAP category of projective graded left modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+categoryR := CapCategory( Q1R );
+#! CAP category of projective graded right modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+#! @EndExample
+
 
 
 #! @Section A few categorical constructions for left modules
 
 #! @Example
-O1 := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2] ], S );
+
+O1L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2] ], S );
 #! <A projective graded left module of rank 2>
-O2 := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[0,0],1] ], S );
+O2L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[0,0],1] ], S );
 #! <A projective graded left module of rank 1>
-directSum := DirectSum( [ O1, O2 ] );
+directSumL := DirectSum( [ O1L, O2L ] );
 #! <A projective graded left module of rank 3>
-Display( directSum );
+Display( directSumL );
 #! A projective graded left module over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
 #! [ [ ( 1, 0 ), 2 ], [ 0, 1 ] ]
-i1 := InjectionOfCofactorOfDirectSum( [ O1, O2 ], 1 );
+i1L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 1 );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( i1 ) );
+Display( UnderlyingHomalgMatrix( i1L ) );
 #! 1,0,0,
 #! 0,1,0 
 #! (over a graded ring)
-i2 := InjectionOfCofactorOfDirectSum( [ O1, O2 ], 2 );
+i2L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 2 );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( i2 ) );
+Display( UnderlyingHomalgMatrix( i2L ) );
 #! 0,0,1
 #! (over a graded ring)
-proj1 := ProjectionInFactorOfDirectSum( [ O1, O2 ], 1 );
+proj1L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 1 );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( proj1 ) );
+Display( UnderlyingHomalgMatrix( proj1L ) );
 #! 1,0,
 #! 0,1,
 #! 0,0 
 #! (over a graded ring)
-proj2 := ProjectionInFactorOfDirectSum( [ O1, O2 ], 2 );
+proj2L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 2 );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( proj2 ) );
+Display( UnderlyingHomalgMatrix( proj2L ) );
 #! 0,
 #! 0,
 #! 1 
 #! (over a graded ring)
-k := KernelEmbedding( proj1 );
+kL := KernelEmbedding( proj1L );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( k ) );
+Display( UnderlyingHomalgMatrix( kL ) );
 #! 0,0,1
 #! (over a graded ring)
-ck := CokernelProjection( k );
+ckL := CokernelProjection( kL );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( ck ) );
+Display( UnderlyingHomalgMatrix( ckL ) );
 #! 1,0,
 #! 0,1,
 #! 0,0 
 #! (over a graded ring)
-IsMonomorphism( k );
+IsMonomorphism( kL );
 #! true
-IsEpimorphism( k );
+IsEpimorphism( kL );
 #! false
-IsMonomorphism( ck );
+IsMonomorphism( ckL );
 #! false
-IsEpimorphism( ck );
+IsEpimorphism( ckL );
 #! true
-m1 := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( O1, 
-      HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), O2 );
+m1L := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( O1L, 
+      HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), O2L );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-m2 := IdentityMorphism( O2 );
+m2L := IdentityMorphism( O2L );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Lift( m1, m2 );
+liftL := Lift( m1L, m2L );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( Lift( m1, m2 ) ) );
+Display( UnderlyingHomalgMatrix( liftL ) );
 #! x_1,
 #! x_2 
 #! (over a graded ring)
-O3 := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[-1,0],2] ], S );
+O3L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[-1,0],2] ], S );
 #! <A projective graded left module of rank 2>
-mor := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
-       O2, HomalgMatrix( [[ "x_1, x_2" ]], S ), O3 );
+morL := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
+       O2L, HomalgMatrix( [[ "x_1, x_2" ]], S ), O3L );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Colift( m2, mor );
+coliftL := Colift( m2L, morL );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( Colift( m2, mor ) ) );
+Display( UnderlyingHomalgMatrix( coliftL ) );
 #! x_1,x_2
 #! (over a graded ring)
-fp := FiberProduct( [ m1, m2 ] );
+fpL := FiberProduct( [ m1L, m2L ] );
 #! <A projective graded left module of rank 2>
-fp_proj1 := ProjectionInFactorOfFiberProduct( [ m1, m2 ], 1 );
+fp_proj1L := ProjectionInFactorOfFiberProduct( [ m1L, m2L ], 1 );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( fp_proj1 ) );
+Display( UnderlyingHomalgMatrix( fp_proj1L ) );
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
-fp_proj2 := ProjectionInFactorOfFiberProduct( [ m1, m2 ], 2 );
+fp_proj2L := ProjectionInFactorOfFiberProduct( [ m1L, m2L ], 2 );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( fp_proj2 ) );
+Display( UnderlyingHomalgMatrix( fp_proj2L ) );
 #! x_1,
 #! x_2 
 #! (over a graded ring)
-po := Pushout( mor, m2 );
+poL := Pushout( morL, m2L );
 #! <A projective graded left module of rank 2>
-inj1 := InjectionOfCofactorOfPushout( [ mor, m2 ], 1 );
+inj1L := InjectionOfCofactorOfPushout( [ morL, m2L ], 1 );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( inj1 ) );
+Display( UnderlyingHomalgMatrix( inj1L ) );
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
-inj2 := InjectionOfCofactorOfPushout( [ mor, m2 ], 2 );
+inj2L := InjectionOfCofactorOfPushout( [ morL, m2L ], 2 );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( inj2 ) );
+Display( UnderlyingHomalgMatrix( inj2L ) );
 #! x_1,x_2
 #! (over a graded ring)
+tensorProductL := TensorProductOnObjects( O1L, O2L );
+#! <A projective graded left module of rank 2>
+Display( tensorProductL );
+#! A projective graded left module over Q[x_1,x_2,x_3,x_4] (with weights 
+#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
+#! [ [ ( 1, 0 ), 2 ] ]
+tensorProductMorphismL := TensorProductOnMorphisms( m2L, morL );
+#! A morphism in the category of projective graded left modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
+Display( tensorProductMorphismL );
+#! A morphism in the category of projective graded left modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
+#! with matrix: 
+#! x_1,x_2
+#! (over a graded ring)
+Display( DualOnObjects( TensorProductOnObjects( ObjectL, Object2L ) ) );
+#! A projective graded left module over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: 
+#! [ [ ( -2, 0 ), 5 ], [ ( -1, -1 ), 2 ], [ ( -2, 0 ), 6 ], [ ( -1, -1 ), 2 ], 
+#! [ ( -2, 0 ), 1 ] ]
+Display( DualOnMorphisms( m1L ) );
+#! A morphism in the category of projective graded left modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
+#! with matrix: 
+#! x_1,x_2
+#! (over a graded ring)
+Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
+         DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
+#! A morphism in the category of projective graded left modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
+#! with matrix: 
+#! 1,
+#! 0,
+#! 0,
+#! 1 
+#! (over a graded ring)
+Display( InternalHomOnObjects( ObjectL, ObjectL ) );
+#! A projective graded left module over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 4 and degrees: 
+#! [ [ 0, 4 ] ]
 
 #! @EndExample
+
 
 
 #! @Section A few categorical constructions for right modules
 
 #! @Example
-P1 := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],2] ], S );
+
+O1R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],2] ], S );
 #! <A projective graded right module of rank 2>
-P2 := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[0,0],1] ], S );
+O2R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[0,0],1] ], S );
 #! <A projective graded right module of rank 1>
-directSum := DirectSum( [ P1, P2 ] );
+directSumR := DirectSum( [ O1R, O2R ] );
 #! <A projective graded right module of rank 3>
-Display( directSum );
+Display( directSumR );
 #! A projective graded right module over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
 #! [ [ ( 1, 0 ), 2 ], [ 0, 1 ] ]
-i1 := InjectionOfCofactorOfDirectSum( [ P1, P2 ], 1 );
+i1R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 1 );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( i1 ) );
+Display( UnderlyingHomalgMatrix( i1R ) );
 #! 1,0,
 #! 0,1,
 #! 0,0
 #! (over a graded ring)
-i2 := InjectionOfCofactorOfDirectSum( [ P1, P2 ], 2 );
+i2R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 2 );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( i2 ) );
+Display( UnderlyingHomalgMatrix( i2R ) );
 #! 0,
 #! 0,
 #! 1
 #! (over a graded ring)
-proj1 := ProjectionInFactorOfDirectSum( [ P1, P2 ], 1 );
+proj1R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 1 );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( proj1 ) );
+Display( UnderlyingHomalgMatrix( proj1R ) );
 #! 1,0,0,
 #! 0,1,0
 #! (over a graded ring)
-proj2 := ProjectionInFactorOfDirectSum( [ P1, P2 ], 2 );
+proj2R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 2 );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( proj2 ) );
+Display( UnderlyingHomalgMatrix( proj2R ) );
 #! 0,0,1
 #! (over a graded ring)
-k := KernelEmbedding( proj1 );
+kR := KernelEmbedding( proj1R );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( k ) );
+Display( UnderlyingHomalgMatrix( kR ) );
 #! 0,
 #! 0,
 #! 1
 #! (over a graded ring)
-ck := CokernelProjection( k );
+ckR := CokernelProjection( kR );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( ck ) );
+Display( UnderlyingHomalgMatrix( ckR ) );
 #! 1,0,0,
 #! 0,1,0
 #! (over a graded ring)
-IsMonomorphism( k );
+IsMonomorphism( kR );
 #! true
-IsEpimorphism( k );
+IsEpimorphism( kR );
 #! false
-IsMonomorphism( ck );
+IsMonomorphism( ckR );
 #! false
-IsEpimorphism( ck );
+IsEpimorphism( ckR );
 #! true
-m1 := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( P1, 
-      HomalgMatrix( [[ "x_1", "x_2" ]], S ), P2 );
+m1R := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( O1R, 
+      HomalgMatrix( [[ "x_1", "x_2" ]], S ), O2R );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-m2 := IdentityMorphism( P2 );
+m2R := IdentityMorphism( O2R );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Lift( m1, m2 );
+liftR := Lift( m1R, m2R );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-Display( UnderlyingHomalgMatrix( Lift( m1, m2 ) ) );
+Display( UnderlyingHomalgMatrix( liftR ) );
 #! x_1,x_2
 #! (over a graded ring)
-P3 := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[-1,0],2] ], S );
+O3R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[-1,0],2] ], S );
 #! <A projective graded right module of rank 2>
-mor := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
-       P2, HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), P3 );
+morR := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
+       O2R, HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), O3R );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Colift( m2, mor );
+coliftR := Colift( m2R, morR );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( Colift( m2, mor ) ) );
+Display( UnderlyingHomalgMatrix( coliftR ) );
 #! x_1,
 #! x_2
 #! (over a graded ring)
-fp := FiberProduct( [ m1, m2 ] );
+fpR := FiberProduct( [ m1R, m2R ] );
 #! <A projective graded right module of rank 2>
-fp_proj1 := ProjectionInFactorOfFiberProduct( [ m1, m2 ], 1 );
+fp_proj1R := ProjectionInFactorOfFiberProduct( [ m1R, m2R ], 1 );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( fp_proj1 ) );
+Display( UnderlyingHomalgMatrix( fp_proj1R ) );
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
-fp_proj2 := ProjectionInFactorOfFiberProduct( [ m1, m2 ], 2 );
+fp_proj2R := ProjectionInFactorOfFiberProduct( [ m1R, m2R ], 2 );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( fp_proj2 ) );
+Display( UnderlyingHomalgMatrix( fp_proj2R ) );
 #! x_1, x_2
 #! (over a graded ring)
-po := Pushout( mor, m2 );
+poR := Pushout( morR, m2R );
 #! <A projective graded right module of rank 2>
-inj1 := InjectionOfCofactorOfPushout( [ mor, m2 ], 1 );
+inj1R := InjectionOfCofactorOfPushout( [ morR, m2R ], 1 );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( inj1 ) );
+Display( UnderlyingHomalgMatrix( inj1R ) );
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
-inj2 := InjectionOfCofactorOfPushout( [ mor, m2 ], 2 );
+inj2R := InjectionOfCofactorOfPushout( [ morR, m2R ], 2 );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
-Display( UnderlyingHomalgMatrix( inj2 ) );
+Display( UnderlyingHomalgMatrix( inj2R ) );
 #! x_1,
 #! x_2
 #! (over a graded ring)
+tensorProductR := TensorProductOnObjects( O1R, O2R );
+#! <A projective graded right module of rank 2>
+Display( tensorProductR );
+#! A projective graded right module over Q[x_1,x_2,x_3,x_4] (with weights 
+#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
+#! [ [ ( 1, 0 ), 2 ] ]
+tensorProductMorphismR := TensorProductOnMorphisms( m2R, morR );
+#! A morphism in the category of projective graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
+Display( tensorProductMorphismR );
+#! A morphism in the category of projective graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
+#! with matrix: 
+#! x_1,
+#! x_2
+#! (over a graded ring)
+Display( DualOnObjects( TensorProductOnObjects( ObjectR, Object2R ) ) );
+#! A projective graded right module over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: 
+#! [ [ ( -2, 0 ), 5 ], [ ( -1, -1 ), 2 ], [ ( -2, 0 ), 6 ], [ ( -1, -1 ), 2 ], 
+#! [ ( -2, 0 ), 1 ] ]
+Display( DualOnMorphisms( m1R ) );
+#! A morphism in the category of projective graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! with matrix: 
+#! x_1,
+#! x_2 
+#! (over a graded ring)
+Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
+         DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
+#! A morphism in the category of projective graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
+#! with matrix: 
+#! 1,0,0,1
+#! (over a graded ring)
+Display( InternalHomOnObjects( ObjectR, ObjectR ) );
+#! A projective graded right module over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 4 and degrees: 
+#! [ [ 0, 4 ] ]
 
 #! @EndExample
-

@@ -101,7 +101,7 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
     od;
     
     # the entered degree_list has passed all consistency checks
-    # no sort this data (unless it is trivial)
+    # now sort this data (unless it is trivial)
     if Length( degree_list ) > 1 then
     
       degree_list := CAP_CATEGORY_OF_PROJECTIVE_GRADED_MODULES_INTERNAL_SIMPLIFY_DATA_STRUCTURE( degree_list );
