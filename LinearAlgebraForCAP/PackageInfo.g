@@ -13,7 +13,7 @@ PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
 
 Version := Maximum( [
-  "2015.08.17", ## Sebas' version
+  "2015.10.30", ## Sebas' version
   ## this line prevents merge conflicts
   "2015.10.06", ## Sepp's version
 ] ),
@@ -94,7 +94,6 @@ AvailabilityTest := function()
         return true;
     end,
 
-TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
 
