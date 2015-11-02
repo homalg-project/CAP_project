@@ -4,7 +4,7 @@ PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2015.03.26", # Sebas version
+           "2015.10.30", # Sebas version
            ##
            "2015.10.14", # Sepps version
            ##
@@ -89,7 +89,6 @@ AvailabilityTest := function()
         return true;
     end,
 
-TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
 
