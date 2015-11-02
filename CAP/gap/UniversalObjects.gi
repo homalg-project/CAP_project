@@ -197,21 +197,35 @@ end );
 ####################################
 
 ##
-InstallGlobalFunction( Coproduct,
-  
-  function( arg )
+InstallMethod( Coproduct,
+               [ IsList ],
+               
+  function( diagram )
     
-    if Length( arg ) = 1
-       and IsList( arg[1] )
-       and ForAll( arg[1], IsCapCategoryObject ) then
-       
-       return CoproductOp( arg[1], arg[1][1] );
-       
-    fi;
-    
-    return CoproductOp( arg, arg[ 1 ] );
+    return CoproductOp( diagram, diagram[1] );
     
 end );
+
+##
+InstallMethod( Coproduct,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    
+    CoproductOp( [ object_1, object_2 ], object_1 );
+    
+end );
+
+##
+InstallMethod( Coproduct,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2, object_3 )
+    
+    CoproductOp( [ object_1, object_2, object_3 ], object_1 );
+    
+end );
+
 
 ##
 InstallGlobalFunction( UniversalMorphismFromCoproduct,

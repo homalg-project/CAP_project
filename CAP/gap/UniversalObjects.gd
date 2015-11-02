@@ -1746,13 +1746,32 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 ## Main Operations and Attributes
 
 #! @Description
-#! This is a convenience method.
-#! There are two different ways to use this method:
-#! * The argument is a list of objects $D = ( I_1, \dots, I_n )$.
-#! * The arguments are objects $I_1, \dots, I_n$.
+#! The argument is a list of objects $D = ( I_1, \dots, I_n )$.
 #! The output is the coproduct $\bigsqcup_{i=1}^n I_i$.
 #! @Returns an object
-DeclareGlobalFunction( "Coproduct" );
+#! @Arguments D
+DeclareOperation( "Coproduct",
+                  [ IsList ] );
+
+#! @Description
+#! This is a convenience method.
+#! The arguments are two objects $I_1, I_2$.
+#! The output is the coproduct $I_1 \bigsqcup I_2$.
+#! @Returns an object
+#! @Arguments I1, I2
+DeclareOperation( "Coproduct",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a convenience method.
+#! The arguments are three objects $I_1, I_2, I_3$.
+#! The output is the coproduct $I_1 \bigsqcup I_2 \bigsqcup I_3$.
+#! @Returns an object
+#! @Arguments I1, I2
+DeclareOperation( "Coproduct",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+
 
 #! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$
