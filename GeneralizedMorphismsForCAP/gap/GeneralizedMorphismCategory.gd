@@ -34,33 +34,6 @@ DeclareCategory( "IsGeneralizedMorphism",
 
 ####################################
 ##
-#! @Section Convenience methods
-##
-####################################
-
-DeclareOperation( "GeneralizedMorphismCategory",
-                  [ IsCapCategory ] );
-
-DeclareOperation( "GeneralizedMorphism",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-DeclareOperation( "GeneralizedMorphism",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-DeclareOperation( "GeneralizedMorphismObject",
-                  [ IsCapCategoryObject ] );
-
-DeclareOperation( "AsGeneralizedMorphism",
-                  [ IsCapCategoryMorphism ] );
-
-DeclareOperation( "GeneralizedMorphismWithRangeAid",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-DeclareOperation( "GeneralizedMorphismWithSourceAid",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-####################################
-##
 #! @Section Attributes
 ##
 ####################################
@@ -217,3 +190,59 @@ DeclareProperty( "IsSingleValued",
 #! @Arguments alpha
 DeclareProperty( "IsTotal",
                  IsGeneralizedMorphism );
+
+####################################
+##
+#! @Section Convenience methods
+##
+####################################
+
+#! This section contains operations which, depending on the current generalized morphism
+#! standard of the system and the category, might point to other Operations. Please use them
+#! only as convenience and never in serious code.
+
+#! @Description
+#!  Creates a new category of generalized morphisms. Might point to
+#!  GeneralizedMorphismCategoryByThreeArrows, GeneralizedMorphismCategoryByCospans, or
+#!  GeneralizedMorphismCategoryBySpans
+#! @Returns a category
+#! @Arguments C
+DeclareOperation( "GeneralizedMorphismCategory",
+                  [ IsCapCategory ] );
+#! @Group
+#! @Description
+#!  Creates a generalized morphism by three arrows, a generalized morphism by span, or
+#!  a generalized morphism by cospan, depending on the current standard.
+DeclareOperation( "GeneralizedMorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "GeneralizedMorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @EndGroup
+
+#! @Description
+#!  Creates an object in the current generalized morphism category, depending on the standard
+#! @Returns an object in the generalized morphism category
+#! @Arguments A
+DeclareOperation( "GeneralizedMorphismObject",
+                  [ IsCapCategoryObject ] );
+
+#! @Description
+#!  Returns the corresponding morphism to phi in the current generalized morphism category.
+#! @Returns a generalized morphism
+#! @Arguments phi
+DeclareOperation( "AsGeneralizedMorphism",
+                  [ IsCapCategoryMorphism ] );
+
+#! @Description
+#!  Returns a generalized morphism with range aid by three arrows or by span, or a generalized morphism
+#!  by cospan, depending on the standard.
+DeclareOperation( "GeneralizedMorphismWithRangeAid",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  Returns a generalized morphism with source aid by three arrows or by cospan, or a generalized morphism
+#!  by span, depending on the standard.
+DeclareOperation( "GeneralizedMorphismWithSourceAid",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
