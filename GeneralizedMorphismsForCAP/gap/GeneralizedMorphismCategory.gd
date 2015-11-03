@@ -34,6 +34,33 @@ DeclareCategory( "IsGeneralizedMorphism",
 
 ####################################
 ##
+#! @Section Convenience methods
+##
+####################################
+
+DeclareOperation( "GeneralizedMorphismCategory",
+                  [ IsCapCategory ] );
+
+DeclareOperation( "GeneralizedMorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "GeneralizedMorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "GeneralizedMorphismObject",
+                  [ IsCapCategoryObject ] );
+
+DeclareOperation( "AsGeneralizedMorphism",
+                  [ IsCapCategoryMorphism ] );
+
+DeclareOperation( "GeneralizedMorphismWithRangeAid",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "GeneralizedMorphismWithSourceAid",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+####################################
+##
 #! @Section Attributes
 ##
 ####################################

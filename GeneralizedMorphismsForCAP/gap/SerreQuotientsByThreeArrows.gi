@@ -337,7 +337,7 @@ end );
 InstallMethod( \/,
                [ IsCapCategory, IsFunction ],
                
-  SerreQuotientCategory );
+  SerreQuotientCategoryByThreeArrows );
 
 InstallMethod( SerreQuotientCategoryByThreeArrows,
                [ IsCapCategory, IsFunction ],
@@ -401,7 +401,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
     
     SetUnderlyingHonestCategory( serre_category, category );
     
-    SetUnderlyingGeneralizedMorphismCategory( serre_category, GeneralizedMorphismCategory( category ) );
+    SetUnderlyingGeneralizedMorphismCategory( serre_category, GeneralizedMorphismCategoryByThreeArrows( category ) );
     
     SetSubcategoryMembershipTestFunctionForSerreQuotient( serre_category, test_function );
     
