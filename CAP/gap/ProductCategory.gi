@@ -480,7 +480,7 @@ InstallMethodWithCache( CoproductFunctor,
     
       function( object )
         
-        return CallFuncList( Coproduct, Components( object ) );
+        return Coproduct( Components( object ) );
         
     end );
     
