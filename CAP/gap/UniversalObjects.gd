@@ -1750,8 +1750,8 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #! The output is the coproduct $\bigsqcup_{i=1}^n I_i$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperation( "Coproduct",
-                  [ IsList ] );
+DeclareAttribute( "Coproduct",
+                  IsList );
 
 #! @Description
 #! This is a convenience method.
