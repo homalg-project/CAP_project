@@ -4,7 +4,7 @@ PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
 
 Version := Maximum( [
-  "2015.11.03", ## Sebas' version
+  "2015.11.05", ## Sebas' version
 ## this line prevents merge conflicts
   "2015.10.06", ## Sepp's version
 ## this line prevents merge conflicts
@@ -49,7 +49,7 @@ Persons := [
 
 PackageWWWHome := "http://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/",
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "GeneralizedMorphismsForCAP-", ~.Version ),
+ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-", ~.Version, "/GeneralizedMorphismsForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 

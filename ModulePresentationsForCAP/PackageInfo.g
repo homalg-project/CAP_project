@@ -4,7 +4,7 @@ PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2015.10.30", # Sebas version
+           "2015.11.05", # Sebas version
            ##
            "2015.10.14", # Sepps version
            ##
@@ -48,7 +48,7 @@ Persons := [
 
 PackageWWWHome := "http://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/",
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "ModulePresentationsForCAP-", ~.Version ),
+ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-", ~.Version, "/ModulePresentationsForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
