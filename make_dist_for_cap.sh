@@ -9,6 +9,9 @@ function jsonval {
 
 current_dir=$(pwd)
 
+## get current_release_data
+curl -X GET https://api.github.com/repos/homalg-project/CAP_project/releases > json_data
+
 for i in $packages; do
   mkdir -p tmp
   git archive --format=tar --output=tmp/${i}.tar --prefix=${i}/ HEAD:${i}
@@ -45,6 +48,13 @@ GAPInput
   tag_response=$(curl -X GET https://api.github.com/repos/homalg-project/CAP_project/releases/tags/${i}-${version}?access_token=${oauth_token} | grep "Not Found")
   echo "Tag response: ${tag_response}"
   if [ -n "$tag_response" ]; then
+      
+      ##delete all old releases, just leave three of them
+      delete_releases=$(python ${current_dir}/delete_old_releases.py ${i} ${current_dir}/json_data)
+      for rel_id in $delete_releases; do
+          curl -X DELETE https:///repos/homalg-project/CAP_project/releases/${rel_id}?access_token=${oauth_token}
+      done
+      
       release_response=$(curl -H "Content-Type: application/json" -X POST --data \
       '{ "tag_name": "'${i}-${version}'", "target_commitish": "master", "name": "'${i}-${version}'", "body": "Release for '${i}'", "draft": false, "prerelease": false }' \
       https://api.github.com/repos/homalg-project/CAP_project/releases?access_token=${oauth_token})
