@@ -127,12 +127,6 @@ done
 
 log_output=$(git log -n 1 --oneline | grep "New version of homepage from dist script")
 
-if [ -n "$log_output" ]; then
-  git add *
-  git commit -a --amend -m "New version of homepage from dist script"
-  git push --force homalg gh-pages:gh-pages
-else
-  git add *
-  git commit -a -m "New version of homepage from dist script"
-  git push homalg gh-pages:gh-pages
-fi
+git add *
+git commit -a -m "New version of homepage from dist script"
+git push homalg gh-pages:gh-pages
