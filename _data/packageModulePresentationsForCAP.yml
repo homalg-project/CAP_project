@@ -35,6 +35,8 @@ packageinfo: http://homalg-project.github.io/CAP_project/ModulePresentationsForC
 downloads:
     - name: .tar.gz
       url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2015.11.05/ModulePresentationsForCAP-2015.11.05.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2015.11.05/ModulePresentationsForCAP-2015.11.05.zip
 
 abstract: 
 
