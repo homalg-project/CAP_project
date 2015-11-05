@@ -56,7 +56,7 @@ ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
