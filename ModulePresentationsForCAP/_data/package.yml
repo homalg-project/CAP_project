@@ -23,7 +23,7 @@ needed-pkgs:
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "MatricesForHomalg"
       version: ">=0"
-      url: "http://homalg.math.rwth-aachen.de/index.php/core-packages/matricesforhomalg"
+      url: "http://homalg-project.github.io/homalg_project/MatricesForHomalg/"
     - name: "CAP"
       version: ">=0"
       url: "http://homalg-project.github.io/CAP_project/CAP/"
