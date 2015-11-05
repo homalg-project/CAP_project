@@ -91,6 +91,8 @@ GAPInput
 
 done
 
+rm json_data
+
 cd gh-pages
 
 for i in $packages; do
