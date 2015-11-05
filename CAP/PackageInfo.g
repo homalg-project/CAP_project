@@ -66,9 +66,9 @@ Status := "dev",
 #PackageWWWHome := "http://www.TODO.INSERT.WEBPAGE.HERE/",
 PackageWWWHome := "http://homalg-project.github.io/CAP_project/CAP/",
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
-ArchiveURL     := Concatenation( https://github.com/homalg-project/CAP_project/releases/download/CAP-", ~.Version, "/CAP-", ~.Version ),
+ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/CAP-", ~.Version, "/CAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
