@@ -95,6 +95,8 @@ rm json_data
 
 cd gh-pages
 
+git pull homalg gh-pages
+
 for i in $packages; do
   cd ${i}
   git add *
