@@ -2,6 +2,11 @@
 
 packages="CAP GeneralizedMorphismsForCAP LinearAlgebraForCAP ModulePresentationsForCAP"
 
+function jsonval {
+    temp=`echo $release_response | sed 's/\\\\\//\//g' | sed 's/[{}]//g' | awk -v k="text" '{n=split($0,a,","); for (i=1; i<=n; i++) print a[i]}' | sed 's/\"\:\"/\|/g' | sed 's/[\,]/ /g' | sed 's/\"//g' | grep -w id`
+    echo ${temp##*|}
+}
+
 current_dir=$(pwd)
 
 for i in $packages; do
@@ -31,13 +36,49 @@ GAPInput
   rm -rf bin/
   rm -rf public_html
   cd ..
-  tar czvf ${i}-${version}.tar.gz ${i}
+  
+  oauth_token=$(cat ~/.github_shell_token)
+  
+  echo "Creating release for ${i}"
+  ## check wether release is already there
+  
+  tag_response=$(curl -X GET https://api.github.com/repos/homalg-project/CAP_project/releases/tags/${i}-${version}?access_token=${oauth_token} | grep "Not Found")
+  echo "Tag response: ${tag_response}"
+  if [ -n "$tag_response" ]; then
+      release_response=$(curl -H "Content-Type: application/json" -X POST --data \
+      '{ "tag_name": "'${i}-${version}'", "target_commitish": "master", "name": "'${i}-${version}'", "body": "Release for '${i}'", "draft": false, "prerelease": false }' \
+      https://api.github.com/repos/homalg-project/CAP_project/releases?access_token=${oauth_token})
+      
+      echo "Release response: ${release_response}"
+      
+      release_id=$(jsonval | sed "s/id:/\n/g" | sed -n 2p | sed "s| ||g")
+      
+      tar czvf ${i}-${version}.tar.gz ${i}
+      curl --fail -s -S -X POST https://uploads.github.com/repos/homalg-project/CAP_project/releases/${release_id}/assets?name=${i}-${version}.tar.gz \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${oauth_token}" \
+          -H "Content-Type: application/tgz" \
+          --data-binary @"${i}-${version}.tar.gz"
+      
+      rm ${i}-${version}.tar.gz
+      
+      zip -r ${i}-${version}.zip ${i}
+      curl --fail -s -S -X POST https://uploads.github.com/repos/homalg-project/CAP_project/releases/${release_id}/assets?name=${i}-${version}.zip \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${oauth_token}" \
+          -H "Content-Type: application/zip" \
+          --data-binary @"${i}-${version}.zip"
+      
+      rm ${i}-${version}.zip
+      
+  fi
+  
   mkdir -p ../gh-pages/${i}
-  rm ../gh-pages/${i}/*tar.gz
-  mv ${i}-${version}.tar.gz ../gh-pages/${i}
   cd ..
   rm -rf tmp
   cd $current_dir
+  
+
 done
 
 cd gh-pages
