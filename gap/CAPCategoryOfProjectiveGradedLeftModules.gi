@@ -41,12 +41,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
     #    "PredicateImplicationsForMatrixCategory.tex" )
     #);
     
-    # objectify with a few attributes
-    #ObjectifyWithAttributes( category, TheTypeOfCapProjCategory,
-    #                         AdditionWithZeroObjectIsIdenticalObject, true
-    #                         );
-
-    Finalize( category );    
+    Finalize( category );
     
     return category;
     
@@ -62,63 +57,19 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES,
 
   function( category )
-    
-    ## Equality Basic Operations for Objects and Morphisms
-    ## Equality Basic Operations for Objects and Morphisms
 
-    ##
-    AddIsEqualForObjects( category,
-      function( object_1, object_2 )
-      
-        return DegreeList( object_1 ) = DegreeList( object_2 );
-      
-    end );
-    
-    ##
-    AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
-        
-        # note that a matrix over a graded ring does not uniquely fix the grading of source and range
-        # to check equality of morphisms we therefore compare also the sources and ranges
-        # note that it is necessary to compare both the sources and ranges because
-        # S ----( 0 ) ----> S( d ) is a valid mapping for every d in DegreeGroup!
-        return ( UnderlyingHomalgMatrix( morphism_1 ) = UnderlyingHomalgMatrix( morphism_2 ) ) 
-              and IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) )
-              and IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
-        
-    end );
-    
-    ## Basic Operations for a Category
-    ## Basic Operations for a Category
-    
-    ##
-    AddIdentityMorphism( category,
-      
-      function( object )
-        local homalg_graded_ring;
-        
-        homalg_graded_ring := UnderlyingHomalgGradedRing( object );
-        
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object, 
-                                                          HomalgIdentityMatrix( Rank( object ), homalg_graded_ring ), object );
-        
-    end );
-    
-    ##
-    AddPreCompose( category,
+  
+  
+    ######################################################################
+    #
+    # @Section Methods to check if objects and morphisms are well-defined
+    #
+    ######################################################################
 
-      function( morphism_1, morphism_2 )
-        local composition;
-
-        composition := UnderlyingHomalgMatrix( morphism_1 ) * UnderlyingHomalgMatrix( morphism_2 );
-
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
-
-    end );
-    
-    # Add hard checks to verify that an object/morphism belongs to this category
-    # Add hard checks to verify that an object/morphism belongs to this category    
-        
+    # @Description
+    # Checks if the given object is well-defined.
+    # @Returns true or false
+    # @Arguments object    
     AddIsWellDefinedForObjects( category,
       
       function( object )
@@ -173,7 +124,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         return true;
         
     end );
-    
+
+    # @Description
+    # Checks if the given morphism is well-defined.
+    # @Returns true or false
+    # @Arguments morphism
     AddIsWellDefinedForMorphisms( category,
 
           function( morphism )
@@ -306,9 +261,85 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         fi;
         
     end );
+
+
+
+    ######################################################################
+    #
+    # @Section Implement the elementary operations for categories
+    #
+    ######################################################################
+
+    # @Description
+    # This method checks if the underlying degree lists are equal.
+    # Thus this method really checks if two objects are identical and not merely isomorphic!
+    # @Returns true or false
+    # @Arguments object1, object2
+    AddIsEqualForObjects( category,
+      function( object_1, object_2 )
+      
+        return DegreeList( object_1 ) = DegreeList( object_2 );
+      
+    end );
+    
+    # @Description
+    # This method checks if the sources and ranges of the two morphisms are equal (by means of the method above).
+    # Finally we compare the mapping matrices. If all three match, then two morphisms are considered equal.
+    # Note that a mapping matrix alone does not fix a map of graded modules, because it does not fix the degrees of
+    # source and range (take e.g. the 0-matrix)!
+    # @Returns true or false
+    # @Arguments morphism1, morphism2
+    AddIsEqualForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        
+        return ( UnderlyingHomalgMatrix( morphism_1 ) = UnderlyingHomalgMatrix( morphism_2 ) ) 
+              and IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) )
+              and IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+        
+    end );
+
+    # @Description
+    # This composes two mappings - straight forward.
+    # @Returns a morphism
+    # @Arguments morphism1, morphism2
+    AddPreCompose( category,
+
+      function( morphism1, morphism2 )
+        local composition;
+
+        composition := UnderlyingHomalgMatrix( morphism1 ) * UnderlyingHomalgMatrix( morphism2 );
+
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ), 
+                                                                        composition, 
+                                                                        Range( morphism2 ) );
+
+    end );
+
+    # @Description
+    # This method installs the identity morphism of <A>object</A> by using the identity matrix.
+    # @Returns a morphism
+    # @Arguments object
+    AddIdentityMorphism( category,
+      
+      function( object )
+        local homalg_graded_ring;
+        
+        homalg_graded_ring := UnderlyingHomalgGradedRing( object );
+        
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object, 
+                                                          HomalgIdentityMatrix( Rank( object ), homalg_graded_ring ), 
+                                                          object );
+        
+    end );
+
+
+
+    ######################################################################
+    #
+    # @Section Enrich the category with an additive structure
+    #
+    ######################################################################
             
-    ## Basic Operations for an Additive Category
-    ## Basic Operations for an Additive Category
 
     ##
     AddIsZeroForObjects( category,
@@ -511,6 +542,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
 
+    
+    
     ## Weak kernels (added as kernels)
     ## Weak kernels (added as kernels)
 
@@ -776,6 +809,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
 
+    
+    
     ## Lift
     ## Lift
     # be mor1: a -> c and mor2: b -> c, then Lift( mor1, mor2 ) = ( a -> b )
@@ -825,6 +860,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
            
     end );
 
+    
+    
+    
     # weak fibreproduct
     # weak fibreproduct
     AddFiberProduct( category,             
@@ -1268,6 +1306,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     
     
     
+    
+    
+    
+    
     ## add tensor product
     ## add tensor product
     
@@ -1327,6 +1369,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         return CAPCategoryOfProjectiveGradedLeftModulesObject( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ], homalg_ring );
         
     end );
+    
+    
+    
     
     
     ## add braiding, i.e. a otimes b -> b otimes a
