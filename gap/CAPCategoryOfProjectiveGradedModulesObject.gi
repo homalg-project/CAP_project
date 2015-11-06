@@ -212,6 +212,7 @@ InstallMethod( Display,
                             );
     
       ViewObj( DegreeList( category_of_projective_graded_modules_object ) );
+      Print( "\n" );
     
     else
     
@@ -222,7 +223,8 @@ InstallMethod( Display,
                             );
     
       ViewObj( DegreeList( category_of_projective_graded_modules_object ) );
-
+      Print( "\n" );
+      
     fi;
    
 end );

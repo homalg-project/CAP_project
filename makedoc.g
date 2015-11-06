@@ -5,7 +5,8 @@
 LoadPackage( "AutoDoc" );
 
 AutoDoc( "CAPCategoryOfProjectiveGradedModules" : scaffold := true, autodoc :=
-         rec( files := [ "doc/Intros.autodoc", 
+         rec( files := [ "doc/Intros.autodoc",
+                         "gap/NewProperties.gd",
                          "gap/CAPCategoryOfProjectiveGradedLeftModules.gd",
                          "gap/CAPCategoryOfProjectiveGradedRightModules.gd",
                          "gap/CAPCategoryOfProjectiveGradedModulesObject.gd",

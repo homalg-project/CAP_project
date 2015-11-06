@@ -8,11 +8,12 @@
 ##
 #############################################################################
 
-####################################
+
+#############################################################
 ##
-## Constructors
+## Constructor for category of projective graded right-modules
 ##
-####################################
+#############################################################
 
 InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
                [ IsHomalgGradedRing ],
@@ -22,12 +23,13 @@ InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
     
     category := CreateCapCategory( Concatenation( "CAP category of projective graded right modules over "
                                                                                           , RingName( homalg_graded_ring ) ) );
-    
     category!.homalg_graded_ring_for_category_of_projective_graded_right_modules := homalg_graded_ring;
     
     SetIsAdditiveCategory( category, true );
     SetIsStrictMonoidalCategory( category, true );
     SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+    SetIsAdditionWithZeroObjectIdenticalObject( category, true );
+    SetIsProjCategory( category, true );
     
     INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES( category ); 
     
@@ -40,7 +42,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
     #);
      
     Finalize( category );
-    
+
     return category;
     
 end );

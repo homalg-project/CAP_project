@@ -145,12 +145,14 @@ InstallMethod( ViewObj,
 
       Print( "A morphism in the category of projective graded left modules over ",
               RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ) );    
+      Print( "\n" );
     
     else
 
       Print( "A morphism in the category of projective graded right modules over ",
               RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ) );    
-
+      Print( "\n" );
+      
     fi;
       
 end );
@@ -181,7 +183,7 @@ InstallMethod( Display,
                                    " with matrix: \n" );
       
       Display( UnderlyingHomalgMatrix( cap_category_of_projective_graded_modules_morphism ) );
-
+      
     fi;
    
 end );
@@ -212,7 +214,7 @@ InstallMethod( FullInformation,
     Print( "Mapping matrix: \n" );
     Print( "--------------- \n" );
     Display( UnderlyingHomalgMatrix( morphism ) );
-    Print( "\n" );    
+    Print( "\n" );
     
     Print( "--------------------------------------------------------------------------------- \n \n" );
     

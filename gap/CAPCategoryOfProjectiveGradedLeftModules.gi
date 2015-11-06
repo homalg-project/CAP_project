@@ -8,11 +8,12 @@
 ##
 #############################################################################
 
-####################################
+
+#############################################################
 ##
-## Constructors
+## Constructor for category of projective graded left-modules
 ##
-####################################
+#############################################################
 
 InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
                [ IsHomalgGradedRing ],
@@ -26,7 +27,9 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
 
     SetIsAdditiveCategory( category, true );
     SetIsStrictMonoidalCategory( category, true );
-    SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+    SetIsRigidSymmetricClosedMonoidalCategory( category, true );    
+    SetIsAdditionWithZeroObjectIdenticalObject( category, true );
+    SetIsProjCategory( category, true );
     
     INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES( category ); 
     
@@ -38,11 +41,17 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
     #    "PredicateImplicationsForMatrixCategory.tex" )
     #);
     
-    Finalize( category );
+    # objectify with a few attributes
+    #ObjectifyWithAttributes( category, TheTypeOfCapProjCategory,
+    #                         AdditionWithZeroObjectIsIdenticalObject, true
+    #                         );
+
+    Finalize( category );    
     
     return category;
     
 end );
+
 
 ####################################################################
 ##

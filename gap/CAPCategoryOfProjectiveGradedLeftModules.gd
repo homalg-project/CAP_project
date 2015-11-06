@@ -10,6 +10,7 @@
 ##
 #############################################################################
 
+
 ####################################
 ##
 #! @Section Constructors
@@ -29,5 +30,5 @@ DeclareAttribute( "CAPCategoryOfProjectiveGradedLeftModules",
 ## Install the categories
 ##
 ####################################
-                  
+
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES" );
