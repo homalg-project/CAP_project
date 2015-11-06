@@ -51,10 +51,10 @@ InstallMethod( IsProjCategory,
     
       return false;
     
-    elif not IsAdditionWithZeroObjectIdenticalObject( category ) then
+    elif not IsRigidSymmetricClosedMonoidalCategory( category ) then
     
       return false;
-    
+      
     else 
     
       return true;
