@@ -395,7 +395,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # Given a <A>source</A> and a <A>range</A> object, this method constructs the zero morphism between these two objects.
     # To this end the zero matrix of appropriate dimensions is used.
     # @Returns a morphism
-    # @Arguments source_object, range_object
+    # @Arguments source, range
     AddZeroMorphism( category,
       function( source, range )
         local homalg_graded_ring;
@@ -588,7 +588,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         od;
         
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( coproduct, underlying_matrix_of_universal_morphism, 
-                                                                                                             Range( sink[1] ) );
+                                                                                                           Range( sink[1] ) );
         
     end );
 
@@ -596,13 +596,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
     ######################################################################
     #
-    # @Section Add lift and colift
+    # @Section Add weak lift and colift
     #
     ######################################################################
 
     # @Description
     # This method requires a morphism <A>morphism1</A> $a \to c$ and a morphism <A>morphism2</A> $b \to c$. The result of 
-    # Lift( morphism1, morphism2 ) is then the lift morphism $a \to b$.
+    # Lift( morphism1, morphism2 ) is then the weak lift morphism $a \to b$.
     # @Returns a morphism
     # @Arguments morphism1, morphism2
     AddLift( category,
@@ -628,7 +628,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     
     # @Description
     # This method requires a morphism <A>morphism1</A> $a \to c$ and a morphism <A>morphism2</A> $a \to b$. The result of 
-    # Colift( morphism1, morphism2 ) is then the colift morphism $c \to b$.
+    # Colift( morphism1, morphism2 ) is then the weak colift morphism $c \to b$.
     # @Returns a morphism
     # @Arguments morphism1, morphism2
     AddColift( category,
@@ -917,13 +917,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
             # figure out the (first) non-zero entries per row of projection1_matrix
             non_zero_entries_index := PositionOfFirstNonZeroEntryPerRow( projection_matrix );
           
-            # expand the degree_list of the source of morphism1
+            # expand the degree_list of the range of the projection_morphism to be constructed
             expanded_degree_list := [];
-            for j in [ 1 .. Length( DegreeList( Source( morphism_list[ 1 ] ) ) ) ] do
+            for j in [ 1 .. Length( DegreeList( Source( morphism_list[ projection_number ] ) ) ) ] do
           
-              for k in [ 1 .. DegreeList( Source( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
+              for k in [ 1 .. DegreeList( Source( morphism_list[ projection_number ] ) )[ j ][ 2 ] ] do
             
-                Add( expanded_degree_list, DegreeList( Source( morphism_list[ 1 ] ) )[ j ][ 1 ] );
+                Add( expanded_degree_list, DegreeList( Source( morphism_list[ projection_number ] ) )[ j ][ 1 ] );
             
               od;
           
@@ -1016,9 +1016,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           # now we know the embedding_matrix, that means all that is left to do is to identify its range as 
           # projective graded left-module
                
-          # figure out the graded ring
-          homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );
-
           # check if the cokernel matrix is zero
           if IsZero( embedding_matrix ) then
         
@@ -1028,17 +1025,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           else
         
             # the embedding_matrix is not zero, thus let us compute the range object...
-          
-            # figure out the (first) non-zero entries per row of the cokernel matrix
+
+            # figure out the graded ring
+            homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );        
+            
+            # then determine the (first) non-zero entries per row of the cokernel matrix
             non_zero_entries_index := PositionOfFirstNonZeroEntryPerColumn( embedding_matrix );
           
-            # expand the degree_list of the range of the morphism
+            # expand the degree_list of the source of the embedding morphism to be constructed
             expanded_degree_list := [];
-            for j in [ 1 .. Length( DegreeList( Range( morphism_list[ 1 ] ) ) ) ] do
+            for j in [ 1 .. Length( DegreeList( Range( morphism_list[ injection_number ] ) ) ) ] do
           
-              for k in [ 1 .. DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
+              for k in [ 1 .. DegreeList( Range( morphism_list[ injection_number ] ) )[ j ][ 2 ] ] do
             
-                Add( expanded_degree_list, DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 1 ] );
+                Add( expanded_degree_list, DegreeList( Range( morphism_list[ injection_number ] ) )[ j ][ 1 ] );
             
               od;
           
@@ -1058,9 +1058,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           
             od;
           
-            # and finally return the cokernel object
+            # construct the pushout object
             pushout_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_pushout_object, homalg_graded_ring );
  
+            # and return the corresponding morphism
             return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ injection_number ] ),
                                                                             embedding_matrix,
                                                                             pushout_object
