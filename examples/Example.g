@@ -107,10 +107,23 @@ categoryR := CapCategory( Q1R );
 
 #! @Example
 
+ZeroObject( categoryL );
+#! <A projective graded left module of rank 0>
 O1L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2] ], S );
 #! <A projective graded left module of rank 2>
+Display( ZeroMorphism( ZeroObject( categoryL ), O1L ) );
+#! A morphism in the category of projective graded left modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
+#! with matrix: 
+#! (an empty 0 x 2 matrix)
 O2L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[0,0],1] ], S );
 #! <A projective graded left module of rank 1>
+Display( IdentityMorphism( O2L ) );
+#! A morphism in the category of projective graded left modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
+#! with matrix: 
+#! 1
+#! (over a graded ring)
 directSumL := DirectSum( [ O1L, O2L ] );
 #! <A projective graded left module of rank 3>
 Display( directSumL );
@@ -194,7 +207,7 @@ coliftL := Colift( m2L, morL );
 Display( UnderlyingHomalgMatrix( coliftL ) );
 #! x_1,x_2
 #! (over a graded ring)
-fpL := FiberProduct( [ m1L, m2L ] );
+fpL := FiberProduct( [ m1L, m2L, IdentityMorphism( Range( m2L ) ) ] );
 #! <A projective graded left module of rank 2>
 fp_proj1L := ProjectionInFactorOfFiberProduct( [ m1L, m2L ], 1 );
 #! A morphism in the category of projective graded left modules over 
@@ -271,14 +284,33 @@ Display( InternalHomOnObjects( ObjectL, ObjectL ) );
 
 
 
+
+
+
+
+
+
 #! @Section A few categorical constructions for right modules
 
 #! @Example
 
+ZeroObject( categoryR );
+#! <A projective graded right module of rank 0>
 O1R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],2] ], S );
 #! <A projective graded right module of rank 2>
+Display( ZeroMorphism( ZeroObject( categoryR ), O1R ) );
+#! A morphism in the category of projective graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! with matrix: 
+#! (an empty 2 x 0 matrix)
 O2R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[0,0],1] ], S );
 #! <A projective graded right module of rank 1>
+Display( IdentityMorphism( O2R ) );
+#! A morphism in the category of projective graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! with matrix: 
+#! 1
+#! (over a graded ring)
 directSumR := DirectSum( [ O1R, O2R ] );
 #! <A projective graded right module of rank 3>
 Display( directSumR );
@@ -363,7 +395,7 @@ Display( UnderlyingHomalgMatrix( coliftR ) );
 #! x_1,
 #! x_2
 #! (over a graded ring)
-fpR := FiberProduct( [ m1R, m2R ] );
+fpR := FiberProduct( [ m1R, m2R, IdentityMorphism( Range( m2R ) ) ] );
 #! <A projective graded right module of rank 2>
 fp_proj1R := ProjectionInFactorOfFiberProduct( [ m1R, m2R ], 1 );
 #! A morphism in the category of projective graded right modules over 

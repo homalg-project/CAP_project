@@ -37,6 +37,12 @@ InstallMethod( IsProjCategory,
     # (1) it is an additive category
     # (2) it has (weak) lifts
     # (3) it has (weak) kernels
+    # (4) is RigidSymmetricClosedMonoidalCategory
+    
+    # FIX ME FIX ME
+    # AdditionWithZeroObjectIsIdenticalObject needed?
+    # StrictMonoidalCategory needed?
+    # How to improve presentation category in this case?
     
     # thus let us check this
     if not IsAdditiveCategory( category ) then
