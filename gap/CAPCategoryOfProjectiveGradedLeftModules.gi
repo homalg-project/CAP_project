@@ -340,24 +340,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     #
     ######################################################################
             
-
-    ##
-    AddIsZeroForObjects( category,
-      function( object )
-      
-        return Rank( object ) = 0;
-      
-      end );
-    
-    ##
-    AddIsZeroForMorphisms( category,
-      function( morphism )
-        
-        return IsZero( UnderlyingHomalgMatrix( morphism ) );
-        
-    end );
-    
-    ##
+    # @Description
+    # This method adds the two morphisms <A>morphism1</A> and <A>morphism2</A> by using the addition of the mapping
+    # matrices.
+    # @Returns a morphism
+    # @Arguments morphism1, morphism2
     AddAdditionForMorphisms( category,
       function( morphism_1, morphism_2 )
         
@@ -366,8 +353,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                                     Range( morphism_2 ) 
                                                     );
     end );
-    
-    ##
+
+    # @Description
+    # This method installs the additive inverse of a <A>morphism</A> by using the additive inverse of the underlying
+    # mapping matrix.
+    # @Returns a morphism
+    # @Arguments morphism
     AddAdditiveInverseForMorphisms( category,
       function( morphism )
         
@@ -376,8 +367,35 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                      Range( morphism )
                                      );
     end );
+
+    # @Description
+    # Decides if a morphism is the zero morphism. To this end we check if the underlying matrix is the zero matrix.
+    # @Returns true or false
+    # @Arguments morphism
+    AddIsZeroForMorphisms( category,
+      function( morphism )
+        
+        return IsZero( UnderlyingHomalgMatrix( morphism ) );
+        
+    end );
+
+    # @Description
+    # Given an <A>object</A> this method checks if the object is the zero object (which is defined below). To this end it
+    # suffices to check that the rank of <A>object</A> is zero.
+    # @Returns a morphism
+    # @Arguments source_object, range_object
+    AddIsZeroForObjects( category,
+      function( object )
+      
+        return Rank( object ) = 0;
+      
+      end );
     
-    ##
+    # @Description
+    # Given a <A>source</A> and a <A>range</A> object, this method constructs the zero morphism between these two objects.
+    # To this end the zero matrix of appropriate dimensions is used.
+    # @Returns a morphism
+    # @Arguments source_object, range_object
     AddZeroMorphism( category,
       function( source, range )
         local homalg_graded_ring;
@@ -389,46 +407,62 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                            range
                                           );
     end );
-    
-    ##
+
+    # @Description
+    # This method installs the zero object of this Proj-category. Internally it is represented by the 
+    # empty degree_list.
+    # @Returns an object
+    # @Arguments 
     AddZeroObject( category,
       function( )
         
         return CAPCategoryOfProjectiveGradedLeftModulesObject( 
                                           [ ], category!.homalg_graded_ring_for_category_of_projective_graded_left_modules );
     end );
-    
-    ##
+
+    # @Description
+    # This method installs the (unique) zero morphism from the object <A>object</A> to the zero object. The latter has to be 
+    # given to this method for convenience. More convenient methods are derived from the CAP-kernel afterwards.
+    # @Returns a morphism
+    # @Arguments object, zero_object
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-      function( sink, zero_object )
+      function( object, zero_object )
         local homalg_graded_ring, morphism;
         
         homalg_graded_ring := UnderlyingHomalgGradedRing( zero_object );
         
-        morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( sink, 
-                                                                       HomalgZeroMatrix( Rank( sink ), 0, homalg_graded_ring ), 
-                                                                       zero_object
-                                                                      );
+        morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object, 
+                                                                    HomalgZeroMatrix( Rank( object ), 0, homalg_graded_ring ), 
+                                                                    zero_object
+                                                                    );
         return morphism;
         
     end );
-    
-    ##
+
+    # @Description
+    # This method installs the (unique) zero morphism to the object <A>object</A> from the zero object. The latter has to be 
+    # given to this method for convenience. More convenient methods are derived from the CAP-kernel afterwards.
+    # @Returns a morphism
+    # @Arguments zero_object, object
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( source, zero_object )
+      function( zero_object, object )
         local homalg_graded_ring, morphism;
         
         homalg_graded_ring := UnderlyingHomalgGradedRing( zero_object );
         
         morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( zero_object, 
-                                                                      HomalgZeroMatrix( 0, Rank( source ), homalg_graded_ring ), 
-                                                                      source
-                                                                     );
+                                                                    HomalgZeroMatrix( 0, Rank( object ), homalg_graded_ring ), 
+                                                                    object
+                                                                    );
         return morphism;
         
     end );
 
-    ##
+    # @Description
+    # This method installs the direct sum of the list of objects <A>object_list</A>. We construct this direct sum object
+    # by concatenation of the individual degree lists.
+    # @Returns an object
+    # @Arguments object_list
     AddDirectSum( category,
       function( object_list )
       local homalg_graded_ring, degree_list_list, degree_list_of_direct_sum_object;
@@ -445,7 +479,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
       
     end );
     
-    ##
+    # @Description
+    # This methods adds the projection morphism from the direct sum object <A>direct_sum_object</A> formed from a list of 
+    # objects <A>object_list</A> to its <A>projection_number</A>-th factor.
+    # @Returns a morphism
+    # @Arguments object_list, projection_number, direct_sum_object   
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
       function( object_list, projection_number, direct_sum_object )
         local homalg_graded_ring, rank_pre, rank_post, rank_factor, number_of_objects, projection_in_factor;
@@ -474,7 +512,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
 
-    ##
+    # @Description
+    # This method requires a list of objects <A>diagram</A> = (S_1,...,S_n), a list of morphisms <A>sink<A> (T -> S_i) 
+    # and the direct sum object <A>direct_sum</A> $= \oplus S_i$. From this the universal morphism $T \to S$ is computed.
+    # @Returns a morphism
+    # @Arguments diagram, sink, direct_sum
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( diagram, sink, direct_sum )
         local underlying_matrix_of_universal_morphism, morphism;
@@ -494,7 +536,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                                                           underlying_matrix_of_universal_morphism, direct_sum );      
     end );
 
-    ##
+    # @Description
+    # This method adds the injection morphism from the <A>injection_number<A>-th cofactor of the direct sum 
+    # <A>coproduct_object</A> formed from the list of objects <A>object_list</A>.
+    # @Returns a morphism
+    # @Arguments object_list, injection_number, coproduct_object   
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
       function( object_list, injection_number, coproduct )
         local homalg_graded_ring, rank_pre, rank_post, rank_cofactor, number_of_objects, injection_of_cofactor;
@@ -523,7 +569,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
 
-    ##
+    # @Description
+    # This method requires a list of objects <A>diagram</A> = (S_1,...,S_n), a list of morphisms <A>sink<A> (S_i -> T) 
+    # and the direct sum object <A>coproduct</A> $= \oplus S_i$. From this the universal morphism $S \to T$ is computed.
+    # @Returns a morphism
+    # @Arguments diagram, sink, coproduct
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
       function( diagram, sink, coproduct )
         local underlying_matrix_of_universal_morphism, morphism;
@@ -542,70 +592,79 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
 
-    
-    
-    ## Weak kernels (added as kernels)
-    ## Weak kernels (added as kernels)
 
-    ##
-    AddKernelObject( category,
-      function( morphism )
-        local homalg_graded_ring, kernel_matrix, non_zero_entries_index, expanded_degree_list, j, k,
-             degrees_of_kernel_matrix_rows, degrees_of_kernel_object;
-             
-        # extract the underlying homalg_graded_ring
-        homalg_graded_ring := UnderlyingHomalgGradedRing( morphism );        
-        
-        # then compute the syzygies of rows, which form the 'kernel matrix'
-        kernel_matrix := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
 
-        # check if the cokernel matrix is zero
-        if IsZero( kernel_matrix ) then
-        
-          # if so, the kernel object is the zero module
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( [ ], homalg_graded_ring );
-        
-        else
-        
-          # the kernel matrix is not zero, thus let us compute the kernel object...
-          
-          # figure out the (first) non-zero entries per row of the kernel matrix
-          non_zero_entries_index := PositionOfFirstNonZeroEntryPerRow( kernel_matrix );
-          
-          # expand the degree_list of the range of the morphism
-          expanded_degree_list := [];
-          for j in [ 1 .. Length( DegreeList( Source( morphism ) ) ) ] do
-          
-            for k in [ 1 .. DegreeList( Source( morphism ) )[ j ][ 2 ] ] do
-            
-              Add( expanded_degree_list, DegreeList( Source( morphism ) )[ j ][ 1 ] );
-            
-            od;
-          
-          od;
-          
-          # compute the degrees of the rows of the cokernel matrix
-          degrees_of_kernel_matrix_rows := NonTrivialDegreePerRow( kernel_matrix );
-        
-          # initialise the degree list of the kernel_object
-          degrees_of_kernel_object := List( [ 1 .. Length( degrees_of_kernel_matrix_rows ) ] );
-        
-          # and now compute the degrees of the kernel_object
-          for j in [ 1 .. Length( degrees_of_kernel_matrix_rows ) ] do
-        
-            degrees_of_kernel_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                                 + degrees_of_kernel_matrix_rows[ j ], 1 ];
-          
-          od;
-        
-          # and finally return the kernel object
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_kernel_object, homalg_graded_ring );
+    ######################################################################
+    #
+    # @Section Add lift and colift
+    #
+    ######################################################################
 
+    # @Description
+    # This method requires a morphism <A>morphism1</A> $a \to c$ and a morphism <A>morphism2</A> $b \to c$. The result of 
+    # Lift( morphism1, morphism2 ) is then the lift morphism $a \to b$.
+    # @Returns a morphism
+    # @Arguments morphism1, morphism2
+    AddLift( category,
+      function( morphism1, morphism2 )
+        local right_divide;
+        
+        # try to find a lift
+        right_divide := RightDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
+
+        # check if this failed
+        if right_divide = fail then
+          
+          return fail;
+          
         fi;
         
+        # and if not, then construct the lift-morphism
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ),
+                                                                        right_divide,
+                                                                        Source( morphism2 ) );
+        
+    end );
+    
+    # @Description
+    # This method requires a morphism <A>morphism1</A> $a \to c$ and a morphism <A>morphism2</A> $a \to b$. The result of 
+    # Colift( morphism1, morphism2 ) is then the colift morphism $c \to b$.
+    # @Returns a morphism
+    # @Arguments morphism1, morphism2
+    AddColift( category,
+      function( morphism1, morphism2 )
+        local left_divide;
+
+        # try to find a matrix that performs the colift
+        left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
+
+        # check if this worked
+        if left_divide = fail then
+
+          return fail;
+
+        fi;
+
+        # if it did work, return the corresponding morphism
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism1 ),
+                                                                        left_divide,
+                                                                        Range( morphism2 ) 
+                                                                       );
+
     end );
 
-    ##
+
+
+    ######################################################################
+    #
+    # @Section Add Abelian structure
+    #
+    ######################################################################
+
+    # @Description
+    # This method computes the (weak) kernel embedding of a morphism <A>morphism</A>.
+    # @Returns a morphism
+    # @Arguments morphism
     AddKernelEmbedding( category,
       function( morphism )
         local homalg_graded_ring, kernel_matrix, non_zero_entries_index, expanded_degree_list, j, k,
@@ -665,7 +724,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( kernel_object, kernel_matrix, Source( morphism ) );
     end );
 
-    ##
+    # @Description
+    # This method computes the (weak) kernel object as the source of the (weak) kernel embedding 
+    # of the morphism <A>morphism</A>.
+    # @Returns an object
+    # @Arguments morphism
+    AddKernelObject( category,
+      function( morphism )
+        
+        return Source( KernelEmbedding( morphism ) );
+        
+    end );
+        
+    # @Description
+    # This method computes the (weak) kernel embedding of <A>morphism</A> given that the (weak) kernel object 
+    # <A>kernel</A> is already known.
+    # @Returns a morphism
+    # @Arguments morphism, kernel
     AddKernelEmbeddingWithGivenKernelObject( category,
       function( morphism, kernel )
         local kernel_matrix;
@@ -676,68 +751,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
     
-    ## Weak cokernels (added as cokernels)
-    ## Weak cokernels (added as cokernels)
-
-    ##
-    AddCokernelObject( category,
-      function( morphism )
-        local homalg_graded_ring, cokernel_matrix, non_zero_entries_index, expanded_degree_list, j, k,
-             degrees_of_cokernel_matrix_columns, degrees_of_cokernel_object;
-             
-        # extract the underlying homalg_graded_ring
-        homalg_graded_ring := UnderlyingHomalgGradedRing( morphism );        
-        
-        # then compute the syzygies of rows, which form the 'kernel matrix'
-        cokernel_matrix := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
-
-        # check if the cokernel matrix is zero
-        if IsZero( cokernel_matrix ) then
-        
-          # if so, the cokernel object is the zero module
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( [ ], homalg_graded_ring );
-        
-        else
-        
-          # the cokernel matrix is not zero, thus let us compute the cokernel object...
-          
-          # figure out the (first) non-zero entries per row of the cokernel matrix
-          non_zero_entries_index := PositionOfFirstNonZeroEntryPerColumn( cokernel_matrix );
-          
-          # expand the degree_list of the range of the morphism
-          expanded_degree_list := [];
-          for j in [ 1 .. Length( DegreeList( Range( morphism ) ) ) ] do
-          
-            for k in [ 1 .. DegreeList( Range( morphism ) )[ j ][ 2 ] ] do
-            
-              Add( expanded_degree_list, DegreeList( Range( morphism ) )[ j ][ 1 ] );
-            
-            od;
-          
-          od;
-          
-          # compute the degrees of the rows of the cokernel matrix
-          degrees_of_cokernel_matrix_columns := NonTrivialDegreePerColumn( cokernel_matrix );
-        
-          # initialise the degree list of the kernel_object
-          degrees_of_cokernel_object := List( [ 1 .. Length( degrees_of_cokernel_matrix_columns ) ] );
-        
-          # and now compute the degrees of the kernel_object
-          for j in [ 1 .. Length( degrees_of_cokernel_matrix_columns ) ] do
-        
-            degrees_of_cokernel_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                                 - degrees_of_cokernel_matrix_columns[ j ], 1 ];
-          
-          od;
-        
-          # and finally return the cokernel object
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_cokernel_object, homalg_graded_ring );
-
-        fi;
-        
-    end );
-          
-    ##
+    # @Description
+    # This method computes the (weak) cokernel projection of a morphism <A>morphism</A>.
+    # @Returns a morphism
+    # @Arguments morphism
     AddCokernelProjection( category,
       function( morphism )
         local homalg_graded_ring, cokernel_matrix, cokernel_object, non_zero_entries_index, expanded_degree_list, j, k,
@@ -797,8 +814,24 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism ), cokernel_matrix, cokernel_object );        
         
     end );
+
+    # @Description
+    # This method computes the (weak) cokernel object as the range of the (weak) cokernel projection
+    # of the morphism <A>morphism</A>.
+    # @Returns an object
+    # @Arguments morphism
+    AddCokernelObject( category,
+      function( morphism )
+        
+        return Range( CokernelProjection( morphism ) );
+                
+    end );
     
-    ##
+    # @Description
+    # This method computes the (weak) cokernel projection of <A>morphism</A> given that the (weak) cokernel object 
+    # <A>cokernel</A> is already known.
+    # @Returns a morphism
+    # @Arguments morphism, cokernel
     AddCokernelProjectionWithGivenCokernelObject( category,
       function( morphism, cokernel )
         local cokernel_proj;
@@ -809,500 +842,381 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
 
-    
-    
-    ## Lift
-    ## Lift
-    # be mor1: a -> c and mor2: b -> c, then Lift( mor1, mor2 ) = ( a -> b )
-    AddLift( category,
-      function( morphism1, morphism2 )
-        local right_divide;
-        
-        # try to find a lift
-        right_divide := RightDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
-
-        # check if this failed
-        if right_divide = fail then
-          
-          return fail;
-          
-        fi;
-        
-        # and if not, then construct the lift-morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ),
-                                                                        right_divide,
-                                                                        Source( morphism2 ) );
-        
-    end );
-    
-    ## Colift
-    ## Colift
-    # be mor1: a -> c and mor2: a -> b then Colift( mor1, mor2 ) = ( c -> b )
-    AddColift( category,
-      function( morphism1, morphism2 )
-        local left_divide;
-        
-        # try to find a matrix that performs the colift
-        left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
-
-        # check if this worked
-        if left_divide = fail then
-          
-          return fail;
-          
-        fi;
-        
-        # if it did work, return the corresponding morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism1 ),
-                                                                        left_divide,
-                                                                        Range( morphism2 ) 
-                                                                       );
-           
-    end );
 
     
+    ################################################################################################################
+    #
+    # @Section Add (Weak) Fibre product 
+    # For the fibre product of two objects we have a faster algorithm that uses SyzygiesOfRows( matrix1, matrix2 ).
+    # In case the fibre product of more than two morphisms is to be computed, we essentially derive it nevertheless.
+    #
+    ################################################################################################################
     
-    
-    # weak fibreproduct
-    # weak fibreproduct
+    # @Description
+    # This method computes the (weak) fibre product of a list of morphisms <A>morphism_list</A>
+    # @Returns an object
+    # @Arguments morphism_list    
     AddFiberProduct( category,             
       function( morphism_list )
-        local homalg_graded_ring, matrix1, matrix2, projection1_matrix, non_zero_entries_index, expanded_degree_list, j, k,
-             degrees_of_projection1_matrix_rows, degrees_of_fibreproduct_object;
-        
-        # we only define the fiber product for two morphisms, otherwise raise an error
-        if Length( morphism_list ) <> 2 then
-        
-          Error( "Fiber product only accepts a list with precisely two morphisms as input. \n" );
-          return fail;
-        
-        fi;
-
-        # extract the underlying homalg_graded_ring
-        homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );
-        
-        # and the mapping matrices of these two morphisms
-        matrix1 := UnderlyingHomalgMatrix( morphism_list[ 1 ] );
-        matrix2 := UnderlyingHomalgMatrix( morphism_list[ 2 ] );
-        
-        # now compute the relative version of syzygies of rows
-        projection1_matrix := SyzygiesOfRows( matrix1, matrix2 );
-        
-        # this means that we have the following diagram:
-        #                     
-        #   Source( 2 ) --- morphism2 ----- > Range( 2 ) = Range( 1 )
-        #                                                ^
-        #                                                |
-        #                                                |
-        #                                            morphism1
-        #                                                |
-        #                                                |
-        #                                            Source( 1 )
-        #                                                |
-        #                                                |
-        #                                        projection1_matrix
-        #                                                |
-        #                                                |
-        #                                         fibreproduct( 1, 2 )
-        
-        # now interpret projection1 as the mapping matrix of a map of projective graded left modules with range the 
-        # source of morphism1
-        # -> so essentially repeat the kernel algorithm
-        
-        # check if the projection matrix is zero
-        if IsZero( projection1_matrix ) then
-        
-          # if so, the fibreproduct object is the zero module
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( [ ], homalg_graded_ring );
-        
-        else
-        
-          # projection1_matrix is not zero, thus let us compute the non-trivial fibreproduct_object...
-          
-          # figure out the (first) non-zero entries per row of projection1_matrix
-          non_zero_entries_index := PositionOfFirstNonZeroEntryPerRow( projection1_matrix );
-          
-          # expand the degree_list of the source of morphism1
-          expanded_degree_list := [];
-          for j in [ 1 .. Length( DegreeList( Source( morphism_list[ 1 ] ) ) ) ] do
-          
-            for k in [ 1 .. DegreeList( Source( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
-            
-              Add( expanded_degree_list, DegreeList( Source( morphism_list[ 1 ] ) )[ j ][ 1 ] );
-            
-            od;
-          
-          od;
-          
-          # compute the degrees of the rows of the cokernel matrix
-          degrees_of_projection1_matrix_rows := NonTrivialDegreePerRow( projection1_matrix );
-        
-          # initialise the degree list of the kernel_object
-          degrees_of_fibreproduct_object := List( [ 1 .. Length( degrees_of_projection1_matrix_rows ) ] );
-        
-          # and now compute the degrees of the kernel_object
-          for j in [ 1 .. Length( degrees_of_projection1_matrix_rows ) ] do
-        
-            degrees_of_fibreproduct_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                              + degrees_of_projection1_matrix_rows[ j ], 1 ];
-          
-          od;
-          
-          # and finally return the fiberproduct object
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_fibreproduct_object, homalg_graded_ring );
-
-        fi;        
     
+        # simply return the source of the projection in factor 1
+        return Source( ProjectionInFactorOfFiberProduct( morphism_list, 1 ) );
+
     end );
 
-    AddProjectionInFactorOfFiberProductWithGivenFiberProduct( category,
-      function( morphism_list, projection_number, fibre_product_object )
-
-        local homalg_graded_ring, matrix1, matrix2, projection1_matrix, non_zero_entries_index, expanded_degree_list, j, k,
-             degrees_of_projection1_matrix_rows, degrees_of_fibreproduct_object, fibreproduct_object_dummy;
+    # @Description
+    # This method computes the projection morphism from the (weak) fibre product 
+    # of a list of morphisms <A>morphism_list</A> into its <A>projection_number</A>-th factor
+    # @Returns a morphism
+    # @Arguments morphism_list, projection_number
+    AddProjectionInFactorOfFiberProduct( category,
+      function( morphism_list, projection_number )
+        local mapping_matrix, matrix_list, syzygy_matrix_list, projection_matrix, homalg_graded_ring, non_zero_entries_index, 
+             expanded_degree_list, j, k, degrees_of_projection_matrix_rows, degrees_of_fibreproduct_object, 
+             fibreproduct_object;       
         
-        # we only define the fiber product for two morphisms, otherwise raise an error
-        if Length( morphism_list ) <> 2 then
+        if Length( morphism_list ) = 1 then
         
-          Error( "Fiber product only accepts a list with precisely two morphisms as input. \n" );
-          return fail;
-        
-        fi;
-
-        # extract the underlying homalg_graded_ring
-        homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );
-        
-        # and the mapping matrices of these two morphisms
-        matrix1 := UnderlyingHomalgMatrix( morphism_list[ 1 ] );
-        matrix2 := UnderlyingHomalgMatrix( morphism_list[ 2 ] );
-        
-        # now compute the relative version of syzygies of rows
-        projection1_matrix := SyzygiesOfRows( matrix1, matrix2 );
-        
-        # this means that we have the following diagram:
-        #                     
-        #   Source( 2 ) --- morphism2 ----- > Range( 2 ) = Range( 1 )
-        #                                                ^
-        #                                                |
-        #                                                |
-        #                                            morphism1
-        #                                                |
-        #                                                |
-        #                                            Source( 1 )
-        #                                                |
-        #                                                |
-        #                                        projection1_matrix
-        #                                                |
-        #                                                |
-        #                                         fibreproduct( 1, 2 )
-        
-        # now interpret projection1 as the mapping matrix of a map of projective graded left modules with range the 
-        # source of morphism1
-        # -> so essentially repeat the kernel algorithm
-        
-        # check if the projection matrix is zero
-        if IsZero( projection1_matrix ) then
-        
-          # if so, the fibreproduct object is the zero module
-          fibreproduct_object_dummy := CAPCategoryOfProjectiveGradedLeftModulesObject( [ ], homalg_graded_ring );
+          return KernelEmbedding( morphism_list[ 1 ] );
         
         else
         
-          # projection1_matrix is not zero, thus let us compute the non-trivial fibreproduct_object...
+          # extract the mapping matrix of the morphism[ projection_number ]
+          mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ projection_number ] );
+        
+          # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
+          # projection morphism of
+          matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
+          Remove( matrix_list, projection_number );
+        
+          # now iterate the syzygies computation
+          syzygy_matrix_list := [];
+          projection_matrix := SyzygiesOfRows( mapping_matrix, matrix_list[ 1 ] );
+          for j in [ 2 .. Length( matrix_list ) ] do
           
-          # figure out the (first) non-zero entries per row of projection1_matrix
-          non_zero_entries_index := PositionOfFirstNonZeroEntryPerRow( projection1_matrix );
-          
-          # expand the degree_list of the source of morphism1
-          expanded_degree_list := [];
-          for j in [ 1 .. Length( DegreeList( Source( morphism_list[ 1 ] ) ) ) ] do
-          
-            for k in [ 1 .. DegreeList( Source( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
+            projection_matrix := SyzygiesOfRows( projection_matrix * mapping_matrix, matrix_list[ j ] ) * projection_matrix;
             
-              Add( expanded_degree_list, DegreeList( Source( morphism_list[ 1 ] ) )[ j ][ 1 ] );
+          od;
+        
+          # now we know the projection_matrix, that means all that is left to do is to identify its source as 
+          # projective graded left-module
+          
+          # check if the projection matrix is zero
+          if IsZero( projection_matrix ) then
+        
+            # if so, the fibreproduct object is the zero module and the projection map is the zero morphism
+            return ZeroMorphism( ZeroObject( category ), Source( morphism_list[ projection_number ] ) );
+        
+          else
+        
+            # projection_matrix is not zero, thus let us compute the non-trivial fibreproduct_object...
+
+            # figure out the graded ring
+            homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );
+                        
+            # figure out the (first) non-zero entries per row of projection1_matrix
+            non_zero_entries_index := PositionOfFirstNonZeroEntryPerRow( projection_matrix );
+          
+            # expand the degree_list of the source of morphism1
+            expanded_degree_list := [];
+            for j in [ 1 .. Length( DegreeList( Source( morphism_list[ 1 ] ) ) ) ] do
+          
+              for k in [ 1 .. DegreeList( Source( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
             
+                Add( expanded_degree_list, DegreeList( Source( morphism_list[ 1 ] ) )[ j ][ 1 ] );
+            
+              od;
+          
             od;
           
-          od;
-          
-          # compute the degrees of the rows of the cokernel matrix
-          degrees_of_projection1_matrix_rows := NonTrivialDegreePerRow( projection1_matrix );
+            # compute the degrees of the rows of the cokernel matrix
+            degrees_of_projection_matrix_rows := NonTrivialDegreePerRow( projection_matrix );
         
-          # initialise the degree list of the kernel_object
-          degrees_of_fibreproduct_object := List( [ 1 .. Length( degrees_of_projection1_matrix_rows ) ] );
+            # initialise the degree list of the kernel_object
+            degrees_of_fibreproduct_object := List( [ 1 .. Length( degrees_of_projection_matrix_rows ) ] );
         
-          # and now compute the degrees of the kernel_object
-          for j in [ 1 .. Length( degrees_of_projection1_matrix_rows ) ] do
+            # and now compute the degrees of the kernel_object
+            for j in [ 1 .. Length( degrees_of_projection_matrix_rows ) ] do
         
-            degrees_of_fibreproduct_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                              + degrees_of_projection1_matrix_rows[ j ], 1 ];
+              degrees_of_fibreproduct_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
+                                                                              + degrees_of_projection_matrix_rows[ j ], 1 ];
           
-          od;
+            od;
           
-          # and finally return the fiberproduct object
-          fibreproduct_object_dummy := CAPCategoryOfProjectiveGradedLeftModulesObject( 
+            # now set the fiberproduct object
+            fibreproduct_object := CAPCategoryOfProjectiveGradedLeftModulesObject( 
                                                                         degrees_of_fibreproduct_object, homalg_graded_ring );
 
+            # and return the projection morphism
+            return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fibreproduct_object,
+                                                                            projection_matrix,
+                                                                            Source( morphism_list[ projection_number ] )
+                                                                            );
+          fi;
+          
         fi;
-        
-        # now make a new check on the validity of the input
-        if not IsEqualForObjects( fibreproduct_object_dummy, fibre_product_object ) then
-        
-          Error( "The entered fibreproduct object is not equal to the interally computed fibreproduct object. \n" );
-          return fail;
-        
-        fi;
-        
-        # next check if the projection number if valid
-        if projection_number < 0 or projection_number > 2 then
-        
-          Error( "The projection number is only allowed to be either 1 or 2!. \n" );
-        
-        fi;
-        
-        # else the input is ok and we can product the output
-        if projection_number = 1 then
-        
-          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fibre_product_object, 
-                                                                          projection1_matrix,
-                                                                          Source( morphism_list[ 1 ] )
-                                                                          );
-        
-        else
 
-          # have to compute the lift
-          return Lift( 
-                       PreCompose ( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fibre_product_object, 
-                                                                                             projection1_matrix,
-                                                                                             Source( morphism_list[ 1 ] )
-                                                                                            ) 
-                                    , morphism_list[ 1 ] ),
-                       morphism_list[ 2 ]
-                      );
-        
-        fi;
+    end );
+
     
-    end );
+    
+    ################################################################################################################
+    #
+    # @Section Add (Weak) Pushout
+    # For the pushout product of two objects we have a faster algorithm that uses SyzygiesOfColumns( matrix1, matrix2 ).
+    # In case the pushout of more than two morphisms is to be computed, we essentially derive it nevertheless.
+    #
+    ################################################################################################################
 
-    # weak pushout
-    # weak pushout    
-    AddPushout( category,            
+    # @Description
+    # This method computes the (weak) pushout of a list of morphisms <A>morphism_list</A>
+    # @Returns an object
+    # @Arguments morphism_list
+    AddPushout( category,
       function( morphism_list )
-        local homalg_graded_ring, matrix1, matrix2, embedding1_matrix, non_zero_entries_index, expanded_degree_list, j, k,
-             degrees_of_embedding1_matrix_columns, degrees_of_pushout_object;
-        
-        # we only define the pushout for two morphisms, otherwise raise an error
-        if Length( morphism_list ) <> 2 then
-        
-          Error( "Pushout only accepts a list with precisely two morphisms as input. \n" );
-          return fail;
-        
-        fi;
 
-        # extract the underlying homalg_graded_ring
-        homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );
-        
-        # and the mapping matrices of these two morphisms
-        matrix1 := UnderlyingHomalgMatrix( morphism_list[ 1 ] );
-        matrix2 := UnderlyingHomalgMatrix( morphism_list[ 2 ] );
-        
-        # now compute the relative version of syzygies of rows
-        embedding1_matrix := SyzygiesOfColumns( matrix1, matrix2 );
-        
-        # this means that we have the following diagram:
-        #                     
-        #   Range( 2 ) <--- morphism2 -----  Source( 2 ) = Source( 1 )
-        #                                                |
-        #                                                |
-        #                                                |
-        #                                            morphism1
-        #                                                |
-        #                                                v
-        #                                            Range( 1 )
-        #                                                |
-        #                                                |
-        #                                        embedding1_matrix
-        #                                                |
-        #                                                v
-        #                                           pushout( 1, 2 )
-        
-        # now interpret embedding1 as the mapping matrix of a map of projective graded left modules with source the 
-        # range of morphism1
-        # -> so essentially repeat the cokernel algorithm
-
-        # check if the cokernel matrix is zero
-        if IsZero( embedding1_matrix ) then
-        
-          # if so, the pushout_object is the zero module
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( [ ], homalg_graded_ring );
-          
-        else
-        
-          # the cokernel matrix is not zero, thus let us compute the cokernel object...
-          
-          # figure out the (first) non-zero entries per row of the cokernel matrix
-          non_zero_entries_index := PositionOfFirstNonZeroEntryPerColumn( embedding1_matrix );
-          
-          # expand the degree_list of the range of the morphism
-          expanded_degree_list := [];
-          for j in [ 1 .. Length( DegreeList( Range( morphism_list[ 1 ] ) ) ) ] do
-          
-            for k in [ 1 .. DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
-            
-              Add( expanded_degree_list, DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 1 ] );
-            
-            od;
-          
-          od;
-          
-          # compute the degrees of the rows of the cokernel matrix
-          degrees_of_embedding1_matrix_columns := NonTrivialDegreePerColumn( embedding1_matrix );
-        
-          # initialise the degree list of the kernel_object
-          degrees_of_pushout_object := List( [ 1 .. Length( degrees_of_embedding1_matrix_columns ) ] );
-        
-          # and now compute the degrees of the kernel_object
-          for j in [ 1 .. Length( degrees_of_embedding1_matrix_columns ) ] do
-        
-            degrees_of_pushout_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                            - degrees_of_embedding1_matrix_columns[ j ], 1 ];
-          
-          od;
-          
-          # and finally return the cokernel object
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_pushout_object, homalg_graded_ring );
-
-        fi;
-
+      # simply return the range of the injection of cofactor 1
+      return Range( InjectionOfCofactorOfPushout( morphism_list, 1 ) );
+              
     end );
 
-    AddInjectionOfCofactorOfPushoutWithGivenPushout( category,
-      function( morphism_list, injection_number, pushout_object )
-        local homalg_graded_ring, matrix1, matrix2, embedding1_matrix, non_zero_entries_index, expanded_degree_list, j, k,
-             degrees_of_embedding1_matrix_columns, degrees_of_pushout_object, pushout_object_dummy;
+    # @Description
+    # This method computes the injection of the <A>injection_number</A>-th cofactor of a (weak) pushout 
+    # of a list of morphisms <A>morphism_list</A>
+    # @Returns a morphism
+    # @Arguments morphism_list, injection_number
+    AddInjectionOfCofactorOfPushout( category,
+      function( morphism_list, injection_number )
+        local mapping_matrix, matrix_list, syzygy_matrix_list, embedding_matrix, homalg_graded_ring, non_zero_entries_index, 
+             expanded_degree_list, j, k, degrees_of_embedding_matrix_columns, degrees_of_pushout_object, pushout_object;
         
-        # we only define the pushout for two morphisms, otherwise raise an error
-        if Length( morphism_list ) <> 2 then
+        if Length( morphism_list ) = 1 then
         
-          Error( "Pushout only accepts a list with precisely two morphisms as input. \n" );
-          return fail;
+          return KernelEmbedding( morphism_list[ 1 ] );
         
-        fi;
-
-        # extract the underlying homalg_graded_ring
-        homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );
-        
-        # and the mapping matrices of these two morphisms
-        matrix1 := UnderlyingHomalgMatrix( morphism_list[ 1 ] );
-        matrix2 := UnderlyingHomalgMatrix( morphism_list[ 2 ] );
-        
-        # now compute the relative version of syzygies of rows
-        embedding1_matrix := SyzygiesOfColumns( matrix1, matrix2 );
-        
-        # this means that we have the following diagram:
-        #                     
-        #   Range( 2 ) <--- morphism2 -----  Source( 2 ) = Source( 1 )
-        #                                                |
-        #                                                |
-        #                                                |
-        #                                            morphism1
-        #                                                |
-        #                                                v
-        #                                            Range( 1 )
-        #                                                |
-        #                                                |
-        #                                        embedding1_matrix
-        #                                                |
-        #                                                v
-        #                                           pushout( 1, 2 )
-        
-        # now interpret embedding1 as the mapping matrix of a map of projective graded left modules with source the 
-        # range of morphism1
-        # -> so essentially repeat the cokernel algorithm
-
-        # check if the cokernel matrix is zero
-        if IsZero( embedding1_matrix ) then
-        
-          # if so, the pushout_object is the zero module
-          pushout_object_dummy := CAPCategoryOfProjectiveGradedLeftModulesObject( [ ], homalg_graded_ring );
-          
         else
         
-          # the cokernel matrix is not zero, thus let us compute the cokernel object...
+          # extract the mapping matrix of the morphism[ projection_number ]
+          embedding_matrix := UnderlyingHomalgMatrix( morphism_list[ injection_number ] );
+        
+          # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
+          # projection morphism of
+          matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
+          Remove( matrix_list, injection_number );
+        
+          # now iterate the syzygies computation
+          syzygy_matrix_list := [];
+          embedding_matrix := SyzygiesOfColumns( embedding_matrix, matrix_list[ 1 ] );
+          for j in [ 2 .. Length( matrix_list ) ] do
           
-          # figure out the (first) non-zero entries per row of the cokernel matrix
-          non_zero_entries_index := PositionOfFirstNonZeroEntryPerColumn( embedding1_matrix );
-          
-          # expand the degree_list of the range of the morphism
-          expanded_degree_list := [];
-          for j in [ 1 .. Length( DegreeList( Range( morphism_list[ 1 ] ) ) ) ] do
-          
-            for k in [ 1 .. DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
+            embedding_matrix := embedding_matrix * SyzygiesOfColumns( mapping_matrix * embedding_matrix, matrix_list[ j ] );
             
-              Add( expanded_degree_list, DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 1 ] );
+          od;
+        
+          # now we know the embedding_matrix, that means all that is left to do is to identify its range as 
+          # projective graded left-module
+               
+          # figure out the graded ring
+          homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );
+
+          # check if the cokernel matrix is zero
+          if IsZero( embedding_matrix ) then
+        
+            # if so, the pushout_object is the zero module, and so the injection is the zero morphism
+            return ZeroMorphism(  Range( morphism_list[ injection_number ] ), ZeroObject( category ) );
             
+          else
+        
+            # the embedding_matrix is not zero, thus let us compute the range object...
+          
+            # figure out the (first) non-zero entries per row of the cokernel matrix
+            non_zero_entries_index := PositionOfFirstNonZeroEntryPerColumn( embedding_matrix );
+          
+            # expand the degree_list of the range of the morphism
+            expanded_degree_list := [];
+            for j in [ 1 .. Length( DegreeList( Range( morphism_list[ 1 ] ) ) ) ] do
+          
+              for k in [ 1 .. DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
+            
+                Add( expanded_degree_list, DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 1 ] );
+            
+              od;
+          
             od;
           
-          od;
+            # compute the degrees of the rows of the cokernel matrix
+            degrees_of_embedding_matrix_columns := NonTrivialDegreePerColumn( embedding_matrix );
+        
+            # initialise the degree list of the kernel_object
+            degrees_of_pushout_object := List( [ 1 .. Length( degrees_of_embedding_matrix_columns ) ] );
+        
+            # and now compute the degrees of the kernel_object
+            for j in [ 1 .. Length( degrees_of_embedding_matrix_columns ) ] do
+        
+              degrees_of_pushout_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
+                                                                            - degrees_of_embedding_matrix_columns[ j ], 1 ];
           
-          # compute the degrees of the rows of the cokernel matrix
-          degrees_of_embedding1_matrix_columns := NonTrivialDegreePerColumn( embedding1_matrix );
-        
-          # initialise the degree list of the kernel_object
-          degrees_of_pushout_object := List( [ 1 .. Length( degrees_of_embedding1_matrix_columns ) ] );
-        
-          # and now compute the degrees of the kernel_object
-          for j in [ 1 .. Length( degrees_of_embedding1_matrix_columns ) ] do
-        
-            degrees_of_pushout_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                            - degrees_of_embedding1_matrix_columns[ j ], 1 ];
+            od;
           
-          od;
+            # and finally return the cokernel object
+            pushout_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_pushout_object, homalg_graded_ring );
+ 
+            return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ injection_number ] ),
+                                                                            embedding_matrix,
+                                                                            pushout_object
+                                                                            );
+
+         fi;            
+
+       fi;
+
+    end );    
+    
+    
+    
+    
+    
+      #function( morphism_list, injection_number )
+      #  local homalg_graded_ring, matrix1, matrix2, embedding_matrix, non_zero_entries_index, expanded_degree_list, j, k,
+      #       degrees_of_embedding_matrix_columns, degrees_of_pushout_object, pushout_object, direct_sum_diagram, 
+      #       number_of_morphisms, list_of_morphisms, mor1, mor2;
+      #  if Length( morphism_list ) = 1 then
+      #    
+      #    return CokernelProjection( morphism_list[ 1 ] );
+      #  
+      #  elif Length( morphism_list ) = 2 then
+
+          # -> we apply a (possibly) faster algorithm than the derivation via the kernel of the difference...
+
+          # extract the underlying homalg_graded_ring
+      #    homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );
+        
+          # and the mapping matrices of these two morphisms
+       #   matrix1 := UnderlyingHomalgMatrix( morphism_list[ 1 ] );
+       #   matrix2 := UnderlyingHomalgMatrix( morphism_list[ 2 ] );
+        
+          # next check if the projection number if valid
+       #   if injection_number < 0 or injection_number > 2 then
+        
+       #     Error( "The injection number is not in the allowed range!. \n" );
+       #     return false;
+        
+       #   fi;
           
-          # and finally return the cokernel object
-          pushout_object_dummy := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_pushout_object, homalg_graded_ring );
+          # now compute the relative version of syzygies of rows
+       #   if injection_number = 1 then
 
-        fi;
+       #     embedding_matrix := SyzygiesOfColumns( matrix1, matrix2 );
 
-        
-        # now make a new check on the validity of the input
-        if not IsEqualForObjects( pushout_object_dummy, pushout_object ) then
-        
-          Error( "The entered pushout object is not equal to the interally computed pushout object. \n" );
-          return fail;
-        
-        fi;
-        
-        # next check if the projection number if valid
-        if injection_number < 0 or injection_number > 2 then
-        
-          Error( "The injection number is only allowed to be either 1 or 2!. \n" );
-        
-        fi;
-        
-        # else the input is ok and we can product the output
-        if injection_number = 1 then
-        
-          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ 1 ] ),
-                                                                          embedding1_matrix,
-                                                                          pushout_object
-                                                                          );
-        
-        else
+        #  else
 
-          # have to compute the colift
-          return Colift( morphism_list[ 2 ], 
-                       PreCompose( morphism_list[ 1 ],                       
-                                   CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ 1 ] ),
-                                                                                            embedding1_matrix,
-                                                                                            pushout_object
-                                                                                           )
-                                  )
-                      );
+         #   embedding_matrix := SyzygiesOfColumns( matrix2, matrix1 );
+
+          #fi;
+                
+          # this means that we have the following diagram (given that injection_number = 1, or 2 accordingly)
+          #                     
+          #   Range( 2 ) <--- morphism2 -----  Source( 2 ) = Source( 1 )
+          #                                                |
+          #                                                |
+          #                                            morphism1
+          #                                                |
+          #                                                |
+          #                                                v
+          # pushout( 1, 2 ) <---- embedding_matrix ---- Range( 1 )
+          #
+
+          # now interpret embedding_matrix as the mapping matrix of a map of projective graded left modules with source the 
+          # range of morphism_list[ injection_number ]
+          # -> so essentially repeat the cokernel algorithm
+
+          # check if the cokernel matrix is zero
+          #if IsZero( embedding_matrix ) then
         
-        fi;        
+            # if so, the pushout_object is the zero module, and so the injection is the zero morphism
+            #return ZeroMorphism(  Range( morphism_list[ injection_number ] ), ZeroObject( category ) );
+            
+          #else
         
-    end );
+            # the cokernel matrix is not zero, thus let us compute the cokernel object...
+          
+            # figure out the (first) non-zero entries per row of the cokernel matrix
+            #non_zero_entries_index := PositionOfFirstNonZeroEntryPerColumn( embedding_matrix );
+          
+            # expand the degree_list of the range of the morphism
+            #expanded_degree_list := [];
+            #for j in [ 1 .. Length( DegreeList( Range( morphism_list[ 1 ] ) ) ) ] do
+          
+              #for k in [ 1 .. DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
+            
+                #Add( expanded_degree_list, DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 1 ] );
+            
+              #od;
+          
+            #od;
+          
+            # compute the degrees of the rows of the cokernel matrix
+            #degrees_of_embedding_matrix_columns := NonTrivialDegreePerColumn( embedding_matrix );
+        
+            # initialise the degree list of the kernel_object
+            #degrees_of_pushout_object := List( [ 1 .. Length( degrees_of_embedding_matrix_columns ) ] );
+        
+            # and now compute the degrees of the kernel_object
+            #for j in [ 1 .. Length( degrees_of_embedding_matrix_columns ) ] do
+        
+              #degrees_of_pushout_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
+              #                                                              - degrees_of_embedding_matrix_columns[ j ], 1 ];
+          
+            #od;
+          
+            # and finally return the cokernel object
+            #pushout_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_pushout_object, homalg_graded_ring );
+ 
+            #return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ injection_number ] ),
+            #                                                                embedding_matrix,
+            #                                                                pushout_object
+            #                                                                );
+
+         #fi;
+         
+       #else
+
+          # the pushout is to be computed for more than two morphism
+          # so have to use the more general derivation instead
+        
+          # we form the direct sum of the sources of all morphisms in morphism_list and then compose them with the
+          # projections
+          #direct_sum_diagram := List( morphism_list, Range );
+          #number_of_morphisms := Length( morphism_list );
+        
+          # so list_of_morphisms contains morphisms "direct_sum_object" -> factor i -> Range( morphism_list[ i ] )
+          #list_of_morphisms := List( [ 1 .. number_of_morphisms ], 
+          #                  i -> PreCompose( InjectionOfCofactorOfDirectSum( direct_sum_diagram, i ), morphism_list[ i ] ) );
+
+          # note that Range( morphism_list[ i ] ) is the same for all i
+          # Consider \oplus_{i = 1}^{number_of_morphisms - 1}{Range( morphism_list[ 1 ]} and form the following morphisms
+          # into this object
+          #mor1 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+          #mor2 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+        
+          # the kernel object of the difference of these two morphisms is the fibre product that we are looking for
+          #return PreCompose( InjectionOfCofactorOfDirectSum( direct_sum_diagram, injection_number ),
+          #                   CokernelProjection( mor1 - mor2 ) 
+          #                  );
+
+       #fi;
+        
+    #end );
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
     
     
     
