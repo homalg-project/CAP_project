@@ -1072,161 +1072,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
     end );    
     
-    
-    
-    
-    
-      #function( morphism_list, injection_number )
-      #  local homalg_graded_ring, matrix1, matrix2, embedding_matrix, non_zero_entries_index, expanded_degree_list, j, k,
-      #       degrees_of_embedding_matrix_columns, degrees_of_pushout_object, pushout_object, direct_sum_diagram, 
-      #       number_of_morphisms, list_of_morphisms, mor1, mor2;
-      #  if Length( morphism_list ) = 1 then
-      #    
-      #    return CokernelProjection( morphism_list[ 1 ] );
-      #  
-      #  elif Length( morphism_list ) = 2 then
 
-          # -> we apply a (possibly) faster algorithm than the derivation via the kernel of the difference...
 
-          # extract the underlying homalg_graded_ring
-      #    homalg_graded_ring := UnderlyingHomalgGradedRing( morphism_list[ 1 ] );
-        
-          # and the mapping matrices of these two morphisms
-       #   matrix1 := UnderlyingHomalgMatrix( morphism_list[ 1 ] );
-       #   matrix2 := UnderlyingHomalgMatrix( morphism_list[ 2 ] );
-        
-          # next check if the projection number if valid
-       #   if injection_number < 0 or injection_number > 2 then
-        
-       #     Error( "The injection number is not in the allowed range!. \n" );
-       #     return false;
-        
-       #   fi;
-          
-          # now compute the relative version of syzygies of rows
-       #   if injection_number = 1 then
-
-       #     embedding_matrix := SyzygiesOfColumns( matrix1, matrix2 );
-
-        #  else
-
-         #   embedding_matrix := SyzygiesOfColumns( matrix2, matrix1 );
-
-          #fi;
-                
-          # this means that we have the following diagram (given that injection_number = 1, or 2 accordingly)
-          #                     
-          #   Range( 2 ) <--- morphism2 -----  Source( 2 ) = Source( 1 )
-          #                                                |
-          #                                                |
-          #                                            morphism1
-          #                                                |
-          #                                                |
-          #                                                v
-          # pushout( 1, 2 ) <---- embedding_matrix ---- Range( 1 )
-          #
-
-          # now interpret embedding_matrix as the mapping matrix of a map of projective graded left modules with source the 
-          # range of morphism_list[ injection_number ]
-          # -> so essentially repeat the cokernel algorithm
-
-          # check if the cokernel matrix is zero
-          #if IsZero( embedding_matrix ) then
-        
-            # if so, the pushout_object is the zero module, and so the injection is the zero morphism
-            #return ZeroMorphism(  Range( morphism_list[ injection_number ] ), ZeroObject( category ) );
-            
-          #else
-        
-            # the cokernel matrix is not zero, thus let us compute the cokernel object...
-          
-            # figure out the (first) non-zero entries per row of the cokernel matrix
-            #non_zero_entries_index := PositionOfFirstNonZeroEntryPerColumn( embedding_matrix );
-          
-            # expand the degree_list of the range of the morphism
-            #expanded_degree_list := [];
-            #for j in [ 1 .. Length( DegreeList( Range( morphism_list[ 1 ] ) ) ) ] do
-          
-              #for k in [ 1 .. DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 2 ] ] do
-            
-                #Add( expanded_degree_list, DegreeList( Range( morphism_list[ 1 ] ) )[ j ][ 1 ] );
-            
-              #od;
-          
-            #od;
-          
-            # compute the degrees of the rows of the cokernel matrix
-            #degrees_of_embedding_matrix_columns := NonTrivialDegreePerColumn( embedding_matrix );
-        
-            # initialise the degree list of the kernel_object
-            #degrees_of_pushout_object := List( [ 1 .. Length( degrees_of_embedding_matrix_columns ) ] );
-        
-            # and now compute the degrees of the kernel_object
-            #for j in [ 1 .. Length( degrees_of_embedding_matrix_columns ) ] do
-        
-              #degrees_of_pushout_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-              #                                                              - degrees_of_embedding_matrix_columns[ j ], 1 ];
-          
-            #od;
-          
-            # and finally return the cokernel object
-            #pushout_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_pushout_object, homalg_graded_ring );
- 
-            #return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ injection_number ] ),
-            #                                                                embedding_matrix,
-            #                                                                pushout_object
-            #                                                                );
-
-         #fi;
-         
-       #else
-
-          # the pushout is to be computed for more than two morphism
-          # so have to use the more general derivation instead
-        
-          # we form the direct sum of the sources of all morphisms in morphism_list and then compose them with the
-          # projections
-          #direct_sum_diagram := List( morphism_list, Range );
-          #number_of_morphisms := Length( morphism_list );
-        
-          # so list_of_morphisms contains morphisms "direct_sum_object" -> factor i -> Range( morphism_list[ i ] )
-          #list_of_morphisms := List( [ 1 .. number_of_morphisms ], 
-          #                  i -> PreCompose( InjectionOfCofactorOfDirectSum( direct_sum_diagram, i ), morphism_list[ i ] ) );
-
-          # note that Range( morphism_list[ i ] ) is the same for all i
-          # Consider \oplus_{i = 1}^{number_of_morphisms - 1}{Range( morphism_list[ 1 ]} and form the following morphisms
-          # into this object
-          #mor1 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
-          #mor2 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
-        
-          # the kernel object of the difference of these two morphisms is the fibre product that we are looking for
-          #return PreCompose( InjectionOfCofactorOfDirectSum( direct_sum_diagram, injection_number ),
-          #                   CokernelProjection( mor1 - mor2 ) 
-          #                  );
-
-       #fi;
-        
-    #end );
+    ######################################################################
+    #
+    # @Section Add Basic Monoidal Structure
+    #
+    ######################################################################
     
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    ## add tensor product
-    ## add tensor product
-    
+    # @Description
+    # This method computes the tensor product of the two projective modules <A>object1</A> and <A>object2</A>
+    # @Returns an object
+    # @Arguments object1, object2
     AddTensorProductOnObjects( category,
       function( object1, object2 )
         local degree_list1, degree_list2, degree_list1_extended, degree_list_tensor_object, i, j;
@@ -1235,8 +1092,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         degree_list1 := DegreeList( object1 );
         degree_list2 := DegreeList( object2 );
         
-        # now expand degree_list1 (this is to make sure that the tensor product on objects is defined such that the tensor product
-        # on morphisms is transmitted by the KroneckerProduct of the mapping matrices)
+        # now expand degree_list1 (this is to make sure that the tensor product on objects is defined such that the 
+        # tensor product on morphisms is transmitted by the KroneckerProduct of the mapping matrices)
         degree_list1_extended := [];
         for i in [ 1 .. Length( degree_list1 ) ] do
         
@@ -1265,7 +1122,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_tensor_object, UnderlyingHomalgGradedRing( object1 ) );
        
     end );
-    
+
+    # @Description
+    # This method computes the tensor product of the two maps of projective modules <A>morphism1</A> and <A>morphism2</A>.
+    # @Returns a morphism
+    # @Arguments source = Source( morphism1 ) \otimes Source( morphism2 ), morphism1, morphism2, 
+    #            range = Range( morphism1 ) \otimes Range( morphism2 )
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       function( source, morphism1, morphism2, range )
                 
@@ -1274,23 +1136,35 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                               range );
                                               
     end );
-    
+
+    # @Description
+    # This method computes the tensor unit in the category of projective graded left modules. This is the module
+    # of degree 0 and rank 1.
+    # @Returns an object
+    # @Arguments 
     AddTensorUnit( category,
       function( )
         local homalg_ring;
         
         homalg_ring := category!.homalg_graded_ring_for_category_of_projective_graded_left_modules;
-        return CAPCategoryOfProjectiveGradedLeftModulesObject( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ], homalg_ring );
-        
+        return CAPCategoryOfProjectiveGradedLeftModulesObject( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ], 
+                                                                                                               homalg_ring );
+
     end );
     
     
     
-    
-    
-    ## add braiding, i.e. a otimes b -> b otimes a
-    ## add braiding, i.e. a otimes b -> b otimes a
-    ## this makes this Proj-category a symmetric monoidal category
+    ######################################################################
+    #
+    # @Section Add Symmetric Monoidal Structure 
+    # (i.e. braiding and the inverse is given by B_a,b^{-1} = B_{b,a}
+    #
+    ######################################################################
+
+    # @Description
+    # This method computes the braiding morphism object1_tensored_object2 to object2_tensored_object1
+    # @Returns a morphism
+    # @Arguments object1_tensored_object2, object1, object2, object2_tensored_object1
     AddBraidingWithGivenTensorProducts( category,
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local homalg_ring, rank_1, rank_2, rank, permutation_matrix;
@@ -1314,11 +1188,21 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                                                         object_2_tensored_object_1 );        
     
     end );
+
     
     
+    ######################################################################
+    #
+    # @Section Add Rigid, Symmetric Closed Monoidal Structure
+    #
+    ######################################################################
     
-    ## add dual objects
-    ## add dual objects
+    # @Description
+    # This method computes the dual of a projective, graded left-module <A>object</A> (c.f. dual of vector spaces).
+    # Note that this dualisation is used to compute the internal homs via 
+    # Hom( object1, object2 ) = Dual( object1 ) \otimes object2.
+    # @Returns an object
+    # @Arguments object
     AddDualOnObjects( category,
       function( object )
         local degree_list_dual_object;
@@ -1331,14 +1215,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_dual_object, UnderlyingHomalgGradedRing( object ) );
         
     end );
-    
+
+    # @Description
+    # This method computes the dual of a morphism of projective, graded left-modules (c.f. dual of vector space morphism).
+    # @Returns a morphism
+    # @Arguments source, morphism, range
     AddDualOnMorphismsWithGivenDuals( category,
       function( source, morphism, range )
     
       # simply transpose the mapping matrix and return the result
       return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source, Involution( UnderlyingHomalgMatrix( morphism ) ), range );
     end );
-    
+
+    # @Description
+    # This method computes the evaluation morphism for a projective graded left-module <A>object</A>. This is it computes a
+    # morphism <A>Dual(object)</A> \otimes <A>object</A> to the tensor unit.
+    # @Returns a morphism
+    # @Arguments tensor_object = Dual( object) \otimes object, object, unit
     AddEvaluationForDualWithGivenTensorProduct( category,
       function( tensor_object, object, unit )
         local rank, column, zero_column, i, homalg_ring;
@@ -1370,7 +1263,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                                         unit );
         
     end );
-    
+
+    # @Description
+    # This method computes the coevaluation morphism for a projective graded left-module <A>object</A>. This is it computes a
+    # morphism tensor unit to <A>Dual(object)</A> \otimes <A>object</A>.
+    # @Returns a morphism
+    # @Arguments unit, object, tensor_object = Object \otimes Dual( object )
     AddCoevaluationForDualWithGivenTensorProduct( category,
       function( unit, object, tensor_object )
         local rank, column, zero_column, i, homalg_ring;
@@ -1403,14 +1301,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
 
+    # @Description
+    # Given an <A>object</A>, this method computes the morphism to the bidual, i.e. the morphism
+    # <A>object</A> to <A>Dual(Dual(object))</A>. In the category at hand this is just the identity morphism.
+    # @Returns a morphism
+    # @Arguments object, bidual_object = Dual(Dual(object))
     AddMorphismToBidualWithGivenBidual( category,
       function( object, bidual_object )
       
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
-                                                 object, 
-                                                 HomalgIdentityMatrix( Rank( object ), UnderlyingHomalgGradedRing( object ) ),        
-                                                 bidual_object );
-      
+                                                object,
+                                                HomalgIdentityMatrix( Rank( object ), UnderlyingHomalgGradedRing( object ) ),
+                                                bidual_object );
+
     end );    
     
 end );
