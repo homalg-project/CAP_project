@@ -21,29 +21,46 @@ InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
   function( homalg_graded_ring )
     local category;
     
-    category := CreateCapCategory( Concatenation( "CAP category of projective graded right modules over "
+      # create category
+      category := CreateCapCategory( Concatenation( "CAP category of projective graded right modules over "
                                                                                           , RingName( homalg_graded_ring ) ) );
-    category!.homalg_graded_ring_for_category_of_projective_graded_right_modules := homalg_graded_ring;
+      category!.homalg_graded_ring_for_category_of_projective_graded_right_modules := homalg_graded_ring;
     
-    SetIsAdditiveCategory( category, true );
-    SetIsStrictMonoidalCategory( category, true );
-    SetIsRigidSymmetricClosedMonoidalCategory( category, true );
-    SetIsAdditionWithZeroObjectIdenticalObject( category, true );
-    SetIsProjCategory( category, true );
+      SetIsAdditiveCategory( category, true );
+      SetIsStrictMonoidalCategory( category, true );
+      SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+      SetIsAdditionWithZeroObjectIdenticalObject( category, true );
+      SetIsProjCategory( category, true );
     
-    INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES( category ); 
-    
-    ## TODO: Logic for CAPCategoryOfProjectiveGradedModules
-    
-    #AddPredicateImplicationFileToCategory( category,
-    #  Filename(
-    #    DirectoriesPackageLibrary( "LinearAlgebraForCAP", "LogicForMatrixCategory" ),
-    #    "PredicateImplicationsForMatrixCategory.tex" )
-    #);
-     
-    Finalize( category );
+      # install its functionality
+      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES( category ); 
 
-    return category;
+      # add theorem file
+      AddTheoremFileToCategory( category,
+        Filename(
+        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),
+        "Propositions.tex" )
+      );
+    
+      # add predicate-implication file
+      AddPredicateImplicationFileToCategory( category,
+        Filename(
+        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),      
+        "PredicateImplications.tex" )
+      );
+    
+      # add relations file
+      AddEvalRuleFileToCategory( category,
+        Filename(
+        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),
+        "Relations.tex" )
+      );
+    
+      # finalise it
+      Finalize( category );
+
+      # and return the completed category
+      return category;
     
 end );
 
