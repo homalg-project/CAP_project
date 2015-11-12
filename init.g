@@ -9,3 +9,5 @@ ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiv
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesMorphism.gd" );
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/NewProperties.gd" );
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/Tools.gd" );
+ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesFunctors.gd" );
+ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesNaturalTransformations.gd" );

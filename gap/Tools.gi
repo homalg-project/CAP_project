@@ -276,3 +276,37 @@ InstallMethod( DeduceMapFromMatrixAndSourceRight,
       return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object, matrix, range_object );        
         
 end );
+
+
+
+
+#########################################
+##
+## Check if a point is contained in cone
+##
+#########################################
+
+# check if a point satisfies hyperplane constraints for a cone, thereby determining if the point lies in the cone
+InstallMethod( PointContainedInCone,
+               " for a cone given by H-constraints, a list specifying a point ",
+               [ IsList, IsList ],
+  function( cone, point )
+    local i, constraint;
+
+    # check if the point satisfies the hyperplane constraints or not
+    for i in [ 1..Length( cone ) ] do
+
+      # compute constraint
+      constraint := Sum( List( [ 1..Length( cone[ i ] ) ], x -> cone[ i ][ x ] * point[ x ] ) );
+
+      # if non-negative, the point satisfies this constraint
+      if constraint < 0 then
+	return false;
+      fi;
+      
+    od;
+
+    # return the result
+    return true;
+
+end );

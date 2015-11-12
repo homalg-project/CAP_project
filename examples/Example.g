@@ -293,7 +293,6 @@ Display( InternalHomOnObjects( ObjectL, ObjectL ) );
 #! @Section A few categorical constructions for projective right modules
 
 #! @Example
-
 ZeroObject( categoryR );
 #! <A projective graded right module of rank 0>
 O1R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],2] ], S );
@@ -466,5 +465,79 @@ Display( InternalHomOnObjects( ObjectR, ObjectR ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 4 and degrees: 
 #! [ [ 0, 4 ] ]
+
+#! @EndExample
+
+
+
+#! @Section Truncations of projective graded modules
+
+
+#! @Example
+S;
+#! Q[x_1,x_2,x_3,x_4]
+#! (weights: [ ( 1, 0 ), ( 1, 0 ), ( 0, 1 ), ( 0, 1 ) ])
+D := DegreeGroup( S );
+#! <A free left module of rank 2 on free generators>
+IsFree( D );
+#! true
+NewObjectL := CAPCategoryOfProjectiveGradedLeftModulesObject( 
+              [ [[1,0],1], [[-1,-1],2] ], S );
+#! <A projective graded left module of rank 3>
+tL := TruncationOfProjectiveGradedModule( NewObjectL, [[1,0],[0,1]] );
+#! <A projective graded left module of rank 1>
+Display( tL );
+#! A projective graded left module over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 0 ), 1 ] ]
+embL := EmbeddingOfTruncationOfProjectiveGradedModule( NewObjectL, 
+        [[1,0],[0,1]] );
+#! A morphism in the category of projective graded left 
+#! modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+Display( UnderlyingHomalgMatrix( embL ) );
+#! 1, 0, 0
+#! (over a graded ring)
+TruncationFunctorLeft( S, [[ 1,0 ], [ 0,1 ]] );
+#! Truncation functor for CAP category of projective graded 
+#! left modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! to the cone [ [ 1, 0 ], [ 0, 1 ] ]
+NaturalTransformationFromTruncationToIdentityLeft( S, [[1,0],[0,1]] );
+#! Natural transformation from Truncation functor for CAP category 
+#! of projective graded left modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! to the cone [ [ 1, 0 ], [ 0, 1 ] ] to id
+NewObjectR := CAPCategoryOfProjectiveGradedRightModulesObject( 
+              [ [[1,0],1], [[-1,-1],2] ], S );
+#! <A projective graded right module of rank 3>
+tR := TruncationOfProjectiveGradedModule( NewObjectR, [[1,0],[0,1]] );
+#! <A projective graded right module of rank 1>
+Display( tR );
+#! A projective graded right module over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 0 ), 1 ] ]
+embR := EmbeddingOfTruncationOfProjectiveGradedModule( NewObjectR, 
+        [[1,0],[0,1]] );
+#! A morphism in the category of projective graded right 
+#! modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+Display( UnderlyingHomalgMatrix( embR ) );
+#! 1,
+#! 0,
+#! 0
+#! (over a graded ring)
+TruncationFunctorRight( S, [[ 1,0 ], [ 0,1 ]] );
+#! Truncation functor for CAP category of projective graded 
+#! right modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! to the cone [ [ 1, 0 ], [ 0, 1 ] ]
+NaturalTransformationFromTruncationToIdentityRight( S, [[1,0],[0,1]] );
+#! Natural transformation from Truncation functor for CAP category 
+#! of projective graded right modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! to the cone [ [ 1, 0 ], [ 0, 1 ] ] to id
 
 #! @EndExample

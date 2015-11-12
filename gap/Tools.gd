@@ -51,3 +51,21 @@ DeclareOperation( "DeduceMapFromMatrixAndRangeRight",
 #! @Arguments m, S
 DeclareOperation( "DeduceMapFromMatrixAndSourceRight",
                   [ IsHomalgMatrix, IsCAPCategoryOfProjectiveGradedRightModulesObject ] );
+
+
+
+########################################################################
+##
+#! @Section Check if point is contained in cone (needed for truncations)
+##
+########################################################################
+
+#! @Description
+#! The argument is a cone $C$ given by a list of (integral) hyperplane constraints and an integral point $p$.
+#! This operation then verifies if the point $p$ satisfies all of the hyperplane constraints of not. Thereby
+#! it determines if the point is contained in the cone or not.
+#! @Returns true or false
+#! @Arguments C, p
+DeclareOperation( "PointContainedInCone",
+                  [ IsList, IsList ] );
+
