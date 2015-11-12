@@ -11,6 +11,7 @@ AutoDoc( "CAPCategoryOfProjectiveGradedModules" : scaffold := true, autodoc :=
                          "gap/CAPCategoryOfProjectiveGradedRightModules.gd",
                          "gap/CAPCategoryOfProjectiveGradedModulesObject.gd",
                          "gap/CAPCategoryOfProjectiveGradedModulesMorphism.gd",
+                         "gap/Tools.gd",
                          "examples/Example.g" 
                          ],
              scan_dirs := []

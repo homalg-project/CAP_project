@@ -9,3 +9,4 @@ ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiv
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesObject.gi" );
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesMorphism.gi" );
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/NewProperties.gi" );
+ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/Tools.gi" );

@@ -103,7 +103,7 @@ categoryR := CapCategory( Q1R );
 
 
 
-#! @Section A few categorical constructions for left modules
+#! @Section A few categorical constructions for projective left modules
 
 #! @Example
 
@@ -290,7 +290,7 @@ Display( InternalHomOnObjects( ObjectL, ObjectL ) );
 
 
 
-#! @Section A few categorical constructions for right modules
+#! @Section A few categorical constructions for projective right modules
 
 #! @Example
 
