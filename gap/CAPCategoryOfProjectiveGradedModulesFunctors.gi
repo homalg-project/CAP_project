@@ -4,20 +4,18 @@
 ##
 ##                  CAPCategoryOfProjectiveGradedModules package
 ##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##                  Martin Bies,       ITP Heidelberg
+##  Copyright 2015, Martin Bies,       ITP Heidelberg
 ##
-#! @Chapter Functors for the category of projective graded left modules
+## Chapter Functors for the category of projective graded left modules
 ##
 #############################################################################
 
 
-####################################
+##############################################
 ##
-#! @Section Truncations
+## Section Basic functionality for truncations
 ##
-######################################
+##############################################
 
 # Truncation of projective graded modules
 InstallMethod( TruncationOfProjectiveGradedModule,
@@ -75,9 +73,7 @@ InstallMethod( TruncationOfProjectiveGradedModule,
     
 end );
 
-
-
-# Truncation of projective graded modules
+# Embedding of truncation of projective graded module into the original module
 InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ],
   function( projective_module, cone_h_list )
@@ -155,6 +151,85 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
 end );
 
 
+# Projection of a projective graded module onto its truncation
+InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ],
+  function( projective_module, cone_h_list )
+    local rank, i, j, degree_list, expanded_degree_list, new_degree_list, embedding_matrix, projection_matrix,
+         row, truncated_module, graded_ring;
+
+    # check if the degree_group of the underlying homalg_graded_ring is free
+    if not IsFree( DegreeGroup( UnderlyingHomalgGradedRing( projective_module ) ) ) then
+    
+      return Error( "Currently truncations are only supported for freely-graded rings. \n" );
+    
+    fi;
+    
+    # next check if the cone_h_list is valid
+    rank := Rank( DegreeGroup( UnderlyingHomalgGradedRing( projective_module ) ) );
+    for i in [ 1 .. Length( cone_h_list ) ] do
+    
+      if Length( cone_h_list[ i ] ) <> rank then
+      
+        return Error( "The cone is not contained in the degree_group of the graded ring. \n" );
+        
+      fi;
+    
+    od;
+    
+    # we now expand the degree_list of the projective module
+    degree_list := DegreeList( projective_module );
+    expanded_degree_list := [];
+    for i in [ 1 .. Length( degree_list ) ] do
+      for j in [ 1 .. degree_list[ i ][ 2 ] ] do
+        Add( expanded_degree_list, degree_list[ i ][ 1 ] );
+      od;
+    od;
+    
+    # now compute the projection matrix as the transposed of the embedding matrix
+    # also compute the degrees of the truncated module at the same time
+    new_degree_list := [];
+    embedding_matrix := [];
+    for i in [ 1 .. Length( degree_list ) ] do
+      
+      # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
+      if PointContainedInCone( cone_h_list, UnderlyingListOfRingElements( degree_list[ i ][ 1 ] ) ) then
+
+        Add( new_degree_list, degree_list[ i ] );
+        row := List( [ 1 .. Rank( projective_module ) ], x -> 0 );
+        row[ i ] := 1;
+        Add( embedding_matrix, row );
+      
+      fi;
+    
+    od;
+
+    # install the truncated module (and transpose the embedding_matrix for right_modules)
+    if IsCAPCategoryOfProjectiveGradedLeftModulesObject( projective_module ) then
+    
+      projection_matrix := TransposedMat( embedding_matrix );
+      truncated_module := CAPCategoryOfProjectiveGradedLeftModulesObject( new_degree_list,
+                                                                          UnderlyingHomalgGradedRing( projective_module ) 
+                                                                         );
+
+    else
+      
+      projection_matrix := embedding_matrix;
+      truncated_module := CAPCategoryOfProjectiveGradedRightModulesObject( new_degree_list,
+                                                                           UnderlyingHomalgGradedRing( projective_module ) 
+                                                                          );
+
+    fi;
+    
+    # finally return the embedding
+    graded_ring := UnderlyingHomalgGradedRing( projective_module );
+    return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( projective_module, 
+                                                                    HomalgMatrix( projection_matrix, graded_ring ),
+                                                                    truncated_module
+                                                                   );
+
+end );
+
 
 
 
@@ -165,7 +240,7 @@ end );
 #################################################
 
 # this function computes the functor 'lessGenerators' for both left and right presentations
-InstallGlobalFunction( TruncationFunctor,
+InstallGlobalFunction( TruncationFunctorForProjectiveGradedModules,
   function( graded_ring, cone_h_list, left )
     local rank, i, category, functor;
 
@@ -227,19 +302,19 @@ InstallGlobalFunction( TruncationFunctor,
 end );
 
 # functor to compute the truncation of left-modules
-InstallMethod( TruncationFunctorLeft,
+InstallMethod( TruncationFunctorForProjectiveGradedLeftModules,
                [ IsHomalgGradedRing, IsList ],
       function( graded_ring, cone_h_list )
       
-        return TruncationFunctor( graded_ring, cone_h_list, true );
+        return TruncationFunctorForProjectiveGradedModules( graded_ring, cone_h_list, true );
 
 end );
 
 # functor to compute the truncation of right-modules
-InstallMethod( TruncationFunctorRight,
+InstallMethod( TruncationFunctorForProjectiveGradedRightModules,
                [ IsHomalgGradedRing, IsList ],
       function( graded_ring, cone_h_list )
       
-        return TruncationFunctor( graded_ring, cone_h_list, false );
+        return TruncationFunctorForProjectiveGradedModules( graded_ring, cone_h_list, false );
 
 end );

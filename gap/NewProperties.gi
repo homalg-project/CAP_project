@@ -1,8 +1,18 @@
-########################################
+#############################################################################
 ##
-#! Check for being a projective category
+##                  CAPCategoryOfProjectiveGradedModules package
 ##
-########################################
+##  Copyright 2015, Martin Bies,       ITP Heidelberg
+##
+##  Chapter Additional properties of Proj-categories
+##
+#############################################################################
+
+############################################
+##
+##  Section New properties of Cap_categories
+##
+############################################
 
 InstallMethod( IsProjCategory,
                " for CAP categories",

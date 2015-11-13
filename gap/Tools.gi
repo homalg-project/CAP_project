@@ -2,11 +2,9 @@
 ##
 ##                  CAPCategoryOfProjectiveGradedModules package
 ##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##                  Martin Bies,       ITP Heidelberg
+##  Copyright 2015, Martin Bies,       ITP Heidelberg
 ##
-#! @Chapter Tool methods
+##  Chapter Tool methods
 ##
 #############################################################################
 

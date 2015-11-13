@@ -2,9 +2,7 @@
 ##
 ##                  CAPCategoryOfProjectiveGradedModules package
 ##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##                  Martin Bies,       ITP Heidelberg
+##  Copyright 2015, Martin Bies,       ITP Heidelberg
 ##
 ##  Chapter Natural transformations
 ##
@@ -19,10 +17,10 @@
 
 # a function that computes the natural isomorphism 1 => StandardModule for both
 # left and right presentations
-InstallGlobalFunction( NaturalTransformationFromTruncationToIdentity,
+InstallGlobalFunction( NaturalTransformationFromTruncationToIdentityForProjectiveGradedModules,
 
   function( graded_ring, cone_h_list, left )
-    local category, truncation_functor, natural_transformation;
+    local rank, i, category, truncation_functor, natural_transformation;
 
     # check if the degree_group of the underlying homalg_graded_ring is free
     if not IsFree( DegreeGroup( graded_ring ) ) then
@@ -46,10 +44,10 @@ InstallGlobalFunction( NaturalTransformationFromTruncationToIdentity,
     # now construct the category and the respective truncation_functor    
     if left = true then
       category := CAPCategoryOfProjectiveGradedLeftModules( graded_ring );
-      truncation_functor := TruncationFunctorLeft( graded_ring, cone_h_list );
+      truncation_functor := TruncationFunctorForProjectiveGradedLeftModules( graded_ring, cone_h_list );
     else
       category := CAPCategoryOfProjectiveGradedRightModules( graded_ring );
-      truncation_functor := TruncationFunctorRight( graded_ring, cone_h_list );
+      truncation_functor := TruncationFunctorForProjectiveGradedRightModules( graded_ring, cone_h_list );
     fi;
     
     # initialise the natural_transformation
@@ -73,19 +71,19 @@ InstallGlobalFunction( NaturalTransformationFromTruncationToIdentity,
 end );
 
 # natural isomorphism 1 => Standard module for left presentations
-InstallMethod( NaturalTransformationFromTruncationToIdentityLeft,
+InstallMethod( NaturalTransformationFromTruncationToIdentityForProjectiveGradedLeftModules,
                [ IsHomalgGradedRing, IsList ],
   function( graded_ring, cone_h_list )
 
-    return NaturalTransformationFromTruncationToIdentity( graded_ring, cone_h_list, true );
+    return NaturalTransformationFromTruncationToIdentityForProjectiveGradedModules( graded_ring, cone_h_list, true );
 
 end );
 
 # natural isomorphism 1 => Standard module for right presentations
-InstallMethod( NaturalTransformationFromTruncationToIdentityRight,
+InstallMethod( NaturalTransformationFromTruncationToIdentityForProjectiveGradedRightModules,
                [ IsHomalgGradedRing, IsList ],
   function( graded_ring, cone_h_list )
 
-    return NaturalTransformationFromTruncationToIdentity( graded_ring, cone_h_list, false );
+    return NaturalTransformationFromTruncationToIdentityForProjectiveGradedModules( graded_ring, cone_h_list, false );
 
 end );

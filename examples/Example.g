@@ -499,12 +499,23 @@ embL := EmbeddingOfTruncationOfProjectiveGradedModule( NewObjectL,
 Display( UnderlyingHomalgMatrix( embL ) );
 #! 1, 0, 0
 #! (over a graded ring)
-TruncationFunctorLeft( S, [[ 1,0 ], [ 0,1 ]] );
+projL := ProjectionOntoTruncationOfProjectiveGradedModule( NewObjectL, 
+         [[ 1,0 ], [ 0,1 ]] );
+#! A morphism in the category of projective 
+#! graded left modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
+Display( UnderlyingHomalgMatrix( projL ) );
+#! 1,
+#! 0,
+#! 0 
+#! (over a graded ring)
+TruncationFunctorForProjectiveGradedLeftModules( S, [[ 1,0 ], [ 0,1 ]] );
 #! Truncation functor for CAP category of projective graded 
 #! left modules over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! to the cone [ [ 1, 0 ], [ 0, 1 ] ]
-NaturalTransformationFromTruncationToIdentityLeft( S, [[1,0],[0,1]] );
+NaturalTransformationFromTruncationToIdentityForProjectiveGradedLeftModules( 
+S, [[1,0],[0,1]] );
 #! Natural transformation from Truncation functor for CAP category 
 #! of projective graded left modules over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
@@ -529,12 +540,21 @@ Display( UnderlyingHomalgMatrix( embR ) );
 #! 0,
 #! 0
 #! (over a graded ring)
-TruncationFunctorRight( S, [[ 1,0 ], [ 0,1 ]] );
+projR := ProjectionOntoTruncationOfProjectiveGradedModule( NewObjectR,
+         [[ 1,0 ], [ 0,1 ]] );
+#! A morphism in the category of projective 
+#! graded right modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])
+Display( UnderlyingHomalgMatrix( projR ) );
+#! 1, 0, 0
+#! (over a graded ring)
+TruncationFunctorForProjectiveGradedRightModules( S, [[ 1,0 ], [ 0,1 ]] );
 #! Truncation functor for CAP category of projective graded 
 #! right modules over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! to the cone [ [ 1, 0 ], [ 0, 1 ] ]
-NaturalTransformationFromTruncationToIdentityRight( S, [[1,0],[0,1]] );
+NaturalTransformationFromTruncationToIdentityForProjectiveGradedRightModules(
+S, [[1,0],[0,1]] );
 #! Natural transformation from Truncation functor for CAP category 
 #! of projective graded right modules over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 

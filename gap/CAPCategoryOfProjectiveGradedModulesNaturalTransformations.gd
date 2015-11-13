@@ -2,9 +2,7 @@
 ##
 ##                  CAPCategoryOfProjectiveGradedModules package
 ##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##                  Martin Bies,       ITP Heidelberg
+##  Copyright 2015, Martin Bies,       ITP Heidelberg
 ##
 #! @Chapter Natural transformations
 ##
@@ -19,7 +17,7 @@
 
 # a function that computes the natural transformation |_C => id for both
 # left and right presentations
-DeclareGlobalFunction( "NaturalTransformationFromTruncationToIdentity" );
+DeclareGlobalFunction( "NaturalTransformationFromTruncationToIdentityForProjectiveGradedModules" );
 
 #! @Description
 #! The argument is a homalg graded ring $S$ and a cone $C$ in the degree group of $S$. 
@@ -27,7 +25,7 @@ DeclareGlobalFunction( "NaturalTransformationFromTruncationToIdentity" );
 #! identity functor.
 #! @Returns a natural transformation $\left. \cdot \right|_C \Rightarrow \mathrm{id}$
 #! @Arguments S
-DeclareOperation( "NaturalTransformationFromTruncationToIdentityLeft",
+DeclareOperation( "NaturalTransformationFromTruncationToIdentityForProjectiveGradedLeftModules",
                   [ IsHomalgGradedRing, IsList ] );
 
 #! @Description
@@ -36,5 +34,5 @@ DeclareOperation( "NaturalTransformationFromTruncationToIdentityLeft",
 #! identity functor.
 #! @Returns a natural transformation $\left. \cdot \right|_C \Rightarrow \mathrm{id}$
 #! @Arguments S
-DeclareOperation( "NaturalTransformationFromTruncationToIdentityRight",
+DeclareOperation( "NaturalTransformationFromTruncationToIdentityForProjectiveGradedRightModules",
                   [ IsHomalgGradedRing, IsList ] );

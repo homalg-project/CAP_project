@@ -2,9 +2,7 @@
 ##
 ##                  CAPCategoryOfProjectiveGradedModules package
 ##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##                  Martin Bies,       ITP Heidelberg
+##  Copyright 2015, Martin Bies,       ITP Heidelberg
 ##
 #! @Chapter Functors for the category of projective graded left modules
 ##
@@ -40,6 +38,17 @@ DeclareOperation( "TruncationOfProjectiveGradedModule",
 DeclareOperation( "EmbeddingOfTruncationOfProjectiveGradedModule",
                    [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ] );
 
+#! @Description
+#! Consider a graded ring $R$ such that its degree group is identical to $\mathbb{Z}^n$ for
+#! suitable $n \in \mathbb{N}_{\geq 0}$. Then consider a projective graded left module $M$
+#! over $R$ and a cone $C$ in the degree group of $R$. We expect that $C$ is given to the
+#! method as an H-presentation.
+#! Under these circumstances this method computes the projection of the module $M$ onto the 
+#! truncation of $M$.
+#! @Returns a morphism
+#! @Arguments S, C
+DeclareOperation( "ProjectionOntoTruncationOfProjectiveGradedModule",
+                   [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ] );
 
 ###############################################
 ##
@@ -48,22 +57,22 @@ DeclareOperation( "EmbeddingOfTruncationOfProjectiveGradedModule",
 ###############################################
 
 # a function that computes the truncation functor for both projective left and right modules
-DeclareGlobalFunction( "TruncationFunctor" );
+DeclareGlobalFunction( "TruncationFunctorForProjectiveGradedModules" );
 
 #! @Description
-#! The argument is a homalg graded ring $R$ and a cone $C$ (given by a H-presentation) in the
+#! The argument is a homalg graded ring $R$ and a cone $C$ (given by an H-presentation) in the
 #! degree group of the ring $R$. The output is the functor which truncates projective graded 
 #! left-modules and right-module morphisms to the cone $C$. 
 #! @Returns a functor
 #! @Arguments R, C
-DeclareOperation( "TruncationFunctorLeft",
+DeclareOperation( "TruncationFunctorForProjectiveGradedLeftModules",
                   [ IsHomalgGradedRing, IsList ] );
                   
 #! @Description
-#! The argument is a homalg graded ring $R$ and a cone $C$ (given by a H-presentation) in the
+#! The argument is a homalg graded ring $R$ and a cone $C$ (given by an H-presentation) in the
 #! degree group of the ring $R$. The output is the functor which truncates projective graded 
 #! right-modules and right-module morphisms to the cone $C$. 
 #! @Returns a functor
 #! @Arguments R, C
-DeclareOperation( "TruncationFunctorRight",
+DeclareOperation( "TruncationFunctorForProjectiveGradedRightModules",
                   [ IsHomalgGradedRing, IsList ] );
