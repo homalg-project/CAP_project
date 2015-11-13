@@ -13,7 +13,7 @@ PackageName := "CAPCategoryOfProjectiveGradedModules",
 Subtitle := "Category of projective graded modules over a graded ring",
 
 Version := Maximum( [
-  "2015.11.10", ## Martin's version
+  "2015.11.13", ## Martin's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
