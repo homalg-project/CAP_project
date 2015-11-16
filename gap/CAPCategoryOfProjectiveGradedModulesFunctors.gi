@@ -239,7 +239,7 @@ end );
 ##
 #################################################
 
-# this function computes the functor 'lessGenerators' for both left and right presentations
+# this function computes the trunction functor for both left and right presentations
 InstallGlobalFunction( TruncationFunctorForProjectiveGradedModules,
   function( graded_ring, cone_h_list, left )
     local rank, i, category, functor;
