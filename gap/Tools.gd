@@ -66,4 +66,3 @@ DeclareOperation( "DeduceMapFromMatrixAndSourceRight",
 #! @Arguments C, p
 DeclareOperation( "PointContainedInCone",
                   [ IsList, IsList ] );
-

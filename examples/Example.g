@@ -4,20 +4,17 @@
 
 #! @Section Constructors of objects and reduction of degree lists
 
-LoadPackage( "ToricVarieties" );;
 LoadPackage( "CAPCategoryOfProjectiveGradedModules" );;
 
 #! @Example
 
-P1 := ProjectiveSpace( 1 );
-#! <A projective toric variety of dimension 1>
-P1xP1 := P1*P1;
-#! <A projective toric variety of dimension 2 which is a product of 2 toric varieties>
-ByASmallerPresentation( ClassGroup( P1xP1 ) );
-#! <A free left module of rank 2 on free generators>
-S := CoxRing( P1xP1 );
+Q := HomalgFieldOfRationalsInSingular();
+#! Q
+S := GradedRing( Q * "x_1, x_2, x_3, x_4" );
 #! Q[x_1,x_2,x_3,x_4]
-#! (weights: [ ( 1, 0 ), ( 1, 0 ), ( 0, 1 ), ( 0, 1 ) ])
+#! (weights: yet unset)
+SetWeightsOfIndeterminates( S, [[1,0],[1,0],[0,1],[0,1]] );
+#!
 ObjectL := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2] ], S );
 #! <A projective graded left module of rank 2>
 DegreeList( ObjectL );
