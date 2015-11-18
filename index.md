@@ -8,8 +8,6 @@ This is the home of the CAP project. For more information, please see the packag
 
 ## Packages in the CAP project
 
-
-
 {% for package in site.data.packages.package_links %}
   [{{package.name}}]({{site.baseurl}}/CAP_project/{{package.name}})
 {% endfor %}
@@ -20,14 +18,24 @@ This is the home of the CAP project. For more information, please see the packag
 This project requires GAP version {{site.data.packageCAP.GAP}}
 For more information see the packages
 
+
 ## Installation
+
+### Docker
+
+You can also use the [Docker](http://www.docker.com) image from the SPP Computeralgebra, [sppcomputeralgebra/sppdocker](https://hub.docker.com/r/sppcomputeralgebra/sppdocker).
+It contains a proper installed version of GAP and the CAP project.
+
+To use the image, please install Docker, then start a container via
+`docker run -it sppcomputeralgebra/sppdocker`.
+
 
 ### Source
 
 To install CAP, start by installing the latest version of GAP from [gap-system.org](http://www.gap-system.org). Please
 refer to the installation description there for details.
 
-Then download the tarballs of CAP and its required packages into GAPs pkg folder (usually inside the main GAP directory).
+Then download the tarballs of the CAP project packages and their required packages into GAPs pkg folder (usually inside the main GAP directory).
 
 Alternatively download the sources of
 
@@ -38,10 +46,6 @@ or clone the repositories via [git](http://git-scm.com).
 
 Now you should be able to load CAP via LoadPackage( "CAP" );.
 
-### Docker
-
-You can also use the [Docker](http://www.docker.com) image from the SPP Computeralgebra, sppcomputeralgebra/sppdocker. It contains a proper
-installed version of GAP and CAP.
 
 ## Author{% if site.data.frontpage.authors.size != 1 %}s{% endif %}
 {% for person in site.data.frontpage.authors %}
