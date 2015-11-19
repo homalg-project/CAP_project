@@ -759,6 +759,22 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
     
     theorem_record!.Source := sources_list;
     
+    for i in [ 1 .. Length( result_function_variables ) ] do
+        
+        if IsList( result_function_variables[ i ] ) and not IsString( result_function_variables[ i ] ) then
+            
+            result_function_variables[ i ] := Length( result_function_variables[ i ] );
+            
+        else
+            
+            result_function_variables[ i ] := 0;
+            
+        fi;
+        
+    od;
+    
+    theorem_record!.Variable_list := result_function_variables;
+    
     return theorem_record;
     
 end );
