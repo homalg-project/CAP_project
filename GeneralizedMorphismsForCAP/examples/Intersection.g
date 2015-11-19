@@ -87,9 +87,9 @@ end;
 quot3 := AsSerreQuotientByThreeArrowsObject( Serre_cat, quot3 );
 
 im3 := ImageObject( TensorProductOnMorphisms( m3, IdentityMorphism( N ) ) );
-im3_tilde := AsSerreQuotientByThreeArrowsObject( im3 );
+im3_tilde := AsSerreQuotientByThreeArrowsObject( Serre_cat, im3 );
 
 im4 := ImageObject( TensorProductOnMorphisms( m4, IdentityMorphism( N ) ) );
-im4_tilde := AsSerreQuotientByThreeArrowsObject( im4 );
+im4_tilde := AsSerreQuotientByThreeArrowsObject( Serre_cat, im4 );
 
 dimension_of_factor( quot3 );
