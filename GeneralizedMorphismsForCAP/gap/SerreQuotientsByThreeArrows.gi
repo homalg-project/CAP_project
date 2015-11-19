@@ -184,11 +184,13 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     AddDirectSum( category,
       
       function( obj_list )
-        local honest_list;
+        local honest_list, honest_sum;
         
         honest_list := List( obj_list, UnderlyingHonestObject );
         
-        return CallFuncList( DirectSum, honest_list );
+        honest_sum := CallFuncList( DirectSum, honest_list );
+        
+        return AsSerreQuotientByThreeArrowsObject( category, honest_sum );
         
     end );
     

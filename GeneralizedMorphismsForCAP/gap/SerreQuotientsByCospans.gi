@@ -117,32 +117,28 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     end );
     
     ## IsZeroForMorphisms
-    
-    AddIsZeroForMorphisms( category,
-      
-      function( morphism )
-        local associated, image;
-        
-        associated := AssociatedMorphism( UnderlyingGeneralizedMorphism( morphism ) );
-        
-        image := ImageObject( associated );
-        
-        return membership_function( image );
-        
-    end );
+    ## Can be derived, but there might be a faster solution
+#     AddIsZeroForMorphisms( category,
+#       
+#       function( morphism )
+#         local associated, image;
+#         
+#         associated := AssociatedMorphism( UnderlyingGeneralizedMorphism( morphism ) );
+#         
+#         image := ImageObject( associated );
+#         
+#         return membership_function( image );
+#         
+#     end );
     
     ## Additive inverse for morphisms (works without normalization)
     
     AddAdditiveInverseForMorphisms( category,
       
       function( morphism )
-        local underlying_general, new_morphism_aid, new_general;
+        local new_general;
         
-        underlying_general := UnderlyingGeneralizedMorphism( morphism );
-        
-        new_morphism_aid := AdditiveInverse( Arrow( underlying_general ) );
-        
-        new_general := GeneralizedMorphismByCospans( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
+        new_general := AdditiveInverseForMorphisms( UnderlyingGeneralizedMorphism( morphism ) );
         
         return SerreQuotientCategoryByCospansMorphism( category, new_general );
         
@@ -153,19 +149,11 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     AddZeroMorphism( category,
       
       function( source, range )
-        local source_aid, range_aid, morphism_aid;
+        local new_general;
         
-        source := UnderlyingHonestObject( source );
+        new_general := ZeroMorphism( UnderlyingGeneralizedObject( source ), UnderlyingGeneralizedObject( range ) );
         
-        range := UnderlyingHonestObject( range );
-        
-        source_aid := IdentityMorphism( source );
-        
-        range_aid := IdentityMorphism( range );
-        
-        morphism_aid := ZeroMorphism( source, range );
-        
-        return SerreQuotientCategoryByCospansMorphism( category, source_aid, morphism_aid, range_aid );
+        return SerreQuotientCategoryByCospansMorphism( category, new_general );
         
     end );
     
@@ -175,7 +163,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
       
       function( )
         
-        return AsSerreQuotientByCospansObject( category, ZeroObject( UnderlyingHonestCategory( category ) ) );
+        return AsSerreQuotientByCospansObject( category, ZeroObject( UnderlyingGeneralizedMorphismCategory( category ) ) );
         
     end );
     
@@ -184,11 +172,13 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     AddDirectSum( category,
       
       function( obj_list )
-        local honest_list;
+        local honest_list, honest_sum;
         
         honest_list := List( obj_list, UnderlyingHonestObject );
         
-        return CallFuncList( DirectSum, honest_list );
+        honest_sum := CallFuncList( DirectSum, honest_list );
+        
+        return AsSerreQuotientByCospansObject( category, honest_sum );
         
     end );
     
@@ -222,6 +212,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
     end );
     
+    ## Needs work
     AddUniversalMorphismIntoDirectSum( category,
       
       function( diagram, morphism_list )
@@ -245,6 +236,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
     end );
     
+    ## Needs work
     AddUniversalMorphismFromDirectSum( category,
       
       function( diagram, morphism_list )
@@ -275,9 +267,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        kernel_mor := KernelEmbedding( AssociatedMorphism( underlying_general ) );
-        
-        kernel_mor := PreCompose( kernel_mor, DomainOfGeneralizedMorphism( underlying_general ) );
+        kernel_mor := KernelEmbedding( Arrow( underlying_general ) );
         
         return AsSerreQuotientCategoryByCospansMorphism( category, kernel_mor );
         
@@ -306,8 +296,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
         cokernel_mor := CokernelProjection( AssociatedMorphism( underlying_general ) );
-        
-        cokernel_mor := PreCompose( Codomain( underlying_general ), cokernel_mor );
         
         return AsSerreQuotientCategoryByCospansMorphism( category, cokernel_mor );
         
