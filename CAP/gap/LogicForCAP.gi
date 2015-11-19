@@ -224,7 +224,7 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
   function( method_name, arguments, result_object, category )
     local current_argument, crisp_category, deductive_category, theorem_list,
           current_theorem, todo_list_source, range, is_valid_theorem, sanitized_source,
-          entry, current_source, sanitized_source_list;
+          entry, current_source, sanitized_source_list, current_argument_type, i;
     
     
     if not IsBound( TheoremRecord( category ).( method_name ) ) then
@@ -240,6 +240,31 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
     Info( CapLogicInfo, 1, Concatenation( "Trying to create ", String( Length( theorem_list ) ), " theorems" ) );
     
     for current_theorem in theorem_list do
+        
+        ## check wether argument list matches here
+        current_argument_type := current_theorem!.Variable_list;
+        
+        is_valid_theorem := true;
+        
+        for i in [ 1 .. Length( current_argument_type ) ] do
+            
+            if current_argument_type[ i ] = 0 then
+                continue;
+            fi;
+            
+            if not IsList( arguments[ i ] ) or not Length( arguments[ i ] ) = current_argument_type[ i ] then
+                
+                is_valid_theorem := false;
+                
+                break;
+                
+            fi;
+            
+        od;
+        
+        if not is_valid_theorem then
+            continue;
+        fi;
         
         todo_list_source := [ ];
         
