@@ -1263,6 +1263,12 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
     
     list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( ProjectionInFactorOfDirectSum( direct_sum_diagram, i ), diagram[ i ] ) );
     
+    if number_of_morphisms = 1 then
+        
+        return UniversalMorphismIntoZeroObject( Source( list_of_morphisms[1] ) );
+        
+    fi;
+    
     mor1 := CallFuncList( UniversalMorphismIntoDirectSum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
     
     mor2 := CallFuncList( UniversalMorphismIntoDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
@@ -1310,6 +1316,12 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     number_of_morphisms := Length( diagram );
     
     list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( diagram[ i ], InjectionOfCofactorOfDirectSum( direct_sum_diagram, i ) ) );
+    
+    if number_of_morphisms = 1 then
+        
+        return UniversalMorphismFromZeroObject( Range( list_of_morphisms[1] ) );
+        
+    fi;
     
     mor1 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
     
