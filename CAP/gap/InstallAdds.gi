@@ -31,6 +31,18 @@ BindGlobal( "CAP_INTERNAL_CREATE_OTHER_PAIR_FUNC",
     
 end );
 
+BindGlobal( "CAP_INTERNAL_ADD_MORPHISM_OR_FAIL",
+  
+  function( category, morphism_or_fail )
+    
+    if morphism_or_fail = fail then
+        return;
+    fi;
+    
+    AddMorphism( category, morphism_or_fail );
+    
+end );
+
 InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
@@ -92,6 +104,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
         add_function := AddMorphism;
     elif record.return_type = "twocell" then
         add_function := AddTwoCell;
+    elif record.return_type = "morphism_or_fail" then
+        add_function := CAP_INTERNAL_ADD_MORPHISM_OR_FAIL;
     else
         add_function := ReturnTrue;
     fi;

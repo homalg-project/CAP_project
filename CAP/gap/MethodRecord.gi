@@ -19,7 +19,7 @@ LiftAlongMonomorphism := rec(
     
     if lift = fail then
         
-        Error( "Mono as kernel lift doesn't exist" );
+        Error( "List along monomorphism doesn't exist" );
         
     fi;
     
@@ -36,7 +36,7 @@ ColiftAlongEpimorphism := rec(
     
     if colift = fail then
         
-        Error( "Epi as cokernel colift doesn't exist" );
+        Error( "Colift along epimorphism doesn't exist" );
         
     fi;
     
@@ -48,17 +48,7 @@ Lift := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
   cache_name := "Lift",
-  return_type := "morphism",
-  
-  post_function := function( alpha, beta, lift )
-    
-    if lift = fail then
-        
-        Error( "Lift doesn't exist" );
-        
-    fi;
-    
-  end,
+  return_type := "morphism_or_fail",
   dual_operation := "Colift" ),
 
 Colift := rec(
@@ -66,16 +56,7 @@ Colift := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
   cache_name := "Colift",
-  return_type := "morphism",
-  post_function := function( alpha, beta, colift )
-    
-    if colift = fail then
-        
-        Error( "Colift doesn't exist" );
-        
-    fi;
-    
-  end,
+  return_type := "morphism_or_fail",
   dual_operation := "Lift" ),
 
 IdentityMorphism := rec(
