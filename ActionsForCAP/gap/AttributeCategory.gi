@@ -118,7 +118,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
           direct_sum_attributes_operation, create_function_primitive_type, create_function_object,
           create_function_morphism_no_new_object, create_function_morphism_new_source,
           create_function_morphism_new_range, attributes, recnames, name, func, pos, function_to_add, add_function,
-          create_function_object_no_arguments, universal_object;
+          create_function_object_no_arguments, create_function_morphism_or_fail, universal_object;
     
     category_with_attributes := structure_record.category_with_attributes;
     
@@ -203,6 +203,41 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
             underlying_arg:= List( arg, UnderlyingCell );
             
             underlying_return := CallFuncList( operation, underlying_arg );
+            
+            source_range_pair := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
+            source := source_range_pair[1];
+            
+            range := source_range_pair[2];
+            
+            return CallFuncList( morphism_constructor, [ source, underlying_return, range ] );
+            
+          end;
+          
+      end;
+    
+    ## assumes that no new object is created
+    create_function_morphism_or_fail :=
+      function( operation_name )
+        local operation, type;
+        
+        operation := ValueGlobal( operation_name );
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).io_type;
+        
+        return
+          function( arg )
+            local underlying_arg, underlying_return, source_range_pair, source, range;
+            
+            underlying_arg:= List( arg, UnderlyingCell );
+            
+            underlying_return := CallFuncList( operation, underlying_arg );
+            
+            if underlying_return = fail then
+                
+                return fail;
+                
+            fi;
             
             source_range_pair := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
             
@@ -354,6 +389,12 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
                 
                 fi;
             fi;
+            
+        elif entry.return_type = "morphism_or_fail" then
+            
+            function_to_add := create_function_morphism_or_fail( name );
+            
+            add_function( category_with_attributes, function_to_add );
             
         fi;
         
