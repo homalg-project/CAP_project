@@ -24,6 +24,10 @@ InstallMethod( DeduceMapFromMatrixAndRangeLeft,
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( range_object ) ) then
       
         return Error( "The matrix must be defined over the same ring that the range_object was defined over. \n" );
+      
+      elif IsZero( matrix ) and NrRows( matrix ) <> 0 then
+      
+        return Error( "The source_object cannot be determined uniquely! \n" );
        
       fi;
       
@@ -33,7 +37,7 @@ InstallMethod( DeduceMapFromMatrixAndRangeLeft,
       # check if the mapping_matrix is zero
       if IsZero( matrix ) then
         
-          # if so, the kernel object is the zero module
+          # if so, then (since NrRows = NrColumns = 0 by initial check) the source is the zero module
           source_object := CAPCategoryOfProjectiveGradedLeftModulesObject( [ ], homalg_graded_ring );
         
         else
@@ -57,7 +61,7 @@ InstallMethod( DeduceMapFromMatrixAndRangeLeft,
           
           # compute the degrees of the rows of the kernel matrix
           degrees_of_matrix_rows := NonTrivialDegreePerRow( matrix );
-        
+
           # initialise the degree list of the kernel_object
           degrees_of_source_object := List( [ 1 .. Length( degrees_of_matrix_rows ) ] );
         
@@ -90,6 +94,10 @@ InstallMethod( DeduceMapFromMatrixAndSourceLeft,
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( source_object ) ) then
       
         return Error( "The matrix must be defined over the same ring that the range_object was defined over. \n" );
+
+      elif IsZero( matrix ) and NrColumns( matrix ) <> 0 then
+      
+        return Error( "The range_object cannot be determined uniquely! \n" );
        
       fi;
       
@@ -99,7 +107,7 @@ InstallMethod( DeduceMapFromMatrixAndSourceLeft,
       # check if the mapping_matrix is zero
       if IsZero( matrix ) then
         
-          # if so, the kernel object is the zero module
+          # if so, then (since NrRows = NrColumns = 0 by initial check) the range is the zero module
           range_object := CAPCategoryOfProjectiveGradedLeftModulesObject( [ ], homalg_graded_ring );
         
         else
@@ -156,6 +164,10 @@ InstallMethod( DeduceMapFromMatrixAndRangeRight,
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( range_object ) ) then
       
         return Error( "The matrix must be defined over the same ring that the range_object was defined over. \n" );
+
+      elif IsZero( matrix ) and NrColumns( matrix ) <> 0 then
+      
+        return Error( "The source_object cannot be determined uniquely! \n" );
        
       fi;
       
@@ -165,9 +177,9 @@ InstallMethod( DeduceMapFromMatrixAndRangeRight,
       # check if the cokernel matrix is zero
       if IsZero( matrix ) then
 
-        # construct the kernel_object
-        source_object := CAPCategoryOfProjectiveGradedRightModulesObject( [ ], homalg_graded_ring );
-        
+          # if so, then (since NrRows = NrColumns = 0 by initial check) the source is the zero module
+          source_object := CAPCategoryOfProjectiveGradedRightModulesObject( [ ], homalg_graded_ring );
+
       else
 
           # figure out the (first) non-zero entries per row of the kernel matrix
@@ -220,6 +232,10 @@ InstallMethod( DeduceMapFromMatrixAndSourceRight,
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( source_object ) ) then
       
         return Error( "The matrix must be defined over the same ring that the range_object was defined over. \n" );
+
+      elif IsZero( matrix ) and NrRows( matrix ) <> 0 then
+      
+        return Error( "The range_object cannot be determined uniquely! \n" );
        
       fi;
       
@@ -228,12 +244,12 @@ InstallMethod( DeduceMapFromMatrixAndSourceRight,
                   
       # check if the cokernel matrix is zero
       if IsZero( matrix ) then
-        
-        # if so, the cokernel object is the zero module
+
+        # if so, then (since NrRows = NrColumns = 0 by initial check) the range is the zero module
         range_object := CAPCategoryOfProjectiveGradedRightModulesObject( [ ], homalg_graded_ring );
-          
+
       else
-        
+
         # the matrix is not zero, thus let us compute the range object...
           
         # figure out the (first) non-zero entries per row of the cokernel matrix

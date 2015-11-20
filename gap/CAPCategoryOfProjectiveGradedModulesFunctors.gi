@@ -20,56 +20,9 @@
 # Truncation of projective graded modules
 InstallMethod( TruncationOfProjectiveGradedModule,
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ],
-  function( projective_left_module, cone_h_list )
-    local rank, i, degree_list, new_degree_list;
+  function( projective_module, cone_h_list )
 
-    # check if the degree_group of the underlying homalg_graded_ring is free
-    if not IsFree( DegreeGroup( UnderlyingHomalgGradedRing( projective_left_module ) ) ) then
-    
-      return Error( "Currently truncations are only supported for freely-graded rings. \n" );
-    
-    fi;
-    
-    # next check if the cone_h_list is valid
-    rank := Rank( DegreeGroup( UnderlyingHomalgGradedRing( projective_left_module ) ) );
-    for i in [ 1 .. Length( cone_h_list ) ] do
-    
-      if Length( cone_h_list[ i ] ) <> rank then
-      
-        return Error( "The cone is not contained in the degree_group of the graded ring. \n" );
-        
-      fi;
-    
-    od;
-    
-    # we now assume that the input is valid (although we haven't checked the content of cone_h_list)
-    degree_list := DegreeList( projective_left_module );
-    new_degree_list := [];
-    for i in [ 1 .. Length( degree_list ) ] do
-      
-      # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
-      if PointContainedInCone( cone_h_list, UnderlyingListOfRingElements( degree_list[ i ][ 1 ] ) ) then
-
-        Add( new_degree_list, degree_list[ i ] );
-      
-      fi;
-    
-    od;
-    
-    # finally construct a new projective module from this degree list
-    if IsCAPCategoryOfProjectiveGradedLeftModulesObject( projective_left_module ) then
-    
-      return CAPCategoryOfProjectiveGradedLeftModulesObject( new_degree_list,
-                                                             UnderlyingHomalgGradedRing( projective_left_module ) 
-                                                            );
-
-    else
-
-      return CAPCategoryOfProjectiveGradedRightModulesObject( new_degree_list,
-                                                              UnderlyingHomalgGradedRing( projective_left_module ) 
-                                                             );
-
-    fi;
+    return Source( EmbeddingOfTruncationOfProjectiveGradedModule( projective_module, cone_h_list ) );
     
 end );
 
@@ -87,7 +40,8 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
     
     fi;
     
-    # next check if the cone_h_list is valid
+    # next make a basic check to see if cone_h_list could be valid
+    # note that we do not check the entries to lie in the degree_group!
     rank := Rank( DegreeGroup( UnderlyingHomalgGradedRing( projective_module ) ) );
     for i in [ 1 .. Length( cone_h_list ) ] do
     
@@ -125,29 +79,38 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
     
     od;
 
-    # install the truncated module (and transpose the embedding_matrix for right_modules)
-    if IsCAPCategoryOfProjectiveGradedLeftModulesObject( projective_module ) then
+    # if the new_dgree_list is empty, the truncated module is the zero_module and the embedding is the zero_morphism
+    if Length( new_degree_list ) = 0 then
     
-      truncated_module := CAPCategoryOfProjectiveGradedLeftModulesObject( new_degree_list,
+      return ZeroMorphism( ZeroObject( CapCategory( projective_module ) ), projective_module );
+    
+    else
+        
+      # install the truncated module (and transpose the embedding_matrix for right_modules)
+      if IsCAPCategoryOfProjectiveGradedLeftModulesObject( projective_module ) then
+    
+        truncated_module := CAPCategoryOfProjectiveGradedLeftModulesObject( new_degree_list,
                                                                           UnderlyingHomalgGradedRing( projective_module ) 
                                                                          );
 
-    else
+      else
       
-      embedding_matrix := TransposedMat( embedding_matrix );
-      truncated_module := CAPCategoryOfProjectiveGradedRightModulesObject( new_degree_list,
+        embedding_matrix := TransposedMat( embedding_matrix );
+        truncated_module := CAPCategoryOfProjectiveGradedRightModulesObject( new_degree_list,
                                                                            UnderlyingHomalgGradedRing( projective_module ) 
                                                                           );
 
-    fi;
+      fi;
     
-    # finally return the embedding
-    graded_ring := UnderlyingHomalgGradedRing( projective_module );
-    return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( truncated_module, 
+      # and return the corresponding embedding    
+      graded_ring := UnderlyingHomalgGradedRing( projective_module );
+      return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( truncated_module, 
                                                                     HomalgMatrix( embedding_matrix, graded_ring ),
                                                                     projective_module 
                                                                    );
 
+    fi;
+    
 end );
 
 
@@ -165,7 +128,8 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
     
     fi;
     
-    # next check if the cone_h_list is valid
+    # next make a basic check to see if cone_h_list could be valid
+    # note that we do not check the entries to lie in the degree_group!
     rank := Rank( DegreeGroup( UnderlyingHomalgGradedRing( projective_module ) ) );
     for i in [ 1 .. Length( cone_h_list ) ] do
     
@@ -204,29 +168,38 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
     
     od;
 
-    # install the truncated module (and transpose the embedding_matrix for right_modules)
-    if IsCAPCategoryOfProjectiveGradedLeftModulesObject( projective_module ) then
+    # it may happen that the embedding_matrix is [] if the truncated module is the zero module
+    if Length( new_degree_list ) = 0 then
     
-      projection_matrix := TransposedMat( embedding_matrix );
-      truncated_module := CAPCategoryOfProjectiveGradedLeftModulesObject( new_degree_list,
-                                                                          UnderlyingHomalgGradedRing( projective_module ) 
-                                                                         );
-
-    else
+      return ZeroMorphism( projective_module, ZeroObject( CapCategory( projective_module ) ) );
       
-      projection_matrix := embedding_matrix;
-      truncated_module := CAPCategoryOfProjectiveGradedRightModulesObject( new_degree_list,
-                                                                           UnderlyingHomalgGradedRing( projective_module ) 
-                                                                          );
+    else
+    
+      # install the truncated module (and transpose the embedding_matrix for right_modules)
+      if IsCAPCategoryOfProjectiveGradedLeftModulesObject( projective_module ) then
+    
+        projection_matrix := TransposedMat( embedding_matrix );
+        truncated_module := CAPCategoryOfProjectiveGradedLeftModulesObject( new_degree_list,
+                                                                            UnderlyingHomalgGradedRing( projective_module ) 
+                                                                           );
+
+      else
+      
+        projection_matrix := embedding_matrix;
+        truncated_module := CAPCategoryOfProjectiveGradedRightModulesObject( new_degree_list,
+                                                                             UnderlyingHomalgGradedRing( projective_module ) 
+                                                                            );
+
+      fi;
+    
+      # finally return the embedding
+      graded_ring := UnderlyingHomalgGradedRing( projective_module );
+      return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( projective_module, 
+                                                                      HomalgMatrix( projection_matrix, graded_ring ),
+                                                                      truncated_module
+                                                                     );
 
     fi;
-    
-    # finally return the embedding
-    graded_ring := UnderlyingHomalgGradedRing( projective_module );
-    return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( projective_module, 
-                                                                    HomalgMatrix( projection_matrix, graded_ring ),
-                                                                    truncated_module
-                                                                   );
 
 end );
 
