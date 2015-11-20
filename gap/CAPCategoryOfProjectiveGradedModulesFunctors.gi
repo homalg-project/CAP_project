@@ -111,12 +111,12 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
     # now compute the embedding matrix and the degrees of the truncated module
     new_degree_list := [];
     embedding_matrix := [];
-    for i in [ 1 .. Length( degree_list ) ] do
+    for i in [ 1 .. Length( expanded_degree_list ) ] do
       
       # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
-      if PointContainedInCone( cone_h_list, UnderlyingListOfRingElements( degree_list[ i ][ 1 ] ) ) then
+      if PointContainedInCone( cone_h_list, UnderlyingListOfRingElements( expanded_degree_list[ i ] ) ) then
 
-        Add( new_degree_list, degree_list[ i ] );
+        Add( new_degree_list, [ expanded_degree_list[ i ], 1 ] );
         row := List( [ 1 .. Rank( projective_module ) ], x -> 0 );
         row[ i ] := 1;
         Add( embedding_matrix, row );
@@ -190,12 +190,12 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
     # also compute the degrees of the truncated module at the same time
     new_degree_list := [];
     embedding_matrix := [];
-    for i in [ 1 .. Length( degree_list ) ] do
+    for i in [ 1 .. Length( expanded_degree_list ) ] do
       
       # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
-      if PointContainedInCone( cone_h_list, UnderlyingListOfRingElements( degree_list[ i ][ 1 ] ) ) then
+      if PointContainedInCone( cone_h_list, UnderlyingListOfRingElements( expanded_degree_list[ i ] ) ) then
 
-        Add( new_degree_list, degree_list[ i ] );
+        Add( new_degree_list, [ expanded_degree_list[ i ], 1 ] );
         row := List( [ 1 .. Rank( projective_module ) ], x -> 0 );
         row[ i ] := 1;
         Add( embedding_matrix, row );
