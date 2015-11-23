@@ -9,4 +9,6 @@ ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategoryBySpa
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsByThreeArrows.gi");
 
+ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsByCospans.gi");
+
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/Switcher.gi");

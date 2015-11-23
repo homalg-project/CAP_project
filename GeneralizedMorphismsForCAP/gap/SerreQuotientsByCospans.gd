@@ -77,14 +77,11 @@ DeclareOperation( "SerreQuotientCategoryByCospans",
 DeclareOperation( "SerreQuotientCategoryByCospans",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "\/",
-                  [ IsCapCategory, IsFunction ] );
-
 DeclareOperation( "AsSerreQuotientCategoryByCospansObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
 DeclareOperation( "SerreQuotientCategoryByCospansMorphism",
-                  [ IsCapCategory, IsGeneralizedMorphismByCospans ] );
+                  [ IsCapCategory, IsGeneralizedMorphismByCospan ] );
 
 DeclareOperation( "SerreQuotientCategoryByCospansMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
