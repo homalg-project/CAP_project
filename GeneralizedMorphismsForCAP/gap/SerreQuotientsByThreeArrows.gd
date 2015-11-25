@@ -77,9 +77,6 @@ DeclareOperation( "SerreQuotientCategoryByThreeArrows",
 DeclareOperation( "SerreQuotientCategoryByThreeArrows",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "\/",
-                  [ IsCapCategory, IsFunction ] );
-
 DeclareOperation( "AsSerreQuotientCategoryByThreeArrowsObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
