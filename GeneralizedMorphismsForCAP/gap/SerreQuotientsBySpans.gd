@@ -9,10 +9,10 @@
 ##
 #############################################################################
 
-DeclareCategory( "IsSerreQuotientCategoryByCospansObject",
+DeclareCategory( "IsSerreQuotientCategoryBySpansObject",
                  IsCapCategoryObject );
 
-DeclareCategory( "IsSerreQuotientCategoryByCospansMorphism",
+DeclareCategory( "IsSerreQuotientCategoryBySpansMorphism",
                  IsCapCategoryMorphism );
 
 ##############################################
@@ -21,7 +21,7 @@ DeclareCategory( "IsSerreQuotientCategoryByCospansMorphism",
 ##
 ##############################################
 
-DeclareFilter( "WasCreatedAsSerreQuotientCategoryByCospans" );
+DeclareFilter( "WasCreatedAsSerreQuotientCategoryBySpans" );
 
 DeclareAttribute( "SubcategoryMembershipTestFunctionForSerreQuotient",
                   IsCapCategory );
@@ -38,17 +38,17 @@ DeclareAttribute( "UnderlyingGeneralizedMorphismCategory",
 ##
 ##############################################
 
-DeclareOperation( "AsSerreQuotientByCospansObject",
+DeclareOperation( "AsSerreQuotientBySpansObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
 DeclareAttribute( "UnderlyingGeneralizedObject",
-                  IsSerreQuotientCategoryByCospansObject );
+                  IsSerreQuotientCategoryBySpansObject );
 
 DeclareAttribute( "UnderlyingHonestObject",
-                  IsSerreQuotientCategoryByCospansObject );
+                  IsSerreQuotientCategoryBySpansObject );
 
 DeclareAttribute( "UnderlyingGeneralizedMorphism",
-                  IsSerreQuotientCategoryByCospansMorphism );
+                  IsSerreQuotientCategoryBySpansMorphism );
 
 ##############################################
 ##
@@ -56,33 +56,42 @@ DeclareAttribute( "UnderlyingGeneralizedMorphism",
 ##
 ##############################################
 
+DeclareAttribute( "SourceAid",
+                  IsSerreQuotientCategoryBySpansMorphism );
+
+DeclareAttribute( "RangeAid",
+                  IsSerreQuotientCategoryBySpansMorphism );
+
+DeclareAttribute( "Arrow",
+                  IsSerreQuotientCategoryBySpansMorphism );
+
 ##############################################
 ##
 ## Constructor
 ##
 ##############################################
 
-DeclareOperation( "SerreQuotientCategoryByCospans",
+DeclareOperation( "SerreQuotientCategoryBySpans",
                   [ IsCapCategory, IsFunction, IsString ] );
 
-DeclareOperation( "SerreQuotientCategoryByCospans",
+DeclareOperation( "SerreQuotientCategoryBySpans",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AsSerreQuotientCategoryByCospansObject",
+DeclareOperation( "AsSerreQuotientCategoryBySpansObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
-DeclareOperation( "SerreQuotientCategoryByCospansMorphism",
-                  [ IsCapCategory, IsGeneralizedMorphismByCospan ] );
+DeclareOperation( "SerreQuotientCategoryBySpansMorphism",
+                  [ IsCapCategory, IsGeneralizedMorphismBySpan ] );
 
-DeclareOperation( "SerreQuotientCategoryByCospansMorphism",
+DeclareOperation( "SerreQuotientCategoryBySpansMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "SerreQuotientCategoryByCospansMorphismWithSourceAid",
+DeclareOperation( "SerreQuotientCategoryBySpansMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "SerreQuotientCategoryByCospansMorphism",
+DeclareOperation( "SerreQuotientCategoryBySpansMorphismWithRangeAid",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "AsSerreQuotientCategoryByCospansMorphism",
+DeclareOperation( "AsSerreQuotientCategoryBySpansMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism ] );
 

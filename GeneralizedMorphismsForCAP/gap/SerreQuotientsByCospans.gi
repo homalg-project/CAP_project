@@ -162,8 +162,11 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
     AddZeroObject( category,
       
       function( )
+        local generalized_zero;
         
-        return AsSerreQuotientByCospansObject( category, ZeroObject( UnderlyingGeneralizedMorphismCategory( category ) ) );
+        generalized_zero := ZeroObject( UnderlyingHonestCategory( category ) );
+        
+        return AsSerreQuotientByThreeArrowsObject( category, UnderlyingHonestObject( generalized_zero ) );
         
     end );
     
@@ -247,7 +250,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
         
         object_list := List( diagram, UnderlyingHonestObject );
         
-        new_arrow := DirectSumFunctorial( object_list );
+        new_arrow := DirectSumFunctorial( arrow_list );
         
         new_reversed_arrow := UniversalMorphismFromDirectSum( object_list, reversedarrow_list );
         
@@ -288,13 +291,17 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
     AddCokernelProjection( category,
       
       function( morphism )
-        local underlying_general, cokernel_mor;
+        local underlying_general, cokernel_mor, inverse_of_reversed;
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        cokernel_mor := CokernelProjection( AssociatedMorphism( underlying_general ) );
+        cokernel_mor := CokernelProjection( Arrow( underlying_general ) );
         
-        return AsSerreQuotientCategoryByCospansMorphism( category, cokernel_mor );
+        inverse_of_reversed := GeneralizedInverseByCospan( ReversedArrow( underlying_general ) );
+        
+        cokernel_mor := GeneralizedMorphismByCospan( cokernel_mor );
+        
+        return AsSerreQuotientCategoryByCospansMorphism( category, PreCompose( inverse_of_reversed, cokernel_mor ) );
         
     end );
     
@@ -381,7 +388,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
     
     SetUnderlyingHonestCategory( serre_category, category );
     
-    SetUnderlyingGeneralizedMorphismCategory( serre_category, GeneralizedMorphismCategory( category ) );
+    SetUnderlyingGeneralizedMorphismCategory( serre_category, GeneralizedMorphismCategoryByCospans( category ) );
     
     SetSubcategoryMembershipTestFunctionForSerreQuotient( serre_category, test_function );
     
@@ -469,12 +476,12 @@ InstallMethod( SerreQuotientCategoryByCospansMorphismWithSourceAid,
     
 end );
 
-InstallMethod( SerreQuotientCategoryByCospansMorphismWithRangeAid,
+InstallMethod( SerreQuotientCategoryByCospansMorphism,
                [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
-  function( serre_category, associated, range_aid )
+  function( serre_category, reversed_arrow, arrow )
     
-    return SerreQuotientCategoryByCospansMorphism( serre_category, GeneralizedMorphismByCospan( associated, range_aid ) );
+    return SerreQuotientCategoryByCospansMorphism( serre_category, GeneralizedMorphismByCospan( reversed_arrow, arrow ) );
     
 end );
 

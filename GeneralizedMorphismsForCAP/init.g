@@ -11,4 +11,6 @@ ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsByThreeArrows.gd")
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsByCospans.gd");
 
+ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsBySpans.gd");
+
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/Switcher.gd");
