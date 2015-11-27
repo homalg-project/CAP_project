@@ -511,3 +511,35 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByThreeArrowsMorphism,
     return SerreQuotientCategoryByThreeArrowsMorphism( serre_category, AsGeneralizedMorphismByThreeArrows( associated ) );
     
 end );
+
+#############################################
+##
+## Functor
+##
+#############################################
+
+InstallMethod( CanonicalProjection,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows ],
+               
+  function( category )
+    local underlying_honest, functor;
+    
+    underlying_honest := UnderlyingHonestCategory( category );
+    
+    functor := CapFunctor( Concatenation( "Embedding in ", Name( category ) ), underlying_honest, category );
+    
+    AddObjectFunction( functor,
+        
+        i -> AsSerreQuotientByThreeArrowsObject( category, i ) );
+    
+    AddMorphismFunction( functor,
+      
+      function( new_source, morphism, new_range )
+        
+        return AsSerreQuotientCategoryByThreeArrowsMorphism( category, morphism );
+        
+    end );
+    
+    return functor;
+    
+end );

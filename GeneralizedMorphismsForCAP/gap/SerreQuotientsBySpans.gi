@@ -482,3 +482,35 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryBySpansMorphism,
     return SerreQuotientCategoryBySpansMorphism( serre_category, AsGeneralizedMorphismBySpan( arrow ) );
     
 end );
+
+#############################################
+##
+## Functor
+##
+#############################################
+
+InstallMethod( CanonicalProjection,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans ],
+               
+  function( category )
+    local underlying_honest, functor;
+    
+    underlying_honest := UnderlyingHonestCategory( category );
+    
+    functor := CapFunctor( Concatenation( "Embedding in ", Name( category ) ), underlying_honest, category );
+    
+    AddObjectFunction( functor,
+        
+        i -> AsSerreQuotientBySpansObject( category, i ) );
+    
+    AddMorphismFunction( functor,
+      
+      function( new_source, morphism, new_range )
+        
+        return AsSerreQuotientCategoryBySpansMorphism( category, morphism );
+        
+    end );
+    
+    return functor;
+    
+end );

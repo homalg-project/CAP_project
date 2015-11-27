@@ -62,3 +62,6 @@ DeclareAttribute( "UnderlyingHonestObject",
 
 DeclareAttribute( "UnderlyingGeneralizedMorphism",
                   IsSerreQuotientCategoryMorphism );
+
+DeclareAttribute( "CanonicalProjection",
+                  IsCapCategory );
