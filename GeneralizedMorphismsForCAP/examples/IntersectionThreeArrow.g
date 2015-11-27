@@ -43,7 +43,7 @@ zero_support_tester := function( module_presentation )
     
 end;;
 
-Serre_cat := LeftPresentations( R ) / zero_support_tester;
+Serre_cat := SerreQuotientCategoryByThreeArrows( LeftPresentations( R ), zero_support_tester );
 
 dimension_of_factor := function( object )
   local underlying_object, number_of_generators, list_of_generators, growing_morphism, generator, serre_generator, dimension;

@@ -44,11 +44,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
         local underlying_general, new_morphism_aid, new_general, sum_general,
               sum_associated, sum_image;
         
-        underlying_general := UnderlyingGeneralizedMorphism( morphism2 );
-        
-        new_morphism_aid := AdditiveInverse( Arrow( underlying_general ) );
-        
-        new_general := GeneralizedMorphismByCospan( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
+        new_general := AdditiveInverse( underlying_general );
         
         sum_general := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ), new_general );
         
@@ -166,7 +162,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
         
         generalized_zero := ZeroObject( UnderlyingHonestCategory( category ) );
         
-        return AsSerreQuotientByThreeArrowsObject( category, UnderlyingHonestObject( generalized_zero ) );
+        return AsSerreQuotientByCospansObject( category, generalized_zero );
         
     end );
     
@@ -224,11 +220,9 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
         
         arrow_list := List( generalized_list, Arrow );
         
+        new_arrow := UniversalMorphismIntoDirectSum( List( arrow_list, Range ), arrow_list );
+        
         reversedarrow_list := List( generalized_list, ReversedArrow );
-        
-        object_list := List( diagram, UnderlyingHonestObject );
-        
-        new_arrow := UniversalMorphismIntoDirectSum( object_list, arrow_list );
         
         new_reversed_arrow := DirectSumFunctorial( reversedarrow_list );
         
@@ -244,15 +238,13 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
         
         generalized_list := List( morphism_list, UnderlyingGeneralizedMorphism );
         
+        generalized_list := CommonCoastriction( generalized_list );
+        
         arrow_list := List( generalized_list, Arrow );
         
-        reversedarrow_list := List( generalized_list, ReversedArrow );
+        new_arrow := UniversalMorphismFromDirectSum( List( diagram, UnderlyingHonestObject ), arrow_list );
         
-        object_list := List( diagram, UnderlyingHonestObject );
-        
-        new_arrow := DirectSumFunctorial( arrow_list );
-        
-        new_reversed_arrow := UniversalMorphismFromDirectSum( object_list, reversedarrow_list );
+        new_reversed_arrow := ReversedArrow( generalized_list[ 1 ] );
         
         return SerreQuotientCategoryByCospansMorphism( category, new_arrow, new_reversed_arrow );
         
@@ -291,17 +283,15 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
     AddCokernelProjection( category,
       
       function( morphism )
-        local underlying_general, cokernel_mor, inverse_of_reversed;
+        local underlying_general, cokernel_mor, triple;
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        cokernel_mor := CokernelProjection( Arrow( underlying_general ) );
+        triple := DomainAssociatedMorphismCodomainTriple( underlying_general );
         
-        inverse_of_reversed := GeneralizedInverseByCospan( ReversedArrow( underlying_general ) );
+        cokernel_mor := CokernelProjection( triple[ 2 ] );
         
-        cokernel_mor := GeneralizedMorphismByCospan( cokernel_mor );
-        
-        return AsSerreQuotientCategoryByCospansMorphism( category, PreCompose( inverse_of_reversed, cokernel_mor ) );
+        return AsSerreQuotientCategoryByCospansMorphism( category, PreCompose( triple[ 3 ], cokernel_mor ) );
         
     end );
     

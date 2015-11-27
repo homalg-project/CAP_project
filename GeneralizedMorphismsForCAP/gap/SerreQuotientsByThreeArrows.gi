@@ -178,7 +178,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         generalized_zero := ZeroObject( UnderlyingHonestCategory( category ) );
         
-        return AsSerreQuotientByThreeArrowsObject( category, UnderlyingHonestObject( generalized_zero ) );
+        return AsSerreQuotientByThreeArrowsObject( category, generalized_zero );
         
     end );
     

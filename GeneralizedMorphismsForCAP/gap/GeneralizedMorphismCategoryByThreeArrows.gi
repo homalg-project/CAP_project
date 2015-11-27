@@ -607,21 +607,6 @@ InstallMethod( DomainAssociatedMorphismCodomainTriple,
     
 end );
 
-InstallMethod( CommonRestriction,
-               [ IsList ],
-               
-  function( morphism_list )
-    
-    if morphism_list = [ ] then
-        
-        return morphism_list;
-        
-    fi;
-    
-    return CommonRestrictionOp( morphism_list, morphism_list[ 1 ] );
-    
-end );
-
 InstallMethodWithCacheFromObject( CommonRestrictionOp,
                                   [ IsList, IsGeneralizedMorphismByThreeArrows ],
                                   

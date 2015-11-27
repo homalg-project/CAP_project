@@ -4,7 +4,7 @@ PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
 
 Version := Maximum( [
-  "2015.11.25", ## Sebas' version
+  "2015.11.27", ## Sebas' version
 ## this line prevents merge conflicts
   "2015.11.19", ## Sepp's version
 ## this line prevents merge conflicts

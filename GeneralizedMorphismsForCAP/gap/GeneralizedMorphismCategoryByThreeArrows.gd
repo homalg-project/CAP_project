@@ -178,19 +178,6 @@ DeclareOperation( "GeneralizedMorphismFromFactorToSubobjectByThreeArrows",
 
 #! @Description
 #! The argument is a list $L$ of generalized morphisms by three arrows
-#! having the same source.
-#! The output is a list of generalized morphisms by three arrows
-#! which is the comman restriction of $L$.
-#! @Returns a list of generalized morphisms
-#! @Arguments L
-DeclareOperation( "CommonRestriction",
-                  [ IsList ] );
-
-DeclareOperation( "CommonRestrictionOp",
-                  [ IsList, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The argument is a list $L$ of generalized morphisms by three arrows
 #! having the same range.
 #! The output is a list of generalized morphisms by three arrows
 #! which is the comman coastriction of $L$.

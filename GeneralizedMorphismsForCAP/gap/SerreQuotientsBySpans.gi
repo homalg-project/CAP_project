@@ -164,7 +164,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
         generalized_zero := ZeroObject( UnderlyingHonestCategory( category ) );
         
-        return AsSerreQuotientByThreeArrowsObject( category, UnderlyingHonestObject( generalized_zero ) );
+        return AsSerreQuotientBySpansObject( category, generalized_zero );
         
     end );
     
@@ -220,17 +220,15 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
         generalized_list := List( morphism_list, UnderlyingGeneralizedMorphism );
         
+        generalized_list := CommonRestriction( generalized_list );
+        
+        new_reversed_arrow := ReversedArrow( generalized_list[ 1 ] );
+        
         arrow_list := List( generalized_list, Arrow );
         
-        reversedarrow_list := List( generalized_list, ReversedArrow );
+        new_arrow := UniversalMorphismIntoDirectSum( List( diagram, UnderlyingHonestObject ), arrow_list );
         
-        object_list := List( diagram, UnderlyingHonestObject );
-        
-        new_reversed_arrow := UniversalMorphismIntoDirectSum( object_list, reversedarrow_list );
-        
-        new_arrow := DirectSumFunctorial( arrow_list );
-        
-        return SerreQuotientCategoryBySpansMorphism( category, new_arrow, new_reversed_arrow );
+        return SerreQuotientCategoryBySpansMorphism( category, new_reversed_arrow, new_reversed_arrow );
         
     end );
     
@@ -245,13 +243,11 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
         reversedarrow_list := List( generalized_list, ReversedArrow );
         
-        object_list := List( diagram, UnderlyingHonestObject );
+        new_arrow := UniversalMorphismFromDirectSum( List( arrow_list, Source ), arrow_list );
         
         new_reversed_arrow := DirectSumFunctorial( reversedarrow_list );
         
-        new_arrow := UniversalMorphismFromDirectSum( object_list, arrow_list );
-        
-        return SerreQuotientCategoryBySpansMorphism( category, new_arrow, new_reversed_arrow );
+        return SerreQuotientCategoryBySpansMorphism( category, new_reversed_arrow, new_arrow );
         
     end );
     
@@ -463,9 +459,9 @@ end );
 InstallMethod( SerreQuotientCategoryBySpansMorphism,
                [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
-  function( serre_category, arrow, reversed_arrow )
+  function( serre_category, reversed_arrow, arrow )
     
-    return SerreQuotientCategoryBySpansMorphism( serre_category, GeneralizedMorphismBySpan( arrow, reversed_arrow ) );
+    return SerreQuotientCategoryBySpansMorphism( serre_category, GeneralizedMorphismBySpan( reversed_arrow, arrow ) );
     
 end );
 

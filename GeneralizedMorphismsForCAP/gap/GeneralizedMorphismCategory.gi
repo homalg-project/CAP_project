@@ -61,6 +61,21 @@ InstallMethod( Codomain,
     
 end );
 
+InstallMethod( CommonRestriction,
+               [ IsList ],
+               
+  function( morphism_list )
+    
+    if morphism_list = [ ] then
+        
+        return morphism_list;
+        
+    fi;
+    
+    return CommonRestrictionOp( morphism_list, morphism_list[ 1 ] );
+    
+end );
+
 ##
 InstallMethod( IsHonest,
                [ IsGeneralizedMorphism ],

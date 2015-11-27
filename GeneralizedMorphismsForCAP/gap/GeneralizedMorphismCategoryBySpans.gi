@@ -518,6 +518,50 @@ InstallMethod( GeneralizedInverseBySpan,
     
 end );
 
+##
+InstallMethodWithCacheFromObject( CommonRestrictionOp,
+                                  [ IsList, IsGeneralizedMorphismBySpan ],
+               
+  function( morphism_list, method_selection_object )
+    local arrow_list, reversedarrow_list, i, j, current_pullback_left, current_pullback_right, test_source;
+    
+    if not ForAll( morphism_list, IsGeneralizedMorphismBySpan ) then
+        TryNextMethod();
+    fi;
+    
+    if Length( morphism_list ) = 1 then
+        return morphism_list;
+    fi;
+    
+    test_source := Source( morphism_list[ 1 ] );
+    
+    if not ForAll( [ 2 .. Length( morphism_list ) ], i -> IsEqualForObjects( test_source, Source( morphism_list[ i ] ) ) ) then
+        Error( "not all sources are equal" );
+    fi;
+    
+    arrow_list := List( morphism_list, Arrow );
+    reversedarrow_list := List( morphism_list, ReversedArrow );
+    
+    for i in [ 2  .. Length( morphism_list ) ] do
+        current_pullback_left := ProjectionInFactorOfFiberProduct( [ reversedarrow_list[ i - 1 ], reversedarrow_list[ i ] ], 1 );
+        current_pullback_right := ProjectionInFactorOfFiberProduct( [ reversedarrow_list[ i - 1 ], reversedarrow_list[ i ] ], 2 );
+        
+        for j in [ 1 .. i - 1 ] do
+            
+            arrow_list[ j ] := PreCompose( arrow_list[ j ], current_pullback_left );
+            reversedarrow_list[ j ] := PreCompose( reversedarrow_list[ j ], current_pullback_left );
+            
+        od;
+        
+        arrow_list[ i ] := PreCompose( arrow_list[ i ], current_pullback_right );
+        reversedarrow_list[ i ] := PreCompose( reversedarrow_list[ i ], current_pullback_right );
+        
+    od;
+    
+    return List( [ 1 .. Length( morphism_list ) ], i -> GeneralizedMorphismByCospan( arrow_list[ i ], reversedarrow_list[ i ] ) );
+    
+end : ArgumentNumber := 2 );
+
 ######################################
 ##
 ## Compatibility
