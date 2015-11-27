@@ -645,7 +645,7 @@ InstallMethod( InstallFunctor,
                
   function( functor, install_name )
     local object_name, morphism_name, object_filters, object_product_filters, morphism_filters,
-          morphism_product_filters, current_filters;
+          morphism_product_filters, current_filters, install_list;
     
     if IsBound( functor!.is_already_installed ) then
         
@@ -697,16 +697,26 @@ InstallMethod( InstallFunctor,
     object_product_filters := [ ObjectFilter( AsCapCategory( Source( functor ) ) ) ];
     morphism_product_filters := [ MorphismFilter( AsCapCategory( Source( functor ) ) ) ];
     
-    for current_filters in [
+    install_list := [
         [ install_name, object_filters ],
         [ install_name, morphism_filters ],
-        [ install_name, object_product_filters ],
-        [ install_name, morphism_product_filters ],
         [ object_name, object_filters ],
-        [ object_name, object_product_filters ],
-        [ morphism_name, morphism_filters ],
-        [ morphism_name, morphism_product_filters ]
-        ] do
+        [ morphism_name, morphism_filters ]
+        ];
+    
+    if object_filters <> object_product_filters then
+        
+        Append( install_list, [ [ install_name, object_product_filters ], [ object_name, object_product_filters ] ] );
+        
+    fi;
+    
+    if morphism_filters <> morphism_product_filters then
+        
+        Append( install_list, [ [ install_name, morphism_product_filters ], [ morphism_name, morphism_product_filters ] ] );
+        
+    fi;
+    
+    for current_filters in install_list do
         
         CallFuncList( DeclareOperation, current_filters );
         
