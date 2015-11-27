@@ -9,6 +9,12 @@
 ##
 #############################################################################
 
+DeclareCategory( "IsSerreQuotientCategoryObject",
+                 IsCapCategoryObject );
+
+DeclareCategory( "IsSerreQuotientCategoryMorphism",
+                 IsCapCategoryMorphism );
+
 DeclareOperation( "SerreQuotientCategory",
                   [ IsCapCategory, IsFunction, IsString ] );
 
@@ -38,3 +44,21 @@ DeclareOperation( "SerreQuotientCategoryMorphismWithRangeAid",
 
 DeclareOperation( "AsSerreQuotientCategoryMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism ] );
+
+DeclareAttribute( "SubcategoryMembershipTestFunctionForSerreQuotient",
+                  IsCapCategory );
+
+DeclareAttribute( "UnderlyingHonestCategory",
+                  IsCapCategory );
+
+DeclareAttribute( "UnderlyingGeneralizedMorphismCategory",
+                  IsCapCategory );
+
+DeclareAttribute( "UnderlyingGeneralizedObject",
+                  IsSerreQuotientCategoryObject );
+
+DeclareAttribute( "UnderlyingHonestObject",
+                  IsSerreQuotientCategoryObject );
+
+DeclareAttribute( "UnderlyingGeneralizedMorphism",
+                  IsSerreQuotientCategoryMorphism );

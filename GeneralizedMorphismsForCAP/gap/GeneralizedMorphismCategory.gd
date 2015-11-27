@@ -222,17 +222,6 @@ DeclareProperty( "IsTotal",
 #! @Arguments C
 DeclareOperation( "GeneralizedMorphismCategory",
                   [ IsCapCategory ] );
-#! @Group
-#! @Description
-#!  Creates a generalized morphism by three arrows, a generalized morphism by span, or
-#!  a generalized morphism by cospan, depending on the current standard.
-DeclareOperation( "GeneralizedMorphism",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-DeclareOperation( "GeneralizedMorphism",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @EndGroup
 
 #! @Description
 #!  Creates an object in the current generalized morphism category, depending on the standard

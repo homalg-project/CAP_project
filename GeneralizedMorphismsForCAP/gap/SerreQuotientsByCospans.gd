@@ -10,10 +10,10 @@
 #############################################################################
 
 DeclareCategory( "IsSerreQuotientCategoryByCospansObject",
-                 IsCapCategoryObject );
+                 IsSerreQuotientCategoryObject );
 
 DeclareCategory( "IsSerreQuotientCategoryByCospansMorphism",
-                 IsCapCategoryMorphism );
+                 IsSerreQuotientCategoryMorphism );
 
 ##############################################
 ##
@@ -23,15 +23,6 @@ DeclareCategory( "IsSerreQuotientCategoryByCospansMorphism",
 
 DeclareFilter( "WasCreatedAsSerreQuotientCategoryByCospans" );
 
-DeclareAttribute( "SubcategoryMembershipTestFunctionForSerreQuotient",
-                  IsCapCategory );
-
-DeclareAttribute( "UnderlyingHonestCategory",
-                  IsCapCategory );
-
-DeclareAttribute( "UnderlyingGeneralizedMorphismCategory",
-                  IsCapCategory );
-
 ##############################################
 ##
 ## Attributes
@@ -40,21 +31,6 @@ DeclareAttribute( "UnderlyingGeneralizedMorphismCategory",
 
 DeclareOperation( "AsSerreQuotientByCospansObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
-
-DeclareAttribute( "UnderlyingGeneralizedObject",
-                  IsSerreQuotientCategoryByCospansObject );
-
-DeclareAttribute( "UnderlyingHonestObject",
-                  IsSerreQuotientCategoryByCospansObject );
-
-DeclareAttribute( "UnderlyingGeneralizedMorphism",
-                  IsSerreQuotientCategoryByCospansMorphism );
-
-##############################################
-##
-## Attributes of Serre quotient morphism
-##
-##############################################
 
 ##############################################
 ##

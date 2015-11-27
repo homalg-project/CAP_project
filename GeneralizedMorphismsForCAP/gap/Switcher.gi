@@ -105,50 +105,6 @@ InstallMethod( GeneralizedMorphismCategory,
     
 end );
 
-InstallMethod( GeneralizedMorphism,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( arrow1, arrow2 )
-    local generalized_type;
-    
-    generalized_type := CAP_INTERNAL_FIND_CORRECT_GENERALIZED_CATEGORY_TYPE( CapCategory( arrow1 ) );
-    
-    if generalized_type = "span" then
-        
-        return GeneralizedMorphismBySpan( arrow1, arrow2 );
-        
-    elif generalized_type = "cospan" then
-        
-        return GeneralizedMorphismByCospan( arrow1, arrow2 );
-        
-    else
-        
-        Error( "generalized morphism type does not fit into constructor call" );
-        
-    fi;
-    
-end );
-
-InstallMethod( GeneralizedMorphism,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( arrow1, arrow2, arrow3 )
-    local generalized_type;
-    
-    generalized_type := CAP_INTERNAL_FIND_CORRECT_GENERALIZED_CATEGORY_TYPE( CapCategory( arrow1 ) );
-    
-    if generalized_type = "threearrow" then
-        
-        return GeneralizedMorphismByThreeArrows( arrow1, arrow2, arrow3 );
-        
-    else
-        
-        Error( "generalized morphism type does not fit into constructor call" );
-        
-    fi;
-    
-end );
-
 InstallMethod( SerreQuotientCategory,
                [ IsCapCategory, IsFunction ],
                
@@ -172,50 +128,6 @@ InstallMethod( SerreQuotientCategory,
     else
         
         Error( "generalized morphism type unrecognized" );
-        
-    fi;
-    
-end );
-
-InstallMethod( SerreQuotientCategoryMorphism,
-               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( category, arrow1, arrow2 )
-    local generalized_type;
-    
-    generalized_type := CAP_INTERNAL_FIND_CORRECT_GENERALIZED_CATEGORY_TYPE( category );
-    
-    if generalized_type = "span" then
-        
-        return SerreQuotientCategoryBySpansMorphism( category, arrow1, arrow2 );
-        
-    elif generalized_type = "cospan" then
-        
-        return SerreQuotientCategoryByCospansMorphism( category, arrow1, arrow2 );
-        
-    else
-        
-        Error( "generalized morphism type does not fit into constructor call" );
-        
-    fi;
-    
-end );
-
-InstallMethod( SerreQuotientCategoryMorphism,
-               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( category, arrow1, arrow2, arrow3 )
-    local generalized_type;
-    
-    generalized_type := CAP_INTERNAL_FIND_CORRECT_GENERALIZED_CATEGORY_TYPE( CapCategory( arrow1 ) );
-    
-    if generalized_type = "threearrow" then
-        
-        return SerreQuotientCategoryByThreeArrowsMorphism( category, arrow1, arrow2, arrow3 );
-        
-    else
-        
-        Error( "generalized morphism type does not fit into constructor call" );
         
     fi;
     

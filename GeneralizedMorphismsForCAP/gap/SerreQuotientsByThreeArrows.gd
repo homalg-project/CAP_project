@@ -10,10 +10,10 @@
 #############################################################################
 
 DeclareCategory( "IsSerreQuotientCategoryByThreeArrowsObject",
-                 IsCapCategoryObject );
+                 IsSerreQuotientCategoryObject );
 
 DeclareCategory( "IsSerreQuotientCategoryByThreeArrowsMorphism",
-                 IsCapCategoryMorphism );
+                 IsSerreQuotientCategoryMorphism );
 
 ##############################################
 ##
@@ -23,15 +23,6 @@ DeclareCategory( "IsSerreQuotientCategoryByThreeArrowsMorphism",
 
 DeclareFilter( "WasCreatedAsSerreQuotientCategoryByThreeArrows" );
 
-DeclareAttribute( "SubcategoryMembershipTestFunctionForSerreQuotient",
-                  IsCapCategory );
-
-DeclareAttribute( "UnderlyingHonestCategory",
-                  IsCapCategory );
-
-DeclareAttribute( "UnderlyingGeneralizedMorphismCategory",
-                  IsCapCategory );
-
 ##############################################
 ##
 ## Attributes
@@ -40,30 +31,6 @@ DeclareAttribute( "UnderlyingGeneralizedMorphismCategory",
 
 DeclareOperation( "AsSerreQuotientByThreeArrowsObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
-
-DeclareAttribute( "UnderlyingGeneralizedObject",
-                  IsSerreQuotientCategoryByThreeArrowsObject );
-
-DeclareAttribute( "UnderlyingHonestObject",
-                  IsSerreQuotientCategoryByThreeArrowsObject );
-
-DeclareAttribute( "UnderlyingGeneralizedMorphism",
-                  IsSerreQuotientCategoryByThreeArrowsMorphism );
-
-##############################################
-##
-## Attributes of Serre quotient morphism
-##
-##############################################
-
-DeclareAttribute( "SourceAid",
-                  IsSerreQuotientCategoryByThreeArrowsMorphism );
-
-DeclareAttribute( "RangeAid",
-                  IsSerreQuotientCategoryByThreeArrowsMorphism );
-
-DeclareAttribute( "Arrow",
-                  IsSerreQuotientCategoryByThreeArrowsMorphism );
 
 ##############################################
 ##
