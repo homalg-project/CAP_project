@@ -28,7 +28,18 @@
   [4X[32X[104X
   
   
-  [1X5.2 [33X[0;0YSweep[133X[101X
+  [1X5.2 [33X[0;0YIntersection of Nodal Curve and Cusp[133X[101X
+  
+  [33X[0;0YWe  are going to intersect the nodal curve [23Xf = y^2 - x^2(x+1)[123X and the cusp [23Xg
+  =  (x+y)^2  -  (y-x)^3[123X.  The two curves are arranged in a way such that they
+  intersect  at  [23X(0,0)[123X  with  intersection  number as high as possible. We are
+  going  to  compute  this  intersection  number  using  the definition of the
+  intersection  number as the length of the module [23XR/(f,g)[123X localized at [23X(0,0)[123X.
+  In order to model modules over the localization of [23XQ[x,y][123X at [23X(0,0)[123X, we use a
+  suitable Serre quotient category. 1 2 1 1 true[133X
+  
+  
+  [1X5.3 [33X[0;0YSweep[133X[101X
   
   [33X[0;0Y[23X\href{https://terrytao.wordpress.com/2015/10/07/sweeping-a-matrix-rotates-its-graph/}{\textrm{Geometric
   interpretation of sweeping a matrix by Terence Tao.}}[123X[133X

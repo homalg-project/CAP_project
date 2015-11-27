@@ -1,6 +1,6 @@
 name: GeneralizedMorphismsForCAP
-version: 2015.11.05
-date: 05/11/2015
+version: 2015.11.27
+date: 27/11/2015
 description: Implementations of generalized morphisms for the CAP project
 
 authors:
@@ -31,9 +31,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/GeneralizedMorphismsFor
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2015.11.05/GeneralizedMorphismsForCAP-2015.11.05.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2015.11.27/GeneralizedMorphismsForCAP-2015.11.27.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2015.11.05/GeneralizedMorphismsForCAP-2015.11.05.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2015.11.27/GeneralizedMorphismsForCAP-2015.11.27.zip
 
 abstract: 
 
