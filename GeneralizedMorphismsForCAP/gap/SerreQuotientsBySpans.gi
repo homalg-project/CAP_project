@@ -421,6 +421,11 @@ InstallMethodWithCacheFromObject( AsSerreQuotientBySpansObject,
     
 end );
 
+InstallMethod( AsSerreQuotientObject,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryObject ],
+               
+  AsSerreQuotientBySpansObject );
+
 InstallMethodWithCacheFromObject( SerreQuotientCategoryBySpansMorphism,
                                   [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsGeneralizedMorphismBySpan ],
                                   
@@ -446,6 +451,11 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryBySpansMorphism,
     return serre_morphism;
     
 end );
+
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsGeneralizedMorphismBySpan ],
+               
+  SerreQuotientCategoryBySpansMorphism );
 
 InstallMethod( SerreQuotientCategoryBySpansMorphism,
                [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
@@ -482,6 +492,11 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryBySpansMorphism,
     return SerreQuotientCategoryBySpansMorphism( serre_category, AsGeneralizedMorphismBySpan( arrow ) );
     
 end );
+
+InstallMethod( AsSerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryMorphism ],
+               
+  AsSerreQuotientCategoryBySpansMorphism );
 
 #############################################
 ##
