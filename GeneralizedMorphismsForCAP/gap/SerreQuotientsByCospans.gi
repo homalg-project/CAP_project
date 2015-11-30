@@ -162,7 +162,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
         
         generalized_zero := ZeroObject( UnderlyingHonestCategory( category ) );
         
-        return AsSerreQuotientByCospansObject( category, generalized_zero );
+        return AsSerreQuotientCategoryByCospansObject( category, generalized_zero );
         
     end );
     
@@ -177,7 +177,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
         
         honest_sum := CallFuncList( DirectSum, honest_list );
         
-        return AsSerreQuotientByCospansObject( category, honest_sum );
+        return AsSerreQuotientCategoryByCospansObject( category, honest_sum );
         
     end );
     
@@ -392,7 +392,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
     
 end );
 
-InstallMethodWithCacheFromObject( AsSerreQuotientByCospansObject,
+InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByCospansObject,
                                   [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryObject ],
                                   
   function( serre_category, object )
@@ -422,10 +422,10 @@ InstallMethodWithCacheFromObject( AsSerreQuotientByCospansObject,
     
 end );
 
-InstallMethod( AsSerreQuotientObject,
+InstallMethod( AsSerreQuotientCategoryObject,
                [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryObject ],
                
-  AsSerreQuotientByCospansObject );
+  AsSerreQuotientCategoryByCospansObject );
 
 InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospansMorphism,
                                   [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsGeneralizedMorphismByCospan ],
@@ -442,8 +442,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospansMorphism,
     serre_morphism := rec( );
     
     ObjectifyWithAttributes( serre_morphism, TheTypeOfSerreQuotientCategoryByCospansMorphism,
-                             Source, AsSerreQuotientByCospansObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
-                             Range, AsSerreQuotientByCospansObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ) );
+                             Source, AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
+                             Range, AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ) );
     
     SetUnderlyingGeneralizedMorphism( serre_morphism, gen_morphism );
     
@@ -517,7 +517,7 @@ InstallMethod( CanonicalProjection,
     
     AddObjectFunction( functor,
         
-        i -> AsSerreQuotientByCospansObject( category, i ) );
+        i -> AsSerreQuotientCategoryByCospansObject( category, i ) );
     
     AddMorphismFunction( functor,
       

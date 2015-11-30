@@ -178,7 +178,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         generalized_zero := ZeroObject( UnderlyingHonestCategory( category ) );
         
-        return AsSerreQuotientByThreeArrowsObject( category, generalized_zero );
+        return AsSerreQuotientCategoryByThreeArrowsObject( category, generalized_zero );
         
     end );
     
@@ -193,7 +193,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         honest_sum := CallFuncList( DirectSum, honest_list );
         
-        return AsSerreQuotientByThreeArrowsObject( category, UnderlyingHonestObject( honest_sum ) );
+        return AsSerreQuotientCategoryByThreeArrowsObject( category, UnderlyingHonestObject( honest_sum ) );
         
     end );
     
@@ -415,7 +415,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
     
 end );
 
-InstallMethodWithCacheFromObject( AsSerreQuotientByThreeArrowsObject,
+InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByThreeArrowsObject,
                                   [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsCapCategoryObject ],
                                   
   function( serre_category, object )
@@ -465,8 +465,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrowsMorphism,
     serre_morphism := rec( );
     
     ObjectifyWithAttributes( serre_morphism, TheTypeOfSerreQuotientCategoryByThreeArrowsMorphism,
-                             Source, AsSerreQuotientByThreeArrowsObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
-                             Range, AsSerreQuotientByThreeArrowsObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ) );
+                             Source, AsSerreQuotientCategoryByThreeArrowsObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
+                             Range, AsSerreQuotientCategoryByThreeArrowsObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ) );
     
     SetUnderlyingGeneralizedMorphism( serre_morphism, gen_morphism );
     
@@ -540,7 +540,7 @@ InstallMethod( CanonicalProjection,
     
     AddObjectFunction( functor,
         
-        i -> AsSerreQuotientByThreeArrowsObject( category, i ) );
+        i -> AsSerreQuotientCategoryByThreeArrowsObject( category, i ) );
     
     AddMorphismFunction( functor,
       

@@ -29,9 +29,6 @@ DeclareFilter( "WasCreatedAsSerreQuotientCategoryByCospans" );
 ##
 ##############################################
 
-DeclareOperation( "AsSerreQuotientByCospansObject",
-                  [ IsCapCategory, IsCapCategoryObject ] );
-
 ##############################################
 ##
 ## Constructor

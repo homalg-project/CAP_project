@@ -29,9 +29,6 @@ DeclareFilter( "WasCreatedAsSerreQuotientCategoryByThreeArrows" );
 ##
 ##############################################
 
-DeclareOperation( "AsSerreQuotientByThreeArrowsObject",
-                  [ IsCapCategory, IsCapCategoryObject ] );
-
 ##############################################
 ##
 ## Constructor

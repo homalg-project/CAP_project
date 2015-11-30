@@ -29,9 +29,6 @@ DeclareFilter( "WasCreatedAsSerreQuotientCategoryBySpans" );
 ##
 ##############################################
 
-DeclareOperation( "AsSerreQuotientBySpansObject",
-                  [ IsCapCategory, IsCapCategoryObject ] );
-
 ##############################################
 ##
 ## Constructor
