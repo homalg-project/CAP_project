@@ -206,6 +206,40 @@ InstallMethod( StandardGeneratorMorphism,
     
 end );
 
+##
+InstallMethod( PresentationAsMorphism,
+               [ IsLeftPresentation ],
+               
+  function( left_presentation )
+    local underlying_ring, number_of_generators, free_presentation;
+    
+    underlying_ring := UnderlyingHomalgRing( left_presentation );
+    
+    number_of_generators := NrColumns( UnderlyingMatrix( left_presentation ) );
+    
+    free_presentation := FreeLeftPresentation( number_of_generators, underlying_ring );
+    
+    return PresentationMorphism( free_presentation, HomalgIdentityMatrix( number_of_generators, underlying_ring ), left_presentation );
+    
+end );
+
+##
+InstallMethod( PresentationAsMorphism,
+               [ IsRightPresentation ],
+               
+  function( right_presentation )
+    local underlying_ring, number_of_generators, free_presentation;
+    
+    underlying_ring := UnderlyingHomalgRing( right_presentation );
+    
+    number_of_generators := NrRows( UnderlyingMatrix( right_presentation ) );
+    
+    free_presentation := FreeRightPresentation( number_of_generators, underlying_ring );
+    
+    return PresentationMorphism( free_presentation, HomalgIdentityMatrix( number_of_generators, underlying_ring ), right_presentation );
+    
+end );
+
 ####################################
 ##
 ## View

@@ -50,7 +50,8 @@ Sh_functor := CanonicalProjection( Serre_cat );
 InstallFunctor( Sh_functor, "Sh" );
 
 dimension_of_factor := function( object )
-  local underlying_object, number_of_generators, list_of_generators, growing_morphism, generator, serre_generator, dimension;
+  local underlying_object, number_of_generators, list_of_generators, growing_morphism, generator, serre_generator, dimension,
+        image_embedding, last_image_embedding;
     
     underlying_object := UnderlyingHonestObject( object );
     
@@ -62,19 +63,30 @@ dimension_of_factor := function( object )
     
     dimension := 0;
     
+    image_embedding := ImageEmbedding( growing_morphism );
+    
     for generator in list_of_generators do
         
-        if IsEpimorphism( ImageEmbedding( growing_morphism ) ) then
+        last_image_embedding := image_embedding;
+        
+        if IsEpimorphism( last_image_embedding ) then
             
             break;
             
         fi;
-        
         dimension := dimension + 1;
         
         serre_generator := Sh( generator );
         
         growing_morphism := UniversalMorphismFromDirectSum( [ serre_generator, growing_morphism ] );
+        
+        image_embedding := ImageEmbedding( growing_morphism );
+        
+        if not IsEqualAsSubobjects( image_embedding, last_image_embedding ) then
+            
+            dimension := dimension + 1;
+            
+        fi;
         
     od;
     

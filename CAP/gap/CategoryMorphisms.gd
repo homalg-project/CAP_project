@@ -1025,8 +1025,8 @@ DeclareOperation( "AddColiftAlongEpimorphism",
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$
 #! such that there is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$, i.e.,
 #! a morphism such that $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$.
-#! The output is such a lift.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! The output is such a lift or $\mathtt{fail}$ if it doesn't exist.
+#! @Returns a morphism in $\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}$
 #! @Arguments alpha, beta
 DeclareOperation( "Lift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -1056,8 +1056,8 @@ DeclareOperation( "AddLift",
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$
 #! such that there is a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$., i.e.,
 #! a morphism such that $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$.
-#! The output is such a colift.
-#! @Returns a morphism in $\mathrm{Hom}(c,b)$
+#! The output is such a colift or $\mathtt{fail}$ if it doesn't exist.
+#! @Returns a morphism in $\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}$
 #! @Arguments alpha, beta
 DeclareOperation( "Colift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );

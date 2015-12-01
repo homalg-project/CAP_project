@@ -113,3 +113,14 @@ DeclareOperation( "\*",
 #! @Arguments A, i
 DeclareOperation( "StandardGeneratorMorphism",
                   [ IsLeftOrRightPresentation, IsInt ] );
+
+#! @Description
+#! The argument is an object $A$ in the category of
+#! left or right presentations.
+#! The output is a morphism from a free module $F$
+#! to $A$, which maps the standard generators of
+#! the free module to the generators of $A$.
+#! @Returns a morphism in $\mathrm{Hom}(F,A)$
+#! @Arguments A
+DeclareAttribute( "PresentationAsMorphism",
+                  IsLeftOrRightPresentation );
