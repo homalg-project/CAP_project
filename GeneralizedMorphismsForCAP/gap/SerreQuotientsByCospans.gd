@@ -5,9 +5,11 @@
 ##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-## @Chapter Serre Quotients
+#! @Chapter Serre Quotients
 ##
 #############################################################################
+
+#! @Section Serre quotients by cospans
 
 DeclareCategory( "IsSerreQuotientCategoryByCospansObject",
                  IsSerreQuotientCategoryObject );
