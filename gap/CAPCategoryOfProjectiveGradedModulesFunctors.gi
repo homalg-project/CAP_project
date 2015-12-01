@@ -212,6 +212,8 @@ end );
 ##
 #################################################
 
+## FIXME: Make use of the additional arguments in functors.
+
 # this function computes the trunction functor for both left and right presentations
 InstallGlobalFunction( TruncationFunctorForProjectiveGradedModules,
   function( graded_ring, cone_h_list, left )
@@ -219,7 +221,8 @@ InstallGlobalFunction( TruncationFunctorForProjectiveGradedModules,
 
     # check if the degree_group of the underlying homalg_graded_ring is free
     if not IsFree( DegreeGroup( graded_ring ) ) then
-    
+      
+      ## FIXME: Let error messages simply end, no ., no !, no \n
       return Error( "Currently truncations are only supported for freely-graded rings. \n" );
     
     fi;
