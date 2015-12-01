@@ -9,7 +9,7 @@
 ##
 #############################################################################
 
-#! Serre quotiens are implemented using generalized morphisms. A Serre quotient category
+#! Serre quotients are implemented using generalized morphisms. A Serre quotient category
 #! is the quotient of an abelian category A by a thick subcategory C. The objects of the quotient
 #! are the objects from A, the morphisms are a limit construction. In the implementation
 #! those morphisms are modeled by generalized morphisms, and therefore there are,
@@ -68,23 +68,50 @@ DeclareOperation( "AsSerreQuotientCategoryObject",
 DeclareOperation( "SerreQuotientCategoryMorphism",
                   [ IsCapCategory, IsGeneralizedMorphism ] );
 
+#! @Description
+#!  Given a Serre quotient category <A>A/C</A> and three morphisms $\iota: M' \rightarrow M$,
+#!  $\phi: M' \rightarrow N'$ and $\pi: N \rightarrow N'$ this operation contructs a
+#!  morphism in the Serre quotient category.
+#! @Arguments A/C, iota, phi, pi
+#! @Returns a morphism
 DeclareOperation( "SerreQuotientCategoryMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#!  Given a Serre quotient category <A>A/C</A> and two morphisms of the form $\alpha: X \rightarrow M$
+#!  and $\beta: X \rightarrow N$ or $\alpha: M \rightarrow X$ and $\beta: N \rightarrow X$,
+#!  this operation constructs the corresponding morphism in the Serre quotient category.
+#!  This operation is only implemented if <A>A/C</A> is
+#!  modeled upon a span generalized morphism category in the first option or upon a cospan
+#!  category in the second.
+#! @Arguments A/C, alpha, beta
+#! @Returns a morphism
 DeclareOperation( "SerreQuotientCategoryMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#!  Given a Serre quotient category <A>A/C</A> and two morphisms $\alpha: M \rightarrow X$
+#!  and $\beta: X \rightarrow N$
+#!  this operation constructs the corresponding morphism in the Serre quotient category.
+#! @Arguments A/C, alpha, beta
+#! @Returns a morphism
 DeclareOperation( "SerreQuotientCategoryMorphismWithSourceAid",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#!  Given a Serre quotient category <A>A/C</A> and two morphisms $\alpha: X \rightarrow M$
+#!  and $\beta: X \rightarrow N$
+#!  this operation constructs the corresponding morphism in the Serre quotient category.
+#! @Arguments A/C, alpha, beta
+#! @Returns a morphism
 DeclareOperation( "SerreQuotientCategoryMorphismWithRangeAid",
                   [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#!  Given a Serre quotient category <A>A/C</A> and an object <A>M</A> in <A>A</A>,
-#!  this constructor returns the corresponding object in the Serre quotient category.
-#! @Arguments A/C, M
-#! @Returns an object
+#!  Given a Serre quotient category <A>A/C</A> and a morphism <A>phi</A> in <A>A</A>,
+#!  this constructor returns the corresponding morphism in the Serre quotient category.
+#! @Arguments A/C, phi
+#! @Returns a morphism
 DeclareOperation( "AsSerreQuotientCategoryMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism ] );
 
