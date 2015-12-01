@@ -287,7 +287,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # @Section Implement the elementary operations for categories
     #
     ######################################################################
-
+    
+    ## FIXME: Implement a good equality, which takes care of permutations and multiples.
+    
     # @Description
     # This method checks if the underlying degree lists are equal.
     # Thus this method really checks if two objects are identical and not merely isomorphic!
@@ -310,9 +312,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     AddIsEqualForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        return ( UnderlyingHomalgMatrix( morphism_1 ) = UnderlyingHomalgMatrix( morphism_2 ) ) 
-              and IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) )
-              and IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+        return UnderlyingHomalgMatrix( morphism_1 ) = UnderlyingHomalgMatrix( morphism_2 );
         
     end );
 
@@ -666,7 +666,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         # if it did work, return the corresponding morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism1 ),
                                                                         left_divide,
-                                                                        Range( morphism2 ) 
+                                                                        Range( morphism2 )
                                                                        );
 
     end );
@@ -695,32 +695,32 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
     end );
 
-    # @Description
-    # This method computes the (weak) kernel object as the source of the (weak) kernel embedding 
-    # of the morphism <A>morphism</A>.
-    # @Returns an object
-    # @Arguments morphism
-    AddKernelObject( category,
-      function( morphism )
-        
-        return Source( KernelEmbedding( morphism ) );
-        
-    end );
-        
-    # @Description
-    # This method computes the (weak) kernel embedding of <A>morphism</A> given that the (weak) kernel object 
-    # <A>kernel</A> is already known.
-    # @Returns a morphism
-    # @Arguments morphism, kernel
-    AddKernelEmbeddingWithGivenKernelObject( category,
-      function( morphism, kernel )
-        local kernel_matrix;
-        
-        kernel_matrix := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
-        
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( kernel, kernel_matrix, Source( morphism ) );
-        
-    end );
+#     # @Description
+#     # This method computes the (weak) kernel object as the source of the (weak) kernel embedding 
+#     # of the morphism <A>morphism</A>.
+#     # @Returns an object
+#     # @Arguments morphism
+#     AddKernelObject( category,
+#       function( morphism )
+#         
+#         return Source( KernelEmbedding( morphism ) );
+#         
+#     end );
+#         
+#     # @Description
+#     # This method computes the (weak) kernel embedding of <A>morphism</A> given that the (weak) kernel object 
+#     # <A>kernel</A> is already known.
+#     # @Returns a morphism
+#     # @Arguments morphism, kernel
+#     AddKernelEmbeddingWithGivenKernelObject( category,
+#       function( morphism, kernel )
+#         local kernel_matrix;
+#         
+#         kernel_matrix := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
+#         
+#         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( kernel, kernel_matrix, Source( morphism ) );
+#         
+#     end );
     
     # @Description
     # This method computes the (weak) cokernel projection of a morphism <A>morphism</A>.
@@ -738,32 +738,32 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
     end );
 
-    # @Description
-    # This method computes the (weak) cokernel object as the range of the (weak) cokernel projection
-    # of the morphism <A>morphism</A>.
-    # @Returns an object
-    # @Arguments morphism
-    AddCokernelObject( category,
-      function( morphism )
-        
-        return Range( CokernelProjection( morphism ) );
-                
-    end );
-    
-    # @Description
-    # This method computes the (weak) cokernel projection of <A>morphism</A> given that the (weak) cokernel object 
-    # <A>cokernel</A> is already known.
-    # @Returns a morphism
-    # @Arguments morphism, cokernel
-    AddCokernelProjectionWithGivenCokernelObject( category,
-      function( morphism, cokernel )
-        local cokernel_proj;
-        
-        cokernel_proj := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
-        
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism ), cokernel_proj, cokernel );
-        
-    end );
+#     # @Description
+#     # This method computes the (weak) cokernel object as the range of the (weak) cokernel projection
+#     # of the morphism <A>morphism</A>.
+#     # @Returns an object
+#     # @Arguments morphism
+#     AddCokernelObject( category,
+#       function( morphism )
+#         
+#         return Range( CokernelProjection( morphism ) );
+#                 
+#     end );
+#     
+#     # @Description
+#     # This method computes the (weak) cokernel projection of <A>morphism</A> given that the (weak) cokernel object 
+#     # <A>cokernel</A> is already known.
+#     # @Returns a morphism
+#     # @Arguments morphism, cokernel
+#     AddCokernelProjectionWithGivenCokernelObject( category,
+#       function( morphism, cokernel )
+#         local cokernel_proj;
+#         
+#         cokernel_proj := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
+#         
+#         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism ), cokernel_proj, cokernel );
+#         
+#     end );
 
 
     
@@ -774,6 +774,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # In case the fibre product of more than two morphisms is to be computed, we essentially derive it nevertheless.
     #
     ################################################################################################################
+    
+    ## FIXME
     
     # @Description
     # This method computes the (weak) fibre product of a list of morphisms <A>morphism_list</A>
@@ -885,6 +887,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
     end );    
     
+    
+    ## FIXME: Write an additional with given method
 
 
     ######################################################################
@@ -1107,7 +1111,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         fi;
         
         # return the evaluation morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism(
                                                         unit,
                                                         HomalgMatrix( column, homalg_ring ),
                                                         tensor_object );
@@ -1122,7 +1126,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     AddMorphismToBidualWithGivenBidual( category,
       function( object, bidual_object )
       
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism(
                                                 object,
                                                 HomalgIdentityMatrix( Rank( object ), UnderlyingHomalgGradedRing( object ) ),
                                                 bidual_object );
