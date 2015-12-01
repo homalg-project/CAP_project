@@ -5,7 +5,7 @@
 ##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-## @Chapter Serre Quotients
+#! @Chapter Serre Quotients
 ##
 #############################################################################
 
@@ -33,7 +33,7 @@ DeclareCategory( "IsSerreQuotientCategoryObject",
 DeclareCategory( "IsSerreQuotientCategoryMorphism",
                  IsCapCategoryMorphism );
 
-#! @BeginBlock
+#! @BeginGroup
 #! @Description
 #!  Creates a Serre quotient category <A>S</A> with name <A>name</A> out of an Abelian category <A>A</A>.
 #!  If <A>name</A> is not given, a generic name is constructed out of the name of <A>A</A>.
@@ -49,7 +49,7 @@ DeclareOperation( "SerreQuotientCategory",
 
 DeclareOperation( "\/",
                   [ IsCapCategory, IsFunction ] );
-#! @EndBlock
+#! @EndGroup
 
 #! @Description
 #!  Given a Serre quotient category <A>A/C</A> and an object <A>M</A> in <A>A</A>,
@@ -59,6 +59,12 @@ DeclareOperation( "\/",
 DeclareOperation( "AsSerreQuotientCategoryObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
+#! @Description
+#!  Given a Serre quotient category <A>A/C</A> and a generalized morphism <A>phi</A> in
+#!  the generalized morphism category <A>A/C</A> is modeled upon,
+#!  this constructor returns the corresponding morphism in the Serre quotient category.
+#! @Arguments A/C, phi
+#! @Returns a morphism
 DeclareOperation( "SerreQuotientCategoryMorphism",
                   [ IsCapCategory, IsGeneralizedMorphism ] );
 
