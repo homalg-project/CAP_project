@@ -558,3 +558,8 @@ S, [[1,0],[0,1]] );
 #! to the cone [ [ 1, 0 ], [ 0, 1 ] ] to id
 
 #! @EndExample
+
+
+test1 := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],1],[[1,1],1],[[1,0],1] ], S );
+test2 := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2],[[1,1],1] ], S );
+test3 := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,1],1],[[1,0],2] ], S );

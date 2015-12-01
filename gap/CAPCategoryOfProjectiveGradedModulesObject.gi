@@ -268,8 +268,8 @@ InstallMethod( CAP_CATEGORY_OF_PROJECTIVE_GRADED_MODULES_INTERNAL_SIMPLIFY_DATA_
   
     # run once accross the degree list and add successive equal degrees
     # example:
-    # [[ a, 1 ], [ a,1 ], [ b, 1 ], [a,2]] -> [[ a,2 ], [b,1 ], [ a,2]]
-    # BUT this gets not simplified to say [[ a,4 ], [ b, 1 ]]
+    # [[ a,1 ], [ a,1 ], [ b,1 ], [a,2 ]] -> [[ a,2 ], [ b,1 ], [ a,2 ]]
+    # BUT this gets not simplified to say [[ a,4 ], [ b,1 ]]
     
     # here is the algorithm
     new_degree_list := [];
