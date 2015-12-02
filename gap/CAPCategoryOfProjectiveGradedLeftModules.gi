@@ -851,7 +851,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 #     end );
 
 
-    
+
     ################################################################################################################
     #
     # @Section Add (Weak) Fibre product 
@@ -859,18 +859,21 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # In case the fibre product of more than two morphisms is to be computed, we essentially derive it nevertheless.
     #
     ################################################################################################################
-    
+
     ## FIXME
-    
+
     # @Description
     # This method computes the (weak) fibre product of a list of morphisms <A>morphism_list</A>
     # @Returns an object
-    # @Arguments morphism_list    
-    AddFiberProduct( category,             
+    # @Arguments morphism_list
+    AddFiberProduct( category,
       function( morphism_list )
-    
-        # simply return the source of the projection in factor 1
-        return Source( ProjectionInFactorOfFiberProduct( morphism_list, 1 ) );
+
+        if Length( morphism_list ) = 0 then
+          return ZeroObject( category );
+        else
+          return Source( ProjectionInFactorOfFiberProduct( morphism_list, 1 ) );
+        fi;
 
     end );
 
@@ -882,38 +885,91 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     AddProjectionInFactorOfFiberProduct( category,
       function( morphism_list, projection_number )
         local mapping_matrix, matrix_list, projection_matrix, j;
-        
-        if Length( morphism_list ) = 1 then
-        
+
+        if Length( morphism_list ) = 0 then
+
+          Error( "Only for fibre products of non-empty morphism lists, projections onto the factors can be computed. \n" );
+          return;
+
+        elif Length( morphism_list ) = 1 then
+
           return KernelEmbedding( morphism_list[ 1 ] );
-        
+
         else
-        
+
           # extract the mapping matrix of the morphism[ projection_number ]
           mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ projection_number ] );
-        
+
           # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
           # projection morphism of
           matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
           Remove( matrix_list, projection_number );
-        
+
           # now iterate the syzygies computation
           projection_matrix := SyzygiesOfRows( mapping_matrix, matrix_list[ 1 ] );
           for j in [ 2 .. Length( matrix_list ) ] do
-          
-            projection_matrix := SyzygiesOfRows( projection_matrix * mapping_matrix, matrix_list[ j ] ) * projection_matrix;
-            
+
+            projection_matrix := SyzygiesOfRows( projection_matrix * mapping_matrix, matrix_list[ j ] ) 
+                                                                                            * projection_matrix;
+
           od;
-          
+
           # and from this deduce the projection map
           return DeduceMapFromMatrixAndRangeLeft( projection_matrix, Source( morphism_list[ projection_number ] ) );
-          
-        fi;  
+
+        fi;
 
     end );
 
-    
-    
+    # @Description
+    # This method computes the projection morphism from the (weak) fibre product
+    # of a list of morphisms <A>morphism_list</A> into its <A>projection_number</A>-th factor. This methods assumes that
+    # the fibre product object is given as input.
+    # @Returns a morphism
+    # @Arguments morphism_list, projection_number
+    AddProjectionInFactorOfFiberProductWithGivenFiberProduct( category,
+      function( morphism_list, projection_number, fibre_product_object )
+        local mapping_matrix, matrix_list, projection_matrix, j;
+
+        if Length( morphism_list ) = 0 then
+
+          Error( "Only for fibre products of non-empty morphism lists, projections onto the factors can be computed. \n" );
+          return;
+
+        elif Length( morphism_list ) = 1 then
+
+          return KernelEmbedding( morphism_list[ 1 ] );
+
+        else
+
+          # extract the mapping matrix of the morphism[ projection_number ]
+          mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ projection_number ] );
+
+          # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
+          # projection morphism of
+          matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
+          Remove( matrix_list, projection_number );
+
+          # now iterate the syzygies computation
+          projection_matrix := SyzygiesOfRows( mapping_matrix, matrix_list[ 1 ] );
+          for j in [ 2 .. Length( matrix_list ) ] do
+
+            projection_matrix := SyzygiesOfRows( projection_matrix * mapping_matrix, matrix_list[ j ] ) * projection_matrix;
+
+          od;
+
+          # and from this construct the projection map
+          return CAPCategoryOfProjectiveGradedLeftModulesMorphism( fibre_product_object, 
+                                                                   projection_matrix, 
+                                                                   Source( morphism_list[ projection_number ] ) 
+                                                                  );
+
+        fi;
+
+    end );
+
+
+
     ################################################################################################################
     #
     # @Section Add (Weak) Pushout
@@ -929,9 +985,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     AddPushout( category,
       function( morphism_list )
 
-      # simply return the range of the injection of cofactor 1
-      return Range( InjectionOfCofactorOfPushout( morphism_list, 1 ) );
-              
+        if Length( morphism_list ) = 0 then
+          return ZeroObject( category );
+        else
+          return Range( InjectionOfCofactorOfPushout( morphism_list, 1 ) );
+        fi;
+
     end );
 
     # @Description
@@ -942,38 +1001,77 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     AddInjectionOfCofactorOfPushout( category,
       function( morphism_list, injection_number )
         local mapping_matrix, embedding_matrix, matrix_list, j;
-        
+
         if Length( morphism_list ) = 1 then
-        
+
           return KernelEmbedding( morphism_list[ 1 ] );
-        
+
         else
-        
+
           # extract the mapping matrix of the morphism[ projection_number ]
           mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ injection_number ] );
-        
+
           # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
           # projection morphism of
           matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
           Remove( matrix_list, injection_number );
-        
+
           # now iterate the syzygies computation
           embedding_matrix := SyzygiesOfColumns( mapping_matrix, matrix_list[ 1 ] );
           for j in [ 2 .. Length( matrix_list ) ] do
-          
+
             embedding_matrix := embedding_matrix * SyzygiesOfColumns( mapping_matrix * embedding_matrix, matrix_list[ j ] );
-            
+
           od;
-          
+
           # from this decude the injection
           return DeduceMapFromMatrixAndSourceLeft( embedding_matrix, Range( morphism_list[ injection_number ] ) );
-          
+
         fi;
 
-    end );    
-    
-    
-    ## FIXME: Write an additional with given method
+    end );
+
+    # @Description
+    # This method computes the injection of the <A>injection_number</A>-th cofactor of a (weak) pushout 
+    # of a list of morphisms <A>morphism_list</A>. This method assumes the pushout object as given input.
+    # @Returns a morphism
+    # @Arguments morphism_list, injection_number
+    AddInjectionOfCofactorOfPushoutWithGivenPushout( category,
+      function( morphism_list, injection_number, pushout_object )
+        local mapping_matrix, embedding_matrix, matrix_list, j;
+
+        if Length( morphism_list ) = 1 then
+
+          return KernelEmbedding( morphism_list[ 1 ] );
+
+        else
+
+          # extract the mapping matrix of the morphism[ projection_number ]
+          mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ injection_number ] );
+
+          # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
+          # projection morphism of
+          matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
+          Remove( matrix_list, injection_number );
+
+          # now iterate the syzygies computation
+          embedding_matrix := SyzygiesOfColumns( mapping_matrix, matrix_list[ 1 ] );
+          for j in [ 2 .. Length( matrix_list ) ] do
+
+            embedding_matrix := embedding_matrix * SyzygiesOfColumns( mapping_matrix * embedding_matrix, matrix_list[ j ] );
+
+          od;
+
+          # from this construct the injection
+          return CAPCategoryOfProjectiveGradedLeftModulesMorphism( Range( morphism_list[ injection_number ] ),
+                                                                   embedding_matrix,
+                                                                   pushout_object
+                                                                  );
+
+        fi;
+
+    end );
+
 
 
     ######################################################################
