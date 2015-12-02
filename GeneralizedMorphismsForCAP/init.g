@@ -7,6 +7,8 @@ ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategoryByCos
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategoryBySpans.gd");
 
+ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategoryFunctors.gd");
+
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotients.gd");
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsByThreeArrows.gd");

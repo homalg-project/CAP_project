@@ -70,10 +70,8 @@ InstallValue( CAP_INTERNAL_GENERALIZED_MORPHISM_TRANSLATION_LIST, [
       [ "IdempotentDefinedBySubobject", "IdempotentDefinedBySubobjectByThreeArrows", "IdempotentDefinedBySubobjectByCospan", "IdempotentDefinedBySubobjectBySpan", [ IsCapCategoryMorphism ] ],
       [ "IdempotentDefinedByFactorobject", "IdempotentDefinedByFactorobjectByThreeArrows", "IdempotentDefinedByFactorobjectByCospan", "IdempotentDefinedByFactorobjectBySpan", [ IsCapCategoryMorphism ] ],
       [ "GeneralizedMorphismWithRangeAid", "GeneralizedMorphismByThreeArrowsWithRangeAid", "GeneralizedMorphismByCospan", "GeneralizedMorphismBySpanWithRangeAid", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] ],
-      [ "GeneralizedMorphismWithSourceAid", "GeneralizedMorphismByThreeArrowsWithSourceAid", "GeneralizedMorphismByCospanWithSourceAid", "GeneralizedMorphismBySpan", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] ],
+      [ "GeneralizedMorphismWithSourceAid", "GeneralizedMorphismByThreeArrowsWithSourceAid", "GeneralizedMorphismByCospanWithSourceAid", "GeneralizedMorphismBySpan", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] ] ] );
       # Serre Quotient: TODO
-      [ "SerreQuotientCategoryMorphismWithSourceAid", "SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid", "SerreQuotientCategoryByCospansMorphismWithSourceAid", "SerreQuotientCategoryBySpansMorphism", [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] ],
-      [ "SerreQuotientCategoryMorphismWithRangeAid", "SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid", "SerreQuotientCategoryByCospansMorphism", "SerreQuotientCategoryBySpansMorphismWithRangeAid", [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] ], ] );
 
 InstallMethod( GeneralizedMorphismCategory,
                [ IsCapCategory ],
