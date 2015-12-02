@@ -131,16 +131,7 @@
   subobject  [23X\alpha:  a  \hookrightarrow  b[123X.  The  output  is  the generalized
   morphism by three arrows from the factorobject to the subobject.[133X
   
-  [1X4.4-2 CommonRestriction[101X
-  
-  [29X[2XCommonRestriction[102X( [3XL[103X ) [32X operation
-  [6XReturns:[106X  [33X[0;10Ya list of generalized morphisms[133X
-  
-  [33X[0;0YThe argument is a list [23XL[123X of generalized morphisms by three arrows having the
-  same  source.  The output is a list of generalized morphisms by three arrows
-  which is the comman restriction of [23XL[123X.[133X
-  
-  [1X4.4-3 CommonCoastriction[101X
+  [1X4.4-2 CommonCoastriction[101X
   
   [29X[2XCommonCoastriction[102X( [3XL[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya list of generalized morphisms[133X

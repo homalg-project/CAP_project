@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (GeneralizedMorphismsForCAP) - Chapter 6: Serre Quotients</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap6"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap6_mj.html">[MathJax on]</a></p>
+<p><a id="X7E44E8FA8790C32A" name="X7E44E8FA8790C32A"></a></p>
+<div class="ChapSects"><a href="chap6.html#X7E44E8FA8790C32A">6 <span class="Heading">Serre Quotients</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7AB3D4ED7A4EF781">6.1 <span class="Heading">General operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC5B052783425A2">6.1-1 IsSerreQuotientCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82C2C3C27C0FC106">6.1-2 IsSerreQuotientCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8311C69E7FEEF417">6.1-3 SerreQuotientCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B2E75C3828CFEE4">6.1-4 AsSerreQuotientCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8228022A7EB4CB66">6.1-5 SerreQuotientCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C93747782930A14">6.1-6 SerreQuotientCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FF1277C81BAD87E">6.1-7 SerreQuotientCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BD12BC6873CB655">6.1-8 SerreQuotientCategoryMorphismWithSourceAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8461E2707FCF6EB0">6.1-9 SerreQuotientCategoryMorphismWithRangeAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C2D68DA796082CE">6.1-10 AsSerreQuotientCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F51A2A678518D91">6.1-11 SubcategoryMembershipTestFunctionForSerreQuotient</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8387D5C484A26089">6.1-12 UnderlyingHonestCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B0FD44F7FA4F8C1">6.1-13 UnderlyingGeneralizedMorphismCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86E915208420C01C">6.1-14 UnderlyingGeneralizedObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X812EDC687898EEBF">6.1-15 UnderlyingHonestObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E403ABA78261622">6.1-16 UnderlyingGeneralizedMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A1765BF783041DC">6.1-17 CanonicalProjection</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X87F6FB587AA54985">6.2 <span class="Heading">Serre quotients by cospans</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B0DFAB77891EB63">6.2-1 SerreQuotientCategoryByCospans</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C696E9E83CA9250">6.2-2 AsSerreQuotientCategoryByCospansObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F1CBD4F82097FFE">6.2-3 SerreQuotientCategoryByCospansMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B6DB3178122E617">6.2-4 SerreQuotientCategoryByCospansMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84649E8381E40A5E">6.2-5 SerreQuotientCategoryByCospansMorphismWithSourceAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8163B686820C8119">6.2-6 SerreQuotientCategoryByCospansMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83B53BAD85CDABE3">6.2-7 AsSerreQuotientCategoryByCospansMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7E8AEC567A971ABF">6.3 <span class="Heading">Serre Quotients by Spans</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81B80C5882061F37">6.3-1 SerreQuotientCategoryBySpans</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82726E3C7A66996A">6.3-2 AsSerreQuotientCategoryBySpansObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8540DCE084BB710F">6.3-3 SerreQuotientCategoryBySpansMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X854E2C577EBC71A8">6.3-4 SerreQuotientCategoryBySpansMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85320AF0799B2ED6">6.3-5 SerreQuotientCategoryBySpansMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BF244A67D0A7199">6.3-6 SerreQuotientCategoryBySpansMorphismWithRangeAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X838E9D4D7BF0AA85">6.3-7 AsSerreQuotientCategoryBySpansMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X8718215E7B950D7C">6.4 <span class="Heading">Serre Quotients modeled by three arrows</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X856C35F28411363D">6.4-1 SerreQuotientCategoryByThreeArrows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80BDE2C9864D84B8">6.4-2 AsSerreQuotientCategoryByThreeArrowsObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E798D6882E5DBB4">6.4-3 SerreQuotientCategoryByThreeArrowsMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7AAB402C852E6030">6.4-4 SerreQuotientCategoryByThreeArrowsMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8597A92278BC8D63">6.4-5 SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X820FF6B88188DB68">6.4-6 SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DFC91D07E9A187B">6.4-7 AsSerreQuotientCategoryByThreeArrowsMorphism</a></span>
+</div></div>
+</div>
+
+<h3>6 <span class="Heading">Serre Quotients</span></h3>
+
+<p>Serre quotients are implemented using generalized morphisms. A Serre quotient category is the quotient of an abelian category A by a thick subcategory C. The objects of the quotient are the objects from A, the morphisms are a limit construction. In the implementation those morphisms are modeled by generalized morphisms, and therefore there are, like in the generalized morphism case, three types of Serre quotients.</p>
+
+<p><a id="X7AB3D4ED7A4EF781" name="X7AB3D4ED7A4EF781"></a></p>
+
+<h4>6.1 <span class="Heading">General operations</span></h4>
+
+<p>As in the generalized morphism case, the generic constructors depend on the generalized morphism standard. Please note that for implementations the specialized constructors should be used.</p>
+
+<p><a id="X7BC5B052783425A2" name="X7BC5B052783425A2"></a></p>
+
+<h5>6.1-1 IsSerreQuotientCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSerreQuotientCategoryObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The category of objects in the category of Serre quotients. For actual objects this needs to be specialized.</p>
+
+<p><a id="X82C2C3C27C0FC106" name="X82C2C3C27C0FC106"></a></p>
+
+<h5>6.1-2 IsSerreQuotientCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSerreQuotientCategoryMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">( filter )</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The category of morphisms in the category of Serre quotients. For actual morphisms this needs to be specialized.</p>
+
+<p><a id="X8311C69E7FEEF417" name="X8311C69E7FEEF417"></a></p>
+
+<h5>6.1-3 SerreQuotientCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategory</code>( <var class="Arg">A</var>, <var class="Arg">func</var>[, <var class="Arg">name</var>] )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>Creates a Serre quotient category <var class="Arg">S</var> with name <var class="Arg">name</var> out of an Abelian category <var class="Arg">A</var>. If <var class="Arg">name</var> is not given, a generic name is constructed out of the name of <var class="Arg">A</var>. The argument <var class="Arg">func</var> must be a unary function on the objects of <var class="Arg">A</var> deciding the membership in the thick subcategory C mentioned above.</p>
+
+<p><a id="X7B2E75C3828CFEE4" name="X7B2E75C3828CFEE4"></a></p>
+
+<h5>6.1-4 AsSerreQuotientCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSerreQuotientCategoryObject</code>( <var class="Arg">A/C</var>, <var class="Arg">M</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> and an object <var class="Arg">M</var> in <var class="Arg">A</var>, this constructor returns the corresponding object in the Serre quotient category.</p>
+
+<p><a id="X8228022A7EB4CB66" name="X8228022A7EB4CB66"></a></p>
+
+<h5>6.1-5 SerreQuotientCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">phi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> and a generalized morphism <var class="Arg">phi</var> in the generalized morphism category <var class="Arg">A/C</var> is modeled upon, this constructor returns the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X7C93747782930A14" name="X7C93747782930A14"></a></p>
+
+<h5>6.1-6 SerreQuotientCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">iota</var>, <var class="Arg">phi</var>, <var class="Arg">pi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> and three morphisms <span class="Math">\iota: M' \rightarrow M</span>, <span class="Math">\phi: M' \rightarrow N'</span> and <span class="Math">\pi: N \rightarrow N'</span> this operation contructs a morphism in the Serre quotient category.</p>
+
+<p><a id="X7FF1277C81BAD87E" name="X7FF1277C81BAD87E"></a></p>
+
+<h5>6.1-7 SerreQuotientCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> and two morphisms of the form <span class="Math">\alpha: X \rightarrow M</span> and <span class="Math">\beta: X \rightarrow N</span> or <span class="Math">\alpha: M \rightarrow X</span> and <span class="Math">\beta: N \rightarrow X</span>, this operation constructs the corresponding morphism in the Serre quotient category. This operation is only implemented if <var class="Arg">A/C</var> is modeled upon a span generalized morphism category in the first option or upon a cospan category in the second.</p>
+
+<p><a id="X7BD12BC6873CB655" name="X7BD12BC6873CB655"></a></p>
+
+<h5>6.1-8 SerreQuotientCategoryMorphismWithSourceAid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryMorphismWithSourceAid</code>( <var class="Arg">A/C</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> and two morphisms <span class="Math">\alpha: M \rightarrow X</span> and <span class="Math">\beta: X \rightarrow N</span> this operation constructs the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X8461E2707FCF6EB0" name="X8461E2707FCF6EB0"></a></p>
+
+<h5>6.1-9 SerreQuotientCategoryMorphismWithRangeAid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryMorphismWithRangeAid</code>( <var class="Arg">A/C</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> and two morphisms <span class="Math">\alpha: X \rightarrow M</span> and <span class="Math">\beta: X \rightarrow N</span> this operation constructs the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X7C2D68DA796082CE" name="X7C2D68DA796082CE"></a></p>
+
+<h5>6.1-10 AsSerreQuotientCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSerreQuotientCategoryMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">phi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> and a morphism <var class="Arg">phi</var> in <var class="Arg">A</var>, this constructor returns the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X7F51A2A678518D91" name="X7F51A2A678518D91"></a></p>
+
+<h5>6.1-11 SubcategoryMembershipTestFunctionForSerreQuotient</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubcategoryMembershipTestFunctionForSerreQuotient</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a function</p>
+
+<p>When a Serre quotient category is created, a membership function for the subcategory is given. This attribute stores and returns this function</p>
+
+<p><a id="X8387D5C484A26089" name="X8387D5C484A26089"></a></p>
+
+<h5>6.1-12 UnderlyingHonestCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingHonestCategory</code>( <var class="Arg">A/C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>For a Serre quotient category <var class="Arg">A/C</var> this attribute returns the category <var class="Arg">A</var>.</p>
+
+<p><a id="X7B0FD44F7FA4F8C1" name="X7B0FD44F7FA4F8C1"></a></p>
+
+<h5>6.1-13 UnderlyingGeneralizedMorphismCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingGeneralizedMorphismCategory</code>( <var class="Arg">A/C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>For a Serre quotient category <var class="Arg">A/C</var> this attribute returns generalized morphism category the quotient is modelled upon.</p>
+
+<p><a id="X86E915208420C01C" name="X86E915208420C01C"></a></p>
+
+<h5>6.1-14 UnderlyingGeneralizedObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingGeneralizedObject</code>( <var class="Arg">M</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>For an object <var class="Arg">M</var> in the Serre quotient category A/C this attribute returns the corresponding object in the generalized morphism category the quotient is modelled upon.</p>
+
+<p><a id="X812EDC687898EEBF" name="X812EDC687898EEBF"></a></p>
+
+<h5>6.1-15 UnderlyingHonestObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingHonestObject</code>( <var class="Arg">M</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>For an object <var class="Arg">M</var> in the Serre quotient category A/C this attribute returns the corresponding object in <var class="Arg">A</var>.</p>
+
+<p><a id="X7E403ABA78261622" name="X7E403ABA78261622"></a></p>
+
+<h5>6.1-16 UnderlyingGeneralizedMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingGeneralizedMorphism</code>( <var class="Arg">phi</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>For a morphism <var class="Arg">phi</var> in the Serre quotient category A/C this attribute returns the corresponding generalized morphism in the generalized morphism category the quotient is modelled upon.</p>
+
+<p><a id="X7A1765BF783041DC" name="X7A1765BF783041DC"></a></p>
+
+<h5>6.1-17 CanonicalProjection</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalProjection</code>( <var class="Arg">A/C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a functor</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var>, this operation returns the canonical projection functor <span class="Math"> A \rightarrow A/C </span>.</p>
+
+<p><a id="X87F6FB587AA54985" name="X87F6FB587AA54985"></a></p>
+
+<h4>6.2 <span class="Heading">Serre quotients by cospans</span></h4>
+
+<p><a id="X7B0DFAB77891EB63" name="X7B0DFAB77891EB63"></a></p>
+
+<h5>6.2-1 SerreQuotientCategoryByCospans</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByCospans</code>( <var class="Arg">A</var>, <var class="Arg">func</var>[, <var class="Arg">name</var>] )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>Creates a Serre quotient category S with name <var class="Arg">name</var> out of an Abelian category <var class="Arg">A</var>. The Serre quotient category will be modeled upon the generalized morphisms by cospans category of <var class="Arg">A</var> If <var class="Arg">name</var> is not given, a generic name is constructed out of the name of <var class="Arg">A</var>. The argument <var class="Arg">func</var> must be a unary function on the objects of <var class="Arg">A</var> deciding the membership in the thick subcategory C mentioned above.</p>
+
+<p><a id="X7C696E9E83CA9250" name="X7C696E9E83CA9250"></a></p>
+
+<h5>6.2-2 AsSerreQuotientCategoryByCospansObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSerreQuotientCategoryByCospansObject</code>( <var class="Arg">A/C</var>, <var class="Arg">M</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by cospans and an object <var class="Arg">M</var> in <var class="Arg">A</var>, this constructor returns the corresponding object in the Serre quotient category.</p>
+
+<p><a id="X7F1CBD4F82097FFE" name="X7F1CBD4F82097FFE"></a></p>
+
+<h5>6.2-3 SerreQuotientCategoryByCospansMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByCospansMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">phi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by cospans and a generalized morphism <var class="Arg">phi</var> in the generalized morphism category <var class="Arg">A/C</var> is modeled upon, this constructor returns the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X7B6DB3178122E617" name="X7B6DB3178122E617"></a></p>
+
+<h5>6.2-4 SerreQuotientCategoryByCospansMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByCospansMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">iota</var>, <var class="Arg">phi</var>, <var class="Arg">pi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by cospans and three morphisms <span class="Math">\iota: M' \rightarrow M</span>, <span class="Math">\phi: M' \rightarrow N'</span> and <span class="Math">\pi: N \rightarrow N'</span> this operation contructs a morphism in the Serre quotient category.</p>
+
+<p><a id="X84649E8381E40A5E" name="X84649E8381E40A5E"></a></p>
+
+<h5>6.2-5 SerreQuotientCategoryByCospansMorphismWithSourceAid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByCospansMorphismWithSourceAid</code>( <var class="Arg">A/C</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by cospans and two morphisms <span class="Math">\alpha: M \rightarrow X</span> and <span class="Math">\beta: X \rightarrow N</span> this operation constructs the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X8163B686820C8119" name="X8163B686820C8119"></a></p>
+
+<h5>6.2-6 SerreQuotientCategoryByCospansMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByCospansMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by cospans and two morphisms <span class="Math">\alpha: X \rightarrow M</span> and <span class="Math">\beta: X \rightarrow N</span> this operation constructs the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X83B53BAD85CDABE3" name="X83B53BAD85CDABE3"></a></p>
+
+<h5>6.2-7 AsSerreQuotientCategoryByCospansMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSerreQuotientCategoryByCospansMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">phi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by cospans and a morphism <var class="Arg">phi</var> in <var class="Arg">A</var>, this constructor returns the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X7E8AEC567A971ABF" name="X7E8AEC567A971ABF"></a></p>
+
+<h4>6.3 <span class="Heading">Serre Quotients by Spans</span></h4>
+
+<p><a id="X81B80C5882061F37" name="X81B80C5882061F37"></a></p>
+
+<h5>6.3-1 SerreQuotientCategoryBySpans</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryBySpans</code>( <var class="Arg">A</var>, <var class="Arg">func</var>[, <var class="Arg">name</var>] )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>Creates a Serre quotient category S with name <var class="Arg">name</var> out of an Abelian category <var class="Arg">A</var>. The Serre quotient category will be modeled upon the generalized morphisms by spans category of <var class="Arg">A</var> If <var class="Arg">name</var> is not given, a generic name is constructed out of the name of <var class="Arg">A</var>. The argument <var class="Arg">func</var> must be a unary function on the objects of <var class="Arg">A</var> deciding the membership in the thick subcategory C mentioned above.</p>
+
+<p><a id="X82726E3C7A66996A" name="X82726E3C7A66996A"></a></p>
+
+<h5>6.3-2 AsSerreQuotientCategoryBySpansObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSerreQuotientCategoryBySpansObject</code>( <var class="Arg">A/C</var>, <var class="Arg">M</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by spans and an object <var class="Arg">M</var> in <var class="Arg">A</var>, this constructor returns the corresponding object in the Serre quotient category.</p>
+
+<p><a id="X8540DCE084BB710F" name="X8540DCE084BB710F"></a></p>
+
+<h5>6.3-3 SerreQuotientCategoryBySpansMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryBySpansMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">phi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by spans and a generalized morphism <var class="Arg">phi</var> in the generalized morphism category <var class="Arg">A/C</var> is modeled upon, this constructor returns the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X854E2C577EBC71A8" name="X854E2C577EBC71A8"></a></p>
+
+<h5>6.3-4 SerreQuotientCategoryBySpansMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryBySpansMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">iota</var>, <var class="Arg">phi</var>, <var class="Arg">pi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by spans and three morphisms <span class="Math">\iota: M' \rightarrow M</span>, <span class="Math">\phi: M' \rightarrow N'</span> and <span class="Math">\pi: N \rightarrow N'</span> this operation contructs a morphism in the Serre quotient category.</p>
+
+<p><a id="X85320AF0799B2ED6" name="X85320AF0799B2ED6"></a></p>
+
+<h5>6.3-5 SerreQuotientCategoryBySpansMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryBySpansMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by spans and two morphisms <span class="Math">\alpha: M \rightarrow X</span> and <span class="Math">\beta: X \rightarrow N</span> this operation constructs the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X7BF244A67D0A7199" name="X7BF244A67D0A7199"></a></p>
+
+<h5>6.3-6 SerreQuotientCategoryBySpansMorphismWithRangeAid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryBySpansMorphismWithRangeAid</code>( <var class="Arg">A/C</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by spans and two morphisms <span class="Math">\alpha: X \rightarrow M</span> and <span class="Math">\beta: X \rightarrow N</span> this operation constructs the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X838E9D4D7BF0AA85" name="X838E9D4D7BF0AA85"></a></p>
+
+<h5>6.3-7 AsSerreQuotientCategoryBySpansMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSerreQuotientCategoryBySpansMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">phi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by spans and a morphism <var class="Arg">phi</var> in <var class="Arg">A</var>, this constructor returns the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X8718215E7B950D7C" name="X8718215E7B950D7C"></a></p>
+
+<h4>6.4 <span class="Heading">Serre Quotients modeled by three arrows</span></h4>
+
+<p><a id="X856C35F28411363D" name="X856C35F28411363D"></a></p>
+
+<h5>6.4-1 SerreQuotientCategoryByThreeArrows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByThreeArrows</code>( <var class="Arg">A</var>, <var class="Arg">func</var>[, <var class="Arg">name</var>] )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>Creates a Serre quotient category S with name <var class="Arg">name</var> out of an Abelian category <var class="Arg">A</var>. The Serre quotient category will be modeled upon the generalized morphisms by three arrows category of <var class="Arg">A</var> If <var class="Arg">name</var> is not given, a generic name is constructed out of the name of <var class="Arg">A</var>. The argument <var class="Arg">func</var> must be a unary function on the objects of <var class="Arg">A</var> deciding the membership in the thick subcategory C mentioned above.</p>
+
+<p><a id="X80BDE2C9864D84B8" name="X80BDE2C9864D84B8"></a></p>
+
+<h5>6.4-2 AsSerreQuotientCategoryByThreeArrowsObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSerreQuotientCategoryByThreeArrowsObject</code>( <var class="Arg">A/C</var>, <var class="Arg">M</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by three arrows and an object <var class="Arg">M</var> in <var class="Arg">A</var>, this constructor returns the corresponding object in the Serre quotient category.</p>
+
+<p><a id="X7E798D6882E5DBB4" name="X7E798D6882E5DBB4"></a></p>
+
+<h5>6.4-3 SerreQuotientCategoryByThreeArrowsMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByThreeArrowsMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">phi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by three arrows and a generalized morphism <var class="Arg">phi</var> in the generalized morphism category <var class="Arg">A/C</var> is modeled upon, this constructor returns the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X7AAB402C852E6030" name="X7AAB402C852E6030"></a></p>
+
+<h5>6.4-4 SerreQuotientCategoryByThreeArrowsMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByThreeArrowsMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">iota</var>, <var class="Arg">phi</var>, <var class="Arg">pi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by three arrows and three morphisms <span class="Math">\iota: M' \rightarrow M</span>, <span class="Math">\phi: M' \rightarrow N'</span> and <span class="Math">\pi: N \rightarrow N'</span> this operation contructs a morphism in the Serre quotient category.</p>
+
+<p><a id="X8597A92278BC8D63" name="X8597A92278BC8D63"></a></p>
+
+<h5>6.4-5 SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid</code>( <var class="Arg">A/C</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by three arrows and two morphisms <span class="Math">\alpha: M \rightarrow X</span> and <span class="Math">\beta: X \rightarrow N</span> this operation constructs the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X820FF6B88188DB68" name="X820FF6B88188DB68"></a></p>
+
+<h5>6.4-6 SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid</code>( <var class="Arg">A/C</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by three arrows and two morphisms <span class="Math">\alpha: X \rightarrow M</span> and <span class="Math">\beta: X \rightarrow N</span> this operation constructs the corresponding morphism in the Serre quotient category.</p>
+
+<p><a id="X7DFC91D07E9A187B" name="X7DFC91D07E9A187B"></a></p>
+
+<h5>6.4-7 AsSerreQuotientCategoryByThreeArrowsMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSerreQuotientCategoryByThreeArrowsMorphism</code>( <var class="Arg">A/C</var>, <var class="Arg">phi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a Serre quotient category <var class="Arg">A/C</var> modeled by three arrows and a morphism <var class="Arg">phi</var> in <var class="Arg">A</var>, this constructor returns the corresponding morphism in the Serre quotient category.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

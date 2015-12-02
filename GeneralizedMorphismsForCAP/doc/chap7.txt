@@ -1,0 +1,22 @@
+  
+  [1X7 [33X[0;0YSerre Quotients Functors[133X[101X
+  
+  [33X[0;0YThe  operations  in  this  chapter construct conversion functors between two
+  Serre  quotients of different standards. Please note that all the operations
+  DO NOT CARE if the Serre quotients are modeling the same category, they only
+  care  wether  the  categories  are  based  upon  the  same underlying honest
+  category.[133X
+  
+  
+  [1X7.1 [33X[0;0YFunctors[133X[101X
+  
+  [1X7.1-1 SerreQuotientConversionFunctor[101X
+  
+  [29X[2XSerreQuotientConversionFunctor[102X( [3XA[103X, [3XB[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YGiven  two  Serre  quotients  [3XA[103X  and  [3XB[103X of the same category [3XC[103X by equivalent
+  functions,  this  operation  returns  the conversion functor between the two
+  categories.  Please  note that this function does not check the quotients in
+  any sense, i.e., wether the functions are equivalent.[133X
+  

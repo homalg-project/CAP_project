@@ -120,6 +120,15 @@
   subobject  [23X\alpha:  a  \hookrightarrow  b[123X.  The  output  is  the generalized
   morphism from the factorobject to the subobject.[133X
   
+  [1X1.3-2 CommonRestriction[101X
+  
+  [29X[2XCommonRestriction[102X( [3XL[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya list of generalized morphisms[133X
+  
+  [33X[0;0YThe argument is a list [23XL[123X of generalized morphisms by three arrows having the
+  same  source.  The output is a list of generalized morphisms by three arrows
+  which is the comman restriction of [23XL[123X.[133X
+  
   
   [1X1.4 [33X[0;0YProperties[133X[101X
   
@@ -179,15 +188,7 @@
   GeneralizedMorphismCategoryByThreeArrows,
   GeneralizedMorphismCategoryByCospans, or GeneralizedMorphismCategoryBySpans[133X
   
-  [1X1.5-2 GeneralizedMorphism[101X
-  
-  [29X[2XGeneralizedMorphism[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation
-  
-  [33X[0;0YCreates  a  generalized  morphism by three arrows, a generalized morphism by
-  span,  or  a  generalized  morphism  by  cospan,  depending  on  the current
-  standard.[133X
-  
-  [1X1.5-3 GeneralizedMorphismObject[101X
+  [1X1.5-2 GeneralizedMorphismObject[101X
   
   [29X[2XGeneralizedMorphismObject[102X( [3XA[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Yan object in the generalized morphism category[133X
@@ -195,7 +196,7 @@
   [33X[0;0YCreates an object in the current generalized morphism category, depending on
   the standard[133X
   
-  [1X1.5-4 AsGeneralizedMorphism[101X
+  [1X1.5-3 AsGeneralizedMorphism[101X
   
   [29X[2XAsGeneralizedMorphism[102X( [3Xphi[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya generalized morphism[133X
@@ -203,14 +204,14 @@
   [33X[0;0YReturns  the  corresponding  morphism  to  phi  in  the  current generalized
   morphism category.[133X
   
-  [1X1.5-5 GeneralizedMorphismWithRangeAid[101X
+  [1X1.5-4 GeneralizedMorphismWithRangeAid[101X
   
   [29X[2XGeneralizedMorphismWithRangeAid[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation
   
   [33X[0;0YReturns a generalized morphism with range aid by three arrows or by span, or
   a generalized morphism by cospan, depending on the standard.[133X
   
-  [1X1.5-6 GeneralizedMorphismWithSourceAid[101X
+  [1X1.5-5 GeneralizedMorphismWithSourceAid[101X
   
   [29X[2XGeneralizedMorphismWithSourceAid[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation
   
