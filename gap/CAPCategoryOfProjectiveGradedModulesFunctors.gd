@@ -18,35 +18,35 @@
 #! @Description
 #! Consider a graded ring $R$ such that its degree group is identical to $\mathbb{Z}^n$ for
 #! suitable $n \in \mathbb{N}_{\geq 0}$. Then consider a projective graded left module $M$
-#! over $R$ and a cone $C$ in the degree group of $R$. We expect that $C$ is given to the
-#! method as an H-presentation.
-#! Under these circumstances this method truncates $M$ to the semigroup of the cone $C$.
+#! over $R$ and a subsemigroup $H$ in the degree group of $R$. We expect that $H$ is given to the
+#! method as a list of its generators..
+#! Under these circumstances we truncate $M$ to the subsemigroup $H$.
 #! @Returns an object
-#! @Arguments S, C
+#! @Arguments M, H
 DeclareOperation( "TruncationOfProjectiveGradedModule",
                    [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ] );
 
 #! @Description
 #! Consider a graded ring $R$ such that its degree group is identical to $\mathbb{Z}^n$ for
 #! suitable $n \in \mathbb{N}_{\geq 0}$. Then consider a projective graded left module $M$
-#! over $R$ and a cone $C$ in the degree group of $R$. We expect that $C$ is given to the
-#! method as an H-presentation.
-#! Under these circumstances this method computes the embedding of the truncation of $M$ 
+#! over $R$ and a subsemigroup $H$ in the degree group of $R$. We expect that $H$ is given to the
+#! method as a list of its generators.
+#! Under these circumstances we compute the embedding of the truncation of $M$ onto the subsemigroup $H$
 #! into $M$.
 #! @Returns a morphism
-#! @Arguments S, C
+#! @Arguments M, H
 DeclareOperation( "EmbeddingOfTruncationOfProjectiveGradedModule",
                    [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ] );
 
 #! @Description
 #! Consider a graded ring $R$ such that its degree group is identical to $\mathbb{Z}^n$ for
 #! suitable $n \in \mathbb{N}_{\geq 0}$. Then consider a projective graded left module $M$
-#! over $R$ and a cone $C$ in the degree group of $R$. We expect that $C$ is given to the
-#! method as an H-presentation.
-#! Under these circumstances this method computes the projection of the module $M$ onto the 
-#! truncation of $M$.
+#! over $R$ and a subsemigroup $H$ in the degree group of $R$. We expect that $H$ is given to the
+#! method as a list of its generators.
+#! Under these circumstances we compute the projection morphism of $M$ onto its truncation to the 
+#! subsemigroup $H$
 #! @Returns a morphism
-#! @Arguments S, C
+#! @Arguments M, H
 DeclareOperation( "ProjectionOntoTruncationOfProjectiveGradedModule",
                    [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ] );
 
@@ -60,19 +60,19 @@ DeclareOperation( "ProjectionOntoTruncationOfProjectiveGradedModule",
 DeclareGlobalFunction( "TruncationFunctorForProjectiveGradedModules" );
 
 #! @Description
-#! The argument is a homalg graded ring $R$ and a cone $C$ (given by an H-presentation) in the
+#! The argument is a homalg graded ring $R$ and a subsemigroup $H$ (given as a list of generators) in the
 #! degree group of the ring $R$. The output is the functor which truncates projective graded 
-#! left-modules and right-module morphisms to the cone $C$. 
+#! left-modules and left-module-morphisms to the subsemigroup $H$. 
 #! @Returns a functor
-#! @Arguments R, C
+#! @Arguments R, H
 DeclareOperation( "TruncationFunctorForProjectiveGradedLeftModules",
                   [ IsHomalgGradedRing, IsList ] );
-                  
+
 #! @Description
-#! The argument is a homalg graded ring $R$ and a cone $C$ (given by an H-presentation) in the
+#! The argument is a homalg graded ring $R$ and a subsemigroup $H$ (given as a list of generators) in the
 #! degree group of the ring $R$. The output is the functor which truncates projective graded 
-#! right-modules and right-module morphisms to the cone $C$. 
+#! right-modules and right-module-morphisms to the subsemigroup $H$. 
 #! @Returns a functor
-#! @Arguments R, C
+#! @Arguments R, H
 DeclareOperation( "TruncationFunctorForProjectiveGradedRightModules",
                   [ IsHomalgGradedRing, IsList ] );

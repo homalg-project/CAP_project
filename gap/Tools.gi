@@ -301,26 +301,50 @@ end );
 #########################################
 
 # check if a point satisfies hyperplane constraints for a cone, thereby determining if the point lies in the cone
-InstallMethod( PointContainedInCone,
-               " for a cone given by H-constraints, a list specifying a point ",
-               [ IsList, IsList ],
-  function( cone, point )
-    local i, constraint;
+#InstallMethod( PointContainedInCone,
+#               " for a cone given by H-constraints, a list specifying a point ",
+#               [ IsList, IsList ],
+#  function( cone, point )
+#    local i, constraint;
 
     # check if the point satisfies the hyperplane constraints or not
-    for i in [ 1..Length( cone ) ] do
+#    for i in [ 1..Length( cone ) ] do
 
       # compute constraint
-      constraint := Sum( List( [ 1..Length( cone[ i ] ) ], x -> cone[ i ][ x ] * point[ x ] ) );
+#      constraint := Sum( List( [ 1..Length( cone[ i ] ) ], x -> cone[ i ][ x ] * point[ x ] ) );
 
       # if non-negative, the point satisfies this constraint
-      if constraint < 0 then
-	return false;
-      fi;
-      
-    od;
+#      if constraint < 0 then
+#	return false;
+#      fi;
+#
+#    od;
 
     # return the result
-    return true;
+#    return true;
+
+#end );
+
+# check if a point lies in a subsemigroup
+InstallMethod( PointContainedInSubsemigroup,
+               " for a subsemigroup given by a list of generators and a list specifying a point ",
+               [ IsList, IsList ],
+  function( subsemigroup_generators, point )
+    local res;
+
+    # subsemigroup_generators = [ gen1, gens2, ..., genN ]
+    # to use this for 4ti2Interface, we need to transpose it, so that the generators are written in the columns
+    
+    # use 4ti2 to check if point is contained in the subsemigroup
+    res := 4ti2Interface_zsolve_equalities_and_inequalities_in_positive_orthant( 
+                                                            TransposedMat( subsemigroup_generators ), point, [], [] );
+    
+    # the first entry of the returned list, expresses the point in terms of the generators (if such a solution exists)
+    # so the first entry has length 0 precisely if the point is NOT contained in the subsemigroup
+    if Length( res[ 1 ] ) = 0 then
+      return false;
+    else
+      return true;
+    fi;
 
 end );

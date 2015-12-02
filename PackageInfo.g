@@ -72,6 +72,7 @@ Dependencies := rec(
                            [ "MatricesForHomalg", ">= 2015.06.20" ],
                            [ "GradedRingForHomalg", "2014.08.27" ],
                            [ "CAP", ">= 2015.08.17" ],
+                           [ "4ti2Interface", ">= 2015.11.06" ],
                            ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

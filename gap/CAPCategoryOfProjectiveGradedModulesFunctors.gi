@@ -20,16 +20,16 @@
 # Truncation of projective graded modules
 InstallMethod( TruncationOfProjectiveGradedModule,
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ],
-  function( projective_module, cone_h_list )
+  function( projective_module, subsemigroup_generator_list )
 
-    return Source( EmbeddingOfTruncationOfProjectiveGradedModule( projective_module, cone_h_list ) );
+    return Source( EmbeddingOfTruncationOfProjectiveGradedModule( projective_module, subsemigroup_generator_list ) );
     
 end );
 
 # Embedding of truncation of projective graded module into the original module
 InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ],
-  function( projective_module, cone_h_list )
+  function( projective_module, subsemigroup_generator_list )
     local rank, i, j, degree_list, expanded_degree_list, new_degree_list, embedding_matrix, row, truncated_module, 
          graded_ring;
 
@@ -44,11 +44,11 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
     # next make a basic check to see if cone_h_list could be valid
     # note that we do not check the entries to lie in the degree_group!
     rank := Rank( DegreeGroup( UnderlyingHomalgGradedRing( projective_module ) ) );
-    for i in [ 1 .. Length( cone_h_list ) ] do
+    for i in [ 1 .. Length( subsemigroup_generator_list ) ] do
     
-      if Length( cone_h_list[ i ] ) <> rank then
+      if Length( subsemigroup_generator_list[ i ] ) <> rank then
       
-        Error( "The cone is not contained in the degree_group of the graded ring" );
+        Error( "The subsemigroup is not contained in the degree_group of the graded ring" );
         return;
         
       fi;
@@ -70,7 +70,8 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
     for i in [ 1 .. Length( expanded_degree_list ) ] do
       
       # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
-      if PointContainedInCone( cone_h_list, UnderlyingListOfRingElements( expanded_degree_list[ i ] ) ) then
+      if PointContainedInSubsemigroup( subsemigroup_generator_list, 
+                                       UnderlyingListOfRingElements( expanded_degree_list[ i ] ) ) then
 
         Add( new_degree_list, [ expanded_degree_list[ i ], 1 ] );
         row := List( [ 1 .. Rank( projective_module ) ], x -> 0 );
@@ -119,7 +120,7 @@ end );
 # Projection of a projective graded module onto its truncation
 InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsList ],
-  function( projective_module, cone_h_list )
+  function( projective_module, subsemigroup_generator_list )
     local rank, i, j, degree_list, expanded_degree_list, new_degree_list, embedding_matrix, projection_matrix,
          row, truncated_module, graded_ring;
 
@@ -134,11 +135,11 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
     # next make a basic check to see if cone_h_list could be valid
     # note that we do not check the entries to lie in the degree_group!
     rank := Rank( DegreeGroup( UnderlyingHomalgGradedRing( projective_module ) ) );
-    for i in [ 1 .. Length( cone_h_list ) ] do
+    for i in [ 1 .. Length( subsemigroup_generator_list ) ] do
     
-      if Length( cone_h_list[ i ] ) <> rank then
+      if Length( subsemigroup_generator_list[ i ] ) <> rank then
       
-        Error( "The cone is not contained in the degree_group of the graded ring" );
+        Error( "The subsemigroup is not contained in the degree_group of the graded ring" );
         return;
 
       fi;
@@ -161,7 +162,8 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
     for i in [ 1 .. Length( expanded_degree_list ) ] do
       
       # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
-      if PointContainedInCone( cone_h_list, UnderlyingListOfRingElements( expanded_degree_list[ i ] ) ) then
+      if PointContainedInSubsemigroup( subsemigroup_generator_list, 
+                                       UnderlyingListOfRingElements( expanded_degree_list[ i ] ) ) then
 
         Add( new_degree_list, [ expanded_degree_list[ i ], 1 ] );
         row := List( [ 1 .. Rank( projective_module ) ], x -> 0 );
@@ -184,14 +186,14 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
     
         projection_matrix := TransposedMat( embedding_matrix );
         truncated_module := CAPCategoryOfProjectiveGradedLeftModulesObject( new_degree_list,
-                                                                            UnderlyingHomalgGradedRing( projective_module ) 
+                                                                            UnderlyingHomalgGradedRing( projective_module )
                                                                            );
 
       else
       
         projection_matrix := embedding_matrix;
         truncated_module := CAPCategoryOfProjectiveGradedRightModulesObject( new_degree_list,
-                                                                             UnderlyingHomalgGradedRing( projective_module ) 
+                                                                            UnderlyingHomalgGradedRing( projective_module )
                                                                             );
 
       fi;
@@ -220,7 +222,7 @@ end );
 
 # this function computes the trunction functor for both left and right presentations
 InstallGlobalFunction( TruncationFunctorForProjectiveGradedModules,
-  function( graded_ring, cone_h_list, left )
+  function( graded_ring, subsemigroup_generator_list, left )
     local rank, i, category, functor;
 
     # check if the degree_group of the underlying homalg_graded_ring is free
@@ -233,11 +235,11 @@ InstallGlobalFunction( TruncationFunctorForProjectiveGradedModules,
 
     # next check if the cone_h_list is valid
     rank := Rank( DegreeGroup( graded_ring ) );
-    for i in [ 1 .. Length( cone_h_list ) ] do
+    for i in [ 1 .. Length( subsemigroup_generator_list ) ] do
     
-      if Length( cone_h_list[ i ] ) <> rank then
+      if Length( subsemigroup_generator_list[ i ] ) <> rank then
 
-        Error( "The cone is not contained in the degree_group of the graded ring" );
+        Error( "The subsemigroup is not contained in the degree_group of the graded ring" );
         return;
 
       fi;
@@ -253,16 +255,17 @@ InstallGlobalFunction( TruncationFunctorForProjectiveGradedModules,
 
     # then initialise the functor
     functor := CapFunctor( 
-                      Concatenation( "Truncation functor for ", Name( category ), " to the cone ", String( cone_h_list ) ), 
-                      category, 
-                      category 
+                      Concatenation( "Truncation functor for ", Name( category ), " to the subsemigroup generated by ", 
+                                     String( subsemigroup_generator_list ) ), 
+                      category,
+                      category
                       );
     
     # now define the functor operation on the objects
     AddObjectFunction( functor,
       function( object )
       
-          return TruncationOfProjectiveGradedModule( object, cone_h_list );
+          return TruncationOfProjectiveGradedModule( object, subsemigroup_generator_list );
             
       end );
 
@@ -271,8 +274,11 @@ InstallGlobalFunction( TruncationFunctorForProjectiveGradedModules,
       function( new_source, morphism, new_range )
 
         return Lift( 
-                 PreCompose( EmbeddingOfTruncationOfProjectiveGradedModule( Source( morphism ), cone_h_list ), morphism ).          
-                 EmbeddingOfTruncationOfProjectiveGradedModule( Range( morphism ), cone_h_list )
+                 PreCompose( 
+                     EmbeddingOfTruncationOfProjectiveGradedModule( Source( morphism ), subsemigroup_generator_list ), 
+                     morphism 
+                     ),
+                 EmbeddingOfTruncationOfProjectiveGradedModule( Range( morphism ), subsemigroup_generator_list )
                );
 
       end );
@@ -285,17 +291,17 @@ end );
 # functor to compute the truncation of left-modules
 InstallMethod( TruncationFunctorForProjectiveGradedLeftModules,
                [ IsHomalgGradedRing, IsList ],
-      function( graded_ring, cone_h_list )
+      function( graded_ring, subsemigroup_generator_list )
       
-        return TruncationFunctorForProjectiveGradedModules( graded_ring, cone_h_list, true );
+        return TruncationFunctorForProjectiveGradedModules( graded_ring, subsemigroup_generator_list, true );
 
 end );
 
 # functor to compute the truncation of right-modules
 InstallMethod( TruncationFunctorForProjectiveGradedRightModules,
                [ IsHomalgGradedRing, IsList ],
-      function( graded_ring, cone_h_list )
+      function( graded_ring, subsemigroup_generator_list )
       
-        return TruncationFunctorForProjectiveGradedModules( graded_ring, cone_h_list, false );
+        return TruncationFunctorForProjectiveGradedModules( graded_ring, subsemigroup_generator_list, false );
 
 end );
