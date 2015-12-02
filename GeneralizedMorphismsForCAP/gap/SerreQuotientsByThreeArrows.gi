@@ -445,11 +445,6 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByThreeArrowsObject,
     
 end );
 
-InstallMethod( AsSerreQuotientCategoryObject,
-               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsCapCategoryObject ],
-               
-  AsSerreQuotientCategoryByThreeArrowsObject );
-
 InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrowsMorphism,
                                   [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsGeneralizedMorphismByThreeArrows ],
                                   
@@ -517,10 +512,41 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByThreeArrowsMorphism,
     
 end );
 
+#############################################
+##
+## Compatibility layer
+##
+#############################################
+
+InstallMethod( AsSerreQuotientCategoryObject,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsCapCategoryObject ],
+               
+  AsSerreQuotientCategoryByThreeArrowsObject );
+
 InstallMethod( AsSerreQuotientCategoryMorphism,
                [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsCapCategoryMorphism ],
-               
+                                  
   AsSerreQuotientCategoryByThreeArrowsMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsGeneralizedMorphismByThreeArrows ],
+               
+  SerreQuotientCategoryByThreeArrowsMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryByThreeArrowsMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphismWithRangeAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid );
+
+InstallMethod( SerreQuotientCategoryMorphismWithSourceAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByThreeArrows, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid );
 
 #############################################
 ##

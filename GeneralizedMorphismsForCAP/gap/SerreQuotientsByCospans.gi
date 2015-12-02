@@ -422,11 +422,6 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByCospansObject,
     
 end );
 
-InstallMethod( AsSerreQuotientCategoryObject,
-               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryObject ],
-               
-  AsSerreQuotientCategoryByCospansObject );
-
 InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospansMorphism,
                                   [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsGeneralizedMorphismByCospan ],
                                   
@@ -452,11 +447,6 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospansMorphism,
     return serre_morphism;
     
 end );
-
-InstallMethod( SerreQuotientCategoryMorphism,
-               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsGeneralizedMorphismByCospan ],
-               
-  SerreQuotientCategoryByCospansMorphism );
 
 InstallMethod( SerreQuotientCategoryByCospansMorphism,
                [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
@@ -494,10 +484,46 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByCospansMorphism,
     
 end );
 
+#############################################
+##
+## Compatibility layer
+##
+#############################################
+
+InstallMethod( AsSerreQuotientCategoryObject,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryObject ],
+               
+  AsSerreQuotientCategoryByCospansObject );
+
 InstallMethod( AsSerreQuotientCategoryMorphism,
                [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism ],
                                   
   AsSerreQuotientCategoryByCospansMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsGeneralizedMorphismByCospan ],
+               
+  SerreQuotientCategoryByCospansMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryByCospansMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryByCospansMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphismWithRangeAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryByCospansMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphismWithSourceAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryByCospans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryByCospansMorphismWithSourceAid );
 
 #############################################
 ##

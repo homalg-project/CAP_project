@@ -421,11 +421,6 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryBySpansObject,
     
 end );
 
-InstallMethod( AsSerreQuotientCategoryObject,
-               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryObject ],
-               
-  AsSerreQuotientCategoryBySpansObject );
-
 InstallMethodWithCacheFromObject( SerreQuotientCategoryBySpansMorphism,
                                   [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsGeneralizedMorphismBySpan ],
                                   
@@ -493,10 +488,46 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryBySpansMorphism,
     
 end );
 
+#############################################
+##
+## Compatibility layer
+##
+#############################################
+
+InstallMethod( AsSerreQuotientCategoryObject,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryObject ],
+               
+  AsSerreQuotientCategoryBySpansObject );
+
 InstallMethod( AsSerreQuotientCategoryMorphism,
                [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryMorphism ],
-               
+                                  
   AsSerreQuotientCategoryBySpansMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsGeneralizedMorphismBySpan ],
+               
+  SerreQuotientCategoryBySpansMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryBySpansMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphism,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryBySpansMorphism );
+
+InstallMethod( SerreQuotientCategoryMorphismWithRangeAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryBySpansMorphismWithRangeAid );
+
+InstallMethod( SerreQuotientCategoryMorphismWithSourceAid,
+               [ IsCapCategory and WasCreatedAsSerreQuotientCategoryBySpans, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  SerreQuotientCategoryBySpansMorphism );
 
 #############################################
 ##
