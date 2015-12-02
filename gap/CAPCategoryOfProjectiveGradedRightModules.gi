@@ -864,12 +864,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     # @Description
     # This method computes the (weak) fibre product of a list of morphisms <A>morphism_list</A>
     # @Returns an object
-    # @Arguments morphism_list    
-    AddFiberProduct( category,             
+    # @Arguments morphism_list
+    AddFiberProduct( category,
       function( morphism_list )
-    
-        # simply return the source of the projection in factor 1
-        return Source( ProjectionInFactorOfFiberProduct( morphism_list, 1 ) );
+
+        if Length( morphism_list ) = 0 then
+          return ZeroObject( category );
+        else
+          return Source( ProjectionInFactorOfFiberProduct( morphism_list, 1 ) );
+        fi;
 
     end );
 
@@ -900,8 +903,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
           projection_matrix := SyzygiesOfColumns( mapping_matrix, matrix_list[ 1 ] );
           for j in [ 2 .. Length( matrix_list ) ] do
           
-            projection_matrix := projection_matrix * SyzygiesOfColumns( mapping_matrix * projection_matrix, matrix_list[ j ] );
-            
+            projection_matrix := projection_matrix * SyzygiesOfColumns( mapping_matrix * 
+                                                                              projection_matrix, matrix_list[ j ] );
+
           od;
           
           # from this deduce the projection mapping
@@ -909,7 +913,50 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         
         fi;
 
-    end );    
+    end );
+
+    # @Description
+    # This method computes the projection morphism from the (weak) fibre product 
+    # of a list of morphisms <A>morphism_list</A> into its <A>projection_number</A>-th factor. This method
+    # assumes the fibre_product_object as input.
+    # @Returns a morphism
+    # @Arguments morphism_list, projection_number
+    AddProjectionInFactorOfFiberProductWithGivenFiberProduct( category,
+      function( morphism_list, projection_number, fiber_product )
+        local mapping_matrix, projection_matrix, matrix_list, j;
+        
+        if Length( morphism_list ) = 1 then
+        
+          return KernelEmbedding( morphism_list[ 1 ] );
+        
+        else
+        
+          # extract the mapping matrix of the morphism[ projection_number ]
+          mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ projection_number ] );
+        
+          # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
+          # projection morphism of
+          matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
+          Remove( matrix_list, projection_number );
+        
+          # now iterate the syzygies computation
+          projection_matrix := SyzygiesOfColumns( mapping_matrix, matrix_list[ 1 ] );
+          for j in [ 2 .. Length( matrix_list ) ] do
+          
+            projection_matrix := projection_matrix * SyzygiesOfColumns( mapping_matrix * 
+                                                                              projection_matrix, matrix_list[ j ] );
+
+          od;
+          
+          # from this construct the projection mapping
+          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fiber_product,
+                                                                          projection_matrix,
+                                                                          Source( morphism_list[ projection_number ] )
+                                                                         );
+
+        fi;
+
+    end );
 
 
 
@@ -928,9 +975,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     AddPushout( category,
       function( morphism_list )
 
-      # simply return the range of the injection of cofactor 1
-      return Range( InjectionOfCofactorOfPushout( morphism_list, 1 ) );
-              
+        if Length( morphism_list ) = 0 then
+          return ZeroObject( category );
+        else
+          return Range( InjectionOfCofactorOfPushout( morphism_list, 1 ) );
+        fi;
+
     end );
 
     # @Description
@@ -969,7 +1019,48 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         
        fi;
 
-    end );       
+    end );
+
+    # @Description
+    # This method computes the injection of the <A>injection_number</A>-th cofactor of a (weak) pushout 
+    # of a list of morphisms <A>morphism_list</A>. This method assumes the pushout_object as input.
+    # @Returns a morphism
+    # @Arguments morphism_list, injection_number
+    AddInjectionOfCofactorOfPushoutWithGivenPushout( category,
+      function( morphism_list, injection_number, pushout_object )
+        local mapping_matrix, embedding_matrix, matrix_list, j;
+        
+        if Length( morphism_list ) = 1 then
+        
+          return KernelEmbedding( morphism_list[ 1 ] );
+        
+        else
+        
+          # extract the mapping matrix of the morphism[ projection_number ]
+          mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ injection_number ] );
+        
+          # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
+          # projection morphism of
+          matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
+          Remove( matrix_list, injection_number );
+        
+          # now iterate the syzygies computation
+          embedding_matrix := SyzygiesOfRows( mapping_matrix, matrix_list[ 1 ] );
+          for j in [ 2 .. Length( matrix_list ) ] do
+          
+            embedding_matrix := SyzygiesOfRows( embedding_matrix * mapping_matrix, matrix_list[ j ] ) * embedding_matrix;
+            
+          od;
+        
+          # and from this construct the injection
+          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ injection_number ] ),
+                                                                          embedding_matrix,
+                                                                          pushout_object
+                                                                         );
+
+       fi;
+
+    end );
 
 
 

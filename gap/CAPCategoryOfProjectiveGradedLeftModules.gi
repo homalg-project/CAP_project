@@ -959,10 +959,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           od;
 
           # and from this construct the projection map
-          return CAPCategoryOfProjectiveGradedLeftModulesMorphism( fibre_product_object, 
-                                                                   projection_matrix, 
-                                                                   Source( morphism_list[ projection_number ] ) 
-                                                                  );
+          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fibre_product_object, 
+                                                                          projection_matrix, 
+                                                                          Source( morphism_list[ projection_number ] ) 
+                                                                         );
 
         fi;
 
@@ -1063,10 +1063,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           od;
 
           # from this construct the injection
-          return CAPCategoryOfProjectiveGradedLeftModulesMorphism( Range( morphism_list[ injection_number ] ),
-                                                                   embedding_matrix,
-                                                                   pushout_object
-                                                                  );
+          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ injection_number ] ),
+                                                                          embedding_matrix,
+                                                                          pushout_object
+                                                                         );
 
         fi;
 
