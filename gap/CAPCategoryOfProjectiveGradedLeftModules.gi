@@ -30,8 +30,6 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
       SetIsAdditiveCategory( category, true );
       SetIsStrictMonoidalCategory( category, true );
       SetIsRigidSymmetricClosedMonoidalCategory( category, true );    
-      SetIsAdditionWithZeroObjectIdenticalObject( category, true );
-      SetIsProjCategory( category, true );
     
       # install its functionality
       INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES( category ); 
