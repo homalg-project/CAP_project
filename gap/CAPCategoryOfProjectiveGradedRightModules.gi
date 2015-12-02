@@ -288,16 +288,103 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     ######################################################################
 
     # @Description
-    # This method checks if the underlying degree lists are equal.
-    # Thus this method really checks if two objects are identical and not merely isomorphic!
+    # This method checks if two projective modules are equal. We consider them equal if they are isomorphic.
     # @Returns true or false
-    # @Arguments object1, object2    
+    # @Arguments object1, object2
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( object1, object2 )
+        local deg_list1, deg_list2, i, j, new_deg_list1, new_deg_list2, comparer, counter;
       
-        return DegreeList( object_1 ) = DegreeList( object_2 );
+        # step1: simplify the two degree_lists
+        deg_list1 := List( [ 1 .. Length( DegreeList( object1 ) ) ] );
+        for i in [ 1 .. Length( deg_list1 ) ] do
+          deg_list1[ i ] := ShallowCopy( DegreeList( object1 )[ i ] );
+        od;
+        deg_list2 := List( [ 1 .. Length( DegreeList( object2 ) ) ] );
+        for i in [ 1 .. Length( deg_list2 ) ] do
+          deg_list2[ i ] := ShallowCopy( DegreeList( object2 )[ i ] );
+        od;
+
+        new_deg_list1 := [];
+        new_deg_list2 := [];
+        
+        for i in [ 1 .. Length( deg_list1 ) ] do
+        
+          if deg_list1[ i ][ 2 ] <> -1 then
+        
+            comparer := deg_list1[ i ][ 1 ];
+            counter := deg_list1[ i ][ 2 ];
+        
+            for j in [ i+1 .. Length( deg_list1 ) ] do
+          
+              if deg_list1[ j ][ 1 ] = comparer then
+            
+                counter := counter + deg_list1[ j ][ 2 ];
+                deg_list1[ j ][ 2 ] := -1;
+                
+              fi;
+          
+            od;
+            
+            Add( new_deg_list1, [ comparer, counter ] );
+        
+          fi;
+        
+        od;
+        
+        for i in [ 1 .. Length( deg_list2 ) ] do
+        
+          if deg_list2[ i ][ 2 ] <> -1 then
+        
+            comparer := deg_list2[ i ][ 1 ];
+            counter := deg_list2[ i ][ 2 ];
+        
+            for j in [ i+1 .. Length( deg_list2 ) ] do
+          
+              if deg_list2[ j ][ 1 ] = comparer then
+            
+                counter := counter + deg_list2[ j ][ 2 ];
+                deg_list2[ j ][ 2 ] := -1;
+                
+              fi;
+          
+            od;
+            
+            Add( new_deg_list2, [ comparer, counter ] );
+        
+          fi;
+        
+        od;
+        
+        # step2: compare the degree_list (modulo potential permutations)
+        if Length( new_deg_list1 ) <> Length( new_deg_list2 ) then
+          return false;
+        fi;
+        
+        for i in [ 1 .. Length( new_deg_list1 ) ] do
+        
+          # try to find a match for entry i of new_deg_list1 in new_deg_list2
+          j := 1;
+          while not ( ( new_deg_list1[ i ][ 1 ] = new_deg_list2[ j ][ 1 ] ) and 
+                      ( new_deg_list1[ i ][ 2 ] = new_deg_list2[ j ][ 2 ] ) ) do
+                          
+             j := j + 1;
+             
+             if j > Length( new_deg_list2 ) then
+               return false;
+             fi;
+             
+          od;
+          
+          # and, if we find such an entry, remove it
+          Remove( new_deg_list2, j );
+        
+        od;
+        
+        # and finally return if the two degree_lists encode isomorphic projective modules
+        return Length( new_deg_list2 ) = 0;
       
-    end );
+    end );    
     
     # @Description
     # This method checks if the sources and ranges of the two morphisms are equal (by means of the method above).

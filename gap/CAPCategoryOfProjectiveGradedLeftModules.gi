@@ -288,8 +288,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     #
     ######################################################################
     
-    ## FIXME: Implement a good equality, which takes care of permutations and multiples.
-    
     # @Description
     # This method checks if two projective modules are equal. We consider them equal if they are isomorphic.
     # @Returns true or false
@@ -368,8 +366,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
           # try to find a match for entry i of new_deg_list1 in new_deg_list2
           j := 1;
-          while not ( (new_deg_list1[ i ][ 1 ] = new_deg_list2[ j ][ 1 ] ) and 
-                      (new_deg_list1[ i ][ 2 ] = new_deg_list2[ j ][ 2 ] ) ) do
+          while not ( ( new_deg_list1[ i ][ 1 ] = new_deg_list2[ j ][ 1 ] ) and 
+                      ( new_deg_list1[ i ][ 2 ] = new_deg_list2[ j ][ 2 ] ) ) do
                           
              j := j + 1;
              
