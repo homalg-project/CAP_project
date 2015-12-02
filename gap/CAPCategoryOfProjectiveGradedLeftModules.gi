@@ -832,7 +832,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
         if Length( morphism_list ) = 0 then
 
-          Error( "Only for fibre products of non-empty morphism lists, projections onto the factors can be computed. \n" );
+          Error( "Only for fibre products of non-empty morphism lists, projections onto the factors can be computed" );
           return;
 
         elif Length( morphism_list ) = 1 then
@@ -877,7 +877,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
         if Length( morphism_list ) = 0 then
 
-          Error( "Only for fibre products of non-empty morphism lists, projections onto the factors can be computed. \n" );
+          Error( "Only for fibre products of non-empty morphism lists, projections onto the factors can be computed" );
           return;
 
         elif Length( morphism_list ) = 1 then
@@ -946,7 +946,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
       function( morphism_list, injection_number )
         local mapping_matrix, embedding_matrix, matrix_list, j;
 
-        if Length( morphism_list ) = 1 then
+        if Length( morphism_list ) = 0 then
+
+          Error( "Only for pushouts of non-empty morphism lists, injections of the factors can be computed" );
+          return;
+
+        elif Length( morphism_list ) = 1 then
 
           return KernelEmbedding( morphism_list[ 1 ] );
 
@@ -984,7 +989,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
       function( morphism_list, injection_number, pushout_object )
         local mapping_matrix, embedding_matrix, matrix_list, j;
 
-        if Length( morphism_list ) = 1 then
+        if Length( morphism_list ) = 0 then
+
+          Error( "Only for pushouts of non-empty morphism lists, injections of the factors can be computed" );
+          return;
+
+        elif Length( morphism_list ) = 1 then
 
           return KernelEmbedding( morphism_list[ 1 ] );
 

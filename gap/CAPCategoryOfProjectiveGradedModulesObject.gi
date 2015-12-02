@@ -58,8 +58,8 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
     
       if not Length( degree_list[ i ] ) = 2 then
       
-        Error( "The entries of the degree list have to consist of two entries - the degree and its multiplicity. \n" );
-        return false;
+        Error( "The entries of the degree list have to consist of two entries - the degree and its multiplicity" );
+        return;
       
       fi;
       
@@ -70,9 +70,9 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
         if not Length( buffer ) = nrGenerators then
         
           Error( Concatenation( "Entry 1 of the ", String( i ), 
-                 "-th list in degree_list cannot be interpreted as element of the degree group of the graded ring. \n" ) );
-          return false;
-                
+                 "-th list in degree_list cannot be interpreted as element of the degree group of the graded ring" ) );
+          return;
+
         fi;
         buffer_homalg_module_element := HomalgModuleElement( HomalgMatrix( [ buffer ], HomalgRing( A ) ), A );
         
@@ -84,16 +84,16 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
       if not SuperObject( degree_list[ i ][ 1 ] ) = A then
       
         Error( Concatenation( "Entry 1 of the ", String( i )
-                             ,"th list in degree_list is not an element of the degree group of the homalg graded ring. \n" ) );
-        return false;
+                             ,"th list in degree_list is not an element of the degree group of the homalg graded ring" ) );
+        return;
       
       fi;
       
       if ( not IsInt( degree_list[ i ][ 2 ] ) ) or ( degree_list[ i ][ 2 ] < 0 ) then
       
         Error( Concatenation( "Entry 2 of the ", String( i ), 
-                                                        "-th list in degree_list has to be a non-negative integer. \n" ) );
-        return false;
+                                                        "-th list in degree_list has to be a non-negative integer" ) );
+        return;
       
       fi;
     

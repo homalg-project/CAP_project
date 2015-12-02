@@ -36,8 +36,9 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
     # check if the degree_group of the underlying homalg_graded_ring is free
     if not IsFree( DegreeGroup( UnderlyingHomalgGradedRing( projective_module ) ) ) then
     
-      return Error( "Currently truncations are only supported for freely-graded rings. \n" );
-    
+      Error( "Currently truncations are only supported for freely-graded rings" );
+      return;
+
     fi;
     
     # next make a basic check to see if cone_h_list could be valid
@@ -47,7 +48,8 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
     
       if Length( cone_h_list[ i ] ) <> rank then
       
-        return Error( "The cone is not contained in the degree_group of the graded ring. \n" );
+        Error( "The cone is not contained in the degree_group of the graded ring" );
+        return;
         
       fi;
     
@@ -124,8 +126,9 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
     # check if the degree_group of the underlying homalg_graded_ring is free
     if not IsFree( DegreeGroup( UnderlyingHomalgGradedRing( projective_module ) ) ) then
     
-      return Error( "Currently truncations are only supported for freely-graded rings. \n" );
-    
+      Error( "Currently truncations are only supported for freely-graded rings" );
+      return;
+
     fi;
     
     # next make a basic check to see if cone_h_list could be valid
@@ -135,8 +138,9 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
     
       if Length( cone_h_list[ i ] ) <> rank then
       
-        return Error( "The cone is not contained in the degree_group of the graded ring. \n" );
-        
+        Error( "The cone is not contained in the degree_group of the graded ring" );
+        return;
+
       fi;
     
     od;
@@ -221,20 +225,21 @@ InstallGlobalFunction( TruncationFunctorForProjectiveGradedModules,
 
     # check if the degree_group of the underlying homalg_graded_ring is free
     if not IsFree( DegreeGroup( graded_ring ) ) then
-      
-      ## FIXME: Let error messages simply end, no ., no !, no \n
-      return Error( "Currently truncations are only supported for freely-graded rings. \n" );
-    
+
+      Error( "Currently truncations are only supported for freely-graded rings" );
+      return;
+
     fi;
-    
+
     # next check if the cone_h_list is valid
     rank := Rank( DegreeGroup( graded_ring ) );
     for i in [ 1 .. Length( cone_h_list ) ] do
     
       if Length( cone_h_list[ i ] ) <> rank then
-      
-        return Error( "The cone is not contained in the degree_group of the graded ring. \n" );
-        
+
+        Error( "The cone is not contained in the degree_group of the graded ring" );
+        return;
+
       fi;
     
     od;

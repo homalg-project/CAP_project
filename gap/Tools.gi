@@ -23,11 +23,13 @@ InstallMethod( DeduceMapFromMatrixAndRangeLeft,
       # check if the input is valid
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( range_object ) ) then
       
-        return Error( "The matrix must be defined over the same ring that the range_object was defined over. \n" );
+        Error( "The matrix must be defined over the same ring that the range_object was defined over" );
+        return;
       
       elif IsZero( matrix ) and NrRows( matrix ) <> 0 then
       
-        return Error( "The source_object cannot be determined uniquely! \n" );
+        Error( "The source_object cannot be determined uniquely" );
+        return;
        
       fi;
       
@@ -93,12 +95,14 @@ InstallMethod( DeduceMapFromMatrixAndSourceLeft,
       # check if the input is valid
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( source_object ) ) then
       
-        return Error( "The matrix must be defined over the same ring that the range_object was defined over. \n" );
+        Error( "The matrix must be defined over the same ring that the range_object was defined over" );
+        return;
 
       elif IsZero( matrix ) and NrColumns( matrix ) <> 0 then
       
-        return Error( "The range_object cannot be determined uniquely! \n" );
-       
+        Error( "The range_object cannot be determined uniquely" );
+        return;
+
       fi;
       
       # the input is valid, so continue by setting the homalg_graded_ring
@@ -163,11 +167,13 @@ InstallMethod( DeduceMapFromMatrixAndRangeRight,
       # check if the input is valid
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( range_object ) ) then
       
-        return Error( "The matrix must be defined over the same ring that the range_object was defined over. \n" );
+        Error( "The matrix must be defined over the same ring that the range_object was defined over" );
+        return;
 
       elif IsZero( matrix ) and NrColumns( matrix ) <> 0 then
       
-        return Error( "The source_object cannot be determined uniquely! \n" );
+        Error( "The source_object cannot be determined uniquely" );
+        return;
        
       fi;
       
@@ -231,11 +237,13 @@ InstallMethod( DeduceMapFromMatrixAndSourceRight,
       # check if the input is valid
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( source_object ) ) then
       
-        return Error( "The matrix must be defined over the same ring that the range_object was defined over. \n" );
+        Error( "The matrix must be defined over the same ring that the range_object was defined over" );
+        return;
 
       elif IsZero( matrix ) and NrRows( matrix ) <> 0 then
       
-        return Error( "The range_object cannot be determined uniquely! \n" );
+        Error( "The range_object cannot be determined uniquely" );
+        return;
        
       fi;
       

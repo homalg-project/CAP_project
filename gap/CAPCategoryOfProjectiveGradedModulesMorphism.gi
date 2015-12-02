@@ -56,8 +56,9 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
     # check that source and range are objects in the same category
     if not IsIdenticalObj( category, CapCategory( range ) ) then
       
-      return Error( "source and range are not defined over identical categories" );
-      
+      Error( "Source and range are not defined over identical categories" );
+      return;
+
     fi;
     
     # extract the homalg_graded_ring
@@ -66,8 +67,9 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
     # make a number of sanity tests (for left presentations actually!)
     if not IsIdenticalObj( homalg_graded_ring, UnderlyingHomalgGradedRing( source ) ) then
       
-      return Error( "the matrix is defined over a different ring than the objects" );
-      
+      Error( "The matrix is defined over a different ring than the objects" );
+      return;
+
     fi;
 
     # work out if we are considering left or right presentations
@@ -78,13 +80,15 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
       
       if NrRows( homalg_matrix ) <> Rank( source ) then
           
-          Error( "the number of rows of the given matrix is incorrect" );
-          
+          Error( "The number of rows of the given matrix is incorrect" );
+          return;
+
       fi;
       
       if NrColumns( homalg_matrix ) <> Rank( range ) then
         
-        Error( "the number of columns of the given matrix is incorrect" );
+        Error( "The number of columns of the given matrix is incorrect" );
+        return;
         
       fi;
       
@@ -92,13 +96,15 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
       
       if NrColumns( homalg_matrix ) <> Rank( source ) then
         
-        Error( "the number of columns of the given matrix is incorrect" );
+        Error( "The number of columns of the given matrix is incorrect" );
+        return;
         
       fi;
       
       if NrRows( homalg_matrix ) <> Rank( range ) then
         
-        Error( "the number of rows of the given matrix is incorrect" );
+        Error( "The number of rows of the given matrix is incorrect" );
+        return;
         
       fi;
       

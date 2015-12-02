@@ -25,7 +25,8 @@ InstallGlobalFunction( NaturalTransformationFromTruncationToIdentityForProjectiv
     # check if the degree_group of the underlying homalg_graded_ring is free
     if not IsFree( DegreeGroup( graded_ring ) ) then
     
-      return Error( "Currently truncations are only supported for freely-graded rings. \n" );
+      Error( "Currently truncations are only supported for freely-graded rings" );
+      return;
     
     fi;
     
@@ -35,8 +36,9 @@ InstallGlobalFunction( NaturalTransformationFromTruncationToIdentityForProjectiv
     
       if Length( cone_h_list[ i ] ) <> rank then
       
-        return Error( "The cone is not contained in the degree_group of the graded ring. \n" );
-        
+        Error( "The cone is not contained in the degree_group of the graded ring" );
+        return;
+
       fi;
     
     od;

@@ -830,8 +830,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     AddProjectionInFactorOfFiberProduct( category,
       function( morphism_list, projection_number )
         local mapping_matrix, projection_matrix, matrix_list, j;
-        
-        if Length( morphism_list ) = 1 then
+
+        if Length( morphism_list ) = 0 then
+
+          Error( "Only for fibre products of non-empty morphism lists, projections onto the factors can be computed" );
+          return;
+
+        elif Length( morphism_list ) = 1 then
         
           return KernelEmbedding( morphism_list[ 1 ] );
         
@@ -870,8 +875,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     AddProjectionInFactorOfFiberProductWithGivenFiberProduct( category,
       function( morphism_list, projection_number, fiber_product )
         local mapping_matrix, projection_matrix, matrix_list, j;
-        
-        if Length( morphism_list ) = 1 then
+
+        if Length( morphism_list ) = 0 then
+
+          Error( "Only for fibre products of non-empty morphism lists, projections onto the factors can be computed" );
+          return;
+
+        elif Length( morphism_list ) = 1 then
         
           return KernelEmbedding( morphism_list[ 1 ] );
         
@@ -937,13 +947,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     AddInjectionOfCofactorOfPushout( category,
       function( morphism_list, injection_number )
         local mapping_matrix, embedding_matrix, matrix_list, j;
-        
-        if Length( morphism_list ) = 1 then
-        
+
+        if Length( morphism_list ) = 0 then
+
+          Error( "Only for pushouts of non-empty morphism lists, injections of the factors can be computed" );
+          return;
+
+        elif Length( morphism_list ) = 1 then
+
           return KernelEmbedding( morphism_list[ 1 ] );
-        
+
         else
-        
+
           # extract the mapping matrix of the morphism[ projection_number ]
           mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ injection_number ] );
         
@@ -975,9 +990,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     AddInjectionOfCofactorOfPushoutWithGivenPushout( category,
       function( morphism_list, injection_number, pushout_object )
         local mapping_matrix, embedding_matrix, matrix_list, j;
-        
-        if Length( morphism_list ) = 1 then
-        
+
+        if Length( morphism_list ) = 0 then
+
+          Error( "Only for pushouts of non-empty morphism lists, injections of the factors can be computed" );
+          return;
+
+        elif Length( morphism_list ) = 1 then
+
           return KernelEmbedding( morphism_list[ 1 ] );
         
         else
