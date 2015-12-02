@@ -51,7 +51,7 @@ InstallMethod( FunctorFromCospansToSpans,
     AddMorphismFunction( functor,
       function( new_source, morphism, new_range )
         
-        return GeneralizedMorphismBySpansWithRangeAid( Arrow( morphism ), ReversedArrow( morphism ) );
+        return GeneralizedMorphismBySpanWithRangeAid( Arrow( morphism ), ReversedArrow( morphism ) );
         
     end );
     
@@ -101,7 +101,7 @@ InstallMethod( FunctorFromSpansToCospans,
     AddMorphismFunction( functor,
       function( new_source, morphism, new_range )
         
-        return GeneralizedMorphismByCospansWithSourceAid( ReversedArrow( morphism ), Arrow( morphism ) );
+        return GeneralizedMorphismByCospanWithSourceAid( ReversedArrow( morphism ), Arrow( morphism ) );
         
     end );
     
@@ -126,7 +126,7 @@ InstallMethod( FunctorFromThreeArrowsToCospans,
     AddMorphismFunction( functor,
       function( new_source, morphism, new_range )
         
-        return GeneralizedMorphismByCospans( SourceAid( morphism ), MorphismAid( morphism ), RangeAid( morphism ) );
+        return GeneralizedMorphismByCospan( SourceAid( morphism ), Arrow( morphism ), RangeAid( morphism ) );
         
     end );
     
@@ -146,12 +146,12 @@ InstallMethod( FunctorFromThreeArrowsToSpans,
     
     functor := CapFunctor( Concatenation( "Functor from three arrows to cospans on ", Name( category ) ), source_cat, range_cat );
     
-    AddObjectFunction( functor, i -> GeneralizedMorphismBySpanObject( UnderlyingHonestObject( i ) ) );
+    AddObjectFunction( functor, i -> GeneralizedMorphismBySpansObject( UnderlyingHonestObject( i ) ) );
     
     AddMorphismFunction( functor,
       function( new_source, morphism, new_range )
         
-        return GeneralizedMorphismBySpan( SourceAid( morphism ), MorphismAid( morphism ), RangeAid( morphism ) );
+        return GeneralizedMorphismBySpan( SourceAid( morphism ), Arrow( morphism ), RangeAid( morphism ) );
         
     end );
     

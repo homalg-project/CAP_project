@@ -17,4 +17,6 @@ ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsByCospans.gi");
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsBySpans.gi");
 
+ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsFunctors.gi");
+
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/Switcher.gi");
