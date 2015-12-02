@@ -777,36 +777,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
         # and from this deduce the mapping
         return DeduceMapFromMatrixAndRangeLeft( kernel_matrix, Source( morphism ) );
-        
+
     end );
 
-#     # @Description
-#     # This method computes the (weak) kernel object as the source of the (weak) kernel embedding 
-#     # of the morphism <A>morphism</A>.
-#     # @Returns an object
-#     # @Arguments morphism
-#     AddKernelObject( category,
-#       function( morphism )
-#         
-#         return Source( KernelEmbedding( morphism ) );
-#         
-#     end );
-#         
-#     # @Description
-#     # This method computes the (weak) kernel embedding of <A>morphism</A> given that the (weak) kernel object 
-#     # <A>kernel</A> is already known.
-#     # @Returns a morphism
-#     # @Arguments morphism, kernel
-#     AddKernelEmbeddingWithGivenKernelObject( category,
-#       function( morphism, kernel )
-#         local kernel_matrix;
-#         
-#         kernel_matrix := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
-#         
-#         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( kernel, kernel_matrix, Source( morphism ) );
-#         
-#     end );
-    
     # @Description
     # This method computes the (weak) cokernel projection of a morphism <A>morphism</A>.
     # @Returns a morphism
@@ -823,33 +796,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
     end );
 
-#     # @Description
-#     # This method computes the (weak) cokernel object as the range of the (weak) cokernel projection
-#     # of the morphism <A>morphism</A>.
-#     # @Returns an object
-#     # @Arguments morphism
-#     AddCokernelObject( category,
-#       function( morphism )
-#         
-#         return Range( CokernelProjection( morphism ) );
-#                 
-#     end );
-#     
-#     # @Description
-#     # This method computes the (weak) cokernel projection of <A>morphism</A> given that the (weak) cokernel object 
-#     # <A>cokernel</A> is already known.
-#     # @Returns a morphism
-#     # @Arguments morphism, cokernel
-#     AddCokernelProjectionWithGivenCokernelObject( category,
-#       function( morphism, cokernel )
-#         local cokernel_proj;
-#         
-#         cokernel_proj := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
-#         
-#         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism ), cokernel_proj, cokernel );
-#         
-#     end );
-
 
 
     ################################################################################################################
@@ -859,8 +805,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # In case the fibre product of more than two morphisms is to be computed, we essentially derive it nevertheless.
     #
     ################################################################################################################
-
-    ## FIXME
 
     # @Description
     # This method computes the (weak) fibre product of a list of morphisms <A>morphism_list</A>

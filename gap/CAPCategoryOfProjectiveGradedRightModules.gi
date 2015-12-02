@@ -779,33 +779,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         # deduce the kernel_embedding from this
         return DeduceMapFromMatrixAndRangeRight( kernel_matrix, Source( morphism ) );
 
-    end );    
-    
-    # @Description
-    # This method computes the (weak) kernel object as the source of the (weak) kernel embedding 
-    # of the morphism <A>morphism</A>.
-    # @Returns an object
-    # @Arguments morphism
-    AddKernelObject( category,
-      function( morphism )
-        
-        return Source( KernelEmbedding( morphism ) );
-        
-    end );
-        
-    # @Description
-    # This method computes the (weak) kernel embedding of <A>morphism</A> given that the (weak) kernel object 
-    # <A>kernel</A> is already known.
-    # @Returns a morphism
-    # @Arguments morphism, kernel
-    AddKernelEmbeddingWithGivenKernelObject( category,
-      function( morphism, kernel )
-        local kernel_matrix;
-        
-        kernel_matrix := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
-        
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( kernel, kernel_matrix, Source( morphism ) );
-        
     end );
 
     # @Description
@@ -822,33 +795,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         # deduce the cokernel projection from this
         return DeduceMapFromMatrixAndSourceRight( cokernel_matrix, Range( morphism ) );
 
-    end );
-    
-    # @Description
-    # This method computes the (weak) cokernel object as the range of the (weak) cokernel projection
-    # of the morphism <A>morphism</A>.
-    # @Returns an object
-    # @Arguments morphism
-    AddCokernelObject( category,
-      function( morphism )
-        
-        return Range( CokernelProjection( morphism ) );
-                
-    end );
-
-    # @Description
-    # This method computes the (weak) cokernel projection of <A>morphism</A> given that the (weak) cokernel object 
-    # <A>cokernel</A> is already known.
-    # @Returns a morphism
-    # @Arguments morphism, cokernel
-    AddCokernelProjectionWithGivenCokernelObject( category,
-      function( morphism, cokernel )
-        local cokernel_proj;
-        
-        cokernel_proj := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
-        
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism ), cokernel_proj, cokernel );
-        
     end );
 
 
