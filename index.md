@@ -32,14 +32,14 @@ To use the image, please install Docker, then start a container via
 
 ### Source
 
-To install CAP, start by installing the latest version of GAP from [gap-system.org](http://www.gap-system.org). Please
-refer to the installation description there for details.
+To install CAP, start by installing the latest version (4.7.9) of GAP from [gap-system.org](http://www.gap-system.org). Please
+refer to the installation description there for details. Since CAP has fairly new dependencies, all earlier versions of GAP will
+not work.
 
-Then download the tarballs of the CAP project packages and their required packages into GAPs pkg folder (usually inside the main GAP directory).
+Then download the tarballs of the CAP project packages into GAPs pkg folder (usually inside the main GAP directory).
 
 Alternatively download the sources of
 
-* [homalg_project](http://www.github.com/homalg-project/homalg_project)
 * [CAP_project](http://www.github.com/homalg_project/CAP_project)
 
 or clone the repositories via [git](http://git-scm.com).
