@@ -1,4 +1,4 @@
-all: homalg_compatibility test
+all: homalg_compatibility doc test
 
 .PHONY: test
 
@@ -19,3 +19,17 @@ Linear_test:
 
 Generalized_test:
 	cd GeneralizedMorphismsForCAP && make test
+
+doc: CAP_doc Modules_doc Linear_doc Generalized_doc
+
+CAP_doc:
+	cd CAP && make doc
+
+Modules_doc:
+	cd ModulePresentationsForCAP && make doc
+
+Linear_doc:
+	cd LinearAlgebraForCAP && make doc
+
+Generalized_doc:
+	cd GeneralizedMorphismsForCAP && make doc
