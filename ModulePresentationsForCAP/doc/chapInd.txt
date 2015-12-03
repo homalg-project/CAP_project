@@ -21,6 +21,7 @@
   [5XModulePresentationsForCAP[105X  .-1
   [2XNaturalIsomorphismFromIdentityToStandardModuleLeft[102X (for IsHomalgRing)  1.6-1
   [2XNaturalIsomorphismFromIdentityToStandardModuleRight[102X (for IsHomalgRing)  1.6-2
+  [2XPresentationAsMorphism[102X (for IsLeftOrRightPresentation)  1.5-2
   [2XPresentationMorphism[102X (for IsLeftOrRightPresentation, IsHomalgMatrix, IsLeftOrRightPresentation)  1.3-1
   [2XRightPresentations[102X (for IsHomalgRing)  1.3-10
   [2XStandardGeneratorMorphism[102X (for IsLeftOrRightPresentation, IsInt)  1.5-1

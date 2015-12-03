@@ -537,12 +537,13 @@
   [1X3.10-1 Lift[101X
   
   [29X[2XLift[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}[123X[133X
   
   [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  b
   \rightarrow  c[123X  such that there is a lift [23X\alpha / \beta: a \rightarrow b[123X of
   [23X\alpha[123X  along [23X\beta[123X, i.e., a morphism such that [23X\beta \circ (\alpha / \beta)
-  \sim_{a,c} \alpha[123X. The output is such a lift.[133X
+  \sim_{a,c}  \alpha[123X. The output is such a lift or [23X\mathtt{fail}[123X if it doesn't
+  exist.[133X
   
   [1X3.10-2 AddLift[101X
   
@@ -557,13 +558,13 @@
   [1X3.10-3 Colift[101X
   
   [29X[2XColift[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(c,b)[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}[123X[133X
   
   [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  a
   \rightarrow  b[123X  such  that  there  is  a  colift  [23X\alpha \backslash \beta: c
   \rightarrow  b[123X  of  [23X\beta[123X  along [23X\alpha[123X., i.e., a morphism such that [23X(\alpha
-  \backslash  \beta)  \circ  \alpha  \sim_{a,b}  \beta[123X.  The  output is such a
-  colift.[133X
+  \backslash \beta) \circ \alpha \sim_{a,b} \beta[123X. The output is such a colift
+  or [23X\mathtt{fail}[123X if it doesn't exist.[133X
   
   [1X3.10-4 AddColift[101X
   

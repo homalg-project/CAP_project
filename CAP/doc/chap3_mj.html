@@ -666,9 +666,9 @@
 <h5>3.10-1 Lift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Lift</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}\)</span></p>
 
-<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span> such that there is a lift <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span>, i.e., a morphism such that <span class="SimpleMath">\(\beta \circ (\alpha / \beta) \sim_{a,c} \alpha\)</span>. The output is such a lift.</p>
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span> such that there is a lift <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span>, i.e., a morphism such that <span class="SimpleMath">\(\beta \circ (\alpha / \beta) \sim_{a,c} \alpha\)</span>. The output is such a lift or <span class="SimpleMath">\(\mathtt{fail}\)</span> if it doesn't exist.</p>
 
 <p><a id="X7DA9346A8517648D" name="X7DA9346A8517648D"></a></p>
 
@@ -684,9 +684,9 @@
 <h5>3.10-3 Colift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Colift</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(c,b)\)</span></p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}\)</span></p>
 
-<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: a \rightarrow b\)</span> such that there is a colift <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span>., i.e., a morphism such that <span class="SimpleMath">\((\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta\)</span>. The output is such a colift.</p>
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: a \rightarrow b\)</span> such that there is a colift <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span>., i.e., a morphism such that <span class="SimpleMath">\((\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta\)</span>. The output is such a colift or <span class="SimpleMath">\(\mathtt{fail}\)</span> if it doesn't exist.</p>
 
 <p><a id="X84A7986F82ED769E" name="X84A7986F82ED769E"></a></p>
 

@@ -44,7 +44,93 @@
   [4X[32X[104X
   
   
-  [1X2.2 [33X[0;0YClosed Monoidal Structure[133X[101X
+  [1X2.2 [33X[0;0YKoszul Complex[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();;[127X[104X
+    [4X[25Xgap>[125X [27XR := Q * "x,y,z";;[127X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( [ [ "x" ], [ "y" ], [ "z" ] ], 3, 1, R );;[127X[104X
+    [4X[25Xgap>[125X [27XMl := AsLeftPresentation( M );;[127X[104X
+    [4X[25Xgap>[125X [27Xeps := PresentationAsMorphism( Ml );;[127X[104X
+    [4X[25Xgap>[125X [27Xiota1 := KernelEmbedding( eps );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota1 );[127X[104X
+    [4X[28Xx,[128X[104X
+    [4X[28Xy,[128X[104X
+    [4X[28Xz [128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA mono morphism in Category of left presentations of Q[x,y,z][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( iota1 ) );[127X[104X
+    [4X[28X0, -z,y,[128X[104X
+    [4X[28X-y,x, 0,[128X[104X
+    [4X[28X-z,0, x [128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in Category of left presentations of Q[x,y,z][128X[104X
+    [4X[25Xgap>[125X [27Xpi1 := PresentationAsMorphism( Source( iota1 ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xd1 := PreCompose( pi1, iota1 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( d1 );[127X[104X
+    [4X[28Xx,[128X[104X
+    [4X[28Xy,[128X[104X
+    [4X[28Xz [128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of left presentations of Q[x,y,z][128X[104X
+    [4X[25Xgap>[125X [27Xiota2 := KernelEmbedding( d1 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota2 );[127X[104X
+    [4X[28X0, -z,y,[128X[104X
+    [4X[28X-y,x, 0,[128X[104X
+    [4X[28X-z,0, x [128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA mono morphism in Category of left presentations of Q[x,y,z][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( iota2 ) );;[127X[104X
+    [4X[28Xx,z,-y[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in Category of left presentations of Q[x,y,z][128X[104X
+    [4X[25Xgap>[125X [27Xpi2 := PresentationAsMorphism( Source( iota2 ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xd2 := PreCompose( pi2, iota2 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( d2 );[127X[104X
+    [4X[28X0, -z,y,[128X[104X
+    [4X[28X-y,x, 0,[128X[104X
+    [4X[28X-z,0, x [128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of left presentations of Q[x,y,z][128X[104X
+    [4X[25Xgap>[125X [27Xiota3 := KernelEmbedding( d2 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota3 );[127X[104X
+    [4X[28Xx,z,-y[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA mono morphism in Category of left presentations of Q[x,y,z][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( iota3 ) );[127X[104X
+    [4X[28X(an empty 0 x 1 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in Category of left presentations of Q[x,y,z][128X[104X
+    [4X[25Xgap>[125X [27Xpi3 := PresentationAsMorphism( Source( iota3 ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xd3 := PreCompose( pi3, iota3 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( d3 );[127X[104X
+    [4X[28Xx,z,-y[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of left presentations of Q[x,y,z][128X[104X
+    [4X[25Xgap>[125X [27XN := HomalgMatrix( [ [ "x" ] ], 1, 1, R );;[127X[104X
+    [4X[25Xgap>[125X [27XNl := AsLeftPresentation( N );;[127X[104X
+    [4X[25Xgap>[125X [27Xd2Nl := TensorProductOnMorphisms( d2, IdentityMorphism( Nl ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xd1Nl := TensorProductOnMorphisms( d1, IdentityMorphism( Nl ) );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZero( PreCompose( d2Nl, d1Nl ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcycles := KernelEmbedding( d1Nl );;[127X[104X
+    [4X[25Xgap>[125X [27Xboundaries := ImageEmbedding( d2Nl );;[127X[104X
+    [4X[25Xgap>[125X [27Xboundaries_in_cyles := LiftAlongMonomorphism( cycles, boundaries );;[127X[104X
+    [4X[25Xgap>[125X [27Xhomology := CokernelObject( boundaries_in_cyles );;[127X[104X
+    [4X[25Xgap>[125X [27XLessGenFunctor := FunctorLessGeneratorsLeft( R );;[127X[104X
+    [4X[25Xgap>[125X [27Xhomology := ApplyFunctor( LessGenFunctor, homology );;[127X[104X
+    [4X[25Xgap>[125X [27XStdBasisFunctor := FunctorStandardModuleLeft( R );;[127X[104X
+    [4X[25Xgap>[125X [27Xhomology := ApplyFunctor( StdBasisFunctor, homology );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( homology );[127X[104X
+    [4X[28Xz,[128X[104X
+    [4X[28Xy,[128X[104X
+    [4X[28Xx [128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in Category of left presentations of Q[x,y,z][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.3 [33X[0;0YClosed Monoidal Structure[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers( );;[127X[104X

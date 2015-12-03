@@ -71,12 +71,14 @@
       1.4-2 UnderlyingMatrix
     1.5 [33X[0;0YNon-Categorical Operations[133X
       1.5-1 StandardGeneratorMorphism
+      1.5-2 PresentationAsMorphism
     1.6 [33X[0;0YNatural Transformations[133X
       1.6-1 NaturalIsomorphismFromIdentityToStandardModuleLeft
       1.6-2 NaturalIsomorphismFromIdentityToStandardModuleRight
   2 [33X[0;0YExamples and Tests[133X
     2.1 [33X[0;0YIntersection of Submodules[133X
-    2.2 [33X[0;0YClosed Monoidal Structure[133X
+    2.2 [33X[0;0YKoszul Complex[133X
+    2.3 [33X[0;0YClosed Monoidal Structure[133X
   
   
   [32X

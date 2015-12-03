@@ -67,6 +67,7 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8508310C7E908093">1.5-1 StandardGeneratorMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7FBCD01A82C232BC">1.5-2 PresentationAsMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X836749D8814FEEE6">1.6 <span class="Heading">Natural Transformations</span></a>
 </span>
@@ -304,6 +305,15 @@
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(F, A)\)</span></p>
 
 <p>The argument is an object <span class="SimpleMath">\(A\)</span> in the category of left or right presentations over a homalg ring <span class="SimpleMath">\(R\)</span> with underlying matrix <span class="SimpleMath">\(M\)</span> and an integer <span class="SimpleMath">\(i\)</span>. The output is a morphism <span class="SimpleMath">\(F \rightarrow A\)</span> given by the <span class="SimpleMath">\(i\)</span>-th row or column of <span class="SimpleMath">\(M\)</span>, where <span class="SimpleMath">\(F\)</span> is a free left or right presentation of rank <span class="SimpleMath">\(1\)</span>.</p>
+
+<p><a id="X7FBCD01A82C232BC" name="X7FBCD01A82C232BC"></a></p>
+
+<h5>1.5-2 PresentationAsMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PresentationAsMorphism</code>( <var class="Arg">A</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(F,A)\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(A\)</span> in the category of left or right presentations. The output is a morphism from a free module <span class="SimpleMath">\(F\)</span> to <span class="SimpleMath">\(A\)</span>, which maps the standard generators of the free module to the generators of <span class="SimpleMath">\(A\)</span>.</p>
 
 <p><a id="X836749D8814FEEE6" name="X836749D8814FEEE6"></a></p>
 

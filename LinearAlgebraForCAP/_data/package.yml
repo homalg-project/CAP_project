@@ -1,6 +1,6 @@
 name: LinearAlgebraForCAP
-version: 2015.11.05
-date: 05/11/2015
+version: 2015.12.03
+date: 03/12/2015
 description: Category of Matrices over a Field for CAP
 
 authors:
@@ -37,12 +37,12 @@ packageinfo: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2015.11.05/LinearAlgebraForCAP-2015.11.05.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2015.12.03/LinearAlgebraForCAP-2015.12.03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2015.11.05/LinearAlgebraForCAP-2015.11.05.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2015.12.03/LinearAlgebraForCAP-2015.12.03.zip
 
 abstract: 
 
-status: dev
+status: deposited
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf

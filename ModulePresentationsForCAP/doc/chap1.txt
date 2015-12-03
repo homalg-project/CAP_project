@@ -207,6 +207,15 @@
   is  a morphism [23XF \rightarrow A[123X given by the [23Xi[123X-th row or column of [23XM[123X, where [23XF[123X
   is a free left or right presentation of rank [23X1[123X.[133X
   
+  [1X1.5-2 PresentationAsMorphism[101X
+  
+  [29X[2XPresentationAsMorphism[102X( [3XA[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(F,A)[123X[133X
+  
+  [33X[0;0YThe  argument is an object [23XA[123X in the category of left or right presentations.
+  The  output is a morphism from a free module [23XF[123X to [23XA[123X, which maps the standard
+  generators of the free module to the generators of [23XA[123X.[133X
+  
   
   [1X1.6 [33X[0;0YNatural Transformations[133X[101X
   
