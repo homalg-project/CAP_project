@@ -63,8 +63,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8276ADE97D53B8F0">1.5-1 GeneralizedMorphismCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X846BEA5784436575">1.5-2 GeneralizedMorphismObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F89465C80D5CB2F">1.5-3 AsGeneralizedMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DC1AF448411DFCE">1.5-4 GeneralizedMorphismWithRangeAid</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D32834C7EA50379">1.5-5 GeneralizedMorphismWithSourceAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BCAEAEC78CE8093">1.5-4 GeneralizedMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87C5A2AC86D384BC">1.5-5 GeneralizedMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DC1AF448411DFCE">1.5-6 GeneralizedMorphismWithRangeAid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D32834C7EA50379">1.5-7 GeneralizedMorphismWithSourceAid</a></span>
 </div></div>
 </div>
 
@@ -292,16 +294,34 @@
 
 <p>Returns the corresponding morphism to phi in the current generalized morphism category.</p>
 
+<p><a id="X7BCAEAEC78CE8093" name="X7BCAEAEC78CE8093"></a></p>
+
+<h5>1.5-4 GeneralizedMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphism</code>( <var class="Arg">phi</var>, <var class="Arg">psi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a generalized morphism</p>
+
+<p>Returns the corresponding morphism to phi and psi in the current generalized morphism category.</p>
+
+<p><a id="X87C5A2AC86D384BC" name="X87C5A2AC86D384BC"></a></p>
+
+<h5>1.5-5 GeneralizedMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphism</code>( <var class="Arg">iota</var>, <var class="Arg">phi</var>, <var class="Arg">pi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a generalized morphism</p>
+
+<p>Returns the corresponding morphism to iota, phi and psi in the current generalized morphism category.</p>
+
 <p><a id="X7DC1AF448411DFCE" name="X7DC1AF448411DFCE"></a></p>
 
-<h5>1.5-4 GeneralizedMorphismWithRangeAid</h5>
+<h5>1.5-6 GeneralizedMorphismWithRangeAid</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismWithRangeAid</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns a generalized morphism with range aid by three arrows or by span, or a generalized morphism by cospan, depending on the standard.</p>
 
 <p><a id="X7D32834C7EA50379" name="X7D32834C7EA50379"></a></p>
 
-<h5>1.5-5 GeneralizedMorphismWithSourceAid</h5>
+<h5>1.5-7 GeneralizedMorphismWithSourceAid</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismWithSourceAid</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns a generalized morphism with source aid by three arrows or by cospan, or a generalized morphism by span, depending on the standard.</p>

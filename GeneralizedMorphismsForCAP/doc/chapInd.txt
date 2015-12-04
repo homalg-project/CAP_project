@@ -34,6 +34,8 @@
   [2XGeneralizedInverseByCospan[102X (for IsCapCategoryMorphism)  2.3-6
   [2XGeneralizedInverseBySpan[102X (for IsCapCategoryMorphism)  3.3-6
   [2XGeneralizedInverseByThreeArrows[102X (for IsCapCategoryMorphism)  4.3-6
+  [2XGeneralizedMorphism[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-4
+  [2XGeneralizedMorphism[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-5
   [2XGeneralizedMorphismByCospan[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  2.5-1
   [2XGeneralizedMorphismByCospan[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  2.5-2
   [2XGeneralizedMorphismByCospansObject[102X (for IsCapCategoryObject)  2.5-6
@@ -56,8 +58,8 @@
   [2XGeneralizedMorphismFromFactorToSubobjectByThreeArrows[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  4.4-1
   [2XGeneralizedMorphismObject[102X (for IsCapCategoryObject)  1.5-2
   [5XGeneralizedMorphismsForCAP[105X  .-1
-  [2XGeneralizedMorphismWithRangeAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-4
-  [2XGeneralizedMorphismWithSourceAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-5
+  [2XGeneralizedMorphismWithRangeAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-6
+  [2XGeneralizedMorphismWithSourceAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-7
   [2XHasFullCodomain[102X (for IsGeneralizedMorphism)  1.4-3
   [2XHasFullDomain[102X (for IsGeneralizedMorphism)  1.4-2
   [2XHasIdentitiesAsReversedArrows[102X (for IsGeneralizedMorphismByThreeArrows)  4.2-1
