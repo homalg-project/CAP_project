@@ -90,8 +90,11 @@ DeclareOperation( "ProjectionOntoTruncationOfProjectiveGradedModule",
 ##
 ###############################################
 
-# a function that computes the truncation functor for both projective left and right modules
-DeclareGlobalFunction( "TruncationFunctorForProjectiveGradedModules" );
+# a function that computes the truncation functor to semigroups for both projective left and right modules
+DeclareGlobalFunction( "TruncationFunctorForProjectiveGradedModulesToSemigroups" );
+
+# a function that computes the truncation functor to cones for both projective left and right modules
+DeclareGlobalFunction( "TruncationFunctorForProjectiveGradedModulesToCones" );
 
 #! @Description
 #! The argument is a homalg graded ring $R$ and a subsemigroup $H$ (given as a list of generators) in the
@@ -103,6 +106,15 @@ DeclareOperation( "TruncationFunctorForProjectiveGradedLeftModules",
                   [ IsHomalgGradedRing, IsSemigroupGeneratorList ] );
 
 #! @Description
+#! The argument is a homalg graded ring $R$ and the subsemigroup $H$ of a cone (given as a list of h-constraints) in the
+#! degree group of the ring $R$. The output is the functor which truncates projective graded 
+#! left-modules and left-module-morphisms to the subsemigroup $H$. 
+#! @Returns a functor
+#! @Arguments R, H
+DeclareOperation( "TruncationFunctorForProjectiveGradedLeftModules",
+                  [ IsHomalgGradedRing, IsConeHPresentationList ] );
+
+#! @Description
 #! The argument is a homalg graded ring $R$ and a subsemigroup $H$ (given as a list of generators) in the
 #! degree group of the ring $R$. The output is the functor which truncates projective graded 
 #! right-modules and right-module-morphisms to the subsemigroup $H$. 
@@ -110,3 +122,12 @@ DeclareOperation( "TruncationFunctorForProjectiveGradedLeftModules",
 #! @Arguments R, H
 DeclareOperation( "TruncationFunctorForProjectiveGradedRightModules",
                   [ IsHomalgGradedRing, IsSemigroupGeneratorList ] );
+
+#! @Description
+#! The argument is a homalg graded ring $R$ and a subsemigroup $H$ of a cone (given as a list of h-constraints) in the
+#! degree group of the ring $R$. The output is the functor which truncates projective graded 
+#! right-modules and right-module-morphisms to the subsemigroup $H$. 
+#! @Returns a functor
+#! @Arguments R, H
+DeclareOperation( "TruncationFunctorForProjectiveGradedRightModules",
+                  [ IsHomalgGradedRing, IsConeHPresentationList ] );

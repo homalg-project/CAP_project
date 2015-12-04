@@ -104,8 +104,9 @@ DeclareProperty( "IsConeSemigroup",
 #################################################
 
 #! @Description
-#! The argument is a SemigroupGeneratorList $L$. We convert $L$ into a ConeHPresentationList if this is possible and
-#! raise an error otherwise.
+#! The argument is a SemigroupGeneratorList $L$. We convert $L$ into a ConeHPresentationList if this is possible. If this
+#! operation fails (because the given semigroup is not the semigroup of a cone or because Normaliz cannot perform the 
+#! conversion), the method returns fail.
 #! @Returns AConeHPresentationList
 #! @Arguments L
 DeclareOperation( "TurnIntoConeHPresentationList",

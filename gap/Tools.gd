@@ -65,7 +65,7 @@ DeclareOperation( "DeduceMapFromMatrixAndSourceRight",
 #! @Returns true or false
 #! @Arguments C, p
 DeclareOperation( "PointContainedInCone",
-                  [ IsList, IsList ] );
+                  [ IsConeHPresentationList, IsList ] );
 
 #! @Description
 #! The argument is a subsemigroup $S$ of $\mathbb{Z}^n$ given by a list of generators and an integral point $p$.
@@ -73,4 +73,4 @@ DeclareOperation( "PointContainedInCone",
 #! @Returns true or false
 #! @Arguments S, p
 DeclareOperation( "PointContainedInSubsemigroup",
-                  [ IsList, IsList ] );
+                  [ IsSemigroupGeneratorList, IsList ] );

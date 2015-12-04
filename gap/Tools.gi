@@ -341,15 +341,16 @@ end );
 # check if a point satisfies hyperplane constraints for a cone, thereby determining if the point lies in the cone
 InstallMethod( PointContainedInCone,
                " for a cone given by H-constraints, a list specifying a point ",
-               [ IsList, IsList ],
+               [ IsConeHPresentationList, IsList ],
   function( cone, point )
     local i, constraint;
 
     # check if the point satisfies the hyperplane constraints or not
-    for i in [ 1..Length( cone ) ] do
+    for i in [ 1..Length( UnderlyingList( cone ) ) ] do
 
       # compute constraint
-      constraint := Sum( List( [ 1..Length( cone[ i ] ) ], x -> cone[ i ][ x ] * point[ x ] ) );
+      constraint := Sum( List( [ 1..Length( UnderlyingList( cone )[ i ] ) ], 
+                                                            x -> UnderlyingList( cone )[ i ][ x ] * point[ x ] ) );
 
       # if non-negative, the point satisfies this constraint
       if constraint < 0 then
@@ -366,8 +367,8 @@ end );
 # check if a point lies in a subsemigroup
 InstallMethod( PointContainedInSubsemigroup,
                " for a subsemigroup given by a list of generators and a list specifying a point ",
-               [ IsList, IsList ],
-  function( subsemigroup_generators, point )
+               [ IsSemigroupGeneratorList, IsList ],
+  function( semigroup_generators, point )
     local res;
 
     # subsemigroup_generators = [ gen1, gens2, ..., genN ]
@@ -375,7 +376,7 @@ InstallMethod( PointContainedInSubsemigroup,
     
     # use 4ti2 to check if point is contained in the subsemigroup
     res := 4ti2Interface_zsolve_equalities_and_inequalities_in_positive_orthant( 
-                                                            TransposedMat( subsemigroup_generators ), point, [], [] );
+                                             TransposedMat( UnderlyingList( semigroup_generators ) ), point, [], [] );
     
     # the first entry of the returned list, expresses the point in terms of the generators (if such a solution exists)
     # so the first entry has length 0 precisely if the point is NOT contained in the subsemigroup
