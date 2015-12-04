@@ -79,6 +79,16 @@ DeclareAttribute( "UnderlyingList",
 DeclareAttribute( "UnderlyingList",
                   IsConeHPresentationList );
 
+#! @Description
+#! The argument is a SemigroupGeneratorList $L$. We try to convert $L$ into a ConeHPresentationList. If this
+#! succeeds, the result will be a ConeHPresentationList. If the conversion is not possible
+#! (because the given semigroup is not the semigroup of a cone or because Normaliz cannot perform the conversion), 
+#! the result will be fail.
+#! @Returns AConeHPresentationList or fail
+#! @Arguments L
+DeclareAttribute( "TurnIntoConeHPresentationList",
+                  IsSemigroupGeneratorList );
+
 
 
 ############################################
@@ -103,11 +113,3 @@ DeclareProperty( "IsConeSemigroup",
 ##
 #################################################
 
-#! @Description
-#! The argument is a SemigroupGeneratorList $L$. We convert $L$ into a ConeHPresentationList if this is possible. If this
-#! operation fails (because the given semigroup is not the semigroup of a cone or because Normaliz cannot perform the 
-#! conversion), the method returns fail.
-#! @Returns AConeHPresentationList
-#! @Arguments L
-DeclareOperation( "TurnIntoConeHPresentationList",
-                  [ IsSemigroupGeneratorList ] );
