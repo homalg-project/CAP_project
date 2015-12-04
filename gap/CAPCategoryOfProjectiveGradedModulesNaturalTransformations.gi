@@ -19,7 +19,7 @@
 # left and right presentations
 InstallGlobalFunction( NaturalTransformationFromTruncationToIdentityForProjectiveGradedModules,
 
-  function( graded_ring, cone_h_list, left )
+  function( graded_ring, semigroup_generator_list, left )
     local rank, i, category, truncation_functor, natural_transformation;
 
     # check if the degree_group of the underlying homalg_graded_ring is free
@@ -32,24 +32,20 @@ InstallGlobalFunction( NaturalTransformationFromTruncationToIdentityForProjectiv
     
     # next check if the cone_h_list is valid
     rank := Rank( DegreeGroup( graded_ring ) );
-    for i in [ 1 .. Length( cone_h_list ) ] do
-    
-      if Length( cone_h_list[ i ] ) <> rank then
-      
-        Error( "The cone is not contained in the degree_group of the graded ring" );
+    if Length( UnderlyingList( semigroup_generator_list )[ 1 ] ) <> rank then
+
+        Error( "The semigroup is not contained in the degree_group of the graded ring" );
         return;
 
-      fi;
-    
-    od;
-    
+    fi;
+
     # now construct the category and the respective truncation_functor    
     if left = true then
       category := CAPCategoryOfProjectiveGradedLeftModules( graded_ring );
-      truncation_functor := TruncationFunctorForProjectiveGradedLeftModules( graded_ring, cone_h_list );
+      truncation_functor := TruncationFunctorForProjectiveGradedLeftModules( graded_ring, semigroup_generator_list );
     else
       category := CAPCategoryOfProjectiveGradedRightModules( graded_ring );
-      truncation_functor := TruncationFunctorForProjectiveGradedRightModules( graded_ring, cone_h_list );
+      truncation_functor := TruncationFunctorForProjectiveGradedRightModules( graded_ring, semigroup_generator_list );
     fi;
     
     # initialise the natural_transformation
@@ -60,10 +56,10 @@ InstallGlobalFunction( NaturalTransformationFromTruncationToIdentityForProjectiv
                                      );
     
     # add component of natural_transformation over object
-    AddNaturalTransformationFunction( natural_transformation,                                          
+    AddNaturalTransformationFunction( natural_transformation,
       function( truncated_object, object, identical_object )
 
-        return EmbeddingOfTruncationOfProjectiveGradedModule( object, cone_h_list );
+        return EmbeddingOfTruncationOfProjectiveGradedModule( object, semigroup_generator_list );
 
     end );
 
@@ -74,18 +70,20 @@ end );
 
 # natural isomorphism 1 => Standard module for left presentations
 InstallMethod( NaturalTransformationFromTruncationToIdentityForProjectiveGradedLeftModules,
-               [ IsHomalgGradedRing, IsList ],
-  function( graded_ring, cone_h_list )
+               [ IsHomalgGradedRing, IsSemigroupGeneratorList ],
+  function( graded_ring, semigroup_generator_list )
 
-    return NaturalTransformationFromTruncationToIdentityForProjectiveGradedModules( graded_ring, cone_h_list, true );
+    return NaturalTransformationFromTruncationToIdentityForProjectiveGradedModules( graded_ring, 
+                                                                                    semigroup_generator_list, true );
 
 end );
 
 # natural isomorphism 1 => Standard module for right presentations
 InstallMethod( NaturalTransformationFromTruncationToIdentityForProjectiveGradedRightModules,
-               [ IsHomalgGradedRing, IsList ],
-  function( graded_ring, cone_h_list )
+               [ IsHomalgGradedRing, IsSemigroupGeneratorList ],
+  function( graded_ring, semigroup_generator_list )
 
-    return NaturalTransformationFromTruncationToIdentityForProjectiveGradedModules( graded_ring, cone_h_list, false );
+    return NaturalTransformationFromTruncationToIdentityForProjectiveGradedModules( graded_ring, 
+                                                                                    semigroup_generator_list, false );
 
 end );

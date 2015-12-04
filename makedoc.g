@@ -11,6 +11,7 @@ AutoDoc( "CAPCategoryOfProjectiveGradedModules" : scaffold := true, autodoc :=
                          "gap/CAPCategoryOfProjectiveGradedModulesObject.gd",
                          "gap/CAPCategoryOfProjectiveGradedModulesMorphism.gd",
                          "gap/Tools.gd",
+                         "gap/SemigroupAndConeWrapper.gd",
                          "gap/CAPCategoryOfProjectiveGradedModulesFunctors.gd",
                          "gap/CAPCategoryOfProjectiveGradedModulesNaturalTransformations.gd",
                          "examples/Example.g"

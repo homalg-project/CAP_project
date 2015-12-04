@@ -73,6 +73,7 @@ Dependencies := rec(
                            [ "GradedRingForHomalg", "2014.08.27" ],
                            [ "CAP", ">= 2015.08.17" ],
                            [ "4ti2Interface", ">= 2015.11.06" ],
+                           [ "NormalizInterface", ">=0" ]
                            ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

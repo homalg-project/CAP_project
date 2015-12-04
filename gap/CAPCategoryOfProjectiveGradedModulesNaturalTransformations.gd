@@ -26,7 +26,7 @@ DeclareGlobalFunction( "NaturalTransformationFromTruncationToIdentityForProjecti
 #! @Returns a natural transformation $\left. \cdot \right|_C \Rightarrow \mathrm{id}$
 #! @Arguments S
 DeclareOperation( "NaturalTransformationFromTruncationToIdentityForProjectiveGradedLeftModules",
-                  [ IsHomalgGradedRing, IsList ] );
+                  [ IsHomalgGradedRing, IsSemigroupGeneratorList ] );
 
 #! @Description
 #! The argument is a homalg graded ring $S$ and a cone $C$ in the degree group of $S$. 
@@ -35,4 +35,4 @@ DeclareOperation( "NaturalTransformationFromTruncationToIdentityForProjectiveGra
 #! @Returns a natural transformation $\left. \cdot \right|_C \Rightarrow \mathrm{id}$
 #! @Arguments S
 DeclareOperation( "NaturalTransformationFromTruncationToIdentityForProjectiveGradedRightModules",
-                  [ IsHomalgGradedRing, IsList ] );
+                  [ IsHomalgGradedRing, IsSemigroupGeneratorList ] );

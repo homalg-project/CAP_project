@@ -138,13 +138,13 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
       );
 
     fi;
-    
+
     # now add the object to the category
     Add( category, category_of_projective_graded_modules_object );
-    
+
     # and return it
     return category_of_projective_graded_modules_object;
-    
+
 end );
 
 InstallMethod( CAPCategoryOfProjectiveGradedLeftModulesObject,
@@ -165,7 +165,7 @@ end );
 
 ####################################
 ##
-## View
+## String
 ##
 ####################################
 

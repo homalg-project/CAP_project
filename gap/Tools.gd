@@ -54,7 +54,7 @@ DeclareOperation( "DeduceMapFromMatrixAndSourceRight",
 
 ########################################################################
 ##
-#! @Section Check if point is contained in cone (needed for truncations)
+#! @Section Check if point is contained in cone or a subsemigroup
 ##
 ########################################################################
 
@@ -64,8 +64,8 @@ DeclareOperation( "DeduceMapFromMatrixAndSourceRight",
 #! it determines if the point is contained in the cone or not.
 #! @Returns true or false
 #! @Arguments C, p
-#DeclareOperation( "PointContainedInCone",
-#                  [ IsList, IsList ] );
+DeclareOperation( "PointContainedInCone",
+                  [ IsList, IsList ] );
 
 #! @Description
 #! The argument is a subsemigroup $S$ of $\mathbb{Z}^n$ given by a list of generators and an integral point $p$.
