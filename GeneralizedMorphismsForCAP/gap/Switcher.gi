@@ -65,13 +65,14 @@ SwitchGeneralizedMorphismStandard( "threearrow" );
 InstallValue( CAP_INTERNAL_GENERALIZED_MORPHISM_TRANSLATION_LIST, [
       [ "GeneralizedMorphismObject", "GeneralizedMorphismByThreeArrowsObject", "GeneralizedMorphismByCospansObject", "GeneralizedMorphismBySpansObject", [ IsCapCategoryObject ] ],
       [ "AsGeneralizedMorphism", "AsGeneralizedMorphismByThreeArrows", "AsGeneralizedMorphismByCospan", "AsGeneralizedMorphismBySpan", [ IsCapCategoryMorphism ] ],
+      [ "GeneralizedMorphism", "GeneralizedMorphismByThreeArrows", "GeneralizedMorphismByCospan", "GeneralizedMorphismBySpan", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] ],
+      [ "GeneralizedMorphism", "GeneralizedMorphismByThreeArrows", "GeneralizedMorphismByCospan", "GeneralizedMorphismBySpan", [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] ],
       [ "GeneralizedInverse", "GeneralizedInverseByThreeArrows", "GeneralizedInverseByCospan", "GeneralizedInverseBySpan", [ IsCapCategoryMorphism ] ],
       [ "GeneralizedMorphismFromFactorToSubobject", "GeneralizedMorphismFromFactorToSubobjectByThreeArrows", "GeneralizedMorphismFromFactorToSubobjectByCospan", "GeneralizedMorphismFromFactorToSubobjectBySpan", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] ],
       [ "IdempotentDefinedBySubobject", "IdempotentDefinedBySubobjectByThreeArrows", "IdempotentDefinedBySubobjectByCospan", "IdempotentDefinedBySubobjectBySpan", [ IsCapCategoryMorphism ] ],
       [ "IdempotentDefinedByFactorobject", "IdempotentDefinedByFactorobjectByThreeArrows", "IdempotentDefinedByFactorobjectByCospan", "IdempotentDefinedByFactorobjectBySpan", [ IsCapCategoryMorphism ] ],
       [ "GeneralizedMorphismWithRangeAid", "GeneralizedMorphismByThreeArrowsWithRangeAid", "GeneralizedMorphismByCospan", "GeneralizedMorphismBySpanWithRangeAid", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] ],
       [ "GeneralizedMorphismWithSourceAid", "GeneralizedMorphismByThreeArrowsWithSourceAid", "GeneralizedMorphismByCospanWithSourceAid", "GeneralizedMorphismBySpan", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] ] ] );
-      # Serre Quotient: TODO
 
 InstallMethod( GeneralizedMorphismCategory,
                [ IsCapCategory ],

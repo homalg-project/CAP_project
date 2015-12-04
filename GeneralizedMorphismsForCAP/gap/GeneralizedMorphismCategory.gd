@@ -238,6 +238,20 @@ DeclareOperation( "AsGeneralizedMorphism",
                   [ IsCapCategoryMorphism ] );
 
 #! @Description
+#!  Returns the corresponding morphism to phi and psi in the current generalized morphism category.
+#! @Returns a generalized morphism
+#! @Arguments phi, psi
+DeclareOperation( "GeneralizedMorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  Returns the corresponding morphism to iota, phi and psi in the current generalized morphism category.
+#! @Returns a generalized morphism
+#! @Arguments iota, phi, pi
+DeclareOperation( "GeneralizedMorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
 #!  Returns a generalized morphism with range aid by three arrows or by span, or a generalized morphism
 #!  by cospan, depending on the standard.
 DeclareOperation( "GeneralizedMorphismWithRangeAid",
