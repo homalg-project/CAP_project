@@ -171,11 +171,10 @@ end );
 
 InstallMethod( String,
               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
-              
   function( category_of_projective_graded_modules_object )
-    
+
     if IsCAPCategoryOfProjectiveGradedLeftModulesObject( category_of_projective_graded_modules_object ) then
-        
+
        return Concatenation( "A projective graded left module of rank ", 
                               String( RankOfObject( category_of_projective_graded_modules_object ) )
                             );
@@ -185,9 +184,9 @@ InstallMethod( String,
        return Concatenation( "A projective graded right module of rank ", 
                               String( RankOfObject( category_of_projective_graded_modules_object ) )
                             );
-    
+
     fi;
-                            
+
 end );
 
 
@@ -198,8 +197,8 @@ end );
 ####################################
 
 InstallMethod( Display,
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ], 999, # FIX ME FIX ME FIX ME
-               
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ], 
+               999, # FIX ME FIX ME FIX ME
   function( category_of_projective_graded_modules_object )
 
     if IsCAPCategoryOfProjectiveGradedLeftModulesObject( category_of_projective_graded_modules_object ) then
@@ -220,12 +219,12 @@ InstallMethod( Display,
                             " of rank ", String( RankOfObject( category_of_projective_graded_modules_object ) ),
                             " and degrees: \n" )
                             );
-    
+
       ViewObj( DegreeList( category_of_projective_graded_modules_object ) );
       Print( "\n" );
-      
+
     fi;
-   
+
 end );
 
 
@@ -237,7 +236,7 @@ end );
 
 InstallMethod( ViewObj,
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
-
+               999, # FIX ME FIX ME
   function( category_of_projective_graded_modules_object )
 
     Print( Concatenation( "<", String( category_of_projective_graded_modules_object ), ">" ) );
