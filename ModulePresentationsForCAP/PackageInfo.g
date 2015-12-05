@@ -4,7 +4,7 @@ PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2015.11.05", # Sebas version
+           "2015.12.03", # Sebas version
            ##
            "2015.10.14", # Sepps version
            ##
@@ -62,7 +62,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##    "dev"           for development versions of packages
 ##    "other"         for all other packages
 ##
-Status := "dev",
+Status := "deposited",
 
 AbstractHTML   :=  "",
 

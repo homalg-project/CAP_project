@@ -4,7 +4,7 @@ PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
 
 Version := Maximum( [
-  "2015.12.02", ## Sebas' version
+  "2015.12.04", ## Sebas' version
 ## this line prevents merge conflicts
   "2015.11.19", ## Sepp's version
 ## this line prevents merge conflicts
@@ -63,7 +63,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##    "dev"           for development versions of packages
 ##    "other"         for all other packages
 ##
-Status := "dev",
+Status := "deposited",
 
 AbstractHTML   :=  "",
 

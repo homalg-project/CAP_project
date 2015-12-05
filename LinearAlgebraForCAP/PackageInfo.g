@@ -13,7 +13,7 @@ PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
 
 Version := Maximum( [
-  "2015.11.05", ## Sebas' version
+  "2015.12.03", ## Sebas' version
   ## this line prevents merge conflicts
   "2015.10.06", ## Sepp's version
 ] ),
@@ -66,7 +66,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##    "dev"           for development versions of packages
 ##    "other"         for all other packages
 ##
-Status := "dev",
+Status := "deposited",
 
 AbstractHTML   :=  "",
 
