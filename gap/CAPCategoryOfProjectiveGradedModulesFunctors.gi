@@ -94,7 +94,7 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModule,
     for i in [ 1 .. Length( expanded_degree_list ) ] do
 
       # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
-      if PointContainedInSubsemigroup( semigroup_generator_list, 
+      if PointContainedInSemigroup( semigroup_generator_list, 
                                                     UnderlyingListOfRingElements( expanded_degree_list[ i ] ) ) then
 
         Add( new_degree_list, [ expanded_degree_list[ i ], 1 ] );
@@ -274,7 +274,7 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModule,
     for i in [ 1 .. Length( expanded_degree_list ) ] do
 
       # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
-      if PointContainedInSubsemigroup( semigroup_generator_list, 
+      if PointContainedInSemigroup( semigroup_generator_list, 
                                               UnderlyingListOfRingElements( expanded_degree_list[ i ] ) ) then
 
         Add( new_degree_list, [ expanded_degree_list[ i ], 1 ] );

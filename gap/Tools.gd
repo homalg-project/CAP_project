@@ -72,5 +72,5 @@ DeclareOperation( "PointContainedInCone",
 #! This operation then verifies if the point $p$ is contained in $S$ or not.
 #! @Returns true or false
 #! @Arguments S, p
-DeclareOperation( "PointContainedInSubsemigroup",
+DeclareOperation( "PointContainedInSemigroup",
                   [ IsSemigroupGeneratorList, IsList ] );

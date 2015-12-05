@@ -365,25 +365,32 @@ InstallMethod( PointContainedInCone,
 end );
 
 # check if a point lies in a subsemigroup
-InstallMethod( PointContainedInSubsemigroup,
+InstallMethod( PointContainedInSemigroup,
                " for a subsemigroup given by a list of generators and a list specifying a point ",
                [ IsSemigroupGeneratorList, IsList ],
-  function( semigroup_generators, point )
-    local res;
+  function( semigroup_generator_list, point )
+    local conversion, res;
 
+    # first check if the semigroup is the semigroup of a cone, for then we perform the computation differently
+    conversion := TurnIntoConeHPresentationList( semigroup_generator_list );
+    if conversion <> fail then
+      return PointContainedInCone( conversion, point );
+    fi;
+    
     # subsemigroup_generators = [ gen1, gens2, ..., genN ]
     # to use this for 4ti2Interface, we need to transpose it, so that the generators are written in the columns
     
     # use 4ti2 to check if point is contained in the subsemigroup
     res := 4ti2Interface_zsolve_equalities_and_inequalities_in_positive_orthant( 
-                                             TransposedMat( UnderlyingList( semigroup_generators ) ), point, [], [] );
+                                           TransposedMat( UnderlyingList( semigroup_generator_list ) ), point, [], [] );
     
     # the first entry of the returned list, expresses the point in terms of the generators (if such a solution exists)
     # so the first entry has length 0 precisely if the point is NOT contained in the subsemigroup
     if Length( res[ 1 ] ) = 0 then
       return false;
-    else
-      return true;
     fi;
+
+    # all tests passed, so the point is contained in the semigroup
+    return true;
 
 end );
