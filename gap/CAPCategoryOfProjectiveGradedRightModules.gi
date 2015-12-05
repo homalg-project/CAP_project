@@ -178,6 +178,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
           return false;
         
         fi;
+
+        # extract the mapping matrix        
+        morphism_matrix := UnderlyingHomalgMatrix( morphism );
+        
+        # then check if the dimensions of the matrix fit with the ranks of the source and range modules
+        if not ( Rank( source ) = NrColumns( morphism_matrix )
+                 and NrRows( morphism_matrix ) = Rank( range ) ) then
+          
+          return false;
+        
+        fi;
         
         # check if the mapping is non-trivial, for otherwise we are done already
         if ( Rank( source ) = 0 or Rank( range ) = 0 ) then
@@ -186,23 +197,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         
         else
         
-          # extract the mapping matrix        
-          morphism_matrix := UnderlyingHomalgMatrix( morphism );
-          morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
+          # extract the degrees of the entries of the morphism_matrix
 
-          # then check if the dimensions of the matrix fit with the ranks of the source and range modules
-          if not ( Rank( source ) = NrColumns( morphism_matrix )
-                   and NrRows( morphism_matrix ) = Rank( range ) ) then
-          
-            return false;
-          
-          fi;
-                    
-          # subsequently compute the degrees of all entries in the morphism_matrix
-          # I use the DegreeOfEntriesFunction of the underlying graded ring
+          # I use the DegreeOfEntries of the underlying graded ring
           # in particular I hope that this function raises and error if one of the entries is not homogeneous
-          func := DegreesOfEntriesFunction( UnderlyingHomalgGradedRing( source ) );
-          degrees_of_entries_matrix := func( morphism_matrix );
+          degrees_of_entries_matrix := DegreesOfEntries( morphism_matrix );
         
           # turn the degrees of the source into a column vector (that is how I think about right-modules)
           source_degrees := [];
@@ -231,6 +230,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
           # compute the dummy_range_degrees whilst checking at the same time that the mapping is well-defined
           # the only question left after this test is if the range of the well-defined map is really the range
           # specified for the mapping
+          morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
           dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
           for i in [ 1 .. Rank( range ) ] do
           

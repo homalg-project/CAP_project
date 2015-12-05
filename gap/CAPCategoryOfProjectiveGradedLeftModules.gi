@@ -150,87 +150,78 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           function( morphism )
         local source, range, morphism_matrix, morphism_matrix_entries, func, degrees_of_entries_matrix, degree_group, 
              source_degrees, range_degrees, buffer_col, dummy_range_degrees, i, j;
-             
-        
+
         # extract source and range
         source := Source( morphism );        
         range := Range( morphism );
-        
-        # then verify that both range and source are well-defined objects in this category
-        if ( not IsWellDefinedForObjects( source ) ) or ( not IsWellDefinedForObjects( range ) ) then
-        
-          # source or range is corrupted, so return false
-          return false;
-        
-        fi;
 
         # next check that the underlying homalg_graded_rings are identical
         if not ( IsIdenticalObj( UnderlyingHomalgGradedRing( source ), UnderlyingHomalgGradedRing( morphism ) ) and
                         IsIdenticalObj( UnderlyingHomalgGradedRing( morphism ), UnderlyingHomalgGradedRing( range ) ) ) then
-        
+
           return false;
-        
+
         fi;
-        
+
         # and that source and range are defined in the same category
         if not IsIdenticalObj( CapCategory( source ), CapCategory( range ) ) then
-        
+
           return false;
-        
+
         fi;
-        
+
+        # extract the mapping matrix        
+        morphism_matrix := UnderlyingHomalgMatrix( morphism );
+
+        # then check if the dimensions of the matrix fit with the ranks of the source and range modules
+        if not ( Rank( source ) = NrRows( morphism_matrix )
+                 and NrColumns( morphism_matrix ) = Rank( range ) ) then
+
+          return false;
+
+        fi;
+
         # check if the mapping is non-trivial, for otherwise we are done already
         if ( Rank( source ) = 0 or Rank( range ) = 0 ) then
-        
-          return true;
-        
-        else
-        
-          # extract the mapping matrix        
-          morphism_matrix := UnderlyingHomalgMatrix( morphism );
-          morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
 
-          # then check if the dimensions of the matrix fit with the ranks of the source and range modules
-          if not ( Rank( source ) = NrRows( morphism_matrix )
-                   and NrColumns( morphism_matrix ) = Rank( range ) ) then
-          
-            return false;
-          
-          fi;
-          
-          # subsequently compute the degrees of all entries in the morphism_matrix
-          # I use the DegreeOfEntriesFunction of the underlying graded ring
+          return true;
+
+        else
+
+          # extract the degrees of the entries of the morphism_matrix
+
+          # I use the DegreeOfEntries of the underlying graded ring
           # in particular I hope that this function raises and error if one of the entries is not homogeneous
-          func := DegreesOfEntriesFunction( UnderlyingHomalgGradedRing( source ) );
-          degrees_of_entries_matrix := func( morphism_matrix );
-        
+          degrees_of_entries_matrix := DegreesOfEntries( morphism_matrix );
+
           # turn the degrees of the source into a column vector (that is how I think about right-modules)
           source_degrees := [];
           for i in [ 1 .. Length( DegreeList( source ) ) ] do
-          
+
             for j in [ 1 .. DegreeList( source )[ i ][ 2 ] ] do
-          
+
               Add( source_degrees, DegreeList( source )[ i ][ 1 ] );
-          
+
             od;
-          
+
           od;
 
           # turn the range-degrees into a column vector, that we will compare with the ranges dictated by the mapping matrix
           range_degrees := [];
           for i in [ 1 .. Length( DegreeList( range ) ) ] do
-        
+
             for j in [ 1 .. DegreeList( range )[ i ][ 2 ] ] do
-          
+
               Add( range_degrees, DegreeList( range )[ i ][ 1 ] );
-          
+
             od;
-        
+
           od;
 
           # compute the dummy_range_degrees whilst checking at the same time that the mapping is well-defined
           # the only question left after this test is if the range of the well-defined map is really the range
           # specified for the mapping
+          morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
           dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
           for i in [ 1 .. Rank( range ) ] do
           

@@ -78,12 +78,16 @@ IsEqualForObjects( Object2R, Object2RShuffle );
 #! @Example
 Q1L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],1] ], S );
 #! <A projective graded left module of rank 1>
+IsWellDefined( Q1L );
+#! true
 Q2L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[0,0],2] ], S );
 #! <A projective graded left module of rank 2>
 m1L := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
       Q1L, HomalgMatrix( [["x_1","x_2"]], S ) ,Q2L );
 #! A morphism in the category of projective graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+IsWellDefined( m1L );
+#! true
 Display( Source( m1L ) );
 #! A projective graded left module over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
@@ -97,12 +101,16 @@ Display( UnderlyingHomalgMatrix( m1L ) );
 #! (over a graded ring)
 Q1R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],1] ], S );
 #! <A projective graded right module of rank 1>
+IsWellDefined( Q1R );
+#! true
 Q2R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[0,0],2] ], S );
 #! <A projective graded right module of rank 2>
 m1R := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
       Q1R, HomalgMatrix( [["x_1"],["x_2"]], S ) ,Q2R );
 #! A morphism in the category of projective graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+IsWellDefined( m1R );
+#! true
 Display( Source( m1R ) );
 #! A projective graded right module over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
