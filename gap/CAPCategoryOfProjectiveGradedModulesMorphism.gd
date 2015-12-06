@@ -31,10 +31,12 @@ DeclareCategory( "IsCAPCategoryOfProjectiveGradedLeftModulesMorphism",
 #! @Description
 #! The GAP category of morphisms of projective graded right modules
 #! over a graded ring $R$.
-#! @Arguments object                 
+#! @Arguments object
 DeclareCategory( "IsCAPCategoryOfProjectiveGradedRightModulesMorphism",
                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
-                 
+
+
+
 ####################################
 ##
 #! @Section Constructors
@@ -52,6 +54,8 @@ DeclareCategory( "IsCAPCategoryOfProjectiveGradedRightModulesMorphism",
 DeclareOperation( "CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
                                                                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ] );
+
+
 
 ####################################
 ##
@@ -77,7 +81,8 @@ DeclareAttribute( "UnderlyingHomalgGradedRing",
 DeclareAttribute( "UnderlyingHomalgMatrix",
                   IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
 
-                  
+
+
 #####################################################
 ##
 #! @Section Printing all information about a morphism

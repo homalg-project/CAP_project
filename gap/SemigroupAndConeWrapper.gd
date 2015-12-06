@@ -104,12 +104,3 @@ DeclareAttribute( "TurnIntoConeHPresentationList",
 #! @Arguments L
 DeclareProperty( "IsConeSemigroup",
                   IsSemigroupGeneratorList );
-
-
-
-#################################################
-##
-#! @Section Conversion into ConeHPresentationList
-##
-#################################################
-
