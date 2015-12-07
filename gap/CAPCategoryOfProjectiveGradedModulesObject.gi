@@ -171,6 +171,7 @@ end );
 
 InstallMethod( String,
               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
+               999, #FIXME FIXME FIXME
   function( category_of_projective_graded_modules_object )
 
     if IsCAPCategoryOfProjectiveGradedLeftModulesObject( category_of_projective_graded_modules_object ) then

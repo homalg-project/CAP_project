@@ -152,14 +152,12 @@ InstallMethod( String,
     if IsCAPCategoryOfProjectiveGradedLeftModulesMorphism( cap_category_of_projective_graded_modules_morphism ) then
 
       return Concatenation( "A morphism in the category of projective graded left modules over ",
-                            RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ),
-                            "\n" );
+                            RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ) );
 
     else
 
       return Concatenation( "A morphism in the category of projective graded right modules over ",
-                            RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ),
-                            "\n" );
+                            RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ) );
 
     fi;
 
