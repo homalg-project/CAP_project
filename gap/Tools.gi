@@ -338,7 +338,7 @@ end );
 ##
 ########################################################################
 
-# check if a point satisfies hyperplane constraints for a cone, thereby determining if the point lies in the cone
+# check if a point lies in a cone
 InstallMethod( PointContainedInCone,
                " for a cone given by H-constraints, a list specifying a point ",
                [ IsConeHPresentationList, IsList ],
@@ -361,6 +361,40 @@ InstallMethod( PointContainedInCone,
 
     # return the result
     return true;
+
+end );
+
+# check if a point lies in a cone given by a v-presentation
+InstallMethod( PointContainedInCone,
+               " for a cone given by a v-presentation and a list specifying a point ",
+               [ IsConeVPresentationList, IsList ],
+  function( cone_vpresentation_list, point )
+    local cone;
+
+    cone := NmzCone( [ "integral_closure", UnderlyingList( cone_vpresentation_list ) ] );
+    NmzCompute( cone );
+    if NmzRank( cone ) <> NmzEmbeddingDimension( cone ) then
+      Error( "Normaliz cannot compute an H-presentation of cones that are not full-dimensional" );
+      return;
+    fi;
+
+    return PointContainedInCone( ConeHPresentationList( NmzSupportHyperplanes( cone ) ), point );
+
+end );
+
+# check if a point lies in a cone given by a v-presentation
+InstallMethod( PointContainedInCone,
+               " for a cone given by a v-presentation and a list specifying a point ",
+               [ IsNormalizCone, IsList ],
+  function( cone, point )
+
+    NmzCompute( cone );
+    if NmzRank( cone ) <> NmzEmbeddingDimension( cone ) then
+      Error( "Normaliz cannot compute an H-presentation of cones that are not full-dimensional" );
+      return;
+    fi;
+
+    return PointContainedInCone( ConeHPresentationList( NmzSupportHyperplanes( cone ) ), point );
 
 end );
 
@@ -392,5 +426,53 @@ InstallMethod( PointContainedInSemigroup,
 
     # all tests passed, so the point is contained in the semigroup
     return true;
+
+end );
+
+# check if a point satisfies hyperplane constraints for a cone, thereby determining if the point lies in the cone
+InstallMethod( PointContainedInAffineConeSemigroup,
+               " for a cone given by H-constraints, a list specifying a point ",
+               [ IsAffineConeSemigroup, IsList ],
+  function( affine_cone_semigroup, point )
+    local diff;
+
+    # check if the point lies in the same lattice as the affine_cone_semigroup
+    if Length( point ) <> EmbeddingDimension( affine_cone_semigroup ) then
+      Error( "The point and the affine_cone_semigroup are not embedded into the same lattice" );
+      return;
+    fi;
+
+    # compute the difference between the offset and Q
+    diff := point;
+    diff := point - Offset( affine_cone_semigroup );
+
+    # check if diff lies in the underlying cone
+    if HasUnderlyingConeHPresentationList( affine_cone_semigroup ) then
+      return PointContainedInCone( UnderlyingConeHPresentationList( affine_cone_semigroup ), diff );
+    else
+      return PointContainedInCone( UnderlyingConeVPresentationList( affine_cone_semigroup ), diff );
+    fi;
+
+end );
+
+# check if a point satisfies hyperplane constraints for a cone, thereby determining if the point lies in the cone
+InstallMethod( PointContainedInAffineSemigroup,
+               " for a cone given by H-constraints, a list specifying a point ",
+               [ IsAffineSemigroup, IsList ],
+  function( affine_semigroup, point )
+    local diff;
+
+    # check if the point lies in the same lattice as the affine_cone_semigroup
+    if Length( point ) <> EmbeddingDimension( affine_semigroup ) then
+      Error( "The point and the affine_semigroup are not embedded into the same lattice" );
+      return;
+    fi;
+
+    # compute the difference between the offset and Q
+    diff := point;
+    diff := point - Offset( affine_semigroup );
+
+    # and check if diff is contained in this semigroup
+    return PointContainedInSemigroup( UnderlyingSemigroupGeneratorList( affine_semigroup ), diff );
 
 end );
