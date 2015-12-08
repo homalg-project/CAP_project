@@ -541,7 +541,7 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModuleWithGivenTruncati
     # if the new_dgree_list is empty, the truncated module is the zero_module and the embedding is the zero_morphism
     if Length( truncated_degree_list ) = 0 then
 
-      return ZeroMorphism( ZeroObject( CapCategory( projective_module ) ), projective_module );
+      return ZeroMorphism( projective_module, ZeroObject( CapCategory( projective_module ) ) );
 
     fi;
 
@@ -550,7 +550,7 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModuleWithGivenTruncati
     counter := 0;
     for i in [ 1 .. Length( degree_list ) ] do
 
-      # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
+      # if the degree is part of the degrees of the truncated module, then we have a contribution to the projection
       if degree_list[ i ] in truncated_degree_list then
 
         # now add rows to the embedding matrix
