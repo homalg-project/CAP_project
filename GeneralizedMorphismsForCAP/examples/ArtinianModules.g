@@ -1,5 +1,6 @@
 LoadPackage( "ModulePresentationsForCAP" );
 LoadPackage( "GeneralizedMorphismsForCAP" );
+LoadPackage( "RingsForHomalg" );
 
 is_artinian_left := function( module )
   local mat;
