@@ -598,9 +598,9 @@ affine_cone_semigroup2 := AffineConeSemigroup( cone2, [ 3,0 ] );
 #! <An affine cone_semigroup in Z^2>
 affine_cone_semigroup3 := AffineConeSemigroup( cone3, [ -1,-1 ] );
 #! <An affine cone_semigroup in Z^2>
-affine_semigroup1 := AffineSemigroup( semigroup1, [ -1,-1 ] );    
+affine_semigroup1 := AffineSemigroup( semigroup1, [ -1,-1 ] );
 #! <An affine cone_semigroup in Z^2>
-affine_semigroup2 := AffineSemigroup( semigroup2, [ 2,2 ] );  
+affine_semigroup2 := AffineSemigroup( semigroup2, [ 2,2 ] );
 #! <An affine semigroup in Z^2>
 #! @EndExample
 

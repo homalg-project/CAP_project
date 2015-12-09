@@ -417,7 +417,7 @@ InstallMethod( AffineConeSemigroup,
       ObjectifyWithAttributes( affine_cone_semigroup, TheTypeOfAffineConeSemigroups,
                                UnderlyingCone, cone,
                                Offset, offset_point,
-                               UnderlyingConeVPresentationList, NmzHilbertBasis( cone ),
+                               UnderlyingConeVPresentationList, ConeVPresentationList( NmzHilbertBasis( cone ) ),
                                UnderlyingConeHPresentationList, cone_hpresentation_list,
                                EmbeddingDimension, Length( offset_point )
                             );

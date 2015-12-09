@@ -33,19 +33,21 @@ DeclareCategory( "IsConeVPresentationList",
                  IsObject );
 
 #! @Description
-#! The GAP category of affine semigroups $H$ of cones in $\mathbb{Z}^n$. This means that there is a cone
-#! $C subseteq \mathbb{Z}^n$ and $p \in \mathbb{Z}^n$ such that $H = p + \left( C \cap \mathbb{Z}^n \right)$.
-#! @Arguments object
-DeclareCategory( "IsAffineConeSemigroup",
-                 IsObject );
-
-#! @Description
 #! The GAP category of affine semigroups $H$ in $\mathbb{Z}^n$. That means that there is a semigroup 
 #! $G \subseteq \mathbb{Z}^n$ and $p \in \mathbb{Z}^n$ such that $H = p + G$.
 #! @Arguments object
 DeclareCategory( "IsAffineSemigroup",
                  IsObject );
 
+#! @Description
+#! The GAP category of affine semigroups $H$ of cones in $\mathbb{Z}^n$. This means that there is a cone
+#! $C subseteq \mathbb{Z}^n$ and $p \in \mathbb{Z}^n$ such that $H = p + \left( C \cap \mathbb{Z}^n \right)$.
+#! @Arguments object
+DeclareCategory( "IsAffineConeSemigroup",
+                 IsAffineSemigroup );
+
+# affine cone semigroup always implies affine semigroup
+InstallTrueMethod( IsAffineSemigroup, IsAffineConeSemigroup );
 
 
 ############################################
