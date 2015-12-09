@@ -101,12 +101,12 @@ filt4 := ImageEmbedding( filt4 );
 quot4 := CokernelObject( LiftAlongMonomorphism( filt3, filt4 ) );
 
 im4 := ImageObject( TensorProductOnMorphisms( m4, IdentityMorphism( N ) ) );
-im4_tilde := AsSerreQuotientBySpansObject( Serre_cat, im4 );
+im4_tilde := AsSerreQuotientCategoryBySpansObject( Serre_cat, im4 );
 
-quot1 := AsSerreQuotientBySpansObject( Serre_cat, quot1 );
-quot2 := AsSerreQuotientBySpansObject( Serre_cat, quot2 );
-quot3 := AsSerreQuotientBySpansObject( Serre_cat, quot3 );
-quot4 := AsSerreQuotientBySpansObject( Serre_cat, quot4 );
+quot1 := AsSerreQuotientCategoryBySpansObject( Serre_cat, quot1 );
+quot2 := AsSerreQuotientCategoryBySpansObject( Serre_cat, quot2 );
+quot3 := AsSerreQuotientCategoryBySpansObject( Serre_cat, quot3 );
+quot4 := AsSerreQuotientCategoryBySpansObject( Serre_cat, quot4 );
 
 dimension_of_factor( quot1 );
 #! 1
