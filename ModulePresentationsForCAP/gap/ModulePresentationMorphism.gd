@@ -122,5 +122,5 @@ DeclareOperation( "StandardGeneratorMorphism",
 #! the free module to the generators of $A$.
 #! @Returns a morphism in $\mathrm{Hom}(F,A)$
 #! @Arguments A
-DeclareAttribute( "PresentationAsMorphism",
+DeclareAttribute( "CoverByFreeModule",
                   IsLeftOrRightPresentation );

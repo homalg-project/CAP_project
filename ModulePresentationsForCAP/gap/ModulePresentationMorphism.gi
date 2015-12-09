@@ -207,7 +207,7 @@ InstallMethod( StandardGeneratorMorphism,
 end );
 
 ##
-InstallMethod( PresentationAsMorphism,
+InstallMethod( CoverByFreeModule,
                [ IsLeftPresentation ],
                
   function( left_presentation )
@@ -224,7 +224,7 @@ InstallMethod( PresentationAsMorphism,
 end );
 
 ##
-InstallMethod( PresentationAsMorphism,
+InstallMethod( CoverByFreeModule,
                [ IsRightPresentation ],
                
   function( right_presentation )

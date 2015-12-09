@@ -11,7 +11,7 @@ Q := HomalgFieldOfRationalsInSingular();;
 R := Q * "x,y,z";;
 M := HomalgMatrix( [ [ "x" ], [ "y" ], [ "z" ] ], 3, 1, R );;
 Ml := AsLeftPresentation( M );;
-eps := PresentationAsMorphism( Ml );;
+eps := CoverByFreeModule( Ml );;
 iota1 := KernelEmbedding( eps );;
 Display( iota1 );
 #! x,
@@ -25,7 +25,7 @@ Display( Source( iota1 ) );
 #! -z,0, x 
 #! 
 #! An object in Category of left presentations of Q[x,y,z]
-pi1 := PresentationAsMorphism( Source( iota1 ) );;
+pi1 := CoverByFreeModule( Source( iota1 ) );;
 d1 := PreCompose( pi1, iota1 );;
 Display( d1 );
 #! x,
@@ -44,7 +44,7 @@ Display( Source( iota2 ) );;
 #! x,z,-y
 #! 
 #! An object in Category of left presentations of Q[x,y,z]
-pi2 := PresentationAsMorphism( Source( iota2 ) );;
+pi2 := CoverByFreeModule( Source( iota2 ) );;
 d2 := PreCompose( pi2, iota2 );;
 Display( d2 );
 #! 0, -z,y,
@@ -61,7 +61,7 @@ Display( Source( iota3 ) );
 #! (an empty 0 x 1 matrix)
 #! 
 #! An object in Category of left presentations of Q[x,y,z]
-pi3 := PresentationAsMorphism( Source( iota3 ) );;
+pi3 := CoverByFreeModule( Source( iota3 ) );;
 d3 := PreCompose( pi3, iota3 );;
 Display( d3 );
 #! x,z,-y
