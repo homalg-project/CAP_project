@@ -448,7 +448,7 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModuleWithGivenTruncationO
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
   function( projective_module, truncated_projective_module )
-    local degree_list, truncated_degree_list, embedding_matrix, counter, i, j, row, graded_ring;
+    local degree_list, truncated_degree_list, embedding_matrix, counter, counter2, iterator, i, j, row, graded_ring;
 
     # check for valid input
     if not IsIdenticalObj( CapCategory( projective_module ), CapCategory( truncated_projective_module ) ) then
@@ -477,10 +477,13 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModuleWithGivenTruncationO
     # given that the truncated_module is not the trivial module, we compute the non-trivial embedding matrix
     embedding_matrix := [];
     counter := 0;
-    for i in [ 1 .. Length( degree_list ) ] do
+    counter2 := 1;
+    i := 1;
+    iterator := true;
+    while iterator do
 
-      # if the degree lies in the cone, then add this degree layer to the degree_list of the truncated module
-      if degree_list[ i ] in truncated_degree_list then
+      # if the degree belongs to the truncated module
+      if degree_list[ i ] = truncated_degree_list[ counter2 ] then
 
         # now add rows to the embedding matrix
         for j in [ 1 .. degree_list[ i ][ 2 ] ] do
@@ -491,10 +494,26 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModuleWithGivenTruncationO
 
         od;
 
+        # increase counter2
+        counter2 := counter2 + 1;
+
+        # if counter2 exceeds the length of truncated_degree_list, then the computation of the embedding_matrix is completed
+        if counter2 > Length( truncated_degree_list ) then
+          iterator := false;
+        fi;
+
       fi;
 
       # increase the counter
       counter := counter + degree_list[ i ][ 2 ];
+
+      # increase i
+      i := i + 1;
+
+      # if i exteeds the length of degree_list, then the computation of the embedding_matrix is completed
+      if i > Length( degree_list ) then
+        iterator := false;
+      fi;
 
     od;
 
@@ -519,7 +538,7 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModuleWithGivenTruncati
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
   function( projective_module, truncated_projective_module )
-    local degree_list, truncated_degree_list, projection_matrix, counter, i, j, row, graded_ring;
+    local degree_list, truncated_degree_list, projection_matrix, counter, counter2, iterator, i, j, row, graded_ring;
 
     # check for valid input
     if not IsIdenticalObj( CapCategory( projective_module ), CapCategory( truncated_projective_module ) ) then
@@ -548,12 +567,15 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModuleWithGivenTruncati
     # given that the truncated_module is not the trivial module, we compute the non-trivial embedding matrix
     projection_matrix := [];
     counter := 0;
-    for i in [ 1 .. Length( degree_list ) ] do
+    counter2 := 1;
+    i := 1;
+    iterator := true;
+    while iterator do
 
-      # if the degree is part of the degrees of the truncated module, then we have a contribution to the projection
-      if degree_list[ i ] in truncated_degree_list then
+      # if the degree belongs to the truncated module...
+      if degree_list[ i ] = truncated_degree_list[ counter2 ] then
 
-        # now add rows to the embedding matrix
+        # now add rows to the projection matrix
         for j in [ 1 .. degree_list[ i ][ 2 ] ] do
 
           row := List( [ 1 .. Rank( projective_module ) ], x -> 0 );
@@ -562,10 +584,26 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModuleWithGivenTruncati
 
         od;
 
+        # increase counter2
+        counter2 := counter2 + 1;
+
+        # if counter2 exceeds the length of truncated_degree_list, then the computation of the embedding_matrix is completed
+        if counter2 > Length( truncated_degree_list ) then
+          iterator := false;
+        fi;
+
       fi;
 
       # increase the counter
       counter := counter + degree_list[ i ][ 2 ];
+
+      # increase i
+      i := i + 1;
+
+      # if i exteeds the length of degree_list, then the computation of the embedding_matrix is completed
+      if i > Length( degree_list ) then
+        iterator := false;
+      fi;
 
     od;
 

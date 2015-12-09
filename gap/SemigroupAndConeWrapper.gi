@@ -127,7 +127,7 @@ InstallMethod( SemigroupGeneratorList,
     # all checks passed, so create the SemigroupGeneratorList
     sg_generator_list := rec();
     ObjectifyWithAttributes( sg_generator_list, TheTypeOfSemigroupGeneratorLists,
-                             UnderlyingList, list_of_generators,
+                             UnderlyingList, DuplicateFreeList( list_of_generators ),
                              EmbeddingDimension, Length( list_of_generators[ 1 ] )
                             );
 
@@ -138,22 +138,22 @@ end );
 
 InstallMethod( ConeHPresentationList,
                [ IsList ],
-  function( list_of_generators )
+  function( list_of_hconstraints )
     local helper_list, i, j, cone_hpresentation_list;
 
     # we expect at least one h-constraint
-    if Length( list_of_generators ) = 0 then
+    if Length( list_of_hconstraints ) = 0 then
       Error( "no h-constraint given" );
       return;
     fi;
 
     # we have to check that 
-    # (1) all entries of the list_of_generators are of the same length
+    # (1) all entries of the list_of_hconstraints are of the same length
     # (2) all entries are integers
 
     # @ (1)
     helper_list := DuplicateFreeList( 
-                           List( [ 1 .. Length( list_of_generators ) ], i -> Length( list_of_generators[ i ] ) ) );
+                           List( [ 1 .. Length( list_of_hconstraints ) ], i -> Length( list_of_hconstraints[ i ] ) ) );
     if Length( helper_list ) > 1 then
       Error( "all h-constraints have to be of the same length");
       return;
@@ -163,11 +163,11 @@ InstallMethod( ConeHPresentationList,
     fi;
 
     # @ (2)
-    for i in [ 1 .. Length( list_of_generators ) ] do
+    for i in [ 1 .. Length( list_of_hconstraints ) ] do
 
-      for j in [ 1 .. Length( list_of_generators[ i ] ) ] do
+      for j in [ 1 .. Length( list_of_hconstraints[ i ] ) ] do
 
-        if not IsInt( list_of_generators[ i ][ j ] ) then
+        if not IsInt( list_of_hconstraints[ i ][ j ] ) then
           Error( "the entries of all h-constraints must be integers" );
           return;
         fi;
@@ -179,8 +179,8 @@ InstallMethod( ConeHPresentationList,
     # all checks passed, so create the ConeHPresentationList
     cone_hpresentation_list := rec();
     ObjectifyWithAttributes( cone_hpresentation_list, TheTypeOfConeHPresentationLists,
-                             UnderlyingList, list_of_generators,
-                             EmbeddingDimension, Length( list_of_generators[ 1 ] )
+                             UnderlyingList, DuplicateFreeList( list_of_hconstraints ),
+                             EmbeddingDimension, Length( list_of_hconstraints[ 1 ] )
                             );
 
     # and return this object
@@ -258,7 +258,7 @@ InstallMethod( ConeVPresentationList,
     # all checks passed, so create the ConeHPresentationList
     cone_vpresentation_list := rec();
     ObjectifyWithAttributes( cone_vpresentation_list, TheTypeOfConeVPresentationLists,
-                             UnderlyingList, list_of_generators,
+                             UnderlyingList, DuplicateFreeList( list_of_generators ),
                              EmbeddingDimension, Length( list_of_generators[ 1 ] )
                             );
 

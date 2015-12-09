@@ -468,6 +468,11 @@ InstallMethod( PointContainedInAffineSemigroup,
       return;
     fi;
 
+    # if we are dealing with an affine semigroup of a cone, then use this method instead
+    if IsAffineConeSemigroup( affine_semigroup ) then
+      return PointContainedInAffineConeSemigroup( affine_semigroup, point );
+    fi;
+
     # compute the difference between the offset and Q
     diff := point;
     diff := point - Offset( affine_semigroup );
