@@ -383,7 +383,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_PRINT,
                          PrintString := "zero",
                          Adjective := true ) );
     
-    InstallPrintFunctionsOutOfPrintingGraph( print_graph );
+    InstallPrintFunctionsOutOfPrintingGraph( print_graph, -1 );
     
 end );
 

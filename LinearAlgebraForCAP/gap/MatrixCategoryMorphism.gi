@@ -121,8 +121,6 @@ end );
 ##
 InstallMethod( Display,
                [ IsVectorSpaceMorphism ],
-               # FIXME: Fix the rank in GenericView and delete this afterwards
-               9999,
                
   function( vector_space_morphism )
     

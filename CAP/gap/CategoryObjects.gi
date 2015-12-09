@@ -198,7 +198,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
                                              Adjective := true ) ] ) );
     
     
-    InstallPrintFunctionsOutOfPrintingGraph( print_graph );
+    InstallPrintFunctionsOutOfPrintingGraph( print_graph, -1 );
     
 end );
 
