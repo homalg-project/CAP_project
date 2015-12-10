@@ -330,6 +330,44 @@ InstallMethod( DeduceMapFromMatrixAndSourceRight,
 
 end );
 
+InstallMethod( UnzipDegreeList,
+               [ IsCAPCategoryOfProjectiveGradedLeftModulesObject ],
+  function( projective_module )
+    local old_degree_list, i, j, new_degree_list;
+
+    old_degree_list := DegreeList( projective_module );
+    new_degree_list := [];
+    
+    for i in [ 1 .. Length( old_degree_list ) ] do
+    
+      new_degree_list := Concatenation( new_degree_list, 
+                                        List( [ 1 .. old_degree_list[ i ][ 2 ] ], k -> old_degree_list[ i ][ 1 ] ) );
+      
+    od;
+    
+    return new_degree_list;
+
+end );
+
+InstallMethod( UnzipDegreeList,
+               [ IsCAPCategoryOfProjectiveGradedRightModulesObject ],
+  function( projective_module )
+    local old_degree_list, i, j, new_degree_list;
+
+    old_degree_list := DegreeList( projective_module );
+    new_degree_list := [];
+    
+    for i in [ 1 .. Length( old_degree_list ) ] do
+    
+      new_degree_list := Concatenation( new_degree_list, 
+                                        List( [ 1 .. old_degree_list[ i ][ 2 ] ], k -> old_degree_list[ i ][ 1 ] ) );
+      
+    od;
+    
+    return new_degree_list;
+
+end );
+
 
 
 ########################################################################

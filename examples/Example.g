@@ -8,7 +8,6 @@ LoadPackage( "CAPCategoryOfProjectiveGradedModules" );;
 #################################################################
 
 #! @Example
-
 Q := HomalgFieldOfRationalsInSingular();
 #! Q
 S := GradedRing( Q * "x_1, x_2, x_3, x_4" );
@@ -25,6 +24,8 @@ Object2L := CAPCategoryOfProjectiveGradedLeftModulesObject( [ [[1,0],2],
 #! <A projective graded left module of rank 8>
 DegreeList( Object2L );
 #! [ [ ( 1, 0 ), 5 ], [ ( 0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ]
+UnzipDegreeList( Object2L );
+#! [ ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 0, 1 ), ( 0, 1 ), ( 1, 0 ) ]
 ObjectR := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],2] ], S );
 #! <A projective graded right module of rank 2>
 DegreeList( ObjectR );
@@ -34,8 +35,10 @@ Object2R := CAPCategoryOfProjectiveGradedRightModulesObject( [ [[1,0],2],
 #! <A projective graded right module of rank 8>
 DegreeList( Object2R );
 #! [ [ ( 1, 0 ), 5 ], [ ( 0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ]
-
+UnzipDegreeList( Object2R );
+#! [ ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 0, 1 ), ( 0, 1 ), ( 1, 0 ) ]
 #! @EndExample
+
 
 #! Whenever the object constructor is called, it tried to simplify the given degree list. To this end it checks if 
 #! subsequent degree group elements match. If so, their multiplicities are added. So, as in the example above we have:

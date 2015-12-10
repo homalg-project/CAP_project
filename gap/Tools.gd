@@ -8,6 +8,8 @@
 ##
 #############################################################################
 
+
+
 ############################################
 ##
 #! @Section Tools to simplify code
@@ -49,6 +51,12 @@ DeclareOperation( "DeduceMapFromMatrixAndRangeRight",
 #! @Arguments m, S
 DeclareOperation( "DeduceMapFromMatrixAndSourceRight",
                   [ IsHomalgMatrix, IsCAPCategoryOfProjectiveGradedRightModulesObject ] );
+
+DeclareOperation( "UnzipDegreeList",
+                  [ IsCAPCategoryOfProjectiveGradedLeftModulesObject ] );
+
+DeclareOperation( "UnzipDegreeList",
+                  [ IsCAPCategoryOfProjectiveGradedRightModulesObject ] );
 
 
 
