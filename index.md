@@ -4,7 +4,10 @@ layout: default
 
 # The CAP project
 
-This is the home of the CAP project. For more information, please see the packages listed below.
+This is the home of the CAP project. It consists of several GAP packages
+build on top of its main package, CAP. A good way to start is having a look
+at the [manual](CAPManual.pdf), which offers extensive tutorials and a 
+good discription of CAP. Also, you can look at the packages references for detailed command descriptions.
 
 ## Packages in the CAP project
 
