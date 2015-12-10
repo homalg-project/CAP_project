@@ -465,7 +465,8 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModuleWithGivenTruncationO
 
     # extract the degree_lists
     degree_list := DegreeList( projective_module );
-    truncated_degree_list := DegreeList( truncated_projective_module );
+    truncated_degree_list := List( [ 1 .. Length( DegreeList( truncated_projective_module ) ) ],
+                                   k -> ShallowCopy( DegreeList( truncated_projective_module )[ k ] ) );
 
     # if the new_dgree_list is empty, the truncated module is the zero_module and the embedding is the zero_morphism
     if Length( truncated_degree_list ) = 0 then
@@ -494,8 +495,15 @@ InstallMethod( EmbeddingOfTruncationOfProjectiveGradedModuleWithGivenTruncationO
 
         od;
 
-        # increase counter2
-        counter2 := counter2 + 1;
+        # adjust counter2 or truncated_degree_list accordingly
+        if degree_list[ i ][ 2 ] = truncated_degree_list[ counter2 ][ 2 ] then
+          counter2 := counter2 + 1;
+        elif degree_list[ i ][ 2 ] < truncated_degree_list[ counter2 ][ 2 ] then
+          truncated_degree_list[ counter2 ][ 2 ] := truncated_degree_list[ counter2 ][ 2 ] - degree_list[ i ][ 2 ];
+        else
+          Error( "Something went wrong" );
+          return;
+        fi;
 
         # if counter2 exceeds the length of truncated_degree_list, then the computation of the embedding_matrix is completed
         if counter2 > Length( truncated_degree_list ) then
@@ -555,7 +563,8 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModuleWithGivenTruncati
 
     # extract the degree_lists
     degree_list := DegreeList( projective_module );
-    truncated_degree_list := DegreeList( truncated_projective_module );
+    truncated_degree_list := List( [ 1 .. Length( DegreeList( truncated_projective_module ) ) ],
+                                   k -> ShallowCopy( DegreeList( truncated_projective_module )[ k ] ) );
 
     # if the new_dgree_list is empty, the truncated module is the zero_module and the embedding is the zero_morphism
     if Length( truncated_degree_list ) = 0 then
@@ -573,7 +582,7 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModuleWithGivenTruncati
     while iterator do
 
       # if the degree belongs to the truncated module...
-      if degree_list[ i ] = truncated_degree_list[ counter2 ] then
+      if degree_list[ i ][ 1 ] = truncated_degree_list[ counter2 ][ 1 ] then
 
         # now add rows to the projection matrix
         for j in [ 1 .. degree_list[ i ][ 2 ] ] do
@@ -584,8 +593,15 @@ InstallMethod( ProjectionOntoTruncationOfProjectiveGradedModuleWithGivenTruncati
 
         od;
 
-        # increase counter2
-        counter2 := counter2 + 1;
+        # adjust counter2 or truncated_degree_list accordingly
+        if degree_list[ i ][ 2 ] = truncated_degree_list[ counter2 ][ 2 ] then
+          counter2 := counter2 + 1;
+        elif degree_list[ i ][ 2 ] < truncated_degree_list[ counter2 ][ 2 ] then
+          truncated_degree_list[ counter2 ][ 2 ] := truncated_degree_list[ counter2 ][ 2 ] - degree_list[ i ][ 2 ];
+        else
+          Error( "Something went wrong" );
+          return;
+        fi;
 
         # if counter2 exceeds the length of truncated_degree_list, then the computation of the embedding_matrix is completed
         if counter2 > Length( truncated_degree_list ) then
