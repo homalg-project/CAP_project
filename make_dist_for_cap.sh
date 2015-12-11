@@ -52,7 +52,7 @@ GAPInput
       ##delete all old releases, just leave three of them
       delete_releases=$(python ${current_dir}/delete_old_releases.py ${i} ${current_dir}/json_data)
       for rel_id in $delete_releases; do
-          curl -X DELETE https:///repos/homalg-project/CAP_project/releases/${rel_id}?access_token=${oauth_token}
+          curl -X DELETE https://api.github.com/repos/homalg-project/CAP_project/releases/${rel_id}?access_token=${oauth_token}
       done
       
       release_response=$(curl -H "Content-Type: application/json" -X POST --data \
