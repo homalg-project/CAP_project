@@ -17,7 +17,6 @@
 
 InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
                [ IsHomalgGradedRing ],
-               
   function( homalg_graded_ring )
     local category;
     
@@ -87,7 +86,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # @Returns true or false
     # @Arguments object    
     AddIsWellDefinedForObjects( category,
-      
       function( object )
         local i, A, power;
       
@@ -104,18 +102,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           # initialse a power counter that is to be compared to the rank of the object
           power := 0;
           
-          # otherwise we are not looking at the zero object, so let us check that all degrees lie in the DegreeClass and that
-          # rank is correctly summed
+          # let us check that all degrees lie in the DegreeGroup and that rank is correctly summed
           for i in [ 1 .. Length( DegreeList( object ) ) ] do
           
             if not IsHomalgModuleElement( DegreeList( object )[ i ][ 1 ] ) then
             
-              # the degrees are not saves as homalg module elements, so return false
+              # the degrees are not saved as homalg module elements, so return false
               return false;
             
             elif not IsIdenticalObj( SuperObject( DegreeList( object )[ i ][ 1 ] ), A ) then
             
-              # the degrees are not homalg_module_elements in the degree class of the homalg ring underlying the object
+              # the degrees are not homalg_module_elements in the degree group of the homalg ring underlying the object
               # so return false
               return false;
             
@@ -146,8 +143,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # @Returns true or false
     # @Arguments morphism
     AddIsWellDefinedForMorphisms( category,
-
-          function( morphism )
+      function( morphism )
         local source, range, morphism_matrix, morphism_matrix_entries, func, degrees_of_entries_matrix, degree_group, 
              source_degrees, range_degrees, buffer_col, dummy_range_degrees, i, j;
 
@@ -155,16 +151,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         source := Source( morphism );        
         range := Range( morphism );
 
-        # next check that the underlying homalg_graded_rings are identical
-        if not ( IsIdenticalObj( UnderlyingHomalgGradedRing( source ), UnderlyingHomalgGradedRing( morphism ) ) and
-                        IsIdenticalObj( UnderlyingHomalgGradedRing( morphism ), UnderlyingHomalgGradedRing( range ) ) ) then
+        # and that source and range are defined in the same category
+        if not IsIdenticalObj( CapCategory( source ), CapCategory( range ) ) then
 
           return false;
 
         fi;
 
-        # and that source and range are defined in the same category
-        if not IsIdenticalObj( CapCategory( source ), CapCategory( range ) ) then
+        # next check that the underlying homalg_graded_rings are identical
+        if not ( IsIdenticalObj( UnderlyingHomalgGradedRing( source ), UnderlyingHomalgGradedRing( morphism ) ) and
+                 IsIdenticalObj( UnderlyingHomalgGradedRing( morphism ), UnderlyingHomalgGradedRing( range ) ) ) then
 
           return false;
 
@@ -186,86 +182,78 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
           return true;
 
-        else
+        fi;
 
-          # extract the degrees of the entries of the morphism_matrix
+        # extract the degrees of the entries of the morphism_matrix
 
-          # I use the DegreeOfEntries of the underlying graded ring
-          # in particular I hope that this function raises and error if one of the entries is not homogeneous
-          degrees_of_entries_matrix := DegreesOfEntries( morphism_matrix );
+        # I use the DegreeOfEntries of the underlying graded ring
+        # in particular I hope that this function raises and error if one of the entries is not homogeneous
+        degrees_of_entries_matrix := DegreesOfEntries( morphism_matrix );
 
-          # turn the degrees of the source into a column vector (that is how I think about right-modules)
-          source_degrees := [];
-          for i in [ 1 .. Length( DegreeList( source ) ) ] do
+        # turn the degrees of source and range into a row vector (that is how I think about left-modules)
+        source_degrees := [];
+        for i in [ 1 .. Length( DegreeList( source ) ) ] do
 
-            for j in [ 1 .. DegreeList( source )[ i ][ 2 ] ] do
+          source_degrees := Concatenation( source_degrees,
+                            ListWithIdenticalEntries( DegreeList( source )[ i ][ 2 ], DegreeList( source )[ i ][ 1 ] ) );
 
-              Add( source_degrees, DegreeList( source )[ i ][ 1 ] );
+        od;
 
-            od;
+        # turn the range-degrees into a column vector, that we will compare with the ranges dictated by the mapping matrix
+        range_degrees := [];
+        for i in [ 1 .. Length( DegreeList( range ) ) ] do
 
-          od;
+          range_degrees := Concatenation( range_degrees,
+                           ListWithIdenticalEntries( DegreeList( range )[ i ][ 2 ], DegreeList( range )[ i ][ 1 ] ) );
 
-          # turn the range-degrees into a column vector, that we will compare with the ranges dictated by the mapping matrix
-          range_degrees := [];
-          for i in [ 1 .. Length( DegreeList( range ) ) ] do
+        od;
 
-            for j in [ 1 .. DegreeList( range )[ i ][ 2 ] ] do
-
-              Add( range_degrees, DegreeList( range )[ i ][ 1 ] );
-
-            od;
-
-          od;
-
-          # compute the dummy_range_degrees whilst checking at the same time that the mapping is well-defined
-          # the only question left after this test is if the range of the well-defined map is really the range
-          # specified for the mapping
-          morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
-          dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
-          for i in [ 1 .. Rank( range ) ] do
+        # compute the dummy_range_degrees whilst checking at the same time that the mapping is well-defined
+        # the only question left after this test is if the range of the well-defined map is really the range
+        # specified for the mapping
+        morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
+        dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
+        for i in [ 1 .. Rank( range ) ] do
           
-            # initialise the i-th buffer row
-            buffer_col := List( [ 1 .. Rank( source ) ] );
+          # initialise the i-th buffer row
+          buffer_col := List( [ 1 .. Rank( source ) ] );
 
-            # compute its entries
-            for j in [ 1 .. Rank( source ) ] do
-                        
-              if morphism_matrix_entries[ j ][ i ] = Zero( HomalgRing( morphism_matrix ) ) then
+          # compute its entries
+          for j in [ 1 .. Rank( source ) ] do
+          
+            if morphism_matrix_entries[ j ][ i ] = Zero( HomalgRing( morphism_matrix ) ) then
               
-                buffer_col[ j ] := range_degrees[ i ];
+              buffer_col[ j ] := range_degrees[ i ];
 
-              else
+            else
               
-                buffer_col[ j ] := source_degrees[ j ] - degrees_of_entries_matrix[ j ][ i ];
+              buffer_col[ j ] := source_degrees[ j ] - degrees_of_entries_matrix[ j ][ i ];
                 
-              fi;
-            
-            od;
-
-            # check that the degrees in buffer_row are all the same, for if not the mapping is not well-defined
-            if Length( DuplicateFreeList( buffer_col ) ) > 1 then
-            
-              return false;
-              
             fi;
             
-            # otherwise add this common degree to the dummy_range_degrees
-            dummy_range_degrees[ i ] := buffer_col[ 1 ];
-          
           od;
-                  
-          # and now perform the final check
-          if not ( range_degrees = dummy_range_degrees ) then
+
+          # check that the degrees in buffer_row are all the same, for if not this implies that the mapping isn't well-defined
+          if Length( DuplicateFreeList( buffer_col ) ) > 1 then
           
             return false;
-        
+          
           fi;
           
-          # all tests have been passed, so return true
-          return true;
+          # otherwise add this common degree to the dummy_range_degrees
+          dummy_range_degrees[ i ] := buffer_col[ 1 ];
+          
+        od;
+
+        # and now perform the final check
+        if range_degrees <> dummy_range_degrees then
+        
+          return false;
         
         fi;
+        
+        # all tests have been passed, so return true
+        return true;
         
     end );
 
@@ -283,99 +271,46 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # @Arguments object1, object2
     AddIsEqualForObjects( category,
       function( object1, object2 )
-        local deg_list1, deg_list2, i, j, new_deg_list1, new_deg_list2, comparer, counter;
+      local deg_list1, deg_list2, comparer_list, i, j, counter1, counter2, len, pos1, pos2;
       
-        # step1: simplify the two degree_lists
-        deg_list1 := List( [ 1 .. Length( DegreeList( object1 ) ) ] );
-        for i in [ 1 .. Length( deg_list1 ) ] do
-          deg_list1[ i ] := ShallowCopy( DegreeList( object1 )[ i ] );
-        od;
-        deg_list2 := List( [ 1 .. Length( DegreeList( object2 ) ) ] );
-        for i in [ 1 .. Length( deg_list2 ) ] do
-          deg_list2[ i ] := ShallowCopy( DegreeList( object2 )[ i ] );
-        od;
-
-        new_deg_list1 := [];
-        new_deg_list2 := [];
-        
-        for i in [ 1 .. Length( deg_list1 ) ] do
-        
-          if deg_list1[ i ][ 2 ] <> -1 then
-        
-            comparer := deg_list1[ i ][ 1 ];
-            counter := deg_list1[ i ][ 2 ];
-        
-            for j in [ i+1 .. Length( deg_list1 ) ] do
-          
-              if deg_list1[ j ][ 1 ] = comparer then
-            
-                counter := counter + deg_list1[ j ][ 2 ];
-                deg_list1[ j ][ 2 ] := -1;
-                
-              fi;
-          
-            od;
-            
-            Add( new_deg_list1, [ comparer, counter ] );
-        
-          fi;
-        
-        od;
-        
-        for i in [ 1 .. Length( deg_list2 ) ] do
-        
-          if deg_list2[ i ][ 2 ] <> -1 then
-        
-            comparer := deg_list2[ i ][ 1 ];
-            counter := deg_list2[ i ][ 2 ];
-        
-            for j in [ i+1 .. Length( deg_list2 ) ] do
-          
-              if deg_list2[ j ][ 1 ] = comparer then
-            
-                counter := counter + deg_list2[ j ][ 2 ];
-                deg_list2[ j ][ 2 ] := -1;
-                
-              fi;
-          
-            od;
-            
-            Add( new_deg_list2, [ comparer, counter ] );
-        
-          fi;
-        
-        od;
-        
-        # step2: compare the degree_list (modulo potential permutations)
-        if Length( new_deg_list1 ) <> Length( new_deg_list2 ) then
+        if Rank( object1 ) <> Rank( object2 ) then
           return false;
         fi;
         
-        for i in [ 1 .. Length( new_deg_list1 ) ] do
+        deg_list1 := UnzipDegreeList( object1 );
+        deg_list2 := UnzipDegreeList( object2 );
+        comparer_list := DuplicateFreeList( deg_list1 );
         
-          # try to find a match for entry i of new_deg_list1 in new_deg_list2
-          j := 1;
-          while not ( ( new_deg_list1[ i ][ 1 ] = new_deg_list2[ j ][ 1 ] ) and 
-                      ( new_deg_list1[ i ][ 2 ] = new_deg_list2[ j ][ 2 ] ) ) do
-                          
-             j := j + 1;
-             
-             if j > Length( new_deg_list2 ) then
-               return false;
-             fi;
-             
+        # scan over all degrees that appear in deg_list1
+        for i in comparer_list do
+        
+          counter1 := 0;
+          counter2 := 0;
+          len := Length( deg_list1 );
+          for j in [ 0 .. len - 1 ] do
+          
+            if deg_list1[ len - j ] = i then
+              Remove( deg_list1, len - j );
+              counter1 := counter1 + 1;
+            fi;
+            
+            if deg_list2[ len - j ] = i then
+              Remove( deg_list2, len - j );
+              counter2 := counter2 + 1;
+            fi;
+            
           od;
           
-          # and, if we find such an entry, remove it
-          Remove( new_deg_list2, j );
-        
+          if counter1 <> counter2 then
+            return false;
+          fi;
+          
         od;
         
-        # and finally return if the two degree_lists encode isomorphic projective modules
-        return Length( new_deg_list2 ) = 0;
-      
+        return true;
+
     end );
-    
+
     # @Description
     # This method checks if the sources and ranges of the two morphisms are equal (by means of the method above).
     # Finally we compare the mapping matrices. If all three match, then two morphisms are considered equal.
