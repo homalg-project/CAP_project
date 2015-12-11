@@ -18,7 +18,7 @@
 #! The argument is a homalg graded ring $R$.
 #! The output is the category of projective graded right modules over $R$.
 #! @Returns a category
-#! @Arguments R                  
+#! @Arguments R
 DeclareAttribute( "CAPCategoryOfProjectiveGradedRightModules",
                   IsHomalgGradedRing );
 

@@ -645,7 +645,6 @@ end );
 ##
 #################################################
 
-## FIXME: Make use of the additional arguments in functors.
 
 # this function computes the trunction functor for both left and right presentations
 InstallGlobalFunction( TruncationFunctorForProjectiveGradedModulesToSemigroups,
