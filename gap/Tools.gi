@@ -84,10 +84,17 @@ InstallMethod( DeduceMapFromMatrixAndRangeLeft,
         od;
 
         # and compute the source object
-        source_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_source_object, homalg_graded_ring );
+        source_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_source_object, 
+                                                                         homalg_graded_ring,
+                                                                         CapCategory( range_object )!.constructor_checks_wished 
+                                                                        );
 
         # and return the mapping
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object, matrix, range_object );
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object,
+                                                                        matrix,
+                                                                        range_object,
+                                                                        CapCategory( range_object )!.constructor_checks_wished
+                                                                       );
 
       fi;
 
@@ -163,10 +170,17 @@ InstallMethod( DeduceMapFromMatrixAndSourceLeft,
         od;
 
         # and compute the range object
-        range_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_range_object, homalg_graded_ring );
+        range_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_range_object,
+                                                                        homalg_graded_ring,
+                                                                        CapCategory( source_object )!.constructor_checks_wished
+                                                                       );
 
         # and return the mapping
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object, matrix, range_object );
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object,
+                                                                        matrix,
+                                                                        range_object,
+                                                                        CapCategory( source_object )!.constructor_checks_wished 
+                                                                       );
 
       fi;
 
@@ -242,10 +256,17 @@ InstallMethod( DeduceMapFromMatrixAndRangeRight,
         od;
 
         # construct the kernel_object
-        source_object := CAPCategoryOfProjectiveGradedRightModulesObject( degrees_of_source_object, homalg_graded_ring );
+        source_object := CAPCategoryOfProjectiveGradedRightModulesObject( degrees_of_source_object,
+                                                                          homalg_graded_ring,
+                                                                          CapCategory( range_object )!.constructor_checks_wished 
+                                                                         );
 
         # and return the kernel embedding
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object, matrix, range_object );
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object,
+                                                                        matrix,
+                                                                        range_object,
+                                                                        CapCategory( range_object )!.constructor_checks_wished 
+                                                                       );
 
       fi;
 
@@ -321,10 +342,17 @@ InstallMethod( DeduceMapFromMatrixAndSourceRight,
         od;
 
         # and from them the cokernel object
-        range_object := CAPCategoryOfProjectiveGradedRightModulesObject( degrees_of_range_object, homalg_graded_ring );
+        range_object := CAPCategoryOfProjectiveGradedRightModulesObject( degrees_of_range_object,
+                                                                         homalg_graded_ring,
+                                                                         CapCategory( source_object )!.constructor_checks_wished 
+                                                                        );
 
         # and return the mapping morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object, matrix, range_object );        
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object,
+                                                                        matrix,
+                                                                        range_object,
+                                                                        CapCategory( source_object )!.constructor_checks_wished 
+                                                                       );
 
       fi;
 
@@ -337,14 +365,14 @@ InstallMethod( UnzipDegreeList,
 
     old_degree_list := DegreeList( projective_module );
     new_degree_list := [];
-    
+
     for i in [ 1 .. Length( old_degree_list ) ] do
-    
+
       new_degree_list := Concatenation( new_degree_list, 
                                         List( [ 1 .. old_degree_list[ i ][ 2 ] ], k -> old_degree_list[ i ][ 1 ] ) );
-      
+
     od;
-    
+
     return new_degree_list;
 
 end );
@@ -356,14 +384,14 @@ InstallMethod( UnzipDegreeList,
 
     old_degree_list := DegreeList( projective_module );
     new_degree_list := [];
-    
+
     for i in [ 1 .. Length( old_degree_list ) ] do
-    
+
       new_degree_list := Concatenation( new_degree_list, 
                                         List( [ 1 .. old_degree_list[ i ][ 2 ] ], k -> old_degree_list[ i ][ 1 ] ) );
-      
+
     od;
-    
+
     return new_degree_list;
 
 end );

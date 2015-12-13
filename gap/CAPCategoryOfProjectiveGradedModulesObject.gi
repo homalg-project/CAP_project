@@ -221,9 +221,8 @@ end );
 InstallMethod( CAPCategoryOfProjectiveGradedLeftModulesObject,
                [ IsList, IsHomalgGradedRing ],
   function( degree_list, homalg_graded_ring )
-  
-    #return CAPCategoryOfProjectiveGradedLeftOrRightModulesObject( degree_list, homalg_graded_ring, true );
-    return CAPCategoryOfProjectiveGradedLeftOrRightModulesObjectLazy( degree_list, homalg_graded_ring, true );
+
+    return CAPCategoryOfProjectiveGradedLeftOrRightModulesObject( degree_list, homalg_graded_ring, true );
 
 end );
 
@@ -244,9 +243,8 @@ end );
 InstallMethod( CAPCategoryOfProjectiveGradedRightModulesObject,
                [ IsList, IsHomalgGradedRing ],
   function( degree_list, homalg_graded_ring )
-  
-    #return CAPCategoryOfProjectiveGradedLeftOrRightModulesObject( degree_list, homalg_graded_ring, false );
-    return CAPCategoryOfProjectiveGradedLeftOrRightModulesObjectLazy( degree_list, homalg_graded_ring, false );
+
+    return CAPCategoryOfProjectiveGradedLeftOrRightModulesObject( degree_list, homalg_graded_ring, false );
 
 end );
 

@@ -24,7 +24,9 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
       category := CreateCapCategory( Concatenation( "CAP category of projective graded left modules over "
                                                                                           , RingName( homalg_graded_ring ) ) );
       category!.homalg_graded_ring_for_category_of_projective_graded_left_modules := homalg_graded_ring;
-      category!.checks_wished := true;
+
+      # here we can switch internal checks in constructor on or of - true means they are performed and false means they are not
+      category!.constructor_checks_wished := true;
 
       # set its properties
       SetIsAdditiveCategory( category, true );
@@ -32,7 +34,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
       SetIsRigidSymmetricClosedMonoidalCategory( category, true );
     
       # install its functionality
-      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES( category, true );
+      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES( category, category!.constructor_checks_wished );
     
       # add theorem file
       AddTheoremFileToCategory( category,
@@ -45,56 +47,6 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
       AddPredicateImplicationFileToCategory( category,
         Filename(
         DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicLeft" ),
-        "PredicateImplications.tex" )
-      );
-    
-      # add relations file
-      AddEvalRuleFileToCategory( category,
-        Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicLeft" ),
-        "Relations.tex" )
-      );
-    
-      # finalise the category
-      Finalize( category );
-    
-      # and return it
-      return category;
-
-end );
-
-# if checks = true -> checks on the input data of object and morphism constructors will be performed
-# if checks = false, such checks will not take place
-InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
-               [ IsHomalgGradedRing, IsBool ],
-  function( homalg_graded_ring, checks )
-    local category;
-    
-      # construct the category
-      category := CreateCapCategory( Concatenation( "CAP category of projective graded left modules over "
-                                                                                          , RingName( homalg_graded_ring ) ) );
-      category!.homalg_graded_ring_for_category_of_projective_graded_left_modules := homalg_graded_ring;
-      category!.checks_wished := checks;
-
-      # set its properties
-      SetIsAdditiveCategory( category, true );
-      SetIsStrictMonoidalCategory( category, true );
-      SetIsRigidSymmetricClosedMonoidalCategory( category, true );    
-    
-      # install its functionality
-      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES( category, checks );
-    
-      # add theorem file
-      AddTheoremFileToCategory( category,
-        Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicLeft" ),
-        "Propositions.tex" )
-      );
-    
-      # add predicate-implication file
-      AddPredicateImplicationFileToCategory( category,
-        Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicLeft" ),      
         "PredicateImplications.tex" )
       );
     
@@ -388,9 +340,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
         composition := UnderlyingHomalgMatrix( morphism1 ) * UnderlyingHomalgMatrix( morphism2 );
 
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ), 
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ),
                                                                         composition, 
-                                                                        Range( morphism2 ) );
+                                                                        Range( morphism2 ),
+                                                                        checks );
 
     end );
 
@@ -407,7 +360,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object, 
                                                           HomalgIdentityMatrix( Rank( object ), homalg_graded_ring ), 
-                                                          object );
+                                                          object,
+                                                          checks );
         
     end );
 
@@ -429,7 +383,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism_1 ),
                                                     UnderlyingHomalgMatrix( morphism_1 ) + UnderlyingHomalgMatrix( morphism_2 ),
-                                                    Range( morphism_2 ) 
+                                                    Range( morphism_2 ),
+                                                    checks
                                                     );
     end );
 
@@ -443,7 +398,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism ),
                                      MinusOne( UnderlyingHomalgGradedRing( morphism ) ) * UnderlyingHomalgMatrix( morphism ),
-                                     Range( morphism )
+                                     Range( morphism ),
+                                     checks
                                      );
     end );
 
@@ -483,7 +439,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source,
                                            HomalgZeroMatrix( Rank( source ), Rank( range ), homalg_graded_ring ),
-                                           range
+                                           range,
+                                           checks
                                           );
     end );
 
@@ -495,8 +452,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     AddZeroObject( category,
       function( )
         
-        return CAPCategoryOfProjectiveGradedLeftModulesObject( 
-                                          [ ], category!.homalg_graded_ring_for_category_of_projective_graded_left_modules );
+        return CAPCategoryOfProjectiveGradedLeftModulesObject( [ ],
+                                                   category!.homalg_graded_ring_for_category_of_projective_graded_left_modules,
+                                                   checks
+                                                   );
     end );
 
     # @Description
@@ -509,9 +468,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         local homalg_graded_ring, morphism;
         
         homalg_graded_ring := UnderlyingHomalgGradedRing( zero_object );
-        morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object, 
-                                                                    HomalgZeroMatrix( Rank( object ), 0, homalg_graded_ring ), 
-                                                                    zero_object
+        morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object,
+                                                                    HomalgZeroMatrix( Rank( object ), 0, homalg_graded_ring ),
+                                                                    zero_object,
+                                                                    checks
                                                                     );
         return morphism;
         
@@ -530,7 +490,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( zero_object, 
                                                                     HomalgZeroMatrix( 0, Rank( object ), homalg_graded_ring ), 
-                                                                    object
+                                                                    object,
+                                                                    checks
                                                                     );
         return morphism;
         
@@ -544,17 +505,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     AddDirectSum( category,
       function( object_list )
       local homalg_graded_ring, degree_list_list, degree_list_of_direct_sum_object;
-      
+    
       # first extract the underlying graded ring
       homalg_graded_ring := UnderlyingHomalgGradedRing( object_list[ 1 ] );
 
       # then the degree_list of the direct sum object
       degree_list_list := List( object_list, x -> DegreeList( x ) );
       degree_list_of_direct_sum_object := Concatenation( degree_list_list );
-      
+    
       # and then return the corresponding object
-      return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_of_direct_sum_object, homalg_graded_ring ); 
-      
+      return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_of_direct_sum_object, 
+                                                             homalg_graded_ring, 
+                                                             checks 
+                                                            );
+    
     end );
     
     # @Description
@@ -585,8 +549,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                              HomalgZeroMatrix( rank_post, rank_factor, homalg_graded_ring ) );
         
         # and return the corresonding morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( direct_sum_object, projection_in_factor, 
-                                                                                           object_list[ projection_number ] );
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( direct_sum_object,
+                                                                        projection_in_factor,
+                                                                        object_list[ projection_number ],
+                                                                        checks 
+                                                                       );
         
     end );
 
@@ -611,7 +578,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         # and then construct from it the corresponding morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( sink[ 1 ] ),
-                                                                        underlying_matrix_of_universal_morphism, direct_sum );
+                                                                        underlying_matrix_of_universal_morphism, 
+                                                                        direct_sum,
+                                                                        checks
+                                                                       );
     end );
 
     # @Description
@@ -643,8 +613,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         # and construct the associated morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object_list[ injection_number ],
-                                                                        injection_of_cofactor, 
-                                                                        coproduct 
+                                                                        injection_of_cofactor,
+                                                                        coproduct,
+                                                                        checks
                                                                        );
         
     end );
@@ -669,7 +640,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( coproduct,
                                                                         underlying_matrix_of_universal_morphism,
-                                                                        Range( sink[1] ) 
+                                                                        Range( sink[1] ),
+                                                                        checks
                                                                        );
         
     end );
@@ -704,7 +676,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         # and if not, then construct the lift-morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ),
                                                                         right_divide,
-                                                                        Source( morphism2 ) );
+                                                                        Source( morphism2 ),
+                                                                        checks
+                                                                       );
         
     end );
     
@@ -730,7 +704,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         # if it did work, return the corresponding morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism1 ),
                                                                         left_divide,
-                                                                        Range( morphism2 )
+                                                                        Range( morphism2 ),
+                                                                        checks
                                                                        );
 
     end );
@@ -882,9 +857,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           od;
 
           # and from this construct the projection map
-          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fibre_product_object, 
-                                                                          projection_matrix, 
-                                                                          Source( morphism_list[ projection_number ] ) 
+          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fibre_product_object,
+                                                                          projection_matrix,
+                                                                          Source( morphism_list[ projection_number ] ),
+                                                                          checks
                                                                          );
 
         fi;
@@ -998,7 +974,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
           # from this construct the injection
           return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ injection_number ] ),
                                                                           embedding_matrix,
-                                                                          pushout_object
+                                                                          pushout_object,
+                                                                          checks
                                                                          );
 
         fi;
@@ -1052,7 +1029,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         od;
         
         # now construct a new object in this category
-        return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_tensor_object, UnderlyingHomalgGradedRing( object1 ) );
+        return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_tensor_object,
+                                                               UnderlyingHomalgGradedRing( object1 ),
+                                                               checks
+                                                              );
        
     end );
 
@@ -1063,11 +1043,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     #            range = Range( morphism1 ) \otimes Range( morphism2 )
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       function( source, morphism1, morphism2, range )
-                
+        
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source, 
-                                              KroneckerMat( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) ),
-                                              range );
-                                              
+                                        KroneckerMat( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) ),
+                                        range,
+                                        checks 
+                                       );
+        
     end );
 
     # @Description
@@ -1080,8 +1062,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         local homalg_ring;
         
         homalg_ring := category!.homalg_graded_ring_for_category_of_projective_graded_left_modules;
-        return CAPCategoryOfProjectiveGradedLeftModulesObject( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ], 
-                                                                                                               homalg_ring );
+        return CAPCategoryOfProjectiveGradedLeftModulesObject( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ],
+                                                               homalg_ring,
+                                                               checks
+                                                              );
 
     end );
     
@@ -1118,7 +1102,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         # and return the corresponding morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object_1_tensored_object_2,
                                                                         permutation_matrix,
-                                                                        object_2_tensored_object_1 );        
+                                                                        object_2_tensored_object_1,
+                                                                        checks
+                                                                       );
     
     end );
 
@@ -1145,7 +1131,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                                           k -> [ MinusOne( HomalgRing( SuperObject( k[ 1 ] ) ) ) * k[ 1 ], k[ 2 ] ] );
         
         # and return the corresponding object
-        return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_dual_object, UnderlyingHomalgGradedRing( object ) );
+        return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_dual_object,
+                                                               UnderlyingHomalgGradedRing( object ),
+                                                               checks 
+                                                              );
         
     end );
 
@@ -1157,7 +1146,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
       function( source, morphism, range )
     
       # simply transpose the mapping matrix and return the result
-      return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source, Involution( UnderlyingHomalgMatrix( morphism ) ), range );
+      return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source, 
+                                                                      Involution( UnderlyingHomalgMatrix( morphism ) ),
+                                                                      range,
+                                                                      checks 
+                                                                     );
+      
     end );
 
     # @Description
@@ -1193,7 +1187,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
                                                         tensor_object,
                                                         HomalgMatrix( column, homalg_ring ),
-                                                        unit );
+                                                        unit,
+                                                        checks
+                                                       );
         
     end );
 
@@ -1227,10 +1223,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         fi;
         
         # return the evaluation morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism(
-                                                        unit,
-                                                        HomalgMatrix( column, homalg_ring ),
-                                                        tensor_object );
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( unit,
+                                                                        HomalgMatrix( column, homalg_ring ),
+                                                                        tensor_object,
+                                                                        checks
+                                                                       );
         
     end );
 
@@ -1245,7 +1242,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism(
                                                 object,
                                                 HomalgIdentityMatrix( Rank( object ), UnderlyingHomalgGradedRing( object ) ),
-                                                bidual_object );
+                                                bidual_object,
+                                                checks 
+                                               );
 
     end );    
     

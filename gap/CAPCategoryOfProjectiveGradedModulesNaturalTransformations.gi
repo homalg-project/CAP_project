@@ -32,7 +32,7 @@ InstallGlobalFunction( NaturalTransformationFromTruncationToIdentityForProjectiv
 
     # next check if the cone_h_list is valid
     rank := Rank( DegreeGroup( graded_ring ) );
-    if Length( UnderlyingList( semigroup_generator_list )[ 1 ] ) <> rank then
+    if EmbeddingDimension( semigroup_generator_list ) <> rank then
 
         Error( "The semigroup is not contained in the degree_group of the graded ring" );
         return;

@@ -679,7 +679,8 @@ InstallMethod( TurnIntoConeHPresentationList,
     underlying_list := NmzSupportHyperplanes( cone );
     cone_hpresentation_list := rec();
     ObjectifyWithAttributes( cone_hpresentation_list, TheTypeOfConeHPresentationLists,
-                             UnderlyingList, underlying_list
+                             UnderlyingList, underlying_list,
+                             EmbeddingDimension, NmzEmbeddingDimension( cone )
                             );
 
     # and return this object

@@ -8,6 +8,8 @@
 ##
 #############################################################################
 
+
+
 ####################################
 ##
 #! @Section GAP Categories
@@ -34,6 +36,8 @@ DeclareCategory( "IsCAPCategoryOfProjectiveGradedLeftModulesObject",
 #! @Arguments object
 DeclareCategory( "IsCAPCategoryOfProjectiveGradedRightModulesObject",
                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject );
+
+
 
 ####################################
 ##
@@ -119,10 +123,12 @@ DeclareAttribute( "DegreeList",
 #! The argument is an object $A$ in the category of projective graded left or right modules
 #! over a homalg graded ring $R$. The output is the rank of this module.
 #! @Returns an integer
-#! @Arguments A                  
+#! @Arguments A
 DeclareAttribute( "RankOfObject",
                   IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject );
-                  
+
+
+
 ##############################################################################
 ##
 ## Operation to simplify degree_lists when we construct the associated objects
