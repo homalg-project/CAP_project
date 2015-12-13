@@ -55,6 +55,15 @@ DeclareOperation( "CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
                                                                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ] );
 
+#! @Description
+#! As 'CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism' but does not perform checks on the input. Therefore
+#! this constructor is better suited for high performance applications.
+#! @Returns a morphism in $\mathrm{Hom}(S,T)$
+#! @Arguments S, M, T
+DeclareOperation( "CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
+                                                          IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsBool ] );
+
 
 
 ####################################

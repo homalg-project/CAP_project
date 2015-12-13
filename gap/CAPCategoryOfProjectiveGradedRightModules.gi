@@ -24,6 +24,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
       category := CreateCapCategory( Concatenation( "CAP category of projective graded right modules over "
                                                                                           , RingName( homalg_graded_ring ) ) );
       category!.homalg_graded_ring_for_category_of_projective_graded_right_modules := homalg_graded_ring;
+      category!.checks_wished := true;
 
       # set its properties
       SetIsAdditiveCategory( category, true );
@@ -31,7 +32,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
       SetIsRigidSymmetricClosedMonoidalCategory( category, true );
     
       # install its functionality
-      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES( category ); 
+      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES( category, true );
 
       # add theorem file
       AddTheoremFileToCategory( category,
@@ -43,7 +44,57 @@ InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
       # add predicate-implication file
       AddPredicateImplicationFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),      
+        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),
+        "PredicateImplications.tex" )
+      );
+    
+      # add relations file
+      AddEvalRuleFileToCategory( category,
+        Filename(
+        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),
+        "Relations.tex" )
+      );
+    
+      # finalise it
+      Finalize( category );
+
+      # and return the completed category
+      return category;
+    
+end );
+
+# if checks = true -> checks on the input data of object and morphism constructors will be performed
+# if checks = false, such checks will not take place
+InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
+               [ IsHomalgGradedRing, IsBool ],
+  function( homalg_graded_ring, checks )
+    local category;
+    
+      # create category
+      category := CreateCapCategory( Concatenation( "CAP category of projective graded right modules over "
+                                                                                          , RingName( homalg_graded_ring ) ) );
+      category!.homalg_graded_ring_for_category_of_projective_graded_right_modules := homalg_graded_ring;
+      category!.checks_wished := checks;
+
+      # set its properties
+      SetIsAdditiveCategory( category, true );
+      SetIsStrictMonoidalCategory( category, true );
+      SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+    
+      # install its functionality
+      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES( category, checks ); 
+
+      # add theorem file
+      AddTheoremFileToCategory( category,
+        Filename(
+        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),
+        "Propositions.tex" )
+      );
+    
+      # add predicate-implication file
+      AddPredicateImplicationFileToCategory( category,
+        Filename(
+        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),
         "PredicateImplications.tex" )
       );
     
@@ -63,6 +114,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
 end );
 
 
+
 ####################################################################
 ##
 ## Basic operations for category of projective, graded, right modules
@@ -70,7 +122,7 @@ end );
 ####################################################################
 
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES,
-  function( category )
+  function( category, checks )
 
 
 
@@ -306,7 +358,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
           
         od;
         
-        return true;        
+        return true;
 
     end );
 
@@ -319,14 +371,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
     # @Arguments morphism1, morphism2
     AddIsEqualForMorphisms( category,
       function( morphism_1, morphism_2 )
-        
-        # note that a matrix over a graded ring does not uniquely fix the grading of source and range
-        # to check equality of morphisms we therefore compare also the sources and ranges
-        # note that it is necessary to compare both the sources and ranges because
-        # S ----( 0 ) ----> S( d ) is a valid mapping for every d in DegreeGroup!
-        return ( UnderlyingHomalgMatrix( morphism_1 ) = UnderlyingHomalgMatrix( morphism_2 ) ) 
-              and IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) )
-              and IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+
+        return UnderlyingHomalgMatrix( morphism_1 ) = UnderlyingHomalgMatrix( morphism_2 );
 
     end );
     
@@ -525,7 +571,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         
         # collect necessary data to construct the mapping matrix
         rank_pre := Sum( object_list{ [ 1 .. projection_number - 1 ] }, c -> Rank( c ) );
-        rank_post := Sum( object_list{ [ projection_number + 1 .. number_of_objects ] }, c -> Rank( c ) );        
+        rank_post := Sum( object_list{ [ projection_number + 1 .. number_of_objects ] }, c -> Rank( c ) );
         rank_factor := Rank( object_list[ projection_number ] );
         
         # construct the mapping as homalg matrix
@@ -533,7 +579,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         projection_in_factor := UnionOfColumns( projection_in_factor, 
                                              HomalgIdentityMatrix( rank_factor, homalg_graded_ring ) );
         projection_in_factor := UnionOfColumns( projection_in_factor, 
-                                             HomalgZeroMatrix( rank_factor, rank_post, homalg_graded_ring ) );        
+                                             HomalgZeroMatrix( rank_factor, rank_post, homalg_graded_ring ) );
                 
         # and return the corresonding morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( direct_sum_object, projection_in_factor, 
@@ -562,7 +608,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         
         # and then construct from it the corresponding morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( sink[ 1 ] ), 
-                                                                          underlying_matrix_of_universal_morphism, direct_sum );      
+                                                                          underlying_matrix_of_universal_morphism, direct_sum );
     end );
 
     # @Description
@@ -581,20 +627,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         number_of_objects := Length( object_list );
 
         # now collect the data needed to construct the injection matrix
-        rank_pre := Sum( object_list{ [ 1 .. injection_number - 1 ] }, c -> Rank( c ) );        
-        rank_post := Sum( object_list{ [ injection_number + 1 .. number_of_objects ] }, c -> Rank( c ) );        
+        rank_pre := Sum( object_list{ [ 1 .. injection_number - 1 ] }, c -> Rank( c ) );
+        rank_post := Sum( object_list{ [ injection_number + 1 .. number_of_objects ] }, c -> Rank( c ) );
         rank_cofactor := Rank( object_list[ injection_number ] );
         
         # now construct the mapping matrix
         injection_of_cofactor := HomalgZeroMatrix( rank_pre, rank_cofactor, homalg_graded_ring );
         injection_of_cofactor := UnionOfRows( injection_of_cofactor, 
-                                                 HomalgIdentityMatrix( rank_cofactor, homalg_graded_ring ) );        
+                                                 HomalgIdentityMatrix( rank_cofactor, homalg_graded_ring ) );
         injection_of_cofactor := UnionOfRows( injection_of_cofactor,
                                                  HomalgZeroMatrix( rank_post, rank_cofactor, homalg_graded_ring ) );
                 
         # and construct the associated morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object_list[ injection_number ], 
-                                                                                             injection_of_cofactor, coproduct );
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object_list[ injection_number ],
+                                                                        injection_of_cofactor, 
+                                                                        coproduct 
+                                                                       );
         
     end );
 
@@ -616,8 +664,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
           
         od;
         
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( coproduct, underlying_matrix_of_universal_morphism,
-                                                                                                            Range( sink[ 1 ] ) );
+        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( coproduct, 
+                                                                        underlying_matrix_of_universal_morphism,
+                                                                        Range( sink[ 1 ] ) 
+                                                                       );
         
     end );
 

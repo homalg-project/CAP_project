@@ -42,6 +42,7 @@ DeclareCategory( "IsCAPCategoryOfProjectiveGradedRightModulesObject",
 ####################################
 
 DeclareGlobalFunction( "CAPCategoryOfProjectiveGradedLeftOrRightModulesObject" );
+DeclareGlobalFunction( "CAPCategoryOfProjectiveGradedLeftOrRightModulesObjectLazy" );
 
 #! @Description
 #! The arguments are a list of degrees and a homalg graded ring $R$. 
@@ -57,6 +58,15 @@ DeclareOperation( "CAPCategoryOfProjectiveGradedLeftModulesObject",
                   [ IsList, IsHomalgGradedRing ] );
 
 #! @Description
+#! As 'CAPCategoryOfProjectiveGradedLeftModulesObject', but the boolean (= third argument) allows to switch off 
+#! checks on the input data. If this boolean is set to true, then the input checks are performed and otherwise they are not.
+#! Calling this constructor with 'false' is therefore suited for high performance applications.
+#! @Returns an object
+#! @Arguments degree_list, R
+DeclareOperation( "CAPCategoryOfProjectiveGradedLeftModulesObject",
+                  [ IsList, IsHomalgGradedRing, IsBool ] );
+
+#! @Description
 #! The arguments are a list of degrees and a homalg graded ring $R$. 
 #! The list of degrees must be of the form [ [ $d_1$, $n_1$ ], [ $d_2$, $n_2$ ], ... ] where $d_i$
 #! are degrees, i.e. elements in the degree group of $R$ and the $n_i$ are non-negative integers.
@@ -68,6 +78,17 @@ DeclareOperation( "CAPCategoryOfProjectiveGradedLeftModulesObject",
 #! @Arguments degree_list, R
 DeclareOperation( "CAPCategoryOfProjectiveGradedRightModulesObject",
                   [ IsList, IsHomalgGradedRing ] );
+
+#! @Description
+#! As 'CAPCategoryOfProjectiveGradedLeftModulesObject', but the boolean (= third argument) allows to switch off 
+#! checks on the input data. If this boolean is set to true, then the input checks are performed and otherwise they are not.
+#! Calling this constructor with 'false' is therefore suited for high performance applications.
+#! @Returns an object
+#! @Arguments degree_list, R
+DeclareOperation( "CAPCategoryOfProjectiveGradedRightModulesObject",
+                  [ IsList, IsHomalgGradedRing, IsBool ] );
+
+
 
 ####################################
 ##

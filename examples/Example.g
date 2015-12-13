@@ -766,12 +766,18 @@ Display( UnderlyingHomalgMatrix( tr2_test_morphismL ) );
 #! 1,
 #! 0
 #! (over a graded ring)
-NaturalTransformationFromTruncationToIdentityForProjectiveGradedLeftModules( 
+nat_trans_l := NaturalTransformationFromTruncationToIdentityForProjectiveGradedLeftModules( 
                         S, SemigroupGeneratorList( [[ 1,0 ], [ 0,1 ]] ) );
 #! Natural transformation from Truncation functor for CAP category 
 #! of projective graded left modules over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! to the cone given by the h-constraints [ [ 1, 0 ], [ 0, 1 ] ] to id
+component_l := ApplyNaturalTransformation( nat_trans_l, NewObjectL );
+#! <A morphism in the category of projective graded left modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+Display( UnderlyingHomalgMatrix( component_l ) );
+#! 1, 0, 0
+#! (over a graded ring)
 
 #! @EndExample
 
@@ -886,11 +892,17 @@ tr2_test_morphismR := ApplyFunctor( truncatorR2, test_morphismR );
 Display( UnderlyingHomalgMatrix( tr2_test_morphismR ) );
 #! 1, 0
 #! (over a graded ring)
-NaturalTransformationFromTruncationToIdentityForProjectiveGradedRightModules
+nat_trans_r := NaturalTransformationFromTruncationToIdentityForProjectiveGradedRightModules
                                ( S, SemigroupGeneratorList( [[1,0],[0,1]] ) );
 #! Natural transformation from Truncation functor for CAP category 
 #! of projective graded right modules over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! to the cone given by the h-constraints [ [ 1, 0 ], [ 0, 1 ] ] to id
+component_r := ApplyNaturalTransformation( nat_trans_r, NewObjectR );
+#! <A morphism in the category of projective graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+Display( UnderlyingHomalgMatrix( component_r ) );
+#! 1, 0, 0
+#! (over a graded ring)
 
 #! @EndExample

@@ -46,7 +46,6 @@ BindGlobal( "TheTypeOfCAPCategoryOfProjectiveGradedRightModulesMorphisms",
 InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
                [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
                                                                       IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
-
   function( source, homalg_matrix, range )
     local cap_category_of_projective_graded_modules_morphism, homalg_graded_ring, category, left, type;
     
@@ -118,7 +117,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
         type := TheTypeOfCAPCategoryOfProjectiveGradedLeftModulesMorphisms;
     else
         type := TheTypeOfCAPCategoryOfProjectiveGradedRightModulesMorphisms;
-    fi;    
+    fi;
     
     ObjectifyWithAttributes( cap_category_of_projective_graded_modules_morphism, type, 
                              Source, source,
@@ -133,6 +132,47 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
     # and return the morphism
     return cap_category_of_projective_graded_modules_morphism;
     
+end );
+
+##
+InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
+               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
+                                                            IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsBool ],
+  function( source, homalg_matrix, range, checks_wished )
+    local cap_category_of_projective_graded_modules_morphism, homalg_graded_ring, category, left, type;
+    
+    # if checks are wished, hand the input to the method above
+    if checks_wished then
+      return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source, homalg_matrix, range );
+    fi;
+    
+    # checks not wished, so continue here and collect necessary data
+    category := CapCategory( source );
+    homalg_graded_ring := HomalgRing( homalg_matrix );
+    left := IsCAPCategoryOfProjectiveGradedLeftModulesObject( source );
+    
+    # define the type
+    if left then
+        type := TheTypeOfCAPCategoryOfProjectiveGradedLeftModulesMorphisms;
+    else
+        type := TheTypeOfCAPCategoryOfProjectiveGradedRightModulesMorphisms;
+    fi;
+
+    # construct the morphism
+    cap_category_of_projective_graded_modules_morphism := rec( );
+    ObjectifyWithAttributes( cap_category_of_projective_graded_modules_morphism, type, 
+                             Source, source,
+                             Range, range,
+                             UnderlyingHomalgGradedRing, homalg_graded_ring,
+                             UnderlyingHomalgMatrix, homalg_matrix
+    );
+
+    # and add it to the category
+    Add( category, cap_category_of_projective_graded_modules_morphism );
+    
+    # finally return the morphism
+    return cap_category_of_projective_graded_modules_morphism;
+
 end );
 
 
@@ -162,6 +202,7 @@ InstallMethod( String,
     fi;
 
 end );
+
 
 
 ####################################
