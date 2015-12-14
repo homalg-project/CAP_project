@@ -240,14 +240,27 @@ DeclareAttribute( "MorphismFunctionName",
 ##
 ####################################
 
+#! @Description
+#!  As every functor, every natural transformation has a name attribute.
+#!  It has to be a string and will be set by the Constructor.
+#! @Returns a string
 DeclareAttribute( "Name",
                   IsCapNaturalTransformation );
 
+#! @BeginGroup
+
+#! @Description
+#!  Constructs a natural transformation between the functors <A>F</A>$:A \rightarrow B$
+#!  and <A>G</A>$:A \rightarrow B$. The string <A>name</A> is optional, and, if not given,
+#!  set automatically from the names of the functors
+#! @Arguments [name,],F,G
+#! @Returns a natural transformation
 DeclareOperation( "NaturalTransformation",
                   [ IsCapFunctor, IsCapFunctor ] );
 
 DeclareOperation( "NaturalTransformation",
                   [ IsString, IsCapFunctor, IsCapFunctor ] );
+#! @EndGroup
 
 DeclareAttribute( "NaturalTransformationCache",
                   IsCapNaturalTransformation );
@@ -258,20 +271,49 @@ DeclareAttribute( "NaturalTransformationFunction",
 DeclareAttribute( "NaturalTransformationOperation",
                   IsCapNaturalTransformation );
 
+#! @BeginGroup
+
+#! @Description
+#!  Adds the function (or list of functions) <A>func</A> to the natural transformation <A>N</A>.
+#!  The function or each function in the list should take three arguments. If $N: F \rightarrow G$,
+#!  the arguments should be $F(A), A, G(A)$. The ouptput should be a morphism, $F(A) \rightarrow G(A)$.
+#! @Arguments N, func
 DeclareOperation( "AddNaturalTransformationFunction",
                   [ IsCapNaturalTransformation, IsFunction ] );
 
 DeclareOperation( "AddNaturalTransformationFunction",
                   [ IsCapNaturalTransformation, IsList ] );
 
+#! @EndGroup
+
+#! @Description
+#!  Given a natural transformation <A>N</A>$:F \rightarrow G$ and an object <A>A</A>,
+#!  this function should return the morphism $F(A) \rightarrow G(A)$, corresponding to
+#!  <A>N</A>.
+#! @Arguments N, A
+#! @Returns a morphism
 DeclareGlobalFunction( "ApplyNaturalTransformation" );
 
+#! @Description
+#!  Installs the natural transformation <A>N</A> as operation with the name <A>name</A>.
+#!  Argument for this operation is an object, output is a morphism.
+#! @Arguments N, name
 DeclareOperation( "InstallNaturalTransformation",
                   [ IsCapNaturalTransformation, IsString ] );
 
+#! @Description
+#!  Computes the horizontal composition of the natural transformation <A>N</A> and
+#   the functor <A>F</A>.
+#! @Arguments N,F
+#! @Returns a natural transformation
 DeclareOperationWithCache( "HorizontalPreComposeNaturalTransformationWithFunctor",
                            [ IsCapNaturalTransformation, IsCapFunctor ] );
 
+#! @Description
+#!  Computes the horizontal composition of the functor <A>F</A> and
+#!  the natural transformation <A>N</A>.
+#! @Arguments F,N
+#! @Returns a natural transformation
 DeclareOperationWithCache( "HorizontalPreComposeFunctorWithNaturalTransformation",
                            [ IsCapFunctor, IsCapNaturalTransformation ] );
 
