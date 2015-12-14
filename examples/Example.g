@@ -540,6 +540,8 @@ cone2 := ConeHPresentationList( [[ 1,1 ], [ -1, 1 ]] );
 #! <A list of hyperplane constraints of a cone in Z^2>
 #! @EndExample
 
+Print( "Test1 \n" );
+
 #! We can check if a semigroup in $\mathbb{Z}^n$ is the semigroup of a cone. In case it is, we can convert 
 #! into an H-presentation or V-presentation.
 
@@ -548,15 +550,15 @@ IsSemigroupOfCone( semigroup1 );
 #! true
 TurnIntoConeHPresentationList( semigroup1 );
 #! <A list of hyperplane constraints of a cone in Z^2>
-Display( last );
-#! A list of hyperplane constraints of a cone in Z^2 - 
+Display( TurnIntoConeHPresentationList( semigroup1 ) );
+#! A list of hyperplane constraints of a cone in Z^2 -
 #! h-constraints are as follows: 
 #! [ [   1,  -1 ],
 #!   [   0,   1 ] ]
 TurnIntoConeVPresentationList( semigroup1 );
 #! <A list of vertex generators of a cone in Z^2>
-Display( last );
-#! A list of vertex generators of a cone in Z^2 - 
+Display( TurnIntoConeVPresentationList( semigroup1 ) );
+#! A list of vertex generators of a cone in Z^2 -
 #! generators are as follows: 
 #! [ [  1,  0 ],
 #!   [  1,  1 ] ]
@@ -614,7 +616,7 @@ IsAffineConeSemigroup( affine_semigroup2 );
 #! false
 UnderlyingSemigroupGeneratorList( affine_semigroup2 );
 #! <A list of generators of a semigroup of Z^2>
-Display( last );
+Display( UnderlyingSemigroupGeneratorList( affine_semigroup2 ) );
 #! A list of generators of a semigroup of Z^2 - generators are as follows: 
 #! [ [  2,  0 ],
 #!   [  1,  1 ] ]

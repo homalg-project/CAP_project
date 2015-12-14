@@ -541,6 +541,7 @@ InstallMethod( Display,
 
     Print( Concatenation( String( semigroup_generator_list ), " - generators are as follows: \n" ) );
     Display( UnderlyingList( semigroup_generator_list ) );
+    Print( "\n" );
 
 end );
 
@@ -550,6 +551,7 @@ InstallMethod( Display,
 
     Print( Concatenation( String( cone_hpresentation_list ), " - h-constraints are as follows: \n" ) );
     Display( UnderlyingList( cone_hpresentation_list ) );
+    Print( "\n" );
 
 end );
 
@@ -559,6 +561,7 @@ InstallMethod( Display,
 
     Print( Concatenation( String( cone_vpresentation_list ), " - generators are as follows: \n" ) );
     Display( UnderlyingList( cone_vpresentation_list ) );
+    Print( "\n" );
 
 end );
 
@@ -570,7 +573,7 @@ InstallMethod( Display,
                           String( EmbeddingDimension( affine_cone_semigroup ) ),
                           "\n" ) );
     Print( Concatenation( "Offset: ", String( Offset( affine_cone_semigroup ) ), "\n" ) );
-    
+
     if HasUnderlyingConeVPresentationList( affine_cone_semigroup ) then
       Print( Concatenation( "Cone generators: ", 
                             String( UnderlyingList( UnderlyingConeVPresentationList( affine_cone_semigroup ) ) ) ) );
@@ -578,6 +581,7 @@ InstallMethod( Display,
       Print( Concatenation( "Cone h-presentation: ",
                             String( UnderlyingList( UnderlyingConeHPresentationList( affine_cone_semigroup ) ) ) ) );
     fi;
+    Print( "\n" );
 
 end );
 
@@ -592,6 +596,7 @@ InstallMethod( Display,
     Print( Concatenation( "Semigroup generators: ", 
                           String( UnderlyingList( UnderlyingSemigroupGeneratorList( affine_semigroup ) ) ) 
                          ) );
+    Print( "\n" );
 
 end );
 

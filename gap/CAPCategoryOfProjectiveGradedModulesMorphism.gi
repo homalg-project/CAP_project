@@ -35,7 +35,7 @@ BindGlobal( "TheFamilyOfCAPCategoryOfProjectiveGradedRightModulesMorphisms",
 BindGlobal( "TheTypeOfCAPCategoryOfProjectiveGradedRightModulesMorphisms",
         NewType( TheFamilyOfCAPCategoryOfProjectiveGradedRightModulesMorphisms,
                 IsCAPCategoryOfProjectiveGradedRightModulesMorphismRep ) );
-                
+
 ####################################
 ##
 ## Constructors
