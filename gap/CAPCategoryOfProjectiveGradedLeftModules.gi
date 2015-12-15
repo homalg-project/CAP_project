@@ -996,44 +996,52 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # @Arguments object1, object2
     AddTensorProductOnObjects( category,
       function( object1, object2 )
-        local degree_list1, degree_list2, degree_list1_extended, degree_list_tensor_object, i, j;
-        
-        # first extract the degree_list of object1 and object2
+        local degree_list1, degree_list2, degree_list1_extended, degree_list_tensor_object, i, j, buffer_list;
+
+        # check if one of the objects is the zero object
+        if IsZero( object1 ) or IsZero( object2 ) then
+          return ZeroObject( CapCategory( object1 ) );
+        fi;
+
+        # next extract the two degree_lists
         degree_list1 := DegreeList( object1 );
         degree_list2 := DegreeList( object2 );
-        
-        # now expand degree_list1 (this is to make sure that the tensor product on objects is defined such that the 
-        # tensor product on morphisms is transmitted by the KroneckerProduct of the mapping matrices)
-        degree_list1_extended := [];
-        for i in [ 1 .. Length( degree_list1 ) ] do
-        
-          for j in [ 1 .. degree_list1[ i ][ 2 ] ] do
-          
-            Add( degree_list1_extended, [ degree_list1[ i ][ 1 ], 1 ] );
-          
-          od;
-        
-        od;
-        
+
+        # check if object1 is of rank 1 (this includes the tensor unit)
+        if Rank( object1 ) = 1 then
+          degree_list_tensor_object := List( degree_list2, x -> [ x[ 1 ] + degree_list1[ 1 ][ 1 ], x[ 2 ] ] );
+          return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_tensor_object,
+                                                                 UnderlyingHomalgGradedRing( object1 ),
+                                                                 checks
+                                                                );
+        fi;
+
+        # check if object2 is of rank 1 (this includes the tensor unit)
+        if Rank( object2 ) = 1 then
+          degree_list_tensor_object := List( degree_list1, x -> [ x[ 1 ] + degree_list2[ 1 ][ 1 ], x[ 2 ] ] );
+          return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_tensor_object,
+                                                                 UnderlyingHomalgGradedRing( object1 ),
+                                                                 checks
+                                                                ); 
+        fi;
+
         # now compute the degree_list of the tensor product of object1 and object2
         degree_list_tensor_object := [];
-        for i in [ 1 .. Length( degree_list1_extended ) ] do
-        
-          for j in [ 1 .. Length( degree_list2 ) ] do
-          
-            Add( degree_list_tensor_object, [ degree_list1_extended[ i ][ 1 ] + degree_list2[ j ][ 1 ], 
-                                              degree_list1_extended[ i ][ 2 ] * degree_list2[ j ][ 2 ] ] );
-          
+        for i in [ 1 .. Length( degree_list1 ) ] do
+
+          buffer_list := List( degree_list2, x -> [ degree_list1[ i ][ 1 ] + x[ 1 ], x[ 2 ] ] );
+          for j in [ 1 .. degree_list1[ i ][ 2 ] ] do
+            Append( degree_list_tensor_object, buffer_list );
           od;
-        
+
         od;
-        
+
         # now construct a new object in this category
         return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_tensor_object,
                                                                UnderlyingHomalgGradedRing( object1 ),
                                                                checks
                                                               );
-       
+
     end );
 
     # @Description
@@ -1068,9 +1076,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                                               );
 
     end );
-    
-    
-    
+
+
+
     ######################################################################
     #
     # @Section Add Symmetric Monoidal Structure 
