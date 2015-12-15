@@ -51,6 +51,17 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X850397447A1A766E">2.4-6 ApplyFunctor</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X781664C7876ED8A0">2.4-7 InstallFunctor</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X836749D8814FEEE6">2.5 <span class="Heading">Natural transformations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F32E8C985178781">2.5-1 Name</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C9810B8858249A0">2.5-2 NaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7DFC4C9183446E95">2.5-3 AddNaturalTransformationFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X867F8B6A78462396">2.5-4 ApplyNaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79E6BE7E83687767">2.5-5 InstallNaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EAB133B81CDB5E5">2.5-6 HorizontalPreComposeNaturalTransformationWithFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B8AC0BB8370031D">2.5-7 HorizontalPreComposeFunctorWithNaturalTransformation</a></span>
+</div></div>
 </div>
 
 <h3>2 <span class="Heading">Category of Categories</span></h3>
@@ -182,6 +193,69 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallFunctor</code>( <var class="Arg">functor</var>, <var class="Arg">method_name</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>TODO</p>
+
+<p><a id="X836749D8814FEEE6" name="X836749D8814FEEE6"></a></p>
+
+<h4>2.5 <span class="Heading">Natural transformations</span></h4>
+
+<p><a id="X7F32E8C985178781" name="X7F32E8C985178781"></a></p>
+
+<h5>2.5-1 Name</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Name</code>( <var class="Arg">arg</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a string</p>
+
+<p>As every functor, every natural transformation has a name attribute. It has to be a string and will be set by the Constructor.</p>
+
+<p><a id="X7C9810B8858249A0" name="X7C9810B8858249A0"></a></p>
+
+<h5>2.5-2 NaturalTransformation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalTransformation</code>( [<var class="Arg">name</var>, ]<var class="Arg">F</var>, <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a natural transformation</p>
+
+<p>Constructs a natural transformation between the functors <var class="Arg">F</var><span class="Math">:A \rightarrow B</span> and <var class="Arg">G</var><span class="Math">:A \rightarrow B</span>. The string <var class="Arg">name</var> is optional, and, if not given, set automatically from the names of the functors</p>
+
+<p><a id="X7DFC4C9183446E95" name="X7DFC4C9183446E95"></a></p>
+
+<h5>2.5-3 AddNaturalTransformationFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddNaturalTransformationFunction</code>( <var class="Arg">N</var>, <var class="Arg">func</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Adds the function (or list of functions) <var class="Arg">func</var> to the natural transformation <var class="Arg">N</var>. The function or each function in the list should take three arguments. If <span class="Math">N: F \rightarrow G</span>, the arguments should be <span class="Math">F(A), A, G(A)</span>. The ouptput should be a morphism, <span class="Math">F(A) \rightarrow G(A)</span>.</p>
+
+<p><a id="X867F8B6A78462396" name="X867F8B6A78462396"></a></p>
+
+<h5>2.5-4 ApplyNaturalTransformation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyNaturalTransformation</code>( <var class="Arg">N</var>, <var class="Arg">A</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a natural transformation <var class="Arg">N</var><span class="Math">:F \rightarrow G</span> and an object <var class="Arg">A</var>, this function should return the morphism <span class="Math">F(A) \rightarrow G(A)</span>, corresponding to <var class="Arg">N</var>.</p>
+
+<p><a id="X79E6BE7E83687767" name="X79E6BE7E83687767"></a></p>
+
+<h5>2.5-5 InstallNaturalTransformation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallNaturalTransformation</code>( <var class="Arg">N</var>, <var class="Arg">name</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Installs the natural transformation <var class="Arg">N</var> as operation with the name <var class="Arg">name</var>. Argument for this operation is an object, output is a morphism.</p>
+
+<p><a id="X7EAB133B81CDB5E5" name="X7EAB133B81CDB5E5"></a></p>
+
+<h5>2.5-6 HorizontalPreComposeNaturalTransformationWithFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HorizontalPreComposeNaturalTransformationWithFunctor</code>( <var class="Arg">N</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a natural transformation</p>
+
+<p>Computes the horizontal composition of the natural transformation <var class="Arg">N</var> and</p>
+
+<p><a id="X7B8AC0BB8370031D" name="X7B8AC0BB8370031D"></a></p>
+
+<h5>2.5-7 HorizontalPreComposeFunctorWithNaturalTransformation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HorizontalPreComposeFunctorWithNaturalTransformation</code>( <var class="Arg">F</var>, <var class="Arg">N</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a natural transformation</p>
+
+<p>Computes the horizontal composition of the functor <var class="Arg">F</var> and the natural transformation <var class="Arg">N</var>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>

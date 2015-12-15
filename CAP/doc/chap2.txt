@@ -141,3 +141,63 @@
   
   [33X[0;0YTODO[133X
   
+  
+  [1X2.5 [33X[0;0YNatural transformations[133X[101X
+  
+  [1X2.5-1 Name[101X
+  
+  [29X[2XName[102X( [3Xarg[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya string[133X
+  
+  [33X[0;0YAs  every functor, every natural transformation has a name attribute. It has
+  to be a string and will be set by the Constructor.[133X
+  
+  [1X2.5-2 NaturalTransformation[101X
+  
+  [29X[2XNaturalTransformation[102X( [[3Xname[103X, ][3XF[103X, [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya natural transformation[133X
+  
+  [33X[0;0YConstructs  a  natural transformation between the functors [3XF[103X[23X:A \rightarrow B[123X
+  and  [3XG[103X[23X:A  \rightarrow B[123X. The string [3Xname[103X is optional, and, if not given, set
+  automatically from the names of the functors[133X
+  
+  [1X2.5-3 AddNaturalTransformationFunction[101X
+  
+  [29X[2XAddNaturalTransformationFunction[102X( [3XN[103X, [3Xfunc[103X ) [32X operation
+  
+  [33X[0;0YAdds  the function (or list of functions) [3Xfunc[103X to the natural transformation
+  [3XN[103X. The function or each function in the list should take three arguments. If
+  [23XN:  F  \rightarrow  G[123X,  the  arguments  should be [23XF(A), A, G(A)[123X. The ouptput
+  should be a morphism, [23XF(A) \rightarrow G(A)[123X.[133X
+  
+  [1X2.5-4 ApplyNaturalTransformation[101X
+  
+  [29X[2XApplyNaturalTransformation[102X( [3XN[103X, [3XA[103X ) [32X function
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  natural  transformation  [3XN[103X[23X:F  \rightarrow  G[123X and an object [3XA[103X, this
+  function  should return the morphism [23XF(A) \rightarrow G(A)[123X, corresponding to
+  [3XN[103X.[133X
+  
+  [1X2.5-5 InstallNaturalTransformation[101X
+  
+  [29X[2XInstallNaturalTransformation[102X( [3XN[103X, [3Xname[103X ) [32X operation
+  
+  [33X[0;0YInstalls  the  natural  transformation  [3XN[103X  as  operation with the name [3Xname[103X.
+  Argument for this operation is an object, output is a morphism.[133X
+  
+  [1X2.5-6 HorizontalPreComposeNaturalTransformationWithFunctor[101X
+  
+  [29X[2XHorizontalPreComposeNaturalTransformationWithFunctor[102X( [3XN[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya natural transformation[133X
+  
+  [33X[0;0YComputes the horizontal composition of the natural transformation [3XN[103X and[133X
+  
+  [1X2.5-7 HorizontalPreComposeFunctorWithNaturalTransformation[101X
+  
+  [29X[2XHorizontalPreComposeFunctorWithNaturalTransformation[102X( [3XF[103X, [3XN[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya natural transformation[133X
+  
+  [33X[0;0YComputes  the  horizontal  composition  of  the  functor  [3XF[103X  and the natural
+  transformation [3XN[103X.[133X
+  

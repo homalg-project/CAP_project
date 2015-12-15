@@ -1,0 +1,110 @@
+  
+  [1X9 [33X[0;0YExamples and Tests[133X[101X
+  
+  
+  [1X9.1 [33X[0;0YBasic Commands[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 4, Q );;[127X[104X
+    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27XC := VectorSpaceObject( 2, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( A, [127X[104X
+    [4X[25X>[125X [27XHomalgMatrix( [ [ 1, 1, 1 ], [ 0, 1, 1 ], [127X[104X
+    [4X[25X>[125X [27X[ 1, 0, 1 ], [ 1, 1, 0 ] ], 4, 3, Q ), B );;[127X[104X
+    [4X[25Xgap>[125X [27Xgamma := VectorSpaceMorphism( C, [127X[104X
+    [4X[25X>[125X [27XHomalgMatrix( [ [ -1, 1, -1 ], [ 1, 0, -1 ] ], 2, 3, Q ), B );;[127X[104X
+    [4X[25Xgap>[125X [27Xp := ProjectionInFactorOfFiberProduct( [ alpha, gamma ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xq := ProjectionInFactorOfFiberProduct( [ alpha, gamma ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27XPreCompose( AsGeneralizedMorphism( alpha ), GeneralizedInverse( gamma ) );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xgen1 := PreCompose( AsGeneralizedMorphism( alpha ), [127X[104X
+    [4X[25X>[125X [27X                       GeneralizedInverse( gamma ) );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xgen2 := PreCompose( GeneralizedInverse( p ), AsGeneralizedMorphism( q ) );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( gen1, gen2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X9.2 [33X[0;0YIntersection of Nodal Curve and Cusp[133X[101X
+  
+  [33X[0;0YWe  are going to intersect the nodal curve [23Xf = y^2 - x^2(x+1)[123X and the cusp [23Xg
+  =  (x+y)^2  -  (y-x)^3[123X.  The two curves are arranged in a way such that they
+  intersect  at  [23X(0,0)[123X  with  intersection  number as high as possible. We are
+  going  to  compute  this  intersection  number  using  the definition of the
+  intersection  number as the length of the module [23XR/(f,g)[123X localized at [23X(0,0)[123X.
+  In order to model modules over the localization of [23XQ[x,y][123X at [23X(0,0)[123X, we use a
+  suitable Serre quotient category. 1 2 1 1 true We are going to intersect the
+  nodal  curve  [23Xf = y^2 - x^2(x+1)[123X and the cusp [23Xg = (x+y)^2 - (y-x)^3[123X. The two
+  curves  are  arranged  in  a  way  such  that  they  intersect at [23X(0,0)[123X with
+  intersection  number  as  high  as  possible.  We  are going to compute this
+  intersection  number  using the definition of the intersection number as the
+  length  of  the module [23XR/(f,g)[123X localized at [23X(0,0)[123X. In order to model modules
+  over  the  localization of [23XQ[x,y][123X at [23X(0,0)[123X, we use a suitable Serre quotient
+  category.  1  2 1 1 true We are going to intersect the nodal curve [23Xf = y^2 -
+  x^2(x+1)[123X  and the cusp [23Xg = (x+y)^2 - (y-x)^3[123X. The two curves are arranged in
+  a  way such that they intersect at [23X(0,0)[123X with intersection number as high as
+  possible.  We  are  going  to  compute  this  intersection  number using the
+  definition  of  the  intersection number as the length of the module [23XR/(f,g)[123X
+  localized  at  [23X(0,0)[123X.  In  order  to  model modules over the localization of
+  [23XQ[x,y][123X at [23X(0,0)[123X, we use a suitable Serre quotient category. 1 2 1 1 true[133X
+  
+  
+  [1X9.3 [33X[0;0YSweep[133X[101X
+  
+  [33X[0;0Y[23X\href{https://terrytao.wordpress.com/2015/10/07/sweeping-a-matrix-rotates-its-graph/}{\textrm{Geometric
+  interpretation of sweeping a matrix by Terence Tao.}}[123X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xmat := HomalgMatrix( [ [ 9, 8, 7 ], [ 6, 5, 4 ], [ 3, 2, 1 ] ], 3, 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, mat, V );;[127X[104X
+    [4X[25Xgap>[125X [27Xgraph := FiberProductEmbeddingInDirectSum( [127X[104X
+    [4X[25X>[125X [27X            [ alpha, IdentityMorphism( V ) ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( graph );[127X[104X
+    [4X[28X[ [     1,    -2,     1,     0,     0,     0 ],[128X[104X
+    [4X[28X  [  -4/3,   7/3,     0,     2,     1,     0 ],[128X[104X
+    [4X[28X  [   5/3,  -8/3,     0,    -1,     0,     1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA split mono morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XD := DirectSum( V, V );;[127X[104X
+    [4X[25Xgap>[125X [27Xrotmat := HomalgMatrix( [ [ 0, 0, 0, -1, 0, 0 ],[127X[104X
+    [4X[25X>[125X [27X                             [ 0, 1, 0, 0, 0, 0 ],[127X[104X
+    [4X[25X>[125X [27X                             [ 0, 0, 1, 0, 0, 0 ],[127X[104X
+    [4X[25X>[125X [27X                             [ 1, 0, 0, 0, 0, 0 ],[127X[104X
+    [4X[25X>[125X [27X                             [ 0, 0, 0, 0, 1, 0 ],[127X[104X
+    [4X[25X>[125X [27X                             [ 0, 0, 0, 0, 0, 1 ] ],[127X[104X
+    [4X[25X>[125X [27X                             6, 6, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xrot := VectorSpaceMorphism( D, rotmat, D );;[127X[104X
+    [4X[25Xgap>[125X [27Xp := PreCompose( graph, rot );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28X[ [     0,    -2,     1,    -1,     0,     0 ],[128X[104X
+    [4X[28X  [     2,   7/3,     0,   4/3,     1,     0 ],[128X[104X
+    [4X[28X  [    -1,  -8/3,     0,  -5/3,     0,     1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xpi1 := ProjectionInFactorOfDirectSum( [ V, V ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xpi2 := ProjectionInFactorOfDirectSum( [ V, V ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xreversed_arrow := PreCompose( p, pi1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xarrow := PreCompose( p, pi2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xg := GeneralizedMorphismBySpan( reversed_arrow, arrow );;[127X[104X
+    [4X[25Xgap>[125X [27XIsHonest( g );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xsweep_1_alpha := HonestRepresentative( g );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( sweep_1_alpha );[127X[104X
+    [4X[28X[ [  -1/9,   8/9,   7/9 ],[128X[104X
+    [4X[28X  [   2/3,  -1/3,  -2/3 ],[128X[104X
+    [4X[28X  [   1/3,  -2/3,  -4/3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( alpha );[127X[104X
+    [4X[28X[ [  9,  8,  7 ],[128X[104X
+    [4X[28X  [  6,  5,  4 ],[128X[104X
+    [4X[28X  [  3,  2,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+  [4X[32X[104X
+  

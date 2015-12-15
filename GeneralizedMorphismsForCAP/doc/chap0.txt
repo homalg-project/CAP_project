@@ -6,10 +6,10 @@
          [1X Implementations of generalized morphisms for the CAP project [101X
   
   
-                                   2015.12.03
+                                   2015.12.04
   
   
-                                   03/12/2015
+                                   04/12/2015
   
   
                                 Sebastian Posur
@@ -162,56 +162,59 @@
     5.3 [33X[0;0YFunctors from Three Arrows[133X
       5.3-1 FunctorFromThreeArrowsToCospans
       5.3-2 FunctorFromThreeArrowsToSpans
-  6 [33X[0;0YSerre Quotients[133X
-    6.1 [33X[0;0YGeneral operations[133X
-      6.1-1 IsSerreQuotientCategoryObject
-      6.1-2 IsSerreQuotientCategoryMorphism
-      6.1-3 SerreQuotientCategory
-      6.1-4 AsSerreQuotientCategoryObject
-      6.1-5 SerreQuotientCategoryMorphism
-      6.1-6 SerreQuotientCategoryMorphism
-      6.1-7 SerreQuotientCategoryMorphism
-      6.1-8 SerreQuotientCategoryMorphismWithSourceAid
-      6.1-9 SerreQuotientCategoryMorphismWithRangeAid
-      6.1-10 AsSerreQuotientCategoryMorphism
-      6.1-11 SubcategoryMembershipTestFunctionForSerreQuotient
-      6.1-12 UnderlyingHonestCategory
-      6.1-13 UnderlyingGeneralizedMorphismCategory
-      6.1-14 UnderlyingGeneralizedObject
-      6.1-15 UnderlyingHonestObject
-      6.1-16 UnderlyingGeneralizedMorphism
-      6.1-17 CanonicalProjection
-    6.2 [33X[0;0YSerre quotients by cospans[133X
-      6.2-1 SerreQuotientCategoryByCospans
-      6.2-2 AsSerreQuotientCategoryByCospansObject
-      6.2-3 SerreQuotientCategoryByCospansMorphism
-      6.2-4 SerreQuotientCategoryByCospansMorphism
-      6.2-5 SerreQuotientCategoryByCospansMorphismWithSourceAid
-      6.2-6 SerreQuotientCategoryByCospansMorphism
-      6.2-7 AsSerreQuotientCategoryByCospansMorphism
-    6.3 [33X[0;0YSerre Quotients by Spans[133X
-      6.3-1 SerreQuotientCategoryBySpans
-      6.3-2 AsSerreQuotientCategoryBySpansObject
-      6.3-3 SerreQuotientCategoryBySpansMorphism
-      6.3-4 SerreQuotientCategoryBySpansMorphism
-      6.3-5 SerreQuotientCategoryBySpansMorphism
-      6.3-6 SerreQuotientCategoryBySpansMorphismWithRangeAid
-      6.3-7 AsSerreQuotientCategoryBySpansMorphism
-    6.4 [33X[0;0YSerre Quotients modeled by three arrows[133X
-      6.4-1 SerreQuotientCategoryByThreeArrows
-      6.4-2 AsSerreQuotientCategoryByThreeArrowsObject
-      6.4-3 SerreQuotientCategoryByThreeArrowsMorphism
-      6.4-4 SerreQuotientCategoryByThreeArrowsMorphism
-      6.4-5 SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid
-      6.4-6 SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid
-      6.4-7 AsSerreQuotientCategoryByThreeArrowsMorphism
-  7 [33X[0;0YSerre Quotients Functors[133X
-    7.1 [33X[0;0YFunctors[133X
-      7.1-1 SerreQuotientConversionFunctor
-  8 [33X[0;0YExamples and Tests[133X
-    8.1 [33X[0;0YBasic Commands[133X
-    8.2 [33X[0;0YIntersection of Nodal Curve and Cusp[133X
-    8.3 [33X[0;0YSweep[133X
+  6 [33X[0;0YSerre Quotients Subcategory[133X
+    6.1 [33X[0;0Yimplementation[133X
+      6.1-1 FullSubcategoryByMembershipFunction
+  7 [33X[0;0YSerre Quotients[133X
+    7.1 [33X[0;0YGeneral operations[133X
+      7.1-1 IsSerreQuotientCategoryObject
+      7.1-2 IsSerreQuotientCategoryMorphism
+      7.1-3 SerreQuotientCategory
+      7.1-4 AsSerreQuotientCategoryObject
+      7.1-5 SerreQuotientCategoryMorphism
+      7.1-6 SerreQuotientCategoryMorphism
+      7.1-7 SerreQuotientCategoryMorphism
+      7.1-8 SerreQuotientCategoryMorphismWithSourceAid
+      7.1-9 SerreQuotientCategoryMorphismWithRangeAid
+      7.1-10 AsSerreQuotientCategoryMorphism
+      7.1-11 SubcategoryMembershipTestFunctionForSerreQuotient
+      7.1-12 UnderlyingHonestCategory
+      7.1-13 UnderlyingGeneralizedMorphismCategory
+      7.1-14 UnderlyingGeneralizedObject
+      7.1-15 UnderlyingHonestObject
+      7.1-16 UnderlyingGeneralizedMorphism
+      7.1-17 CanonicalProjection
+    7.2 [33X[0;0YSerre quotients by cospans[133X
+      7.2-1 SerreQuotientCategoryByCospans
+      7.2-2 AsSerreQuotientCategoryByCospansObject
+      7.2-3 SerreQuotientCategoryByCospansMorphism
+      7.2-4 SerreQuotientCategoryByCospansMorphism
+      7.2-5 SerreQuotientCategoryByCospansMorphismWithSourceAid
+      7.2-6 SerreQuotientCategoryByCospansMorphism
+      7.2-7 AsSerreQuotientCategoryByCospansMorphism
+    7.3 [33X[0;0YSerre Quotients by Spans[133X
+      7.3-1 SerreQuotientCategoryBySpans
+      7.3-2 AsSerreQuotientCategoryBySpansObject
+      7.3-3 SerreQuotientCategoryBySpansMorphism
+      7.3-4 SerreQuotientCategoryBySpansMorphism
+      7.3-5 SerreQuotientCategoryBySpansMorphism
+      7.3-6 SerreQuotientCategoryBySpansMorphismWithRangeAid
+      7.3-7 AsSerreQuotientCategoryBySpansMorphism
+    7.4 [33X[0;0YSerre Quotients modeled by three arrows[133X
+      7.4-1 SerreQuotientCategoryByThreeArrows
+      7.4-2 AsSerreQuotientCategoryByThreeArrowsObject
+      7.4-3 SerreQuotientCategoryByThreeArrowsMorphism
+      7.4-4 SerreQuotientCategoryByThreeArrowsMorphism
+      7.4-5 SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid
+      7.4-6 SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid
+      7.4-7 AsSerreQuotientCategoryByThreeArrowsMorphism
+  8 [33X[0;0YSerre Quotients Functors[133X
+    8.1 [33X[0;0YFunctors[133X
+      8.1-1 SerreQuotientConversionFunctor
+  9 [33X[0;0YExamples and Tests[133X
+    9.1 [33X[0;0YBasic Commands[133X
+    9.2 [33X[0;0YIntersection of Nodal Curve and Cusp[133X
+    9.3 [33X[0;0YSweep[133X
   
   
   [32X

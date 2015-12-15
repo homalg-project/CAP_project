@@ -1,22 +1,376 @@
   
-  [1X7 [33X[0;0YSerre Quotients Functors[133X[101X
+  [1X7 [33X[0;0YSerre Quotients[133X[101X
   
-  [33X[0;0YThe  operations  in  this  chapter construct conversion functors between two
-  Serre  quotients of different standards. Please note that all the operations
-  DO NOT CARE if the Serre quotients are modeling the same category, they only
-  care  wether  the  categories  are  based  upon  the  same underlying honest
+  [33X[0;0YSerre  quotients  are  implemented  using  generalized  morphisms.  A  Serre
+  quotient  category  is  the  quotient  of  an  abelian category A by a thick
+  subcategory  C.  The  objects  of  the  quotient are the objects from A, the
+  morphisms  are  a  limit construction. In the implementation those morphisms
+  are  modeled  by generalized morphisms, and therefore there are, like in the
+  generalized morphism case, three types of Serre quotients.[133X
+  
+  
+  [1X7.1 [33X[0;0YGeneral operations[133X[101X
+  
+  [33X[0;0YAs  in the generalized morphism case, the generic constructors depend on the
+  generalized  morphism  standard.  Please  note  that for implementations the
+  specialized constructors should be used.[133X
+  
+  [1X7.1-1 IsSerreQuotientCategoryObject[101X
+  
+  [29X[2XIsSerreQuotientCategoryObject[102X( [3Xarg[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  category  of  objects  in  the  category of Serre quotients. For actual
+  objects this needs to be specialized.[133X
+  
+  [1X7.1-2 IsSerreQuotientCategoryMorphism[101X
+  
+  [29X[2XIsSerreQuotientCategoryMorphism[102X( [3Xarg[103X ) [32X filter
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  category  of  morphisms  in the category of Serre quotients. For actual
+  morphisms this needs to be specialized.[133X
+  
+  [1X7.1-3 SerreQuotientCategory[101X
+  
+  [29X[2XSerreQuotientCategory[102X( [3XA[103X, [3Xfunc[103X[, [3Xname[103X] ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
+  
+  [33X[0;0YCreates  a  Serre  quotient  category  [3XS[103X  with  name  [3Xname[103X out of an Abelian
+  category  [3XA[103X.  If [3Xname[103X is not given, a generic name is constructed out of the
+  name  of  [3XA[103X.  The argument [3Xfunc[103X must be a unary function on the objects of [3XA[103X
+  deciding the membership in the thick subcategory C mentioned above.[133X
+  
+  [1X7.1-4 AsSerreQuotientCategoryObject[101X
+  
+  [29X[2XAsSerreQuotientCategoryObject[102X( [3XA/C[103X, [3XM[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YGiven  a  Serre quotient category [3XA/C[103X and an object [3XM[103X in [3XA[103X, this constructor
+  returns the corresponding object in the Serre quotient category.[133X
+  
+  [1X7.1-5 SerreQuotientCategoryMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryMorphism[102X( [3XA/C[103X, [3Xphi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient category [3XA/C[103X and a generalized morphism [3Xphi[103X in the
+  generalized  morphism category [3XA/C[103X is modeled upon, this constructor returns
+  the corresponding morphism in the Serre quotient category.[133X
+  
+  [1X7.1-6 SerreQuotientCategoryMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryMorphism[102X( [3XA/C[103X, [3Xiota[103X, [3Xphi[103X, [3Xpi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven   a  Serre  quotient  category  [3XA/C[103X  and  three  morphisms  [23X\iota:  M'
+  \rightarrow  M[123X,  [23X\phi:  M'  \rightarrow  N'[123X  and  [23X\pi: N \rightarrow N'[123X this
+  operation contructs a morphism in the Serre quotient category.[133X
+  
+  [1X7.1-7 SerreQuotientCategoryMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryMorphism[102X( [3XA/C[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a Serre quotient category [3XA/C[103X and two morphisms of the form [23X\alpha: X
+  \rightarrow  M[123X  and  [23X\beta:  X  \rightarrow N[123X or [23X\alpha: M \rightarrow X[123X and
+  [23X\beta: N \rightarrow X[123X, this operation constructs the corresponding morphism
+  in the Serre quotient category. This operation is only implemented if [3XA/C[103X is
+  modeled  upon  a  span  generalized morphism category in the first option or
+  upon a cospan category in the second.[133X
+  
+  [1X7.1-8 SerreQuotientCategoryMorphismWithSourceAid[101X
+  
+  [29X[2XSerreQuotientCategoryMorphismWithSourceAid[102X( [3XA/C[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a Serre quotient category [3XA/C[103X and two morphisms [23X\alpha: M \rightarrow
+  X[123X  and  [23X\beta:  X  \rightarrow N[123X this operation constructs the corresponding
+  morphism in the Serre quotient category.[133X
+  
+  [1X7.1-9 SerreQuotientCategoryMorphismWithRangeAid[101X
+  
+  [29X[2XSerreQuotientCategoryMorphismWithRangeAid[102X( [3XA/C[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a Serre quotient category [3XA/C[103X and two morphisms [23X\alpha: X \rightarrow
+  M[123X  and  [23X\beta:  X  \rightarrow N[123X this operation constructs the corresponding
+  morphism in the Serre quotient category.[133X
+  
+  [1X7.1-10 AsSerreQuotientCategoryMorphism[101X
+  
+  [29X[2XAsSerreQuotientCategoryMorphism[102X( [3XA/C[103X, [3Xphi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category  [3XA/C[103X  and  a  morphism  [3Xphi[103X  in  [3XA[103X, this
+  constructor  returns  the  corresponding  morphism  in  the  Serre  quotient
+  category.[133X
+  
+  [1X7.1-11 SubcategoryMembershipTestFunctionForSerreQuotient[101X
+  
+  [29X[2XSubcategoryMembershipTestFunctionForSerreQuotient[102X( [3XC[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya function[133X
+  
+  [33X[0;0YWhen  a  Serre  quotient  category is created, a membership function for the
+  subcategory is given. This attribute stores and returns this function[133X
+  
+  [1X7.1-12 UnderlyingHonestCategory[101X
+  
+  [29X[2XUnderlyingHonestCategory[102X( [3XA/C[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YFor a Serre quotient category [3XA/C[103X this attribute returns the category [3XA[103X.[133X
+  
+  [1X7.1-13 UnderlyingGeneralizedMorphismCategory[101X
+  
+  [29X[2XUnderlyingGeneralizedMorphismCategory[102X( [3XA/C[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YFor  a  Serre  quotient  category  [3XA/C[103X  this  attribute  returns generalized
+  morphism category the quotient is modelled upon.[133X
+  
+  [1X7.1-14 UnderlyingGeneralizedObject[101X
+  
+  [29X[2XUnderlyingGeneralizedObject[102X( [3XM[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YFor  an  object  [3XM[103X in the Serre quotient category A/C this attribute returns
+  the  corresponding  object in the generalized morphism category the quotient
+  is modelled upon.[133X
+  
+  [1X7.1-15 UnderlyingHonestObject[101X
+  
+  [29X[2XUnderlyingHonestObject[102X( [3XM[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YFor  an  object  [3XM[103X in the Serre quotient category A/C this attribute returns
+  the corresponding object in [3XA[103X.[133X
+  
+  [1X7.1-16 UnderlyingGeneralizedMorphism[101X
+  
+  [29X[2XUnderlyingGeneralizedMorphism[102X( [3Xphi[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YFor a morphism [3Xphi[103X in the Serre quotient category A/C this attribute returns
+  the  corresponding generalized morphism in the generalized morphism category
+  the quotient is modelled upon.[133X
+  
+  [1X7.1-17 CanonicalProjection[101X
+  
+  [29X[2XCanonicalProjection[102X( [3XA/C[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient category [3XA/C[103X, this operation returns the canonical
+  projection functor [23X A \rightarrow A/C [123X.[133X
+  
+  
+  [1X7.2 [33X[0;0YSerre quotients by cospans[133X[101X
+  
+  [1X7.2-1 SerreQuotientCategoryByCospans[101X
+  
+  [29X[2XSerreQuotientCategoryByCospans[102X( [3XA[103X, [3Xfunc[103X[, [3Xname[103X] ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
+  
+  [33X[0;0YCreates  a  Serre  quotient  category  S  with  name  [3Xname[103X out of an Abelian
+  category [3XA[103X. The Serre quotient category will be modeled upon the generalized
+  morphisms  by  cospans category of [3XA[103X If [3Xname[103X is not given, a generic name is
+  constructed out of the name of [3XA[103X. The argument [3Xfunc[103X must be a unary function
+  on  the  objects  of  [3XA[103X  deciding  the membership in the thick subcategory C
+  mentioned above.[133X
+  
+  [1X7.2-2 AsSerreQuotientCategoryByCospansObject[101X
+  
+  [29X[2XAsSerreQuotientCategoryByCospansObject[102X( [3XA/C[103X, [3XM[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YGiven a Serre quotient category [3XA/C[103X modeled by cospans and an object [3XM[103X in [3XA[103X,
+  this  constructor  returns  the  corresponding  object in the Serre quotient
+  category.[133X
+  
+  [1X7.2-3 SerreQuotientCategoryByCospansMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryByCospansMorphism[102X( [3XA/C[103X, [3Xphi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category [3XA/C[103X modeled by cospans and a generalized
+  morphism  [3Xphi[103X in the generalized morphism category [3XA/C[103X is modeled upon, this
+  constructor  returns  the  corresponding  morphism  in  the  Serre  quotient
+  category.[133X
+  
+  [1X7.2-4 SerreQuotientCategoryByCospansMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryByCospansMorphism[102X( [3XA/C[103X, [3Xiota[103X, [3Xphi[103X, [3Xpi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre quotient category [3XA/C[103X modeled by cospans and three morphisms
+  [23X\iota:  M'  \rightarrow M[123X, [23X\phi: M' \rightarrow N'[123X and [23X\pi: N \rightarrow N'[123X
+  this operation contructs a morphism in the Serre quotient category.[133X
+  
+  [1X7.2-5 SerreQuotientCategoryByCospansMorphismWithSourceAid[101X
+  
+  [29X[2XSerreQuotientCategoryByCospansMorphismWithSourceAid[102X( [3XA/C[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category [3XA/C[103X modeled by cospans and two morphisms
+  [23X\alpha: M \rightarrow X[123X and [23X\beta: X \rightarrow N[123X this operation constructs
+  the corresponding morphism in the Serre quotient category.[133X
+  
+  [1X7.2-6 SerreQuotientCategoryByCospansMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryByCospansMorphism[102X( [3XA/C[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category [3XA/C[103X modeled by cospans and two morphisms
+  [23X\alpha: X \rightarrow M[123X and [23X\beta: X \rightarrow N[123X this operation constructs
+  the corresponding morphism in the Serre quotient category.[133X
+  
+  [1X7.2-7 AsSerreQuotientCategoryByCospansMorphism[101X
+  
+  [29X[2XAsSerreQuotientCategoryByCospansMorphism[102X( [3XA/C[103X, [3Xphi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven a Serre quotient category [3XA/C[103X modeled by cospans and a morphism [3Xphi[103X in
+  [3XA[103X, this constructor returns the corresponding morphism in the Serre quotient
   category.[133X
   
   
-  [1X7.1 [33X[0;0YFunctors[133X[101X
+  [1X7.3 [33X[0;0YSerre Quotients by Spans[133X[101X
   
-  [1X7.1-1 SerreQuotientConversionFunctor[101X
+  [1X7.3-1 SerreQuotientCategoryBySpans[101X
   
-  [29X[2XSerreQuotientConversionFunctor[102X( [3XA[103X, [3XB[103X ) [32X operation
-  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  [29X[2XSerreQuotientCategoryBySpans[102X( [3XA[103X, [3Xfunc[103X[, [3Xname[103X] ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
-  [33X[0;0YGiven  two  Serre  quotients  [3XA[103X  and  [3XB[103X of the same category [3XC[103X by equivalent
-  functions,  this  operation  returns  the conversion functor between the two
-  categories.  Please  note that this function does not check the quotients in
-  any sense, i.e., wether the functions are equivalent.[133X
+  [33X[0;0YCreates  a  Serre  quotient  category  S  with  name  [3Xname[103X out of an Abelian
+  category [3XA[103X. The Serre quotient category will be modeled upon the generalized
+  morphisms  by  spans  category  of [3XA[103X If [3Xname[103X is not given, a generic name is
+  constructed out of the name of [3XA[103X. The argument [3Xfunc[103X must be a unary function
+  on  the  objects  of  [3XA[103X  deciding  the membership in the thick subcategory C
+  mentioned above.[133X
+  
+  [1X7.3-2 AsSerreQuotientCategoryBySpansObject[101X
+  
+  [29X[2XAsSerreQuotientCategoryBySpansObject[102X( [3XA/C[103X, [3XM[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YGiven  a  Serre quotient category [3XA/C[103X modeled by spans and an object [3XM[103X in [3XA[103X,
+  this  constructor  returns  the  corresponding  object in the Serre quotient
+  category.[133X
+  
+  [1X7.3-3 SerreQuotientCategoryBySpansMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryBySpansMorphism[102X( [3XA/C[103X, [3Xphi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category  [3XA/C[103X  modeled by spans and a generalized
+  morphism  [3Xphi[103X in the generalized morphism category [3XA/C[103X is modeled upon, this
+  constructor  returns  the  corresponding  morphism  in  the  Serre  quotient
+  category.[133X
+  
+  [1X7.3-4 SerreQuotientCategoryBySpansMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryBySpansMorphism[102X( [3XA/C[103X, [3Xiota[103X, [3Xphi[103X, [3Xpi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category [3XA/C[103X modeled by spans and three morphisms
+  [23X\iota:  M'  \rightarrow M[123X, [23X\phi: M' \rightarrow N'[123X and [23X\pi: N \rightarrow N'[123X
+  this operation contructs a morphism in the Serre quotient category.[133X
+  
+  [1X7.3-5 SerreQuotientCategoryBySpansMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryBySpansMorphism[102X( [3XA/C[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category  [3XA/C[103X  modeled by spans and two morphisms
+  [23X\alpha: M \rightarrow X[123X and [23X\beta: X \rightarrow N[123X this operation constructs
+  the corresponding morphism in the Serre quotient category.[133X
+  
+  [1X7.3-6 SerreQuotientCategoryBySpansMorphismWithRangeAid[101X
+  
+  [29X[2XSerreQuotientCategoryBySpansMorphismWithRangeAid[102X( [3XA/C[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category  [3XA/C[103X  modeled by spans and two morphisms
+  [23X\alpha: X \rightarrow M[123X and [23X\beta: X \rightarrow N[123X this operation constructs
+  the corresponding morphism in the Serre quotient category.[133X
+  
+  [1X7.3-7 AsSerreQuotientCategoryBySpansMorphism[101X
+  
+  [29X[2XAsSerreQuotientCategoryBySpansMorphism[102X( [3XA/C[103X, [3Xphi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre quotient category [3XA/C[103X modeled by spans and a morphism [3Xphi[103X in
+  [3XA[103X, this constructor returns the corresponding morphism in the Serre quotient
+  category.[133X
+  
+  
+  [1X7.4 [33X[0;0YSerre Quotients modeled by three arrows[133X[101X
+  
+  [1X7.4-1 SerreQuotientCategoryByThreeArrows[101X
+  
+  [29X[2XSerreQuotientCategoryByThreeArrows[102X( [3XA[103X, [3Xfunc[103X[, [3Xname[103X] ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
+  
+  [33X[0;0YCreates  a  Serre  quotient  category  S  with  name  [3Xname[103X out of an Abelian
+  category [3XA[103X. The Serre quotient category will be modeled upon the generalized
+  morphisms by three arrows category of [3XA[103X If [3Xname[103X is not given, a generic name
+  is  constructed  out  of  the  name  of [3XA[103X. The argument [3Xfunc[103X must be a unary
+  function  on  the  objects  of  [3XA[103X  deciding  the  membership  in  the  thick
+  subcategory C mentioned above.[133X
+  
+  [1X7.4-2 AsSerreQuotientCategoryByThreeArrowsObject[101X
+  
+  [29X[2XAsSerreQuotientCategoryByThreeArrowsObject[102X( [3XA/C[103X, [3XM[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YGiven  a Serre quotient category [3XA/C[103X modeled by three arrows and an object [3XM[103X
+  in  [3XA[103X,  this  constructor  returns  the  corresponding  object  in the Serre
+  quotient category.[133X
+  
+  [1X7.4-3 SerreQuotientCategoryByThreeArrowsMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryByThreeArrowsMorphism[102X( [3XA/C[103X, [3Xphi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category  [3XA/C[103X  modeled  by  three  arrows  and  a
+  generalized morphism [3Xphi[103X in the generalized morphism category [3XA/C[103X is modeled
+  upon,  this  constructor  returns  the  corresponding  morphism in the Serre
+  quotient category.[133X
+  
+  [1X7.4-4 SerreQuotientCategoryByThreeArrowsMorphism[101X
+  
+  [29X[2XSerreQuotientCategoryByThreeArrowsMorphism[102X( [3XA/C[103X, [3Xiota[103X, [3Xphi[103X, [3Xpi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category  [3XA/C[103X  modeled  by three arrows and three
+  morphisms  [23X\iota:  M'  \rightarrow  M[123X,  [23X\phi:  M'  \rightarrow N'[123X and [23X\pi: N
+  \rightarrow  N'[123X  this  operation  contructs a morphism in the Serre quotient
+  category.[133X
+  
+  [1X7.4-5 SerreQuotientCategoryByThreeArrowsMorphismWithSourceAid[101X
+  
+  [29X[2XSerreQuotientCategoryByThreeArrowsMorphismWithSourceAid[102X( [3XA/C[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category  [3XA/C[103X  modeled  by  three  arrows and two
+  morphisms  [23X\alpha: M \rightarrow X[123X and [23X\beta: X \rightarrow N[123X this operation
+  constructs the corresponding morphism in the Serre quotient category.[133X
+  
+  [1X7.4-6 SerreQuotientCategoryByThreeArrowsMorphismWithRangeAid[101X
+  
+  [29X[2XSerreQuotientCategoryByThreeArrowsMorphismWithRangeAid[102X( [3XA/C[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre  quotient  category  [3XA/C[103X  modeled  by  three  arrows and two
+  morphisms  [23X\alpha: X \rightarrow M[123X and [23X\beta: X \rightarrow N[123X this operation
+  constructs the corresponding morphism in the Serre quotient category.[133X
+  
+  [1X7.4-7 AsSerreQuotientCategoryByThreeArrowsMorphism[101X
+  
+  [29X[2XAsSerreQuotientCategoryByThreeArrowsMorphism[102X( [3XA/C[103X, [3Xphi[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YGiven  a  Serre quotient category [3XA/C[103X modeled by three arrows and a morphism
+  [3Xphi[103X  in  [3XA[103X, this constructor returns the corresponding morphism in the Serre
+  quotient category.[133X
   

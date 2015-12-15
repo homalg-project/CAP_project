@@ -149,6 +149,7 @@
   [2XAddMorphismFromTensorProductToInternalHomWithGivenObjects[102X (for IsCapCategory, IsFunction)  7.4-44
   [2XAddMorphismFunction[102X (for IsCapFunctor, IsFunction)  2.4-4
   [2XAddMorphismToBidualWithGivenBidual[102X (for IsCapCategory, IsFunction)  7.4-35
+  [2XAddNaturalTransformationFunction[102X (for IsCapNaturalTransformation, IsFunction)  2.5-3
   [2XAddObjectFunction[102X (for IsCapFunctor, IsFunction)  2.4-2
   [2XAddOperationsToDerivationGraph[102X (for IsDerivedMethodGraph, IsDenseList)  8.3-3
   [2XAddPostCompose[102X (for IsCapCategory, IsFunction)  3.7-8
@@ -208,6 +209,7 @@
   [2XAddZeroMorphism[102X (for IsCapCategory, IsFunction)  3.5-8
   [2XAddZeroObject[102X (for IsCapCategory, IsFunction)  6.3-13
   [2XApplyFunctor[102X  2.4-6
+  [2XApplyNaturalTransformation[102X  2.5-4
   [2XAsCapCategory[102X (for IsCapCategoryAsCatObject)  2.3-2
   [2XAsCatObject[102X (for IsCapCategory)  2.3-1
   [2XAssociatorLeftToRight[102X (for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject)  7.1-9
@@ -323,6 +325,8 @@
   [2XHeapSize[102X (for IsStringMinHeap)  8.5-7
   [2XHorizontalPostCompose[102X (for IsCapCategoryTwoCell, IsCapCategoryTwoCell)  5.2-5
   [2XHorizontalPreCompose[102X (for IsCapCategoryTwoCell, IsCapCategoryTwoCell)  5.2-3
+  [2XHorizontalPreComposeFunctorWithNaturalTransformation[102X (for IsCapFunctor, IsCapNaturalTransformation)  2.5-7
+  [2XHorizontalPreComposeNaturalTransformationWithFunctor[102X (for IsCapNaturalTransformation, IsCapFunctor)  2.5-6
   [2XIdentityMorphism[102X (for IsCapCategoryObject)  3.7-1
   [2XIdentityTwoCell[102X (for IsCapCategoryMorphism)  5.2-1
   [2XImageEmbedding[102X (for IsCapCategoryObject)  6.11-6
@@ -346,6 +350,7 @@
   [2XInstallDerivationsUsingOperation[102X (for IsOperationWeightList, IsString)  8.4-8
   [2XInstallFunctor[102X (for IsCapFunctor, IsString)  2.4-7
   [2XInstallMethodWithToDoForIsWellDefined[102X  10.2-1
+  [2XInstallNaturalTransformation[102X (for IsCapNaturalTransformation, IsString)  2.5-5
   [2XInstallSetWithToDoForIsWellDefined[102X (for IsObject, IsString, IsList)  10.2-2
   [2XInternalHomOnMorphisms[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  7.4-3
   [2XInternalHomOnMorphismsWithGivenInternalHoms[102X (for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject)  7.4-4
@@ -461,6 +466,8 @@
   [2XMorphismIntoZeroObject[102X (for IsCapCategoryObject)  6.3-4
   [2XMorphismToBidual[102X (for IsCapCategoryObject)  7.4-33
   [2XMorphismToBidualWithGivenBidual[102X (for IsCapCategoryObject, IsCapCategoryObject)  7.4-34
+  [2XName[102X (for IsCapNaturalTransformation)  2.5-1
+  [2XNaturalTransformation[102X (for IsCapFunctor, IsCapFunctor)  2.5-2
   [2XObjectCache[102X (for IsCapFunctor)  10.1-1
   [2XObjectFilter[102X (for IsCapCategory)  1.3-3
   [2XOperations[102X (for IsDerivedMethodGraph)  8.3-15

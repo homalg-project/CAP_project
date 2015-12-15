@@ -1,6 +1,6 @@
 name: ModulePresentationsForCAP
-version: 2015.12.03
-date: 03/12/2015
+version: 2015.12.09
+date: 09/12/2015
 description: Category R-pres for CAP
 
 authors:
@@ -34,9 +34,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/ModulePresentationsForC
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2015.12.03/ModulePresentationsForCAP-2015.12.03.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2015.12.09/ModulePresentationsForCAP-2015.12.09.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2015.12.03/ModulePresentationsForCAP-2015.12.03.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2015.12.09/ModulePresentationsForCAP-2015.12.09.zip
 
 abstract: 
 

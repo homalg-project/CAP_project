@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (GeneralizedMorphismsForCAP) - Chapter 9: Examples and Tests</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap9"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap9.html">[MathJax off]</a></p>
+<p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
+<div class="ChapSects"><a href="chap9_mj.html#X7967FE8E7BBDF485">9 <span class="Heading">Examples and Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X8104A77D7B5CCD4F">9.1 <span class="Heading">Basic Commands</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X8769971A878B6648">9.2 <span class="Heading">Intersection of Nodal Curve and Cusp</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X8325B23C86E16E76">9.3 <span class="Heading">Sweep</span></a>
+</span>
+</div>
+</div>
+
+<h3>9 <span class="Heading">Examples and Tests</span></h3>
+
+<p><a id="X8104A77D7B5CCD4F" name="X8104A77D7B5CCD4F"></a></p>
+
+<h4>9.1 <span class="Heading">Basic Commands</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := VectorSpaceObject( 4, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := VectorSpaceObject( 3, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := VectorSpaceObject( 2, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( A, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">HomalgMatrix( [ [ 1, 1, 1 ], [ 0, 1, 1 ], </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">[ 1, 0, 1 ], [ 1, 1, 0 ] ], 4, 3, Q ), B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := VectorSpaceMorphism( C, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">HomalgMatrix( [ [ -1, 1, -1 ], [ 1, 0, -1 ] ], 2, 3, Q ), B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := ProjectionInFactorOfFiberProduct( [ alpha, gamma ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := ProjectionInFactorOfFiberProduct( [ alpha, gamma ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( AsGeneralizedMorphism( alpha ), GeneralizedInverse( gamma ) );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gen1 := PreCompose( AsGeneralizedMorphism( alpha ), </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       GeneralizedInverse( gamma ) );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gen2 := PreCompose( GeneralizedInverse( p ), AsGeneralizedMorphism( q ) );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( gen1, gen2 );</span>
+true
+</pre></div>
+
+<p><a id="X8769971A878B6648" name="X8769971A878B6648"></a></p>
+
+<h4>9.2 <span class="Heading">Intersection of Nodal Curve and Cusp</span></h4>
+
+<p>We are going to intersect the nodal curve <span class="SimpleMath">\(f = y^2 - x^2(x+1)\)</span> and the cusp <span class="SimpleMath">\(g = (x+y)^2 - (y-x)^3\)</span>. The two curves are arranged in a way such that they intersect at <span class="SimpleMath">\((0,0)\)</span> with intersection number as high as possible. We are going to compute this intersection number using the definition of the intersection number as the length of the module <span class="SimpleMath">\(R/(f,g)\)</span> localized at <span class="SimpleMath">\((0,0)\)</span>. In order to model modules over the localization of <span class="SimpleMath">\(Q[x,y]\)</span> at <span class="SimpleMath">\((0,0)\)</span>, we use a suitable Serre quotient category. 1 2 1 1 true We are going to intersect the nodal curve <span class="SimpleMath">\(f = y^2 - x^2(x+1)\)</span> and the cusp <span class="SimpleMath">\(g = (x+y)^2 - (y-x)^3\)</span>. The two curves are arranged in a way such that they intersect at <span class="SimpleMath">\((0,0)\)</span> with intersection number as high as possible. We are going to compute this intersection number using the definition of the intersection number as the length of the module <span class="SimpleMath">\(R/(f,g)\)</span> localized at <span class="SimpleMath">\((0,0)\)</span>. In order to model modules over the localization of <span class="SimpleMath">\(Q[x,y]\)</span> at <span class="SimpleMath">\((0,0)\)</span>, we use a suitable Serre quotient category. 1 2 1 1 true We are going to intersect the nodal curve <span class="SimpleMath">\(f = y^2 - x^2(x+1)\)</span> and the cusp <span class="SimpleMath">\(g = (x+y)^2 - (y-x)^3\)</span>. The two curves are arranged in a way such that they intersect at <span class="SimpleMath">\((0,0)\)</span> with intersection number as high as possible. We are going to compute this intersection number using the definition of the intersection number as the length of the module <span class="SimpleMath">\(R/(f,g)\)</span> localized at <span class="SimpleMath">\((0,0)\)</span>. In order to model modules over the localization of <span class="SimpleMath">\(Q[x,y]\)</span> at <span class="SimpleMath">\((0,0)\)</span>, we use a suitable Serre quotient category. 1 2 1 1 true</p>
+
+<p><a id="X8325B23C86E16E76" name="X8325B23C86E16E76"></a></p>
+
+<h4>9.3 <span class="Heading">Sweep</span></h4>
+
+<p><span class="SimpleMath">\(\href{https://terrytao.wordpress.com/2015/10/07/sweeping-a-matrix-rotates-its-graph/}{\textrm{Geometric interpretation of sweeping a matrix by Terence Tao.}}\)</span></p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := VectorSpaceObject( 3, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := HomalgMatrix( [ [ 9, 8, 7 ], [ 6, 5, 4 ], [ 3, 2, 1 ] ], 3, 3, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( V, mat, V );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">graph := FiberProductEmbeddingInDirectSum( </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            [ alpha, IdentityMorphism( V ) ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( graph );</span>
+[ [     1,    -2,     1,     0,     0,     0 ],
+  [  -4/3,   7/3,     0,     2,     1,     0 ],
+  [   5/3,  -8/3,     0,    -1,     0,     1 ] ]
+
+A split mono morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := DirectSum( V, V );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rotmat := HomalgMatrix( [ [ 0, 0, 0, -1, 0, 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                             [ 0, 1, 0, 0, 0, 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                             [ 0, 0, 1, 0, 0, 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                             [ 1, 0, 0, 0, 0, 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                             [ 0, 0, 0, 0, 1, 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                             [ 0, 0, 0, 0, 0, 1 ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                             6, 6, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rot := VectorSpaceMorphism( D, rotmat, D );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := PreCompose( graph, rot );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( p );</span>
+[ [     0,    -2,     1,    -1,     0,     0 ],
+  [     2,   7/3,     0,   4/3,     1,     0 ],
+  [    -1,  -8/3,     0,  -5/3,     0,     1 ] ]
+
+A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFactorOfDirectSum( [ V, V ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := ProjectionInFactorOfDirectSum( [ V, V ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">reversed_arrow := PreCompose( p, pi1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">arrow := PreCompose( p, pi2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := GeneralizedMorphismBySpan( reversed_arrow, arrow );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHonest( g );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sweep_1_alpha := HonestRepresentative( g );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sweep_1_alpha );</span>
+[ [  -1/9,   8/9,   7/9 ],
+  [   2/3,  -1/3,  -2/3 ],
+  [   1/3,  -2/3,  -4/3 ] ]
+
+A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( alpha );</span>
+[ [  9,  8,  7 ],
+  [  6,  5,  4 ],
+  [  3,  2,  1 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
