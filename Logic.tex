@@ -1,0 +1,44 @@
+\CapPkg provides two types of logic applied to objects and morphisms of a category.
+In this chapter, the two layers are described together with some features of the logic.
+We start by giving some general remarks, then describing the logic and the syntax explicitly.
+After that, we give a description how to create your own logic files to the category.
+
+\section{General remarks to logic in \CapPkg}
+
+There are currently two types of logical propagation between \GAP objects implemented.
+The first is a relation between different filters.
+
+\begin{example}
+ Every isomorphism is a monomorphism. So there is an implication between the properties
+ \texttt{IsIsomorphism} and \texttt{IsMonomorphism}. Everytime the property \texttt{IsIsomorphism}
+ is set to true, the property \texttt{IsMonomorphism} is also true.
+\end{example}
+
+In \CapPkg, such a propagation is handled by \texttt{TrueMethods}. That means those relations
+are static and cannot been turn off, but also \GAP knows about them.
+
+The second propagation is the propagation of predicates between input and output objects
+of a certain method.
+
+\begin{example}
+  The composition of two monomorphisms is again a monomorphism. So, if for both input morphisms
+  of the method \texttt{PreCompose} the property \texttt{IsMonomorphism} becomes set to \texttt{true},
+  in the resulting morphism of \texttt{PreCompose}, \texttt{IsMonomorphism} is also set to \texttt{true}.
+\end{example}
+
+Internally, such propagations are carried out via \texttt{ToDoLists}. This means that the properties
+do not need to be known when the mentioned operation is executed, but can be propagated later. As a drawback,
+\GAP itself does not know about the relation before it is propagated, so it cannot take use of it.
+
+\subsection{Switchability of Logic}
+
+Since the first type of relations are hard wired via \texttt{TrueMethods}, there are not
+meant to be switched on or off depending on the category. Contrary to this, the logic defined
+by the relations from operations can be turned off or on for a specific \CapPkg category.
+This can be achieved by using the commands \texttt{CapCategorySwitchLogicOn} and \texttt{CapCategorySwitchLogicOff}.
+Generally it is not a good idea to use these switches mid-computation, since the \texttt{ToDoListEntries} for the
+already computed objects remain and might still be executed. If one wants no logic for a specific category,
+it is always best to switch off logic at creation time of the category.
+
+\subsection{Adding own logic files}
+
