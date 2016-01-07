@@ -844,7 +844,8 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
   
   function( category, name )
     local string, weight_list, current_weight, current_derivation,
-          possible_derivations, category_filter, used_ops_with_multiples, i;
+          possible_derivations, category_filter, used_ops_with_multiples, i,
+          currently_installed_funcs;
     
     if IsFunction( name ) then
         string := NameFunction( name );
@@ -883,7 +884,29 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
               
             od;
             
-            Print( "\n" );
+            currently_installed_funcs := DerivationFunctionsWithExtraFilters( current_derivation );
+            
+            Print( "\nThe following function" );
+            
+            if Length( currently_installed_funcs ) > 1 then
+                Print( "s were" );
+            else
+                Print( " was" );
+            fi;
+            
+            Print( " installed for this operation:\n\n" );
+            
+            for i in currently_installed_funcs do
+                
+                Print( "Filters: " );
+                Print( String( i[ 2 ] ) );
+                Print( "\n\n" );
+                Display( i[ 1 ] );
+                Print( "\n" );
+                
+            od;
+            
+            Print( "#######\n\n" );
             
         fi;
         
