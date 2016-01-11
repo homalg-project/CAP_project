@@ -834,7 +834,7 @@ InstallGlobalFunction( InstalledMethodsOfCategory,
         Print( "- ", i, "\n" );
     od;
     
-    Print( "\nPlease use DerivationsOfMethodByCategory( <category>, <name> ) do get\n",
+    Print( "\nPlease use DerivationsOfMethodByCategory( <category>, <name> ) to get\n",
            "information about how to add the missing methods\n" );
     
 end );
