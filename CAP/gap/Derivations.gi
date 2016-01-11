@@ -834,7 +834,7 @@ InstallGlobalFunction( InstalledMethodsOfCategory,
         Print( "- ", i, "\n" );
     od;
     
-    Print( "\nPlease use DerivationsOfMethodByCategory( <category>, <name> ) do get\n",
+    Print( "\nPlease use DerivationsOfMethodByCategory( <category>, <name> ) to get\n",
            "information about how to add the missing methods\n" );
     
 end );
@@ -878,7 +878,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             used_ops_with_multiples := UsedOperationsWithMultiples( current_derivation );
             for i in used_ops_with_multiples do
                 
-                Print( "* ", i[ 1 ], " (x", i[ 2 ], ")" );
+                Print( "* ", i[ 1 ], " (", i[ 2 ], "x)" );
                 Print( " installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ) );
                 Print( "\n" );
               
@@ -937,7 +937,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         
         for i in used_ops_with_multiples do
             
-            Print( "* ", i[ 1 ], " (x", i[ 2 ], ")" );
+            Print( "* ", i[ 1 ], " (", i[ 2 ], "x)" );
             
             if CurrentOperationWeight( weight_list, i[ 1 ] ) < infinity then
                 Print( ", (already installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ),")" );
