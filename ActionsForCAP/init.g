@@ -17,3 +17,4 @@ ReadPackage( "ActionsForCAP", "gap/ActionMorphisms.gd" );
 
 ReadPackage( "ActionsForCAP", "gap/CoactionMorphisms.gd" );
 
+ReadPackage( "ActionsForCAP", "gap/SemisimpleCategory.gd" );
