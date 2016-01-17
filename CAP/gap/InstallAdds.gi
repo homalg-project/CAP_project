@@ -337,13 +337,13 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
             
             has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
             
-            if has_return = SuPeRfail then
+            if has_return = [ ] then
                 
                 return [ false ];
                 
             fi;
             
-            return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ has_return ] ) ) ];
+            return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ has_return[ 1 ] ] ) ) ];
             
         end;
         
@@ -366,7 +366,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
                 
                 has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
                 
-                if has_return = SuPeRfail then
+                if has_return = [ ] then
                     
                     return [ false ];
                     
@@ -378,7 +378,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
                 
             fi;
             
-            return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ has_return ] ) ) ];
+            return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ has_return[ 1 ] ] ) ) ];
             
         end;
         

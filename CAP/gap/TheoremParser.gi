@@ -1309,7 +1309,7 @@ InstallGlobalFunction( REPLACE_INTEGER_STRINGS_BY_INTS_AND_VARIABLES_BY_FAIL_REC
         
     fi;
     
-    return SuPeRfail;
+    return fail;
     
 end );
 
