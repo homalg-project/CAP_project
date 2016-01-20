@@ -49,8 +49,9 @@ end;
 # HACK
 MakeReadWriteGlobal("SetPackageInfo");
 SetPackageInfo:=function(pkg)
-    local stream, authors, maintainers, formats, f;
-    stream := OutputTextFile("_data/package.yml", false);
+    local stream, authors, maintainers, formats, f, name;
+    name := pkg.PackageName;
+    stream := OutputTextFile( Concatenation( "../_data/", name, ".yml" ), false);
     SetPrintFormattingStatus(stream, false);
     
     AppendTo(stream, "name: ", pkg.PackageName, "\n");
