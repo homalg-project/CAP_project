@@ -11,7 +11,7 @@
     <script type="text/javascript"
       src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
-    <title>GAP package {{ site.data.packageCAP.name }}</title>
+    <title>GAP package {{ site.data[page.package_name].name }}</title>
   </head>
 
   <body>
@@ -21,16 +21,16 @@
         <header class="inner">
           {% if site.github.repository_url %}
           <a id="forkme_banner" href="{{ site.github.repository_url }}">View On GitHub</a>
-          {% elsif site.data.packageCAP.github %}
-          <a id="forkme_banner" href="{{ site.data.packageCAP.github }}">View On GitHub</a>
+          {% elsif site.data[page.package_name].github %}
+          <a id="forkme_banner" href="{{ site.data[page.package_name].github }}">View On GitHub</a>
           {% endif %}
 
-          <h1 id="project_title">{{ site.data.packageCAP.name }}</h1>
-          <h2 id="project_tagline">{{ site.data.packageCAP.description }}</h2>
-          <h3 id="project_authors">{{ site.data.packageCAP.version }}</h3>
+          <h1 id="project_title">{{ site.data[page.package_name].name }}</h1>
+          <h2 id="project_tagline">{{ site.data[page.package_name].description }}</h2>
+          <h3 id="project_authors">{{ site.data[page.package_name].version }}</h3>
 
             <section id="downloads">
-              {% for item in site.data.packageCAP.downloads %}
+              {% for item in site.data[page.package_name].downloads %}
                 {% if item.name == ".tar.gz" %}
                     <a class="tar_download_link" href="{{ item.url }}">Download {{ item.name }}</a>
                 {% else %}
@@ -46,7 +46,8 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
       
-      {{ content }}
+      {% capture my_include %}{% include index_package.md %}{% endcapture %}
+      {{ my_include | markdownify }}
       
       </section>
     </div>
@@ -55,7 +56,7 @@
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright"> Maintained by: 
-          {% for person in site.data.packageCAP.maintainers %}
+          {% for person in site.data[page.package_name].maintainers %}
             {% if person.url %}
               <a href="{{ person.url }}">{{ person.name }}</a>{% else %}
               {{ person.name }}{% endif %}{% unless forloop.last %}, {% endunless %}

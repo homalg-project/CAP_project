@@ -12,7 +12,7 @@ good discription of CAP. Also, you can look at the packages references for detai
 ## Packages in the CAP project
 
 {% for package in site.data.packages.package_links %}
-  [{{package.name}}]({{site.baseurl}}/CAP_project/{{package.name}})
+  [{{package.name}}]({{site.baseurl}}/{{package.name}})
 {% endfor %}
 
 
