@@ -323,7 +323,10 @@ function jsonval {
 
 # check if release already exists
 response=$(curl -s -S -X GET $API_URL/tags/$TAG?access_token=$TOKEN)
-if ! echo "${response}" | fgrep -q "Not Found" ; then
+echo ${response}
+if echo "${response}" | fgrep -q "Not Found" ; then
+    notice "Release does not exist"
+else
     if [ x$FORCE = xyes ] ; then
         notice "Deleting existing release $TAG from GitHub"
         RELEASE_ID=$(jsonval | sed "s/id:/\n/g" | sed -n 2p | sed "s| ||g")
