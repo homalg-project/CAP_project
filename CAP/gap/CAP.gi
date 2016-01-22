@@ -117,7 +117,7 @@ InstallGlobalFunction( HAS_VALUE_OF_CATEGORY_CACHE,
     
     cache := GET_METHOD_CACHE( category, name, number );
     
-    return CacheValue( cache, key, value ) <> SuPeRfail;
+    return CacheValue( cache, key, value ) <> [ ];
     
 end );
 

@@ -3,7 +3,7 @@ SetPackageInfo( rec(
 PackageName := "DeductiveSystemForCAP",
 Subtitle := "Deductive system for CAP",
 Version := Maximum( [
-  "2015.06.10", ## Sebas' version
+  "2016.01.17", ## Sebas' version
   ## this line prevents merge conflicts
   "2015.04.15", ## Sepp's version
 ] ),

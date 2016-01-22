@@ -222,7 +222,7 @@ InstallGlobalFunction( CHECK_CORRECT_COMMAND_HISTORY_RECURSIVE,
   function( history, command_tree )
     local object_history;
     
-    if command_tree = SuPeRfail then
+    if command_tree = fail then
         
         return true;
         

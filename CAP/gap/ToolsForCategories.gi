@@ -142,7 +142,7 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
         
         cache_return := CacheValue( cache, cache_key );
         
-        if cache_return = SuPeRfail then
+        if cache_return = [ ] then
             
             CallFuncList( SetCacheValue, [ cache, cache_key, arg[ Length( arg ) ] ] );
             
@@ -203,7 +203,7 @@ InstallMethod( InstallSetWithToDoForIsWellDefined,
         
         cache_return := CacheValue( cache, cache_key );
         
-        if cache_return = SuPeRfail then
+        if cache_return = [ ] then
             
             CallFuncList( SetCacheValue, [ cache, cache_key, arg[ Length( arg ) ] ] );
             
