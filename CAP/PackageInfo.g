@@ -9,7 +9,7 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
   ## this line prevents merge conflicts
-  "2016.01.21", ## Sebas' version
+  "2016.02.18", ## Sebas' version
   ## this line prevents merge conflicts
   "2015.10.14", ## Sepp's version
 ] ),
@@ -85,7 +85,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.6",
-  NeededOtherPackages := [ [ "AutoDoc", ">= 2014.06.26" ],
+  NeededOtherPackages := [ [ "AutoDoc", ">= 2016.02.16" ],
                            [ "ToolsForHomalg", ">= 2016.01.17" ],
                            [ "io", ">=0" ],
   ],
