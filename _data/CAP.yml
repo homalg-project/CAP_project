@@ -1,6 +1,6 @@
 name: CAP
-version: 2016.01.21
-date: 21/01/2016
+version: 2016.02.18
+date: 18/02/2016
 description: Categories, Algorithms, Programming
 
 authors:
@@ -23,8 +23,8 @@ GAP: ">= 4.6"
 
 needed-pkgs:
     - name: "AutoDoc"
-      version: ">= 2014.06.26"
-      url: "http://gap-packages.github.io/AutoDoc/"
+      version: ">= 2016.02.16"
+      url: "https://gap-packages.github.io/AutoDoc"
     - name: "ToolsForHomalg"
       version: ">= 2016.01.17"
       url: "http://homalg-project.github.io/homalg_project/ToolsForHomalg/"
@@ -38,9 +38,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.01.21/CAP-2016.01.21.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.02.18/CAP-2016.02.18.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.01.21/CAP-2016.01.21.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.02.18/CAP-2016.02.18.zip
 
 abstract: 
 
