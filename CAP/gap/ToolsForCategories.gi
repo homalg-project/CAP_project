@@ -711,3 +711,13 @@ InstallGlobalFunction( ListKnownCategoricalProperties,
     return list;
     
 end );
+
+InstallGlobalFunction( CAP_MergeRecords,
+  function( dst, src )
+    local key;
+    for key in RecNames( src ) do
+        if not IsBound( dst.( key ) ) then
+            dst.( key ) := src.( key );
+        fi;
+    od;
+end );
