@@ -1,6 +1,6 @@
 name: CAP
-version: 2016.02.18
-date: 18/02/2016
+version: 2016.02.19
+date: 19/02/2016
 description: Categories, Algorithms, Programming
 
 authors:
@@ -38,9 +38,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.02.18/CAP-2016.02.18.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.02.19/CAP-2016.02.19.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.02.18/CAP-2016.02.18.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.02.19/CAP-2016.02.19.zip
 
 abstract: 
 
