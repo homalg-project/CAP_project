@@ -195,13 +195,6 @@ DeclareAttribute( "TurnIntoConeVPresentationList",
                   IsSemigroupGeneratorList );
 
 #! @Description
-#! The argument is an AffineConeSemigroup $S$. We then return the underlying cone.
-#! @Returns an NmzCone
-#! @Arguments S
-DeclareAttribute( "UnderlyingCone",
-                  IsAffineConeSemigroup );
-
-#! @Description
 #! The argument is an AffineConeSemigroup $S$. This one is given as $S = p + \left( C \cap \mathbb{Z}^n \right)$ for a 
 #! point $p \in \mathbb{Z}^n$ and a cone $C \subseteq \mathbb{Z}^n$. We then return the offset $p$.
 #! @Returns a list of integers

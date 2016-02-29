@@ -317,7 +317,6 @@ InstallMethod( AffineConeSemigroup,
     if NmzHasConeProperty( cone, "HilbertBasis" ) and NmzRank( cone ) = NmzEmbeddingDimension( cone ) then
 
       ObjectifyWithAttributes( affine_cone_semigroup, TheTypeOfAffineConeSemigroups,
-                               UnderlyingCone, cone,
                                Offset, offset_point,
                                UnderlyingConeVPresentationList, ConeVPresentationList( NmzHilbertBasis( cone ) ),
                                UnderlyingConeHPresentationList, ConeHPresentationList( NmzSupportHyperplanes( cone ) ),
@@ -327,7 +326,6 @@ InstallMethod( AffineConeSemigroup,
     elif NmzHasConeProperty( cone, "HilbertBasis" ) and NmzRank( cone ) <> NmzEmbeddingDimension( cone ) then
 
       ObjectifyWithAttributes( affine_cone_semigroup, TheTypeOfAffineConeSemigroups,
-                               UnderlyingCone, cone,
                                Offset, offset_point,
                                UnderlyingConeVPresentationList, ConeVPresentationList( NmzHilbertBasis( cone ) ),
                                EmbeddingDimension, Length( offset_point )
@@ -366,7 +364,6 @@ InstallMethod( AffineConeSemigroup,
     if NmzRank( cone ) = NmzEmbeddingDimension( cone ) then
 
       ObjectifyWithAttributes( affine_cone_semigroup, TheTypeOfAffineConeSemigroups,
-                               UnderlyingCone, cone,
                                Offset, offset_point,
                                UnderlyingConeVPresentationList, cone_vpresentation_list,
                                UnderlyingConeHPresentationList, ConeHPresentationList( NmzSupportHyperplanes( cone ) ),
@@ -376,7 +373,6 @@ InstallMethod( AffineConeSemigroup,
     elif NmzRank( cone ) <> NmzEmbeddingDimension( cone ) then
 
       ObjectifyWithAttributes( affine_cone_semigroup, TheTypeOfAffineConeSemigroups,
-                               UnderlyingCone, cone,
                                Offset, offset_point,
                                UnderlyingConeVPresentationList, cone_vpresentation_list,
                                EmbeddingDimension, Length( offset_point )
@@ -415,7 +411,6 @@ InstallMethod( AffineConeSemigroup,
     if NmzHasConeProperty( cone, "HilbertBasis" ) then
 
       ObjectifyWithAttributes( affine_cone_semigroup, TheTypeOfAffineConeSemigroups,
-                               UnderlyingCone, cone,
                                Offset, offset_point,
                                UnderlyingConeVPresentationList, ConeVPresentationList( NmzHilbertBasis( cone ) ),
                                UnderlyingConeHPresentationList, cone_hpresentation_list,
@@ -425,7 +420,6 @@ InstallMethod( AffineConeSemigroup,
     else
 
       ObjectifyWithAttributes( affine_cone_semigroup, TheTypeOfAffineConeSemigroups,
-                               UnderlyingCone, cone,
                                Offset, offset_point,
                                UnderlyingConeHPresentationList, cone_hpresentation_list,
                                EmbeddingDimension, Length( offset_point )
