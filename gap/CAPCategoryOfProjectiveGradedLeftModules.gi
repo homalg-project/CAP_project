@@ -19,7 +19,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
                [ IsHomalgGradedRing ],
   function( homalg_graded_ring )
     local category;
-    
+
       # construct the category
       category := CreateCapCategory( Concatenation( "CAP category of projective graded left modules over "
                                                                                           , RingName( homalg_graded_ring ) ) );
@@ -152,7 +152,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
              source_degrees, range_degrees, buffer_col, dummy_range_degrees, i, j;
 
         # extract source and range
-        source := Source( morphism );        
+        source := Source( morphism );
         range := Range( morphism );
 
         # and that source and range are defined in the same category
@@ -170,7 +170,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
 
         fi;
 
-        # extract the mapping matrix        
+        # extract the mapping matrix
         morphism_matrix := UnderlyingHomalgMatrix( morphism );
 
         # then check if the dimensions of the matrix fit with the ranks of the source and range modules
@@ -194,7 +194,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         # in particular I hope that this function raises and error if one of the entries is not homogeneous
         degrees_of_entries_matrix := DegreesOfEntries( morphism_matrix );
 
-        # turn the degrees of source and range into a row vector (that is how I think about left-modules)
+        # turn the degrees of source into a row vector (that is how I think about left-modules)
         source_degrees := [];
         for i in [ 1 .. Length( DegreeList( source ) ) ] do
 
@@ -218,47 +218,47 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
         dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
         for i in [ 1 .. Rank( range ) ] do
-          
+
           # initialise the i-th buffer row
           buffer_col := List( [ 1 .. Rank( source ) ] );
 
           # compute its entries
           for j in [ 1 .. Rank( source ) ] do
-          
+
             if morphism_matrix_entries[ j ][ i ] = Zero( HomalgRing( morphism_matrix ) ) then
-              
+
               buffer_col[ j ] := range_degrees[ i ];
 
             else
-              
+
               buffer_col[ j ] := source_degrees[ j ] - degrees_of_entries_matrix[ j ][ i ];
-                
+
             fi;
-            
+
           od;
 
           # check that the degrees in buffer_row are all the same, for if not this implies that the mapping isn't well-defined
           if Length( DuplicateFreeList( buffer_col ) ) > 1 then
-          
+
             return false;
-          
+
           fi;
-          
+
           # otherwise add this common degree to the dummy_range_degrees
           dummy_range_degrees[ i ] := buffer_col[ 1 ];
-          
+
         od;
 
         # and now perform the final check
         if range_degrees <> dummy_range_degrees then
-        
+
           return false;
-        
+
         fi;
-        
+
         # all tests have been passed, so return true
         return true;
-        
+
     end );
 
 
