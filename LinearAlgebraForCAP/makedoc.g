@@ -10,7 +10,7 @@ AutoDoc( "LinearAlgebraForCAP" : scaffold := true, autodoc :=
                             [ "LoadPackage( \"CAP\" );",
                               "LoadPackage( \"IO_ForHomalg\" );",
                               "LoadPackage( \"GaussForHomalg\" );",
-			      "LoadPackage( \"LinearAlgebraForCAP\" );",
+                              "LoadPackage( \"LinearAlgebraForCAP\" );",
                               "HOMALG_IO.show_banners := false;",
                               "HOMALG_IO.suppress_PID := true;",
                               "HOMALG_IO.use_common_stream := true;",

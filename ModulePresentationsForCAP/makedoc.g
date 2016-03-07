@@ -11,7 +11,7 @@ AutoDoc( "ModulePresentationsForCAP" : scaffold := true, autodoc :=
                               "LoadPackage( \"IO_ForHomalg\" );",
                               "LoadPackage( \"GaussForHomalg\" );",
                               "LoadPackage( \"ModulePresentationsForCAP\" );",
-			      "LoadPackage( \"RingsForHomalg\" );",
+                              "LoadPackage( \"RingsForHomalg\" );",
                               "HOMALG_IO.show_banners := false;",
                               "HOMALG_IO.suppress_PID := true;",
                               "HOMALG_IO.use_common_stream := true;",
