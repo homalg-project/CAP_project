@@ -13,7 +13,7 @@ PackageName := "CAPCategoryOfProjectiveGradedModules",
 Subtitle := "Category of projective graded modules over a graded ring",
 
 Version := Maximum( [
-  "2015.11.13", ## Martin's version
+  "2016.03.15", ## Martin's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -69,11 +69,10 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "MatricesForHomalg", ">= 2015.06.20" ],
-                           [ "GradedRingForHomalg", "2014.08.27" ],
-                           [ "CAP", ">= 2015.08.17" ],
-                           [ "4ti2Interface", ">= 2015.11.06" ],
-                           [ "NormalizInterface", ">=0" ]
+                           [ "AutoDoc", ">=2016.02.16" ],
+                           [ "MatricesForHomalg", ">= 2015.11.06" ],
+                           [ "GradedRingForHomalg", ">= 2015.12.04" ],
+                           [ "CAP", ">= 2016.02.19" ],
                            ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

@@ -7,7 +7,7 @@ ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiv
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedRightModules.gd" );
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesObject.gd" );
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesMorphism.gd" );
-ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/SemigroupAndConeWrapper.gd" );
+#ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/SemigroupAndConeWrapper.gd" );
 ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/Tools.gd" );
-ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesFunctors.gd" );
-ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesNaturalTransformations.gd" );
+#ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesFunctors.gd" );
+#ReadPackage( "CAPCategoryOfProjectiveGradedModules", "gap/CAPCategoryOfProjectiveGradedModulesNaturalTransformations.gd" );
