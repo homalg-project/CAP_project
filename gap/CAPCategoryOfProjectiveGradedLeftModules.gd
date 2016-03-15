@@ -1,8 +1,8 @@
 #############################################################################
 ##
-##                  CAPCategoryOfProjectiveGradedModules package
+## CAPCategoryOfProjectiveGradedModules package
 ##
-##  Copyright 2015, Martin Bies,       ITP Heidelberg
+## Copyright 2016, Martin Bies,       ITP Heidelberg
 ##
 #! @Chapter Category of projective graded left modules
 ##
