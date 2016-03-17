@@ -483,18 +483,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # @Returns a morphism
     # @Arguments zero_object, object
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( zero_object, object )
+      function( object, zero_object )
         local homalg_graded_ring, morphism;
-        
+
         homalg_graded_ring := UnderlyingHomalgGradedRing( zero_object );
-        
-        morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( zero_object, 
+
+        morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( zero_object,
                                                                     HomalgZeroMatrix( 0, Rank( object ), homalg_graded_ring ), 
                                                                     object,
                                                                     checks
                                                                     );
         return morphism;
-        
+
     end );
 
     # @Description
