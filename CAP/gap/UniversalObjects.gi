@@ -17,7 +17,7 @@ InstallMethod( AddToGenesis,
     
     if HasGenesis( cell ) then
       
-      AUTODOC_APPEND_RECORD_WRITEONCE( Genesis( cell ), rec( (genesis_entry_name) := genesis_entry ) );
+      CAP_MergeRecords( Genesis( cell ), rec( (genesis_entry_name) := genesis_entry ) );
       
    else
       

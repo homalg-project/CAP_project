@@ -91,3 +91,5 @@ DeclareGlobalFunction( "CAP_INTERNAL_MERGE_PRECONDITIONS_LIST" );
 DeclareGlobalFunction( "CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS" );
 
 DeclareGlobalFunction( "ListKnownCategoricalProperties" );
+
+DeclareGlobalFunction( "CAP_MergeRecords" );
