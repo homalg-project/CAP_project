@@ -735,6 +735,15 @@ InstallMethod( InstallFunctor,
     
 end );
 
+InstallMethod( IdentityFunctor,
+               [ IsCapCategory ],
+               
+  function( category )
+    
+    return IdentityMorphism( AsCatObject( category ) );
+    
+end );
+
 ###################################
 ##
 ## Natural transformations

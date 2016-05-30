@@ -234,6 +234,15 @@ DeclareAttribute( "MorphismFunctionName",
 
 #! @EndGroup
 
+#! @Description
+#!  Returns the identity functor of the
+#!  category <A>cat</A> viewn as an object
+#!  in the category of categories.
+#! @Arguments category
+#! @Returns a functor
+DeclareAttribute( "IdentityFunctor",
+                  IsCapCategory );
+
 ####################################
 ##
 #! @Section Natural transformations
