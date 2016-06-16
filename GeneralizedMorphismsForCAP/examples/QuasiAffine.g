@@ -9,7 +9,7 @@ S := Q * "x,y";
 elements_of_irrelevant_ideal := 
 [ "x", "y" ];
 
-HasSupportInZero := function( module_presentation )
+IsSupportedInOrigin := function( module_presentation )
   local number_of_generators, list_of_generators, list_of_kernel_embeddings, ideal_embedding,
         ideal_matrix, Fn1, F1, S, Sy, elem, matrix, entry;
     
@@ -62,38 +62,14 @@ HasSupportInZero := function( module_presentation )
     
 end;;
 
-# A := LeftPresentations( S );
-# C := FullSubcategoryByMembershipFunction( A, HasSupportInZero );
-# Coh := A/C;
-# Sh := CanonicalProjection( Coh );
-# M := AsLeftPresentation( HomalgMatrix( [ [ "x*y" ] ], S ) );
-# N := AsLeftPresentation( HomalgMatrix( [ [ "x" ] ], S ) );
-# O := AsLeftPresentation( HomalgMatrix( [ [ "y" ] ], S ) );
-# phi := PresentationMorphism( M, HomalgMatrix( [ [ 1, 1 ] ], S ), DirectSum( N, O ) );
-# IsIsomorphism( phi );
-# IsIsomorphism( ApplyFunctor( Sh, phi ) );
-
-
-# Serre_cat := LeftPresentations( S ) / HasSupportInZero;
-# Sh_functor := CanonicalProjection( Serre_cat );
-# 
-# 
-# M := HomalgMatrix( [ [ "c*d^2" ], [ "b^3" ], [ "a^4" ] ], 3, 1, S );
-# k:= AsLeftPresentation( M );
-# k_sheaf := ApplyFunctor( Sh_functor, k );
-# IsZero( k_sheaf );
-# #! true
-# 
-# k_sheaf := ApplyFunctor( Sh_functor, ZeroObject( LeftPresentations( S ) ) );
-# IsZero( k_sheaf );
-# #! true
-# 
-# M := HomalgMatrix( [ [ "a*b" ] ], 1, 1, S );
-# k:= AsLeftPresentation( M );
-# k_sheaf := ApplyFunctor( Sh_functor, k );
-# IsZero( k_sheaf );
-# #! false
-# 
-# k_sheaf := ApplyFunctor( Sh_functor, FreeLeftPresentation( 3, S ) );
-# IsZero( k_sheaf );
-# #! false
+A := LeftPresentations( S );
+C := FullSubcategoryByMembershipFunction( A, IsSupportedInOrigin );
+Coh := A/C;
+Sh := CanonicalProjection( Coh );
+InstallFunctor( Sh, "Sheafification" );
+M := AsLeftPresentation( HomalgMatrix( [ [ "x*y" ] ], S ) );
+N := AsLeftPresentation( HomalgMatrix( [ [ "x" ] ], S ) );
+O := AsLeftPresentation( HomalgMatrix( [ [ "y" ] ], S ) );
+phi := PresentationMorphism( M, HomalgMatrix( [ [ 1, 1 ] ], S ), DirectSum( N, O ) );
+IsIsomorphism( phi );
+IsIsomorphism( Sheafification( phi ) );
