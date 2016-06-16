@@ -11,6 +11,9 @@ A := LeftPresentations( S );
 InfoOfInstalledOperationsOfCategory( A );
 
 C := Subcategory( A, IsSupportedInOrigin );
+
+SwitchGeneralizedMorphismStandard( "span" );
+
 Coh := A / C;
 InfoOfInstalledOperationsOfCategory( Coh );
 
@@ -21,4 +24,5 @@ N := AsLeftPresentation( HomalgMatrix( [ [ "x" ] ], S ) );
 O := AsLeftPresentation( HomalgMatrix( [ [ "y" ] ], S ) );
 phi := PresentationMorphism( M, HomalgMatrix( [ [ 1, 1 ] ], S ), DirectSum( N, O ) );
 IsIsomorphism( phi );
-IsIsomorphism( Sheafification( phi ) );
+f := Sheafification( phi );
+IsIsomorphism( f );
