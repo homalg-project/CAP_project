@@ -53,3 +53,5 @@ IsSupportedInOrigin := function( module_presentation )
     return true;
     
 end;;
+
+SwitchGeneralizedMorphismStandard( "span" );
