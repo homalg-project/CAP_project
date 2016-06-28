@@ -279,7 +279,7 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_LEFT,
         
         relation_degrees := DegreesOfEntries( UnderlyingMatrix( object ) );
         relation_entries := EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( object ) );
-        generator_degrees := DegreesOfGenerators( object );
+        generator_degrees := GeneratorDegrees( object );
         
         return CAP_INTERNAL_CHECK_DEGREES_FOR_OBJECTS_WELL_DEFINED( relation_degrees, relation_entries, generator_degrees );
         
@@ -303,7 +303,7 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_RIGHT,
         
         relation_degrees := TransposedMat( DegreesOfEntries( UnderlyingMatrix( object ) ) );
         relation_entries := TransposedMat( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( object ) ) );
-        generator_degrees := DegreesOfGenerators( object );
+        generator_degrees := GeneratorDegrees( object );
         
         return CAP_INTERNAL_CHECK_DEGREES_FOR_OBJECTS_WELL_DEFINED( relation_degrees, relation_entries, generator_degrees );
         
@@ -344,8 +344,8 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
         
         matrix_degrees := DegreesOfEntries( UnderlyingMatrix( morphism );
         matrix_entries := EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( morphism ) );
-        source_degrees := DegreesOfGenerators( Source( morphism ) );
-        range_degrees := DegreesOfGenerators( Range( morphism ) );
+        source_degrees := GeneratorDegrees( Source( morphism ) );
+        range_degrees := GeneratorDegrees( Range( morphism ) );
         
         return CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_MORPHISMS( matrix_degrees, matrix_entries, source_degrees, range_degrees );
         
@@ -369,8 +369,8 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
         
         matrix_degrees := TransposedMat( DegreesOfEntries( UnderlyingMatrix( morphism ) );
         matrix_entries := TransposedMat( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( morphism ) ) );
-        source_degrees := DegreesOfGenerators( Source( morphism ) );
-        range_degrees := DegreesOfGenerators( Range( morphism ) );
+        source_degrees := GeneratorDegrees( Source( morphism ) );
+        range_degrees := GeneratorDegrees( Range( morphism ) );
         
         return CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_MORPHISMS( matrix_degrees, matrix_entries, source_degrees, range_degrees );
         
@@ -407,7 +407,7 @@ InstallGlobalFunction( ADD_GRADED_EQUAL_FOR_OBJECTS,
       function( object1, object2 )
         
         if UnderlyingMatrix( object1 ) = UnderlyingMatrix( object2 ) then
-            return DegreesOfGenerators( object1 ) = DegreesOfGenerators( object2 );
+            return GeneratorDegrees( object1 ) = GeneratorDegrees( object2 );
         fi;
         return false;
         
@@ -432,7 +432,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_LEFT,
         
         new_degrees := NonTrivialDegreePerRow( UnderlyingMatrix( underlying_embedding ) );
         
-        range_degrees := DegreesOfGenerators( Source( morphism ) );
+        range_degrees := GeneratorDegrees( Source( morphism ) );
         
         new_degrees := range_degrees - new_degrees;
         
@@ -486,7 +486,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_RIGHT,
         
         new_degrees := NonTrivialDegreePerColumn( UnderlyingMatrix( underlying_embedding ) );
         
-        range_degrees := DegreesOfGenerators( Source( morphism ) );
+        range_degrees := GeneratorDegrees( Source( morphism ) );
         
         new_degrees := range_degrees - new_degrees;
         
@@ -625,7 +625,7 @@ InstallGlobalFunction( ADD_GRADED_COKERNEL,
         
         range_morphism := Range( morphism );
         
-        new_range := AsGradedLeftPresentation( Range( result ), DegreesOfGenerators( range_morphism ) );
+        new_range := AsGradedLeftPresentation( Range( result ), GeneratorDegrees( range_morphism ) );
         
         return GradedPresentationMorphism( range_morphism, result, new_range );
         
@@ -671,7 +671,7 @@ InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
         
         objects := DirectSum( List( product_object, UnderlyingPresentationObject ) );
         
-        degrees := Concatenation( List( product_object, DegreesOfGenerators ) );
+        degrees := Concatenation( List( product_object, GeneratorDegrees ) );
         
         return AsGradedLeftPresentation( objects, degrees );
         
@@ -823,8 +823,8 @@ InstallGlobalFunction( ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS,
         new_object := TensorProductOnObjects( UnderlyingPresentationObject( object_1 ),
                                               UnderlyingPresentationObject( object_2 ) );
         
-        degrees_1 := DegreesOfGenerators( object_1 );
-        degrees_2 := DegreesOfGenerators( object_2 );
+        degrees_1 := GeneratorDegrees( object_1 );
+        degrees_2 := GeneratorDegrees( object_2 );
         
         new_degrees := [ ];
         

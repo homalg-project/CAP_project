@@ -48,14 +48,14 @@ DeclareCategory( "IsGradedRightPresentation",
 #! over $R$. This object has $M$ as its underlying matrix.
 #! @Returns an object
 #! @Arguments M
-DeclareOperation( "AsGradedLeftPresentation",
-                  [ IsHomalgMatrix ] );
+DeclareAttribute( "AsGradedLeftPresentation",
+                  IsHomalgMatrix );
 
 DeclareOperation( "AsGradedLeftPresentation",
                   [ IsHomalgMatrix, IsList ] );
 
 DeclareAttribute( "AsGradedLeftPresentation",
-                  [ IsLeftPresentation ] );
+                  IsLeftPresentation );
 
 DeclareOperation( "AsGradedLeftPresentation",
                   [ IsLeftPresentation, IsList ] );
@@ -66,14 +66,14 @@ DeclareOperation( "AsGradedLeftPresentation",
 #! over $R$. This object has $M$ as its underlying matrix.
 #! @Returns an object
 #! @Arguments M
-DeclareOperation( "AsGradedRightPresentation",
-                  [ IsHomalgMatrix ] );
+DeclareAttribute( "AsGradedRightPresentation",
+                  IsHomalgMatrix );
 
 DeclareOperation( "AsGradedRightPresentation",
                   [ IsHomalgMatrix, IsList ] );
 
 DeclareAttribute( "AsGradedRightPresentation",
-                  [ IsRightPresentation ] );
+                  IsRightPresentation );
 
 DeclareOperation( "AsGradedRightPresentation",
                   [ IsRightPresentation, IsList ] );
@@ -157,7 +157,7 @@ DeclareAttribute( "UnderlyingHomalgRing",
 #!  weights of the generators of $A$.
 #! @Returns a list
 #! @Arguments A
-DeclareAttribute( "DegreesOfGenerators",
+DeclareAttribute( "GeneratorDegrees",
                   IsGradedLeftOrRightPresentation );
 
 DeclareAttribute( "UnderlyingMatrix",

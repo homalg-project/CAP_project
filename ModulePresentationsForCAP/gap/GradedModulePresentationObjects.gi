@@ -86,7 +86,7 @@ InstallGlobalFunction( AsGradedLeftOrRightPresentationWithDegrees,
     ObjectifyWithAttributes( module, type,
                              UnderlyingPresentation, presentation,
                              UnderlyingHomalgRing, ring,
-                             DegreesOfGenerators, degrees,
+                             GeneratorDegrees, degrees,
                              UnderlyingMatrix, UnderlyingMatrix( presentation ) );
     
     Add( graded_category, module );
