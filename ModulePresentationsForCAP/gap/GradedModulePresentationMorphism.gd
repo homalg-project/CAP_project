@@ -56,7 +56,10 @@ DeclareCategory( "IsGradedRightPresentationMorphism",
 DeclareOperation( "GradedPresentationMorphism",
                   [ IsGradedLeftOrRightPresentation, IsHomalgMatrix, IsGradedLeftOrRightPresentation ] );
 
-DeclareAttribute( "AsGradedLeftPresentationMorphism",
+DeclareOperation( "GradedPresentationMorphism",
+                  [ IsGradedLeftOrRightPresentation, IsLeftOrRightPresentationMorphism, IsGradedLeftOrRightPresentation ] );
+
+DeclareAttribute( "AsGradedPresentationMorphism",
                   IsLeftOrRightPresentationMorphism );
 
 #############################

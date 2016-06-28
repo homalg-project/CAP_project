@@ -9,7 +9,7 @@
 
 ##
 InstallMethod( GradedLeftPresentations,
-               [ IsGradedHomalgRing ],
+               [ IsHomalgGradedRing ],
                
   function( ring )
     local category;
@@ -141,7 +141,7 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_GRADED_ZERO_MORPHISM( category );
     
-    ADD_GRADED_EQUAL_FOR_MORPHISMS_LEFT( category );
+    ADD_GRADED_EQUAL_FOR_MORPHISMS( category );
     
     ADD_GRADED_COKERNEL( category );
     
@@ -198,7 +198,7 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_GRADED_ZERO_MORPHISM( category );
     
-    ADD_GRADED_EQUAL_FOR_MORPHISMS_RIGHT( category );
+    ADD_GRADED_EQUAL_FOR_MORPHISMS( category );
     
     ADD_GRADED_COKERNEL( category );
     
@@ -281,7 +281,7 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_LEFT,
         relation_entries := EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( object ) );
         generator_degrees := GeneratorDegrees( object );
         
-        return CAP_INTERNAL_CHECK_DEGREES_FOR_OBJECTS_WELL_DEFINED( relation_degrees, relation_entries, generator_degrees );
+        return CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_OBJECTS( relation_degrees, relation_entries, generator_degrees );
         
     end );
     
@@ -295,7 +295,7 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_RIGHT,
     AddIsWellDefinedForObjects( category,
       
       function( object )
-        local relation_degrees, generator_degrees, i, j, test_element;
+        local relation_degrees, generator_degrees, relation_entries;
         
         if not IsWellDefined( UnderlyingPresentationObject( object ) ) then
             return false;
@@ -305,13 +305,13 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_RIGHT,
         relation_entries := TransposedMat( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( object ) ) );
         generator_degrees := GeneratorDegrees( object );
         
-        return CAP_INTERNAL_CHECK_DEGREES_FOR_OBJECTS_WELL_DEFINED( relation_degrees, relation_entries, generator_degrees );
+        return CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_OBJECTS( relation_degrees, relation_entries, generator_degrees );
         
     end );
     
 end );
 
-BindGlobal( CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_MORPHISMS,
+BindGlobal( "CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_MORPHISMS",
             
   function( matrix_degrees, matrix_entries, source_degrees, range_degrees )
     local i, j;
@@ -336,13 +336,13 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
     AddIsWellDefinedForMorphisms( category,
       
       function( morphism )
-        local matrix_degrees, source_degrees, range_degrees, i, j;
+        local matrix_degrees, matrix_entries, source_degrees, range_degrees;
         
         if not IsWellDefined( UnderlyingPresentationMorphism( morphism ) ) then
             return false;
         fi;
         
-        matrix_degrees := DegreesOfEntries( UnderlyingMatrix( morphism );
+        matrix_degrees := DegreesOfEntries( UnderlyingMatrix( morphism ) );
         matrix_entries := EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( morphism ) );
         source_degrees := GeneratorDegrees( Source( morphism ) );
         range_degrees := GeneratorDegrees( Range( morphism ) );
@@ -361,13 +361,13 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
     AddIsWellDefinedForMorphisms( category,
       
       function( morphism )
-        local matrix_degrees, source_degrees, range_degrees, i, j;
+        local matrix_degrees, matrix_entries, source_degrees, range_degrees;
         
         if not IsWellDefined( UnderlyingPresentationMorphism( morphism ) ) then
             return false;
         fi;
         
-        matrix_degrees := TransposedMat( DegreesOfEntries( UnderlyingMatrix( morphism ) );
+        matrix_degrees := TransposedMat( DegreesOfEntries( UnderlyingMatrix( morphism ) ) );
         matrix_entries := TransposedMat( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( morphism ) ) );
         source_degrees := GeneratorDegrees( Source( morphism ) );
         range_degrees := GeneratorDegrees( Range( morphism ) );
@@ -415,8 +415,6 @@ InstallGlobalFunction( ADD_GRADED_EQUAL_FOR_OBJECTS,
     
 end );
 
-BindGlobal( 
-
 InstallGlobalFunction( ADD_GRADED_KERNEL_LEFT,
                        
   function( category )
@@ -424,7 +422,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_LEFT,
     AddKernelEmbedding( category,
       
       function( morphism )
-        local underlying_embedding, kernel_object, morphism_entries, morphism_degrees, range_degrees;
+        local underlying_embedding, kernel_object, range_degrees, new_degrees;
         
         underlying_embedding := KernelEmbedding( UnderlyingPresentationMorphism( morphism ) );
         
@@ -478,7 +476,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_RIGHT,
     AddKernelEmbedding( category,
       
       function( morphism )
-        local underlying_embedding, kernel_object, morphism_entries, morphism_degrees, range_degrees;
+        local underlying_embedding, kernel_object, new_degrees, range_degrees;
         
         underlying_embedding := KernelEmbedding( UnderlyingPresentationMorphism( morphism ) );
         
@@ -873,7 +871,7 @@ InstallGlobalFunction( ADD_GRADED_TENSOR_UNIT,
     AddTensorUnit( category,
       
       function( )
-        local unit;
+        local unit, new_degrees;
         
         unit := TensorUnit( underlying_presentation_category );
         new_degrees := [ Zero( DegreeGroup( homalg_ring ) ) ];

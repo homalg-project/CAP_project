@@ -43,9 +43,9 @@ DeclareGlobalFunction( "ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION" );
 
 DeclareGlobalFunction( "ADD_GRADED_KERNEL_LEFT" );
 
-DeclareGlobalFunction( "ADD_GRADED_EQUAL_FOR_MORPHISMS_LEFT" );
-
 DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_LEFT" );
+
+DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_LEFT" );
 
 # DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_LEFT" );
 # 
@@ -62,9 +62,9 @@ DeclareGlobalFunction( "ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
 
 DeclareGlobalFunction( "ADD_GRADED_KERNEL_RIGHT" );
 
-DeclareGlobalFunction( "ADD_GRADED_EQUAL_FOR_MORPHISMS_RIGHT" );
-
 DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT" );
+
+DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_RIGHT" );
 
 # DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_RIGHT" );
 # 
@@ -80,8 +80,6 @@ DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT" );
 DeclareGlobalFunction( "ADD_GRADED_COKERNEL" );
 
 DeclareGlobalFunction( "ADD_GRADED_PRECOMPOSE" );
-
-DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS" );
 
 DeclareGlobalFunction( "ADD_GRADED_EQUAL_FOR_OBJECTS" );
 
@@ -106,3 +104,5 @@ DeclareGlobalFunction( "ADD_GRADED_IDENTITY" );
 DeclareGlobalFunction( "ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS" );
 
 DeclareGlobalFunction( "ADD_GRADED_TENSOR_UNIT" );
+
+DeclareGlobalFunction( "ADD_GRADED_EQUAL_FOR_MORPHISMS" );

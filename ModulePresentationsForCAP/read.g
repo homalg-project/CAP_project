@@ -8,4 +8,10 @@ ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationFunctors.gi");
 
 ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationNaturalTransformations.gi");
 
+ReadPackage( "ModulePresentationsForCAP", "gap/GradedModulePresentations.gi");
+
+ReadPackage( "ModulePresentationsForCAP", "gap/GradedModulePresentationObjects.gi");
+
+ReadPackage( "ModulePresentationsForCAP", "gap/GradedModulePresentationMorphism.gi");
+
 ReadPackage( "ModulePresentationsForCAP", "gap/Tools.gi");

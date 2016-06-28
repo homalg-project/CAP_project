@@ -41,7 +41,7 @@ InstallMethod( GradedPresentationMorphism,
                [ IsGradedLeftOrRightPresentation, IsLeftOrRightPresentationMorphism, IsGradedLeftOrRightPresentation ],
                
   function( source, morphism, range )
-    local graded_morphism;
+    local graded_morphism, left, type;
     
     if not IsIdenticalObj( Source( morphism ), UnderlyingPresentationObject( source ) ) or
        not IsIdenticalObj( Range( morphism ) , UnderlyingPresentationObject( range  ) ) then
@@ -56,7 +56,7 @@ InstallMethod( GradedPresentationMorphism,
       
     fi;
     
-    if not IsIdenticalObj( UnderlyingHomalgRing( source ), UnderlyingHomalgRing( matrix ) ) then
+    if not IsIdenticalObj( UnderlyingHomalgRing( source ), UnderlyingHomalgRing( morphism ) ) then
         
         Error( "matrix can not present a morphism between these objects" );
         

@@ -81,7 +81,8 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=0" ],
-                           [ "CAP", ">=0" ]
+                           [ "CAP", ">=0" ],
+                           [ "GradedRingForHomalg", ">=0" ]
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

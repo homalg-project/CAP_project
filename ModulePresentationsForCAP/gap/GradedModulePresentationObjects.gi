@@ -39,7 +39,7 @@ BindGlobal( "TheTypeOfGradedRightPresentations",
 InstallGlobalFunction( AsGradedLeftOrRightPresentation,
                
   function( presentation )
-    local ring, nr_of_generators;
+    local ring, nr_of_generators, left, degree_list;
     
     ring := UnderlyingHomalgRing( Presentation );
     
@@ -67,7 +67,7 @@ end );
 InstallGlobalFunction( AsGradedLeftOrRightPresentationWithDegrees,
                       
   function( presentation, degrees )
-    local left, module, ring, graded_category;
+    local left, module, ring, graded_category, type;
     
     left := IsLeftPresentation( presentation );
     
@@ -80,11 +80,11 @@ InstallGlobalFunction( AsGradedLeftOrRightPresentationWithDegrees,
         graded_category := GradedLeftPresentations( ring );
     else
         type := TheTypeOfGradedRightPresentations;
-        graded_category = GradedRightPresentations( ring );
+        graded_category := GradedRightPresentations( ring );
     fi;
     
     ObjectifyWithAttributes( module, type,
-                             UnderlyingPresentation, presentation,
+                             UnderlyingPresentationObject, presentation,
                              UnderlyingHomalgRing, ring,
                              GeneratorDegrees, degrees,
                              UnderlyingMatrix, UnderlyingMatrix( presentation ) );
@@ -133,7 +133,7 @@ InstallMethod( AsGradedRightPresentation,
 InstallMethod( AsGradedRightPresentation,
                [ IsRightPresentation ],
                
-  AsGradedGradedLeftOrRightPresentation );
+  AsGradedLeftOrRightPresentation );
 
 ##
 InstallMethod( AsGradedRightPresentation,
@@ -152,7 +152,7 @@ InstallMethod( AsGradedRightPresentation,
 end );
 
 ##
-InstallMethod( FreeGradedLeftPresentation,
+InstallMethod( GradedFreeLeftPresentation,
                [ IsInt, IsHomalgRing ],
                
   function( rank, homalg_ring )
@@ -168,7 +168,7 @@ InstallMethod( FreeGradedLeftPresentation,
 end );
 
 ##
-InstallMethod( FreeGradedRightPresentation,
+InstallMethod( GradedFreeRightPresentation,
                [ IsInt, IsHomalgRing ],
                
   function( rank, homalg_ring )
