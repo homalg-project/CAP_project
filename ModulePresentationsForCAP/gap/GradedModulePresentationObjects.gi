@@ -36,6 +36,39 @@ BindGlobal( "TheTypeOfGradedRightPresentations",
 ##
 #############################
 
+BindGlobal( "CAP_INTERNAL_SANITIZE_DEGREE_LIST",
+  
+  function( degree_list, ring )
+    local degree_group, degree_group_generators, i;
+    
+    degree_group := DegreeGroup( ring );
+    
+    degree_group_generators := GeneratingElements( degree_group );
+    
+    if Length( degree_group_generators ) = 0 then
+        
+        degree_group_generators := [ HomalgModuleElement( [ ], degree_group ) ];
+        
+    fi;
+    
+    for i in [ 1 .. Length( degree_list ) ] do
+        
+        if IsInt( degree_list[ i ] ) then
+            
+            degree_list[ i ] := degree_list[ i ] * degree_group_generators[ 1 ];
+            
+        elif IsList( degree_list[ i ] ) then
+            
+            degree_list[ i ] := HomalgModuleElement( degree_list[ i ], degree_group );
+            
+        fi;
+        
+    od;
+    
+    return degree_list;
+    
+end );
+
 InstallGlobalFunction( AsGradedLeftOrRightPresentation,
                
   function( presentation )
@@ -57,7 +90,7 @@ InstallGlobalFunction( AsGradedLeftOrRightPresentation,
     fi;
     
     ##FIXME: Causes error if degree group is trivial
-    degree_list := Zero( GeneratingElements( DegreeGroup( ring ) )[ 1 ] );
+    degree_list := HomalgModuleElement( List( GeneratingElements( DegreeGroup( ring ) ), i -> [ ] ), DegreeGroup( ring ) );
     degree_list := List( [ 1 .. nr_of_generators ], i -> degree_list );
     
     return AsGradedLeftOrRightPresentationWithDegrees( presentation, degree_list );
@@ -67,7 +100,7 @@ end );
 InstallGlobalFunction( AsGradedLeftOrRightPresentationWithDegrees,
                       
   function( presentation, degrees )
-    local left, module, ring, graded_category, type;
+    local left, module, ring, graded_category, type, nr_of_generators;
     
     left := IsLeftPresentation( presentation );
     
@@ -78,10 +111,18 @@ InstallGlobalFunction( AsGradedLeftOrRightPresentationWithDegrees,
     if left then
         type := TheTypeOfGradedLeftPresentations;
         graded_category := GradedLeftPresentations( ring );
+        nr_of_generators := NrColumns( UnderlyingMatrix( presentation ) );
     else
         type := TheTypeOfGradedRightPresentations;
         graded_category := GradedRightPresentations( ring );
+        nr_of_generators := NrRows( UnderlyingMatrix( presentation ) );
     fi;
+    
+    if nr_of_generators <> Length( degrees ) then
+        Error( "number of degrees do not match number elements" );
+    fi;
+    
+    degrees := CAP_INTERNAL_SANITIZE_DEGREE_LIST( degrees, ring );
     
     ObjectifyWithAttributes( module, type,
                              UnderlyingPresentationObject, presentation,

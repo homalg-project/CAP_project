@@ -83,8 +83,6 @@ DeclareGlobalFunction( "ADD_GRADED_PRECOMPOSE" );
 
 DeclareGlobalFunction( "ADD_GRADED_EQUAL_FOR_OBJECTS" );
 
-DeclareGlobalFunction( "ADD_GRADED_IS_ZERO_FOR_MORPHISMS" );
-
 DeclareGlobalFunction( "ADD_GRADED_ADDITION_FOR_MORPHISMS" );
 
 DeclareGlobalFunction( "ADD_GRADED_ADDITIVE_INVERSE_FOR_MORPHISMS" );

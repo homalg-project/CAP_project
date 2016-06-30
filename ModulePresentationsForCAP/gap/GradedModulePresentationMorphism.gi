@@ -77,6 +77,8 @@ InstallMethod( GradedPresentationMorphism,
                              UnderlyingHomalgRing, UnderlyingHomalgRing( morphism ),
                              UnderlyingMatrix, UnderlyingMatrix( morphism ) );
     
+    Add( CapCategory( source ), graded_morphism );
+    
     return graded_morphism;
     
 end );

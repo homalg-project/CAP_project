@@ -20,6 +20,8 @@ InstallMethod( GradedLeftPresentations,
     
     category!.underlying_presentation_category := LeftPresentations( ring );
     
+    category!.left := true;
+    
     SetIsAbelianCategory( category, true );
     
     if IsCommutative( ring ) then
@@ -72,6 +74,8 @@ InstallMethod( GradedRightPresentations,
     category!.ring_for_representation_category := ring;
     
     category!.underlying_presentation_category := RightPresentations( ring );
+    
+    category!.left := false;
     
     SetIsAbelianCategory( category, true );
     
@@ -137,8 +141,6 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_GRADED_ADDITIVE_INVERSE_FOR_MORPHISMS( category );
     
-    ADD_GRADED_IS_ZERO_FOR_MORPHISMS( category );
-    
     ADD_GRADED_ZERO_MORPHISM( category );
     
     ADD_GRADED_EQUAL_FOR_MORPHISMS( category );
@@ -193,8 +195,6 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_GRADED_ADDITION_FOR_MORPHISMS( category );
     
     ADD_GRADED_ADDITIVE_INVERSE_FOR_MORPHISMS( category );
-    
-    ADD_GRADED_IS_ZERO_FOR_MORPHISMS( category );
     
     ADD_GRADED_ZERO_MORPHISM( category );
     
@@ -252,8 +252,8 @@ BindGlobal( "CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_OBJECTS",
               starting_element := starting_element + 1;
           od;
           test_element := relation_degrees[ i ][ starting_element ] + generator_degrees[ 1 ];
-          for j in [ starting_element + 1 .. Length( i ) ] do
-              if not IsZero( relation_entries[ i ][ j ] ) and  i[ j ] + generator_degrees[ j ] <> test_element then
+          for j in [ starting_element + 1 .. Length( relation_degrees[ i ] ) ] do
+              if not IsZero( relation_entries[ i ][ j ] ) and  relation_degrees[ i ][ j ] + generator_degrees[ j ] <> test_element then
                   return false;
               fi;
           od;
@@ -318,7 +318,7 @@ BindGlobal( "CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_MORPHISMS",
     
     for i in [ 1 .. Length( source_degrees ) ] do
         for j in [ 1 .. Length( range_degrees ) ] do
-            if matrix_degrees[ i ][ j ] + source_degrees[ i ] <> range_degrees[ j ] then
+            if not IsZero( matrix_entries[ i ][ j ] ) and matrix_degrees[ i ][ j ] + range_degrees[ j ] <> source_degrees[ i ] then
                 return false;
             fi;
         od;
@@ -428,11 +428,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_LEFT,
         
         kernel_object := Source( underlying_embedding );
         
-        new_degrees := NonTrivialDegreePerRow( UnderlyingMatrix( underlying_embedding ) );
-        
-        range_degrees := GeneratorDegrees( Source( morphism ) );
-        
-        new_degrees := range_degrees - new_degrees;
+        new_degrees := NonTrivialDegreePerRow( UnderlyingMatrix( underlying_embedding ), GeneratorDegrees( Source( morphism ) ) );
         
         kernel_object := AsGradedLeftPresentation( kernel_object, new_degrees );
         
@@ -482,13 +478,9 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_RIGHT,
         
         kernel_object := Source( underlying_embedding );
         
-        new_degrees := NonTrivialDegreePerColumn( UnderlyingMatrix( underlying_embedding ) );
+        new_degrees := NonTrivialDegreePerColumn( UnderlyingMatrix( underlying_embedding ), GeneratorDegrees( Source( morphism ) ) );
         
-        range_degrees := GeneratorDegrees( Source( morphism ) );
-        
-        new_degrees := range_degrees - new_degrees;
-        
-        kernel_object := AsGradedLeftPresentation( kernel_object, new_degrees );
+        kernel_object := AsGradedRightPresentation( kernel_object, new_degrees );
         
         return GradedPresentationMorphism( kernel_object, underlying_embedding, Source( morphism ) );
         
@@ -610,9 +602,15 @@ end );
 InstallGlobalFunction( ADD_GRADED_COKERNEL,
                        
   function( category )
-    local homalg_ring;
+    local homalg_ring, object_constructor;
     
     homalg_ring := category!.ring_for_representation_category;
+    
+    if category!.left = true then
+        object_constructor := AsGradedLeftPresentation;
+    else
+        object_constructor := AsGradedRightPresentation;
+    fi;
     
     AddCokernelProjection( category,
                      
@@ -623,7 +621,7 @@ InstallGlobalFunction( ADD_GRADED_COKERNEL,
         
         range_morphism := Range( morphism );
         
-        new_range := AsGradedLeftPresentation( Range( result ), GeneratorDegrees( range_morphism ) );
+        new_range := object_constructor( Range( result ), GeneratorDegrees( range_morphism ) );
         
         return GradedPresentationMorphism( range_morphism, result, new_range );
         
@@ -660,7 +658,13 @@ end );
 InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
                        
   function( category )
-    local homalg_ring;
+    local homalg_ring, object_constructor;
+    
+    if category!.left = true then
+        object_constructor := AsGradedLeftPresentation;
+    else
+        object_constructor := AsGradedRightPresentation;
+    fi;
     
     AddDirectSum( category,
                   
@@ -671,7 +675,7 @@ InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
         
         degrees := Concatenation( List( product_object, GeneratorDegrees ) );
         
-        return AsGradedLeftPresentation( objects, degrees );
+        return object_constructor( objects, degrees );
         
     end );
     
@@ -749,9 +753,15 @@ end );
 InstallGlobalFunction( ADD_GRADED_ZERO_OBJECT,
                        
   function( category )
-    local underlying_presentation_category;
+    local underlying_presentation_category, object_constructor;
     
     underlying_presentation_category := category!.underlying_presentation_category;
+    
+    if category!.left = true then
+        object_constructor := AsGradedLeftPresentation;
+    else
+        object_constructor := AsGradedRightPresentation;
+    fi;
     
     AddZeroObject( category,
                    
@@ -760,7 +770,7 @@ InstallGlobalFunction( ADD_GRADED_ZERO_OBJECT,
         
         zero_object := ZeroObject( underlying_presentation_category );
         
-        return AsGradedLeftPresentation( zero_object );
+        return object_constructor( zero_object );
         
     end );
     
@@ -812,6 +822,13 @@ end );
 InstallGlobalFunction( ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS,
                       
   function( category )
+    local object_constructor;
+    
+    if category!.left = true then
+        object_constructor := AsGradedLeftPresentation;
+    else
+        object_constructor := AsGradedRightPresentation;
+    fi;
     
     AddTensorProductOnObjects( category,
       
@@ -832,7 +849,7 @@ InstallGlobalFunction( ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS,
             od;
         od;
         
-        return AsGradedLeftPresentation( new_object, new_degrees );
+        return object_constructor( new_object, new_degrees );
         
     end );
     
@@ -863,10 +880,16 @@ end );
 InstallGlobalFunction( ADD_GRADED_TENSOR_UNIT,
                       
   function( category )
-    local homalg_ring, underlying_presentation_category;
+    local homalg_ring, underlying_presentation_category, object_constructor;
     
     homalg_ring := category!.ring_for_representation_category;
     underlying_presentation_category := category!.underlying_presentation_category;
+    
+    if category!.left = true then
+        object_constructor := AsGradedLeftPresentation;
+    else
+        object_constructor := AsGradedRightPresentation;
+    fi;
     
     AddTensorUnit( category,
       
@@ -876,7 +899,7 @@ InstallGlobalFunction( ADD_GRADED_TENSOR_UNIT,
         unit := TensorUnit( underlying_presentation_category );
         new_degrees := [ Zero( DegreeGroup( homalg_ring ) ) ];
         
-        return AsGradedLeftPresentation( unit, new_degrees );
+        return object_constructor( unit, new_degrees );
         
     end );
     
