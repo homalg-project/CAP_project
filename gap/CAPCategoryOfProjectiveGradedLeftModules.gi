@@ -88,7 +88,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
     # @Description
     # Checks if the given object is well-defined.
     # @Returns true or false
-    # @Arguments object    
+    # @Arguments object
     AddIsWellDefinedForObjects( category,
       function( object )
         local i, A, power;
@@ -215,6 +215,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         # compute the dummy_range_degrees whilst checking at the same time that the mapping is well-defined
         # the only question left after this test is if the range of the well-defined map is really the range
         # specified for the mapping
+
         morphism_matrix_entries := EntriesOfHomalgMatrixAsListList( morphism_matrix );
         dummy_range_degrees := List( [ 1 .. Rank( range ) ] );
         for i in [ 1 .. Rank( range ) ] do
