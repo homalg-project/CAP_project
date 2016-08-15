@@ -8,12 +8,10 @@
 #############################################################################
 
 BindGlobal( "CAP_INTERNAL_degree_zero_monomials",
-  function( degree_matrix, localized_variables )
-    local kernel_of_degree_matrix, kernel_of_degree_matrix_transposed, 
+  function( degree_matrix, kernel_of_degree_matrix, localized_variables )
+    local kernel_of_degree_matrix_transposed, 
           inequalities_list, inequalities_polytope, generating_set, rows,
           generating_set_hilbert, generating_set_linear, monomial_transformation, current_part;
-    
-    kernel_of_degree_matrix := SyzygiesOfRows( degree_matrix );
     
     kernel_of_degree_matrix_transposed := Involution( kernel_of_degree_matrix );
     
@@ -84,15 +82,13 @@ end );
 
 
 BindGlobal( "CAP_INTERNAL_degree_basis",
-  function( degree_matrix, localized_variables, degree )
-    local degree_matrix_list, translation_vector, kernel_of_degree_matrix, kernel_of_degree_matrix_transposed,
+  function( degree_matrix, kernel_of_degree_matrix, localized_variables, degree )
+    local degree_matrix_list, translation_vector, kernel_of_degree_matrix_transposed,
           inequalities_list, rows, inequalities_polytope, generating_set, monomial_transformation;
     
     degree_matrix_list := EntriesOfHomalgMatrixAsListList( degree_matrix );
     
     translation_vector := SolutionIntMat( degree_matrix_list, degree );
-    
-    kernel_of_degree_matrix := SyzygiesOfRows( degree_matrix );
     
     kernel_of_degree_matrix_transposed := Involution( kernel_of_degree_matrix );
     
@@ -334,17 +330,17 @@ BindGlobal( "CAP_INTERNAL_block_matrix_to_matrix",
 end );
 
 BindGlobal( "CAP_INTERNAL_compute_degree_zero_part",
-  function( source_degrees, matrix, range_degrees, ring_degrees, localized_variables )
+  function( source_degrees, matrix, range_degrees, ring_degrees, kernel_of_ring_degrees, localized_variables )
     local degree_zero_part_of_ring, source_module_generators, range_module_generators, homalg_matrix_as_list_list,
           i, j, k, l, polynomial_coeffs, empty_sources, empty_ranges, new_base_ring, current_relation_matrix,
           base_ring_indets, source_modules, source_module, range_modules, range_module, matrix_prototype,
           current_source_generator_map, matrix_mapping;
     
-    degree_zero_part_of_ring := CAP_INTERNAL_degree_zero_monomials( ring_degrees, localized_variables );
+    degree_zero_part_of_ring := CAP_INTERNAL_degree_zero_monomials( ring_degrees, kernel_of_ring_degrees, localized_variables );
     
-    source_module_generators := List( source_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, localized_variables, i ) );
+    source_module_generators := List( source_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, kernel_of_ring_degrees, localized_variables, i ) );
     
-    range_module_generators := List( range_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, localized_variables, i ) );
+    range_module_generators := List( range_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, kernel_of_ring_degrees, localized_variables, i ) );
     
     homalg_matrix_as_list_list := EntriesOfHomalgMatrixAsListList( matrix );
     

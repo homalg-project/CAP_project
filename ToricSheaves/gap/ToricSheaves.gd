@@ -8,4 +8,4 @@
 #############################################################################
 
 DeclareOperation( "CategoryOfToricSheaves",
-                  [ IsGradedRing, IsList ] );
+                  [ IsHomalgGradedRing, IsList ] );
