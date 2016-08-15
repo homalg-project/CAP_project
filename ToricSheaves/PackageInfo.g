@@ -63,7 +63,7 @@ Dependencies := rec(
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
                            [ "PolymakeInterface", ">=0" ],
                            [ "4ti2Interface", ">=0" ] ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [ [ "ToricVarieties", ">=0" ] ],
   ExternalConditions := [ ],
 ),
 

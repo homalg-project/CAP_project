@@ -16,7 +16,7 @@ InstallMethod( CategoryOfToricSheaves,
     
     degree_matrix_list := WeightsOfIndeterminates( graded_ring );
     
-    degree_matrix_list := List( degree_matrix, i -> MatrixOfMap( UnderlyingMorphism( i ) ) );
+    degree_matrix_list := List( degree_matrix_list, i -> MatrixOfMap( UnderlyingMorphism( i ) ) );
     
     if degree_matrix_list = [ ] then
         Error( "ring has no indeterminates" );
@@ -74,7 +74,7 @@ InstallMethod( CategoryOfToricSheaves,
     
     presentation_category := GradedLeftPresentations( graded_ring );
     
-    serre_quotient_category := SerreQuotientCategory( presentation_category, test_function, Concatenation( "Toric sheaves over ", RingName( graded_ring ) ) );
+    serre_quotient_category := SerreQuotientCategoryByThreeArrows( presentation_category, test_function, Concatenation( "Toric sheaves over ", RingName( graded_ring ) ) );
     
     return serre_quotient_category;
     
