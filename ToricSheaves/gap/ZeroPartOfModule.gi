@@ -239,7 +239,7 @@ BindGlobal( "CAP_INTERNAL_get_image_of_generator",
   function( generator, homalg_ring_element )
     local element_exponents;
     
-    element_exponents := CommonHomalgTableForSingularTools.PolynomialExponents( homalg_ring_element );
+    element_exponents := CommonHomalgTableForSingularTools.PolynomialExponents( UnderlyingNonGradedRingElement( homalg_ring_element ) );
     
     return List( element_exponents, i -> i + generator );
     
@@ -317,7 +317,7 @@ BindGlobal( "CAP_INTERNAL_block_matrix_to_matrix",
         for j in [ 1 .. current_row_cols ] do
             current_single_row := [ ];
             for k in [ 1 .. current_row_lenth ] do
-                Append( current_single_row, current_row[ j ][ k ] );
+                Append( current_single_row, current_row[ k ][ j ] );
             od;
             Add( resulting_mat, current_single_row );
             
@@ -418,7 +418,7 @@ BindGlobal( "CAP_INTERNAL_compute_degree_zero_part",
     
     polynomial_coeffs := EntriesOfHomalgMatrixAsListList( matrix );
     
-    polynomial_coeffs := List( polynomial_coeffs, i -> List( i, j -> SplitString( CommonHomalgTableForSingularTools.PolynomialCoefficients( j ), "," ) ) );
+    polynomial_coeffs := List( polynomial_coeffs, i -> List( i, j -> SplitString( CommonHomalgTableForSingularTools.PolynomialCoefficients( UnderlyingNonGradedRingElement( j ) ), "," ) ) );
     
     for i in [ 1 .. NrRows( matrix ) ] do
         for j in [ 1 .. NrColumns( matrix ) ] do

@@ -41,15 +41,33 @@ InstallMethod( CategoryOfToricSheaves,
         kernel_of_degree_map := MatrixOfMap( KernelEmb( module_map ) );
         
         test_function := function( module )
-            local module_matrix, source_degrees, range_degrees, current_module, current_generator;
+            local module_matrix, source_degrees, range_degrees, current_module, current_generator, matrix_list;
             
             range_degrees := GeneratorDegrees( module );
             
             module_matrix := UnderlyingMatrix( module );
             
-            source_degrees := NonTrivialDegreePerRow( module_matrix );
+            degree_positions := PositionOfFirstNonZeroEntryPerColumn( module_matrix );
             
-            source_degrees := range_degrees - source_degrees;
+            ## FIX THIS PART!!
+            if ForAny( degree_positions, i -> i = 0 ) then
+                ## Modules with free parts never sheafify to zero
+                return false;
+            fi;
+            
+            non_trivial_degrees := NonTrivialDegreePerRow( module_matrix );
+            degree_positions := PositionOfFirstNonZeroEntryPerRow( module_matrix );
+            
+            source_degrees := [ ];
+            
+            for i in [ 1 .. Length( degree_positions ) ] do
+                if i = -1 then
+                    Error( "something went wrong" );
+                fi;
+                
+                source_degrees[ i ] := range_degrees[ degree_positions[ i ] ] - non_trivial_degrees[ i ];
+                
+            od;
             
             range_degrees := List( range_degrees, i -> EntriesOfHomalgMatrixAsListList( MatrixOfMap( UnderlyingMorphism( i ) ) )[ 1 ] );
             
