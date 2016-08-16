@@ -74,7 +74,7 @@ InstallGlobalFunction( AsGradedLeftOrRightPresentation,
   function( presentation )
     local ring, nr_of_generators, left, degree_list;
     
-    ring := UnderlyingHomalgRing( Presentation );
+    ring := UnderlyingHomalgRing( presentation );
     
     if not IsHomalgGradedRing( ring ) then
         Error( "input must be a representation or matrix over a graded ring" );
@@ -90,7 +90,7 @@ InstallGlobalFunction( AsGradedLeftOrRightPresentation,
     fi;
     
     ##FIXME: Causes error if degree group is trivial
-    degree_list := HomalgModuleElement( List( GeneratingElements( DegreeGroup( ring ) ), i -> [ ] ), DegreeGroup( ring ) );
+    degree_list := HomalgModuleElement( List( GeneratingElements( DegreeGroup( ring ) ), i -> 0 ), DegreeGroup( ring ) );
     degree_list := List( [ 1 .. nr_of_generators ], i -> degree_list );
     
     return AsGradedLeftOrRightPresentationWithDegrees( presentation, degree_list );

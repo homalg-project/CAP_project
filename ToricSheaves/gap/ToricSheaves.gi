@@ -12,7 +12,8 @@ InstallMethod( CategoryOfToricSheaves,
                
   function( graded_ring, irrelevant_ideal_generators )
     local degree_matrix_list, degree_matrix, i, degree_matrix_as_list_list, test_function,
-          presentation_category, serre_quotient_category, module_map, kernel_of_degree_map;
+          presentation_category, serre_quotient_category, module_map, kernel_of_degree_map,
+          degree_positions, non_trivial_degrees;
     
     degree_matrix_list := WeightsOfIndeterminates( graded_ring );
     
@@ -65,7 +66,7 @@ InstallMethod( CategoryOfToricSheaves,
                     Error( "something went wrong" );
                 fi;
                 
-                source_degrees[ i ] := range_degrees[ degree_positions[ i ] ] - non_trivial_degrees[ i ];
+                source_degrees[ i ] := range_degrees[ degree_positions[ i ] ] + non_trivial_degrees[ i ];
                 
             od;
             

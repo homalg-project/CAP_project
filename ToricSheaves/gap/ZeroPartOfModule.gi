@@ -265,6 +265,14 @@ BindGlobal( "CAP_INTERNAL_result_of_generator",
             
             for i in [ 1 .. Length( new_generators ) ] do
                 
+                ## Unfortunately, there is a bug in 4ti2, not displaying 0 as a solution if
+                ## it is the only solution present. We are nevertheless going to prefer this solution.
+                
+                if ForAll( current_monomial - new_generators[ i ], i -> i = 0 ) then
+                    Add( collected_vectors, [ i, 0 ] );
+                    break;
+                fi;
+                
                 current_solution := 4ti2Interface_zsolve_equalities_and_inequalities(
                                         base_ring_generators_transposed, current_monomial - new_generators[ i ],
                                         inequality_matrix_list, inequality_matrix_list_rhs );
@@ -338,9 +346,9 @@ BindGlobal( "CAP_INTERNAL_compute_degree_zero_part",
     
     degree_zero_part_of_ring := CAP_INTERNAL_degree_zero_monomials( ring_degrees, kernel_of_ring_degrees, localized_variables );
     
-    source_module_generators := List( source_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, kernel_of_ring_degrees, localized_variables, i ) );
+    source_module_generators := List( source_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, kernel_of_ring_degrees, localized_variables, -i ) );
     
-    range_module_generators := List( range_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, kernel_of_ring_degrees, localized_variables, i ) );
+    range_module_generators := List( range_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, kernel_of_ring_degrees, localized_variables, -i ) );
     
     homalg_matrix_as_list_list := EntriesOfHomalgMatrixAsListList( matrix );
     
