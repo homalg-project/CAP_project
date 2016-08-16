@@ -32,6 +32,6 @@ InstallMethod( CategoryOfToricSheaves,
         Add( irrelevant_ideal_generators, current_generator );
     od;
     
-    return CategoryOfToricSheaves( cox_ring, irrelevant_ideal_generators );
+    return CategoryOfToricSheaves( cox_ring, irrelevant_ideal_generators, IsSmooth( variety ) );
     
 end );

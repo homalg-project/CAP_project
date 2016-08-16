@@ -11,6 +11,15 @@ InstallMethod( CategoryOfToricSheaves,
                [ IsHomalgGradedRing, IsList ],
                
   function( graded_ring, irrelevant_ideal_generators )
+    
+    return CategoryOfToricSheaves( graded_ring, irrelevant_ideal_generators, false );
+    
+end );
+
+InstallMethod( CategoryOfToricSheaves,
+               [ IsHomalgGradedRing, IsList, IsBool ],
+               
+  function( graded_ring, irrelevant_ideal_generators, comes_from_smooth_variety )
     local degree_matrix_list, degree_matrix, i, degree_matrix_as_list_list, test_function,
           presentation_category, serre_quotient_category, module_map, kernel_of_degree_map,
           degree_positions, non_trivial_degrees;
@@ -31,7 +40,7 @@ InstallMethod( CategoryOfToricSheaves,
     
     degree_matrix_as_list_list := EntriesOfHomalgMatrixAsListList( degree_matrix );
     
-    if IsFree( DegreeGroup( graded_ring ) ) and ForAll( degree_matrix_as_list_list, i -> ForAll( i, j -> j >= 0 ) ) then
+    if IsFree( DegreeGroup( graded_ring ) ) and ForAll( degree_matrix_as_list_list, i -> ForAll( i, j -> j >= 0 ) ) and comes_from_smooth_variety then
         
         test_function := module -> IsZero( HilbertPolynomial( UnderlyingMatrixOverNonGradedRing( UnderlyingMatrix( module ) ) ) );
         
@@ -89,7 +98,7 @@ InstallMethod( CategoryOfToricSheaves,
             
         end;
         
-    fi;
+#     fi;
     
     presentation_category := GradedLeftPresentations( graded_ring );
     

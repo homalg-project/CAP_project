@@ -9,3 +9,6 @@
 
 DeclareOperation( "CategoryOfToricSheaves",
                   [ IsHomalgGradedRing, IsList ] );
+
+DeclareOperation( "CategoryOfToricSheaves",
+                  [ IsHomalgGradedRing, IsList, IsBool ] );
