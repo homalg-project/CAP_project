@@ -25,7 +25,7 @@ InstallMethod( CategoryOfToricSheaves,
     for i in rays_in_maximal_cones do
         current_generator :=  [ ];
         for j in [ 1 .. Length( i ) ] do
-            if i[ j ] = 1 then
+            if i[ j ] = 0 then
                 Add( current_generator, j );
             fi;
         od;

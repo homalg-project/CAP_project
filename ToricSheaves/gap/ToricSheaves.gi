@@ -98,7 +98,7 @@ InstallMethod( CategoryOfToricSheaves,
             
         end;
         
-#     fi;
+    fi;
     
     presentation_category := GradedLeftPresentations( graded_ring );
     

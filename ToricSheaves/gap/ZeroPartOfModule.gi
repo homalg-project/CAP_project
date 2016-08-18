@@ -50,7 +50,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
   function( generating_monomials )
-    local monomials, relations, indet_string, ring, indeterminates;
+    local monomials, relations, indet_string, ring, indeterminates, i, j;
     
     monomials := generating_monomials;
     
@@ -70,7 +70,21 @@ BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
         
         indeterminates := Indeterminates( ring );
         
-        relations := List( relations, i -> Product( [ 1 .. Length( i ) ], j -> indeterminates[ j ]^i[ j ] ) );
+        for i in [ 1 .. Length( relations ) ] do
+            
+            for j in [ 1 .. Length( indeterminates ) ] do
+                
+                if relations[ i ][ j ] = 0 then
+                    relations[ i ][ j ] := indeterminates[ j ]^0;
+                else
+                    relations[ i ][ j ] := Product( [ 1 .. relations[ i ][ j ] ], k -> indeterminates[ j ] );
+                fi;
+                
+            od;
+            
+            relations[ i ] := Product( relations[ i ] );
+            
+        od;
         
         return ring/relations;
         
@@ -148,9 +162,9 @@ BindGlobal( "CAP_INTERNAL_degree_part_relations",
             
             intersection_lattice_points_generators := POLYMAKE_LATTICE_POINTS_GENERATORS( intersection_polytope )[ 1 ];
             
-            if Length( intersection_lattice_points_generators ) > 1 then
-                Error( "something went wrong: Too many lattice points in intersection" );
-            fi;
+#             if Length( intersection_lattice_points_generators ) > 1 then
+#                 Error( "something went wrong: Too many lattice points in intersection" );
+#             fi;
             
             if intersection_lattice_points_generators = [ ] then
                 continue;
