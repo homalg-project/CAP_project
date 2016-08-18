@@ -50,7 +50,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
   function( generating_monomials )
-    local monomials, relations, indet_string, ring, indeterminates, i, j;
+    local monomials, relations, indet_string, ring, indeterminates, i, j, left_side, right_side;
     
     monomials := generating_monomials;
     
@@ -72,17 +72,20 @@ BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
         
         for i in [ 1 .. Length( relations ) ] do
             
+            left_side := indeterminates[ 1 ]^0;
+            right_side := indeterminates[ 1 ]^0;
+            
             for j in [ 1 .. Length( indeterminates ) ] do
                 
-                if relations[ i ][ j ] = 0 then
-                    relations[ i ][ j ] := indeterminates[ j ]^0;
-                else
-                    relations[ i ][ j ] := Product( [ 1 .. relations[ i ][ j ] ], k -> indeterminates[ j ] );
+                if relations[ i ][ j ] > 0 then
+                    left_side := left_side*indeterminates[ j ]^relations[ i ][ j ];
+                elif relations[ i ][ j ] < 0 then
+                    right_side := left_side*indeterminates[ j ]^( - relations[ i ][ j ] );
                 fi;
                 
             od;
             
-            relations[ i ] := Product( relations[ i ] );
+            relations[ i ] := left_side - right_side;
             
         od;
         
