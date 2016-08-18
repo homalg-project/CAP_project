@@ -30,13 +30,19 @@ DeclareCategory( "IsSemisimpleCategoryObject",
 #! @Description
 #! @Returns an object
 #! @Arguments L
-DeclareOperation( "SemisimpleCategoryObject", [ IsList ] );
+DeclareOperation( "SemisimpleCategoryObject", [ IsList, IsCapCategory ] );
+
+##
+DeclareOperation( "NormalizeSemisimpleCategoryObjectList", [ IsList, IsCapCategory ] );
 
 ####################################
 ##
 #! @Section Attributes
 ##
 ####################################
+
+DeclareAttribute( "SemisimpleObjectList",
+                  IsSemisimpleCategoryObject );
 
 #! @Description
 #! The argument is an object $A$ in a semisimple category.

@@ -24,3 +24,77 @@ BindGlobal( "TheFamilyOfSemisimpleCategoryObjects",
 BindGlobal( "TheTypeOfSemisimpleCategoryObjects",
         NewType( TheFamilyOfSemisimpleCategoryObjects,
                 IsSemisimpleCategoryObjectRep ) );
+
+####################################
+##
+## Constructors
+##
+####################################
+
+##
+InstallMethod( SemisimpleCategoryObject,
+               [ IsList, IsCapCategory ],
+               
+  function( semisimple_object_list, category )
+    local semisimple_category_object, normalized_semisimple_object_list;
+    
+    semisimple_category_object := rec( );
+    
+    normalized_semisimple_object_list := NormalizeSemisimpleCategoryObjectList( semisimple_object_list, category );
+    
+    ObjectifyWithAttributes( semisimple_category_object, TheTypeOfSemisimpleCategoryObjects,
+                             SemisimpleObjectList, normalized_semisimple_object_list
+    );
+
+    Add( category, semisimple_category_object );
+    
+    return semisimple_category_object;
+    
+end );
+
+##
+InstallMethod( NormalizeSemisimpleCategoryObjectList,
+               [ IsList, IsCapCategory ],
+               
+  function( semisimple_object_list, category )
+    local sort_function, equality_function, result_list, multiplicity, j, irreducible_object, size, i;
+    
+    sort_function := function( a, b ) return LowerEqualFunctionForSemisimpleCategory( category )( a[2], b[2] ); end;
+    
+    equality_function := EqualityFunctionForSemisimpleCategory( category );
+    
+    Sort( semisimple_object_list, sort_function );
+    
+    size := Size( semisimple_object_list );
+    
+    result_list := [ ];
+    
+    for i in [ 1 .. size ] do
+        
+        irreducible_object := semisimple_object_list[i][2];
+        
+        multiplicity := semisimple_object_list[i][1];
+        
+        j := i + 1;
+        
+        while ( j <= size ) and ( equality_function( semisimple_object_list[j][2], irreducible_object ) ) do
+            
+            multiplicity := multiplicity + semisimple_object_list[j][1];
+            
+        od; 
+        
+        Add( result_list, [ multiplicity, irreducible_object ] );
+        
+        i := j;
+        
+    od;
+    
+    return result_list;
+    
+end );
+
+####################################
+##
+## View
+##
+####################################

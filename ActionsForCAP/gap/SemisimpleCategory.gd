@@ -17,11 +17,11 @@
 
 ##
 DeclareOperation( "SemisimpleCategory",
-                  [ IsFieldForHomalg, IsFunction, IsFunction, IsString ] );
+                  [ IsFieldForHomalg, IsFunction, IsFunction, IsFunction, IsString ] );
 
 ##
 DeclareOperation( "SemisimpleCategory",
-                  [ IsFieldForHomalg, IsFunction, IsFunction ] );
+                  [ IsFieldForHomalg, IsFunction, IsFunction, IsFunction ] );
 
 ####################################
 ##
@@ -32,9 +32,11 @@ DeclareOperation( "SemisimpleCategory",
 ##
 DeclareAttribute( "MembershipFunctionForSemisimpleCategory",
                   IsCapCategory );
-
 ##
 DeclareAttribute( "LowerEqualFunctionForSemisimpleCategory",
+                  IsCapCategory );
+##
+DeclareAttribute( "EqualityFunctionForSemisimpleCategory",
                   IsCapCategory );
 ##
 DeclareAttribute( "UnderlyingCategoryForSemisimpleCategory",

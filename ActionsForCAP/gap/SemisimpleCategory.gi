@@ -28,23 +28,25 @@ end );
 ##
 ####################################
 
+##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction, IsFunction ],
+               [ IsFieldForHomalg, IsFunction, IsFunction, IsFunction ],
                
-  function( homalg_field, membership_function, lower_equal_function )
+  function( homalg_field, membership_function, lower_equal_function, equality_function )
     local name;
     
     name := NameFunction( membership_function );
     
     return SemisimpleCategory( 
-             homalg_field, membership_function, lower_equal_function, Concatenation( "membership function ", name ) );
+             homalg_field, membership_function, lower_equal_function, equality_function, Concatenation( "membership function ", name ) );
     
 end );
 
+##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction, IsFunction, IsString ],
+               [ IsFieldForHomalg, IsFunction, IsFunction, IsFunction, IsString ],
                
-  function( homalg_field, membership_function, lower_equal_function, membership_function_name )
+  function( homalg_field, membership_function, lower_equal_function, equality_function, membership_function_name )
     local name, semisimple_category, underlying_category;
     
     underlying_category := MatrixCategory( homalg_field );
@@ -61,6 +63,8 @@ InstallMethod( SemisimpleCategory,
     SetMembershipFunctionForSemisimpleCategory( semisimple_category, membership_function );
     
     SetLowerEqualFunctionForSemisimpleCategory( semisimple_category, lower_equal_function );
+    
+    SetEqualityFunctionForSemisimpleCategory( semisimple_category, equality_function );
     
     CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY( semisimple_category );
     
