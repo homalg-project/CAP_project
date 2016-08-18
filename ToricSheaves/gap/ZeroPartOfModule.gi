@@ -80,7 +80,7 @@ BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
                 if relations[ i ][ j ] > 0 then
                     left_side := left_side*indeterminates[ j ]^relations[ i ][ j ];
                 elif relations[ i ][ j ] < 0 then
-                    right_side := left_side*indeterminates[ j ]^( - relations[ i ][ j ] );
+                    right_side := right_side*indeterminates[ j ]^( - relations[ i ][ j ] );
                 fi;
                 
             od;
