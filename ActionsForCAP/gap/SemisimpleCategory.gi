@@ -29,37 +29,25 @@ end );
 ####################################
 
 InstallMethod( SemisimpleCategory,
-               [ IsCapCategory, IsFunction, IsFunction ],
+               [ IsFieldForHomalg, IsFunction, IsFunction ],
                
-  function( underlying_category, membership_function, lower_equal_function )
+  function( homalg_field, membership_function, lower_equal_function )
     local name;
     
     name := NameFunction( membership_function );
     
     return SemisimpleCategory( 
-             underlying_category, membership_function, lower_equal_function, Concatenation( "membership function ", name ) );
+             homalg_field, membership_function, lower_equal_function, Concatenation( "membership function ", name ) );
     
 end );
 
 InstallMethod( SemisimpleCategory,
-               [ IsCapCategory, IsFunction, IsFunction, IsString ],
+               [ IsFieldForHomalg, IsFunction, IsFunction, IsString ],
                
-  function( underlying_category, membership_function, lower_equal_function, membership_function_name )
-    local name, semisimple_category;
+  function( homalg_field, membership_function, lower_equal_function, membership_function_name )
+    local name, semisimple_category, underlying_category;
     
-    if not HasIsFinalized( underlying_category ) or not IsFinalized( underlying_category ) then
-        
-        Error( "the underlying category must be finalized" );
-        return;
-        
-    fi;
-    
-    if not HasIsAdditiveCategory( underlying_category ) or not IsAdditiveCategory( underlying_category ) then
-        
-        Error( "the underlying category must be additive" );
-        return;
-        
-    fi;
+    underlying_category := MatrixCategory( homalg_field );
     
     name := Name( underlying_category );
     

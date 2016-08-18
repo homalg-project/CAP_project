@@ -15,11 +15,13 @@
 ##
 ####################################
 
+##
 DeclareOperation( "SemisimpleCategory",
-                  [ IsCapCategory, IsFunction, IsFunction, IsString ] );
+                  [ IsFieldForHomalg, IsFunction, IsFunction, IsString ] );
 
+##
 DeclareOperation( "SemisimpleCategory",
-                  [ IsCapCategory, IsFunction, IsFunction ] );
+                  [ IsFieldForHomalg, IsFunction, IsFunction ] );
 
 ####################################
 ##
@@ -27,13 +29,14 @@ DeclareOperation( "SemisimpleCategory",
 ##
 ####################################
 
+##
 DeclareAttribute( "MembershipFunctionForSemisimpleCategory",
                   IsCapCategory );
 
+##
 DeclareAttribute( "LowerEqualFunctionForSemisimpleCategory",
                   IsCapCategory );
-
-
+##
 DeclareAttribute( "UnderlyingCategoryForSemisimpleCategory",
                   IsCapCategory );
 
@@ -43,4 +46,5 @@ DeclareAttribute( "UnderlyingCategoryForSemisimpleCategory",
 ##
 ####################################
 
+##
 DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY" );

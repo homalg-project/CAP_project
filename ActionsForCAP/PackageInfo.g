@@ -81,7 +81,8 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2015.08.17" ] ],
+                           [ "CAP", ">= 2015.08.17" ],
+                           [ "LinearAlgebraForCAP", ">=2015.12.03" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),

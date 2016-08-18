@@ -20,3 +20,27 @@
 #! @Arguments object
 DeclareCategory( "IsSemisimpleCategoryObject",
                  IsCapCategoryObject );
+
+####################################
+##
+#! @Section Constructors
+##
+####################################
+
+#! @Description
+#! @Returns an object
+#! @Arguments L
+DeclareOperation( "SemisimpleCategoryObject", [ IsList ] );
+
+####################################
+##
+#! @Section Attributes
+##
+####################################
+
+#! @Description
+#! The argument is an object $A$ in a semisimple category.
+#! @Returns a list
+#! @Arguments A
+DeclareAttribute( "Support",
+                  IsSemisimpleCategoryObject );
