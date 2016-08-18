@@ -16,10 +16,10 @@
 ####################################
 
 DeclareOperation( "SemisimpleCategory",
-                  [ IsCapCategory, IsFunction, IsString ] );
+                  [ IsCapCategory, IsFunction, IsFunction, IsString ] );
 
 DeclareOperation( "SemisimpleCategory",
-                  [ IsCapCategory, IsFunction ] );
+                  [ IsCapCategory, IsFunction, IsFunction ] );
 
 ####################################
 ##
@@ -29,6 +29,10 @@ DeclareOperation( "SemisimpleCategory",
 
 DeclareAttribute( "MembershipFunctionForSemisimpleCategory",
                   IsCapCategory );
+
+DeclareAttribute( "LowerEqualFunctionForSemisimpleCategory",
+                  IsCapCategory );
+
 
 DeclareAttribute( "UnderlyingCategoryForSemisimpleCategory",
                   IsCapCategory );

@@ -17,4 +17,8 @@ ReadPackage( "ActionsForCAP", "gap/ActionsCategory.gi" );
 
 ReadPackage( "ActionsForCAP", "gap/CoactionsCategory.gi" );
 
+ReadPackage( "ActionsForCAP", "gap/SemisimpleCategoryObjects.gi" );
+
+ReadPackage( "ActionsForCAP", "gap/SemisimpleCategoryMorphisms.gi" );
+
 ReadPackage( "ActionsForCAP", "gap/SemisimpleCategory.gi" );

@@ -29,22 +29,22 @@ end );
 ####################################
 
 InstallMethod( SemisimpleCategory,
-               [ IsCapCategory, IsFunction ],
+               [ IsCapCategory, IsFunction, IsFunction ],
                
-  function( underlying_category, membership_function )
+  function( underlying_category, membership_function, lower_equal_function )
     local name;
     
     name := NameFunction( membership_function );
     
     return SemisimpleCategory( 
-             underlying_category, membership_function, Concatenation( "membership function ", name ) );
+             underlying_category, membership_function, lower_equal_function, Concatenation( "membership function ", name ) );
     
 end );
 
 InstallMethod( SemisimpleCategory,
-               [ IsCapCategory, IsFunction, IsString ],
+               [ IsCapCategory, IsFunction, IsFunction, IsString ],
                
-  function( underlying_category, membership_function, membership_function_name )
+  function( underlying_category, membership_function, lower_equal_function, membership_function_name )
     local name, semisimple_category;
     
     if not HasIsFinalized( underlying_category ) or not IsFinalized( underlying_category ) then
@@ -71,6 +71,8 @@ InstallMethod( SemisimpleCategory,
     SetUnderlyingCategoryForSemisimpleCategory( semisimple_category, underlying_category );
     
     SetMembershipFunctionForSemisimpleCategory( semisimple_category, membership_function );
+    
+    SetLowerEqualFunctionForSemisimpleCategory( semisimple_category, lower_equal_function );
     
     CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY( semisimple_category );
     
