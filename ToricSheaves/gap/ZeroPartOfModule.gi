@@ -210,20 +210,21 @@ BindGlobal( "CAP_INTERNAL_hom_part_relations",
     ring_indets := Indeterminates( new_base_ring );
     
     for i in [ 1 .. Length( relation_matrix ) ] do
+        
+        current_vector := ListWithIdenticalEntries( Length( relation_matrix ), 0 );
+        
         for j in [ 1 .. Length( relation_matrix[ i ] ) ] do
             
             if relation_matrix[ i ][ j ] = 0 then
                 continue;
             fi;
-
-            current_vector := ListWithIdenticalEntries( Length( relation_matrix ), 0 );
             
             current_vector[ i ] := Product( [ 1 .. Length( ring_indets ) ], k -> ring_indets[ k ]^relation_matrix[ i ][ j ][ k ] );
             current_vector[ j ] := - Product( [ 1 .. Length( ring_indets ) ], k -> ring_indets[ k ]^relation_matrix[ i ][ j ][ k ] );
             
-            Append( relation_matrix_vectors, current_vector );
-            
         od;
+        
+        Append( relation_matrix_vectors, current_vector );
     od;
     
     
@@ -233,7 +234,7 @@ BindGlobal( "CAP_INTERNAL_hom_part_relations",
         
     fi;
     
-    return HomalgMatrix( relation_matrix_vectors, Length( relation_matrix_vectors ), Length( relation_matrix ), new_base_ring );
+    return HomalgMatrix( relation_matrix_vectors, Length( relation_matrix ), Length( relation_matrix[ 1 ] ), new_base_ring );
     
 end );
 
