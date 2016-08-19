@@ -137,11 +137,12 @@ BindGlobal( "CAP_INTERNAL_degree_part_relations",
   function( degree_zero_generating_set, degree_basis_elements )
     local homogeneous_cone_basis, relation_point_matrix,
           polytope_i, polytope_j, intersection_polytope, intersection_lattice_points_generators, i, j, monomial_solution,
-          transposed_degree_zero_generating_set, positive_orthant_inequalities, positive_orthant_inequalities_rhs;
+          transposed_degree_zero_generating_set, positive_orthant_inequalities, positive_orthant_inequalities_rhs, current_vector,
+          current_intersected_point;
     
     homogeneous_cone_basis := List( degree_zero_generating_set, i -> Concatenation( [ 0 ], i ) );
     
-    relation_point_matrix := List( [ 1 .. Length( degree_basis_elements ) ], i -> List( [ 1 .. Length( degree_basis_elements ) ], j -> fail ) );
+    relation_point_matrix := [ ];
     
     if degree_zero_generating_set = [ ] then
         return relation_point_matrix;
@@ -173,21 +174,27 @@ BindGlobal( "CAP_INTERNAL_degree_part_relations",
                 continue;
             fi;
             
-            relation_point_matrix[ i ][ j ] := intersection_lattice_points_generators[ 1 ];
-            relation_point_matrix[ i ][ j ] := relation_point_matrix[ i ][ j ]{[ 2 .. Length( relation_point_matrix[ i ][ j ] ) ]};
-            
-            monomial_solution := 4ti2Interface_zsolve_equalities_and_inequalities(
-                                     transposed_degree_zero_generating_set, relation_point_matrix[ i ][ j ] - degree_basis_elements[ j ],
-                                     positive_orthant_inequalities, positive_orthant_inequalities_rhs );
-            
-            relation_point_matrix[ j ][ i ] := monomial_solution[ 1 ][ 1 ];
-            
-            monomial_solution := 4ti2Interface_zsolve_equalities_and_inequalities( 
-                                     transposed_degree_zero_generating_set, relation_point_matrix[ i ][ j ] - degree_basis_elements[ i ], 
-                                     positive_orthant_inequalities, positive_orthant_inequalities_rhs );
-            
-            relation_point_matrix[ i ][ j ] := monomial_solution[ 1 ][ 1 ];
-            
+            for current_intersected_point in intersection_lattice_points_generators do
+                
+                current_vector := ListWithIdenticalEntries( Length( degree_basis_elements ), 0 );
+                
+                current_intersected_point := current_intersected_point{[ 2 .. Length( current_intersected_point ) ]};
+                
+                monomial_solution := 4ti2Interface_zsolve_equalities_and_inequalities(
+                                        transposed_degree_zero_generating_set, current_intersected_point - degree_basis_elements[ j ],
+                                        positive_orthant_inequalities, positive_orthant_inequalities_rhs );
+                
+                current_vector[ i ] := monomial_solution[ 1 ][ 1 ];
+                
+                monomial_solution := 4ti2Interface_zsolve_equalities_and_inequalities( 
+                                        transposed_degree_zero_generating_set, current_intersected_point - degree_basis_elements[ i ], 
+                                        positive_orthant_inequalities, positive_orthant_inequalities_rhs );
+                
+                current_vector[ j ] := monomial_solution[ 1 ][ 1 ];
+                
+                Add( relation_point_matrix, current_vector );
+                
+            od;
         od;
     od;
     
@@ -195,39 +202,17 @@ BindGlobal( "CAP_INTERNAL_degree_part_relations",
     
 end );
 
-BindGlobal( "CAP_INTERNAL_construct_ring_relation_matrix",
-  function( new_base_ring, relation_matrix )
-    local ring_indets, i, j;
-    
-    ring_indets := Indeterminates( new_base_ring );
-    
-    for i in [ 1 .. Length( relation_matrix ) ] do
-        for j in [ 1 .. Length( relation_matrix[ 1 ] ) ] do
-            if relation_matrix[ i ][ j ] = 0 then
-                continue;
-            fi;
-            relation_matrix[ i ][ j ] := Product( [ 1 .. Length( ring_indets ) ], k -> ring_indets[ k ]^relation_matrix[ i ][ j ][ k ] );
-            if i > j then
-                relation_matrix[ i ][ j ] := - relation_matrix[ i ][ j ];
-            fi;
-        od;
-    od;
-    
-    return HomalgMatrix( relation_matrix, new_base_ring );
-    
-end );
-
 BindGlobal( "CAP_INTERNAL_hom_part_relations",
-  function( relation_matrix, new_base_ring )
+  function( module_generators, relation_matrix, new_base_ring )
     local relation_matrix_vectors, i, j, current_vector, ring_indets;
     
     relation_matrix_vectors := [ ];
     ring_indets := Indeterminates( new_base_ring );
     
     for i in [ 1 .. Length( relation_matrix ) ] do
-        for j in [ i + 1 .. Length( relation_matrix ) ] do
+        for j in [ 1 .. Length( relation_matrix[ i ] ) ] do
             
-            if relation_matrix[ i ][ j ] = fail then
+            if relation_matrix[ i ][ j ] = 0 then
                 continue;
             fi;
 
@@ -244,7 +229,7 @@ BindGlobal( "CAP_INTERNAL_hom_part_relations",
     
     if relation_matrix_vectors = [ ] then
         
-        return HomalgZeroMatrix( 0, Length( relation_matrix ), new_base_ring );
+        return HomalgZeroMatrix( 0, Length( module_generators ), new_base_ring );
         
     fi;
     
@@ -421,7 +406,7 @@ BindGlobal( "CAP_INTERNAL_compute_degree_zero_part",
         
         current_relation_matrix := CAP_INTERNAL_degree_part_relations( degree_zero_part_of_ring, source_module_generators[ i ] );
         
-        current_relation_matrix := CAP_INTERNAL_hom_part_relations( current_relation_matrix, new_base_ring );
+        current_relation_matrix := CAP_INTERNAL_hom_part_relations( source_module_generators[ i ], current_relation_matrix, new_base_ring );
         
         source_modules[ i ] := current_relation_matrix;
         
@@ -433,7 +418,7 @@ BindGlobal( "CAP_INTERNAL_compute_degree_zero_part",
         
         current_relation_matrix := CAP_INTERNAL_degree_part_relations( degree_zero_part_of_ring, range_module_generators[ i ] );
         
-        current_relation_matrix := CAP_INTERNAL_hom_part_relations( current_relation_matrix, new_base_ring );
+        current_relation_matrix := CAP_INTERNAL_hom_part_relations( range_module_generators[ i ], current_relation_matrix, new_base_ring );
         
         range_modules[ i ] := current_relation_matrix;
         
