@@ -69,7 +69,9 @@ InstallMethod( NormalizeSemisimpleCategoryObjectList,
     
     result_list := [ ];
     
-    for i in [ 1 .. size ] do
+    i := 1;
+    
+    while ( i <= size ) do
         
         irreducible_object := semisimple_object_list[i][2];
         
@@ -81,7 +83,9 @@ InstallMethod( NormalizeSemisimpleCategoryObjectList,
             
             multiplicity := multiplicity + semisimple_object_list[j][1];
             
-        od; 
+            j := j + 1;
+            
+        od;
         
         Add( result_list, [ multiplicity, irreducible_object ] );
         
