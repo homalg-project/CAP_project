@@ -59,6 +59,8 @@ InstallMethod( NormalizeSemisimpleCategoryObjectList,
   function( semisimple_object_list, category )
     local sort_function, equality_function, result_list, multiplicity, j, irreducible_object, size, i;
     
+    semisimple_object_list := Filtered( semisimple_object_list, entry -> entry[1] > 0 );
+    
     sort_function := function( a, b ) return LowerEqualFunctionForSemisimpleCategory( category )( a[2], b[2] ); end;
     
     equality_function := EqualityFunctionForSemisimpleCategory( category );
