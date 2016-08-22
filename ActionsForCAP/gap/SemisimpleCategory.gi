@@ -70,6 +70,134 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
+    ##
+    AddIsWellDefinedForObjects( category,
+      function( object )
+        local object_list, last_irr, elem;
+        
+        object_list := SemisimpleCategoryObjectList( object );
+        
+        ## representing the zero object
+        if IsEmpty( object_list ) then
+            
+            return true;
+            
+        fi;
+        
+        if not ForAll( object_list, elem ->
+          IsList( elem ) and Size( elem ) = 2 and IsInt( elem[1] ) and elem[1] > 0 and membership_function( elem[2] ) ) then
+            
+            Error( "the semisimple category object list does not have the correct form" );
+            
+            return false;
+            
+        fi;
+        
+        last_irr := object_list[1][2];
+        
+        ## is it sorted without duplications?
+        for elem in [ 2 .. Size( object_list ) ] do
+            
+            if not object_list[elem][2] > last_irr then
+                
+                Error( "the semisimple category object is not sorted without duplications" );
+                
+                return false;
+                
+            fi;
+            
+            last_irr := object_list[elem][2];
+            
+        od;
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForMorphisms( category,
+      function( morphism )
+        local source, range, source_list, range_list, union, irr, morphism_list,
+              irr_nr, dim_source, dim_range;
+        
+        source := Source( morphism );
+        
+        range := Range( morphism );
+        
+        source_list := SemisimpleCategoryObjectList( source );
+        
+        range_list := SemisimpleCategoryObjectList( range );
+        
+        union := Set( Concatenation( Support( source ), Support( range ) ) );
+        
+        morphism_list := SemisimpleCategoryMorphismList( morphism );
+        
+        if not ForAll( morphism_list, elem ->
+          IsList( elem ) and Size( elem ) = 2 and IsVectorSpaceMorphism( elem[1] ) #and IsWellDefined( elem[1] ) 
+          and membership_function( elem[2] ) ) then
+            
+            Error( "the semisimple category morphism list does not have the correct form" );
+            
+            return false;
+            
+        fi;
+        
+        for irr_nr in [ 1 .. Size( union ) ] do
+            
+            if not morphism_list[irr_nr][2] = union[irr_nr] then
+                
+                Error( "the support of the objects does not match the support of the morphism" );
+                
+                return false;
+                
+            fi;
+            
+            dim_source := First( source_list, elem -> elem[2] = union[irr_nr] );
+            
+            if not dim_source = fail then
+                
+                dim_source := dim_source[1];
+                
+            else
+                
+                dim_source := 0;
+                
+            fi;
+            
+            dim_range := First( range_list, elem -> elem[2] = union[irr_nr] );
+            
+            if not dim_range = fail then
+                
+                dim_range := dim_range[1];
+                
+            else
+                
+                dim_range := 0;
+                
+            fi;
+            
+            if not Dimension( Source( morphism_list[irr_nr][1] ) ) = dim_source then
+                
+                Error( "the source multiplicity does not match the matrices" );
+                
+                return false;
+                
+            fi;
+            
+            if not Dimension( Range( morphism_list[irr_nr][1] ) ) = dim_range then
+                
+                Error( "the range multiplicity does not match the matrices" );
+                
+                return false;
+                
+            fi;
+            
+        od;
+        
+        return true;
+        
+    end );
+    
     ## Basic Operations for a Category
     ##
     AddIdentityMorphism( category,
