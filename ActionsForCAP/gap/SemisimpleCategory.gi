@@ -276,33 +276,54 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ## Basic Operations for an Additive Category
     ##
-#     AddIsZeroForMorphisms( category,
-#       function( morphism )
-#         
-#         return IsZero( UnderlyingMatrix( morphism ) );
-#         
-#     end );
-#     
-#     ##
-#     AddAdditionForMorphisms( category,
-#       function( morphism_1, morphism_2 )
-#         
-#         return VectorSpaceMorphism( Source( morphism_1 ),
-#                                     UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ),
-#                                     Range( morphism_2 ) );
-#         
-#     end );
-#     
-#     ##
-#     AddAdditiveInverseForMorphisms( category,
-#       function( morphism )
-#         
-#         return VectorSpaceMorphism( Source( morphism ),
-#                                     (-1) * UnderlyingMatrix( morphism ),
-#                                     Range( morphism ) );
-#         
-#     end );
-#     
+    AddIsZeroForMorphisms( category,
+      function( morphism )
+        local morphism_list;
+        
+        morphism_list := SemisimpleCategoryMorphismList( morphism );
+        
+        return ForAll( morphism_list, elem -> IsZeroForMorphisms( elem[1] ) );
+        
+    end );
+    
+    ##
+    AddAdditionForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        local source, range, morphism_1_list, morphism_2_list, result_morphism_list, size;
+        
+        source := Source( morphism_1 );
+        
+        range := Range( morphism_1 );
+        
+        morphism_1_list := SemisimpleCategoryMorphismList( morphism_1 );
+        
+        morphism_2_list := SemisimpleCategoryMorphismList( morphism_2 );
+        
+        size := Size( morphism_1_list );
+        
+        result_morphism_list := List( [ 1 .. size ], i -> [ morphism_1_list[i][1] + morphism_2_list[i][1], morphism_1_list[i][2] ] );
+        
+        return SemisimpleCategoryMorphism( source, result_morphism_list, range );
+        
+    end );
+    
+    ##
+    AddAdditiveInverseForMorphisms( category,
+      function( morphism )
+        local source, range, morphism_list, result_morphism_list;
+        
+        source := Source( morphism );
+        
+        range := Range( morphism );
+        
+        morphism_list := SemisimpleCategoryMorphismList( morphism );
+        
+        result_morphism_list := List( morphism_list, elem -> [ AdditiveInverseForMorphisms( elem[1] ), elem[2] ] );
+        
+        return SemisimpleCategoryMorphism( source, result_morphism_list, range );
+        
+    end );
+    
 #     ##
 #     AddZeroMorphism( category,
 #       function( source, range )
@@ -312,7 +333,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
 #                                     range );
 #         
 #     end );
-#     
+# #     
 #     ##
 #     AddZeroObject( category,
 #       function( )

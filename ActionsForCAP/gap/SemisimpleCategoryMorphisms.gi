@@ -77,3 +77,34 @@ InstallMethod( Support,
     
 end );
 
+####################################
+##
+## View
+##
+####################################
+
+##
+InstallMethod( Display,
+               [ IsSemisimpleCategoryMorphism ],
+               
+  function( morphism )
+    local morphism_list, elem;
+    
+    morphism_list := SemisimpleCategoryMorphismList( morphism );
+    
+    for elem in morphism_list do
+        
+        Print( "Component: " );
+        
+        Display( Concatenation( elem[2] ) );
+        
+        Print( "\n" );
+        
+        Display( elem[1] );
+        
+        Print( "\n------------------------\n" );
+        
+    od;
+    
+end );
+
