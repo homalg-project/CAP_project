@@ -113,6 +113,27 @@ InstallMethod( Support,
     
 end );
 
+##
+InstallMethod( Multiplicity, 
+               [ IsSemisimpleCategoryObject, IsObject ],
+               
+  function( semisimple_category_object, irr )
+    local coeff;
+    
+    coeff := First( SemisimpleCategoryObjectList( semisimple_category_object ), elem -> elem[2] = irr );
+    
+    if coeff = fail then
+        
+        return 0;
+        
+    else
+        
+        return coeff[1];
+        
+    fi;
+    
+end );
+
 ####################################
 ##
 ## View

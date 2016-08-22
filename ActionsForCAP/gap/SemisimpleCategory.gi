@@ -406,42 +406,54 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         return SemisimpleCategoryMorphism( zero_object, result_morphism_list, source )  ;
         
     end );
-#     
-#     ##
-#     AddDirectSum( category,
-#       function( object_list )
-#       local dimension;
-#       
-#       dimension := Sum( List( object_list, object -> Dimension( object ) ) );
-#       
-#       return VectorSpaceObject( dimension, homalg_field );
-#       
-#     end );
-#     
-#     ##
-#     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-#       function( object_list, projection_number, direct_sum_object )
-#         local dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
-#         
-#         number_of_objects := Length( object_list );
-#         
-#         dim_pre := Sum( object_list{ [ 1 .. projection_number - 1 ] }, c -> Dimension( c ) );
-#         
-#         dim_post := Sum( object_list{ [ projection_number + 1 .. number_of_objects ] }, c -> Dimension( c ) );
-#         
-#         dim_factor := Dimension( object_list[ projection_number ] );
-#         
-#         projection_in_factor := HomalgZeroMatrix( dim_pre, dim_factor, homalg_field );
-#         
-#         projection_in_factor := UnionOfRows( projection_in_factor, 
-#                                              HomalgIdentityMatrix( dim_factor, homalg_field ) );
-#         
-#         projection_in_factor := UnionOfRows( projection_in_factor, 
-#                                              HomalgZeroMatrix( dim_post, dim_factor, homalg_field ) );
-#         
-#         return VectorSpaceMorphism( direct_sum_object, projection_in_factor, object_list[ projection_number ] );
-#         
-#     end );
+    
+    ##
+    AddDirectSum( category,
+      function( semisimple_objects_list )
+      local object_list;
+      
+      object_list := List( semisimple_objects_list, SemisimpleCategoryObjectList );
+      
+      if Size( object_list ) > 1 then
+          
+          object_list := CallFuncList( Concatenation, object_list );
+          
+      else
+          
+          object_list := object_list[1];
+          
+      fi;
+      
+      return SemisimpleCategoryObject( object_list, category );
+      
+    end );
+    
+    ##
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
+      function( semisimple_objects_list, projection_number, direct_sum_object )
+        local support, morphism_list, irr, objects_list, elem;
+        
+        support := Support( direct_sum_object );
+        
+        morphism_list := [ ];
+        
+        for irr in support do
+            
+            objects_list := [ ];
+            
+            for elem in semisimple_objects_list do
+                
+                Add( objects_list, VectorSpaceObject( Multiplicity( elem, irr ), field ) );
+                
+            od;
+            
+            Add( morphism_list, [ ProjectionInFactorOfDirectSum( objects_list, projection_number ), irr ] );
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( direct_sum_object, morphism_list, semisimple_objects_list[ projection_number ] );
+        
+    end );
 #     
 #     ##
 #     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
@@ -461,30 +473,32 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
 #       
 #     end );
 #     
-#     ##
-#     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-#       function( object_list, injection_number, coproduct )
-#         local dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
-#         
-#         number_of_objects := Length( object_list );
-#         
-#         dim_pre := Sum( object_list{ [ 1 .. injection_number - 1 ] }, c -> Dimension( c ) );
-#         
-#         dim_post := Sum( object_list{ [ injection_number + 1 .. number_of_objects ] }, c -> Dimension( c ) );
-#         
-#         dim_cofactor := Dimension( object_list[ injection_number ] );
-#         
-#         injection_of_cofactor := HomalgZeroMatrix( dim_cofactor, dim_pre ,homalg_field );
-#         
-#         injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-#                                              HomalgIdentityMatrix( dim_cofactor, homalg_field ) );
-#         
-#         injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-#                                              HomalgZeroMatrix( dim_cofactor, dim_post, homalg_field ) );
-#         
-#         return VectorSpaceMorphism( object_list[ injection_number ], injection_of_cofactor, coproduct );
-# 
-#     end );
+    ##
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
+      function( semisimple_objects_list, injection_number, direct_sum_object )
+        local support, morphism_list, irr, objects_list, elem;
+        
+        support := Support( direct_sum_object );
+        
+        morphism_list := [ ];
+        
+        for irr in support do
+            
+            objects_list := [ ];
+            
+            for elem in semisimple_objects_list do
+                
+                Add( objects_list, VectorSpaceObject( Multiplicity( elem, irr ), field ) );
+                
+            od;
+            
+            Add( morphism_list, [ InjectionOfCofactorOfDirectSum( objects_list, injection_number ), irr ] );
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( semisimple_objects_list[ injection_number ], morphism_list, direct_sum_object );
+        
+    end );
 #     
 #     ##
 #     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,

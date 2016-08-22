@@ -58,3 +58,6 @@ DeclareAttribute( "Support",
 
 ##
 DeclareOperation( "NormalizeSemisimpleCategoryObjectList", [ IsList, IsCapCategory ] );
+
+##
+DeclareOperation( "Multiplicity", [ IsSemisimpleCategoryObject, IsObject ] );
