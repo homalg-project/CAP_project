@@ -44,3 +44,9 @@ DeclareOperation( "SemisimpleCategoryMorphism",
 #! @Arguments alpha
 DeclareAttribute( "SemisimpleCategoryMorphismList",
                   IsSemisimpleCategoryMorphism );
+
+#! @Description
+#! @Returns a list of vector space morphisms.
+#! @Arguments alpha
+DeclareAttribute( "Support",
+                  IsSemisimpleCategoryMorphism );

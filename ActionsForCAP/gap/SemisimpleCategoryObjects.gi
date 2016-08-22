@@ -57,13 +57,11 @@ InstallMethod( NormalizeSemisimpleCategoryObjectList,
                [ IsList, IsCapCategory ],
                
   function( semisimple_object_list, category )
-    local sort_function, equality_function, result_list, multiplicity, j, irreducible_object, size, i;
+    local sort_function, result_list, multiplicity, j, irreducible_object, size, i;
     
     semisimple_object_list := Filtered( semisimple_object_list, entry -> entry[1] > 0 );
     
-    sort_function := function( a, b ) return LowerEqualFunctionForSemisimpleCategory( category )( a[2], b[2] ); end;
-    
-    equality_function := EqualityFunctionForSemisimpleCategory( category );
+    sort_function := function( a, b ) return a[2] <= b[2]; end;
     
     Sort( semisimple_object_list, sort_function );
     
@@ -81,7 +79,7 @@ InstallMethod( NormalizeSemisimpleCategoryObjectList,
         
         j := i + 1;
         
-        while ( j <= size ) and ( equality_function( semisimple_object_list[j][2], irreducible_object ) ) do
+        while ( j <= size ) and ( semisimple_object_list[j][2] = irreducible_object ) do
             
             multiplicity := multiplicity + semisimple_object_list[j][1];
             
@@ -96,6 +94,22 @@ InstallMethod( NormalizeSemisimpleCategoryObjectList,
     od;
     
     return result_list;
+    
+end );
+
+####################################
+##
+## Attributes
+##
+####################################
+
+##
+InstallMethod( Support,
+               [ IsSemisimpleCategoryObject ],
+               
+  function( object )
+    
+    return List( SemisimpleCategoryObjectList( object ), elem -> elem[2] );
     
 end );
 

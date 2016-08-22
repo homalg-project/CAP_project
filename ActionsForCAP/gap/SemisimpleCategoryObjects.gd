@@ -32,8 +32,7 @@ DeclareCategory( "IsSemisimpleCategoryObject",
 #! @Arguments L
 DeclareOperation( "SemisimpleCategoryObject", [ IsList, IsCapCategory ] );
 
-##
-DeclareOperation( "NormalizeSemisimpleCategoryObjectList", [ IsList, IsCapCategory ] );
+
 
 ####################################
 ##
@@ -50,3 +49,12 @@ DeclareAttribute( "SemisimpleCategoryObjectList",
 #! @Arguments A
 DeclareAttribute( "Support",
                   IsSemisimpleCategoryObject );
+
+####################################
+##
+#! @Section Operations
+##
+####################################
+
+##
+DeclareOperation( "NormalizeSemisimpleCategoryObjectList", [ IsList, IsCapCategory ] );
