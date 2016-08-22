@@ -43,7 +43,7 @@ InstallMethod( SemisimpleCategoryObject,
     normalized_semisimple_object_list := NormalizeSemisimpleCategoryObjectList( semisimple_object_list, category );
     
     ObjectifyWithAttributes( semisimple_category_object, TheTypeOfSemisimpleCategoryObjects,
-                             SemisimpleObjectList, normalized_semisimple_object_list
+                             SemisimpleCategoryObjectList, normalized_semisimple_object_list
     );
 
     Add( category, semisimple_category_object );

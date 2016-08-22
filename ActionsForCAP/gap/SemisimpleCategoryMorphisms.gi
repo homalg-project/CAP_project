@@ -24,3 +24,40 @@ BindGlobal( "TheFamilyOfSemisimpleCategoryMorphisms",
 BindGlobal( "TheTypeOfSemisimpleCategoryMorphisms",
         NewType( TheFamilyOfSemisimpleCategoryMorphisms,
                 IsSemisimpleCategoryMorphismRep ) );
+
+####################################
+##
+## Constructors
+##
+####################################
+
+##
+InstallMethod( SemisimpleCategoryMorphism,
+               [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ],
+               
+  function( source, morphism_list, range )
+    local category, semisimple_category_morphism, sort_function;
+    
+    category := CapCategory( source );
+    
+    morphism_list := Filtered( morphism_list,
+                       alpha -> NrRows( UnderlyingMatrix( alpha[1] ) ) <> 0 or NrColumns( UnderlyingMatrix( alpha[1] ) ) <> 0 );
+    
+    sort_function := function( a, b ) return LowerEqualFunctionForSemisimpleCategory( category )( a[2], b[2] ); end;
+    
+    Sort( morphism_list, sort_function );
+    
+    semisimple_category_morphism := rec( );
+    
+    ObjectifyWithAttributes( semisimple_category_morphism, TheTypeOfVectorSpaceMorphisms,
+                             Source, source,
+                             Range, range,
+                             SemisimpleCategoryMorphismList, morphism_list
+    );
+
+    Add( category, semisimple_category_morphism );
+    
+    return semisimple_category_morphism;
+    
+end );
+

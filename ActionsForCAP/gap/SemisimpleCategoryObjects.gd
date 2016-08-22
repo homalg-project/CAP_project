@@ -41,7 +41,7 @@ DeclareOperation( "NormalizeSemisimpleCategoryObjectList", [ IsList, IsCapCatego
 ##
 ####################################
 
-DeclareAttribute( "SemisimpleObjectList",
+DeclareAttribute( "SemisimpleCategoryObjectList",
                   IsSemisimpleCategoryObject );
 
 #! @Description
