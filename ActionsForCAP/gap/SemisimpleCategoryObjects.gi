@@ -118,3 +118,34 @@ end );
 ## View
 ##
 ####################################
+
+##
+InstallMethod( Display,
+               [ IsSemisimpleCategoryObject ],
+               
+  function( object )
+    local object_list, string, i, size;
+    
+    object_list := SemisimpleCategoryObjectList( object );
+    
+    size := Size( object_list );
+    
+    if size = 0 then
+        
+        Print( "0\n" );
+        
+        return;
+        
+    fi;
+    
+    string := Concatenation( String( object_list[1][1] ), "*(χ_", String( object_list[1][2] ), ")" );
+    
+    for i in [ 2 .. size ] do
+        
+        Append( string, Concatenation( " + ", String( object_list[i][1] ), "*(χ_", String( object_list[i][2] ), ")" ) );
+        
+    od;
+    
+    Print( Concatenation( string, "\n" ) );
+    
+end );

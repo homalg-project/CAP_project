@@ -324,15 +324,52 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
-#     ##
-#     AddZeroMorphism( category,
-#       function( source, range )
-#         
-#         return VectorSpaceMorphism( source,
-#                                     HomalgZeroMatrix( Dimension( source ), Dimension( range ), homalg_field ),
-#                                     range );
-#         
-#     end );
+    ##
+    AddZeroMorphism( category,
+      function( source, range )
+        local union, morphism_list, source_list, range_list, irr, dim_source, dim_range;
+        
+        union := Set( Concatenation( Support( source ), Support( range ) ) );
+        
+        morphism_list := [ ];
+        
+        source_list := SemisimpleCategoryObjectList( source );
+        
+        range_list := SemisimpleCategoryObjectList( range );
+        
+        for irr in union do
+            
+            dim_source := First( source_list, elem -> elem[2] = irr );
+            
+            if not dim_source = fail then
+                
+                dim_source := dim_source[1];
+                
+            else
+                
+                dim_source := 0;
+                
+            fi;
+            
+            dim_range := First( range_list, elem -> elem[2] = irr );
+            
+            if not dim_range = fail then
+                
+                dim_range := dim_range[1];
+                
+            else
+                
+                dim_range := 0;
+                
+            fi;
+            
+            Add( morphism_list, [ ZeroMorphism( VectorSpaceObject( dim_source, field ), VectorSpaceObject( dim_range, field ) ), irr ] );
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( source, morphism_list, range );
+        
+    end );
 # #     
 #     ##
 #     AddZeroObject( category,

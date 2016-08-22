@@ -94,9 +94,7 @@ InstallMethod( Display,
     
     for elem in morphism_list do
         
-        Print( "Component: " );
-        
-        Display( Concatenation( elem[2] ) );
+        Print( Concatenation( "Component: (χ_", String( elem[2] ), "):\n" ) );
         
         Print( "\n" );
         
