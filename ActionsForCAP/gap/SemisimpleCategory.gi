@@ -370,36 +370,42 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         return SemisimpleCategoryMorphism( source, morphism_list, range );
         
     end );
-# #     
-#     ##
-#     AddZeroObject( category,
-#       function( )
-#         
-#         return VectorSpaceObject( 0, homalg_field );
-#         
-#     end );
-#     
-#     ##
-#     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-#       function( sink, zero_object )
-#         local morphism;
-#         
-#         morphism := VectorSpaceMorphism( sink, HomalgZeroMatrix( Dimension( sink ), 0, homalg_field ), zero_object );
-#         
-#         return morphism;
-#         
-#     end );
-#     
-#     ##
-#     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-#       function( source, zero_object )
-#         local morphism;
-#         
-#         morphism := VectorSpaceMorphism( zero_object, HomalgZeroMatrix( 0, Dimension( source ), homalg_field ), source );
-#         
-#         return morphism;
-#         
-#     end );
+    
+    ##
+    AddZeroObject( category,
+      function( )
+        
+        return SemisimpleCategoryObject( [ ], category );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
+      function( sink, zero_object )
+        local sink_object_list, result_morphism_list;
+        
+        sink_object_list := SemisimpleCategoryObjectList( sink );
+        
+        result_morphism_list := List( sink_object_list, elem ->
+          [ UniversalMorphismIntoZeroObject( VectorSpaceObject( elem[1], field ) ), elem[2] ] );
+        
+        return SemisimpleCategoryMorphism( sink, result_morphism_list, zero_object )  ;
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
+      function( source, zero_object )
+        local source_object_list, result_morphism_list;
+        
+        source_object_list := SemisimpleCategoryObjectList( source );
+        
+        result_morphism_list := List( source_object_list, elem ->
+          [ UniversalMorphismFromZeroObject( VectorSpaceObject( elem[1], field ) ), elem[2] ] );
+        
+        return SemisimpleCategoryMorphism( zero_object, result_morphism_list, source )  ;
+        
+    end );
 #     
 #     ##
 #     AddDirectSum( category,
