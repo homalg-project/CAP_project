@@ -4,7 +4,10 @@ Q := HomalgFieldOfRationalsInSingular();
 
 G := SymmetricGroup( 3 );
 
-irr := Irr( G );
+G_IRREDUCIBLE_INTERNAL_RECORD := rec(
+  irr := Irr( G ),
+  ct := CharacterTable( G )
+);
 
 ## G Irreducible objects
 
@@ -23,6 +26,8 @@ DeclareOperation( "\*", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
 DeclareAttribute( "UnderlyingCharacter", IsGIrreducibleObject );
 
 DeclareAttribute( "UnderlyingCharacterNumber", IsGIrreducibleObject );
+
+DeclareAttribute( "SecondExteriorPower", IsGIrreducibleObject );
 
 ## gi
 DeclareRepresentation( "IsGIrreducibleObjectRep",
@@ -44,7 +49,7 @@ InstallMethod( GIrreducibleObject,
     
     s3_irreducible_object := rec( );
     
-    number := PositionProperty( irr, chi -> chi = character );
+    number := PositionProperty( G_IRREDUCIBLE_INTERNAL_RECORD.irr, chi -> chi = character );
     
     ObjectifyWithAttributes( s3_irreducible_object, TheTypeOfGIrreducibleObjects,
                              UnderlyingCharacter, character,
@@ -85,6 +90,37 @@ InstallMethod( Multiplicity,
     
 end );
 
+InstallMethod( SecondExteriorPower,
+               [ IsGIrreducibleObject ],
+               
+  function( object )
+    local character, exterior_power, chi, scalar_product, result_list;
+    
+    character := UnderlyingCharacter( object );
+    
+    exterior_power :=
+      AntiSymmetricParts( G_IRREDUCIBLE_INTERNAL_RECORD.ct, [ character ], 2 );
+    
+    exterior_power := exterior_power[1];
+    
+    result_list := [ ];
+    
+    for chi in G_IRREDUCIBLE_INTERNAL_RECORD.irr do
+        
+        scalar_product := ScalarProduct( chi, exterior_power );
+        
+        if scalar_product > 0 then
+            
+            Add( result_list, [ scalar_product, GIrreducibleObject( chi ) ] );
+            
+        fi;
+        
+    od;
+    
+    return result_list;
+    
+end );
+
 InstallMethod( \*,
                [ IsGIrreducibleObject, IsGIrreducibleObject ],
                
@@ -95,7 +131,7 @@ InstallMethod( \*,
   
   result_list := [ ];
   
-  for chi in irr do
+  for chi in G_IRREDUCIBLE_INTERNAL_RECORD.irr do
       
       scalar_product := ScalarProduct( chi, tensor_product );
       
@@ -133,11 +169,11 @@ end );
 
 membership_function := IsGIrreducibleObject;
 
-chi_1 := GIrreducibleObject( irr[1] );
+chi_1 := GIrreducibleObject( G_IRREDUCIBLE_INTERNAL_RECORD.irr[1] );
 
-chi_2 := GIrreducibleObject( irr[2] );
+chi_2 := GIrreducibleObject( G_IRREDUCIBLE_INTERNAL_RECORD.irr[2] );
 
-chi_3 := GIrreducibleObject( irr[3] );
+chi_3 := GIrreducibleObject( G_IRREDUCIBLE_INTERNAL_RECORD.irr[3] );
 
 semisimple_cat := SemisimpleCategory( Q, membership_function, chi_3 );
 
