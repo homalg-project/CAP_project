@@ -16,7 +16,7 @@
 ####################################
 
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
-  function( category, tensor_unit )
+  function( category, tensor_unit, associator_data )
     local field, membership_function;
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
@@ -922,9 +922,9 @@ end );
 
 ##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction, IsObject ],
+               [ IsFieldForHomalg, IsFunction, IsObject, IsString ],
                
-  function( homalg_field, membership_function, tensor_unit )
+  function( homalg_field, membership_function, tensor_unit, associator_filename )
     local name;
     
     name := NameFunction( membership_function );
@@ -933,16 +933,23 @@ InstallMethod( SemisimpleCategory,
              homalg_field,
              membership_function,
              tensor_unit,
+             associator_filename,
              Concatenation( "membership function ", name ) );
     
 end );
 
 ##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction, IsObject, IsString ],
+               [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsString ],
                
-  function( homalg_field, membership_function, tensor_unit, membership_function_name )
-    local name, semisimple_category, underlying_category;
+  function( homalg_field, membership_function, tensor_unit, associator_filename, membership_function_name )
+    local stream, command, name, semisimple_category, underlying_category, associator_data;
+    
+    stream := InputTextFile( associator_filename );
+    
+    command := ReadAll( stream );
+    
+    associator_data := EvalString( command );
     
     underlying_category := MatrixCategory( homalg_field );
     
@@ -961,7 +968,7 @@ InstallMethod( SemisimpleCategory,
     
     SetMembershipFunctionForSemisimpleCategory( semisimple_category, membership_function );
     
-    CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY( semisimple_category, tensor_unit );
+    CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY( semisimple_category, tensor_unit, associator_data );
     
     Finalize( semisimple_category );
     

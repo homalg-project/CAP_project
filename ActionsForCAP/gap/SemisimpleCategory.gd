@@ -17,11 +17,11 @@
 
 ##
 DeclareOperation( "SemisimpleCategory",
-                  [ IsFieldForHomalg, IsFunction, IsObject, IsString ] );
+                  [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsString ] );
 
 ##
 DeclareOperation( "SemisimpleCategory",
-                  [ IsFieldForHomalg, IsFunction, IsObject ] );
+                  [ IsFieldForHomalg, IsFunction, IsObject, IsString ] );
 
 ####################################
 ##
