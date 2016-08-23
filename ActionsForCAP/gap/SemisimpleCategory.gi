@@ -718,18 +718,86 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
-#     ##
-#     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
-#       
-#       function( new_source, morphism_1, morphism_2, new_range )
-#         
-#         return VectorSpaceMorphism( new_source,
-#                                     KroneckerMat( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) ),
-#                                     new_range );
-#         
-#     end );
-#     
-#     ##
+    ##
+    AddTensorProductOnMorphismsWithGivenTensorProducts( category,
+      
+      function( new_source, morphism_1, morphism_2, new_range )
+        local morphism_1_list, morphism_2_list, size_1, size_2, tensor_products, i, j,
+              support, size_support, morphism_list, chi, i_list, j_list, multiplicity,
+              object;
+        
+        morphism_1_list := SemisimpleCategoryMorphismList( morphism_1 );
+        
+        morphism_2_list := SemisimpleCategoryMorphismList( morphism_2 );
+        
+        size_1 := Size( morphism_1_list );
+        
+        size_2 := Size( morphism_2_list );
+        
+        tensor_products := [ ];
+        
+        # precompute matrices for tensor products
+        for i in [ 1 .. size_1 ] do
+            
+            Add( tensor_products, [ ] );
+            
+            for j in [ 1 .. size_2 ] do
+                
+                tensor_products[i][j] := TensorProductOnMorphisms( morphism_1_list[i][1], morphism_2_list[j][1] );
+                
+            od;
+            
+        od;
+        
+        support := Set( Concatenation( Support( new_source ), Support( new_range ) ) );
+        
+        size_support := Size( support );
+
+        morphism_list := [ ];
+        
+        for chi in support do
+            
+            i_list := [ ];
+            
+            for i in [ 1 .. size_1 ] do
+                
+                j_list := [ ];
+                
+                for j in [ 1 .. size_2 ] do
+                    
+                    multiplicity := Multiplicity( chi, morphism_1_list[i][2], morphism_2_list[j][2] );
+                    
+                    if multiplicity > 0 then
+                        
+                        object := VectorSpaceObject( multiplicity, field );
+                        
+                        Add( j_list, TensorProductOnMorphisms( tensor_products[i][j], IdentityMorphism( object ) ) );
+                        
+                    fi;
+                    
+                od;
+                
+                if not IsEmpty( j_list ) then
+                    
+                    Add( i_list, DirectSumFunctorial( j_list ) );
+                    
+                fi;
+                
+            od;
+            
+            if not IsEmpty( i_list ) then
+                
+                Add( morphism_list, [ DirectSumFunctorial( i_list ), chi ] );
+                
+            fi;
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( new_source, morphism_list, new_range );
+        
+    end );
+    
+    ##
 
 #     
 #     ##

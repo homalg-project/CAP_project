@@ -14,7 +14,7 @@ DeclareCategory( "IsGIrreducibleObject",
 
 DeclareAttribute( "GIrreducibleObject", IsCharacter );
 
-# DeclareOperation( "\=", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
+DeclareOperation( "Multiplicity", [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject ] );
 
 DeclareOperation( "\<", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
 
@@ -70,6 +70,18 @@ InstallMethod( \<,
   function( object_1, object_2 )
     
     return UnderlyingCharacterNumber( object_1 ) < UnderlyingCharacterNumber( object_2 );
+    
+end );
+
+InstallMethod( Multiplicity,
+               [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject ],
+               
+  function( object_1, object_2, object_3 )
+    local tensor_product;
+    
+    tensor_product := UnderlyingCharacter( object_2 ) * UnderlyingCharacter( object_3 );
+    
+    return ScalarProduct( UnderlyingCharacter( object_1 ), tensor_product );
     
 end );
 
