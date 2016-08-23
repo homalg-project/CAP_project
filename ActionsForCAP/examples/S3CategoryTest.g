@@ -121,13 +121,13 @@ end );
 
 membership_function := IsGIrreducibleObject;
 
-semisimple_cat := SemisimpleCategory( Q, membership_function );
-
 chi_1 := GIrreducibleObject( irr[1] );
 
 chi_2 := GIrreducibleObject( irr[2] );
 
 chi_3 := GIrreducibleObject( irr[3] );
+
+semisimple_cat := SemisimpleCategory( Q, membership_function, chi_3 );
 
 a := SemisimpleCategoryObject( [ [ 1, chi_1 ], [ 2, chi_2 ], [ 3, chi_3 ] ], semisimple_cat );
 

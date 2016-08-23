@@ -16,7 +16,7 @@
 ####################################
 
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
-  function( category )
+  function( category, tensor_unit )
     local field, membership_function;
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
@@ -661,7 +661,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ## Basic Operations for Monoidal Categories
     ##
     AddTensorProductOnObjects( category,
-      [ 
+      [
         [ function( object_1, object_2 )
             local object_1_list, object_2_list, object_list, elem_1, elem_2, prod, multiplicity;
             
@@ -709,7 +709,15 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       ]
     
     );
-#     
+    
+    AddTensorUnit( category,
+      
+      function( )
+        
+        return SemisimpleCategoryObject( [ [ 1, tensor_unit ] ], category );
+        
+    end );
+    
 #     ##
 #     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
 #       
@@ -722,13 +730,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
 #     end );
 #     
 #     ##
-#     AddTensorUnit( category,
-#       
-#       function( )
-#         
-#         return VectorSpaceObject( 1, homalg_field );
-#         
-#     end );
+
 #     
 #     ##
 #     AddBraidingWithGivenTensorProducts( category,
@@ -852,9 +854,9 @@ end );
 
 ##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction ],
+               [ IsFieldForHomalg, IsFunction, IsObject ],
                
-  function( homalg_field, membership_function )
+  function( homalg_field, membership_function, tensor_unit )
     local name;
     
     name := NameFunction( membership_function );
@@ -862,15 +864,16 @@ InstallMethod( SemisimpleCategory,
     return SemisimpleCategory(
              homalg_field,
              membership_function,
+             tensor_unit,
              Concatenation( "membership function ", name ) );
     
 end );
 
 ##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction, IsString ],
+               [ IsFieldForHomalg, IsFunction, IsObject, IsString ],
                
-  function( homalg_field, membership_function, membership_function_name )
+  function( homalg_field, membership_function, tensor_unit, membership_function_name )
     local name, semisimple_category, underlying_category;
     
     underlying_category := MatrixCategory( homalg_field );
@@ -890,8 +893,7 @@ InstallMethod( SemisimpleCategory,
     
     SetMembershipFunctionForSemisimpleCategory( semisimple_category, membership_function );
     
-    CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY( semisimple_category );
-    
+    CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY( semisimple_category, tensor_unit );
     
     Finalize( semisimple_category );
     
