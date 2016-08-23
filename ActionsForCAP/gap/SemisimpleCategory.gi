@@ -658,36 +658,57 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       end );
 
-#     ## Basic Operations for Monoidal Categories
-#     ##
-#     AddTensorProductOnObjects( category,
-#       [ 
-#         [ function( object_1, object_2 )
-#             
-#             return VectorSpaceObject( Dimension( object_1 ) * Dimension( object_2 ), homalg_field );
-#             
-#           end,
-#           
-#           [ ] ],
-#         
-#         [ function( object_1, object_2 )
-#             
-#             return object_1;
-#             
-#           end,
-#           
-#           [ IsZero, ] ],
-#          
-#         [ function( object_1, object_2 )
-#             
-#             return object_2;
-#             
-#           end,
-#           
-#           [ , IsZero ] ]
-#       ]
-#     
-#     );
+    ## Basic Operations for Monoidal Categories
+    ##
+    AddTensorProductOnObjects( category,
+      [ 
+        [ function( object_1, object_2 )
+            local object_1_list, object_2_list, object_list, elem_1, elem_2, prod, multiplicity;
+            
+            object_1_list := SemisimpleCategoryObjectList( object_1 );
+            
+            object_2_list := SemisimpleCategoryObjectList( object_2 );
+            
+            object_list := [ ];
+            
+            for elem_1 in object_1_list do
+                
+                for elem_2 in object_2_list do
+                    
+                    prod := elem_1[2] * elem_2[2];
+                    
+                    multiplicity := elem_1[1] * elem_2[1];
+                    
+                    Append( object_list, List( prod, pair -> [ pair[1] * multiplicity, pair[2] ] ) );
+                    
+                od;
+                
+            od;
+            
+            return SemisimpleCategoryObject( object_list, category );
+            
+          end,
+          
+          [ ] ],
+        
+        [ function( object_1, object_2 )
+            
+            return object_1;
+            
+          end,
+          
+          [ IsZero, ] ],
+         
+        [ function( object_1, object_2 )
+            
+            return object_2;
+            
+          end,
+          
+          [ , IsZero ] ]
+      ]
+    
+    );
 #     
 #     ##
 #     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
@@ -838,8 +859,10 @@ InstallMethod( SemisimpleCategory,
     
     name := NameFunction( membership_function );
     
-    return SemisimpleCategory( 
-             homalg_field, membership_function, Concatenation( "membership function ", name ) );
+    return SemisimpleCategory(
+             homalg_field,
+             membership_function,
+             Concatenation( "membership function ", name ) );
     
 end );
 

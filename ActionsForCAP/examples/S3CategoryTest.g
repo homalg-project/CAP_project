@@ -12,11 +12,13 @@ irr := Irr( G );
 DeclareCategory( "IsGIrreducibleObject",
                  IsObject );
 
-DeclareOperation( "GIrreducibleObject", [ IsCharacter ] );
+DeclareAttribute( "GIrreducibleObject", IsCharacter );
 
 # DeclareOperation( "\=", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
 
 DeclareOperation( "\<", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
+
+DeclareOperation( "\*", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
 
 DeclareAttribute( "UnderlyingCharacter", IsGIrreducibleObject );
 
@@ -71,6 +73,32 @@ InstallMethod( \<,
     
 end );
 
+InstallMethod( \*,
+               [ IsGIrreducibleObject, IsGIrreducibleObject ],
+               
+  function( object_1, object_2 )
+  local tensor_product, result_list, chi, scalar_product;
+  
+  tensor_product := UnderlyingCharacter( object_1 ) * UnderlyingCharacter( object_2 );
+  
+  result_list := [ ];
+  
+  for chi in irr do
+      
+      scalar_product := ScalarProduct( chi, tensor_product );
+      
+      if scalar_product > 0 then
+          
+          Add( result_list, [ scalar_product, GIrreducibleObject( chi ) ] );
+          
+      fi;
+      
+  od;
+  
+  return result_list;
+  
+end );
+
 InstallMethod( String,
               [ IsGIrreducibleObject ],
               
@@ -110,4 +138,5 @@ alpha := VectorSpaceMorphism( VectorSpaceObject( 2, Q ), HomalgMatrix( [ [ 1 ], 
 beta := VectorSpaceMorphism( VectorSpaceObject( 3, Q ), HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ] ], 3, 2, Q ), VectorSpaceObject( 2, Q ) );
 
 mor := SemisimpleCategoryMorphism( a, [ [ MorphismIntoZeroObject( VectorSpaceObject( 1, Q ) ), chi_1 ], [ alpha, chi_2 ], [ beta, chi_3 ] ], b  );
+
 
