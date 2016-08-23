@@ -526,61 +526,68 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
     end );
     
-#     ## Basic Operations for an Abelian category
-#     ##
-#     AddKernelObject( category,
-#       function( morphism )
-#         local homalg_matrix;
-#         
-#         homalg_matrix := UnderlyingMatrix( morphism );
-#         
-#         return VectorSpaceObject( NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ), homalg_field );
-#         
-#     end );
-#     
-#     ##
-#     AddKernelEmbedding( category,
-#       function( morphism )
-#         local kernel_emb, kernel_object;
-#         
-#         kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
-#         
-#         kernel_object := VectorSpaceObject( NrRows( kernel_emb ), homalg_field );
-#         
-#         return VectorSpaceMorphism( kernel_object, kernel_emb, Source( morphism ) );
-#         
-#     end );
-#     
-#     ##
-#     AddKernelEmbeddingWithGivenKernelObject( category,
-#       function( morphism, kernel )
-#         local kernel_emb;
-#         
-#         kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
-#         
-#         return VectorSpaceMorphism( kernel, kernel_emb, Source( morphism ) );
-#         
-#     end );
-#     
-#     ##
-#     AddLiftAlongMonomorphism( category,
-#       function( monomorphism, test_morphism )
-#         local right_divide;
-#         
-#         right_divide := RightDivide( UnderlyingMatrix( test_morphism ), UnderlyingMatrix( monomorphism ) );
-#         
-#         if right_divide = fail then
-#           
-#           return fail;
-#           
-#         fi;
-#         
-#         return VectorSpaceMorphism( Source( test_morphism ),
-#                                     right_divide,
-#                                     Source( monomorphism ) );
-#         
-#     end );
-#     
+    ## Basic Operations for an Abelian category
+    ##
+    AddKernelObject( category,
+      function( morphism )
+        local support, object_list;
+        
+        support := Support( Source( morphism ) );
+        
+        object_list := List( support, irr -> [ Dimension( KernelObject( Component( morphism, irr ) ) ), irr ] );
+        
+        return SemisimpleCategoryObject( object_list, category );
+        
+    end );
+    
+    ##
+    AddKernelEmbedding( category,
+      function( morphism )
+        local support, result_morphism_list, kernel_object_list, kernel_object;
+        
+        support := Support( Source( morphism ) );
+        
+        result_morphism_list := List( support, irr -> [ KernelEmbedding( Component( morphism, irr ) ), irr ] );
+        
+        kernel_object_list := List( result_morphism_list, elem -> [ Dimension( Source( elem[1] ) ), elem[2] ] );
+        
+        kernel_object := SemisimpleCategoryObject( kernel_object_list, category );
+        
+        return SemisimpleCategoryMorphism( kernel_object, result_morphism_list, Source( morphism ) );
+        
+    end );
+    
+    ##
+    AddKernelEmbeddingWithGivenKernelObject( category,
+      function( morphism, kernel_object )
+        local support, result_morphism_list;
+        
+        support := Support( Source( morphism ) );
+        
+        result_morphism_list := List( support, irr -> [ KernelEmbedding( Component( morphism, irr ) ), irr ] );
+        
+        return SemisimpleCategoryMorphism( kernel_object, result_morphism_list, Source( morphism ) );
+        
+    end );
+    
+    ##
+    AddLiftAlongMonomorphism( category,
+      function( monomorphism, test_morphism )
+        local source, range, support, morphism_list;
+        
+        source := Source( test_morphism );
+        
+        range := Source( monomorphism );
+        
+        support := Set( Concatenation( Support( source ), Support( range ) ) );
+        
+        morphism_list := List( support, irr ->
+                           [ LiftAlongMonomorphism( Component( monomorphism, irr ), Component( test_morphism, irr ) ), irr ] );
+        
+        return SemisimpleCategoryMorphism( source, morphism_list, range );
+        
+    end );
+    
 #     ##
 #     AddCokernelObject( category,
 #       function( morphism )
