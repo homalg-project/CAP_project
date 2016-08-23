@@ -22,3 +22,5 @@ ReadPackage( "ActionsForCAP", "gap/SemisimpleCategoryObjects.gd" );
 ReadPackage( "ActionsForCAP", "gap/SemisimpleCategoryMorphisms.gd" );
 
 ReadPackage( "ActionsForCAP", "gap/SemisimpleCategory.gd" );
+
+ReadPackage( "ActionsForCAP", "gap/GIrreducibleObjects.gd" );
