@@ -649,40 +649,15 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
-#     ## Basic Operation Properties
-#     ##
-#     AddIsZeroForObjects( category,
-#       function( object )
-#       
-#         return Dimension( object ) = 0;
-#       
-#       end );
-#     
-#     ##
-#     AddIsMonomorphism( category,
-#       function( morphism )
-#       
-#         return RowRankOfMatrix( UnderlyingMatrix( morphism ) ) = Dimension( Source( morphism ) );
-#       
-#     end );
-#     
-#     ##
-#     AddIsEpimorphism( category,
-#       function( morphism )
-#         
-#         return ColumnRankOfMatrix( UnderlyingMatrix( morphism ) ) = Dimension( Range( morphism ) );
-#         
-#     end );
-#     
-#     ##
-#     AddIsIsomorphism( category,
-#       function( morphism )
-#         
-#         return Dimension( Range( morphism ) ) = Dimension( Source( morphism ) )
-#                and ColumnRankOfMatrix( UnderlyingMatrix( morphism ) ) = Dimension( Range( morphism ) );
-#         
-#     end );
-#     
+    ## Basic Operation Properties
+    ##
+    AddIsZeroForObjects( category,
+      function( object )
+      
+        return IsEmpty( SemisimpleCategoryObjectList( object ) );
+      
+      end );
+
 #     ## Basic Operations for Monoidal Categories
 #     ##
 #     AddTensorProductOnObjects( category,
@@ -884,11 +859,16 @@ InstallMethod( SemisimpleCategory,
     
     semisimple_category := CreateCapCategory( name );
     
+    SetIsAbelianCategory( semisimple_category, true );
+    
+    SetIsRigidSymmetricClosedMonoidalCategory( semisimple_category, true );
+    
     SetUnderlyingCategoryForSemisimpleCategory( semisimple_category, underlying_category );
     
     SetMembershipFunctionForSemisimpleCategory( semisimple_category, membership_function );
     
     CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY( semisimple_category );
+    
     
     Finalize( semisimple_category );
     
