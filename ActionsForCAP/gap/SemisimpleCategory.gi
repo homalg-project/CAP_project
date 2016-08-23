@@ -439,13 +439,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         for irr in support do
             
-            objects_list := [ ];
-            
-            for elem in semisimple_objects_list do
-                
-                Add( objects_list, VectorSpaceObject( Multiplicity( elem, irr ), field ) );
-                
-            od;
+            objects_list := List( semisimple_objects_list, obj -> Component( obj, irr ) );
             
             Add( morphism_list, [ ProjectionInFactorOfDirectSum( objects_list, projection_number ), irr ] );
             
@@ -454,25 +448,32 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         return SemisimpleCategoryMorphism( direct_sum_object, morphism_list, semisimple_objects_list[ projection_number ] );
         
     end );
-#     
-#     ##
-#     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-#       function( diagram, sink, direct_sum )
-#         local underlying_matrix_of_universal_morphism, morphism;
-#         
-#         underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
-#         
-#         for morphism in sink{ [ 2 .. Length( sink ) ] } do
-#           
-#           underlying_matrix_of_universal_morphism := 
-#             UnionOfColumns( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
-#           
-#         od;
-#         
-#         return VectorSpaceMorphism( Source( sink[1] ), underlying_matrix_of_universal_morphism, direct_sum );
-#       
-#     end );
-#     
+    
+    ##
+    AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
+      function( diagram, source, direct_sum_object )
+        local test_object, support, morphism_list, irr, irr_diagram, irr_source;
+        
+        test_object := Source( source[1] );
+        
+        support := Set( Concatenation( Support( direct_sum_object ), Support( test_object ) ) );
+        
+        morphism_list := [ ];
+        
+        for irr in support do
+            
+            irr_diagram := List( diagram, obj -> Component( obj, irr ) );
+            
+            irr_source := List( source, morphism -> Component( morphism, irr ) );
+            
+            Add( morphism_list, [ UniversalMorphismIntoDirectSum( irr_diagram, irr_source ), irr ] );
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( test_object, morphism_list, direct_sum_object );
+      
+    end );
+    
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
       function( semisimple_objects_list, injection_number, direct_sum_object )
@@ -488,7 +489,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             for elem in semisimple_objects_list do
                 
-                Add( objects_list, VectorSpaceObject( Multiplicity( elem, irr ), field ) );
+                Add( objects_list, Component( elem, irr ) );
                 
             od;
             
@@ -499,25 +500,32 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         return SemisimpleCategoryMorphism( semisimple_objects_list[ injection_number ], morphism_list, direct_sum_object );
         
     end );
-#     
-#     ##
-#     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-#       function( diagram, sink, coproduct )
-#         local underlying_matrix_of_universal_morphism, morphism;
-#         
-#         underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
-#         
-#         for morphism in sink{ [ 2 .. Length( sink ) ] } do
-#           
-#           underlying_matrix_of_universal_morphism := 
-#             UnionOfRows( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
-#           
-#         od;
-#         
-#         return VectorSpaceMorphism( coproduct, underlying_matrix_of_universal_morphism, Range( sink[1] ) );
-#         
-#     end );
-#     
+    
+    ##
+    AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
+      function( diagram, sink, direct_sum_object )
+        local test_object, support, morphism_list, irr, irr_diagram, irr_sink;
+        
+        test_object := Range( sink[1] );
+        
+        support := Set( Concatenation( Support( direct_sum_object ), Support( test_object ) ) );
+        
+        morphism_list := [ ];
+        
+        for irr in support do
+            
+            irr_diagram := List( diagram, obj -> Component( obj, irr ) );
+            
+            irr_sink := List( sink, morphism -> Component( morphism, irr ) );
+            
+            Add( morphism_list, [ UniversalMorphismFromDirectSum( irr_diagram, irr_sink ), irr ] );
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( direct_sum_object, morphism_list, test_object );
+      
+    end );
+    
 #     ## Basic Operations for an Abelian category
 #     ##
 #     AddKernelObject( category,

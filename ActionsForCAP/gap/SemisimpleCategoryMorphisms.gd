@@ -50,3 +50,17 @@ DeclareAttribute( "SemisimpleCategoryMorphismList",
 #! @Arguments alpha
 DeclareAttribute( "Support",
                   IsSemisimpleCategoryMorphism );
+
+##
+DeclareAttribute( "UnderlyingFieldForHomalg",
+                  IsSemisimpleCategoryMorphism );
+
+####################################
+##
+#! @Section Operations
+##
+####################################
+
+##
+DeclareOperation( "Component", [ IsSemisimpleCategoryMorphism, IsObject ] );
+

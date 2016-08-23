@@ -36,14 +36,17 @@ InstallMethod( SemisimpleCategoryObject,
                [ IsList, IsCapCategory ],
                
   function( semisimple_object_list, category )
-    local semisimple_category_object, normalized_semisimple_object_list;
+    local semisimple_category_object, normalized_semisimple_object_list, field;
     
     semisimple_category_object := rec( );
     
     normalized_semisimple_object_list := NormalizeSemisimpleCategoryObjectList( semisimple_object_list, category );
     
+    field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
+    
     ObjectifyWithAttributes( semisimple_category_object, TheTypeOfSemisimpleCategoryObjects,
-                             SemisimpleCategoryObjectList, normalized_semisimple_object_list
+                             SemisimpleCategoryObjectList, normalized_semisimple_object_list,
+                             UnderlyingFieldForHomalg, field
     );
 
     Add( category, semisimple_category_object );
@@ -113,8 +116,14 @@ InstallMethod( Support,
     
 end );
 
+####################################
 ##
-InstallMethod( Multiplicity, 
+## Operations
+##
+####################################
+
+##
+InstallMethod( Multiplicity,
                [ IsSemisimpleCategoryObject, IsObject ],
                
   function( semisimple_category_object, irr )
@@ -131,6 +140,19 @@ InstallMethod( Multiplicity,
         return coeff[1];
         
     fi;
+    
+end );
+
+##
+InstallMethod( Component,
+               [ IsSemisimpleCategoryObject, IsObject ],
+               
+  function( semisimple_category_object, irr )
+    local multiplicity;
+    
+    multiplicity := Multiplicity( semisimple_category_object, irr );
+    
+    return VectorSpaceObject( multiplicity, UnderlyingFieldForHomalg( semisimple_category_object ) );
     
 end );
 

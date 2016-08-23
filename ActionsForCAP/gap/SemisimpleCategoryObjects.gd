@@ -50,6 +50,9 @@ DeclareAttribute( "SemisimpleCategoryObjectList",
 DeclareAttribute( "Support",
                   IsSemisimpleCategoryObject );
 
+DeclareAttribute( "UnderlyingFieldForHomalg",
+                  IsSemisimpleCategoryObject );
+
 ####################################
 ##
 #! @Section Operations
@@ -61,3 +64,6 @@ DeclareOperation( "NormalizeSemisimpleCategoryObjectList", [ IsList, IsCapCatego
 
 ##
 DeclareOperation( "Multiplicity", [ IsSemisimpleCategoryObject, IsObject ] );
+
+##
+DeclareOperation( "Component", [ IsSemisimpleCategoryObject, IsObject ] );
