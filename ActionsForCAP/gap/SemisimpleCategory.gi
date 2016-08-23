@@ -588,60 +588,67 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
-#     ##
-#     AddCokernelObject( category,
-#       function( morphism )
-#         local homalg_matrix;
-#         
-#         homalg_matrix := UnderlyingMatrix( morphism );
-#         
-#         return VectorSpaceObject( NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ), homalg_field );
-#         
-#     end );
-#     
-#     ##
-#     AddCokernelProjection( category,
-#       function( morphism )
-#         local cokernel_proj, cokernel_obj;
-#         
-#         cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
-#         
-#         cokernel_obj := VectorSpaceObject( NrColumns( cokernel_proj ), homalg_field );
-#         
-#         return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
-#         
-#     end );
-#     
-#     ##
-#     AddCokernelProjectionWithGivenCokernelObject( category,
-#       function( morphism, cokernel )
-#         local cokernel_proj;
-#         
-#         cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
-#         
-#         return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel );
-#         
-#     end );
-#     
-#     ##
-#     AddColiftAlongEpimorphism( category,
-#       function( epimorphism, test_morphism )
-#         local left_divide;
-#         
-#         left_divide := LeftDivide( UnderlyingMatrix( epimorphism ), UnderlyingMatrix( test_morphism ) );
-#         
-#         if left_divide = fail then
-#           
-#           return fail;
-#           
-#         fi;
-#         
-#         return VectorSpaceMorphism( Range( epimorphism ),
-#                                     left_divide,
-#                                     Range( test_morphism ) );
-#         
-#     end );
-#     
+    ##
+    AddCokernelObject( category,
+      function( morphism )
+        local support, object_list;
+        
+        support := Support( Range( morphism ) );
+        
+        object_list := List( support, irr -> [ Dimension( CokernelObject( Component( morphism, irr ) ) ), irr ] );
+        
+        return SemisimpleCategoryObject( object_list, category );
+        
+    end );
+    
+    ##
+    AddCokernelProjection( category,
+      function( morphism )
+        local support, result_morphism_list, cokernel_object_list, cokernel_object;
+        
+        support := Support( Range( morphism ) );
+        
+        result_morphism_list := List( support, irr -> [ CokernelProjection( Component( morphism, irr ) ), irr ] );
+        
+        cokernel_object_list := List( result_morphism_list, elem -> [ Dimension( Range( elem[1] ) ), elem[2] ] );
+        
+        cokernel_object := SemisimpleCategoryObject( cokernel_object_list, category );
+        
+        return SemisimpleCategoryMorphism( Range( morphism ), result_morphism_list, cokernel_object );
+        
+    end );
+    
+    ##
+    AddCokernelProjectionWithGivenCokernelObject( category,
+      function( morphism, cokernel_object )
+        local support, result_morphism_list;
+        
+        support := Support( Range( morphism ) );
+        
+        result_morphism_list := List( support, irr -> [ CokernelProjection( Component( morphism, irr ) ), irr ] );
+        
+        return SemisimpleCategoryMorphism( Range( morphism ), result_morphism_list, cokernel_object );
+        
+    end );
+    
+    ##
+    AddColiftAlongEpimorphism( category,
+      function( epimorphism, test_morphism )
+        local source, range, support, morphism_list;
+        
+        source := Range( epimorphism );
+        
+        range := Range( test_morphism );
+        
+        support := Set( Concatenation( Support( source ), Support( range ) ) );
+        
+        morphism_list := List( support, irr ->
+                           [ ColiftAlongEpimorphism( Component( epimorphism, irr ), Component( test_morphism, irr ) ), irr ] );
+        
+        return SemisimpleCategoryMorphism( source, morphism_list, range );
+        
+    end );
+    
 #     ## Basic Operation Properties
 #     ##
 #     AddIsZeroForObjects( category,
