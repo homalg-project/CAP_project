@@ -529,11 +529,30 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
     end );
     
-#     ##
-#     AddDirectSumFunctorial( category,
-#       function( diagram )
-#       
-#     end );
+    ##
+    AddDirectSumFunctorial( category,
+      function( diagram )
+        local source, range, support, irr, irr_diagram, morphism_list;
+        
+        source := DirectSum( List( diagram, Source ) );
+        
+        range := DirectSum( List( diagram, Range ) );
+        
+        support := Set( Concatenation( Support( source ), Support( range ) ) );
+        
+        morphism_list := [ ];
+        
+        for irr in support do
+            
+            irr_diagram := List( diagram, mor -> Component( mor, irr ) );
+            
+            Add( morphism_list, [ DirectSumFunctorial( irr_diagram ), irr ] );
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( source, morphism_list, range );
+        
+    end );
     
     ## Basic Operations for an Abelian category
     ##
