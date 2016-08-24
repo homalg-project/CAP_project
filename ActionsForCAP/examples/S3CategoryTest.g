@@ -33,3 +33,5 @@ ob1 := SemisimpleCategoryObject( [ [ 1, chi_1 ] ], semisimple_cat );
 ob2 := SemisimpleCategoryObject( [ [ 1, chi_2 ] ], semisimple_cat );
 
 ob3 := SemisimpleCategoryObject( [ [ 1, chi_3 ] ], semisimple_cat );
+
+AssociatorLeftToRight( b, b, b );
