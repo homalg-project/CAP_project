@@ -529,6 +529,12 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
     end );
     
+#     ##
+#     AddDirectSumFunctorial( category,
+#       function( diagram )
+#       
+#     end );
+    
     ## Basic Operations for an Abelian category
     ##
     AddKernelObject( category,
