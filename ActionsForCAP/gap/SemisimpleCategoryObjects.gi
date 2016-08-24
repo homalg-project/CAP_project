@@ -156,6 +156,77 @@ InstallMethod( Component,
     
 end );
 
+##
+InstallMethod( TestPentagonIdentity,
+               [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ],
+               
+  function( object_a, object_b, object_c, object_d )
+    local morphism_1, morphism_2;
+    
+    morphism_1 :=
+      TensorProductOnMorphisms( AssociatorLeftToRight( object_a, object_b, object_c ), IdentityMorphism( object_d ) );
+    
+    morphism_1 := PreCompose( morphism_1,
+      AssociatorLeftToRight( object_a, TensorProductOnObjects( object_b, object_c ), object_d ) );
+    
+    morphism_1 := PreCompose( morphism_1,
+      TensorProductOnMorphisms( IdentityMorphism( object_a ), AssociatorLeftToRight( object_b, object_c, object_d ) ) );
+    
+    morphism_2 := AssociatorLeftToRight( TensorProductOnObjects( object_a, object_b ), object_c, object_d );
+    
+    morphism_2 := PreCompose( morphism_2,
+      AssociatorLeftToRight( object_a, object_b, TensorProductOnObjects( object_c, object_d ) ) );
+    
+    return morphism_1 = morphism_2;
+    
+end );
+
+##
+InstallMethod( TestPentagonIdentityForAllQuadruplesInList,
+               [ IsList ],
+               
+  function( object_list )
+    local a, b, c, d, size, list, test, string;
+    
+    size := Size( object_list );
+    
+    list := [ 1 .. size ];
+    
+    for a in list do
+        
+        for b in list do
+            
+            for c in list do
+                
+                for d in list do
+                    
+                    test := TestPentagonIdentity( object_list[a], object_list[b], object_list[c], object_list[d] );
+                    
+                    string := Concatenation( "(", String( a ), ", ", String( b ), ", ", String( c ), ", ", String( d ), ")" );
+                    
+                    if not test then
+                        
+                        Print( Concatenation( "The quadruple ", string, " FAILED! \n" ) ); 
+                        
+                    else
+                        
+                        Print( Concatenation( "The quadruple ", string, " is okay! \n" ) ); 
+                        
+                    fi;
+                    
+                od;
+                
+            od;
+            
+            
+        od;
+        
+    od;
+    
+    
+end );
+
+
 ####################################
 ##
 ## View

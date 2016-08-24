@@ -28,4 +28,8 @@ beta := VectorSpaceMorphism( VectorSpaceObject( 3, Q ), HomalgMatrix( [ [ 1, 2 ]
 
 mor := SemisimpleCategoryMorphism( a, [ [ MorphismIntoZeroObject( VectorSpaceObject( 1, Q ) ), chi_1 ], [ alpha, chi_2 ], [ beta, chi_3 ] ], b  );
 
+ob1 := SemisimpleCategoryObject( [ [ 1, chi_1 ] ], semisimple_cat );
 
+ob2 := SemisimpleCategoryObject( [ [ 1, chi_2 ] ], semisimple_cat );
+
+ob3 := SemisimpleCategoryObject( [ [ 1, chi_3 ] ], semisimple_cat );

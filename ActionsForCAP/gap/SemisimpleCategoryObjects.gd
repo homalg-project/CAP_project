@@ -67,3 +67,10 @@ DeclareOperation( "Multiplicity", [ IsSemisimpleCategoryObject, IsObject ] );
 
 ##
 DeclareOperation( "Component", [ IsSemisimpleCategoryObject, IsObject ] );
+
+##
+DeclareOperation( "TestPentagonIdentity",
+              [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ] );
+
+##
+DeclareOperation( "TestPentagonIdentityForAllQuadruplesInList", [ IsList ] );
