@@ -19,7 +19,8 @@ InstallValue( CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY, rec( ) );
 
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
   function( category, tensor_unit, associator_data )
-    local field, membership_function, associator_on_irreducibles;
+    local field, membership_function, associator_on_irreducibles, 
+          distributivity_expanding_for_triple, distributivity_factoring_for_triple;
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
     
@@ -799,7 +800,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
-    ##
+    ## -- Helper functions for the associator --
+    
     ## the input are objects whose underlying list is of the form [ 1, irr ].
     associator_on_irreducibles := function( object_1, object_2, object_3 )
       local irr_1, irr_2, irr_3, irr, data, morphism_list, object, pos_1, 
@@ -816,7 +818,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       object := TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 );
       
       ## handle the cases where one of the inputs is the unit
-      if IsTrivial( irr_1 ) or IsTrivial( irr_2 ) or IsTrivial( irr_3 ) then
+      if IsGIrreducibleUnitObject( irr_1 ) or IsGIrreducibleUnitObject( irr_2 ) or IsGIrreducibleUnitObject( irr_3 ) then
           
           return IdentityMorphism( object );
           
@@ -854,10 +856,271 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
     end;
     
+    ##
+    distributivity_expanding_for_triple := function( summands, object_1, object_2, left_term )
+      local nr_summands, projection_list, id_1, id_2, diagram;
+      
+      nr_summands := Size( summands );
+      
+      projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSum( summands, i ) );
+      
+      id_1 := IdentityMorphism( object_1 );
+      
+      id_2 := IdentityMorphism( object_2 );
+      
+      if left_term then
+          
+          projection_list :=
+            List( projection_list, mor ->  TensorProductOnMorphisms( TensorProductOnMorphisms( mor, id_1 ), id_2 ) );
+          
+      else
+          
+          projection_list :=
+            List( projection_list, mor ->  TensorProductOnMorphisms( TensorProductOnMorphisms( id_1, mor ), id_2 ) );
+          
+      fi;
+      
+      diagram := List( projection_list, mor -> Range( mor ) );
+      
+      return UniversalMorphismIntoDirectSum( diagram, projection_list );
+      
+    end;
+    
+    ##
+    distributivity_factoring_for_triple := function( summands, object_1, object_2, right_term )
+      local nr_summands, injection_list, id_1, id_2, diagram;
+      
+      nr_summands := Size( summands );
+      
+      injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( summands, i ) );
+      
+      id_1 := IdentityMorphism( object_1 );
+      
+      id_2 := IdentityMorphism( object_2 );
+      
+      if right_term then
+          
+          injection_list :=
+            List( injection_list, mor -> TensorProductOnMorphisms( id_1, TensorProductOnMorphisms( id_2, mor ) ) );
+          
+      else
+          
+          injection_list :=
+            List( injection_list, mor -> TensorProductOnMorphisms( id_1, TensorProductOnMorphisms( mor, id_2 ) ) );
+          
+      fi;
+      
+      diagram := List( injection_list, mor -> Source( mor ) );
+      
+      return UniversalMorphismFromDirectSum( diagram, injection_list );
+      
+    end;
+    
+    ##
     AddAssociatorLeftToRightWithGivenTensorProducts( category,
-      function( new_source, object_1, object_2, object_3, new_range )
+      function( new_source, object_a, object_b, object_c, new_range )
+        local object_a_list, object_b_list, object_c_list, result_morphism,
+              object_a_expanded_list, object_b_expanded_list, object_c_expanded_list,
+              elem, morphism, summand_list, inner_summand_list, outer_summand_list, innermost_summand_list,
+              elem_a, elem_b, elem_c;
         
-        return associator_on_irreducibles( object_1, object_2, object_3 );
+        object_a_list := SemisimpleCategoryObjectList( object_a );
+        
+        object_b_list := SemisimpleCategoryObjectList( object_b );
+        
+        object_c_list := SemisimpleCategoryObjectList( object_c );
+        
+        if IsEmpty( object_a_list ) or IsEmpty( object_b_list ) or IsEmpty( object_c_list ) then
+            
+            return ZeroMorphism( new_source, new_range );
+            
+        fi;
+        
+        object_a_list := List( object_a_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        
+        object_b_list := List( object_b_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        
+        object_c_list := List( object_c_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        
+        result_morphism := IdentityMorphism( new_source );
+        
+        object_a_expanded_list := [ ];
+        
+        for elem in object_a_list do
+            
+            Append( object_a_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+            
+        od;
+        
+        object_b_expanded_list := [ ];
+        
+        for elem in object_b_list do
+            
+            Append( object_b_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+            
+        od;
+        
+        object_c_expanded_list := [ ];
+        
+        for elem in object_c_list do
+            
+            Append( object_c_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+            
+        od;
+        
+        ## morphism_1
+        if Size( object_a_expanded_list ) > 1 then
+            
+            morphism := distributivity_expanding_for_triple( object_a_expanded_list, object_b, object_c, true );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        ## morphism_2
+        if Size( object_b_expanded_list ) > 1 then
+            
+            summand_list := [ ];
+            
+            for elem in object_a_list do
+                
+                morphism := distributivity_expanding_for_triple( object_b_expanded_list, elem[2], object_c, false );
+                
+                Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( summand_list );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        ## morphism_3
+        if Size( object_c_expanded_list ) > 1 then
+            
+            outer_summand_list := [ ];
+            
+            for elem_a in object_a_list do
+                
+                inner_summand_list := [ ];
+                
+                for elem_b in object_b_list do
+                    
+                    morphism := 
+                      LeftDistributivityExpanding( TensorProductOnObjects( elem_a[2], elem_b[2] ), object_c_expanded_list );
+                    
+                    Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
+                    
+                od;
+                
+                morphism := DirectSumFunctorial( inner_summand_list );
+                
+                Append( outer_summand_list, List( [ 1 .. elem_a[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( outer_summand_list );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        ## morphism_4
+        
+        outer_summand_list := [ ];
+        
+        for elem_a in object_a_list do
+            
+            inner_summand_list := [ ];
+            
+            for elem_b in object_b_list do
+                
+                innermost_summand_list := [ ];
+                
+                for elem_c in object_c_list do
+                    
+                    morphism := associator_on_irreducibles( elem_a[2], elem_b[2], elem_c[2] );
+                    
+                    Append( innermost_summand_list, List( [ 1 .. elem_c[1] ], i -> morphism ) );
+                    
+                od;
+                
+                morphism := DirectSumFunctorial( innermost_summand_list );
+                
+                Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( inner_summand_list );
+            
+            Append( outer_summand_list, List( [ 1 .. elem_a[1] ], i -> morphism ) );
+            
+        od;
+        
+        morphism := DirectSumFunctorial( outer_summand_list );
+        
+        result_morphism := PreCompose( result_morphism, morphism );
+        
+        ## morphism_5
+        if Size( object_c_expanded_list ) > 1 then
+            
+            outer_summand_list := [ ];
+            
+            for elem_a in object_a_list do
+                
+                inner_summand_list := [ ];
+                
+                for elem_b in object_b_list do
+                    
+                    morphism :=
+                      distributivity_factoring_for_triple( object_c_expanded_list, elem_a[2], elem_b[2], true );
+                    
+                    Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
+                    
+                od;
+                
+                morphism := DirectSumFunctorial( inner_summand_list );
+                
+                Append( outer_summand_list, List( [ 1 .. elem_a[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( outer_summand_list );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        ## morphism_6
+        if Size( object_b_expanded_list ) > 1 then
+            
+            summand_list := [ ];
+            
+            for elem in object_a_list do
+                
+                morphism := distributivity_factoring_for_triple( object_b_expanded_list, elem[2], object_c, false );
+                
+                Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( summand_list );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        ## morphism_7
+        if Size( object_a_expanded_list ) > 1 then
+            
+            morphism := RightDistributivityFactoring( object_a_expanded_list, TensorProductOnObjects( object_b, object_c ) );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        return result_morphism;
         
     end );
 #     

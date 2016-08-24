@@ -175,12 +175,12 @@ end );
 ##
 ####################################
 
-InstallMethod( IsTrivial,
+InstallMethod( IsGIrreducibleUnitObject,
                [ IsGIrreducibleObject ],
                
   function( object )
     
-    return IsTrivial( UnderlyingCharacter( object ) );
+    return IsOne( UnderlyingCharacter( object ) );
     
 end );
 
