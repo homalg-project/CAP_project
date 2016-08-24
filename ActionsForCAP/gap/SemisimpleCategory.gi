@@ -9,6 +9,8 @@
 ##
 #############################################################################
 
+InstallValue( CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY, rec( ) );
+
 ####################################
 ##
 ## Basic operations
@@ -17,7 +19,7 @@
 
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
   function( category, tensor_unit, associator_data )
-    local field, membership_function;
+    local field, membership_function, associator_on_irreducibles;
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
     
@@ -798,7 +800,66 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end );
     
     ##
-
+    ## the input are objects whose underlying list is of the form [ 1, irr ].
+    associator_on_irreducibles := function( object_1, object_2, object_3 )
+      local irr_1, irr_2, irr_3, irr, data, morphism_list, object, pos_1, 
+            pos_2, pos_3, size, homalg_matrix, source, range, i, string;
+      
+      irr_1 := SemisimpleCategoryObjectList( object_1 )[1][2];
+      
+      irr_2 := SemisimpleCategoryObjectList( object_2 )[1][2];
+      
+      irr_3 := SemisimpleCategoryObjectList( object_3 )[1][2];
+      
+      irr := UnderlyingIrreducibleCharacters( irr_1 );
+      
+      object := TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 );
+      
+      ## handle the cases where one of the inputs is the unit
+      if IsTrivial( irr_1 ) or IsTrivial( irr_2 ) or IsTrivial( irr_3 ) then
+          
+          return IdentityMorphism( object );
+          
+      fi;
+      
+      data :=
+        associator_data[UnderlyingCharacterNumber( irr_1 )][UnderlyingCharacterNumber( irr_2 )][UnderlyingCharacterNumber( irr_3 )];
+      
+      size := Size( irr );
+      
+      morphism_list := [ ];
+      
+      for i in [ 1 .. size ] do
+          
+          if not IsEmpty( data[i] ) then
+              
+              ## this is the workaround suggested in the documentation of EvalString
+              CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.field := field;
+              
+              string := ReplacedString( data[i], "field", "CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.field" );
+              
+              homalg_matrix := EvalString( string );
+              
+              source := VectorSpaceObject( NrRows( homalg_matrix ), field );
+              
+              range := VectorSpaceObject( NrColumns( homalg_matrix ), field );
+              
+              Add( morphism_list, [ VectorSpaceMorphism( source, homalg_matrix, range ), GIrreducibleObject( irr[i] ) ] );
+              
+          fi;
+          
+      od;
+      
+      return SemisimpleCategoryMorphism( object, morphism_list, object );
+      
+    end;
+    
+    AddAssociatorLeftToRightWithGivenTensorProducts( category,
+      function( new_source, object_1, object_2, object_3, new_range )
+        
+        return associator_on_irreducibles( object_1, object_2, object_3 );
+        
+    end );
 #     
 #     ##
 #     AddBraidingWithGivenTensorProducts( category,

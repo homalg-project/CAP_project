@@ -171,6 +171,21 @@ end );
 
 ####################################
 ##
+## Properties
+##
+####################################
+
+InstallMethod( IsTrivial,
+               [ IsGIrreducibleObject ],
+               
+  function( object )
+    
+    return IsTrivial( UnderlyingCharacter( object ) );
+    
+end );
+
+####################################
+##
 ## View
 ##
 ####################################

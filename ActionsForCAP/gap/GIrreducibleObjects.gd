@@ -46,6 +46,14 @@ DeclareAttribute( "SecondExteriorPower", IsGIrreducibleObject );
 
 ####################################
 ##
+#! @Section Properties
+##
+####################################
+
+DeclareProperty( "IsTrivial", IsGIrreducibleObject );
+
+####################################
+##
 #! @Section Operations
 ##
 ####################################
