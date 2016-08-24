@@ -32,8 +32,8 @@ BindGlobal( "TheTypeOfVectorSpaceObjects",
 ####################################
 
 ##
-InstallMethod( VectorSpaceObject,
-               [ IsInt, IsFieldForHomalg ],
+InstallMethodWithCache( VectorSpaceObject,
+                        [ IsInt, IsFieldForHomalg ],
                
   function( dimension, homalg_field )
     local category, vector_space_object;
