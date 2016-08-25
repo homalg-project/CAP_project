@@ -11,7 +11,7 @@
 
 ####################################
 ##
-## Constructors
+#! @Section Constructors
 ##
 ####################################
 
@@ -25,7 +25,7 @@ DeclareOperation( "SemisimpleCategory",
 
 ####################################
 ##
-## Attributes
+#! @Section Attributes
 ##
 ####################################
 
@@ -38,7 +38,7 @@ DeclareAttribute( "UnderlyingCategoryForSemisimpleCategory",
 
 ####################################
 ##
-## Internals
+#! @Section Internals
 ##
 ####################################
 

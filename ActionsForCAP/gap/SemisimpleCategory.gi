@@ -1253,14 +1253,14 @@ InstallMethod( SemisimpleCategory,
   function( homalg_field, membership_function, tensor_unit, associator_filename )
     local name;
     
-    name := NameFunction( membership_function );
+    name := Concatenation( "The semisimple category with irreducibles given by ", NameFunction( membership_function ) );
     
     return SemisimpleCategory(
              homalg_field,
              membership_function,
              tensor_unit,
              associator_filename,
-             Concatenation( "membership function ", name ) );
+             name );
     
 end );
 
@@ -1268,8 +1268,8 @@ end );
 InstallMethod( SemisimpleCategory,
                [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsString ],
                
-  function( homalg_field, membership_function, tensor_unit, associator_filename, membership_function_name )
-    local stream, command, name, semisimple_category, underlying_category, associator_data;
+  function( homalg_field, membership_function, tensor_unit, associator_filename, name )
+    local stream, command, semisimple_category, underlying_category, associator_data;
     
     stream := InputTextFile( associator_filename );
     
@@ -1278,11 +1278,6 @@ InstallMethod( SemisimpleCategory,
     associator_data := EvalString( command );
     
     underlying_category := MatrixCategory( homalg_field );
-    
-    name := Name( underlying_category );
-    
-    name := Concatenation( "The semisimple category with irreducibles given by ", membership_function_name, 
-                           ", with underlying category: ", name );
     
     semisimple_category := CreateCapCategory( name );
     
