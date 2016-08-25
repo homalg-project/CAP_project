@@ -17,3 +17,6 @@
 
 ##
 DeclareAttribute( "RepresentationCategory", IsGroup );
+
+##
+DeclareOperation( "RepresentationCategoryObject", [ IsList ] );

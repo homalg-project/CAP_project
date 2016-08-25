@@ -72,3 +72,31 @@ InstallMethod( RepresentationCategory,
     return SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, name );
     
 end );
+
+##
+InstallMethod( RepresentationCategoryObject,
+               [ IsList ],
+               
+  function( object_list )
+    local group, category;
+    
+    group := UnderlyingGroup( object_list[1][2] );
+    
+    category := RepresentationCategory( group );
+    
+    object_list := List( object_list, elem -> [ elem[1], GIrreducibleObject( elem[2] ) ] );
+    
+    return SemisimpleCategoryObject( object_list, category );
+    
+end );
+
+##
+InstallMethod( RepresentationCategoryObject,
+               [ IsCharacter ],
+               
+  function( character )
+    local group, category;
+    
+    return RepresentationCategoryObject( [ [ 1, character ] ] );
+    
+end );
