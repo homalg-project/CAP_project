@@ -118,7 +118,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
           direct_sum_attributes_operation, create_function_primitive_type, create_function_object,
           create_function_morphism_no_new_object, create_function_morphism_new_source,
           create_function_morphism_new_range, attributes, recnames, name, func, pos, function_to_add, add_function,
-          create_function_object_no_arguments, create_function_morphism_or_fail, universal_object;
+          create_function_object_no_arguments, create_function_morphism_or_fail, universal_object, entry;
     
     category_with_attributes := structure_record.category_with_attributes;
     
