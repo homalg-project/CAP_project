@@ -849,10 +849,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
       fi;
       
-      data :=
-        associator_data[UnderlyingCharacterNumber( irr_1 )][UnderlyingCharacterNumber( irr_2 )][UnderlyingCharacterNumber( irr_3 )];
-      
-      morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, data, field );
+      morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
       
       return SemisimpleCategoryMorphism( object, morphism_list, object );
       

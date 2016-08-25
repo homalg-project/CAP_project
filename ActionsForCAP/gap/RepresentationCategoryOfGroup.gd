@@ -24,3 +24,6 @@ DeclareOperation( "RepresentationCategoryObject", [ IsList ] );
 ##
 DeclareOperation( "RepresentationCategoryMorphism", [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ] );
 
+##
+DeclareAttribute( "GeneratingRootOfUnityForFieldForHomalg", IsFieldForHomalg );
+

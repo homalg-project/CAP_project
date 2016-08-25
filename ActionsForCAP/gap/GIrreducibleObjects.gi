@@ -173,14 +173,23 @@ end );
 InstallMethod( AssociatorFromData,
                [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg ],
                
-  function( irr_1, irr_2, irr_3, data, field )
-    local irr, size, morphism_list, i, string, homalg_matrix, source, range;
+  function( irr_1, irr_2, irr_3, associator_data, field )
+    local data, irr, size, morphism_list, i, string, homalg_matrix, source, range;
+    
+    data :=
+        associator_data[UnderlyingCharacterNumber( irr_1 )][UnderlyingCharacterNumber( irr_2 )][UnderlyingCharacterNumber( irr_3 )];
     
     irr := UnderlyingIrreducibleCharacters( irr_1 );
     
     size := Size( irr );
-      
+    
     morphism_list := [ ];
+    
+    if Conductor( field ) > 1 then
+        
+        CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.eps := GeneratingRootOfUnityForFieldForHomalg( field );
+        
+    fi;
     
     for i in [ 1 .. size ] do
         
@@ -190,6 +199,12 @@ InstallMethod( AssociatorFromData,
             CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.field := field;
             
             string := ReplacedString( data[i], "field", "CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.field" );
+            
+            if Conductor( field ) > 1 then
+                
+                string := ReplacedString( string, "eps", "CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.eps" );
+                
+            fi;
             
             homalg_matrix := EvalString( string );
             

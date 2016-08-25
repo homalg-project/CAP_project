@@ -21,7 +21,7 @@ InstallMethod( RepresentationCategory,
                
   function( group )
     local group_string, name, databasekeys_filename, stream, command, database_keys,
-          group_data, irr, conductor, unit_number, 
+          group_data, irr, conductor, unit_number, eps,
           field, membership_function, tensor_unit, associator_filename;
     
     group_string := String( group );
@@ -65,7 +65,13 @@ InstallMethod( RepresentationCategory,
         
         field := HomalgCyclotomicFieldInMAGMA( conductor, "eps" );
         
+        eps := HomalgRingElement( "eps", field );
+        
+        SetGeneratingRootOfUnityForFieldForHomalg( field, eps );
+        
     fi;
+    
+    SetConductor( field, conductor );
     
     tensor_unit := GIrreducibleObject( irr[ unit_number ] );
     
