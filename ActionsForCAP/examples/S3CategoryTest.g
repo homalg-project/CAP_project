@@ -1,39 +1,15 @@
 LoadPackage( "ActionsForCAP" );
-LoadPackage( "RingsForHomalg" );
-Q := HomalgFieldOfRationalsInSingular();
 
 G := SymmetricGroup( 3 );
 
+RepG := RepresentationCategory( G );
+
 irr := Irr( G );
 
-## G category
+v1 := RepresentationCategoryObject( irr[1] );
 
-membership_function := IsGIrreducibleObject;
+v2 := RepresentationCategoryObject( irr[2] );
 
-chi_1 := GIrreducibleObject( irr[1] );
+v3 := RepresentationCategoryObject( irr[3] );
 
-chi_2 := GIrreducibleObject( irr[2] );
-
-chi_3 := GIrreducibleObject( irr[3] );
-
-semisimple_cat := SemisimpleCategory( Q, membership_function, chi_3, "S3Associator.g" );
-
-a := SemisimpleCategoryObject( [ [ 1, chi_1 ], [ 2, chi_2 ], [ 3, chi_3 ] ], semisimple_cat );
-
-b := SemisimpleCategoryObject( [ [ 1, chi_2 ], [ 2, chi_3 ] ], semisimple_cat );
-
-alpha := VectorSpaceMorphism( VectorSpaceObject( 2, Q ), HomalgMatrix( [ [ 1 ], [ -1 ] ], 2, 1, Q ), VectorSpaceObject( 1, Q ) );
-
-beta := VectorSpaceMorphism( VectorSpaceObject( 3, Q ), HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ] ], 3, 2, Q ), VectorSpaceObject( 2, Q ) );
-
-mor := SemisimpleCategoryMorphism( a, [ [ MorphismIntoZeroObject( VectorSpaceObject( 1, Q ) ), chi_1 ], [ alpha, chi_2 ], [ beta, chi_3 ] ], b  );
-
-ob1 := SemisimpleCategoryObject( [ [ 1, chi_1 ] ], semisimple_cat );
-
-ob2 := SemisimpleCategoryObject( [ [ 1, chi_2 ] ], semisimple_cat );
-
-ob3 := SemisimpleCategoryObject( [ [ 1, chi_3 ] ], semisimple_cat );
-
-#AssociatorLeftToRight( b, b, b );
-
-L := [ ob1, ob2, ob3 ];
+L := [ v1, v2, v3 ];

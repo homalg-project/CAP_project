@@ -1,35 +1,39 @@
 LoadPackage( "ActionsForCAP" );
-Q := HomalgFieldOfRationals();
+LoadPackage( "RingsForHomalg" );
+Q := HomalgFieldOfRationalsInSingular();
 
-membership_function := IsInt;
+G := SymmetricGroup( 3 );
 
-semisimple_cat := SemisimpleCategory( Q, membership_function );
+irr := Irr( G );
 
-s := SemisimpleCategoryObject( [ [ 3, 9 ], [ 4, 9 ], [ 10, 8 ], [ 2, 9 ] ], semisimple_cat );
+## G category
 
-SemisimpleCategoryObjectList( s );
-#! [ [ 10, 8 ], [ 9, 9 ] ]
+membership_function := IsGIrreducibleObject;
 
-a := SemisimpleCategoryObject( [ [ 1, 0 ], [ 1, 1 ] ], semisimple_cat );
+chi_1 := GIrreducibleObject( irr[1] );
 
-b := SemisimpleCategoryObject( [ [ 2, 1 ], [ 2, 3 ] ], semisimple_cat );
+chi_2 := GIrreducibleObject( irr[2] );
 
-c := SemisimpleCategoryObject( [ [ 4, 0 ], [ 1, 1 ], [ 4, 2 ] ], semisimple_cat );
+chi_3 := GIrreducibleObject( irr[3] );
 
-## creation of mor
-alpha := VectorSpaceMorphism( VectorSpaceObject( 1, Q ), HomalgMatrix( [ [ 1, -1 ] ] ,1, 2, Q ), VectorSpaceObject( 2, Q ) );
+semisimple_cat := SemisimpleCategory( Q, membership_function, chi_3, "S3Associator.g" );
 
-zero1_0 := UniversalMorphismIntoZeroObject( VectorSpaceObject( 1, Q ) );
+a := SemisimpleCategoryObject( [ [ 1, chi_1 ], [ 2, chi_2 ], [ 3, chi_3 ] ], semisimple_cat );
 
-zero0_2 := UniversalMorphismFromZeroObject( VectorSpaceObject( 2, Q ) );
+b := SemisimpleCategoryObject( [ [ 1, chi_2 ], [ 2, chi_3 ] ], semisimple_cat );
 
-mor := SemisimpleCategoryMorphism( a, [ [ zero1_0, 0 ], [ alpha, 1 ], [ zero0_2, 3 ] ], b );
+alpha := VectorSpaceMorphism( VectorSpaceObject( 2, Q ), HomalgMatrix( [ [ 1 ], [ -1 ] ], 2, 1, Q ), VectorSpaceObject( 1, Q ) );
 
-## creation of mor2
-beta := VectorSpaceMorphism( VectorSpaceObject( 2, Q ), HomalgMatrix( [ [ 2 ], [ 3 ] ], 2, 1, Q ), VectorSpaceObject( 1, Q ) );
+beta := VectorSpaceMorphism( VectorSpaceObject( 3, Q ), HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ] ], 3, 2, Q ), VectorSpaceObject( 2, Q ) );
 
-zero0_4 := UniversalMorphismFromZeroObject( VectorSpaceObject( 4, Q ) );
+mor := SemisimpleCategoryMorphism( a, [ [ MorphismIntoZeroObject( VectorSpaceObject( 1, Q ) ), chi_1 ], [ alpha, chi_2 ], [ beta, chi_3 ] ], b  );
 
-zero2_0 := UniversalMorphismIntoZeroObject( VectorSpaceObject( 2, Q ) );
+ob1 := SemisimpleCategoryObject( [ [ 1, chi_1 ] ], semisimple_cat );
 
-mor2 := SemisimpleCategoryMorphism( b, [ [ zero0_4, 0 ], [ beta, 1 ], [ zero0_4, 2 ], [ zero2_0, 3 ] ], c );
+ob2 := SemisimpleCategoryObject( [ [ 1, chi_2 ] ], semisimple_cat );
+
+ob3 := SemisimpleCategoryObject( [ [ 1, chi_3 ] ], semisimple_cat );
+
+#AssociatorLeftToRight( b, b, b );
+
+L := [ ob1, ob2, ob3 ];
