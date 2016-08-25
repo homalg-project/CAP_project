@@ -20,3 +20,7 @@ DeclareAttribute( "RepresentationCategory", IsGroup );
 
 ##
 DeclareOperation( "RepresentationCategoryObject", [ IsList ] );
+
+##
+DeclareOperation( "RepresentationCategoryMorphism", [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ] );
+

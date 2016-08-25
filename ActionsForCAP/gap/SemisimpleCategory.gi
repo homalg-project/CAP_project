@@ -1289,6 +1289,8 @@ InstallMethod( SemisimpleCategory,
     
     SetMembershipFunctionForSemisimpleCategory( semisimple_category, membership_function );
     
+    SetUnderlyingFieldForHomalgForSemisimpleCategory( semisimple_category, homalg_field );
+    
     CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY( semisimple_category, tensor_unit, associator_data );
     
     Finalize( semisimple_category );

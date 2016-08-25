@@ -36,6 +36,10 @@ DeclareAttribute( "MembershipFunctionForSemisimpleCategory",
 DeclareAttribute( "UnderlyingCategoryForSemisimpleCategory",
                   IsCapCategory );
 
+##
+DeclareAttribute( "UnderlyingFieldForHomalgForSemisimpleCategory",
+                  IsCapCategory );
+
 ####################################
 ##
 #! @Section Internals

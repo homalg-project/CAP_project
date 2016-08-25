@@ -100,3 +100,29 @@ InstallMethod( RepresentationCategoryObject,
     return RepresentationCategoryObject( [ [ 1, character ] ] );
     
 end );
+
+##
+InstallMethod( RepresentationCategoryMorphism,
+               [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ],
+               
+  function( source, morphism_list, range )
+    local field, new_morphism_list, elem, vector_space_morphism;
+    
+    field := UnderlyingFieldForHomalgForSemisimpleCategory( CapCategory( source ) );
+    
+    new_morphism_list := [ ];
+    
+    for elem in morphism_list do
+        
+        vector_space_morphism := 
+          VectorSpaceMorphism( VectorSpaceObject( NrRows( elem[1] ), field ),
+                               elem[1], 
+                               VectorSpaceObject( NrColumns( elem[1] ), field ) );
+        
+        Add( new_morphism_list, [ vector_space_morphism, GIrreducibleObject( elem[2] ) ] );
+        
+    od;
+    
+    return SemisimpleCategoryMorphism( source, new_morphism_list, range );
+    
+end );
