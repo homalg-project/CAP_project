@@ -169,6 +169,44 @@ InstallMethod( \*,
     
 end );
 
+##
+InstallMethod( AssociatorFromData,
+               [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg ],
+               
+  function( irr_1, irr_2, irr_3, data, field )
+    local irr, size, morphism_list, i, string, homalg_matrix, source, range;
+    
+    irr := UnderlyingIrreducibleCharacters( irr_1 );
+    
+    size := Size( irr );
+      
+    morphism_list := [ ];
+    
+    for i in [ 1 .. size ] do
+        
+        if not IsEmpty( data[i] ) then
+            
+            ## this is the workaround suggested in the documentation of EvalString
+            CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.field := field;
+            
+            string := ReplacedString( data[i], "field", "CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.field" );
+            
+            homalg_matrix := EvalString( string );
+            
+            source := VectorSpaceObject( NrRows( homalg_matrix ), field );
+            
+            range := VectorSpaceObject( NrColumns( homalg_matrix ), field );
+            
+            Add( morphism_list, [ VectorSpaceMorphism( source, homalg_matrix, range ), GIrreducibleObject( irr[i] ) ] );
+            
+        fi;
+        
+    od;
+    
+    return morphism_list;
+    
+end );
+
 ####################################
 ##
 ## Properties
