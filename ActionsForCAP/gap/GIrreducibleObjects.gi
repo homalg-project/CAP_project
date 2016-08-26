@@ -228,7 +228,7 @@ end );
 ##
 ####################################
 
-InstallMethod( IsGIrreducibleUnitObject,
+InstallMethod( IsOne,
                [ IsGIrreducibleObject ],
                
   function( object )

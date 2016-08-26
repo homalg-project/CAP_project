@@ -49,7 +49,7 @@ end );
 
 ##
 InstallMethodWithCache( SemisimpleCategoryObjectConstructorWithFlatList,
-               [ IsList, IsCapCategory ],
+                        [ IsList, IsCapCategory ],
                
   function( semisimple_object_flat_list, category )
     local size, semisimple_object_list, semisimple_category_object, normalized_semisimple_object_list, field;

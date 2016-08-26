@@ -50,7 +50,7 @@ DeclareAttribute( "SecondExteriorPower", IsGIrreducibleObject );
 ##
 ####################################
 
-DeclareProperty( "IsGIrreducibleUnitObject", IsGIrreducibleObject );
+DeclareProperty( "IsOne", IsGIrreducibleObject );
 
 ####################################
 ##

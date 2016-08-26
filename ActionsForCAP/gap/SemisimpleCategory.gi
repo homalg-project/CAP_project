@@ -19,7 +19,7 @@ InstallValue( CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY, rec( ) );
 
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
   function( category, tensor_unit, associator_data )
-    local field, membership_function, associator_on_irreducibles, 
+    local field, membership_function, associator_on_irreducibles, braiding_on_irreducibles,
           distributivity_expanding_for_triple, distributivity_factoring_for_triple;
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
@@ -829,7 +829,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ## the input are objects whose underlying list is of the form [ 1, irr ].
     associator_on_irreducibles := function( object_1, object_2, object_3 )
-      local irr_1, irr_2, irr_3, irr, data, morphism_list, object, pos_1, 
+      local irr_1, irr_2, irr_3, data, morphism_list, object, pos_1, 
             pos_2, pos_3, size, homalg_matrix, source, range, i, string;
       
       irr_1 := SemisimpleCategoryObjectList( object_1 )[1][2];
@@ -838,12 +838,10 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       irr_3 := SemisimpleCategoryObjectList( object_3 )[1][2];
       
-      irr := UnderlyingIrreducibleCharacters( irr_1 );
-      
       object := TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 );
       
       ## handle the cases where one of the inputs is the unit
-      if IsGIrreducibleUnitObject( irr_1 ) or IsGIrreducibleUnitObject( irr_2 ) or IsGIrreducibleUnitObject( irr_3 ) then
+      if IsOne( irr_1 ) or IsOne( irr_2 ) or IsOne( irr_3 ) then
           
           return IdentityMorphism( object );
           
@@ -1122,29 +1120,61 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         return result_morphism;
         
     end );
-#     
-#     ##
-#     AddBraidingWithGivenTensorProducts( category,
-#       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
-#         local permutation_matrix, dim, dim_1, dim_2;
-#         
-#         dim_1 := Dimension( object_1 );
-#         
-#         dim_2 := Dimension( object_2 );
-#         
-#         dim := Dimension( object_1_tensored_object_2 );
-#         
-#         permutation_matrix := PermutationMat( 
-#                                 PermList( List( [ 1 .. dim ], i -> ( RemInt( i - 1, dim_2 ) * dim_1 + QuoInt( i - 1, dim_2 ) + 1 ) ) ),
-#                                 dim 
-#                               );
-#         
-#         return VectorSpaceMorphism( object_1_tensored_object_2,
-#                                     HomalgMatrix( permutation_matrix, dim, dim, homalg_field ),
-#                                     object_2_tensored_object_1
-#                                   );
-#         
-#     end );
+    
+    ## -- Helper functions for the braiding --
+    
+    ## the input are objects whose underlying list is of the form [ 1, irr ].
+    braiding_on_irreducibles := function( object_1, object_2 )
+      local irr_1, irr_2, object, second_exterior_power, object_list, morphism_list,
+            elem, number_minus_1, number_1, diagonal, homalg_mat, vector_space;
+      
+      irr_1 := SemisimpleCategoryObjectList( object_1 )[1][2];
+      
+      irr_2 := SemisimpleCategoryObjectList( object_2 )[1][2];
+      
+      object := TensorProductOnObjects( object_1, object_2 );
+      
+      if ( irr_1 = irr_2 ) or IsOne( irr_1 ) or IsOne( irr_2 ) then
+          
+          return IdentityMorphism( object );
+          
+      fi;
+      
+      second_exterior_power := SemisimpleCategoryObject( SecondExteriorPower( irr_1 ), category );
+      
+      object_list := SemisimpleCategoryObjectList( object );
+      
+      morphism_list := [ ];
+      
+      for elem in object_list do
+          
+          number_minus_1 := Multiplicity( second_exterior_power, elem[2] );
+          
+          number_1 := elem[1] - number_minus_1;
+          
+          diagonal := Concatenation( List( [ 1 .. number_minus_1 ], i -> -1 ), List( [ 1 .. number_1 ], i -> 1 ) );
+          
+          homalg_mat := HomalgDiagonalMatrix( diagonal, field );
+          
+          vector_space := VectorSpaceObject( elem[1], field );
+          
+          Add( morphism_list, [ VectorSpaceMorphism( vector_space, homalg_mat, vector_space ), elem[2] ] );
+          
+      od;
+      
+      return SemisimpleCategoryMorphism( object, morphism_list, object );
+      
+    end;
+    
+    
+    ##
+    AddBraidingWithGivenTensorProducts( category,
+      function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+        local permutation_matrix, dim, dim_1, dim_2;
+        
+        
+        
+    end );
 #     
 #     ##
 #     AddDualOnObjects( category, space -> space );
