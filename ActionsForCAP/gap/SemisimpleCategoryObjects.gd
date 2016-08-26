@@ -32,6 +32,7 @@ DeclareCategory( "IsSemisimpleCategoryObject",
 #! @Arguments L
 DeclareOperation( "SemisimpleCategoryObject", [ IsList, IsCapCategory ] );
 
+DeclareOperationWithCache( "SemisimpleCategoryObjectConstructorWithFlatList", [ IsList, IsCapCategory ] );
 
 
 ####################################

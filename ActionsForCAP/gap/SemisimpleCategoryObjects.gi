@@ -36,7 +36,28 @@ InstallMethod( SemisimpleCategoryObject,
                [ IsList, IsCapCategory ],
                
   function( semisimple_object_list, category )
-    local semisimple_category_object, normalized_semisimple_object_list, field;
+    local semisimple_object_flat_list, size;
+    
+    size := Size( semisimple_object_list );
+    
+    semisimple_object_flat_list := List( [ 2 .. 2 * size + 1 ],
+      i -> semisimple_object_list[ QuoInt( i, 2 ) ][ RemInt( i, 2 ) + 1 ] );
+    
+    return SemisimpleCategoryObjectConstructorWithFlatList( semisimple_object_flat_list, category );
+    
+end );
+
+##
+InstallMethodWithCache( SemisimpleCategoryObjectConstructorWithFlatList,
+               [ IsList, IsCapCategory ],
+               
+  function( semisimple_object_flat_list, category )
+    local size, semisimple_object_list, semisimple_category_object, normalized_semisimple_object_list, field;
+    
+    size := Size( semisimple_object_flat_list );
+    
+    semisimple_object_list := List( [ 1 .. size/2 ], i ->
+      [ semisimple_object_flat_list[ 2*i - 1 ], semisimple_object_flat_list[ 2*i ] ] );
     
     semisimple_category_object := rec( );
     
