@@ -1298,6 +1298,11 @@ InstallMethod( SemisimpleCategory,
   function( homalg_field, membership_function, tensor_unit, associator_filename, name )
     local stream, command, semisimple_category, underlying_category, associator_data;
     
+    associator_filename :=
+      Concatenation( PackageInfo( "ActionsForCAP" )[1].InstallationPath,
+                     "/gap/AssociatorsDatabase/",
+                     associator_filename );
+    
     stream := InputTextFile( associator_filename );
     
     command := ReadAll( stream );
