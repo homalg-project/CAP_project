@@ -1166,13 +1166,127 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
     end;
     
-    
     ##
     AddBraidingWithGivenTensorProducts( category,
-      function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
-        local permutation_matrix, dim, dim_1, dim_2;
+      function( object_a_tensored_object_b, object_a, object_b, object_b_tensored_object_a )
+        local object_a_list, object_b_list, result_morphism, object_a_expanded_list, object_b_expanded_list,
+              morphism, outer_summand_list, inner_summand_list, summand_list, elem, elem_a, elem_b;
         
-        return braiding_on_irreducibles( object_1, object_2 );
+        object_a_list := SemisimpleCategoryObjectList( object_a );
+        
+        object_b_list := SemisimpleCategoryObjectList( object_b );
+        
+        if IsEmpty( object_a_list ) or IsEmpty( object_b_list ) then
+            
+            return ZeroMorphism( object_a_tensored_object_b, object_b_tensored_object_a );
+            
+        fi;
+        
+        object_a_list := List( object_a_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        
+        object_b_list := List( object_b_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        
+        result_morphism := IdentityMorphism( object_a_tensored_object_b );
+        
+        object_a_expanded_list := [ ];
+        
+        for elem in object_a_list do
+            
+            Append( object_a_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+            
+        od;
+        
+        object_b_expanded_list := [ ];
+        
+        for elem in object_b_list do
+            
+            Append( object_b_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+            
+        od;
+        
+        ## morphism_1
+        if Size( object_a_expanded_list ) > 1 then
+            
+            morphism := RightDistributivityExpanding( object_a_expanded_list, object_b );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        ## morphism_2
+        if Size( object_b_expanded_list ) > 1 then
+            
+            summand_list := [ ];
+            
+            for elem in object_a_list do
+                
+                morphism := LeftDistributivityExpanding( elem[2], object_b_expanded_list );
+                
+                Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( summand_list );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        ## morphism_3
+        
+        outer_summand_list := [ ];
+        
+        for elem_a in object_a_list do
+            
+            inner_summand_list := [ ];
+            
+            for elem_b in object_b_list do
+                
+                morphism := braiding_on_irreducibles( elem_a[2], elem_b[2] );
+                
+                Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( inner_summand_list );
+            
+            Append( outer_summand_list, List( [ 1 .. elem_a[1] ], i -> morphism ) );
+            
+        od;
+        
+        morphism := DirectSumFunctorial( outer_summand_list );
+        
+        result_morphism := PreCompose( result_morphism, morphism );
+        
+        ## morphism_4
+        if Size( object_b_expanded_list ) > 1 then
+            
+            summand_list := [ ];
+            
+            for elem in object_a_list do
+                
+                morphism := RightDistributivityFactoring( object_b_expanded_list, elem[2] );
+                
+                Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( summand_list );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        ## morphism_5
+        if Size( object_a_expanded_list ) > 1 then
+            
+            morphism := LeftDistributivityFactoring( object_b, object_a_expanded_list );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        return result_morphism;
         
     end );
 #     

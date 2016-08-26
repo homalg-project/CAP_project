@@ -75,3 +75,9 @@ DeclareOperation( "TestPentagonIdentity",
 
 ##
 DeclareOperation( "TestPentagonIdentityForAllQuadruplesInList", [ IsList ] );
+
+##
+DeclareOperation( "TestBraidingCompatability",
+              [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ] );
+##
+DeclareOperation( "TestBraidingCompatabilityForAllTriplesInList", [ IsList ] );
