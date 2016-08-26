@@ -1134,7 +1134,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       object := TensorProductOnObjects( object_1, object_2 );
       
-      if ( irr_1 = irr_2 ) or IsOne( irr_1 ) or IsOne( irr_2 ) then
+      if ( not irr_1 = irr_2 ) or IsOne( irr_1 ) or IsOne( irr_2 ) then
           
           return IdentityMorphism( object );
           
@@ -1152,7 +1152,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
           number_1 := elem[1] - number_minus_1;
           
-          diagonal := Concatenation( List( [ 1 .. number_minus_1 ], i -> -1 ), List( [ 1 .. number_1 ], i -> 1 ) );
+          diagonal := Concatenation( List( [ 1 .. number_1 ], i -> 1 ), List( [ 1 .. number_minus_1 ], i -> -1 ) );
           
           homalg_mat := HomalgDiagonalMatrix( diagonal, field );
           
@@ -1172,7 +1172,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local permutation_matrix, dim, dim_1, dim_2;
         
-        
+        return braiding_on_irreducibles( object_1, object_2 );
         
     end );
 #     
