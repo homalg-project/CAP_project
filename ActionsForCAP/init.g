@@ -25,4 +25,6 @@ ReadPackage( "ActionsForCAP", "gap/SemisimpleCategory.gd" );
 
 ReadPackage( "ActionsForCAP", "gap/GIrreducibleObjects.gd" );
 
+ReadPackage( "ActionsForCAP", "gap/GZGradedIrreducibleObjects.gd" );
+
 ReadPackage( "ActionsForCAP", "gap/RepresentationCategoryOfGroup.gd" );
