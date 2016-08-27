@@ -47,6 +47,19 @@ DeclareAttribute( "UnderlyingFieldForHomalgForSemisimpleCategory",
 ####################################
 
 ##
+DeclareOperationWithCache( "CAP_INTERNAL_AssociatorOnIrreducibles", 
+                           [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ] );
+
+##
+DeclareOperationWithCache( "CAP_INTERNAL_Distributivity_Expanding_For_Triples", 
+                           [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsList, IsBool ] );
+
+##
+DeclareOperationWithCache( "CAP_INTERNAL_Distributivity_Factoring_For_Triples", 
+                           [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsList, IsBool ] );
+
+
+##
 DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY" );
 
 ##
