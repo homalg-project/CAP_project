@@ -24,7 +24,7 @@ DeclareCategory( "IsGZGradedIrreducibleObject",
 ##
 ####################################
 
-DeclareOperationWithCache( "GZGradedIrreducibleObject", [ IsCharacter, IsInt ] );
+DeclareOperationWithCache( "GZGradedIrreducibleObject", [ IsInt, IsCharacter ] );
 
 ####################################
 ##

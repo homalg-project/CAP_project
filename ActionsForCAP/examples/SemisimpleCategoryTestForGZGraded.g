@@ -10,11 +10,11 @@ irr := Irr( G );
 
 membership_function := IsGZGradedIrreducibleObject;
 
-chi_1_2 := GZGradedIrreducibleObject( irr[1], 2 );
+chi_1_2 := GZGradedIrreducibleObject( 2, irr[1] );
 
-chi_2_1 := GZGradedIrreducibleObject( irr[2], 1 );
+chi_2_1 := GZGradedIrreducibleObject( 1, irr[2] );
 
-unit := GZGradedIrreducibleObject( irr[3], 0 );
+unit := GZGradedIrreducibleObject( 0, irr[3] );
 
 semisimple_cat := SemisimpleCategory( Q, membership_function, unit, "S3Associator.g" );
 

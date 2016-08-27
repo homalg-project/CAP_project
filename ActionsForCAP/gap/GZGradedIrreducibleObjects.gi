@@ -34,9 +34,9 @@ BindGlobal( "TheTypeOfGZGradedIrreducibleObjects",
 
 ##
 InstallMethodWithCache( GZGradedIrreducibleObject,
-                        [ IsCharacter, IsInt ],
+                        [ IsInt, IsCharacter ],
                
-  function( character, degree )
+  function( degree, character )
     local irreducible_object, number, underlying_character_table, underlying_irreducible_characters;
     
     irreducible_object := rec( );
@@ -100,7 +100,7 @@ InstallMethod( ExteriorPower,
         
         if scalar_product > 0 then
             
-            Add( result_list, [ scalar_product, GZGradedIrreducibleObject( chi, new_degree ) ] );
+            Add( result_list, [ scalar_product, GZGradedIrreducibleObject( new_degree, chi ) ] );
             
         fi;
         
@@ -194,7 +194,7 @@ InstallMethod( \*,
         
         if scalar_product > 0 then
             
-            Add( result_list, [ scalar_product, GZGradedIrreducibleObject( chi, new_degree ) ] );
+            Add( result_list, [ scalar_product, GZGradedIrreducibleObject( new_degree, chi ) ] );
             
         fi;
         
@@ -249,7 +249,7 @@ InstallMethod( AssociatorFromData,
             
             range := VectorSpaceObject( NrColumns( homalg_matrix ), field );
             
-            Add( morphism_list, [ VectorSpaceMorphism( source, homalg_matrix, range ), GZGradedIrreducibleObject( irr[i], new_degree ) ] );
+            Add( morphism_list, [ VectorSpaceMorphism( source, homalg_matrix, range ), GZGradedIrreducibleObject( new_degree, irr[i] ) ] );
             
         fi;
         
