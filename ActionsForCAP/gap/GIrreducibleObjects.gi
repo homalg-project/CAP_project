@@ -66,11 +66,19 @@ end );
 ####################################
 
 ##
-InstallMethod( SecondExteriorPower,
-               [ IsGIrreducibleObject ],
+InstallMethod( ExteriorPower,
+               [ IsGIrreducibleObject, IsGIrreducibleObject ],
                
-  function( object )
+  function( object, object_2 )
     local character, ct, irr, exterior_power, chi, scalar_product, result_list;
+    
+    result_list := [ ];
+    
+    if not( object = object_2 ) then
+        
+        return result_list;
+        
+    fi;
     
     character := UnderlyingCharacter( object );
     
@@ -82,8 +90,6 @@ InstallMethod( SecondExteriorPower,
       AntiSymmetricParts( ct, [ character ], 2 );
     
     exterior_power := exterior_power[1];
-    
-    result_list := [ ];
     
     for chi in irr do
         

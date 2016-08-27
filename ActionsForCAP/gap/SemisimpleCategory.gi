@@ -1150,7 +1150,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ## the input are objects whose underlying list is of the form [ 1, irr ].
     braiding_on_irreducibles := function( object_1, object_2 )
-      local irr_1, irr_2, object, second_exterior_power, object_list, morphism_list,
+      local irr_1, irr_2, object, exterior_power_list, exterior_power, object_list, morphism_list,
             elem, number_minus_1, number_1, diagonal, homalg_mat, vector_space;
       
       irr_1 := SemisimpleCategoryObjectList( object_1 )[1][2];
@@ -1159,13 +1159,21 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       object := TensorProductOnObjects( object_1, object_2 );
       
-      if ( not irr_1 = irr_2 ) or IsOne( irr_1 ) or IsOne( irr_2 ) then
+      if IsOne( irr_1 ) or IsOne( irr_2 ) then
           
           return IdentityMorphism( object );
           
       fi;
       
-      second_exterior_power := SemisimpleCategoryObject( SecondExteriorPower( irr_1 ), category );
+      exterior_power_list := ExteriorPower( irr_1, irr_2 );
+      
+      if IsEmpty( exterior_power_list ) then
+          
+          return IdentityMorphism( object );
+          
+      fi;
+      
+      exterior_power := SemisimpleCategoryObject( exterior_power_list, category );
       
       object_list := SemisimpleCategoryObjectList( object );
       
@@ -1173,7 +1181,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       for elem in object_list do
           
-          number_minus_1 := Multiplicity( second_exterior_power, elem[2] );
+          number_minus_1 := Multiplicity( exterior_power, elem[2] );
           
           number_1 := elem[1] - number_minus_1;
           
@@ -1190,6 +1198,14 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       return SemisimpleCategoryMorphism( object, morphism_list, object );
       
     end;
+    
+    ##
+    InstallMethodWithCacheFromObject( CAP_INTERNAL_Braiding_On_Irreducibles,
+      [ ObjectFilter( category ) and IsSemisimpleCategoryObject,
+        ObjectFilter( category ) and IsSemisimpleCategoryObject ],
+        
+        braiding_on_irreducibles );
+    
     
     ##
     AddBraidingWithGivenTensorProducts( category,

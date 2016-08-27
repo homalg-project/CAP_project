@@ -42,8 +42,6 @@ DeclareAttribute( "UnderlyingIrreducibleCharacters", IsGIrreducibleObject );
 
 DeclareAttribute( "UnderlyingCharacterNumber", IsGIrreducibleObject );
 
-DeclareAttribute( "SecondExteriorPower", IsGIrreducibleObject );
-
 ####################################
 ##
 #! @Section Properties
@@ -67,3 +65,4 @@ DeclareOperation( "\*", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
 DeclareOperation( "AssociatorFromData", 
                   [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg ] );
 
+DeclareOperation( "ExteriorPower", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
