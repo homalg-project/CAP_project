@@ -18,7 +18,7 @@ InstallValue( CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY, rec( ) );
 ####################################
 
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
-  function( category, tensor_unit, associator_data )
+  function( category, tensor_unit, associator_data, is_complete_data )
     local field, membership_function, associator_on_irreducibles, braiding_on_irreducibles,
           distributivity_expanding_for_triple, distributivity_factoring_for_triple;
     
@@ -847,7 +847,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
       fi;
       
-      morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
+      if is_complete_data then
+          
+          morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
+          
+      fi;
       
       return SemisimpleCategoryMorphism( object, morphism_list, object );
       
@@ -1430,9 +1434,9 @@ end );
 
 ##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction, IsObject, IsString ],
+               [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool],
                
-  function( homalg_field, membership_function, tensor_unit, associator_filename )
+  function( homalg_field, membership_function, tensor_unit, associator_filename, is_complete_data )
     local name;
     
     name := Concatenation( "The semisimple category with irreducibles given by ", NameFunction( membership_function ) );
@@ -1448,9 +1452,9 @@ end );
 
 ##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsString ],
+               [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool, IsString ],
                
-  function( homalg_field, membership_function, tensor_unit, associator_filename, name )
+  function( homalg_field, membership_function, tensor_unit, associator_filename, is_complete_data, name )
     local stream, command, semisimple_category, underlying_category, associator_data;
     
     associator_filename :=
@@ -1478,7 +1482,8 @@ InstallMethod( SemisimpleCategory,
     
     SetUnderlyingFieldForHomalgForSemisimpleCategory( semisimple_category, homalg_field );
     
-    CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY( semisimple_category, tensor_unit, associator_data );
+    CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY(
+      semisimple_category, tensor_unit, associator_data, is_complete_data );
     
     Finalize( semisimple_category );
     

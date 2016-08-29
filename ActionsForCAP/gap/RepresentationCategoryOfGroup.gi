@@ -23,7 +23,7 @@ InstallMethod( RepresentationCategory,
   function( group )
     local group_string, name, databasekeys_filename, stream, command, database_keys,
           group_data, irr, conductor, unit_number, eps,
-          field, membership_function, tensor_unit, associator_filename;
+          field, membership_function, tensor_unit, associator_filename, is_complete_data;
     
     group_string := String( group );
     
@@ -56,6 +56,8 @@ InstallMethod( RepresentationCategory,
     
     associator_filename := group_data[4];
     
+    is_complete_data := group_data[5];
+    
     membership_function := object -> IsGIrreducibleObject( object ) and IsIdenticalObj( UnderlyingGroup( object ), group );
     
     if conductor = 1 then
@@ -76,7 +78,7 @@ InstallMethod( RepresentationCategory,
     
     tensor_unit := GIrreducibleObject( irr[ unit_number ] );
     
-    return SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, name );
+    return SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data, name );
     
 end );
 
@@ -141,7 +143,7 @@ InstallMethod( RepresentationCategoryZGraded,
   function( group )
     local group_string, name, databasekeys_filename, stream, command, database_keys,
           group_data, irr, conductor, unit_number, eps,
-          field, membership_function, tensor_unit, associator_filename;
+          field, membership_function, tensor_unit, associator_filename, is_complete_data;
     
     group_string := String( group );
     
@@ -174,6 +176,8 @@ InstallMethod( RepresentationCategoryZGraded,
     
     associator_filename := group_data[4];
     
+    is_complete_data := group_data[5];
+    
     membership_function := object -> IsGZGradedIrreducibleObject( object ) and IsIdenticalObj( UnderlyingGroup( object ), group );
     
     if conductor = 1 then
@@ -194,7 +198,7 @@ InstallMethod( RepresentationCategoryZGraded,
     
     tensor_unit := GZGradedIrreducibleObject( 0, irr[ unit_number ] );
     
-    return SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, name );
+    return SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data, name );
     
 end );
 
