@@ -340,104 +340,102 @@ BindGlobal( "CAP_INTERNAL_block_matrix_to_matrix",
     
 end );
 
-BindGlobal( "CAP_INTERNAL_compute_degree_zero_part",
-  function( source_degrees, matrix, range_degrees, ring_degrees, kernel_of_ring_degrees, localized_variables )
-    local degree_zero_part_of_ring, source_module_generators, range_module_generators, homalg_matrix_as_list_list,
-          i, j, k, l, polynomial_coeffs, empty_sources, empty_ranges, new_base_ring, current_relation_matrix,
-          base_ring_indets, source_modules, source_module, range_modules, range_module, matrix_prototype,
-          current_source_generator_map, matrix_mapping;
+BindGlobal( "CAP_INTERNAL_degree_zero_ring_and_generators",
+  function( ring_degrees, kernel_of_ring_degrees, localized_variables )
+    local ring_generators, ring_as_quotient;
     
-    degree_zero_part_of_ring := CAP_INTERNAL_degree_zero_monomials( ring_degrees, kernel_of_ring_degrees, localized_variables );
+    ring_generators := CAP_INTERNAL_degree_zero_monomials( ring_degrees, kernel_of_ring_degrees, localized_variables );
     
-    source_module_generators := List( source_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, kernel_of_ring_degrees, localized_variables, -i ) );
+    ring_as_quotient := CAP_INTERNAL_construct_quotient_ring( ring_generators );
     
-    range_module_generators := List( range_degrees, i -> CAP_INTERNAL_degree_basis( ring_degrees, kernel_of_ring_degrees, localized_variables, -i ) );
+    return [ ring_generators, ring_as_quotient ];
     
-    homalg_matrix_as_list_list := EntriesOfHomalgMatrixAsListList( matrix );
+end );
+
+BindGlobal( "CAP_INTERNAL_FIND_POSITION_BY_FUNCTION",
+  function( list, func )
+    local i;
     
-    empty_sources := Filtered( [ 1 .. Length( source_module_generators ) ], i -> source_module_generators[ i ] = [ ] );
+    for i in [ 1 .. Length( list ) ] do
+        if func( list[ i ] ) = true then
+            return i;
+        fi;
+    od;
+    return fail;
     
-    empty_ranges := Filtered( [ 1 .. Length( range_module_generators ) ], i -> range_module_generators[ i ] = [ ] );
+end );
+
+BindGlobal( "CAP_INTERNAL_get_module_generators_and_relations",
+  function( degree_list, ring_degrees, kernel_of_ring_degrees, localized_variables, ring_generators, new_ring )
+    local current_source_part, current_position, current_generators, current_relation_matrix,
+          module_generators, modules, empty_gens;
     
-    for i in Reversed( empty_sources ) do
+    module_generators := [ ];
+    modules := [ ];
+    empty_gens := [ ];
+    
+    for current_source_part in [ 1 .. Length( degree_list ) ] do
+        current_position := CAP_INTERNAL_FIND_POSITION_BY_FUNCTION( new_ring!.generators_of_hom_parts_from_including_graded_ring,
+                                                                    i -> i[ 1 ] = degree_list[ current_source_part ] );
         
-        Remove( source_module_generators, i );
+        if current_position = fail then
+            current_generators := CAP_INTERNAL_degree_basis( ring_degrees, kernel_of_ring_degrees, localized_variables, - degree_list[ current_source_part ] );
+        else
+            current_generators := new_ring!.generators_of_hom_parts_from_including_graded_ring[ current_position ][ 2 ];
+        fi;
         
-        Remove( homalg_matrix_as_list_list, i );
+        if current_generators = [ ] then
+            Add( empty_gens, current_source_part );
+        else
+            Add( module_generators, current_generators );
+        fi;
+        
+        if current_position = fail and current_generators <> [ ] then
+            current_relation_matrix := CAP_INTERNAL_degree_part_relations( ring_generators, current_generators );
+            current_relation_matrix := CAP_INTERNAL_hom_part_relations( current_generators, current_relation_matrix, new_ring );
+            Add( modules, current_relation_matrix );
+        elif current_generators = [ ] then
+            current_relation_matrix := [ ];
+        else
+            current_relation_matrix := new_ring!.generators_of_hom_parts_from_including_graded_ring[ current_position ][ 3 ];
+            Add( modules, current_relation_matrix );
+        fi;
+        
+        if current_position = fail then
+            Add( new_ring!.generators_of_hom_parts_from_including_graded_ring, [ degree_list[ current_source_part ], current_generators, current_relation_matrix ] );
+        fi;
         
     od;
     
-    homalg_matrix_as_list_list := TransposedMatMutable( homalg_matrix_as_list_list );
+    return [ module_generators, modules, empty_gens ];
     
-    for i in Reversed( empty_ranges ) do
-        
-        Remove( range_module_generators, i );
-        
-        Remove( homalg_matrix_as_list_list, i );
-        
-    od;
+end );
+
+BindGlobal( "CAP_INTERNAL_new_matrix_mapping_by_generator_lists",
+  function( source_generator_list_list, range_generator_list_list, homalg_matrix_as_list_list, ring_generators, new_ring )
+    local mapped_matrix, polynomial_coeffs, i, j, matrix_prototype, k, current_source_generator_map, l, matrix_mapping, base_ring_indets;
     
-    homalg_matrix_as_list_list := TransposedMatMutable( homalg_matrix_as_list_list );
+    base_ring_indets := Indeterminates( new_ring );
     
-    new_base_ring := CAP_INTERNAL_construct_quotient_ring( degree_zero_part_of_ring );
+    mapped_matrix := List( source_generator_list_list, i -> ListWithIdenticalEntries( Length( range_generator_list_list ), 0 ) );
     
-    if range_module_generators = [ ] then
-        
-        return ZeroMorphism( FreeLeftPresentation( 0, new_base_ring ) );
-        
-    fi;
-    
-    for i in [ 1 .. NrRows( matrix ) ] do
-        for j in [ 1 .. NrColumns( matrix ) ] do
-            homalg_matrix_as_list_list[ i ][ j ] := List( source_module_generators[ i ],
+    for i in [ 1 .. Length( source_generator_list_list ) ] do
+        for j in [ 1 .. Length( range_generator_list_list ) ] do
+            mapped_matrix[ i ][ j ] := List( source_generator_list_list[ i ],
                                                               k -> CAP_INTERNAL_result_of_generator( k, homalg_matrix_as_list_list[ i ][ j ],
-                                                                                        range_module_generators[ j ], degree_zero_part_of_ring ) );
+                                                                                        range_generator_list_list[ j ], ring_generators ) );
         od;
     od;
     
-    ## compute ring
+    polynomial_coeffs := List( homalg_matrix_as_list_list, i -> List( i, j -> SplitString( CommonHomalgTableForSingularTools.PolynomialCoefficients( UnderlyingNonGradedRingElement( j ) ), "," ) ) );
     
-    base_ring_indets := Indeterminates( new_base_ring );
-    
-    ## construct modules
-    
-    source_modules := [ ];
-    
-    for i in [ 1 .. Length( source_module_generators ) ] do
-        
-        current_relation_matrix := CAP_INTERNAL_degree_part_relations( degree_zero_part_of_ring, source_module_generators[ i ] );
-        
-        current_relation_matrix := CAP_INTERNAL_hom_part_relations( source_module_generators[ i ], current_relation_matrix, new_base_ring );
-        
-        source_modules[ i ] := current_relation_matrix;
-        
-    od;
-    
-    range_modules := [ ];
-    
-    for i in [ 1 .. Length( range_module_generators ) ] do
-        
-        current_relation_matrix := CAP_INTERNAL_degree_part_relations( degree_zero_part_of_ring, range_module_generators[ i ] );
-        
-        current_relation_matrix := CAP_INTERNAL_hom_part_relations( range_module_generators[ i ], current_relation_matrix, new_base_ring );
-        
-        range_modules[ i ] := current_relation_matrix;
-        
-    od;
-    
-    ## reconstruct matrix
-    
-    polynomial_coeffs := EntriesOfHomalgMatrixAsListList( matrix );
-    
-    polynomial_coeffs := List( polynomial_coeffs, i -> List( i, j -> SplitString( CommonHomalgTableForSingularTools.PolynomialCoefficients( UnderlyingNonGradedRingElement( j ) ), "," ) ) );
-    
-    for i in [ 1 .. NrRows( matrix ) ] do
-        for j in [ 1 .. NrColumns( matrix ) ] do
+    for i in [ 1 .. Length( source_generator_list_list ) ] do
+        for j in [ 1 .. Length( range_generator_list_list ) ] do
             
-            matrix_prototype := List( [ 1 .. Length( source_module_generators[ i ] ) ], x -> List( [ 1 .. Length( range_module_generators[ j ] ) ], y -> [ ] ) );
+            matrix_prototype := List( [ 1 .. Length( source_generator_list_list[ i ] ) ], x -> List( [ 1 .. Length( range_generator_list_list[ j ] ) ], y -> [ ] ) );
             
-            for k in [ 1 .. Length( homalg_matrix_as_list_list[ i ][ j ] ) ] do
-                current_source_generator_map := homalg_matrix_as_list_list[ i ][ j ][ k ];
+            for k in [ 1 .. Length( mapped_matrix[ i ][ j ] ) ] do
+                current_source_generator_map := mapped_matrix[ i ][ j ][ k ];
                 
                 for l in [ 1 .. Length( current_source_generator_map ) ] do
                     
@@ -454,8 +452,8 @@ BindGlobal( "CAP_INTERNAL_compute_degree_zero_part",
                 
             od;
             
-            for k in [ 1 .. Length( source_module_generators[ i ] ) ] do
-                for l in [ 1 .. Length( range_module_generators[ j ] ) ] do
+            for k in [ 1 .. Length( source_generator_list_list[ i ] ) ] do
+                for l in [ 1 .. Length( range_generator_list_list[ j ] ) ] do
                     if matrix_prototype[ k ][ l ] = [ ] then
                         matrix_prototype[ k ][ l ] := String( 0 );
                     else
@@ -464,19 +462,56 @@ BindGlobal( "CAP_INTERNAL_compute_degree_zero_part",
                 od;
             od;
             
-            homalg_matrix_as_list_list[ i ][ j ] := matrix_prototype;
+            mapped_matrix[ i ][ j ] := matrix_prototype;
             
         od;
     od;
     
-    matrix_mapping := CAP_INTERNAL_block_matrix_to_matrix( homalg_matrix_as_list_list );
+    matrix_mapping := CAP_INTERNAL_block_matrix_to_matrix( mapped_matrix );
     
-    matrix_mapping := HomalgMatrix( matrix_mapping, new_base_ring );
+    matrix_mapping := HomalgMatrix( matrix_mapping, new_ring );
     
-    source_module := DirectSum( List( source_modules, AsLeftPresentation ) );
+    return matrix_mapping;
     
-    range_module := DirectSum( List( range_modules, AsLeftPresentation ) );
+end );
+
+BindGlobal( "CAP_INTERNAL_degree_zero_module",
+  function( source_degrees, matrix, range_degrees, ring_degrees, kernel_of_ring_degrees, localized_variables, ring_generators, new_ring )
+    local ring_relations, source_data, range_data, homalg_matrix_as_list_list, i, new_matrix, source_module, range_module, new_object;
     
-    return PresentationMorphism( source_module, matrix_mapping, range_module );
+    if not IsBound( new_ring!.generators_of_hom_parts_from_including_graded_ring ) then
+        new_ring!.generators_of_hom_parts_from_including_graded_ring := [ ];
+    fi;
+    
+    source_data := CAP_INTERNAL_get_module_generators_and_relations( source_degrees, ring_degrees, kernel_of_ring_degrees, localized_variables, ring_generators, new_ring );
+    range_data := CAP_INTERNAL_get_module_generators_and_relations( range_degrees, ring_degrees, kernel_of_ring_degrees, localized_variables, ring_generators, new_ring );
+    
+    if range_data[ 1 ] = [ ] then
+        FreeLeftPresentation( 0, new_ring );
+    fi;
+    
+    homalg_matrix_as_list_list := EntriesOfHomalgMatrixAsListList( matrix );
+    
+    for i in Reversed( source_data[ 3 ] ) do
+        Remove( homalg_matrix_as_list_list, i );
+    od;
+    homalg_matrix_as_list_list := TransposedMatMutable( homalg_matrix_as_list_list );
+    for i in Reversed( range_data[ 3 ] ) do
+        Remove( homalg_matrix_as_list_list, i );
+    od;
+    homalg_matrix_as_list_list := TransposedMatMutable( homalg_matrix_as_list_list );
+    
+    new_matrix := CAP_INTERNAL_new_matrix_mapping_by_generator_lists( source_data[ 1 ], range_data[ 1 ], homalg_matrix_as_list_list, ring_generators, new_ring );
+    
+    source_module := DirectSum( List( source_data[ 2 ], AsLeftPresentation ) );
+    
+    range_module := DirectSum( List( range_data[ 2 ], AsLeftPresentation ) );
+    
+    new_object := CokernelObject( PresentationMorphism( source_module, new_matrix, range_module ) );
+    
+    new_object!.degree_part_generator_monomials := range_data[ 1 ];
+    new_object!.deleted_free_parts := range_data[ 3 ];
+    
+    return new_object;
     
 end );
