@@ -827,10 +827,51 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ## -- Helper functions for the associator --
     
+    ## computes the associator (left to right) of (c,a,b) via the coherence axiom involving the braiding
+    InstallMethodWithCacheFromObject( CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft,
+      [ ObjectFilter( category ) and IsSemisimpleCategoryObject,
+        ObjectFilter( category ) and IsSemisimpleCategoryObject,
+        ObjectFilter( category ) and IsSemisimpleCategoryObject,
+        MorphismFilter( category ) and IsSemisimpleCategoryMorphism,
+        MorphismFilter( category ) and IsSemisimpleCategoryMorphism ],
+        
+        function( object_a, object_b, object_c, associator_left_to_right_acb, associator_right_to_left_abc )
+          
+          return PreCompose( [ 
+            TensorProductOnMorphisms( Braiding( object_c, object_a ), IdentityMorphism( object_b ) ),
+            associator_left_to_right_acb,
+            TensorProductOnMorphisms( IdentityMorphism( object_a ), Braiding( object_c, object_b ) ),
+            associator_right_to_left_abc,
+            Braiding( TensorProductOnObjects( object_a, object_b ), object_c ) ] );
+          
+    end );
+    
+    ## computes the associator (left to right )of (b,c,a) via the coherence axiom involving the braiding
+    InstallMethodWithCacheFromObject( CAP_INTERNAL_AssociatorFromCoherenceAxiomRight,
+      [ ObjectFilter( category ) and IsSemisimpleCategoryObject,
+        ObjectFilter( category ) and IsSemisimpleCategoryObject,
+        ObjectFilter( category ) and IsSemisimpleCategoryObject,
+        MorphismFilter( category ) and IsSemisimpleCategoryMorphism,
+        MorphismFilter( category ) and IsSemisimpleCategoryMorphism ],
+        
+        function( object_a, object_b, object_c, associator_right_to_left_abc, associator_left_to_right_bac )
+          
+          return PreCompose( [
+            Braiding( TensorProductOnObjects( object_b, object_c ), object_a ),
+            associator_right_to_left_abc,
+            TensorProductOnMorphisms( Braiding( object_a, object_b ), IdentityMorphism( object_c ) ),
+            associator_left_to_right_bac,
+            TensorProductOnMorphisms( IdentityMorphism( object_b ), Braiding( object_c, object_a ) ) ] );
+          
+    end );
+    
+    
     ## the input are objects whose underlying list is of the form [ 1, irr ].
     associator_on_irreducibles := function( object_1, object_2, object_3 )
       local irr_1, irr_2, irr_3, data, morphism_list, object, pos_1, 
-            pos_2, pos_3, size, homalg_matrix, source, range, i, string;
+            pos_2, pos_3, size, homalg_matrix, source, range, i, string,
+            irr_1_nr, irr_2_nr, irr_3_nr, result_morphism,
+            associator_left_to_right, associator_right_to_left, intermediate_associator;
       
       irr_1 := SemisimpleCategoryObjectList( object_1 )[1][2];
       
@@ -851,9 +892,87 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
           morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
           
+          result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
+          
+      else
+          
+          # A <= B <= C
+          
+          irr_1_nr := UnderlyingCharacterNumber( irr_1 );
+          
+          irr_2_nr := UnderlyingCharacterNumber( irr_2 );
+          
+          irr_3_nr := UnderlyingCharacterNumber( irr_3 );
+          
+          if ( irr_1_nr <= irr_2_nr ) then
+              
+              if (irr_1_nr <= irr_3_nr ) then # (ABC) or (ACB)
+                  
+                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
+                  
+                  result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
+                  
+              else # ( irr_1_nr > irr_3_nr ) (BCA)
+                  
+                  associator_left_to_right :=
+                    AssociatorLeftToRight( object_3, object_1, object_2 );
+                  
+                  associator_right_to_left :=
+                    AssociatorRightToLeft( object_3, object_2, object_1 );
+                  
+                  intermediate_associator :=
+                    CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft( 
+                      object_3, object_2, object_1, associator_left_to_right, associator_right_to_left );
+                  
+                  associator_right_to_left :=
+                    AssociatorRightToLeft( object_3, object_1, object_2 );
+                  
+                  result_morphism :=
+                    CAP_INTERNAL_AssociatorFromCoherenceAxiomRight( 
+                      object_3, object_1, object_2, associator_right_to_left, intermediate_associator );
+                  
+              fi;
+              
+          else # ( irr_2_nr < irr_1_nr )
+              
+              if ( irr_2_nr <= irr_3_nr ) then
+                  ## (CAB) or (BAC)
+                  
+                  associator_left_to_right := AssociatorLeftToRight( object_2, object_1, object_3 );
+                  
+                  associator_right_to_left := AssociatorRightToLeft( object_2, object_3, object_1 );
+                  
+                  result_morphism :=
+                    CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft(
+                      object_2, object_3, object_1, associator_left_to_right, associator_right_to_left );
+                  
+                  
+              else # ( irr_2_nr > irr_3 )
+                  ## (CBA)
+                  associator_left_to_right :=
+                    AssociatorLeftToRight( object_3, object_1, object_2 );
+                  
+                  associator_right_to_left :=
+                    AssociatorRightToLeft( object_3, object_2, object_1 );
+                  
+                  intermediate_associator :=
+                    CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft( 
+                      object_3, object_2, object_1, associator_left_to_right, associator_right_to_left );
+                  
+                  associator_right_to_left :=
+                    AssociatorRightToLeft( object_3, object_1, object_2 );
+                  
+                  result_morphism :=
+                    CAP_INTERNAL_AssociatorFromCoherenceAxiomRight( 
+                      object_3, object_1, object_2, associator_right_to_left, intermediate_associator );
+                  
+              fi;
+              
+          fi;
+          
       fi;
       
-      return SemisimpleCategoryMorphism( object, morphism_list, object );
+      return result_morphism;
       
     end;
     

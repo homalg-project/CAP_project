@@ -51,6 +51,16 @@ DeclareOperationWithCache( "CAP_INTERNAL_AssociatorOnIrreducibles",
                            [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ] );
 
 ##
+DeclareOperationWithCache( "CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft", 
+                           [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject,
+                             IsSemisimpleCategoryMorphism, IsSemisimpleCategoryMorphism ] );
+
+##
+DeclareOperationWithCache( "CAP_INTERNAL_AssociatorFromCoherenceAxiomRight", 
+                           [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject,
+                             IsSemisimpleCategoryMorphism, IsSemisimpleCategoryMorphism ] );
+
+##
 DeclareOperationWithCache( "CAP_INTERNAL_Distributivity_Expanding_For_Triples", 
                            [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsList, IsBool ] );
 
