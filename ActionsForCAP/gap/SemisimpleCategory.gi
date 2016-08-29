@@ -837,7 +837,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         function( object_a, object_b, object_c, associator_left_to_right_acb, associator_right_to_left_abc )
           
-          return PreCompose( [ 
+          return PreCompose( [
             TensorProductOnMorphisms( Braiding( object_c, object_a ), IdentityMorphism( object_b ) ),
             associator_left_to_right_acb,
             TensorProductOnMorphisms( IdentityMorphism( object_a ), Braiding( object_c, object_b ) ),
@@ -861,7 +861,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             associator_right_to_left_abc,
             TensorProductOnMorphisms( Braiding( object_a, object_b ), IdentityMorphism( object_c ) ),
             associator_left_to_right_bac,
-            TensorProductOnMorphisms( IdentityMorphism( object_b ), Braiding( object_c, object_a ) ) ] );
+            TensorProductOnMorphisms( IdentityMorphism( object_b ), Braiding( object_a, object_c ) ) ] );
           
     end );
     
@@ -904,39 +904,78 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
           irr_3_nr := UnderlyingCharacterNumber( irr_3 );
           
-          if ( irr_1_nr <= irr_2_nr ) then
+          if Size( Set( [ irr_1_nr, irr_2_nr, irr_3_nr ] ) ) = 2 then
               
-              if (irr_1_nr <= irr_3_nr ) then # (ABC) or (ACB)
+              if ( irr_1_nr <= irr_2_nr and irr_2_nr <= irr_3_nr ) then
+                  #(AAB), (ABB): can be loaded directly
                   
                   morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
                   
                   result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
                   
-              else # ( irr_1_nr > irr_3_nr ) (BCA)
+              elif ( irr_1_nr < irr_2_nr ) then
+                  #(ABA)
                   
-                  associator_left_to_right :=
-                    AssociatorLeftToRight( object_3, object_1, object_2 );
+                  associator_left_to_right := AssociatorLeftToRight( object_3, object_1, object_2 );
                   
-                  associator_right_to_left :=
-                    AssociatorRightToLeft( object_3, object_2, object_1 );
+                  associator_right_to_left := AssociatorRightToLeft( object_1, object_3, object_2 );
                   
-                  intermediate_associator :=
-                    CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft( 
-                      object_3, object_2, object_1, associator_left_to_right, associator_right_to_left );
+                  result_morphism := CAP_INTERNAL_AssociatorFromCoherenceAxiomRight(
+                    object_1, object_3, object_2, associator_right_to_left, associator_left_to_right );
                   
-                  associator_right_to_left :=
-                    AssociatorRightToLeft( object_3, object_1, object_2 );
+              elif ( irr_1_nr = irr_3_nr) then
+                  #(BAB)
                   
-                  result_morphism :=
-                    CAP_INTERNAL_AssociatorFromCoherenceAxiomRight( 
-                      object_3, object_1, object_2, associator_right_to_left, intermediate_associator );
+                  associator_right_to_left := AssociatorRightToLeft( object_2, object_1, object_3 );
+                  
+                  associator_left_to_right := AssociatorLeftToRight( object_2, object_3, object_1 );
+                  
+                  result_morphism := CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft(
+                    object_2, object_1, object_3, associator_left_to_right, associator_right_to_left );
+                  
+              elif (irr_2_nr = irr_3_nr ) then
+                  #(BAA)
+                  
+                  associator_right_to_left := AssociatorRightToLeft( object_2, object_3, object_1 );
+                  
+                  associator_left_to_right := AssociatorLeftToRight( object_3, object_2, object_1 );
+                  
+                  intermediate_associator := CAP_INTERNAL_AssociatorFromCoherenceAxiomRight(
+                    object_2, object_3, object_1, associator_right_to_left, associator_left_to_right );
+                  
+                  associator_right_to_left := AssociatorRightToLeft( object_2, object_3, object_1 );
+                  
+                  result_morphism := CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft(
+                    object_2, object_3, object_1, intermediate_associator, associator_right_to_left );
+                  
+              else
+                  #(BBA)
+                  
+                  associator_left_to_right := AssociatorLeftToRight( object_3, object_2, object_1 );
+                  
+                  associator_right_to_left := AssociatorRightToLeft( object_3, object_1, object_2 );
+                  
+                  intermediate_associator := CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft(
+                    object_3, object_1, object_2, associator_left_to_right, associator_right_to_left );
+                  
+                  associator_right_to_left := AssociatorRightToLeft( object_3, object_1, object_2 );
+                  
+                  result_morphism := CAP_INTERNAL_AssociatorFromCoherenceAxiomRight(
+                    object_3, object_1, object_2, associator_right_to_left, intermediate_associator );
                   
               fi;
               
-          else # ( irr_2_nr < irr_1_nr )
+          else
               
-              if ( irr_2_nr <= irr_3_nr ) then
-                  ## (CAB) or (BAC)
+              if ( irr_1_nr <= irr_2_nr ) and ( irr_1_nr <= irr_3_nr ) then
+                  #(ABC), (ACB): can be loaded directly
+                  
+                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
+                  
+                  result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
+                  
+              elif (irr_1_nr <= irr_3_nr ) then
+                  #(CAB), (BAC): usage of 1 helper function
                   
                   associator_left_to_right := AssociatorLeftToRight( object_2, object_1, object_3 );
                   
@@ -946,9 +985,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                     CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft(
                       object_2, object_3, object_1, associator_left_to_right, associator_right_to_left );
                   
+              else
+                  #(BCA), (CBA): usage of 2 helper functions
                   
-              else # ( irr_2_nr > irr_3 )
-                  ## (CBA)
                   associator_left_to_right :=
                     AssociatorLeftToRight( object_3, object_1, object_2 );
                   
@@ -967,7 +1006,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                       object_3, object_1, object_2, associator_right_to_left, intermediate_associator );
                   
               fi;
-              
+            
           fi;
           
       fi;
