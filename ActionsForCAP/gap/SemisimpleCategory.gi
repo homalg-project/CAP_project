@@ -1592,7 +1592,7 @@ end );
 
 ##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool],
+               [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool ],
                
   function( homalg_field, membership_function, tensor_unit, associator_filename, is_complete_data )
     local name;
@@ -1604,6 +1604,7 @@ InstallMethod( SemisimpleCategory,
              membership_function,
              tensor_unit,
              associator_filename,
+             is_complete_data,
              name );
     
 end );

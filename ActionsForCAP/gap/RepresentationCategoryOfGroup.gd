@@ -20,7 +20,13 @@
 DeclareAttribute( "RepresentationCategory", IsGroup );
 
 ##
-DeclareOperation( "RepresentationCategoryObject", [ IsList ] );
+DeclareOperation( "RepresentationCategory", [ IsInt, IsInt ] );
+
+##
+DeclareOperation( "RepresentationCategory", [ IsGroup, IsList ] );
+
+##
+DeclareOperation( "RepresentationCategoryObject", [ IsList, IsCapCategory ] );
 
 ##
 DeclareOperation( "RepresentationCategoryMorphism", [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ] );
@@ -29,10 +35,14 @@ DeclareOperation( "RepresentationCategoryMorphism", [ IsSemisimpleCategoryObject
 ##
 DeclareAttribute( "RepresentationCategoryZGraded", IsGroup );
 
-##
-DeclareOperation( "RepresentationCategoryZGradedObject", [ IsInt, IsList ] );
+DeclareOperation( "RepresentationCategoryZGraded", [ IsInt, IsInt ] );
 
-DeclareOperation( "RepresentationCategoryZGradedObject", [ IsList ] );
+DeclareOperation( "RepresentationCategoryZGraded", [ IsGroup, IsList ] );
+
+##
+DeclareOperation( "RepresentationCategoryZGradedObject", [ IsInt, IsList, IsCapCategory ] );
+
+DeclareOperation( "RepresentationCategoryZGradedObject", [ IsList, IsCapCategory ] );
 
 ##
 DeclareOperation( "RepresentationCategoryZGradedMorphism", [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ] );

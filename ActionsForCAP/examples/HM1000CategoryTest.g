@@ -8,6 +8,6 @@ RepG := RepresentationCategory( G );
 
 irr := Irr( G );
 
-v5 := RepresentationCategoryObject( irr[5] );
+v5 := RepresentationCategoryObject( irr[5], RepG );
 
-v18 := RepresentationCategoryObject( irr[18] );
+v18 := RepresentationCategoryObject( irr[18], RepG );

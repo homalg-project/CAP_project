@@ -16,6 +16,6 @@ chi_2_1 := GZGradedIrreducibleObject( 1, irr[2] );
 
 unit := GZGradedIrreducibleObject( 0, irr[3] );
 
-semisimple_cat := SemisimpleCategory( Q, membership_function, unit, "S3Associator.g" );
+semisimple_cat := SemisimpleCategory( Q, membership_function, unit, "S3Associator.g", true );
 
 a := SemisimpleCategoryObject( [ [ 2, chi_1_2 ], [ 3, chi_2_1 ] ], semisimple_cat );

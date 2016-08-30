@@ -15,19 +15,11 @@
 ##
 ####################################
 
-## Rep( G )
-##
 InstallMethod( RepresentationCategory,
-               [ IsGroup ],
+               [ IsInt, IsInt ],
                
-  function( group )
-    local group_string, name, databasekeys_filename, stream, command, database_keys,
-          group_data, irr, conductor, unit_number, eps,
-          field, membership_function, tensor_unit, associator_filename, is_complete_data;
-    
-    group_string := String( group );
-    
-    name := Concatenation( "The representation category of ", group_string );
+  function( order, group_nr )
+    local databasekeys_filename, stream, command, database_keys, group_string, group_data, group;
     
     databasekeys_filename := 
       Concatenation( PackageInfo( "ActionsForCAP" )[1].InstallationPath, "/gap/AssociatorsDatabase/DatabaseKeys.g" );
@@ -38,6 +30,8 @@ InstallMethod( RepresentationCategory,
     
     database_keys := EvalString( command );
     
+    group_string := Concatenation( String( order ), ", ", String( group_nr ) );
+    
     group_data := First( database_keys, entry -> entry[1] = group_string );
     
     if group_data = fail then
@@ -47,6 +41,57 @@ InstallMethod( RepresentationCategory,
         return;
         
     fi;
+    
+    group := SmallGroup( order, group_nr );
+    
+    return RepresentationCategory( group, group_data );
+    
+end );
+
+InstallMethod( RepresentationCategory,
+               [ IsGroup ],
+               
+  function( group )
+    local databasekeys_filename, stream, command, database_keys, group_string, group_data;
+    
+    databasekeys_filename := 
+      Concatenation( PackageInfo( "ActionsForCAP" )[1].InstallationPath, "/gap/AssociatorsDatabase/DatabaseKeys.g" );
+    
+    stream := InputTextFile( databasekeys_filename );
+    
+    command := ReadAll( stream );
+    
+    database_keys := EvalString( command );
+    
+    group_string := String( group );
+    
+    group_data := First( database_keys, entry -> entry[1] = group_string );
+    
+    if group_data = fail then
+        
+        Error( "The associator of ", group_string, " has not been computed yet" );
+        
+        return;
+        
+    fi;
+    
+    return RepresentationCategory( group, group_data );
+    
+end );
+
+## Rep( G )
+##
+InstallMethod( RepresentationCategory,
+               [ IsGroup, IsList ],
+               
+  function( group, group_data )
+    local group_string, name,
+          irr, conductor, unit_number, eps,
+          field, membership_function, tensor_unit, associator_filename, is_complete_data;
+    
+    group_string := String( group );
+    
+    name := Concatenation( "The representation category of ", group_string );
     
     irr := Irr( group );
     
@@ -84,14 +129,9 @@ end );
 
 ##
 InstallMethod( RepresentationCategoryObject,
-               [ IsList ],
+               [ IsList, IsCapCategory ],
                
-  function( object_list )
-    local group, category;
-    
-    group := UnderlyingGroup( object_list[1][2] );
-    
-    category := RepresentationCategory( group );
+  function( object_list, category )
     
     object_list := List( object_list, elem -> [ elem[1], GIrreducibleObject( elem[2] ) ] );
     
@@ -101,11 +141,11 @@ end );
 
 ##
 InstallMethod( RepresentationCategoryObject,
-               [ IsCharacter ],
+               [ IsCharacter, IsCapCategory ],
                
-  function( character )
+  function( character, category )
     
-    return RepresentationCategoryObject( [ [ 1, character ] ] );
+    return RepresentationCategoryObject( [ [ 1, character ] ], category );
     
 end );
 
@@ -138,16 +178,10 @@ end );
 ## Rep( Z x G )
 ##
 InstallMethod( RepresentationCategoryZGraded,
-               [ IsGroup ],
+               [ IsInt, IsInt ],
                
-  function( group )
-    local group_string, name, databasekeys_filename, stream, command, database_keys,
-          group_data, irr, conductor, unit_number, eps,
-          field, membership_function, tensor_unit, associator_filename, is_complete_data;
-    
-    group_string := String( group );
-    
-    name := Concatenation( "The Z-graded representation category of ", group_string );
+  function( order, group_nr )
+    local databasekeys_filename, stream, command, database_keys, group_string, group_data, group;
     
     databasekeys_filename := 
       Concatenation( PackageInfo( "ActionsForCAP" )[1].InstallationPath, "/gap/AssociatorsDatabase/DatabaseKeys.g" );
@@ -158,6 +192,8 @@ InstallMethod( RepresentationCategoryZGraded,
     
     database_keys := EvalString( command );
     
+    group_string := Concatenation( String( order ), ", ", String( group_nr ) );
+    
     group_data := First( database_keys, entry -> entry[1] = group_string );
     
     if group_data = fail then
@@ -167,6 +203,55 @@ InstallMethod( RepresentationCategoryZGraded,
         return;
         
     fi;
+    
+    group := SmallGroup( order, group_nr );
+    
+    return RepresentationCategoryZGraded( group, group_data );
+    
+end );
+
+InstallMethod( RepresentationCategoryZGraded,
+               [ IsGroup ],
+               
+  function( group )
+    local databasekeys_filename, stream, command, database_keys, group_string, group_data;
+    
+    databasekeys_filename := 
+      Concatenation( PackageInfo( "ActionsForCAP" )[1].InstallationPath, "/gap/AssociatorsDatabase/DatabaseKeys.g" );
+    
+    stream := InputTextFile( databasekeys_filename );
+    
+    command := ReadAll( stream );
+    
+    database_keys := EvalString( command );
+    
+    group_string := String( group );
+    
+    group_data := First( database_keys, entry -> entry[1] = group_string );
+    
+    if group_data = fail then
+        
+        Error( "The associator of ", group_string, " has not been computed yet" );
+        
+        return;
+        
+    fi;
+    
+    return RepresentationCategoryZGraded( group, group_data );
+    
+end );
+
+InstallMethod( RepresentationCategoryZGraded,
+               [ IsGroup, IsList ],
+               
+  function( group, group_data )
+    local group_string, name,
+          irr, conductor, unit_number, eps,
+          field, membership_function, tensor_unit, associator_filename, is_complete_data;
+    
+    group_string := String( group );
+    
+    name := Concatenation( "The Z-graded representation category of ", group_string );
     
     irr := Irr( group );
     
@@ -204,14 +289,9 @@ end );
 
 ##
 InstallMethod( RepresentationCategoryZGradedObject,
-               [ IsList ],
+               [ IsList, IsCapCategory ],
                
-  function( object_list )
-    local group, category;
-    
-    group := UnderlyingGroup( object_list[1][3] );
-    
-    category := RepresentationCategoryZGraded( group );
+  function( object_list, category )
     
     object_list := List( object_list, elem -> [ elem[1], GZGradedIrreducibleObject( elem[2], elem[3] ) ] );
     
@@ -221,21 +301,21 @@ end );
 
 ##
 InstallMethod( RepresentationCategoryZGradedObject,
-               [ IsInt, IsCharacter ],
+               [ IsInt, IsCharacter, IsCapCategory ],
                
-  function( degree, character )
+  function( degree, character, category )
     
-    return RepresentationCategoryZGradedObject( [ [ 1, degree, character ] ] );
+    return RepresentationCategoryZGradedObject( [ [ 1, degree, character ] ], category );
     
 end );
 
 ##
 InstallMethod( RepresentationCategoryZGradedObject,
-               [ IsCharacter ],
+               [ IsCharacter, IsCapCategory ],
                
-  function( character )
+  function( character, category )
     
-    return RepresentationCategoryZGradedObject( [ [ 1, 0, character ] ] );
+    return RepresentationCategoryZGradedObject( [ [ 1, 0, character ] ], category );
     
 end );
 
