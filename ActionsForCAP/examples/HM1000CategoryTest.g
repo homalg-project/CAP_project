@@ -1,10 +1,6 @@
 LoadPackage( "ActionsForCAP" );
 
-G := SmallGroup( 1000, 93 );
-
-StructureDescription( G );
-
-RepG := RepresentationCategory( G );
+RepG := RepresentationCategory( 1000, 93 );
 
 irr := Irr( G );
 
