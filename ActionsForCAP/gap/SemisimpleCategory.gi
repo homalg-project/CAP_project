@@ -21,7 +21,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
   function( category, tensor_unit, associator_data, is_complete_data )
     local field, membership_function, associator_on_irreducibles, braiding_on_irreducibles,
           distributivity_expanding_for_triple, distributivity_factoring_for_triple,
-          right_distributivity_expanding_permutation;
+          right_distributivity_expanding_permutation, left_distributivity_expanding_permutation;
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
     
@@ -931,6 +931,131 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         for k in [ 1 .. size_support ] do
             
             permutation := right_distributivity_expanding_permutation( list_of_objects, direct_sum, object_b, k, support );
+            
+            object := Component( new_source, support[k] );
+            
+            dim := Dimension( object );
+            
+            matrix := PermutationMat( PermList( permutation ), Size( permutation ) );
+            
+            Add( morphism_list, [ VectorSpaceMorphism( object, HomalgMatrix( matrix, dim, dim, field ), object ), support[k] ] );
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( new_source, morphism_list, new_range );
+        
+    end );
+    
+    left_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, k, support )
+      local permutation, size_support, size_list_of_objects, height, l, i,
+            b_i, j, l_times_j, c_kij, list_of_objects_j, rows, zeros_above, ones, step;
+      
+      permutation := [ ];
+      
+      size_support := Size( support );
+      
+      size_list_of_objects := Size( list_of_objects );
+      
+      for l in [ 1 .. size_list_of_objects ] do
+          
+          height := 0;
+          
+          for i in [ 1 .. size_support ] do
+              
+              b_i := Multiplicity( object_b, support[i] );
+              
+              for j in [ 1 .. size_support ] do
+                  
+                  l_times_j := Multiplicity( list_of_objects[l], support[j] );
+                  
+                  c_kij := Multiplicity( support[k], support[i], support[j] );
+                  
+                  list_of_objects_j := Multiplicity( direct_sum, support[j] );
+                  
+                  rows := b_i * list_of_objects_j * c_kij;
+                  
+                  zeros_above := Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], support[j] ) ) ) * c_kij;
+                  
+                  ones := l_times_j * c_kij;
+                  
+#                   zeros_below := 
+#                     Sum( List( [ l + 1 .. size_list_of_objects ], m -> Multiplicity( list_of_objects[m], support[j] ) ) ) * c_kij;
+                  
+                  step := list_of_objects_j * c_kij;
+                  
+                  Append( permutation, Flat(
+                    List( [ 1 .. b_i ], m -> List( [ 1 .. ones ], n -> height + (m-1)*step + zeros_above + n ) )
+                  ) );
+                  
+                  height := height + rows;
+                  
+              od;
+              
+          od;
+          
+      od;
+      
+      return permutation;
+      
+    end;
+    
+    ##
+    AddLeftDistributivityExpandingWithGivenObjects( category,
+      
+      function( new_source, object_b, list_of_objects, new_range )
+        local support, size_support, direct_sum, morphism_list, k, permutation,
+              object, dim, matrix;
+        
+        ## take the support of all objects involved
+        support := Set( Concatenation( Support( new_source ), 
+                        Concatenation( List( list_of_objects, Support ) ), 
+                        Support( object_b ) ) );
+        
+        size_support := Size( support );
+        
+        direct_sum := DirectSum( list_of_objects );
+        
+        morphism_list := [ ];
+        
+        for k in [ 1 .. size_support ] do
+            
+            permutation := left_distributivity_expanding_permutation( object_b, list_of_objects, direct_sum, k, support );
+            
+            object := Component( new_source, support[k] );
+            
+            dim := Dimension( object );
+            
+            matrix := PermutationMat( PermList( permutation )^(-1), Size( permutation ) );
+            
+            Add( morphism_list, [ VectorSpaceMorphism( object, HomalgMatrix( matrix, dim, dim, field ), object ), support[k] ] );
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( new_source, morphism_list, new_range );
+        
+    end );
+    
+    ##
+    AddLeftDistributivityFactoringWithGivenObjects( category,
+      
+      function( new_source, object_b, list_of_objects, new_range )
+        local support, size_support, direct_sum, morphism_list, k, permutation,
+              object, dim, matrix;
+        
+        ## take the support of all objects involved
+        support := Set( Concatenation( Support( new_source ), 
+                        Concatenation( List( list_of_objects, Support ) ), 
+                        Support( object_b ) ) );
+        
+        size_support := Size( support );
+        
+        direct_sum := DirectSum( list_of_objects );
+        
+        morphism_list := [ ];
+        
+        for k in [ 1 .. size_support ] do
+            
+            permutation := left_distributivity_expanding_permutation( object_b, list_of_objects, direct_sum, k, support );
             
             object := Component( new_source, support[k] );
             
