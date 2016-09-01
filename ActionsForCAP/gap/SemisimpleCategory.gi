@@ -1410,15 +1410,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end;
     
     ##
-    InstallMethodWithCacheFromObject( CAP_INTERNAL_Distributivity_Expanding_For_Triples,
-      [ ObjectFilter( category ) and IsSemisimpleCategoryObject,
-        ObjectFilter( category ) and IsSemisimpleCategoryObject,
-        IsList,
-        IsBool ],
-        
-        distributivity_expanding_for_triple );
-    
-    ##
     distributivity_factoring_for_triple := function( object_1, object_2, summands, right_term )
       local direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
             summands_2, permutation_list_1, permutation_list_2, morphism_list, size, i,
@@ -1482,42 +1473,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       return SemisimpleCategoryMorphism( object, morphism_list, object );
       
-#       local nr_summands, injection_list, id_1, id_2, diagram;
-#       
-#       nr_summands := Size( summands );
-#       
-#       injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( summands, i ) );
-#       
-#       id_1 := IdentityMorphism( object_1 );
-#       
-#       id_2 := IdentityMorphism( object_2 );
-#       
-#       if right_term then
-#           
-#           injection_list :=
-#             List( injection_list, mor -> TensorProductOnMorphisms( id_1, TensorProductOnMorphisms( id_2, mor ) ) );
-#           
-#       else
-#           
-#           injection_list :=
-#             List( injection_list, mor -> TensorProductOnMorphisms( id_1, TensorProductOnMorphisms( mor, id_2 ) ) );
-#           
-#       fi;
-#       
-#       diagram := List( injection_list, mor -> Source( mor ) );
-#       
-#       return UniversalMorphismFromDirectSum( diagram, injection_list );
-#       
     end;
-    
-    ##
-    InstallMethodWithCacheFromObject( CAP_INTERNAL_Distributivity_Factoring_For_Triples,
-      [ ObjectFilter( category ) and IsSemisimpleCategoryObject,
-        ObjectFilter( category ) and IsSemisimpleCategoryObject,
-        IsList,
-        IsBool ],
-        
-        distributivity_factoring_for_triple );
     
     ##
     AddAssociatorLeftToRightWithGivenTensorProducts( category,
@@ -1574,7 +1530,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         ## morphism_1
         if Size( object_a_expanded_list ) > 1 then
             
-            morphism := CAP_INTERNAL_Distributivity_Expanding_For_Triples( object_b, object_c, object_a_expanded_list, true );
+            morphism := distributivity_expanding_for_triple( object_b, object_c, object_a_expanded_list, true );
             
             result_morphism := PreCompose( result_morphism, morphism );
             
@@ -1587,7 +1543,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             for elem in object_a_list do
                 
-                morphism := CAP_INTERNAL_Distributivity_Expanding_For_Triples( elem[2], object_c, object_b_expanded_list, false );
+                morphism := distributivity_expanding_for_triple( elem[2], object_c, object_b_expanded_list, false );
                 
                 Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
                 
@@ -1677,7 +1633,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 for elem_b in object_b_list do
                     
                     morphism :=
-                      CAP_INTERNAL_Distributivity_Factoring_For_Triples( elem_a[2], elem_b[2], object_c_expanded_list, true );
+                      distributivity_factoring_for_triple( elem_a[2], elem_b[2], object_c_expanded_list, true );
                     
                     Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
                     
@@ -1702,7 +1658,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             for elem in object_a_list do
                 
-                morphism := CAP_INTERNAL_Distributivity_Factoring_For_Triples( elem[2], object_c, object_b_expanded_list, false );
+                morphism := distributivity_factoring_for_triple( elem[2], object_c, object_b_expanded_list, false );
                 
                 Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
                 
