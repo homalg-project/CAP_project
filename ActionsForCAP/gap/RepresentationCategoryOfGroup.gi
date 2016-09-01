@@ -86,7 +86,7 @@ InstallMethod( RepresentationCategory,
                
   function( group, group_data )
     local group_string, name,
-          irr, conductor, unit_number, eps,
+          irr, conductor, unit_number, e,
           field, membership_function, tensor_unit, associator_filename, is_complete_data;
     
     group_string := String( group );
@@ -111,11 +111,11 @@ InstallMethod( RepresentationCategory,
         
     else
         
-        field := HomalgCyclotomicFieldInMAGMA( conductor, "eps" );
+        field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
         
-        eps := HomalgRingElement( "eps", field );
+        e := HomalgRingElement( "e", field );
         
-        SetGeneratingRootOfUnityForFieldForHomalg( field, eps );
+        SetGeneratingRootOfUnityForFieldForHomalg( field, e );
         
     fi;
     
@@ -246,7 +246,7 @@ InstallMethod( RepresentationCategoryZGraded,
                
   function( group, group_data )
     local group_string, name,
-          irr, conductor, unit_number, eps,
+          irr, conductor, unit_number, e,
           field, membership_function, tensor_unit, associator_filename, is_complete_data;
     
     group_string := String( group );
@@ -271,11 +271,11 @@ InstallMethod( RepresentationCategoryZGraded,
         
     else
         
-        field := HomalgCyclotomicFieldInMAGMA( conductor, "eps" );
+        field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
         
-        eps := HomalgRingElement( "eps", field );
+        e := HomalgRingElement( "e", field );
         
-        SetGeneratingRootOfUnityForFieldForHomalg( field, eps );
+        SetGeneratingRootOfUnityForFieldForHomalg( field, e );
         
     fi;
     

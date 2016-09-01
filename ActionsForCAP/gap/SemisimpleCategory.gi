@@ -1136,7 +1136,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       if is_complete_data then
           
-          morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
+          morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field, SemisimpleCategoryObjectList( object ) );
           
           result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
           
@@ -1155,7 +1155,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               if ( irr_1_nr <= irr_2_nr and irr_2_nr <= irr_3_nr ) then
                   #(AAB), (ABB): can be loaded directly
                   
-                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
+                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field, SemisimpleCategoryObjectList( object ) );
                   
                   result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
                   
@@ -1216,7 +1216,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               if ( irr_1_nr <= irr_2_nr ) and ( irr_1_nr <= irr_3_nr ) then
                   #(ABC), (ACB): can be loaded directly
                   
-                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field );
+                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field, SemisimpleCategoryObjectList( object ) );
                   
                   result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
                   

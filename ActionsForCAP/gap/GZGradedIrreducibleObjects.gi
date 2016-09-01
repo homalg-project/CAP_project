@@ -206,52 +206,27 @@ end );
 
 ##
 InstallMethod( AssociatorFromData,
-               [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg ],
+               [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg, IsList ],
                
-  function( irr_1, irr_2, irr_3, associator_data, field )
-    local new_degree, data, irr, size, morphism_list, i, string, homalg_matrix, source, range;
-    
-    new_degree := Sum( List( [ irr_1, irr_2, irr_3 ], UnderlyingDegree ) );
+  function( irr_1, irr_2, irr_3, associator_data, field, tensor_decomposition_list )
+    local data, morphism_list, elem, pos, string, homalg_matrix, vector_space;
     
     data :=
         associator_data[UnderlyingCharacterNumber( irr_1 )][UnderlyingCharacterNumber( irr_2 )][UnderlyingCharacterNumber( irr_3 )];
     
-    irr := UnderlyingIrreducibleCharacters( irr_1 );
-    
-    size := Size( irr );
-    
     morphism_list := [ ];
     
-    if Conductor( field ) > 1 then
+    for elem in tensor_decomposition_list do
         
-        CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.eps := GeneratingRootOfUnityForFieldForHomalg( field );
+        pos := UnderlyingCharacterNumber( elem[2] );
         
-    fi;
-    
-    for i in [ 1 .. size ] do
+        string := Concatenation( "[", data[pos], "]" );
         
-        if not IsEmpty( data[i] ) then
-            
-            ## this is the workaround suggested in the documentation of EvalString
-            CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.field := field;
-            
-            string := ReplacedString( data[i], "field", "CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.field" );
-            
-            if Conductor( field ) > 1 then
-                
-                string := ReplacedString( string, "eps", "CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY.eps" );
-                
-            fi;
-            
-            homalg_matrix := EvalString( string );
-            
-            source := VectorSpaceObject( NrRows( homalg_matrix ), field );
-            
-            range := VectorSpaceObject( NrColumns( homalg_matrix ), field );
-            
-            Add( morphism_list, [ VectorSpaceMorphism( source, homalg_matrix, range ), GZGradedIrreducibleObject( new_degree, irr[i] ) ] );
-            
-        fi;
+        homalg_matrix := HomalgMatrix( string, elem[1], elem[1], field );
+        
+        vector_space := VectorSpaceObject( elem[1], field );
+        
+        Add( morphism_list, [ VectorSpaceMorphism( vector_space, homalg_matrix, vector_space ), elem[2] ] );
         
     od;
     
