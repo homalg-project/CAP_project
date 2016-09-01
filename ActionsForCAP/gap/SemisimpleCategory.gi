@@ -1345,31 +1345,67 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     distributivity_expanding_for_triple := function( object_1, object_2, summands, left_term )
-      local nr_summands, projection_list, id_1, id_2, diagram;
+      local direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
+            summands_2, permutation_list_1, permutation_list_2, morphism_list, size, i,
+            dim, string, vector_space_object;
       
-      nr_summands := Size( summands );
+      direct_sum := DirectSum( summands );
       
-      projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSum( summands, i ) );
+      object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
       
-      id_1 := IdentityMorphism( object_1 );
+      support_tensor_product_all := Support( object );
       
-      id_2 := IdentityMorphism( object_2 );
+      direct_sum_2 := TensorProductOnObjects( direct_sum, object_1 );
+      
+      support_tensor_product_partial := Support( direct_sum_2 );
+      
+      summands_2 := List( summands, obj -> TensorProductOnObjects( obj, object_1 ) );
       
       if left_term then
           
-          projection_list :=
-            List( projection_list, mor ->  TensorProductOnMorphisms( TensorProductOnMorphisms( mor, id_1 ), id_2 ) );
+          permutation_list_1 :=
+            right_distributivity_expanding_permutation( object_1, summands, direct_sum, support_tensor_product_partial );
+          
+          permutation_list_1 :=
+            CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight( permutation_list_1, object_2, support_tensor_product_all );
           
       else
           
-          projection_list :=
-            List( projection_list, mor ->  TensorProductOnMorphisms( TensorProductOnMorphisms( id_1, mor ), id_2 ) );
+          permutation_list_1 :=
+            left_distributivity_expanding_permutation( object_1, summands, direct_sum, support_tensor_product_partial );
+          
+          permutation_list_1 :=
+            CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight( permutation_list_1, object_2, support_tensor_product_all );
           
       fi;
       
-      diagram := List( projection_list, mor -> Range( mor ) );
+      permutation_list_2 :=
+        right_distributivity_expanding_permutation(
+          object_2, summands_2, direct_sum_2, support_tensor_product_all );
       
-      return UniversalMorphismIntoDirectSum( diagram, projection_list );
+      morphism_list := [ ];
+      
+      ## CLAIM: permutation_lists are sorted w.r.t. ordering in second component
+      size := Size( permutation_list_1 );
+      
+      for i in [ 1 .. size ] do
+          
+          dim := Size( permutation_list_1[i][1] );
+          
+          string := String( Flat(
+            PermutationMat( PermList( permutation_list_1[i][1] )^(-1) * 
+                            PermList( permutation_list_2[i][1] )^(-1), dim ) ) );
+          
+          vector_space_object := VectorSpaceObject( dim, field );
+          
+          Add( morphism_list,
+               [ VectorSpaceMorphism( vector_space_object, HomalgMatrix( string, dim, dim, field ), vector_space_object ), 
+                 permutation_list_1[i][2] ] 
+          );
+          
+      od;
+      
+      return SemisimpleCategoryMorphism( object, morphism_list, object );
       
     end;
     
@@ -1384,32 +1420,94 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     distributivity_factoring_for_triple := function( object_1, object_2, summands, right_term )
-      local nr_summands, injection_list, id_1, id_2, diagram;
+      local direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
+            summands_2, permutation_list_1, permutation_list_2, morphism_list, size, i,
+            dim, string, vector_space_object;
       
-      nr_summands := Size( summands );
+      direct_sum := DirectSum( summands );
       
-      injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( summands, i ) );
+      object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
       
-      id_1 := IdentityMorphism( object_1 );
+      support_tensor_product_all := Support( object );
       
-      id_2 := IdentityMorphism( object_2 );
+      direct_sum_2 := TensorProductOnObjects( direct_sum, object_2 );
+      
+      support_tensor_product_partial := Support( direct_sum_2 );
+      
+      summands_2 := List( summands, obj -> TensorProductOnObjects( obj, object_2 ) );
       
       if right_term then
           
-          injection_list :=
-            List( injection_list, mor -> TensorProductOnMorphisms( id_1, TensorProductOnMorphisms( id_2, mor ) ) );
+          permutation_list_1 :=
+            left_distributivity_expanding_permutation( object_2, summands, direct_sum, support_tensor_product_partial );
+          
+          permutation_list_1 :=
+            CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft( permutation_list_1, object_1, support_tensor_product_all );
           
       else
           
-          injection_list :=
-            List( injection_list, mor -> TensorProductOnMorphisms( id_1, TensorProductOnMorphisms( mor, id_2 ) ) );
+          permutation_list_1 :=
+            right_distributivity_expanding_permutation( object_2, summands, direct_sum, support_tensor_product_partial );
+          
+          permutation_list_1 :=
+            CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft( permutation_list_1, object_1, support_tensor_product_all );
           
       fi;
       
-      diagram := List( injection_list, mor -> Source( mor ) );
+      permutation_list_2 :=
+        right_distributivity_expanding_permutation(
+          object_1, summands_2, direct_sum_2, support_tensor_product_all );
       
-      return UniversalMorphismFromDirectSum( diagram, injection_list );
+      morphism_list := [ ];
       
+      ## CLAIM: permutation_lists are sorted w.r.t. ordering in second component
+      size := Size( permutation_list_1 );
+      
+      for i in [ 1 .. size ] do
+          
+          dim := Size( permutation_list_1[i][1] );
+          
+          string := String( Flat(
+            PermutationMat( PermList( permutation_list_2[i][1] ) * 
+                            PermList( permutation_list_1[i][1] ), dim ) ) );
+          
+          vector_space_object := VectorSpaceObject( dim, field );
+          
+          Add( morphism_list,
+               [ VectorSpaceMorphism( vector_space_object, HomalgMatrix( string, dim, dim, field ), vector_space_object ), 
+                 permutation_list_1[i][2] ] 
+          );
+          
+      od;
+      
+      return SemisimpleCategoryMorphism( object, morphism_list, object );
+      
+#       local nr_summands, injection_list, id_1, id_2, diagram;
+#       
+#       nr_summands := Size( summands );
+#       
+#       injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( summands, i ) );
+#       
+#       id_1 := IdentityMorphism( object_1 );
+#       
+#       id_2 := IdentityMorphism( object_2 );
+#       
+#       if right_term then
+#           
+#           injection_list :=
+#             List( injection_list, mor -> TensorProductOnMorphisms( id_1, TensorProductOnMorphisms( id_2, mor ) ) );
+#           
+#       else
+#           
+#           injection_list :=
+#             List( injection_list, mor -> TensorProductOnMorphisms( id_1, TensorProductOnMorphisms( mor, id_2 ) ) );
+#           
+#       fi;
+#       
+#       diagram := List( injection_list, mor -> Source( mor ) );
+#       
+#       return UniversalMorphismFromDirectSum( diagram, injection_list );
+#       
     end;
     
     ##
