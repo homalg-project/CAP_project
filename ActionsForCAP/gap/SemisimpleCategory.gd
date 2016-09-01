@@ -72,6 +72,21 @@ DeclareOperationWithCache( "CAP_INTERNAL_Distributivity_Factoring_For_Triples",
 DeclareOperationWithCache( "CAP_INTERNAL_Braiding_On_Irreducibles", 
                            [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ] );
 
+##
+DeclareOperation( "CAP_INTERNAL_TensorProductOfPermutationWithIdentityFromRight",
+                  [ IsList, IsInt ] );
+
+##
+DeclareOperation( "CAP_INTERNAL_TensorProductOfPermutationWithIdentityFromLeft",
+                  [ IsList, IsInt ] );
+
+##
+DeclareOperation( "CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight",
+                  [ IsList, IsSemisimpleCategoryObject, IsList ] );
+
+##
+DeclareOperation( "CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft",
+                  [ IsList, IsSemisimpleCategoryObject, IsList ] );
 
 ##
 DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY" );

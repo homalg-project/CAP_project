@@ -11,6 +11,126 @@
 
 InstallValue( CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY, rec( ) );
 
+##
+InstallMethod( CAP_INTERNAL_TensorProductOfPermutationWithIdentityFromRight,
+               [ IsList, IsInt ],
+               
+  function( permutation, b )
+    
+    return Flat( List( permutation, p -> List( [ 1 .. b ], i -> (p - 1) * b + i ) ) );
+    
+end );
+
+##
+InstallMethod( CAP_INTERNAL_TensorProductOfPermutationWithIdentityFromLeft,
+               [ IsList, IsInt ],
+               
+  function( permutation, b )
+    local a;
+    
+    a := Size( permutation );
+    
+    return Flat( List( [ 0 .. b - 1 ], i -> List( permutation, p -> p + i * a ) ) );
+    
+end );
+
+##
+InstallMethod( CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight,
+               [ IsList, IsSemisimpleCategoryObject, IsList ],
+               
+  function( permutation_list, b, support_tensor_product )
+    local b_object_list, new_permutation_list, k, height, k_permutation, i, j, c_kij, list, rows;
+    
+    b_object_list := SemisimpleCategoryObjectList( b );
+    
+    new_permutation_list := [ ];
+    
+    for k in support_tensor_product do
+        
+        height := 0;
+        
+        k_permutation := [ ];
+        
+        for i in permutation_list do
+            
+            for j in b_object_list do
+                
+                c_kij := Multiplicity( k, i[2], j[2] );
+                
+                if c_kij > 0 then
+                    
+                    list := CAP_INTERNAL_TensorProductOfPermutationWithIdentityFromRight( i[1], j[1] * c_kij );
+                    
+                    rows := c_kij * j[1] * Size( i[1] );
+                    
+                    Append( k_permutation, List( list, l -> l + height ) );
+                    
+                    height := height + rows;
+                    
+                fi;
+                
+            od;
+            
+        od;
+        
+        Add( new_permutation_list, [ k_permutation, k ] );
+        
+    od;
+    
+    return new_permutation_list;
+    
+end );
+
+##
+InstallMethod( CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft,
+               [ IsList, IsSemisimpleCategoryObject, IsList ],
+               
+  function( permutation_list, b, support_tensor_product )
+    local b_object_list, new_permutation_list, k, height, k_permutation, i, j, c_kij, list, rows;
+    
+    b_object_list := SemisimpleCategoryObjectList( b );
+    
+    new_permutation_list := [ ];
+    
+    for k in support_tensor_product do
+        
+        height := 0;
+        
+        k_permutation := [ ];
+        
+        for i in b_object_list do
+            
+            for j in permutation_list do
+                
+                c_kij := Multiplicity( k, i[2], j[2] );
+                
+                if c_kij > 0 then
+                    
+                    list := CAP_INTERNAL_TensorProductOfPermutationWithIdentityFromRight( j[1], c_kij );
+                    
+                    list := CAP_INTERNAL_TensorProductOfPermutationWithIdentityFromLeft( list, i[1] );
+                    
+                    rows := c_kij * i[1] * Size( j[1] );
+                    
+                    Append( k_permutation, List( list, l -> l + height ) );
+                    
+                    height := height + rows;
+                    
+                fi;
+                
+            od;
+            
+        od;
+        
+        Add( new_permutation_list, [ k_permutation, k ] );
+        
+    od;
+    
+    return new_permutation_list;
+    
+end );
+
+
 ####################################
 ##
 ## Basic operations
