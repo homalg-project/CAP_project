@@ -950,144 +950,157 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ## -- Helper functions for distributivity --
     
     ##
-    right_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, k, support )
-      local permutation, size_support, size_list_of_objects, height, l, i,
+    right_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, support, support_tensor_product )
+      local permutation_list, k_permutation, size_support, size_list_of_objects, height, l, i, k,
             multiplicity_li, sum_up_to_l_minus_1, j, b_j_times_c_kij, cols, rows, height_of_zeros;
       
-      permutation := [ ];
+      permutation_list := [ ];
       
       size_support := Size( support );
       
       size_list_of_objects := Size( list_of_objects );
       
-      for l in [ 1 .. size_list_of_objects ] do
+      for k in support_tensor_product do
           
-          height := 0;
+          k_permutation := [ ];
           
-          for i in [ 1 .. size_support ] do
+          for l in [ 1 .. size_list_of_objects ] do
               
-              multiplicity_li := Multiplicity( list_of_objects[l], support[i] );
+              height := 0;
               
-              sum_up_to_l_minus_1 :=
-                Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], support[i] ) ) );
-              
-              for j in [ 1 .. size_support ] do
+              for i in [ 1 .. size_support ] do
                   
-                  b_j_times_c_kij := Multiplicity( object_b, support[j] ) * Multiplicity( support[k], support[i], support[j] );
+                  multiplicity_li := Multiplicity( list_of_objects[l], support[i] );
                   
-                  cols := multiplicity_li * b_j_times_c_kij;
+                  sum_up_to_l_minus_1 :=
+                    Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], support[i] ) ) );
                   
-                  rows := Multiplicity( direct_sum, support[i] ) * b_j_times_c_kij;
-                  
-                  height_of_zeros := sum_up_to_l_minus_1 * b_j_times_c_kij;
-                  
-                  Append( permutation,
-                    List( [ 1 .. cols ], m -> height + height_of_zeros + m ) );
-                  
-                  height := height + rows;
+                  for j in [ 1 .. size_support ] do
+                      
+                      b_j_times_c_kij := Multiplicity( object_b, support[j] ) * Multiplicity( k, support[i], support[j] );
+                      
+                      cols := multiplicity_li * b_j_times_c_kij;
+                      
+                      rows := Multiplicity( direct_sum, support[i] ) * b_j_times_c_kij;
+                      
+                      height_of_zeros := sum_up_to_l_minus_1 * b_j_times_c_kij;
+                      
+                      Append( k_permutation,
+                        List( [ 1 .. cols ], m -> height + height_of_zeros + m ) );
+                      
+                      height := height + rows;
+                      
+                  od;
                   
               od;
               
           od;
           
+          Add( permutation_list, [ k_permutation, k ] );
+          
       od;
       
-      return permutation;
+      return permutation_list;
       
     end;
     
     ##
-    left_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, k, support )
-      local permutation, size_support, size_list_of_objects, height, l, i,
+    left_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, support, support_tensor_product )
+      local permutation_list, k_permutation, size_support, size_list_of_objects, height, l, i, k,
             b_i, j, l_times_j, c_kij, list_of_objects_j, rows, zeros_above, ones, step;
       
-      permutation := [ ];
+      permutation_list := [ ];
       
       size_support := Size( support );
       
       size_list_of_objects := Size( list_of_objects );
       
-      for l in [ 1 .. size_list_of_objects ] do
+      for k in support_tensor_product do
           
-          height := 0;
+          k_permutation := [ ];
           
-          for i in [ 1 .. size_support ] do
+          for l in [ 1 .. size_list_of_objects ] do
               
-              b_i := Multiplicity( object_b, support[i] );
+              height := 0;
               
-              for j in [ 1 .. size_support ] do
+              for i in [ 1 .. size_support ] do
                   
-                  l_times_j := Multiplicity( list_of_objects[l], support[j] );
+                  b_i := Multiplicity( object_b, support[i] );
                   
-                  c_kij := Multiplicity( support[k], support[i], support[j] );
-                  
-                  list_of_objects_j := Multiplicity( direct_sum, support[j] );
-                  
-                  rows := b_i * list_of_objects_j * c_kij;
-                  
-                  zeros_above := Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], support[j] ) ) ) * c_kij;
-                  
-                  ones := l_times_j * c_kij;
-                  
-                  step := list_of_objects_j * c_kij;
-                  
-                  Append( permutation, Flat(
-                    List( [ 1 .. b_i ], m -> List( [ 1 .. ones ], n -> height + (m-1)*step + zeros_above + n ) )
-                  ) );
-                  
-                  height := height + rows;
+                  for j in [ 1 .. size_support ] do
+                      
+                      l_times_j := Multiplicity( list_of_objects[l], support[j] );
+                      
+                      c_kij := Multiplicity( k, support[i], support[j] );
+                      
+                      list_of_objects_j := Multiplicity( direct_sum, support[j] );
+                      
+                      rows := b_i * list_of_objects_j * c_kij;
+                      
+                      zeros_above := Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], support[j] ) ) ) * c_kij;
+                      
+                      ones := l_times_j * c_kij;
+                      
+                      step := list_of_objects_j * c_kij;
+                      
+                      Append( k_permutation, Flat(
+                        List( [ 1 .. b_i ], m -> List( [ 1 .. ones ], n -> height + (m-1)*step + zeros_above + n ) )
+                      ) );
+                      
+                      height := height + rows;
+                      
+                  od;
                   
               od;
               
           od;
           
+          Add( permutation_list, [ k_permutation, k ] );
+          
       od;
       
-      return permutation;
+      return permutation_list;
       
     end;
     
     ##
-    distributivity_function := function( new_source, object_b, list_of_objects, new_range, permuation_function, invert )
-      local support, size_support, direct_sum, morphism_list, k, permutation,
-            object, dim, matrix;
+    distributivity_function := function( new_source, object_b, list_of_objects, new_range, permutation_function, invert )
+      local support, support_tensor_product, size_support, direct_sum, morphism_list, k, permutation,
+            object, dim, matrix, permutation_list;
         
         ## take the support of all objects involved, otherwise the computation of the permutation cannot work
-        support := Set( Concatenation( Support( new_source ),
+        support_tensor_product := Support( new_source );
+        
+        support := Set( Concatenation( support_tensor_product,
                         Concatenation( List( list_of_objects, Support ) ), 
                         Support( object_b ) ) );
         
-        size_support := Size( support );
-        
         direct_sum := DirectSum( list_of_objects );
+        
+        permutation_list := permutation_function( object_b, list_of_objects, direct_sum, support, support_tensor_product );
+        
+        if invert then
+            
+            permutation_list := 
+              List( permutation_list, entry ->
+                [ String( Flat( PermutationMat( PermList( entry[1] )^(-1), Size( entry[1] ) ) ) ), entry[2] ] );
+            
+        else
+            permutation_list := 
+              List( permutation_list, entry ->
+                [ String( Flat( PermutationMat( PermList( entry[1] ), Size( entry[1] ) ) ) ), entry[2] ] );
+            
+        fi;
         
         morphism_list := [ ];
         
-        for k in [ 1 .. size_support ] do
+        for entry in permutation_list do
             
-            if Multiplicity( new_source, support[k] ) = 0 then
-                
-                continue;
-                
-            fi;
-            
-            object := Component( new_source, support[k] );
+            object := Component( new_source, entry[2] );
             
             dim := Dimension( object );
             
-            permutation := permuation_function( object_b, list_of_objects, direct_sum, k, support );
-            
-            if invert then
-                
-                matrix := String( Flat( PermutationMat( PermList( permutation )^(-1), Size( permutation ) ) ) );
-                
-            else
-                
-                matrix := String( Flat( PermutationMat( PermList( permutation ), Size( permutation ) ) ) );
-                
-            fi;
-            
-            Add( morphism_list, [ VectorSpaceMorphism( object, HomalgMatrix( matrix, dim, dim, field ), object ), support[k] ] );
+            Add( morphism_list, [ VectorSpaceMorphism( object, HomalgMatrix( entry[1], dim, dim, field ), object ), entry[2] ] );
             
         od;
         
