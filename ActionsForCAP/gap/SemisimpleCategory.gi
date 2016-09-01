@@ -1068,7 +1068,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     distributivity_function := function( new_source, object_b, list_of_objects, new_range, permutation_function, invert )
       local support, support_tensor_product, size_support, direct_sum, morphism_list, k, permutation,
-            object, dim, matrix, permutation_list;
+            object, dim, matrix, permutation_list, entry;
         
         support_tensor_product := Support( new_source );
         
