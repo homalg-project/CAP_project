@@ -16,7 +16,7 @@ chi_2 := GIrreducibleObject( irr[2] );
 
 chi_3 := GIrreducibleObject( irr[3] );
 
-semisimple_cat := SemisimpleCategory( Q, membership_function, chi_3, "S3Associator.g" );
+semisimple_cat := SemisimpleCategory( Q, membership_function, chi_3, "S3Ass.g", true );
 
 a := SemisimpleCategoryObject( [ [ 1, chi_1 ], [ 2, chi_2 ], [ 3, chi_3 ] ], semisimple_cat );
 

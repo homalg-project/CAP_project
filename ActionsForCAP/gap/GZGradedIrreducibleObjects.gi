@@ -206,7 +206,7 @@ end );
 
 ##
 InstallMethod( AssociatorFromData,
-               [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg, IsList ],
+               [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList ],
                
   function( irr_1, irr_2, irr_3, associator_data, field, tensor_decomposition_list )
     local data, morphism_list, elem, pos, string, homalg_matrix, vector_space;
