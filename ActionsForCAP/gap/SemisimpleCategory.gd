@@ -64,6 +64,10 @@ DeclareOperationWithCache( "CAP_INTERNAL_Braiding_On_Irreducibles",
                            [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ] );
 
 ##
+DeclareOperation( "CAP_INTERNAL_DirectSumForPermutationLists",
+                  [ IsList, IsList ] );
+
+##
 DeclareOperation( "CAP_INTERNAL_TensorProductOfPermutationWithIdentityFromRight",
                   [ IsList, IsInt ] );
 

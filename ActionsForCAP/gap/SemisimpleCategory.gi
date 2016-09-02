@@ -130,6 +130,46 @@ InstallMethod( CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft,
     
 end );
 
+##
+InstallMethod( CAP_INTERNAL_DirectSumForPermutationLists,
+               [ IsList, IsList ],
+               
+  function( permutation_lists, support )
+    local result_list, chi, chi_permutation, elem, height, permutation;
+    
+    result_list := [ ];
+    
+    for chi in support do
+        
+        chi_permutation := [ ];
+        
+        height := 0;
+        
+        for elem in permutation_lists do
+            
+            permutation := First( elem, i -> i[2] = chi );
+            
+            if not permutation = fail then
+                
+                Append( chi_permutation, List( permutation[1], i -> i + height ) );
+                
+                height := height + Size( permutation[1] );
+                
+            fi;
+            
+        od;
+        
+        if not IsEmpty( chi_permutation ) then
+            
+            Add( result_list, [ chi_permutation, chi ] );
+          
+        fi;
+    od;
+    
+    return result_list;
+    
+end );
+
 
 ####################################
 ##
@@ -1390,22 +1430,15 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       for i in [ 1 .. size ] do
           
-          dim := Size( permutation_list_1[i][1] );
-          
-          string := String( Flat(
-            PermutationMat( PermList( permutation_list_1[i][1] )^(-1) * 
-                            PermList( permutation_list_2[i][1] )^(-1), dim ) ) );
-          
-          vector_space_object := VectorSpaceObject( dim, field );
-          
           Add( morphism_list,
-               [ VectorSpaceMorphism( vector_space_object, HomalgMatrix( string, dim, dim, field ), vector_space_object ), 
+               [ ListPerm( ( PermList( permutation_list_1[i][1] )^(-1) * PermList( permutation_list_2[i][1] )^(-1) )^(-1),
+                 Size( permutation_list_1[i][1] ) ),
                  permutation_list_1[i][2] ] 
           );
           
       od;
       
-      return SemisimpleCategoryMorphism( object, morphism_list, object );
+      return morphism_list;
       
     end;
     
@@ -1456,22 +1489,15 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       for i in [ 1 .. size ] do
           
-          dim := Size( permutation_list_1[i][1] );
-          
-          string := String( Flat(
-            PermutationMat( PermList( permutation_list_2[i][1] ) * 
-                            PermList( permutation_list_1[i][1] ), dim ) ) );
-          
-          vector_space_object := VectorSpaceObject( dim, field );
-          
           Add( morphism_list,
-               [ VectorSpaceMorphism( vector_space_object, HomalgMatrix( string, dim, dim, field ), vector_space_object ), 
-                 permutation_list_1[i][2] ] 
+               [ PermList( ( PermList( permutation_list_2[i][1] ) * PermList( permutation_list_1[i][1] ) )^(-1), 
+                 Size( permutation_list_2[i][1] ) ),
+                 permutation_list_1[i][2] ]
           );
           
       od;
       
-      return SemisimpleCategoryMorphism( object, morphism_list, object );
+      return morphism_list;
       
     end;
     
@@ -1481,7 +1507,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         local object_a_list, object_b_list, object_c_list, result_morphism,
               object_a_expanded_list, object_b_expanded_list, object_c_expanded_list,
               elem, morphism, summand_list, inner_summand_list, outer_summand_list, innermost_summand_list,
-              elem_a, elem_b, elem_c;
+              elem_a, elem_b, elem_c, morphism_1;
         
         object_a_list := SemisimpleCategoryObjectList( object_a );
         
@@ -1530,9 +1556,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         ## morphism_1
         if Size( object_a_expanded_list ) > 1 then
             
-            morphism := distributivity_expanding_for_triple( object_b, object_c, object_a_expanded_list, true );
-            
-            result_morphism := PreCompose( result_morphism, morphism );
+            morphism_1 := distributivity_expanding_for_triple( object_b, object_c, object_a_expanded_list, true );
             
         fi;
         
