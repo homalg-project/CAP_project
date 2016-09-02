@@ -1120,12 +1120,12 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             permutation_list := 
               List( permutation_list, entry ->
-                [ String( Flat( PermutationMat( PermList( entry[1] )^(-1), Size( entry[1] ) ) ) ), entry[2] ] );
+                [ PermutationMat( PermList( entry[1] )^(-1), Size( entry[1] ) ), entry[2] ] );
             
         else
             permutation_list := 
               List( permutation_list, entry ->
-                [ String( Flat( PermutationMat( PermList( entry[1] ), Size( entry[1] ) ) ) ), entry[2] ] );
+                [ PermutationMat( PermList( entry[1] ), Size( entry[1] ) ), entry[2] ] );
             
         fi;
         
@@ -1776,7 +1776,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
                 vector_space_object := VectorSpaceObject( dim, field );
                 
-                homalg_matrix := HomalgMatrix( String( Flat( PermutationMat( perm1 * perm2 * perm3, dim ) ) ), dim, dim, field );
+                homalg_matrix := HomalgMatrix( PermutationMat( perm1 * perm2 * perm3, dim ), dim, dim, field );
                 
                 Add( first_permutation_morphism_list, [ VectorSpaceMorphism( vector_space_object, homalg_matrix, vector_space_object ),
                      chi ] );
@@ -1835,7 +1835,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
                 vector_space_object := VectorSpaceObject( dim, field );
                 
-                homalg_matrix := HomalgMatrix( String( Flat( PermutationMat( perm1 * perm2 * perm3, dim ) ) ), dim, dim, field );
+                homalg_matrix := HomalgMatrix( PermutationMat( perm1 * perm2 * perm3, dim ), dim, dim, field );
                 
                 Add( second_permutation_morphism_list, [ VectorSpaceMorphism( vector_space_object, homalg_matrix, vector_space_object ),
                      chi ] );
