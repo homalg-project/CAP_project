@@ -62,3 +62,58 @@ InstallMethod( InternalExteriorAlgebraModuleCategoryMorphism,
       
 end );
 
+####################################
+##
+## Operations
+##
+####################################
+
+##
+InstallMethod( ExteriorAlgebraAsModule,
+               [ IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ],
+               
+  function( category )
+    local v, u, top, exterior_algebra_multiplication_list, id_v, n, morphism_1, n_minus_2_power, morphism_2;
+    
+    v := UnderlyingActingObject( category );
+    
+    u := TensorUnit( UnderlyingCategory( category ) );
+    
+    top := Dimension( v );
+    
+    exterior_algebra_multiplication_list := [ UniversalMorphismFromZeroObject( u ) ];
+    
+    if top = 0 then
+        
+        return InternalExteriorAlgebraModuleCategoryObject( exterior_algebra_multiplication_list[1], category );
+        
+    fi;
+    
+    Add( exterior_algebra_multiplication_list, RightUnitor( v ) );
+    
+    id_v := IdentityMorphism( v );
+    
+    for n in [ 3 .. top + 1 ] do
+        
+        morphism_1 := TensorProductOnMorphisms( id_v, exterior_algebra_multiplication_list[n - 1] );
+        
+        n_minus_2_power := Range( exterior_algebra_multiplication_list[n - 2] );
+        
+        morphism_2 := PreCompose( [
+                        AssociatorRightToLeft( v, v, n_minus_2_power ),
+                        TensorProductOnMorphisms( Braiding( v, v ), IdentityMorphism( n_minus_2_power ) ),
+                        AssociatorLeftToRight( v, v, n_minus_2_power ),
+                        morphism_1 ] );
+        
+        Add( exterior_algebra_multiplication_list, CokernelProjection( morphism_1 + morphism_2 ) );
+        
+    od;
+    
+    Add( exterior_algebra_multiplication_list,
+         UniversalMorphismIntoZeroObject( TensorProductOnObjects( v, Range( exterior_algebra_multiplication_list[top + 1] ) ) ) );
+    
+    return InternalExteriorAlgebraModuleCategoryObject(
+             DirectSumFunctorial( exterior_algebra_multiplication_list ), category );
+    
+end );
+

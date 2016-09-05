@@ -2034,6 +2034,21 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         return result_morphism;
         
     end );
+    
+    AddLeftUnitorWithGivenTensorProduct( category,
+      function( object, tensor_product )
+        
+        return IdentityMorphism( object );
+        
+    end );
+    
+    AddRightUnitorWithGivenTensorProduct( category,
+      function( object, tensor_product )
+        
+        return IdentityMorphism( object );
+        
+    end );
+    
 #     
 #     ##
 #     AddDualOnObjects( category, space -> space );

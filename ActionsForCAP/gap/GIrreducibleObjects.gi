@@ -107,6 +107,16 @@ InstallMethod( ExteriorPower,
     
 end );
 
+##
+InstallMethod( Dimension,
+               [ IsGIrreducibleObject ],
+               
+  function( object )
+    
+    return Degree( UnderlyingCharacter( object ) );
+    
+end );
+
 ####################################
 ##
 ## Operations

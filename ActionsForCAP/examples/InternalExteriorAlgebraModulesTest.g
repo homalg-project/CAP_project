@@ -1,6 +1,6 @@
 LoadPackage( "ActionsForCAP" );
 
-G := SymmetricGroup( 3 );
+G := SymmetricGroup( 4 );
 
 RepG := RepresentationCategoryZGraded( G );
 

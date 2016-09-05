@@ -51,8 +51,14 @@ DeclareAttribute( "SemisimpleCategoryObjectList",
 DeclareAttribute( "Support",
                   IsSemisimpleCategoryObject );
 
+##
 DeclareAttribute( "UnderlyingFieldForHomalg",
                   IsSemisimpleCategoryObject );
+
+##
+DeclareAttribute( "Dimension",
+                  IsSemisimpleCategoryObject );
+
 
 ####################################
 ##

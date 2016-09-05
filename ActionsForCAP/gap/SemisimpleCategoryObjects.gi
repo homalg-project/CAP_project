@@ -137,6 +137,17 @@ InstallMethod( Support,
     
 end );
 
+##
+InstallMethod( Dimension,
+               [ IsSemisimpleCategoryObject ],
+               
+  function( object )
+    
+    return Sum( List( SemisimpleCategoryObjectList( object ), elem -> elem[1] * Dimension( elem[2] ) ) );
+    
+end );
+
+
 ####################################
 ##
 ## Operations

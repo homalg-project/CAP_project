@@ -42,6 +42,8 @@ DeclareAttribute( "UnderlyingIrreducibleCharacters", IsGIrreducibleObject );
 
 DeclareAttribute( "UnderlyingCharacterNumber", IsGIrreducibleObject );
 
+DeclareAttribute( "Dimension", IsGIrreducibleObject );
+
 ####################################
 ##
 #! @Section Properties

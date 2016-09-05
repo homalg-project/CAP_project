@@ -34,3 +34,12 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY" );
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY" );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_ONLY_RIGHT_ACTIONS_CATEGORY" );
+
+####################################
+##
+## Attributes
+##
+####################################
+
+##
+DeclareAttribute( "UnderlyingActingObject", IsCapCategory );

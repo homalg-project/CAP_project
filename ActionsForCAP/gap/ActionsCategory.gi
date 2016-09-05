@@ -57,6 +57,10 @@ InstallMethod( LeftActionsCategory,
     
     left_actions_category := CreateCapCategory( name );
     
+    SetFilterObj( left_actions_category, context_filter );
+    
+    SetUnderlyingActingObject( left_actions_category, acting_object );
+    
     structure_record := rec(
       underlying_category := underlying_monoidal_category,
       category_with_attributes := left_actions_category

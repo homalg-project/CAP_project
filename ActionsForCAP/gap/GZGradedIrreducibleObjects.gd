@@ -44,6 +44,8 @@ DeclareAttribute( "UnderlyingIrreducibleCharacters", IsGZGradedIrreducibleObject
 
 DeclareAttribute( "UnderlyingCharacterNumber", IsGZGradedIrreducibleObject );
 
+DeclareAttribute( "Dimension", IsGZGradedIrreducibleObject );
+
 ####################################
 ##
 #! @Section Properties

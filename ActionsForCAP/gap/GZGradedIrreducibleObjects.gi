@@ -110,6 +110,17 @@ InstallMethod( ExteriorPower,
     
 end );
 
+##
+InstallMethod( Dimension,
+               [ IsGZGradedIrreducibleObject ],
+               
+  function( object )
+    
+    return Degree( UnderlyingCharacter( object ) );
+    
+end );
+
+
 ####################################
 ##
 ## Operations

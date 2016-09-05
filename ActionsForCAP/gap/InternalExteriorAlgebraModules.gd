@@ -41,3 +41,12 @@ DeclareOperation( "InternalExteriorAlgebraModuleCategoryMorphism",
                   [ IsInternalExteriorAlgebraModuleCategoryObject,
                     IsCapCategoryMorphism,
                     IsInternalExteriorAlgebraModuleCategoryObject ] );
+
+####################################
+##
+#! @Section Operations
+##
+####################################
+
+DeclareAttribute( "ExteriorAlgebraAsModule", IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
+
