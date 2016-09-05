@@ -28,3 +28,5 @@ ReadPackage( "ActionsForCAP", "gap/GIrreducibleObjects.gd" );
 ReadPackage( "ActionsForCAP", "gap/GZGradedIrreducibleObjects.gd" );
 
 ReadPackage( "ActionsForCAP", "gap/RepresentationCategoryOfGroup.gd" );
+
+ReadPackage( "ActionsForCAP", "gap/InternalExteriorAlgebraModules.gd" );

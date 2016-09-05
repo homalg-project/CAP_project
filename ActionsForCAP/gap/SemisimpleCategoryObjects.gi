@@ -336,8 +336,7 @@ end );
 ##
 ####################################
 
-##
-InstallMethod( Display,
+InstallMethod( String,
                [ IsSemisimpleCategoryObject ],
                
   function( object )
@@ -363,6 +362,26 @@ InstallMethod( Display,
         
     od;
     
-    Print( Concatenation( string, "\n" ) );
+    return string;
+    
+end );
+
+##
+InstallMethod( ViewObj,
+               [ IsSemisimpleCategoryObject ],
+               
+  function( object )
+    
+    Print( String( object ) );
+    
+end );
+
+##
+InstallMethod( Display,
+               [ IsSemisimpleCategoryObject ],
+               
+  function( object )
+    
+    Print( Concatenation( String( object ), "\n" ) );
     
 end );

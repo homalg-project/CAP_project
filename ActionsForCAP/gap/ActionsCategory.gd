@@ -15,8 +15,12 @@
 ##
 ####################################
 
+##
 DeclareAttribute( "LeftActionsCategory",
                   IsCapCategoryObject );
+
+DeclareOperation( "LeftActionsCategory",
+                  [ IsCapCategoryObject, IsString, IsObject ] );
 
 DeclareAttribute( "RightActionsCategory",
                   IsCapCategoryObject );

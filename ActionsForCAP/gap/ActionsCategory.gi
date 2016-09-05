@@ -20,6 +20,20 @@ InstallMethod( LeftActionsCategory,
                [ IsCapCategoryObject ],
                
   function( acting_object )
+    local name;
+      
+      name := Concatenation( "Category of left actions of <", String( acting_object ), ">" );
+      
+      return LeftActionsCategory( acting_object, name, IsObject );
+      
+end );
+
+
+##
+InstallMethod( LeftActionsCategory,
+               [ IsCapCategoryObject, IsString, IsObject ],
+               
+  function( acting_object, name, context_filter )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
           left_actions_category, identity_of_acting_object;
@@ -41,7 +55,7 @@ InstallMethod( LeftActionsCategory,
       
     fi;
     
-    left_actions_category := CreateCapCategory( Concatenation( "Category of left actions of <", String( acting_object ), ">" ) );
+    left_actions_category := CreateCapCategory( name );
     
     structure_record := rec(
       underlying_category := underlying_monoidal_category,
@@ -63,6 +77,8 @@ InstallMethod( LeftActionsCategory,
         
         SetActionDomain( return_object, Range( attributes[1] ) );
         
+        SetFilterObj( return_object, context_filter );
+        
         return return_object;
         
     end;
@@ -76,6 +92,8 @@ InstallMethod( LeftActionsCategory,
         return_morphism := morphism_constructor( source, morphism, range );
         
         SetUnderlyingActingObject( return_morphism, acting_object );
+        
+        SetFilterObj( return_morphism, context_filter );
         
         return return_morphism;
         
