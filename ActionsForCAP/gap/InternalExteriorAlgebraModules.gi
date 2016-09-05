@@ -73,6 +73,20 @@ InstallMethod( ExteriorAlgebraAsModule,
                [ IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ],
                
   function( category )
+    local exterior_algebra_multiplication_list;
+    
+    exterior_algebra_multiplication_list := ExteriorAlgebraAsModuleMultiplicationList( category );
+    
+    return InternalExteriorAlgebraModuleCategoryObject(
+             DirectSumFunctorial( exterior_algebra_multiplication_list ), category );
+    
+end );
+
+##
+InstallMethod( ExteriorAlgebraAsModuleMultiplicationList,
+               [ IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ],
+               
+  function( category )
     local v, u, top, exterior_algebra_multiplication_list, id_v, n, morphism_1, n_minus_2_power, morphism_2;
     
     v := UnderlyingActingObject( category );
@@ -112,8 +126,7 @@ InstallMethod( ExteriorAlgebraAsModule,
     Add( exterior_algebra_multiplication_list,
          UniversalMorphismIntoZeroObject( TensorProductOnObjects( v, Range( exterior_algebra_multiplication_list[top + 1] ) ) ) );
     
-    return InternalExteriorAlgebraModuleCategoryObject(
-             DirectSumFunctorial( exterior_algebra_multiplication_list ), category );
+    return exterior_algebra_multiplication_list;
     
 end );
 
@@ -132,7 +145,7 @@ InstallMethod( FreeInternalExteriorAlgebraModule,
                [ IsCapCategoryObject, IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ],
                
   function( w, category )
-    local exterior_algebra, v;
+    local exterior_algebra, v, structure_morphism;
     
     exterior_algebra := ExteriorAlgebraAsModule( category );
     

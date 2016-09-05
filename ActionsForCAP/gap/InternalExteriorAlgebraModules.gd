@@ -56,3 +56,4 @@ DeclareOperation( "FreeInternalExteriorAlgebraModule",
 
 DeclareAttribute( "ExteriorAlgebraAsModule", IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
 
+DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
