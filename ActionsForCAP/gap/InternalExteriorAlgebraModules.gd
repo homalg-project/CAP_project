@@ -41,6 +41,12 @@ DeclareOperation( "InternalExteriorAlgebraModuleCategoryMorphism",
                   [ IsInternalExteriorAlgebraModuleCategoryObject,
                     IsCapCategoryMorphism,
                     IsInternalExteriorAlgebraModuleCategoryObject ] );
+##
+DeclareOperation( "FreeInternalExteriorAlgebraModule",
+                  [ IsCapCategoryObject, IsInternalExteriorAlgebraModuleCategoryObject ] );
+
+DeclareOperation( "FreeInternalExteriorAlgebraModule",
+                  [ IsCapCategoryObject, IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ] );
 
 ####################################
 ##

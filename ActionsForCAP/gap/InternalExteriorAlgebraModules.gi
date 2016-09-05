@@ -117,3 +117,32 @@ InstallMethod( ExteriorAlgebraAsModule,
     
 end );
 
+##
+InstallMethod( FreeInternalExteriorAlgebraModule,
+               [ IsCapCategoryObject, IsInternalExteriorAlgebraModuleCategoryObject ],
+               
+  function( w, v )
+    
+    return FreeInternalExteriorAlgebraModule( w, CapCategory( v ) );
+    
+end );
+
+##
+InstallMethod( FreeInternalExteriorAlgebraModule,
+               [ IsCapCategoryObject, IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ],
+               
+  function( w, category )
+    local exterior_algebra, v;
+    
+    exterior_algebra := ExteriorAlgebraAsModule( category );
+    
+    v := UnderlyingActingObject( category );
+    
+    structure_morphism := PreCompose( [
+      AssociatorRightToLeft( v, ActionDomain( exterior_algebra ), w ),
+      TensorProductOnMorphisms( StructureMorphism( exterior_algebra ), IdentityMorphism( w ) ) ] 
+    );
+    
+    return InternalExteriorAlgebraModuleCategoryObject( structure_morphism, category );
+    
+end );
