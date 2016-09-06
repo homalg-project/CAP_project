@@ -132,16 +132,6 @@ end );
 
 ##
 InstallMethod( FreeInternalExteriorAlgebraModule,
-               [ IsCapCategoryObject, IsInternalExteriorAlgebraModuleCategoryObject ],
-               
-  function( w, v )
-    
-    return FreeInternalExteriorAlgebraModule( w, CapCategory( v ) );
-    
-end );
-
-##
-InstallMethod( FreeInternalExteriorAlgebraModule,
                [ IsCapCategoryObject, IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ],
                
   function( w, category )
@@ -157,5 +147,56 @@ InstallMethod( FreeInternalExteriorAlgebraModule,
     );
     
     return InternalExteriorAlgebraModuleCategoryObject( structure_morphism, category );
+    
+end );
+
+##
+InstallMethod( InternalExteriorAlgebraModuleHigherMultiplications,
+               [ IsInternalExteriorAlgebraModuleCategoryObject ],
+               
+  function( object )
+    local m, top, multiplication_list, category, v, id_m, id_v, structure_morphism, n, 
+          epimorphism, n_minus_1_power, test_morphism, exterior_algebra_multiplication_list;
+    
+    m := ActionDomain( object );
+    
+    category := CapCategory( object );
+    
+    v := UnderlyingActingObject( category );
+    
+    top := Dimension( v );
+    
+    multiplication_list := [ LeftUnitor( m ) ];
+    
+    if top = 0 then
+        
+        return multiplication_list;
+        
+    fi;
+    
+    id_m := IdentityMorphism( m );
+    
+    id_v := IdentityMorphism( v );
+    
+    structure_morphism := StructureMorphism( object );
+    
+    exterior_algebra_multiplication_list := ExteriorAlgebraAsModuleMultiplicationList( category );
+    
+    for n in [ 1 .. top ] do
+        
+        epimorphism := TensorProductOnMorphisms( exterior_algebra_multiplication_list[n + 1], id_m );
+        
+        n_minus_1_power := Range( exterior_algebra_multiplication_list[n] );
+        
+        test_morphism := PreCompose( [
+          AssociatorLeftToRight( v, n_minus_1_power, m ),
+          TensorProductOnMorphisms( id_v, multiplication_list[n] ),
+          structure_morphism ] );
+        
+        Add( multiplication_list, ColiftAlongEpimorphism( epimorphism, test_morphism ) );
+        
+    od;
+    
+    return multiplication_list;
     
 end );

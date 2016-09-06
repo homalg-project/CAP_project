@@ -41,19 +41,21 @@ DeclareOperation( "InternalExteriorAlgebraModuleCategoryMorphism",
                   [ IsInternalExteriorAlgebraModuleCategoryObject,
                     IsCapCategoryMorphism,
                     IsInternalExteriorAlgebraModuleCategoryObject ] );
-##
-DeclareOperation( "FreeInternalExteriorAlgebraModule",
-                  [ IsCapCategoryObject, IsInternalExteriorAlgebraModuleCategoryObject ] );
 
 DeclareOperation( "FreeInternalExteriorAlgebraModule",
                   [ IsCapCategoryObject, IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ] );
 
 ####################################
 ##
-#! @Section Operations
+#! @Section Attributes
 ##
 ####################################
 
+##
 DeclareAttribute( "ExteriorAlgebraAsModule", IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
 
+##
 DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
+
+##
+DeclareAttribute( "InternalExteriorAlgebraModuleHigherMultiplications", IsInternalExteriorAlgebraModuleCategoryObject );
