@@ -761,18 +761,18 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end );
     
     ##
-    AddLiftAlongMonomorphism( category,
-      function( monomorphism, test_morphism )
+    AddLift( category,
+      function( alpha, beta )
         local source, range, support, morphism_list;
         
-        source := Source( test_morphism );
+        source := Source( alpha );
         
-        range := Source( monomorphism );
+        range := Source( beta );
         
         support := Set( Concatenation( Support( source ), Support( range ) ) );
         
         morphism_list := List( support, irr ->
-                           [ LiftAlongMonomorphism( Component( monomorphism, irr ), Component( test_morphism, irr ) ), irr ] );
+                           [ Lift( Component( alpha, irr ), Component( beta, irr ) ), irr ] );
         
         return SemisimpleCategoryMorphism( source, morphism_list, range );
         
@@ -822,18 +822,18 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end );
     
     ##
-    AddColiftAlongEpimorphism( category,
-      function( epimorphism, test_morphism )
+    AddColift( category,
+      function( alpha, beta )
         local source, range, support, morphism_list;
         
-        source := Range( epimorphism );
+        source := Range( alpha );
         
-        range := Range( test_morphism );
+        range := Range( beta );
         
         support := Set( Concatenation( Support( source ), Support( range ) ) );
         
         morphism_list := List( support, irr ->
-                           [ ColiftAlongEpimorphism( Component( epimorphism, irr ), Component( test_morphism, irr ) ), irr ] );
+                           [ Colift( Component( alpha, irr ), Component( beta, irr ) ), irr ] );
         
         return SemisimpleCategoryMorphism( source, morphism_list, range );
         
