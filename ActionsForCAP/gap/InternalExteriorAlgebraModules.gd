@@ -72,6 +72,13 @@ DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsCapCategory and
 ##
 DeclareAttribute( "InternalExteriorAlgebraModuleHigherMultiplications", IsInternalExteriorAlgebraModuleCategoryObject );
 
+##
+DeclareAttribute( "ProjectionToHead", IsInternalExteriorAlgebraModuleCategoryObject );
+
+##
+DeclareAttribute( "Head", IsInternalExteriorAlgebraModuleCategoryObject );
+
+
 ####################################
 ##
 #! @Section Operations
@@ -81,3 +88,7 @@ DeclareAttribute( "InternalExteriorAlgebraModuleHigherMultiplications", IsIntern
 ##
 DeclareOperation( "UniversalMorphismFromFreeModule",
                   [ IsInternalExteriorAlgebraModuleCategoryObject, IsCapCategoryMorphism ] );
+
+##
+DeclareAttribute( "StepOfMinimalFreeResolutionOfKernel",
+                  IsInternalExteriorAlgebraModuleCategoryMorphism );

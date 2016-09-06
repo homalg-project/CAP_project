@@ -229,3 +229,45 @@ InstallMethod( UniversalMorphismFromFreeModule,
     return InternalExteriorAlgebraModuleCategoryMorphism( source, morphism, object );
     
 end );
+
+##
+InstallMethod( StepOfMinimalFreeResolutionOfKernel,
+               [ IsInternalExteriorAlgebraModuleCategoryMorphism ],
+               
+  function( morphism )
+    local kernel_emb, beta, alpha, split;
+    
+    kernel_emb := KernelEmbedding( morphism );
+    
+    beta := ProjectionToHead( Source( kernel_emb ) );
+    
+    alpha := IdentityMorphism( Range( beta ) );
+    
+    split := Lift( alpha, beta );
+    
+    return PreCompose( UniversalMorphismFromFreeModule( Source( kernel_emb ), split ), kernel_emb );
+    
+end );
+
+##
+InstallMethod( ProjectionToHead,
+               [ IsInternalExteriorAlgebraModuleCategoryObject ],
+               
+  function( object )
+    
+    return CokernelProjection( StructureMorphism ( object ) );
+    
+end );
+
+##
+InstallMethod( Head,
+               [ IsInternalExteriorAlgebraModuleCategoryObject ],
+               
+  function( object )
+    
+    return CokernelObject( StructureMorphism ( object ) );
+    
+end );
+
+##
+DeclareAttribute( "Head", IsInternalExteriorAlgebraModuleCategoryObject );
