@@ -53,6 +53,4 @@ DeclareOperation( "RepresentationCategoryZGradedMorphism", [ IsSemisimpleCategor
 ##
 ####################################
 
-##
-DeclareAttribute( "GeneratingRootOfUnityForFieldForHomalg", IsFieldForHomalg );
-
+DeclareAttribute( "UnderlyingGroupForRepresentationCategory", IsCapCategory );

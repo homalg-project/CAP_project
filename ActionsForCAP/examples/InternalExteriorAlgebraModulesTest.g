@@ -1,8 +1,8 @@
 LoadPackage( "ActionsForCAP" );
 
-G := SymmetricGroup( 4 );
+RepG := RepresentationCategoryZGraded( SymmetricGroup( 4 ) );
 
-RepG := RepresentationCategoryZGraded( G );
+G := UnderlyingGroupForRepresentationCategory( RepG );
 
 irr := Irr( G );
 

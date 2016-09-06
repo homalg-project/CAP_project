@@ -87,7 +87,8 @@ InstallMethod( RepresentationCategory,
   function( group, group_data )
     local group_string, name,
           irr, conductor, unit_number, e,
-          field, membership_function, tensor_unit, associator_filename, is_complete_data;
+          field, membership_function, tensor_unit, associator_filename, is_complete_data,
+          category;
     
     group_string := String( group );
     
@@ -113,17 +114,17 @@ InstallMethod( RepresentationCategory,
         
         field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
         
-        e := HomalgRingElement( "e", field );
-        
-        SetGeneratingRootOfUnityForFieldForHomalg( field, e );
-        
     fi;
     
     SetConductor( field, conductor );
     
     tensor_unit := GIrreducibleObject( irr[ unit_number ] );
     
-    return SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data, name );
+    category := SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data, name );
+    
+    SetUnderlyingGroupForRepresentationCategory( category, group );
+    
+    return category;
     
 end );
 
@@ -247,7 +248,8 @@ InstallMethod( RepresentationCategoryZGraded,
   function( group, group_data )
     local group_string, name,
           irr, conductor, unit_number, e,
-          field, membership_function, tensor_unit, associator_filename, is_complete_data;
+          field, membership_function, tensor_unit, associator_filename, is_complete_data,
+          category;
     
     group_string := String( group );
     
@@ -273,17 +275,17 @@ InstallMethod( RepresentationCategoryZGraded,
         
         field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
         
-        e := HomalgRingElement( "e", field );
-        
-        SetGeneratingRootOfUnityForFieldForHomalg( field, e );
-        
     fi;
     
     SetConductor( field, conductor );
     
     tensor_unit := GZGradedIrreducibleObject( 0, irr[ unit_number ] );
     
-    return SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data, name );
+    category := SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data, name );
+    
+    SetUnderlyingGroupForRepresentationCategory( category, group );
+    
+    return category;
     
 end );
 
