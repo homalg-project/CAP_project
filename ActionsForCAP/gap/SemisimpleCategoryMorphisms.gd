@@ -33,6 +33,10 @@ DeclareCategory( "IsSemisimpleCategoryMorphism",
 DeclareOperation( "SemisimpleCategoryMorphism", 
                   [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ] );
 
+##
+DeclareOperation( "ComponentInclusionMorphism",
+                  [ IsSemisimpleCategoryObject, IsObject ] );
+
 ####################################
 ##
 #! @Section Attributes

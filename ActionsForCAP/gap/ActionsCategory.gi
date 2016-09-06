@@ -97,6 +97,8 @@ InstallMethod( LeftActionsCategory,
         
         SetUnderlyingActingObject( return_morphism, acting_object );
         
+        SetUnderlyingMorphism( return_morphism, morphism );
+        
         SetFilterObj( return_morphism, context_filter );
         
         return return_morphism;
@@ -187,9 +189,9 @@ InstallMethod( LeftActionsCategory,
             
             action_source := ObjectAttributesAsList( source )[1];
             
-            to_be_colifted := PreCompose( action_source, TensorProductOnMorphisms( identity_of_acting_object, epi ) );
+            to_be_colifted := PreCompose( action_source, epi );
             
-            return [ ColiftAlongEpimorphism( epi, to_be_colifted ) ];
+            return [ ColiftAlongEpimorphism( TensorProductOnMorphisms( identity_of_acting_object, epi ), to_be_colifted ) ];
             
           end;
         

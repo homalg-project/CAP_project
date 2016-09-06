@@ -200,3 +200,32 @@ InstallMethod( InternalExteriorAlgebraModuleHigherMultiplications,
     return multiplication_list;
     
 end );
+
+##
+InstallMethod( UniversalMorphismFromFreeModule,
+               [ IsInternalExteriorAlgebraModuleCategoryObject, IsCapCategoryMorphism ],
+               
+  function( object, test_morphism )
+    local category, id_exterior_algebra, exterior_algebra_summands, m, higher_structure_morphism, morphism, source;
+    
+    category := CapCategory( object );
+    
+    id_exterior_algebra := IdentityMorphism( ActionDomain( ExteriorAlgebraAsModule( category ) ) );
+    
+    exterior_algebra_summands := List( ExteriorAlgebraAsModuleMultiplicationList( category ), Range );
+    
+    m := ActionDomain( object );
+    
+    higher_structure_morphism := PreCompose(
+      RightDistributivityExpanding( exterior_algebra_summands, m ),
+      UniversalMorphismFromDirectSum( InternalExteriorAlgebraModuleHigherMultiplications( object ) )
+    );
+    
+    morphism := PreCompose( [ TensorProductOnMorphisms( id_exterior_algebra, test_morphism ),
+                              higher_structure_morphism ] );
+    
+    source := FreeInternalExteriorAlgebraModule( Source( test_morphism ), category );
+    
+    return InternalExteriorAlgebraModuleCategoryMorphism( source, morphism, object );
+    
+end );

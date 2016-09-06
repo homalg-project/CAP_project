@@ -64,6 +64,32 @@ InstallMethod( SemisimpleCategoryMorphism,
     
 end );
 
+##
+InstallMethod( ComponentInclusionMorphism,
+               [ IsSemisimpleCategoryObject, IsObject ],
+               
+  function( object, chi )
+    local category, support, l, summands;
+    
+    category := CapCategory( object );
+    
+    support := Support( object );
+    
+    l := PositionProperty( support, psi -> psi = chi );
+    
+    if l = fail then
+        
+        return UniversalMorphismFromZeroObject( object );
+        
+    fi;
+    
+    summands := List( support, psi -> SemisimpleCategoryObject( [ [ Multiplicity( object, psi ), psi ] ], category ) );
+    
+    return InjectionOfCofactorOfDirectSum( summands, l );
+    
+end );
+
+
 ####################################
 ##
 ## Attributes

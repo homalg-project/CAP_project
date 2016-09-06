@@ -9,15 +9,26 @@
 ##
 #############################################################################
 
+####################################
+##
+#! @Section Internals
+##
+####################################
+
+##
 DeclareFilter( "IsInTheContextOfInternalExteriorAlgebraModuleCategory" );
 
+##
 DeclareFilter( "IsInternalExteriorAlgebraModuleCategoryObject" );
 
+##
 DeclareFilter( "IsInternalExteriorAlgebraModuleCategoryMorphism" );
 
+##
 InstallTrueMethod( IsInternalExteriorAlgebraModuleCategoryObject,
                    IsLeftActionObject and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
 
+##
 InstallTrueMethod( IsInternalExteriorAlgebraModuleCategoryMorphism,
                    IsLeftActionMorphism and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
 
@@ -42,6 +53,7 @@ DeclareOperation( "InternalExteriorAlgebraModuleCategoryMorphism",
                     IsCapCategoryMorphism,
                     IsInternalExteriorAlgebraModuleCategoryObject ] );
 
+##
 DeclareOperation( "FreeInternalExteriorAlgebraModule",
                   [ IsCapCategoryObject, IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ] );
 
@@ -59,3 +71,13 @@ DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsCapCategory and
 
 ##
 DeclareAttribute( "InternalExteriorAlgebraModuleHigherMultiplications", IsInternalExteriorAlgebraModuleCategoryObject );
+
+####################################
+##
+#! @Section Operations
+##
+####################################
+
+##
+DeclareOperation( "UniversalMorphismFromFreeModule",
+                  [ IsInternalExteriorAlgebraModuleCategoryObject, IsCapCategoryMorphism ] );
