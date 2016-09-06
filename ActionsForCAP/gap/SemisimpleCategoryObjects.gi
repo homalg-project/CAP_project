@@ -359,9 +359,7 @@ InstallMethod( String,
     
     if size = 0 then
         
-        Print( "0\n" );
-        
-        return;
+        return "0";
         
     fi;
     
