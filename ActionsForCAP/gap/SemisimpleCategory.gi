@@ -2068,17 +2068,21 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         return SemisimpleCategoryObject( dual_list, category );
         
     end );
-#     
-#     ##
-#     AddDualOnMorphismsWithGivenDuals( category,
-#       function( dual_source, morphism, dual_range )
-#         
-#         return VectorSpaceMorphism( dual_source,
-#                                     Involution( UnderlyingMatrix( morphism ) ),
-#                                     dual_range );
-#         
-#     end );
-#     
+    
+    ##
+    AddDualOnMorphismsWithGivenDuals( category,
+      function( dual_source, morphism, dual_range )
+        local morphism_list;
+        
+        morphism_list := SemisimpleCategoryMorphismList( morphism );
+        
+        return SemisimpleCategoryMorphism(
+                 dual_source,
+                 List( morphism_list, elem -> [ DualOnMorphisms( elem[1] ), Dual( elem[2] ) ] ),
+                 dual_range );
+        
+    end );
+    
 #     ##
 #     AddEvaluationForDualWithGivenTensorProduct( category,
 #       function( tensor_object, object, unit )
