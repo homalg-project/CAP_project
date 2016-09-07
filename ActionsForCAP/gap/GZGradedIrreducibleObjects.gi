@@ -120,6 +120,15 @@ InstallMethod( Dimension,
     
 end );
 
+##
+InstallMethod( Dual,
+               [ IsGZGradedIrreducibleObject ],
+               
+  function( object )
+    
+    return GZGradedIrreducibleObject( (-1) * UnderlyingDegree( object ), ComplexConjugate( UnderlyingCharacter( object ) ) );
+    
+end );
 
 ####################################
 ##

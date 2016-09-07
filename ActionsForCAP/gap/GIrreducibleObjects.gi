@@ -117,6 +117,16 @@ InstallMethod( Dimension,
     
 end );
 
+##
+InstallMethod( Dual,
+               [ IsGIrreducibleObject ],
+               
+  function( object )
+    
+    return GIrreducibleObject( ComplexConjugate( UnderlyingCharacter( object ) ) );
+    
+end );
+
 ####################################
 ##
 ## Operations

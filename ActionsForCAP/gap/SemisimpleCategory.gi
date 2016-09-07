@@ -2049,9 +2049,25 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
-#     
-#     ##
-#     AddDualOnObjects( category, space -> space );
+    
+    ##
+    AddDualOnObjects( category, 
+      function( object )
+        local object_list, dual_list, elem;
+        
+        object_list := SemisimpleCategoryObjectList( object );
+        
+        dual_list := [ ];
+        
+        for elem in object_list do
+            
+            Add( dual_list, [ elem[1], Dual( elem[2] ) ] );
+            
+        od;
+        
+        return SemisimpleCategoryObject( dual_list, category );
+        
+    end );
 #     
 #     ##
 #     AddDualOnMorphismsWithGivenDuals( category,
