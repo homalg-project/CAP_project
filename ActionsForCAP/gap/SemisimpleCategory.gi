@@ -2083,69 +2083,22 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
-#     ##
-#     AddEvaluationForDualWithGivenTensorProduct( category,
-#       function( tensor_object, object, unit )
-#         local dimension, column, zero_column, i;
-#         
-#         dimension := Dimension( object );
-#         
-#         column := [ ];
-#         
-#         zero_column := List( [ 1 .. dimension ], i -> 0 );
-#         
-#         for i in [ 1 .. dimension - 1 ] do
-#           
-#           Add( column, 1 );
-#           
-#           Append( column, zero_column );
-#           
-#         od;
-#         
-#         if dimension > 0 then 
-#           
-#           Add( column, 1 );
-#           
-#         fi;
-#         
-#         return VectorSpaceMorphism( tensor_object,
-#                                     HomalgMatrix( column, Dimension( tensor_object ), 1, homalg_field ),
-#                                     unit );
-#         
-#     end );
-#     
-#     ##
-#     AddCoevaluationForDualWithGivenTensorProduct( category,
-#       
-#       function( unit, object, tensor_object )
-#         local dimension, row, zero_row, i;
-#         
-#         dimension := Dimension( object );
-#         
-#         row := [ ];
-#         
-#         zero_row := List( [ 1 .. dimension ], i -> 0 );
-#         
-#         for i in [ 1 .. dimension - 1 ] do
-#           
-#           Add( row, 1 );
-#           
-#           Append( row, zero_row );
-#           
-#         od;
-#         
-#         if dimension > 0 then 
-#           
-#           Add( row, 1 );
-#           
-#         fi;
-#         
-#         return VectorSpaceMorphism( unit,
-#                                     HomalgMatrix( row, 1, Dimension( tensor_object ), homalg_field ),
-#                                     tensor_object );
-#         
-#     end );
-#     
+    ##
+    AddCoevaluationForDualWithGivenTensorProduct( category,
+      function( unit, object, tensor_object )
+        
+        return CAP_INTERNAL_CoevaluationForDualOnIrreducibles( object );
+        
+    end );
+    
+    ##
+    AddEvaluationForDualWithGivenTensorProduct( category,
+      function( tensor_object, object, unit )
+        
+        return CAP_INTERNAL_EvaluationForDualOnIrreducibles( object );
+        
+    end );
+    
 #     ##
 #     AddMorphismToBidualWithGivenBidual( category,
 #       function( object, bidual_of_object )
@@ -2159,6 +2112,46 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
 end );
 
+##
+InstallMethod( CAP_INTERNAL_CoevaluationForDualOnIrreducibles,
+               [ IsSemisimpleCategoryObject ],
+               
+  function( object )
+    local trivial_irreducible;
+    
+    trivial_irreducible := Support( TensorUnit( CapCategory( object ) ) )[1];
+    
+    return ComponentInclusionMorphism( TensorProductOnObjects( DualOnObjects( object ), object ), trivial_irreducible );
+    
+end );
+
+##
+InstallMethod( CAP_INTERNAL_EvaluationForDualOnIrreducibles,
+               [ IsSemisimpleCategoryObject ],
+               
+  function( object )
+    local id_object, trivial_irreducible, naive_morphism, automorphism;
+    
+    id_object := IdentityMorphism( object );
+    
+    trivial_irreducible := Support( TensorUnit( CapCategory( object ) ) )[1];
+    
+    naive_morphism :=
+      ComponentProjectionMorphism( TensorProductOnObjects( DualOnObjects( object ), object ), trivial_irreducible );
+    
+    automorphism := PreCompose( [
+      LeftUnitorInverse( object ),
+      TensorProductOnMorphisms( CAP_INTERNAL_CoevaluationForDualOnIrreducibles( object ), id_object ),
+      AssociatorLeftToRight( object, DualOnObjects( object ), object ),
+      TensorProductOnMorphisms( id_object, naive_morphism ),
+      RightUnitor( object ) ] );
+    
+    return PreCompose(
+             TensorProductOnMorphisms( IdentityMorphism( DualOnObjects( object ) ), Inverse( automorphism ) ),
+             naive_morphism 
+           );
+    
+end );
 
 
 ####################################

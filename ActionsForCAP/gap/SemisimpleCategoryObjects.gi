@@ -340,6 +340,65 @@ InstallMethod( TestBraidingCompatabilityForAllTriplesInList,
     
 end );
 
+##
+InstallMethod( TestZigZagIdentitiesForDual,
+               [ IsSemisimpleCategoryObject ],
+               
+  function( object )
+    local id_object, dual_object, id_dual_object, automorphism;
+    
+    id_object := IdentityMorphism( object );
+    
+    dual_object := DualOnObjects( object );
+    
+    id_dual_object := IdentityMorphism( dual_object );
+    
+    automorphism := PreCompose( [
+      LeftUnitorInverse( object ),
+      TensorProductOnMorphisms( CoevaluationForDual( object ), id_object ),
+      AssociatorLeftToRight( object, dual_object, object ),
+      TensorProductOnMorphisms( id_object, EvaluationForDual( object ) ),
+      RightUnitor( object ) ] );
+    
+    if not IsCongruentForMorphisms( automorphism, id_object ) then
+        
+        return false;
+        
+    fi;
+    
+    automorphism := PreCompose( [
+      RightUnitorInverse( dual_object ),
+      TensorProductOnMorphisms( id_dual_object, CoevaluationForDual( object ) ),
+      AssociatorRightToLeft( dual_object, object, dual_object ),
+      TensorProductOnMorphisms( EvaluationForDual( object ), id_dual_object ),
+      LeftUnitor( dual_object ) ] );
+    
+    return IsCongruentForMorphisms( automorphism, id_dual_object );
+    
+end );
+
+##
+InstallMethod( TestZigZagIdentitiesForDualForAllTriplesInList, 
+              [ IsList ],
+              
+  function( object_list )
+    local elem;
+    
+    for elem in object_list do
+        
+        if TestZigZagIdentitiesForDual( elem ) then
+            
+            Print( Concatenation( String( elem ), " is okay!\n" ) );
+            
+        else
+            
+            Print( Concatenation( String( elem ), " FAILED!\n" ) );
+            
+        fi;
+        
+    od;
+    
+end );
 
 ####################################
 ##

@@ -64,6 +64,13 @@ DeclareOperationWithCache( "CAP_INTERNAL_Braiding_On_Irreducibles",
                            [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ] );
 
 ##
+DeclareAttribute( "CAP_INTERNAL_CoevaluationForDualOnIrreducibles", IsSemisimpleCategoryObject );
+
+##
+DeclareAttribute( "CAP_INTERNAL_EvaluationForDualOnIrreducibles", IsSemisimpleCategoryObject );
+
+
+##
 DeclareOperation( "CAP_INTERNAL_DirectSumForPermutationLists",
                   [ IsList, IsList ] );
 

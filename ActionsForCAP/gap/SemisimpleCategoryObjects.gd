@@ -87,3 +87,9 @@ DeclareOperation( "TestBraidingCompatability",
               [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ] );
 ##
 DeclareOperation( "TestBraidingCompatabilityForAllTriplesInList", [ IsList ] );
+
+##
+DeclareOperation( "TestZigZagIdentitiesForDual", [ IsSemisimpleCategoryObject ] );
+
+##
+DeclareOperation( "TestZigZagIdentitiesForDualForAllTriplesInList", [ IsList ] );
