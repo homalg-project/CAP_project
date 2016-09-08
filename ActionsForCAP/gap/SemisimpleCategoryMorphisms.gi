@@ -47,7 +47,7 @@ InstallMethod( SemisimpleCategoryMorphism,
     
     Sort( morphism_list, sort_function );
     
-    field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
+    field := UnderlyingFieldForHomalg( source );
     
     semisimple_category_morphism := rec( );
     
@@ -63,6 +63,41 @@ InstallMethod( SemisimpleCategoryMorphism,
     return semisimple_category_morphism;
     
 end );
+
+##
+InstallMethod( SemisimpleCategoryMorphismSparse,
+               [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ],
+               
+  function( source, morphism_list, range )
+    local support, field, chi, pos, source_vector_space, range_vector_space;
+    
+    morphism_list := Filtered( morphism_list,
+                       alpha -> NrRows( UnderlyingMatrix( alpha[1] ) ) <> 0 or NrColumns( UnderlyingMatrix( alpha[1] ) ) <> 0 );
+    
+    support := Set( Concatenation( Support( source ), Support( range ) ) );
+    
+    field := UnderlyingFieldForHomalg( source );
+    
+    for chi in support do
+      
+      pos := PositionProperty( morphism_list, entry -> chi = entry[2] );
+      
+      if pos = fail then
+          
+          source_vector_space := VectorSpaceObject( Multiplicity( source, chi ), field );
+          
+          range_vector_space := VectorSpaceObject( Multiplicity( range, chi ), field );
+          
+          Add( morphism_list, [ ZeroMorphism( source_vector_space, range_vector_space ), chi ] );
+          
+      fi;
+      
+    od;
+    
+    return SemisimpleCategoryMorphism( source, morphism_list, range );
+    
+end );
+
 
 ##
 InstallMethod( ComponentInclusionMorphism,

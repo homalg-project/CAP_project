@@ -299,7 +299,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         if not ForAll( morphism_list, elem ->
           IsList( elem ) and Size( elem ) = 2 and IsVectorSpaceMorphism( elem[1] ) #and IsWellDefined( elem[1] ) 
-          and membership_function( elem[2] ) ) then
+          and membership_function( elem[2] ) ) or Size( morphism_list ) <> Size( union )  then
             
             Error( "the semisimple category morphism list does not have the correct form" );
             
@@ -2086,6 +2086,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddCoevaluationForDualWithGivenTensorProduct( category,
       function( unit, object, tensor_object )
+        
+        
         
         return CAP_INTERNAL_CoevaluationForDualOnIrreducibles( object );
         

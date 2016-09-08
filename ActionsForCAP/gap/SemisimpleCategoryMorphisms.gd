@@ -30,7 +30,11 @@ DeclareCategory( "IsSemisimpleCategoryMorphism",
 #! @Description
 #! @Returns a morphism
 #! @Arguments L
-DeclareOperation( "SemisimpleCategoryMorphism", 
+DeclareOperation( "SemisimpleCategoryMorphism",
+                  [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ] );
+
+##
+DeclareOperation( "SemisimpleCategoryMorphismSparse",
                   [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ] );
 
 ##
