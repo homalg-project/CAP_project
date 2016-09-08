@@ -2086,9 +2086,64 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddCoevaluationForDualWithGivenTensorProduct( category,
       function( unit, object, tensor_object )
-        local trivial_chi, dim, vector_space, vector_space_morphism;
+        local object_list, dual_object, dual_object_list, object_expanded_list, elem,
+              dual_object_expanded_list, dim, matrix_list, zero_list,
+              summand_list, trivial_chi, vector_space, vector_space_morphism,
+              i, result_morphism, morphism;
+        
+        object_list := SemisimpleCategoryObjectList( object );
+        
+        if IsEmpty( object_list ) then
+            
+            return ZeroMorphism( unit, tensor_object );
+            
+        fi;
+        
+        dual_object := DualOnObjects( object );
+        
+        dual_object_list := SemisimpleCategoryObjectList( dual_object );
+        
+        object_list := List( object_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        
+        dual_object_list := List( dual_object_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        
+        object_expanded_list := [ ];
+        
+        for elem in object_list do
+            
+            Append( object_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+            
+        od;
+        
+        dual_object_expanded_list := [ ];
+        
+        for elem in dual_object_list do
+            
+            Append( dual_object_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+            
+        od;
+        
+        ## morphism_1
         
         trivial_chi := Support( unit )[1];
+        
+        matrix_list := [ ];
+        
+        for elem in object_list do
+            
+            Add( matrix_list, 1 );
+            
+            zero_list := List( [ 1 .. elem[1] ], i -> 0 );
+            
+            for i in [ 2 .. elem[1] ] do
+                
+                Append( matrix_list, zero_list );
+                
+                Add( matrix_list, 1 );
+                
+            od;
+            
+        od;
         
         dim := Multiplicity( tensor_object, trivial_chi );
         
@@ -2096,10 +2151,37 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         vector_space_morphism :=
           VectorSpaceMorphism( TensorUnit( UnderlyingCategoryForSemisimpleCategory( CapCategory( unit ) ) ),
-                               HomalgMatrix( [ List( [ 1 .. dim ], i -> 1 ) ], 1, dim, field ),
+                               HomalgMatrix( matrix_list, 1, dim, field ),
                                vector_space );
         
-        return SemisimpleCategoryMorphismSparse( unit, [ [ vector_space_morphism, trivial_chi ] ], tensor_object );
+        result_morphism := SemisimpleCategoryMorphismSparse( unit, [ [ vector_space_morphism, trivial_chi ] ], tensor_object );
+        
+        ## morphism_2 and morphism_3
+        if Size( object_expanded_list ) > 1 then
+            
+            ## morphism_2
+            summand_list := [ ];
+            
+            for elem in object_list do
+                
+                morphism := LeftDistributivityFactoring( elem[2], dual_object_expanded_list );
+                
+                Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( summand_list );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+            ## morphism_3
+            morphism := RightDistributivityFactoring( object_expanded_list, dual_object );
+            
+            result_morphism := PreCompose( result_morphism, morphism );
+            
+        fi;
+        
+        return result_morphism;
         
     end );
       
@@ -2108,7 +2190,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       function( tensor_object, object, unit )
         local object_list, dual_object, dual_object_list, object_expanded_list, elem,
               dual_object_expanded_list, trivial_chi, dim, vector_space, vector_space_morphism,
-              result_morphism, summand_list, morphism, string;
+              result_morphism, summand_list, morphism, string, string_entry, i, zero_list;
         
         object_list := SemisimpleCategoryObjectList( object );
         
@@ -2146,20 +2228,33 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         trivial_chi := Support( unit )[1];
         
-        dim := Multiplicity( tensor_object, trivial_chi );
+        string := "";
         
-        vector_space := VectorSpaceObject( dim, field );
-        
-        string := Flat(
-          List(
-            List( object_list, elem -> [ [ 1 .. elem[1]^2 ], CAP_INTERNAL_EvaluationForDualOnIrreduciblesAsString( elem[2] ) ] ),
-            pair -> List( pair[1], i -> Concatenation( ",", pair[2] ) )
-          )
-        );
+        for elem in object_list do
+            
+            string_entry := Concatenation( ",", CAP_INTERNAL_EvaluationForDualOnIrreduciblesAsString( elem[2] ) );
+            
+            Append( string, string_entry );
+            
+            zero_list := Concatenation( List( [ 1 .. elem[1] ], i -> ",0" ) );
+            
+            for i in [ 2 .. elem[1] ] do
+                
+                Append( string, zero_list );
+                
+                Append( string, string_entry );
+                
+            od;
+            
+        od;
         
         Remove( string, 1 );
         
         string := Concatenation( "[", string, "]" );
+        
+        dim := Multiplicity( tensor_object, trivial_chi );
+        
+        vector_space := VectorSpaceObject( dim, field );
         
         vector_space_morphism :=
           VectorSpaceMorphism( vector_space,
