@@ -1,8 +1,8 @@
 LoadPackage( "ActionsForCAP" );
 
-G := SymmetricGroup( 4 );
+RepG := RepresentationCategory( SymmetricGroup( 4 ) );
 
-RepG := RepresentationCategory( G );
+G := UnderlyingGroupForRepresentationCategory( RepG );
 
 irr := Irr( G );
 

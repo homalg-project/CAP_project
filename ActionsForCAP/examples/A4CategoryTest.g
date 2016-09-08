@@ -1,8 +1,8 @@
 LoadPackage( "ActionsForCAP" );
 
-G := AlternatingGroup( 4 );
+RepG := RepresentationCategory( AlternatingGroup( 4 ) );
 
-RepG := RepresentationCategory( G );
+G := UnderlyingGroupForRepresentationCategory( RepG );
 
 irr := Irr( G );
 

@@ -1,10 +1,8 @@
 LoadPackage( "ActionsForCAP" );
 
-G := SmallGroup( 1000, 93 );
-
-StructureDescription( G );
-
 RepG := RepresentationCategory( 1000, 93 );
+
+G := UnderlyingGroupForRepresentationCategory( RepG );
 
 irr := Irr( G );
 
