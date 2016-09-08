@@ -270,4 +270,28 @@ InstallMethod( Head,
 end );
 
 ##
-DeclareAttribute( "Head", IsInternalExteriorAlgebraModuleCategoryObject );
+InstallMethod( InjectionOfSocle,
+               [ IsInternalExteriorAlgebraModuleCategoryObject ],
+               
+  function( object )
+    local m, v, morphism;
+    
+    m := ActionDomain( object );
+    
+    v := UnderlyingActingObject( object );
+    
+    morphism := PreCompose( Braiding( m, v ), StructureMorphism( object ) );
+    
+    return KernelEmbedding( TensorProductToInternalHomAdjunctionMap( m, v, morphism ) );
+    
+end );
+
+##
+InstallMethod( Socle,
+               [ IsInternalExteriorAlgebraModuleCategoryObject ],
+               
+  function( object )
+    
+    return Source( InjectionOfSocle( object ) );
+    
+end );

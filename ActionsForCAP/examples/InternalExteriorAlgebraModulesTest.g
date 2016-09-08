@@ -9,3 +9,5 @@ irr := Irr( G );
 v := RepresentationCategoryZGradedObject( -1, irr[2], RepG );
 
 cat := InternalExteriorAlgebraModuleCategory( v );
+
+F := FreeInternalExteriorAlgebraModule( v, cat );

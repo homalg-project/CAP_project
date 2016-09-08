@@ -78,6 +78,12 @@ DeclareAttribute( "ProjectionToHead", IsInternalExteriorAlgebraModuleCategoryObj
 ##
 DeclareAttribute( "Head", IsInternalExteriorAlgebraModuleCategoryObject );
 
+##
+DeclareAttribute( "InjectionOfSocle", IsInternalExteriorAlgebraModuleCategoryObject );
+
+##
+DeclareAttribute( "Socle", IsInternalExteriorAlgebraModuleCategoryObject );
+
 
 ####################################
 ##
