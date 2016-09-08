@@ -420,35 +420,39 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoi
 AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     
   function( object_1, object_2, internal_hom )
-    local morphism;
+    local morphism, dual_2, id_1;
+    
+    dual_2 := DualOnObjects( object_2 );
+    
+    id_1 := IdentityMorphism( object_1 );
     
     morphism := LeftUnitorInverse( object_1 );
     
     morphism := PreCompose( morphism,
                   TensorProductOnMorphisms(
                     CoevaluationForDual( object_2 ),
-                    IdentityMorphism( object_1 ) )
+                    id_1 )
                 );
     
     morphism := PreCompose( morphism,
                   TensorProductOnMorphisms(
-                    Braiding( object_2, DualOnObjects( object_2 ) ),
-                    IdentityMorphism( object_1 ) )
+                    Braiding( object_2, dual_2 ),
+                    id_1 )
                 );
     
     morphism := PreCompose( morphism,
-                  AssociatorLeftToRight( DualOnObjects( object_2 ), object_2, object_1 )
+                  AssociatorLeftToRight( dual_2, object_2, object_1 )
                 );
     
     morphism := PreCompose( morphism,
                   TensorProductOnMorphisms(
-                    IdentityMorphism( DualOnObjects( object_2 ) ),
+                    IdentityMorphism( dual_2 ),
                     Braiding( object_2, object_1 ) )
                 );
     
     morphism := PreCompose( morphism,
                   IsomorphismFromTensorProductToInternalHom(
-                    DualOnObjects( object_2 ),
+                    object_2,
                     TensorProductOnObjects( object_1, object_2 ) )
                 );
     
@@ -461,27 +465,31 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     
   function( object_1, object_2, internal_hom )
-    local morphism;
+    local morphism, dual_2, id_1;
+    
+    dual_2 := DualOnObjects( object_2 );
+    
+    id_1 := IdentityMorphism( object_1 );
     
     morphism := TensorProductOnMorphisms(
                     CoevaluationForDual( object_2 ),
-                    IdentityMorphism( object_1 ) );
+                    id_1 );
     
     morphism := PreCompose( morphism,
                   TensorProductOnMorphisms(
-                    Braiding( object_2, DualOnObjects( object_2 ) ),
-                    IdentityMorphism( object_1 ) )
+                    Braiding( object_2, dual_2 ),
+                    id_1 )
                 );
     
     morphism := PreCompose( morphism,
                   TensorProductOnMorphisms(
-                    IdentityMorphism( DualOnObjects( object_2 ) ),
+                    IdentityMorphism( dual_2 ),
                     Braiding( object_2, object_1 ) )
                 );
     
     morphism := PreCompose( morphism,
                   IsomorphismFromTensorProductToInternalHom(
-                    DualOnObjects( object_2 ),
+                    object_2,
                     TensorProductOnObjects( object_1, object_2 ) )
                 );
     
