@@ -2086,18 +2086,114 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddCoevaluationForDualWithGivenTensorProduct( category,
       function( unit, object, tensor_object )
+        local trivial_chi, dim, vector_space, vector_space_morphism;
         
+        trivial_chi := Support( unit )[1];
         
+        dim := Multiplicity( tensor_object, trivial_chi );
         
-        return CAP_INTERNAL_CoevaluationForDualOnIrreducibles( object );
+        vector_space := VectorSpaceObject( dim, field );
+        
+        vector_space_morphism :=
+          VectorSpaceMorphism( TensorUnit( UnderlyingCategoryForSemisimpleCategory( CapCategory( unit ) ) ),
+                               HomalgMatrix( [ List( [ 1 .. dim ], i -> 1 ) ], 1, dim, field ),
+                               vector_space );
+        
+        return SemisimpleCategoryMorphismSparse( unit, [ [ vector_space_morphism, trivial_chi ] ], tensor_object );
         
     end );
-    
+      
     ##
     AddEvaluationForDualWithGivenTensorProduct( category,
       function( tensor_object, object, unit )
+        local object_list, dual_object, dual_object_list, object_expanded_list, elem,
+              dual_object_expanded_list, trivial_chi, dim, vector_space, vector_space_morphism,
+              result_morphism, summand_list, morphism, string;
         
-        return CAP_INTERNAL_EvaluationForDualOnIrreducibles( object );
+        object_list := SemisimpleCategoryObjectList( object );
+        
+        if IsEmpty( object_list ) then
+            
+            return ZeroMorphism( tensor_object, unit );
+            
+        fi;
+        
+        dual_object := DualOnObjects( object );
+        
+        dual_object_list := SemisimpleCategoryObjectList( dual_object );
+        
+        object_list := List( object_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        
+        dual_object_list := List( dual_object_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        
+        object_expanded_list := [ ];
+        
+        for elem in object_list do
+            
+            Append( object_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+            
+        od;
+        
+        dual_object_expanded_list := [ ];
+        
+        for elem in dual_object_list do
+            
+            Append( dual_object_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+            
+        od;
+        
+        ## morphism_3
+        
+        trivial_chi := Support( unit )[1];
+        
+        dim := Multiplicity( tensor_object, trivial_chi );
+        
+        vector_space := VectorSpaceObject( dim, field );
+        
+        string := Flat(
+          List(
+            List( object_list, elem -> [ [ 1 .. elem[1]^2 ], CAP_INTERNAL_EvaluationForDualOnIrreduciblesAsString( elem[2] ) ] ),
+            pair -> List( pair[1], i -> Concatenation( ",", pair[2] ) )
+          )
+        );
+        
+        Remove( string, 1 );
+        
+        string := Concatenation( "[", string, "]" );
+        
+        vector_space_morphism :=
+          VectorSpaceMorphism( vector_space,
+                               HomalgMatrix( string, dim, 1, field ),
+                               TensorUnit( UnderlyingCategoryForSemisimpleCategory( CapCategory( unit ) ) ) );
+        
+        result_morphism := SemisimpleCategoryMorphismSparse( tensor_object, [ [ vector_space_morphism, trivial_chi ] ], unit );
+        
+        ## morphism_1 and morphism_2
+        if Size( object_expanded_list ) > 1 then
+            
+            ## morphism_2
+            summand_list := [ ];
+            
+            for elem in dual_object_list do
+                
+                morphism := LeftDistributivityExpanding( elem[2], object_expanded_list );
+                
+                Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
+                
+            od;
+            
+            morphism := DirectSumFunctorial( summand_list );
+            
+            result_morphism := PreCompose( morphism, result_morphism );
+            
+            ## morphism_1
+            morphism := RightDistributivityExpanding( dual_object_expanded_list, object );
+            
+            result_morphism := PreCompose( morphism, result_morphism );
+            
+        fi;
+        
+        return result_morphism;
         
     end );
     
@@ -2115,24 +2211,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
 end );
 
 ##
-InstallMethod( CAP_INTERNAL_CoevaluationForDualOnIrreducibles,
+InstallMethod( CAP_INTERNAL_EvaluationForDualOnIrreduciblesAsString,
                [ IsSemisimpleCategoryObject ],
                
   function( object )
-    local trivial_irreducible;
-    
-    trivial_irreducible := Support( TensorUnit( CapCategory( object ) ) )[1];
-    
-    return ComponentInclusionMorphism( TensorProductOnObjects( DualOnObjects( object ), object ), trivial_irreducible );
-    
-end );
-
-##
-InstallMethod( CAP_INTERNAL_EvaluationForDualOnIrreducibles,
-               [ IsSemisimpleCategoryObject ],
-               
-  function( object )
-    local id_object, trivial_irreducible, naive_morphism, automorphism;
+    local id_object, trivial_irreducible, naive_morphism, automorphism, morphism;
     
     id_object := IdentityMorphism( object );
     
@@ -2143,15 +2226,17 @@ InstallMethod( CAP_INTERNAL_EvaluationForDualOnIrreducibles,
     
     automorphism := PreCompose( [
       LeftUnitorInverse( object ),
-      TensorProductOnMorphisms( CAP_INTERNAL_CoevaluationForDualOnIrreducibles( object ), id_object ),
+      TensorProductOnMorphisms( CoevaluationForDual( object ), id_object ),
       AssociatorLeftToRight( object, DualOnObjects( object ), object ),
       TensorProductOnMorphisms( id_object, naive_morphism ),
       RightUnitor( object ) ] );
     
-    return PreCompose(
-             TensorProductOnMorphisms( IdentityMorphism( DualOnObjects( object ) ), Inverse( automorphism ) ),
-             naive_morphism 
-           );
+    morphism := PreCompose( TensorProductOnMorphisms( IdentityMorphism( DualOnObjects( object ) ), Inverse( automorphism ) ),
+                            naive_morphism );
+    
+    morphism := Component( morphism, trivial_irreducible );
+    
+    return String( EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) )[1] );
     
 end );
 
