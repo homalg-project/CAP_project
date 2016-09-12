@@ -25,6 +25,9 @@ DeclareOperation( "LeftActionsCategory",
 DeclareAttribute( "RightActionsCategory",
                   IsCapCategoryObject );
 
+DeclareOperation( "RightActionsCategory",
+                  [ IsCapCategoryObject, IsString, IsObject ] );
+
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_LEFT_ACTIONS_CATEGORY" );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_ACTIONS_CATEGORY" );
