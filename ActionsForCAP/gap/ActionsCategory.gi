@@ -177,7 +177,7 @@ InstallMethod( LeftActionsCategory,
                        "PreCompose",
                        "TensorProductOnMorphismsWithGivenTensorProducts",
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
-                       "ColiftAlongEpimorphism" ];
+                       "Colift" ]; #note that we cannot use ColiftAlongEpimorphism since we don't know whether the tensor presevers epis.
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
@@ -191,7 +191,7 @@ InstallMethod( LeftActionsCategory,
             
             to_be_colifted := PreCompose( action_source, epi );
             
-            return [ ColiftAlongEpimorphism( TensorProductOnMorphisms( identity_of_acting_object, epi ), to_be_colifted ) ];
+            return [ Colift( TensorProductOnMorphisms( identity_of_acting_object, epi ), to_be_colifted ) ];
             
           end;
         
@@ -396,7 +396,7 @@ InstallMethod( RightActionsCategory,
                        "PreCompose",
                        "TensorProductOnMorphismsWithGivenTensorProducts",
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
-                       "ColiftAlongEpimorphism" ];
+                       "Colift" ]; #note that we cannot use ColiftAlongEpimorphism since we don't know whether the tensor presevers epis.
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
@@ -410,7 +410,7 @@ InstallMethod( RightActionsCategory,
             
             to_be_colifted := PreCompose( action_source, epi );
             
-            return [ ColiftAlongEpimorphism( TensorProductOnMorphisms( epi, identity_of_acting_object ), to_be_colifted ) ];
+            return [ Colift( TensorProductOnMorphisms( epi, identity_of_acting_object ), to_be_colifted ) ];
             
           end;
         

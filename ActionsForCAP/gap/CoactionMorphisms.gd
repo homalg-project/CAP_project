@@ -32,6 +32,12 @@ DeclareCategory( "IsRightCoactionMorphism",
 DeclareOperation( "CoactionMorphism",
                   [ IsLeftOrRightCoactionObject, IsCapCategoryMorphism, IsLeftOrRightCoactionObject ] );
 
+DeclareOperation( "LeftCoactionMorphism",
+                  [ IsLeftCoactionObject, IsCapCategoryMorphism, IsLeftCoactionObject ] );
+
+DeclareOperation( "RightCoactionMorphism",
+                  [ IsRightCoactionObject, IsCapCategoryMorphism, IsRightCoactionObject ] );
+
 #############################
 ##
 ## Attributes
