@@ -15,22 +15,30 @@
 ##
 ####################################
 
-##
-DeclareFilter( "IsInTheContextOfEModuleActionCategory" );
+## categories
 
-##
-DeclareFilter( "IsEModuleActionCategoryObject" );
+DeclareCategory( "IsEModuleCategory", IsCapCategory );
 
-##
-DeclareFilter( "IsEModuleActionCategoryMorphism" );
+DeclareCategory( "IsEModuleActionCategory", IsEModuleCategory );
 
-##
-InstallTrueMethod( IsEModuleActionCategoryObject,
-                   IsRightActionObject and IsInTheContextOfEModuleActionCategory );
+DeclareCategory( "IsEModuleCoactionCategory", IsEModuleCategory );
 
-##
-InstallTrueMethod( IsEModuleActionCategoryMorphism,
-                   IsRightActionMorphism and IsInTheContextOfEModuleActionCategory );
+## objects
+
+DeclareCategory( "IsEModuleCategoryObject", IsCapCategoryObject );
+
+DeclareCategory( "IsEModuleActionCategoryObject", IsEModuleCategoryObject and IsRightActionObject );
+
+DeclareCategory( "IsEModuleCoactionCategoryObject", IsEModuleCategoryObject and IsLeftCoactionObject );
+
+## morphisms
+
+DeclareCategory( "IsEModuleCategoryMorphism", IsCapCategoryMorphism );
+
+DeclareCategory( "IsEModuleActionCategoryMorphism", IsCapCategoryMorphism and IsRightActionMorphism );
+
+DeclareCategory( "IsEModuleCoactionCategoryMorphism", IsCapCategoryMorphism and IsLeftCoactionMorphism );
+
 
 ####################################
 ##
@@ -55,7 +63,7 @@ DeclareOperation( "EModuleActionCategoryMorphism",
 
 ##
 DeclareOperation( "FreeEModuleAction",
-                  [ IsCapCategoryObject, IsCapCategory and IsInTheContextOfEModuleActionCategory ] );
+                  [ IsCapCategoryObject, IsEModuleCategory ] );
 
 ####################################
 ##
@@ -64,25 +72,25 @@ DeclareOperation( "FreeEModuleAction",
 ####################################
 
 ##
-DeclareAttribute( "ExteriorAlgebraAsModule", IsCapCategory and IsInTheContextOfEModuleActionCategory );
+DeclareAttribute( "ExteriorAlgebraAsModule", IsEModuleCategory );
 
 ##
-DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsCapCategory and IsInTheContextOfEModuleActionCategory );
+DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsEModuleCategory );
 
 ##
 DeclareAttribute( "EModuleActionHigherMultiplications", IsEModuleActionCategoryObject );
 
 ##
-DeclareAttribute( "ProjectionToHead", IsEModuleActionCategoryObject );
+DeclareAttribute( "ProjectionToHead", IsEModuleCategoryObject );
 
 ##
-DeclareAttribute( "Head", IsEModuleActionCategoryObject );
+DeclareAttribute( "Head", IsEModuleCategoryObject );
 
 ##
-DeclareAttribute( "InjectionOfSocle", IsEModuleActionCategoryObject );
+DeclareAttribute( "InjectionOfSocle", IsEModuleCategoryObject );
 
 ##
-DeclareAttribute( "Socle", IsEModuleActionCategoryObject );
+DeclareAttribute( "Socle", IsEModuleCategoryObject );
 
 
 ####################################

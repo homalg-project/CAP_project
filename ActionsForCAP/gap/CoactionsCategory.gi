@@ -35,9 +35,9 @@ end );
 
 ##
 InstallMethod( LeftCoactionsCategory,
-               [ IsCapCategoryObject, IsString, IsObject ],
+               [ IsCapCategoryObject, IsString, IsList ],
                
-  function( coacting_object, name, context_filter )
+  function( coacting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
           left_coactions_category, identity_of_coacting_object;
@@ -71,7 +71,7 @@ InstallMethod( LeftCoactionsCategory,
         
     fi;
     
-    SetFilterObj( left_coactions_category, context_filter );
+    SetFilterObj( left_coactions_category, context_filter_list[1] );
     
     SetUnderlyingCoactingObject( left_coactions_category, coacting_object );
     
@@ -95,7 +95,7 @@ InstallMethod( LeftCoactionsCategory,
         
         SetCoactionDomain( return_object, Source( attributes[1] ) );
         
-        SetFilterObj( return_object, context_filter );
+        SetFilterObj( return_object, context_filter_list[2] );
         
         return return_object;
         
@@ -113,7 +113,7 @@ InstallMethod( LeftCoactionsCategory,
         
         SetUnderlyingMorphism( return_morphism, morphism );
         
-        SetFilterObj( return_morphism, context_filter );
+        SetFilterObj( return_morphism, context_filter_list[3] );
         
         return return_morphism;
         
@@ -265,9 +265,9 @@ end );
 
 ##
 InstallMethod( RightCoactionsCategory,
-               [ IsCapCategoryObject, IsString, IsObject ],
+               [ IsCapCategoryObject, IsString, IsList ],
                
-  function( coacting_object, name, context_filter )
+  function( coacting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
           right_coactions_category, identity_of_coacting_object;
@@ -301,7 +301,7 @@ InstallMethod( RightCoactionsCategory,
         
     fi;
     
-    SetFilterObj( right_coactions_category, context_filter );
+    SetFilterObj( right_coactions_category, context_filter_list[1] );
     
     SetUnderlyingCoactingObject( right_coactions_category, coacting_object );
     
@@ -325,7 +325,7 @@ InstallMethod( RightCoactionsCategory,
         
         SetCoactionDomain( return_object, Source( attributes[1] ) );
         
-        SetFilterObj( return_object, context_filter );
+        SetFilterObj( return_object, context_filter_list[2] );
         
         return return_object;
         
@@ -343,7 +343,7 @@ InstallMethod( RightCoactionsCategory,
         
         SetUnderlyingMorphism( return_morphism, morphism );
         
-        SetFilterObj( return_morphism, context_filter );
+        SetFilterObj( return_morphism, context_filter_list[3] );
         
         return return_morphism;
         

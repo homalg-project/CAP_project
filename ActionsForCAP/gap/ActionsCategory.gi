@@ -24,16 +24,16 @@ InstallMethod( LeftActionsCategory,
       
       name := Concatenation( "Category of left actions of <", String( acting_object ), ">" );
       
-      return LeftActionsCategory( acting_object, name, IsObject );
+      return LeftActionsCategory( acting_object, name, [ IsObject, IsObject, IsObject ] );
       
 end );
 
-
+## context_filter_list = [ Category_Filter, Object_Filter, Morphism_Filter ]
 ##
 InstallMethod( LeftActionsCategory,
-               [ IsCapCategoryObject, IsString, IsObject ],
+               [ IsCapCategoryObject, IsString, IsList ],
                
-  function( acting_object, name, context_filter )
+  function( acting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
           left_actions_category, identity_of_acting_object;
@@ -67,7 +67,7 @@ InstallMethod( LeftActionsCategory,
         
     fi;
     
-    SetFilterObj( left_actions_category, context_filter );
+    SetFilterObj( left_actions_category, context_filter_list[1] );
     
     SetUnderlyingActingObject( left_actions_category, acting_object );
     
@@ -91,7 +91,7 @@ InstallMethod( LeftActionsCategory,
         
         SetActionDomain( return_object, Range( attributes[1] ) );
         
-        SetFilterObj( return_object, context_filter );
+        SetFilterObj( return_object, context_filter_list[2] );
         
         return return_object;
         
@@ -109,7 +109,7 @@ InstallMethod( LeftActionsCategory,
         
         SetUnderlyingMorphism( return_morphism, morphism );
         
-        SetFilterObj( return_morphism, context_filter );
+        SetFilterObj( return_morphism, context_filter_list[3] );
         
         return return_morphism;
         
@@ -253,16 +253,16 @@ InstallMethod( RightActionsCategory,
       
       name := Concatenation( "Category of right actions of <", String( acting_object ), ">" );
       
-      return RightActionsCategory( acting_object, name, IsObject );
+      return RightActionsCategory( acting_object, name, [ IsObject, IsObject, IsObject ] );
       
 end );
 
 
 ##
 InstallMethod( RightActionsCategory,
-               [ IsCapCategoryObject, IsString, IsObject ],
+               [ IsCapCategoryObject, IsString, IsList ],
                
-  function( acting_object, name, context_filter )
+  function( acting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
           right_actions_category, identity_of_acting_object;
@@ -296,7 +296,7 @@ InstallMethod( RightActionsCategory,
         
     fi;
     
-    SetFilterObj( right_actions_category, context_filter );
+    SetFilterObj( right_actions_category, context_filter_list[1] );
     
     SetUnderlyingActingObject( right_actions_category, acting_object );
     
@@ -320,7 +320,7 @@ InstallMethod( RightActionsCategory,
         
         SetActionDomain( return_object, Range( attributes[1] ) );
         
-        SetFilterObj( return_object, context_filter );
+        SetFilterObj( return_object, context_filter_list[2] );
         
         return return_object;
         
@@ -338,7 +338,7 @@ InstallMethod( RightActionsCategory,
         
         SetUnderlyingMorphism( return_morphism, morphism );
         
-        SetFilterObj( return_morphism, context_filter );
+        SetFilterObj( return_morphism, context_filter_list[3] );
         
         return return_morphism;
         

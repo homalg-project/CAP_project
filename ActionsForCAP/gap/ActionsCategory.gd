@@ -20,13 +20,13 @@ DeclareAttribute( "LeftActionsCategory",
                   IsCapCategoryObject );
 
 DeclareOperation( "LeftActionsCategory",
-                  [ IsCapCategoryObject, IsString, IsObject ] );
+                  [ IsCapCategoryObject, IsString, IsList ] );
 
 DeclareAttribute( "RightActionsCategory",
                   IsCapCategoryObject );
 
 DeclareOperation( "RightActionsCategory",
-                  [ IsCapCategoryObject, IsString, IsObject ] );
+                  [ IsCapCategoryObject, IsString, IsList ] );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_LEFT_ACTIONS_CATEGORY" );
 
