@@ -58,3 +58,49 @@ INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE_METHOD( NaturalI
                                                                         RightPresentations,
                                                                         FunctorStandardModuleRight,
                                                                         NrRows );
+
+BindGlobal( "INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_LESS_GENERATORS_METHOD",
+            
+  function( natural_transformation_from_identity_to_less_generators_method, presentations, less_generators, triple_getter  )
+    
+    InstallMethod( natural_transformation_from_identity_to_less_generators_method,
+                   [ IsHomalgRing ],
+                   
+      function( ring )
+        local less_generators_functor, category, natural_transformation;
+        
+        category := presentations( ring );
+        
+        less_generators_functor := less_generators( ring );
+        
+        natural_transformation := NaturalTransformation( Concatenation( "Natural isomorphism from Id to ", Name( less_generators_functor ) ),
+                                                         IdentityMorphism( AsCatObject( category ) ), less_generators_functor );
+        
+        AddNaturalTransformationFunction( natural_transformation,
+                                          
+          function( id_object, object, smaller_object )
+            local LG;
+            
+            LG := triple_getter( UnderlyingMatrix( object ) );
+            
+            return PresentationMorphism( object, LG[2], smaller_object );
+            
+        end );
+        
+        SetIsIsomorphism( natural_transformation, true );
+        
+        return natural_transformation;
+        
+    end );
+    
+end );
+
+INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_LESS_GENERATORS_METHOD( NaturalIsomorphismFromIdentityToLessGeneratorsLeft,
+                                                                        LeftPresentations,
+                                                                        FunctorLessGeneratorsLeft,
+                                                                        LessGeneratorsTransformationTripleLeft );
+
+INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_LESS_GENERATORS_METHOD( NaturalIsomorphismFromIdentityToLessGeneratorsRight,
+                                                                        RightPresentations,
+                                                                        FunctorLessGeneratorsRight,
+                                                                        LessGeneratorsTransformationTripleRight );
