@@ -26,11 +26,11 @@ DeclareFilter( "IsInternalExteriorAlgebraModuleCategoryMorphism" );
 
 ##
 InstallTrueMethod( IsInternalExteriorAlgebraModuleCategoryObject,
-                   IsLeftActionObject and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
+                   IsRightActionObject and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
 
 ##
 InstallTrueMethod( IsInternalExteriorAlgebraModuleCategoryMorphism,
-                   IsLeftActionMorphism and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
+                   IsRightActionMorphism and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
 
 ####################################
 ##
