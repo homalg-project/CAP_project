@@ -46,24 +46,34 @@ DeclareCategory( "IsEModuleCoactionCategoryMorphism", IsCapCategoryMorphism and 
 ##
 ####################################
 
+## categories
 ##
 DeclareAttribute( "EModuleActionCategory", IsCapCategoryObject );
 
 ##
+DeclareAttribute( "EModuleCoactionCategory", IsCapCategoryObject );
+
+## objects
+##
 DeclareOperation( "EModuleActionCategoryObject",
                   [ IsCapCategoryMorphism, IsCapCategory ] );
+
 ##
 DeclareOperation( "EModuleActionCategoryObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
-##
-DeclareOperation( "EModuleActionCategoryMorphism",
-                  [ IsEModuleActionCategoryObject,
-                    IsCapCategoryMorphism,
-                    IsEModuleActionCategoryObject ] );
 
 ##
-DeclareOperation( "FreeEModuleAction",
-                  [ IsCapCategoryObject, IsEModuleCategory ] );
+DeclareOperation( "EModuleCoactionCategoryObject",
+                  [ IsCapCategoryMorphism, IsCapCategory ] );
+
+##
+DeclareOperation( "EModuleCoactionCategoryObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+## morphisms
+##
+DeclareOperation( "EModuleCategoryMorphism",
+                  [ IsEModuleCategoryObject, IsCapCategoryMorphism, IsEModuleCategoryObject ] );
 
 ####################################
 ##
@@ -98,6 +108,10 @@ DeclareAttribute( "Socle", IsEModuleCategoryObject );
 #! @Section Operations
 ##
 ####################################
+
+##
+DeclareOperation( "FreeEModule",
+                  [ IsCapCategoryObject, IsEModuleCategory ] );
 
 ##
 DeclareOperation( "UniversalMorphismFromFreeModule",

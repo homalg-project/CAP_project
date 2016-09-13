@@ -10,7 +10,7 @@ v := RepresentationCategoryZGradedObject( -1, irr[2], RepG );
 
 cat := EModuleActionCategory( v );
 
-F := FreeEModuleAction( v, cat );
+F := FreeEModule( v, cat );
 
 chi := Support( ActionDomain( F ) )[8];
 
