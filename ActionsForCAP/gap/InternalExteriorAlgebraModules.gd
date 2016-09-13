@@ -16,21 +16,21 @@
 ####################################
 
 ##
-DeclareFilter( "IsInTheContextOfInternalExteriorAlgebraModuleCategory" );
+DeclareFilter( "IsInTheContextOfEModuleActionCategory" );
 
 ##
-DeclareFilter( "IsInternalExteriorAlgebraModuleCategoryObject" );
+DeclareFilter( "IsEModuleActionCategoryObject" );
 
 ##
-DeclareFilter( "IsInternalExteriorAlgebraModuleCategoryMorphism" );
+DeclareFilter( "IsEModuleActionCategoryMorphism" );
 
 ##
-InstallTrueMethod( IsInternalExteriorAlgebraModuleCategoryObject,
-                   IsRightActionObject and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
+InstallTrueMethod( IsEModuleActionCategoryObject,
+                   IsRightActionObject and IsInTheContextOfEModuleActionCategory );
 
 ##
-InstallTrueMethod( IsInternalExteriorAlgebraModuleCategoryMorphism,
-                   IsRightActionMorphism and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
+InstallTrueMethod( IsEModuleActionCategoryMorphism,
+                   IsRightActionMorphism and IsInTheContextOfEModuleActionCategory );
 
 ####################################
 ##
@@ -39,23 +39,23 @@ InstallTrueMethod( IsInternalExteriorAlgebraModuleCategoryMorphism,
 ####################################
 
 ##
-DeclareAttribute( "InternalExteriorAlgebraModuleCategory", IsCapCategoryObject );
+DeclareAttribute( "EModuleActionCategory", IsCapCategoryObject );
 
 ##
-DeclareOperation( "InternalExteriorAlgebraModuleCategoryObject",
+DeclareOperation( "EModuleActionCategoryObject",
                   [ IsCapCategoryMorphism, IsCapCategory ] );
 ##
-DeclareOperation( "InternalExteriorAlgebraModuleCategoryObject",
+DeclareOperation( "EModuleActionCategoryObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 ##
-DeclareOperation( "InternalExteriorAlgebraModuleCategoryMorphism",
-                  [ IsInternalExteriorAlgebraModuleCategoryObject,
+DeclareOperation( "EModuleActionCategoryMorphism",
+                  [ IsEModuleActionCategoryObject,
                     IsCapCategoryMorphism,
-                    IsInternalExteriorAlgebraModuleCategoryObject ] );
+                    IsEModuleActionCategoryObject ] );
 
 ##
-DeclareOperation( "FreeInternalExteriorAlgebraModule",
-                  [ IsCapCategoryObject, IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory ] );
+DeclareOperation( "FreeEModuleAction",
+                  [ IsCapCategoryObject, IsCapCategory and IsInTheContextOfEModuleActionCategory ] );
 
 ####################################
 ##
@@ -64,25 +64,25 @@ DeclareOperation( "FreeInternalExteriorAlgebraModule",
 ####################################
 
 ##
-DeclareAttribute( "ExteriorAlgebraAsModule", IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
+DeclareAttribute( "ExteriorAlgebraAsModule", IsCapCategory and IsInTheContextOfEModuleActionCategory );
 
 ##
-DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsCapCategory and IsInTheContextOfInternalExteriorAlgebraModuleCategory );
+DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsCapCategory and IsInTheContextOfEModuleActionCategory );
 
 ##
-DeclareAttribute( "InternalExteriorAlgebraModuleHigherMultiplications", IsInternalExteriorAlgebraModuleCategoryObject );
+DeclareAttribute( "EModuleActionHigherMultiplications", IsEModuleActionCategoryObject );
 
 ##
-DeclareAttribute( "ProjectionToHead", IsInternalExteriorAlgebraModuleCategoryObject );
+DeclareAttribute( "ProjectionToHead", IsEModuleActionCategoryObject );
 
 ##
-DeclareAttribute( "Head", IsInternalExteriorAlgebraModuleCategoryObject );
+DeclareAttribute( "Head", IsEModuleActionCategoryObject );
 
 ##
-DeclareAttribute( "InjectionOfSocle", IsInternalExteriorAlgebraModuleCategoryObject );
+DeclareAttribute( "InjectionOfSocle", IsEModuleActionCategoryObject );
 
 ##
-DeclareAttribute( "Socle", IsInternalExteriorAlgebraModuleCategoryObject );
+DeclareAttribute( "Socle", IsEModuleActionCategoryObject );
 
 
 ####################################
@@ -93,8 +93,8 @@ DeclareAttribute( "Socle", IsInternalExteriorAlgebraModuleCategoryObject );
 
 ##
 DeclareOperation( "UniversalMorphismFromFreeModule",
-                  [ IsInternalExteriorAlgebraModuleCategoryObject, IsCapCategoryMorphism ] );
+                  [ IsEModuleActionCategoryObject, IsCapCategoryMorphism ] );
 
 ##
 DeclareAttribute( "StepOfMinimalFreeResolutionOfKernel",
-                  IsInternalExteriorAlgebraModuleCategoryMorphism );
+                  IsEModuleActionCategoryMorphism );

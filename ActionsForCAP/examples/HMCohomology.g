@@ -8,9 +8,9 @@ v := RepresentationCategoryZGradedObject( -1, irr[6], RepG );
 
 h := RepresentationCategoryZGradedObject( 0, irr[5], RepG );
 
-cat := InternalExteriorAlgebraModuleCategory( v );
+cat := EModuleActionCategory( v );
 
-F := FreeInternalExteriorAlgebraModule( h, cat );
+F := FreeEModuleAction( h, cat );
 
 chi := Support( ActionDomain( F ) )[7];
 

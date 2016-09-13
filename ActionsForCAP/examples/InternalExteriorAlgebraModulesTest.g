@@ -8,6 +8,12 @@ irr := Irr( G );
 
 v := RepresentationCategoryZGradedObject( -1, irr[2], RepG );
 
-cat := InternalExteriorAlgebraModuleCategory( v );
+cat := EModuleActionCategory( v );
 
-F := FreeInternalExteriorAlgebraModule( v, cat );
+F := FreeEModuleAction( v, cat );
+
+chi := Support( ActionDomain( F ) )[8];
+
+c := ComponentInclusionMorphism( ActionDomain( F ), chi );
+
+u := UniversalMorphismFromFreeModule( F, c );
