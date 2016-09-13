@@ -7,18 +7,39 @@
 ##
 #############################################################################
 
-## transformation_inverse * matrix * transformation = smaller_matrix
-InstallMethod( LessGeneratorsTransformationTriple,
+##
+InstallMethod( LessGeneratorsTransformationTripleLeft,
                [ IsHomalgMatrix ],
                
   function( matrix )
-    local transformation, transformation_inverse, smaller_matrix;
+    local R, transformation, transformation_inverse, smaller_matrix;
     
-    transformation := HomalgVoidMatrix( HomalgRing( matrix ) );
+    R := HomalgRing( matrix );
     
-    transformation_inverse := HomalgVoidMatrix( HomalgRing( matrix ) );
+    transformation := HomalgVoidMatrix( R );
+    
+    transformation_inverse := HomalgVoidMatrix( R );
     
     smaller_matrix := SimplerEquivalentMatrix( matrix, transformation, transformation_inverse, "", "" );
+    
+    return [ smaller_matrix, transformation, transformation_inverse ];
+    
+end );
+
+##
+InstallMethod( LessGeneratorsTransformationTripleRight,
+               [ IsHomalgMatrix ],
+               
+  function( matrix )
+    local R, transformation, transformation_inverse, smaller_matrix;
+    
+    R := HomalgRing( matrix );
+    
+    transformation := HomalgVoidMatrix( R );
+    
+    transformation_inverse := HomalgVoidMatrix( R );
+    
+    smaller_matrix := SimplerEquivalentMatrix( matrix, transformation, transformation_inverse, "", "", "" );
     
     return [ smaller_matrix, transformation, transformation_inverse ];
     
