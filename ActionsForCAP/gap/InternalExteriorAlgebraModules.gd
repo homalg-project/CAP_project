@@ -88,6 +88,14 @@ DeclareAttribute( "ExteriorAlgebraAsModule", IsEModuleCategory );
 DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsEModuleCategory );
 
 ##
+DeclareAttribute( "ExteriorAlgebraDualAsModule", IsEModuleCategory );
+
+##
+DeclareAttribute( "ExteriorAlgebraDualAsModuleComultiplicationList", IsEModuleCategory );
+
+
+
+##
 DeclareAttribute( "EModuleActionHigherMultiplications", IsEModuleActionCategoryObject );
 
 ##
@@ -111,6 +119,10 @@ DeclareAttribute( "Socle", IsEModuleCategoryObject );
 
 ##
 DeclareOperation( "FreeEModule",
+                  [ IsCapCategoryObject, IsEModuleCategory ] );
+
+##
+DeclareOperation( "CofreeEModule",
                   [ IsCapCategoryObject, IsEModuleCategory ] );
 
 ##

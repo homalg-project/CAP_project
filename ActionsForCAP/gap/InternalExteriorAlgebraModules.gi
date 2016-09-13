@@ -37,11 +37,13 @@ InstallMethod( EModuleCoactionCategory,
                [ IsCapCategoryObject ],
                
   function( object )
-    local name, category;
+    local name, w, category;
     
-    name := Concatenation( "Module category of the internal exterior algebra modeled via coactions of ", String( object ) );
+    w := DualOnObjects( object );
     
-    category := LeftCoactionsCategory( object, name,
+    name := Concatenation( "Module category of the internal exterior algebra modeled via coactions of ", String( w ) );
+    
+    category := LeftCoactionsCategory( w, name,
                   [ IsEModuleCoactionCategory, IsEModuleCoactionCategoryObject, IsEModuleCoactionCategoryMorphism ] );
     
     return category;
@@ -195,10 +197,81 @@ InstallMethod( ExteriorAlgebraAsModuleMultiplicationList,
 end );
 
 ##
+InstallMethod( ExteriorAlgebraDualAsModule,
+               [ IsEModuleCoactionCategory ],
+               
+  function( category )
+    local exterior_algebra_dual_comultiplication_list, object_list;
+    
+    exterior_algebra_dual_comultiplication_list := ExteriorAlgebraDualAsModuleComultiplicationList( category );
+    
+    object_list := List( exterior_algebra_dual_comultiplication_list, Source );
+    
+    return EModuleCoactionCategoryObject(
+             PreCompose(
+               DirectSumFunctorial( exterior_algebra_dual_comultiplication_list ),
+               LeftDistributivityFactoring( UnderlyingCoactingObject( category ), object_list )
+             ),
+             category
+           );
+    
+end );
+
+##
+InstallMethod( ExteriorAlgebraDualAsModuleComultiplicationList,
+               [ IsEModuleCoactionCategory ],
+               
+  function( category )
+    local w, u, top, exterior_algebra_dual_comultiplication_list, id_w, n, morphism_1, n_minus_2_power, morphism_2;
+    
+    w := UnderlyingCoactingObject( category );
+    
+    u := TensorUnit( UnderlyingCategory( category ) );
+    
+    top := Dimension( w );
+    
+    exterior_algebra_dual_comultiplication_list := [ UniversalMorphismIntoZeroObject( u ) ];
+    
+    if top = 0 then
+        
+        return EModuleCoactionCategoryObject( exterior_algebra_dual_comultiplication_list[1], category );
+        
+    fi;
+    
+    Add( exterior_algebra_dual_comultiplication_list, RightUnitorInverse( w ) );
+    
+    id_w := IdentityMorphism( w );
+    
+    for n in [ 3 .. top + 1 ] do
+        
+        morphism_1 := TensorProductOnMorphisms( id_w, exterior_algebra_dual_comultiplication_list[n - 1] );
+        
+        n_minus_2_power := Source( exterior_algebra_dual_comultiplication_list[n - 2] );
+        
+        morphism_2 := PreCompose( [
+                        morphism_1,
+                        AssociatorRightToLeft( w, w, n_minus_2_power ),
+                        TensorProductOnMorphisms( Braiding( w, w ), IdentityMorphism( n_minus_2_power ) ),
+                        AssociatorLeftToRight( w, w, n_minus_2_power ) ] );
+        
+        Add( exterior_algebra_dual_comultiplication_list, KernelEmbedding( morphism_1 + morphism_2 ) );
+        
+    od;
+    
+    Add( exterior_algebra_dual_comultiplication_list,
+         UniversalMorphismFromZeroObject( 
+           TensorProductOnObjects( w, Source( exterior_algebra_dual_comultiplication_list[top + 1] ) ) ) 
+    );
+    
+    return exterior_algebra_dual_comultiplication_list;
+    
+end );
+
+##
 InstallMethod( FreeEModule,
                [ IsCapCategoryObject, IsEModuleActionCategory ],
                
-  function( w, category )
+  function( l, category )
     local exterior_algebra, v, structure_morphism;
     
     exterior_algebra := ExteriorAlgebraAsModule( category );
@@ -206,11 +279,32 @@ InstallMethod( FreeEModule,
     v := UnderlyingActingObject( category );
     
     structure_morphism := PreCompose( [
-      AssociatorLeftToRight( w, ActionDomain( exterior_algebra ), v ),
-      TensorProductOnMorphisms( IdentityMorphism( w ), StructureMorphism( exterior_algebra ) ) ]
+      AssociatorLeftToRight( l, ActionDomain( exterior_algebra ), v ),
+      TensorProductOnMorphisms( IdentityMorphism( l ), StructureMorphism( exterior_algebra ) ) ]
     );
     
     return EModuleActionCategoryObject( structure_morphism, category );
+    
+end );
+
+##
+InstallMethod( CofreeEModule,
+               [ IsCapCategoryObject, IsEModuleCoactionCategory ],
+               
+  function( l, category )
+    local exterior_algebra_dual, w, structure_morphism;
+    
+    exterior_algebra_dual := ExteriorAlgebraDualAsModule( category );
+    
+    w := UnderlyingCoactingObject( category );
+    
+    structure_morphism := PreCompose( [
+      TensorProductOnMorphisms( StructureMorphism( exterior_algebra_dual ), IdentityMorphism( l ) ),
+      AssociatorLeftToRight( w, CoactionDomain( exterior_algebra_dual ), l )
+       ]
+    );
+    
+    return EModuleCoactionCategoryObject( structure_morphism, category );
     
 end );
 
