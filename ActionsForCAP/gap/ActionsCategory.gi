@@ -57,6 +57,16 @@ InstallMethod( LeftActionsCategory,
     
     left_actions_category := CreateCapCategory( name );
     
+    ## WARNING: This should be adjusted
+    if HasIsAbelianCategory( underlying_monoidal_category )
+       and IsAbelianCategory( underlying_monoidal_category )
+       and HasIsRigidSymmetricClosedMonoidalCategory( underlying_monoidal_category )
+       and IsRigidSymmetricClosedMonoidalCategory( underlying_monoidal_category ) then
+        
+        SetIsAbelianCategory( left_actions_category, true );
+        
+    fi;
+    
     SetFilterObj( left_actions_category, context_filter );
     
     SetUnderlyingActingObject( left_actions_category, acting_object );
@@ -275,6 +285,16 @@ InstallMethod( RightActionsCategory,
     fi;
     
     right_actions_category := CreateCapCategory( name );
+    
+    ## WARNING: This should be adjusted
+    if HasIsAbelianCategory( underlying_monoidal_category )
+       and IsAbelianCategory( underlying_monoidal_category )
+       and HasIsRigidSymmetricClosedMonoidalCategory( underlying_monoidal_category )
+       and IsRigidSymmetricClosedMonoidalCategory( underlying_monoidal_category ) then
+        
+        SetIsAbelianCategory( right_actions_category, true );
+        
+    fi;
     
     SetFilterObj( right_actions_category, context_filter );
     
