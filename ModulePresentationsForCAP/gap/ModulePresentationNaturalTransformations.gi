@@ -49,20 +49,12 @@ BindGlobal( "INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE_MET
     
 end );
 
-BindGlobal( "INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE",
-            
-  function( )
-    
-    INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE_METHOD( NaturalIsomorphismFromIdentityToStandardModuleLeft,
-                                                                            LeftPresentations,
-                                                                            FunctorStandardModuleLeft,
-                                                                            NrColumns );
-    
-    INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE_METHOD( NaturalIsomorphismFromIdentityToStandardModuleRight,
-                                                                            RightPresentations,
-                                                                            FunctorStandardModuleRight,
-                                                                            NrRows );
-    
-end );
+INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE_METHOD( NaturalIsomorphismFromIdentityToStandardModuleLeft,
+                                                                        LeftPresentations,
+                                                                        FunctorStandardModuleLeft,
+                                                                        NrColumns );
 
-INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE( );
+INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE_METHOD( NaturalIsomorphismFromIdentityToStandardModuleRight,
+                                                                        RightPresentations,
+                                                                        FunctorStandardModuleRight,
+                                                                        NrRows );
