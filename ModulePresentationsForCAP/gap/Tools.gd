@@ -7,5 +7,8 @@
 ##
 #############################################################################
 
-DeclareAttribute( "LessGeneratorsTransformationTriple",
+DeclareAttribute( "LessGeneratorsTransformationTripleLeft",
+                  IsHomalgMatrix );
+
+DeclareAttribute( "LessGeneratorsTransformationTripleRight",
                   IsHomalgMatrix );

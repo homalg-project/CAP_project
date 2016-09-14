@@ -19,7 +19,7 @@ LiftAlongMonomorphism := rec(
     
     if lift = fail then
         
-        Error( "List along monomorphism doesn't exist" );
+        Error( "Lift along monomorphism doesn't exist" );
         
     fi;
     
