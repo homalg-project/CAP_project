@@ -538,11 +538,51 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
   
   function( left_actions_category )
     
+    ##
+    AddIsWellDefinedForObjects( left_actions_category,
+      function( object )
+        local underlying_category, action_domain, structure_morphism;
+        
+        underlying_category := UnderlyingCategory( object );
+        
+        structure_morphism := StructureMorphism( object );
+        
+        action_domain := ActionDomain( object );
+        
+        return IsIdenticalObj( underlying_category, CapCategory( structure_morphism ) )
+               and IsIdenticalObj( underlying_category, CapCategory( action_domain ) )
+               and IsWellDefined( structure_morphism )
+               and IsEqualForObjects( Source( structure_morphism ),
+                                      TensorProductOnObjects( UnderlyingActingObject( object ), action_domain ) )
+               and IsEqualForObjects( Range( structure_morphism ), action_domain );
+        
+    end );
+    
 end );
 
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_ACTIONS_CATEGORY,
   
   function( right_actions_category )
-  
+    
+    ##
+    AddIsWellDefinedForObjects( right_actions_category,
+      function( object )
+        local underlying_category, action_domain, structure_morphism;
+        
+        underlying_category := UnderlyingCategory( object );
+        
+        structure_morphism := StructureMorphism( object );
+        
+        action_domain := ActionDomain( object );
+        
+        return IsIdenticalObj( underlying_category, CapCategory( structure_morphism ) )
+               and IsIdenticalObj( underlying_category, CapCategory( action_domain ) )
+               and IsWellDefined( structure_morphism )
+               and IsEqualForObjects( Source( structure_morphism ),
+                                      TensorProductOnObjects( action_domain, UnderlyingActingObject( object ) ) )
+               and IsEqualForObjects( Range( structure_morphism ), action_domain );
+        
+    end );
+    
 end );
