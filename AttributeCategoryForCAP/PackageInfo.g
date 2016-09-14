@@ -1,5 +1,5 @@
 #
-# ActionsForCAP: Actions and Coactions for CAP
+# AttributeCategoryForCAP: Automatic enhancement with attributes of a CAP category
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,13 +8,13 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "ActionsForCAP",
-Subtitle := "Actions and Coactions for CAP",
+PackageName := "AttributeCategoryForCAP",
+Subtitle := "Automatic enhancement with attributes of a CAP category",
 
 Version := Maximum( [
-  "2015.08.19", ## Sebas' version
+  "2016.09.14", ## Sebas' version
   ## this line prevents merge conflicts
-  "2015.08.19", ## Sepp's version
+  "2016.09.14", ## Sepp's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -25,35 +25,41 @@ Persons := [
     IsAuthor := true,
     IsMaintainer := true,
     FirstNames := "Sebastian",
-    LastName := "Gutsche",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche",
-    Email := "gutsche@mathematik.uni-kl.de",
-    PostalAddress := "TODO",
-    Place := "Kaiserslautern",
-    Institution := "TU Kaiserslautern",
+    LastName := "Posur",
+    WWWHome := "http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php",
+    Email := "sebastian.posur@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
   rec(
     IsAuthor := true,
     IsMaintainer := true,
     FirstNames := "Sebastian",
-    LastName := "Posur",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php",
-    Email := "sposur@momo.math.rwth-aachen.de",
-    PostalAddress := Concatenation(
-               "Lehrstuhl B für Mathematik RWTH - Aachen\n",
-               "Templergraben 64\n",
-               "52062 Aachen\n",
-               "Germany" ),
-    Place := "Aachen",
-    Institution := "Rheinisch-Westfälische Technische Hochschule Aachen",
+    LastName := "Gutsche",
+    WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche",
+    Email := "gutsche@momo.math.rwth-aachen.de",
+    PostalAddress := "TODO",
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
 ],
 
+#SourceRepository := rec( Type := "TODO", URL := "URL" ),
+#IssueTrackerURL := "TODO",
+#SupportEmail := "TODO",
+
 PackageWWWHome := "http://TODO/",
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "ActionsForCAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
+ArchiveURL     := Concatenation( ~.PackageWWWHome,
+                                 "/", ~.PackageName, "-", ~.Version ),
 
 ArchiveFormats := ".tar.gz",
 
@@ -70,21 +76,18 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "ActionsForCAP",
+  BookName  := "AttributeCategoryForCAP",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Actions and Coactions for CAP",
+  LongTitle := "Automatic enhancement with attributes of a CAP category",
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2015.08.17" ],
-                           [ "LinearAlgebraForCAP", ">=2015.12.03" ],
-                           [ "RingsForHomalg", ">=2016.08.12" ],
-                           [ "AttributeCategoryForCAP", ">=2016.09.14" ] ],
+                           [ "CAP", ">= 2015.08.17" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
