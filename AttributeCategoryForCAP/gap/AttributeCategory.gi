@@ -45,6 +45,12 @@ InstallValue( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTE
       
   TensorUnit := rec(
       filter_list := [ "object_filter_of_underlying_category" ] ),
+      
+  DualOnObjects := rec(
+      filter_list := [ "object_filter", "object_filter_of_underlying_category" ] ),
+      
+  InternalHomOnObjects := rec(
+      filter_list := [ "object_filter", "object_filter", "object_filter_of_underlying_category" ] ),
   )
 );
 

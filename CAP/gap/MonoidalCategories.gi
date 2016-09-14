@@ -94,6 +94,7 @@ BraidingInverseWithGivenTensorProducts := rec(
 InternalHomOnObjects := rec(
   installation_name := "InternalHomOnObjects",
   filter_list := [ "object", "object" ],
+  io_type := [ [ "a", "b" ], [ "i" ] ],
   cache_name := "InternalHomOnObjects",
   return_type := "object" ),
 
@@ -149,6 +150,7 @@ MonoidalPostComposeMorphismWithGivenObjects := rec(
 DualOnObjects := rec(
   installation_name := "DualOnObjects",
   filter_list := [ "object" ],
+  io_type := [ [ "a" ], [ "ad" ] ],
   cache_name := "DualOnObjects",
   return_type := "object" ),
 
