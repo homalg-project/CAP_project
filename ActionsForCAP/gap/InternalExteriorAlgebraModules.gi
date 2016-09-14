@@ -360,6 +360,58 @@ InstallMethod( EModuleActionHigherMultiplications,
 end );
 
 ##
+InstallMethod( EModuleCoactionHigherComultiplications,
+               [ IsEModuleCoactionCategoryObject ],
+               
+  function( object )
+    local m, top, comultiplication_list, category, w, id_m, id_w, structure_morphism, n, 
+          monomorphism, n_minus_1_power, test_morphism, exterior_algebra_dual_comultiplication_list;
+    
+    m := CoactionDomain( object );
+    
+    category := CapCategory( object );
+    
+    w := UnderlyingCoactingObject( category );
+    
+    top := Dimension( w );
+    
+    comultiplication_list := [ LeftUnitorInverse( m ) ];
+    
+    if top = 0 then
+        
+        return comultiplication_list;
+        
+    fi;
+    
+    id_m := IdentityMorphism( m );
+    
+    id_w := IdentityMorphism( w );
+    
+    structure_morphism := StructureMorphism( object );
+    
+    exterior_algebra_dual_comultiplication_list := ExteriorAlgebraDualAsModuleComultiplicationList( category );
+    
+    for n in [ 1 .. top ] do
+        
+        monomorphism := TensorProductOnMorphisms( exterior_algebra_dual_comultiplication_list[n + 1], id_m );
+        
+        n_minus_1_power := Source( exterior_algebra_dual_comultiplication_list[n] );
+        
+        test_morphism := PreCompose( [
+          structure_morphism,
+          TensorProductOnMorphisms( id_w, comultiplication_list[n] ),
+          AssociatorRightToLeft( w, n_minus_1_power, m )
+        ] );
+        
+        Add( comultiplication_list, LiftAlongMonomorphism( monomorphism, test_morphism ) );
+        
+    od;
+    
+    return comultiplication_list;
+    
+end );
+
+##
 InstallMethod( UniversalMorphismFromFreeModule,
                [ IsEModuleActionCategoryObject, IsCapCategoryMorphism ],
                
@@ -379,12 +431,41 @@ InstallMethod( UniversalMorphismFromFreeModule,
       UniversalMorphismFromDirectSum( EModuleActionHigherMultiplications( object ) )
     );
     
-    morphism := PreCompose( [ TensorProductOnMorphisms( test_morphism, id_exterior_algebra ),
-                              higher_structure_morphism ] );
+    morphism := PreCompose( TensorProductOnMorphisms( test_morphism, id_exterior_algebra ),
+                            higher_structure_morphism );
     
     source := FreeEModule( Source( test_morphism ), category );
     
     return EModuleCategoryMorphism( source, morphism, object );
+    
+end );
+
+##
+InstallMethod( UniversalMorphismToCofreeModule,
+               [ IsEModuleCoactionCategoryObject, IsCapCategoryMorphism ],
+               
+  function( object, test_morphism )
+    local category, id_exterior_algebra_dual, exterior_algebra_dual_summands, m, higher_structure_morphism, morphism, range;
+    
+    category := CapCategory( object );
+    
+    id_exterior_algebra_dual := IdentityMorphism( CoactionDomain( ExteriorAlgebraDualAsModule( category ) ) );
+    
+    exterior_algebra_dual_summands := List( ExteriorAlgebraDualAsModuleComultiplicationList( category ), Source );
+    
+    m := CoactionDomain( object );
+    
+    higher_structure_morphism := PreCompose(
+      UniversalMorphismIntoDirectSum( EModuleCoactionHigherComultiplications( object ) ),
+      RightDistributivityFactoring( exterior_algebra_dual_summands, m )
+    );
+    
+    morphism := PreCompose( higher_structure_morphism,
+                            TensorProductOnMorphisms( id_exterior_algebra_dual, test_morphism ) );
+    
+    range := CofreeEModule( Range( test_morphism ), category );
+    
+    return EModuleCategoryMorphism( object, morphism, range );
     
 end );
 
@@ -408,6 +489,25 @@ InstallMethod( StepOfMinimalFreeResolutionOfKernel,
 end );
 
 ##
+InstallMethod( StepOfMinimalCofreeResolutionOfCokernel,
+               [ IsEModuleCoactionCategoryMorphism ],
+               
+  function( morphism )
+    local cokernel_proj, beta, alpha, split;
+    
+    cokernel_proj := CokernelProjection( morphism );
+    
+    alpha := InjectionOfSocle( Range( cokernel_proj ) );
+    
+    beta := IdentityMorphism( Source( alpha ) );
+    
+    split := Colift( alpha, beta );
+    
+    return PreCompose( cokernel_proj, UniversalMorphismToCofreeModule( Range( cokernel_proj ), split ) );
+    
+end );
+
+##
 InstallMethod( ProjectionToHead,
                [ IsEModuleActionCategoryObject ],
                
@@ -419,11 +519,11 @@ end );
 
 ##
 InstallMethod( Head,
-               [ IsEModuleActionCategoryObject ],
+               [ IsEModuleCategoryObject ],
                
   function( object )
     
-    return CokernelObject( StructureMorphism ( object ) );
+    return Range( ProjectionToHead( object ) );
     
 end );
 
@@ -445,8 +545,18 @@ InstallMethod( InjectionOfSocle,
 end );
 
 ##
+InstallMethod( InjectionOfSocle,
+               [ IsEModuleCoactionCategoryObject ],
+               
+  function( object )
+    
+    return KernelEmbedding( StructureMorphism( object ) );
+    
+end );
+
+##
 InstallMethod( Socle,
-               [ IsEModuleActionCategoryObject ],
+               [ IsEModuleCategoryObject ],
                
   function( object )
     

@@ -19,3 +19,11 @@ v := RepresentationCategoryZGradedObject( -1, irr[2], RepG );
 # u := UniversalMorphismFromFreeModule( F, c );
 
 catd := EModuleCoactionCategory( v );
+
+C := CofreeEModule( v, catd );
+
+psi := Support( CoactionDomain( C ) )[2];
+
+c := ComponentProjectionMorphism( CoactionDomain( C ), psi );
+
+u := UniversalMorphismToCofreeModule( C, c );

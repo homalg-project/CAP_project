@@ -99,6 +99,10 @@ DeclareAttribute( "ExteriorAlgebraDualAsModuleComultiplicationList", IsEModuleCa
 DeclareAttribute( "EModuleActionHigherMultiplications", IsEModuleActionCategoryObject );
 
 ##
+DeclareAttribute( "EModuleCoactionHigherComultiplications", IsEModuleCoactionCategoryObject );
+
+
+##
 DeclareAttribute( "ProjectionToHead", IsEModuleCategoryObject );
 
 ##
@@ -130,5 +134,13 @@ DeclareOperation( "UniversalMorphismFromFreeModule",
                   [ IsEModuleActionCategoryObject, IsCapCategoryMorphism ] );
 
 ##
+DeclareOperation( "UniversalMorphismToCofreeModule",
+                  [ IsEModuleCoactionCategoryObject, IsCapCategoryMorphism ] );
+
+##
 DeclareAttribute( "StepOfMinimalFreeResolutionOfKernel",
                   IsEModuleActionCategoryMorphism );
+
+##
+DeclareAttribute( "StepOfMinimalCofreeResolutionOfCokernel",
+                  IsEModuleCoactionCategoryMorphism );
