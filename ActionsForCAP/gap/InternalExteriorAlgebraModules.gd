@@ -114,6 +114,9 @@ DeclareAttribute( "InjectionOfSocle", IsEModuleCategoryObject );
 ##
 DeclareAttribute( "Socle", IsEModuleCategoryObject );
 
+##
+DeclareAttribute( "EModuleActionCategoryObjectAsCoactionCategoryObject", IsEModuleActionCategoryObject );
+
 
 ####################################
 ##

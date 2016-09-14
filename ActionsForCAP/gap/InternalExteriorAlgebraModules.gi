@@ -532,15 +532,11 @@ InstallMethod( InjectionOfSocle,
                [ IsEModuleActionCategoryObject ],
                
   function( object )
-    local m, v, morphism;
+    local as_coaction_object;
     
-    m := ActionDomain( object );
+    as_coaction_object := EModuleActionCategoryObjectAsCoactionCategoryObject( object );
     
-    v := UnderlyingActingObject( object );
-    
-    morphism := PreCompose( Braiding( m, v ), StructureMorphism( object ) );
-    
-    return KernelEmbedding( TensorProductToInternalHomAdjunctionMap( m, v, morphism ) );
+    return KernelEmbedding( StructureMorphism( as_coaction_object ) );
     
 end );
 
@@ -563,3 +559,19 @@ InstallMethod( Socle,
     return Source( InjectionOfSocle( object ) );
     
 end );
+
+##
+InstallMethod( EModuleActionCategoryObjectAsCoactionCategoryObject,
+               [ IsEModuleActionCategoryObject ],
+               
+  function( object )
+    local v, structure_morphism;
+    
+    v := UnderlyingActingObject( object );
+    
+    structure_morphism := TensorProductToInternalHomAdjunctionMap( ActionDomain( object ), v, StructureMorphism( object ) );
+    
+    return EModuleCoactionCategoryObject( structure_morphism, v );
+    
+end );
+
