@@ -764,6 +764,18 @@ InstallMethodWithCacheFromObject( CommonCoastrictionOp,
     
 end : ArgumentNumber := 2 );
 
+##
+InstallMethodWithCacheFromObject( ConcatenationProductOp,
+                                  [ IsList, IsGeneralizedMorphismByThreeArrows ],
+               
+  function( generalized_morphism_list, method_selection_object )
+    
+    return GeneralizedMorphismByThreeArrows( DirectSumFunctorial( List( generalized_morphism_list, SourceAid ) ),
+                                             DirectSumFunctorial( List( generalized_morphism_list, Arrow ) ),
+                                             DirectSumFunctorial( List( generalized_morphism_list, RangeAid ) ) );
+    
+end : ArgumentNumber := 2 );
+
 ###########################
 ##
 ## Pseudo-Inverse
