@@ -562,6 +562,17 @@ InstallMethodWithCacheFromObject( CommonRestrictionOp,
     
 end : ArgumentNumber := 2 );
 
+##
+InstallMethodWithCacheFromObject( ConcatenationProductOp,
+                                  [ IsList, IsGeneralizedMorphismBySpan ],
+               
+  function( generalized_morphism_list, method_selection_object )
+    
+    return GeneralizedMorphismBySpan( DirectSumFunctorial( List( generalized_morphism_list, ReversedArrow ) ),
+                                      DirectSumFunctorial( List( generalized_morphism_list, Arrow ) ) );
+    
+end : ArgumentNumber := 2 );
+
 ######################################
 ##
 ## Compatibility
