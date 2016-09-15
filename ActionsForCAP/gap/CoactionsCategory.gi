@@ -544,11 +544,51 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_COACTIONS_CATEGORY,
   
   function( left_coactions_category )
     
+    ##
+    AddIsWellDefinedForObjects( left_coactions_category,
+      function( object )
+        local underlying_category, coaction_domain, structure_morphism;
+        
+        underlying_category := UnderlyingCategory( object );
+        
+        structure_morphism := StructureMorphism( object );
+        
+        coaction_domain := CoactionDomain( object );
+        
+        return IsIdenticalObj( underlying_category, CapCategory( structure_morphism ) )
+               and IsIdenticalObj( underlying_category, CapCategory( coaction_domain ) )
+               and IsWellDefined( structure_morphism )
+               and IsEqualForObjects( Range( structure_morphism ),
+                                      TensorProductOnObjects( UnderlyingCoactingObject( object ), coaction_domain ) )
+               and IsEqualForObjects( Source( structure_morphism ), coaction_domain );
+        
+    end );
+    
 end );
 
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_COACTIONS_CATEGORY,
   
   function( right_coactions_category )
-  
+    
+    ##
+    AddIsWellDefinedForObjects( right_coactions_category,
+      function( object )
+        local underlying_category, coaction_domain, structure_morphism;
+        
+        underlying_category := UnderlyingCategory( object );
+        
+        structure_morphism := StructureMorphism( object );
+        
+        coaction_domain := CoactionDomain( object );
+        
+        return IsIdenticalObj( underlying_category, CapCategory( structure_morphism ) )
+               and IsIdenticalObj( underlying_category, CapCategory( coaction_domain ) )
+               and IsWellDefined( structure_morphism )
+               and IsEqualForObjects( Range( structure_morphism ),
+                                      TensorProductOnObjects( coaction_domain, UnderlyingCoactingObject( object ) ) )
+               and IsEqualForObjects( Source( structure_morphism ), coaction_domain );
+        
+    end );
+    
 end );
