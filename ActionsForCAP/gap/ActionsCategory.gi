@@ -537,6 +537,9 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
   
   function( left_actions_category )
+    local v;
+    
+    v := UnderlyingActingObject( left_actions_category );
     
     ##
     AddIsWellDefinedForObjects( left_actions_category,
@@ -558,12 +561,36 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
         
     end );
     
+    ##
+    AddIsWellDefinedForMorphisms( left_actions_category,
+      function( morphism )
+        local underlying_morphism, source, range;
+        
+        underlying_morphism := UnderlyingMorphism( morphism );
+        
+        source := Source( morphism );
+        
+        range := Range( morphism );
+        
+        return IsWellDefinedForMorphisms( underlying_morphism )
+               and IsEqualForObjects( Source( underlying_morphism ), ActionDomain( source ) )
+               and IsEqualForObjects( Range( underlying_morphism ), ActionDomain( range ) )
+               and IsCongruentForMorphisms(
+                     PreCompose( StructureMorphism( source ), underlying_morphism ),
+                     PreCompose( TensorProductOnMorphisms( IdentityMorphism( v ), underlying_morphism ), StructureMorphism( range ) )
+                   );
+        
+    end );
+    
 end );
 
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_ACTIONS_CATEGORY,
   
   function( right_actions_category )
+    local v;
+    
+    v := UnderlyingActingObject( right_actions_category );
     
     ##
     AddIsWellDefinedForObjects( right_actions_category,
@@ -582,6 +609,27 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_ACTIONS_CATEGORY,
                and IsEqualForObjects( Source( structure_morphism ),
                                       TensorProductOnObjects( action_domain, UnderlyingActingObject( object ) ) )
                and IsEqualForObjects( Range( structure_morphism ), action_domain );
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForMorphisms( right_actions_category,
+      function( morphism )
+        local underlying_morphism, source, range;
+        
+        underlying_morphism := UnderlyingMorphism( morphism );
+        
+        source := Source( morphism );
+        
+        range := Range( morphism );
+        
+        return IsWellDefinedForMorphisms( underlying_morphism )
+               and IsEqualForObjects( Source( underlying_morphism ), ActionDomain( source ) )
+               and IsEqualForObjects( Range( underlying_morphism ), ActionDomain( range ) )
+               and IsCongruentForMorphisms(
+                     PreCompose( StructureMorphism( source ), underlying_morphism ),
+                     PreCompose( TensorProductOnMorphisms( underlying_morphism, IdentityMorphism( v ) ), StructureMorphism( range ) )
+                   );
         
     end );
     

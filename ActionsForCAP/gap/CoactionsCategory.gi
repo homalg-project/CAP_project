@@ -543,6 +543,9 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_COACTIONS_CATEGORY,
   
   function( left_coactions_category )
+    local w;
+    
+    w := UnderlyingCoactingObject( left_coactions_category );
     
     ##
     AddIsWellDefinedForObjects( left_coactions_category,
@@ -564,12 +567,36 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_COACTIONS_CATEGORY,
         
     end );
     
+    ##
+    AddIsWellDefinedForMorphisms( left_coactions_category,
+      function( morphism )
+        local underlying_morphism, source, range;
+        
+        underlying_morphism := UnderlyingMorphism( morphism );
+        
+        source := Source( morphism );
+        
+        range := Range( morphism );
+        
+        return IsWellDefinedForMorphisms( underlying_morphism )
+               and IsEqualForObjects( Source( underlying_morphism ), CoactionDomain( source ) )
+               and IsEqualForObjects( Range( underlying_morphism ), CoactionDomain( range ) )
+               and IsCongruentForMorphisms(
+                     PreCompose( underlying_morphism, StructureMorphism( range ) ),
+                     PreCompose( StructureMorphism( source ), TensorProductOnMorphisms( IdentityMorphism( w ), underlying_morphism ) )
+                   );
+        
+    end );
+    
 end );
 
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_COACTIONS_CATEGORY,
   
   function( right_coactions_category )
+    local w;
+    
+    w := UnderlyingCoactingObject( right_coactions_category );
     
     ##
     AddIsWellDefinedForObjects( right_coactions_category,
@@ -588,6 +615,27 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_COACTIONS_CATEGORY,
                and IsEqualForObjects( Range( structure_morphism ),
                                       TensorProductOnObjects( coaction_domain, UnderlyingCoactingObject( object ) ) )
                and IsEqualForObjects( Source( structure_morphism ), coaction_domain );
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForMorphisms( right_coactions_category,
+      function( morphism )
+        local underlying_morphism, source, range;
+        
+        underlying_morphism := UnderlyingMorphism( morphism );
+        
+        source := Source( morphism );
+        
+        range := Range( morphism );
+        
+        return IsWellDefinedForMorphisms( underlying_morphism )
+               and IsEqualForObjects( Source( underlying_morphism ), CoactionDomain( source ) )
+               and IsEqualForObjects( Range( underlying_morphism ), CoactionDomain( range ) )
+               and IsCongruentForMorphisms(
+                     PreCompose( underlying_morphism, StructureMorphism( range ) ),
+                     PreCompose( StructureMorphism( source ), TensorProductOnMorphisms( underlying_morphism, IdentityMorphism( w ) ) )
+                   );
         
     end );
     
