@@ -117,6 +117,9 @@ DeclareAttribute( "Socle", IsEModuleCategoryObject );
 ##
 DeclareAttribute( "EModuleActionCategoryObjectAsCoactionCategoryObject", IsEModuleActionCategoryObject );
 
+##
+DeclareAttribute( "EModuleActionCategoryMorphismAsCoactionCategoryMorphism", IsEModuleActionCategoryMorphism );
+
 
 ####################################
 ##

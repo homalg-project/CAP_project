@@ -575,3 +575,16 @@ InstallMethod( EModuleActionCategoryObjectAsCoactionCategoryObject,
     
 end );
 
+##
+InstallMethod( EModuleActionCategoryMorphismAsCoactionCategoryMorphism,
+               [ IsEModuleActionCategoryMorphism ],
+               
+  function( morphism )
+    
+    return  EModuleCategoryMorphism(
+              EModuleActionCategoryObjectAsCoactionCategoryObject( Source( morphism ) ),
+              UnderlyingMorphism( morphism ),
+              EModuleActionCategoryObjectAsCoactionCategoryObject( Range( morphism ) )
+            );
+    
+end );
