@@ -93,7 +93,8 @@ DeclareAttribute( "ExteriorAlgebraDualAsModule", IsEModuleCategory );
 ##
 DeclareAttribute( "ExteriorAlgebraDualAsModuleComultiplicationList", IsEModuleCategory );
 
-
+##
+DeclareAttribute( "TopExteriorPowerOfActingObject", IsEModuleActionCategory );
 
 ##
 DeclareAttribute( "EModuleActionHigherMultiplications", IsEModuleActionCategoryObject );

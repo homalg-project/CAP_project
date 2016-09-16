@@ -72,6 +72,14 @@ DeclareOperation( "RepresentationCategoryZGradedMorphism", [ IsSemisimpleCategor
 DeclareAttribute( "DegreeDecomposition",
                   IsRepresentationCategoryZGradedObject );
 
+##
+DeclareAttribute( "DegreeDescendingFiltration",
+                  IsRepresentationCategoryZGradedObject );
+
+##
+DeclareAttribute( "DegreeDescendingCofiltration",
+                  IsRepresentationCategoryZGradedObject );
+
 ####################################
 ##
 #! @Section Internals

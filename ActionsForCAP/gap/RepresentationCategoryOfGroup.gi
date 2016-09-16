@@ -401,11 +401,66 @@ InstallMethod( DegreeDecomposition,
     
     Add( new_list, new_list_entry );
     
-    return List( new_list, entry -> SemisimpleCategoryObject( entry , CapCategory( object ) ) );
+    return List( new_list, entry -> [ UnderlyingDegree( entry[1][2] ) ,SemisimpleCategoryObject( entry , CapCategory( object ) ) ] );
     
 end );
 
+##
+InstallMethod( DegreeDescendingFiltration,
+               [ IsRepresentationCategoryZGradedObject ],
+               
+  function( object )
+    local descending_decomposition, descending_filtration, i;
+    
+    descending_decomposition := Reversed( List( DegreeDecomposition( object ), elem -> elem[2] ) );
+    
+    if Size( descending_decomposition ) = 1 then
+        
+        return [];
+        
+    fi;
+    
+    descending_filtration := 
+      [ InjectionOfCofactorOfDirectSum( [ descending_decomposition[1], descending_decomposition[2] ], 1 ) ];
+    
+    for i in [ 3 .. Size( descending_decomposition ) ] do
+        
+        Add( descending_filtration,
+          InjectionOfCofactorOfDirectSum( [ Range( descending_filtration[ i - 2 ] ), descending_decomposition[ i ] ], 1 ) );
+        
+    od;
+    
+    return descending_filtration;
+    
+end );
 
-
+##
+InstallMethod( DegreeDescendingCofiltration,
+               [ IsRepresentationCategoryZGradedObject ],
+               
+  function( object )
+    local descending_decomposition, descending_cofiltration, i;
+    
+    descending_decomposition := Reversed( List( DegreeDecomposition( object ), elem -> elem[2] ) );
+    
+    if Size( descending_decomposition ) = 1 then
+        
+        return [];
+        
+    fi;
+    
+    descending_cofiltration := 
+      [ ProjectionInFactorOfDirectSum( [ descending_decomposition[1], descending_decomposition[2] ], 1 ) ];
+    
+    for i in [ 3 .. Size( descending_decomposition ) ] do
+        
+        Add( descending_cofiltration,
+          ProjectionInFactorOfDirectSum( [ Source( descending_cofiltration[ i - 2 ] ), descending_decomposition[ i ] ], 1 ) );
+        
+    od;
+    
+    return descending_cofiltration;
+    
+end );
 
 

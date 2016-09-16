@@ -165,7 +165,8 @@ InstallMethod( ExteriorAlgebraAsModuleMultiplicationList,
     
     if top = 0 then
         
-        return EModuleActionCategoryObject( exterior_algebra_multiplication_list[1], category );
+        return [ EModuleActionCategoryObject( exterior_algebra_multiplication_list[1], category ),
+                 UniversalMorphismIntoZeroObject( ZeroObject( category ) ) ];
         
     fi;
     
@@ -234,7 +235,8 @@ InstallMethod( ExteriorAlgebraDualAsModuleComultiplicationList,
     
     if top = 0 then
         
-        return EModuleCoactionCategoryObject( exterior_algebra_dual_comultiplication_list[1], category );
+        return [ EModuleCoactionCategoryObject( exterior_algebra_dual_comultiplication_list[1], category ),
+                 UniversalMorphismFromZeroObject( ZeroObject( category ) ) ];
         
     fi;
     
