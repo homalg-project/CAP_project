@@ -154,3 +154,7 @@ DeclareAttribute( "StepOfMinimalCofreeResolutionOfCokernel",
 
 ##
 KeyDependentOperation( "TateResolutionDifferential", IsEModuleActionCategoryMorphism, IsInt, ReturnTrue );
+
+##
+KeyDependentOperation( "TateResolutionFilteredDifferential", IsEModuleActionCategoryMorphism, IsInt, ReturnTrue );
+
