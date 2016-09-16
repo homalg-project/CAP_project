@@ -588,3 +588,30 @@ InstallMethod( EModuleActionCategoryMorphismAsCoactionCategoryMorphism,
             );
     
 end );
+
+##
+InstallMethod( TateResolutionDifferentialOp,
+               [ IsEModuleActionCategoryMorphism, IsInt ],
+                        
+  function( zeroth_differntial, n )
+    
+    if n = 0 then
+        
+        return zeroth_differntial;
+        
+    elif n < 0 then
+        
+        return StepOfMinimalFreeResolutionOfKernel( TateResolutionDifferential( zeroth_differntial, n + 1 ) );
+        
+    elif n = 1 then #switch from action to coaction representation
+        
+        return StepOfMinimalCofreeResolutionOfCokernel(
+                 EModuleActionCategoryMorphismAsCoactionCategoryMorphism( zeroth_differntial )
+               );
+    else # n > 1
+        
+        return StepOfMinimalCofreeResolutionOfCokernel( TateResolutionDifferential( zeroth_differntial, n - 1 ) );
+        
+    fi;
+    
+end );
