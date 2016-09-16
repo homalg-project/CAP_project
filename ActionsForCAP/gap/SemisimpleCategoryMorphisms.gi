@@ -57,7 +57,9 @@ InstallMethod( SemisimpleCategoryMorphism,
                              SemisimpleCategoryMorphismList, morphism_list,
                              UnderlyingFieldForHomalg, field
     );
-
+    
+    SetFilterObj( semisimple_category_morphism, GivenMorphismFilterForSemisimpleCategory( category ) );
+    
     Add( category, semisimple_category_morphism );
     
     return semisimple_category_morphism;

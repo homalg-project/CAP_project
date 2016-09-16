@@ -9,6 +9,9 @@
 ##
 #############################################################################
 
+DeclareCategory( "IsSemisimpleCategory",
+                 IsCapCategory );
+
 ####################################
 ##
 #! @Section Constructors
@@ -17,7 +20,7 @@
 
 ##
 DeclareOperation( "SemisimpleCategory",
-                  [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool, IsString ] );
+                  [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool, IsList ] );
 
 ##
 DeclareOperation( "SemisimpleCategory",
@@ -31,14 +34,23 @@ DeclareOperation( "SemisimpleCategory",
 
 ##
 DeclareAttribute( "MembershipFunctionForSemisimpleCategory",
-                  IsCapCategory );
+                  IsSemisimpleCategory );
 ##
 DeclareAttribute( "UnderlyingCategoryForSemisimpleCategory",
-                  IsCapCategory );
+                  IsSemisimpleCategory );
 
 ##
 DeclareAttribute( "UnderlyingFieldForHomalgForSemisimpleCategory",
-                  IsCapCategory );
+                  IsSemisimpleCategory );
+
+##
+DeclareAttribute( "GivenObjectFilterForSemisimpleCategory",
+                  IsSemisimpleCategory );
+
+##
+DeclareAttribute( "GivenMorphismFilterForSemisimpleCategory",
+                  IsSemisimpleCategory );
+
 
 ####################################
 ##

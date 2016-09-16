@@ -120,7 +120,9 @@ InstallMethod( RepresentationCategory,
     
     tensor_unit := GIrreducibleObject( irr[ unit_number ] );
     
-    category := SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data, name );
+    category := SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data,
+                  [ IsRepresentationCategory, IsRepresentationCategoryObject, 
+                    IsRepresentationCategoryMorphism, name ] );
     
     SetUnderlyingGroupForRepresentationCategory( category, group );
     
@@ -281,7 +283,9 @@ InstallMethod( RepresentationCategoryZGraded,
     
     tensor_unit := GZGradedIrreducibleObject( 0, irr[ unit_number ] );
     
-    category := SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data, name );
+    category := SemisimpleCategory( field, membership_function, tensor_unit, associator_filename, is_complete_data,
+                  [ IsRepresentationCategory, IsRepresentationCategoryZGradedObject, 
+                    IsRepresentationCategoryZGradedMorphism, name ] );
     
     SetUnderlyingGroupForRepresentationCategory( category, group );
     

@@ -9,6 +9,21 @@
 ##
 #############################################################################
 
+DeclareCategory( "IsRepresentationCategory",
+                 IsCapCategory );
+
+DeclareCategory( "IsRepresentationCategoryObject",
+                 IsSemisimpleCategoryObject );
+
+DeclareCategory( "IsRepresentationCategoryMorphism",
+                 IsSemisimpleCategoryMorphism );
+
+DeclareCategory( "IsRepresentationCategoryZGradedObject",
+                 IsSemisimpleCategoryObject );
+
+DeclareCategory( "IsRepresentationCategoryZGradedMorphism",
+                 IsSemisimpleCategoryMorphism );
+
 ####################################
 ##
 #! @Section Constructors
@@ -53,4 +68,4 @@ DeclareOperation( "RepresentationCategoryZGradedMorphism", [ IsSemisimpleCategor
 ##
 ####################################
 
-DeclareAttribute( "UnderlyingGroupForRepresentationCategory", IsCapCategory );
+DeclareAttribute( "UnderlyingGroupForRepresentationCategory", IsRepresentationCategory );

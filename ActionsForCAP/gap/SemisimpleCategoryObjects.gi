@@ -69,7 +69,9 @@ InstallMethodWithCache( SemisimpleCategoryObjectConstructorWithFlatList,
                              SemisimpleCategoryObjectList, normalized_semisimple_object_list,
                              UnderlyingFieldForHomalg, field
     );
-
+    
+    SetFilterObj( semisimple_category_object, GivenObjectFilterForSemisimpleCategory( category ) );
+    
     Add( category, semisimple_category_object );
     
     return semisimple_category_object;

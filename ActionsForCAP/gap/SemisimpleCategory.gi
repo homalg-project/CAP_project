@@ -2357,16 +2357,18 @@ InstallMethod( SemisimpleCategory,
              tensor_unit,
              associator_filename,
              is_complete_data,
-             name );
+             [ IsObject, IsObject, IsObject, name ] );
     
 end );
 
 ##
 InstallMethod( SemisimpleCategory,
-               [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool, IsString ],
+               [ IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool, IsList ],
                
-  function( homalg_field, membership_function, tensor_unit, associator_filename, is_complete_data, name )
-    local stream, command, semisimple_category, underlying_category, associator_data;
+  function( homalg_field, membership_function, tensor_unit, associator_filename, is_complete_data, context_list )
+    local name, stream, command, semisimple_category, underlying_category, associator_data;
+    
+    name := context_list[4];
     
     associator_filename :=
       Concatenation( PackageInfo( "ActionsForCAP" )[1].InstallationPath,
@@ -2392,6 +2394,14 @@ InstallMethod( SemisimpleCategory,
     SetMembershipFunctionForSemisimpleCategory( semisimple_category, membership_function );
     
     SetUnderlyingFieldForHomalgForSemisimpleCategory( semisimple_category, homalg_field );
+    
+    SetFilterObj( semisimple_category, IsSemisimpleCategory );
+    
+    SetFilterObj( semisimple_category, context_list[1] );
+    
+    SetGivenObjectFilterForSemisimpleCategory( semisimple_category, context_list[2] );
+    
+    SetGivenMorphismFilterForSemisimpleCategory( semisimple_category, context_list[3] );
     
     CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY(
       semisimple_category, tensor_unit, associator_data, is_complete_data );
