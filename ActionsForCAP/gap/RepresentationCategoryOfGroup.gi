@@ -351,3 +351,61 @@ InstallMethod( RepresentationCategoryZGradedMorphism,
     return SemisimpleCategoryMorphism( source, new_morphism_list, range );
     
 end );
+
+####################################
+##
+## Attributes
+##
+####################################
+
+##
+InstallMethod( DegreeDecomposition,
+               [ IsRepresentationCategoryZGradedObject ],
+               
+  function( object )
+    local object_list, current_degree, new_list, new_list_entry, i, elem;
+    
+    object_list := SemisimpleCategoryObjectList( object );
+    
+    if IsEmpty( object_list ) then
+        
+        return object_list;
+        
+    fi;
+    
+    current_degree := UnderlyingDegree( object_list[1][2] );
+    
+    new_list := [ ];
+    
+    new_list_entry := [ object_list[1] ];
+    
+    for i in [ 2 .. Size( object_list ) ] do
+        
+        elem := object_list[i];
+        
+        if UnderlyingDegree( elem[2] ) = current_degree then
+            
+            Add( new_list_entry, elem );
+            
+        else
+            
+            Add( new_list, new_list_entry );
+            
+            current_degree := UnderlyingDegree( elem[2] );
+            
+            new_list_entry := [ elem ];
+            
+        fi;
+        
+    od;
+    
+    Add( new_list, new_list_entry );
+    
+    return List( new_list, entry -> SemisimpleCategoryObject( entry , CapCategory( object ) ) );
+    
+end );
+
+
+
+
+

@@ -64,6 +64,16 @@ DeclareOperation( "RepresentationCategoryZGradedMorphism", [ IsSemisimpleCategor
 
 ####################################
 ##
+#! @Section Attributes
+##
+####################################
+
+##
+DeclareAttribute( "DegreeDecomposition",
+                  IsRepresentationCategoryZGradedObject );
+
+####################################
+##
 #! @Section Internals
 ##
 ####################################
