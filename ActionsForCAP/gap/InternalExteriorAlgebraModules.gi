@@ -150,8 +150,8 @@ InstallMethod( EModuleCategoryMorphism,
 end );
 
 ##
-InstallMethod( TateFiltrationObjectUsingActions,
-              [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ],
+InstallMethodWithCache( TateFiltrationObjectUsingActions,
+                        [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ],
               
   function( heads, v )
     local tate_filtration_object, category, ext, filtration_list, size, top, bottom, zfunctor, n;
@@ -207,8 +207,8 @@ InstallMethod( TateFiltrationObjectUsingActions,
 end );
 
 ##
-InstallMethod( TateFiltrationObjectUsingCoactions,
-              [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ],
+InstallMethodWithCache( TateFiltrationObjectUsingCoactions,
+                        [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ],
               
   function( socles, v )
     local tate_filtration_object, ext_dual, filtration_list, size, top, bottom, zfunctor;
@@ -870,103 +870,57 @@ InstallMethod( TateResolutionFilteredDifferentialOp,
                [ IsEModuleActionCategoryMorphism, IsInt ],
                
   function( zeroth_differential, n )
-    local e_differential, category, exterior_algebra, exterior_algebra_dual, dimension, source, range, top_power, index,
-          source_tensor_object, range_tensor_object, id_ext_dual, socle, descending_filtration;
+    local e_differential, v, head, source, socle, range, underlying_morphism, morphism_func;
     
     e_differential := TateResolutionDifferential( zeroth_differential, n );
     
-    category := CapCategory( zeroth_differential );
+    v := UnderlyingActingObject( zeroth_differential );
     
-    top_power := TopExteriorPowerOfActingObject( category );
-    
-    exterior_algebra := ActionDomain( ExteriorAlgebraAsModule( category ) );
-    
-    exterior_algebra_dual := TensorProductOnObjects( exterior_algebra, DualOnObjects( top_power ) );
-    
-    id_ext_dual := IdentityMorphism( exterior_algebra_dual );
-    
-    dimension := Dimension( UnderlyingActingObject( zeroth_differential ) );
-    
-    if n > 1 then
+    if n <= 0 then
+        
+        head := Head( Source( e_differential ) );
+        
+        source := TateFiltrationObjectUsingActions( head, v );
+        
+    elif n = 1 then
+        
+        head := Head( Range( zeroth_differential ) );
+        
+        source := TateFiltrationObjectUsingActions( head, v );
+        
+    else #n > 1
         
         socle := Socle( Source( e_differential ) );
         
-        source := DegreeDecomposition( socle );
-        
-        if Size( source ) = 1 then
-            
-            index := -source[1][1];
-            
-            source := AsZFunctorObject( TensorProductOnObjects( exterior_algebra_dual, source[1][2] ), index );
-            
-            source := ZFunctorObjectExtendedByInitialAndIdentity( source, index, index );
-            
-        else
-            
-            index := -source[ Size( source ) ][1];
-            
-            descending_filtration := DegreeDescendingFiltration( socle );
-            
-            descending_filtration := List( descending_filtration, entry -> TensorProductOnMorphisms( id_ext_dual, entry ) );
-            
-            source := ZFunctorObjectFromMorphismList( descending_filtration, index );
-            
-            source := ZFunctorObjectExtendedByInitialAndIdentity( source, index, index + Size( descending_filtration ) );
-            
-        fi;
-        
-        socle := Socle( Range( e_differential ) );
-        
-        range := DegreeDecomposition( socle );
-        
-        if Size( range ) = 1 then
-            
-            index := -range[1][1];
-            
-            range := AsZFunctorObject( TensorProductOnObjects( exterior_algebra_dual, range[1][2] ), index );
-            
-            range := ZFunctorObjectExtendedByInitialAndIdentity( range, index, index );
-            
-        else
-            
-            index := -range[ Size( range ) ][1];
-            
-            descending_filtration := DegreeDescendingFiltration( range );
-            
-            descending_filtration := List( descending_filtration, entry -> TensorProductOnMorphisms( id_ext_dual, entry ) );
-            
-            range := ZFunctorObjectFromMorphismList( descending_filtration, index );
-            
-            range := ZFunctorObjectExtendedByInitialAndIdentity( range, index, index + Size( descending_filtration ) );
-            
-        fi;
-        
-    else
-        
-        if n = 1 then
-            
-            source := DegreeDecomposition( Head( Range( zeroth_differential ) ) );
-            
-            range := DegreeDecomposition( Socle( Range( e_differential ) ) );
-            
-            range_tensor_object := exterior_algebra_dual;
-            
-        else # n < 1 
-            
-            source := DegreeDecomposition( Head( Source( e_differential ) ) );
-            
-            range := DegreeDecomposition( Head( Range( e_differential ) ) );
-            
-            range_tensor_object := exterior_algebra;
-            
-        fi;
-        
-        source_tensor_object := exterior_algebra;
+        source := TateFiltrationObjectUsingCoactions( socle, v );
         
     fi;
     
+    if n <= 0 then
+        
+        head := Head( Range( e_differential ) );
+        
+        range := TateFiltrationObjectUsingActions( head, v );
+        
+    else
+        
+        socle := Socle( Range( e_differential ) );
+        
+        range := TateFiltrationObjectUsingCoactions( socle, v );
+        
+    fi;
     
+    underlying_morphism := UnderlyingMorphism( e_differential );
     
-    return [ source, range ];
+    morphism_func := function( i )
+      
+      return PreCompose( [
+        EmbeddingInSuperObjectOfTateFiltrationObject( source, i ),
+        underlying_morphism,
+        ProjectionFromSuperObjectOfTateFiltrationObjectOp( range, i ) ] );
+      
+    end;
+    
+    return DescendingFilteredMorphism( DescendingFilteredObject( source ), morphism_func, DescendingFilteredObject( range ) );
     
 end );

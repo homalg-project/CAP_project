@@ -83,12 +83,12 @@ DeclareOperation( "EModuleCategoryMorphism",
                   [ IsEModuleCategoryObject, IsCapCategoryMorphism, IsEModuleCategoryObject ] );
 
 ##
-DeclareOperation( "TateFiltrationObjectUsingActions",
-                  [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ] );
+DeclareOperationWithCache( "TateFiltrationObjectUsingActions",
+                           [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ] );
 
 ##
-DeclareOperation( "TateFiltrationObjectUsingCoactions",
-                  [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ] );
+DeclareOperationWithCache( "TateFiltrationObjectUsingCoactions",
+                           [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ] );
 
 
 ####################################
