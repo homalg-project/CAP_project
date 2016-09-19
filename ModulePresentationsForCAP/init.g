@@ -15,4 +15,6 @@ ReadPackage( "ModulePresentationsForCAP", "gap/GradedModulePresentationObjects.g
 
 ReadPackage( "ModulePresentationsForCAP", "gap/GradedModulePresentationMorphism.gd");
 
+ReadPackage( "ModulePresentationsForCAP", "gap/GradedModuleFunctors.gd");
+
 ReadPackage( "ModulePresentationsForCAP", "gap/Tools.gd");

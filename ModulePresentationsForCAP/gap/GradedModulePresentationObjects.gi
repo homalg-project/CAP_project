@@ -224,6 +224,38 @@ InstallMethod( GradedFreeRightPresentation,
     
 end );
 
+##
+InstallMethod( GradedFreeLeftPresentation,
+               [ IsInt, IsHomalgRing, IsList ],
+               
+  function( rank, homalg_ring, degrees )
+    
+    if rank < 0 then
+      
+      Error( "rank must be a non-negative integer" );
+      
+    fi;
+    
+    return AsGradedLeftPresentation( HomalgZeroMatrix( 0, rank, homalg_ring ), degrees );
+    
+end );
+
+##
+InstallMethod( GradedFreeRightPresentation,
+               [ IsInt, IsHomalgRing, IsList ],
+               
+  function( rank, homalg_ring, degrees )
+    
+    if rank < 0 then
+      
+      Error( "rank must be a non-negative integer" );
+      
+    fi;
+    
+    return AsGradedRightPresentation( HomalgZeroMatrix( rank, 0, homalg_ring ), degrees );
+    
+end );
+
 # ##############################################
 # ##
 # ## Non categorical methods

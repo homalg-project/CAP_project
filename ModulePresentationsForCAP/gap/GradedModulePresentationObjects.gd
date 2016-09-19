@@ -104,6 +104,10 @@ DeclareGlobalFunction( "AsGradedLeftOrRightPresentationWithDegrees" );
 DeclareOperation( "GradedFreeLeftPresentation",
                   [ IsInt, IsHomalgRing ] );
 
+DeclareOperation( "GradedFreeLeftPresentation",
+                  [ IsInt, IsHomalgRing, IsList ] );
+
+
 #! @Description
 #! The arguments are a non-negative integer $r$
 #! and a graded homalg ring $R$.
@@ -114,6 +118,10 @@ DeclareOperation( "GradedFreeLeftPresentation",
 #! @Arguments r, R
 DeclareOperation( "GradedFreeRightPresentation",
                   [ IsInt, IsHomalgRing ] );
+
+DeclareOperation( "GradedFreeRightPresentation",
+                  [ IsInt, IsHomalgRing, IsList ] );
+
 
 #############################
 ##
