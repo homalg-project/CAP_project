@@ -39,6 +39,13 @@ DeclareCategory( "IsEModuleActionCategoryMorphism", IsCapCategoryMorphism and Is
 
 DeclareCategory( "IsEModuleCoactionCategoryMorphism", IsCapCategoryMorphism and IsLeftCoactionMorphism );
 
+## Tate filtration objects
+
+DeclareCategory( "IsTateFiltrationObject", IsObject );
+
+DeclareCategory( "IsTateFiltrationObjectUsingActions", IsTateFiltrationObject );
+
+DeclareCategory( "IsTateFiltrationObjectUsingCoactions", IsTateFiltrationObject );
 
 ####################################
 ##
@@ -75,6 +82,15 @@ DeclareOperation( "EModuleCoactionCategoryObject",
 DeclareOperation( "EModuleCategoryMorphism",
                   [ IsEModuleCategoryObject, IsCapCategoryMorphism, IsEModuleCategoryObject ] );
 
+##
+DeclareOperation( "TateFiltrationObjectUsingActions",
+                  [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ] );
+
+##
+DeclareOperation( "TateFiltrationObjectUsingCoactions",
+                  [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ] );
+
+
 ####################################
 ##
 #! @Section Attributes
@@ -88,10 +104,16 @@ DeclareAttribute( "ExteriorAlgebraAsModule", IsEModuleCategory );
 DeclareAttribute( "ExteriorAlgebraAsModuleMultiplicationList", IsEModuleCategory );
 
 ##
+DeclareAttribute( "ExteriorAlgebraUnderlyingObject", IsEModuleCategory );
+
+##
 DeclareAttribute( "ExteriorAlgebraDualAsModule", IsEModuleCategory );
 
 ##
 DeclareAttribute( "ExteriorAlgebraDualAsModuleComultiplicationList", IsEModuleCategory );
+
+##
+DeclareAttribute( "ExteriorAlgebraDualUnderlyingObject", IsEModuleCategory );
 
 ##
 DeclareAttribute( "TopExteriorPowerOfActingObject", IsEModuleActionCategory );
@@ -120,6 +142,28 @@ DeclareAttribute( "EModuleActionCategoryObjectAsCoactionCategoryObject", IsEModu
 
 ##
 DeclareAttribute( "EModuleActionCategoryMorphismAsCoactionCategoryMorphism", IsEModuleActionCategoryMorphism );
+
+## Attributes for Tate Filtration Objects
+##
+DeclareAttribute( "DefiningGradedObject", IsTateFiltrationObject );
+
+##
+DeclareAttribute( "ActingObject", IsTateFiltrationObject );
+
+##
+DeclareAttribute( "TopStationaryDegree", IsTateFiltrationObject );
+
+##
+DeclareAttribute( "BottomStationaryDegree", IsTateFiltrationObject );
+
+##
+DeclareAttribute( "DescendingFilteredObject", IsTateFiltrationObject );
+
+##
+KeyDependentOperation( "EmbeddingInSuperObjectOfTateFiltrationObject", IsTateFiltrationObject, IsInt, ReturnTrue );
+
+##
+KeyDependentOperation( "ProjectionFromSuperObjectOfTateFiltrationObject", IsTateFiltrationObject, IsInt, ReturnTrue );
 
 
 ####################################

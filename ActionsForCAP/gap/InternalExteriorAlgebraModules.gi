@@ -11,6 +11,34 @@
 
 ####################################
 ##
+## GAP Category
+##
+####################################
+
+DeclareRepresentation( "IsTateFiltrationObjectUsingActionsRep",
+                       IsTateFiltrationObjectUsingActions and IsAttributeStoringRep,
+                       [ ] );
+
+BindGlobal( "TheFamilyOfTateFiltrationObjectsUsingActions",
+        NewFamily( "TheFamilyOfTateFiltrationObjectsUsingActions" ) );
+
+BindGlobal( "TheTypeOfTateFiltrationObjectsUsingActions",
+        NewType( TheFamilyOfTateFiltrationObjectsUsingActions,
+                IsTateFiltrationObjectUsingActionsRep ) );
+
+DeclareRepresentation( "IsTateFiltrationObjectUsingCoactionsRep",
+                       IsTateFiltrationObjectUsingCoactions and IsAttributeStoringRep,
+                       [ ] );
+
+BindGlobal( "TheFamilyOfTateFiltrationObjectsUsingCoactions",
+        NewFamily( "TheFamilyOfTateFiltrationObjectsUsingCoactions" ) );
+
+BindGlobal( "TheTypeOfTateFiltrationObjectsUsingCoactions",
+        NewType( TheFamilyOfTateFiltrationObjectsUsingCoactions,
+                IsTateFiltrationObjectUsingCoactionsRep ) );
+
+####################################
+##
 ## Constructors
 ##
 ####################################
@@ -121,6 +149,192 @@ InstallMethod( EModuleCategoryMorphism,
       
 end );
 
+##
+InstallMethod( TateFiltrationObjectUsingActions,
+              [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ],
+              
+  function( heads, v )
+    local tate_filtration_object, category, ext, filtration_list, size, top, bottom, zfunctor, n;
+    
+    tate_filtration_object := rec( );
+    
+    category := EModuleActionCategory( v );
+    
+    ext := ExteriorAlgebraUnderlyingObject( category );
+    
+    filtration_list := DegreeDescendingFiltration( heads );
+    
+    if IsEmpty( filtration_list ) then
+        
+        Error( "zero object is no accepted input" );
+        
+    fi;
+    
+    size := Size( filtration_list );
+    
+    n := DegreeDecomposition( TopExteriorPowerOfActingObject( category ) )[1][1];
+    
+    top := filtration_list[1][1] + n;
+    
+    bottom := filtration_list[size][1] - 1 + n;
+    
+    if IsCapCategoryMorphism( filtration_list[1][2] ) then
+        
+        filtration_list := List( filtration_list, elem -> TensorProductOnMorphisms( elem[2], IdentityMorphism( ext ) ) );
+        
+        zfunctor := ZFunctorObjectFromMorphismList( filtration_list, -top );
+        
+        zfunctor := ZFunctorObjectExtendedByInitialAndIdentity( zfunctor, -top, -bottom );
+        
+    else
+        
+        zfunctor := AsZFunctorObject( TensorProductOnObjects( filtration_list[1][2], ext ), -top );
+    
+        zfunctor := ZFunctorObjectExtendedByInitialAndIdentity( zfunctor, -top, -top );
+        
+    fi;
+    
+    ObjectifyWithAttributes( tate_filtration_object, TheTypeOfTateFiltrationObjectsUsingActions,
+                             DefiningGradedObject, heads,
+                             ActingObject, ext,
+                             TopStationaryDegree, top,
+                             BottomStationaryDegree, bottom,
+                             DescendingFilteredObject, AsDescendingFilteredObject( zfunctor )
+    );
+    
+    return tate_filtration_object;
+    
+end );
+
+##
+InstallMethod( TateFiltrationObjectUsingCoactions,
+              [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ],
+              
+  function( socles, v )
+    local tate_filtration_object, ext_dual, filtration_list, size, top, bottom, zfunctor;
+    
+    tate_filtration_object := rec( );
+    
+    ext_dual := ExteriorAlgebraDualUnderlyingObject( EModuleCoactionCategory( v ) );
+    
+    filtration_list := DegreeDescendingFiltration( socles );
+    
+    if IsEmpty( filtration_list ) then
+        
+        Error( "zero object is no accepted input" );
+        
+    fi;
+    
+    size := Size( filtration_list );
+    
+    top := filtration_list[1][1];
+    
+    bottom := filtration_list[size][1] - 1;
+    
+    if IsCapCategoryMorphism( filtration_list[1][2] ) then
+        
+        filtration_list := List( filtration_list, elem -> TensorProductOnMorphisms( IdentityMorphism( ext_dual ), elem[2] ) );
+        
+        zfunctor := ZFunctorObjectFromMorphismList( filtration_list, -top );
+        
+        zfunctor := ZFunctorObjectExtendedByInitialAndIdentity( zfunctor, -top, -bottom );
+        
+    else
+        
+        zfunctor := AsZFunctorObject( TensorProductOnObjects( ext_dual, filtration_list[1][2] ), -top );
+    
+        zfunctor := ZFunctorObjectExtendedByInitialAndIdentity( zfunctor, -top, -top );
+        
+    fi;
+    
+    ObjectifyWithAttributes( tate_filtration_object, TheTypeOfTateFiltrationObjectsUsingCoactions,
+                             DefiningGradedObject, socles,
+                             ActingObject, ext_dual,
+                             TopStationaryDegree, top,
+                             BottomStationaryDegree, bottom,
+                             DescendingFilteredObject, AsDescendingFilteredObject( zfunctor )
+    );
+    
+    return tate_filtration_object;
+    
+end );
+
+##
+InstallMethod( EmbeddingInSuperObjectOfTateFiltrationObjectOp,
+               [ IsTateFiltrationObjectUsingCoactions, IsInt ],
+               
+  function( object, p )
+    local ext_dual, graded_object, pair;
+    
+    ext_dual := ActingObject( object );
+    
+    graded_object := DefiningGradedObject( object );
+    
+    pair := DegreeDecompositionSplit( graded_object, p );
+    
+    return TensorProductOnMorphisms(
+             IdentityMorphism( ext_dual ),
+             InjectionOfCofactorOfDirectSum( [ pair[1], pair[2] ], 1 ) );
+    
+end );
+
+##
+InstallMethod( EmbeddingInSuperObjectOfTateFiltrationObjectOp,
+               [ IsTateFiltrationObjectUsingActions, IsInt ],
+               
+  function( object, p )
+    local ext, graded_object, pair;
+    
+    ext := ActingObject( object );
+    
+    graded_object := DefiningGradedObject( object );
+    
+    pair := DegreeDecompositionSplit( graded_object, p );
+    
+    return TensorProductOnMorphisms(
+             InjectionOfCofactorOfDirectSum( [ pair[1], pair[2] ], 1 ),
+             IdentityMorphism( ext ) );
+    
+end );
+
+##
+InstallMethod( ProjectionFromSuperObjectOfTateFiltrationObjectOp,
+               [ IsTateFiltrationObjectUsingCoactions, IsInt ],
+               
+  function( object, p )
+    local ext_dual, graded_object, pair;
+    
+    ext_dual := ActingObject( object );
+    
+    graded_object := DefiningGradedObject( object );
+    
+    pair := DegreeDecompositionSplit( graded_object, p );
+    
+    return TensorProductOnMorphisms(
+             IdentityMorphism( ext_dual ),
+             ProjectionInFactorOfDirectSum( [ pair[1], pair[2] ], 1 ) );
+    
+end );
+
+##
+InstallMethod( ProjectionFromSuperObjectOfTateFiltrationObjectOp,
+               [ IsTateFiltrationObjectUsingActions, IsInt ],
+               
+  function( object, p )
+    local ext, graded_object, pair;
+    
+    ext := ActingObject( object );
+    
+    graded_object := DefiningGradedObject( object );
+    
+    pair := DegreeDecompositionSplit( graded_object, p );
+    
+    return TensorProductOnMorphisms(
+             ProjectionInFactorOfDirectSum( [ pair[1], pair[2] ], 1 ),
+             IdentityMorphism( ext ) );
+    
+end );
+
 ####################################
 ##
 ## Operations
@@ -145,6 +359,16 @@ InstallMethod( ExteriorAlgebraAsModule,
              ),
              category
            );
+    
+end );
+
+##
+InstallMethod( ExteriorAlgebraUnderlyingObject,
+               [ IsEModuleActionCategory ],
+               
+  function( category )
+    
+    return Range( StructureMorphism( ExteriorAlgebraAsModule( category ) ) );
     
 end );
 
@@ -215,6 +439,16 @@ InstallMethod( ExteriorAlgebraDualAsModule,
              ),
              category
            );
+    
+end );
+
+##
+InstallMethod( ExteriorAlgebraDualUnderlyingObject,
+               [ IsEModuleCoactionCategory ],
+               
+  function( category )
+    
+    return Source( StructureMorphism( ExteriorAlgebraDualAsModule( category ) ) );
     
 end );
 

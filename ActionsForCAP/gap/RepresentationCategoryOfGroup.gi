@@ -406,60 +406,112 @@ InstallMethod( DegreeDecomposition,
 end );
 
 ##
-InstallMethod( DegreeDescendingFiltration,
-               [ IsRepresentationCategoryZGradedObject ],
+InstallMethod( DegreeDecompositionSplitOp,
+               [ IsRepresentationCategoryZGradedObject, IsInt ],
                
-  function( object )
-    local descending_decomposition, descending_filtration, i;
+  function( object, split )
+    local degree_decomposition, object1, object2;
     
-    descending_decomposition := Reversed( List( DegreeDecomposition( object ), elem -> elem[2] ) );
+    degree_decomposition := DegreeDecomposition( object );
     
-    if Size( descending_decomposition ) = 1 then
+    object1 := List( Filtered( degree_decomposition, elem -> elem[1] >= split ), pair -> pair[2] );
+    
+    object2 := List( Filtered( degree_decomposition, elem -> elem[1] < split ), pair -> pair[2] );
+    
+    if IsEmpty( object1 ) then
         
-        return [];
+        object1 := ZeroObject( CapCategory( object ) );
+        
+        object2 := object;
+        
+    elif IsEmpty( object2 ) then
+        
+        object1 := object;
+        
+        object2 := ZeroObject( CapCategory( object ) );
+        
+    else
+        
+        object1 := DirectSum( object1 );
+        
+        object2 := DirectSum( object2 );
         
     fi;
     
-    descending_filtration := 
-      [ InjectionOfCofactorOfDirectSum( [ descending_decomposition[1], descending_decomposition[2] ], 1 ) ];
-    
-    for i in [ 3 .. Size( descending_decomposition ) ] do
-        
-        Add( descending_filtration,
-          InjectionOfCofactorOfDirectSum( [ Range( descending_filtration[ i - 2 ] ), descending_decomposition[ i ] ], 1 ) );
-        
-    od;
-    
-    return descending_filtration;
+    return [ object1, object2 ]; ##[ >=p, <p ]
     
 end );
 
 ##
-InstallMethod( DegreeDescendingCofiltration,
-               [ IsRepresentationCategoryZGradedObject ],
+InstallMethod( DegreePartOp,
+               [ IsRepresentationCategoryZGradedObject, IsInt ],
                
-  function( object )
-    local descending_decomposition, descending_cofiltration, i;
+  function( object, p )
+    local degree_part;
     
-    descending_decomposition := Reversed( List( DegreeDecomposition( object ), elem -> elem[2] ) );
+    degree_part := First( DegreeDecomposition( object ), elem -> elem[1] = p );
     
-    if Size( descending_decomposition ) = 1 then
+    if degree_part = fail then
         
-        return [];
+        return fail;
         
     fi;
     
-    descending_cofiltration := 
-      [ ProjectionInFactorOfDirectSum( [ descending_decomposition[1], descending_decomposition[2] ], 1 ) ];
+    return degree_part[2];
     
-    for i in [ 3 .. Size( descending_decomposition ) ] do
+end );
+
+##
+InstallMethod( DegreeDescendingFiltration,
+               [ IsRepresentationCategoryZGradedObject ],
+               
+  function( object )
+    local descending_decomposition, size, descending_filtration, i, p, q, distance, id, j,
+          last_range, injection;
+    
+    descending_decomposition := Reversed( DegreeDecomposition( object ) );
+    
+    size := Size( descending_decomposition );
+    
+    if size < 2 then
         
-        Add( descending_cofiltration,
-          ProjectionInFactorOfDirectSum( [ Source( descending_cofiltration[ i - 2 ] ), descending_decomposition[ i ] ], 1 ) );
+        return descending_decomposition;
+        
+    fi;
+    
+    descending_filtration := [ ];
+    
+    last_range := descending_decomposition[1][2];
+    
+    for i in [ 1 .. size - 1 ] do
+        
+        p := descending_decomposition[i][1];
+        
+        q := descending_decomposition[i + 1][1];
+        
+        distance :=  p - q;
+        
+        if distance > 1 then
+            
+            id := IdentityMorphism( last_range );
+            
+            for j in [ 0 .. distance - 2 ] do
+                
+                Add( descending_filtration, [ p - j, id ] );
+                
+            od;
+            
+        fi;
+        
+        injection := InjectionOfCofactorOfDirectSum( [ last_range, descending_decomposition[i + 1][2] ], 1 );
+        
+        Add( descending_filtration, [ q + 1, injection ] );
+        
+        last_range := Range( injection );
         
     od;
     
-    return descending_cofiltration;
+    return descending_filtration;
     
 end );
 

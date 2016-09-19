@@ -73,11 +73,13 @@ DeclareAttribute( "DegreeDecomposition",
                   IsRepresentationCategoryZGradedObject );
 
 ##
-DeclareAttribute( "DegreeDescendingFiltration",
-                  IsRepresentationCategoryZGradedObject );
+KeyDependentOperation( "DegreeDecompositionSplit", IsRepresentationCategoryZGradedObject, IsInt, ReturnTrue );
 
 ##
-DeclareAttribute( "DegreeDescendingCofiltration",
+KeyDependentOperation( "DegreePart", IsRepresentationCategoryZGradedObject, IsInt, ReturnTrue );
+
+##
+DeclareAttribute( "DegreeDescendingFiltration",
                   IsRepresentationCategoryZGradedObject );
 
 ####################################
