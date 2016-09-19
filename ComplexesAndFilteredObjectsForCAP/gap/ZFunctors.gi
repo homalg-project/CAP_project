@@ -1432,3 +1432,44 @@ InstallMethod( AsZFunctorMorphismOp,
     return ZFunctorMorphism( source, morphism_func, range );
     
 end );
+
+## Use with caution, depends on GAPs stategy for closures
+InstallMethod( ZFunctorObjectByInitialMorphismAndRecursiveFunction,
+               [ IsCapCategoryMorphism, IsFunction, IsInt ],
+               
+  function( initial_morphism, recursion_function, position_of_initial_morphism )
+    local z_functor, category, differential_func, object_func;
+    
+    category := CapCategory( initial_morphism );
+    
+    z_functor := ZFunctorObject( ReturnTrue, ReturnTrue, CapCategory( initial_morphism ) );
+    
+    differential_func := function( i )
+        
+        if i = position_of_initial_morphism then
+            return initial_morphism;
+        elif i < position_of_initial_morphism then
+            return recursion_function( Differential( z_functor, i + 1 ) );
+        elif i = position_of_initial_morphism + 1 then
+            return ZeroMorphism( Range( initial_morphism ), ZeroObject( category ) );
+        else
+            return IdentityMorphism( ZeroObject( category ) );
+        fi;
+        
+    end;
+    
+    object_func := function( i )
+        
+        return Source( Differential( z_functor, i ) );
+        
+    end;
+    
+    z_functor!.differential_func := differential_func;
+    z_functor!.object_func := object_func;
+    
+    return z_functor;
+    
+end );
+    
+    
+

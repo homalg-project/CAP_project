@@ -88,3 +88,7 @@ DeclareOperation( "ZFunctorMorphismExtendedByInitialAndIdentity",
                   [ IsZFunctorMorphism, IsInt, IsInt ] );
 
 KeyDependentOperation( "AsZFunctorMorphism", IsCapCategoryMorphism, IsInt, RETURN_TRUE );
+
+
+DeclareOperation( "ZFunctorObjectByInitialMorphismAndRecursiveFunction",
+                  [ IsCapCategoryMorphism, IsFunction, IsInt ] );
