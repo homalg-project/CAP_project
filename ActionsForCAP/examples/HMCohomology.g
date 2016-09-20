@@ -6,7 +6,7 @@ irr := Irr( UnderlyingGroupForRepresentationCategory( RepG ) );
 
 v := RepresentationCategoryZGradedObject( -1, irr[6], RepG );
 
-h := RepresentationCategoryZGradedObject( 0, irr[5], RepG );
+h := RepresentationCategoryZGradedObject( 4, irr[5], RepG );
 
 cat := EModuleActionCategory( v );
 
