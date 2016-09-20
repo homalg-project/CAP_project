@@ -256,73 +256,77 @@ InstallMethod( GradedFreeRightPresentation,
     
 end );
 
-# ##############################################
-# ##
-# ## Non categorical methods
-# ##
-# ##############################################
-# 
-# ##
-# InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT,
-#                                   [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ],
-#                                   
-#   function( object_1, object_2 )
-#     local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
-#           free_module_source, free_module_range, differential;
-#     
-#     underlying_matrix_1 := UnderlyingMatrix( object_1 );
-#     
-#     transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
-#     
-#     identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
-#     
-#     differential_matrix := KroneckerMat( transposed_underlying_matrix_1, identity_matrix_2 );
-#     
-#     homalg_ring := UnderlyingHomalgRing( object_1 );
-#     
-#     free_module_source := FreeLeftPresentation( NrColumns( underlying_matrix_1 ), homalg_ring );
-#     
-#     free_module_range := FreeLeftPresentation( NrRows( underlying_matrix_1 ), homalg_ring );
-#     
-#     differential :=  PresentationMorphism( TensorProductOnObjects( free_module_source, object_2 ),
-#                                            differential_matrix,
-#                                            TensorProductOnObjects( free_module_range, object_2 )
-#                                          );
-#     
-#     return KernelEmbedding( differential );
-#     
-# end );
-# 
-# ##
-# InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT,
-#                                   [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ],
-#                                   
-#   function( object_1, object_2 )
-#     local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
-#           free_module_source, free_module_range, differential;
-#     
-#     underlying_matrix_1 := UnderlyingMatrix( object_1 );
-#     
-#     transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
-#     
-#     identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
-#     
-#     differential_matrix := KroneckerMat( transposed_underlying_matrix_1, identity_matrix_2 );
-#     
-#     homalg_ring := UnderlyingHomalgRing( object_1 );
-#     
-#     free_module_source := FreeRightPresentation( NrRows( underlying_matrix_1 ), homalg_ring );
-#     
-#     free_module_range := FreeRightPresentation( NrColumns( underlying_matrix_1 ), homalg_ring );
-#     
-#     differential :=  PresentationMorphism( TensorProductOnObjects( free_module_source, object_2 ),
-#                                            differential_matrix,
-#                                            TensorProductOnObjects( free_module_range, object_2 )
-#                                          );
-#     
-#     return KernelEmbedding( differential );
-#     
-# end );
+##############################################
+##
+## Non categorical methods
+##
+##############################################
+
+##
+InstallMethodWithCacheFromObject( INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT,
+                                  [ IsGradedLeftOrRightPresentation, IsGradedLeftOrRightPresentation ],
+                                  
+  function( object_1, object_2 )
+    local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
+          free_module_source, free_module_range, differential, kernel_degrees;
+    
+    underlying_matrix_1 := UnderlyingMatrix( object_1 );
+    
+    transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
+    
+    identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
+    
+    differential_matrix := KroneckerMat( transposed_underlying_matrix_1, identity_matrix_2 );
+    
+    homalg_ring := UnderlyingHomalgRing( object_1 );
+    
+    free_module_source := GradedFreeLeftPresentation( NrColumns( underlying_matrix_1 ), homalg_ring, - GeneratorDegrees( object_1 ) );
+    
+    kernel_degrees := NonTrivialDegreePerRow( underlying_matrix_1, GeneratorDegrees( object_1 ) );
+    
+    free_module_range := GradedFreeLeftPresentation( NrRows( underlying_matrix_1 ), homalg_ring, - kernel_degrees );
+    
+    differential :=  GradedPresentationMorphism( TensorProductOnObjects( free_module_source, object_2 ),
+                                           differential_matrix,
+                                           TensorProductOnObjects( free_module_range, object_2 )
+                                         );
+    
+    return KernelEmbedding( differential );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT,
+                                  [ IsGradedLeftOrRightPresentation, IsGradedLeftOrRightPresentation ],
+                                  
+  function( object_1, object_2 )
+    local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
+          free_module_source, free_module_range, differential, kernel_degrees;
+    
+    underlying_matrix_1 := UnderlyingMatrix( object_1 );
+    
+    transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
+    
+    identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
+    
+    differential_matrix := KroneckerMat( transposed_underlying_matrix_1, identity_matrix_2 );
+    
+    homalg_ring := UnderlyingHomalgRing( object_1 );
+    
+    free_module_source := GradedFreeRightPresentation( NrRows( underlying_matrix_1 ), homalg_ring, - GeneratorDegrees( object_1 ) );
+    
+    kernel_degrees := NonTrivialDegreePerColumn( underlying_matrix_1, GeneratorDegrees( object_1 ) );
+    
+    free_module_range := GradedFreeRightPresentation( NrColumns( underlying_matrix_1 ), homalg_ring, - kernel_degrees );
+    
+    differential :=  GradedPresentationMorphism( TensorProductOnObjects( free_module_source, object_2 ),
+                                           differential_matrix,
+                                           TensorProductOnObjects( free_module_range, object_2 )
+                                         );
+    
+    return KernelEmbedding( differential );
+    
+end );
 
 
 ####################################

@@ -171,14 +171,14 @@ DeclareAttribute( "GeneratorDegrees",
 DeclareAttribute( "UnderlyingMatrix",
                   IsGradedLeftOrRightPresentation );
 
-# ##############################################
-# ##
-# ## Non-categorical methods
-# ##
-# ##############################################
-# 
-# DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT",
-#                            [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ] );
-# 
-# DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT",
-#                            [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ] );
+##############################################
+##
+## Non-categorical methods
+##
+##############################################
+
+DeclareOperationWithCache( "INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT",
+                           [ IsGradedLeftOrRightPresentation, IsGradedLeftOrRightPresentation ] );
+
+DeclareOperationWithCache( "INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT",
+                           [ IsGradedLeftOrRightPresentation, IsGradedLeftOrRightPresentation ] );

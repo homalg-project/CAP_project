@@ -47,9 +47,9 @@ DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_LEFT" );
 
 DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_LEFT" );
 
-# DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_LEFT" );
-# 
-# DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_LEFT" );
+DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_LEFT" );
+
+DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_LEFT" );
 # 
 # DeclareGlobalFunction( "ADD_GRADED_BRAIDING_LEFT" );
 # 
@@ -66,9 +66,9 @@ DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT" );
 
 DeclareGlobalFunction( "ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_RIGHT" );
 
-# DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_RIGHT" );
-# 
-# DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_RIGHT" );
+DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_RIGHT" );
+
+DeclareGlobalFunction( "ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_RIGHT" );
 # 
 # DeclareGlobalFunction( "ADD_GRADED_BRAIDING_RIGHT" );
 # 

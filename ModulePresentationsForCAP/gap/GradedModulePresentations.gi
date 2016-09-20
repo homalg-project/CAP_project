@@ -169,9 +169,9 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
       
       ADD_GRADED_TENSOR_UNIT( category );
       
-#       ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_LEFT( category );
-#       
-#       ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_LEFT( category );
+      ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_LEFT( category );
+      
+      ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_LEFT( category );
 #       
 #       ADD_GRADED_BRAIDING_LEFT( category );
 #       
@@ -907,98 +907,98 @@ end );
 
 ## TODO: Graded internal hom
 # ##
-# InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_LEFT,
-#                       
-#   function( category )
-#     
-#     ## WARNING: The given function uses basic operations.
-#     AddInternalHomOnObjects( category,
-#       
-#       function( object_1, object_2 )
-#         
-#         return Source( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( object_1, object_2 ) );
-#     
-#     end );
-#     
-# end );
-# 
-# ##
-# InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_RIGHT,
-#                       
-#   function( category )
-#     
-#     ## WARNING: The given function uses basic operations.
-#     AddInternalHomOnObjects( category,
-#       
-#       function( object_1, object_2 )
-#         
-#         return Source( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( object_1, object_2 ) );
-#     
-#     end );
-#     
-# end );
-# 
-# ##
-# InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_LEFT,
-#                       
-#   function( category )
-#     
-#     ## WARNING: The given function uses basic operations.
-#     AddInternalHomOnMorphismsWithGivenInternalHoms( category,
-#       
-#       function( new_source, morphism_1, morphism_2, new_range )
-#         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
-#         
-#         internal_hom_embedding_source := 
-#           INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( Range( morphism_1 ), Source( morphism_2 ) );
-#         
-#         internal_hom_embedding_range :=
-#           INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( Source( morphism_1 ), Range( morphism_2 ) );
-#         
-#         morphism_between_tensor_products := 
-#           PresentationMorphism(
-#             Range( internal_hom_embedding_source ),
-#             KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
-#             Range( internal_hom_embedding_range )
-#           );
-#         
-#         return LiftAlongMonomorphism( internal_hom_embedding_range,
-#                                  PreCompose( internal_hom_embedding_source, morphism_between_tensor_products ) );
-#         
-#     end );
-# 
-# end );
-# 
-# ##
-# InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
-#                       
-#   function( category )
-#     
-#     ## WARNING: The given function uses basic operations.
-#     AddInternalHomOnMorphismsWithGivenInternalHoms( category,
-#       
-#       function( new_source, morphism_1, morphism_2, new_range )
-#         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
-#         
-#         internal_hom_embedding_source := 
-#           INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( Range( morphism_1 ), Source( morphism_2 ) );
-#         
-#         internal_hom_embedding_range :=
-#           INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( Source( morphism_1 ), Range( morphism_2 ) );
-#         
-#         morphism_between_tensor_products := 
-#           PresentationMorphism(
-#             Range( internal_hom_embedding_source ),
-#             KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
-#             Range( internal_hom_embedding_range )
-#           );
-#         
-#         return LiftAlongMonomorphism( internal_hom_embedding_range,
-#                                  PreCompose( internal_hom_embedding_source, morphism_between_tensor_products ) );
-#         
-#     end );
-# 
-# end );
+InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_LEFT,
+                      
+  function( category )
+    
+    ## WARNING: The given function uses basic operations.
+    AddInternalHomOnObjects( category,
+      
+      function( object_1, object_2 )
+        
+        return Source( INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( object_1, object_2 ) );
+    
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_RIGHT,
+                      
+  function( category )
+    
+    ## WARNING: The given function uses basic operations.
+    AddInternalHomOnObjects( category,
+      
+      function( object_1, object_2 )
+        
+        return Source( INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( object_1, object_2 ) );
+    
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_LEFT,
+                      
+  function( category )
+    
+    ## WARNING: The given function uses basic operations.
+    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
+      
+      function( new_source, morphism_1, morphism_2, new_range )
+        local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
+        
+        internal_hom_embedding_source := 
+          INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( Range( morphism_1 ), Source( morphism_2 ) );
+        
+        internal_hom_embedding_range :=
+          INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( Source( morphism_1 ), Range( morphism_2 ) );
+        
+        morphism_between_tensor_products := 
+          GradedPresentationMorphism(
+            Range( internal_hom_embedding_source ),
+            KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
+            Range( internal_hom_embedding_range )
+          );
+        
+        return LiftAlongMonomorphism( internal_hom_embedding_range,
+                                 PreCompose( internal_hom_embedding_source, morphism_between_tensor_products ) );
+        
+    end );
+
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
+                      
+  function( category )
+    
+    ## WARNING: The given function uses basic operations.
+    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
+      
+      function( new_source, morphism_1, morphism_2, new_range )
+        local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
+        
+        internal_hom_embedding_source := 
+          INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( Range( morphism_1 ), Source( morphism_2 ) );
+        
+        internal_hom_embedding_range :=
+          INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( Source( morphism_1 ), Range( morphism_2 ) );
+        
+        morphism_between_tensor_products := 
+          GradedPresentationMorphism(
+            Range( internal_hom_embedding_source ),
+            KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
+            Range( internal_hom_embedding_range )
+          );
+        
+        return LiftAlongMonomorphism( internal_hom_embedding_range,
+                                 PreCompose( internal_hom_embedding_source, morphism_between_tensor_products ) );
+        
+    end );
+
+end );
 # 
 # ##
 # InstallGlobalFunction( ADD_GRADED_BRAIDING_LEFT,
