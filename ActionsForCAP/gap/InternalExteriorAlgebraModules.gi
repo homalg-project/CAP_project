@@ -202,6 +202,8 @@ InstallMethodWithCache( TateFiltrationObjectUsingActions,
                              DescendingFilteredObject, AsDescendingFilteredObject( zfunctor )
     );
     
+    tate_filtration_object!.shift_to_socle := n;
+    
     return tate_filtration_object;
     
 end );
@@ -289,7 +291,7 @@ InstallMethod( EmbeddingInSuperObjectOfTateFiltrationObjectOp,
     
     graded_object := DefiningGradedObject( object );
     
-    pair := DegreeDecompositionSplit( graded_object, p );
+    pair := DegreeDecompositionSplit( graded_object, p - object!.shift_to_socle );
     
     return TensorProductOnMorphisms(
              InjectionOfCofactorOfDirectSum( [ pair[1], pair[2] ], 1 ),
@@ -327,7 +329,7 @@ InstallMethod( ProjectionFromSuperObjectOfTateFiltrationObjectOp,
     
     graded_object := DefiningGradedObject( object );
     
-    pair := DegreeDecompositionSplit( graded_object, p );
+    pair := DegreeDecompositionSplit( graded_object, p - object!.shift_to_socle );
     
     return TensorProductOnMorphisms(
              ProjectionInFactorOfDirectSum( [ pair[1], pair[2] ], 1 ),
@@ -917,10 +919,46 @@ InstallMethod( TateResolutionFilteredDifferentialOp,
       return PreCompose( [
         EmbeddingInSuperObjectOfTateFiltrationObject( source, i ),
         underlying_morphism,
-        ProjectionFromSuperObjectOfTateFiltrationObjectOp( range, i ) ] );
+        ProjectionFromSuperObjectOfTateFiltrationObject( range, i ) ] );
       
     end;
     
     return DescendingFilteredMorphism( DescendingFilteredObject( source ), morphism_func, DescendingFilteredObject( range ) );
+    
+end );
+
+##
+InstallMethod( FilteredTateResolution,
+               [ IsEModuleActionCategoryMorphism ],
+               
+  function( zeroth_differential )
+    local z_functor, category, object_function, differential_function;
+    
+    object_function := function( i )
+        
+        if i > 0 then
+            
+            return Range( TateResolutionFilteredDifferential( zeroth_differential, i - 1 ) );
+            
+        else
+            
+            return Source( TateResolutionFilteredDifferential( zeroth_differential, i ) );
+            
+        fi;
+    end;
+    
+    differential_function := function( i )
+        
+        return TateResolutionFilteredDifferential( zeroth_differential, i );
+        
+    end;
+    
+    category := CategoryOfDescendingFilteredObjects( CapCategory( UnderlyingMorphism( zeroth_differential ) ) );
+    
+    SetIsAdditiveCategory( category, true );
+    
+    z_functor := ZFunctorObject( object_function, differential_function, category );
+    
+    return AsCocomplex( z_functor );
     
 end );

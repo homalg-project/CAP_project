@@ -202,3 +202,5 @@ KeyDependentOperation( "TateResolutionDifferential", IsEModuleActionCategoryMorp
 ##
 KeyDependentOperation( "TateResolutionFilteredDifferential", IsEModuleActionCategoryMorphism, IsInt, ReturnTrue );
 
+##
+DeclareAttribute( "FilteredTateResolution", IsEModuleActionCategoryMorphism );
