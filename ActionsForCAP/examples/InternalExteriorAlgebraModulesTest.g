@@ -1,5 +1,7 @@
 LoadPackage( "ActionsForCAP" );
 
+LoadPackage( "HomologicalAlgebraForCAP" );
+
 RepG := RepresentationCategoryZGraded( SymmetricGroup( 4 ) );
 
 G := UnderlyingGroupForRepresentationCategory( RepG );
@@ -10,7 +12,9 @@ v := RepresentationCategoryZGradedObject( -1, irr[2], RepG );
 
 cat := EModuleActionCategory( v );
 
-F := FreeEModule( v, cat );
+h := RepresentationCategoryZGradedObject( 3, irr[2], RepG );
+
+F := FreeEModule( h, cat );
 
 chi := Support( ActionDomain( F ) )[8];
 
@@ -18,12 +22,9 @@ c := ComponentInclusionMorphism( ActionDomain( F ), chi );
 
 u := UniversalMorphismFromFreeModule( F, c );
 
-# catd := EModuleCoactionCategory( v );
-# 
-# C := CofreeEModule( v, catd );
-# 
-# psi := Support( CoactionDomain( C ) )[2];
-# 
-# c := ComponentProjectionMorphism( CoactionDomain( C ), psi );
-# 
-# u := UniversalMorphismToCofreeModule( C, c );
+t := FilteredTateResolution( u );
+
+s := SpectralSequenceEntryOfDescendingFilteredCocomplex( t, 2, 0, 1 );
+
+# Display( UnderlyingHonestObject( Source( s ) ) );
+# 1*(χ_[2, 3]) + 1*(χ_[2, 5])
