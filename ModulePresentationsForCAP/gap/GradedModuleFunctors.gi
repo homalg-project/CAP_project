@@ -9,12 +9,21 @@
 
 ##
 InstallMethodWithCache( ResolutionFunctor,
-                        [ IsCapCategory, IsFunction ],
+                        [ IsCapCategory, IsFunction, IsBool ],
                         
-  function( source_category, kernel_hull_function )
-    local functor, object_function, morphism_function, recursion_function;
+  function( source_category, kernel_hull_function, complex )
+    local functor, object_function, morphism_function, recursion_function, constructor, category_constructor;
     
-    functor := CapFunctor( Concatenation( "ResolutionFunctor for ", Name( source_category ) ), source_category, ComplexCategory( source_category ) );
+    
+    if complex then
+        constructor := AsComplex;
+        category_constructor := ComplexCategory;
+    else
+        constructor := AsCocomplex;
+        category_constructor := CocomplexCategory;
+    fi;
+    
+    functor := CapFunctor( Concatenation( "ResolutionFunctor for ", Name( source_category ) ), source_category, category_constructor( source_category ) );
     
     recursion_function := function( morphism )
       local kernel_emb, kernel, cover;
@@ -37,7 +46,7 @@ InstallMethodWithCache( ResolutionFunctor,
         
         z_functor := ZFunctorObjectByInitialMorphismAndRecursiveFunction( initial_morphism, recursion_function, 0 );
         
-        return AsComplex( z_functor );
+        return constructor( z_functor );
         
     end;
     
@@ -48,62 +57,255 @@ InstallMethodWithCache( ResolutionFunctor,
 end );
 
 ##
-InstallMethod( HorseShoeLemma,
-               [ IsCapComplex, IsCapComplex, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+InstallMethod( ResolutionFunctorToComplex,
+               [ IsCapCategory, IsFunction ],
                
-  function( kernel_resolution, cokernel_resolution, kernel_morphism, cokernel_morphism )
-    local resolution_complex, kernel_resolution_morphism, cokernel_resolution_morphism;
+  function( cat, func )
+    return ResolutionFunctor( cat, func, true );
+end );
+
+##
+InstallMethod( ResolutionFunctorToCocomplex,
+               [ IsCapCategory, IsFunction ],
+               
+  function( cat, func )
+    return ResolutionFunctor( cat, func, false );
+end );
+
+# InstallMethod( ResolutionToComplex,
+#                [ IsCapCategoryObject, IsFunction ],
+#                
+#   function( object, kernel_hull_function )
+#     local z_functor, complex;
+#     
+#     z_functor := ZFunctorObject( ReturnTrue, ReturnTrue, CapCategory( object ) );
+#     
+#     complex := AsComplex( z_functor );
+#     
+#     connection_morphism := kernel_hull_function( object );
+#     
+#     object_function := function( i )
+#         return Source( Differential( complex, i ) );
+#     end;
+#     
+#     morphism_function := function( i )
+#         
+#         if i = 0 then
+#             return UniversalMorphismIntoZeroObject( Source( connection_morphism ) );
+#         if i = -1 then
+#             return kernel_hull_function( KernelEmbedding( connection_morphism ) );
+#         if i < -1 then
+#             return kernel_hull_function( KernelEmbedding( Differential( complex, -i - 1 ) ) );
+#         else
+#             return IdentityMorphism( ZeroObject( CapCategory( object ) ) );
+#         fi;
+#         
+#     end;
+#     
+#     z_functor!.object_func := object_function;
+#     z_functor!.differential_func := morphism_function;
+#     
+#     return [ complex, connection_morphism ];
+#     
+# end );
+
+InstallMethod( FreeResolutionComplexOfModule,
+               [ IsCapCategoryObject ],
+               
+  function( module )
+    return ResolutionTo( module, CoverByFreeModule, true );
+end );
+
+InstallMethod( FreeResolutionCocomplexOfModule,
+               [ IsCapCategoryObject ],
+               
+  function( module )
+    return ResolutionTo( module, CoverByFreeModule, false );
+end );
+
+InstallMethod( ResolutionTo,
+               [ IsCapCategoryObject, IsFunction, IsBool ],
+               
+  function( object, kernel_hull_function, as_complex )
+    local z_functor, complex, object_function, morphism_function, complex_constructor, connection_morphism;
     
-    resolution_complex := DirectSum( kernel_resolution, cokernel_resolution );
+    z_functor := ZFunctorObject( ReturnTrue, ReturnTrue, CapCategory( object ) );
+    
+    if as_complex = true then
+        complex_constructor := AsComplex;
+    else
+        complex_constructor := AsCocomplex;
+    fi;
+    
+    complex := complex_constructor( z_functor );
+    
+    connection_morphism := kernel_hull_function( object );
+    
+    object_function := function( i )
+        return Source( Differential( z_functor, i ) );
+    end;
+    
+    morphism_function := function( i )
+        local kernel;
+        
+        if i = 0 then
+            return UniversalMorphismIntoZeroObject( Source( connection_morphism ) );
+        elif i = -1 then
+            kernel := KernelEmbedding( connection_morphism );
+            return PreCompose( kernel_hull_function( Source( kernel ) ), kernel );
+        elif i < -1 then
+            kernel := KernelEmbedding( Differential( z_functor, i + 1 ) );
+            return PreCompose( kernel_hull_function( Source( kernel ) ), kernel );
+        else
+            return IdentityMorphism( ZeroObject( CapCategory( object ) ) );
+        fi;
+        
+    end;
+    
+    z_functor!.object_func := object_function;
+    z_functor!.differential_func := morphism_function;
+    
+    return [ complex, connection_morphism ];
+    
+end );
+
+##
+InstallMethod( HorseShoeLemma,
+               [ IsCapCocomplex, IsCapCocomplex, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( left_complex, right_complex, eps_prime, iota, pi, eps_2prime )
+    local middle_z_functor, middle_complex, kernel_resolution_morphism, cokernel_resolution_morphism, object_function,
+          helper_function, morphism_function;
+    
+    middle_z_functor := ZFunctorObject( ReturnTrue, ReturnTrue, CapCategory( eps_prime ) );
+    middle_complex := AsCocomplex( middle_z_functor );
     
     kernel_resolution_morphism := function( i )
         
-        return InjectionOfCofactorOfDirectSum( [ kernel_resolution[ i ], cokernel_resolution[ i ] ], 1 );
+        return InjectionOfCofactorOfDirectSum( [ left_complex[ i ], right_complex[ i ] ], 1 );
         
     end;
     
     cokernel_resolution_morphism := function( i )
         
-        return ProjectionInFactorOfDirectSum( [ kernel_resolution[ i ], cokernel_resolution[ i ] ], 2 );
+        return ProjectionInFactorOfDirectSum( [ left_complex[ i ], right_complex[ i ] ], 2 );
         
     end;
     
-    kernel_resolution_morphism := ChainMap( kernel_resolution, kernel_resolution_morphism, resolution_complex );
+    kernel_resolution_morphism := CochainMap( left_complex, kernel_resolution_morphism, middle_complex );
     
-    cokernel_resolution_morphism := ChainMap( resolution_complex, cokernel_resolution_morphism, cokernel_resolution );
+    cokernel_resolution_morphism := CochainMap( middle_complex, cokernel_resolution_morphism, right_complex );
     
-    return [ resolution_complex, kernel_resolution_morphism, cokernel_resolution_morphism ];
+    object_function := function( i )
+            return DirectSum( [ left_complex[ i ], right_complex[ i ] ] );
+    end;
+    
+    helper_function := function( eps_prime, eps, eps_2prime, pi, iota, i )
+        local ker_eps_prime, ker_eps, ker_eps_2prime, eps_prime_1_to_ker, eps_2prime_1_to_ker,
+              iota0, pi0, ker_eps_prime_to_eps, ker_eps_to_eps_2prime, first_morphism, second_morphism,
+              sum_morphism, differential_morphism;
+        
+        ker_eps_prime := KernelEmbedding( eps_prime );
+        ker_eps := KernelEmbedding( eps );
+        ker_eps_2prime := KernelEmbedding( eps_2prime );
+        
+        eps_prime_1_to_ker := KernelLift( eps_prime, Differential( left_complex, i ) );
+        eps_2prime_1_to_ker := KernelLift( eps_2prime, Differential( right_complex, i ) );
+        
+        iota0 := InjectionOfCofactorOfDirectSum( [ left_complex[ i + 1 ], right_complex[ i + 1 ] ], 1 );
+        pi0 := ProjectionInFactorOfDirectSum( [ left_complex[ i + 1 ], right_complex[ i + 1 ] ], 2 );
+        
+        ker_eps_prime_to_eps := KernelLift( eps, PreCompose( ker_eps_prime, iota0 ) );
+        ker_eps_to_eps_2prime := KernelLift( eps_2prime , PreCompose( ker_eps, pi0 ) );
+        
+        first_morphism := PreCompose( eps_prime_1_to_ker, ker_eps_prime_to_eps );
+        second_morphism := Lift( eps_2prime_1_to_ker, ker_eps_to_eps_2prime );
+        
+        sum_morphism := UniversalMorphismFromDirectSum( [ first_morphism, second_morphism ] );
+        
+        differential_morphism := PreCompose( sum_morphism, ker_eps );
+        
+        return differential_morphism;
+        
+    end;
+        
+    morphism_function := function( i )
+        local eps;
+        
+        if i > 0 then
+            return IdentityMorphism( ZeroObject( CapCategory( eps_prime ) ) );
+        fi;
+        
+        if i = 0 then
+            return UniversalMorphismIntoZeroObject( middle_complex[ 0 ] );
+        fi;
+        
+        if i = -1 then
+            
+            eps := Lift( eps_2prime, pi );
+            eps := UniversalMorphismFromDirectSum( [ PreCompose( eps_prime, iota ), eps ] );
+            
+            return helper_function( eps_prime, eps, eps_2prime, pi, iota, -1 );
+            
+        else
+            
+            return helper_function( Differential( left_complex, i + 1 ),
+                                    Differential( middle_complex, i + 1 ),
+                                    Differential( right_complex, i + 1 ),
+                                    kernel_resolution_morphism[ i + 1 ],
+                                    cokernel_resolution_morphism[ i + 1 ],
+                                    i );
+            
+        fi;
+        
+    end;
+    
+    middle_z_functor!.object_func := object_function;
+    middle_z_functor!.differential_func := morphism_function;
+    
+    return [ middle_complex, kernel_resolution_morphism, cokernel_resolution_morphism ];
     
 end );
 
 ##
 InstallMethod( CartanEilenbergResolution,
-               [ IsCapComplex, IsCapFunctor ],
+               [ IsCapCocomplex, IsFunction ],
                
-  function( complex, projective_resolution_functor )
-    local object_function, morphism_function, bicomplex, helper_function;
+  function( complex, projective_resolution_function )
+    local object_function, morphism_function, bicomplex, helper_function, bicomplex_z_func;
+    
+    bicomplex_z_func := ZFunctorObject( ReturnTrue, ReturnTrue, CapCategory( complex ) );
+    bicomplex := AsCocomplex( bicomplex_z_func );
     
     helper_function := function( i )
-        local delta_ip1, delta_i, first_morphism, second_morphism, first_complex,
-              second_complex, horse_shoe, third_morphism, fourth_morphism, third_complex, second_horse_shoe;
+        local delta_im1, delta_i, first_morphism, second_morphism, first_complex,
+              second_complex, horse_shoe, third_morphism, fourth_morphism, third_complex, second_horse_shoe,
+              eps;
         
-        delta_ip1 := Differential( complex, i + 1 );
+        delta_im1 := Differential( complex, i - 1 );
         delta_i := Differential( complex, i );
         
-        first_morphism := KernelLift( delta_i, ImageEmbedding( delta_ip1 ) );
-        second_morphism := PreCompose( KernelEmbedding( delta_i ), CokernelProjection( delta_ip1 ) );
+        first_morphism := KernelLift( delta_i, ImageEmbedding( delta_im1 ) );
+        second_morphism := CokernelProjection( first_morphism );
         
-        first_complex := ApplyFunctor( projective_resolution_functor, Source( first_morphism ) );
-        second_complex := ApplyFunctor( projective_resolution_functor, Range( second_morphism ) );
+        first_complex := projective_resolution_function( Source( first_morphism ) );
         
-        horse_shoe := HorseShoeLemma( first_complex, second_complex, first_morphism, second_morphism );
+        second_complex := projective_resolution_function( Range( second_morphism ) );
+        
+        horse_shoe := HorseShoeLemma( first_complex[ 1 ], second_complex[ 1 ],
+                                      first_complex[ 2 ],
+                                      first_morphism, second_morphism,
+                                      second_complex[ 2 ] );
         
         third_morphism := KernelEmbedding( delta_i );
         fourth_morphism := CoastrictionToImage( delta_i );
         
-        third_complex := ApplyFunctor( projective_resolution_functor, Range( fourth_morphism ) );
+        eps := Lift( second_complex[ 2 ], second_morphism );
+        eps := UniversalMorphismFromDirectSum( [ PreCompose( first_complex[ 2 ], first_morphism ), eps ] );
         
-        second_horse_shoe := HorseShoeLemma( horse_shoe[ 1 ], third_complex, third_morphism, fourth_morphism );
+        third_complex := projective_resolution_function( Range( fourth_morphism ) );
+        
+        second_horse_shoe := HorseShoeLemma( horse_shoe[ 1 ], third_complex[ 1 ], eps, third_morphism, fourth_morphism, third_complex[ 2 ] );
         
         return [ horse_shoe, second_horse_shoe ];
         
@@ -129,16 +331,84 @@ InstallMethod( CartanEilenbergResolution,
     morphism_function := function( i )
       local those_boots1, those_boots2;
         
-        those_boots1 := helper_function( i + 1 );
-        those_boots2 := helper_function( i );
+        those_boots1 := helper_function( i );
+        those_boots2 := helper_function( i + 1 );
         
-        return PreCompose( those_boots2[ 2 ][ 3 ], PreCompose( those_boots1[ 1 ][ 1 ], those_boots1[ 2 ][ 1 ] ) );
+        return PreCompose( those_boots1[ 2 ][ 3 ], PreCompose( those_boots2[ 1 ][ 2 ], those_boots2[ 2 ][ 2 ] ) );
         
     end;
     
-    bicomplex := ZFunctorObject( i -> object_function( - i ), i -> morphism_function( - i ), CapCategory( complex ) );
+    bicomplex_z_func!.object_func := object_function;
+    bicomplex_z_func!.differential_func := morphism_function;
     
-    return AsComplex( bicomplex );
+    return bicomplex;
+    
+end );
+
+InstallMethod( InternalHomOnComplexWithObject,
+               [ IsCapComplex, IsCapCategoryObject ],
+  
+  function( complex, object )
+    local object_func, morphism_func, id_of_object;
+    
+    id_of_object := IdentityMorphism( object );
+    
+    object_func := i -> InternalHomOnObjects( complex[ i ], object );
+    
+    morphism_func := i -> InternalHomOnMorphisms( Differential( complex, i + 1 ), id_of_object );
+    
+    return AsCocomplex( ZFunctorObject( object_func, morphism_func, CapCategory( object ) ) );
+    
+end );
+
+InstallMethod( InternalHomOnCocomplexWithObject,
+               [ IsCapCocomplex, IsCapCategoryObject ],
+               
+  function( cocomplex, object )
+    local object_func, morphism_func, id_of_object;
+    
+    id_of_object := IdentityMorphism( object );
+    
+    object_func := i -> InternalHomOnObjects( cocomplex[ - i ], object );
+    
+    morphism_func := i -> InternalHomOnMorphisms( Differential( cocomplex, -i - 1 ), id_of_object );
+    
+    return AsComplex( ZFunctorObject( object_func, morphism_func, CapCategory( object ) ) );
+    
+end );
+
+InstallMethod( InternalHomOnCochainMapWithObject,
+               [ IsCapCochainMap, IsCapComplex, IsCapComplex, IsCapCategoryObject ],
+               
+  function( cochain_map, new_source, new_range, object )
+    local id_of_object, morphism_func;
+    
+    id_of_object := IdentityMorphism( object );
+    
+    morphism_func := i -> InternalHomOnMorphisms( cochain_map[ i ], id_of_object );
+    
+    return ChainMap( new_source, morphism_func, new_range );
+    
+end );
+
+InstallMethod( InternalHomOnCocomplexCocomplexWithObject,
+               [ IsCapCocomplex, IsCapCategoryObject ],
+               
+  function( cocomplex, object )
+    local object_func, morphism_func, id_of_object, new_complex, new_z_functor;
+    
+    new_z_functor := ZFunctorObject( ReturnTrue, ReturnTrue, ComplexCategory( CapCategory( object ) ) );
+    new_complex := AsComplex( new_z_functor );
+    
+    object_func := i -> InternalHomOnCocomplexWithObject( cocomplex[ - i ], object );
+    
+    new_z_functor!.object_func := object_func;
+    
+    morphism_func := i -> InternalHomOnCochainMapWithObject( Differential( cocomplex, -i + 1 ), new_complex[ i ], new_complex[ i - 1 ], object );
+    
+    new_z_functor!.differential_func := morphism_func;
+    
+    return new_complex;
     
 end );
 

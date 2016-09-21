@@ -8,13 +8,42 @@
 #############################################################################
 
 DeclareOperation( "ResolutionFunctor",
+                  [ IsCapCategory, IsFunction, IsBool ] );
+
+DeclareOperation( "ResolutionFunctorToComplex",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "ResolutionFunctorToCocomplex",
                   [ IsCapCategory, IsFunction ] );
 
 DeclareOperation( "HorseShoeLemma",
-                  [ IsCapComplex, IsCapComplex, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+                  [ IsCapCocomplex, IsCapCocomplex, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 DeclareOperation( "CartanEilenbergResolution",
                   [ IsCapComplex, IsCapFunctor ] );
 
+DeclareOperation( "InternalHomOnComplexWithObject",
+                  [ IsCapComplex, IsCapCategoryObject ] );
+
+DeclareOperation( "CartanEilenbergResolution",
+                  [ IsCapCocomplex, IsFunction ] );
+
+DeclareOperation( "InternalHomOnCocomplexWithObject",
+                  [ IsCapCocomplex, IsCapCategoryObject ] );
+
+DeclareOperation( "InternalHomOnCochainMapWithObject",
+                  [ IsCapCochainMap, IsCapComplex, IsCapComplex, IsCapCategoryObject ] );
+
+DeclareOperation( "InternalHomOnCocomplexCocomplexWithObject",
+                  [ IsCapCocomplex, IsCapCategoryObject ] );
+
+DeclareAttribute( "FreeResolutionComplexOfModule",
+                  IsCapCategoryObject );
+
+DeclareAttribute( "FreeResolutionCocomplexOfModule",
+                  IsCapCategoryObject );
+
+DeclareOperation( "ResolutionTo",
+                  [ IsCapCategoryObject, IsFunction, IsBool ] );
 
 
