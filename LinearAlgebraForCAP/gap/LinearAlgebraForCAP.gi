@@ -219,17 +219,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddDirectSumFunctorial( category,
-      function( diagram )
-        local source, range, homalg_matrix;
+    AddDirectSumFunctorialWithGivenDirectSums( category,
+      function( direct_sum_source, diagram, direct_sum_range )
         
-        source := DirectSum( List( diagram, Source ) );
-        
-        range := DirectSum( List( diagram, Range ) );
-        
-        homalg_matrix := DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) );
-        
-        return VectorSpaceMorphism( source, homalg_matrix, range );
+        return VectorSpaceMorphism( direct_sum_source,
+                                    DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) ), 
+                                    direct_sum_range );
         
     end );
     

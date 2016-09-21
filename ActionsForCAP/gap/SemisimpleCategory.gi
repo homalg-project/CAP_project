@@ -692,13 +692,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end );
     
     ##
-    AddDirectSumFunctorial( category,
-      function( diagram )
-        local source, range, support, irr, irr_diagram, morphism_list;
-        
-        source := DirectSum( List( diagram, Source ) );
-        
-        range := DirectSum( List( diagram, Range ) );
+    AddDirectSumFunctorialWithGivenDirectSums( category,
+      function( source, diagram, range )
+        local support, irr, irr_diagram, morphism_list;
         
         support := Set( Concatenation( Support( source ), Support( range ) ) );
         

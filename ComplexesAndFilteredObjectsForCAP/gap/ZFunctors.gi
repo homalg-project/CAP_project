@@ -1032,7 +1032,7 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         [ [ "UniversalMorphismFromCoproduct" ],
           ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "DirectSum", "DirectSumFunctorial" ], ADD_DIRECT_SUM_IN_Z_FUNCTORS ],
+        [ [ "DirectSum", "DirectSumFunctorialWithGivenDirectSums" ], ADD_DIRECT_SUM_IN_Z_FUNCTORS ],
         
         [ [ "FiberProduct", "FiberProductFunctorial" ], ADD_FIBER_PRODUCT_IN_Z_FUNCTORS ],
         

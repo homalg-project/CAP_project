@@ -139,7 +139,7 @@ InstallMethod( LeftCoactionsCategory,
     ## Left coaction for DirectSum
     preconditions := [ "LeftDistributivityFactoringWithGivenObjects",
                        "DirectSum", #belongs to LeftDistributivityFactoringWithGivenObjects
-                       "DirectSumFunctorial",
+                       "DirectSumFunctorialWithGivenDirectSums",
                        "PreCompose" ];
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
@@ -369,7 +369,7 @@ InstallMethod( RightCoactionsCategory,
     ## Right coaction for DirectSum
     preconditions := [ "RightDistributivityFactoringWithGivenObjects",
                        "DirectSum", #belongs to RightDistributivityFactoringWithGivenObjects
-                       "DirectSumFunctorial",
+                       "DirectSumFunctorialWithGivenDirectSums",
                        "PreCompose" ];
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then

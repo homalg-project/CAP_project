@@ -1149,12 +1149,12 @@ AddDerivationToCAP( DirectProductFunctorial,
 end : Description := "DirectProductFunctorial using universality of direct product" );
 
 ##
-AddDerivationToCAP( DirectSumFunctorial,
+AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
                     [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
                       [ ProjectionInFactorOfDirectSum, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismIntoDirectSum, 1 ] ],
                  
-  function( morphism_list )
+  function( direct_sum_source, morphism_list, direct_sum_range )
     local direct_sum_diagram, source, diagram;
         
         direct_sum_diagram := List( morphism_list, mor -> Source( mor ) );
@@ -1166,15 +1166,15 @@ AddDerivationToCAP( DirectSumFunctorial,
         return UniversalMorphismIntoDirectSum( diagram, source );
     
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "DirectSumFunctorial using the universal morphism into direct sum");
+      Description := "DirectSumFunctorialWithGivenDirectSums using the universal morphism into direct sum");
 
 ##
-AddDerivationToCAP( DirectSumFunctorial,
+AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
                     [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
                       [ InjectionOfCofactorOfDirectSum, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismFromDirectSum, 1 ] ], 
                                   
-  function( morphism_list )
+  function( direct_sum_source, morphism_list, direct_sum_range )
     local direct_sum_diagram, sink, diagram;
         
         direct_sum_diagram := List( morphism_list, mor -> Range( mor ) );
@@ -1186,7 +1186,7 @@ AddDerivationToCAP( DirectSumFunctorial,
         return UniversalMorphismFromDirectSum( diagram, sink );
     
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "DirectSumFunctorial using the universal morphism from direct sum" );
+      Description := "DirectSumFunctorialWithGivenDirectSums using the universal morphism from direct sum" );
 
 
 ##

@@ -1672,34 +1672,35 @@ DeclareOperation( "DirectSumFunctorial",
                   [ IsList ] );
 
 #! @Description
+#! The arguments are an object $d_1 = \bigoplus_{i=1}^n S_i$,
+#! a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$,
+#! and an object $d_2 = \bigoplus_{i=1}^n S_i'$.
+#! The output is a morphism
+#! $d_1 \rightarrow d_2$
+#! given by the functorality of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}( d_1, d_2 )$
+#! @Arguments L
+DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>DirectSumFunctorial</C>.
 #! $F: (( \mu_1, \dots, \mu_n )) \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddDirectSumFunctorial",
+DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddDirectSumFunctorial",
+DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddDirectSumFunctorial",
+DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddDirectSumFunctorial",
+DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
                   [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$
-#! and a method selection morphism.
-#! The output is a morphism
-#! $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$
-#! given by the functorality of the direct sum.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigoplus_{i=1}^n S_i' )$
-#! @Arguments L, method_selection_morphism
-DeclareOperation( "DirectSumFunctorialOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 ## WasCreatedAs Filter
 

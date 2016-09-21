@@ -135,7 +135,7 @@ InstallMethod( LeftActionsCategory,
     ## Left action for DirectSum
     preconditions := [ "LeftDistributivityExpandingWithGivenObjects",
                        "DirectSum", #belongs to LeftDistributivityExpandingWithGivenObjects
-                       "DirectSumFunctorial",
+                       "DirectSumFunctorialWithGivenDirectSums",
                        "PreCompose" ];
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
@@ -364,7 +364,7 @@ InstallMethod( RightActionsCategory,
     ## Right action for DirectSum
     preconditions := [ "RightDistributivityExpandingWithGivenObjects",
                        "DirectSum", #belongs to RightDistributivityExpandingWithGivenObjects
-                       "DirectSumFunctorial",
+                       "DirectSumFunctorialWithGivenDirectSums",
                        "PreCompose" ];
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then

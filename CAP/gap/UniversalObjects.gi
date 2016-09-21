@@ -531,24 +531,22 @@ InstallMethod( IsomorphismFromDirectSumToCoproduct,
     
 end );
 
+##
+InstallMethod( DirectSumFunctorial,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return DirectSumFunctorialWithGivenDirectSums(
+             DirectSum( List( diagram, Source ) ), diagram, DirectSum( List( diagram, Range ) )
+           );
+    
+end );
+
 ####################################
 ## Add methods
 ####################################
 
-
-####################################
-## Functorial operations
-####################################
-
-##
-InstallMethod( DirectSumFunctorial,
-               [ IsList ],
-                                  
-  function( morphism_list )
-    
-    return DirectSumFunctorialOp( morphism_list, morphism_list[1] );
-    
-end );
 
 ####################################
 ## Categorical methods

@@ -351,7 +351,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
                        "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
                        "UniversalMorphismFromDirectSum",
                        "UniversalMorphismIntoDirectSum",
-                       "DirectSumFunctorial",
+                       "DirectSumFunctorialWithGivenDirectSums",
                        "KernelEmbedding",
                        "CokernelProjection" ];
     

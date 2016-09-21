@@ -2136,14 +2136,12 @@ CoproductFunctorial := rec(
   dual_operation := "DirectProductFunctorial",
   no_with_given := true ),
 
-DirectSumFunctorial := rec(
-  installation_name := "DirectSumFunctorialOp",
-  argument_list := [ 1 ],
-  filter_list := [ IsList, "morphism" ],
-  io_type := [ [ "L" ], [ "S", "Sp" ] ],
-  cache_name := "DirectSumFunctorialOp",
-  return_type := "morphism",
-  no_with_given := true ),
+DirectSumFunctorialWithGivenDirectSums := rec(
+  installation_name := "DirectSumFunctorialWithGivenDirectSums",
+  filter_list := [ "object", IsList, "object" ],
+  io_type := [ [ "d1", "L", "d2" ], [ "d1", "d2" ] ],
+  cache_name := "DirectSumFunctorialWithGivenDirectSums",
+  return_type := "morphism" ),
 
 FiberProductFunctorial := rec(
   installation_name := "FiberProductFunctorialOp",
