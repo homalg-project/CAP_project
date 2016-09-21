@@ -2701,37 +2701,38 @@ DeclareOperation( "FiberProductFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>FiberProductFunctorial</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} ) \mapsto (\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddFiberProductFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddFiberProductFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddFiberProductFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddFiberProductFunctorial",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a list of triples of morphisms
+#! The arguments are an object $s = \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} )$,
+#! a list of triples of morphisms
 #! $L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$,
-#! and a morphism for method selection.
+#! and an object $r = \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$.
 #! The output is the morphism
-#! $\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$
+#! $s \rightarrow r$
 #! given by the functorality of the fiber product.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ))$
-#! @Arguments L, method_selection_morphism
-DeclareOperation( "FiberProductFunctorialOp",
-                  [ IsList, IsCapCategoryMorphism ] );
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, L, r
+DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>FiberProductFunctorialWithGivenFiberProducts</C>.
+#! $F: ( \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n}, \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) )$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
 
@@ -3158,37 +3159,38 @@ DeclareOperation( "PushoutFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>PushoutFunctorial</C>.
-#! $F: ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPushoutFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPushoutFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPushoutFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPushoutFunctorial",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The argument is a list
+#! The arguments are an object $s = \mathrm{Pushout}( ( \beta_i )_{i=1}^n )$,
+#! a list
 #! $L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$,
-#! and a morphism for method selection.
+#! and an object $r = \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$.
 #! The output is the morphism
-#! $\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$
+#! $s \rightarrow r$
 #! given by the functorality of the pushout.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n ), \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ))$
-#! @Arguments L, method_selection_morphism
-DeclareOperation( "PushoutFunctorialOp",
-                  [ IsList, IsCapCategoryMorphism ] );
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, L, r
+DeclareOperation( "PushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>PushoutFunctorial</C>.
+#! $F: ( \mathrm{Pushout}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n}, \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) )$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategory, IsList ] );
 
 
 ## WasCreatedAs Filter

@@ -1034,7 +1034,7 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "DirectSum", "DirectSumFunctorialWithGivenDirectSums" ], ADD_DIRECT_SUM_IN_Z_FUNCTORS ],
         
-        [ [ "FiberProduct", "FiberProductFunctorial" ], ADD_FIBER_PRODUCT_IN_Z_FUNCTORS ],
+        [ [ "FiberProduct", "FiberProductFunctorialWithGivenFiberProducts" ], ADD_FIBER_PRODUCT_IN_Z_FUNCTORS ],
         
         [ [ "ProjectionInFactorOfFiberProduct" ],
           ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS ],
@@ -1042,7 +1042,7 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         [ [ "UniversalMorphismIntoFiberProduct" ],
           ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS ],
         
-        [ [ "Pushout", "PushoutFunctorial" ], ADD_PUSHOUT_IN_Z_FUNCTORS ],
+        [ [ "Pushout", "PushoutFunctorialWithGivenPushouts" ], ADD_PUSHOUT_IN_Z_FUNCTORS ],
         
         [ [ "InjectionOfCofactorOfPushout" ],
           ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS ],

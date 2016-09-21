@@ -859,7 +859,11 @@ InstallMethod( FiberProductFunctorial,
                
   function( morphism_of_morphisms )
       
-      return FiberProductFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
+      return FiberProductFunctorialWithGivenFiberProducts(
+               FiberProduct( List( morphism_of_morphisms, elem -> elem[1] ) ),
+               morphism_of_morphisms,
+               FiberProduct( List( morphism_of_morphisms, elem -> elem[3] ) )
+             );
       
 end );
 
@@ -964,7 +968,11 @@ InstallMethod( PushoutFunctorial,
                
   function( morphism_of_morphisms )
       
-      return PushoutFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
+      return PushoutFunctorialWithGivenPushouts( 
+               Pushout( List( morphism_of_morphisms, elem -> elem[1] ) ),
+               morphism_of_morphisms,
+               Pushout( List( morphism_of_morphisms, elem -> elem[3] ) )
+             );
       
 end );
 

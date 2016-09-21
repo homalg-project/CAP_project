@@ -2137,25 +2137,21 @@ DirectSumFunctorialWithGivenDirectSums := rec(
   cache_name := "DirectSumFunctorialWithGivenDirectSums",
   return_type := "morphism" ),
 
-FiberProductFunctorial := rec(
-  installation_name := "FiberProductFunctorialOp",
-  argument_list := [ 1 ],
-  filter_list := [ IsList, "morphism" ],
-  io_type := [ [ "L" ], [ "P", "Pp" ] ],
-  cache_name := "FiberProductFunctorialOp",
+FiberProductFunctorialWithGivenFiberProducts := rec(
+  installation_name := "FiberProductFunctorialWithGivenFiberProducts",
+  filter_list := [ "object", IsList, "object" ],
+  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
+  cache_name := "FiberProductFunctorialWithGivenFiberProducts",
   return_type := "morphism",
-  dual_operation := "PushoutFunctorial",
-  no_with_given := true ),
+  dual_operation := "PushoutFunctorialWithGivenPushouts" ),
 
-PushoutFunctorial := rec(
-  installation_name := "PushoutFunctorialOp",
-  argument_list := [ 1 ],
-  filter_list := [ IsList, "morphism" ],
-  io_type := [ [ "L" ], [ "I", "Ip" ] ],
-  cache_name := "PushoutFunctorialOp",
+PushoutFunctorialWithGivenPushouts := rec(
+  installation_name := "PushoutFunctorialWithGivenPushouts",
+  filter_list := [ "object", IsList, "object" ],
+  io_type := [ [ "I", "L", "Ip" ], [ "I", "Ip" ] ],
+  cache_name := "PushoutFunctorialWithGivenPushouts",
   return_type := "morphism",
-  dual_operation := "FiberProductFunctorial",
-  no_with_given := true ),
+  dual_operation := "FiberProductFunctorialWithGivenFiberProducts" ),
 
 HorizontalPreCompose := rec(
   installation_name := "HorizontalPreCompose",

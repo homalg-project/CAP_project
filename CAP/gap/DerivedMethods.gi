@@ -1282,12 +1282,12 @@ end : Description := "DirectSumDiagonalDifference using the operations defining 
 
 
 ##
-AddDerivationToCAP( FiberProductFunctorial,
+AddDerivationToCAP( FiberProductFunctorialWithGivenFiberProducts,
                     [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the right number
                       [ ProjectionInFactorOfFiberProduct, 2 ], ## Length( morphism_of_morphisms ) would be the right number,
                       [ UniversalMorphismIntoFiberProduct, 1 ] ],
                                   
-  function( morphism_of_morphisms )
+  function( fiber_product_source, morphism_of_morphisms, fiber_product_range )
     local pullback_diagram, source, diagram;
         
         pullback_diagram := List( morphism_of_morphisms, mor -> mor[1] );
@@ -1298,7 +1298,7 @@ AddDerivationToCAP( FiberProductFunctorial,
         
         return UniversalMorphismIntoFiberProduct( diagram, source );
         
-end : Description := "FiberProductFunctorial using the universality of the fiber product" );
+end : Description := "FiberProductFunctorialWithGivenFiberProducts using the universality of the fiber product" );
 
 ##
 AddDerivationToCAP( DirectSumCodiagonalDifference,
@@ -1333,12 +1333,12 @@ end : Description := "DirectSumCodiagonalDifference using the operations definin
 
 
 ##
-AddDerivationToCAP( PushoutFunctorial,
+AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,
                     [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the correct number here
                       [ InjectionOfCofactorOfPushout, 2 ], ## Length( morphism_of_morphisms ) would be the correct number here
                       [ UniversalMorphismFromPushout, 1 ] ],
                                   
-  function( morphism_of_morphisms )
+  function( pushout_source, morphism_of_morphisms, pushout_range )
     local pushout_diagram, sink, diagram;
         
         pushout_diagram := List( morphism_of_morphisms, mor -> mor[3] );
@@ -1349,7 +1349,7 @@ AddDerivationToCAP( PushoutFunctorial,
         
         return UniversalMorphismFromPushout( diagram, sink );
         
-end : Description := "PushoutFunctorial using the universality of the pushout" );
+end : Description := "PushoutFunctorialWithGivenPushouts using the universality of the pushout" );
 
 ##
 AddDerivationToCAP( FiberProductEmbeddingInDirectSum,

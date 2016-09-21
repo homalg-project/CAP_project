@@ -87,4 +87,8 @@ DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
 #! true
 CoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
 #! true
+IsOne( FiberProductFunctorial( [ [ u, IdentityMorphism( Source( u ) ), u ], [ u, IdentityMorphism( Source( u ) ) , u ] ] ) );
+#! true
+IsOne( PushoutFunctorial( [ [ u, IdentityMorphism( Range( u ) ), u ], [ u, IdentityMorphism( Range( u ) ) , u ] ] ) );
+#! true
 #! @EndExample
