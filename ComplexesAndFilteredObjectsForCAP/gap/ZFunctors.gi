@@ -1002,7 +1002,7 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "KernelLift" ], ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS ],
         
-        [ [ "CokernelObject", "CokernelFunctorial" ], ADD_COKERNEL_IN_Z_FUNCTORS ],
+        [ [ "CokernelObject", "CokernelFunctorialWithGivenCokernelObjects" ], ADD_COKERNEL_IN_Z_FUNCTORS ],
         
         [ [ "CokernelProjection" ], ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS ],
         

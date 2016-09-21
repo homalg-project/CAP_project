@@ -2086,16 +2086,15 @@ KernelObjectFunctorialWithGivenKernelObjects := rec(
   io_type := [ [ "K", "alpha", "mu", "alphap", "Kp" ], [ "K", "Kp" ] ],
   cache_name := "KernelObjectFunctorialWithGivenKernelObjects",
   return_type := "morphism",
-  dual_operation := "CokernelFunctorial" ),
+  dual_operation := "CokernelFunctorialWithGivenCokernelObjects" ),
 
-CokernelFunctorial := rec(
-  installation_name := "CokernelFunctorial",
-  filter_list := [ "morphism", "morphism", "morphism" ],
-  io_type := [ [ "alpha", "nu", "alphap" ], [ "C", "Cp" ] ],
-  cache_name := "CokernelFunctorial",
+CokernelFunctorialWithGivenCokernelObjects := rec(
+  installation_name := "CokernelFunctorialWithGivenCokernelObjects",
+  filter_list := [ "object", "morphism", "morphism", "morphism", "object" ],
+  io_type := [ [ "C", "alpha", "nu", "alphap", "Cp" ], [ "C", "Cp" ] ],
+  cache_name := "CokernelFunctorialWithGivenCokernelObjects",
   return_type := "morphism",
-  dual_operation := "KernelObjectFunctorialWithGivenKernelObjects",
-  no_with_given := true ),
+  dual_operation := "KernelObjectFunctorialWithGivenKernelObjects" ),
 
 TerminalObjectFunctorial := rec(
   installation_name := "TerminalObjectFunctorial",

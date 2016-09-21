@@ -1092,19 +1092,19 @@ AddDerivationToCAP( KernelObjectFunctorialWithGivenKernelObjects,
 end : Description := "KernelObjectFunctorialWithGivenKernelObjects using the universality of the kernel" );
 
 ##
-AddDerivationToCAP( CokernelFunctorial,
+AddDerivationToCAP( CokernelFunctorialWithGivenCokernelObjects,
                     [ [ CokernelColift, 1 ],
                       [ PreCompose, 1 ],
                       [ CokernelProjection, 1 ] ],
                                   
-  function( alpha, nu, alpha_p )
+  function( cokernel_alpha, alpha, nu, alpha_p, cokernel_alpha_p )
     
     return CokernelColift(
                 alpha,
                 PreCompose( nu, CokernelProjection( alpha_p ) )
               );
     
-end : Description := "CokernelFunctorial using the universality of the cokernel" );
+end : Description := "CokernelFunctorialWithGivenCokernelObjects using the universality of the cokernel" );
 
 
 

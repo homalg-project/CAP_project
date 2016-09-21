@@ -235,7 +235,7 @@ DeclareOperation( "KernelObjectFunctorial",
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
 #! given by the functorality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
-#! @Arguments alpha, mu, alpha_prime
+#! @Arguments s, alpha, mu, alpha_prime, r
 DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
                     IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -485,22 +485,36 @@ DeclareOperation( "CokernelFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are an object $s = \mathrm{CokernelObject}( \alpha )$,
+#! three morphisms
+#! $\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{CokernelObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
+#! given by the functorality of the cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, alpha, nu, alpha_prime, r
+DeclareOperation( "CokernelFunctorialWithGivenCokernelObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
+                    IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>CokernelFunctorial</C>.
-#! $F: (\alpha, \nu, \alpha') \mapsto (\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' ))$.
+#! to the category for the basic operation <C>CokernelFunctorialWithGivenCokernelObjects</C>.
+#! $F: (\mathrm{CokernelObject}( \alpha ), \alpha, \nu, \alpha', \mathrm{CokernelObject}( \alpha' )) \mapsto (\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' ))$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCokernelFunctorial",
+DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernelFunctorial",
+DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernelFunctorial",
+DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCokernelFunctorial",
+DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
@@ -1693,7 +1707,7 @@ DeclareOperation( "DirectSumFunctorial",
 #! $d_1 \rightarrow d_2$
 #! given by the functorality of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}( d_1, d_2 )$
-#! @Arguments L
+#! @Arguments d_1, L, d_2
 DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 

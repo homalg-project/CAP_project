@@ -121,10 +121,23 @@ end );
 ##
 InstallMethod( CokernelFunctorial,
                [ IsList ],
-                                  
+               
   function( morphism_of_morphisms )
     
-    return CokernelFunctorial( morphism_of_morphisms[1], morphism_of_morphisms[2][2], morphism_of_morphisms[3] );
+    return CokernelFunctorialWithGivenCokernelObjects( 
+           CokernelObject( morphism_of_morphisms[1] ),
+           morphism_of_morphisms[1], morphism_of_morphisms[2][2], morphism_of_morphisms[3],
+           CokernelObject( morphism_of_morphisms[3] ) );
+    
+end );
+
+##
+InstallMethod( CokernelFunctorial,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( alpha, nu, alpha_prime )
+    
+    return CokernelFunctorialWithGivenCokernelObjects( CokernelObject( alpha ), alpha, nu, alpha_prime, CokernelObject( alpha_prime ) );
     
 end );
 
