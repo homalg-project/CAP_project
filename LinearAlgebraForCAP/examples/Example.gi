@@ -83,4 +83,8 @@ KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphi
 #! true
 IsZero( CokernelFunctorial( u, IdentityMorphism( Range( u ) ), u ) );
 #! true
+DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
+#! true
+CoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
+#! true
 #! @EndExample

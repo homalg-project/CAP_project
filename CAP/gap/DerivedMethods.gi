@@ -1109,12 +1109,12 @@ end : Description := "CokernelFunctorialWithGivenCokernelObjects using the unive
 
 
 ##
-AddDerivationToCAP( CoproductFunctorial,
+AddDerivationToCAP( CoproductFunctorialWithGivenCoproducts,
                     [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
                       [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismFromCoproduct, 1 ] ], 
                                   
-  function( morphism_list )
+  function( coproduct_source, morphism_list, coproduct_range )
     local coproduct_diagram, sink, diagram;
         
         coproduct_diagram := List( morphism_list, mor -> Range( mor ) );
@@ -1125,17 +1125,17 @@ AddDerivationToCAP( CoproductFunctorial,
         
         return UniversalMorphismFromCoproduct( diagram, sink );
         
-end : Description := "CoproductFunctorial using the universality of the coproduct" );
+end : Description := "CoproductFunctorialWithGivenCoproducts using the universality of the coproduct" );
 
 
 
 ##
-AddDerivationToCAP( DirectProductFunctorial,
+AddDerivationToCAP( DirectProductFunctorialWithGivenDirectProducts,
                     [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
                       [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismIntoDirectProduct, 1 ] ],
                                   
-  function( morphism_list )
+  function( direct_product_source, morphism_list, direct_product_range )
     local direct_product_diagram, source, diagram;
         
         direct_product_diagram := List( morphism_list, mor -> Source( mor ) );
@@ -1146,7 +1146,7 @@ AddDerivationToCAP( DirectProductFunctorial,
         
         return UniversalMorphismIntoDirectProduct( diagram, source );
         
-end : Description := "DirectProductFunctorial using universality of direct product" );
+end : Description := "DirectProductFunctorialWithGivenDirectProducts using universality of direct product" );
 
 ##
 AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
@@ -2120,7 +2120,7 @@ AddFinalDerivation( IsomorphismFromDirectSumToDirectProduct,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ DirectProduct,
-                      DirectProductFunctorial,
+                      DirectProductFunctorialWithGivenDirectProducts,
                       ProjectionInFactorOfDirectProduct,
 #                       ProjectionInFactorOfDirectProductWithGivenDirectProduct,
                       UniversalMorphismIntoDirectProduct ],
@@ -2137,7 +2137,7 @@ AddFinalDerivation( IsomorphismFromDirectProductToDirectSum,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ DirectProduct,
-                      DirectProductFunctorial,
+                      DirectProductFunctorialWithGivenDirectProducts,
                       ProjectionInFactorOfDirectProduct,
 #                       ProjectionInFactorOfDirectProductWithGivenDirectProduct,
                       UniversalMorphismIntoDirectProduct ],
@@ -2156,7 +2156,7 @@ AddFinalDerivation( IsomorphismFromCoproductToDirectSum,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Coproduct,
-                      CoproductFunctorial,
+                      CoproductFunctorialWithGivenCoproducts,
                       InjectionOfCofactorOfCoproduct,
 #                       InjectionOfCofactorOfCoproductWithGivenCoproduct,
                       UniversalMorphismFromCoproduct ],
@@ -2173,7 +2173,7 @@ AddFinalDerivation( IsomorphismFromDirectSumToCoproduct,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Coproduct,
-                      CoproductFunctorial,
+                      CoproductFunctorialWithGivenCoproducts,
                       InjectionOfCofactorOfCoproduct,
 #                       InjectionOfCofactorOfCoproductWithGivenCoproduct,
                       UniversalMorphismFromCoproduct ],

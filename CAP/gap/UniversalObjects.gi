@@ -296,13 +296,16 @@ end );
 ##
 InstallMethod( CoproductFunctorial,
                [ IsList ],
-                                  
+               
   function( morphism_list )
     
-    return CoproductFunctorialOp( morphism_list, morphism_list[1] );
+    return CoproductFunctorialWithGivenCoproducts(
+             Coproduct( List( morphism_list, Source ) ),
+             morphism_list,
+             Coproduct( List( morphism_list, Range ) )
+           );
     
 end );
-
 
 ####################################
 ##
@@ -430,10 +433,13 @@ end );
 ##
 InstallMethod( DirectProductFunctorial,
                [ IsList ],
-                                  
+                         
   function( morphism_list )
     
-    return DirectProductFunctorialOp( morphism_list, morphism_list[1] );
+    return DirectProductFunctorialWithGivenDirectProducts(
+             DirectProduct( List( morphism_list, Source ) ),
+             morphism_list,
+             DirectProduct( List( morphism_list, Range ) ) );
     
 end );
 
