@@ -67,7 +67,20 @@ InstallMethod( KernelObjectFunctorial,
                                   
   function( morphism_of_morphisms )
     
-    return KernelObjectFunctorial( morphism_of_morphisms[1], morphism_of_morphisms[2][1], morphism_of_morphisms[3] );
+    return KernelObjectFunctorialWithGivenKernelObjects(
+             KernelObject( morphism_of_morphisms[1] ),
+             morphism_of_morphisms[1], morphism_of_morphisms[2][1], morphism_of_morphisms[3],
+             KernelObject( morphism_of_morphisms[3] ) );
+    
+end );
+
+##
+InstallMethod( KernelObjectFunctorial,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  function( alpha, mu, alpha_prime )
+    
+    return KernelObjectFunctorialWithGivenKernelObjects( KernelObject( alpha ), alpha, mu, alpha_prime, KernelObject( alpha_prime ) );
     
 end );
 
@@ -530,6 +543,10 @@ InstallMethod( IsomorphismFromDirectSumToCoproduct,
     return IsomorphismFromDirectSumToCoproductOp( diagram, diagram[1] );
     
 end );
+
+####################################
+## Functorial operations
+####################################
 
 ##
 InstallMethod( DirectSumFunctorial,

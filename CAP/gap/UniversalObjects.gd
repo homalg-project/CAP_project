@@ -216,7 +216,7 @@ DeclareOperation( "KernelObjectFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are three morphism
+#! The arguments are three morphisms
 #! $\alpha: A \rightarrow B$, $\mu: A \rightarrow A'$, $\alpha': A' \rightarrow B'$.
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
@@ -227,22 +227,36 @@ DeclareOperation( "KernelObjectFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are an object $s = \mathrm{KernelObject}( \alpha )$,
+#! three morphisms
+#! $\alpha: A \rightarrow B$, $\mu: A \rightarrow A'$, $\alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{KernelObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
+#! given by the functorality of the kernel.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$
+#! @Arguments alpha, mu, alpha_prime
+DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
+                    IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>KernelObjectFunctorial</C>.
-#! $F: (\alpha, \mu, \alpha') \mapsto (\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' ))$.
+#! to the category for the basic operation <C>KernelObjectFunctorialWithGivenKernelObjects</C>.
+#! $F: (\mathrm{KernelObject}( \alpha ), \alpha, \mu, \alpha', \mathrm{KernelObject}( \alpha' )) \mapsto (\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' ))$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddKernelObjectFunctorial",
+DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddKernelObjectFunctorial",
+DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddKernelObjectFunctorial",
+DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddKernelObjectFunctorial",
+DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
@@ -1686,8 +1700,8 @@ DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>DirectSumFunctorial</C>.
-#! $F: (( \mu_1, \dots, \mu_n )) \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
+#! to the category for the basic operation <C>DirectSumFunctorialWithGivenDirectSums</C>.
+#! $F: (\bigoplus_{i=1}^n S_i, ( \mu_1, \dots, \mu_n ), \bigoplus_{i=1}^n S_i') \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
