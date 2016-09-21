@@ -365,35 +365,40 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
              
         elif entry.return_type = "morphism" then
             
-            if not IsBound( entry.universal_type )
-               or ( IsBound( entry.universal_type ) and entry.is_with_given ) then
+            ## functions marked with no_with_given cannot automatically be equipped with attributes
+            if not( IsBound( entry.no_with_given ) and entry.no_with_given = true ) then
                 
-                function_to_add := create_function_morphism_no_new_object( name );
-                
-                add_function( category_with_attributes, function_to_add );
-                
-            elif IsBound( entry.universal_type ) then
-                
-                ## TODO: this should be directly accessible in the method record
-                universal_object := CAP_INTERNAL_METHOD_NAME_RECORD.(entry.with_given_without_given_name_pair[2]).universal_object;
-                
-                if IsBound( structure_record.(universal_object) ) then
+                if not IsBound( entry.universal_type )
+                   or ( IsBound( entry.universal_type ) and entry.is_with_given ) then
                     
-                    if entry.universal_object_position = "Source" then
+                    function_to_add := create_function_morphism_no_new_object( name );
+                    
+                    add_function( category_with_attributes, function_to_add );
+                    
+                elif IsBound( entry.universal_type ) then
+                    
+                    ## TODO: this should be directly accessible in the method record
+                    universal_object := CAP_INTERNAL_METHOD_NAME_RECORD.(entry.with_given_without_given_name_pair[2]).universal_object;
+                    
+                    if IsBound( structure_record.(universal_object) ) then
                         
-                        function_to_add := create_function_morphism_new_source( name, structure_record.(universal_object) );
-                        
-                        add_function( category_with_attributes, function_to_add );
-                        
-                    elif entry.universal_object_position = "Range" then
-                        
-                        function_to_add := create_function_morphism_new_range( name, structure_record.(universal_object) );
-                        
-                        add_function( category_with_attributes, function_to_add );
-                        
+                        if entry.universal_object_position = "Source" then
+                            
+                            function_to_add := create_function_morphism_new_source( name, structure_record.(universal_object) );
+                            
+                            add_function( category_with_attributes, function_to_add );
+                            
+                        elif entry.universal_object_position = "Range" then
+                            
+                            function_to_add := create_function_morphism_new_range( name, structure_record.(universal_object) );
+                            
+                            add_function( category_with_attributes, function_to_add );
+                            
+                        fi;
+                    
                     fi;
-                
                 fi;
+            
             fi;
             
         elif entry.return_type = "morphism_or_fail" then
