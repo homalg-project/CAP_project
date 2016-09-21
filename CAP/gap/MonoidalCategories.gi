@@ -124,14 +124,16 @@ TensorProductToInternalHomAdjunctionMap := rec(
   filter_list := [ "object", "object", "morphism" ],
   io_type := [ [ "a", "b", "f" ], [ "a", "i" ] ],
   cache_name := "TensorProductToInternalHomAdjunctionMap",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 InternalHomToTensorProductAdjunctionMap := rec(
   installation_name := "InternalHomToTensorProductAdjunctionMap",
   filter_list := [ "object", "object", "morphism" ],
   io_type := [ [ "b", "c", "g" ], [ "t", "c" ] ],
   cache_name := "InternalHomToTensorProductAdjunctionMap",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 MonoidalPreComposeMorphismWithGivenObjects := rec(
   installation_name := "MonoidalPreComposeMorphismWithGivenObjects",
@@ -229,63 +231,72 @@ TraceMap := rec(
   filter_list := [ "morphism" ],
   io_type := [ [ "alpha" ], [ "u", "u" ] ],
   cache_name := "TraceMap",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 RankMorphism := rec(
   installation_name := "RankMorphism",
   filter_list := [ "object" ],
   io_type := [ [ "a" ], [ "u", "u" ] ],
   cache_name := "RankMorphism",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 IsomorphismFromTensorProductToInternalHom := rec(
   installation_name := "IsomorphismFromTensorProductToInternalHom",
   filter_list := [ "object", "object" ],
   io_type := [ [ "a", "b" ], [ "t", "i" ] ],
   cache_name := "IsomorphismFromTensorProductToInternalHom",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 IsomorphismFromInternalHomToTensorProduct := rec(
   installation_name := "IsomorphismFromInternalHomToTensorProduct",
   filter_list := [ "object", "object" ],
   io_type := [ [ "a", "b" ], [ "i", "t" ] ],
   cache_name := "IsomorphismFromInternalHomToTensorProduct",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
   
 IsomorphismFromInternalHomToDual := rec(
   installation_name := "IsomorphismFromInternalHomToDual",
   filter_list := [ "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
   cache_name := "IsomorphismFromInternalHomToDual",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 IsomorphismFromDualToInternalHom := rec(
   installation_name := "IsomorphismFromDualToInternalHom",
   filter_list := [ "object" ],
   io_type := [ [ "a" ], [ "d", "i" ] ],
   cache_name := "IsomorphismFromDualToInternalHom",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 UniversalPropertyOfDual := rec(
   installation_name := "UniversalPropertyOfDual",
   filter_list := [ "object", "object", "morphism" ],
   io_type := [ [ "t", "a", "alpha" ], [ "t", "d" ] ],
   cache_name := "UniversalPropertyOfDual",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 LambdaIntroduction := rec(
   installation_name := "LambdaIntroduction",
   filter_list := [ "morphism" ],
   io_type := [ [ "alpha" ], [ "u", "i" ] ],
   cache_name := "LambdaIntroduction",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 LambdaElimination := rec(
   installation_name := "LambdaElimination",
   filter_list := [ "object", "object", "morphism" ],
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   cache_name := "LambdaElimination",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  no_with_given := true ),
 
 IsomorphismFromObjectToInternalHomWithGivenInternalHom := rec(
   installation_name := "IsomorphismFromObjectToInternalHomWithGivenInternalHom",
