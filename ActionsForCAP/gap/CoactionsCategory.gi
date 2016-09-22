@@ -511,6 +511,15 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_COACTIONS_CATEGORY,
   
   function( category )
+    
+    ##
+    AddIsEqualForCacheForObjects( category,
+      IsIdenticalObj );
+    
+    ##
+    AddIsEqualForCacheForMorphisms( category,
+      IsIdenticalObj );
+    
     ##
     AddIsEqualForObjects( category,
       function( coaction_object_1, coaction_object_2 )

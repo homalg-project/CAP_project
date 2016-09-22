@@ -505,6 +505,15 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
   
   function( category )
+    
+    ##
+    AddIsEqualForCacheForObjects( category,
+      IsIdenticalObj );
+    
+    ##
+    AddIsEqualForCacheForMorphisms( category,
+      IsIdenticalObj );
+    
     ##
     AddIsEqualForObjects( category,
       function( action_object_1, action_object_2 )
