@@ -84,11 +84,16 @@ BindGlobal( "INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_LESS_GENERATORS_MET
         AddNaturalTransformationFunction( natural_transformation,
                                           
           function( id_object, object, smaller_object )
-            local LG;
+            local LG, natiso;
             
             LG := triple_getter( UnderlyingMatrix( object ) );
             
-            return PresentationMorphism( object, LG[2], smaller_object );
+            natiso := PresentationMorphism( object, LG[2], smaller_object );
+            
+            Assert( 4, IsIsomorphism( natiso ) );
+            SetIsIsomorphism( natiso, true );
+            
+            return natiso;
             
         end );
         
