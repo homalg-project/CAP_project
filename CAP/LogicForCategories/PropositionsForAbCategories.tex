@@ -20,9 +20,19 @@
 \begin{align*}
    a: \Obj ~|~ () \vdash \IsZero \big( \MorphismFromZeroObject( a ) \big)
 \end{align*}
-
 \end{sequent}
 
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor ~|~ \IsZero(\Source(\alpha)) \vdash \IsZero(\alpha)
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor ~|~ \IsZero(\Range(\alpha)) \vdash \IsZero(\alpha)
+\end{align*}
+\end{sequent}
 
 \begin{sequent}
 \begin{align*}
