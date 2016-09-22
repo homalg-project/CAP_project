@@ -404,11 +404,59 @@ InstallMethod( InternalHomOnCocomplexCocomplexWithObject,
     
     new_z_functor!.object_func := object_func;
     
-    morphism_func := i -> InternalHomOnCochainMapWithObject( Differential( cocomplex, -i + 1 ), new_complex[ i ], new_complex[ i - 1 ], object );
+    morphism_func := i -> InternalHomOnCochainMapWithObject( Differential( cocomplex, -i - 1 ), new_complex[ i ], new_complex[ i - 1 ], object );
     
     new_z_functor!.differential_func := morphism_func;
     
     return new_complex;
+    
+end );
+
+InstallMethod( TransposeComplexOfComplex,
+               [ IsCapComplex ],
+               
+  function( complex )
+    local new_total_complex, new_z_functor, object_func, morphism_func;
+    
+    new_z_functor := ZFunctorObject( ReturnTrue, ReturnTrue, UnderlyingCategory( CapCategory( complex ) ) );
+    new_total_complex := AsComplex( new_z_functor );
+    
+    object_func := function( i )
+      local object_func, morphism_func;
+        
+        object_func := function( j )
+            
+            return complex[ -j ][ -i ];
+            
+        end;
+        
+        morphism_func := function( j )
+            
+            return Differential( complex, -j )[ -i ];
+            
+        end;
+        
+        return AsComplex( ZFunctorObject( object_func, morphism_func, UnderlyingCategory( UnderlyingCategory( CapCategory( complex ) ) ) ) );
+        
+    end;
+    
+    morphism_func := function( i )
+      local morphism_func;
+        
+        morphism_func := function( j )
+            
+            return Differential( complex[ j ], -i );
+            
+        end;
+        
+        return ChainMap( new_total_complex[ -i ], morphism_func, new_total_complex[ -i + 1 ] );
+        
+    end;
+    
+    new_z_functor!.object_func := object_func;
+    new_z_functor!.differential_func := morphism_func;
+    
+    return new_total_complex;
     
 end );
 

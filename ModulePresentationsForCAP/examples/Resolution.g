@@ -1,4 +1,5 @@
 LoadPackage( "ModulePres" );
+LoadPackage( "Homological" );
 Q := HomalgFieldOfRationalsInSingular();
 R := Q*"x,y";
 S := GradedRing( R );
@@ -16,28 +17,11 @@ res := ApplyFunctor( FFhomo, M );
 SetIsAdditiveCategory( CocomplexCategory( CapCategory( S0 ) ), true );
 SetIsAdditiveCategory( ComplexCategory( CapCategory( S0 ) ), true );
 
+M := DirectSum( [ M, S0 ] );
 
 res := FreeResolutionComplexOfModule( M );
 res := res[ 1 ];
 homres := InternalHomOnComplexWithObject( res, S0 );
 CE := CartanEilenbergResolution( homres, FreeResolutionCocomplexOfModule );
 homCE := InternalHomOnCocomplexCocomplexWithObject( CE, S0 );
-
-CE := CartanEilenbergResolution( res, FF );
-
-
-alpha := KernelEmbedding( alpha );
-beta := CokernelProjection( alpha );
-
-Pp := ApplyFunctor( FF, Source( alpha ) );
-epsp := Differential( Pp, 0 );
-
-Ppp := ApplyFunctor( FF, Range( beta ) );
-epspp := Differential( Ppp, 0 );
-
-ll := HorseShoeLemma( Pp, Ppp, epsp, alpha, beta, epspp );
-
-new_res := ll[ 1 ];
-
-Differential( new_res, -1 );
 

@@ -46,4 +46,7 @@ DeclareAttribute( "FreeResolutionCocomplexOfModule",
 DeclareOperation( "ResolutionTo",
                   [ IsCapCategoryObject, IsFunction, IsBool ] );
 
+DeclareOperation( "TransposeComplexOfComplex",
+                  [ IsCapComplex ] );
+
 
