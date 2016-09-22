@@ -36,6 +36,30 @@
 
 \begin{sequent}
 \begin{align*}
+   \alpha: \Mor ~|~ \IsZero(\alpha), \IsMonomorphism(\alpha) \vdash \IsZero(\Source(\alpha))
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor ~|~ \IsZero(\alpha), \IsEpimorphism(\alpha) \vdash \IsZero(\Range(\alpha))
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor, \beta: \Mor ~|~ \IsZero(\alpha) \vdash \IsZero(\PreCompose(\alpha,\beta))
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor, \beta: \Mor ~|~ \IsZero(\beta) \vdash \IsZero(\PreCompose(\alpha,\beta))
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
   \alpha: \Mor ~|~ \IsInitial\big( \KernelObject( \alpha ) \big) \vdash \IsMonomorphism( \alpha )
 \end{align*}
 \end{sequent}
