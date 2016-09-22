@@ -260,5 +260,7 @@ InstallMethod( Display,
     
     Print( StringMutable( morphism ) );
     
+    Print( "\n" );
+    
 end );
 

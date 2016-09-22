@@ -197,4 +197,6 @@ InstallMethod( Display,
     
     Print( StringMutable( object ) );
     
+    Print( "\n" );
+    
 end );
