@@ -33,11 +33,16 @@ BindGlobal( "INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE_MET
         AddNaturalTransformationFunction( natural_transformation,
                                           
           function( id_object, object, standard_object )
-            local matrix;
+            local matrix, natiso;
             
             matrix := HomalgIdentityMatrix( nr_generators( UnderlyingMatrix( id_object ) ), ring );
             
-            return PresentationMorphism( id_object, matrix, standard_object );
+            natiso := PresentationMorphism( id_object, matrix, standard_object );
+            
+            Assert( 4, IsIsomorphism( natiso ) );
+            SetIsIsomorphism( natiso, true );
+            
+            return natiso;
             
         end );
         
