@@ -9,6 +9,8 @@ ReadPackage( "ToricSheaves", "gap/ToricSheaves.gi");
 
 ReadPackage( "ToricSheaves", "gap/GlobalSectionFunctors.gi" );
 
+ReadPackage( "ToricSheaves", "gap/CoverByLocallyFreeObject.gi" );
+
 if IsPackageMarkedForLoading( "ToricVarieties", ">=0" ) then
     ReadPackage( "ToricSheaves", "gap/ToricSheavesForToricVarieties.gi" );
 fi;

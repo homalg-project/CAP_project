@@ -8,6 +8,8 @@ ReadPackage( "ToricSheaves", "gap/ToricSheaves.gd");
 
 ReadPackage( "ToricSheaves", "gap/GlobalSectionFunctors.gd" );
 
+ReadPackage( "ToricSheaves", "gap/CoverByLocallyFreeObject.gd" );
+
 if IsPackageMarkedForLoading( "ToricVarieties", ">=0" ) then
     ReadPackage( "ToricSheaves", "gap/ToricSheavesForToricVarieties.gd" );
 fi;
