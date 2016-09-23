@@ -16,4 +16,6 @@ ReadPackage( "ModulePresentationsForCAP", "gap/GradedModulePresentationMorphism.
 
 ReadPackage( "ModulePresentationsForCAP", "gap/GradedModuleFunctors.gi");
 
+ReadPackage( "ModulePresentationsForCAP", "gap/LiftPresentationTransformation.gi");
+
 ReadPackage( "ModulePresentationsForCAP", "gap/Tools.gi");
