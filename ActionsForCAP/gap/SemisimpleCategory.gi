@@ -1403,10 +1403,12 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         associator_on_irreducibles );
     
     ##
-    distributivity_expanding_for_triple := function( object_1, object_2, summands, left_term )
-      local direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
+    distributivity_expanding_for_triple := function( object_1, object_2, object_list_with_actual_objects, left_term )
+      local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
             summands_2, permutation_list_1, permutation_list_2, morphism_list, size, i,
             dim, string, vector_space_object;
+      
+      summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
       
       direct_sum := DirectSum( summands );
       
@@ -1462,10 +1464,12 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end;
     
     ##
-    distributivity_factoring_for_triple := function( object_1, object_2, summands, right_term )
-      local direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
+    distributivity_factoring_for_triple := function( object_1, object_2, object_list_with_actual_objects, right_term )
+      local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
             summands_2, permutation_list_1, permutation_list_2, morphism_list, size, i,
             dim, string, vector_space_object;
+      
+      summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
       
       direct_sum := DirectSum( summands );
       
@@ -1561,7 +1565,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         if Size( object_a_expanded_list ) > 1 then
             
-            morphism_1 := distributivity_expanding_for_triple( object_b, object_c, object_a_expanded_list, true );
+            morphism_1 := distributivity_expanding_for_triple( object_b, object_c, object_a_list, true );
             
         fi;
         
@@ -1575,7 +1579,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             for elem in object_a_list do
                 
-                morphism := distributivity_expanding_for_triple( elem[2], object_c, object_b_expanded_list, false );
+                morphism := distributivity_expanding_for_triple( elem[2], object_c, object_b_list, false );
                 
                 Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
                 
@@ -1672,7 +1676,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 for elem_b in object_b_list do
                     
                     morphism :=
-                      distributivity_factoring_for_triple( elem_a[2], elem_b[2], object_c_expanded_list, true );
+                      distributivity_factoring_for_triple( elem_a[2], elem_b[2], object_c_list, true );
                     
                     Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
                     
@@ -1699,7 +1703,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             for elem in object_a_list do
                 
-                morphism := distributivity_factoring_for_triple( elem[2], object_c, object_b_expanded_list, false );
+                morphism := distributivity_factoring_for_triple( elem[2], object_c, object_b_list, false );
                 
                 Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
                 
