@@ -9,6 +9,12 @@
 ##
 #############################################################################
 
+####################################
+##
+## Internals
+##
+####################################
+
 InstallValue( CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY, rec( ) );
 
 ##
@@ -170,6 +176,23 @@ InstallMethod( CAP_INTERNAL_DirectSumForPermutationLists,
     
 end );
 
+InstallMethodWithCache( CAP_INTERNAL_ExpandSemisimpleCategoryObjectList,
+                        [ IsList ],
+                        
+  function( semisimple_category_object_list_with_actual_objects )
+    local list, expanded_list, elem;
+    
+    expanded_list := [ ];
+    
+    for elem in semisimple_category_object_list_with_actual_objects do
+        
+        Append( expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
+        
+    od;
+    
+    return expanded_list;
+    
+end );
 
 ####################################
 ##
@@ -1509,11 +1532,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               second_permutation, second_permutation_morphism_list, chi,
               perm1, perm2, perm3, dim, vector_space_object, homalg_matrix;
         
-        object_a_list := SemisimpleCategoryObjectList( object_a );
+        object_a_list := SemisimpleCategoryObjectListWithActualObjects( object_a );
         
-        object_b_list := SemisimpleCategoryObjectList( object_b );
+        object_b_list := SemisimpleCategoryObjectListWithActualObjects( object_b );
         
-        object_c_list := SemisimpleCategoryObjectList( object_c );
+        object_c_list := SemisimpleCategoryObjectListWithActualObjects( object_c );
         
         if IsEmpty( object_a_list ) or IsEmpty( object_b_list ) or IsEmpty( object_c_list ) then
             
@@ -1521,37 +1544,16 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
         fi;
         
-        object_a_list := List( object_a_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        object_a_expanded_list :=
+          CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_a_list );
         
-        object_b_list := List( object_b_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        object_b_expanded_list :=
+          CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_b_list );
         
-        object_c_list := List( object_c_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        object_c_expanded_list :=
+          CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_c_list );
         
         result_morphism := IdentityMorphism( new_source );
-        
-        object_a_expanded_list := [ ];
-        
-        for elem in object_a_list do
-            
-            Append( object_a_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
-            
-        od;
-        
-        object_b_expanded_list := [ ];
-        
-        for elem in object_b_list do
-            
-            Append( object_b_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
-            
-        od;
-        
-        object_c_expanded_list := [ ];
-        
-        for elem in object_c_list do
-            
-            Append( object_c_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
-            
-        od;
         
         ## morphism_1
         
@@ -1913,9 +1915,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         local object_a_list, object_b_list, result_morphism, object_a_expanded_list, object_b_expanded_list,
               morphism, outer_summand_list, inner_summand_list, summand_list, elem, elem_a, elem_b;
         
-        object_a_list := SemisimpleCategoryObjectList( object_a );
+        object_a_list := SemisimpleCategoryObjectListWithActualObjects( object_a );
         
-        object_b_list := SemisimpleCategoryObjectList( object_b );
+        object_b_list := SemisimpleCategoryObjectListWithActualObjects( object_b );
         
         if IsEmpty( object_a_list ) or IsEmpty( object_b_list ) then
             
@@ -1923,27 +1925,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
         fi;
         
-        object_a_list := List( object_a_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
-        
-        object_b_list := List( object_b_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
-        
         result_morphism := IdentityMorphism( object_a_tensored_object_b );
         
-        object_a_expanded_list := [ ];
+        object_a_expanded_list := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_a_list );
         
-        for elem in object_a_list do
-            
-            Append( object_a_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
-            
-        od;
-        
-        object_b_expanded_list := [ ];
-        
-        for elem in object_b_list do
-            
-            Append( object_b_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
-            
-        od;
+        object_b_expanded_list := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_b_list );
         
         ## morphism_1
         if Size( object_a_expanded_list ) > 1 then
@@ -2087,7 +2073,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               summand_list, trivial_chi, vector_space, vector_space_morphism,
               i, result_morphism, morphism;
         
-        object_list := SemisimpleCategoryObjectList( object );
+        object_list := SemisimpleCategoryObjectListWithActualObjects( object );
         
         if IsEmpty( object_list ) then
             
@@ -2097,27 +2083,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         dual_object := DualOnObjects( object );
         
-        dual_object_list := SemisimpleCategoryObjectList( dual_object );
+        dual_object_list := SemisimpleCategoryObjectListWithActualObjects( dual_object );
         
-        object_list := List( object_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        object_expanded_list := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list );
         
-        dual_object_list := List( dual_object_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
-        
-        object_expanded_list := [ ];
-        
-        for elem in object_list do
-            
-            Append( object_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
-            
-        od;
-        
-        dual_object_expanded_list := [ ];
-        
-        for elem in dual_object_list do
-            
-            Append( dual_object_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
-            
-        od;
+        dual_object_expanded_list := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( dual_object_list );
         
         ## morphism_1
         
@@ -2188,7 +2158,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               dual_object_expanded_list, trivial_chi, dim, vector_space, vector_space_morphism,
               result_morphism, summand_list, morphism, string, string_entry, i, zero_list;
         
-        object_list := SemisimpleCategoryObjectList( object );
+        object_list := SemisimpleCategoryObjectListWithActualObjects( object );
         
         if IsEmpty( object_list ) then
             
@@ -2198,27 +2168,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         dual_object := DualOnObjects( object );
         
-        dual_object_list := SemisimpleCategoryObjectList( dual_object );
+        dual_object_list := SemisimpleCategoryObjectListWithActualObjects( dual_object );
         
-        object_list := List( object_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+        object_expanded_list := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list );
         
-        dual_object_list := List( dual_object_list, elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
-        
-        object_expanded_list := [ ];
-        
-        for elem in object_list do
-            
-            Append( object_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
-            
-        od;
-        
-        dual_object_expanded_list := [ ];
-        
-        for elem in dual_object_list do
-            
-            Append( dual_object_expanded_list, List( [ 1 .. elem[1] ], i -> elem[2] ) );
-            
-        od;
+        dual_object_expanded_list := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( dual_object_list );
         
         ## morphism_3
         

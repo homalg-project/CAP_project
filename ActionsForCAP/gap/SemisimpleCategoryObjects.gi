@@ -149,6 +149,19 @@ InstallMethod( Dimension,
     
 end );
 
+##
+InstallMethod( SemisimpleCategoryObjectListWithActualObjects,
+               [ IsSemisimpleCategoryObject ],
+               
+  function( object )
+    local category;
+    
+    category := CapCategory( object );
+    
+    return List( SemisimpleCategoryObjectList( object ), 
+             elem -> [ elem[1], SemisimpleCategoryObject( [ [ 1, elem[2] ] ], category ) ] );
+    
+end );
 
 ####################################
 ##

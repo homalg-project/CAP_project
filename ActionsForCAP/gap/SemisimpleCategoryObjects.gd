@@ -41,7 +41,12 @@ DeclareOperationWithCache( "SemisimpleCategoryObjectConstructorWithFlatList", [ 
 ##
 ####################################
 
+##
 DeclareAttribute( "SemisimpleCategoryObjectList",
+                  IsSemisimpleCategoryObject );
+
+##
+DeclareAttribute( "SemisimpleCategoryObjectListWithActualObjects",
                   IsSemisimpleCategoryObject );
 
 #! @Description

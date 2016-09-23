@@ -104,3 +104,7 @@ DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY"
 
 ##
 DeclareGlobalVariable( "CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY" );
+
+##
+DeclareOperationWithCache( "CAP_INTERNAL_ExpandSemisimpleCategoryObjectList",
+                           [ IsList ] );
