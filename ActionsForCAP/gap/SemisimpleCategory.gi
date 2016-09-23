@@ -1009,9 +1009,15 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ## -- Helper functions for distributivity --
     
     ##
-    right_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, support_tensor_product )
+    right_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, support_tensor_product, is_expanded )
       local permutation_list, k_permutation, size_support, size_list_of_objects, height, l, i, k, direct_sum_support,
             multiplicity_li, sum_up_to_l_minus_1, j, b_j_times_c_kij, cols, rows, height_of_zeros, object_b_list;
+      
+      if not is_expanded then
+          
+          list_of_objects := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( list_of_objects );
+          
+      fi;
       
       permutation_list := [ ];
       
@@ -1066,9 +1072,15 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end;
     
     ##
-    left_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, support_tensor_product )
+    left_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, support_tensor_product, is_expanded )
       local permutation_list, k_permutation, size_list_of_objects, height, l, i, k, direct_sum_support,
             j, l_times_j, c_kij, list_of_objects_j, rows, zeros_above, ones, step, object_b_list;
+      
+      if not is_expanded then
+          
+          list_of_objects := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( list_of_objects );
+          
+      fi;
       
       permutation_list := [ ];
       
@@ -1133,7 +1145,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         direct_sum := DirectSum( list_of_objects );
         
-        permutation_list := permutation_function( object_b, list_of_objects, direct_sum, support_tensor_product );
+        permutation_list := permutation_function( object_b, list_of_objects, direct_sum, support_tensor_product, true );
         
         if invert then
             
@@ -1405,7 +1417,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     distributivity_expanding_for_triple := function( object_1, object_2, object_list_with_actual_objects, left_term )
       local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
-            summands_2, permutation_list_1, permutation_list_2, morphism_list, size, i,
+            tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
             dim, string, vector_space_object;
       
       summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
@@ -1420,12 +1432,14 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       support_tensor_product_partial := Support( direct_sum_2 );
       
-      summands_2 := List( summands, obj -> TensorProductOnObjects( obj, object_1 ) );
+      tensored_object_list_with_actual_objects := 
+        List( object_list_with_actual_objects, pair -> [ pair[1], TensorProductOnObjects( pair[2], object_1 ) ] );
       
       if left_term then
           
           permutation_list_1 :=
-            right_distributivity_expanding_permutation( object_1, summands, direct_sum, support_tensor_product_partial );
+            right_distributivity_expanding_permutation( 
+              object_1, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
           
           permutation_list_1 :=
             CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight( permutation_list_1, object_2, support_tensor_product_all );
@@ -1433,7 +1447,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       else
           
           permutation_list_1 :=
-            left_distributivity_expanding_permutation( object_1, summands, direct_sum, support_tensor_product_partial );
+            left_distributivity_expanding_permutation( 
+              object_1, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
           
           permutation_list_1 :=
             CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight( permutation_list_1, object_2, support_tensor_product_all );
@@ -1442,7 +1457,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       permutation_list_2 :=
         right_distributivity_expanding_permutation(
-          object_2, summands_2, direct_sum_2, support_tensor_product_all );
+          object_2, tensored_object_list_with_actual_objects, direct_sum_2, support_tensor_product_all, false );
       
       morphism_list := [ ];
       
@@ -1466,7 +1481,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     distributivity_factoring_for_triple := function( object_1, object_2, object_list_with_actual_objects, right_term )
       local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
-            summands_2, permutation_list_1, permutation_list_2, morphism_list, size, i,
+            tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
             dim, string, vector_space_object;
       
       summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
@@ -1481,12 +1496,14 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       support_tensor_product_partial := Support( direct_sum_2 );
       
-      summands_2 := List( summands, obj -> TensorProductOnObjects( obj, object_2 ) );
+      tensored_object_list_with_actual_objects := 
+        List( object_list_with_actual_objects, pair -> [ pair[1], TensorProductOnObjects( pair[2], object_2 ) ] );
       
       if right_term then
           
           permutation_list_1 :=
-            left_distributivity_expanding_permutation( object_2, summands, direct_sum, support_tensor_product_partial );
+            left_distributivity_expanding_permutation( 
+              object_2, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
           
           permutation_list_1 :=
             CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft( permutation_list_1, object_1, support_tensor_product_all );
@@ -1494,7 +1511,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       else
           
           permutation_list_1 :=
-            right_distributivity_expanding_permutation( object_2, summands, direct_sum, support_tensor_product_partial );
+            right_distributivity_expanding_permutation( 
+              object_2, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
           
           permutation_list_1 :=
             CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft( permutation_list_1, object_1, support_tensor_product_all );
@@ -1503,7 +1521,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       permutation_list_2 :=
         right_distributivity_expanding_permutation(
-          object_1, summands_2, direct_sum_2, support_tensor_product_all );
+          object_1, tensored_object_list_with_actual_objects, direct_sum_2, support_tensor_product_all, false );
       
       morphism_list := [ ];
       
@@ -1607,8 +1625,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                     
                     morphism :=
                       left_distributivity_expanding_permutation
-                        ( tensor_product, object_c_expanded_list,
-                          object_c, Support( TensorProductOnObjects( tensor_product, object_c ) ) );
+                        ( tensor_product, object_c_list,
+                          object_c, Support( TensorProductOnObjects( tensor_product, object_c ) ), false );
                     
                     Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
                     
@@ -1725,8 +1743,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             morphism_7_inverse := 
               right_distributivity_expanding_permutation
-                          ( tensor_product, object_a_expanded_list,
-                            object_a, Support( new_source ) );
+                          ( tensor_product, object_a_list,
+                            object_a, Support( new_source ), false );
             
         fi;
         
