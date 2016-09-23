@@ -1009,133 +1009,135 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ## -- Helper functions for distributivity --
     
     ##
-    right_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, support_tensor_product, is_expanded )
-      local permutation_list, k_permutation, size_support, size_list_of_objects, height, l, i, k, direct_sum_support,
-            multiplicity_li, sum_up_to_l_minus_1, j, b_j_times_c_kij, cols, rows, height_of_zeros, object_b_list;
-      
-      if not is_expanded then
+    right_distributivity_expanding_permutation := FunctionWithCache(
+        function( object_b, list_of_objects, direct_sum, support_tensor_product, is_expanded )
+          local permutation_list, k_permutation, size_support, size_list_of_objects, height, l, i, k, direct_sum_support,
+                multiplicity_li, sum_up_to_l_minus_1, j, b_j_times_c_kij, cols, rows, height_of_zeros, object_b_list;
           
-          list_of_objects := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( list_of_objects );
-          
-      fi;
-      
-      permutation_list := [ ];
-      
-      size_list_of_objects := Size( list_of_objects );
-      
-      object_b_list := SemisimpleCategoryObjectList( object_b );
-      
-      direct_sum_support := Support( direct_sum );
-      
-      for k in support_tensor_product do
-          
-          k_permutation := [ ];
-          
-          for l in [ 1 .. size_list_of_objects ] do
+          if not is_expanded then
               
-              height := 0;
+              list_of_objects := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( list_of_objects );
               
-              for i in direct_sum_support do
+          fi;
+          
+          permutation_list := [ ];
+          
+          size_list_of_objects := Size( list_of_objects );
+          
+          object_b_list := SemisimpleCategoryObjectList( object_b );
+          
+          direct_sum_support := Support( direct_sum );
+          
+          for k in support_tensor_product do
+              
+              k_permutation := [ ];
+              
+              for l in [ 1 .. size_list_of_objects ] do
                   
-                  multiplicity_li := Multiplicity( list_of_objects[l], i );
+                  height := 0;
                   
-                  sum_up_to_l_minus_1 :=
-                    Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], i ) ) );
-                  
-                  for j in object_b_list do
+                  for i in direct_sum_support do
                       
-                      b_j_times_c_kij := j[1] * Multiplicity( k, i, j[2] );
+                      multiplicity_li := Multiplicity( list_of_objects[l], i );
                       
-                      cols := multiplicity_li * b_j_times_c_kij;
+                      sum_up_to_l_minus_1 :=
+                        Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], i ) ) );
                       
-                      rows := Multiplicity( direct_sum, i ) * b_j_times_c_kij;
-                      
-                      height_of_zeros := sum_up_to_l_minus_1 * b_j_times_c_kij;
-                      
-                      Append( k_permutation,
-                        List( [ 1 .. cols ], m -> height + height_of_zeros + m ) );
-                      
-                      height := height + rows;
+                      for j in object_b_list do
+                          
+                          b_j_times_c_kij := j[1] * Multiplicity( k, i, j[2] );
+                          
+                          cols := multiplicity_li * b_j_times_c_kij;
+                          
+                          rows := Multiplicity( direct_sum, i ) * b_j_times_c_kij;
+                          
+                          height_of_zeros := sum_up_to_l_minus_1 * b_j_times_c_kij;
+                          
+                          Append( k_permutation,
+                            List( [ 1 .. cols ], m -> height + height_of_zeros + m ) );
+                          
+                          height := height + rows;
+                          
+                      od;
                       
                   od;
                   
               od;
               
+              Add( permutation_list, [ k_permutation, k ] );
+              
           od;
           
-          Add( permutation_list, [ k_permutation, k ] );
+          return permutation_list;
           
-      od;
-      
-      return permutation_list;
-      
-    end;
-    
+        end
+    );
     ##
-    left_distributivity_expanding_permutation := function( object_b, list_of_objects, direct_sum, support_tensor_product, is_expanded )
-      local permutation_list, k_permutation, size_list_of_objects, height, l, i, k, direct_sum_support,
-            j, l_times_j, c_kij, list_of_objects_j, rows, zeros_above, ones, step, object_b_list;
-      
-      if not is_expanded then
+    left_distributivity_expanding_permutation := FunctionWithCache(
+        function( object_b, list_of_objects, direct_sum, support_tensor_product, is_expanded )
+          local permutation_list, k_permutation, size_list_of_objects, height, l, i, k, direct_sum_support,
+                j, l_times_j, c_kij, list_of_objects_j, rows, zeros_above, ones, step, object_b_list;
           
-          list_of_objects := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( list_of_objects );
-          
-      fi;
-      
-      permutation_list := [ ];
-      
-      size_list_of_objects := Size( list_of_objects );
-      
-      object_b_list := SemisimpleCategoryObjectList( object_b );
-      
-      direct_sum_support := Support( direct_sum );
-      
-      for k in support_tensor_product do
-          
-          k_permutation := [ ];
-          
-          for l in [ 1 .. size_list_of_objects ] do
+          if not is_expanded then
               
-              height := 0;
+              list_of_objects := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( list_of_objects );
               
-              for i in object_b_list do
+          fi;
+          
+          permutation_list := [ ];
+          
+          size_list_of_objects := Size( list_of_objects );
+          
+          object_b_list := SemisimpleCategoryObjectList( object_b );
+          
+          direct_sum_support := Support( direct_sum );
+          
+          for k in support_tensor_product do
+              
+              k_permutation := [ ];
+              
+              for l in [ 1 .. size_list_of_objects ] do
                   
-                  for j in direct_sum_support do
+                  height := 0;
+                  
+                  for i in object_b_list do
                       
-                      l_times_j := Multiplicity( list_of_objects[l], j );
-                      
-                      c_kij := Multiplicity( k, i[2], j );
-                      
-                      list_of_objects_j := Multiplicity( direct_sum, j );
-                      
-                      rows := i[1] * list_of_objects_j * c_kij;
-                      
-                      zeros_above := Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], j ) ) ) * c_kij;
-                      
-                      ones := l_times_j * c_kij;
-                      
-                      step := list_of_objects_j * c_kij;
-                      
-                      Append( k_permutation, Flat(
-                        List( [ 1 .. i[1] ], m -> List( [ 1 .. ones ], n -> height + (m-1)*step + zeros_above + n ) )
-                      ) );
-                      
-                      height := height + rows;
+                      for j in direct_sum_support do
+                          
+                          l_times_j := Multiplicity( list_of_objects[l], j );
+                          
+                          c_kij := Multiplicity( k, i[2], j );
+                          
+                          list_of_objects_j := Multiplicity( direct_sum, j );
+                          
+                          rows := i[1] * list_of_objects_j * c_kij;
+                          
+                          zeros_above := Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], j ) ) ) * c_kij;
+                          
+                          ones := l_times_j * c_kij;
+                          
+                          step := list_of_objects_j * c_kij;
+                          
+                          Append( k_permutation, Flat(
+                            List( [ 1 .. i[1] ], m -> List( [ 1 .. ones ], n -> height + (m-1)*step + zeros_above + n ) )
+                          ) );
+                          
+                          height := height + rows;
+                          
+                      od;
                       
                   od;
                   
               od;
               
+              Add( permutation_list, [ k_permutation, k ] );
+              
           od;
           
-          Add( permutation_list, [ k_permutation, k ] );
+          return permutation_list;
           
-      od;
-      
-      return permutation_list;
-      
-    end;
-    
+        end
+    );
     ##
     distributivity_function := function( new_source, object_b, list_of_objects, new_range, permutation_function, invert )
       local support, support_tensor_product, size_support, direct_sum, morphism_list, k, permutation,
@@ -1415,133 +1417,135 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         associator_on_irreducibles );
     
     ##
-    distributivity_expanding_for_triple := function( object_1, object_2, object_list_with_actual_objects, left_term )
-      local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
-            tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
-            dim, string, vector_space_object;
-      
-      summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
-      
-      direct_sum := DirectSum( summands );
-      
-      object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
-      
-      support_tensor_product_all := Support( object );
-      
-      direct_sum_2 := TensorProductOnObjects( direct_sum, object_1 );
-      
-      support_tensor_product_partial := Support( direct_sum_2 );
-      
-      tensored_object_list_with_actual_objects := 
-        List( object_list_with_actual_objects, pair -> [ pair[1], TensorProductOnObjects( pair[2], object_1 ) ] );
-      
-      if left_term then
+    distributivity_expanding_for_triple := FunctionWithCache(
+        function( object_1, object_2, object_list_with_actual_objects, left_term )
+          local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
+                tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
+                dim, string, vector_space_object;
           
-          permutation_list_1 :=
-            right_distributivity_expanding_permutation( 
-              object_1, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
+          summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
           
-          permutation_list_1 :=
-            CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight( permutation_list_1, object_2, support_tensor_product_all );
+          direct_sum := DirectSum( summands );
           
-      else
+          object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
           
-          permutation_list_1 :=
-            left_distributivity_expanding_permutation( 
-              object_1, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
+          support_tensor_product_all := Support( object );
           
-          permutation_list_1 :=
-            CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight( permutation_list_1, object_2, support_tensor_product_all );
+          direct_sum_2 := TensorProductOnObjects( direct_sum, object_1 );
           
-      fi;
-      
-      permutation_list_2 :=
-        right_distributivity_expanding_permutation(
-          object_2, tensored_object_list_with_actual_objects, direct_sum_2, support_tensor_product_all, false );
-      
-      morphism_list := [ ];
-      
-      ## CLAIM: permutation_lists are sorted w.r.t. ordering in second component
-      size := Size( permutation_list_1 );
-      
-      for i in [ 1 .. size ] do
+          support_tensor_product_partial := Support( direct_sum_2 );
           
-          Add( morphism_list,
-               [ ListPerm( ( PermList( permutation_list_1[i][1] )^(-1) * PermList( permutation_list_2[i][1] )^(-1) )^(-1),
-                 Size( permutation_list_1[i][1] ) ),
-                 permutation_list_1[i][2] ] 
-          );
+          tensored_object_list_with_actual_objects := 
+            List( object_list_with_actual_objects, pair -> [ pair[1], TensorProductOnObjects( pair[2], object_1 ) ] );
           
-      od;
-      
-      return morphism_list;
-      
-    end;
-    
+          if left_term then
+              
+              permutation_list_1 :=
+                right_distributivity_expanding_permutation( 
+                  object_1, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
+              
+              permutation_list_1 :=
+                CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight( permutation_list_1, object_2, support_tensor_product_all );
+              
+          else
+              
+              permutation_list_1 :=
+                left_distributivity_expanding_permutation( 
+                  object_1, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
+              
+              permutation_list_1 :=
+                CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromRight( permutation_list_1, object_2, support_tensor_product_all );
+              
+          fi;
+          
+          permutation_list_2 :=
+            right_distributivity_expanding_permutation(
+              object_2, tensored_object_list_with_actual_objects, direct_sum_2, support_tensor_product_all, false );
+          
+          morphism_list := [ ];
+          
+          ## CLAIM: permutation_lists are sorted w.r.t. ordering in second component
+          size := Size( permutation_list_1 );
+          
+          for i in [ 1 .. size ] do
+              
+              Add( morphism_list,
+                   [ ListPerm( ( PermList( permutation_list_1[i][1] )^(-1) * PermList( permutation_list_2[i][1] )^(-1) )^(-1),
+                     Size( permutation_list_1[i][1] ) ),
+                     permutation_list_1[i][2] ] 
+              );
+              
+          od;
+          
+          return morphism_list;
+          
+        end
+    );
     ##
-    distributivity_factoring_for_triple := function( object_1, object_2, object_list_with_actual_objects, right_term )
-      local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
-            tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
-            dim, string, vector_space_object;
-      
-      summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
-      
-      direct_sum := DirectSum( summands );
-      
-      object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
-      
-      support_tensor_product_all := Support( object );
-      
-      direct_sum_2 := TensorProductOnObjects( direct_sum, object_2 );
-      
-      support_tensor_product_partial := Support( direct_sum_2 );
-      
-      tensored_object_list_with_actual_objects := 
-        List( object_list_with_actual_objects, pair -> [ pair[1], TensorProductOnObjects( pair[2], object_2 ) ] );
-      
-      if right_term then
+    distributivity_factoring_for_triple := FunctionWithCache(
+        function( object_1, object_2, object_list_with_actual_objects, right_term )
+          local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
+                tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
+                dim, string, vector_space_object;
           
-          permutation_list_1 :=
-            left_distributivity_expanding_permutation( 
-              object_2, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
+          summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
           
-          permutation_list_1 :=
-            CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft( permutation_list_1, object_1, support_tensor_product_all );
+          direct_sum := DirectSum( summands );
           
-      else
+          object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
           
-          permutation_list_1 :=
-            right_distributivity_expanding_permutation( 
-              object_2, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
+          support_tensor_product_all := Support( object );
           
-          permutation_list_1 :=
-            CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft( permutation_list_1, object_1, support_tensor_product_all );
+          direct_sum_2 := TensorProductOnObjects( direct_sum, object_2 );
           
-      fi;
-      
-      permutation_list_2 :=
-        right_distributivity_expanding_permutation(
-          object_1, tensored_object_list_with_actual_objects, direct_sum_2, support_tensor_product_all, false );
-      
-      morphism_list := [ ];
-      
-      ## CLAIM: permutation_lists are sorted w.r.t. ordering in second component
-      size := Size( permutation_list_1 );
-      
-      for i in [ 1 .. size ] do
+          support_tensor_product_partial := Support( direct_sum_2 );
           
-          Add( morphism_list,
-               [ ListPerm( ( PermList( permutation_list_2[i][1] ) * PermList( permutation_list_1[i][1] ) )^(-1), 
-                 Size( permutation_list_2[i][1] ) ),
-                 permutation_list_1[i][2] ]
-          );
+          tensored_object_list_with_actual_objects := 
+            List( object_list_with_actual_objects, pair -> [ pair[1], TensorProductOnObjects( pair[2], object_2 ) ] );
           
-      od;
-      
-      return morphism_list;
-      
-    end;
-    
+          if right_term then
+              
+              permutation_list_1 :=
+                left_distributivity_expanding_permutation( 
+                  object_2, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
+              
+              permutation_list_1 :=
+                CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft( permutation_list_1, object_1, support_tensor_product_all );
+              
+          else
+              
+              permutation_list_1 :=
+                right_distributivity_expanding_permutation( 
+                  object_2, object_list_with_actual_objects, direct_sum, support_tensor_product_partial, false );
+              
+              permutation_list_1 :=
+                CAP_INTERNAL_TensorProductOfPermutationListWithObjectFromLeft( permutation_list_1, object_1, support_tensor_product_all );
+              
+          fi;
+          
+          permutation_list_2 :=
+            right_distributivity_expanding_permutation(
+              object_1, tensored_object_list_with_actual_objects, direct_sum_2, support_tensor_product_all, false );
+          
+          morphism_list := [ ];
+          
+          ## CLAIM: permutation_lists are sorted w.r.t. ordering in second component
+          size := Size( permutation_list_1 );
+          
+          for i in [ 1 .. size ] do
+              
+              Add( morphism_list,
+                   [ ListPerm( ( PermList( permutation_list_2[i][1] ) * PermList( permutation_list_1[i][1] ) )^(-1), 
+                     Size( permutation_list_2[i][1] ) ),
+                     permutation_list_1[i][2] ]
+              );
+              
+          od;
+          
+          return morphism_list;
+          
+        end
+    );
     ##
     AddAssociatorLeftToRightWithGivenTensorProducts( category,
       function( new_source, object_a, object_b, object_c, new_range )
