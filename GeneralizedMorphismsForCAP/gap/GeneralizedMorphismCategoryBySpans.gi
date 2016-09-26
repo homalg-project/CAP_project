@@ -505,7 +505,7 @@ InstallMethod( IdempotentDefinedByFactorobjectBySpan,
     
     generalized := AsGeneralizedMorphismBySpan( factorobject );
     
-    return PreCompose( PseudoInverse( factorobject ), factorobject );
+    return PreCompose( generalized, PseudoInverse( generalized ) );
     
 end );
 
