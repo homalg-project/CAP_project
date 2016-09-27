@@ -236,7 +236,7 @@ DeclareAttribute( "MorphismFunctionName",
 
 #! @Description
 #!  Returns the identity functor of the
-#!  category <A>cat</A> viewn as an object
+#!  category <A>cat</A> viewed as an object
 #!  in the category of categories.
 #! @Arguments category
 #! @Returns a functor
