@@ -96,8 +96,8 @@ DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
 #! The output is its generalized inverse $b \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,a)$
 #! @Arguments alpha
-DeclareAttribute( "GeneralizedInverse",
-                  IsCapCategoryMorphism );
+DeclareOperation( "GeneralizedInverse",
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #! The argument is a subobject $\alpha: a \hookrightarrow b \in \mathbf{A}$.
@@ -105,8 +105,8 @@ DeclareAttribute( "GeneralizedInverse",
 #! defined by $\alpha$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,b)$
 #! @Arguments alpha
-DeclareAttribute( "IdempotentDefinedBySubobject",
-                  IsCapCategoryMorphism );
+DeclareOperation( "IdempotentDefinedBySubobject",
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #! The argument is a factorobject $\alpha: b \twoheadrightarrow a \in \mathbf{A}$.
@@ -114,8 +114,8 @@ DeclareAttribute( "IdempotentDefinedBySubobject",
 #! defined by $\alpha$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,b)$
 #! @Arguments alpha
-DeclareAttribute( "IdempotentDefinedByFactorobject",
-                  IsCapCategoryMorphism );
+DeclareOperation( "IdempotentDefinedByFactorobject",
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #! The argument is a generalized morphism category $C = \mathbf{G(A)}$.
