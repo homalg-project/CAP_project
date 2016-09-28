@@ -596,6 +596,14 @@ InstallGlobalFunction( ADD_GRADED_EQUAL_FOR_MORPHISMS,
         
     end );
     
+    AddIsEqualForMorphisms( category,
+      
+      function( morphism_1, morphism_2 )
+        
+        return IsEqualForMorphisms( UnderlyingPresentationMorphism( morphism_1 ), UnderlyingPresentationMorphism( morphism_2 ) );
+        
+    end );
+    
 end );
 
 ##

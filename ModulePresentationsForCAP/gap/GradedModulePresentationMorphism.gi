@@ -43,8 +43,8 @@ InstallMethod( GradedPresentationMorphism,
   function( source, morphism, range )
     local graded_morphism, left, type;
     
-    if not IsIdenticalObj( Source( morphism ), UnderlyingPresentationObject( source ) ) or
-       not IsIdenticalObj( Range( morphism ) , UnderlyingPresentationObject( range  ) ) then
+    if not IsEqualForObjects( Source( morphism ), UnderlyingPresentationObject( source ) ) or
+       not IsEqualForObjects( Range( morphism ) , UnderlyingPresentationObject( range  ) ) then
        Error( "morphism not compatible with source or range" );
     fi;
     
