@@ -169,6 +169,39 @@ InstallMethod( ResolutionTo,
     
 end );
 
+BindGlobal( "CAP_INTERNAL_HORSE_SHOE_HELPER",
+  function( left_diff_i, right_diff_i, eps_prime, eps, eps_2prime, pi, iota, i )
+    local ker_eps_prime, ker_eps, ker_eps_2prime, eps_prime_1_to_ker, eps_2prime_1_to_ker,
+          iota0, pi0, ker_eps_prime_to_eps, ker_eps_to_eps_2prime, first_morphism, second_morphism,
+          sum_morphism, differential_morphism, range_left_diff, range_right_diff;
+    
+    ker_eps_prime := KernelEmbedding( eps_prime );
+    ker_eps := KernelEmbedding( eps );
+    ker_eps_2prime := KernelEmbedding( eps_2prime );
+    
+    eps_prime_1_to_ker := KernelLift( eps_prime, left_diff_i );
+    eps_2prime_1_to_ker := KernelLift( eps_2prime, right_diff_i );
+    
+    range_left_diff := Range( left_diff_i );
+    range_right_diff := Range( right_diff_i );
+    
+    iota0 := InjectionOfCofactorOfDirectSum( [ range_left_diff, range_right_diff ], 1 );
+    pi0 := ProjectionInFactorOfDirectSum( [ range_left_diff, range_right_diff ], 2 );
+    
+    ker_eps_prime_to_eps := KernelLift( eps, PreCompose( ker_eps_prime, iota0 ) );
+    ker_eps_to_eps_2prime := KernelLift( eps_2prime , PreCompose( ker_eps, pi0 ) );
+    
+    first_morphism := PreCompose( eps_prime_1_to_ker, ker_eps_prime_to_eps );
+    second_morphism := Lift( eps_2prime_1_to_ker, ker_eps_to_eps_2prime );
+    
+    sum_morphism := UniversalMorphismFromDirectSum( [ first_morphism, second_morphism ] );
+    
+    differential_morphism := PreCompose( sum_morphism, ker_eps );
+    
+    return differential_morphism;
+
+end );
+
 ##
 InstallMethod( HorseShoeLemma,
                [ IsCapCocomplex, IsCapCocomplex, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
@@ -200,35 +233,6 @@ InstallMethod( HorseShoeLemma,
             return DirectSum( [ left_complex[ i ], right_complex[ i ] ] );
     end;
     
-    helper_function := function( eps_prime, eps, eps_2prime, pi, iota, i )
-        local ker_eps_prime, ker_eps, ker_eps_2prime, eps_prime_1_to_ker, eps_2prime_1_to_ker,
-              iota0, pi0, ker_eps_prime_to_eps, ker_eps_to_eps_2prime, first_morphism, second_morphism,
-              sum_morphism, differential_morphism;
-        
-        ker_eps_prime := KernelEmbedding( eps_prime );
-        ker_eps := KernelEmbedding( eps );
-        ker_eps_2prime := KernelEmbedding( eps_2prime );
-        
-        eps_prime_1_to_ker := KernelLift( eps_prime, Differential( left_complex, i ) );
-        eps_2prime_1_to_ker := KernelLift( eps_2prime, Differential( right_complex, i ) );
-        
-        iota0 := InjectionOfCofactorOfDirectSum( [ left_complex[ i + 1 ], right_complex[ i + 1 ] ], 1 );
-        pi0 := ProjectionInFactorOfDirectSum( [ left_complex[ i + 1 ], right_complex[ i + 1 ] ], 2 );
-        
-        ker_eps_prime_to_eps := KernelLift( eps, PreCompose( ker_eps_prime, iota0 ) );
-        ker_eps_to_eps_2prime := KernelLift( eps_2prime , PreCompose( ker_eps, pi0 ) );
-        
-        first_morphism := PreCompose( eps_prime_1_to_ker, ker_eps_prime_to_eps );
-        second_morphism := Lift( eps_2prime_1_to_ker, ker_eps_to_eps_2prime );
-        
-        sum_morphism := UniversalMorphismFromDirectSum( [ first_morphism, second_morphism ] );
-        
-        differential_morphism := PreCompose( sum_morphism, ker_eps );
-        
-        return differential_morphism;
-        
-    end;
-        
     morphism_function := function( i )
         local eps;
         
@@ -245,16 +249,19 @@ InstallMethod( HorseShoeLemma,
             eps := Lift( eps_2prime, pi );
             eps := UniversalMorphismFromDirectSum( [ PreCompose( eps_prime, iota ), eps ] );
             
-            return helper_function( eps_prime, eps, eps_2prime, pi, iota, -1 );
+            return CAP_INTERNAL_HORSE_SHOE_HELPER( Differential( left_complex, -1 ),
+                                                   Differential( right_complex, -1 ),
+                                                   eps_prime, eps, eps_2prime, pi, iota );
             
         else
             
-            return helper_function( Differential( left_complex, i + 1 ),
-                                    Differential( middle_complex, i + 1 ),
-                                    Differential( right_complex, i + 1 ),
-                                    kernel_resolution_morphism[ i + 1 ],
-                                    cokernel_resolution_morphism[ i + 1 ],
-                                    i );
+            return CAP_INTERNAL_HORSE_SHOE_HELPER( Differential( left_complex, i ),
+                                                   Differential( right_complex, i ),
+                                                   Differential( left_complex, i + 1 ),
+                                                   Differential( middle_complex, i + 1 ),
+                                                   Differential( right_complex, i + 1 ),
+                                                   kernel_resolution_morphism[ i + 1 ],
+                                                   cokernel_resolution_morphism[ i + 1 ] );
             
         fi;
         
