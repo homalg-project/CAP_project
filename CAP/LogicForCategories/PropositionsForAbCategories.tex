@@ -20,9 +20,43 @@
 \begin{align*}
    a: \Obj ~|~ () \vdash \IsZero \big( \MorphismFromZeroObject( a ) \big)
 \end{align*}
-
 \end{sequent}
 
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor ~|~ \IsZero(\Source(\alpha)) \vdash \IsZero(\alpha)
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor ~|~ \IsZero(\Range(\alpha)) \vdash \IsZero(\alpha)
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor ~|~ \IsZero(\alpha), \IsMonomorphism(\alpha) \vdash \IsZero(\Source(\alpha))
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor ~|~ \IsZero(\alpha), \IsEpimorphism(\alpha) \vdash \IsZero(\Range(\alpha))
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor, \beta: \Mor ~|~ \IsZero(\alpha) \vdash \IsZero(\PreCompose(\alpha,\beta))
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+   \alpha: \Mor, \beta: \Mor ~|~ \IsZero(\beta) \vdash \IsZero(\PreCompose(\alpha,\beta))
+\end{align*}
+\end{sequent}
 
 \begin{sequent}
 \begin{align*}
