@@ -22,20 +22,20 @@ DeclareOperation( "HorseShoeLemma",
 DeclareOperation( "CartanEilenbergResolution",
                   [ IsCapComplex, IsCapFunctor ] );
 
-DeclareOperation( "InternalHomOnComplexWithObject",
-                  [ IsCapComplex, IsCapCategoryObject ] );
+DeclareOperation( "DualOnComplex",
+                  [ IsCapComplex ] );
 
 DeclareOperation( "CartanEilenbergResolution",
                   [ IsCapCocomplex, IsFunction ] );
 
-DeclareOperation( "InternalHomOnCocomplexWithObject",
-                  [ IsCapCocomplex, IsCapCategoryObject ] );
+DeclareOperation( "DualOnCocomplex",
+                  [ IsCapCocomplex ] );
 
-DeclareOperation( "InternalHomOnCochainMapWithObject",
-                  [ IsCapCochainMap, IsCapComplex, IsCapComplex, IsCapCategoryObject ] );
+DeclareOperation( "DualOnCochainMap",
+                  [ IsCapCochainMap, IsCapComplex, IsCapComplex ] );
 
-DeclareOperation( "InternalHomOnCocomplexCocomplexWithObject",
-                  [ IsCapCocomplex, IsCapCategoryObject ] );
+DeclareOperation( "DualOnCocomplexCocomplex",
+                  [ IsCapCocomplex ] );
 
 DeclareAttribute( "FreeResolutionComplexOfModule",
                   IsCapCategoryObject );
@@ -49,4 +49,22 @@ DeclareOperation( "ResolutionTo",
 DeclareOperation( "TransposeComplexOfComplex",
                   [ IsCapComplex ] );
 
+DeclareAttribute( "ResolutionLength",
+                  IsCapComplex );
 
+DeclareOperation( "TotalComplexOfBicomplex",
+                  [ IsCapComplex, IsInt ] );
+
+DeclareOperation( "EmbeddingInObjectOfTotalComplex",
+                  [ IsCapComplex, IsInt, IsInt, IsInt ] );
+
+DeclareOperation( "GeneralizedEmbeddingOfHomology",
+                  [ IsCapComplex, IsInt ] );
+
+DeclareOperation( "GeneralizedMorphismBetweenHomologies",
+                  [ IsCapComplex, IsCapComplex, IsCapCategoryMorphism, IsInt ] );
+
+DeclareOperation( "ConnectingMorphismFromCocomplexToCartanEilenbergResolution",
+                  [ IsCapCocomplex, IsInt, IsFunction ] );
+
+DeclareGlobalFunction( "GeneralizedEmbeddingOfSpectralSequenceEntry" );

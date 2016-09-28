@@ -24,4 +24,3 @@ res := res[ 1 ];
 homres := InternalHomOnComplexWithObject( res, S0 );
 CE := CartanEilenbergResolution( homres, FreeResolutionCocomplexOfModule );
 homCE := InternalHomOnCocomplexCocomplexWithObject( CE, S0 );
-

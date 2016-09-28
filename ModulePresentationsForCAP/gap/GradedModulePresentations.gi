@@ -905,9 +905,8 @@ InstallGlobalFunction( ADD_GRADED_TENSOR_UNIT,
         local unit, new_degrees;
         
         unit := TensorUnit( underlying_presentation_category );
-        new_degrees := [ Zero( DegreeGroup( homalg_ring ) ) ];
         
-        return object_constructor( unit, new_degrees );
+        return object_constructor( unit );
         
     end );
     

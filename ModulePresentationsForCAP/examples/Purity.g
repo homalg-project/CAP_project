@@ -26,9 +26,9 @@ M := AsGradedLeftPresentation( wmat );
 
 res := FreeResolutionComplexOfModule( M );
 res := res[ 1 ];
-homres := InternalHomOnComplexWithObject( res, S0 );
+homres := DualOnComplex( res );
 CE := CartanEilenbergResolution( homres, FreeResolutionCocomplexOfModule );
-homCE := InternalHomOnCocomplexCocomplexWithObject( CE, S0 );
+homCE := DualOnCocomplexCocomplex( CE );
 trhomCE := TransposeComplexOfComplex( homCE );
 
 LG := LiftNaturalTransformationToGradedModuleFunctorLeft( NaturalIsomorphismFromIdentityToLessGeneratorsLeft( S ) );

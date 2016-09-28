@@ -170,7 +170,7 @@ InstallMethod( ResolutionTo,
 end );
 
 BindGlobal( "CAP_INTERNAL_HORSE_SHOE_HELPER",
-  function( left_diff_i, right_diff_i, eps_prime, eps, eps_2prime, pi, iota, i )
+  function( left_diff_i, right_diff_i, eps_prime, eps, eps_2prime, pi, iota )
     local ker_eps_prime, ker_eps, ker_eps_2prime, eps_prime_1_to_ker, eps_2prime_1_to_ker,
           iota0, pi0, ker_eps_prime_to_eps, ker_eps_to_eps_2prime, first_morphism, second_morphism,
           sum_morphism, differential_morphism, range_left_diff, range_right_diff;
@@ -352,66 +352,60 @@ InstallMethod( CartanEilenbergResolution,
     
 end );
 
-InstallMethod( InternalHomOnComplexWithObject,
-               [ IsCapComplex, IsCapCategoryObject ],
+InstallMethod( DualOnComplex,
+               [ IsCapComplex ],
   
-  function( complex, object )
-    local object_func, morphism_func, id_of_object;
+  function( complex )
+    local object_func, morphism_func;
     
-    id_of_object := IdentityMorphism( object );
+    object_func := i -> DualOnObjects( complex[ i ] );
     
-    object_func := i -> InternalHomOnObjects( complex[ i ], object );
+    morphism_func := i -> DualOnMorphisms( Differential( complex, i + 1 ) );
     
-    morphism_func := i -> InternalHomOnMorphisms( Differential( complex, i + 1 ), id_of_object );
-    
-    return AsCocomplex( ZFunctorObject( object_func, morphism_func, CapCategory( object ) ) );
+    return AsCocomplex( ZFunctorObject( object_func, morphism_func, UnderlyingCategory( CapCategory( complex ) ) ) );
     
 end );
 
-InstallMethod( InternalHomOnCocomplexWithObject,
-               [ IsCapCocomplex, IsCapCategoryObject ],
+InstallMethod( DualOnCocomplex,
+               [ IsCapCocomplex ],
                
-  function( cocomplex, object )
+  function( cocomplex )
     local object_func, morphism_func, id_of_object;
     
-    id_of_object := IdentityMorphism( object );
+    object_func := i -> DualOnObjects( cocomplex[ - i ] );
     
-    object_func := i -> InternalHomOnObjects( cocomplex[ - i ], object );
+    morphism_func := i -> DualOnMorphisms( Differential( cocomplex, -i - 1 ) );
     
-    morphism_func := i -> InternalHomOnMorphisms( Differential( cocomplex, -i - 1 ), id_of_object );
-    
-    return AsComplex( ZFunctorObject( object_func, morphism_func, CapCategory( object ) ) );
+    return AsComplex( ZFunctorObject( object_func, morphism_func, UnderlyingCategory( CapCategory( cocomplex ) ) ) );
     
 end );
 
-InstallMethod( InternalHomOnCochainMapWithObject,
-               [ IsCapCochainMap, IsCapComplex, IsCapComplex, IsCapCategoryObject ],
+InstallMethod( DualOnCochainMap,
+               [ IsCapCochainMap, IsCapComplex, IsCapComplex ],
                
-  function( cochain_map, new_source, new_range, object )
+  function( cochain_map, new_source, new_range )
     local id_of_object, morphism_func;
     
-    id_of_object := IdentityMorphism( object );
-    
-    morphism_func := i -> InternalHomOnMorphisms( cochain_map[ i ], id_of_object );
+    morphism_func := i -> DualOnMorphisms( cochain_map[ i ] );
     
     return ChainMap( new_source, morphism_func, new_range );
     
 end );
 
-InstallMethod( InternalHomOnCocomplexCocomplexWithObject,
-               [ IsCapCocomplex, IsCapCategoryObject ],
+InstallMethod( DualOnCocomplexCocomplex,
+               [ IsCapCocomplex ],
                
-  function( cocomplex, object )
+  function( cocomplex )
     local object_func, morphism_func, id_of_object, new_complex, new_z_functor;
     
-    new_z_functor := ZFunctorObject( ReturnTrue, ReturnTrue, ComplexCategory( CapCategory( object ) ) );
+    new_z_functor := ZFunctorObject( ReturnTrue, ReturnTrue, ComplexCategory( UnderlyingCategory( UnderlyingCategory( CapCategory( cocomplex ) )  ) ));
     new_complex := AsComplex( new_z_functor );
     
-    object_func := i -> InternalHomOnCocomplexWithObject( cocomplex[ - i ], object );
+    object_func := i -> DualOnCocomplex( cocomplex[ - i ] );
     
     new_z_functor!.object_func := object_func;
     
-    morphism_func := i -> InternalHomOnCochainMapWithObject( Differential( cocomplex, -i - 1 ), new_complex[ i ], new_complex[ i - 1 ], object );
+    morphism_func := i -> DualOnCochainMap( Differential( cocomplex, -i - 1 ), new_complex[ i ], new_complex[ i - 1 ] );
     
     new_z_functor!.differential_func := morphism_func;
     
@@ -467,3 +461,213 @@ InstallMethod( TransposeComplexOfComplex,
     
 end );
 
+InstallMethod( ResolutionLength,
+               [ IsCapComplex ],
+               
+  function( complex )
+    local i;
+    
+    i := 0;
+    
+    while not IsZero( complex[ i ] ) do
+        i := i + 1;
+    od;
+    
+    return i;
+    
+end );
+
+## 4th quadrant complex, number of non-zero columns
+InstallMethod( TotalComplexOfBicomplex,
+               [ IsCapComplex, IsInt ],
+               
+  function( bicomplex, length )
+    local object_function, morphism_function, z_functor_object, new_complex;
+    
+    z_functor_object := ZFunctorObject( ReturnTrue, ReturnTrue, UnderlyingCategory( UnderlyingCategory( CapCategory( bicomplex ) ) ) );
+    new_complex := AsComplex( z_functor_object );
+    
+    morphism_function := function( i )
+      local source_summands, range_summands, nr_range_summands, nr_source_summands,
+            source_projections, range_injections, horizontal_morphisms, vertical_morphisms,
+            end_horizontal, end_vertical;
+        
+        i := -i;
+        
+        nr_source_summands := length - i + 1;
+        nr_range_summands := length - i + 1 + 1;
+        
+        source_summands := List( [ 0 .. length - i ], j -> bicomplex[ j + i ][ -j ] );
+        range_summands := List( [ 0 .. length - i + 1 ], j -> bicomplex[ j + i - 1 ][ -j ] );
+        
+        source_projections := List( [ 1 .. nr_source_summands ], j -> ProjectionInFactorOfDirectSum( source_summands, j ) );
+        range_injections := List( [ 1 .. nr_range_summands ], j -> InjectionOfCofactorOfDirectSum( range_summands, j ) );
+        
+        horizontal_morphisms := List( [ 0 .. length - i  ], j -> Differential( bicomplex, j + i )[ -j ] );
+        vertical_morphisms := List( [ 0 .. length - i ], j -> Differential( bicomplex[ j + i ], -j ) );
+        
+        horizontal_morphisms := List( [ 1 .. Length( horizontal_morphisms ) ], j -> PreCompose( source_projections[ j ], horizontal_morphisms[ j ] ) );
+        vertical_morphisms := List( [ 1 .. Length( vertical_morphisms ) ], j -> PreCompose( source_projections[ j ], vertical_morphisms[ j ] ) );
+        
+        horizontal_morphisms := List( [ 1 .. Length( horizontal_morphisms ) ], j -> PreCompose( horizontal_morphisms[ j ], range_injections[ j ] ) );
+        vertical_morphisms := List( [ 1 .. Length( vertical_morphisms ) ], j -> PreCompose( vertical_morphisms[ j ], range_injections[ j + 1 ] ) );
+        
+        end_horizontal := Sum( horizontal_morphisms );
+        end_vertical := Sum( vertical_morphisms );
+        
+        return end_horizontal + end_vertical;
+        
+    end;
+    
+    object_function := function( i )
+        
+        i := - i;
+        
+        return DirectSum( List( [ 0 .. length - i ], j -> bicomplex[ j + i ][ -j ] ) );
+        
+    end;
+    
+    z_functor_object!.differential_func := morphism_function;
+    z_functor_object!.object_func := object_function;
+    
+    return new_complex;
+    
+end );
+
+InstallMethod( EmbeddingInObjectOfTotalComplex,
+               [ IsCapComplex, IsInt, IsInt, IsInt ],
+               
+  function( bicomplex, length, position, embedding_number )
+    local object_list;
+    
+    object_list := List( [ 0 .. length - position ], j -> bicomplex[ j + position ][ -j ] );
+    
+    return InjectionOfCofactorOfDirectSum( object_list, embedding_number );
+    
+end );
+
+# InstallMethod( ProjectionOfObjectOfTotalComplex,
+#                [ IsCapComplex, IsInt, IsInt, IsInt ],
+#                
+#   function( bicomplex, length, position, embedding_number )
+#     local object_list;
+#     
+#     object_list := List( [ 0 .. length - position ], j -> bicomplex[ j + position ][ -j ] );
+#     
+#     return ProjectionInFactorOfDirectSum( object_list, embedding_number );
+#     
+# end );
+
+InstallMethod( ConnectingMorphismFromCocomplexToCartanEilenbergResolution,
+               [ IsCapCocomplex, IsInt, IsFunction ],
+               
+  function( cocomplex, position, projective_resolution_function )
+    local delta_im1, delta_i, first_morphism, second_morphism, first_complex,
+          second_complex, third_morphism, third_complex, fourth_morphism, eps, eps2;
+    
+    delta_im1 := Differential( cocomplex, position - 1 );
+    delta_i := Differential( cocomplex, position );
+    
+    first_morphism := KernelLift( delta_i, ImageEmbedding( delta_im1 ) );
+    second_morphism := CokernelProjection( first_morphism );
+    
+    first_complex := projective_resolution_function( Source( first_morphism ) );
+    
+    second_complex := projective_resolution_function( Range( second_morphism ) );
+    
+    third_morphism := KernelEmbedding( delta_i );
+    fourth_morphism := CoastrictionToImage( delta_i );
+    
+    eps := Lift( second_complex[ 2 ], second_morphism );
+    eps := UniversalMorphismFromDirectSum( [ PreCompose( first_complex[ 2 ], first_morphism ), eps ] );
+    
+    third_complex := projective_resolution_function( Range( fourth_morphism ) );
+    
+    eps2 := Lift( third_complex[ 2 ], fourth_morphism );
+    eps2 := UniversalMorphismFromDirectSum( [ PreCompose( eps, third_morphism ), eps2 ] );
+    
+    return eps2;
+    
+end );
+
+InstallMethod( GeneralizedEmbeddingOfHomology,
+               [ IsCapComplex, IsInt ],
+               
+  function( complex, i )
+    local differential_i, differential_ip1, image_embedding, kernel_lift,
+          map_to_homology, kernel_emb;
+    
+    differential_i := Differential( complex, i );
+    differential_ip1 := Differential( complex, i + 1 );
+    
+    image_embedding := ImageEmbedding( differential_ip1 );
+    kernel_lift := KernelLift( differential_i, image_embedding );
+    
+    map_to_homology := CokernelProjection( kernel_lift );
+    kernel_emb := KernelEmbedding( differential_i );
+    
+    return GeneralizedMorphismWithSourceAid( map_to_homology, kernel_emb );
+    
+end );
+
+InstallMethod( GeneralizedMorphismBetweenHomologies,
+               [ IsCapComplex, IsCapComplex, IsCapCategoryMorphism, IsInt ],
+               
+  function( source_complex, range_complex, connecting_morphism, i )
+    local source_embedding, range_embedding, generalized_connection;
+    
+    source_embedding := GeneralizedEmbeddingOfHomology( source_complex, i );
+    range_embedding := GeneralizedEmbeddingOfHomology( range_complex, i );
+    
+    generalized_connection := AsGeneralizedMorphism( connecting_morphism );
+    
+    return PreCompose( PreCompose( source_embedding, generalized_connection ), PseudoInverse( range_embedding ) );
+    
+end );
+
+InstallMethod( GeneralizedEmbeddingOfSpectralSequenceEntry.
+               [ IsCapComplex, IsInt, IsInt, IsCapComplex, 
+  
+  function( trhomCE, diag_number, page, homCE, homres, connection_mor )
+    local homhomres, resolution_len, tot, connection_at_0, connection_at_1, homcon_at_0, homcon_at_1,
+          emb0, emb1, homcon_at_0_in_tot, homcon_at_1_in_tot, homology_iso, M_as_homology,
+          M_to_M_as_homology, M_to_hom_of_tot, entry, homology_proj_of_tot, emb01;
+    
+    homhomres := DualOnCocomplex( homres );
+    
+    resolution_len := ResolutionLength( homhomres );
+
+    tot := TotalComplexOfBicomplex( homCE, resolution_len );
+
+    connection_at_0 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 0, FreeResolutionCocomplexOfModule );
+    connection_at_1 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 1, FreeResolutionCocomplexOfModule );
+
+    homcon_at_0 := DualOnMorphisms( connection_at_0 );
+    homcon_at_1 := DualOnMorphisms( connection_at_1 );
+
+    emb0 := EmbeddingInObjectOfTotalComplex( homCE, resolution_len, 0, 1 );
+    emb1 := EmbeddingInObjectOfTotalComplex( homCE, resolution_len, 1, 1 );
+
+    homcon_at_0_in_tot := PreCompose( homcon_at_0, emb0 );
+    homcon_at_1_in_tot := PreCompose( homcon_at_1, emb1 );
+
+    homology_iso := GeneralizedMorphismBetweenHomologies( homhomres, tot, homcon_at_0_in_tot, 0 );
+
+    homology_iso := HonestRepresentative( homology_iso );
+
+    M_as_homology := HonestRepresentative( PseudoInverse( GeneralizedEmbeddingOfHomology( homhomres, 0 ) ) );
+
+    M_to_M_as_homology := ColiftAlongEpimorphism( connection_mor, M_as_homology );
+
+    M_to_hom_of_tot := PreCompose( M_to_M_as_homology, homology_iso );
+
+    entry := SpectralSequenceEntry( trhomCE, page, -diag_number, diag_number );
+
+    homology_proj_of_tot := PseudoInverse( GeneralizedEmbeddingOfHomology( tot, 0 ) );
+
+    emb01 := EmbeddingInObjectOfTotalComplex( homCE, resolution_len, 0, diag_number + 1 );
+
+    return PreCompose( PreCompose( PreCompose( entry, AsGeneralizedMorphism( emb01 ) ), homology_proj_of_tot ), AsGeneralizedMorphism( Inverse( M_to_hom_of_tot ) ) );
+    
+end );
+  

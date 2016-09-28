@@ -84,6 +84,7 @@ Dependencies := rec(
                            [ "CAP", ">=0" ],
                            [ "GradedRingForHomalg", ">=0" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=0" ],
+                           [ "GeneralizedMorphismsForCAP", ">=0" ]
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
