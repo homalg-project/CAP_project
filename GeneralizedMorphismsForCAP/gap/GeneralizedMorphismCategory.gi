@@ -119,3 +119,15 @@ InstallMethod( IsSingleValued,
 InstallMethod( IsTotal,
                [ IsGeneralizedMorphism ],
                HasFullDomain );
+
+InstallMethod( CombinedImageEmbedding,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    local triple;
+    
+    triple := DomainAssociatedMorphismCodomainTriple( generalized_morphism );
+    
+    return ProjectionInFactorOfFiberProduct( [ ImageEmbedding( triple[ 2 ] ), triple[ 3 ] ], 2 );
+    
+end );

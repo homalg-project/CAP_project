@@ -79,3 +79,50 @@ InstallMethod( LiftNaturalTransformationToGradedModuleFunctorRight,
                [ IsCapNaturalTransformation ],
                
   i -> CAP_INTERNAL_LiftNaturalTransformationToGradedModuleFunctor( i, false ) );
+
+BindGlobal( "CAP_INTERNAL_LiftNaturalTransformationToGradedModuleNatTrans",
+  
+  function( nat_trans, left )
+    local range_func, underlying_category, ring, new_category, source_func, new_nat_trans, category_constructor;
+    
+    if left then
+        category_constructor := GradedLeftPresentations;
+    else
+        category_constructor := GradedRightPresentations;
+    fi;
+    
+    range_func := CAP_INTERNAL_LiftNaturalTransformationToGradedModuleFunctor( nat_trans, left );
+    
+    underlying_category := AsCapCategory( Source( range_func ) );
+    
+    ring := underlying_category!.ring_for_representation_category;
+    
+    new_category := category_constructor( ring );
+    
+    source_func := IdentityMorphism( AsCatObject( new_category ) );
+    
+    new_nat_trans := NaturalTransformation( Concatenation( "Graded ", Name( nat_trans ) ), source_func, range_func );
+    
+    AddNaturalTransformationFunction( new_nat_trans,
+      function( new_source, object, new_range )
+        local new_morphism;
+        
+        new_morphism := ApplyNaturalTransformation( nat_trans, UnderlyingPresentationObject( object ) );
+        
+        return GradedPresentationMorphism( new_source, new_morphism, new_range );
+        
+    end );
+    
+    return new_nat_trans;
+    
+end );
+
+InstallMethod( LiftNaturalTransformationToGradedModulesLeft,
+               [ IsCapNaturalTransformation ],
+               
+  i -> CAP_INTERNAL_LiftNaturalTransformationToGradedModuleNatTrans( i, true ) );
+
+InstallMethod( LiftNaturalTransformationToGradedModulesRight,
+               [ IsCapNaturalTransformation ],
+               
+  i -> CAP_INTERNAL_LiftNaturalTransformationToGradedModuleNatTrans( i, false ) );

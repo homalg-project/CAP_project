@@ -22,14 +22,14 @@ DeclareOperation( "HorseShoeLemma",
 DeclareOperation( "CartanEilenbergResolution",
                   [ IsCapComplex, IsCapFunctor ] );
 
-DeclareOperation( "DualOnComplex",
-                  [ IsCapComplex ] );
+DeclareAttribute( "DualOnComplex",
+                  IsCapComplex );
 
 DeclareOperation( "CartanEilenbergResolution",
                   [ IsCapCocomplex, IsFunction ] );
 
-DeclareOperation( "DualOnCocomplex",
-                  [ IsCapCocomplex ] );
+DeclareAttribute( "DualOnCocomplex",
+                  IsCapCocomplex );
 
 DeclareOperation( "DualOnCochainMap",
                   [ IsCapCochainMap, IsCapComplex, IsCapComplex ] );
@@ -67,4 +67,8 @@ DeclareOperation( "GeneralizedMorphismBetweenHomologies",
 DeclareOperation( "ConnectingMorphismFromCocomplexToCartanEilenbergResolution",
                   [ IsCapCocomplex, IsInt, IsFunction ] );
 
-DeclareGlobalFunction( "GeneralizedEmbeddingOfSpectralSequenceEntry" );
+DeclareOperation( "GeneralizedEmbeddingOfSpectralSequenceEntry",
+                  [ IsCapComplex, IsInt, IsInt, IsCapComplex, IsCapCocomplex, IsCapCategoryMorphism ] );
+
+DeclareOperation( "PurityFiltrationBySpectralSequence",
+                  [ IsCapComplex, IsInt, IsCapComplex, IsCapCocomplex, IsCapCategoryMorphism ] );

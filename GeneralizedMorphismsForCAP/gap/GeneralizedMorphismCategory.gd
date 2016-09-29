@@ -262,3 +262,6 @@ DeclareOperation( "GeneralizedMorphismWithRangeAid",
 #!  by span, depending on the standard.
 DeclareOperation( "GeneralizedMorphismWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareAttribute( "CombinedImageEmbedding",
+                  IsGeneralizedMorphism );

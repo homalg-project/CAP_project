@@ -12,3 +12,12 @@ DeclareAttribute( "LiftNaturalTransformationToGradedModuleFunctorLeft",
 
 DeclareAttribute( "LiftNaturalTransformationToGradedModuleFunctorRight",
                   IsCapNaturalTransformation );
+
+DeclareAttribute( "LiftNaturalTransformationToGradedModuleNaturalTransformationLeft",
+                  IsCapNaturalTransformation );
+
+DeclareAttribute( "LiftNaturalTransformationToGradedModulesLeft",
+                  IsCapNaturalTransformation );
+
+DeclareAttribute( "LiftNaturalTransformationToGradedModulesRight",
+                  IsCapNaturalTransformation );

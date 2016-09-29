@@ -478,7 +478,7 @@ InstallMethod( ResolutionLength,
 end );
 
 ## 4th quadrant complex, number of non-zero columns
-InstallMethod( TotalComplexOfBicomplex,
+InstallMethodWithCache( TotalComplexOfBicomplex,
                [ IsCapComplex, IsInt ],
                
   function( bicomplex, length )
@@ -534,8 +534,8 @@ InstallMethod( TotalComplexOfBicomplex,
     
 end );
 
-InstallMethod( EmbeddingInObjectOfTotalComplex,
-               [ IsCapComplex, IsInt, IsInt, IsInt ],
+InstallMethodWithCache( EmbeddingInObjectOfTotalComplex,
+                        [ IsCapComplex, IsInt, IsInt, IsInt ],
                
   function( bicomplex, length, position, embedding_number )
     local object_list;
@@ -558,8 +558,8 @@ end );
 #     
 # end );
 
-InstallMethod( ConnectingMorphismFromCocomplexToCartanEilenbergResolution,
-               [ IsCapCocomplex, IsInt, IsFunction ],
+InstallMethodWithCache( ConnectingMorphismFromCocomplexToCartanEilenbergResolution,
+                        [ IsCapCocomplex, IsInt, IsFunction ],
                
   function( cocomplex, position, projective_resolution_function )
     local delta_im1, delta_i, first_morphism, second_morphism, first_complex,
@@ -590,8 +590,8 @@ InstallMethod( ConnectingMorphismFromCocomplexToCartanEilenbergResolution,
     
 end );
 
-InstallMethod( GeneralizedEmbeddingOfHomology,
-               [ IsCapComplex, IsInt ],
+InstallMethodWithCache( GeneralizedEmbeddingOfHomology,
+                        [ IsCapComplex, IsInt ],
                
   function( complex, i )
     local differential_i, differential_ip1, image_embedding, kernel_lift,
@@ -610,8 +610,8 @@ InstallMethod( GeneralizedEmbeddingOfHomology,
     
 end );
 
-InstallMethod( GeneralizedMorphismBetweenHomologies,
-               [ IsCapComplex, IsCapComplex, IsCapCategoryMorphism, IsInt ],
+InstallMethodWithCache( GeneralizedMorphismBetweenHomologies,
+                        [ IsCapComplex, IsCapComplex, IsCapCategoryMorphism, IsInt ],
                
   function( source_complex, range_complex, connecting_morphism, i )
     local source_embedding, range_embedding, generalized_connection;
@@ -625,8 +625,8 @@ InstallMethod( GeneralizedMorphismBetweenHomologies,
     
 end );
 
-InstallMethod( GeneralizedEmbeddingOfSpectralSequenceEntry.
-               [ IsCapComplex, IsInt, IsInt, IsCapComplex, 
+InstallMethod( GeneralizedEmbeddingOfSpectralSequenceEntry,
+               [ IsCapComplex, IsInt, IsInt, IsCapComplex, IsCapCocomplex, IsCapCategoryMorphism ], 
   
   function( trhomCE, diag_number, page, homCE, homres, connection_mor )
     local homhomres, resolution_len, tot, connection_at_0, connection_at_1, homcon_at_0, homcon_at_1,
@@ -671,3 +671,68 @@ InstallMethod( GeneralizedEmbeddingOfSpectralSequenceEntry.
     
 end );
   
+InstallMethod( PurityFiltrationBySpectralSequence,
+               [ IsCapComplex, IsInt, IsCapComplex, IsCapCocomplex, IsCapCategoryMorphism ],
+               
+  function( trhomCE, page, homCE, homres, connection_mor )
+    local homhomres, resolution_len, embedding_list, combined_image_embeddings,
+          pi_list, functors, i, mp, nu, mp_mat, eta_0, iota_i, eta, kappa, rho, iso, iso_inv;
+    
+    homhomres := DualOnCocomplex( homres );
+    
+    resolution_len := ResolutionLength( homhomres );
+    
+    embedding_list := List( [ 0 .. resolution_len ], i -> GeneralizedEmbeddingOfSpectralSequenceEntry( trhomCE, i, page, homCE, homres, connection_mor ) );
+    
+    embedding_list := Reversed( embedding_list );
+    
+    combined_image_embeddings := List( embedding_list, CombinedImageEmbedding );
+    
+    functors := ValueOption( "Functors" );
+    if functors <> fail then
+        for i in functors do
+            combined_image_embeddings := List( combined_image_embeddings, j -> PreCompose( Inverse( ApplyNaturalTransformation( i, Source( j ) ) ), j ) );
+        od;
+    fi;
+    
+    pi_list := List( [ 2 .. Length( embedding_list ) ], i -> PreCompose( AsGeneralizedMorphism( combined_image_embeddings[ i ] ), 
+                                                                         PseudoInverse( embedding_list[ i ] ) ) );
+    
+    pi_list := List( pi_list, HonestRepresentative );
+    
+    if functors <> fail then
+        for i in functors do
+            pi_list := List( pi_list, j -> PreCompose( j, ApplyNaturalTransformation( i, Range( j ) ) ) );
+        od;
+    fi;
+    
+    ## inital_step
+    
+    for i in [ 2 .. Length( combined_image_embeddings ) ] do
+        
+        mp := Range( pi_list[ i - 1 ] );
+        
+        nu := CoverByFreeModule( mp );
+        
+        mp_mat := KernelEmbedding( nu );
+        
+        eta_0 := Lift( nu, pi_list[ i - 1 ] );
+        
+        iota_i := LiftAlongMonomorphism( combined_image_embeddings[ i ], combined_image_embeddings[ i - 1 ] );
+        
+        eta := Lift( PreCompose( mp_mat, eta_0 ), iota_i );
+        
+        kappa := UniversalMorphismIntoDirectSum( mp_mat, eta );
+        
+        rho := UniversalMorphismFromDirectSum( -eta_0, iota_i );
+        
+        ## from new to old
+        iso := CokernelColift( kappa, rho );
+        
+        combined_image_embeddings[ i ] := PreCompose( iso, combined_image_embeddings[ i ] );
+        
+    od;
+    
+    return combined_image_embeddings[ Length( combined_image_embeddings ) ];
+    
+end );
