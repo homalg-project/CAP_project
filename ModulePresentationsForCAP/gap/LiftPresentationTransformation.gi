@@ -46,7 +46,7 @@ BindGlobal( "CAP_INTERNAL_LiftNaturalTransformationToGradedModuleFunctor",
         
         connecting_morphism := ApplyNaturalTransformation( natural_transformation, underlying_presentation );
         
-        new_degrees := non_trivial_degree( UnderlyingMatrix( connecting_morphism ), GeneratorDegrees( object ) );
+        new_degrees := - non_trivial_degree( UnderlyingMatrix( connecting_morphism ), - GeneratorDegrees( object ) );
         
         return object_constructor( new_object, new_degrees );
         

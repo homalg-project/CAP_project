@@ -311,23 +311,6 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_RIGHT,
     
 end );
 
-BindGlobal( "CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_MORPHISMS",
-            
-  function( matrix_degrees, matrix_entries, source_degrees, range_degrees )
-    local i, j;
-    
-    for i in [ 1 .. Length( source_degrees ) ] do
-        for j in [ 1 .. Length( range_degrees ) ] do
-            if not IsZero( matrix_entries[ i ][ j ] ) and matrix_degrees[ i ][ j ] + range_degrees[ j ] <> source_degrees[ i ] then
-                return false;
-            fi;
-        od;
-    od;
-    
-    return true;
-    
-end );
-
 ##
 InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
                        
@@ -342,12 +325,8 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
             return false;
         fi;
         
-        matrix_degrees := DegreesOfEntries( UnderlyingMatrix( morphism ) );
-        matrix_entries := EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( morphism ) );
-        source_degrees := GeneratorDegrees( Source( morphism ) );
-        range_degrees := GeneratorDegrees( Range( morphism ) );
-        
-        return CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_MORPHISMS( matrix_degrees, matrix_entries, source_degrees, range_degrees );
+        return GeneratorDegrees( Source( morphism ) ) = NonTrivialDegreePerRow( UnderlyingMatrix( morphism ),
+                                                                                GeneratorDegrees( Range( morphism ) ) );
         
     end );
     
