@@ -3,8 +3,7 @@ LoadPackage("AutoDoc");
 AutoDoc( "CAP" : scaffold := true, autodoc :=
          rec( files := [ "doc/Intros.autodoc" ],
          scan_dirs := [ "gap", "examples/testfiles", "doc" ] ),
-         maketest := rec( folder := ".",
-                          commands :=
+         maketest := rec( commands :=
                             [ "LoadPackage( \"CAP\" );",
                               "LoadPackage( \"IO_ForHomalg\" );",
                               "LoadPackage( \"GaussForHomalg\" );",
