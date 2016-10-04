@@ -37,10 +37,10 @@ M := AsGradedLeftPresentation( mat, [ 0, 0, 1, 2, 2, 1 ] );
 
 ShM := AsSerreQuotientCategoryObject( Coh, M );
 
-res1 := FreeResolutionComplexOfSheaf( ShM );
+res1 := FreeResolutionComplex( ShM );
 res := res1[ 1 ];
 homres := DualOnComplex( res );
-CE := CartanEilenbergResolution( homres, FreeResolutionCocomplexOfSheaf );
+CE := CartanEilenbergResolution( homres, FreeResolutionCocomplex );
 homCE := DualOnCocomplexCocomplex( CE );
 trhomCE := TransposeComplexOfComplex( homCE );
 
