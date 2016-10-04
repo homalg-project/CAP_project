@@ -109,18 +109,18 @@ end );
 #     
 # end );
 
-InstallMethod( FreeResolutionComplexOfModule,
+InstallMethod( FreeResolutionComplex,
                [ IsCapCategoryObject ],
                
   function( module )
-    return ResolutionTo( module, CoverByFreeModule, true );
+    return ResolutionTo( module, CoverByProjective, true );
 end );
 
-InstallMethod( FreeResolutionCocomplexOfModule,
+InstallMethod( FreeResolutionCocomplex,
                [ IsCapCategoryObject ],
                
   function( module )
-    return ResolutionTo( module, CoverByFreeModule, false );
+    return ResolutionTo( module, CoverByProjective, false );
 end );
 
 InstallMethod( ResolutionTo,
@@ -639,8 +639,8 @@ InstallMethod( GeneralizedEmbeddingOfSpectralSequenceEntry,
 
     tot := TotalComplexOfBicomplex( homCE, resolution_len );
 
-    connection_at_0 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 0, FreeResolutionCocomplexOfModule );
-    connection_at_1 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 1, FreeResolutionCocomplexOfModule );
+    connection_at_0 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 0, FreeResolutionCocomplex );
+    connection_at_1 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 1, FreeResolutionCocomplex );
 
     homcon_at_0 := DualOnMorphisms( connection_at_0 );
     homcon_at_1 := DualOnMorphisms( connection_at_1 );
@@ -684,6 +684,8 @@ InstallMethod( PurityFiltrationBySpectralSequence,
     
     embedding_list := List( [ 0 .. resolution_len ], i -> GeneralizedEmbeddingOfSpectralSequenceEntry( trhomCE, i, page, homCE, homres, connection_mor ) );
     
+    Print( "Computed embeddings\n" );
+    
     embedding_list := Reversed( embedding_list );
     
     combined_image_embeddings := List( embedding_list, CombinedImageEmbedding );
@@ -695,10 +697,20 @@ InstallMethod( PurityFiltrationBySpectralSequence,
         od;
     fi;
     
+    Print( "First functors applied" );
+    
     pi_list := List( [ 2 .. Length( embedding_list ) ], i -> PreCompose( AsGeneralizedMorphism( combined_image_embeddings[ i ] ), 
                                                                          PseudoInverse( embedding_list[ i ] ) ) );
     
     pi_list := List( pi_list, HonestRepresentative );
+    
+    for i in Reversed( [ 1 .. Length( pi_list ) ] ) do
+        if IsZero( Range( pi_list[ i ] ) ) then
+            Print( "found a zero\n" );
+            Remove( pi_list, i );
+            Remove( combined_image_embeddings, i + 1 );
+        fi;
+    od;
     
     if functors <> fail then
         for i in functors do
@@ -706,13 +718,15 @@ InstallMethod( PurityFiltrationBySpectralSequence,
         od;
     fi;
     
+    Print( "second functors applied" );
+    
     ## inital_step
     
     for i in [ 2 .. Length( combined_image_embeddings ) ] do
         
         mp := Range( pi_list[ i - 1 ] );
         
-        nu := CoverByFreeModule( mp );
+        nu := CoverByProjective( mp );
         
         mp_mat := KernelEmbedding( nu );
         

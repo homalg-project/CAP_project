@@ -37,10 +37,10 @@ DeclareOperation( "DualOnCochainMap",
 DeclareOperation( "DualOnCocomplexCocomplex",
                   [ IsCapCocomplex ] );
 
-DeclareAttribute( "FreeResolutionComplexOfModule",
+DeclareAttribute( "FreeResolutionComplex",
                   IsCapCategoryObject );
 
-DeclareAttribute( "FreeResolutionCocomplexOfModule",
+DeclareAttribute( "FreeResolutionCocomplex",
                   IsCapCategoryObject );
 
 DeclareOperation( "ResolutionTo",

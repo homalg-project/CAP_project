@@ -351,7 +351,8 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
         source_degrees := GeneratorDegrees( Source( morphism ) );
         range_degrees := GeneratorDegrees( Range( morphism ) );
         
-        return CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_MORPHISMS( matrix_degrees, matrix_entries, source_degrees, range_degrees );
+        return GeneratorDegrees( Source( morphism ) ) = NonTrivialDegreePerColumn( UnderlyingMatrix( morphism ),
+                                                                                   GeneratorDegrees( Range( morphism ) ) );
         
     end );
     
@@ -591,18 +592,29 @@ InstallGlobalFunction( ADD_GRADED_COKERNEL,
         object_constructor := AsGradedRightPresentation;
     fi;
     
-    AddCokernelProjection( category,
-                     
-      function( morphism )
-        local result, range_morphism, new_range;
+#     AddCokernelProjection( category,
+#                      
+#       function( morphism )
+#         local result, range_morphism, new_range;
+#         
+#         result := CokernelProjection( UnderlyingPresentationMorphism( morphism ) );
+#         
+#         range_morphism := Range( morphism );
+#         
+#         new_range := object_constructor( Range( result ), GeneratorDegrees( range_morphism ) );
+#         
+#         return GradedPresentationMorphism( range_morphism, result, new_range );
+#         
+#     end );
+    
+    AddCokernelObject( category,
+                      
+      function( object )
+        local result;
         
-        result := CokernelProjection( UnderlyingPresentationMorphism( morphism ) );
+        result := CokernelObject( UnderlyingPresentationMorphism( object ) );
         
-        range_morphism := Range( morphism );
-        
-        new_range := object_constructor( Range( result ), GeneratorDegrees( range_morphism ) );
-        
-        return GradedPresentationMorphism( range_morphism, result, new_range );
+        return object_constructor( result, GeneratorDegrees( Range( object ) ) );
         
     end );
     

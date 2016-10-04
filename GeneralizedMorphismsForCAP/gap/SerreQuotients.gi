@@ -11,3 +11,55 @@ InstallMethod( \/,
                [ IsCapCategory, IsFunction ],
                
   SerreQuotientCategory );
+
+InstallMethod( LiftCovariantEndoFunctorToSerreQuotientCategory,
+               [ IsCapCategory, IsCapFunctor ],
+               
+  function( serre_category, functor )
+    local new_functor, object_func;
+    
+    new_functor := CapFunctor( Concatenation( "Lifted ", Name( functor ) ), serre_category, serre_category );
+    
+    object_func := function( object )
+        local underlying_honest, new_honest;
+        
+        underlying_honest := UnderlyingHonestObject( object );
+        
+        new_honest := ApplyFunctor( functor, underlying_honest );
+        
+        return AsSerreQuotientCategoryObject( serre_category, new_honest );
+        
+    end;
+    
+    AddObjectFunction( new_functor, object_func );
+    
+    return new_functor;
+    
+end );
+
+InstallMethod( LiftNaturalIsoFromIdToSomeToSerreQuotientCategory,
+               [ IsCapCategory, IsCapNaturalTransformation ],
+               
+  function( serre_category, nat_trans )
+    local new_nat_trans, new_source, new_range, nat_trans_func;
+    
+    new_source := IdentityMorphism( AsCatObject( serre_category ) );
+    
+    new_range := LiftCovariantEndoFunctorToSerreQuotientCategory( serre_category, Range( nat_trans ) );
+    
+    new_nat_trans := NaturalTransformation( Concatenation( "Lifted ", Name( nat_trans ) ), new_source, new_range );
+    
+    nat_trans_func := function( new_source, obj, new_range )
+        local new_mor;
+        
+        new_mor := ApplyNaturalTransformation( UnderlyingHonestObject( obj ) );
+        
+        return AsSerreQuotientCategoryMorphism( serre_category, new_mor );
+        
+    end;
+    
+    AddNaturalTransformationFunction( new_nat_trans, nat_trans_func );
+    
+    return new_nat_trans;
+    
+end );

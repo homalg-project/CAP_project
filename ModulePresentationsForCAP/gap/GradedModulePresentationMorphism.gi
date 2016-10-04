@@ -277,7 +277,7 @@ InstallMethod( StandardGeneratorMorphism,
 end );
 
 ##
-InstallMethod( CoverByFreeModule,
+InstallMethod( CoverByProjective,
                [ IsGradedLeftPresentation ],
                
   function( left_presentation )
@@ -296,8 +296,8 @@ InstallMethod( CoverByFreeModule,
 end );
 
 ##
-InstallMethod( CoverByFreeModule,
-               [ IsRightPresentation ],
+InstallMethod( CoverByProjective,
+               [ IsGradedRightPresentation ],
                
   function( right_presentation )
     local underlying_ring, number_of_generators, free_presentation, degrees_of_generators;

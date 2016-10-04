@@ -1,5 +1,6 @@
 LoadPackage( "ModulePres" );
 LoadPackage( "Homological" );
+LoadPackage( "ToricSheaves" );
 
 SwitchGeneralizedMorphismStandard( "span" );
 
@@ -18,17 +19,28 @@ mat := HomalgMatrix( "[ \
 0,                 0,    0,       0,  0,   z    \
 ]", 6, 6, S );
 
-S0 := GradedFreeLeftPresentation( 1, S );
+is_artinian_left := function( module )
+  local mat;
+    
+    mat := UnderlyingMatrix( module );
+    
+    return IsZero( HilbertPolynomial( UnderlyingMatrixOverNonGradedRing( mat ) ) );
+    
+end;
 
-SetIsAdditiveCategory( CocomplexCategory( CapCategory( S0 ) ), true );
-SetIsAdditiveCategory( ComplexCategory( CapCategory( S0 ) ), true );
+Coh := GradedLeftPresentations( S ) / is_artinian_left;
+
+SetIsAdditiveCategory( CocomplexCategory( Coh ), true );
+SetIsAdditiveCategory( ComplexCategory( Coh ), true );
 
 M := AsGradedLeftPresentation( mat, [ 0, 0, 1, 2, 2, 1 ] );
 
-res1 := FreeResolutionComplex( M );
+ShM := AsSerreQuotientCategoryObject( Coh, M );
+
+res1 := FreeResolutionComplexOfSheaf( ShM );
 res := res1[ 1 ];
 homres := DualOnComplex( res );
-CE := CartanEilenbergResolution( homres, FreeResolutionCocomplex );
+CE := CartanEilenbergResolution( homres, FreeResolutionCocomplexOfSheaf );
 homCE := DualOnCocomplexCocomplex( CE );
 trhomCE := TransposeComplexOfComplex( homCE );
 
@@ -37,5 +49,8 @@ homhomres := DualOnCocomplex( homres );
 LG := LiftNaturalTransformationToGradedModulesLeft( NaturalIsomorphismFromIdentityToLessGeneratorsLeft( S ) );
 SM := LiftNaturalTransformationToGradedModulesLeft( NaturalIsomorphismFromIdentityToStandardModuleLeft( S ) );
 
-filtration := PurityFiltrationBySpectralSequence( trhomCE, 4, homCE, homres, res1[ 2 ] : Functors := [ LG, SM ] );
+ShLG := LiftNaturalIsoFromIdToSomeToSerreQuotientCategory( Coh, LG );
+ShSM := LiftNaturalIsoFromIdToSomeToSerreQuotientCategory( Coh, SM );
+
+filtration := PurityFiltrationBySpectralSequence( trhomCE, 3, homCE, homres, res1[ 2 ] : Functors := [ ShLG, ShSM ] );
 

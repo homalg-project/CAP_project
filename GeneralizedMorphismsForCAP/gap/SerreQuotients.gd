@@ -168,3 +168,9 @@ DeclareAttribute( "UnderlyingGeneralizedMorphism",
 #! @Returns a functor
 DeclareAttribute( "CanonicalProjection",
                   IsCapCategory );
+
+DeclareOperation( "LiftCovariantEndoFunctorToSerreQuotientCategory",
+                  [ IsCapCategory, IsCapFunctor ] );
+
+DeclareOperation( "LiftNaturalIsoFromIdToSomeToSerreQuotientCategory",
+                  [ IsCapCategory, IsCapNaturalTransformation ] );
