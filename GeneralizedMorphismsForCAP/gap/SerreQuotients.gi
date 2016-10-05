@@ -52,7 +52,7 @@ InstallMethod( LiftNaturalIsoFromIdToSomeToSerreQuotientCategory,
     nat_trans_func := function( new_source, obj, new_range )
         local new_mor;
         
-        new_mor := ApplyNaturalTransformation( UnderlyingHonestObject( obj ) );
+        new_mor := ApplyNaturalTransformation( nat_trans, UnderlyingHonestObject( obj ) );
         
         return AsSerreQuotientCategoryMorphism( serre_category, new_mor );
         
