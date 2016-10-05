@@ -562,6 +562,16 @@ InstallMethodWithCacheFromObject( CommonRestrictionOp,
     
 end : ArgumentNumber := 2 );
 
+##
+InstallMethod( CombinedImageEmbedding,
+               [ IsGeneralizedMorphismBySpan ],
+               
+  function( morphism )
+    
+    return ImageEmbedding( Arrow( morphism ) );
+    
+end );
+
 ######################################
 ##
 ## Compatibility
