@@ -345,6 +345,19 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
     end );
     
+    AddInverse( category,
+      
+      function( morphism )
+        local underlying_general, inverse;
+        
+        underlying_general := UnderlyingGeneralizedMorphism( morphism );
+        
+        inverse := PseudoInverse( underlying_general );
+        
+        return SerreQuotientCategoryBySpansMorphism( category, inverse );
+        
+    end );
+    
 end );
 
 #############################################
