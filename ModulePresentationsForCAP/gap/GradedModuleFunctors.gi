@@ -686,6 +686,15 @@ InstallMethod( PurityFiltrationBySpectralSequence,
     
     Print( "Computed embeddings\n" );
     
+    for i in Reversed( [ 1 .. Length( embedding_list ) ] ) do
+        if IsZero( Source( embedding_list[ i ] ) ) then
+            Print( "found a zero\n" );
+            Remove( embedding_list, i );
+        fi;
+    od;
+    
+    Print( "Removed irrelevant embeddings" );
+    
     embedding_list := Reversed( embedding_list );
     
     combined_image_embeddings := List( embedding_list, CombinedImageEmbedding );
@@ -697,20 +706,12 @@ InstallMethod( PurityFiltrationBySpectralSequence,
         od;
     fi;
     
-    Print( "First functors applied" );
+    Print( "First functors applied\n" );
     
     pi_list := List( [ 2 .. Length( embedding_list ) ], i -> PreCompose( AsGeneralizedMorphism( combined_image_embeddings[ i ] ), 
                                                                          PseudoInverse( embedding_list[ i ] ) ) );
     
     pi_list := List( pi_list, HonestRepresentative );
-    
-    for i in Reversed( [ 1 .. Length( pi_list ) ] ) do
-        if IsZero( Range( pi_list[ i ] ) ) then
-            Print( "found a zero\n" );
-            Remove( pi_list, i );
-            Remove( combined_image_embeddings, i + 1 );
-        fi;
-    od;
     
     if functors <> fail then
         for i in functors do
@@ -718,7 +719,7 @@ InstallMethod( PurityFiltrationBySpectralSequence,
         od;
     fi;
     
-    Print( "second functors applied" );
+    Print( "second functors applied\n" );
     
     ## inital_step
     
