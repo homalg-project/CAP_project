@@ -311,11 +311,23 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
       function( test_morphism, monomorphism )
         local inverse_of_mono, composition;
         
-        inverse_of_mono := PseudoInverse( UnderlyingGeneralizedMorphism( monomorphism ) );
+        test_morphism := UnderlyingGeneralizedMorphism( test_morphism );
+        monomorphism := UnderlyingGeneralizedMorphism( monomorphism );
         
-        composition := PreCompose( UnderlyingGeneralizedMorphism( test_morphism ), inverse_of_mono );
+        if not IsHonest( test_morphism ) or not IsHonest( monomorphism ) then
+            return fail;
+        fi;
         
-        return SerreQuotientCategoryBySpansMorphism( category, composition );
+        test_morphism := HonestRepresentative( test_morphism );
+        monomorphism := HonestRepresentative( monomorphism );
+        
+        composition := Lift( test_morphism, monomorphism );
+        
+        if composition = fail then
+            return fail;
+        fi;
+        
+        return AsSerreQuotientCategoryBySpansMorphism( category, composition );
         
     end );
     
