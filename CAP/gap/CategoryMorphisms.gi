@@ -213,14 +213,14 @@ end );
 
 ## FIXME: This might be dangerous
 ##
-InstallMethod( Zero,
-               [ IsCapCategoryMorphism ],
-               
-  function( mor )
-    
-    return ZeroMorphism( Source( mor ), Range( mor ) );
-    
-end );
+# InstallMethod( Zero,
+#                [ IsCapCategoryMorphism ],
+#                
+#   function( mor )
+#     
+#     return ZeroMorphism( Source( mor ), Range( mor ) );
+#     
+# end );
 
 ##
 InstallMethod( PreCompose,
