@@ -687,7 +687,7 @@ InstallMethod( PurityFiltrationBySpectralSequence,
     Print( "Computed embeddings\n" );
     
     for i in Reversed( [ 1 .. Length( embedding_list ) ] ) do
-        if IsZero( Source( embedding_list[ i ] ) ) then
+        if IsZero( UnderlyingHonestObject( Source( embedding_list[ i ] ) ) ) then
             Print( "found a zero\n" );
             Remove( embedding_list, i );
         fi;
