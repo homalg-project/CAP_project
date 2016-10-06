@@ -390,7 +390,7 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
       function( alpha, beta )
         local lift;
         
-        lift := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( beta ) ) );
+        lift := RightDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ), UnderlyingMatrix( Range( beta ) ) );
         
         if lift = fail then
             return fail;
