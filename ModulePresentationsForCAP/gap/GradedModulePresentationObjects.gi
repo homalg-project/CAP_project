@@ -335,18 +335,3 @@ end );
 ##
 ####################################
 
-##
-InstallMethod( Display,
-               [ IsGradedLeftOrRightPresentation ],
-               # FIXME: Fix the rank in GenericView and delete this afterwards
-               9999,
-               
-  function( object )
-    
-    Display( UnderlyingMatrix( object ) );
-    
-    Print( "\n" );
-    
-    Print( StringMutable( object ) );
-    
-end );
