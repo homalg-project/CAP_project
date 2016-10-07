@@ -108,12 +108,15 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     AddAdditionForMorphisms( category,
       
       function( morphism1, morphism2 )
-        local sum;
+        local underlying_generalized, common_restriction;
         
-        sum := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ),
-                                     UnderlyingGeneralizedMorphism( morphism2 ) );
+        underlying_generalized := List( [ morphism1, morphism2 ], UnderlyingGeneralizedMorphism );
         
-        return SerreQuotientCategoryBySpansMorphism( category, sum );
+        common_restriction := CommonRestriction( underlying_generalized );
+        
+        new_arrow := Arrow( common_restriction[ 1 ] ) + Arrow( common_restriction[ 2 ] );
+        
+        return SerreQuotientCategoryBySpansMorphism( category, ReversedArrow( common_restriction[ 1 ] ), new_arrow );
         
     end );
     
@@ -137,11 +140,11 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     AddAdditiveInverseForMorphisms( category,
       
       function( morphism )
-        local new_general;
+        local general;
         
-        new_general := AdditiveInverseForMorphisms( UnderlyingGeneralizedMorphism( morphism ) );
+        general := UnderlyingGeneralizedMorphism( morphism );
         
-        return SerreQuotientCategoryBySpansMorphism( category, new_general );
+        return SerreQuotientCategoryBySpansMorphism( category, ReversedArrow( general ), - Arrow( general ) );
         
     end );
     
@@ -259,6 +262,8 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
+        underlying_general := NormalizedSpan( underlying_general );
+        
         kernel_mor := KernelEmbedding( Arrow( underlying_general ) );
         
         return AsSerreQuotientCategoryBySpansMorphism( category, PreCompose( kernel_mor, ReversedArrow( underlying_general ) ) );
@@ -286,6 +291,8 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         local underlying_general, cokernel_mor;
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
+        
+        underlying_general := NormalizedSpan( morphism );
         
         cokernel_mor := CokernelProjection( Arrow( underlying_general ) );
         
