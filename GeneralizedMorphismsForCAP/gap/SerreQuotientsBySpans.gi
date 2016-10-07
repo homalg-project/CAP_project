@@ -292,7 +292,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        underlying_general := NormalizedSpan( morphism );
+        underlying_general := NormalizedSpan( underlying_general );
         
         cokernel_mor := CokernelProjection( Arrow( underlying_general ) );
         
