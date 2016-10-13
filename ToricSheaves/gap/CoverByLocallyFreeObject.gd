@@ -16,3 +16,6 @@ DeclareAttribute( "FreeResolutionComplexOfSheaf",
 DeclareAttribute( "FreeResolutionCocomplexOfSheaf",
                   IsSerreQuotientCategoryObject );
 
+DeclareAttribute( "CoverByProjectiveWithLift",
+                  IsSerreQuotientCategoryMorphism );
+

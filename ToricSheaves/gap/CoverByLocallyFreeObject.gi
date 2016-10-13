@@ -21,6 +21,28 @@ InstallMethod( CoverByProjective,
     
 end );
 
+InstallMethod( CoverByProjectiveWithLift,
+               [ IsSerreQuotientCategoryMorphism ],
+               
+  function( morphism )
+    local cimage_embedding, cimage_embedding_inverse, cover_of_source, cover, restricted_morphism, lift;
+    
+    cimage_embedding := CombinedImageEmbedding( UnderlyingGeneralizedMorphism( morphism ) );
+    
+    cimage_embedding := AsSerreQuotientCategoryMorphism( CapCategory( morphism ), cimage_embedding );
+    
+    cimage_embedding_inverse := Inverse( cimage_embedding );
+    
+    cover := CoverByProjective( Source( cimage_embedding ) );
+    
+    restricted_morphism := PreCompose( morphism, cimage_embedding_inverse );
+    
+    lift := Lift( cover, restricted_morphism );
+    
+    return [ PreCompose( cover, cimage_embedding ), lift ];
+    
+end );
+
 InstallMethod( FreeResolutionComplexOfSheaf,
                [ IsSerreQuotientCategoryObject ],
                
