@@ -47,7 +47,7 @@ InstallGlobalFunction( CAPCategoryOfProjectiveGradedLeftOrRightModulesObject,
   function( degree_list, homalg_graded_ring, left )
     local A, nrGenerators, i, buffer, buffer_homalg_module_element, category, category_of_projective_graded_modules_object, 
          rank, type;
-    
+
     # extract the degree group of the ring and its number of generators
     A := DegreeGroup( homalg_graded_ring );
     nrGenerators := NrGenerators( A );
