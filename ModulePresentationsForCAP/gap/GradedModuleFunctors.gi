@@ -725,13 +725,13 @@ InstallMethod( PurityFiltrationBySpectralSequence,
     
     for i in [ 2 .. Length( combined_image_embeddings ) ] do
         
-        mp := Range( pi_list[ i - 1 ] );
+        nu := CoverByProjectiveWithLift( pi_list[ i - 1 ] );
         
-        nu := CoverByProjective( mp );
+        eta_0 := nu[ 2 ];
+        
+        nu := nu[ 1 ];
         
         mp_mat := KernelEmbedding( nu );
-        
-        eta_0 := Lift( nu, pi_list[ i - 1 ] );
         
         iota_i := LiftAlongMonomorphism( combined_image_embeddings[ i ], combined_image_embeddings[ i - 1 ] );
         
