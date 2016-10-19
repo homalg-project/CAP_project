@@ -53,7 +53,7 @@ InstallMethod( LeftPresentations,
     );
     
     Finalize( category );
-    
+    # test
     return category;
     
 end );
