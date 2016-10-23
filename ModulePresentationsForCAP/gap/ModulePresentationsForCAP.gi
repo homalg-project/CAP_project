@@ -12,7 +12,7 @@ InstallMethod( LeftPresentations,
                [ IsHomalgRing ],
                
   function( ring )
-    local category;
+    local category, to_be_finalized;
     
     category := CreateCapCategory( Concatenation( "Category of left presentations of ", RingName( ring ) ) );
     
@@ -52,18 +52,30 @@ InstallMethod( LeftPresentations,
         "RelationsForGeneralModuleCategories.tex" )
     );
     
-    Finalize( category );
-    # test
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+   
+    if to_be_finalized = false then
+      
+       return category;
+    
+    else
+    
+       Finalize( category );
+      
+    fi;
+    
     return category;
     
 end );
+
+# LeftPresentations( R: FinalizeCategory := false );
 
 ##
 InstallMethod( RightPresentations,
                [ IsHomalgRing ],
                
   function( ring )
-    local category;
+    local category, to_be_finalized;
     
     category := CreateCapCategory( Concatenation( "Category of right presentations of ", RingName( ring ) ) );
     
@@ -102,7 +114,17 @@ InstallMethod( RightPresentations,
         "RelationsForGeneralModuleCategories.tex" )
     );
     
-    Finalize( category );
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+   
+    if to_be_finalized = false then
+      
+       return category;
+    
+    else
+    
+       Finalize( category );
+      
+    fi;
     
     return category;
     
