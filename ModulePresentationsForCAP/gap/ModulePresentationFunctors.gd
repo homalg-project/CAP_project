@@ -54,3 +54,13 @@ DeclareAttribute( "FunctorLessGeneratorsLeft",
 #! @Arguments R
 DeclareAttribute( "FunctorLessGeneratorsRight",
                   IsHomalgRing );
+
+#! @Description
+#! The argument is a homalg ring $R$ that has an involutin function.
+#! The output is functor which takes
+#! a left presentation <A>M</A> as input and computes
+#! its Hom(M, R) as a left presentation.
+#! @Returns a functor
+#! @Arguments R
+DeclareAttribute( "FunctorHomLeft",
+                  IsHomalgRing );

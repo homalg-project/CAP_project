@@ -158,3 +158,60 @@ InstallMethod( FunctorLessGeneratorsRight,
     return functor;
     
 end );
+
+InstallMethod( FunctorHomLeft,
+                [ IsHomalgRing ], 
+   function( ring )
+     local category, functor;
+     
+     category := LeftPresentations( ring );
+     
+     functor := CapFunctor( Concatenation( "Hom( , R ) functor for ", Name( category ) ), category, category );
+     
+     AddObjectFunction( functor, 
+     
+           function( object )
+           local mat, N, M, mor; 
+           
+           mat := UnderlyingMatrix( object );
+           
+           N := FreeLeftPresentation( NrColumns( mat ), ring );
+           
+           M := FreeLeftPresentation( NrRows( mat ), ring );
+           
+           mor := PresentationMorphism( N, Involution( mat ), M );
+           
+           return KernelObject( mor );
+           
+           end );
+           
+    AddMorphismFunction( functor, 
+    
+           function( new_source, morphism, new_range )
+           local matrix_of_morphism, mor1, mor2, mor, mor3, matrix_of_the_source, matrix_of_the_range;
+           
+           matrix_of_morphism := UnderlyingMatrix( morphism );
+           
+           
+           mor2 := PresentationMorphism( FreeLeftPresentation( NrColumns( matrix_of_morphism ), ring )
+                                         , Involution( matrix_of_morphism ), FreeLeftPresentation( NrRows( matrix_of_morphism ), ring ) );
+           
+           matrix_of_the_range := UnderlyingMatrix( Range( morphism ) );
+           
+           mor1 := KernelEmbedding( PresentationMorphism( FreeLeftPresentation( NrColumns( matrix_of_the_range ), ring )
+                                         , Involution( matrix_of_the_range ), FreeLeftPresentation( NrRows( matrix_of_the_range ), ring ) ) );
+           
+           mor := PreCompose( mor1, mor2 );
+           
+           matrix_of_the_source := UnderlyingMatrix( Source( morphism ) );
+           
+           mor3 := PresentationMorphism( FreeLeftPresentation( NrColumns( matrix_of_the_source ), ring )
+                                         , Involution( matrix_of_the_source ), FreeLeftPresentation( NrRows( matrix_of_the_source ), ring ) );
+            
+           return KernelLift( mor3, mor );
+           
+           end );
+           
+   return functor;
+   
+end );
