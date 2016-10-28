@@ -1759,6 +1759,70 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     end );
   
+  AddColift( category, 
+    
+    function( morphism_1, morphism_2 )
+    local N, M, A, B, I, B_over_M, mat1, mat2, mat, zero_mat, A_over_zero, vec, sol, v, s, XX;
+    #                 rxs
+    #                I
+    #                ꓥ
+    #         vxs    | nxs 
+    #        X      (A) 
+    #                |
+    #                |
+    #    uxv    nxv   mxn
+    #   M <----(B)-- N
+    #
+    #
+    # We need to solve the system
+    #     B*X + Y*I = A
+    #     M*X + Z*I = 0
+    # the function is supposed to return X as a ( well defined ) morphism.
+    
+    I := UnderlyingMatrix( Range( morphism_2 ) );
+    
+    N := UnderlyingMatrix( Source( morphism_1 ) );
+    
+    M := UnderlyingMatrix( Range( morphism_1 ) );
+    
+    B := UnderlyingMatrix( morphism_1 );
+    
+    A := UnderlyingMatrix( morphism_2 );
+    
+    B_over_M := UnionOfRows( B, M );
+    
+    mat1 := KroneckerMat( HomalgIdentityMatrix( NrColumns( I ), homalg_ring ), B_over_M );
+    
+    mat2 := KroneckerMat( Involution( I ), HomalgIdentityMatrix( NrRows( B ) + NrRows( M ), homalg_ring ) );
+    
+    mat := UnionOfColumns( mat1, mat2 );
+    
+    zero_mat := HomalgZeroMatrix( NrRows( M ), NrColumns( I ), homalg_ring );
+    
+    A_over_zero := UnionOfRows( A, zero_mat );
+    
+    vec := Iterated( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A_over_zero, [ i ] ) ), UnionOfRows );
+    
+    sol := LeftDivide( mat, vec );
+    
+    if sol = fail then 
+    
+       return fail;
+       
+    else 
+    
+       v := NrColumns( M );
+       
+       s := NrColumns( I );
+       
+       XX := Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1, i*v ] ) ), UnionOfColumns );
+    
+       return PresentationMorphism( M, XX, I );
+       
+    fi;
+    
+    end );
+  
   fi;
  
 end );
