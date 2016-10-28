@@ -1702,7 +1702,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     # We need to solve the system
     #     X*B + Y*N = A
     #     P*X + Z*M = 0
-    # the function is supposed to return X as a ( well defined ) morphism.
+    # the function is supposed to return X as a ( well defined ) morphism from P to M.
     
     P := UnderlyingMatrix( Source( morphism_1 ) );
     
@@ -1777,7 +1777,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     # We need to solve the system
     #     B*X + Y*I = A
     #     M*X + Z*I = 0
-    # the function is supposed to return X as a ( well defined ) morphism.
+    # the function is supposed to return X as a ( well defined ) morphism from M to I.
     
     I := UnderlyingMatrix( Range( morphism_2 ) );
     
