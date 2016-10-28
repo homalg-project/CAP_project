@@ -1751,9 +1751,9 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
        s := NrColumns( P );
        
-       XX := Iterated( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1, i*s ] ) ), UnionOfColumns );
+       XX := Iterated( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ), UnionOfColumns );
     
-       return PresentationMorphism( P, XX, M );
+       return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
        
     fi;
     
@@ -1815,9 +1815,9 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
        s := NrColumns( I );
        
-       XX := Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1, i*v ] ) ), UnionOfColumns );
+       XX := Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ), UnionOfColumns );
     
-       return PresentationMorphism( M, XX, I );
+       return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
        
     fi;
     
