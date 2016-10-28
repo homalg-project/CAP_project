@@ -224,7 +224,7 @@ InstallMethod( FunctorDoubleDualForLeftPresentations,
      
      category := LeftPresentations( ring );
      
-     functor := CapFunctor( Concatenation( " H( Hom( , R ), R ) functor for ", Name( category ) ), category, category );
+     functor := CapFunctor( Concatenation( " Hom( Hom( , R ), R ) functor for ", Name( category ) ), category, category );
      
      dual_functor := FunctorDualForLeftPresentations( ring );
     
