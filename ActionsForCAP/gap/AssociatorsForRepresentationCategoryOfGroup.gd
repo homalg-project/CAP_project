@@ -50,7 +50,7 @@ DeclareOperation( "GroupReperesentationByImages", [ IsGroup, IsList ] );
 #! The argument is an endomorphism $e \in \mathrm{Hom}(V,V)$ of vector spaces whose minimal polynomial
 #! divides $x^2 - 1$.
 #! The output is an invertible endomorphism $t$ such that
-#! $t^{-1} \circ e \circ e$ is a diagonal matrix.
+#! $t^{-1} \circ e \circ t$ is a diagonal matrix.
 #! @Returns an invertible endomorphism in $\mathrm{Hom}(V,V)$
 #! @Arguments e
 DeclareAttribute( "DiagonalizationTransformationOfBraiding", IsVectorSpaceMorphism );
@@ -98,8 +98,20 @@ DeclareOperation( "RewriteMatrixInCyclotomicGenerator", [ IsMatrix, IsInt ] );
 DeclareOperation( "InternalHomToTensorProductAdjunctionMapTemp",
                   [ IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism ] );
 
+#! @Description
+#! The argument is a homalg matrx $M$.
+#! The output is a string consisting of the elements
+#! of $M$, seperated by commas.
+#! @Returns a string
+#! @Arguments M
 DeclareOperation( "HomalgMatrixAsString", [ IsHomalgMatrix ] );
 
+#! @Description
+#! The argument is a list $l$ of homalg matrices. In $l$, empty entries are allowed.
+#! The output is a list where each non-empty entry of $l$
+#! is converted to a string using HomalgMatrixAsString.
+#! @Returns a list of strings and empty entries
+#! @Arguments l
 DeclareOperation( "DataFromSkeletalFunctorTensorDataAsStringList", [ IsList ] );
 
 #! @Description
@@ -110,10 +122,16 @@ DeclareOperation( "DataFromSkeletalFunctorTensorDataAsStringList", [ IsList ] );
 #! @Arguments M
 DeclareAttribute( "AsVectorSpaceMorphism", IsHomalgMatrix );
 
-##
+## Tensor decomposition: A \otimes I -> A #TODO: or was it I \otimes A -> A?
 DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
                   [ IsVectorSpaceMorphism, IsInt ] );
-##
+#! @Description
+#! The arguments are a vector space object $V$
+#! and a string $s$ consisting of $\mathrm{dim}(V)^2$ elements of the ground field of $V$.
+#! The output is a vector space endomorphism $V \rightarrow V$
+#! defined by $s$.
+#! @Returns a vector space morphism
+#! @Arguments V, s
 DeclareOperation( "CreateEndomorphismFromString",
                   [ IsVectorSpaceObject, IsString ] );
 
