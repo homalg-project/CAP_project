@@ -191,6 +191,9 @@ DeclareOperation( "WriteRepresentationsDataToFile", [ IsString ] );
 DeclareOperation( "ReadRepresentationsData", [ IsString, IsString ] );
 
 ##
+DeclareOperation( "WriteSkeletalFunctorDataToFile", [ IsString ] );
+
+##
 DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
                   [ IsVectorSpaceMorphism, IsInt ] );
 ##
@@ -216,6 +219,7 @@ DeclareOperation( "SkeletalFunctorTensorData", [  ] );
 
 DeclareOperation( "SkeletalFunctorTensorData", [ IsList, IsList ] );
 
+# TODO: 4th argument
 #! @Description
 #! This method can only be called if SkeletalFunctorTensorData was called before.
 #! The arguments are integers $a,b,c$.
@@ -225,7 +229,7 @@ DeclareOperation( "SkeletalFunctorTensorData", [ IsList, IsList ] );
 #! @Returns a list
 #! @Arguments a,b,c
 DeclareOperation( "AssociatorDataFromSkeletalFunctorTensorData",
-                  [ IsInt, IsInt, IsInt ] );
+                  [ IsInt, IsInt, IsInt, IsList ] );
 
 #! @Description
 #! There is no argument.
@@ -235,7 +239,7 @@ DeclareOperation( "AssociatorDataFromSkeletalFunctorTensorData",
 #! @Returns a list
 DeclareOperation( "AssociatorForSufficientlyManyTriples", [ ] );
 
-DeclareOperation( "AssociatorForSufficientlyManyTriples", [ IsBool ] );
+DeclareOperation( "AssociatorForSufficientlyManyTriples", [ IsBool, IsList ] );
 
 #! @Description
 #! The argument is a group $G$ and a boolean $b$

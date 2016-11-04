@@ -60,7 +60,8 @@ InstallMethod( SkeletalFunctorTensorData,
           character1, character2, character3, scalar_product, elements_of_internal_hom, results_with_fixed_i_and_j, decomposition_morphism,
           identity_morphism, results_with_fixed_i, rep3_inverse, nr_characters, braiding, vector_space_object_list,
           embedding_of_k_component, skeletal_braiding_in_kvec, transformation_matrix, decomposition_morphism_inverse,
-          square_matrix_size, matrix_string, composition_with_braiding, composition_with_braiding_inverse, list_of_characters;
+          square_matrix_size, matrix_string, composition_with_braiding, composition_with_braiding_inverse, list_of_characters,
+          tensor_data_as_string;
     
     nr_generators := initialize_group_data_log_list[2];
     
@@ -110,7 +111,7 @@ InstallMethod( SkeletalFunctorTensorData,
           
           Add( results_with_fixed_i,
                [ composition_with_braiding,
-                 composition_with_braiding_inverse, [ i, j ] ] );
+                 composition_with_braiding_inverse ] );
           
           text := "[ \n";
               
@@ -185,7 +186,7 @@ InstallMethod( SkeletalFunctorTensorData,
               
               identity_morphism := IdentityMorphism( rep3_vector_space_object );
               
-              Add( results_with_fixed_i, [ identity_morphism, identity_morphism, [ i, j ] ] );
+              Add( results_with_fixed_i, [ identity_morphism, identity_morphism ] );
               
               text := "[ \n";
               
@@ -270,7 +271,7 @@ InstallMethod( SkeletalFunctorTensorData,
             
             decomposition_morphism_inverse := Inverse( decomposition_morphism );
             
-            Add( results_with_fixed_i, [ decomposition_morphism, decomposition_morphism_inverse, [ i, j ] ] );
+            Add( results_with_fixed_i, [ decomposition_morphism, decomposition_morphism_inverse ] );
             
             text := "[ \n";
             
@@ -306,15 +307,29 @@ InstallMethod( SkeletalFunctorTensorData,
     
     ASSOCIATORS_Setup.tensor_data := result_list;
     
+    ASSOCIATORS_Setup.skeletalfunctortensordata_log_list :=
+      [ list_of_characters, result_list, vector_space_object_list ];
+    
+    tensor_data_as_string :=
+      String(
+        List( result_list, i ->
+          List( i, j-> List( j, mor -> HomalgMatrixAsString( UnderlyingMatrix( mor ) ) ) )
+        )
+      );
+    
+    RemoveCharacters( tensor_data_as_string, " " );
+    
+    ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string := tensor_data_as_string;
+    
     return result_list;
     
 end );
 
 ##
 InstallMethod( AssociatorDataFromSkeletalFunctorTensorData,
-               [ IsInt, IsInt, IsInt ],
+               [ IsInt, IsInt, IsInt, IsList ],
                
-  function( a, b, c )
+  function( a, b, c, skeletalfunctortensordata_log_list )
     local character_a, character_b, character_c, character_ab, character_bc,
           degree_a, degree_b, degree_c,
           tensor_data, list_of_characters, nr_characters, scalar_product,
@@ -326,7 +341,7 @@ InstallMethod( AssociatorDataFromSkeletalFunctorTensorData,
           position_of_first_chi_vector, k_block_dimension, character_ai, associator_component, result_list,
           scalar_product_i_ab, degree_chi, scalar_product_chi_ic, rows, scalar_product_i_bc, scalar_product_chi_ai, cols;
     
-    list_of_characters := ASSOCIATORS_Setup.list_of_characters;
+    list_of_characters := skeletalfunctortensordata_log_list[1];
     
     nr_characters := Size( list_of_characters );
     
@@ -336,9 +351,9 @@ InstallMethod( AssociatorDataFromSkeletalFunctorTensorData,
     
     character_c := list_of_characters[c];
     
-    tensor_data := ASSOCIATORS_Setup.tensor_data;
+    tensor_data := skeletalfunctortensordata_log_list[2];
     
-    vector_space_object_list := ASSOCIATORS_Setup.vector_space_object_list;
+    vector_space_object_list := skeletalfunctortensordata_log_list[3];
     
     character_ab := character_a * character_b;
     
@@ -549,15 +564,15 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
                
   function( )
     
-    return AssociatorForSufficientlyManyTriples( false );
+    return AssociatorForSufficientlyManyTriples( false, ASSOCIATORS_Setup.skeletalfunctortensordata_log_list );
     
 end );
 
 ##
 InstallMethod( AssociatorForSufficientlyManyTriples,
-               [ IsBool ],
+               [ IsBool, IsList ],
                
-  function( for_all_triples )
+  function( for_all_triples, skeletalfunctortensordata_log_list )
     local list_of_characters, nr_characters, index_list, i,
           a, b, c, sub_list_a, sub_list_b, data_abc, data_acb, log_list, result_list, log_string;
     
@@ -565,7 +580,7 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
     
     result_list := [ ];
     
-    list_of_characters := ASSOCIATORS_Setup.list_of_characters;
+    list_of_characters := skeletalfunctortensordata_log_list[1];
     
     nr_characters := Size( list_of_characters );
     
@@ -616,7 +631,7 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
             
             for c in sub_list_b do
                 
-                data_abc := AssociatorDataFromSkeletalFunctorTensorData( a, b, c );
+                data_abc := AssociatorDataFromSkeletalFunctorTensorData( a, b, c, skeletalfunctortensordata_log_list );
                 
                 result_list[a][b][c] := data_abc;
                 
@@ -628,7 +643,7 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
                 ## obtain the others using the braiding
                 if a <> b and b <> c and c <> a then
                     
-                    data_acb := AssociatorDataFromSkeletalFunctorTensorData( a, c, b );
+                    data_acb := AssociatorDataFromSkeletalFunctorTensorData( a, c, b, skeletalfunctortensordata_log_list );
                     
                     result_list[a][c][b] := data_acb;
                     
@@ -1152,6 +1167,16 @@ InstallMethod( WriteRepresentationsDataToFile,
         
         PrintTo( filename, ASSOCIATORS_Setup.initialize_group_data_log_list_as_string );
         
+end );
+
+##
+InstallMethod( WriteSkeletalFunctorDataToFile,
+               [ IsString ],
+               
+  function( filename )
+    
+    PrintTo( filename, ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string );
+    
 end );
 
 ##
