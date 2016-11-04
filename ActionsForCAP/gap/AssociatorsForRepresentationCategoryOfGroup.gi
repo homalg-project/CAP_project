@@ -12,10 +12,6 @@ InstallValue( ASSOCIATORS_Setup, rec(
     
     e := X( Rationals ),
     
-    temp_file_name := "TEMP_LOG_FILE_ASSOCIATORS.g",
-    
-    log_string := "",
-    
   )
 );
 
@@ -54,7 +50,7 @@ InstallMethod( SkeletalFunctorTensorData,
                
   function( indices, initialize_group_data_log_list )
     local CAP_representation_list, rep1, gen, rep2, tensor_product_on_objects, tensor_product_on_morphisms,
-          indices_using_braiding, indices_not_using_braiding, CAP_representation_list_inverses, text,
+          indices_using_braiding, indices_not_using_braiding, CAP_representation_list_inverses,
           nr_generators, mor_list, result_list, rep3, Gmorphisms, i, j, k, obj, id, kernel_embeddings,
           degree1, degree2, degree3, rep1_vector_space_object, rep2_vector_space_object, rep3_vector_space_object,
           character1, character2, character3, scalar_product, elements_of_internal_hom, results_with_fixed_i_and_j, decomposition_morphism,
@@ -75,15 +71,7 @@ InstallMethod( SkeletalFunctorTensorData,
     
     result_list := [];
     
-    text := "ASSOCIATORS_Setup.tensor_data := [ \n";
-    Append( ASSOCIATORS_Setup.log_string, text );
-    AppendTo( ASSOCIATORS_Setup.temp_file_name, text );
-    
     for i in indices[1] do
-      
-      text := "[ \n";
-      Append( ASSOCIATORS_Setup.log_string, text );
-      AppendTo( ASSOCIATORS_Setup.temp_file_name, text );
       
       rep1 := CAP_representation_list[i];
       
@@ -113,20 +101,6 @@ InstallMethod( SkeletalFunctorTensorData,
                [ composition_with_braiding,
                  composition_with_braiding_inverse ] );
           
-          text := "[ \n";
-              
-              Append( text,
-                Concatenation(
-                  VectorSpaceMorphismAsStringCommand( composition_with_braiding ),
-                  ",\n",
-                  VectorSpaceMorphismAsStringCommand( composition_with_braiding_inverse ),
-                  ", \n[ ", String( i ), ", ", String(j), " ]\n], \n"
-                )
-              );
-           
-           Append( ASSOCIATORS_Setup.log_string, text );
-           AppendTo( ASSOCIATORS_Setup.temp_file_name, text );
-           
       od;
       
       indices_not_using_braiding := Filtered( indices[2], x -> ( x >= i ) );
@@ -187,20 +161,6 @@ InstallMethod( SkeletalFunctorTensorData,
               identity_morphism := IdentityMorphism( rep3_vector_space_object );
               
               Add( results_with_fixed_i, [ identity_morphism, identity_morphism ] );
-              
-              text := "[ \n";
-              
-              Append( text,
-                Concatenation(
-                  VectorSpaceMorphismAsStringCommand( identity_morphism ),
-                  ",\n",
-                  VectorSpaceMorphismAsStringCommand( identity_morphism ),
-                  ", \n[ ", String( i ), ", ", String(j), " ]\n], \n"
-                )
-              );
-              
-              Append( ASSOCIATORS_Setup.log_string, text );
-              AppendTo( ASSOCIATORS_Setup.temp_file_name, text );
               
               break;
               
@@ -273,20 +233,6 @@ InstallMethod( SkeletalFunctorTensorData,
             
             Add( results_with_fixed_i, [ decomposition_morphism, decomposition_morphism_inverse ] );
             
-            text := "[ \n";
-            
-            Append( text,
-              Concatenation(
-                VectorSpaceMorphismAsStringCommand( decomposition_morphism ),
-                ",\n",
-                VectorSpaceMorphismAsStringCommand( decomposition_morphism_inverse ),
-                ", \n[ ", String( i ), ", ", String(j), " ]\n], \n"
-              )
-            );
-            
-            Append( ASSOCIATORS_Setup.log_string, text );
-            AppendTo( ASSOCIATORS_Setup.temp_file_name, text );
-            
         fi;
         
         Print( Concatenation( "Finished: (", String( i ), ",", String( j ), ")\n" ) );
@@ -295,15 +241,7 @@ InstallMethod( SkeletalFunctorTensorData,
       
       Add( result_list, results_with_fixed_i );
       
-      text := "],\n";
-      Append( ASSOCIATORS_Setup.log_string, text );
-      AppendTo( ASSOCIATORS_Setup.temp_file_name, text );
-      
     od;
-    
-    text := "];\n";
-    Append( ASSOCIATORS_Setup.log_string, text );
-    AppendTo( ASSOCIATORS_Setup.temp_file_name, text );
     
     ASSOCIATORS_Setup.tensor_data := result_list;
     
@@ -885,14 +823,6 @@ InstallMethod( InitializeGroupData,
     
     log_list := [ ];
     
-    log_string := 
-      Concatenation( "# This file contains GAP readable input representing the decomposition data for the group: ", String( group ), "\n",
-                     "#Please enter the definition of this group here: \n",
-                     "group := \n" );
-    
-    Append( log_string,
-      "LoadPackage( \"RingsForHomalg\" );\nRead( \"../Associators.gd\" );\nRead( \"../Associators.gi\" );\n" );
-    
     SetName( ASSOCIATORS_Setup.e, "e" );
     
     ASSOCIATORS_Setup.group := group;
@@ -935,8 +865,6 @@ InstallMethod( InitializeGroupData,
     
     Add( log_list, ASSOCIATORS_Setup.list_of_characters );
     
-    Append( log_string, "ASSOCIATORS_Setup.list_of_characters := Irr( group );\n" );
-    
     default_field := DefaultFieldForListOfRepresentations( representation_list );
     
     conductor := Conductor( default_field );
@@ -947,28 +875,16 @@ InstallMethod( InitializeGroupData,
         
         ASSOCIATORS_Setup.field := HomalgFieldOfRationalsInDefaultCAS();
         
-        Append( log_string, "field := HomalgFieldOfRationalsInDefaultCAS();\n" );
-        
     else
         
         ASSOCIATORS_Setup.field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
-        
-        Append( log_string,
-          Concatenation( "field := HomalgCyclotomicFieldInMAGMA( ", String( conductor ), ", \"e\" );\n",
-                         "e := HomalgRingElement( \"e\", field );\n" )
-        );
         
     fi;
     
     ASSOCIATORS_Setup.category := MatrixCategory( ASSOCIATORS_Setup.field );
     
-    Append( log_string, "ASSOCIATORS_Setup.category := MatrixCategory( field );\n" );
-    
     ASSOCIATORS_Setup.vector_space_object_list := 
       List( ASSOCIATORS_Setup.list_of_characters, chi -> VectorSpaceObject( Degree( chi ), ASSOCIATORS_Setup.field ) );
-    
-    Append( log_string,
-      "ASSOCIATORS_Setup.vector_space_object_list := List( ASSOCIATORS_Setup.list_of_characters, chi -> VectorSpaceObject( Degree( chi ), field ) );\n" );
     
     CAP_representation_list := [ ];
     
@@ -1019,10 +935,6 @@ InstallMethod( InitializeGroupData,
     
     Add( log_list, ASSOCIATORS_Setup.vector_space_object_list );
     
-    ASSOCIATORS_Setup.log_string := log_string;
-    
-    ASSOCIATORS_Setup.associator_log_string := ShallowCopy( log_string );
-    
     if use_group_string_as_id then
         
         group_string_for_creation := String( group );
@@ -1055,8 +967,6 @@ InstallMethod( InitializeGroupData,
       "\"", String( log_list[3] ), "\"", ",\n",
       reps_as_string, ",\n",
       String( List( log_list[6], space -> Dimension( space ) ) ), "]" );
-    
-    AppendTo( ASSOCIATORS_Setup.temp_file_name, log_string );
     
 end );
 
@@ -1110,26 +1020,6 @@ InstallMethod( EntryOfHomalgMatrix,
       
       return EntriesOfHomalgMatrix( CertainColumns( CertainRows( homalg_matrix, [ i ] ), [ j ] ) )[1];
       
-end );
-
-##
-InstallMethod( WriteSkeletalFunctorDataLogToFile,
-               [ IsString ],
-               
-   function( filename )
-       
-       PrintTo( filename, ASSOCIATORS_Setup.log_string );
-       
-end );
-
-##
-InstallMethod( WriteAssociatorLogToFile,
-               [ IsString ],
-               
-   function( filename )
-       
-       PrintTo( filename, ASSOCIATORS_Setup.associator_log_string );
-       
 end );
 
 ##
@@ -1327,78 +1217,6 @@ InstallMethod( CreateEndomorphismFromString,
     homalg_matrix := HomalgMatrix( Concatenation( "[", string, "]" ), dimension, dimension, field );
     
     return VectorSpaceMorphism( object, homalg_matrix, object );
-    
-end );
-
-##
-InstallMethod( HomalgMatrixAsStringCommand,
-               [ IsList ],
-               
-  function( list )
-    
-    if list = [ ] then
-        
-        return "";
-        
-    fi;
-    
-    return List( list, element -> HomalgMatrixAsStringCommand( element ) );
-    
-end );
-
-##
-InstallMethod( HomalgMatrixAsStringCommand,
-               [ IsHomalgMatrix ],
-               
-  function( homalg_matrix )
-    local text, matrix_string;
-    
-    text := "";
-    
-    Append( text, "HomalgMatrix( " );
-    
-    matrix_string := String( EntriesOfHomalgMatrix( homalg_matrix ) );
-    
-    Append( text,
-      Concatenation( matrix_string, ", ", String( NrRows( homalg_matrix ) ), ", ", String( NrColumns( homalg_matrix ) ), ", field )" )
-    );
-    
-    return text;
-    
-end );
-
-##
-InstallMethod( VectorSpaceMorphismAsStringCommand,
-               [ IsVectorSpaceMorphism ],
-               
-  function( morphism )
-    local text, homalg_matrix, matrix_string;
-    
-    homalg_matrix := UnderlyingMatrix( morphism );
-    
-    text := "";
-    
-    Append( text, Concatenation( "AsVectorSpaceMorphism( ", HomalgMatrixAsStringCommand( homalg_matrix ), " )" ) );
-    
-    return text;
-    
-    ## This code only works for Singular:
-#     text := "";
-#     
-#     ## sets stream.lines of the matrix
-#     Display( homalg_matrix );
-#     
-#     Append( text, "HomalgMatrix( " );
-#     
-#     matrix_string := Eval( homalg_matrix )!.stream.lines;
-#     
-#     RemoveCharacters( matrix_string, "\n" );
-#     
-#     Append( text, Concatenation( "\"[", matrix_string, "];\" " ) );
-#     
-#     Append( text, Concatenation( ", ", String( Dimension( Source( morphism ) ) ), ", ", String( Dimension( Range( morphism ) ) ), ", field )" ) );
-#     
-#     return text;
     
 end );
 

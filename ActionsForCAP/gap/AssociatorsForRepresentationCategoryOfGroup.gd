@@ -137,19 +137,7 @@ DeclareOperation( "EntryOfHomalgMatrix",
 #! @Arguments L
 DeclareOperation( "DisplaySkeletalFunctorTensorData", [ IsList ] );
 
-#! @Description
-#! The argument is a vector space morphism $\alpha$.
-#! The output is a string containing a Gap command that creates $\alpha$
-#! when executed.
-#! @Returns a string
-#! @Arguments alpha
-DeclareOperation( "VectorSpaceMorphismAsStringCommand", [ IsVectorSpaceMorphism ] );
-
-DeclareOperation( "HomalgMatrixAsStringCommand", [ IsHomalgMatrix ] );
-
 DeclareOperation( "HomalgMatrixAsString", [ IsHomalgMatrix ] );
-
-DeclareOperation( "HomalgMatrixAsStringCommand", [ IsList ] );
 
 DeclareOperation( "WriteDataFromSkeletalFunctorTensorDataAsStringList", [ IsList ] );
 
@@ -160,23 +148,6 @@ DeclareOperation( "WriteDataFromSkeletalFunctorTensorDataAsStringList", [ IsList
 #! @Returns a vector space morphism
 #! @Arguments M
 DeclareAttribute( "AsVectorSpaceMorphism", IsHomalgMatrix );
-
-#! @Description
-#! The argument is a filename $s$.
-#! This operation writes the log of the skeletal functor data
-#! to the file given by $s$.
-#! @Returns nothing
-#! @Arguments s
-DeclareOperation( "WriteSkeletalFunctorDataLogToFile", [ IsString ] );
-
-
-#! @Description
-#! The argument is a filename $s$.
-#! This operation writes the log of the associator data
-#! to the file given by $s$.
-#! @Returns nothing
-#! @Arguments s
-DeclareOperation( "WriteAssociatorLogToFile", [ IsString ] );
 
 ##
 DeclareOperation( "WriteAssociatorAsStringlistToFile", [ IsString ] );
