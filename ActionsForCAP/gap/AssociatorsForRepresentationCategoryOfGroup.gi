@@ -871,7 +871,7 @@ InstallMethod( InitializeGroupData,
   function( group, representation_list, use_group_string_as_id )
     local default_field, conductor, representation, entry, degree_of_representation, vector_space,
           generator, gap_matrix, homalg_matrix, CAP_representation_list, ZZ, size, i, gen1, gen2,
-          log_string, group_string_for_creation, log_list;
+          log_string, group_string_for_creation, log_list, reps_as_string;
     
     log_list := [ ];
     
@@ -1035,6 +1035,17 @@ InstallMethod( InitializeGroupData,
     
     ASSOCIATORS_Setup.initialize_group_data_log_list := log_list;
     
+    reps_as_string :=
+      String( List( log_list[4], rep -> List( rep, mor -> HomalgMatrixAsString( UnderlyingMatrix( mor ) ) ) ) );
+    
+    RemoveCharacters( reps_as_string, " " );
+    
+    ASSOCIATORS_Setup.initialize_group_data_log_list_as_string := Concatenation(
+      "[", String( List( log_list[1], elem -> String( elem ) ) ), ",\n",
+      String( log_list[3] ), ",\n",
+      reps_as_string, ",\n",
+      String( List( log_list[6], space -> Dimension( space ) ) ), "]" );
+    
     AppendTo( ASSOCIATORS_Setup.temp_file_name, log_string );
     
 end );
@@ -1130,6 +1141,16 @@ InstallMethod( WriteDatabaseKeysToFile,
     function( filename )
         
         PrintTo( filename, ASSOCIATORS_Setup.database_keys );
+        
+end );
+
+##
+InstallMethod( WriteRepresentationsDataToFile,
+               [ IsString ],
+               
+    function( filename )
+        
+        PrintTo( filename, ASSOCIATORS_Setup.initialize_group_data_log_list_as_string );
         
 end );
 
@@ -1242,6 +1263,21 @@ InstallMethod( DecompositionFactorOfMultiplicationWithIdentity,
 end );
 
 ##
+InstallMethod( HomalgMatrixAsString,
+               [ IsHomalgMatrix ],
+               
+  function( homalg_matrix )
+    local string;
+    
+    string := String( EntriesOfHomalgMatrix( homalg_matrix ) );
+    
+    RemoveCharacters( string, "[]" );
+    
+    return string;
+    
+end );
+
+##
 InstallMethod( WriteDataFromSkeletalFunctorTensorDataAsStringList, 
                [ IsList ],
                
@@ -1254,11 +1290,7 @@ InstallMethod( WriteDataFromSkeletalFunctorTensorDataAsStringList,
         
         if IsHomalgMatrix( associator_data[i] ) then
             
-            string := String( EntriesOfHomalgMatrix( associator_data[i] ) );
-            
-            RemoveCharacters( string, "[]" );
-            
-            result_list[i] := string;
+            result_list[i] := HomalgMatrixAsString( associator_data[i] );
             
         fi;
         
@@ -1267,4 +1299,5 @@ InstallMethod( WriteDataFromSkeletalFunctorTensorDataAsStringList,
     return result_list;
     
 end );
+
 

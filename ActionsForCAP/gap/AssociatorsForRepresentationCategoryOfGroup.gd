@@ -147,6 +147,8 @@ DeclareOperation( "VectorSpaceMorphismAsStringCommand", [ IsVectorSpaceMorphism 
 
 DeclareOperation( "HomalgMatrixAsStringCommand", [ IsHomalgMatrix ] );
 
+DeclareOperation( "HomalgMatrixAsString", [ IsHomalgMatrix ] );
+
 DeclareOperation( "HomalgMatrixAsStringCommand", [ IsList ] );
 
 DeclareOperation( "WriteDataFromSkeletalFunctorTensorDataAsStringList", [ IsList ] );
@@ -182,6 +184,8 @@ DeclareOperation( "WriteAssociatorAsStringlistToFile", [ IsString ] );
 ##
 DeclareOperation( "WriteDatabaseKeysToFile", [ IsString ] );
 
+##
+DeclareOperation( "WriteRepresentationsDataToFile", [ IsString ] );
 
 ##
 DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
