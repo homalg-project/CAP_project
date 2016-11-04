@@ -98,14 +98,6 @@ DeclareOperation( "RewriteMatrixInCyclotomicGenerator", [ IsMatrix, IsInt ] );
 DeclareOperation( "InternalHomToTensorProductAdjunctionMapTemp",
                   [ IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism ] );
 
-#! @Description
-#! The arguments are a homalg matrix $M$ and two integers $i,j$.
-#! The output is the $(i,j)-th$ entry of $M$.
-#! @Returns an element of a homalg ring
-#! @Arguments M, i, j
-DeclareOperation( "EntryOfHomalgMatrix",
-                  [ IsHomalgMatrix, IsInt, IsInt ] );
-
 DeclareOperation( "HomalgMatrixAsString", [ IsHomalgMatrix ] );
 
 DeclareOperation( "DataFromSkeletalFunctorTensorDataAsStringList", [ IsList ] );

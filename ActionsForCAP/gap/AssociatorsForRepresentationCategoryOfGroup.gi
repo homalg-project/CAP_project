@@ -21,6 +21,193 @@ InstallValue( ASSOCIATORS_Setup, rec(
 ##
 ###################################
 
+##
+InstallMethod( InitializeGroupDataDixon,
+               [ IsGroup ],
+               
+  function( group )
+      
+      InitializeGroupDataDixon( group, false );
+      
+end );
+
+##
+InstallMethod( InitializeGroupDataDixon,
+               [ IsGroup, IsBool ],
+               
+  function( group, use_group_string_as_id )
+      
+      InitializeGroupData( group, AffordAllIrreducibleRepresentationsDixon( group ), use_group_string_as_id );
+      
+end );
+
+##
+InstallMethod( InitializeGroupData,
+               [ IsGroup ],
+               
+  function( group )
+      
+      InitializeGroupData( group, false );
+      
+end );
+
+##
+InstallMethod( InitializeGroupData,
+               [ IsGroup, IsBool ],
+               
+  function( group, use_group_string_as_id )
+      
+      InitializeGroupData( group, AffordAllIrreducibleRepresentations( group ), use_group_string_as_id );
+      
+end );
+
+##
+InstallMethod( InitializeGroupData,
+               [ IsGroup, IsList, IsBool ],
+               
+  function( group, representation_list, use_group_string_as_id )
+    local default_field, conductor, representation, entry, degree_of_representation, vector_space,
+          generator, gap_matrix, homalg_matrix, CAP_representation_list, ZZ, size, i, gen1, gen2,
+          log_string, group_string_for_creation, log_list, reps_as_string, group_generators,
+          list_of_characters, field, vector_space_object_list;
+    
+    log_list := [ ];
+    
+    SetName( ASSOCIATORS_Setup.e, "e" );
+    
+    size := Size( group );
+    
+    group_generators := GeneratorsOfGroup( group );
+    
+    # try to find two generators
+    
+    if Size( group_generators ) > 2 then
+        
+        for i in [ 1 .. 10 ] do
+            
+            gen1 := Random( group );
+            
+            gen2 := Random( group );
+            
+            if size = Size( Group( [ gen1, gen2 ] ) ) then
+                
+                group_generators := [ gen1, gen2 ];
+                
+                Print( "Found 2 generators for the group using random elements\n" );
+                
+                break;
+                
+            fi;
+            
+        od;
+        
+    fi;
+    
+    Add( log_list, group_generators );
+    
+    Add( log_list, Size( group_generators ) );
+    
+    list_of_characters := Irr( group ); ## WARNING: this has to be the same order as the representations in representation_list
+    
+    Add( log_list, list_of_characters );
+    
+    default_field := DefaultFieldForListOfRepresentations( representation_list );
+    
+    conductor := Conductor( default_field );
+    
+    if conductor = 1 then
+        
+        field := HomalgFieldOfRationalsInDefaultCAS();
+        
+    else
+        
+        field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
+        
+    fi;
+    
+    vector_space_object_list := 
+      List( list_of_characters, chi -> VectorSpaceObject( Degree( chi ), field ) );
+    
+    CAP_representation_list := [ ];
+    
+    ZZ := ASSOCIATORS_Setup.ZZ;
+    
+    ## This for-loop
+    ## creates a list of CAP matrices over the correct field
+    ## from the list of representations
+    for representation in representation_list do
+        
+        entry := [ ];
+        
+        degree_of_representation := DimensionOfMatrixGroup( Range( representation ) );
+        
+        vector_space := VectorSpaceObject( degree_of_representation, field );
+        
+        for generator in group_generators do
+          
+          gap_matrix := generator^representation;
+          
+          if conductor > 1 then
+              
+              gap_matrix := RewriteMatrixInCyclotomicGenerator( gap_matrix, conductor );
+              
+              gap_matrix := field * HomalgMatrix( gap_matrix, ZZ );
+              
+          fi;
+          
+          homalg_matrix :=
+                HomalgMatrix( gap_matrix, degree_of_representation, degree_of_representation, field );
+          
+          Add( entry, VectorSpaceMorphism( vector_space, homalg_matrix, vector_space ) );
+          
+        od;
+        
+        Add( CAP_representation_list, entry );
+        
+    od;
+    
+    Add( log_list, CAP_representation_list );
+    
+    Add( log_list, List( CAP_representation_list, images -> List( images, image -> Inverse( image ) ) ) );
+    
+    Add( log_list, vector_space_object_list );
+    
+    if use_group_string_as_id then
+        
+        group_string_for_creation := String( group );
+        
+    else
+        
+        group_string_for_creation := String( IdGroup( group ) );
+        
+        RemoveCharacters( group_string_for_creation, "\[\]\ " );
+        
+    fi;
+    
+    ASSOCIATORS_Setup.database_keys := [
+        
+        group_string_for_creation,
+        conductor,
+        PositionProperty( list_of_characters, IsOne )
+        
+    ];
+    
+    ASSOCIATORS_Setup.initialize_group_data_log_list := log_list;
+    
+    reps_as_string :=
+      String( List( log_list[4], rep -> List( rep, mor -> HomalgMatrixAsString( UnderlyingMatrix( mor ) ) ) ) );
+    
+    RemoveCharacters( reps_as_string, " " );
+    
+    ASSOCIATORS_Setup.initialize_group_data_log_list_as_string := Concatenation(
+      "[", String( List( log_list[1], elem -> String( elem ) ) ), ",\n",
+      "\"", String( log_list[3] ), "\"", ",\n",
+      reps_as_string, ",\n",
+      String( List( log_list[6], space -> Dimension( space ) ) ), "]" );
+    
+end );
+
+##
 InstallMethod( SkeletalFunctorTensorData,
                [ ],
                
@@ -769,192 +956,6 @@ InstallMethod( RewriteMatrixInCyclotomicGenerator,
 end );
 
 ##
-InstallMethod( InitializeGroupDataDixon,
-               [ IsGroup ],
-               
-  function( group )
-      
-      InitializeGroupDataDixon( group, false );
-      
-end );
-
-##
-InstallMethod( InitializeGroupDataDixon,
-               [ IsGroup, IsBool ],
-               
-  function( group, use_group_string_as_id )
-      
-      InitializeGroupData( group, AffordAllIrreducibleRepresentationsDixon( group ), use_group_string_as_id );
-      
-end );
-
-##
-InstallMethod( InitializeGroupData,
-               [ IsGroup ],
-               
-  function( group )
-      
-      InitializeGroupData( group, false );
-      
-end );
-
-##
-InstallMethod( InitializeGroupData,
-               [ IsGroup, IsBool ],
-               
-  function( group, use_group_string_as_id )
-      
-      InitializeGroupData( group, AffordAllIrreducibleRepresentations( group ), use_group_string_as_id );
-      
-end );
-
-##
-InstallMethod( InitializeGroupData,
-               [ IsGroup, IsList, IsBool ],
-               
-  function( group, representation_list, use_group_string_as_id )
-    local default_field, conductor, representation, entry, degree_of_representation, vector_space,
-          generator, gap_matrix, homalg_matrix, CAP_representation_list, ZZ, size, i, gen1, gen2,
-          log_string, group_string_for_creation, log_list, reps_as_string, group_generators,
-          list_of_characters, field, vector_space_object_list;
-    
-    log_list := [ ];
-    
-    SetName( ASSOCIATORS_Setup.e, "e" );
-    
-    size := Size( group );
-    
-    group_generators := GeneratorsOfGroup( group );
-    
-    # try to find two generators
-    
-    if Size( group_generators ) > 2 then
-        
-        for i in [ 1 .. 10 ] do
-            
-            gen1 := Random( group );
-            
-            gen2 := Random( group );
-            
-            if size = Size( Group( [ gen1, gen2 ] ) ) then
-                
-                group_generators := [ gen1, gen2 ];
-                
-                Print( "Found 2 generators for the group using random elements\n" );
-                
-                break;
-                
-            fi;
-            
-        od;
-        
-    fi;
-    
-    Add( log_list, group_generators );
-    
-    Add( log_list, Size( group_generators ) );
-    
-    list_of_characters := Irr( group ); ## WARNING: this has to be the same order as the representations in representation_list
-    
-    Add( log_list, list_of_characters );
-    
-    default_field := DefaultFieldForListOfRepresentations( representation_list );
-    
-    conductor := Conductor( default_field );
-    
-    if conductor = 1 then
-        
-        field := HomalgFieldOfRationalsInDefaultCAS();
-        
-    else
-        
-        field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
-        
-    fi;
-    
-    vector_space_object_list := 
-      List( list_of_characters, chi -> VectorSpaceObject( Degree( chi ), field ) );
-    
-    CAP_representation_list := [ ];
-    
-    ZZ := ASSOCIATORS_Setup.ZZ;
-    
-    ## This for-loop
-    ## creates a list of CAP matrices over the correct field
-    ## from the list of representations
-    for representation in representation_list do
-        
-        entry := [ ];
-        
-        degree_of_representation := DimensionOfMatrixGroup( Range( representation ) );
-        
-        vector_space := VectorSpaceObject( degree_of_representation, field );
-        
-        for generator in group_generators do
-          
-          gap_matrix := generator^representation;
-          
-          if conductor > 1 then
-              
-              gap_matrix := RewriteMatrixInCyclotomicGenerator( gap_matrix, conductor );
-              
-              gap_matrix := field * HomalgMatrix( gap_matrix, ZZ );
-              
-          fi;
-          
-          homalg_matrix :=
-                HomalgMatrix( gap_matrix, degree_of_representation, degree_of_representation, field );
-          
-          Add( entry, VectorSpaceMorphism( vector_space, homalg_matrix, vector_space ) );
-          
-        od;
-        
-        Add( CAP_representation_list, entry );
-        
-    od;
-    
-    Add( log_list, CAP_representation_list );
-    
-    Add( log_list, List( CAP_representation_list, images -> List( images, image -> Inverse( image ) ) ) );
-    
-    Add( log_list, vector_space_object_list );
-    
-    if use_group_string_as_id then
-        
-        group_string_for_creation := String( group );
-        
-    else
-        
-        group_string_for_creation := String( IdGroup( group ) );
-        
-        RemoveCharacters( group_string_for_creation, "\[\]\ " );
-        
-    fi;
-    
-    ASSOCIATORS_Setup.database_keys := [
-        
-        group_string_for_creation,
-        conductor,
-        PositionProperty( list_of_characters, IsOne )
-        
-    ];
-    
-    ASSOCIATORS_Setup.initialize_group_data_log_list := log_list;
-    
-    reps_as_string :=
-      String( List( log_list[4], rep -> List( rep, mor -> HomalgMatrixAsString( UnderlyingMatrix( mor ) ) ) ) );
-    
-    RemoveCharacters( reps_as_string, " " );
-    
-    ASSOCIATORS_Setup.initialize_group_data_log_list_as_string := Concatenation(
-      "[", String( List( log_list[1], elem -> String( elem ) ) ), ",\n",
-      "\"", String( log_list[3] ), "\"", ",\n",
-      reps_as_string, ",\n",
-      String( List( log_list[6], space -> Dimension( space ) ) ), "]" );
-    
-end );
-
-##
 InstallMethod( InternalHomToTensorProductAdjunctionMapTemp,
                [ IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism ],
                
@@ -974,37 +975,101 @@ InstallMethod( InternalHomToTensorProductAdjunctionMapTemp,
 end );
 
 ##
-InstallMethod( DisplaySkeletalFunctorTensorData, 
-               [ IsList ],
+InstallMethod( CreateEndomorphismFromString,
+               [ IsVectorSpaceObject, IsString ],
                
-  function( data )
-    local size, i, j;
+  function( object, string )
+    local dimension, field, homalg_matrix;
     
-    size := Size( data );
+    dimension := Dimension( object );
     
-    for i in [ 1 .. size ] do
-      
-      for j in [ 1 .. size ] do
-        
-        Display( data[i][j][1] );
-        
-        Print( "\n" );
-        
-      od;
-      
-    od;
+    field := UnderlyingFieldForHomalg( object );
+    
+    homalg_matrix := HomalgMatrix( Concatenation( "[", string, "]" ), dimension, dimension, field );
+    
+    return VectorSpaceMorphism( object, homalg_matrix, object );
     
 end );
 
 ##
-InstallMethod( EntryOfHomalgMatrix,
-               [ IsHomalgMatrix, IsInt, IsInt ],
+InstallMethod( AsVectorSpaceMorphism,
+               [ IsHomalgMatrix ],
                
-  function( homalg_matrix, i, j )
-      
-      return EntriesOfHomalgMatrix( CertainColumns( CertainRows( homalg_matrix, [ i ] ), [ j ] ) )[1];
-      
+  function( homalg_matrix )
+    local field;
+    
+    field := HomalgRing( homalg_matrix );
+    
+    return VectorSpaceMorphism(
+             VectorSpaceObject( NrRows( homalg_matrix ), field ),
+             homalg_matrix,
+             VectorSpaceObject( NrColumns( homalg_matrix ), field )
+           );
+    
 end );
+
+##
+InstallMethod( DecompositionFactorOfMultiplicationWithIdentity,
+               [ IsVectorSpaceMorphism, IsInt ],
+               
+  function( morphism, identity_size )
+    local homalg_matrix, nr, entry_list;
+    
+    homalg_matrix := UnderlyingMatrix( morphism );
+    
+    nr := Dimension( Source( morphism ) ) / identity_size;
+    
+    entry_list := List( [ 0 .. nr - 1 ], i -> 1 + i*identity_size );
+    
+    homalg_matrix := CertainRows( CertainColumns( homalg_matrix, entry_list ), entry_list );
+    
+    return AsVectorSpaceMorphism( homalg_matrix );
+    
+end );
+
+##
+InstallMethod( HomalgMatrixAsString,
+               [ IsHomalgMatrix ],
+               
+  function( homalg_matrix )
+    local string;
+    
+    string := String( EntriesOfHomalgMatrix( homalg_matrix ) );
+    
+    RemoveCharacters( string, "[]" );
+    
+    return string;
+    
+end );
+
+##
+InstallMethod( DataFromSkeletalFunctorTensorDataAsStringList, 
+               [ IsList ],
+               
+  function( associator_data )
+    local result_list, i, string;
+    
+    result_list := [ ];
+    
+    for i in [ 1 .. Size( associator_data ) ] do
+        
+        if IsHomalgMatrix( associator_data[i] ) then
+            
+            result_list[i] := HomalgMatrixAsString( associator_data[i] );
+            
+        fi;
+        
+    od;
+    
+    return result_list;
+    
+end );
+
+###################################
+##
+## Read, Write, and Display
+##
+###################################
 
 ##
 InstallMethod( WriteAssociatorDataToFile,
@@ -1186,96 +1251,25 @@ InstallMethod( ReadSkeletalFunctorData,
     
 end );
 
-
 ##
-InstallMethod( CreateEndomorphismFromString,
-               [ IsVectorSpaceObject, IsString ],
-               
-  function( object, string )
-    local dimension, field, homalg_matrix;
-    
-    dimension := Dimension( object );
-    
-    field := UnderlyingFieldForHomalg( object );
-    
-    homalg_matrix := HomalgMatrix( Concatenation( "[", string, "]" ), dimension, dimension, field );
-    
-    return VectorSpaceMorphism( object, homalg_matrix, object );
-    
-end );
-
-##
-InstallMethod( AsVectorSpaceMorphism,
-               [ IsHomalgMatrix ],
-               
-  function( homalg_matrix )
-    local field;
-    
-    field := HomalgRing( homalg_matrix );
-    
-    return VectorSpaceMorphism(
-             VectorSpaceObject( NrRows( homalg_matrix ), field ),
-             homalg_matrix,
-             VectorSpaceObject( NrColumns( homalg_matrix ), field )
-           );
-    
-end );
-
-##
-InstallMethod( DecompositionFactorOfMultiplicationWithIdentity,
-               [ IsVectorSpaceMorphism, IsInt ],
-               
-  function( morphism, identity_size )
-    local homalg_matrix, nr, entry_list;
-    
-    homalg_matrix := UnderlyingMatrix( morphism );
-    
-    nr := Dimension( Source( morphism ) ) / identity_size;
-    
-    entry_list := List( [ 0 .. nr - 1 ], i -> 1 + i*identity_size );
-    
-    homalg_matrix := CertainRows( CertainColumns( homalg_matrix, entry_list ), entry_list );
-    
-    return AsVectorSpaceMorphism( homalg_matrix );
-    
-end );
-
-##
-InstallMethod( HomalgMatrixAsString,
-               [ IsHomalgMatrix ],
-               
-  function( homalg_matrix )
-    local string;
-    
-    string := String( EntriesOfHomalgMatrix( homalg_matrix ) );
-    
-    RemoveCharacters( string, "[]" );
-    
-    return string;
-    
-end );
-
-##
-InstallMethod( DataFromSkeletalFunctorTensorDataAsStringList, 
+InstallMethod( DisplaySkeletalFunctorTensorData, 
                [ IsList ],
                
-  function( associator_data )
-    local result_list, i, string;
+  function( data )
+    local size, i, j;
     
-    result_list := [ ];
+    size := Size( data );
     
-    for i in [ 1 .. Size( associator_data ) ] do
+    for i in [ 1 .. size ] do
+      
+      for j in [ 1 .. size ] do
         
-        if IsHomalgMatrix( associator_data[i] ) then
-            
-            result_list[i] := HomalgMatrixAsString( associator_data[i] );
-            
-        fi;
+        Display( data[i][j][1] );
         
+        Print( "\n" );
+        
+      od;
+      
     od;
     
-    return result_list;
-    
 end );
-
-
