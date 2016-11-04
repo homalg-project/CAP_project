@@ -661,11 +661,6 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
     
     log_string := String( log_list );
     
-#     RemoveCharacters( log_string, "\"" );
-    
-    Append( ASSOCIATORS_Setup.associator_log_string, 
-      Concatenation( "ASSOCIATORS_Setup.associator_data := ", log_string, ";" ) );
-    
     ASSOCIATORS_Setup.associator_stringlist := log_string;
     
     ASSOCIATORS_Setup.associator_data := result_list;
@@ -1180,13 +1175,11 @@ InstallMethod( WriteSkeletalFunctorDataToFile,
 end );
 
 ##
-InstallMethod( ReadRepresentationsData,
-               [ IsString, IsString ],
+InstallMethod( ReadDatabaseKeys,
+               [ IsString ],
                
-  function( databasekeys_filename, representations_filename )
-    local stream, command, database_keys, representation_list, group, conductor, log_list, field, category, comma_pos;
-    
-    log_list := [ ];
+  function( databasekeys_filename )
+    local stream, command, database_keys, group, comma_pos, conductor, field, category;
     
     stream := InputTextFile( databasekeys_filename );
     
@@ -1195,8 +1188,6 @@ InstallMethod( ReadRepresentationsData,
     database_keys := EvalString( command );
     
     group := database_keys[1];
-    
-    conductor := database_keys[2];
     
     if group[1] in "123456789" then
         
@@ -1209,6 +1200,43 @@ InstallMethod( ReadRepresentationsData,
         group := EvalString( group );
         
     fi;
+    
+    conductor := database_keys[2];
+    
+    if conductor = 1 then
+        
+        field := HomalgFieldOfRationalsInDefaultCAS();
+        
+    else
+        
+        field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
+        
+    fi;
+    
+    category := MatrixCategory( field );
+    
+    return [ group, conductor, database_keys[3], field, category ];
+    
+end );
+
+##
+InstallMethod( ReadRepresentationsData,
+               [ IsString, IsString ],
+               
+  function( databasekeys_filename, representations_filename )
+    local stream, command, database_keys, representation_list, group, conductor, log_list, field, category, comma_pos;
+    
+    log_list := [ ];
+    
+    database_keys := ReadDatabaseKeys( databasekeys_filename );
+    
+    group := database_keys[1];
+    
+    conductor := database_keys[2];
+    
+    field := database_keys[4];
+    
+    category := database_keys[5];
     
     log_list[3] := Irr( group );
     
@@ -1226,18 +1254,6 @@ InstallMethod( ReadRepresentationsData,
         
     fi;
     
-    if conductor = 1 then
-        
-        field := HomalgFieldOfRationalsInDefaultCAS();
-        
-    else
-        
-        field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
-        
-    fi;
-    
-    category := MatrixCategory( field );
-    
     log_list[6] :=
       List( representation_list[4], dim -> VectorSpaceObject( dim, field ) );
     
@@ -1254,6 +1270,48 @@ InstallMethod( ReadRepresentationsData,
     return log_list;
     
 end );
+
+##
+InstallMethod( ReadSkeletalFunctorData,
+               [ IsString, IsString, IsString ],
+               
+  function( databasekeys_filename, representations_filename, skeletalfunctor_filename )
+    local log_list, database_keys, stream, command, representation_list, tensor_data, field;
+    
+    log_list := [ ];
+    
+    database_keys := ReadDatabaseKeys( databasekeys_filename );
+    
+    field := database_keys[4];
+    
+    log_list[1] := Irr( database_keys[1] );
+    
+    stream := InputTextFile( representations_filename );
+    
+    command := ReadAll( stream );
+    
+    representation_list := EvalString( command );
+    
+    log_list[3] :=
+      List( representation_list[4], dim -> VectorSpaceObject( dim, field ) );
+    
+    stream := InputTextFile( skeletalfunctor_filename );
+    
+    command := ReadAll( stream );
+    
+    tensor_data := EvalString( command );
+    
+    log_list[2] :=
+      List( [ 1 .. Size( tensor_data ) ], i ->
+        List( [ 1 .. Size( tensor_data[i] ) ], j ->
+          List( tensor_data[i][j], mor -> CreateEndomorphismFromString( TensorProductOnObjects( log_list[3][i], log_list[3][j] ), mor ) )
+        )
+      );
+    
+    return log_list;
+    
+end );
+
 
 ##
 InstallMethod( CreateEndomorphismFromString,

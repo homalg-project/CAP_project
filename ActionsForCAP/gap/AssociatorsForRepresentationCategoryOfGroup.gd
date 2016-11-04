@@ -185,6 +185,9 @@ DeclareOperation( "WriteAssociatorAsStringlistToFile", [ IsString ] );
 DeclareOperation( "WriteDatabaseKeysToFile", [ IsString ] );
 
 ##
+DeclareOperation( "ReadDatabaseKeys", [ IsString ] );
+
+##
 DeclareOperation( "WriteRepresentationsDataToFile", [ IsString ] );
 
 ##
@@ -192,6 +195,9 @@ DeclareOperation( "ReadRepresentationsData", [ IsString, IsString ] );
 
 ##
 DeclareOperation( "WriteSkeletalFunctorDataToFile", [ IsString ] );
+
+##
+DeclareOperation( "ReadSkeletalFunctorData", [ IsString, IsString, IsString ] );
 
 ##
 DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
