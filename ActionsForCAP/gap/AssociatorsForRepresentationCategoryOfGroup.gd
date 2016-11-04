@@ -15,7 +15,7 @@
 
 ###################################
 ##
-## Global 
+## Global
 ##
 ###################################
 
@@ -87,6 +87,84 @@ DeclareOperation( "DefaultFieldForListOfRepresentations", [ IsList ] );
 #! @Arguments M, n
 DeclareOperation( "RewriteMatrixInCyclotomicGenerator", [ IsMatrix, IsInt ] );
 
+
+## TODO: Add this to MatrixCategory
+#! @Description
+#! The arguments are objects $b,c$ and a morphism $g: a \rightarrow \mathrm{\underline{Hom}}(b,c)$.
+#! The output is a morphism $f: a \otimes b \rightarrow c$ corresponding to $g$ under the
+#! tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, c)$.
+#! @Arguments b, c, g
+DeclareOperation( "InternalHomToTensorProductAdjunctionMapTemp",
+                  [ IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism ] );
+
+#! @Description
+#! The arguments are a homalg matrix $M$ and two integers $i,j$.
+#! The output is the $(i,j)-th$ entry of $M$.
+#! @Returns an element of a homalg ring
+#! @Arguments M, i, j
+DeclareOperation( "EntryOfHomalgMatrix",
+                  [ IsHomalgMatrix, IsInt, IsInt ] );
+
+DeclareOperation( "HomalgMatrixAsString", [ IsHomalgMatrix ] );
+
+DeclareOperation( "DataFromSkeletalFunctorTensorDataAsStringList", [ IsList ] );
+
+#! @Description
+#! The argument is a homalg matrix $M$.
+#! The output is a vector space morphism whose underlying matrix is
+#! given by $M$.
+#! @Returns a vector space morphism
+#! @Arguments M
+DeclareAttribute( "AsVectorSpaceMorphism", IsHomalgMatrix );
+
+##
+DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
+                  [ IsVectorSpaceMorphism, IsInt ] );
+##
+DeclareOperation( "CreateEndomorphismFromString",
+                  [ IsVectorSpaceObject, IsString ] );
+
+###################################
+##
+#! @Section Read, Write, and Display
+##
+###################################
+
+##
+DeclareOperation( "WriteDatabaseKeysToFile", [ IsString ] );
+
+##
+DeclareOperation( "WriteRepresentationsDataToFile", [ IsString ] );
+
+##
+DeclareOperation( "WriteSkeletalFunctorDataToFile", [ IsString ] );
+
+##
+DeclareOperation( "WriteAssociatorDataToFile", [ IsString ] );
+
+##
+DeclareOperation( "ReadDatabaseKeys", [ IsString ] );
+
+##
+DeclareOperation( "ReadRepresentationsData", [ IsString, IsString ] );
+
+##
+DeclareOperation( "ReadSkeletalFunctorData", [ IsString, IsString, IsString ] );
+
+#! @Description
+#! The argument is a list $L$ which was the output of the operation SkeletalFunctorTensorData.
+#! This operations displays all the matrices (without inverses) within $L$.
+#! @Returns nothing
+#! @Arguments L
+DeclareOperation( "DisplaySkeletalFunctorTensorData", [ IsList ] );
+
+###################################
+##
+#! @Section Computing associators
+##
+###################################
+
 #! @Description
 #! The argument is a group $G$.
 #! This method initializes the values of the internal record ASSOCIATORS_Setup.
@@ -110,78 +188,6 @@ DeclareOperation( "InitializeGroupDataDixon", [ IsGroup, IsBool ] );
 #! affording irreducible representations using the command IrreducibleAffordingRepresentation.
 #! @Arguments G
 DeclareOperation( "InitializeGroupData", [ IsGroup, IsList, IsBool ] );
-
-
-## TODO: Add this to MatrixCategory
-#! @Description
-#! The arguments are objects $b,c$ and a morphism $g: a \rightarrow \mathrm{\underline{Hom}}(b,c)$.
-#! The output is a morphism $f: a \otimes b \rightarrow c$ corresponding to $g$ under the
-#! tensor hom adjunction.
-#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, c)$.
-#! @Arguments b, c, g
-DeclareOperation( "InternalHomToTensorProductAdjunctionMapTemp",
-                  [ IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism ] );
-
-#! @Description
-#! The arguments are a homalg matrix $M$ and two integers $i,j$.
-#! The output is the $(i,j)-th$ entry of $M$.
-#! @Returns an element of a homalg ring
-#! @Arguments M, i, j
-DeclareOperation( "EntryOfHomalgMatrix",
-                  [ IsHomalgMatrix, IsInt, IsInt ] );
-
-#! @Description
-#! The argument is a list $L$ which was the output of the operation SkeletalFunctorTensorData.
-#! This operations displays all the matrices (without inverses) within $L$.
-#! @Returns nothing
-#! @Arguments L
-DeclareOperation( "DisplaySkeletalFunctorTensorData", [ IsList ] );
-
-DeclareOperation( "HomalgMatrixAsString", [ IsHomalgMatrix ] );
-
-DeclareOperation( "WriteDataFromSkeletalFunctorTensorDataAsStringList", [ IsList ] );
-
-#! @Description
-#! The argument is a homalg matrix $M$.
-#! The output is a vector space morphism whose underlying matrix is
-#! given by $M$.
-#! @Returns a vector space morphism
-#! @Arguments M
-DeclareAttribute( "AsVectorSpaceMorphism", IsHomalgMatrix );
-
-##
-DeclareOperation( "WriteAssociatorAsStringlistToFile", [ IsString ] );
-
-##
-DeclareOperation( "WriteDatabaseKeysToFile", [ IsString ] );
-
-##
-DeclareOperation( "ReadDatabaseKeys", [ IsString ] );
-
-##
-DeclareOperation( "WriteRepresentationsDataToFile", [ IsString ] );
-
-##
-DeclareOperation( "ReadRepresentationsData", [ IsString, IsString ] );
-
-##
-DeclareOperation( "WriteSkeletalFunctorDataToFile", [ IsString ] );
-
-##
-DeclareOperation( "ReadSkeletalFunctorData", [ IsString, IsString, IsString ] );
-
-##
-DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
-                  [ IsVectorSpaceMorphism, IsInt ] );
-##
-DeclareOperation( "CreateEndomorphismFromString",
-                  [ IsVectorSpaceObject, IsString ] );
-
-###################################
-##
-#! @Section Computing associators
-##
-###################################
 
 #! @Description
 #! There is no argument.

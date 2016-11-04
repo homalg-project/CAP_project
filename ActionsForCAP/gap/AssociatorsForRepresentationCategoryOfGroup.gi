@@ -571,7 +571,7 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
                 
                 result_list[a][b][c] := data_abc;
                 
-                log_list[a][b][c] := WriteDataFromSkeletalFunctorTensorDataAsStringList( data_abc );
+                log_list[a][b][c] := DataFromSkeletalFunctorTensorDataAsStringList( data_abc );
                 
                 Print( Concatenation( "Finished: (", String( a ), ",", String( b ), ",", String( c ), ")\n" ) );
                 
@@ -583,7 +583,7 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
                     
                     result_list[a][c][b] := data_acb;
                     
-                    log_list[a][c][b] := WriteDataFromSkeletalFunctorTensorDataAsStringList( data_acb );
+                    log_list[a][c][b] := DataFromSkeletalFunctorTensorDataAsStringList( data_acb );
                     
                     Print( Concatenation( "Finished: (", String( a ), ",", String( c ), ",", String( b ), ")\n" ) );
                     
@@ -1007,7 +1007,7 @@ InstallMethod( EntryOfHomalgMatrix,
 end );
 
 ##
-InstallMethod( WriteAssociatorAsStringlistToFile,
+InstallMethod( WriteAssociatorDataToFile,
                [ IsString ],
                
    function( filename )
@@ -1256,7 +1256,7 @@ InstallMethod( HomalgMatrixAsString,
 end );
 
 ##
-InstallMethod( WriteDataFromSkeletalFunctorTensorDataAsStringList, 
+InstallMethod( DataFromSkeletalFunctorTensorDataAsStringList, 
                [ IsList ],
                
   function( associator_data )
