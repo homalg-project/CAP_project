@@ -163,10 +163,24 @@ DeclareOperation( "WriteAssociatorDataToFile", [ IsString ] );
 #! @Arguments s
 DeclareOperation( "ReadDatabaseKeys", [ IsString ] );
 
-##
+#! @Description
+#! The arguments are a filename $s_1$ of a file written by WriteDatabaseKeysToFile,
+#! and a filename $s_2$ of a file written by WriteRepresentationsDataToFile.
+#! The output is a list
+#! [ ,number of irreducibles, irreducibles, representations given by images of generators, inverses of these images, 
+#! vector space objects for the irreducibles ].
+#! @Returns a list
+#! @Arguments s_1, s_2
 DeclareOperation( "ReadRepresentationsData", [ IsString, IsString ] );
 
-##
+#! @Description
+#! The arguments are a filename $s_1$ of a file written by WriteDatabaseKeysToFile,
+#! a filename $s_2$ of a file written by WriteRepresentationsDataToFile,
+#! and a filename $s_3$ of a file written by WriteSkeletalFunctorDataToFile.
+#! The output is a list
+#! [ irreducibles, skeletal functor tensor data, vector space objects for the irreducibles ].
+#! @Returns a list
+#! @Arguments s_1, s_2, s_3
 DeclareOperation( "ReadSkeletalFunctorData", [ IsString, IsString, IsString ] );
 
 #! @Description
@@ -184,65 +198,94 @@ DeclareOperation( "DisplaySkeletalFunctorTensorData", [ IsList ] );
 
 #! @Description
 #! The argument is a group $G$.
-#! This method initializes the values of the internal record ASSOCIATORS_Setup.
+#! This method calls InitializeGroupData( G, false ).
+#! @Returns a list
 #! @Arguments G
 DeclareOperation( "InitializeGroupData", [ IsGroup ] );
 
+#! @Description
+#! The arguments are a group $G$ and a boolean $b$.
+#! The output is a list
+#! [ generators of $G$ ,number of irreducibles, irreducibles, representations given by images of generators, inverses of these images, 
+#! vector space objects for the irreducibles ].
+#! Furthermore, this method stores the database key,
+#! which can be written using WriteDatabaseKeysToFile.
+#! If $b$ is true, then the id of the group in the database key is given by its string,
+#! otherwise it is given by its id in the SmallGroupLibrary.
+#! @Returns a list
+#! @Arguments G, b
 DeclareOperation( "InitializeGroupData", [ IsGroup, IsBool ] );
 
 #! @Description
 #! The argument is a group $G$.
-#! This method initializes the values of the internal record ASSOCIATORS_Setup
-#! affording irreducible representations using the command IrreducibleRepresentationsDixon.
+#! This method calls InitializeGroupDataDixon( G, false ).
+#! @Returns a list
 #! @Arguments G
 DeclareOperation( "InitializeGroupDataDixon", [ IsGroup ] );
 
+#! @Description
+#! The arguments are a group $G$ and a boolean $b$.
+#! This method does the same as InitializeGroupData, but uses IrreducibleRepresentationsDixon
+#! for affording irreducible representations.
+#! @Returns a list
+#! @Arguments G, b
 DeclareOperation( "InitializeGroupDataDixon", [ IsGroup, IsBool ] );
 
-#! @Description
-#! The argument is a group $G$.
-#! This method initializes the values of the internal record ASSOCIATORS_Setup
-#! affording irreducible representations using the command IrreducibleAffordingRepresentation.
-#! @Arguments G
+#!
 DeclareOperation( "InitializeGroupData", [ IsGroup, IsList, IsBool ] );
 
 #! @Description
 #! There is no argument.
-#! Run the InitializeGroupData( group ) command first.
-#! The output is a list consisting of triples $[ n, [ i,j ], \alpha ]$,
-#! where $n,i,j$ are integers ranging from $1$ to the number of irreducible representations
-#! of the group and $\alpha$ is a monomorphism
-#! $V_n^{m_n} \rightarrow V_i \otimes V_j$
-#! which is $G$-equivariant with repect to the initialized data and where $m_n$ is maximal.
+#! This methods calls SkeletalFunctorTensorData with the output of the last call of InitializeGroupData
+#! or InitializeGroupDataDixon.
 #! @Returns a list
 DeclareOperation( "SkeletalFunctorTensorData", [  ] );
 
-DeclareOperation( "SkeletalFunctorTensorData", [ IsList, IsList ] );
+#! @Description
+#! The argument is a list $l$ which is the output of InitializeGroupData, InitializeGroupDataDixon,
+#! or ReadRepresentationsData.
+#! The output is a triple $[t_1,t_2,t_3]$. 
+#! $t_1$ is the list of all characters of $G$.
+#! $t_2$ is a list
+#! such that the $(i,j)$-th entry, where $i,j$ range from 1 to the number of
+#! irreducibles, is a pair of mutual inverse morphisms $[\alpha, \alpha^{-1}]$, and
+#! $\alpha$ is a decomposition isomorphism
+#! $\bigoplus_{\chi \in \mathrm{Irr}(G)}V_{\chi}^{n_{\chi}} \rightarrow V_i \otimes V_j$.
+#! $t_3$ is a list of vector space objects for the irreducibles.
+#! @Returns a list
+#! @Arguments l
+DeclareOperation( "SkeletalFunctorTensorData", [ IsList ] );
 
 # TODO: 4th argument
 #! @Description
-#! This method can only be called if SkeletalFunctorTensorData was called before.
-#! The arguments are integers $a,b,c$.
+#! The arguments are integers $a,b,c$ and a list $l$ which is the output of SkeletalFunctorTensorData.
 #! The output is a list containing homalg matrices representing the components
 #! of the associator of $V_a, V_b, V_c$, where the numbers correspond
-#! to the enlisting of the irreducible characters in Gap.
+#! to the enlisting of the irreducible characters given by $l$.
 #! @Returns a list
-#! @Arguments a,b,c
+#! @Arguments a,b,c,l
 DeclareOperation( "AssociatorDataFromSkeletalFunctorTensorData",
                   [ IsInt, IsInt, IsInt, IsList ] );
 
 #! @Description
 #! There is no argument.
-#! The output is a list of lists $L$ such that $L[a][b][c]$ contains
-#! the associator computed by AssociatorDataFromSkeletalFunctorTensorData(a,b,c),
-#! but only for so many triples such that the others can be obtained using braidings.
+#! This methods calls AssociatorForSufficientlyManyTriples with the output of the last call of SkeletalFunctorTensorData
+#! and false.
 #! @Returns a list
 DeclareOperation( "AssociatorForSufficientlyManyTriples", [ ] );
 
-DeclareOperation( "AssociatorForSufficientlyManyTriples", [ IsBool, IsList ] );
+#! @Description
+#! The arguments are a list $l$ which is the output of SkeletalFunctorTensorData,
+#! and a boolean $b$.
+#! The output is a list of lists $L$ such that $L[a][b][c]$ contains
+#! the associator computed by AssociatorDataFromSkeletalFunctorTensorData(a,b,c).
+#! If $b$ is true, then $a,b,c$ ranges through all possible triples,
+#! otherwise, $a,b,c$ are computed for so many triples such that the others can be obtained using braidings.
+#! @Returns a list
+DeclareOperation( "AssociatorForSufficientlyManyTriples", [ IsList, IsBool ] );
 
 #! @Description
-#! The argument is a group $G$ and a boolean $b$
+#! The argument is a group $G$ and a boolean $b$.
 #! The output is data for an associator of that group, using
 #! irreducible representations constructed with IrreducibleAffordingRepresentation.
 #! If b is true, then the associator includes all triples of irreducibles,
@@ -251,7 +294,7 @@ DeclareOperation( "AssociatorForSufficientlyManyTriples", [ IsBool, IsList ] );
 DeclareOperation( "ComputeAssociator", [ IsGroup, IsBool ] );
 
 #! @Description
-#! The argument is a group $G$ and a boolean $b$
+#! The argument is a group $G$ and a boolean $b$.
 #! The output is data for an associator of that group, using
 #! irreducible representations constructed with IrreducibleRepresentationsDixon.
 #! If b is true, then the associator includes all triples of irreducibles,

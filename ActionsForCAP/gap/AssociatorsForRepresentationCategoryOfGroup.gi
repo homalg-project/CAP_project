@@ -205,6 +205,8 @@ InstallMethod( InitializeGroupData,
       reps_as_string, ",\n",
       String( List( log_list[6], space -> Dimension( space ) ) ), "]" );
     
+    return log_list;
+    
 end );
 
 ##
@@ -222,9 +224,7 @@ InstallMethod( SkeletalFunctorTensorData,
           
       fi;
       
-      l := [ 1 .. Size( ASSOCIATORS_Setup.initialize_group_data_log_list[3] ) ];
-      
-      return SkeletalFunctorTensorData( [ l, l, l ], ASSOCIATORS_Setup.initialize_group_data_log_list );
+      return SkeletalFunctorTensorData( ASSOCIATORS_Setup.initialize_group_data_log_list );
       
 end );
 
@@ -233,10 +233,10 @@ end );
 # the subspace of Hom( C, A \otimes B ) consisting of G equivariant maps
 # as a k-vector space.
 InstallMethod( SkeletalFunctorTensorData,
-               [ IsList, IsList ],
+               [ IsList ],
                
-  function( indices, initialize_group_data_log_list )
-    local CAP_representation_list, rep1, gen, rep2, tensor_product_on_objects, tensor_product_on_morphisms,
+  function( initialize_group_data_log_list )
+    local l, indices, CAP_representation_list, rep1, gen, rep2, tensor_product_on_objects, tensor_product_on_morphisms,
           indices_using_braiding, indices_not_using_braiding, CAP_representation_list_inverses,
           nr_generators, mor_list, result_list, rep3, Gmorphisms, i, j, k, obj, id, kernel_embeddings,
           degree1, degree2, degree3, rep1_vector_space_object, rep2_vector_space_object, rep3_vector_space_object,
@@ -245,6 +245,10 @@ InstallMethod( SkeletalFunctorTensorData,
           embedding_of_k_component, skeletal_braiding_in_kvec, transformation_matrix, decomposition_morphism_inverse,
           square_matrix_size, matrix_string, composition_with_braiding, composition_with_braiding_inverse, list_of_characters,
           tensor_data_as_string;
+    
+    l := [ 1 .. Size( initialize_group_data_log_list[3] ) ];
+    
+    indices := [ l, l, l ];
     
     nr_generators := initialize_group_data_log_list[2];
     
@@ -444,7 +448,7 @@ InstallMethod( SkeletalFunctorTensorData,
     
     ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string := tensor_data_as_string;
     
-    return result_list;
+    return ASSOCIATORS_Setup.skeletalfunctortensordata_log_list;
     
 end );
 
@@ -687,15 +691,15 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
                
   function( )
     
-    return AssociatorForSufficientlyManyTriples( false, ASSOCIATORS_Setup.skeletalfunctortensordata_log_list );
+    return AssociatorForSufficientlyManyTriples( ASSOCIATORS_Setup.skeletalfunctortensordata_log_list, false );
     
 end );
 
 ##
 InstallMethod( AssociatorForSufficientlyManyTriples,
-               [ IsBool, IsList ],
+               [ IsList, IsBool ],
                
-  function( for_all_triples, skeletalfunctortensordata_log_list )
+  function( skeletalfunctortensordata_log_list, for_all_triples )
     local list_of_characters, nr_characters, index_list, i,
           a, b, c, sub_list_a, sub_list_b, data_abc, data_acb, log_list, result_list, log_string;
     
