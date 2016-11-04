@@ -703,6 +703,8 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
     local list_of_characters, nr_characters, index_list, i,
           a, b, c, sub_list_a, sub_list_b, data_abc, data_acb, log_list, result_list, log_string;
     
+    ASSOCIATORS_Setup.database_keys[5] := for_all_triples;
+    
     log_string := "";
     
     result_list := [ ];
@@ -1044,6 +1046,8 @@ InstallMethod( WriteAssociatorDataToFile,
                [ IsString ],
                
    function( filename )
+       
+       ASSOCIATORS_Setup.database_keys[4] := filename;
        
        RemoveCharacters( ASSOCIATORS_Setup.associator_stringlist, " " );
        
