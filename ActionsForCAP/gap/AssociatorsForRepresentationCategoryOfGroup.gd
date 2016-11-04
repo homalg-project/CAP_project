@@ -8,7 +8,7 @@
 #!  
 #!  Let $G$ be a finite group and let $G$-mod be a skeletal version
 #!  of the monoidal category of finite complex representations of $G$.
-#!  The purpose of this GAP methods is the computation of the
+#!  The purpose of these GAP methods is the computation of the
 #!  associators of $G$-mod.
 ##
 #############################################################################

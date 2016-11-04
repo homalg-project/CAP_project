@@ -5,7 +5,7 @@
 ##  Copyright 2016, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @Chapter Semisimple Categories
+#! @Chapter Representation Category of Groups
 ##
 #############################################################################
 
