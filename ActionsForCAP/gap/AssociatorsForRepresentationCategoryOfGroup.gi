@@ -27,7 +27,7 @@ InstallMethod( SkeletalFunctorTensorData,
   function( )
       local l;
       
-      if not IsBound( ASSOCIATORS_Setup.group ) then
+      if not IsBound( ASSOCIATORS_Setup.initialize_group_data_log_list ) then
           
           Error( "Initialize group data first via the command: InitializeGroupData( group )" );
           
@@ -35,7 +35,7 @@ InstallMethod( SkeletalFunctorTensorData,
           
       fi;
       
-      l := [ 1 .. Size( ASSOCIATORS_Setup.GAP_representation_list ) ];
+      l := [ 1 .. Size( ASSOCIATORS_Setup.initialize_group_data_log_list[3] ) ];
       
       return SkeletalFunctorTensorData( [ l, l, l ], ASSOCIATORS_Setup.initialize_group_data_log_list );
       
@@ -242,8 +242,6 @@ InstallMethod( SkeletalFunctorTensorData,
       Add( result_list, results_with_fixed_i );
       
     od;
-    
-    ASSOCIATORS_Setup.tensor_data := result_list;
     
     ASSOCIATORS_Setup.skeletalfunctortensordata_log_list :=
       [ list_of_characters, result_list, vector_space_object_list ];
@@ -601,8 +599,6 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
     
     ASSOCIATORS_Setup.associator_stringlist := log_string;
     
-    ASSOCIATORS_Setup.associator_data := result_list;
-    
     return result_list;
     
 end );
@@ -819,21 +815,20 @@ InstallMethod( InitializeGroupData,
   function( group, representation_list, use_group_string_as_id )
     local default_field, conductor, representation, entry, degree_of_representation, vector_space,
           generator, gap_matrix, homalg_matrix, CAP_representation_list, ZZ, size, i, gen1, gen2,
-          log_string, group_string_for_creation, log_list, reps_as_string;
+          log_string, group_string_for_creation, log_list, reps_as_string, group_generators,
+          list_of_characters, field, vector_space_object_list;
     
     log_list := [ ];
     
     SetName( ASSOCIATORS_Setup.e, "e" );
     
-    ASSOCIATORS_Setup.group := group;
-    
     size := Size( group );
     
-    ASSOCIATORS_Setup.group_generators := GeneratorsOfGroup( group );
+    group_generators := GeneratorsOfGroup( group );
     
     # try to find two generators
     
-    if Size( ASSOCIATORS_Setup.group_generators ) > 2 then
+    if Size( group_generators ) > 2 then
         
         for i in [ 1 .. 10 ] do
             
@@ -843,7 +838,7 @@ InstallMethod( InitializeGroupData,
             
             if size = Size( Group( [ gen1, gen2 ] ) ) then
                 
-                ASSOCIATORS_Setup.group_generators := [ gen1, gen2 ];
+                group_generators := [ gen1, gen2 ];
                 
                 Print( "Found 2 generators for the group using random elements\n" );
                 
@@ -855,36 +850,30 @@ InstallMethod( InitializeGroupData,
         
     fi;
     
-    Add( log_list, ASSOCIATORS_Setup.group_generators );
+    Add( log_list, group_generators );
     
-    Add( log_list, Size( ASSOCIATORS_Setup.group_generators ) );
+    Add( log_list, Size( group_generators ) );
     
-    ASSOCIATORS_Setup.GAP_representation_list := representation_list;
+    list_of_characters := Irr( group ); ## WARNING: this has to be the same order as the representations in representation_list
     
-    ASSOCIATORS_Setup.list_of_characters := Irr( group ); ## WARNING: this has to be the same order as the representations in representation_list
-    
-    Add( log_list, ASSOCIATORS_Setup.list_of_characters );
+    Add( log_list, list_of_characters );
     
     default_field := DefaultFieldForListOfRepresentations( representation_list );
     
     conductor := Conductor( default_field );
     
-    ASSOCIATORS_Setup.conductor := conductor;
-    
     if conductor = 1 then
         
-        ASSOCIATORS_Setup.field := HomalgFieldOfRationalsInDefaultCAS();
+        field := HomalgFieldOfRationalsInDefaultCAS();
         
     else
         
-        ASSOCIATORS_Setup.field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
+        field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
         
     fi;
     
-    ASSOCIATORS_Setup.category := MatrixCategory( ASSOCIATORS_Setup.field );
-    
-    ASSOCIATORS_Setup.vector_space_object_list := 
-      List( ASSOCIATORS_Setup.list_of_characters, chi -> VectorSpaceObject( Degree( chi ), ASSOCIATORS_Setup.field ) );
+    vector_space_object_list := 
+      List( list_of_characters, chi -> VectorSpaceObject( Degree( chi ), field ) );
     
     CAP_representation_list := [ ];
     
@@ -899,9 +888,9 @@ InstallMethod( InitializeGroupData,
         
         degree_of_representation := DimensionOfMatrixGroup( Range( representation ) );
         
-        vector_space := VectorSpaceObject( degree_of_representation, ASSOCIATORS_Setup.field );
+        vector_space := VectorSpaceObject( degree_of_representation, field );
         
-        for generator in ASSOCIATORS_Setup.group_generators do
+        for generator in group_generators do
           
           gap_matrix := generator^representation;
           
@@ -909,12 +898,12 @@ InstallMethod( InitializeGroupData,
               
               gap_matrix := RewriteMatrixInCyclotomicGenerator( gap_matrix, conductor );
               
-              gap_matrix := ASSOCIATORS_Setup.field * HomalgMatrix( gap_matrix, ZZ );
+              gap_matrix := field * HomalgMatrix( gap_matrix, ZZ );
               
           fi;
           
           homalg_matrix :=
-                HomalgMatrix( gap_matrix, degree_of_representation, degree_of_representation, ASSOCIATORS_Setup.field );
+                HomalgMatrix( gap_matrix, degree_of_representation, degree_of_representation, field );
           
           Add( entry, VectorSpaceMorphism( vector_space, homalg_matrix, vector_space ) );
           
@@ -924,16 +913,11 @@ InstallMethod( InitializeGroupData,
         
     od;
     
-    ASSOCIATORS_Setup.CAP_representation_list := CAP_representation_list;
+    Add( log_list, CAP_representation_list );
     
-    Add( log_list, ASSOCIATORS_Setup.CAP_representation_list );
+    Add( log_list, List( CAP_representation_list, images -> List( images, image -> Inverse( image ) ) ) );
     
-    ASSOCIATORS_Setup.CAP_representation_list_inverses :=
-      List( CAP_representation_list, images -> List( images, image -> Inverse( image ) ) );
-    
-    Add( log_list, ASSOCIATORS_Setup.CAP_representation_list_inverses );
-    
-    Add( log_list, ASSOCIATORS_Setup.vector_space_object_list );
+    Add( log_list, vector_space_object_list );
     
     if use_group_string_as_id then
         
@@ -951,7 +935,7 @@ InstallMethod( InitializeGroupData,
         
         group_string_for_creation,
         conductor,
-        PositionProperty( ASSOCIATORS_Setup.list_of_characters, IsOne )
+        PositionProperty( list_of_characters, IsOne )
         
     ];
     
