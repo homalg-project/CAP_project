@@ -1042,7 +1042,7 @@ InstallMethod( InitializeGroupData,
     
     ASSOCIATORS_Setup.initialize_group_data_log_list_as_string := Concatenation(
       "[", String( List( log_list[1], elem -> String( elem ) ) ), ",\n",
-      String( log_list[3] ), ",\n",
+      "\"", String( log_list[3] ), "\"", ",\n",
       reps_as_string, ",\n",
       String( List( log_list[6], space -> Dimension( space ) ) ), "]" );
     
@@ -1152,6 +1152,99 @@ InstallMethod( WriteRepresentationsDataToFile,
         
         PrintTo( filename, ASSOCIATORS_Setup.initialize_group_data_log_list_as_string );
         
+end );
+
+##
+InstallMethod( ReadRepresentationsData,
+               [ IsString, IsString ],
+               
+  function( databasekeys_filename, representations_filename )
+    local stream, command, database_keys, representation_list, group, conductor, log_list, field, category, comma_pos;
+    
+    log_list := [ ];
+    
+    stream := InputTextFile( databasekeys_filename );
+    
+    command := ReadAll( stream );
+    
+    database_keys := EvalString( command );
+    
+    group := database_keys[1];
+    
+    conductor := database_keys[2];
+    
+    if group[1] in "123456789" then
+        
+        comma_pos := PositionProperty( group, j -> j = ',' );
+        
+        group := SmallGroup( Int( group{ [ 1 .. comma_pos - 1 ] } ), Int( group{ [ comma_pos + 1 .. Size( group ) ] } ) );
+        
+    else
+        
+        group := EvalString( group );
+        
+    fi;
+    
+    log_list[3] := Irr( group );
+    
+    stream := InputTextFile( representations_filename );
+    
+    command := ReadAll( stream );
+    
+    representation_list := EvalString( command );
+    
+    log_list[2] := Size( representation_list[1] );
+    
+    if not String( log_list[3] ) = representation_list[2] then
+        
+        Error( "the irreducible characters could not be correctly reproduced" );
+        
+    fi;
+    
+    if conductor = 1 then
+        
+        field := HomalgFieldOfRationalsInDefaultCAS();
+        
+    else
+        
+        field := HomalgCyclotomicFieldInMAGMA( conductor, "e" );
+        
+    fi;
+    
+    category := MatrixCategory( field );
+    
+    log_list[6] :=
+      List( representation_list[4], dim -> VectorSpaceObject( dim, field ) );
+    
+    log_list[4] :=
+      List( [ 1 .. Size( representation_list[3] ) ], n ->
+        List( [ 1 .. log_list[2] ], i ->
+          CreateEndomorphismFromString( log_list[6][n], representation_list[3][n][i] )
+        )
+      );
+    
+    log_list[5] :=
+      List( log_list[4], rep -> List( rep, Inverse ) );
+    
+    return log_list;
+    
+end );
+
+##
+InstallMethod( CreateEndomorphismFromString,
+               [ IsVectorSpaceObject, IsString ],
+               
+  function( object, string )
+    local dimension, field, homalg_matrix;
+    
+    dimension := Dimension( object );
+    
+    field := UnderlyingFieldForHomalg( object );
+    
+    homalg_matrix := HomalgMatrix( Concatenation( "[", string, "]" ), dimension, dimension, field );
+    
+    return VectorSpaceMorphism( object, homalg_matrix, object );
+    
 end );
 
 ##

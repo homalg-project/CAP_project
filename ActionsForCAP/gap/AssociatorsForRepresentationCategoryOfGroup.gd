@@ -188,8 +188,14 @@ DeclareOperation( "WriteDatabaseKeysToFile", [ IsString ] );
 DeclareOperation( "WriteRepresentationsDataToFile", [ IsString ] );
 
 ##
+DeclareOperation( "ReadRepresentationsData", [ IsString, IsString ] );
+
+##
 DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
                   [ IsVectorSpaceMorphism, IsInt ] );
+##
+DeclareOperation( "CreateEndomorphismFromString",
+                  [ IsVectorSpaceObject, IsString ] );
 
 ###################################
 ##
