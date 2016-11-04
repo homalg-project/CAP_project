@@ -283,23 +283,3 @@ DeclareOperation( "AssociatorForSufficientlyManyTriples", [ ] );
 #! otherwise, $a,b,c$ are computed for so many triples such that the others can be obtained using braidings.
 #! @Returns a list
 DeclareOperation( "AssociatorForSufficientlyManyTriples", [ IsList, IsBool ] );
-
-#! @Description
-#! The argument is a group $G$ and a boolean $b$.
-#! The output is data for an associator of that group, using
-#! irreducible representations constructed with IrreducibleAffordingRepresentation.
-#! If b is true, then the associator includes all triples of irreducibles,
-#! otherwise only suffiently many to recompute the others.
-#! @Returns a list
-DeclareOperation( "ComputeAssociator", [ IsGroup, IsBool ] );
-
-#! @Description
-#! The argument is a group $G$ and a boolean $b$.
-#! The output is data for an associator of that group, using
-#! irreducible representations constructed with IrreducibleRepresentationsDixon.
-#! If b is true, then the associator includes all triples of irreducibles,
-#! otherwise only suffiently many to recompute the others.
-#! @Returns a list
-DeclareOperation( "ComputeAssociatorDixon", [ IsGroup, IsBool ] );
-
-DeclareOperation( "ComputeAssociatorAfterInitialization", [ IsBool ] );

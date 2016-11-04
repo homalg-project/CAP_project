@@ -794,42 +794,6 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
     
 end );
 
-##
-InstallMethod( ComputeAssociator,
-               [ IsGroup, IsBool ],
-               
-  function( group, for_all_triples )
-    
-    InitializeGroupData( group );
-    
-    return ComputeAssociatorAfterInitialization( for_all_triples );
-    
-end );
-
-##
-InstallMethod( ComputeAssociatorDixon,
-               [ IsGroup, IsBool ],
-               
-  function( group, for_all_triples )
-    
-    InitializeGroupDataDixon( group );
-    
-    return ComputeAssociatorAfterInitialization( for_all_triples );
-    
-end );
-
-##
-InstallMethod( ComputeAssociatorAfterInitialization,
-               [ IsBool ],
-               
-  function( for_all_triples )
-    
-    SkeletalFunctorTensorData( );
-    
-    return AssociatorForSufficientlyManyTriples( for_all_triples );
-    
-end );
-
 ###################################
 ##
 ## Technical functions
