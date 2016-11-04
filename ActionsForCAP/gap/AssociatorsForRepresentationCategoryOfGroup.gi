@@ -41,7 +41,7 @@ InstallMethod( SkeletalFunctorTensorData,
       
       l := [ 1 .. Size( ASSOCIATORS_Setup.GAP_representation_list ) ];
       
-      return SkeletalFunctorTensorData( [ l, l, l ] );
+      return SkeletalFunctorTensorData( [ l, l, l ], ASSOCIATORS_Setup.initialize_group_data_log_list );
       
 end );
 
@@ -50,9 +50,9 @@ end );
 # the subspace of Hom( C, A \otimes B ) consisting of G equivariant maps
 # as a k-vector space.
 InstallMethod( SkeletalFunctorTensorData,
-               [ IsList ],
+               [ IsList, IsList ],
                
-  function( indices )
+  function( indices, initialize_group_data_log_list )
     local CAP_representation_list, rep1, gen, rep2, tensor_product_on_objects, tensor_product_on_morphisms,
           indices_using_braiding, indices_not_using_braiding, CAP_representation_list_inverses, text,
           nr_generators, mor_list, result_list, rep3, Gmorphisms, i, j, k, obj, id, kernel_embeddings,
@@ -60,15 +60,17 @@ InstallMethod( SkeletalFunctorTensorData,
           character1, character2, character3, scalar_product, elements_of_internal_hom, results_with_fixed_i_and_j, decomposition_morphism,
           identity_morphism, results_with_fixed_i, rep3_inverse, nr_characters, braiding, vector_space_object_list,
           embedding_of_k_component, skeletal_braiding_in_kvec, transformation_matrix, decomposition_morphism_inverse,
-          square_matrix_size, matrix_string, composition_with_braiding, composition_with_braiding_inverse;
+          square_matrix_size, matrix_string, composition_with_braiding, composition_with_braiding_inverse, list_of_characters;
     
-    nr_generators := Size( ASSOCIATORS_Setup.group_generators );
+    nr_generators := initialize_group_data_log_list[2];
     
-    CAP_representation_list := ASSOCIATORS_Setup.CAP_representation_list;
+    list_of_characters := initialize_group_data_log_list[3];
     
-    CAP_representation_list_inverses := ASSOCIATORS_Setup.CAP_representation_list_inverses;
+    CAP_representation_list := initialize_group_data_log_list[4];
     
-    vector_space_object_list := ASSOCIATORS_Setup.vector_space_object_list;
+    CAP_representation_list_inverses := initialize_group_data_log_list[5];
+    
+    vector_space_object_list := initialize_group_data_log_list[6];
     
     result_list := [];
     
@@ -84,7 +86,7 @@ InstallMethod( SkeletalFunctorTensorData,
       
       rep1 := CAP_representation_list[i];
       
-      character1 := ASSOCIATORS_Setup.list_of_characters[i];
+      character1 := list_of_characters[i];
       
       rep1_vector_space_object := Source( rep1[1] );
       
@@ -132,7 +134,7 @@ InstallMethod( SkeletalFunctorTensorData,
         
         rep2 := CAP_representation_list[j];
         
-        character2 := ASSOCIATORS_Setup.list_of_characters[j];
+        character2 := list_of_characters[j];
         
         rep2_vector_space_object := Source( rep2[1] );
         
@@ -162,7 +164,7 @@ InstallMethod( SkeletalFunctorTensorData,
         
         for k in indices[3] do
           
-          character3 := ASSOCIATORS_Setup.list_of_characters[k];
+          character3 := list_of_characters[k];
           
           scalar_product := ScalarProduct( character3, character1 * character2 );
           
@@ -828,7 +830,17 @@ InstallMethod( InitializeGroupDataDixon,
                
   function( group )
       
-      InitializeGroupData( group, AffordAllIrreducibleRepresentationsDixon( group ) );
+      InitializeGroupDataDixon( group, false );
+      
+end );
+
+##
+InstallMethod( InitializeGroupDataDixon,
+               [ IsGroup, IsBool ],
+               
+  function( group, use_group_string_as_id )
+      
+      InitializeGroupData( group, AffordAllIrreducibleRepresentationsDixon( group ), use_group_string_as_id );
       
 end );
 
@@ -838,18 +850,30 @@ InstallMethod( InitializeGroupData,
                
   function( group )
       
-      InitializeGroupData( group, AffordAllIrreducibleRepresentations( group ) );
+      InitializeGroupData( group, false );
       
 end );
 
 ##
 InstallMethod( InitializeGroupData,
-               [ IsGroup, IsList ],
+               [ IsGroup, IsBool ],
                
-  function( group, representation_list )
+  function( group, use_group_string_as_id )
+      
+      InitializeGroupData( group, AffordAllIrreducibleRepresentations( group ), use_group_string_as_id );
+      
+end );
+
+##
+InstallMethod( InitializeGroupData,
+               [ IsGroup, IsList, IsBool ],
+               
+  function( group, representation_list, use_group_string_as_id )
     local default_field, conductor, representation, entry, degree_of_representation, vector_space,
           generator, gap_matrix, homalg_matrix, CAP_representation_list, ZZ, size, i, gen1, gen2,
-          log_string;
+          log_string, group_string_for_creation, log_list;
+    
+    log_list := [ ];
     
     log_string := 
       Concatenation( "# This file contains GAP readable input representing the decomposition data for the group: ", String( group ), "\n",
@@ -891,9 +915,15 @@ InstallMethod( InitializeGroupData,
         
     fi;
     
+    Add( log_list, ASSOCIATORS_Setup.group_generators );
+    
+    Add( log_list, Size( ASSOCIATORS_Setup.group_generators ) );
+    
     ASSOCIATORS_Setup.GAP_representation_list := representation_list;
     
     ASSOCIATORS_Setup.list_of_characters := Irr( group ); ## WARNING: this has to be the same order as the representations in representation_list
+    
+    Add( log_list, ASSOCIATORS_Setup.list_of_characters );
     
     Append( log_string, "ASSOCIATORS_Setup.list_of_characters := Irr( group );\n" );
     
@@ -970,12 +1000,40 @@ InstallMethod( InitializeGroupData,
     
     ASSOCIATORS_Setup.CAP_representation_list := CAP_representation_list;
     
+    Add( log_list, ASSOCIATORS_Setup.CAP_representation_list );
+    
     ASSOCIATORS_Setup.CAP_representation_list_inverses :=
       List( CAP_representation_list, images -> List( images, image -> Inverse( image ) ) );
+    
+    Add( log_list, ASSOCIATORS_Setup.CAP_representation_list_inverses );
+    
+    Add( log_list, ASSOCIATORS_Setup.vector_space_object_list );
     
     ASSOCIATORS_Setup.log_string := log_string;
     
     ASSOCIATORS_Setup.associator_log_string := ShallowCopy( log_string );
+    
+    if use_group_string_as_id then
+        
+        group_string_for_creation := String( group );
+        
+    else
+        
+        group_string_for_creation := String( IdGroup( group ) );
+        
+        RemoveCharacters( group_string_for_creation, "\[\]\ " );
+        
+    fi;
+    
+    ASSOCIATORS_Setup.database_keys := [
+        
+        group_string_for_creation,
+        conductor,
+        PositionProperty( ASSOCIATORS_Setup.list_of_characters, IsOne )
+        
+    ];
+    
+    ASSOCIATORS_Setup.initialize_group_data_log_list := log_list;
     
     AppendTo( ASSOCIATORS_Setup.temp_file_name, log_string );
     
@@ -1063,6 +1121,16 @@ InstallMethod( WriteAssociatorAsStringlistToFile,
        
        PrintTo( filename, ASSOCIATORS_Setup.associator_stringlist );
        
+end );
+
+##
+InstallMethod( WriteDatabaseKeysToFile, 
+               [ IsString ],
+               
+    function( filename )
+        
+        PrintTo( filename, ASSOCIATORS_Setup.database_keys );
+        
 end );
 
 ##

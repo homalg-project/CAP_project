@@ -93,6 +93,8 @@ DeclareOperation( "RewriteMatrixInCyclotomicGenerator", [ IsMatrix, IsInt ] );
 #! @Arguments G
 DeclareOperation( "InitializeGroupData", [ IsGroup ] );
 
+DeclareOperation( "InitializeGroupData", [ IsGroup, IsBool ] );
+
 #! @Description
 #! The argument is a group $G$.
 #! This method initializes the values of the internal record ASSOCIATORS_Setup
@@ -100,12 +102,14 @@ DeclareOperation( "InitializeGroupData", [ IsGroup ] );
 #! @Arguments G
 DeclareOperation( "InitializeGroupDataDixon", [ IsGroup ] );
 
+DeclareOperation( "InitializeGroupDataDixon", [ IsGroup, IsBool ] );
+
 #! @Description
 #! The argument is a group $G$.
 #! This method initializes the values of the internal record ASSOCIATORS_Setup
 #! affording irreducible representations using the command IrreducibleAffordingRepresentation.
 #! @Arguments G
-DeclareOperation( "InitializeGroupData", [ IsGroup, IsList ] );
+DeclareOperation( "InitializeGroupData", [ IsGroup, IsList, IsBool ] );
 
 
 ## TODO: Add this to MatrixCategory
@@ -176,6 +180,10 @@ DeclareOperation( "WriteAssociatorLogToFile", [ IsString ] );
 DeclareOperation( "WriteAssociatorAsStringlistToFile", [ IsString ] );
 
 ##
+DeclareOperation( "WriteDatabaseKeysToFile", [ IsString ] );
+
+
+##
 DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
                   [ IsVectorSpaceMorphism, IsInt ] );
 
@@ -196,7 +204,7 @@ DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
 #! @Returns a list
 DeclareOperation( "SkeletalFunctorTensorData", [  ] );
 
-DeclareOperation( "SkeletalFunctorTensorData", [ IsList ] );
+DeclareOperation( "SkeletalFunctorTensorData", [ IsList, IsList ] );
 
 #! @Description
 #! This method can only be called if SkeletalFunctorTensorData was called before.
