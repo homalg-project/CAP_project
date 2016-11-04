@@ -1252,7 +1252,7 @@ InstallMethod( ReadSkeletalFunctorData,
 end );
 
 ##
-InstallMethod( DisplaySkeletalFunctorTensorData, 
+InstallMethod( DisplaySkeletalFunctorTensorData,
                [ IsList ],
                
   function( data )
