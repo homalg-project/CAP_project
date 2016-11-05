@@ -301,3 +301,12 @@ DeclareOperation( "AssociatorForSufficientlyManyTriples", [ ] );
 #! otherwise, $a,b,c$ are computed for so many triples such that the others can be obtained using braidings.
 #! @Returns a list
 DeclareOperation( "AssociatorForSufficientlyManyTriples", [ IsList, IsBool ] );
+
+##
+DeclareOperation( "ComputeAssociator", [ IsGroup, IsBool ] );
+
+##
+DeclareOperation( "ComputeAssociator", [ IsGroup, IsBool, IsBool ] );
+
+##
+DeclareOperation( "ComputeAssociator", [ IsGroup, IsBool, IsBool, IsBool ] );

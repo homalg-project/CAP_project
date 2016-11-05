@@ -27,7 +27,7 @@ InstallMethod( InitializeGroupDataDixon,
                
   function( group )
       
-      InitializeGroupDataDixon( group, false );
+      return InitializeGroupDataDixon( group, false );
       
 end );
 
@@ -37,7 +37,7 @@ InstallMethod( InitializeGroupDataDixon,
                
   function( group, use_group_string_as_id )
       
-      InitializeGroupData( group, AffordAllIrreducibleRepresentationsDixon( group ), use_group_string_as_id );
+      return InitializeGroupData( group, AffordAllIrreducibleRepresentationsDixon( group ), use_group_string_as_id );
       
 end );
 
@@ -47,7 +47,7 @@ InstallMethod( InitializeGroupData,
                
   function( group )
       
-      InitializeGroupData( group, false );
+      return InitializeGroupData( group, false );
       
 end );
 
@@ -57,7 +57,7 @@ InstallMethod( InitializeGroupData,
                
   function( group, use_group_string_as_id )
       
-      InitializeGroupData( group, AffordAllIrreducibleRepresentations( group ), use_group_string_as_id );
+      return InitializeGroupData( group, AffordAllIrreducibleRepresentations( group ), use_group_string_as_id );
       
 end );
 
@@ -795,6 +795,50 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
     return result_list;
     
 end );
+
+##
+InstallMethod( ComputeAssociator,
+               [ IsGroup, IsBool ],
+               
+  function( group, use_dixon )
+    
+    return ComputeAssociator( group, use_dixon, false, true );
+    
+end );
+
+##
+InstallMethod( ComputeAssociator,
+               [ IsGroup, IsBool, IsBool ],
+               
+  function( group, use_dixon, for_all_triples )
+    
+    return ComputeAssociator( group, use_dixon, for_all_triples, true );
+    
+end );
+
+##
+InstallMethod( ComputeAssociator,
+               [ IsGroup, IsBool, IsBool, IsBool ],
+               
+  function( group, use_dixon, for_all_triples, use_group_string_as_id )
+    local log_list;
+    
+    if use_dixon then
+        
+        log_list := InitializeGroupDataDixon( group, use_group_string_as_id );
+        
+    else
+        
+        log_list := InitializeGroupData( group, use_group_string_as_id );
+        
+    fi;
+    
+    log_list := SkeletalFunctorTensorData( log_list );
+    
+    return AssociatorForSufficientlyManyTriples( log_list, for_all_triples );
+    
+end );
+
 
 ###################################
 ##
