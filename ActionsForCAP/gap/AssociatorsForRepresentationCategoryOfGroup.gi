@@ -1273,9 +1273,9 @@ end );
 
 ##
 InstallMethod( ReadSkeletalFunctorData,
-               [ IsString, IsString, IsString ],
+               [ IsString, IsString ],
                
-  function( databasekeys_filename, representations_filename, skeletalfunctor_filename )
+  function( databasekeys_filename, skeletalfunctor_filename )
     local log_list, database_keys, stream, command, representation_list, tensor_data, field;
     
     log_list := [ ];
@@ -1286,14 +1286,8 @@ InstallMethod( ReadSkeletalFunctorData,
     
     log_list[1] := Irr( database_keys[1] );
     
-    stream := InputTextFile( representations_filename );
-    
-    command := ReadAll( stream );
-    
-    representation_list := EvalString( command );
-    
     log_list[3] :=
-      List( representation_list[4], dim -> VectorSpaceObject( dim, field ) );
+      List( log_list[1], char -> VectorSpaceObject( Degree( char ), field ) );
     
     stream := InputTextFile( skeletalfunctor_filename );
     

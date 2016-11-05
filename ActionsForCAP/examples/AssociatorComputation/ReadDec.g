@@ -1,7 +1,7 @@
-## Reproduce an associator computation using the *Key.g, *Reps.g, and *Dec.g file
+## Reproduce an associator computation using the *Key.g and *Dec.g file
 LoadPackage( "ActionsForCAP" );
 
-log_list := ReadSkeletalFunctorData( "S3Key.g", "S3Reps.g", "S3Dec.g" );
+log_list := ReadSkeletalFunctorData( "S3Key.g", "S3Dec.g" );
 
 associator := AssociatorForSufficientlyManyTriples( log_list, true );
 

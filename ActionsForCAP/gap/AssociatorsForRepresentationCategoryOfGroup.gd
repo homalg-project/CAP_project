@@ -196,13 +196,12 @@ DeclareOperation( "ReadRepresentationsData", [ IsString, IsString ] );
 
 #! @Description
 #! The arguments are a filename $s_1$ of a file written by WriteDatabaseKeysToFile,
-#! a filename $s_2$ of a file written by WriteRepresentationsDataToFile,
-#! and a filename $s_3$ of a file written by WriteSkeletalFunctorDataToFile.
+#! and a filename $s_2$ of a file written by WriteSkeletalFunctorDataToFile.
 #! The output is a list
 #! [ irreducibles, skeletal functor tensor data, vector space objects for the irreducibles ].
 #! @Returns a list
-#! @Arguments s_1, s_2, s_3
-DeclareOperation( "ReadSkeletalFunctorData", [ IsString, IsString, IsString ] );
+#! @Arguments s_1, s_2
+DeclareOperation( "ReadSkeletalFunctorData", [ IsString, IsString ] );
 
 #! @Description
 #! The argument is a list $L$ which was the output of the operation SkeletalFunctorTensorData.
