@@ -173,7 +173,17 @@ DeclareOperation( "WriteSkeletalFunctorDataToFile", [ IsString ] );
 #! @Arguments s
 DeclareOperation( "WriteAssociatorDataToFile", [ IsString ] );
 
-##
+#! @Description
+#! Only call this function if you did a whole associator computation first
+#! (e.g. using ComputeAssociator).
+#! The argument is a string $s$.
+#! This function writes 4 files:
+#! * $s$Key.g: A file for the database key of the associator computation.
+#! * $s$Reps.g: A file containing the irreducible representations used for the associator computation.
+#! * $s$Dec.g: A file for the tensor decompositions used for the associator computation.
+#! * $s$Ass.g or $s$AssD.g: A file containing the computed associator. The suffix $D$ is used if the associator was not computed for all triples. 
+#! @Returns nothing
+#! @Arguments s
 DeclareOperation( "WriteAssociatorComputationToFiles", [ IsString ] );
 
 #! @Description
@@ -302,13 +312,37 @@ DeclareOperation( "AssociatorForSufficientlyManyTriples", [ ] );
 #! If $b$ is true, then $a,b,c$ ranges through all possible triples,
 #! otherwise, $a,b,c$ are computed for so many triples such that the others can be obtained using braidings.
 #! @Returns a list
+#! @Arguments l,b
 DeclareOperation( "AssociatorForSufficientlyManyTriples", [ IsList, IsBool ] );
 
-##
+#! @Description
+#! The arguments are a group $G$, and a boolean $b_1$.
+#! The output is ComputeAssociator( G, b_1, false, true ).
+#! @Returns a list
+#! @Arguments G, b_1
 DeclareOperation( "ComputeAssociator", [ IsGroup, IsBool ] );
 
-##
+#! @Description
+#! The arguments are a group $G$, and two booleans $b_1$, $b_2$.
+#! The output is ComputeAssociator( G, b_1, b_2, true ).
+#! @Returns a list
+#! @Arguments G, b_1, b_2
 DeclareOperation( "ComputeAssociator", [ IsGroup, IsBool, IsBool ] );
 
-##
+#! @Description
+#! The arguments are a group $G$, and three booleans $b_1$, $b_2$, $b_3$.
+#! The output is a list $l$ whose $(a,b,c)$-th entry contains a string
+#! representing the associator of the objects $V_a, V_b, V_c$ in a skeleton of
+#! the representation category of $G$, where $V_{\ast}$ are irreducible
+#! representations corresponding to the ordering of the irreducible characters Irr($G$).
+#! If $b_1$ is true, this method uses IrreducibleRepresentationsDixon, otherwise it uses
+#! IrreducibleAffordingRepresentation.
+#! If $b_2$ is true, the associators are computed for all possible triples $a,b,c$,
+#! otherwise only for sufficiently many such that the others can be reproduced using
+#! the braiding in the representation category.
+#! If $b_3$ is true, then the id of the group in the database key is given by its string,
+#! otherwise it is given by its id in the SmallGroupLibrary. This last boolean is relevant
+#! only if you want to write the computed associators to files (e.g. using WriteAssociatorComputationToFiles).
+#! @Returns a list
+#! @Arguments G, b_1, b_2, b_3
 DeclareOperation( "ComputeAssociator", [ IsGroup, IsBool, IsBool, IsBool ] );
