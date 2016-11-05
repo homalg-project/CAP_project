@@ -173,6 +173,9 @@ DeclareOperation( "WriteSkeletalFunctorDataToFile", [ IsString ] );
 #! @Arguments s
 DeclareOperation( "WriteAssociatorDataToFile", [ IsString ] );
 
+##
+DeclareOperation( "WriteAssociatorComputationToFiles", [ IsString ] );
+
 #! @Description
 #! The argument is a filename $s$ of a file written by WriteDatabaseKeysToFile.
 #! The output is a list

@@ -12,6 +12,14 @@ InstallValue( ASSOCIATORS_Setup, rec(
     
     e := X( Rationals ),
     
+    database_keys := [ ],
+    
+    initialize_group_data_log_list := [ ],
+    
+    skeletalfunctortensordata_log_list := [ ],
+    
+    associator_data := [ ]
+    
   )
 );
 
@@ -1126,6 +1134,43 @@ InstallMethod( WriteSkeletalFunctorDataToFile,
   function( filename )
     
     PrintTo( filename, ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string );
+    
+end );
+
+##
+InstallMethod( WriteAssociatorComputationToFiles,
+               [ IsString ],
+               
+  function( group_shortcut )
+    local databasekeys_filename, representations_filename, skeletalfunctor_filename, associator_filename;
+    
+    databasekeys_filename := Concatenation( group_shortcut, "Key.g" );
+    
+    representations_filename := Concatenation( group_shortcut, "Reps.g" );
+    
+    skeletalfunctor_filename := Concatenation( group_shortcut, "Dec.g" ); #for tensor decompositions
+    
+    if ASSOCIATORS_Setup.database_keys[5] then
+        
+        associator_filename := Concatenation( group_shortcut, "Ass" );
+        
+    else
+        
+        associator_filename := Concatenation( group_shortcut, "AssD" ); #D for dense, i.e., not all triples are computed
+        
+    fi;
+    
+    associator_filename := Concatenation( associator_filename, ".g" );
+    
+    WriteRepresentationsDataToFile( representations_filename );
+    
+    WriteSkeletalFunctorDataToFile( skeletalfunctor_filename );
+    
+    WriteAssociatorDataToFile( associator_filename );
+    
+    ## WriteDatabaseKeysToFile has to be called after WriteAssociatorDataToFile, since WriteAssociatorDataToFile determines 
+    ## the filename enlisted in the key
+    WriteDatabaseKeysToFile( databasekeys_filename );
     
 end );
 
