@@ -30,7 +30,7 @@ InstallMethod( RepresentationCategory,
     
     database_keys := EvalString( command );
     
-    group_string := Concatenation( String( order ), ", ", String( group_nr ) );
+    group_string := Concatenation( String( order ), ",", String( group_nr ) );
     
     group_data := First( database_keys, entry -> entry[1] = group_string );
     
