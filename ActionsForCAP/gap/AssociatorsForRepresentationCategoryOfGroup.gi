@@ -1367,23 +1367,27 @@ end );
 
 ##
 InstallMethod( DisplaySkeletalFunctorTensorData,
-               [ IsList ],
+               [ ],
                
-  function( data )
-    local size, i, j;
+  function(  )
+    local log_list, size, i, j;
     
-    size := Size( data );
+    log_list := ASSOCIATORS_Setup.skeletalfunctortensordata_log_list;
+    
+    size := Size( log_list[2] );
     
     for i in [ 1 .. size ] do
-      
-      for j in [ 1 .. size ] do
         
-        Display( data[i][j][1] );
+        for j in [ 1 .. size ] do
+            
+            Print( Concatenation( "Decomposition of X.", String( i ), "*X.", String( j ), ":\n" ) );
+            
+            Display( UnderlyingMatrix( log_list[2][i][j][1] ) );
+            
+            Print( "\n" );
+            
+        od;
         
-        Print( "\n" );
-        
-      od;
-      
     od;
     
 end );

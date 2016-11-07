@@ -213,12 +213,7 @@ DeclareOperation( "ReadRepresentationsData", [ IsString, IsString ] );
 #! @Arguments s_1, s_2
 DeclareOperation( "ReadSkeletalFunctorData", [ IsString, IsString ] );
 
-#! @Description
-#! The argument is a list $L$ which was the output of the operation SkeletalFunctorTensorData.
-#! This operations displays all the matrices (without inverses) within $L$.
-#! @Returns nothing
-#! @Arguments L
-DeclareOperation( "DisplaySkeletalFunctorTensorData", [ IsList ] );
+DeclareOperation( "DisplaySkeletalFunctorTensorData", [ ] );
 
 DeclareOperation( "DisplayInitializedGroupData", [ ] );
 
