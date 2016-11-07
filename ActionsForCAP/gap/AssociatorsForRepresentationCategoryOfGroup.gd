@@ -220,6 +220,8 @@ DeclareOperation( "ReadSkeletalFunctorData", [ IsString, IsString ] );
 #! @Arguments L
 DeclareOperation( "DisplaySkeletalFunctorTensorData", [ IsList ] );
 
+DeclareOperation( "DisplayInitializedGroupData", [ ] );
+
 ###################################
 ##
 #! @Section Computing associators

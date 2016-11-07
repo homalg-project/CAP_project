@@ -1307,6 +1307,65 @@ InstallMethod( ReadSkeletalFunctorData,
 end );
 
 ##
+InstallMethod( DisplayInitializedGroupData,
+               [ ],
+               
+  function( )
+    local log_list, group, i, j, conductor;
+    
+    log_list := ASSOCIATORS_Setup.initialize_group_data_log_list;
+    
+    group := UnderlyingGroup( UnderlyingCharacterTable( log_list[3][1] ) );
+    
+    conductor := ASSOCIATORS_Setup.database_keys[2];
+    
+    Print( "-Representations of:\n  " );
+    
+    Display( group );
+    
+    if conductor = 1 then
+        
+        Print( "-Defined over the rationals\n" );
+        
+    else
+        
+        Print( Concatenation( "-Defined over Q[e], where e is a primtive\n ", String( conductor ), "-th root of unity\n" ) );
+        
+    fi;
+    
+    Print( "-Given by images of the following generators:\n  " );
+    
+    Display( log_list[1] );
+    
+    Print( "-Affording the irreducible characters:\n  " );
+    
+    Display( CharacterTable( group ) );
+    
+    Print( "\n" );
+    
+    Print( "----------------\n" );
+    
+    for i in [ 1 .. Size( log_list[3] ) ] do
+        
+        Print( Concatenation( "Representation affording character X.", String( i ), ":\n" ) );
+        
+        for j in [ 1 .. Size( log_list[1] ) ] do
+            
+            Print( log_list[1][j] );
+            
+            Print( "->\n" );
+            
+            Display( UnderlyingMatrix( log_list[4][i][j] ) );
+            
+            Print( "\n" );
+            
+        od;
+        
+    od;
+    
+end );
+
+##
 InstallMethod( DisplaySkeletalFunctorTensorData,
                [ IsList ],
                
