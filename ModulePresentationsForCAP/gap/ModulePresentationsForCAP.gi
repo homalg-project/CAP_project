@@ -177,7 +177,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
-    ADD_LIFT_AND_COLIFT_LEFT( category );
+#     ADD_LIFT_AND_COLIFT_LEFT( category );
     
     if IsCommutative( category!.ring_for_representation_category ) then
       
