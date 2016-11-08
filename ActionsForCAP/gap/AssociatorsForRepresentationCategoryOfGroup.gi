@@ -1370,9 +1370,11 @@ InstallMethod( DisplaySkeletalFunctorTensorData,
                [ ],
                
   function(  )
-    local log_list, size, i, j;
+    local log_list, irr, size, i, j, decomposition_as_string, prod, scalar_product, chi;
     
     log_list := ASSOCIATORS_Setup.skeletalfunctortensordata_log_list;
+    
+    irr := log_list[1];
     
     size := Size( log_list[2] );
     
@@ -1380,7 +1382,35 @@ InstallMethod( DisplaySkeletalFunctorTensorData,
         
         for j in [ 1 .. size ] do
             
-            Print( Concatenation( "Decomposition of X.", String( i ), "*X.", String( j ), ":\n" ) );
+            prod := irr[i] * irr[j];
+            
+            decomposition_as_string := "";
+            
+            for chi in [ 1 .. Size( irr ) ] do
+                
+                scalar_product := ScalarProduct( irr[chi], prod );
+                
+                if scalar_product > 0 then
+                    
+                    decomposition_as_string :=
+                      Concatenation( 
+                        decomposition_as_string,
+                        String( scalar_product ), "*(X.", String( chi ), ") + "
+                    );
+                    
+                fi;
+                
+            od;
+            
+            decomposition_as_string := decomposition_as_string{ [ 1 .. Size( decomposition_as_string ) - 3 ] };
+            
+            Print( "----------------\n" );
+            
+            Print( "\n" );
+            
+            Print( Concatenation( decomposition_as_string, " -> (X.", String( i ), ")*(X.", String( j ), "):\n" ) );
+            
+            Print( "\n" );
             
             Display( UnderlyingMatrix( log_list[2][i][j][1] ) );
             
