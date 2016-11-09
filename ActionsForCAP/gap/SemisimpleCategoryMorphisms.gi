@@ -211,6 +211,8 @@ InstallMethod( Display,
     
     morphism_list := SemisimpleCategoryMorphismList( morphism );
     
+    morphism_list := Filtered( morphism_list, pair -> not( IsZero( Source( pair[1] ) ) or IsZero( Range( pair[1] ) ) ) );
+    
     for elem in morphism_list do
         
         Print( Concatenation( "Component: (χ_", String( elem[2] ), ")\n" ) );
