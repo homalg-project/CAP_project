@@ -51,7 +51,7 @@ InstallMethod( EModuleActionCategory,
   function( object )
     local name, category;
     
-    name := Concatenation( "Module category of the internal exterior algebra modeled via actions of ", String( object ) );
+    name := Concatenation( "Module category of the internal exterior algebra modeled via right actions of ", String( object ) );
     
     category := RightActionsCategory( object, name,
                   [ IsEModuleActionCategory, IsEModuleActionCategoryObject, IsEModuleActionCategoryMorphism ] );
@@ -69,7 +69,7 @@ InstallMethod( EModuleCoactionCategory,
     
     w := DualOnObjects( object );
     
-    name := Concatenation( "Module category of the internal exterior algebra modeled via coactions of ", String( w ) );
+    name := Concatenation( "Module category of the internal exterior algebra modeled via left coactions of ", String( w ) );
     
     category := LeftCoactionsCategory( w, name,
                   [ IsEModuleCoactionCategory, IsEModuleCoactionCategoryObject, IsEModuleCoactionCategoryMorphism ] );
