@@ -73,6 +73,10 @@ DeclareAttribute( "DegreeDecomposition",
                   IsRepresentationCategoryZGradedObject );
 
 ##
+DeclareAttribute( "HilbertSeries",
+                  IsRepresentationCategoryZGradedObject );
+
+##
 KeyDependentOperation( "DegreeDecompositionSplit", IsRepresentationCategoryZGradedObject, IsInt, ReturnTrue );
 
 ##

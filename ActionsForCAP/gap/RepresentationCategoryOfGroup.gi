@@ -406,6 +406,19 @@ InstallMethod( DegreeDecomposition,
 end );
 
 ##
+InstallMethod( HilbertSeries,
+               [ IsRepresentationCategoryZGradedObject ],
+               
+  function( object )
+    local t;
+    
+    t := Indeterminate( Rationals, "t" );
+    
+    return Sum( DegreeDecomposition( object ), pair -> Dimension( pair[2] ) * t^pair[1] );
+    
+end );
+
+##
 InstallMethod( DegreeDecompositionSplitOp,
                [ IsRepresentationCategoryZGradedObject, IsInt ],
                
