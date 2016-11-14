@@ -248,7 +248,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               
               range := Source( morphism );
               
-              return morphism_constructor( kernel, KernelEmbedding( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( kernel ) ), range );
+              return morphism_constructor( kernel, KernelEmbeddingWithGivenKernelObject( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( kernel ) ), range );
               
           end );
           
@@ -300,7 +300,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               
               source := Range( morphism );
               
-              return morphism_constructor( source, CokernelProjection( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( cokernel ) ), cokernel );
+              return morphism_constructor( source, CokernelProjectionWithGivenCokernelObject( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( cokernel ) ), cokernel );
               
           end );
           

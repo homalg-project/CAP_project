@@ -50,3 +50,14 @@ DeclareAttribute( "NaturalIsomorphismFromIdentityToLessGeneratorsLeft",
 #! @Arguments R
 DeclareAttribute( "NaturalIsomorphismFromIdentityToLessGeneratorsRight",
                   IsHomalgRing );
+
+#! @Description
+#! The argument is a homalg ring $R$.
+#! The output is the natural morphism from the identity functor
+#! to the double dual functor in left Presentations category.
+#! @Returns a natural transformation $\mathrm{Id} \rightarrow \mathrm{DoubleDualForLeftPresentations}$
+#! @Arguments R
+DeclareAttribute( "NaturalTransformationFromIdentityToDoubleDualForLeftPresentations",
+                  IsHomalgRing );
+
+
