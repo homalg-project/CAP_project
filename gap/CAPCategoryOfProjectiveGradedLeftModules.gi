@@ -1058,7 +1058,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
                                         range,
                                         checks 
                                        );
-        
+
     end );
 
     # @Description

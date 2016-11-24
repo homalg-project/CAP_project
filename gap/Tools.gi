@@ -54,7 +54,7 @@ InstallMethod( DeduceMapFromMatrixAndRangeLeft,
 
       else
 
-        # source and range are non-trivial and the mapping matrix has no zero rows, therefore the following is wel-defined
+        # source and range are non-trivial and the mapping matrix has no zero rows, therefore the following is well-defined
         non_zero_entries_index := PositionOfFirstNonZeroEntryPerRow( matrix );
 
         # expand the degree_list of the range_object
