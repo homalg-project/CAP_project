@@ -213,17 +213,25 @@ InstallMethod( Display,
     
     morphism_list := Filtered( morphism_list, pair -> not( IsZero( Source( pair[1] ) ) or IsZero( Range( pair[1] ) ) ) );
     
-    for elem in morphism_list do
+    if IsEmpty( morphism_list ) then
         
-        Print( Concatenation( "Component: (χ_", String( elem[2] ), ")\n" ) );
+        Print( "0" );
         
-        Print( "\n" );
+    else
         
-        Display( elem[1] );
-        
-        Print( "\n------------------------\n" );
-        
-    od;
+        for elem in morphism_list do
+            
+            Print( Concatenation( "Component: (χ_", String( elem[2] ), ")\n" ) );
+            
+            Print( "\n" );
+            
+            Display( elem[1] );
+            
+            Print( "\n------------------------\n" );
+            
+        od;
+      
+    fi;
     
 end );
 
