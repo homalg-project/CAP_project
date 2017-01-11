@@ -1,9 +1,11 @@
 #
-# ActionsForCAP: Actions and Coactions for CAP
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# This file is a script which compiles the package manual.
 #
 LoadPackage( "AutoDoc" );
 
-AutoDoc( "ActionsForCAP" : scaffold := true, autodoc :=
+AutoDoc( "GroupRepresentationsForCAP" : scaffold := true, autodoc :=
          rec( files := [ "doc/Intros.autodoc" ],
          scan_dirs := [ "gap", "examples", "doc" ] ),
          maketest := rec( folder := ".",
@@ -12,7 +14,7 @@ AutoDoc( "ActionsForCAP" : scaffold := true, autodoc :=
                               "LoadPackage( \"IO_ForHomalg\" );",
                               "LoadPackage( \"GaussForHomalg\" );",
                               "LoadPackage( \"LinearAlgebraForCAP\" );",
-                              "LoadPackage( \"ActionsForCAP\" );",
+                              "LoadPackage( \"GroupRepresentationsForCAP\" );",
                               "HOMALG_IO.show_banners := false;",
                               "HOMALG_IO.suppress_PID := true;",
                               "HOMALG_IO.use_common_stream := true;",
@@ -22,3 +24,4 @@ AutoDoc( "ActionsForCAP" : scaffold := true, autodoc :=
 
 
 QUIT;
+

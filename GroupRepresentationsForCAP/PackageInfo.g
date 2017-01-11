@@ -1,5 +1,5 @@
 #
-# ActionsForCAP: Actions and Coactions for CAP
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,12 +8,9 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "ActionsForCAP",
-Subtitle := "Actions and Coactions for CAP",
-
+PackageName := "GroupRepresentationsForCAP",
+Subtitle := "Skeletal category of group representations for CAP",
 Version := Maximum( [
-  "2015.08.19", ## Sebas' version
-  ## this line prevents merge conflicts
   "2017.01.11", ## Sepp's version
 ] ),
 
@@ -25,35 +22,30 @@ Persons := [
     IsAuthor := true,
     IsMaintainer := true,
     FirstNames := "Sebastian",
-    LastName := "Gutsche",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche",
-    Email := "gutsche@mathematik.uni-kl.de",
-    PostalAddress := "TODO",
-    Place := "Kaiserslautern",
-    Institution := "TU Kaiserslautern",
-  ),
-  rec(
-    IsAuthor := true,
-    IsMaintainer := true,
-    FirstNames := "Sebastian",
     LastName := "Posur",
     WWWHome := "http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php",
-    Email := "sposur@momo.math.rwth-aachen.de",
+    Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
-               "Lehrstuhl B für Mathematik RWTH - Aachen\n",
-               "Templergraben 64\n",
-               "52062 Aachen\n",
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
                "Germany" ),
-    Place := "Aachen",
-    Institution := "Rheinisch-Westfälische Technische Hochschule Aachen",
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
 ],
 
+#SourceRepository := rec( Type := "TODO", URL := "URL" ),
+#IssueTrackerURL := "TODO",
+#SupportEmail := "TODO",
+
 PackageWWWHome := "http://TODO/",
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "ActionsForCAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
+ArchiveURL     := Concatenation( ~.PackageWWWHome,
+                                 "/", ~.PackageName, "-", ~.Version ),
 
 ArchiveFormats := ".tar.gz",
 
@@ -70,20 +62,21 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "ActionsForCAP",
+  BookName  := "GroupRepresentationsForCAP",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Actions and Coactions for CAP",
+  LongTitle := "Skeletal category of group representations for CAP",
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2015.08.17" ],
-                           [ "AttributeCategoryForCAP", ">=2016.09.14" ]
-                         ],
+                           [ "LinearAlgebraForCAP", ">=2015.12.03" ],
+                           [ "RingsForHomalg", ">=2016.08.12" ],
+                           [ "repsn", ">=3.0.2" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
@@ -91,8 +84,6 @@ Dependencies := rec(
 AvailabilityTest := function()
         return true;
     end,
-
-TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
 
