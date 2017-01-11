@@ -1,1 +1,10 @@
 @Chapter Associators
+Let $G$ be a finite group and let $G$-mod be a skeletal version
+of the monoidal category of finite dimensional complex representations of $G$.
+The purpose of these GAP methods is the computation of the
+associators of $G$-mod.
+
+@Section Quickstart
+@Section Read, Write, and Display
+@Section Computing associators
+@Section Technical functions

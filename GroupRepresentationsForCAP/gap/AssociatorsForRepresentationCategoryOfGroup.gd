@@ -6,10 +6,6 @@
 ##
 #! @Chapter Associators
 #!  
-#!  Let $G$ be a finite group and let $G$-mod be a skeletal version
-#!  of the monoidal category of finite complex representations of $G$.
-#!  The purpose of these GAP methods is the computation of the
-#!  associators of $G$-mod.
 ##
 #############################################################################
 
@@ -18,14 +14,25 @@
 ## Global
 ##
 ###################################
+#! @Section Quickstart
+
+#! The following commands compute the associator of $D_8$
+#! and write all data necessary for the reproducibility
+#! of the computation to files with the prefix "D8".
+
+#! @InsertSystem Quickstart_Associator_D8
 
 DeclareGlobalVariable( "ASSOCIATORS_Setup" );
+
+
 
 ###################################
 ##
 #! @Section Technical functions
 ##
 ###################################
+
+DeclareOperation( "SetInfoLevelForAssociatorComputations", [ IsInt ] );
 
 #! @Description
 #! The arguments are an integer $n$ and a group homomorphism $f$ whose images
@@ -140,6 +147,20 @@ DeclareOperation( "CreateEndomorphismFromString",
 #! @Section Read, Write, and Display
 ##
 ###################################
+
+#! The following intermediate steps of the associator computation
+#! can be read from/written to files.
+#! - Irreducible representations of a finite group given by matrices (Data 1).
+#! - Decomposition isomorphisms of tensor products into direct sums of irreducibles (Data 2).
+#! Furthermore, the following data can be written to files.
+#! - A database key for the AssociatorsDatabase/DatabaseKeys.g file.
+#! - The final result, namely the associator (Data 3).
+#! Data 1 and Data 2 involve choices and thus
+#! are subject to changes in further versions of this packages.
+#! However, the process Data 2 -> Data 3 is a mathematical function
+#! and thus stable. For reproducibility, it is recommended to
+#! store all three data. To facilitate this task,
+#! use the function WriteAssociatorComputationToFiles.
 
 #! @Description
 #! The argument is a filename $s$.

@@ -7,7 +7,7 @@ LoadPackage( "AutoDoc" );
 
 AutoDoc( "GroupRepresentationsForCAP" : scaffold := true, autodoc :=
          rec( files := [ "doc/Intros.autodoc" ],
-         scan_dirs := [ "gap", "examples", "doc" ] ),
+         scan_dirs := [ "gap", "examples", "doc", "examples/doc" ] ),
          maketest := rec( folder := ".",
                           commands :=
                             [ "LoadPackage( \"CAP\" );",

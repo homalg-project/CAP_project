@@ -18,7 +18,9 @@ InstallValue( ASSOCIATORS_Setup, rec(
     
     skeletalfunctortensordata_log_list := [ ],
     
-    associator_data := [ ]
+    associator_data := [ ],
+    
+    InfoLevelForAssociatorComputations := 0
     
   )
 );
@@ -101,7 +103,11 @@ InstallMethod( InitializeGroupData,
                 
                 group_generators := [ gen1, gen2 ];
                 
-                Print( "Found 2 generators for the group using random elements\n" );
+                if ASSOCIATORS_Setup.InfoLevelForAssociatorComputations > 0 then
+                    
+                    Print( "Found 2 generators for the group using random elements\n" );
+                    
+                fi;
                 
                 break;
                 
@@ -434,7 +440,11 @@ InstallMethod( SkeletalFunctorTensorData,
             
         fi;
         
-        Print( Concatenation( "Finished: (", String( i ), ",", String( j ), ")\n" ) );
+        if ASSOCIATORS_Setup.InfoLevelForAssociatorComputations > 0 then
+            
+            Print( Concatenation( "Finished: (", String( i ), ",", String( j ), ")\n" ) );
+            
+        fi;
         
       od;
       
@@ -774,7 +784,11 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
                 
                 log_list[a][b][c] := DataFromSkeletalFunctorTensorDataAsStringList( data_abc );
                 
-                Print( Concatenation( "Finished: (", String( a ), ",", String( b ), ",", String( c ), ")\n" ) );
+                if ASSOCIATORS_Setup.InfoLevelForAssociatorComputations > 0 then
+                    
+                    Print( Concatenation( "Finished: (", String( a ), ",", String( b ), ",", String( c ), ")\n" ) );
+                    
+                fi;
                 
                 ## in this case, one additional associator is needed in order to
                 ## obtain the others using the braiding
@@ -786,7 +800,11 @@ InstallMethod( AssociatorForSufficientlyManyTriples,
                     
                     log_list[a][c][b] := DataFromSkeletalFunctorTensorDataAsStringList( data_acb );
                     
-                    Print( Concatenation( "Finished: (", String( a ), ",", String( c ), ",", String( b ), ")\n" ) );
+                    if ASSOCIATORS_Setup.InfoLevelForAssociatorComputations > 0 then
+                        
+                        Print( Concatenation( "Finished: (", String( a ), ",", String( c ), ",", String( b ), ")\n" ) );
+                        
+                    fi;
                     
                 fi;
                 
@@ -853,6 +871,16 @@ end );
 ## Technical functions
 ##
 ###################################
+
+##
+InstallMethod( SetInfoLevelForAssociatorComputations,
+               [ IsInt ],
+               
+  function( level )
+    
+    ASSOCIATORS_Setup.InfoLevelForAssociatorComputations := level;
+    
+end );
 
 ##
 InstallMethod( DefinedOverCyclotomicField,
