@@ -4,7 +4,7 @@
 ##
 ##  Copyright 2016, Sebastian Posur, University of Siegen
 ##
-#! @Chapter G-Z-Graded Irreducible Objects
+#! @Chapter Irreducible Objects
 ##
 #############################################################################
 

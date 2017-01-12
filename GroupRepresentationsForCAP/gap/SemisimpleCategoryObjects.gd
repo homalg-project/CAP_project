@@ -27,6 +27,14 @@ DeclareCategory( "IsSemisimpleCategoryObject",
 ####################################
 
 #! @Description
+#! The arguments are 
+#! a list $L$
+#! and a semisimple category $C = \bigoplus_{i \in I} k\mathrm{-vec}$.
+#! The list $L$ contains pairs $L = [ [ a_1, i_1 ], \dots, [ a_l, i_l ] ]$
+#! of non-negative integers $a_j$ and
+#! objects $i_j \in I$.
+#! The output is the object in $C$
+#! given by $\oplus_{j=1}^l a_j \chi^{i_j}$.
 #! @Returns an object
 #! @Arguments L
 DeclareOperation( "SemisimpleCategoryObject", [ IsList, IsCapCategory ] );

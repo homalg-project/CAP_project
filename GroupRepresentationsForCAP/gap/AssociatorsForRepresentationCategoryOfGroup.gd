@@ -9,6 +9,13 @@
 ##
 #############################################################################
 
+#! @Section Introduction
+
+#! Let $G$ be a finite group and let $G$-mod be a skeletal version
+#! of the monoidal category of finite dimensional complex representations of $G$.
+#! The purpose of these GAP methods is the computation of the
+#! associators of $G$-mod.
+
 ###################################
 ##
 ## Global
@@ -32,6 +39,14 @@ DeclareGlobalVariable( "ASSOCIATORS_Setup" );
 ##
 ###################################
 
+#! @Description
+#! The argument is an integer $l$.
+#! If $l > 0$, then the functions for computing
+#! associators provide information during
+#! the computation. This is useful in cases
+#! where the computation may take a long time.
+#! @Returns nothing
+#! @Arguments l
 DeclareOperation( "SetInfoLevelForAssociatorComputations", [ IsInt ] );
 
 #! @Description
@@ -156,7 +171,7 @@ DeclareOperation( "CreateEndomorphismFromString",
 #! - A database key for the AssociatorsDatabase/DatabaseKeys.g file.
 #! - The final result, namely the associator (Data 3).
 #! Data 1 and Data 2 involve choices and thus
-#! are subject to changes in further versions of this packages.
+#! are subject to changes in further versions of this package.
 #! However, the process Data 2 -> Data 3 is a mathematical function
 #! and thus stable. For reproducibility, it is recommended to
 #! store all three data. To facilitate this task,
