@@ -392,7 +392,7 @@ InstallMethod( TestZigZagIdentitiesForDual,
 end );
 
 ##
-InstallMethod( TestZigZagIdentitiesForDualForAllTriplesInList, 
+InstallMethod( TestZigZagIdentitiesForDualForAllObjectsInList, 
               [ IsList ],
               
   function( object_list )
