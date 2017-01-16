@@ -406,13 +406,17 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       [ 
         [ function( morphism_1, morphism_2 )
-            local mor_1_list, mor_2_list, union, composition_list, irr, mor_1, mor_2;
+            local mor_1_list, mor_2_list, source, range, union, composition_list, irr, mor_1, mor_2;
             
             mor_1_list := SemisimpleCategoryMorphismList( morphism_1 );
             
             mor_2_list := SemisimpleCategoryMorphismList( morphism_2 );
             
-            union := Set( Concatenation( Support( morphism_1 ), Support( morphism_2 ) ) );
+            source := Source( morphism_1 );
+            
+            range := Range( morphism_2 );
+            
+            union := Set( Concatenation( Support( source ), Support( range ) ) );
             
             composition_list := [ ];
             
@@ -441,7 +445,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
             od;
             
-            return SemisimpleCategoryMorphism( Source( morphism_1 ), composition_list, Range( morphism_2 ) );
+            return SemisimpleCategoryMorphism( source, composition_list, range );
             
           end, [ , ] ],
         
