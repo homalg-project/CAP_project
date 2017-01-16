@@ -150,24 +150,6 @@ InstallMethod( ComponentProjectionMorphism,
     
 end );
 
-
-
-####################################
-##
-## Attributes
-##
-####################################
-
-##
-InstallMethod( Support,
-               [ IsSemisimpleCategoryMorphism ],
-               
-  function( morphism )
-    
-    return List( SemisimpleCategoryMorphismList( morphism ), elem -> elem[2] );
-    
-end );
-
 ####################################
 ##
 ## Operations
