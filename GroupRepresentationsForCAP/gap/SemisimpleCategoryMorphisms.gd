@@ -113,7 +113,13 @@ DeclareOperation( "ComponentProjectionMorphism",
 DeclareAttribute( "SemisimpleCategoryMorphismList",
                   IsSemisimpleCategoryMorphism );
 
-##
+#! @Description
+#! The argument is a morphism
+#! $\alpha = ( \alpha_i )_{i \in I}$
+#! in a semisimple category $\bigoplus_{i \in I} k\mathrm{-vec}$.
+#! The output is the homalg field $k$.
+#! @Returns a homalg field
+#! @Arguments alpha
 DeclareAttribute( "UnderlyingFieldForHomalg",
                   IsSemisimpleCategoryMorphism );
 
@@ -123,6 +129,13 @@ DeclareAttribute( "UnderlyingFieldForHomalg",
 ##
 ####################################
 
-##
+#! @Description
+#! The argument is a morphism
+#! $\alpha = ( \alpha_i )_{i \in I}$
+#! in a semisimple category $\bigoplus_{i \in I} k\mathrm{-vec}$
+#! and an object $i \in I$.
+#! The output is $\alpha_i$.
+#! @Returns a vector space morphism 
+#! @Arguments alpha, i
 DeclareOperation( "Component", [ IsSemisimpleCategoryMorphism, IsObject ] );
 
