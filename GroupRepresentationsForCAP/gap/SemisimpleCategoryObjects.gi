@@ -60,7 +60,7 @@ InstallMethodWithCache( SemisimpleCategoryObjectConstructorWithFlatList,
     
     semisimple_category_object := rec( );
     
-    normalized_semisimple_object_list := NormalizeSemisimpleCategoryObjectList( semisimple_object_list, category );
+    normalized_semisimple_object_list := NormalizeSemisimpleCategoryObjectList( semisimple_object_list );
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
     
@@ -79,9 +79,9 @@ end );
 
 ##
 InstallMethod( NormalizeSemisimpleCategoryObjectList,
-               [ IsList, IsCapCategory ],
+               [ IsList ],
                
-  function( semisimple_object_list, category )
+  function( semisimple_object_list )
     local sort_function, result_list, multiplicity, j, irreducible_object, size, i;
     
     semisimple_object_list := Filtered( semisimple_object_list, entry -> entry[1] > 0 );

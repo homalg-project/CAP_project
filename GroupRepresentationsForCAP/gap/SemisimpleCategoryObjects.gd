@@ -115,7 +115,7 @@ DeclareAttribute( "Dimension",
 ####################################
 
 ##
-DeclareOperation( "NormalizeSemisimpleCategoryObjectList", [ IsList, IsCapCategory ] );
+DeclareOperation( "NormalizeSemisimpleCategoryObjectList", [ IsList ] );
 
 ##
 DeclareOperation( "Multiplicity", [ IsSemisimpleCategoryObject, IsObject ] );
