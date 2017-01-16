@@ -1895,14 +1895,27 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           return IdentityMorphism( object );
           
       fi;
+#       
+#       exterior_power_list := ExteriorPower( irr_1, irr_2 );
+#       
+#       if IsEmpty( exterior_power_list ) then
+#           
+#           return IdentityMorphism( object );
+#           
+#       fi;
       
-      exterior_power_list := ExteriorPower( irr_1, irr_2 );
+      ##Code that forces the braiding to be the identity
+      ## whenever irr_1 <> irr_2
       
-      if IsEmpty( exterior_power_list ) then
+      if not ( irr_1 = irr_2 )  then
           
           return IdentityMorphism( object );
           
       fi;
+      
+      exterior_power_list := ExteriorPower( irr_1, irr_2 );
+      
+      ##EndCode
       
       exterior_power := SemisimpleCategoryObject( exterior_power_list, category );
       
