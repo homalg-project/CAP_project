@@ -47,6 +47,8 @@ DeclareAttribute( "Dimension", IsGZGradedIrreducibleObject );
 
 DeclareAttribute( "Dual", IsGZGradedIrreducibleObject );
 
+DeclareAttribute( "ExteriorPower", IsGZGradedIrreducibleObject );
+
 ####################################
 ##
 #! @Section Properties
@@ -69,5 +71,3 @@ DeclareOperation( "\*", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObje
 
 DeclareOperation( "AssociatorFromData", 
                   [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList ] );
-
-DeclareOperation( "ExteriorPower", [ IsGZGradedIrreducibleObject ] );
