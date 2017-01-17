@@ -68,4 +68,4 @@ DeclareOperation( "\*", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
 DeclareOperation( "AssociatorFromData", 
                   [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg, IsList ] );
 
-DeclareOperation( "ExteriorPower", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
+DeclareOperation( "ExteriorPower", [ IsGIrreducibleObject ] );

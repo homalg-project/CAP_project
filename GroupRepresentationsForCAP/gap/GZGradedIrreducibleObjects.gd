@@ -70,4 +70,4 @@ DeclareOperation( "\*", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObje
 DeclareOperation( "AssociatorFromData", 
                   [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList ] );
 
-DeclareOperation( "ExteriorPower", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ] );
+DeclareOperation( "ExteriorPower", [ IsGZGradedIrreducibleObject ] );
