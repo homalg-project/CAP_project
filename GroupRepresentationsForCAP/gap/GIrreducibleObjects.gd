@@ -16,11 +16,12 @@
 #! To become a skeletal category, we need:
 #! - a total ordering on $I$.
 #! To become a monoidal category, we need:
-#! - a function $\texttt{IsOne}$, distinguishing a unit object,
+#! - a function $\texttt{IsYieldingIdentities}$, deciding whether an object
+#!   yields the identity whenever it is part of an associator triple or a braiding pair,
 #! - functions  $\texttt{Multiplicity}$ and $\texttt{*}$, defining the tensor product on objects,
 #! - a function $\texttt{AssociatorFromData}$, defining the tensor product on morphisms.
 #! To become a symmetric monoidal category, we need:
-#! - a function $\texttt{ExteriorPower}$, sending an object $v$ to its second exterior power $\wedge^2 v$.
+#! - a function $\texttt{ExteriorPower}$.
 #! To become a rigid symmetric monoidal category, we need:
 #! - a function $\texttt{Dual}$, defining duals on objects.
 #! In the following, two families
@@ -125,7 +126,7 @@ DeclareAttribute( "Dual", IsGIrreducibleObject );
 #! is the trivial one, false otherwise.
 #! @Returns a boolean
 #! @Arguments i
-DeclareProperty( "IsOne", IsGIrreducibleObject );
+DeclareProperty( "IsYieldingIdentities", IsGIrreducibleObject );
 
 ####################################
 ##
@@ -182,8 +183,9 @@ DeclareOperation( "AssociatorFromData",
                   [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg, IsList ] );
 
 #! @Description
-#! The argument is a $G$-irreducible object $i$.
-#! The output is 
+#! The arguments are two $G$-irreducible objects $i, j$.
+#! The output is the empty list if $i$ is not equal to $j$.
+#! Otherwise, the output is 
 #! a list $L = [ [ n_1, k_1 ], \dots, [ n_1, k_l ] ]$
 #! consisting of positive integers $n_j$
 #! and $G$-irreducible objects $k_j$,
@@ -195,6 +197,6 @@ DeclareOperation( "AssociatorFromData",
 #! Here, $c$ is the associated character of
 #! $i$.
 #! @Returns a list
-#! @Arguments i
+#! @Arguments i, j
 DeclareOperation( "ExteriorPower", [ IsGIrreducibleObject, IsGIrreducibleObject ] );
 

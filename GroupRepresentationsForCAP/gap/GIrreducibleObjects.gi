@@ -142,15 +142,15 @@ InstallMethod( \=,
     
 end );
 
-# ##
-# InstallMethod( LT,
-#                [ IsGIrreducibleObject, IsGIrreducibleObject ],
-#                
-#   function( object_1, object_2 )
-#     
-#     return UnderlyingCharacterNumber( object_1 ) < UnderlyingCharacterNumber( object_2 );
-#     
-# end );
+##
+InstallMethod( \<,
+               [ IsGIrreducibleObject, IsGIrreducibleObject ],
+               
+  function( object_1, object_2 )
+    
+    return UnderlyingCharacterNumber( object_1 ) < UnderlyingCharacterNumber( object_2 );
+    
+end );
 
 ##
 InstallMethod( Multiplicity,
@@ -230,7 +230,7 @@ end );
 ##
 ####################################
 
-InstallMethod( IsOne,
+InstallMethod( IsYieldingIdentities,
                [ IsGIrreducibleObject ],
                
   function( object )

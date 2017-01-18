@@ -106,7 +106,13 @@ DeclareAttribute( "Dual", IsGZGradedIrreducibleObject );
 ##
 ####################################
 
-DeclareProperty( "IsOne", IsGZGradedIrreducibleObject );
+#! @Description
+#! The argument is a $G-\mathbb{Z}$-irreducible object $i$.
+#! The output is true if the underlying character of $i$
+#! is the trivial one, false otherwise.
+#! @Returns a boolean
+#! @Arguments i
+DeclareProperty( "IsYieldingIdentities", IsGZGradedIrreducibleObject );
 
 ####################################
 ##
@@ -124,20 +130,22 @@ DeclareOperation( "AssociatorFromData",
                   [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList ] );
 
 #! @Description
-#! The argument is a $G-\mathbb{Z}$-irreducible object $i$.
-#! The output is 
+#! The arguments are two $G-\mathbb{Z}$-irreducible objects $i, j$.
+#! The output is the empty list if the underlying characters of $i$
+#! and $j$ are unequal.
+#! Otherwise, the output is 
 #! a list $L = [ [ n_1, k_1 ], \dots, [ n_1, k_l ] ]$
 #! consisting of positive integers $n_j$
-#! and $G-\mathbb{Z}$-irreducible objects $k_j$,
+#! and $G-\mathbb{Z}$-irreducible objects $k_a$,
 #! corresponding
 #! to the 
 #! decomposition of the 
 #! second exterior power character $\wedge^2 c$
 #! into irreducibles.
 #! Here, $c$ is the associated character of
-#! $i$.
-#! The underlying degree of the $k_j$ is
-#! given by 2 times the underlying degree of $i$.
+#! $i$ and $j$.
+#! The underlying degree of $k_a$ is the sum of 
+#! the underlying degrees of $i$ and $j$.
 #! @Returns a list
-#! @Arguments i
+#! @Arguments i, j
 DeclareOperation( "ExteriorPower", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ] );

@@ -1279,7 +1279,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       object := TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 );
       
       ## handle the cases where one of the inputs is the unit
-      if IsOne( irr_1 ) or IsOne( irr_2 ) or IsOne( irr_3 ) then
+      if IsYieldingIdentities( irr_1 ) or IsYieldingIdentities( irr_2 ) or IsYieldingIdentities( irr_3 ) then
           
           return IdentityMorphism( object );
           
@@ -1890,7 +1890,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       object := TensorProductOnObjects( object_1, object_2 );
       
-      if IsOne( irr_1 ) or IsOne( irr_2 ) then
+      if IsYieldingIdentities( irr_1 ) or IsYieldingIdentities( irr_2 ) then
           
           return IdentityMorphism( object );
           

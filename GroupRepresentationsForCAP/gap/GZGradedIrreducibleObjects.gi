@@ -259,7 +259,7 @@ end );
 ##
 ####################################
 
-InstallMethod( IsOne,
+InstallMethod( IsYieldingIdentities,
                [ IsGZGradedIrreducibleObject ],
                
   function( object )
