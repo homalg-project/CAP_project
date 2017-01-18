@@ -291,6 +291,6 @@ InstallMethod( ViewObj,
 
   function( object )
 
-    Print( Concatenation( "<χ_", String( object ), ">" ) );
+    Print( Concatenation( "<x_", String( object ), ">" ) );
 
 end );

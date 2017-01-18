@@ -202,7 +202,7 @@ InstallMethod( Display,
         
         for elem in morphism_list do
             
-            Print( Concatenation( "Component: (χ_", String( elem[2] ), ")\n" ) );
+            Print( Concatenation( "Component: (x_", String( elem[2] ), ")\n" ) );
             
             Print( "\n" );
             
