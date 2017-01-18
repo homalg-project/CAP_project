@@ -66,12 +66,18 @@ end );
 
 ##
 InstallMethod( ExteriorPower,
-               [ IsGIrreducibleObject ],
+               [ IsGIrreducibleObject, IsGIrreducibleObject ],
                
-  function( object )
+  function( object, object_2 )
     local character, ct, irr, exterior_power, chi, scalar_product, result_list;
     
     result_list := [ ];
+    
+    if not( object = object_2 ) then
+        
+        return result_list;
+        
+    fi;
     
     character := UnderlyingCharacter( object );
     

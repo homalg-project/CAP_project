@@ -67,12 +67,18 @@ end );
 
 ##
 InstallMethod( ExteriorPower,
-               [ IsGZGradedIrreducibleObject ],
+               [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ],
                
-  function( object )
+  function( object, object_2 )
     local new_degree, character, ct, irr, exterior_power, chi, scalar_product, result_list;
     
     result_list := [ ];
+    
+    if not( UnderlyingCharacterNumber( object ) = UnderlyingCharacterNumber( object_2 ) ) then
+        
+        return result_list;
+        
+    fi;
     
     ct := UnderlyingCharacterTable( object );
     
@@ -85,7 +91,7 @@ InstallMethod( ExteriorPower,
     
     exterior_power := exterior_power[1];
     
-    new_degree := 2 * UnderlyingDegree( object );
+    new_degree := UnderlyingDegree( object ) + UnderlyingDegree( object_2 );
     
     for chi in irr do
         

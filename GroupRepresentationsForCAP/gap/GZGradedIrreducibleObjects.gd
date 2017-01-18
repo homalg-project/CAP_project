@@ -100,25 +100,6 @@ DeclareAttribute( "Dimension", IsGZGradedIrreducibleObject );
 #! @Arguments i
 DeclareAttribute( "Dual", IsGZGradedIrreducibleObject );
 
-#! @Description
-#! The argument is a $G-\mathbb{Z}$-irreducible object $i$.
-#! The output is 
-#! a list $L = [ [ n_1, k_1 ], \dots, [ n_1, k_l ] ]$
-#! consisting of positive integers $n_j$
-#! and $G-\mathbb{Z}$-irreducible objects $k_j$,
-#! corresponding
-#! to the 
-#! decomposition of the 
-#! second exterior power character $\wedge^2 c$
-#! into irreducibles.
-#! Here, $c$ is the associated character of
-#! $i$.
-#! The underlying degree of the $k_j$ is
-#! given by 2 times the underlying degree of $i$.
-#! @Returns a list
-#! @Arguments i
-DeclareAttribute( "ExteriorPower", IsGZGradedIrreducibleObject );
-
 ####################################
 ##
 #! @Section Properties
@@ -141,3 +122,22 @@ DeclareOperation( "\*", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObje
 
 DeclareOperation( "AssociatorFromData", 
                   [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList ] );
+
+#! @Description
+#! The argument is a $G-\mathbb{Z}$-irreducible object $i$.
+#! The output is 
+#! a list $L = [ [ n_1, k_1 ], \dots, [ n_1, k_l ] ]$
+#! consisting of positive integers $n_j$
+#! and $G-\mathbb{Z}$-irreducible objects $k_j$,
+#! corresponding
+#! to the 
+#! decomposition of the 
+#! second exterior power character $\wedge^2 c$
+#! into irreducibles.
+#! Here, $c$ is the associated character of
+#! $i$.
+#! The underlying degree of the $k_j$ is
+#! given by 2 times the underlying degree of $i$.
+#! @Returns a list
+#! @Arguments i
+DeclareOperation( "ExteriorPower", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ] );
