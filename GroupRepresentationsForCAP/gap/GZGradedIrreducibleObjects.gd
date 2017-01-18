@@ -120,12 +120,59 @@ DeclareProperty( "IsYieldingIdentities", IsGZGradedIrreducibleObject );
 ##
 ####################################
 
+#! @Description
+#! The arguments are 3 $G-\mathbb{Z}$-irreducible objects $i,j,k$.
+#! Let their underlying characters be denoted by $a,b,c$, respectively,
+#! and their underlying degrees by $n_i, n_j, n_k$, respectively.
+#! The output is $0$ if $n_i$ is not equal to $n_j + n_k$.
+#! Otherwise, the output is the number $\langle a, b\cdot c \rangle$,
+#! i.e., the multiplicity of $a$ in the product of characters $b \cdot c$.
+#! @Returns an integer
+#! @Arguments i, j, k
 DeclareOperation( "Multiplicity", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ] );
 
+# @Description
+# The arguments are 2 $G-\mathbb{Z}$-irreducible objects $i,j$.
+#! Let their underlying characters be denoted by $a,b$, respectively,
+#! and their underlying degrees by $n_i, n_j$, respectively.
+# The output is true if $n_i < n_j$ or
+#! if $n_i = n_j$ and 
+#! the underlying character number of $j$
+# is greater than the underlying character number of $i$.
+# Otherwise, the output is false.
+# @Returns a boolean
+# @Arguments i, j
 DeclareOperation( "\<", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ] );
 
+#! @Description
+#! The arguments are 2 $G-\mathbb{Z}$-irreducible objects $i,j$
+#! with underlying irreducible characters $a,b$, respectively.
+#! The output is a list
+#! L = $[ [ n_1, k_1 ], \dots, [ n_l, k_l ] ]$
+#! consisting of positive integers $n_c$ and $G$-irreducible objects $k_c$
+#! representing the character decomposition into irreducibles
+#! of the product $a\cdot b$.
+#! The underlying degrees of $k_c$ are given by the sum of
+#! the underlying degrees of $i$ and $j$.
+#! @Returns a list
+#! @Arguments i, j
 DeclareOperation( "\*", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ] );
 
+#! @Description
+#! The arguments are
+#! - three $G-\mathbb{Z}$-irreducible objects $i,j,k$,
+#! - a list $A$ containing the associator on all irreducibles (of $G$-irreducible objects) as strings,
+#!   e.g., the list constructed by the methods provided in this package,
+#! - a homalg field $F$,
+#! - a list L = $[ [ n_1, h_1 ], \dots, [ n_l, h_l ] ]$
+#!   consisting of positive integers $n_c$ and $G-\mathbb{Z}$-irreducible objects $h_c$
+#!   representing the character decomposition into irreducibles of the product of $i,j,k$.
+#! The output is the list
+#! $[ [ \alpha_{h_1}, h_1 ], \dots, [ \alpha_{h_l}, h_l ] ]$,
+#! where $\alpha_{h_c}$ is the $F$-vector space homomorphism
+#! representing the $h_c$-th component of the associator of $i,j,k$.
+#! @Returns a list
+#! @Arguments i, j, k, A, F, L
 DeclareOperation( "AssociatorFromData", 
                   [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList ] );
 
