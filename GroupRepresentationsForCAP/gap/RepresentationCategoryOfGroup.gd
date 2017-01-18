@@ -52,15 +52,38 @@ DeclareCategory( "IsRepresentationCategoryZGradedMorphism",
 
 ##Rep(G)
 ##
+#! @Description
+#! The argument is a group $G$.
+#! The output is the Cap category $G$-mod.
+#! This method uses $\texttt{String( G )}$ as an identifier of $G$.
+#! @Returns a Cap category
+#! @Arguments G
 DeclareAttribute( "RepresentationCategory", IsGroup );
 
-##
+#! @Description
+#! The arguments are 2 integers $o,n$.
+#! The output is the Cap category $G$-mod,
+#! where $G$ is the group of order $o$ corresponding to
+#! the SmallGroupLibrary identification number $n$.
+#! @Returns a Cap category
+#! @Arguments o,n
 DeclareOperation( "RepresentationCategory", [ IsInt, IsInt ] );
 
 ##
 DeclareOperation( "RepresentationCategory", [ IsGroup, IsList ] );
 
-##
+#! @Description
+#! There are 2 arguments.
+#! The first argument is
+#! a list $L = [ [ n_1, c_1 ], \dots, [ n_l, c_l ] ]$
+#! consisting of non-negative integers $n_i$ and characters $c_i$ of the same group.
+#! Alternatively, the first argument can simply be an irreducible
+#! character c, which will be then interpreted as giving the input $[ [ 1, c ] ]$.
+#! The second argument is the Cap category $C = G$-mod.
+#! The output is the unique object in $G$-mod
+#! having $L$ as its character decomposition.
+#! @Returns an object in $G$-mod
+#! @Arguments L, C
 DeclareOperation( "RepresentationCategoryObject", [ IsList, IsCapCategory ] );
 
 ##
