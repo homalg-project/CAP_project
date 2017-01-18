@@ -107,7 +107,7 @@ DeclareAttribute( "Dimension", IsGIrreducibleObject );
 #! @Description
 #! The argument is a $G$-irreducible object $i$.
 #! The output is the $G$-irreducible object associated
-#! to the character $c$, where $c$ is the associated character of
+#! to the dual character of $c$, where $c$ is the associated character of
 #! $i$.
 #! @Returns a $G$-irreducible object
 #! @Arguments i
