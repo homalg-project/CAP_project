@@ -8,6 +8,27 @@
 ##
 #############################################################################
 
+#! @Section Introduction
+#! For a finite group $G$,
+#! the following methods provide computational
+#! tools for working with
+#! $G$-mod, a skeletal version
+#! of the monoidal category of finite dimensional complex representations of $G$,
+#! and with $G-\mathbb{Z}$-mod,
+#! a skeletal version
+#! of the monoidal category of finite dimensional complex representations of $G$
+#! equipped with a degree in $\mathbb{Z}$.
+
+#! @Section Quickstart
+
+#! The following commands
+#! construct the category $D_8$-mod,
+#! the unique object $v$ corresponding
+#! to the irreducible character of degree 2,
+#! and perform some computations.
+
+#! @InsertSystem Quickstart_RepD8
+
 DeclareCategory( "IsRepresentationCategory",
                  IsCapCategory );
 
