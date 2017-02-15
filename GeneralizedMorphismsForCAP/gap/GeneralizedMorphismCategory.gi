@@ -87,6 +87,16 @@ InstallMethod( IsHonest,
 end );
 
 ##
+InstallMethod( ConcatenationProduct,
+               [ IsList ],
+               
+  function( generalized_morphism_list )
+    
+    return ConcatenationProductOp( generalized_morphism_list, generalized_morphism_list[1] );
+    
+end );
+
+##
 InstallImmediateMethod( IsSingleValued,
                         IsGeneralizedMorphism and HasHasFullCodomain,
                         0,

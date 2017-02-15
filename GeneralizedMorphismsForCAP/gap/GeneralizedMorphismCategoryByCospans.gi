@@ -557,6 +557,17 @@ InstallMethodWithCacheFromObject( CommonCoastrictionOp,
     
 end : ArgumentNumber := 2 );
 
+##
+InstallMethodWithCacheFromObject( ConcatenationProductOp,
+                                  [ IsList, IsGeneralizedMorphismByCospan ],
+               
+  function( generalized_morphism_list, method_selection_object )
+    
+    return GeneralizedMorphismByCospan( DirectSumFunctorial( List( generalized_morphism_list, Arrow ) ),
+                                        DirectSumFunctorial( List( generalized_morphism_list, ReversedArrow ) ) );
+    
+end : ArgumentNumber := 2 );
+
 ######################################
 ##
 ## Compatibility

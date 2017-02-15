@@ -3,8 +3,6 @@
 #
 # Reading the declaration part of the package.
 #
-ReadPackage( "ActionsForCAP", "gap/AttributeCategory.gd" );
-
 ReadPackage( "ActionsForCAP", "gap/ActionsCategory.gd" );
 
 ReadPackage( "ActionsForCAP", "gap/CoactionsCategory.gd" );
@@ -17,4 +15,4 @@ ReadPackage( "ActionsForCAP", "gap/ActionMorphisms.gd" );
 
 ReadPackage( "ActionsForCAP", "gap/CoactionMorphisms.gd" );
 
-ReadPackage( "ActionsForCAP", "gap/SemisimpleCategory.gd" );
+ReadPackage( "ActionsForCAP", "gap/InternalExteriorAlgebraModules.gd" );

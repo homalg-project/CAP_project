@@ -67,7 +67,20 @@ InstallMethod( KernelObjectFunctorial,
                                   
   function( morphism_of_morphisms )
     
-    return KernelObjectFunctorial( morphism_of_morphisms[1], morphism_of_morphisms[2][1], morphism_of_morphisms[3] );
+    return KernelObjectFunctorialWithGivenKernelObjects(
+             KernelObject( morphism_of_morphisms[1] ),
+             morphism_of_morphisms[1], morphism_of_morphisms[2][1], morphism_of_morphisms[3],
+             KernelObject( morphism_of_morphisms[3] ) );
+    
+end );
+
+##
+InstallMethod( KernelObjectFunctorial,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                                  
+  function( alpha, mu, alpha_prime )
+    
+    return KernelObjectFunctorialWithGivenKernelObjects( KernelObject( alpha ), alpha, mu, alpha_prime, KernelObject( alpha_prime ) );
     
 end );
 
@@ -108,10 +121,23 @@ end );
 ##
 InstallMethod( CokernelFunctorial,
                [ IsList ],
-                                  
+               
   function( morphism_of_morphisms )
     
-    return CokernelFunctorial( morphism_of_morphisms[1], morphism_of_morphisms[2][2], morphism_of_morphisms[3] );
+    return CokernelFunctorialWithGivenCokernelObjects( 
+           CokernelObject( morphism_of_morphisms[1] ),
+           morphism_of_morphisms[1], morphism_of_morphisms[2][2], morphism_of_morphisms[3],
+           CokernelObject( morphism_of_morphisms[3] ) );
+    
+end );
+
+##
+InstallMethod( CokernelFunctorial,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( alpha, nu, alpha_prime )
+    
+    return CokernelFunctorialWithGivenCokernelObjects( CokernelObject( alpha ), alpha, nu, alpha_prime, CokernelObject( alpha_prime ) );
     
 end );
 
@@ -270,13 +296,16 @@ end );
 ##
 InstallMethod( CoproductFunctorial,
                [ IsList ],
-                                  
+               
   function( morphism_list )
     
-    return CoproductFunctorialOp( morphism_list, morphism_list[1] );
+    return CoproductFunctorialWithGivenCoproducts(
+             Coproduct( List( morphism_list, Source ) ),
+             morphism_list,
+             Coproduct( List( morphism_list, Range ) )
+           );
     
 end );
-
 
 ####################################
 ##
@@ -404,10 +433,13 @@ end );
 ##
 InstallMethod( DirectProductFunctorial,
                [ IsList ],
-                                  
+                         
   function( morphism_list )
     
-    return DirectProductFunctorialOp( morphism_list, morphism_list[1] );
+    return DirectProductFunctorialWithGivenDirectProducts(
+             DirectProduct( List( morphism_list, Source ) ),
+             morphism_list,
+             DirectProduct( List( morphism_list, Range ) ) );
     
 end );
 
@@ -532,23 +564,25 @@ InstallMethod( IsomorphismFromDirectSumToCoproduct,
 end );
 
 ####################################
-## Add methods
-####################################
-
-
-####################################
 ## Functorial operations
 ####################################
 
 ##
 InstallMethod( DirectSumFunctorial,
                [ IsList ],
-                                  
-  function( morphism_list )
+               
+  function( diagram )
     
-    return DirectSumFunctorialOp( morphism_list, morphism_list[1] );
+    return DirectSumFunctorialWithGivenDirectSums(
+             DirectSum( List( diagram, Source ) ), diagram, DirectSum( List( diagram, Range ) )
+           );
     
 end );
+
+####################################
+## Add methods
+####################################
+
 
 ####################################
 ## Categorical methods
@@ -825,7 +859,11 @@ InstallMethod( FiberProductFunctorial,
                
   function( morphism_of_morphisms )
       
-      return FiberProductFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
+      return FiberProductFunctorialWithGivenFiberProducts(
+               FiberProduct( List( morphism_of_morphisms, elem -> elem[1] ) ),
+               morphism_of_morphisms,
+               FiberProduct( List( morphism_of_morphisms, elem -> elem[3] ) )
+             );
       
 end );
 
@@ -930,7 +968,11 @@ InstallMethod( PushoutFunctorial,
                
   function( morphism_of_morphisms )
       
-      return PushoutFunctorialOp( morphism_of_morphisms, morphism_of_morphisms[1][1] );
+      return PushoutFunctorialWithGivenPushouts( 
+               Pushout( List( morphism_of_morphisms, elem -> elem[1] ) ),
+               morphism_of_morphisms,
+               Pushout( List( morphism_of_morphisms, elem -> elem[3] ) )
+             );
       
 end );
 

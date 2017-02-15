@@ -234,6 +234,7 @@ DeclareAttribute( "MorphismFunctionName",
 
 #! @EndGroup
 
+
 #! @Description
 #!  Returns the identity functor of the
 #!  category <A>cat</A> viewed as an object
@@ -281,6 +282,7 @@ DeclareAttribute( "FunctorCanonicalizeZeroMorphisms",
 #! @Returns a natural transformation
 DeclareAttribute( "NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms",
                   IsCapCategory );
+
 
 ####################################
 ##

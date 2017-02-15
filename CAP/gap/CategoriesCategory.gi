@@ -735,6 +735,7 @@ InstallMethod( InstallFunctor,
     
 end );
 
+##
 InstallMethod( IdentityFunctor,
                [ IsCapCategory ],
                
