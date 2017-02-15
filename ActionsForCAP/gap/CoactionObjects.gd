@@ -34,8 +34,14 @@ DeclareGlobalFunction( "LeftOrRightCoactionObject" );
 DeclareOperation( "LeftCoactionObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+DeclareOperation( "LeftCoactionObject",
+                  [ IsCapCategoryMorphism, IsCapCategory ] );
+
 DeclareOperation( "RightCoactionObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "RightCoactionObject",
+                  [ IsCapCategoryMorphism, IsCapCategory ] );
 
 ####################################
 ##
@@ -49,7 +55,7 @@ DeclareAttribute( "StructureMorphism",
 DeclareAttribute( "UnderlyingCoactingObject",
                   IsLeftOrRightCoactionObject );
 
-DeclareAttribute( "ActionDomain",
+DeclareAttribute( "CoactionDomain",
                   IsLeftOrRightCoactionObject );
 
 DeclareAttribute( "UnderlyingCategory",

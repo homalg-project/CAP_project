@@ -37,5 +37,4 @@ ReadPackage( "CAP", "gap/CategoriesCategory.gi");
 
 ReadPackage( "CAP", "gap/TerminalCategory.gi");
 
-
-
+ReadPackage( "CAP", "gap/PrintingFunctions.gi" );

@@ -153,6 +153,25 @@ DeclareOperation( "CommonRestriction",
 DeclareOperation( "CommonRestrictionOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The argument is a list $L = ( \alpha_1, \dots, \alpha_n )$ of generalized morphisms
+#! (with same data structures).
+#! The output is their concatenation product, i.e.,
+#! a generalized morphism $\alpha$ with
+#! $\mathrm{UnderlyingHonestObject}( \mathrm{Source}( \alpha ) ) = \bigoplus_{i=1}^n \mathrm{UnderlyingHonestObject}( \mathrm{Source}( \alpha_i ) )$,
+#! and
+#! $\mathrm{UnderlyingHonestObject}( \mathrm{Range}( \alpha ) ) = \bigoplus_{i=1}^n \mathrm{UnderlyingHonestObject}( \mathrm{Range}( \alpha_i ) )$,
+#! and with morphisms in the representation of $\alpha$ given
+#! as the direct sums of the corresponding morphisms of the $\alpha_i$.
+#! @Returns a generalized moprhism
+#! @Arguments L
+DeclareOperation( "ConcatenationProduct",
+                  [ IsList ] );
+
+DeclareOperation( "ConcatenationProductOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+
 ####################################
 ##
 #! @Section Properties

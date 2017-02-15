@@ -1077,44 +1077,44 @@ end );
 ###########################
 
 ##
-AddDerivationToCAP( KernelObjectFunctorial,
+AddDerivationToCAP( KernelObjectFunctorialWithGivenKernelObjects,
                     [ [ KernelLift, 1 ],
                       [ PreCompose, 1 ],
                       [ KernelEmbedding, 1 ] ],
                                   
-  function( alpha, mu, alpha_p )
+  function( kernel_alpha, alpha, mu, alpha_p, kernel_alpha_p )
     
     return KernelLift(
                 alpha_p,
                 PreCompose( KernelEmbedding( alpha ), mu )
               );
     
-end : Description := "KernelObjectFunctorial using the universality of the kernel" );
+end : Description := "KernelObjectFunctorialWithGivenKernelObjects using the universality of the kernel" );
 
 ##
-AddDerivationToCAP( CokernelFunctorial,
+AddDerivationToCAP( CokernelFunctorialWithGivenCokernelObjects,
                     [ [ CokernelColift, 1 ],
                       [ PreCompose, 1 ],
                       [ CokernelProjection, 1 ] ],
                                   
-  function( alpha, nu, alpha_p )
+  function( cokernel_alpha, alpha, nu, alpha_p, cokernel_alpha_p )
     
     return CokernelColift(
                 alpha,
                 PreCompose( nu, CokernelProjection( alpha_p ) )
               );
     
-end : Description := "CokernelFunctorial using the universality of the cokernel" );
+end : Description := "CokernelFunctorialWithGivenCokernelObjects using the universality of the cokernel" );
 
 
 
 ##
-AddDerivationToCAP( CoproductFunctorial,
+AddDerivationToCAP( CoproductFunctorialWithGivenCoproducts,
                     [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
                       [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismFromCoproduct, 1 ] ], 
                                   
-  function( morphism_list )
+  function( coproduct_source, morphism_list, coproduct_range )
     local coproduct_diagram, sink, diagram;
         
         coproduct_diagram := List( morphism_list, mor -> Range( mor ) );
@@ -1125,17 +1125,17 @@ AddDerivationToCAP( CoproductFunctorial,
         
         return UniversalMorphismFromCoproduct( diagram, sink );
         
-end : Description := "CoproductFunctorial using the universality of the coproduct" );
+end : Description := "CoproductFunctorialWithGivenCoproducts using the universality of the coproduct" );
 
 
 
 ##
-AddDerivationToCAP( DirectProductFunctorial,
+AddDerivationToCAP( DirectProductFunctorialWithGivenDirectProducts,
                     [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
                       [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismIntoDirectProduct, 1 ] ],
                                   
-  function( morphism_list )
+  function( direct_product_source, morphism_list, direct_product_range )
     local direct_product_diagram, source, diagram;
         
         direct_product_diagram := List( morphism_list, mor -> Source( mor ) );
@@ -1146,15 +1146,15 @@ AddDerivationToCAP( DirectProductFunctorial,
         
         return UniversalMorphismIntoDirectProduct( diagram, source );
         
-end : Description := "DirectProductFunctorial using universality of direct product" );
+end : Description := "DirectProductFunctorialWithGivenDirectProducts using universality of direct product" );
 
 ##
-AddDerivationToCAP( DirectSumFunctorial,
+AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
                     [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
                       [ ProjectionInFactorOfDirectSum, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismIntoDirectSum, 1 ] ],
                  
-  function( morphism_list )
+  function( direct_sum_source, morphism_list, direct_sum_range )
     local direct_sum_diagram, source, diagram;
         
         direct_sum_diagram := List( morphism_list, mor -> Source( mor ) );
@@ -1166,15 +1166,15 @@ AddDerivationToCAP( DirectSumFunctorial,
         return UniversalMorphismIntoDirectSum( diagram, source );
     
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "DirectSumFunctorial using the universal morphism into direct sum");
+      Description := "DirectSumFunctorialWithGivenDirectSums using the universal morphism into direct sum");
 
 ##
-AddDerivationToCAP( DirectSumFunctorial,
+AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
                     [ [ PreCompose, 2 ], ## Length( morphism_list ) would be the correct number
                       [ InjectionOfCofactorOfDirectSum, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismFromDirectSum, 1 ] ], 
                                   
-  function( morphism_list )
+  function( direct_sum_source, morphism_list, direct_sum_range )
     local direct_sum_diagram, sink, diagram;
         
         direct_sum_diagram := List( morphism_list, mor -> Range( mor ) );
@@ -1186,7 +1186,7 @@ AddDerivationToCAP( DirectSumFunctorial,
         return UniversalMorphismFromDirectSum( diagram, sink );
     
 end : CategoryFilter := IsAdditiveCategory,
-      Description := "DirectSumFunctorial using the universal morphism from direct sum" );
+      Description := "DirectSumFunctorialWithGivenDirectSums using the universal morphism from direct sum" );
 
 
 ##
@@ -1282,12 +1282,12 @@ end : Description := "DirectSumDiagonalDifference using the operations defining 
 
 
 ##
-AddDerivationToCAP( FiberProductFunctorial,
+AddDerivationToCAP( FiberProductFunctorialWithGivenFiberProducts,
                     [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the right number
                       [ ProjectionInFactorOfFiberProduct, 2 ], ## Length( morphism_of_morphisms ) would be the right number,
                       [ UniversalMorphismIntoFiberProduct, 1 ] ],
                                   
-  function( morphism_of_morphisms )
+  function( fiber_product_source, morphism_of_morphisms, fiber_product_range )
     local pullback_diagram, source, diagram;
         
         pullback_diagram := List( morphism_of_morphisms, mor -> mor[1] );
@@ -1298,7 +1298,7 @@ AddDerivationToCAP( FiberProductFunctorial,
         
         return UniversalMorphismIntoFiberProduct( diagram, source );
         
-end : Description := "FiberProductFunctorial using the universality of the fiber product" );
+end : Description := "FiberProductFunctorialWithGivenFiberProducts using the universality of the fiber product" );
 
 ##
 AddDerivationToCAP( DirectSumCodiagonalDifference,
@@ -1333,12 +1333,12 @@ end : Description := "DirectSumCodiagonalDifference using the operations definin
 
 
 ##
-AddDerivationToCAP( PushoutFunctorial,
+AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,
                     [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the correct number here
                       [ InjectionOfCofactorOfPushout, 2 ], ## Length( morphism_of_morphisms ) would be the correct number here
                       [ UniversalMorphismFromPushout, 1 ] ],
                                   
-  function( morphism_of_morphisms )
+  function( pushout_source, morphism_of_morphisms, pushout_range )
     local pushout_diagram, sink, diagram;
         
         pushout_diagram := List( morphism_of_morphisms, mor -> mor[3] );
@@ -1349,7 +1349,7 @@ AddDerivationToCAP( PushoutFunctorial,
         
         return UniversalMorphismFromPushout( diagram, sink );
         
-end : Description := "PushoutFunctorial using the universality of the pushout" );
+end : Description := "PushoutFunctorialWithGivenPushouts using the universality of the pushout" );
 
 ##
 AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
@@ -1839,6 +1839,17 @@ AddDerivationToCAP( VerticalPreCompose,
     
 end : Description := "VerticalPreCompose using VerticalPostCompose" );
 
+##
+AddDerivationToCAP( IsEqualForCacheForObjects,
+  
+  function( object_1, object_2 )
+    local ret_value;
+    
+    return IsEqualForObjects( object_1, object_2 ) = true;
+    
+end );
+
+
 
 ## Final methods for FiberProduct
 
@@ -2120,7 +2131,7 @@ AddFinalDerivation( IsomorphismFromDirectSumToDirectProduct,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ DirectProduct,
-                      DirectProductFunctorial,
+                      DirectProductFunctorialWithGivenDirectProducts,
                       ProjectionInFactorOfDirectProduct,
 #                       ProjectionInFactorOfDirectProductWithGivenDirectProduct,
                       UniversalMorphismIntoDirectProduct ],
@@ -2137,7 +2148,7 @@ AddFinalDerivation( IsomorphismFromDirectProductToDirectSum,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ DirectProduct,
-                      DirectProductFunctorial,
+                      DirectProductFunctorialWithGivenDirectProducts,
                       ProjectionInFactorOfDirectProduct,
 #                       ProjectionInFactorOfDirectProductWithGivenDirectProduct,
                       UniversalMorphismIntoDirectProduct ],
@@ -2156,7 +2167,7 @@ AddFinalDerivation( IsomorphismFromCoproductToDirectSum,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Coproduct,
-                      CoproductFunctorial,
+                      CoproductFunctorialWithGivenCoproducts,
                       InjectionOfCofactorOfCoproduct,
 #                       InjectionOfCofactorOfCoproductWithGivenCoproduct,
                       UniversalMorphismFromCoproduct ],
@@ -2173,7 +2184,7 @@ AddFinalDerivation( IsomorphismFromDirectSumToCoproduct,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ Coproduct,
-                      CoproductFunctorial,
+                      CoproductFunctorialWithGivenCoproducts,
                       InjectionOfCofactorOfCoproduct,
 #                       InjectionOfCofactorOfCoproductWithGivenCoproduct,
                       UniversalMorphismFromCoproduct ],

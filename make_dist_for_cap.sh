@@ -8,6 +8,6 @@ for i in ${packages}; do
   ./release --srcdir ${base_dir}/${i} --webdir ${base_dir}/gh-pages/${i} --update-file ${base_dir}/gh-pages/update.g
 done
 
-exit 0
+echo "Please push website now"
 
-git push homalg gh-pages:gh-pages
+exit 0

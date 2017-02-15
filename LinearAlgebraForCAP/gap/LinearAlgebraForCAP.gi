@@ -219,6 +219,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
+    AddDirectSumFunctorialWithGivenDirectSums( category,
+      function( direct_sum_source, diagram, direct_sum_range )
+        
+        return VectorSpaceMorphism( direct_sum_source,
+                                    DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) ), 
+                                    direct_sum_range );
+        
+    end );
+    
+    ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
       function( object_list, projection_number, direct_sum_object )
         local dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
@@ -341,11 +351,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddLiftAlongMonomorphism( category,
-      function( monomorphism, test_morphism )
+    AddLift( category,
+      function( alpha, beta )
         local right_divide;
         
-        right_divide := RightDivide( UnderlyingMatrix( test_morphism ), UnderlyingMatrix( monomorphism ) );
+        right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
         
         if right_divide = fail then
           
@@ -353,9 +363,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
           
         fi;
         
-        return VectorSpaceMorphism( Source( test_morphism ),
+        return VectorSpaceMorphism( Source( alpha ),
                                     right_divide,
-                                    Source( monomorphism ) );
+                                    Source( beta ) );
         
     end );
     
@@ -395,11 +405,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddColiftAlongEpimorphism( category,
-      function( epimorphism, test_morphism )
+    AddColift( category,
+      function( alpha, beta )
         local left_divide;
         
-        left_divide := LeftDivide( UnderlyingMatrix( epimorphism ), UnderlyingMatrix( test_morphism ) );
+        left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
         
         if left_divide = fail then
           
@@ -407,9 +417,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
           
         fi;
         
-        return VectorSpaceMorphism( Range( epimorphism ),
+        return VectorSpaceMorphism( Range( alpha ),
                                     left_divide,
-                                    Range( test_morphism ) );
+                                    Range( beta ) );
         
     end );
     

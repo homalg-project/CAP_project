@@ -35,8 +35,8 @@ DeclareCategory( "IsVectorSpaceObject",
 #! matrices over $F$ of dimension $d$.
 #! @Returns an object
 #! @Arguments d, F
-DeclareOperation( "VectorSpaceObject",
-                  [ IsInt, IsFieldForHomalg ] );
+DeclareOperationWithCache( "VectorSpaceObject",
+                           [ IsInt, IsFieldForHomalg ] );
 
 ####################################
 ##

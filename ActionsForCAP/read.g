@@ -3,8 +3,6 @@
 #
 # Reading the implementation part of the package.
 #
-ReadPackage( "ActionsForCAP", "gap/AttributeCategory.gi" );
-
 ReadPackage( "ActionsForCAP", "gap/ActionObjects.gi" );
 
 ReadPackage( "ActionsForCAP", "gap/CoactionObjects.gi" );
@@ -17,4 +15,4 @@ ReadPackage( "ActionsForCAP", "gap/ActionsCategory.gi" );
 
 ReadPackage( "ActionsForCAP", "gap/CoactionsCategory.gi" );
 
-ReadPackage( "ActionsForCAP", "gap/SemisimpleCategory.gi" );
+ReadPackage( "ActionsForCAP", "gap/InternalExteriorAlgebraModules.gi" );

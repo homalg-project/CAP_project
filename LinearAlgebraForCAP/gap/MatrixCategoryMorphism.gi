@@ -31,6 +31,21 @@ BindGlobal( "TheTypeOfVectorSpaceMorphisms",
 ##
 ####################################
 
+InstallMethodWithCache( VectorSpaceMorphism,
+                        [ IsVectorSpaceObject, IsList, IsVectorSpaceObject ],
+                        
+  function( source, element_list, range )
+    local field, homalg_matrix;
+    
+    field := UnderlyingFieldForHomalg( source );
+    
+    homalg_matrix := HomalgMatrix( element_list, Dimension( source ), Dimension( range ), field );
+    
+    return VectorSpaceMorphism( source, homalg_matrix, range );
+    
+end );
+
+
 ##
 InstallMethod( VectorSpaceMorphism,
                [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],

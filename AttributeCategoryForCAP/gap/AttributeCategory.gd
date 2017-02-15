@@ -1,19 +1,23 @@
 #############################################################################
 ##
-##                                ActionsForCAP package
+##                                AttributeCategoryForCAP package
 ##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
+##  Copyright 2016, Sebastian Gutsche, University of Siegen
+##                  Sebastian Posur,   University of Siegen
 ##
+#! @Chapter Attribute Category
 ##
 #############################################################################
 
 ####################################
 ##
-## GAP Category
+#! @Section GAP Category
 ##
 ####################################
 
+#! @Description
+#! Test
+#! @Arguments object
 DeclareCategory( "IsCategoryWithAttributesObject",
                  IsCapCategoryObject );
 
