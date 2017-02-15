@@ -2,6 +2,50 @@ LoadPackage( "ModulePres" );
 LoadPackage( "Homological" );
 LoadPackage( "ToricSheaves" );
 
+SetRecursionTrapInterval( 1000000 );
+
+DeclareAttribute( "CoverByProjective",
+                  IsSerreQuotientCategoryObject );
+
+DeclareAttribute( "CoverByProjectiveWithLift",
+                  IsSerreQuotientCategoryMorphism );
+
+InstallMethod( CoverByProjective,
+               [ IsSerreQuotientCategoryObject ],
+                  
+  function( object )
+    local underlying_module, underlying_cover;
+    
+    underlying_module := UnderlyingHonestObject( object );
+    
+    underlying_cover := CoverByProjective( underlying_module );
+    
+    return AsSerreQuotientCategoryMorphism( CapCategory( object ), underlying_cover );
+    
+end );
+
+InstallMethod( CoverByProjectiveWithLift,
+               [ IsSerreQuotientCategoryMorphism ],
+               
+  function( morphism )
+    local cimage_embedding, cimage_embedding_inverse, cover_of_source, cover, restricted_morphism, lift;
+    
+    cimage_embedding := CombinedImageEmbedding( UnderlyingGeneralizedMorphism( morphism ) );
+    
+    cimage_embedding := AsSerreQuotientCategoryMorphism( CapCategory( morphism ), cimage_embedding );
+    
+    cimage_embedding_inverse := Inverse( cimage_embedding );
+    
+    cover := CoverByProjective( Source( cimage_embedding ) );
+    
+    restricted_morphism := PreCompose( morphism, cimage_embedding_inverse );
+    
+    lift := Lift( cover, restricted_morphism );
+    
+    return [ PreCompose( cover, cimage_embedding ), lift ];
+    
+end );
+
 SwitchGeneralizedMorphismStandard( "span" );
 
 Q := HomalgFieldOfRationalsInSingular();

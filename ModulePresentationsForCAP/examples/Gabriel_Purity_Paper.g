@@ -1,5 +1,5 @@
-LoadPackage( "ModulePres" );
-LoadPackage( "Homological" );
+LoadPackage( "ModulePresentationsForCAP" );
+LoadPackage( "HomologicalAlgebraForCAP" );
 
 SwitchGeneralizedMorphismStandard( "span" );
 
