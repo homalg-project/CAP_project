@@ -1225,15 +1225,6 @@ AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
 end : CategoryFilter := IsAbelianCategory,
       Description := "InverseMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage" );
 
-AddDerivationToCAP( IsEqualForCacheForObjects,
-  
-  function( object_1, object_2 )
-    local ret_value;
-    
-    return IsEqualForObjects( object_1, object_2 ) = true;
-    
-end );
-
 ####################################
 ## Final derived methods
 ####################################
