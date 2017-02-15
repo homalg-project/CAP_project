@@ -108,7 +108,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     AddAdditionForMorphisms( category,
       
       function( morphism1, morphism2 )
-        local underlying_generalized, common_restriction;
+        local underlying_generalized, common_restriction, new_arrow;
         
         underlying_generalized := List( [ morphism1, morphism2 ], UnderlyingGeneralizedMorphism );
         
