@@ -45,12 +45,12 @@ DeclareGlobalVariable( "CAP_INTERNAL_DERIVATION_GRAPH" );
 
 ## FIXME: GET RID OF THIS!!!
 InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
-              rec( 
+              rec(
               MathematicalPropertiesOfCategories := [
                 "IsEnrichedOverCommutativeRegularSemigroup",
                 "IsAbCategory",
-                "IsAdditiveCategory", 
-                "IsPreAbelianCategory", 
+                "IsAdditiveCategory",
+                "IsPreAbelianCategory",
                 "IsAbelianCategory",
                 "IsMonoidalCategory",
                 "IsBraidedMonoidalCategory",
@@ -63,7 +63,7 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
 DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
 
 InstallValue( CATEGORIES_FAMILY_PROPERTIES,
-              
+
               rec( ) );
 
 ###################################
@@ -116,18 +116,18 @@ DeclareCategory( "IsCapCategoryTwoCell",
 
 ## Earliest possible place
 BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
-            
+
   function( )
     local i, internal_list;
-    
+
     internal_list :=  CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories;
-    
+
     for i in internal_list do
-        
+
         DeclareProperty( i, IsCapCategory );
-        
+
     od;
-    
+
 end );
 
 INSTALL_CAN_COMPUTE_PROPERTIES( );
@@ -155,7 +155,7 @@ DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
 #! It gets a generic name.
 #! @Arguments
 #! @Returns a category
-#! @Label 
+#! @Label
 DeclareOperation( "CreateCapCategory",
                   [ ] );
 
@@ -260,7 +260,7 @@ DeclareOperation( "CanCompute",
 #! The arguments are a category $C$ and a string $s$.
 #! If $s$ is a categorical property (e.g. <C>"IsAbelianCategory"</C>),
 #! the output is a list of strings with basic operations
-#! which are missing in $C$ to have the categorical property 
+#! which are missing in $C$ to have the categorical property
 #! constructively.
 #! If $s$ is not a categorical property, an error is raised.
 #! @Returns a list
@@ -321,4 +321,3 @@ DeclareGlobalFunction( "DeactivateCachingOfCategory" );
 DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
 DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
 #! @EndGroup
-

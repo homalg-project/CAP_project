@@ -735,6 +735,150 @@ InstallMethod( InstallFunctor,
     
 end );
 
+##
+InstallMethod( IdentityFunctor,
+               [ IsCapCategory ],
+               
+  function( category )
+    
+    return IdentityMorphism( AsCatObject( category ) );
+    
+end );
+
+##
+InstallMethod( FunctorCanonicalizeZeroObjects,
+               [ IsCapCategory ],
+               
+  function( category )
+    local CZ, zero_obj;
+    
+    if not CanCompute( category, "IsZeroForObjects" ) then
+        Error( "the category cannot compute IsZeroForObjects\n" );
+    fi;
+    
+    CZ := CapFunctor( "functor canonicalizing zero objects", category, category );
+    
+    zero_obj := ZeroObject( category );
+    
+    AddObjectFunction( CZ,
+            function( obj )
+              
+              if IsZero( obj ) then
+                  return zero_obj;
+              fi;
+              
+              return obj;
+            end );
+    
+    AddMorphismFunction( CZ,
+            function( new_source, mor, new_range )
+              
+              if IsZero( Source( mor ) ) then
+                  return UniversalMorphismFromZeroObjectWithGivenZeroObject( new_range, new_source );
+              elif IsZero( Range( mor ) ) then
+                  return UniversalMorphismIntoZeroObjectWithGivenZeroObject( new_source, new_range );
+              fi;
+              
+              return mor;
+              
+            end );
+    
+    return CZ;
+    
+end );
+
+##
+InstallMethod( NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects,
+               [ IsCapCategory ],
+               
+  function( category )
+    local Id, F, iso;
+    
+    Id := IdentityFunctor( category );
+    
+    F := FunctorCanonicalizeZeroObjects( category );
+    
+    iso := NaturalTransformation(
+                   Concatenation( "natural isomorphism from the identity functor to ", Name( F ) ),
+                   Id, F );
+    
+    AddNaturalTransformationFunction(
+            iso,
+            function( source, obj, range )
+              
+              if IsZero( range ) then
+                  return UniversalMorphismIntoZeroObjectWithGivenZeroObject( source, range );
+              fi;
+              
+              return IdentityMorphism( obj );
+              
+            end );
+    
+    SetIsIsomorphism( iso, true );
+    
+    return iso;
+    
+end );
+
+##
+InstallMethod( FunctorCanonicalizeZeroMorphisms,
+               [ IsCapCategory ],
+               
+  function( category )
+    local CZ;
+    
+    if not CanCompute( category, "IsZeroForMorphisms" ) then
+        Error( "the category cannot compute IsZeroForMorphisms\n" );
+    fi;
+    
+    CZ := CapFunctor( "functor canonicalizing zero morphisms", category, category );
+    
+    AddObjectFunction( CZ, IdFunc );
+    
+    AddMorphismFunction( CZ,
+            function( new_source, mor, new_range )
+              
+              if IsZero( mor ) then
+                  return ZeroMorphism( new_source, new_range );
+              fi;
+              
+              return mor;
+              
+            end );
+    
+    return CZ;
+    
+end );
+
+##
+InstallMethod( NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms,
+               [ IsCapCategory ],
+               
+  function( category )
+    local Id, F, iso;
+    
+    Id := IdentityFunctor( category );
+    
+    F := FunctorCanonicalizeZeroMorphisms( category );
+    
+    iso := NaturalTransformation(
+                   Concatenation( "natural isomorphism from the identity functor to ", Name( F ) ),
+                   Id, F );
+    
+    AddNaturalTransformationFunction(
+            iso,
+            function( source, obj, range )
+              
+              return IdentityMorphism( obj );
+              
+            end );
+    
+    SetIsIsomorphism( iso, true );
+    
+    return iso;
+    
+end );
+
 ###################################
 ##
 ## Natural transformations

@@ -4,7 +4,7 @@ PackageName := "ComplexesAndFilteredObjectsForCAP",
 Subtitle := "Implementation of complexes, cocomplexes and filtered objects for CAP",
 
 Version := Maximum( [
-  "2015.10.20", ## Sebas' version
+  "2016.09.19", ## Sebas' version
 ## this line prevents merge conflicts
   "2015.04.15", ## Sepp's version
 ## this line prevents merge conflicts

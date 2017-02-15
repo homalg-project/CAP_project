@@ -96,8 +96,8 @@ DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
 #! The output is its generalized inverse $b \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,a)$
 #! @Arguments alpha
-DeclareAttribute( "GeneralizedInverse",
-                  IsCapCategoryMorphism );
+DeclareOperation( "GeneralizedInverse",
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #! The argument is a subobject $\alpha: a \hookrightarrow b \in \mathbf{A}$.
@@ -105,8 +105,8 @@ DeclareAttribute( "GeneralizedInverse",
 #! defined by $\alpha$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,b)$
 #! @Arguments alpha
-DeclareAttribute( "IdempotentDefinedBySubobject",
-                  IsCapCategoryMorphism );
+DeclareOperation( "IdempotentDefinedBySubobject",
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #! The argument is a factorobject $\alpha: b \twoheadrightarrow a \in \mathbf{A}$.
@@ -114,8 +114,8 @@ DeclareAttribute( "IdempotentDefinedBySubobject",
 #! defined by $\alpha$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,b)$
 #! @Arguments alpha
-DeclareAttribute( "IdempotentDefinedByFactorobject",
-                  IsCapCategoryMorphism );
+DeclareOperation( "IdempotentDefinedByFactorobject",
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #! The argument is a generalized morphism category $C = \mathbf{G(A)}$.
@@ -152,6 +152,25 @@ DeclareOperation( "CommonRestriction",
 
 DeclareOperation( "CommonRestrictionOp",
                   [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The argument is a list $L = ( \alpha_1, \dots, \alpha_n )$ of generalized morphisms
+#! (with same data structures).
+#! The output is their concatenation product, i.e.,
+#! a generalized morphism $\alpha$ with
+#! $\mathrm{UnderlyingHonestObject}( \mathrm{Source}( \alpha ) ) = \bigoplus_{i=1}^n \mathrm{UnderlyingHonestObject}( \mathrm{Source}( \alpha_i ) )$,
+#! and
+#! $\mathrm{UnderlyingHonestObject}( \mathrm{Range}( \alpha ) ) = \bigoplus_{i=1}^n \mathrm{UnderlyingHonestObject}( \mathrm{Range}( \alpha_i ) )$,
+#! and with morphisms in the representation of $\alpha$ given
+#! as the direct sums of the corresponding morphisms of the $\alpha_i$.
+#! @Returns a generalized moprhism
+#! @Arguments L
+DeclareOperation( "ConcatenationProduct",
+                  [ IsList ] );
+
+DeclareOperation( "ConcatenationProductOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
 
 ####################################
 ##
@@ -262,3 +281,6 @@ DeclareOperation( "GeneralizedMorphismWithRangeAid",
 #!  by span, depending on the standard.
 DeclareOperation( "GeneralizedMorphismWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareAttribute( "CombinedImageEmbedding",
+                  IsGeneralizedMorphism );

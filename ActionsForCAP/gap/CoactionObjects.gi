@@ -39,56 +39,21 @@ BindGlobal( "TheTypeOfRightCoactionObjects",
 #############################
 
 ##
-InstallGlobalFunction( LeftOrRightCoactionObject,
-               
-  function( structure_morphism, coacting_object, left )
-    local coaction_object, type, category;
-    
-    coaction_object := rec( );
-    
-    if left = true then
-        
-        type := TheTypeOfLeftCoactionObjects;
-        
-        category := LeftCoactionsCategory( coacting_object );
-        
-    else
-        
-        type := TheTypeOfRightCoactionObjects;
-        
-        category := RightCoactionsCategory( coacting_object );
-        
-    fi;
-    
-    ObjectifyWithAttributes( coaction_object, type,
-                             StructureMorphism, structure_morphism,
-                             UnderlyingActingObject, coacting_object,
-                             ActionDomain, Source( structure_morphism ),
-                             UnderlyingCategory, CapCategory( coacting_object )
-                           );
-    
-    Add( category, coaction_object );
-    
-    return coaction_object;
-    
-end );
-
-##
 InstallMethod( LeftCoactionObject,
                [ IsCapCategoryMorphism, IsCapCategoryObject ],
-  
+               
   function( structure_morphism, coacting_object )
     
-    return LeftOrRightCoactionObject( structure_morphism, coacting_object, true );
+    return LeftCoactionObject( structure_morphism, LeftCoactionsCategory( coacting_object ) );
     
 end );
 
 ##
 InstallMethod( RightCoactionObject,
                [ IsCapCategoryMorphism, IsCapCategoryObject ],
-  
+               
   function( structure_morphism, coacting_object )
     
-    return LeftOrRightCoactionObject( structure_morphism, coacting_object, false );
+    return RightCoactionObject( structure_morphism, RightCoactionsCategory( coacting_object ) );
     
 end );

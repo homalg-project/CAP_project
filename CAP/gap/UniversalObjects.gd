@@ -216,7 +216,7 @@ DeclareOperation( "KernelObjectFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are three morphism
+#! The arguments are three morphisms
 #! $\alpha: A \rightarrow B$, $\mu: A \rightarrow A'$, $\alpha': A' \rightarrow B'$.
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
@@ -227,22 +227,36 @@ DeclareOperation( "KernelObjectFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are an object $s = \mathrm{KernelObject}( \alpha )$,
+#! three morphisms
+#! $\alpha: A \rightarrow B$, $\mu: A \rightarrow A'$, $\alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{KernelObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
+#! given by the functorality of the kernel.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$
+#! @Arguments s, alpha, mu, alpha_prime, r
+DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
+                    IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>KernelObjectFunctorial</C>.
-#! $F: (\alpha, \mu, \alpha') \mapsto (\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' ))$.
+#! to the category for the basic operation <C>KernelObjectFunctorialWithGivenKernelObjects</C>.
+#! $F: (\mathrm{KernelObject}( \alpha ), \alpha, \mu, \alpha', \mathrm{KernelObject}( \alpha' )) \mapsto (\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' ))$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddKernelObjectFunctorial",
+DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddKernelObjectFunctorial",
+DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddKernelObjectFunctorial",
+DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddKernelObjectFunctorial",
+DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
@@ -471,22 +485,36 @@ DeclareOperation( "CokernelFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are an object $s = \mathrm{CokernelObject}( \alpha )$,
+#! three morphisms
+#! $\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{CokernelObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
+#! given by the functorality of the cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, alpha, nu, alpha_prime, r
+DeclareOperation( "CokernelFunctorialWithGivenCokernelObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
+                    IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>CokernelFunctorial</C>.
-#! $F: (\alpha, \nu, \alpha') \mapsto (\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' ))$.
+#! to the category for the basic operation <C>CokernelFunctorialWithGivenCokernelObjects</C>.
+#! $F: (\mathrm{CokernelObject}( \alpha ), \alpha, \nu, \alpha', \mathrm{CokernelObject}( \alpha' )) \mapsto (\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' ))$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCokernelFunctorial",
+DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernelFunctorial",
+DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernelFunctorial",
+DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCokernelFunctorial",
+DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
@@ -1672,34 +1700,35 @@ DeclareOperation( "DirectSumFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>DirectSumFunctorial</C>.
-#! $F: (( \mu_1, \dots, \mu_n )) \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectSumFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectSumFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectSumFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectSumFunctorial",
-                  [ IsCapCategory, IsList ] );
+#! The arguments are an object $d_1 = \bigoplus_{i=1}^n S_i$,
+#! a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$,
+#! and an object $d_2 = \bigoplus_{i=1}^n S_i'$.
+#! The output is a morphism
+#! $d_1 \rightarrow d_2$
+#! given by the functorality of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}( d_1, d_2 )$
+#! @Arguments d_1, L, d_2
+DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$
-#! and a method selection morphism.
-#! The output is a morphism
-#! $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$
-#! given by the functorality of the direct sum.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigoplus_{i=1}^n S_i' )$
-#! @Arguments L, method_selection_morphism
-DeclareOperation( "DirectSumFunctorialOp",
-                  [ IsList, IsCapCategoryMorphism ] );
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>DirectSumFunctorialWithGivenDirectSums</C>.
+#! $F: (\bigoplus_{i=1}^n S_i, ( \mu_1, \dots, \mu_n ), \bigoplus_{i=1}^n S_i') \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
+                  [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
 
@@ -1963,37 +1992,35 @@ DeclareOperation( "CoproductFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>CoproductFunctorial</C>.
-#! $F: ( \mu_1, \dots, \mu_n) \rightarrow (\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i')$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoproductFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoproductFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoproductFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoproductFunctorial",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$
-#! and a method selection morphism.
+#! The arguments are an object $s = \bigsqcup_{i=1}^n I_i$, 
+#! a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$,
+#! and an object $r = \bigsqcup_{i=1}^n I_i'$.
 #! The output is a morphism
 #! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
 #! given by the functorality of the coproduct.
-#! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, \bigsqcup_{i=1}^n I_i')$
-#! @Arguments L, method_selection_morphism
-DeclareOperation( "CoproductFunctorialOp",
-                  [ IsList, IsCapCategoryMorphism ] );
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, L, r
+DeclareOperation( "CoproductFunctorialWithGivenCoproducts",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoproductFunctorialWithGivenCoproducts</C>.
+#! $F: (\bigsqcup_{i=1}^n I_i, (\mu_1, \dots, \mu_n), \bigsqcup_{i=1}^n I_i') \rightarrow (\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i')$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
+                  [ IsCapCategory, IsFunction ] );
 
+DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
+                  [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
 
@@ -2220,35 +2247,35 @@ DeclareOperation( "DirectProductFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>DirectProductFunctorial</C>.
-#! $F: ( (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n} ) \mapsto (\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i')$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectProductFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectProductFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectProductFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectProductFunctorial",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
-#! and a morphism for method selection.
+#! The arguments are an object $s = \prod_{i=1}^n P_i$,
+#! a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
+#! and an object $r = \prod_{i=1}^n P_i'$.
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
 #! given by the functorality of the direct product.
-#! @Returns a morphism in $\mathrm{Hom}( P_i, \prod_{i=1}^n P_i' )$
-#! @Arguments L, method_selection_morphism
-DeclareOperation( "DirectProductFunctorialOp",
-                  [ IsList, IsCapCategoryMorphism ] );
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$
+#! @Arguments s, L, r
+DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>DirectProductFunctorialWithGivenDirectProducts</C>.
+#! $F: ( \prod_{i=1}^n P_i, (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}, \prod_{i=1}^n P_i' ) \mapsto (\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i')$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
+                  [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
 
@@ -2674,37 +2701,38 @@ DeclareOperation( "FiberProductFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>FiberProductFunctorial</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} ) \mapsto (\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddFiberProductFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddFiberProductFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddFiberProductFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddFiberProductFunctorial",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a list of triples of morphisms
+#! The arguments are an object $s = \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} )$,
+#! a list of triples of morphisms
 #! $L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$,
-#! and a morphism for method selection.
+#! and an object $r = \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$.
 #! The output is the morphism
-#! $\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$
+#! $s \rightarrow r$
 #! given by the functorality of the fiber product.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ))$
-#! @Arguments L, method_selection_morphism
-DeclareOperation( "FiberProductFunctorialOp",
-                  [ IsList, IsCapCategoryMorphism ] );
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, L, r
+DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>FiberProductFunctorialWithGivenFiberProducts</C>.
+#! $F: ( \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n}, \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) )$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategory, IsList ] );
 
 ## WasCreatedAs Filter
 
@@ -3131,37 +3159,38 @@ DeclareOperation( "PushoutFunctorial",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>PushoutFunctorial</C>.
-#! $F: ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPushoutFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPushoutFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPushoutFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPushoutFunctorial",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The argument is a list
+#! The arguments are an object $s = \mathrm{Pushout}( ( \beta_i )_{i=1}^n )$,
+#! a list
 #! $L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$,
-#! and a morphism for method selection.
+#! and an object $r = \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$.
 #! The output is the morphism
-#! $\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$
+#! $s \rightarrow r$
 #! given by the functorality of the pushout.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n ), \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ))$
-#! @Arguments L, method_selection_morphism
-DeclareOperation( "PushoutFunctorialOp",
-                  [ IsList, IsCapCategoryMorphism ] );
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, L, r
+DeclareOperation( "PushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>PushoutFunctorial</C>.
+#! $F: ( \mathrm{Pushout}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n}, \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) )$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategory, IsList ] );
 
 
 ## WasCreatedAs Filter

@@ -87,6 +87,16 @@ InstallMethod( IsHonest,
 end );
 
 ##
+InstallMethod( ConcatenationProduct,
+               [ IsList ],
+               
+  function( generalized_morphism_list )
+    
+    return ConcatenationProductOp( generalized_morphism_list, generalized_morphism_list[1] );
+    
+end );
+
+##
 InstallImmediateMethod( IsSingleValued,
                         IsGeneralizedMorphism and HasHasFullCodomain,
                         0,
@@ -119,3 +129,15 @@ InstallMethod( IsSingleValued,
 InstallMethod( IsTotal,
                [ IsGeneralizedMorphism ],
                HasFullDomain );
+
+InstallMethod( CombinedImageEmbedding,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    local triple;
+    
+    triple := DomainAssociatedMorphismCodomainTriple( generalized_morphism );
+    
+    return ProjectionInFactorOfFiberProduct( [ ImageEmbedding( triple[ 2 ] ), triple[ 3 ] ], 2 );
+    
+end );

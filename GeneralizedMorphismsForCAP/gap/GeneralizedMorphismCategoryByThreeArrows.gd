@@ -259,4 +259,3 @@ DeclareAttribute( "GeneralizedMorphismCategoryByThreeArrows",
 #! @Arguments a
 DeclareAttributeWithToDoForIsWellDefined( "GeneralizedMorphismByThreeArrowsObject",
                                           IsCapCategoryObject );
-

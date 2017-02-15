@@ -104,3 +104,4 @@ DeclareOperation( "SerreQuotientCategoryBySpansMorphismWithRangeAid",
 DeclareOperation( "AsSerreQuotientCategoryBySpansMorphism",
                   [ IsCapCategory, IsCapCategoryMorphism ] );
 
+

@@ -996,13 +996,13 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "ZeroObject" ], ADD_ZERO_OBJECT_IN_Z_FUNCTORS ],
         
-        [ [ "KernelObject", "KernelObjectFunctorial" ], ADD_KERNEL_OBJECT_IN_Z_FUNCTORS ],
+        [ [ "KernelObject", "KernelObjectFunctorialWithGivenKernelObjects" ], ADD_KERNEL_OBJECT_IN_Z_FUNCTORS ],
         
         [ [ "KernelEmbedding" ], ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS ],
         
         [ [ "KernelLift" ], ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS ],
         
-        [ [ "CokernelObject", "CokernelFunctorial" ], ADD_COKERNEL_IN_Z_FUNCTORS ],
+        [ [ "CokernelObject", "CokernelFunctorialWithGivenCokernelObjects" ], ADD_COKERNEL_IN_Z_FUNCTORS ],
         
         [ [ "CokernelProjection" ], ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS ],
         
@@ -1016,7 +1016,7 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "UniversalMorphismFromInitialObject" ], ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_Z_FUNCTORS ],
         
-        [ [ "DirectProduct", "DirectProductFunctorial" ], ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS ],
+        [ [ "DirectProduct", "DirectProductFunctorialWithGivenDirectProducts" ], ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS ],
         
         [ [ "ProjectionInFactorOfDirectProduct" ],
           ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS ],
@@ -1024,7 +1024,7 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         [ [ "UniversalMorphismIntoDirectProduct" ],
           ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "Coproduct", "CoproductFunctorial" ], ADD_COPRODUCT_IN_Z_FUNCTORS ],
+        [ [ "Coproduct", "CoproductFunctorialWithGivenCoproducts" ], ADD_COPRODUCT_IN_Z_FUNCTORS ],
         
         [ [ "InjectionOfCofactorOfCoproduct" ],
           ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS ],
@@ -1032,9 +1032,9 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         [ [ "UniversalMorphismFromCoproduct" ],
           ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUNCTORS ],
         
-        [ [ "DirectSum", "DirectSumFunctorial" ], ADD_DIRECT_SUM_IN_Z_FUNCTORS ],
+        [ [ "DirectSum", "DirectSumFunctorialWithGivenDirectSums" ], ADD_DIRECT_SUM_IN_Z_FUNCTORS ],
         
-        [ [ "FiberProduct", "FiberProductFunctorial" ], ADD_FIBER_PRODUCT_IN_Z_FUNCTORS ],
+        [ [ "FiberProduct", "FiberProductFunctorialWithGivenFiberProducts" ], ADD_FIBER_PRODUCT_IN_Z_FUNCTORS ],
         
         [ [ "ProjectionInFactorOfFiberProduct" ],
           ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS ],
@@ -1042,7 +1042,7 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         [ [ "UniversalMorphismIntoFiberProduct" ],
           ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCTORS ],
         
-        [ [ "Pushout", "PushoutFunctorial" ], ADD_PUSHOUT_IN_Z_FUNCTORS ],
+        [ [ "Pushout", "PushoutFunctorialWithGivenPushouts" ], ADD_PUSHOUT_IN_Z_FUNCTORS ],
         
         [ [ "InjectionOfCofactorOfPushout" ],
           ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS ],
@@ -1432,3 +1432,44 @@ InstallMethod( AsZFunctorMorphismOp,
     return ZFunctorMorphism( source, morphism_func, range );
     
 end );
+
+## Use with caution, depends on GAPs stategy for closures
+InstallMethod( ZFunctorObjectByInitialMorphismAndRecursiveFunction,
+               [ IsCapCategoryMorphism, IsFunction, IsInt ],
+               
+  function( initial_morphism, recursion_function, position_of_initial_morphism )
+    local z_functor, category, differential_func, object_func;
+    
+    category := CapCategory( initial_morphism );
+    
+    z_functor := ZFunctorObject( ReturnTrue, ReturnTrue, CapCategory( initial_morphism ) );
+    
+    differential_func := function( i )
+        
+        if i = position_of_initial_morphism then
+            return initial_morphism;
+        elif i < position_of_initial_morphism then
+            return recursion_function( Differential( z_functor, i + 1 ) );
+        elif i = position_of_initial_morphism + 1 then
+            return ZeroMorphism( Range( initial_morphism ), ZeroObject( category ) );
+        else
+            return IdentityMorphism( ZeroObject( category ) );
+        fi;
+        
+    end;
+    
+    object_func := function( i )
+        
+        return Source( Differential( z_functor, i ) );
+        
+    end;
+    
+    z_functor!.differential_func := differential_func;
+    z_functor!.object_func := object_func;
+    
+    return z_functor;
+    
+end );
+    
+    
+

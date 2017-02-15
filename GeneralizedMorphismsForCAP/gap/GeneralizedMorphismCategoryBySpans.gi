@@ -126,7 +126,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
           
           reversed_arrow := PreCompose( pullback_left, pullback_diagram[ 1 ] );
           
-          return GeneralizedMorphismBySpan( arrow, reversed_arrow );
+          return GeneralizedMorphismBySpan( reversed_arrow, arrow );
           
       end, [ ] ],
       
@@ -140,7 +140,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
                                     
       [ function( morphism )
            
-         return GeneralizedMorphismBySpan( - Arrow( morphism ), ReversedArrow( morphism ) );
+         return GeneralizedMorphismBySpan( ReversedArrow( morphism ), - Arrow( morphism ) );
          
       end, [ ] ],
       
@@ -505,7 +505,7 @@ InstallMethod( IdempotentDefinedByFactorobjectBySpan,
     
     generalized := AsGeneralizedMorphismBySpan( factorobject );
     
-    return PreCompose( PseudoInverse( factorobject ), factorobject );
+    return PreCompose( generalized, PseudoInverse( generalized ) );
     
 end );
 
@@ -548,17 +548,38 @@ InstallMethodWithCacheFromObject( CommonRestrictionOp,
         
         for j in [ 1 .. i - 1 ] do
             
-            arrow_list[ j ] := PreCompose( arrow_list[ j ], current_pullback_left );
-            reversedarrow_list[ j ] := PreCompose( reversedarrow_list[ j ], current_pullback_left );
+            arrow_list[ j ] := PreCompose( current_pullback_left, arrow_list[ j ] );
+            reversedarrow_list[ j ] := PreCompose( current_pullback_left, reversedarrow_list[ j ] );
             
         od;
         
-        arrow_list[ i ] := PreCompose( arrow_list[ i ], current_pullback_right );
-        reversedarrow_list[ i ] := PreCompose( reversedarrow_list[ i ], current_pullback_right );
+        arrow_list[ i ] := PreCompose( current_pullback_right, arrow_list[ i ] );
+        reversedarrow_list[ i ] := PreCompose( current_pullback_right, reversedarrow_list[ i ] );
         
     od;
     
-    return List( [ 1 .. Length( morphism_list ) ], i -> GeneralizedMorphismByCospan( arrow_list[ i ], reversedarrow_list[ i ] ) );
+    return List( [ 1 .. Length( morphism_list ) ], i -> GeneralizedMorphismBySpan( reversedarrow_list[ i ], arrow_list[ i ] ) );
+    
+end : ArgumentNumber := 2 );
+
+##
+InstallMethod( CombinedImageEmbedding,
+               [ IsGeneralizedMorphismBySpan ],
+               
+  function( morphism )
+    
+    return ImageEmbedding( Arrow( morphism ) );
+    
+end );
+
+##
+InstallMethodWithCacheFromObject( ConcatenationProductOp,
+                                  [ IsList, IsGeneralizedMorphismBySpan ],
+               
+  function( generalized_morphism_list, method_selection_object )
+    
+    return GeneralizedMorphismBySpan( DirectSumFunctorial( List( generalized_morphism_list, ReversedArrow ) ),
+                                      DirectSumFunctorial( List( generalized_morphism_list, Arrow ) ) );
     
 end : ArgumentNumber := 2 );
 
