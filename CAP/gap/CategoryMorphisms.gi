@@ -59,6 +59,7 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,
                  "IsSplitEpimorphism",
                  "IsOne",
                  "IsIdempotent",
+                 "IsZero",
                  # ..
               ] );
 
