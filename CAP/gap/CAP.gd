@@ -104,7 +104,7 @@ DeclareCategory( "IsCapCategoryObject",
 #! this GAP category.
 #! @Arguments object
 DeclareCategory( "IsCapCategoryMorphism",
-                 IsCapCategoryCell and IsAdditiveElementWithInverse );
+                 IsCapCategoryCell  );
 
 #! @Description
 #! The GAP category of CAP category $2$-cells.
