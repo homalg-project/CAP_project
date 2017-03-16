@@ -141,3 +141,29 @@ InstallMethod( CombinedImageEmbedding,
     return ProjectionInFactorOfFiberProduct( [ ImageEmbedding( triple[ 2 ] ), triple[ 3 ] ], 2 );
     
 end );
+
+##
+InstallValue( PROPAGATION_LIST_FOR_GENERALIZED_MORPHISMS,
+        [
+         "IsMonomorphism",
+         "IsEpimorphism",
+         "IsIsomorphism",
+         #"IsSplitMonomorphism", propagating this would be wrong
+         #"IsSplitEpimorphism",  propagating this would be wrong
+         "IsZero",
+         # ..
+         ]
+        );
+
+##
+InstallGlobalFunction( INSTALL_TODO_LIST_FOR_GENERALIZED_MORPHISMS,
+  function( mor, hull )
+    local i;
+    
+    for i in PROPAGATION_LIST_FOR_GENERALIZED_MORPHISMS do
+        
+        AddToToDoList( ToDoListEntryForEqualAttributes( mor, i, hull, i ) );
+        
+    od;
+    
+end );
