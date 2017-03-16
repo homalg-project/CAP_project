@@ -42,8 +42,13 @@ InstallMethod( AssociatedMorphism,
                [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
+    local associated_morphism;
     
-    return DomainAssociatedMorphismCodomainTriple( generalized_morphism )[2];
+    associated_morphism := DomainAssociatedMorphismCodomainTriple( generalized_morphism )[2];
+    
+    INSTALL_TODO_LIST_FOR_GENERALIZED_MORPHISMS( associated_morphism, generalized_morphism );
+    
+    return associated_morphism;
     
 end );
 
