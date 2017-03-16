@@ -68,6 +68,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
         
         subobject2 := UniversalMorphismIntoDirectSum( pullback_diagram2 );
         
+        ## TODO: added more logic to make the following line obsolete
+        Assert( 4, IsMonomorphism( subobject1 ) );
+        SetIsMonomorphism( subobject1, true );
+        
+        Assert( 4, IsMonomorphism( subobject2 ) );
+        SetIsMonomorphism( subobject2, true );
+        
         return IsEqualAsSubobjects( subobject1, subobject2 );
         
     end );
