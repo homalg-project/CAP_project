@@ -217,4 +217,54 @@ DeclareAttribute( "GeneralizedMorphismCategoryByCospans",
 DeclareAttribute( "GeneralizedMorphismByCospansObject",
                   IsCapCategoryObject );
 
+####################################
+##
+#! @Section Constructors of lifts of exact functors and natrual (iso)morphisms
+##
+####################################
 
+#! @Description
+#!  AsGeneralizedMorphismByCospan a functor ...
+#! @Arguments F, name, A, B
+DeclareOperation( "AsGeneralizedMorphismByCospan",
+        [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ] );
+
+
+#! @Description
+#!  AsGeneralizedMorphismByCospan a functor ...
+#! @Arguments F, A, B
+#! @Group AsGeneralizedMorphismByCospan
+DeclareOperation( "AsGeneralizedMorphismByCospan",
+        [ IsCapFunctor, IsCapCategory, IsCapCategory ] );
+
+
+#! @Description
+#!  AsGeneralizedMorphismByCospan an endofunctor ...
+#! @Arguments F, name, A
+#! @Group AsGeneralizedMorphismByCospan
+DeclareOperation( "AsGeneralizedMorphismByCospan",
+        [ IsCapFunctor, IsString, IsCapCategory ] );
+
+
+#! @Description
+#!  AsGeneralizedMorphismByCospan an endofunctor ...
+#! @Arguments F, A
+#! @Group AsGeneralizedMorphismByCospan
+DeclareOperation( "AsGeneralizedMorphismByCospan",
+        [ IsCapFunctor, IsCapCategory ] );
+
+
+#! @Description
+#!  AsGeneralizedMorphismByCospan a natural transformation
+#! @Arguments eta, name, A, B
+#! @Group AsGeneralizedMorphismByCospan
+DeclareOperation( "AsGeneralizedMorphismByCospan",
+        [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ] );
+
+
+#! @Description
+#!  AsGeneralizedMorphismByCospan a natural transformation
+#! @Arguments eta, A, B
+#! @Group AsGeneralizedMorphismByCospan
+DeclareOperation( "AsGeneralizedMorphismByCospan",
+        [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ] );

@@ -376,6 +376,130 @@ InstallMethod( AsGeneralizedMorphismByCospan,
     
 end );
 
+####################################
+##
+## Constructors of lifts of exact functors
+##
+####################################
+
+##
+InstallMethod( AsGeneralizedMorphismByCospan,
+        [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ],
+
+  function( F, name, A, B )
+    local gmcF;
+    
+    if not IsIdenticalObj( AsCapCategory( Source( F ) ), UnderlyingHonestCategory( A ) ) then
+        Error( "the source of the functor and the category underlying the source category with ambient object do not coincide\n" );
+    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), UnderlyingHonestCategory( B ) ) then
+        Error( "the target of the functor and the category underlying the target category with ambient object do not coincide\n" );
+    fi;
+    
+    gmcF := CapFunctor( name, A, B );
+    
+    AddObjectFunction( gmcF,
+            function( obj )
+              return GeneralizedMorphismByCospansObject( ApplyFunctor( F, UnderlyingHonestObject( obj ) ) );
+            end );
+    
+    AddMorphismFunction( gmcF,
+            function( new_source, mor, new_range )
+              return GeneralizedMorphismByCospan( ApplyFunctor( F, Arrow( mor ) ), ApplyFunctor( F, ReversedArrow( mor ) ) );
+            end );
+    
+    gmcF!.UnderlyingFunctor := F;
+    
+    return gmcF;
+    
+end );
+
+##
+InstallMethod( AsGeneralizedMorphismByCospan,
+        [ IsCapFunctor, IsCapCategory, IsCapCategory ],
+
+  function( F, A, B )
+    local name;
+
+    name := "GeneralizedMorphismByCospan version of ";
+    name := Concatenation( name, Name( F ) );
+    
+    return AsGeneralizedMorphismByCospan( F, name, A, B );
+    
+end );
+
+##
+InstallMethod( AsGeneralizedMorphismByCospan,
+        [ IsCapFunctor, IsString, IsCapCategory ],
+
+  function( F, name, A )
+
+    if not IsIdenticalObj( Source( F ), Range( F ) ) then
+        Error( "the functor is not an endofunctor\n" );
+    fi;
+
+    return AsGeneralizedMorphismByCospan( F, name, A, A );
+
+end );
+
+##
+InstallMethod( AsGeneralizedMorphismByCospan,
+        [ IsCapFunctor, IsCapCategory ],
+
+  function( F, A )
+    local name;
+
+    name := "GeneralizedMorphismByCospan version of ";
+    name := Concatenation( name, Name( F ) );
+
+    return AsGeneralizedMorphismByCospan( F, name, A );
+
+end );
+
+##
+InstallMethod( AsGeneralizedMorphismByCospan,
+        [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ],
+
+  function( eta, name, F, G )
+    local gmceta;
+
+    if not IsIdenticalObj( Source( eta ), F!.UnderlyingFunctor ) then
+        Error( "the source of the natural transformation and the functor underlying the lifted source functor do not coincide\n" );
+    elif not IsIdenticalObj( Range( eta ), G!.UnderlyingFunctor ) then
+        Error( "the target of the natural transformation and the functor underlying the lifted target functor do not coincide\n" );
+    fi;
+
+    gmceta := NaturalTransformation( name, F, G );
+
+    AddNaturalTransformationFunction(
+            gmceta,
+            function( source, obj, range )
+
+              return AsGeneralizedMorphismByCospan( AsCapCategory( Range( F ) ), ApplyNaturalTransformation( eta, UnderlyingHonestObject( obj ) ) );
+
+            end );
+
+    gmceta!.UnderlyingNaturalTransformation := eta;
+
+    INSTALL_TODO_LIST_FOR_GENERALIZED_MORPHISMS( eta, gmceta );
+
+    return gmceta;
+
+end );
+
+##
+InstallMethod( AsGeneralizedMorphismByCospan,
+        [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ],
+
+  function( eta, F, G )
+    local name;
+
+    name := "GeneralizedMorphismByCospan version of ";
+    name := Concatenation( name, Name( eta ) );
+
+    return AsGeneralizedMorphismByCospan( eta, name, F, G );
+
+end );
+
 #################################
 ##
 ## Additional methods
