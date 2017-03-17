@@ -15,7 +15,7 @@
 
 BindGlobal( "INSTALL_FUNCTOR_STANDARD_MODULE_METHODS",
             
-  function( functor_standard_module, presentations, basis_of_module, as_presentation )
+  function( functor_standard_module, presentations, basis_of_module, decide_zero, as_presentation )
     
     InstallMethod( functor_standard_module,
                    [ IsHomalgRing ],
@@ -45,6 +45,8 @@ BindGlobal( "INSTALL_FUNCTOR_STANDARD_MODULE_METHODS",
             
             matrix := UnderlyingMatrix( morphism );
             
+            matrix := decide_zero( matrix, UnderlyingMatrix( new_range ) );
+            
             return PresentationMorphism( new_source, matrix, new_range );
             
         end );
@@ -59,9 +61,9 @@ BindGlobal( "INSTALL_FUNCTOR_STANDARD_MODULE",
             
   function( )
     
-    INSTALL_FUNCTOR_STANDARD_MODULE_METHODS( FunctorStandardModuleLeft,  LeftPresentations,  BasisOfRowModule,    AsLeftPresentation  );
+    INSTALL_FUNCTOR_STANDARD_MODULE_METHODS( FunctorStandardModuleLeft,  LeftPresentations,  BasisOfRowModule,    DecideZeroRows,    AsLeftPresentation  );
     
-    INSTALL_FUNCTOR_STANDARD_MODULE_METHODS( FunctorStandardModuleRight, RightPresentations, BasisOfColumnModule, AsRightPresentation );
+    INSTALL_FUNCTOR_STANDARD_MODULE_METHODS( FunctorStandardModuleRight, RightPresentations, BasisOfColumnModule, DecideZeroColumns, AsRightPresentation );
     
 end );
 
