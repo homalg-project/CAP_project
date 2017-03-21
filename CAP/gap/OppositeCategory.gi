@@ -318,7 +318,7 @@ end );
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM,
                        
   function( morphism )
-    local entry_list, entry;
+    local entry;
     
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ morphism, "Opposite" ] ],
                                                          [ morphism, [ Opposite, morphism ] ],
