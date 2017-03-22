@@ -18,7 +18,7 @@ Display( iota1 );
 #! y,
 #! z 
 #! 
-#! A mono morphism in Category of left presentations of Q[x,y,z]
+#! A monomorphism in Category of left presentations of Q[x,y,z]
 Display( Source( iota1 ) );
 #! 0, -z,y,
 #! -y,x, 0,
@@ -39,7 +39,7 @@ Display( iota2 );
 #! -y,x, 0,
 #! -z,0, x 
 #! 
-#! A mono morphism in Category of left presentations of Q[x,y,z]
+#! A monomorphism in Category of left presentations of Q[x,y,z]
 Display( Source( iota2 ) );;
 #! x,z,-y
 #! 
@@ -56,7 +56,7 @@ iota3 := KernelEmbedding( d2 );;
 Display( iota3 );
 #! x,z,-y
 #! 
-#! A mono morphism in Category of left presentations of Q[x,y,z]
+#! A monomorphism in Category of left presentations of Q[x,y,z]
 Display( Source( iota3 ) );
 #! (an empty 0 x 1 matrix)
 #! 
