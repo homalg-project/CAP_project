@@ -20,7 +20,7 @@ InstallMethod( LeftPresentations,
     
     SetIsAbelianCategory( category, true );
     
-    if IsCommutative( ring ) then
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
@@ -71,7 +71,7 @@ InstallMethod( RightPresentations,
     
     SetIsAbelianCategory( category, true );
     
-    if IsCommutative( ring ) then
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
