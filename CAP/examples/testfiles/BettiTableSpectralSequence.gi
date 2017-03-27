@@ -29,14 +29,14 @@ C0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, ca
 #C_1
 S2 := FreeLeftPresentation( 2, R );
 
-C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S2, S ), 1 ) ], 2 );
+C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );
 
 C1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );
 
 # C1 := AsAscendingFilteredObject( C1 );
 
 
-C2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S, S ), 1 ) ], 3 );
+C2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S, S ], 1 ) ], 3 );
 
 C2 := ZFunctorObjectExtendedByInitialAndIdentity( C2, 3, 4 );
 

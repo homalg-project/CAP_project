@@ -40,10 +40,6 @@ DeclareAttribute( "CapCategory",
 
 DeclareGlobalFunction( "CAP_INTERNAL_CREATE_OBJECT_PRINT" );
 
-DeclareAttribute( "Genesis",
-                  IsCapCategoryCell, 
-                  "mutable" );
-
 DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS" );
 
 DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_OBJECTS" );

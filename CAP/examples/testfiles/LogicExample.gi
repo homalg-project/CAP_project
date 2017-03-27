@@ -26,7 +26,7 @@ k := alpha;
 
 P := DirectProduct( A, A );
 
-pi := ProjectionInFactor( P, 1 );
+pi := ProjectionInFactorOfDirectProduct( [ A, A ], 1 );
 
 F := FiberProduct( k, pi );
 

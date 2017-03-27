@@ -237,8 +237,6 @@ UniversalMorphismFromZeroObject := rec(
     
     SetZeroObject( category, zero_object );
     
-    SetFilterObj( zero_object, WasCreatedAsZeroObject );
-    
   end ),
   
 UniversalMorphismFromZeroObjectWithGivenZeroObject := rec(
@@ -267,8 +265,6 @@ UniversalMorphismIntoZeroObject := rec(
     zero_object := Range( universal_morphism );
     
     SetZeroObject( category, zero_object );
-    
-    SetFilterObj( zero_object, WasCreatedAsTerminalObject );
     
   end ),
 
@@ -560,8 +556,6 @@ UniversalMorphismIntoTerminalObject := rec(
     
     SetTerminalObject( category, terminal_object );
     
-    SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
-    
   end ),
 
 UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
@@ -599,8 +593,6 @@ UniversalMorphismFromInitialObject := rec(
     initial_object := Source( universal_morphism );
     
     SetInitialObject( category, initial_object );
-    
-    SetFilterObj( initial_object, WasCreatedAsInitialObject );
     
   end ),
 

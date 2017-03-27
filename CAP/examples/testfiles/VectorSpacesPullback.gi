@@ -30,11 +30,11 @@ BtoC := VectorSpaceMorphism( B, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], C );
 #! 
 P := FiberProduct( AtoC, BtoC );
 #! <A rational vector space of dimension 1>
-p1 := ProjectionInFactor( P, 1 );
+p1 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 1 );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1/2 ] ]
 #! 
-p2 := ProjectionInFactor( P, 2 );
+p2 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 2 );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1/2,    1 ] ]
 #! 
