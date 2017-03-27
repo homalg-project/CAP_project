@@ -228,24 +228,6 @@ UniversalMorphismFromZeroObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoZeroObject",
   
-  ## this redirect and this post function have to be given manually, because
-  ## they call the setter and getter functions of CapCategory( diagram ), and 
-  ## not of diagram.
-  redirect_function := function( test_sink )
-    local category;
-    
-    category := CapCategory( test_sink );
-    
-    if HasZeroObject( category ) then
-      
-      return [ true, UniversalMorphismFromZeroObjectWithGivenZeroObject( test_sink, ZeroObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-  end,
-  
   post_function := function( test_sink, universal_morphism )
     local category, zero_object;
     
@@ -277,24 +259,6 @@ UniversalMorphismIntoZeroObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromZeroObject",
   
-  ## this redirect and this post function have to be given manually, because
-  ## they call the setter and getter functions of CapCategory( diagram ), and 
-  ## not of diagram.
-  redirect_function := function( test_source )
-    local category;
-    
-    category := CapCategory( test_source );
-        
-    if HasZeroObject( category ) then
-    
-      return [ true, UniversalMorphismIntoZeroObjectWithGivenZeroObject( test_source, ZeroObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-  end,
-
   post_function := function( test_source, universal_morphism )
     local category, zero_object;
     
@@ -587,24 +551,6 @@ UniversalMorphismIntoTerminalObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromInitialObject",
   
-  ## this redirect and this post function have to be given manually, because
-  ## they call the setter and getter functions of CapCategory( diagram ), and 
-  ## not of diagram.
-  redirect_function := function( test_source )
-    local category;
-    
-    category := CapCategory( test_source );
-        
-    if HasTerminalObject( category ) then
-    
-      return [ true, UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-  end,
-
   post_function := function( test_source, universal_morphism )
     local category, terminal_object;
     
@@ -644,24 +590,6 @@ UniversalMorphismFromInitialObject := rec(
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoTerminalObject",
-  
-  ## this redirect and this post function have to be given manually, because
-  ## they call the setter and getter functions of CapCategory( diagram ), and 
-  ## not of diagram.
-  redirect_function := function( test_sink )
-    local category;
-    
-    category := CapCategory( test_sink );
-    
-    if HasInitialObject( category ) then
-      
-      return [ true, UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-  end,
   
   post_function := function( test_sink, universal_morphism )
     local category, initial_object;
