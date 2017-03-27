@@ -452,7 +452,7 @@ InstallMethodWithCache( DirectProductFunctor,
       function( new_source, morphism_list, new_range )
         local source, new_source_list;
         
-        new_source_list := List( Source, morphism_list );
+        new_source_list := List( morphism_list, Source );
         
         source := List( [ 1 .. number_of_arguments ], i -> 
                         PreCompose( ProjectionInFactorOfDirectProduct( new_source_list, i ), morphism_list[i] ) );
@@ -491,7 +491,7 @@ InstallMethodWithCache( CoproductFunctor,
       function( new_source, morphism_list, new_range )
         local sink, new_range_list;
         
-        new_range_list := List( Range, morphism_list );
+        new_range_list := List( morphism_list, Range );
         
         sink := List( [ 1 .. number_of_arguments ], i -> 
                       PreCompose( morphism_list[i], InjectionOfCofactorOfCoproduct( new_range_list, i ) ) );
