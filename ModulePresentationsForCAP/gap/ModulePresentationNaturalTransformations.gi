@@ -114,6 +114,7 @@ INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_LESS_GENERATORS_METHOD( NaturalI
                                                                         RightPresentations,
                                                                         FunctorLessGeneratorsRight,
                                                                         LessGeneratorsTransformationTripleRight );
+
 ########################################################
 ##
 ## Identity to double dual left Hom_R( _ , R ) functor
