@@ -1841,7 +1841,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
     fi;
     
-    end );
+    end, 1000 );
   
   fi;
  
@@ -2025,7 +2025,7 @@ end );
        
     fi;
     
-    end );
+    end, 1000 );
   
 fi;
 
