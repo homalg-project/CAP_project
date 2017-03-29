@@ -17,7 +17,7 @@
 
 #! @Description
 #! The argument is a homalg ring $R$.
-#! The output is the natural morphism from the identity functor
+#! The output is the natural isomorphism from the identity functor
 #! to the left standard module functor.
 #! @Returns a natural transformation $\mathrm{Id} \rightarrow \mathrm{StandardModuleLeft}$
 #! @Arguments R
@@ -26,7 +26,7 @@ DeclareAttribute( "NaturalIsomorphismFromIdentityToStandardModuleLeft",
 
 #! @Description
 #! The argument is a homalg ring $R$.
-#! The output is the natural morphism from the identity functor
+#! The output is the natural isomorphism from the identity functor
 #! to the right standard module functor.
 #! @Returns a natural transformation $\mathrm{Id} \rightarrow \mathrm{StandardModuleRight}$
 #! @Arguments R
