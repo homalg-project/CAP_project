@@ -71,6 +71,99 @@ INSTALL_FUNCTOR_STANDARD_MODULE( );
 
 #######################################
 ##
+## FunctorGetRidOfZeroGenerators
+##
+#######################################
+
+BindGlobal( "INSTALL_FUNCTOR_GET_RID_OF_ZERO_GENERATORS_METHODS",
+            
+  function( functor_get_rid_of_zero_generators, presentations, get_rid_of_zero_generators_transformation_triple, as_presentation, parity )
+    
+    InstallMethod( functor_get_rid_of_zero_generators,
+                   [ IsHomalgRing ],
+                   
+      function( ring )
+        local category, functor;
+        
+        category := presentations( ring );
+        
+        functor := CapFunctor( Concatenation( "Get rid of zero generators for ", Name( category ) ), category, category );
+        
+        AddObjectFunction( functor,
+                           
+          function( object )
+            local matrix, triple;
+            
+            matrix := UnderlyingMatrix( object );
+            
+            matrix := get_rid_of_zero_generators_transformation_triple( matrix );
+            
+            return as_presentation( matrix[1] );
+            
+        end );
+        
+        if parity = "left" then
+            
+            AddMorphismFunction( functor,
+                    
+              function( new_source, morphism, new_range )
+                local source_transformation_triple, range_transformation_triple, new_morphism_matrix;
+                
+                source_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Source( morphism ) ) );
+                
+                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Range( morphism ) ) );
+                
+                new_morphism_matrix := UnderlyingMatrix( morphism );
+                
+                new_morphism_matrix := source_transformation_triple[ 3 ] * new_morphism_matrix * range_transformation_triple[ 2 ];
+                
+                return PresentationMorphism( new_source, new_morphism_matrix, new_range );
+                
+            end );
+            
+        else
+              
+            AddMorphismFunction( functor,
+                    
+              function( new_source, morphism, new_range )
+                local source_transformation_triple, range_transformation_triple, new_morphism_matrix;
+                
+                source_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Source( morphism ) ) );
+                
+                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Range( morphism ) ) );
+                
+                new_morphism_matrix := UnderlyingMatrix( morphism );
+                
+                new_morphism_matrix := range_transformation_triple[ 2 ] * new_morphism_matrix * source_transformation_triple[ 3 ];
+                
+                return PresentationMorphism( new_source, new_morphism_matrix, new_range );
+                
+            end );
+            
+        fi;
+        
+        return functor;
+        
+    end );
+    
+end );
+
+BindGlobal( "INSTALL_FUNCTOR_GET_RID_OF_ZERO_GENERATORS",
+            
+  function( )
+    
+    INSTALL_FUNCTOR_GET_RID_OF_ZERO_GENERATORS_METHODS(
+            FunctorGetRidOfZeroGeneratorsLeft,  LeftPresentations,  NonZeroGeneratorsTransformationTripleLeft,  AsLeftPresentation,  "left" );
+    
+    INSTALL_FUNCTOR_GET_RID_OF_ZERO_GENERATORS_METHODS(
+            FunctorGetRidOfZeroGeneratorsRight, RightPresentations, NonZeroGeneratorsTransformationTripleRight, AsRightPresentation, "right" );
+    
+end );
+
+INSTALL_FUNCTOR_GET_RID_OF_ZERO_GENERATORS( );
+
+#######################################
+##
 ## FunctorLessGenerators
 ##
 #######################################

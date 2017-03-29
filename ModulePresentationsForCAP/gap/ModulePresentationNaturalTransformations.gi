@@ -64,6 +64,57 @@ INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_STANDARD_MODULE_METHOD( NaturalI
                                                                         FunctorStandardModuleRight,
                                                                         NrRows );
 
+BindGlobal( "INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_GET_RID_OF_GENERATORS_METHOD",
+            
+  function( natural_transformation_from_identity_to_get_rid_of_zero_generators_method, presentations, get_rid_of_zero_generators, triple_getter  )
+    
+    InstallMethod( natural_transformation_from_identity_to_get_rid_of_zero_generators_method,
+                   [ IsHomalgRing ],
+                   
+      function( ring )
+        local get_rid_of_zero_generators_functor, category, natural_transformation;
+        
+        category := presentations( ring );
+        
+        get_rid_of_zero_generators_functor := get_rid_of_zero_generators( ring );
+        
+        natural_transformation := NaturalTransformation( Concatenation( "Natural isomorphism from Id to ", Name( get_rid_of_zero_generators_functor ) ),
+                                                         IdentityMorphism( AsCatObject( category ) ), get_rid_of_zero_generators_functor );
+        
+        AddNaturalTransformationFunction( natural_transformation,
+                                          
+          function( id_object, object, smaller_object )
+            local ZG, natiso;
+            
+            ZG := triple_getter( UnderlyingMatrix( object ) );
+            
+            natiso := PresentationMorphism( id_object, ZG[2], smaller_object );
+            
+            Assert( 4, IsIsomorphism( natiso ) );
+            SetIsIsomorphism( natiso, true );
+            
+            return natiso;
+            
+        end );
+        
+        SetIsIsomorphism( natural_transformation, true );
+        
+        return natural_transformation;
+        
+    end );
+    
+end );
+
+INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_GET_RID_OF_GENERATORS_METHOD( NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft,
+                                                                        LeftPresentations,
+                                                                        FunctorGetRidOfZeroGeneratorsLeft,
+                                                                        NonZeroGeneratorsTransformationTripleLeft );
+
+INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_GET_RID_OF_GENERATORS_METHOD( NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight,
+                                                                        RightPresentations,
+                                                                        FunctorGetRidOfZeroGeneratorsRight,
+                                                                        NonZeroGeneratorsTransformationTripleRight );
+
 BindGlobal( "INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_LESS_GENERATORS_METHOD",
             
   function( natural_transformation_from_identity_to_less_generators_method, presentations, less_generators, triple_getter  )

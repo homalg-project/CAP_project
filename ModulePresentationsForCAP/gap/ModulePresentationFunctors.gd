@@ -38,6 +38,26 @@ DeclareAttribute( "FunctorStandardModuleRight",
 #! @Description
 #! The argument is a homalg ring $R$.
 #! The output is functor which takes
+#! a left presentation as input and gets
+#! rid of the zero generators.
+#! @Returns a functor
+#! @Arguments R
+DeclareAttribute( "FunctorGetRidOfZeroGeneratorsLeft",
+                  IsHomalgRing );
+
+#! @Description
+#! The argument is a homalg ring $R$.
+#! The output is functor which takes
+#! a right presentation as input and gets
+#! rid of the zero generators.
+#! @Returns a functor
+#! @Arguments R
+DeclareAttribute( "FunctorGetRidOfZeroGeneratorsRight",
+                  IsHomalgRing );
+
+#! @Description
+#! The argument is a homalg ring $R$.
+#! The output is functor which takes
 #! a left presentation as input and computes
 #! it a presentation having less generators.
 #! @Returns a functor

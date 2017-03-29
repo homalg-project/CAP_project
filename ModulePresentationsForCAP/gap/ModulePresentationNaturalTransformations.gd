@@ -35,6 +35,24 @@ DeclareAttribute( "NaturalIsomorphismFromIdentityToStandardModuleRight",
 
 #! @Description
 #! The argument is a homalg ring $R$.
+#! The output is the natural isomorphism from the identity functor
+#! to the functor that gets rid of zero generators of left modules.
+#! @Returns a natural transformation $\mathrm{Id} \rightarrow \mathrm{GetRidOfZeroGeneratorsLeft}$
+#! @Arguments R
+DeclareAttribute( "NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft",
+                  IsHomalgRing );
+
+#! @Description
+#! The argument is a homalg ring $R$.
+#! The output is the natural isomorphism from the identity functor
+#! to the functor that gets rid of zero generators of right modules.
+#! @Returns a natural transformation $\mathrm{Id} \rightarrow \mathrm{GetRidOfZeroGeneratorsRight}$
+#! @Arguments R
+DeclareAttribute( "NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight",
+                  IsHomalgRing );
+
+#! @Description
+#! The argument is a homalg ring $R$.
 #! The output is the natural morphism from the identity functor
 #! to the left less generators functor.
 #! @Returns a natural transformation $\mathrm{Id} \rightarrow \mathrm{LessGeneratorsLeft}$

@@ -7,6 +7,12 @@
 ##
 #############################################################################
 
+DeclareAttribute( "NonZeroGeneratorsTransformationTripleLeft",
+                  IsHomalgMatrix );
+
+DeclareAttribute( "NonZeroGeneratorsTransformationTripleRight",
+                  IsHomalgMatrix );
+
 DeclareAttribute( "LessGeneratorsTransformationTripleLeft",
                   IsHomalgMatrix );
 
