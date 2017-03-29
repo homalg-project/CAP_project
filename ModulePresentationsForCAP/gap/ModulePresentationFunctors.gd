@@ -76,7 +76,7 @@ DeclareAttribute( "FunctorLessGeneratorsRight",
                   IsHomalgRing );
 
 #! @Description
-#! The argument is a homalg ring $R$ that has an involutin function.
+#! The argument is a homalg ring $R$ that has an involution function.
 #! The output is functor which takes
 #! a left presentation <A>M</A> as input and computes
 #! its Hom(M, R) as a left presentation.
@@ -86,7 +86,7 @@ DeclareAttribute( "FunctorDualForLeftPresentations",
                   IsHomalgRing );
 
 #! @Description
-#! The argument is a homalg ring $R$ that has an involutin function.
+#! The argument is a homalg ring $R$ that has an involution function.
 #! The output is functor which takes
 #! a left presentation <A>M</A> as input and computes
 #! its <A>Hom( Hom(M, R), R )</A> as a left presentation.
