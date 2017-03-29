@@ -31,14 +31,14 @@ tau := VectorSpaceMorphism( T, [ [ 2, 2 ], [ 2, 2 ] ], V );
 #! [ [  2,  2 ],
 #!   [  2,  2 ] ]
 #! 
-k_lift := KernelLift( k, tau );
+k_lift := KernelLift( alpha, tau );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  2 ],
 #!   [  2 ] ]
 #! 
-HasKernelEmbedding( k );
+HasKernelEmbedding( alpha );
 #! false
-KernelEmbedding( k );
+KernelEmbedding( alpha );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1,  1 ] ]
 #! 
@@ -67,12 +67,12 @@ tau := VectorSpaceMorphism( T, [ [ 2, 2 ], [ 2, 2 ] ], V );
 #! [ [  2,  2 ],
 #!   [  2,  2 ] ]
 #! 
-k_lift := KernelLift( k, tau );
+k_lift := KernelLift( alpha, tau );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  2 ],
 #!   [  2 ] ]
 #! 
-HasKernelEmbedding( k );
+HasKernelEmbedding( alpha );
 #! false
 #! @EndExample
 
@@ -92,7 +92,7 @@ alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 #! 
 k := KernelObject( alpha );
 #! <A rational vector space of dimension 1>
-k_emb := KernelEmbedding( k );
+k_emb := KernelEmbedding( alpha );
 #! A rational vector space homomorphism with matrix: 
 #! [ [  1,  1 ] ]
 #! 

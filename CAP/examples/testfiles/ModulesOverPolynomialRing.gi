@@ -38,7 +38,7 @@ kernelemb2 := KernelEmbedding( eps2 );
 
 P := FiberProduct( kernelemb1, kernelemb2 );
 
-pi1 := ProjectionInFactor( P, 1 );
+pi1 := ProjectionInFactorOfFiberProduct( [ kernelemb1, kernelemb2 ], 1 );
 
 composite := PreCompose( pi1, kernelemb1 );
 

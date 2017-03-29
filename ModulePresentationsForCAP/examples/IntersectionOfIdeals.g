@@ -35,7 +35,7 @@ Display( P );
 #! (an empty 0 x 1 matrix)
 #! 
 #! An object in Category of left presentations of Q[x,y]
-pi1 := ProjectionInFactor( P, 1 );
+pi1 := ProjectionInFactorOfFiberProduct( [ kernelemb1, kernelemb2 ], 1 );
 #! <A monomorphism in Category of left presentations of Q[x,y]>
 composite := PreCompose( pi1, kernelemb1 );
 #! <A monomorphism in Category of left presentations of Q[x,y]>

@@ -228,24 +228,6 @@ UniversalMorphismFromZeroObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoZeroObject",
   
-  ## this redirect and this post function have to be given manually, because
-  ## they call the setter and getter functions of CapCategory( diagram ), and 
-  ## not of diagram.
-  redirect_function := function( test_sink )
-    local category;
-    
-    category := CapCategory( test_sink );
-    
-    if HasZeroObject( category ) then
-      
-      return [ true, UniversalMorphismFromZeroObjectWithGivenZeroObject( test_sink, ZeroObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-  end,
-  
   post_function := function( test_sink, universal_morphism )
     local category, zero_object;
     
@@ -254,8 +236,6 @@ UniversalMorphismFromZeroObject := rec(
     zero_object := Source( universal_morphism );
     
     SetZeroObject( category, zero_object );
-    
-    SetFilterObj( zero_object, WasCreatedAsZeroObject );
     
   end ),
   
@@ -277,24 +257,6 @@ UniversalMorphismIntoZeroObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromZeroObject",
   
-  ## this redirect and this post function have to be given manually, because
-  ## they call the setter and getter functions of CapCategory( diagram ), and 
-  ## not of diagram.
-  redirect_function := function( test_source )
-    local category;
-    
-    category := CapCategory( test_source );
-        
-    if HasZeroObject( category ) then
-    
-      return [ true, UniversalMorphismIntoZeroObjectWithGivenZeroObject( test_source, ZeroObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-  end,
-
   post_function := function( test_source, universal_morphism )
     local category, zero_object;
     
@@ -303,8 +265,6 @@ UniversalMorphismIntoZeroObject := rec(
     zero_object := Range( universal_morphism );
     
     SetZeroObject( category, zero_object );
-    
-    SetFilterObj( zero_object, WasCreatedAsTerminalObject );
     
   end ),
 
@@ -587,24 +547,6 @@ UniversalMorphismIntoTerminalObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromInitialObject",
   
-  ## this redirect and this post function have to be given manually, because
-  ## they call the setter and getter functions of CapCategory( diagram ), and 
-  ## not of diagram.
-  redirect_function := function( test_source )
-    local category;
-    
-    category := CapCategory( test_source );
-        
-    if HasTerminalObject( category ) then
-    
-      return [ true, UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( test_source, TerminalObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-  end,
-
   post_function := function( test_source, universal_morphism )
     local category, terminal_object;
     
@@ -613,8 +555,6 @@ UniversalMorphismIntoTerminalObject := rec(
     terminal_object := Range( universal_morphism );
     
     SetTerminalObject( category, terminal_object );
-    
-    SetFilterObj( terminal_object, WasCreatedAsTerminalObject );
     
   end ),
 
@@ -645,24 +585,6 @@ UniversalMorphismFromInitialObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoTerminalObject",
   
-  ## this redirect and this post function have to be given manually, because
-  ## they call the setter and getter functions of CapCategory( diagram ), and 
-  ## not of diagram.
-  redirect_function := function( test_sink )
-    local category;
-    
-    category := CapCategory( test_sink );
-    
-    if HasInitialObject( category ) then
-      
-      return [ true, UniversalMorphismFromInitialObjectWithGivenInitialObject( test_sink, InitialObject( category ) ) ];
-      
-    fi;
-    
-    return [ false ];
-    
-  end,
-  
   post_function := function( test_sink, universal_morphism )
     local category, initial_object;
     
@@ -671,8 +593,6 @@ UniversalMorphismFromInitialObject := rec(
     initial_object := Source( universal_morphism );
     
     SetInitialObject( category, initial_object );
-    
-    SetFilterObj( initial_object, WasCreatedAsInitialObject );
     
   end ),
 

@@ -131,11 +131,11 @@ C0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, in
 #! <An object in Functors from integers into Category of left presentations of Q[x,y]>
 S2 := Object_Constructor( FreeLeftPresentation( 2, R ), [ "a string for indirection" ] );
 #! <An object in Category of left presentations of Q[x,y]>
-C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S2, S ), 1 ) ], 2 );
+C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );
 #! <An object in Functors from integers into Category of left presentations of Q[x,y]>
 C1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );
 #! <An object in Functors from integers into Category of left presentations of Q[x,y]>
-C2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S, S ), 1 ) ], 3 );
+C2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S, S ], 1 ) ], 3 );
 #! <An object in Functors from integers into Category of left presentations of Q[x,y]>
 C2 := ZFunctorObjectExtendedByInitialAndIdentity( C2, 3, 4 );
 #! <An object in Functors from integers into Category of left presentations of Q[x,y]>

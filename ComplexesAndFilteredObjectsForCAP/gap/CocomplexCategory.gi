@@ -266,7 +266,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               
               source := Source( test_morphism );
               
-              return morphism_constructor( source, KernelLift( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( kernel ) ), kernel );
+              return morphism_constructor( source, KernelLiftWithGivenKernelObject( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( kernel ) ), kernel );
 
           end );
           
@@ -318,7 +318,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               
               range := Range( test_morphism );
               
-              return morphism_constructor( cokernel, CokernelColift( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( test_morphism ) ), range );
+              return morphism_constructor( cokernel, CokernelColiftWithGivenCokernelObject( UnderlyingZFunctorCell( morphism ), UnderlyingZFunctorCell( test_morphism ) ), range );
               
           end );
           
@@ -365,7 +365,9 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           function( object, terminal_object )
             
-            return morphism_constructor( object, UniversalMorphismIntoTerminalObject( UnderlyingZFunctorCell( object ) ), terminal_object );
+            return morphism_constructor( object,
+                     UniversalMorphismIntoTerminalObjectWithGivenTerminalObject(
+                       UnderlyingZFunctorCell( object ), UnderlyingZFunctorCell( terminal_object ) ), terminal_object );
             
         end );
         
@@ -396,7 +398,9 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           function( object, initial_object )
             
-            return morphism_constructor( initial_object, UniversalMorphismFromInitialObject( UnderlyingZFunctorCell( object ) ), object );
+            return morphism_constructor( initial_object, 
+                     UniversalMorphismFromInitialObjectWithGivenInitialObject(
+                       UnderlyingZFunctorCell( object ), UnderlyingZFunctorCell( initial_object ) ), object );
         
         end );
         
@@ -431,7 +435,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               range := object_list[ projection_number ];
               
               return morphism_constructor( direct_product,
-                                 ProjectionInFactorOfDirectProduct( List( object_list, obj -> UnderlyingZFunctorCell( obj ) ), projection_number, UnderlyingZFunctorCell( direct_product ) ),
+                                 ProjectionInFactorOfDirectProductWithGivenDirectProduct( List( object_list, obj -> UnderlyingZFunctorCell( obj ) ), projection_number, UnderlyingZFunctorCell( direct_product ) ),
                                  range );
               
           end );
@@ -448,7 +452,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             function( diagram, source, direct_product )
               
               return morphism_constructor( Source( source[1] ),
-                       UniversalMorphismIntoDirectProduct(
+                       UniversalMorphismIntoDirectProductWithGivenDirectProduct(
                          List( diagram, obj -> UnderlyingZFunctorCell( obj ) ),
                          List( source, mor -> UnderlyingZFunctorCell( mor ) ),
                          UnderlyingZFunctorCell( direct_product ) 
@@ -488,7 +492,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               source := object_list[ injection_number ];
               
               return morphism_constructor( source,
-                                 InjectionOfCofactorOfCoproduct( List( object_list, obj -> UnderlyingZFunctorCell( obj ) ), injection_number, UnderlyingZFunctorCell( coproduct ) ),
+                                 InjectionOfCofactorOfCoproductWithGivenCoproduct( List( object_list, obj -> UnderlyingZFunctorCell( obj ) ), injection_number, UnderlyingZFunctorCell( coproduct ) ),
                                  coproduct );
               
           end );
@@ -505,7 +509,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             function( diagram, sink, coproduct )
               
               return morphism_constructor( coproduct,
-                       UniversalMorphismFromCoproduct(
+                       UniversalMorphismFromCoproductWithGivenCoproduct(
                          List( diagram, obj -> UnderlyingZFunctorCell( obj ) ),
                          List( sink, mor -> UnderlyingZFunctorCell( mor ) ),
                          UnderlyingZFunctorCell( coproduct )
@@ -561,7 +565,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               range := Source( morphism_list[ projection_number ] );
               
               return morphism_constructor( pullback,
-                       ProjectionInFactorOfFiberProduct(
+                       ProjectionInFactorOfFiberProductWithGivenFiberProduct(
                          List( morphism_list, mor -> UnderlyingZFunctorCell( mor ) ),
                          projection_number,
                          UnderlyingZFunctorCell( pullback )
@@ -583,7 +587,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             function( diagram, source, pullback )
               
               return morphism_constructor( Source( source[1] ),
-                       UniversalMorphismIntoFiberProduct(
+                       UniversalMorphismIntoFiberProductWithGivenFiberProduct(
                          List( diagram, obj -> UnderlyingZFunctorCell( obj ) ),
                          List( source, mor -> UnderlyingZFunctorCell( mor ) ),
                          UnderlyingZFunctorCell( pullback )
@@ -623,7 +627,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
               source := Range( morphism_list[ injection_number ] );
               
               return morphism_constructor( source,
-                       InjectionOfCofactorOfPushout(
+                       InjectionOfCofactorOfPushoutWithGivenPushout(
                          List( morphism_list, mor -> UnderlyingZFunctorCell( mor ) ),
                          injection_number,
                          UnderlyingZFunctorCell( pushout )
@@ -645,7 +649,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             function( diagram, sink, pushout )
 
               return morphism_constructor( pushout,
-                       UniversalMorphismFromPushout(
+                       UniversalMorphismFromPushoutWithGivenPushout(
                          List( diagram, obj -> UnderlyingZFunctorCell( obj ) ),
                          List( sink, mor -> UnderlyingZFunctorCell( mor ) ),
                          UnderlyingZFunctorCell( pushout )

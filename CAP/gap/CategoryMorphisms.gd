@@ -554,6 +554,14 @@ DeclareOperation( "AddIsZeroForMorphisms",
 DeclareOperation( "AddIsZeroForMorphisms",
                   [ IsCapCategory, IsList ] );
 
+DeclareProperty( "IsZero", IsCapCategoryMorphism );
+
+DeclareOperation( "\+", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareAttribute( "AdditiveInverseImmutable", IsCapCategoryMorphism );
+
+DeclareOperation( "\-", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
 #! @Description
 #! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
 #! The output is the addition $\alpha + \beta$.

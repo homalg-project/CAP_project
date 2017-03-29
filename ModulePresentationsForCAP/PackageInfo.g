@@ -4,7 +4,7 @@ PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2016.10.04", # Sebas version
+           "2017.03.20", # Sebas version
            ##
            "2015.12.09", # Sepps version
            ##
@@ -82,7 +82,6 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=0" ],
                            [ "CAP", ">=0" ],
-                           [ "GradedRingForHomalg", ">=0" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=0" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
                            [ "HomologicalAlgebraForCAP", ">=0" ]

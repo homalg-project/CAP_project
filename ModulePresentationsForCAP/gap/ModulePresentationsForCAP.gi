@@ -20,7 +20,7 @@ InstallMethod( LeftPresentations,
     
     SetIsAbelianCategory( category, true );
     
-    if IsCommutative( ring ) then
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
@@ -83,7 +83,7 @@ InstallMethod( RightPresentations,
     
     SetIsAbelianCategory( category, true );
     
-    if IsCommutative( ring ) then
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
@@ -177,7 +177,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
-#     ADD_LIFT_AND_COLIFT_LEFT( category );
+    ADD_LIFT_AND_COLIFT_LEFT( category );
     
     if IsCommutative( category!.ring_for_representation_category ) then
       
@@ -235,6 +235,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT( category );
     
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
+    
+    ADD_LIFT_AND_COLIFT_RIGHT( category );
     
     if IsCommutative( category!.ring_for_representation_category ) then
       
@@ -409,9 +411,9 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
     end );
     
-    AddLift( category,
+    AddLiftAlongMonomorphism( category,
       
-      function( alpha, beta )
+      function( beta, alpha )
         local lift;
         
         lift := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( beta ) ) );
@@ -457,11 +459,11 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         
     end );
     
-    AddLift( category,
+    AddLiftAlongMonomorphism( category,
       
         ## TODO: Reference for the conventions for Lift
-#       function( alpha, beta )
-        function( beta, alpha )
+       function( alpha, beta )
+#        function( beta, alpha )
         local lift;
         
         lift := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( alpha ) ) );
@@ -1679,7 +1681,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
 
   function( category )
   local homalg_ring;
-  
+
   homalg_ring := category!.ring_for_representation_category;
   
   if IsCommutative( homalg_ring ) then 
@@ -1691,8 +1693,8 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     #                 rxs
     #                P
     #                |
-    #         sxv    | sxn 
-    #        X      (A) 
+    #         sxv    | sxn
+    #        X      (A)
     #                |
     #                V
     #    uxv    vxn   mxn
@@ -1706,14 +1708,25 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     P := UnderlyingMatrix( Source( morphism_1 ) );
     
-    N := UnderlyingMatrix( Range(  morphism_1 ) );
-    
     M := UnderlyingMatrix( Source( morphism_2 ) );
+    
+    v := NrColumns( M );
+       
+    s := NrColumns( P );
+    
+    if v = 0 or s = 0 then
+       
+       XX := HomalgZeroMatrix( s, v, homalg_ring );
+       
+       return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
+       
+    fi;
+    
+    N := UnderlyingMatrix( Range(  morphism_1 ) );
     
     A := UnderlyingMatrix( morphism_1 );
     
     B := UnderlyingMatrix( morphism_2 );
-    
     
     B_tr_I := KroneckerMat( Involution( B ), HomalgIdentityMatrix( NrColumns( P ), homalg_ring ) );
     
@@ -1733,7 +1746,15 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     mat := UnionOfRows( mat1, mat2 );
     
-    vec_A := Iterated( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A, [ i ] ) ), UnionOfRows ); 
+    if NrColumns( A ) <= 1 then
+       
+       vec_A := A;
+       
+    else
+       
+       vec_A := Iterated( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A, [ i ] ) ), UnionOfRows ); 
+       
+    fi;
     
     vec_zero := HomalgZeroMatrix( NrRows( P )*NrColumns( M ), 1, homalg_ring );
     
@@ -1745,14 +1766,14 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
        return fail;
        
-    else 
-    
-       v := NrColumns( M );
+    else
        
-       s := NrColumns( P );
+       if v <= 1 then
+          XX := CertainRows( sol, [ 1.. s ] );
+       else
+          XX := Iterated( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ), UnionOfColumns );
+       fi;
        
-       XX := Iterated( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ), UnionOfColumns );
-    
        return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
        
     fi;
@@ -1766,8 +1787,8 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     #                 rxs
     #                I
     #                ꓥ
-    #         vxs    | nxs 
-    #        X      (A) 
+    #         vxs    | nxs
+    #        X      (A)
     #                |
     #                |
     #    uxv    nxv   mxn
@@ -1781,9 +1802,21 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     I := UnderlyingMatrix( Range( morphism_2 ) );
     
-    N := UnderlyingMatrix( Source( morphism_1 ) );
-    
     M := UnderlyingMatrix( Range( morphism_1 ) );
+    
+    v := NrColumns( M );
+       
+    s := NrColumns( I );
+    
+    if v = 0 or s = 0 then 
+    
+       XX := HomalgZeroMatrix( v, s, homalg_ring );
+       
+       return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
+       
+    fi;
+    
+    N := UnderlyingMatrix( Source( morphism_1 ) );
     
     B := UnderlyingMatrix( morphism_1 );
     
@@ -1801,8 +1834,12 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     A_over_zero := UnionOfRows( A, zero_mat );
     
-    vec := Iterated( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A_over_zero, [ i ] ) ), UnionOfRows );
-    
+    if NrColumns( A ) <= 1 then 
+        vec := A_over_zero;
+    else
+        vec := Iterated( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A_over_zero, [ i ] ) ), UnionOfRows );
+    fi;
+
     sol := LeftDivide( mat, vec );
     
     if sol = fail then 
@@ -1815,8 +1852,12 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
        s := NrColumns( I );
        
-       XX := Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ), UnionOfColumns );
-    
+       if s <= 1 then 
+          XX := CertainRows( sol, [ 1.. v ] );
+       else
+          XX := Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ), UnionOfColumns );
+       fi;
+       
        return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
        
     fi;
@@ -1826,4 +1867,187 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
   fi;
  
 end );
+
+##
+InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT, 
+
+  function( category )
+  local homalg_ring;
+  
+  homalg_ring := category!.ring_for_representation_category;
+  
+  if IsCommutative( homalg_ring ) then 
+  
+  AddLift( category, 
     
+    function( morphism_1, morphism_2 )
+    local Pt, Nt, Mt, At, Bt, B_tr_I, N_tr_I, zero_1, 
+          mat1, mat2, I_P, zero_2, M_tr_I, mat, vec_A, vec_zero, vec, sol, v, s, XX;
+    #                 rxs
+    #                P
+    #                |
+    #         uxr    | mxr 
+    #        X      (A) 
+    #                |
+    #                V
+    #    uxv    mxu   mxn
+    #   M ----(B)--> N
+    #
+    #
+    #   We need to solve the system
+    #       B*X = A mod N
+    #       X*P + M*Y = 0
+    #   I.e., looking for X, Y, Z such that 
+    #       B*X + N*Y = A
+    #       X*P + M*Z = 0
+    #   which is equivalent to 
+    #       XX*B^t + YY*N^t = A^t
+    #       P^t*XX + ZZ*M^t = 0
+    #   which can be solved exactly as Lift in left presentations case.
+    #   The function is supposed to return X = XX^t as a ( well defined ) morphism from P to M.
+    
+    Pt := Involution( UnderlyingMatrix( Source( morphism_1 ) ) );
+    Mt := Involution( UnderlyingMatrix( Source( morphism_2 ) ) );
+    
+    v := NrColumns( Mt );
+    
+    s := NrColumns( Pt );
+    
+    if v = 0 or s = 0 then
+       
+       XX := Involution( HomalgZeroMatrix( s, v, homalg_ring ) );
+       
+       return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
+       
+    fi;
+    
+    Nt := Involution( UnderlyingMatrix( Range(  morphism_1 ) ) );
+    
+    At := Involution( UnderlyingMatrix( morphism_1 ) );
+    
+    Bt := Involution( UnderlyingMatrix( morphism_2 ) );
+    
+    B_tr_I := KroneckerMat( Involution( Bt ), HomalgIdentityMatrix( NrColumns( Pt ), homalg_ring ) );
+    
+    N_tr_I := KroneckerMat( Involution( Nt ), HomalgIdentityMatrix( NrColumns( Pt ) ,homalg_ring ) );
+    
+    zero_1  := HomalgZeroMatrix( NrRows( At )*NrColumns( At ), NrRows( Pt )*NrRows( Mt ), homalg_ring );
+    
+    mat1 := UnionOfColumns( UnionOfColumns( B_tr_I, N_tr_I ), zero_1 );
+    
+    I_P := KroneckerMat( HomalgIdentityMatrix( NrColumns( Mt ) ,homalg_ring ), Pt );
+    
+    zero_2 := HomalgZeroMatrix( NrRows( Pt )*NrColumns( Mt ), NrRows( At )*NrRows( Nt ), homalg_ring );
+    
+    M_tr_I := KroneckerMat( Involution( Mt ), HomalgIdentityMatrix( NrRows( Pt ) ,homalg_ring ) );
+    
+    mat2 := UnionOfColumns( UnionOfColumns( I_P, zero_2 ), M_tr_I );
+    
+    mat := UnionOfRows( mat1, mat2 );
+    
+    if NrColumns( At ) <= 1 then
+       
+       vec_A := At;
+       
+    else
+       
+       vec_A := Iterated( List( [ 1 .. NrColumns( At ) ], i-> CertainColumns( At, [ i ] ) ), UnionOfRows ); 
+       
+    fi;
+    
+    vec_zero := HomalgZeroMatrix( NrRows( Pt )*NrColumns( Mt ), 1, homalg_ring );
+    
+    vec := UnionOfRows( vec_A, vec_zero );
+    
+    sol := LeftDivide( mat, vec );
+    
+    if sol = fail then 
+    
+       return fail;
+       
+    else 
+       
+       if v <= 1 then
+          XX := Involution( CertainRows( sol, [ 1.. s ] ) );
+       else
+          XX := Involution( Iterated( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ), UnionOfColumns ) );
+       fi;
+       
+       return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
+       
+    fi;
+    
+end );
+
+  AddColift( category, 
+    
+    function( morphism_1, morphism_2 )
+    local Nt, Mt, At, Bt, It, B_over_M, mat1, mat2, mat, zero_mat, A_over_zero, vec, sol, v, s, XX;
+    
+    It := Involution( UnderlyingMatrix( Range( morphism_2 ) ) );
+    
+    Mt := Involution( UnderlyingMatrix( Range( morphism_1 ) ) );
+    
+    v := NrColumns( Mt );
+       
+    s := NrColumns( It );
+    
+    if v = 0 or s = 0 then 
+    
+       XX := Involution( HomalgZeroMatrix( v, s, homalg_ring ) );
+       
+       return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
+       
+    fi;
+    
+    Nt := Involution( UnderlyingMatrix( Source( morphism_1 ) ) );
+    
+    Bt := Involution( UnderlyingMatrix( morphism_1 ) );
+    
+    At := Involution( UnderlyingMatrix( morphism_2 ) );
+    
+    B_over_M := UnionOfRows( Bt, Mt );
+    
+    mat1 := KroneckerMat( HomalgIdentityMatrix( NrColumns( It ), homalg_ring ), B_over_M );
+    
+    mat2 := KroneckerMat( Involution( It ), HomalgIdentityMatrix( NrRows( Bt ) + NrRows( Mt ), homalg_ring ) );
+    
+    mat := UnionOfColumns( mat1, mat2 );
+    
+    zero_mat := HomalgZeroMatrix( NrRows( Mt ), NrColumns( It ), homalg_ring );
+    
+    A_over_zero := UnionOfRows( At, zero_mat );
+    
+    if NrColumns( At ) <= 1 then 
+        vec := A_over_zero;
+    else
+        vec := Iterated( List( [ 1 .. NrColumns( At ) ], i-> CertainColumns( A_over_zero, [ i ] ) ), UnionOfRows );
+    fi;
+
+    sol := LeftDivide( mat, vec );
+    
+    if sol = fail then 
+    
+       return fail;
+       
+    else 
+    
+       v := NrColumns( Mt );
+       
+       s := NrColumns( It );
+       
+       if s <= 1 then 
+          XX := Involution( CertainRows( sol, [ 1.. v ] ) );
+       else
+          XX := Involution( Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ), UnionOfColumns ) );
+       fi;
+       
+       return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
+       
+    fi;
+    
+    end );
+  
+fi;
+
+end );

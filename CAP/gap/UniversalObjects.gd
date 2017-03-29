@@ -9,11 +9,6 @@
 ##
 #############################################################################
 
-
-## needed for multiple genesis
-DeclareOperation( "AddToGenesis",
-                  [ IsCapCategoryCell, IsObject, IsObject ] );
-
 ####################################
 ##
 #! @Section Kernel
@@ -54,15 +49,6 @@ DeclareAttribute( "KernelEmbedding",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! This is a convenience method.
-#! The argument is an object $K$ that was created as a kernel.
-#! The output is the kernel embedding $\iota: K \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(K,A)$
-#! @Arguments K
-DeclareAttribute( "KernelEmbedding",
-                  IsCapCategoryObject );
-
-#! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
 #! and an object $K = \mathrm{KernelObject}(\alpha)$.
 #! The output is the kernel embedding $\iota: K \rightarrow A$.
@@ -70,17 +56,6 @@ DeclareAttribute( "KernelEmbedding",
 #! @Arguments alpha, K
 DeclareOperation( "KernelEmbeddingWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
-
-#! @Description
-#! This is a convenience method.
-#! The arguments are an object $K$ which was created as a kernel,
-#! and a test morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$.
-#! The output is the morphism $u(\tau): T \rightarrow K$
-#! given by the universal property of the kernel.
-#! @Returns a morphism in $\mathrm{Hom}(T,K)$
-#! @Arguments K, tau
-DeclareOperation( "KernelLift",
-                  [ IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
@@ -259,17 +234,6 @@ DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
 DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsList ] );
 
-## WasCreatedAs Filter
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for a kernel object. 
-#! Note that we chose <C>WasCreatedAsKernelObject</C> to be a filter rather than a property,
-#! because by default, a filter is set to false. 
-DeclareFilter( "WasCreatedAsKernelObject" );
-
 #! @Chapter Universal Objects
 
 ####################################
@@ -313,15 +277,6 @@ DeclareAttribute( "CokernelProjection",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! This is a convenience method.
-#! The argument is an object $K$ which was created as a cokernel.
-#! The output is the cokernel projection $\epsilon: B \rightarrow K$.
-#! @Returns a morphism in $\mathrm{Hom}(B, K)$
-#! @Arguments K
-DeclareAttribute( "CokernelProjection",
-                  IsCapCategoryObject );
-
-#! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
 #! and an object $K = \mathrm{CokernelObject}(\alpha)$.
 #! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{CokernelObject}( \alpha )$.
@@ -330,17 +285,6 @@ DeclareAttribute( "CokernelProjection",
 DeclareOperation( "CokernelProjectionWithGivenCokernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-
-#! @Description
-#! This is a convenience method.
-#! The arguments are an object $K$ which was created as a cokernel,
-#! and a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$.
-#! The output is the morphism $u(\tau): K \rightarrow T$
-#! given by the universal property of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(K,T)$
-#! @Arguments K, tau
-DeclareOperation( "CokernelColift",
-                  [ IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
@@ -516,17 +460,6 @@ DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
 
 DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsList ] );
-
-## WasCreatedAs Filter
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for a cokernel object. 
-#! Note that we chose <C>WasCreatedAsCokernelObject</C> to be a filter rather than a property,
-#! because by default, a filter is set to false. 
-DeclareFilter( "WasCreatedAsCokernelObject" );
 
 #! @Chapter Universal Objects
 
@@ -828,18 +761,6 @@ DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
 DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
                   [ IsCapCategory, IsList ] );
 
-## WasCreatedAs Filter
-
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for a zero object. 
-#! Note that we chose <C>WasCreatedAsZeroObject</C> to be a filter rather than a property,
-#! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsZeroObject" );
-
 #! @Chapter Universal Objects
 
 ####################################
@@ -989,18 +910,6 @@ DeclareOperation( "AddTerminalObjectFunctorial",
 DeclareOperation( "AddTerminalObjectFunctorial",
                   [ IsCapCategory, IsList ] );
 
-## WasCreatedAs Filter
-
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for a terminal object. 
-#! Note that we chose <C>WasCreatedAsTerminalObject</C> to be a filter rather than a property,
-#! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsTerminalObject" );
-
 #! @Chapter Universal Objects
 
 ####################################
@@ -1145,18 +1054,6 @@ DeclareOperation( "AddInitialObjectFunctorial",
 
 DeclareOperation( "AddInitialObjectFunctorial",
                   [ IsCapCategory, IsList ] );
-
-## WasCreatedAs Filter
-
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for an initial object. 
-#! Note that we chose <C>WasCreatedAsInitialObject</C> to be a filter rather than a property,
-#! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsInitialObject" );
 
 #! @Chapter Universal Objects
 
@@ -1730,17 +1627,9 @@ DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
 DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
                   [ IsCapCategory, IsList ] );
 
-## WasCreatedAs Filter
-
 #! @Chapter Technical Details
 
 #! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for a direct sum object. 
-#! Note that we chose <C>WasCreatedAsDirectSum</C> to be a filter rather than a property,
-#! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsDirectSum" );
 
 DeclareProperty( "IS_IMPLIED_DIRECT_SUM", 
                  IsCapCategoryObject );
@@ -2022,17 +1911,6 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
                   [ IsCapCategory, IsList ] );
 
-## WasCreatedAs Filter
-
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for a coproduct object. 
-#! Note that we chose <C>WasCreatedAsCoprodcut</C> to be a filter rather than a property,
-#! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsCoproduct" );
 #! @Chapter Universal Objects
 
 
@@ -2276,18 +2154,6 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 
 DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
                   [ IsCapCategory, IsList ] );
-
-## WasCreatedAs Filter
-
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for a terminal object. 
-#! Note that we chose <C>WasCreatedAsDirectProduct</C> to be a filter rather than a property,
-#! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsDirectProduct" );
 
 #! @Chapter Universal Objects
 
@@ -2554,12 +2420,6 @@ DeclareOperation( "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
 #!  The output is the morphism
 #!  $u( \tau ): T \rightarrow \mathrm{FiberProduct}(D)$
 #!  given by the universal property of the fiber product.
-#! * The arguments are an object $P$ which was created as a pullback from a list $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#!  and morphisms $\tau_1: T \rightarrow P_1, \dots, \tau_n: T \rightarrow P_n$
-#!  such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$.
-#!  The output is the morphism
-#!  $u( \tau ): T \rightarrow P$
-#!  given by the universal property of the fiber product.
 DeclareGlobalFunction( "UniversalMorphismIntoFiberProduct" );
 
 #! @Description
@@ -2733,18 +2593,6 @@ DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
 
 DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
                   [ IsCapCategory, IsList ] );
-
-## WasCreatedAs Filter
-
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for a pullback. 
-#! Note that we chose <C>WasCreatedAsFiberProduct</C> to be a filter rather than a property,
-#! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsFiberProduct" );
 
 #! @Chapter Universal Objects
 
@@ -3012,12 +2860,6 @@ DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
 #!  The output is the morphism
 #!  $u( \tau ): \mathrm{Pushout}(D) \rightarrow T$
 #!  given by the universal property of the pushout.
-#! * The arguments are an object $I$ which was created as a pushout from a list $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#!  and morphisms $\tau_1: I_1 \rightarrow T, \dots, \tau_n: I_n \rightarrow T$ such that
-#!  $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$.
-#!  The output is the morphism
-#!  $u( \tau ): I \rightarrow T$
-#!  given by the universal property of the pushout.
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 
 #! @Description
@@ -3192,19 +3034,6 @@ DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
 DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
                   [ IsCapCategory, IsList ] );
 
-
-## WasCreatedAs Filter
-
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for a pushout. 
-#! Note that we chose <C>WasCreatedAsPushout</C> to be a filter rather than a property,
-#! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsPushout" );
-
 #! @Chapter Universal Objects
 
 ####################################
@@ -3294,17 +3123,6 @@ DeclareAttribute( "ImageObject",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! This is a convenience method.
-#! The argument is an object $I$ which was created as an image object
-#! of a morphism $\alpha: A \rightarrow B$.
-#! The output is the image embedding
-#! $\iota: I \hookrightarrow B$.
-#! @Returns a morphism in $\mathrm{Hom}(I,B)$.
-#! @Arguments I
-DeclareAttribute( "ImageEmbedding",
-                  IsCapCategoryObject );
-
-#! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the image embedding
 #! $\iota: \mathrm{im}(\alpha) \hookrightarrow B$.
@@ -3323,16 +3141,6 @@ DeclareAttribute( "ImageEmbedding",
 DeclareOperation( "ImageEmbeddingWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-#! @Description
-#! This is a convenience method.
-#! The argument is an object $I$ which was created as an image object
-#! of a morphism $\alpha: A \rightarrow B$.
-#! The output is the coastriction to image
-#! $c: A \rightarrow I$.
-#! @Returns a morphism in $\mathrm{Hom}(A, I)$
-#! @Arguments I
-DeclareAttribute( "CoastrictionToImage",
-                  IsCapCategoryObject );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
@@ -3518,18 +3326,6 @@ DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
 DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategory, IsList ] );
 
-
-## WasCreatedAs Filter
-
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-#! @Description 
-#! When created, this filter is set to true for an image. 
-#! Note that we chose <C>WasCreatedAsImageObject</C> to be a filter rather than a property,
-#! because by default, a filter is set to false.
-DeclareFilter( "WasCreatedAsImageObject" );
 #! @Chapter Universal Objects
 
 ####################################
@@ -3925,16 +3721,6 @@ DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
 DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
                   [ IsCapCategory, IsList ] );
 
-
-
-
-## WasCreatedAs Filter
-
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-DeclareFilter( "WasCreatedAsCoimage" );
 #! @Chapter Universal Objects
 
 ####################################
@@ -3942,46 +3728,6 @@ DeclareFilter( "WasCreatedAsCoimage" );
 #! @Section Convenience Methods
 ##
 ####################################
-
-#! @Description
-#! This is a convenience method.
-#! There are five different ways to use this method:
-#! * The arguments are an object $S$ which was created as a direct sum
-#!  and an integer $k$.
-#!  The output is the $k$-th injection $\iota_{k}: S_k \rightarrow S$.
-#! * The arguments are an object $I$ which was created as a coproduct
-#!  and an integer $k$.
-#!  The output is the $k$-th injection $\iota_{k}: I_k \rightarrow I$.
-#! * The arguments are an object $I$ which was created as a pushout
-#!  and an integer $k$.
-#!  The output is the $k$-th injection $\iota_{k}: I_k \rightarrow I$.
-#! * The arguments are a list of objects $D = ( I_1, \dots, I_n )$
-#!  and an integer $k$.
-#!  The output is the $k$-th injection $\iota_{k}: I_k \rightarrow \bigsqcup_{i=1}^n I_i$.
-#! * The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#!  and an integer $k$.
-#!  The output is the $k$-th injection $\iota_{k}: I_k \rightarrow \mathrm{Pushout}(D)$.
-DeclareGlobalFunction( "InjectionOfCofactor" );
-
-#! @Description
-#! This is a convenience method.
-#! There are five different ways to use this method:
-#! * The arguments are an object $S$ which was created as a direct sum
-#!  and an integer $k$.
-#!  The output is the $k$-th projection $\pi_{k}: S \rightarrow S_k$.
-#! * The arguments are an object $P$ which was created as a direct product
-#!  and an integer $k$.
-#!  The output is the $k$-th projection $\pi_{k}: P \rightarrow P_k$.
-#! * The arguments are an object $P$ which was created as a fiber product
-#!  and an integer $k$.
-#!  The output is the $k$-th projection $\pi_{k}: P \rightarrow P_k$.
-#! * The arguments are a list of objects $D = ( P_1, \dots, P_n )$
-#!  and an integer $k$.
-#!  The output is the $k$-th projection $\pi_{k}: \prod_{i=1}^n P_i \rightarrow P_k$.
-#! * The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#!  and an integer $k$.
-#!  The output is the $k$-th projection $\pi_{k}: \mathrm{FiberProduct}(D) \rightarrow P_k$.
-DeclareGlobalFunction( "ProjectionInFactor" );
 
 ####################################
 ##
@@ -3994,5 +3740,3 @@ DeclareGlobalFunction( "ProjectionInFactor" );
 ## Function Attributes
 
 ## Add Operations
-
-## WasCreatedAs Filter

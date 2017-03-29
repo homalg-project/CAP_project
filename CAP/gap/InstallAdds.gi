@@ -389,7 +389,7 @@ end );
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
   function( source_range_object, object_function_name, object_function_argument_list, object_call_name, object_cache_name )
-    local object_getter, set_object, was_created_filter, diagram_name, setter_function, is_attribute, cache_key_length;
+    local object_getter, set_object, diagram_name, setter_function, is_attribute, cache_key_length;
     
     if source_range_object = "Source" then
         object_getter := Source;
@@ -402,7 +402,6 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
         set_object := false;
     fi;
     
-    was_created_filter := ValueGlobal( Concatenation( "WasCreatedAs", object_call_name ) );
     diagram_name := Concatenation( object_call_name, "Diagram" );
     setter_function := Setter( ValueGlobal( object_function_name ) );
     is_attribute := setter_function <> false;
@@ -425,10 +424,6 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
                   SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
             fi;
             
-            ## Those two commands are not commutative
-            AddToGenesis( object, diagram_name, arg[ 1 ] );
-            SetFilterObj( object, was_created_filter );
-            
         end;
         
     else
@@ -448,10 +443,6 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
                 SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
                 CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
             fi;
-            
-            ## Those two commands are not commutative
-            AddToGenesis( object, diagram_name, arg[ 1 ] );
-            SetFilterObj( object, was_created_filter );
             
         end;
         
