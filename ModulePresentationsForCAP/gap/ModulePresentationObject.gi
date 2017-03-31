@@ -39,7 +39,7 @@ BindGlobal( "TheTypeOfRightPresentations",
 InstallGlobalFunction( AsLeftOrRightPresentation,
                
   function( matrix, left )
-    local module, ring, type, presentation_category;
+    local module, ring, type, presentation_category, lazy;
     
     module := rec( );
     
@@ -48,15 +48,36 @@ InstallGlobalFunction( AsLeftOrRightPresentation,
     if left = true then
         type := TheTypeOfLeftPresentations;
         presentation_category := LeftPresentations( ring );
+        if HasEvalSyzygiesOfRows( matrix ) and not HasEval( matrix ) then
+            lazy := true;
+            module.nr_generators := NrRows( EvalSyzygiesOfRows( matrix )[1] );
+        else
+            lazy := false;
+            module.nr_generators := NrColumns( matrix );
+        fi;
     else
         type := TheTypeOfRightPresentations;
         presentation_category := RightPresentations( ring );
+        if HasEvalSyzygiesOfColumns( matrix ) and not HasEval( matrix ) then
+            lazy := true;
+            module.nr_generators := NrColumns( EvalSyzygiesOfColumns( matrix )[1] );
+        else
+            lazy := false;
+            module.nr_generators := NrRows( matrix );
+        fi;
     fi;
     
-    ObjectifyWithAttributes( module, type,
-                             UnderlyingMatrix, matrix,
-                             UnderlyingHomalgRing, ring
-                           );
+    if lazy then
+        module.LazyUnderlyingMatrix := matrix;
+        ObjectifyWithAttributes( module, type,
+                UnderlyingHomalgRing, ring
+                );
+    else
+        ObjectifyWithAttributes( module, type,
+                UnderlyingMatrix, matrix,
+                UnderlyingHomalgRing, ring
+                );
+    fi;
     
     Add( presentation_category, module );
     
@@ -113,6 +134,44 @@ end );
 ## Non categorical methods
 ##
 ##############################################
+
+##
+InstallMethod( UnderlyingMatrix,
+               [ IsLeftPresentation ],
+               
+  function( M )
+    local mat;
+    
+    mat := M!.LazyUnderlyingMatrix;
+    
+    mat := EvalSyzygiesOfRows( mat );
+    
+    mat := SyzygiesOfRows( mat[1], mat[2] );
+    
+    Unbind( M!.LazyUnderlyingMatrix );
+    
+    return mat;
+    
+end );
+
+##
+InstallMethod( UnderlyingMatrix,
+               [ IsRightPresentation ],
+               
+  function( M )
+    local mat;
+    
+    mat := M!.LazyUnderlyingMatrix;
+    
+    mat := EvalSyzygiesOfColumns( mat );
+    
+    mat := SyzygiesOfColumns( mat[1], mat[2] );
+    
+    Unbind( M!.LazyUnderlyingMatrix );
+    
+    return mat;
+    
+end );
 
 ##
 InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT,

@@ -8,7 +8,7 @@ Version := Maximum( [
            ##
            "2015.12.09", # Sepps version
            ##
-           "2017.03.24", # Mohamed's version
+           "2017.03.27", # Mohamed's version
            ##
            ] ),
 
@@ -80,7 +80,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "MatricesForHomalg", ">=0" ],
+                           [ "MatricesForHomalg", ">=2017.03.27" ],
                            [ "CAP", ">=0" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=0" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],

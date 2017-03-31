@@ -61,13 +61,13 @@ InstallMethod( PresentationMorphism,
     
     if left then
       
-      if NrRows( matrix ) <> NrColumns( UnderlyingMatrix( source ) ) then
+      if NrRows( matrix ) <> source!.nr_generators then
           
           Error( "the number of rows of the given matrix is incorrect" );
           
       fi;
       
-      if NrColumns( matrix ) <> NrColumns( UnderlyingMatrix( range ) ) then
+      if NrColumns( matrix ) <> range!.nr_generators then
         
         Error( "the number of columns of the given matrix is incorrect" );
         
@@ -75,13 +75,13 @@ InstallMethod( PresentationMorphism,
       
     else
       
-      if NrColumns( matrix ) <> NrRows( UnderlyingMatrix( source ) ) then
+      if NrColumns( matrix ) <> source!.nr_generators then
         
         Error( "the number of columns of the given matrix is incorrect" );
         
       fi;
       
-      if NrRows( matrix ) <> NrRows( UnderlyingMatrix( range ) ) then
+      if NrRows( matrix ) <> range!.nr_generators then
         
         Error( "the number of rows of the given matrix is incorrect" );
         
