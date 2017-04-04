@@ -65,8 +65,69 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddIsEqualForCacheForMorphisms( category,
       IsIdenticalObj );
-    
-    
+
+     
+    ## Well-defined for objects and morphisms
+    ##
+    AddIsWellDefinedForObjects( category,
+      function( object )
+
+        if not IsIdenticalObj( category, CapCategory( object ) ) then
+
+          return false;
+
+        elif Dimension( object ) < 0 then
+
+          return false;
+
+        fi;
+
+        # all tests passed, so is well-defined
+        return true;
+
+    end );
+
+    ##
+    AddIsWellDefinedForMorphisms( category,
+      function( morphism )
+
+        if not IsIdenticalObj( category, CapCategory( morphism ) ) then
+
+          return false;
+
+        elif not IsIdenticalObj( category, CapCategory( Range( morphism ) ) ) then
+
+          return false;
+
+        elif not IsIdenticalObj( category, CapCategory( Source( morphism ) ) ) then
+
+          return false;
+
+        elif not IsIdenticalObj( UnderlyingFieldForHomalg( morphism ), 
+                                 UnderlyingFieldForHomalg( Source( morphism ) ) ) then
+
+          return false;
+
+        elif not IsIdenticalObj( UnderlyingFieldForHomalg( morphism ), 
+                                 UnderlyingFieldForHomalg( Range( morphism ) ) ) then
+
+          return false;
+
+        elif NrRows( UnderlyingMatrix( morphism ) ) <> Dimension( Source( morphism ) ) then
+
+          return false;
+
+        elif NrColumns( UnderlyingMatrix( morphism ) ) <> Dimension( Range( morphism ) ) then
+
+          return false;
+
+        fi;
+
+        # all tests passed, so is well-defined
+        return true;
+
+    end );
+      
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
