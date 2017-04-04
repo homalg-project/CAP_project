@@ -4,4 +4,6 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "ModulesOverLocalRingsForCAP", "gap/ModulesOverLocalRingsForCAP.gd");
+ReadPackage( "ModulesOverLocalRingsForCAP", "gap/ModulesOverLocalRingsForCAP.gd" );
+
+ReadPackage( "ModulesOverLocalRingsForCAP", "gap/GaussForQuotientField.gd" );

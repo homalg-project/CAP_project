@@ -3,4 +3,6 @@
 #
 # Reading the implementation part of the package.
 #
-ReadPackage( "ModulesOverLocalRingsForCAP", "gap/ModulesOverLocalRingsForCAP.gi");
+ReadPackage( "ModulesOverLocalRingsForCAP", "gap/ModulesOverLocalRingsForCAP.gi" );
+
+ReadPackage( "ModulesOverLocalRingsForCAP", "gap/GaussForQuotientField.gi" );
