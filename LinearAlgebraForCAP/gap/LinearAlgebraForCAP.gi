@@ -76,6 +76,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
 
           return false;
 
+        elif not IsIdenticalObj( UnderlyingFieldForHomalg( object ), category!.field_for_matrix_category ) then
+
+          return false;
+
         elif Dimension( object ) < 0 then
 
           return false;
@@ -91,7 +95,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddIsWellDefinedForMorphisms( category,
       function( morphism )
 
-        if not IsIdenticalObj( category, CapCategory( morphism ) ) then
+        if not IsIdenticalObj( category, CapCategory( Source( morphism ) ) ) then
+
+          return false;
+
+        elif not IsIdenticalObj( category, CapCategory( morphism ) ) then
 
           return false;
 
@@ -99,17 +107,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
 
           return false;
 
-        elif not IsIdenticalObj( category, CapCategory( Source( morphism ) ) ) then
+        elif not IsIdenticalObj( UnderlyingFieldForHomalg( Source( morphism ) ),
+                                 category!.field_for_matrix_category ) then
 
           return false;
 
-        elif not IsIdenticalObj( UnderlyingFieldForHomalg( morphism ), 
-                                 UnderlyingFieldForHomalg( Source( morphism ) ) ) then
+        elif not IsIdenticalObj( UnderlyingFieldForHomalg( morphism ),
+                                 category!.field_for_matrix_category ) then
 
           return false;
 
-        elif not IsIdenticalObj( UnderlyingFieldForHomalg( morphism ), 
-                                 UnderlyingFieldForHomalg( Range( morphism ) ) ) then
+        elif not IsIdenticalObj( UnderlyingFieldForHomalg( Range( morphism ) ),
+                                 category!.field_for_matrix_category ) then
 
           return false;
 
