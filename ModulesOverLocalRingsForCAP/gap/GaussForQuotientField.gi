@@ -54,10 +54,10 @@ InstallMethod( REFIndicesForMatricesOverIntegralDomain,
                 
                 a := entries[r][c];
                 
-                if not IsZero( a ) then 
+                if not IsZero( a ) then
                     
                     entries[r] := p * entries[r] - a * entries[pivot];
-                  
+                    
                 fi;
                 
             od;

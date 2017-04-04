@@ -8,8 +8,13 @@
 ##
 #############################################################################
 
+#############################
+##
 #! @Section Constructors
+##
+#############################
 
 #! @Description
-#!   Insert documentation for you function here
-DeclareGlobalFunction( "ModulesOverLocalRingsForCAP_Example" );
+#!   Insert documentation for your function here
+DeclareOperation( "CategoryOfLeftModulePresentationsOverLocalRing",
+                  [ IsHomalgRing, IsList ] );
