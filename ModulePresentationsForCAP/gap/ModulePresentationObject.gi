@@ -136,6 +136,62 @@ end );
 ##############################################
 
 ##
+InstallMethod( Annihilator,
+               [ IsLeftPresentation ],
+               
+  function( module_presentation )
+    local ring, number_of_generators, list_of_generators, list_of_kernel_embeddings, ideal_embedding;
+    
+    ring := UnderlyingHomalgRing( module_presentation );
+    
+    number_of_generators := NrColumns( UnderlyingMatrix( module_presentation ) );
+    
+    if number_of_generators = 0 then
+        
+        return UniversalMorphismFromZeroObject( FreeLeftPresentation( 1, ring ) );
+        
+    fi;
+    
+    list_of_generators := List( [ 1 .. number_of_generators ], i -> StandardGeneratorMorphism( module_presentation, i ) );
+    
+    list_of_kernel_embeddings := List( list_of_generators, KernelEmbedding );
+    
+    ideal_embedding := 
+      PreCompose( ProjectionInFactorOfFiberProduct( list_of_kernel_embeddings, 1 ), list_of_kernel_embeddings[1] );
+    
+    return ideal_embedding;
+    
+end );
+
+##
+InstallMethod( Annihilator,
+               [ IsRightPresentation ],
+               
+  function( module_presentation )
+    local ring, number_of_generators, list_of_generators, list_of_kernel_embeddings, ideal_embedding;
+    
+    ring := UnderlyingHomalgRing( module_presentation );
+    
+    number_of_generators := NrRows( UnderlyingMatrix( module_presentation ) );
+    
+    if number_of_generators = 0 then
+        
+        return UniversalMorphismFromZeroObject( FreeRightPresentation( 1, ring ) );
+        
+    fi;
+    
+    list_of_generators := List( [ 1 .. number_of_generators ], i -> StandardGeneratorMorphism( module_presentation, i ) );
+    
+    list_of_kernel_embeddings := List( list_of_generators, KernelEmbedding );
+    
+    ideal_embedding := 
+      PreCompose( ProjectionInFactorOfFiberProduct( list_of_kernel_embeddings, 1 ), list_of_kernel_embeddings[1] );
+    
+    return ideal_embedding;
+    
+end );
+
+##
 InstallMethod( UnderlyingMatrix,
                [ IsLeftPresentation ],
                
