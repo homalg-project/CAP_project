@@ -544,10 +544,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         # construct the mapping as homalg matrix
         projection_in_factor := HomalgZeroMatrix( rank_pre, rank_factor, homalg_graded_ring );
-        projection_in_factor := UnionOfRows( projection_in_factor, 
-                                             HomalgIdentityMatrix( rank_factor, homalg_graded_ring ) );
-        projection_in_factor := UnionOfRows( projection_in_factor, 
-                                             HomalgZeroMatrix( rank_post, rank_factor, homalg_graded_ring ) );
+        projection_in_factor := Iterated( [ projection_in_factor, 
+                                            HomalgIdentityMatrix( rank_factor, homalg_graded_ring ) ],
+                                            UnionOfRows );
+        projection_in_factor := Iterated( [ projection_in_factor, 
+                                            HomalgZeroMatrix( rank_post, rank_factor, homalg_graded_ring ) ],
+                                            UnionOfRows );
         
         # and return the corresonding morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( direct_sum_object,
@@ -573,7 +575,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         for morphism in sink{ [ 2 .. Length( sink ) ] } do
         
           underlying_matrix_of_universal_morphism := 
-            UnionOfColumns( underlying_matrix_of_universal_morphism, UnderlyingHomalgMatrix( morphism ) );
+            Iterated( [ underlying_matrix_of_universal_morphism, UnderlyingHomalgMatrix( morphism ) ],
+                      UnionOfColumns );
         
         od;
         
@@ -607,10 +610,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         
         # now construct the mapping matrix
         injection_of_cofactor := HomalgZeroMatrix( rank_cofactor, rank_pre ,homalg_graded_ring );
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor,
-                                             HomalgIdentityMatrix( rank_cofactor, homalg_graded_ring ) );
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor,
-                                             HomalgZeroMatrix( rank_cofactor, rank_post, homalg_graded_ring ) );
+        injection_of_cofactor := Iterated( [ injection_of_cofactor,
+                                             HomalgIdentityMatrix( rank_cofactor, homalg_graded_ring ) ],
+                                            UnionOfColumns );
+        injection_of_cofactor := Iterated( [ injection_of_cofactor,
+                                             HomalgZeroMatrix( rank_cofactor, rank_post, homalg_graded_ring ) ],
+                                            UnionOfColumns );
         
         # and construct the associated morphism
         return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object_list[ injection_number ],
@@ -635,7 +640,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
         for morphism in sink{ [ 2 .. Length( sink ) ] } do
         
           underlying_matrix_of_universal_morphism := 
-            UnionOfRows( underlying_matrix_of_universal_morphism, UnderlyingHomalgMatrix( morphism ) );
+            Iterated( [ underlying_matrix_of_universal_morphism, UnderlyingHomalgMatrix( morphism ) ], UnionOfRows );
         
         od;
         
