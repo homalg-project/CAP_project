@@ -109,6 +109,40 @@ InstallMethod( PresentationMorphism,
     
 end );
 
+##
+InstallMethod( AsMorphismBetweenFreeLeftPresentations,
+               [ IsHomalgMatrix ],
+               
+  function( matrix )
+    local source, range, ring;
+    
+    ring := HomalgRing( matrix );
+    
+    source := FreeLeftPresentation( NrRows( matrix ), ring );
+    
+    range := FreeLeftPresentation( NrColumns( matrix ), ring );
+    
+    return PresentationMorphism( source, matrix, range );
+    
+end );
+
+##
+InstallMethod( AsMorphismBetweenFreeRightPresentations,
+               [ IsHomalgMatrix ],
+               
+  function( matrix )
+    local source, range, ring;
+    
+    ring := HomalgRing( matrix );
+    
+    source := FreeRightPresentation( NrColumns( matrix ), ring );
+    
+    range := FreeRightPresentation( NrRows( matrix ), ring );
+    
+    return PresentationMorphism( source, matrix, range );
+    
+end );
+
 ##############################################
 ##
 ## Arithmetics
