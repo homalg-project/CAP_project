@@ -6,3 +6,7 @@
 ReadPackage( "ModulesOverLocalRingsForCAP", "gap/ModulesOverLocalRingsForCAP.gi" );
 
 ReadPackage( "ModulesOverLocalRingsForCAP", "gap/GaussForQuotientField.gi" );
+
+ReadPackage( "ModulesOverLocalRingsForCAP", "gap/Objects.gi" );
+
+ReadPackage( "ModulesOverLocalRingsForCAP", "gap/Morphisms.gi" );

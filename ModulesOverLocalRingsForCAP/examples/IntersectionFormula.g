@@ -1,0 +1,24 @@
+#! @Chapter Examples and Tests
+#! This is an example from homalg.
+
+
+#! @Section Gauss
+LoadPackage( "ModulesOverLocalRingsForCAP" );
+
+LoadPackage( "RingsForHomalg" );
+#! @Example
+F5 := HomalgRingOfIntegersInSingular( 5 );
+R := F5 * "x,y,z,v,w";;
+category := CategoryOfLeftModulePresentationsOverLocalRing( R, [ "x", "y", "z", "v", "w" ] );;
+i1 := HomalgMatrix( "[ x-z, y-w ]", 2, 1, R );;
+i2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^20+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1 ]", 2, 1, R );;
+M1 := AsLeftPresentation( i1 );
+M2 := AsLeftPresentation( i2 );
+OI0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );
+j1 := HomalgMatrix( "[ x*z, x*w, y*z, y*w, v^2 ]", 5, 1, R );;
+j2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^2+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1, x^7 ]", 3, 1, R );;
+M1 := AsLeftPresentation( j1 );
+M2 := AsLeftPresentation( j2 );
+OJ0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );
+M := AsSerreQuotientCategoryObject( category, OI0 );
+#! @EndExample
