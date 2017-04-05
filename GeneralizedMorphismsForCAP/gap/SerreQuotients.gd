@@ -130,6 +130,15 @@ DeclareAttribute( "SubcategoryMembershipTestFunctionForSerreQuotient",
 DeclareAttribute( "UnderlyingHonestCategory",
                   IsCapCategory );
 
+##
+DeclareAttribute( "SpecializedObjectFilterForSerreQuotients",
+                  IsCapCategory );
+
+##
+DeclareAttribute( "SpecializedMorphismFilterForSerreQuotients",
+                  IsCapCategory );
+
+
 #! @Description
 #!  For a Serre quotient category <A>A/C</A> this attribute returns generalized morphism category the quotient is modelled upon.
 #! @Arguments A/C
