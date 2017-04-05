@@ -148,7 +148,7 @@ InstallMethod( Annihilator,
     
     if number_of_generators = 0 then
         
-        return UniversalMorphismFromZeroObject( FreeLeftPresentation( 1, ring ) );
+        return IdentityMorphism( FreeLeftPresentation( 1, ring ) );
         
     fi;
     
@@ -176,7 +176,7 @@ InstallMethod( Annihilator,
     
     if number_of_generators = 0 then
         
-        return UniversalMorphismFromZeroObject( FreeRightPresentation( 1, ring ) );
+        return IdentityMorphism( FreeRightPresentation( 1, ring ) );
         
     fi;
     
