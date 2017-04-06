@@ -19,12 +19,26 @@ DeclareCategory( "IsCategoryOfModulePresentationsOverLocalRingObject",
 
 ####################################
 ##
+#! @Section Constructors
+##
+####################################
+
+##
+DeclareOperation( "FreeModulePresentationOverLocalRing",
+                  [ IsCategoryOfModulePresentationsOverLocalRing, IsInt ] );
+
+####################################
+##
 #! @Section Attributes
 ##
 ####################################
 
 ##
 DeclareAttribute( "MinimalGeneratorsModel",
+                  IsCategoryOfModulePresentationsOverLocalRingObject );
+
+##
+DeclareAttribute( "MinimalRelationsModel",
                   IsCategoryOfModulePresentationsOverLocalRingObject );
 
 ##
@@ -50,3 +64,13 @@ KeyDependentOperation( "MinimalFreeResolutionDifferential",
 ##
 DeclareAttribute( "MinimalFreeResolution",
                   IsCategoryOfModulePresentationsOverLocalRingObject );
+
+####################################
+##
+#! @Section Operations
+##
+####################################
+
+DeclareOperationWithCache( "TorComplex",
+                           [ IsCategoryOfModulePresentationsOverLocalRingObject,
+                             IsCategoryOfModulePresentationsOverLocalRingObject ] );

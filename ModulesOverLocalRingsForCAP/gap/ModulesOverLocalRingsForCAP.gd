@@ -50,3 +50,14 @@ DeclareAttribute( "UnderlyingHomalgRing",
 DeclareAttribute( "UnderlyingHomalgRingModuloPrimeIdeal",
                   IsCategoryOfModulePresentationsOverLocalRing );
 
+##
+DeclareAttribute( "FunctorMinimalGeneratorsModel",
+                  IsCategoryOfModulePresentationsOverLocalRing );
+
+##
+DeclareAttribute( "FunctorMinimalRelationsModel",
+                  IsCategoryOfModulePresentationsOverLocalRing );
+
+##
+DeclareAttribute( "FunctorMinimalModel",
+                  IsCategoryOfModulePresentationsOverLocalRing );

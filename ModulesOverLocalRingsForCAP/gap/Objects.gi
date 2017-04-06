@@ -8,6 +8,26 @@
 
 ####################################
 ##
+## Constructors
+##
+####################################
+
+InstallMethod( FreeModulePresentationOverLocalRing,
+               [ IsCategoryOfModulePresentationsOverLocalRing, IsInt ],
+               
+  function( category, rank )
+    local ring, object;
+    
+    ring := UnderlyingHomalgRing( category );
+    
+    object := FreeLeftPresentation( rank, ring );
+    
+    return AsSerreQuotientCategoryObject( category, object );
+    
+end );
+
+####################################
+##
 ## Attributes
 ##
 ####################################
@@ -38,7 +58,7 @@ InstallMethod( MinimalGeneratorsModel,
     residue_matrix := matrix * UnderlyingHomalgRingModuloPrimeIdeal( category );
     
     indices := REFIndicesForMatricesOverIntegralDomain( residue_matrix );
-    
+    #TODO: make a shortcut for indices = []
     nr_cols := NrColumns( matrix );
     
     rank := nr_cols - Size( indices );
@@ -62,12 +82,54 @@ InstallMethod( MinimalGeneratorsModel,
 end );
 
 ##
+InstallMethod( MinimalRelationsModel,
+               [ IsCategoryOfModulePresentationsOverLocalRingObject ],
+               
+  function( presentation )
+    local category, minimal_free_resolution, d1, minimal_model, range, ring, isomorphism_matrix, nr_cols;
+    
+    category := CapCategory( presentation );
+    
+    minimal_free_resolution := MinimalFreeResolution( presentation );
+    
+    d1 := Differential( minimal_free_resolution, 1 );
+    
+    d1 := UnderlyingMatrix( HonestRepresentative( UnderlyingGeneralizedMorphism( d1 ) ) );
+    
+    minimal_model := AsLeftPresentation( d1 );
+    
+    range := UnderlyingHonestObject( presentation );
+    
+    ring := UnderlyingHomalgRing( category );
+    
+    nr_cols := NrColumns( UnderlyingMatrix( presentation ) );
+    
+    isomorphism_matrix := HomalgIdentityMatrix( nr_cols, ring );
+    
+    return AsSerreQuotientCategoryMorphism( category, PresentationMorphism( minimal_model, isomorphism_matrix, range ) );
+    
+end );
+
+##
 InstallMethod( MinimalNumberOfGenerators,
                [ IsCategoryOfModulePresentationsOverLocalRingObject ],
                
   function( presentation )
+    local category, matrix, residue_matrix, indices, nr_cols, rank;
     
-    return NrColumns( UnderlyingMatrix( Source( MinimalGeneratorsModel( presentation ) ) ) );
+    category := CapCategory( presentation );
+    
+    matrix := UnderlyingMatrix( presentation );
+    
+    residue_matrix := matrix * UnderlyingHomalgRingModuloPrimeIdeal( category );
+    
+    indices := REFIndicesForMatricesOverIntegralDomain( residue_matrix );
+    
+    nr_cols := NrColumns( matrix );
+    
+    rank := nr_cols - Size( indices );
+    
+    return rank;
     
 end );
 
@@ -89,9 +151,15 @@ InstallMethod( FiltrationByPrimeIdealEmbedding,
         TensorProductOnMorphisms( prime_ideal_embedding, IdentityMorphism( underlying_presentation ) ),
         LeftUnitor( underlying_presentation ) );
     
+    embedding := AsSerreQuotientCategoryMorphism( category, embedding );
+    
+    embedding := PreCompose( MinimalGeneratorsModel( Source( embedding ) ), embedding );
+    
+    embedding := PreCompose( MinimalRelationsModel( Source( embedding ) ), embedding ) ;
+    
     embedding := ImageEmbedding( embedding );
     
-    return AsSerreQuotientCategoryMorphism( category, embedding );
+    return embedding;
     
 end );
 
@@ -114,7 +182,7 @@ InstallMethod( MinimalFreeResolutionDifferentialOp,
                [ IsCategoryOfModulePresentationsOverLocalRingObject, IsInt ],
                
   function( presentation, degree )
-    local minimal;
+    local minimal, number_of_generators;
     
     if degree > 0 then
         
@@ -122,9 +190,10 @@ InstallMethod( MinimalFreeResolutionDifferentialOp,
         
     elif degree = 0 then
         
-        minimal := MinimalGeneratorsModel( presentation );
+        number_of_generators := MinimalNumberOfGenerators( presentation );
         
-        return UniversalMorphismIntoZeroObject( Source( minimal ) );
+        return UniversalMorphismIntoZeroObject( 
+                 FreeModulePresentationOverLocalRing( CapCategory( presentation ), number_of_generators ) );
         
     elif degree = -1 then
         
@@ -166,7 +235,57 @@ InstallMethod( MinimalFreeResolution,
     
 end );
 
-
+InstallMethodWithCache( TorComplex,
+                        [ IsCategoryOfModulePresentationsOverLocalRingObject,
+                          IsCategoryOfModulePresentationsOverLocalRingObject ],
+                          
+  function( presentation_1, presentation_2 )
+    
+    local category, minimal_free_resolution, object_function, differential_function, z_functor, functor_minimal_model;
+    
+    category := CapCategory( presentation_1 );
+    
+    minimal_free_resolution := MinimalFreeResolution( presentation_1 );
+    
+    functor_minimal_model := FunctorMinimalModel( category );
+    
+    object_function := function( degree )
+      local object;
+      
+      object := TensorProductOnObjects( UnderlyingHonestObject( minimal_free_resolution[ -degree ] ), 
+                                        UnderlyingHonestObject( presentation_2 ) );
+      
+      object := AsSerreQuotientCategoryObject( category, object );
+      
+      return ApplyFunctor( functor_minimal_model, object );
+      
+    end;
+    
+    differential_function := function( degree )
+      local morphism, minimal_source, minimal_range;
+      
+      morphism := HonestRepresentative( UnderlyingGeneralizedMorphism( Differential( minimal_free_resolution, -degree ) ) );
+      
+      morphism := TensorProductOnMorphisms( morphism, IdentityMorphism( UnderlyingHonestObject( presentation_2 ) ) );
+      
+      morphism := AsSerreQuotientCategoryMorphism( category, morphism );
+      
+      return ApplyFunctor( functor_minimal_model, morphism );
+#       
+#       #TODO: make this a functor!
+#       minimal_source := MinimalGeneratorsModel( Source( morphism ) );
+#       
+#       minimal_range := MinimalGeneratorsModel( Range( morphism ) );
+#       
+#       return PreCompose( [ minimal_source, morphism, Inverse( minimal_range ) ] );
+#       
+    end;
+    
+    z_functor := ZFunctorObject( object_function, differential_function, category );
+    
+    return AsComplex( z_functor );
+    
+end );
 
 
 

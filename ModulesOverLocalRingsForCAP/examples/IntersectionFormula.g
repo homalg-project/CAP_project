@@ -6,7 +6,6 @@
 LoadPackage( "ModulesOverLocalRingsForCAP" );
 
 LoadPackage( "RingsForHomalg" );
-#! @Example
 F5 := HomalgRingOfIntegersInSingular( 5 );
 R := F5 * "x,y,z,v,w";;
 category := CategoryOfLeftModulePresentationsOverLocalRing( R, [ "x", "y", "z", "v", "w" ] );;
@@ -21,4 +20,17 @@ M1 := AsLeftPresentation( j1 );
 M2 := AsLeftPresentation( j2 );
 OJ0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );
 M := AsSerreQuotientCategoryObject( category, OI0 );
-#! @EndExample
+N := AsSerreQuotientCategoryObject( category, OJ0 );
+# 
+# FN := MinimalFreeResolution( N );
+# d1 := Differential( FN, 1 );
+# g1 := UnderlyingGeneralizedMorphism( d1 );
+# r1 := HonestRepresentative( g1 );
+# n := UnderlyingMatrix( r1 );
+# Nn := AsLeftPresentation( n );
+# Nn := AsSerreQuotientCategoryObject( category, Nn );
+
+Min := FunctorMinimalModel( category );
+M_min := ApplyFunctor( Min, M );
+N_min := ApplyFunctor( Min, N );
+T := TorComplex( M_min, N_min );
