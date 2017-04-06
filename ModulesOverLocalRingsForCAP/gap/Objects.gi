@@ -257,7 +257,9 @@ InstallMethodWithCache( TorComplex,
       
       object := AsSerreQuotientCategoryObject( category, object );
       
-      return ApplyFunctor( functor_minimal_model, object );
+      return object;
+      
+#       return ApplyFunctor( functor_minimal_model, object );
       
     end;
     
@@ -270,7 +272,9 @@ InstallMethodWithCache( TorComplex,
       
       morphism := AsSerreQuotientCategoryMorphism( category, morphism );
       
-      return ApplyFunctor( functor_minimal_model, morphism );
+      return morphism;
+      
+#       return ApplyFunctor( functor_minimal_model, morphism );
 #       
 #       #TODO: make this a functor!
 #       minimal_source := MinimalGeneratorsModel( Source( morphism ) );

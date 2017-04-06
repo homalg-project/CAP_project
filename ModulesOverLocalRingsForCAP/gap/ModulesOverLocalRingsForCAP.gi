@@ -107,7 +107,7 @@ InstallMethod( FunctorMinimalGeneratorsModel,
         
         minimal_model_range := MinimalGeneratorsModel( Range( morphism ) );
         
-        return PreCompose( [ minimal_model_source, morphism, minimal_model_range ] );
+        return PreCompose( [ minimal_model_source, morphism, Inverse( minimal_model_range ) ] );
         
     end );
     
@@ -142,7 +142,7 @@ InstallMethod( FunctorMinimalRelationsModel,
         
         minimal_model_range := MinimalRelationsModel( Range( morphism ) );
         
-        return PreCompose( [ minimal_model_source, morphism, minimal_model_range ] );
+        return PreCompose( [ minimal_model_source, morphism, Inverse( minimal_model_range ) ] );
         
     end );
     

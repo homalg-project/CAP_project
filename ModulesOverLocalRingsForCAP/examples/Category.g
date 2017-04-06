@@ -23,5 +23,5 @@ m := MinimalGeneratorsModel( N );;
 IsIsomorphism(m);
 #! true
 MinimalNumberOfGenerators( N );
-# 1
+#! 1
 #! @EndExample
