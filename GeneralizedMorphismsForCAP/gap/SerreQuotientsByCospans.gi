@@ -44,6 +44,8 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
         local underlying_general, new_morphism_aid, new_general, sum_general,
               sum_associated, sum_image;
         
+        underlying_general := UnderlyingGeneralizedMorphism( morphism2 );
+        
         new_general := AdditiveInverse( underlying_general );
         
         sum_general := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ), new_general );
