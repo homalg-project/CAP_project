@@ -33,4 +33,19 @@ N := AsSerreQuotientCategoryObject( category, OJ0 );
 Min := FunctorMinimalModel( category );
 M_min := ApplyFunctor( Min, M );
 N_min := ApplyFunctor( Min, N );
-T := TorComplex( M_min, N_min );
+# T := TorComplex( M_min, N_min );
+
+## Minimalize degree of relations
+m := BasisOfRows( UnderlyingMatrix( OI0 ) );
+m := EntriesOfHomalgMatrix( m ){[1..2]};
+Mn := HomalgMatrix( m, 2, 1, R );
+Mn := AsLeftPresentation ( Mn );
+Mn := AsSerreQuotientCategoryObject( category, Mn );
+
+n := BasisOfRows( UnderlyingMatrix( OJ0 ) );
+n := EntriesOfHomalgMatrix( n ){[4..8]};
+Nn := HomalgMatrix( n, 5, 1, R );
+Nn := AsLeftPresentation ( Nn );
+Nn := AsSerreQuotientCategoryObject( category, Nn );
+
+T := TorComplex( Mn, Nn );

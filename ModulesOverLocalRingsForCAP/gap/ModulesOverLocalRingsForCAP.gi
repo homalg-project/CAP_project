@@ -48,6 +48,12 @@ InstallMethod( CategoryOfLeftModulePresentationsOverLocalRing,
     
     SetUnderlyingHomalgRing( category, ring );
     
+    if IsFreePolynomialRing( ring ) then
+        
+        SetUnderlyingHomalgRingDegreeFunction( category, Degree );
+        
+    fi;
+    
     return category;
     
 end );
@@ -78,84 +84,5 @@ InstallMethod( PrimeIdealAsModuleEmbedding,
     ideal_embedding := AsMorphismBetweenFreeLeftPresentations( PrimeIdealAsHomalgMatrix( category ) );
     
     return ImageEmbedding( ideal_embedding );
-    
-end );
-
-##
-InstallMethod( FunctorMinimalGeneratorsModel,
-               [ IsCategoryOfModulePresentationsOverLocalRing ],
-               
-  function( category )
-    local functor;
-    
-    functor := CapFunctor( Concatenation( "Minimal generators model for ", Name( category ) ), category, category );
-    
-    AddObjectFunction( functor,
-                       
-      function( object )
-        
-        return Source( MinimalGeneratorsModel( object ) );
-        
-    end );
-    
-    AddMorphismFunction( functor,
-                         
-      function( new_source, morphism, new_range )
-        local minimal_model_source, minimal_model_range;
-        
-        minimal_model_source := MinimalGeneratorsModel( Source( morphism ) );
-        
-        minimal_model_range := MinimalGeneratorsModel( Range( morphism ) );
-        
-        return PreCompose( [ minimal_model_source, morphism, Inverse( minimal_model_range ) ] );
-        
-    end );
-    
-    return functor;
-    
-end );
-
-
-##
-InstallMethod( FunctorMinimalRelationsModel,
-               [ IsCategoryOfModulePresentationsOverLocalRing ],
-               
-  function( category )
-    local functor;
-    
-    functor := CapFunctor( Concatenation( "Minimal relations model for ", Name( category ) ), category, category );
-    
-    AddObjectFunction( functor,
-                       
-      function( object )
-        
-        return Source( MinimalRelationsModel( object ) );
-        
-    end );
-    
-    AddMorphismFunction( functor,
-                         
-      function( new_source, morphism, new_range )
-        local minimal_model_source, minimal_model_range;
-        
-        minimal_model_source := MinimalRelationsModel( Source( morphism ) );
-        
-        minimal_model_range := MinimalRelationsModel( Range( morphism ) );
-        
-        return PreCompose( [ minimal_model_source, morphism, Inverse( minimal_model_range ) ] );
-        
-    end );
-    
-    return functor;
-    
-end );
-
-##
-InstallMethod( FunctorMinimalModel,
-               [ IsCategoryOfModulePresentationsOverLocalRing ],
-               
-  function( category )
-    
-    return PreCompose( FunctorMinimalGeneratorsModel( category ), FunctorMinimalRelationsModel( category ) );
     
 end );

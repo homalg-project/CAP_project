@@ -16,3 +16,6 @@
 
 DeclareAttribute( "REFIndicesForMatricesOverIntegralDomain",
                   IsHomalgMatrix );
+
+DeclareOperationWithCache( "REFIndicesForMatricesOverIntegralDomainWithGivenColumnOrdering",
+                           [ IsHomalgMatrix, IsList ] );

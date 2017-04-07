@@ -12,6 +12,7 @@
 ##
 ####################################
 
+##
 InstallMethod( FreeModulePresentationOverLocalRing,
                [ IsCategoryOfModulePresentationsOverLocalRing, IsInt ],
                
@@ -23,6 +24,16 @@ InstallMethod( FreeModulePresentationOverLocalRing,
     object := FreeLeftPresentation( rank, ring );
     
     return AsSerreQuotientCategoryObject( category, object );
+    
+end );
+
+##
+InstallMethod( AsModulePresentationOverLocalRing,
+               [ IsCategoryOfModulePresentationsOverLocalRing, IsHomalgMatrix ],
+               
+  function( category, matrix )
+    
+    return AsSerreQuotientCategoryObject( category, AsLeftPresentation( matrix ) );
     
 end );
 
@@ -42,14 +53,12 @@ InstallMethod( UnderlyingMatrix,
     
 end );
 
-
 ##
-InstallMethod( MinimalGeneratorsModel,
+InstallMethod( SuperfluousGeneratorsIndicesList,
                [ IsCategoryOfModulePresentationsOverLocalRingObject ],
                
   function( presentation )
-    local category, matrix, residue_matrix, indices, nr_cols, rank, ring, F, isomorphism_matrix,
-          range, isomorphism, relations, minimal_model;
+    local category, matrix, residue_matrix;
     
     category := CapCategory( presentation );
     
@@ -57,7 +66,59 @@ InstallMethod( MinimalGeneratorsModel,
     
     residue_matrix := matrix * UnderlyingHomalgRingModuloPrimeIdeal( category );
     
-    indices := REFIndicesForMatricesOverIntegralDomain( residue_matrix );
+    return REFIndicesForMatricesOverIntegralDomain( residue_matrix );
+    
+end );
+
+##
+InstallMethod( SuperfluousRelationsIndicesList,
+               [ IsCategoryOfModulePresentationsOverLocalRingObject ],
+               
+  function( presentation )
+    local category, matrix, syzygies, column_list, degree_function, row_list, degree_list, residue_matrix;
+    
+    category := CapCategory( presentation );
+    
+    matrix := UnderlyingMatrix( presentation );
+    
+    syzygies := SyzygiesOfRows( matrix );
+    
+    column_list := [ 1 .. NrColumns( syzygies ) ];
+    
+    if HasUnderlyingHomalgRingDegreeFunction( category ) then
+        
+        degree_function := UnderlyingHomalgRingDegreeFunction( category );
+        
+        #TODO: can we avoid this?
+        row_list := EntriesOfHomalgMatrixAsListList( matrix );
+        
+        degree_list := List( [ 1 .. NrRows( matrix ) ], i -> Maximum( List( row_list[i], degree_function ) ) );
+        
+        SortParallel( degree_list, column_list );
+        
+        column_list := Reversed( column_list );
+        
+    fi;
+    
+    residue_matrix := syzygies * UnderlyingHomalgRingModuloPrimeIdeal( category );
+    
+    return REFIndicesForMatricesOverIntegralDomainWithGivenColumnOrdering( residue_matrix, column_list );
+    
+end );
+
+##
+InstallMethod( MinimalGeneratorsModel,
+               [ IsCategoryOfModulePresentationsOverLocalRingObject ],
+               
+  function( presentation )
+    local category, matrix, indices, nr_cols, rank, ring, F, isomorphism_matrix,
+          range, isomorphism, relations, minimal_model;
+    
+    category := CapCategory( presentation );
+    
+    matrix := UnderlyingMatrix( presentation );
+    
+    indices := SuperfluousGeneratorsIndicesList( presentation );
     #TODO: make a shortcut for indices = []
     nr_cols := NrColumns( matrix );
     
@@ -82,21 +143,42 @@ InstallMethod( MinimalGeneratorsModel,
 end );
 
 ##
+InstallMethod( MinimalNumberOfGenerators,
+               [ IsCategoryOfModulePresentationsOverLocalRingObject ],
+               
+  function( presentation )
+    local matrix, indices, nr_cols, rank;
+    
+    matrix := UnderlyingMatrix( presentation );
+    
+    indices := SuperfluousGeneratorsIndicesList( presentation );
+    
+    nr_cols := NrColumns( matrix );
+    
+    rank := nr_cols - Size( indices );
+    
+    return rank;
+    
+end );
+
+##
 InstallMethod( MinimalRelationsModel,
                [ IsCategoryOfModulePresentationsOverLocalRingObject ],
                
   function( presentation )
-    local category, minimal_free_resolution, d1, minimal_model, range, ring, isomorphism_matrix, nr_cols;
+    local category, indices, matrix, row_list, minimal_model, range, ring, nr_cols, isomorphism_matrix;
     
     category := CapCategory( presentation );
     
-    minimal_free_resolution := MinimalFreeResolution( presentation );
+    indices := SuperfluousRelationsIndicesList( presentation );
     
-    d1 := Differential( minimal_free_resolution, 1 );
+    matrix := UnderlyingMatrix( presentation );
     
-    d1 := UnderlyingMatrix( HonestRepresentative( UnderlyingGeneralizedMorphism( d1 ) ) );
+    row_list := Difference( [ 1 .. NrRows( matrix ) ], indices );
     
-    minimal_model := AsLeftPresentation( d1 );
+    matrix := CertainRows( matrix, row_list );
+    
+    minimal_model := AsLeftPresentation( matrix );
     
     range := UnderlyingHonestObject( presentation );
     
@@ -111,25 +193,27 @@ InstallMethod( MinimalRelationsModel,
 end );
 
 ##
-InstallMethod( MinimalNumberOfGenerators,
+InstallMethod( StandardGeneratorsModel,
                [ IsCategoryOfModulePresentationsOverLocalRingObject ],
                
   function( presentation )
-    local category, matrix, residue_matrix, indices, nr_cols, rank;
+    local category, matrix, model, range, ring, nr_cols, isomorphism_matrix;
     
     category := CapCategory( presentation );
     
     matrix := UnderlyingMatrix( presentation );
     
-    residue_matrix := matrix * UnderlyingHomalgRingModuloPrimeIdeal( category );
+    model := AsLeftPresentation( BasisOfRows( matrix ) );
     
-    indices := REFIndicesForMatricesOverIntegralDomain( residue_matrix );
+    range := UnderlyingHonestObject( presentation );
+    
+    ring := UnderlyingHomalgRing( category );
     
     nr_cols := NrColumns( matrix );
     
-    rank := nr_cols - Size( indices );
+    isomorphism_matrix := HomalgIdentityMatrix( nr_cols, ring );
     
-    return rank;
+    return AsSerreQuotientCategoryMorphism( category, PresentationMorphism( model, isomorphism_matrix, range ) );
     
 end );
 
@@ -292,7 +376,29 @@ InstallMethodWithCache( TorComplex,
 end );
 
 
+####################################
+##
+## View
+##
+####################################
 
+##
+InstallMethod( Display,
+               [ IsCategoryOfModulePresentationsOverLocalRingObject ],
+               # FIXME: Fix the rank in GenericView and delete this afterwards
+               9999,
+               
+  function( object )
+    
+    Display( UnderlyingMatrix( object ) );
+    
+    Print( "\n" );
+    
+    Print( StringMutable( object ) );
+    
+    Print( "\n" );
+    
+end );
 
 
 

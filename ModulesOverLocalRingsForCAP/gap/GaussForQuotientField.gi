@@ -12,15 +12,25 @@
 ##
 #############################
 
+##
 InstallMethod( REFIndicesForMatricesOverIntegralDomain,
                [ IsHomalgMatrix ],
                
   function( matrix )
-    local entries, nr_cols, nr_rows, c, r, result_list, p, a, rows_to_check, pivot;
+    
+    return REFIndicesForMatricesOverIntegralDomainWithGivenColumnOrdering( matrix, [ 1 .. NrColumns( matrix ) ] );
+    
+end );
+
+
+##
+InstallMethodWithCache( REFIndicesForMatricesOverIntegralDomainWithGivenColumnOrdering,
+                        [ IsHomalgMatrix, IsList ],
+                        
+  function( matrix, column_list )
+    local entries, nr_rows, c, r, result_list, p, a, rows_to_check, pivot;
     
     entries := EntriesOfHomalgMatrixAsListList( matrix );
-    
-    nr_cols := NrColumns( matrix );
     
     nr_rows := NrRows( matrix );
     
@@ -28,7 +38,7 @@ InstallMethod( REFIndicesForMatricesOverIntegralDomain,
     
     result_list := [];
     
-    for c in [ 1 .. nr_cols ] do
+    for c in column_list do
         
         pivot := 0;
         

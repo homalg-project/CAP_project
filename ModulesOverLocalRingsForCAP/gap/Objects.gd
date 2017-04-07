@@ -27,6 +27,10 @@ DeclareCategory( "IsCategoryOfModulePresentationsOverLocalRingObject",
 DeclareOperation( "FreeModulePresentationOverLocalRing",
                   [ IsCategoryOfModulePresentationsOverLocalRing, IsInt ] );
 
+##
+DeclareOperation( "AsModulePresentationOverLocalRing",
+                  [ IsCategoryOfModulePresentationsOverLocalRing, IsHomalgMatrix ] );
+
 ####################################
 ##
 #! @Section Attributes
@@ -42,7 +46,19 @@ DeclareAttribute( "MinimalRelationsModel",
                   IsCategoryOfModulePresentationsOverLocalRingObject );
 
 ##
+DeclareAttribute( "StandardGeneratorsModel",
+                  IsCategoryOfModulePresentationsOverLocalRingObject );
+
+##
 DeclareAttribute( "MinimalNumberOfGenerators",
+                  IsCategoryOfModulePresentationsOverLocalRingObject );
+
+##
+DeclareAttribute( "SuperfluousGeneratorsIndicesList",
+                  IsCategoryOfModulePresentationsOverLocalRingObject );
+
+##
+DeclareAttribute( "SuperfluousRelationsIndicesList",
                   IsCategoryOfModulePresentationsOverLocalRingObject );
 
 ##
