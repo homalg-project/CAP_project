@@ -86,3 +86,16 @@ InstallMethod( PrimeIdealAsModuleEmbedding,
     return ImageEmbedding( ideal_embedding );
     
 end );
+
+##
+InstallMethod( PrimeIdealQuotientModuleProjection,
+               [ IsCategoryOfModulePresentationsOverLocalRing ],
+               
+  function( category )
+    local ideal_embedding;
+    
+    ideal_embedding := AsMorphismBetweenFreeLeftPresentations( PrimeIdealAsHomalgMatrix( category ) );
+    
+    return CokernelProjection( ideal_embedding );
+    
+end );

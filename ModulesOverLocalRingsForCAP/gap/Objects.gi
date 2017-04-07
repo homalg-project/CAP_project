@@ -222,28 +222,20 @@ InstallMethod( FiltrationByPrimeIdealEmbedding,
                [ IsCategoryOfModulePresentationsOverLocalRingObject ],
                
   function( presentation )
-    local category, underlying_presentation, prime_ideal_embedding, embedding;
+    local category, underlying_presentation, projection;
     
     category := CapCategory( presentation );
     
     underlying_presentation := UnderlyingHonestObject( presentation );
     
-    prime_ideal_embedding := PrimeIdealAsModuleEmbedding( category );
+    projection := PrimeIdealQuotientModuleProjection( category );
     
-    embedding := 
-      PreCompose( 
-        TensorProductOnMorphisms( prime_ideal_embedding, IdentityMorphism( underlying_presentation ) ),
-        LeftUnitor( underlying_presentation ) );
+    projection :=
+      PreCompose(
+        LeftUnitorInverse( underlying_presentation ), 
+        TensorProductOnMorphisms( projection, IdentityMorphism( underlying_presentation ) ) );
     
-    embedding := AsSerreQuotientCategoryMorphism( category, embedding );
-    
-    embedding := PreCompose( MinimalGeneratorsModel( Source( embedding ) ), embedding );
-    
-    embedding := PreCompose( MinimalRelationsModel( Source( embedding ) ), embedding ) ;
-    
-    embedding := ImageEmbedding( embedding );
-    
-    return embedding;
+    return AsSerreQuotientCategoryMorphism( category, KernelEmbedding( projection ) );
     
 end );
 
@@ -359,14 +351,6 @@ InstallMethodWithCache( TorComplex,
       return morphism;
       
 #       return ApplyFunctor( functor_minimal_model, morphism );
-#       
-#       #TODO: make this a functor!
-#       minimal_source := MinimalGeneratorsModel( Source( morphism ) );
-#       
-#       minimal_range := MinimalGeneratorsModel( Range( morphism ) );
-#       
-#       return PreCompose( [ minimal_source, morphism, Inverse( minimal_range ) ] );
-#       
     end;
     
     z_functor := ZFunctorObject( object_function, differential_function, category );

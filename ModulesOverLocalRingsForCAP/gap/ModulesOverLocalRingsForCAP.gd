@@ -43,6 +43,10 @@ DeclareAttribute( "PrimeIdealAsModuleEmbedding",
                   IsCategoryOfModulePresentationsOverLocalRing );
 
 ##
+DeclareAttribute( "PrimeIdealQuotientModuleProjection",
+                  IsCategoryOfModulePresentationsOverLocalRing );
+
+##
 DeclareAttribute( "UnderlyingHomalgRing",
                   IsCategoryOfModulePresentationsOverLocalRing );
 

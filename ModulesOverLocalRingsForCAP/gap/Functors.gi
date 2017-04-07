@@ -121,7 +121,10 @@ InstallMethod( FunctorMinimalModel,
                
   function( category )
     
-    return PreCompose( FunctorMinimalGeneratorsModel( category ), FunctorMinimalRelationsModel( category ) );
+    return PreCompose( [
+             FunctorMinimalGeneratorsModel( category ),
+             FunctorStandardGeneratorsModel( category ),
+             FunctorMinimalRelationsModel( category ) ] );
     
 end );
 
