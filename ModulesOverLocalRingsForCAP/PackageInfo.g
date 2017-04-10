@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "ModulesOverLocalRingsForCAP",
 Subtitle := "Category of modules over a local ring modeled by Serre quotients for CAP",
 Version := Maximum( [
-           "2017.04.04" # Sepps version
+           "2017.04.10" # Sepps version
            ] ),
 Date := "04/04/2017", # dd/mm/yyyy format
 
