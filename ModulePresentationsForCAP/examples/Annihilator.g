@@ -15,7 +15,7 @@ M := DirectSum( M1, M2, M3 );;
 Display( Annihilator( M ) );
 #! 12
 #! 
-#! A morphism in Category of left presentations of Z
+#! A monomorphism in Category of left presentations of Z
 M1 := AsRightPresentation( HomalgMatrix( [ [ "2" ] ], ZZ ) );;
 M2 := AsRightPresentation( HomalgMatrix( [ [ "3" ] ], ZZ ) );;
 M3 := AsRightPresentation( HomalgMatrix( [ [ "4" ] ], ZZ ) );;
@@ -23,5 +23,5 @@ M := DirectSum( M1, M2, M3 );;
 Display( Annihilator( M ) );
 #! 12
 #! 
-#! A morphism in Category of right presentations of Z
+#! A monomorphism in Category of right presentations of Z
 #! @EndExample
