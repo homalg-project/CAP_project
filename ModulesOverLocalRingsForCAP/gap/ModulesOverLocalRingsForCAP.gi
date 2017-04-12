@@ -48,7 +48,7 @@ InstallMethod( CategoryOfLeftModulePresentationsOverLocalRing,
     
     SetUnderlyingHomalgRing( category, ring );
     
-    if IsFreePolynomialRing( ring ) then
+    if HasIsFreePolynomialRing( ring ) and IsFreePolynomialRing( ring ) then
         
         SetUnderlyingHomalgRingDegreeFunction( category, Degree );
         
@@ -97,5 +97,33 @@ InstallMethod( PrimeIdealQuotientModuleProjection,
     ideal_embedding := AsMorphismBetweenFreeLeftPresentations( PrimeIdealAsHomalgMatrix( category ) );
     
     return CokernelProjection( ideal_embedding );
+    
+end );
+
+##
+InstallMethod( EmbeddingDimension,
+               [ IsCategoryOfModulePresentationsOverLocalRing ],
+               
+  function( category )
+    
+    return MinimalNumberOfGenerators( 
+             AsSerreQuotientCategoryObject( category, Source( PrimeIdealAsModuleEmbedding( category ) ) ) );
+    
+end );
+
+##
+InstallMethod( IsRegular,
+               [ IsCategoryOfModulePresentationsOverLocalRing ],
+               
+  function( category )
+    local embedding_dimension, k, minimal_resolution;
+    
+    embedding_dimension := EmbeddingDimension( category );
+    
+    k := AsSerreQuotientCategoryObject( category, Range( PrimeIdealQuotientModuleProjection( category ) ) );
+    
+    minimal_resolution := MinimalFreeResolution( k );
+    
+    return IsZero( minimal_resolution[ embedding_dimension + 1 ] );
     
 end );
