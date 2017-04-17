@@ -426,17 +426,14 @@ end );
 
 ##
 InstallMethod( AsGeneralizedMorphismByCospan,
-        [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ],
+        [ IsCapNaturalTransformation, IsString ],
 
-  function( eta, name, F, G )
-    local gmceta;
+  function( eta, name )
+    local F, G, gmceta;
 
-    if not IsIdenticalObj( Source( eta ), F!.UnderlyingFunctor ) then
-        Error( "the source of the natural transformation and the functor underlying the lifted source functor do not coincide\n" );
-    elif not IsIdenticalObj( Range( eta ), G!.UnderlyingFunctor ) then
-        Error( "the target of the natural transformation and the functor underlying the lifted target functor do not coincide\n" );
-    fi;
-
+    F := AsGeneralizedMorphismByCospan( Source( eta ) );
+    G := AsGeneralizedMorphismByCospan( Range( eta ) );
+    
     gmceta := NaturalTransformation( name, F, G );
 
     AddNaturalTransformationFunction(
@@ -457,15 +454,15 @@ end );
 
 ##
 InstallMethod( AsGeneralizedMorphismByCospan,
-        [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ],
+        [ IsCapNaturalTransformation ],
 
-  function( eta, F, G )
+  function( eta )
     local name;
 
     name := "GeneralizedMorphismByCospan version of ";
     name := Concatenation( name, Name( eta ) );
 
-    return AsGeneralizedMorphismByCospan( eta, name, F, G );
+    return AsGeneralizedMorphismByCospan( eta, name );
 
 end );
 
