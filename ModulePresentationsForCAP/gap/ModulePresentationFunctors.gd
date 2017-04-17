@@ -17,7 +17,7 @@
 
 #! @Description
 #! The argument is a homalg ring $R$.
-#! The output is functor which takes
+#! The output is a functor which takes
 #! a left presentation as input and computes
 #! its standard presentation.
 #! @Returns a functor
@@ -27,7 +27,7 @@ DeclareAttribute( "FunctorStandardModuleLeft",
 
 #! @Description
 #! The argument is a homalg ring $R$.
-#! The output is functor which takes
+#! The output is a functor which takes
 #! a right presentation as input and computes
 #! its standard presentation.
 #! @Returns a functor
@@ -37,7 +37,7 @@ DeclareAttribute( "FunctorStandardModuleRight",
 
 #! @Description
 #! The argument is a homalg ring $R$.
-#! The output is functor which takes
+#! The output is a functor which takes
 #! a left presentation as input and gets
 #! rid of the zero generators.
 #! @Returns a functor
@@ -47,7 +47,7 @@ DeclareAttribute( "FunctorGetRidOfZeroGeneratorsLeft",
 
 #! @Description
 #! The argument is a homalg ring $R$.
-#! The output is functor which takes
+#! The output is a functor which takes
 #! a right presentation as input and gets
 #! rid of the zero generators.
 #! @Returns a functor
