@@ -384,16 +384,13 @@ end );
 
 ##
 InstallMethod( AsGeneralizedMorphismByCospan,
-        [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ],
+        [ IsCapFunctor, IsString ],
 
-  function( F, name, A, B )
-    local gmcF;
+  function( F, name )
+    local A, B, gmcF;
     
-    if not IsIdenticalObj( AsCapCategory( Source( F ) ), UnderlyingHonestCategory( A ) ) then
-        Error( "the source of the functor and the category underlying the source category with ambient object do not coincide\n" );
-    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), UnderlyingHonestCategory( B ) ) then
-        Error( "the target of the functor and the category underlying the target category with ambient object do not coincide\n" );
-    fi;
+    A := GeneralizedMorphismCategoryByCospans( AsCapCategory( Source( F ) ) );
+    B := GeneralizedMorphismCategoryByCospans( AsCapCategory( Range( F ) ) );
     
     gmcF := CapFunctor( name, A, B );
     
@@ -415,44 +412,16 @@ end );
 
 ##
 InstallMethod( AsGeneralizedMorphismByCospan,
-        [ IsCapFunctor, IsCapCategory, IsCapCategory ],
+        [ IsCapFunctor ],
 
-  function( F, A, B )
+  function( F )
     local name;
 
     name := "GeneralizedMorphismByCospan version of ";
     name := Concatenation( name, Name( F ) );
     
-    return AsGeneralizedMorphismByCospan( F, name, A, B );
+    return AsGeneralizedMorphismByCospan( F, name );
     
-end );
-
-##
-InstallMethod( AsGeneralizedMorphismByCospan,
-        [ IsCapFunctor, IsString, IsCapCategory ],
-
-  function( F, name, A )
-
-    if not IsIdenticalObj( Source( F ), Range( F ) ) then
-        Error( "the functor is not an endofunctor\n" );
-    fi;
-
-    return AsGeneralizedMorphismByCospan( F, name, A, A );
-
-end );
-
-##
-InstallMethod( AsGeneralizedMorphismByCospan,
-        [ IsCapFunctor, IsCapCategory ],
-
-  function( F, A )
-    local name;
-
-    name := "GeneralizedMorphismByCospan version of ";
-    name := Concatenation( name, Name( F ) );
-
-    return AsGeneralizedMorphismByCospan( F, name, A );
-
 end );
 
 ##

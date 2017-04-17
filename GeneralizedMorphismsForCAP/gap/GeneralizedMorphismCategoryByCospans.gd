@@ -224,35 +224,12 @@ DeclareAttribute( "GeneralizedMorphismByCospansObject",
 ####################################
 
 #! @Description
-#!  AsGeneralizedMorphismByCospan a functor ...
-#! @Arguments F, name, A, B
+#!  Lift the <E>exact</E> functor <A>F</A> to a functor <M>A \to B</M>,
+#!  where <M>A := </M> <C>GeneralizedMorphismCategoryByCospans( AsCapCategory( Source( </C><A>F</A><C> ) ) )</C>
+#!  and <M>B := </M> <C>GeneralizedMorphismCategoryByCospans( AsCapCategory( Range( </C><A>F</A><C> ) ) )</C>.
+#! @Arguments F, name
 DeclareOperation( "AsGeneralizedMorphismByCospan",
-        [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ] );
-
-
-#! @Description
-#!  AsGeneralizedMorphismByCospan a functor ...
-#! @Arguments F, A, B
-#! @Group AsGeneralizedMorphismByCospan
-DeclareOperation( "AsGeneralizedMorphismByCospan",
-        [ IsCapFunctor, IsCapCategory, IsCapCategory ] );
-
-
-#! @Description
-#!  AsGeneralizedMorphismByCospan an endofunctor ...
-#! @Arguments F, name, A
-#! @Group AsGeneralizedMorphismByCospan
-DeclareOperation( "AsGeneralizedMorphismByCospan",
-        [ IsCapFunctor, IsString, IsCapCategory ] );
-
-
-#! @Description
-#!  AsGeneralizedMorphismByCospan an endofunctor ...
-#! @Arguments F, A
-#! @Group AsGeneralizedMorphismByCospan
-DeclareOperation( "AsGeneralizedMorphismByCospan",
-        [ IsCapFunctor, IsCapCategory ] );
-
+        [ IsCapFunctor, IsString ] );
 
 #! @Description
 #!  AsGeneralizedMorphismByCospan a natural transformation
