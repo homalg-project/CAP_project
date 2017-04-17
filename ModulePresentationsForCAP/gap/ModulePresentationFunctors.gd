@@ -59,7 +59,7 @@ DeclareAttribute( "FunctorGetRidOfZeroGeneratorsRight",
 #! The argument is a homalg ring $R$.
 #! The output is functor which takes
 #! a left presentation as input and computes
-#! it a presentation having less generators.
+#! a presentation having less generators.
 #! @Returns a functor
 #! @Arguments R
 DeclareAttribute( "FunctorLessGeneratorsLeft",
@@ -69,7 +69,7 @@ DeclareAttribute( "FunctorLessGeneratorsLeft",
 #! The argument is a homalg ring $R$.
 #! The output is functor which takes
 #! a right presentation as input and computes
-#! it a presentation having less generators.
+#! a presentation having less generators.
 #! @Returns a functor
 #! @Arguments R
 DeclareAttribute( "FunctorLessGeneratorsRight",
