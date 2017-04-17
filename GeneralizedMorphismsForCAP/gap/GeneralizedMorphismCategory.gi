@@ -155,7 +155,7 @@ InstallValue( PROPAGATION_LIST_FOR_GENERALIZED_MORPHISMS,
          "IsIsomorphism",
          #"IsSplitMonomorphism", propagating this would be wrong
          #"IsSplitEpimorphism",  propagating this would be wrong
-         "IsZero",
+         #"IsZero", the category of generalized morphisms has no zero objects
          # ..
          ]
         );
