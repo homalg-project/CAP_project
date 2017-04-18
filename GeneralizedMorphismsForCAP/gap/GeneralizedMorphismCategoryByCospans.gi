@@ -404,8 +404,6 @@ InstallMethod( AsGeneralizedMorphismByCospan,
               return GeneralizedMorphismByCospan( ApplyFunctor( F, Arrow( mor ) ), ApplyFunctor( F, ReversedArrow( mor ) ) );
             end );
     
-    gmcF!.UnderlyingFunctor := F;
-    
     return gmcF;
     
 end );
