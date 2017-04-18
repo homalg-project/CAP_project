@@ -136,6 +136,42 @@ end );
 ##############################################
 
 ##
+InstallMethod( Annihilator,
+               [ IsLeftPresentation ],
+               
+  function( module_presentation )
+    local ring, number_of_generators;
+    
+    ring := UnderlyingHomalgRing( module_presentation );
+    
+    number_of_generators := NrColumns( UnderlyingMatrix( module_presentation ) );
+    
+    return KernelEmbedding( 
+      PresentationMorphism( FreeLeftPresentation( 1, ring ),
+                            HomalgMatrix( List( [ 1 .. number_of_generators ], i -> 1 ), 1, number_of_generators, ring ),
+                            module_presentation ) );
+    
+end );
+
+##
+InstallMethod( Annihilator,
+               [ IsRightPresentation ],
+               
+  function( module_presentation )
+    local ring, number_of_generators;
+    
+    ring := UnderlyingHomalgRing( module_presentation );
+    
+    number_of_generators := NrRows( UnderlyingMatrix( module_presentation ) );
+    
+    return KernelEmbedding( 
+      PresentationMorphism( FreeRightPresentation( 1, ring ),
+                            HomalgMatrix( List( [ 1 .. number_of_generators ], i -> 1 ), number_of_generators, 1, ring ),
+                            module_presentation ) );
+    
+end );
+
+##
 InstallMethod( UnderlyingMatrix,
                [ IsLeftPresentation ],
                

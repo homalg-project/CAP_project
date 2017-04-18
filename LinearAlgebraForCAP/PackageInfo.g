@@ -15,7 +15,7 @@ Subtitle := "Category of Matrices over a Field for CAP",
 Version := Maximum( [
   "2015.12.03", ## Sebas' version
   ## this line prevents merge conflicts
-  "2015.10.06", ## Sepp's version
+  "2017.04.10", ## Sepp's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
