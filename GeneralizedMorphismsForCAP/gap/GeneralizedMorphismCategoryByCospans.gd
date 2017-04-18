@@ -230,16 +230,3 @@ DeclareAttribute( "GeneralizedMorphismByCospansObject",
 #! @Arguments F, name
 DeclareOperation( "AsGeneralizedMorphismByCospan",
         [ IsCapFunctor, IsString ] );
-
-#! @Description
-#!  Lift a natrual transformation <A>eta</A> between two exact functors to a one <M>F \to G</M>,
-#!  where <M>F := </M> <C>AsGeneralizedMorphismByCospan( Source( </C><A>eta</A><C> ) )</C>
-#!  and <M>G := </M> <C>AsGeneralizedMorphismByCospan( Range( </C><A>eta</A><C> ) )</C>.
-#! @Arguments eta, name
-DeclareOperation( "AsGeneralizedMorphismByCospan",
-        [ IsCapNaturalTransformation, IsString ] );
-
-#! @Arguments eta
-#! @Group AsGeneralizedMorphismByCospan
-DeclareAttribute( "AsGeneralizedMorphismByCospan",
-        IsCapNaturalTransformation );

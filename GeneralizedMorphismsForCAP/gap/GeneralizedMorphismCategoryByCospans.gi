@@ -424,48 +424,6 @@ InstallMethod( AsGeneralizedMorphismByCospan,
     
 end );
 
-##
-InstallMethod( AsGeneralizedMorphismByCospan,
-        [ IsCapNaturalTransformation, IsString ],
-
-  function( eta, name )
-    local F, G, gmceta;
-
-    F := AsGeneralizedMorphismByCospan( Source( eta ) );
-    G := AsGeneralizedMorphismByCospan( Range( eta ) );
-    
-    gmceta := NaturalTransformation( name, F, G );
-
-    AddNaturalTransformationFunction(
-            gmceta,
-            function( source, obj, range )
-
-              return AsGeneralizedMorphismByCospan( AsCapCategory( Range( F ) ), ApplyNaturalTransformation( eta, UnderlyingHonestObject( obj ) ) );
-
-            end );
-
-    gmceta!.UnderlyingNaturalTransformation := eta;
-
-    INSTALL_TODO_LIST_FOR_GENERALIZED_MORPHISMS( eta, gmceta );
-
-    return gmceta;
-
-end );
-
-##
-InstallMethod( AsGeneralizedMorphismByCospan,
-        [ IsCapNaturalTransformation ],
-
-  function( eta )
-    local name;
-
-    name := "GeneralizedMorphismByCospan version of ";
-    name := Concatenation( name, Name( eta ) );
-
-    return AsGeneralizedMorphismByCospan( eta, name );
-
-end );
-
 #################################
 ##
 ## Additional methods
