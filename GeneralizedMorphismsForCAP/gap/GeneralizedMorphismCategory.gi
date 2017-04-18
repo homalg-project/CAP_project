@@ -46,7 +46,7 @@ InstallMethod( AssociatedMorphism,
     
     associated_morphism := DomainAssociatedMorphismCodomainTriple( generalized_morphism )[2];
     
-    INSTALL_TODO_LIST_FOR_GENERALIZED_MORPHISMS( associated_morphism, generalized_morphism );
+    INSTALL_TODO_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM( generalized_morphism, associated_morphism );
     
     return associated_morphism;
     
@@ -148,7 +148,7 @@ InstallMethod( CombinedImageEmbedding,
 end );
 
 ##
-InstallValue( PROPAGATION_LIST_FOR_GENERALIZED_MORPHISMS,
+InstallValue( PROPAGATION_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM,
         [
          "IsMonomorphism",
          "IsEpimorphism",
@@ -161,13 +161,13 @@ InstallValue( PROPAGATION_LIST_FOR_GENERALIZED_MORPHISMS,
         );
 
 ##
-InstallGlobalFunction( INSTALL_TODO_LIST_FOR_GENERALIZED_MORPHISMS,
-  function( mor, hull )
+InstallGlobalFunction( INSTALL_TODO_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM,
+  function( hull, mor )
     local i;
     
-    for i in PROPAGATION_LIST_FOR_GENERALIZED_MORPHISMS do
+    for i in PROPAGATION_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM do
         
-        AddToToDoList( ToDoListEntryForEqualAttributes( mor, i, hull, i ) );
+        AddToToDoList( ToDoListEntryWithContraposition( hull, i, true, mor, i, true ) );
         
     od;
     

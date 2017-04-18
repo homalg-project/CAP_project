@@ -291,6 +291,6 @@ DeclareAttribute( "CombinedImageEmbedding",
 ##
 ####################################
 
-DeclareGlobalVariable( "PROPAGATION_LIST_FOR_GENERALIZED_MORPHISMS" );
+DeclareGlobalVariable( "PROPAGATION_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM" );
 
-DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_GENERALIZED_MORPHISMS" );
+DeclareGlobalFunction( "INSTALL_TODO_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM" );
