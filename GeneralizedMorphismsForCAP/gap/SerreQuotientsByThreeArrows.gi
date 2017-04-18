@@ -439,6 +439,12 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByThreeArrowsObject,
     
     AddToToDoList( ToDoListEntryForEqualAttributes( serre_object, "IsWellDefined", object, "IsWellDefined" ) );
     
+    if HasSpecializedObjectFilterForSerreQuotients( serre_category ) then
+        
+        SetFilterObj( serre_object, SpecializedObjectFilterForSerreQuotients( serre_category ) );
+        
+    fi;
+    
     AddObject( serre_category, serre_object );
     
     return serre_object;
@@ -464,6 +470,12 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrowsMorphism,
                              Range, AsSerreQuotientCategoryByThreeArrowsObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ) );
     
     SetUnderlyingGeneralizedMorphism( serre_morphism, gen_morphism );
+    
+    if HasSpecializedMorphismFilterForSerreQuotients( serre_category ) then
+        
+        SetFilterObj( serre_morphism, SpecializedMorphismFilterForSerreQuotients( serre_category ) );
+        
+    fi;
     
     AddMorphism( serre_category, serre_morphism );
     

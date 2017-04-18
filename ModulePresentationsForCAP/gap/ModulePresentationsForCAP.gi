@@ -388,28 +388,35 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
     AddKernelEmbedding( category,
       
       function( morphism )
-        local kernel, embedding;
+        local kernel, embedding, source_matrix;
         
-        embedding := SyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
+        embedding := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
         
-        kernel := SyzygiesOfRows( embedding, UnderlyingMatrix( Source( morphism ) ) );
+        source_matrix := BasisOfRows( UnderlyingMatrix( Source( morphism ) ) );
+        
+        embedding := DecideZeroRows( embedding, source_matrix );
+        
+        embedding := CertainRows( embedding, NonZeroRows( embedding ) );
+        
+        kernel := LazySyzygiesOfRows( embedding, source_matrix );
         
         kernel := AsLeftPresentation( kernel );
         
         return PresentationMorphism( kernel, embedding, Source( morphism ) );
         
     end );
-    
-    AddKernelEmbeddingWithGivenKernelObject( category,
-      
-      function( morphism, kernel )
-        local embedding;
-        
-        embedding := SyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
-        
-        return PresentationMorphism( kernel, embedding, Source( morphism ) );
-        
-    end );
+#  TODO: Can we profit from such a function?
+#     
+#     AddKernelEmbeddingWithGivenKernelObject( category,
+#       
+#       function( morphism, kernel )
+#         local embedding;
+#         
+#         embedding := SyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
+#         
+#         return PresentationMorphism( kernel, embedding, Source( morphism ) );
+#         
+#     end );
     
     AddLiftAlongMonomorphism( category,
       
@@ -436,28 +443,35 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
     AddKernelEmbedding( category,
       
       function( morphism )
-        local kernel, embedding;
+        local kernel, embedding, source_matrix;
         
-        embedding := SyzygiesOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
+        embedding := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
         
-        kernel := SyzygiesOfColumns( embedding, UnderlyingMatrix( Source( morphism ) ) );
+        source_matrix := BasisOfColumns( UnderlyingMatrix( Source( morphism ) ) );
+        
+        embedding := DecideZeroColumns( embedding, source_matrix );
+        
+        embedding := CertainColumns( embedding, NonZeroColumns( embedding ) );
+        
+        kernel := LazySyzygiesOfColumns( embedding, source_matrix );
         
         kernel := AsRightPresentation( kernel );
         
         return PresentationMorphism( kernel, embedding, Source( morphism ) );
         
     end );
-    
-    AddKernelEmbeddingWithGivenKernelObject( category,
-      
-      function( morphism, kernel )
-        local embedding;
-        
-        embedding := SyzygiesOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
-        
-        return PresentationMorphism( kernel, embedding, Source( morphism ) );
-        
-    end );
+#  TODO: Can we profit from such a function?
+#     
+#     AddKernelEmbeddingWithGivenKernelObject( category,
+#       
+#       function( morphism, kernel )
+#         local embedding;
+#         
+#         embedding := SyzygiesOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
+#         
+#         return PresentationMorphism( kernel, embedding, Source( morphism ) );
+#         
+#     end );
     
     AddLiftAlongMonomorphism( category,
       
@@ -1862,7 +1876,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
     fi;
     
-    end );
+    end, 1000 );
   
   fi;
  
@@ -2046,7 +2060,7 @@ end );
        
     fi;
     
-    end );
+    end, 1000 );
   
 fi;
 

@@ -6,7 +6,7 @@ Subtitle := "Implementations of generalized morphisms for the CAP project",
 Version := Maximum( [
   "2016.10.05", ## Sebas' version
 ## this line prevents merge conflicts
-  "2015.11.19", ## Sepp's version
+  "2017.04.10", ## Sepp's version
 ## this line prevents merge conflicts
   "2017.03.15", ## Mohamed's version
 ## this line prevents merge conflicts

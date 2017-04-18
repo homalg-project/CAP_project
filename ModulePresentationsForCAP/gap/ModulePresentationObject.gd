@@ -129,6 +129,16 @@ DeclareAttribute( "UnderlyingMatrix",
 DeclareAttribute( "UnderlyingHomalgRing",
                   IsLeftOrRightPresentation );
 
+#! @Description
+#! The argument is an object $A$ in the category of left or right presentations.
+#! The output is the embedding of the annihilator $I$ of $A$
+#! into the free module $F$ of rank $1$.
+#! In particular, the annihilator itself is seen as a left or right presentation.
+#! @Returns a morphism in $\mathrm{Hom}(I, F)$
+#! @Arguments A
+DeclareAttribute( "Annihilator",
+                  IsLeftOrRightPresentation );
+
 ##############################################
 ##
 ## Non-categorical methods

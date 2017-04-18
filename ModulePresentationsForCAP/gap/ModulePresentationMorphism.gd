@@ -56,6 +56,30 @@ DeclareCategory( "IsRightPresentationMorphism",
 DeclareOperation( "PresentationMorphism",
                   [ IsLeftOrRightPresentation, IsHomalgMatrix, IsLeftOrRightPresentation ] );
 
+#! @Description
+#! The argument is a homalg matrix $m$.
+#! The output is a morphism $F^r \rightarrow F^c$ in the
+#! the category of left presentations whose
+#! underlying matrix is given by $m$,
+#! where $F^r$ and $F^c$ are free left presentations of
+#! ranks given by the number of rows and columns of $m$.
+#! @Returns a morphism in $\mathrm{Hom}(F^r,F^c)$
+#! @Arguments m
+DeclareAttribute( "AsMorphismBetweenFreeLeftPresentations",
+                  IsHomalgMatrix );
+
+#! @Description
+#! The argument is a homalg matrix $m$.
+#! The output is a morphism $F^c \rightarrow F^r$ in the
+#! the category of right presentations whose
+#! underlying matrix is given by $m$,
+#! where $F^r$ and $F^c$ are free right presentations of
+#! ranks given by the number of rows and columns of $m$.
+#! @Returns a morphism in $\mathrm{Hom}(F^c,F^r)$
+#! @Arguments m
+DeclareAttribute( "AsMorphismBetweenFreeRightPresentations",
+                  IsHomalgMatrix );
+
 #############################
 ##
 #! @Section Attributes
@@ -124,3 +148,5 @@ DeclareOperation( "StandardGeneratorMorphism",
 #! @Arguments A
 DeclareAttribute( "CoverByFreeModule",
                   IsLeftOrRightPresentation );
+
+
