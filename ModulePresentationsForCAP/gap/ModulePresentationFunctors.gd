@@ -82,7 +82,17 @@ DeclareAttribute( "FunctorLessGeneratorsRight",
 #! its Hom(M, R) as a left presentation.
 #! @Returns a functor
 #! @Arguments R
-DeclareAttribute( "FunctorDualForLeftPresentations",
+DeclareAttribute( "FunctorDualLeft",
+                  IsHomalgRing );
+
+#! @Description
+#! The argument is a homalg ring $R$ that has an involution function.
+#! The output is functor which takes
+#! a right presentation <A>M</A> as input and computes
+#! its Hom(M, R) as a right presentation.
+#! @Returns a functor
+#! @Arguments R
+DeclareAttribute( "FunctorDualRight",
                   IsHomalgRing );
 
 #! @Description
