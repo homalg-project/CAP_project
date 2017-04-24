@@ -172,14 +172,15 @@ INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_LESS_GENERATORS_METHOD( NaturalI
 ##
 ########################################################
 
-InstallMethod( NaturalTransformationFromIdentityToDoubleDualForLeftPresentations, 
+##
+InstallMethod( NaturalTransformationFromIdentityToDoubleDualLeft, 
                 [ IsHomalgRing ], 
    function( ring )
    local category, double_dual_functor, natural_tasformation;
    
    category := LeftPresentations( ring );
    
-   double_dual_functor := FunctorDoubleDualForLeftPresentations( ring );
+   double_dual_functor := FunctorDoubleDualLeft( ring );
    
    natural_tasformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
                                                          IdentityMorphism( AsCatObject( category ) ), double_dual_functor );
@@ -205,5 +206,38 @@ InstallMethod( NaturalTransformationFromIdentityToDoubleDualForLeftPresentations
 
    return natural_tasformation;
 end );
-        
 
+##
+InstallMethod( NaturalTransformationFromIdentityToDoubleDualRight, 
+                [ IsHomalgRing ], 
+   function( ring )
+   local category, double_dual_functor, natural_tasformation;
+   
+   category := RightPresentations( ring );
+   
+   double_dual_functor := FunctorDoubleDualRight( ring );
+   
+   natural_tasformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
+                                                         IdentityMorphism( AsCatObject( category ) ), double_dual_functor );
+                                                         
+   AddNaturalTransformationFunction( natural_tasformation, 
+   
+      function( id_object, object, double_dual_object )
+        local A, representing_morphism, cokernel_projection_in_obj, double_dual_of_cokernel_projection, nat_mor; 
+        
+        A := UnderlyingMatrix( object );
+        
+        representing_morphism := PresentationMorphism( FreeRightPresentation( NrColumns( A ), ring ), A, FreeRightPresentation( NrRows( A ), ring ) );
+        
+        cokernel_projection_in_obj := CokernelProjection( representing_morphism );
+        
+        double_dual_of_cokernel_projection := ApplyFunctor( double_dual_functor, cokernel_projection_in_obj );
+        
+        nat_mor := CokernelColift(  representing_morphism, double_dual_of_cokernel_projection );
+            
+        return nat_mor;
+        
+      end );
+
+   return natural_tasformation;
+end );

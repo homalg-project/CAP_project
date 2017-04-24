@@ -369,7 +369,8 @@ InstallMethod( FunctorDualRight,
    
 end );
 
-InstallMethod( FunctorDoubleDualForLeftPresentations,
+##
+InstallMethod( FunctorDoubleDualLeft,
                 [ IsHomalgRing ], 
    function( ring )
      local category, functor, dual_functor;
@@ -400,3 +401,34 @@ InstallMethod( FunctorDoubleDualForLeftPresentations,
    
 end );
 
+##
+InstallMethod( FunctorDoubleDualRight,
+                [ IsHomalgRing ], 
+   function( ring )
+     local category, functor, dual_functor;
+     
+     category := RightPresentations( ring );
+     
+     functor := CapFunctor( Concatenation( " Hom( Hom( , R ), R ) functor for ", Name( category ) ), category, category );
+     
+     dual_functor := FunctorDualRight( ring );
+    
+     AddObjectFunction( functor, 
+     
+           function( object )
+           
+             return ApplyFunctor( dual_functor, ApplyFunctor( dual_functor, object ) );
+             
+           end );
+           
+    AddMorphismFunction( functor, 
+    
+           function( new_source, morphism, new_range )
+           
+             return ApplyFunctor( dual_functor, ApplyFunctor( dual_functor, morphism ) );
+           
+           end );
+           
+   return functor;
+   
+end );
