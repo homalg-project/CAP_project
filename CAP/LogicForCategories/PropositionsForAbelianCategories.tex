@@ -27,3 +27,45 @@
   \vdash &\IsEpimorphism\big( \alpha \big)
 \end{align*}
 \end{sequent}
+
+\begin{sequent}
+\begin{align*}
+  \alpha:\Mor~|~ & \IsEpimorphism\big( \alpha \big) \\
+  \vdash &\IsIsomorphism\big( \AstrictionToCoimage( \alpha ) \big)
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+  \alpha:\Mor~|~ & \IsIsomorphism\big( \AstrictionToCoimage( \alpha ) \big) \\
+  \vdash &\IsEpimorphism\big( \alpha \big)
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+  \alpha:\Mor~|~ & \IsMonomorphism\big( \alpha \big) \\
+  \vdash &\IsIsomorphism\big( \CoimageProjection( \alpha ) \big)
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+  \alpha:\Mor~|~ & \IsIsomorphism\big( \CoimageProjection( \alpha ) \big) \\
+  \vdash &\IsMonomorphism\big( \alpha \big)
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+  \alpha:\Mor~|~ & \IsMonomorphism\big( \alpha \big) \\
+  \vdash &\IsIsomorphism\big( \CoastrictionToImage( \alpha ) \big)
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
+  \alpha:\Mor~|~ & \IsIsomorphism\big( \CoastrictionToImage( \alpha ) \big) \\
+  \vdash &\IsMonomorphism\big( \alpha \big)
+\end{align*}
+\end{sequent}
