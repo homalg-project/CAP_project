@@ -186,9 +186,7 @@ InstallMethod( Multiplicity,
         
     fi;
     
-    tensor_product := UnderlyingCharacter( object_2 ) * UnderlyingCharacter( object_3 );
-    
-    return ScalarProduct( UnderlyingCharacter( object_1 ), tensor_product );
+    return MultiplicityArray( UnderlyingGroup( object_1 ) )[ UnderlyingCharacterNumber( object_1 ) ][ UnderlyingCharacterNumber( object_2 ) ][ UnderlyingCharacterNumber( object_3 ) ];
     
 end );
 
