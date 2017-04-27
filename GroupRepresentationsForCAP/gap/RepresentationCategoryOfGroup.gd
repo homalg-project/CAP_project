@@ -129,6 +129,10 @@ KeyDependentOperation( "DegreePart", IsRepresentationCategoryZGradedObject, IsIn
 DeclareAttribute( "DegreeDescendingFiltration",
                   IsRepresentationCategoryZGradedObject );
 
+##
+DeclareAttribute( "MultiplicityArray",
+                  IsRepresentationCategoryZGradedObject );
+
 ####################################
 ##
 #! @Section Internals
@@ -136,3 +140,5 @@ DeclareAttribute( "DegreeDescendingFiltration",
 ####################################
 
 DeclareAttribute( "UnderlyingGroupForRepresentationCategory", IsRepresentationCategory );
+
+DeclareGlobalFunction( "BIJECTION_FROM_Z_TO_N" );

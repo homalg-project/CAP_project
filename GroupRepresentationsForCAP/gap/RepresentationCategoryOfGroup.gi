@@ -527,4 +527,53 @@ InstallMethod( DegreeDescendingFiltration,
     
 end );
 
+##
+InstallGlobalFunction( BIJECTION_FROM_Z_TO_N,
+  function( z )
+    
+    if z > 0 then
+        
+        return 2*z;
+        
+    else
+        
+        return -2*z + 1;
+        
+    fi;
+    
+end );
 
+##
+InstallMethod( MultiplicityArray,
+               [ IsRepresentationCategoryZGradedObject ],
+               
+  function( object )
+    local object_list, multiplicity_array, elem, deg, entry;
+    
+    object_list := SemisimpleCategoryObjectList( object );
+    
+    multiplicity_array := [ ];
+    
+    for elem in object_list do
+        
+        deg := BIJECTION_FROM_Z_TO_N( UnderlyingDegree( elem[2] ) );
+        
+        if not IsBound( multiplicity_array[ deg ] ) then
+            
+            entry := [ ];
+            
+            entry[ UnderlyingCharacterNumber( elem[2] ) ] := elem[1];
+            
+            multiplicity_array[ deg ] := entry;
+            
+        else
+            
+            multiplicity_array[ deg ][ UnderlyingCharacterNumber( elem[2] ) ] := elem[1];
+        
+        fi;
+        
+    od;
+    
+    return multiplicity_array;
+    
+end );

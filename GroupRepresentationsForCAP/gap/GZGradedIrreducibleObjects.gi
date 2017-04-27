@@ -193,6 +193,31 @@ InstallMethod( Multiplicity,
 end );
 
 ##
+InstallMethod( Multiplicity,
+               [ IsSemisimpleCategoryObject, IsGZGradedIrreducibleObject ],
+               
+  function( semisimple_category_object, irr )
+    local deg, nr, array;
+    
+    deg := BIJECTION_FROM_Z_TO_N( UnderlyingDegree( irr ) );
+    
+    nr := UnderlyingCharacterNumber( irr );
+    
+    array := MultiplicityArray( semisimple_category_object );
+    
+    if IsBound( array[deg] ) and IsBound( array[deg][nr] ) then
+        
+        return array[deg][nr];
+        
+    else
+        
+        return 0;
+        
+    fi;
+    
+end );
+
+##
 InstallMethod( \*,
                [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ],
                
