@@ -186,7 +186,8 @@ InstallMethod( Multiplicity,
         
     fi;
     
-    return MultiplicityArray( UnderlyingGroup( object_1 ) )[ object_1!.UnderlyingCharacterNumber ][ object_2!.UnderlyingCharacterNumber ][ object_3!.UnderlyingCharacterNumber ];
+    ## warning: this line assumes that MultiplicityArray of group has been computed yet
+    return UnderlyingGroup( object_1 )!.MultiplicityArray[ object_1!.UnderlyingCharacterNumber ][ object_2!.UnderlyingCharacterNumber ][ object_3!.UnderlyingCharacterNumber ];
     
 end );
 

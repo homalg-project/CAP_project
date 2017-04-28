@@ -288,6 +288,9 @@ InstallMethod( RepresentationCategoryZGraded,
     
     SetUnderlyingGroupForRepresentationCategory( category, group );
     
+    ## side effect: this computes the multiplicity array of group which can thus be accessed without the getter
+    MultiplicityArray( group );
+    
     return category;
     
 end );
