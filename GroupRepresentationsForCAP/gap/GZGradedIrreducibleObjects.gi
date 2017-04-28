@@ -192,7 +192,7 @@ end );
 
 ##
 InstallMethod( Multiplicity,
-               [ IsSemisimpleCategoryObject, IsGZGradedIrreducibleObject ],
+               [ IsRepresentationCategoryZGradedObject, IsGZGradedIrreducibleObject ],
                
   function( semisimple_category_object, irr )
     local z, deg, nr, array;
