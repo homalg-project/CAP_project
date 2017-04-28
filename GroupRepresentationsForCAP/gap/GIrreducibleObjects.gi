@@ -138,7 +138,7 @@ InstallMethod( \=,
                
   function( object_1, object_2 )
     
-    return UnderlyingCharacterNumber( object_1 ) = UnderlyingCharacterNumber( object_2 );
+    return object_1!.UnderlyingCharacterNumber = object_2!.UnderlyingCharacterNumber;
     
 end );
 
@@ -148,7 +148,7 @@ InstallMethod( \<,
                
   function( object_1, object_2 )
     
-    return UnderlyingCharacterNumber( object_1 ) < UnderlyingCharacterNumber( object_2 );
+    return object_1!.UnderlyingCharacterNumber < object_2!.UnderlyingCharacterNumber;
     
 end );
 
@@ -202,13 +202,13 @@ InstallMethod( AssociatorFromData,
     local data, morphism_list, elem, pos, string, homalg_matrix, vector_space;
     
     data :=
-        associator_data[UnderlyingCharacterNumber( irr_1 )][UnderlyingCharacterNumber( irr_2 )][UnderlyingCharacterNumber( irr_3 )];
+        associator_data[irr_1!.UnderlyingCharacterNumber][irr_2!.UnderlyingCharacterNumber][irr_3!.UnderlyingCharacterNumber];
     
     morphism_list := [ ];
     
     for elem in tensor_decomposition_list do
         
-        pos := UnderlyingCharacterNumber( elem[2] );
+        pos := elem[2]!.UnderlyingCharacterNumber;
         
         string := Concatenation( "[", data[pos], "]" );
         
@@ -251,7 +251,7 @@ InstallMethod( String,
               
   function( object )
     
-    return String( UnderlyingCharacterNumber( object ) );
+    return String( object!.UnderlyingCharacterNumber );
     
 end );
 

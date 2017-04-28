@@ -372,7 +372,7 @@ InstallMethod( DegreeDecomposition,
         
     fi;
     
-    current_degree := UnderlyingDegree( object_list[1][2] );
+    current_degree := object_list[1][2]!.UnderlyingDegree;
     
     new_list := [ ];
     
@@ -382,7 +382,7 @@ InstallMethod( DegreeDecomposition,
         
         elem := object_list[i];
         
-        if UnderlyingDegree( elem[2] ) = current_degree then
+        if elem[2]!.UnderlyingDegree = current_degree then
             
             Add( new_list_entry, elem );
             
@@ -390,7 +390,7 @@ InstallMethod( DegreeDecomposition,
             
             Add( new_list, new_list_entry );
             
-            current_degree := UnderlyingDegree( elem[2] );
+            current_degree := elem[2]!.UnderlyingDegree;
             
             new_list_entry := [ elem ];
             
@@ -400,7 +400,7 @@ InstallMethod( DegreeDecomposition,
     
     Add( new_list, new_list_entry );
     
-    return List( new_list, entry -> [ UnderlyingDegree( entry[1][2] ) ,SemisimpleCategoryObject( entry , CapCategory( object ) ) ] );
+    return List( new_list, entry -> [ entry[1][2]!.UnderlyingDegree ,SemisimpleCategoryObject( entry , CapCategory( object ) ) ] );
     
 end );
 
@@ -556,19 +556,19 @@ InstallMethod( MultiplicityArray,
     
     for elem in object_list do
         
-        deg := BIJECTION_FROM_Z_TO_N( UnderlyingDegree( elem[2] ) );
+        deg := BIJECTION_FROM_Z_TO_N( elem[2]!.UnderlyingDegree );
         
         if not IsBound( multiplicity_array[ deg ] ) then
             
             entry := [ ];
             
-            entry[ UnderlyingCharacterNumber( elem[2] ) ] := elem[1];
+            entry[ elem[2]!.UnderlyingCharacterNumber ] := elem[1];
             
             multiplicity_array[ deg ] := entry;
             
         else
             
-            multiplicity_array[ deg ][ UnderlyingCharacterNumber( elem[2] ) ] := elem[1];
+            multiplicity_array[ deg ][ elem[2]!.UnderlyingCharacterNumber ] := elem[1];
         
         fi;
         

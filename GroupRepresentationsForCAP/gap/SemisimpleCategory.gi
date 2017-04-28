@@ -1295,11 +1295,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
           # A <= B <= C
           
-          irr_1_nr := UnderlyingCharacterNumber( irr_1 );
+          irr_1_nr := irr_1!.UnderlyingCharacterNumber;
           
-          irr_2_nr := UnderlyingCharacterNumber( irr_2 );
+          irr_2_nr := irr_2!.UnderlyingCharacterNumber;
           
-          irr_3_nr := UnderlyingCharacterNumber( irr_3 );
+          irr_3_nr := irr_3!.UnderlyingCharacterNumber;
           
           if Size( Set( [ irr_1_nr, irr_2_nr, irr_3_nr ] ) ) = 2 then
               

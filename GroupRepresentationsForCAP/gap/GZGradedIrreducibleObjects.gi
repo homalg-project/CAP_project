@@ -74,7 +74,7 @@ InstallMethod( ExteriorPower,
     
     result_list := [ ];
     
-    if not( UnderlyingCharacterNumber( object ) = UnderlyingCharacterNumber( object_2 ) ) then
+    if not( object!.UnderlyingCharacterNumber = object_2!.UnderlyingCharacterNumber ) then
         
         return result_list;
         
@@ -91,7 +91,7 @@ InstallMethod( ExteriorPower,
     
     exterior_power := exterior_power[1];
     
-    new_degree := UnderlyingDegree( object ) + UnderlyingDegree( object_2 );
+    new_degree := object!.UnderlyingDegree + object_2!.UnderlyingDegree;
     
     for chi in irr do
         
@@ -125,7 +125,7 @@ InstallMethod( Dual,
                
   function( object )
     
-    return GZGradedIrreducibleObject( (-1) * UnderlyingDegree( object ), ComplexConjugate( UnderlyingCharacter( object ) ) );
+    return GZGradedIrreducibleObject( (-1) * object!.UnderlyingDegree, ComplexConjugate( UnderlyingCharacter( object ) ) );
     
 end );
 
@@ -141,8 +141,8 @@ InstallMethod( \=,
                
   function( object_1, object_2 )
     
-    return ( UnderlyingCharacterNumber( object_1 ) = UnderlyingCharacterNumber( object_2 ) )
-           and ( UnderlyingDegree( object_1 ) = UnderlyingDegree( object_2 ) );
+    return ( object_1!.UnderlyingCharacterNumber = object_2!.UnderlyingCharacterNumber )
+           and ( object_1!.UnderlyingDegree = object_2!.UnderlyingDegree );
     
 end );
 
@@ -153,9 +153,9 @@ InstallMethod( \<,
   function( object_1, object_2 )
     local degree_1, degree_2;
     
-    degree_1 := UnderlyingDegree( object_1 );
+    degree_1 := object_1!.UnderlyingDegree;
     
-    degree_2 := UnderlyingDegree( object_2 );
+    degree_2 := object_2!.UnderlyingDegree;
     
     if degree_1 < degree_2 then
         
@@ -163,7 +163,7 @@ InstallMethod( \<,
         
     elif degree_1 = degree_2 then
         
-        return UnderlyingCharacterNumber( object_1 ) < UnderlyingCharacterNumber( object_2 );
+        return object_1!.UnderlyingCharacterNumber < object_2!.UnderlyingCharacterNumber;
         
     else
         
@@ -180,13 +180,13 @@ InstallMethod( Multiplicity,
   function( object_1, object_2, object_3 )
     local tensor_product;
     
-    if not ( UnderlyingDegree( object_1 ) = UnderlyingDegree( object_2 ) + UnderlyingDegree( object_3 ) ) then
+    if not ( object_1!.UnderlyingDegree = object_2!.UnderlyingDegree + object_3!.UnderlyingDegree ) then
         
         return 0;
         
     fi;
     
-    return MultiplicityArray( UnderlyingGroup( object_1 ) )[ UnderlyingCharacterNumber( object_1 ) ][ UnderlyingCharacterNumber( object_2 ) ][ UnderlyingCharacterNumber( object_3 ) ];
+    return MultiplicityArray( UnderlyingGroup( object_1 ) )[ object_1!.UnderlyingCharacterNumber ][ object_2!.UnderlyingCharacterNumber ][ object_3!.UnderlyingCharacterNumber ];
     
 end );
 
@@ -197,9 +197,9 @@ InstallMethod( Multiplicity,
   function( semisimple_category_object, irr )
     local deg, nr, array;
     
-    deg := BIJECTION_FROM_Z_TO_N( UnderlyingDegree( irr ) );
+    deg := BIJECTION_FROM_Z_TO_N( irr!.UnderlyingDegree );
     
-    nr := UnderlyingCharacterNumber( irr );
+    nr := irr!.UnderlyingCharacterNumber;
     
     array := MultiplicityArray( semisimple_category_object );
     
@@ -228,7 +228,7 @@ InstallMethod( \*,
     
     irr := UnderlyingIrreducibleCharacters( object_1 );
     
-    new_degree := UnderlyingDegree( object_1 ) + UnderlyingDegree( object_2 );
+    new_degree := object_1!.UnderlyingDegree + object_2!.UnderlyingDegree;
     
     for chi in irr do
         
@@ -254,13 +254,13 @@ InstallMethod( AssociatorFromData,
     local data, morphism_list, elem, pos, string, homalg_matrix, vector_space;
     
     data :=
-        associator_data[UnderlyingCharacterNumber( irr_1 )][UnderlyingCharacterNumber( irr_2 )][UnderlyingCharacterNumber( irr_3 )];
+        associator_data[irr_1!.UnderlyingCharacterNumber][irr_2!.UnderlyingCharacterNumber][irr_3!.UnderlyingCharacterNumber];
     
     morphism_list := [ ];
     
     for elem in tensor_decomposition_list do
         
-        pos := UnderlyingCharacterNumber( elem[2] );
+        pos := elem[2]!.UnderlyingCharacterNumber;
         
         string := Concatenation( "[", data[pos], "]" );
         
@@ -304,7 +304,7 @@ InstallMethod( String,
               
   function( object )
     
-    return Concatenation( "[", String( UnderlyingDegree( object ) ), ", ", String( UnderlyingCharacterNumber( object ) ), "]" );
+    return Concatenation( "[", String( object!.UnderlyingDegree ), ", ", String( object!.UnderlyingCharacterNumber ), "]" );
     
 end );
 
