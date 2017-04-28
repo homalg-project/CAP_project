@@ -548,7 +548,7 @@ InstallMethod( MultiplicityArray,
                [ IsRepresentationCategoryZGradedObject ],
                
   function( object )
-    local object_list, multiplicity_array, elem, deg, entry;
+    local object_list, multiplicity_array, elem, z, deg, entry;
     
     object_list := SemisimpleCategoryObjectList( object );
     
@@ -556,7 +556,17 @@ InstallMethod( MultiplicityArray,
     
     for elem in object_list do
         
-        deg := BIJECTION_FROM_Z_TO_N( elem[2]!.UnderlyingDegree );
+        z := elem[2]!.UnderlyingDegree;
+        
+        if z > 0 then
+            
+            deg := 2*z;
+          
+        else
+            
+            deg := -2*z + 1;
+          
+        fi;
         
         if not IsBound( multiplicity_array[ deg ] ) then
             

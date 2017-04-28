@@ -195,9 +195,19 @@ InstallMethod( Multiplicity,
                [ IsSemisimpleCategoryObject, IsGZGradedIrreducibleObject ],
                
   function( semisimple_category_object, irr )
-    local deg, nr, array;
+    local z, deg, nr, array;
     
-    deg := BIJECTION_FROM_Z_TO_N( irr!.UnderlyingDegree );
+    z := irr!.UnderlyingDegree;
+    
+    if z > 0 then
+        
+        deg := 2*z;
+        
+    else
+        
+        deg := -2*z + 1;
+        
+    fi;
     
     nr := irr!.UnderlyingCharacterNumber;
     
