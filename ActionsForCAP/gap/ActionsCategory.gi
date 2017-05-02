@@ -207,6 +207,10 @@ InstallMethod( LeftActionsCategory,
         
     fi;
     
+    structure_record.NoInstallList := [ "Lift", "Colift" ];
+    
+    structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism" ];
+    
     EnhancementWithAttributes( structure_record );
     
     ##
@@ -435,6 +439,10 @@ InstallMethod( RightActionsCategory,
           end;
         
     fi;
+    
+    structure_record.NoInstallList := [ "Lift", "Colift" ];
+    
+    structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism" ];
     
     EnhancementWithAttributes( structure_record );
     
