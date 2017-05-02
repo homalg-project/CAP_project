@@ -342,9 +342,13 @@ InstallImmediateMethod( CAP_CATEGORY_SOURCE_RANGE_THEOREM_INSTALL_HELPER,
                         
   function( morphism )
     
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), CapCategory( morphism ) );
-    
-    INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), CapCategory( morphism ) );
+    if CapCategory( morphism )!.predicate_logic then
+        
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), CapCategory( morphism ) );
+        
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), CapCategory( morphism ) );
+      
+    fi;
     
     TryNextMethod();
     
