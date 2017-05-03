@@ -124,7 +124,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
           direct_sum_attributes_operation, create_function_primitive_type, create_function_object,
           create_function_morphism_no_new_object, create_function_morphism_new_source,
           create_function_morphism_new_range, attributes, recnames, name, func, pos, function_to_add, add_function,
-          create_function_object_no_arguments, create_function_morphism_or_fail, universal_object, entry;
+          create_function_object_no_arguments, create_function_morphism_or_fail, universal_object, entry,
+          no_install_list, installed_operations_of_underlying_category;
     
     category_with_attributes := structure_record.category_with_attributes;
     
@@ -317,15 +318,23 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
           
       end;
     
-    recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( UnderlyingCategory( category_with_attributes ) ) );
+    recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( underlying_category ) );
     
-    for func in [
+    no_install_list := [
             "IsEqualForObjects",
             "IsEqualForMorphisms",
             "IsCongruentForMorphisms",
             "IsEqualForCacheForObjects",
             "IsEqualForCacheForMorphisms"
-            ] do
+            ];
+    
+    if IsBound( structure_record.NoInstallList ) then
+        
+        Append( no_install_list, structure_record.NoInstallList );
+        
+    fi;
+    
+    for func in no_install_list do
         
         pos := Position( recnames, func );
         if not pos = fail then
@@ -333,6 +342,22 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         fi;
         
     od;
+    
+    if IsBound( structure_record.InstallList ) then
+        
+        installed_operations_of_underlying_category := ListInstalledOperationsOfCategory( underlying_category );
+        
+        for entry in structure_record.InstallList do
+            
+            if entry in installed_operations_of_underlying_category then
+                
+                Add( recnames, entry );
+                
+            fi;
+            
+        od;
+        
+    fi;
     
     for name in recnames do
         
