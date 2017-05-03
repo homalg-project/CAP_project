@@ -1572,14 +1572,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
         fi;
         
-        object_a_expanded_list :=
-          CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_a_list );
+        object_a_expanded_list := (Size( object_a_list ) > 1) or (object_a_list[1][1] > 1);
         
-        object_b_expanded_list :=
-          CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_b_list );
+        object_b_expanded_list := (Size( object_b_list ) > 1) or (object_b_list[1][1] > 1);
         
-        object_c_expanded_list :=
-          CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_c_list );
+        object_c_expanded_list := (Size( object_c_list ) > 1) or (object_c_list[1][1] > 1);
         
         result_morphism := IdentityMorphism( new_source );
         
@@ -1587,7 +1584,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         morphism_1 := [ ];
         
-        if Size( object_a_expanded_list ) > 1 then
+        if object_a_expanded_list then
             
             morphism_1 := distributivity_expanding_for_triple( object_b, object_c, object_a_list, true );
             
@@ -1597,7 +1594,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         morphism_2 := [ ];
         
-        if Size( object_b_expanded_list ) > 1 then
+        if object_b_expanded_list then
             
             summand_list := [ ];
             
@@ -1617,7 +1614,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         morphism_3 := [ ];
         
-        if Size( object_c_expanded_list ) > 1 then
+        if object_c_expanded_list then
             
             outer_summand_list := [ ];
             
@@ -1689,7 +1686,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         morphism_5 := [ ];
         
-        if Size( object_c_expanded_list ) > 1 then
+        if object_c_expanded_list then
             
             outer_summand_list := [ ];
             
@@ -1721,7 +1718,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         morphism_6 := [ ];
         
-        if Size( object_b_expanded_list ) > 1 then
+        if object_b_expanded_list then
             
             summand_list := [ ];
             
@@ -1741,7 +1738,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         morphism_7_inverse := [ ];
         
-        if Size( object_a_expanded_list ) > 1 then
+        if object_a_expanded_list then
             
             tensor_product := TensorProductOnObjects( object_b, object_c );
             
