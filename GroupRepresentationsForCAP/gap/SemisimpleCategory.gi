@@ -1144,7 +1144,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     distributivity_function := function( new_source, object_b, list_of_objects, new_range, permutation_function, invert )
       local support, support_tensor_product, size_support, direct_sum, morphism_list, k, permutation,
-            object, dim, matrix, permutation_list, entry;
+            object, dim, homalg_matrix, permutation_list, entry;
         
         support_tensor_product := Support( new_source );
         
@@ -1156,12 +1156,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             permutation_list := 
               List( permutation_list, entry ->
-                [ PermutationMat( PermList( entry[1] )^(-1), Size( entry[1] ) ), entry[2] ] );
-            
-        else
-            permutation_list := 
-              List( permutation_list, entry ->
-                [ PermutationMat( PermList( entry[1] ), Size( entry[1] ) ), entry[2] ] );
+                [ ListPerm( PermList( entry[1] )^(-1), Size( entry[1] ) ), entry[2] ] );
             
         fi;
         
@@ -1173,7 +1168,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             dim := Dimension( object );
             
-            Add( morphism_list, [ VectorSpaceMorphism( object, HomalgMatrix( entry[1], dim, dim, field ), object ), entry[2] ] );
+            homalg_matrix := CertainRows(
+              HomalgIdentityMatrix( dim, field ),
+              entry[1] );
+            
+            Add( morphism_list, [ VectorSpaceMorphism( object, homalg_matrix, object ), entry[2] ] );
             
         od;
         
@@ -1801,7 +1800,10 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
                 vector_space_object := VectorSpaceObject( dim, field );
                 
-                homalg_matrix := HomalgMatrix( PermutationMat( perm1 * perm2 * perm3, dim ), dim, dim, field );
+                homalg_matrix := CertainRows(
+                  HomalgIdentityMatrix( dim, field ),
+                  ListPerm( perm1 * perm2 * perm3, dim )
+                );
                 
                 Add( first_permutation_morphism_list, [ VectorSpaceMorphism( vector_space_object, homalg_matrix, vector_space_object ),
                      chi ] );
@@ -1860,7 +1862,10 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
                 vector_space_object := VectorSpaceObject( dim, field );
                 
-                homalg_matrix := HomalgMatrix( PermutationMat( perm1 * perm2 * perm3, dim ), dim, dim, field );
+                homalg_matrix := CertainRows(
+                  HomalgIdentityMatrix( dim, field ),
+                  ListPerm( perm1 * perm2 * perm3, dim )
+                );
                 
                 Add( second_permutation_morphism_list, [ VectorSpaceMorphism( vector_space_object, homalg_matrix, vector_space_object ),
                      chi ] );
