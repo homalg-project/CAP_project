@@ -1744,8 +1744,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         if Size( object_a_expanded_list ) > 1 then
             
-            morphism := RightDistributivityFactoring( object_a_expanded_list, TensorProductOnObjects( object_b, object_c ) );
-            
             tensor_product := TensorProductOnObjects( object_b, object_c );
             
             morphism_7_inverse := 
