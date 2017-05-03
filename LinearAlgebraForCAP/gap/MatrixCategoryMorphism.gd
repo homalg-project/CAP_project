@@ -20,7 +20,7 @@
 #! of matrices of a field $F$.
 #! @Arguments object
 DeclareCategory( "IsVectorSpaceMorphism",
-                 IsCapCategoryMorphism );
+                 IsCapCategoryMorphism and IsCellOfSkeletalCategory );
 
 ####################################
 ##

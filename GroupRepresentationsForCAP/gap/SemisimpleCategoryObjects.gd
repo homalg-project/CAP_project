@@ -18,7 +18,7 @@
 #! The GAP category of objects in a semisimple category.
 #! @Arguments object
 DeclareCategory( "IsSemisimpleCategoryObject",
-                 IsCapCategoryObject );
+                 IsCapCategoryObject and IsCellOfSkeletalCategory );
 
 ####################################
 ##

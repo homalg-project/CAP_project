@@ -18,7 +18,7 @@
 #! The GAP category of morphisms in a semisimple category.
 #! @Arguments object
 DeclareCategory( "IsSemisimpleCategoryMorphism",
-                 IsCapCategoryMorphism );
+                 IsCapCategoryMorphism and IsCellOfSkeletalCategory);
 
 ####################################
 ##

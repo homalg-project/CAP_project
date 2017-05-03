@@ -396,6 +396,23 @@ InstallMethod( AssociatorRightToLeft,
 end );
 
 ##
+InstallMethod( AssociatorRightToLeft,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2, object_3 )
+    local source_and_range;
+    
+    source_and_range := TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) );
+    
+    return AssociatorRightToLeftWithGivenTensorProducts( 
+             source_and_range,
+             object_1, object_2, object_3,
+             source_and_range
+           );
+    
+end );
+
+##
 CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.AssociatorLeftToRight := 
   [ [ AssociatorLeftToRightWithGivenTensorProducts, 1 ],
     [ TensorProductOnObjects, 4 ] ];
@@ -409,6 +426,23 @@ InstallMethod( AssociatorLeftToRight,
              TensorProductOnObjects( TensorProductOnObjects( object_1, object_2 ), object_3 ),
              object_1, object_2, object_3,
              TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) ) 
+           );
+    
+end );
+
+##
+InstallMethod( AssociatorLeftToRight,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_1, object_2, object_3 )
+    local source_and_range;
+    
+    source_and_range := TensorProductOnObjects( object_1, TensorProductOnObjects( object_2, object_3 ) );
+    
+    return AssociatorLeftToRightWithGivenTensorProducts( 
+             source_and_range,
+             object_1, object_2, object_3,
+             source_and_range
            );
     
 end );
@@ -432,6 +466,17 @@ InstallMethod( LeftUnitor,
 end );
 
 ##
+InstallMethod( LeftUnitor,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
+               
+  function( object )
+    
+    return LeftUnitorWithGivenTensorProduct( object, object );
+    
+end );
+
+
+##
 CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.LeftUnitorInverse := 
   [ [ LeftUnitorInverseWithGivenTensorProduct, 1 ],
     [ TensorProductOnObjects, 1 ],
@@ -446,6 +491,16 @@ InstallMethod( LeftUnitorInverse,
     category := CapCategory( object );
     
     return LeftUnitorInverseWithGivenTensorProduct( object, TensorProductOnObjects( TensorUnit( category ), object ) );
+    
+end );
+
+##
+InstallMethod( LeftUnitorInverse,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
+               
+  function( object )
+    
+    return LeftUnitorInverseWithGivenTensorProduct( object, object );
     
 end );
 
@@ -468,6 +523,16 @@ InstallMethod( RightUnitor,
 end );
 
 ##
+InstallMethod( RightUnitor,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
+               
+  function( object )
+    
+    return RightUnitorWithGivenTensorProduct( object, object );
+    
+end );
+
+##
 CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.RightUnitorInverse := 
   [ [ RightUnitorInverseWithGivenTensorProduct, 1 ],
     [ TensorProductOnObjects, 1 ],
@@ -486,6 +551,16 @@ InstallMethod( RightUnitorInverse,
 end );
 
 ##
+InstallMethod( RightUnitorInverse,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
+               
+  function( object )
+    
+    return RightUnitorInverseWithGivenTensorProduct( object, object );
+    
+end );
+
+##
 CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.Braiding := 
   [ [ BraidingWithGivenTensorProducts, 1 ],
     [ TensorProductOnObjects, 2 ] ];
@@ -500,6 +575,19 @@ InstallMethod( Braiding,
 end );
 
 ##
+InstallMethod( Braiding,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    local source_and_range;
+    
+    source_and_range := TensorProductOnObjects( object_1, object_2 );
+    
+    return BraidingWithGivenTensorProducts( source_and_range, object_1, object_2, source_and_range );
+    
+end );
+
+##
 CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.BraidingInverse := 
   [ [ BraidingInverseWithGivenTensorProducts, 1 ],
     [ TensorProductOnObjects, 2 ] ];
@@ -510,6 +598,19 @@ InstallMethod( BraidingInverse,
   function( object_1, object_2 )
     
     return BraidingInverseWithGivenTensorProducts( TensorProductOnObjects( object_2, object_1 ), object_1, object_2, TensorProductOnObjects( object_1, object_2 ) );
+    
+end );
+
+##
+InstallMethod( BraidingInverse,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject ],
+               
+  function( object_1, object_2 )
+    local source_and_range;
+    
+    source_and_range := TensorProductOnObjects( object_1, object_2 );
+    
+    return BraidingInverseWithGivenTensorProducts( source_and_range, object_1, object_2, source_and_range );
     
 end );
 
@@ -813,6 +914,16 @@ InstallMethod( IsomorphismFromInternalHomToObject,
 end );
 
 ##
+InstallMethod( IsomorphismFromInternalHomToObject,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
+               
+  function( object )
+    
+    return IsomorphismFromInternalHomToObjectWithGivenInternalHom( object, object );
+    
+end );
+
+##
 CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.IsomorphismFromObjectToInternalHom := 
   [ [ IsomorphismFromObjectToInternalHomWithGivenInternalHom, 1 ],
     [ TensorUnit, 1 ],
@@ -831,6 +942,16 @@ InstallMethod( IsomorphismFromObjectToInternalHom,
 end );
 
 ##
+InstallMethod( IsomorphismFromObjectToInternalHom,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
+               
+  function( object )
+    
+    return IsomorphismFromObjectToInternalHomWithGivenInternalHom( object, object );
+    
+end );
+
+##
 CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.LeftDistributivityExpanding := 
   [ [ TensorProductOnObjects, 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
     [ DirectSum, 2 ] ];
@@ -844,6 +965,23 @@ InstallMethod( LeftDistributivityExpanding,
              TensorProductOnObjects( object, DirectSum( summands_list ) ),
              object, summands_list,
              DirectSum( List( summands_list, summand -> TensorProductOnObjects( object, summand ) ) )
+           );
+    
+end );
+
+##
+InstallMethod( LeftDistributivityExpanding,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsList ],
+               
+  function( object, summands_list )
+    local source_and_range;
+    
+    source_and_range := TensorProductOnObjects( object, DirectSum( summands_list ) );
+    
+    return LeftDistributivityExpandingWithGivenObjects(
+             source_and_range,
+             object, summands_list,
+             source_and_range
            );
     
 end );
@@ -867,6 +1005,23 @@ InstallMethod( LeftDistributivityFactoring,
 end );
 
 ##
+InstallMethod( LeftDistributivityFactoring,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsList ],
+               
+  function( object, summands_list )
+    local source_and_range;
+    
+    source_and_range := TensorProductOnObjects( object, DirectSum( summands_list ) );
+    
+    return LeftDistributivityFactoringWithGivenObjects(
+             source_and_range,
+             object, summands_list,
+             source_and_range
+           );
+    
+end );
+
+##
 CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.RightDistributivityExpanding := 
   [ [ TensorProductOnObjects, 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
     [ DirectSum, 2 ] ];
@@ -885,6 +1040,23 @@ InstallMethod( RightDistributivityExpanding,
 end );
 
 ##
+InstallMethod( RightDistributivityExpanding,
+               [ IsList, IsCapCategoryObject and IsCellOfSkeletalCategory ],
+               
+  function( summands_list, object )
+    local source_and_range;
+    
+    source_and_range := TensorProductOnObjects( DirectSum( summands_list ), object );
+    
+    return RightDistributivityExpandingWithGivenObjects(
+             source_and_range,
+             summands_list, object,
+             source_and_range
+           );
+    
+end );
+
+##
 CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.RightDistributivityFactoring := 
   [ [ TensorProductOnObjects, 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
     [ DirectSum, 2 ] ];
@@ -898,6 +1070,23 @@ InstallMethod( RightDistributivityFactoring,
              DirectSum( List( summands_list, summand -> TensorProductOnObjects( summand, object ) ) ),
              summands_list, object,
              TensorProductOnObjects( DirectSum( summands_list ), object )
+           );
+    
+end );
+
+##
+InstallMethod( RightDistributivityFactoring,
+               [ IsList, IsCapCategoryObject and IsCellOfSkeletalCategory ],
+               
+  function( summands_list, object )
+    local source_and_range;
+    
+    source_and_range := TensorProductOnObjects( DirectSum( summands_list ), object );
+    
+    return RightDistributivityFactoringWithGivenObjects(
+             source_and_range,
+             summands_list, object,
+             source_and_range
            );
     
 end );
