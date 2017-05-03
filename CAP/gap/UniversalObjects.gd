@@ -1315,11 +1315,11 @@ DeclareOperation( "IsomorphismFromCoproductToDirectSumOp",
 
 #! @Description
 #! The argument is a list of lists of morphisms
-#! $M = ( ( \phi_{i,j}: A_i \rightarrow A_j )_{j = 1 \dots n} )_{i = 1 \dots m}$.
+#! $M = ( ( \phi_{i,j}: A_i \rightarrow B_j )_{j = 1 \dots n} )_{i = 1 \dots m}$.
 #! The output is the morphism
-#! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n A_j$
+#! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j$
 #! defined by the matrix $M$.
-#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n A_j)$
+#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
 #! @Arguments M
 DeclareOperationWithCache( "MorphismBetweenDirectSums",
                            [ IsList ] );
@@ -1327,14 +1327,14 @@ DeclareOperationWithCache( "MorphismBetweenDirectSums",
 #! @Description
 #! The arguments are a list
 #! $M = ( \phi_{1,1}, \phi_{1,2}, \dots, \phi_{1,n}, \phi_{2,1}, \dots, \phi_{m,n} )$
-#! of morphisms $\phi_{i,j}: A_i \rightarrow A_j$,
+#! of morphisms $\phi_{i,j}: A_i \rightarrow B_j$,
 #! an integer $m$,
 #! an integer $n$,
 #! and a method selection morphism.
 #! The output is the morphism
-#! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n A_j$
+#! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j$
 #! defined by the list $M$ regarded as a matrix of dimension $m \times n$.
-#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n A_j)$
+#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
 #! @Arguments M, m, n, method_selection_morphism
 DeclareOperationWithCache( "MorphismBetweenDirectSumsOp",
                            [ IsList, IsInt, IsInt, IsCapCategoryMorphism ] );
