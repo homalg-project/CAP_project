@@ -740,17 +740,6 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
         
     end );
     
-    AddCokernelProjectionWithGivenCokernelObject( category,
-                     
-      function( morphism, cokernel_object )
-        local projection;
-        
-        projection := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
-        
-        return PresentationMorphism( Range( morphism ), projection, cokernel_object );
-        
-    end );
-    
     AddCokernelColiftWithGivenCokernelObject( category,
       
       function( morphism, test_morphism, cokernel_object )
@@ -777,17 +766,6 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
         cokernel_object := UnionOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
         
         cokernel_object := AsRightPresentation( cokernel_object );
-        
-        projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
-        
-        return PresentationMorphism( Range( morphism ), projection, cokernel_object );
-        
-    end );
-    
-    AddCokernelProjectionWithGivenCokernelObject( category,
-                     
-      function( morphism, cokernel_object )
-        local projection;
         
         projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
         
