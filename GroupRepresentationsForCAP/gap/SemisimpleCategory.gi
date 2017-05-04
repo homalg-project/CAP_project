@@ -193,6 +193,62 @@ InstallMethodWithCache( CAP_INTERNAL_ExpandSemisimpleCategoryObjectList,
     
 end );
 
+##
+InstallGlobalFunction( CAP_INTERNAL_Create_Sparse_String,
+  function( string, start_pos, repetitions )
+    local split_string, multiplicity, result_string, index_list, factor, k, i, j;
+    
+    split_string := SplitString( string, "," );
+    
+    multiplicity := Sqrt( Size( split_string ) );
+    
+    result_string := "";
+    
+    index_list := [ start_pos .. ( start_pos + multiplicity - 1 ) ];
+    
+    for k in [ 0 .. repetitions - 1 ] do
+        
+        factor := k * multiplicity;
+        
+        for i in index_list do
+            
+            for j in index_list do
+                
+                Append( result_string,
+                  Concatenation( "[", String( i + factor ), ",", String( j + factor ), ",", 
+                  split_string[ (j - start_pos + 1) + multiplicity*(i-start_pos) ], "],"  )
+                );
+                
+            od;
+            
+        od;
+        
+    od;
+    
+    return result_string;
+    
+end );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_Create_Sparse_Identity_String,
+  function( start_pos, steps )
+    local result_string, i, str_i;
+    
+    result_string := "";
+    
+    for i in [ start_pos .. start_pos + (steps - 1) ] do
+        
+        str_i := String( i );
+        
+        Append( result_string, Concatenation( "[", str_i, ",", str_i, ",1]," ) );
+        
+    od;
+    
+    return result_string;
+    
+end );
+  
+
 ####################################
 ##
 ## Basic operations
@@ -204,9 +260,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     local field, membership_function, associator_on_irreducibles, braiding_on_irreducibles,
           distributivity_expanding_for_triple, distributivity_factoring_for_triple,
           right_distributivity_expanding_permutation, left_distributivity_expanding_permutation,
-          distributivity_function;
+          distributivity_function, is_magma_ring;
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
+    
+    is_magma_ring := IsHomalgExternalRingInMAGMARep( field );
     
     membership_function := MembershipFunctionForSemisimpleCategory( category );
     
@@ -1558,7 +1616,12 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               morphism_1, morphism_2, morphism_3, morphism_4, morphism_5, morphism_6, morphism_7_inverse,
               tensor_product, first_permutation, first_permutation_morphism_list,
               second_permutation, second_permutation_morphism_list, chi,
-              perm1, perm2, perm3, dim, vector_space_object, homalg_matrix;
+              perm1, perm2, perm3, dim, vector_space_object, homalg_matrix, support,
+              tensor_product_list, nr_components, morphism_4_string_list, morphism_4_position_list, i,
+              associator_string, add_string, multiplicity,
+              a_list, b_list, c_list, size_a, size_b, size_c, beta, gamma, a, b, c,
+              start_pos, g, G,
+              tensor_product_triple_list;
         
         object_a_list := SemisimpleCategoryObjectListWithActualObjects( object_a );
         
@@ -1579,6 +1642,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         object_c_expanded_list := (Size( object_c_list ) > 1) or (object_c_list[1][1] > 1);
         
         result_morphism := IdentityMorphism( new_source );
+        
+        support := Support( new_source );
         
         ## morphism_1
         
@@ -1606,7 +1671,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
             od;
             
-            morphism_2 := CAP_INTERNAL_DirectSumForPermutationLists( summand_list, Support( new_source ) );
+            morphism_2 := CAP_INTERNAL_DirectSumForPermutationLists( summand_list, support );
             
         fi;
         
@@ -1644,43 +1709,210 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
             od;
             
-            morphism_3 := CAP_INTERNAL_DirectSumForPermutationLists( outer_summand_list, Support( new_source ) );
+            morphism_3 := CAP_INTERNAL_DirectSumForPermutationLists( outer_summand_list, support );
             
         fi;
         
         ## morphism_4
         
-        outer_summand_list := [ ];
-        
-        for elem_a in object_a_list do
+        if is_magma_ring and is_complete_data then
+            ## use sparse matrices in singular
             
-            inner_summand_list := [ ];
+            tensor_product_list := SemisimpleCategoryObjectList( new_source );
             
-            for elem_b in object_b_list do
+            nr_components := Size( tensor_product_list );
+            
+            morphism_4_string_list := List( [ 1 .. nr_components ], i -> "[" );
+            
+            a_list := SemisimpleCategoryObjectList( object_a );
+            
+            b_list := SemisimpleCategoryObjectList( object_b );
+            
+            c_list := SemisimpleCategoryObjectList( object_c );
+            
+            size_a := Size( a_list );
+            
+            size_b := Size( b_list );
+            
+            size_c := Size( c_list );
+            
+            ## precomputation
+            beta := 
+              List( tensor_product_list, d ->
+                List( a_list, a -> 
+                  List( b_list, b ->
+                    Sum( List( c_list, c -> c[1] * Multiplicity( d[2], a[2], b[2], c[2] ) ) )
+                   )
+                )
+              );
+            
+            gamma := 
+              List( [ 1 .. nr_components ], d ->
+                List( [ 1 .. size_a ], a ->
+                  Sum( List( [ 1 .. size_b ], b -> b_list[b][1] * beta[d][a][b] ) )
+                )
+              );
+            
+            for a in [ 1 .. size_a ] do
                 
-                innermost_summand_list := [ ];
-                
-                for elem_c in object_c_list do
+                for b in [ 1 .. size_b ] do
                     
-                    morphism := CAP_INTERNAL_AssociatorOnIrreducibles( elem_a[2], elem_b[2], elem_c[2] );
-                    
-                    Append( innermost_summand_list, List( [ 1 .. elem_c[1] ], i -> morphism ) );
+                    for c in [ 1 .. size_c ] do
+                        
+                        if IsYieldingIdentities( a_list[a][2] ) or IsYieldingIdentities( b_list[b][2] ) or IsYieldingIdentities( c_list[c][2] ) then
+                            
+                            tensor_product_triple_list := 
+                              TensorProductOfIrreduciblesOp( [ a_list[a][2], b_list[b][2], c_list[c][2] ], a_list[a][2] );
+                            
+                            for elem in tensor_product_triple_list do
+                                
+                                i := PositionProperty( tensor_product_list, j -> j[2] = elem[2] );
+                                
+                                multiplicity := elem[1];
+                                
+                                #Compute morphism_4_position_list
+                                
+                                #1.step: find start position
+                                
+                                start_pos := 
+                                  Sum( List( [ 1 .. a-1 ], al -> a_list[al][1] * gamma[i][al] ) )
+                                  + Sum( List( [ 1 .. b-1 ], bl -> b_list[bl][1] * beta[i][a][bl] ) )
+                                  + Sum( List( [ 1 .. c-1 ], cl -> c_list[cl][1] * Multiplicity( tensor_product_list[i][2], a_list[a][2], b_list[b][2], c_list[cl][2] ) ) )
+                                  + 1;
+                                
+                                #2.step fill in the other positions
+                                
+                                g := beta[i][a][b];
+                                
+                                G := gamma[i][a];
+                                
+                                morphism_4_position_list :=
+                                  Flat(
+                                    List( [ 0 .. a_list[a][1]-1 ], al ->
+                                      List( [ 0 .. b_list[b][1]-1 ], bl ->
+                                        start_pos + al*G + bl*g
+                                      )
+                                    )
+                                  );
+                                    
+                                for elem in morphism_4_position_list do
+                                    
+                                    add_string := 
+                                      CAP_INTERNAL_Create_Sparse_Identity_String( elem, multiplicity * c_list[c][1] );
+                                    
+                                    Append( morphism_4_string_list[i], add_string );
+                                    
+                                od;
+                                
+                            od;
+                            
+                        else
+                            
+                            for i in [ 1 .. nr_components ] do
+                                
+                                associator_string :=
+                                  AssociatorStringListFromData( a_list[a][2], b_list[b][2], c_list[c][2], support[i], associator_data );
+                                
+                                if not IsEmpty( associator_string ) then
+                                    
+                                    #Compute morphism_4_position_list
+                                    
+                                    #1.step: find start position
+                                    
+                                    start_pos := 
+                                      Sum( List( [ 1 .. a-1 ], al -> a_list[al][1] * gamma[i][al] ) )
+                                      + Sum( List( [ 1 .. b-1 ], bl -> b_list[bl][1] * beta[i][a][bl] ) )
+                                      + Sum( List( [ 1 .. c-1 ], cl -> c_list[cl][1] * Multiplicity( tensor_product_list[i][2], a_list[a][2], b_list[b][2], c_list[cl][2] ) ) )
+                                      + 1;
+                                    
+                                    #2.step fill in the other positions
+                                    
+                                    g := beta[i][a][b];
+                                    
+                                    G := gamma[i][a];
+                                    
+                                    morphism_4_position_list :=
+                                      Flat(
+                                        List( [ 0 .. a_list[a][1]-1 ], al ->
+                                          List( [ 0 .. b_list[b][1]-1 ], bl ->
+                                            start_pos + al*G + bl*g
+                                          )
+                                        )
+                                      );
+                                    
+                                    for elem in morphism_4_position_list do
+                                        
+                                        add_string :=
+                                          CAP_INTERNAL_Create_Sparse_String(
+                                          associator_string,
+                                          elem,
+                                          c_list[c][1] );
+                                        
+                                        Append( morphism_4_string_list[i], add_string );
+                                        
+                                    od;
+                                    
+                                fi;
+                                
+                            od;
+                          
+                        fi;
+                        
+                    od;
                     
                 od;
                 
-                morphism := DirectSumFunctorial( innermost_summand_list );
+            od; 
+            
+            for i in morphism_4_string_list do
                 
-                Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
+                Remove( i, Size( i ) );
+                
+                Append( i, "]" );
+                
+            od;
+#             
+#             morphism_4_string_list :=
+#               List( morphism_4_string_list, str -> Concatenation( "[", str{[1..Size(str)-1]}, "]" ) );
+#             
+            morphism_4 := 
+              CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_String_List( new_source, morphism_4_string_list );
+            
+        else
+            
+            outer_summand_list := [ ];
+            
+            for elem_a in object_a_list do
+                
+                inner_summand_list := [ ];
+                
+                for elem_b in object_b_list do
+                    
+                    innermost_summand_list := [ ];
+                    
+                    for elem_c in object_c_list do
+                        
+                        morphism := CAP_INTERNAL_AssociatorOnIrreducibles( elem_a[2], elem_b[2], elem_c[2] );
+                        
+                        Append( innermost_summand_list, List( [ 1 .. elem_c[1] ], i -> morphism ) );
+                        
+                    od;
+                    
+                    morphism := DirectSumFunctorial( innermost_summand_list );
+                    
+                    Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
+                    
+                od;
+                
+                morphism := DirectSumFunctorial( inner_summand_list );
+                
+                Append( outer_summand_list, List( [ 1 .. elem_a[1] ], i -> morphism ) );
                 
             od;
             
-            morphism := DirectSumFunctorial( inner_summand_list );
-            
-            Append( outer_summand_list, List( [ 1 .. elem_a[1] ], i -> morphism ) );
-            
-        od;
-        
-        morphism_4 := DirectSumFunctorial( outer_summand_list );
+            morphism_4 := DirectSumFunctorial( outer_summand_list );
+          
+        fi;
         
         ## morphism_5
         
@@ -1710,7 +1942,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
             od;
             
-            morphism_5 := CAP_INTERNAL_DirectSumForPermutationLists( outer_summand_list, Support( new_source ) );
+            morphism_5 := CAP_INTERNAL_DirectSumForPermutationLists( outer_summand_list, support );
             
         fi;
         
@@ -1730,7 +1962,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
             od;
             
-            morphism_6 := CAP_INTERNAL_DirectSumForPermutationLists( summand_list, Support( new_source ) );
+            morphism_6 := CAP_INTERNAL_DirectSumForPermutationLists( summand_list, support );
             
         fi;
         
@@ -1745,7 +1977,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             morphism_7_inverse := 
               right_distributivity_expanding_permutation
                           ( tensor_product, object_a_list,
-                            object_a, Support( new_source ), false );
+                            object_a, support, false );
             
         fi;
         
@@ -1755,7 +1987,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         if not ( IsEmpty( morphism_1 ) and IsEmpty( morphism_2 ) and IsEmpty( morphism_3 ) ) then
             
-            for chi in Support( new_source ) do
+            for chi in support do
                 
                 perm1 := First( morphism_1, i -> i[2] = chi );
                 
@@ -1817,7 +2049,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         if not ( IsEmpty( morphism_5 ) and IsEmpty( morphism_6 ) and IsEmpty( morphism_7_inverse ) ) then
             
-            for chi in Support( new_source ) do
+            for chi in support do
                 
                 perm1 := First( morphism_5, i -> i[2] = chi );
                 

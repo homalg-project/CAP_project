@@ -150,6 +150,40 @@ InstallMethod( ComponentProjectionMorphism,
     
 end );
 
+##
+InstallMethod( CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_String_List,
+               [ IsSemisimpleCategoryObject, IsList ],
+               
+  function( object, string_list )
+    local morphism_list, object_list, size, field, i, vector_space;
+    
+    morphism_list := [];
+    
+    object_list := SemisimpleCategoryObjectList( object );
+    
+    size := Size( object_list );
+    
+    field := UnderlyingFieldForHomalg( object );
+    
+    for i in [ 1 .. size ] do
+#         
+#         ConvertToStringRep( string_list[i] );
+#         
+        vector_space := VectorSpaceObject( object_list[i][1], field );
+        
+        Add( morphism_list, [
+          VectorSpaceMorphism(
+            vector_space,
+            CreateHomalgMatrixFromSparseString( string_list[i], object_list[i][1], object_list[i][1], field ),
+            vector_space ),
+          object_list[i][2] ] );
+        
+    od;
+    
+    return SemisimpleCategoryMorphism( object, morphism_list, object );
+    
+end );
+
 ####################################
 ##
 ## Operations

@@ -291,6 +291,9 @@ InstallMethod( RepresentationCategoryZGraded,
     ## side effect: this computes the multiplicity array of group which can thus be accessed without the getter
     MultiplicityArray( group );
     
+    ## side effect: this computes the multiplicity array of group which can thus be accessed without the getter
+    MultiplicityTripleArray( group );
+    
     return category;
     
 end );

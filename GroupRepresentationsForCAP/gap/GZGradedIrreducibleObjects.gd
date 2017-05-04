@@ -131,6 +131,10 @@ DeclareProperty( "IsYieldingIdentities", IsGZGradedIrreducibleObject );
 #! @Arguments i, j, k
 DeclareOperation( "Multiplicity", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ] );
 
+##
+DeclareOperation( "Multiplicity", 
+  [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ] );
+
 # @Description
 # The arguments are 2 $G-\mathbb{Z}$-irreducible objects $i,j$.
 #! Let their underlying characters be denoted by $a,b$, respectively,
@@ -158,6 +162,9 @@ DeclareOperation( "\<", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObje
 #! @Arguments i, j
 DeclareOperation( "\*", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ] );
 
+##
+DeclareOperation( "TensorProductOfIrreduciblesOp", [ IsList, IsGZGradedIrreducibleObject ] );
+
 #! @Description
 #! The arguments are
 #! - three $G-\mathbb{Z}$-irreducible objects $i,j,k$,
@@ -175,6 +182,11 @@ DeclareOperation( "\*", [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObje
 #! @Arguments i, j, k, A, F, L
 DeclareOperation( "AssociatorFromData", 
                   [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList ] );
+
+##
+DeclareOperation( "AssociatorStringListFromData", 
+                  [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList ] );
+
 
 #! @Description
 #! The arguments are two $G-\mathbb{Z}$-irreducible objects $i, j$.

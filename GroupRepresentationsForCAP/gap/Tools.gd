@@ -10,3 +10,6 @@
 
 ##
 DeclareAttribute( "MultiplicityArray", IsGroup );
+
+##
+DeclareAttribute( "MultiplicityTripleArray", IsGroup );

@@ -94,6 +94,10 @@ DeclareOperation( "ComponentInclusionMorphism",
 DeclareOperation( "ComponentProjectionMorphism",
                   [ IsSemisimpleCategoryObject, IsObject ] );
 
+##
+DeclareOperation( "CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_String_List",
+                  [ IsSemisimpleCategoryObject, IsList ] );
+
 ####################################
 ##
 #! @Section Attributes

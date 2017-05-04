@@ -193,6 +193,25 @@ end );
 
 ##
 InstallMethod( Multiplicity,
+               [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject ],
+               
+  function( object_1, object_2, object_3, object_4 )
+    local tensor_product;
+    
+    if not ( object_1!.UnderlyingDegree = object_2!.UnderlyingDegree + object_3!.UnderlyingDegree + object_4!.UnderlyingDegree ) then
+        
+        return 0;
+        
+    fi;
+    
+    ## warning: this line assumes that MultiplicityArray of group has been computed yet
+    return UnderlyingGroup( object_1 )!.MultiplicityTripleArray[ object_1!.UnderlyingCharacterNumber ][ object_2!.UnderlyingCharacterNumber ][ object_3!.UnderlyingCharacterNumber ][ object_4!.UnderlyingCharacterNumber ];
+    
+end );
+
+
+##
+InstallMethod( Multiplicity,
                [ IsRepresentationCategoryZGradedObject, IsGZGradedIrreducibleObject ],
                
   function( semisimple_category_object, irr )
@@ -258,6 +277,40 @@ InstallMethod( \*,
 end );
 
 ##
+InstallMethod( TensorProductOfIrreduciblesOp,
+               [ IsList, IsGZGradedIrreducibleObject ],
+               
+  function( list, method_selection_object )
+    
+    local new_degree, tensor_product, result_list, irr, chi, scalar_product;
+    
+    tensor_product := Product( List( list, UnderlyingCharacter ) );
+    
+    result_list := [ ];
+    
+    irr := UnderlyingIrreducibleCharacters( method_selection_object );
+    
+    new_degree := 
+      Sum( List( list, UnderlyingDegree ) );
+    
+    for chi in irr do
+        
+        scalar_product := ScalarProduct( chi, tensor_product );
+        
+        if scalar_product > 0 then
+            
+            Add( result_list, [ scalar_product, GZGradedIrreducibleObject( new_degree, chi ) ] );
+            
+        fi;
+        
+    od;
+    
+    return result_list;
+    
+end );
+
+
+##
 InstallMethod( AssociatorFromData,
                [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList ],
                
@@ -284,6 +337,33 @@ InstallMethod( AssociatorFromData,
     od;
     
     return morphism_list;
+    
+end );
+
+##
+InstallMethod( AssociatorStringListFromData,
+               [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList ],
+               
+  function( irr_1, irr_2, irr_3, irr_4, associator_data )
+    local data;
+    
+    if not ( irr_1!.UnderlyingDegree + irr_2!.UnderlyingDegree + irr_3!.UnderlyingDegree = irr_4!.UnderlyingDegree ) then
+        
+        return "";
+        
+    fi;
+    
+    data := associator_data[irr_1!.UnderlyingCharacterNumber][irr_2!.UnderlyingCharacterNumber][irr_3!.UnderlyingCharacterNumber];
+    
+    if IsBound( data[irr_4!.UnderlyingCharacterNumber] ) then
+        
+        return data[irr_4!.UnderlyingCharacterNumber];
+        
+    else
+        
+        return "";
+        
+    fi;
     
 end );
 

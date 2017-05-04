@@ -182,3 +182,9 @@ DeclareGlobalVariable( "CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY" );
 ##
 DeclareOperationWithCache( "CAP_INTERNAL_ExpandSemisimpleCategoryObjectList",
                            [ IsList ] );
+
+##
+DeclareGlobalFunction( "CAP_INTERNAL_Create_Sparse_String" );
+
+##
+DeclareGlobalFunction( "CAP_INTERNAL_Create_Sparse_Identity_String" );
