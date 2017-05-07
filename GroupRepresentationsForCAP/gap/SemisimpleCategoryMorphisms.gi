@@ -184,6 +184,38 @@ InstallMethod( CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_String_Li
     
 end );
 
+##
+InstallMethod( CAP_INTERNAL_Create_Semisimple_Endomorphism_From_List_Of_Diagonal_Blocks,
+               [ IsSemisimpleCategoryObject, IsList ],
+               
+  function( object, list )
+    local morphism_list, object_list, size, field, i, vector_space;
+    
+    morphism_list := [];
+    
+    object_list := SemisimpleCategoryObjectList( object );
+    
+    size := Size( object_list );
+    
+    field := UnderlyingFieldForHomalg( object );
+    
+    for i in [ 1 .. size ] do
+        
+        vector_space := VectorSpaceObject( object_list[i][1], field );
+        
+        Add( morphism_list, [
+          VectorSpaceMorphism(
+            vector_space,
+            DiagMat( list[i] ),
+            vector_space ),
+          object_list[i][2] ] );
+        
+    od;
+    
+    return SemisimpleCategoryMorphism( object, morphism_list, object );
+    
+end );
+
 ####################################
 ##
 ## Operations

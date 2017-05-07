@@ -260,7 +260,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     local field, membership_function, associator_on_irreducibles, braiding_on_irreducibles,
           distributivity_expanding_for_triple, distributivity_factoring_for_triple,
           right_distributivity_expanding_permutation, left_distributivity_expanding_permutation,
-          distributivity_function, is_magma_ring;
+          distributivity_function, is_magma_ring, get_associator_component_as_homalg_matrix;
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
     
@@ -1606,6 +1606,29 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
         end
     );
+    
+    get_associator_component_as_homalg_matrix := FunctionWithCache( 
+      function( irr_a, irr_b, irr_c, chi )
+        local associator_string, dim;
+        
+        associator_string := AssociatorStringListFromData( irr_a, irr_b, irr_c, chi, associator_data );
+        
+        if IsEmpty( associator_string ) then
+            
+            return fail;
+            
+        else
+            
+            dim := Sqrt( Size( SplitString( associator_string, "," ) ) );
+            
+            return HomalgMatrix( Concatenation( "[",associator_string,"]" ), dim, dim, field );
+            
+        fi;
+        
+    end );
+      
+      
+    
     ##
     AddAssociatorLeftToRightWithGivenTensorProducts( category,
       function( new_source, object_a, object_b, object_c, new_range )
@@ -1620,8 +1643,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               tensor_product_list, nr_components, morphism_4_string_list, morphism_4_position_list, i,
               associator_string, add_string, multiplicity,
               a_list, b_list, c_list, size_a, size_b, size_c, beta, gamma, a, b, c,
-              start_pos, g, G,
-              tensor_product_triple_list;
+              start_pos, g, G, p,
+              tensor_product_triple_list, matrix, associator_matrix;
         
         object_a_list := SemisimpleCategoryObjectListWithActualObjects( object_a );
         
@@ -1715,8 +1738,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         ## morphism_4
         
-        if is_magma_ring and is_complete_data then
-            ## use sparse matrices in singular
+        if is_complete_data then
             
             tensor_product_list := SemisimpleCategoryObjectList( new_source );
             
@@ -1741,7 +1763,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               List( tensor_product_list, d ->
                 List( a_list, a -> 
                   List( b_list, b ->
-                    Sum( List( c_list, c -> c[1] * Multiplicity( d[2], a[2], b[2], c[2] ) ) )
+                    Sum( List( c_list, c -> c[1] * SignInt( Multiplicity( d[2], a[2], b[2], c[2] ) ) ) )
                    )
                 )
               );
@@ -1752,6 +1774,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                   Sum( List( [ 1 .. size_b ], b -> b_list[b][1] * beta[d][a][b] ) )
                 )
               );
+            
+            morphism_4 := List( [ 1 .. nr_components ], i ->[] );
             
             for a in [ 1 .. size_a ] do
                 
@@ -1777,7 +1801,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                                 start_pos := 
                                   Sum( List( [ 1 .. a-1 ], al -> a_list[al][1] * gamma[i][al] ) )
                                   + Sum( List( [ 1 .. b-1 ], bl -> b_list[bl][1] * beta[i][a][bl] ) )
-                                  + Sum( List( [ 1 .. c-1 ], cl -> c_list[cl][1] * Multiplicity( tensor_product_list[i][2], a_list[a][2], b_list[b][2], c_list[cl][2] ) ) )
+                                  + Sum( List( [ 1 .. c-1 ], cl -> c_list[cl][1] * SignInt( Multiplicity( tensor_product_list[i][2], a_list[a][2], b_list[b][2], c_list[cl][2] ) ) ) )
                                   + 1;
                                 
                                 #2.step fill in the other positions
@@ -1790,17 +1814,18 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                                   Flat(
                                     List( [ 0 .. a_list[a][1]-1 ], al ->
                                       List( [ 0 .. b_list[b][1]-1 ], bl ->
-                                        start_pos + al*G + bl*g
+                                        List( [ 0 .. c_list[c][1]-1 ], cl ->
+                                        start_pos + cl + al*G + bl*g
+                                      )
                                       )
                                     )
                                   );
+                                
+                                matrix := HomalgIdentityMatrix( multiplicity, field );
+                                
+                                for p in morphism_4_position_list do
                                     
-                                for elem in morphism_4_position_list do
-                                    
-                                    add_string := 
-                                      CAP_INTERNAL_Create_Sparse_Identity_String( elem, multiplicity * c_list[c][1] );
-                                    
-                                    Append( morphism_4_string_list[i], add_string );
+                                    morphism_4[i][p] := matrix;
                                     
                                 od;
                                 
@@ -1810,10 +1835,10 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                             
                             for i in [ 1 .. nr_components ] do
                                 
-                                associator_string :=
-                                  AssociatorStringListFromData( a_list[a][2], b_list[b][2], c_list[c][2], support[i], associator_data );
+                                associator_matrix :=
+                                  get_associator_component_as_homalg_matrix( a_list[a][2], b_list[b][2], c_list[c][2], support[i] );
                                 
-                                if not IsEmpty( associator_string ) then
+                                if not (associator_matrix = fail) then
                                     
                                     #Compute morphism_4_position_list
                                     
@@ -1822,7 +1847,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                                     start_pos := 
                                       Sum( List( [ 1 .. a-1 ], al -> a_list[al][1] * gamma[i][al] ) )
                                       + Sum( List( [ 1 .. b-1 ], bl -> b_list[bl][1] * beta[i][a][bl] ) )
-                                      + Sum( List( [ 1 .. c-1 ], cl -> c_list[cl][1] * Multiplicity( tensor_product_list[i][2], a_list[a][2], b_list[b][2], c_list[cl][2] ) ) )
+                                      + Sum( List( [ 1 .. c-1 ], cl -> c_list[cl][1] * SignInt( Multiplicity( tensor_product_list[i][2], a_list[a][2], b_list[b][2], c_list[cl][2] ) ) ) )
                                       + 1;
                                     
                                     #2.step fill in the other positions
@@ -1835,20 +1860,16 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                                       Flat(
                                         List( [ 0 .. a_list[a][1]-1 ], al ->
                                           List( [ 0 .. b_list[b][1]-1 ], bl ->
-                                            start_pos + al*G + bl*g
+                                            List( [ 0 .. c_list[c][1]-1 ], cl ->
+                                            start_pos + cl + al*G + bl*g
+                                          )
                                           )
                                         )
                                       );
                                     
-                                    for elem in morphism_4_position_list do
+                                    for p in morphism_4_position_list do
                                         
-                                        add_string :=
-                                          CAP_INTERNAL_Create_Sparse_String(
-                                          associator_string,
-                                          elem,
-                                          c_list[c][1] );
-                                        
-                                        Append( morphism_4_string_list[i], add_string );
+                                        morphism_4[i][p] := associator_matrix;
                                         
                                     od;
                                     
@@ -1864,19 +1885,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
             od; 
             
-            for i in morphism_4_string_list do
-                
-                Remove( i, Size( i ) );
-                
-                Append( i, "]" );
-                
-            od;
-#             
-#             morphism_4_string_list :=
-#               List( morphism_4_string_list, str -> Concatenation( "[", str{[1..Size(str)-1]}, "]" ) );
-#             
             morphism_4 := 
-              CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_String_List( new_source, morphism_4_string_list );
+              CAP_INTERNAL_Create_Semisimple_Endomorphism_From_List_Of_Diagonal_Blocks( new_source, morphism_4 );
             
         else
             

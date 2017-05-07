@@ -98,6 +98,10 @@ DeclareOperation( "ComponentProjectionMorphism",
 DeclareOperation( "CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_String_List",
                   [ IsSemisimpleCategoryObject, IsList ] );
 
+##
+DeclareOperation( "CAP_INTERNAL_Create_Semisimple_Endomorphism_From_List_Of_Diagonal_Blocks",
+                  [ IsSemisimpleCategoryObject, IsList ] );
+
 ####################################
 ##
 #! @Section Attributes
