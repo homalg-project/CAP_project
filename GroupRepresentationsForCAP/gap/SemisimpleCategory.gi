@@ -1644,7 +1644,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               associator_string, add_string, multiplicity,
               a_list, b_list, c_list, size_a, size_b, size_c, beta, gamma, a, b, c,
               start_pos, g, G, p,
-              tensor_product_triple_list, matrix, associator_matrix;
+              tensor_product_triple_list, matrix, associator_matrix,
+              morphism_4_degree_list, degree;
         
         object_a_list := SemisimpleCategoryObjectListWithActualObjects( object_a );
         
@@ -1738,7 +1739,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         ## morphism_4
         
-        if is_complete_data then
+        if is_magma_ring and is_complete_data then
             
             tensor_product_list := SemisimpleCategoryObjectList( new_source );
             
@@ -1776,6 +1777,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               );
             
             morphism_4 := List( [ 1 .. nr_components ], i ->[] );
+            
+            morphism_4_degree_list := List( [ 1 .. nr_components ], i ->[] );
             
             for a in [ 1 .. size_a ] do
                 
@@ -1821,11 +1824,13 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                                     )
                                   );
                                 
-                                matrix := HomalgIdentityMatrix( multiplicity, field );
+                                matrix := String( Flat( IdentityMat( multiplicity ) ) );
                                 
                                 for p in morphism_4_position_list do
                                     
                                     morphism_4[i][p] := matrix;
+                                    
+                                    morphism_4_degree_list[i][p] := multiplicity;
                                     
                                 od;
                                 
@@ -1835,10 +1840,10 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                             
                             for i in [ 1 .. nr_components ] do
                                 
-                                associator_matrix :=
-                                  get_associator_component_as_homalg_matrix( a_list[a][2], b_list[b][2], c_list[c][2], support[i] );
+                                associator_string :=
+                                  AssociatorStringListFromData( a_list[a][2], b_list[b][2], c_list[c][2], support[i], associator_data );
                                 
-                                if not (associator_matrix = fail) then
+                                if not IsEmpty( associator_string ) then
                                     
                                     #Compute morphism_4_position_list
                                     
@@ -1867,9 +1872,15 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                                         )
                                       );
                                     
+                                    degree := Sqrt( Size( SplitString( associator_string, "," ) ) );
+                                    
+                                    associator_string := Concatenation( "[", associator_string, "]" );
+                                    
                                     for p in morphism_4_position_list do
                                         
-                                        morphism_4[i][p] := associator_matrix;
+                                        morphism_4[i][p] := associator_string;
+                                        
+                                        morphism_4_degree_list[i][p] := degree;
                                         
                                     od;
                                     
@@ -1886,7 +1897,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             od; 
             
             morphism_4 := 
-              CAP_INTERNAL_Create_Semisimple_Endomorphism_From_List_Of_Diagonal_Blocks( new_source, morphism_4 );
+              CAP_INTERNAL_Create_Semisimple_Endomorphism_From_String_List( new_source, morphism_4, morphism_4_degree_list );
             
         else
             

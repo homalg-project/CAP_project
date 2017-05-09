@@ -102,6 +102,11 @@ DeclareOperation( "CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_Strin
 DeclareOperation( "CAP_INTERNAL_Create_Semisimple_Endomorphism_From_List_Of_Diagonal_Blocks",
                   [ IsSemisimpleCategoryObject, IsList ] );
 
+##
+DeclareOperation( "CAP_INTERNAL_Create_Semisimple_Endomorphism_From_String_List",
+                  [ IsSemisimpleCategoryObject, IsList, IsList ] );
+
+
 ####################################
 ##
 #! @Section Attributes
