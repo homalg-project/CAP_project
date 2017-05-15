@@ -1478,14 +1478,10 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     distributivity_expanding_for_triple := FunctionWithCache(
-        function( object_1, object_2, object_list_with_actual_objects, left_term )
-          local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
+        function( object_1, object_2, direct_sum, object_list_with_actual_objects, left_term )
+          local object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
                 tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
                 dim, string, vector_space_object;
-          
-          summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
-          
-          direct_sum := DirectSum( summands );
           
           object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
           
@@ -1543,14 +1539,10 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     );
     ##
     distributivity_factoring_for_triple := FunctionWithCache(
-        function( object_1, object_2, object_list_with_actual_objects, right_term )
-          local summands, direct_sum, object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
+        function( object_1, object_2, direct_sum, object_list_with_actual_objects, right_term )
+          local object, support_tensor_product_all, direct_sum_2, support_tensor_product_partial,
                 tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
                 dim, string, vector_space_object;
-          
-          summands := CAP_INTERNAL_ExpandSemisimpleCategoryObjectList( object_list_with_actual_objects );
-          
-          direct_sum := DirectSum( summands );
           
           object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
           
@@ -1675,7 +1667,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         if object_a_expanded_list then
             
-            morphism_1 := distributivity_expanding_for_triple( object_b, object_c, object_a_list, true );
+            morphism_1 := distributivity_expanding_for_triple( object_b, object_c, object_a, object_a_list, true );
             
         fi;
         
@@ -1689,7 +1681,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             for elem in object_a_list do
                 
-                morphism := distributivity_expanding_for_triple( elem[2], object_c, object_b_list, false );
+                morphism := distributivity_expanding_for_triple( elem[2], object_c, object_b, object_b_list, false );
                 
                 Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
                 
@@ -1950,7 +1942,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 for elem_b in object_b_list do
                     
                     morphism :=
-                      distributivity_factoring_for_triple( elem_a[2], elem_b[2], object_c_list, true );
+                      distributivity_factoring_for_triple( elem_a[2], elem_b[2], object_c, object_c_list, true );
                     
                     Append( inner_summand_list, List( [ 1 .. elem_b[1] ], i -> morphism ) );
                     
@@ -1977,7 +1969,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             for elem in object_a_list do
                 
-                morphism := distributivity_factoring_for_triple( elem[2], object_c, object_b_list, false );
+                morphism := distributivity_factoring_for_triple( elem[2], object_c, object_b, object_b_list, false );
                 
                 Append( summand_list, List( [ 1 .. elem[1] ], i -> morphism ) );
                 
