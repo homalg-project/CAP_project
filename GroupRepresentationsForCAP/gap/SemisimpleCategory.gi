@@ -1073,7 +1073,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     right_distributivity_expanding_permutation := FunctionWithCache(
         function( object_b, list_of_objects, direct_sum, support_tensor_product, is_expanded )
           local permutation_list, k_permutation, size_support, size_list_of_objects, height, l, i, k, direct_sum_support,
-                multiplicity_li, sum_up_to_l_minus_1, j, b_j_times_c_kij, cols, rows, height_of_zeros, object_b_list;
+                multiplicity_li, sum_up_to_l_minus_1, j, b_j_times_c_kij, cols, rows, height_of_zeros, object_b_list,
+                multiplicity_directsum_i;
           
           if not is_expanded then
               
@@ -1104,13 +1105,15 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                       sum_up_to_l_minus_1 :=
                         Sum( List( [ 1 .. l - 1 ], m -> Multiplicity( list_of_objects[m], i ) ) );
                       
+                      multiplicity_directsum_i := Multiplicity( direct_sum, i );
+                      
                       for j in object_b_list do
                           
                           b_j_times_c_kij := j[1] * Multiplicity( k, i, j[2] );
                           
                           cols := multiplicity_li * b_j_times_c_kij;
                           
-                          rows := Multiplicity( direct_sum, i ) * b_j_times_c_kij;
+                          rows :=  multiplicity_directsum_i * b_j_times_c_kij;
                           
                           height_of_zeros := sum_up_to_l_minus_1 * b_j_times_c_kij;
                           
@@ -1483,11 +1486,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
                 dim, string, vector_space_object;
           
-          object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
+          direct_sum_2 := TensorProductOnObjects( direct_sum, object_1 );
+          
+          object := TensorProductOnObjects( direct_sum_2, object_2 );
           
           support_tensor_product_all := Support( object );
-          
-          direct_sum_2 := TensorProductOnObjects( direct_sum, object_1 );
           
           support_tensor_product_partial := Support( direct_sum_2 );
           
@@ -1544,11 +1547,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 tensored_object_list_with_actual_objects, permutation_list_1, permutation_list_2, morphism_list, size, i,
                 dim, string, vector_space_object;
           
-          object := TensorProductOnObjects( TensorProductOnObjects( direct_sum, object_1 ), object_2 );
+          direct_sum_2 := TensorProductOnObjects( direct_sum, object_2 );
+          
+          object := TensorProductOnObjects( direct_sum_2, object_1 );
           
           support_tensor_product_all := Support( object );
-          
-          direct_sum_2 := TensorProductOnObjects( direct_sum, object_2 );
           
           support_tensor_product_partial := Support( direct_sum_2 );
           
