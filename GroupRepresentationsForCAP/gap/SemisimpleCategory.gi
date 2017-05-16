@@ -67,7 +67,7 @@ InstallMethod( FunctorByUniversalPropertyOfSemisimpleCategory,
                 
             elif nr_cols = 0 then
                 
-                Add( list, UniversalMorphismFromZeroObject( DirectSum( List( [ 1 .. nr_rows ], i -> image_chi ) ) ) );
+                Add( list, UniversalMorphismIntoZeroObject( DirectSum( List( [ 1 .. nr_rows ], i -> image_chi ) ) ) );
                 
                 continue;
                 
