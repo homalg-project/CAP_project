@@ -130,6 +130,10 @@ structure_record.InternalHomOnObjects :=
       
   end;
 
+structure_record.NoInstallList := [ "Lift", "Colift" ];
+
+structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism" ];
+
 ## This function installs all the primitive functions for the category_of_objects_with_endomorphism.
 triple := EnhancementWithAttributes( structure_record );
 

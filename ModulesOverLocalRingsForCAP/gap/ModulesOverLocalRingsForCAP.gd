@@ -57,3 +57,12 @@ DeclareAttribute( "UnderlyingHomalgRingModuloPrimeIdeal",
 ##
 DeclareAttribute( "UnderlyingHomalgRingDegreeFunction",
                   IsCategoryOfModulePresentationsOverLocalRing, "mutable" );
+
+##
+DeclareAttribute( "EmbeddingDimension",
+                  IsCategoryOfModulePresentationsOverLocalRing );
+
+##
+DeclareProperty( "IsRegular",
+                  IsCategoryOfModulePresentationsOverLocalRing );
+

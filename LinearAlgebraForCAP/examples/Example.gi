@@ -37,7 +37,7 @@ Display( c );
 #!   [  -1/2 ],
 #!   [     1 ] ]
 #!
-#! A split epi morphism in Category of matrices over Q
+#! A split epimorphism in Category of matrices over Q
 gamma := UniversalMorphismIntoDirectSum( [ c, c ] );;
 Display( gamma );
 #! [ [     0,     0 ],

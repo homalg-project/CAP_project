@@ -217,4 +217,16 @@ DeclareAttribute( "GeneralizedMorphismCategoryByCospans",
 DeclareAttribute( "GeneralizedMorphismByCospansObject",
                   IsCapCategoryObject );
 
+####################################
+##
+#! @Section Constructors of lifts of exact functors and natrual (iso)morphisms
+##
+####################################
 
+#! @Description
+#!  Lift the <E>exact</E> functor <A>F</A> to a functor <M>A \to B</M>,
+#!  where <M>A := </M> <C>GeneralizedMorphismCategoryByCospans( AsCapCategory( Source( </C><A>F</A><C> ) ) )</C>
+#!  and <M>B := </M> <C>GeneralizedMorphismCategoryByCospans( AsCapCategory( Range( </C><A>F</A><C> ) ) )</C>.
+#! @Arguments F, name
+DeclareOperation( "AsGeneralizedMorphismByCospan",
+        [ IsCapFunctor, IsString ] );

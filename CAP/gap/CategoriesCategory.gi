@@ -1021,6 +1021,11 @@ InstallGlobalFunction( ApplyNaturalTransformation,
     
     Add( AsCapCategory( Range( source_functor ) ), computed_value );
     
+    ## TODO: this should be replaced by an "a => b" todo_list with more properties
+    if HasIsIsomorphism( trafo ) and IsIsomorphism( trafo ) then
+        SetIsIsomorphism( computed_value, true );
+    fi;
+    
     return computed_value;
     
 end );

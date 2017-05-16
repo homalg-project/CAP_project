@@ -18,7 +18,7 @@ InstallMethod( MatrixCategory,
                [ IsFieldForHomalg ],
                
   function( homalg_field )
-    local category;
+    local category, to_be_finalized;
     
     category := CreateCapCategory( Concatenation( "Category of matrices over ", RingName( homalg_field ) ) );
     
@@ -39,7 +39,17 @@ InstallMethod( MatrixCategory,
         "PredicateImplicationsForMatrixCategory.tex" )
     );
      
-    Finalize( category );
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+   
+    if to_be_finalized = false then
+      
+       return category;
+    
+    else
+    
+       Finalize( category );
+      
+    fi;
     
     return category;
     

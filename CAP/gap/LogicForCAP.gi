@@ -28,7 +28,7 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                                     Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForPreabelianCategories.tex" )
                                   ],
           IsAbelianCategory := [
-#                                  Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForAbelianCategories.tex" )
+                                  Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForAbelianCategories.tex" )
                                ] ),
       Predicates := rec(
           General := [

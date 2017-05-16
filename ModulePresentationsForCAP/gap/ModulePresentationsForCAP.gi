@@ -12,7 +12,7 @@ InstallMethod( LeftPresentations,
                [ IsHomalgRing ],
                
   function( ring )
-    local category;
+    local category, to_be_finalized;
     
     category := CreateCapCategory( Concatenation( "Category of left presentations of ", RingName( ring ) ) );
     
@@ -52,18 +52,30 @@ InstallMethod( LeftPresentations,
         "RelationsForGeneralModuleCategories.tex" )
     );
     
-    Finalize( category );
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+   
+    if to_be_finalized = false then
+      
+       return category;
+    
+    else
+    
+       Finalize( category );
+      
+    fi;
     
     return category;
     
 end );
+
+# LeftPresentations( R: FinalizeCategory := false );
 
 ##
 InstallMethod( RightPresentations,
                [ IsHomalgRing ],
                
   function( ring )
-    local category;
+    local category, to_be_finalized;
     
     category := CreateCapCategory( Concatenation( "Category of right presentations of ", RingName( ring ) ) );
     
@@ -102,7 +114,17 @@ InstallMethod( RightPresentations,
         "RelationsForGeneralModuleCategories.tex" )
     );
     
-    Finalize( category );
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+   
+    if to_be_finalized = false then
+      
+       return category;
+    
+    else
+    
+       Finalize( category );
+      
+    fi;
     
     return category;
     
@@ -718,17 +740,6 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
         
     end );
     
-    AddCokernelProjectionWithGivenCokernelObject( category,
-                     
-      function( morphism, cokernel_object )
-        local projection;
-        
-        projection := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
-        
-        return PresentationMorphism( Range( morphism ), projection, cokernel_object );
-        
-    end );
-    
     AddCokernelColiftWithGivenCokernelObject( category,
       
       function( morphism, test_morphism, cokernel_object )
@@ -755,17 +766,6 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
         cokernel_object := UnionOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
         
         cokernel_object := AsRightPresentation( cokernel_object );
-        
-        projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
-        
-        return PresentationMorphism( Range( morphism ), projection, cokernel_object );
-        
-    end );
-    
-    AddCokernelProjectionWithGivenCokernelObject( category,
-                     
-      function( morphism, cokernel_object )
-        local projection;
         
         projection := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( Range( morphism ) ) ), homalg_ring );
         
@@ -1668,7 +1668,6 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
     end );
     
 end );
-
 
 InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT, 
 
