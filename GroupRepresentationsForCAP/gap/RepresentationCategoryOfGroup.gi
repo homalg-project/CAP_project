@@ -35,9 +35,9 @@ InstallMethod( RepresentationCategory,
     
     if group_data = fail then
         
-        Error( "The associator of ", group_string, " has not been computed yet" );
+        Print( "Warning: The associator of ", group_string, " has not been computed yet\n" );
         
-        return;
+        group_data := [];
         
     fi;
     
@@ -68,9 +68,9 @@ InstallMethod( RepresentationCategory,
     
     if group_data = fail then
         
-        Error( "The associator of ", group_string, " has not been computed yet" );
+        Print( "Warning: The associator of ", group_string, " has not been computed yet\n" );
         
-        return;
+        group_data := [];
         
     fi;
     
@@ -95,13 +95,27 @@ InstallMethod( RepresentationCategory,
     
     irr := Irr( group );
     
-    conductor := group_data[2];
-    
-    unit_number := group_data[3];
-    
-    associator_filename := group_data[4];
-    
-    is_complete_data := group_data[5];
+    if group_data <> [] then
+        
+        conductor := group_data[2];
+        
+        unit_number := group_data[3];
+        
+        associator_filename := group_data[4];
+        
+        is_complete_data := group_data[5];
+      
+    else
+        
+        conductor := 1;
+        
+        unit_number := PositionProperty( irr, IsOne );
+        
+        associator_filename := "";
+        
+        is_complete_data := false;
+      
+    fi;
     
     membership_function := object -> IsGIrreducibleObject( object ) and IsIdenticalObj( UnderlyingGroup( object ), group );
     
@@ -200,9 +214,9 @@ InstallMethod( RepresentationCategoryZGraded,
     
     if group_data = fail then
         
-        Error( "The associator of ", group_string, " has not been computed yet" );
+        Print( "Warning: The associator of ", group_string, " has not been computed yet\n" );
         
-        return;
+        group_data := [];
         
     fi;
     
@@ -233,9 +247,9 @@ InstallMethod( RepresentationCategoryZGraded,
     
     if group_data = fail then
         
-        Error( "The associator of ", group_string, " has not been computed yet" );
+        Print( "Warning: The associator of ", group_string, " has not been computed yet\n" );
         
-        return;
+        group_data := [];
         
     fi;
     
@@ -258,13 +272,27 @@ InstallMethod( RepresentationCategoryZGraded,
     
     irr := Irr( group );
     
-    conductor := group_data[2];
-    
-    unit_number := group_data[3];
-    
-    associator_filename := group_data[4];
-    
-    is_complete_data := group_data[5];
+    if group_data <> [] then
+        
+        conductor := group_data[2];
+        
+        unit_number := group_data[3];
+        
+        associator_filename := group_data[4];
+        
+        is_complete_data := group_data[5];
+      
+    else
+        
+        conductor := 1;
+        
+        unit_number := PositionProperty( irr, IsOne );
+        
+        associator_filename := "";
+        
+        is_complete_data := false;
+      
+    fi;
     
     membership_function := object -> IsGZGradedIrreducibleObject( object ) and IsIdenticalObj( UnderlyingGroup( object ), group );
     

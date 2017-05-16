@@ -204,7 +204,17 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     local field, membership_function, associator_on_irreducibles, braiding_on_irreducibles,
           distributivity_expanding_for_triple, distributivity_factoring_for_triple,
           right_distributivity_expanding_permutation, left_distributivity_expanding_permutation,
-          distributivity_function;
+          distributivity_function, associator_available;
+    
+    if associator_data <> "" then
+        
+        associator_available := true;
+        
+    else
+        
+        associator_available := false;
+        
+    fi;
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
     
@@ -1224,6 +1234,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ## -- Helper functions for the associator --
     
+    if associator_available then
+    
     ## computes the associator (left to right) of (c,a,b) via the coherence axiom involving the braiding
     InstallMethodWithCacheFromObject( CAP_INTERNAL_AssociatorFromCoherenceAxiomLeft,
       [ ObjectFilter( category ) and IsSemisimpleCategoryObject,
@@ -1419,6 +1431,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         associator_on_irreducibles );
     
+    fi; ## associator_available
+    
     ##
     distributivity_expanding_for_triple := FunctionWithCache(
         function( object_1, object_2, object_list_with_actual_objects, left_term )
@@ -1549,6 +1563,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
         end
     );
+    
+    if associator_available then
+    
     ##
     AddAssociatorLeftToRightWithGivenTensorProducts( category,
       function( new_source, object_a, object_b, object_c, new_range )
@@ -1877,6 +1894,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
+    fi; ## associator_available
+    
     ## -- Helper functions for the braiding --
     
     ## the input are objects whose underlying list is of the form [ 1, irr ].
@@ -2094,6 +2113,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
+    if associator_available then
+    
     ##
     AddCoevaluationForDualWithGivenTensorProduct( category,
       function( unit, object, tensor_object )
@@ -2271,6 +2292,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
+    fi;
+    
 #     ##
 #     AddMorphismToBidualWithGivenBidual( category,
 #       function( object, bidual_of_object )
@@ -2349,16 +2372,24 @@ InstallMethod( SemisimpleCategory,
     
     name := context_list[4];
     
-    associator_filename :=
-      Concatenation( PackageInfo( "GroupRepresentationsForCAP" )[1].InstallationPath,
-                     "/gap/AssociatorsDatabase/",
-                     associator_filename );
-    
-    stream := InputTextFile( associator_filename );
-    
-    command := ReadAll( stream );
-    
-    associator_data := EvalString( command );
+    if associator_filename <> "" then
+        
+        associator_filename :=
+          Concatenation( PackageInfo( "GroupRepresentationsForCAP" )[1].InstallationPath,
+                         "/gap/AssociatorsDatabase/",
+                         associator_filename );
+        
+        stream := InputTextFile( associator_filename );
+        
+        command := ReadAll( stream );
+        
+        associator_data := EvalString( command );
+        
+    else
+        
+        associator_data := "";
+        
+    fi;
     
     underlying_category := MatrixCategory( homalg_field );
     
