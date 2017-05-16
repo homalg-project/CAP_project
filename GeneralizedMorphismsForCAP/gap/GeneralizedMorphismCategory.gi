@@ -42,8 +42,13 @@ InstallMethod( AssociatedMorphism,
                [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
+    local associated_morphism;
     
-    return DomainAssociatedMorphismCodomainTriple( generalized_morphism )[2];
+    associated_morphism := DomainAssociatedMorphismCodomainTriple( generalized_morphism )[2];
+    
+    INSTALL_TODO_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM( generalized_morphism, associated_morphism );
+    
+    return associated_morphism;
     
 end );
 
@@ -139,5 +144,31 @@ InstallMethod( CombinedImageEmbedding,
     triple := DomainAssociatedMorphismCodomainTriple( generalized_morphism );
     
     return ProjectionInFactorOfFiberProduct( [ ImageEmbedding( triple[ 2 ] ), triple[ 3 ] ], 2 );
+    
+end );
+
+##
+InstallValue( PROPAGATION_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM,
+        [
+         "IsMonomorphism",
+         "IsEpimorphism",
+         "IsIsomorphism",
+         #"IsSplitMonomorphism", propagating this would be wrong
+         #"IsSplitEpimorphism",  propagating this would be wrong
+         #"IsZero", the category of generalized morphisms has no zero objects
+         # ..
+         ]
+        );
+
+##
+InstallGlobalFunction( INSTALL_TODO_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM,
+  function( hull, mor )
+    local i;
+    
+    for i in PROPAGATION_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM do
+        
+        AddToToDoList( ToDoListEntryWithContraposition( hull, i, true, mor, i, true ) );
+        
+    od;
     
 end );

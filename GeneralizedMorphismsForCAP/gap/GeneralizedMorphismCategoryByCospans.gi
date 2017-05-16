@@ -68,6 +68,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
         
         subobject2 := UniversalMorphismIntoDirectSum( pullback_diagram2 );
         
+        ## TODO: added more logic to make the following line obsolete
+        Assert( 4, IsMonomorphism( subobject1 ) );
+        SetIsMonomorphism( subobject1, true );
+        
+        Assert( 4, IsMonomorphism( subobject2 ) );
+        SetIsMonomorphism( subobject2, true );
+        
         return IsEqualAsSubobjects( subobject1, subobject2 );
         
     end );
@@ -366,6 +373,52 @@ InstallMethod( AsGeneralizedMorphismByCospan,
     SetHasIdentityAsReversedArrow( generalized_morphism, true );
     
     return generalized_morphism;
+    
+end );
+
+####################################
+##
+## Constructors of lifts of exact functors
+##
+####################################
+
+##
+InstallMethod( AsGeneralizedMorphismByCospan,
+        [ IsCapFunctor, IsString ],
+
+  function( F, name )
+    local A, B, gmcF;
+    
+    A := GeneralizedMorphismCategoryByCospans( AsCapCategory( Source( F ) ) );
+    B := GeneralizedMorphismCategoryByCospans( AsCapCategory( Range( F ) ) );
+    
+    gmcF := CapFunctor( name, A, B );
+    
+    AddObjectFunction( gmcF,
+            function( obj )
+              return GeneralizedMorphismByCospansObject( ApplyFunctor( F, UnderlyingHonestObject( obj ) ) );
+            end );
+    
+    AddMorphismFunction( gmcF,
+            function( new_source, mor, new_range )
+              return GeneralizedMorphismByCospan( ApplyFunctor( F, Arrow( mor ) ), ApplyFunctor( F, ReversedArrow( mor ) ) );
+            end );
+    
+    return gmcF;
+    
+end );
+
+##
+InstallMethod( AsGeneralizedMorphismByCospan,
+        [ IsCapFunctor ],
+
+  function( F )
+    local name;
+
+    name := "GeneralizedMorphismByCospan version of ";
+    name := Concatenation( name, Name( F ) );
+    
+    return AsGeneralizedMorphismByCospan( F, name );
     
 end );
 

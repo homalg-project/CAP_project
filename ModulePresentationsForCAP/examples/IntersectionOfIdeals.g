@@ -27,20 +27,20 @@ eps1 := PresentationMorphism( F, HomalgMatrix( [ [ 1 ] ], R ), I1 );
 eps2 := PresentationMorphism( F, HomalgMatrix( [ [ 1 ] ], R ), I2 );
 #! <A morphism in Category of left presentations of Q[x,y]>
 kernelemb1 := KernelEmbedding( eps1 );
-#! <A mono morphism in Category of left presentations of Q[x,y]>
+#! <A monomorphism in Category of left presentations of Q[x,y]>
 kernelemb2 := KernelEmbedding( eps2 );
-#! <A mono morphism in Category of left presentations of Q[x,y]>
+#! <A monomorphism in Category of left presentations of Q[x,y]>
 P := FiberProduct( kernelemb1, kernelemb2 );;
 Display( P );
 #! (an empty 0 x 1 matrix)
 #! 
 #! An object in Category of left presentations of Q[x,y]
 pi1 := ProjectionInFactorOfFiberProduct( [ kernelemb1, kernelemb2 ], 1 );
-#! <A mono morphism in Category of left presentations of Q[x,y]>
+#! <A monomorphism in Category of left presentations of Q[x,y]>
 composite := PreCompose( pi1, kernelemb1 );
-#! <A mono morphism in Category of left presentations of Q[x,y]>
+#! <A monomorphism in Category of left presentations of Q[x,y]>
 Display( composite );
 #! x*y
 #! 
-#! A mono morphism in Category of left presentations of Q[x,y]
+#! A monomorphism in Category of left presentations of Q[x,y]
 #! @EndExample

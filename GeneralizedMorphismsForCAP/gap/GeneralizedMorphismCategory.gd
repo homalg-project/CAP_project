@@ -284,3 +284,13 @@ DeclareOperation( "GeneralizedMorphismWithSourceAid",
 
 DeclareAttribute( "CombinedImageEmbedding",
                   IsGeneralizedMorphism );
+
+####################################
+##
+#! @Section Tools to propagate attributes
+##
+####################################
+
+DeclareGlobalVariable( "PROPAGATION_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM" );
+
+DeclareGlobalFunction( "INSTALL_TODO_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM" );
