@@ -177,6 +177,52 @@ InstallMethod( Component,
     
 end );
 
+##
+InstallMethod( \*,
+               [ IsRingElement, IsSemisimpleCategoryMorphism ],
+               
+  function( r, morphism )
+    
+    return SemisimpleCategoryMorphism( Source( morphism ),
+             List( SemisimpleCategoryMorphismList( morphism ), elem -> [ r * elem[1], elem[2] ] ),
+             Range( morphism ) 
+           );
+    
+end );
+
+##
+InstallMethod( \*,
+               [ IsSemisimpleCategoryMorphism, IsRingElement ],
+               
+  function( r, morphism )
+    
+    return SemisimpleCategoryMorphism( Source( morphism ),
+             List( SemisimpleCategoryMorphismList( morphism ), elem -> [ elem[1] * r, elem[2] ] ),
+             Range( morphism ) 
+           );
+    
+end );
+
+####################################
+##
+## Attributes
+##
+####################################
+
+##
+InstallMethod( SupportOfMorphismList,
+               [ IsSemisimpleCategoryMorphism ],
+               
+  function( morphism )
+    local morphism_list;
+    
+    morphism_list := Filtered( SemisimpleCategoryMorphismList( morphism ),
+                       pair -> not( IsZero( Source( pair[1] ) ) or IsZero( Range( pair[1] ) ) ) );
+    
+    return List( morphism_list, i -> i[2] );
+    
+end );
+
 ####################################
 ##
 ## View

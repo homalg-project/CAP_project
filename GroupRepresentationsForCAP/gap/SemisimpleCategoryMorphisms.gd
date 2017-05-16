@@ -123,6 +123,9 @@ DeclareAttribute( "SemisimpleCategoryMorphismList",
 DeclareAttribute( "UnderlyingFieldForHomalg",
                   IsSemisimpleCategoryMorphism );
 
+DeclareAttribute( "SupportOfMorphismList",
+                  IsSemisimpleCategoryMorphism );
+
 ####################################
 ##
 #! @Section Operations
@@ -139,3 +142,8 @@ DeclareAttribute( "UnderlyingFieldForHomalg",
 #! @Arguments alpha, i
 DeclareOperation( "Component", [ IsSemisimpleCategoryMorphism, IsObject ] );
 
+DeclareOperation( "\*",
+                  [ IsRingElement, IsSemisimpleCategoryMorphism ] );
+
+DeclareOperation( "\*",
+                  [ IsSemisimpleCategoryMorphism, IsRingElement ] );

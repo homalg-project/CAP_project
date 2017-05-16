@@ -125,6 +125,15 @@ DeclareAttribute( "GivenObjectFilterForSemisimpleCategory",
 DeclareAttribute( "GivenMorphismFilterForSemisimpleCategory",
                   IsSemisimpleCategory );
 
+####################################
+##
+#! @Section Operations
+##
+####################################
+
+##
+DeclareOperation( "FunctorByUniversalPropertyOfSemisimpleCategory",
+                  [ IsSemisimpleCategory, IsFunction, IsCapCategory ] );
 
 ####################################
 ##

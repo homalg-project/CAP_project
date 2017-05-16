@@ -14,6 +14,106 @@
 ##
 ####################################
 
+InstallMethod( FunctorByUniversalPropertyOfSemisimpleCategory,
+               [ IsSemisimpleCategory, IsFunction, IsSemisimpleCategory ],
+               
+  function( semisimple_category, function_on_irreducibles, range )
+    local functor, field_of_range;
+    
+    field_of_range := UnderlyingFieldForHomalgForSemisimpleCategory( range );
+    
+    functor := 
+      CapFunctor( Concatenation( "Functor induced by ", NameFunction( function_on_irreducibles ) ), 
+      semisimple_category,
+      range );
+    
+    AddObjectFunction( functor,
+                       
+      function( object )
+        
+        return DirectSum(
+                 List(
+                   SemisimpleCategoryObjectList( object ), elem -> 
+                     DirectSum( List( [ 1 .. elem[1] ], i -> function_on_irreducibles( elem[2] ) ) )
+                 )
+               );
+        
+    end );
+    
+    AddMorphismFunction( functor,
+                    
+      function( new_source, morphism, new_range )
+        local support, list, chi, id, matrix, nr_rows, nr_cols, image_chi;
+        
+        support := Set( Concatenation( Support( Source( morphism ) ), Support( Range( morphism ) ) ) );
+        
+        list  := [ ];
+        
+        for chi in support do
+             
+            matrix := UnderlyingMatrix( Component( morphism, chi ) ) * field_of_range;
+            
+            image_chi := function_on_irreducibles( chi );
+            
+            nr_rows := NrRows( matrix );
+            
+            nr_cols := NrColumns( matrix );
+            
+            if nr_rows = 0 then
+                
+                Add( list, UniversalMorphismFromZeroObject( DirectSum( List( [ 1 .. nr_cols ], i -> image_chi ) ) ) );
+                
+                continue;
+                
+            elif nr_cols = 0 then
+                
+                Add( list, UniversalMorphismFromZeroObject( DirectSum( List( [ 1 .. nr_rows ], i -> image_chi ) ) ) );
+                
+                continue;
+                
+            fi;
+            
+            id := IdentityMorphism( image_chi );
+            
+            matrix := EntriesOfHomalgMatrixAsListList( matrix );
+            
+            Add( list,
+              MorphismBetweenDirectSums(
+                List( [ 1 .. nr_rows ], r ->
+                  List( [ 1 .. nr_cols ], c ->
+                    matrix[r][c] * id
+                  )
+                )
+              )
+            );
+            
+        od;
+        
+        if list = [] then
+            
+            return ZeroMorphism( new_source, new_range );
+            
+        else
+            
+            return SemisimpleCategoryMorphism( 
+                     new_source,
+                     SemisimpleCategoryMorphismList( DirectSumFunctorial( list ) ),
+                   new_range );
+        fi;
+        
+    end );
+    
+    return functor;
+    
+end );
+
+
+####################################
+##
+## Internals
+##
+####################################
+
 InstallValue( CAP_INTERNAL_FIELD_FOR_SEMISIMPLE_CATEGORY, rec( ) );
 
 ##

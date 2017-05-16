@@ -555,4 +555,90 @@ InstallMethod( DegreeDescendingFiltration,
     
 end );
 
+####################################
+##
+## Operations
+##
+####################################
 
+##
+InstallMethod( InductionFunctorForRepresentationCategoriesOfGroups,
+               [ IsGroup, IsGroup ],
+               
+  function( group, super_group )
+    local rep_group, rep_super_group, function_on_irreducibles, irr_super_group;
+    
+    rep_super_group := RepresentationCategory( super_group );
+    
+    irr_super_group := Irr( super_group );
+    
+    function_on_irreducibles := function( irr )
+      local induced_class_function, list, chi, scalar_product;
+      
+      induced_class_function := 
+        InducedClassFunction( UnderlyingCharacter( irr ), super_group );
+      
+      list := [];
+      
+      for chi in irr_super_group do
+          
+          scalar_product := ScalarProduct( chi, induced_class_function );
+          
+          if scalar_product > 0 then
+              
+              Add( list, [ scalar_product, chi ] );
+              
+          fi;
+          
+      od;
+      
+      return RepresentationCategoryObject( list, rep_super_group );
+      
+    end;
+    
+    return
+      FunctorByUniversalPropertyOfSemisimpleCategory(
+        RepresentationCategory( group ), function_on_irreducibles, rep_super_group );
+    
+end );
+
+##
+InstallMethod( RestrictionFunctorForRepresentationCategoriesOfGroups,
+               [ IsGroup, IsGroup ],
+               
+  function( group, sub_group )
+    local rep_group, rep_sub_group, function_on_irreducibles, irr_sub_group;
+    
+    rep_sub_group := RepresentationCategory( sub_group );
+    
+    irr_sub_group := Irr( sub_group );
+    
+    function_on_irreducibles := function( irr )
+      local restriced_class_function, list, chi, scalar_product;
+      
+      restriced_class_function := 
+        RestrictedClassFunction( UnderlyingCharacter( irr ), sub_group );
+      
+      list := [];
+      
+      for chi in irr_sub_group do
+          
+          scalar_product := ScalarProduct( chi, restriced_class_function );
+          
+          if scalar_product > 0 then
+              
+              Add( list, [ scalar_product, chi ] );
+              
+          fi;
+          
+      od;
+      
+      return RepresentationCategoryObject( list, rep_sub_group );
+      
+    end;
+    
+    return
+      FunctorByUniversalPropertyOfSemisimpleCategory(
+        RepresentationCategory( group ), function_on_irreducibles, rep_sub_group );
+    
+end );

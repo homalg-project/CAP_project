@@ -131,6 +131,20 @@ DeclareAttribute( "DegreeDescendingFiltration",
 
 ####################################
 ##
+#! @Section Operations
+##
+####################################
+
+##
+DeclareOperation( "InductionFunctorForRepresentationCategoriesOfGroups",
+                  [ IsGroup, IsGroup ] );
+
+##
+DeclareOperation( "RestrictionFunctorForRepresentationCategoriesOfGroups",
+                  [ IsGroup, IsGroup ] );
+
+####################################
+##
 #! @Section Internals
 ##
 ####################################
