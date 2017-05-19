@@ -443,7 +443,7 @@ InstallMethod( MorphismBetweenDirectSums,
                
   function( S, morphism_matrix, T )
     
-    if IsZero( S ) or IsZero( T ) then
+    if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
         return ZeroMorphism( S, T );
     fi;
     
