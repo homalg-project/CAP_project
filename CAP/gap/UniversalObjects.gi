@@ -421,6 +421,20 @@ InstallMethod( MorphismBetweenDirectSums,
 end );
 
 ##
+InstallMethod( MorphismBetweenDirectSums,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( S, morphism_matrix, T )
+    
+    if IsZero( S ) or IsZero( T ) then
+        return ZeroMorphism( S, T );
+    fi;
+    
+    return MorphismBetweenDirectSums( morphism_matrix );
+    
+end );
+
+##
 InstallMethodWithCacheFromObject( MorphismBetweenDirectSumsOp,
                                   [ IsList, IsInt, IsInt, IsCapCategoryMorphism ],
                                   
