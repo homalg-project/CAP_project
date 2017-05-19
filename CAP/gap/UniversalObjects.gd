@@ -1098,6 +1098,9 @@ DeclareOperation( "AddInitialObjectFunctorial",
 DeclareOperationWithCache( "DirectSumOp",
                            [ IsList, IsCapCategoryObject ] );
 
+DeclareOperation( "DirectSumOp",
+                  [ IsList, IsCapCategory ] );
+
 #! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$
 #! and an integer $k$.

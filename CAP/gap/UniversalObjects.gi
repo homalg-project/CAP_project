@@ -372,6 +372,23 @@ InstallMethod( IsomorphismFromDirectSumToCoproduct,
     
 end );
 
+##
+InstallMethod( DirectSumOp,
+               [ IsList, IsCapCategory ],
+               
+  function( category_and_diagram, category )
+    local diagram;
+    
+    diagram := category_and_diagram[2];
+    
+    if diagram = [ ] then
+        return ZeroObject( category );
+    fi;
+    
+    return DirectSumOp( diagram, diagram[1] );
+    
+end );
+
 ####################################
 ## Functorial operations
 ####################################
