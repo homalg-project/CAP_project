@@ -34,6 +34,8 @@ has now all the functions we wanted it to have, we can finalize it.
 
 Finalizing a category is necessary after adding all the wanted operation and before constructing objects
 for it. We can now create a group and tell the system that the group should be an object in the category.
+Note that \texttt{AddObject} can only be applied to \GAP objects lying in the filter
+\texttt{IsAttributeStoringRep}.
 
 \input{GAP_tex/group_example/AddGroup_main}
 
@@ -104,6 +106,10 @@ morphisms are automatically part of the category, and after finishing up the cat
 category will be applicable to them.
 
 We now continue by adding functions to the category, starting with the same operations as above.
+
+If you want to test your implementation function by function,
+please remember to use the command \texttt{Finalize( vecspaces )}
+before testing. 
 
 \input{GAP_tex/vecspaces_example/Functions1}
 
