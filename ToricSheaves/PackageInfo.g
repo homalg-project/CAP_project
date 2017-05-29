@@ -59,7 +59,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "ModulePresentationsForCAP", ">=0" ],
+                           [ "GradedModulePresentationsForCAP", ">=0" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
                            [ "PolymakeInterface", ">=0" ],
                            [ "4ti2Interface", ">=0" ] ],
