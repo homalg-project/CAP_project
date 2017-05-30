@@ -108,7 +108,7 @@ InstallMethod( Coproduct,
                
   function( object_1, object_2 )
     
-    CoproductOp( [ object_1, object_2 ], object_1 );
+    return CoproductOp( [ object_1, object_2 ], object_1 );
     
 end );
 
@@ -118,7 +118,7 @@ InstallMethod( Coproduct,
                
   function( object_1, object_2, object_3 )
     
-    CoproductOp( [ object_1, object_2, object_3 ], object_1 );
+    return CoproductOp( [ object_1, object_2, object_3 ], object_1 );
     
 end );
 

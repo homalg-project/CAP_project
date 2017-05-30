@@ -270,7 +270,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 add_function( category, result );
                 Add( arg, result );
                 CallFuncList( post_function, Concatenation( [ category ], arg ) );
-                
                 return result;
                 
             end );
