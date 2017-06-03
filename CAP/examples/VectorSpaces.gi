@@ -783,7 +783,7 @@ mu := VectorSpaceMorphism( A, [ [ 1, 0 ], [ 0, 0 ] ], A_p );
 
 nu := VectorSpaceMorphism( B, [ [ 1, 0 ], [ 0, 0 ] ], B_p );
 
-# KernelObjectFunctorial( mu, alpha, nu );
+# KernelFunctorial( mu, alpha, nu );
 
 #######################################
 ##

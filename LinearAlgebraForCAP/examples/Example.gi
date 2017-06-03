@@ -79,7 +79,7 @@ Display( u );
 #!   [     0,     0,     0,     0,     1 ] ]
 #! 
 #! A morphism in Category of matrices over Q
-KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( VectorSpaceObject( 3, Q ) );
+KernelFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( VectorSpaceObject( 3, Q ) );
 #! true
 IsZero( CokernelFunctorial( u, IdentityMorphism( Range( u ) ), u ) );
 #! true

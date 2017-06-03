@@ -331,7 +331,7 @@ BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
               
               cohomological_index := index + 1;
               
-              return KernelObjectFunctorial(
+              return KernelFunctorial(
                 
                 morphism[ index ],
                 Differential( Source( morphism ), index ),
@@ -996,7 +996,7 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         
         [ [ "ZeroObject" ], ADD_ZERO_OBJECT_IN_Z_FUNCTORS ],
         
-        [ [ "KernelObject", "KernelObjectFunctorialWithGivenKernelObjects" ], ADD_KERNEL_OBJECT_IN_Z_FUNCTORS ],
+        [ [ "KernelObject", "KernelFunctorialWithGivenKernelObjects" ], ADD_KERNEL_OBJECT_IN_Z_FUNCTORS ],
         
         [ [ "KernelEmbedding" ], ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS ],
         

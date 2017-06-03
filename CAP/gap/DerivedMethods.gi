@@ -1077,7 +1077,7 @@ end );
 ###########################
 
 ##
-AddDerivationToCAP( KernelObjectFunctorialWithGivenKernelObjects,
+AddDerivationToCAP( KernelFunctorialWithGivenKernelObjects,
                     [ [ KernelLift, 1 ],
                       [ PreCompose, 1 ],
                       [ KernelEmbedding, 1 ] ],
@@ -1089,7 +1089,7 @@ AddDerivationToCAP( KernelObjectFunctorialWithGivenKernelObjects,
                 PreCompose( KernelEmbedding( alpha ), mu )
               );
     
-end : Description := "KernelObjectFunctorialWithGivenKernelObjects using the universality of the kernel" );
+end : Description := "KernelFunctorialWithGivenKernelObjects using the universality of the kernel" );
 
 ##
 AddDerivationToCAP( CokernelFunctorialWithGivenCokernelObjects,

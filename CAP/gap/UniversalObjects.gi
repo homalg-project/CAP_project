@@ -21,12 +21,12 @@
 ####################################
 
 ##
-InstallMethod( KernelObjectFunctorial,
+InstallMethod( KernelFunctorial,
                [ IsList ],
                                   
   function( morphism_of_morphisms )
     
-    return KernelObjectFunctorialWithGivenKernelObjects(
+    return KernelFunctorialWithGivenKernelObjects(
              KernelObject( morphism_of_morphisms[1] ),
              morphism_of_morphisms[1], morphism_of_morphisms[2][1], morphism_of_morphisms[3],
              KernelObject( morphism_of_morphisms[3] ) );
@@ -34,12 +34,12 @@ InstallMethod( KernelObjectFunctorial,
 end );
 
 ##
-InstallMethod( KernelObjectFunctorial,
+InstallMethod( KernelFunctorial,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( alpha, mu, alpha_prime )
     
-    return KernelObjectFunctorialWithGivenKernelObjects( KernelObject( alpha ), alpha, mu, alpha_prime, KernelObject( alpha_prime ) );
+    return KernelFunctorialWithGivenKernelObjects( KernelObject( alpha ), alpha, mu, alpha_prime, KernelObject( alpha_prime ) );
     
 end );
 
