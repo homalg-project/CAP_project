@@ -976,6 +976,49 @@ AdditionForMorphisms := rec(
   end,
   return_type := "morphism" ),
 
+SubtractionForMorphisms := rec(
+  installation_name := "\-",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
+  cache_name := "SubtractionForMorphisms",
+  
+  pre_function := function( morphism_1, morphism_2 )
+    local value_1, value_2;
+    
+    value_1 := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
+    
+    if value_1 = fail then
+      
+      return [ false, "cannot decide whether sources are equal" ];
+      
+    fi;
+    
+    value_2 := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    
+    if value_2 = fail then
+      
+      return [ false, "cannot decide whether ranges are equal" ];
+      
+    fi;
+    
+    
+    if value_1 and value_2 then
+        
+        return [ true ];
+        
+    elif value_1 then
+        
+        return [ false, "ranges are not equal" ];
+        
+    else
+        
+        return [ false, "sources are not equal" ];
+        
+    fi;
+    
+  end,
+  return_type := "morphism" ),
+
 AdditiveInverseForMorphisms := rec(
   installation_name := "AdditiveInverse",
   filter_list := [ "morphism" ],

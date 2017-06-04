@@ -125,6 +125,12 @@ InstallMethod( AdditionForMorphisms,
 \+ );
 
 ##
+InstallMethod( SubtractionForMorphisms,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+\+ );
+
+##
 InstallMethod( AdditiveInverseForMorphisms,
                   [ IsCapCategoryMorphism ],
                   
