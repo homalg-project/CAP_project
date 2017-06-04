@@ -590,6 +590,33 @@ DeclareOperation( "AddAdditionForMorphisms",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
+#! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
+#! The output is the addition $\alpha - \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! @Arguments alpha, beta
+DeclareOperation( "SubtractionForMorphisms",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>SubtractionForMorphisms</C>.
+#! $F: (\alpha, \beta) \mapsto \alpha - \beta$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSubtractionForMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSubtractionForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSubtractionForMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSubtractionForMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
 #! The output is its additive inverse $-\alpha$.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$

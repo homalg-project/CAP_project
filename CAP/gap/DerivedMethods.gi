@@ -855,6 +855,16 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "AdditionForMorphisms(mor1, mor2) as the composition of (mor1,mor2) with the codiagonal morphism" );
 
 ##
+AddDerivationToCAP( SubtractionForMorphisms,
+                      
+  function( mor1, mor2 )
+    
+    return AdditionForMorphisms( mor1, AdditiveInverseForMorphisms( mor2 ) );
+    
+end : CategoryFilter := IsAbCategory,
+      Description := "SubtractionForMorphisms(mor1, mor2) as the sum of mor1 and the additive inverse of mor2" );
+
+##
 AddDerivationToCAP( LiftAlongMonomorphism,
                     [ [ Lift, 1 ] ],
                     

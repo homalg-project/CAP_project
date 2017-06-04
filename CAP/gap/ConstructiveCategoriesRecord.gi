@@ -18,6 +18,7 @@ IsEnrichedOverCommutativeRegularSemigroup := Concatenation(
 IsAbCategory := Concatenation( [ 
   "ZeroMorphism", 
   "IsZeroForMorphisms", 
+  "SubtractionForMorphisms",
   "AdditiveInverseForMorphisms" ], ~.IsEnrichedOverCommutativeRegularSemigroup ),
 
 IsAdditiveCategory := Concatenation( [
