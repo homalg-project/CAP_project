@@ -50,6 +50,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST" );
 InstallValue( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST,
   [ [ "IsEnrichedOverCommutativeRegularSemigroup" ],
     [ "IsAbCategory" ],
+    [ "IsLinearCategoryOverCommutativeRing" ],
     [ "IsAdditiveCategory" ],
     [ "IsPreAbelianCategory" ],
     [ "IsAbelianCategory" ],
@@ -232,6 +233,15 @@ DeclareAttribute( "MorphismFilter",
 #! @Arguments C
 #! @Returns a filter
 DeclareAttribute( "TwoCellFilter",
+                  IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$ which is expected to lie in the
+#! filter <C>IsLinearCategoryOverCommutativeRing</C>.
+#! The output is a commutative ring over which the category is linear.
+#! @Arguments C
+#! @Returns a ring
+DeclareAttribute( "CommutativeRingOfLinearCategory",
                   IsCapCategory );
 
 #############################################

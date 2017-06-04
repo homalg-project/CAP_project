@@ -104,21 +104,6 @@ DeclareAttribute( "UnderlyingHomalgRing",
 DeclareAttribute( "UnderlyingMatrix",
                   IsLeftOrRightPresentationMorphism );
 
-#############################
-##
-## Arithmetics
-##
-#############################
-
-##
-DeclareOperation( "\*",
-                  [ IsRingElement, IsLeftPresentationMorphism ] );
-
-##
-DeclareOperation( "\*",
-                  [ IsRightPresentationMorphism, IsRingElement ] );
-
-
 ##############################################
 ##
 #! @Section Non-Categorical Operations

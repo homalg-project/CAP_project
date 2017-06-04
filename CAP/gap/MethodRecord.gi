@@ -1054,6 +1054,25 @@ SubtractionForMorphisms := rec(
   end,
   return_type := "morphism" ),
 
+MultiplyWithElementOfCommutativeRingForMorphisms := rec(
+  installation_name := "MultiplyWithElementOfCommutativeRingForMorphisms",
+  filter_list := [ IsRingElement, "morphism" ],
+  io_type := [ [ "r", "a" ], [ "a_source", "a_range" ] ],
+  cache_name := "MultiplyWithElementOfCommutativeRingForMorphisms",
+  
+  pre_function := function( r, morphism )
+    local value_1, value_2;
+    
+    if not r in CommutativeRingOfLinearCategory( CapCategory( morphism ) ) then
+      
+      return [ false, "the first argument is not an element of the ring of the category of the morphism" ];
+      
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
 AdditiveInverseForMorphisms := rec(
   installation_name := "AdditiveInverseForMorphisms",
   filter_list := [ "morphism" ],

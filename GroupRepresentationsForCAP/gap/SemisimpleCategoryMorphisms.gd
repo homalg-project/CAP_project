@@ -154,9 +154,3 @@ DeclareAttribute( "SupportOfMorphismList",
 #! @Returns a vector space morphism 
 #! @Arguments alpha, i
 DeclareOperation( "Component", [ IsSemisimpleCategoryMorphism, IsObject ] );
-
-DeclareOperation( "\*",
-                  [ IsRingElement, IsSemisimpleCategoryMorphism ] );
-
-DeclareOperation( "\*",
-                  [ IsSemisimpleCategoryMorphism, IsRingElement ] );

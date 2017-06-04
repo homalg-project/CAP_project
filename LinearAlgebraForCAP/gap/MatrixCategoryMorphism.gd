@@ -64,15 +64,3 @@ DeclareAttribute( "UnderlyingFieldForHomalg",
 #! @Arguments alpha
 DeclareAttribute( "UnderlyingMatrix",
                   IsVectorSpaceMorphism );
-
-####################################
-##
-#! @Section Arithmetics
-##
-####################################
-
-DeclareOperation( "\*",
-                  [ IsRingElement, IsVectorSpaceMorphism ] );
-
-DeclareOperation( "\*",
-                  [ IsVectorSpaceMorphism, IsRingElement ] );

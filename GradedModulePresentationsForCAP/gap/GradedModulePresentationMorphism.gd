@@ -89,21 +89,6 @@ DeclareAttribute( "UnderlyingMatrix",
 DeclareAttribute( "UnderlyingPresentationMorphism",
                   IsGradedLeftOrRightPresentationMorphism );
 
-#############################
-##
-## Arithmetics
-##
-#############################
-
-##
-DeclareOperation( "\*",
-                  [ IsRingElement, IsGradedLeftPresentationMorphism ] );
-
-##
-DeclareOperation( "\*",
-                  [ IsGradedRightPresentationMorphism, IsRingElement ] );
-
-
 ##############################################
 ##
 #! @Section Non-Categorical Operations
