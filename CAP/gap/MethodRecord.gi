@@ -77,6 +77,7 @@ KernelObject := rec(
   filter_list := [ "morphism" ],
   universal_type := "Limit",
   return_type := "object",
+  functorial := "KernelFunctorialWithGivenKernelObjects",
   dual_operation := "CokernelObject" ),
 
 KernelEmbedding := rec(
@@ -121,6 +122,7 @@ CokernelObject := rec(
   filter_list := [ "morphism" ],
   universal_type := "Colimit",
   return_type := "object",
+  functorial := "CokernelFunctorialWithGivenCokernelObjects",
   dual_operation := "KernelObject" ),
 
 CokernelProjection := rec(
@@ -217,7 +219,8 @@ ZeroObject := rec(
   installation_name := "ZeroObject",
   filter_list := [ "category" ],
   cache_name := "ZeroObject",
-  return_type := "object" ), 
+  return_type := "object",
+  functorial := "ZeroMorphism" ),
 
 UniversalMorphismFromZeroObject := rec(
   installation_name := "UniversalMorphismFromZeroObject",
@@ -331,6 +334,7 @@ DirectSum := rec(
   cache_name := "DirectSumOp",
   universal_type := "LimitColimit",
   return_type := "object",
+  functorial := "DirectSumFunctorialWithGivenDirectSums",
   pre_function := function( diagram, selection_morphism )
       local category;
       
@@ -536,6 +540,7 @@ TerminalObject := rec(
   cache_name := "TerminalObject",
   universal_type := "Limit",
   return_type := "object",
+  functorial := "TerminalObjectFunctorial",
   dual_operation := "InitialObject" ),
 
 UniversalMorphismIntoTerminalObject := rec(
@@ -573,6 +578,7 @@ InitialObject := rec(
   cache_name := "InitialObject",
   universal_type := "Colimit",
   return_type := "object",
+  functorial := "InitialObjectFunctorial",
   dual_operation := "TerminalObject"
 ),
 
@@ -612,6 +618,7 @@ DirectProduct := rec(
   cache_name := "DirectProductOp",
   universal_type := "Limit",
   return_type := "object",
+  functorial := "DirectProductFunctorialWithGivenDirectProducts",
   dual_operation := "Coproduct",
   pre_function := function( diagram, selection_morphism )
       local category;
@@ -980,6 +987,7 @@ Coproduct := rec(
   cache_name := "CoproductOp",
   universal_type := "Colimit",
   return_type := "object",
+  functorial := "CoproductFunctorialWithGivenCoproducts",
   dual_operation := "DirectProduct" ),
 
 InjectionOfCofactorOfCoproduct := rec(
@@ -1167,7 +1175,8 @@ FiberProduct := rec(
     
     return [ true ];
   end,
-  return_type := "object" ),
+  return_type := "object",
+  functorial := "FiberProductFunctorialWithGivenFiberProducts" ),
 
 ProjectionInFactorOfFiberProduct := rec(
   installation_name := "ProjectionInFactorOfFiberProductOp",
@@ -1384,7 +1393,8 @@ Pushout := rec(
     
     return [ true ];
   end,
-  return_type := "object" ),
+  return_type := "object",
+  functorial := "PushoutFunctorialWithGivenPushouts" ),
 
 InjectionOfCofactorOfPushout := rec(
   installation_name := "InjectionOfCofactorOfPushoutOp",
