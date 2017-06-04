@@ -643,6 +643,34 @@ DeclareOperation( "AddAdditiveInverseForMorphisms",
 DeclareOperation( "AddAdditiveInverseForMorphisms",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are an element $r$ of a commutative ring
+#! and a morphism $\alpha: a \rightarrow b$.
+#! The output is the multiplication with the ring element $r \cdot \alpha$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! @Arguments r, alpha
+DeclareOperation( "MultiplyWithElementOfCommutativeRingForMorphisms",
+                  [ IsRingElement, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MultiplyWithElementOfCommutativeRingForMorphisms</C>.
+#! $F: (r, \alpha) \mapsto r \cdot \alpha$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
+                  [ IsCapCategory, IsList ] );
+
 ###################################
 ##
 ## Zero Morphism

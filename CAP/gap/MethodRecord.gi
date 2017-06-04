@@ -1019,6 +1019,13 @@ SubtractionForMorphisms := rec(
   end,
   return_type := "morphism" ),
 
+MultiplyWithElementOfCommutativeRingForMorphisms := rec(
+  installation_name := "MultiplyWithElementOfCommutativeRingForMorphisms",
+  filter_list := [ IsRingElement, "morphism" ],
+  io_type := [ [ "r", "a" ], [ "a_source", "a_range" ] ],
+  cache_name := "MultiplyWithElementOfCommutativeRingForMorphisms",
+  return_type := "morphism" ),
+
 AdditiveInverseForMorphisms := rec(
   installation_name := "AdditiveInverse",
   filter_list := [ "morphism" ],
