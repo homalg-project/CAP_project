@@ -145,4 +145,6 @@ InstallMethod( Display,
     
     Print( StringMutable( vector_space_morphism ) );
     
+    Print( "\n" );
+    
 end );
