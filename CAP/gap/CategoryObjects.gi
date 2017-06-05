@@ -58,6 +58,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS,
   function( object_1, object_2 )
     local category, i, entry;
     
+    ## do not use object_2 here without informing the maintainers of IntrinsicCategories
     category := CapCategory( object_1 );
     
     for i in PROPAGATION_LIST_FOR_EQUAL_OBJECTS do
