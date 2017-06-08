@@ -254,7 +254,7 @@ InstallMethod( RepresentationCategoryZGraded,
     
     group_string := String( group );
     
-    name := Concatenation( "The Z-graded representation category of ", group_string );
+    name := Concatenation( "The skeletal Z-graded representation category of ", group_string );
     
     irr := Irr( group );
     
