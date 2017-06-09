@@ -28,7 +28,6 @@ Persons := [
     LastName := "Gutsche",
     WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche",
     Email := "gutsche@mathematik.uni-kl.de",
-    PostalAddress := "TODO",
     Place := "Kaiserslautern",
     Institution := "TU Kaiserslautern",
   ),
@@ -49,7 +48,7 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://TODO/",
+PackageWWWHome := "http://homalg-project.github.io/CAP_project/",
 
 ArchiveURL     := Concatenation( ~.PackageWWWHome, "ActionsForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),

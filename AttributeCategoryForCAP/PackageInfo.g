@@ -44,7 +44,6 @@ Persons := [
     LastName := "Gutsche",
     WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche",
     Email := "gutsche@momo.math.rwth-aachen.de",
-    PostalAddress := "TODO",
     Place := "Siegen",
     Institution := "University of Siegen",
   ),
@@ -54,7 +53,7 @@ Persons := [
 #IssueTrackerURL := "TODO",
 #SupportEmail := "TODO",
 
-PackageWWWHome := "http://TODO/",
+PackageWWWHome := "http://homalg-project.github.io/CAP_project/",
 
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
