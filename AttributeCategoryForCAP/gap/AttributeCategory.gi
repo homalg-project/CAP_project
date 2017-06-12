@@ -111,10 +111,10 @@ InstallMethod( UnderlyingCell,
 end );
 
 ##
-InstallMethod( UnderlyingCell, [ IsBool ], x -> x );
+InstallMethod( UnderlyingCell, [ IsBool ], IdFunc );
 
 ##
-InstallMethod( UnderlyingCell, [ IsInt ], x -> x );
+InstallMethod( UnderlyingCell, [ IsInt ], IdFunc );
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
