@@ -13,7 +13,7 @@ PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
 
 Version := Maximum( [
-  "2015.12.03", ## Sebas' version
+  "2017.06.12", ## Sebas' version
   ## this line prevents merge conflicts
   "2017.04.10", ## Sepp's version
 ] ),
@@ -82,7 +82,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "MatricesForHomalg", ">= 2015.06.20" ],
+                           [ "MatricesForHomalg", ">= 2017.05.24" ],
                            [ "CAP", ">= 2015.08.17" ],
                            [ "ToolsForHomalg", ">=2015.09.18" ]
                            ],

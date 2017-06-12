@@ -13,7 +13,7 @@ b := VectorSpaceObject( 4, Q );
 homalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],
                                   [ 0, 1, 0, -1 ],
                                   [ -1, 0, 2, 1 ] ], 3, 4, Q );
-#! <A matrix over an internal ring>
+#! <A 3 x 4 matrix over an internal ring>
 alpha := VectorSpaceMorphism( a, homalg_matrix, b );
 #! <A morphism in Category of matrices over Q>
 Display( alpha );
@@ -25,7 +25,7 @@ Display( alpha );
 homalg_matrix := HomalgMatrix( [ [ 1, 1, 0, 0 ],
                                   [ 0, 1, 0, -1 ],
                                   [ -1, 0, 2, 1 ] ], 3, 4, Q );
-#! <A matrix over an internal ring>
+#! <A 3 x 4 matrix over an internal ring>
 beta := VectorSpaceMorphism( a, homalg_matrix, b );
 #! <A morphism in Category of matrices over Q>
 CokernelObject( alpha );
