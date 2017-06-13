@@ -2000,11 +2000,11 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
   end,
   return_type := "morphism" ),
 
-KernelObjectFunctorialWithGivenKernelObjects := rec(
-  installation_name := "KernelObjectFunctorialWithGivenKernelObjects",
+KernelFunctorialWithGivenKernelObjects := rec(
+  installation_name := "KernelFunctorialWithGivenKernelObjects",
   filter_list := [ "object", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "K", "alpha", "mu", "alphap", "Kp" ], [ "K", "Kp" ] ],
-  cache_name := "KernelObjectFunctorialWithGivenKernelObjects",
+  cache_name := "KernelFunctorialWithGivenKernelObjects",
   return_type := "morphism",
   dual_operation := "CokernelFunctorialWithGivenCokernelObjects" ),
 
@@ -2014,7 +2014,7 @@ CokernelFunctorialWithGivenCokernelObjects := rec(
   io_type := [ [ "C", "alpha", "nu", "alphap", "Cp" ], [ "C", "Cp" ] ],
   cache_name := "CokernelFunctorialWithGivenCokernelObjects",
   return_type := "morphism",
-  dual_operation := "KernelObjectFunctorialWithGivenKernelObjects" ),
+  dual_operation := "KernelFunctorialWithGivenKernelObjects" ),
 
 TerminalObjectFunctorial := rec(
   installation_name := "TerminalObjectFunctorial",

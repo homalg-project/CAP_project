@@ -16,6 +16,8 @@ Version := Maximum( [
   "2017.06.12", ## Sebas' version
   ## this line prevents merge conflicts
   "2017.04.10", ## Sepp's version
+  ## this line prevents merge conflicts
+  "2017.05.31", ## Mohamed's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},

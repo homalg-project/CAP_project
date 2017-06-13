@@ -1350,7 +1350,7 @@ InstallMethod( HomologyFunctorOp,
             
             mu := chain_map[ index ];
             
-            mor_between_kernel := KernelObjectFunctorial( alpha, mu, alpha_p );
+            mor_between_kernel := KernelFunctorial( alpha, mu, alpha_p );
             
             image_embedding_source := ImageEmbedding( Differential( source_complex, index + 1 ) );
             
@@ -1419,7 +1419,7 @@ InstallMethod( CohomologyFunctorOp,
             
             mu := chain_map[ index ];
             
-            mor_between_kernel := KernelObjectFunctorial( alpha, mu, alpha_p );
+            mor_between_kernel := KernelFunctorial( alpha, mu, alpha_p );
             
             image_embedding_source := ImageEmbedding( Differential( source_cocomplex, index - 1 ) );
             

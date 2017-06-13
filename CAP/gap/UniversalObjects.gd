@@ -187,7 +187,7 @@ DeclareOperation( "AddKernelLiftWithGivenKernelObject",
 #! given by the functorality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$
 #! @Arguments L
-DeclareOperation( "KernelObjectFunctorial",
+DeclareOperation( "KernelFunctorial",
                   [ IsList ] );
 
 #! @Description
@@ -198,7 +198,7 @@ DeclareOperation( "KernelObjectFunctorial",
 #! given by the functorality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$
 #! @Arguments alpha, mu, alpha_prime
-DeclareOperation( "KernelObjectFunctorial",
+DeclareOperation( "KernelFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -211,27 +211,27 @@ DeclareOperation( "KernelObjectFunctorial",
 #! given by the functorality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, alpha, mu, alpha_prime, r
-DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
+DeclareOperation( "KernelFunctorialWithGivenKernelObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
                     IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>KernelObjectFunctorialWithGivenKernelObjects</C>.
+#! to the category for the basic operation <C>KernelFunctorialWithGivenKernelObjects</C>.
 #! $F: (\mathrm{KernelObject}( \alpha ), \alpha, \mu, \alpha', \mathrm{KernelObject}( \alpha' )) \mapsto (\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' ))$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
+DeclareOperation( "AddKernelFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
+DeclareOperation( "AddKernelFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
+DeclareOperation( "AddKernelFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
+DeclareOperation( "AddKernelFunctorialWithGivenKernelObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
