@@ -494,7 +494,7 @@ end );
 InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
   
   function( func, symbol_list, loop_multiple )
-    local func_as_string, func_stream, i, n, func_as_list, loop_power, symbol_appearance_rec, current_symbol;
+    local func_as_string, func_stream, i, func_as_list, loop_power, symbol_appearance_rec, current_symbol;
     
     func_as_string := "";
     
@@ -517,35 +517,6 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     NormalizeWhitespace( func_as_string );
     
     func_as_list := SplitString( func_as_string, " " );
-    
-    ## stupid stupid special case
-    ## This might cause a bug sometime.
-    
-    i := 1;
-    
-    n := Length( func_as_list );
-    
-    while i <= n do
-        
-        if func_as_list[ i ] in [ "+", "Sum" ] then
-            
-            func_as_list[ i ] := "AdditionForMorphisms";
-            
-        elif func_as_list[ i ] = "-" then
-            
-            func_as_list := Concatenation( func_as_list{[ 1 .. i - 1 ]},
-                                           [ "AdditionForMorphisms", "AdditiveInverseForMorphisms" ],
-                                           func_as_list{[ i + 1 .. Length( func_as_list )]} );
-            
-            i := i + 1;
-            
-            n := n + 1;
-            
-        fi;
-        
-        i := i + 1;
-        
-    od;
     
     loop_power := 0;
     
