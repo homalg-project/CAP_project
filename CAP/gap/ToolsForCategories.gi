@@ -692,3 +692,20 @@ InstallGlobalFunction( CAP_MergeRecords,
         fi;
     od;
 end );
+
+InstallGlobalFunction( HelpForCAP,
+  
+  function()
+    local filename, stream, string;
+    
+    filename := DirectoriesPackageLibrary( "CAP", "" );
+    filename := filename[ 1 ];
+    filename := Filename( filename, "help_for_CAP.md" );
+    
+    stream := InputTextFile( filename );
+    string := ReadAll( stream );
+    CloseStream( stream );
+    
+    Print( string );
+    
+end );
