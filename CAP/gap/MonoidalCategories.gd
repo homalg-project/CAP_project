@@ -39,6 +39,12 @@ DeclareGlobalVariable( "MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
 ## TensorProductOnObjects
 
+DeclareOperation( "TensorProductOp",
+                  [ IsList, IsCapCategoryObject ] );
+
+DeclareOperation( "TensorProductOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
 #! @Description
 #! The arguments are two objects $a, b$.
 #! The output is the tensor product $a \otimes b$.

@@ -268,7 +268,7 @@ InstallMethod( RepresentationCategoryZGraded,
     
     group_string := String( group );
     
-    name := Concatenation( "The Z-graded representation category of ", group_string );
+    name := Concatenation( "The skeletal Z-graded representation category of ", group_string );
     
     irr := Irr( group );
     
@@ -315,6 +315,12 @@ InstallMethod( RepresentationCategoryZGraded,
                     IsRepresentationCategoryZGradedMorphism, name ] );
     
     SetUnderlyingGroupForRepresentationCategory( category, group );
+    
+    ## side effect: this computes the multiplicity array of group which can thus be accessed without the getter
+    MultiplicityArray( group );
+    
+    ## side effect: this computes the multiplicity array of group which can thus be accessed without the getter
+    MultiplicityTripleArray( group );
     
     return category;
     
@@ -400,7 +406,7 @@ InstallMethod( DegreeDecomposition,
         
     fi;
     
-    current_degree := UnderlyingDegree( object_list[1][2] );
+    current_degree := object_list[1][2]!.UnderlyingDegree;
     
     new_list := [ ];
     
@@ -410,7 +416,7 @@ InstallMethod( DegreeDecomposition,
         
         elem := object_list[i];
         
-        if UnderlyingDegree( elem[2] ) = current_degree then
+        if elem[2]!.UnderlyingDegree = current_degree then
             
             Add( new_list_entry, elem );
             
@@ -418,7 +424,7 @@ InstallMethod( DegreeDecomposition,
             
             Add( new_list, new_list_entry );
             
-            current_degree := UnderlyingDegree( elem[2] );
+            current_degree := elem[2]!.UnderlyingDegree;
             
             new_list_entry := [ elem ];
             
@@ -428,7 +434,7 @@ InstallMethod( DegreeDecomposition,
     
     Add( new_list, new_list_entry );
     
-    return List( new_list, entry -> [ UnderlyingDegree( entry[1][2] ) ,SemisimpleCategoryObject( entry , CapCategory( object ) ) ] );
+    return List( new_list, entry -> [ entry[1][2]!.UnderlyingDegree ,SemisimpleCategoryObject( entry , CapCategory( object ) ) ] );
     
 end );
 
@@ -555,11 +561,13 @@ InstallMethod( DegreeDescendingFiltration,
     
 end );
 
+
 ####################################
 ##
 ## Operations
 ##
 ####################################
+
 
 ##
 InstallMethod( InductionFunctorForRepresentationCategoriesOfGroups,
@@ -640,5 +648,50 @@ InstallMethod( RestrictionFunctorForRepresentationCategoriesOfGroups,
     return
       FunctorByUniversalPropertyOfSemisimpleCategory(
         RepresentationCategory( group ), function_on_irreducibles, rep_sub_group );
+    
+end );
+
+##
+InstallMethod( MultiplicityArray,
+               [ IsRepresentationCategoryZGradedObject ],
+               
+  function( object )
+    local object_list, multiplicity_array, elem, z, deg, entry;
+    
+    object_list := SemisimpleCategoryObjectList( object );
+    
+    multiplicity_array := [ ];
+    
+    for elem in object_list do
+        
+        z := elem[2]!.UnderlyingDegree;
+        
+        if z > 0 then
+            
+            deg := 2*z;
+          
+        else
+            
+            deg := -2*z + 1;
+          
+        fi;
+        
+        if not IsBound( multiplicity_array[ deg ] ) then
+            
+            entry := [ ];
+            
+            entry[ elem[2]!.UnderlyingCharacterNumber ] := elem[1];
+            
+            multiplicity_array[ deg ] := entry;
+            
+        else
+            
+            multiplicity_array[ deg ][ elem[2]!.UnderlyingCharacterNumber ] := elem[1];
+        
+        fi;
+        
+    od;
+    
+    return multiplicity_array;
     
 end );

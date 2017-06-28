@@ -26,5 +26,5 @@ t := FilteredTateResolution( u );
 
 s := SpectralSequenceEntryOfDescendingFilteredCocomplex( t, 2, 0, 1 );
 
-# Display( UnderlyingHonestObject( Source( s ) ) );
+Display( UnderlyingHonestObject( Source( s ) ) );
 # 1*(χ_[2, 3]) + 1*(χ_[2, 5])

@@ -17,3 +17,5 @@ ReadPackage( "GroupRepresentationsForCAP", "gap/GZGradedIrreducibleObjects.gd" )
 ReadPackage( "GroupRepresentationsForCAP", "gap/RepresentationCategoryOfGroup.gd" );
 
 ReadPackage( "GroupRepresentationsForCAP", "gap/AssociatorsForRepresentationCategoryOfGroup.gd" );
+
+ReadPackage( "GroupRepresentationsForCAP", "gap/Tools.gd" );

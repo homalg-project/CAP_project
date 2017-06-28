@@ -346,19 +346,28 @@ InstallMethod( ExteriorAlgebraAsModule,
                [ IsEModuleActionCategory ],
                
   function( category )
-    local exterior_algebra_multiplication_list, object_list;
+    local exterior_algebra_multiplication_list, dimension, object_list, exterior_algebra;
     
     exterior_algebra_multiplication_list := ExteriorAlgebraAsModuleMultiplicationList( category );
     
+    dimension := Size( exterior_algebra_multiplication_list );
+    
     object_list := List( exterior_algebra_multiplication_list, Range );
     
-    return EModuleActionCategoryObject(
+    exterior_algebra :=
+       EModuleActionCategoryObject(
              PreCompose(
                RightDistributivityExpanding( object_list, UnderlyingActingObject( category ) ),
                DirectSumFunctorial( exterior_algebra_multiplication_list )
              ),
              category
            );
+    
+    SetHead( exterior_algebra, Range( exterior_algebra_multiplication_list[1] ) );
+    
+    SetSocle( exterior_algebra, Range( exterior_algebra_multiplication_list[dimension-1] ) );
+    
+    return exterior_algebra;
     
 end );
 
@@ -426,19 +435,28 @@ InstallMethod( ExteriorAlgebraDualAsModule,
                [ IsEModuleCoactionCategory ],
                
   function( category )
-    local exterior_algebra_dual_comultiplication_list, object_list;
+    local exterior_algebra_dual_comultiplication_list, dimension, object_list, exterior_algebra_dual;
     
     exterior_algebra_dual_comultiplication_list := ExteriorAlgebraDualAsModuleComultiplicationList( category );
     
+    dimension := Size( exterior_algebra_dual_comultiplication_list );
+    
     object_list := List( exterior_algebra_dual_comultiplication_list, Source );
     
-    return EModuleCoactionCategoryObject(
+    exterior_algebra_dual := 
+      EModuleCoactionCategoryObject(
              PreCompose(
                DirectSumFunctorial( exterior_algebra_dual_comultiplication_list ),
                LeftDistributivityFactoring( UnderlyingCoactingObject( category ), object_list )
              ),
              category
            );
+    
+    SetHead( exterior_algebra_dual, Source(exterior_algebra_dual_comultiplication_list[dimension - 1]) );
+    
+    SetSocle( exterior_algebra_dual, Source(exterior_algebra_dual_comultiplication_list[1]) );
+    
+    return exterior_algebra_dual;
     
 end );
 
@@ -508,7 +526,7 @@ InstallMethod( FreeEModule,
                [ IsCapCategoryObject, IsEModuleActionCategory ],
                
   function( l, category )
-    local exterior_algebra, v, structure_morphism;
+    local exterior_algebra, v, structure_morphism, free_module;
     
     exterior_algebra := ExteriorAlgebraAsModule( category );
     
@@ -519,7 +537,13 @@ InstallMethod( FreeEModule,
       TensorProductOnMorphisms( IdentityMorphism( l ), StructureMorphism( exterior_algebra ) ) ]
     );
     
-    return EModuleActionCategoryObject( structure_morphism, category );
+    free_module := EModuleActionCategoryObject( structure_morphism, category );
+    
+    SetHead( free_module, l );
+    
+    SetSocle( free_module, TensorProductOnObjects( l, Socle( exterior_algebra ) ) );
+    
+    return free_module;
     
 end );
 
@@ -528,7 +552,7 @@ InstallMethod( CofreeEModule,
                [ IsCapCategoryObject, IsEModuleCoactionCategory ],
                
   function( l, category )
-    local exterior_algebra_dual, w, structure_morphism;
+    local exterior_algebra_dual, w, structure_morphism, cofree_module;
     
     exterior_algebra_dual := ExteriorAlgebraDualAsModule( category );
     
@@ -540,7 +564,13 @@ InstallMethod( CofreeEModule,
        ]
     );
     
-    return EModuleCoactionCategoryObject( structure_morphism, category );
+    cofree_module := EModuleCoactionCategoryObject( structure_morphism, category );
+    
+    SetSocle( cofree_module, l );
+    
+    SetHead( cofree_module, TensorProductOnObjects( Head( exterior_algebra_dual ), l ) );
+    
+    return cofree_module;
     
 end );
 

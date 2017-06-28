@@ -18,7 +18,7 @@
 #! The GAP category of morphisms in a semisimple category.
 #! @Arguments object
 DeclareCategory( "IsSemisimpleCategoryMorphism",
-                 IsCapCategoryMorphism );
+                 IsCapCategoryMorphism and IsCellOfSkeletalCategory);
 
 ####################################
 ##
@@ -93,6 +93,19 @@ DeclareOperation( "ComponentInclusionMorphism",
 #! @Arguments v, j
 DeclareOperation( "ComponentProjectionMorphism",
                   [ IsSemisimpleCategoryObject, IsObject ] );
+
+##
+DeclareOperation( "CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_String_List",
+                  [ IsSemisimpleCategoryObject, IsList ] );
+
+##
+DeclareOperation( "CAP_INTERNAL_Create_Semisimple_Endomorphism_From_List_Of_Diagonal_Blocks",
+                  [ IsSemisimpleCategoryObject, IsList ] );
+
+##
+DeclareOperation( "CAP_INTERNAL_Create_Semisimple_Endomorphism_From_String_List",
+                  [ IsSemisimpleCategoryObject, IsList, IsList ] );
+
 
 ####################################
 ##

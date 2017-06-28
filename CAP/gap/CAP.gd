@@ -114,6 +114,9 @@ DeclareCategory( "IsCapCategoryMorphism",
 DeclareCategory( "IsCapCategoryTwoCell",
                  IsCapCategoryCell );
 
+DeclareCategory( "IsCellOfSkeletalCategory",
+                 IsCapCategoryCell );
+
 ## Earliest possible place
 BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
 
