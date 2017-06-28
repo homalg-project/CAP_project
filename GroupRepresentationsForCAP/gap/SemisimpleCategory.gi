@@ -2718,6 +2718,10 @@ InstallMethod( SemisimpleCategory,
     
     underlying_category := MatrixCategory( homalg_field );
     
+    DeactivateCachingOfCategory( underlying_category );
+    
+    CapCategorySwitchLogicOff( underlying_category );
+    
     semisimple_category := CreateCapCategory( name );
     
     SetIsAbelianCategory( semisimple_category, true );

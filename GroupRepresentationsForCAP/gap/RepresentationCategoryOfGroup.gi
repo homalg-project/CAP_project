@@ -139,6 +139,10 @@ InstallMethod( RepresentationCategory,
     
     SetUnderlyingGroupForRepresentationCategory( category, group );
     
+    DeactivateCachingOfCategory( category );
+    
+    CapCategorySwitchLogicOff( category );
+    
     return category;
     
 end );
@@ -321,6 +325,10 @@ InstallMethod( RepresentationCategoryZGraded,
     
     ## side effect: this computes the multiplicity array of group which can thus be accessed without the getter
     MultiplicityTripleArray( group );
+    
+    DeactivateCachingOfCategory( category );
+    
+    CapCategorySwitchLogicOff( category );
     
     return category;
     
