@@ -1098,6 +1098,9 @@ DeclareOperation( "AddInitialObjectFunctorial",
 DeclareOperationWithCache( "DirectSumOp",
                            [ IsList, IsCapCategoryObject ] );
 
+DeclareOperation( "DirectSumOp",
+                  [ IsList, IsCapCategory ] );
+
 #! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$
 #! and an integer $k$.
@@ -1314,15 +1317,26 @@ DeclareOperation( "IsomorphismFromCoproductToDirectSumOp",
 
 
 #! @Description
-#! The argument is a list of lists of morphisms
-#! $M = ( ( \phi_{i,j}: A_i \rightarrow B_j )_{j = 1 \dots n} )_{i = 1 \dots m}$.
+#! The argument $M = ( ( \phi_{i,j}: A_i \rightarrow B_j )_{j = 1 \dots n} )_{i = 1 \dots m}$
+#! is a list of lists of morphisms.
+#! @Arguments M
+#! @Group MorphismBetweenDirectSums
+DeclareOperationWithCache( "MorphismBetweenDirectSums",
+                           [ IsList ] );
+
+#! @Description
 #! The output is the morphism
 #! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j$
 #! defined by the matrix $M$.
+#! The extra arguments $S = \bigoplus_{i=1}^{m}A_i$
+#! and $T = \bigoplus_{j=1}^n B_j$ are source and target of the output,
+#! respectively. They must be provided in case $M$ is an empty list
+#! or a list of empty lists.
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
-#! @Arguments M
+#! @Arguments S, M, T
+#! @Group MorphismBetweenDirectSums
 DeclareOperationWithCache( "MorphismBetweenDirectSums",
-                           [ IsList ] );
+                           [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a list

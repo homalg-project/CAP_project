@@ -372,6 +372,23 @@ InstallMethod( IsomorphismFromDirectSumToCoproduct,
     
 end );
 
+##
+InstallMethod( DirectSumOp,
+               [ IsList, IsCapCategory ],
+               
+  function( category_and_diagram, category )
+    local diagram;
+    
+    diagram := category_and_diagram[2];
+    
+    if diagram = [ ] then
+        return ZeroObject( category );
+    fi;
+    
+    return DirectSumOp( diagram, diagram[1] );
+    
+end );
+
 ####################################
 ## Functorial operations
 ####################################
@@ -417,6 +434,20 @@ InstallMethod( MorphismBetweenDirectSums,
     cols := Length( morphism_matrix[1] );
     
     return MorphismBetweenDirectSumsOp( morphism_matrix_listlist, rows, cols, morphism_matrix[1][1] );
+    
+end );
+
+##
+InstallMethod( MorphismBetweenDirectSums,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( S, morphism_matrix, T )
+    
+    if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
+        return ZeroMorphism( S, T );
+    fi;
+    
+    return MorphismBetweenDirectSums( morphism_matrix );
     
 end );
 
