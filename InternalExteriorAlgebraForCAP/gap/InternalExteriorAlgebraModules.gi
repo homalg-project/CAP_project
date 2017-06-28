@@ -990,3 +990,49 @@ InstallMethod( FilteredTateResolution,
     return AsCocomplex( z_functor );
     
 end );
+
+####################################
+##
+## View
+##
+####################################
+
+##
+InstallMethod( Display,
+               [ IsEModuleActionCategoryObject ],
+               
+  function( object )
+    
+    Display( Range( StructureMorphism( object ) ) );
+    
+end );
+
+##
+InstallMethod( Display,
+               [ IsEModuleCoactionCategoryObject ],
+               
+  function( object )
+    
+    Display( Source( StructureMorphism( object ) ) );
+    
+end );
+
+##
+InstallMethod( Display,
+               [ IsEModuleActionCategoryMorphism ],
+               
+  function( morphism )
+    
+    Display( UnderlyingMorphism( morphism ) );
+    
+end );
+
+##
+InstallMethod( Display,
+               [ IsEModuleCoactionCategoryMorphism ],
+               
+  function( morphism )
+    
+    Display( UnderlyingMorphism( morphism ) );
+    
+end );
