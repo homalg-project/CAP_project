@@ -2789,6 +2789,144 @@ DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
 
 ####################################
 ##
+#! @Section Coequalizer
+##
+####################################
+
+## Main Operations and Attributes
+
+#! @Returns an object
+DeclareGlobalFunction( "Coequalizer" );
+
+#! @Returns an object
+#! @Arguments D, method_selection_morphism
+DeclareOperationWithCache( "CoequalizerOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
+#! @Arguments D
+DeclareOperation( "ProjectionOntoCoequalizer",
+                  [ IsList ] );
+
+#! @Arguments D,method_selection_morphism
+DeclareOperation( "ProjectionOntoCoequalizerOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Arguments D,C
+DeclareOperation( "ProjectionOntoCoequalizerWithGivenCoequalizer",
+                  [ IsList, IsCapCategoryObject ] );
+
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coequalizer}(D), T )$
+#! @Arguments D, tau, method_selection_morphism
+DeclareOperation( "UniversalMorphismFromCoequalizer",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Returns a morphism in $\mathrm{Hom}( C, T )$
+#! @Arguments D, tau, C
+DeclareOperation( "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+                  [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+## Add Operations
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoequalizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoequalizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoequalizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoequalizer",
+                  [ IsCapCategory, IsList ] );
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectionOntoCoequalizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionOntoCoequalizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionOntoCoequalizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionOntoCoequalizer",
+                  [ IsCapCategory, IsList ] );
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismFromCoequalizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromCoequalizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromCoequalizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromCoequalizer",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsList ] );
+
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Coequalizer}( ( \beta_i )_{i=1 \dots n} ), \mathrm{Coequalizer}( ( \beta_i' )_{i=1 \dots n} ))$
+#! @Arguments L
+DeclareOperation( "CoequalizerFunctorial",
+                  [ IsList ] );
+
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, L, r
+DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
+                  [ IsCapCategory, IsList ] );
+
+#! @Chapter Universal Objects
+
+####################################
+##
 #! @Section Pushout
 ##
 ####################################

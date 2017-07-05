@@ -224,6 +224,58 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
   end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
 
 ##
+AddDerivationToCAP( Pushout,
+  
+  function( diagram )
+    local D;
+    
+    D := List( diagram, Range );
+    
+    D := List( [ 1 .. Length( D ) ], i -> InjectionOfCofactorOfCoproduct( D, i ) );
+    
+    D := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram[i], D[i] ) );
+    
+    return Coequalizer( D );
+    
+end : Description := "Pushout as a Coequalizer" );
+
+##
+AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
+        
+  function( diagram, injection_number )
+    local D, diagram_of_coequalizer, pi;
+    
+    D := List( diagram, Range );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> InjectionOfCofactorOfCoproduct( D, i ) );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram[i], diagram_of_coequalizer[i] ) );
+    
+    pi := ProjectionOntoCoequalizer( diagram_of_coequalizer );
+    
+    return PreCompose( InjectionOfCofactorOfCoproduct( D, injection_number ), pi );
+    
+  end : Description := "InjectionOfCofactorOfPushout by composing the coproduct injection with the projection onto coequalizer" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromPushout,
+        
+  function( diagram, tau )
+    local D, diagram_of_coequalizer, chi;
+    
+    D := List( diagram, Range );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> InjectionOfCofactorOfCoproduct( D, i ) );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram[i], diagram_of_coequalizer[i] ) );
+    
+    chi := UniversalMorphismFromCoproduct( D, tau );
+    
+    return UniversalMorphismFromCoequalizer( diagram_of_coequalizer, chi );
+    
+  end : Description := "UniversalMorphismFromPushout as the universal morphism from coequalizer of a univeral morphism from coproduct" );
+
+##
 AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
                                          
   function( diagram, injection_number )
@@ -1454,6 +1506,23 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     
 end : Description := "DirectSumCodiagonalDifference using the operations defining this morphism" );
 
+
+##
+AddDerivationToCAP( CoequalizerFunctorialWithGivenCoequalizers,
+                    [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the right number
+                      [ ProjectionOntoCoequalizer, 1 ],
+                      [ UniversalMorphismFromCoequalizer, 1 ] ],
+        
+  function( coequalizer_source, morphism_of_morphisms, coequalizer_range )
+    local projection, range;
+        
+        projection := ProjectionOntoCoequalizer( morphism_of_morphisms[1] );
+        
+        range := PreCompose( morphism_of_morphisms[2], projection );
+        
+        return UniversalMorphismFromCoequalizer( morphism_of_morphisms[3], range );
+        
+end : Description := "EqualizerFunctorialWithGivenEqualizers using the universality of the equalizer" );
 
 ##
 AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,

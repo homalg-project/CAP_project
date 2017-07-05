@@ -756,6 +756,61 @@ end );
 
 ####################################
 ##
+## Coequalizer
+##
+####################################
+
+####################################
+## Convenience methods
+####################################
+
+##
+InstallGlobalFunction( Coequalizer,
+  
+  function( arg )
+    
+    if Length( arg ) = 1
+       and IsList( arg[1] )
+       and ForAll( arg[1], IsCapCategoryMorphism ) then
+       
+       return CoequalizerOp( arg[1], arg[1][1] );
+       
+     fi;
+    
+    return CoequalizerOp( arg, arg[ 1 ] );
+    
+end );
+
+##
+InstallMethod( ProjectionOntoCoequalizer,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return ProjectionOntoCoequalizerOp( diagram, diagram[1] );
+    
+end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( CoequalizerFunctorial,
+               [ IsList ],
+               
+  function( morphism_of_morphisms )
+      
+      return CoequalizerFunctorialWithGivenCoequalizers(
+               Coequalizer( morphism_of_morphisms[1] ),
+               morphism_of_morphisms,
+               Coequalizer( morphism_of_morphisms[3] )
+             );
+      
+end );
+
+####################################
+##
 ## Pushout
 ##
 ####################################
