@@ -2212,6 +2212,144 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 
 ####################################
 ##
+#! @Section Equalizer
+##
+####################################
+
+## Main Operations and Attributes
+
+#! @Returns an object
+DeclareGlobalFunction( "Equalizer" );
+
+#! @Returns an object
+#! @Arguments D, method_selection_morphism
+DeclareOperationWithCache( "EqualizerOp",
+                           [ IsList, IsCapCategoryMorphism ] );
+
+#! @Arguments D
+DeclareOperation( "EmbeddingOfEqualizer",
+                  [ IsList ] );
+
+#! @Arguments D,method_selection_morphism
+DeclareOperation( "EmbeddingOfEqualizerOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Arguments D,E
+DeclareOperation( "EmbeddingOfEqualizerWithGivenEqualizer",
+                  [ IsList, IsCapCategoryObject ] );
+
+#! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{Equalizer}(D) )$
+#! @Arguments D, tau, method_selection_morphism
+DeclareOperation( "UniversalMorphismIntoEqualizer",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Returns a morphism in $\mathrm{Hom}( T, E )$
+#! @Arguments D, tau, E
+DeclareOperation( "UniversalMorphismIntoEqualizerWithGivenEqualizer",
+                  [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+## Add Operations
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEqualizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEqualizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEqualizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEqualizer",
+                  [ IsCapCategory, IsList ] );
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEmbeddingOfEqualizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEmbeddingOfEqualizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfEqualizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfEqualizer",
+                  [ IsCapCategory, IsList ] );
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoEqualizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoEqualizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoEqualizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoEqualizer",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
+                  [ IsCapCategory, IsList ] );
+
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ))$
+#! @Arguments L
+DeclareOperation( "EqualizerFunctorial",
+                  [ IsList ] );
+
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, L, r
+DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
+                  [ IsCapCategory, IsList ] );
+
+#! @Chapter Universal Objects
+
+####################################
+##
 #! @Section Fiber Product
 ##
 ####################################

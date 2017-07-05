@@ -156,6 +156,58 @@ end : CategoryFilter := IsAdditiveCategory,
 
 
 ##
+AddDerivationToCAP( FiberProduct,
+  
+  function( diagram )
+    local D;
+    
+    D := List( diagram, Source );
+    
+    D := List( [ 1 .. Length( D ) ], i -> ProjectionInFactorOfDirectProduct( D, i ) );
+    
+    D := List( [ 1 .. Length( D ) ], i -> PreCompose( D[i], diagram[i] ) );
+    
+    return Equalizer( D );
+    
+end : Description := "FiberProduct as an Equalizer" );
+
+##
+AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
+        
+  function( diagram, projection_number )
+    local D, diagram_of_equalizer, iota;
+    
+    D := List( diagram, Source );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> ProjectionInFactorOfDirectProduct( D, i ) );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram_of_equalizer[i], diagram[i] ) );
+    
+    iota := EmbeddingOfEqualizer( diagram_of_equalizer );
+    
+    return PreCompose( iota, ProjectionInFactorOfDirectProduct( D, projection_number ) );
+    
+  end : Description := "ProjectionInFactorOfFiberProduct by composing the embedding of equalizer with the direct product projection" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoFiberProduct,
+        
+  function( diagram, tau )
+    local D, diagram_of_equalizer, chi;
+    
+    D := List( diagram, Source );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> ProjectionInFactorOfDirectProduct( D, i ) );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram_of_equalizer[i], diagram[i] ) );
+    
+    chi := UniversalMorphismIntoDirectProduct( D, tau );
+    
+    return UniversalMorphismIntoEqualizer( diagram_of_equalizer, chi );
+    
+  end : Description := "UniversalMorphismIntoFiberProduct as the universal morphism into equalizer of a univeral morphism into direct product" );
+
+##
 AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
                       
   function( diagram, projection_number )
@@ -1335,9 +1387,22 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
     
 end : Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
 
-
-
-
+##
+AddDerivationToCAP( EqualizerFunctorialWithGivenEqualizers,
+                    [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the right number
+                      [ EmbeddingOfEqualizer, 1 ],
+                      [ UniversalMorphismIntoEqualizer, 1 ] ],
+        
+  function( equalizer_source, morphism_of_morphisms, equalizer_range )
+    local embedding, source;
+        
+        embedding := EmbeddingOfEqualizer( morphism_of_morphisms[1] );
+        
+        source := PreCompose( embedding, morphism_of_morphisms[2] );
+        
+        return UniversalMorphismIntoEqualizer( morphism_of_morphisms[3], source );
+        
+end : Description := "EqualizerFunctorialWithGivenEqualizers using the universality of the equalizer" );
 
 ##
 AddDerivationToCAP( FiberProductFunctorialWithGivenFiberProducts,

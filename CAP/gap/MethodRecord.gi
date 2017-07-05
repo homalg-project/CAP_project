@@ -1192,6 +1192,144 @@ IsCodominating := rec(
   end,
   return_type := "bool" ),
 
+Equalizer := rec(
+  installation_name := "EqualizerOp",
+  argument_list := [ 1 ],
+  filter_list := [ IsList, "morphism" ],
+  return_type := "object",
+  cache_name := "EqualizerOp",
+  universal_type := "Limit",
+  dual_operation := "Coequalizer",
+  
+  pre_function := function( diagram, method_selection_morphism )
+    local cobase, base, current_morphism, current_value;
+    
+    cobase := Source( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Source( current_morphism ), cobase );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the equalizer diagram have equal sources" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the equalizer diagram must have equal sources" ];
+        fi;
+        
+    od;
+    
+    base := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the equalizer diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the equalizer diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end,
+  functorial := "EqualizerFunctorialWithGivenEqualizers" ),
+
+EmbeddingOfEqualizer := rec(
+  installation_name := "EmbeddingOfEqualizerOp",
+  argument_list := [ 1 ],
+  filter_list := [ IsList, "morphism" ],
+  return_type := "morphism",
+  io_type := [ [ "D" ], [ "E", "D_1_source" ] ],
+  cache_name := "EmbeddingOfEqualizerOp",
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  dual_operation := "ProjectionOntoCoequalizer",
+  
+  pre_function := ~.Equalizer.pre_function ),
+
+EmbeddingOfEqualizerWithGivenEqualizer := rec(
+  installation_name := "EmbeddingOfEqualizerWithGivenEqualizer",
+  filter_list := [ IsList, "object" ],
+  return_type := "morphism",
+  io_type := [ [ "D", "E" ], [ "E", "D_1_source" ] ],
+  cache_name := "EmbeddingOfEqualizerWithGivenEqualizer",
+  universal_type := "Limit",
+  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
+  
+  pre_function := ~.Equalizer.pre_function ),
+
+UniversalMorphismIntoEqualizer := rec(
+  installation_name := "UniversalMorphismIntoEqualizer",
+  filter_list := [ IsList, "morphism" ],
+  argument_list := [ 1, 2 ],
+  return_type := "morphism",
+  io_type := [ [ "D", "tau" ], [ "tau_source", "E" ] ],
+  cache_name := "UniversalMorphismIntoEqualizer",
+  universal_object_position := "Range",
+  universal_type := "Limit",
+  dual_operation := "UniversalMorphismFromCoequalizer",
+  
+  pre_function := function( diagram, tau )
+    local cobase, base, current_morphism, current_value, current_morphism_position;
+    
+    cobase := Source( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Source( current_morphism ), cobase );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the equalizer diagram have equal sources" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the equalizer diagram must have equal sources" ];
+        fi;
+        
+    od;
+    
+    base := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the equalizer diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the equalizer diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    for current_morphism_position in [ 1 .. Length( diagram ) ] do
+        
+        current_value := IsEqualForObjects( Source( diagram[ current_morphism_position ] ), Range( tau ) );
+        
+        if current_value = fail then
+            return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": cannot decide whether source and range are equal" ) ];
+        elif current_value = false then
+            return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": source and range are not equal" ) ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end ),
+
+UniversalMorphismIntoEqualizerWithGivenEqualizer := rec(
+  installation_name := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
+  filter_list := [ IsList, "morphism", "object" ],
+  return_type := "morphism",
+  io_type := [ [ "D", "tau", "E" ], [ "tau_source", "E" ] ],
+  cache_name := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
+  universal_type := "Limit",
+  dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+  
+  pre_function := function( D, tau, E ) return CAP_INTERNAL_METHOD_NAME_RECORD.UniversalMorphismIntoEqualizer.pre_function( D, tau ); end,
+  
+ ),
+
 FiberProduct := rec(
   installation_name := "FiberProductOp",
   argument_list := [ 1 ],
@@ -2108,6 +2246,14 @@ DirectSumFunctorialWithGivenDirectSums := rec(
   io_type := [ [ "d1", "L", "d2" ], [ "d1", "d2" ] ],
   cache_name := "DirectSumFunctorialWithGivenDirectSums",
   return_type := "morphism" ),
+
+EqualizerFunctorialWithGivenEqualizers := rec(
+  installation_name := "EqualizerFunctorialWithGivenEqualizers",
+  filter_list := [ "object", IsList, "object" ],
+  io_type := [ [ "E", "L", "Ep" ], [ "E", "Ep" ] ],
+  cache_name := "EqualizerFunctorialWithGivenEqualizers",
+  return_type := "morphism",
+  dual_operation := "CoequalizerFunctorialWithGivenCoequalizers" ),
 
 FiberProductFunctorialWithGivenFiberProducts := rec(
   installation_name := "FiberProductFunctorialWithGivenFiberProducts",

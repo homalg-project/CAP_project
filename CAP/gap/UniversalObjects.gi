@@ -564,6 +564,61 @@ end );
 
 ####################################
 ##
+## Equalizer
+##
+####################################
+
+####################################
+## Convenience methods
+####################################
+
+##
+InstallGlobalFunction( Equalizer,
+  
+  function( arg )
+    
+    if Length( arg ) = 1
+       and IsList( arg[1] )
+       and ForAll( arg[1], IsCapCategoryMorphism ) then
+       
+       return EqualizerOp( arg[1], arg[1][1] );
+       
+     fi;
+    
+    return EqualizerOp( arg, arg[ 1 ] );
+    
+end );
+
+##
+InstallMethod( EmbeddingOfEqualizer,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return EmbeddingOfEqualizerOp( diagram, diagram[1] );
+    
+end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( EqualizerFunctorial,
+               [ IsList ],
+               
+  function( morphism_of_morphisms )
+      
+      return EqualizerFunctorialWithGivenEqualizers(
+               Equalizer( morphism_of_morphisms[1] ),
+               morphism_of_morphisms,
+               Equalizer( morphism_of_morphisms[3] )
+             );
+      
+end );
+
+####################################
+##
 ## FiberProduct
 ##
 ####################################
