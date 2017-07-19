@@ -761,6 +761,33 @@ DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
 DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The argument is a category $C$.
+#! The output is the unique morphism $\mathrm{ZeroObject} \rightarrow \mathrm{ZeroObject}$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, \mathrm{ZeroObject} )$
+#! @Arguments C
+DeclareAttribute( "ZeroObjectFunctorial",
+                  IsCapCategory );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ZeroObjectFunctorial</C>.
+#! $F: () \mapsto (T \rightarrow T)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddZeroObjectFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddZeroObjectFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddZeroObjectFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddZeroObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
+
 #! @Chapter Universal Objects
 
 ####################################

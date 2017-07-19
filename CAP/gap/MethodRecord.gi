@@ -219,6 +219,15 @@ ZeroObject := rec(
   cache_name := "ZeroObject",
   return_type := "object" ), 
 
+ZeroObjectFunctorial := rec(
+  installation_name := "ZeroObjectFunctorial",
+  filter_list := [ "category" ],
+  ## TODO: io_type?
+  cache_name := "ZeroObjectFunctorial",
+  return_type := "morphism",
+  dual_operation := "ZeroObjectFunctorial",
+  no_with_given := true ),
+
 UniversalMorphismFromZeroObject := rec(
   installation_name := "UniversalMorphismFromZeroObject",
   filter_list := [ "object" ],

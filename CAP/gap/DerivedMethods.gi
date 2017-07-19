@@ -1247,6 +1247,54 @@ AddDerivationToCAP( InitialObjectFunctorial,
 end : Description := "InitialObjectFunctorial using the universality of the initial object" );
 
 ##
+AddDerivationToCAP( ZeroObjectFunctorial,
+                                  
+  function( category )
+    local zero_object;
+    
+    zero_object := ZeroObject( category );
+    
+    return IdentityMorphism( zero_object );
+    
+end : Description := "ZeroObjectFunctorial using the identity morphism of zero object" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorial,
+                                  
+  function( category )
+    local zero_object;
+    
+    zero_object := ZeroObject( category );
+    
+    return UniversalMorphismIntoZeroObject( zero_object );
+    
+end : Description := "ZeroObjectFunctorial using the universality of zero object" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorial,
+                                  
+  function( category )
+    local zero_object;
+    
+    zero_object := ZeroObject( category );
+    
+    return ZeroMorphism( zero_object, zero_object );
+    
+end : Description := "ZeroObjectFunctorial using ZeroMorphism" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorial,
+                                  
+  function( category )
+    local zero_object;
+    
+    zero_object := ZeroObject( category );
+    
+    return UniversalMorphismFromZeroObject( zero_object );
+    
+end : Description := "ZeroObjectFunctorial using the universality of zero object" );
+
+##
 AddDerivationToCAP( DirectSumDiagonalDifference,
                     [ [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
                       [ ProjectionInFactorOfDirectSum, 2 ], ## Length( diagram ) would be the correct number here
