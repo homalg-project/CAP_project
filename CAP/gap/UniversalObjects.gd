@@ -414,8 +414,12 @@ DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
 #! given by the functorality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))$
 #! @Arguments L
-DeclareOperation( "CokernelFunctorial",
+DeclareOperation( "CokernelObjectFunctorial",
                   [ IsList ] );
+
+DeclareSynonym( "CokernelFunctorial", CokernelObjectFunctorial );
+## FIXME: Change this once we have moved to GAP 4.9
+## DeclareDeprecatedSynonym( "CokernelFunctorial", CokernelObjectFunctorial );
 
 #! @Description
 #! The arguments are three morphisms
@@ -425,7 +429,7 @@ DeclareOperation( "CokernelFunctorial",
 #! given by the functorality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))$
 #! @Arguments alpha, nu, alpha_prime
-DeclareOperation( "CokernelFunctorial",
+DeclareOperation( "CokernelObjectFunctorial",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -438,28 +442,36 @@ DeclareOperation( "CokernelFunctorial",
 #! given by the functorality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, alpha, nu, alpha_prime, r
-DeclareOperation( "CokernelFunctorialWithGivenCokernelObjects",
+DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
                     IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareSynonym( "CokernelFunctorialWithGivenCokernelObjects", CokernelObjectFunctorialWithGivenCokernelObjects );
+## FIXME:
+## DeclareDeprecatedSynonym( "CokernelFunctorialWithGivenCokernelObjects", CokernelObjectFunctorialWithGivenCokernelObjects );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>CokernelFunctorialWithGivenCokernelObjects</C>.
+#! to the category for the basic operation <C>CokernelObjectFunctorialWithGivenCokernelObjects</C>.
 #! $F: (\mathrm{CokernelObject}( \alpha ), \alpha, \nu, \alpha', \mathrm{CokernelObject}( \alpha' )) \mapsto (\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' ))$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
+DeclareOperation( "AddCokernelObjectFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
+DeclareOperation( "AddCokernelObjectFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
+DeclareOperation( "AddCokernelObjectFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCokernelFunctorialWithGivenCokernelObjects",
+DeclareOperation( "AddCokernelObjectFunctorialWithGivenCokernelObjects",
                   [ IsCapCategory, IsList ] );
+
+DeclareSynonym( "AddCokernelFunctorialWithGivenCokernelObjects", AddCokernelObjectFunctorialWithGivenCokernelObjects );
+## FIXME:
+## DeclareDeprecatedSynonym( "AddCokernelFunctorialWithGivenCokernelObjects", AddCokernelObjectFunctorialWithGivenCokernelObjects );
 
 #! @Chapter Universal Objects
 

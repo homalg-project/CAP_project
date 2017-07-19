@@ -2015,13 +2015,13 @@ KernelObjectFunctorialWithGivenKernelObjects := rec(
   io_type := [ [ "K", "alpha", "mu", "alphap", "Kp" ], [ "K", "Kp" ] ],
   cache_name := "KernelObjectFunctorialWithGivenKernelObjects",
   return_type := "morphism",
-  dual_operation := "CokernelFunctorialWithGivenCokernelObjects" ),
+  dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects" ),
 
-CokernelFunctorialWithGivenCokernelObjects := rec(
-  installation_name := "CokernelFunctorialWithGivenCokernelObjects",
+CokernelObjectFunctorialWithGivenCokernelObjects := rec(
+  installation_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
   filter_list := [ "object", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "C", "alpha", "nu", "alphap", "Cp" ], [ "C", "Cp" ] ],
-  cache_name := "CokernelFunctorialWithGivenCokernelObjects",
+  cache_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
   return_type := "morphism",
   dual_operation := "KernelObjectFunctorialWithGivenKernelObjects" ),
 
