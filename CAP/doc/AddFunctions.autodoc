@@ -143,6 +143,9 @@ The record can have the following components, used as described:
 * with_given_without_given_name_pair (optional): If the currently installed operation has a corresponding with given operation or
                                                  is the with given of another operation, the names of both should be in this list.
 
+* functorial (optional): If an object has a corresponding functorial function, e.g., KernelObject and KernelObjectFunctorial,
+                         the name of the functorial is stored as a string.
+
 
 Using all those entries, the operation CapInternalInstallAdd installs add methods as described above. It first provides a
 sanity check for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and

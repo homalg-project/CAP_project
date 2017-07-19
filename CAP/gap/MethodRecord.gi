@@ -2342,7 +2342,7 @@ DirectSumProjectionInPushout := rec(
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, position, without_given_name;
+    local recnames, current_recname, current_rec, position, without_given_name, functorial;
     
     recnames := RecNames( record );
     
@@ -2364,6 +2364,14 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
            
          fi;
          
+      fi;
+      
+      functorial := PositionProperty( recnames, i -> StartsWith( i, Concatenation( current_recname, "Functorial" ) ) );
+      
+      if functorial <> fail then
+          
+          current_rec.functorial := recnames[ functorial ];
+          
       fi;
       
     od;
