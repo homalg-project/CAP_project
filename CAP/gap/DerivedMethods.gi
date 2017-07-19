@@ -1092,7 +1092,7 @@ AddDerivationToCAP( KernelObjectFunctorialWithGivenKernelObjects,
 end : Description := "KernelObjectFunctorialWithGivenKernelObjects using the universality of the kernel" );
 
 ##
-AddDerivationToCAP( CokernelFunctorialWithGivenCokernelObjects,
+AddDerivationToCAP( CokernelObjectFunctorialWithGivenCokernelObjects,
                     [ [ CokernelColift, 1 ],
                       [ PreCompose, 1 ],
                       [ CokernelProjection, 1 ] ],
@@ -1104,7 +1104,7 @@ AddDerivationToCAP( CokernelFunctorialWithGivenCokernelObjects,
                 PreCompose( nu, CokernelProjection( alpha_p ) )
               );
     
-end : Description := "CokernelFunctorialWithGivenCokernelObjects using the universality of the cokernel" );
+end : Description := "CokernelObjectFunctorialWithGivenCokernelObjects using the universality of the cokernel" );
 
 
 
@@ -1245,6 +1245,54 @@ AddDerivationToCAP( InitialObjectFunctorial,
     return UniversalMorphismFromInitialObject( initial_object );
     
 end : Description := "InitialObjectFunctorial using the universality of the initial object" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorial,
+                                  
+  function( category )
+    local zero_object;
+    
+    zero_object := ZeroObject( category );
+    
+    return IdentityMorphism( zero_object );
+    
+end : Description := "ZeroObjectFunctorial using the identity morphism of zero object" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorial,
+                                  
+  function( category )
+    local zero_object;
+    
+    zero_object := ZeroObject( category );
+    
+    return UniversalMorphismIntoZeroObject( zero_object );
+    
+end : Description := "ZeroObjectFunctorial using the universality of zero object" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorial,
+                                  
+  function( category )
+    local zero_object;
+    
+    zero_object := ZeroObject( category );
+    
+    return ZeroMorphism( zero_object, zero_object );
+    
+end : Description := "ZeroObjectFunctorial using ZeroMorphism" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorial,
+                                  
+  function( category )
+    local zero_object;
+    
+    zero_object := ZeroObject( category );
+    
+    return UniversalMorphismFromZeroObject( zero_object );
+    
+end : Description := "ZeroObjectFunctorial using the universality of zero object" );
 
 ##
 AddDerivationToCAP( DirectSumDiagonalDifference,
