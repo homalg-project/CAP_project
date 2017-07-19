@@ -2208,6 +2208,28 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
                   [ IsCapCategory, IsList ] );
 
+##
+#! @Description
+#! The arguments are an object $s = a \times (b \times c)$,
+#! three objects $a,b,c$,
+#! and an object $r = (a \times b) \times c$.
+#! The output is the associator $\alpha_{a,(b,c)}: a \times (b \times c) \rightarrow (a \times b) \times c$.
+#! @Returns a morphism in $\mathrm{Hom}( a \times (b \times c), (a \times b) \times c )$.
+#! @Arguments s, a, b, c, r
+DeclareOperation( "AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+##
+#! @Description
+#! The arguments are an object $s = (a \times b) \times c$,
+#! three objects $a,b,c$,
+#! and an object $r = a \times (b \times c)$.
+#! The output is the associator $\alpha_{(a,b),c}: (a \times b) \times c \rightarrow a \times (b \times c)$.
+#! @Returns a morphism in $\mathrm{Hom}( (a \times b) \times c \rightarrow a \times (b \times c) )$.
+#! @Arguments s, a, b, c, r
+DeclareOperation( "AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 #! @Chapter Universal Objects
 
 ####################################

@@ -252,6 +252,73 @@ InstallMethod( DirectProductFunctorial,
     
 end );
 
+##
+InstallMethod( AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+                         
+  function( s, a, b, c, r )
+    local D, bc, pi_b, pi_c, pi_a, pi_bc, ab, pi_ab;
+    
+    D := [ b, c ];
+    
+    bc := DirectProduct( D );
+    
+    pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, bc );
+    pi_c := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, bc );
+    
+    D := [ a, bc ];
+    
+    pi_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, s );
+    pi_bc := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, s );
+    
+    pi_b := PreCompose( pi_bc, pi_b );
+    pi_c := PreCompose( pi_bc, pi_c );
+    
+    D := [ a, b ];
+    
+    ab := DirectProduct( D );
+    
+    pi_ab := UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_a, pi_b ], ab );
+    
+    D := [ ab, c ];
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_ab, pi_c ], r );
+    
+end );
+
+##
+InstallMethod( AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+                         
+  function( s, a, b, c, r )
+    local D, ab, pi_a, pi_b, pi_ab, pi_c, bc, pi_bc;
+    
+    D := [ a, b ];
+    
+    ab := DirectProduct( D );
+    
+    pi_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, ab );
+    pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, ab );
+    
+    D := [ ab, c ];
+    
+    pi_ab := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, s );
+    pi_c := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, s );
+    
+    pi_a := PreCompose( pi_ab, pi_a );
+    pi_b := PreCompose( pi_ab, pi_b );
+    
+    D := [ b, c ];
+    
+    bc := DirectProduct( D );
+    
+    pi_bc := UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_b, pi_c ], bc );
+    
+    D := [ a, bc ];
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_a, pi_bc ], r );
+    
+end );
 
 ####################################
 ##
