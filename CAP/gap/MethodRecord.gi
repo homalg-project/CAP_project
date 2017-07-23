@@ -219,6 +219,15 @@ ZeroObject := rec(
   cache_name := "ZeroObject",
   return_type := "object" ), 
 
+ZeroObjectFunctorial := rec(
+  installation_name := "ZeroObjectFunctorial",
+  filter_list := [ "category" ],
+  ## TODO: io_type?
+  cache_name := "ZeroObjectFunctorial",
+  return_type := "morphism",
+  dual_operation := "ZeroObjectFunctorial",
+  no_with_given := true ),
+
 UniversalMorphismFromZeroObject := rec(
   installation_name := "UniversalMorphismFromZeroObject",
   filter_list := [ "object" ],
@@ -2006,13 +2015,13 @@ KernelObjectFunctorialWithGivenKernelObjects := rec(
   io_type := [ [ "K", "alpha", "mu", "alphap", "Kp" ], [ "K", "Kp" ] ],
   cache_name := "KernelObjectFunctorialWithGivenKernelObjects",
   return_type := "morphism",
-  dual_operation := "CokernelFunctorialWithGivenCokernelObjects" ),
+  dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects" ),
 
-CokernelFunctorialWithGivenCokernelObjects := rec(
-  installation_name := "CokernelFunctorialWithGivenCokernelObjects",
+CokernelObjectFunctorialWithGivenCokernelObjects := rec(
+  installation_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
   filter_list := [ "object", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "C", "alpha", "nu", "alphap", "Cp" ], [ "C", "Cp" ] ],
-  cache_name := "CokernelFunctorialWithGivenCokernelObjects",
+  cache_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
   return_type := "morphism",
   dual_operation := "KernelObjectFunctorialWithGivenKernelObjects" ),
 
@@ -2333,7 +2342,7 @@ DirectSumProjectionInPushout := rec(
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, position, without_given_name;
+    local recnames, current_recname, current_rec, position, without_given_name, functorial;
     
     recnames := RecNames( record );
     
@@ -2355,6 +2364,14 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
            
          fi;
          
+      fi;
+      
+      functorial := PositionProperty( recnames, i -> StartsWith( i, Concatenation( current_recname, "Functorial" ) ) );
+      
+      if functorial <> fail then
+          
+          current_rec.functorial := recnames[ functorial ];
+          
       fi;
       
     od;
