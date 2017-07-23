@@ -5,11 +5,12 @@
 #
 
 
-ReadPackage( "ModulePresentationsForCAP", "gap/GradedModulePresentations.gd");
+ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModulePresentations.gd");
 
-ReadPackage( "ModulePresentationsForCAP", "gap/GradedModulePresentationObjects.gd");
+ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModulePresentationObjects.gd");
 
-ReadPackage( "ModulePresentationsForCAP", "gap/GradedModulePresentationMorphism.gd");
+ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModulePresentationMorphism.gd");
 
-ReadPackage( "ModulePresentationsForCAP", "gap/GradedModuleFunctors.gd");
+ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModuleFunctors.gd");
 
+ReadPackage( "GradedModulePresentationsForCAP", "gap/LiftPresentationTransformation.gd");
