@@ -13,7 +13,7 @@ PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
 
 Version := Maximum( [
-  "2017.06.12", ## Sebas' version
+  "2017.07.25", ## Sebas' version
   ## this line prevents merge conflicts
   "2017.06.28", ## Sepp's version
 ] ),
@@ -27,26 +27,32 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Gutsche",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche",
-    Email := "gutsche@mathematik.uni-kl.de",
-    PostalAddress := "TODO",
-    Place := "Kaiserslautern",
-    Institution := "TU Kaiserslautern",
+    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    Email := "gutsche@mathematik.uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
   rec(
     IsAuthor := true,
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Posur",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php",
-    Email := "sposur@momo.math.rwth-aachen.de",
+    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
-               "Lehrstuhl B für Mathematik RWTH - Aachen\n",
-               "Templergraben 64\n",
-               "52062 Aachen\n",
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
                "Germany" ),
-    Place := "Aachen",
-    Institution := "Rheinisch-Westfälische Technische Hochschule Aachen",
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
 ],
 
@@ -93,9 +99,6 @@ Dependencies := rec(
 AvailabilityTest := function()
         return true;
     end,
-
-
-#Keywords := [ "TODO" ],
 
 ));
 
