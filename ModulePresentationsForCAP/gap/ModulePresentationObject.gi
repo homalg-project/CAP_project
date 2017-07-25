@@ -159,6 +159,8 @@ InstallMethod( Annihilator,
     ideal_embedding := 
       PreCompose( ProjectionInFactorOfFiberProduct( list_of_kernel_embeddings, 1 ), list_of_kernel_embeddings[1] );
     
+    SetIsMonomorphism( ideal_embedding, true );
+    
     return ideal_embedding;
     
 end );
@@ -186,6 +188,8 @@ InstallMethod( Annihilator,
     
     ideal_embedding := 
       PreCompose( ProjectionInFactorOfFiberProduct( list_of_kernel_embeddings, 1 ), list_of_kernel_embeddings[1] );
+    
+    SetIsMonomorphism( ideal_embedding, true );
     
     return ideal_embedding;
     
