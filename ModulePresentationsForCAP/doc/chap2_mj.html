@@ -25,22 +25,50 @@
 <p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
 <p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
 <div class="ChapSects"><a href="chap2_mj.html#X7967FE8E7BBDF485">2 <span class="Heading">Examples and Tests</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X86E8A9537A87B4EC">2.1 <span class="Heading">Intersection of Submodules</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7FFB58F67850769C">2.1 <span class="Heading">Annihilator</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8296A25779A52244">2.2 <span class="Heading">Koszul Complex</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X86E8A9537A87B4EC">2.2 <span class="Heading">Intersection of Submodules</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X828DF9B1782D1AF6">2.3 <span class="Heading">Closed Monoidal Structure</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8296A25779A52244">2.3 <span class="Heading">Koszul Complex</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X828DF9B1782D1AF6">2.4 <span class="Heading">Closed Monoidal Structure</span></a>
 </span>
 </div>
 </div>
 
 <h3>2 <span class="Heading">Examples and Tests</span></h3>
 
+<p><a id="X7FFB58F67850769C" name="X7FFB58F67850769C"></a></p>
+
+<h4>2.1 <span class="Heading">Annihilator</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsLeftPresentation( HomalgMatrix( [ [ "2" ] ], ZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsLeftPresentation( HomalgMatrix( [ [ "3" ] ], ZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M3 := AsLeftPresentation( HomalgMatrix( [ [ "4" ] ], ZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := DirectSum( M1, M2, M3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Annihilator( M ) );</span>
+12
+
+A monomorphism in Category of left presentations of Z
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsRightPresentation( HomalgMatrix( [ [ "2" ] ], ZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsRightPresentation( HomalgMatrix( [ [ "3" ] ], ZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M3 := AsRightPresentation( HomalgMatrix( [ [ "4" ] ], ZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := DirectSum( M1, M2, M3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Annihilator( M ) );</span>
+12
+
+A monomorphism in Category of right presentations of Z
+</pre></div>
+
 <p><a id="X86E8A9537A87B4EC" name="X86E8A9537A87B4EC"></a></p>
 
-<h4>2.1 <span class="Heading">Intersection of Submodules</span></h4>
+<h4>2.2 <span class="Heading">Intersection of Submodules</span></h4>
 
 
 <div class="example"><pre>
@@ -64,27 +92,27 @@ An object in Category of left presentations of Q[x,y]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eps2 := PresentationMorphism( F, HomalgMatrix( [ [ 1 ] ], R ), I2 );</span>
 &lt;A morphism in Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kernelemb1 := KernelEmbedding( eps1 );</span>
-&lt;A mono morphism in Category of left presentations of Q[x,y]&gt;
+&lt;A monomorphism in Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kernelemb2 := KernelEmbedding( eps2 );</span>
-&lt;A mono morphism in Category of left presentations of Q[x,y]&gt;
+&lt;A monomorphism in Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := FiberProduct( kernelemb1, kernelemb2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
 (an empty 0 x 1 matrix)
 
 An object in Category of left presentations of Q[x,y]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFactor( P, 1 );</span>
-&lt;A mono morphism in Category of left presentations of Q[x,y]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFactorOfFiberProduct( [ kernelemb1, kernelemb2 ], 1 );</span>
+&lt;A monomorphism in Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">composite := PreCompose( pi1, kernelemb1 );</span>
-&lt;A mono morphism in Category of left presentations of Q[x,y]&gt;
+&lt;A monomorphism in Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( composite );</span>
 x*y
 
-A mono morphism in Category of left presentations of Q[x,y]
+A monomorphism in Category of left presentations of Q[x,y]
 </pre></div>
 
 <p><a id="X8296A25779A52244" name="X8296A25779A52244"></a></p>
 
-<h4>2.2 <span class="Heading">Koszul Complex</span></h4>
+<h4>2.3 <span class="Heading">Koszul Complex</span></h4>
 
 
 <div class="example"><pre>
@@ -92,21 +120,21 @@ A mono morphism in Category of left presentations of Q[x,y]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q * "x,y,z";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := HomalgMatrix( [ [ "x" ], [ "y" ], [ "z" ] ], 3, 1, R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ml := AsLeftPresentation( M );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eps := PresentationAsMorphism( Ml );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eps := CoverByFreeModule( Ml );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota1 := KernelEmbedding( eps );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota1 );</span>
 x,
 y,
 z 
 
-A mono morphism in Category of left presentations of Q[x,y,z]
+A monomorphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( iota1 ) );</span>
 0, -z,y,
 -y,x, 0,
 -z,0, x 
 
 An object in Category of left presentations of Q[x,y,z]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := PresentationAsMorphism( Source( iota1 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := CoverByFreeModule( Source( iota1 ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d1 := PreCompose( pi1, iota1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( d1 );</span>
 x,
@@ -120,12 +148,12 @@ A morphism in Category of left presentations of Q[x,y,z]
 -y,x, 0,
 -z,0, x 
 
-A mono morphism in Category of left presentations of Q[x,y,z]
+A monomorphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( iota2 ) );;</span>
 x,z,-y
 
 An object in Category of left presentations of Q[x,y,z]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := PresentationAsMorphism( Source( iota2 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := CoverByFreeModule( Source( iota2 ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d2 := PreCompose( pi2, iota2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( d2 );</span>
 0, -z,y,
@@ -137,12 +165,12 @@ A morphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota3 );</span>
 x,z,-y
 
-A mono morphism in Category of left presentations of Q[x,y,z]
+A monomorphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( iota3 ) );</span>
 (an empty 0 x 1 matrix)
 
 An object in Category of left presentations of Q[x,y,z]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi3 := PresentationAsMorphism( Source( iota3 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi3 := CoverByFreeModule( Source( iota3 ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d3 := PreCompose( pi3, iota3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( d3 );</span>
 x,z,-y
@@ -172,7 +200,7 @@ An object in Category of left presentations of Q[x,y,z]
 
 <p><a id="X828DF9B1782D1AF6" name="X828DF9B1782D1AF6"></a></p>
 
-<h4>2.3 <span class="Heading">Closed Monoidal Structure</span></h4>
+<h4>2.4 <span class="Heading">Closed Monoidal Structure</span></h4>
 
 
 <div class="example"><pre>
@@ -193,21 +221,30 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := InternalHomOnObjects( DirectSum( M, M ), DirectSum( M, N ) );</span>
 &lt;An object in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( H );</span>
-[ [   0,   0,   0,  -2 ],
-  [   1,   2,   0,   0 ],
-  [   0,   2,   2,   0 ],
-  [   2,   3,   0,   2 ] ]
+[ [  -4,  -2 ],
+  [   2,   2 ] ]
 
 An object in Category of left presentations of Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := StandardGeneratorMorphism( H, 3 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := StandardGeneratorMorphism( H, 1 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := LambdaElimination( DirectSum( M, M ), DirectSum( M, N ), alpha );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( l );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( l );</span>
-[ [  -2,   6 ],
-  [  -1,  -3 ] ]
+[ [  0,   0 ],
+  [  1,  0 ] ]
+
+A morphism in Category of left presentations of Z
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha2 := StandardGeneratorMorphism( H, 2 );</span>
+&lt;A morphism in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l2 := LambdaElimination( DirectSum( M, M ), DirectSum( M, N ), alpha2 );</span>
+&lt;A morphism in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( l2 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( l2 );</span>
+[ [  1,   0 ],
+  [  0,  0 ] ]
 
 A morphism in Category of left presentations of Z
 </pre></div>

@@ -6,10 +6,10 @@
                            [1X Category R-pres for CAP [101X
   
   
-                                   2015.12.03
+                                   2017.07.25
   
   
-                                   03/12/2015
+                                  25 July 2017
   
   
                                Sebastian Gutsche
@@ -19,20 +19,22 @@
   
   
   Sebastian Gutsche
-      Email:    [7Xmailto:gutsche@mathematik.uni-kl.de[107X
-      Homepage: [7Xhttp://wwwb.math.rwth-aachen.de/~gutsche/[107X
-      Address:  [33X[0;14YDepartment of Mathematics[133X
-                [33X[0;14YUniversity of Kaiserslautern[133X
-                [33X[0;14Y67653 Kaiserslautern[133X
+      Email:    [7Xmailto:gutsche@mathematik.uni-siegen.de[107X
+      Homepage: [7Xhttp://www.uni-siegen.de/fb6/rmi/[107X
+      Address:  [33X[0;14YDepartment Mathematik[133X
+                [33X[0;14YUniversität Siegen[133X
+                [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
   
   
   Sebastian Posur
-      Email:    [7Xmailto:sposur@momo.math.rwth-aachen.de[107X
-      Homepage: [7Xhttp://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php[107X
-      Address:  [33X[0;14YLehrstuhl B für Mathematik RWTH - Aachen[133X
-                [33X[0;14YTemplergraben 64[133X
-                [33X[0;14Y52062 Aachen[133X
+      Email:    [7Xmailto:sebastian.posur@uni-siegen.de[107X
+      Homepage: [7Xhttp://www.uni-siegen.de/fb6/rmi/[107X
+      Address:  [33X[0;14YDepartment Mathematik[133X
+                [33X[0;14YUniversität Siegen[133X
+                [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
   
   
@@ -46,8 +48,14 @@
     1.1 [33X[0;0YFunctors[133X
       1.1-1 FunctorStandardModuleLeft
       1.1-2 FunctorStandardModuleRight
-      1.1-3 FunctorLessGeneratorsLeft
-      1.1-4 FunctorLessGeneratorsRight
+      1.1-3 FunctorGetRidOfZeroGeneratorsLeft
+      1.1-4 FunctorGetRidOfZeroGeneratorsRight
+      1.1-5 FunctorLessGeneratorsLeft
+      1.1-6 FunctorLessGeneratorsRight
+      1.1-7 FunctorDualLeft
+      1.1-8 FunctorDualRight
+      1.1-9 FunctorDoubleDualLeft
+      1.1-10 FunctorDoubleDualRight
     1.2 [33X[0;0YGAP Categories[133X
       1.2-1 IsLeftOrRightPresentationMorphism
       1.2-2 IsLeftPresentationMorphism
@@ -57,28 +65,38 @@
       1.2-6 IsRightPresentation
     1.3 [33X[0;0YConstructors[133X
       1.3-1 PresentationMorphism
-      1.3-2 AsLeftPresentation
-      1.3-3 AsRightPresentation
-      1.3-4 AsLeftOrRightPresentation
-      1.3-5 FreeLeftPresentation
-      1.3-6 FreeRightPresentation
-      1.3-7 UnderlyingMatrix
-      1.3-8 UnderlyingHomalgRing
-      1.3-9 LeftPresentations
-      1.3-10 RightPresentations
+      1.3-2 AsMorphismBetweenFreeLeftPresentations
+      1.3-3 AsMorphismBetweenFreeRightPresentations
+      1.3-4 AsLeftPresentation
+      1.3-5 AsRightPresentation
+      1.3-6 AsLeftOrRightPresentation
+      1.3-7 FreeLeftPresentation
+      1.3-8 FreeRightPresentation
+      1.3-9 UnderlyingMatrix
+      1.3-10 UnderlyingHomalgRing
+      1.3-11 Annihilator
+      1.3-12 LeftPresentations
+      1.3-13 RightPresentations
     1.4 [33X[0;0YAttributes[133X
       1.4-1 UnderlyingHomalgRing
       1.4-2 UnderlyingMatrix
     1.5 [33X[0;0YNon-Categorical Operations[133X
       1.5-1 StandardGeneratorMorphism
-      1.5-2 PresentationAsMorphism
+      1.5-2 CoverByFreeModule
     1.6 [33X[0;0YNatural Transformations[133X
       1.6-1 NaturalIsomorphismFromIdentityToStandardModuleLeft
       1.6-2 NaturalIsomorphismFromIdentityToStandardModuleRight
+      1.6-3 NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft
+      1.6-4 NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight
+      1.6-5 NaturalIsomorphismFromIdentityToLessGeneratorsLeft
+      1.6-6 NaturalIsomorphismFromIdentityToLessGeneratorsRight
+      1.6-7 NaturalTransformationFromIdentityToDoubleDualLeft
+      1.6-8 NaturalTransformationFromIdentityToDoubleDualRight
   2 [33X[0;0YExamples and Tests[133X
-    2.1 [33X[0;0YIntersection of Submodules[133X
-    2.2 [33X[0;0YKoszul Complex[133X
-    2.3 [33X[0;0YClosed Monoidal Structure[133X
+    2.1 [33X[0;0YAnnihilator[133X
+    2.2 [33X[0;0YIntersection of Submodules[133X
+    2.3 [33X[0;0YKoszul Complex[133X
+    2.4 [33X[0;0YClosed Monoidal Structure[133X
   
   
   [32X

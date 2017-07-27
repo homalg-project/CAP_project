@@ -4,9 +4,11 @@ PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2015.12.03", # Sebas version
+           "2017.07.25", # Sebas version
            ##
-           "2015.12.09", # Sepps version
+           "2017.04.10", # Sepps version
+           ##
+           "2017.03.27", # Mohamed's version
            ##
            ] ),
 
@@ -19,30 +21,32 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Gutsche",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche/",
-    Email := "gutsche@mathematik.uni-kl.de",
+    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    Email := "gutsche@mathematik.uni-siegen.de",
     PostalAddress := Concatenation(
-               "Department of Mathematics\n",
-               "University of Kaiserslautern\n",
-               "67653 Kaiserslautern\n",
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
                "Germany" ),
-    Place := "Kaiserslautern",
-    Institution := "TU Kaiserslautern",
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
   rec(
     IsAuthor := true,
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Posur",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php",
-    Email := "sposur@momo.math.rwth-aachen.de",
+    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
-               "Lehrstuhl B für Mathematik RWTH - Aachen\n",
-               "Templergraben 64\n",
-               "52062 Aachen\n",
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
                "Germany" ),
-    Place := "Aachen",
-    Institution := "RWTH Aachen University",
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
 ],
 
@@ -78,8 +82,11 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "MatricesForHomalg", ">=0" ],
-                           [ "CAP", ">=0" ]
+                           [ "MatricesForHomalg", ">=2017.03.27" ],
+                           [ "CAP", ">=0" ],
+                           [ "ComplexesAndFilteredObjectsForCAP", ">=0" ],
+                           [ "GeneralizedMorphismsForCAP", ">=0" ],
+                           [ "HomologicalAlgebraForCAP", ">=0" ]
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
