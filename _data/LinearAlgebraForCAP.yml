@@ -1,19 +1,19 @@
 name: LinearAlgebraForCAP
-version: 2015.12.03
-date: 03/12/2015
+version: 2017.07.25
+date: 25/07/2017
 description: Category of Matrices over a Field for CAP
 
 authors:
     - name: Sebastian Gutsche
-      url: http://wwwb.math.rwth-aachen.de/~gutsche
+      url: http://www.uni-siegen.de/fb6/rmi/
     - name: Sebastian Posur
-      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
+      url: http://www.uni-siegen.de/fb6/rmi/
 
 maintainers:
     - name: Sebastian Gutsche
-      url: http://wwwb.math.rwth-aachen.de/~gutsche
+      url: http://www.uni-siegen.de/fb6/rmi/
     - name: Sebastian Posur
-      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
+      url: http://www.uni-siegen.de/fb6/rmi/
 
 GAP: ">= 4.6"
 
@@ -22,7 +22,7 @@ needed-pkgs:
       version: ">= 1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "MatricesForHomalg"
-      version: ">= 2015.06.20"
+      version: ">= 2017.05.24"
       url: "http://homalg-project.github.io/homalg_project/MatricesForHomalg/"
     - name: "CAP"
       version: ">= 2015.08.17"
@@ -37,9 +37,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2015.12.03/LinearAlgebraForCAP-2015.12.03.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2017.07.25/LinearAlgebraForCAP-2017.07.25.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2015.12.03/LinearAlgebraForCAP-2015.12.03.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2017.07.25/LinearAlgebraForCAP-2017.07.25.zip
 
 abstract: 
 

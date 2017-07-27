@@ -1,19 +1,19 @@
 name: GeneralizedMorphismsForCAP
-version: 2015.12.09
-date: 09/12/2015
+version: 2017.07.25
+date: 25/07/2017
 description: Implementations of generalized morphisms for the CAP project
 
 authors:
-    - name: Sebastian Posur
-      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
     - name: Sebastian Gutsche
-      url: http://wwwb.math.rwth-aachen.de/~gutsche/
+      url: http://www.uni-siegen.de/fb6/rmi/
+    - name: Sebastian Posur
+      url: http://www.uni-siegen.de/fb6/rmi/
 
 maintainers:
-    - name: Sebastian Posur
-      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
     - name: Sebastian Gutsche
-      url: http://wwwb.math.rwth-aachen.de/~gutsche/
+      url: http://www.uni-siegen.de/fb6/rmi/
+    - name: Sebastian Posur
+      url: http://www.uni-siegen.de/fb6/rmi/
 
 GAP: ">= 4.6"
 
@@ -31,9 +31,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/GeneralizedMorphismsFor
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2015.12.09/GeneralizedMorphismsForCAP-2015.12.09.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2017.07.25/GeneralizedMorphismsForCAP-2017.07.25.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2015.12.09/GeneralizedMorphismsForCAP-2015.12.09.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2017.07.25/GeneralizedMorphismsForCAP-2017.07.25.zip
 
 abstract: 
 

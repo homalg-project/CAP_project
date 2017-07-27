@@ -1,21 +1,21 @@
 name: CAP
-version: 2016.02.19
-date: 19/02/2016
+version: 2017.07.25
+date: 25/07/2017
 description: Categories, Algorithms, Programming
 
 authors:
     - name: Sebastian Gutsche
-      url: http://wwwb.math.rwth-aachen.de/~gutsche
+      url: http://www.uni-siegen.de/fb6/rmi/
     - name: Sebastian Posur
-      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
+      url: http://www.uni-siegen.de/fb6/rmi/
     - name: Øystein Skartsæterhagen
       url: http://www.math.ntnu.no/~oysteini/
 
 maintainers:
     - name: Sebastian Gutsche
-      url: http://wwwb.math.rwth-aachen.de/~gutsche
+      url: http://www.uni-siegen.de/fb6/rmi/
     - name: Sebastian Posur
-      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
+      url: http://www.uni-siegen.de/fb6/rmi/
     - name: Øystein Skartsæterhagen
       url: http://www.math.ntnu.no/~oysteini/
 
@@ -30,7 +30,7 @@ needed-pkgs:
       url: "http://homalg-project.github.io/homalg_project/ToolsForHomalg/"
     - name: "io"
       version: ">=0"
-      url: "http://gap-system.github.io/io/"
+      url: "https://gap-packages.github.io/io"
 
 www: http://homalg-project.github.io/CAP_project/CAP/
 readme: http://homalg-project.github.io/CAP_project/CAP/README
@@ -38,9 +38,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.02.19/CAP-2016.02.19.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2017.07.25/CAP-2017.07.25.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.02.19/CAP-2016.02.19.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2017.07.25/CAP-2017.07.25.zip
 
 abstract: 
 
