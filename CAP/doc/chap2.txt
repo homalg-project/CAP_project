@@ -141,6 +141,49 @@
   
   [33X[0;0YTODO[133X
   
+  [1X2.4-8 IdentityFunctor[101X
+  
+  [29X[2XIdentityFunctor[102X( [3Xcategory[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YReturns  the identity functor of the category [3Xcat[103X viewed as an object in the
+  category of categories.[133X
+  
+  [1X2.4-9 FunctorCanonicalizeZeroObjects[101X
+  
+  [29X[2XFunctorCanonicalizeZeroObjects[102X( [3Xcategory[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YReturns  the  endofunctor  of  the  category  [3Xcat[103X  with zero which maps each
+  (object  isomorphic  to  the)  zero  object to [10XZeroObject[110X([3Xcat[103X) and to itself
+  otherwise. This functor is equivalent to the identity functor.[133X
+  
+  [1X2.4-10 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects[101X
+  
+  [29X[2XNaturalIsomorophismFromIdentityToCanonicalizeZeroObjects[102X( [3Xcategory[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya natural transformation[133X
+  
+  [33X[0;0YReturns   the   natural   isomorphism   from   the   identity   functor   to
+  [10XFunctorCanonicalizeZeroObjects[110X([3Xcat[103X).[133X
+  
+  [1X2.4-11 FunctorCanonicalizeZeroMorphisms[101X
+  
+  [29X[2XFunctorCanonicalizeZeroMorphisms[102X( [3Xcategory[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YReturns the endofunctor of the category [3Xcat[103X with zero which maps each object
+  to  itself,  each  morphism  [22Xϕ[122X to itself, unless it is congruent to the zero
+  morphism;  in  this  case it is mapped to [10XZeroMorphism[110X([10XSource[110X([22Xϕ[122X), [10XRange[110X([22Xϕ[122X)).
+  This functor is equivalent to the identity functor.[133X
+  
+  [1X2.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms[101X
+  
+  [29X[2XNaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms[102X( [3Xcategory[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya natural transformation[133X
+  
+  [33X[0;0YReturns   the   natural   isomorphism   from   the   identity   functor   to
+  [10XFunctorCanonicalizeZeroMorphisms[110X([3Xcat[103X).[133X
+  
   
   [1X2.5 [33X[0;0YNatural transformations[133X[101X
   

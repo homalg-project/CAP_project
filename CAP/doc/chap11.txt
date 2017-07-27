@@ -74,11 +74,11 @@
     [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
     [4X[25Xgap>[125X [27XS2 := FreeLeftPresentation( 2, R );[127X[104X
     [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
-    [4X[25Xgap>[125X [27XC1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S2, S ), 1 ) ], 2 );[127X[104X
+    [4X[25Xgap>[125X [27XC1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );[127X[104X
     [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
     [4X[25Xgap>[125X [27XC1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );[127X[104X
     [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
-    [4X[25Xgap>[125X [27XC2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactor( DirectSum( S, S ), 1 ) ], 3 );[127X[104X
+    [4X[25Xgap>[125X [27XC2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S, S ], 1 ) ], 3 );[127X[104X
     [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
     [4X[25Xgap>[125X [27XC2 := ZFunctorObjectExtendedByInitialAndIdentity( C2, 3, 4 );[127X[104X
     [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
@@ -202,22 +202,22 @@
     [4X[25Xgap>[125X [27XIntHoml := InternalHomOnObjects( DirectSum( Ml, Ul ), Nl );[127X[104X
     [4X[28X<An object in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( IntHoml ) );[127X[104X
-    [4X[28X[ [  1,  2 ],[128X[104X
-    [4X[28X  [  0,  3 ] ][128X[104X
+    [4X[28X[ [  -2,  -1 ],[128X[104X
+    [4X[28X  [   1,  -1 ] ][128X[104X
     [4X[25Xgap>[125X [27Xgenerator_l1 := StandardGeneratorMorphism( IntHoml, 1 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xmorphism_l1 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l1 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_l1 ) );[127X[104X
-    [4X[28X[ [  -3 ],[128X[104X
-    [4X[28X  [   2 ] ][128X[104X
+    [4X[28X[ [  0 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
     [4X[25Xgap>[125X [27Xgenerator_l2 := StandardGeneratorMorphism( IntHoml, 2 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xmorphism_l2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l2 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_l2 ) );[127X[104X
-    [4X[28X[ [   0 ],[128X[104X
-    [4X[28X  [  -1 ] ][128X[104X
+    [4X[28X[ [  0 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );[127X[104X
@@ -250,21 +250,21 @@
     [4X[25Xgap>[125X [27XIntHomr := InternalHomOnObjects( DirectSum( Mr, Ur ), Nr );[127X[104X
     [4X[28X<An object in Category of right presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( IntHomr ) );[127X[104X
-    [4X[28X[ [  1,  0 ],[128X[104X
-    [4X[28X  [  2,  3 ] ][128X[104X
+    [4X[28X[ [  -2,   1 ],[128X[104X
+    [4X[28X  [  -1,  -1 ] ][128X[104X
     [4X[25Xgap>[125X [27Xgenerator_r1 := StandardGeneratorMorphism( IntHomr, 1 );[127X[104X
     [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xmorphism_r1 := LambdaElimination( DirectSum( Mr, Ur ), Nr, generator_r1 );[127X[104X
     [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_r1 ) );[127X[104X
-    [4X[28X[ [  -3,   2 ] ][128X[104X
+    [4X[28X[ [  0,   2 ] ][128X[104X
     [4X[25Xgap>[125X [27Xgenerator_r2 := StandardGeneratorMorphism( IntHoml, 2 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xmorphism_r2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_r2 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_r2 ) );[127X[104X
     [4X[28X[ [   0 ],[128X[104X
-    [4X[28X  [  -1 ] ][128X[104X
+    [4X[28X  [   2 ] ][128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );[127X[104X
@@ -696,14 +696,14 @@
     [4X[28X[ [  2,  2 ],[128X[104X
     [4X[28X  [  2,  2 ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27Xk_lift := KernelLift( k, tau );[127X[104X
+    [4X[25Xgap>[125X [27Xk_lift := KernelLift( alpha, tau );[127X[104X
     [4X[28XA rational vector space homomorphism with matrix: [128X[104X
     [4X[28X[ [  2 ],[128X[104X
     [4X[28X  [  2 ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XHasKernelEmbedding( k );[127X[104X
+    [4X[25Xgap>[125X [27XHasKernelEmbedding( alpha );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XKernelEmbedding( k );[127X[104X
+    [4X[25Xgap>[125X [27XKernelEmbedding( alpha );[127X[104X
     [4X[28XA rational vector space homomorphism with matrix: [128X[104X
     [4X[28X[ [  1,  1 ] ][128X[104X
     [4X[28X[128X[104X
@@ -732,12 +732,12 @@
     [4X[28X[ [  2,  2 ],[128X[104X
     [4X[28X  [  2,  2 ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27Xk_lift := KernelLift( k, tau );[127X[104X
+    [4X[25Xgap>[125X [27Xk_lift := KernelLift( alpha, tau );[127X[104X
     [4X[28XA rational vector space homomorphism with matrix: [128X[104X
     [4X[28X[ [  2 ],[128X[104X
     [4X[28X  [  2 ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XHasKernelEmbedding( k );[127X[104X
+    [4X[25Xgap>[125X [27XHasKernelEmbedding( alpha );[127X[104X
     [4X[28Xfalse[128X[104X
   [4X[32X[104X
   
@@ -757,7 +757,7 @@
     [4X[28X[128X[104X
     [4X[25Xgap>[125X [27Xk := KernelObject( alpha );[127X[104X
     [4X[28X<A rational vector space of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27Xk_emb := KernelEmbedding( k );[127X[104X
+    [4X[25Xgap>[125X [27Xk_emb := KernelEmbedding( alpha );[127X[104X
     [4X[28XA rational vector space homomorphism with matrix: [128X[104X
     [4X[28X[ [  1,  1 ] ][128X[104X
     [4X[28X[128X[104X
@@ -805,11 +805,11 @@
     [4X[28X[128X[104X
     [4X[25Xgap>[125X [27XP := FiberProduct( AtoC, BtoC );[127X[104X
     [4X[28X<A rational vector space of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27Xp1 := ProjectionInFactor( P, 1 );[127X[104X
+    [4X[25Xgap>[125X [27Xp1 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 1 );[127X[104X
     [4X[28XA rational vector space homomorphism with matrix: [128X[104X
     [4X[28X[ [  1/2 ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27Xp2 := ProjectionInFactor( P, 2 );[127X[104X
+    [4X[25Xgap>[125X [27Xp2 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 2 );[127X[104X
     [4X[28XA rational vector space homomorphism with matrix: [128X[104X
     [4X[28X[ [  1/2,    1 ] ][128X[104X
     [4X[28X[128X[104X

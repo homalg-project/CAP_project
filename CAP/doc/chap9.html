@@ -169,7 +169,7 @@
 <li><p>cache_name (optional): The name of the cache which is used for the installed methods. If no cache name is given, the caching for the operation is deactivated completely.</p>
 
 </li>
-<li><p>argument_list (optional): A list containing integers, which defines which arguments should be used for the additional functions, (e.g redirect, pre, ...). This is important for the Op method contructions. If no argument list is given, all arguments are used.</p>
+<li><p>argument_list (optional): A list containing integers, which defines which arguments should be used for the additional functions, (e.g redirect, pre, ...). This is important for the Op method contructions. If no argument list is given, all arguments are used. Please note that if you have a method selection argument for your function, you need to give the argument_list to explicitly state which argument is the method selection argument.</p>
 
 </li>
 <li><p>return_type (optional): The return type can be object, morphism, or twocell. If it is one of those, the correct add function (see above) is used for the result of the computation. Otherwise, no add function is used after all.</p>
@@ -179,6 +179,9 @@
 
 </li>
 <li><p>with_given_without_given_name_pair (optional): If the currently installed operation has a corresponding with given operation or is the with given of another operation, the names of both should be in this list.</p>
+
+</li>
+<li><p>functorial (optional): If an object has a corresponding functorial function, e.g., KernelObject and KernelObjectFunctorial, the name of the functorial is stored as a string.</p>
 
 </li>
 </ul>

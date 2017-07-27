@@ -184,7 +184,10 @@
   [30X    [33X[0;6Yargument_list  (optional):  A  list containing integers, which defines
         which  arguments  should  be  used  for the additional functions, (e.g
         redirect, pre, ...). This is important for the Op method contructions.
-        If no argument list is given, all arguments are used.[133X
+        If no argument list is given, all arguments are used. Please note that
+        if you have a method selection argument for your function, you need to
+        give  the  argument_list  to  explicitly  state  which argument is the
+        method selection argument.[133X
   
   [30X    [33X[0;6Yreturn_type  (optional):  The  return type can be object, morphism, or
         twocell.  If  it is one of those, the correct add function (see above)
@@ -198,6 +201,10 @@
         installed operation has a corresponding with given operation or is the
         with  given  of another operation, the names of both should be in this
         list.[133X
+  
+  [30X    [33X[0;6Yfunctorial  (optional):  If  an  object has a corresponding functorial
+        function,  e.g.,  KernelObject and KernelObjectFunctorial, the name of
+        the functorial is stored as a string.[133X
   
   [33X[0;0YUsing  all  those  entries, the operation CapInternalInstallAdd installs add
   methods  as  described  above.  It first provides a sanity check for all the

@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2016.02.19
+                                   2017.07.25
   
   
-                                   19/02/2016
+                                  25 July 2017
   
   
                                Sebastian Gutsche
@@ -21,17 +21,22 @@
   
   
   Sebastian Gutsche
-      Email:    [7Xmailto:gutsche@mathematik.uni-kl.de[107X
-      Homepage: [7Xhttp://wwwb.math.rwth-aachen.de/~gutsche[107X
-      Address:  [33X[0;14YTODO[133X
+      Email:    [7Xmailto:gutsche@mathematik.uni-siegen.de[107X
+      Homepage: [7Xhttp://www.uni-siegen.de/fb6/rmi/[107X
+      Address:  [33X[0;14YDepartment Mathematik[133X
+                [33X[0;14YUniversität Siegen[133X
+                [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
   
   
   Sebastian Posur
-      Email:    [7Xmailto:sposur@momo.math.rwth-aachen.de[107X
-      Homepage: [7Xhttp://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php[107X
-      Address:  [33X[0;14YLehrstuhl B für Mathematik RWTH - Aachen[133X
-                [33X[0;14YTemplergraben 64[133X
-                [33X[0;14Y52062 Aachen[133X
+      Email:    [7Xmailto:sebastian.posur@uni-siegen.de[107X
+      Homepage: [7Xhttp://www.uni-siegen.de/fb6/rmi/[107X
+      Address:  [33X[0;14YDepartment Mathematik[133X
+                [33X[0;14YUniversität Siegen[133X
+                [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
   
   
@@ -94,6 +99,11 @@
       2.4-5 FunctorMorphismOperation
       2.4-6 ApplyFunctor
       2.4-7 InstallFunctor
+      2.4-8 IdentityFunctor
+      2.4-9 FunctorCanonicalizeZeroObjects
+      2.4-10 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects
+      2.4-11 FunctorCanonicalizeZeroMorphisms
+      2.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms
     2.5 [33X[0;0YNatural transformations[133X
       2.5-1 Name
       2.5-2 NaturalTransformation
@@ -215,35 +225,33 @@
     6.1 [33X[0;0YKernel[133X
       6.1-1 KernelObject
       6.1-2 KernelEmbedding
-      6.1-3 KernelEmbedding
-      6.1-4 KernelEmbeddingWithGivenKernelObject
-      6.1-5 KernelLift
-      6.1-6 KernelLift
-      6.1-7 KernelLiftWithGivenKernelObject
-      6.1-8 AddKernelObject
-      6.1-9 AddKernelEmbedding
-      6.1-10 AddKernelEmbeddingWithGivenKernelObject
-      6.1-11 AddKernelLift
-      6.1-12 AddKernelLiftWithGivenKernelObject
-      6.1-13 KernelObjectFunctorial
-      6.1-14 KernelObjectFunctorial
-      6.1-15 AddKernelObjectFunctorial
+      6.1-3 KernelEmbeddingWithGivenKernelObject
+      6.1-4 KernelLift
+      6.1-5 KernelLiftWithGivenKernelObject
+      6.1-6 AddKernelObject
+      6.1-7 AddKernelEmbedding
+      6.1-8 AddKernelEmbeddingWithGivenKernelObject
+      6.1-9 AddKernelLift
+      6.1-10 AddKernelLiftWithGivenKernelObject
+      6.1-11 KernelObjectFunctorial
+      6.1-12 KernelObjectFunctorial
+      6.1-13 KernelObjectFunctorialWithGivenKernelObjects
+      6.1-14 AddKernelObjectFunctorialWithGivenKernelObjects
     6.2 [33X[0;0YCokernel[133X
       6.2-1 CokernelObject
       6.2-2 CokernelProjection
-      6.2-3 CokernelProjection
-      6.2-4 CokernelProjectionWithGivenCokernelObject
-      6.2-5 CokernelColift
-      6.2-6 CokernelColift
-      6.2-7 CokernelColiftWithGivenCokernelObject
-      6.2-8 AddCokernelObject
-      6.2-9 AddCokernelProjection
-      6.2-10 AddCokernelProjectionWithGivenCokernelObject
-      6.2-11 AddCokernelColift
-      6.2-12 AddCokernelColiftWithGivenCokernelObject
-      6.2-13 CokernelFunctorial
-      6.2-14 CokernelFunctorial
-      6.2-15 AddCokernelFunctorial
+      6.2-3 CokernelProjectionWithGivenCokernelObject
+      6.2-4 CokernelColift
+      6.2-5 CokernelColiftWithGivenCokernelObject
+      6.2-6 AddCokernelObject
+      6.2-7 AddCokernelProjection
+      6.2-8 AddCokernelProjectionWithGivenCokernelObject
+      6.2-9 AddCokernelColift
+      6.2-10 AddCokernelColiftWithGivenCokernelObject
+      6.2-11 CokernelObjectFunctorial
+      6.2-12 CokernelObjectFunctorial
+      6.2-13 CokernelObjectFunctorialWithGivenCokernelObjects
+      6.2-14 AddCokernelObjectFunctorialWithGivenCokernelObjects
     6.3 [33X[0;0YZero Object[133X
       6.3-1 ZeroObject
       6.3-2 ZeroObject
@@ -266,6 +274,8 @@
       6.3-19 AddIsomorphismFromInitialObjectToZeroObject
       6.3-20 AddIsomorphismFromZeroObjectToTerminalObject
       6.3-21 AddIsomorphismFromTerminalObjectToZeroObject
+      6.3-22 ZeroObjectFunctorial
+      6.3-23 AddZeroObjectFunctorial
     6.4 [33X[0;0YTerminal Object[133X
       6.4-1 TerminalObject
       6.4-2 TerminalObject
@@ -324,8 +334,8 @@
       6.6-35 AddIsomorphismFromCoproductToDirectSum
       6.6-36 AddDirectSum
       6.6-37 DirectSumFunctorial
-      6.6-38 AddDirectSumFunctorial
-      6.6-39 DirectSumFunctorialOp
+      6.6-38 DirectSumFunctorialWithGivenDirectSums
+      6.6-39 AddDirectSumFunctorialWithGivenDirectSums
     6.7 [33X[0;0YCoproduct[133X
       6.7-1 Coproduct
       6.7-2 Coproduct
@@ -343,8 +353,8 @@
       6.7-14 AddUniversalMorphismFromCoproduct
       6.7-15 AddUniversalMorphismFromCoproductWithGivenCoproduct
       6.7-16 CoproductFunctorial
-      6.7-17 AddCoproductFunctorial
-      6.7-18 CoproductFunctorialOp
+      6.7-17 CoproductFunctorialWithGivenCoproducts
+      6.7-18 AddCoproductFunctorialWithGivenCoproducts
     6.8 [33X[0;0YDirect Product[133X
       6.8-1 DirectProductOp
       6.8-2 ProjectionInFactorOfDirectProduct
@@ -359,8 +369,8 @@
       6.8-11 AddUniversalMorphismIntoDirectProduct
       6.8-12 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct
       6.8-13 DirectProductFunctorial
-      6.8-14 AddDirectProductFunctorial
-      6.8-15 DirectProductFunctorialOp
+      6.8-14 DirectProductFunctorialWithGivenDirectProducts
+      6.8-15 AddDirectProductFunctorialWithGivenDirectProducts
     6.9 [33X[0;0YFiber Product[133X
       6.9-1 IsomorphismFromFiberProductToKernelOfDiagonalDifference
       6.9-2 IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp
@@ -388,8 +398,8 @@
       6.9-24 AddUniversalMorphismIntoFiberProduct
       6.9-25 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct
       6.9-26 FiberProductFunctorial
-      6.9-27 AddFiberProductFunctorial
-      6.9-28 FiberProductFunctorialOp
+      6.9-27 FiberProductFunctorialWithGivenFiberProducts
+      6.9-28 AddFiberProductFunctorialWithGivenFiberProducts
     6.10 [33X[0;0YPushout[133X
       6.10-1 IsomorphismFromPushoutToCokernelOfDiagonalDifference
       6.10-2 IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp
@@ -418,8 +428,8 @@
       6.10-25 AddUniversalMorphismFromPushout
       6.10-26 AddUniversalMorphismFromPushoutWithGivenPushout
       6.10-27 PushoutFunctorial
-      6.10-28 AddPushoutFunctorial
-      6.10-29 PushoutFunctorialOp
+      6.10-28 PushoutFunctorialWithGivenPushouts
+      6.10-29 AddPushoutFunctorialWithGivenPushouts
     6.11 [33X[0;0YImage[133X
       6.11-1 IsomorphismFromImageObjectToKernelOfCokernel
       6.11-2 AddIsomorphismFromImageObjectToKernelOfCokernel
@@ -427,20 +437,18 @@
       6.11-4 AddIsomorphismFromKernelOfCokernelToImageObject
       6.11-5 ImageObject
       6.11-6 ImageEmbedding
-      6.11-7 ImageEmbedding
-      6.11-8 ImageEmbeddingWithGivenImageObject
-      6.11-9 CoastrictionToImage
-      6.11-10 CoastrictionToImage
-      6.11-11 CoastrictionToImageWithGivenImageObject
-      6.11-12 UniversalMorphismFromImage
-      6.11-13 UniversalMorphismFromImageWithGivenImageObject
-      6.11-14 AddImageObject
-      6.11-15 AddImageEmbedding
-      6.11-16 AddImageEmbeddingWithGivenImageObject
-      6.11-17 AddCoastrictionToImage
-      6.11-18 AddCoastrictionToImageWithGivenImageObject
-      6.11-19 AddUniversalMorphismFromImage
-      6.11-20 AddUniversalMorphismFromImageWithGivenImageObject
+      6.11-7 ImageEmbeddingWithGivenImageObject
+      6.11-8 CoastrictionToImage
+      6.11-9 CoastrictionToImageWithGivenImageObject
+      6.11-10 UniversalMorphismFromImage
+      6.11-11 UniversalMorphismFromImageWithGivenImageObject
+      6.11-12 AddImageObject
+      6.11-13 AddImageEmbedding
+      6.11-14 AddImageEmbeddingWithGivenImageObject
+      6.11-15 AddCoastrictionToImage
+      6.11-16 AddCoastrictionToImageWithGivenImageObject
+      6.11-17 AddUniversalMorphismFromImage
+      6.11-18 AddUniversalMorphismFromImageWithGivenImageObject
     6.12 [33X[0;0YCoimage[133X
       6.12-1 MorphismFromCoimageToImage
       6.12-2 MorphismFromCoimageToImageWithGivenObjects
@@ -468,9 +476,6 @@
       6.12-24 AddAstrictionToCoimageWithGivenCoimage
       6.12-25 AddUniversalMorphismIntoCoimage
       6.12-26 AddUniversalMorphismIntoCoimageWithGivenCoimage
-    6.13 [33X[0;0YConvenience Methods[133X
-      6.13-1 InjectionOfCofactor
-      6.13-2 ProjectionInFactor
   7 [33X[0;0YTensor Product and Internal Hom[133X
     7.1 [33X[0;0YMonoidal Categories[133X
       7.1-1 TensorProductOnObjects
@@ -678,18 +683,6 @@
       10.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
       10.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
       10.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
-    10.3 [33X[0;0YUniversal Objects[133X
-      10.3-1 WasCreatedAsKernelObject
-      10.3-2 WasCreatedAsCokernelObject
-      10.3-3 WasCreatedAsZeroObject
-      10.3-4 WasCreatedAsTerminalObject
-      10.3-5 WasCreatedAsInitialObject
-      10.3-6 WasCreatedAsDirectSum
-      10.3-7 WasCreatedAsCoproduct
-      10.3-8 WasCreatedAsDirectProduct
-      10.3-9 WasCreatedAsFiberProduct
-      10.3-10 WasCreatedAsPushout
-      10.3-11 WasCreatedAsImageObject
   11 [33X[0;0YExamples and Tests[133X
     11.1 [33X[0;0YSpectral Sequences[133X
     11.2 [33X[0;0YMonoidal Categories[133X

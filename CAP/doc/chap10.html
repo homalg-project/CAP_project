@@ -41,21 +41,6 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7C7A71C97DC2FABF">10.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X78A121F97CF81A43">10.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7994CC1487D7617C">10.3 <span class="Heading">Universal Objects</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X78F0E21B7A2C5B66">10.3-1 WasCreatedAsKernelObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X8581762F81AA478E">10.3-2 WasCreatedAsCokernelObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X82D475D57AC228B4">10.3-3 WasCreatedAsZeroObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X81141D0B80B57951">10.3-4 WasCreatedAsTerminalObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X8499CEE47D861DD3">10.3-5 WasCreatedAsInitialObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7D98B3AA7A34AD3C">10.3-6 WasCreatedAsDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X81B5EA6D826ED78F">10.3-7 WasCreatedAsCoproduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X785B98C38172191E">10.3-8 WasCreatedAsDirectProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7D36162983C3CD88">10.3-9 WasCreatedAsFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7AE8750585F7D3A1">10.3-10 WasCreatedAsPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7CF632288031CAC4">10.3-11 WasCreatedAsImageObject</a></span>
-</div></div>
 </div>
 
 <h3>10 <span class="Heading">Technical Details</span></h3>
@@ -156,87 +141,6 @@
 <p>Returns: merge list</p>
 
 <p>The function takes two lists containing pairs of symbols (strings) and multiples. The lists are merged that pairs where the string only appears in one list is then added to the return list, if a pair with a string appears in both lists, the resulting lists only contains this pair once, with the higher multiple from both lists.</p>
-
-<p><a id="X7994CC1487D7617C" name="X7994CC1487D7617C"></a></p>
-
-<h4>10.3 <span class="Heading">Universal Objects</span></h4>
-
-<p><a id="X78F0E21B7A2C5B66" name="X78F0E21B7A2C5B66"></a></p>
-
-<h5>10.3-1 WasCreatedAsKernelObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsKernelObject</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for a kernel object. Note that we chose <code class="code">WasCreatedAsKernelObject</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X8581762F81AA478E" name="X8581762F81AA478E"></a></p>
-
-<h5>10.3-2 WasCreatedAsCokernelObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsCokernelObject</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for a cokernel object. Note that we chose <code class="code">WasCreatedAsCokernelObject</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X82D475D57AC228B4" name="X82D475D57AC228B4"></a></p>
-
-<h5>10.3-3 WasCreatedAsZeroObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsZeroObject</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for a zero object. Note that we chose <code class="code">WasCreatedAsZeroObject</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X81141D0B80B57951" name="X81141D0B80B57951"></a></p>
-
-<h5>10.3-4 WasCreatedAsTerminalObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsTerminalObject</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for a terminal object. Note that we chose <code class="code">WasCreatedAsTerminalObject</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X8499CEE47D861DD3" name="X8499CEE47D861DD3"></a></p>
-
-<h5>10.3-5 WasCreatedAsInitialObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsInitialObject</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for an initial object. Note that we chose <code class="code">WasCreatedAsInitialObject</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X7D98B3AA7A34AD3C" name="X7D98B3AA7A34AD3C"></a></p>
-
-<h5>10.3-6 WasCreatedAsDirectSum</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsDirectSum</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for a direct sum object. Note that we chose <code class="code">WasCreatedAsDirectSum</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X81B5EA6D826ED78F" name="X81B5EA6D826ED78F"></a></p>
-
-<h5>10.3-7 WasCreatedAsCoproduct</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsCoproduct</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for a coproduct object. Note that we chose <code class="code">WasCreatedAsCoprodcut</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X785B98C38172191E" name="X785B98C38172191E"></a></p>
-
-<h5>10.3-8 WasCreatedAsDirectProduct</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsDirectProduct</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for a terminal object. Note that we chose <code class="code">WasCreatedAsDirectProduct</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X7D36162983C3CD88" name="X7D36162983C3CD88"></a></p>
-
-<h5>10.3-9 WasCreatedAsFiberProduct</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsFiberProduct</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for a pullback. Note that we chose <code class="code">WasCreatedAsFiberProduct</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X7AE8750585F7D3A1" name="X7AE8750585F7D3A1"></a></p>
-
-<h5>10.3-10 WasCreatedAsPushout</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsPushout</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for a pushout. Note that we chose <code class="code">WasCreatedAsPushout</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
-
-<p><a id="X7CF632288031CAC4" name="X7CF632288031CAC4"></a></p>
-
-<h5>10.3-11 WasCreatedAsImageObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsImageObject</code></td><td class="tdright">( filter )</td></tr></table></div>
-<p>When created, this filter is set to true for an image. Note that we chose <code class="code">WasCreatedAsImageObject</code> to be a filter rather than a property, because by default, a filter is set to false.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap9.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap11.html">[Next Chapter]</a>&nbsp;  </div>
