@@ -176,3 +176,14 @@
   the  object in the generalized morphism category by cospans whose underlying
   honest object is [23Xa[123X.[133X
   
+  
+  [1X2.6 [33X[0;0YConstructors of lifts of exact functors and natrual (iso)morphisms[133X[101X
+  
+  [1X2.6-1 AsGeneralizedMorphismByCospan[101X
+  
+  [29X[2XAsGeneralizedMorphismByCospan[102X( [3XF[103X, [3Xname[103X ) [32X operation
+  
+  [33X[0;0YLift   the   [13Xexact[113X   functor   [3XF[103X   to   a   functor  [22XA  ->  B[122X,  where  [22XA  :=[122X
+  [10XGeneralizedMorphismCategoryByCospans(  AsCapCategory(  Source( [110X[3XF[103X[10X ) ) )[110X and [22XB
+  :=[122X [10XGeneralizedMorphismCategoryByCospans( AsCapCategory( Range( [110X[3XF[103X[10X ) ) )[110X.[133X
+  

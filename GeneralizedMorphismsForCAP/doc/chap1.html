@@ -47,6 +47,7 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82FE8F3E84432929">1.3-1 GeneralizedMorphismFromFactorToSubobject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B8E3FBC82429136">1.3-2 CommonRestriction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83CB98F3783972DE">1.3-3 ConcatenationProduct</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X871597447BB998A1">1.4 <span class="Heading">Properties</span></a>
 </span>
@@ -158,7 +159,7 @@
 
 <h5>1.2-7 GeneralizedInverse</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedInverse</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedInverse</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(b,a)</span></p>
 
 <p>The argument is a morphism <span class="Math">\alpha: a \rightarrow b \in \mathbf{A}</span>. The output is its generalized inverse <span class="Math">b \rightarrow a</span>.</p>
@@ -167,7 +168,7 @@
 
 <h5>1.2-8 IdempotentDefinedBySubobject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdempotentDefinedBySubobject</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdempotentDefinedBySubobject</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(b,b)</span></p>
 
 <p>The argument is a subobject <span class="Math">\alpha: a \hookrightarrow b \in \mathbf{A}</span>. The output is the idempotent <span class="Math">b \rightarrow b \in \mathbf{G(A)}</span> defined by <span class="Math">\alpha</span>.</p>
@@ -176,7 +177,7 @@
 
 <h5>1.2-9 IdempotentDefinedByFactorobject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdempotentDefinedByFactorobject</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdempotentDefinedByFactorobject</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(b,b)</span></p>
 
 <p>The argument is a factorobject <span class="Math">\alpha: b \twoheadrightarrow a \in \mathbf{A}</span>. The output is the idempotent <span class="Math">b \rightarrow b \in \mathbf{G(A)}</span> defined by <span class="Math">\alpha</span>.</p>
@@ -211,6 +212,15 @@
 <p>Returns: a list of generalized morphisms</p>
 
 <p>The argument is a list <span class="Math">L</span> of generalized morphisms by three arrows having the same source. The output is a list of generalized morphisms by three arrows which is the comman restriction of <span class="Math">L</span>.</p>
+
+<p><a id="X83CB98F3783972DE" name="X83CB98F3783972DE"></a></p>
+
+<h5>1.3-3 ConcatenationProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConcatenationProduct</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a generalized moprhism</p>
+
+<p>The argument is a list <span class="Math">L = ( \alpha_1, \dots, \alpha_n )</span> of generalized morphisms (with same data structures). The output is their concatenation product, i.e., a generalized morphism <span class="Math">\alpha</span> with <span class="Math">\mathrm{UnderlyingHonestObject}( \mathrm{Source}( \alpha ) ) = \bigoplus_{i=1}^n \mathrm{UnderlyingHonestObject}( \mathrm{Source}( \alpha_i ) )</span>, and <span class="Math">\mathrm{UnderlyingHonestObject}( \mathrm{Range}( \alpha ) ) = \bigoplus_{i=1}^n \mathrm{UnderlyingHonestObject}( \mathrm{Range}( \alpha_i ) )</span>, and with morphisms in the representation of <span class="Math">\alpha</span> given as the direct sums of the corresponding morphisms of the <span class="Math">\alpha_i</span>.</p>
 
 <p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
 

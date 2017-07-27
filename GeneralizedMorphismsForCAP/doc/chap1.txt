@@ -76,7 +76,7 @@
   
   [1X1.2-7 GeneralizedInverse[101X
   
-  [29X[2XGeneralizedInverse[102X( [3Xalpha[103X ) [32X attribute
+  [29X[2XGeneralizedInverse[102X( [3Xalpha[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
   
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a \rightarrow b \in \mathbf{A}[123X. The
@@ -84,7 +84,7 @@
   
   [1X1.2-8 IdempotentDefinedBySubobject[101X
   
-  [29X[2XIdempotentDefinedBySubobject[102X( [3Xalpha[103X ) [32X attribute
+  [29X[2XIdempotentDefinedBySubobject[102X( [3Xalpha[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
   
   [33X[0;0YThe  argument is a subobject [23X\alpha: a \hookrightarrow b \in \mathbf{A}[123X. The
@@ -93,7 +93,7 @@
   
   [1X1.2-9 IdempotentDefinedByFactorobject[101X
   
-  [29X[2XIdempotentDefinedByFactorobject[102X( [3Xalpha[103X ) [32X attribute
+  [29X[2XIdempotentDefinedByFactorobject[102X( [3Xalpha[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
   
   [33X[0;0YThe   argument   is  a  factorobject  [23X\alpha:  b  \twoheadrightarrow  a  \in
@@ -128,6 +128,21 @@
   [33X[0;0YThe argument is a list [23XL[123X of generalized morphisms by three arrows having the
   same  source.  The output is a list of generalized morphisms by three arrows
   which is the comman restriction of [23XL[123X.[133X
+  
+  [1X1.3-3 ConcatenationProduct[101X
+  
+  [29X[2XConcatenationProduct[102X( [3XL[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya generalized moprhism[133X
+  
+  [33X[0;0YThe  argument  is  a  list  [23XL = ( \alpha_1, \dots, \alpha_n )[123X of generalized
+  morphisms  (with  same  data  structures). The output is their concatenation
+  product,      i.e.,      a      generalized     morphism     [23X\alpha[123X     with
+  [23X\mathrm{UnderlyingHonestObject}(    \mathrm{Source}(    \alpha    )    )   =
+  \bigoplus_{i=1}^n \mathrm{UnderlyingHonestObject}( \mathrm{Source}( \alpha_i
+  )  )[123X,  and  [23X\mathrm{UnderlyingHonestObject}(  \mathrm{Range}(  \alpha  ) ) =
+  \bigoplus_{i=1}^n  \mathrm{UnderlyingHonestObject}( \mathrm{Range}( \alpha_i
+  )  )[123X, and with morphisms in the representation of [23X\alpha[123X given as the direct
+  sums of the corresponding morphisms of the [23X\alpha_i[123X.[133X
   
   
   [1X1.4 [33X[0;0YProperties[133X[101X

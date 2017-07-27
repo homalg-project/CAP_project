@@ -64,6 +64,11 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X879C3A4F82EC9C13">2.5-5 GeneralizedMorphismCategoryByCospans</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81ADB9C17D822C05">2.5-6 GeneralizedMorphismByCospansObject</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X83F3C1E6877018D8">2.6 <span class="Heading">Constructors of lifts of exact functors and natrual (iso)morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A094900868E02F1">2.6-1 AsGeneralizedMorphismByCospan</a></span>
+</div></div>
 </div>
 
 <h3>2 <span class="Heading">Generalized Morphism Category by Cospans</span></h3>
@@ -258,6 +263,17 @@
 <p>Returns: an object in <span class="SimpleMath">\(\mathbf{G(A)}\)</span></p>
 
 <p>The argument is an object <span class="SimpleMath">\(a\)</span> in an abelian category <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is the object in the generalized morphism category by cospans whose underlying honest object is <span class="SimpleMath">\(a\)</span>.</p>
+
+<p><a id="X83F3C1E6877018D8" name="X83F3C1E6877018D8"></a></p>
+
+<h4>2.6 <span class="Heading">Constructors of lifts of exact functors and natrual (iso)morphisms</span></h4>
+
+<p><a id="X7A094900868E02F1" name="X7A094900868E02F1"></a></p>
+
+<h5>2.6-1 AsGeneralizedMorphismByCospan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsGeneralizedMorphismByCospan</code>( <var class="Arg">F</var>, <var class="Arg">name</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Lift the <em>exact</em> functor <var class="Arg">F</var> to a functor <span class="SimpleMath">\(A \to B\)</span>, where <span class="SimpleMath">\(A := \)</span> <code class="code">GeneralizedMorphismCategoryByCospans( AsCapCategory( Source( </code><var class="Arg">F</var><code class="code"> ) ) )</code> and <span class="SimpleMath">\(B := \)</span> <code class="code">GeneralizedMorphismCategoryByCospans( AsCapCategory( Range( </code><var class="Arg">F</var><code class="code"> ) ) )</code>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>

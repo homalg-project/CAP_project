@@ -4,9 +4,11 @@ PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
 
 Version := Maximum( [
-  "2015.12.09", ## Sebas' version
+  "2017.07.25", ## Sebas' version
 ## this line prevents merge conflicts
-  "2015.11.19", ## Sepp's version
+  "2017.04.10", ## Sepp's version
+## this line prevents merge conflicts
+  "2017.04.02", ## Mohamed's version
 ## this line prevents merge conflicts
    ] ),
 
@@ -18,32 +20,33 @@ Persons := [
     IsAuthor := true,
     IsMaintainer := true,
     FirstNames := "Sebastian",
-    LastName := "Posur",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php",
-    Email := "sposur@momo.math.rwth-aachen.de",
+    LastName := "Gutsche",
+    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    Email := "gutsche@mathematik.uni-siegen.de",
     PostalAddress := Concatenation(
-               "Sebastian Posur\n",
-               "Lehrstuhl B fuer Mathematik, RWTH Aachen\n",
-               "Templergraben 64\n",
-               "52062 Aachen\n",
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
                "Germany" ),
-    Place := "Aachen",
-    Institution := "RWTH Aachen University",
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
   rec(
     IsAuthor := true,
     IsMaintainer := true,
     FirstNames := "Sebastian",
-    LastName := "Gutsche",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche/",
-    Email := "gutsche@momo.math.rwth-aachen.de",
+    LastName := "Posur",
+    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
-               "Department of Mathematics\n",
-               "University of Kaiserslautern\n",
-               "67653 Kaiserslautern\n",
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
                "Germany" ),
-    Place := "Kaiserslautern",
-    Institution := "TU Kaiserslautern",
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
 ],
 

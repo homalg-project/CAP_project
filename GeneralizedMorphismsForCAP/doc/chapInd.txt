@@ -2,138 +2,138 @@
   
   [1XIndex[101X
   
-  [2XArrow[102X (for IsGeneralizedMorphismByCospan)  2.3-2
-  [2XArrow[102X (for IsGeneralizedMorphismBySpan)  3.3-2
-  [2XArrow[102X (for IsGeneralizedMorphismByThreeArrows)  4.3-4
-  [2XAsGeneralizedMorphism[102X (for IsCapCategoryMorphism)  1.5-3
-  [2XAsGeneralizedMorphismByCospan[102X (for IsCapCategoryMorphism)  2.5-4
-  [2XAsGeneralizedMorphismBySpan[102X (for IsCapCategoryMorphism)  3.5-4
-  [2XAsGeneralizedMorphismByThreeArrows[102X (for IsCapCategoryMorphism)  4.5-4
-  [2XAsSerreQuotientCategoryByCospansMorphism[102X (for IsCapCategory, IsCapCategoryMorphism)  7.2-7
-  [2XAsSerreQuotientCategoryByCospansObject[102X (for IsCapCategory, IsCapCategoryObject)  7.2-2
-  [2XAsSerreQuotientCategoryBySpansMorphism[102X (for IsCapCategory, IsCapCategoryMorphism)  7.3-7
-  [2XAsSerreQuotientCategoryBySpansObject[102X (for IsCapCategory, IsCapCategoryObject)  7.3-2
-  [2XAsSerreQuotientCategoryByThreeArrowsMorphism[102X (for IsCapCategory, IsCapCategoryMorphism)  7.4-7
-  [2XAsSerreQuotientCategoryByThreeArrowsObject[102X (for IsCapCategory, IsCapCategoryObject)  7.4-2
-  [2XAsSerreQuotientCategoryMorphism[102X (for IsCapCategory, IsCapCategoryMorphism)  7.1-10
-  [2XAsSerreQuotientCategoryObject[102X (for IsCapCategory, IsCapCategoryObject)  7.1-4
-  [2XAssociatedMorphism[102X (for IsGeneralizedMorphism)  1.2-4
-  [2XCanonicalProjection[102X (for IsCapCategory)  7.1-17
-  [2XCodomain[102X (for IsGeneralizedMorphism)  1.2-3
-  [2XCommonCoastriction[102X (for IsList)  4.4-2
-  [2XCommonRestriction[102X (for IsList)  1.3-2
-  [2XDomainAssociatedMorphismCodomainTriple[102X (for IsGeneralizedMorphism)  1.2-5
-  [2XDomainOfGeneralizedMorphism[102X (for IsGeneralizedMorphism)  1.2-2
-  [2XFullSubcategoryByMembershipFunction[102X (for IsCapCategory, IsFunction)  6.1-1
-  [2XFunctorFromCospansToSpans[102X (for IsCapCategory)  5.1-2
-  [2XFunctorFromCospansToThreeArrows[102X (for IsCapCategory)  5.1-1
-  [2XFunctorFromSpansToCospans[102X (for IsCapCategory)  5.2-2
-  [2XFunctorFromSpansToThreeArrows[102X (for IsCapCategory)  5.2-1
-  [2XFunctorFromThreeArrowsToCospans[102X (for IsCapCategory)  5.3-1
-  [2XFunctorFromThreeArrowsToSpans[102X (for IsCapCategory)  5.3-2
-  [2XGeneralizedInverse[102X (for IsCapCategoryMorphism)  1.2-7
-  [2XGeneralizedInverseByCospan[102X (for IsCapCategoryMorphism)  2.3-6
-  [2XGeneralizedInverseBySpan[102X (for IsCapCategoryMorphism)  3.3-6
-  [2XGeneralizedInverseByThreeArrows[102X (for IsCapCategoryMorphism)  4.3-6
-  [2XGeneralizedMorphism[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-4
-  [2XGeneralizedMorphism[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-5
-  [2XGeneralizedMorphismByCospan[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  2.5-1
-  [2XGeneralizedMorphismByCospan[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  2.5-2
-  [2XGeneralizedMorphismByCospansObject[102X (for IsCapCategoryObject)  2.5-6
-  [2XGeneralizedMorphismByCospanWithSourceAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  2.5-3
-  [2XGeneralizedMorphismBySpan[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  3.5-1
-  [2XGeneralizedMorphismBySpan[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  3.5-2
-  [2XGeneralizedMorphismBySpansObject[102X (for IsCapCategoryObject)  3.5-6
-  [2XGeneralizedMorphismBySpanWithRangeAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  3.5-3
-  [2XGeneralizedMorphismByThreeArrows[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  4.5-1
-  [2XGeneralizedMorphismByThreeArrowsObject[102X (for IsCapCategoryObject)  4.5-6
-  [2XGeneralizedMorphismByThreeArrowsWithRangeAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  4.5-3
-  [2XGeneralizedMorphismByThreeArrowsWithSourceAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  4.5-2
-  [2XGeneralizedMorphismCategory[102X (for IsCapCategory)  1.5-1
-  [2XGeneralizedMorphismCategoryByCospans[102X (for IsCapCategory)  2.5-5
-  [2XGeneralizedMorphismCategoryBySpans[102X (for IsCapCategory)  3.5-5
-  [2XGeneralizedMorphismCategoryByThreeArrows[102X (for IsCapCategory)  4.5-5
-  [2XGeneralizedMorphismFromFactorToSubobject[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  1.3-1
-  [2XGeneralizedMorphismFromFactorToSubobjectByCospan[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  2.4-1
-  [2XGeneralizedMorphismFromFactorToSubobjectBySpan[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  3.4-1
-  [2XGeneralizedMorphismFromFactorToSubobjectByThreeArrows[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  4.4-1
-  [2XGeneralizedMorphismObject[102X (for IsCapCategoryObject)  1.5-2
-  [5XGeneralizedMorphismsForCAP[105X  .-1
-  [2XGeneralizedMorphismWithRangeAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-6
-  [2XGeneralizedMorphismWithSourceAid[102X (for IsCapCategoryMorphism, IsCapCategoryMorphism)  1.5-7
-  [2XHasFullCodomain[102X (for IsGeneralizedMorphism)  1.4-3
-  [2XHasFullDomain[102X (for IsGeneralizedMorphism)  1.4-2
-  [2XHasIdentitiesAsReversedArrows[102X (for IsGeneralizedMorphismByThreeArrows)  4.2-1
-  [2XHasIdentityAsRangeAid[102X (for IsGeneralizedMorphismByThreeArrows)  4.2-3
-  [2XHasIdentityAsReversedArrow[102X (for IsGeneralizedMorphismByCospan)  2.2-1
-  [2XHasIdentityAsReversedArrow[102X (for IsGeneralizedMorphismBySpan)  3.2-1
-  [2XHasIdentityAsSourceAid[102X (for IsGeneralizedMorphismByThreeArrows)  4.2-2
-  [2XHonestRepresentative[102X (for IsGeneralizedMorphism)  1.2-6
-  [2XIdempotentDefinedByFactorobject[102X (for IsCapCategoryMorphism)  1.2-9
-  [2XIdempotentDefinedByFactorobjectByCospan[102X (for IsCapCategoryMorphism)  2.3-8
-  [2XIdempotentDefinedByFactorobjectBySpan[102X (for IsCapCategoryMorphism)  3.3-8
-  [2XIdempotentDefinedByFactorobjectByThreeArrows[102X (for IsCapCategoryMorphism)  4.3-8
-  [2XIdempotentDefinedBySubobject[102X (for IsCapCategoryMorphism)  1.2-8
-  [2XIdempotentDefinedBySubobjectByCospan[102X (for IsCapCategoryMorphism)  2.3-7
-  [2XIdempotentDefinedBySubobjectBySpan[102X (for IsCapCategoryMorphism)  3.3-7
-  [2XIdempotentDefinedBySubobjectByThreeArrows[102X (for IsCapCategoryMorphism)  4.3-7
-  [2XIsGeneralizedMorphism[102X (for IsCapCategoryMorphism)  1.1-2
-  [2XIsGeneralizedMorphismByCospan[102X (for IsGeneralizedMorphism)  2.1-2
-  [2XIsGeneralizedMorphismBySpan[102X (for IsGeneralizedMorphism)  3.1-2
-  [2XIsGeneralizedMorphismByThreeArrows[102X (for IsGeneralizedMorphism)  4.1-2
-  [2XIsGeneralizedMorphismCategoryByCospansObject[102X (for IsGeneralizedMorphismCategoryObject)  2.1-1
-  [2XIsGeneralizedMorphismCategoryBySpansObject[102X (for IsGeneralizedMorphismCategoryObject)  3.1-1
-  [2XIsGeneralizedMorphismCategoryByThreeArrowsObject[102X (for IsGeneralizedMorphismCategoryObject)  4.1-1
-  [2XIsGeneralizedMorphismCategoryObject[102X (for IsCapCategoryObject)  1.1-1
-  [2XIsHonest[102X (for IsGeneralizedMorphism)  1.4-1
-  [2XIsSerreQuotientCategoryMorphism[102X (for IsCapCategoryMorphism)  7.1-2
-  [2XIsSerreQuotientCategoryObject[102X (for IsCapCategoryObject)  7.1-1
-  [2XIsSingleValued[102X (for IsGeneralizedMorphism)  1.4-4
-  [2XIsTotal[102X (for IsGeneralizedMorphism)  1.4-5
-  [2XNormalizedCospan[102X (for IsGeneralizedMorphismByCospan)  2.3-9
-  [2XNormalizedCospanTuple[102X (for IsGeneralizedMorphismByCospan)  2.3-4
-  [2XNormalizedSpan[102X (for IsGeneralizedMorphismBySpan)  3.3-9
-  [2XNormalizedSpanTuple[102X (for IsGeneralizedMorphismBySpan)  3.3-4
-  [2XPseudoInverse[102X (for IsGeneralizedMorphismByCospan)  2.3-5
-  [2XPseudoInverse[102X (for IsGeneralizedMorphismBySpan)  3.3-5
-  [2XPseudoInverse[102X (for IsGeneralizedMorphismByThreeArrows)  4.3-5
-  [2XRangeAid[102X (for IsGeneralizedMorphismByThreeArrows)  4.3-3
-  [2XReversedArrow[102X (for IsGeneralizedMorphismByCospan)  2.3-3
-  [2XReversedArrow[102X (for IsGeneralizedMorphismBySpan)  3.3-3
-  [2XSerreQuotientCategory[102X (for IsCapCategory, IsFunction, IsString)  7.1-3
-  [2XSerreQuotientCategoryByCospans[102X (for IsCapCategory, IsFunction, IsString)  7.2-1
-  [2XSerreQuotientCategoryByCospansMorphism[102X (for IsCapCategory, IsGeneralizedMorphismByCospan)  7.2-3
-  [2XSerreQuotientCategoryByCospansMorphism[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.2-4
-  [2XSerreQuotientCategoryByCospansMorphism[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.2-6
-  [2XSerreQuotientCategoryByCospansMorphismWithSourceAid[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.2-5
-  [2XSerreQuotientCategoryBySpans[102X (for IsCapCategory, IsFunction, IsString)  7.3-1
-  [2XSerreQuotientCategoryBySpansMorphism[102X (for IsCapCategory, IsGeneralizedMorphismBySpan)  7.3-3
-  [2XSerreQuotientCategoryBySpansMorphism[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.3-4
-  [2XSerreQuotientCategoryBySpansMorphism[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.3-5
-  [2XSerreQuotientCategoryBySpansMorphismWithRangeAid[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.3-6
-  [2XSerreQuotientCategoryByThreeArrows[102X (for IsCapCategory, IsFunction, IsString)  7.4-1
-  [2XSerreQuotientCategoryByThreeArrowsMorphism[102X (for IsCapCategory, IsGeneralizedMorphismByThreeArrows)  7.4-3
-  [2XSerreQuotientCategoryByThreeArrowsMorphism[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.4-4
-  [2XSerreQuotientCategoryByThreeArrowsMorphismWithRangeAid[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.4-6
-  [2XSerreQuotientCategoryByThreeArrowsMorphismWithSourceAid[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.4-5
-  [2XSerreQuotientCategoryMorphism[102X (for IsCapCategory, IsGeneralizedMorphism)  7.1-5
-  [2XSerreQuotientCategoryMorphism[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.1-6
-  [2XSerreQuotientCategoryMorphism[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.1-7
-  [2XSerreQuotientCategoryMorphismWithRangeAid[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.1-9
-  [2XSerreQuotientCategoryMorphismWithSourceAid[102X (for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism)  7.1-8
-  [2XSerreQuotientConversionFunctor[102X (for IsCapCategory, IsCapCategory)  8.1-1
-  [2XSourceAid[102X (for IsGeneralizedMorphismByThreeArrows)  4.3-2
-  [2XSubcategoryMembershipTestFunctionForSerreQuotient[102X (for IsCapCategory)  7.1-11
-  [2XUnderlyingGeneralizedMorphism[102X (for IsSerreQuotientCategoryMorphism)  7.1-16
-  [2XUnderlyingGeneralizedMorphismCategory[102X (for IsCapCategory)  7.1-13
-  [2XUnderlyingGeneralizedObject[102X (for IsSerreQuotientCategoryObject)  7.1-14
-  [2XUnderlyingHonestCategory[102X (for IsCapCategory)  1.2-10
-  [2XUnderlyingHonestCategory[102X (for IsCapCategory)  7.1-12
-  [2XUnderlyingHonestObject[102X (for IsGeneralizedMorphismCategoryObject)  1.2-1
-  [2XUnderlyingHonestObject[102X (for IsGeneralizedMorphismCategoryByCospansObject)  2.3-1
-  [2XUnderlyingHonestObject[102X (for IsGeneralizedMorphismCategoryBySpansObject)  3.3-1
-  [2XUnderlyingHonestObject[102X (for IsGeneralizedMorphismCategoryByThreeArrowsObject)  4.3-1
-  [2XUnderlyingHonestObject[102X (for IsSerreQuotientCategoryObject)  7.1-15
+  [2XArrow[102X, for IsGeneralizedMorphismByCospan 2.3-2 
+      for IsGeneralizedMorphismBySpan 3.3-2 
+      for IsGeneralizedMorphismByThreeArrows 4.3-4 
+  [2XAsGeneralizedMorphism[102X, for IsCapCategoryMorphism 1.5-3 
+  [2XAsGeneralizedMorphismByCospan[102X, for IsCapCategoryMorphism 2.5-4 
+      for IsCapFunctor, IsString 2.6-1 
+  [2XAsGeneralizedMorphismBySpan[102X, for IsCapCategoryMorphism 3.5-4 
+  [2XAsGeneralizedMorphismByThreeArrows[102X, for IsCapCategoryMorphism 4.5-4 
+  [2XAsSerreQuotientCategoryByCospansMorphism[102X, for IsCapCategory, IsCapCategoryMorphism 7.2-7 
+  [2XAsSerreQuotientCategoryByCospansObject[102X, for IsCapCategory, IsCapCategoryObject 7.2-2 
+  [2XAsSerreQuotientCategoryBySpansMorphism[102X, for IsCapCategory, IsCapCategoryMorphism 7.3-7 
+  [2XAsSerreQuotientCategoryBySpansObject[102X, for IsCapCategory, IsCapCategoryObject 7.3-2 
+  [2XAsSerreQuotientCategoryByThreeArrowsMorphism[102X, for IsCapCategory, IsCapCategoryMorphism 7.4-7 
+  [2XAsSerreQuotientCategoryByThreeArrowsObject[102X, for IsCapCategory, IsCapCategoryObject 7.4-2 
+  [2XAsSerreQuotientCategoryMorphism[102X, for IsCapCategory, IsCapCategoryMorphism 7.1-10 
+  [2XAsSerreQuotientCategoryObject[102X, for IsCapCategory, IsCapCategoryObject 7.1-4 
+  [2XAssociatedMorphism[102X, for IsGeneralizedMorphism 1.2-4 
+  [2XCanonicalProjection[102X, for IsCapCategory 7.1-17 
+  [2XCodomain[102X, for IsGeneralizedMorphism 1.2-3 
+  [2XCommonCoastriction[102X, for IsList 4.4-2 
+  [2XCommonRestriction[102X, for IsList 1.3-2 
+  [2XConcatenationProduct[102X, for IsList 1.3-3 
+  [2XDomainAssociatedMorphismCodomainTriple[102X, for IsGeneralizedMorphism 1.2-5 
+  [2XDomainOfGeneralizedMorphism[102X, for IsGeneralizedMorphism 1.2-2 
+  [2XFullSubcategoryByMembershipFunction[102X, for IsCapCategory, IsFunction 6.1-1 
+  [2XFunctorFromCospansToSpans[102X, for IsCapCategory 5.1-2 
+  [2XFunctorFromCospansToThreeArrows[102X, for IsCapCategory 5.1-1 
+  [2XFunctorFromSpansToCospans[102X, for IsCapCategory 5.2-2 
+  [2XFunctorFromSpansToThreeArrows[102X, for IsCapCategory 5.2-1 
+  [2XFunctorFromThreeArrowsToCospans[102X, for IsCapCategory 5.3-1 
+  [2XFunctorFromThreeArrowsToSpans[102X, for IsCapCategory 5.3-2 
+  [2XGeneralizedInverse[102X, for IsCapCategoryMorphism 1.2-7 
+  [2XGeneralizedInverseByCospan[102X, for IsCapCategoryMorphism 2.3-6 
+  [2XGeneralizedInverseBySpan[102X, for IsCapCategoryMorphism 3.3-6 
+  [2XGeneralizedInverseByThreeArrows[102X, for IsCapCategoryMorphism 4.3-6 
+  [2XGeneralizedMorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-4 
+      for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-5 
+  [2XGeneralizedMorphismByCospan[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 2.5-1 
+      for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 2.5-2 
+  [2XGeneralizedMorphismByCospansObject[102X, for IsCapCategoryObject 2.5-6 
+  [2XGeneralizedMorphismByCospanWithSourceAid[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 2.5-3 
+  [2XGeneralizedMorphismBySpan[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.5-1 
+      for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 3.5-2 
+  [2XGeneralizedMorphismBySpansObject[102X, for IsCapCategoryObject 3.5-6 
+  [2XGeneralizedMorphismBySpanWithRangeAid[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.5-3 
+  [2XGeneralizedMorphismByThreeArrows[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 4.5-1 
+  [2XGeneralizedMorphismByThreeArrowsObject[102X, for IsCapCategoryObject 4.5-6 
+  [2XGeneralizedMorphismByThreeArrowsWithRangeAid[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 4.5-3 
+  [2XGeneralizedMorphismByThreeArrowsWithSourceAid[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 4.5-2 
+  [2XGeneralizedMorphismCategory[102X, for IsCapCategory 1.5-1 
+  [2XGeneralizedMorphismCategoryByCospans[102X, for IsCapCategory 2.5-5 
+  [2XGeneralizedMorphismCategoryBySpans[102X, for IsCapCategory 3.5-5 
+  [2XGeneralizedMorphismCategoryByThreeArrows[102X, for IsCapCategory 4.5-5 
+  [2XGeneralizedMorphismFromFactorToSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.3-1 
+  [2XGeneralizedMorphismFromFactorToSubobjectByCospan[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 2.4-1 
+  [2XGeneralizedMorphismFromFactorToSubobjectBySpan[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.4-1 
+  [2XGeneralizedMorphismFromFactorToSubobjectByThreeArrows[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 4.4-1 
+  [2XGeneralizedMorphismObject[102X, for IsCapCategoryObject 1.5-2 
+  [2XGeneralizedMorphismWithRangeAid[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-6 
+  [2XGeneralizedMorphismWithSourceAid[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-7 
+  [2XHasFullCodomain[102X, for IsGeneralizedMorphism 1.4-3 
+  [2XHasFullDomain[102X, for IsGeneralizedMorphism 1.4-2 
+  [2XHasIdentitiesAsReversedArrows[102X, for IsGeneralizedMorphismByThreeArrows 4.2-1 
+  [2XHasIdentityAsRangeAid[102X, for IsGeneralizedMorphismByThreeArrows 4.2-3 
+  [2XHasIdentityAsReversedArrow[102X, for IsGeneralizedMorphismByCospan 2.2-1 
+      for IsGeneralizedMorphismBySpan 3.2-1 
+  [2XHasIdentityAsSourceAid[102X, for IsGeneralizedMorphismByThreeArrows 4.2-2 
+  [2XHonestRepresentative[102X, for IsGeneralizedMorphism 1.2-6 
+  [2XIdempotentDefinedByFactorobject[102X, for IsCapCategoryMorphism 1.2-9 
+  [2XIdempotentDefinedByFactorobjectByCospan[102X, for IsCapCategoryMorphism 2.3-8 
+  [2XIdempotentDefinedByFactorobjectBySpan[102X, for IsCapCategoryMorphism 3.3-8 
+  [2XIdempotentDefinedByFactorobjectByThreeArrows[102X, for IsCapCategoryMorphism 4.3-8 
+  [2XIdempotentDefinedBySubobject[102X, for IsCapCategoryMorphism 1.2-8 
+  [2XIdempotentDefinedBySubobjectByCospan[102X, for IsCapCategoryMorphism 2.3-7 
+  [2XIdempotentDefinedBySubobjectBySpan[102X, for IsCapCategoryMorphism 3.3-7 
+  [2XIdempotentDefinedBySubobjectByThreeArrows[102X, for IsCapCategoryMorphism 4.3-7 
+  [2XIsGeneralizedMorphism[102X, for IsCapCategoryMorphism 1.1-2 
+  [2XIsGeneralizedMorphismByCospan[102X, for IsGeneralizedMorphism 2.1-2 
+  [2XIsGeneralizedMorphismBySpan[102X, for IsGeneralizedMorphism 3.1-2 
+  [2XIsGeneralizedMorphismByThreeArrows[102X, for IsGeneralizedMorphism 4.1-2 
+  [2XIsGeneralizedMorphismCategoryByCospansObject[102X, for IsGeneralizedMorphismCategoryObject 2.1-1 
+  [2XIsGeneralizedMorphismCategoryBySpansObject[102X, for IsGeneralizedMorphismCategoryObject 3.1-1 
+  [2XIsGeneralizedMorphismCategoryByThreeArrowsObject[102X, for IsGeneralizedMorphismCategoryObject 4.1-1 
+  [2XIsGeneralizedMorphismCategoryObject[102X, for IsCapCategoryObject 1.1-1 
+  [2XIsHonest[102X, for IsGeneralizedMorphism 1.4-1 
+  [2XIsSerreQuotientCategoryMorphism[102X, for IsCapCategoryMorphism 7.1-2 
+  [2XIsSerreQuotientCategoryObject[102X, for IsCapCategoryObject 7.1-1 
+  [2XIsSingleValued[102X, for IsGeneralizedMorphism 1.4-4 
+  [2XIsTotal[102X, for IsGeneralizedMorphism 1.4-5 
+  [2XNormalizedCospan[102X, for IsGeneralizedMorphismByCospan 2.3-9 
+  [2XNormalizedCospanTuple[102X, for IsGeneralizedMorphismByCospan 2.3-4 
+  [2XNormalizedSpan[102X, for IsGeneralizedMorphismBySpan 3.3-9 
+  [2XNormalizedSpanTuple[102X, for IsGeneralizedMorphismBySpan 3.3-4 
+  [2XPseudoInverse[102X, for IsGeneralizedMorphismByCospan 2.3-5 
+      for IsGeneralizedMorphismBySpan 3.3-5 
+      for IsGeneralizedMorphismByThreeArrows 4.3-5 
+  [2XRangeAid[102X, for IsGeneralizedMorphismByThreeArrows 4.3-3 
+  [2XReversedArrow[102X, for IsGeneralizedMorphismByCospan 2.3-3 
+      for IsGeneralizedMorphismBySpan 3.3-3 
+  [2XSerreQuotientCategory[102X, for IsCapCategory, IsFunction, IsString 7.1-3 
+  [2XSerreQuotientCategoryByCospans[102X, for IsCapCategory, IsFunction, IsString 7.2-1 
+  [2XSerreQuotientCategoryByCospansMorphism[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 7.2-6 
+      for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 7.2-4 
+      for IsCapCategory, IsGeneralizedMorphismByCospan 7.2-3 
+  [2XSerreQuotientCategoryByCospansMorphismWithSourceAid[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 7.2-5 
+  [2XSerreQuotientCategoryBySpans[102X, for IsCapCategory, IsFunction, IsString 7.3-1 
+  [2XSerreQuotientCategoryBySpansMorphism[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 7.3-5 
+      for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 7.3-4 
+      for IsCapCategory, IsGeneralizedMorphismBySpan 7.3-3 
+  [2XSerreQuotientCategoryBySpansMorphismWithRangeAid[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 7.3-6 
+  [2XSerreQuotientCategoryByThreeArrows[102X, for IsCapCategory, IsFunction, IsString 7.4-1 
+  [2XSerreQuotientCategoryByThreeArrowsMorphism[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 7.4-4 
+      for IsCapCategory, IsGeneralizedMorphismByThreeArrows 7.4-3 
+  [2XSerreQuotientCategoryByThreeArrowsMorphismWithRangeAid[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 7.4-6 
+  [2XSerreQuotientCategoryByThreeArrowsMorphismWithSourceAid[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 7.4-5 
+  [2XSerreQuotientCategoryMorphism[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 7.1-7 
+      for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 7.1-6 
+      for IsCapCategory, IsGeneralizedMorphism 7.1-5 
+  [2XSerreQuotientCategoryMorphismWithRangeAid[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 7.1-9 
+  [2XSerreQuotientCategoryMorphismWithSourceAid[102X, for IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 7.1-8 
+  [2XSerreQuotientConversionFunctor[102X, for IsCapCategory, IsCapCategory 8.1-1 
+  [2XSourceAid[102X, for IsGeneralizedMorphismByThreeArrows 4.3-2 
+  [2XSubcategoryMembershipTestFunctionForSerreQuotient[102X, for IsCapCategory 7.1-11 
+  [2XUnderlyingGeneralizedMorphism[102X, for IsSerreQuotientCategoryMorphism 7.1-16 
+  [2XUnderlyingGeneralizedMorphismCategory[102X, for IsCapCategory 7.1-13 
+  [2XUnderlyingGeneralizedObject[102X, for IsSerreQuotientCategoryObject 7.1-14 
+  [2XUnderlyingHonestCategory[102X, for IsCapCategory 1.2-10  7.1-12 
+  [2XUnderlyingHonestObject[102X, for IsGeneralizedMorphismCategoryByCospansObject 2.3-1 
+      for IsGeneralizedMorphismCategoryBySpansObject 3.3-1 
+      for IsGeneralizedMorphismCategoryByThreeArrowsObject 4.3-1 
+      for IsGeneralizedMorphismCategoryObject 1.2-1 
+      for IsSerreQuotientCategoryObject 7.1-15 
   
   
   -------------------------------------------------------
