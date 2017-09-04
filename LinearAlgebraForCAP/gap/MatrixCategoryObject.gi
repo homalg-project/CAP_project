@@ -85,3 +85,12 @@ InstallMethod( ViewObj,
 
 end );
 
+##
+InstallMethod( Display,
+               [ IsVectorSpaceObject ],
+               
+  function( vector_space_object )
+    
+    Print( String( vector_space_object ) );
+    
+end );
