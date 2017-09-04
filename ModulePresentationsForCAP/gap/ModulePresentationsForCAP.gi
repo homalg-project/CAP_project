@@ -1716,6 +1716,8 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     N := UnderlyingMatrix( Range(  morphism_1 ) );
     
+    if NrColumns( N ) = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
+    
     A := UnderlyingMatrix( morphism_1 );
     
     B := UnderlyingMatrix( morphism_2 );
@@ -1809,6 +1811,8 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     fi;
     
     N := UnderlyingMatrix( Source( morphism_1 ) );
+    
+    if NrColumns( N ) = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
     
     B := UnderlyingMatrix( morphism_1 );
     
@@ -1915,6 +1919,9 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     Nt := Involution( UnderlyingMatrix( Range(  morphism_1 ) ) );
     
+    if NrRows( Nt ) = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
+
+    
     At := Involution( UnderlyingMatrix( morphism_1 ) );
     
     Bt := Involution( UnderlyingMatrix( morphism_2 ) );
@@ -1994,6 +2001,8 @@ end );
     
     Nt := Involution( UnderlyingMatrix( Source( morphism_1 ) ) );
     
+    if NrRows( Nt ) = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
+
     Bt := Involution( UnderlyingMatrix( morphism_1 ) );
     
     At := Involution( UnderlyingMatrix( morphism_2 ) );
