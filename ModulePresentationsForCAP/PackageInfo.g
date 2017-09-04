@@ -84,7 +84,6 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=2017.03.27" ],
                            [ "CAP", ">=0" ],
-#                            [ "ComplexesAndFilteredObjectsForCAP", ">=0" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
                            [ "HomologicalAlgebraForCAP", ">=0" ]
   ],
