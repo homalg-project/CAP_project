@@ -325,9 +325,200 @@ DeclareOperation( "AddIsWellDefinedForObjects",
                   [ IsCapCategory, IsList ] );
 
 
+###################################
+##
+#! @Section Projectives
+##
+###################################
+
+#! For a given object $A$ in an abelian category having enough projectives,
+#! the following commands allow us to compute some projective object $P$
+#! together with an epimorphism $\pi: P \rightarrow A$.
+
+## Main Operations and Attributes
+#! @Description
+#! The argument is an object $A$.
+#! The output is some projective object $P$
+#! for which there exists an epimorphism $\pi: P \rightarrow A$.
+#! @Returns an object
+#! @Arguments A
+DeclareAttribute( "SomeProjectiveObject",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The argument is an object $A$.
+#! The output is an epimorphism $\pi: P \rightarrow A$
+#! with $P$ a projective object that equals the output of $\mathrm{SomeProjectiveObject}(A)$.
+#! @Returns a morphism in $\mathrm{Hom}(P,A)$
+#! @Arguments A
+DeclareAttribute( "EpimorphismFromSomeProjectiveObject",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The arguments are an object $A$
+#! and a projective object $P$ that equals the output of $\mathrm{SomeProjectiveObject}(A)$.
+#! The output is an epimorphism $\pi: P \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(P,A)$
+#! @Arguments A, P
+DeclareOperation( "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+## Add Operations
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SomeProjectiveObject</C>.
+#! $F: A \mapsto P$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeProjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeProjectiveObject",
+                  [ IsCapCategory, IsList ] );
 
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>EpimorphismFromSomeProjectiveObject</C>.
+#! $F: A \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
+                  [ IsCapCategory, IsList ] );
 
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</C>.
+#! $F: (A,P) \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+###################################
+##
+#! @Section Injectives
+##
+###################################
+
+#! For a given object $A$ in an abelian category having enough injectives,
+#! the following commands allow us to compute some injective object $I$
+#! together with a monomorphism $\iota: A \rightarrow I$.
+
+## Main Operations and Attributes
+#! @Description
+#! The argument is an object $A$.
+#! The output is some injective object $I$
+#! for which there exists a monomorphism $\iota: A \rightarrow I$.
+#! @Returns an object
+#! @Arguments A
+DeclareAttribute( "SomeInjectiveObject",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The argument is an object $A$.
+#! The output is a monomorphism $\iota: A \rightarrow I$
+#! with $I$ an injective object that equals the output of $\mathrm{SomeInjectiveObject}(A)$.
+#! @Returns a morphism in $\mathrm{Hom}(I,A)$
+#! @Arguments A
+DeclareAttribute( "MonomorphismIntoSomeInjectiveObject",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The arguments are an object $A$
+#! and an injective object $I$ that equals the output of $\mathrm{SomeInjectiveObject}(A)$.
+#! The output is a monomorphism $\iota: A \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}(I,A)$
+#! @Arguments A, I
+DeclareOperation( "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+## Add Operations
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SomeInjectiveObject</C>.
+#! $F: A \mapsto I$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeInjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeInjectiveObject",
+                  [ IsCapCategory, IsList ] );
 
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MonomorphismIntoSomeInjectiveObject</C>.
+#! $F: A \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</C>.
+#! $F: (A,I) \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategory, IsList ] );

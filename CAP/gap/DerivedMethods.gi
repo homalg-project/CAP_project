@@ -1851,6 +1851,27 @@ AddDerivationToCAP( Coimage,
     
 end : Description := "Coimage as the source of IsomorphismFromCoimageToCokernelOfKernel" );
 
+##
+AddDerivationToCAP( SomeProjectiveObject,
+                    [ [ EpimorphismFromSomeProjectiveObject, 1 ] ],
+                    
+  function( obj )
+    
+    return Source( EpimorphismFromSomeProjectiveObject( obj ) );
+    
+end : Description := "SomeProjectiveObject as the source of EpimorphismFromSomeProjectiveObject" );
+
+##
+AddDerivationToCAP( SomeInjectiveObject,
+                    [ [ MonomorphismIntoSomeInjectiveObject, 1 ] ],
+                    
+  function( obj )
+    
+    return Range( MonomorphismIntoSomeInjectiveObject( obj ) );
+    
+end : Description := "SomeInjectiveObject as the range of MonomorphismIntoSomeInjectiveObject" );
+
+
 ###########################
 ##
 ## Methods returning a twocell

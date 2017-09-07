@@ -2381,6 +2381,55 @@ DirectSumProjectionInPushout := rec(
   dual_operation := "FiberProductEmbeddingInDirectSum",
   no_with_given := true ),
 
+SomeProjectiveObject := rec(
+  installation_name := "SomeProjectiveObject",
+  filter_list := [ "object" ],
+  return_type := "object",
+  dual_operation := "SomeInjectiveObject" ),
+
+EpimorphismFromSomeProjectiveObject := rec(
+  installation_name := "EpimorphismFromSomeProjectiveObject",
+  filter_list := [ "object" ],
+  io_type := [ [ "A" ], [ "epsilon" ] ],
+  universal_object_position := "Source",
+  universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
+  return_type := "morphism",
+  dual_operation := "MonomorphismIntoSomeInjectiveObject" ),
+
+EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject := rec(
+  installation_name := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "A", "P" ], [ "epsilon" ] ],
+  universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
+  cache_name := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+  return_type := "morphism",
+  dual_operation := "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject" ),
+
+SomeInjectiveObject := rec(
+  installation_name := "SomeInjectiveObject",
+  filter_list := [ "object" ],
+  return_type := "object",
+  dual_operation := "SomeProjectiveObject" ),
+
+MonomorphismIntoSomeInjectiveObject := rec(
+  installation_name := "MonomorphismIntoSomeInjectiveObject",
+  filter_list := [ "object" ],
+  io_type := [ [ "A" ], [ "iota" ] ],
+  universal_object_position := "Range",
+  universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
+  return_type := "morphism",
+  dual_operation := "EpimorphismFromSomeProjectiveObject" ),
+
+MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject := rec(
+  installation_name := "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "A", "I" ], [ "iota" ] ],
+  cache_name := "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+  universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
+  return_type := "morphism",
+  dual_operation := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject" ),
+
+
   ) );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
