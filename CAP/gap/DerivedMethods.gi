@@ -876,6 +876,17 @@ AddDerivationToCAP( LiftAlongMonomorphism,
 end : Description := "LiftAlongMonomorphism using Lift" );
 
 ##
+AddDerivationToCAP( ProjectiveLift,
+                    [ [ Lift, 1 ] ],
+                    
+  function( alpha, beta )
+    
+    return Lift( alpha, beta );
+    
+end : Description := "ProjectiveLift using Lift" );
+
+
+##
 AddDerivationToCAP( ColiftAlongEpimorphism,
                     [ [ Colift, 1 ] ],
                     
@@ -884,6 +895,17 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
     return Colift( alpha, beta );
     
 end : Description := "ColiftAlongEpimorphism using Colift" );
+
+##
+AddDerivationToCAP( InjectiveColift,
+                    [ [ Colift, 1 ] ],
+                    
+  function( alpha, beta )
+    
+    return Colift( alpha, beta );
+    
+end : Description := "InjectiveColift using Colift" );
+
 
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,

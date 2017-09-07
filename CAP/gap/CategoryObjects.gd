@@ -363,6 +363,16 @@ DeclareAttribute( "EpimorphismFromSomeProjectiveObject",
 DeclareOperation( "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a morphism $\pi: P \rightarrow A$ with $P$ a projective, 
+#! and an epimorphism $\epsilon: B \rightarrow A$.
+#! The output is a morphism $\lambda: P \rightarrow B$ such that
+#! $\epsilon \circ \lambda = \pi$.
+#! @Returns a morphism in $\mathrm{Hom}(P,B)$
+#! @Arguments pi, epsilon
+DeclareOperation( "ProjectiveLift",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
 ## Add Operations
 
 #! @Description
@@ -384,7 +394,6 @@ DeclareOperation( "AddSomeProjectiveObject",
 DeclareOperation( "AddSomeProjectiveObject",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
@@ -404,7 +413,6 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
 DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
@@ -422,6 +430,25 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjective
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectiveLift</C>.
+#! The function $F$ maps a pair $(\pi, \epsilon)$ to a projective lift $\lambda$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectiveLift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectiveLift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectiveLift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectiveLift",
                   [ IsCapCategory, IsList ] );
 
 ###################################
@@ -462,6 +489,17 @@ DeclareAttribute( "MonomorphismIntoSomeInjectiveObject",
 DeclareOperation( "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+##
+#! @Description
+#! The arguments are a morphism $\iota: B \rightarrow A$
+#! and $\beta: B \rightarrow I$ where $I$ is an injective object.
+#! The output is a morphism $\lambda: A \rightarrow I$ such that
+#! $\lambda \circ \iota = \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(A,I)$
+#! @Arguments \iota, \beta
+DeclareOperation( "InjectiveColift",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
 ## Add Operations
 
 #! @Description
@@ -483,7 +521,6 @@ DeclareOperation( "AddSomeInjectiveObject",
 DeclareOperation( "AddSomeInjectiveObject",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
@@ -503,7 +540,6 @@ DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
 DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
                   [ IsCapCategory, IsList ] );
 
-
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
@@ -521,4 +557,24 @@ DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveO
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectiveColift</C>.
+#! The function $F$ maps a pair $(\iota, \beta)$ to an injective colift $\lambda$ if it
+#! exists, and to <C>fail</C> otherwise.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectiveColift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectiveColift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectiveColift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectiveColift",
                   [ IsCapCategory, IsList ] );

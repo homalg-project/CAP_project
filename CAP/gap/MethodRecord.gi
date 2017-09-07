@@ -59,6 +59,22 @@ Colift := rec(
   return_type := "morphism_or_fail",
   dual_operation := "Lift" ),
 
+ProjectiveLift := rec(
+  installation_name := "ProjectiveLift",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
+  cache_name := "ProjectiveLift",
+  return_type := "morphism_or_fail",
+  dual_operation := "InjectiveColift" ),
+
+InjectiveColift := rec(
+  installation_name := "InjectiveColift",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
+  cache_name := "InjectiveColift",
+  return_type := "morphism_or_fail",
+  dual_operation := "ProjectiveLift" ),
+
 IdentityMorphism := rec(
   installation_name := "IdentityMorphism",
   filter_list := [ "object" ],
