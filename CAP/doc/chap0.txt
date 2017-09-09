@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2017.07.25
+                                   2017.09.09
   
   
-                                  25 July 2017
+                                9 September 2017
   
   
                                Sebastian Gutsche
@@ -144,10 +144,12 @@
       3.5-2 AddIsZeroForMorphisms
       3.5-3 AdditionForMorphisms
       3.5-4 AddAdditionForMorphisms
-      3.5-5 AdditiveInverseForMorphisms
-      3.5-6 AddAdditiveInverseForMorphisms
-      3.5-7 ZeroMorphism
-      3.5-8 AddZeroMorphism
+      3.5-5 SubtractionForMorphisms
+      3.5-6 AddSubtractionForMorphisms
+      3.5-7 AdditiveInverseForMorphisms
+      3.5-8 AddAdditiveInverseForMorphisms
+      3.5-9 ZeroMorphism
+      3.5-10 AddZeroMorphism
     3.6 [33X[0;0YSubobject and Factorobject Operations[133X
       3.6-1 IsEqualAsSubobjects
       3.6-2 AddIsEqualAsSubobjects
@@ -203,6 +205,24 @@
     4.5 [33X[0;0YWell-Definedness of Objects[133X
       4.5-1 IsWellDefinedForObjects
       4.5-2 AddIsWellDefinedForObjects
+    4.6 [33X[0;0YProjectives[133X
+      4.6-1 SomeProjectiveObject
+      4.6-2 EpimorphismFromSomeProjectiveObject
+      4.6-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
+      4.6-4 ProjectiveLift
+      4.6-5 AddSomeProjectiveObject
+      4.6-6 AddEpimorphismFromSomeProjectiveObject
+      4.6-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
+      4.6-8 AddProjectiveLift
+    4.7 [33X[0;0YInjectives[133X
+      4.7-1 SomeInjectiveObject
+      4.7-2 MonomorphismIntoSomeInjectiveObject
+      4.7-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
+      4.7-4 InjectiveColift
+      4.7-5 AddSomeInjectiveObject
+      4.7-6 AddMonomorphismIntoSomeInjectiveObject
+      4.7-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
+      4.7-8 AddInjectiveColift
   5 [33X[0;0YCategory 2-Cells[133X
     5.1 [33X[0;0YAttributes for the Type of 2-Cells[133X
       5.1-1 Source
@@ -683,13 +703,15 @@
       10.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
       10.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
       10.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
-  11 [33X[0;0YExamples and Tests[133X
-    11.1 [33X[0;0YSpectral Sequences[133X
-    11.2 [33X[0;0YMonoidal Categories[133X
-    11.3 [33X[0;0YGeneralized Morphisms Category[133X
-    11.4 [33X[0;0YIsWellDefined[133X
-    11.5 [33X[0;0YKernel[133X
-    11.6 [33X[0;0YFiberProduct[133X
+  11 [33X[0;0YManaging derived methods[133X
+  12 [33X[0;0YMonoidal Categories[133X
+  13 [33X[0;0YExamples and Tests[133X
+    13.1 [33X[0;0YSpectral Sequences[133X
+    13.2 [33X[0;0YMonoidal Categories[133X
+    13.3 [33X[0;0YGeneralized Morphisms Category[133X
+    13.4 [33X[0;0YIsWellDefined[133X
+    13.5 [33X[0;0YKernel[133X
+    13.6 [33X[0;0YFiberProduct[133X
   
   
   [32X

@@ -255,7 +255,24 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XAdditionForMorphisms[110X. [23XF: (\alpha, \beta) \mapsto \alpha + \beta[123X.[133X
   
-  [1X3.5-5 AdditiveInverseForMorphisms[101X
+  [1X3.5-5 SubtractionForMorphisms[101X
+  
+  [29X[2XSubtractionForMorphisms[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
+  
+  [33X[0;0YThe  arguments  are two morphisms [23X\alpha, \beta: a \rightarrow b[123X. The output
+  is the addition [23X\alpha - \beta[123X.[133X
+  
+  [1X3.5-6 AddSubtractionForMorphisms[101X
+  
+  [29X[2XAddSubtractionForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XSubtractionForMorphisms[110X. [23XF: (\alpha, \beta) \mapsto \alpha - \beta[123X.[133X
+  
+  [1X3.5-7 AdditiveInverseForMorphisms[101X
   
   [29X[2XAdditiveInverseForMorphisms[102X( [3Xalpha[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
@@ -263,7 +280,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a  \rightarrow b[123X. The output is its
   additive inverse [23X-\alpha[123X.[133X
   
-  [1X3.5-6 AddAdditiveInverseForMorphisms[101X
+  [1X3.5-8 AddAdditiveInverseForMorphisms[101X
   
   [29X[2XAddAdditiveInverseForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -272,7 +289,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XAdditiveInverseForMorphisms[110X. [23XF: \alpha \mapsto -\alpha[123X.[133X
   
-  [1X3.5-7 ZeroMorphism[101X
+  [1X3.5-9 ZeroMorphism[101X
   
   [29X[2XZeroMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
@@ -280,7 +297,7 @@
   [33X[0;0YThe  arguments are two objects [23Xa[123X and [23Xb[123X. The output is the zero morphism [23X0: a
   \rightarrow b[123X.[133X
   
-  [1X3.5-8 AddZeroMorphism[101X
+  [1X3.5-10 AddZeroMorphism[101X
   
   [29X[2XAddZeroMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X

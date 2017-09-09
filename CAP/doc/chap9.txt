@@ -7,18 +7,21 @@
   
   [1X9.1 [33X[0;0YFunctions Installed by Add[133X[101X
   
-  [33X[0;0YAdd   functions   (up   to   some  exceptions)  have  the  following  syntax
-  DeclareOperation(  "AddSomeFunc",  [  IsCapCategory,  IsList, IsInt ] ); The
-  first argument is the category to which some function (e.g. KernelObject) is
-  added,  the  second  is  a list containing pairs of functions and additional
-  filters  for  the  arguments,  (e.g.  if  one  argument  is  a  morphism, an
-  additional filter could be IsMomomorphism). The third is a weight which will
-  then  be  the  weight  for  SomeFunc.  This  is described later. If only one
-  function  is  to be installed, the list can be replaced by the function. Via
-  InstallMethod, CAP installs the given function(s) as methods for the install
-  name  of  SomeFunc,  as  listed  in  the MethodRecord. If no install name is
-  given, the name SomeFunc is used. All installed methods follow the following
-  steps, described below:[133X
+  [33X[0;0YAdd functions (up to some exceptions) have the following syntax[133X
+  
+  [33X[0;0YDeclareOperation( "AddSomeFunc", [ IsCapCategory, IsList, IsInt ] );[133X
+  
+  [33X[0;0YThe   first   argument   is  the  category  to  which  some  function  (e.g.
+  KernelObject)  is  added, the second is a list containing pairs of functions
+  and  additional  filters  for  the  arguments,  (e.g.  if  one argument is a
+  morphism,  an  additional  filter  could  be IsMomomorphism). The third is a
+  weight  which will then be the weight for SomeFunc. This is described later.
+  If  only  one  function  is to be installed, the list can be replaced by the
+  function.  Via  InstallMethod, CAP installs the given function(s) as methods
+  for  the  install  name  of  SomeFunc,  as listed in the MethodRecord. If no
+  install name is given, the name SomeFunc is used.[133X
+  
+  [33X[0;0YAll installed methods follow the following steps, described below:[133X
   
   [30X    [33X[0;6YRedirect function[133X
   
@@ -145,8 +148,11 @@
   
   [33X[0;0YAlmost   all   Add   methods   in  the  CAP  kernel  are  installed  by  the
   CapInternalInstallAdd  operation.  The  definition  of  this  function is as
-  follows:  DeclareOperation(  "CapInternalInstallAdd",  [  IsRecord  ] ); The
-  record can have the following components, used as described:[133X
+  follows:[133X
+  
+  [33X[0;0YDeclareOperation( "CapInternalInstallAdd", [ IsRecord ] );[133X
+  
+  [33X[0;0YThe record can have the following components, used as described:[133X
   
   [30X    [33X[0;6Yfunction_name:  The  name  of  the  function.  This  does  not have to
         coincide  with  the  installation  name. It is used for the derivation

@@ -15,7 +15,7 @@
 <body class="chap3"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -67,10 +67,12 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87DD3BD27C49450A">3.5-2 AddIsZeroForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83B77FBB85927F14">3.5-3 AdditionForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X811BB502781CFBB9">3.5-4 AddAdditionForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83177713785DCFFC">3.5-5 AdditiveInverseForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AB78A707BF08401">3.5-6 AddAdditiveInverseForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X873412DB7BD0FBD3">3.5-7 ZeroMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X824C08CE7D7FB387">3.5-8 AddZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B6461F5873F3F9D">3.5-5 SubtractionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7ECA7B0182144B81">3.5-6 AddSubtractionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83177713785DCFFC">3.5-7 AdditiveInverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AB78A707BF08401">3.5-8 AddAdditiveInverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X873412DB7BD0FBD3">3.5-9 ZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X824C08CE7D7FB387">3.5-10 AddZeroMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C81E153817F489F">3.6 <span class="Heading">Subobject and Factorobject Operations</span></a>
 </span>
@@ -391,9 +393,27 @@
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">AdditionForMorphisms</code>. <span class="Math">F: (\alpha, \beta) \mapsto \alpha + \beta</span>.</p>
 
+<p><a id="X7B6461F5873F3F9D" name="X7B6461F5873F3F9D"></a></p>
+
+<h5>3.5-5 SubtractionForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubtractionForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
+
+<p>The arguments are two morphisms <span class="Math">\alpha, \beta: a \rightarrow b</span>. The output is the addition <span class="Math">\alpha - \beta</span>.</p>
+
+<p><a id="X7ECA7B0182144B81" name="X7ECA7B0182144B81"></a></p>
+
+<h5>3.5-6 AddSubtractionForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubtractionForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SubtractionForMorphisms</code>. <span class="Math">F: (\alpha, \beta) \mapsto \alpha - \beta</span>.</p>
+
 <p><a id="X83177713785DCFFC" name="X83177713785DCFFC"></a></p>
 
-<h5>3.5-5 AdditiveInverseForMorphisms</h5>
+<h5>3.5-7 AdditiveInverseForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveInverseForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
@@ -402,7 +422,7 @@
 
 <p><a id="X7AB78A707BF08401" name="X7AB78A707BF08401"></a></p>
 
-<h5>3.5-6 AddAdditiveInverseForMorphisms</h5>
+<h5>3.5-8 AddAdditiveInverseForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAdditiveInverseForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -411,7 +431,7 @@
 
 <p><a id="X873412DB7BD0FBD3" name="X873412DB7BD0FBD3"></a></p>
 
-<h5>3.5-7 ZeroMorphism</h5>
+<h5>3.5-9 ZeroMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ZeroMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
@@ -420,7 +440,7 @@
 
 <p><a id="X824C08CE7D7FB387" name="X824C08CE7D7FB387"></a></p>
 
-<h5>3.5-8 AddZeroMorphism</h5>
+<h5>3.5-10 AddZeroMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddZeroMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -735,7 +755,7 @@
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
