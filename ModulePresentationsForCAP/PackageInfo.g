@@ -85,7 +85,6 @@ Dependencies := rec(
                            [ "MatricesForHomalg", ">=2017.03.27" ],
                            [ "CAP", ">=0" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
-                           [ "HomologicalAlgebraForCAP", ">=0" ]
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
