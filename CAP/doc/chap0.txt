@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2017.09.09
+                                   2017.09.25
   
   
-                                9 September 2017
+                               25 September 2017
   
   
                                Sebastian Gutsche
@@ -703,15 +703,14 @@
       10.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
       10.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
       10.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
-  11 [33X[0;0YManaging derived methods[133X
-  12 [33X[0;0YMonoidal Categories[133X
-  13 [33X[0;0YExamples and Tests[133X
-    13.1 [33X[0;0YSpectral Sequences[133X
-    13.2 [33X[0;0YMonoidal Categories[133X
-    13.3 [33X[0;0YGeneralized Morphisms Category[133X
-    13.4 [33X[0;0YIsWellDefined[133X
-    13.5 [33X[0;0YKernel[133X
-    13.6 [33X[0;0YFiberProduct[133X
+  11 [33X[0;0YMonoidal Categories[133X
+  12 [33X[0;0YExamples and Tests[133X
+    12.1 [33X[0;0YSpectral Sequences[133X
+    12.2 [33X[0;0YMonoidal Categories[133X
+    12.3 [33X[0;0YGeneralized Morphisms Category[133X
+    12.4 [33X[0;0YIsWellDefined[133X
+    12.5 [33X[0;0YKernel[133X
+    12.6 [33X[0;0YFiberProduct[133X
   
   
   [32X
