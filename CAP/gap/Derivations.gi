@@ -5,8 +5,7 @@
 ##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
 ##                  Sebastian Posur,   RWTH Aachen
 ##
-#! @Chapter Managing derived methods
-#!
+#! @Chapter Managing Derived Methods
 ##
 #############################################################################
 
