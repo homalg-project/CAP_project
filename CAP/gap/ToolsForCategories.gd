@@ -102,3 +102,10 @@ DeclareGlobalFunction( "HelpForCAP" );
 #! If <A>operation</A> is given (as a string), only statistics
 #! for the given operation cache is stored.
 DeclareGlobalFunction( "CachingStatistic" );
+
+
+#! @Arguments category
+#! @Description
+#! Displays statistics for all caches in <A>category</A>.
+#! in a Browse window.
+DeclareGlobalFunction( "BrowseCachingStatistic" );

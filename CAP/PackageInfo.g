@@ -95,7 +95,7 @@ Dependencies := rec(
                            [ "ToolsForHomalg", ">= 2016.01.17" ],
                            [ "io", ">=0" ],
   ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [ [ "Browse", ">=0" ] ],
   ExternalConditions := []
 
 ),
