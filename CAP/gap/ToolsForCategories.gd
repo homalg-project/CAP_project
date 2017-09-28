@@ -95,3 +95,10 @@ DeclareGlobalFunction( "ListKnownCategoricalProperties" );
 DeclareGlobalFunction( "CAP_MergeRecords" );
 
 DeclareGlobalFunction( "HelpForCAP" );
+
+#! @Arguments category[, operation]
+#! @Description
+#! Prints statistics for all caches in <A>category</A>.
+#! If <A>operation</A> is given (as a string), only statistics
+#! for the given operation cache is stored.
+DeclareGlobalFunction( "CachingStatistic" );
