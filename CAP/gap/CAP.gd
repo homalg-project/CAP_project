@@ -324,3 +324,7 @@ DeclareGlobalFunction( "DeactivateCachingOfCategory" );
 DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
 DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
 #! @EndGroup
+
+DeclareProperty( "HasEnoughProjectives", IsCapCategory );
+
+DeclareProperty( "HasEnoughInjectives", IsCapCategory );
