@@ -60,6 +60,10 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "IsStrictMonoidalCategory"
               ] ) );
 
+DeclareProperty( "HasEnoughProjectives", IsCapCategory );
+
+DeclareProperty( "HasEnoughInjectives", IsCapCategory );
+
 DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
 
 InstallValue( CATEGORIES_FAMILY_PROPERTIES,
