@@ -73,7 +73,17 @@ IsSymmetricClosedMonoidalCategory  := Concatenation( [
 IsRigidSymmetricClosedMonoidalCategory  := Concatenation( [ 
 "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
 "MorphismFromBidualWithGivenBidual"
-], ~.IsSymmetricClosedMonoidalCategory )
+], ~.IsSymmetricClosedMonoidalCategory ),
+
+IsAbelianCategoryWithEnoughProjectives := Concatenation( [
+"SomeProjectiveObject",
+"EpimorphismFromSomeProjectiveObject"
+], ~.IsAbelianCategory ),
+
+IsAbelianCategoryWithEnoughInjectives := Concatenation( [
+"SomeInjectiveObject",
+"MonomorphismIntoSomeInjectiveObject"
+], ~.IsAbelianCategory )
 
 ) );
 

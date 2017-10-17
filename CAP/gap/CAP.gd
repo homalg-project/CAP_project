@@ -57,7 +57,9 @@ InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
                 "IsSymmetricMonoidalCategory",
                 "IsSymmetricClosedMonoidalCategory",
                 "IsRigidSymmetricClosedMonoidalCategory",
-                "IsStrictMonoidalCategory"
+                "IsStrictMonoidalCategory",
+                "IsAbelianCategoryWithEnoughProjectives",
+                "IsAbelianCategoryWithEnoughInjectives"
               ] ) );
 
 DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
