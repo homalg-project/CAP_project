@@ -21,3 +21,6 @@
 
 * ListPrimitivelyInstalledOperationsOfCategory( category )
   Returns a list of strings of all primitively installed operations of <category>.
+
+* ListCAPPrepareFunctions( )
+  Lists all prepare functions currently available.
