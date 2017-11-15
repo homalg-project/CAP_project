@@ -709,3 +709,42 @@ InstallGlobalFunction( HelpForCAP,
     Print( string );
     
 end );
+
+InstallGlobalFunction( CachingStatistic,
+  
+  function( category, arg... )
+    local operations, current_cache_name, current_cache;
+    
+    operations := arg;
+    
+    if Length( operations ) = 0 then
+        operations := RecNames( category!.caches );
+    fi;
+    
+    operations := ShallowCopy( operations );
+    Sort( operations );
+    
+    Print( "Caching statistics for category ", Name( category ), "\n" );
+    Print( "===============================================\n" );
+    
+    for current_cache_name in operations do
+        Print( current_cache_name, ": " );
+        if not IsBound( category!.caches.(current_cache_name) ) then
+            Print( "not installed yet\n" );
+            continue;
+        fi;
+        current_cache := category!.caches.(current_cache_name);
+        if IsDisabledCache( current_cache ) then
+            Print( "disabled\n" );
+            continue;
+        fi;
+        if IsWeakCache( current_cache ) then
+            Print( "weak cache, " );
+        elif IsCrispCache( current_cache ) then
+            Print( "crisp cache, " );
+        fi;
+        Print( "hits: ", String( current_cache!.hit_counter ), ", misses: ", String( current_cache!.miss_counter ), ", " );
+        Print( String( Length( BoundPositions( current_cache!.value ) ) ), " objects stored\n" );
+    od;
+    
+end );
