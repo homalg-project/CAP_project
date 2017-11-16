@@ -107,5 +107,7 @@ DeclareGlobalFunction( "CachingStatistic" );
 #! @Arguments category
 #! @Description
 #! Displays statistics for all caches in <A>category</A>.
-#! in a Browse window.
+#! in a Browse window. Here "status" indicates if the cache is weak, strong, or inactive,
+#! "hits" is the number of successful cache accesses, "misses" the number of unsuccessful cache
+#! accesses, and "stored" the number of objects currently stored in the cache.
 DeclareGlobalFunction( "BrowseCachingStatistic" );
