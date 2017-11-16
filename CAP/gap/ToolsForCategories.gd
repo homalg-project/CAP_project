@@ -95,3 +95,19 @@ DeclareGlobalFunction( "ListKnownCategoricalProperties" );
 DeclareGlobalFunction( "CAP_MergeRecords" );
 
 DeclareGlobalFunction( "HelpForCAP" );
+
+#! @Arguments category[, operation]
+#! @Description
+#! Prints statistics for all caches in <A>category</A>.
+#! If <A>operation</A> is given (as a string), only statistics
+#! for the given operation cache is stored.
+DeclareGlobalFunction( "CachingStatistic" );
+
+
+#! @Arguments category
+#! @Description
+#! Displays statistics for all caches in <A>category</A>.
+#! in a Browse window. Here "status" indicates if the cache is weak, strong, or inactive,
+#! "hits" is the number of successful cache accesses, "misses" the number of unsuccessful cache
+#! accesses, and "stored" the number of objects currently stored in the cache.
+DeclareGlobalFunction( "BrowseCachingStatistic" );

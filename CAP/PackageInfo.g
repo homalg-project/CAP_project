@@ -9,7 +9,7 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
   ## this line prevents merge conflicts
-  "2017.09.25", ## Sebas' version
+  "2017.09.28", ## Sebas' version
   ## this line prevents merge conflicts
   "2017.02.15", ## Sepp's version
 ] ),
@@ -95,7 +95,7 @@ Dependencies := rec(
                            [ "ToolsForHomalg", ">= 2016.01.17" ],
                            [ "io", ">=0" ],
   ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [ [ "Browse", ">=0" ] ],
   ExternalConditions := []
 
 ),
