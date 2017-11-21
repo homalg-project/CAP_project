@@ -39,3 +39,5 @@ ReadPackage( "CAP", "gap/MethodRecord.gd" );
 ReadPackage( "CAP", "gap/ConstructiveCategoriesRecord.gd" );
 
 ReadPackage( "CAP", "gap/PrintingFunctions.gd" );
+
+ReadPackage( "CAP", "gap/PrepareFunctions.gd" );
