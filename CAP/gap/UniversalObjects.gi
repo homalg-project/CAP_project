@@ -43,6 +43,18 @@ InstallMethod( KernelObjectFunctorial,
     
 end );
 
+##
+InstallMethod( KernelObjectFunctorialWithGivenKernelObjects,
+               [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+                 IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+                                  
+  function( s, alpha, mu, nu, alpha_prime, r )
+    
+    return KernelObjectFunctorialWithGivenKernelObjects(
+             s, alpha, mu, alpha_prime, r );
+    
+end );
+
 ####################################
 ##
 ## Cokernel
@@ -73,6 +85,18 @@ InstallMethod( CokernelObjectFunctorial,
   function( alpha, nu, alpha_prime )
     
     return CokernelObjectFunctorialWithGivenCokernelObjects( CokernelObject( alpha ), alpha, nu, alpha_prime, CokernelObject( alpha_prime ) );
+    
+end );
+
+##
+InstallMethod( CokernelObjectFunctorialWithGivenCokernelObjects,
+               [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+                 IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+               
+  function( s, alpha, mu, nu, alpha_prime, r )
+    
+    return CokernelObjectFunctorialWithGivenCokernelObjects(
+             s, alpha, nu, alpha_prime, r );
     
 end );
 

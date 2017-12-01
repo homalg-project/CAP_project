@@ -216,6 +216,21 @@ DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
                     IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
+#! The arguments are an object $s = \mathrm{KernelObject}( \alpha )$,
+#! four morphisms
+#! $\alpha: A \rightarrow B$, $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$, $\alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{KernelObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
+#! given by the functorality of the kernel.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$
+#! @Arguments s, alpha, mu, nu, alpha_prime, r
+DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+                    IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+
+#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>KernelObjectFunctorialWithGivenKernelObjects</C>.
@@ -445,6 +460,21 @@ DeclareOperation( "CokernelObjectFunctorial",
 DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
                     IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are an object $s = \mathrm{CokernelObject}( \alpha )$,
+#! four morphisms
+#! $\alpha: A \rightarrow B, \mu: A \rightarrow A', \nu: B \rightarrow B', \alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{CokernelObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
+#! given by the functorality of the cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, alpha, mu, nu, alpha_prime, r
+DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+                    IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
 
 DeclareSynonym( "CokernelFunctorialWithGivenCokernelObjects", CokernelObjectFunctorialWithGivenCokernelObjects );
 ## FIXME:
