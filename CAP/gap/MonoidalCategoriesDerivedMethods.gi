@@ -330,7 +330,7 @@ AddDerivationToCAP( InternalHomOnMorphismsWithGivenInternalHoms,
                      );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "InternalHomOnMorphismsWithGivenInternalHoms using functorality of Dual and TensorProduct" );
+      Description := "InternalHomOnMorphismsWithGivenInternalHoms using functoriality of Dual and TensorProduct" );
 
 ##
 AddDerivationToCAP( MorphismFromBidualWithGivenBidual,

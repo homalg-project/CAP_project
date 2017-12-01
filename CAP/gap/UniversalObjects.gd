@@ -184,7 +184,7 @@ DeclareOperation( "AddKernelLiftWithGivenKernelObject",
 #! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu: A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$ of morphisms.
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
-#! given by the functorality of the kernel.
+#! given by the functoriality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$
 #! @Arguments L
 DeclareOperation( "KernelObjectFunctorial",
@@ -195,7 +195,7 @@ DeclareOperation( "KernelObjectFunctorial",
 #! $\alpha: A \rightarrow B$, $\mu: A \rightarrow A'$, $\alpha': A' \rightarrow B'$.
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
-#! given by the functorality of the kernel.
+#! given by the functoriality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$
 #! @Arguments alpha, mu, alpha_prime
 DeclareOperation( "KernelObjectFunctorial",
@@ -208,7 +208,7 @@ DeclareOperation( "KernelObjectFunctorial",
 #! and an object $r = \mathrm{KernelObject}( \alpha' )$.
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
-#! given by the functorality of the kernel.
+#! given by the functoriality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, alpha, mu, alpha_prime, r
 DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
@@ -222,7 +222,7 @@ DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
 #! and an object $r = \mathrm{KernelObject}( \alpha' )$.
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
-#! given by the functorality of the kernel.
+#! given by the functoriality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, alpha, mu, nu, alpha_prime, r
 DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
@@ -426,7 +426,7 @@ DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
 #! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu:A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$.
 #! The output is the morphism
 #! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
-#! given by the functorality of the cokernel.
+#! given by the functoriality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))$
 #! @Arguments L
 DeclareOperation( "CokernelObjectFunctorial",
@@ -441,7 +441,7 @@ DeclareSynonym( "CokernelFunctorial", CokernelObjectFunctorial );
 #! $\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'$.
 #! The output is the morphism
 #! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
-#! given by the functorality of the cokernel.
+#! given by the functoriality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))$
 #! @Arguments alpha, nu, alpha_prime
 DeclareOperation( "CokernelObjectFunctorial",
@@ -454,7 +454,7 @@ DeclareOperation( "CokernelObjectFunctorial",
 #! and an object $r = \mathrm{CokernelObject}( \alpha' )$.
 #! The output is the morphism
 #! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
-#! given by the functorality of the cokernel.
+#! given by the functoriality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, alpha, nu, alpha_prime, r
 DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
@@ -468,7 +468,7 @@ DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
 #! and an object $r = \mathrm{CokernelObject}( \alpha' )$.
 #! The output is the morphism
 #! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
-#! given by the functorality of the cokernel.
+#! given by the functoriality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, alpha, mu, nu, alpha_prime, r
 DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
@@ -1673,7 +1673,7 @@ DeclareOperation( "AddDirectSum",
 #! The argument is a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$.
 #! The output is a morphism
 #! $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$
-#! given by the functorality of the direct sum.
+#! given by the functoriality of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigoplus_{i=1}^n S_i' )$
 #! @Arguments L
 DeclareOperation( "DirectSumFunctorial",
@@ -1685,7 +1685,7 @@ DeclareOperation( "DirectSumFunctorial",
 #! and an object $d_2 = \bigoplus_{i=1}^n S_i'$.
 #! The output is a morphism
 #! $d_1 \rightarrow d_2$
-#! given by the functorality of the direct sum.
+#! given by the functoriality of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}( d_1, d_2 )$
 #! @Arguments d_1, L, d_2
 DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
@@ -1957,7 +1957,7 @@ DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
 #! The argument is a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$.
 #! The output is a morphism
 #! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
-#! given by the functorality of the coproduct.
+#! given by the functoriality of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, \bigsqcup_{i=1}^n I_i')$
 #! @Arguments L
 DeclareOperation( "CoproductFunctorial",
@@ -1969,7 +1969,7 @@ DeclareOperation( "CoproductFunctorial",
 #! and an object $r = \bigsqcup_{i=1}^n I_i'$.
 #! The output is a morphism
 #! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
-#! given by the functorality of the coproduct.
+#! given by the functoriality of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, L, r
 DeclareOperation( "CoproductFunctorialWithGivenCoproducts",
@@ -2201,7 +2201,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
 #! The argument is a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$.
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
-#! given by the functorality of the direct product.
+#! given by the functoriality of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}( \prod_{i=1}^n P_i, \prod_{i=1}^n P_i' )$
 #! @Arguments L
 DeclareOperation( "DirectProductFunctorial",
@@ -2213,7 +2213,7 @@ DeclareOperation( "DirectProductFunctorial",
 #! and an object $r = \prod_{i=1}^n P_i'$.
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
-#! given by the functorality of the direct product.
+#! given by the functoriality of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, L, r
 DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
@@ -2637,7 +2637,7 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
 #! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$.
 #! The output is the morphism
 #! $\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$
-#! given by the functorality of the fiber product.
+#! given by the functoriality of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ))$
 #! @Arguments L
 DeclareOperation( "FiberProductFunctorial",
@@ -2652,7 +2652,7 @@ DeclareOperation( "FiberProductFunctorial",
 #! and an object $r = \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$.
 #! The output is the morphism
 #! $s \rightarrow r$
-#! given by the functorality of the fiber product.
+#! given by the functoriality of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, L, r
 DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
@@ -3077,7 +3077,7 @@ DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
 #! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$.
 #! The output is the morphism
 #! $\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$
-#! given by the functorality of the pushout.
+#! given by the functoriality of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n ), \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ))$
 #! @Arguments L
 DeclareOperation( "PushoutFunctorial",
@@ -3092,7 +3092,7 @@ DeclareOperation( "PushoutFunctorial",
 #! and an object $r = \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$.
 #! The output is the morphism
 #! $s \rightarrow r$
-#! given by the functorality of the pushout.
+#! given by the functoriality of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, L, r
 DeclareOperation( "PushoutFunctorialWithGivenPushouts",
