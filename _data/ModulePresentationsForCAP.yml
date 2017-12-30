@@ -1,19 +1,19 @@
 name: ModulePresentationsForCAP
-version: 2017.09.09
-date: 09/09/2017
+version: 2017.12.30
+date: 30/12/2017
 description: Category R-pres for CAP
 
 authors:
     - name: Sebastian Gutsche
       url: http://www.uni-siegen.de/fb6/rmi/
     - name: Sebastian Posur
-      url: http://www.uni-siegen.de/fb6/rmi/
+      url: https://sebastianpos.github.io
 
 maintainers:
     - name: Sebastian Gutsche
       url: http://www.uni-siegen.de/fb6/rmi/
     - name: Sebastian Posur
-      url: http://www.uni-siegen.de/fb6/rmi/
+      url: https://sebastianpos.github.io
 
 GAP: ">= 4.6"
 
@@ -37,9 +37,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/ModulePresentationsForC
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2017.09.09/ModulePresentationsForCAP-2017.09.09.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2017.12.30/ModulePresentationsForCAP-2017.12.30.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2017.09.09/ModulePresentationsForCAP-2017.09.09.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2017.12.30/ModulePresentationsForCAP-2017.12.30.zip
 
 abstract: 
 
