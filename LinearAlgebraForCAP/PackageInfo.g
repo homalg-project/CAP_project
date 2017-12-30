@@ -13,7 +13,7 @@ PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
 
 Version := Maximum( [
-  "2017.09.09", ## Sebas' version
+  "2017.12.30", ## Sebas' version
   ## this line prevents merge conflicts
   "2017.06.28", ## Sepp's version
 ] ),

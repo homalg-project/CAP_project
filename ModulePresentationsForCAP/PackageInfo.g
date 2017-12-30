@@ -4,7 +4,7 @@ PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2017.09.09", # Sebas version
+           "2017.12.30", # Sebas version
            ##
            "2017.04.10", # Sepps version
            ##
