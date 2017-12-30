@@ -4,7 +4,7 @@ PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2017.09.09", # Sebas version
+           "2017.12.30", # Sebas version
            ##
            "2017.04.10", # Sepps version
            ##
@@ -37,7 +37,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Posur",
-    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    WWWHome := "https://sebastianpos.github.io",
     Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",

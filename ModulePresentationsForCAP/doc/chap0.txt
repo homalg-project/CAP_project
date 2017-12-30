@@ -6,10 +6,10 @@
                            [1X Category R-pres for CAP [101X
   
   
-                                   2017.09.09
+                                   2017.12.30
   
   
-                                9 September 2017
+                                30 December 2017
   
   
                                Sebastian Gutsche
@@ -30,7 +30,7 @@
   
   Sebastian Posur
       Email:    [7Xmailto:sebastian.posur@uni-siegen.de[107X
-      Homepage: [7Xhttp://www.uni-siegen.de/fb6/rmi/[107X
+      Homepage: [7Xhttps://sebastianpos.github.io[107X
       Address:  [33X[0;14YDepartment Mathematik[133X
                 [33X[0;14YUniversität Siegen[133X
                 [33X[0;14YWalter-Flex-Straße 3[133X
