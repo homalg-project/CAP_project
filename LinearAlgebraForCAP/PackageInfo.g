@@ -13,7 +13,7 @@ PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
 
 Version := Maximum( [
-  "2017.09.09", ## Sebas' version
+  "2017.12.30", ## Sebas' version
   ## this line prevents merge conflicts
   "2017.06.28", ## Sepp's version
 ] ),
@@ -43,7 +43,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Posur",
-    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    WWWHome := "https://sebastianpos.github.io",
     Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
