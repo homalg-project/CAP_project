@@ -15,7 +15,7 @@
 <body class="chap6"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -38,7 +38,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78D5B94A7EF4D4F0">6.1-11 KernelObjectFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X787AE8F07F7A062C">6.1-12 KernelObjectFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F61FE0B82AF4CDB">6.1-13 KernelObjectFunctorialWithGivenKernelObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BE607577847C4DC">6.1-14 AddKernelObjectFunctorialWithGivenKernelObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A17922D869CCEB5">6.1-14 KernelObjectFunctorialWithGivenKernelObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BE607577847C4DC">6.1-15 AddKernelObjectFunctorialWithGivenKernelObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X875F177A82BF9B8B">6.2 <span class="Heading">Cokernel</span></a>
 </span>
@@ -56,7 +57,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78E421227FB90A70">6.2-11 CokernelObjectFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X837889ED7BD6CBED">6.2-12 CokernelObjectFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BA172F07A431626">6.2-13 CokernelObjectFunctorialWithGivenCokernelObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B162B6E7D60FFE7">6.2-14 AddCokernelObjectFunctorialWithGivenCokernelObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F59A455873709D3">6.2-14 CokernelObjectFunctorialWithGivenCokernelObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B162B6E7D60FFE7">6.2-15 AddCokernelObjectFunctorialWithGivenCokernelObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X797A74DE8267C974">6.3 <span class="Heading">Zero Object</span></a>
 </span>
@@ -433,7 +435,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KernelObjectFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )</span></p>
 
-<p>The argument is a list <span class="Math">L = [ \alpha: A \rightarrow B, [ \mu: A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]</span> of morphisms. The output is the morphism <span class="Math">\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )</span> given by the functorality of the kernel.</p>
+<p>The argument is a list <span class="Math">L = [ \alpha: A \rightarrow B, [ \mu: A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]</span> of morphisms. The output is the morphism <span class="Math">\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )</span> given by the functoriality of the kernel.</p>
 
 <p><a id="X787AE8F07F7A062C" name="X787AE8F07F7A062C"></a></p>
 
@@ -442,7 +444,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KernelObjectFunctorial</code>( <var class="Arg">alpha</var>, <var class="Arg">mu</var>, <var class="Arg">alpha_prime</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )</span></p>
 
-<p>The arguments are three morphisms <span class="Math">\alpha: A \rightarrow B</span>, <span class="Math">\mu: A \rightarrow A'</span>, <span class="Math">\alpha': A' \rightarrow B'</span>. The output is the morphism <span class="Math">\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )</span> given by the functorality of the kernel.</p>
+<p>The arguments are three morphisms <span class="Math">\alpha: A \rightarrow B</span>, <span class="Math">\mu: A \rightarrow A'</span>, <span class="Math">\alpha': A' \rightarrow B'</span>. The output is the morphism <span class="Math">\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )</span> given by the functoriality of the kernel.</p>
 
 <p><a id="X7F61FE0B82AF4CDB" name="X7F61FE0B82AF4CDB"></a></p>
 
@@ -451,11 +453,20 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KernelObjectFunctorialWithGivenKernelObjects</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">mu</var>, <var class="Arg">alpha_prime</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
-<p>The arguments are an object <span class="Math">s = \mathrm{KernelObject}( \alpha )</span>, three morphisms <span class="Math">\alpha: A \rightarrow B</span>, <span class="Math">\mu: A \rightarrow A'</span>, <span class="Math">\alpha': A' \rightarrow B'</span>, and an object <span class="Math">r = \mathrm{KernelObject}( \alpha' )</span>. The output is the morphism <span class="Math">\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )</span> given by the functorality of the kernel.</p>
+<p>The arguments are an object <span class="Math">s = \mathrm{KernelObject}( \alpha )</span>, three morphisms <span class="Math">\alpha: A \rightarrow B</span>, <span class="Math">\mu: A \rightarrow A'</span>, <span class="Math">\alpha': A' \rightarrow B'</span>, and an object <span class="Math">r = \mathrm{KernelObject}( \alpha' )</span>. The output is the morphism <span class="Math">\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )</span> given by the functoriality of the kernel.</p>
+
+<p><a id="X7A17922D869CCEB5" name="X7A17922D869CCEB5"></a></p>
+
+<h5>6.1-14 KernelObjectFunctorialWithGivenKernelObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KernelObjectFunctorialWithGivenKernelObjects</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">mu</var>, <var class="Arg">nu</var>, <var class="Arg">alpha_prime</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
+
+<p>The arguments are an object <span class="Math">s = \mathrm{KernelObject}( \alpha )</span>, four morphisms <span class="Math">\alpha: A \rightarrow B</span>, <span class="Math">\mu: A \rightarrow A'</span>, <span class="Math">\nu: B \rightarrow B'</span>, <span class="Math">\alpha': A' \rightarrow B'</span>, and an object <span class="Math">r = \mathrm{KernelObject}( \alpha' )</span>. The output is the morphism <span class="Math">\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )</span> given by the functoriality of the kernel.</p>
 
 <p><a id="X7BE607577847C4DC" name="X7BE607577847C4DC"></a></p>
 
-<h5>6.1-14 AddKernelObjectFunctorialWithGivenKernelObjects</h5>
+<h5>6.1-15 AddKernelObjectFunctorialWithGivenKernelObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddKernelObjectFunctorialWithGivenKernelObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -579,7 +590,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CokernelObjectFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))</span></p>
 
-<p>The argument is a list <span class="Math">L = [ \alpha: A \rightarrow B, [ \mu:A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]</span>. The output is the morphism <span class="Math">\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )</span> given by the functorality of the cokernel.</p>
+<p>The argument is a list <span class="Math">L = [ \alpha: A \rightarrow B, [ \mu:A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]</span>. The output is the morphism <span class="Math">\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )</span> given by the functoriality of the cokernel.</p>
 
 <p><a id="X837889ED7BD6CBED" name="X837889ED7BD6CBED"></a></p>
 
@@ -588,7 +599,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CokernelObjectFunctorial</code>( <var class="Arg">alpha</var>, <var class="Arg">nu</var>, <var class="Arg">alpha_prime</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))</span></p>
 
-<p>The arguments are three morphisms <span class="Math">\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'</span>. The output is the morphism <span class="Math">\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )</span> given by the functorality of the cokernel.</p>
+<p>The arguments are three morphisms <span class="Math">\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'</span>. The output is the morphism <span class="Math">\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )</span> given by the functoriality of the cokernel.</p>
 
 <p><a id="X7BA172F07A431626" name="X7BA172F07A431626"></a></p>
 
@@ -597,11 +608,20 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CokernelObjectFunctorialWithGivenCokernelObjects</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">nu</var>, <var class="Arg">alpha_prime</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
 
-<p>The arguments are an object <span class="Math">s = \mathrm{CokernelObject}( \alpha )</span>, three morphisms <span class="Math">\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'</span>, and an object <span class="Math">r = \mathrm{CokernelObject}( \alpha' )</span>. The output is the morphism <span class="Math">\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )</span> given by the functorality of the cokernel.</p>
+<p>The arguments are an object <span class="Math">s = \mathrm{CokernelObject}( \alpha )</span>, three morphisms <span class="Math">\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'</span>, and an object <span class="Math">r = \mathrm{CokernelObject}( \alpha' )</span>. The output is the morphism <span class="Math">\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )</span> given by the functoriality of the cokernel.</p>
+
+<p><a id="X7F59A455873709D3" name="X7F59A455873709D3"></a></p>
+
+<h5>6.2-14 CokernelObjectFunctorialWithGivenCokernelObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CokernelObjectFunctorialWithGivenCokernelObjects</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">mu</var>, <var class="Arg">nu</var>, <var class="Arg">alpha_prime</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
+
+<p>The arguments are an object <span class="Math">s = \mathrm{CokernelObject}( \alpha )</span>, four morphisms <span class="Math">\alpha: A \rightarrow B, \mu: A \rightarrow A', \nu: B \rightarrow B', \alpha': A' \rightarrow B'</span>, and an object <span class="Math">r = \mathrm{CokernelObject}( \alpha' )</span>. The output is the morphism <span class="Math">\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )</span> given by the functoriality of the cokernel.</p>
 
 <p><a id="X7B162B6E7D60FFE7" name="X7B162B6E7D60FFE7"></a></p>
 
-<h5>6.2-14 AddCokernelObjectFunctorialWithGivenCokernelObjects</h5>
+<h5>6.2-15 AddCokernelObjectFunctorialWithGivenCokernelObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCokernelObjectFunctorialWithGivenCokernelObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1428,7 +1448,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigoplus_{i=1}^n S_i' )</span></p>
 
-<p>The argument is a list of morphisms <span class="Math">L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )</span>. The output is a morphism <span class="Math">\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'</span> given by the functorality of the direct sum.</p>
+<p>The argument is a list of morphisms <span class="Math">L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )</span>. The output is a morphism <span class="Math">\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'</span> given by the functoriality of the direct sum.</p>
 
 <p><a id="X7B45854C80D79805" name="X7B45854C80D79805"></a></p>
 
@@ -1437,7 +1457,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumFunctorialWithGivenDirectSums</code>( <var class="Arg">d_1</var>, <var class="Arg">L</var>, <var class="Arg">d_2</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( d_1, d_2 )</span></p>
 
-<p>The arguments are an object <span class="Math">d_1 = \bigoplus_{i=1}^n S_i</span>, a list of morphisms <span class="Math">L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )</span>, and an object <span class="Math">d_2 = \bigoplus_{i=1}^n S_i'</span>. The output is a morphism <span class="Math">d_1 \rightarrow d_2</span> given by the functorality of the direct sum.</p>
+<p>The arguments are an object <span class="Math">d_1 = \bigoplus_{i=1}^n S_i</span>, a list of morphisms <span class="Math">L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )</span>, and an object <span class="Math">d_2 = \bigoplus_{i=1}^n S_i'</span>. The output is a morphism <span class="Math">d_1 \rightarrow d_2</span> given by the functoriality of the direct sum.</p>
 
 <p><a id="X829D88B6845FA373" name="X829D88B6845FA373"></a></p>
 
@@ -1624,7 +1644,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoproductFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, \bigsqcup_{i=1}^n I_i')</span></p>
 
-<p>The argument is a list <span class="Math">L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )</span>. The output is a morphism <span class="Math">\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'</span> given by the functorality of the coproduct.</p>
+<p>The argument is a list <span class="Math">L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )</span>. The output is a morphism <span class="Math">\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'</span> given by the functoriality of the coproduct.</p>
 
 <p><a id="X84F4AEB479FCE23F" name="X84F4AEB479FCE23F"></a></p>
 
@@ -1633,7 +1653,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoproductFunctorialWithGivenCoproducts</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
 
-<p>The arguments are an object <span class="Math">s = \bigsqcup_{i=1}^n I_i</span>, a list <span class="Math">L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )</span>, and an object <span class="Math">r = \bigsqcup_{i=1}^n I_i'</span>. The output is a morphism <span class="Math">\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'</span> given by the functorality of the coproduct.</p>
+<p>The arguments are an object <span class="Math">s = \bigsqcup_{i=1}^n I_i</span>, a list <span class="Math">L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )</span>, and an object <span class="Math">r = \bigsqcup_{i=1}^n I_i'</span>. The output is a morphism <span class="Math">\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'</span> given by the functoriality of the coproduct.</p>
 
 <p><a id="X7B23923D84D6FC9F" name="X7B23923D84D6FC9F"></a></p>
 
@@ -1793,7 +1813,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \prod_{i=1}^n P_i, \prod_{i=1}^n P_i' )</span></p>
 
-<p>The argument is a list of morphisms <span class="Math">L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}</span>. The output is a morphism <span class="Math">\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'</span> given by the functorality of the direct product.</p>
+<p>The argument is a list of morphisms <span class="Math">L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}</span>. The output is a morphism <span class="Math">\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'</span> given by the functoriality of the direct product.</p>
 
 <p><a id="X7BFF346E827DF0E3" name="X7BFF346E827DF0E3"></a></p>
 
@@ -1802,7 +1822,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductFunctorialWithGivenDirectProducts</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
-<p>The arguments are an object <span class="Math">s = \prod_{i=1}^n P_i</span>, a list of morphisms <span class="Math">L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}</span>, and an object <span class="Math">r = \prod_{i=1}^n P_i'</span>. The output is a morphism <span class="Math">\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'</span> given by the functorality of the direct product.</p>
+<p>The arguments are an object <span class="Math">s = \prod_{i=1}^n P_i</span>, a list of morphisms <span class="Math">L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}</span>, and an object <span class="Math">r = \prod_{i=1}^n P_i'</span>. The output is a morphism <span class="Math">\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'</span> given by the functoriality of the direct product.</p>
 
 <p><a id="X789E69C583A0E118" name="X789E69C583A0E118"></a></p>
 
@@ -2083,7 +2103,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiberProductFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ))</span></p>
 
-<p>The argument is a list of triples of morphisms <span class="Math">L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i</span> for <span class="Math">i = 1, \dots, n</span>. The output is the morphism <span class="Math">\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )</span> given by the functorality of the fiber product.</p>
+<p>The argument is a list of triples of morphisms <span class="Math">L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i</span> for <span class="Math">i = 1, \dots, n</span>. The output is the morphism <span class="Math">\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )</span> given by the functoriality of the fiber product.</p>
 
 <p><a id="X8250A0F1827BCD68" name="X8250A0F1827BCD68"></a></p>
 
@@ -2092,7 +2112,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiberProductFunctorialWithGivenFiberProducts</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
 
-<p>The arguments are an object <span class="Math">s = \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} )</span>, a list of triples of morphisms <span class="Math">L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i</span> for <span class="Math">i = 1, \dots, n</span>, and an object <span class="Math">r = \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )</span>. The output is the morphism <span class="Math">s \rightarrow r</span> given by the functorality of the fiber product.</p>
+<p>The arguments are an object <span class="Math">s = \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} )</span>, a list of triples of morphisms <span class="Math">L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i</span> for <span class="Math">i = 1, \dots, n</span>, and an object <span class="Math">r = \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )</span>. The output is the morphism <span class="Math">s \rightarrow r</span> given by the functoriality of the fiber product.</p>
 
 <p><a id="X85CCD05C7D3D6B7C" name="X85CCD05C7D3D6B7C"></a></p>
 
@@ -2371,7 +2391,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PushoutFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n ), \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ))</span></p>
 
-<p>The argument is a list <span class="Math">L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i</span> for <span class="Math">i = 1, \dots n</span>. The output is the morphism <span class="Math">\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )</span> given by the functorality of the pushout.</p>
+<p>The argument is a list <span class="Math">L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i</span> for <span class="Math">i = 1, \dots n</span>. The output is the morphism <span class="Math">\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )</span> given by the functoriality of the pushout.</p>
 
 <p><a id="X7805E8767D5729C0" name="X7805E8767D5729C0"></a></p>
 
@@ -2380,7 +2400,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PushoutFunctorialWithGivenPushouts</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
 
-<p>The arguments are an object <span class="Math">s = \mathrm{Pushout}( ( \beta_i )_{i=1}^n )</span>, a list <span class="Math">L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i</span> for <span class="Math">i = 1, \dots n</span>, and an object <span class="Math">r = \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )</span>. The output is the morphism <span class="Math">s \rightarrow r</span> given by the functorality of the pushout.</p>
+<p>The arguments are an object <span class="Math">s = \mathrm{Pushout}( ( \beta_i )_{i=1}^n )</span>, a list <span class="Math">L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i</span> for <span class="Math">i = 1, \dots n</span>, and an object <span class="Math">r = \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )</span>. The output is the morphism <span class="Math">s \rightarrow r</span> given by the functoriality of the pushout.</p>
 
 <p><a id="X810036A887D287AC" name="X810036A887D287AC"></a></p>
 
@@ -2837,7 +2857,7 @@
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

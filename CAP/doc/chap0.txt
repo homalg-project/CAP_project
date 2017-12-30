@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2017.09.25
+                                   2017.12.30
   
   
-                               25 September 2017
+                                30 December 2017
   
   
                                Sebastian Gutsche
@@ -32,7 +32,7 @@
   
   Sebastian Posur
       Email:    [7Xmailto:sebastian.posur@uni-siegen.de[107X
-      Homepage: [7Xhttp://www.uni-siegen.de/fb6/rmi/[107X
+      Homepage: [7Xhttps://sebastianpos.github.io[107X
       Address:  [33X[0;14YDepartment Mathematik[133X
                 [33X[0;14YUniversität Siegen[133X
                 [33X[0;14YWalter-Flex-Straße 3[133X
@@ -256,7 +256,8 @@
       6.1-11 KernelObjectFunctorial
       6.1-12 KernelObjectFunctorial
       6.1-13 KernelObjectFunctorialWithGivenKernelObjects
-      6.1-14 AddKernelObjectFunctorialWithGivenKernelObjects
+      6.1-14 KernelObjectFunctorialWithGivenKernelObjects
+      6.1-15 AddKernelObjectFunctorialWithGivenKernelObjects
     6.2 [33X[0;0YCokernel[133X
       6.2-1 CokernelObject
       6.2-2 CokernelProjection
@@ -271,7 +272,8 @@
       6.2-11 CokernelObjectFunctorial
       6.2-12 CokernelObjectFunctorial
       6.2-13 CokernelObjectFunctorialWithGivenCokernelObjects
-      6.2-14 AddCokernelObjectFunctorialWithGivenCokernelObjects
+      6.2-14 CokernelObjectFunctorialWithGivenCokernelObjects
+      6.2-15 AddCokernelObjectFunctorialWithGivenCokernelObjects
     6.3 [33X[0;0YZero Object[133X
       6.3-1 ZeroObject
       6.3-2 ZeroObject
@@ -703,14 +705,21 @@
       10.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
       10.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
       10.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
+      10.2-10 CachingStatistic
+      10.2-11 BrowseCachingStatistic
   11 [33X[0;0YMonoidal Categories[133X
-  12 [33X[0;0YExamples and Tests[133X
-    12.1 [33X[0;0YSpectral Sequences[133X
-    12.2 [33X[0;0YMonoidal Categories[133X
-    12.3 [33X[0;0YGeneralized Morphisms Category[133X
-    12.4 [33X[0;0YIsWellDefined[133X
-    12.5 [33X[0;0YKernel[133X
-    12.6 [33X[0;0YFiberProduct[133X
+  12 [33X[0;0YPrepare functions[133X
+    12.1 [33X[0;0YPrepare functions[133X
+      12.1-1 CAPOperationPrepareFunction
+      12.1-2 CAPAddPrepareFunction
+      12.1-3 ListCAPPrepareFunctions
+  13 [33X[0;0YExamples and Tests[133X
+    13.1 [33X[0;0YSpectral Sequences[133X
+    13.2 [33X[0;0YMonoidal Categories[133X
+    13.3 [33X[0;0YGeneralized Morphisms Category[133X
+    13.4 [33X[0;0YIsWellDefined[133X
+    13.5 [33X[0;0YKernel[133X
+    13.6 [33X[0;0YFiberProduct[133X
   
   
   [32X

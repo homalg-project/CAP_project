@@ -124,7 +124,7 @@
   [33X[0;0YThe  argument  is a list [23XL = [ \alpha: A \rightarrow B, [ \mu: A \rightarrow
   A',  \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ][123X of morphisms. The
   output   is   the   morphism  [23X\mathrm{KernelObject}(  \alpha  )  \rightarrow
-  \mathrm{KernelObject}( \alpha' )[123X given by the functorality of the kernel.[133X
+  \mathrm{KernelObject}( \alpha' )[123X given by the functoriality of the kernel.[133X
   
   [1X6.1-12 KernelObjectFunctorial[101X
   
@@ -135,7 +135,7 @@
   [33X[0;0YThe   arguments  are  three  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\mu:  A
   \rightarrow  A'[123X,  [23X\alpha':  A'  \rightarrow  B'[123X.  The output is the morphism
   [23X\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )[123X
-  given by the functorality of the kernel.[133X
+  given by the functoriality of the kernel.[133X
   
   [1X6.1-13 KernelObjectFunctorialWithGivenKernelObjects[101X
   
@@ -146,9 +146,21 @@
   morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\mu:  A  \rightarrow A'[123X, [23X\alpha': A'
   \rightarrow  B'[123X,  and  an  object  [23Xr = \mathrm{KernelObject}( \alpha' )[123X. The
   output   is   the   morphism  [23X\mathrm{KernelObject}(  \alpha  )  \rightarrow
-  \mathrm{KernelObject}( \alpha' )[123X given by the functorality of the kernel.[133X
+  \mathrm{KernelObject}( \alpha' )[123X given by the functoriality of the kernel.[133X
   
-  [1X6.1-14 AddKernelObjectFunctorialWithGivenKernelObjects[101X
+  [1X6.1-14 KernelObjectFunctorialWithGivenKernelObjects[101X
+  
+  [29X[2XKernelObjectFunctorialWithGivenKernelObjects[102X( [3Xs[103X, [3Xalpha[103X, [3Xmu[103X, [3Xnu[103X, [3Xalpha_prime[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs  =  \mathrm{KernelObject}( \alpha )[123X, four
+  morphisms [23X\alpha: A \rightarrow B[123X, [23X\mu: A \rightarrow A'[123X, [23X\nu: B \rightarrow
+  B'[123X,  [23X\alpha':  A'  \rightarrow  B'[123X, and an object [23Xr = \mathrm{KernelObject}(
+  \alpha'  )[123X.  The  output  is  the  morphism  [23X\mathrm{KernelObject}( \alpha )
+  \rightarrow  \mathrm{KernelObject}(  \alpha' )[123X given by the functoriality of
+  the kernel.[133X
+  
+  [1X6.1-15 AddKernelObjectFunctorialWithGivenKernelObjects[101X
   
   [29X[2XAddKernelObjectFunctorialWithGivenKernelObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -285,7 +297,7 @@
   [33X[0;0YThe  argument  is  a list [23XL = [ \alpha: A \rightarrow B, [ \mu:A \rightarrow
   A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ][123X. The output is the
   morphism       [23X\mathrm{CokernelObject}(       \alpha      )      \rightarrow
-  \mathrm{CokernelObject}(   \alpha'  )[123X  given  by  the  functorality  of  the
+  \mathrm{CokernelObject}(  \alpha'  )[123X  given  by  the  functoriality  of  the
   cokernel.[133X
   
   [1X6.2-12 CokernelObjectFunctorial[101X
@@ -297,7 +309,7 @@
   [33X[0;0YThe   arguments  are  three  morphisms  [23X\alpha:  A  \rightarrow  B,  \nu:  B
   \rightarrow  B',  \alpha':  A'  \rightarrow  B'[123X.  The output is the morphism
   [23X\mathrm{CokernelObject}(   \alpha   )  \rightarrow  \mathrm{CokernelObject}(
-  \alpha' )[123X given by the functorality of the cokernel.[133X
+  \alpha' )[123X given by the functoriality of the cokernel.[133X
   
   [1X6.2-13 CokernelObjectFunctorialWithGivenCokernelObjects[101X
   
@@ -308,10 +320,22 @@
   morphisms  [23X\alpha:  A  \rightarrow  B,  \nu:  B  \rightarrow B', \alpha': A'
   \rightarrow  B'[123X,  and  an object [23Xr = \mathrm{CokernelObject}( \alpha' )[123X. The
   output   is  the  morphism  [23X\mathrm{CokernelObject}(  \alpha  )  \rightarrow
-  \mathrm{CokernelObject}(   \alpha'  )[123X  given  by  the  functorality  of  the
+  \mathrm{CokernelObject}(  \alpha'  )[123X  given  by  the  functoriality  of  the
   cokernel.[133X
   
-  [1X6.2-14 AddCokernelObjectFunctorialWithGivenCokernelObjects[101X
+  [1X6.2-14 CokernelObjectFunctorialWithGivenCokernelObjects[101X
+  
+  [29X[2XCokernelObjectFunctorialWithGivenCokernelObjects[102X( [3Xs[103X, [3Xalpha[103X, [3Xmu[103X, [3Xnu[103X, [3Xalpha_prime[103X, [3Xr[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs = \mathrm{CokernelObject}( \alpha )[123X, four
+  morphisms [23X\alpha: A \rightarrow B, \mu: A \rightarrow A', \nu: B \rightarrow
+  B',  \alpha':  A' \rightarrow B'[123X, and an object [23Xr = \mathrm{CokernelObject}(
+  \alpha'  )[123X.  The  output  is  the morphism [23X\mathrm{CokernelObject}( \alpha )
+  \rightarrow \mathrm{CokernelObject}( \alpha' )[123X given by the functoriality of
+  the cokernel.[133X
+  
+  [1X6.2-15 AddCokernelObjectFunctorialWithGivenCokernelObjects[101X
   
   [29X[2XAddCokernelObjectFunctorialWithGivenCokernelObjects[102X( [3XC[103X, [3XF[103X ) [32X operation
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1157,7 +1181,7 @@
   [33X[0;0YThe  argument  is  a  list  of  morphisms [23XL = ( \mu_1: S_1 \rightarrow S_1',
   \dots,   \mu_n:   S_n   \rightarrow   S_n'  )[123X.  The  output  is  a  morphism
   [23X\bigoplus_{i=1}^n  S_i  \rightarrow  \bigoplus_{i=1}^n  S_i'[123X  given  by  the
-  functorality of the direct sum.[133X
+  functoriality of the direct sum.[133X
   
   [1X6.6-38 DirectSumFunctorialWithGivenDirectSums[101X
   
@@ -1167,7 +1191,7 @@
   [33X[0;0YThe arguments are an object [23Xd_1 = \bigoplus_{i=1}^n S_i[123X, a list of morphisms
   [23XL = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )[123X, and
   an  object  [23Xd_2  =  \bigoplus_{i=1}^n  S_i'[123X.  The  output  is a morphism [23Xd_1
-  \rightarrow d_2[123X given by the functorality of the direct sum.[133X
+  \rightarrow d_2[123X given by the functoriality of the direct sum.[133X
   
   [1X6.6-39 AddDirectSumFunctorialWithGivenDirectSums[101X
   
@@ -1358,7 +1382,7 @@
   
   [33X[0;0YThe  argument is a list [23XL = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n
   \rightarrow   I_n'  )[123X.  The  output  is  a  morphism  [23X\bigsqcup_{i=1}^n  I_i
-  \rightarrow   \bigsqcup_{i=1}^n  I_i'[123X  given  by  the  functorality  of  the
+  \rightarrow  \bigsqcup_{i=1}^n  I_i'[123X  given  by  the  functoriality  of  the
   coproduct.[133X
   
   [1X6.7-17 CoproductFunctorialWithGivenCoproducts[101X
@@ -1369,7 +1393,7 @@
   [33X[0;0YThe  arguments  are an object [23Xs = \bigsqcup_{i=1}^n I_i[123X, a list [23XL = ( \mu_1:
   I_1  \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )[123X, and an object [23Xr
   =  \bigsqcup_{i=1}^n  I_i'[123X.  The  output is a morphism [23X\bigsqcup_{i=1}^n I_i
-  \rightarrow   \bigsqcup_{i=1}^n  I_i'[123X  given  by  the  functorality  of  the
+  \rightarrow  \bigsqcup_{i=1}^n  I_i'[123X  given  by  the  functoriality  of  the
   coproduct.[133X
   
   [1X6.7-18 AddCoproductFunctorialWithGivenCoproducts[101X
@@ -1539,7 +1563,7 @@
   
   [33X[0;0YThe   argument   is  a  list  of  morphisms  [23XL  =  (\mu_i:  P_i  \rightarrow
   P'_i)_{i=1\dots  n}[123X.  The output is a morphism [23X\prod_{i=1}^n P_i \rightarrow
-  \prod_{i=1}^n P_i'[123X given by the functorality of the direct product.[133X
+  \prod_{i=1}^n P_i'[123X given by the functoriality of the direct product.[133X
   
   [1X6.8-14 DirectProductFunctorialWithGivenDirectProducts[101X
   
@@ -1549,7 +1573,7 @@
   [33X[0;0YThe  arguments  are an object [23Xs = \prod_{i=1}^n P_i[123X, a list of morphisms [23XL =
   (\mu_i:  P_i \rightarrow P'_i)_{i=1\dots n}[123X, and an object [23Xr = \prod_{i=1}^n
   P_i'[123X.  The  output is a morphism [23X\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n
-  P_i'[123X given by the functorality of the direct product.[133X
+  P_i'[123X given by the functoriality of the direct product.[133X
   
   [1X6.8-15 AddDirectProductFunctorialWithGivenDirectProducts[101X
   
@@ -1872,7 +1896,7 @@
   B'[123X  such that [23X\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i[123X for [23Xi =
   1,  \dots,  n[123X.  The  output is the morphism [23X\mathrm{FiberProduct}( ( \beta_i
   )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots
-  n} )[123X given by the functorality of the fiber product.[133X
+  n} )[123X given by the functoriality of the fiber product.[133X
   
   [1X6.9-27 FiberProductFunctorialWithGivenFiberProducts[101X
   
@@ -1885,7 +1909,7 @@
   n}  )[123X  such  that  there exists a morphism [23X\beta: B \rightarrow B'[123X such that
   [23X\beta_i'  \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i[123X for [23Xi = 1, \dots, n[123X,
   and  an  object [23Xr = \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )[123X. The
-  output  is  the  morphism  [23Xs  \rightarrow r[123X given by the functorality of the
+  output  is  the  morphism  [23Xs \rightarrow r[123X given by the functoriality of the
   fiber product.[133X
   
   [1X6.9-28 AddFiberProductFunctorialWithGivenFiberProducts[101X
@@ -2207,7 +2231,7 @@
   that  there  exists  a  morphism  [23X\beta: B \rightarrow B'[123X such that [23X\beta_i'
   \circ  \beta  \sim_{B,  I_i'}  \mu_i  \circ  \beta_i[123X for [23Xi = 1, \dots n[123X. The
   output  is  the morphism [23X\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow
-  \mathrm{Pushout}(  (  \beta_i'  )_{i=1}^n )[123X given by the functorality of the
+  \mathrm{Pushout}(  (  \beta_i' )_{i=1}^n )[123X given by the functoriality of the
   pushout.[133X
   
   [1X6.10-28 PushoutFunctorialWithGivenPushouts[101X
@@ -2221,7 +2245,7 @@
   morphism  [23X\beta:  B  \rightarrow  B'[123X such that [23X\beta_i' \circ \beta \sim_{B,
   I_i'}  \mu_i  \circ  \beta_i[123X  for  [23Xi  =  1,  \dots  n[123X,  and  an  object  [23Xr =
   \mathrm{Pushout}(  (  \beta_i'  )_{i=1}^n  )[123X.  The  output is the morphism [23Xs
-  \rightarrow r[123X given by the functorality of the pushout.[133X
+  \rightarrow r[123X given by the functoriality of the pushout.[133X
   
   [1X6.10-29 AddPushoutFunctorialWithGivenPushouts[101X
   

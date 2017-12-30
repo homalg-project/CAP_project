@@ -116,3 +116,20 @@
   in  both  lists,  the resulting lists only contains this pair once, with the
   higher multiple from both lists.[133X
   
+  [1X10.2-10 CachingStatistic[101X
+  
+  [29X[2XCachingStatistic[102X( [3Xcategory[103X[, [3Xoperation[103X] ) [32X function
+  
+  [33X[0;0YPrints  statistics  for  all caches in [3Xcategory[103X. If [3Xoperation[103X is given (as a
+  string), only statistics for the given operation cache is stored.[133X
+  
+  [1X10.2-11 BrowseCachingStatistic[101X
+  
+  [29X[2XBrowseCachingStatistic[102X( [3Xcategory[103X ) [32X function
+  
+  [33X[0;0YDisplays  statistics  for  all  caches in [3Xcategory[103X. in a Browse window. Here
+  "status"  indicates if the cache is weak, strong, or inactive, "hits" is the
+  number  of  successful  cache  accesses, "misses" the number of unsuccessful
+  cache  accesses,  and "stored" the number of objects currently stored in the
+  cache.[133X
+  
