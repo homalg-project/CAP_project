@@ -472,6 +472,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     local recnames, current_recname, current_rec, arg_list, i, with_given_name, with_given_name_length,
           object_name, object_func;
     
+    CAP_INTERNAL_ENHANCE_NAME_RECORD( record );
+    
     recnames := RecNames( record );
     
     AddOperationsToDerivationGraph( CAP_INTERNAL_DERIVATION_GRAPH, recnames );
@@ -507,17 +509,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
         
         current_rec!.with_given_without_given_name_pair := fail;
         
-        if current_rec.filter_list[ 1 ] = IsList then
-            
-            arg_list := [ 1, Length( current_rec.filter_list ) ];
-            
-        else
-            
-            arg_list := [ 1 ];
-            
-        fi;
-        
-        current_rec!.universal_object_arg_list := arg_list;
+        arg_list := current_rec!.universal_object_arg_list;
         
         if current_rec!.is_with_given then
             
