@@ -4,4 +4,6 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gd");
+ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gd" );

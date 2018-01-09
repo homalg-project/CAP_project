@@ -72,7 +72,8 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2015.08.17" ]
+                           [ "CAP", ">= 2015.08.17" ],
+                           [ "MatricesForHomalg", ">= 2017.05.24" ]
                          ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

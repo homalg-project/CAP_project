@@ -4,6 +4,8 @@
 ##
 ##  Copyright 2018, Sebastian Posur, University of Siegen
 ##
+#! @Chapter Freyd categories
+#!
 ##
 #############################################################################
 
