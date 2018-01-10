@@ -8,3 +8,5 @@ ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesDerivedMethods.gi" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategory.gi" );

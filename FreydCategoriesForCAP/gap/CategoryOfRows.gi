@@ -39,7 +39,7 @@ InstallMethod( CategoryOfRows,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local category, to_be_finalized;
+    local category;
     
     category := CreateCapCategory( Concatenation( "Category of rows over ", RingName( homalg_ring ) ) );
     
@@ -536,32 +536,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         return RankOfObject( object ) = 0;
       
       end );
-#     
-#     ##
-#     AddIsMonomorphism( category,
-#       function( morphism )
-#       
-#         return RowRankOfMatrix( UnderlyingMatrix( morphism ) ) = RankOfObject( Source( morphism ) );
-#       
-#     end );
-#     
-#     ##
-#     AddIsEpimorphism( category,
-#       function( morphism )
-#         
-#         return ColumnRankOfMatrix( UnderlyingMatrix( morphism ) ) = RankOfObject( Range( morphism ) );
-#         
-#     end );
-#     
-#     ##
-#     AddIsIsomorphism( category,
-#       function( morphism )
-#         
-#         return RankOfObject( Range( morphism ) ) = RankOfObject( Source( morphism ) )
-#                and ColumnRankOfMatrix( UnderlyingMatrix( morphism ) ) = RankOfObject( Range( morphism ) );
-#         
-#     end );
-
+    
 end );
 
 ####################################

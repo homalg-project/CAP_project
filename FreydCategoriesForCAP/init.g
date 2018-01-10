@@ -7,3 +7,5 @@
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategory.gd" );

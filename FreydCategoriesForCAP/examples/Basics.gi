@@ -35,4 +35,10 @@ inj1 := InjectionOfFirstCofactorOfWeakBiPushout( gamma + gamma, gamma );
 inj2 := InjectionOfSecondCofactorOfWeakBiPushout( gamma + gamma, gamma );
 IsEqualForMorphisms( PreCompose( gamma + gamma, inj1 ), PreCompose( gamma, inj2 ) );
 WeakKernelLift( WeakCokernelProjection( gamma ), gamma );
+
+freyd := FreydCategory( cat );
+IsAbelianCategory( freyd );
+obj_gamma := FreydCategoryObject( gamma );
+FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );
+
 #! @EndExample
