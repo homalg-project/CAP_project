@@ -57,3 +57,12 @@ DeclareAttribute( "MorphismDatum",
 
 DeclareAttribute( "MorphismWitness",
                   IsFreydCategoryMorphism );
+
+####################################
+##
+#! @Section Operations
+##
+####################################
+
+DeclareOperationWithCache( "WitnessForBeingCongruent",
+                           [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ] );

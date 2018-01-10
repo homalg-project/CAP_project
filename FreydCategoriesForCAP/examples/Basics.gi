@@ -35,10 +35,11 @@ inj1 := InjectionOfFirstCofactorOfWeakBiPushout( gamma + gamma, gamma );
 inj2 := InjectionOfSecondCofactorOfWeakBiPushout( gamma + gamma, gamma );
 IsEqualForMorphisms( PreCompose( gamma + gamma, inj1 ), PreCompose( gamma, inj2 ) );
 WeakKernelLift( WeakCokernelProjection( gamma ), gamma );
-
 freyd := FreydCategory( cat );
 IsAbelianCategory( freyd );
 obj_gamma := FreydCategoryObject( gamma );
-FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );
-
+f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );
+witness := MorphismWitness( f );
+g := FreydCategoryMorphism( obj_gamma, ZeroMorphism( obj2, obj2 ), obj_gamma );
+IsCongruentForMorphisms( f, g );
 #! @EndExample

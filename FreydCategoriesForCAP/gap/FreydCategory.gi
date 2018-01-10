@@ -47,6 +47,25 @@ InstallMethod( FreydCategory,
         
     fi;
     
+    ## for IsCongruentForMorphisms to be correct
+    if not CanCompute( underlying_category, "Lift" ) then
+        
+        Error( "The given category should be able to compute Lift" );
+        
+    fi;
+    
+    if not CanCompute( underlying_category, "SubtractionForMorphisms" ) then
+        
+        Error( "The given category should be able to compute SubtractionForMorphisms" );
+        
+    fi;
+    
+    if not CanCompute( underlying_category, "PreCompose" ) then
+        
+        Error( "The given category should be able to compute PreCompose" );
+        
+    fi;
+    
     freyd_category := CreateCapCategory( Concatenation( "Freyd category of ", Name( underlying_category ) ) );
     
     SetFilterObj( freyd_category, IsFreydCategory );
@@ -137,17 +156,26 @@ InstallMethod( MorphismWitness,
                [ IsFreydCategoryMorphism ],
                
   function( morphism )
-    local underlying_category;
-    
-    underlying_category := UnderlyingCategory( CapCategory( morphism ) );
-    
-    if not ForAll( [ "Lift", "PreCompose" ], f -> CanCompute( underlying_category, f ) ) then
-        
-        TryNextMethod();
-        
-    fi;
     
     return Lift( PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) );
+    
+end );
+
+####################################
+##
+## Operations
+##
+####################################
+
+InstallMethodWithCacheFromObject( WitnessForBeingCongruent,
+                                  [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ],
+                                   
+  function( morphism_1, morphism_2 )
+    local subtraction;
+    
+    subtraction := SubtractionForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+    
+    return Lift( subtraction, RelationMorphism( Range( morphism_1 ) ) );
     
 end );
 
@@ -168,7 +196,73 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     ##
     AddIsEqualForCacheForMorphisms( category,
       IsIdenticalObj );
-
+    
+    ## Well-defined for objects and morphisms
+    ##
+    AddIsWellDefinedForObjects( category,
+      function( object )
+        
+        if not IsWellDefined( RelationMorphism( object ) ) then
+            
+            return false;
+            
+        fi;
+        
+        # all tests passed, so it is well-defined
+        return true;
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForMorphisms( category,
+      function( morphism )
+        
+        if MorphismWitness( morphism ) = fail then
+            
+            return false;
+            
+        fi;
+        
+        # all tests passed, so it is well-defined
+        return true;
+        
+    end );
+    
+    ## Equality Basic Operations for Objects and Morphisms
+    ##
+    AddIsEqualForObjects( category,
+      function( object_1, object_2 )
+      
+        return IsEqualForMorphisms( RelationMorphism( object_1 ), RelationMorphism( object_2 ) );
+      
+    end );
+    
+    ##
+    AddIsEqualForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        
+        return IsEqualForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        
+    end );
+    
+    ##
+    AddIsCongruentForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        
+        if WitnessForBeingCongruent( morphism_1, morphism_2 ) = fail then
+            
+            return false;
+            
+        else
+            
+            return true;
+            
+        fi;
+        
+    end );
+    
+    
+    
 end );
 
 

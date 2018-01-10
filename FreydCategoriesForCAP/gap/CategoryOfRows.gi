@@ -153,58 +153,58 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     AddIsEqualForCacheForMorphisms( category,
       IsIdenticalObj );
 
-     
+    
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
       function( object )
-
+        
         if not IsIdenticalObj( category, CapCategory( object ) ) then
-
+          
           return false;
-
+          
         elif RankOfObject( object ) < 0 then
-
+          
           return false;
-
+          
         fi;
-
+        
         # all tests passed, so it is well-defined
         return true;
-
+        
     end );
-
+    
     ##
     AddIsWellDefinedForMorphisms( category,
       function( morphism )
-
+        
         if not IsIdenticalObj( category, CapCategory( Source( morphism ) ) ) then
-
+          
           return false;
-
+          
         elif not IsIdenticalObj( category, CapCategory( morphism ) ) then
-
+          
           return false;
-
+          
         elif not IsIdenticalObj( category, CapCategory( Range( morphism ) ) ) then
-
+          
           return false;
-
+          
         elif NrRows( UnderlyingMatrix( morphism ) ) <> RankOfObject( Source( morphism ) ) then
-
+          
           return false;
-
+          
         elif NrColumns( UnderlyingMatrix( morphism ) ) <> RankOfObject( Range( morphism ) ) then
-
+          
           return false;
-
+          
         fi;
-
+        
         # all tests passed, so it is well-defined
         return true;
-
+        
     end );
-      
+    
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
