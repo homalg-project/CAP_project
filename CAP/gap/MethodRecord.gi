@@ -2458,38 +2458,65 @@ MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject := rec(
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, position, without_given_name, functorial;
+    local recnames, current_recname, current_rec, position, without_given_name, functorial, diagram_arguments;
     
     recnames := RecNames( record );
     
     for current_recname in recnames do
-      
-      current_rec := record.(current_recname);
-      
-      position := PositionSublist( current_recname, "WithGiven" );
-      
-      current_rec.is_with_given := false;
-      
-      if position <> fail then
-         
-         without_given_name := current_recname{[ 1 .. position - 1 ]};
-         
-         if without_given_name in recnames then
-           
-           current_rec.is_with_given := true;
-           
-         fi;
-         
-      fi;
-      
-      functorial := PositionProperty( recnames, i -> StartsWith( i, Concatenation( current_recname, "Functorial" ) ) );
-      
-      if functorial <> fail then
+        
+        current_rec := record.(current_recname);
+        
+        if not IsBound( current_rec!.is_with_given ) then
+            
+            position := PositionSublist( current_recname, "WithGiven" );
+            
+            current_rec.is_with_given := false;
+            
+            if position <> fail then
+                
+                without_given_name := current_recname{[ 1 .. position - 1 ]};
+                
+                if without_given_name in recnames then
+                    
+                    current_rec.is_with_given := true;
+                    
+                fi;
+                
+            fi;
+        
+        fi;
+        
+        if not IsBound( current_rec.functorial ) then
+            
+            functorial := PositionProperty( recnames, i -> StartsWith( i, Concatenation( current_recname, "Functorial" ) ) );
+            
+            if functorial <> fail then
+                
+                current_rec.functorial := recnames[ functorial ];
+                
+            fi;
+            
+        fi;
           
-          current_rec.functorial := recnames[ functorial ];
-          
-      fi;
-      
+        if not IsBound( current_rec.number_of_diagram_arguments ) then
+            current_rec.number_of_diagram_arguments := 1;
+        fi;
+        
+        if not IsBound( current_rec.universal_object_arg_list ) then
+            diagram_arguments := current_rec.number_of_diagram_arguments;
+            diagram_arguments := List( [ 1 .. diagram_arguments ], IdFunc );
+            
+            if ForAll( current_rec.filter_list{diagram_arguments}, i -> i = IsList ) then
+                
+                current_rec.universal_object_arg_list := Concatenation( diagram_arguments, [ Length( current_rec.filter_list ) ] );
+                
+            else
+                
+                current_rec.universal_object_arg_list := diagram_arguments;
+                
+            fi;
+        fi;
+        
     od;
     
 end );
