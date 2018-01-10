@@ -6,6 +6,58 @@
 ##
 #############################################################################
 
+## Derivations for basic operations with existing WithGiven
+
+##
+AddWithGivenDerivationPairToCAP( ProjectionInSecondFactorOfWeakBiFiberProduct,
+                    
+  function( alpha, beta )
+    local first_projection;
+    
+    first_projection := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, beta );
+    
+    return Lift( PreCompose( first_projection, alpha ), beta );
+    
+end : Description := "ProjectionInSecondFactorOfWeakBiFiberProduct using ProjectionInFirstFactorOfWeakBiFiberProduct and Lift" );
+
+##
+AddWithGivenDerivationPairToCAP( ProjectionInFirstFactorOfWeakBiFiberProduct,
+                    
+  function( alpha, beta )
+    local second_projection;
+    
+    second_projection := ProjectionInSecondFactorOfWeakBiFiberProduct( alpha, beta );
+    
+    return Lift( PreCompose( second_projection, beta ), alpha );
+    
+end : Description := "ProjectionInFirstFactorOfWeakBiFiberProduct using ProjectionInSecondFactorOfWeakBiFiberProduct and Lift" );
+
+##
+AddWithGivenDerivationPairToCAP( InjectionOfSecondCofactorOfWeakBiPushout,
+                    
+  function( alpha, beta )
+    local first_injection;
+    
+    first_injection := InjectionOfFirstCofactorOfWeakBiPushout( alpha, beta );
+    
+    return Colift( beta, PreCompose( alpha, first_injection ) );
+    
+end : Description := "InjectionOfSecondCofactorOfWeakBiPushout using InjectionOfFirstCofactorOfWeakBiPushout and Colift" );
+
+##
+AddWithGivenDerivationPairToCAP( InjectionOfFirstCofactorOfWeakBiPushout,
+                    
+  function( alpha, beta )
+    local second_injection;
+    
+    second_injection := InjectionOfSecondCofactorOfWeakBiPushout( alpha, beta );
+    
+    return Colift( alpha, PreCompose( beta, second_injection ) );
+    
+end : Description := "InjectionOfFirstCofactorOfWeakBiPushout using InjectionOfSecondCofactorOfWeakBiPushout and Colift" );
+
+
+## Derivations for basic operations without existing WithGiven
 ##
 AddDerivationToCAP( WeakKernelObject,
                     
@@ -61,32 +113,6 @@ AddDerivationToCAP( WeakBiFiberProduct,
 end : Description := "WeakBiFiberProduct as the source of ProjectionInSecondFactorOfWeakBiFiberProduct" );
 
 ##
-AddDerivationToCAP( ProjectionInSecondFactorOfWeakBiFiberProduct,
-                    
-  function( alpha, beta )
-    local first_projection;
-    
-    first_projection := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, beta );
-    
-    return Lift( PreCompose( first_projection, alpha ), beta );
-    
-end : Description := "ProjectionInSecondFactorOfWeakBiFiberProduct using ProjectionInFirstFactorOfWeakBiFiberProduct and Lift" );
-
-##
-AddDerivationToCAP( ProjectionInFirstFactorOfWeakBiFiberProduct,
-                    
-  function( alpha, beta )
-    local second_projection;
-    
-    second_projection := ProjectionInSecondFactorOfWeakBiFiberProduct( alpha, beta );
-    
-    return Lift( PreCompose( second_projection, beta ), alpha );
-    
-end : Description := "ProjectionInFirstFactorOfWeakBiFiberProduct using ProjectionInSecondFactorOfWeakBiFiberProduct and Lift" );
-
-###
-
-##
 AddDerivationToCAP( WeakBiPushout,
                     
   function( alpha, beta )
@@ -103,31 +129,6 @@ AddDerivationToCAP( WeakBiPushout,
     return Range( InjectionOfSecondCofactorOfWeakBiPushout( alpha, beta ) );
     
 end : Description := "WeakBiPushout as the range of InjectionOfSecondCofactorOfWeakBiPushout" );
-
-
-##
-AddDerivationToCAP( InjectionOfSecondCofactorOfWeakBiPushout,
-                    
-  function( alpha, beta )
-    local first_injection;
-    
-    first_injection := InjectionOfFirstCofactorOfWeakBiPushout( alpha, beta );
-    
-    return Colift( beta, PreCompose( alpha, first_injection ) );
-    
-end : Description := "InjectionOfSecondCofactorOfWeakBiPushout using InjectionOfFirstCofactorOfWeakBiPushout and Colift" );
-
-##
-AddDerivationToCAP( InjectionOfFirstCofactorOfWeakBiPushout,
-                    
-  function( alpha, beta )
-    local second_injection;
-    
-    second_injection := InjectionOfSecondCofactorOfWeakBiPushout( alpha, beta );
-    
-    return Colift( alpha, PreCompose( beta, second_injection ) );
-    
-end : Description := "InjectionOfFirstCofactorOfWeakBiPushout using InjectionOfSecondCofactorOfWeakBiPushout and Colift" );
 
 ##
 AddDerivationToCAP( IsMonomorphism,

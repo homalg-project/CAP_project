@@ -34,4 +34,5 @@ IsEqualForMorphisms( PreCompose( pi1, alpha ), PreCompose( pi2, beta ) );
 inj1 := InjectionOfFirstCofactorOfWeakBiPushout( gamma + gamma, gamma );
 inj2 := InjectionOfSecondCofactorOfWeakBiPushout( gamma + gamma, gamma );
 IsEqualForMorphisms( PreCompose( gamma + gamma, inj1 ), PreCompose( gamma, inj2 ) );
+WeakKernelLift( WeakCokernelProjection( gamma ), gamma );
 #! @EndExample
