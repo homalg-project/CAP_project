@@ -185,6 +185,22 @@ end );
 ##
 ####################################
 
+##
+InstallGlobalFunction( TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY,
+  function( f, result, arg... )
+    local entry;
+    
+    entry := ToDoListEntry(
+                   List( arg, mor -> [ mor, "MorphismWitness" ] ),
+                   result,
+                   "MorphismWitness",
+                   f
+    );
+    
+    AddToToDoList( entry );
+    
+end );
+
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
   
   function( category )
@@ -218,6 +234,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( morphism )
         
         if MorphismWitness( morphism ) = fail then
+            
+            return false;
+            
+        fi;
+        
+        if not IsCongruentForMorphisms( PreCompose( MorphismWitness( morphism ), RelationMorphism( Range( morphism ) ) ),
+               PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ) ) then
             
             return false;
             
@@ -261,21 +284,238 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
+    ## Basic Operations for a Category
+    ##
+    AddIdentityMorphism( category,
+      
+      function( object )
+        local identity_morphism, relation_morphism;
+        
+        relation_morphism := RelationMorphism( object );
+        
+        identity_morphism := FreydCategoryMorphism( object, IdentityMorphism( Range( relation_morphism ) ), object );
+        
+#         SetMorphismWitness( identity_morphism, IdentityMorphism( Source( relation_morphism ) ) );
+        
+        return identity_morphism;
+        
+    end );
     
+    ##
+    AddPreCompose( category,
+      
+      function( morphism_1, morphism_2 )
+        local composition;
+        
+        composition := PreCompose( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        
+        composition := FreydCategoryMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
+        
+#         TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY(
+#           function( ) return PreCompose( MorphismWitness( morphism_1 ), MorphismWitness( morphism_2 ) ); end,
+#           composition,
+#           morphism_1,
+#           morphism_2
+#         );
+        
+        return composition;
+        
+    end );
+    
+    ## Basic Operations for an Additive Category
+    ##
+    
+    ##
+    AddAdditionForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        local addition;
+        
+        addition := FreydCategoryMorphism(
+                      Source( morphism_1 ),
+                      AdditionForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
+                      Range( morphism_1 )
+                    );
+        
+#         TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY(
+#           function( ) return AdditionForMorphisms( MorphismWitness( morphism_1 ), MorphismWitness( morphism_2 ) ); end,
+#           addition,
+#           morphism_1,
+#           morphism_2
+#         );
+        
+        return addition;
+        
+    end );
+    
+    ##
+    AddAdditiveInverseForMorphisms( category,
+      function( morphism )
+        local additive_inverse;
+        
+        additive_inverse := FreydCategoryMorphism(
+                              Source( morphism ),
+                              AdditiveInverseForMorphisms( MorphismDatum( morphism ) ),
+                              Range( morphism )
+                            );
+        
+#         TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY(
+#           function( ) return AdditiveInverseForMorphisms( MorphismWitness( morphism ) ); end,
+#           additive_inverse,
+#           morphism
+#         );
+        
+        return additive_inverse;
+        
+    end );
+    
+    ##
+    AddZeroMorphism( category,
+      function( source, range )
+        local zero_morphism;
+        
+        zero_morphism := FreydCategoryMorphism(
+                           source,
+                           ZeroMorphism( Range( RelationMorphism( source ) ), Range( RelationMorphism( range ) ) ),
+                           range
+                         );
+        
+#         SetMorphismWitness( zero_morphism, ZeroMorphism( Source( RelationMorphism( source ) ), Source( RelationMorphism( range ) ) ) );
+        
+        return zero_morphism;
+        
+    end );
+    
+    ##
+    AddZeroObject( category,
+      function( )
+        
+        return FreydCategoryObject( ZeroObjectFunctorial( UnderlyingCategory( category ) ) );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
+      function( sink, zero_object )
+        local universal_morphism;
+        
+        universal_morphism := FreydCategoryMorphism(
+                                sink,
+                                UniversalMorphismIntoZeroObject( Range( RelationMorphism( sink ) ) ),
+                                zero_object
+                              );
+        
+        return universal_morphism;
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
+      function( source, zero_object )
+        local universal_morphism;
+        
+        universal_morphism := FreydCategoryMorphism(
+                                zero_object,
+                                UniversalMorphismFromZeroObject( Range( RelationMorphism( source ) ) ),
+                                source
+                              );
+        
+        return universal_morphism;
+        
+    end );
+    
+    ##
+    AddDirectSum( category,
+      function( object_list )
+        
+        return FreydCategoryObject( DirectSumFunctorial( List( object_list, RelationMorphism ) ) );
+        
+    end );
+    
+    ##
+    AddDirectSumFunctorialWithGivenDirectSums( category,
+      function( direct_sum_source, diagram, direct_sum_range )
+        
+        return FreydCategoryMorphism( direct_sum_source,
+                                      DirectSumFunctorial( List( diagram, MorphismDatum ) ),
+                                      direct_sum_range );
+        
+    end );
+    
+    ##
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
+      function( object_list, projection_number, direct_sum_object )
+        
+        return FreydCategoryMorphism( direct_sum_object,
+                                      ProjectionInFactorOfDirectSum( List( object_list, obj -> Range( RelationMorphism( obj ) ) ), projection_number ),
+                                      object_list[projection_number]
+                                    );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
+      function( diagram, source, direct_sum_object )
+        
+        return FreydCategoryMorphism( Source( source[1] ),
+                                      UniversalMorphismIntoDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
+                                                                      List( source, mor -> MorphismDatum( mor ) ) ),
+                                      direct_sum_object
+                                    );
+        
+    end );
+    
+    ##
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
+      function( object_list, injection_number, direct_sum_object )
+        
+        return FreydCategoryMorphism( object_list[injection_number],
+                                      InjectionOfCofactorOfDirectSum( List( object_list, obj -> Range( RelationMorphism( obj ) ) ), injection_number ),
+                                      direct_sum_object
+                                    );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
+      function( diagram, sink, direct_sum_object )
+        
+        return FreydCategoryMorphism( direct_sum_object,
+                                      UniversalMorphismFromDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
+                                                                      List( sink, mor -> MorphismDatum( mor ) ) ),
+                                      Range( sink[1] )
+                                    );
+        
+    end );
+    
+end );
+
+####################################
+##
+## View
+##
+####################################
+
+##
+InstallMethod( Display,
+               [ IsFreydCategoryMorphism ],
+               
+  function( freyd_category_morphism )
+    
+    Print( "Morphism datum:\n" );
+    
+    Display( MorphismDatum( freyd_category_morphism ) );
     
 end );
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+##
+InstallMethod( Display,
+               [ IsFreydCategoryObject ],
+               
+  function( freyd_category_object )
+    
+    Print( "Relation morphism:\n" );
+    
+    Display( RelationMorphism( freyd_category_object ) );
+    
+end );

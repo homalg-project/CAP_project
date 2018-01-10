@@ -42,4 +42,17 @@ f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );
 witness := MorphismWitness( f );
 g := FreydCategoryMorphism( obj_gamma, ZeroMorphism( obj2, obj2 ), obj_gamma );
 IsCongruentForMorphisms( f, g );
+c := PreCompose( f, f );
+s := g + g;
+a := CategoryOfRowsMorphism( obj1, HomalgMatrix( [ [ 2 ] ], 1, 1, R ), obj1 );
+Z2 := FreydCategoryObject( a );
+id := IdentityMorphism( Z2 );
+z := id + id + id;
+d := DirectSumFunctorial( [ z, z, z ] );
+pr2 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
+pr3 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 3 );
+UniversalMorphismIntoDirectSum( [ pr3, pr2 ] );
+inj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );
+inj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
+UniversalMorphismFromDirectSum( [ inj2, inj1 ] );
 #! @EndExample

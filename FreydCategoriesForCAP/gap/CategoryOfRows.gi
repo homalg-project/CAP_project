@@ -452,6 +452,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
+    ## Operations important for Freyd categories
+    
     AddWeakKernelEmbedding( category,
       function( morphism )
         local homalg_matrix, weak_kernel_object;
