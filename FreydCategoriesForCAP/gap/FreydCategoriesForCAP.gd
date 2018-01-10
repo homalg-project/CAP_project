@@ -668,3 +668,88 @@ DeclareOperation( "AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
 DeclareOperation( "AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
                   [ IsCapCategory, IsList ] );
 
+####################################
+##
+#! @Section Abelian constructions
+##
+####################################
+
+DeclareAttribute( "SomeProjectiveObjectForKernelObject",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The argument is an object $A$.
+#! The output is an epimorphism $\pi: P \rightarrow A$
+#! with $P$ a projective object that equals the output of $\mathrm{SomeProjectiveObject}(A)$.
+#! @Returns a morphism in $\mathrm{Hom}(P,A)$
+#! @Arguments A
+DeclareAttribute( "EpimorphismFromSomeProjectiveObjectForKernelObject",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are an object $A$
+#! and a projective object $P$ that equals the output of $\mathrm{SomeProjectiveObject}(A)$.
+#! The output is an epimorphism $\pi: P \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(P,A)$
+#! @Arguments A, P
+DeclareOperation( "EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+## Add Operations
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SomeProjectiveObject</C>.
+#! $F: A \mapsto P$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>EpimorphismFromSomeProjectiveObject</C>.
+#! $F: A \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</C>.
+#! $F: (A,P) \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsList ] );

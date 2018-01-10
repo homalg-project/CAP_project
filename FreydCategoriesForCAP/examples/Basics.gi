@@ -3,6 +3,7 @@
 #! @Section Basics
 
 LoadPackage( "FreydCategoriesForCAP" );;
+LoadPackage( "RingsForHomalg" );
 
 #! @Example
 R := HomalgRingOfIntegers();
@@ -55,4 +56,18 @@ UniversalMorphismIntoDirectSum( [ pr3, pr2 ] );
 inj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );
 inj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
 UniversalMorphismFromDirectSum( [ inj2, inj1 ] );
+ZFree := AsFreydCategoryObject( obj1 );
+id := IdentityMorphism( ZFree );
+z := id + id;
+CokernelProjection( z );
+CokernelColift( z, CokernelProjection( z ) );
+
+S := HomalgFieldOfRationalsInSingular() * "x,y,z";
+Rows_S := CategoryOfRows( S );
+S3 := CategoryOfRowsObject( 3, Rows_S );
+S1 := CategoryOfRowsObject( 1, Rows_S );
+mor := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,y,z]", 3, 1, S ), S1 );
+k := FreydCategoryObject( mor );
+w := EpimorphismFromSomeProjectiveObjectForKernelObject( UniversalMorphismIntoZeroObject( k ) );
+k := KernelEmbedding( w );
 #! @EndExample

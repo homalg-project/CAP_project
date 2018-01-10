@@ -108,7 +108,8 @@ WeakKernelObject := rec(
   filter_list := [ "morphism" ],
   universal_type := "Limit",
   return_type := "object",
-  dual_operation := "WeakCokernelObject" ),
+  dual_operation := "WeakCokernelObject",
+  is_merely_set_theoretic := true ),
 
 WeakKernelEmbedding := rec(
   installation_name := "WeakKernelEmbedding",
@@ -117,7 +118,8 @@ WeakKernelEmbedding := rec(
   universal_object_position := "Source",
   universal_type := "Limit",
   return_type := "morphism",
-  dual_operation := "WeakCokernelProjection" ),
+  dual_operation := "WeakCokernelProjection",
+  is_merely_set_theoretic := true ),
 
 WeakKernelEmbeddingWithGivenWeakKernelObject := rec(
   installation_name := "WeakKernelEmbeddingWithGivenWeakKernelObject",
@@ -126,7 +128,8 @@ WeakKernelEmbeddingWithGivenWeakKernelObject := rec(
   cache_name := "WeakKernelEmbeddingWithGivenWeakKernelObject",
   universal_type := "Limit",
   return_type := "morphism",
-  dual_operation := "WeakCokernelProjectionWithGivenWeakCokernelObject"),
+  dual_operation := "WeakCokernelProjectionWithGivenWeakCokernelObject",
+  is_merely_set_theoretic := true ),
 
 WeakKernelLift := rec(
   installation_name := "WeakKernelLift",
@@ -136,7 +139,8 @@ WeakKernelLift := rec(
   universal_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
-  dual_operation := "WeakCokernelColift" ),
+  dual_operation := "WeakCokernelColift",
+  is_merely_set_theoretic := true ),
 
 WeakKernelLiftWithGivenWeakKernelObject := rec(
   installation_name := "WeakKernelLiftWithGivenWeakKernelObject",
@@ -145,7 +149,8 @@ WeakKernelLiftWithGivenWeakKernelObject := rec(
   cache_name := "WeakKernelLiftWithGivenWeakKernelObject",
   universal_type := "Limit",
   return_type := "morphism",
-  dual_operation := "WeakCokernelColiftWithGivenWeakCokernelObject" ),
+  dual_operation := "WeakCokernelColiftWithGivenWeakCokernelObject",
+  is_merely_set_theoretic := true ),
 
 ## Weak cokernels
 
@@ -154,7 +159,8 @@ WeakCokernelObject := rec(
   filter_list := [ "morphism" ],
   universal_type := "Colimit",
   return_type := "object",
-  dual_operation := "WeakKernelObject" ),
+  dual_operation := "WeakKernelObject",
+  is_merely_set_theoretic := true ),
 
 WeakCokernelProjection := rec(
   installation_name := "WeakCokernelProjection",
@@ -163,7 +169,8 @@ WeakCokernelProjection := rec(
   universal_object_position := "Range",
   universal_type := "Colimit",
   return_type := "morphism",
-  dual_operation := "WeakKernelEmbedding" ),
+  dual_operation := "WeakKernelEmbedding",
+  is_merely_set_theoretic := true ),
 
 WeakCokernelProjectionWithGivenWeakCokernelObject := rec(
   installation_name := "WeakCokernelProjectionWithGivenWeakCokernelObject",
@@ -172,7 +179,8 @@ WeakCokernelProjectionWithGivenWeakCokernelObject := rec(
   cache_name := "WeakCokernelProjectionWithGivenWeakCokernelObject",
   universal_type := "Colimit",
   return_type := "morphism",
-  dual_operation := "WeakKernelEmbeddingWithGivenWeakKernelObject" ),
+  dual_operation := "WeakKernelEmbeddingWithGivenWeakKernelObject",
+  is_merely_set_theoretic := true ),
 
 WeakCokernelColift := rec(
   installation_name := "WeakCokernelColift",
@@ -182,7 +190,8 @@ WeakCokernelColift := rec(
   universal_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
-  dual_operation := "WeakKernelLift" ),
+  dual_operation := "WeakKernelLift",
+  is_merely_set_theoretic := true ),
 
 WeakCokernelColiftWithGivenWeakCokernelObject := rec(
   installation_name := "WeakCokernelColiftWithGivenWeakCokernelObject",
@@ -191,7 +200,8 @@ WeakCokernelColiftWithGivenWeakCokernelObject := rec(
   cache_name := "WeakCokernelColiftWithGivenWeakCokernelObject",
   universal_type := "Colimit",
   return_type := "morphism",
-  dual_operation := "WeakKernelLiftWithGivenWeakKernelObject" ),
+  dual_operation := "WeakKernelLiftWithGivenWeakKernelObject",
+  is_merely_set_theoretic := true ),
 
 ## Weak bi-fiber product
 ## FIXME: create universal_type substitute
@@ -203,7 +213,8 @@ WeakBiFiberProduct := rec(
   universal_type := "Limit",
   dual_operation := "WeakBiPushout",
   pre_function := WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
-  return_type := "object" ),
+  return_type := "object",
+  is_merely_set_theoretic := true ),
 
 ProjectionInFirstFactorOfWeakBiFiberProduct := rec(
   installation_name := "ProjectionInFirstFactorOfWeakBiFiberProduct",
@@ -215,7 +226,8 @@ ProjectionInFirstFactorOfWeakBiFiberProduct := rec(
   universal_type := "Limit",
   dual_operation := "InjectionOfFirstCofactorOfWeakBiPushout",
   pre_function := WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   installation_name := "ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
@@ -227,7 +239,8 @@ ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   universal_type := "Limit",
   dual_operation := "InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
   pre_function := WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 ProjectionInSecondFactorOfWeakBiFiberProduct := rec(
   installation_name := "ProjectionInSecondFactorOfWeakBiFiberProduct",
@@ -239,7 +252,8 @@ ProjectionInSecondFactorOfWeakBiFiberProduct := rec(
   universal_type := "Limit",
   dual_operation := "InjectionOfSecondCofactorOfWeakBiPushout",
   pre_function := WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   installation_name := "ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
@@ -251,7 +265,8 @@ ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   universal_type := "Limit",
   dual_operation := "InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
   pre_function := WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 UniversalMorphismIntoWeakBiFiberProduct := rec(
   installation_name := "UniversalMorphismIntoWeakBiFiberProduct",
@@ -263,7 +278,8 @@ UniversalMorphismIntoWeakBiFiberProduct := rec(
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromWeakBiPushout",
   pre_function := UNIVERSAL_MORPHISM_INTO_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   installation_name := "UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct",
@@ -274,7 +290,8 @@ UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
   pre_function := UNIVERSAL_MORPHISM_INTO_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 ## Weak pushouts
 
@@ -285,7 +302,8 @@ WeakBiPushout := rec(
   universal_type := "Colimit",
   dual_operation := "WeakBiFiberProduct",
   pre_function := WEAK_BI_PUSHOUT_PREFUNCTION,
-  return_type := "object" ),
+  return_type := "object",
+  is_merely_set_theoretic := true ),
 
 InjectionOfFirstCofactorOfWeakBiPushout := rec(
   installation_name := "InjectionOfFirstCofactorOfWeakBiPushout",
@@ -297,7 +315,8 @@ InjectionOfFirstCofactorOfWeakBiPushout := rec(
   universal_type := "Colimit",
   dual_operation := "ProjectionInFirstFactorOfWeakBiFiberProduct",
   pre_function := WEAK_BI_PUSHOUT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout := rec(
   installation_name := "InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
@@ -309,7 +328,8 @@ InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout := rec(
   universal_type := "Colimit",
   dual_operation := "ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
   pre_function := WEAK_BI_PUSHOUT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 InjectionOfSecondCofactorOfWeakBiPushout := rec(
   installation_name := "InjectionOfSecondCofactorOfWeakBiPushout",
@@ -321,7 +341,8 @@ InjectionOfSecondCofactorOfWeakBiPushout := rec(
   universal_type := "Colimit",
   dual_operation := "ProjectionInSecondFactorOfWeakBiFiberProduct",
   pre_function := WEAK_BI_PUSHOUT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout := rec(
   installation_name := "InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
@@ -333,8 +354,8 @@ InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout := rec(
   universal_type := "Colimit",
   dual_operation := "ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
   pre_function := WEAK_BI_PUSHOUT_PREFUNCTION,
-  return_type := "morphism" ),
-
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 UniversalMorphismFromWeakBiPushout := rec(
   installation_name := "UniversalMorphismFromWeakBiPushout",
@@ -346,7 +367,8 @@ UniversalMorphismFromWeakBiPushout := rec(
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoWeakBiFiberProduct",
   pre_function := UNIVERSAL_MORPHISM_FROM_WEAK_BI_PUSHOUT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout := rec(
   installation_name := "UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
@@ -357,7 +379,33 @@ UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout := rec(
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct",
   pre_function := UNIVERSAL_MORPHISM_FROM_WEAK_BI_PUSHOUT_PREFUNCTION,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+## an abelian construction
+SomeProjectiveObjectForKernelObject := rec(
+  installation_name := "SomeProjectiveObjectForKernelObject",
+  filter_list := [ "morphism" ],
+  return_type := "object",
+  is_merely_set_theoretic := true ),
+
+EpimorphismFromSomeProjectiveObjectForKernelObject := rec(
+  installation_name := "EpimorphismFromSomeProjectiveObjectForKernelObject",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "epsilon" ] ],
+  universal_object_position := "Source",
+  universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject := rec(
+  installation_name := "EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
+  filter_list := [ "morphism", "object" ],
+  io_type := [ [ "alpha", "P" ], [ "epsilon" ] ],
+  universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
+  cache_name := "EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
   ) );
 
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( FREYD_CATEGORIES_METHOD_NAME_RECORD );

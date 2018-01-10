@@ -56,6 +56,20 @@ AddWithGivenDerivationPairToCAP( InjectionOfFirstCofactorOfWeakBiPushout,
     
 end : Description := "InjectionOfFirstCofactorOfWeakBiPushout using InjectionOfSecondCofactorOfWeakBiPushout and Colift" );
 
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoWeakBiFiberProduct,
+                                 
+  function( alpha, beta, test_mor_1, test_mor_2 )
+    local projection_1, projection_2;
+    
+    projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, beta );
+    
+    projection_2 := ProjectionInSecondFactorOfWeakBiFiberProduct( alpha, beta );
+    
+    return Lift( UniversalMorphismIntoDirectSum( [ test_mor_1, test_mor_2 ] ),
+                 UniversalMorphismIntoDirectSum( [ projection_1, projection_2 ] ) );
+    
+end : );
 
 ## Derivations for basic operations without existing WithGiven
 ##
@@ -130,6 +144,8 @@ AddDerivationToCAP( WeakBiPushout,
     
 end : Description := "WeakBiPushout as the range of InjectionOfSecondCofactorOfWeakBiPushout" );
 
+## abelian derivations
+
 ##
 AddDerivationToCAP( IsMonomorphism,
                     
@@ -147,3 +163,12 @@ AddDerivationToCAP( IsEpimorphism,
       return IsZero( WeakCokernelProjection( alpha ) );
       
 end : Description := "IsEpimorphism by deciding whether WeakCokernelProjection is zero" );
+
+##
+AddDerivationToCAP( SomeProjectiveObjectForKernelObject,
+                    
+  function( morphism )
+    
+    return Source( EpimorphismFromSomeProjectiveObjectForKernelObject( morphism ) );
+    
+end : Description := "SomeProjectiveObjectForKernelObject as the source of EpimorphismFromSomeProjectiveObjectForKernelObject" );

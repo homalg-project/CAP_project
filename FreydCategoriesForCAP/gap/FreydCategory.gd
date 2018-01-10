@@ -42,6 +42,9 @@ DeclareAttribute( "FreydCategoryObject",
 DeclareOperation( "FreydCategoryMorphism",
                   [ IsFreydCategoryObject, IsCapCategoryMorphism, IsFreydCategoryObject ] );
 
+DeclareAttribute( "AsFreydCategoryObject",
+                  IsCapCategoryObject );
+
 ####################################
 ##
 #! @Section Attributes
@@ -60,11 +63,5 @@ DeclareAttribute( "MorphismDatum",
 DeclareAttribute( "MorphismWitness",
                   IsFreydCategoryMorphism );
 
-####################################
-##
-#! @Section Operations
-##
-####################################
-
-DeclareOperationWithCache( "WitnessForBeingCongruent",
-                           [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ] );
+DeclareAttribute( "WitnessForBeingCongruentToZero",
+                  IsFreydCategoryMorphism );

@@ -90,6 +90,21 @@ InstallMethod( FreydCategory,
 end );
 
 ##
+InstallMethod( AsFreydCategoryObject,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    local projective_object;
+    
+    projective_object := FreydCategoryObject( UniversalMorphismFromZeroObject( object ) );
+    
+    SetIsProjective( projective_object, true );
+    
+    return projective_object;
+    
+end );
+
+##
 InstallMethod( FreydCategoryObject,
                [ IsCapCategoryMorphism ],
                
@@ -167,15 +182,12 @@ end );
 ##
 ####################################
 
-InstallMethodWithCacheFromObject( WitnessForBeingCongruent,
-                                  [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ],
-                                   
-  function( morphism_1, morphism_2 )
-    local subtraction;
+InstallMethod( WitnessForBeingCongruentToZero,
+               [ IsFreydCategoryMorphism ],
+               
+  function( morphism )
     
-    subtraction := SubtractionForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
-    
-    return Lift( subtraction, RelationMorphism( Range( morphism_1 ) ) );
+    return Lift( MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
     
 end );
 
@@ -272,7 +284,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        if WitnessForBeingCongruent( morphism_1, morphism_2 ) = fail then
+        if WitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) ) = fail then
             
             return false;
             
@@ -486,6 +498,116 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                     );
         
     end );
+    
+    ## Cokernels: cokernels in Freyd categories are formal and thus very cheap
+    AddCokernelProjection( category,
+                     
+      function( morphism )
+        local range, relation_morphism, cokernel_object, cokernel_projection;
+        
+        range := Range( morphism );
+        
+        relation_morphism := RelationMorphism( range );
+        
+        cokernel_object := FreydCategoryObject( UniversalMorphismFromDirectSum( [ relation_morphism, MorphismDatum( morphism ) ] ) );
+        
+        cokernel_projection := FreydCategoryMorphism( range,
+                                                      IdentityMorphism( Range( relation_morphism ) ),
+                                                      cokernel_object );
+        
+        return cokernel_projection;
+        
+    end );
+    
+    ##
+    AddCokernelColiftWithGivenCokernelObject( category,
+      
+      function( morphism, test_morphism, cokernel_object )
+        
+        return FreydCategoryMorphism( cokernel_object,
+                                      MorphismDatum( test_morphism ),
+                                      Range( test_morphism ) );
+        
+    end );
+    
+    ## Kernels: kernels in Freyd categories are based on weak fiber products in the underlying category and thus more expensive
+    AddKernelEmbedding( category,
+      
+      function( morphism )
+        local alpha, rho_B, rho_A, projection_1, projection_2, kernel_object;
+        
+        alpha := MorphismDatum( morphism );
+        
+        rho_B := RelationMorphism( Range( morphism ) );
+        
+        rho_A := RelationMorphism( Source( morphism ) );
+        
+        ## We use the bias in the first projection of weak fiber products
+        projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, rho_B );
+        
+        projection_2 := ProjectionInFirstFactorOfWeakBiFiberProduct( projection_1, rho_A );
+        
+        kernel_object := FreydCategoryObject( projection_2 );
+        
+        return FreydCategoryMorphism( kernel_object,
+                                      projection_1,
+                                      Source( morphism ) );
+        
+    end );
+    
+    ##
+    AddKernelLiftWithGivenKernelObject( category,
+                                        
+      function( morphism, test_morphism, kernel_object )
+        local sigma, alpha, rho_B, tau, morphism_datum;
+        
+        ## witness computation
+        sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, morphism ) );
+        
+        ## for notational convenience
+        alpha := MorphismDatum( morphism );
+        
+        rho_B := RelationMorphism( Range( morphism ) );
+        
+        tau := MorphismDatum( test_morphism );
+        
+        morphism_datum := UniversalMorphismIntoWeakBiFiberProduct( alpha, rho_B, tau, sigma );
+        
+        return FreydCategoryMorphism( Source( test_morphism ),
+                                      morphism_datum,
+                                      kernel_object );
+        
+    end );
+    
+    #     
+#     AddLiftAlongMonomorphism( category,
+#       
+#       function( beta, alpha )
+#         
+#     end );
+#     
+    
+    ##
+    AddEpimorphismFromSomeProjectiveObjectForKernelObject( category,
+                            
+      function( morphism )
+        local alpha, rho_B, projection_1, projective_object;
+        
+        alpha := MorphismDatum( morphism );
+        
+        rho_B := RelationMorphism( Range( morphism ) );
+        
+        ## We use the bias in the first projection of weak fiber products
+        projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, rho_B );
+        
+        projective_object := AsFreydCategoryObject( Source( projection_1 ) );
+        
+        return FreydCategoryMorphism( projective_object,
+                                      projection_1,
+                                      Source( morphism ) );
+        
+    end );
+    
     
 end );
 
