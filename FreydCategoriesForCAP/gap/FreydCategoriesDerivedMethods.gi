@@ -69,7 +69,23 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoWeakBiFiberProduct,
     return Lift( UniversalMorphismIntoDirectSum( [ test_mor_1, test_mor_2 ] ),
                  UniversalMorphismIntoDirectSum( [ projection_1, projection_2 ] ) );
     
-end : );
+end : Description := "UniversalMorphismIntoWeakBiFiberProduct using Lift" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromWeakBiPushout,
+                                 
+  function( alpha, beta, test_mor_1, test_mor_2 )
+    local injection_1, injection_2;
+    
+    injection_1 := InjectionOfFirstCofactorOfWeakBiPushout( alpha, beta );
+    
+    injection_2 := InjectionOfSecondCofactorOfWeakBiPushout( alpha, beta );
+    
+    return Colift( UniversalMorphismFromDirectSum( [ injection_1, injection_2 ] ),
+                   UniversalMorphismFromDirectSum( [ test_mor_1, test_mor_2 ] ) );
+    
+end : Description := "UniversalMorphismFromWeakBiPushout using Colift" );
+
 
 ## Derivations for basic operations without existing WithGiven
 ##

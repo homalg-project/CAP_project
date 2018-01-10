@@ -36,6 +36,10 @@ inj1 := InjectionOfFirstCofactorOfWeakBiPushout( gamma + gamma, gamma );
 inj2 := InjectionOfSecondCofactorOfWeakBiPushout( gamma + gamma, gamma );
 IsEqualForMorphisms( PreCompose( gamma + gamma, inj1 ), PreCompose( gamma, inj2 ) );
 WeakKernelLift( WeakCokernelProjection( gamma ), gamma );
+pi1 := InjectionOfFirstCofactorOfWeakBiPushout( alpha, alpha );
+pi2 := InjectionOfSecondCofactorOfWeakBiPushout( alpha, alpha );
+UniversalMorphismFromWeakBiPushout( alpha, alpha, pi1, pi2 );
+## Freyd categories
 freyd := FreydCategory( cat );
 IsAbelianCategory( freyd );
 obj_gamma := FreydCategoryObject( gamma );
@@ -70,4 +74,5 @@ mor := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,y,z]", 3, 1, S ), S1 );
 k := FreydCategoryObject( mor );
 w := EpimorphismFromSomeProjectiveObjectForKernelObject( UniversalMorphismIntoZeroObject( k ) );
 k := KernelEmbedding( w );
+ColiftAlongEpimorphism( CokernelProjection( k ), CokernelProjection( k ) );
 #! @EndExample
