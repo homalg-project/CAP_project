@@ -539,6 +539,101 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       
       end );
     
+    ## Operations related to homomorphism structure
+    
+    if IsCommutative( ring ) then
+        
+        ##
+        InstallMethodWithCacheFromObject( HomomorphismStructureOnObjects,
+                                          [ IsCapCategoryObject and ObjectFilter( category ), IsCapCategoryObject and ObjectFilter( category ) ],
+          function( object_1, object_2 )
+            
+            return CategoryOfRowsObject( RankOfObject( object_1 ) * RankOfObject( object_2 ), category );
+            
+        end );
+        
+        ##
+        InstallMethodWithCacheFromObject( HomomorphismStructureOnMorphismsWithGivenObjects,
+                                          [ IsCapCategoryObject and ObjectFilter( category ),
+                                            IsCapCategoryMorphism and MorphismFilter( category ),
+                                            IsCapCategoryMorphism and MorphismFilter( category ),
+                                            IsCapCategoryObject and ObjectFilter( category ) ],
+          function( source, alpha, beta, range )
+            
+            return CategoryOfRowsMorphism( source,
+                                           KroneckerMat( Involution( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
+                                           range );
+            
+        end );
+        
+        ##
+        InstallMethod( DistinguishedObjectOfHomomorphismStructure,
+                       [ IsCapCategory and CategoryFilter( category ) ],
+                       
+          function( cat )
+            
+            return CategoryOfRowsObject( 1, category );
+            
+        end );
+        
+        ##
+        InstallMethod( InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure,
+                       [ IsCapCategoryMorphism and MorphismFilter( category ) ],
+                       
+          function( alpha )
+            local underlying_matrix, nr_rows;
+            
+            underlying_matrix := UnderlyingMatrix( alpha );
+            
+            nr_rows := NrRows( underlying_matrix );
+            
+            if ( nr_rows = 0 ) or ( NrColumns( underlying_matrix ) = 0 ) then
+                
+                return UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( category ) );
+                
+            elif nr_rows > 1 then
+                
+                underlying_matrix := Iterated( List( [ 1 .. nr_rows ], i -> CertainRows( underlying_matrix, [ i ] ) ), UnionOfColumns );
+                
+            fi;
+            
+            return CategoryOfRowsMorphism(
+                     DistinguishedObjectOfHomomorphismStructure( category ),
+                     underlying_matrix,
+                     HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) )
+                   );
+            
+        end );
+        
+        ##
+        InstallMethodWithCacheFromObject( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism,
+                                          [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ],
+                                           
+          function( A, B, morphism )
+            local nr_rows, nr_columns, underlying_matrix;
+            
+            nr_rows := RankOfObject( A );
+            
+            nr_columns := RankOfObject( B );
+            
+            if nr_rows = 0 or nr_columns = 0 then
+                
+                return ZeroMorphism( A, B );
+                
+            fi;
+            
+            underlying_matrix := UnderlyingMatrix( morphism );
+            
+            underlying_matrix := Iterated( List( [ 1 .. nr_rows ], i -> CertainColumns( underlying_matrix, [ ((i - 1) * nr_columns + 1) .. i * nr_columns ] ) ), UnionOfRows );
+            
+            return CategoryOfRowsMorphism( A, underlying_matrix, B );
+            
+        end );
+        
+        SetHasHomomorphismStructure( category, true );
+        
+    fi;
+    
 end );
 
 ####################################

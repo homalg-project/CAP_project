@@ -753,3 +753,49 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGive
 
 DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
                   [ IsCapCategory, IsList ] );
+
+####################################
+##
+#! @Section Homomorphism structures
+##
+####################################
+
+## Since the method record only allows operations that stay within a single category,
+## we need a workaround for these functions
+
+DeclareProperty( "HasHomomorphismStructure",
+                 IsCapCategory );
+
+##
+DeclareOperationWithCache( "HomomorphismStructureOnObjects",
+                           [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+##
+DeclareOperation( "HomomorphismStructureOnMorphisms",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+##
+DeclareOperationWithCache( "HomomorphismStructureOnMorphismsWithGivenObjects",
+                           [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+##
+DeclareAttribute( "DistinguishedObjectOfHomomorphismStructure",
+                  IsCapCategory );
+
+##
+DeclareAttribute( "InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+                  IsCapCategoryMorphism );
+
+##
+DeclareOperationWithCache( "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+                           [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+####################################
+##
+#! @Section Linear systems
+##
+####################################
+
+##
+DeclareOperation( "SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure",
+                  [ IsList, IsList, IsList ] );

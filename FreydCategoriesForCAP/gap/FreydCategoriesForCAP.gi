@@ -409,3 +409,65 @@ EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectF
   ) );
 
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( FREYD_CATEGORIES_METHOD_NAME_RECORD );
+
+####################################
+##
+## Convenience methods
+##
+####################################
+
+##
+InstallMethod( HomomorphismStructureOnMorphisms,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( alpha, beta )
+    
+    return HomomorphismStructureOnMorphismsWithGivenObjects(
+             HomomorphismStructureOnObjects( Range( alpha ), Source( beta ) ),
+             alpha, beta,
+             HomomorphismStructureOnObjects( Source( alpha ), Range( beta ) )
+           );
+    
+end );
+
+####################################
+##
+## Linear systems
+##
+####################################
+
+##
+InstallMethod( SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure,
+               [ IsList, IsList, IsList ],
+               
+  function( left_coefficients, right_coefficients, right_side )
+    local m, n, nu, H, lift, summands, list;
+    
+    m := Size( left_coefficients );
+    
+    n := Size( left_coefficients[1] );
+    
+    ## create lift diagram
+    
+    nu := UniversalMorphismIntoDirectSum( List( [ 1 .. m ], i -> InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( right_side[i] ) ) );
+    
+    list := List( [ 1 .. n ], j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) ) );
+    
+    H := MorphismBetweenDirectSums( list );
+    
+    ## the actual computation of the solution
+    lift := Lift( nu, H );
+    
+    ## reinterpretation of the solution
+    summands := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
+    
+    return
+      List( [ 1 .. n ], j -> 
+        InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism(
+          Range( left_coefficients[1][j] ),
+          Source( right_coefficients[1][j] ),
+          PreCompose( lift, ProjectionInFactorOfDirectSum( summands, j ) )
+        )
+      );
+    
+end );
