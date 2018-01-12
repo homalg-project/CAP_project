@@ -83,6 +83,23 @@ InstallMethodWithCache( CategoryOfRowsObject,
 end );
 
 ##
+InstallMethod( AsCategoryOfRowsMorphism,
+               [ IsHomalgMatrix ],
+               
+  function( homalg_matrix )
+    local category, source, range;
+    
+    category := CategoryOfRows( HomalgRing( homalg_matrix ) );
+    
+    source := CategoryOfRowsObject( NrRows( homalg_matrix ), category );
+    
+    range := CategoryOfRowsObject( NrColumns( homalg_matrix ), category );
+    
+    return CategoryOfRowsMorphism( source, homalg_matrix, range );
+    
+end );
+
+##
 InstallMethod( CategoryOfRowsMorphism,
                [ IsCategoryOfRowsObject, IsHomalgMatrix, IsCategoryOfRowsObject ],
                

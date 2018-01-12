@@ -42,6 +42,9 @@ DeclareAttribute( "CategoryOfRows",
 DeclareOperationWithCache( "CategoryOfRowsObject",
                            [ IsInt, IsCategoryOfRows ] );
 
+DeclareAttribute( "AsCategoryOfRowsMorphism",
+                  IsHomalgMatrix );
+
 DeclareOperation( "CategoryOfRowsMorphism",
                   [ IsCategoryOfRowsObject, IsHomalgMatrix, IsCategoryOfRowsObject ] );
 

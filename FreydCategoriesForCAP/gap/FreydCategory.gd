@@ -45,6 +45,9 @@ DeclareOperation( "FreydCategoryMorphism",
 DeclareAttribute( "AsFreydCategoryObject",
                   IsCapCategoryObject );
 
+DeclareAttribute( "AsFreydCategoryMorphism",
+                  IsCapCategoryMorphism );
+
 ####################################
 ##
 #! @Section Attributes

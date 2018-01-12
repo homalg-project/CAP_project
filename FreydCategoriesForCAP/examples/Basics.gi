@@ -83,6 +83,14 @@ IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphism
 a := ZeroObjectFunctorial( cat );
 IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( Source( a ), Range( a ), InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( a ) ), a );
 
+Z4 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[4]", 1, 1, R ) ) );
+Z3 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[3]", 1, 1, R ) ) );
+HomomorphismStructureOnObjects( Z4, Z2 );
+HomomorphismStructureOnObjects( Z4, Z4 );
+HomomorphismStructureOnObjects( Z2, Z4 );
+HomomorphismStructureOnObjects( Z3, Z4 );
+HomomorphismStructureOnMorphisms( IdentityMorphism( DirectSum( Z4, Z2, Z3 ) ), -IdentityMorphism( DirectSum( Z4, Z3 ) ) );
+
 ## Lifts
 S2 := CategoryOfRowsObject( 2, Rows_S );
 S4 := CategoryOfRowsObject( 4, Rows_S );
@@ -106,5 +114,7 @@ alpha := PreCompose( lift, gamma );
 Lift( alpha, gamma );
 Colift( lift, alpha );
 IsCongruentForMorphisms( PreCompose( lift, Colift( lift, alpha ) ), alpha );
+
+
 
 #! @EndExample
