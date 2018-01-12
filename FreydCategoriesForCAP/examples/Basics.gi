@@ -96,10 +96,15 @@ lift := FreydCategoryMorphism( S2_freyd, CategoryOfRowsMorphism( S2, HomalgMatri
 gamma := FreydCategoryMorphism( S3_freyd, CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,y,z,z+1, x^2,y^2,z^2,z^2+1, x^3,y^3,z^3,z^3+1]", 3,4, S ), S4 ), S4_freyd );
 alpha := PreCompose( lift, gamma );
 Lift( alpha, gamma );
+Colift( lift, alpha );
+IsCongruentForMorphisms( PreCompose( lift, Colift( lift, alpha ) ), alpha );
+
 
 lift := FreydCategoryMorphism( S1_freyd, CategoryOfRowsMorphism( S1, HomalgMatrix( "[x]", 1, 1, S ), S1 ), S1_freyd );
 gamma := FreydCategoryMorphism( S1_freyd, CategoryOfRowsMorphism( S1, HomalgMatrix( "[y]", 1,1, S ), S1 ), S1_freyd );
 alpha := PreCompose( lift, gamma );
 Lift( alpha, gamma );
+Colift( lift, alpha );
+IsCongruentForMorphisms( PreCompose( lift, Colift( lift, alpha ) ), alpha );
 
 #! @EndExample
