@@ -188,3 +188,265 @@ AddDerivationToCAP( SomeProjectiveObjectForKernelObject,
     return Source( EpimorphismFromSomeProjectiveObjectForKernelObject( morphism ) );
     
 end : Description := "SomeProjectiveObjectForKernelObject as the source of EpimorphismFromSomeProjectiveObjectForKernelObject" );
+
+##
+AddDerivationToCAP( WeakBiFiberProductMorphismToDirectSum,
+                    
+  function( alpha, beta )
+    local projection_1, projection_2;
+    
+    projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, beta );
+    
+    projection_2 := ProjectionInSecondFactorOfWeakBiFiberProduct( alpha, beta );
+    
+    return UniversalMorphismIntoDirectSum( [ projection_1, projection_2 ] );
+    
+end : Description := "WeakBiFiberProductMorphismToDirectSum using UniversalMorphismIntoDirectSum of the two weak bi-fiber product projections" );
+
+##
+AddDerivationToCAP( DirectSumMorphismToWeakBiPushout,
+                    
+  function( alpha, beta )
+    local injection_1, injection_2;
+    
+    injection_1 := InjectionOfFirstCofactorOfWeakBiPushout( alpha, beta );
+    
+    injection_2 := InjectionOfSecondCofactorOfWeakBiPushout( alpha, beta );
+    
+    return UniversalMorphismFromDirectSum( [ injection_1, injection_2 ] );
+    
+end : Description := "DirectSumMorphismToWeakBiPushout using UniversalMorphismFromDirectSum of the two weak bi-pushout injections" );
+
+##
+AddDerivationToCAP( WeakBiFiberProduct,
+                    
+  function( alpha, beta )
+    
+    return Source( WeakBiFiberProductMorphismToDirectSum( alpha, beta ) );
+    
+end : Description := "WeakBiFiberProduct as the source of WeakBiFiberProductMorphismToDirectSum" );
+
+##
+AddDerivationToCAP( WeakBiPushout,
+                    
+  function( alpha, beta )
+    
+    return Range( DirectSumMorphismToWeakBiPushout( alpha, beta ) );
+    
+end : Description := "WeakBiPushout as the range of DirectSumMorphismToWeakBiPushout" );
+
+## Final derivations
+
+##
+AddFinalDerivation( WeakKernelObject,
+                    [ [ KernelObject, 1 ] ],
+                    [ WeakKernelObject,
+                      WeakKernelEmbedding,
+                      WeakKernelLift ],
+                    
+  function( morphism )
+    
+    return KernelObject( morphism );
+    
+end : Description := "WeakKernelObject as KernelObject" );
+
+##
+AddFinalDerivation( WeakKernelEmbedding,
+                    [ [ KernelEmbedding, 1 ] ],
+                    [ WeakKernelObject,
+                      WeakKernelEmbedding,
+                      WeakKernelLift ],
+                    
+  function( morphism )
+    
+    return KernelEmbedding( morphism );
+    
+end : Description := "WeakKernelEmbedding as KernelEmbedding" );
+
+##
+AddFinalDerivation( WeakKernelLift,
+                    [ [ KernelLift, 1 ] ],
+                    [ WeakKernelObject,
+                      WeakKernelEmbedding,
+                      WeakKernelLift ],
+                    
+  function( morphism, test_mor )
+    
+    return KernelLift( morphism, test_mor );
+    
+end : Description := "WeakKernelLift as KernelLift" );
+
+##
+AddFinalDerivation( WeakCokernelObject,
+                    [ [ CokernelObject, 1 ] ],
+                    [ WeakCokernelObject,
+                      WeakCokernelProjection,
+                      WeakCokernelColift ],
+                    
+  function( morphism )
+    
+    return CokernelObject( morphism );
+    
+end : Description := "WeakCokernelObject as CokernelObject" );
+
+##
+AddFinalDerivation( WeakCokernelProjection,
+                    [ [ CokernelProjection, 1 ] ],
+                    [ WeakCokernelObject,
+                      WeakCokernelProjection,
+                      WeakCokernelColift ],
+                    
+  function( morphism )
+    
+    return CokernelProjection( morphism );
+    
+end : Description := "WeakCokernelProjection as CokernelProjection" );
+
+##
+AddFinalDerivation( WeakCokernelColift,
+                    [ [ CokernelColift, 1 ] ],
+                    [ WeakCokernelObject,
+                      WeakCokernelProjection,
+                      WeakCokernelColift ],
+                    
+  function( morphism, test_mor )
+    
+    return CokernelColift( morphism, test_mor );
+    
+end : Description := "WeakCokernelColift as CokernelColift" );
+
+## Final derivation for weak fiber products and weak pushouts.
+## Decision: we use a derivation from weak kernels and direct sums
+
+##
+AddFinalDerivation( WeakBiFiberProductMorphismToDirectSum,
+                    [ [ DirectSumDiagonalDifference, 1 ],
+                      [ WeakKernelEmbedding, 1 ] ],
+                    [ WeakBiFiberProduct ],
+                      
+  function( alpha, beta )
+    local diagonal_difference;
+    
+    diagonal_difference := DirectSumDiagonalDifference( [ alpha, beta ] );
+    
+    return WeakKernelEmbedding( diagonal_difference );
+    
+end : Description := "WeakBiFiberProductMorphismToDirectSum as WeakKernelEmbedding of DirectSumDiagonalDifference" );
+
+##
+AddFinalDerivation( ProjectionInFirstFactorOfWeakBiFiberProduct,
+                     [ [ WeakBiFiberProductMorphismToDirectSum, 1 ],
+                       [ PreCompose, 1 ],
+                       [ ProjectionInFactorOfDirectSum, 1 ] ],
+                     [ WeakBiFiberProduct ],
+                       
+  function( alpha, beta )
+    local morphism_to_direct_sum;
+    
+    morphism_to_direct_sum := WeakBiFiberProductMorphismToDirectSum( alpha, beta );
+    
+    return PreCompose( morphism_to_direct_sum, ProjectionInFactorOfDirectSum( [ Source( alpha ), Source( beta ) ], 1 ) );
+    
+end : Description := "ProjectionInFirstFactorOfWeakBiFiberProduct as composition of WeakBiFiberProductMorphismToDirectSum with the first direct sum projection" );
+
+##
+AddFinalDerivation( ProjectionInSecondFactorOfWeakBiFiberProduct,
+                     [ [ WeakBiFiberProductMorphismToDirectSum, 1 ],
+                       [ PreCompose, 1 ],
+                       [ ProjectionInFactorOfDirectSum, 1 ] ],
+                     [ WeakBiFiberProduct ],
+                       
+  function( alpha, beta )
+    local morphism_to_direct_sum;
+    
+    morphism_to_direct_sum := WeakBiFiberProductMorphismToDirectSum( alpha, beta );
+    
+    return PreCompose( morphism_to_direct_sum, ProjectionInFactorOfDirectSum( [ Source( alpha ), Source( beta ) ], 2 ) );
+    
+end : Description := "ProjectionInSecondFactorOfWeakBiFiberProduct as composition of WeakBiFiberProductMorphismToDirectSum with the second direct sum projection" );
+
+##
+AddFinalDerivation( UniversalMorphismIntoWeakBiFiberProduct,
+                    [ [ UniversalMorphismIntoDirectSum, 1 ],
+                      [ DirectSumDiagonalDifference, 1 ],
+                      [ WeakKernelLift, 1 ] ],
+                    [ WeakBiFiberProduct ],
+                    
+  function( alpha, beta, test_mor_1, test_mor_2 )
+    local test_mor, diagonal_difference;
+    
+    test_mor := UniversalMorphismIntoDirectSum( [ test_mor_1, test_mor_2 ] );
+    
+    diagonal_difference := DirectSumDiagonalDifference( [ alpha, beta ] );
+    
+    return WeakKernelLift( diagonal_difference, test_mor );
+    
+end : Description := "UniversalMorphismIntoWeakBiFiberProduct using WeakKernelLift" );
+
+
+## weak bi-pushout
+##
+AddFinalDerivation( DirectSumMorphismToWeakBiPushout,
+                    [ [ DirectSumCodiagonalDifference, 1 ],
+                      [ WeakCokernelProjection, 1 ] ],
+                    [ WeakBiPushout ],
+                      
+  function( alpha, beta )
+    local co_diagonal_difference;
+    
+    co_diagonal_difference := DirectSumCodiagonalDifference( [ alpha, beta ] );
+    
+    return WeakCokernelProjection( co_diagonal_difference );
+    
+end : Description := "DirectSumMorphismToWeakBiPushout as WeakCokernelProjection of DirectSumCodiagonalDifference" );
+
+## InjectionOfSecondCofactorOfWeakBiPushout
+AddFinalDerivation( InjectionOfFirstCofactorOfWeakBiPushout,
+                     [ [ DirectSumMorphismToWeakBiPushout, 1 ],
+                       [ PreCompose, 1 ],
+                       [ InjectionOfCofactorOfDirectSum, 1 ] ],
+                     [ WeakBiPushout ],
+                       
+  function( alpha, beta )
+    local direct_sum_morphism;
+    
+    direct_sum_morphism := DirectSumMorphismToWeakBiPushout( alpha, beta );
+    
+    return PreCompose( InjectionOfCofactorOfDirectSum( [ Range( alpha ), Range( beta ) ], 1 ), direct_sum_morphism );
+    
+end : Description := "InjectionOfFirstCofactorOfWeakBiPushout as composition of first direct sum injection with DirectSumMorphismToWeakBiPushout" );
+
+##
+AddFinalDerivation( InjectionOfSecondCofactorOfWeakBiPushout,
+                     [ [ DirectSumMorphismToWeakBiPushout, 1 ],
+                       [ PreCompose, 1 ],
+                       [ InjectionOfCofactorOfDirectSum, 1 ] ],
+                     [ WeakBiPushout ],
+                       
+  function( alpha, beta )
+    local direct_sum_morphism;
+    
+    direct_sum_morphism := DirectSumMorphismToWeakBiPushout( alpha, beta );
+    
+    return PreCompose( InjectionOfCofactorOfDirectSum( [ Source( alpha ), Source( beta ) ], 2 ), direct_sum_morphism );
+    
+end : Description := "InjectionOfSecondCofactorOfWeakBiPushout as composition of second direct sum injection with DirectSumMorphismToWeakBiPushout" );
+
+##
+AddFinalDerivation( UniversalMorphismFromWeakBiPushout,
+                    [ [ UniversalMorphismFromDirectSum, 1 ],
+                      [ DirectSumCodiagonalDifference, 1 ],
+                      [ WeakCokernelColift, 1 ] ],
+                    [ WeakBiPushout ],
+                    
+  function( alpha, beta, test_mor_1, test_mor_2 )
+    local test_mor, co_diagonal_difference;
+    
+    test_mor := UniversalMorphismFromDirectSum( [ test_mor_1, test_mor_2 ] );
+    
+    co_diagonal_difference := DirectSumCodiagonalDifference( [ alpha, beta ] );
+    
+    return WeakCokernelColift( co_diagonal_difference, test_mor );
+    
+end : Description := "UniversalMorphismFromWeakBiPushout using WeakCokernelColift" );
+

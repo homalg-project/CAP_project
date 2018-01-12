@@ -293,6 +293,15 @@ UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   return_type := "morphism",
   is_merely_set_theoretic := true ),
 
+WeakBiFiberProductMorphismToDirectSum := rec(
+  installation_name := "WeakBiFiberProductMorphismToDirectSum",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "F", "S" ] ],
+  cache_name := "WeakBiFiberProductMorphismToDirectSum",
+  return_type := "morphism",
+  dual_operation := "DirectSumMorphismToWeakBiPushout",
+  no_with_given := true ),
+
 ## Weak pushouts
 
 WeakBiPushout := rec(
@@ -381,6 +390,15 @@ UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout := rec(
   pre_function := UNIVERSAL_MORPHISM_FROM_WEAK_BI_PUSHOUT_PREFUNCTION,
   return_type := "morphism",
   is_merely_set_theoretic := true ),
+
+DirectSumMorphismToWeakBiPushout := rec(
+  installation_name := "DirectSumMorphismToWeakBiPushout",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "S", "P" ] ],
+  cache_name := "DirectSumMorphismToWeakBiPushout",
+  return_type := "morphism",
+  dual_operation := "WeakBiFiberProductMorphismToDirectSum",
+  no_with_given := true ),
 
 ## an abelian construction
 SomeProjectiveObjectForKernelObject := rec(

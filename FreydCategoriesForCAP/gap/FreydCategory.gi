@@ -641,7 +641,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     end );
     
     ##
-    if HasHomomorphismStructure( UnderlyingCategory( category ) ) then
+    if IsCategoryWithHomomorphismStructure( UnderlyingCategory( category ) ) then
         
         AddLift( category,
                  

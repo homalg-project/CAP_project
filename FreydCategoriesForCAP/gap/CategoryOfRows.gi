@@ -630,7 +630,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
         end );
         
-        SetHasHomomorphismStructure( category, true );
+        SetFilterObj( category, IsCategoryWithHomomorphismStructure);
         
     fi;
     

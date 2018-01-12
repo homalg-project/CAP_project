@@ -394,6 +394,8 @@ DeclareOperation( "UniversalMorphismIntoWeakBiFiberProduct",
 DeclareOperation( "UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+DeclareOperation( "WeakBiFiberProductMorphismToDirectSum",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ## Add Operations
 
@@ -517,6 +519,19 @@ DeclareOperation( "AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFibe
 DeclareOperation( "AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
+                  [ IsCapCategory, IsList ] );
+
 ####################################
 ##
 #! @Section Weak bi-pushout
@@ -545,6 +560,8 @@ DeclareOperation( "UniversalMorphismFromWeakBiPushout",
 DeclareOperation( "UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+DeclareOperation( "DirectSumMorphismToWeakBiPushout",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ## Add Operations
 
@@ -668,6 +685,19 @@ DeclareOperation( "AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
 DeclareOperation( "AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
                   [ IsCapCategory, IsList ] );
 
+##
+DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
+                  [ IsCapCategory, IsList ] );
+
 ####################################
 ##
 #! @Section Abelian constructions
@@ -763,8 +793,8 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGive
 ## Since the method record only allows operations that stay within a single category,
 ## we need a workaround for these functions
 
-DeclareProperty( "HasHomomorphismStructure",
-                 IsCapCategory );
+DeclareFilter( "IsCategoryWithHomomorphismStructure",
+               IsCapCategory );
 
 ##
 DeclareOperationWithCache( "HomomorphismStructureOnObjects",
