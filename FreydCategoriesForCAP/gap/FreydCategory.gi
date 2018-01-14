@@ -232,7 +232,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
   function( category )
     local underlying_category, diagram_for_homomorphism_structure_as_kernel, 
           diagram_for_homomorphism_structure_as_kernel_on_morphisms,
-          distinguished_object, range_category, homomorphism_structure_derivation_case;
+          distinguished_object, range_category, homomorphism_structure_derivation_case,
+          homomorphism_structure_on_objects,
+          homomorphism_structure_on_morphisms,
+          distinguished_object_of_homomorphism_structure,
+          interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure,
+          interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism;
     
     underlying_category := UnderlyingCategory( category );
     
@@ -785,6 +790,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
            
            homomorphism_structure_derivation_case := "abelian";
            
+           homomorphism_structure_on_objects := HomomorphismStructureOnObjects;
+           
+           homomorphism_structure_on_morphisms := HomomorphismStructureOnMorphisms;
+           
+           distinguished_object_of_homomorphism_structure := DistinguishedObjectOfHomomorphismStructure;
+           
+           interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure :=
+             InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure;
+           
+           interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism :=
+             InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism;
+           
         elif HasIsAdditiveCategory( range_category )
                and IsAdditiveCategory( range_category )
                and ForAll(
@@ -799,77 +816,63 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
            
            homomorphism_structure_derivation_case := "apply_freyd";
            
+           homomorphism_structure_on_objects :=
+             function( A,B ) return AsFreydCategoryObject( HomomorphismStructureOnObjects( A, B ) ); end;
+           
+           homomorphism_structure_on_morphisms := 
+             function( alpha, beta ) return AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( alpha, beta ) ); end;
+           
+           distinguished_object_of_homomorphism_structure := 
+             cat -> AsFreydCategoryObject( DistinguishedObjectOfHomomorphismStructure( range_category ) );
+           
+           interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure :=
+             alpha -> AsFreydCategoryMorphism(
+                        InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( alpha )
+                      );
+           
+           interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism :=
+             function( A, B, alpha )
+               
+               return InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism(
+                        A, B, MorphismDatum( alpha ) );
+             
+             end;
+             
         else
             
             homomorphism_structure_derivation_case := "none";
             
         fi;
         
-        if homomorphism_structure_derivation_case = "apply_freyd" then
-            
-            diagram_for_homomorphism_structure_as_kernel := FunctionWithCache(
-              
-              function( object_A, object_B )
-                local rho_A, rho_B, A, B, R_A, R_B, mor_1, mor_2;
-                
-                rho_A := RelationMorphism( object_A );
-                
-                rho_B := RelationMorphism( object_B );
-                
-                A := Range( rho_A );
-                
-                B := Range( rho_B );
-                
-                R_A := Source( rho_A );
-                
-                R_B := Source( rho_B );
-                
-                mor_1 := AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( IdentityMorphism( A ), rho_B ) );
-                
-                mor_2 := PreCompose(
-                           AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( rho_A, IdentityMorphism( B ) ) ),
-                           CokernelProjection(
-                             AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( IdentityMorphism( R_A ), rho_B ) )
-                           )
-                         );
-                
-                return CokernelColift( mor_1, mor_2 );
-                
-            end );
-        
-        elif homomorphism_structure_derivation_case = "abelian" then
-            
-            diagram_for_homomorphism_structure_as_kernel := FunctionWithCache(
-              
-              function( object_A, object_B )
-                local rho_A, rho_B, A, B, R_A, R_B, mor_1, mor_2;
-                
-                rho_A := RelationMorphism( object_A );
-                
-                rho_B := RelationMorphism( object_B );
-                
-                A := Range( rho_A );
-                
-                B := Range( rho_B );
-                
-                R_A := Source( rho_A );
-                
-                R_B := Source( rho_B );
-                
-                mor_1 := HomomorphismStructureOnMorphisms( IdentityMorphism( A ), rho_B );
-                
-                mor_2 := PreCompose(
-                           HomomorphismStructureOnMorphisms( rho_A, IdentityMorphism( B ) ),
-                           CokernelProjection( HomomorphismStructureOnMorphisms( IdentityMorphism( R_A ), rho_B ) )
-                         );
-                
-                return CokernelColift( mor_1, mor_2 );
-                
-            end );
-            
-        fi;
-        
         if not homomorphism_structure_derivation_case = "none" then
+            
+            diagram_for_homomorphism_structure_as_kernel := FunctionWithCache(
+            
+            function( object_A, object_B )
+              local rho_A, rho_B, A, B, R_A, R_B, mor_1, mor_2;
+              
+              rho_A := RelationMorphism( object_A );
+              
+              rho_B := RelationMorphism( object_B );
+              
+              A := Range( rho_A );
+              
+              B := Range( rho_B );
+              
+              R_A := Source( rho_A );
+              
+              R_B := Source( rho_B );
+              
+              mor_1 := homomorphism_structure_on_morphisms( IdentityMorphism( A ), rho_B );
+              
+              mor_2 := PreCompose(
+                         homomorphism_structure_on_morphisms( rho_A, IdentityMorphism( B ) ),
+                         CokernelProjection( homomorphism_structure_on_morphisms( IdentityMorphism( R_A ), rho_B ) )
+                       );
+              
+              return [ CokernelColift( mor_1, mor_2 ), mor_1 ];
+              
+            end );
             
             ##
             InstallMethodWithCacheFromObject( HomomorphismStructureOnObjects,
@@ -877,7 +880,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
               function( object_A, object_B )
                 local diagram;
                 
-                diagram := diagram_for_homomorphism_structure_as_kernel( object_A, object_B );
+                diagram := diagram_for_homomorphism_structure_as_kernel( object_A, object_B )[1];
                 
                 return KernelObject( diagram );
                 
@@ -885,81 +888,40 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
         fi;
         
-        if homomorphism_structure_derivation_case = "apply_freyd" then
-            
-            ##
-            diagram_for_homomorphism_structure_as_kernel_on_morphisms :=
-              
-              function( alpha, beta )
-                local object_A, object_Ap, object_B, object_Bp, rho_B, rho_Bp, A, Ap, mor_1, mor_2;
-                
-                object_A := Range( alpha );
-                
-                object_Ap := Source( alpha );
-                
-                object_B := Source( beta );
-                
-                object_Bp := Range( beta );
-                
-                rho_B := RelationMorphism( object_B );
-                
-                rho_Bp := RelationMorphism( object_Bp );
-                
-                A := Range( RelationMorphism( object_A ) );
-                
-                Ap := Range( RelationMorphism( object_Ap ) );
-                
-                mor_1 := AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( IdentityMorphism( A ), rho_B ) );
-                
-                mor_2 := PreCompose(
-                           AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( MorphismDatum( alpha ), MorphismDatum( beta ) ) ),
-                           CokernelProjection(
-                             AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( IdentityMorphism( Ap ), rho_Bp ) )
-                           )
-                         );
-                
-                return CokernelColift( mor_1, mor_2 );
-                
-            end;
-            
-        elif homomorphism_structure_derivation_case = "abelian" then
-            
-            ##
-            diagram_for_homomorphism_structure_as_kernel_on_morphisms :=
-              
-              function( alpha, beta )
-                local object_A, object_Ap, object_B, object_Bp, rho_B, rho_Bp, A, Ap, mor_1, mor_2;
-                
-                object_A := Range( alpha );
-                
-                object_Ap := Source( alpha );
-                
-                object_B := Source( beta );
-                
-                object_Bp := Range( beta );
-                
-                rho_B := RelationMorphism( object_B );
-                
-                rho_Bp := RelationMorphism( object_Bp );
-                
-                A := Range( RelationMorphism( object_A ) );
-                
-                Ap := Range( RelationMorphism( object_Ap ) );
-                
-                mor_1 := HomomorphismStructureOnMorphisms( IdentityMorphism( A ), rho_B );
-                
-                mor_2 := PreCompose(
-                           HomomorphismStructureOnMorphisms( MorphismDatum( alpha ), MorphismDatum( beta ) ),
-                           CokernelProjection( HomomorphismStructureOnMorphisms( IdentityMorphism( Ap ), rho_Bp ) )
-                         );
-                
-                return CokernelColift( mor_1, mor_2 );
-                
-            end;
-            
-        fi;
-        
         if not homomorphism_structure_derivation_case = "none" then
+            
+            ##
+            diagram_for_homomorphism_structure_as_kernel_on_morphisms :=
+              
+              function( alpha, beta )
+                local object_A, object_Ap, object_B, object_Bp, rho_B, rho_Bp, A, Ap, mor_1, mor_2;
+                
+                object_A := Range( alpha );
+                
+                object_Ap := Source( alpha );
+                
+                object_B := Source( beta );
+                
+                object_Bp := Range( beta );
+                
+                rho_B := RelationMorphism( object_B );
+                
+                rho_Bp := RelationMorphism( object_Bp );
+                
+                A := Range( RelationMorphism( object_A ) );
+                
+                Ap := Range( RelationMorphism( object_Ap ) );
+                
+                mor_1 := homomorphism_structure_on_morphisms( IdentityMorphism( A ), rho_B );
+                
+                mor_2 := PreCompose(
+                           homomorphism_structure_on_morphisms( MorphismDatum( alpha ), MorphismDatum( beta ) ),
+                           CokernelProjection( homomorphism_structure_on_morphisms( IdentityMorphism( Ap ), rho_Bp ) )
+                         );
+                
+                return CokernelColift( mor_1, mor_2 );
+                
+            end;
             
             ##
             InstallMethodWithCacheFromObject( HomomorphismStructureOnMorphismsWithGivenObjects,
@@ -980,16 +942,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 
                 return KernelObjectFunctorialWithGivenKernelObjects(
                          source,
-                         diagram_for_homomorphism_structure_as_kernel( object_A, object_B ),
+                         diagram_for_homomorphism_structure_as_kernel( object_A, object_B )[1],
                          diagram_for_homomorphism_structure_as_kernel_on_morphisms( alpha, beta ),
-                         diagram_for_homomorphism_structure_as_kernel( object_Ap, object_Bp ),
+                         diagram_for_homomorphism_structure_as_kernel( object_Ap, object_Bp )[1],
                          range
                        );
             end );
             
         fi;
         
-        if homomorphism_structure_derivation_case = "apply_freyd" then
+        if not homomorphism_structure_derivation_case = "none" then
             
             ##
             InstallMethod( DistinguishedObjectOfHomomorphismStructure,
@@ -997,44 +959,59 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                            
               function( cat )
                 
-                return AsFreydCategoryObject( DistinguishedObjectOfHomomorphismStructure( range_category ) );
-                
-            end );
-            
-        elif homomorphism_structure_derivation_case = "abelian" then
-            
-            ##
-            InstallMethod( DistinguishedObjectOfHomomorphismStructure,
-                           [ IsCapCategory and CategoryFilter( category ) ],
-                           
-              function( cat )
-                
-                return DistinguishedObjectOfHomomorphismStructure( range_category );
+                return distinguished_object_of_homomorphism_structure( range_category );
                 
             end );
             
         fi;
         
-#             ##
-#             InstallMethod( InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure,
-#                            [ IsCapCategoryMorphism and MorphismFilter( category ) ],
-#                            
-#               function( alpha )
-#                 
-#                 test_morphism :=
-#                 
-#                 
-#             end );
+        if not homomorphism_structure_derivation_case = "none" then
+            
+            InstallMethod( InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure,
+                           [ IsCapCategoryMorphism and MorphismFilter( category ) ],
+                           
+              function( alpha )
+                local phi, interpretation, diagram;
+                
+                phi := MorphismDatum( alpha );
+                
+                interpretation := 
+                    interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure( phi );
+                
+                diagram := diagram_for_homomorphism_structure_as_kernel( Source( alpha ), Range( alpha ) );
+                
+                return KernelLift( diagram[1], PreCompose( interpretation, CokernelProjection( diagram[2] ) ) );
+                
+            end );
         
-#             ##
-#             InstallMethodWithCacheFromObject( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism,
-#                                               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ],
-#                                                
-#               function( A, B, morphism )
-#                 
-#             end );
+            ##
+            InstallMethodWithCacheFromObject( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism,
+                                              [ IsCapCategoryObject and ObjectFilter( category ),
+                                              IsCapCategoryObject and ObjectFilter( category ),
+                                              IsCapCategoryMorphism and MorphismFilter( category ) ],
+                                               
+              function( A, B, morphism )
+                local diagram, embedding, epsilon, lift, interpretation;
+                
+                diagram := diagram_for_homomorphism_structure_as_kernel( A, B );
+                
+                embedding := KernelEmbedding( diagram[1] );
+                
+                epsilon := CokernelProjection( diagram[2] );
+                
+                lift := ProjectiveLift( PreCompose( morphism, embedding ), epsilon );
+                
+                interpretation := 
+                  interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism(
+                    Range( RelationMorphism( A ) ), Range( RelationMorphism( B ) ), lift );
+                
+                return FreydCategoryMorphism( A, interpretation, B );
+                
+            end );
         
         SetFilterObj( category, IsCategoryWithHomomorphismStructure);
+        
+        fi;
         
     fi;
         
