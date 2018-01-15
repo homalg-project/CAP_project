@@ -42,7 +42,8 @@ BindGlobal( "TheTypeOfCapCategoryOppositeMorphisms",
 
 BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
   function( )
-    local recnames, current_recname, object_property_list, morphism_property_list, current_entry, current_rec;
+    local recnames, current_recname, object_property_list, morphism_property_list, current_entry, current_rec,
+          category_property_list, elem;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
@@ -77,6 +78,24 @@ BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
     InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, morphism_property_list );
     
     InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, object_property_list );
+    
+    category_property_list := [ ];
+    
+    for elem in CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST do
+        
+        if not IsBound( elem[1] ) then
+            continue;
+        fi;
+        
+        if not IsBound( elem[2] ) then
+            Add( category_property_list, [ elem[1], elem[1] ] );
+        else
+            Add( category_property_list, elem );
+        fi;
+        
+    od;
+    
+    InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY, category_property_list );
     
 end );
 
@@ -312,6 +331,19 @@ end );
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
                        
   function( category )
+    local entry;
+    
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "Opposite" ] ],
+                                                         [ category, [ Opposite, category ] ],
+                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY );
+    
+    AddToToDoList( entry );
+    
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "Opposite" ] ],
+                                                         [ [ Opposite, category ], category ],
+                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY );
+    
+    AddToToDoList( entry );
     
 end );
 

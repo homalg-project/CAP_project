@@ -28,6 +28,8 @@ DeclareGlobalVariable( "CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS" );
 
+DeclareGlobalVariable( "CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY" );
+
 ###################################
 ##
 #! @Section Constructor
