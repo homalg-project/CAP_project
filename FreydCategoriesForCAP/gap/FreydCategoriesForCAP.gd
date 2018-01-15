@@ -725,6 +725,16 @@ DeclareAttribute( "EpimorphismFromSomeProjectiveObjectForKernelObject",
 DeclareOperation( "EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+DeclareAttribute( "SomeInjectiveObjectForCokernelObject",
+                  IsCapCategoryMorphism );
+
+DeclareAttribute( "MonomorphismToSomeInjectiveObjectForCokernelObject",
+                  IsCapCategoryMorphism );
+
+DeclareOperation( "MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+
 ## Add Operations
 
 #! @Description
@@ -746,6 +756,19 @@ DeclareOperation( "AddSomeProjectiveObjectForKernelObject",
 DeclareOperation( "AddSomeProjectiveObjectForKernelObject",
                   [ IsCapCategory, IsList ] );
 
+
+DeclareOperation( "AddSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsList ] );
+
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
@@ -765,6 +788,19 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObject",
 DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObject",
                   [ IsCapCategory, IsList ] );
 
+
+DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsList ] );
+
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
@@ -782,6 +818,19 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGive
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
                   [ IsCapCategory, IsList ] );
 
 ####################################

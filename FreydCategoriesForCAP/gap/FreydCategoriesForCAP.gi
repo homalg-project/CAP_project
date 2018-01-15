@@ -405,6 +405,7 @@ SomeProjectiveObjectForKernelObject := rec(
   installation_name := "SomeProjectiveObjectForKernelObject",
   filter_list := [ "morphism" ],
   return_type := "object",
+  dual_operation := "SomeInjectiveObjectForCokernelObject",
   is_merely_set_theoretic := true ),
 
 EpimorphismFromSomeProjectiveObjectForKernelObject := rec(
@@ -414,6 +415,7 @@ EpimorphismFromSomeProjectiveObjectForKernelObject := rec(
   universal_object_position := "Source",
   universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
   return_type := "morphism",
+  dual_operation := "MonomorphismToSomeInjectiveObjectForCokernelObject",
   is_merely_set_theoretic := true ),
 
 EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject := rec(
@@ -423,7 +425,36 @@ EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectF
   universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
   cache_name := "EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
   return_type := "morphism",
+  dual_operation := "MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
   is_merely_set_theoretic := true ),
+
+SomeInjectiveObjectForCokernelObject := rec(
+  installation_name := "SomeInjectiveObjectForCokernelObject",
+  filter_list := [ "morphism" ],
+  return_type := "object",
+  dual_operation := "SomeProjectiveObjectForKernelObject",
+  is_merely_set_theoretic := true ),
+
+MonomorphismToSomeInjectiveObjectForCokernelObject := rec(
+  installation_name := "MonomorphismToSomeInjectiveObjectForCokernelObject",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "iota" ] ],
+  universal_object_position := "Range",
+  universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
+  return_type := "morphism",
+  dual_operation := "EpimorphismFromSomeProjectiveObjectForKernelObject",
+  is_merely_set_theoretic := true ),
+
+MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject := rec(
+  installation_name := "MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
+  filter_list := [ "morphism", "object" ],
+  io_type := [ [ "alpha", "I" ], [ "iota" ] ],
+  universal_type := "Colift", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
+  cache_name := "MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
+  return_type := "morphism",
+  dual_operation := "EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
+  is_merely_set_theoretic := true ),
+
   ) );
 
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( FREYD_CATEGORIES_METHOD_NAME_RECORD );
