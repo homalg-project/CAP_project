@@ -66,7 +66,7 @@ InstallMethod( FreydCategory,
         
     fi;
     
-    freyd_category := CreateCapCategory( Concatenation( "Freyd category of ", Name( underlying_category ) ) );
+    freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
     
     SetFilterObj( freyd_category, IsFreydCategory );
     

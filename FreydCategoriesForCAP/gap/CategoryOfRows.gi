@@ -41,7 +41,7 @@ InstallMethod( CategoryOfRows,
   function( homalg_ring )
     local category;
     
-    category := CreateCapCategory( Concatenation( "Category of rows over ", RingName( homalg_ring ) ) );
+    category := CreateCapCategory( Concatenation( "Rows( ", RingName( homalg_ring )," )"  ) );
     
     SetFilterObj( category, IsCategoryOfRows );
     
