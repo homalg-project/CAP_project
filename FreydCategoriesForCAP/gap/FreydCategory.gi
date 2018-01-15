@@ -41,7 +41,7 @@ InstallMethod( FreydCategory,
   function( underlying_category )
     local freyd_category;
     
-    if not IsAdditiveCategory( underlying_category ) then
+    if not HasIsAdditiveCategory( underlying_category ) then
         
         Error( "The given category should be additive" );
         
