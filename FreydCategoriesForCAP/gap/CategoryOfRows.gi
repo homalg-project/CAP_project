@@ -571,10 +571,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         InstallMethodWithCacheFromObject( HomomorphismStructureOnMorphismsWithGivenObjects,
-                                          [ IsCapCategoryObject and ObjectFilter( category ),
+                                          [ IsCapCategoryObject,
                                             IsCapCategoryMorphism and MorphismFilter( category ),
                                             IsCapCategoryMorphism and MorphismFilter( category ),
-                                            IsCapCategoryObject and ObjectFilter( category ) ],
+                                            IsCapCategoryObject ],
           function( source, alpha, beta, range )
             
             return CategoryOfRowsMorphism( source,
@@ -624,7 +624,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         InstallMethodWithCacheFromObject( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism,
-                                          [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ],
+                                          [ IsCapCategoryObject and ObjectFilter( category ),
+                                            IsCapCategoryObject and ObjectFilter( category ),
+                                            IsCapCategoryMorphism ],
                                            
           function( A, B, morphism )
             local nr_rows, nr_columns, underlying_matrix;

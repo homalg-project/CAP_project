@@ -925,10 +925,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             ##
             InstallMethodWithCacheFromObject( HomomorphismStructureOnMorphismsWithGivenObjects,
-                                              [ IsCapCategoryObject and ObjectFilter( category ),
+                                              [ IsCapCategoryObject,
                                                 IsCapCategoryMorphism and MorphismFilter( category ),
                                                 IsCapCategoryMorphism and MorphismFilter( category ),
-                                                IsCapCategoryObject and ObjectFilter( category ) ],
+                                                IsCapCategoryObject ],
               function( source, alpha, beta, range )
                 local object_A, object_Ap, object_B, object_Bp;
                 
@@ -988,7 +988,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             InstallMethodWithCacheFromObject( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism,
                                               [ IsCapCategoryObject and ObjectFilter( category ),
                                               IsCapCategoryObject and ObjectFilter( category ),
-                                              IsCapCategoryMorphism and MorphismFilter( category ) ],
+                                              IsCapCategoryMorphism ],
                                                
               function( A, B, morphism )
                 local diagram, embedding, epsilon, lift, interpretation;
