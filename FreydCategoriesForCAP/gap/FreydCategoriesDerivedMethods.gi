@@ -86,6 +86,24 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromWeakBiPushout,
     
 end : Description := "UniversalMorphismFromWeakBiPushout using Colift" );
 
+##
+AddWithGivenDerivationPairToCAP( WeakKernelLift,
+                                 
+  function( mor, test_mor )
+    
+    return Lift( test_mor, WeakKernelEmbedding( mor ) );
+    
+end : Description := "WeakKernelLift as Lift of WeakKernelEmbedding" );
+
+##
+AddWithGivenDerivationPairToCAP( WeakCokernelColift,
+                                 
+  function( mor, test_mor )
+    
+    return Colift( WeakCokernelProjection( mor ), test_mor );
+    
+end : Description := "WeakCokernelColift as Colift of WeakCokernelProjection" );
+
 
 ## Derivations for basic operations without existing WithGiven
 ##
@@ -98,15 +116,6 @@ AddDerivationToCAP( WeakKernelObject,
 end : Description := "WeakKernelObject as the source of WeakKernelEmbedding" );
 
 ##
-AddDerivationToCAP( WeakKernelLift,
-                    
-  function( mor, test_mor )
-    
-    return Lift( test_mor, WeakKernelEmbedding( mor ) );
-    
-end : Description := "WeakKernelLift as Lift of WeakKernelEmbedding" );
-
-##
 AddDerivationToCAP( WeakCokernelObject,
                     
   function( mor )
@@ -114,15 +123,6 @@ AddDerivationToCAP( WeakCokernelObject,
     return Range( WeakCokernelProjection( mor ) );
     
 end : Description := "WeakCokernelObject as the range of WeakCokernelProjection" );
-
-##
-AddDerivationToCAP( WeakCokernelColift,
-                    
-  function( mor, test_mor )
-    
-    return Colift( WeakCokernelProjection( mor ), test_mor );
-    
-end : Description := "WeakCokernelColift as Colift of WeakCokernelProjection" );
 
 ##
 AddDerivationToCAP( WeakBiFiberProduct,
