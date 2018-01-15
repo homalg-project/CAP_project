@@ -85,6 +85,8 @@ InstallMethod( FreydCategory,
     
     Finalize( freyd_category );
     
+    INSTALL_HOMOMORPHISM_STRUCTURE_FOR_OPPOSITE_CATEGORY( freyd_category );
+    
     return freyd_category;
     
 end );

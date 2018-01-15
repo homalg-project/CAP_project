@@ -19,6 +19,8 @@ DeclareGlobalFunction( "WEAK_BI_PUSHOUT_PREFUNCTION" );
 
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_WEAK_BI_PUSHOUT_PREFUNCTION" );
 
+DeclareGlobalFunction( "INSTALL_HOMOMORPHISM_STRUCTURE_FOR_OPPOSITE_CATEGORY" );
+
 ##TODO: Adjust documentation
 
 ####################################

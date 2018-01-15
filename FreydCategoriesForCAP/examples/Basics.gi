@@ -119,6 +119,12 @@ interpretation := InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomom
 IsCongruentForMorphisms( gamma,
 InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( Source( gamma ), Range( gamma ), interpretation ) );
 
+## Opposite
+HomomorphismStructureOnObjects( Opposite( Z4 ), Opposite( Z2 ) );
+HomomorphismStructureOnObjects( Z2, Z4 );
+interpretation := InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( Opposite( gamma ) );
+IsCongruentForMorphisms( gamma,
+InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( Source( Opposite( gamma ) ), Range( Opposite( gamma ) ), interpretation ) );
 
 
 #! @EndExample

@@ -53,6 +53,8 @@ InstallMethod( CategoryOfRows,
     
     Finalize( category );
     
+    INSTALL_HOMOMORPHISM_STRUCTURE_FOR_OPPOSITE_CATEGORY( category );
+    
     return category;
     
 end );
