@@ -43,24 +43,30 @@ DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_DERIVATION_GRAPH" );
 
+DeclareGlobalVariable( "CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST" );
+
+## Syntax for categorical property with no dual counterpart:
+## [ , "property" ]
+InstallValue( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST,
+  [ [ "IsEnrichedOverCommutativeRegularSemigroup" ],
+    [ "IsAbCategory" ],
+    [ "IsAdditiveCategory" ],
+    [ "IsPreAbelianCategory" ],
+    [ "IsAbelianCategory" ],
+    [ "IsMonoidalCategory" ],
+    [ "IsBraidedMonoidalCategory" ],
+    [ "IsSymmetricMonoidalCategory" ],
+    [ "IsSymmetricClosedMonoidalCategory" ],
+    [ "IsRigidSymmetricClosedMonoidalCategory" ],
+    [ "IsStrictMonoidalCategory" ],
+    [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ]
+  ]
+);
+
 ## FIXME: GET RID OF THIS!!!
 InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
-              rec(
-              MathematicalPropertiesOfCategories := [
-                "IsEnrichedOverCommutativeRegularSemigroup",
-                "IsAbCategory",
-                "IsAdditiveCategory",
-                "IsPreAbelianCategory",
-                "IsAbelianCategory",
-                "IsMonoidalCategory",
-                "IsBraidedMonoidalCategory",
-                "IsSymmetricMonoidalCategory",
-                "IsSymmetricClosedMonoidalCategory",
-                "IsRigidSymmetricClosedMonoidalCategory",
-                "IsStrictMonoidalCategory",
-                "IsAbelianCategoryWithEnoughProjectives",
-                "IsAbelianCategoryWithEnoughInjectives"
-              ] ) );
+              rec( MathematicalPropertiesOfCategories := Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ) )
+            );
 
 DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
 
