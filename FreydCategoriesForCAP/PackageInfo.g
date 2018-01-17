@@ -73,7 +73,9 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2015.08.17" ],
-                           [ "MatricesForHomalg", ">= 2017.05.24" ]
+                           [ "MatricesForHomalg", ">= 2017.05.24" ],
+                           [ "Bialgebroids", ">= 2017.06.13-4" ],
+                           [ "LinearAlgebraForCAP", ">= 2017.12.30" ]
                          ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

@@ -126,5 +126,21 @@ interpretation := InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomom
 IsCongruentForMorphisms( gamma,
 InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( Source( Opposite( gamma ) ), Range( Opposite( gamma ) ), interpretation ) );
 
+## Algebroid
+snake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6]" );
+kQ := PathAlgebra( HomalgFieldOfRationalsInSingular(), snake_quiver );
+A := kQ / [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ];
+Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ] );
+SetIsAbCategory( Aoid, true );
+INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID( Aoid );
+s := SetOfObjects( Aoid );
+m := SetOfGeneratingMorphisms( Aoid );
+interpretation := InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( -m[3] );
+InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( Source( m[3] ), Range( m[3] ), interpretation );
 
+## additive closure
+add := AdditiveClosure( Aoid );
+obj1 := AdditiveClosureObject( [ s[1], s[2] ], add );
+mor := AdditiveClosureMorphism( obj1, [ [ IdentityMorphism( s[1] ), ZeroMorphism( s[1], s[2] ) ], [ ZeroMorphism( s[2], s[1] ), -IdentityMorphism( s[2] ) ] ], obj1 );
+IsWellDefined( mor );
 #! @EndExample

@@ -9,3 +9,7 @@ ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategory.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/HomStructureForAlgebroids.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/AdditiveClosure.gd" );
