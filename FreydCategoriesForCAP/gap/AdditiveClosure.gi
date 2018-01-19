@@ -134,6 +134,34 @@ end );
 
 ####################################
 ##
+## Operations
+##
+####################################
+
+
+InstallMethod( \[\],
+               [ IsAdditiveClosureMorphism, IsInt ],
+               
+  function( morphism, i )
+    
+    if not i in [ 1 .. NrRows( morphism ) ] then
+        
+        Error( "bad index" );
+        
+    fi;
+    
+    if NrColumns( morphism ) = 0 then
+        
+        return [ ];
+        
+    fi;
+    
+    return MorphismMatrix( morphism )[i];
+    
+end );
+
+####################################
+##
 ## Basic operations
 ##
 ####################################
@@ -142,6 +170,9 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
   
   function( category )
+    local compare_morphisms, underlying_category, range_category;
+    
+    underlying_category := UnderlyingCategory( category );
     
     ##
     AddIsEqualForCacheForObjects( category,
@@ -156,9 +187,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     ##
     AddIsWellDefinedForObjects( category,
       function( object )
-        local underlying_category;
-        
-        underlying_category := UnderlyingCategory( category );
         
         if not ForAll( ObjectList( object ), obj -> IsIdenticalObj( underlying_category, CapCategory( obj ) ) ) then
             
@@ -174,7 +202,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     ##
     AddIsWellDefinedForMorphisms( category,
       function( morphism )
-        local matrix, nr_rows, nr_cols, source_list, range_list, underlying_category;
+        local matrix, nr_rows, nr_cols, source_list, range_list;
         
         matrix := MorphismMatrix( morphism );
         
@@ -196,8 +224,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             return false;
             
         fi;
-        
-        underlying_category := UnderlyingCategory( category );
         
         if not ForAll( [ 1 .. nr_rows ], i ->
                  ForAll( [ 1 .. nr_cols ], j ->
@@ -252,10 +278,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
       
     end );
     
-    ##
-    AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
-        local nr_rows_1, nr_rows_2, nr_cols_1, nr_cols_2, matrix_1, matrix_2;
+    compare_morphisms := function( morphism_1, morphism_2, comparison_function )
+      local nr_rows_1, nr_rows_2, nr_cols_1, nr_cols_2, matrix_1, matrix_2;
         
         nr_rows_1 := NrRows( morphism_1 );
         
@@ -288,9 +312,497 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         matrix_2 := MorphismMatrix( morphism_2 );
         
         return ForAll( [ 1 .. nr_rows_1 ], i ->
-                 ForAll( [ 1 .. nr_cols_1 ], j -> IsEqualForMorphisms( matrix_1[i][j], matrix_2[i][j] ) )
+                 ForAll( [ 1 .. nr_cols_1 ], j -> comparison_function( matrix_1[i][j], matrix_2[i][j] ) )
                );
         
+    end;
+    
+    ##
+    AddIsEqualForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        
+        return compare_morphisms( morphism_1, morphism_2, IsEqualForMorphisms );
+        
     end );
+    
+    ##
+    AddIsCongruentForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        
+        return compare_morphisms( morphism_1, morphism_2, IsCongruentForMorphisms );
+        
+    end );
+    
+    ## Basic Operations for a Category
+    ##
+    AddIdentityMorphism( category,
+      
+      function( object )
+        local object_list, size, matrix, i, j;
+        
+        object_list := ObjectList( object );
+        
+        size := Size( object_list );
+        
+        matrix := List( [ 1 .. size ], i -> [ ] );
+        
+        for i in [ 1 .. size ] do
+            
+            matrix[i][i] := IdentityMorphism( object_list[i] );
+            
+            for j in [ i + 1 .. size ]  do
+                
+                matrix[i][j] := ZeroMorphism( object_list[i], object_list[j] );
+                
+                matrix[j][i] := ZeroMorphism( object_list[j], object_list[i] );
+                
+            od;
+            
+        od;
+        
+        return AdditiveClosureMorphism( object, matrix, object );
+        
+    end );
+    
+    ##
+    AddZeroMorphism( category,
+      function( source, range )
+        local object_list_source, object_list_range, size_list_source, size_list_range, matrix, i, j;
+        
+        object_list_source := ObjectList( source );
+        
+        object_list_range := ObjectList( range );
+        
+        size_list_source := Size( object_list_source );
+        
+        size_list_range := Size( object_list_range );
+        
+        if size_list_source = 0 or size_list_range = 0 then
+            
+            return AdditiveClosureMorphism( source, [ ], range );
+            
+        fi;
+        
+        matrix := List( [ 1 .. size_list_source ], i -> [ ] );
+        
+        for i in [ 1 .. size_list_source ] do
+            
+            for j in [ 1 .. size_list_range ] do
+                
+                matrix[i][j] := ZeroMorphism( object_list_source[i], object_list_range[j] );
+                
+            od;
+            
+        od;
+        
+        return AdditiveClosureMorphism( source, matrix, range );
+        
+    end );
+    
+    ##
+    AddPreCompose( category,
+      function( morphism_1, morphism_2 )
+        local nr_rows_1, nr_cols_1, nr_rows_2, nr_cols_2, matrix, matrix_1, matrix_2, i, j;
+        
+        nr_rows_1 := NrRows( morphism_1 );
+        
+        nr_cols_1 := NrColumns( morphism_1 );
+        
+        nr_rows_2 := NrRows( morphism_2 );
+        
+        nr_cols_2 := NrColumns( morphism_2 );
+        
+        if ForAny( [ nr_rows_1, nr_cols_2 ], IsZero ) then
+            
+            return AdditiveClosureMorphism( Source( morphism_1 ), [ ], Range( morphism_2 ) );
+            
+        fi;
+        
+        if ForAny( [ nr_cols_1, nr_rows_2 ], IsZero ) then
+            
+            return ZeroMorphism( Source( morphism_1 ), Range( morphism_2 ) );
+            
+        fi;
+        
+        matrix := List( [ 1 .. nr_rows_1 ], i -> [ ] );
+        
+        matrix_1 := MorphismMatrix( morphism_1 );
+        
+        matrix_2 := MorphismMatrix( morphism_2 );
+        
+        for i in [ 1 .. nr_rows_1 ] do
+            
+            for j in [ 1 .. nr_cols_2 ] do
+                
+                matrix[i][j] := Sum( List( [ 1 .. nr_cols_1 ], k -> PreCompose( matrix_1[i][k], matrix_2[k][j] ) ) );
+                
+            od;
+            
+        od;
+        
+        return AdditiveClosureMorphism( Source( morphism_1 ), matrix, Range( morphism_2 ) );
+        
+    end );
+    
+    ## Basic Operations for an Additive Category
+    ##
+    AddIsZeroForMorphisms( category,
+      function( morphism )
+        local matrix;
+        
+        matrix := MorphismMatrix( morphism );
+        
+        if IsEmpty( matrix ) then
+            
+            return true;
+            
+        fi;
+        
+        return ForAll( Concatenation( matrix ), IsZeroForMorphisms );
+        
+    end );
+    
+    ##
+    AddAdditionForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        
+        return AdditiveClosureMorphism( Source( morphism_1 ),
+                                        MorphismMatrix( morphism_1 ) + MorphismMatrix( morphism_2 ),
+                                        Range( morphism_2 ) );
+        
+    end );
+    
+    ##
+    AddAdditiveInverseForMorphisms( category,
+      function( morphism )
+        
+        return AdditiveClosureMorphism( Source( morphism ),
+                                        -MorphismMatrix( morphism ),
+                                        Range( morphism ) );
+        
+    end );
+    ##
+    AddZeroObject( category,
+      function( )
+        
+        return AdditiveClosureObject( [ ], category );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
+      function( sink, zero_object )
+        
+        return AdditiveClosureMorphism( sink, [ ], zero_object );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
+      function( source, zero_object )
+        
+        return AdditiveClosureMorphism( zero_object, [ ], source );
+        
+    end );
+    
+    ##
+    AddDirectSum( category,
+      function( list )
+        
+        return AdditiveClosureObject( Concatenation( List( list, ObjectList ) ), category );
+        
+    end );
+    
+    ##
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
+      function( list, projection_number, direct_sum_object )
+        local pre_object, range, post_object, pre_zero, id, post_zero;
+        
+        pre_object := DirectSum( category, list{[1 .. projection_number - 1]} );
+        
+        range := list[projection_number];
+        
+        post_object := DirectSum( category, list{[projection_number + 1 .. Size( list )]} );
+        
+        pre_zero := ZeroMorphism( pre_object, range );
+        
+        id := IdentityMorphism( range );
+        
+        post_zero := ZeroMorphism( post_object, range );
+        
+        return AdditiveClosureMorphism( direct_sum_object,
+                                        Concatenation( MorphismMatrix( pre_zero ), MorphismMatrix( id ), MorphismMatrix( post_zero ) ),
+                                        range );
+        
+    end );
+    
+    
+    ##
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
+      function( list, injection_number, direct_sum_object )
+        local pre_object, source, post_object, pre_zero, id, post_zero;
+        
+        pre_object := DirectSum( category, list{[1 .. injection_number - 1]} );
+        
+        source := list[injection_number];
+        
+        post_object := DirectSum( category, list{[injection_number + 1 .. Size( list )]} );
+        
+        pre_zero := ZeroMorphism( source, pre_object );
+        
+        id := IdentityMorphism( source );
+        
+        post_zero := ZeroMorphism( source, post_object );
+        
+        return AdditiveClosureMorphism( source,
+                                        List( [ 1 .. NrRows( id ) ], i -> Concatenation( pre_zero[i], id[i], post_zero[i] ) ),
+                                        direct_sum_object );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
+      function( diagram, source, direct_sum )
+        local test_object;
+        
+        test_object := Source( source[1] );
+        
+        return AdditiveClosureMorphism( test_object,
+                                        List( [ 1 .. Size( ObjectList( test_object ) ) ], i -> Concatenation( List( source, tau -> tau[i] ) ) ),
+                                        direct_sum );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
+      function( diagram, sink, direct_sum )
+        local test_object;
+        
+        test_object := Range( sink[1] );
+        
+        return AdditiveClosureMorphism( direct_sum,
+                                        Concatenation( List( sink, MorphismMatrix ) ),
+                                        test_object );
+        
+    end );
+    
+    if IsCategoryWithHomomorphismStructure( underlying_category ) then
+        
+        range_category := CapCategory( DistinguishedObjectOfHomomorphismStructure( underlying_category ) );
+        
+        ##
+        InstallMethodWithCacheFromObject( HomomorphismStructureOnObjects,
+                                          [ IsCapCategoryObject and ObjectFilter( category ), IsCapCategoryObject and ObjectFilter( category ) ],
+          function( object_1, object_2 )
+            
+            return DirectSum( range_category,
+                     Concatenation(
+                       List( ObjectList( object_1 ), obj_i ->
+                          List( ObjectList( object_2 ), obj_j -> HomomorphismStructureOnObjects( obj_i, obj_j ) )
+                       )
+                     )
+                   );
+            
+        end );
+        
+        ##
+        InstallMethodWithCacheFromObject( HomomorphismStructureOnMorphismsWithGivenObjects,
+                                          [ IsCapCategoryObject,
+                                            IsCapCategoryMorphism and MorphismFilter( category ),
+                                            IsCapCategoryMorphism and MorphismFilter( category ),
+                                            IsCapCategoryObject ],
+          function( source, alpha, beta, range )
+            local matrix_alpha, matrix_beta, size_i, size_k, size_j, size_l;
+            
+            matrix_alpha := MorphismMatrix( alpha );
+            
+            matrix_beta := MorphismMatrix( beta );
+            
+            size_i := NrColumns( alpha );
+            
+            size_k := NrRows( alpha );
+            
+            size_j := NrRows( beta );
+            
+            size_l := NrColumns( beta );
+            
+            if ForAny( [ size_i, size_k, size_j, size_l ], IsZero ) then
+                
+                return ZeroMorphism( source, range );
+                
+            fi;
+            
+            return MorphismBetweenDirectSums(
+                     source,
+                     List( [ 1 .. size_i ], i ->
+                       List( [ 1 .. size_k ], k -> 
+                         MorphismBetweenDirectSums(
+                           List( [ 1 .. size_j ], j ->
+                             List( [ 1 .. size_l ], l ->
+                               HomomorphismStructureOnMorphisms( matrix_alpha[k][i], matrix_beta[j][l] )
+                             )
+                           )
+                         )
+                       )
+                     ),
+                     range );
+            
+        end );
+        
+        ##
+        InstallMethod( DistinguishedObjectOfHomomorphismStructure,
+                       [ IsCapCategory and CategoryFilter( category ) ],
+                       
+          function( cat )
+            
+            return DistinguishedObjectOfHomomorphismStructure( underlying_category );
+            
+        end );
+        
+        ##
+        InstallMethod( InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure,
+                       [ IsCapCategoryMorphism and MorphismFilter( category ) ],
+                       
+          function( alpha )
+            local size_i, size_j, matrix_alpha;
+            
+            size_i := NrRows( alpha );
+            
+            size_j := NrColumns( alpha );
+            
+            matrix_alpha := MorphismMatrix( alpha );
+            
+            if size_i = 0 or size_j = 0 then
+                
+                UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( category ) );
+                
+            fi;
+            
+            return UniversalMorphismIntoDirectSum(
+                     List( [ 1 .. size_i ], i ->
+                       UniversalMorphismIntoDirectSum(
+                         List( [ 1 .. size_j ], j ->
+                           InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( matrix_alpha[i][j] )
+                         )
+                       )
+                     )
+                   );
+            
+        end );
+        
+        ##
+        InstallMethodWithCacheFromObject( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism,
+                                          [ IsCapCategoryObject and ObjectFilter( category ),
+                                            IsCapCategoryObject and ObjectFilter( category ),
+                                            IsCapCategoryMorphism ],
+                                           
+          function( A, B, morphism )
+            local obj_list_A, obj_list_B, size_i, size_j, matrix, summands;
+            
+            obj_list_A := ObjectList( A );
+            
+            obj_list_B := ObjectList( B );
+            
+            size_i := Size( obj_list_A );
+            
+            size_j := Size( obj_list_B );
+            
+            if size_i = 0 or size_j = 0 then
+                
+                return ZeroMorphism( A, B );
+                
+            fi;
+            
+            summands := 
+              Concatenation(
+                         List( obj_list_A, obj_i ->
+                            List( obj_list_B, obj_j -> HomomorphismStructureOnObjects( obj_i, obj_j ) )
+                         )
+                       );
+            
+            matrix := List( [ 1 .. size_i ], i ->
+                        List( [ 1 .. size_j ], j ->
+                          PreCompose(
+                            morphism,
+                            ProjectionInFactorOfDirectSum( summands, size_j * (i - 1) + j )
+                          )
+                        )
+                      );
+            
+            return AdditiveClosureMorphism(
+                     A,
+                     List( [ 1 .. size_i ], i ->
+                       List( [ 1 .. size_j ], j ->
+                         InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism(
+                           obj_list_A[i],
+                           obj_list_B[j],
+                           matrix[i][j]
+                         )
+                       )
+                     ),
+                     B
+                   );
+            
+        end );
+        
+        SetFilterObj( category, IsCategoryWithHomomorphismStructure );
+        
+    fi;
+    
+end );
+
+####################################
+##
+## View
+##
+####################################
+
+##
+InstallMethod( Display,
+               [ IsAdditiveClosureMorphism ],
+               
+  function( morphism )
+    local nr_rows, nr_cols, matrix, i, j;
+    
+    nr_rows := NrRows( morphism );
+    
+    nr_cols := NrColumns( morphism );
+    
+    Print( Concatenation( "A ", String( nr_rows ), " x ", String( nr_cols ), " matrix with entries in ", Name( UnderlyingCategory( CapCategory( morphism ) ) ), "\n" ) );
+    
+    matrix := MorphismMatrix( morphism );
+    
+    for i in [ 1 .. nr_rows ] do
+        
+        for j in [ 1 .. nr_cols ] do
+            
+            Print( Concatenation( "\n[", String(i), ",", String(j), "]: " ) );
+            
+            ViewObj( matrix[i][j] );
+            
+        od;
+        
+    od;
+    
+end );
+
+##
+InstallMethod( Display,
+               [ IsAdditiveClosureObject ],
+               
+  function( object )
+    local object_list, obj;
+    
+    object_list := ObjectList( object );
+    
+    Print( Concatenation( "A formal direct sum consisting of ", String( Size( object_list ) ), " objects." ) );
+    
+    for obj in object_list do
+        
+        Print( "\n" );
+        
+        ViewObj( obj );
+        
+    od;
     
 end );

@@ -143,4 +143,17 @@ add := AdditiveClosure( Aoid );
 obj1 := AdditiveClosureObject( [ s[1], s[2] ], add );
 mor := AdditiveClosureMorphism( obj1, [ [ IdentityMorphism( s[1] ), ZeroMorphism( s[1], s[2] ) ], [ ZeroMorphism( s[2], s[1] ), -IdentityMorphism( s[2] ) ] ], obj1 );
 IsWellDefined( mor );
+IsCongruentForMorphisms( PreCompose( mor, mor ), IdentityMorphism( obj1 ) );
+obj2 := AdditiveClosureObject( [ s[3], s[3] ], add );
+id := IdentityMorphism( obj2 );
+objs1:= AdditiveClosureObject( [ s[1] ], add );
+objs2:= AdditiveClosureObject( [ s[2] ], add );
+ids1 := IdentityMorphism( objs1 );
+ids2 := IdentityMorphism( objs2 );
+HomomorphismStructureOnMorphisms( DirectSumFunctorial( [ ids1, ids2 ] ), ids1 );
+
+interpretation := InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( mor );
+IsCongruentForMorphisms(
+  InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( Source( mor ), Range( mor ), interpretation ),
+  mor );
 #! @EndExample

@@ -61,3 +61,13 @@ DeclareAttribute( "NrRows",
 
 DeclareAttribute( "NrColumns",
                   IsAdditiveClosureMorphism );
+
+####################################
+##
+#! @Section Operators
+##
+####################################
+
+# DeclareOperation( "\[\]",
+#                   [ IsAdditiveClosureMorphism, IsInt ] );
+

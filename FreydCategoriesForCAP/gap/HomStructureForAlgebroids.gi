@@ -151,7 +151,7 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID,
         
         if size_basis = 0 then
             
-            return HomalgZeroMatrix( 1, 0, ring );
+            return morphism_constructor( HomalgZeroMatrix( 1, 0, ring ) );
             
         fi;
         
