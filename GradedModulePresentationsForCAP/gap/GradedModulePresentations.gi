@@ -251,7 +251,7 @@ BindGlobal( "CAP_INTERNAL_CHECK_DEGREES_FOR_IS_WELL_DEFINED_FOR_OBJECTS",
           while IsZero( relation_entries[ i ][ starting_element ] ) do
               starting_element := starting_element + 1;
           od;
-          test_element := relation_degrees[ i ][ starting_element ] + generator_degrees[ 1 ];
+          test_element := relation_degrees[ i ][ starting_element ] + generator_degrees[ starting_element ];
           for j in [ starting_element + 1 .. Length( relation_degrees[ i ] ) ] do
               if not IsZero( relation_entries[ i ][ j ] ) and  relation_degrees[ i ][ j ] + generator_degrees[ j ] <> test_element then
                   return false;
