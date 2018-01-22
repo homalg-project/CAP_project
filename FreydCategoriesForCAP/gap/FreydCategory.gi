@@ -556,94 +556,98 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
-    ## Kernels: kernels in Freyd categories are based on weak fiber products in the underlying category and thus more expensive
-    AddKernelEmbedding( category,
-      
-      function( morphism )
-        local alpha, rho_B, rho_A, projection_1, projection_2, kernel_object;
+    if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
         
-        alpha := MorphismDatum( morphism );
+        ## Kernels: kernels in Freyd categories are based on weak fiber products in the underlying category and thus more expensive
+        AddKernelEmbedding( category,
+          
+          function( morphism )
+            local alpha, rho_B, rho_A, projection_1, projection_2, kernel_object;
+            
+            alpha := MorphismDatum( morphism );
+            
+            rho_B := RelationMorphism( Range( morphism ) );
+            
+            rho_A := RelationMorphism( Source( morphism ) );
+            
+            ## We use the bias in the first projection of weak fiber products
+            projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, rho_B );
+            
+            projection_2 := ProjectionInFirstFactorOfWeakBiFiberProduct( projection_1, rho_A );
+            
+            kernel_object := FreydCategoryObject( projection_2 );
+            
+            return FreydCategoryMorphism( kernel_object,
+                                          projection_1,
+                                          Source( morphism ) );
+            
+        end );
         
-        rho_B := RelationMorphism( Range( morphism ) );
+        ##
+        AddKernelLiftWithGivenKernelObject( category,
+                                            
+          function( morphism, test_morphism, kernel_object )
+            local sigma, alpha, rho_B, tau, morphism_datum;
+            
+            ## witness computation
+            sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, morphism ) );
+            
+            ## for notational convenience
+            alpha := MorphismDatum( morphism );
+            
+            rho_B := RelationMorphism( Range( morphism ) );
+            
+            tau := MorphismDatum( test_morphism );
+            
+            morphism_datum := UniversalMorphismIntoWeakBiFiberProduct( alpha, rho_B, tau, sigma );
+            
+            return FreydCategoryMorphism( Source( test_morphism ),
+                                          morphism_datum,
+                                          kernel_object );
+            
+        end );
         
-        rho_A := RelationMorphism( Source( morphism ) );
+        ##
+        AddLiftAlongMonomorphism( category,
+          
+          function( alpha, test_morphism )
+            local sigma, R_B, A, tau_A;
+            
+            sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, CokernelProjection( alpha ) ) );
+            
+            R_B := Source( RelationMorphism( Range( alpha ) ) );
+            
+            A := Range( RelationMorphism( Source( alpha ) ) );
+            
+            tau_A := PreCompose( sigma, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
+            
+            return FreydCategoryMorphism( Source( test_morphism ),
+                                          tau_A,
+                                          Source( alpha ) );
+            
+        end );
         
-        ## We use the bias in the first projection of weak fiber products
-        projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, rho_B );
+        ##
+        AddColiftAlongEpimorphism( category,
+          
+          function( alpha, test_morphism )
+            local witness, R_B, A, sigma_A;
+            
+            witness := WitnessForBeingCongruentToZero( PreCompose( alpha, CokernelProjection( alpha ) ) );
+            
+            R_B := Source( RelationMorphism( Range( alpha ) ) );
+            
+            A := Range( RelationMorphism( Source( alpha ) ) );
+            
+            sigma_A := PreCompose( witness, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
+            
+            return FreydCategoryMorphism( Range( alpha ),
+                                          PreCompose( sigma_A, MorphismDatum( test_morphism ) ),
+                                          Range( test_morphism ) );
+            
+        end );
         
-        projection_2 := ProjectionInFirstFactorOfWeakBiFiberProduct( projection_1, rho_A );
-        
-        kernel_object := FreydCategoryObject( projection_2 );
-        
-        return FreydCategoryMorphism( kernel_object,
-                                      projection_1,
-                                      Source( morphism ) );
-        
-    end );
-    
-    ##
-    AddKernelLiftWithGivenKernelObject( category,
-                                        
-      function( morphism, test_morphism, kernel_object )
-        local sigma, alpha, rho_B, tau, morphism_datum;
-        
-        ## witness computation
-        sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, morphism ) );
-        
-        ## for notational convenience
-        alpha := MorphismDatum( morphism );
-        
-        rho_B := RelationMorphism( Range( morphism ) );
-        
-        tau := MorphismDatum( test_morphism );
-        
-        morphism_datum := UniversalMorphismIntoWeakBiFiberProduct( alpha, rho_B, tau, sigma );
-        
-        return FreydCategoryMorphism( Source( test_morphism ),
-                                      morphism_datum,
-                                      kernel_object );
-        
-    end );
-    
-    ##
-    AddLiftAlongMonomorphism( category,
-      
-      function( alpha, test_morphism )
-        local sigma, R_B, A, tau_A;
-        
-        sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, CokernelProjection( alpha ) ) );
-        
-        R_B := Source( RelationMorphism( Range( alpha ) ) );
-        
-        A := Range( RelationMorphism( Source( alpha ) ) );
-        
-        tau_A := PreCompose( sigma, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
-        
-        return FreydCategoryMorphism( Source( test_morphism ),
-                                      tau_A,
-                                      Source( alpha ) );
-        
-    end );
-    
-    ##
-    AddColiftAlongEpimorphism( category,
-      
-      function( alpha, test_morphism )
-        local witness, R_B, A, sigma_A;
-        
-        witness := WitnessForBeingCongruentToZero( PreCompose( alpha, CokernelProjection( alpha ) ) );
-        
-        R_B := Source( RelationMorphism( Range( alpha ) ) );
-        
-        A := Range( RelationMorphism( Source( alpha ) ) );
-        
-        sigma_A := PreCompose( witness, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
-        
-        return FreydCategoryMorphism( Range( alpha ),
-                                      PreCompose( sigma_A, MorphismDatum( test_morphism ) ),
-                                      Range( test_morphism ) );
-        
-    end );
+    fi;
     
     ##
     AddEpimorphismFromSomeProjectiveObjectForKernelObject( category,
