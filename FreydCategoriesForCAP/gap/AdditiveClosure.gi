@@ -66,6 +66,16 @@ InstallMethod( AdditiveClosure,
 end );
 
 ##
+InstallMethod( AsAdditiveClosureObject,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    
+    return AdditiveClosureObject( [ object ], AdditiveClosure( CapCategory( object ) ) );
+    
+end );
+
+##
 InstallMethodWithCache( AdditiveClosureObject,
                         [ IsList, IsAdditiveClosureCategory ],
                
@@ -84,6 +94,19 @@ InstallMethodWithCache( AdditiveClosureObject,
     
 end );
 
+##
+InstallMethod( AsAdditiveClosureMorphism,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    
+    return AdditiveClosureMorphism( 
+             AsAdditiveClosureObject( Source( morphism ) ),
+             [ [ morphism ] ],
+             AsAdditiveClosureObject( Range( morphism ) )
+           );
+    
+end );
 
 ##
 InstallMethod( AdditiveClosureMorphism,
@@ -746,6 +769,62 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         end );
         
         SetFilterObj( category, IsCategoryWithHomomorphismStructure );
+        
+        if  ForAll( [ "Lift",
+           "ProjectionInFactorOfDirectSum", 
+           "PreCompose", 
+           "UniversalMorphismIntoDirectSum", 
+           "UniversalMorphismFromDirectSum" ], f -> CanCompute( range_category, f ) ) then
+            
+            ##
+            AddLift( category,
+              function( alpha, beta )
+                local left_coefficients, right_coefficients, right_side, right_divide;
+                
+                left_coefficients := [ [ IdentityMorphism( Source( alpha ) ) ] ];
+                
+                right_coefficients := [ [ beta ] ];
+                
+                right_side := [ alpha ];
+                
+                right_divide := SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure(
+                                  left_coefficients, right_coefficients, right_side );
+                
+                if right_divide = fail then
+                  
+                  return fail;
+                  
+                fi;
+                
+                return right_divide[1];
+                
+            end );
+            
+            ##
+            AddColift( category,
+              function( alpha, beta )
+                local left_coefficients, right_coefficients, right_side, left_divide;
+                
+                left_coefficients := [ [ alpha ] ];
+                
+                right_coefficients := [ [ IdentityMorphism( Range( beta ) ) ] ];
+                
+                right_side := [ beta ];
+                
+                left_divide := SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure(
+                                  left_coefficients, right_coefficients, right_side );
+                
+                if left_divide = fail then
+                  
+                  return fail;
+                  
+                fi;
+                
+                return left_divide[1];
+                
+            end );
+            
+        fi;
         
     fi;
     

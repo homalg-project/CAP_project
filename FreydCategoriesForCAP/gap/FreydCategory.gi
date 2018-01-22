@@ -667,7 +667,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     end );
     
     ##
-    if IsCategoryWithHomomorphismStructure( underlying_category ) then
+    if IsCategoryWithHomomorphismStructure( underlying_category )
+       and ForAll( [ "Lift",
+                     "ProjectionInFactorOfDirectSum", 
+                     "PreCompose", 
+                     "UniversalMorphismIntoDirectSum", 
+                     "UniversalMorphismFromDirectSum" ], f -> CanCompute( underlying_category, f ) ) then
         
         AddLift( category,
                  

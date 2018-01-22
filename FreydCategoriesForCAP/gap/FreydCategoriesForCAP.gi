@@ -485,12 +485,24 @@ end );
 ##
 ####################################
 
-##
+# needs:
+# IsCategoryWithHomomorphismStructure( category )
+#
+# and for the base categoy of the Homomorphism structure:
+#
+# ForAll( [ "Lift",
+#            "ProjectionInFactorOfDirectSum", 
+#            "PreCompose", 
+#            "UniversalMorphismIntoDirectSum", 
+#            "UniversalMorphismFromDirectSum" ], f -> CanCompute( underlying_category, f ) )
+#
 InstallMethod( SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure,
                [ IsList, IsList, IsList ],
                
   function( left_coefficients, right_coefficients, right_side )
     local m, n, nu, H, lift, summands, list;
+    
+    ## TODO: Type-check of linear system
     
     m := Size( left_coefficients );
     

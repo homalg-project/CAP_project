@@ -156,4 +156,18 @@ interpretation := InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomom
 IsCongruentForMorphisms(
   InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( Source( mor ), Range( mor ), interpretation ),
   mor );
+
+a := AsAdditiveClosureMorphism( m[1] );
+b := AsAdditiveClosureMorphism( m[2] );
+c := AsAdditiveClosureMorphism( m[3] );
+d := AsAdditiveClosureMorphism( m[4] );
+e := AsAdditiveClosureMorphism( m[5] );
+f := AsAdditiveClosureMorphism( m[6] );
+g := AsAdditiveClosureMorphism( m[7] );
+
+l := Lift( PreCompose( a, d ), f );
+IsCongruentForMorphisms( PreCompose( l, f ), PreCompose( a, d ) );
+
+l := Colift( c, PreCompose( a, d ) );
+IsCongruentForMorphisms( PreCompose( c, l ), PreCompose( a, d ) );
 #! @EndExample

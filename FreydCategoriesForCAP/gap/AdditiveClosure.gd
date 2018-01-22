@@ -38,8 +38,14 @@ DeclareAttribute( "AdditiveClosure",
 DeclareOperation( "AdditiveClosureObject",
                   [ IsList, IsAdditiveClosureCategory ] );
 
+DeclareAttribute( "AsAdditiveClosureObject",
+                  IsCapCategoryObject );
+
 DeclareOperation( "AdditiveClosureMorphism",
                   [ IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ] );
+
+DeclareAttribute( "AsAdditiveClosureMorphism",
+                  IsCapCategoryMorphism );
 
 ####################################
 ##
