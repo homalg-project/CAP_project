@@ -249,6 +249,65 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
+        if current_recname = "ZeroMorphism" then
+            
+            AddZeroMorphism( opposite_category,
+              function( obj1, obj2 )
+                
+                return Opposite( ZeroMorphism( Opposite( obj2 ), Opposite( obj1 ) ) );
+                
+            end );
+            
+            continue;
+            
+        fi;
+        
+        if current_recname = "Lift" then
+            
+            ##
+            AddLift( opposite_category,
+              function( alpha, beta )
+                local lift;
+                
+                lift := Colift( Opposite( beta ), Opposite( alpha ) );
+                
+                if lift = fail then
+                    
+                    return fail;
+                    
+                fi;
+                
+                return Opposite( lift );
+                
+            end );
+            
+            continue;
+            
+        fi;
+        
+        if current_recname = "Colift" then
+            
+            ##
+            AddColift( opposite_category,
+              function( alpha, beta )
+                local lift;
+                
+                lift := Lift( Opposite( beta ), Opposite( alpha ) );
+                
+                if lift = fail then
+                    
+                    return fail;
+                    
+                fi;
+                
+                return Opposite( lift );
+                
+            end );
+            
+            continue;
+            
+        fi;
+        
         func := create_func( dual_name );
         
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
