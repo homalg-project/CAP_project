@@ -621,3 +621,29 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_OPPOSITE_CATEGORY,
     
 end );
 
+####################################
+##
+## Free abelian category
+##
+####################################
+
+InstallMethod( AsMorphismInFreeAbelianCategory,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    
+    return 
+#       Opposite(
+        AsFreydCategoryMorphism(
+          Opposite(
+            AsFreydCategoryMorphism(
+              Opposite(
+              AsAdditiveClosureMorphism( morphism )
+              )
+            )
+          )
+#         )
+      );
+    
+end );
+

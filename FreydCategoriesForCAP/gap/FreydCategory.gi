@@ -294,7 +294,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsEqualForObjects( category,
       function( object_1, object_2 )
       
-        return IsEqualForMorphisms( RelationMorphism( object_1 ), RelationMorphism( object_2 ) );
+        return IsEqualForMorphismsOnMor( RelationMorphism( object_1 ), RelationMorphism( object_2 ) );
       
     end );
     

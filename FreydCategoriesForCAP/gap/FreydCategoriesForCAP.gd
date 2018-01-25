@@ -880,3 +880,13 @@ DeclareOperationWithCache( "InterpretMorphismFromDinstinguishedObjectToHomomorph
 ##
 DeclareOperation( "SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure",
                   [ IsList, IsList, IsList ] );
+
+####################################
+##
+#! @Section Free abelian category
+##
+####################################
+
+##
+DeclareAttribute( "AsMorphismInFreeAbelianCategory",
+                  IsCapCategoryMorphism );

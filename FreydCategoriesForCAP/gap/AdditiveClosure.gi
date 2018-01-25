@@ -697,7 +697,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
             if size_i = 0 or size_j = 0 then
                 
-                UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( category ) );
+                return UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( category ) );
                 
             fi;
             
