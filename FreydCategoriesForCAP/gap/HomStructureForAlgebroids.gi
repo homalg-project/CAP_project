@@ -115,7 +115,7 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID,
         for path in basis_elements_source do
             
             Add( images,
-              CoefficientsOfPaths( basis_elements_range, Representative( elem_alpha * quiver_algebra.(String(path)) * elem_beta ) )
+              CoefficientsOfPaths( basis_elements_range, Representative( elem_alpha * PathAsAlgebraElement( quiver_algebra, path ) * elem_beta ) )
             );
             
         od;
