@@ -207,14 +207,25 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     
     category_weight_list := category!.derivations_weight_list;
     
-    create_func := function( dual_name )
+    create_func := function( dual_name, arg... )
+        local list_operation;
+        
+        if IsBound( arg[1] ) and arg[1] = true then
+            
+            list_operation := Reversed;
+            
+        else
+            
+            list_operation := IdFunc;
+            
+        fi;
         
         return function( arg )
             local op_arg, result;
             
             op_arg := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
             
-            result := CallFuncList( ValueGlobal( dual_name ), op_arg );
+            result := CallFuncList( ValueGlobal( dual_name ), list_operation( op_arg ) );
             
             return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
             
@@ -248,19 +259,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
         if CurrentOperationWeight( category_weight_list, dual_name ) = infinity then
             continue;
-        fi;
-        
-        if current_recname = "ZeroMorphism" then
-            
-            AddZeroMorphism( opposite_category,
-              function( obj1, obj2 )
-                
-                return Opposite( ZeroMorphism( Opposite( obj2 ), Opposite( obj1 ) ) );
-                
-            end );
-            
-            continue;
-            
         fi;
         
         if current_recname = "Lift" then
@@ -309,7 +307,15 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             
         fi;
         
-        func := create_func( dual_name );
+        if IsBound( current_entry.dual_arguments_reversed ) then
+            
+            func := create_func( dual_name, true );
+            
+        else
+            
+            func := create_func( dual_name );
+            
+        fi;
         
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
         

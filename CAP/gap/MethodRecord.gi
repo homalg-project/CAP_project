@@ -349,7 +349,8 @@ ZeroMorphism := rec(
   filter_list := [ "object", "object" ],
   io_type := [ [ "a", "b" ], [ "a", "b" ] ],
   cache_name := "ZeroMorphism",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_arguments_reversed := "true" ),
 
 DirectSum := rec(
   installation_name := "DirectSumOp",
@@ -2076,7 +2077,8 @@ KernelObjectFunctorialWithGivenKernelObjects := rec(
   io_type := [ [ "K", "alpha", "mu", "alphap", "Kp" ], [ "K", "Kp" ] ],
   cache_name := "KernelObjectFunctorialWithGivenKernelObjects",
   return_type := "morphism",
-  dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects" ),
+  dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects",
+  dual_arguments_reversed := "true" ),
 
 CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   installation_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
@@ -2084,7 +2086,8 @@ CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   io_type := [ [ "C", "alpha", "nu", "alphap", "Cp" ], [ "C", "Cp" ] ],
   cache_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
   return_type := "morphism",
-  dual_operation := "KernelObjectFunctorialWithGivenKernelObjects" ),
+  dual_operation := "KernelObjectFunctorialWithGivenKernelObjects",
+  dual_arguments_reversed := "true" ),
 
 TerminalObjectFunctorial := rec(
   installation_name := "TerminalObjectFunctorial",
@@ -2110,7 +2113,8 @@ DirectProductFunctorialWithGivenDirectProducts := rec(
   io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "DirectProductFunctorialWithGivenDirectProducts",
   return_type := "morphism",
-  dual_operation := "CoproductFunctorialWithGivenCoproducts" ),
+  dual_operation := "CoproductFunctorialWithGivenCoproducts",
+  dual_arguments_reversed := "true" ),
 
 CoproductFunctorialWithGivenCoproducts := rec(
   installation_name := "CoproductFunctorialWithGivenCoproducts",
@@ -2118,14 +2122,16 @@ CoproductFunctorialWithGivenCoproducts := rec(
   io_type := [ [ "I", "L", "Ip" ], [ "I", "Ip" ] ],
   cache_name := "CoproductFunctorialWithGivenCoproducts",
   return_type := "morphism",
-  dual_operation := "DirectProductFunctorialWithGivenDirectProducts" ),
+  dual_operation := "DirectProductFunctorialWithGivenDirectProducts",
+  dual_arguments_reversed := "true" ),
 
 DirectSumFunctorialWithGivenDirectSums := rec(
   installation_name := "DirectSumFunctorialWithGivenDirectSums",
   filter_list := [ "object", IsList, "object" ],
   io_type := [ [ "d1", "L", "d2" ], [ "d1", "d2" ] ],
   cache_name := "DirectSumFunctorialWithGivenDirectSums",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_arguments_reversed := "true" ),
 
 FiberProductFunctorialWithGivenFiberProducts := rec(
   installation_name := "FiberProductFunctorialWithGivenFiberProducts",
@@ -2133,7 +2139,8 @@ FiberProductFunctorialWithGivenFiberProducts := rec(
   io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "FiberProductFunctorialWithGivenFiberProducts",
   return_type := "morphism",
-  dual_operation := "PushoutFunctorialWithGivenPushouts" ),
+  dual_operation := "PushoutFunctorialWithGivenPushouts",
+  dual_arguments_reversed := "true" ),
 
 PushoutFunctorialWithGivenPushouts := rec(
   installation_name := "PushoutFunctorialWithGivenPushouts",
@@ -2141,7 +2148,8 @@ PushoutFunctorialWithGivenPushouts := rec(
   io_type := [ [ "I", "L", "Ip" ], [ "I", "Ip" ] ],
   cache_name := "PushoutFunctorialWithGivenPushouts",
   return_type := "morphism",
-  dual_operation := "FiberProductFunctorialWithGivenFiberProducts" ),
+  dual_operation := "FiberProductFunctorialWithGivenFiberProducts",
+  dual_arguments_reversed := "true" ),
 
 HorizontalPreCompose := rec(
   installation_name := "HorizontalPreCompose",
