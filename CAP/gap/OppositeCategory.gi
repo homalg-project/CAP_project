@@ -65,6 +65,7 @@ BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
         else
             current_entry := [ current_rec.installation_name,
                                CAP_INTERNAL_METHOD_NAME_RECORD.( current_rec.dual_operation ).installation_name ];
+            current_entry := [ Concatenation( current_entry[ 1 ], " vs ", current_entry[ 2 ] ), current_entry ];
         fi;
         
         if CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).property_of = "object" then
