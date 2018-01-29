@@ -338,7 +338,7 @@ AddFinalDerivation( ProjectionInFirstFactorOfWeakBiFiberProduct,
                      [ [ WeakBiFiberProductMorphismToDirectSum, 1 ],
                        [ PreCompose, 1 ],
                        [ ProjectionInFactorOfDirectSum, 1 ] ],
-                     [ WeakBiFiberProduct ],
+                     [ ProjectionInFirstFactorOfWeakBiFiberProduct ],
                        
   function( alpha, beta )
     local morphism_to_direct_sum;
@@ -354,7 +354,7 @@ AddFinalDerivation( ProjectionInSecondFactorOfWeakBiFiberProduct,
                      [ [ WeakBiFiberProductMorphismToDirectSum, 1 ],
                        [ PreCompose, 1 ],
                        [ ProjectionInFactorOfDirectSum, 1 ] ],
-                     [ WeakBiFiberProduct ],
+                     [ ProjectionInSecondFactorOfWeakBiFiberProduct ],
                        
   function( alpha, beta )
     local morphism_to_direct_sum;
@@ -405,7 +405,7 @@ AddFinalDerivation( InjectionOfFirstCofactorOfWeakBiPushout,
                      [ [ DirectSumMorphismToWeakBiPushout, 1 ],
                        [ PreCompose, 1 ],
                        [ InjectionOfCofactorOfDirectSum, 1 ] ],
-                     [ WeakBiPushout ],
+                     [ InjectionOfFirstCofactorOfWeakBiPushout ],
                        
   function( alpha, beta )
     local direct_sum_morphism;
@@ -421,7 +421,7 @@ AddFinalDerivation( InjectionOfSecondCofactorOfWeakBiPushout,
                      [ [ DirectSumMorphismToWeakBiPushout, 1 ],
                        [ PreCompose, 1 ],
                        [ InjectionOfCofactorOfDirectSum, 1 ] ],
-                     [ WeakBiPushout ],
+                     [ InjectionOfSecondCofactorOfWeakBiPushout ],
                        
   function( alpha, beta )
     local direct_sum_morphism;

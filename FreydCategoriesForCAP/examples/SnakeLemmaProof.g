@@ -10,6 +10,8 @@ SetIsAbCategory( Aoid, true );
 INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID( Aoid );
 m := SetOfGeneratingMorphisms( Aoid );
 a := m[1];
+V := AsAdditiveClosureObject( Source( a ) );
+
 b := m[2];
 c := m[3];
 d := m[4];
@@ -17,10 +19,15 @@ e := m[5];
 f := m[6];
 g := m[7];
 
-af := AsMorphismInFreeAbelianCategory( m[1] );
-bf := AsMorphismInFreeAbelianCategory( m[2] );
-cf := AsMorphismInFreeAbelianCategory( m[3] );
-df := AsMorphismInFreeAbelianCategory( m[4] );
-ef := AsMorphismInFreeAbelianCategory( m[5] );
-ff := AsMorphismInFreeAbelianCategory( m[6] );
-gf := AsMorphismInFreeAbelianCategory( m[7] );
+# af := AsMorphismInFreeAbelianCategory( m[1] );
+# bf := AsMorphismInFreeAbelianCategory( m[2] );
+# cf := AsMorphismInFreeAbelianCategory( m[3] );
+# df := AsMorphismInFreeAbelianCategory( m[4] );
+# ef := AsMorphismInFreeAbelianCategory( m[5] );
+# ff := AsMorphismInFreeAbelianCategory( m[6] );
+# gf := AsMorphismInFreeAbelianCategory( m[7] );
+# 
+# 
+# F := FreydCategory( AdditiveClosure( Aoid ) );
+V := AsAdditiveClosureObject( Source( c ) );
+alpha := AdditiveClosureMorphism( V, [ [ IdentityMorphism( Source( c ) ) ] ], V );

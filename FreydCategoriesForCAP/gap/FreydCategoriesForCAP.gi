@@ -633,16 +633,14 @@ InstallMethod( AsMorphismInFreeAbelianCategory,
   function( morphism )
     
     return 
-#       Opposite(
+      Opposite(
         AsFreydCategoryMorphism(
           Opposite(
             AsFreydCategoryMorphism(
-              Opposite(
               AsAdditiveClosureMorphism( morphism )
-              )
             )
           )
-#         )
+       )
       );
     
 end );
