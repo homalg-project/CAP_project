@@ -6,7 +6,7 @@ Version := Maximum( [
            ##
            "2017.12.30", # Sebas version
            ##
-           "2017.04.10", # Sepps version
+           "2018.01.30", # Sepps version
            ##
            "2017.03.27", # Mohamed's version
            ##
@@ -68,7 +68,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##
 Status := "deposited",
 
-AbstractHTML   :=  "",
+AbstractHTML   :=  "ModulePresentationsForCAP provides the category of finitely presented modules over a computable ring.",
 
 PackageDoc := rec(
   BookName  := "ModulePresentationsForCAP",

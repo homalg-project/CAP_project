@@ -11,7 +11,7 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2018.01.26", ## Sebas' version
   ## this line prevents merge conflicts
-  "2017.12.02", ## Sepp's version
+  "2018.01.30", ## Sepp's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -78,7 +78,11 @@ ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
-AbstractHTML   :=  "",
+AbstractHTML   :=  
+  Concatenation( [
+  "CAP (Categories, Algorithms, Programming) is a package for category theory.\n",
+  "It facilitates the implementation of specific instances of categories\n",
+  "and provides a language for writing generic categorical algorithms." ] ),
 
 PackageDoc := rec(
   BookName  := "CAP",
