@@ -50,6 +50,7 @@ Lift := rec(
   cache_name := "Lift",
   return_type := "morphism_or_fail",
   dual_operation := "Colift",
+  dual_arguments_reversed := "true",
   is_merely_set_theoretic := true ),
 
 Colift := rec(
@@ -59,6 +60,7 @@ Colift := rec(
   cache_name := "Colift",
   return_type := "morphism_or_fail",
   dual_operation := "Lift",
+  dual_arguments_reversed := "true",
   is_merely_set_theoretic := true  ),
 
 ProjectiveLift := rec(
@@ -81,14 +83,16 @@ IdentityMorphism := rec(
   installation_name := "IdentityMorphism",
   filter_list := [ "object" ],
   io_type := [ [ "a" ], [ "a", "a" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "IdentityMorphism" ),
 
 InverseImmutable := rec(
 # Type check for IsIsomorphism
   installation_name := "InverseOp",
   filter_list := [ "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "InverseImmutable" ),
 
 KernelObject := rec(
   installation_name := "KernelObject",
@@ -235,7 +239,8 @@ ZeroObject := rec(
   installation_name := "ZeroObject",
   filter_list := [ "category" ],
   cache_name := "ZeroObject",
-  return_type := "object" ), 
+  return_type := "object",
+  dual_operation := "ZeroObject" ),
 
 ZeroObjectFunctorial := rec(
   installation_name := "ZeroObjectFunctorial",
@@ -350,7 +355,8 @@ ZeroMorphism := rec(
   io_type := [ [ "a", "b" ], [ "a", "b" ] ],
   cache_name := "ZeroMorphism",
   return_type := "morphism",
-  dual_arguments_reversed := "true" ),
+  dual_arguments_reversed := "true",
+  dual_operation := "ZeroMorphism" ),
 
 DirectSum := rec(
   installation_name := "DirectSumOp",
@@ -359,6 +365,7 @@ DirectSum := rec(
   cache_name := "DirectSumOp",
   universal_type := "LimitColimit",
   return_type := "object",
+  dual_operation := "DirectSum",
   pre_function := function( diagram, selection_morphism )
       local category;
       
@@ -755,6 +762,7 @@ IsCongruentForMorphisms := rec(
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsCongruentForMorphisms",
   well_defined_todo := false,
+  dual_operation := "IsCongruentForMorphisms",
   
   pre_function := function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -823,6 +831,7 @@ IsEqualForMorphisms := rec(
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsEqualForMorphisms",
   well_defined_todo := false,
+  dual_operation := "IsEqualForMorphisms",
   
   pre_function := function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -881,6 +890,7 @@ IsEqualForMorphismsOnMor := rec(
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsEqualForMorphismsOnMor",
   well_defined_todo := false,
+  dual_operation := "IsEqualForMorphismsOnMor",
   
   redirect_function := function( morphism_1, morphism_2 )
     
@@ -903,6 +913,7 @@ IsEqualForObjects := rec(
   filter_list := [ "object", "object" ],
   cache_name := "IsEqualForObjects",
   well_defined_todo := false,
+  dual_operation := "IsEqualForObjects",
   
   redirect_function := function( object_1, object_2 )
     
@@ -934,6 +945,7 @@ IsEqualForCacheForObjects := rec(
   installation_name := "IsEqualForCache",
   filter_list := [ "object", "object" ],
   cache_name := "IsEqualForCacheForObjects",
+  dual_operation := "IsEqualForCacheForObjects",
   well_defined_todo := false,
   return_type := "bool" ),
 
@@ -941,6 +953,7 @@ IsEqualForCacheForMorphisms := rec(
   installation_name := "IsEqualForCache",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsEqualForCacheForMorphisms",
+  dual_operation := "IsEqualForCacheForMorphisms",
   well_defined_todo := false,
   return_type := "bool" ),
   
@@ -949,6 +962,7 @@ IsZeroForMorphisms := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsZeroForMorphisms",
   property_of := "morphism",
   is_reflected_by_faithful_functor := true ),
 
@@ -957,6 +971,7 @@ AdditionForMorphisms := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
   cache_name := "AdditionForMorphisms",
+  dual_operation := "AdditionForMorphisms",
   
   pre_function := function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -1000,6 +1015,7 @@ SubtractionForMorphisms := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
   cache_name := "SubtractionForMorphisms",
+  dual_operation := "SubtractionForMorphisms",
   
   pre_function := function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -1042,6 +1058,7 @@ AdditiveInverseForMorphisms := rec(
   installation_name := "AdditiveInverse",
   filter_list := [ "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
+  dual_operation := "AdditiveInverseForMorphisms",
   return_type := "morphism" ),
 
 Coproduct := rec(
@@ -1791,6 +1808,8 @@ MorphismFromCoimageToImageWithGivenObjects := rec(
   filter_list := [ "object", "morphism", "object" ],
   io_type := [ [ "C", "alpha", "I" ], [ "C", "I" ] ],
   cache_name := "MorphismFromCoimageToImageWithGivenObjects",
+  dual_operation := "MorphismFromCoimageToImageWithGivenObjects",
+  dual_arguments_reversed := true,
   return_type := "morphism" ),
 
 InverseMorphismFromCoimageToImageWithGivenObjects := rec(
@@ -1798,12 +1817,15 @@ InverseMorphismFromCoimageToImageWithGivenObjects := rec(
   filter_list := [ "object", "morphism", "object" ],
   io_type := [ [ "C", "alpha", "I" ], [ "I", "C" ] ],
   cache_name := "InverseMorphismFromCoimageToImageWithGivenObjects",
+  dual_operation := "InverseMorphismFromCoimageToImageWithGivenObjects",
+  dual_arguments_reversed := true,
   return_type := "morphism" ),
 
 IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
+  dual_operation := "IsWellDefinedForMorphisms",
   
   redirect_function := function( morphism )
     
@@ -1825,6 +1847,7 @@ IsWellDefinedForObjects := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "object" ],
   well_defined_todo := false,
+  dual_operation := "IsWellDefinedForObjects",
   return_type := "bool" ),
 
 IsZeroForObjects := rec(
@@ -1832,6 +1855,7 @@ IsZeroForObjects := rec(
   filter_list := [ "object" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsZeroForObjects",
   property_of := "object" ),
 
 IsMonomorphism := rec(
@@ -1856,6 +1880,7 @@ IsIsomorphism := rec(
   installation_name := "IsIsomorphism",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
+  dual_operation := "IsIsomorphism",
   return_type := "bool",
   property_of := "morphism" ),
 
@@ -1864,6 +1889,7 @@ IsEndomorphism := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsEndomorphism",
   property_of := "morphism" ),
 
 IsAutomorphism := rec(
@@ -1871,6 +1897,7 @@ IsAutomorphism := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsAutomorphism",
   property_of := "morphism" ),
 
 IsOne := rec(
@@ -1879,6 +1906,7 @@ IsOne := rec(
   well_defined_todo := false,
   return_type := "bool",
   property_of := "morphism",
+  dual_operation := "IsOne",
   pre_function := function( morphism )
     local is_equal_for_objects;
     
@@ -1932,6 +1960,7 @@ IsIdempotent := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsIdempotent",
   property_of := "morphism" ),
 
 IsProjective := rec(
@@ -1971,6 +2000,7 @@ IsIdenticalToIdentityMorphism := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsIdenticalToIdentityMorphism",
   property_of := "morphism" ),
 
 IsIdenticalToZeroMorphism := rec(
@@ -1978,6 +2008,7 @@ IsIdenticalToZeroMorphism := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsIdenticalToZeroMorphism",
   property_of := "morphism" ),
 
 CoastrictionToImage := rec(
@@ -2131,6 +2162,7 @@ DirectSumFunctorialWithGivenDirectSums := rec(
   io_type := [ [ "d1", "L", "d2" ], [ "d1", "d2" ] ],
   cache_name := "DirectSumFunctorialWithGivenDirectSums",
   return_type := "morphism",
+  dual_operation := "DirectSumFunctorialWithGivenDirectSums",
   dual_arguments_reversed := "true" ),
 
 FiberProductFunctorialWithGivenFiberProducts := rec(
@@ -2234,12 +2266,14 @@ VerticalPostCompose := rec(
 IdentityTwoCell := rec(
   installation_name := "IdentityTwoCell",
   filter_list := [ "twocell" ],
+  dual_operation := "IdentityTwoCell",
   return_type := "twocell" ),
 
 IsWellDefinedForTwoCells := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "twocell" ],
   well_defined_todo := false,
+  dual_operation := "IsWellDefinedForTwoCells",
   
   redirect_function := function( twocell )
     
@@ -2321,6 +2355,7 @@ IsomorphismFromImageObjectToKernelOfCokernel := rec(
   io_type := [ [ "alpha" ], [ "I", "K" ] ],
   cache_name := "IsomorphismFromImageObjectToKernelOfCokernel",
   return_type := "morphism",
+  dual_operation := "IsomorphismFromCokernelOfKernelToCoimage",
   no_with_given := true ),
 
 IsomorphismFromKernelOfCokernelToImageObject := rec(
@@ -2329,6 +2364,7 @@ IsomorphismFromKernelOfCokernelToImageObject := rec(
   io_type := [ [ "alpha" ], [ "K", "I" ] ],
   cache_name := "IsomorphismFromKernelOfCokernelToImageObject",
   return_type := "morphism",
+  dual_operation := "IsomorphismFromCoimageToCokernelOfKernel",
   no_with_given := true ),
 
 IsomorphismFromCoimageToCokernelOfKernel := rec(
@@ -2337,6 +2373,7 @@ IsomorphismFromCoimageToCokernelOfKernel := rec(
   io_type := [ [ "alpha" ], [ "CI", "C" ] ],
   cache_name := "IsomorphismFromCoimageToCokernelOfKernel",
   return_type := "morphism",
+  dual_operation := "IsomorphismFromKernelOfCokernelToImageObject",
   no_with_given := true ),
 
 IsomorphismFromCokernelOfKernelToCoimage := rec(
@@ -2345,6 +2382,7 @@ IsomorphismFromCokernelOfKernelToCoimage := rec(
   io_type := [ [ "alpha" ], [ "I", "CI" ] ],
   cache_name := "IsomorphismFromCokernelOfKernelToCoimage",
   return_type := "morphism",
+  dual_operation := "IsomorphismFromImageObjectToKernelOfCokernel",
   no_with_given := true ),
 
 IsomorphismFromDirectSumToDirectProduct := rec(

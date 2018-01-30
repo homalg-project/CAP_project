@@ -246,65 +246,19 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                                 "HorizontalPostCompose",
                                 "VerticalPreCompose",
                                 "VerticalPostCompose",
-                                "IdenticalTwoCell",
-                                "IsomorphismFromImageObjectToKernelOfCokernel" ] then
+                                "IdenticalTwoCell" ] then
             continue;
         fi;
         
-        if IsBound( current_entry.dual_operation ) then
-            dual_name := current_entry.dual_operation;
-        else
-            dual_name := current_recname;
+        ## Conservative
+        if not IsBound( current_entry.dual_operation ) then
+            continue;
         fi;
+        
+        dual_name := current_entry.dual_operation;
         
         if CurrentOperationWeight( category_weight_list, dual_name ) = infinity then
             continue;
-        fi;
-        
-        if current_recname = "Lift" then
-            
-            ##
-            AddLift( opposite_category,
-              function( alpha, beta )
-                local lift;
-                
-                lift := Colift( Opposite( beta ), Opposite( alpha ) );
-                
-                if lift = fail then
-                    
-                    return fail;
-                    
-                fi;
-                
-                return Opposite( lift );
-                
-            end );
-            
-            continue;
-            
-        fi;
-        
-        if current_recname = "Colift" then
-            
-            ##
-            AddColift( opposite_category,
-              function( alpha, beta )
-                local lift;
-                
-                lift := Lift( Opposite( beta ), Opposite( alpha ) );
-                
-                if lift = fail then
-                    
-                    return fail;
-                    
-                fi;
-                
-                return Opposite( lift );
-                
-            end );
-            
-            continue;
-            
         fi;
         
         if IsBound( current_entry.dual_arguments_reversed ) then
