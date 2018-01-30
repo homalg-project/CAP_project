@@ -110,6 +110,10 @@ InstallMethod( Add,
   function( category, object )
     local filter;
     
+    filter := ObjectFilter( category );
+    
+    SetFilterObj( object, filter );
+    
     if HasCapCategory( object ) then
         
         if IsIdenticalObj( CapCategory( object ), category ) then
@@ -124,11 +128,16 @@ InstallMethod( Add,
         
     fi;
     
-    filter := ObjectFilter( category );
-    
-    SetFilterObj( object, filter );
-    
     SetCapCategory( object, category );
+    
+end );
+
+InstallMethod( AddObject,
+               [ IsCapCategory, IsCapCategoryObject ],
+               
+  function( category, object )
+    
+    Add( category, object );
     
 end );
 
