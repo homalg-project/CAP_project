@@ -20,6 +20,18 @@ e := m[5];
 f := m[6];
 g := m[7];
 
+
+cat := Aoid;
+CapCategorySwitchLogicOff( cat );
+cat := AdditiveClosure( cat );
+CapCategorySwitchLogicOff( cat );
+cat := Opposite( cat );
+CapCategorySwitchLogicOff( cat );
+cat := FreydCategory( cat );
+CapCategorySwitchLogicOff( cat );
+cat := Opposite( cat );
+CapCategorySwitchLogicOff( cat );
+
 af := AsMorphismInFreeAbelianCategory( m[1] );
 bf := AsMorphismInFreeAbelianCategory( m[2] );
 cf := AsMorphismInFreeAbelianCategory( m[3] );
@@ -54,6 +66,8 @@ end;
 
 DirectSumFunctorial( [ af, af ] );
 IsZero( PreCompose( ke, en ));
+
+timestart := Runtimes().user_time;
 p := PreCompose( [ gk, PseudoInverse( gb ) ] );
 p2 := PreCompose( p, gd );
 p3:= PreCompose( p2, PseudoInverse( gf ) );
@@ -62,3 +76,6 @@ IsHonest( p );
 IsHonest( p2 );
 IsHonest( p3 );
 IsHonest( p4 );
+timeend := Runtimes().user_time - timestart;
+
+h := HonestRepresentative( p4 );
