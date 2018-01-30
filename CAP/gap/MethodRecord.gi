@@ -816,10 +816,10 @@ IsCongruentForMorphisms := rec(
   
   post_function := function( morphism_1, morphism_2, return_value )
     
-    if return_value = true then
-      
-      INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS( morphism_1, morphism_2 );
-    
+    if CapCategory( morphism_1 )!.predicate_logic and return_value = true then
+          
+          INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS( morphism_1, morphism_2 );
+          
     fi;
     
   end,
@@ -931,7 +931,7 @@ IsEqualForObjects := rec(
   
   post_function := function( object_1, object_2, return_value )
     
-    if return_value = true and not IsIdenticalObj( object_1, object_2 ) then
+    if CapCategory( object_1 )!.predicate_logic and return_value = true and not IsIdenticalObj( object_1, object_2 ) then
         
         INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object_1, object_2 );
         

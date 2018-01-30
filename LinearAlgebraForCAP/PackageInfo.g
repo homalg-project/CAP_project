@@ -15,7 +15,7 @@ Subtitle := "Category of Matrices over a Field for CAP",
 Version := Maximum( [
   "2017.12.30", ## Sebas' version
   ## this line prevents merge conflicts
-  "2017.06.28", ## Sepp's version
+  "2018.01.30", ## Sepp's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -74,7 +74,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##
 Status := "deposited",
 
-AbstractHTML   :=  "",
+AbstractHTML   :=  "LinearAlgebraForCAP provides a skeletal model of the category of finite dimensional vector spaces over a computable field.",
 
 PackageDoc := rec(
   BookName  := "LinearAlgebraForCAP",

@@ -155,7 +155,11 @@ InstallMethod( Opposite,
     
     Add( Opposite( CapCategory( object ) ), opposite_object );
     
-    INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
+    if CapCategory( object ).predicate_logic then
+        
+        INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
+        
+    fi;
     
     return opposite_object;
     
@@ -175,7 +179,11 @@ InstallMethod( Opposite,
     
     Add( Opposite( CapCategory( morphism ) ), opposite_morphism );
     
-    INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM( morphism );
+    if CapCategory( morphism )!.predicate_logic then
+        
+        INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM( morphism );
+        
+    fi;
     
     return opposite_morphism;
     
@@ -299,7 +307,11 @@ InstallMethod( Opposite,
     
     CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category );
     
-    INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
+    if category.predicate_logic then
+        
+        INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
+        
+    fi;
     
     Finalize( opposite_category );
     

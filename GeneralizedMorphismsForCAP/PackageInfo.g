@@ -6,7 +6,7 @@ Subtitle := "Implementations of generalized morphisms for the CAP project",
 Version := Maximum( [
   "2017.12.30", ## Sebas' version
 ## this line prevents merge conflicts
-  "2017.04.10", ## Sepp's version
+  "2018.01.30", ## Sepp's version
 ## this line prevents merge conflicts
   "2017.04.02", ## Mohamed's version
 ## this line prevents merge conflicts
@@ -68,7 +68,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##
 Status := "deposited",
 
-AbstractHTML   :=  "",
+AbstractHTML   :=  "GeneralizedMorphismsForCAP provides the category of generalized morphisms associated to an abelian category.",
 
 PackageDoc := rec(
   BookName  := "GeneralizedMorphismsForCAP",

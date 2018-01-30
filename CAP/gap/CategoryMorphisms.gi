@@ -73,7 +73,33 @@ InstallMethod( Add,
                [ IsCapCategory, IsCapCategoryMorphism ],
                
   function( category, morphism )
-    local obj_filter, filter;
+    local object_filter, filter;
+    
+    filter := MorphismFilter( category );
+    
+    SetFilterObj( morphism, filter );
+    
+    object_filter := ObjectFilter( category );
+    
+    if not object_filter( Source( morphism ) ) then
+        
+        AddObject( category, Source( morphism ) );
+        
+    fi;
+    
+    if not object_filter( Range( morphism ) ) then
+        
+        AddObject( category, Range( morphism ) );
+        
+    fi;
+    
+    if category!.predicate_logic then
+        
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), category );
+        
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), category );
+      
+    fi;
     
     if HasCapCategory( morphism ) then
         
@@ -89,15 +115,16 @@ InstallMethod( Add,
         
     fi;
     
-    AddObject( category, Source( morphism ) );
-    
-    AddObject( category, Range( morphism ) );
-    
-    filter := MorphismFilter( category );
-    
-    SetFilterObj( morphism, filter );
-    
     SetCapCategory( morphism, category );
+    
+end );
+
+InstallMethod( AddMorphism,
+               [ IsCapCategory, IsCapCategoryMorphism ],
+               
+  function( category, morphism )
+    
+    Add( category, morphism );
     
 end );
 
