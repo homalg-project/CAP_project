@@ -68,7 +68,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##
 Status := "deposited",
 
-AbstractHTML   :=  "ModulePresentationsForCAP provides the category of finitely presented modules over a computable ring.",
+AbstractHTML   :=  "<span class=\"pkgname\">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.",
 
 PackageDoc := rec(
   BookName  := "ModulePresentationsForCAP",

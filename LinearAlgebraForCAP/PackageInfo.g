@@ -74,7 +74,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##
 Status := "deposited",
 
-AbstractHTML   :=  "LinearAlgebraForCAP provides a skeletal model of the category of finite dimensional vector spaces over a computable field.",
+AbstractHTML   :=  "<span class=\"pkgname\">LinearAlgebraForCAP</span> provides a skeletal model of the category of finite dimensional vector spaces over a computable field.",
 
 PackageDoc := rec(
   BookName  := "LinearAlgebraForCAP",

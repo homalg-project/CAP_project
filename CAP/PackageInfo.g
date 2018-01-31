@@ -80,7 +80,7 @@ PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
 AbstractHTML   :=  
   Concatenation( [
-  "CAP (Categories, Algorithms, Programming) is a package for category theory.\n",
+  "<span class=\"pkgname\">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.\n",
   "It facilitates the implementation of specific instances of categories\n",
   "and provides a language for writing generic categorical algorithms." ] ),
 

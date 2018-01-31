@@ -68,7 +68,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##
 Status := "deposited",
 
-AbstractHTML   :=  "GeneralizedMorphismsForCAP provides the category of generalized morphisms associated to an abelian category.",
+AbstractHTML   :=  "<span class=\"pkgname\">GeneralizedMorphismsForCAP</span> provides the category of generalized morphisms associated to an abelian category.",
 
 PackageDoc := rec(
   BookName  := "GeneralizedMorphismsForCAP",
