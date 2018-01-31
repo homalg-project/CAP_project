@@ -10,23 +10,6 @@
 
 ####################################
 ##
-## GAP Category
-##
-####################################
-
-DeclareRepresentation( "IsVectorSpaceMorphismRep",
-                       IsVectorSpaceMorphism and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfVectorSpaceMorphisms",
-        NewFamily( "TheFamilyOfVectorSpaceMorphisms" ) );
-
-BindGlobal( "TheTypeOfVectorSpaceMorphisms",
-        NewType( TheFamilyOfVectorSpaceMorphisms,
-                IsVectorSpaceMorphismRep ) );
-
-####################################
-##
 ## Constructors
 ##
 ####################################
@@ -83,14 +66,12 @@ InstallMethod( VectorSpaceMorphism,
     
     vector_space_morphism := rec( );
     
-    ObjectifyWithAttributes( vector_space_morphism, TheTypeOfVectorSpaceMorphisms,
-                             Source, source,
-                             Range, range,
-                             UnderlyingFieldForHomalg, homalg_field,
-                             UnderlyingMatrix, homalg_matrix
+    ObjectifyMorphismForCAPWithAttributes( vector_space_morphism, category,
+                                           Source, source,
+                                           Range, range,
+                                           UnderlyingFieldForHomalg, homalg_field,
+                                           UnderlyingMatrix, homalg_matrix
     );
-
-    Add( category, vector_space_morphism );
     
     return vector_space_morphism;
     
