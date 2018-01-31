@@ -10,23 +10,6 @@
 
 ####################################
 ##
-## GAP Category
-##
-####################################
-
-DeclareRepresentation( "IsVectorSpaceObjectRep",
-                       IsVectorSpaceObject and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfVectorSpaceObjects",
-        NewFamily( "TheFamilyOfVectorSpaceObjects" ) );
-
-BindGlobal( "TheTypeOfVectorSpaceObjects",
-        NewType( TheFamilyOfVectorSpaceObjects,
-                IsVectorSpaceObjectRep ) );
-
-####################################
-##
 ## Constructors
 ##
 ####################################
@@ -48,12 +31,9 @@ InstallMethodWithCache( VectorSpaceObject,
     
     vector_space_object := rec( );
     
-    ObjectifyWithAttributes( vector_space_object, TheTypeOfVectorSpaceObjects,
-                             Dimension, dimension,
-                             UnderlyingFieldForHomalg, homalg_field
-    );
-
-    Add( category, vector_space_object );
+    ObjectifyObjectForCAPWithAttributes( vector_space_object, category,
+                                         Dimension, dimension,
+                                         UnderlyingFieldForHomalg, homalg_field );
     
     return vector_space_object;
     
