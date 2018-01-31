@@ -155,7 +155,7 @@ InstallMethod( Opposite,
     
     Add( Opposite( CapCategory( object ) ), opposite_object );
     
-    if CapCategory( object ).predicate_logic then
+    if CapCategory( object )!.predicate_logic then
         
         INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
         
@@ -307,7 +307,7 @@ InstallMethod( Opposite,
     
     CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category );
     
-    if category.predicate_logic then
+    if category!.predicate_logic then
         
         INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
         
