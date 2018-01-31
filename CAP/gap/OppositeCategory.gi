@@ -269,7 +269,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
-        if IsBound( current_entry.dual_arguments_reversed ) then
+        if current_entry.dual_arguments_reversed then
             
             func := create_func( dual_name, true );
             

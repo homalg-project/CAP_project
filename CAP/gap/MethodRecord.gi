@@ -50,7 +50,7 @@ Lift := rec(
   cache_name := "Lift",
   return_type := "morphism_or_fail",
   dual_operation := "Colift",
-  dual_arguments_reversed := "true",
+  dual_arguments_reversed := true,
   is_merely_set_theoretic := true ),
 
 Colift := rec(
@@ -60,7 +60,7 @@ Colift := rec(
   cache_name := "Colift",
   return_type := "morphism_or_fail",
   dual_operation := "Lift",
-  dual_arguments_reversed := "true",
+  dual_arguments_reversed := true,
   is_merely_set_theoretic := true  ),
 
 ProjectiveLift := rec(
@@ -355,7 +355,7 @@ ZeroMorphism := rec(
   io_type := [ [ "a", "b" ], [ "a", "b" ] ],
   cache_name := "ZeroMorphism",
   return_type := "morphism",
-  dual_arguments_reversed := "true",
+  dual_arguments_reversed := true,
   dual_operation := "ZeroMorphism" ),
 
 DirectSum := rec(
@@ -2109,7 +2109,7 @@ KernelObjectFunctorialWithGivenKernelObjects := rec(
   cache_name := "KernelObjectFunctorialWithGivenKernelObjects",
   return_type := "morphism",
   dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects",
-  dual_arguments_reversed := "true" ),
+  dual_arguments_reversed := true ),
 
 CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   installation_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
@@ -2118,7 +2118,7 @@ CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   cache_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
   return_type := "morphism",
   dual_operation := "KernelObjectFunctorialWithGivenKernelObjects",
-  dual_arguments_reversed := "true" ),
+  dual_arguments_reversed := true ),
 
 TerminalObjectFunctorial := rec(
   installation_name := "TerminalObjectFunctorial",
@@ -2145,7 +2145,7 @@ DirectProductFunctorialWithGivenDirectProducts := rec(
   cache_name := "DirectProductFunctorialWithGivenDirectProducts",
   return_type := "morphism",
   dual_operation := "CoproductFunctorialWithGivenCoproducts",
-  dual_arguments_reversed := "true" ),
+  dual_arguments_reversed := true ),
 
 CoproductFunctorialWithGivenCoproducts := rec(
   installation_name := "CoproductFunctorialWithGivenCoproducts",
@@ -2154,7 +2154,7 @@ CoproductFunctorialWithGivenCoproducts := rec(
   cache_name := "CoproductFunctorialWithGivenCoproducts",
   return_type := "morphism",
   dual_operation := "DirectProductFunctorialWithGivenDirectProducts",
-  dual_arguments_reversed := "true" ),
+  dual_arguments_reversed := true ),
 
 DirectSumFunctorialWithGivenDirectSums := rec(
   installation_name := "DirectSumFunctorialWithGivenDirectSums",
@@ -2163,7 +2163,7 @@ DirectSumFunctorialWithGivenDirectSums := rec(
   cache_name := "DirectSumFunctorialWithGivenDirectSums",
   return_type := "morphism",
   dual_operation := "DirectSumFunctorialWithGivenDirectSums",
-  dual_arguments_reversed := "true" ),
+  dual_arguments_reversed := true ),
 
 FiberProductFunctorialWithGivenFiberProducts := rec(
   installation_name := "FiberProductFunctorialWithGivenFiberProducts",
@@ -2172,7 +2172,7 @@ FiberProductFunctorialWithGivenFiberProducts := rec(
   cache_name := "FiberProductFunctorialWithGivenFiberProducts",
   return_type := "morphism",
   dual_operation := "PushoutFunctorialWithGivenPushouts",
-  dual_arguments_reversed := "true" ),
+  dual_arguments_reversed := true ),
 
 PushoutFunctorialWithGivenPushouts := rec(
   installation_name := "PushoutFunctorialWithGivenPushouts",
@@ -2181,7 +2181,7 @@ PushoutFunctorialWithGivenPushouts := rec(
   cache_name := "PushoutFunctorialWithGivenPushouts",
   return_type := "morphism",
   dual_operation := "FiberProductFunctorialWithGivenFiberProducts",
-  dual_arguments_reversed := "true" ),
+  dual_arguments_reversed := true ),
 
 HorizontalPreCompose := rec(
   installation_name := "HorizontalPreCompose",
@@ -2561,6 +2561,12 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 current_rec.universal_object_arg_list := diagram_arguments;
                 
             fi;
+        fi;
+        
+        if not IsBound( current_rec.dual_arguments_reversed ) then
+            
+            current_rec.dual_arguments_reversed := false;
+            
         fi;
         
     od;
