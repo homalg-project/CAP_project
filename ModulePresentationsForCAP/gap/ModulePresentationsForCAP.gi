@@ -16,6 +16,8 @@ InstallMethod( LeftPresentations,
     
     category := CreateCapCategory( Concatenation( "Category of left presentations of ", RingName( ring ) ) );
     
+    DisableAddForCategoricalOperations( category );
+    
     AddObjectRepresentation( category, IsLeftPresentation );
     
     AddMorphismRepresentation( category, IsLeftPresentationMorphism );
@@ -82,6 +84,8 @@ InstallMethod( RightPresentations,
     local category, to_be_finalized;
     
     category := CreateCapCategory( Concatenation( "Category of right presentations of ", RingName( ring ) ) );
+    
+    DisableAddForCategoricalOperations( category );
     
     AddObjectRepresentation( category, IsRightPresentation );
     
