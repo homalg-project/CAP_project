@@ -174,6 +174,26 @@ InstallMethod( IsEqualForCacheForObjects,
                
   IsEqualForCache );
 
+InstallMethod( AddObjectRepresentation,
+               [ IsCapCategory, IsObject ],
+               
+  function( category, representation )
+    
+    category!.object_representation := representation;
+    category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep );
+    
+end );
+
+InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
+                       
+  function( arg_list... )
+    
+    Append( arg_list, [ CapCategory, arg_list[ 2 ] ] );
+    arg_list[ 2 ] := arg_list[ 2 ]!.object_type;
+    CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+end );
+
 ###########################
 ##
 ## Print

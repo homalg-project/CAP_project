@@ -241,6 +241,8 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.predicate_logic := true;
     
+    obj_rec!.add_primitive_output := true;
+    
     return obj_rec;
     
 end );
@@ -616,3 +618,27 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_PRINT_FUNCTION,
 end );
 
 CAP_INTERNAL_INSTALL_PRINT_FUNCTION( );
+
+InstallGlobalFunction( DisableAddForCategoricalOperations,
+  
+  function( category )
+    
+    if not IsCapCategory( category ) then
+        Error( "Argument must be a category" );
+    fi;
+    
+    category!.add_primitive_output := false;
+    
+end );
+
+InstallGlobalFunction( EnableAddForCategoricalOperations,
+  
+  function( category )
+    
+    if not IsCapCategory( category ) then
+        Error( "Argument must be a category" );
+    fi;
+    
+    category!.add_primitive_output := true;
+    
+end );

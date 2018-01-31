@@ -290,6 +290,23 @@ DeclareOperation( "Add",
 DeclareOperation( "AddObject",
                   [ IsCapCategory, IsObject ] );
 
+#! @Arguments category, filter
+#! @Description
+#!  The argument <A>filter</A> is used to create an object type for the
+#!  category <A>category</A>, which is then used in <C>ObjectifyObjectForCAPWithAttributes</C>
+#!  to objectify objects for this category.
+DeclareOperation( "AddObjectRepresentation",
+                  [ IsCapCategory, IsObject ] );
+
+#! @Arguments object, category, [attribute1, value1, ...]
+#! @Description
+#!  Objectifies the object <A>object</A> with the type created
+#!  for objects in the category <A>category</A>. The type
+#!  is created by passing a representation to <C>AddObjectRepresentation</C>.
+#!  Objects which are objectified using this method do not have to be passed
+#!  to the <C>AddObject</C> function.
+DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
+
 ###################################
 ##
 #! @Section Well-Definedness of Objects
