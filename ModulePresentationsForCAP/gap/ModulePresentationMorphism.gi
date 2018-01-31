@@ -7,29 +7,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsLeftPresentationMorphismRep",
-                       IsLeftPresentationMorphism and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfLeftPresentationMorphisms",
-            NewFamily( "TheFamilyOfLeftPresentationMorphisms" ) );
-
-BindGlobal( "TheTypeOfLeftPresentationMorphisms",
-            NewType( TheFamilyOfLeftPresentationMorphisms,
-                     IsLeftPresentationMorphismRep ) );
-
-
-DeclareRepresentation( "IsRightPresentationMorphismRep",
-                       IsRightPresentationMorphism and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfRightPresentationMorphisms",
-            NewFamily( "TheFamilyOfRightPresentationMorphisms" ) );
-
-BindGlobal( "TheTypeOfRightPresentationMorphisms",
-            NewType( TheFamilyOfRightPresentationMorphisms,
-                     IsRightPresentationMorphismRep ) );
-
 #############################
 ##
 ## Constructors
@@ -41,7 +18,7 @@ InstallMethod( PresentationMorphism,
                [ IsLeftOrRightPresentation, IsHomalgMatrix, IsLeftOrRightPresentation ],
                
   function( source, matrix, range )
-    local category, left, morphism, type;
+    local category, left, morphism;
     
     category := CapCategory( source );
     
@@ -91,19 +68,11 @@ InstallMethod( PresentationMorphism,
     
     morphism := rec( );
     
-    if left then
-        type := TheTypeOfLeftPresentationMorphisms;
-    else
-        type := TheTypeOfRightPresentationMorphisms;
-    fi;
-    
-    ObjectifyWithAttributes( morphism, type,
+    ObjectifyMorphismForCAPWithAttributes( morphism, category,
                              Source, source,
                              Range, range,
                              UnderlyingHomalgRing, HomalgRing( matrix ),
                              UnderlyingMatrix, matrix );
-    
-    Add( category, morphism );
     
     return morphism;
     
