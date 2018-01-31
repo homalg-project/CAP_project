@@ -155,7 +155,7 @@ InstallMethod( Opposite,
     
     Add( Opposite( CapCategory( object ) ), opposite_object );
     
-    if CapCategory( object ).predicate_logic then
+    if CapCategory( object )!.predicate_logic then
         
         INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
         
@@ -215,14 +215,25 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     
     category_weight_list := category!.derivations_weight_list;
     
-    create_func := function( dual_name )
+    create_func := function( dual_name, arg... )
+        local list_operation;
+        
+        if IsBound( arg[1] ) and arg[1] = true then
+            
+            list_operation := Reversed;
+            
+        else
+            
+            list_operation := IdFunc;
+            
+        fi;
         
         return function( arg )
             local op_arg, result;
             
             op_arg := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
             
-            result := CallFuncList( ValueGlobal( dual_name ), op_arg );
+            result := CallFuncList( ValueGlobal( dual_name ), list_operation( op_arg ) );
             
             return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
             
@@ -243,22 +254,30 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                                 "HorizontalPostCompose",
                                 "VerticalPreCompose",
                                 "VerticalPostCompose",
-                                "IdenticalTwoCell",
-                                "IsomorphismFromImageObjectToKernelOfCokernel" ] then
+                                "IdenticalTwoCell" ] then
             continue;
         fi;
         
-        if IsBound( current_entry.dual_operation ) then
-            dual_name := current_entry.dual_operation;
-        else
-            dual_name := current_recname;
+        ## Conservative
+        if not IsBound( current_entry.dual_operation ) then
+            continue;
         fi;
+        
+        dual_name := current_entry.dual_operation;
         
         if CurrentOperationWeight( category_weight_list, dual_name ) = infinity then
             continue;
         fi;
         
-        func := create_func( dual_name );
+        if current_entry.dual_arguments_reversed then
+            
+            func := create_func( dual_name, true );
+            
+        else
+            
+            func := create_func( dual_name );
+            
+        fi;
         
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
         
@@ -288,7 +307,7 @@ InstallMethod( Opposite,
     
     CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category );
     
-    if category.predicate_logic then
+    if category!.predicate_logic then
         
         INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
         

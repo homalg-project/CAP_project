@@ -149,6 +149,7 @@ The record can have the following components, used as described:
 * number_of_diagram_arguments: Specifies how many of the arguments (counting from the first argument) of the function specify the diagram of the universal object.
                                Default value is 1.
 
+* dual_arguments_reversed: Boolean, marks whether for the call of the dual operation all arguments have to be given in reversed order.
 
 Using all those entries, the operation CapInternalInstallAdd installs add methods as described above. It first provides a
 sanity check for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and
