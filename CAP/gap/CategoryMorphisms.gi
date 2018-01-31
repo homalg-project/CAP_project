@@ -73,25 +73,19 @@ InstallMethod( Add,
                [ IsCapCategory, IsCapCategoryMorphism ],
                
   function( category, morphism )
-    local object_filter, filter;
+    local filter;
     
     filter := MorphismFilter( category );
     
-    SetFilterObj( morphism, filter );
-    
-    object_filter := ObjectFilter( category );
-    
-    if not object_filter( Source( morphism ) ) then
+    if not filter( morphism ) then
         
-        AddObject( category, Source( morphism ) );
+        SetFilterObj( morphism, filter );
         
     fi;
     
-    if not object_filter( Range( morphism ) ) then
-        
-        AddObject( category, Range( morphism ) );
-        
-    fi;
+    AddObject( category, Source( morphism ) );
+    
+    AddObject( category, Range( morphism ) );
     
     if category!.predicate_logic then
         
