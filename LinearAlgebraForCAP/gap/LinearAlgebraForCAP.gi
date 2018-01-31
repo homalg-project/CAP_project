@@ -22,6 +22,8 @@ InstallMethod( MatrixCategory,
     
     category := CreateCapCategory( Concatenation( "Category of matrices over ", RingName( homalg_field ) ) );
     
+    DisableAddForCategoricalOperations( category );
+    
     AddObjectRepresentation( category, IsVectorSpaceObject );
     
     AddMorphismRepresentation( category, IsVectorSpaceMorphism );
