@@ -422,6 +422,26 @@ DeclareOperation( "Add",
 DeclareOperation( "AddMorphism",
                   [ IsCapCategory, IsObject ] );
 
+#! @Arguments category, filter
+#! @Description
+#!  The argument <A>filter</A> is used to create a morphism type for the
+#!  category <A>category</A>, which is then used in <C>ObjectifyMorphismForCAPWithAttributes</C>
+#!  to objectify morphisms for this category.
+DeclareOperation( "AddMorphismRepresentation",
+                  [ IsCapCategory, IsObject ] );
+
+#! @Arguments morphism, category, [attribute1, value1, ...]
+#! @Description
+#!  Objectifies the morphism <A>morphism</A> with the type created
+#!  for morphisms in the category <A>category</A>. The type
+#!  is created by passing a representation to <C>AddMorphismRepresentation</C>.
+#!  Morphisms which are objectified using this method do not have to be passed
+#!  to the <C>AddMorphism</C> function.
+#!
+#!  Please note that the <C>Source</C> and <C>Range</C> attribute need to be passed to
+#!  this function. The values belonging to these attrbutes will not be objectified.
+DeclareGlobalFunction( "ObjectifyMorphismForCAPWithAttributes" );
+
 ###################################
 ##
 #! @Section Equality and Congruence for Morphisms

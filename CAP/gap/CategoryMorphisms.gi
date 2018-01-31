@@ -164,6 +164,34 @@ InstallMethod( IsEqualForCacheForMorphisms,
   IsEqualForCache );
 
 
+InstallMethod( AddMorphismRepresentation,
+               [ IsCapCategory, IsObject ],
+               
+  function( category, representation )
+    
+    category!.morphism_representation := representation;
+    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep );
+    
+end );
+
+InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
+                       
+  function( arg_list... )
+    local category, morphism;
+    
+    category := arg_list[ 2 ];
+    arg_list[ 2 ] := category!.morphism_type;
+    Append( arg_list, [ CapCategory, category ] );
+    CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+    if category!.predicate_logic then
+        morphism := arg_list[ 1 ];
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), category );
+    fi;
+    
+end );
+
 ######################################
 ##
 ## Morphism equality functions
