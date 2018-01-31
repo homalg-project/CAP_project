@@ -112,8 +112,12 @@ InstallMethod( Add,
     
     filter := ObjectFilter( category );
     
-    SetFilterObj( object, filter );
-    
+    if not filter( object ) then
+        
+        SetFilterObj( object, filter );
+        
+    fi;
+        
     if HasCapCategory( object ) then
         
         if IsIdenticalObj( CapCategory( object ), category ) then
