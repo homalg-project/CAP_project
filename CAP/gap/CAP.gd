@@ -332,3 +332,21 @@ DeclareGlobalFunction( "DeactivateCachingOfCategory" );
 DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
 DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
 #! @EndGroup
+
+#############################################
+##
+#! @Section Disable add in functions
+##
+#############################################
+
+#! @BeginGroup
+#! @Description
+#!  Enables/disables the call of add for the output
+#!  of primitively added functions for the category <A>C</A>.
+#!  This can be savely done if the all objects and morphisms
+#!  are added to the category by their constructors.
+#! @Arguments C
+DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
+DeclareGlobalFunction( "EnableAddForCategoricalOperations" );
+#! @EndGroup
+
