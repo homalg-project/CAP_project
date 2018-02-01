@@ -46,7 +46,11 @@ InstallMethod( AssociatedMorphism,
     
     associated_morphism := DomainAssociatedMorphismCodomainTriple( generalized_morphism )[2];
     
-    INSTALL_TODO_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM( generalized_morphism, associated_morphism );
+    if CapCategory( generalized_morphism )!.predicate_logic then
+        
+        INSTALL_TODO_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM( generalized_morphism, associated_morphism );
+        
+    fi;
     
     return associated_morphism;
     

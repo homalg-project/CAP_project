@@ -273,6 +273,8 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
     
     DisableAddForCategoricalOperations( generalized_morphism_category );
     
+    generalized_morphism_category!.predicate_logic := category!.predicate_logic;
+    
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SPANS( generalized_morphism_category );
@@ -305,8 +307,6 @@ InstallMethod( GeneralizedMorphismBySpansObject,
     
     ObjectifyObjectForCAPWithAttributes( gen_object, generalized_category,
                              UnderlyingHonestObject, object );
-    
-    AddToToDoList( ToDoListEntryForEqualAttributes( gen_object, "IsWellDefined", object, "IsWellDefined" ) );
     
     return gen_object;
     

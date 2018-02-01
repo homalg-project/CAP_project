@@ -366,6 +366,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
     
     DisableAddForCategoricalOperations( serre_category );
     
+    serre_category!.predicate_logic := category!.predicate_logic;
+    
     SetFilterObj( serre_category, WasCreatedAsSerreQuotientCategoryByCospans );
     
     SetUnderlyingHonestCategory( serre_category, category );
@@ -403,8 +405,6 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByCospansObject,
     ObjectifyObjectForCAPWithAttributes( serre_object, serre_category,
                                          UnderlyingHonestObject, object, 
                                          UnderlyingGeneralizedObject, GeneralizedMorphismByCospansObject( object ) );
-    
-    AddToToDoList( ToDoListEntryForEqualAttributes( serre_object, "IsWellDefined", object, "IsWellDefined" ) );
     
     if HasSpecializedObjectFilterForSerreQuotients( serre_category ) then
         

@@ -295,6 +295,8 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     DisableAddForCategoricalOperations( generalized_morphism_category );
     
+    generalized_morphism_category!.predicate_logic := category!.predicate_logic;
+    
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROWS_CATEGORY( generalized_morphism_category );
@@ -327,8 +329,6 @@ InstallMethod( GeneralizedMorphismByThreeArrowsObject,
     
     ObjectifyObjectForCAPWithAttributes( gen_object, generalized_category,
                              UnderlyingHonestObject, object );
-    
-    AddToToDoList( ToDoListEntryForEqualAttributes( gen_object, "IsWellDefined", object, "IsWellDefined" ) );
     
     return gen_object;
     

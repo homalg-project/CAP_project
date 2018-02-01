@@ -387,6 +387,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
     
     DisableAddForCategoricalOperations( serre_category );
     
+    serre_category!.predicate_logic := category!.predicate_logic;
+    
     SetFilterObj( serre_category, WasCreatedAsSerreQuotientCategoryByThreeArrows );
     
     SetUnderlyingHonestCategory( serre_category, category );
@@ -424,8 +426,6 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByThreeArrowsObject,
     ObjectifyObjectForCAPWithAttributes( serre_object, serre_category,
                                          UnderlyingHonestObject, object,
                                          UnderlyingGeneralizedObject, GeneralizedMorphismByThreeArrowsObject( object ) );
-    
-    AddToToDoList( ToDoListEntryForEqualAttributes( serre_object, "IsWellDefined", object, "IsWellDefined" ) );
     
     if HasSpecializedObjectFilterForSerreQuotients( serre_category ) then
         
