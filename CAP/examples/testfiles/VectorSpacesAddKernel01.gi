@@ -63,7 +63,7 @@ AddKernelLift( vecspaces,
    
    kernel_emb := SyzygiesOfRows( mor!.morphism );
    
-   return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), Source( kernel_emb ) );
+   return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), QVectorSpace( NrRows( kernel_emb ) ) );
    
 end );
 
