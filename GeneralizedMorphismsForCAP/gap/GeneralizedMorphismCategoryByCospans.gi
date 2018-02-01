@@ -7,22 +7,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsGeneralizedMorphismCategoryByCospansObjectRep",
-                       IsCapCategoryObjectRep and IsGeneralizedMorphismCategoryByCospansObject,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismCategoryByCospansObject",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsGeneralizedMorphismCategoryByCospansObjectRep ) );
-
-DeclareRepresentation( "IsGeneralizedMorphismByCospanRep",
-                       IsCapCategoryMorphismRep and IsGeneralizedMorphismByCospan,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismByCospan",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsGeneralizedMorphismByCospanRep ) );
-
 ####################################
 ##
 ## Installer
@@ -287,6 +271,12 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
     
     generalized_morphism_category := CreateCapCategory( name );
     
+    AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryByCospansObject );
+    
+    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByCospan );
+    
+    DisableAddForCategoricalOperations( generalized_morphism_category );
+    
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_COSPANS( generalized_morphism_category );
@@ -313,14 +303,12 @@ InstallMethod( GeneralizedMorphismByCospansObject,
   function( object )
     local gen_object, generalized_category;
     
-    gen_object := rec( );
-    
-    ObjectifyWithAttributes( gen_object, TheTypeOfGeneralizedMorphismCategoryByCospansObject,
-                             UnderlyingHonestObject, object );
-    
     generalized_category := GeneralizedMorphismCategoryByCospans( CapCategory( object ) );
     
-    Add( generalized_category, gen_object );
+    gen_object := rec( );
+    
+    ObjectifyObjectForCAPWithAttributes( gen_object, generalized_category,
+                             UnderlyingHonestObject, object );
     
     AddToToDoList( ToDoListEntryForEqualAttributes( gen_object, "IsWellDefined", object, "IsWellDefined" ) );
     
@@ -340,20 +328,16 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByCospan,
         Error( "Ranges of morphisms must coincide" );
         
     fi;
-
-    generalized_morphism := rec( );
-    
-    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphismByCospan,
-                             Source, GeneralizedMorphismByCospansObject( Source( arrow ) ),
-                             Range, GeneralizedMorphismByCospansObject( Source( reversed_arrow ) ) );
-    
-    SetArrow( generalized_morphism, arrow );
-    
-    SetReversedArrow( generalized_morphism, reversed_arrow );
     
     generalized_category := GeneralizedMorphismCategoryByCospans( CapCategory( arrow ) );
     
-    Add( generalized_category, generalized_morphism );
+    generalized_morphism := rec( );
+    
+    ObjectifyMorphismForCAPWithAttributes( generalized_morphism, generalized_category,
+                             Source, GeneralizedMorphismByCospansObject( Source( arrow ) ),
+                             Range, GeneralizedMorphismByCospansObject( Source( reversed_arrow ) ),
+                             Arrow, arrow,
+                             ReversedArrow, reversed_arrow );
     
     return generalized_morphism;
     

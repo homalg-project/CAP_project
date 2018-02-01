@@ -11,7 +11,7 @@ ListInstalledOperationsOfCategory( A );
 
 
 Read( "IsSupportedInOrigin.g" );
-C := Subcategory( A, IsSupportedInOrigin );
+C := FullSubcategoryByMembershipFunction( A, IsSupportedInOrigin );
 Coh := A / C;
 InfoOfInstalledOperationsOfCategory( Coh );
 ListPrimitivelyInstalledOperationsOfCategory( Coh );
