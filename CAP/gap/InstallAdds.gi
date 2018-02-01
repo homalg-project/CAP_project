@@ -493,8 +493,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
             
         fi;
         
-        if not IsBound( current_rec.cache_name ) then current_rec.cache_name := current_recname; fi;
-        
         if IsBound( current_rec.redirect_function ) then
             
             current_rec.redirect_function := CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN( current_rec.redirect_function );

@@ -2569,6 +2569,13 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
+        if not IsBound( current_rec.cache_name ) then
+            
+            current_rec.cache_name := current_recname;
+            
+        fi;
+        
+        
     od;
     
 end );
