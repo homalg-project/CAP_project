@@ -7,22 +7,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsGeneralizedMorphismCategoryBySpansObjectRep",
-                       IsCapCategoryObjectRep and IsGeneralizedMorphismCategoryBySpansObject,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismCategoryBySpansObject",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsGeneralizedMorphismCategoryBySpansObjectRep ) );
-
-DeclareRepresentation( "IsGeneralizedMorphismBySpanRep",
-                       IsCapCategoryMorphismRep and IsGeneralizedMorphismBySpan,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismBySpan",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsGeneralizedMorphismBySpanRep ) );
-
 ####################################
 ##
 ## Installer
@@ -283,6 +267,14 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
     
     generalized_morphism_category := CreateCapCategory( name );
     
+    AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryBySpansObject );
+    
+    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismBySpan );
+    
+    DisableAddForCategoricalOperations( generalized_morphism_category );
+    
+    generalized_morphism_category!.predicate_logic := category!.predicate_logic;
+    
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SPANS( generalized_morphism_category );
@@ -309,16 +301,12 @@ InstallMethod( GeneralizedMorphismBySpansObject,
   function( object )
     local gen_object, generalized_category;
     
-    gen_object := rec( );
-    
-    ObjectifyWithAttributes( gen_object, TheTypeOfGeneralizedMorphismCategoryBySpansObject,
-                             UnderlyingHonestObject, object );
-    
     generalized_category := GeneralizedMorphismCategoryBySpans( CapCategory( object ) );
     
-    Add( generalized_category, gen_object );
+    gen_object := rec( );
     
-    AddToToDoList( ToDoListEntryForEqualAttributes( gen_object, "IsWellDefined", object, "IsWellDefined" ) );
+    ObjectifyObjectForCAPWithAttributes( gen_object, generalized_category,
+                             UnderlyingHonestObject, object );
     
     return gen_object;
     
@@ -336,20 +324,16 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismBySpan,
         Error( "Sources of morphisms must coincide" );
         
     fi;
-
-    generalized_morphism := rec( );
-    
-    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphismBySpan,
-                             Source, GeneralizedMorphismBySpansObject( Range( reversed_arrow ) ),
-                             Range, GeneralizedMorphismBySpansObject( Range( arrow ) ) );
-    
-    SetArrow( generalized_morphism, arrow );
-    
-    SetReversedArrow( generalized_morphism, reversed_arrow );
     
     generalized_category := GeneralizedMorphismCategoryBySpans( CapCategory( arrow ) );
     
-    Add( generalized_category, generalized_morphism );
+    generalized_morphism := rec( );
+    
+    ObjectifyMorphismForCAPWithAttributes( generalized_morphism, generalized_category,
+                             Source, GeneralizedMorphismBySpansObject( Range( reversed_arrow ) ),
+                             Range, GeneralizedMorphismBySpansObject( Range( arrow ) ),
+                             Arrow, arrow,
+                             ReversedArrow, reversed_arrow );
     
     return generalized_morphism;
     

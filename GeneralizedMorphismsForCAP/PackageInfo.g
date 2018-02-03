@@ -6,7 +6,7 @@ Subtitle := "Implementations of generalized morphisms for the CAP project",
 Version := Maximum( [
   "2017.12.30", ## Sebas' version
 ## this line prevents merge conflicts
-  "2018.01.30", ## Sepp's version
+  "2018.02.02", ## Sepp's version
 ## this line prevents merge conflicts
   "2017.04.02", ## Mohamed's version
 ## this line prevents merge conflicts
@@ -82,7 +82,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">=2015.05.08" ] ],
+                           [ "CAP", ">=2018.02.02" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
