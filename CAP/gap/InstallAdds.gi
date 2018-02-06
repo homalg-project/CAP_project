@@ -73,13 +73,13 @@ InstallGlobalFunction( CapInternalInstallAdd,
     if IsBound( record.redirect_function ) then
         redirect_function := record.redirect_function;
     else
-        redirect_function := function( arg ) return [ false ]; end;
+        redirect_function := false;
     fi;
     
     if IsBound( record.post_function ) then
         post_function := record.post_function;
     else
-        post_function := ReturnTrue;
+        post_function := false;
     fi;
     
     filter_list := record.filter_list;
@@ -239,7 +239,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
               function( arg )
                 local redirect_flag, pre_func_return, redirect_return, result, post_func_arguments;
                 
-                if not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false then
+                if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
                     redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
                     if redirect_return[ 1 ] = true then
                         if category!.predicate_logic then
@@ -270,8 +270,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 if category!.add_primitive_output then
                     add_function( category, result );
                 fi;
-                Add( arg, result );
-                CallFuncList( post_function, Concatenation( [ category ], arg ) );
+                
+                if post_function <> false then
+                    
+                    Add( arg, result );
+                    
+                    CallFuncList( post_function, Concatenation( [ category ], arg ) );
+                    
+                fi;
                 
                 return result;
                 
