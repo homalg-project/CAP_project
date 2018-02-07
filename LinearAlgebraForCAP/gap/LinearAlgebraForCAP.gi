@@ -400,6 +400,36 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
     end );
     
+    ##
+    AddComponentOfMorphismIntoDirectSum( category,
+      function( morphism, summands, nr )
+        local start, stop;
+        
+        start := Sum( List( summands{[ 1 .. nr-1 ]}, Dimension ) ) + 1;
+        
+        stop := (start - 1) + Dimension( summands[nr] );
+        
+        return VectorSpaceMorphism( Source( morphism ),
+                                    CertainColumns( UnderlyingMatrix( morphism ), [ start .. stop ] ),
+                                    summands[ nr ] );
+        
+    end );
+    
+    ##
+    AddComponentOfMorphismFromDirectSum( category,
+      function( morphism, summands, nr )
+        local start, stop;
+        
+        start := Sum( List( summands{[ 1 .. nr-1 ]}, Dimension ) ) + 1;
+        
+        stop := (start - 1) + Dimension( summands[nr] );
+        
+        return VectorSpaceMorphism( summands[nr],
+                                    CertainRows( UnderlyingMatrix( morphism ), [ start .. stop ] ),
+                                    Range( morphism ) );
+        
+    end );
+    
     ## Basic Operations for an Abelian category
     ##
     AddKernelObject( category,
