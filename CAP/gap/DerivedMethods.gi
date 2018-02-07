@@ -1117,6 +1117,32 @@ AddDerivationToCAP( ComponentOfMorphismFromDirectSum,
     
 end : Description := "ComponentOfMorphismFromDirectSum by composing with the direct sum injection" );
 
+##
+AddDerivationToCAP( MorphismBetweenDirectSums,
+                    
+  function( S, morphism_matrix, T )
+    local diagram_direct_sum_source, diagram_direct_sum_range, test_diagram_product, test_diagram_coproduct;
+    
+    if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
+        return ZeroMorphism( S, T );
+    fi;
+    
+    diagram_direct_sum_source := List( morphism_matrix, row -> Source( row[1] ) );
+    
+    diagram_direct_sum_range := List( morphism_matrix[1], entry -> Range( entry ) );
+    
+    test_diagram_coproduct := [ ];
+    
+    for test_diagram_product in morphism_matrix do
+      
+      Add( test_diagram_coproduct, UniversalMorphismIntoDirectSumWithGivenDirectSum( diagram_direct_sum_range, test_diagram_product, T ) );
+      
+    od;
+    
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( diagram_direct_sum_source, test_diagram_coproduct, S );
+    
+end : Description := "MorphismBetweenDirectSums using universal morphisms of direct sums" );
+
 ###########################
 ##
 ## Methods returning a morphism with source or range constructed within the method!

@@ -2513,8 +2513,17 @@ ComponentOfMorphismFromDirectSum := rec(
   io_type := [ [ "alpha", "S", "i" ], [ "T", "alpha_range" ] ],
   cache_name := "ComponentOfMorphismFromDirectSum",
   return_type := "morphism",
-  dual_operation := "ComponentOfMorphismIntoDirectSum" )
+  dual_operation := "ComponentOfMorphismIntoDirectSum" ),
 
+MorphismBetweenDirectSums := rec(
+  installation_name := "MorphismBetweenDirectSums",
+  filter_list := [ "object", IsList, "object" ],
+  io_type := [ [ "S", "mat", "T" ], [ "S", "T" ] ],
+  cache_name := "MorphismBetweenDirectSums",
+  return_type := "morphism",
+  dual_operation := "MorphismBetweenDirectSums",
+  dual_arguments_reversed := true
+),
   ) );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
