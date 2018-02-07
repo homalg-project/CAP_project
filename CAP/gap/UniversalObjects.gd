@@ -1423,6 +1423,66 @@ DeclareOperationWithCache( "MorphismBetweenDirectSumsOp",
                            [ IsList, IsInt, IsInt, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are a morphism $\alpha: A \rightarrow S$,
+#! a list $D = (S_1, \dots, S_n)$ of objects with $S = \bigoplus_{j=1}^n S_j$,
+#! and an integer $k$.
+#! The output is the component morphism
+#! $A \rightarrow S_k$.
+#! @Returns a morphism in $\mathrm{Hom}(A, S_k)$
+#! @Arguments alpha, D, k
+DeclareOperation( "ComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategoryMorphism, IsList, IsInt ] );
+
+#! @Description
+#! The arguments are a morphism $\alpha: S \rightarrow A$,
+#! a list $D = (S_1, \dots, S_n)$ of objects with $S = \bigoplus_{j=1}^n S_j$,
+#! and an integer $k$.
+#! The output is the component morphism
+#! $S_k \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(S_k, A)$
+#! @Arguments alpha, D, k
+DeclareOperation( "ComponentOfMorphismFromDirectSum",
+                  [ IsCapCategoryMorphism, IsList, IsInt ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ComponentOfMorphismIntoDirectSum</C>.
+#! $F: (\alpha: A \rightarrow S,D,k) \mapsto (A \rightarrow S_k)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ComponentOfMorphismFromDirectSum</C>.
+#! $F: (\alpha: S \rightarrow A,D,k) \mapsto (S_k \rightarrow A)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddComponentOfMorphismFromDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddComponentOfMorphismFromDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismFromDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismFromDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfDirectSum</C>.

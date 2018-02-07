@@ -1099,6 +1099,23 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
     
 end );
 
+##
+AddDerivationToCAP( ComponentOfMorphismIntoDirectSum,
+                    
+  function( alpha, summands, nr )
+    
+    return PreCompose( alpha, ProjectionInFactorOfDirectSum( summands, nr ) );
+    
+end : Description := "ComponentOfMorphismIntoDirectSum by composing with the direct sum projection" );
+
+##
+AddDerivationToCAP( ComponentOfMorphismFromDirectSum,
+                    
+  function( alpha, summands, nr )
+    
+    return PreCompose( InjectionOfCofactorOfDirectSum( summands, nr ), alpha );
+    
+end : Description := "ComponentOfMorphismFromDirectSum by composing with the direct sum injection" );
 
 ###########################
 ##

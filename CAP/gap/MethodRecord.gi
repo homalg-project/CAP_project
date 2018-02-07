@@ -2499,6 +2499,21 @@ MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject := rec(
   dual_operation := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
   is_merely_set_theoretic := true ),
 
+ComponentOfMorphismIntoDirectSum := rec(
+  installation_name := "ComponentOfMorphismIntoDirectSum",
+  filter_list := [ "morphism", IsList, IsInt ],
+  io_type := [ [ "alpha", "S", "i" ], [ "alpha_source", "T" ] ],
+  cache_name := "ComponentOfMorphismIntoDirectSum",
+  return_type := "morphism",
+  dual_operation := "ComponentOfMorphismFromDirectSum" ),
+
+ComponentOfMorphismFromDirectSum := rec(
+  installation_name := "ComponentOfMorphismFromDirectSum",
+  filter_list := [ "morphism", IsList, IsInt ],
+  io_type := [ [ "alpha", "S", "i" ], [ "T", "alpha_range" ] ],
+  cache_name := "ComponentOfMorphismFromDirectSum",
+  return_type := "morphism",
+  dual_operation := "ComponentOfMorphismIntoDirectSum" )
 
   ) );
 
