@@ -51,24 +51,24 @@ DeclareAttribute( "UnderlyingHonestObject",
 #! The output is its domain $d \hookrightarrow a \in \mathbf{A}$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( d, a )$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "DomainOfGeneralizedMorphism",
-                                          IsGeneralizedMorphism );
+DeclareAttribute( "DomainOfGeneralizedMorphism",
+                  IsGeneralizedMorphism );
 
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
 #! The output is its codomain $b \twoheadrightarrow c \in \mathbf{A}$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( b, c )$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "Codomain",
-                                          IsGeneralizedMorphism );
+DeclareAttribute( "Codomain",
+                  IsGeneralizedMorphism );
 
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
 #! The output is its associated morphism $d \rightarrow c \in \mathbf{A}$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( d, c )$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "AssociatedMorphism",
-                                          IsGeneralizedMorphism );
+DeclareAttribute( "AssociatedMorphism",
+                  IsGeneralizedMorphism );
 
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
@@ -85,8 +85,8 @@ DeclareAttribute( "DomainAssociatedMorphismCodomainTriple",
 #! if it exists, otherwise an error is thrown.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( a, b )$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "HonestRepresentative",
-                                          IsGeneralizedMorphism );
+DeclareAttribute( "HonestRepresentative",
+                  IsGeneralizedMorphism );
 
 ##
 ## When calling this method on a generalized morphism, the effect
