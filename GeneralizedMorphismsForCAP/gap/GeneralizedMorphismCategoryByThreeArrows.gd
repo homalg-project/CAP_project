@@ -101,8 +101,8 @@ DeclareAttribute( "UnderlyingHonestObject",
 #! The output is its source aid $a \leftarrow b$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}(b,a)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "SourceAid",
-                                          IsGeneralizedMorphismByThreeArrows );
+DeclareAttribute( "SourceAid",
+                  IsGeneralizedMorphismByThreeArrows );
 
 #! @Description
 #! The argument is a generalized morphism $\alpha$ by
@@ -110,8 +110,8 @@ DeclareAttributeWithToDoForIsWellDefined( "SourceAid",
 #! The output is its range aid $c \leftarrow d$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}(d,c)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "RangeAid",
-                                          IsGeneralizedMorphismByThreeArrows );
+DeclareAttribute( "RangeAid",
+                   IsGeneralizedMorphismByThreeArrows );
 
 #! @Description
 #! The argument is a generalized morphism $\alpha$ by
@@ -119,8 +119,8 @@ DeclareAttributeWithToDoForIsWellDefined( "RangeAid",
 #! The output is its range aid $b \rightarrow c$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}(b,c)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "Arrow",
-                                          IsGeneralizedMorphismByThreeArrows );
+DeclareAttribute( "Arrow",
+                  IsGeneralizedMorphismByThreeArrows );
 
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$ by
@@ -128,16 +128,16 @@ DeclareAttributeWithToDoForIsWellDefined( "Arrow",
 #! The output is its pseudo inverse $b \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,a)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "PseudoInverse",
-                                          IsGeneralizedMorphismByThreeArrows );
+DeclareAttribute( "PseudoInverse",
+                  IsGeneralizedMorphismByThreeArrows );
 
 #! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b \in \mathbf{A}$.
 #! The output is its generalized inverse $b \rightarrow a$ by three arrows.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,a)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "GeneralizedInverseByThreeArrows",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "GeneralizedInverseByThreeArrows",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The argument is a subobject $\alpha: a \hookrightarrow b \in \mathbf{A}$.
@@ -240,8 +240,8 @@ DeclareOperation( "GeneralizedMorphismByThreeArrowsWithRangeAid",
 #! The output is the honest generalized morphism by three arrows defined by $\alpha$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,b)$
 #! @Arguments alpha
-DeclareAttributeWithToDoForIsWellDefined( "AsGeneralizedMorphismByThreeArrows",
-                                          IsCapCategoryMorphism );
+DeclareAttribute( "AsGeneralizedMorphismByThreeArrows",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The argument is an abelian category $\mathbf{A}$.
@@ -257,5 +257,5 @@ DeclareAttribute( "GeneralizedMorphismCategoryByThreeArrows",
 #! whose underlying honest object is $a$.
 #! @Returns an object in $\mathbf{G(A)}$
 #! @Arguments a
-DeclareAttributeWithToDoForIsWellDefined( "GeneralizedMorphismByThreeArrowsObject",
-                                          IsCapCategoryObject );
+DeclareAttribute( "GeneralizedMorphismByThreeArrowsObject",
+                  IsCapCategoryObject );
