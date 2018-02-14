@@ -209,7 +209,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
     local recnames, current_recname, category_weight_list, dual_name, current_entry, func,
-          current_add, create_func;
+          current_add, create_func, create_func_with_category_input;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
@@ -241,6 +241,19 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
     end;
     
+    create_func_with_category_input := function( dual_name )
+      
+      return function()
+            local result;
+            
+            result := CallFuncList( ValueGlobal( dual_name ), [ category ] );
+            
+            return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
+            
+        end;
+      
+    end;
+    
     for current_recname in recnames do
         
         current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
@@ -269,7 +282,13 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
-        if current_entry.dual_arguments_reversed then
+        if current_recname in [ "ZeroObject",
+                              "InitialObject",
+                              "TerminalObject" ] then
+            
+            func := create_func_with_category_input( dual_name );
+            
+        elif current_entry.dual_arguments_reversed then
             
             func := create_func( dual_name, true );
             
