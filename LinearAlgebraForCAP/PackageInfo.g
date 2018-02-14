@@ -15,7 +15,7 @@ Subtitle := "Category of Matrices over a Field for CAP",
 Version := Maximum( [
   "2017.12.30", ## Sebas' version
   ## this line prevents merge conflicts
-  "2018.02.02", ## Sepp's version
+  "2018.02.07", ## Sepp's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -88,8 +88,8 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "MatricesForHomalg", ">= 2017.05.24" ],
-                           [ "CAP", ">= 2018.02.02" ],
+                           [ "MatricesForHomalg", ">= 2018.02.04" ],
+                           [ "CAP", ">= 2018.02.07" ],
                            [ "ToolsForHomalg", ">=2015.09.18" ]
                            ],
   SuggestedOtherPackages := [ ],

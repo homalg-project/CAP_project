@@ -1390,8 +1390,8 @@ DeclareOperation( "IsomorphismFromCoproductToDirectSumOp",
 #! is a list of lists of morphisms.
 #! @Arguments M
 #! @Group MorphismBetweenDirectSums
-DeclareOperationWithCache( "MorphismBetweenDirectSums",
-                           [ IsList ] );
+DeclareOperation( "MorphismBetweenDirectSums",
+                  [ IsList ] );
 
 #! @Description
 #! The output is the morphism
@@ -1404,8 +1404,27 @@ DeclareOperationWithCache( "MorphismBetweenDirectSums",
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
 #! @Arguments S, M, T
 #! @Group MorphismBetweenDirectSums
-DeclareOperationWithCache( "MorphismBetweenDirectSums",
-                           [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+DeclareOperation( "MorphismBetweenDirectSums",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismBetweenDirectSums</C>.
+#! $F: (\bigoplus_{i=1}^{m}A_i, M, \bigoplus_{j=1}^n B_j) \mapsto (\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a list

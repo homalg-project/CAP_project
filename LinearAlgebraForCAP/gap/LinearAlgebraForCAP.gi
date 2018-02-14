@@ -430,6 +430,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
     end );
     
+    ##
+    AddMorphismBetweenDirectSums( category,
+      function( S, morphism_matrix, T )
+        local underlying_matrix;
+        
+        if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
+            return ZeroMorphism( S, T );
+        fi;
+        
+        underlying_matrix := List( morphism_matrix, row -> List( row, UnderlyingMatrix ) );
+        
+        underlying_matrix := List( underlying_matrix, row -> UnionOfColumns( row ) );
+        
+        return VectorSpaceMorphism( S, UnionOfRows( underlying_matrix ), T );
+        
+    end );
+    
     ## Basic Operations for an Abelian category
     ##
     AddKernelObject( category,
