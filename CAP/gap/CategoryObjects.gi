@@ -163,10 +163,10 @@ InstallMethod( IsWellDefinedForObjects,
 );
 
 ##
-InstallMethod( IsZeroForObjects,
+InstallMethod( IsZero,
                [ IsCapCategoryObject ],
                   
-IsZero );
+IsZeroForObjects );
 
 ##
 InstallMethod( IsEqualForCacheForObjects,

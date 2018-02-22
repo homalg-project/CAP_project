@@ -1,12 +1,12 @@
 \begin{sequent}
 \begin{align*}
-   a: \Obj ~|~ \IsZero \big( a \big) \vdash \IsZero \big( \IdentityMorphism( a ) \big)
+   a: \Obj ~|~ \IsZeroForObjects \big( a \big) \vdash \IsZeroForMorphisms \big( \IdentityMorphism( a ) \big)
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-   a: \Obj, b: \Obj ~|~ \IsZero \big( a \big), \IsZero \big( b \big) \\
-   \vdash & \IsZero \big( \DirectSum( [ a, b ] ) \big)
+   a: \Obj, b: \Obj ~|~ \IsZeroForObjects \big( a \big), \IsZeroForObjects \big( b \big) \\
+   \vdash & \IsZeroForObjects \big( \DirectSum( [ a, b ] ) \big)
 \end{align*}
 \end{sequent}

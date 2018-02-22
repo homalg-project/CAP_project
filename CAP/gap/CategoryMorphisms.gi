@@ -134,28 +134,28 @@ InstallMethod( AddMorphism,
 end );
 
 ##
-InstallMethod( IsZeroForMorphisms,
+InstallMethod( IsZero,
                [ IsCapCategoryMorphism ],
                   
-IsZero );
+IsZeroForMorphisms );
 
 ##
-InstallMethod( AdditionForMorphisms,
+InstallMethod( \+,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-\+ );
+AdditionForMorphisms );
 
 ##
-InstallMethod( SubtractionForMorphisms,
+InstallMethod( \-,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-\- );
+SubtractionForMorphisms );
 
 ##
-InstallMethod( AdditiveInverseForMorphisms,
+InstallMethod( AdditiveInverse,
                   [ IsCapCategoryMorphism ],
                   
-AdditiveInverse );
+AdditiveInverseForMorphisms );
 
 ##
 InstallMethod( IsEqualForCacheForMorphisms,
