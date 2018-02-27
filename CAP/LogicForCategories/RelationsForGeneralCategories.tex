@@ -1,7 +1,7 @@
 \begin{sequent}
 \begin{align*}
   &t, \alpha:\Mor\\
-  |~ &\IsZero\big( \PreCompose( t, \alpha ) \big)\\
+  |~ &\IsZeroForMorphisms\big( \PreCompose( t, \alpha ) \big)\\
   \vdash &\PreCompose\big(\KernelLift( \alpha , t ), \KernelEmbedding( \alpha ) \big) =_{\Mor} t
 \end{align*}
 \end{sequent}
@@ -9,7 +9,7 @@
 \begin{sequent}
 \begin{align*}
   &t, \alpha:\Mor\\
-  |~  &\IsZero\big(\PreCompose(\alpha, t)\big)\\
+  |~  &\IsZeroForMorphisms\big(\PreCompose(\alpha, t)\big)\\
   \vdash &\PreCompose\big(\CokernelProjection( \alpha ), \CokernelColift( \alpha, t )\big) =_{\Mor} t
 \end{align*}
 \end{sequent}

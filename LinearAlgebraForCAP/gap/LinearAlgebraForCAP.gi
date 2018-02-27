@@ -211,7 +211,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_field ),
                                         Range( zero_morphism ) );
           
-          end, [ , IsZero ] ],
+          end, [ , IsZeroForMorphisms ] ],
         
         [ function( zero_morphism, right_morphism )
             
@@ -219,7 +219,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), homalg_field ),
                                         Range( right_morphism ) );
           
-          end, [ IsZero, ] ],
+          end, [ IsZeroForMorphisms, ] ],
       ]
     
     );
@@ -608,7 +608,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
             
           end,
           
-          [ IsZero, ] ],
+          [ IsZeroForObjects, ] ],
          
         [ function( object_1, object_2 )
             
@@ -616,7 +616,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
             
           end,
           
-          [ , IsZero ] ]
+          [ , IsZeroForObjects ] ]
       ]
     
     );

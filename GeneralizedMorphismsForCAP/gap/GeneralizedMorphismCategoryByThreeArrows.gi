@@ -165,7 +165,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
         return_value := GeneralizedMorphismByThreeArrows(
                           PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), SourceAid( mor1 ) ),
-                          restricted_mor1 + restricted_mor2,
+                          AdditionForMorphisms( restricted_mor1, restricted_mor2 ),
                           PreCompose( RangeAid( mor1 ), InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) )
                         );
         

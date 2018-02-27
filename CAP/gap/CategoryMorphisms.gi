@@ -134,28 +134,28 @@ InstallMethod( AddMorphism,
 end );
 
 ##
-InstallMethod( IsZeroForMorphisms,
+InstallMethod( IsZero,
                [ IsCapCategoryMorphism ],
                   
-IsZero );
+IsZeroForMorphisms );
 
 ##
-InstallMethod( AdditionForMorphisms,
+InstallMethod( \+,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-\+ );
+AdditionForMorphisms );
 
 ##
-InstallMethod( SubtractionForMorphisms,
+InstallMethod( \-,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-\- );
+SubtractionForMorphisms );
 
 ##
-InstallMethod( AdditiveInverseForMorphisms,
+InstallMethod( AdditiveInverse,
                   [ IsCapCategoryMorphism ],
                   
-AdditiveInverse );
+AdditiveInverseForMorphisms );
 
 ##
 InstallMethod( IsEqualForCacheForMorphisms,
@@ -452,7 +452,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_PRINT,
                                              NoSepString := true ) ] ) );
     
     AddNodeToGraph( print_graph,
-                    rec( Conditions := "IsZero",
+                    rec( Conditions := "IsZeroForMorphisms",
                          PrintString := "zero",
                          Adjective := true ) );
     

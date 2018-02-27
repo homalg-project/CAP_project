@@ -552,8 +552,8 @@ DeclareOperation( "AddPropertyToMatchAtIsCongruentForMorphisms",
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments alpha
-DeclareOperation( "IsZeroForMorphisms",
-                  [ IsCapCategoryMorphism ] );
+DeclareProperty( "IsZeroForMorphisms",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -641,8 +641,8 @@ DeclareOperation( "AddSubtractionForMorphisms",
 #! The output is its additive inverse $-\alpha$.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments alpha
-DeclareOperation( "AdditiveInverseForMorphisms",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "AdditiveInverseForMorphisms",
+                  IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.

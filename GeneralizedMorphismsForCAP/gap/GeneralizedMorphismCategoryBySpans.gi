@@ -106,7 +106,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
           
           pullback_right := ProjectionInFactorOfFiberProduct( pullback_diagram, 2 );
           
-          arrow := PreCompose( pullback_left, Arrow( morphism1 ) ) + PreCompose( pullback_right, Arrow( morphism2 ) );
+          arrow := AdditionForMorphisms( PreCompose( pullback_left, Arrow( morphism1 ) ), PreCompose( pullback_right, Arrow( morphism2 ) ) );
           
           reversed_arrow := PreCompose( pullback_left, pullback_diagram[ 1 ] );
           
@@ -116,7 +116,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
       
       [ function( morphism1, morphism2 )
           
-          return AsGeneralizedMorphismBySpan( Arrow( morphism1 ) + Arrow( morphism2 ) );
+          return AsGeneralizedMorphismBySpan( AdditionForMorphisms( Arrow( morphism1 ), Arrow( morphism2 ) ) );
           
       end, [ HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
       
@@ -124,13 +124,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
                                     
       [ function( morphism )
            
-         return GeneralizedMorphismBySpan( ReversedArrow( morphism ), - Arrow( morphism ) );
+         return GeneralizedMorphismBySpan( ReversedArrow( morphism ), AdditiveInverseForMorphisms( Arrow( morphism ) ) );
          
       end, [ ] ],
       
       [ function( morphism )
           
-          return AsGeneralizedMorphismBySpan( - Arrow( morphism ) );
+          return AsGeneralizedMorphismBySpan( AdditiveInverseForMorphisms( Arrow( morphism ) ) );
           
       end, [ HasIdentityAsReversedArrow ] ] ] );
     
@@ -454,7 +454,7 @@ InstallMethod( HasFullCodomain,
     
     kernel_embedding := KernelEmbedding( ReversedArrow( generalized_morphism ) );
     
-    return IsZero( PreCompose( kernel_embedding, Arrow( generalized_morphism ) ) );
+    return IsZeroForMorphisms( PreCompose( kernel_embedding, Arrow( generalized_morphism ) ) );
     
 end );
 

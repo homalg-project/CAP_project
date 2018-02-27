@@ -167,7 +167,7 @@ AddDerivationToCAP( IsMonomorphism,
                     
   function( alpha )
       
-      return IsZero( WeakKernelEmbedding( alpha ) );
+      return IsZeroForMorphisms( WeakKernelEmbedding( alpha ) );
       
 end : Description := "IsMonomorphism by deciding whether WeakKernelEmbedding is zero" );
 
@@ -176,7 +176,7 @@ AddDerivationToCAP( IsEpimorphism,
                     
   function( alpha )
       
-      return IsZero( WeakCokernelProjection( alpha ) );
+      return IsZeroForMorphisms( WeakCokernelProjection( alpha ) );
       
 end : Description := "IsEpimorphism by deciding whether WeakCokernelProjection is zero" );
 

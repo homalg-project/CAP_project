@@ -212,8 +212,8 @@ DeclareOperation( "AddIsInitial",
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments a
-DeclareOperation( "IsZeroForObjects", 
-                  [ IsCapCategoryObject ] );
+DeclareProperty( "IsZeroForObjects",
+                 IsCapCategoryObject );
 
 # @Description
 # The argument is an object $a$ of a category $\mathbf{C}$.

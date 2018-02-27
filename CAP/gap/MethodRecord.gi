@@ -958,7 +958,7 @@ IsEqualForCacheForMorphisms := rec(
   return_type := "bool" ),
   
 IsZeroForMorphisms := rec(
-  installation_name := "IsZero",
+  installation_name := "IsZeroForMorphisms",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
@@ -967,7 +967,7 @@ IsZeroForMorphisms := rec(
   is_reflected_by_faithful_functor := true ),
 
 AdditionForMorphisms := rec(
-  installation_name := "\+",
+  installation_name := "AdditionForMorphisms",
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
   cache_name := "AdditionForMorphisms",
@@ -1011,7 +1011,7 @@ AdditionForMorphisms := rec(
   return_type := "morphism" ),
 
 SubtractionForMorphisms := rec(
-  installation_name := "\-",
+  installation_name := "SubtractionForMorphisms",
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
   cache_name := "SubtractionForMorphisms",
@@ -1055,7 +1055,7 @@ SubtractionForMorphisms := rec(
   return_type := "morphism" ),
 
 AdditiveInverseForMorphisms := rec(
-  installation_name := "AdditiveInverse",
+  installation_name := "AdditiveInverseForMorphisms",
   filter_list := [ "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
   dual_operation := "AdditiveInverseForMorphisms",
@@ -1851,7 +1851,7 @@ IsWellDefinedForObjects := rec(
   return_type := "bool" ),
 
 IsZeroForObjects := rec(
-  installation_name := "IsZero",
+  installation_name := "IsZeroForObjects",
   filter_list := [ "object" ],
   well_defined_todo := false,
   return_type := "bool",

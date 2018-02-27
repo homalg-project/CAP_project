@@ -1,6 +1,6 @@
 \begin{sequent}
 \begin{align*}
-   a: \Obj, b: \Obj ~|~ () \vdash \IsZero \big( \ZeroMorphism( a, b ) \big)
+   a: \Obj, b: \Obj ~|~ () \vdash \IsZeroForMorphisms \big( \ZeroMorphism( a, b ) \big)
 \end{align*}
 \end{sequent}
 
@@ -12,49 +12,49 @@
 
 \begin{sequent}
 \begin{align*}
-   a: \Obj ~|~ () \vdash \IsZero \big( \UniversalMorphismIntoZeroObject( a ) \big)
+   a: \Obj ~|~ () \vdash \IsZeroForMorphisms \big( \UniversalMorphismIntoZeroObject( a ) \big)
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-   a: \Obj ~|~ () \vdash \IsZero \big( \UniversalMorphismFromZeroObject( a ) \big)
+   a: \Obj ~|~ () \vdash \IsZeroForMorphisms \big( \UniversalMorphismFromZeroObject( a ) \big)
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-   \alpha: \Mor ~|~ \IsZero(\Source(\alpha)) \vdash \IsZero(\alpha)
+   \alpha: \Mor ~|~ \IsZeroForObjects(\Source(\alpha)) \vdash \IsZeroForMorphisms(\alpha)
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-   \alpha: \Mor ~|~ \IsZero(\Range(\alpha)) \vdash \IsZero(\alpha)
+   \alpha: \Mor ~|~ \IsZeroForObjects(\Range(\alpha)) \vdash \IsZeroForMorphisms(\alpha)
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-   \alpha: \Mor ~|~ \IsZero(\alpha), \IsMonomorphism(\alpha) \vdash \IsZero(\Source(\alpha))
+   \alpha: \Mor ~|~ \IsZeroForMorphisms(\alpha), \IsMonomorphism(\alpha) \vdash \IsZeroForObjects(\Source(\alpha))
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-   \alpha: \Mor ~|~ \IsZero(\alpha), \IsEpimorphism(\alpha) \vdash \IsZero(\Range(\alpha))
+   \alpha: \Mor ~|~ \IsZeroForMorphisms(\alpha), \IsEpimorphism(\alpha) \vdash \IsZeroForObjects(\Range(\alpha))
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-   \alpha: \Mor, \beta: \Mor ~|~ \IsZero(\alpha) \vdash \IsZero(\PreCompose(\alpha,\beta))
+   \alpha: \Mor, \beta: \Mor ~|~ \IsZeroForMorphisms(\alpha) \vdash \IsZeroForMorphisms(\PreCompose(\alpha,\beta))
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-   \alpha: \Mor, \beta: \Mor ~|~ \IsZero(\beta) \vdash \IsZero(\PreCompose(\alpha,\beta))
+   \alpha: \Mor, \beta: \Mor ~|~ \IsZeroForMorphisms(\beta) \vdash \IsZeroForMorphisms(\PreCompose(\alpha,\beta))
 \end{align*}
 \end{sequent}
 
@@ -66,19 +66,19 @@
 
 \begin{sequent}
 \begin{align*}
-  \alpha: \Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsZero( \KernelObject( \alpha ) )
+  \alpha: \Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsZeroForObjects( \KernelObject( \alpha ) )
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-  \alpha: \Mor ~|~ \IsZero\big( \KernelEmbedding( \alpha ) \big) \vdash \IsMonomorphism( \alpha )
+  \alpha: \Mor ~|~ \IsZeroForMorphisms\big( \KernelEmbedding( \alpha ) \big) \vdash \IsMonomorphism( \alpha )
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-  \alpha: \Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsZero( \KernelEmbedding( \alpha ) )
+  \alpha: \Mor ~|~ \IsMonomorphism( \alpha ) \vdash \IsZeroForMorphisms( \KernelEmbedding( \alpha ) )
 \end{align*}
 \end{sequent}
 
@@ -90,18 +90,18 @@
 
 \begin{sequent}
 \begin{align*}
-  \alpha: \Mor ~|~ \IsEpimorphism( \alpha ) \vdash \IsZero\big( \CokernelObject( \alpha ) \big)
+  \alpha: \Mor ~|~ \IsEpimorphism( \alpha ) \vdash \IsZeroForObjects\big( \CokernelObject( \alpha ) \big)
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-  \alpha: \Mor ~|~ \IsZero\big( \CokernelProjection( \alpha ) \big) \vdash \IsEpimorphism( \alpha )
+  \alpha: \Mor ~|~ \IsZeroForMorphisms\big( \CokernelProjection( \alpha ) \big) \vdash \IsEpimorphism( \alpha )
 \end{align*}
 \end{sequent}
 
 \begin{sequent}
 \begin{align*}
-  \alpha: \Mor ~|~  \IsEpimorphism( \alpha ) \vdash \IsZero\big( \CokernelProjection( \alpha ) \big)
+  \alpha: \Mor ~|~  \IsEpimorphism( \alpha ) \vdash \IsZeroForMorphisms\big( \CokernelProjection( \alpha ) \big)
 \end{align*}
 \end{sequent}
