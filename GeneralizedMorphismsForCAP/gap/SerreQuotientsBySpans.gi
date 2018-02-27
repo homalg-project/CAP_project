@@ -98,7 +98,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
         common_restriction := CommonRestriction( underlying_generalized );
         
-        new_arrow := Arrow( common_restriction[ 1 ] ) + Arrow( common_restriction[ 2 ] );
+        new_arrow := AdditionForMorphisms( Arrow( common_restriction[ 1 ] ), Arrow( common_restriction[ 2 ] ) );
         
         return SerreQuotientCategoryBySpansMorphism( category, ReversedArrow( common_restriction[ 1 ] ), new_arrow );
         
@@ -128,7 +128,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
         general := UnderlyingGeneralizedMorphism( morphism );
         
-        return SerreQuotientCategoryBySpansMorphism( category, ReversedArrow( general ), - Arrow( general ) );
+        return SerreQuotientCategoryBySpansMorphism( category, ReversedArrow( general ), AdditiveInverseForMorphisms( Arrow( general ) ) );
         
     end );
     

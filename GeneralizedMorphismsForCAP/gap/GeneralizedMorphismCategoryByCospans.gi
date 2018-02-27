@@ -113,7 +113,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
           
           pushout_right := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
           
-          arrow := PreCompose( Arrow( morphism1 ), pushout_left ) + PreCompose( Arrow( morphism2 ), pushout_right );
+          arrow := AdditionForMorphisms( PreCompose( Arrow( morphism1 ), pushout_left ), PreCompose( Arrow( morphism2 ), pushout_right ) );
           
           reversed_arrow := PreCompose( pushout_diagram[ 1 ], pushout_left );
           
@@ -123,7 +123,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
       
       [ function( morphism1, morphism2 )
           
-          return AsGeneralizedMorphismByCospan( Arrow( morphism1 ) + Arrow( morphism2 ) );
+          return AsGeneralizedMorphismByCospan( AdditionForMorphisms( Arrow( morphism1 ),  Arrow( morphism2 ) ) );
           
       end, [ HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
       
@@ -131,13 +131,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
                                     
       [ function( morphism )
            
-         return GeneralizedMorphismByCospan( - Arrow( morphism ), ReversedArrow( morphism ) );
+         return GeneralizedMorphismByCospan( AdditiveInverseForMorphisms( Arrow( morphism ) ), ReversedArrow( morphism ) );
          
       end, [ ] ],
       
       [ function( morphism )
           
-          return AsGeneralizedMorphismByCospan( - Arrow( morphism ) );
+          return AsGeneralizedMorphismByCospan( AdditiveInverseForMorphisms( Arrow( morphism ) ) );
           
       end, [ HasIdentityAsReversedArrow ] ] ] );
     

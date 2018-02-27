@@ -1396,7 +1396,7 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
     
     mor2 := CallFuncList( UniversalMorphismIntoDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
-    return mor1 - mor2;
+    return SubtractionForMorphisms( mor1, mor2 );
     
 end : Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
 
@@ -1450,7 +1450,7 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     
     mor2 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
-    return mor1 - mor2;
+    return SubtractionForMorphisms( mor1, mor2 );
     
 end : Description := "DirectSumCodiagonalDifference using the operations defining this morphism" );
 
