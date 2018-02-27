@@ -502,7 +502,7 @@ InstallMethod( HasFullDomain,
     
     cokernel_projection := CokernelProjection( ReversedArrow( generalized_morphism ) );
     
-    return IsZero( PreCompose( Arrow( generalized_morphism ), cokernel_projection ) );
+    return IsZeroForMorphisms( PreCompose( Arrow( generalized_morphism ), cokernel_projection ) );
     
 end );
 

@@ -454,7 +454,7 @@ InstallMethod( HasFullCodomain,
     
     kernel_embedding := KernelEmbedding( ReversedArrow( generalized_morphism ) );
     
-    return IsZero( PreCompose( kernel_embedding, Arrow( generalized_morphism ) ) );
+    return IsZeroForMorphisms( PreCompose( kernel_embedding, Arrow( generalized_morphism ) ) );
     
 end );
 

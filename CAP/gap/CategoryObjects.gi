@@ -36,7 +36,7 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS,
                  "IsInitial",
                  "IsProjective",
                  "IsInjective",
-                 "IsZero",
+                 "IsZeroForObjects",
                  # ..
               ] );
 
@@ -220,7 +220,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
     print_graph := CreatePrintingGraph( IsCapCategoryObject and HasCapCategory, object_function );
     
     AddRelationToGraph( print_graph,
-                        rec( Source := [ rec( Conditions := "IsZero",
+                        rec( Source := [ rec( Conditions := "IsZeroForObjects",
                                               PrintString := "zero",
                                               Adjective := true ) ],
                              Range := [ rec( Conditions := "IsInjective",

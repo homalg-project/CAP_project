@@ -469,7 +469,7 @@ InstallMethod( ResolutionLength,
     
     i := 0;
     
-    while not IsZero( complex[ i ] ) do
+    while not IsZeroForObjects( complex[ i ] ) do
         i := i + 1;
     od;
     
@@ -687,7 +687,7 @@ InstallMethod( PurityFiltrationBySpectralSequence,
     Print( "Computed embeddings\n" );
     
     for i in Reversed( [ 1 .. Length( embedding_list ) ] ) do
-        if IsZero( UnderlyingHonestObject( Source( embedding_list[ i ] ) ) ) then
+        if IsZeroForObjects( UnderlyingHonestObject( Source( embedding_list[ i ] ) ) ) then
             Print( "found a zero\n" );
             Remove( embedding_list, i );
         fi;

@@ -282,7 +282,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
                                         Range( zero_morphism ) );
           
-          end, [ , IsZero ] ],
+          end, [ , IsZeroForMorphisms ] ],
         
         [ function( zero_morphism, right_morphism )
             
@@ -290,7 +290,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
                                            HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), ring ),
                                            Range( right_morphism ) );
           
-          end, [ IsZero, ] ],
+          end, [ IsZeroForMorphisms, ] ],
       ]
     
     );

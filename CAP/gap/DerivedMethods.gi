@@ -611,7 +611,7 @@ AddDerivationToCAP( IsMonomorphism,
                       [ KernelObject, 1 ] ],
   function( morphism )
     
-    return IsZero( KernelObject( morphism ) );
+    return IsZeroForObjects( KernelObject( morphism ) );
     
 end : CategoryFilter := IsAdditiveCategory,
       Description := "IsMonomorphism by deciding if the kernel is a zero object" );
@@ -641,7 +641,7 @@ AddDerivationToCAP( IsEpimorphism,
                       [ CokernelObject, 1 ] ],
   function( morphism )
     
-    return IsZero( CokernelObject( morphism ) );
+    return IsZeroForObjects( CokernelObject( morphism ) );
     
 end : CategoryFilter := IsAdditiveCategory,
       Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
@@ -726,7 +726,7 @@ AddDerivationToCAP( IsDominating,
     
     composition := PreCompose( sub1, cokernel_projection );
     
-    return IsZero( composition );
+    return IsZeroForMorphisms( composition );
     
 end : Description := "IsDominating(sub1, sub2) by deciding if sub1 composed with CokernelProjection(sub2) is zero" );
 
@@ -759,7 +759,7 @@ AddDerivationToCAP( IsCodominating,
     
     composition := PreCompose( kernel_embedding, factor1 );
     
-    return IsZero( composition );
+    return IsZeroForMorphisms( composition );
     
 end : Description := "IsCodominating(factor1, factor2) by deciding if KernelEmbedding(factor2) composed with factor1 is zero" );
 
