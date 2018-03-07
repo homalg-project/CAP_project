@@ -63,9 +63,9 @@ InstallMethod( GradedPresentationMorphism,
     fi;
     
     if left then
-        type := TheTypeOfLeftPresentationMorphisms;
+        type := TheTypeOfGradedLeftPresentationMorphisms;
     else
-        type := TheTypeOfRightPresentationMorphisms;
+        type := TheTypeOfGradedRightPresentationMorphisms;
     fi;
     
     graded_morphism := rec();
@@ -113,9 +113,9 @@ InstallMethod( GradedPresentationMorphism,
     morphism := rec( );
     
     if left then
-        type := TheTypeOfLeftPresentationMorphisms;
+        type := TheTypeOfGradedLeftPresentationMorphisms;
     else
-        type := TheTypeOfRightPresentationMorphisms;
+        type := TheTypeOfGradedRightPresentationMorphisms;
     fi;
     
     ObjectifyWithAttributes( morphism, type,
