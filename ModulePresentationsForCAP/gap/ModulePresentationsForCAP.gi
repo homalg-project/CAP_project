@@ -1718,17 +1718,10 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
     s := NrColumns( P );
     
-    if v = 0 or s = 0 then
-       
-       XX := HomalgZeroMatrix( s, v, homalg_ring );
-       
-       return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
-       
-    fi;
-    
     N := UnderlyingMatrix( Range(  morphism_1 ) );
     
-    if NrColumns( N ) = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
+    # NrColumns( N ) = 0 implies coker(N)=0 and  s = 0 implies coker(P)=0, hence morphism_1 is zero, and the zero morphism can always be lifted. 
+    if NrColumns( N ) = 0 or s = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
     
     A := UnderlyingMatrix( morphism_1 );
     
@@ -1814,18 +1807,11 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
     s := NrColumns( I );
     
-    if v = 0 or s = 0 then 
-    
-       XX := HomalgZeroMatrix( v, s, homalg_ring );
-       
-       return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
-       
-    fi;
-    
     N := UnderlyingMatrix( Source( morphism_1 ) );
     
-    if NrColumns( N ) = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
-    
+    # NrColumns( N ) = 0 implies coker(N)=0 and  s = 0 implies coker(I)=0, hence morphism_2 is zero, and the zero morphism can always be colifted.
+    if NrColumns( N ) = 0 or s = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
+
     B := UnderlyingMatrix( morphism_1 );
     
     A := UnderlyingMatrix( morphism_2 );
@@ -1921,19 +1907,10 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     s := NrColumns( Pt );
     
-    if v = 0 or s = 0 then
-       
-       XX := Involution( HomalgZeroMatrix( s, v, homalg_ring ) );
-       
-       return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
-       
-    fi;
-    
     Nt := Involution( UnderlyingMatrix( Range(  morphism_1 ) ) );
     
-    if NrRows( Nt ) = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
+    if NrRows( Nt ) = 0 or s = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
 
-    
     At := Involution( UnderlyingMatrix( morphism_1 ) );
     
     Bt := Involution( UnderlyingMatrix( morphism_2 ) );
@@ -2002,19 +1979,11 @@ end );
     v := NrColumns( Mt );
        
     s := NrColumns( It );
-    
-    if v = 0 or s = 0 then 
-    
-       XX := Involution( HomalgZeroMatrix( v, s, homalg_ring ) );
-       
-       return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
-       
-    fi;
-    
+        
     Nt := Involution( UnderlyingMatrix( Source( morphism_1 ) ) );
     
-    if NrRows( Nt ) = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
-
+    if NrRows( Nt ) = 0 or s = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
+    
     Bt := Involution( UnderlyingMatrix( morphism_1 ) );
     
     At := Involution( UnderlyingMatrix( morphism_2 ) );
