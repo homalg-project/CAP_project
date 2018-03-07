@@ -21,3 +21,7 @@ DeclareAttribute( "LiftNaturalTransformationToGradedModulesLeft",
 
 DeclareAttribute( "LiftNaturalTransformationToGradedModulesRight",
                   IsCapNaturalTransformation );
+
+DeclareAttribute( "NaturalTransformationFromIdentityToGradedDoubleDualLeft", IsHomalgGradedRing );
+
+DeclareAttribute( "NaturalTransformationFromIdentityToGradedDoubleDualRight", IsHomalgGradedRing );
