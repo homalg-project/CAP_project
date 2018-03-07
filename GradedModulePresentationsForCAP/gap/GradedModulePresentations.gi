@@ -157,6 +157,18 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_GRADED_KERNEL_LEFT( category );
     
+    if CanCompute( category!.underlying_presentation_category, "Lift" ) then
+    
+        ADD_GRADED_LIFT( category );
+    
+    fi;
+    
+    if CanCompute( category!.underlying_presentation_category, "Colift" ) then
+    
+        ADD_GRADED_COLIFT( category );
+    
+    fi;
+
     ADD_GRADED_PRECOMPOSE( category );
     
     ADD_GRADED_ADDITION_FOR_MORPHISMS( category );
@@ -211,6 +223,18 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
   function( category )
     
     ADD_GRADED_KERNEL_RIGHT( category );
+    
+    if CanCompute( category!.underlying_presentation_category, "Lift" ) then
+    
+        ADD_GRADED_LIFT( category );
+    
+    fi;
+    
+    if CanCompute( category!.underlying_presentation_category, "Colift" ) then
+    
+        ADD_GRADED_COLIFT( category );
+    
+    fi;
     
     ADD_GRADED_PRECOMPOSE( category );
     
@@ -488,20 +512,45 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_RIGHT,
         
     end );
     
+##
+InstallGlobalFunction( ADD_GRADED_LIFT,
+                       
+  function( category )
+    
     AddLift( category,
       
-        ## TODO: Reference for the conventions for Lift
-#       function( alpha, beta )
-        function( beta, alpha )
+      function( alpha, beta )
         local lift;
         
-        lift := Lift( UnderlyingPresentationMorphism( beta ), UnderlyingPresentationMorphism( alpha ) );
+        lift := Lift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
         
         if lift = fail then
             return fail;
         fi;
         
-        return GradedPresentationMorphism( Source( beta ), lift, Source( alpha ) );
+        return GradedPresentationMorphism( Source( alpha ), lift, Source( beta ) );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_COLIFT,
+                       
+  function( category )
+    
+    AddColift( category,
+      
+      function( alpha, beta )
+        local colift;
+        
+        colift := Colift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
+        
+        if colift = fail then
+            return fail;
+        fi;
+        
+        return GradedPresentationMorphism( Range( alpha ), colift, Range( beta ) );
         
     end );
     

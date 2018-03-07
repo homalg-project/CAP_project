@@ -104,3 +104,8 @@ DeclareGlobalFunction( "ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS" );
 DeclareGlobalFunction( "ADD_GRADED_TENSOR_UNIT" );
 
 DeclareGlobalFunction( "ADD_GRADED_EQUAL_FOR_MORPHISMS" );
+
+DeclareGlobalFunction( "ADD_GRADED_LIFT" );
+
+DeclareGlobalFunction( "ADD_GRADED_COLIFT" );
+
