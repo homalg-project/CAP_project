@@ -482,20 +482,17 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_LEFT,
         
     end );
     
-    AddLift( category,
-      
-      function( alpha, beta )
-        local lift;
+    AddKernelLift( category,
+    
+      function( morphism, tau )
+      local underlying_lift;
         
-        lift := Lift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
+      underlying_lift := KernelLift( UnderlyingPresentationMorphism( morphism ), UnderlyingPresentationMorphism( tau ) );
         
-        if lift = fail then
-            return fail;
-        fi;
-        
-        return GradedPresentationMorphism( Source( alpha ), lift, Source( beta ) );
+      return GradedPresentationMorphism( Source( tau ), underlying_lift, KernelObject( morphism ) );
         
     end );
+
     
 end );
 
@@ -532,6 +529,19 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_RIGHT,
         
     end );
     
+    AddKernelLift( category,
+    
+    function( morphism, tau )
+        local underlying_lift;
+        
+      underlying_lift := KernelLift( UnderlyingPresentationMorphism( morphism ), UnderlyingPresentationMorphism( tau ) );
+        
+      return GradedPresentationMorphism( Source( tau ), underlying_lift, KernelObject( morphism ) );
+        
+    end );
+    
+end );
+
 ##
 InstallGlobalFunction( ADD_GRADED_LIFT,
                        
