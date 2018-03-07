@@ -183,7 +183,7 @@ InstallMethod( NaturalTransformationFromIdentityToDoubleDualLeft,
    double_dual_functor := FunctorDoubleDualLeft( ring );
    
    natural_tasformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
-                                                         IdentityMorphism( AsCatObject( category ) ), double_dual_functor );
+                                                         IdentityFunctor( category ), double_dual_functor );
                                                          
    AddNaturalTransformationFunction( natural_tasformation, 
    
@@ -218,7 +218,7 @@ InstallMethod( NaturalTransformationFromIdentityToDoubleDualRight,
    double_dual_functor := FunctorDoubleDualRight( ring );
    
    natural_tasformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
-                                                         IdentityMorphism( AsCatObject( category ) ), double_dual_functor );
+                                                         IdentityFunctor( category ), double_dual_functor );
                                                          
    AddNaturalTransformationFunction( natural_tasformation, 
    
