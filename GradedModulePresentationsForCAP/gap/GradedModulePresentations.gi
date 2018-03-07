@@ -12,9 +12,9 @@ InstallMethod( GradedLeftPresentations,
                [ IsHomalgGradedRing ],
                
   function( ring )
-    local category;
+    local category, to_be_finalized;
     
-    category := CreateCapCategory( Concatenation( "The category of graded f.p. modules over ", RingName( ring ) ) );
+    category := CreateCapCategory( Concatenation( "The category of graded left f.p. modules over ", RingName( ring ) ) );
     
     category!.ring_for_representation_category := ring;
     
@@ -56,6 +56,18 @@ InstallMethod( GradedLeftPresentations,
 #         "RelationsForGeneralModuleCategories.tex" )
 #     );
     
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+   
+    if to_be_finalized = false then
+      
+       return category;
+    
+    else
+    
+       Finalize( category );
+      
+    fi;
+    
     Finalize( category );
     
     return category;
@@ -67,9 +79,9 @@ InstallMethod( GradedRightPresentations,
                [ IsHomalgRing ],
                
   function( ring )
-    local category;
+    local category, to_be_finalized;
     
-    category := CreateCapCategory( Concatenation( "The category of graded f.p. modules over ", RingName( ring ) ) );
+    category := CreateCapCategory( Concatenation( "The category of graded right f.p. modules over ", RingName( ring ) ) );
     
     category!.ring_for_representation_category := ring;
     
@@ -110,7 +122,17 @@ InstallMethod( GradedRightPresentations,
 #         "RelationsForGeneralModuleCategories.tex" )
 #     );
     
-    Finalize( category );
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+   
+    if to_be_finalized = false then
+      
+       return category;
+    
+    else
+    
+       Finalize( category );
+      
+    fi;
     
     return category;
     
