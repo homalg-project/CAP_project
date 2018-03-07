@@ -191,6 +191,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_LIFT_AND_COLIFT_LEFT( category );
     
+    ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
+    
     if IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT( category );
@@ -249,6 +251,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
     ADD_LIFT_AND_COLIFT_RIGHT( category );
+    
+    ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
     
     if IsCommutative( category!.ring_for_representation_category ) then
       
@@ -1678,6 +1682,15 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
         return LiftAlongMonomorphism( morphism, lifted_coevaluation );
         
     end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT, 
+    function( category )
+    
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
+    AddEpimorphismFromSomeProjectiveObject( category, CoverByFreeModule );
     
 end );
 

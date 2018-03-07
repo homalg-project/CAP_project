@@ -195,6 +195,8 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_GRADED_IS_IDENTICAL_FOR_MORPHISMS( category );
     
+    ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
+    
     if IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS( category );
@@ -261,6 +263,8 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT( category );
     
     ADD_GRADED_IS_IDENTICAL_FOR_MORPHISMS( category );
+    
+    ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
     
     if IsCommutative( category!.ring_for_representation_category ) then
       
@@ -583,6 +587,15 @@ InstallGlobalFunction( ADD_GRADED_COLIFT,
         return GradedPresentationMorphism( Range( alpha ), colift, Range( beta ) );
         
     end );
+    
+end );
+
+InstallGlobalFunction( ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT, 
+    
+  function( category )
+    
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
+    AddEpimorphismFromSomeProjectiveObject( category, CoverByProjective );
     
 end );
 
