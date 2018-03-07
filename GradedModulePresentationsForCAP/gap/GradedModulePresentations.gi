@@ -380,7 +380,8 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
         required_degrees := Flat( List( GeneratorDegrees( Source( morphism ) ), i -> 
                                     List( GeneratorDegrees( Range( morphism ) ), j -> i - j ) ) );
                                     
-        return ForAll( [ 1 .. Length( matrix_entries ) ], i -> IsZero( matrix_entries[ i ] ) or ( matrix_entries_degrees[ i ] = required_degrees[ i ] ) );
+        return ForAll( [ 1 .. Length( matrix_entries ) ], 
+                    i -> IsZero( matrix_entries[ i ] ) or ( matrix_entries_degrees[ i ] = required_degrees[ i ] ) );
         
     end );
     
@@ -389,8 +390,27 @@ end );
 ##
 InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
 
-  function( category )
-    ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_LEFT( category );
+function( category )
+    AddIsWellDefinedForMorphisms( category,
+      function( morphism )
+        local matrix, matrix_entries, matrix_entries_degrees, required_degrees;
+        
+        if not IsWellDefined( UnderlyingPresentationMorphism( morphism ) ) then
+            return false;
+        fi;
+        
+        matrix := UnderlyingMatrix( UnderlyingPresentationMorphism( morphism ) );
+        
+        matrix_entries := Flat( EntriesOfHomalgMatrixAsListList( matrix ) );
+        
+        matrix_entries_degrees := Flat( DegreesOfEntries( matrix ) );
+        
+        required_degrees := Flat( List( GeneratorDegrees( Range( morphism ) ), i -> 
+                                    List( GeneratorDegrees( Source( morphism ) ), j -> j - i ) ) );
+                                    
+        return ForAll( [ 1 .. Length( matrix_entries ) ], 
+                    i -> IsZero( matrix_entries[ i ] ) or ( matrix_entries_degrees[ i ] = required_degrees[ i ] ) );
+    end );
 end );
 
 ##
