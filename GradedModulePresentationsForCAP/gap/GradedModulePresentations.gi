@@ -24,7 +24,7 @@ InstallMethod( GradedLeftPresentations,
     
     SetIsAbelianCategory( category, true );
     
-    if IsCommutative( ring ) then
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
@@ -91,7 +91,7 @@ InstallMethod( GradedRightPresentations,
     
     SetIsAbelianCategory( category, true );
     
-    if IsCommutative( ring ) then
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
@@ -197,7 +197,7 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
     
-    if IsCommutative( category!.ring_for_representation_category ) then
+    if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS( category );
       
@@ -266,7 +266,7 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
     
-    if IsCommutative( category!.ring_for_representation_category ) then
+    if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS( category );
       
