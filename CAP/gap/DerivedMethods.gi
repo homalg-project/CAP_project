@@ -1985,6 +1985,26 @@ AddDerivationToCAP( Coimage,
     
 end : Description := "Coimage as the source of IsomorphismFromCoimageToCokernelOfKernel" );
 
+##
+AddDerivationToCAP( Equalizer,
+                    [ [ EmbeddingOfEqualizer, 1 ] ],
+                    
+function( diagram )
+    
+    return Source( EmbeddingOfEqualizer( diagram ) );
+    
+end : Description := "Equalizer as the source of EmbeddingOfEqualizer" );
+
+##
+AddDerivationToCAP( Coequalizer,
+                    [ [ ProjectionOntoCoequalizer, 1 ] ],
+                    
+  function( diagram )
+    
+    return Range( ProjectionOntoCoequalizer( diagram ) );
+    
+end : Description := "Coequalizer as the range of ProjectionOntoCoequalizer" );
+
 ###########################
 ##
 ## Methods returning a twocell
