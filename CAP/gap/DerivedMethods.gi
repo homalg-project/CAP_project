@@ -565,6 +565,34 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
     
 end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and ColiftAlongEpimorphism" );
 
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoEqualizer,
+  function( diagram, test_morphism )
+    
+    return LiftAlongMonomorphism( EmbeddingOfEqualizer( diagram ), test_morphism );
+    
+  end,
+  
+  function( diagram, test_morphism, equalizer )
+    
+    return LiftAlongMonomorphism( EmbeddingOfEqualizerWithGivenEqualizer( diagram, equalizer ), test_morphism );
+    
+end : Description := "UniversalMorphismIntoEqualizer using LiftAlongMonomorphism and EmbeddingOfEqualizer" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoequalizer,
+  function( diagram, test_morphism )
+    
+    return ColiftAlongEpimorphism( ProjectionOntoCoequalizer( diagram ), test_morphism );
+    
+  end,
+
+  function( diagram, test_morphism, coequalizer )
+      
+      return ColiftAlongEpimorphism( ProjectionOntoCoequalizerWithGivenCoequalizer( diagram, coequalizer ), test_morphism );
+      
+end : Description := "UniversalMorphismFromCoequalizer using ColiftAlongEpimorphism and ProjectionOntoCoequalizer" );
+
 ###########################
 ##
 ## Methods returning a boolean
