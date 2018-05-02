@@ -154,23 +154,6 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
 end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismIntoZeroObject computing the zero morphism" );
 
-
-##
-AddDerivationToCAP( FiberProduct,
-  
-  function( diagram )
-    local D;
-    
-    D := List( diagram, Source );
-    
-    D := List( [ 1 .. Length( D ) ], i -> ProjectionInFactorOfDirectProduct( D, i ) );
-    
-    D := List( [ 1 .. Length( D ) ], i -> PreCompose( D[i], diagram[i] ) );
-    
-    return Equalizer( D );
-    
-end : Description := "FiberProduct as an Equalizer" );
-
 ##
 AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
         
@@ -222,22 +205,6 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
     return PreCompose( embedding_in_direct_sum, projection );
     
   end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
-
-##
-AddDerivationToCAP( Pushout,
-  
-  function( diagram )
-    local D;
-    
-    D := List( diagram, Range );
-    
-    D := List( [ 1 .. Length( D ) ], i -> InjectionOfCofactorOfCoproduct( D, i ) );
-    
-    D := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram[i], D[i] ) );
-    
-    return Coequalizer( D );
-    
-end : Description := "Pushout as a Coequalizer" );
 
 ##
 AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
@@ -2077,6 +2044,38 @@ AddDerivationToCAP( Coimage,
     return Source( IsomorphismFromCoimageToCokernelOfKernel( morphism ) );
     
 end : Description := "Coimage as the source of IsomorphismFromCoimageToCokernelOfKernel" );
+
+##
+AddDerivationToCAP( FiberProduct,
+  
+  function( diagram )
+    local D;
+    
+    D := List( diagram, Source );
+    
+    D := List( [ 1 .. Length( D ) ], i -> ProjectionInFactorOfDirectProduct( D, i ) );
+    
+    D := List( [ 1 .. Length( D ) ], i -> PreCompose( D[i], diagram[i] ) );
+    
+    return Equalizer( D );
+    
+end : Description := "FiberProduct as an Equalizer" );
+
+##
+AddDerivationToCAP( Pushout,
+  
+  function( diagram )
+    local D;
+    
+    D := List( diagram, Range );
+    
+    D := List( [ 1 .. Length( D ) ], i -> InjectionOfCofactorOfCoproduct( D, i ) );
+    
+    D := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram[i], D[i] ) );
+    
+    return Coequalizer( D );
+    
+end : Description := "Pushout as a Coequalizer" );
 
 ##
 AddDerivationToCAP( SomeProjectiveObject,
