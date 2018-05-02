@@ -23,7 +23,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Posur",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php",
+    WWWHome := "https://sebastianpos.github.io",
     Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",

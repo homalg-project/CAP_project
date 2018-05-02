@@ -36,7 +36,7 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS,
                  "IsInitial",
                  "IsProjective",
                  "IsInjective",
-                 "IsZero",
+                 "IsZeroForObjects",
                  # ..
               ] );
 
@@ -110,6 +110,14 @@ InstallMethod( Add,
   function( category, object )
     local filter;
     
+    filter := ObjectFilter( category );
+    
+    if not filter( object ) then
+        
+        SetFilterObj( object, filter );
+        
+    fi;
+        
     if HasCapCategory( object ) then
         
         if IsIdenticalObj( CapCategory( object ), category ) then
@@ -124,11 +132,16 @@ InstallMethod( Add,
         
     fi;
     
-    filter := ObjectFilter( category );
-    
-    SetFilterObj( object, filter );
-    
     SetCapCategory( object, category );
+    
+end );
+
+InstallMethod( AddObject,
+               [ IsCapCategory, IsCapCategoryObject ],
+               
+  function( category, object )
+    
+    Add( category, object );
     
 end );
 
@@ -150,16 +163,36 @@ InstallMethod( IsWellDefinedForObjects,
 );
 
 ##
-InstallMethod( IsZeroForObjects,
+InstallMethod( IsZero,
                [ IsCapCategoryObject ],
                   
-IsZero );
+IsZeroForObjects );
 
 ##
 InstallMethod( IsEqualForCacheForObjects,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
   IsEqualForCache );
+
+InstallMethod( AddObjectRepresentation,
+               [ IsCapCategory, IsObject ],
+               
+  function( category, representation )
+    
+    category!.object_representation := representation;
+    category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep );
+    
+end );
+
+InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
+                       
+  function( arg_list... )
+    
+    Append( arg_list, [ CapCategory, arg_list[ 2 ] ] );
+    arg_list[ 2 ] := arg_list[ 2 ]!.object_type;
+    CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+end );
 
 ###########################
 ##
@@ -187,7 +220,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
     print_graph := CreatePrintingGraph( IsCapCategoryObject and HasCapCategory, object_function );
     
     AddRelationToGraph( print_graph,
-                        rec( Source := [ rec( Conditions := "IsZero",
+                        rec( Source := [ rec( Conditions := "IsZeroForObjects",
                                               PrintString := "zero",
                                               Adjective := true ) ],
                              Range := [ rec( Conditions := "IsInjective",

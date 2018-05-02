@@ -43,22 +43,30 @@ DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_DERIVATION_GRAPH" );
 
+DeclareGlobalVariable( "CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST" );
+
+## Syntax for categorical property with no dual counterpart:
+## [ , "property" ]
+InstallValue( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST,
+  [ [ "IsEnrichedOverCommutativeRegularSemigroup" ],
+    [ "IsAbCategory" ],
+    [ "IsAdditiveCategory" ],
+    [ "IsPreAbelianCategory" ],
+    [ "IsAbelianCategory" ],
+    [ "IsMonoidalCategory" ],
+    [ "IsBraidedMonoidalCategory" ],
+    [ "IsSymmetricMonoidalCategory" ],
+    [ "IsSymmetricClosedMonoidalCategory" ],
+    [ "IsRigidSymmetricClosedMonoidalCategory" ],
+    [ "IsStrictMonoidalCategory" ],
+    [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ]
+  ]
+);
+
 ## FIXME: GET RID OF THIS!!!
 InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
-              rec(
-              MathematicalPropertiesOfCategories := [
-                "IsEnrichedOverCommutativeRegularSemigroup",
-                "IsAbCategory",
-                "IsAdditiveCategory",
-                "IsPreAbelianCategory",
-                "IsAbelianCategory",
-                "IsMonoidalCategory",
-                "IsBraidedMonoidalCategory",
-                "IsSymmetricMonoidalCategory",
-                "IsSymmetricClosedMonoidalCategory",
-                "IsRigidSymmetricClosedMonoidalCategory",
-                "IsStrictMonoidalCategory"
-              ] ) );
+              rec( MathematicalPropertiesOfCategories := Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ) )
+            );
 
 DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
 
@@ -324,3 +332,21 @@ DeclareGlobalFunction( "DeactivateCachingOfCategory" );
 DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
 DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
 #! @EndGroup
+
+#############################################
+##
+#! @Section Disable add in functions
+##
+#############################################
+
+#! @BeginGroup
+#! @Description
+#!  Enables/disables the call of add for the output
+#!  of primitively added functions for the category <A>C</A>.
+#!  This can be savely done if the all objects and morphisms
+#!  are added to the category by their constructors.
+#! @Arguments C
+DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
+DeclareGlobalFunction( "EnableAddForCategoricalOperations" );
+#! @EndGroup
+

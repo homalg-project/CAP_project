@@ -36,7 +36,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Posur",
-    WWWHome := "http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php",
+    WWWHome := "https://sebastianpos.github.io",
     Email := "sposur@momo.math.rwth-aachen.de",
     PostalAddress := Concatenation(
                "Lehrstuhl B für Mathematik RWTH - Aachen\n",

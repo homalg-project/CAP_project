@@ -184,7 +184,7 @@ DeclareOperation( "AddKernelLiftWithGivenKernelObject",
 #! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu: A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$ of morphisms.
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
-#! given by the functorality of the kernel.
+#! given by the functoriality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$
 #! @Arguments L
 DeclareOperation( "KernelObjectFunctorial",
@@ -195,7 +195,7 @@ DeclareOperation( "KernelObjectFunctorial",
 #! $\alpha: A \rightarrow B$, $\mu: A \rightarrow A'$, $\alpha': A' \rightarrow B'$.
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
-#! given by the functorality of the kernel.
+#! given by the functoriality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{KernelObject}( \alpha ), \mathrm{KernelObject}( \alpha' ) )$
 #! @Arguments alpha, mu, alpha_prime
 DeclareOperation( "KernelObjectFunctorial",
@@ -208,12 +208,27 @@ DeclareOperation( "KernelObjectFunctorial",
 #! and an object $r = \mathrm{KernelObject}( \alpha' )$.
 #! The output is the morphism
 #! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
-#! given by the functorality of the kernel.
+#! given by the functoriality of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, alpha, mu, alpha_prime, r
 DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
                     IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are an object $s = \mathrm{KernelObject}( \alpha )$,
+#! four morphisms
+#! $\alpha: A \rightarrow B$, $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$, $\alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{KernelObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$
+#! given by the functoriality of the kernel.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$
+#! @Arguments s, alpha, mu, nu, alpha_prime, r
+DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+                    IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -411,7 +426,7 @@ DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
 #! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu:A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$.
 #! The output is the morphism
 #! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
-#! given by the functorality of the cokernel.
+#! given by the functoriality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))$
 #! @Arguments L
 DeclareOperation( "CokernelObjectFunctorial",
@@ -426,7 +441,7 @@ DeclareSynonym( "CokernelFunctorial", CokernelObjectFunctorial );
 #! $\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'$.
 #! The output is the morphism
 #! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
-#! given by the functorality of the cokernel.
+#! given by the functoriality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), \mathrm{CokernelObject}( \alpha' ))$
 #! @Arguments alpha, nu, alpha_prime
 DeclareOperation( "CokernelObjectFunctorial",
@@ -439,12 +454,27 @@ DeclareOperation( "CokernelObjectFunctorial",
 #! and an object $r = \mathrm{CokernelObject}( \alpha' )$.
 #! The output is the morphism
 #! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
-#! given by the functorality of the cokernel.
+#! given by the functoriality of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, alpha, nu, alpha_prime, r
 DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, 
                     IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are an object $s = \mathrm{CokernelObject}( \alpha )$,
+#! four morphisms
+#! $\alpha: A \rightarrow B, \mu: A \rightarrow A', \nu: B \rightarrow B', \alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{CokernelObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$
+#! given by the functoriality of the cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, alpha, mu, nu, alpha_prime, r
+DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+                    IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
 
 DeclareSynonym( "CokernelFunctorialWithGivenCokernelObjects", CokernelObjectFunctorialWithGivenCokernelObjects );
 ## FIXME:
@@ -1360,8 +1390,8 @@ DeclareOperation( "IsomorphismFromCoproductToDirectSumOp",
 #! is a list of lists of morphisms.
 #! @Arguments M
 #! @Group MorphismBetweenDirectSums
-DeclareOperationWithCache( "MorphismBetweenDirectSums",
-                           [ IsList ] );
+DeclareOperation( "MorphismBetweenDirectSums",
+                  [ IsList ] );
 
 #! @Description
 #! The output is the morphism
@@ -1374,8 +1404,27 @@ DeclareOperationWithCache( "MorphismBetweenDirectSums",
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
 #! @Arguments S, M, T
 #! @Group MorphismBetweenDirectSums
-DeclareOperationWithCache( "MorphismBetweenDirectSums",
-                           [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+DeclareOperation( "MorphismBetweenDirectSums",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismBetweenDirectSums</C>.
+#! $F: (\bigoplus_{i=1}^{m}A_i, M, \bigoplus_{j=1}^n B_j) \mapsto (\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a list
@@ -1391,6 +1440,66 @@ DeclareOperationWithCache( "MorphismBetweenDirectSums",
 #! @Arguments M, m, n, method_selection_morphism
 DeclareOperationWithCache( "MorphismBetweenDirectSumsOp",
                            [ IsList, IsInt, IsInt, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a morphism $\alpha: A \rightarrow S$,
+#! a list $D = (S_1, \dots, S_n)$ of objects with $S = \bigoplus_{j=1}^n S_j$,
+#! and an integer $k$.
+#! The output is the component morphism
+#! $A \rightarrow S_k$.
+#! @Returns a morphism in $\mathrm{Hom}(A, S_k)$
+#! @Arguments alpha, D, k
+DeclareOperation( "ComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategoryMorphism, IsList, IsInt ] );
+
+#! @Description
+#! The arguments are a morphism $\alpha: S \rightarrow A$,
+#! a list $D = (S_1, \dots, S_n)$ of objects with $S = \bigoplus_{j=1}^n S_j$,
+#! and an integer $k$.
+#! The output is the component morphism
+#! $S_k \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(S_k, A)$
+#! @Arguments alpha, D, k
+DeclareOperation( "ComponentOfMorphismFromDirectSum",
+                  [ IsCapCategoryMorphism, IsList, IsInt ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ComponentOfMorphismIntoDirectSum</C>.
+#! $F: (\alpha: A \rightarrow S,D,k) \mapsto (A \rightarrow S_k)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ComponentOfMorphismFromDirectSum</C>.
+#! $F: (\alpha: S \rightarrow A,D,k) \mapsto (S_k \rightarrow A)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddComponentOfMorphismFromDirectSum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddComponentOfMorphismFromDirectSum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismFromDirectSum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismFromDirectSum",
+                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -1643,7 +1752,7 @@ DeclareOperation( "AddDirectSum",
 #! The argument is a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$.
 #! The output is a morphism
 #! $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$
-#! given by the functorality of the direct sum.
+#! given by the functoriality of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigoplus_{i=1}^n S_i' )$
 #! @Arguments L
 DeclareOperation( "DirectSumFunctorial",
@@ -1655,7 +1764,7 @@ DeclareOperation( "DirectSumFunctorial",
 #! and an object $d_2 = \bigoplus_{i=1}^n S_i'$.
 #! The output is a morphism
 #! $d_1 \rightarrow d_2$
-#! given by the functorality of the direct sum.
+#! given by the functoriality of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}( d_1, d_2 )$
 #! @Arguments d_1, L, d_2
 DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
@@ -1927,7 +2036,7 @@ DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
 #! The argument is a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$.
 #! The output is a morphism
 #! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
-#! given by the functorality of the coproduct.
+#! given by the functoriality of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, \bigsqcup_{i=1}^n I_i')$
 #! @Arguments L
 DeclareOperation( "CoproductFunctorial",
@@ -1939,7 +2048,7 @@ DeclareOperation( "CoproductFunctorial",
 #! and an object $r = \bigsqcup_{i=1}^n I_i'$.
 #! The output is a morphism
 #! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
-#! given by the functorality of the coproduct.
+#! given by the functoriality of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, L, r
 DeclareOperation( "CoproductFunctorialWithGivenCoproducts",
@@ -2171,7 +2280,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
 #! The argument is a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$.
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
-#! given by the functorality of the direct product.
+#! given by the functoriality of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}( \prod_{i=1}^n P_i, \prod_{i=1}^n P_i' )$
 #! @Arguments L
 DeclareOperation( "DirectProductFunctorial",
@@ -2183,7 +2292,7 @@ DeclareOperation( "DirectProductFunctorial",
 #! and an object $r = \prod_{i=1}^n P_i'$.
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
-#! given by the functorality of the direct product.
+#! given by the functoriality of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, L, r
 DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
@@ -2888,7 +2997,7 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
 #! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$.
 #! The output is the morphism
 #! $\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$
-#! given by the functorality of the fiber product.
+#! given by the functoriality of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ))$
 #! @Arguments L
 DeclareOperation( "FiberProductFunctorial",
@@ -2903,7 +3012,7 @@ DeclareOperation( "FiberProductFunctorial",
 #! and an object $r = \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$.
 #! The output is the morphism
 #! $s \rightarrow r$
-#! given by the functorality of the fiber product.
+#! given by the functoriality of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, L, r
 DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
@@ -3590,7 +3699,7 @@ DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
 #! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$.
 #! The output is the morphism
 #! $\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$
-#! given by the functorality of the pushout.
+#! given by the functoriality of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n ), \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ))$
 #! @Arguments L
 DeclareOperation( "PushoutFunctorial",
@@ -3605,7 +3714,7 @@ DeclareOperation( "PushoutFunctorial",
 #! and an object $r = \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$.
 #! The output is the morphism
 #! $s \rightarrow r$
-#! given by the functorality of the pushout.
+#! given by the functoriality of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
 #! @Arguments s, L, r
 DeclareOperation( "PushoutFunctorialWithGivenPushouts",

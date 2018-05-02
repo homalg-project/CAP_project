@@ -64,7 +64,7 @@ InstallMethod( CategoryOfToricSheaves,
             
             for functor in functor_list do
                 current_section_module := ApplyFunctor( functor, module );
-                if not IsZero( current_section_module ) = true then
+                if not IsZeroForObjects( current_section_module ) = true then
                     return false;
                 fi;
             od;

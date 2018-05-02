@@ -9,9 +9,9 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
   ## this line prevents merge conflicts
-  "2017.07.25", ## Sebas' version
+  "2018.01.26", ## Sebas' version
   ## this line prevents merge conflicts
-  "2017.02.15", ## Sepp's version
+  "2018.02.27", ## Sepp's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -39,7 +39,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Posur",
-    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    WWWHome := "https://sebastianpos.github.io",
     Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
@@ -78,7 +78,11 @@ ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
-AbstractHTML   :=  "",
+AbstractHTML   :=  
+  Concatenation( [
+  "<span class=\"pkgname\">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.\n",
+  "It facilitates the implementation of specific instances of categories\n",
+  "and provides a language for writing generic categorical algorithms." ] ),
 
 PackageDoc := rec(
   BookName  := "CAP",
@@ -95,7 +99,7 @@ Dependencies := rec(
                            [ "ToolsForHomalg", ">= 2016.01.17" ],
                            [ "io", ">=0" ],
   ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [ [ "Browse", ">=0" ] ],
   ExternalConditions := []
 
 ),

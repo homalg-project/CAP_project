@@ -763,7 +763,7 @@ InstallMethod( FunctorCanonicalizeZeroObjects,
     AddObjectFunction( CZ,
             function( obj )
               
-              if IsZero( obj ) then
+              if IsZeroForObjects( obj ) then
                   return zero_obj;
               fi;
               
@@ -773,9 +773,9 @@ InstallMethod( FunctorCanonicalizeZeroObjects,
     AddMorphismFunction( CZ,
             function( new_source, mor, new_range )
               
-              if IsZero( Source( mor ) ) then
+              if IsZeroForObjects( Source( mor ) ) then
                   return UniversalMorphismFromZeroObjectWithGivenZeroObject( new_range, new_source );
-              elif IsZero( Range( mor ) ) then
+              elif IsZeroForObjects( Range( mor ) ) then
                   return UniversalMorphismIntoZeroObjectWithGivenZeroObject( new_source, new_range );
               fi;
               
@@ -806,7 +806,7 @@ InstallMethod( NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects,
             iso,
             function( source, obj, range )
               
-              if IsZero( range ) then
+              if IsZeroForObjects( range ) then
                   return UniversalMorphismIntoZeroObjectWithGivenZeroObject( source, range );
               fi;
               
@@ -838,7 +838,7 @@ InstallMethod( FunctorCanonicalizeZeroMorphisms,
     AddMorphismFunction( CZ,
             function( new_source, mor, new_range )
               
-              if IsZero( mor ) then
+              if IsZeroForMorphisms( mor ) then
                   return ZeroMorphism( new_source, new_range );
               fi;
               

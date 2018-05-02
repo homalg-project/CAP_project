@@ -7,29 +7,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsLeftPresentationRep",
-                       IsLeftPresentation and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfLeftPresentations",
-            NewFamily( "TheFamilyOfLeftPresentations" ) );
-
-BindGlobal( "TheTypeOfLeftPresentations",
-            NewType( TheFamilyOfLeftPresentations,
-                     IsLeftPresentationRep ) );
-
-
-DeclareRepresentation( "IsRightPresentationRep",
-                       IsRightPresentation and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfRightPresentations",
-            NewFamily( "TheFamilyOfRightPresentations" ) );
-
-BindGlobal( "TheTypeOfRightPresentations",
-            NewType( TheFamilyOfRightPresentations,
-                     IsRightPresentationRep ) );
-
 #############################
 ##
 ## Constructors
@@ -39,14 +16,13 @@ BindGlobal( "TheTypeOfRightPresentations",
 InstallGlobalFunction( AsLeftOrRightPresentation,
                
   function( matrix, left )
-    local module, ring, type, presentation_category, lazy;
+    local module, ring, presentation_category, lazy;
     
     module := rec( );
     
     ring := HomalgRing( matrix );
     
     if left = true then
-        type := TheTypeOfLeftPresentations;
         presentation_category := LeftPresentations( ring );
         if HasEvalSyzygiesOfRows( matrix ) and not HasEval( matrix ) then
             lazy := true;
@@ -56,7 +32,6 @@ InstallGlobalFunction( AsLeftOrRightPresentation,
             module.nr_generators := NrColumns( matrix );
         fi;
     else
-        type := TheTypeOfRightPresentations;
         presentation_category := RightPresentations( ring );
         if HasEvalSyzygiesOfColumns( matrix ) and not HasEval( matrix ) then
             lazy := true;
@@ -69,17 +44,15 @@ InstallGlobalFunction( AsLeftOrRightPresentation,
     
     if lazy then
         module.LazyUnderlyingMatrix := matrix;
-        ObjectifyWithAttributes( module, type,
+        ObjectifyObjectForCAPWithAttributes( module, presentation_category,
                 UnderlyingHomalgRing, ring
                 );
     else
-        ObjectifyWithAttributes( module, type,
+        ObjectifyObjectForCAPWithAttributes( module, presentation_category,
                 UnderlyingMatrix, matrix,
                 UnderlyingHomalgRing, ring
                 );
     fi;
-    
-    Add( presentation_category, module );
     
     return module;
     

@@ -7,22 +7,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsGeneralizedMorphismCategoryByThreeArrowsObjectRep",
-                       IsCapCategoryObjectRep and IsGeneralizedMorphismCategoryByThreeArrowsObject,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismCategoryByThreeArrowsObject",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsGeneralizedMorphismCategoryByThreeArrowsObjectRep ) );
-
-DeclareRepresentation( "IsGeneralizedMorphismByThreeArrowsRep",
-                       IsCapCategoryMorphismRep and IsGeneralizedMorphismByThreeArrows,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismByThreeArrows",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsGeneralizedMorphismByThreeArrowsRep ) );
-
 ####################################
 ##
 ## Constructors
@@ -181,7 +165,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
         return_value := GeneralizedMorphismByThreeArrows(
                           PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), SourceAid( mor1 ) ),
-                          restricted_mor1 + restricted_mor2,
+                          AdditionForMorphisms( restricted_mor1, restricted_mor2 ),
                           PreCompose( RangeAid( mor1 ), InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) )
                         );
         
@@ -305,6 +289,14 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     generalized_morphism_category := CreateCapCategory( name );
     
+    AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryByThreeArrowsObject );
+    
+    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByThreeArrows );
+    
+    DisableAddForCategoricalOperations( generalized_morphism_category );
+    
+    generalized_morphism_category!.predicate_logic := category!.predicate_logic;
+    
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROWS_CATEGORY( generalized_morphism_category );
@@ -331,16 +323,12 @@ InstallMethod( GeneralizedMorphismByThreeArrowsObject,
   function( object )
     local gen_object, generalized_category;
     
-    gen_object := rec( );
-    
-    ObjectifyWithAttributes( gen_object, TheTypeOfGeneralizedMorphismCategoryByThreeArrowsObject,
-                             UnderlyingHonestObject, object );
-    
     generalized_category := GeneralizedMorphismCategoryByThreeArrows( CapCategory( object ) );
     
-    Add( generalized_category, gen_object );
+    gen_object := rec( );
     
-    AddToToDoList( ToDoListEntryForEqualAttributes( gen_object, "IsWellDefined", object, "IsWellDefined" ) );
+    ObjectifyObjectForCAPWithAttributes( gen_object, generalized_category,
+                             UnderlyingHonestObject, object );
     
     return gen_object;
     
@@ -362,22 +350,17 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrows,
         Error( "range of range aid and associated morphism must be equal objects" );
         
     fi;
-
-    generalized_morphism := rec( );
-    
-    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphismByThreeArrows,
-                             Source, GeneralizedMorphismByThreeArrowsObject( Range( source_aid ) ),
-                             Range, GeneralizedMorphismByThreeArrowsObject( Source( range_aid ) ) );
-    
-    SetSourceAid( generalized_morphism, source_aid );
-    
-    SetRangeAid( generalized_morphism, range_aid );
-    
-    SetArrow( generalized_morphism, morphism_aid );
     
     generalized_category := GeneralizedMorphismCategoryByThreeArrows( CapCategory( morphism_aid ) );
     
-    Add( generalized_category, generalized_morphism );
+    generalized_morphism := rec( );
+    
+    ObjectifyMorphismForCAPWithAttributes( generalized_morphism, generalized_category,
+                             Source, GeneralizedMorphismByThreeArrowsObject( Range( source_aid ) ),
+                             Range, GeneralizedMorphismByThreeArrowsObject( Source( range_aid ) ),
+                             SourceAid, source_aid,
+                             RangeAid, range_aid,
+                             Arrow, morphism_aid );
     
     return generalized_morphism;
     

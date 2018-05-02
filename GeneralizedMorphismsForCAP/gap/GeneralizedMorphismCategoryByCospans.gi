@@ -7,22 +7,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsGeneralizedMorphismCategoryByCospansObjectRep",
-                       IsCapCategoryObjectRep and IsGeneralizedMorphismCategoryByCospansObject,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismCategoryByCospansObject",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsGeneralizedMorphismCategoryByCospansObjectRep ) );
-
-DeclareRepresentation( "IsGeneralizedMorphismByCospanRep",
-                       IsCapCategoryMorphismRep and IsGeneralizedMorphismByCospan,
-                       [ ] );
-
-BindGlobal( "TheTypeOfGeneralizedMorphismByCospan",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsGeneralizedMorphismByCospanRep ) );
-
 ####################################
 ##
 ## Installer
@@ -129,7 +113,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
           
           pushout_right := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
           
-          arrow := PreCompose( Arrow( morphism1 ), pushout_left ) + PreCompose( Arrow( morphism2 ), pushout_right );
+          arrow := AdditionForMorphisms( PreCompose( Arrow( morphism1 ), pushout_left ), PreCompose( Arrow( morphism2 ), pushout_right ) );
           
           reversed_arrow := PreCompose( pushout_diagram[ 1 ], pushout_left );
           
@@ -139,7 +123,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
       
       [ function( morphism1, morphism2 )
           
-          return AsGeneralizedMorphismByCospan( Arrow( morphism1 ) + Arrow( morphism2 ) );
+          return AsGeneralizedMorphismByCospan( AdditionForMorphisms( Arrow( morphism1 ),  Arrow( morphism2 ) ) );
           
       end, [ HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
       
@@ -147,13 +131,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
                                     
       [ function( morphism )
            
-         return GeneralizedMorphismByCospan( - Arrow( morphism ), ReversedArrow( morphism ) );
+         return GeneralizedMorphismByCospan( AdditiveInverseForMorphisms( Arrow( morphism ) ), ReversedArrow( morphism ) );
          
       end, [ ] ],
       
       [ function( morphism )
           
-          return AsGeneralizedMorphismByCospan( - Arrow( morphism ) );
+          return AsGeneralizedMorphismByCospan( AdditiveInverseForMorphisms( Arrow( morphism ) ) );
           
       end, [ HasIdentityAsReversedArrow ] ] ] );
     
@@ -287,6 +271,14 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
     
     generalized_morphism_category := CreateCapCategory( name );
     
+    AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryByCospansObject );
+    
+    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByCospan );
+    
+    DisableAddForCategoricalOperations( generalized_morphism_category );
+    
+    generalized_morphism_category!.predicate_logic := category!.predicate_logic;
+    
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_COSPANS( generalized_morphism_category );
@@ -313,16 +305,12 @@ InstallMethod( GeneralizedMorphismByCospansObject,
   function( object )
     local gen_object, generalized_category;
     
-    gen_object := rec( );
-    
-    ObjectifyWithAttributes( gen_object, TheTypeOfGeneralizedMorphismCategoryByCospansObject,
-                             UnderlyingHonestObject, object );
-    
     generalized_category := GeneralizedMorphismCategoryByCospans( CapCategory( object ) );
     
-    Add( generalized_category, gen_object );
+    gen_object := rec( );
     
-    AddToToDoList( ToDoListEntryForEqualAttributes( gen_object, "IsWellDefined", object, "IsWellDefined" ) );
+    ObjectifyObjectForCAPWithAttributes( gen_object, generalized_category,
+                             UnderlyingHonestObject, object );
     
     return gen_object;
     
@@ -340,20 +328,16 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByCospan,
         Error( "Ranges of morphisms must coincide" );
         
     fi;
-
-    generalized_morphism := rec( );
-    
-    ObjectifyWithAttributes( generalized_morphism, TheTypeOfGeneralizedMorphismByCospan,
-                             Source, GeneralizedMorphismByCospansObject( Source( arrow ) ),
-                             Range, GeneralizedMorphismByCospansObject( Source( reversed_arrow ) ) );
-    
-    SetArrow( generalized_morphism, arrow );
-    
-    SetReversedArrow( generalized_morphism, reversed_arrow );
     
     generalized_category := GeneralizedMorphismCategoryByCospans( CapCategory( arrow ) );
     
-    Add( generalized_category, generalized_morphism );
+    generalized_morphism := rec( );
+    
+    ObjectifyMorphismForCAPWithAttributes( generalized_morphism, generalized_category,
+                             Source, GeneralizedMorphismByCospansObject( Source( arrow ) ),
+                             Range, GeneralizedMorphismByCospansObject( Source( reversed_arrow ) ),
+                             Arrow, arrow,
+                             ReversedArrow, reversed_arrow );
     
     return generalized_morphism;
     
@@ -518,7 +502,7 @@ InstallMethod( HasFullDomain,
     
     cokernel_projection := CokernelProjection( ReversedArrow( generalized_morphism ) );
     
-    return IsZero( PreCompose( Arrow( generalized_morphism ), cokernel_projection ) );
+    return IsZeroForMorphisms( PreCompose( Arrow( generalized_morphism ), cokernel_projection ) );
     
 end );
 

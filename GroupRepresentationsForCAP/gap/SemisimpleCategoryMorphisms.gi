@@ -336,7 +336,7 @@ InstallMethod( Display,
     
     morphism_list := SemisimpleCategoryMorphismList( morphism );
     
-    morphism_list := Filtered( morphism_list, pair -> not( IsZero( Source( pair[1] ) ) or IsZero( Range( pair[1] ) ) ) );
+    morphism_list := Filtered( morphism_list, pair -> not( IsZeroForObjects( Source( pair[1] ) ) or IsZeroForObjects( Range( pair[1] ) ) ) );
     
     if IsEmpty( morphism_list ) then
         

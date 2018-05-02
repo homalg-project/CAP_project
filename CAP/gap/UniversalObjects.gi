@@ -43,6 +43,18 @@ InstallMethod( KernelObjectFunctorial,
     
 end );
 
+##
+InstallMethod( KernelObjectFunctorialWithGivenKernelObjects,
+               [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+                 IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+                                  
+  function( s, alpha, mu, nu, alpha_prime, r )
+    
+    return KernelObjectFunctorialWithGivenKernelObjects(
+             s, alpha, mu, alpha_prime, r );
+    
+end );
+
 ####################################
 ##
 ## Cokernel
@@ -73,6 +85,18 @@ InstallMethod( CokernelObjectFunctorial,
   function( alpha, nu, alpha_prime )
     
     return CokernelObjectFunctorialWithGivenCokernelObjects( CokernelObject( alpha ), alpha, nu, alpha_prime, CokernelObject( alpha_prime ) );
+    
+end );
+
+##
+InstallMethod( CokernelObjectFunctorialWithGivenCokernelObjects,
+               [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+                 IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+               
+  function( s, alpha, mu, nu, alpha_prime, r )
+    
+    return CokernelObjectFunctorialWithGivenCokernelObjects(
+             s, alpha, nu, alpha_prime, r );
     
 end );
 
@@ -486,38 +510,33 @@ InstallMethod( MorphismBetweenDirectSums,
                [ IsList ],
                
   function( morphism_matrix )
-    local morphism_matrix_listlist, row, rows, cols;
+    local nr_rows, nr_cols;
     
-    morphism_matrix_listlist := [ ];
+    nr_rows := Size( morphism_matrix );
     
-    for row in morphism_matrix do
-      
-      Append( morphism_matrix_listlist, row );
-      
-    od;
-    
-    rows := Length( morphism_matrix );
-    
-    cols := Length( morphism_matrix[1] );
-    
-    return MorphismBetweenDirectSumsOp( morphism_matrix_listlist, rows, cols, morphism_matrix[1][1] );
-    
-end );
-
-##
-InstallMethod( MorphismBetweenDirectSums,
-               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
-               
-  function( S, morphism_matrix, T )
-    
-    if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
-        return ZeroMorphism( S, T );
+    if nr_rows = 0 then
+        
+        Error( "The given matrix must not be empty" );
+        
     fi;
     
-    return MorphismBetweenDirectSums( morphism_matrix );
+    nr_cols := Size( morphism_matrix[1] );
+    
+    if nr_cols = 0 then
+        
+        Error( "The given matrix must not be empty" );
+        
+    fi;
+    
+    return MorphismBetweenDirectSums(
+             DirectSum( List( morphism_matrix, row -> Source( row[1] ) ) ),
+             morphism_matrix,
+             DirectSum( List( morphism_matrix[1], col -> Range( col ) ) )
+           );
     
 end );
 
+## TODO: is this deprecated?
 ##
 InstallMethodWithCacheFromObject( MorphismBetweenDirectSumsOp,
                                   [ IsList, IsInt, IsInt, IsCapCategoryMorphism ],
@@ -533,19 +552,7 @@ InstallMethodWithCacheFromObject( MorphismBetweenDirectSumsOp,
       
     od;
     
-    diagram_direct_sum_source := List( morphism_matrix, row -> Source( row[1] ) );
-    
-    diagram_direct_sum_range := List( morphism_matrix[1], entry -> Range( entry ) );
-    
-    test_diagram_coproduct := [ ];
-    
-    for test_diagram_product in morphism_matrix do
-      
-      Add( test_diagram_coproduct, UniversalMorphismIntoDirectSum( diagram_direct_sum_range, test_diagram_product ) );
-      
-    od;
-    
-    return UniversalMorphismFromDirectSum( diagram_direct_sum_source, test_diagram_coproduct );
+    return MorphismBetweenDirectSums( morphism_matrix );
     
 end: ArgumentNumber := 4 );
 

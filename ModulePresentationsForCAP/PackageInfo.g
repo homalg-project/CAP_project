@@ -4,9 +4,9 @@ PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2017.07.25", # Sebas version
+           "2017.12.30", # Sebas version
            ##
-           "2017.04.10", # Sepps version
+           "2018.02.02", # Sepps version
            ##
            "2017.03.27", # Mohamed's version
            ##
@@ -37,7 +37,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Posur",
-    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    WWWHome := "https://sebastianpos.github.io",
     Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
@@ -68,7 +68,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##
 Status := "deposited",
 
-AbstractHTML   :=  "",
+AbstractHTML   :=  "<span class=\"pkgname\">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.",
 
 PackageDoc := rec(
   BookName  := "ModulePresentationsForCAP",
@@ -83,10 +83,8 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=2017.03.27" ],
-                           [ "CAP", ">=0" ],
-                           [ "ComplexesAndFilteredObjectsForCAP", ">=0" ],
+                           [ "CAP", ">=2018.02.02" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
-                           [ "HomologicalAlgebraForCAP", ">=0" ]
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

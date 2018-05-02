@@ -1077,7 +1077,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
           end,
           
-          [ IsZero, ] ],
+          [ IsZeroForObjects, ] ],
          
         [ function( object_1, object_2 )
             
@@ -1085,7 +1085,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
           end,
           
-          [ , IsZero ] ]
+          [ , IsZeroForObjects ] ]
       ]
     
     );

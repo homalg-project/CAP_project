@@ -55,13 +55,11 @@ InstallMethod( UniqueObject,
     object := rec( );
     
     ObjectifyWithAttributes( object, TheTypeOfCapTerminalCategoryObject,
-                             IsZero, true );
+                             IsZeroForObjects, true );
     
     Add( CAP_INTERNAL_TERMINAL_CATEGORY, object );
     
     SetIsWellDefined( object, true );
-    
-    SetIsZero( object, true );
     
     return object;
     

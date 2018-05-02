@@ -49,7 +49,9 @@ Lift := rec(
   io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
   cache_name := "Lift",
   return_type := "morphism_or_fail",
-  dual_operation := "Colift" ),
+  dual_operation := "Colift",
+  dual_arguments_reversed := true,
+  is_merely_set_theoretic := true ),
 
 Colift := rec(
   installation_name := "Colift",
@@ -57,20 +59,40 @@ Colift := rec(
   io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
   cache_name := "Colift",
   return_type := "morphism_or_fail",
-  dual_operation := "Lift" ),
+  dual_operation := "Lift",
+  dual_arguments_reversed := true,
+  is_merely_set_theoretic := true  ),
+
+ProjectiveLift := rec(
+  installation_name := "ProjectiveLift",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
+  cache_name := "ProjectiveLift",
+  return_type := "morphism_or_fail",
+  dual_operation := "InjectiveColift" ),
+
+InjectiveColift := rec(
+  installation_name := "InjectiveColift",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
+  cache_name := "InjectiveColift",
+  return_type := "morphism_or_fail",
+  dual_operation := "ProjectiveLift" ),
 
 IdentityMorphism := rec(
   installation_name := "IdentityMorphism",
   filter_list := [ "object" ],
   io_type := [ [ "a" ], [ "a", "a" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "IdentityMorphism" ),
 
 InverseImmutable := rec(
 # Type check for IsIsomorphism
   installation_name := "InverseOp",
   filter_list := [ "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "InverseImmutable" ),
 
 KernelObject := rec(
   installation_name := "KernelObject",
@@ -217,7 +239,8 @@ ZeroObject := rec(
   installation_name := "ZeroObject",
   filter_list := [ "category" ],
   cache_name := "ZeroObject",
-  return_type := "object" ), 
+  return_type := "object",
+  dual_operation := "ZeroObject" ),
 
 ZeroObjectFunctorial := rec(
   installation_name := "ZeroObjectFunctorial",
@@ -331,7 +354,9 @@ ZeroMorphism := rec(
   filter_list := [ "object", "object" ],
   io_type := [ [ "a", "b" ], [ "a", "b" ] ],
   cache_name := "ZeroMorphism",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_arguments_reversed := true,
+  dual_operation := "ZeroMorphism" ),
 
 DirectSum := rec(
   installation_name := "DirectSumOp",
@@ -340,6 +365,7 @@ DirectSum := rec(
   cache_name := "DirectSumOp",
   universal_type := "LimitColimit",
   return_type := "object",
+  dual_operation := "DirectSum",
   pre_function := function( diagram, selection_morphism )
       local category;
       
@@ -736,6 +762,7 @@ IsCongruentForMorphisms := rec(
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsCongruentForMorphisms",
   well_defined_todo := false,
+  dual_operation := "IsCongruentForMorphisms",
   
   pre_function := function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -789,10 +816,10 @@ IsCongruentForMorphisms := rec(
   
   post_function := function( morphism_1, morphism_2, return_value )
     
-    if return_value = true then
-      
-      INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS( morphism_1, morphism_2 );
-    
+    if CapCategory( morphism_1 )!.predicate_logic and return_value = true then
+          
+          INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS( morphism_1, morphism_2 );
+          
     fi;
     
   end,
@@ -804,6 +831,7 @@ IsEqualForMorphisms := rec(
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsEqualForMorphisms",
   well_defined_todo := false,
+  dual_operation := "IsEqualForMorphisms",
   
   pre_function := function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -862,6 +890,7 @@ IsEqualForMorphismsOnMor := rec(
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsEqualForMorphismsOnMor",
   well_defined_todo := false,
+  dual_operation := "IsEqualForMorphismsOnMor",
   
   redirect_function := function( morphism_1, morphism_2 )
     
@@ -884,6 +913,7 @@ IsEqualForObjects := rec(
   filter_list := [ "object", "object" ],
   cache_name := "IsEqualForObjects",
   well_defined_todo := false,
+  dual_operation := "IsEqualForObjects",
   
   redirect_function := function( object_1, object_2 )
     
@@ -901,7 +931,7 @@ IsEqualForObjects := rec(
   
   post_function := function( object_1, object_2, return_value )
     
-    if return_value = true and not IsIdenticalObj( object_1, object_2 ) then
+    if CapCategory( object_1 )!.predicate_logic and return_value = true and not IsIdenticalObj( object_1, object_2 ) then
         
         INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object_1, object_2 );
         
@@ -915,6 +945,7 @@ IsEqualForCacheForObjects := rec(
   installation_name := "IsEqualForCache",
   filter_list := [ "object", "object" ],
   cache_name := "IsEqualForCacheForObjects",
+  dual_operation := "IsEqualForCacheForObjects",
   well_defined_todo := false,
   return_type := "bool" ),
 
@@ -922,22 +953,25 @@ IsEqualForCacheForMorphisms := rec(
   installation_name := "IsEqualForCache",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsEqualForCacheForMorphisms",
+  dual_operation := "IsEqualForCacheForMorphisms",
   well_defined_todo := false,
   return_type := "bool" ),
   
 IsZeroForMorphisms := rec(
-  installation_name := "IsZero",
+  installation_name := "IsZeroForMorphisms",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsZeroForMorphisms",
   property_of := "morphism",
   is_reflected_by_faithful_functor := true ),
 
 AdditionForMorphisms := rec(
-  installation_name := "\+",
+  installation_name := "AdditionForMorphisms",
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
   cache_name := "AdditionForMorphisms",
+  dual_operation := "AdditionForMorphisms",
   
   pre_function := function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -977,10 +1011,11 @@ AdditionForMorphisms := rec(
   return_type := "morphism" ),
 
 SubtractionForMorphisms := rec(
-  installation_name := "\-",
+  installation_name := "SubtractionForMorphisms",
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
   cache_name := "SubtractionForMorphisms",
+  dual_operation := "SubtractionForMorphisms",
   
   pre_function := function( morphism_1, morphism_2 )
     local value_1, value_2;
@@ -1020,9 +1055,10 @@ SubtractionForMorphisms := rec(
   return_type := "morphism" ),
 
 AdditiveInverseForMorphisms := rec(
-  installation_name := "AdditiveInverse",
+  installation_name := "AdditiveInverseForMorphisms",
   filter_list := [ "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
+  dual_operation := "AdditiveInverseForMorphisms",
   return_type := "morphism" ),
 
 Coproduct := rec(
@@ -2046,6 +2082,8 @@ MorphismFromCoimageToImageWithGivenObjects := rec(
   filter_list := [ "object", "morphism", "object" ],
   io_type := [ [ "C", "alpha", "I" ], [ "C", "I" ] ],
   cache_name := "MorphismFromCoimageToImageWithGivenObjects",
+  dual_operation := "MorphismFromCoimageToImageWithGivenObjects",
+  dual_arguments_reversed := true,
   return_type := "morphism" ),
 
 InverseMorphismFromCoimageToImageWithGivenObjects := rec(
@@ -2053,12 +2091,15 @@ InverseMorphismFromCoimageToImageWithGivenObjects := rec(
   filter_list := [ "object", "morphism", "object" ],
   io_type := [ [ "C", "alpha", "I" ], [ "I", "C" ] ],
   cache_name := "InverseMorphismFromCoimageToImageWithGivenObjects",
+  dual_operation := "InverseMorphismFromCoimageToImageWithGivenObjects",
+  dual_arguments_reversed := true,
   return_type := "morphism" ),
 
 IsWellDefinedForMorphisms := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
+  dual_operation := "IsWellDefinedForMorphisms",
   
   redirect_function := function( morphism )
     
@@ -2080,13 +2121,15 @@ IsWellDefinedForObjects := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "object" ],
   well_defined_todo := false,
+  dual_operation := "IsWellDefinedForObjects",
   return_type := "bool" ),
 
 IsZeroForObjects := rec(
-  installation_name := "IsZero",
+  installation_name := "IsZeroForObjects",
   filter_list := [ "object" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsZeroForObjects",
   property_of := "object" ),
 
 IsMonomorphism := rec(
@@ -2111,6 +2154,7 @@ IsIsomorphism := rec(
   installation_name := "IsIsomorphism",
   filter_list := [ "morphism" ],
   well_defined_todo := false,
+  dual_operation := "IsIsomorphism",
   return_type := "bool",
   property_of := "morphism" ),
 
@@ -2119,6 +2163,7 @@ IsEndomorphism := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsEndomorphism",
   property_of := "morphism" ),
 
 IsAutomorphism := rec(
@@ -2126,6 +2171,7 @@ IsAutomorphism := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsAutomorphism",
   property_of := "morphism" ),
 
 IsOne := rec(
@@ -2134,6 +2180,7 @@ IsOne := rec(
   well_defined_todo := false,
   return_type := "bool",
   property_of := "morphism",
+  dual_operation := "IsOne",
   pre_function := function( morphism )
     local is_equal_for_objects;
     
@@ -2187,6 +2234,7 @@ IsIdempotent := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsIdempotent",
   property_of := "morphism" ),
 
 IsProjective := rec(
@@ -2226,6 +2274,7 @@ IsIdenticalToIdentityMorphism := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsIdenticalToIdentityMorphism",
   property_of := "morphism" ),
 
 IsIdenticalToZeroMorphism := rec(
@@ -2233,6 +2282,7 @@ IsIdenticalToZeroMorphism := rec(
   filter_list := [ "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
+  dual_operation := "IsIdenticalToZeroMorphism",
   property_of := "morphism" ),
 
 CoastrictionToImage := rec(
@@ -2332,7 +2382,8 @@ KernelObjectFunctorialWithGivenKernelObjects := rec(
   io_type := [ [ "K", "alpha", "mu", "alphap", "Kp" ], [ "K", "Kp" ] ],
   cache_name := "KernelObjectFunctorialWithGivenKernelObjects",
   return_type := "morphism",
-  dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects" ),
+  dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects",
+  dual_arguments_reversed := true ),
 
 CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   installation_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
@@ -2340,7 +2391,8 @@ CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   io_type := [ [ "C", "alpha", "nu", "alphap", "Cp" ], [ "C", "Cp" ] ],
   cache_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
   return_type := "morphism",
-  dual_operation := "KernelObjectFunctorialWithGivenKernelObjects" ),
+  dual_operation := "KernelObjectFunctorialWithGivenKernelObjects",
+  dual_arguments_reversed := true ),
 
 TerminalObjectFunctorial := rec(
   installation_name := "TerminalObjectFunctorial",
@@ -2366,7 +2418,8 @@ DirectProductFunctorialWithGivenDirectProducts := rec(
   io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "DirectProductFunctorialWithGivenDirectProducts",
   return_type := "morphism",
-  dual_operation := "CoproductFunctorialWithGivenCoproducts" ),
+  dual_operation := "CoproductFunctorialWithGivenCoproducts",
+  dual_arguments_reversed := true ),
 
 CoproductFunctorialWithGivenCoproducts := rec(
   installation_name := "CoproductFunctorialWithGivenCoproducts",
@@ -2374,14 +2427,17 @@ CoproductFunctorialWithGivenCoproducts := rec(
   io_type := [ [ "I", "L", "Ip" ], [ "I", "Ip" ] ],
   cache_name := "CoproductFunctorialWithGivenCoproducts",
   return_type := "morphism",
-  dual_operation := "DirectProductFunctorialWithGivenDirectProducts" ),
+  dual_operation := "DirectProductFunctorialWithGivenDirectProducts",
+  dual_arguments_reversed := true ),
 
 DirectSumFunctorialWithGivenDirectSums := rec(
   installation_name := "DirectSumFunctorialWithGivenDirectSums",
   filter_list := [ "object", IsList, "object" ],
   io_type := [ [ "d1", "L", "d2" ], [ "d1", "d2" ] ],
   cache_name := "DirectSumFunctorialWithGivenDirectSums",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "DirectSumFunctorialWithGivenDirectSums",
+  dual_arguments_reversed := true ),
 
 EqualizerFunctorialWithGivenEqualizers := rec(
   installation_name := "EqualizerFunctorialWithGivenEqualizers",
@@ -2397,7 +2453,8 @@ FiberProductFunctorialWithGivenFiberProducts := rec(
   io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "FiberProductFunctorialWithGivenFiberProducts",
   return_type := "morphism",
-  dual_operation := "PushoutFunctorialWithGivenPushouts" ),
+  dual_operation := "PushoutFunctorialWithGivenPushouts",
+  dual_arguments_reversed := true ),
 
 CoequalizerFunctorialWithGivenCoequalizers := rec(
   installation_name := "CoequalizerFunctorialWithGivenCoequalizers",
@@ -2413,7 +2470,8 @@ PushoutFunctorialWithGivenPushouts := rec(
   io_type := [ [ "I", "L", "Ip" ], [ "I", "Ip" ] ],
   cache_name := "PushoutFunctorialWithGivenPushouts",
   return_type := "morphism",
-  dual_operation := "FiberProductFunctorialWithGivenFiberProducts" ),
+  dual_operation := "FiberProductFunctorialWithGivenFiberProducts",
+  dual_arguments_reversed := true ),
 
 HorizontalPreCompose := rec(
   installation_name := "HorizontalPreCompose",
@@ -2498,12 +2556,14 @@ VerticalPostCompose := rec(
 IdentityTwoCell := rec(
   installation_name := "IdentityTwoCell",
   filter_list := [ "twocell" ],
+  dual_operation := "IdentityTwoCell",
   return_type := "twocell" ),
 
 IsWellDefinedForTwoCells := rec(
   installation_name := "IsWellDefined",
   filter_list := [ "twocell" ],
   well_defined_todo := false,
+  dual_operation := "IsWellDefinedForTwoCells",
   
   redirect_function := function( twocell )
     
@@ -2585,6 +2645,7 @@ IsomorphismFromImageObjectToKernelOfCokernel := rec(
   io_type := [ [ "alpha" ], [ "I", "K" ] ],
   cache_name := "IsomorphismFromImageObjectToKernelOfCokernel",
   return_type := "morphism",
+  dual_operation := "IsomorphismFromCokernelOfKernelToCoimage",
   no_with_given := true ),
 
 IsomorphismFromKernelOfCokernelToImageObject := rec(
@@ -2593,6 +2654,7 @@ IsomorphismFromKernelOfCokernelToImageObject := rec(
   io_type := [ [ "alpha" ], [ "K", "I" ] ],
   cache_name := "IsomorphismFromKernelOfCokernelToImageObject",
   return_type := "morphism",
+  dual_operation := "IsomorphismFromCoimageToCokernelOfKernel",
   no_with_given := true ),
 
 IsomorphismFromCoimageToCokernelOfKernel := rec(
@@ -2601,6 +2663,7 @@ IsomorphismFromCoimageToCokernelOfKernel := rec(
   io_type := [ [ "alpha" ], [ "CI", "C" ] ],
   cache_name := "IsomorphismFromCoimageToCokernelOfKernel",
   return_type := "morphism",
+  dual_operation := "IsomorphismFromKernelOfCokernelToImageObject",
   no_with_given := true ),
 
 IsomorphismFromCokernelOfKernelToCoimage := rec(
@@ -2609,6 +2672,7 @@ IsomorphismFromCokernelOfKernelToCoimage := rec(
   io_type := [ [ "alpha" ], [ "I", "CI" ] ],
   cache_name := "IsomorphismFromCokernelOfKernelToCoimage",
   return_type := "morphism",
+  dual_operation := "IsomorphismFromImageObjectToKernelOfCokernel",
   no_with_given := true ),
 
 IsomorphismFromDirectSumToDirectProduct := rec(
@@ -2671,42 +2735,161 @@ DirectSumProjectionInPushout := rec(
   dual_operation := "FiberProductEmbeddingInDirectSum",
   no_with_given := true ),
 
+SomeProjectiveObject := rec(
+  installation_name := "SomeProjectiveObject",
+  filter_list := [ "object" ],
+  return_type := "object",
+  dual_operation := "SomeInjectiveObject",
+  is_merely_set_theoretic := true ),
+
+EpimorphismFromSomeProjectiveObject := rec(
+  installation_name := "EpimorphismFromSomeProjectiveObject",
+  filter_list := [ "object" ],
+  io_type := [ [ "A" ], [ "epsilon" ] ],
+  universal_object_position := "Source",
+  universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
+  return_type := "morphism",
+  dual_operation := "MonomorphismIntoSomeInjectiveObject",
+  is_merely_set_theoretic := true ),
+
+EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject := rec(
+  installation_name := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "A", "P" ], [ "epsilon" ] ],
+  universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
+  cache_name := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+  return_type := "morphism",
+  dual_operation := "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+  is_merely_set_theoretic := true ),
+
+SomeInjectiveObject := rec(
+  installation_name := "SomeInjectiveObject",
+  filter_list := [ "object" ],
+  return_type := "object",
+  dual_operation := "SomeProjectiveObject",
+  is_merely_set_theoretic := true ),
+
+MonomorphismIntoSomeInjectiveObject := rec(
+  installation_name := "MonomorphismIntoSomeInjectiveObject",
+  filter_list := [ "object" ],
+  io_type := [ [ "A" ], [ "iota" ] ],
+  universal_object_position := "Range",
+  universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
+  return_type := "morphism",
+  dual_operation := "EpimorphismFromSomeProjectiveObject",
+  is_merely_set_theoretic := true ),
+
+MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject := rec(
+  installation_name := "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "A", "I" ], [ "iota" ] ],
+  cache_name := "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+  universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
+  return_type := "morphism",
+  dual_operation := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+  is_merely_set_theoretic := true ),
+
+ComponentOfMorphismIntoDirectSum := rec(
+  installation_name := "ComponentOfMorphismIntoDirectSum",
+  filter_list := [ "morphism", IsList, IsInt ],
+  io_type := [ [ "alpha", "S", "i" ], [ "alpha_source", "T" ] ],
+  cache_name := "ComponentOfMorphismIntoDirectSum",
+  return_type := "morphism",
+  dual_operation := "ComponentOfMorphismFromDirectSum" ),
+
+ComponentOfMorphismFromDirectSum := rec(
+  installation_name := "ComponentOfMorphismFromDirectSum",
+  filter_list := [ "morphism", IsList, IsInt ],
+  io_type := [ [ "alpha", "S", "i" ], [ "T", "alpha_range" ] ],
+  cache_name := "ComponentOfMorphismFromDirectSum",
+  return_type := "morphism",
+  dual_operation := "ComponentOfMorphismIntoDirectSum" ),
+
+MorphismBetweenDirectSums := rec(
+  installation_name := "MorphismBetweenDirectSums",
+  filter_list := [ "object", IsList, "object" ],
+  io_type := [ [ "S", "mat", "T" ], [ "S", "T" ] ],
+  cache_name := "MorphismBetweenDirectSums",
+  return_type := "morphism",
+  dual_operation := "MorphismBetweenDirectSums",
+  dual_arguments_reversed := true
+),
   ) );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, position, without_given_name, functorial;
+    local recnames, current_recname, current_rec, position, without_given_name, functorial, diagram_arguments;
     
     recnames := RecNames( record );
     
     for current_recname in recnames do
-      
-      current_rec := record.(current_recname);
-      
-      position := PositionSublist( current_recname, "WithGiven" );
-      
-      current_rec.is_with_given := false;
-      
-      if position <> fail then
-         
-         without_given_name := current_recname{[ 1 .. position - 1 ]};
-         
-         if without_given_name in recnames then
-           
-           current_rec.is_with_given := true;
-           
-         fi;
-         
-      fi;
-      
-      functorial := PositionProperty( recnames, i -> StartsWith( i, Concatenation( current_recname, "Functorial" ) ) );
-      
-      if functorial <> fail then
+        
+        current_rec := record.(current_recname);
+        
+        if not IsBound( current_rec!.is_with_given ) then
+            
+            position := PositionSublist( current_recname, "WithGiven" );
+            
+            current_rec.is_with_given := false;
+            
+            if position <> fail then
+                
+                without_given_name := current_recname{[ 1 .. position - 1 ]};
+                
+                if without_given_name in recnames then
+                    
+                    current_rec.is_with_given := true;
+                    
+                fi;
+                
+            fi;
+        
+        fi;
+        
+        if not IsBound( current_rec.functorial ) then
+            
+            functorial := PositionProperty( recnames, i -> StartsWith( i, Concatenation( current_recname, "Functorial" ) ) );
+            
+            if functorial <> fail then
+                
+                current_rec.functorial := recnames[ functorial ];
+                
+            fi;
+            
+        fi;
           
-          current_rec.functorial := recnames[ functorial ];
-          
-      fi;
-      
+        if not IsBound( current_rec.number_of_diagram_arguments ) then
+            current_rec.number_of_diagram_arguments := 1;
+        fi;
+        
+        if not IsBound( current_rec.universal_object_arg_list ) then
+            diagram_arguments := current_rec.number_of_diagram_arguments;
+            diagram_arguments := List( [ 1 .. diagram_arguments ], IdFunc );
+            
+            if ForAll( current_rec.filter_list{diagram_arguments}, i -> i = IsList ) then
+                
+                current_rec.universal_object_arg_list := Concatenation( diagram_arguments, [ Length( current_rec.filter_list ) ] );
+                
+            else
+                
+                current_rec.universal_object_arg_list := diagram_arguments;
+                
+            fi;
+        fi;
+        
+        if not IsBound( current_rec.dual_arguments_reversed ) then
+            
+            current_rec.dual_arguments_reversed := false;
+            
+        fi;
+        
+        if not IsBound( current_rec.cache_name ) then
+            
+            current_rec.cache_name := current_recname;
+            
+        fi;
+        
+        
     od;
     
 end );

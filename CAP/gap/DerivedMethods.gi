@@ -743,7 +743,7 @@ AddDerivationToCAP( IsMonomorphism,
                       [ KernelObject, 1 ] ],
   function( morphism )
     
-    return IsZero( KernelObject( morphism ) );
+    return IsZeroForObjects( KernelObject( morphism ) );
     
 end : CategoryFilter := IsAdditiveCategory,
       Description := "IsMonomorphism by deciding if the kernel is a zero object" );
@@ -773,7 +773,7 @@ AddDerivationToCAP( IsEpimorphism,
                       [ CokernelObject, 1 ] ],
   function( morphism )
     
-    return IsZero( CokernelObject( morphism ) );
+    return IsZeroForObjects( CokernelObject( morphism ) );
     
 end : CategoryFilter := IsAdditiveCategory,
       Description := "IsEpimorphism by deciding if the cokernel is a zero object" );
@@ -858,7 +858,7 @@ AddDerivationToCAP( IsDominating,
     
     composition := PreCompose( sub1, cokernel_projection );
     
-    return IsZero( composition );
+    return IsZeroForMorphisms( composition );
     
 end : Description := "IsDominating(sub1, sub2) by deciding if sub1 composed with CokernelProjection(sub2) is zero" );
 
@@ -891,7 +891,7 @@ AddDerivationToCAP( IsCodominating,
     
     composition := PreCompose( kernel_embedding, factor1 );
     
-    return IsZero( composition );
+    return IsZeroForMorphisms( composition );
     
 end : Description := "IsCodominating(factor1, factor2) by deciding if KernelEmbedding(factor2) composed with factor1 is zero" );
 
@@ -1008,6 +1008,17 @@ AddDerivationToCAP( LiftAlongMonomorphism,
 end : Description := "LiftAlongMonomorphism using Lift" );
 
 ##
+AddDerivationToCAP( ProjectiveLift,
+                    [ [ Lift, 1 ] ],
+                    
+  function( alpha, beta )
+    
+    return Lift( alpha, beta );
+    
+end : Description := "ProjectiveLift using Lift" );
+
+
+##
 AddDerivationToCAP( ColiftAlongEpimorphism,
                     [ [ Colift, 1 ] ],
                     
@@ -1016,6 +1027,17 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
     return Colift( alpha, beta );
     
 end : Description := "ColiftAlongEpimorphism using Colift" );
+
+##
+AddDerivationToCAP( InjectiveColift,
+                    [ [ Colift, 1 ] ],
+                    
+  function( alpha, beta )
+    
+    return Colift( alpha, beta );
+    
+end : Description := "InjectiveColift using Colift" );
+
 
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,
@@ -1209,6 +1231,49 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
     
 end );
 
+##
+AddDerivationToCAP( ComponentOfMorphismIntoDirectSum,
+                    
+  function( alpha, summands, nr )
+    
+    return PreCompose( alpha, ProjectionInFactorOfDirectSum( summands, nr ) );
+    
+end : Description := "ComponentOfMorphismIntoDirectSum by composing with the direct sum projection" );
+
+##
+AddDerivationToCAP( ComponentOfMorphismFromDirectSum,
+                    
+  function( alpha, summands, nr )
+    
+    return PreCompose( InjectionOfCofactorOfDirectSum( summands, nr ), alpha );
+    
+end : Description := "ComponentOfMorphismFromDirectSum by composing with the direct sum injection" );
+
+##
+AddDerivationToCAP( MorphismBetweenDirectSums,
+                    
+  function( S, morphism_matrix, T )
+    local diagram_direct_sum_source, diagram_direct_sum_range, test_diagram_product, test_diagram_coproduct;
+    
+    if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
+        return ZeroMorphism( S, T );
+    fi;
+    
+    diagram_direct_sum_source := List( morphism_matrix, row -> Source( row[1] ) );
+    
+    diagram_direct_sum_range := List( morphism_matrix[1], entry -> Range( entry ) );
+    
+    test_diagram_coproduct := [ ];
+    
+    for test_diagram_product in morphism_matrix do
+      
+      Add( test_diagram_coproduct, UniversalMorphismIntoDirectSumWithGivenDirectSum( diagram_direct_sum_range, test_diagram_product, T ) );
+      
+    od;
+    
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( diagram_direct_sum_source, test_diagram_coproduct, S );
+    
+end : Description := "MorphismBetweenDirectSums using universal morphisms of direct sums" );
 
 ###########################
 ##
@@ -1463,7 +1528,7 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
     
     mor2 := CallFuncList( UniversalMorphismIntoDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
-    return mor1 - mor2;
+    return SubtractionForMorphisms( mor1, mor2 );
     
 end : Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
 
@@ -1530,7 +1595,7 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     
     mor2 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
-    return mor1 - mor2;
+    return SubtractionForMorphisms( mor1, mor2 );
     
 end : Description := "DirectSumCodiagonalDifference using the operations defining this morphism" );
 
@@ -2012,6 +2077,26 @@ AddDerivationToCAP( Coimage,
     return Source( IsomorphismFromCoimageToCokernelOfKernel( morphism ) );
     
 end : Description := "Coimage as the source of IsomorphismFromCoimageToCokernelOfKernel" );
+
+##
+AddDerivationToCAP( SomeProjectiveObject,
+                    [ [ EpimorphismFromSomeProjectiveObject, 1 ] ],
+                    
+  function( obj )
+    
+    return Source( EpimorphismFromSomeProjectiveObject( obj ) );
+    
+end : Description := "SomeProjectiveObject as the source of EpimorphismFromSomeProjectiveObject" );
+
+##
+AddDerivationToCAP( SomeInjectiveObject,
+                    [ [ MonomorphismIntoSomeInjectiveObject, 1 ] ],
+                    
+  function( obj )
+    
+    return Range( MonomorphismIntoSomeInjectiveObject( obj ) );
+    
+end : Description := "SomeInjectiveObject as the range of MonomorphismIntoSomeInjectiveObject" );
 
 ##
 AddDerivationToCAP( Equalizer,

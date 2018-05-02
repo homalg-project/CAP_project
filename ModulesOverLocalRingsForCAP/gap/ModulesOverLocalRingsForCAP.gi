@@ -124,6 +124,6 @@ InstallMethod( IsRegular,
     
     minimal_resolution := MinimalFreeResolution( k );
     
-    return IsZero( minimal_resolution[ embedding_dimension + 1 ] );
+    return IsZeroForObjects( minimal_resolution[ embedding_dimension + 1 ] );
     
 end );

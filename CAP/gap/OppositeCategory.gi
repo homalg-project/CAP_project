@@ -42,7 +42,8 @@ BindGlobal( "TheTypeOfCapCategoryOppositeMorphisms",
 
 BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
   function( )
-    local recnames, current_recname, object_property_list, morphism_property_list, current_entry, current_rec;
+    local recnames, current_recname, object_property_list, morphism_property_list, current_entry, current_rec,
+          category_property_list, elem;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
@@ -64,6 +65,7 @@ BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
         else
             current_entry := [ current_rec.installation_name,
                                CAP_INTERNAL_METHOD_NAME_RECORD.( current_rec.dual_operation ).installation_name ];
+            current_entry := [ Concatenation( current_entry[ 1 ], " vs ", current_entry[ 2 ] ), current_entry ];
         fi;
         
         if CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).property_of = "object" then
@@ -77,6 +79,24 @@ BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
     InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, morphism_property_list );
     
     InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, object_property_list );
+    
+    category_property_list := [ ];
+    
+    for elem in CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST do
+        
+        if not IsBound( elem[1] ) then
+            continue;
+        fi;
+        
+        if not IsBound( elem[2] ) then
+            Add( category_property_list, [ elem[1], elem[1] ] );
+        else
+            Add( category_property_list, elem );
+        fi;
+        
+    od;
+    
+    InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY, category_property_list );
     
 end );
 
@@ -135,7 +155,11 @@ InstallMethod( Opposite,
     
     Add( Opposite( CapCategory( object ) ), opposite_object );
     
-    INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
+    if CapCategory( object )!.predicate_logic then
+        
+        INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
+        
+    fi;
     
     return opposite_object;
     
@@ -155,7 +179,11 @@ InstallMethod( Opposite,
     
     Add( Opposite( CapCategory( morphism ) ), opposite_morphism );
     
-    INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM( morphism );
+    if CapCategory( morphism )!.predicate_logic then
+        
+        INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM( morphism );
+        
+    fi;
     
     return opposite_morphism;
     
@@ -181,25 +209,49 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
     local recnames, current_recname, category_weight_list, dual_name, current_entry, func,
-          current_add, create_func;
+          current_add, create_func, create_func_with_category_input;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
     category_weight_list := category!.derivations_weight_list;
     
-    create_func := function( dual_name )
+    create_func := function( dual_name, arg... )
+        local list_operation;
+        
+        if IsBound( arg[1] ) and arg[1] = true then
+            
+            list_operation := Reversed;
+            
+        else
+            
+            list_operation := IdFunc;
+            
+        fi;
         
         return function( arg )
             local op_arg, result;
             
             op_arg := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
             
-            result := CallFuncList( ValueGlobal( dual_name ), op_arg );
+            result := CallFuncList( ValueGlobal( dual_name ), list_operation( op_arg ) );
             
             return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
             
         end;
         
+    end;
+    
+    create_func_with_category_input := function( dual_name )
+      
+      return function()
+            local result;
+            
+            result := CallFuncList( ValueGlobal( dual_name ), [ category ] );
+            
+            return CAP_INTERNAL_OPPOSITE_RECURSIVE( result );
+            
+        end;
+      
     end;
     
     for current_recname in recnames do
@@ -215,22 +267,36 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                                 "HorizontalPostCompose",
                                 "VerticalPreCompose",
                                 "VerticalPostCompose",
-                                "IdenticalTwoCell",
-                                "IsomorphismFromImageObjectToKernelOfCokernel" ] then
+                                "IdenticalTwoCell" ] then
             continue;
         fi;
         
-        if IsBound( current_entry.dual_operation ) then
-            dual_name := current_entry.dual_operation;
-        else
-            dual_name := current_recname;
+        ## Conservative
+        if not IsBound( current_entry.dual_operation ) then
+            continue;
         fi;
+        
+        dual_name := current_entry.dual_operation;
         
         if CurrentOperationWeight( category_weight_list, dual_name ) = infinity then
             continue;
         fi;
         
-        func := create_func( dual_name );
+        if current_recname in [ "ZeroObject",
+                              "InitialObject",
+                              "TerminalObject" ] then
+            
+            func := create_func_with_category_input( dual_name );
+            
+        elif current_entry.dual_arguments_reversed then
+            
+            func := create_func( dual_name, true );
+            
+        else
+            
+            func := create_func( dual_name );
+            
+        fi;
         
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
         
@@ -260,7 +326,11 @@ InstallMethod( Opposite,
     
     CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category );
     
-    INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
+    if category!.predicate_logic then
+        
+        INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
+        
+    fi;
     
     Finalize( opposite_category );
     
@@ -312,6 +382,19 @@ end );
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
                        
   function( category )
+    local entry;
+    
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "Opposite" ] ],
+                                                         [ category, [ Opposite, category ] ],
+                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY );
+    
+    AddToToDoList( entry );
+    
+    entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "Opposite" ] ],
+                                                         [ [ Opposite, category ], category ],
+                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY );
+    
+    AddToToDoList( entry );
     
 end );
 

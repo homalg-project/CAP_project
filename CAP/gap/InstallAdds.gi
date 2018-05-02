@@ -73,13 +73,13 @@ InstallGlobalFunction( CapInternalInstallAdd,
     if IsBound( record.redirect_function ) then
         redirect_function := record.redirect_function;
     else
-        redirect_function := function( arg ) return [ false ]; end;
+        redirect_function := false;
     fi;
     
     if IsBound( record.post_function ) then
         post_function := record.post_function;
     else
-        post_function := ReturnTrue;
+        post_function := false;
     fi;
     
     filter_list := record.filter_list;
@@ -239,7 +239,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
               function( arg )
                 local redirect_flag, pre_func_return, redirect_return, result, post_func_arguments;
                 
-                if not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false then
+                if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
                     redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
                     if redirect_return[ 1 ] = true then
                         if category!.predicate_logic then
@@ -266,10 +266,18 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result, category );
                 fi;
                 
-                ## Those three commands do not commute
-                add_function( category, result );
-                Add( arg, result );
-                CallFuncList( post_function, Concatenation( [ category ], arg ) );
+                ## Those five lines do not commute
+                if category!.add_primitive_output then
+                    add_function( category, result );
+                fi;
+                
+                if post_function <> false then
+                    
+                    Add( arg, result );
+                    
+                    CallFuncList( post_function, Concatenation( [ category ], arg ) );
+                    
+                fi;
                 
                 return result;
                 
@@ -472,6 +480,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     local recnames, current_recname, current_rec, arg_list, i, with_given_name, with_given_name_length,
           object_name, object_func;
     
+    CAP_INTERNAL_ENHANCE_NAME_RECORD( record );
+    
     recnames := RecNames( record );
     
     AddOperationsToDerivationGraph( CAP_INTERNAL_DERIVATION_GRAPH, recnames );
@@ -489,8 +499,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
             
         fi;
         
-        if not IsBound( current_rec.cache_name ) then current_rec.cache_name := current_recname; fi;
-        
         if IsBound( current_rec.redirect_function ) then
             
             current_rec.redirect_function := CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN( current_rec.redirect_function );
@@ -507,17 +515,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
         
         current_rec!.with_given_without_given_name_pair := fail;
         
-        if current_rec.filter_list[ 1 ] = IsList then
-            
-            arg_list := [ 1, Length( current_rec.filter_list ) ];
-            
-        else
-            
-            arg_list := [ 1 ];
-            
-        fi;
-        
-        current_rec!.universal_object_arg_list := arg_list;
+        arg_list := current_rec!.universal_object_arg_list;
         
         if current_rec!.is_with_given then
             

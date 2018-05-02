@@ -212,8 +212,8 @@ DeclareOperation( "AddIsInitial",
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments a
-DeclareOperation( "IsZeroForObjects", 
-                  [ IsCapCategoryObject ] );
+DeclareProperty( "IsZeroForObjects",
+                 IsCapCategoryObject );
 
 # @Description
 # The argument is an object $a$ of a category $\mathbf{C}$.
@@ -290,6 +290,23 @@ DeclareOperation( "Add",
 DeclareOperation( "AddObject",
                   [ IsCapCategory, IsObject ] );
 
+#! @Arguments category, filter
+#! @Description
+#!  The argument <A>filter</A> is used to create an object type for the
+#!  category <A>category</A>, which is then used in <C>ObjectifyObjectForCAPWithAttributes</C>
+#!  to objectify objects for this category.
+DeclareOperation( "AddObjectRepresentation",
+                  [ IsCapCategory, IsObject ] );
+
+#! @Arguments object, category, [attribute1, value1, ...]
+#! @Description
+#!  Objectifies the object <A>object</A> with the type created
+#!  for objects in the category <A>category</A>. The type
+#!  is created by passing a representation to <C>AddObjectRepresentation</C>.
+#!  Objects which are objectified using this method do not have to be passed
+#!  to the <C>AddObject</C> function.
+DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
+
 ###################################
 ##
 #! @Section Well-Definedness of Objects
@@ -325,9 +342,256 @@ DeclareOperation( "AddIsWellDefinedForObjects",
                   [ IsCapCategory, IsList ] );
 
 
+###################################
+##
+#! @Section Projectives
+##
+###################################
 
+#! For a given object $A$ in an abelian category having enough projectives,
+#! the following commands allow us to compute some projective object $P$
+#! together with an epimorphism $\pi: P \rightarrow A$.
 
+## Main Operations and Attributes
+#! @Description
+#! The argument is an object $A$.
+#! The output is some projective object $P$
+#! for which there exists an epimorphism $\pi: P \rightarrow A$.
+#! @Returns an object
+#! @Arguments A
+DeclareAttribute( "SomeProjectiveObject",
+                  IsCapCategoryObject );
 
+#! @Description
+#! The argument is an object $A$.
+#! The output is an epimorphism $\pi: P \rightarrow A$
+#! with $P$ a projective object that equals the output of $\mathrm{SomeProjectiveObject}(A)$.
+#! @Returns a morphism in $\mathrm{Hom}(P,A)$
+#! @Arguments A
+DeclareAttribute( "EpimorphismFromSomeProjectiveObject",
+                  IsCapCategoryObject );
 
+#! @Description
+#! The arguments are an object $A$
+#! and a projective object $P$ that equals the output of $\mathrm{SomeProjectiveObject}(A)$.
+#! The output is an epimorphism $\pi: P \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(P,A)$
+#! @Arguments A, P
+DeclareOperation( "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a morphism $\pi: P \rightarrow A$ with $P$ a projective, 
+#! and an epimorphism $\epsilon: B \rightarrow A$.
+#! The output is a morphism $\lambda: P \rightarrow B$ such that
+#! $\epsilon \circ \lambda = \pi$.
+#! @Returns a morphism in $\mathrm{Hom}(P,B)$
+#! @Arguments pi, epsilon
+DeclareOperation( "ProjectiveLift",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+## Add Operations
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SomeProjectiveObject</C>.
+#! $F: A \mapsto P$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeProjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeProjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>EpimorphismFromSomeProjectiveObject</C>.
+#! $F: A \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</C>.
+#! $F: (A,P) \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectiveLift</C>.
+#! The function $F$ maps a pair $(\pi, \epsilon)$ to a projective lift $\lambda$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectiveLift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectiveLift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectiveLift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectiveLift",
+                  [ IsCapCategory, IsList ] );
+
+###################################
+##
+#! @Section Injectives
+##
+###################################
+
+#! For a given object $A$ in an abelian category having enough injectives,
+#! the following commands allow us to compute some injective object $I$
+#! together with a monomorphism $\iota: A \rightarrow I$.
+
+## Main Operations and Attributes
+#! @Description
+#! The argument is an object $A$.
+#! The output is some injective object $I$
+#! for which there exists a monomorphism $\iota: A \rightarrow I$.
+#! @Returns an object
+#! @Arguments A
+DeclareAttribute( "SomeInjectiveObject",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The argument is an object $A$.
+#! The output is a monomorphism $\iota: A \rightarrow I$
+#! with $I$ an injective object that equals the output of $\mathrm{SomeInjectiveObject}(A)$.
+#! @Returns a morphism in $\mathrm{Hom}(I,A)$
+#! @Arguments A
+DeclareAttribute( "MonomorphismIntoSomeInjectiveObject",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The arguments are an object $A$
+#! and an injective object $I$ that equals the output of $\mathrm{SomeInjectiveObject}(A)$.
+#! The output is a monomorphism $\iota: A \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}(I,A)$
+#! @Arguments A, I
+DeclareOperation( "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+##
+#! @Description
+#! The arguments are a morphism $\iota: B \rightarrow A$
+#! and $\beta: B \rightarrow I$ where $I$ is an injective object.
+#! The output is a morphism $\lambda: A \rightarrow I$ such that
+#! $\lambda \circ \iota = \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(A,I)$
+#! @Arguments \iota, \beta
+DeclareOperation( "InjectiveColift",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+## Add Operations
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SomeInjectiveObject</C>.
+#! $F: A \mapsto I$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeInjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeInjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MonomorphismIntoSomeInjectiveObject</C>.
+#! $F: A \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</C>.
+#! $F: (A,I) \mapsto \pi$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectiveColift</C>.
+#! The function $F$ maps a pair $(\iota, \beta)$ to an injective colift $\lambda$ if it
+#! exists, and to <C>fail</C> otherwise.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectiveColift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectiveColift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectiveColift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectiveColift",
+                  [ IsCapCategory, IsList ] );

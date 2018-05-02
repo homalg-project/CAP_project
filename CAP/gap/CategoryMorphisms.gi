@@ -73,7 +73,27 @@ InstallMethod( Add,
                [ IsCapCategory, IsCapCategoryMorphism ],
                
   function( category, morphism )
-    local obj_filter, filter;
+    local filter;
+    
+    filter := MorphismFilter( category );
+    
+    if not filter( morphism ) then
+        
+        SetFilterObj( morphism, filter );
+        
+    fi;
+    
+    AddObject( category, Source( morphism ) );
+    
+    AddObject( category, Range( morphism ) );
+    
+    if category!.predicate_logic then
+        
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), category );
+        
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), category );
+      
+    fi;
     
     if HasCapCategory( morphism ) then
         
@@ -89,15 +109,16 @@ InstallMethod( Add,
         
     fi;
     
-    AddObject( category, Source( morphism ) );
-    
-    AddObject( category, Range( morphism ) );
-    
-    filter := MorphismFilter( category );
-    
-    SetFilterObj( morphism, filter );
-    
     SetCapCategory( morphism, category );
+    
+end );
+
+InstallMethod( AddMorphism,
+               [ IsCapCategory, IsCapCategoryMorphism ],
+               
+  function( category, morphism )
+    
+    Add( category, morphism );
     
 end );
 
@@ -113,28 +134,28 @@ InstallMethod( AddMorphism,
 end );
 
 ##
-InstallMethod( IsZeroForMorphisms,
+InstallMethod( IsZero,
                [ IsCapCategoryMorphism ],
                   
-IsZero );
+IsZeroForMorphisms );
 
 ##
-InstallMethod( AdditionForMorphisms,
+InstallMethod( \+,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-\+ );
+AdditionForMorphisms );
 
 ##
-InstallMethod( SubtractionForMorphisms,
+InstallMethod( \-,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-\- );
+SubtractionForMorphisms );
 
 ##
-InstallMethod( AdditiveInverseForMorphisms,
+InstallMethod( AdditiveInverse,
                   [ IsCapCategoryMorphism ],
                   
-AdditiveInverse );
+AdditiveInverseForMorphisms );
 
 ##
 InstallMethod( IsEqualForCacheForMorphisms,
@@ -142,6 +163,34 @@ InstallMethod( IsEqualForCacheForMorphisms,
                
   IsEqualForCache );
 
+
+InstallMethod( AddMorphismRepresentation,
+               [ IsCapCategory, IsObject ],
+               
+  function( category, representation )
+    
+    category!.morphism_representation := representation;
+    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep );
+    
+end );
+
+InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
+                       
+  function( arg_list... )
+    local category, morphism;
+    
+    category := arg_list[ 2 ];
+    arg_list[ 2 ] := category!.morphism_type;
+    Append( arg_list, [ CapCategory, category ] );
+    CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+    if category!.predicate_logic then
+        morphism := arg_list[ 1 ];
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), category );
+    fi;
+    
+end );
 
 ######################################
 ##
@@ -403,7 +452,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_PRINT,
                                              NoSepString := true ) ] ) );
     
     AddNodeToGraph( print_graph,
-                    rec( Conditions := "IsZero",
+                    rec( Conditions := "IsZeroForMorphisms",
                          PrintString := "zero",
                          Adjective := true ) );
     

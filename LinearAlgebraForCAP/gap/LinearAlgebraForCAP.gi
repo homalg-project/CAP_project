@@ -22,6 +22,12 @@ InstallMethod( MatrixCategory,
     
     category := CreateCapCategory( Concatenation( "Category of matrices over ", RingName( homalg_field ) ) );
     
+    DisableAddForCategoricalOperations( category );
+    
+    AddObjectRepresentation( category, IsVectorSpaceObject );
+    
+    AddMorphismRepresentation( category, IsVectorSpaceMorphism );
+    
     category!.field_for_matrix_category := homalg_field;
     
     SetIsAbelianCategory( category, true );
@@ -205,7 +211,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_field ),
                                         Range( zero_morphism ) );
           
-          end, [ , IsZero ] ],
+          end, [ , IsZeroForMorphisms ] ],
         
         [ function( zero_morphism, right_morphism )
             
@@ -213,7 +219,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), homalg_field ),
                                         Range( right_morphism ) );
           
-          end, [ IsZero, ] ],
+          end, [ IsZeroForMorphisms, ] ],
       ]
     
     );
@@ -394,6 +400,53 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
     end );
     
+    ##
+    AddComponentOfMorphismIntoDirectSum( category,
+      function( morphism, summands, nr )
+        local start, stop;
+        
+        start := Sum( List( summands{[ 1 .. nr-1 ]}, Dimension ) ) + 1;
+        
+        stop := (start - 1) + Dimension( summands[nr] );
+        
+        return VectorSpaceMorphism( Source( morphism ),
+                                    CertainColumns( UnderlyingMatrix( morphism ), [ start .. stop ] ),
+                                    summands[ nr ] );
+        
+    end );
+    
+    ##
+    AddComponentOfMorphismFromDirectSum( category,
+      function( morphism, summands, nr )
+        local start, stop;
+        
+        start := Sum( List( summands{[ 1 .. nr-1 ]}, Dimension ) ) + 1;
+        
+        stop := (start - 1) + Dimension( summands[nr] );
+        
+        return VectorSpaceMorphism( summands[nr],
+                                    CertainRows( UnderlyingMatrix( morphism ), [ start .. stop ] ),
+                                    Range( morphism ) );
+        
+    end );
+    
+    ##
+    AddMorphismBetweenDirectSums( category,
+      function( S, morphism_matrix, T )
+        local underlying_matrix;
+        
+        if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
+            return ZeroMorphism( S, T );
+        fi;
+        
+        underlying_matrix := List( morphism_matrix, row -> List( row, UnderlyingMatrix ) );
+        
+        underlying_matrix := List( underlying_matrix, row -> UnionOfColumns( row ) );
+        
+        return VectorSpaceMorphism( S, UnionOfRows( underlying_matrix ), T );
+        
+    end );
+    
     ## Basic Operations for an Abelian category
     ##
     AddKernelObject( category,
@@ -555,7 +608,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
             
           end,
           
-          [ IsZero, ] ],
+          [ IsZeroForObjects, ] ],
          
         [ function( object_1, object_2 )
             
@@ -563,7 +616,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
             
           end,
           
-          [ , IsZero ] ]
+          [ , IsZeroForObjects ] ]
       ]
     
     );
