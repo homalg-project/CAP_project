@@ -355,11 +355,11 @@ InstallMethod( Display,
     
     if Length( d ) > 1 then 
     
-    Print( "(graded, degrees of generators:", d, ")" );
+    Print( "(graded, degrees of generators:", d, ")\n" );
     
     else
     
-    Print( "(graded, degree of generator:", d, ")" );
+    Print( "(graded, degree of generator:", d, ")\n" );
 
     fi;
     
