@@ -494,15 +494,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     end );
     
     ## bias in the first projection (for the performance of the Freyd category)
-    AddProjectionInFirstFactorOfWeakBiFiberProduct( category,
-      function( morphism_1, morphism_2 )
-        local homalg_matrix, weak_cokernel_object;
-        
-        homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
-        
-        return CategoryOfRowsMorphism( CategoryOfRowsObject( NrRows( homalg_matrix ), category ), homalg_matrix, Source( morphism_1 ) );
-        
-    end );
+    ## this will become ProjectionInFirstFactorOfBiasedWeakBiFiberProduct
+#     AddProjectionInFirstFactorOfWeakBiFiberProduct( category,
+#       function( morphism_1, morphism_2 )
+#         local homalg_matrix, weak_cokernel_object;
+#         
+#         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
+#         
+#         return CategoryOfRowsMorphism( CategoryOfRowsObject( NrRows( homalg_matrix ), category ), homalg_matrix, Source( morphism_1 ) );
+#         
+#     end );
     
     ##
     AddLift( category,
@@ -522,15 +523,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     end );
     
     ## bias in the first injection (for the performance of the Freyd category)
-    AddInjectionOfFirstCofactorOfWeakBiPushout( category,
-        function( morphism_1, morphism_2 )
-        local homalg_matrix, weak_cokernel_object;
-        
-        homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
-        
-        return CategoryOfRowsMorphism( Range( morphism_1 ), homalg_matrix, CategoryOfRowsObject( NrColumns( homalg_matrix ), category ) );
-        
-    end );
+    ## this will become InjectionOfFirstCofactorOfBiasedWeakBiPushout
+#     AddInjectionOfFirstCofactorOfWeakBiPushout( category,
+#         function( morphism_1, morphism_2 )
+#         local homalg_matrix, weak_cokernel_object;
+#         
+#         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
+#         
+#         return CategoryOfRowsMorphism( Range( morphism_1 ), homalg_matrix, CategoryOfRowsObject( NrColumns( homalg_matrix ), category ) );
+#         
+#     end );
     
     ##
     AddColift( category,
