@@ -428,7 +428,7 @@ AddFinalDerivation( InjectionOfSecondCofactorOfWeakBiPushout,
     
     direct_sum_morphism := DirectSumMorphismToWeakBiPushout( alpha, beta );
     
-    return PreCompose( InjectionOfCofactorOfDirectSum( [ Source( alpha ), Source( beta ) ], 2 ), direct_sum_morphism );
+    return PreCompose( InjectionOfCofactorOfDirectSum( [ Range( alpha ), Range( beta ) ], 2 ), direct_sum_morphism );
     
 end : Description := "InjectionOfSecondCofactorOfWeakBiPushout as composition of second direct sum injection with DirectSumMorphismToWeakBiPushout" );
 
