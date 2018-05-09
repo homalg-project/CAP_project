@@ -890,3 +890,15 @@ DeclareOperation( "SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure"
 ##
 DeclareAttribute( "AsMorphismInFreeAbelianCategory",
                   IsCapCategoryMorphism );
+
+####################################
+##
+#! @Section Finitely presented functors
+##
+####################################
+
+##
+DeclareOperation( "CovariantExtAsFreydCategoryObject",
+                  [ IsCapCategoryObject, IsInt ] );
+
+

@@ -645,3 +645,33 @@ InstallMethod( AsMorphismInFreeAbelianCategory,
     
 end );
 
+###################################
+##
+## Finitely presented functors
+##
+####################################
+
+##
+InstallMethod( CovariantExtAsFreydCategoryObject,
+               [ IsCapCategoryObject, IsInt ],
+               
+  function( object, i )
+    local morphism, j;
+    
+    if i = 0 then
+        
+        return AsFreydCategoryObject( Opposite( object ) );
+        
+    fi;
+    
+    morphism := EpimorphismFromSomeProjectiveObject( object );
+    
+    for j in [ 2 .. i ] do
+        
+        morphism := EpimorphismFromSomeProjectiveObjectForKernelObject( morphism );
+        
+    od;
+    
+    return FreydCategoryObject( Opposite( KernelEmbedding( morphism ) ) );
+    
+end );

@@ -671,6 +671,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     end );
     
     ##
+    AddEpimorphismFromSomeProjectiveObject( category,
+                          
+      function( object )
+        local range;
+        
+        range := Range( RelationMorphism( object ) );
+        
+        return FreydCategoryMorphism(
+                 AsFreydCategoryObject( range ),
+                 IdentityMorphism( range ),
+                 object
+               );
+        
+    end );
+    
+    ##
     if IsCategoryWithHomomorphismStructure( underlying_category )
        and ForAll( [ "Lift",
                      "ProjectionInFactorOfDirectSum", 
