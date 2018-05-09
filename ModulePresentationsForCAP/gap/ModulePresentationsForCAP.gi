@@ -25,6 +25,8 @@ InstallMethod( LeftPresentations,
     category!.ring_for_representation_category := ring;
     
     SetIsAbelianCategory( category, true );
+
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
@@ -95,6 +97,8 @@ InstallMethod( RightPresentations,
     
     SetIsAbelianCategory( category, true );
     
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
+
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
@@ -1689,7 +1693,6 @@ end );
 InstallGlobalFunction( ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT, 
     function( category )
     
-    SetIsAbelianCategoryWithEnoughProjectives( category, true );
     AddEpimorphismFromSomeProjectiveObject( category, CoverByFreeModule );
     
 end );

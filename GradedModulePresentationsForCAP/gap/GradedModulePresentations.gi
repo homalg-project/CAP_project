@@ -24,6 +24,8 @@ InstallMethod( GradedLeftPresentations,
     
     SetIsAbelianCategory( category, true );
     
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
+
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
@@ -90,6 +92,8 @@ InstallMethod( GradedRightPresentations,
     category!.left := false;
     
     SetIsAbelianCategory( category, true );
+    
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
@@ -599,7 +603,6 @@ InstallGlobalFunction( ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT,
     
   function( category )
     
-    SetIsAbelianCategoryWithEnoughProjectives( category, true );
     AddEpimorphismFromSomeProjectiveObject( category, CoverByProjective );
     
 end );
