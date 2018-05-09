@@ -138,16 +138,16 @@ InstallMethod( LiftNaturalTransformationToGradedModulesRight,
 InstallMethod( NaturalTransformationFromIdentityToGradedDoubleDualLeft, 
                 [ IsHomalgGradedRing ], 
    function( ring )
-   local category, double_dual_functor, natural_tasformation;
+   local category, double_dual_functor, natural_transformation;
    
    category := GradedLeftPresentations( ring );
    
    double_dual_functor := FunctorDoubleGradedDualLeft( ring );
    
-   natural_tasformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
+   natural_transformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
                                                          IdentityFunctor( category ), double_dual_functor );
                                                          
-   AddNaturalTransformationFunction( natural_tasformation, 
+   AddNaturalTransformationFunction( natural_transformation, 
    
       function( id_object, object, double_dual_object )
         local A, representing_morphism, cokernel_projection_in_obj, double_dual_of_cokernel_projection, nat_mor; 
@@ -169,23 +169,23 @@ InstallMethod( NaturalTransformationFromIdentityToGradedDoubleDualLeft,
         
       end );
 
-   return natural_tasformation;
+   return natural_transformation;
 end );
 
 
 InstallMethod( NaturalTransformationFromIdentityToGradedDoubleDualRight, 
                  [ IsHomalgGradedRing ], 
     function( ring )
-    local category, double_dual_functor, natural_tasformation;
+    local category, double_dual_functor, natural_transformation;
     
     category := GradedRightPresentations( ring );
     
     double_dual_functor := FunctorDoubleGradedDualRight( ring );
     
-    natural_tasformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
+    natural_transformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
                                                           IdentityFunctor( category ), double_dual_functor );
                                                           
-    AddNaturalTransformationFunction( natural_tasformation, 
+    AddNaturalTransformationFunction( natural_transformation, 
     
        function( id_object, object, double_dual_object )
          local A, representing_morphism, cokernel_projection_in_obj, double_dual_of_cokernel_projection, nat_mor; 
@@ -208,5 +208,5 @@ InstallMethod( NaturalTransformationFromIdentityToGradedDoubleDualRight,
          
        end );
  
-    return natural_tasformation;
+    return natural_transformation;
 end );
