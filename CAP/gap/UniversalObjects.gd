@@ -2347,7 +2347,7 @@ DeclareOperation( "AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts"
 ##
 ####################################
 
-#! For a given list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$, 
+#! For a given list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
 #! an Equalizer of $D$ consists of three parts:
 #! * an object $E$,
 #! * a morphism $\iota: E \rightarrow A $ such that
@@ -2402,7 +2402,7 @@ DeclareOperation( "EmbeddingOfEqualizer",
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
 #! and a morphism for method selection.
-#! The Output is the equalizer embedding 
+#! The Output is the equalizer embedding
 #! $\iota: \mathrm{Equalizer}(D) \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), A )$
 #! @Arguments D,method_selection_morphism
@@ -2435,7 +2435,7 @@ DeclareOperation( "EmbeddingOfEqualizerWithGivenEqualizer",
 #! and a morphism for method selection.
 #! The output is the morphism
 #! $u( \tau ): T \rightarrow \mathrm{Equalizer}(D)$
-#! given by the universal property of the equalizer.				  
+#! given by the universal property of the equalizer.
 #! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{Equalizer}(D) )$
 #! @Arguments D, tau, method_selection_morphism
 DeclareOperation( "UniversalMorphismIntoEqualizer",
@@ -2479,7 +2479,7 @@ DeclareOperation( "AddEqualizer",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>EmbeddingOfEqualizer</C>.
-#! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \iota$				  
+#! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \iota$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEmbeddingOfEqualizer",
@@ -2550,7 +2550,7 @@ DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
 
 DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
                   [ IsCapCategory, IsList ] );
-				  
+
 #! @Description
 #! The argument is a list of triples of morphisms
 #! $L = ( (\beta_i: A \rightarrow B, \mu: A \rightarrow A', \beta_i': A' \rightarrow B')_{i = 1 \dots n} )$
@@ -2564,7 +2564,7 @@ DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
 DeclareOperation( "EqualizerFunctorial",
                   [ IsList ] );
 
-#! @Description	  
+#! @Description
 #! The arguments are an object $s = \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} )$,
 #! a list of triples of morphisms
 #! $L = ( (\beta_i: A \rightarrow B, \mu: A \rightarrow A', \beta_i': A' \rightarrow B')_{i = 1 \dots n} )$
@@ -3075,7 +3075,7 @@ DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
 #! This is a convenience method.
 #! There are two different ways to use this method:
 #! * The argument is a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
-#! * The arguments are morphisms $\beta_1: B \rightarrow A, \dots, \beta_n: B \rightarrow A$. 
+#! * The arguments are morphisms $\beta_1: B \rightarrow A, \dots, \beta_n: B \rightarrow A$.
 #! The output is the coequalizer $\mathrm{Coequalizer}(D)$.
 #! @Returns an object
 DeclareGlobalFunction( "Coequalizer" );
