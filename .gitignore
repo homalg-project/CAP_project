@@ -1,1 +1,5 @@
 _site
+Gemfile
+Gemfile.lock
+docker-compose.yml
+.jekyll-metadata

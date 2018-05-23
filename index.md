@@ -7,7 +7,7 @@ layout: default
 This is the home of the CAP project. It consists of several GAP packages
 build on top of its main package, CAP. A good way to start is having a look
 at the [manual](CAPManual.pdf), which offers extensive tutorials and a 
-good discription of CAP. Also, you can look at the packages references for detailed command descriptions.
+good description of CAP. Also, you can look at the packages' references for detailed command descriptions.
 
 ## Packages in the CAP project
 
@@ -18,34 +18,25 @@ good discription of CAP. Also, you can look at the packages references for detai
 
 ## Dependencies
 
-This project requires GAP version {{site.data.packageCAP.GAP}}
-For more information see the packages
+This project requires GAP version {{site.data.CAP.GAP}}.
+For more information about the dependencies take a look at the individual packages' sites.
 
 
 ## Installation
 
-### Docker
-
-You can also use the [Docker](http://www.docker.com) image from the SPP Computeralgebra, [sppcomputeralgebra/sppdocker](https://hub.docker.com/r/sppcomputeralgebra/sppdocker).
-It contains a proper installed version of GAP and the CAP project.
-
-To use the image, please install Docker, then start a container via
-`docker run -it sppcomputeralgebra/sppdocker`.
-
-
 ### Source
 
-To install CAP, start by installing the latest version (4.7.9) of GAP from [gap-system.org](http://www.gap-system.org). Please
+To install CAP, start by installing the latest version of GAP from [gap-system.org](http://www.gap-system.org). Please
 refer to the installation description there for details. Since CAP has fairly new dependencies, all earlier versions of GAP will
 not work.
 
-Then download the tarballs of the CAP project packages into GAPs pkg folder (usually inside the main GAP directory).
+Then download the tarballs of the CAP project packages into GAP's pkg folder (usually inside the main GAP directory).
 
-Alternatively download the sources of
+_Alternatively_, clone or download the repository
 
-* [CAP_project](http://www.github.com/homalg_project/CAP_project)
+* [CAP_project](https://github.com/homalg-project/CAP_project)
 
-or clone the repositories via [git](http://git-scm.com).
+via [git](http://git-scm.com) and put it into GAP's pkg folder.
 
 Now you should be able to load CAP via LoadPackage( "CAP" );.
 
