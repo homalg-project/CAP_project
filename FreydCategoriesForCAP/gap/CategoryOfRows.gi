@@ -493,17 +493,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
-    ## bias in the first projection (for the performance of the Freyd category)
-    ## this will become ProjectionInFirstFactorOfBiasedWeakBiFiberProduct
-#     AddProjectionInFirstFactorOfWeakBiFiberProduct( category,
-#       function( morphism_1, morphism_2 )
-#         local homalg_matrix, weak_cokernel_object;
-#         
-#         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
-#         
-#         return CategoryOfRowsMorphism( CategoryOfRowsObject( NrRows( homalg_matrix ), category ), homalg_matrix, Source( morphism_1 ) );
-#         
-#     end );
+    ##
+    AddProjectionOfBiasedWeakFiberProduct( category,
+      function( morphism_1, morphism_2 )
+        local homalg_matrix, weak_cokernel_object;
+        
+        homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
+        
+        return CategoryOfRowsMorphism( CategoryOfRowsObject( NrRows( homalg_matrix ), category ), homalg_matrix, Source( morphism_1 ) );
+        
+    end );
     
     ##
     AddLift( category,

@@ -72,10 +72,16 @@ Rows_S := CategoryOfRows( S );
 S3 := CategoryOfRowsObject( 3, Rows_S );
 S1 := CategoryOfRowsObject( 1, Rows_S );
 mor := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,y,z]", 3, 1, S ), S1 );
+biased_w := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,0,0,0,x,0,0,0,x]", 3, 3, S ), S3 );
+biased_h := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x*y, x*z, y^2]", 3, 3, S ), S3 );
+BiasedWeakFiberProduct( biased_h, biased_w );
+ProjectionOfBiasedWeakFiberProduct( biased_h, biased_w );
+
 k := FreydCategoryObject( mor );
 w := EpimorphismFromSomeProjectiveObjectForKernelObject( UniversalMorphismIntoZeroObject( k ) );
 k := KernelEmbedding( w );
 ColiftAlongEpimorphism( CokernelProjection( k ), CokernelProjection( k ) );
+
 
 ## Homomorphism structures
 a := InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( gamma );
