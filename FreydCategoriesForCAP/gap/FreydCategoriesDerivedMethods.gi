@@ -143,6 +143,16 @@ AddDerivationToCAP( WeakBiFiberProduct,
 end : Description := "WeakBiFiberProduct as the source of ProjectionInSecondFactorOfWeakBiFiberProduct" );
 
 ##
+AddDerivationToCAP( BiasedWeakFiberProduct,
+                    
+  function( alpha, beta )
+    
+    return Source( ProjectionOfBiasedWeakFiberProduct( alpha, beta ) );
+    
+end : Description := "BiasedWeakFiberProduct as the source of ProjectionOfBiasedWeakFiberProduct" );
+
+
+##
 AddDerivationToCAP( WeakBiPushout,
                     
   function( alpha, beta )
@@ -159,6 +169,16 @@ AddDerivationToCAP( WeakBiPushout,
     return Range( InjectionOfSecondCofactorOfWeakBiPushout( alpha, beta ) );
     
 end : Description := "WeakBiPushout as the range of InjectionOfSecondCofactorOfWeakBiPushout" );
+
+##
+AddDerivationToCAP( BiasedWeakPushout,
+                    
+  function( alpha, beta )
+    
+    return Range( InjectionOfBiasedWeakPushout( alpha, beta ) );
+    
+end : Description := "BiasedWeakPushout as the range of InjectionOfBiasedWeakPushout" );
+
 
 ## abelian derivations
 
