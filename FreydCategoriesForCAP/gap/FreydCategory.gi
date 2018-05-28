@@ -6,28 +6,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsFreydCategoryObjectRep",
-                       IsFreydCategoryObject and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfFreydCategoryObjects",
-        NewFamily( "TheFamilyOfFreydCategoryObjects" ) );
-
-BindGlobal( "TheTypeOfFreydCategoryObjects",
-        NewType( TheFamilyOfFreydCategoryObjects,
-                IsFreydCategoryObjectRep ) );
-
-DeclareRepresentation( "IsFreydCategoryMorphismRep",
-                       IsFreydCategoryMorphism and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfFreydCategoryMorphisms",
-        NewFamily( "TheFamilyOfFreydCategoryMorphisms" ) );
-
-BindGlobal( "TheTypeOfFreydCategoryMorphisms",
-        NewType( TheFamilyOfFreydCategoryMorphisms,
-                IsFreydCategoryMorphismRep ) );
-
 ####################################
 ##
 ## Constructors
@@ -81,6 +59,12 @@ InstallMethod( FreydCategory,
         
     fi;
     
+    DisableAddForCategoricalOperations( freyd_category );
+
+    AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
+    
+    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
+    
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
     
     Finalize( freyd_category );
@@ -111,14 +95,16 @@ InstallMethod( FreydCategoryObject,
                [ IsCapCategoryMorphism ],
                
   function( relation_morphism )
-    local freyd_category_object;
+    local freyd_category_object, category;
     
     freyd_category_object := rec( );
     
-    ObjectifyWithAttributes( freyd_category_object, TheTypeOfFreydCategoryObjects,
-                             RelationMorphism, relation_morphism );
+    category := FreydCategory( CapCategory( relation_morphism ) );
+
+    ObjectifyObjectForCAPWithAttributes( freyd_category_object, category,
+                                         RelationMorphism, relation_morphism );
     
-    Add( FreydCategory( CapCategory( relation_morphism ) ), freyd_category_object );
+    Add( category, freyd_category_object );
     
     return freyd_category_object;
     
@@ -143,7 +129,7 @@ InstallMethod( FreydCategoryMorphism,
                [ IsFreydCategoryObject, IsCapCategoryMorphism, IsFreydCategoryObject ],
                
   function( source, morphism_datum, range )
-    local freyd_category_morphism;
+    local freyd_category_morphism, category;
     
     if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( source ) ) ) then
         
@@ -165,13 +151,16 @@ InstallMethod( FreydCategoryMorphism,
     
     freyd_category_morphism := rec( );
     
-    ObjectifyWithAttributes( freyd_category_morphism, TheTypeOfFreydCategoryMorphisms,
+    category :=  CapCategory( source );
+
+    ObjectifyMorphismForCAPWithAttributes( 
+                             freyd_category_morphism, category,
                              Source, source,
                              Range, range,
                              MorphismDatum, morphism_datum
     );
 
-    Add( CapCategory( source ), freyd_category_morphism );
+    Add( category, freyd_category_morphism );
     
     return freyd_category_morphism;
     
