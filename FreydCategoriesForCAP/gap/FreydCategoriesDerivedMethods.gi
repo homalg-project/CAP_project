@@ -72,6 +72,17 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoWeakBiFiberProduct,
 end : Description := "UniversalMorphismIntoWeakBiFiberProduct using Lift" );
 
 ##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoBiasedWeakFiberProduct,
+                                 
+  function( alpha, beta, test_mor )
+    
+    return Lift( test_mor,
+                 ProjectionOfBiasedWeakFiberProduct( alpha, beta ) );
+    
+end : Description := "UniversalMorphismIntoBiasedWeakFiberProduct using Lift" );
+
+
+##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromWeakBiPushout,
                                  
   function( alpha, beta, test_mor_1, test_mor_2 )
@@ -85,6 +96,16 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromWeakBiPushout,
                    UniversalMorphismFromDirectSum( [ test_mor_1, test_mor_2 ] ) );
     
 end : Description := "UniversalMorphismFromWeakBiPushout using Colift" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromBiasedWeakPushout,
+                                 
+  function( alpha, beta, test_mor )
+    
+    return Colift( InjectionOfBiasedWeakPushout( alpha, beta ),
+                   test_mor );
+    
+end : Description := "UniversalMorphismFromBiasedWeakPushout using Colift" );
 
 ##
 AddWithGivenDerivationPairToCAP( WeakKernelLift,

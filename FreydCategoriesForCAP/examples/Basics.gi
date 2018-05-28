@@ -76,6 +76,12 @@ biased_w := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,0,0,0,x,0,0,0,x]", 3, 
 biased_h := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x*y, x*z, y^2]", 3, 3, S ), S3 );
 BiasedWeakFiberProduct( biased_h, biased_w );
 ProjectionOfBiasedWeakFiberProduct( biased_h, biased_w );
+IsCongruentForMorphisms(
+   PreCompose( UniversalMorphismIntoBiasedWeakFiberProduct( biased_h, biased_w, biased_h ), ProjectionOfBiasedWeakFiberProduct( biased_h, biased_w ) ),
+   biased_h
+);
+#true
+
 
 k := FreydCategoryObject( mor );
 w := EpimorphismFromSomeProjectiveObjectForKernelObject( UniversalMorphismIntoZeroObject( k ) );
