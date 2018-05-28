@@ -53,6 +53,33 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_WEAK_BI_FIBER_PRODUCT_PREFUNCTION
 );
 
 ##
+InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_BIASED_WEAK_FIBER_PRODUCT_PREFUNCTION,
+  function( morphism_1, morphism_2, test_morphism, arg... )
+    local current_value;
+    
+    current_value := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    
+    if current_value = fail then
+        return [ false, "cannot decide whether the first two morphisms have equal ranges" ];
+    elif current_value = false then
+        return [ false, "the first two morphisms must have equal ranges" ];
+    fi;
+    
+    current_value := IsEqualForObjects( Source( morphism_1 ), Range( test_morphism ) );
+    
+    if current_value = fail then
+        return [ false, "cannot decide whether the range of the test morphism is equal to the source of the first morphism " ];
+    elif current_value = false then
+        return [ false, "the range of the test morphism must equal the source of the first morphism" ];
+    fi;
+    
+    return [ true ];
+    
+  end
+);
+
+
+##
 InstallGlobalFunction( WEAK_BI_PUSHOUT_PREFUNCTION,
   function( morphism_1, morphism_2, arg... )
     local current_value;
@@ -96,6 +123,31 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_FROM_WEAK_BI_PUSHOUT_PREFUNCTION,
   end
 );
 
+##
+InstallGlobalFunction( UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION,
+  function( morphism_1, morphism_2, test_morphism, arg... )
+    local current_value;
+    
+    current_value := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
+    
+    if current_value = fail then
+        return [ false, "cannot decide whether the first two morphisms have equal sources" ];
+    elif current_value = false then
+        return [ false, "the first two morphisms must have equal sources" ];
+    fi;
+    
+    current_value := IsEqualForObjects( Range( morphism_1 ), Source( test_morphism ) );
+    
+    if current_value = fail then
+        return [ false, "cannot decide whether the range of the first morphism equals the source of the test morphism" ];
+    elif current_value = false then
+        return [ false, "the range of the first morphism must equal the source of the test morphism" ];
+    fi;
+    
+    return [ true ];
+    
+  end
+);
 
 InstallValue( FREYD_CATEGORIES_METHOD_NAME_RECORD, rec(
 
@@ -399,6 +451,135 @@ DirectSumMorphismToWeakBiPushout := rec(
   return_type := "morphism",
   dual_operation := "WeakBiFiberProductMorphismToDirectSum",
   no_with_given := true ),
+
+## biased weak fiber product
+## FIXME: create universal_type substitute
+
+BiasedWeakFiberProduct := rec(
+  installation_name := "BiasedWeakFiberProduct",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "BiasedWeakFiberProduct",
+  universal_type := "Limit",
+  dual_operation := "BiasedWeakPushout",
+  pre_function := WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "object",
+  is_merely_set_theoretic := true ),
+
+ProjectionOfBiasedWeakFiberProduct := rec(
+  installation_name := "ProjectionOfBiasedWeakFiberProduct",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "a", "b" ], [ "P", "a_source" ] ],
+  number_of_diagram_arguments := 2,
+  cache_name := "ProjectionOfBiasedWeakFiberProduct",
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  dual_operation := "InjectionOfBiasedWeakPushout",
+  pre_function := WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct := rec(
+  installation_name := "ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+  filter_list := [ "morphism", "morphism", "object" ],
+  io_type := [ [ "a", "b", "P" ], [ "P", "a_source" ] ],
+  number_of_diagram_arguments := 2,
+  cache_name := "ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  dual_operation := "InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
+  pre_function := WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+UniversalMorphismIntoBiasedWeakFiberProduct := rec(
+  installation_name := "UniversalMorphismIntoBiasedWeakFiberProduct",
+  filter_list := [ "morphism", "morphism", "morphism" ],
+  io_type := [ [ "a", "b", "t" ], [ "t_source", "P" ] ],
+  number_of_diagram_arguments := 2,
+  cache_name := "UniversalMorphismIntoBiasedWeakFiberProduct",
+  universal_object_position := "Range",
+  universal_type := "Limit",
+  dual_operation := "UniversalMorphismFromBiasedWeakPushout",
+  pre_function := UNIVERSAL_MORPHISM_INTO_BIASED_WEAK_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct := rec(
+  installation_name := "UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+  filter_list := [ "morphism", "morphism", "morphism", "object" ],
+  io_type := [ [ "a", "b", "t", "P", ], [ "t_source", "P" ] ],
+  number_of_diagram_arguments := 2,
+  cache_name := "UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+  universal_type := "Limit",
+  dual_operation := "UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
+  pre_function := UNIVERSAL_MORPHISM_INTO_BIASED_WEAK_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+## biased weak pushout
+
+## Weak pushouts
+
+BiasedWeakPushout := rec(
+  installation_name := "BiasedWeakPushout",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "BiasedWeakPushout",
+  universal_type := "Colimit",
+  dual_operation := "BiasedWeakFiberProduct",
+  pre_function := WEAK_BI_PUSHOUT_PREFUNCTION,
+  return_type := "object",
+  is_merely_set_theoretic := true ),
+
+InjectionOfBiasedWeakPushout := rec(
+  installation_name := "InjectionOfBiasedWeakPushout",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "a", "b" ], [ "a_range", "P" ] ],
+  number_of_diagram_arguments := 2,
+  cache_name := "InjectionOfBiasedWeakPushout",
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  dual_operation := "ProjectionOfBiasedWeakFiberProduct",
+  pre_function := WEAK_BI_PUSHOUT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout := rec(
+  installation_name := "InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
+  filter_list := [ "morphism", "morphism", "object" ],
+  io_type := [ [ "a", "b", "P" ], [ "a_range", "P" ] ],
+  number_of_diagram_arguments := 2,
+  cache_name := "InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  dual_operation := "ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+  pre_function := WEAK_BI_PUSHOUT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+UniversalMorphismFromBiasedWeakPushout := rec(
+  installation_name := "UniversalMorphismFromBiasedWeakPushout",
+  filter_list := [ "morphism", "morphism", "morphism" ],
+  io_type := [ [ "a", "b", "t", "s" ], [ "P", "t_range" ] ],
+  number_of_diagram_arguments := 2,
+  cache_name := "UniversalMorphismFromBiasedWeakPushout",
+  universal_object_position := "Source",
+  universal_type := "Colimit",
+  dual_operation := "UniversalMorphismIntoBiasedWeakFiberProduct",
+  pre_function := UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout := rec(
+  installation_name := "UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
+  filter_list := [ "morphism", "morphism", "morphism", "object" ],
+  io_type := [ [ "a", "b", "t", "P", ], [ "P", "t_range" ] ],
+  number_of_diagram_arguments := 2,
+  cache_name := "UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
+  universal_type := "Colimit",
+  dual_operation := "UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+  pre_function := UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 ## an abelian construction
 SomeProjectiveObjectForKernelObject := rec(
