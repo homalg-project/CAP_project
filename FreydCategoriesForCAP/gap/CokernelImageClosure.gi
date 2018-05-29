@@ -187,6 +187,26 @@ InstallMethod( RelationOfGeneratorMorphism,
     
 end );
 
+##
+InstallMethod( WitnessForBeingCongruentToZero,
+               [ IsCokernelImageClosureMorphism ],
+
+  function( morphism )
+    local range;
+    
+    range := Range( morphism );
+
+    return
+    Lift(
+        PreCompose(
+            MorphismDatum( morphism ),
+            GeneratorMorphism( range )
+        ),
+        RelationMorphism( range )
+    );
+
+end );
+
 ####################################
 ##
 ## Basic operations
@@ -260,6 +280,41 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
         
     end );
 
+    ## Equality Basic Operations for Objects and Morphisms
+    ##
+    AddIsEqualForObjects( category,
+      function( object_1, object_2 )
+
+        return IsEqualForMorphismsOnMor( RelationMorphism( object_1 ), RelationMorphism( object_2 ) ) 
+               and 
+               IsEqualForMorphismsOnMor( GeneratorMorphism( object_1 ), GeneratorMorphism( object_2) );
+
+    end );
+    
+    ##
+    AddIsEqualForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        
+        return IsEqualForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        
+    end );
+    
+    ##
+    AddIsCongruentForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        
+        if WitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) ) = fail then
+            
+            return false;
+            
+        else
+            
+            return true;
+            
+        fi;
+        
+    end );
+
     AddIdentityMorphism( category,
       function( object )
 
@@ -271,6 +326,117 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
     end );
 
+    ##
+    AddPreCompose( category,
+      
+      function( morphism_1, morphism_2 )
+        local composition;
+        
+        composition := PreCompose( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        
+        composition := CokernelImageClosureMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
+        
+        return composition;
+        
+    end );
+
+    ##
+    AddAdditionForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        local addition;
+        
+        addition := CokernelImageClosureMorphism(
+                      Source( morphism_1 ),
+                      AdditionForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
+                      Range( morphism_1 )
+                    );
+        
+        return addition;
+        
+    end );
+
+    ##
+    AddSubtractionForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        local substraction;
+        
+        substraction := CokernelImageClosureMorphism(
+                      Source( morphism_1 ),
+                      SubtractionForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
+                      Range( morphism_1 )
+                    );
+        
+        return substraction;
+        
+    end );
+    
+    ##
+    AddAdditiveInverseForMorphisms( category,
+      function( morphism )
+        local additive_inverse;
+        
+        additive_inverse := CokernelImageClosureMorphism(
+                              Source( morphism ),
+                              AdditiveInverseForMorphisms( MorphismDatum( morphism ) ),
+                              Range( morphism )
+                            );
+        
+        return additive_inverse;
+        
+    end );
+    
+    ##
+    AddZeroMorphism( category,
+      function( source, range )
+        local zero_morphism;
+        
+        zero_morphism := CokernelImageClosureMorphism(
+                           source,
+                           ZeroMorphism( Source( GeneratorMorphism( source ) ), Source( GeneratorMorphism( range ) ) ),
+                           range
+                         );
+        
+        return zero_morphism;
+        
+    end );
+    
+    ##
+    AddZeroObject( category,
+      function( )
+        
+        return AsCokernelImageClosureObject( ZeroObject( underlying_category ) );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
+      function( sink, zero_object )
+        local universal_morphism;
+        
+        universal_morphism := CokernelImageClosureMorphism(
+                                sink,
+                                UniversalMorphismIntoZeroObject( Source( GeneratorMorphism( sink ) ) ),
+                                zero_object
+                              );
+        
+        return universal_morphism;
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
+      function( source, zero_object )
+        local universal_morphism;
+        
+        universal_morphism := CokernelImageClosureMorphism(
+                                zero_object,
+                                UniversalMorphismFromZeroObject( Source( GeneratorMorphism( source ) ) ),
+                                source
+                              );
+        
+        return universal_morphism;
+        
+    end );
 end );
 
 ####################################
