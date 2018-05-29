@@ -1,0 +1,309 @@
+#############################################################################
+##
+##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+##
+##  Copyright 2018, Sebastian Posur, University of Siegen
+##
+#############################################################################
+
+####################################
+##
+## Constructors
+##
+####################################
+
+##
+InstallMethod( CokernelImageClosure,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local cokernel_image_closure;
+    
+    if not HasIsAdditiveCategory( underlying_category ) then
+        
+        Error( "The given category should be additive" );
+        
+    fi;
+    
+    ## for IsCongruentForMorphisms to be correct
+    if not CanCompute( underlying_category, "Lift" ) then
+        
+        Error( "The given category should be able to compute Lift" );
+        
+    fi;
+    
+    if not CanCompute( underlying_category, "SubtractionForMorphisms" ) then
+        
+        Error( "The given category should be able to compute SubtractionForMorphisms" );
+        
+    fi;
+    
+    if not CanCompute( underlying_category, "PreCompose" ) then
+        
+        Error( "The given category should be able to compute PreCompose" );
+        
+    fi;
+    
+    cokernel_image_closure := CreateCapCategory( Concatenation( "Cokernel image closure( ", Name( underlying_category ), " )" ) );
+    
+    SetFilterObj( cokernel_image_closure, IsCokernelImageClosure );
+    
+    SetIsAdditiveCategory( cokernel_image_closure, true );
+    
+    SetUnderlyingCategory( cokernel_image_closure, underlying_category );
+    
+    ## Freyd's theorem generalized to cokernel image closures
+    if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
+        
+        SetIsAbelianCategory( cokernel_image_closure, true );
+        
+    fi;
+    
+    DisableAddForCategoricalOperations( cokernel_image_closure );
+
+    AddObjectRepresentation( cokernel_image_closure, IsCokernelImageClosureObject );
+    
+    AddMorphismRepresentation( cokernel_image_closure, IsCokernelImageClosureMorphism );
+    
+    INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE( cokernel_image_closure );
+    
+    Finalize( cokernel_image_closure );
+    
+    return cokernel_image_closure;
+    
+end );
+
+##
+InstallMethod( CokernelImageClosureObject,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( generator_morphism, relation_morphism )
+    local cokernel_image_object, category;
+    
+    if not IsEqualForObjects( Range( generator_morphism ), Range( relation_morphism ) ) then
+        
+        Error ( "the ranges of the given morphisms have to be equal" );
+        
+    fi;
+
+    cokernel_image_object := rec( );
+    
+    category := CokernelImageClosure( CapCategory( relation_morphism ) );
+
+    ObjectifyObjectForCAPWithAttributes( cokernel_image_object, category,
+                                         GeneratorMorphism, generator_morphism,
+                                         RelationMorphism, relation_morphism );
+    
+    Add( category, cokernel_image_object );
+    
+    return cokernel_image_object;
+    
+end );
+
+##
+InstallMethod( AsCokernelImageClosureObject,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    local projective_object;
+    
+    projective_object := CokernelImageClosureObject( IdentityMorphism( object ), UniversalMorphismFromZeroObject( object ) );
+    # check if this is still correct
+    # SetIsProjective( projective_object, true );
+    
+    return projective_object;
+    
+end );
+
+##
+InstallMethod( CokernelImageClosureMorphism,
+               [ IsCokernelImageClosureObject, IsCapCategoryMorphism, IsCokernelImageClosureObject ],
+               
+  function( source, morphism_datum, range )
+    local cokernel_image_closure_morphism, category;
+    
+    if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( source ) ) ) then
+        
+        Error( "The underlying category of the given morphism datum is not identical to the underlying category of the given source" );
+        
+    fi;
+    
+    if not IsEqualForObjects( Source( morphism_datum ), Source( GeneratorMorphism( source ) ) ) then
+        
+        Error( "The source of the given morphism datum is not equal to the source of the generator morphism of the given source object" );
+        
+    fi;
+    
+    if not IsEqualForObjects( Range( morphism_datum ), Source( GeneratorMorphism( range ) ) ) then
+        
+        Error( "The range of the given morphism datum is not equal to the source of the generator morphism of the given range object" );
+        
+    fi;
+    
+    cokernel_image_closure_morphism := rec( );
+    
+    category :=  CapCategory( source );
+
+    ObjectifyMorphismForCAPWithAttributes( 
+                             cokernel_image_closure_morphism, category,
+                             Source, source,
+                             Range, range,
+                             MorphismDatum, morphism_datum
+    );
+
+    Add( category, cokernel_image_closure_morphism );
+    
+    return cokernel_image_closure_morphism;
+    
+end );
+
+##
+InstallMethod( AsCokernelImageClosureMorphism,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    
+    return CokernelImageClosureMorphism(
+             AsCokernelImageClosureObject( Source( morphism ) ),
+             morphism,
+             AsCokernelImageClosureObject( Range( morphism ) )
+           );
+    
+end );
+
+##
+InstallMethod( RelationOfGeneratorMorphism, 
+               [ IsCokernelImageClosureObject ],
+               
+  function( object ) 
+    
+    if not CanCompute( UnderlyingCategory( CapCategory( object ) ), "ProjectionOfBiasedWeakFiberProduct" ) then
+
+        Error( "cannot decide well-definedness since the underlying category does not have the projection of biased weak fiber products" );
+
+    fi;
+
+    return ProjectionOfBiasedWeakFiberProduct( GeneratorMorphism( object ), RelationMorphism( object ) );
+    
+end );
+
+####################################
+##
+## Basic operations
+##
+####################################
+
+InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
+  
+  function( category )
+    local underlying_category;
+
+    underlying_category := UnderlyingCategory( category );
+    
+    ##
+    AddIsEqualForCacheForObjects( category,
+      IsIdenticalObj );
+    
+    ##
+    AddIsEqualForCacheForMorphisms( category,
+      IsIdenticalObj );
+
+    ## Well-defined for objects and morphisms
+    ##
+    AddIsWellDefinedForObjects( category,
+      function( object )
+        local relation_morphism, generator_morphism;
+
+        relation_morphism := RelationMorphism( object );
+
+        generator_morphism := GeneratorMorphism( object );
+        
+        if not IsWellDefined( relation_morphism ) 
+           or not IsWellDefined( generator_morphism ) then
+            
+            return false;
+            
+        fi;
+        
+        if not IsEqualForObjects( Range( generator_morphism ), Range( relation_morphism ) ) then
+
+            return false;
+
+        fi;
+
+        # all tests passed, so it is well-defined
+        return true;
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForMorphisms( category,
+      function( morphism )
+        local alpha, lift;
+        
+        alpha := PreCompose( [ 
+            RelationOfGeneratorMorphism( Source( morphism ) ),
+            MorphismDatum( morphism ),
+            GeneratorMorphism( Range( morphism ) )
+        ] );
+        
+        lift := Lift( alpha, RelationMorphism( Range( morphism ) ) );
+
+        if lift = fail then
+            
+            return false;
+
+        fi;
+        
+        # all tests passed, so it is well-defined
+        return true;
+        
+    end );
+
+    AddIdentityMorphism( category,
+      function( object )
+
+        return CokernelImageClosureMorphism(
+            object,
+            IdentityMorphism( Source( GeneratorMorphism( object ) ) ),
+            object
+        );
+
+    end );
+
+end );
+
+####################################
+##
+## View
+##
+####################################
+
+##
+InstallMethod( Display,
+               [ IsCokernelImageClosureObject ],
+               
+  function( object )
+    
+    Print( "Generator morphism:\n" );
+    
+    Display( GeneratorMorphism( object ) );
+    
+    Print( "------------------\n" );
+    Print( "Relation morphism:\n" );
+    
+    Display( RelationMorphism( object ) );
+
+end );
+
+##
+InstallMethod( Display,
+               [ IsCokernelImageClosureMorphism ],
+               
+  function( cokernel_image_closure_morphism )
+    
+    Print( "Morphism datum:\n" );
+    
+    Display( MorphismDatum( cokernel_image_closure_morphism ) );
+    
+end );
