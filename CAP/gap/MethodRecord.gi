@@ -2439,6 +2439,20 @@ DirectSumFunctorialWithGivenDirectSums := rec(
   dual_operation := "DirectSumFunctorialWithGivenDirectSums",
   dual_arguments_reversed := true ),
 
+AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts := rec(
+  installation_name := "AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
+  filter_list := [ "object", "object", "object", "object", "object" ],
+  io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
+  cache_name := "AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
+  return_type := "morphism" ),
+
+AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts := rec(
+  installation_name := "AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
+  filter_list := [ "object", "object", "object", "object", "object" ],
+  io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
+  cache_name := "AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
+  return_type := "morphism" ),
+
 EqualizerFunctorialWithGivenEqualizers := rec(
   installation_name := "EqualizerFunctorialWithGivenEqualizers",
   filter_list := [ "object", IsList, "object" ],

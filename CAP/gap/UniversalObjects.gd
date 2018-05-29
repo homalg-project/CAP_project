@@ -2328,6 +2328,26 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 DeclareOperation( "AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts</C>.
+#! $F: ( a \times (b \times c), a, b, c, (a \times b) \times c ) \mapsto \alpha_{a,(b,c)}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsList ] );
+
+
 ##
 #! @Description
 #! The arguments are an object $s = (a \times b) \times c$,
@@ -2338,6 +2358,26 @@ DeclareOperation( "AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts"
 #! @Arguments s, a, b, c, r
 DeclareOperation( "AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts</C>.
+#! $F: (( a \times b ) \times c, a, b, c, a \times (b \times c )) \mapsto \alpha_{(a,b),c}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Chapter Universal Objects
 
