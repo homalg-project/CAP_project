@@ -437,6 +437,82 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
         return universal_morphism;
         
     end );
+
+    ##
+    AddDirectSum( category,
+      function( object_list )
+        
+        return CokernelImageClosureObject( 
+                DirectSumFunctorial( List( object_list, GeneratorMorphism ) ),
+                DirectSumFunctorial( List( object_list, RelationMorphism ) )
+        );
+        
+    end );
+    
+    ##
+    AddDirectSumFunctorialWithGivenDirectSums( category,
+      function( direct_sum_source, diagram, direct_sum_range )
+        
+        return CokernelImageClosureMorphism(
+                    direct_sum_source,
+                    DirectSumFunctorial( List( diagram, MorphismDatum ) ),
+                    direct_sum_range 
+        );
+        
+    end );
+    
+    ##
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
+      function( object_list, projection_number, direct_sum_object )
+        
+        return CokernelImageClosureMorphism( 
+                direct_sum_object,
+                ProjectionInFactorOfDirectSum( List( object_list, obj -> Source( GeneratorMorphism( obj ) ) ), projection_number ),
+                object_list[projection_number]
+        );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
+      function( diagram, source, direct_sum_object )
+        
+        return CokernelImageClosureMorphism(
+                Source( source[1] ),
+                UniversalMorphismIntoDirectSum(
+                    List( diagram, obj -> Source( GeneratorMorphism( obj ) ) ),
+                    List( source, mor -> MorphismDatum( mor ) ) 
+                ),
+                direct_sum_object
+        );
+        
+    end );
+    
+    ##
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
+      function( object_list, injection_number, direct_sum_object )
+        
+        return CokernelImageClosureMorphism(
+                object_list[injection_number],
+                InjectionOfCofactorOfDirectSum( List( object_list, obj -> Source( GeneratorMorphism( obj ) ) ), injection_number ),
+                direct_sum_object
+        );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
+      function( diagram, sink, direct_sum_object )
+        
+        return CokernelImageClosureMorphism(
+                direct_sum_object,
+                UniversalMorphismFromDirectSum( List( diagram, obj -> Source( GeneratorMorphism( obj ) ) ),
+                List( sink, mor -> MorphismDatum( mor ) ) ),
+                Range( sink[1] )
+        );
+        
+    end );
+
 end );
 
 ####################################

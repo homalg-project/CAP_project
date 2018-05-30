@@ -27,6 +27,13 @@ ZeroObject( cat );
 ZeroMorphism( Source( nu ), Source( mu ) );
 UniversalMorphismIntoZeroObject( Source( nu ) );
 UniversalMorphismFromZeroObject( Source( nu ) );
-# true
+
+S := Source( mu );
+DirectSum( [S, S, S ] );
+DirectSumFunctorial( [ nu2, nu ] );
+UniversalMorphismIntoDirectSum( [ nu, nu ] );
+UniversalMorphismFromDirectSum( [ nu, nu ] );
+ProjectionInFactorOfDirectSum( [ S, S, S ], 2 );
+InjectionOfCofactorOfDirectSum( [ S, S, S, S ], 4 );
 
 #! @EndExample
