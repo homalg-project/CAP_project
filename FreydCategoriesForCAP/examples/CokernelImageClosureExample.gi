@@ -36,4 +36,5 @@ UniversalMorphismFromDirectSum( [ nu, nu ] );
 ProjectionInFactorOfDirectSum( [ S, S, S ], 2 );
 InjectionOfCofactorOfDirectSum( [ S, S, S, S ], 4 );
 
+CokernelColift( nu, CokernelProjection( nu ) );
 #! @EndExample

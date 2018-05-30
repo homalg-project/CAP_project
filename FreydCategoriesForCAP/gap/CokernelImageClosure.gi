@@ -513,6 +513,52 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
         
     end );
 
+    ##
+    AddCokernelProjection( category,
+                     
+      function( morphism )
+        local range, relation_morphism, generator_morphism, cokernel_object, cokernel_projection;
+        
+        range := Range( morphism );
+        
+        relation_morphism := RelationMorphism( range );
+
+        generator_morphism := GeneratorMorphism( range );
+        
+        cokernel_object := 
+            CokernelImageClosureObject(
+                GeneratorMorphism( range ),
+                UniversalMorphismFromDirectSum( [ 
+                    relation_morphism,
+                    PreCompose( MorphismDatum( morphism ), generator_morphism ) 
+                ] ) 
+            );
+        
+        cokernel_projection := 
+            CokernelImageClosureMorphism(
+                range,
+                IdentityMorphism( Source( generator_morphism ) ),
+                cokernel_object 
+            );
+        
+        return cokernel_projection;
+        
+    end );
+    
+    ##
+    AddCokernelColiftWithGivenCokernelObject( category,
+      
+      function( morphism, test_morphism, cokernel_object )
+        
+        return 
+            CokernelImageClosureMorphism( 
+                cokernel_object,
+                MorphismDatum( test_morphism ),
+                Range( test_morphism ) 
+            );
+        
+    end );
+
 end );
 
 ####################################
