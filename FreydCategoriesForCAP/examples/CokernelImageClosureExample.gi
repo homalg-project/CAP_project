@@ -48,4 +48,9 @@ IsCongruentForMorphisms( nu, PreCompose( CoastrictionToImage( nu ), u ) );
 IsCongruentForMorphisms( u, ImageEmbedding( nu ) );
 # true
 
+kernel := KernelObject( mu );
+emb := KernelEmbedding( mu );
+p := PreCompose( EpimorphismFromSomeProjectiveObject( kernel ), KernelEmbedding( mu ) );
+KernelLift( mu, p );
+LiftAlongMonomorphism( emb, p );
 #! @EndExample

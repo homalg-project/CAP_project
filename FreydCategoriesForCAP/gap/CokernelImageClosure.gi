@@ -621,6 +621,115 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
         
     end );
 
+    if ForAll( [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ], f -> CanCompute( underlying_category, f ) ) then
+
+        ##
+        AddKernelEmbedding( category,
+          
+          function( morphism )
+            local range, projection, source, kernel;
+
+            range := Range( morphism );
+
+            projection := 
+                ProjectionOfBiasedWeakFiberProduct(
+                    PreCompose( MorphismDatum( morphism ), GeneratorMorphism( range ) ),
+                    RelationMorphism( range )
+                );
+            
+            source := Source( morphism );
+
+            kernel := CokernelImageClosureObject(
+                PreCompose( projection, GeneratorMorphism( source ) ),
+                RelationMorphism( source )
+            );
+
+            return
+                CokernelImageClosureMorphism(
+                    kernel,
+                    projection,
+                    source
+                );
+        end );
+
+        ##
+        AddKernelLiftWithGivenKernelObject( category,
+          
+          function( morphism, test_morphism, kernel )
+            local range, u;
+
+            range := Range( morphism );
+
+            u := UniversalMorphismIntoBiasedWeakFiberProduct(
+                PreCompose( MorphismDatum( morphism ), GeneratorMorphism( range ) ),
+                RelationMorphism( range ),
+                MorphismDatum( test_morphism )
+            );
+            
+            return
+                CokernelImageClosureMorphism(
+                    Source( test_morphism ),
+                    u,
+                    kernel
+                );
+        end );
+
+        ##
+        AddEpimorphismFromSomeProjectiveObject( category,
+          
+          function( object ) 
+            local proj_object;
+
+            proj_object := Source( GeneratorMorphism( object ) );
+
+            return
+                CokernelImageClosureMorphism(
+                    AsCokernelImageClosureObject( proj_object ),
+                    IdentityMorphism( proj_object ),
+                    object
+                );
+        end );
+
+        ##
+        AddLiftAlongMonomorphism( category,
+          
+          function( alpha, tau )
+            local A,B, gamma_B, rho_B, lift, Au, RBu;
+
+            A := Source( alpha );
+
+            B := Range( alpha );
+
+            gamma_B := GeneratorMorphism( B );
+
+            rho_B := RelationMorphism( B );
+
+            lift := Lift(
+                PreCompose( MorphismDatum( tau ), gamma_B ),
+                UniversalMorphismFromDirectSum(
+                    [ PreCompose( MorphismDatum( alpha ), gamma_B ), rho_B ]
+                )
+            );
+
+            Au := Source( GeneratorMorphism( A ) );
+
+            RBu := Source( RelationMorphism( B ) );
+
+            lift := ComponentOfMorphismIntoDirectSum( lift, [ Au, RBu ], 1 );
+
+            return
+                CokernelImageClosureMorphism(
+                    Source( tau ),
+                    lift,
+                    A
+                );
+            
+        end );
+    
+    fi;
+
+    
+
 
 end );
 
