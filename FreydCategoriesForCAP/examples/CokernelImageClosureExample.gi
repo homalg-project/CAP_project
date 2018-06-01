@@ -37,4 +37,15 @@ ProjectionInFactorOfDirectSum( [ S, S, S ], 2 );
 InjectionOfCofactorOfDirectSum( [ S, S, S, S ], 4 );
 
 CokernelColift( nu, CokernelProjection( nu ) );
+
+IsCongruentForMorphisms( nu, PreCompose( CoastrictionToImage( nu ), ImageEmbedding( nu ) ) );
+# true
+u := UniversalMorphismFromImage( nu, [ nu, IdentityMorphism( Range( nu ) ) ] );
+IsWellDefined( u );
+# true
+IsCongruentForMorphisms( nu, PreCompose( CoastrictionToImage( nu ), u ) );
+# true
+IsCongruentForMorphisms( u, ImageEmbedding( nu ) );
+# true
+
 #! @EndExample

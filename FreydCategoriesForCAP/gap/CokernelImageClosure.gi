@@ -558,6 +558,69 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
             );
         
     end );
+    
+    ##
+    AddImageObject( category,
+      
+      function( morphism )
+        local range;
+
+        range := Range( morphism );
+
+        return 
+            CokernelImageClosureObject( 
+                PreCompose( MorphismDatum( morphism ), GeneratorMorphism( range ) ),
+                RelationMorphism( range )
+            );
+    end );
+
+    ##
+    AddImageEmbeddingWithGivenImageObject( category,
+      
+      function( morphism, image )
+        
+        return
+            CokernelImageClosureMorphism(
+                image,
+                MorphismDatum( morphism ),
+                Range( morphism )
+            );
+    end );
+
+    ##
+    AddCoastrictionToImageWithGivenImageObject( category,
+      
+      function( morphism, image )
+        local source;
+
+        source := Source( morphism );
+
+        return
+            CokernelImageClosureMorphism(
+                source,
+                IdentityMorphism( Source( GeneratorMorphism( source ) ) ),
+                image
+            );
+        
+    end );
+
+    ##
+    AddUniversalMorphismFromImageWithGivenImageObject( category,
+      
+      function( morphism, test_factorization, image )
+        local tau;
+
+        tau := test_factorization[1];
+
+        return
+            CokernelImageClosureMorphism(
+                image,
+                MorphismDatum( tau ),
+                Range( tau )
+            );
+        
+    end );
+
 
 end );
 
