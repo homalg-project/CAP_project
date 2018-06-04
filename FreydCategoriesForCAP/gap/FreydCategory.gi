@@ -545,7 +545,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
-    if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
+    if ForAll( [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ], f -> CanCompute( underlying_category, f ) ) then
         
         ## Kernels: kernels in Freyd categories are based on weak fiber products in the underlying category and thus more expensive
         AddKernelEmbedding( category,
@@ -560,9 +560,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             rho_A := RelationMorphism( Source( morphism ) );
             
             ## We use the bias in the first projection of weak fiber products
-            projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, rho_B );
+            projection_1 := ProjectionOfBiasedWeakFiberProduct( alpha, rho_B );
             
-            projection_2 := ProjectionInFirstFactorOfWeakBiFiberProduct( projection_1, rho_A );
+            projection_2 := ProjectionOfBiasedWeakFiberProduct( projection_1, rho_A );
             
             kernel_object := FreydCategoryObject( projection_2 );
             
@@ -578,9 +578,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
           function( morphism, test_morphism, kernel_object )
             local sigma, alpha, rho_B, tau, morphism_datum;
             
-            ## witness computation
-            sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, morphism ) );
-            
             ## for notational convenience
             alpha := MorphismDatum( morphism );
             
@@ -588,7 +585,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             tau := MorphismDatum( test_morphism );
             
-            morphism_datum := UniversalMorphismIntoWeakBiFiberProduct( alpha, rho_B, tau, sigma );
+            morphism_datum := UniversalMorphismIntoBiasedWeakFiberProduct( alpha, rho_B, tau );
             
             return FreydCategoryMorphism( Source( test_morphism ),
                                           morphism_datum,
@@ -649,7 +646,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         rho_B := RelationMorphism( Range( morphism ) );
         
         ## We use the bias in the first projection of weak fiber products
-        projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, rho_B );
+        projection_1 := ProjectionOfBiasedWeakFiberProduct( alpha, rho_B );
         
         projective_object := AsFreydCategoryObject( Source( projection_1 ) );
         
@@ -825,8 +822,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                      "SubtractionForMorphisms",
                      "PreCompose",
                      "Lift",
-                     "WeakKernelEmbedding",
-                     "WeakKernelLift"
+                     "ProjectionOfBiasedWeakFiberProduct",
+                     "UniversalMorphismIntoBiasedWeakFiberProduct"
                       ],
                    f -> CanCompute( underlying_category, f ) )  then
            
