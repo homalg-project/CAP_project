@@ -80,7 +80,12 @@ IsCongruentForMorphisms(
    PreCompose( UniversalMorphismIntoBiasedWeakFiberProduct( biased_h, biased_w, biased_h ), ProjectionOfBiasedWeakFiberProduct( biased_h, biased_w ) ),
    biased_h
 );
-#true
+# true
+IsCongruentForMorphisms(
+  PreCompose( InjectionOfBiasedWeakPushout( biased_h, biased_w ), UniversalMorphismFromBiasedWeakPushout( biased_h, biased_w, biased_h )),
+  biased_h
+);
+# true
 
 
 k := FreydCategoryObject( mor );
