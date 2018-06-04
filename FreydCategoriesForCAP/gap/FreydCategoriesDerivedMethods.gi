@@ -491,3 +491,28 @@ AddFinalDerivation( UniversalMorphismFromWeakBiPushout,
     
 end : Description := "UniversalMorphismFromWeakBiPushout using WeakCokernelColift" );
 
+
+## Final derivation for biased weak fiber products and biased weak pushouts.
+## Decision: we use a derivation from weak fiber products and weak pushouts
+
+##
+AddFinalDerivation( ProjectionOfBiasedWeakFiberProduct,
+                    [ [ ProjectionInFirstFactorOfWeakBiFiberProduct, 1 ] ],
+                    [ BiasedWeakFiberProduct ],
+                    
+  function( alpha, beta )
+    
+    return ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, beta );
+
+end : Description := "ProjectionOfBiasedWeakFiberProduct using ProjectionInFirstFactorOfWeakBiFiberProduct" );
+
+##
+AddFinalDerivation( InjectionOfBiasedWeakPushout,
+                    [ [ InjectionOfFirstCofactorOfWeakBiPushout, 1 ] ],
+                    [ BiasedWeakPushout ],
+                    
+  function( alpha, beta )
+    
+    return InjectionOfFirstCofactorOfWeakBiPushout( alpha, beta );
+
+end : Description := "ProjectioInjectionOfBiasedWeakPushoutnOfBiasedWeakFiberProduct using InjectionOfFirstCofactorOfWeakBiPushout" );
