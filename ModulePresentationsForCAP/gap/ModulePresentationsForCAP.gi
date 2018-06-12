@@ -25,6 +25,8 @@ InstallMethod( LeftPresentations,
     category!.ring_for_representation_category := ring;
     
     SetIsAbelianCategory( category, true );
+
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
@@ -95,6 +97,8 @@ InstallMethod( RightPresentations,
     
     SetIsAbelianCategory( category, true );
     
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
+
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
@@ -191,7 +195,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_LIFT_AND_COLIFT_LEFT( category );
     
-    if IsCommutative( category!.ring_for_representation_category ) then
+    ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
+    
+    if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT( category );
       
@@ -249,6 +255,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
     ADD_LIFT_AND_COLIFT_RIGHT( category );
+    
+    ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
     
     if IsCommutative( category!.ring_for_representation_category ) then
       
@@ -1681,6 +1689,14 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
     
 end );
 
+##
+InstallGlobalFunction( ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT, 
+    function( category )
+    
+    AddEpimorphismFromSomeProjectiveObject( category, CoverByFreeModule );
+    
+end );
+
 InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT, 
 
   function( category )
@@ -1688,7 +1704,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
 
   homalg_ring := category!.ring_for_representation_category;
   
-  if IsCommutative( homalg_ring ) then 
+  if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then 
   
   AddLift( category, 
     
@@ -1718,17 +1734,10 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
     s := NrColumns( P );
     
-    if v = 0 or s = 0 then
-       
-       XX := HomalgZeroMatrix( s, v, homalg_ring );
-       
-       return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
-       
-    fi;
-    
     N := UnderlyingMatrix( Range(  morphism_1 ) );
     
-    if NrColumns( N ) = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
+    # NrColumns( N ) = 0 implies coker(N)=0 and  s = 0 implies coker(P)=0, hence morphism_1 is zero, and the zero morphism can always be lifted. 
+    if NrColumns( N ) = 0 or s = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
     
     A := UnderlyingMatrix( morphism_1 );
     
@@ -1814,18 +1823,11 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
     s := NrColumns( I );
     
-    if v = 0 or s = 0 then 
-    
-       XX := HomalgZeroMatrix( v, s, homalg_ring );
-       
-       return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
-       
-    fi;
-    
     N := UnderlyingMatrix( Source( morphism_1 ) );
     
-    if NrColumns( N ) = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
-    
+    # NrColumns( N ) = 0 implies coker(N)=0 and  s = 0 implies coker(I)=0, hence morphism_2 is zero, and the zero morphism can always be colifted.
+    if NrColumns( N ) = 0 or s = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
+
     B := UnderlyingMatrix( morphism_1 );
     
     A := UnderlyingMatrix( morphism_2 );
@@ -1921,19 +1923,10 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     s := NrColumns( Pt );
     
-    if v = 0 or s = 0 then
-       
-       XX := Involution( HomalgZeroMatrix( s, v, homalg_ring ) );
-       
-       return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
-       
-    fi;
-    
     Nt := Involution( UnderlyingMatrix( Range(  morphism_1 ) ) );
     
-    if NrRows( Nt ) = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
+    if NrRows( Nt ) = 0 or s = 0 then return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); fi;
 
-    
     At := Involution( UnderlyingMatrix( morphism_1 ) );
     
     Bt := Involution( UnderlyingMatrix( morphism_2 ) );
@@ -2002,19 +1995,11 @@ end );
     v := NrColumns( Mt );
        
     s := NrColumns( It );
-    
-    if v = 0 or s = 0 then 
-    
-       XX := Involution( HomalgZeroMatrix( v, s, homalg_ring ) );
-       
-       return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
-       
-    fi;
-    
+        
     Nt := Involution( UnderlyingMatrix( Source( morphism_1 ) ) );
     
-    if NrRows( Nt ) = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
-
+    if NrRows( Nt ) = 0 or s = 0 then return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) ); fi;
+    
     Bt := Involution( UnderlyingMatrix( morphism_1 ) );
     
     At := Involution( UnderlyingMatrix( morphism_2 ) );

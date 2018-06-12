@@ -126,3 +126,87 @@ InstallMethod( LiftNaturalTransformationToGradedModulesRight,
                [ IsCapNaturalTransformation ],
                
   i -> CAP_INTERNAL_LiftNaturalTransformationToGradedModuleNatTrans( i, false ) );
+
+  
+########################################################
+##
+## Identity to double dual left Hom_R(_, R) functor
+##
+########################################################
+
+##
+InstallMethod( NaturalTransformationFromIdentityToGradedDoubleDualLeft, 
+                [ IsHomalgGradedRing ], 
+   function( ring )
+   local category, double_dual_functor, natural_transformation;
+   
+   category := GradedLeftPresentations( ring );
+   
+   double_dual_functor := FunctorDoubleGradedDualLeft( ring );
+   
+   natural_transformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
+                                                         IdentityFunctor( category ), double_dual_functor );
+                                                         
+   AddNaturalTransformationFunction( natural_transformation, 
+   
+      function( id_object, object, double_dual_object )
+        local A, representing_morphism, cokernel_projection_in_obj, double_dual_of_cokernel_projection, nat_mor; 
+        
+        A := UnderlyingMatrix( UnderlyingPresentationObject( object ) );
+        
+        representing_morphism := GradedPresentationMorphism( 
+                    GradedFreeLeftPresentation( NrRows( A ), ring, NonTrivialDegreePerRow( A, GeneratorDegrees( object ) ) ), 
+                    A, 
+                    GradedFreeLeftPresentation( NrColumns( A ), ring, GeneratorDegrees( object ) ) );
+        
+        cokernel_projection_in_obj := CokernelProjection( representing_morphism );
+        
+        double_dual_of_cokernel_projection := ApplyFunctor( double_dual_functor, cokernel_projection_in_obj );
+        
+        nat_mor := CokernelColift(  representing_morphism, double_dual_of_cokernel_projection );
+            
+        return nat_mor;
+        
+      end );
+
+   return natural_transformation;
+end );
+
+
+InstallMethod( NaturalTransformationFromIdentityToGradedDoubleDualRight, 
+                 [ IsHomalgGradedRing ], 
+    function( ring )
+    local category, double_dual_functor, natural_transformation;
+    
+    category := GradedRightPresentations( ring );
+    
+    double_dual_functor := FunctorDoubleGradedDualRight( ring );
+    
+    natural_transformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
+                                                          IdentityFunctor( category ), double_dual_functor );
+                                                          
+    AddNaturalTransformationFunction( natural_transformation, 
+    
+       function( id_object, object, double_dual_object )
+         local A, representing_morphism, cokernel_projection_in_obj, double_dual_of_cokernel_projection, nat_mor; 
+         
+         A := UnderlyingMatrix( object );
+         
+         representing_morphism := GradedPresentationMorphism( 
+                                  GradedFreeRightPresentation( NrColumns( A ), ring, NonTrivialDegreePerColumn( A, GeneratorDegrees( object ) ) ),
+                                  A, 
+                                  GradedFreeRightPresentation( NrRows( A ), ring, GeneratorDegrees( object ) ) 
+                                  );
+         
+         cokernel_projection_in_obj := CokernelProjection( representing_morphism );
+         
+         double_dual_of_cokernel_projection := ApplyFunctor( double_dual_functor, cokernel_projection_in_obj );
+         
+         nat_mor := CokernelColift(  representing_morphism, double_dual_of_cokernel_projection );
+             
+         return nat_mor;
+         
+       end );
+ 
+    return natural_transformation;
+end );

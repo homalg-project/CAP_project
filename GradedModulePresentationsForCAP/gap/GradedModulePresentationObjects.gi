@@ -335,3 +335,32 @@ end );
 ##
 ####################################
 
+InstallMethod( Display,
+               [ IsGradedLeftOrRightPresentation ],
+               # FIXME: Fix the rank in GenericView and delete this afterwards
+               9999,
+               
+  function( object )
+    local d;
+    
+    Display( UnderlyingMatrix( object ) );
+    
+    Print( "\n" );
+    
+    Print( String( object ) );
+    
+    Print( "\n\n" );
+    
+    d := GeneratorDegrees( object );
+    
+    if Length( d ) > 1 then 
+    
+    Print( "(graded, degrees of generators:", d, ")\n" );
+    
+    else
+    
+    Print( "(graded, degree of generator:", d, ")\n" );
+
+    fi;
+    
+end );

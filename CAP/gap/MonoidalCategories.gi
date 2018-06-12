@@ -663,7 +663,7 @@ InstallMethod( CoevaluationMorphism,
     
     return CoevaluationMorphismWithGivenRange( 
              object_1, object_2,
-             InternalHomOnObjects( object_1, TensorProductOnObjects( object_2, object_1 ) )
+             InternalHomOnObjects( object_2, TensorProductOnObjects( object_1, object_2 ) )
            );
     
 end );

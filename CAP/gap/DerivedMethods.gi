@@ -678,6 +678,17 @@ end : CategoryFilter := IsAbelianCategory,
       Description := "IsIsomorphism by deciding if it is a mono and an epi" );
 
 ##
+AddDerivationToCAP( IsIsomorphism,
+                    [ [ IsSplitMonomorphism, 1 ],
+                      [ IsSplitEpimorphism, 1 ] ],
+                 
+  function( morphism )
+    
+    return IsSplitMonomorphism( morphism ) and IsSplitEpimorphism( morphism );
+    
+end : Description := "IsIsomorphism by deciding if it is a split mono and a split epi" );
+
+##
 AddDerivationToCAP( IsEqualAsSubobjects,
                     [ [ IsDominating, 2 ] ],
                

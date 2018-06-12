@@ -749,3 +749,209 @@ InstallMethod( PurityFiltrationBySpectralSequence,
     return combined_image_embeddings[ Length( combined_image_embeddings ) ];
     
 end );
+
+##
+InstallMethod( FunctorGradedDualLeft,
+                [ IsHomalgGradedRing ], 
+   function( ring )
+     local category, functor;
+     
+     category := GradedLeftPresentations( ring );
+     
+     functor := CapFunctor( Concatenation( "Hom(-,R) functor for ", Name( category ) ), Opposite( category ), category );
+     
+     AddObjectFunction( functor, 
+     
+        function( obj )
+        local object, mat, N, M, mor; 
+        
+        object := Opposite( obj );
+        
+        mat := UnderlyingMatrix( UnderlyingPresentationObject( object ) );
+           
+        N := GradedFreeLeftPresentation( NrColumns( mat ), ring, -GeneratorDegrees( object ) );
+           
+        M := GradedFreeLeftPresentation( NrRows( mat ), ring, -NonTrivialDegreePerRow( mat, GeneratorDegrees( object ) ) );
+           
+        mor := GradedPresentationMorphism( N, Involution( mat ), M );
+           
+        return KernelObject( mor );
+           
+        end );
+           
+    AddMorphismFunction( functor, 
+    
+        function( new_source, morphism_, new_range )
+        local morphism, matrix_of_morphism, mor1, mor2, mor, mor3, matrix_of_the_source, matrix_of_the_range, g;
+           
+        morphism := Opposite( morphism_ );
+        
+        matrix_of_morphism := UnderlyingMatrix( UnderlyingPresentationMorphism( morphism ) );
+           
+           
+        mor2 := GradedPresentationMorphism( 
+                    GradedFreeLeftPresentation( NrColumns( matrix_of_morphism ), ring, -GeneratorDegrees( Range( morphism ) ) ),
+                    Involution( matrix_of_morphism ), 
+                    GradedFreeLeftPresentation( NrRows( matrix_of_morphism ), ring, -GeneratorDegrees( Source( morphism ) ) ) );
+        
+        matrix_of_the_range := UnderlyingMatrix( UnderlyingPresentationObject( Range( morphism ) ) );
+        
+        g := GradedPresentationMorphism( 
+                    GradedFreeLeftPresentation( NrColumns( matrix_of_the_range ), ring, -GeneratorDegrees( Range( morphism ) ) ),
+                    Involution( matrix_of_the_range ), 
+                    GradedFreeLeftPresentation( NrRows( matrix_of_the_range ), ring, 
+                                    -NonTrivialDegreePerRow( matrix_of_the_range, GeneratorDegrees( Range( morphism ) ) ) ) );
+                                    
+        mor1 := KernelEmbedding( g );
+           
+        mor := PreCompose( mor1, mor2 );
+           
+        matrix_of_the_source := UnderlyingMatrix( Source( morphism ) );
+           
+        mor3 := GradedPresentationMorphism( 
+                    GradedFreeLeftPresentation( NrColumns( matrix_of_the_source ), ring, -GeneratorDegrees( Source( morphism ) ) ),
+                    Involution( matrix_of_the_source ), 
+                    GradedFreeLeftPresentation( NrRows( matrix_of_the_source ), ring, 
+                                    -NonTrivialDegreePerRow( matrix_of_the_source, GeneratorDegrees( Source( morphism ) ) ) ) );
+            
+        return KernelLift( mor3, mor );
+           
+        end );
+           
+   return functor;
+   
+end );
+
+##
+InstallMethod( FunctorGradedDualRight,
+                 [ IsHomalgGradedRing ], 
+    function( ring )
+      local category, functor;
+      
+      category := GradedRightPresentations( ring );
+      
+      functor := CapFunctor( Concatenation( "Hom(-,R) functor for ", Name( category ) ), Opposite( category ), category );
+      
+      AddObjectFunction( functor, 
+      
+            function( obj )
+            local object, mat, N, M, mor; 
+            
+            object := Opposite( obj );
+            
+            mat := UnderlyingMatrix( UnderlyingPresentationObject( object ) );
+            
+            N := GradedFreeRightPresentation( NrRows( mat ), ring, -GeneratorDegrees( object ) );
+            
+            M := GradedFreeRightPresentation( NrColumns( mat ), ring, -NonTrivialDegreePerColumn( mat, GeneratorDegrees( object ) ) );
+            
+            mor := GradedPresentationMorphism( N, Involution( mat ), M );
+            
+            return KernelObject( mor );
+            
+            end );
+            
+     AddMorphismFunction( functor, 
+     
+            function( new_source, morphism_, new_range )
+            local morphism, matrix_of_morphism, mor1, mor2, mor, mor3, matrix_of_the_source, matrix_of_the_range, g;
+            
+            morphism := Opposite( morphism_ );
+            
+            matrix_of_morphism := UnderlyingMatrix( UnderlyingPresentationMorphism( morphism ) );
+            
+            mor2 := GradedPresentationMorphism( GradedFreeRightPresentation( NrRows( matrix_of_morphism ), ring, -GeneratorDegrees( Range( morphism ) ) )
+                                          , Involution( matrix_of_morphism ), 
+                                            GradedFreeRightPresentation( NrColumns( matrix_of_morphism ), ring, -GeneratorDegrees( Source( morphism ) ) ) );
+            
+            matrix_of_the_range := UnderlyingMatrix( UnderlyingPresentationObject( Range( morphism ) ) );
+            
+            g := GradedPresentationMorphism( GradedFreeRightPresentation( NrRows( matrix_of_the_range ), ring, -GeneratorDegrees( Range( morphism )))
+                                          , Involution( matrix_of_the_range ), 
+                 GradedFreeRightPresentation( NrColumns( matrix_of_the_range ), ring, 
+                                            -NonTrivialDegreePerColumn( matrix_of_the_range, GeneratorDegrees( Range( morphism ) ) ) ) ); 
+            
+            mor1 := KernelEmbedding( g );
+            
+            mor := PreCompose( mor1, mor2 );
+            
+            matrix_of_the_source := UnderlyingMatrix( Source( morphism ) );
+            
+            mor3 := GradedPresentationMorphism( GradedFreeRightPresentation( NrRows( matrix_of_the_source ), ring, -GeneratorDegrees( Source( morphism ) ) )
+                                          , Involution( matrix_of_the_source ), 
+                    GradedFreeRightPresentation( NrColumns( matrix_of_the_source ), ring, 
+                                            -NonTrivialDegreePerColumn( matrix_of_the_source, GeneratorDegrees( Source( morphism ) ) ) ) );
+             
+            return KernelLift( mor3, mor );
+            
+            end );
+            
+    return functor;
+    
+end );
+ 
+
+###
+InstallMethod( FunctorDoubleGradedDualLeft,
+                 [ IsHomalgGradedRing ], 
+    function( ring )
+      local category, functor, dual_functor;
+      
+      category := GradedLeftPresentations( ring );
+      
+      functor := CapFunctor( Concatenation( "Hom(Hom(-,R),R) functor for ", Name( category ) ), category, category );
+      
+      dual_functor := FunctorGradedDualLeft( ring );
+     
+      AddObjectFunction( functor, 
+      
+            function( object )
+            
+              return ApplyFunctor( dual_functor, Opposite( ApplyFunctor( dual_functor, Opposite( object ) ) ) );
+              
+            end );
+            
+     AddMorphismFunction( functor, 
+     
+            function( new_source, morphism, new_range )
+            
+              return ApplyFunctor( dual_functor, Opposite( ApplyFunctor( dual_functor, Opposite( morphism ) ) ) );
+            
+            end );
+            
+    return functor;
+    
+ end );
+
+ 
+##
+InstallMethod( FunctorDoubleGradedDualRight,
+                 [ IsHomalgGradedRing ], 
+    function( ring )
+      local category, functor, dual_functor;
+      
+      category := GradedRightPresentations( ring );
+      
+      functor := CapFunctor( Concatenation( "Hom(Hom(-,R),R) functor for ", Name( category ) ), category, category );
+      
+      dual_functor := FunctorGradedDualRight( ring );
+     
+      AddObjectFunction( functor, 
+      
+            function( object )
+            
+              return ApplyFunctor( dual_functor, Opposite( ApplyFunctor( dual_functor, Opposite( object ) ) ) );
+              
+            end );
+            
+     AddMorphismFunction( functor, 
+     
+            function( new_source, morphism, new_range )
+            
+              return ApplyFunctor( dual_functor, Opposite( ApplyFunctor( dual_functor, Opposite( morphism ) ) ) );
+            
+            end );
+            
+    return functor;
+    
+end );
