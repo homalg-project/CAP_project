@@ -332,7 +332,7 @@ InstallMethod( Display,
     
     Print( "\n" );
     
-    Print( StringMutable( morphism ) );
+    Print( String( morphism ) );
     
     Print( "\n" );
     

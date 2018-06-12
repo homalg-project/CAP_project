@@ -347,7 +347,7 @@ InstallMethod( Display,
     
     Print( "\n" );
     
-    Print( StringMutable( object ) );
+    Print( String( object ) );
     
     Print( "\n\n" );
     
