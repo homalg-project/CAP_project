@@ -6,28 +6,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsFreydCategoryObjectRep",
-                       IsFreydCategoryObject and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfFreydCategoryObjects",
-        NewFamily( "TheFamilyOfFreydCategoryObjects" ) );
-
-BindGlobal( "TheTypeOfFreydCategoryObjects",
-        NewType( TheFamilyOfFreydCategoryObjects,
-                IsFreydCategoryObjectRep ) );
-
-DeclareRepresentation( "IsFreydCategoryMorphismRep",
-                       IsFreydCategoryMorphism and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfFreydCategoryMorphisms",
-        NewFamily( "TheFamilyOfFreydCategoryMorphisms" ) );
-
-BindGlobal( "TheTypeOfFreydCategoryMorphisms",
-        NewType( TheFamilyOfFreydCategoryMorphisms,
-                IsFreydCategoryMorphismRep ) );
-
 ####################################
 ##
 ## Constructors
@@ -81,6 +59,12 @@ InstallMethod( FreydCategory,
         
     fi;
     
+    DisableAddForCategoricalOperations( freyd_category );
+
+    AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
+    
+    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
+    
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
     
     Finalize( freyd_category );
@@ -111,14 +95,16 @@ InstallMethod( FreydCategoryObject,
                [ IsCapCategoryMorphism ],
                
   function( relation_morphism )
-    local freyd_category_object;
+    local freyd_category_object, category;
     
     freyd_category_object := rec( );
     
-    ObjectifyWithAttributes( freyd_category_object, TheTypeOfFreydCategoryObjects,
-                             RelationMorphism, relation_morphism );
+    category := FreydCategory( CapCategory( relation_morphism ) );
+
+    ObjectifyObjectForCAPWithAttributes( freyd_category_object, category,
+                                         RelationMorphism, relation_morphism );
     
-    Add( FreydCategory( CapCategory( relation_morphism ) ), freyd_category_object );
+    Add( category, freyd_category_object );
     
     return freyd_category_object;
     
@@ -143,7 +129,7 @@ InstallMethod( FreydCategoryMorphism,
                [ IsFreydCategoryObject, IsCapCategoryMorphism, IsFreydCategoryObject ],
                
   function( source, morphism_datum, range )
-    local freyd_category_morphism;
+    local freyd_category_morphism, category;
     
     if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( source ) ) ) then
         
@@ -165,13 +151,16 @@ InstallMethod( FreydCategoryMorphism,
     
     freyd_category_morphism := rec( );
     
-    ObjectifyWithAttributes( freyd_category_morphism, TheTypeOfFreydCategoryMorphisms,
+    category :=  CapCategory( source );
+
+    ObjectifyMorphismForCAPWithAttributes( 
+                             freyd_category_morphism, category,
                              Source, source,
                              Range, range,
                              MorphismDatum, morphism_datum
     );
 
-    Add( CapCategory( source ), freyd_category_morphism );
+    Add( category, freyd_category_morphism );
     
     return freyd_category_morphism;
     
@@ -556,7 +545,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
-    if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
+    if ForAll( [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ], f -> CanCompute( underlying_category, f ) ) then
         
         ## Kernels: kernels in Freyd categories are based on weak fiber products in the underlying category and thus more expensive
         AddKernelEmbedding( category,
@@ -571,9 +560,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             rho_A := RelationMorphism( Source( morphism ) );
             
             ## We use the bias in the first projection of weak fiber products
-            projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, rho_B );
+            projection_1 := ProjectionOfBiasedWeakFiberProduct( alpha, rho_B );
             
-            projection_2 := ProjectionInFirstFactorOfWeakBiFiberProduct( projection_1, rho_A );
+            projection_2 := ProjectionOfBiasedWeakFiberProduct( projection_1, rho_A );
             
             kernel_object := FreydCategoryObject( projection_2 );
             
@@ -589,9 +578,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
           function( morphism, test_morphism, kernel_object )
             local sigma, alpha, rho_B, tau, morphism_datum;
             
-            ## witness computation
-            sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, morphism ) );
-            
             ## for notational convenience
             alpha := MorphismDatum( morphism );
             
@@ -599,7 +585,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             tau := MorphismDatum( test_morphism );
             
-            morphism_datum := UniversalMorphismIntoWeakBiFiberProduct( alpha, rho_B, tau, sigma );
+            morphism_datum := UniversalMorphismIntoBiasedWeakFiberProduct( alpha, rho_B, tau );
             
             return FreydCategoryMorphism( Source( test_morphism ),
                                           morphism_datum,
@@ -660,7 +646,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         rho_B := RelationMorphism( Range( morphism ) );
         
         ## We use the bias in the first projection of weak fiber products
-        projection_1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, rho_B );
+        projection_1 := ProjectionOfBiasedWeakFiberProduct( alpha, rho_B );
         
         projective_object := AsFreydCategoryObject( Source( projection_1 ) );
         
@@ -836,8 +822,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                      "SubtractionForMorphisms",
                      "PreCompose",
                      "Lift",
-                     "WeakKernelEmbedding",
-                     "WeakKernelLift"
+                     "ProjectionOfBiasedWeakFiberProduct",
+                     "UniversalMorphismIntoBiasedWeakFiberProduct"
                       ],
                    f -> CanCompute( underlying_category, f ) )  then
            

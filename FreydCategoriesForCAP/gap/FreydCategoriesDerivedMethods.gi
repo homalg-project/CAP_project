@@ -72,6 +72,17 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoWeakBiFiberProduct,
 end : Description := "UniversalMorphismIntoWeakBiFiberProduct using Lift" );
 
 ##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoBiasedWeakFiberProduct,
+                                 
+  function( alpha, beta, test_mor )
+    
+    return Lift( test_mor,
+                 ProjectionOfBiasedWeakFiberProduct( alpha, beta ) );
+    
+end : Description := "UniversalMorphismIntoBiasedWeakFiberProduct using Lift" );
+
+
+##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromWeakBiPushout,
                                  
   function( alpha, beta, test_mor_1, test_mor_2 )
@@ -85,6 +96,16 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromWeakBiPushout,
                    UniversalMorphismFromDirectSum( [ test_mor_1, test_mor_2 ] ) );
     
 end : Description := "UniversalMorphismFromWeakBiPushout using Colift" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromBiasedWeakPushout,
+                                 
+  function( alpha, beta, test_mor )
+    
+    return Colift( InjectionOfBiasedWeakPushout( alpha, beta ),
+                   test_mor );
+    
+end : Description := "UniversalMorphismFromBiasedWeakPushout using Colift" );
 
 ##
 AddWithGivenDerivationPairToCAP( WeakKernelLift,
@@ -143,6 +164,16 @@ AddDerivationToCAP( WeakBiFiberProduct,
 end : Description := "WeakBiFiberProduct as the source of ProjectionInSecondFactorOfWeakBiFiberProduct" );
 
 ##
+AddDerivationToCAP( BiasedWeakFiberProduct,
+                    
+  function( alpha, beta )
+    
+    return Source( ProjectionOfBiasedWeakFiberProduct( alpha, beta ) );
+    
+end : Description := "BiasedWeakFiberProduct as the source of ProjectionOfBiasedWeakFiberProduct" );
+
+
+##
 AddDerivationToCAP( WeakBiPushout,
                     
   function( alpha, beta )
@@ -159,6 +190,16 @@ AddDerivationToCAP( WeakBiPushout,
     return Range( InjectionOfSecondCofactorOfWeakBiPushout( alpha, beta ) );
     
 end : Description := "WeakBiPushout as the range of InjectionOfSecondCofactorOfWeakBiPushout" );
+
+##
+AddDerivationToCAP( BiasedWeakPushout,
+                    
+  function( alpha, beta )
+    
+    return Range( InjectionOfBiasedWeakPushout( alpha, beta ) );
+    
+end : Description := "BiasedWeakPushout as the range of InjectionOfBiasedWeakPushout" );
+
 
 ## abelian derivations
 
@@ -450,3 +491,28 @@ AddFinalDerivation( UniversalMorphismFromWeakBiPushout,
     
 end : Description := "UniversalMorphismFromWeakBiPushout using WeakCokernelColift" );
 
+
+## Final derivation for biased weak fiber products and biased weak pushouts.
+## Decision: we use a derivation from weak fiber products and weak pushouts
+
+##
+AddFinalDerivation( ProjectionOfBiasedWeakFiberProduct,
+                    [ [ ProjectionInFirstFactorOfWeakBiFiberProduct, 1 ] ],
+                    [ BiasedWeakFiberProduct ],
+                    
+  function( alpha, beta )
+    
+    return ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, beta );
+
+end : Description := "ProjectionOfBiasedWeakFiberProduct using ProjectionInFirstFactorOfWeakBiFiberProduct" );
+
+##
+AddFinalDerivation( InjectionOfBiasedWeakPushout,
+                    [ [ InjectionOfFirstCofactorOfWeakBiPushout, 1 ] ],
+                    [ BiasedWeakPushout ],
+                    
+  function( alpha, beta )
+    
+    return InjectionOfFirstCofactorOfWeakBiPushout( alpha, beta );
+
+end : Description := "ProjectioInjectionOfBiasedWeakPushoutnOfBiasedWeakFiberProduct using InjectionOfFirstCofactorOfWeakBiPushout" );

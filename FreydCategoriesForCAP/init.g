@@ -13,3 +13,5 @@ ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategory.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/HomStructureForAlgebroids.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/AdditiveClosure.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/CokernelImageClosure.gd" );
