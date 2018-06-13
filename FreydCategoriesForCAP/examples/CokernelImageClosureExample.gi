@@ -5,7 +5,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
 
-#! @Example
+# @Example
 R := HomalgFieldOfRationalsInSingular() * "x,y,z";
 RowsR := CategoryOfRows( R );
 m := AsCategoryOfRowsMorphism( 
@@ -53,4 +53,4 @@ emb := KernelEmbedding( mu );
 p := PreCompose( EpimorphismFromSomeProjectiveObject( kernel ), KernelEmbedding( mu ) );
 KernelLift( mu, p );
 LiftAlongMonomorphism( emb, p );
-#! @EndExample
+# @EndExample
