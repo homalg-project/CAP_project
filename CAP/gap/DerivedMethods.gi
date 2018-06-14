@@ -1089,6 +1089,7 @@ AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
     
 end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the inverse of IsomorphismFromCokernelOfDiagonalDifferenceToPushout" );
 
+##
 AddDerivationToCAP( ColiftAlongEpimorphism,
                     [ [ KernelEmbedding, 1 ],
                       [ CokernelColift, 2 ],
@@ -1108,7 +1109,8 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
     
     return PreCompose( Inverse( cokernel_colift_to_range_of_epimorphism ), cokernel_colift_to_range_of_test_morphism );
     
-end );
+end : CategoryFilter := IsAbelianCategory, 
+      Description := "ColiftAlongEpimorphism by inverting the cokernel colift from the cokernel of the kernel to the range of a given epimorphism");
 
 ##
 AddDerivationToCAP( ComponentOfMorphismIntoDirectSum,
