@@ -282,6 +282,11 @@ DeclareOperation( "GeneralizedMorphismWithRangeAid",
 DeclareOperation( "GeneralizedMorphismWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
+#! The output is its generalized image $i \hookrightarrow b \in \mathbf{A}$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( i, b )$
+#! @Arguments alpha
 DeclareAttribute( "GeneralizedImageEmbedding",
                   IsGeneralizedMorphism );
 
