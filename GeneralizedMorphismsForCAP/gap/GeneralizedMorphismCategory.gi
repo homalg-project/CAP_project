@@ -139,7 +139,7 @@ InstallMethod( IsTotal,
                [ IsGeneralizedMorphism ],
                HasFullDomain );
 
-InstallMethod( CombinedImageEmbedding,
+InstallMethod( GeneralizedImageEmbedding,
                [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )

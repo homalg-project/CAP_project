@@ -27,7 +27,7 @@ InstallMethod( CoverByProjectiveWithLift,
   function( morphism )
     local cimage_embedding, cimage_embedding_inverse, cover_of_source, cover, restricted_morphism, lift;
     
-    cimage_embedding := CombinedImageEmbedding( UnderlyingGeneralizedMorphism( morphism ) );
+    cimage_embedding := GeneralizedImageEmbedding( UnderlyingGeneralizedMorphism( morphism ) );
     
     cimage_embedding := AsSerreQuotientCategoryMorphism( CapCategory( morphism ), cimage_embedding );
     

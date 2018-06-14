@@ -697,7 +697,7 @@ InstallMethod( PurityFiltrationBySpectralSequence,
     
     embedding_list := Reversed( embedding_list );
     
-    combined_image_embeddings := List( embedding_list, CombinedImageEmbedding );
+    combined_image_embeddings := List( embedding_list, GeneralizedImageEmbedding );
     
     functors := ValueOption( "Functors" );
     if functors <> fail then

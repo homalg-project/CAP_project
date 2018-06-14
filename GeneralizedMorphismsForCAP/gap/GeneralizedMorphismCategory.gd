@@ -282,7 +282,7 @@ DeclareOperation( "GeneralizedMorphismWithRangeAid",
 DeclareOperation( "GeneralizedMorphismWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareAttribute( "CombinedImageEmbedding",
+DeclareAttribute( "GeneralizedImageEmbedding",
                   IsGeneralizedMorphism );
 
 ####################################
