@@ -51,7 +51,7 @@ DeclareAttribute( "UnderlyingHonestObject",
 #! The output is its domain $d \hookrightarrow a \in \mathbf{A}$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( d, a )$
 #! @Arguments alpha
-DeclareAttribute( "DomainOfGeneralizedMorphism",
+DeclareAttribute( "DomainEmbedding",
                   IsGeneralizedMorphism );
 
 #! @Description

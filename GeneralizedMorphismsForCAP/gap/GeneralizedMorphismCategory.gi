@@ -16,7 +16,7 @@ Domain := function( arg )
   
   if Length( arg ) = 1 and IsGeneralizedMorphism( arg[1] ) then
       
-      return DomainOfGeneralizedMorphism( arg[ 1 ] );
+      return DomainEmbedding( arg[ 1 ] );
       
   fi;
   
@@ -24,7 +24,7 @@ Domain := function( arg )
   
 end;
 
-InstallMethod( DomainOfGeneralizedMorphism,
+InstallMethod( DomainEmbedding,
                [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
