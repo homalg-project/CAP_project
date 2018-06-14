@@ -174,7 +174,7 @@ DeclareOperation( "GeneralizedMorphismBySpan",
 #! $\beta: b \rightarrow c$,
 #! and $\gamma: c \leftarrow d$ in $\mathbf{A}$.
 #! The output is a generalized morphism by span
-#! defined by the composition the given three arrows 
+#! defined by the composition of the given three arrows
 #! regarded as generalized morphisms.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,d)$
 #! @Arguments alpha, beta, gamma
@@ -185,7 +185,7 @@ DeclareOperation( "GeneralizedMorphismBySpan",
 #! The arguments are morphisms $\alpha: a \rightarrow b$,
 #! and $\beta: b \leftarrow c$ in $\mathbf{A}$.
 #! The output is a generalized morphism by span
-#! defined by the composition the given two arrows
+#! defined by the composition of the given two arrows
 #! regarded as generalized morphisms.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,c)$
 #! @Arguments alpha, beta
