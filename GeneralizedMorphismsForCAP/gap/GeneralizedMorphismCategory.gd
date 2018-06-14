@@ -59,7 +59,7 @@ DeclareAttribute( "DomainEmbedding",
 #! The output is its codomain $b \twoheadrightarrow c \in \mathbf{A}$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( b, c )$
 #! @Arguments alpha
-DeclareAttribute( "Codomain",
+DeclareAttribute( "CodomainProjection",
                   IsGeneralizedMorphism );
 
 #! @Description

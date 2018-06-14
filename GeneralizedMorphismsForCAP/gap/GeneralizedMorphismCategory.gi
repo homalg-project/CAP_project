@@ -56,7 +56,7 @@ InstallMethod( AssociatedMorphism,
     
 end );
 
-InstallMethod( Codomain,
+InstallMethod( CodomainProjection,
                [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )

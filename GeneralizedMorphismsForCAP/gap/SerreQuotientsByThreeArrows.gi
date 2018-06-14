@@ -296,7 +296,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         cokernel_mor := CokernelProjection( AssociatedMorphism( underlying_general ) );
         
-        cokernel_mor := PreCompose( Codomain( underlying_general ), cokernel_mor );
+        cokernel_mor := PreCompose( CodomainProjection( underlying_general ), cokernel_mor );
         
         return AsSerreQuotientCategoryByThreeArrowsMorphism( category, cokernel_mor );
         

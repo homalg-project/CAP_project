@@ -50,9 +50,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
         fi;
         
-        factorobject1 := Codomain( generalized_morphism1 );
+        factorobject1 := CodomainProjection( generalized_morphism1 );
         
-        factorobject2 := Codomain( generalized_morphism2 );
+        factorobject2 := CodomainProjection( generalized_morphism2 );
         
         if not IsEqualAsFactorobjects( factorobject1, factorobject2 ) then
         
@@ -442,7 +442,7 @@ InstallMethod( HonestRepresentative,
     
     return PreCompose(
              PreCompose( Inverse( DomainEmbedding( generalized_morphism ) ), AssociatedMorphism( generalized_morphism ) ), 
-             Inverse( Codomain( generalized_morphism ) ) 
+             Inverse( CodomainProjection( generalized_morphism ) ) 
            );
     
 end );
@@ -453,7 +453,7 @@ InstallMethod( HasFullCodomain,
                
   function( generalized_morphism )
     
-    return IsIsomorphism( Codomain( generalized_morphism ) );
+    return IsIsomorphism( CodomainProjection( generalized_morphism ) );
     
 end );
 
@@ -469,7 +469,7 @@ end );
 
 ###########################
 ##
-## DomainEmbedding, Associated Morphism, Codomain
+## DomainEmbedding, Associated Morphism, CodomainProjection
 ##
 ###########################
 
@@ -703,7 +703,7 @@ InstallMethodWithCacheFromObject( CommonCoastrictionOp,
         
     fi;
     
-    codomain_list := List( morphism_list, Codomain );
+    codomain_list := List( morphism_list, CodomainProjection );
     
     associated_compose_list := [ ];
     
