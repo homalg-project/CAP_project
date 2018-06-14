@@ -582,6 +582,52 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     end );
     
     ##
+    AddColiftAlongEpimorphism( category,
+      
+      function( alpha, tau )
+        local witness_alpha, sigma78, sigma56, witness_test, sigma12, range_alpha, b2, datum_tau, A, B, Bp, App, sigma8, sigma6, sigma5, sigma2, sigma1;
+        
+        witness_alpha := WitnessPairForBeingCongruentToZero( CokernelProjection( alpha ) );
+        
+        sigma78 := witness_alpha[1];
+        
+        sigma56 := witness_alpha[2];
+        
+        witness_test := WitnessPairForBeingCongruentToZero( PreCompose( KernelEmbedding( alpha ), tau ) );
+        
+        sigma12 := witness_test[2];
+        
+        range_alpha := Range( alpha );
+        
+        b2 := CorelationMorphism( range_alpha );
+        
+        datum_tau := MorphismDatum( tau );
+        
+        A := Source( datum_tau );
+        
+        B := Source( b2 );
+        
+        Bp := Source( RelationMorphism( range_alpha) );
+        
+        App := Range( CorelationMorphism( Source( alpha ) ) );
+        
+        sigma8 := ComponentOfMorphismIntoDirectSum( sigma78, [ Bp, A ] , 2 );
+        
+        sigma6 := ComponentOfMorphismIntoDirectSum( sigma56, [ B, App ] , 2 );
+        
+        sigma5 := ComponentOfMorphismIntoDirectSum( sigma56, [ B, App ] , 1 );
+        
+        sigma2 := ComponentOfMorphismFromDirectSum( sigma12, [ App, B ], 2 );
+        
+        sigma1 := ComponentOfMorphismFromDirectSum( sigma12, [ App, B ], 1 );
+        
+        return AdelmanCategoryMorphism( range_alpha,
+                                        PreCompose( sigma8, datum_tau ) + PreCompose( [ b2, sigma6, sigma1 ] ) + PreCompose( [ b2, sigma5, sigma2 ] ),
+                                        Range( tau ) );
+        
+    end );
+    
+    ##
     AddKernelEmbedding( category,
       
       function( morphism )

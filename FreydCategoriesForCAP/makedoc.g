@@ -11,6 +11,7 @@ AutoDoc( "FreydCategoriesForCAP" : scaffold := true, autodoc :=
                               "LoadPackage( \"IO_ForHomalg\" );",
                               "LoadPackage( \"FreydCategoriesForCAP\" );",
                               "LoadPackage( \"RingsForHomalg\" );",
+                              "LoadPackage( \"GaussForHomalg\" );",
                               "HOMALG_IO.show_banners := false;",
                               "HOMALG_IO.suppress_PID := true;",
                               "HOMALG_IO.use_common_stream := true;",

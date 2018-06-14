@@ -57,8 +57,6 @@ IsZeroForMorphisms( PreCompose( k, c ) );
 #! true
 IsCongruentForMorphisms( KernelLift( m, KernelEmbedding( m ) ), IdentityMorphism( KernelObject( m ) ) );
 #! true
-
-
 quiver := RightQuiver( "Q(9)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6,h:4->7,i:5->8,j:6->9,k:7->8,l:8->9,m:2->7,n:3->8]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;
 Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf, 
@@ -107,5 +105,7 @@ lift := KernelLift( tau, alpha );;
 IsWellDefined( lift );
 #! true
 IsCongruentForMorphisms( PreCompose( lift, KernelEmbedding( tau ) ), alpha );
+#! true
+IsCongruentForMorphisms( ColiftAlongEpimorphism( CokernelProjection( alpha ), tau ), colift );
 #! true
 #! @EndExample

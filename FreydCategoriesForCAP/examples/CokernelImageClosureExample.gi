@@ -47,7 +47,6 @@ IsCongruentForMorphisms( nu, PreCompose( CoastrictionToImage( nu ), u ) );
 # true
 IsCongruentForMorphisms( u, ImageEmbedding( nu ) );
 # true
-
 kernel := KernelObject( mu );
 emb := KernelEmbedding( mu );
 p := PreCompose( EpimorphismFromSomeProjectiveObject( kernel ), KernelEmbedding( mu ) );
