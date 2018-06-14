@@ -108,4 +108,6 @@ IsCongruentForMorphisms( PreCompose( lift, KernelEmbedding( tau ) ), alpha );
 #! true
 IsCongruentForMorphisms( ColiftAlongEpimorphism( CokernelProjection( alpha ), tau ), colift );
 #! true
+IsCongruentForMorphisms( LiftAlongMonomorphism( KernelEmbedding( tau ), alpha ), lift );
+#! true
 #! @EndExample
