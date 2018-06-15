@@ -216,7 +216,7 @@ DeclareOperation( "GeneralizedMorphismByThreeArrows",
 #! $\alpha: a \leftarrow b$,
 #! and $\beta: b \rightarrow c$ in $\mathbf{A}$.
 #! The output is a generalized morphism by three arrows
-#! defined by the composition the given two arrows
+#! defined by the composition of the given two arrows
 #! regarded as generalized morphisms.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(a,c)$
 #! @Arguments alpha, beta
@@ -228,7 +228,7 @@ DeclareOperation( "GeneralizedMorphismByThreeArrowsWithSourceAid",
 #! $\beta: b \rightarrow c$,
 #! and $\gamma: c \leftarrow d$ in $\mathbf{A}$.
 #! The output is a generalized morphism by three arrows
-#! defined by the composition the given two arrows
+#! defined by the composition of the given two arrows
 #! regarded as generalized morphisms.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,d)$
 #! @Arguments beta, gamma
