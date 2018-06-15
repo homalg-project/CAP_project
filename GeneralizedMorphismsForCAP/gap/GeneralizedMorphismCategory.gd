@@ -56,6 +56,30 @@ DeclareAttribute( "DomainEmbedding",
 
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
+#! The output is its generalized image $i \hookrightarrow b \in \mathbf{A}$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( i, b )$
+#! @Arguments alpha
+DeclareAttribute( "GeneralizedImageEmbedding",
+                  IsGeneralizedMorphism );
+
+#! @Description
+#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
+#! The output is its defect $d \hookrightarrow b \in \mathbf{A}$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( i, b )$
+#! @Arguments alpha
+DeclareAttribute( "DefectEmbedding",
+                  IsGeneralizedMorphism );
+
+#! @Description
+#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
+#! The output is its generalized kernel $k \hookrightarrow a \in \mathbf{A}$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( i, b )$
+#! @Arguments alpha
+DeclareAttribute( "GeneralizedKernelEmbedding",
+                  IsGeneralizedMorphism );
+
+#! @Description
+#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
 #! The output is its codomain $b \twoheadrightarrow c \in \mathbf{A}$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( b, c )$
 #! @Arguments alpha
@@ -281,31 +305,6 @@ DeclareOperation( "GeneralizedMorphismWithRangeAid",
 #!  by span, depending on the standard.
 DeclareOperation( "GeneralizedMorphismWithSourceAid",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
-#! The output is its generalized image $i \hookrightarrow b \in \mathbf{A}$.
-#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( i, b )$
-#! @Arguments alpha
-DeclareAttribute( "GeneralizedImageEmbedding",
-                  IsGeneralizedMorphism );
-
-#! @Description
-#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
-#! The output is its defect $d \hookrightarrow b \in \mathbf{A}$.
-#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( i, b )$
-#! @Arguments alpha
-DeclareAttribute( "DefectEmbedding",
-                  IsGeneralizedMorphism );
-
-#! @Description
-#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
-#! The output is its generalized kernel $k \hookrightarrow a \in \mathbf{A}$.
-#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( i, b )$
-#! @Arguments alpha
-DeclareAttribute( "GeneralizedKernelEmbedding",
-                  IsGeneralizedMorphism );
-
 
 ####################################
 ##
