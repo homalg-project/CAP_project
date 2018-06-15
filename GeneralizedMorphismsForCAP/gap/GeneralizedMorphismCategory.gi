@@ -173,6 +173,36 @@ InstallMethod( GeneralizedKernelEmbedding,
 end );
 
 ##
+InstallMethod( GeneralizedCokernelProjection,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return CokernelProjection( GeneralizedImageEmbedding( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( GeneralizedCoimageProjection,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return CokernelProjection( GeneralizedKernelEmbedding( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( CodefectProjection,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return CokernelProjection( DomainEmbedding( generalized_morphism ) );
+    
+end );
+
+##
 InstallValue( PROPAGATION_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM,
         [
          "IsMonomorphism",

@@ -65,7 +65,7 @@ DeclareAttribute( "GeneralizedImageEmbedding",
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
 #! The output is its defect $d \hookrightarrow b \in \mathbf{A}$.
-#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( i, b )$
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( d, b )$
 #! @Arguments alpha
 DeclareAttribute( "DefectEmbedding",
                   IsGeneralizedMorphism );
@@ -73,7 +73,7 @@ DeclareAttribute( "DefectEmbedding",
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
 #! The output is its generalized kernel $k \hookrightarrow a \in \mathbf{A}$.
-#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( i, b )$
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( k, a )$
 #! @Arguments alpha
 DeclareAttribute( "GeneralizedKernelEmbedding",
                   IsGeneralizedMorphism );
@@ -86,6 +86,30 @@ DeclareAttribute( "GeneralizedKernelEmbedding",
 DeclareAttribute( "CodomainProjection",
                   IsGeneralizedMorphism );
 
+#! @Description
+#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
+#! The output is its generalized cokernel $b \twoheadrightarrow c \in \mathbf{A}$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( b, c )$
+#! @Arguments alpha
+DeclareAttribute( "GeneralizedCokernelProjection",
+                  IsGeneralizedMorphism );
+
+#! @Description
+#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
+#! The output is its codefect $a \twoheadrightarrow c \in \mathbf{A}$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( a, c )$
+#! @Arguments alpha
+DeclareAttribute( "CodefectProjection",
+                  IsGeneralizedMorphism );
+
+#! @Description
+#! The argument is a generalized morphism $\alpha: a \rightarrow b$.
+#! The output is its generalized coimage $a \twoheadrightarrow c \in \mathbf{A}$.
+#! @Returns a morphism in $\mathrm{Hom}_{\mathbf{A}}( a, c )$
+#! @Arguments alpha
+DeclareAttribute( "GeneralizedCoimageProjection",
+                  IsGeneralizedMorphism );
+                  
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
 #! The output is its associated morphism $d \rightarrow c \in \mathbf{A}$.
