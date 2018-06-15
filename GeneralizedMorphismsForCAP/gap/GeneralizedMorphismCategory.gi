@@ -139,6 +139,7 @@ InstallMethod( IsTotal,
                [ IsGeneralizedMorphism ],
                HasFullDomain );
 
+##
 InstallMethod( GeneralizedImageEmbedding,
                [ IsGeneralizedMorphism ],
                
@@ -148,6 +149,26 @@ InstallMethod( GeneralizedImageEmbedding,
     triple := DomainAssociatedMorphismCodomainTriple( generalized_morphism );
     
     return ProjectionInFactorOfFiberProduct( [ ImageEmbedding( triple[ 2 ] ), triple[ 3 ] ], 2 );
+    
+end );
+
+##
+InstallMethod( DefectEmbedding,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return KernelEmbedding( CodomainProjection( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( GeneralizedKernelEmbedding,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return DefectEmbedding( PseudoInverse( generalized_morphism ) );
     
 end );
 
