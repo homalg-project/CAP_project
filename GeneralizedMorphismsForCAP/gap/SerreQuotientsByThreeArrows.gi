@@ -401,6 +401,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
     
     CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS( serre_category );
     
+    CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT( serre_category );
+    
     Finalize( serre_category );
     
     return serre_category;
