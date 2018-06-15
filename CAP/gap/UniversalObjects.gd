@@ -2754,6 +2754,87 @@ DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
 DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
+#! where $\Delta$ denotes the equalizer of the product diagram of the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
+#! @Arguments D
+DeclareOperation( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
+                  [ IsList ] );
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
+#! where $\Delta$ denotes the equalizer of the product diagram of the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
+#! @Arguments D, method_selection_morphism
+DeclareOperation( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</C>.
+#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \Delta$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
+                  [ IsCapCategory, IsFunction ] );
+##
+DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
+                  [ IsCapCategory, IsList, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
+#! where $\Delta$ denotes the equalizer of the product diagram of the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
+#! @Arguments D
+DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
+                  [ IsList ] );
+
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
+#! where $\Delta$ denotes the equalizer of the product diagram of the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
+#! @Arguments D
+DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</C>.
+#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \Delta \rightarrow \mathrm{FiberProduct}(D)$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+##
+DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+##
+DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+##
+DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
+                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
@@ -3448,6 +3529,86 @@ DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 ##
 DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\mathrm{Pushout}(D) \rightarrow \Delta$,
+#! where $\Delta$ denotes the coequalizer of the coproduct diagram of the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
+#! @Arguments D
+DeclareOperation( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
+                  [ IsList ] );
+
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\mathrm{Pushout}(D) \rightarrow \Delta$,
+#! where $\Delta$ denotes the coequalizer of the coproduct diagram of the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
+#! @Arguments D, method_selection_morphism
+DeclareOperation( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</C>.
+#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}(D) \rightarrow \Delta)$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
+                  [ IsCapCategory, IsFunction ] );
+##
+DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
+                  [ IsCapCategory, IsList, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\Delta \rightarrow \mathrm{Pushout}(D)$,
+#! where $\Delta$ denotes the coequalizer of the coproduct diagram of the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
+#! @Arguments D
+DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
+                  [ IsList ] );
+
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is a morphism
+#! $\Delta \rightarrow \mathrm{Pushout}(D)$,
+#! where $\Delta$ denotes the coequalizer of the coproduct diagram of the morphisms $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
+#! @Arguments D, method_selection_morphism
+DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromCoequalizerOfCoproductDiagramToPushout</C>.
+#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\Delta \rightarrow \mathrm{Pushout}(D))$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout",
+                  [ IsCapCategory, IsFunction ] );
+##
+DeclareOperation( "AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+##
+DeclareOperation( "AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

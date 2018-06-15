@@ -2632,7 +2632,27 @@ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
   no_with_given := true ),
-
+  
+IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram := rec(
+  installation_name := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp",
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "P", "Delta" ] ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp",
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
+  no_with_given := true ),
+  
+IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct := rec(
+  installation_name := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp",
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "Delta", "P" ] ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp",
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
+  no_with_given := true ),
+  
 IsomorphismFromPushoutToCokernelOfDiagonalDifference := rec(
   installation_name := "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
@@ -2642,7 +2662,7 @@ IsomorphismFromPushoutToCokernelOfDiagonalDifference := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
   no_with_given := true ),
-
+  
 IsomorphismFromCokernelOfDiagonalDifferenceToPushout := rec(
   installation_name := "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
   filter_list := [ IsList, "morphism" ],
@@ -2651,6 +2671,26 @@ IsomorphismFromCokernelOfDiagonalDifferenceToPushout := rec(
   cache_name := "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
   return_type := "morphism",
   dual_operation := "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
+  no_with_given := true ),
+  
+IsomorphismFromPushoutToCoequalizerOfCoproductDiagram := rec(
+  installation_name := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp",
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "P", "Delta" ] ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp",
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
+  no_with_given := true ),
+  
+IsomorphismFromCoequalizerOfCoproductDiagramToPushout := rec(
+  installation_name := "IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp",
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "Delta", "P" ] ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp",
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
   no_with_given := true ),
 
 IsomorphismFromImageObjectToKernelOfCokernel := rec(

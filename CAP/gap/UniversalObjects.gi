@@ -723,6 +723,26 @@ InstallMethod( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
 end );
 
 ##
+InstallMethod( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp( diagram, diagram[1] );
+    
+end );
+
+##
 InstallMethod( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
                [ IsList ],
                
@@ -739,6 +759,26 @@ InstallMethod( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
   function( diagram )
     
     return IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp( diagram, diagram[1] );
     
 end );
 
