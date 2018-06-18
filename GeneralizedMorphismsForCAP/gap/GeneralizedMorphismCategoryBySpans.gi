@@ -547,7 +547,7 @@ InstallMethodWithCacheFromObject( CommonRestrictionOp,
 end : ArgumentNumber := 2 );
 
 ##
-InstallMethod( CombinedImageEmbedding,
+InstallMethod( GeneralizedImageEmbedding,
                [ IsGeneralizedMorphismBySpan ],
                
   function( morphism )
