@@ -1068,17 +1068,6 @@ AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
 end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the inverse of IsomorphismFromFiberProductToKernelOfDiagonalDifference" );
 
 ##
-AddDerivationToCAP( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
-                    [ [ IsomorphismFromPushoutToCokernelOfDiagonalDifference, 1 ],
-                      [ Inverse, 1 ] ],
-                      
-  function( diagram )
-    
-    return Inverse( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ) );
-    
-end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as the inverse of IsomorphismFromPushoutToCokernelOfDiagonalDifference" );
-
-##
 AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
                     [ [ IsomorphismFromCokernelOfDiagonalDifferenceToPushout , 1 ],
                       [ Inverse, 1 ] ],
@@ -1088,6 +1077,17 @@ AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
     return Inverse( IsomorphismFromCokernelOfDiagonalDifferenceToPushout( diagram ) );
     
 end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the inverse of IsomorphismFromCokernelOfDiagonalDifferenceToPushout" );
+
+##
+AddDerivationToCAP( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
+                    [ [ IsomorphismFromPushoutToCokernelOfDiagonalDifference, 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ) );
+    
+end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as the inverse of IsomorphismFromPushoutToCokernelOfDiagonalDifference" );
 
 ##
 AddDerivationToCAP( ColiftAlongEpimorphism,
