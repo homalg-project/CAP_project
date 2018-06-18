@@ -21,6 +21,10 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_WEAK_BI_PUSHOUT_PREFUNCTION" );
 
 DeclareGlobalFunction( "INSTALL_HOMOMORPHISM_STRUCTURE_FOR_OPPOSITE_CATEGORY" );
 
+DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_WEAK_FIBER_PRODUCT_PREFUNCTION" );
+
+DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION" );
+
 ##TODO: Adjust documentation
 
 ####################################
@@ -536,6 +540,129 @@ DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
 
 ####################################
 ##
+#! @Section Biased weak fiber product
+##
+####################################
+
+
+## Main Operations and Attributes
+
+
+DeclareOperation( "BiasedWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "ProjectionOfBiasedWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "UniversalMorphismIntoBiasedWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+## Add Operations
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>FiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInFactorOfFiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \pi_k$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectionOfBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionOfBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionOfBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionOfBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInFactorOfFiberProductWithGivenFiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k,P ) \mapsto \pi_k$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoFiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismIntoFiberProductWithGivenFiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau, P  ) \mapsto u(\tau)$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+####################################
+##
 #! @Section Weak bi-pushout
 ##
 ####################################
@@ -699,6 +826,126 @@ DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
 
 DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
                   [ IsCapCategory, IsList ] );
+
+####################################
+##
+#! @Section Biased weak pushout
+##
+####################################
+
+
+DeclareOperation( "BiasedWeakPushout",
+                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "InjectionOfBiasedWeakPushout",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "UniversalMorphismFromBiasedWeakPushout",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+DeclareOperation( "UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+## Add Operations
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>Pushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddBiasedWeakPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddBiasedWeakPushout",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfCofactorOfPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \iota_k$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectionOfBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionOfBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectionOfBiasedWeakPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectionOfBiasedWeakPushout",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfCofactorOfPushoutWithGivenPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \iota_k$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushout",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau, I ) \mapsto u(\tau)$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
+                  [ IsCapCategory, IsList ] );
+
 
 ####################################
 ##
@@ -890,3 +1137,15 @@ DeclareOperation( "SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure"
 ##
 DeclareAttribute( "AsMorphismInFreeAbelianCategory",
                   IsCapCategoryMorphism );
+
+####################################
+##
+#! @Section Finitely presented functors
+##
+####################################
+
+##
+DeclareOperation( "CovariantExtAsFreydCategoryObject",
+                  [ IsCapCategoryObject, IsInt ] );
+
+

@@ -6,28 +6,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsAdditiveClosureObjectRep",
-                       IsAdditiveClosureObject and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfAdditiveClosureObjects",
-        NewFamily( "TheFamilyOfAdditiveClosureObjects" ) );
-
-BindGlobal( "TheTypeOfAdditiveClosureObjects",
-        NewType( TheFamilyOfAdditiveClosureObjects,
-                IsAdditiveClosureObjectRep ) );
-
-DeclareRepresentation( "IsAdditiveClosureMorphismRep",
-                       IsAdditiveClosureMorphism and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfAdditiveClosureMorphisms",
-        NewFamily( "TheFamilyOfAdditiveClosureMorphisms" ) );
-
-BindGlobal( "TheTypeOfAdditiveClosureMorphisms",
-        NewType( TheFamilyOfAdditiveClosureMorphisms,
-                IsAdditiveClosureMorphismRep ) );
-
 ####################################
 ##
 ## Constructors
@@ -54,6 +32,12 @@ InstallMethod( AdditiveClosure,
     SetIsAdditiveCategory( category, true );
     
     SetUnderlyingCategory( category, underlying_category );
+    
+    AddObjectRepresentation( category, IsAdditiveClosureObject );
+    
+    AddMorphismRepresentation( category, IsAdditiveClosureMorphism );
+    
+    DisableAddForCategoricalOperations( category );
     
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
     
@@ -84,7 +68,8 @@ InstallMethodWithCache( AdditiveClosureObject,
     
     additive_closure_object := rec( );
     
-    ObjectifyWithAttributes( additive_closure_object, TheTypeOfAdditiveClosureObjects,
+    ObjectifyObjectForCAPWithAttributes( 
+                             additive_closure_object, category,
                              ObjectList, list_of_objects
     );
 
@@ -113,17 +98,20 @@ InstallMethod( AdditiveClosureMorphism,
                [ IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ],
                
   function( source, matrix, range )
-    local additive_closure_morphism;
+    local additive_closure_morphism, category;
     
     additive_closure_morphism := rec( );
     
-    ObjectifyWithAttributes( additive_closure_morphism, TheTypeOfAdditiveClosureMorphisms,
+    category := CapCategory( source );
+
+    ObjectifyMorphismForCAPWithAttributes( 
+                             additive_closure_morphism, category,
                              Source, source,
                              Range, range,
                              MorphismMatrix, matrix
     );
 
-    Add( CapCategory( source ), additive_closure_morphism );
+    Add( category, additive_closure_morphism );
     
     return additive_closure_morphism;
     

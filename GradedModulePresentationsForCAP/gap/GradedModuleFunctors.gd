@@ -72,3 +72,11 @@ DeclareOperation( "GeneralizedEmbeddingOfSpectralSequenceEntry",
 
 DeclareOperation( "PurityFiltrationBySpectralSequence",
                   [ IsCapComplex, IsInt, IsCapComplex, IsCapCocomplex, IsCapCategoryMorphism ] );
+
+DeclareAttribute( "FunctorGradedDualLeft", IsHomalgGradedRing );
+
+DeclareAttribute( "FunctorGradedDualRight", IsHomalgGradedRing );
+
+DeclareAttribute( "FunctorDoubleGradedDualLeft", IsHomalgGradedRing );
+                   
+DeclareAttribute( "FunctorDoubleGradedDualRight", IsHomalgGradedRing );

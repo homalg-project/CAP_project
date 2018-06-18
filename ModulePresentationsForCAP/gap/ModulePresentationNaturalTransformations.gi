@@ -176,16 +176,16 @@ INSTALL_NATURAL_TRANSFORMATION_FROM_IDENTITY_TO_LESS_GENERATORS_METHOD( NaturalI
 InstallMethod( NaturalTransformationFromIdentityToDoubleDualLeft, 
                 [ IsHomalgRing ], 
    function( ring )
-   local category, double_dual_functor, natural_tasformation;
+   local category, double_dual_functor, natural_transformation;
    
    category := LeftPresentations( ring );
    
    double_dual_functor := FunctorDoubleDualLeft( ring );
    
-   natural_tasformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
-                                                         IdentityMorphism( AsCatObject( category ) ), double_dual_functor );
+   natural_transformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
+                                                         IdentityFunctor( category ), double_dual_functor );
                                                          
-   AddNaturalTransformationFunction( natural_tasformation, 
+   AddNaturalTransformationFunction( natural_transformation, 
    
       function( id_object, object, double_dual_object )
         local A, representing_morphism, cokernel_projection_in_obj, double_dual_of_cokernel_projection, nat_mor; 
@@ -204,23 +204,23 @@ InstallMethod( NaturalTransformationFromIdentityToDoubleDualLeft,
         
       end );
 
-   return natural_tasformation;
+   return natural_transformation;
 end );
 
 ##
 InstallMethod( NaturalTransformationFromIdentityToDoubleDualRight, 
                 [ IsHomalgRing ], 
    function( ring )
-   local category, double_dual_functor, natural_tasformation;
+   local category, double_dual_functor, natural_transformation;
    
    category := RightPresentations( ring );
    
    double_dual_functor := FunctorDoubleDualRight( ring );
    
-   natural_tasformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
-                                                         IdentityMorphism( AsCatObject( category ) ), double_dual_functor );
+   natural_transformation := NaturalTransformation( Concatenation( "Natural transformation from Id to ", Name( double_dual_functor ) ),
+                                                         IdentityFunctor( category ), double_dual_functor );
                                                          
-   AddNaturalTransformationFunction( natural_tasformation, 
+   AddNaturalTransformationFunction( natural_transformation, 
    
       function( id_object, object, double_dual_object )
         local A, representing_morphism, cokernel_projection_in_obj, double_dual_of_cokernel_projection, nat_mor; 
@@ -239,5 +239,5 @@ InstallMethod( NaturalTransformationFromIdentityToDoubleDualRight,
         
       end );
 
-   return natural_tasformation;
+   return natural_transformation;
 end );

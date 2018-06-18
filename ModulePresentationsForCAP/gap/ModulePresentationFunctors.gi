@@ -262,12 +262,14 @@ InstallMethod( FunctorDualLeft,
      
      category := LeftPresentations( ring );
      
-     functor := CapFunctor( Concatenation( "Hom( , R ) functor for ", Name( category ) ), category, category );
+     functor := CapFunctor( Concatenation( "Hom( , R ) functor for ", Name( category ) ), Opposite( category ), category );
      
      AddObjectFunction( functor, 
      
-           function( object )
-           local mat, N, M, mor; 
+           function( obj )
+           local object, mat, N, M, mor; 
+           
+           object := Opposite( obj );
            
            mat := UnderlyingMatrix( object );
            
@@ -283,8 +285,10 @@ InstallMethod( FunctorDualLeft,
            
     AddMorphismFunction( functor, 
     
-           function( new_source, morphism, new_range )
-           local matrix_of_morphism, mor1, mor2, mor, mor3, matrix_of_the_source, matrix_of_the_range;
+           function( new_source, morphism_, new_range )
+           local morphism, matrix_of_morphism, mor1, mor2, mor, mor3, matrix_of_the_source, matrix_of_the_range;
+           
+           morphism := Opposite( morphism_ );
            
            matrix_of_morphism := UnderlyingMatrix( morphism );
            
@@ -320,12 +324,14 @@ InstallMethod( FunctorDualRight,
      
      category := RightPresentations( ring );
      
-     functor := CapFunctor( Concatenation( "Hom( , R ) functor for ", Name( category ) ), category, category );
+     functor := CapFunctor( Concatenation( "Hom( , R ) functor for ", Name( category ) ), Opposite( category ), category );
      
      AddObjectFunction( functor, 
      
-           function( object )
-           local mat, N, M, mor; 
+           function( obj )
+           local object, mat, N, M, mor; 
+           
+           object := Opposite( obj );
            
            mat := UnderlyingMatrix( object );
            
@@ -341,8 +347,10 @@ InstallMethod( FunctorDualRight,
            
     AddMorphismFunction( functor, 
     
-           function( new_source, morphism, new_range )
-           local matrix_of_morphism, mor1, mor2, mor, mor3, matrix_of_the_source, matrix_of_the_range;
+           function( new_source, morphism_, new_range )
+           local morphism, matrix_of_morphism, mor1, mor2, mor, mor3, matrix_of_the_source, matrix_of_the_range;
+           
+           morphism := Opposite( morphism_ );
            
            matrix_of_morphism := UnderlyingMatrix( morphism );
            
@@ -385,7 +393,7 @@ InstallMethod( FunctorDoubleDualLeft,
      
            function( object )
            
-             return ApplyFunctor( dual_functor, ApplyFunctor( dual_functor, object ) );
+             return ApplyFunctor( dual_functor, Opposite( ApplyFunctor( dual_functor, Opposite( object ) ) ) );
              
            end );
            
@@ -393,7 +401,7 @@ InstallMethod( FunctorDoubleDualLeft,
     
            function( new_source, morphism, new_range )
            
-             return ApplyFunctor( dual_functor, ApplyFunctor( dual_functor, morphism ) );
+             return ApplyFunctor( dual_functor, Opposite( ApplyFunctor( dual_functor, Opposite( morphism ) ) ) );
            
            end );
            
@@ -417,7 +425,7 @@ InstallMethod( FunctorDoubleDualRight,
      
            function( object )
            
-             return ApplyFunctor( dual_functor, ApplyFunctor( dual_functor, object ) );
+             return ApplyFunctor( dual_functor, Opposite( ApplyFunctor( dual_functor, Opposite( object ) ) ) );
              
            end );
            
@@ -425,7 +433,7 @@ InstallMethod( FunctorDoubleDualRight,
     
            function( new_source, morphism, new_range )
            
-             return ApplyFunctor( dual_functor, ApplyFunctor( dual_functor, morphism ) );
+             return ApplyFunctor( dual_functor, Opposite( ApplyFunctor( dual_functor, Opposite( morphism ) ) ) );
            
            end );
            

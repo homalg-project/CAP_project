@@ -6,28 +6,6 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsCategoryOfRowsObjectRep",
-                       IsCategoryOfRowsObject and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfCategoryOfRowsObjects",
-        NewFamily( "TheFamilyOfCategoryOfRowsObjects" ) );
-
-BindGlobal( "TheTypeOfCategoryOfRowsObjects",
-        NewType( TheFamilyOfCategoryOfRowsObjects,
-                IsCategoryOfRowsObjectRep ) );
-
-DeclareRepresentation( "IsCategoryOfRowsMorphismRep",
-                       IsCategoryOfRowsMorphism and IsAttributeStoringRep,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfCategoryOfRowsMorphisms",
-        NewFamily( "TheFamilyOfCategoryOfRowsMorphisms" ) );
-
-BindGlobal( "TheTypeOfCategoryOfRowsMorphisms",
-        NewType( TheFamilyOfCategoryOfRowsMorphisms,
-                IsCategoryOfRowsMorphismRep ) );
-
 ####################################
 ##
 ## Constructors
@@ -48,6 +26,12 @@ InstallMethod( CategoryOfRows,
     SetIsAdditiveCategory( category, true );
     
     SetUnderlyingRing( category, homalg_ring );
+    
+    AddObjectRepresentation( category, IsCategoryOfRowsObject );
+    
+    AddMorphismRepresentation( category, IsCategoryOfRowsMorphism );
+
+    DisableAddForCategoricalOperations( category );
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( category );
     
@@ -74,8 +58,9 @@ InstallMethodWithCache( CategoryOfRowsObject,
     
     category_of_rows_object := rec( );
     
-    ObjectifyWithAttributes( category_of_rows_object, TheTypeOfCategoryOfRowsObjects,
-                             RankOfObject, rank
+    ObjectifyObjectForCAPWithAttributes( category_of_rows_object, 
+                                         category,
+                                         RankOfObject, rank
     );
 
     Add( category, category_of_rows_object );
@@ -138,10 +123,10 @@ InstallMethod( CategoryOfRowsMorphism,
     
     category_of_rows_morphism := rec( );
     
-    ObjectifyWithAttributes( category_of_rows_morphism, TheTypeOfCategoryOfRowsMorphisms,
-                             Source, source,
-                             Range, range,
-                             UnderlyingMatrix, homalg_matrix
+    ObjectifyMorphismForCAPWithAttributes( category_of_rows_morphism, category,
+                                           Source, source,
+                                           Range, range,
+                                           UnderlyingMatrix, homalg_matrix
     );
 
     Add( category, category_of_rows_morphism );
@@ -493,8 +478,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
-    ## bias in the first projection (for the performance of the Freyd category)
-    AddProjectionInFirstFactorOfWeakBiFiberProduct( category,
+    ##
+    AddProjectionOfBiasedWeakFiberProduct( category,
       function( morphism_1, morphism_2 )
         local homalg_matrix, weak_cokernel_object;
         
@@ -521,8 +506,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
-    ## bias in the first injection (for the performance of the Freyd category)
-    AddInjectionOfFirstCofactorOfWeakBiPushout( category,
+    ##
+    AddInjectionOfBiasedWeakPushout( category,
         function( morphism_1, morphism_2 )
         local homalg_matrix, weak_cokernel_object;
         

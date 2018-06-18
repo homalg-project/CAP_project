@@ -248,7 +248,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
         
         return;
         
-    elif not IsAbelianCategory( category ) then
+    elif not ( HasIsAbelianCategory( category ) and IsAbelianCategory( category ) ) then
         
         Error( "the category must be abelian" );
         

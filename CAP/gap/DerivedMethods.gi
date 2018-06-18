@@ -781,6 +781,17 @@ end : CategoryFilter := IsAbelianCategory,
       Description := "IsIsomorphism by deciding if it is a mono and an epi" );
 
 ##
+AddDerivationToCAP( IsIsomorphism,
+                    [ [ IsSplitMonomorphism, 1 ],
+                      [ IsSplitEpimorphism, 1 ] ],
+                 
+  function( morphism )
+    
+    return IsSplitMonomorphism( morphism ) and IsSplitEpimorphism( morphism );
+    
+end : Description := "IsIsomorphism by deciding if it is a split mono and a split epi" );
+
+##
 AddDerivationToCAP( IsEqualAsSubobjects,
                     [ [ IsDominating, 2 ] ],
                
@@ -1232,7 +1243,7 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
                       [ Inverse, 1 ] ],
                     
   function( epimorphism, test_morphism )
-    local kernel_emb, cokernel_colift_to_range_of_epimorphism, cokernel_colift_to_range_of_test_morphism, inverse;
+    local kernel_emb, cokernel_colift_to_range_of_epimorphism, cokernel_colift_to_range_of_test_morphism;
     
     kernel_emb := KernelEmbedding( epimorphism );
     
@@ -1244,7 +1255,32 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
     
     return PreCompose( Inverse( cokernel_colift_to_range_of_epimorphism ), cokernel_colift_to_range_of_test_morphism );
     
-end );
+end : CategoryFilter := IsAbelianCategory, 
+      Description := "ColiftAlongEpimorphism by inverting the cokernel colift from the cokernel of the kernel to the range of a given epimorphism");
+
+##
+AddDerivationToCAP( LiftAlongMonomorphism,
+                    [ [ CokernelProjection, 1 ],
+                      [ KernelLift, 2 ],
+                      [ PreCompose, 1 ],
+                      [ Inverse, 1 ] ],
+                    
+  function( monomorphism, test_morphism )
+    local cokernel_proj, kernel_lift_from_source_of_monomorphism, kernel_lift_from_source_of_test_morphism;
+    
+    cokernel_proj := CokernelProjection( monomorphism );
+    
+    kernel_lift_from_source_of_monomorphism :=
+      KernelLift( cokernel_proj, monomorphism );
+      
+    kernel_lift_from_source_of_test_morphism :=
+      KernelLift( cokernel_proj, test_morphism );
+    
+    return PreCompose( kernel_lift_from_source_of_test_morphism, Inverse( kernel_lift_from_source_of_monomorphism ) );
+    
+end : CategoryFilter := IsAbelianCategory, 
+      Description := "LiftAlongMonomorphism by inverting the kernel lift from the source to the kernel of the cokernel of a given monomorphism");
+
 
 ##
 AddDerivationToCAP( ComponentOfMorphismIntoDirectSum,
