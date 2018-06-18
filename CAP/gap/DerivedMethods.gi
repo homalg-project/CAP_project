@@ -1070,17 +1070,19 @@ AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
     
 end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the inverse of IsomorphismFromCokernelOfKernelToCoimage" );
 
-
 ##
 AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
-                    [ [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ],
-                      [ Inverse, 1 ] ],
-                      
+          
   function( diagram )
+    local direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum;
     
-    return Inverse( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( diagram ) );
+    direct_sum_diagonal_difference := DirectSumDiagonalDifference( diagram );
     
-end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the inverse of IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct" );
+    fiber_product_embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
+    
+    return KernelLift( direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum );
+    
+end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference using the universal property of the kernel" );
 
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
@@ -1132,17 +1134,14 @@ end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout using
 
 ##
 AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
-          
+                    [ [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ],
+                      [ Inverse, 1 ] ],
+                      
   function( diagram )
-    local direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum;
     
-    direct_sum_diagonal_difference := DirectSumDiagonalDifference( diagram );
+    return Inverse( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( diagram ) );
     
-    fiber_product_embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( diagram );
-    
-    return KernelLift( direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum );
-    
-end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference using the universal property of the kernel" );
+end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the inverse of IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct" );
 
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
