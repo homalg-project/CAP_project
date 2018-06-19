@@ -64,7 +64,7 @@ InstallMethod( LiftNaturalIsoFromIdToSomeToSerreQuotientCategory,
     
 end );
 
-BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
+InstallGlobalFunction( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
   
   function( category )
     local membership_function;
