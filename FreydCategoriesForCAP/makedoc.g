@@ -9,6 +9,10 @@ AutoDoc( "FreydCategoriesForCAP" : scaffold := true, autodoc :=
          maketest := rec( commands :=
                             [ "LoadPackage( \"CAP\" );",
                               "LoadPackage( \"IO_ForHomalg\" );",
+                              "LoadPackage( \"FreydCategoriesForCAP\" );",
+                              "LoadPackage( \"RingsForHomalg\" );",
+                              "LoadPackage( \"GaussForHomalg\" );",
+                              "LoadPackage( \"GeneralizedMorphismsForCAP\" );",
                               "HOMALG_IO.show_banners := false;",
                               "HOMALG_IO.suppress_PID := true;",
                               "HOMALG_IO.use_common_stream := true;",

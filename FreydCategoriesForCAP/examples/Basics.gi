@@ -5,7 +5,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
 
-#! @Example
+# @Example
 R := HomalgRingOfIntegers();
 cat := CategoryOfRows( R );
 obj1 := CategoryOfRowsObject( 1, cat );
@@ -187,4 +187,4 @@ IsCongruentForMorphisms( PreCompose( l, f ), PreCompose( a, d ) );
 
 l := Colift( c, PreCompose( a, d ) );
 IsCongruentForMorphisms( PreCompose( c, l ), PreCompose( a, d ) );
-#! @EndExample
+# @EndExample

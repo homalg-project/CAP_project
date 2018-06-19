@@ -112,13 +112,27 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID,
         
         images := [ ];
         
-        for path in basis_elements_source do
+        if IsQuotientOfPathAlgebraElement( elem_alpha ) then
             
-            Add( images,
-              CoefficientsOfPaths( basis_elements_range, Representative( elem_alpha * PathAsAlgebraElement( quiver_algebra, path ) * elem_beta ) )
-            );
+            for path in basis_elements_source do
+                
+                Add( images,
+                  CoefficientsOfPaths( basis_elements_range, Representative( elem_alpha * PathAsAlgebraElement( quiver_algebra, path ) * elem_beta ) )
+                );
+                
+            od;
             
-        od;
+        else
+        
+            for path in basis_elements_source do
+                
+                Add( images,
+                  CoefficientsOfPaths( basis_elements_range, ( elem_alpha * PathAsAlgebraElement( quiver_algebra, path ) * elem_beta ) )
+                );
+                
+            od;
+            
+        fi;
         
         return morphism_constructor( HomalgMatrix( images, size_source, size_range, ring ) );
         
@@ -139,7 +153,7 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID,
                    [ IsCapCategoryMorphism and MorphismFilter( bialgebroid ) ],
                    
       function( alpha )
-        local a, b, basis_elements, size_basis;
+        local a, b, basis_elements, size_basis, element;
         
         a := VertexNumber( UnderlyingVertex( Source( alpha ) ) );
         
@@ -155,9 +169,21 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID,
             
         fi;
         
-        return morphism_constructor(
-                 HomalgMatrix( CoefficientsOfPaths( basis_elements, Representative( UnderlyingQuiverAlgebraElement( alpha ) ) ), 1, size_basis, ring )
-               );
+        element := UnderlyingQuiverAlgebraElement( alpha );
+        
+        if IsQuotientOfPathAlgebraElement( element ) then
+            
+            return morphism_constructor(
+                    HomalgMatrix( CoefficientsOfPaths( basis_elements, Representative( element ) ), 1, size_basis, ring )
+                  );
+            
+        else
+            
+            return morphism_constructor(
+                    HomalgMatrix( CoefficientsOfPaths( basis_elements, element ), 1, size_basis, ring )
+                  );
+            
+        fi;
         
     end );
     
