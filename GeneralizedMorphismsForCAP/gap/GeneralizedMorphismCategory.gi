@@ -16,7 +16,7 @@ Domain := function( arg )
   
   if Length( arg ) = 1 and IsGeneralizedMorphism( arg[1] ) then
       
-      return DomainOfGeneralizedMorphism( arg[ 1 ] );
+      return DomainEmbedding( arg[ 1 ] );
       
   fi;
   
@@ -24,7 +24,7 @@ Domain := function( arg )
   
 end;
 
-InstallMethod( DomainOfGeneralizedMorphism,
+InstallMethod( DomainEmbedding,
                [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
@@ -56,7 +56,7 @@ InstallMethod( AssociatedMorphism,
     
 end );
 
-InstallMethod( Codomain,
+InstallMethod( CodomainProjection,
                [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
@@ -139,7 +139,8 @@ InstallMethod( IsTotal,
                [ IsGeneralizedMorphism ],
                HasFullDomain );
 
-InstallMethod( CombinedImageEmbedding,
+##
+InstallMethod( GeneralizedImageEmbedding,
                [ IsGeneralizedMorphism ],
                
   function( generalized_morphism )
@@ -148,6 +149,56 @@ InstallMethod( CombinedImageEmbedding,
     triple := DomainAssociatedMorphismCodomainTriple( generalized_morphism );
     
     return ProjectionInFactorOfFiberProduct( [ ImageEmbedding( triple[ 2 ] ), triple[ 3 ] ], 2 );
+    
+end );
+
+##
+InstallMethod( DefectEmbedding,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return KernelEmbedding( CodomainProjection( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( GeneralizedKernelEmbedding,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return DefectEmbedding( PseudoInverse( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( GeneralizedCokernelProjection,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return CokernelProjection( GeneralizedImageEmbedding( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( GeneralizedCoimageProjection,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return CokernelProjection( GeneralizedKernelEmbedding( generalized_morphism ) );
+    
+end );
+
+##
+InstallMethod( CodefectProjection,
+               [ IsGeneralizedMorphism ],
+               
+  function( generalized_morphism )
+    
+    return CokernelProjection( DomainEmbedding( generalized_morphism ) );
     
 end );
 

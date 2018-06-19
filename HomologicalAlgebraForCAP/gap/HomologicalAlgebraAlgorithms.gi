@@ -81,13 +81,13 @@ end );
 #     
 #     composition := PreCompose( composition, cokernel_proj );
     
-#     domain := DomainOfGeneralizedMorphism( composition );
+#     domain := DomainEmbedding( composition );
 #     
 #     inverse_domain := Inverse( domain );
     
     
 #     
-#     codomain := Codomain( composition );
+#     codomain := CodomainProjection( composition );
 #     
 #     inverse_codomain := Inverse( codomain );
 #     
@@ -127,9 +127,9 @@ InstallMethodWithCacheFromObject( GetSpectralSequenceObjectFromConsecutiveGenera
   function( generalized_morphism_into_entry, generalized_morphism_from_entry )
     local mono, epi, image_embedding;
     
-    mono := DomainOfGeneralizedMorphism( generalized_morphism_from_entry );
+    mono := DomainEmbedding( generalized_morphism_from_entry );
     
-    epi := Codomain( generalized_morphism_into_entry );
+    epi := CodomainProjection( generalized_morphism_into_entry );
     
     image_embedding := ImageEmbedding( PreCompose( mono, epi ) );
     
@@ -144,9 +144,9 @@ InstallMethodWithCacheFromObject( GetSpectralSequenceDifferentialFromConsecutive
   function( generalized_morphism_into_source, generalized_differential, generalized_morphism_from_range )
     local source_epi, range_mono, generalized_morphism;
     
-    source_epi := GeneralizedInverse( Codomain( generalized_morphism_into_source ) );
+    source_epi := GeneralizedInverse( CodomainProjection( generalized_morphism_into_source ) );
     
-    range_mono := GeneralizedInverse( DomainOfGeneralizedMorphism( generalized_morphism_from_range ) );
+    range_mono := GeneralizedInverse( DomainEmbedding( generalized_morphism_from_range ) );
     
     generalized_morphism := PreCompose( source_epi, PreCompose( generalized_differential, range_mono ) );
     
