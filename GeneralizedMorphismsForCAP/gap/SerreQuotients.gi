@@ -63,3 +63,33 @@ InstallMethod( LiftNaturalIsoFromIdToSomeToSerreQuotientCategory,
     return new_nat_trans;
     
 end );
+
+InstallGlobalFunction( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
+  
+  function( category )
+    local membership_function;
+    
+    membership_function := SubcategoryMembershipTestFunctionForSerreQuotient( category );
+
+    AddIsWellDefinedForObjects( category,
+      
+      function( object )
+        
+        return IsWellDefined( UnderlyingHonestObject( object ) );
+        
+    end );
+    
+    AddIsWellDefinedForMorphisms( category,
+      
+      function( morphism )
+        local generalized_morphism;
+        
+        generalized_morphism := UnderlyingGeneralizedMorphism( morphism );
+        
+        return
+          membership_function( Range( CodefectProjection( generalized_morphism ) ) ) and
+          membership_function( Source( DefectEmbedding( generalized_morphism ) ) );
+        
+    end );
+    
+end );

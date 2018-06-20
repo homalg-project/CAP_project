@@ -183,3 +183,5 @@ DeclareOperation( "LiftCovariantEndoFunctorToSerreQuotientCategory",
 
 DeclareOperation( "LiftNaturalIsoFromIdToSomeToSerreQuotientCategory",
                   [ IsCapCategory, IsCapNaturalTransformation ] );
+
+DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT" );
