@@ -13,6 +13,10 @@ m := AsCategoryOfRowsMorphism(
 );
 mu := AsCokernelImageClosureMorphism( m );
 
+C := CokernelObject( mu );
+C2 := AsFinitelyPresentedCokernelImageClosureObject( m );
+IsEqualForObjects( C, C2 );
+#! true
 n := AsCategoryOfRowsMorphism( 
     HomalgMatrix( "[[x,y],[y^2,z]]", 2, 2, R )
 );

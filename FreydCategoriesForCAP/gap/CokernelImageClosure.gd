@@ -43,6 +43,9 @@ DeclareOperation( "CokernelImageClosureMorphism",
 DeclareAttribute( "AsCokernelImageClosureObject",
                   IsCapCategoryObject );
 
+DeclareAttribute( "AsFinitelyPresentedCokernelImageClosureObject",
+                  IsCapCategoryMorphism );
+
 DeclareAttribute( "AsCokernelImageClosureMorphism",
                   IsCapCategoryMorphism );
 

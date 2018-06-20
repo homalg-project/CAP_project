@@ -116,6 +116,16 @@ InstallMethod( AsCokernelImageClosureObject,
 end );
 
 ##
+InstallMethod( AsFinitelyPresentedCokernelImageClosureObject,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    
+    return CokernelImageClosureObject( IdentityMorphism( Range( morphism ) ), morphism );
+    
+end );
+
+##
 InstallMethod( CokernelImageClosureMorphism,
                [ IsCokernelImageClosureObject, IsCapCategoryMorphism, IsCokernelImageClosureObject ],
                
