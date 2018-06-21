@@ -2388,7 +2388,7 @@ DeclareOperation( "AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProduc
 ####################################
 
 #! For a given list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
-#! an Equalizer of $D$ consists of three parts:
+#! an equalizer of $D$ consists of three parts:
 #! * an object $E$,
 #! * a morphism $\iota: E \rightarrow A $ such that
 #!  $\beta_i \circ \iota  \sim_{E, B} \beta_j \circ \iota$ for all pairs $i,j$.
@@ -2397,7 +2397,7 @@ DeclareOperation( "AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProduc
 #!  $\beta_i \circ \tau  \sim_{T, B} \beta_j \circ \tau$ for all pairs $i,j$
 #!  to a morphism $u( \tau ): T \rightarrow E$ such that
 #!  $\iota \circ u( \tau ) \sim_{T, A} \tau$.
-#! The triple $( E, \iota, u )$ is called an <Emph>Equalizer</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
+#! The triple $( E, \iota, u )$ is called an <Emph>equalizer</Emph> of $D$ if the morphisms $u( \tau )$ are uniquely determined up to
 #! congruence of morphisms.
 #! We denote the object $E$ of such a triple by $\mathrm{Equalizer}(D)$.
 #! We say that the morphism $u( \tau )$ is induced by the
@@ -2417,14 +2417,14 @@ DeclareOperation( "AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProduc
 #! There are two different ways to use this method:
 #! * The argument is a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
 #! * The arguments are morphisms $\beta_1: A \rightarrow B, \dots, \beta_n: A \rightarrow B$.
-#! The output is the Equalizer $\mathrm{Equalizer}(D)$.
+#! The output is the equalizer $\mathrm{Equalizer}(D)$.
 #! @Returns an object
 DeclareGlobalFunction( "Equalizer" );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
 #! and a morphism for method selection.
-#! The output is the Equalizer $\mathrm{Equalizer}(D)$.
+#! The output is the equalizer $\mathrm{Equalizer}(D)$.
 #! @Returns an object
 #! @Arguments D, method_selection_morphism
 DeclareOperationWithCache( "EqualizerOp",
@@ -2432,7 +2432,7 @@ DeclareOperationWithCache( "EqualizerOp",
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
-#! The Output is the equalizer embedding
+#! The output is the equalizer embedding
 #! $\iota: \mathrm{Equalizer}(D) \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), A )$
 #! @Arguments D
@@ -2442,7 +2442,7 @@ DeclareOperation( "EmbeddingOfEqualizer",
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
 #! and a morphism for method selection.
-#! The Output is the equalizer embedding
+#! The output is the equalizer embedding
 #! $\iota: \mathrm{Equalizer}(D) \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), A )$
 #! @Arguments D,method_selection_morphism
@@ -2460,24 +2460,14 @@ DeclareOperation( "EmbeddingOfEqualizerWithGivenEqualizer",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
 #! and a morphism $ \tau: T \rightarrow A $
 #! such that $\beta_i \circ \tau  \sim_{T, B} \beta_j \circ \tau$ for all pairs $i,j$.
 #! The output is the morphism
 #! $u( \tau ): T \rightarrow \mathrm{Equalizer}(D)$
 #! given by the universal property of the equalizer.
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
-#! a morphism $ \tau: T \rightarrow A $
-#! such that $\beta_i \circ \tau  \sim_{T, B} \beta_j \circ \tau$ for all pairs $i,j$,
-#! and a morphism for method selection.
-#! The output is the morphism
-#! $u( \tau ): T \rightarrow \mathrm{Equalizer}(D)$
-#! given by the universal property of the equalizer.
 #! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{Equalizer}(D) )$
-#! @Arguments D, tau, method_selection_morphism
+#! @Arguments D, tau
 DeclareOperation( "UniversalMorphismIntoEqualizer",
                   [ IsList, IsCapCategoryMorphism ] );
 
@@ -2538,7 +2528,7 @@ DeclareOperation( "AddEmbeddingOfEqualizer",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>EmbeddingOfEqualizerWithGivenEqualizer</C>.
-#! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n},P ) \mapsto \iota$
+#! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n},E ) \mapsto \iota$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
@@ -2592,13 +2582,14 @@ DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! The argument is a list of triples of morphisms
-#! $L = ( (\beta_i: A \rightarrow B, \mu: A \rightarrow A', \beta_i': A' \rightarrow B')_{i = 1 \dots n} )$
+#! The argument is a triple
+#! $L = ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \mu: A \rightarrow A', (\beta_i': A' \rightarrow B')_{i = 1 \dots n} )$
+#! with morphisms $\beta_i$, $\mu$ and $\beta_i'$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu \sim_{A,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$.
 #! The output is the morphism
 #! $\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} )$
-#! given by the functorality of the Equalizer.
+#! given by the functorality of the equalizer.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ))$
 #! @Arguments L
 DeclareOperation( "EqualizerFunctorial",
@@ -2606,8 +2597,9 @@ DeclareOperation( "EqualizerFunctorial",
 
 #! @Description
 #! The arguments are an object $s = \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} )$,
-#! a list of triples of morphisms
-#! $L = ( (\beta_i: A \rightarrow B, \mu: A \rightarrow A', \beta_i': A' \rightarrow B')_{i = 1 \dots n} )$
+#! a triple
+#! $L = ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \mu: A \rightarrow A', (\beta_i': A' \rightarrow B')_{i = 1 \dots n} )$
+#! with morphisms $\beta_i$, $\mu$ and $\beta_i'$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu \sim_{A,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$,
 #! and an object $r = \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} )$.
@@ -2623,7 +2615,7 @@ DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>EqualizerFunctorialWithGivenEqualizers</C>.
-#! $F: ( \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), (\beta_i: A \rightarrow B, \mu: A \rightarrow A', \beta_i': A' \rightarrow B')_{i = 1 \dots n}, \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm {Equalizer}( ( \beta_i' )_{i=1 \dots n} ) )$
+#! $F: ( \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), ( ( \beta_i: A \rightarrow B )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': A' \rightarrow B' )_{i = 1 \dots n} ), \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm {Equalizer}( ( \beta_i' )_{i=1 \dots n} ) )$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
@@ -3234,31 +3226,21 @@ DeclareOperation( "ProjectionOntoCoequalizerOp",
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
 #! and an object $C = \mathrm{Coequalizer}(D)$.
 #! The output is the projection
-#! $\pi: A \rightarrow \mathrm{Coequalizer}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( A, \mathrm{Coequalizer}( D ) )$.
+#! $\pi: A \rightarrow C$.
+#! @Returns a morphism in $\mathrm{Hom}( A, C )$.
 #! @Arguments D,C
 DeclareOperation( "ProjectionOntoCoequalizerWithGivenCoequalizer",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
 #! and a morphism $\tau: A \rightarrow T $ such that
 #! $\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j$ for all pairs $i,j$.
 #! The output is the morphism
 #! $u( \tau ): \mathrm{Coequalizer}(D) \rightarrow T$
 #! given by the universal property of the coequalizer.
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
-#! a morphism $\tau: A \rightarrow T $ such that
-#! $\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j$ for all pairs $i,j$,
-#! and a morphism for method selection.
-#! The output is the morphism
-#! $u( \tau ): \mathrm{Coequalizer}(D) \rightarrow T$
-#! given by the universal property of the coequalizer.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coequalizer}(D), T )$
-#! @Arguments D, tau, method_selection_morphism
+#! @Arguments D, tau
 DeclareOperation( "UniversalMorphismFromCoequalizer",
                   [ IsList, IsCapCategoryMorphism ] );
 
@@ -3374,8 +3356,9 @@ DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
 
 
 #! @Description
-#! The argument is a list
-#! $L = ( ( \beta_i: B \rightarrow A, \mu: A \rightarrow A', \beta_i': B' \rightarrow A' )_{i = 1 \dots n} )$
+#! The argument is a triple
+#! $L = ( ( \beta_i: B \rightarrow A)_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n} )$
+#! with morphisms $\beta_i$, $\mu$ and $\beta_i'$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i$ for $i = 1, \dots n$.
 #! The output is the morphism
@@ -3388,8 +3371,9 @@ DeclareOperation( "CoequalizerFunctorial",
 
 #! @Description
 #! The arguments are an object $s = \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n )$,
-#! a list
-#! $L = ( ( \beta_i: B \rightarrow A, \mu: A \rightarrow A', \beta_i': B' \rightarrow A' )_{i = 1 \dots n} )$
+#! a triple
+#! $L = ( ( \beta_i: B \rightarrow A )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n} )$
+#! with morphisms $\beta_i$, $\mu$ and $\beta_i'$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i$ for $i = 1, \dots n$,
 #! and an object $r = \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n )$.
@@ -3405,7 +3389,7 @@ DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>CoequalizerFunctorialWithGivenCoequalizers</C>.
-#! $F: ( \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow A, \mu: A \rightarrow A', \beta_i': B' \rightarrow A' )_{i = 1 \dots n}, \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) )$
+#! $F: ( \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ), ( ( \beta_i: B \rightarrow A )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n} ), \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) )$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",

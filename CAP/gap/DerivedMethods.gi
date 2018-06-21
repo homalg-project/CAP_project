@@ -1740,7 +1740,7 @@ AddDerivationToCAP( CoequalizerFunctorialWithGivenCoequalizers,
         
         return UniversalMorphismFromCoequalizer( morphism_of_morphisms[3], range );
         
-end : Description := "EqualizerFunctorialWithGivenEqualizers using the universality of the equalizer" );
+end : Description := "CoequalizerFunctorialWithGivenCoequalizers using the universality of the coequalizer" );
 
 ##
 AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,
@@ -2210,7 +2210,7 @@ AddDerivationToCAP( FiberProduct,
     
     return Source( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram( diagram ) );
     
-end : Description := "FiberProduct as the source of IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram( diagram )" );
+end : Description := "FiberProduct as the source of IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram" );
 
 ##
 AddDerivationToCAP( Pushout,
@@ -2219,7 +2219,7 @@ AddDerivationToCAP( Pushout,
     
     return Range( IsomorphismFromCoequalizerOfCoproductDiagramToPushout( diagram ) );
     
-end : Description := "Pushout as the range of IsomorphismFromCoequalizerOfCoproductDiagramToPushout( diagram )" );
+end : Description := "Pushout as the range of IsomorphismFromCoequalizerOfCoproductDiagramToPushout" );
 
 ##
 AddDerivationToCAP( SomeProjectiveObject,
