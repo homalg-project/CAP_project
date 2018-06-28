@@ -76,3 +76,31 @@ DeclareAttribute( "MorphismWitness",
 
 DeclareAttribute( "WitnessForBeingCongruentToZero",
                   IsCokernelImageClosureMorphism );
+
+#######################################
+##
+#! @Section Functors
+##
+#######################################
+
+##
+DeclareAttribute( "FunctorCokernelImageClosureToFreydCategory",
+                  IsCapCategory );
+
+##
+DeclareAttribute( "FunctorFreydCategoryToCokernelImageClosure",
+                  IsCapCategory );
+
+#######################################
+##
+#! @Section Natural Transformations
+##
+#######################################
+
+##
+DeclareAttribute( "NaturalIsomorphismFromIdentityToFinitePresentationOfCokernelImageClosureObject",
+                  IsCapCategory );
+
+##
+DeclareAttribute( "NaturalIsomorphismFromFinitePresentationOfCokernelImageClosureObjectToIdentity",
+                  IsCapCategory );

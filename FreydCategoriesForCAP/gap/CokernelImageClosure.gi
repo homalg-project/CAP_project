@@ -777,3 +777,149 @@ InstallMethod( Display,
     Display( MorphismDatum( cokernel_image_closure_morphism ) );
     
 end );
+
+####################################
+##
+## Functors
+##
+####################################
+
+##
+InstallMethod( FunctorCokernelImageClosureToFreydCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local cokernel_image_closure, freyd_category, functor;
+    
+    cokernel_image_closure := CokernelImageClosure( underlying_category );
+    
+    if not HasIsAbelianCategory( cokernel_image_closure ) and IsAbelianCategory( cokernel_image_closure ) then
+        
+        Error( "The cokernel image closure of the given additive category is not abelian" );
+        
+    fi;
+    
+    freyd_category := FreydCategory( underlying_category );
+    
+    functor := CapFunctor( Concatenation( "Functor Cokernel image closure to Freyd category of ", Name( underlying_category ) ), cokernel_image_closure, freyd_category );
+    
+    AddObjectFunction( functor,
+      function( cokernel_image_closure_object )
+        
+        return FreydCategoryObject(
+                ProjectionOfBiasedWeakFiberProduct( GeneratorMorphism( cokernel_image_closure_object ), RelationMorphism( cokernel_image_closure_object ) )
+        );
+        
+    end );
+    
+    AddMorphismFunction( functor,
+      function( new_source, morphism, new_range )
+        
+        return FreydCategoryMorphism( new_source, MorphismDatum( morphism ), new_range );
+        
+    end );
+    
+    return functor;
+
+end );
+
+##
+InstallMethod( FunctorFreydCategoryToCokernelImageClosure,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local cokernel_image_closure, freyd_category, functor;
+    
+    cokernel_image_closure := CokernelImageClosure( underlying_category );
+    
+    freyd_category := FreydCategory( underlying_category );
+    
+    functor := CapFunctor( Concatenation( "Functor Freyd category to Cokernel image closure of ", Name( underlying_category ) ), freyd_category, cokernel_image_closure );
+    
+    AddObjectFunction( functor,
+      function( freyd_category_object )
+        
+        return AsFinitelyPresentedCokernelImageClosureObject( RelationMorphism( freyd_category_object ) );
+        
+    end );
+    
+    AddMorphismFunction( functor,
+      function( new_source, morphism, new_range )
+        
+        return CokernelImageClosureMorphism( new_source, MorphismDatum( morphism ), new_range );
+        
+    end );
+    
+    return functor;
+
+end );
+
+#######################################
+##
+## Natural Transformations
+##
+#######################################
+
+##
+InstallMethod( NaturalIsomorphismFromIdentityToFinitePresentationOfCokernelImageClosureObject,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local cokernel_image_closure, auto, natural_isomorphism;
+    
+    cokernel_image_closure := CokernelImageClosure( underlying_category );
+    
+    auto := PreCompose( 
+        FunctorCokernelImageClosureToFreydCategory( underlying_category ),
+        FunctorFreydCategoryToCokernelImageClosure( underlying_category )
+    );
+    
+    natural_isomorphism := NaturalTransformation(
+        Concatenation( "Natural isomorphism from Id to FinitePresentationOfCokernelImageClosureObject over ",  Name( underlying_category ) ),
+        IdentityMorphism( AsCatObject( cokernel_image_closure ) ), auto 
+    );
+    
+    AddNaturalTransformationFunction( natural_isomorphism,
+      function( id_object, object, standard_object )
+        
+        return CokernelImageClosureMorphism(
+            id_object, IdentityMorphism( Source( GeneratorMorphism( object ) ) ), standard_object
+        );
+        
+    end );
+    
+    return natural_isomorphism;
+    
+end );
+
+##
+InstallMethod( NaturalIsomorphismFromFinitePresentationOfCokernelImageClosureObjectToIdentity,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local cokernel_image_closure, auto, natural_isomorphism;
+    
+    cokernel_image_closure := CokernelImageClosure( underlying_category );
+    
+    auto := PreCompose( 
+        FunctorCokernelImageClosureToFreydCategory( underlying_category ),
+        FunctorFreydCategoryToCokernelImageClosure( underlying_category )
+    );
+    
+    natural_isomorphism := NaturalTransformation( 
+        Concatenation( "Natural isomorphism from FinitePresentationOfCokernelImageClosureObject to Id over ",  Name( underlying_category ) ),
+        auto, IdentityMorphism( AsCatObject( cokernel_image_closure ) ) 
+    );
+    
+    AddNaturalTransformationFunction( natural_isomorphism,
+      function( standard_object, object, id_object )
+        
+        return CokernelImageClosureMorphism(
+           standard_object, IdentityMorphism( Source( GeneratorMorphism( object ) ) ), id_object 
+        );
+        
+    end );
+    
+    return natural_isomorphism;
+    
+end );

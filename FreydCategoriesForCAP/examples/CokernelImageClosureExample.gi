@@ -56,4 +56,15 @@ emb := KernelEmbedding( mu );
 p := PreCompose( EpimorphismFromSomeProjectiveObject( kernel ), KernelEmbedding( mu ) );
 KernelLift( mu, p );
 LiftAlongMonomorphism( emb, p );
+I_to_A := FunctorCokernelImageClosureToFreydCategory( RowsR );
+A_to_I := FunctorFreydCategoryToCokernelImageClosure( RowsR );
+ApplyFunctor( I_to_A, kernel );
+ApplyFunctor( A_to_I, ApplyFunctor( I_to_A, kernel ) );
+nu := NaturalIsomorphismFromIdentityToFinitePresentationOfCokernelImageClosureObject( RowsR );
+mu := NaturalIsomorphismFromFinitePresentationOfCokernelImageClosureObjectToIdentity( RowsR );
+IsCongruentForMorphisms(
+    IdentityMorphism( kernel ),
+    PreCompose( ApplyNaturalTransformation( nu, kernel ), ApplyNaturalTransformation( mu, kernel ) )
+);
+# true
 # @EndExample

@@ -551,6 +551,7 @@ DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
 DeclareOperation( "BiasedWeakFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+## corresponds to projection in 1st factor
 DeclareOperation( "ProjectionOfBiasedWeakFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
