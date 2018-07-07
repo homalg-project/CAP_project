@@ -744,7 +744,7 @@ InstallGlobalFunction( CachingStatistic,
             Print( "crisp cache, " );
         fi;
         Print( "hits: ", String( current_cache!.hit_counter ), ", misses: ", String( current_cache!.miss_counter ), ", " );
-        Print( String( Length( BoundPositions( current_cache!.value ) ) ), " objects stored\n" );
+        Print( String( Length( PositionsProperty( current_cache!.value, ReturnTrue ) ) ), " objects stored\n" );
     od;
     
 end );
@@ -781,7 +781,7 @@ if IsPackageMarkedForLoading( "Browse", ">=0" ) then
                 Add( current_list, "crisp" );
             fi;
             
-            Append( current_list, [ current_cache!.hit_counter, current_cache!.miss_counter, Length( BoundPositions( current_cache!.value ) ) ] );
+            Append( current_list, [ current_cache!.hit_counter, current_cache!.miss_counter, Length( PositionsProperty( current_cache!.value, ReturnTrue ) ) ] );
             Add( value_matrix, current_list );
         od;
         
