@@ -154,6 +154,43 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
 end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismIntoZeroObject computing the zero morphism" );
 
+##
+AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
+        
+  function( diagram, projection_number )
+    local D, diagram_of_equalizer, iota;
+    
+    D := List( diagram, Source );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> ProjectionInFactorOfDirectProduct( D, i ) );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram_of_equalizer[i], diagram[i] ) );
+    
+    iota := EmbeddingOfEqualizer( diagram_of_equalizer );
+    
+    return PreCompose( [ IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram( diagram ), iota, ProjectionInFactorOfDirectProduct( D, projection_number ) ] );
+    
+  end : Description := "ProjectionInFactorOfFiberProduct by composing the embedding of equalizer with the direct product projection" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoFiberProduct,
+        
+  function( diagram, tau )
+    local D, diagram_of_equalizer, chi, psi;
+    
+    D := List( diagram, Source );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> ProjectionInFactorOfDirectProduct( D, i ) );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram_of_equalizer[i], diagram[i] ) );
+    
+    chi := UniversalMorphismIntoDirectProduct( D, tau );
+
+    psi := UniversalMorphismIntoEqualizer( diagram_of_equalizer, chi );
+    
+    return PreCompose( psi, IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct( diagram ) );
+    
+  end : Description := "UniversalMorphismIntoFiberProduct as the universal morphism into equalizer of a univeral morphism into direct product" );
 
 ##
 AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
@@ -170,6 +207,44 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
     return PreCompose( embedding_in_direct_sum, projection );
     
   end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
+
+##
+AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
+        
+  function( diagram, injection_number )
+    local D, diagram_of_coequalizer, pi;
+    
+    D := List( diagram, Range );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> InjectionOfCofactorOfCoproduct( D, i ) );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram[i], diagram_of_coequalizer[i] ) );
+    
+    pi := ProjectionOntoCoequalizer( diagram_of_coequalizer );
+    
+    return PreCompose( [ InjectionOfCofactorOfCoproduct( D, injection_number ), pi, IsomorphismFromCoequalizerOfCoproductDiagramToPushout( diagram ) ] );
+    
+  end : Description := "InjectionOfCofactorOfPushout by composing the coproduct injection with the projection onto coequalizer" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromPushout,
+        
+  function( diagram, tau )
+    local D, diagram_of_coequalizer, chi, psi;
+    
+    D := List( diagram, Range );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> InjectionOfCofactorOfCoproduct( D, i ) );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram[i], diagram_of_coequalizer[i] ) );
+    
+    chi := UniversalMorphismFromCoproduct( D, tau );
+    
+    psi := UniversalMorphismFromCoequalizer( diagram_of_coequalizer, chi );
+    
+    return PreCompose( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram( diagram ), psi );
+    
+  end : Description := "UniversalMorphismFromPushout as the universal morphism from coequalizer of a univeral morphism from coproduct" );
 
 ##
 AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
@@ -460,6 +535,34 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
     return ColiftAlongEpimorphism( test_factorization[1], coimage_projection );
     
 end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and ColiftAlongEpimorphism" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoEqualizer,
+  function( diagram, test_morphism )
+    
+    return LiftAlongMonomorphism( EmbeddingOfEqualizer( diagram ), test_morphism );
+    
+  end,
+  
+  function( diagram, test_morphism, equalizer )
+    
+    return LiftAlongMonomorphism( EmbeddingOfEqualizerWithGivenEqualizer( diagram, equalizer ), test_morphism );
+    
+end : Description := "UniversalMorphismIntoEqualizer using LiftAlongMonomorphism and EmbeddingOfEqualizer" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoequalizer,
+  function( diagram, test_morphism )
+    
+    return ColiftAlongEpimorphism( ProjectionOntoCoequalizer( diagram ), test_morphism );
+    
+  end,
+
+  function( diagram, test_morphism, coequalizer )
+      
+      return ColiftAlongEpimorphism( ProjectionOntoCoequalizerWithGivenCoequalizer( diagram, coequalizer ), test_morphism );
+      
+end : Description := "UniversalMorphismFromCoequalizer using ColiftAlongEpimorphism and ProjectionOntoCoequalizer" );
 
 ###########################
 ##
@@ -1067,6 +1170,28 @@ AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
 end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the inverse of IsomorphismFromFiberProductToKernelOfDiagonalDifference" );
 
 ##
+AddDerivationToCAP( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
+                    [ [ IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct, 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct( diagram ) );
+    
+end : Description := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram as the inverse of IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct" );
+
+##
+AddDerivationToCAP( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct,
+                    [ [ IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram, 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram( diagram ) );
+    
+end : Description := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct as the inverse of IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram" );
+
+##
 AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
                     [ [ IsomorphismFromCokernelOfDiagonalDifferenceToPushout , 1 ],
                       [ Inverse, 1 ] ],
@@ -1087,6 +1212,28 @@ AddDerivationToCAP( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
     return Inverse( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ) );
     
 end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as the inverse of IsomorphismFromPushoutToCokernelOfDiagonalDifference" );
+
+##
+AddDerivationToCAP( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
+                    [ [ IsomorphismFromCoequalizerOfCoproductDiagramToPushout , 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromCoequalizerOfCoproductDiagramToPushout( diagram ) );
+    
+end : Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the inverse of IsomorphismFromCoequalizerOfCoproductDiagramToPushout" );
+
+##
+AddDerivationToCAP( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
+                    [ [ IsomorphismFromPushoutToCoequalizerOfCoproductDiagram, 1 ],
+                      [ Inverse, 1 ] ],
+                      
+  function( diagram )
+    
+    return Inverse( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram( diagram ) );
+    
+end : Description := "IsomorphismFromCoequalizerOfCoproductDiagramToPushout as the inverse of IsomorphismFromPushoutToCoequalizerOfCoproductDiagram" );
 
 ##
 AddDerivationToCAP( ColiftAlongEpimorphism,
@@ -1301,6 +1448,80 @@ end : CategoryFilter := IsAdditiveCategory,
 
 
 ##
+AddDerivationToCAP( AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts,
+                    [ [ PreCompose, 2 ],
+                      [ DirectProduct, 2 ],
+                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ] ],
+                 
+  function( s, a, b, c, r )
+    local D, bc, pi_b, pi_c, pi_a, pi_bc, ab, pi_ab;
+    
+    D := [ b, c ];
+    
+    bc := DirectProduct( D );
+    
+    pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, bc );
+    pi_c := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, bc );
+    
+    D := [ a, bc ];
+    
+    pi_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, s );
+    pi_bc := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, s );
+    
+    pi_b := PreCompose( pi_bc, pi_b );
+    pi_c := PreCompose( pi_bc, pi_c );
+    
+    D := [ a, b ];
+    
+    ab := DirectProduct( D );
+    
+    pi_ab := UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_a, pi_b ], ab );
+    
+    D := [ ab, c ];
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_ab, pi_c ], r );
+    
+end : Description := "AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts using the universal morphism into direct product");
+
+##
+AddDerivationToCAP( AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts,
+                    [ [ PreCompose, 2 ],
+                      [ DirectProduct, 2 ],
+                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ] ],
+                 
+  function( s, a, b, c, r )
+    local D, ab, pi_a, pi_b, pi_ab, pi_c, bc, pi_bc;
+    
+    D := [ a, b ];
+    
+    ab := DirectProduct( D );
+    
+    pi_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, ab );
+    pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, ab );
+    
+    D := [ ab, c ];
+    
+    pi_ab := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, s );
+    pi_c := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, s );
+    
+    pi_a := PreCompose( pi_ab, pi_a );
+    pi_b := PreCompose( pi_ab, pi_b );
+    
+    D := [ b, c ];
+    
+    bc := DirectProduct( D );
+    
+    pi_bc := UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_b, pi_c ], bc );
+    
+    D := [ a, bc ];
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_a, pi_bc ], r );
+    
+end : Description := "AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts using the universal morphism into direct product");
+
+##
 AddDerivationToCAP( TerminalObjectFunctorial,
                     [ [ TerminalObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
@@ -1436,9 +1657,22 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
     
 end : Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
 
-
-
-
+##
+AddDerivationToCAP( EqualizerFunctorialWithGivenEqualizers,
+                    [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the right number
+                      [ EmbeddingOfEqualizer, 1 ],
+                      [ UniversalMorphismIntoEqualizer, 1 ] ],
+        
+  function( equalizer_source, morphism_of_morphisms, equalizer_range )
+    local embedding, source;
+        
+        embedding := EmbeddingOfEqualizer( morphism_of_morphisms[1] );
+        
+        source := PreCompose( embedding, morphism_of_morphisms[2] );
+        
+        return UniversalMorphismIntoEqualizer( morphism_of_morphisms[3], source );
+        
+end : Description := "EqualizerFunctorialWithGivenEqualizers using the universality of the equalizer" );
 
 ##
 AddDerivationToCAP( FiberProductFunctorialWithGivenFiberProducts,
@@ -1490,6 +1724,23 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     
 end : Description := "DirectSumCodiagonalDifference using the operations defining this morphism" );
 
+
+##
+AddDerivationToCAP( CoequalizerFunctorialWithGivenCoequalizers,
+                    [ [ PreCompose, 2 ], ## Length( morphism_of_morphisms ) would be the right number
+                      [ ProjectionOntoCoequalizer, 1 ],
+                      [ UniversalMorphismFromCoequalizer, 1 ] ],
+        
+  function( coequalizer_source, morphism_of_morphisms, coequalizer_range )
+    local projection, range;
+        
+        projection := ProjectionOntoCoequalizer( morphism_of_morphisms[1] );
+        
+        range := PreCompose( morphism_of_morphisms[2], projection );
+        
+        return UniversalMorphismFromCoequalizer( morphism_of_morphisms[3], range );
+        
+end : Description := "CoequalizerFunctorialWithGivenCoequalizers using the universality of the coequalizer" );
 
 ##
 AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,
@@ -1953,6 +2204,24 @@ AddDerivationToCAP( Coimage,
 end : Description := "Coimage as the source of IsomorphismFromCoimageToCokernelOfKernel" );
 
 ##
+AddDerivationToCAP( FiberProduct,
+      
+  function( diagram )
+    
+    return Source( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram( diagram ) );
+    
+end : Description := "FiberProduct as the source of IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram" );
+
+##
+AddDerivationToCAP( Pushout,
+      
+  function( diagram )
+    
+    return Range( IsomorphismFromCoequalizerOfCoproductDiagramToPushout( diagram ) );
+    
+end : Description := "Pushout as the range of IsomorphismFromCoequalizerOfCoproductDiagramToPushout" );
+
+##
 AddDerivationToCAP( SomeProjectiveObject,
                     [ [ EpimorphismFromSomeProjectiveObject, 1 ] ],
                     
@@ -1972,6 +2241,25 @@ AddDerivationToCAP( SomeInjectiveObject,
     
 end : Description := "SomeInjectiveObject as the range of MonomorphismIntoSomeInjectiveObject" );
 
+##
+AddDerivationToCAP( Equalizer,
+                    [ [ EmbeddingOfEqualizer, 1 ] ],
+                    
+function( diagram )
+    
+    return Source( EmbeddingOfEqualizer( diagram ) );
+    
+end : Description := "Equalizer as the source of EmbeddingOfEqualizer" );
+
+##
+AddDerivationToCAP( Coequalizer,
+                    [ [ ProjectionOntoCoequalizer, 1 ] ],
+                    
+  function( diagram )
+    
+    return Range( ProjectionOntoCoequalizer( diagram ) );
+    
+end : Description := "Coequalizer as the range of ProjectionOntoCoequalizer" );
 
 ###########################
 ##
@@ -2079,6 +2367,64 @@ AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
     
 end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the identity of the kernel of diagonal difference" );
 
+##
+AddFinalDerivation( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
+                    [ [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number
+                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+                      [ Equalizer, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ FiberProduct,
+                      ProjectionInFactorOfFiberProduct,
+                      ProjectionInFactorOfFiberProductWithGivenFiberProduct,
+                      UniversalMorphismIntoFiberProduct,
+                      UniversalMorphismIntoFiberProductWithGivenFiberProduct,
+                      IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
+                      IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct ],
+                    
+  function( diagram )
+    local D, diagram_of_equalizer, equalizer_of_direct_product_diagram;
+    
+    D := List( diagram, Source );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> ProjectionInFactorOfDirectProduct( D, i ) );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram_of_equalizer[i], diagram[i] ) );
+    
+    equalizer_of_direct_product_diagram := Equalizer( diagram_of_equalizer );
+    
+    return IdentityMorphism( equalizer_of_direct_product_diagram );
+
+end : Description := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram as the identity of the equalizer of direct product diagram" );
+
+##
+AddFinalDerivation( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct,
+                    [ [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number
+                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+                      [ Equalizer, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ FiberProduct,
+                      ProjectionInFactorOfFiberProduct,
+                      ProjectionInFactorOfFiberProductWithGivenFiberProduct,
+                      UniversalMorphismIntoFiberProduct,
+                      UniversalMorphismIntoFiberProductWithGivenFiberProduct,
+                      IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
+                      IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct ],
+                    
+  function( diagram )
+    local D, diagram_of_equalizer, equalizer_of_direct_product_diagram;
+    
+    D := List( diagram, Source );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> ProjectionInFactorOfDirectProduct( D, i ) );
+    
+    diagram_of_equalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram_of_equalizer[i], diagram[i] ) );
+    
+    equalizer_of_direct_product_diagram := Equalizer( diagram_of_equalizer );
+    
+    return IdentityMorphism( equalizer_of_direct_product_diagram );
+
+end : Description := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct as the identity of the equalizer of direct product diagram" );
+
 ## Final methods for Pushout
 
 ##
@@ -2126,6 +2472,64 @@ AddFinalDerivation( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
     return IdentityMorphism( cokernel_of_diagonal_difference );
     
 end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as the identity of the cokernel of diagonal difference" );
+
+##
+AddFinalDerivation( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
+                    [ [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( diagram ) would be the correct number
+                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+                      [ Coequalizer, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ Pushout,
+                      InjectionOfCofactorOfPushout,
+                      InjectionOfCofactorOfPushoutWithGivenPushout,
+                      UniversalMorphismFromPushout,
+                      UniversalMorphismFromPushoutWithGivenPushout,
+                      IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
+                      IsomorphismFromCoequalizerOfCoproductDiagramToPushout ],
+                    
+  function( diagram )
+    local D, diagram_of_coequalizer, coequalizer_of_coproduct_diagram;
+    
+    D := List( diagram, Range );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> InjectionOfCofactorOfCoproduct( D, i ) );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram[i], diagram_of_coequalizer[i] ) );
+    
+    coequalizer_of_coproduct_diagram := Coequalizer( diagram_of_coequalizer );
+    
+    return IdentityMorphism( coequalizer_of_coproduct_diagram );
+    
+end : Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the identity of the coequalizer of coproduct diagram" );
+
+##
+AddFinalDerivation( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
+                    [ [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( diagram ) would be the correct number
+                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+                      [ Coequalizer, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ Pushout,
+                      InjectionOfCofactorOfPushout,
+                      InjectionOfCofactorOfPushoutWithGivenPushout,
+                      UniversalMorphismFromPushout,
+                      UniversalMorphismFromPushoutWithGivenPushout,
+                      IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
+                      IsomorphismFromCoequalizerOfCoproductDiagramToPushout ],
+                    
+  function( diagram )
+    local D, diagram_of_coequalizer, coequalizer_of_coproduct_diagram;
+    
+    D := List( diagram, Range );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> InjectionOfCofactorOfCoproduct( D, i ) );
+    
+    diagram_of_coequalizer := List( [ 1 .. Length( D ) ], i -> PreCompose( diagram[i], diagram_of_coequalizer[i] ) );
+    
+    coequalizer_of_coproduct_diagram := Coequalizer( diagram_of_coequalizer );
+    
+    return IdentityMorphism( coequalizer_of_coproduct_diagram );
+    
+end : Description := "IsomorphismFromCoequalizerOfCoproductDiagramToPushout as the identity of the coequalizer of coproduct diagram" );
 
 ## Final methods for Image
 

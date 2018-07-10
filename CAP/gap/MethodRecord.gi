@@ -1228,6 +1228,143 @@ IsCodominating := rec(
   end,
   return_type := "bool" ),
 
+Equalizer := rec(
+  installation_name := "EqualizerOp",
+  argument_list := [ 1 ],
+  filter_list := [ IsList, "morphism" ],
+  return_type := "object",
+  cache_name := "EqualizerOp",
+  universal_type := "Limit",
+  dual_operation := "Coequalizer",
+  
+  pre_function := function( diagram, method_selection_morphism )
+    local cobase, base, current_morphism, current_value;
+    
+    cobase := Source( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Source( current_morphism ), cobase );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the equalizer diagram have equal sources" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the equalizer diagram must have equal sources" ];
+        fi;
+        
+    od;
+    
+    base := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the equalizer diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the equalizer diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end,
+  functorial := "EqualizerFunctorialWithGivenEqualizers" ),
+
+EmbeddingOfEqualizer := rec(
+  installation_name := "EmbeddingOfEqualizerOp",
+  argument_list := [ 1 ],
+  filter_list := [ IsList, "morphism" ],
+  return_type := "morphism",
+  io_type := [ [ "D" ], [ "E", "D_1_source" ] ],
+  cache_name := "EmbeddingOfEqualizerOp",
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  dual_operation := "ProjectionOntoCoequalizer",
+  
+  pre_function := ~.Equalizer.pre_function ),
+
+EmbeddingOfEqualizerWithGivenEqualizer := rec(
+  installation_name := "EmbeddingOfEqualizerWithGivenEqualizer",
+  filter_list := [ IsList, "object" ],
+  return_type := "morphism",
+  io_type := [ [ "D", "E" ], [ "E", "D_1_source" ] ],
+  cache_name := "EmbeddingOfEqualizerWithGivenEqualizer",
+  universal_type := "Limit",
+  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
+  
+  pre_function := ~.Equalizer.pre_function ),
+
+UniversalMorphismIntoEqualizer := rec(
+  installation_name := "UniversalMorphismIntoEqualizer",
+  filter_list := [ IsList, "morphism" ],
+  return_type := "morphism",
+  io_type := [ [ "D", "tau" ], [ "tau_source", "E" ] ],
+  cache_name := "UniversalMorphismIntoEqualizer",
+  universal_object_position := "Range",
+  universal_type := "Limit",
+  dual_operation := "UniversalMorphismFromCoequalizer",
+  
+  pre_function := function( diagram, tau )
+    local cobase, base, current_morphism, current_value, current_morphism_position;
+    
+    cobase := Source( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Source( current_morphism ), cobase );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the equalizer diagram have equal sources" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the equalizer diagram must have equal sources" ];
+        fi;
+        
+    od;
+    
+    base := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the equalizer diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the equalizer diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    for current_morphism_position in [ 1 .. Length( diagram ) ] do
+        
+        current_value := IsEqualForObjects( Source( diagram[ current_morphism_position ] ), Range( tau ) );
+        
+        if current_value = fail then
+            return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": cannot decide whether source and range are equal" ) ];
+        elif current_value = false then
+            return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": source and range are not equal" ) ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end ),
+
+UniversalMorphismIntoEqualizerWithGivenEqualizer := rec(
+  installation_name := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
+  filter_list := [ IsList, "morphism", "object" ],
+  return_type := "morphism",
+  io_type := [ [ "D", "tau", "E" ], [ "tau_source", "E" ] ],
+  cache_name := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
+  universal_type := "Limit",
+  dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+  
+  pre_function := function( D, tau, E ) return CAP_INTERNAL_METHOD_NAME_RECORD.UniversalMorphismIntoEqualizer.pre_function( D, tau ); end,
+  
+ ),
+
 FiberProduct := rec(
   installation_name := "FiberProductOp",
   argument_list := [ 1 ],
@@ -1444,6 +1581,143 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
     return [ true ];
   end,
   return_type := "morphism" ),
+
+Coequalizer := rec(
+  installation_name := "CoequalizerOp",
+  argument_list := [ 1 ],
+  filter_list := [ IsList, "morphism" ],
+  return_type := "object",
+  cache_name := "CoequalizerOp",
+  universal_type := "Colimit",
+  dual_operation := "Equalizer",
+  
+  pre_function := function( diagram, method_selection_morphism )
+    local base, cobase, current_morphism, current_value;
+    
+    base := Source( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Source( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the coequalizer diagram have equal sources" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the coequalizer diagram must have equal sources" ];
+        fi;
+        
+    od;
+    
+    cobase := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), cobase );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the coequalizer diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the coequalizer diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end,
+  functorial := "CoequalizerFunctorialWithGivenCoequalizers" ),
+
+ProjectionOntoCoequalizer := rec(
+  installation_name := "ProjectionOntoCoequalizerOp",
+  argument_list := [ 1 ],
+  filter_list := [ IsList, "morphism" ],
+  return_type := "morphism",
+  io_type := [ [ "D" ], [ "D_1_range", "C" ] ],
+  cache_name := "ProjectionOntoCoequalizerOp",
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  dual_operation := "ProjectionOntoCoequalizer",
+  
+  pre_function := ~.Coequalizer.pre_function ),
+
+ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
+  installation_name := "ProjectionOntoCoequalizerWithGivenCoequalizer",
+  filter_list := [ IsList, "object" ],
+  return_type := "morphism",
+  io_type := [ [ "D", "C" ], [ "D_1_range", "C" ] ],
+  cache_name := "ProjectionOntoCoequalizerWithGivenCoequalizer",
+  universal_type := "Colimit",
+  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
+  
+  pre_function := ~.Coequalizer.pre_function ),
+
+UniversalMorphismFromCoequalizer := rec(
+  installation_name := "UniversalMorphismFromCoequalizer",
+  filter_list := [ IsList, "morphism" ],
+  return_type := "morphism",
+  io_type := [ [ "D", "tau" ], [ "C", "tau_range" ] ],
+  cache_name := "UniversalMorphismFromCoequalizer",
+  universal_object_position := "Source",
+  universal_type := "Colimit",
+  dual_operation := "UniversalMorphismIntoEqualizer",
+  
+  pre_function := function( diagram, tau )
+    local base, cobase, current_morphism, current_value, current_morphism_position;
+    
+    base := Source( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Source( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the coequalizer diagram have equal sources" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the coequalizer diagram must have equal sources" ];
+        fi;
+        
+    od;
+    
+    cobase := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), cobase );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the coequalizer diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the coequalizer diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    for current_morphism_position in [ 1 .. Length( diagram ) ] do
+        
+        current_value := IsEqualForObjects( Range( diagram[ current_morphism_position ] ), Source( tau ) );
+        
+        if current_value = fail then
+            return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": cannot decide whether range and source are equal" ) ];
+        elif current_value = false then
+            return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": range and source are not equal" ) ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end ),
+
+UniversalMorphismFromCoequalizerWithGivenCoequalizer := rec(
+  installation_name := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+  filter_list := [ IsList, "morphism", "object" ],
+  return_type := "morphism",
+  io_type := [ [ "D", "tau", "C" ], [ "C", "tau_range" ] ],
+  cache_name := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+  universal_type := "Colimit",
+  dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+  
+  pre_function := function( D, tau, C ) return CAP_INTERNAL_METHOD_NAME_RECORD.UniversalMorphismFromCoequalizer.pre_function( D, tau ); end,
+  
+ ),
 
 Pushout := rec(
   installation_name := "PushoutOp",
@@ -2165,6 +2439,28 @@ DirectSumFunctorialWithGivenDirectSums := rec(
   dual_operation := "DirectSumFunctorialWithGivenDirectSums",
   dual_arguments_reversed := true ),
 
+AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts := rec(
+  installation_name := "AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
+  filter_list := [ "object", "object", "object", "object", "object" ],
+  io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
+  cache_name := "AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts",
+  return_type := "morphism" ),
+
+AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts := rec(
+  installation_name := "AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
+  filter_list := [ "object", "object", "object", "object", "object" ],
+  io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
+  cache_name := "AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts",
+  return_type := "morphism" ),
+
+EqualizerFunctorialWithGivenEqualizers := rec(
+  installation_name := "EqualizerFunctorialWithGivenEqualizers",
+  filter_list := [ "object", IsList, "object" ],
+  io_type := [ [ "E", "L", "Ep" ], [ "E", "Ep" ] ],
+  cache_name := "EqualizerFunctorialWithGivenEqualizers",
+  return_type := "morphism",
+  dual_operation := "CoequalizerFunctorialWithGivenCoequalizers" ),
+
 FiberProductFunctorialWithGivenFiberProducts := rec(
   installation_name := "FiberProductFunctorialWithGivenFiberProducts",
   filter_list := [ "object", IsList, "object" ],
@@ -2173,6 +2469,14 @@ FiberProductFunctorialWithGivenFiberProducts := rec(
   return_type := "morphism",
   dual_operation := "PushoutFunctorialWithGivenPushouts",
   dual_arguments_reversed := true ),
+
+CoequalizerFunctorialWithGivenCoequalizers := rec(
+  installation_name := "CoequalizerFunctorialWithGivenCoequalizers",
+  filter_list := [ "object", IsList, "object" ],
+  io_type := [ [ "C", "L", "Cp" ], [ "C", "Cp" ] ],
+  cache_name := "CoequalizerFunctorialWithGivenCoequalizers",
+  return_type := "morphism",
+  dual_operation := "EqualizerFunctorialWithGivenEqualizers" ),
 
 PushoutFunctorialWithGivenPushouts := rec(
   installation_name := "PushoutFunctorialWithGivenPushouts",
@@ -2328,7 +2632,27 @@ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
   no_with_given := true ),
-
+  
+IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram := rec(
+  installation_name := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp",
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "P", "Delta" ] ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp",
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
+  no_with_given := true ),
+  
+IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct := rec(
+  installation_name := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp",
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "Delta", "P" ] ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp",
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
+  no_with_given := true ),
+  
 IsomorphismFromPushoutToCokernelOfDiagonalDifference := rec(
   installation_name := "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
   filter_list := [ IsList, "morphism" ],
@@ -2338,7 +2662,7 @@ IsomorphismFromPushoutToCokernelOfDiagonalDifference := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
   no_with_given := true ),
-
+  
 IsomorphismFromCokernelOfDiagonalDifferenceToPushout := rec(
   installation_name := "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
   filter_list := [ IsList, "morphism" ],
@@ -2347,6 +2671,26 @@ IsomorphismFromCokernelOfDiagonalDifferenceToPushout := rec(
   cache_name := "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
   return_type := "morphism",
   dual_operation := "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
+  no_with_given := true ),
+  
+IsomorphismFromPushoutToCoequalizerOfCoproductDiagram := rec(
+  installation_name := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp",
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "P", "Delta" ] ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp",
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
+  no_with_given := true ),
+  
+IsomorphismFromCoequalizerOfCoproductDiagramToPushout := rec(
+  installation_name := "IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp",
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "Delta", "P" ] ],
+  argument_list := [ 1 ],
+  cache_name := "IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp",
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
   no_with_given := true ),
 
 IsomorphismFromImageObjectToKernelOfCokernel := rec(

@@ -276,7 +276,6 @@ InstallMethod( DirectProductFunctorial,
     
 end );
 
-
 ####################################
 ##
 ## Direct sum
@@ -571,6 +570,61 @@ end );
 
 ####################################
 ##
+## Equalizer
+##
+####################################
+
+####################################
+## Convenience methods
+####################################
+
+##
+InstallGlobalFunction( Equalizer,
+  
+  function( arg )
+    
+    if Length( arg ) = 1
+       and IsList( arg[1] )
+       and ForAll( arg[1], IsCapCategoryMorphism ) then
+       
+       return EqualizerOp( arg[1], arg[1][1] );
+       
+     fi;
+    
+    return EqualizerOp( arg, arg[ 1 ] );
+    
+end );
+
+##
+InstallMethod( EmbeddingOfEqualizer,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return EmbeddingOfEqualizerOp( diagram, diagram[1] );
+    
+end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( EqualizerFunctorial,
+               [ IsList ],
+               
+  function( morphism_of_morphisms )
+      
+      return EqualizerFunctorialWithGivenEqualizers(
+               Equalizer( morphism_of_morphisms[1] ),
+               morphism_of_morphisms,
+               Equalizer( morphism_of_morphisms[3] )
+             );
+      
+end );
+
+####################################
+##
 ## FiberProduct
 ##
 ####################################
@@ -669,6 +723,26 @@ InstallMethod( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
 end );
 
 ##
+InstallMethod( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp( diagram, diagram[1] );
+    
+end );
+
+##
 InstallMethod( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
                [ IsList ],
                
@@ -688,6 +762,26 @@ InstallMethod( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
     
 end );
 
+##
+InstallMethod( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp( diagram, diagram[1] );
+    
+end );
+
 ####################################
 ## Functorial operations
 ####################################
@@ -702,6 +796,61 @@ InstallMethod( FiberProductFunctorial,
                FiberProduct( List( morphism_of_morphisms, elem -> elem[1] ) ),
                morphism_of_morphisms,
                FiberProduct( List( morphism_of_morphisms, elem -> elem[3] ) )
+             );
+      
+end );
+
+####################################
+##
+## Coequalizer
+##
+####################################
+
+####################################
+## Convenience methods
+####################################
+
+##
+InstallGlobalFunction( Coequalizer,
+  
+  function( arg )
+    
+    if Length( arg ) = 1
+       and IsList( arg[1] )
+       and ForAll( arg[1], IsCapCategoryMorphism ) then
+       
+       return CoequalizerOp( arg[1], arg[1][1] );
+       
+     fi;
+    
+    return CoequalizerOp( arg, arg[ 1 ] );
+    
+end );
+
+##
+InstallMethod( ProjectionOntoCoequalizer,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return ProjectionOntoCoequalizerOp( diagram, diagram[1] );
+    
+end );
+
+####################################
+## Functorial operations
+####################################
+
+##
+InstallMethod( CoequalizerFunctorial,
+               [ IsList ],
+               
+  function( morphism_of_morphisms )
+      
+      return CoequalizerFunctorialWithGivenCoequalizers(
+               Coequalizer( morphism_of_morphisms[1] ),
+               morphism_of_morphisms,
+               Coequalizer( morphism_of_morphisms[3] )
              );
       
 end );

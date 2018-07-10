@@ -5,13 +5,15 @@ PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
 
 Version := Maximum( [
-  "2017.06.02", ## Mohamed's version
+  "2017.07.19", ## Mohamed's version
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
   ## this line prevents merge conflicts
   "2018.07.04", ## Sebas' version
   ## this line prevents merge conflicts
   "2018.02.27", ## Sepp's version
+  ## this line prevents merge conflicts
+  "2018.04.27", ## Fabian's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
