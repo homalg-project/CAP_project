@@ -10,19 +10,19 @@
 #############################################################################
 
 DeclareRepresentation( "IsCapCategoryProductCellRep",
-                       IsAttributeStoringRep and IsCapCategoryCell,
+                       IsAttributeStoringRep and IsCapCategoryProductCell,
                        [ ] );
 
 DeclareRepresentation( "IsCapCategoryProductObjectRep",
-                       IsCapCategoryProductCellRep and IsCapCategoryObjectRep,
+                       IsCapCategoryProductCell and IsCapCategoryProductObject and IsCapCategoryObjectRep,
                        [ ] );
 
 DeclareRepresentation( "IsCapCategoryProductMorphismRep",
-                       IsCapCategoryProductCellRep and IsCapCategoryMorphismRep,
+                       IsCapCategoryProductCellRep and IsCapCategoryProductMorphism and IsCapCategoryMorphismRep,
                        [ ] );
 
 DeclareRepresentation( "IsCapCategoryProductTwoCellRep",
-                       IsCapCategoryProductCellRep and IsCapCategoryTwoCellRep,
+                       IsCapCategoryProductCellRep and IsCapCategoryProductTwoCell and IsCapCategoryTwoCellRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfCapCategoryProductObjects",
@@ -45,13 +45,13 @@ BindGlobal( "TheTypeOfCapCategoryProductTwoCells",
 
 ##
 InstallMethod( Components,
-               [ IsCapCategory ],
+               [ IsCapCategory and IsCapProductCategory ],
                
   i -> [ i ] );
 
 ##
 InstallMethod( Components,
-               [ IsCapCategoryCell ],
+               [ IsCapCategoryProductCell ],
                
   i -> [ i ] );
 

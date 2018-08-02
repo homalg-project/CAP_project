@@ -67,6 +67,12 @@ DeclareAttribute( "UnderlyingZFunctorCell",
 ##
 ####################################
 
+DeclareOperation( "\[\]",
+                  [ IsCapComplexCell, IsInt ] );
+
+DeclareOperation( "\[\]",
+                  [ IsCapCocomplexCell, IsInt ] );
+
 DeclareOperation( "Differential",
                   [ IsCapComplex, IsInt ] );
 

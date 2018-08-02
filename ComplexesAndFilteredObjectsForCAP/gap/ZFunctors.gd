@@ -92,3 +92,9 @@ KeyDependentOperation( "AsZFunctorMorphism", IsCapCategoryMorphism, IsInt, RETUR
 
 DeclareOperation( "ZFunctorObjectByInitialMorphismAndRecursiveFunction",
                   [ IsCapCategoryMorphism, IsFunction, IsInt ] );
+
+DeclareOperation( "\[\]",
+                  [ IsZFunctorObject, IsInt ] );
+
+DeclareOperation( "\[\]",
+                  [ IsZFunctorMorphism, IsInt ] );

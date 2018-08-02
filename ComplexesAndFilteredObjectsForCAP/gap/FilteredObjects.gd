@@ -70,6 +70,12 @@ DeclareAttribute( "UnderlyingZFunctorCell",
 ##
 ####################################
 
+DeclareOperation( "\[\]",
+                 [ IsAscendingFilteredObjectCategoryCell, IsInt ] );
+
+DeclareOperation( "\[\]",
+                 [ IsDescendingFilteredObjectCategoryCell, IsInt ] );
+
 DeclareOperation( "Embedding",
                   [ IsDescendingFilteredObject, IsInt ] );
 

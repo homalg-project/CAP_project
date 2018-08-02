@@ -9,6 +9,18 @@
 ##
 #############################################################################
 
+DeclareCategory( "IsCapCategoryProductCell",
+                  IsCapCategoryCell );
+
+DeclareCategory( "IsCapCategoryProductObject",
+                 IsCapCategoryProductCell and IsCapCategoryObject );
+
+DeclareCategory( "IsCapCategoryProductMorphism",
+                 IsCapCategoryProductCell and IsCapCategoryMorphism );
+
+DeclareCategory( "IsCapCategoryProductTwoCell",
+                 IsCapCategoryProductCell and IsCapCategoryTwoCell );
+
 DeclareOperationWithCache( "DirectProductFunctor",
                            [ IsCapCategory, IsInt ] );
 
@@ -19,16 +31,16 @@ DeclareFilter( "IsCapProductCategory" );
 
 
 DeclareAttribute( "Components",
-                  IsCapCategory );
+                  IsCapCategory and IsCapProductCategory );
 
 DeclareAttribute( "Components",
-                  IsCapCategoryCell );
+                  IsCapCategoryProductCell );
 
 DeclareOperation( "\[\]",
-                  [ IsCapCategory, IsInt ] );
+                  [ IsCapCategory and IsCapProductCategory, IsInt ] );
 
 DeclareOperation( "\[\]",
-                  [ IsCapCategoryCell, IsInt ] );
+                  [ IsCapCategoryProductCell, IsInt ] );
 
 
 ############################
@@ -59,10 +71,10 @@ DeclareOperation( "ProductOp",
 ############################
 
 DeclareAttribute( "Length",
-                  IsCapCategory );
+                  IsCapCategory and IsCapProductCategory );
 
 DeclareAttribute( "Length",
-                  IsCapCategoryObject );
+                  IsCapCategoryProductObject );
 
 DeclareAttribute( "Length",
-                  IsCapCategoryMorphism );
+                  IsCapCategoryProductMorphism );
