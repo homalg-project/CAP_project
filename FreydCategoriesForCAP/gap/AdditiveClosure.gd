@@ -74,6 +74,5 @@ DeclareAttribute( "NrColumns",
 ##
 ####################################
 
-# DeclareOperation( "\[\]",
-#                   [ IsAdditiveClosureMorphism, IsInt ] );
-
+DeclareOperation( "\[\]",
+                  [ IsAdditiveClosureMorphism, IsInt ] );
