@@ -191,7 +191,7 @@ DeclareOperation( "CreateCapCategory",
 ## This filter is used by the installation
 ## of the Add methods for the terminal object.
 #! @Description
-#! The argument is a cateogry $C$.
+#! The argument is a category $C$.
 #! The output is a filter in which $C$ lies.
 #! @Arguments C
 #! @Returns a filter
@@ -199,7 +199,7 @@ DeclareAttribute( "CategoryFilter",
                   IsCapCategory );
 
 #! @Description
-#! The argument is a cateogry $C$.
+#! The argument is a category $C$.
 #! The output is a filter in which all cells
 #! of $C$ shall lie.
 #! @Arguments C
@@ -208,7 +208,7 @@ DeclareAttribute( "CellFilter",
                   IsCapCategory );
 
 #! @Description
-#! The argument is a cateogry $C$.
+#! The argument is a category $C$.
 #! The output is a filter in which all objects
 #! of $C$ shall lie.
 #! @Arguments C
@@ -217,7 +217,7 @@ DeclareAttribute( "ObjectFilter",
                   IsCapCategory );
 
 #! @Description
-#! The argument is a cateogry $C$.
+#! The argument is a category $C$.
 #! The output is a filter in which all morphisms
 #! of $C$ shall lie.
 #! @Arguments C
@@ -226,7 +226,7 @@ DeclareAttribute( "MorphismFilter",
                   IsCapCategory );
 
 #! @Description
-#! The argument is a cateogry $C$.
+#! The argument is a category $C$.
 #! The output is a filter in which all $2$-cells
 #! of $C$ shall lie.
 #! @Arguments C
