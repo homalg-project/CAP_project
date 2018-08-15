@@ -23,6 +23,10 @@ DeclareGlobalVariable( "CAP_PREPARE_FUNCTION_RECORD" );
 #!  <C>"BinaryDirectSumToDirectSum"</C> as <A>prepare_function</A>, the category, and
 #!  the binary direct sum function. The function then returns a function that can be used
 #!  for the direct sum categorical operation.
+#!  
+#!  Note that <A>func</A> is not handled by the CAP caching mechanism and that the use
+#!  of prepare functions is incompatible with <C>WithGiven</C> operations. Thus, one has
+#!  to ensure manually that the equality and typing specifications are fulfilled.
 DeclareGlobalFunction( "CAPOperationPrepareFunction" );
 
 #! @Arguments prepare_function, name, doc_string[, precondition_list]
