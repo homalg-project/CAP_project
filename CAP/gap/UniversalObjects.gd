@@ -1143,8 +1143,8 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #!  to a morphism $u_{\mathrm{out}}(\tau): S \rightarrow T$ such that
 #!   $u_{\mathrm{out}}(\tau) \circ \iota_i \sim_{S_i, T} \tau_i$ for all $i = 1, \dots, n$,
 #! such that
-#! * $\sum_{i=1}^{n} \iota_i \circ \pi_i = \mathrm{id}_S$,
-#! * $\pi_j \circ \iota_i = \delta_{i,j}$,
+#! * $\sum_{i=1}^{n} \iota_i \circ \pi_i \sim_{S,S} \mathrm{id}_S$,
+#! * $\pi_j \circ \iota_i \sim_{S_i, S_j} \delta_{i,j}$,
 #! where $\delta_{i,j} \in \mathrm{Hom}( S_i, S_j )$ is the identity if $i=j$, and $0$ otherwise.
 #! The $5$-tuple $(S, \pi, \iota, u_{\mathrm{in}}, u_{\mathrm{out}})$ is called a <Emph>direct sum</Emph> of $D$.
 #! We denote the object $S$ of such a $5$-tuple by $\bigoplus_{i=1}^n S_i$.
