@@ -158,6 +158,22 @@ InstallMethod( AdditiveInverse,
 AdditiveInverseForMorphisms );
 
 ##
+InstallMethod( \*,
+               [ IsRingElement, IsCapCategoryMorphism ],
+               
+MultiplyWithElementOfCommutativeRingForMorphisms );
+
+##
+InstallMethod( \*,
+               [ IsCapCategoryMorphism, IsRingElement ],
+               
+  function( mor, r )
+    
+    return MultiplyWithElementOfCommutativeRingForMorphisms( r, mor );
+    
+end );
+
+##
 InstallMethod( IsEqualForCacheForMorphisms,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                

@@ -21,6 +21,9 @@ IsAbCategory := Concatenation( [
   "SubtractionForMorphisms",
   "AdditiveInverseForMorphisms" ], ~.IsEnrichedOverCommutativeRegularSemigroup ),
 
+IsLinearCategoryOverCommutativeRing := Concatenation( [
+  "MultiplyWithElementOfCommutativeRingForMorphisms" ], ~.IsAbCategory ),
+
 IsAdditiveCategory := Concatenation( [
   "ZeroObject",
   "UniversalMorphismFromZeroObject",
