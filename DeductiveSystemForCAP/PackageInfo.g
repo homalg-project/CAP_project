@@ -45,7 +45,7 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "",
+PackageWWWHome := "http://TODO/",
 
 ArchiveURL     := Concatenation( ~.PackageWWWHome, "DeductiveSystemForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),

@@ -47,7 +47,7 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "",
+PackageWWWHome := "http://TODO/",
 
 ArchiveURL     := Concatenation( ~.PackageWWWHome, "HomologicalAlgebraForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
