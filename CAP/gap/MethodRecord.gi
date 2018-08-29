@@ -14,16 +14,6 @@ LiftAlongMonomorphism := rec(
   io_type := [ [ "iota", "tau" ], [ "tau_source", "iota_source" ] ],
   cache_name := "LiftAlongMonomorphism",
   return_type := "morphism",
-  
-  post_function := function( alpha, beta, lift )
-    
-    if lift = fail then
-        
-        Error( "Lift along monomorphism doesn't exist" );
-        
-    fi;
-    
-  end,
   dual_operation := "ColiftAlongEpimorphism" ),
 
 ColiftAlongEpimorphism := rec(
@@ -32,15 +22,6 @@ ColiftAlongEpimorphism := rec(
   io_type := [ [ "epsilon", "tau" ], [ "epsilon_range", "tau_range" ] ],
   cache_name := "ColiftAlongEpimorphism",
   return_type := "morphism",
-  post_function := function( alpha, beta, colift )
-    
-    if colift = fail then
-        
-        Error( "Colift along epimorphism doesn't exist" );
-        
-    fi;
-    
-  end,
   dual_operation := "LiftAlongMonomorphism" ),
 
 Lift := rec(
