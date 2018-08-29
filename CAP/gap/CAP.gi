@@ -543,7 +543,7 @@ InstallGlobalFunction( DisableBasicOperationTypeCheck,
     
 end );
 
-InstallGlobalFunction( EnableBasicOperationTypeCheck,
+InstallGlobalFunction( EnablePartialBasicOperationTypeCheck,
   
   function( category )
   
@@ -551,7 +551,7 @@ InstallGlobalFunction( EnableBasicOperationTypeCheck,
     
 end );
 
-InstallGlobalFunction( FullBasicOperationTypeCheck,
+InstallGlobalFunction( EnableFullBasicOperationTypeCheck,
   
   function( category )
   

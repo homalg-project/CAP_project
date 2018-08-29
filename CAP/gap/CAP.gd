@@ -342,9 +342,12 @@ DeclareGlobalFunction( "DeactivateCachingOfCategory" );
 #!  disable the checks alltogether.
 #! @Arguments category
 DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
-DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
-DeclareGlobalFunction( "FullBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnablePartialBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnableFullBasicOperationTypeCheck" );
 #! @EndGroup
+
+## Undocumented, but kept for compatibility
+BindGlobal( "EnableBasicOperationTypeCheck", EnablePartialBasicOperationTypeCheck );
 
 #############################################
 ##
