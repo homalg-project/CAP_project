@@ -335,9 +335,9 @@ DeclareGlobalFunction( "DeactivateCachingOfCategory" );
 
 #! @BeginGroup
 #! @Description
-#!  Most operations have pre functions, that perform additional checks on
+#!  Most operations have prefunctions, that perform additional checks on
 #!  the arguments. The checks can either be partial (enabled by default),
-#!  full, or disabled. With the following these commands you can either
+#!  full, or disabled. With the following commands you can either
 #!  enable the full checks, just the basic checks, or, for performance,
 #!  disable the checks alltogether.
 #! @Arguments category
