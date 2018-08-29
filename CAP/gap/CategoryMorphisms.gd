@@ -1046,8 +1046,7 @@ DeclareOperation( "LiftAlongMonomorphism",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>LiftAlongMonomorphism</C>.
-#! The function $F$ maps a pair $(\iota, \tau)$ to a lift $u$ if it
-#! exists, and to <C>fail</C> otherwise.
+#! The function $F$ maps a pair $(\iota, \tau)$ to a lift $u$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLiftAlongMonomorphism",
@@ -1077,8 +1076,7 @@ DeclareOperation( "ColiftAlongEpimorphism",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>ColiftAlongEpimorphism</C>.
-#! The function $F$ maps a pair $(\epsilon, \tau)$ to a lift $u$ if it
-#! exists, and to <C>fail</C> otherwise.
+#! The function $F$ maps a pair $(\epsilon, \tau)$ to a lift $u$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddColiftAlongEpimorphism",
