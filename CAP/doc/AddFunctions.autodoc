@@ -43,6 +43,9 @@ Every other part, except from function, does only depend on the name SomeFunc. W
   should return either [ true ], which continues the computation, or [ false, "message" ], which will cause an error with
   message "message" and some additional information.
 
+* Full prefunction: The full prefuction has the same semantics as the prefunction, but can perform additional, very
+  costly checks. They are disabled by default.
+
 * Function: This will launch the function(s) given as arguments. The result should be as specified in the type of
   SomeFunc. The resulting object is now named the result.
 

@@ -335,13 +335,19 @@ DeclareGlobalFunction( "DeactivateCachingOfCategory" );
 
 #! @BeginGroup
 #! @Description
-#!  Most basic operations have a prefunction, which does a (sometimes partial)
-#!  typecheck at the beginning of the operation. These functions enable or disable this check
-#!  for a category. (Enabled by default)
+#!  Most operations have prefunctions, that perform additional checks on
+#!  the arguments. The checks can either be partial (enabled by default),
+#!  full, or disabled. With the following commands you can either
+#!  enable the full checks, just the basic checks, or, for performance,
+#!  disable the checks alltogether.
 #! @Arguments category
 DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
-DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnablePartialBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnableFullBasicOperationTypeCheck" );
 #! @EndGroup
+
+## Undocumented, but kept for compatibility
+BindGlobal( "EnableBasicOperationTypeCheck", EnablePartialBasicOperationTypeCheck );
 
 #############################################
 ##
