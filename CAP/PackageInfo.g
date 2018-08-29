@@ -9,7 +9,7 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
   ## this line prevents merge conflicts
-  "2018.08.02", ## Sebas' version
+  "2018.08.29", ## Sebas' version
   ## this line prevents merge conflicts
   "2018.02.27", ## Sepp's version
   ## this line prevents merge conflicts

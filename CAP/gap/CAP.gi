@@ -237,7 +237,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.default_cache_type := "weak";
     
-    obj_rec!.prefunction_check := true;
+    obj_rec!.prefunction_check := 1;
     
     obj_rec!.predicate_logic := true;
     
@@ -539,7 +539,7 @@ InstallGlobalFunction( DisableBasicOperationTypeCheck,
   
   function( category )
     
-    category!.prefunction_check := false;
+    category!.prefunction_check := 0;
     
 end );
 
@@ -547,7 +547,15 @@ InstallGlobalFunction( EnableBasicOperationTypeCheck,
   
   function( category )
   
-    category!.prefunction_check := true;
+    category!.prefunction_check := 1;
+    
+end );
+
+InstallGlobalFunction( FullBasicOperationTypeCheck,
+  
+  function( category )
+  
+    category!.prefunction_check := 2;
     
 end );
 

@@ -46,7 +46,7 @@ end );
 InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
-    local function_name, install_name, add_name, pre_function,
+    local function_name, install_name, add_name, pre_function, pre_function_full,
           redirect_function, post_function, filter_list, caching,
           cache_name, nr_arguments, argument_list, add_function;
     
@@ -68,6 +68,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
         pre_function := record.pre_function;
     else
         pre_function := function( arg ) return [ true ]; end;
+    fi;
+
+    if IsBound( record.pre_function_full ) then
+        pre_function_full := record.pre_function_full;
+    else
+        pre_function_full := pre_function;
     fi;
     
     if IsBound( record.redirect_function ) then
@@ -249,13 +255,22 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     fi;
                 fi;
                 
-                if category!.prefunction_check then
+                if category!.prefunction_check > 0 then
                     
                     pre_func_return := CallFuncList( pre_function, arg );
                     if pre_func_return[ 1 ] = false then
                         Error( Concatenation( "in function \033[1m", record.function_name, 
                             "\033[0m\n       of category \033[1m",
                             Name( category ), ":\033[0m\n\033[1m       ", pre_func_return[ 2 ], "\033[0m\n" ) );
+                    fi;
+                    
+                    if category!.prefunction_check > 1 then
+                        pre_func_return := CallFuncList( pre_function_full, arg );
+                        if pre_func_return[ 1 ] = false then
+                            Error( Concatenation( "in function \033[1m", record.function_name, 
+                                "\033[0m\n       of category \033[1m",
+                                Name( category ), ":\033[0m\n\033[1m       ", pre_func_return[ 2 ], "\033[0m\n" ) );
+                        fi;
                     fi;
                     
                 fi;
