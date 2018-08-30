@@ -4608,6 +4608,133 @@ DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
 DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
                   [ IsCapCategory, IsList ] );
 
+
+####################################
+##
+#! @Section Subobject Classifier
+##
+####################################
+
+#! A subobject classifier object consists of three parts:
+#! * an object $\Omega$,
+#! * a function $\mathrm{true}$ providing a morphism $\mathrm{true}: 1 \rightarrow \Omega$,
+#! * a function $\chi$ mapping each monomorphism $i : A \rightarrow S$ to a morphism $\chi_i : S \to \Omega$.
+#! The triple $(\Omega,\mathrm{true},\chi)$ is called a <Emph>subobject classifier</Emph> if
+#! for each monomorphism $i : A \to S$, the morphism $\chi_i : S \to \Omega$ is the unique
+#! morphism such that $\chi_i \circ i = \mathrm{true} \circ \ast$ determine a pullback diagram.
+## Main Operations and Attributes
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is a subobject classifier object $\Omega$ of $C$.
+#! @Returns an object
+#! @Arguments C
+DeclareAttribute( "SubobjectClassifier",
+                  IsCapCategory );
+
+#! @Description
+#! This is a convenience method.
+#! The argument is a cell $c$.
+#! The output is a subobject classifier $\Omega$ of the
+#! category $C$ for which $c \in C$.
+#! @Returns an object
+#! @Arguments c
+DeclareAttribute( "SubobjectClassifier",
+                  IsCapCategoryCell );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is the truth morphism to the subobject classifier 
+#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
+#! @Arguments C
+DeclareAttribute( "TruthMorphismIntoSubobjectClassifier",
+                  IsCapCategory );
+
+#! @Description
+#! This is a convenience method.
+#! The argument is a cell $c$.
+#! The output is the truth morphism to the subobject classifier 
+#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$
+#! of the category $C$ for which $c \in C$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
+#! @Arguments c
+DeclareAttribute( "TruthMorphismIntoSubobjectClassifier",
+                  IsCapCategoryCell );
+
+
+#! @Description
+#! The argument is a monomorphism $m : A \rightarrow S$.
+#! The output is its classifying morphism 
+#! $\chi_m : S \rightarrow \mathrm{SubobjectClassifier}$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Range}(m) , \mathrm{SubobjectClassifier} )$
+#! @Arguments m
+DeclareOperation( "ClassifyingMorphismOfSubobject",
+                  [ IsCapCategoryMorphism ] );
+
+
+#! @Description
+#! The arguments are a category and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SubobjectClassifier</C>.
+#! $F : () \mapsto \mathrm{SubobjectClassifier}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSubobjectClassifier",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSubobjectClassifier",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+## don't document this function
+DeclareOperation( "AddSubobjectClassifier",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSubobjectClassifier",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$ to the category
+#! for the basic operation <C>TruthMorphismIntoSubobjectClassifier</C>.
+#! $F : () \mapsto \mathrm{True}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismIntoSubobjectClassifier",
+                  [ IsCapCategory , IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismIntoSubobjectClassifier",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+## don't document this function
+DeclareOperation( "AddTruthMorphismIntoSubobjectClassifier",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismIntoSubobjectClassifier",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$ to the category
+#! for the basic operation <C>ClassifyingMorphismOfSubobject</C>.
+#! $F : m \mapsto \mathrm{ClassifyingMorphism}(m)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddClassifyingMorphismOfSubobject",
+                  [ IsCapCategory , IsFunction ] );
+
+DeclareOperation( "AddClassifyingMorphismOfSubobject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+## don't document this function
+DeclareOperation( "AddClassifyingMorphismOfSubobject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddClassifyingMorphismOfSubobject",
+                  [ IsCapCategory, IsList ] );
+
+
 #! @Chapter Universal Objects
 
 ####################################

@@ -621,6 +621,24 @@ UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject" ),
 
+
+SubobjectClassifier := rec(
+  installation_name := "SubobjectClassifier",
+  filter_list := [ "category" ],
+  cache_name := "SubobjectClassifier",
+  return_type := "object" ),
+
+TruthMorphismIntoSubobjectClassifier := rec(
+  installation_name := "TruthMorphismIntoSubobjectClassifier",
+  filter_list := [ "category" ],
+  universal_object_position := "Range",
+  return_type := "morphism" ),
+
+ClassifyingMorphismOfSubobject := rec(
+  installation_name := "ClassifyingMorphismOfSubobject",
+  filter_list := [ "morphism" ],
+  return_type := "morphism" ),
+
 DirectProduct := rec(
   installation_name := "DirectProductOp",
   argument_list := [ 1 ],
