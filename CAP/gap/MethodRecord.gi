@@ -2870,6 +2870,14 @@ MorphismBetweenDirectSums := rec(
 ),
   ) );
 
+BindGlobal( "CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION",
+  function( func )
+    
+    return function( arg_list... )
+        return CallFuncList( func, arg_list{[ 1 .. Length( arg_list ) - 1]} );
+    end;
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
     local recnames, current_recname, current_rec, position, without_given_name, functorial, diagram_arguments;
@@ -2879,25 +2887,28 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
+            
+        position := PositionSublist( current_recname, "WithGiven" );
         
-        if not IsBound( current_rec!.is_with_given ) then
+        current_rec.is_with_given := false;
+        
+        if position <> fail then
             
-            position := PositionSublist( current_recname, "WithGiven" );
+            without_given_name := current_recname{[ 1 .. position - 1 ]};
             
-            current_rec.is_with_given := false;
-            
-            if position <> fail then
+            if without_given_name in recnames then
                 
-                without_given_name := current_recname{[ 1 .. position - 1 ]};
+                current_rec.is_with_given := true;
                 
-                if without_given_name in recnames then
-                    
-                    current_rec.is_with_given := true;
-                    
+                if IsBound( record.(without_given_name).pre_function ) and not IsBound( current_rec.pre_function ) then
+                    current_rec.pre_function := CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION( record.(without_given_name).pre_function );
+                fi;
+                if IsBound( record.(without_given_name).pre_function_full ) and not IsBound( current_rec.pre_function_full ) then
+                    current_rec.pre_function_full := CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION( record.(without_given_name).pre_function_full );
                 fi;
                 
             fi;
-        
+            
         fi;
         
         if not IsBound( current_rec.functorial ) then
