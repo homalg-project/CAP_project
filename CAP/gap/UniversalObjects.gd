@@ -4642,14 +4642,26 @@ DeclareAttribute( "SubobjectClassifier",
 DeclareAttribute( "SubobjectClassifier",
                   IsCapCategoryCell );
 
+
+#! @Description
+#! The arguments are a terminal object of the category and
+#! a subobject classifier.
+#! The output is the truth morphism to the subobject classifier
+#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
+#! @Arguments T, W
+DeclareOperation( "TruthMorphismIntoSubobjectClassifierWithGivenObjects",
+                  [ IsCapCategoryObject , IsCapCategoryObject ]);
+
+
 #! @Description
 #! The argument is a category $C$.
 #! The output is the truth morphism to the subobject classifier 
 #! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareAttribute( "TruthMorphismIntoSubobjectClassifier",
-                  IsCapCategory );
+DeclareOperation( "TruthMorphismIntoSubobjectClassifier",
+                  [ IsCapCategory ] );
 
 #! @Description
 #! This is a convenience method.
@@ -4659,8 +4671,8 @@ DeclareAttribute( "TruthMorphismIntoSubobjectClassifier",
 #! of the category $C$ for which $c \in C$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
 #! @Arguments c
-DeclareAttribute( "TruthMorphismIntoSubobjectClassifier",
-                  IsCapCategoryCell );
+DeclareOperation( "TruthMorphismIntoSubobjectClassifier",
+                  [ IsCapCategoryCell ] );
 
 
 #! @Description
@@ -4672,16 +4684,6 @@ DeclareAttribute( "TruthMorphismIntoSubobjectClassifier",
 DeclareOperation( "ClassifyingMorphismOfSubobject",
                   [ IsCapCategoryMorphism ] );
 
-
-#! @Description
-#! The arguments are a terminal object of the category and
-#! a subobject classifier.
-#! The output is the truth morphism to the subobject classifier
-#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
-#! @Arguments T, W
-DeclareOperation( "TruthMorphismIntoSubobjectClassifierWithGivenObjects",
-                  [ IsCapCategoryObject , IsCapCategoryObject ]);
 
 
 
@@ -4703,26 +4705,6 @@ DeclareOperation( "AddSubobjectClassifier",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddSubobjectClassifier",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ to the category
-#! for the basic operation <C>TruthMorphismIntoSubobjectClassifier</C>.
-#! $F : () \mapsto \mathrm{True}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddTruthMorphismIntoSubobjectClassifier",
-                  [ IsCapCategory , IsFunction ] );
-
-DeclareOperation( "AddTruthMorphismIntoSubobjectClassifier",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-## don't document this function
-DeclareOperation( "AddTruthMorphismIntoSubobjectClassifier",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddTruthMorphismIntoSubobjectClassifier",
                   [ IsCapCategory, IsList ] );
 
 

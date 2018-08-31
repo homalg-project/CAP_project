@@ -991,6 +991,7 @@ end );
 ## Subobject Classifier
 ####################################
 
+##
 InstallMethod( SubobjectClassifier,
                [ IsCapCategoryCell ],
                
@@ -999,6 +1000,28 @@ InstallMethod( SubobjectClassifier,
     return SubobjectClassifier( CapCategory( cell ) );
     
 end );
+
+##
+InstallMethod( TruthMorphismIntoSubobjectClassifier,
+               [ IsCapCategory ],
+  function( category )
+      
+      return TruthMorphismIntoSubobjectClassifierWithGivenObjects(
+               TerminalObject(category),
+               SubobjectClassifier(category)
+             );
+      
+end );
+
+##
+InstallMethod( TruthMorphismIntoSubobjectClassifier,
+               [ IsCapCategoryCell ],
+  function( cell )
+    
+    return TruthMorphismIntoSubobjectClassifier( CapCategory( cell ) );
+    
+end );
+
 
 ####################################
 ##
