@@ -42,3 +42,6 @@ doc/*.xml
 maketest.g
 parsertest.g
 judgement_test
+
+stats
+coverage.json

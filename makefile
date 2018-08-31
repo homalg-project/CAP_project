@@ -33,3 +33,9 @@ Linear_doc:
 
 Generalized_doc:
 	cd GeneralizedMorphismsForCAP && make doc
+
+ci-test: homalg_compatibility doc
+	cd CAP && make ci-test
+	cd ModulePresentationsForCAP && make ci-test
+	cd LinearAlgebraForCAP && make ci-test
+	cd GeneralizedMorphismsForCAP && make ci-test
