@@ -672,3 +672,17 @@ InstallMethod( AddTerminalObject,
     AddTerminalObject( category, [ [ wrapped_func, [ ] ] ], weight );
     
 end );
+
+##
+InstallMethod( AddSubobjectClassifier,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+  function( category, func, weight )
+    local wrapped_func;
+    
+    wrapped_func := function( cat ) return func(); end;
+    
+    AddSubobjectClassifier( category, [ [ wrapped_func, [ ] ] ], weight );
+    
+end );
+

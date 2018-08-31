@@ -988,6 +988,42 @@ InstallMethod( InverseMorphismFromCoimageToImage,
 end );
 
 ####################################
+## Subobject Classifier
+####################################
+
+##
+InstallMethod( SubobjectClassifier,
+               [ IsCapCategoryCell ],
+               
+  function( cell )
+    
+    return SubobjectClassifier( CapCategory( cell ) );
+    
+end );
+
+##
+InstallMethod( TruthMorphismIntoSubobjectClassifier,
+               [ IsCapCategory ],
+  function( category )
+      
+      return TruthMorphismIntoSubobjectClassifierWithGivenObjects(
+               TerminalObject(category),
+               SubobjectClassifier(category)
+             );
+      
+end );
+
+##
+InstallMethod( TruthMorphismIntoSubobjectClassifier,
+               [ IsCapCategoryCell ],
+  function( cell )
+    
+    return TruthMorphismIntoSubobjectClassifier( CapCategory( cell ) );
+    
+end );
+
+
+####################################
 ##
 ## Scheme for Universal Object
 ##

@@ -621,6 +621,37 @@ UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject" ),
 
+SubobjectClassifier := rec(
+  installation_name := "SubobjectClassifier",
+  filter_list := [ "category" ],
+  cache_name := "SubobjectClassifier",
+  return_type := "object" ),
+
+TruthMorphismIntoSubobjectClassifierWithGivenObjects := rec(
+  installation_name := "TruthMorphismIntoSubobjectClassifierWithGivenObjects",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "I", "S" ] , [ "I" , "S" ] ],
+  universal_object_position := "Range",
+  return_type := "morphism" ),
+
+ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
+  installation_name := "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+  filter_list := [ "morphism" , "object" ],
+  io_type := [ [ "alpha", "S" ] , [ "alpha_range" , "S" ] ],
+  return_type := "morphism" ),
+
+ClassifyingMorphismOfSubobject := rec(
+  installation_name := "ClassifyingMorphismOfSubobject",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ] , [ "alpha_range" , "S" ] ],  
+  return_type := "morphism" ),
+
+SubobjectOfClassifyingMorphism := rec(
+  installation_name := "SubobjectOfClassifyingMorphism",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ] , [ "subobject" , "alpha_source" ] ]
+  return_type := "morphism" ),
+
 DirectProduct := rec(
   installation_name := "DirectProductOp",
   argument_list := [ 1 ],
