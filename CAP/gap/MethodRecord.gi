@@ -628,9 +628,9 @@ SubobjectClassifier := rec(
   cache_name := "SubobjectClassifier",
   return_type := "object" ),
 
-TruthMorphismIntoSubobjectClassifier := rec(
-  installation_name := "TruthMorphismIntoSubobjectClassifier",
-  filter_list := [ "category" ],
+TruthMorphismIntoSubobjectClassifierWithGivenObjects := rec(
+  installation_name := "TruthMorphismIntoSubobjectClassifierWithGivenObjects",
+  filter_list := [ "object", "object" ],
   universal_object_position := "Range",
   return_type := "morphism" ),
 

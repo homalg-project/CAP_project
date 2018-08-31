@@ -4674,6 +4674,18 @@ DeclareOperation( "ClassifyingMorphismOfSubobject",
 
 
 #! @Description
+#! The arguments are a terminal object of the category and
+#! a subobject classifier.
+#! The output is the truth morphism to the subobject classifier
+#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
+#! @Arguments T, W
+DeclareOperation( "TruthMorphismIntoSubobjectClassifierWithGivenObjects",
+                  [ IsCapCategoryObject , IsCapCategoryObject ]);
+
+
+
+#! @Description
 #! The arguments are a category and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>SubobjectClassifier</C>.
@@ -4733,6 +4745,30 @@ DeclareOperation( "AddClassifyingMorphismOfSubobject",
 
 DeclareOperation( "AddClassifyingMorphismOfSubobject",
                   [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$ to the category
+#! for the basic operation 
+#! <C>TruthMorphismIntoSubobjectClassifierWithGivenObjects</C>.
+#! $F : (1, \Omega) \mapsto \mathrm{true}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
+                  [ IsCapCategory , IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+## don't document this function
+DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+
 
 
 #! @Chapter Universal Objects
