@@ -649,7 +649,7 @@ ClassifyingMorphismOfSubobject := rec(
 SubobjectOfClassifyingMorphism := rec(
   installation_name := "SubobjectOfClassifyingMorphism",
   filter_list := [ "morphism" ],
-  io_type := [ [ "alpha" ] , [ "subobject" , "alpha_source" ] ]
+  io_type := [ [ "alpha" ] , [ "subobject" , "alpha_source" ] ],
   return_type := "morphism" ),
 
 DirectProduct := rec(
