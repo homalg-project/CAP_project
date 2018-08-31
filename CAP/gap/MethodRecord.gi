@@ -285,7 +285,7 @@ KernelObject := rec(
 KernelEmbedding := rec(
   installation_name := "KernelEmbedding",
   filter_list := [ "morphism" ],
-  io_type := [ [ "alpha" ], [ "K", "alpha_source" ] ],
+  io_type := [ [ "alpha" ], [ "P", "alpha_source" ] ],
   universal_object_position := "Source",
   universal_type := "Limit",
   return_type := "morphism",
@@ -294,7 +294,7 @@ KernelEmbedding := rec(
 KernelEmbeddingWithGivenKernelObject := rec(
   installation_name := "KernelEmbeddingWithGivenKernelObject",
   filter_list := [ "morphism", "object" ],
-  io_type := [ [ "alpha", "K" ], [ "K", "alpha_source" ] ],
+  io_type := [ [ "alpha", "P" ], [ "P", "alpha_source" ] ],
   cache_name := "KernelEmbeddingWithGivenKernelObject",
   universal_type := "Limit",
   return_type := "morphism",
@@ -303,8 +303,7 @@ KernelEmbeddingWithGivenKernelObject := rec(
 KernelLift := rec(
   installation_name := "KernelLift",
   filter_list := [ "morphism", "morphism" ],
-  io_type := [ [ "alpha", "tau" ], [ "tau_source", "K" ] ],
-  cache_name := "KernelLift",
+  io_type := [ [ "alpha", "tau" ], [ "tau_source", "P" ] ],
   universal_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
@@ -313,7 +312,7 @@ KernelLift := rec(
 KernelLiftWithGivenKernelObject := rec(
   installation_name := "KernelLiftWithGivenKernelObject",
   filter_list := [ "morphism", "morphism", "object" ],
-  io_type := [ [ "alpha", "tau", "K" ], [ "tau_source", "K" ] ],
+  io_type := [ [ "alpha", "tau", "P" ], [ "tau_source", "P" ] ],
   cache_name := "KernelLiftWithGivenKernelObject",
   universal_type := "Limit",
   return_type := "morphism",
@@ -329,7 +328,7 @@ CokernelObject := rec(
 CokernelProjection := rec(
   installation_name := "CokernelProjection",
   filter_list := [ "morphism" ],
-  io_type := [ [ "alpha" ], [ "alpha_range", "K" ] ],
+  io_type := [ [ "alpha" ], [ "alpha_range", "P" ] ],
   universal_object_position := "Range",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -338,7 +337,7 @@ CokernelProjection := rec(
 CokernelProjectionWithGivenCokernelObject := rec(
   installation_name := "CokernelProjectionWithGivenCokernelObject",
   filter_list := [ "morphism", "object" ],
-  io_type := [ [ "alpha", "K" ], [ "alpha_range", "K" ] ],
+  io_type := [ [ "alpha", "P" ], [ "alpha_range", "P" ] ],
   cache_name := "CokernelProjectionWithGivenCokernelObject",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -347,8 +346,7 @@ CokernelProjectionWithGivenCokernelObject := rec(
 CokernelColift := rec(
   installation_name := "CokernelColift",
   filter_list := [ "morphism", "morphism" ],
-  io_type := [ [ "alpha", "tau" ], [ "K", "tau_range" ] ],
-  cache_name := "CokernelColift",
+  io_type := [ [ "alpha", "tau" ], [ "P", "tau_range" ] ],
   universal_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -357,7 +355,7 @@ CokernelColift := rec(
 CokernelColiftWithGivenCokernelObject := rec(
   installation_name := "CokernelColiftWithGivenCokernelObject",
   filter_list := [ "morphism", "morphism", "object" ],
-  io_type := [ [ "alpha", "tau", "K" ], [ "K", "tau_range" ] ],
+  io_type := [ [ "alpha", "tau", "P" ], [ "P", "tau_range" ] ],
   cache_name := "CokernelColiftWithGivenCokernelObject",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -419,7 +417,7 @@ PostCompose := rec(
 ZeroObject := rec(
   installation_name := "ZeroObject",
   filter_list := [ "category" ],
-  cache_name := "ZeroObject",
+  universal_type := "LimitColimit",
   return_type := "object",
   dual_operation := "ZeroObject",
   zero_arguments_for_add_method := true ),
@@ -436,7 +434,7 @@ ZeroObjectFunctorial := rec(
 UniversalMorphismFromZeroObject := rec(
   installation_name := "UniversalMorphismFromZeroObject",
   filter_list := [ "object" ],
-  io_type := [ [ "A" ], [ "Z", "A" ] ],
+  io_type := [ [ "A" ], [ "T", "A" ] ],
   universal_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -456,7 +454,7 @@ UniversalMorphismFromZeroObject := rec(
 UniversalMorphismFromZeroObjectWithGivenZeroObject := rec(
   installation_name := "UniversalMorphismFromZeroObjectWithGivenZeroObject",
   filter_list := [ "object", "object" ],
-  io_type := [ [ "A", "Z" ], [ "Z", "A" ] ],
+  io_type := [ [ "A", "T" ], [ "T", "A" ] ],
   cache_name := "UniversalMorphismFromZeroObjectWithGivenZeroObject",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -465,7 +463,7 @@ UniversalMorphismFromZeroObjectWithGivenZeroObject := rec(
 UniversalMorphismIntoZeroObject := rec(
   installation_name := "UniversalMorphismIntoZeroObject",
   filter_list := [ "object" ],
-  io_type := [ [ "A" ], [ "A", "Z" ] ],
+  io_type := [ [ "A" ], [ "A", "T" ] ],
   universal_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
@@ -485,7 +483,7 @@ UniversalMorphismIntoZeroObject := rec(
 UniversalMorphismIntoZeroObjectWithGivenZeroObject := rec(
   installation_name := "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
   filter_list := [ "object", "object" ],
-  io_type := [ [ "A", "Z" ], [ "A", "Z" ] ],
+  io_type := [ [ "A", "T" ], [ "A", "T" ] ],
   cache_name := "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
   universal_type := "Limit",
   return_type := "morphism",
@@ -571,7 +569,7 @@ ProjectionInFactorOfDirectSum := rec(
   installation_name := "ProjectionInFactorOfDirectSumOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k" ], [ "S", "D_k" ] ],
+  io_type := [ [ "objects", "k" ], [ "P", "objects_k" ] ],
   cache_name := "ProjectionInFactorOfDirectSumOp",
   universal_object_position := "Source",
   universal_type := "Limit",
@@ -581,7 +579,7 @@ ProjectionInFactorOfDirectSum := rec(
 ProjectionInFactorOfDirectSumWithGivenDirectSum := rec(
   installation_name := "ProjectionInFactorOfDirectSumWithGivenDirectSum",
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k", "S" ], [ "S", "D_k" ] ],
+  io_type := [ [ "objects", "k", "P" ], [ "P", "objects_k" ] ],
   cache_name := "ProjectionInFactorOfDirectSumWithGivenDirectSum",
   universal_type := "Limit",
   return_type := "morphism",
@@ -591,7 +589,7 @@ UniversalMorphismIntoDirectSum := rec(
   installation_name := "UniversalMorphismIntoDirectSumOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "object" ],
-  io_type := [ [ "D", "tau" ], [ "tau_1_source", "S" ] ],
+  io_type := [ [ "objects", "tau" ], [ "tau_1_source", "P" ] ],
   cache_name := "UniversalMorphismIntoDirectSumOp",
   universal_object_position := "Range",
   universal_type := "Limit",
@@ -626,7 +624,7 @@ UniversalMorphismIntoDirectSum := rec(
 UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
   installation_name := "UniversalMorphismIntoDirectSumWithGivenDirectSum",
   filter_list := [ IsList, IsList, "object" ],
-  io_type := [ [ "D", "tau", "S" ], [ "tau_1_source", "S" ] ],
+  io_type := [ [ "objects", "tau", "P" ], [ "tau_1_source", "P" ] ],
   cache_name := "UniversalMorphismIntoDirectSumWithGivenDirectSum",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromDirectSumWithGivenDirectSum",
@@ -661,7 +659,7 @@ InjectionOfCofactorOfDirectSum := rec(
   installation_name := "InjectionOfCofactorOfDirectSumOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k" ], [ "D_k", "S" ] ],
+  io_type := [ [ "objects", "k" ], [ "objects_k", "P" ] ],
   cache_name := "InjectionOfCofactorOfDirectSumOp",
   universal_object_position := "Range",
   universal_type := "Colimit",
@@ -671,7 +669,7 @@ InjectionOfCofactorOfDirectSum := rec(
 InjectionOfCofactorOfDirectSumWithGivenDirectSum := rec(
   installation_name := "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k", "S" ], [ "D_k", "S" ] ],
+  io_type := [ [ "objects", "k", "P" ], [ "objects_k", "P" ] ],
   cache_name := "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -681,7 +679,7 @@ UniversalMorphismFromDirectSum := rec(
   installation_name := "UniversalMorphismFromDirectSumOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "object" ],
-  io_type := [ [ "D", "tau" ], [ "S", "tau_1_range" ] ],
+  io_type := [ [ "objects", "tau" ], [ "P", "tau_1_range" ] ],
   cache_name := "UniversalMorphismFromDirectSumOp",
   universal_object_position := "Source",
   universal_type := "Colimit",
@@ -716,7 +714,7 @@ UniversalMorphismFromDirectSum := rec(
 UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
   installation_name := "UniversalMorphismFromDirectSumWithGivenDirectSum",
   filter_list := [ IsList, IsList, "object" ],
-  io_type := [ [ "D", "tau", "S" ], [ "S", "tau_1_range" ] ],
+  io_type := [ [ "objects", "tau", "P" ], [ "P", "tau_1_range" ] ],
   cache_name := "UniversalMorphismFromDirectSumWithGivenDirectSum",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectSumWithGivenDirectSum",
@@ -750,7 +748,6 @@ UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
 TerminalObject := rec(
   installation_name := "TerminalObject",
   filter_list := [ "category" ],
-  cache_name := "TerminalObject",
   universal_type := "Limit",
   return_type := "object",
   dual_operation := "InitialObject",
@@ -788,7 +785,6 @@ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
 InitialObject := rec(
   installation_name := "InitialObject",
   filter_list := [ "category" ],
-  cache_name := "InitialObject",
   universal_type := "Colimit",
   return_type := "object",
   dual_operation := "TerminalObject",
@@ -798,7 +794,7 @@ InitialObject := rec(
 UniversalMorphismFromInitialObject := rec(
   installation_name := "UniversalMorphismFromInitialObject",
   filter_list := [ "object" ],
-  io_type := [ [ "A" ], [ "I", "A" ] ],
+  io_type := [ [ "A" ], [ "T", "A" ] ],
   universal_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -818,7 +814,7 @@ UniversalMorphismFromInitialObject := rec(
 UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
   installation_name := "UniversalMorphismFromInitialObjectWithGivenInitialObject",
   filter_list := [ "object", "object" ],
-  io_type := [ [ "I", "A" ], [ "I", "A" ] ],
+  io_type := [ [ "A", "T" ], [ "T", "A" ] ],
   cache_name := "UniversalMorphismFromInitialObjectWithGivenInitialObject",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -855,7 +851,7 @@ ProjectionInFactorOfDirectProduct := rec(
   installation_name := "ProjectionInFactorOfDirectProductOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k" ], [ "P", "D_k" ] ],
+  io_type := [ [ "objects", "k" ], [ "P", "objects_k" ] ],
   cache_name := "ProjectionInFactorOfDirectProductOp",
   universal_object_position := "Source",
   universal_type := "Limit",
@@ -865,7 +861,7 @@ ProjectionInFactorOfDirectProduct := rec(
 ProjectionInFactorOfDirectProductWithGivenDirectProduct := rec(
   installation_name := "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k", "P" ], [ "P", "D_k" ] ],
+  io_type := [ [ "objects", "k", "P" ], [ "P", "objects_k" ] ],
   cache_name := "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
   universal_type := "Limit",
   return_type := "morphism",
@@ -874,7 +870,7 @@ ProjectionInFactorOfDirectProductWithGivenDirectProduct := rec(
 UniversalMorphismIntoDirectProduct := rec(
   installation_name := "UniversalMorphismIntoDirectProductOp",
   argument_list := [ 1, 2 ],
-  io_type := [ [ "D", "tau" ], [ "tau_1_source", "P" ] ],
+  io_type := [ [ "objects", "tau" ], [ "tau_1_source", "P" ] ],
   filter_list := [ IsList, IsList, "object" ],
   cache_name := "UniversalMorphismIntoDirectProductOp",
   universal_object_position := "Range",
@@ -910,7 +906,7 @@ UniversalMorphismIntoDirectProduct := rec(
 UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   installation_name := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
   filter_list := [ IsList, IsList, "object" ],
-  io_type := [ [ "D", "tau", "P" ], [ "tau_1_source", "P" ] ],
+  io_type := [ [ "objects", "tau", "P" ], [ "tau_1_source", "P" ] ],
   cache_name := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoproductWithGivenCoproduct",
@@ -1276,7 +1272,7 @@ InjectionOfCofactorOfCoproduct := rec(
   installation_name := "InjectionOfCofactorOfCoproductOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k" ], [ "D_k", "I" ] ],
+  io_type := [ [ "objects", "k" ], [ "objects_k", "P" ] ],
   cache_name := "InjectionOfCofactorOfCoproductOp",
   universal_object_position := "Range",
   universal_type := "Colimit",
@@ -1286,7 +1282,7 @@ InjectionOfCofactorOfCoproduct := rec(
 InjectionOfCofactorOfCoproductWithGivenCoproduct := rec(
   installation_name := "InjectionOfCofactorOfCoproductWithGivenCoproduct",
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k", "I" ], [ "D_k", "I" ] ],
+  io_type := [ [ "objects", "k", "P" ], [ "objects_k", "P" ] ],
   cache_name := "InjectionOfCofactorOfCoproductWithGivenCoproduct",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -1296,7 +1292,7 @@ UniversalMorphismFromCoproduct := rec(
   installation_name := "UniversalMorphismFromCoproductOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "object" ],
-  io_type := [ [ "D", "tau" ], [ "I", "tau_1_range" ] ],
+  io_type := [ [ "objects", "tau" ], [ "P", "tau_1_range" ] ],
   cache_name := "UniversalMorphismFromCoproductOp",
   universal_object_position := "Source",
   universal_type := "Colimit",
@@ -1331,7 +1327,7 @@ UniversalMorphismFromCoproduct := rec(
 UniversalMorphismFromCoproductWithGivenCoproduct := rec(
   installation_name := "UniversalMorphismFromCoproductWithGivenCoproduct",
   filter_list := [ IsList, IsList, "object" ],
-  io_type := [ [ "D", "tau", "I" ], [ "I", "tau_1_range" ] ],
+  io_type := [ [ "objects", "tau", "P" ], [ "P", "tau_1_range" ] ],
   cache_name := "UniversalMorphismFromCoproductWithGivenCoproduct",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
@@ -1471,15 +1467,14 @@ Equalizer := rec(
     od;
     
     return [ true ];
-  end,
-  functorial := "EqualizerFunctorialWithGivenEqualizers" ),
+  end ),
 
 EmbeddingOfEqualizer := rec(
   installation_name := "EmbeddingOfEqualizerOp",
   argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   return_type := "morphism",
-  io_type := [ [ "D" ], [ "E", "D_1_source" ] ],
+  io_type := [ [ "morphisms" ], [ "P", "morphisms_1_source" ] ],
   cache_name := "EmbeddingOfEqualizerOp",
   universal_object_position := "Source",
   universal_type := "Limit",
@@ -1491,7 +1486,7 @@ EmbeddingOfEqualizerWithGivenEqualizer := rec(
   installation_name := "EmbeddingOfEqualizerWithGivenEqualizer",
   filter_list := [ IsList, "object" ],
   return_type := "morphism",
-  io_type := [ [ "D", "E" ], [ "E", "D_1_source" ] ],
+  io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_source" ] ],
   cache_name := "EmbeddingOfEqualizerWithGivenEqualizer",
   universal_type := "Limit",
   dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
@@ -1502,8 +1497,7 @@ UniversalMorphismIntoEqualizer := rec(
   installation_name := "UniversalMorphismIntoEqualizer",
   filter_list := [ IsList, "morphism" ],
   return_type := "morphism",
-  io_type := [ [ "D", "tau" ], [ "tau_source", "E" ] ],
-  cache_name := "UniversalMorphismIntoEqualizer",
+  io_type := [ [ "morphisms", "tau" ], [ "tau_source", "P" ] ],
   universal_object_position := "Range",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoequalizer",
@@ -1558,7 +1552,7 @@ UniversalMorphismIntoEqualizerWithGivenEqualizer := rec(
   installation_name := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
   filter_list := [ IsList, "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "D", "tau", "E" ], [ "tau_source", "E" ] ],
+  io_type := [ [ "morphisms", "tau", "P" ], [ "tau_source", "P" ] ],
   cache_name := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
@@ -1600,7 +1594,7 @@ ProjectionInFactorOfFiberProduct := rec(
   installation_name := "ProjectionInFactorOfFiberProductOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "morphism" ],
-  io_type := [ [ "D", "k" ], [ "P", "D_k_source" ] ],
+  io_type := [ [ "morphisms", "k" ], [ "P", "morphisms_k_source" ] ],
   cache_name := "ProjectionInFactorOfFiberProductOp",
   universal_object_position := "Source",
   universal_type := "Limit",
@@ -1634,7 +1628,7 @@ ProjectionInFactorOfFiberProduct := rec(
 ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   installation_name := "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k", "P" ], [ "P", "D_k_source" ] ],
+  io_type := [ [ "morphisms", "k", "P" ], [ "P", "morphisms_k_source" ] ],
   cache_name := "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
   universal_type := "Limit",
   dual_operation := "InjectionOfCofactorOfPushoutWithGivenPushout",
@@ -1668,7 +1662,7 @@ UniversalMorphismIntoFiberProduct := rec(
   installation_name := "UniversalMorphismIntoFiberProductOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "morphism" ],
-  io_type := [ [ "D", "tau" ], [ "tau_1_source", "P" ] ],
+  io_type := [ [ "morphisms", "tau" ], [ "tau_1_source", "P" ] ],
   cache_name := "UniversalMorphismIntoFiberProductOp",
   universal_object_position := "Range",
   universal_type := "Limit",
@@ -1728,7 +1722,7 @@ UniversalMorphismIntoFiberProduct := rec(
 UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
   installation_name := "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
   filter_list := [ IsList, IsList, "object" ],
-  io_type := [ [ "D", "tau", "P" ], [ "tau_1_source", "P" ] ],
+  io_type := [ [ "morphisms", "tau", "P" ], [ "tau_1_source", "P" ] ],
   cache_name := "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromPushoutWithGivenPushout",
@@ -1825,15 +1819,14 @@ Coequalizer := rec(
     od;
     
     return [ true ];
-  end,
-  functorial := "CoequalizerFunctorialWithGivenCoequalizers" ),
+  end ),
 
 ProjectionOntoCoequalizer := rec(
   installation_name := "ProjectionOntoCoequalizerOp",
   argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
   return_type := "morphism",
-  io_type := [ [ "D" ], [ "D_1_range", "C" ] ],
+  io_type := [ [ "morphisms" ], [ "morphisms_1_range", "P" ] ],
   cache_name := "ProjectionOntoCoequalizerOp",
   universal_object_position := "Range",
   universal_type := "Colimit",
@@ -1845,7 +1838,7 @@ ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
   installation_name := "ProjectionOntoCoequalizerWithGivenCoequalizer",
   filter_list := [ IsList, "object" ],
   return_type := "morphism",
-  io_type := [ [ "D", "C" ], [ "D_1_range", "C" ] ],
+  io_type := [ [ "morphisms", "P" ], [ "morphisms_1_range", "P" ] ],
   cache_name := "ProjectionOntoCoequalizerWithGivenCoequalizer",
   universal_type := "Colimit",
   dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer",
@@ -1856,8 +1849,7 @@ UniversalMorphismFromCoequalizer := rec(
   installation_name := "UniversalMorphismFromCoequalizer",
   filter_list := [ IsList, "morphism" ],
   return_type := "morphism",
-  io_type := [ [ "D", "tau" ], [ "C", "tau_range" ] ],
-  cache_name := "UniversalMorphismFromCoequalizer",
+  io_type := [ [ "morphisms", "tau" ], [ "P", "tau_range" ] ],
   universal_object_position := "Source",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoEqualizer",
@@ -1912,7 +1904,7 @@ UniversalMorphismFromCoequalizerWithGivenCoequalizer := rec(
   installation_name := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
   filter_list := [ IsList, "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "D", "tau", "C" ], [ "C", "tau_range" ] ],
+  io_type := [ [ "morphisms", "tau", "P" ], [ "P", "tau_range" ] ],
   cache_name := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
@@ -1954,7 +1946,7 @@ InjectionOfCofactorOfPushout := rec(
   installation_name := "InjectionOfCofactorOfPushoutOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsInt, "morphism" ],
-  io_type := [ [ "D", "k" ], [ "D_k_range", "I" ] ],
+  io_type := [ [ "morphisms", "k" ], [ "morphisms_k_range", "P" ] ],
   cache_name := "InjectionOfCofactorOfPushoutOp",
   universal_object_position := "Range",
   universal_type := "Colimit",
@@ -1988,7 +1980,7 @@ InjectionOfCofactorOfPushout := rec(
 InjectionOfCofactorOfPushoutWithGivenPushout := rec(
   installation_name := "InjectionOfCofactorOfPushoutWithGivenPushout",
   filter_list := [ IsList, IsInt, "object" ],
-  io_type := [ [ "D", "k", "I" ], [ "D_k_range", "I" ] ],
+  io_type := [ [ "morphisms", "k", "P" ], [ "morphisms_k_range", "P" ] ],
   cache_name := "InjectionOfCofactorOfPushoutWithGivenPushout",
   universal_type := "Colimit",
   dual_operation := "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
@@ -2022,7 +2014,7 @@ UniversalMorphismFromPushout := rec(
   installation_name := "UniversalMorphismFromPushoutOp",
   argument_list := [ 1, 2 ],
   filter_list := [ IsList, IsList, "morphism" ],
-  io_type := [ [ "D", "tau" ], [ "I", "tau_1_range" ] ],
+  io_type := [ [ "morphisms", "tau" ], [ "P", "tau_1_range" ] ],
   cache_name := "UniversalMorphismFromPushoutOp",
   universal_object_position := "Source",
   universal_type := "Colimit",
@@ -2082,7 +2074,7 @@ UniversalMorphismFromPushout := rec(
 UniversalMorphismFromPushoutWithGivenPushout := rec(
   installation_name := "UniversalMorphismFromPushoutWithGivenPushout",
   filter_list := [ IsList, IsList, "object" ],
-  io_type := [ [ "D", "tau", "I" ], [ "I", "tau_1_range" ] ],
+  io_type := [ [ "morphisms", "tau", "P" ], [ "P", "tau_1_range" ] ],
   cache_name := "UniversalMorphismFromPushoutWithGivenPushout",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
@@ -2590,7 +2582,7 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
 KernelObjectFunctorialWithGivenKernelObjects := rec(
   installation_name := "KernelObjectFunctorialWithGivenKernelObjects",
   filter_list := [ "object", "morphism", "morphism", "morphism", "object" ],
-  io_type := [ [ "K", "alpha", "mu", "alphap", "Kp" ], [ "K", "Kp" ] ],
+  io_type := [ [ "P", "alpha", "mu", "alphap", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "KernelObjectFunctorialWithGivenKernelObjects",
   return_type := "morphism",
   dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects",
@@ -2599,7 +2591,7 @@ KernelObjectFunctorialWithGivenKernelObjects := rec(
 CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   installation_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
   filter_list := [ "object", "morphism", "morphism", "morphism", "object" ],
-  io_type := [ [ "C", "alpha", "nu", "alphap", "Cp" ], [ "C", "Cp" ] ],
+  io_type := [ [ "P", "alpha", "mu", "alphap", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "CokernelObjectFunctorialWithGivenCokernelObjects",
   return_type := "morphism",
   dual_operation := "KernelObjectFunctorialWithGivenKernelObjects",
@@ -2635,7 +2627,7 @@ DirectProductFunctorialWithGivenDirectProducts := rec(
 CoproductFunctorialWithGivenCoproducts := rec(
   installation_name := "CoproductFunctorialWithGivenCoproducts",
   filter_list := [ "object", IsList, "object" ],
-  io_type := [ [ "I", "L", "Ip" ], [ "I", "Ip" ] ],
+  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "CoproductFunctorialWithGivenCoproducts",
   return_type := "morphism",
   dual_operation := "DirectProductFunctorialWithGivenDirectProducts",
@@ -2644,7 +2636,7 @@ CoproductFunctorialWithGivenCoproducts := rec(
 DirectSumFunctorialWithGivenDirectSums := rec(
   installation_name := "DirectSumFunctorialWithGivenDirectSums",
   filter_list := [ "object", IsList, "object" ],
-  io_type := [ [ "d1", "L", "d2" ], [ "d1", "d2" ] ],
+  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "DirectSumFunctorialWithGivenDirectSums",
   return_type := "morphism",
   dual_operation := "DirectSumFunctorialWithGivenDirectSums",
@@ -2653,15 +2645,16 @@ DirectSumFunctorialWithGivenDirectSums := rec(
 EqualizerFunctorialWithGivenEqualizers := rec(
   installation_name := "EqualizerFunctorialWithGivenEqualizers",
   filter_list := [ "object", IsList, "morphism", IsList, "object" ],
-  io_type := [ [ "E", "L1", "m", "L3", "Ep" ], [ "E", "Ep" ] ],
+  io_type := [ [ "P", "morphisms", "mu", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "EqualizerFunctorialWithGivenEqualizers",
   return_type := "morphism",
-  dual_operation := "CoequalizerFunctorialWithGivenCoequalizers" ),
+  dual_operation := "CoequalizerFunctorialWithGivenCoequalizers",
+  dual_arguments_reversed := true ),
 
 FiberProductFunctorialWithGivenFiberProducts := rec(
   installation_name := "FiberProductFunctorialWithGivenFiberProducts",
   filter_list := [ "object", IsList, IsList, IsList, "object" ],
-  io_type := [ [ "P", "L1", "L2", "L3", "Pp" ], [ "P", "Pp" ] ],
+  io_type := [ [ "P", "morphisms", "L", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "FiberProductFunctorialWithGivenFiberProducts",
   return_type := "morphism",
   dual_operation := "PushoutFunctorialWithGivenPushouts",
@@ -2670,15 +2663,16 @@ FiberProductFunctorialWithGivenFiberProducts := rec(
 CoequalizerFunctorialWithGivenCoequalizers := rec(
   installation_name := "CoequalizerFunctorialWithGivenCoequalizers",
   filter_list := [ "object", IsList, "morphism", IsList, "object" ],
-  io_type := [ [ "C", "L1", "m", "L3", "Cp" ], [ "C", "Cp" ] ],
+  io_type := [ [ "P", "morphisms", "mu", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "CoequalizerFunctorialWithGivenCoequalizers",
   return_type := "morphism",
-  dual_operation := "EqualizerFunctorialWithGivenEqualizers" ),
+  dual_operation := "EqualizerFunctorialWithGivenEqualizers",
+  dual_arguments_reversed := true ),
 
 PushoutFunctorialWithGivenPushouts := rec(
   installation_name := "PushoutFunctorialWithGivenPushouts",
   filter_list := [ "object", IsList, IsList, IsList, "object" ],
-  io_type := [ [ "I", "L1", "L2", "L3", "Ip" ], [ "I", "Ip" ] ],
+  io_type := [ [ "P", "morphisms", "L", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "PushoutFunctorialWithGivenPushouts",
   return_type := "morphism",
   dual_operation := "FiberProductFunctorialWithGivenFiberProducts",
@@ -2893,7 +2887,7 @@ IsomorphismFromCoequalizerOfCoproductDiagramToPushout := rec(
 IsomorphismFromImageObjectToKernelOfCokernel := rec(
   installation_name := "IsomorphismFromImageObjectToKernelOfCokernel",
   filter_list := [ "morphism" ],
-  io_type := [ [ "alpha" ], [ "I", "K" ] ],
+  io_type := [ [ "alpha" ], [ "I", "P" ] ],
   cache_name := "IsomorphismFromImageObjectToKernelOfCokernel",
   return_type := "morphism",
   dual_operation := "IsomorphismFromCokernelOfKernelToCoimage",
@@ -2902,7 +2896,7 @@ IsomorphismFromImageObjectToKernelOfCokernel := rec(
 IsomorphismFromKernelOfCokernelToImageObject := rec(
   installation_name := "IsomorphismFromKernelOfCokernelToImageObject",
   filter_list := [ "morphism" ],
-  io_type := [ [ "alpha" ], [ "K", "I" ] ],
+  io_type := [ [ "alpha" ], [ "P", "I" ] ],
   cache_name := "IsomorphismFromKernelOfCokernelToImageObject",
   return_type := "morphism",
   dual_operation := "IsomorphismFromCoimageToCokernelOfKernel",
@@ -3202,6 +3196,495 @@ RandomMorphismWithFixedSourceAndRangeByList := rec(
 ),
 
 ) );
+
+InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS, [
+rec(
+  object_specification := [ "varobject" ],
+  morphism_specification := [  ],
+  limit_object_name := "DirectProduct",
+  colimit_object_name := "Coproduct",
+),
+
+rec(
+  object_specification := [ "varobject" ],
+  morphism_specification := [  ],
+  limit_object_name := "DirectSum",
+  colimit_object_name := "DirectSum",
+),
+
+rec(
+  object_specification := [ "fixedobject", "varobject" ],
+  morphism_specification := [ [ 2, "varmorphism", 1 ] ],
+  limit_object_name := "FiberProduct",
+  colimit_object_name := "Pushout",
+),
+
+rec(
+  object_specification := [ "fixedobject", "fixedobject" ],
+  morphism_specification := [ [ 1, "varmorphism" ,2 ] ],
+  limit_object_name := "Equalizer",
+  limit_projection_name := "EmbeddingOfEqualizer",
+  colimit_object_name := "Coequalizer",
+  colimit_injection_name := "ProjectionOntoCoequalizer",
+),
+
+rec(
+  object_specification := [ "fixedobject", "fixedobject" ],
+  morphism_specification := [ [ 1, "fixedmorphism", 2 ], [ 1, "zeromorphism", 2 ] ],
+  limit_object_name := "KernelObject",
+  limit_projection_name := "KernelEmbedding",
+  limit_universal_morphism_name := "KernelLift",
+  colimit_object_name := "CokernelObject",
+  colimit_injection_name := "CokernelProjection",
+  colimit_universal_morphism_name := "CokernelColift",
+),
+
+rec(
+  object_specification := [ ],
+  morphism_specification := [ ],
+  limit_object_name := "TerminalObject",
+  colimit_object_name := "InitialObject",
+),
+
+rec(
+  object_specification := [ ],
+  morphism_specification := [ ],
+  limit_object_name := "ZeroObject",
+  colimit_object_name := "ZeroObject",
+)
+
+] );
+
+InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
+  function ( limits )
+    local object_specification, morphism_specification, source_position, type, range_position, unbound_morphism_positions, number_of_unbound_morphisms, unbound_objects, morphism, unbound_object_positions, number_of_unbound_objects, targets, target_positions, number_of_targets, object_universal_type, diagram_filter_list, diagram_input_type, limit, position;
+    
+    for limit in limits do
+        object_specification := limit.object_specification;
+        morphism_specification := limit.morphism_specification;
+        
+        #### check that given diagram is well-defined
+        if not (IsDenseList( object_specification ) and IsDenseList( morphism_specification )) then
+            Error( "the given diagram is not well-defined" );
+        fi;
+
+        if Length( object_specification ) = 0 and Length( morphism_specification ) > 0 then
+            Error( "the given diagram is not well-defined" );
+        fi;
+        
+        if not (ForAll( object_specification, object -> object in [ "fixedobject", "varobject" ] )) then
+            Error( "the given diagram is not well-defined" );
+        fi;
+
+        for morphism in morphism_specification do
+            if not (IsList( morphism ) and Length( morphism ) = 3) then
+                Error( "the given diagram is not well-defined" );
+            fi;
+            source_position := morphism[1];
+            type := morphism[2];
+            range_position := morphism[3];
+
+            if not (IsInt( source_position ) and source_position >= 1 and source_position <= Length( object_specification )) then
+                Error( "the given diagram is not well-defined" );
+            fi;
+
+            if not (IsInt( range_position ) and range_position >= 1 and range_position <= Length( object_specification )) then
+                Error( "the given diagram is not well-defined" );
+            fi;
+
+            if not type in [ "fixedmorphism", "varmorphism", "zeromorphism" ] then
+                Error( "the given diagram is not well-defined" );
+            fi;
+
+            if type = "fixedmorphism" and (object_specification[source_position] = "varobject" or object_specification[range_position] = "varobject") then
+                Error( "the given diagram is not well-defined" );
+            fi;
+        od;
+
+        #### get number of variables
+        # morphisms
+        unbound_morphism_positions := PositionsProperty( morphism_specification, x -> x[2] = "varmorphism" or x[2] = "fixedmorphism" );
+        if Length( unbound_morphism_positions ) = 0 then
+            number_of_unbound_morphisms := 0;
+        elif Length( unbound_morphism_positions ) = 1 and morphism_specification[unbound_morphism_positions[1]][2] = "fixedmorphism" then
+            number_of_unbound_morphisms := 1;
+        else
+            number_of_unbound_morphisms := 2;
+        fi;
+
+        limit.unbound_morphism_positions := unbound_morphism_positions;
+        limit.number_of_unbound_morphisms := number_of_unbound_morphisms;
+
+        if not ForAll( unbound_morphism_positions, i -> morphism_specification[i][2] = "fixedmorphism" or i = Length( unbound_morphism_positions ) ) then
+            Error( "diagrams of the given type are not supported" );
+        fi;
+
+        # objects
+        unbound_objects := StructuralCopy( object_specification );
+        for position in unbound_morphism_positions do
+            morphism := morphism_specification[position];
+            source_position := morphism[1];
+            range_position := morphism[3];
+
+            unbound_objects[source_position] := "";
+            unbound_objects[range_position] := "";
+        od;
+        unbound_object_positions := PositionsProperty( unbound_objects, x -> x <> "" );
+        if Length( unbound_object_positions ) = 0 then
+            number_of_unbound_objects := 0;
+        elif Length( unbound_object_positions ) = 1 and object_specification[unbound_object_positions[1]] = "fixedobject" then
+            number_of_unbound_objects := 1;
+        else
+            number_of_unbound_objects := 2;
+        fi;
+
+        limit.unbound_object_positions := unbound_object_positions;
+        limit.number_of_unbound_objects := number_of_unbound_objects;
+
+        if not ForAll( unbound_object_positions, i -> object_specification[i] = "fixedobject" or i = Length( unbound_object_positions ) ) then
+            Error( "diagrams of the given type are not supported" );
+        fi;
+
+        # targets
+        targets := StructuralCopy( object_specification );
+        for morphism in morphism_specification do
+            range_position := morphism[3];
+            
+            targets[range_position] := "";
+        od;
+        target_positions := PositionsProperty( targets, x -> x <> "" );
+        if Length( target_positions ) = 0 then
+            number_of_targets := 0;
+        elif Length( target_positions ) = 1 and object_specification[target_positions[1]] = "fixedobject" then
+            number_of_targets := 1;
+        else
+            number_of_targets := 2;
+        fi;
+
+        limit.target_positions := target_positions;
+        limit.number_of_targets := number_of_targets;
+
+        #### get filter list and input type of the diagram
+        diagram_filter_list := [ ];
+        diagram_input_type := [ ];
+        if number_of_unbound_objects = 1 then
+            Add( diagram_filter_list, "object" );
+            Add( diagram_input_type, "X" );
+        elif number_of_unbound_objects > 1 then
+            Add( diagram_filter_list, IsList );
+            Add( diagram_input_type, "objects" );
+        fi;
+        if number_of_unbound_morphisms = 1 then
+            Add( diagram_filter_list, "morphism" );
+            Add( diagram_input_type, "alpha" );
+        elif number_of_unbound_morphisms > 1 then
+            Add( diagram_filter_list, IsList );
+            Add( diagram_input_type, "morphisms" );
+        fi;
+
+        limit.diagram_filter_list := diagram_filter_list;
+        limit.diagram_input_type := diagram_input_type;
+
+        #### set default projection/injection/universal morphism names
+        if number_of_targets > 0 and not IsBound( limit.limit_projection_name ) then
+            limit.limit_projection_name := Concatenation( "ProjectionInFactorOf", limit.limit_object_name );
+        fi;
+        if not IsBound( limit.limit_universal_morphism_name ) then
+            limit.limit_universal_morphism_name := Concatenation( "UniversalMorphismInto", limit.limit_object_name );
+        fi;
+
+        if number_of_targets > 0 and not IsBound( limit.colimit_injection_name ) then
+            limit.colimit_injection_name := Concatenation( "InjectionOfCofactorOf", limit.colimit_object_name );
+        fi;
+        if not IsBound( limit.colimit_universal_morphism_name ) then
+            limit.colimit_universal_morphism_name := Concatenation( "UniversalMorphismFrom", limit.colimit_object_name );
+        fi;
+    od;
+end );
+
+CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS );
+
+
+BindGlobal( "CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES", function ( method_record, entry_name, generated_entry )
+    local excluded_names, method_record_entry, name;
+    
+    excluded_names := [ "pre_function", "pre_function_full", "post_function" ];
+
+    method_record_entry := method_record.(entry_name);
+    
+    for name in RecNames( method_record_entry ) do
+        if name in excluded_names then
+            continue;
+        fi;
+        if not IsBound( generated_entry.(name) ) then
+            Display( Concatenation( "WARNING: The entry \"", entry_name, "\" in the method record has a component named \"", name, "\" which is not expected by the validator." ) );
+        elif method_record_entry.(name) <> generated_entry.(name) then
+            Display( Concatenation( "WARNING: The entry \"", entry_name, "\" in the method record has a component named \"", name, "\" with value \"", String( method_record_entry.(name) ), "\". The value expected by the validator is \"", String( generated_entry.(name) ), "\"." ) );
+        fi;
+    od;
+    for name in RecNames( generated_entry ) do
+        if name in excluded_names then
+            continue;
+        fi;
+        if not IsBound( method_record_entry.(name) ) then
+            Display( Concatenation( "WARNING: The entry \"", entry_name, "\" in the method record is missing a component named \"", name, "\" which is expected by the validator." ) );
+        fi;
+    od;
+end );
+
+InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
+  function ( method_name_record, limits )
+    local make_record_op, make_record_with_given, make_colimit, object_universal_type, object_filter_list, projection_filter_list, projection_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, universal_morphism_record, functorial_record, limit;
+    
+    #### helper functions
+    make_record_op := function ( record )
+        record := StructuralCopy( record );
+
+        if ForAll( record.filter_list, x -> x <> "object" and x <> "morphism" ) then
+            if ForAll( record.filter_list, x -> x <> IsList ) then
+                # preprend "category" to filter_list
+                record.filter_list := Concatenation( [ "category" ], record.filter_list );
+                # cannot express io_type
+                Unbind( record.io_type );
+                record.zero_arguments_for_add_method := true;
+            else
+                record.installation_name := Concatenation( record.installation_name, "Op" );
+                record.argument_list := [ 1 .. Length( record.filter_list ) ];
+                if limit.number_of_unbound_objects > 1 then
+                    Add( record.filter_list, "object" );
+                else
+                    Add( record.filter_list, "morphism" );
+                fi;
+                record.cache_name := record.installation_name;
+            fi;
+        fi;
+        return record;
+    end;
+
+    make_record_with_given := function ( record, object_name, coobject_name )
+        record := StructuralCopy( record );
+        
+        record.installation_name := Concatenation( record.installation_name, "WithGiven", object_name );
+        Add( record.filter_list, "object" );
+        if record.universal_object_position = "Source" then
+            Add( record.io_type[1], record.io_type[2][1] );
+        else
+            Add( record.io_type[1], record.io_type[2][2] );
+        fi;
+        record.dual_operation := Concatenation( record.dual_operation, "WithGiven", coobject_name );
+        record.cache_name := record.installation_name;
+        Unbind( record.universal_object_position );
+
+        return record;
+    end;
+
+    make_colimit := function ( record, args... )
+        local reverse_output_type, orig_installation_name;
+        
+        
+        if Length( args ) > 1 then
+            Error( "make_colimit must be called with at most two arguments" );
+        elif Length( args ) = 1 then
+            reverse_output_type := args[1];
+        else
+            reverse_output_type := true;
+        fi;
+        
+        record := StructuralCopy( record );
+        
+        orig_installation_name := record.installation_name;
+        record.installation_name := record.dual_operation;
+        record.dual_operation := orig_installation_name;
+        if IsBound( record.cache_name ) then
+            record.cache_name := record.installation_name;
+        fi;
+        
+        if IsBound( record.io_type ) and reverse_output_type then
+            record.io_type[2] := Reversed( record.io_type[2] );
+            record.io_type[2] := List( record.io_type[2], x -> ReplacedString( x, "source", "tmp" ) );
+            record.io_type[2] := List( record.io_type[2], x -> ReplacedString( x, "range", "source" ) );
+            record.io_type[2] := List( record.io_type[2], x -> ReplacedString( x, "tmp", "range" ) );
+        fi;
+
+        if IsBound( record.universal_object_position ) then
+            if record.universal_object_position = "Source" then
+                record.universal_object_position := "Range";
+            else
+                record.universal_object_position := "Source";
+            fi;
+        fi;
+
+        if IsBound( record.universal_type ) then
+            if record.universal_type = "Limit" then
+                record.universal_type := "Colimit";
+            fi;
+        fi;
+
+        return record;
+    end;
+
+    for limit in limits do
+        #### get universal type
+        if limit.limit_object_name = limit.colimit_object_name then
+            object_universal_type := "LimitColimit";
+        else
+            object_universal_type := "Limit";
+        fi;
+
+        #### get filter lists and io types
+        object_filter_list := StructuralCopy( limit.diagram_filter_list );
+        
+        projection_filter_list := StructuralCopy( limit.diagram_filter_list );
+        projection_io_type := [ StructuralCopy( limit.diagram_input_type ), [ ] ];
+        if limit.number_of_targets > 1 then
+            Add( projection_filter_list, IsInt );
+            Add( projection_io_type[1], "k" );
+        fi;
+        if limit.target_positions = limit.unbound_object_positions then
+            # io_type can be derived from the objects
+            if limit.number_of_targets = 1 then
+                projection_io_type[2] := [ "P", "X" ];
+            else
+                projection_io_type[2] := [ "P", "objects_k" ];
+            fi;
+        elif limit.target_positions = List( limit.unbound_morphism_positions, i -> limit.morphism_specification[i][1] ) then
+            # io_type can be derived from the morphisms as sources
+            if limit.number_of_unbound_morphisms = 1 then
+                projection_io_type[2] := [ "P", "alpha_source" ];
+            elif limit.number_of_targets = 1 then
+                projection_io_type[2] := [ "P", "morphisms_1_source" ];
+            else
+                projection_io_type[2] := [ "P", "morphisms_k_source" ];
+            fi;
+        elif limit.target_positions = List( limit.unbound_morphism_positions, i -> limit.morphism_specification[i][3] ) then
+            # io_type can be derived from the morphisms as ranges
+            if limit.number_of_unbound_morphisms = 1 then
+                projection_io_type[2] := [ "P", "alpha_range" ];
+            elif limit.number_of_targets = 1 then
+                projection_io_type[2] := [ "P", "morphisms_1_range" ];
+            else
+                projection_io_type[2] := [ "P", "morphisms_k_range" ];
+            fi;
+        else
+            Error( "Warning: cannot express io_type" );
+        fi;
+
+        universal_morphism_filter_list := StructuralCopy( limit.diagram_filter_list );
+        universal_morphism_io_type := [ StructuralCopy( limit.diagram_input_type ), [ ] ];
+        if limit.number_of_targets = 0 then
+            Add( universal_morphism_filter_list, "object" );
+            Add( universal_morphism_io_type[1], "A" );
+            universal_morphism_io_type[2] := [ "A", "T" ];
+        elif limit.number_of_targets = 1 then
+            Add( universal_morphism_filter_list, "morphism" );
+            Add( universal_morphism_io_type[1], "tau" );
+            universal_morphism_io_type[2] := [ "tau_source", "P" ];
+        else
+            Add( universal_morphism_filter_list, IsList );
+            Add( universal_morphism_io_type[1], "tau" );
+            universal_morphism_io_type[2] := [ "tau_1_source", "P" ];
+        fi;
+
+        
+        #### get base records
+        object_record :=  rec(
+            installation_name := limit.limit_object_name,
+            filter_list := object_filter_list,
+            universal_type := object_universal_type,
+            return_type := "object",
+            dual_operation := limit.colimit_object_name,
+        );
+
+        if limit.number_of_targets > 0 then
+            projection_record := rec(
+                installation_name := limit.limit_projection_name,
+                filter_list := projection_filter_list,
+                io_type := projection_io_type,
+                universal_object_position := "Source",
+                universal_type := "Limit",
+                return_type := "morphism",
+                dual_operation := limit.colimit_injection_name,
+            );
+        fi;
+
+        universal_morphism_record := rec(
+            installation_name := limit.limit_universal_morphism_name,
+            filter_list := universal_morphism_filter_list,
+            io_type := universal_morphism_io_type,
+            universal_object_position := "Range",
+            universal_type := "Limit",
+            return_type := "morphism",
+            dual_operation := limit.colimit_universal_morphism_name,
+        );
+
+        if IsEmpty( limit.diagram_filter_list ) then
+            functorial_record := rec(
+                installation_name := Concatenation( limit.limit_object_name, "Functorial" ),
+                filter_list := [ "category" ],
+                cache_name := ~.installation_name,
+                return_type := "morphism",
+                dual_operation := Concatenation( limit.colimit_object_name, "Functorial" ),
+                no_with_given := true,
+            );
+        else
+            functorial_record := rec(
+                installation_name := Concatenation( limit.limit_object_name, "FunctorialWithGiven", limit.limit_object_name, "s" ),
+                cache_name := ~.installation_name,
+                return_type := "morphism",
+                dual_operation := Concatenation( limit.colimit_object_name, "FunctorialWithGiven", limit.colimit_object_name, "s" ),
+                dual_arguments_reversed := true,
+            );
+            
+            if limit.number_of_unbound_morphisms = 0 then
+                if limit.number_of_targets = 1 then
+                    functorial_record.filter_list := [ "object", "morphism", "object" ];
+                    functorial_record.io_type := [ [ "P", "mu", "Pp" ], [ "P", "Pp" ] ];
+                else
+                    functorial_record.filter_list := [ "object", IsList, "object" ];
+                    functorial_record.io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ];
+                fi;
+            else
+                if limit.number_of_targets = 1 then
+                    functorial_record.filter_list := Concatenation( [ "object" ], limit.diagram_filter_list, [ "morphism" ], limit.diagram_filter_list, [ "object" ] );
+                    functorial_record.io_type := [ Concatenation( [ "P" ], limit.diagram_input_type, [ "mu" ], List( limit.diagram_input_type, x -> Concatenation( x, "p" ) ), [ "Pp" ] ), [ "P", "Pp" ] ];
+                else
+                    functorial_record.filter_list := Concatenation( [ "object" ], limit.diagram_filter_list, [ IsList ], limit.diagram_filter_list, [ "object" ] );
+                    functorial_record.io_type := [ Concatenation( [ "P" ], limit.diagram_input_type, [ "L" ], List( limit.diagram_input_type, x -> Concatenation( x, "p" ) ), [ "Pp" ] ), [ "P", "Pp" ] ];
+                fi;
+            fi;
+        fi;
+        
+        #### validate limit records
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_object_name, make_record_op( object_record ) );
+
+        if limit.number_of_targets > 0 then
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_projection_name, make_record_op( projection_record ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.limit_projection_name, "WithGiven", limit.limit_object_name ), make_record_with_given( projection_record, limit.limit_object_name, limit.colimit_object_name ) );
+        fi;
+        
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_universal_morphism_name, make_record_op( universal_morphism_record ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.limit_universal_morphism_name, "WithGiven", limit.limit_object_name ), make_record_with_given( universal_morphism_record, limit.limit_object_name, limit.colimit_object_name ) );
+
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.installation_name, functorial_record );
+
+        #### validate colimit records
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_object_name, make_record_op( make_colimit( object_record ) ) );
+        
+        if limit.number_of_targets > 0 then
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_injection_name, make_record_op( make_colimit( projection_record ) ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_injection_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( projection_record ), limit.colimit_object_name, limit.limit_object_name ) );
+        fi;
+        
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_universal_morphism_name, make_record_op( make_colimit( universal_morphism_record ) ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_universal_morphism_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( universal_morphism_record ), limit.colimit_object_name, limit.limit_object_name ) );
+        
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.dual_operation, make_colimit( functorial_record, false ) );
+    od;
+    
+end );
+
+CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD, CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS );
+
 
 InstallValue( CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, rec() );
 
