@@ -255,7 +255,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     fi;
                 fi;
                 
-                if category!.prefunction_check > 0 then
+                if not is_pair_func and category!.prefunction_check > 0 then
                     
                     pre_func_return := CallFuncList( pre_function, arg );
                     if pre_func_return[ 1 ] = false then
