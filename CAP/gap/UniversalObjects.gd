@@ -4684,6 +4684,14 @@ DeclareOperation( "TruthMorphismIntoSubobjectClassifier",
 DeclareOperation( "ClassifyingMorphismOfSubobject",
                   [ IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a monomorphism $m : A \rightarrow S$ and
+#! a subobject classifier $\Omega$. The output is the classifying morphism 
+#! of the monomorphism $\chi_m : S \rightarrow \mathrm{SubobjectClassifier}$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Range}(m) , \mathrm{SubobjectClassifier} )$
+#! @Arguments m, omega
+DeclareOperation( "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+                  [ IsCapCategoryMorphism , IsCapCategoryObject ] );
 
 
 
@@ -4726,6 +4734,26 @@ DeclareOperation( "AddClassifyingMorphismOfSubobject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddClassifyingMorphismOfSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$ to the category
+#! for the basic operation <C>ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</C>.
+#! $F : (m, \Omega) \mapsto \mathrm{ClassifyingMorphism}(m)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+                  [ IsCapCategory , IsFunction ] );
+
+DeclareOperation( "AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+## don't document this function
+DeclareOperation( "AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
                   [ IsCapCategory, IsList ] );
 
 

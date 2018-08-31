@@ -634,6 +634,11 @@ TruthMorphismIntoSubobjectClassifierWithGivenObjects := rec(
   universal_object_position := "Range",
   return_type := "morphism" ),
 
+ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
+  installation_name := "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+  filter_list := [ "morphism" , "object" ],
+  return_type := "morphism" ),
+
 ClassifyingMorphismOfSubobject := rec(
   installation_name := "ClassifyingMorphismOfSubobject",
   filter_list := [ "morphism" ],
