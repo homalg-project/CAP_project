@@ -5,6 +5,8 @@ doc: doc/manual.six
 doc/manual.six: makedoc.g \
 		PackageInfo.g \
 		doc/Intros.autodoc \
+		doc/AddFunctions.autodoc \
+		doc/Limits.autodoc \
 		gap/*.gd gap/*.gi examples/*.g*
 	        gap makedoc.g
 
