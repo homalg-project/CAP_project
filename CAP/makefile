@@ -14,6 +14,12 @@ clean:
 test:	doc
 	gap maketest.g
 
+test-with-coverage:	doc
+	gap --cover stats maketest.g | perl -pe 'END { exit $$status } $$status=1 if /Expected output/;'
+	echo 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");' | gap
+
+ci-test:	test-with-coverage
+
 archive: test
 	(mkdir -p ../tar; cd ..; tar czvf tar/CAP.tar.gz --exclude ".DS_Store" --exclude "*~" CAP/doc/*.* CAP/doc/clean CAP/gap/*.{gi,gd} CAP/{PackageInfo.g,README,COPYING,VERSION,init.g,read.g,makedoc.g,makefile,maketest.g} CAP/examples/*.g CAP/examples/doc/*.g)
 
