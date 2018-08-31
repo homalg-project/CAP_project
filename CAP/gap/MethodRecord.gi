@@ -644,6 +644,11 @@ ClassifyingMorphismOfSubobject := rec(
   filter_list := [ "morphism" ],
   return_type := "morphism" ),
 
+SubobjectOfClassifyingMorphism := rec(
+  installation_name := "SubobjectOfClassifyingMorphism",
+  filter_list := [ "morphism" ],
+  return_type := "morphism" ),
+
 DirectProduct := rec(
   installation_name := "DirectProductOp",
   argument_list := [ 1 ],

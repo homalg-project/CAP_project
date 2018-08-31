@@ -4694,6 +4694,14 @@ DeclareOperation( "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
                   [ IsCapCategoryMorphism , IsCapCategoryObject ] );
 
 
+#! @Description
+#! The argument is a classifying morphism $\chi : S \rightarrow \Omega$.
+#! The output is the subobject monomorphism of the classifying morphism, 
+#! $m : A \rightarrow S$.
+#! @Returns a monomorphism in $\mathrm{Hom}( A , S )$
+#! @Arguments chi
+DeclareOperation( "SubobjectOfClassifyingMorphism" , 
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category and a function $F$.
@@ -4776,6 +4784,27 @@ DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$ to the category
+#! for the basic operation <C>SubobjectOfClassifyingMorphism</C>.
+#! $F : m \mapsto \mathrm{SubobjectOfClassifyingMorphism}(m)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSubobjectOfClassifyingMorphism",
+                  [ IsCapCategory , IsFunction ] );
+
+DeclareOperation( "AddSubobjectOfClassifyingMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+## don't document this function
+DeclareOperation( "AddSubobjectOfClassifyingMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSubobjectOfClassifyingMorphism",
                   [ IsCapCategory, IsList ] );
 
 
