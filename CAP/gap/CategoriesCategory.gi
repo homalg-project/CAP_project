@@ -429,6 +429,11 @@ InstallGlobalFunction( ApplyFunctor,
     if IsCapCategoryObject( arguments[ 1 ] ) then
         
         computed_value := CallFuncList( FunctorObjectOperation( functor ), arguments );
+        if HasCapCategory( computed_value ) then
+            if not IsIdenticalObj( CapCategory( computed_value ), AsCapCategory( Range( functor ) ) ) then
+                Error( Concatenation( "the category of the result of the object function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
+            fi;
+        fi;
         
     elif IsCapCategoryMorphism( arguments[ 1 ] ) then
         
@@ -449,7 +454,12 @@ InstallGlobalFunction( ApplyFunctor,
         range_value := CallFuncList( ApplyFunctor, Concatenation( [ functor ], range_list ) );
         
         computed_value := CallFuncList( FunctorMorphismOperation( functor ), Concatenation( [ source_value ], arguments, [ range_value ] ) );
-        
+        if HasCapCategory( computed_value ) then
+            if not IsIdenticalObj( CapCategory( computed_value ), AsCapCategory( Range( functor ) ) ) then
+                Error( Concatenation( "the category of the result of the morphism function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
+            fi;
+        fi;
+
     else
         
         Error( "Second argument of ApplyFunctor must be a category cell" );
