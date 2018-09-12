@@ -1407,8 +1407,8 @@ DeclareOperation( "AddRankMorphism",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromDualToInternalHom}_{a}: a^{\vee} \rightarrow \mathrm{Hom}(a,1)$.
-#! @Returns a morphism in $\mathrm{Hom}(a^{\vee}, \mathrm{Hom}(a,1))$.
+#! $\mathrm{IsomorphismFromDualToInternalHom}_{a}: a^{\vee} \rightarrow \mathrm{\underline{Hom}}(a,1)$.
+#! @Returns a morphism in $\mathrm{Hom}(a^{\vee}, \mathrm{\underline{Hom}}(a,1))$.
 #! @Arguments a
 DeclareAttribute( "IsomorphismFromDualToInternalHom",
                   IsCapCategoryObject );
@@ -1436,8 +1436,8 @@ DeclareOperation( "AddIsomorphismFromDualToInternalHom",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{Hom}(a,1) \rightarrow a^{\vee}$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Hom}(a,1), a^{\vee})$.
+#! $\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{\underline{Hom}}(a,1) \rightarrow a^{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{Hom}}(a,1), a^{\vee})$.
 #! @Arguments a
 DeclareAttribute( "IsomorphismFromInternalHomToDual",
                   IsCapCategoryObject );
