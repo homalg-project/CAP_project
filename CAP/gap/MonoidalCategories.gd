@@ -651,7 +651,7 @@ DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
 
 #! A symmetric monoidal category $\mathbf{C}$
 #! which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
-#! a right adjoint (denoted by $\underline{\mathrm{Hom}}(b,-)$)
+#! a right adjoint (denoted by $\mathrm{\underline{Hom}}(b,-)$)
 #! is called a <Emph>symmetric closed monoidal category</Emph>.
 
 #! The corresponding GAP property is given by
@@ -660,7 +660,7 @@ DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
 ##
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the internal hom object $\underline{\mathrm{Hom}}(a,b)$.
+#! The output is the internal hom object $\mathrm{\underline{Hom}}(a,b)$.
 #! @Returns an object
 #! @Arguments a, b
 DeclareOperation( "InternalHomOnObjects",
@@ -670,7 +670,7 @@ DeclareOperation( "InternalHomOnObjects",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>InternalHomOnObjects</C>.
-#! $F: (a,b) \mapsto \underline{\mathrm{Hom}}(a,b)$.
+#! $F: (a,b) \mapsto \mathrm{\underline{Hom}}(a,b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalHomOnObjects",
@@ -688,19 +688,19 @@ DeclareOperation( "AddInternalHomOnObjects",
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
 #! The output is the internal hom morphism
-#! $\underline{\mathrm{Hom}}(\alpha,\beta): \underline{\mathrm{Hom}}(a',b) \rightarrow \underline{\mathrm{Hom}}(a,b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \underline{\mathrm{Hom}}(a',b), \underline{\mathrm{Hom}}(a,b') )$
+#! $\mathrm{\underline{Hom}}(\alpha,\beta): \mathrm{\underline{Hom}}(a',b) \rightarrow \mathrm{\underline{Hom}}(a,b')$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a',b), \mathrm{\underline{Hom}}(a,b') )$
 #! @Arguments alpha, beta
 DeclareOperation( "InternalHomOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are an object $s = \underline{\mathrm{Hom}}(a',b)$,
+#! The arguments are an object $s = \mathrm{\underline{Hom}}(a',b)$,
 #! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$,
-#! and an object $r = \underline{\mathrm{Hom}}(a,b')$.
+#! and an object $r = \mathrm{\underline{Hom}}(a,b')$.
 #! The output is the internal hom morphism 
-#! $\underline{\mathrm{Hom}}(\alpha,\beta): \underline{\mathrm{Hom}}(a',b) \rightarrow \underline{\mathrm{Hom}}(a,b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \underline{\mathrm{Hom}}(a',b), \underline{\mathrm{Hom}}(a,b') )$
+#! $\mathrm{\underline{Hom}}(\alpha,\beta): \mathrm{\underline{Hom}}(a',b) \rightarrow \mathrm{\underline{Hom}}(a,b')$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a',b), \mathrm{\underline{Hom}}(a,b') )$
 #! @Arguments s, alpha, beta, r
 DeclareOperation( "InternalHomOnMorphismsWithGivenInternalHoms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -709,7 +709,7 @@ DeclareOperation( "InternalHomOnMorphismsWithGivenInternalHoms",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
 #! to the category for the basic operation <C>InternalHomOnMorphismsWithGivenInternalHoms</C>.
-#! $F: (\underline{\mathrm{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \underline{\mathrm{Hom}}(a,b') ) \mapsto \underline{\mathrm{Hom}}(\alpha,\beta)$.
+#! $F: (\mathrm{\underline{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{\underline{Hom}}(a,b') ) \mapsto \mathrm{\underline{Hom}}(\alpha,\beta)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalHomOnMorphismsWithGivenInternalHoms",
@@ -1634,10 +1634,10 @@ DeclareOperation( "AddIsomorphismFromInternalHomToObjectWithGivenInternalHom",
 
 #! A symmetric closed monoidal category $\mathbf{C}$ satisfying
 #! * the natural morphism
-#!  $\underline{\mathrm{Hom}}(a_1,b_1) \otimes \underline{\mathrm{Hom}}(a_2,b_2) \rightarrow \underline{\mathrm{Hom}}(a_1 \otimes a_2,b_1 \otimes b_2)$
+#!  $\mathrm{\underline{Hom}}(a_1,b_1) \otimes \mathrm{\underline{Hom}}(a_2,b_2) \rightarrow \mathrm{\underline{Hom}}(a_1 \otimes a_2,b_1 \otimes b_2)$
 #!  is an isomorphism,
 #! * the natural morphism
-#!  $a \rightarrow \underline{\mathrm{Hom}}(\underline{\mathrm{Hom}}(a, 1), 1)$
+#!  $a \rightarrow \mathrm{\underline{Hom}}(\mathrm{\underline{Hom}}(a, 1), 1)$
 #!  is an isomorphism
 #! is called a <Emph>rigid symmetric closed monoidal category</Emph>.
 
