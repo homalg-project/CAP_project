@@ -655,6 +655,16 @@ end : Description := "IsTerminal using IsZeroForObjects",
       CategoryFilter := IsAdditiveCategory ); #Ab-Category?
 
 ##
+AddDerivationToCAP( IsTerminal,
+                  
+  function( object )
+    
+    return IsIsomorphism( UniversalMorphismIntoTerminalObject( object ) );
+    
+end : Description := "IsTerminal using IsIsomorphism( UniversalMorphismIntoTerminalObject )",
+      CategoryFilter := IsCapCategory );
+
+##
 AddDerivationToCAP( IsInitial,
                   
   function( object )
@@ -664,6 +674,15 @@ AddDerivationToCAP( IsInitial,
 end : Description := "IsInitial using IsZeroForObjects",
       CategoryFilter := IsAdditiveCategory ); #Ab-Category?
 
+##
+AddDerivationToCAP( IsInitial,
+                  
+  function( object )
+    
+    return IsIsomorphism( UniversalMorphismFromInitialObject( object ) );
+    
+end : Description := "IsInitial using IsIsomorphism( UniversalMorphismFromInitialObject )",
+      CategoryFilter := IsCapCategory );
 
 ##
 AddDerivationToCAP( IsEqualForMorphismsOnMor,
