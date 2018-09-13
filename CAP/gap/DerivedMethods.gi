@@ -661,8 +661,7 @@ AddDerivationToCAP( IsTerminal,
     
     return IsIsomorphism( UniversalMorphismIntoTerminalObject( object ) );
     
-end : Description := "IsTerminal using IsIsomorphism( UniversalMorphismIntoTerminalObject )",
-      CategoryFilter := IsCapCategory );
+end : Description := "IsTerminal using IsIsomorphism( UniversalMorphismIntoTerminalObject )" );
 
 ##
 AddDerivationToCAP( IsInitial,
@@ -681,8 +680,7 @@ AddDerivationToCAP( IsInitial,
     
     return IsIsomorphism( UniversalMorphismFromInitialObject( object ) );
     
-end : Description := "IsInitial using IsIsomorphism( UniversalMorphismFromInitialObject )",
-      CategoryFilter := IsCapCategory );
+end : Description := "IsInitial using IsIsomorphism( UniversalMorphismFromInitialObject )" );
 
 ##
 AddDerivationToCAP( IsEqualForMorphismsOnMor,
