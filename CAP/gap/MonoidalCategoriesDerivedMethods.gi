@@ -1225,6 +1225,86 @@ AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
 end : CategoryFilter := IsAbelianCategory,
       Description := "InverseMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage" );
 
+##
+AddDerivationToCAP( TensorProductOnObjects,
+                    
+  function( arg )
+    
+    return CallFuncList( DirectProduct, arg );
+    
+end : Description := "TensorProductOnObjects is DirectProduct",
+      CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( TensorProductOnMorphismsWithGivenTensorProducts,
+                    
+  function( s, alpha, beta, r )
+    
+    return DirectProductFunctorialWithGivenDirectProducts( s, [ alpha, beta ], r );
+    
+end : Description := "TensorProductOnMorphisms is DirectProductFunctorial",
+      CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( TensorUnit,
+                    
+  function( arg )
+    
+    return CallFuncList( TerminalObject, arg );
+    
+end : Description := "TensorUnit is TerminalObject",
+      CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( AssociatorLeftToRightWithGivenTensorProducts,
+                    
+  function( s, a, b, c, r )
+    
+    return AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts( s, a, b, c, r );
+    
+end : Description := "AssociatorLeftToRight is AssociatorLeftToRightOfDirectProducts",
+      CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( AssociatorRightToLeftWithGivenTensorProducts,
+                    
+  function( s, a, b, c, r )
+    
+    return AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts( s, a, b, c, r );
+    
+end : Description := "AssociatorRightToLeft is AssociatorRightToLeftOfDirectProducts",
+      CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( TensorProductOnObjects,
+                    
+  function( arg )
+    
+    return CallFuncList( Coproduct, arg );
+    
+end : Description := "TensorProductOnObjects is Coproduct",
+      CategoryFilter := IsCoCartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( TensorProductOnMorphismsWithGivenTensorProducts,
+                    
+  function( s, alpha, beta, r )
+    
+    return CoproductFunctorialWithGivenCoproducts( s, [ alpha, beta ], r );
+    
+end : Description := "TensorProductOnMorphisms is CoproductFunctorial",
+      CategoryFilter := IsCoCartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( TensorUnit,
+                    
+  function( arg )
+    
+    return CallFuncList( InitialObject, arg );
+    
+end : Description := "TensorUnit is InitialObject",
+      CategoryFilter := IsCoCartesianCoclosedCategory );
+
 ####################################
 ## Final derived methods
 ####################################

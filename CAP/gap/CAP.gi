@@ -31,6 +31,10 @@ InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricClosedMonoidalCategor
 
 InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsRigidSymmetricClosedMonoidalCategory );
 
+InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsCartesianClosedCategory );
+
+InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsCoCartesianCoclosedCategory );
+
 ######################################
 ##
 ## Technical stuff
