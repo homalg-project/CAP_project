@@ -1,6 +1,6 @@
 name: CAP
-version: 2017.12.30
-date: 30/12/2017
+version: 2018.08.31
+date: 31/08/2018
 description: Categories, Algorithms, Programming
 
 authors:
@@ -19,14 +19,14 @@ maintainers:
     - name: Øystein Skartsæterhagen
       url: http://www.math.ntnu.no/~oysteini/
 
-GAP: ">= 4.6"
+GAP: ">= 4.9.1"
 
 needed-pkgs:
     - name: "AutoDoc"
       version: ">= 2016.02.16"
       url: "https://gap-packages.github.io/AutoDoc"
     - name: "ToolsForHomalg"
-      version: ">= 2016.01.17"
+      version: ">= 2018.05.22"
       url: "http://homalg-project.github.io/homalg_project/ToolsForHomalg/"
     - name: "io"
       version: ">=0"
@@ -43,11 +43,13 @@ packageinfo: http://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2017.12.30/CAP-2017.12.30.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2018.08.31/CAP-2018.08.31.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2017.12.30/CAP-2017.12.30.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2018.08.31/CAP-2018.08.31.zip
 
-abstract: 
+abstract: <span class="pkgname">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.
+It facilitates the implementation of specific instances of categories
+and provides a language for writing generic categorical algorithms.
 
 status: deposited
 doc-html: doc/chap0.html
