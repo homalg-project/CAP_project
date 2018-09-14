@@ -110,3 +110,36 @@ function jscontent () {
     jscontentfuncs[i]();
 }
 
+// thebe stuff
+function convert_examples(){
+  $('.GAPprompt').remove();
+  $('.example').map(function (i, el) { 
+    $(el).replaceWith( function() {
+      return $('<pre data-executable=\"true\" data-language=\"gap\"></pre>').text(
+        $(el).find('.GAPinput').map( function(i,elem){ return $(elem).text(); } ).get().join( "\n" )
+        );
+    });
+  });
+}
+
+function binderKernel() {
+  // request a kernel from Binder
+  return thebelab
+    .requestBinder({
+      repo: "sebasguts/GAPBinderDemo",
+    })
+    .then(serverSettings => {
+      console.log("binder settings", serverSettings);
+      return thebelab.requestKernel({
+        serverSettings,
+        name: "gap-native",
+      });
+    });
+}
+
+function start_kernel(){
+  let cells = thebelab.renderAllCells();
+  binderKernel().then(kernel => {
+    thebelab.hookupKernel(kernel, cells);
+  });
+}
