@@ -59,6 +59,8 @@ InstallValue( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST,
     [ "IsSymmetricMonoidalCategory" ],
     [ "IsSymmetricClosedMonoidalCategory" ],
     [ "IsRigidSymmetricClosedMonoidalCategory" ],
+    [ "IsCartesianClosedCategory" ],
+    [ "IsCoCartesianCoclosedCategory" ],
     [ "IsStrictMonoidalCategory" ],
     [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ]
   ]
