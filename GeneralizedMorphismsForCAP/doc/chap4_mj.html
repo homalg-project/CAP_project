@@ -6,13 +6,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <title>GAP (GeneralizedMorphismsForCAP) - Chapter 4: Generalized Morphism Category by Three Arrows</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
-<script src="manual.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script><script type="text/javascript" src="https://unpkg.com/thebelab@0.0.3"></script><script src="manual.js" type="text/javascript"></script>
 <script type="text/javascript">overwriteStyle();</script>
 </head>
 <body class="chap4"  onload="jscontent()">
@@ -23,7 +23,8 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap4.html">[MathJax off]</a></p>
-<p><a id="X7F39133179F83B50" name="X7F39133179F83B50"></a></p>
+
+<div style="text-align: center;"><input type="button" onclick="convert_examples();start_kernel()" value="Make this live!"></div><p><a id="X7F39133179F83B50" name="X7F39133179F83B50"></a></p>
 <div class="ChapSects"><a href="chap4_mj.html#X7F39133179F83B50">4 <span class="Heading">Generalized Morphism Category by Three Arrows</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7D03633A7D98026B">4.1 <span class="Heading">GAP Categories</span></a>
 </span>
@@ -241,7 +242,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismByThreeArrowsWithSourceAid</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(a,c)\)</span></p>
 
-<p>The arguments are morphisms <span class="SimpleMath">\(\alpha: a \leftarrow b\)</span>, and <span class="SimpleMath">\(\beta: b \rightarrow c\)</span> in <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is a generalized morphism by three arrows defined by the composition the given two arrows regarded as generalized morphisms.</p>
+<p>The arguments are morphisms <span class="SimpleMath">\(\alpha: a \leftarrow b\)</span>, and <span class="SimpleMath">\(\beta: b \rightarrow c\)</span> in <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is a generalized morphism by three arrows defined by the composition of the given two arrows regarded as generalized morphisms.</p>
 
 <p><a id="X7F9E6B188755170A" name="X7F9E6B188755170A"></a></p>
 
@@ -250,7 +251,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismByThreeArrowsWithRangeAid</code>( <var class="Arg">beta</var>, <var class="Arg">gamma</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{G(A)}}(b,d)\)</span></p>
 
-<p>The arguments are morphisms <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>, and <span class="SimpleMath">\(\gamma: c \leftarrow d\)</span> in <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is a generalized morphism by three arrows defined by the composition the given two arrows regarded as generalized morphisms.</p>
+<p>The arguments are morphisms <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>, and <span class="SimpleMath">\(\gamma: c \leftarrow d\)</span> in <span class="SimpleMath">\(\mathbf{A}\)</span>. The output is a generalized morphism by three arrows defined by the composition of the given two arrows regarded as generalized morphisms.</p>
 
 <p><a id="X7E0CF2A87AC08A8B" name="X7E0CF2A87AC08A8B"></a></p>
 

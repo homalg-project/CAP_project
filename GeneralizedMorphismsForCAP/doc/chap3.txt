@@ -138,8 +138,8 @@
   
   [33X[0;0YThe  arguments are morphisms [23X\alpha: a \leftarrow b[123X, [23X\beta: b \rightarrow c[123X,
   and  [23X\gamma:  c  \leftarrow  d[123X  in  [23X\mathbf{A}[123X.  The output is a generalized
-  morphism  by span defined by the composition the given three arrows regarded
-  as generalized morphisms.[133X
+  morphism  by  span  defined  by  the  composition  of the given three arrows
+  regarded as generalized morphisms.[133X
   
   [1X3.5-3 GeneralizedMorphismBySpanWithRangeAid[101X
   
@@ -148,7 +148,7 @@
   
   [33X[0;0YThe arguments are morphisms [23X\alpha: a \rightarrow b[123X, and [23X\beta: b \leftarrow
   c[123X in [23X\mathbf{A}[123X. The output is a generalized morphism by span defined by the
-  composition the given two arrows regarded as generalized morphisms.[133X
+  composition of the given two arrows regarded as generalized morphisms.[133X
   
   [1X3.5-4 AsGeneralizedMorphismBySpan[101X
   

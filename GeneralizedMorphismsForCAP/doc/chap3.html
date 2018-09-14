@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
-<script src="manual.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script><script type="text/javascript" src="https://unpkg.com/thebelab@0.0.3"></script><script src="manual.js" type="text/javascript"></script>
 <script type="text/javascript">overwriteStyle();</script>
 </head>
 <body class="chap3"  onload="jscontent()">
@@ -20,7 +20,8 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap3_mj.html">[MathJax on]</a></p>
-<p><a id="X7D54782279124748" name="X7D54782279124748"></a></p>
+
+<div style="text-align: center;"><input type="button" onclick="convert_examples();start_kernel()" value="Make this live!"></div><p><a id="X7D54782279124748" name="X7D54782279124748"></a></p>
 <div class="ChapSects"><a href="chap3.html#X7D54782279124748">3 <span class="Heading">Generalized Morphism Category by Spans</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D03633A7D98026B">3.1 <span class="Heading">GAP Categories</span></a>
 </span>
@@ -218,7 +219,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismBySpan</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(a,d)</span></p>
 
-<p>The arguments are morphisms <span class="Math">\alpha: a \leftarrow b</span>, <span class="Math">\beta: b \rightarrow c</span>, and <span class="Math">\gamma: c \leftarrow d</span> in <span class="Math">\mathbf{A}</span>. The output is a generalized morphism by span defined by the composition the given three arrows regarded as generalized morphisms.</p>
+<p>The arguments are morphisms <span class="Math">\alpha: a \leftarrow b</span>, <span class="Math">\beta: b \rightarrow c</span>, and <span class="Math">\gamma: c \leftarrow d</span> in <span class="Math">\mathbf{A}</span>. The output is a generalized morphism by span defined by the composition of the given three arrows regarded as generalized morphisms.</p>
 
 <p><a id="X79A8B50C7EB5ADE2" name="X79A8B50C7EB5ADE2"></a></p>
 
@@ -227,7 +228,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedMorphismBySpanWithRangeAid</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(a,c)</span></p>
 
-<p>The arguments are morphisms <span class="Math">\alpha: a \rightarrow b</span>, and <span class="Math">\beta: b \leftarrow c</span> in <span class="Math">\mathbf{A}</span>. The output is a generalized morphism by span defined by the composition the given two arrows regarded as generalized morphisms.</p>
+<p>The arguments are morphisms <span class="Math">\alpha: a \rightarrow b</span>, and <span class="Math">\beta: b \leftarrow c</span> in <span class="Math">\mathbf{A}</span>. The output is a generalized morphism by span defined by the composition of the given two arrows regarded as generalized morphisms.</p>
 
 <p><a id="X79C48BB782BD799F" name="X79C48BB782BD799F"></a></p>
 

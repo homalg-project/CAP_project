@@ -6,10 +6,10 @@
          [1X Implementations of generalized morphisms for the CAP project [101X
   
   
-                                   2017.12.30
+                                   2018.06.15
   
   
-                                30 December 2017
+                                  15 June 2018
   
   
                                Sebastian Gutsche
@@ -50,15 +50,21 @@
       1.1-2 IsGeneralizedMorphism
     1.2 [33X[0;0YAttributes[133X
       1.2-1 UnderlyingHonestObject
-      1.2-2 DomainOfGeneralizedMorphism
-      1.2-3 Codomain
-      1.2-4 AssociatedMorphism
-      1.2-5 DomainAssociatedMorphismCodomainTriple
-      1.2-6 HonestRepresentative
-      1.2-7 GeneralizedInverse
-      1.2-8 IdempotentDefinedBySubobject
-      1.2-9 IdempotentDefinedByFactorobject
-      1.2-10 UnderlyingHonestCategory
+      1.2-2 DomainEmbedding
+      1.2-3 GeneralizedImageEmbedding
+      1.2-4 DefectEmbedding
+      1.2-5 GeneralizedKernelEmbedding
+      1.2-6 CodomainProjection
+      1.2-7 GeneralizedCokernelProjection
+      1.2-8 CodefectProjection
+      1.2-9 GeneralizedCoimageProjection
+      1.2-10 AssociatedMorphism
+      1.2-11 DomainAssociatedMorphismCodomainTriple
+      1.2-12 HonestRepresentative
+      1.2-13 GeneralizedInverse
+      1.2-14 IdempotentDefinedBySubobject
+      1.2-15 IdempotentDefinedByFactorobject
+      1.2-16 UnderlyingHonestCategory
     1.3 [33X[0;0YOperations[133X
       1.3-1 GeneralizedMorphismFromFactorToSubobject
       1.3-2 CommonRestriction

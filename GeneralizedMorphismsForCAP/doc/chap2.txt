@@ -139,7 +139,7 @@
   
   [33X[0;0YThe  arguments are morphisms [23X\alpha: a \leftarrow b[123X, [23X\beta: b \rightarrow c[123X,
   and  [23X\gamma:  c  \leftarrow  d[123X  in  [23X\mathbf{A}[123X.  The output is a generalized
-  morphism  by  cospan  defined  by  the  composition  the  given three arrows
+  morphism  by  cospan  defined  by  the composition of the given three arrows
   regarded as generalized morphisms.[133X
   
   [1X2.5-3 GeneralizedMorphismByCospanWithSourceAid[101X
@@ -149,7 +149,7 @@
   
   [33X[0;0YThe arguments are morphisms [23X\alpha: a \leftarrow b[123X, and [23X\beta: b \rightarrow
   c[123X  in  [23X\mathbf{A}[123X. The output is a generalized morphism by cospan defined by
-  the composition the given two arrows regarded as generalized morphisms.[133X
+  the composition of the given two arrows regarded as generalized morphisms.[133X
   
   [1X2.5-4 AsGeneralizedMorphismByCospan[101X
   
