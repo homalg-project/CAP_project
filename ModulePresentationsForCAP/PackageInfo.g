@@ -6,7 +6,7 @@ Version := Maximum( [
            ##
            "2017.12.30", # Sebas version
            ##
-           "2017.04.10", # Sepps version
+           "2018.02.02", # Sepps version
            ##
            "2017.03.27", # Mohamed's version
            ##
@@ -68,7 +68,7 @@ ArchiveFormats := ".tar.gz .zip",
 ##
 Status := "deposited",
 
-AbstractHTML   :=  "",
+AbstractHTML   :=  "<span class=\"pkgname\">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.",
 
 PackageDoc := rec(
   BookName  := "ModulePresentationsForCAP",
@@ -83,7 +83,7 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=2017.03.27" ],
-                           [ "CAP", ">=0" ],
+                           [ "CAP", ">=2018.02.02" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
   ],
   SuggestedOtherPackages := [ ],
