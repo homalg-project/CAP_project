@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
-<script src="manual.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script><script type="text/javascript" src="https://unpkg.com/thebelab@0.0.3"></script><script src="manual.js" type="text/javascript"></script>
 <script type="text/javascript">overwriteStyle();</script>
 </head>
 <body class="chap1"  onload="jscontent()">
@@ -20,7 +20,8 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
-<p><a id="X7C99ABCB7DEEDE2A" name="X7C99ABCB7DEEDE2A"></a></p>
+
+<div style="text-align: center;"><input type="button" onclick="convert_examples();start_kernel()" value="Make this live!"></div><p><a id="X7C99ABCB7DEEDE2A" name="X7C99ABCB7DEEDE2A"></a></p>
 <div class="ChapSects"><a href="chap1.html#X7C99ABCB7DEEDE2A">1 <span class="Heading">CAP Categories</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7CC6903E78F24167">1.1 <span class="Heading">Categories</span></a>
 </span>
@@ -45,6 +46,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BD6E2B887F86E9C">1.3-3 ObjectFilter</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F62E0C47C778CBB">1.3-4 MorphismFilter</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X850D0E978090D0C0">1.3-5 TwoCellFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X78D0C0057817DBC3">1.3-6 CommutativeRingOfLinearCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X8305A19E86EC7B67">1.4 <span class="Heading">Logic switcher</span></a>
 </span>
@@ -67,6 +69,11 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8747655184DF9BED">1.7-1 DisableBasicOperationTypeCheck</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X82A6B5827EB7B1DB">1.8 <span class="Heading">Disable add in functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7AD3E7FA80C904C3">1.8-1 DisableAddForCategoricalOperations</a></span>
 </div></div>
 </div>
 
@@ -158,7 +165,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a filter</p>
 
-<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which <span class="Math">C</span> lies.</p>
+<p>The argument is a category <span class="Math">C</span>. The output is a filter in which <span class="Math">C</span> lies.</p>
 
 <p><a id="X7E88D5D3860AF854" name="X7E88D5D3860AF854"></a></p>
 
@@ -167,7 +174,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CellFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a filter</p>
 
-<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which all cells of <span class="Math">C</span> shall lie.</p>
+<p>The argument is a category <span class="Math">C</span>. The output is a filter in which all cells of <span class="Math">C</span> shall lie.</p>
 
 <p><a id="X7BD6E2B887F86E9C" name="X7BD6E2B887F86E9C"></a></p>
 
@@ -176,7 +183,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a filter</p>
 
-<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which all objects of <span class="Math">C</span> shall lie.</p>
+<p>The argument is a category <span class="Math">C</span>. The output is a filter in which all objects of <span class="Math">C</span> shall lie.</p>
 
 <p><a id="X7F62E0C47C778CBB" name="X7F62E0C47C778CBB"></a></p>
 
@@ -185,7 +192,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a filter</p>
 
-<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which all morphisms of <span class="Math">C</span> shall lie.</p>
+<p>The argument is a category <span class="Math">C</span>. The output is a filter in which all morphisms of <span class="Math">C</span> shall lie.</p>
 
 <p><a id="X850D0E978090D0C0" name="X850D0E978090D0C0"></a></p>
 
@@ -194,7 +201,16 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TwoCellFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a filter</p>
 
-<p>The argument is a cateogry <span class="Math">C</span>. The output is a filter in which all <span class="Math">2</span>-cells of <span class="Math">C</span> shall lie.</p>
+<p>The argument is a category <span class="Math">C</span>. The output is a filter in which all <span class="Math">2</span>-cells of <span class="Math">C</span> shall lie.</p>
+
+<p><a id="X78D0C0057817DBC3" name="X78D0C0057817DBC3"></a></p>
+
+<h5>1.3-6 CommutativeRingOfLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CommutativeRingOfLinearCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: a ring</p>
+
+<p>The argument is a category <span class="Math">C</span> which is expected to lie in the filter <code class="code">IsLinearCategoryOverCommutativeRing</code>. The output is a commutative ring over which the category is linear.</p>
 
 <p><a id="X8305A19E86EC7B67" name="X8305A19E86EC7B67"></a></p>
 
@@ -258,8 +274,21 @@
 <h5>1.7-1 DisableBasicOperationTypeCheck</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisableBasicOperationTypeCheck</code>( <var class="Arg">category</var> )</td><td class="tdright">( function )</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableBasicOperationTypeCheck</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
-<p>Most basic operations have a prefunction, which does a (sometimes partial) typecheck at the beginning of the operation. These functions enable or disable this check for a category. (Enabled by default)</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnablePartialBasicOperationTypeCheck</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableFullBasicOperationTypeCheck</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Most operations have prefunctions, that perform additional checks on the arguments. The checks can either be partial (enabled by default), full, or disabled. With the following commands you can either enable the full checks, just the basic checks, or, for performance, disable the checks alltogether.</p>
+
+<p><a id="X82A6B5827EB7B1DB" name="X82A6B5827EB7B1DB"></a></p>
+
+<h4>1.8 <span class="Heading">Disable add in functions</span></h4>
+
+<p><a id="X7AD3E7FA80C904C3" name="X7AD3E7FA80C904C3"></a></p>
+
+<h5>1.8-1 DisableAddForCategoricalOperations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisableAddForCategoricalOperations</code>( <var class="Arg">C</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableAddForCategoricalOperations</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Enables/disables the call of add for the output of primitively added functions for the category <var class="Arg">C</var>. This can be savely done if the all objects and morphisms are added to the category by their constructors.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>

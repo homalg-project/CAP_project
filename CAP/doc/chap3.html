@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
-<script src="manual.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script><script type="text/javascript" src="https://unpkg.com/thebelab@0.0.3"></script><script src="manual.js" type="text/javascript"></script>
 <script type="text/javascript">overwriteStyle();</script>
 </head>
 <body class="chap3"  onload="jscontent()">
@@ -20,7 +20,8 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap3_mj.html">[MathJax on]</a></p>
-<p><a id="X7BEB6C617FED52DA" name="X7BEB6C617FED52DA"></a></p>
+
+<div style="text-align: center;"><input type="button" onclick="convert_examples();start_kernel()" value="Make this live!"></div><p><a id="X7BEB6C617FED52DA" name="X7BEB6C617FED52DA"></a></p>
 <div class="ChapSects"><a href="chap3.html#X7BEB6C617FED52DA">3 <span class="Heading">Morphisms</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X8642E3327E96BBDD">3.1 <span class="Heading">Attributes for the Type of Morphisms</span></a>
 </span>
@@ -50,86 +51,94 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87B1905481F6AF28">3.3-5 AddIsEndomorphism</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FA3BD6D79D99498">3.3-6 AddIsAutomorphism</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X850CFDD48773998E">3.4 <span class="Heading">Equality and Congruence for Morphisms</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X867B9398854FEFFD">3.4 <span class="Heading">Adding Morphisms to a Category</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FABCFBF865F4179">3.4-1 IsCongruentForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X861A83B3802D0FBD">3.4-2 AddIsCongruentForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8004F1DA7D9BFA8B">3.4-3 IsEqualForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83F60F5F7E57F3C8">3.4-4 AddIsEqualForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8589E5A4814C3DA5">3.4-5 IsEqualForMorphismsOnMor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84AB81547A770D36">3.4-6 AddIsEqualForMorphismsOnMor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X812F94E5790616EC">3.4-1 AddMorphismRepresentation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X787A52CF8218A1C9">3.4-2 ObjectifyMorphismForCAPWithAttributes</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X8312421679CAAE35">3.5 <span class="Heading">Basic Operations for Morphisms in Ab-Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X850CFDD48773998E">3.5 <span class="Heading">Equality and Congruence for Morphisms</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X844684AD86DCC2DC">3.5-1 IsZeroForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87DD3BD27C49450A">3.5-2 AddIsZeroForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83B77FBB85927F14">3.5-3 AdditionForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X811BB502781CFBB9">3.5-4 AddAdditionForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B6461F5873F3F9D">3.5-5 SubtractionForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7ECA7B0182144B81">3.5-6 AddSubtractionForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83177713785DCFFC">3.5-7 AdditiveInverseForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AB78A707BF08401">3.5-8 AddAdditiveInverseForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X873412DB7BD0FBD3">3.5-9 ZeroMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X824C08CE7D7FB387">3.5-10 AddZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FABCFBF865F4179">3.5-1 IsCongruentForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X861A83B3802D0FBD">3.5-2 AddIsCongruentForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8004F1DA7D9BFA8B">3.5-3 IsEqualForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83F60F5F7E57F3C8">3.5-4 AddIsEqualForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8589E5A4814C3DA5">3.5-5 IsEqualForMorphismsOnMor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84AB81547A770D36">3.5-6 AddIsEqualForMorphismsOnMor</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C81E153817F489F">3.6 <span class="Heading">Subobject and Factorobject Operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X8312421679CAAE35">3.6 <span class="Heading">Basic Operations for Morphisms in Ab-Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E99DAA884674DE2">3.6-1 IsEqualAsSubobjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A97D3C3869323D1">3.6-2 AddIsEqualAsSubobjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79389FBF86CF87A4">3.6-3 IsEqualAsFactorobjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82DE9AE387425307">3.6-4 AddIsEqualAsFactorobjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C21531C7EE65C72">3.6-5 IsDominating</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X834AC612831DDD11">3.6-6 AddIsDominating</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C77E9D479C8D502">3.6-7 IsCodominating</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78E046E387674019">3.6-8 AddIsCodominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X844684AD86DCC2DC">3.6-1 IsZeroForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87DD3BD27C49450A">3.6-2 AddIsZeroForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83B77FBB85927F14">3.6-3 AdditionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X811BB502781CFBB9">3.6-4 AddAdditionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B6461F5873F3F9D">3.6-5 SubtractionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7ECA7B0182144B81">3.6-6 AddSubtractionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83177713785DCFFC">3.6-7 AdditiveInverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AB78A707BF08401">3.6-8 AddAdditiveInverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8187CAF17EB5D6D0">3.6-9 MultiplyWithElementOfCommutativeRingForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AE8C7897CB6FDF8">3.6-10 AddMultiplyWithElementOfCommutativeRingForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X873412DB7BD0FBD3">3.6-11 ZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X824C08CE7D7FB387">3.6-12 AddZeroMorphism</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X82ADC0BF82DA2122">3.7 <span class="Heading">Identity Morphism and Composition of Morphisms</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C81E153817F489F">3.7 <span class="Heading">Subobject and Factorobject Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C9F3D8086238443">3.7-1 IdentityMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X878F4D2481E94EB6">3.7-2 AddIdentityMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8244F7A0868BE27D">3.7-3 PreCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83CB57FB81931CFE">3.7-4 PreCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X868C87097D322509">3.7-5 AddPreCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84293B8381256A08">3.7-6 PostCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81222A1084A4F637">3.7-7 PostCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X853E87F47F9FC287">3.7-8 AddPostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E99DAA884674DE2">3.7-1 IsEqualAsSubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A97D3C3869323D1">3.7-2 AddIsEqualAsSubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79389FBF86CF87A4">3.7-3 IsEqualAsFactorobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82DE9AE387425307">3.7-4 AddIsEqualAsFactorobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C21531C7EE65C72">3.7-5 IsDominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X834AC612831DDD11">3.7-6 AddIsDominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C77E9D479C8D502">3.7-7 IsCodominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78E046E387674019">3.7-8 AddIsCodominating</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D5182B48598FBC5">3.8 <span class="Heading">Well-Definedness of Morphisms</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X82ADC0BF82DA2122">3.8 <span class="Heading">Identity Morphism and Composition of Morphisms</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7968A871832877B8">3.8-1 IsWellDefinedForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A4BE39A83D2A730">3.8-2 AddIsWellDefinedForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C9F3D8086238443">3.8-1 IdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X878F4D2481E94EB6">3.8-2 AddIdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8244F7A0868BE27D">3.8-3 PreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83CB57FB81931CFE">3.8-4 PreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X868C87097D322509">3.8-5 AddPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84293B8381256A08">3.8-6 PostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81222A1084A4F637">3.8-7 PostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X853E87F47F9FC287">3.8-8 AddPostCompose</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7E4EC4B97985DB35">3.9 <span class="Heading">Basic Operations for Morphisms in Abelian Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D5182B48598FBC5">3.9 <span class="Heading">Well-Definedness of Morphisms</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83CDF65582CD9921">3.9-1 LiftAlongMonomorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X869A19337CB3059E">3.9-2 AddLiftAlongMonomorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79AA9F638487EE32">3.9-3 ColiftAlongEpimorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BBEF7C479E612ED">3.9-4 AddColiftAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7968A871832877B8">3.9-1 IsWellDefinedForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A4BE39A83D2A730">3.9-2 AddIsWellDefinedForMorphisms</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X80EC4D217F67F376">3.10 <span class="Heading">Lift/ Colift</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7E4EC4B97985DB35">3.10 <span class="Heading">Basic Operations for Morphisms in Abelian Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87C471D583C1CD9E">3.10-1 Lift</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7DA9346A8517648D">3.10-2 AddLift</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BA38B0F797AFE20">3.10-3 Colift</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84A7986F82ED769E">3.10-4 AddColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83CDF65582CD9921">3.10-1 LiftAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X869A19337CB3059E">3.10-2 AddLiftAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79AA9F638487EE32">3.10-3 ColiftAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BBEF7C479E612ED">3.10-4 AddColiftAlongEpimorphism</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X864F84C47DC1A620">3.11 <span class="Heading">Inverses</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X80EC4D217F67F376">3.11 <span class="Heading">Lift/ Colift</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A6B4970823DDAE6">3.11-1 AddInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87C471D583C1CD9E">3.11-1 Lift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7DA9346A8517648D">3.11-2 AddLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BA38B0F797AFE20">3.11-3 Colift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84A7986F82ED769E">3.11-4 AddColift</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7DD668627932185C">3.12 <span class="Heading">Tool functions for caches</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X864F84C47DC1A620">3.12 <span class="Heading">Inverses</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83F87AE07ED534ED">3.12-1 IsEqualForCacheForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X833165B27AA74580">3.12-2 AddIsEqualForCacheForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A6B4970823DDAE6">3.12-1 AddInverse</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7DD668627932185C">3.13 <span class="Heading">Tool functions for caches</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83F87AE07ED534ED">3.13-1 IsEqualForCacheForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X833165B27AA74580">3.13-2 AddIsEqualForCacheForMorphisms</a></span>
 </div></div>
 </div>
 
@@ -295,13 +304,33 @@
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsAutomorphism</code>. <span class="Math">F: \alpha \mapsto \mathtt{IsAutomorphism}(\alpha)</span>.</p>
 
+<p><a id="X867B9398854FEFFD" name="X867B9398854FEFFD"></a></p>
+
+<h4>3.4 <span class="Heading">Adding Morphisms to a Category</span></h4>
+
+<p><a id="X812F94E5790616EC" name="X812F94E5790616EC"></a></p>
+
+<h5>3.4-1 AddMorphismRepresentation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismRepresentation</code>( <var class="Arg">category</var>, <var class="Arg">filter</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>The argument <var class="Arg">filter</var> is used to create a morphism type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyMorphismForCAPWithAttributes</code> to objectify morphisms for this category.</p>
+
+<p><a id="X787A52CF8218A1C9" name="X787A52CF8218A1C9"></a></p>
+
+<h5>3.4-2 ObjectifyMorphismForCAPWithAttributes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyMorphismForCAPWithAttributes</code>( <var class="Arg">morphism</var>, <var class="Arg">category</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Objectifies the morphism <var class="Arg">morphism</var> with the type created for morphisms in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddMorphismRepresentation</code>. Morphisms which are objectified using this method do not have to be passed to the <code class="code">AddMorphism</code> function.</p>
+
+<p>Please note that the <code class="code">Source</code> and <code class="code">Range</code> attribute need to be passed to this function. The values belonging to these attrbutes will not be objectified.</p>
+
 <p><a id="X850CFDD48773998E" name="X850CFDD48773998E"></a></p>
 
-<h4>3.4 <span class="Heading">Equality and Congruence for Morphisms</span></h4>
+<h4>3.5 <span class="Heading">Equality and Congruence for Morphisms</span></h4>
 
 <p><a id="X7FABCFBF865F4179" name="X7FABCFBF865F4179"></a></p>
 
-<h5>3.4-1 IsCongruentForMorphisms</h5>
+<h5>3.5-1 IsCongruentForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCongruentForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -310,7 +339,7 @@
 
 <p><a id="X861A83B3802D0FBD" name="X861A83B3802D0FBD"></a></p>
 
-<h5>3.4-2 AddIsCongruentForMorphisms</h5>
+<h5>3.5-2 AddIsCongruentForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsCongruentForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -319,7 +348,7 @@
 
 <p><a id="X8004F1DA7D9BFA8B" name="X8004F1DA7D9BFA8B"></a></p>
 
-<h5>3.4-3 IsEqualForMorphisms</h5>
+<h5>3.5-3 IsEqualForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -328,7 +357,7 @@
 
 <p><a id="X83F60F5F7E57F3C8" name="X83F60F5F7E57F3C8"></a></p>
 
-<h5>3.4-4 AddIsEqualForMorphisms</h5>
+<h5>3.5-4 AddIsEqualForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -337,7 +366,7 @@
 
 <p><a id="X8589E5A4814C3DA5" name="X8589E5A4814C3DA5"></a></p>
 
-<h5>3.4-5 IsEqualForMorphismsOnMor</h5>
+<h5>3.5-5 IsEqualForMorphismsOnMor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForMorphismsOnMor</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -346,7 +375,7 @@
 
 <p><a id="X84AB81547A770D36" name="X84AB81547A770D36"></a></p>
 
-<h5>3.4-6 AddIsEqualForMorphismsOnMor</h5>
+<h5>3.5-6 AddIsEqualForMorphismsOnMor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForMorphismsOnMor</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -355,20 +384,20 @@
 
 <p><a id="X8312421679CAAE35" name="X8312421679CAAE35"></a></p>
 
-<h4>3.5 <span class="Heading">Basic Operations for Morphisms in Ab-Categories</span></h4>
+<h4>3.6 <span class="Heading">Basic Operations for Morphisms in Ab-Categories</span></h4>
 
 <p><a id="X844684AD86DCC2DC" name="X844684AD86DCC2DC"></a></p>
 
-<h5>3.5-1 IsZeroForMorphisms</h5>
+<h5>3.6-1 IsZeroForMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZeroForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZeroForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( property )</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>The argument is a morphism <span class="Math">\alpha: a \rightarrow b</span>. The output is <code class="code">true</code> if <span class="Math">\alpha \sim_{a,b} 0</span>, otherwise the output is <code class="code">false</code>.</p>
 
 <p><a id="X87DD3BD27C49450A" name="X87DD3BD27C49450A"></a></p>
 
-<h5>3.5-2 AddIsZeroForMorphisms</h5>
+<h5>3.6-2 AddIsZeroForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsZeroForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -377,7 +406,7 @@
 
 <p><a id="X83B77FBB85927F14" name="X83B77FBB85927F14"></a></p>
 
-<h5>3.5-3 AdditionForMorphisms</h5>
+<h5>3.6-3 AdditionForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditionForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
@@ -386,7 +415,7 @@
 
 <p><a id="X811BB502781CFBB9" name="X811BB502781CFBB9"></a></p>
 
-<h5>3.5-4 AddAdditionForMorphisms</h5>
+<h5>3.6-4 AddAdditionForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAdditionForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -395,7 +424,7 @@
 
 <p><a id="X7B6461F5873F3F9D" name="X7B6461F5873F3F9D"></a></p>
 
-<h5>3.5-5 SubtractionForMorphisms</h5>
+<h5>3.6-5 SubtractionForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubtractionForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
@@ -404,7 +433,7 @@
 
 <p><a id="X7ECA7B0182144B81" name="X7ECA7B0182144B81"></a></p>
 
-<h5>3.5-6 AddSubtractionForMorphisms</h5>
+<h5>3.6-6 AddSubtractionForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubtractionForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -413,25 +442,43 @@
 
 <p><a id="X83177713785DCFFC" name="X83177713785DCFFC"></a></p>
 
-<h5>3.5-7 AdditiveInverseForMorphisms</h5>
+<h5>3.6-7 AdditiveInverseForMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveInverseForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveInverseForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
 
 <p>The argument is a morphism <span class="Math">\alpha: a \rightarrow b</span>. The output is its additive inverse <span class="Math">-\alpha</span>.</p>
 
 <p><a id="X7AB78A707BF08401" name="X7AB78A707BF08401"></a></p>
 
-<h5>3.5-8 AddAdditiveInverseForMorphisms</h5>
+<h5>3.6-8 AddAdditiveInverseForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAdditiveInverseForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">AdditiveInverseForMorphisms</code>. <span class="Math">F: \alpha \mapsto -\alpha</span>.</p>
 
+<p><a id="X8187CAF17EB5D6D0" name="X8187CAF17EB5D6D0"></a></p>
+
+<h5>3.6-9 MultiplyWithElementOfCommutativeRingForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MultiplyWithElementOfCommutativeRingForMorphisms</code>( <var class="Arg">r</var>, <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
+
+<p>The arguments are an element <span class="Math">r</span> of a commutative ring and a morphism <span class="Math">\alpha: a \rightarrow b</span>. The output is the multiplication with the ring element <span class="Math">r \cdot \alpha</span>.</p>
+
+<p><a id="X7AE8C7897CB6FDF8" name="X7AE8C7897CB6FDF8"></a></p>
+
+<h5>3.6-10 AddMultiplyWithElementOfCommutativeRingForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMultiplyWithElementOfCommutativeRingForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MultiplyWithElementOfCommutativeRingForMorphisms</code>. <span class="Math">F: (r, \alpha) \mapsto r \cdot \alpha</span>.</p>
+
 <p><a id="X873412DB7BD0FBD3" name="X873412DB7BD0FBD3"></a></p>
 
-<h5>3.5-9 ZeroMorphism</h5>
+<h5>3.6-11 ZeroMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ZeroMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
@@ -440,7 +487,7 @@
 
 <p><a id="X824C08CE7D7FB387" name="X824C08CE7D7FB387"></a></p>
 
-<h5>3.5-10 AddZeroMorphism</h5>
+<h5>3.6-12 AddZeroMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddZeroMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -449,13 +496,13 @@
 
 <p><a id="X7C81E153817F489F" name="X7C81E153817F489F"></a></p>
 
-<h4>3.6 <span class="Heading">Subobject and Factorobject Operations</span></h4>
+<h4>3.7 <span class="Heading">Subobject and Factorobject Operations</span></h4>
 
 <p>Subobjects of an object <span class="Math">c</span> are monomorphisms with range <span class="Math">c</span> and a special function for comparision. Similarly, factorobjects of an object <span class="Math">c</span> are epimorphisms with source <span class="Math">c</span> and a special function for comparision.</p>
 
 <p><a id="X7E99DAA884674DE2" name="X7E99DAA884674DE2"></a></p>
 
-<h5>3.6-1 IsEqualAsSubobjects</h5>
+<h5>3.7-1 IsEqualAsSubobjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualAsSubobjects</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -464,7 +511,7 @@
 
 <p><a id="X7A97D3C3869323D1" name="X7A97D3C3869323D1"></a></p>
 
-<h5>3.6-2 AddIsEqualAsSubobjects</h5>
+<h5>3.7-2 AddIsEqualAsSubobjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualAsSubobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -473,7 +520,7 @@
 
 <p><a id="X79389FBF86CF87A4" name="X79389FBF86CF87A4"></a></p>
 
-<h5>3.6-3 IsEqualAsFactorobjects</h5>
+<h5>3.7-3 IsEqualAsFactorobjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualAsFactorobjects</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -482,7 +529,7 @@
 
 <p><a id="X82DE9AE387425307" name="X82DE9AE387425307"></a></p>
 
-<h5>3.6-4 AddIsEqualAsFactorobjects</h5>
+<h5>3.7-4 AddIsEqualAsFactorobjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualAsFactorobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -491,7 +538,7 @@
 
 <p><a id="X7C21531C7EE65C72" name="X7C21531C7EE65C72"></a></p>
 
-<h5>3.6-5 IsDominating</h5>
+<h5>3.7-5 IsDominating</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDominating</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -500,7 +547,7 @@
 
 <p><a id="X834AC612831DDD11" name="X834AC612831DDD11"></a></p>
 
-<h5>3.6-6 AddIsDominating</h5>
+<h5>3.7-6 AddIsDominating</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsDominating</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -509,7 +556,7 @@
 
 <p><a id="X7C77E9D479C8D502" name="X7C77E9D479C8D502"></a></p>
 
-<h5>3.6-7 IsCodominating</h5>
+<h5>3.7-7 IsCodominating</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCodominating</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -518,7 +565,7 @@
 
 <p><a id="X78E046E387674019" name="X78E046E387674019"></a></p>
 
-<h5>3.6-8 AddIsCodominating</h5>
+<h5>3.7-8 AddIsCodominating</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsCodominating</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -527,11 +574,11 @@
 
 <p><a id="X82ADC0BF82DA2122" name="X82ADC0BF82DA2122"></a></p>
 
-<h4>3.7 <span class="Heading">Identity Morphism and Composition of Morphisms</span></h4>
+<h4>3.8 <span class="Heading">Identity Morphism and Composition of Morphisms</span></h4>
 
 <p><a id="X7C9F3D8086238443" name="X7C9F3D8086238443"></a></p>
 
-<h5>3.7-1 IdentityMorphism</h5>
+<h5>3.8-1 IdentityMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdentityMorphism</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,a)</span></p>
@@ -540,7 +587,7 @@
 
 <p><a id="X878F4D2481E94EB6" name="X878F4D2481E94EB6"></a></p>
 
-<h5>3.7-2 AddIdentityMorphism</h5>
+<h5>3.8-2 AddIdentityMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIdentityMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -549,7 +596,7 @@
 
 <p><a id="X8244F7A0868BE27D" name="X8244F7A0868BE27D"></a></p>
 
-<h5>3.7-3 PreCompose</h5>
+<h5>3.8-3 PreCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreCompose</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, c )</span></p>
@@ -558,7 +605,7 @@
 
 <p><a id="X83CB57FB81931CFE" name="X83CB57FB81931CFE"></a></p>
 
-<h5>3.7-4 PreCompose</h5>
+<h5>3.8-4 PreCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreCompose</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a_1, a_{n+1})</span></p>
@@ -567,7 +614,7 @@
 
 <p><a id="X868C87097D322509" name="X868C87097D322509"></a></p>
 
-<h5>3.7-5 AddPreCompose</h5>
+<h5>3.8-5 AddPreCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPreCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -576,7 +623,7 @@
 
 <p><a id="X84293B8381256A08" name="X84293B8381256A08"></a></p>
 
-<h5>3.7-6 PostCompose</h5>
+<h5>3.8-6 PostCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PostCompose</code>( <var class="Arg">beta</var>, <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, c )</span></p>
@@ -585,7 +632,7 @@
 
 <p><a id="X81222A1084A4F637" name="X81222A1084A4F637"></a></p>
 
-<h5>3.7-7 PostCompose</h5>
+<h5>3.8-7 PostCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PostCompose</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a_1, a_{n+1})</span></p>
@@ -594,7 +641,7 @@
 
 <p><a id="X853E87F47F9FC287" name="X853E87F47F9FC287"></a></p>
 
-<h5>3.7-8 AddPostCompose</h5>
+<h5>3.8-8 AddPostCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPostCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -603,11 +650,11 @@
 
 <p><a id="X7D5182B48598FBC5" name="X7D5182B48598FBC5"></a></p>
 
-<h4>3.8 <span class="Heading">Well-Definedness of Morphisms</span></h4>
+<h4>3.9 <span class="Heading">Well-Definedness of Morphisms</span></h4>
 
 <p><a id="X7968A871832877B8" name="X7968A871832877B8"></a></p>
 
-<h5>3.8-1 IsWellDefinedForMorphisms</h5>
+<h5>3.9-1 IsWellDefinedForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWellDefinedForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -616,7 +663,7 @@
 
 <p><a id="X7A4BE39A83D2A730" name="X7A4BE39A83D2A730"></a></p>
 
-<h5>3.8-2 AddIsWellDefinedForMorphisms</h5>
+<h5>3.9-2 AddIsWellDefinedForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWellDefinedForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -625,11 +672,11 @@
 
 <p><a id="X7E4EC4B97985DB35" name="X7E4EC4B97985DB35"></a></p>
 
-<h4>3.9 <span class="Heading">Basic Operations for Morphisms in Abelian Categories</span></h4>
+<h4>3.10 <span class="Heading">Basic Operations for Morphisms in Abelian Categories</span></h4>
 
 <p><a id="X83CDF65582CD9921" name="X83CDF65582CD9921"></a></p>
 
-<h5>3.9-1 LiftAlongMonomorphism</h5>
+<h5>3.10-1 LiftAlongMonomorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LiftAlongMonomorphism</code>( <var class="Arg">iota</var>, <var class="Arg">tau</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(t,k)</span></p>
@@ -638,16 +685,16 @@
 
 <p><a id="X869A19337CB3059E" name="X869A19337CB3059E"></a></p>
 
-<h5>3.9-2 AddLiftAlongMonomorphism</h5>
+<h5>3.10-2 AddLiftAlongMonomorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLiftAlongMonomorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LiftAlongMonomorphism</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\iota, \tau)</span> to a lift <span class="Math">u</span> if it exists, and to <code class="code">fail</code> otherwise.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LiftAlongMonomorphism</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\iota, \tau)</span> to a lift <span class="Math">u</span>.</p>
 
 <p><a id="X79AA9F638487EE32" name="X79AA9F638487EE32"></a></p>
 
-<h5>3.9-3 ColiftAlongEpimorphism</h5>
+<h5>3.10-3 ColiftAlongEpimorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ColiftAlongEpimorphism</code>( <var class="Arg">epsilon</var>, <var class="Arg">tau</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(c,t)</span></p>
@@ -656,16 +703,16 @@
 
 <p><a id="X7BBEF7C479E612ED" name="X7BBEF7C479E612ED"></a></p>
 
-<h5>3.9-4 AddColiftAlongEpimorphism</h5>
+<h5>3.10-4 AddColiftAlongEpimorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddColiftAlongEpimorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ColiftAlongEpimorphism</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\epsilon, \tau)</span> to a lift <span class="Math">u</span> if it exists, and to <code class="code">fail</code> otherwise.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ColiftAlongEpimorphism</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\epsilon, \tau)</span> to a lift <span class="Math">u</span>.</p>
 
 <p><a id="X80EC4D217F67F376" name="X80EC4D217F67F376"></a></p>
 
-<h4>3.10 <span class="Heading">Lift/ Colift</span></h4>
+<h4>3.11 <span class="Heading">Lift/ Colift</span></h4>
 
 
 <ul>
@@ -680,7 +727,7 @@
 
 <p><a id="X87C471D583C1CD9E" name="X87C471D583C1CD9E"></a></p>
 
-<h5>3.10-1 Lift</h5>
+<h5>3.11-1 Lift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Lift</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}</span></p>
@@ -689,7 +736,7 @@
 
 <p><a id="X7DA9346A8517648D" name="X7DA9346A8517648D"></a></p>
 
-<h5>3.10-2 AddLift</h5>
+<h5>3.11-2 AddLift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -698,7 +745,7 @@
 
 <p><a id="X7BA38B0F797AFE20" name="X7BA38B0F797AFE20"></a></p>
 
-<h5>3.10-3 Colift</h5>
+<h5>3.11-3 Colift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Colift</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}</span></p>
@@ -707,7 +754,7 @@
 
 <p><a id="X84A7986F82ED769E" name="X84A7986F82ED769E"></a></p>
 
-<h5>3.10-4 AddColift</h5>
+<h5>3.11-4 AddColift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddColift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -716,13 +763,13 @@
 
 <p><a id="X864F84C47DC1A620" name="X864F84C47DC1A620"></a></p>
 
-<h4>3.11 <span class="Heading">Inverses</span></h4>
+<h4>3.12 <span class="Heading">Inverses</span></h4>
 
 <p>Let <span class="Math">\alpha: a \rightarrow b</span> be a morphism. An inverse of <span class="Math">\alpha</span> is a morphism <span class="Math">\alpha^{-1}: b \rightarrow a</span> such that <span class="Math">\alpha \circ \alpha^{-1} \sim_{b,b} \mathrm{id}_b</span> and <span class="Math">\alpha^{-1} \circ \alpha \sim_{a,a} \mathrm{id}_a</span>.</p>
 
 <p><a id="X7A6B4970823DDAE6" name="X7A6B4970823DDAE6"></a></p>
 
-<h5>3.11-1 AddInverse</h5>
+<h5>3.12-1 AddInverse</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -731,11 +778,11 @@
 
 <p><a id="X7DD668627932185C" name="X7DD668627932185C"></a></p>
 
-<h4>3.12 <span class="Heading">Tool functions for caches</span></h4>
+<h4>3.13 <span class="Heading">Tool functions for caches</span></h4>
 
 <p><a id="X83F87AE07ED534ED" name="X83F87AE07ED534ED"></a></p>
 
-<h5>3.12-1 IsEqualForCacheForMorphisms</h5>
+<h5>3.13-1 IsEqualForCacheForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForCacheForMorphisms</code>( <var class="Arg">phi</var>, <var class="Arg">psi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: true or false</p>
@@ -744,7 +791,7 @@
 
 <p><a id="X833165B27AA74580" name="X833165B27AA74580"></a></p>
 
-<h5>3.12-2 AddIsEqualForCacheForMorphisms</h5>
+<h5>3.13-2 AddIsEqualForCacheForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForCacheForMorphisms</code>( <var class="Arg">c</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: northing</p>

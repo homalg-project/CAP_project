@@ -468,7 +468,7 @@
   
   [33X[0;0YA  symmetric  monoidal  category  [23X\mathbf{C}[123X  which  has  for each functor [23X-
   \otimes  b:  \mathbf{C}  \rightarrow  \mathbf{C}[123X a right adjoint (denoted by
-  [23X\underline{\mathrm{Hom}}(b,-)[123X)   is   called  a  [13Xsymmetric  closed  monoidal
+  [23X\mathrm{\underline{Hom}}(b,-)[123X)   is   called  a  [13Xsymmetric  closed  monoidal
   category[113X.     The     corresponding     GAP    property    is    given    by
   [10XIsSymmetricClosedMonoidalCategory[110X.[133X
   
@@ -478,7 +478,7 @@
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe  arguments  are  two  objects [23Xa,b[123X. The output is the internal hom object
-  [23X\underline{\mathrm{Hom}}(a,b)[123X.[133X
+  [23X\mathrm{\underline{Hom}}(a,b)[123X.[133X
   
   [1X7.4-2 AddInternalHomOnObjects[101X
   
@@ -487,30 +487,30 @@
   
   [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XInternalHomOnObjects[110X. [23XF: (a,b) \mapsto \underline{\mathrm{Hom}}(a,b)[123X.[133X
+  [10XInternalHomOnObjects[110X. [23XF: (a,b) \mapsto \mathrm{\underline{Hom}}(a,b)[123X.[133X
   
   [1X7.4-3 InternalHomOnMorphisms[101X
   
   [29X[2XInternalHomOnMorphisms[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
-  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(  \underline{\mathrm{Hom}}(a',b),
-            \underline{\mathrm{Hom}}(a,b') )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(  \mathrm{\underline{Hom}}(a',b),
+            \mathrm{\underline{Hom}}(a,b') )[123X[133X
   
   [33X[0;0YThe  arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  a',  \beta:  b
   \rightarrow    b'[123X.    The    output    is    the   internal   hom   morphism
-  [23X\underline{\mathrm{Hom}}(\alpha,\beta):       \underline{\mathrm{Hom}}(a',b)
-  \rightarrow \underline{\mathrm{Hom}}(a,b')[123X.[133X
+  [23X\mathrm{\underline{Hom}}(\alpha,\beta):       \mathrm{\underline{Hom}}(a',b)
+  \rightarrow \mathrm{\underline{Hom}}(a,b')[123X.[133X
   
   [1X7.4-4 InternalHomOnMorphismsWithGivenInternalHoms[101X
   
   [29X[2XInternalHomOnMorphismsWithGivenInternalHoms[102X( [3Xs[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xr[103X ) [32X operation
-  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(  \underline{\mathrm{Hom}}(a',b),
-            \underline{\mathrm{Hom}}(a,b') )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(  \mathrm{\underline{Hom}}(a',b),
+            \mathrm{\underline{Hom}}(a,b') )[123X[133X
   
-  [33X[0;0YThe   arguments  are  an  object  [23Xs  =  \underline{\mathrm{Hom}}(a',b)[123X,  two
+  [33X[0;0YThe   arguments  are  an  object  [23Xs  =  \mathrm{\underline{Hom}}(a',b)[123X,  two
   morphisms [23X\alpha: a \rightarrow a', \beta: b \rightarrow b'[123X, and an object [23Xr
-  =  \underline{\mathrm{Hom}}(a,b')[123X.  The  output is the internal hom morphism
-  [23X\underline{\mathrm{Hom}}(\alpha,\beta):       \underline{\mathrm{Hom}}(a',b)
-  \rightarrow \underline{\mathrm{Hom}}(a,b')[123X.[133X
+  =  \mathrm{\underline{Hom}}(a,b')[123X.  The  output is the internal hom morphism
+  [23X\mathrm{\underline{Hom}}(\alpha,\beta):       \mathrm{\underline{Hom}}(a',b)
+  \rightarrow \mathrm{\underline{Hom}}(a,b')[123X.[133X
   
   [1X7.4-5 AddInternalHomOnMorphismsWithGivenInternalHoms[101X
   
@@ -520,9 +520,9 @@
   [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XInternalHomOnMorphismsWithGivenInternalHoms[110X.                              [23XF:
-  (\underline{\mathrm{Hom}}(a',b),   \alpha:   a   \rightarrow  a',  \beta:  b
-  \rightarrow      b',      \underline{\mathrm{Hom}}(a,b')      )      \mapsto
-  \underline{\mathrm{Hom}}(\alpha,\beta)[123X.[133X
+  (\mathrm{\underline{Hom}}(a',b),   \alpha:   a   \rightarrow  a',  \beta:  b
+  \rightarrow      b',      \mathrm{\underline{Hom}}(a,b')      )      \mapsto
+  \mathrm{\underline{Hom}}(\alpha,\beta)[123X.[133X
   
   [1X7.4-6 EvaluationMorphism[101X
   
@@ -1037,11 +1037,12 @@
   [1X7.4-56 IsomorphismFromDualToInternalHom[101X
   
   [29X[2XIsomorphismFromDualToInternalHom[102X( [3Xa[103X ) [32X attribute
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a^{\vee}, \mathrm{Hom}(a,1))[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya           morphism           in           [23X\mathrm{Hom}(a^{\vee},
+            \mathrm{\underline{Hom}}(a,1))[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
   [23X\mathrm{IsomorphismFromDualToInternalHom}_{a}:      a^{\vee}     \rightarrow
-  \mathrm{Hom}(a,1)[123X.[133X
+  \mathrm{\underline{Hom}}(a,1)[123X.[133X
   
   [1X7.4-57 AddIsomorphismFromDualToInternalHom[101X
   
@@ -1056,11 +1057,12 @@
   [1X7.4-58 IsomorphismFromInternalHomToDual[101X
   
   [29X[2XIsomorphismFromInternalHomToDual[102X( [3Xa[103X ) [32X attribute
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Hom}(a,1), a^{\vee})[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya    morphism    in    [23X\mathrm{Hom}(\mathrm{\underline{Hom}}(a,1),
+            a^{\vee})[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
-  [23X\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{Hom}(a,1) \rightarrow
-  a^{\vee}[123X.[133X
+  [23X\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{\underline{Hom}}(a,1)
+  \rightarrow a^{\vee}[123X.[133X
   
   [1X7.4-59 AddIsomorphismFromInternalHomToDual[101X
   
@@ -1190,13 +1192,13 @@
   
   [33X[0;0YA symmetric closed monoidal category [23X\mathbf{C}[123X satisfying[133X
   
-  [30X    [33X[0;6Ythe   natural   morphism   [23X\underline{\mathrm{Hom}}(a_1,b_1)   \otimes
-        \underline{\mathrm{Hom}}(a_2,b_2)                          \rightarrow
-        \underline{\mathrm{Hom}}(a_1   \otimes  a_2,b_1  \otimes  b_2)[123X  is  an
+  [30X    [33X[0;6Ythe   natural   morphism   [23X\mathrm{\underline{Hom}}(a_1,b_1)   \otimes
+        \mathrm{\underline{Hom}}(a_2,b_2)                          \rightarrow
+        \mathrm{\underline{Hom}}(a_1   \otimes  a_2,b_1  \otimes  b_2)[123X  is  an
         isomorphism,[133X
   
   [30X    [33X[0;6Ythe          natural          morphism          [23Xa          \rightarrow
-        \underline{\mathrm{Hom}}(\underline{\mathrm{Hom}}(a,   1),  1)[123X  is  an
+        \mathrm{\underline{Hom}}(\mathrm{\underline{Hom}}(a,   1),  1)[123X  is  an
         isomorphism[133X
   
   [33X[0;0Yis called a [13Xrigid symmetric closed monoidal category[113X.[133X

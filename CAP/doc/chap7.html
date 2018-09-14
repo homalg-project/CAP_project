@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
-<script src="manual.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script><script type="text/javascript" src="https://unpkg.com/thebelab@0.0.3"></script><script src="manual.js" type="text/javascript"></script>
 <script type="text/javascript">overwriteStyle();</script>
 </head>
 <body class="chap7"  onload="jscontent()">
@@ -20,7 +20,8 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap7_mj.html">[MathJax on]</a></p>
-<p><a id="X7AF6C1DF84986EEA" name="X7AF6C1DF84986EEA"></a></p>
+
+<div style="text-align: center;"><input type="button" onclick="convert_examples();start_kernel()" value="Make this live!"></div><p><a id="X7AF6C1DF84986EEA" name="X7AF6C1DF84986EEA"></a></p>
 <div class="ChapSects"><a href="chap7.html#X7AF6C1DF84986EEA">7 <span class="Heading">Tensor Product and Internal Hom</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X808DC49C7ED99B52">7.1 <span class="Heading">Monoidal Categories</span></a>
 </span>
@@ -622,7 +623,7 @@
 
 <h4>7.4 <span class="Heading">Symmetric Closed Monoidal Categories</span></h4>
 
-<p>A symmetric monoidal category <span class="Math">\mathbf{C}</span> which has for each functor <span class="Math">- \otimes b: \mathbf{C} \rightarrow \mathbf{C}</span> a right adjoint (denoted by <span class="Math">\underline{\mathrm{Hom}}(b,-)</span>) is called a <em>symmetric closed monoidal category</em>. The corresponding GAP property is given by <code class="code">IsSymmetricClosedMonoidalCategory</code>.</p>
+<p>A symmetric monoidal category <span class="Math">\mathbf{C}</span> which has for each functor <span class="Math">- \otimes b: \mathbf{C} \rightarrow \mathbf{C}</span> a right adjoint (denoted by <span class="Math">\mathrm{\underline{Hom}}(b,-)</span>) is called a <em>symmetric closed monoidal category</em>. The corresponding GAP property is given by <code class="code">IsSymmetricClosedMonoidalCategory</code>.</p>
 
 <p><a id="X78AA83E77B380D68" name="X78AA83E77B380D68"></a></p>
 
@@ -631,7 +632,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the internal hom object <span class="Math">\underline{\mathrm{Hom}}(a,b)</span>.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the internal hom object <span class="Math">\mathrm{\underline{Hom}}(a,b)</span>.</p>
 
 <p><a id="X7B74F8FD8348D590" name="X7B74F8FD8348D590"></a></p>
 
@@ -640,25 +641,25 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomOnObjects</code>. <span class="Math">F: (a,b) \mapsto \underline{\mathrm{Hom}}(a,b)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomOnObjects</code>. <span class="Math">F: (a,b) \mapsto \mathrm{\underline{Hom}}(a,b)</span>.</p>
 
 <p><a id="X7C0191A483A72F98" name="X7C0191A483A72F98"></a></p>
 
 <h5>7.4-3 InternalHomOnMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \underline{\mathrm{Hom}}(a',b), \underline{\mathrm{Hom}}(a,b') )</span></p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a',b), \mathrm{\underline{Hom}}(a,b') )</span></p>
 
-<p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>. The output is the internal hom morphism <span class="Math">\underline{\mathrm{Hom}}(\alpha,\beta): \underline{\mathrm{Hom}}(a',b) \rightarrow \underline{\mathrm{Hom}}(a,b')</span>.</p>
+<p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>. The output is the internal hom morphism <span class="Math">\mathrm{\underline{Hom}}(\alpha,\beta): \mathrm{\underline{Hom}}(a',b) \rightarrow \mathrm{\underline{Hom}}(a,b')</span>.</p>
 
 <p><a id="X861226B47B5CB713" name="X861226B47B5CB713"></a></p>
 
 <h5>7.4-4 InternalHomOnMorphismsWithGivenInternalHoms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnMorphismsWithGivenInternalHoms</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \underline{\mathrm{Hom}}(a',b), \underline{\mathrm{Hom}}(a,b') )</span></p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a',b), \mathrm{\underline{Hom}}(a,b') )</span></p>
 
-<p>The arguments are an object <span class="Math">s = \underline{\mathrm{Hom}}(a',b)</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = \underline{\mathrm{Hom}}(a,b')</span>. The output is the internal hom morphism <span class="Math">\underline{\mathrm{Hom}}(\alpha,\beta): \underline{\mathrm{Hom}}(a',b) \rightarrow \underline{\mathrm{Hom}}(a,b')</span>.</p>
+<p>The arguments are an object <span class="Math">s = \mathrm{\underline{Hom}}(a',b)</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(a,b')</span>. The output is the internal hom morphism <span class="Math">\mathrm{\underline{Hom}}(\alpha,\beta): \mathrm{\underline{Hom}}(a',b) \rightarrow \mathrm{\underline{Hom}}(a,b')</span>.</p>
 
 <p><a id="X8070203E80388349" name="X8070203E80388349"></a></p>
 
@@ -667,7 +668,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomOnMorphismsWithGivenInternalHoms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomOnMorphismsWithGivenInternalHoms</code>. <span class="Math">F: (\underline{\mathrm{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \underline{\mathrm{Hom}}(a,b') ) \mapsto \underline{\mathrm{Hom}}(\alpha,\beta)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomOnMorphismsWithGivenInternalHoms</code>. <span class="Math">F: (\mathrm{\underline{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{\underline{Hom}}(a,b') ) \mapsto \mathrm{\underline{Hom}}(\alpha,\beta)</span>.</p>
 
 <p><a id="X809226D2878DD662" name="X809226D2878DD662"></a></p>
 
@@ -1124,9 +1125,9 @@
 <h5>7.4-56 IsomorphismFromDualToInternalHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromDualToInternalHom</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a^{\vee}, \mathrm{Hom}(a,1))</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a^{\vee}, \mathrm{\underline{Hom}}(a,1))</span>.</p>
 
-<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromDualToInternalHom}_{a}: a^{\vee} \rightarrow \mathrm{Hom}(a,1)</span>.</p>
+<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromDualToInternalHom}_{a}: a^{\vee} \rightarrow \mathrm{\underline{Hom}}(a,1)</span>.</p>
 
 <p><a id="X7882497883F6666A" name="X7882497883F6666A"></a></p>
 
@@ -1142,9 +1143,9 @@
 <h5>7.4-58 IsomorphismFromInternalHomToDual</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToDual</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Hom}(a,1), a^{\vee})</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{\underline{Hom}}(a,1), a^{\vee})</span>.</p>
 
-<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{Hom}(a,1) \rightarrow a^{\vee}</span>.</p>
+<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{\underline{Hom}}(a,1) \rightarrow a^{\vee}</span>.</p>
 
 <p><a id="X7A91D0187FF3C50E" name="X7A91D0187FF3C50E"></a></p>
 
@@ -1271,10 +1272,10 @@
 
 
 <ul>
-<li><p>the natural morphism <span class="Math">\underline{\mathrm{Hom}}(a_1,b_1) \otimes \underline{\mathrm{Hom}}(a_2,b_2) \rightarrow \underline{\mathrm{Hom}}(a_1 \otimes a_2,b_1 \otimes b_2)</span> is an isomorphism,</p>
+<li><p>the natural morphism <span class="Math">\mathrm{\underline{Hom}}(a_1,b_1) \otimes \mathrm{\underline{Hom}}(a_2,b_2) \rightarrow \mathrm{\underline{Hom}}(a_1 \otimes a_2,b_1 \otimes b_2)</span> is an isomorphism,</p>
 
 </li>
-<li><p>the natural morphism <span class="Math">a \rightarrow \underline{\mathrm{Hom}}(\underline{\mathrm{Hom}}(a, 1), 1)</span> is an isomorphism</p>
+<li><p>the natural morphism <span class="Math">a \rightarrow \mathrm{\underline{Hom}}(\mathrm{\underline{Hom}}(a, 1), 1)</span> is an isomorphism</p>
 
 </li>
 </ul>

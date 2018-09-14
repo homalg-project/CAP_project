@@ -84,14 +84,14 @@
   [29X[2XCategoryFilter[102X( [3XC[103X ) [32X attribute
   [6XReturns:[106X  [33X[0;10Ya filter[133X
   
-  [33X[0;0YThe argument is a cateogry [23XC[123X. The output is a filter in which [23XC[123X lies.[133X
+  [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which [23XC[123X lies.[133X
   
   [1X1.3-2 CellFilter[101X
   
   [29X[2XCellFilter[102X( [3XC[103X ) [32X attribute
   [6XReturns:[106X  [33X[0;10Ya filter[133X
   
-  [33X[0;0YThe argument is a cateogry [23XC[123X. The output is a filter in which all cells of [23XC[123X
+  [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all cells of [23XC[123X
   shall lie.[133X
   
   [1X1.3-3 ObjectFilter[101X
@@ -99,7 +99,7 @@
   [29X[2XObjectFilter[102X( [3XC[103X ) [32X attribute
   [6XReturns:[106X  [33X[0;10Ya filter[133X
   
-  [33X[0;0YThe argument is a cateogry [23XC[123X. The output is a filter in which all objects of
+  [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all objects of
   [23XC[123X shall lie.[133X
   
   [1X1.3-4 MorphismFilter[101X
@@ -107,7 +107,7 @@
   [29X[2XMorphismFilter[102X( [3XC[103X ) [32X attribute
   [6XReturns:[106X  [33X[0;10Ya filter[133X
   
-  [33X[0;0YThe  argument is a cateogry [23XC[123X. The output is a filter in which all morphisms
+  [33X[0;0YThe  argument is a category [23XC[123X. The output is a filter in which all morphisms
   of [23XC[123X shall lie.[133X
   
   [1X1.3-5 TwoCellFilter[101X
@@ -115,8 +115,17 @@
   [29X[2XTwoCellFilter[102X( [3XC[103X ) [32X attribute
   [6XReturns:[106X  [33X[0;10Ya filter[133X
   
-  [33X[0;0YThe argument is a cateogry [23XC[123X. The output is a filter in which all [23X2[123X-cells of
+  [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all [23X2[123X-cells of
   [23XC[123X shall lie.[133X
+  
+  [1X1.3-6 CommutativeRingOfLinearCategory[101X
+  
+  [29X[2XCommutativeRingOfLinearCategory[102X( [3XC[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10Ya ring[133X
+  
+  [33X[0;0YThe  argument  is  a  category  [23XC[123X  which  is  expected  to lie in the filter
+  [10XIsLinearCategoryOverCommutativeRing[110X.  The  output is a commutative ring over
+  which the category is linear.[133X
   
   
   [1X1.4 [33X[0;0YLogic switcher[133X[101X
@@ -173,9 +182,23 @@
   [1X1.7-1 DisableBasicOperationTypeCheck[101X
   
   [29X[2XDisableBasicOperationTypeCheck[102X( [3Xcategory[103X ) [32X function
-  [29X[2XEnableBasicOperationTypeCheck[102X( [3Xarg[103X ) [32X function
+  [29X[2XEnablePartialBasicOperationTypeCheck[102X( [3Xarg[103X ) [32X function
+  [29X[2XEnableFullBasicOperationTypeCheck[102X( [3Xarg[103X ) [32X function
   
-  [33X[0;0YMost  basic  operations have a prefunction, which does a (sometimes partial)
-  typecheck  at  the  beginning  of  the  operation. These functions enable or
-  disable this check for a category. (Enabled by default)[133X
+  [33X[0;0YMost  operations  have  prefunctions,  that perform additional checks on the
+  arguments.  The  checks can either be partial (enabled by default), full, or
+  disabled. With the following commands you can either enable the full checks,
+  just the basic checks, or, for performance, disable the checks alltogether.[133X
+  
+  
+  [1X1.8 [33X[0;0YDisable add in functions[133X[101X
+  
+  [1X1.8-1 DisableAddForCategoricalOperations[101X
+  
+  [29X[2XDisableAddForCategoricalOperations[102X( [3XC[103X ) [32X function
+  [29X[2XEnableAddForCategoricalOperations[102X( [3Xarg[103X ) [32X function
+  
+  [33X[0;0YEnables/disables  the  call  of  add  for  the  output  of primitively added
+  functions for the category [3XC[103X. This can be savely done if the all objects and
+  morphisms are added to the category by their constructors.[133X
   

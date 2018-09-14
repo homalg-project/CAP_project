@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
-<script src="manual.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script><script type="text/javascript" src="https://unpkg.com/thebelab@0.0.3"></script><script src="manual.js" type="text/javascript"></script>
 <script type="text/javascript">overwriteStyle();</script>
 </head>
 <body class="chap4"  onload="jscontent()">
@@ -20,7 +20,8 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap4_mj.html">[MathJax on]</a></p>
-<p><a id="X78497E777FB3E402" name="X78497E777FB3E402"></a></p>
+
+<div style="text-align: center;"><input type="button" onclick="convert_examples();start_kernel()" value="Make this live!"></div><p><a id="X78497E777FB3E402" name="X78497E777FB3E402"></a></p>
 <div class="ChapSects"><a href="chap4.html#X78497E777FB3E402">4 <span class="Heading">Objects</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7ABD8E5A8408A301">4.1 <span class="Heading">Attributes for the Type of Objects</span></a>
 </span>
@@ -49,35 +50,41 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7BAE9BBC874635CB">4.4-1 IsEqualForCacheForObjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7887D32C7973F4A0">4.4-2 AddIsEqualForCacheForObjects</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7820B09C781A90A8">4.5 <span class="Heading">Well-Definedness of Objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X81817A2C84F03D1D">4.5 <span class="Heading">Adding Objects to a Category</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F9A38A187D9ABFA">4.5-1 IsWellDefinedForObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X859219147B3058B8">4.5-2 AddIsWellDefinedForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A68365C82BDA4E7">4.5-1 AddObjectRepresentation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78095CF37B92F0D9">4.5-2 ObjectifyObjectForCAPWithAttributes</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7EFAF5CD83C3298F">4.6 <span class="Heading">Projectives</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7820B09C781A90A8">4.6 <span class="Heading">Well-Definedness of Objects</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7FED5E898784C314">4.6-1 SomeProjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D5951AA7EBD7750">4.6-2 EpimorphismFromSomeProjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X81F04D8186B94570">4.6-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7BFFD7FE82DCB5F6">4.6-4 ProjectiveLift</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C3AF36D86F11429">4.6-5 AddSomeProjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85B76EA67A35B7B2">4.6-6 AddEpimorphismFromSomeProjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B7B27468506DA04">4.6-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7AEE24E581A44083">4.6-8 AddProjectiveLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F9A38A187D9ABFA">4.6-1 IsWellDefinedForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X859219147B3058B8">4.6-2 AddIsWellDefinedForObjects</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X87100AFB7A202D2F">4.7 <span class="Heading">Injectives</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7EFAF5CD83C3298F">4.7 <span class="Heading">Projectives</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C06E1807D8775AD">4.7-1 SomeInjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8502893C82A38864">4.7-2 MonomorphismIntoSomeInjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A7C030382397A2B">4.7-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CCBB0A384F37EC6">4.7-4 InjectiveColift</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7DFC9A568472688B">4.7-5 AddSomeInjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X81C9788D7DD27D18">4.7-6 AddMonomorphismIntoSomeInjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CCBF6577ADC62D9">4.7-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CE0C54080533C0E">4.7-8 AddInjectiveColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7FED5E898784C314">4.7-1 SomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D5951AA7EBD7750">4.7-2 EpimorphismFromSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X81F04D8186B94570">4.7-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7BFFD7FE82DCB5F6">4.7-4 ProjectiveLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C3AF36D86F11429">4.7-5 AddSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85B76EA67A35B7B2">4.7-6 AddEpimorphismFromSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B7B27468506DA04">4.7-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7AEE24E581A44083">4.7-8 AddProjectiveLift</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X87100AFB7A202D2F">4.8 <span class="Heading">Injectives</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C06E1807D8775AD">4.8-1 SomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8502893C82A38864">4.8-2 MonomorphismIntoSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A7C030382397A2B">4.8-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CCBB0A384F37EC6">4.8-4 InjectiveColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7DFC9A568472688B">4.8-5 AddSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X81C9788D7DD27D18">4.8-6 AddMonomorphismIntoSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CCBF6577ADC62D9">4.8-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CE0C54080533C0E">4.8-8 AddInjectiveColift</a></span>
 </div></div>
 </div>
 
@@ -164,7 +171,7 @@
 
 <h5>4.3-5 IsZeroForObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZeroForObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZeroForObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">( property )</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>The argument is an object <span class="Math">a</span> of a category <span class="Math">\mathbf{C}</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is isomorphic to the zero object of <span class="Math">\mathbf{C}</span>, otherwise the output is <code class="code">false</code>.</p>
@@ -200,13 +207,31 @@
 
 <p>By default, CAP uses caches to store the values of Categorical operations. To get a value out of the cache, one needs to compare the input of a basic operation with its previous input. To compare objects in the category, IsEqualForCacheForObject is used. By default this is an alias for IsEqualForObjects, where fail is substituted by false. If you add a function, this function used instead. A function <span class="Math">F: a,b \mapsto bool</span> is expected here. The output has to be true or false. Fail is not allowed in this context.</p>
 
+<p><a id="X81817A2C84F03D1D" name="X81817A2C84F03D1D"></a></p>
+
+<h4>4.5 <span class="Heading">Adding Objects to a Category</span></h4>
+
+<p><a id="X7A68365C82BDA4E7" name="X7A68365C82BDA4E7"></a></p>
+
+<h5>4.5-1 AddObjectRepresentation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddObjectRepresentation</code>( <var class="Arg">category</var>, <var class="Arg">filter</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>The argument <var class="Arg">filter</var> is used to create an object type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyObjectForCAPWithAttributes</code> to objectify objects for this category.</p>
+
+<p><a id="X78095CF37B92F0D9" name="X78095CF37B92F0D9"></a></p>
+
+<h5>4.5-2 ObjectifyObjectForCAPWithAttributes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyObjectForCAPWithAttributes</code>( <var class="Arg">object</var>, <var class="Arg">category</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Objectifies the object <var class="Arg">object</var> with the type created for objects in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddObjectRepresentation</code>. Objects which are objectified using this method do not have to be passed to the <code class="code">AddObject</code> function.</p>
+
 <p><a id="X7820B09C781A90A8" name="X7820B09C781A90A8"></a></p>
 
-<h4>4.5 <span class="Heading">Well-Definedness of Objects</span></h4>
+<h4>4.6 <span class="Heading">Well-Definedness of Objects</span></h4>
 
 <p><a id="X7F9A38A187D9ABFA" name="X7F9A38A187D9ABFA"></a></p>
 
-<h5>4.5-1 IsWellDefinedForObjects</h5>
+<h5>4.6-1 IsWellDefinedForObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWellDefinedForObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -215,7 +240,7 @@
 
 <p><a id="X859219147B3058B8" name="X859219147B3058B8"></a></p>
 
-<h5>4.5-2 AddIsWellDefinedForObjects</h5>
+<h5>4.6-2 AddIsWellDefinedForObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWellDefinedForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -224,13 +249,13 @@
 
 <p><a id="X7EFAF5CD83C3298F" name="X7EFAF5CD83C3298F"></a></p>
 
-<h4>4.6 <span class="Heading">Projectives</span></h4>
+<h4>4.7 <span class="Heading">Projectives</span></h4>
 
 <p>For a given object <span class="Math">A</span> in an abelian category having enough projectives, the following commands allow us to compute some projective object <span class="Math">P</span> together with an epimorphism <span class="Math">\pi: P \rightarrow A</span>.</p>
 
 <p><a id="X7FED5E898784C314" name="X7FED5E898784C314"></a></p>
 
-<h5>4.6-1 SomeProjectiveObject</h5>
+<h5>4.7-1 SomeProjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SomeProjectiveObject</code>( <var class="Arg">A</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: an object</p>
@@ -239,7 +264,7 @@
 
 <p><a id="X7D5951AA7EBD7750" name="X7D5951AA7EBD7750"></a></p>
 
-<h5>4.6-2 EpimorphismFromSomeProjectiveObject</h5>
+<h5>4.7-2 EpimorphismFromSomeProjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EpimorphismFromSomeProjectiveObject</code>( <var class="Arg">A</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(P,A)</span></p>
@@ -248,7 +273,7 @@
 
 <p><a id="X81F04D8186B94570" name="X81F04D8186B94570"></a></p>
 
-<h5>4.6-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</h5>
+<h5>4.7-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</code>( <var class="Arg">A</var>, <var class="Arg">P</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(P,A)</span></p>
@@ -257,7 +282,7 @@
 
 <p><a id="X7BFFD7FE82DCB5F6" name="X7BFFD7FE82DCB5F6"></a></p>
 
-<h5>4.6-4 ProjectiveLift</h5>
+<h5>4.7-4 ProjectiveLift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectiveLift</code>( <var class="Arg">pi</var>, <var class="Arg">epsilon</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(P,B)</span></p>
@@ -266,7 +291,7 @@
 
 <p><a id="X7C3AF36D86F11429" name="X7C3AF36D86F11429"></a></p>
 
-<h5>4.6-5 AddSomeProjectiveObject</h5>
+<h5>4.7-5 AddSomeProjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSomeProjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -275,7 +300,7 @@
 
 <p><a id="X85B76EA67A35B7B2" name="X85B76EA67A35B7B2"></a></p>
 
-<h5>4.6-6 AddEpimorphismFromSomeProjectiveObject</h5>
+<h5>4.7-6 AddEpimorphismFromSomeProjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEpimorphismFromSomeProjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -284,7 +309,7 @@
 
 <p><a id="X7B7B27468506DA04" name="X7B7B27468506DA04"></a></p>
 
-<h5>4.6-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</h5>
+<h5>4.7-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -293,7 +318,7 @@
 
 <p><a id="X7AEE24E581A44083" name="X7AEE24E581A44083"></a></p>
 
-<h5>4.6-8 AddProjectiveLift</h5>
+<h5>4.7-8 AddProjectiveLift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectiveLift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -302,13 +327,13 @@
 
 <p><a id="X87100AFB7A202D2F" name="X87100AFB7A202D2F"></a></p>
 
-<h4>4.7 <span class="Heading">Injectives</span></h4>
+<h4>4.8 <span class="Heading">Injectives</span></h4>
 
 <p>For a given object <span class="Math">A</span> in an abelian category having enough injectives, the following commands allow us to compute some injective object <span class="Math">I</span> together with a monomorphism <span class="Math">\iota: A \rightarrow I</span>.</p>
 
 <p><a id="X7C06E1807D8775AD" name="X7C06E1807D8775AD"></a></p>
 
-<h5>4.7-1 SomeInjectiveObject</h5>
+<h5>4.8-1 SomeInjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SomeInjectiveObject</code>( <var class="Arg">A</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: an object</p>
@@ -317,7 +342,7 @@
 
 <p><a id="X8502893C82A38864" name="X8502893C82A38864"></a></p>
 
-<h5>4.7-2 MonomorphismIntoSomeInjectiveObject</h5>
+<h5>4.8-2 MonomorphismIntoSomeInjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonomorphismIntoSomeInjectiveObject</code>( <var class="Arg">A</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(I,A)</span></p>
@@ -326,7 +351,7 @@
 
 <p><a id="X7A7C030382397A2B" name="X7A7C030382397A2B"></a></p>
 
-<h5>4.7-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</h5>
+<h5>4.8-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</code>( <var class="Arg">A</var>, <var class="Arg">I</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(I,A)</span></p>
@@ -335,7 +360,7 @@
 
 <p><a id="X7CCBB0A384F37EC6" name="X7CCBB0A384F37EC6"></a></p>
 
-<h5>4.7-4 InjectiveColift</h5>
+<h5>4.8-4 InjectiveColift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InjectiveColift</code>( <var class="Arg">\iota</var>, <var class="Arg">\beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A,I)</span></p>
@@ -344,7 +369,7 @@
 
 <p><a id="X7DFC9A568472688B" name="X7DFC9A568472688B"></a></p>
 
-<h5>4.7-5 AddSomeInjectiveObject</h5>
+<h5>4.8-5 AddSomeInjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSomeInjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -353,7 +378,7 @@
 
 <p><a id="X81C9788D7DD27D18" name="X81C9788D7DD27D18"></a></p>
 
-<h5>4.7-6 AddMonomorphismIntoSomeInjectiveObject</h5>
+<h5>4.8-6 AddMonomorphismIntoSomeInjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonomorphismIntoSomeInjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -362,7 +387,7 @@
 
 <p><a id="X7CCBF6577ADC62D9" name="X7CCBF6577ADC62D9"></a></p>
 
-<h5>4.7-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</h5>
+<h5>4.8-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -371,7 +396,7 @@
 
 <p><a id="X7CE0C54080533C0E" name="X7CE0C54080533C0E"></a></p>
 
-<h5>4.7-8 AddInjectiveColift</h5>
+<h5>4.8-8 AddInjectiveColift</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectiveColift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>

@@ -17,6 +17,11 @@
   category,  and  the  binary direct sum function. The function then returns a
   function that can be used for the direct sum categorical operation.[133X
   
+  [33X[0;0YNote  that [3Xfunc[103X is not handled by the CAP caching mechanism and that the use
+  of  prepare  functions  is incompatible with [10XWithGiven[110X operations. Thus, one
+  has  to  ensure  manually  that  the  equality and typing specifications are
+  fulfilled.[133X
+  
   [1X12.1-2 CAPAddPrepareFunction[101X
   
   [29X[2XCAPAddPrepareFunction[102X( [3Xprepare_function[103X, [3Xname[103X, [3Xdoc_string[103X[, [3Xprecondition_list[103X] ) [32X function

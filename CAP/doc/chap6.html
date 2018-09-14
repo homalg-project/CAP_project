@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
-<script src="manual.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script><script type="text/javascript" src="https://unpkg.com/thebelab@0.0.3"></script><script src="manual.js" type="text/javascript"></script>
 <script type="text/javascript">overwriteStyle();</script>
 </head>
 <body class="chap6"  onload="jscontent()">
@@ -20,7 +20,8 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap6_mj.html">[MathJax on]</a></p>
-<p><a id="X7994CC1487D7617C" name="X7994CC1487D7617C"></a></p>
+
+<div style="text-align: center;"><input type="button" onclick="convert_examples();start_kernel()" value="Make this live!"></div><p><a id="X7994CC1487D7617C" name="X7994CC1487D7617C"></a></p>
 <div class="ChapSects"><a href="chap6.html#X7994CC1487D7617C">6 <span class="Heading">Universal Objects</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7DCD99628504B810">6.1 <span class="Heading">Kernel</span></a>
 </span>
@@ -138,23 +139,28 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CACFBCA7B9A4E19">6.6-20 IsomorphismFromCoproductToDirectSum</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86256BBF783F85F4">6.6-21 IsomorphismFromCoproductToDirectSumOp</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FDE63F78410A822">6.6-22 MorphismBetweenDirectSums</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DCF225F79D1757C">6.6-23 MorphismBetweenDirectSumsOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B87E0308677AB17">6.6-24 AddProjectionInFactorOfDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81ACCDB081967CD3">6.6-25 AddProjectionInFactorOfDirectSumWithGivenDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X845EB2F47C8FE49C">6.6-26 AddInjectionOfCofactorOfDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86A78CC2859E4382">6.6-27 AddInjectionOfCofactorOfDirectSumWithGivenDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7AA30E857A11AA2A">6.6-28 AddUniversalMorphismIntoDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E666F5683000D34">6.6-29 AddUniversalMorphismIntoDirectSumWithGivenDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82AEA81280F0FE29">6.6-30 AddUniversalMorphismFromDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81DB161779E15937">6.6-31 AddUniversalMorphismFromDirectSumWithGivenDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79DA06C087D4BDF3">6.6-32 AddIsomorphismFromDirectSumToDirectProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X793FDA608055E5C9">6.6-33 AddIsomorphismFromDirectProductToDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D710CA282194DC7">6.6-34 AddIsomorphismFromDirectSumToCoproduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87C04FAA7F49427B">6.6-35 AddIsomorphismFromCoproductToDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CE460A37D8D468F">6.6-36 AddDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D1ADFE478EF9354">6.6-37 DirectSumFunctorial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B45854C80D79805">6.6-38 DirectSumFunctorialWithGivenDirectSums</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X829D88B6845FA373">6.6-39 AddDirectSumFunctorialWithGivenDirectSums</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X873C908279759A45">6.6-23 AddMorphismBetweenDirectSums</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DCF225F79D1757C">6.6-24 MorphismBetweenDirectSumsOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A3400D485D0C438">6.6-25 ComponentOfMorphismIntoDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B71C4F4799263E6">6.6-26 ComponentOfMorphismFromDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82B3F4A87CDF6F87">6.6-27 AddComponentOfMorphismIntoDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7ABE523F82B2DB7C">6.6-28 AddComponentOfMorphismFromDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B87E0308677AB17">6.6-29 AddProjectionInFactorOfDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81ACCDB081967CD3">6.6-30 AddProjectionInFactorOfDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X845EB2F47C8FE49C">6.6-31 AddInjectionOfCofactorOfDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86A78CC2859E4382">6.6-32 AddInjectionOfCofactorOfDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7AA30E857A11AA2A">6.6-33 AddUniversalMorphismIntoDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E666F5683000D34">6.6-34 AddUniversalMorphismIntoDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82AEA81280F0FE29">6.6-35 AddUniversalMorphismFromDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81DB161779E15937">6.6-36 AddUniversalMorphismFromDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79DA06C087D4BDF3">6.6-37 AddIsomorphismFromDirectSumToDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X793FDA608055E5C9">6.6-38 AddIsomorphismFromDirectProductToDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D710CA282194DC7">6.6-39 AddIsomorphismFromDirectSumToCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87C04FAA7F49427B">6.6-40 AddIsomorphismFromCoproductToDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CE460A37D8D468F">6.6-41 AddDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D1ADFE478EF9354">6.6-42 DirectSumFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B45854C80D79805">6.6-43 DirectSumFunctorialWithGivenDirectSums</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X829D88B6845FA373">6.6-44 AddDirectSumFunctorialWithGivenDirectSums</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7E8036DF7AC65994">6.7 <span class="Heading">Coproduct</span></a>
 </span>
@@ -196,123 +202,194 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X814F469F80302D50">6.8-13 DirectProductFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BFF346E827DF0E3">6.8-14 DirectProductFunctorialWithGivenDirectProducts</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X789E69C583A0E118">6.8-15 AddDirectProductFunctorialWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X878DF3E3794CA099">6.8-16 AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78D32B768749A2A6">6.8-17 AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8410D8C27CC34DC2">6.8-18 AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8488553481145F88">6.8-19 AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7C5C7D847A89D79C">6.9 <span class="Heading">Fiber Product</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X824FD8F786D2350D">6.9 <span class="Heading">Equalizer</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79C946837899FDBF">6.9-1 IsomorphismFromFiberProductToKernelOfDiagonalDifference</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B0F26DF868F8B2D">6.9-2 IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82A6A64979DFFE43">6.9-3 AddIsomorphismFromFiberProductToKernelOfDiagonalDifference</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X848F0B52844D782B">6.9-4 IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E0329477A5B0EB9">6.9-5 IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B255D3F7F8D0846">6.9-6 AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E17BF518268C33A">6.9-7 DirectSumDiagonalDifference</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X866CDC8A842CC21C">6.9-8 DirectSumDiagonalDifferenceOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X842E4433870BE980">6.9-9 AddDirectSumDiagonalDifference</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7919AF7486FA42C5">6.9-10 FiberProductEmbeddingInDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X803207BC84DFDACA">6.9-11 FiberProductEmbeddingInDirectSumOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8718265481B0270E">6.9-12 AddFiberProductEmbeddingInDirectSum</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DE20941803BFBD9">6.9-13 FiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81E871B983FA6EE8">6.9-14 FiberProductOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8104B3717D3B646F">6.9-15 ProjectionInFactorOfFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X809C05D883C1E31D">6.9-16 ProjectionInFactorOfFiberProductOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8085606A7B09071F">6.9-17 ProjectionInFactorOfFiberProductWithGivenFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79F3937679B61538">6.9-18 UniversalMorphismIntoFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83A406227DE6BC4D">6.9-19 UniversalMorphismIntoFiberProductOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X835D5D3578A3226D">6.9-20 UniversalMorphismIntoFiberProductWithGivenFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86B7F8B983B9B184">6.9-21 AddFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC4A40A8587EB82">6.9-22 AddProjectionInFactorOfFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X822C988083A72B14">6.9-23 AddProjectionInFactorOfFiberProductWithGivenFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F7446F882DF6DA5">6.9-24 AddUniversalMorphismIntoFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84C5017486990FB2">6.9-25 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85B1887C822DA631">6.9-26 FiberProductFunctorial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8250A0F1827BCD68">6.9-27 FiberProductFunctorialWithGivenFiberProducts</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85CCD05C7D3D6B7C">6.9-28 AddFiberProductFunctorialWithGivenFiberProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X824FD8F786D2350D">6.9-1 Equalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X789153A87A59EAFC">6.9-2 EqualizerOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80F6FFA483B8379B">6.9-3 EmbeddingOfEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EC748A686F5BE47">6.9-4 EmbeddingOfEqualizerOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X810AA9C5787FC775">6.9-5 EmbeddingOfEqualizerWithGivenEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85A615A183271DEF">6.9-6 UniversalMorphismIntoEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8174F411785A78AF">6.9-7 UniversalMorphismIntoEqualizerWithGivenEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8708C28287172ED7">6.9-8 AddEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86275A2F7EF2A472">6.9-9 AddEmbeddingOfEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8346BE927EB0C95B">6.9-10 AddEmbeddingOfEqualizerWithGivenEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X814FACA47A759C7A">6.9-11 AddUniversalMorphismIntoEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X872A26F678D6989B">6.9-12 AddUniversalMorphismIntoEqualizerWithGivenEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X820667898568A639">6.9-13 EqualizerFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8403EC6F849FE118">6.9-14 EqualizerFunctorialWithGivenEqualizers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X819700097DE622A4">6.9-15 AddEqualizerFunctorialWithGivenEqualizers</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X81A2D49D85923894">6.10 <span class="Heading">Pushout</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7BA8F7BD793CC288">6.10 <span class="Heading">Coequalizer</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DB5F4937D3FFB15">6.10-1 IsomorphismFromPushoutToCokernelOfDiagonalDifference</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B1FAA958491D7FC">6.10-2 IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8639C412856D8860">6.10-3 AddIsomorphismFromPushoutToCokernelOfDiagonalDifference</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9E5AEA7E6F0092">6.10-4 IsomorphismFromCokernelOfDiagonalDifferenceToPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC6642F87C12C7B">6.10-5 IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X811F965D7B9837F9">6.10-6 AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81DC4C1778CF1FD3">6.10-7 DirectSumCodiagonalDifference</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CA4577F7D26C099">6.10-8 DirectSumCodiagonalDifferenceOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84CF535682E444B6">6.10-9 AddDirectSumCodiagonalDifference</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78450AD684E5746A">6.10-10 DirectSumProjectionInPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8702BC0180D5AEFD">6.10-11 DirectSumProjectionInPushoutOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84852B0980DF02AE">6.10-12 AddDirectSumProjectionInPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78E10D9E849FE214">6.10-13 Pushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78D93A2883C83CAC">6.10-14 Pushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78BE08E284796495">6.10-15 PushoutOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CF12E527805752F">6.10-16 InjectionOfCofactorOfPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BF8D08E8253D61C">6.10-17 InjectionOfCofactorOfPushoutOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E54DB957B5F9157">6.10-18 InjectionOfCofactorOfPushoutWithGivenPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82A1EFBA7E16FA63">6.10-19 UniversalMorphismFromPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DB773A47D22963E">6.10-20 UniversalMorphismFromPushoutOp</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A3830637BB1E7C6">6.10-21 UniversalMorphismFromPushoutWithGivenPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78FDEE468742E573">6.10-22 AddPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87ED0E87850C6D96">6.10-23 AddInjectionOfCofactorOfPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8352461A796F9214">6.10-24 AddInjectionOfCofactorOfPushoutWithGivenPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7ACB31A479737723">6.10-25 AddUniversalMorphismFromPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X847BA99A851088A1">6.10-26 AddUniversalMorphismFromPushoutWithGivenPushout</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BDB1CBF79D0D1D3">6.10-27 PushoutFunctorial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7805E8767D5729C0">6.10-28 PushoutFunctorialWithGivenPushouts</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X810036A887D287AC">6.10-29 AddPushoutFunctorialWithGivenPushouts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BA8F7BD793CC288">6.10-1 Coequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X802E1E397897BE9A">6.10-2 CoequalizerOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EF42FC481100977">6.10-3 ProjectionOntoCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8484120781FF21CC">6.10-4 ProjectionOntoCoequalizerOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DA261DF7D3D1961">6.10-5 ProjectionOntoCoequalizerWithGivenCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EB9639F78149BF3">6.10-6 UniversalMorphismFromCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84AD305E7AB82B76">6.10-7 UniversalMorphismFromCoequalizerWithGivenCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X854D668E7F7AE192">6.10-8 AddCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C76BED4827D9C28">6.10-9 AddProjectionOntoCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8691E0FA7BF900F5">6.10-10 AddProjectionOntoCoequalizerWithGivenCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82B3F52779407E2F">6.10-11 AddUniversalMorphismFromCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F27613984BEA3BB">6.10-12 AddUniversalMorphismFromCoequalizerWithGivenCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DFAE360842E610B">6.10-13 CoequalizerFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8123A5EC858F62CA">6.10-14 CoequalizerFunctorialWithGivenCoequalizers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X784EE97C7CBD86AE">6.10-15 AddCoequalizerFunctorialWithGivenCoequalizers</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X87F4D35A826599C6">6.11 <span class="Heading">Image</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7C5C7D847A89D79C">6.11 <span class="Heading">Fiber Product</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80490BD785CA695A">6.11-1 IsomorphismFromImageObjectToKernelOfCokernel</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B09757B8411AD52">6.11-2 AddIsomorphismFromImageObjectToKernelOfCokernel</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CAA3342865B456B">6.11-3 IsomorphismFromKernelOfCokernelToImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78A3EEFB843C5067">6.11-4 AddIsomorphismFromKernelOfCokernelToImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83B457FF79AC5AC6">6.11-5 ImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86CEE2D1876EC2B9">6.11-6 ImageEmbedding</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82991FA17B460744">6.11-7 ImageEmbeddingWithGivenImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8144201987A27661">6.11-8 CoastrictionToImage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78BE36EA83BEF493">6.11-9 CoastrictionToImageWithGivenImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7989B1FB811D2033">6.11-10 UniversalMorphismFromImage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86E557097CFB4430">6.11-11 UniversalMorphismFromImageWithGivenImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CA61123868B51B2">6.11-12 AddImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X796EDCCD7A729E12">6.11-13 AddImageEmbedding</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X785393EB7C27451E">6.11-14 AddImageEmbeddingWithGivenImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78C7D6E582FD41E9">6.11-15 AddCoastrictionToImage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8077FB7485FCD5E6">6.11-16 AddCoastrictionToImageWithGivenImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BE632048014DB7F">6.11-17 AddUniversalMorphismFromImage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79813E327CAD3D99">6.11-18 AddUniversalMorphismFromImageWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79C946837899FDBF">6.11-1 IsomorphismFromFiberProductToKernelOfDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B0F26DF868F8B2D">6.11-2 IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82A6A64979DFFE43">6.11-3 AddIsomorphismFromFiberProductToKernelOfDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X848F0B52844D782B">6.11-4 IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E0329477A5B0EB9">6.11-5 IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B255D3F7F8D0846">6.11-6 AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DAB395584678429">6.11-7 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8730D4A87B1AA997">6.11-8 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FF20AFE7CE85AF5">6.11-9 AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8190FBB47DB6307D">6.11-10 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86ED0D4682CB1DC3">6.11-11 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83D3BDAF7BFBF924">6.11-12 AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E17BF518268C33A">6.11-13 DirectSumDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X866CDC8A842CC21C">6.11-14 DirectSumDiagonalDifferenceOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X842E4433870BE980">6.11-15 AddDirectSumDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7919AF7486FA42C5">6.11-16 FiberProductEmbeddingInDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X803207BC84DFDACA">6.11-17 FiberProductEmbeddingInDirectSumOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8718265481B0270E">6.11-18 AddFiberProductEmbeddingInDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DE20941803BFBD9">6.11-19 FiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81E871B983FA6EE8">6.11-20 FiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8104B3717D3B646F">6.11-21 ProjectionInFactorOfFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X809C05D883C1E31D">6.11-22 ProjectionInFactorOfFiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8085606A7B09071F">6.11-23 ProjectionInFactorOfFiberProductWithGivenFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79F3937679B61538">6.11-24 UniversalMorphismIntoFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83A406227DE6BC4D">6.11-25 UniversalMorphismIntoFiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X835D5D3578A3226D">6.11-26 UniversalMorphismIntoFiberProductWithGivenFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86B7F8B983B9B184">6.11-27 AddFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC4A40A8587EB82">6.11-28 AddProjectionInFactorOfFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X822C988083A72B14">6.11-29 AddProjectionInFactorOfFiberProductWithGivenFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F7446F882DF6DA5">6.11-30 AddUniversalMorphismIntoFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84C5017486990FB2">6.11-31 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85B1887C822DA631">6.11-32 FiberProductFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8250A0F1827BCD68">6.11-33 FiberProductFunctorialWithGivenFiberProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85CCD05C7D3D6B7C">6.11-34 AddFiberProductFunctorialWithGivenFiberProducts</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7EB02EC487B586E5">6.12 <span class="Heading">Coimage</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X81A2D49D85923894">6.12 <span class="Heading">Pushout</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F7BD6A18581671E">6.12-1 MorphismFromCoimageToImage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8025749B78E12A2B">6.12-2 MorphismFromCoimageToImageWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FCCF6EA7BD56684">6.12-3 AddMorphismFromCoimageToImageWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D0C9B067F3E15B4">6.12-4 InverseMorphismFromCoimageToImage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83C4E6FF7D1F1A9C">6.12-5 InverseMorphismFromCoimageToImageWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E25930683F94127">6.12-6 AddInverseMorphismFromCoimageToImageWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C594E227D8DB0ED">6.12-7 IsomorphismFromCoimageToCokernelOfKernel</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80B45F4D7A7B96A4">6.12-8 AddIsomorphismFromCoimageToCokernelOfKernel</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CF7E7E47A460E56">6.12-9 IsomorphismFromCokernelOfKernelToCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9B059578AC42D6">6.12-10 AddIsomorphismFromCokernelOfKernelToCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X866FB09E857D1846">6.12-11 Coimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X822D25177F2C1541">6.12-12 CoimageProjection</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X788E717C7CCC6645">6.12-13 CoimageProjection</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X845344847E9C3AD9">6.12-14 CoimageProjectionWithGivenCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC763EA7D2D3164">6.12-15 AstrictionToCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X805108BF8047357E">6.12-16 AstrictionToCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BEDEDCC7818490B">6.12-17 AstrictionToCoimageWithGivenCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D051DDF7A68BFFB">6.12-18 UniversalMorphismIntoCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9C6F3C7B929E5F">6.12-19 UniversalMorphismIntoCoimageWithGivenCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A0027687B377BC2">6.12-20 AddCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85B54DD47C3E9682">6.12-21 AddCoimageProjection</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X800CCC74801CFF29">6.12-22 AddCoimageProjectionWithGivenCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X786682798320D413">6.12-23 AddAstrictionToCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X820E0A8786AA718F">6.12-24 AddAstrictionToCoimageWithGivenCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85DB30B982F6C564">6.12-25 AddUniversalMorphismIntoCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8617139A8651C194">6.12-26 AddUniversalMorphismIntoCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DB5F4937D3FFB15">6.12-1 IsomorphismFromPushoutToCokernelOfDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B1FAA958491D7FC">6.12-2 IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8639C412856D8860">6.12-3 AddIsomorphismFromPushoutToCokernelOfDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9E5AEA7E6F0092">6.12-4 IsomorphismFromCokernelOfDiagonalDifferenceToPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC6642F87C12C7B">6.12-5 IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X811F965D7B9837F9">6.12-6 AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87C495A782BE3433">6.12-7 IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CD0505B7DC1BF6A">6.12-8 IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C757EA67A35147A">6.12-9 AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EAFDD727D94E932">6.12-10 IsomorphismFromCoequalizerOfCoproductDiagramToPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B2C8CA482EB626B">6.12-11 IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B80534F79D74B95">6.12-12 AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81DC4C1778CF1FD3">6.12-13 DirectSumCodiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CA4577F7D26C099">6.12-14 DirectSumCodiagonalDifferenceOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84CF535682E444B6">6.12-15 AddDirectSumCodiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78450AD684E5746A">6.12-16 DirectSumProjectionInPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8702BC0180D5AEFD">6.12-17 DirectSumProjectionInPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84852B0980DF02AE">6.12-18 AddDirectSumProjectionInPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78E10D9E849FE214">6.12-19 Pushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78D93A2883C83CAC">6.12-20 Pushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78BE08E284796495">6.12-21 PushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CF12E527805752F">6.12-22 InjectionOfCofactorOfPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BF8D08E8253D61C">6.12-23 InjectionOfCofactorOfPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E54DB957B5F9157">6.12-24 InjectionOfCofactorOfPushoutWithGivenPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82A1EFBA7E16FA63">6.12-25 UniversalMorphismFromPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DB773A47D22963E">6.12-26 UniversalMorphismFromPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A3830637BB1E7C6">6.12-27 UniversalMorphismFromPushoutWithGivenPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78FDEE468742E573">6.12-28 AddPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87ED0E87850C6D96">6.12-29 AddInjectionOfCofactorOfPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8352461A796F9214">6.12-30 AddInjectionOfCofactorOfPushoutWithGivenPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7ACB31A479737723">6.12-31 AddUniversalMorphismFromPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X847BA99A851088A1">6.12-32 AddUniversalMorphismFromPushoutWithGivenPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BDB1CBF79D0D1D3">6.12-33 PushoutFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7805E8767D5729C0">6.12-34 PushoutFunctorialWithGivenPushouts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X810036A887D287AC">6.12-35 AddPushoutFunctorialWithGivenPushouts</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X87F4D35A826599C6">6.13 <span class="Heading">Image</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80490BD785CA695A">6.13-1 IsomorphismFromImageObjectToKernelOfCokernel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B09757B8411AD52">6.13-2 AddIsomorphismFromImageObjectToKernelOfCokernel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CAA3342865B456B">6.13-3 IsomorphismFromKernelOfCokernelToImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78A3EEFB843C5067">6.13-4 AddIsomorphismFromKernelOfCokernelToImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83B457FF79AC5AC6">6.13-5 ImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86CEE2D1876EC2B9">6.13-6 ImageEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82991FA17B460744">6.13-7 ImageEmbeddingWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8144201987A27661">6.13-8 CoastrictionToImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78BE36EA83BEF493">6.13-9 CoastrictionToImageWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7989B1FB811D2033">6.13-10 UniversalMorphismFromImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86E557097CFB4430">6.13-11 UniversalMorphismFromImageWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CA61123868B51B2">6.13-12 AddImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X796EDCCD7A729E12">6.13-13 AddImageEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X785393EB7C27451E">6.13-14 AddImageEmbeddingWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78C7D6E582FD41E9">6.13-15 AddCoastrictionToImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8077FB7485FCD5E6">6.13-16 AddCoastrictionToImageWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BE632048014DB7F">6.13-17 AddUniversalMorphismFromImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79813E327CAD3D99">6.13-18 AddUniversalMorphismFromImageWithGivenImageObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7EB02EC487B586E5">6.14 <span class="Heading">Coimage</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F7BD6A18581671E">6.14-1 MorphismFromCoimageToImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8025749B78E12A2B">6.14-2 MorphismFromCoimageToImageWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FCCF6EA7BD56684">6.14-3 AddMorphismFromCoimageToImageWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D0C9B067F3E15B4">6.14-4 InverseMorphismFromCoimageToImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83C4E6FF7D1F1A9C">6.14-5 InverseMorphismFromCoimageToImageWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E25930683F94127">6.14-6 AddInverseMorphismFromCoimageToImageWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C594E227D8DB0ED">6.14-7 IsomorphismFromCoimageToCokernelOfKernel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80B45F4D7A7B96A4">6.14-8 AddIsomorphismFromCoimageToCokernelOfKernel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CF7E7E47A460E56">6.14-9 IsomorphismFromCokernelOfKernelToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9B059578AC42D6">6.14-10 AddIsomorphismFromCokernelOfKernelToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X866FB09E857D1846">6.14-11 Coimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X822D25177F2C1541">6.14-12 CoimageProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X788E717C7CCC6645">6.14-13 CoimageProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X845344847E9C3AD9">6.14-14 CoimageProjectionWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC763EA7D2D3164">6.14-15 AstrictionToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X805108BF8047357E">6.14-16 AstrictionToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BEDEDCC7818490B">6.14-17 AstrictionToCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D051DDF7A68BFFB">6.14-18 UniversalMorphismIntoCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9C6F3C7B929E5F">6.14-19 UniversalMorphismIntoCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A0027687B377BC2">6.14-20 AddCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85B54DD47C3E9682">6.14-21 AddCoimageProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X800CCC74801CFF29">6.14-22 AddCoimageProjectionWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X786682798320D413">6.14-23 AddAstrictionToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X820E0A8786AA718F">6.14-24 AddAstrictionToCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85DB30B982F6C564">6.14-25 AddUniversalMorphismIntoCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8617139A8651C194">6.14-26 AddUniversalMorphismIntoCoimageWithGivenCoimage</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X87DA77E487F951EF">6.15 <span class="Heading">Subobject Classifier</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D33F6ED85FC23BC">6.15-1 SubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DB6F01F7ACEDD5C">6.15-2 SubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82A2DD007FCA428A">6.15-3 TruthMorphismIntoSubobjectClassifierWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8055E0238533E4CC">6.15-4 TruthMorphismIntoSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BF5428B7FFA2222">6.15-5 TruthMorphismIntoSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E86ACBB830223AC">6.15-6 ClassifyingMorphismOfSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X874A09FD7A8FB706">6.15-7 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85AA59EA7D780BAB">6.15-8 SubobjectOfClassifyingMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F91B1417B647CBA">6.15-9 AddSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CB2F66B8022D23C">6.15-10 AddClassifyingMorphismOfSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EA4360E79D92811">6.15-11 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E01F89979FAA32C">6.15-12 AddTruthMorphismIntoSubobjectClassifierWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X814CF88C850C8077">6.15-13 AddSubobjectOfClassifyingMorphism</a></span>
 </div></div>
 </div>
 
@@ -1079,10 +1156,10 @@
 
 
 <ul>
-<li><p><span class="Math">\sum_{i=1}^{n} \iota_i \circ \pi_i = \mathrm{id}_S</span>,</p>
+<li><p><span class="Math">\sum_{i=1}^{n} \iota_i \circ \pi_i \sim_{S,S} \mathrm{id}_S</span>,</p>
 
 </li>
-<li><p><span class="Math">\pi_j \circ \iota_i = \delta_{i,j}</span>,</p>
+<li><p><span class="Math">\pi_j \circ \iota_i \sim_{S_i, S_j} \delta_{i,j}</span>,</p>
 
 </li>
 </ul>
@@ -1315,18 +1392,63 @@
 
 <p>The argument <span class="Math">M = ( ( \phi_{i,j}: A_i \rightarrow B_j )_{j = 1 \dots n} )_{i = 1 \dots m}</span> is a list of lists of morphisms. The output is the morphism <span class="Math">\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j</span> defined by the matrix <span class="Math">M</span>. The extra arguments <span class="Math">S = \bigoplus_{i=1}^{m}A_i</span> and <span class="Math">T = \bigoplus_{j=1}^n B_j</span> are source and target of the output, respectively. They must be provided in case <span class="Math">M</span> is an empty list or a list of empty lists.</p>
 
+<p><a id="X873C908279759A45" name="X873C908279759A45"></a></p>
+
+<h5>6.6-23 AddMorphismBetweenDirectSums</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismBetweenDirectSums</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismBetweenDirectSums</code>. <span class="Math">F: (\bigoplus_{i=1}^{m}A_i, M, \bigoplus_{j=1}^n B_j) \mapsto (\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j)</span>.</p>
+
 <p><a id="X7DCF225F79D1757C" name="X7DCF225F79D1757C"></a></p>
 
-<h5>6.6-23 MorphismBetweenDirectSumsOp</h5>
+<h5>6.6-24 MorphismBetweenDirectSumsOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismBetweenDirectSumsOp</code>( <var class="Arg">M</var>, <var class="Arg">m</var>, <var class="Arg">n</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)</span></p>
 
 <p>The arguments are a list <span class="Math">M = ( \phi_{1,1}, \phi_{1,2}, \dots, \phi_{1,n}, \phi_{2,1}, \dots, \phi_{m,n} )</span> of morphisms <span class="Math">\phi_{i,j}: A_i \rightarrow B_j</span>, an integer <span class="Math">m</span>, an integer <span class="Math">n</span>, and a method selection morphism. The output is the morphism <span class="Math">\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j</span> defined by the list <span class="Math">M</span> regarded as a matrix of dimension <span class="Math">m \times n</span>.</p>
 
+<p><a id="X7A3400D485D0C438" name="X7A3400D485D0C438"></a></p>
+
+<h5>6.6-25 ComponentOfMorphismIntoDirectSum</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ComponentOfMorphismIntoDirectSum</code>( <var class="Arg">alpha</var>, <var class="Arg">D</var>, <var class="Arg">k</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A, S_k)</span></p>
+
+<p>The arguments are a morphism <span class="Math">\alpha: A \rightarrow S</span>, a list <span class="Math">D = (S_1, \dots, S_n)</span> of objects with <span class="Math">S = \bigoplus_{j=1}^n S_j</span>, and an integer <span class="Math">k</span>. The output is the component morphism <span class="Math">A \rightarrow S_k</span>.</p>
+
+<p><a id="X7B71C4F4799263E6" name="X7B71C4F4799263E6"></a></p>
+
+<h5>6.6-26 ComponentOfMorphismFromDirectSum</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ComponentOfMorphismFromDirectSum</code>( <var class="Arg">alpha</var>, <var class="Arg">D</var>, <var class="Arg">k</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(S_k, A)</span></p>
+
+<p>The arguments are a morphism <span class="Math">\alpha: S \rightarrow A</span>, a list <span class="Math">D = (S_1, \dots, S_n)</span> of objects with <span class="Math">S = \bigoplus_{j=1}^n S_j</span>, and an integer <span class="Math">k</span>. The output is the component morphism <span class="Math">S_k \rightarrow A</span>.</p>
+
+<p><a id="X82B3F4A87CDF6F87" name="X82B3F4A87CDF6F87"></a></p>
+
+<h5>6.6-27 AddComponentOfMorphismIntoDirectSum</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddComponentOfMorphismIntoDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ComponentOfMorphismIntoDirectSum</code>. <span class="Math">F: (\alpha: A \rightarrow S,D,k) \mapsto (A \rightarrow S_k)</span>.</p>
+
+<p><a id="X7ABE523F82B2DB7C" name="X7ABE523F82B2DB7C"></a></p>
+
+<h5>6.6-28 AddComponentOfMorphismFromDirectSum</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddComponentOfMorphismFromDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ComponentOfMorphismFromDirectSum</code>. <span class="Math">F: (\alpha: S \rightarrow A,D,k) \mapsto (S_k \rightarrow A)</span>.</p>
+
 <p><a id="X7B87E0308677AB17" name="X7B87E0308677AB17"></a></p>
 
-<h5>6.6-24 AddProjectionInFactorOfDirectSum</h5>
+<h5>6.6-29 AddProjectionInFactorOfDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFactorOfDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1335,7 +1457,7 @@
 
 <p><a id="X81ACCDB081967CD3" name="X81ACCDB081967CD3"></a></p>
 
-<h5>6.6-25 AddProjectionInFactorOfDirectSumWithGivenDirectSum</h5>
+<h5>6.6-30 AddProjectionInFactorOfDirectSumWithGivenDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFactorOfDirectSumWithGivenDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1344,7 +1466,7 @@
 
 <p><a id="X845EB2F47C8FE49C" name="X845EB2F47C8FE49C"></a></p>
 
-<h5>6.6-26 AddInjectionOfCofactorOfDirectSum</h5>
+<h5>6.6-31 AddInjectionOfCofactorOfDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCofactorOfDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1353,7 +1475,7 @@
 
 <p><a id="X86A78CC2859E4382" name="X86A78CC2859E4382"></a></p>
 
-<h5>6.6-27 AddInjectionOfCofactorOfDirectSumWithGivenDirectSum</h5>
+<h5>6.6-32 AddInjectionOfCofactorOfDirectSumWithGivenDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCofactorOfDirectSumWithGivenDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1362,7 +1484,7 @@
 
 <p><a id="X7AA30E857A11AA2A" name="X7AA30E857A11AA2A"></a></p>
 
-<h5>6.6-28 AddUniversalMorphismIntoDirectSum</h5>
+<h5>6.6-33 AddUniversalMorphismIntoDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1371,7 +1493,7 @@
 
 <p><a id="X7E666F5683000D34" name="X7E666F5683000D34"></a></p>
 
-<h5>6.6-29 AddUniversalMorphismIntoDirectSumWithGivenDirectSum</h5>
+<h5>6.6-34 AddUniversalMorphismIntoDirectSumWithGivenDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoDirectSumWithGivenDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1380,7 +1502,7 @@
 
 <p><a id="X82AEA81280F0FE29" name="X82AEA81280F0FE29"></a></p>
 
-<h5>6.6-30 AddUniversalMorphismFromDirectSum</h5>
+<h5>6.6-35 AddUniversalMorphismFromDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1389,7 +1511,7 @@
 
 <p><a id="X81DB161779E15937" name="X81DB161779E15937"></a></p>
 
-<h5>6.6-31 AddUniversalMorphismFromDirectSumWithGivenDirectSum</h5>
+<h5>6.6-36 AddUniversalMorphismFromDirectSumWithGivenDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromDirectSumWithGivenDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1398,7 +1520,7 @@
 
 <p><a id="X79DA06C087D4BDF3" name="X79DA06C087D4BDF3"></a></p>
 
-<h5>6.6-32 AddIsomorphismFromDirectSumToDirectProduct</h5>
+<h5>6.6-37 AddIsomorphismFromDirectSumToDirectProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromDirectSumToDirectProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1407,7 +1529,7 @@
 
 <p><a id="X793FDA608055E5C9" name="X793FDA608055E5C9"></a></p>
 
-<h5>6.6-33 AddIsomorphismFromDirectProductToDirectSum</h5>
+<h5>6.6-38 AddIsomorphismFromDirectProductToDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromDirectProductToDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1416,7 +1538,7 @@
 
 <p><a id="X7D710CA282194DC7" name="X7D710CA282194DC7"></a></p>
 
-<h5>6.6-34 AddIsomorphismFromDirectSumToCoproduct</h5>
+<h5>6.6-39 AddIsomorphismFromDirectSumToCoproduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromDirectSumToCoproduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1425,7 +1547,7 @@
 
 <p><a id="X87C04FAA7F49427B" name="X87C04FAA7F49427B"></a></p>
 
-<h5>6.6-35 AddIsomorphismFromCoproductToDirectSum</h5>
+<h5>6.6-40 AddIsomorphismFromCoproductToDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCoproductToDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1434,7 +1556,7 @@
 
 <p><a id="X7CE460A37D8D468F" name="X7CE460A37D8D468F"></a></p>
 
-<h5>6.6-36 AddDirectSum</h5>
+<h5>6.6-41 AddDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1443,7 +1565,7 @@
 
 <p><a id="X7D1ADFE478EF9354" name="X7D1ADFE478EF9354"></a></p>
 
-<h5>6.6-37 DirectSumFunctorial</h5>
+<h5>6.6-42 DirectSumFunctorial</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigoplus_{i=1}^n S_i' )</span></p>
@@ -1452,7 +1574,7 @@
 
 <p><a id="X7B45854C80D79805" name="X7B45854C80D79805"></a></p>
 
-<h5>6.6-38 DirectSumFunctorialWithGivenDirectSums</h5>
+<h5>6.6-43 DirectSumFunctorialWithGivenDirectSums</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumFunctorialWithGivenDirectSums</code>( <var class="Arg">d_1</var>, <var class="Arg">L</var>, <var class="Arg">d_2</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( d_1, d_2 )</span></p>
@@ -1461,7 +1583,7 @@
 
 <p><a id="X829D88B6845FA373" name="X829D88B6845FA373"></a></p>
 
-<h5>6.6-39 AddDirectSumFunctorialWithGivenDirectSums</h5>
+<h5>6.6-44 AddDirectSumFunctorialWithGivenDirectSums</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectSumFunctorialWithGivenDirectSums</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1833,9 +1955,377 @@
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">DirectProductFunctorialWithGivenDirectProducts</code>. <span class="Math">F: ( \prod_{i=1}^n P_i, (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}, \prod_{i=1}^n P_i' ) \mapsto (\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i')</span></p>
 
+<p><a id="X878DF3E3794CA099" name="X878DF3E3794CA099"></a></p>
+
+<h5>6.8-16 AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \times (b \times c), (a \times b) \times c )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = a \times (b \times c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = (a \times b) \times c</span>. The output is the associator <span class="Math">\alpha_{a,(b,c)}: a \times (b \times c) \rightarrow (a \times b) \times c</span>.</p>
+
+<p><a id="X78D32B768749A2A6" name="X78D32B768749A2A6"></a></p>
+
+<h5>6.8-17 AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts</code>. <span class="Math">F: ( a \times (b \times c), a, b, c, (a \times b) \times c ) \mapsto \alpha_{a,(b,c)}</span>.</p>
+
+<p><a id="X8410D8C27CC34DC2" name="X8410D8C27CC34DC2"></a></p>
+
+<h5>6.8-18 AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \times b) \times c \rightarrow a \times (b \times c) )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = (a \times b) \times c</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = a \times (b \times c)</span>. The output is the associator <span class="Math">\alpha_{(a,b),c}: (a \times b) \times c \rightarrow a \times (b \times c)</span>.</p>
+
+<p><a id="X8488553481145F88" name="X8488553481145F88"></a></p>
+
+<h5>6.8-19 AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts</code>. <span class="Math">F: (( a \times b ) \times c, a, b, c, a \times (b \times c )) \mapsto \alpha_{(a,b),c}</span>.</p>
+
+<p><a id="X824FD8F786D2350D" name="X824FD8F786D2350D"></a></p>
+
+<h4>6.9 <span class="Heading">Equalizer</span></h4>
+
+<p>For a given list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span>, an equalizer of <span class="Math">D</span> consists of three parts:</p>
+
+
+<ul>
+<li><p>an object <span class="Math">E</span>,</p>
+
+</li>
+<li><p>a morphism <span class="Math">\iota: E \rightarrow A </span> such that <span class="Math">\beta_i \circ \iota \sim_{E, B} \beta_j \circ \iota</span> for all pairs <span class="Math">i,j</span>.</p>
+
+</li>
+<li><p>a dependent function <span class="Math">u</span> mapping each morphism <span class="Math">\tau = ( \tau: T \rightarrow A )</span> such that <span class="Math">\beta_i \circ \tau \sim_{T, B} \beta_j \circ \tau</span> for all pairs <span class="Math">i,j</span> to a morphism <span class="Math">u( \tau ): T \rightarrow E</span> such that <span class="Math">\iota \circ u( \tau ) \sim_{T, A} \tau</span>.</p>
+
+</li>
+</ul>
+<p>The triple <span class="Math">( E, \iota, u )</span> is called an <em>equalizer</em> of <span class="Math">D</span> if the morphisms <span class="Math">u( \tau )</span> are uniquely determined up to congruence of morphisms. We denote the object <span class="Math">E</span> of such a triple by <span class="Math">\mathrm{Equalizer}(D)</span>. We say that the morphism <span class="Math">u( \tau )</span> is induced by the <em>universal property of the equalizer</em>. <span class="Math">\\ </span> <span class="Math">\mathrm{Equalizer}</span> is a functorial operation. This means: For a second diagram <span class="Math">D' = (\beta_i': A' \rightarrow B')_{i = 1 \dots n}</span> and a natural morphism between equalizer diagrams (i.e., a collection of morphisms <span class="Math">\mu: A \rightarrow A'</span> and <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \mu \sim_{A,B'} \beta \circ \beta_i</span> for <span class="Math">i = 1, \dots, n</span>) we obtain a morphism <span class="Math">\mathrm{Equalizer}( D ) \rightarrow \mathrm{Equalizer}( D' )</span>.</p>
+
+<p><a id="X824FD8F786D2350D" name="X824FD8F786D2350D"></a></p>
+
+<h5>6.9-1 Equalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Equalizer</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>This is a convenience method. There are two different ways to use this method:</p>
+
+
+<ul>
+<li><p>The argument is a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span>.</p>
+
+</li>
+<li><p>The arguments are morphisms <span class="Math">\beta_1: A \rightarrow B, \dots, \beta_n: A \rightarrow B</span>.</p>
+
+</li>
+</ul>
+<p>The output is the equalizer <span class="Math">\mathrm{Equalizer}(D)</span>.</p>
+
+<p><a id="X789153A87A59EAFC" name="X789153A87A59EAFC"></a></p>
+
+<h5>6.9-2 EqualizerOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EqualizerOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span> and a morphism for method selection. The output is the equalizer <span class="Math">\mathrm{Equalizer}(D)</span>.</p>
+
+<p><a id="X80F6FFA483B8379B" name="X80F6FFA483B8379B"></a></p>
+
+<h5>6.9-3 EmbeddingOfEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfEqualizer</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Equalizer}(D), A )</span></p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span>. The output is the equalizer embedding <span class="Math">\iota: \mathrm{Equalizer}(D) \rightarrow A</span>.</p>
+
+<p><a id="X7EC748A686F5BE47" name="X7EC748A686F5BE47"></a></p>
+
+<h5>6.9-4 EmbeddingOfEqualizerOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfEqualizerOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Equalizer}(D), A )</span></p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span>. and a morphism for method selection. The output is the equalizer embedding <span class="Math">\iota: \mathrm{Equalizer}(D) \rightarrow A</span>.</p>
+
+<p><a id="X810AA9C5787FC775" name="X810AA9C5787FC775"></a></p>
+
+<h5>6.9-5 EmbeddingOfEqualizerWithGivenEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfEqualizerWithGivenEqualizer</code>( <var class="Arg">D</var>, <var class="Arg">E</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( E, A )</span></p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span>, and an object <span class="Math">E = \mathrm{Equalizer}(D)</span>. The output is the equalizer embedding <span class="Math">\iota: E \rightarrow A</span>.</p>
+
+<p><a id="X85A615A183271DEF" name="X85A615A183271DEF"></a></p>
+
+<h5>6.9-6 UniversalMorphismIntoEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoEqualizer</code>( <var class="Arg">D</var>, <var class="Arg">tau</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( T, \mathrm{Equalizer}(D) )</span></p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span> and a morphism <span class="Math"> \tau: T \rightarrow A </span> such that <span class="Math">\beta_i \circ \tau \sim_{T, B} \beta_j \circ \tau</span> for all pairs <span class="Math">i,j</span>. The output is the morphism <span class="Math">u( \tau ): T \rightarrow \mathrm{Equalizer}(D)</span> given by the universal property of the equalizer.</p>
+
+<p><a id="X8174F411785A78AF" name="X8174F411785A78AF"></a></p>
+
+<h5>6.9-7 UniversalMorphismIntoEqualizerWithGivenEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoEqualizerWithGivenEqualizer</code>( <var class="Arg">D</var>, <var class="Arg">tau</var>, <var class="Arg">E</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( T, E )</span></p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span>, a morphism <span class="Math">\tau: T \rightarrow A )</span> such that <span class="Math">\beta_i \circ \tau \sim_{T, B} \beta_j \circ \tau</span> for all pairs <span class="Math">i,j</span>, and an object <span class="Math">E = \mathrm{Equalizer}(D)</span>. The output is the morphism <span class="Math">u( \tau ): T \rightarrow E</span> given by the universal property of the equalizer.</p>
+
+<p><a id="X8708C28287172ED7" name="X8708C28287172ED7"></a></p>
+
+<h5>6.9-8 AddEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">Equalizer</code>. <span class="Math">F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n} ) \mapsto E</span></p>
+
+<p><a id="X86275A2F7EF2A472" name="X86275A2F7EF2A472"></a></p>
+
+<h5>6.9-9 AddEmbeddingOfEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfEqualizer</code>. <span class="Math">F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \iota</span></p>
+
+<p><a id="X8346BE927EB0C95B" name="X8346BE927EB0C95B"></a></p>
+
+<h5>6.9-10 AddEmbeddingOfEqualizerWithGivenEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfEqualizerWithGivenEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfEqualizerWithGivenEqualizer</code>. <span class="Math">F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n},E ) \mapsto \iota</span></p>
+
+<p><a id="X814FACA47A759C7A" name="X814FACA47A759C7A"></a></p>
+
+<h5>6.9-11 AddUniversalMorphismIntoEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismIntoEqualizer</code>. <span class="Math">F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)</span></p>
+
+<p><a id="X872A26F678D6989B" name="X872A26F678D6989B"></a></p>
+
+<h5>6.9-12 AddUniversalMorphismIntoEqualizerWithGivenEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoEqualizerWithGivenEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismIntoEqualizerWithGivenEqualizer</code>. <span class="Math">F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \tau, E ) \mapsto u(\tau)</span></p>
+
+<p><a id="X820667898568A639" name="X820667898568A639"></a></p>
+
+<h5>6.9-13 EqualizerFunctorial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EqualizerFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ))</span></p>
+
+<p>The argument is a triple <span class="Math">L = ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \mu: A \rightarrow A', (\beta_i': A' \rightarrow B')_{i = 1 \dots n} )</span> with morphisms <span class="Math">\beta_i</span>, <span class="Math">\mu</span> and <span class="Math">\beta_i'</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \mu \sim_{A,B'} \beta \circ \beta_i</span> for <span class="Math">i = 1, \dots, n</span>. The output is the morphism <span class="Math">\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} )</span> given by the functorality of the equalizer.</p>
+
+<p><a id="X8403EC6F849FE118" name="X8403EC6F849FE118"></a></p>
+
+<h5>6.9-14 EqualizerFunctorialWithGivenEqualizers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EqualizerFunctorialWithGivenEqualizers</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
+
+<p>The arguments are an object <span class="Math">s = \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} )</span>, a triple <span class="Math">L = ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \mu: A \rightarrow A', (\beta_i': A' \rightarrow B')_{i = 1 \dots n} )</span> with morphisms <span class="Math">\beta_i</span>, <span class="Math">\mu</span> and <span class="Math">\beta_i'</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \mu \sim_{A,B'} \beta \circ \beta_i</span> for <span class="Math">i = 1, \dots, n</span>, and an object <span class="Math">r = \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} )</span>. The output is the morphism <span class="Math">s \rightarrow r</span> given by the functorality of the equalizer.</p>
+
+<p><a id="X819700097DE622A4" name="X819700097DE622A4"></a></p>
+
+<h5>6.9-15 AddEqualizerFunctorialWithGivenEqualizers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEqualizerFunctorialWithGivenEqualizers</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EqualizerFunctorialWithGivenEqualizers</code>. <span class="Math">F: ( \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), ( ( \beta_i: A \rightarrow B )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': A' \rightarrow B' )_{i = 1 \dots n} ), \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm {Equalizer}( ( \beta_i' )_{i=1 \dots n} ) )</span></p>
+
+<p><a id="X7BA8F7BD793CC288" name="X7BA8F7BD793CC288"></a></p>
+
+<h4>6.10 <span class="Heading">Coequalizer</span></h4>
+
+<p>For a given list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span>, a coequalizer of <span class="Math">D</span> consists of three parts:</p>
+
+
+<ul>
+<li><p>an object <span class="Math">C</span>,</p>
+
+</li>
+<li><p>a morphism <span class="Math">\pi: A \rightarrow C </span> such that <span class="Math">\pi \circ \beta_i \sim_{B,C} \pi \circ \beta_j</span> for all pairs <span class="Math">i,j</span>,</p>
+
+</li>
+<li><p>a dependent function <span class="Math">u</span> mapping the morphism <span class="Math">\tau: A \rightarrow T </span> such that <span class="Math">\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j</span> to a morphism <span class="Math">u( \tau ): C \rightarrow T</span> such that <span class="Math">u( \tau ) \circ \pi \sim_{A, T} \tau</span>.</p>
+
+</li>
+</ul>
+<p>The triple <span class="Math">( C, \pi, u )</span> is called a <em>coequalizer</em> of <span class="Math">D</span> if the morphisms <span class="Math">u( \tau )</span> are uniquely determined up to congruence of morphisms. We denote the object <span class="Math">C</span> of such a triple by <span class="Math">\mathrm{Coequalizer}(D)</span>. We say that the morphism <span class="Math">u( \tau )</span> is induced by the <em>universal property of the coequalizer</em>. <span class="Math">\\ </span> <span class="Math">\mathrm{Coequalizer}</span> is a functorial operation. This means: For a second diagram <span class="Math">D' = (\beta_i': B' \rightarrow A')_{i = 1 \dots n}</span> and a natural morphism between coequalizer diagrams (i.e., a collection of morphisms <span class="Math">\mu: A \rightarrow A'</span> and <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i</span> for <span class="Math">i = 1, \dots n</span>) we obtain a morphism <span class="Math">\mathrm{Coequalizer}( D ) \rightarrow \mathrm{Coequalizer}( D' )</span>.</p>
+
+<p><a id="X7BA8F7BD793CC288" name="X7BA8F7BD793CC288"></a></p>
+
+<h5>6.10-1 Coequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Coequalizer</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>This is a convenience method. There are two different ways to use this method:</p>
+
+
+<ul>
+<li><p>The argument is a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span>.</p>
+
+</li>
+<li><p>The arguments are morphisms <span class="Math">\beta_1: B \rightarrow A, \dots, \beta_n: B \rightarrow A</span>.</p>
+
+</li>
+</ul>
+<p>The output is the coequalizer <span class="Math">\mathrm{Coequalizer}(D)</span>.</p>
+
+<p><a id="X802E1E397897BE9A" name="X802E1E397897BE9A"></a></p>
+
+<h5>6.10-2 CoequalizerOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoequalizerOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span> and a morphism for method selection. The output is the coequalizer <span class="Math">\mathrm{Coequalizer}(D)</span>.</p>
+
+<p><a id="X7EF42FC481100977" name="X7EF42FC481100977"></a></p>
+
+<h5>6.10-3 ProjectionOntoCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionOntoCoequalizer</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( A, \mathrm{Coequalizer}( D ) )</span>.</p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span>. The output is the projection <span class="Math">\pi: A \rightarrow \mathrm{Coequalizer}( D )</span>.</p>
+
+<p><a id="X8484120781FF21CC" name="X8484120781FF21CC"></a></p>
+
+<h5>6.10-4 ProjectionOntoCoequalizerOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionOntoCoequalizerOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( A, \mathrm{Coequalizer}( D ) )</span>.</p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span>, and a morphism for method selection. The output is the projection <span class="Math">\pi: A \rightarrow \mathrm{Coequalizer}( D )</span>.</p>
+
+<p><a id="X7DA261DF7D3D1961" name="X7DA261DF7D3D1961"></a></p>
+
+<h5>6.10-5 ProjectionOntoCoequalizerWithGivenCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionOntoCoequalizerWithGivenCoequalizer</code>( <var class="Arg">D</var>, <var class="Arg">C</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( A, C )</span>.</p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span>, and an object <span class="Math">C = \mathrm{Coequalizer}(D)</span>. The output is the projection <span class="Math">\pi: A \rightarrow C</span>.</p>
+
+<p><a id="X7EB9639F78149BF3" name="X7EB9639F78149BF3"></a></p>
+
+<h5>6.10-6 UniversalMorphismFromCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromCoequalizer</code>( <var class="Arg">D</var>, <var class="Arg">tau</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coequalizer}(D), T )</span></p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span> and a morphism <span class="Math">\tau: A \rightarrow T </span> such that <span class="Math">\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j</span> for all pairs <span class="Math">i,j</span>. The output is the morphism <span class="Math">u( \tau ): \mathrm{Coequalizer}(D) \rightarrow T</span> given by the universal property of the coequalizer.</p>
+
+<p><a id="X84AD305E7AB82B76" name="X84AD305E7AB82B76"></a></p>
+
+<h5>6.10-7 UniversalMorphismFromCoequalizerWithGivenCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromCoequalizerWithGivenCoequalizer</code>( <var class="Arg">D</var>, <var class="Arg">tau</var>, <var class="Arg">C</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( C, T )</span></p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span>, a morphism <span class="Math">\tau: A \rightarrow T </span> such that <span class="Math">\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j</span>, and an object <span class="Math">C = \mathrm{Coequalizer}(D)</span>. The output is the morphism <span class="Math">u( \tau ): C \rightarrow T</span> given by the universal property of the coequalizer.</p>
+
+<p><a id="X854D668E7F7AE192" name="X854D668E7F7AE192"></a></p>
+
+<h5>6.10-8 AddCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">Coequalizer</code>. <span class="Math">F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n} ) \mapsto C</span></p>
+
+<p><a id="X7C76BED4827D9C28" name="X7C76BED4827D9C28"></a></p>
+
+<h5>6.10-9 AddProjectionOntoCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOntoCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ProjectionOntoCoequalizer</code>. <span class="Math">F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, k ) \mapsto \pi</span></p>
+
+<p><a id="X8691E0FA7BF900F5" name="X8691E0FA7BF900F5"></a></p>
+
+<h5>6.10-10 AddProjectionOntoCoequalizerWithGivenCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOntoCoequalizerWithGivenCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ProjectionOntoCoequalizerWithGivenCoequalizer</code>. <span class="Math">F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, C) \mapsto \pi</span></p>
+
+<p><a id="X82B3F52779407E2F" name="X82B3F52779407E2F"></a></p>
+
+<h5>6.10-11 AddUniversalMorphismFromCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismFromCoequalizer</code>. <span class="Math">F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)</span></p>
+
+<p><a id="X7F27613984BEA3BB" name="X7F27613984BEA3BB"></a></p>
+
+<h5>6.10-12 AddUniversalMorphismFromCoequalizerWithGivenCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromCoequalizerWithGivenCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismFromCoequalizerWithGivenCoequalizer</code>. <span class="Math">F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, \tau, C ) \mapsto u(\tau)</span></p>
+
+<p><a id="X7DFAE360842E610B" name="X7DFAE360842E610B"></a></p>
+
+<h5>6.10-13 CoequalizerFunctorial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoequalizerFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Coequalizer}( ( \beta_i )_{i=1 \dots n} ), \mathrm{Coequalizer}( ( \beta_i' )_{i=1 \dots n} ))</span></p>
+
+<p>The argument is a triple <span class="Math">L = ( ( \beta_i: B \rightarrow A)_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n} )</span> with morphisms <span class="Math">\beta_i</span>, <span class="Math">\mu</span> and <span class="Math">\beta_i'</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i</span> for <span class="Math">i = 1, \dots n</span>. The output is the morphism <span class="Math">\mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n )</span> given by the functorality of the coequalizer.</p>
+
+<p><a id="X8123A5EC858F62CA" name="X8123A5EC858F62CA"></a></p>
+
+<h5>6.10-14 CoequalizerFunctorialWithGivenCoequalizers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoequalizerFunctorialWithGivenCoequalizers</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
+
+<p>The arguments are an object <span class="Math">s = \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n )</span>, a triple <span class="Math">L = ( ( \beta_i: B \rightarrow A )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n} )</span> with morphisms <span class="Math">\beta_i</span>, <span class="Math">\mu</span> and <span class="Math">\beta_i'</span> such that there exists a morphism <span class="Math">\beta: B \rightarrow B'</span> such that <span class="Math">\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i</span> for <span class="Math">i = 1, \dots n</span>, and an object <span class="Math">r = \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n )</span>. The output is the morphism <span class="Math">s \rightarrow r</span> given by the functorality of the coequalizer.</p>
+
+<p><a id="X784EE97C7CBD86AE" name="X784EE97C7CBD86AE"></a></p>
+
+<h5>6.10-15 AddCoequalizerFunctorialWithGivenCoequalizers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoequalizerFunctorialWithGivenCoequalizers</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoequalizerFunctorialWithGivenCoequalizers</code>. <span class="Math">F: ( \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ), ( ( \beta_i: B \rightarrow A )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n} ), \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) )</span></p>
+
 <p><a id="X7C5C7D847A89D79C" name="X7C5C7D847A89D79C"></a></p>
 
-<h4>6.9 <span class="Heading">Fiber Product</span></h4>
+<h4>6.11 <span class="Heading">Fiber Product</span></h4>
 
 <p>For a given list of morphisms <span class="Math">D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}</span>, a fiber product of <span class="Math">D</span> consists of three parts:</p>
 
@@ -1855,7 +2345,7 @@
 
 <p><a id="X79C946837899FDBF" name="X79C946837899FDBF"></a></p>
 
-<h5>6.9-1 IsomorphismFromFiberProductToKernelOfDiagonalDifference</h5>
+<h5>6.11-1 IsomorphismFromFiberProductToKernelOfDiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromFiberProductToKernelOfDiagonalDifference</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)</span></p>
@@ -1864,7 +2354,7 @@
 
 <p><a id="X7B0F26DF868F8B2D" name="X7B0F26DF868F8B2D"></a></p>
 
-<h5>6.9-2 IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp</h5>
+<h5>6.11-2 IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)</span></p>
@@ -1873,7 +2363,7 @@
 
 <p><a id="X82A6A64979DFFE43" name="X82A6A64979DFFE43"></a></p>
 
-<h5>6.9-3 AddIsomorphismFromFiberProductToKernelOfDiagonalDifference</h5>
+<h5>6.11-3 AddIsomorphismFromFiberProductToKernelOfDiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromFiberProductToKernelOfDiagonalDifference</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1882,7 +2372,7 @@
 
 <p><a id="X848F0B52844D782B" name="X848F0B52844D782B"></a></p>
 
-<h5>6.9-4 IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</h5>
+<h5>6.11-4 IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))</span></p>
@@ -1891,7 +2381,7 @@
 
 <p><a id="X7E0329477A5B0EB9" name="X7E0329477A5B0EB9"></a></p>
 
-<h5>6.9-5 IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp</h5>
+<h5>6.11-5 IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))</span></p>
@@ -1900,16 +2390,70 @@
 
 <p><a id="X7B255D3F7F8D0846" name="X7B255D3F7F8D0846"></a></p>
 
-<h5>6.9-6 AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</h5>
+<h5>6.11-6 AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</code>. <span class="Math">F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \Delta \rightarrow \mathrm{FiberProduct}(D)</span></p>
 
+<p><a id="X7DAB395584678429" name="X7DAB395584678429"></a></p>
+
+<h5>6.11-7 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)</span></p>
+
+<p>The argument is a list of morphisms <span class="Math">D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">\mathrm{FiberProduct}(D) \rightarrow \Delta</span>, where <span class="Math">\Delta</span> denotes the equalizer of the product diagram of the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X8730D4A87B1AA997" name="X8730D4A87B1AA997"></a></p>
+
+<h5>6.11-8 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)</span></p>
+
+<p>The arguments are a list of morphisms <span class="Math">D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}</span> and a morphism for method selection. The output is a morphism <span class="Math">\mathrm{FiberProduct}(D) \rightarrow \Delta</span>, where <span class="Math">\Delta</span> denotes the equalizer of the product diagram of the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X7FF20AFE7CE85AF5" name="X7FF20AFE7CE85AF5"></a></p>
+
+<h5>6.11-9 AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</code>. <span class="Math">F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \Delta</span></p>
+
+<p><a id="X8190FBB47DB6307D" name="X8190FBB47DB6307D"></a></p>
+
+<h5>6.11-10 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))</span></p>
+
+<p>The argument is a list of morphisms <span class="Math">D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">\Delta \rightarrow \mathrm{FiberProduct}(D)</span>, where <span class="Math">\Delta</span> denotes the equalizer of the product diagram of the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X86ED0D4682CB1DC3" name="X86ED0D4682CB1DC3"></a></p>
+
+<h5>6.11-11 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))</span></p>
+
+<p>The argument is a list of morphisms <span class="Math">D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}</span> and a morphism for method selection. The output is a morphism <span class="Math">\Delta \rightarrow \mathrm{FiberProduct}(D)</span>, where <span class="Math">\Delta</span> denotes the equalizer of the product diagram of the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X83D3BDAF7BFBF924" name="X83D3BDAF7BFBF924"></a></p>
+
+<h5>6.11-12 AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</code>. <span class="Math">F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \Delta \rightarrow \mathrm{FiberProduct}(D)</span></p>
+
 <p><a id="X7E17BF518268C33A" name="X7E17BF518268C33A"></a></p>
 
-<h5>6.9-7 DirectSumDiagonalDifference</h5>
+<h5>6.11-13 DirectSumDiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumDiagonalDifference</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \bigoplus_{i=1}^n P_i, B )</span></p>
@@ -1918,7 +2462,7 @@
 
 <p><a id="X866CDC8A842CC21C" name="X866CDC8A842CC21C"></a></p>
 
-<h5>6.9-8 DirectSumDiagonalDifferenceOp</h5>
+<h5>6.11-14 DirectSumDiagonalDifferenceOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumDiagonalDifferenceOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \bigoplus_{i=1}^n P_i, B )</span></p>
@@ -1927,7 +2471,7 @@
 
 <p><a id="X842E4433870BE980" name="X842E4433870BE980"></a></p>
 
-<h5>6.9-9 AddDirectSumDiagonalDifference</h5>
+<h5>6.11-15 AddDirectSumDiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectSumDiagonalDifference</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1936,7 +2480,7 @@
 
 <p><a id="X7919AF7486FA42C5" name="X7919AF7486FA42C5"></a></p>
 
-<h5>6.9-10 FiberProductEmbeddingInDirectSum</h5>
+<h5>6.11-16 FiberProductEmbeddingInDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiberProductEmbeddingInDirectSum</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{FiberProduct}(D), \bigoplus_{i=1}^n P_i )</span></p>
@@ -1945,7 +2489,7 @@
 
 <p><a id="X803207BC84DFDACA" name="X803207BC84DFDACA"></a></p>
 
-<h5>6.9-11 FiberProductEmbeddingInDirectSumOp</h5>
+<h5>6.11-17 FiberProductEmbeddingInDirectSumOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiberProductEmbeddingInDirectSumOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{FiberProduct}(D), \bigoplus_{i=1}^n P_i )</span></p>
@@ -1954,7 +2498,7 @@
 
 <p><a id="X8718265481B0270E" name="X8718265481B0270E"></a></p>
 
-<h5>6.9-12 AddFiberProductEmbeddingInDirectSum</h5>
+<h5>6.11-18 AddFiberProductEmbeddingInDirectSum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddFiberProductEmbeddingInDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1963,7 +2507,7 @@
 
 <p><a id="X7DE20941803BFBD9" name="X7DE20941803BFBD9"></a></p>
 
-<h5>6.9-13 FiberProduct</h5>
+<h5>6.11-19 FiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiberProduct</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
 <p>Returns: an object</p>
@@ -1983,7 +2527,7 @@
 
 <p><a id="X81E871B983FA6EE8" name="X81E871B983FA6EE8"></a></p>
 
-<h5>6.9-14 FiberProductOp</h5>
+<h5>6.11-20 FiberProductOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiberProductOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: an object</p>
@@ -1992,7 +2536,7 @@
 
 <p><a id="X8104B3717D3B646F" name="X8104B3717D3B646F"></a></p>
 
-<h5>6.9-15 ProjectionInFactorOfFiberProduct</h5>
+<h5>6.11-21 ProjectionInFactorOfFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionInFactorOfFiberProduct</code>( <var class="Arg">D</var>, <var class="Arg">k</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{FiberProduct}(D), P_k )</span></p>
@@ -2001,7 +2545,7 @@
 
 <p><a id="X809C05D883C1E31D" name="X809C05D883C1E31D"></a></p>
 
-<h5>6.9-16 ProjectionInFactorOfFiberProductOp</h5>
+<h5>6.11-22 ProjectionInFactorOfFiberProductOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionInFactorOfFiberProductOp</code>( <var class="Arg">D</var>, <var class="Arg">k</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{FiberProduct}(D), P_k )</span></p>
@@ -2010,7 +2554,7 @@
 
 <p><a id="X8085606A7B09071F" name="X8085606A7B09071F"></a></p>
 
-<h5>6.9-17 ProjectionInFactorOfFiberProductWithGivenFiberProduct</h5>
+<h5>6.11-23 ProjectionInFactorOfFiberProductWithGivenFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionInFactorOfFiberProductWithGivenFiberProduct</code>( <var class="Arg">D</var>, <var class="Arg">k</var>, <var class="Arg">P</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( P, P_k )</span></p>
@@ -2019,10 +2563,10 @@
 
 <p><a id="X79F3937679B61538" name="X79F3937679B61538"></a></p>
 
-<h5>6.9-18 UniversalMorphismIntoFiberProduct</h5>
+<h5>6.11-24 UniversalMorphismIntoFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoFiberProduct</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
-<p>This is a convenience method. There are three different ways to use this method:</p>
+<p>This is a convenience method. There are two different ways to use this method:</p>
 
 
 <ul>
@@ -2035,7 +2579,7 @@
 </ul>
 <p><a id="X83A406227DE6BC4D" name="X83A406227DE6BC4D"></a></p>
 
-<h5>6.9-19 UniversalMorphismIntoFiberProductOp</h5>
+<h5>6.11-25 UniversalMorphismIntoFiberProductOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoFiberProductOp</code>( <var class="Arg">D</var>, <var class="Arg">tau</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( T, \mathrm{FiberProduct}(D) )</span></p>
@@ -2044,7 +2588,7 @@
 
 <p><a id="X835D5D3578A3226D" name="X835D5D3578A3226D"></a></p>
 
-<h5>6.9-20 UniversalMorphismIntoFiberProductWithGivenFiberProduct</h5>
+<h5>6.11-26 UniversalMorphismIntoFiberProductWithGivenFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoFiberProductWithGivenFiberProduct</code>( <var class="Arg">D</var>, <var class="Arg">tau</var>, <var class="Arg">P</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( T, P )</span></p>
@@ -2053,7 +2597,7 @@
 
 <p><a id="X86B7F8B983B9B184" name="X86B7F8B983B9B184"></a></p>
 
-<h5>6.9-21 AddFiberProduct</h5>
+<h5>6.11-27 AddFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2062,7 +2606,7 @@
 
 <p><a id="X7BC4A40A8587EB82" name="X7BC4A40A8587EB82"></a></p>
 
-<h5>6.9-22 AddProjectionInFactorOfFiberProduct</h5>
+<h5>6.11-28 AddProjectionInFactorOfFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFactorOfFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2071,7 +2615,7 @@
 
 <p><a id="X822C988083A72B14" name="X822C988083A72B14"></a></p>
 
-<h5>6.9-23 AddProjectionInFactorOfFiberProductWithGivenFiberProduct</h5>
+<h5>6.11-29 AddProjectionInFactorOfFiberProductWithGivenFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFactorOfFiberProductWithGivenFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2080,7 +2624,7 @@
 
 <p><a id="X7F7446F882DF6DA5" name="X7F7446F882DF6DA5"></a></p>
 
-<h5>6.9-24 AddUniversalMorphismIntoFiberProduct</h5>
+<h5>6.11-30 AddUniversalMorphismIntoFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2089,7 +2633,7 @@
 
 <p><a id="X84C5017486990FB2" name="X84C5017486990FB2"></a></p>
 
-<h5>6.9-25 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct</h5>
+<h5>6.11-31 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoFiberProductWithGivenFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2098,7 +2642,7 @@
 
 <p><a id="X85B1887C822DA631" name="X85B1887C822DA631"></a></p>
 
-<h5>6.9-26 FiberProductFunctorial</h5>
+<h5>6.11-32 FiberProductFunctorial</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiberProductFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ))</span></p>
@@ -2107,7 +2651,7 @@
 
 <p><a id="X8250A0F1827BCD68" name="X8250A0F1827BCD68"></a></p>
 
-<h5>6.9-27 FiberProductFunctorialWithGivenFiberProducts</h5>
+<h5>6.11-33 FiberProductFunctorialWithGivenFiberProducts</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiberProductFunctorialWithGivenFiberProducts</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
@@ -2116,7 +2660,7 @@
 
 <p><a id="X85CCD05C7D3D6B7C" name="X85CCD05C7D3D6B7C"></a></p>
 
-<h5>6.9-28 AddFiberProductFunctorialWithGivenFiberProducts</h5>
+<h5>6.11-34 AddFiberProductFunctorialWithGivenFiberProducts</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddFiberProductFunctorialWithGivenFiberProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2125,7 +2669,7 @@
 
 <p><a id="X81A2D49D85923894" name="X81A2D49D85923894"></a></p>
 
-<h4>6.10 <span class="Heading">Pushout</span></h4>
+<h4>6.12 <span class="Heading">Pushout</span></h4>
 
 <p>For a given list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}</span>, a pushout of <span class="Math">D</span> consists of three parts:</p>
 
@@ -2145,7 +2689,7 @@
 
 <p><a id="X7DB5F4937D3FFB15" name="X7DB5F4937D3FFB15"></a></p>
 
-<h5>6.10-1 IsomorphismFromPushoutToCokernelOfDiagonalDifference</h5>
+<h5>6.12-1 IsomorphismFromPushoutToCokernelOfDiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromPushoutToCokernelOfDiagonalDifference</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)</span></p>
@@ -2154,7 +2698,7 @@
 
 <p><a id="X7B1FAA958491D7FC" name="X7B1FAA958491D7FC"></a></p>
 
-<h5>6.10-2 IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp</h5>
+<h5>6.12-2 IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)</span></p>
@@ -2163,7 +2707,7 @@
 
 <p><a id="X8639C412856D8860" name="X8639C412856D8860"></a></p>
 
-<h5>6.10-3 AddIsomorphismFromPushoutToCokernelOfDiagonalDifference</h5>
+<h5>6.12-3 AddIsomorphismFromPushoutToCokernelOfDiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromPushoutToCokernelOfDiagonalDifference</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2172,7 +2716,7 @@
 
 <p><a id="X7D9E5AEA7E6F0092" name="X7D9E5AEA7E6F0092"></a></p>
 
-<h5>6.10-4 IsomorphismFromCokernelOfDiagonalDifferenceToPushout</h5>
+<h5>6.12-4 IsomorphismFromCokernelOfDiagonalDifferenceToPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCokernelOfDiagonalDifferenceToPushout</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))</span></p>
@@ -2181,7 +2725,7 @@
 
 <p><a id="X7BC6642F87C12C7B" name="X7BC6642F87C12C7B"></a></p>
 
-<h5>6.10-5 IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp</h5>
+<h5>6.12-5 IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))</span></p>
@@ -2190,16 +2734,70 @@
 
 <p><a id="X811F965D7B9837F9" name="X811F965D7B9837F9"></a></p>
 
-<h5>6.10-6 AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout</h5>
+<h5>6.12-6 AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromCokernelOfDiagonalDifferenceToPushout</code>. <span class="Math">F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\Delta \rightarrow \mathrm{Pushout}(D))</span></p>
 
+<p><a id="X87C495A782BE3433" name="X87C495A782BE3433"></a></p>
+
+<h5>6.12-7 IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)</span></p>
+
+<p>The argument is a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">\mathrm{Pushout}(D) \rightarrow \Delta</span>, where <span class="Math">\Delta</span> denotes the coequalizer of the coproduct diagram of the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X7CD0505B7DC1BF6A" name="X7CD0505B7DC1BF6A"></a></p>
+
+<h5>6.12-8 IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)</span></p>
+
+<p>The argument is a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}</span> and a morphism for method selection. The output is a morphism <span class="Math">\mathrm{Pushout}(D) \rightarrow \Delta</span>, where <span class="Math">\Delta</span> denotes the coequalizer of the coproduct diagram of the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X7C757EA67A35147A" name="X7C757EA67A35147A"></a></p>
+
+<h5>6.12-9 AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</code>. <span class="Math">F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}(D) \rightarrow \Delta)</span></p>
+
+<p><a id="X7EAFDD727D94E932" name="X7EAFDD727D94E932"></a></p>
+
+<h5>6.12-10 IsomorphismFromCoequalizerOfCoproductDiagramToPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoequalizerOfCoproductDiagramToPushout</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))</span></p>
+
+<p>The argument is a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">\Delta \rightarrow \mathrm{Pushout}(D)</span>, where <span class="Math">\Delta</span> denotes the coequalizer of the coproduct diagram of the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X7B2C8CA482EB626B" name="X7B2C8CA482EB626B"></a></p>
+
+<h5>6.12-11 IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))</span></p>
+
+<p>The argument is a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}</span> and a morphism for method selection. The output is a morphism <span class="Math">\Delta \rightarrow \mathrm{Pushout}(D)</span>, where <span class="Math">\Delta</span> denotes the coequalizer of the coproduct diagram of the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X7B80534F79D74B95" name="X7B80534F79D74B95"></a></p>
+
+<h5>6.12-12 AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromCoequalizerOfCoproductDiagramToPushout</code>. <span class="Math">F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\Delta \rightarrow \mathrm{Pushout}(D))</span></p>
+
 <p><a id="X81DC4C1778CF1FD3" name="X81DC4C1778CF1FD3"></a></p>
 
-<h5>6.10-7 DirectSumCodiagonalDifference</h5>
+<h5>6.12-13 DirectSumCodiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumCodiagonalDifference</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(B, \bigoplus_{i=1}^n I_i)</span></p>
@@ -2208,7 +2806,7 @@
 
 <p><a id="X7CA4577F7D26C099" name="X7CA4577F7D26C099"></a></p>
 
-<h5>6.10-8 DirectSumCodiagonalDifferenceOp</h5>
+<h5>6.12-14 DirectSumCodiagonalDifferenceOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumCodiagonalDifferenceOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(B, \bigoplus_{i=1}^n I_i)</span></p>
@@ -2217,7 +2815,7 @@
 
 <p><a id="X84CF535682E444B6" name="X84CF535682E444B6"></a></p>
 
-<h5>6.10-9 AddDirectSumCodiagonalDifference</h5>
+<h5>6.12-15 AddDirectSumCodiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectSumCodiagonalDifference</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2226,7 +2824,7 @@
 
 <p><a id="X78450AD684E5746A" name="X78450AD684E5746A"></a></p>
 
-<h5>6.10-10 DirectSumProjectionInPushout</h5>
+<h5>6.12-16 DirectSumProjectionInPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumProjectionInPushout</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \bigoplus_{i=1}^n I_i, \mathrm{Pushout}(D) )</span></p>
@@ -2235,7 +2833,7 @@
 
 <p><a id="X8702BC0180D5AEFD" name="X8702BC0180D5AEFD"></a></p>
 
-<h5>6.10-11 DirectSumProjectionInPushoutOp</h5>
+<h5>6.12-17 DirectSumProjectionInPushoutOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumProjectionInPushoutOp</code>( <var class="Arg">D</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \bigoplus_{i=1}^n I_i, \mathrm{Pushout}(D) )</span></p>
@@ -2244,7 +2842,7 @@
 
 <p><a id="X84852B0980DF02AE" name="X84852B0980DF02AE"></a></p>
 
-<h5>6.10-12 AddDirectSumProjectionInPushout</h5>
+<h5>6.12-18 AddDirectSumProjectionInPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectSumProjectionInPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2253,7 +2851,7 @@
 
 <p><a id="X78E10D9E849FE214" name="X78E10D9E849FE214"></a></p>
 
-<h5>6.10-13 Pushout</h5>
+<h5>6.12-19 Pushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Pushout</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: an object</p>
@@ -2262,7 +2860,7 @@
 
 <p><a id="X78D93A2883C83CAC" name="X78D93A2883C83CAC"></a></p>
 
-<h5>6.10-14 Pushout</h5>
+<h5>6.12-20 Pushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Pushout</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: an object</p>
@@ -2271,7 +2869,7 @@
 
 <p><a id="X78BE08E284796495" name="X78BE08E284796495"></a></p>
 
-<h5>6.10-15 PushoutOp</h5>
+<h5>6.12-21 PushoutOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PushoutOp</code>( <var class="Arg">D</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: an object</p>
@@ -2280,7 +2878,7 @@
 
 <p><a id="X7CF12E527805752F" name="X7CF12E527805752F"></a></p>
 
-<h5>6.10-16 InjectionOfCofactorOfPushout</h5>
+<h5>6.12-22 InjectionOfCofactorOfPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InjectionOfCofactorOfPushout</code>( <var class="Arg">D</var>, <var class="Arg">k</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )</span>.</p>
@@ -2289,7 +2887,7 @@
 
 <p><a id="X7BF8D08E8253D61C" name="X7BF8D08E8253D61C"></a></p>
 
-<h5>6.10-17 InjectionOfCofactorOfPushoutOp</h5>
+<h5>6.12-23 InjectionOfCofactorOfPushoutOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InjectionOfCofactorOfPushoutOp</code>( <var class="Arg">D</var>, <var class="Arg">k</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )</span>.</p>
@@ -2298,7 +2896,7 @@
 
 <p><a id="X7E54DB957B5F9157" name="X7E54DB957B5F9157"></a></p>
 
-<h5>6.10-18 InjectionOfCofactorOfPushoutWithGivenPushout</h5>
+<h5>6.12-24 InjectionOfCofactorOfPushoutWithGivenPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InjectionOfCofactorOfPushoutWithGivenPushout</code>( <var class="Arg">D</var>, <var class="Arg">k</var>, <var class="Arg">I</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )</span>.</p>
@@ -2307,10 +2905,10 @@
 
 <p><a id="X82A1EFBA7E16FA63" name="X82A1EFBA7E16FA63"></a></p>
 
-<h5>6.10-19 UniversalMorphismFromPushout</h5>
+<h5>6.12-25 UniversalMorphismFromPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromPushout</code>( <var class="Arg">arg</var> )</td><td class="tdright">( function )</td></tr></table></div>
-<p>This is a convenience method. There are three different ways to use this method:</p>
+<p>This is a convenience method. There are two different ways to use this method:</p>
 
 
 <ul>
@@ -2323,7 +2921,7 @@
 </ul>
 <p><a id="X7DB773A47D22963E" name="X7DB773A47D22963E"></a></p>
 
-<h5>6.10-20 UniversalMorphismFromPushoutOp</h5>
+<h5>6.12-26 UniversalMorphismFromPushoutOp</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromPushoutOp</code>( <var class="Arg">D</var>, <var class="Arg">tau</var>, <var class="Arg">method_selection_morphism</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Pushout}(D), T )</span></p>
@@ -2332,7 +2930,7 @@
 
 <p><a id="X7A3830637BB1E7C6" name="X7A3830637BB1E7C6"></a></p>
 
-<h5>6.10-21 UniversalMorphismFromPushoutWithGivenPushout</h5>
+<h5>6.12-27 UniversalMorphismFromPushoutWithGivenPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromPushoutWithGivenPushout</code>( <var class="Arg">D</var>, <var class="Arg">tau</var>, <var class="Arg">I</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( I, T )</span></p>
@@ -2341,7 +2939,7 @@
 
 <p><a id="X78FDEE468742E573" name="X78FDEE468742E573"></a></p>
 
-<h5>6.10-22 AddPushout</h5>
+<h5>6.12-28 AddPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2350,7 +2948,7 @@
 
 <p><a id="X87ED0E87850C6D96" name="X87ED0E87850C6D96"></a></p>
 
-<h5>6.10-23 AddInjectionOfCofactorOfPushout</h5>
+<h5>6.12-29 AddInjectionOfCofactorOfPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCofactorOfPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2359,7 +2957,7 @@
 
 <p><a id="X8352461A796F9214" name="X8352461A796F9214"></a></p>
 
-<h5>6.10-24 AddInjectionOfCofactorOfPushoutWithGivenPushout</h5>
+<h5>6.12-30 AddInjectionOfCofactorOfPushoutWithGivenPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCofactorOfPushoutWithGivenPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2368,7 +2966,7 @@
 
 <p><a id="X7ACB31A479737723" name="X7ACB31A479737723"></a></p>
 
-<h5>6.10-25 AddUniversalMorphismFromPushout</h5>
+<h5>6.12-31 AddUniversalMorphismFromPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2377,7 +2975,7 @@
 
 <p><a id="X847BA99A851088A1" name="X847BA99A851088A1"></a></p>
 
-<h5>6.10-26 AddUniversalMorphismFromPushoutWithGivenPushout</h5>
+<h5>6.12-32 AddUniversalMorphismFromPushoutWithGivenPushout</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromPushoutWithGivenPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2386,7 +2984,7 @@
 
 <p><a id="X7BDB1CBF79D0D1D3" name="X7BDB1CBF79D0D1D3"></a></p>
 
-<h5>6.10-27 PushoutFunctorial</h5>
+<h5>6.12-33 PushoutFunctorial</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PushoutFunctorial</code>( <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n ), \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ))</span></p>
@@ -2395,7 +2993,7 @@
 
 <p><a id="X7805E8767D5729C0" name="X7805E8767D5729C0"></a></p>
 
-<h5>6.10-28 PushoutFunctorialWithGivenPushouts</h5>
+<h5>6.12-34 PushoutFunctorialWithGivenPushouts</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PushoutFunctorialWithGivenPushouts</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
@@ -2404,7 +3002,7 @@
 
 <p><a id="X810036A887D287AC" name="X810036A887D287AC"></a></p>
 
-<h5>6.10-29 AddPushoutFunctorialWithGivenPushouts</h5>
+<h5>6.12-35 AddPushoutFunctorialWithGivenPushouts</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPushoutFunctorialWithGivenPushouts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2413,7 +3011,7 @@
 
 <p><a id="X87F4D35A826599C6" name="X87F4D35A826599C6"></a></p>
 
-<h4>6.11 <span class="Heading">Image</span></h4>
+<h4>6.13 <span class="Heading">Image</span></h4>
 
 <p>For a given morphism <span class="Math">\alpha: A \rightarrow B</span>, an image of <span class="Math">\alpha</span> consists of four parts:</p>
 
@@ -2436,7 +3034,7 @@
 
 <p><a id="X80490BD785CA695A" name="X80490BD785CA695A"></a></p>
 
-<h5>6.11-1 IsomorphismFromImageObjectToKernelOfCokernel</h5>
+<h5>6.13-1 IsomorphismFromImageObjectToKernelOfCokernel</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromImageObjectToKernelOfCokernel</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{im}(\alpha), \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) )</span></p>
@@ -2445,7 +3043,7 @@
 
 <p><a id="X7B09757B8411AD52" name="X7B09757B8411AD52"></a></p>
 
-<h5>6.11-2 AddIsomorphismFromImageObjectToKernelOfCokernel</h5>
+<h5>6.13-2 AddIsomorphismFromImageObjectToKernelOfCokernel</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromImageObjectToKernelOfCokernel</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2454,7 +3052,7 @@
 
 <p><a id="X7CAA3342865B456B" name="X7CAA3342865B456B"></a></p>
 
-<h5>6.11-3 IsomorphismFromKernelOfCokernelToImageObject</h5>
+<h5>6.13-3 IsomorphismFromKernelOfCokernelToImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromKernelOfCokernelToImageObject</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ), \mathrm{im}(\alpha) )</span></p>
@@ -2463,7 +3061,7 @@
 
 <p><a id="X78A3EEFB843C5067" name="X78A3EEFB843C5067"></a></p>
 
-<h5>6.11-4 AddIsomorphismFromKernelOfCokernelToImageObject</h5>
+<h5>6.13-4 AddIsomorphismFromKernelOfCokernelToImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromKernelOfCokernelToImageObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2472,7 +3070,7 @@
 
 <p><a id="X83B457FF79AC5AC6" name="X83B457FF79AC5AC6"></a></p>
 
-<h5>6.11-5 ImageObject</h5>
+<h5>6.13-5 ImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageObject</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: an object</p>
@@ -2481,7 +3079,7 @@
 
 <p><a id="X86CEE2D1876EC2B9" name="X86CEE2D1876EC2B9"></a></p>
 
-<h5>6.11-6 ImageEmbedding</h5>
+<h5>6.13-6 ImageEmbedding</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageEmbedding</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{im}(\alpha), B)</span></p>
@@ -2490,7 +3088,7 @@
 
 <p><a id="X82991FA17B460744" name="X82991FA17B460744"></a></p>
 
-<h5>6.11-7 ImageEmbeddingWithGivenImageObject</h5>
+<h5>6.13-7 ImageEmbeddingWithGivenImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageEmbeddingWithGivenImageObject</code>( <var class="Arg">alpha</var>, <var class="Arg">I</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(I, B)</span></p>
@@ -2499,7 +3097,7 @@
 
 <p><a id="X8144201987A27661" name="X8144201987A27661"></a></p>
 
-<h5>6.11-8 CoastrictionToImage</h5>
+<h5>6.13-8 CoastrictionToImage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoastrictionToImage</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A, \mathrm{im}( \alpha ))</span></p>
@@ -2508,7 +3106,7 @@
 
 <p><a id="X78BE36EA83BEF493" name="X78BE36EA83BEF493"></a></p>
 
-<h5>6.11-9 CoastrictionToImageWithGivenImageObject</h5>
+<h5>6.13-9 CoastrictionToImageWithGivenImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoastrictionToImageWithGivenImageObject</code>( <var class="Arg">alpha</var>, <var class="Arg">I</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A, I)</span></p>
@@ -2517,7 +3115,7 @@
 
 <p><a id="X7989B1FB811D2033" name="X7989B1FB811D2033"></a></p>
 
-<h5>6.11-10 UniversalMorphismFromImage</h5>
+<h5>6.13-10 UniversalMorphismFromImage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromImage</code>( <var class="Arg">alpha</var>, <var class="Arg">tau</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{im}(\alpha), T)</span></p>
@@ -2526,7 +3124,7 @@
 
 <p><a id="X86E557097CFB4430" name="X86E557097CFB4430"></a></p>
 
-<h5>6.11-11 UniversalMorphismFromImageWithGivenImageObject</h5>
+<h5>6.13-11 UniversalMorphismFromImageWithGivenImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromImageWithGivenImageObject</code>( <var class="Arg">alpha</var>, <var class="Arg">tau</var>, <var class="Arg">I</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(I, T)</span></p>
@@ -2535,7 +3133,7 @@
 
 <p><a id="X7CA61123868B51B2" name="X7CA61123868B51B2"></a></p>
 
-<h5>6.11-12 AddImageObject</h5>
+<h5>6.13-12 AddImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddImageObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2544,7 +3142,7 @@
 
 <p><a id="X796EDCCD7A729E12" name="X796EDCCD7A729E12"></a></p>
 
-<h5>6.11-13 AddImageEmbedding</h5>
+<h5>6.13-13 AddImageEmbedding</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddImageEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2553,7 +3151,7 @@
 
 <p><a id="X785393EB7C27451E" name="X785393EB7C27451E"></a></p>
 
-<h5>6.11-14 AddImageEmbeddingWithGivenImageObject</h5>
+<h5>6.13-14 AddImageEmbeddingWithGivenImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddImageEmbeddingWithGivenImageObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2562,7 +3160,7 @@
 
 <p><a id="X78C7D6E582FD41E9" name="X78C7D6E582FD41E9"></a></p>
 
-<h5>6.11-15 AddCoastrictionToImage</h5>
+<h5>6.13-15 AddCoastrictionToImage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoastrictionToImage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2571,7 +3169,7 @@
 
 <p><a id="X8077FB7485FCD5E6" name="X8077FB7485FCD5E6"></a></p>
 
-<h5>6.11-16 AddCoastrictionToImageWithGivenImageObject</h5>
+<h5>6.13-16 AddCoastrictionToImageWithGivenImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoastrictionToImageWithGivenImageObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2580,7 +3178,7 @@
 
 <p><a id="X7BE632048014DB7F" name="X7BE632048014DB7F"></a></p>
 
-<h5>6.11-17 AddUniversalMorphismFromImage</h5>
+<h5>6.13-17 AddUniversalMorphismFromImage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromImage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2589,7 +3187,7 @@
 
 <p><a id="X79813E327CAD3D99" name="X79813E327CAD3D99"></a></p>
 
-<h5>6.11-18 AddUniversalMorphismFromImageWithGivenImageObject</h5>
+<h5>6.13-18 AddUniversalMorphismFromImageWithGivenImageObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromImageWithGivenImageObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2598,7 +3196,7 @@
 
 <p><a id="X7EB02EC487B586E5" name="X7EB02EC487B586E5"></a></p>
 
-<h4>6.12 <span class="Heading">Coimage</span></h4>
+<h4>6.14 <span class="Heading">Coimage</span></h4>
 
 <p>For a given morphism <span class="Math">\alpha: A \rightarrow B</span>, a coimage of <span class="Math">\alpha</span> consists of four parts:</p>
 
@@ -2621,7 +3219,7 @@
 
 <p><a id="X7F7BD6A18581671E" name="X7F7BD6A18581671E"></a></p>
 
-<h5>6.12-1 MorphismFromCoimageToImage</h5>
+<h5>6.14-1 MorphismFromCoimageToImage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCoimageToImage</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{coim}(\alpha), \mathrm{im}(\alpha))</span></p>
@@ -2630,7 +3228,7 @@
 
 <p><a id="X8025749B78E12A2B" name="X8025749B78E12A2B"></a></p>
 
-<h5>6.12-2 MorphismFromCoimageToImageWithGivenObjects</h5>
+<h5>6.14-2 MorphismFromCoimageToImageWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCoimageToImageWithGivenObjects</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(C,I)</span></p>
@@ -2639,7 +3237,7 @@
 
 <p><a id="X7FCCF6EA7BD56684" name="X7FCCF6EA7BD56684"></a></p>
 
-<h5>6.12-3 AddMorphismFromCoimageToImageWithGivenObjects</h5>
+<h5>6.14-3 AddMorphismFromCoimageToImageWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromCoimageToImageWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2648,7 +3246,7 @@
 
 <p><a id="X7D0C9B067F3E15B4" name="X7D0C9B067F3E15B4"></a></p>
 
-<h5>6.12-4 InverseMorphismFromCoimageToImage</h5>
+<h5>6.14-4 InverseMorphismFromCoimageToImage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InverseMorphismFromCoimageToImage</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{im}(\alpha), \mathrm{coim}(\alpha))</span></p>
@@ -2657,7 +3255,7 @@
 
 <p><a id="X83C4E6FF7D1F1A9C" name="X83C4E6FF7D1F1A9C"></a></p>
 
-<h5>6.12-5 InverseMorphismFromCoimageToImageWithGivenObjects</h5>
+<h5>6.14-5 InverseMorphismFromCoimageToImageWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InverseMorphismFromCoimageToImageWithGivenObjects</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(I,C)</span></p>
@@ -2666,7 +3264,7 @@
 
 <p><a id="X7E25930683F94127" name="X7E25930683F94127"></a></p>
 
-<h5>6.12-6 AddInverseMorphismFromCoimageToImageWithGivenObjects</h5>
+<h5>6.14-6 AddInverseMorphismFromCoimageToImageWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInverseMorphismFromCoimageToImageWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2675,7 +3273,7 @@
 
 <p><a id="X7C594E227D8DB0ED" name="X7C594E227D8DB0ED"></a></p>
 
-<h5>6.12-7 IsomorphismFromCoimageToCokernelOfKernel</h5>
+<h5>6.14-7 IsomorphismFromCoimageToCokernelOfKernel</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoimageToCokernelOfKernel</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{coim}( \alpha ), \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) )</span>.</p>
@@ -2684,7 +3282,7 @@
 
 <p><a id="X80B45F4D7A7B96A4" name="X80B45F4D7A7B96A4"></a></p>
 
-<h5>6.12-8 AddIsomorphismFromCoimageToCokernelOfKernel</h5>
+<h5>6.14-8 AddIsomorphismFromCoimageToCokernelOfKernel</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCoimageToCokernelOfKernel</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2693,7 +3291,7 @@
 
 <p><a id="X7CF7E7E47A460E56" name="X7CF7E7E47A460E56"></a></p>
 
-<h5>6.12-9 IsomorphismFromCokernelOfKernelToCoimage</h5>
+<h5>6.14-9 IsomorphismFromCokernelOfKernelToCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCokernelOfKernelToCoimage</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ), \mathrm{coim}( \alpha ) )</span>.</p>
@@ -2702,7 +3300,7 @@
 
 <p><a id="X7D9B059578AC42D6" name="X7D9B059578AC42D6"></a></p>
 
-<h5>6.12-10 AddIsomorphismFromCokernelOfKernelToCoimage</h5>
+<h5>6.14-10 AddIsomorphismFromCokernelOfKernelToCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCokernelOfKernelToCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2711,7 +3309,7 @@
 
 <p><a id="X866FB09E857D1846" name="X866FB09E857D1846"></a></p>
 
-<h5>6.12-11 Coimage</h5>
+<h5>6.14-11 Coimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Coimage</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: an object</p>
@@ -2720,7 +3318,7 @@
 
 <p><a id="X822D25177F2C1541" name="X822D25177F2C1541"></a></p>
 
-<h5>6.12-12 CoimageProjection</h5>
+<h5>6.14-12 CoimageProjection</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageProjection</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A, C)</span></p>
@@ -2729,7 +3327,7 @@
 
 <p><a id="X788E717C7CCC6645" name="X788E717C7CCC6645"></a></p>
 
-<h5>6.12-13 CoimageProjection</h5>
+<h5>6.14-13 CoimageProjection</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageProjection</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A, \mathrm{coim}( \alpha ))</span></p>
@@ -2738,7 +3336,7 @@
 
 <p><a id="X845344847E9C3AD9" name="X845344847E9C3AD9"></a></p>
 
-<h5>6.12-14 CoimageProjectionWithGivenCoimage</h5>
+<h5>6.14-14 CoimageProjectionWithGivenCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageProjectionWithGivenCoimage</code>( <var class="Arg">alpha</var>, <var class="Arg">C</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A, C)</span></p>
@@ -2747,7 +3345,7 @@
 
 <p><a id="X7BC763EA7D2D3164" name="X7BC763EA7D2D3164"></a></p>
 
-<h5>6.12-15 AstrictionToCoimage</h5>
+<h5>6.14-15 AstrictionToCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AstrictionToCoimage</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(C,B)</span></p>
@@ -2756,7 +3354,7 @@
 
 <p><a id="X805108BF8047357E" name="X805108BF8047357E"></a></p>
 
-<h5>6.12-16 AstrictionToCoimage</h5>
+<h5>6.14-16 AstrictionToCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AstrictionToCoimage</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{coim}( \alpha ),B)</span></p>
@@ -2765,7 +3363,7 @@
 
 <p><a id="X7BEDEDCC7818490B" name="X7BEDEDCC7818490B"></a></p>
 
-<h5>6.12-17 AstrictionToCoimageWithGivenCoimage</h5>
+<h5>6.14-17 AstrictionToCoimageWithGivenCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AstrictionToCoimageWithGivenCoimage</code>( <var class="Arg">alpha</var>, <var class="Arg">C</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(C,B)</span></p>
@@ -2774,7 +3372,7 @@
 
 <p><a id="X7D051DDF7A68BFFB" name="X7D051DDF7A68BFFB"></a></p>
 
-<h5>6.12-18 UniversalMorphismIntoCoimage</h5>
+<h5>6.14-18 UniversalMorphismIntoCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoCoimage</code>( <var class="Arg">alpha</var>, <var class="Arg">tau</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(T, \mathrm{coim}( \alpha ))</span></p>
@@ -2783,7 +3381,7 @@
 
 <p><a id="X7D9C6F3C7B929E5F" name="X7D9C6F3C7B929E5F"></a></p>
 
-<h5>6.12-19 UniversalMorphismIntoCoimageWithGivenCoimage</h5>
+<h5>6.14-19 UniversalMorphismIntoCoimageWithGivenCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoCoimageWithGivenCoimage</code>( <var class="Arg">alpha</var>, <var class="Arg">tau</var>, <var class="Arg">C</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(T, C)</span></p>
@@ -2792,7 +3390,7 @@
 
 <p><a id="X7A0027687B377BC2" name="X7A0027687B377BC2"></a></p>
 
-<h5>6.12-20 AddCoimage</h5>
+<h5>6.14-20 AddCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2801,7 +3399,7 @@
 
 <p><a id="X85B54DD47C3E9682" name="X85B54DD47C3E9682"></a></p>
 
-<h5>6.12-21 AddCoimageProjection</h5>
+<h5>6.14-21 AddCoimageProjection</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoimageProjection</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2810,7 +3408,7 @@
 
 <p><a id="X800CCC74801CFF29" name="X800CCC74801CFF29"></a></p>
 
-<h5>6.12-22 AddCoimageProjectionWithGivenCoimage</h5>
+<h5>6.14-22 AddCoimageProjectionWithGivenCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoimageProjectionWithGivenCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2819,7 +3417,7 @@
 
 <p><a id="X786682798320D413" name="X786682798320D413"></a></p>
 
-<h5>6.12-23 AddAstrictionToCoimage</h5>
+<h5>6.14-23 AddAstrictionToCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAstrictionToCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2828,7 +3426,7 @@
 
 <p><a id="X820E0A8786AA718F" name="X820E0A8786AA718F"></a></p>
 
-<h5>6.12-24 AddAstrictionToCoimageWithGivenCoimage</h5>
+<h5>6.14-24 AddAstrictionToCoimageWithGivenCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAstrictionToCoimageWithGivenCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2837,7 +3435,7 @@
 
 <p><a id="X85DB30B982F6C564" name="X85DB30B982F6C564"></a></p>
 
-<h5>6.12-25 AddUniversalMorphismIntoCoimage</h5>
+<h5>6.14-25 AddUniversalMorphismIntoCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -2846,12 +3444,149 @@
 
 <p><a id="X8617139A8651C194" name="X8617139A8651C194"></a></p>
 
-<h5>6.12-26 AddUniversalMorphismIntoCoimageWithGivenCoimage</h5>
+<h5>6.14-26 AddUniversalMorphismIntoCoimageWithGivenCoimage</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoCoimageWithGivenCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismIntoCoimageWithGivenCoimage</code>. <span class="Math">F: (\alpha, \tau,C) \mapsto u(\tau)</span></p>
+
+<p><a id="X87DA77E487F951EF" name="X87DA77E487F951EF"></a></p>
+
+<h4>6.15 <span class="Heading">Subobject Classifier</span></h4>
+
+<p>A subobject classifier object consists of three parts:</p>
+
+
+<ul>
+<li><p>an object <span class="Math">\Omega</span>,</p>
+
+</li>
+<li><p>a function <span class="Math">\mathrm{true}</span> providing a morphism <span class="Math">\mathrm{true}: 1 \rightarrow \Omega</span>,</p>
+
+</li>
+<li><p>a function <span class="Math">\chi</span> mapping each monomorphism <span class="Math">i : A \rightarrow S</span> to a morphism <span class="Math">\chi_i : S \to \Omega</span>.</p>
+
+</li>
+</ul>
+<p>The triple <span class="Math">(\Omega,\mathrm{true},\chi)</span> is called a <em>subobject classifier</em> if for each monomorphism <span class="Math">i : A \to S</span>, the morphism <span class="Math">\chi_i : S \to \Omega</span> is the unique morphism such that <span class="Math">\chi_i \circ i = \mathrm{true} \circ \ast</span> determine a pullback diagram.</p>
+
+<p><a id="X7D33F6ED85FC23BC" name="X7D33F6ED85FC23BC"></a></p>
+
+<h5>6.15-1 SubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubobjectClassifier</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is a subobject classifier object <span class="Math">\Omega</span> of <span class="Math">C</span>.</p>
+
+<p><a id="X7DB6F01F7ACEDD5C" name="X7DB6F01F7ACEDD5C"></a></p>
+
+<h5>6.15-2 SubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubobjectClassifier</code>( <var class="Arg">c</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>This is a convenience method. The argument is a cell <span class="Math">c</span>. The output is a subobject classifier <span class="Math">\Omega</span> of the category <span class="Math">C</span> for which <span class="Math">c \in C</span>.</p>
+
+<p><a id="X82A2DD007FCA428A" name="X82A2DD007FCA428A"></a></p>
+
+<h5>6.15-3 TruthMorphismIntoSubobjectClassifierWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismIntoSubobjectClassifierWithGivenObjects</code>( <var class="Arg">T</var>, <var class="Arg">W</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The arguments are a terminal object of the category and a subobject classifier. The output is the truth morphism to the subobject classifier <span class="Math">\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X8055E0238533E4CC" name="X8055E0238533E4CC"></a></p>
+
+<h5>6.15-4 TruthMorphismIntoSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismIntoSubobjectClassifier</code>( <var class="Arg">C</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is the truth morphism to the subobject classifier <span class="Math">\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X7BF5428B7FFA2222" name="X7BF5428B7FFA2222"></a></p>
+
+<h5>6.15-5 TruthMorphismIntoSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismIntoSubobjectClassifier</code>( <var class="Arg">c</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )</span></p>
+
+<p>This is a convenience method. The argument is a cell <span class="Math">c</span>. The output is the truth morphism to the subobject classifier <span class="Math">\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}</span> of the category <span class="Math">C</span> for which <span class="Math">c \in C</span>.</p>
+
+<p><a id="X7E86ACBB830223AC" name="X7E86ACBB830223AC"></a></p>
+
+<h5>6.15-6 ClassifyingMorphismOfSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassifyingMorphismOfSubobject</code>( <var class="Arg">m</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Range}(m) , \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The argument is a monomorphism <span class="Math">m : A \rightarrow S</span>. The output is its classifying morphism <span class="Math">\chi_m : S \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X874A09FD7A8FB706" name="X874A09FD7A8FB706"></a></p>
+
+<h5>6.15-7 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>( <var class="Arg">m</var>, <var class="Arg">omega</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Range}(m) , \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The arguments are a monomorphism <span class="Math">m : A \rightarrow S</span> and a subobject classifier <span class="Math">\Omega</span>. The output is the classifying morphism of the monomorphism <span class="Math">\chi_m : S \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X85AA59EA7D780BAB" name="X85AA59EA7D780BAB"></a></p>
+
+<h5>6.15-8 SubobjectOfClassifyingMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubobjectOfClassifyingMorphism</code>( <var class="Arg">chi</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: a monomorphism in <span class="Math">\mathrm{Hom}( A , S )</span></p>
+
+<p>The argument is a classifying morphism <span class="Math">\chi : S \rightarrow \Omega</span>. The output is the subobject monomorphism of the classifying morphism, <span class="Math">m : A \rightarrow S</span>.</p>
+
+<p><a id="X7F91B1417B647CBA" name="X7F91B1417B647CBA"></a></p>
+
+<h5>6.15-9 AddSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SubobjectClassifier</code>. <span class="Math">F : () \mapsto \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X7CB2F66B8022D23C" name="X7CB2F66B8022D23C"></a></p>
+
+<h5>6.15-10 AddClassifyingMorphismOfSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddClassifyingMorphismOfSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ClassifyingMorphismOfSubobject</code>. <span class="Math">F : m \mapsto \mathrm{ClassifyingMorphism}(m)</span>.</p>
+
+<p><a id="X7EA4360E79D92811" name="X7EA4360E79D92811"></a></p>
+
+<h5>6.15-11 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>. <span class="Math">F : (m, \Omega) \mapsto \mathrm{ClassifyingMorphism}(m)</span>.</p>
+
+<p><a id="X7E01F89979FAA32C" name="X7E01F89979FAA32C"></a></p>
+
+<h5>6.15-12 AddTruthMorphismIntoSubobjectClassifierWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismIntoSubobjectClassifierWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismIntoSubobjectClassifierWithGivenObjects</code>. <span class="Math">F : (1, \Omega) \mapsto \mathrm{true}</span>.</p>
+
+<p><a id="X814CF88C850C8077" name="X814CF88C850C8077"></a></p>
+
+<h5>6.15-13 AddSubobjectOfClassifyingMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubobjectOfClassifyingMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SubobjectOfClassifyingMorphism</code>. <span class="Math">F : m \mapsto \mathrm{SubobjectOfClassifyingMorphism}(m)</span>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>

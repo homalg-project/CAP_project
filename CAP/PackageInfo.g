@@ -5,13 +5,17 @@ PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
 
 Version := Maximum( [
-  "2017.06.02", ## Mohamed's version
+  "2018.08.03", ## Mohamed's version
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
   ## this line prevents merge conflicts
-  "2017.12.30", ## Sebas' version
+  "2018.08.29", ## Sebas' version
   ## this line prevents merge conflicts
-  "2017.12.02", ## Sepp's version
+  "2018.02.27", ## Sepp's version
+  ## this line prevents merge conflicts
+  "2018.08.15", ## Fabian's version
+  ## this line prevents merge conflicts
+  "2018.08.31", ## Mario's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -78,7 +82,11 @@ ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
-AbstractHTML   :=  "",
+AbstractHTML   :=  
+  Concatenation( [
+  "<span class=\"pkgname\">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.\n",
+  "It facilitates the implementation of specific instances of categories\n",
+  "and provides a language for writing generic categorical algorithms." ] ),
 
 PackageDoc := rec(
   BookName  := "CAP",
@@ -90,9 +98,9 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.9.1",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2016.02.16" ],
-                           [ "ToolsForHomalg", ">= 2016.01.17" ],
+                           [ "ToolsForHomalg", ">= 2018.05.22" ],
                            [ "io", ">=0" ],
   ],
   SuggestedOtherPackages := [ [ "Browse", ">=0" ] ],
