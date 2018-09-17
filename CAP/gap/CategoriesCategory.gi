@@ -679,7 +679,7 @@ InstallMethod( InstallFunctor,
     
     if HasMorphismFunctionName( functor ) then
         
-        object_name := MorphismFunctionName( functor );
+        morphism_name := MorphismFunctionName( functor );
         
     fi;
     
@@ -689,7 +689,7 @@ InstallMethod( InstallFunctor,
         
     fi;
     
-    SetObjectFunctionName( functor, morphism_name );
+    SetMorphismFunctionName( functor, morphism_name );
     
     object_filters := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "object" );
     morphism_filters := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "morphism" );
