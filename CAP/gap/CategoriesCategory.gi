@@ -394,7 +394,7 @@ InstallGlobalFunction( ApplyFunctor,
                
   function( arg )
     local functor, arguments, is_object, cache, cache_return, computed_value,
-          source_list, source_value, range_list, range_value, i, tmp;
+          source_list, source_value, range_list, range_value, i, tmp, category;
     
     functor := arg[ 1 ];
     
@@ -445,7 +445,13 @@ InstallGlobalFunction( ApplyFunctor,
         
     fi;
     
-    Add( AsCapCategory( Range( functor ) ), computed_value );
+    category := AsCapCategory( Range( functor ) );
+    
+    if category!.add_primitive_output then
+        
+        Add( category, computed_value );
+        
+    fi;
     
     return computed_value;
     
