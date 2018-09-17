@@ -103,7 +103,16 @@ InstallMethod( Add,
             
         else
             
-            Error( "this morphism already has a category" );
+            Error(
+                Concatenation(
+                    "a morphism that lies in the CAP-category with the name\n",
+                    Name( CapCategory( morphism ) ),
+                    "\n",
+                    "was tried to be added to a different CAP-category with the name\n",
+                    Name( category ), ".\n",
+                    "(Please note that it is possible for different CAP-categories to have the same name)"
+                )
+            );
             
         fi;
         
