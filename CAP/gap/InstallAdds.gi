@@ -281,8 +281,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result, category );
                 fi;
                 
-                ## Those five lines do not commute
-                if category!.add_primitive_output then
+                if (not is_derivation) and category!.add_primitive_output then
                     add_function( category, result );
                 fi;
                 
