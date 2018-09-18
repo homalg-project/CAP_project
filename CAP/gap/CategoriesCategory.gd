@@ -239,7 +239,7 @@ DeclareAttribute( "MorphismFunctionName",
 #!  Returns the identity functor of the
 #!  category <A>cat</A> viewed as an object
 #!  in the category of categories.
-#! @Arguments category
+#! @Arguments cat
 #! @Returns a functor
 DeclareAttribute( "IdentityFunctor",
                   IsCapCategory );
@@ -250,7 +250,7 @@ DeclareAttribute( "IdentityFunctor",
 #!  (object isomorphic to the) zero object
 #!  to <C>ZeroObject</C>(<A>cat</A>) and to itself otherwise.
 #!  This functor is equivalent to the identity functor.
-#! @Arguments category
+#! @Arguments cat
 #! @Returns a functor
 DeclareAttribute( "FunctorCanonicalizeZeroObjects",
                   IsCapCategory );
@@ -258,7 +258,7 @@ DeclareAttribute( "FunctorCanonicalizeZeroObjects",
 #! @Description
 #!  Returns the natural isomorphism from the identity functor
 #!  to <C>FunctorCanonicalizeZeroObjects</C>(<A>cat</A>).
-#! @Arguments category
+#! @Arguments cat
 #! @Returns a natural transformation
 DeclareAttribute( "NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects",
                   IsCapCategory );
@@ -270,7 +270,7 @@ DeclareAttribute( "NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects",
 #!  it is congruent to the zero morphism; in this case it is mapped to
 #!  <C>ZeroMorphism</C>(<C>Source</C>(<M>\phi</M>), <C>Range</C>(<M>\phi</M>)).
 #!  This functor is equivalent to the identity functor.
-#! @Arguments category
+#! @Arguments cat
 #! @Returns a functor
 DeclareAttribute( "FunctorCanonicalizeZeroMorphisms",
                   IsCapCategory );
@@ -278,7 +278,7 @@ DeclareAttribute( "FunctorCanonicalizeZeroMorphisms",
 #! @Description
 #!  Returns the natural isomorphism from the identity functor
 #!  to <C>FunctorCanonicalizeZeroMorphisms</C>(<A>cat</A>).
-#! @Arguments category
+#! @Arguments cat
 #! @Returns a natural transformation
 DeclareAttribute( "NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms",
                   IsCapCategory );
@@ -353,7 +353,7 @@ DeclareOperation( "InstallNaturalTransformation",
 
 #! @Description
 #!  Computes the horizontal composition of the natural transformation <A>N</A> and
-#   the functor <A>F</A>.
+#!  the functor <A>F</A>.
 #! @Arguments N,F
 #! @Returns a natural transformation
 DeclareOperationWithCache( "HorizontalPreComposeNaturalTransformationWithFunctor",
