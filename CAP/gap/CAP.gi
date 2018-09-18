@@ -237,7 +237,8 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.default_cache_type := "weak";
     
-    obj_rec!.prefunction_check := 1;
+    obj_rec!.input_sanity_check_level := 1;
+    obj_rec!.output_sanity_check_level := 1;
     
     obj_rec!.predicate_logic := true;
     
@@ -531,31 +532,65 @@ end );
 
 ####################################
 ##
-## Type check
+## Sanity checks
 ##
 ####################################
-
-InstallGlobalFunction( DisableBasicOperationTypeCheck,
-  
+InstallGlobalFunction( "DisableInputSanityChecks",
   function( category )
     
-    category!.prefunction_check := 0;
+    category!.input_sanity_check_level := 0;
+    
+end );
+InstallGlobalFunction( "DisableOutputSanityChecks", 
+  function( category )
+    
+    category!.output_sanity_check_level := 0;
+    
+end );
+InstallGlobalFunction( "EnablePartialInputSanityChecks" ,
+  function( category )
+  
+    category!.input_sanity_check_level := 1;
+    
+end );
+InstallGlobalFunction( "EnablePartialOutputSanityChecks" ,
+  function( category )
+    
+    category!.output_sanity_check_level := 1;
+    
+end );
+InstallGlobalFunction( "EnableFullInputSanityChecks" ,
+  function( category )
+  
+    category!.input_sanity_check_level := 2;
+     
+end );
+InstallGlobalFunction( "EnableFullOutputSanityChecks" ,
+  function( category )
+    
+    category!.output_sanity_check_level := 2;
     
 end );
 
-InstallGlobalFunction( EnablePartialBasicOperationTypeCheck,
-  
+InstallGlobalFunction( "DisableSanityChecks" ,
   function( category )
-  
-    category!.prefunction_check := 1;
+    
+    DisableInputSanityChecks( category );
+    DisableOutputSanityChecks( category );
+     
+end );
+InstallGlobalFunction( "EnablePartialSanityChecks" ,
+  function( category )
+    
+    EnablePartialInputSanityChecks( category );
+    EnablePartialOutputSanityChecks( category );
     
 end );
-
-InstallGlobalFunction( EnableFullBasicOperationTypeCheck,
-  
+InstallGlobalFunction( "EnableFullSanityChecks" ,
   function( category )
-  
-    category!.prefunction_check := 2;
+    
+    EnableFullInputSanityChecks( category );
+    EnableFullOutputSanityChecks( category );
     
 end );
 
