@@ -374,6 +374,7 @@ BindGlobal( "EnableBasicOperationTypeCheck", EnablePartialBasicOperationTypeChec
 #!  are added to the category by their constructors.
 #! @Arguments C
 DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
+#! @Arguments C
 DeclareGlobalFunction( "EnableAddForCategoricalOperations" );
 #! @EndGroup
 
