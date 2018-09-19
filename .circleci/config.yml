@@ -12,8 +12,22 @@ jobs:
           sudo apt install -y texlive-latex-extra texlive-science curl
           cd ..
           git clone --depth 1 https://github.com/homalg-project/homalg_project
+          
           cd CAP_project
           echo "SetUserPreference(\"PackagesToLoad\", []);" > ~/.gap/gap.ini
           sed 's/  SuggestedOtherPackages := \[ \[ "Browse", ">=0" \] \],/  SuggestedOtherPackages := [ ],/g' -i ~/.gap/pkg/CAP_project/CAP/PackageInfo.g
           make ci-test
+          cd ..
+          
+          git clone --depth 1 https://github.com/homalg-project/FinSetsForCAP.git
+          cd FinSetsForCAP
+          make ci-test
+          cd ..
+          
+          git clone --depth 1 https://github.com/homalg-project/FinGSetsForCAP.git
+          cd FinGSetsForCAP
+          make ci-test
+          cd ..
+          
+          cd CAP_project
           bash <(curl -s https://codecov.io/bash)
