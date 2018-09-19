@@ -8,6 +8,7 @@ AutoDoc( "CAP" : scaffold := true, autodoc :=
                               "LoadPackage( \"IO_ForHomalg\" );",
                               "LoadPackage( \"GaussForHomalg\" );",
                               "LoadPackage( \"ModulePresentationsForCAP\" );",
+                              "LoadPackage( \"LinearAlgebraForCAP\" );",
                               "LoadPackage( \"RingsForHomalg\" );",
                               "LoadPackage( \"HomologicalAlgebraForCAP\" );",
                               "LoadPackage( \"DeductiveSystemForCAP\" );",

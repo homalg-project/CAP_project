@@ -209,24 +209,13 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
     local recnames, current_recname, category_weight_list, dual_name, current_entry, func,
-          current_add, create_func, create_func_with_category_input;
+          current_add, create_func, create_func_with_category_input, morphism_between_direct_sums_func;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
     category_weight_list := category!.derivations_weight_list;
     
-    create_func := function( dual_name, arg... )
-        local list_operation;
-        
-        if IsBound( arg[1] ) and arg[1] = true then
-            
-            list_operation := Reversed;
-            
-        else
-            
-            list_operation := IdFunc;
-            
-        fi;
+    create_func := function( dual_name, list_operation )
         
         return function( arg )
             local op_arg, result;
@@ -288,13 +277,21 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             
             func := create_func_with_category_input( dual_name );
             
+        elif current_recname = "MorphismBetweenDirectSums" then
+            
+            morphism_between_direct_sums_func := function( list )
+                return [ list[3], TransposedMat( list[2] ), list[1] ];
+            end;
+            
+            func := create_func( dual_name, morphism_between_direct_sums_func );
+            
         elif current_entry.dual_arguments_reversed then
             
-            func := create_func( dual_name, true );
+            func := create_func( dual_name, Reversed );
             
         else
             
-            func := create_func( dual_name );
+            func := create_func( dual_name, IdFunc );
             
         fi;
         
