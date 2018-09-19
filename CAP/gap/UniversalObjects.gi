@@ -611,16 +611,36 @@ end );
 
 ##
 InstallMethod( EqualizerFunctorial,
-               [ IsList ],
+               [ IsList, IsCapCategoryMorphism, IsList ],
                
-  function( morphism_of_morphisms )
+  function( source_diagram, morphism_diagram, range_diagram )
       
       return EqualizerFunctorialWithGivenEqualizers(
-               Equalizer( morphism_of_morphisms[1] ),
-               morphism_of_morphisms,
-               Equalizer( morphism_of_morphisms[3] )
+               Equalizer( source_diagram ),
+               source_diagram, morphism_diagram, range_diagram,
+               Equalizer( range_diagram )
              );
       
+end );
+
+##
+InstallMethod( EqualizerFunctorial,
+               [ IsList ],
+               
+  function( triple )
+    
+    return EqualizerFunctorial( triple[1], triple[2], triple[3] );
+    
+end );
+
+##
+InstallMethod( EqualizerFunctorialWithGivenEqualizers,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, triple, range )
+    
+    return EqualizerFunctorialWithGivenEqualizers( source, triple[1], triple[2], triple[3], range );
+    
 end );
 
 ####################################
@@ -788,16 +808,46 @@ end );
 
 ##
 InstallMethod( FiberProductFunctorial,
-               [ IsList ],
+               [ IsList, IsList, IsList ],
                
-  function( morphism_of_morphisms )
+  function( source_diagram, morphism_diagram, range_diagram )
       
       return FiberProductFunctorialWithGivenFiberProducts(
-               FiberProduct( List( morphism_of_morphisms, elem -> elem[1] ) ),
-               morphism_of_morphisms,
-               FiberProduct( List( morphism_of_morphisms, elem -> elem[3] ) )
+               FiberProduct( source_diagram ),
+               source_diagram, morphism_diagram, range_diagram,
+               FiberProduct( range_diagram )
              );
       
+end );
+
+##
+InstallMethod( FiberProductFunctorial,
+               [ IsList ],
+               
+  function( list_of_triples )
+    
+    return FiberProductFunctorial( 
+      List( list_of_triples, mor -> mor[1] ),
+      List( list_of_triples, mor -> mor[2] ),
+      List( list_of_triples, mor -> mor[3] )
+    );
+    
+end );
+
+##
+InstallMethod( FiberProductFunctorialWithGivenFiberProducts,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, list_of_triples, range )
+    
+    return FiberProductFunctorialWithGivenFiberProducts(
+      source,
+      List( list_of_triples, mor -> mor[1] ),
+      List( list_of_triples, mor -> mor[2] ),
+      List( list_of_triples, mor -> mor[3] ),
+      range
+    );
+    
 end );
 
 ####################################
@@ -843,16 +893,36 @@ end );
 
 ##
 InstallMethod( CoequalizerFunctorial,
-               [ IsList ],
+               [ IsList, IsCapCategoryMorphism, IsList ],
                
-  function( morphism_of_morphisms )
+  function( source_diagram, morphism_diagram, range_diagram )
       
       return CoequalizerFunctorialWithGivenCoequalizers(
-               Coequalizer( morphism_of_morphisms[1] ),
-               morphism_of_morphisms,
-               Coequalizer( morphism_of_morphisms[3] )
+               Coequalizer( source_diagram ),
+               source_diagram, morphism_diagram, range_diagram,
+               Coequalizer( range_diagram )
              );
       
+end );
+
+##
+InstallMethod( CoequalizerFunctorial,
+               [ IsList ],
+               
+  function( triple )
+    
+    return CoequalizerFunctorial( triple[1], triple[2], triple[3] );
+    
+end );
+
+##
+InstallMethod( CoequalizerFunctorialWithGivenCoequalizers,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, triple, range )
+    
+    return CoequalizerFunctorialWithGivenCoequalizers( source, triple[1], triple[2], triple[3], range );
+    
 end );
 
 ####################################
@@ -944,18 +1014,47 @@ end );
 
 ##
 InstallMethod( PushoutFunctorial,
-               [ IsList ],
+               [ IsList, IsList, IsList ],
                
-  function( morphism_of_morphisms )
+  function( source_diagram, morphism_diagram, range_diagram )
       
-      return PushoutFunctorialWithGivenPushouts( 
-               Pushout( List( morphism_of_morphisms, elem -> elem[1] ) ),
-               morphism_of_morphisms,
-               Pushout( List( morphism_of_morphisms, elem -> elem[3] ) )
+      return PushoutFunctorialWithGivenPushouts(
+               Pushout( source_diagram ),
+               source_diagram, morphism_diagram, range_diagram,
+               Pushout( range_diagram )
              );
       
 end );
 
+##
+InstallMethod( PushoutFunctorial,
+               [ IsList ],
+               
+  function( list_of_triples )
+    
+    return PushoutFunctorial( 
+      List( list_of_triples, mor -> mor[1] ),
+      List( list_of_triples, mor -> mor[2] ),
+      List( list_of_triples, mor -> mor[3] )
+    );
+    
+end );
+
+##
+InstallMethod( PushoutFunctorialWithGivenPushouts,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, list_of_triples, range )
+    
+    return PushoutFunctorialWithGivenPushouts(
+      source,
+      List( list_of_triples, mor -> mor[1] ),
+      List( list_of_triples, mor -> mor[2] ),
+      List( list_of_triples, mor -> mor[3] ),
+      range
+    );
+    
+end );
 
 ####################################
 ##

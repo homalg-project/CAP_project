@@ -1680,14 +1680,14 @@ AddDerivationToCAP( EqualizerFunctorialWithGivenEqualizers,
                       [ EmbeddingOfEqualizer, 1 ],
                       [ UniversalMorphismIntoEqualizer, 1 ] ],
         
-  function( equalizer_source, morphism_of_morphisms, equalizer_range )
+  function( equalizer_source, source_diagram, morphism_diagram, range_diagram, equalizer_range )
     local embedding, source;
         
-        embedding := EmbeddingOfEqualizer( morphism_of_morphisms[1] );
+        embedding := EmbeddingOfEqualizer( source_diagram );
         
-        source := PreCompose( embedding, morphism_of_morphisms[2] );
+        source := PreCompose( embedding, morphism_diagram );
         
-        return UniversalMorphismIntoEqualizer( morphism_of_morphisms[3], source );
+        return UniversalMorphismIntoEqualizer( range_diagram, source );
         
 end : Description := "EqualizerFunctorialWithGivenEqualizers using the universality of the equalizer" );
 
@@ -1697,16 +1697,13 @@ AddDerivationToCAP( FiberProductFunctorialWithGivenFiberProducts,
                       [ ProjectionInFactorOfFiberProduct, 2 ], ## Length( morphism_of_morphisms ) would be the right number,
                       [ UniversalMorphismIntoFiberProduct, 1 ] ],
                                   
-  function( fiber_product_source, morphism_of_morphisms, fiber_product_range )
-    local pullback_diagram, source, diagram;
+  function( fiber_product_source, source_diagram, morphism_diagram, range_diagram, fiber_product_range )
+    local source;
         
-        pullback_diagram := List( morphism_of_morphisms, mor -> mor[1] );
+        source := List( [ 1 .. Length( morphism_diagram ) ], 
+          i -> PreCompose( ProjectionInFactorOfFiberProduct( source_diagram, i ), morphism_diagram[i] ) );
         
-        source := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, i ), morphism_of_morphisms[i][2] ) );
-        
-        diagram := List( morphism_of_morphisms, mor -> mor[3] );
-        
-        return UniversalMorphismIntoFiberProduct( diagram, source );
+        return UniversalMorphismIntoFiberProduct( range_diagram, source );
         
 end : Description := "FiberProductFunctorialWithGivenFiberProducts using the universality of the fiber product" );
 
@@ -1748,14 +1745,14 @@ AddDerivationToCAP( CoequalizerFunctorialWithGivenCoequalizers,
                       [ ProjectionOntoCoequalizer, 1 ],
                       [ UniversalMorphismFromCoequalizer, 1 ] ],
         
-  function( coequalizer_source, morphism_of_morphisms, coequalizer_range )
+  function( coequalizer_source, source_diagram, morphism_diagram, range_diagram, coequalizer_range )
     local projection, range;
         
-        projection := ProjectionOntoCoequalizer( morphism_of_morphisms[1] );
+        projection := ProjectionOntoCoequalizer( source_diagram );
         
-        range := PreCompose( morphism_of_morphisms[2], projection );
+        range := PreCompose(morphism_diagram, projection );
         
-        return UniversalMorphismFromCoequalizer( morphism_of_morphisms[3], range );
+        return UniversalMorphismFromCoequalizer( range_diagram, range );
         
 end : Description := "CoequalizerFunctorialWithGivenCoequalizers using the universality of the coequalizer" );
 
@@ -1765,16 +1762,13 @@ AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,
                       [ InjectionOfCofactorOfPushout, 2 ], ## Length( morphism_of_morphisms ) would be the correct number here
                       [ UniversalMorphismFromPushout, 1 ] ],
                                   
-  function( pushout_source, morphism_of_morphisms, pushout_range )
-    local pushout_diagram, sink, diagram;
+  function( pushout_source, source_diagram, morphism_diagram, range_diagram, pushout_range )
+    local sink;
         
-        pushout_diagram := List( morphism_of_morphisms, mor -> mor[3] );
+        sink := List( [ 1 .. Length( morphism_diagram ) ], 
+          i -> PreCompose( morphism_diagram[i], InjectionOfCofactorOfPushout( range_diagram, i ) ) );
         
-        sink := List( [ 1 .. Length( morphism_of_morphisms ) ], i -> PreCompose( morphism_of_morphisms[i][2], InjectionOfCofactorOfPushout( pushout_diagram, i ) ) );
-        
-        diagram := List( morphism_of_morphisms, mor -> mor[1] );
-        
-        return UniversalMorphismFromPushout( diagram, sink );
+        return UniversalMorphismFromPushout( source_diagram, sink );
         
 end : Description := "PushoutFunctorialWithGivenPushouts using the universality of the pushout" );
 
