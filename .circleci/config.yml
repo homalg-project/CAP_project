@@ -7,6 +7,8 @@ jobs:
     steps:
       - checkout
       - run: |
+          sudo apt update
+          sudo apt dist-upgrade -y
           sudo apt install -y texlive-latex-extra texlive-science curl
           cd ..
           git clone --depth 1 https://github.com/homalg-project/homalg_project
