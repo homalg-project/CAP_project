@@ -206,6 +206,16 @@ DeclareGlobalFunction( "ApplyFunctor" );
 
 ####################################
 ##
+## Functor attributes
+##
+####################################
+
+##
+DeclareAttribute( "InputSignature",
+                  IsCapFunctor );
+
+####################################
+##
 ## Functor convinience
 ##
 ####################################

@@ -15,6 +15,19 @@ obj_func := function( A, B ) return TensorProductOnObjects( A, DualOnObjects( B 
 mor_func := function( source, alpha, beta, range ) return TensorProductOnMorphismsWithGivenTensorProducts( source, alpha, DualOnMorphisms( beta ), range ); end;;
 AddObjectFunction( F, obj_func );;
 AddMorphismFunction( F, mor_func );;
+#! @EndExample
+
+#! CAP regards $F$ as a binary functor on a technical level,
+#! as we can see by looking at its input signature:
+
+#! @Example
+InputSignature( F );
+#! [ [ Category of left presentations of Q, false ], [ Category of left presentations of Q, true ] ]
+#! @EndExample
+
+#! We can see that <C>ApplyFunctor</C> works both on two arguments and on one argument (in the product category).
+
+#! @Example
 V1 := TensorUnit( vec );;
 V3 := DirectSum( V1, V1, V1 );;
 pi1 := ProjectionInFactorOfDirectSum( [ V1, V1 ], 1 );;
@@ -26,7 +39,6 @@ IsCongruentForMorphisms( value1, value2 );
 #! true
 #! @EndExample
 
-#! We can see that <C>ApplyFunctor</C> works both on two arguments and on one argument in the product category.
 #! Here is the second way to model a binary functor:
 
 #! @Example
@@ -36,6 +48,14 @@ AddMorphismFunction( F2, function( source, datum, range ) return mor_func( sourc
 value3 := ApplyFunctor( F2,input );;
 IsCongruentForMorphisms( value1, value3 );
 #! true
+#! @EndExample
+
+#! CAP regards $F2$ as a unary functor on a technical level,
+#! as we can see by looking at its input signature:
+
+#! @Example
+InputSignature( F2 );
+#! [ [ Product of: Category of left presentations of Q, Opposite of Category of left presentations of Q, false ] ]
 #! @EndExample
 
 #! Installation of the first functor as a GAP-operation.
