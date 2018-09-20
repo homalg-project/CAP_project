@@ -144,6 +144,16 @@ end );
 
 ##
 InstallMethod( CapFunctor,
+               [ IsString, IsList, IsCapCategoryAsCatObject ],
+               
+  function( name, source_list, range )
+    
+    return CapFunctor( name, source_list, AsCapCategory( range ) );
+    
+end );
+
+##
+InstallMethod( CapFunctor,
                [ IsString, IsCapCategory, IsCapCategory ],
                
   function( name, source, range )
