@@ -80,9 +80,9 @@ BindGlobal( "CAP_INTERNAL_NICE_FUNCTOR_INPUT_LIST",
             list[ i ] := [ list[ i ], false ]; ##true means opposite
         elif IsCapCategoryAsCatObject( list[ i ] ) then
             list[ i ] := [ AsCapCategory( list[ i ] ), false ];
-        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategory( list[ i ][ 1 ] ) then
+        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategory( list[ i ][ 1 ] ) and ( not IsBool( list[i][2] ) ) then
             list[ i ][ 2 ] := true;
-        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategoryAsCatObject( list[ i ][ 1 ] ) then
+        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategoryAsCatObject( list[ i ][ 1 ] ) and ( not IsBool( list[i][2] ) ) then
             list[ i ] := [ AsCapCategory( list[ i ][ 1 ] ), true ];
         fi;
         
