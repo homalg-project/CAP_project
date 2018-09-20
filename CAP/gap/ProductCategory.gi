@@ -14,7 +14,7 @@ DeclareRepresentation( "IsCapCategoryProductCellRep",
                        [ ] );
 
 DeclareRepresentation( "IsCapCategoryProductObjectRep",
-                       IsCapCategoryProductCell and IsCapCategoryProductObject and IsCapCategoryObjectRep,
+                       IsCapCategoryProductCellRep and IsCapCategoryProductObject and IsCapCategoryObjectRep,
                        [ ] );
 
 DeclareRepresentation( "IsCapCategoryProductMorphismRep",
