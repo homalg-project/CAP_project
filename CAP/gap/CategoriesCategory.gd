@@ -360,6 +360,11 @@ DeclareAttribute( "NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms",
 ##
 ####################################
 
+#! Natural transformations form the $2$-cells
+#! of Cat. As such, it is possible to compose them
+#! vertically and horizontally, see Section
+#! <Ref Sect="Section_id2cellsandcomp" />.
+
 #! @Description
 #!  As every functor, every natural transformation has a name attribute.
 #!  It has to be a string and will be set by the Constructor.
