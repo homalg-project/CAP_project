@@ -371,11 +371,10 @@ DeclareGlobalFunction( "EnableFullSanityChecks" );
 #! @EndGroup
 
 ## Undocumented, but kept for compatibility
-BindGlobal( "DisableBasicOperationTypeCheck", DisableInputSanityChecks );
-BindGlobal( "EnablePartialBasicOperationTypeCheck", EnablePartialInputSanityChecks );
-BindGlobal( "EnableFullBasicOperationTypeCheck", EnableFullInputSanityChecks );
-
-BindGlobal( "EnableBasicOperationTypeCheck", EnablePartialBasicOperationTypeCheck );
+DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnablePartialBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnableFullBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
 
 #############################################
 ##
