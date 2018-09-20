@@ -402,7 +402,7 @@ InstallGlobalFunction( ApplyFunctor,
     
     if Length( arguments ) = 1 and functor!.number_arguments > 1 then
         
-        arguments := Components( arguments[ 1 ] );
+        arguments := ShallowCopy( Components( arguments[ 1 ] ) );
         
         for i in [ 1 .. Length( arguments ) ] do
             if functor!.input_source_list[ i ][ 2 ] = true then
@@ -429,7 +429,7 @@ InstallGlobalFunction( ApplyFunctor,
             if functor!.input_source_list[ i ][ 2 ] = true then
                 tmp := source_list[ i ];
                 source_list[ i ] := range_list[ i ];
-                range_list[ i ] := source_list[ i ];
+                range_list[ i ] := tmp;
             fi;
         od;
         
