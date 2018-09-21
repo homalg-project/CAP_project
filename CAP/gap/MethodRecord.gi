@@ -1596,6 +1596,66 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   end,
   return_type := "morphism" ),
 
+MorphismFromFiberProductToSink := rec(
+  installation_name := "MorphismFromFiberProductToSinkOp",
+  argument_list := [ 1 ],
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "P", "D_1_range" ] ],
+  cache_name := "MorphismFromFiberProductToSinkOp",
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  #dual_operation := "MorphismFromSourceToPushout",
+  
+  pre_function := function( diagram, method_selection_morphism )
+    local base, current_morphism, current_value;
+    
+    base := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the fiber product diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
+MorphismFromFiberProductToSinkWithGivenFiberProduct := rec(
+  installation_name := "MorphismFromFiberProductToSinkWithGivenFiberProduct",
+  filter_list := [ IsList, "object" ],
+  io_type := [ [ "D", "P" ], [ "P", "D_1_range" ] ],
+  cache_name := "MorphismFromFiberProductToSinkWithGivenFiberProduct",
+  universal_type := "Limit",
+  dual_operation := "MorphismFromSourceToPushoutWithGivenPushout",
+  
+  pre_function := function( diagram, pullback )
+    local base, current_morphism, current_value;
+    
+    base := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the fiber product diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
 UniversalMorphismIntoFiberProduct := rec(
   installation_name := "UniversalMorphismIntoFiberProductOp",
   argument_list := [ 1, 2 ],

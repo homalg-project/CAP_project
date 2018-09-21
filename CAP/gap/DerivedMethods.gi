@@ -209,6 +209,18 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
   end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
 
 ##
+AddWithGivenDerivationPairToCAP( MorphismFromFiberProductToSink,
+        
+  function( diagram )
+    local pi_1;
+    
+    pi_1 := ProjectionInFactorOfFiberProduct( diagram, 1 );
+    
+    return PreCompose( pi_1, diagram[1] );
+    
+  end : Description := "MorphismFromFiberProductToSink by composing the first projection with the first morphism in the diagram" );
+
+##
 AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
         
   function( diagram, injection_number )

@@ -3347,6 +3347,35 @@ DeclareOperation( "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
+#! The output is the composition $\mu: \mathrm{FiberProduct}(D) \rightarrow B$
+#! of the $1$-st projection $\pi_1: \mathrm{FiberProduct}(D) \rightarrow P_1$ and $\beta_1$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), B )$
+#! @Arguments D
+DeclareOperation( "MorphismFromFiberProductToSink",
+                  [ IsList ] );
+
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is the composition $\mu: \mathrm{FiberProduct}(D) \rightarrow B$
+#! of the $1$-st projection $\pi_1: \mathrm{FiberProduct}(D) \rightarrow P_1$ and $\beta_1$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), B )$
+#! @Arguments D,method_selection_morphism
+DeclareOperation( "MorphismFromFiberProductToSinkOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and an object $P = \mathrm{FiberProduct}(D)$.
+#! The output is the composition $\mu: P \rightarrow B$
+#! of the $1$-st projection $\pi_1: P \rightarrow P_1$ and $\beta_1$.
+#! @Returns a morphism in $\mathrm{Hom}( P, B )$
+#! @Arguments D,k,P
+DeclareOperation( "MorphismFromFiberProductToSinkWithGivenFiberProduct",
+                  [ IsList, IsCapCategoryObject ] );
+
+#! @Description
 #! This is a convenience method.
 #! There are two different ways to use this method:
 #! * The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
@@ -3446,6 +3475,45 @@ DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromFiberProductToSink</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromFiberProductToSink",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromFiberProductToSink",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromFiberProductToSink",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromFiberProductToSink",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromFiberProductToSinkWithGivenFiberProduct</C>.
+#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, P ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromFiberProductToSinkWithGivenFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromFiberProductToSinkWithGivenFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromFiberProductToSinkWithGivenFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromFiberProductToSinkWithGivenFiberProduct",
                   [ IsCapCategory, IsList ] );
 
 
