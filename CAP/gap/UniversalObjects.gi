@@ -1018,6 +1018,16 @@ InstallMethod( InjectionOfCofactorOfPushout,
 end );
 
 ##
+InstallMethod( MorphismFromSourceToPushout,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return MorphismFromSourceToPushoutOp( diagram, diagram[1] );
+    
+end );
+
+##
 InstallGlobalFunction( UniversalMorphismFromPushout,
 
   function( arg )

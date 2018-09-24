@@ -275,6 +275,18 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
   end : Description := "InjectionOfCofactorOfPushout by composing the direct sum injection with the direct sum projection to the pushout" );
 
 ##
+AddWithGivenDerivationPairToCAP( MorphismFromSourceToPushout,
+  
+  function( diagram )
+    local iota_1;
+    
+    iota_1 := InjectionOfCofactorOfDirectSum( diagram, 1 );
+    
+    return PreCompose( diagram[1], iota_1 );
+    
+  end : Description := "MorphismFromSourceToPushout by composing the first morphism in the diagram with the first injection" );
+
+##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromZeroObject,
                   
   function( obj )

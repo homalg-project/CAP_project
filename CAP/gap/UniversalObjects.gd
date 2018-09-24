@@ -3971,6 +3971,35 @@ DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
+#! The output is the composition $\mu: B \rightarrow \mathrm{Pushout}(D)$
+#! of $\beta_1$ and the $1$-st injection $\iota_1: I_1 \rightarrow \mathrm{Pushout}( D )$.
+#! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Pushout}( D ) )$.
+#! @Arguments D
+DeclareOperation( "MorphismFromSourceToPushout",
+                  [ IsList ] );
+
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is the composition $\mu: B \rightarrow \mathrm{Pushout}(D)$
+#! of $\beta_1$ and the $1$-st injection $\iota_1: I_1 \rightarrow \mathrm{Pushout}( D )$.
+#! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Pushout}( D ) )$.
+#! @Arguments D, method_selection_morphism
+DeclareOperation( "MorphismFromSourceToPushoutOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and an object $I = \mathrm{Pushout}(D)$.
+#! The output is the composition $\mu: B \rightarrow I$
+#! of $\beta_1$ and the $1$-st injection $\iota_1: I_1 \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}( B, I )$.
+#! @Arguments D, I
+DeclareOperation( "MorphismFromSourceToPushoutWithGivenPushout",
+                  [ IsList, IsCapCategoryObject ] );
+
+#! @Description
 #! This is a convenience method.
 #! There are two different ways to use this method:
 #! * The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
@@ -4071,6 +4100,45 @@ DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromSourceToPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromSourceToPushout",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromSourceToPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToPushout",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromSourceToPushoutWithGivenPushout</C>.
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
