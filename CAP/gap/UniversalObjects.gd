@@ -3664,8 +3664,8 @@ DeclareOperation( "InjectionOfCofactorOfPushoutOp",
 #! an integer $k$,
 #! and an object $I = \mathrm{Pushout}(D)$.
 #! The output is the $k$-th injection
-#! $\iota_k: I_k \rightarrow \mathrm{Pushout}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )$.
+#! $\iota_k: I_k \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}( I_k, I )$.
 #! @Arguments D, k, I
 DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
                   [ IsList, IsInt, IsCapCategoryObject ] );
