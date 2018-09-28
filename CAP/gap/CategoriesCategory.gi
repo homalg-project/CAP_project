@@ -438,7 +438,7 @@ InstallGlobalFunction( ApplyFunctor,
                     Error( Concatenation( "the category of the result of the object function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
                 fi;
             else
-                Error( Concatenation("The result of the object function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
+                Error( Concatenation("the result of the object function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
             fi;
         fi;
         
@@ -467,7 +467,7 @@ InstallGlobalFunction( ApplyFunctor,
                     Error( Concatenation( "the category of the result of the morphism function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
                 fi;
             else
-                Error( Concatenation("The result of the morphism function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
+                Error( Concatenation("the result of the morphism function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
             fi;
         fi;
 
