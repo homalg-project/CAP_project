@@ -13,6 +13,23 @@ LiftAlongMonomorphism := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "iota", "tau" ], [ "tau_source", "iota_source" ] ],
   cache_name := "LiftAlongMonomorphism",
+  pre_function := function( iota, tau )
+    local value, category;
+    
+    value := IsEqualForObjects( Range( iota ), Range( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal ranges" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal ranges" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "morphism",
   dual_operation := "ColiftAlongEpimorphism" ),
 
@@ -20,6 +37,23 @@ IsLiftableAlongMonomorphism := rec(
   installation_name := "IsLiftableAlongMonomorphism",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsLiftableAlongMonomorphism",
+  pre_function := function( iota, tau )
+    local value;
+    
+    value := IsEqualForObjects( Range( iota ), Range( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal ranges" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal ranges" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "bool",
   dual_operation := "IsColiftableAlongEpimorphism" ),
 
@@ -28,6 +62,23 @@ ColiftAlongEpimorphism := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "epsilon", "tau" ], [ "epsilon_range", "tau_range" ] ],
   cache_name := "ColiftAlongEpimorphism",
+  pre_function := function( epsilon, tau )
+    local value, category;
+    
+    value := IsEqualForObjects( Source( epsilon ), Source( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal sources" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal sources" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "morphism",
   dual_operation := "LiftAlongMonomorphism" ),
 
@@ -35,6 +86,23 @@ IsColiftableAlongEpimorphism := rec(
   installation_name := "IsColiftableAlongEpimorphism",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsColiftableAlongEpimorphism",
+  pre_function := function( epsilon, tau )
+    local value;
+    
+    value := IsEqualForObjects( Source( epsilon ), Source( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal sources" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal sources" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "bool",
   dual_operation := "IsLiftableAlongMonomorphism" ),
 
@@ -43,6 +111,23 @@ Lift := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
   cache_name := "Lift",
+  pre_function := function( iota, tau )
+    local value, category;
+    
+    value := IsEqualForObjects( Range( iota ), Range( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal ranges" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal ranges" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "morphism_or_fail",
   dual_operation := "Colift",
   dual_arguments_reversed := true,
@@ -52,6 +137,23 @@ IsLiftable := rec(
   installation_name := "IsLiftable",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsLiftable",
+  pre_function := function( iota, tau )
+    local value;
+    
+    value := IsEqualForObjects( Range( iota ), Range( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal ranges" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal ranges" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "bool",
   dual_operation := "IsColiftable",
   dual_arguments_reversed := true ),
@@ -61,6 +163,23 @@ Colift := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
   cache_name := "Colift",
+  pre_function := function( epsilon, tau )
+    local value, category;
+    
+    value := IsEqualForObjects( Source( epsilon ), Source( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal sources" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal sources" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "morphism_or_fail",
   dual_operation := "Lift",
   dual_arguments_reversed := true,
@@ -70,6 +189,23 @@ IsColiftable := rec(
   installation_name := "IsColiftable",
   filter_list := [ "morphism", "morphism" ],
   cache_name := "IsColiftable",
+  pre_function := function( epsilon, tau )
+    local value;
+    
+    value := IsEqualForObjects( Source( epsilon ), Source( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal sources" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal sources" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "bool",
   dual_operation := "IsLiftable",
   dual_arguments_reversed := true ),
@@ -79,6 +215,23 @@ ProjectiveLift := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
   cache_name := "ProjectiveLift",
+  pre_function := function( iota, tau )
+    local value;
+    
+    value := IsEqualForObjects( Range( iota ), Range( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal ranges" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal ranges" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "morphism_or_fail",
   dual_operation := "InjectiveColift" ),
 
@@ -87,6 +240,23 @@ InjectiveColift := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
   cache_name := "InjectiveColift",
+  pre_function := function( epsilon, tau )
+    local value;
+    
+    value := IsEqualForObjects( Source( epsilon ), Source( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal sources" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal sources" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
   return_type := "morphism_or_fail",
   dual_operation := "ProjectiveLift" ),
 
