@@ -70,8 +70,16 @@ end );
 ##
 InstallMethod( \=,
                [ IsCapCategoryObject, IsCapCategoryObject ],
+  function( object_1, object_2 )
+
+    if CapCategory( object_1 )!.input_sanity_check_level > 0 or CapCategory( object_2 )!.input_sanity_check_level > 0  then
+        if not IsIdenticalObj( CapCategory( object_1 ), CapCategory( object_2 ) ) then
+            Error( Concatenation( "the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" do not belong to the same CAP category" ) );
+        fi;
+    fi;
                
-  IsEqualForObjects );
+  return IsEqualForObjects( object_1, object_2 );
+end );
 
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS,
