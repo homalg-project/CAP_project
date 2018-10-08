@@ -223,6 +223,34 @@ end );
 ##
 ######################################
 
+# This method should usually not be selected when the two morphisms belong to the same category
+InstallMethod( IsEqualForMorphisms,
+                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+
+  function( morphism_1, morphism_2 )
+    
+    if not IsIdenticalObj( CapCategory( morphism_1 ), CapCategory( morphism_2 ) ) then
+        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" do not belong to the same CAP category" ) );
+    else
+        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" belong to the same CAP category, but no specific method IsEqualForMorphisms is installed" ) );
+    fi;
+    
+end );
+
+# This method should usually not be selected when the two morphisms belong to the same category
+InstallMethod( IsCongruentForMorphisms,
+                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+
+  function( morphism_1, morphism_2 )
+    
+    if not IsIdenticalObj( CapCategory( morphism_1 ), CapCategory( morphism_2 ) ) then
+        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" do not belong to the same CAP category" ) );
+    else
+        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" belong to the same CAP category, but no specific method IsCongruentForMorphisms is installed" ) );
+    fi;
+    
+end );
+
 ##
 InstallMethod( \=,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
