@@ -55,7 +55,7 @@ InstallMethod( IsEqualForObjects,
     if not IsIdenticalObj( CapCategory( object_1 ), CapCategory( object_2 ) ) then
         Error( Concatenation( "the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" do not belong to the same CAP category" ) );
     else
-        Error( Concatenation( "the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" belong to the same CAP category, but no specific method IsEqualForObjects is installed." ) );
+        Error( Concatenation( "the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" belong to the same CAP category, but no specific method IsEqualForObjects is installed. Maybe you forgot to finalize the category?" ) );
     fi;
     
 end );
