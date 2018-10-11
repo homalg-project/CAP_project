@@ -36,6 +36,10 @@ InstallMethod( MatrixCategory,
     
     SetIsStrictMonoidalCategory( category, true );
     
+    SetIsLinearCategoryOverCommutativeRing( category, true );
+    
+    SetCommutativeRingOfLinearCategory( category, homalg_field );
+    
     INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY( category );
     
     ## TODO: Logic for MatrixCategory
@@ -444,6 +448,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         underlying_matrix := List( underlying_matrix, row -> UnionOfColumns( row ) );
         
         return VectorSpaceMorphism( S, UnionOfRows( underlying_matrix ), T );
+        
+    end );
+    
+    ##
+    AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+      function( ring_element, morphism )
+        
+        return VectorSpaceMorphism( Source( morphism ),
+                                    ring_element * UnderlyingMatrix( morphism ),
+                                    Range( morphism ) );
         
     end );
     

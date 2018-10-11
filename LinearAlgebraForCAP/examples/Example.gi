@@ -91,4 +91,6 @@ IsOne( FiberProductFunctorial( [ [ u, IdentityMorphism( Source( u ) ), u ], [ u,
 #! true
 IsOne( PushoutFunctorial( [ [ u, IdentityMorphism( Range( u ) ), u ], [ u, IdentityMorphism( Range( u ) ) , u ] ] ) );
 #! true
+IsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );
+#! true
 #! @EndExample
