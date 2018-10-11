@@ -1073,7 +1073,6 @@ MultiplyWithElementOfCommutativeRingForMorphisms := rec(
   cache_name := "MultiplyWithElementOfCommutativeRingForMorphisms",
   
   pre_function := function( r, morphism )
-    local value_1, value_2;
     
     if not r in CommutativeRingOfLinearCategory( CapCategory( morphism ) ) then
       
