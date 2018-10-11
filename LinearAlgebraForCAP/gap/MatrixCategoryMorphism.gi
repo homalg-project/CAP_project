@@ -79,37 +79,6 @@ end );
 
 ####################################
 ##
-## Multiplication With Scalars
-##
-####################################
-
-##
-InstallMethod( \*,
-                  [ IsRingElement, IsVectorSpaceMorphism ],
-                  
-  function( ring_element, morphism )
-    
-    return VectorSpaceMorphism( Source( morphism ),
-                                ring_element * UnderlyingMatrix( morphism ),
-                                Range( morphism ) );
-    
-end );
-
-##
-InstallMethod( \*,
-                  [ IsVectorSpaceMorphism, IsRingElement ],
-                  
-  function( morphism, ring_element )
-    
-    return VectorSpaceMorphism( Source( morphism ),
-                                UnderlyingMatrix( morphism ) * ring_element,
-                                Range( morphism ) );
-    
-end );
-
-
-####################################
-##
 ## View
 ##
 ####################################
