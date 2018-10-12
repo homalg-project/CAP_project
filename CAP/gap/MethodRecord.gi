@@ -2882,8 +2882,7 @@ MorphismBetweenDirectSums := rec(
   io_type := [ [ "S", "mat", "T" ], [ "S", "T" ] ],
   cache_name := "MorphismBetweenDirectSums",
   return_type := "morphism",
-  dual_operation := "MorphismBetweenDirectSums",
-  dual_arguments_reversed := true
+  dual_operation := "MorphismBetweenDirectSums"
 ),
   ) );
 
