@@ -611,16 +611,50 @@ end );
 
 ##
 InstallMethod( EqualizerFunctorial,
-               [ IsList ],
+               [ IsList, IsCapCategoryMorphism, IsList ],
                
-  function( morphism_of_morphisms )
+  function( source_diagram, morphism_diagram, range_diagram )
       
       return EqualizerFunctorialWithGivenEqualizers(
-               Equalizer( morphism_of_morphisms[1] ),
-               morphism_of_morphisms,
-               Equalizer( morphism_of_morphisms[3] )
+               Equalizer( source_diagram ),
+               source_diagram, morphism_diagram, range_diagram,
+               Equalizer( range_diagram )
              );
       
+end );
+
+##
+InstallMethod( EqualizerFunctorial,
+               [ IsList ],
+               
+  function( triple )
+    
+    Print(
+      Concatenation(
+      "WARNING: EqualizerFunctorial( IsList ) is deprecated and will not be supported after 2019.09.19. ",
+      "Please use EqualizerFunctorial( IsList, IsCapCategoryMorphism, IsList ) instead.\n"
+      )
+    );
+    
+    return EqualizerFunctorial( triple[1], triple[2], triple[3] );
+    
+end );
+
+##
+InstallMethod( EqualizerFunctorialWithGivenEqualizers,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, triple, range )
+    
+    Print(
+      Concatenation(
+      "WARNING: EqualizerFunctorialWithGivenEqualizers( IsCapCategoryObject, IsList, IsCapCategoryObject ) is deprecated and will not be supported after 2019.09.19. ",
+      "Please use EqualizerFunctorialWithGivenEqualizers( IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ) instead.\n"
+      )
+    );
+    
+    return EqualizerFunctorialWithGivenEqualizers( source, triple[1], triple[2], triple[3], range );
+    
 end );
 
 ####################################
@@ -788,16 +822,60 @@ end );
 
 ##
 InstallMethod( FiberProductFunctorial,
-               [ IsList ],
+               [ IsList, IsList, IsList ],
                
-  function( morphism_of_morphisms )
+  function( source_diagram, morphism_diagram, range_diagram )
       
       return FiberProductFunctorialWithGivenFiberProducts(
-               FiberProduct( List( morphism_of_morphisms, elem -> elem[1] ) ),
-               morphism_of_morphisms,
-               FiberProduct( List( morphism_of_morphisms, elem -> elem[3] ) )
+               FiberProduct( source_diagram ),
+               source_diagram, morphism_diagram, range_diagram,
+               FiberProduct( range_diagram )
              );
       
+end );
+
+##
+InstallMethod( FiberProductFunctorial,
+               [ IsList ],
+               
+  function( list_of_triples )
+    
+    Print(
+      Concatenation(
+      "WARNING: FiberProductFunctorial( IsList ) is deprecated and will not be supported after 2019.09.19. ",
+      "Please use FiberProductFunctorial( IsList, IsList, IsList ) instead.\n"
+      )
+    );
+    
+    return FiberProductFunctorial( 
+      List( list_of_triples, mor -> mor[1] ),
+      List( list_of_triples, mor -> mor[2] ),
+      List( list_of_triples, mor -> mor[3] )
+    );
+    
+end );
+
+##
+InstallMethod( FiberProductFunctorialWithGivenFiberProducts,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, list_of_triples, range )
+    
+    Print(
+      Concatenation(
+      "WARNING: FiberProductFunctorialWithGivenFiberProducts( IsCapCategoryObject, IsList, IsCapCategoryObject ) is deprecated and will not be supported after 2019.09.19. ",
+      "Please use FiberProductFunctorialWithGivenFiberProducts( IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ) instead.\n"
+      )
+    );
+    
+    return FiberProductFunctorialWithGivenFiberProducts(
+      source,
+      List( list_of_triples, mor -> mor[1] ),
+      List( list_of_triples, mor -> mor[2] ),
+      List( list_of_triples, mor -> mor[3] ),
+      range
+    );
+    
 end );
 
 ####################################
@@ -843,16 +921,50 @@ end );
 
 ##
 InstallMethod( CoequalizerFunctorial,
-               [ IsList ],
+               [ IsList, IsCapCategoryMorphism, IsList ],
                
-  function( morphism_of_morphisms )
+  function( source_diagram, morphism_diagram, range_diagram )
       
       return CoequalizerFunctorialWithGivenCoequalizers(
-               Coequalizer( morphism_of_morphisms[1] ),
-               morphism_of_morphisms,
-               Coequalizer( morphism_of_morphisms[3] )
+               Coequalizer( source_diagram ),
+               source_diagram, morphism_diagram, range_diagram,
+               Coequalizer( range_diagram )
              );
       
+end );
+
+##
+InstallMethod( CoequalizerFunctorial,
+               [ IsList ],
+               
+  function( triple )
+    
+    Print(
+      Concatenation(
+      "WARNING: CoequalizerFunctorial( IsList ) is deprecated and will not be supported after 2019.09.19. ",
+      "Please use CoequalizerFunctorial( IsList, IsCapCategoryMorphism, IsList ) instead.\n"
+      )
+    );
+    
+    return CoequalizerFunctorial( triple[1], triple[2], triple[3] );
+    
+end );
+
+##
+InstallMethod( CoequalizerFunctorialWithGivenCoequalizers,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, triple, range )
+    
+    Print(
+      Concatenation(
+      "WARNING: CoequalizerFunctorialWithGivenCoequalizers( IsCapCategoryObject, IsList, IsCapCategoryObject ) is deprecated and will not be supported after 2019.09.19. ",
+      "Please use CoequalizerFunctorialWithGivenCoequalizers( IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ) instead.\n"
+      )
+    );
+    
+    return CoequalizerFunctorialWithGivenCoequalizers( source, triple[1], triple[2], triple[3], range );
+    
 end );
 
 ####################################
@@ -944,18 +1056,61 @@ end );
 
 ##
 InstallMethod( PushoutFunctorial,
-               [ IsList ],
+               [ IsList, IsList, IsList ],
                
-  function( morphism_of_morphisms )
+  function( source_diagram, morphism_diagram, range_diagram )
       
-      return PushoutFunctorialWithGivenPushouts( 
-               Pushout( List( morphism_of_morphisms, elem -> elem[1] ) ),
-               morphism_of_morphisms,
-               Pushout( List( morphism_of_morphisms, elem -> elem[3] ) )
+      return PushoutFunctorialWithGivenPushouts(
+               Pushout( source_diagram ),
+               source_diagram, morphism_diagram, range_diagram,
+               Pushout( range_diagram )
              );
       
 end );
 
+##
+InstallMethod( PushoutFunctorial,
+               [ IsList ],
+               
+  function( list_of_triples )
+    
+    Print(
+      Concatenation(
+      "WARNING: PushoutFunctorial( IsList ) is deprecated and will not be supported after 2019.09.19. ",
+      "Please use PushoutFunctorial( IsList, IsList, IsList ) instead.\n"
+      )
+    );
+    
+    return PushoutFunctorial( 
+      List( list_of_triples, mor -> mor[1] ),
+      List( list_of_triples, mor -> mor[2] ),
+      List( list_of_triples, mor -> mor[3] )
+    );
+    
+end );
+
+##
+InstallMethod( PushoutFunctorialWithGivenPushouts,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, list_of_triples, range )
+    
+    Print(
+      Concatenation(
+      "WARNING: PushoutFunctorialWithGivenPushouts( IsCapCategoryObject, IsList, IsCapCategoryObject ) is deprecated and will not be supported after 2019.09.19. ",
+      "Please use PushoutFunctorialWithGivenPushouts( IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ) instead.\n"
+      )
+    );
+    
+    return PushoutFunctorialWithGivenPushouts(
+      source,
+      List( list_of_triples, mor -> mor[1] ),
+      List( list_of_triples, mor -> mor[2] ),
+      List( list_of_triples, mor -> mor[3] ),
+      range
+    );
+    
+end );
 
 ####################################
 ##

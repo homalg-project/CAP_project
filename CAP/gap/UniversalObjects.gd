@@ -2517,24 +2517,34 @@ DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! The argument is a triple
-#! $L = ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \mu: A \rightarrow A', (\beta_i': A' \rightarrow B')_{i = 1 \dots n} )$
-#! with morphisms $\beta_i$, $\mu$ and $\beta_i'$
+#! The arguments are a list of morphisms
+#! $L_s = (\beta_i: A \rightarrow B)_{i = 1 \dots n}$,
+#! a morphism
+#! $\mu: A \rightarrow A'$,
+#! and a list of morphisms
+#! $L_r = (\beta_i': A' \rightarrow B')_{i = 1 \dots n}$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu \sim_{A,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$.
 #! The output is the morphism
 #! $\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} )$
 #! given by the functorality of the equalizer.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ))$
-#! @Arguments L
+#! @Arguments Ls, mu, Lr
+DeclareOperation( "EqualizerFunctorial",
+                  [ IsList, IsCapCategoryMorphism, IsList ] );
+
+##
 DeclareOperation( "EqualizerFunctorial",
                   [ IsList ] );
 
 #! @Description
 #! The arguments are an object $s = \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} )$,
-#! a triple
-#! $L = ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \mu: A \rightarrow A', (\beta_i': A' \rightarrow B')_{i = 1 \dots n} )$
-#! with morphisms $\beta_i$, $\mu$ and $\beta_i'$
+#! a list of morphisms
+#! $L_s = (\beta_i: A \rightarrow B)_{i = 1 \dots n}$,
+#! a morphism
+#! $\mu: A \rightarrow A'$,
+#! and a list of morphisms
+#! $L_r = (\beta_i': A' \rightarrow B')_{i = 1 \dots n}$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu \sim_{A,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$,
 #! and an object $r = \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} )$.
@@ -2542,7 +2552,11 @@ DeclareOperation( "EqualizerFunctorial",
 #! $s \rightarrow r$
 #! given by the functorality of the equalizer.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
-#! @Arguments s, L, r
+#! @Arguments s, Ls, mu, Lr, r
+DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
+
+##
 DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
@@ -2550,7 +2564,7 @@ DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>EqualizerFunctorialWithGivenEqualizers</C>.
-#! $F: ( \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), ( ( \beta_i: A \rightarrow B )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': A' \rightarrow B' )_{i = 1 \dots n} ), \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm {Equalizer}( ( \beta_i' )_{i=1 \dots n} ) )$
+#! $F: ( \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), ( \beta_i: A \rightarrow B )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': A' \rightarrow B' )_{i = 1 \dots n}, \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm {Equalizer}( ( \beta_i' )_{i=1 \dots n} ) )$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
@@ -2771,24 +2785,34 @@ DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
 
 
 #! @Description
-#! The argument is a triple
-#! $L = ( ( \beta_i: B \rightarrow A)_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n} )$
-#! with morphisms $\beta_i$, $\mu$ and $\beta_i'$
+#! The arguments are a list of morphisms
+#! $L_s = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
+#! a morphism
+#! $\mu: A \rightarrow A'$,
+#! and a list of morphisms
+#! $L_r = ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n}$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i$ for $i = 1, \dots n$.
 #! The output is the morphism
 #! $\mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n )$
 #! given by the functorality of the coequalizer.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Coequalizer}( ( \beta_i )_{i=1 \dots n} ), \mathrm{Coequalizer}( ( \beta_i' )_{i=1 \dots n} ))$
-#! @Arguments L
+#! @Arguments Ls, mu, Lr
+DeclareOperation( "CoequalizerFunctorial",
+                  [ IsList, IsCapCategoryMorphism, IsList ] );
+
+##
 DeclareOperation( "CoequalizerFunctorial",
                   [ IsList ] );
 
 #! @Description
 #! The arguments are an object $s = \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n )$,
-#! a triple
-#! $L = ( ( \beta_i: B \rightarrow A )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n} )$
-#! with morphisms $\beta_i$, $\mu$ and $\beta_i'$
+#! a list of morphisms
+#! $L_s = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
+#! a morphism
+#! $\mu: A \rightarrow A'$,
+#! and a list of morphisms
+#! $L_r = ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n}$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i$ for $i = 1, \dots n$,
 #! and an object $r = \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n )$.
@@ -2796,7 +2820,11 @@ DeclareOperation( "CoequalizerFunctorial",
 #! $s \rightarrow r$
 #! given by the functorality of the coequalizer.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
-#! @Arguments s, L, r
+#! @Arguments s, Ls, mu, Lr, r
+DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
+
+##
 DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
@@ -2804,7 +2832,7 @@ DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>CoequalizerFunctorialWithGivenCoequalizers</C>.
-#! $F: ( \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ), ( ( \beta_i: B \rightarrow A )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n} ), \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) )$
+#! $F: ( \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow A )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n}, \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) )$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
@@ -3293,22 +3321,33 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! The argument is a list of triples of morphisms
-#! $L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )$
+#! The arguments are three lists of morphisms
+#! $L_s = ( \beta_i: P_i \rightarrow B)_{i = 1 \dots n}$,
+#! $L_m = ( \mu_i: P_i \rightarrow P_i' )_{i = 1 \dots n}$,
+#! $L_r = ( \beta_i': P_i' \rightarrow B')_{i = 1 \dots n}$
+#! having the same length $n$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$.
 #! The output is the morphism
 #! $\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$
 #! given by the functoriality of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ))$
-#! @Arguments L
+#! @Arguments Ls, Lm, Lr
+DeclareOperation( "FiberProductFunctorial",
+                  [ IsList, IsList, IsList ] );
+
+##
 DeclareOperation( "FiberProductFunctorial",
                   [ IsList ] );
 
+
 #! @Description
 #! The arguments are an object $s = \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} )$,
-#! a list of triples of morphisms
-#! $L = ( (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n} )$
+#! three lists of morphisms
+#! $L_s = ( \beta_i: P_i \rightarrow B)_{i = 1 \dots n}$,
+#! $L_m = ( \mu_i: P_i \rightarrow P_i' )_{i = 1 \dots n}$,
+#! $L_r = ( \beta_i': P_i' \rightarrow B')_{i = 1 \dots n}$
+#! having the same length $n$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$,
 #! and an object $r = \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )$.
@@ -3316,15 +3355,20 @@ DeclareOperation( "FiberProductFunctorial",
 #! $s \rightarrow r$
 #! given by the functoriality of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
-#! @Arguments s, L, r
+#! @Arguments s, Ls, Lm, Lr, r
+DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
+                  [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
+
+##
 DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>FiberProductFunctorialWithGivenFiberProducts</C>.
-#! $F: ( \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), (\beta_i: P_i \rightarrow B, \mu_i: P_i \rightarrow P_i', \beta_i': P_i' \rightarrow B')_{i = 1 \dots n}, \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) )$
+#! $F: ( \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, (\mu_i: P_i \rightarrow P_i')_{i = 1 \dots n}, (\beta_i': P_i' \rightarrow B')_{i = 1 \dots n}, \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) ) ) \mapsto (\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) )$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
@@ -3813,22 +3857,33 @@ DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
 
 
 #! @Description
-#! The argument is a list
-#! $L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )$
+#! The arguments are three lists of morphisms
+#! $L_s = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+#! $L_m = ( \mu_i: I_i \rightarrow I_i' )_{i = 1 \dots n}$,
+#! $L_r = (  \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n}$
+#! having the same length $n$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$.
 #! The output is the morphism
 #! $\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$
 #! given by the functoriality of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n ), \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ))$
-#! @Arguments L
+#! @Arguments Ls, Lm, Lr
+DeclareOperation( "PushoutFunctorial",
+                  [ IsList, IsList, IsList ] );
+
+##
 DeclareOperation( "PushoutFunctorial",
                   [ IsList ] );
 
+
 #! @Description
 #! The arguments are an object $s = \mathrm{Pushout}( ( \beta_i )_{i=1}^n )$,
-#! a list
-#! $L = ( ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n} )$
+#! three lists of morphisms
+#! $L_s = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+#! $L_m = ( \mu_i: I_i \rightarrow I_i' )_{i = 1 \dots n}$,
+#! $L_r = ( \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n}$
+#! having the same length $n$
 #! such that there exists a morphism $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$,
 #! and an object $r = \mathrm{Pushout}( ( \beta_i' )_{i=1}^n )$.
@@ -3836,7 +3891,11 @@ DeclareOperation( "PushoutFunctorial",
 #! $s \rightarrow r$
 #! given by the functoriality of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
-#! @Arguments s, L, r
+#! @Arguments s, Ls, Lm, Lr, r
+DeclareOperation( "PushoutFunctorialWithGivenPushouts",
+                  [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
+
+##
 DeclareOperation( "PushoutFunctorialWithGivenPushouts",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
@@ -3844,7 +3903,7 @@ DeclareOperation( "PushoutFunctorialWithGivenPushouts",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>PushoutFunctorial</C>.
-#! $F: ( \mathrm{Pushout}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow I_i, \mu_i: I_i \rightarrow I_i', \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n}, \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) )$
+#! $F: ( \mathrm{Pushout}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}, ( \mu_i: I_i \rightarrow I_i' )_{i = 1 \dots n}, ( \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n}, \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) ) ) \mapsto (\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) )$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",

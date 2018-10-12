@@ -2472,16 +2472,16 @@ DirectSumFunctorialWithGivenDirectSums := rec(
 
 EqualizerFunctorialWithGivenEqualizers := rec(
   installation_name := "EqualizerFunctorialWithGivenEqualizers",
-  filter_list := [ "object", IsList, "object" ],
-  io_type := [ [ "E", "L", "Ep" ], [ "E", "Ep" ] ],
+  filter_list := [ "object", IsList, "morphism", IsList, "object" ],
+  io_type := [ [ "E", "L1", "m", "L3", "Ep" ], [ "E", "Ep" ] ],
   cache_name := "EqualizerFunctorialWithGivenEqualizers",
   return_type := "morphism",
   dual_operation := "CoequalizerFunctorialWithGivenCoequalizers" ),
 
 FiberProductFunctorialWithGivenFiberProducts := rec(
   installation_name := "FiberProductFunctorialWithGivenFiberProducts",
-  filter_list := [ "object", IsList, "object" ],
-  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
+  filter_list := [ "object", IsList, IsList, IsList, "object" ],
+  io_type := [ [ "P", "L1", "L2", "L3", "Pp" ], [ "P", "Pp" ] ],
   cache_name := "FiberProductFunctorialWithGivenFiberProducts",
   return_type := "morphism",
   dual_operation := "PushoutFunctorialWithGivenPushouts",
@@ -2489,16 +2489,16 @@ FiberProductFunctorialWithGivenFiberProducts := rec(
 
 CoequalizerFunctorialWithGivenCoequalizers := rec(
   installation_name := "CoequalizerFunctorialWithGivenCoequalizers",
-  filter_list := [ "object", IsList, "object" ],
-  io_type := [ [ "C", "L", "Cp" ], [ "C", "Cp" ] ],
+  filter_list := [ "object", IsList, "morphism", IsList, "object" ],
+  io_type := [ [ "C", "L1", "m", "L3", "Cp" ], [ "C", "Cp" ] ],
   cache_name := "CoequalizerFunctorialWithGivenCoequalizers",
   return_type := "morphism",
   dual_operation := "EqualizerFunctorialWithGivenEqualizers" ),
 
 PushoutFunctorialWithGivenPushouts := rec(
   installation_name := "PushoutFunctorialWithGivenPushouts",
-  filter_list := [ "object", IsList, "object" ],
-  io_type := [ [ "I", "L", "Ip" ], [ "I", "Ip" ] ],
+  filter_list := [ "object", IsList, IsList, IsList, "object" ],
+  io_type := [ [ "I", "L1", "L2", "L3", "Ip" ], [ "I", "Ip" ] ],
   cache_name := "PushoutFunctorialWithGivenPushouts",
   return_type := "morphism",
   dual_operation := "FiberProductFunctorialWithGivenFiberProducts",
