@@ -81,6 +81,7 @@ DeclareOperation( "AddTwoCell",
 ###################################
 ##
 #! @Section Identity 2-Cell and Composition of 2-Cells
+#! @SectionLabel id2cellsandcomp
 ##
 ###################################
 

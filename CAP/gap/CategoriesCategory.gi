@@ -80,9 +80,9 @@ BindGlobal( "CAP_INTERNAL_NICE_FUNCTOR_INPUT_LIST",
             list[ i ] := [ list[ i ], false ]; ##true means opposite
         elif IsCapCategoryAsCatObject( list[ i ] ) then
             list[ i ] := [ AsCapCategory( list[ i ] ), false ];
-        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategory( list[ i ][ 1 ] ) then
+        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategory( list[ i ][ 1 ] ) and ( not IsBool( list[i][2] ) ) then
             list[ i ][ 2 ] := true;
-        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategoryAsCatObject( list[ i ][ 1 ] ) then
+        elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategoryAsCatObject( list[ i ][ 1 ] ) and ( not IsBool( list[i][2] ) ) then
             list[ i ] := [ AsCapCategory( list[ i ][ 1 ] ), true ];
         fi;
         
@@ -133,11 +133,22 @@ InstallMethod( CapFunctor,
     ObjectifyWithAttributes( functor, TheTypeOfCapFunctors,
                              Name, name,
                              Source, AsCatObject( source ),
-                             Range, AsCatObject( range ) );
+                             Range, AsCatObject( range ),
+                             InputSignature, source_list );
     
     Add( CapCat, functor );
     
     return functor;
+    
+end );
+
+##
+InstallMethod( CapFunctor,
+               [ IsString, IsList, IsCapCategoryAsCatObject ],
+               
+  function( name, source_list, range )
+    
+    return CapFunctor( name, source_list, AsCapCategory( range ) );
     
 end );
 
@@ -219,7 +230,7 @@ BindGlobal( "CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST",
   function( functor, type )
     local filter_list;
     
-    filter_list := List( functor!.input_source_list, i -> i[ 1 ] );
+    filter_list := List( InputSignature( functor ), i -> i[ 1 ] );
     
     if type = "cell" then
         
@@ -402,16 +413,16 @@ InstallGlobalFunction( ApplyFunctor,
     
     if Length( arguments ) = 1 and functor!.number_arguments > 1 then
         
-        arguments := Components( arguments[ 1 ] );
+        arguments := ShallowCopy( Components( arguments[ 1 ] ) );
         
         for i in [ 1 .. Length( arguments ) ] do
-            if functor!.input_source_list[ i ][ 2 ] = true then
+            if InputSignature( functor )[ i ][ 2 ] = true then
                 arguments[ i ] := Opposite( arguments[ i ] );
             fi;
         od;
         
-    elif Length( arguments ) = 1 and functor!.input_source_list[ 1 ][ 2 ] = true and
-         IsIdenticalObj( CapCategory( arguments[ 1 ] ), Opposite( functor!.input_source_list[ 1 ][ 1 ] ) ) then
+    elif Length( arguments ) = 1 and InputSignature( functor )[ 1 ][ 2 ] = true and
+         IsIdenticalObj( CapCategory( arguments[ 1 ] ), Opposite( InputSignature( functor )[ 1 ][ 1 ] ) ) then
          arguments[ 1 ] := Opposite( arguments[ 1 ] );
     fi;
     
@@ -426,10 +437,10 @@ InstallGlobalFunction( ApplyFunctor,
         range_list := List( arguments, Range );
         
         for i in [ 1 .. Length( arguments ) ] do
-            if functor!.input_source_list[ i ][ 2 ] = true then
+            if InputSignature( functor )[ i ][ 2 ] = true then
                 tmp := source_list[ i ];
                 source_list[ i ] := range_list[ i ];
-                range_list[ i ] := source_list[ i ];
+                range_list[ i ] := tmp;
             fi;
         od;
         
@@ -1009,13 +1020,13 @@ InstallGlobalFunction( ApplyNaturalTransformation,
         arguments := Components( arguments[ 1 ] );
         
         for i in [ 1 .. Length( arguments ) ] do
-            if source_functor!.input_source_list[ i ][ 2 ] = true then
+            if InputSignature( source_functor )[ i ][ 2 ] = true then
                 arguments[ i ] := Opposite( arguments[ i ] );
             fi;
         od;
         
-    elif Length( arguments ) = 1 and source_functor!.input_source_list[ 1 ][ 2 ] = true and
-         IsIdenticalObj( CapCategory( arguments[ 1 ] ), Opposite( source_functor!.input_source_list[ 1 ][ 1 ] ) ) then
+    elif Length( arguments ) = 1 and InputSignature( source_functor )[ 1 ][ 2 ] = true and
+         IsIdenticalObj( CapCategory( arguments[ 1 ] ), Opposite( InputSignature( source_functor )[ 1 ][ 1 ] ) ) then
          arguments[ 1 ] := Opposite( arguments[ 1 ] );
     fi;
     
