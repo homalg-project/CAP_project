@@ -1132,7 +1132,7 @@ DeclareOperation( "AddInitialObjectFunctorial",
 ##
 ####################################
 
-#! For a given list $D = (S_1, \dots, S_n)$ in an Ab-category, a direct sum consists of five parts:
+#! For an integer $n \geq 1$ and a given list $D = (S_1, \dots, S_n)$ in an Ab-category, a direct sum consists of five parts:
 #! * an object $S$,
 #! * a list of morphisms $\pi = (\pi_i: S \rightarrow S_i)_{i = 1 \dots n}$,
 #! * a list of morphisms $\iota = (\iota_i: S_i \rightarrow S)_{i = 1 \dots n}$,
@@ -1804,7 +1804,7 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 ##
 ####################################
 
-#! For a given list of objects $D = ( I_1, \dots, I_n )$, a coproduct of $D$ consists of three parts:
+#! For an integer $n \geq 1$ and a given list of objects $D = ( I_1, \dots, I_n )$, a coproduct of $D$ consists of three parts:
 #! * an object $I$,
 #! * a list of morphisms $\iota = ( \iota_i: I_i \rightarrow I )_{i = 1 \dots n}$
 #! * a dependent function $u$ mapping each list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$
@@ -2079,7 +2079,7 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 ##
 ####################################
 
-#! For a given list of objects $D = ( P_1, \dots, P_n )$, a direct product of $D$ consists of three parts:
+#! For an integer $n \geq 1$ and a given list of objects $D = ( P_1, \dots, P_n )$, a direct product of $D$ consists of three parts:
 #! * an object $P$,
 #! * a list of morphisms $\pi = ( \pi_i: P \rightarrow P_i )_{i = 1 \dots n}$ 
 #! * a dependent function $u$ mapping each list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$ 
@@ -2322,7 +2322,7 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 ##
 ####################################
 
-#! For a given list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
+#! For an integer $n \geq 1$ and a given list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
 #! an equalizer of $D$ consists of three parts:
 #! * an object $E$,
 #! * a morphism $\iota: E \rightarrow A $ such that
@@ -2587,7 +2587,7 @@ DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
 ##
 ####################################
 
-#! For a given list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
+#! For an integer $n \geq 1$ and a given list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
 #! a coequalizer of $D$ consists of three parts:
 #! * an object $C$,
 #! * a morphism $\pi: A \rightarrow C $ such that
@@ -2855,7 +2855,7 @@ DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
 ##
 ####################################
 
-#! For a given list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$, 
+#! For an integer $n \geq 1$ and a given list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
 #! a fiber product of $D$ consists of three parts:
 #! * an object $P$,
 #! * a list of morphisms $\pi = ( \pi_i: P \rightarrow P_i )_{i = 1 \dots n}$ such that
@@ -3391,7 +3391,7 @@ DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
 ##
 ####################################
 
-#! For a given list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+#! For an integer $n \geq 1$ and a given list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
 #! a pushout of $D$ consists of three parts:
 #! * an object $I$,
 #! * a list of morphisms $\iota = ( \iota_i: I_i \rightarrow I )_{i = 1 \dots n}$ such that
