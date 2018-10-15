@@ -93,4 +93,32 @@ IsOne( PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMo
 #! true
 IsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );
 #! true
+Dimension( HomomorphismStructureOnObjects( a, b ) ) = Dimension( a ) * Dimension( b );
+#! true
+IsCongruentForMorphisms(
+    PreCompose( [ u, DualOnMorphisms( i1 ), DualOnMorphisms( alpha ) ] ),
+    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( Source( u ), Source( alpha ),
+         PreCompose(
+             InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( DualOnMorphisms( i1 ) ),
+             HomomorphismStructureOnMorphisms( u, DualOnMorphisms( alpha ) )
+         )
+    )
+);
+#! true
+vec := CapCategory( alpha );;
+t := TensorUnit( vec );;
+z := ZeroObject( vec );;
+IsCongruentForMorphisms(
+    ZeroObjectFunctorial( vec ),
+    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( z, z, ZeroMorphism( t, z ) )
+);
+#! true
+IsCongruentForMorphisms(
+    ZeroObjectFunctorial( vec ),
+    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism(
+        z, z,
+        InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( ZeroObjectFunctorial( vec ) )
+    )
+);
+#! true
 #! @EndExample

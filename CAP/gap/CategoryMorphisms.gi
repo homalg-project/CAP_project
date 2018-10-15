@@ -409,6 +409,20 @@ InstallMethod( PostCompose,
     
 end );
 
+##
+InstallMethod( HomomorphismStructureOnMorphisms,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( alpha, beta )
+    
+    return HomomorphismStructureOnMorphismsWithGivenObjects(
+             HomomorphismStructureOnObjects( Range( alpha ), Source( beta ) ),
+             alpha, beta,
+             HomomorphismStructureOnObjects( Source( alpha ), Range( beta ) )
+           );
+    
+end );
+
 ######################################
 ##
 ## Morphism transport

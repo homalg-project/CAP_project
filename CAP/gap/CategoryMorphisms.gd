@@ -1261,3 +1261,109 @@ DeclareOperation( "AddIsEqualForCacheForMorphisms",
 DeclareOperation( "TransportHom",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+###################################
+##
+#! @Section Homomorphism structures
+##
+###################################
+
+##
+DeclareOperation( "HomomorphismStructureOnObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+DeclareOperation( "AddHomomorphismStructureOnObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddHomomorphismStructureOnObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddHomomorphismStructureOnObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddHomomorphismStructureOnObjects",
+                  [ IsCapCategory, IsList ] );
+
+## the convenience method
+##
+DeclareOperation( "HomomorphismStructureOnMorphisms",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "HomomorphismStructureOnMorphismsWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareAttribute( "DistinguishedObjectOfHomomorphismStructure",
+                  IsCapCategory );
+
+DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareAttribute( "InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+                  IsCapCategoryMorphism );
+
+DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareOperation( "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareOperation( "SolveLinearSystemInAbCategory",
+                   [ IsList, IsList, IsList, IsCapCategory ] );
+
+DeclareOperation( "AddSolveLinearSystemInAbCategory",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSolveLinearSystemInAbCategory",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSolveLinearSystemInAbCategory",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSolveLinearSystemInAbCategory",
+                  [ IsCapCategory, IsList ] );

@@ -2883,6 +2883,49 @@ MorphismBetweenDirectSums := rec(
   return_type := "morphism",
   dual_operation := "MorphismBetweenDirectSums"
 ),
+
+HomomorphismStructureOnObjects := rec(
+  installation_name := "HomomorphismStructureOnObjects",
+  filter_list := [ "object", "object" ],
+  return_type := "other_object",
+  cache_name := "HomomorphismStructureOnObjects",
+),
+
+HomomorphismStructureOnMorphismsWithGivenObjects := rec(
+  installation_name := "HomomorphismStructureOnMorphismsWithGivenObjects",
+  filter_list := [ IsCapCategoryObject, "morphism", "morphism", IsCapCategoryObject ],
+  return_type := "other_morphism",
+  cache_name := "HomomorphismStructureOnMorphismsWithGivenObjects",
+),
+
+DistinguishedObjectOfHomomorphismStructure := rec(
+  installation_name := "DistinguishedObjectOfHomomorphismStructure",
+  filter_list := [ "category" ],
+  cache_name := "DistinguishedObjectOfHomomorphismStructure",
+  return_type := "other_object" 
+),
+
+InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure := rec(
+  installation_name := "InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  filter_list := [ "morphism" ],
+  cache_name := "InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  return_type := "other_morphism" 
+),
+
+InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism := rec(
+  installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+  filter_list := [ "object", "object", IsCapCategoryMorphism ],
+  cache_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+  return_type := "morphism" 
+),
+
+SolveLinearSystemInAbCategory := rec(
+  installation_name := "SolveLinearSystemInAbCategory",
+  filter_list := [ IsList, IsList, IsList, "category" ],
+  cache_name := "SolveLinearSystemInAbCategory",
+  return_type := "morphism_or_fail"
+),
+
   ) );
 
 BindGlobal( "CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION",
