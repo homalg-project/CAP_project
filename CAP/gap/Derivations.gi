@@ -261,12 +261,14 @@ InstallMethod( AddDerivation,
   function( graph, target_op, used_ops_with_multiples,
             implementations_with_extra_filters )
     local weight, category_filter, description, derivation, collected_list,
-          operations_in_graph, current_list, current_implementation, loop_multiplier;
+          operations_in_graph, current_list, current_implementation, loop_multiplier,
+          preconditions_complete;
     
     weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
     description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
+    preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
     
     ## get used ops
     ## Is this the right place? Or should this only be done when no ops are given?
@@ -274,15 +276,17 @@ InstallMethod( AddDerivation,
     
     collected_list := [ ];
     
-    for current_implementation in implementations_with_extra_filters do
-        
-        current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier );
-        current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[ 2 ] ] );
-        ## TODO: Maybe move the next line to AddDerivationToCAP
-        current_list := Concatenation( current_list, CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MONOIDAL_CATEGORIES( current_implementation[ 1 ], loop_multiplier ) );
-        collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-        
-    od;
+    if preconditions_complete = false then
+        for current_implementation in implementations_with_extra_filters do
+
+            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier );
+            current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[ 2 ] ] );
+            ## TODO: Maybe move the next line to AddDerivationToCAP
+            current_list := Concatenation( current_list, CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MONOIDAL_CATEGORIES( current_implementation[ 1 ], loop_multiplier ) );
+            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+
+        od;
+    fi;
     
     used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, used_ops_with_multiples );
     
@@ -293,8 +297,8 @@ InstallMethod( AddDerivation,
                                   implementations_with_extra_filters,
                                   category_filter );
     
-    ## FIXME: Should this be obsolete since the operations are extracted above?
-    CAP_INTERNAL_DERIVATION_SANITY_CHECK( graph, derivation );
+    ## This sanity check should be obsolete
+    # CAP_INTERNAL_DERIVATION_SANITY_CHECK( graph, derivation );
     
     AddDerivation( graph, derivation );
 end );
@@ -348,12 +352,14 @@ InstallMethod( AddDerivationPair,
   function( graph, target_op1, target_op2, used_ops_with_multiples,
             implementations_with_extra_filters1, implementations_with_extra_filters2 )
     local weight, category_filter, description, derivation1, derivation2, collected_list,
-          operations_in_graph, current_list, current_implementation, loop_multiplier;
+          operations_in_graph, current_list, current_implementation, loop_multiplier,
+          preconditions_complete;
     
     weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
     description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
+    preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
     
     ## get used ops
     ## Is this the right place? Or should this only be done when no ops are given?
@@ -361,15 +367,17 @@ InstallMethod( AddDerivationPair,
     
     collected_list := [ ];
     
-    for current_implementation in Concatenation( implementations_with_extra_filters1, implementations_with_extra_filters2 ) do
-        
-        current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier );
-        current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[ 2 ] ] );
-        ## TODO: Maybe move the next line to AddDerivationPairToCAP
-        current_list := Concatenation( current_list, CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MONOIDAL_CATEGORIES( current_implementation[ 1 ], loop_multiplier ) );
-        collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-        
-    od;
+    if preconditions_complete = false then
+        for current_implementation in Concatenation( implementations_with_extra_filters1, implementations_with_extra_filters2 ) do
+            
+            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier );
+            current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[ 2 ] ] );
+            ## TODO: Maybe move the next line to AddDerivationPairToCAP
+            current_list := Concatenation( current_list, CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MONOIDAL_CATEGORIES( current_implementation[ 1 ], loop_multiplier ) );
+            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+            
+        od;
+    fi;
     
     used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, used_ops_with_multiples );
     
