@@ -134,7 +134,7 @@ InstallMethod( IsFinalized,
                [ IsCapCategory ],
                
   function( category )
-    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs;
+    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs, current_tester_func;
     
     ## Set filters for AbCategory etc to false if not true.
     
@@ -165,8 +165,14 @@ InstallMethod( IsFinalized,
             if ForAll( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) < infinity ) and
               ForAll( current_final_derivation.cannot_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j ) ) = infinity ) then
                 
-                Add( current_installs, i );
-                
+                current_tester_func := current_final_derivation.category_filter;
+
+                if IsFilter( current_tester_func ) and Tester( current_tester_func )( category ) and current_tester_func( category ) then
+                    Add( current_installs, i );
+                elif IsFunction( current_tester_func ) and current_tester_func( category ) then
+                    Add( current_installs, i );
+                fi;
+            
             fi;
             
         od;

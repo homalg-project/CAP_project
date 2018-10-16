@@ -85,7 +85,13 @@ InstallMethod( IsApplicableToCategory,
 function( d, C )
   local filter;
   filter := CategoryFilter( d );
-  return Tester( filter )( C ) and filter( C );
+  if IsFilter( filter ) then
+      return Tester( filter )( C ) and filter( C );
+  elif IsFunction( filter ) then
+      return filter( C );
+  else
+      Error( "Category filter is not a filter or function" );
+  fi;
 end );
 
 InstallMethod( InstallDerivationForCategory,
@@ -931,11 +937,13 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         
         category_filter := CategoryFilter( current_derivation );
         
-        if Tester( category_filter )( category ) and not category_filter( category ) then
+        if IsFilter( category_filter ) and Tester( category_filter )( category ) and not category_filter( category ) then
             continue;
-        elif not Tester( category_filter )( category ) then
+        elif IsFilter( category_filter) and not Tester( category_filter )( category ) then
             Print( "If ", Name( category ), " would be ", NamesFilter( category_filter )[ 1 ], " then\n" );
             Print( string, " could be derived by\n" );
+        elif IsFunction( category_filter ) and not category_filter( category ) then
+            continue;
         else
             Print( string, " can be derived by\n" );
         fi;
