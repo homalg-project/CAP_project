@@ -423,6 +423,16 @@ InstallMethod( HomomorphismStructureOnMorphisms,
     
 end );
 
+##
+InstallMethod( SolveLinearSystemInAbCategory,
+               [ IsList, IsList, IsList ],
+               
+  function( left_coeffs, right_coeffs, right_side )
+    
+    return SolveLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
+    
+end );
+
 ######################################
 ##
 ## Morphism transport

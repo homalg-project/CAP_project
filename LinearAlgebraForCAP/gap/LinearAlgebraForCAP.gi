@@ -40,6 +40,8 @@ InstallMethod( MatrixCategory,
     
     SetCommutativeRingOfLinearCategory( category, homalg_field );
     
+    SetRangeCategoryOfHomomorphismStructure( category, category );
+    
     INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY( category );
     
     ## TODO: Logic for MatrixCategory

@@ -2893,7 +2893,7 @@ HomomorphismStructureOnObjects := rec(
 
 HomomorphismStructureOnMorphismsWithGivenObjects := rec(
   installation_name := "HomomorphismStructureOnMorphismsWithGivenObjects",
-  filter_list := [ IsCapCategoryObject, "morphism", "morphism", IsCapCategoryObject ],
+  filter_list := [ "other_object", "morphism", "morphism", "other_object" ],
   return_type := "other_morphism",
   cache_name := "HomomorphismStructureOnMorphismsWithGivenObjects",
 ),
@@ -2914,13 +2914,15 @@ InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure :
 
 InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism := rec(
   installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
-  filter_list := [ "object", "object", IsCapCategoryMorphism ],
+  filter_list := [ "object", "object", "other_morphism" ],
   cache_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
   return_type := "morphism" 
 ),
 
 SolveLinearSystemInAbCategory := rec(
-  installation_name := "SolveLinearSystemInAbCategory",
+    ## TODO: Type-check of linear system
+  installation_name := "SolveLinearSystemInAbCategoryOp",
+  argument_list := [ 1, 2, 3 ],
   filter_list := [ IsList, IsList, IsList, "category" ],
   cache_name := "SolveLinearSystemInAbCategory",
   return_type := "morphism_or_fail"

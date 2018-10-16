@@ -121,4 +121,8 @@ IsCongruentForMorphisms(
     )
 );
 #! true
+right_side := PreCompose( [ i1, DualOnMorphisms( u ), u ] );;
+x := SolveLinearSystemInAbCategory( [ [ i1 ] ], [ [ u ] ], [ right_side ] )[1];;
+IsCongruentForMorphisms( PreCompose( [ i1, x, u ] ), right_side );
+#! true
 #! @EndExample
