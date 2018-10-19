@@ -85,7 +85,7 @@ InstallMethod( AddFinalDerivation,
                
   function( name, can, cannot, func_list )
     local final_derivation, loop_multiplier, collected_list, current_implementation, current_list,
-          operations_in_graph, used_ops_with_multiples;
+          operations_in_graph, used_ops_with_multiples, preconditions_complete;
     
     final_derivation := rec( );
     
@@ -94,20 +94,23 @@ InstallMethod( AddFinalDerivation,
     final_derivation.category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
     final_derivation.option_function := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryOptionFunction", ReturnTrue );
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
+    preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
     
     ## get used ops
     operations_in_graph := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
     
     collected_list := [ ];
     
-    for current_implementation in func_list do
-        
-        current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier );
-        current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[ 2 ] ] );
-        current_list := Concatenation( current_list, CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MONOIDAL_CATEGORIES( current_implementation[ 1 ], loop_multiplier ) );
-        collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-        
-    od;
+    if preconditions_complete = false then
+        for current_implementation in func_list do
+            
+            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier );
+            current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[ 2 ] ] );
+            current_list := Concatenation( current_list, CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION_FOR_MONOIDAL_CATEGORIES( current_implementation[ 1 ], loop_multiplier ) );
+            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+            
+        od;
+    fi;
     
     used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, can );
     
@@ -131,7 +134,7 @@ InstallMethod( IsFinalized,
                [ IsCapCategory ],
                
   function( category )
-    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs;
+    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs, current_tester_func;
     
     ## Set filters for AbCategory etc to false if not true.
     
@@ -162,8 +165,14 @@ InstallMethod( IsFinalized,
             if ForAll( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) < infinity ) and
               ForAll( current_final_derivation.cannot_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j ) ) = infinity ) then
                 
-                Add( current_installs, i );
-                
+                current_tester_func := current_final_derivation.category_filter;
+
+                if IsFilter( current_tester_func ) and Tester( current_tester_func )( category ) and current_tester_func( category ) then
+                    Add( current_installs, i );
+                elif IsFunction( current_tester_func ) and current_tester_func( category ) then
+                    Add( current_installs, i );
+                fi;
+            
             fi;
             
         od;

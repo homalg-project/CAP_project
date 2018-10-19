@@ -70,6 +70,11 @@ DeclareCategory( "IsDerivedMethod", IsObject );
 #!  which categories the derivation is valid for.  If it is valid
 #!  for all categories, then this argument should have the value
 #!  <C>IsCapCategory</C>.
+#!  The Option <C>ConditionsListComplete</C> indicates if the manually
+#!  given list of preconditions for this derivation is complete
+#!  or should be extended by looking for categorical operations
+#!  in the function body. The value <C>false</C> indicates it is not complete,
+#!  every other value that it is complete. Default is <C>false</C>.
 #! @Arguments name, target_op, used_ops_with_multiples, weight, implementations_with_extra_filters, category_filter
 DeclareOperation( "MakeDerivation",
                   [ IsString, IsFunction, IsDenseList,
