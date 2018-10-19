@@ -2905,17 +2905,17 @@ DistinguishedObjectOfHomomorphismStructure := rec(
   return_type := "other_object" 
 ),
 
-InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure := rec(
-  installation_name := "InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure := rec(
+  installation_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
   filter_list := [ "morphism" ],
-  cache_name := "InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  cache_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
   return_type := "other_morphism" 
 ),
 
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism := rec(
-  installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism := rec(
+  installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
   filter_list := [ "object", "object", "other_morphism" ],
-  cache_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+  cache_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
   return_type := "morphism" 
 ),
 

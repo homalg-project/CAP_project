@@ -2282,10 +2282,10 @@ end );
 
 ##
 AddDerivationToCAP( SolveLinearSystemInAbCategory,
-                    [ [ InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure, 1 ],
+                    [ [ InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure, 1 ],
                       [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
                       [ HomomorphismStructureOnObjects, 1 ],
-                      [ InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism, 1 ] ],
+                      [ InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
   function( left_coefficients, right_coefficients, right_side )
     local m, n, nu, H, lift, summands, list;
     
@@ -2298,7 +2298,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     nu :=
       UniversalMorphismIntoDirectSum(
         List( [ 1 .. m ],
-        i -> InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( right_side[i] ) )
+        i -> InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( right_side[i] ) )
     );
     
     list := 
@@ -2322,7 +2322,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     
     return
       List( [ 1 .. n ], j -> 
-        InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism(
+        InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
           Range( left_coefficients[1][j] ),
           Source( right_coefficients[1][j] ),
           PreCompose( lift, ProjectionInFactorOfDirectSum( summands, j ) )

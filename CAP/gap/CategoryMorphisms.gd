@@ -1371,26 +1371,26 @@ DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
 #! $\nu( \alpha ): 1 \rightarrow H(a,a')$ in $D$ of the homomorphism structure.
 #! @Returns a morphism in $\mathrm{Hom}_{D}(1, H(a,a'))$
 #! @Arguments alpha
-DeclareAttribute( "InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareAttribute( "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
                   IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</C>.
+#! to the category for the basic operation <C>InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</C>.
 #! $F: (\alpha: a \rightarrow a') \mapsto (\nu(\alpha):1 \rightarrow H(a,a'))$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -1401,26 +1401,26 @@ DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToH
 #! $\nu^{-1}(\iota): a \rightarrow a'$ in $C$ of the homomorphism structure.
 #! @Returns a morphism in $\mathrm{Hom}_{C}(a,a')$
 #! @Arguments a,a',iota
-DeclareOperation( "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+DeclareOperation( "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
                    [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$ 
-#! to the category for the basic operation <C>InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism</C>.
+#! to the category for the basic operation <C>InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</C>.
 #! $F: (a,a',\iota: 1 \rightarrow H(a,a')) \mapsto (\nu^{-1}(\iota): a \rightarrow a')$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
+DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
                   [ IsCapCategory, IsList ] );
 
 ##

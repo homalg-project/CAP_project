@@ -798,7 +798,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+    AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
       function( alpha )
         local matrix, m, new_matrix, c;
         
@@ -825,7 +825,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( category,
+    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
       function( source, range, alpha )
         local matrix, m, n, new_matrix;
         

@@ -10,9 +10,9 @@ a := FieldAsCategoryMorphism( 1/2, Qoid );;
 b := FieldAsCategoryMorphism( -2/3, Qoid );;
 u := FieldAsCategoryUniqueObject( Qoid );;
 IsCongruentForMorphisms( a,
-    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism(
+    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
         u,u,
-        InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( 
+        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( 
             a
         )
     )

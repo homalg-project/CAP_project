@@ -210,7 +210,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
         
     end );
     
-    AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+    AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
       function( alpha )
         
         return VectorSpaceMorphism(
@@ -221,7 +221,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
         
     end );
     
-    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism( category,
+    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
       function( a, b, mor )
         
         return FieldAsCategoryMorphism(
