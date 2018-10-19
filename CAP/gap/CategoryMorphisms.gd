@@ -1267,10 +1267,28 @@ DeclareOperation( "TransportHom",
 ##
 ###################################
 
-##
+#! Homomorphism structures are way to "oversee" the homomorphisms between two given objects.
+#! Let $C$, $D$ be categories.
+#! A $D$-homomorphism structure for $C$ consists of the following data:
+#! * a functor $H: C^{\mathrm{op}} \times C \rightarrow D$ (when $C$ and $D$ are Ab-categories, $H$ is assumed to be bilinear).
+#! * an object $1 \in D$, called the distinguished object,
+#! * a bijection $\nu: \mathrm{Hom}_{C}(a,b) \simeq \mathrm{Hom}_{D}(1, H(a,b))$ natural in $a,b \in C$.
+
+#! @Description
+#! The arguments are two objects $a, b$ in $C$.
+#! The output is the value of the homomorphism structure on objects $H(a,b)$.
+#! @Returns an object in $D$
+#! @Arguments a,b
 DeclareOperation( "HomomorphismStructureOnObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
+#! to the category for the basic operation <C>HomomorphismStructureOnObjects</C>.
+#! $F: (a,b) \mapsto H(a,b)$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddHomomorphismStructureOnObjects",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1283,15 +1301,31 @@ DeclareOperation( "AddHomomorphismStructureOnObjects",
 DeclareOperation( "AddHomomorphismStructureOnObjects",
                   [ IsCapCategory, IsList ] );
 
-## the convenience method
-##
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$ in $C$.
+#! The output is the value of the homomorphism structure on morphisms $H(\alpha, \beta )$.
+#! @Returns a morphism in $\mathrm{Hom}_{D}(H(a',b), H(a,b'))$
+#! @Arguments alpha, beta
 DeclareOperation( "HomomorphismStructureOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-##
+#! @Description
+#! The arguments are an object $s = H(a',b)$ in $D$,
+#! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$ in $C$,
+#! and an object $r = H(a,b')$ in $D$.
+#! The output is the value of the homomorphism structure on morphisms $H(\alpha, \beta )$.
+#! @Returns a morphism in $\mathrm{Hom}_{D}(H(a',b), H(a,b'))$
+#! @Arguments s, alpha, beta, r
 DeclareOperation( "HomomorphismStructureOnMorphismsWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
+#! to the category for the basic operation <C>HomomorphismStructureOnMorphismsWithGivenObjects</C>.
+#! $F: ( s, \alpha: a \rightarrow a', \beta: b \rightarrow b', r ) \mapsto H( \alpha, \beta )$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1304,10 +1338,21 @@ DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
 DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
-##
+#! @Description
+#! The argument is a category $C$.
+#! The output is the distinguished object $1$ in $D$ of the homomorphism structure.
+#! @Returns an object in $D$
+#! @Arguments C
 DeclareAttribute( "DistinguishedObjectOfHomomorphismStructure",
                   IsCapCategory );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
+#! to the category for the basic operation <C>DistinguishedObjectOfHomomorphismStructure</C>.
+#! $F: ( ) \mapsto 1$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1320,10 +1365,22 @@ DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
 DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
                   [ IsCapCategory, IsList ] );
 
-##
+#! @Description
+#! The argument is a morphism  $\alpha: a \rightarrow a'$ in $C$.
+#! The output is the corresponding morphism
+#! $\nu( \alpha ): 1 \rightarrow H(a,a')$ in $D$ of the homomorphism structure.
+#! @Returns a morphism in $\mathrm{Hom}_{D}(1, H(a,a'))$
+#! @Arguments alpha
 DeclareAttribute( "InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
                   IsCapCategoryMorphism );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
+#! to the category for the basic operation <C>InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</C>.
+#! $F: (\alpha: a \rightarrow a') \mapsto (\nu(\alpha):1 \rightarrow H(a,a'))$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1336,10 +1393,24 @@ DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToH
 DeclareOperation( "AddInterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsList ] );
 
-##
+#! @Description
+#! The arguments are
+#! objects $a,a'$ in $C$
+#! and a morphism $\iota: 1 \rightarrow H(a,a')$ in $D$.
+#! The output is the corresponding morphism
+#! $\nu^{-1}(\iota): a \rightarrow a'$ in $C$ of the homomorphism structure.
+#! @Returns a morphism in $\mathrm{Hom}_{C}(a,a')$
+#! @Arguments a,a',iota
 DeclareOperation( "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
                    [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$ 
+#! to the category for the basic operation <C>InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism</C>.
+#! $F: (a,a',\iota: 1 \rightarrow H(a,a')) \mapsto (\nu^{-1}(\iota): a \rightarrow a')$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
                   [ IsCapCategory, IsFunction ] );
 
