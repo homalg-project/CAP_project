@@ -2274,7 +2274,89 @@ AddDerivationToCAP( IsEqualForCacheForObjects,
     
 end );
 
+###########################
+##
+## Methods involving homomorphism structures
+##
+###########################
 
+##
+AddDerivationToCAP( SolveLinearSystemInAbCategory,
+                    [ [ InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure, 1 ],
+                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
+                      [ HomomorphismStructureOnObjects, 1 ],
+                      [ InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+  function( left_coefficients, right_coefficients, right_side )
+    local m, n, nu, H, lift, summands, list;
+    
+    m := Size( left_coefficients );
+    
+    n := Size( left_coefficients[1] );
+    
+    ## create lift diagram
+    
+    nu :=
+      UniversalMorphismIntoDirectSum(
+        List( [ 1 .. m ],
+        i -> InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( right_side[i] ) )
+    );
+    
+    list := 
+      List( [ 1 .. n ],
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) ) 
+    );
+    
+    H := MorphismBetweenDirectSums( list );
+    
+    ## the actual computation of the solution
+    lift := Lift( nu, H );
+    
+    if lift = fail then
+        
+        return fail;
+        
+    fi;
+    
+    ## reinterpretation of the solution
+    summands := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
+    
+    return
+      List( [ 1 .. n ], j -> 
+        InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+          Range( left_coefficients[1][j] ),
+          Source( right_coefficients[1][j] ),
+          PreCompose( lift, ProjectionInFactorOfDirectSum( summands, j ) )
+        )
+      );
+  end :
+  ConditionsListComplete := true,
+  CategoryFilter := function( cat )
+    local B, conditions;
+    
+    if HasRangeCategoryOfHomomorphismStructure( cat ) then
+        
+        B := RangeCategoryOfHomomorphismStructure( cat );
+        
+        conditions := [
+          "UniversalMorphismIntoDirectSum",
+          "MorphismBetweenDirectSums",
+          "Lift",
+          "PreCompose"
+        ];
+        
+        if ForAll( conditions, c -> CanCompute( B, c ) ) then
+            
+            return true;
+            
+        fi;
+        
+    fi;
+    
+    return false;
+    
+  end,
+  Description := "SolveLinearSystemInAbCategory using the homomorphism structure" 
+);
 
 ## Final methods for FiberProduct
 

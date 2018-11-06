@@ -93,4 +93,36 @@ IsOne( PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMo
 #! true
 IsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );
 #! true
+Dimension( HomomorphismStructureOnObjects( a, b ) ) = Dimension( a ) * Dimension( b );
+#! true
+IsCongruentForMorphisms(
+    PreCompose( [ u, DualOnMorphisms( i1 ), DualOnMorphisms( alpha ) ] ),
+    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( u ), Source( alpha ),
+         PreCompose(
+             InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( DualOnMorphisms( i1 ) ),
+             HomomorphismStructureOnMorphisms( u, DualOnMorphisms( alpha ) )
+         )
+    )
+);
+#! true
+vec := CapCategory( alpha );;
+t := TensorUnit( vec );;
+z := ZeroObject( vec );;
+IsCongruentForMorphisms(
+    ZeroObjectFunctorial( vec ),
+    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( z, z, ZeroMorphism( t, z ) )
+);
+#! true
+IsCongruentForMorphisms(
+    ZeroObjectFunctorial( vec ),
+    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+        z, z,
+        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( ZeroObjectFunctorial( vec ) )
+    )
+);
+#! true
+right_side := PreCompose( [ i1, DualOnMorphisms( u ), u ] );;
+x := SolveLinearSystemInAbCategory( [ [ i1 ] ], [ [ u ] ], [ right_side ] )[1];;
+IsCongruentForMorphisms( PreCompose( [ i1, x, u ] ), right_side );
+#! true
 #! @EndExample

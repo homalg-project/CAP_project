@@ -409,6 +409,30 @@ InstallMethod( PostCompose,
     
 end );
 
+##
+InstallMethod( HomomorphismStructureOnMorphisms,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( alpha, beta )
+    
+    return HomomorphismStructureOnMorphismsWithGivenObjects(
+             HomomorphismStructureOnObjects( Range( alpha ), Source( beta ) ),
+             alpha, beta,
+             HomomorphismStructureOnObjects( Source( alpha ), Range( beta ) )
+           );
+    
+end );
+
+##
+InstallMethod( SolveLinearSystemInAbCategory,
+               [ IsList, IsList, IsList ],
+               
+  function( left_coeffs, right_coeffs, right_side )
+    
+    return SolveLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
+    
+end );
+
 ######################################
 ##
 ## Morphism transport

@@ -2883,6 +2883,51 @@ MorphismBetweenDirectSums := rec(
   return_type := "morphism",
   dual_operation := "MorphismBetweenDirectSums"
 ),
+
+HomomorphismStructureOnObjects := rec(
+  installation_name := "HomomorphismStructureOnObjects",
+  filter_list := [ "object", "object" ],
+  return_type := "other_object",
+  cache_name := "HomomorphismStructureOnObjects",
+),
+
+HomomorphismStructureOnMorphismsWithGivenObjects := rec(
+  installation_name := "HomomorphismStructureOnMorphismsWithGivenObjects",
+  filter_list := [ "other_object", "morphism", "morphism", "other_object" ],
+  return_type := "other_morphism",
+  cache_name := "HomomorphismStructureOnMorphismsWithGivenObjects",
+),
+
+DistinguishedObjectOfHomomorphismStructure := rec(
+  installation_name := "DistinguishedObjectOfHomomorphismStructure",
+  filter_list := [ "category" ],
+  cache_name := "DistinguishedObjectOfHomomorphismStructure",
+  return_type := "other_object" 
+),
+
+InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure := rec(
+  installation_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  filter_list := [ "morphism" ],
+  cache_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  return_type := "other_morphism" 
+),
+
+InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism := rec(
+  installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+  filter_list := [ "object", "object", "other_morphism" ],
+  cache_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+  return_type := "morphism" 
+),
+
+SolveLinearSystemInAbCategory := rec(
+    ## TODO: Type-check of linear system
+  installation_name := "SolveLinearSystemInAbCategoryOp",
+  argument_list := [ 1, 2, 3 ],
+  filter_list := [ IsList, IsList, IsList, "category" ],
+  cache_name := "SolveLinearSystemInAbCategory",
+  return_type := "morphism_or_fail"
+),
+
   ) );
 
 BindGlobal( "CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION",

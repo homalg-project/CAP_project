@@ -244,6 +244,10 @@ DeclareAttribute( "TwoCellFilter",
 DeclareAttribute( "CommutativeRingOfLinearCategory",
                   IsCapCategory );
 
+##
+DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
+                  IsCapCategory );
+
 #############################################
 ##
 #! @Section Logic switcher
