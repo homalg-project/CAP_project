@@ -11,7 +11,7 @@
 ## This file contains installations for ToolsForCategories functions
 ## that can only be installed after all dependencies have been loaded.
 
-if IsPackageMarkedForLoading( "Browse", ">=0" ) then
+if IsPackageMarkedForLoading( "Browse", ">=0" ) and IsBound( NCurses ) and IsBound( NCurses.BrowseDenseList ) then
 
     InstallGlobalFunction( BrowseCachingStatistic,
       
