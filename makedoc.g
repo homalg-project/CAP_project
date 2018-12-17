@@ -15,7 +15,23 @@ AutoDoc(
                              entities := [ "GAP4", "CAP", "homalg" ],
                              ),
             
-            autodoc := rec( files := [ "doc/Doc.autodoc" ] ),
+            autodoc := rec( files := [
+                                "doc/Doc.autodoc",
+                                "gap/CartesianCategoriesDoc.gd",
+                                "gap/CartesianCategories.gd",
+                                "gap/DistributiveCartesianCategories.gd",
+                                "gap/BraidedCartesianCategories.gd",
+                                "gap/CartesianClosedCategoriesDoc.gd",
+                                "gap/CartesianClosedCategories.gd",
+                                "gap/CocartesianCategoriesDoc.gd",
+                                "gap/CocartesianCategories.gd",
+                                "gap/DistributiveCocartesianCategories.gd",
+                                "gap/BraidedCocartesianCategories.gd",
+                                "gap/CocartesianCoclosedCategoriesDoc.gd",
+                                #"gap/CocartesianCoclosedCategories.gd",
+                                ],
+                            scan_dirs := [ ],
+                            ),
 
             maketest := rec( folder := ".",
                              commands :=

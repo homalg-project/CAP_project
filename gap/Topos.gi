@@ -3,7 +3,3 @@
 #
 # Implementations
 #
-
-InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsCartesianClosedCategory );
-
-InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsCoCartesianCoclosedCategory );

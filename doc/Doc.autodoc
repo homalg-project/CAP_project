@@ -1,4 +1,12 @@
-@Chapter Thin categories, a.k.a. prosets (preordered sets)
+@Chapter Cartesian Categories
 
-@Section GAP Categories
-@Section Constructors
+@Section Cartesian Categories
+
+@Section Cartesian Closed Categories
+
+@Chapter Cocartesian Categories
+
+@Section Cocartesian Categories
+
+@Section Cocartesian Coclosed Categories
+

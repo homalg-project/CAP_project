@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "Toposes",
 Subtitle := "Elementary toposes",
 Version := Maximum( [
-                   "2018.09.17", ## Mohamed's version
+                   "2019.01.18", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.07.01", ## Tom's version
                    ] ),
@@ -27,6 +27,20 @@ Persons := [
     LastName := "Barakat",
     WWWHome := "https://mohamed-barakat.github.io",
     Email := "mohamed.barakat@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Fabian",
+    LastName := "Zickgraf",
+    WWWHome := "https://github.com/zickgraf/",
+    Email := "fabian.zickgraf@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
                "57068 Siegen\n",
@@ -76,9 +90,11 @@ Dependencies := rec(
   GAP := ">= 4.9.2",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2018.09.17" ],
+                   [ "CAP", ">= 2019.01.17" ],
                    ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [
+                   [ "MonoidalCategories", ">= 2019.01.18" ],
+                   ],
   ExternalConditions := [ ],
 ),
 

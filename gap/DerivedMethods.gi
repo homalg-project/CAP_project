@@ -5,7 +5,25 @@
 #
 
 ##
-AddDerivationToCAP( AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts,
+AddDerivationToCAP( DirectProductOnMorphismsWithGivenDirectProducts,
+  function( s, alpha, beta, r )
+    
+    return DirectProductFunctorialWithGivenDirectProducts( s, [ alpha, beta ], r );
+
+end : Description := "TensorProductOnMorphisms is DirectProductFunctorial",
+      CategoryFilter := IsCartesianCategory );
+
+##
+AddDerivationToCAP( CoproductOnMorphismsWithGivenCoproducts,
+  function( s, alpha, beta, r )
+    
+    return CoproductFunctorialWithGivenCoproducts( s, [ alpha, beta ], r );
+
+end : Description := "CoproductOnMorphisms is CoproductFunctorial",
+      CategoryFilter := IsCocartesianCategory );
+
+##
+AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
                     [ [ PreCompose, 2 ],
                       [ DirectProduct, 2 ],
                       [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
@@ -39,10 +57,10 @@ AddDerivationToCAP( AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_ab, pi_c ], r );
     
-end : Description := "AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts using the universal morphism into direct product");
+end : Description := "CartesianAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts using the universal morphism into direct product");
 
 ##
-AddDerivationToCAP( AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts,
+AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
                     [ [ PreCompose, 2 ],
                       [ DirectProduct, 2 ],
                       [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
@@ -76,87 +94,4 @@ AddDerivationToCAP( AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_a, pi_bc ], r );
     
-end : Description := "AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts using the universal morphism into direct product");
-
-## TODO: Sebastian Posur explained why the following is dangerous
-##       I included it here to gradually fix it
-
-##
-AddDerivationToCAP( TensorProductOnObjects,
-                    
-  function( arg )
-    
-    return CallFuncList( DirectProduct, arg );
-    
-end : Description := "TensorProductOnObjects is DirectProduct",
-      CategoryFilter := IsCartesianClosedCategory );
-
-##
-AddDerivationToCAP( TensorProductOnMorphismsWithGivenTensorProducts,
-                    
-  function( s, alpha, beta, r )
-    
-    return DirectProductFunctorialWithGivenDirectProducts( s, [ alpha, beta ], r );
-    
-end : Description := "TensorProductOnMorphisms is DirectProductFunctorial",
-      CategoryFilter := IsCartesianClosedCategory );
-
-##
-AddDerivationToCAP( TensorUnit,
-                    
-  function( arg )
-    
-    return CallFuncList( TerminalObject, arg );
-    
-end : Description := "TensorUnit is TerminalObject",
-      CategoryFilter := IsCartesianClosedCategory );
-
-##
-AddDerivationToCAP( AssociatorLeftToRightWithGivenTensorProducts,
-                    
-  function( s, a, b, c, r )
-    
-    return AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts( s, a, b, c, r );
-    
-end : Description := "AssociatorLeftToRight is AssociatorLeftToRightOfDirectProducts",
-      CategoryFilter := IsCartesianClosedCategory );
-
-##
-AddDerivationToCAP( AssociatorRightToLeftWithGivenTensorProducts,
-                    
-  function( s, a, b, c, r )
-    
-    return AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts( s, a, b, c, r );
-    
-end : Description := "AssociatorRightToLeft is AssociatorRightToLeftOfDirectProducts",
-      CategoryFilter := IsCartesianClosedCategory );
-
-##
-AddDerivationToCAP( TensorProductOnObjects,
-                    
-  function( arg )
-    
-    return CallFuncList( Coproduct, arg );
-    
-end : Description := "TensorProductOnObjects is Coproduct",
-      CategoryFilter := IsCoCartesianCoclosedCategory );
-
-##
-AddDerivationToCAP( TensorProductOnMorphismsWithGivenTensorProducts,
-                    
-  function( s, alpha, beta, r )
-    
-    return CoproductFunctorialWithGivenCoproducts( s, [ alpha, beta ], r );
-    
-end : Description := "TensorProductOnMorphisms is CoproductFunctorial",
-      CategoryFilter := IsCoCartesianCoclosedCategory );
-
-##
-AddDerivationToCAP( TensorUnit,
-                    
-  function( arg )
-    
-    return CallFuncList( InitialObject, arg );
-    
-end : Description := "TensorUnit is InitialObject",
-      CategoryFilter := IsCoCartesianCoclosedCategory );
+end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts using the universal morphism into direct product");
