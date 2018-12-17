@@ -193,11 +193,11 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
-    ADD_LIFT_AND_COLIFT_LEFT( category );
-    
     ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
     
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
+      
+      ADD_LIFT_AND_COLIFT_LEFT( category );
       
       ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT( category );
       
@@ -254,11 +254,11 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
-    ADD_LIFT_AND_COLIFT_RIGHT( category );
-    
     ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
     
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
+      
+      ADD_LIFT_AND_COLIFT_RIGHT( category );
       
       ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT( category );
       
@@ -1704,8 +1704,6 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
 
   homalg_ring := category!.ring_for_representation_category;
   
-  if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then 
-  
   AddLift( category, 
     
     function( morphism_1, morphism_2 )
@@ -1888,8 +1886,6 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     fi;
     
     end, 1000 );
-  
-  fi;
  
 end );
 
@@ -1900,8 +1896,6 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
   local homalg_ring;
   
   homalg_ring := category!.ring_for_representation_category;
-  
-  if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
   
   AddLift( category, 
     
@@ -2072,7 +2066,5 @@ end );
     fi;
     
     end, 1000 );
-  
-fi;
 
 end );
