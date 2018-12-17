@@ -258,7 +258,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
     
-    if IsCommutative( category!.ring_for_representation_category ) then
+    if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT( category );
       
@@ -1901,7 +1901,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
   
   homalg_ring := category!.ring_for_representation_category;
   
-  if IsCommutative( homalg_ring ) then 
+  if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
   
   AddLift( category, 
     
