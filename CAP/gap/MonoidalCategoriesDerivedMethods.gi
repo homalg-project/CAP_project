@@ -313,7 +313,7 @@ AddDerivationToCAP( InternalHomOnObjects,
     
     return Range( IsomorphismFromTensorProductToInternalHom( object_1, object_2 ) );
     
-end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "InternalHomOnObjects as the range of IsomorphismFromTensorProductToInternalHom" );
 
 ##
