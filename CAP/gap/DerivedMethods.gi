@@ -2620,6 +2620,34 @@ AddFinalDerivation( IsomorphismFromKernelOfCokernelToImageObject,
     
 end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the identity of the kernel of the cokernel" );
 
+##
+AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
+                    
+  ##CoimageObject, ImageObject as Assumptions
+  function( coimage, morphism, image )
+    local coimage_projection, cokernel_projection, kernel_lift;
+    
+    cokernel_projection := CokernelProjection( morphism );
+    
+    coimage_projection := CoimageProjection( morphism );
+    
+    kernel_lift := KernelLift( cokernel_projection , AstrictionToCoimage( morphism ) );
+    
+    return PreCompose( kernel_lift, IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
+    
+end : CategoryFilter := IsPreAbelianCategory,
+      Description := "MorphismFromCoimageToImageWithGivenObjects using that images are given by kernels of cokernels" );
+
+##
+AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
+                    
+  function( coimage, morphism, image )
+    
+    return Inverse( MorphismFromCoimageToImage( morphism ) );
+    
+end : CategoryFilter := IsAbelianCategory,
+      Description := "InverseMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage" );
+
 ## Final methods for Coimage
 
 ##
