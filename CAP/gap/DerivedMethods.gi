@@ -280,7 +280,7 @@ AddWithGivenDerivationPairToCAP( MorphismFromSourceToPushout,
   function( diagram )
     local iota_1;
     
-    iota_1 := InjectionOfCofactorOfDirectSum( diagram, 1 );
+    iota_1 := InjectionOfCofactorOfPushout( diagram, 1 );
     
     return PreCompose( diagram[1], iota_1 );
     

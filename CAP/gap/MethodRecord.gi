@@ -1604,7 +1604,7 @@ MorphismFromFiberProductToSink := rec(
   cache_name := "MorphismFromFiberProductToSinkOp",
   universal_object_position := "Source",
   universal_type := "Limit",
-  #dual_operation := "MorphismFromSourceToPushout",
+  dual_operation := "MorphismFromSourceToPushout",
   
   pre_function := function( diagram, method_selection_morphism )
     local base, current_morphism, current_value;
@@ -2003,7 +2003,7 @@ MorphismFromSourceToPushout := rec(
   installation_name := "MorphismFromSourceToPushoutOp",
   argument_list := [ 1 ],
   filter_list := [ IsList, "morphism" ],
-  io_type := [ [ "D" ], [ "D_1_range", "I" ] ],
+  io_type := [ [ "D" ], [ "D_1_source", "I" ] ],
   cache_name := "MorphismFromSourceToPushoutOp",
   universal_object_position := "Range",
   universal_type := "Colimit",
@@ -2033,7 +2033,7 @@ MorphismFromSourceToPushout := rec(
 MorphismFromSourceToPushoutWithGivenPushout := rec(
   installation_name := "MorphismFromSourceToPushoutWithGivenPushout",
   filter_list := [ IsList, "object" ],
-  io_type := [ [ "D", "I" ], [ "D_1_range", "I" ] ],
+  io_type := [ [ "D", "I" ], [ "D_1_source", "I" ] ],
   cache_name := "MorphismFromSourceToPushoutWithGivenPushout",
   universal_type := "Colimit",
   dual_operation := "MorphismFromFiberProductToSinkWithGivenFiberProduct",
