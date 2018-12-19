@@ -1665,7 +1665,7 @@ ProjectionOntoCoequalizer := rec(
   cache_name := "ProjectionOntoCoequalizerOp",
   universal_object_position := "Range",
   universal_type := "Colimit",
-  dual_operation := "ProjectionOntoCoequalizer",
+  dual_operation := "EmbeddingOfEqualizer",
   
   pre_function := ~.Coequalizer.pre_function ),
 
@@ -1676,7 +1676,7 @@ ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
   io_type := [ [ "D", "C" ], [ "D_1_range", "C" ] ],
   cache_name := "ProjectionOntoCoequalizerWithGivenCoequalizer",
   universal_type := "Colimit",
-  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
+  dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer",
   
   pre_function := ~.Coequalizer.pre_function ),
 
@@ -1743,7 +1743,7 @@ UniversalMorphismFromCoequalizerWithGivenCoequalizer := rec(
   io_type := [ [ "D", "tau", "C" ], [ "C", "tau_range" ] ],
   cache_name := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
   universal_type := "Colimit",
-  dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+  dual_operation := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
   
   pre_function := function( D, tau, C ) return CAP_INTERNAL_METHOD_NAME_RECORD.UniversalMorphismFromCoequalizer.pre_function( D, tau ); end,
   
