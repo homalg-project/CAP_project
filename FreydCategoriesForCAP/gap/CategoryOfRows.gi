@@ -490,6 +490,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     end );
     
     ##
+    AddIsLiftable( category,
+      function( alpha, beta )
+        
+        return IsZero( DecideZeroRows( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
+        
+    end );
+    
+    ##
     AddLift( category,
       function( alpha, beta )
         local right_divide;
@@ -514,6 +522,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
         
         return CategoryOfRowsMorphism( Range( morphism_1 ), homalg_matrix, CategoryOfRowsObject( NrColumns( homalg_matrix ), category ) );
+        
+    end );
+    
+    ##
+    AddIsColiftable( category,
+      function( alpha, beta )
+        
+        return IsZero( DecideZeroColumns( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
         
     end );
     

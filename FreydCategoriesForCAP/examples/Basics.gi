@@ -26,9 +26,16 @@ ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 3 );
 UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );
 InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );
 gamma := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );
+IsColiftable( beta, gamma );
+#! true
+IsColiftable( gamma, beta );
+#! false
 ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, gamma );
 ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, ZeroMorphism( Range( gamma ), Range( gamma ) ) );
-Lift( PreCompose( ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, gamma + gamma ), gamma ), gamma + gamma );
+lift_arg_1 := PreCompose( ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, gamma + gamma ), gamma );
+lift_arg_2 := gamma + gamma;
+IsLiftable( lift_arg_1, lift_arg_2 );
+Lift( lift_arg_1, lift_arg_2 );
 pi1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, beta );
 pi2 := ProjectionInSecondFactorOfWeakBiFiberProduct( alpha, beta );
 IsEqualForMorphisms( PreCompose( pi1, alpha ), PreCompose( pi2, beta ) );
