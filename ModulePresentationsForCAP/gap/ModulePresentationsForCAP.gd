@@ -73,6 +73,8 @@ DeclareGlobalFunction( "ADD_EVALUATION_MORPHISM_LEFT" );
 
 DeclareGlobalFunction( "ADD_COEVALUATION_MORPHISM_LEFT" );
 
+DeclareGlobalFunction( "ADD_ASSOCIATOR_LEFT" );
+
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
 
@@ -108,6 +110,10 @@ DeclareGlobalFunction( "ADD_EVALUATION_MORPHISM_RIGHT" );
 
 DeclareGlobalFunction( "ADD_COEVALUATION_MORPHISM_RIGHT" );
 
+DeclareGlobalFunction( "ADD_ASSOCIATOR_RIGHT" );
+
+
+DeclareGlobalFunction( "ADD_UNITOR" );
 
 DeclareGlobalFunction( "ADD_IS_WELL_DEFINED_FOR_OBJECTS" );
 
