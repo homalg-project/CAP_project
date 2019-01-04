@@ -894,6 +894,42 @@ AddDerivationToCAP( IsCodominating,
     
 end : Description := "IsCodominating(factor1, factor2) by deciding if KernelEmbedding(factor2) composed with factor1 is zero" );
 
+##
+AddDerivationToCAP( IsLiftable,
+                    [ [ Lift, 1 ] ],
+  function( alpha, beta )
+    
+    return IsCapCategoryMorphism( Lift( alpha, beta ) );
+    
+end : Description := "IsLiftable using Lift" );
+
+##
+AddDerivationToCAP( IsLiftableAlongMonomorphism,
+                    [ [ Lift, 1 ] ],
+  function( iota, tau )
+    
+    return IsCapCategoryMorphism( Lift( tau, iota ) );
+    
+end : Description := "IsLiftableAlongMonomorphism using Lift" );
+
+##
+AddDerivationToCAP( IsColiftable,
+                    [ [ Colift, 1 ] ],
+  function( alpha, beta )
+    
+    return IsCapCategoryMorphism( Colift( alpha, beta ) );
+    
+end : Description := "IsColiftable using Colift" );
+
+##
+AddDerivationToCAP( IsColiftableAlongEpimorphism,
+                    [ [ Colift, 1 ] ],
+  function( epsilon, tau )
+    
+    return IsCapCategoryMorphism( Colift( epsilon, tau ) );
+    
+end : Description := "IsColiftableAlongEpimorphism using Colift" );
+
 ###########################
 ##
 ## Methods returning a morphism where the source and range can directly be read of from the input

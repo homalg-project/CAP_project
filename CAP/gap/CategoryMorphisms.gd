@@ -1091,6 +1091,68 @@ DeclareOperation( "AddColiftAlongEpimorphism",
 DeclareOperation( "AddColiftAlongEpimorphism",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are a monomorphism $\iota: k \hookrightarrow a$
+#! and a morphism $\tau: t \rightarrow a$.
+#! The output is <C>true</C> if there exists
+#! a morphism $u: t \rightarrow k$ with
+#! $\iota \circ u \sim_{t,a} \tau$.
+#! Otherwise, the output is  <C>false</C>.
+#! @Returns a boolean
+#! @Arguments iota, tau
+DeclareOperation( "IsLiftableAlongMonomorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsLiftableAlongMonomorphism</C>.
+#! $F: (\iota, \tau) \mapsto \texttt{IsLiftableAlongMonomorphism}( \iota, \tau )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsLiftableAlongMonomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsLiftableAlongMonomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsLiftableAlongMonomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsLiftableAlongMonomorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are an epimorphism $\epsilon: a \rightarrow c$
+#! and a morphism $\tau: a \rightarrow t$.
+#! The output is <C>true</C> if there exists
+#! a morphism $u: c \rightarrow t$ with
+#! $u \circ \epsilon \sim_{a,t} \tau$.
+#! Otherwise, the output is  <C>false</C>.
+#! @Returns a boolean
+#! @Arguments epsilon, tau
+DeclareOperation( "IsColiftableAlongEpimorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsColiftableAlongEpimorphism</C>.
+#! $F: (\epsilon, \tau) \mapsto \texttt{IsColiftableAlongEpimorphism}( \epsilon, \tau )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsColiftableAlongEpimorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsColiftableAlongEpimorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsColiftableAlongEpimorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsColiftableAlongEpimorphism",
+                  [ IsCapCategory, IsList ] );
+
 ###################################
 ##
 #! @Section Lift/ Colift
@@ -1149,6 +1211,7 @@ DeclareOperation( "AddLift",
 DeclareOperation( "Colift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
@@ -1169,6 +1232,67 @@ DeclareOperation( "AddColift",
 DeclareOperation( "AddColift",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
+#! The output is <C>true</C> if there exists
+#!  a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$, i.e.,
+#! a morphism such that $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$.
+#! Otherwise, the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha, beta
+DeclareOperation( "IsLiftable",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsLiftable</C>.
+#! $F: ( \alpha, \beta ) \mapsto \mathtt{IsLiftable}( \alpha, \beta )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsLiftable",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsLiftable",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsLiftable",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsLiftable",
+                  [ IsCapCategory, IsList ] );
+
+
+##
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$.
+#! The output is <C>true</C> if there exists
+#! a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$., i.e.,
+#! a morphism such that $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$.
+#! Otherwise, the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha, beta
+DeclareOperation( "IsColiftable",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsColiftable</C>.
+#! $F: ( \alpha, \beta ) \mapsto \mathtt{IsColiftable}( \alpha, \beta )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsColiftable",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsColiftable",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsColiftable",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsColiftable",
+                  [ IsCapCategory, IsList ] );
 
 ####################################
 ##

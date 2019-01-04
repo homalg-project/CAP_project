@@ -16,6 +16,13 @@ LiftAlongMonomorphism := rec(
   return_type := "morphism",
   dual_operation := "ColiftAlongEpimorphism" ),
 
+IsLiftableAlongMonomorphism := rec(
+  installation_name := "IsLiftableAlongMonomorphism",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "IsLiftableAlongMonomorphism",
+  return_type := "bool",
+  dual_operation := "IsColiftableAlongEpimorphism" ),
+
 ColiftAlongEpimorphism := rec(
   installation_name := "ColiftAlongEpimorphism",
   filter_list := [ "morphism", "morphism" ],
@@ -23,6 +30,13 @@ ColiftAlongEpimorphism := rec(
   cache_name := "ColiftAlongEpimorphism",
   return_type := "morphism",
   dual_operation := "LiftAlongMonomorphism" ),
+
+IsColiftableAlongEpimorphism := rec(
+  installation_name := "IsColiftableAlongEpimorphism",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "IsColiftableAlongEpimorphism",
+  return_type := "bool",
+  dual_operation := "IsLiftableAlongMonomorphism" ),
 
 Lift := rec(
   installation_name := "Lift",
@@ -34,6 +48,14 @@ Lift := rec(
   dual_arguments_reversed := true,
   is_merely_set_theoretic := true ),
 
+IsLiftable := rec(
+  installation_name := "IsLiftable",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "IsLiftable",
+  return_type := "bool",
+  dual_operation := "IsColiftable",
+  dual_arguments_reversed := true ),
+
 Colift := rec(
   installation_name := "Colift",
   filter_list := [ "morphism", "morphism" ],
@@ -43,6 +65,14 @@ Colift := rec(
   dual_operation := "Lift",
   dual_arguments_reversed := true,
   is_merely_set_theoretic := true  ),
+
+IsColiftable := rec(
+  installation_name := "IsColiftable",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "IsColiftable",
+  return_type := "bool",
+  dual_operation := "IsLiftable",
+  dual_arguments_reversed := true ),
 
 ProjectiveLift := rec(
   installation_name := "ProjectiveLift",
