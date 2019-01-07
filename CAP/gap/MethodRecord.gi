@@ -2960,6 +2960,21 @@ SolveLinearSystemInAbCategory := rec(
 
   ) );
 
+InstallValue( CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, rec() );
+
+InstallGlobalFunction( CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD,
+  function( replacement_data )
+    local current_name;
+
+    for current_name in RecNames( replacement_data ) do
+        if IsBound( CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS.(current_name) ) then
+            Error( Concatenation( current_name, " already has a replacement" ) );
+        fi;
+        CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS.(current_name) := replacement_data.(current_name);
+    od;
+    
+end );
+
 BindGlobal( "CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION",
   function( func )
     
