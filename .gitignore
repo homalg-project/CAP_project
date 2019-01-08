@@ -50,3 +50,6 @@ src/*.lo
 
 /tmp/
 /gh-pages/
+
+stats
+coverage.json

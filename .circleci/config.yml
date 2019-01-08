@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: gapsystem/gap-docker:latest
+    working_directory: ~/.gap/pkg/Toposes
+    steps:
+      - checkout
+      - run: |
+          sudo apt update
+          sudo apt dist-upgrade -y
+          sudo apt install -y texlive-latex-extra texlive-science curl
+          cd ..
+          git clone --depth 1 https://github.com/homalg-project/homalg_project.git
+          git clone --depth 1 https://github.com/homalg-project/CAP_project.git
+          cd Toposes
+          echo "SetUserPreference(\"PackagesToLoad\", []);" > ~/.gap/gap.ini
+          echo "SetInfoLevel(InfoPackageLoading, 4);" > ~/.gap/gaprc
+          sed 's/  SuggestedOtherPackages := \[ \[ "Browse", ">=0" \] \],/  SuggestedOtherPackages := [ ],/g' -i ~/.gap/pkg/CAP_project/CAP/PackageInfo.g
+          make ci-test
+          bash <(curl -s https://codecov.io/bash)
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - test
+  nightly:
+    triggers:
+      - schedule:
+          # 0:00 UTC = 1:00 CET = 2:00 CEST
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - test
