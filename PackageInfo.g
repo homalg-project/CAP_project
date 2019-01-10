@@ -37,7 +37,7 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://TODO/",
+PackageWWWHome := "https://github.com/HereAround/CAPCategoryOfProjectiveGradedModules",
 
 ArchiveURL     := Concatenation( ~.PackageWWWHome, "CAPCategoryOfProjectiveGradedModules-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
