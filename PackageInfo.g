@@ -14,6 +14,7 @@ Subtitle := "Category of projective graded modules over a graded ring",
 
 Version := Maximum( [
   "2016.03.15", ## Martin's version
+  "2019.01.10", ## Martin's new version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
