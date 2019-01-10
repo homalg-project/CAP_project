@@ -27,7 +27,7 @@ Persons := [
     FirstNames := "Martin",
     LastName := "Bies",
     WWWHome := "https://www.ulb.ac.be/sciences/ptm/pmif/people.html",
-    Email := "Martin.Bies@ulb.ac.be",
+    Email := "martin.bies@alumni.uni-heidelberg.de",
     PostalAddress := Concatenation(
                  "Physique Théorique et Mathématique \n",
                  "Université Libre de Bruxelles \n",
