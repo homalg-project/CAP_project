@@ -120,7 +120,7 @@ InstallGlobalFunction( AddCategoricalProperty,
     local i;
 
     if Length( property_list ) > 2 or Length( property_list ) < 1 then
-        Error( "only lenght 1 or two allowed " );
+        Error( "only length 1 or two allowed " );
         return;
     fi;
 
