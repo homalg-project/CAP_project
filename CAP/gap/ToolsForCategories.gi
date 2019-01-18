@@ -679,7 +679,7 @@ InstallGlobalFunction( ListKnownCategoricalProperties,
     
     list := [ ];
     
-    for name in CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST!.MathematicalPropertiesOfCategories do
+    for name in Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ) do
       
       if Tester( ValueGlobal( name ) )( category ) and ValueGlobal( name )( category ) then
         
