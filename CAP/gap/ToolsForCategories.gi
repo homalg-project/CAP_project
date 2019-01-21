@@ -500,10 +500,48 @@ BindGlobal( "CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP",
     
 end );
 
+BindGlobal( "CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE",
+  
+  function( appearance_list, replacement_record )
+    local remove_list, new_appearances, current_appearance_nr,
+          current_appearance, current_replacement, i;
+
+    remove_list := [];
+    new_appearances := [];
+
+    for current_appearance_nr in [ 1 .. Length( appearance_list ) ] do
+        
+        current_appearance := appearance_list[ current_appearance_nr ];
+        
+        if IsBound( replacement_record.(current_appearance[ 1 ]) ) then
+            Add( remove_list, current_appearance_nr );
+            for current_replacement in replacement_record.(current_appearance[ 1 ]) do
+                Add( new_appearances, [ current_replacement[ 1 ], current_replacement[ 2 ] * current_appearance[ 2 ] ] );
+            od;
+        fi;
+
+    od;
+
+    for i in Reversed( remove_list ) do
+        Remove( appearance_list, i );
+    od;
+
+    return Concatenation( appearance_list, new_appearances );
+
+end );
+
+BindGlobal( "CAP_INTERNAL_VALUE_GLOBAL_OR_VALUE",
+  function( val )
+    if IsString( val ) then
+        return ValueGlobal( val );
+    fi;
+    return val;
+end );
+
 ##
 InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
   
-  function( func, symbol_list, loop_multiple )
+  function( func, symbol_list, loop_multiple, replacement_record )
     local func_as_string, func_stream, i, func_as_list, loop_power, symbol_appearance_rec, current_symbol;
     
     func_as_string := "";
@@ -553,7 +591,9 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
         
     od;
     
-    return List( RecNames( symbol_appearance_rec ), i -> [ i, symbol_appearance_rec.(i) ] );
+    symbol_appearance_rec := List( RecNames( symbol_appearance_rec ), i -> [ i, symbol_appearance_rec.(i) ] );
+    symbol_appearance_rec := CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE( symbol_appearance_rec, replacement_record );
+    return List( symbol_appearance_rec, i -> [ CAP_INTERNAL_VALUE_GLOBAL_OR_VALUE( i[ 1 ] ), i[ 2 ] ] );
     
 end );
 

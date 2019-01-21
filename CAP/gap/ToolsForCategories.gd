@@ -71,12 +71,14 @@ DeclareGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS" );
 #!  the object value.
 DeclareGlobalFunction( "CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT" );
 
-#! @Arguments function, symbol_list, loop_multiple
+#! @Arguments function, symbol_list, loop_multiple, replacement_record
 #! @Returns a list of symbols with multiples
 #! @Description
 #!  The function searches for the appearance of the strings in symbol list on the function function
 #!  and returns a list of pairs, containing the name of the symbol and the number of appearance.
 #!  If the symbol appears in a loop, the number of appearance is counted times the loop multiple.
+#!  Moreover, if appearances of found strings should be replaced by collections of other strings, then
+#!  these can be specified in the replacement record.
 DeclareGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION" );
 
 #! @Arguments list1, list2
