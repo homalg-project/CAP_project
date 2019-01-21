@@ -37,8 +37,6 @@ DeclareGlobalFunction( "SET_VALUE_OF_CATEGORY_CACHE" );
 
 DeclareGlobalFunction( "HAS_VALUE_OF_CATEGORY_CACHE" );
 
-DeclareGlobalVariable( "CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST" );
-
 DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_PRINT_FUNCTION" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_DERIVATION_GRAPH" );
@@ -47,27 +45,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST" );
 
 ## Syntax for categorical property with no dual counterpart:
 ## [ , "property" ]
-InstallValue( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST,
-  [ [ "IsEnrichedOverCommutativeRegularSemigroup" ],
-    [ "IsAbCategory" ],
-    [ "IsLinearCategoryOverCommutativeRing" ],
-    [ "IsAdditiveCategory" ],
-    [ "IsPreAbelianCategory" ],
-    [ "IsAbelianCategory" ],
-    [ "IsMonoidalCategory" ],
-    [ "IsBraidedMonoidalCategory" ],
-    [ "IsSymmetricMonoidalCategory" ],
-    [ "IsSymmetricClosedMonoidalCategory" ],
-    [ "IsRigidSymmetricClosedMonoidalCategory" ],
-    [ "IsStrictMonoidalCategory" ],
-    [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ]
-  ]
-);
-
-## FIXME: GET RID OF THIS!!!
-InstallValue( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST,
-              rec( MathematicalPropertiesOfCategories := Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ) )
-            );
+InstallValue( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, [ ] );
 
 DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
 
@@ -126,23 +104,52 @@ DeclareCategory( "IsCapCategoryTwoCell",
 DeclareCategory( "IsCellOfSkeletalCategory",
                  IsCapCategoryCell );
 
-## Earliest possible place
-BindGlobal( "INSTALL_CAN_COMPUTE_PROPERTIES",
+#! @Description
+#!  Adds a categorical property to the list of CAP
+#!  categorical properties. <A>list</A> must be a list
+#!  containing one entry, if the property is self dual,
+#!  or two, if the dual property has a different name.
+#!  If the first entry of the list is empty and the second
+#!  is a property name, the property is assumed to have no
+#!  dual.
+#! @Arguments list
+DeclareGlobalFunction( "AddCategoricalProperty" );
 
-  function( )
-    local i, internal_list;
+InstallGlobalFunction( AddCategoricalProperty,
+  function( property_list )
+    local i;
 
-    internal_list :=  CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST.MathematicalPropertiesOfCategories;
+    if Length( property_list ) > 2 or Length( property_list ) < 1 then
+        Error( "only length 1 or two allowed " );
+        return;
+    fi;
 
-    for i in internal_list do
+    Add( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, property_list );
 
-        DeclareProperty( i, IsCapCategory );
-
+    for i in [ 1 .. 2 ] do
+        if IsBound( property_list[ i ] ) and IsString( property_list[ i ] ) then
+            DeclareProperty( property_list[ i ], IsCapCategory );
+        fi;
     od;
-
 end );
 
-INSTALL_CAN_COMPUTE_PROPERTIES( );
+Perform(
+## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
+    [ [ "IsEnrichedOverCommutativeRegularSemigroup" ],
+      [ "IsAbCategory" ],
+      [ "IsLinearCategoryOverCommutativeRing" ],
+      [ "IsAdditiveCategory" ],
+      [ "IsPreAbelianCategory" ],
+      [ "IsAbelianCategory" ],
+      [ "IsMonoidalCategory" ],
+      [ "IsBraidedMonoidalCategory" ],
+      [ "IsSymmetricMonoidalCategory" ],
+      [ "IsSymmetricClosedMonoidalCategory" ],
+      [ "IsRigidSymmetricClosedMonoidalCategory" ],
+      [ "IsStrictMonoidalCategory" ],
+      [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ]
+    ],
+    AddCategoricalProperty );
 
 DeclareAttribute( "TheoremRecord",
                   IsCapCategory, "mutable" );
