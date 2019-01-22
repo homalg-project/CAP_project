@@ -254,7 +254,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( morphism )
         
         return VectorSpaceMorphism( Source( morphism ),
-                                    (-1) * UnderlyingMatrix( morphism ),
+                              -One( homalg_field ) * UnderlyingMatrix( morphism ),
                                     Range( morphism ) );
         
     end );
