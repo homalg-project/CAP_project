@@ -2958,6 +2958,52 @@ SolveLinearSystemInAbCategory := rec(
   return_type := "morphism_or_fail"
 ),
 
+RandomObject := rec(
+  installation_name := "RandomObject",
+  filter_list := [ "category", IsInt ],
+  return_type := "object"
+),
+
+RandomMorphism := rec(
+  installation_name := "RandomMorphism",
+  filter_list := [ "category", IsInt ],
+  return_type := "morphism"
+),
+
+RandomMorphismWithFixedSource := rec(
+  installation_name := "RandomMorphismWithFixedSource",
+  filter_list := [ "object", IsInt ],
+  return_type := "morphism",
+  post_function := function( object, n, return_value )
+    if not IsEqualForObjects( object, Source( return_value ) ) then
+      Error( "The source of the returned morphism is not equal to the given object" );
+    fi;
+  end 
+),
+
+RandomMorphismWithFixedRange := rec(
+  installation_name := "RandomMorphismWithFixedRange",
+  filter_list := [ "object", IsInt ],
+  return_type := "morphism",
+  post_function := function( object, n, return_value )
+    if not IsEqualForObjects( object, Range( return_value ) ) then
+      Error( "The range of the returned morphism is not equal to the given object" );
+    fi;
+  end 
+),
+
+RandomMorphismWithFixedSourceAndRange := rec(
+  installation_name := "RandomMorphismWithFixedRange",
+  filter_list := [ "object", "object", IsInt ],
+  return_type := "morphism",
+  post_function := function( object1, object2, n, return_value )
+    if not IsEqualForObjects( object1, Source( return_value ) ) or
+       not IsEqualForObjects( object2, Range( return_value ) ) then
+      Error( "The source or range of the returned morphism is not compatible with the objects in the input!" );
+    fi;
+  end
+),
+
   ) );
 
 InstallValue( CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, rec() );

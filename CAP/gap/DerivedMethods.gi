@@ -1073,6 +1073,31 @@ AddDerivationToCAP( InjectiveColift,
     
 end : Description := "InjectiveColift using Colift" );
 
+##
+AddDerivationToCAP( RandomMorphism,
+                    [
+                      [ RandomObject, 1 ],
+                      [ RandomMorphismWithFixedSource, 1 ]
+                    ],
+
+  function( category, n )
+
+    return RandomMorphismWithFixedSource( RandomObject( category, n ), n );
+
+end : Description := "RandomMorphism using RandomObject and RandomMorphismWithFixedSource" );
+
+##
+AddDerivationToCAP( RandomMorphism,
+                    [
+                      [ RandomObject, 1 ],
+                      [ RandomMorphismWithFixedRange, 1 ]
+                    ],
+
+  function( category, n )
+
+    return RandomMorphismWithFixedRange( RandomObject( category, n ), n );
+
+end : Description := "RandomMorphism using RandomObject and RandomMorphismWithFixedRange" );
 
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,

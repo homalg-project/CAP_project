@@ -229,8 +229,14 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
                             IsEqualForMorphisms := "never",
                             IsEqualForMorphismsOnMor := "never",
                             IsEqualForCacheForObjects := "never",
-                            IsEqualForCacheForMorphisms := "never" );
-    
+                            IsEqualForCacheForMorphisms := "never",
+                            RandomObject := "never",
+                            RandomMorphism := "never",
+                            RandomMorphismWithFixedSource := "never",
+                            RandomMorphismWithFixedRange := "never",
+                            RandomMorphismWithFixedSourceAndRange := "never"
+                            );
+
     obj_rec!.redirects := rec( );
     
     obj_rec!.primitive_operations := rec( );
