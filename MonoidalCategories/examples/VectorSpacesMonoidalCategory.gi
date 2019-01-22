@@ -1,5 +1,4 @@
-
-LoadPackage( "CAP" );
+LoadPackage( "MonoidalCategories" );
 
 LoadPackage( "MatricesForHomalg" );
 

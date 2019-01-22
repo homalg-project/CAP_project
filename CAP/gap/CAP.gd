@@ -141,12 +141,6 @@ Perform(
       [ "IsAdditiveCategory" ],
       [ "IsPreAbelianCategory" ],
       [ "IsAbelianCategory" ],
-      [ "IsMonoidalCategory" ],
-      [ "IsBraidedMonoidalCategory" ],
-      [ "IsSymmetricMonoidalCategory" ],
-      [ "IsSymmetricClosedMonoidalCategory" ],
-      [ "IsRigidSymmetricClosedMonoidalCategory" ],
-      [ "IsStrictMonoidalCategory" ],
       [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ]
     ],
     AddCategoricalProperty );

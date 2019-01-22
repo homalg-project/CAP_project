@@ -14,6 +14,18 @@ DeclareGlobalVariable( "CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS" );
 
 DeclareGlobalVariable( "MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
+Perform(
+## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
+    [
+      [ "IsMonoidalCategory" ],
+      [ "IsBraidedMonoidalCategory" ],
+      [ "IsSymmetricMonoidalCategory" ],
+      [ "IsSymmetricClosedMonoidalCategory" ],
+      [ "IsRigidSymmetricClosedMonoidalCategory" ],
+      [ "IsStrictMonoidalCategory" ],
+    ],
+    AddCategoricalProperty );
+
 ####################################
 ##
 #! @Section Monoidal Categories

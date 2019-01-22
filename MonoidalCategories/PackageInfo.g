@@ -1,5 +1,5 @@
 #
-# LinearAlgebraForCAP: Category of Matrices over a Field for CAP
+# MonoidalCategories
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,16 +8,16 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "LinearAlgebraForCAP",
-
-Subtitle := "Category of Matrices over a Field for CAP",
-
+PackageName := "MonoidalCategories",
+Subtitle := "Monoidal and monoidal (co)closed categories",
 Version := Maximum( [
   "2019.01.16", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2017.12.30", ## Sebas' version
+  "2019.01.15", ## Sebas' version
   ## this line prevents merge conflicts
-  "2018.10.11", ## Sepp's version
+  "2018.09.19", ## Sepp's version
+  ## this line prevents merge conflicts
+  "2018.08.15", ## Fabian's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -27,9 +27,23 @@ Persons := [
   rec(
     IsAuthor := true,
     IsMaintainer := true,
+    FirstNames := "Mohamed",
+    LastName := "Barakat",
+    WWWHome := "http://algebra.mathematik.uni-siegen.de/barakat/",
+    Email := "mohamed.barakat@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Gutsche",
-    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    WWWHome := "http://algebra.mathematik.uni-siegen.de/gutsche/",
     Email := "gutsche@mathematik.uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
@@ -45,7 +59,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Posur",
-    WWWHome := "https://sebastianpos.github.io",
+    WWWHome := "http://algebra.mathematik.uni-siegen.de/posur/",
     Email := "sebastian.posur@uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
@@ -58,13 +72,20 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/",
+SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+#SupportEmail   := "TODO",
+PackageWWWHome  := Concatenation( "https://homalg-project.github.io/CAP_project/", ~.PackageName ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
+ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/", ~.PackageName, "-", ~.Version ),
 
-ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-", ~.Version, "/LinearAlgebraForCAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-
-ArchiveFormats := ".tar.gz .zip",
+ArchiveFormats := ".tar.gz",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
@@ -74,27 +95,26 @@ ArchiveFormats := ".tar.gz .zip",
 ##    "dev"           for development versions of packages
 ##    "other"         for all other packages
 ##
-Status := "deposited",
+Status := "dev",
 
-AbstractHTML   :=  "<span class=\"pkgname\">LinearAlgebraForCAP</span> provides a skeletal model of the category of finite dimensional vector spaces over a computable field.",
+AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "LinearAlgebraForCAP",
+  BookName  := "MonoidalCategories",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Category of Matrices over a Field for CAP",
+  LongTitle := "Monoidal and monoidal (co)closed categories",
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
-  NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "ToolsForHomalg", ">=2015.09.18" ],
-                           [ "MatricesForHomalg", ">= 2018.02.04" ],
-                           [ "CAP", ">= 2019.01.16" ],
-                           [ "MonoidalCategories", ">= 2019.01.16" ],
-                           ],
+  GAP := ">= 4.9.2",
+  NeededOtherPackages := [
+                   [ "GAPDoc", ">= 1.5" ],
+                   [ "ToolsForHomalg", ">= 2018.05.22" ],
+                   [ "CAP", ">= 2019.01.16" ],
+                   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
@@ -103,6 +123,8 @@ AvailabilityTest := function()
         return true;
     end,
 
+TestFile := "tst/testall.g",
+
+Keywords := [ "monoidal categories", "monoidal closed categories", "monoidal coclosed categories", "tensor-Hom adjuction", "coHom-tensor adjuction" ],
+
 ));
-
-
