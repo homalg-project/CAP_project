@@ -111,3 +111,6 @@ DeclareGlobalFunction( "ADD_GRADED_COLIFT" );
 
 DeclareGlobalFunction( "ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT" );
 
+DeclareGlobalFunction( "ADD_GRADED_LIFT_ALONG_MONOMORPHISM" );
+
+DeclareGlobalFunction( "ADD_GRADED_COLIFT_ALONG_EPIMORPHISM" );
