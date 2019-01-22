@@ -854,9 +854,51 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         );
         
     end );
-    
+
+    ## Random methods
+    ##
+    AddRandomObject( category,
+
+      function( category, n )
+
+        return VectorSpaceObject( Random( [ 1 .. n ] ), homalg_field );
+
+    end );
+
+    ##
+    AddRandomMorphismWithFixedSource( category,
+
+      function( source_space, n )
+        local mat, range_space;
+
+        range_space := RandomObject( category, n );
+
+        mat := List( [ 1 .. Dimension( source_space ) ],
+                i -> List( [ 1 .. Dimension( range_space ) ], 
+                    j -> Random( [ -n - 10 .. n + 10 ] ) * One( homalg_field ) ) );
+
+        mat := HomalgMatrix( mat, Dimension( source_space), Dimension( range_space ), homalg_field );
+
+        return VectorSpaceMorphism( source_space, mat, range_space );
+
+    end );
+
+    ##
+    AddRandomMorphismWithFixedRange( category,
+
+      function( range_space, n )
+        local mat, source_space;
+
+        source_space := RandomObject( category, n );
+
+        mat := List( [ 1 .. Dimension( source_space ) ],
+                i -> List( [ 1 .. Dimension( range_space ) ], 
+                    j -> Random( [ -n - 10 .. n + 10 ] ) * One( homalg_field ) ) );
+
+        mat := HomalgMatrix( mat, Dimension( source_space), Dimension( range_space ), homalg_field );
+
+        return VectorSpaceMorphism( source_space, mat, range_space );
+
+    end );
+
 end );
-
-
-
-
