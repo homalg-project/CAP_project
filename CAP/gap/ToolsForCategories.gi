@@ -570,6 +570,8 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     
     symbol_appearance_rec := rec( );
     
+    symbol_list := Concatenation( symbol_list, RecNames( replacement_record ) );
+    
     for current_symbol in func_as_list do
         
         if current_symbol in symbol_list then
