@@ -595,7 +595,7 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     
     symbol_appearance_rec := List( RecNames( symbol_appearance_rec ), i -> [ i, symbol_appearance_rec.(i) ] );
     symbol_appearance_rec := CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE( symbol_appearance_rec, replacement_record );
-    return List( symbol_appearance_rec, i -> [ CAP_INTERNAL_VALUE_GLOBAL_OR_VALUE( i[ 1 ] ), i[ 2 ] ] );
+    return symbol_appearance_rec;
     
 end );
 
