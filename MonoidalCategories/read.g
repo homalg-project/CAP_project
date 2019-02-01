@@ -44,3 +44,8 @@ ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesDe
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesDerivedMethods.gi" );
 ReadPackage( "MonoidalCategories", "gap/SymmetricCoclosedMonoidalCategoriesDerivedMethods.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesDerivedMethods.gi" );
+
+## Using this package as a template
+ReadPackage( "MonoidalCategories", "gap/CreateMonoidalCategories.gi");
+ReadPackage( "MonoidalCategories", "gap/CreateClosedMonoidalCategories.gi");
+ReadPackage( "MonoidalCategories", "gap/CreateCoclosedMonoidalCategories.gi");
