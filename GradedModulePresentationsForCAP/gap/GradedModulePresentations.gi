@@ -97,8 +97,6 @@ InstallMethod( GradedRightPresentations,
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
-      SetIsStrictMonoidalCategory( category, true );
-    
     fi;
     
     ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );

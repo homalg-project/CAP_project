@@ -11,7 +11,18 @@ SetPackageInfo( rec(
 PackageName := "GradedModulePresentationsForCAP",
 Subtitle := "Presentations for graded modules",
 Version := "0.1",
-Date := "20/03/2017", # dd/mm/yyyy format
+Subtitle := "Category R-pres for CAP",
+Version := Maximum( [
+           ##
+           "2017.03.20", # Sebas version
+           ##
+           "2018.03.20", # Sepps version
+           ##
+           "2018.12.24", # Mohamed's version
+           ##
+           ] ),
+Date := ~.Version{[ 1 .. 10 ]},
+Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
 
 Persons := [
   rec(

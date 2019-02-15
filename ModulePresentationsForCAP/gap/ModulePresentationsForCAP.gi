@@ -101,8 +101,6 @@ InstallMethod( RightPresentations,
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
-      SetIsStrictMonoidalCategory( category, true );
-    
     fi;
     
     ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
