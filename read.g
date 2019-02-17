@@ -49,7 +49,8 @@ ReadPackage( "Toposes", "gap/SymmetricCocartesianCategoriesDerivedMethods.gi" );
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesDerivedMethods.gi" );
 ReadPackage( "Toposes", "gap/SymmetricCocartesianCoclosedCategoriesDerivedMethods.gi" );
 
-ReadPackage( "Toposes", "gap/DerivedMethods.gi" );
-
 ## Topos
+ReadPackage( "Toposes", "gap/MethodRecord.gi");
 ReadPackage( "Toposes", "gap/Topos.gi");
+
+ReadPackage( "Toposes", "gap/DerivedMethods.gi" );

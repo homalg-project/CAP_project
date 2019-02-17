@@ -14,6 +14,8 @@ Version := Maximum( [
                    "2019.01.20", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.07.01", ## Tom's version
+                   ## this line prevents merge conflicts
+                   "2019.01.29", ## Mario's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -48,6 +50,20 @@ Persons := [
     Place := "Siegen",
     Institution := "University of Siegen",
   ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Mario",
+    LastName := "Román",
+    WWWHome := "https://mroman42.github.io/",
+    Email := "mromang08@gmail.com",
+    PostalAddress := Concatenation(
+               "Mathematical Institute\n",
+               "University of Oxford\n",
+               "Oxford, United Kingdom" ),
+    Place := "Oxford",
+    Institution := "University of Oxford",
+  ),
 ],
 
 SourceRepository := rec(
@@ -56,7 +72,7 @@ SourceRepository := rec(
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 #SupportEmail   := "TODO",
-PackageWWWHome  := Concatenation( "https://homalg-project.github.io/CAP_project/", ~.PackageName ),
+PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
@@ -90,7 +106,7 @@ Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2019.01.17" ],
+                   [ "CAP", ">= 2019.01.29" ],
                    ],
   SuggestedOtherPackages := [
                    [ "MonoidalCategories", ">= 2019.01.20" ],

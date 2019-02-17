@@ -29,6 +29,7 @@ AutoDoc(
                                 "gap/BraidedCocartesianCategories.gd",
                                 "gap/CocartesianCoclosedCategoriesDoc.gd",
                                 #"gap/CocartesianCoclosedCategories.gd",
+                                "gap/Topos.gd",
                                 ],
                             scan_dirs := [ ],
                             ),

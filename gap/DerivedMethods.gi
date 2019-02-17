@@ -95,3 +95,20 @@ AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_a, pi_bc ], r );
     
 end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts using the universal morphism into direct product");
+
+##
+AddDerivationToCAP( SubobjectOfClassifyingMorphism,
+                    [ [ TruthMorphismIntoSubobjectClassifierWithGivenObjects , 1 ],
+                      [ ProjectionInFactorOfFiberProduct , 1 ] ],
+  function( mor )
+
+      local category, truth;
+
+      category := CapCategory(mor);
+
+      truth := TruthMorphismIntoSubobjectClassifierWithGivenObjects(
+                  TerminalObject(category), SubobjectClassifier(category));
+
+      return ProjectionInFactorOfFiberProduct([ mor , truth ], 1);
+
+end : Description := "SubobjectOfClassifyingMorphism using the fiber product along the true morphism" );
