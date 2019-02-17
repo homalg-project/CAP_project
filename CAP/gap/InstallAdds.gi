@@ -673,19 +673,6 @@ InstallMethod( AddTerminalObject,
 end );
 
 ##
-InstallMethod( AddSubobjectClassifier,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    local wrapped_func;
-    
-    wrapped_func := function( cat ) return func(); end;
-    
-    AddSubobjectClassifier( category, [ [ wrapped_func, [ ] ] ], weight );
-    
-end );
-
-##
 InstallMethod( AddDistinguishedObjectOfHomomorphismStructure,
                [ IsCapCategory, IsFunction, IsInt ],
                
