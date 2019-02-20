@@ -2099,6 +2099,7 @@ UniversalMorphismIntoCoimage := rec(
     return [ true ];
   end,
   return_type := "morphism",
+  only_lists_in_dual_arguments_are_reversed := true,
   dual_operation := "UniversalMorphismFromImage" ),
 
 UniversalMorphismIntoCoimageWithGivenCoimage := rec(
@@ -2135,6 +2136,7 @@ UniversalMorphismIntoCoimageWithGivenCoimage := rec(
     return [ true ];
   end,
   return_type := "morphism",
+  only_lists_in_dual_arguments_are_reversed := true,
   dual_operation := "UniversalMorphismFromImageWithGivenImageObject" ),
 
 MorphismFromCoimageToImageWithGivenObjects := rec(
@@ -2370,6 +2372,7 @@ UniversalMorphismFromImage := rec(
   cache_name := "UniversalMorphismFromImage",
   universal_object_position := "Source",
   universal_type := "Limit",
+  only_lists_in_dual_arguments_are_reversed := true,
   dual_operation := "UniversalMorphismIntoCoimage",
   
   pre_function := function( morphism, test_factorization )
@@ -2406,6 +2409,7 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
   io_type := [ [ "alpha", "tau", "I" ], [ "I", "tau_1_range" ] ],
   cache_name := "UniversalMorphismFromImageWithGivenImageObject",
   universal_type := "Limit",
+  only_lists_in_dual_arguments_are_reversed := true,
   dual_operation := "UniversalMorphismIntoCoimageWithGivenCoimage",
   
   pre_function := function( morphism, test_factorization, image )
