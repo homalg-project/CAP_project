@@ -26,6 +26,8 @@ InstallMethod( GradedLeftPresentations,
     
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
 
+    ENHANCE_GRADED_RING_WITH_RANDOM_FUNCTIONS( ring );
+    
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
@@ -95,6 +97,8 @@ InstallMethod( GradedRightPresentations,
     
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
     
+    ENHANCE_GRADED_RING_WITH_RANDOM_FUNCTIONS( ring );
+  
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
@@ -158,7 +162,7 @@ end );
 InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
                        
   function( category )
-    
+
     ADD_GRADED_KERNEL_LEFT( category );
     
     if CanCompute( category!.underlying_presentation_category, "Lift" ) then
@@ -204,6 +208,18 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     ADD_GRADED_LIFT_ALONG_MONOMORPHISM( category );
 
     ADD_GRADED_COLIFT_ALONG_EPIMORPHISM( category );
+
+    if IsBound( category!.ring_for_representation_category!.random_graded_element_func ) and
+         IsBound( category!.ring_for_representation_category!.random_matrix_between_free_left_presentations_func ) and
+           IsBound( category!.ring_for_representation_category!.random_matrix_for_left_presentation_func ) then
+
+             ADD_GRADED_RANDOM_OBJECT_LEFT( category );
+
+             ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT( category );
+
+             ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT( category );
+
+    fi;
     
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
@@ -278,6 +294,18 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
 
     ADD_GRADED_COLIFT_ALONG_EPIMORPHISM( category );
     
+    if IsBound( category!.ring_for_representation_category!.random_graded_element_func ) and
+         IsBound( category!.ring_for_representation_category!.random_matrix_between_free_left_presentations_func ) and
+           IsBound( category!.ring_for_representation_category!.random_matrix_for_left_presentation_func ) then
+
+            ADD_GRADED_RANDOM_OBJECT_RIGHT( category );
+
+            ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT( category );
+
+            ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT( category );
+
+    fi;
+
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS( category );
@@ -983,6 +1011,331 @@ InstallGlobalFunction( ADD_GRADED_COLIFT_ALONG_EPIMORPHISM,
 end );
 
 ##
+## Interpretation of n: the matrix of the created random object has at most n rows and n cols.
+##
+InstallGlobalFunction( ADD_GRADED_RANDOM_OBJECT_LEFT,
+
+  function( category )
+
+    AddRandomObject( category,
+
+      function( C, n )
+        local homalg_ring, nr_rows, nr_cols, mat;
+
+        homalg_ring := category!.ring_for_representation_category;
+
+        nr_rows := Random( [ 1 .. n ] );
+
+        nr_cols := Random( [ 1 .. n ] );
+
+        mat := homalg_ring!.random_matrix_for_left_presentation_func( nr_rows, nr_cols );
+
+        return AsGradedLeftPresentation( mat[ 1 ], mat[ 3 ] );
+
+      end );
+
+end );
+
+##
+## The number of relations of the range of the created morphism is n.
+##
+InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT,
+
+  function( category )
+    local homalg_ring, Deg;
+
+    homalg_ring := category!.ring_for_representation_category;
+ 
+    Deg := homalg_ring!.random_degrees;
+
+    AddRandomMorphismWithFixedSource( category,
+
+      function( M, n )
+        local m, mat, degrees_of_range, degrees_mat, y, m_y, D, syz, u, x, degrees_syz, non_trivial_degrees, positions, U, i;
+
+        if IsZero( M ) then
+
+          u := homalg_ring!.random_matrix_for_left_presentation_func( n, n );
+
+          U := AsGradedLeftPresentation( u[ 1 ], u[ 3 ] );
+
+          return ZeroMorphism( M, U );
+
+        fi;
+
+        m := UnderlyingMatrix( M );
+
+        if NrRows( m ) = 0 then
+
+          degrees_of_range := List( [ 1 .. n ], i -> Random( GeneratorDegrees( M ) ) - Random( Deg ) );
+
+          x := homalg_ring!.random_matrix_between_free_left_presentations_func( GeneratorDegrees( M ), degrees_of_range );
+
+          u := homalg_ring!.random_matrix_between_free_left_presentations_func( List( degrees_of_range, d -> d + Random( Deg ) ), degrees_of_range );
+
+          U := AsGradedLeftPresentation( u, degrees_of_range );
+
+          return GradedPresentationMorphism( M, x, U );
+
+        fi;
+
+        mat := UnionOfColumns( List( [ 1 .. Int( n /NrCols( m ) ) + 1 ], j -> m ) );
+
+        mat := CertainColumns( mat, [ 1 .. n ] );
+
+        degrees_mat := DegreesOfEntries( mat );
+
+        y := List( degrees_mat, l -> List( l, d -> homalg_ring!.random_graded_element_func( d ) ) );
+
+        y := HomalgMatrix( y, homalg_ring );
+
+        m_y := UnionOfColumns( m, y );
+
+        D := Concatenation( List( [ 1 .. Int( NrCols( m_y ) / NrCols( m ) ) + 1 ], j -> GeneratorDegrees( M ) ) );
+
+        D := D{ [ 1 .. NrCols( m_y ) ] };
+
+        syz := SyzygiesOfColumns( m_y );
+
+        if NrCols( syz ) <> 0 then
+
+            u := [ 1 .. Random( [ 1 .. NrCols( syz ) ] ) ];
+
+            syz := CertainColumns( syz, u );
+
+        fi;
+
+        x := CertainRows( syz, [ 1 .. NrCols( m ) ] );
+
+        u := CertainRows( syz, [ NrCols( m ) + 1 .. NrRows( syz ) ] );
+
+        degrees_syz := DegreesOfEntries( syz );
+
+        non_trivial_degrees := NonTrivialDegreePerColumn( syz );
+
+        positions := List( [ 1 .. NrCols( syz ) ], 
+            i -> Position( TransposedMat( degrees_syz )[ i ], non_trivial_degrees[ i ] ) );
+
+        if fail in positions then
+
+            for i in [ 1 .. NrCols( syz ) ] do
+                if positions[ i ] = fail then
+                  positions[ i ] := 1;
+                fi;
+            od;
+
+        fi;
+
+        degrees_of_range :=
+            List( [ 1 .. NrCols( syz ) ],
+            i -> D[ positions[ i ] ] - degrees_syz[ positions[ i ] ][ i ] );
+
+        U := AsGradedLeftPresentation( u, degrees_of_range );
+
+        return GradedPresentationMorphism( M, x, U );
+
+      end );
+
+end );
+
+##
+## The number of generators of the source of the created morphism is n.
+##
+InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
+
+  function( category )
+    local homalg_ring, Deg;
+
+    homalg_ring := category!.ring_for_representation_category;
+
+    Deg := homalg_ring!.random_degrees;
+
+    AddRandomMorphismWithFixedRange( category,
+
+      function( U, n )
+        local u, mat, degrees_of_range, x, degrees_mat, x_u, syz, m, y, degrees_x_u, non_trivial_degrees, positions, degrees_of_source, M, i;
+
+        if IsZero( U ) then
+
+          m := homalg_ring!.random_matrix_for_left_presentation_func( n, n );
+
+          M := AsGradedLeftPresentation( m[ 1 ], m[ 3 ] );
+
+          return ZeroMorphism( M, U );
+
+        fi;
+
+        u := UnderlyingMatrix( U );
+
+        if NrRows( u ) = 0 then
+
+          degrees_of_source := List( [ 1 .. n ], i -> Random( GeneratorDegrees( U ) ) + Random( Deg ) );
+
+          x := homalg_ring!.random_matrix_between_free_left_presentations_func( degrees_of_source, GeneratorDegrees( U ) );
+
+          M := GradedFreeLeftPresentation( n, homalg_ring, degrees_of_source );
+
+          return GradedPresentationMorphism( M, x, U );
+
+        fi;
+
+        mat := UnionOfRows( List( [ 1 .. Int( n /NrRows( u ) ) + 1 ], j -> u ) );
+
+        mat := CertainRows( mat, [ 1 .. n ] );
+
+
+        degrees_mat := DegreesOfEntries( mat );
+
+        x := List( degrees_mat, l -> List( l, d -> homalg_ring!.random_graded_element_func( d ) ) );
+
+        x := HomalgMatrix( x, homalg_ring );
+
+        x_u := UnionOfRows( x, u );
+
+        syz := SyzygiesOfRows( x_u );
+
+        if NrRows( syz ) <> 0 then
+
+          u := [ 1 .. Random( [ 1 .. NrRows( syz ) ] ) ];
+
+          syz := CertainRows( syz, u );
+
+        fi;
+
+        m := CertainColumns( syz, [ 1 .. NrRows( x ) ] );
+
+        y := CertainColumns( syz, [ NrRows( x ) + 1 .. NrCols( syz ) ] );
+
+        degrees_x_u := DegreesOfEntries( x_u );
+
+        non_trivial_degrees := NonTrivialDegreePerRow( x_u );
+
+        positions := List( [ 1 .. NrRows( x_u ) ],
+            i -> Position( degrees_x_u[ i ], non_trivial_degrees[ i ] ) );
+
+        if fail in positions then
+
+            for i in [ 1 .. NrRows( x_u ) ] do
+                if positions[ i ] = fail then
+                  positions[ i ] := 1;
+                fi;
+            od;
+
+        fi;
+
+        degrees_of_source := List( [ 1 .. NrRows( x ) ],
+                    i -> GeneratorDegrees( U )[ positions[ i ] ] + degrees_x_u[ i ][ positions[ i ] ] );
+
+        M := AsGradedLeftPresentation( m, degrees_of_source );
+
+        return GradedPresentationMorphism( M, x, U );
+
+      end );
+
+end );
+
+## 
+InstallGlobalFunction( ADD_GRADED_RANDOM_OBJECT_RIGHT,
+
+  function( category )
+
+    AddRandomObject( category,
+
+      function( C, n )
+        local homalg_ring, graded_left_presentations, M;
+
+        homalg_ring := category!.ring_for_representation_category;
+
+        graded_left_presentations := GradedLeftPresentations( homalg_ring );
+
+        M := RandomObject( graded_left_presentations, n );
+
+        return AsGradedRightPresentation(
+                    Involution( UnderlyingMatrix( M ) ),
+                    GeneratorDegrees( M )
+                    );
+    end );
+
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT,
+
+  function( category )
+    local homalg_ring;
+
+    homalg_ring := category!.ring_for_representation_category;
+
+    AddRandomMorphismWithFixedSource( category,
+
+      function( M, n )
+        local M1, f;
+
+        M1 := AsGradedLeftPresentation(
+              Involution( UnderlyingMatrix( M ) ),
+              GeneratorDegrees( M )
+              );
+
+        f := RandomMorphismWithFixedSource( M1, n );
+
+        return
+        GradedPresentationMorphism(
+
+            AsGradedRightPresentation(
+                Involution( UnderlyingMatrix( Source( f ) ) ),
+                GeneratorDegrees( Source( f ) )
+                                     ),
+
+            Involution( UnderlyingMatrix( f ) ),
+
+            AsGradedRightPresentation(
+                Involution( UnderlyingMatrix( Range( f ) ) ),
+                GeneratorDegrees( Range( f ) )
+                                     ) );
+    end );
+
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
+
+  function( category )
+    local homalg_ring;
+
+    homalg_ring := category!.ring_for_representation_category;
+
+    AddRandomMorphismWithFixedRange( category,
+
+      function( N, n )
+        local N1, f;
+
+        N1 := AsGradedLeftPresentation(
+              Involution( UnderlyingMatrix( N ) ),
+              GeneratorDegrees( N )
+              );
+
+        f := RandomMorphismWithFixedRange( N1, n );
+
+        return
+        GradedPresentationMorphism(
+
+            AsGradedRightPresentation(
+                Involution( UnderlyingMatrix( Source( f ) ) ),
+                GeneratorDegrees( Source( f ) )
+                                     ),
+
+            Involution( UnderlyingMatrix( f ) ),
+
+            AsGradedRightPresentation(
+                Involution( UnderlyingMatrix( Range( f ) ) ),
+                GeneratorDegrees( Range( f ) )
+                                     ) );
+
+     end );
+
+end );
+
+##
 InstallGlobalFunction( ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS,
                       
   function( category )
@@ -1162,6 +1515,183 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
     end );
 
 end );
+
+##
+InstallGlobalFunction( ENHANCE_GRADED_RING_WITH_RANDOM_FUNCTIONS,
+    function( S )
+      local indeterminates, degrees_of_indeterminates, random_graded_element_func, random_matrix_between_free_left_presentations_func, 
+      random_matrix_for_left_presentation_func, R, D;
+
+      indeterminates := Indeterminates( S );
+
+      degrees_of_indeterminates := List( indeterminates, Degree );
+
+      random_graded_element_func :=
+
+        function( degree )
+          local mat, p, coeffs, r, l1, l2, A, B, D, d, dD, ID, P, G, M;
+
+          # To use the command RandomMatrixBetweenGradedFreeLeftModules, all degrees of the indeterminates should be contained in {0,1} or {0,-1}.
+          if Rank( DegreeGroup( S ) ) = 1 and 
+          ( IsSubset( Set( [ 0, 1 ] ), Set( List( degrees_of_indeterminates, HomalgElementToInteger ) ) ) or
+            IsSubset( Set( [ 0, -1 ] ), Set( List( degrees_of_indeterminates, HomalgElementToInteger ) ) ) ) then
+
+            mat := RandomMatrixBetweenGradedFreeLeftModules( [ degree ], [ 0 ], S );
+
+            p := MatElm( mat, 1, 1 );
+
+            if IsZero( p ) then
+
+              return p;
+
+            fi;
+
+            p := EvalRingElement( p );
+
+            coeffs := Coefficients( p );
+
+            r := Random( [ 1, 1, Minimum( 2, NrRows( coeffs ) ) ] );
+
+            l1 := EntriesOfHomalgMatrix( coeffs ){ [ 1 .. r ] };
+
+            l2 := coeffs!.monomials{ [ 1 .. r ] };
+
+            return ( l1*l2 )/S;
+
+          elif IsPackageMarkedForLoading( "NConvex", "2019.02.02" ) or 
+                ( IsPackageMarkedForLoading( "Convex", "2017.09.02" ) and IsPackageMarkedForLoading( "PolymakeInterface", "2018.09.25" ) ) then
+
+            A := DegreeGroup( S );
+
+            B := HomalgRing( A );
+
+            D := List( degrees_of_indeterminates, UnderlyingMorphism );
+
+            D := List( D, d -> MatrixOfMap( d ) );
+
+            D := Involution( UnionOfRows( D ) );
+
+            d := Involution( MatrixOfMap( UnderlyingMorphism( degree ) ) );
+
+            dD := UnionOfColumns( -d, D );
+
+            dD := UnionOfRows( dD, -dD );
+
+            # We need a positive integral solution to system of inequalities dD, hence we add extra inequalities (ID).
+            ID := UnionOfColumns( HomalgZeroMatrix( NrCols( D ), 1, B ), HomalgIdentityMatrix( NrCols( D ), B ) );
+
+            # Now all we need is an integral solution to the following system of inequalities.
+            D := UnionOfRows( dD, ID );
+
+            D := EntriesOfHomalgMatrixAsListList( D );
+
+            D := List( D, d -> List( d, e -> HomalgElementToInteger( e ) ) );
+
+            P := ValueGlobal( "PolyhedronByInequalities" )( D );
+
+            G := ValueGlobal( "LatticePointsGenerators" )( P );
+
+            if G[ 1 ] = [  ] then
+
+              return Zero( S );
+
+            else
+
+              if G[ 2 ] <> [  ] or G[ 3 ] <> [  ] then
+
+                  M := List( [ 1 .. Random( [ 1, 2, 3 ] ) ], 
+                       i -> Random( G[ 1 ] ) + Random( [ Zero( B ), One( B ) ] ) * Random( Concatenation( G[ 2 ], G[ 3 ], -G[ 3 ] ) ) );
+
+              else
+
+                  M := List( [ 1 .. Random( [ 1, 2, 3 ] ) ], i -> Random( G[ 1 ] ) );
+
+              fi;
+
+              P := List( M, m -> Product( List( [ 1 .. Length( indeterminates ) ], i -> indeterminates[ i ] ^ m[ i ] ) ) );
+
+              return Sum( List( P, p -> Random( [ -10 .. 10 ] ) * One( S ) * p ) );
+
+            fi;
+
+          fi;
+
+        end;
+
+      random_matrix_between_free_left_presentations_func :=
+
+        function( degrees_1, degrees_2 )
+          local mat;
+
+          mat := List( degrees_1,
+
+                        i -> List( degrees_2,
+                        j -> S!.random_graded_element_func( i - j ) )
+                        );
+
+          return HomalgMatrix( mat, S );
+          
+        end;
+
+      random_matrix_for_left_presentation_func :=
+
+        function( m, n )
+          local D, L, K;
+
+          D := S!.random_degrees;
+
+          L := List( [ 1 .. m ], i -> Random( D ) );
+
+          K := List( [ 1 .. n ], i -> Random( D ) );
+
+          if m * n = 0 then
+
+              return [ HomalgZeroMatrix( m, n, S ), L, K ];
+
+          else
+
+              return [ S!.random_matrix_between_free_left_presentations_func( L, K ), L, K ];
+
+          fi;
+
+        end;
+
+      R := UnderlyingNonGradedRing( S );
+
+      if HasIndeterminatesOfPolynomialRing( R ) or
+         HasIndeterminatesOfExteriorRing( R ) or
+         ( IsHomalgResidueClassRingRep( R ) and
+           ( HasIndeterminatesOfPolynomialRing( AmbientRing( R ) ) or HasIndeterminatesOfExteriorRing(  AmbientRing( R ) ) ) ) then
+
+          if  ( Rank( DegreeGroup( S ) ) = 1 and
+                ( IsSubset( Set( [ 0, 1 ] ), Set( List( degrees_of_indeterminates, HomalgElementToInteger ) ) ) or
+                    IsSubset( Set( [ 0, -1 ] ), Set( List( degrees_of_indeterminates, HomalgElementToInteger ) ) ) ) )
+              or
+              IsPackageMarkedForLoading( "NConvex", "2019.02.02" )
+              or
+              ( IsPackageMarkedForLoading( "Convex", "2017.09.02" ) and IsPackageMarkedForLoading( "PolymakeInterface", "2018.09.25" ) ) then
+
+                  D := Set( List( Indeterminates( S ), Degree ) );
+
+                  D := ShallowCopy( Combinations( Concatenation( D, D ) ) );
+
+                  Remove( D, 1 );
+
+                  S!.random_degrees := List( D, Sum );
+
+                  S!.random_graded_element_func := random_graded_element_func;
+
+                  S!.random_matrix_between_free_left_presentations_func := random_matrix_between_free_left_presentations_func;
+
+                  S!.random_matrix_for_left_presentation_func := random_matrix_for_left_presentation_func;
+
+          fi;
+
+      fi;
+
+end );
+
+
 # 
 # ##
 # InstallGlobalFunction( ADD_GRADED_BRAIDING_LEFT,
