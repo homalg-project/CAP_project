@@ -161,3 +161,60 @@ DeclareOperation( "AddDualCoEvaluationMorphismWithGivenSource",
 
 DeclareOperation( "AddDualCoEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are objects $a,b$ and a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$.
+#! The output is a morphism $g: a \rightarrow b \otimes c$ corresponding to $f$ under the
+#! cohom tensor adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(a, b \otimes c)$.
+#! @Arguments a, b, f
+DeclareOperation( "InternalCoHomToTensorProductAdjunctionMap",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>InternalCoHomToTensorProductAdjunctionMap</C>.
+#! $F: (a, b, f: \mathrm{\underline{coHom}}(a,b) \rightarrow c) \mapsto ( g: a \rightarrow b \otimes c )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalCoHomToTensorProductAdjunctionMap",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalCoHomToTensorProductAdjunctionMap",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalCoHomToTensorProductAdjunctionMap",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalCoHomToTensorProductAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are objects $b,c$ and a morphism $g: a \rightarrow b \otimes c$.
+#! The output is a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$
+#! corresponding to $g$ under the cohom tensor adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), c )$.
+#! @Arguments b, c, g
+DeclareOperation( "TensorProductToInternalCoHomAdjunctionMap",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>TensorProductToInternalCoHomAdjunctionMap</C>.
+#! $F: (a, b, g: a \rightarrow b \otimes c) \mapsto ( f: \mathrm{\underline{coHom}}(a,b) \rightarrow c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalCoHomAdjunctionMap",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalCoHomAdjunctionMap",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalCoHomAdjunctionMap",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalCoHomAdjunctionMap",
+                  [ IsCapCategory, IsList ] );

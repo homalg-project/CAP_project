@@ -28,6 +28,22 @@ DualCoEvaluationMorphismWithGivenSource := rec(
   cache_name := "DualCoEvaluationMorphismWithGivenSource",
   return_type := "morphism" ),
 
+InternalCoHomToTensorProductAdjunctionMap := rec(
+  installation_name := "InternalCoHomToTensorProductAdjunctionMap",
+  filter_list := [ "object", "object", "morphism" ],
+  io_type := [ [ "a", "b", "f" ], [ "a", "t" ] ],
+  cache_name := "InternalCoHomToTensorProductAdjunctionMap",
+  return_type := "morphism",
+  no_with_given := true ),
+
+TensorProductToInternalCoHomAdjunctionMap := rec(
+  installation_name := "TensorProductToInternalCoHomAdjunctionMap",
+  filter_list := [ "object", "object", "morphism" ],
+  io_type := [ [ "b", "c", "g" ], [ "i", "c" ] ],
+  cache_name := "TensorProductToInternalCoHomAdjunctionMap",
+  return_type := "morphism",
+  no_with_given := true ),
+
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );

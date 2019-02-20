@@ -33,7 +33,7 @@ InstallMethod( CoEvaluationMorphism,
              object_1, object_2,
              TensorProductOnObjects( object_2, InternalCoHomOnObjects( object_1, object_2 ) )
            );
-    
+
 end );
 
 ##
