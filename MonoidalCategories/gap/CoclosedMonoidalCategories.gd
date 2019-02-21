@@ -534,3 +534,62 @@ DeclareOperation( "AddUniversalPropertyOfCoDual",
 
 DeclareOperation( "AddUniversalPropertyOfCoDual",
                   [ IsCapCategory, IsList ] );
+
+##
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$.
+#! The output is the corresponding morphism $ \mathrm{\underline{coHom}}(a,b) \rightarrow 1$
+#! under the cohom tensor adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), 1 )$.
+#! @Arguments alpha
+DeclareAttribute( "CoLambdaIntroduction",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoLambdaIntroduction</C>.
+#! $F: ( \alpha: a \rightarrow b ) \mapsto ( \mathrm{\underline{coHom}}(a,b) \rightarrow 1 )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoLambdaIntroduction",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoLambdaIntroduction",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoLambdaIntroduction",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoLambdaIntroduction",
+                  [ IsCapCategory, IsList ] );
+
+##
+#! @Description
+#! The arguments are two objects $a,b$,
+#! and a morphism $\alpha: \mathrm{\underline{coHom}}(a,b) \rightarrow 1$.
+#! The output is a morphism $a \rightarrow b$ corresponding to $\alpha$
+#! under the cohom tensor adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$.
+#! @Arguments a,b,alpha
+DeclareOperation( "CoLambdaElimination",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoLambdaElimination</C>.
+#! $F: ( a,b,\alpha: \mathrm{\underline{coHom}}(a,b) \rightarrow 1 ) \mapsto ( a \rightarrow b )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoLambdaElimination",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoLambdaElimination",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoLambdaElimination",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoLambdaElimination",
+                  [ IsCapCategory, IsList ] );

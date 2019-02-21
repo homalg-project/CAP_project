@@ -109,6 +109,22 @@ UniversalPropertyOfCoDual := rec(
   cache_name := "UniversalPropertyOfCoDual",
   return_type := "morphism",
   no_with_given := true ),
+
+CoLambdaIntroduction := rec(
+  installation_name := "CoLambdaIntroduction",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "u", "i" ] ],
+  cache_name := "CoLambdaIntroduction",
+  return_type := "morphism",
+  no_with_given := true ),
+
+CoLambdaElimination := rec(
+  installation_name := "CoLambdaElimination",
+  filter_list := [ "object", "object", "morphism" ],
+  io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
+  cache_name := "CoLambdaElimination",
+  return_type := "morphism",
+  no_with_given := true ),
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );
