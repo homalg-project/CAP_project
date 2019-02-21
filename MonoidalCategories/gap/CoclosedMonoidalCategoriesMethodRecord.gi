@@ -101,6 +101,14 @@ IsomorphismFromInternalCoHomToCoDual := rec(
   cache_name := "IsomorphismFromInternalCoHomToCoDual",
   return_type := "morphism",
   no_with_given := true ),
+
+UniversalPropertyOfCoDual := rec(
+  installation_name := "UniversalPropertyOfCoDual",
+  filter_list := [ "object", "object", "morphism" ],
+  io_type := [ [ "a", "t", "alpha" ], [ "d", "t" ] ],
+  cache_name := "UniversalPropertyOfCoDual",
+  return_type := "morphism",
+  no_with_given := true ),
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );

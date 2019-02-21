@@ -503,3 +503,34 @@ DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDual",
 
 DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDual",
                   [ IsCapCategory, IsList ] );
+
+
+##
+#! @Description
+#! The arguments are two objects $a,t$,
+#! and a morphism $\alpha: 1 \rightarrow a \otimes t$.
+#! The output is the morphism $a_{\vee} \rightarrow t$
+#! given by the universal property of $a_{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}(a_{\vee}, t)$.
+#! @Arguments a, t, alpha
+DeclareOperation( "UniversalPropertyOfCoDual",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>UniversalPropertyOfCoDual</C>.
+#! $F: ( a,t,\alpha: 1 \rightarrow a \otimes t ) \mapsto ( a^{\vee} \rightarrow t )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalPropertyOfCoDual",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalPropertyOfCoDual",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfCoDual",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfCoDual",
+                  [ IsCapCategory, IsList ] );
