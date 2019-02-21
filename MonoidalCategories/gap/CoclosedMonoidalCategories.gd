@@ -218,3 +218,230 @@ DeclareOperation( "AddTensorProductToInternalCoHomAdjunctionMap",
 
 DeclareOperation( "AddTensorProductToInternalCoHomAdjunctionMap",
                   [ IsCapCategory, IsList ] );
+
+
+##
+#! @Description
+#! The arguments are three objects $a,b,c$.
+#! The output is the precocomposition morphism
+#! $\mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c) )$.
+#! @Arguments a,b,c
+DeclareOperation( "MonoidalPreCoComposeMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are
+#! an object $s = \mathrm{\underline{coHom}}(a,c)$,
+#! three objects $a,b,c$,
+#! and an object $r = \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)$.
+#! The output is the precocomposition morphism
+#! $\mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c) )$.
+#! @Arguments s,a,b,c,r
+DeclareOperation( "MonoidalPreCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MonoidalPreCoComposeMorphismWithGivenObjects</C>.
+#! $F: (\mathrm{\underline{coHom}}(a,c),a,b,c,\mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)) \mapsto \mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMonoidalPreCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonoidalPreCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonoidalPreCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonoidalPreCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+
+##
+#! @Description
+#! The arguments are three objects $a,b,c$.
+#! The output is the postcocomposition morphism
+#! $\mathrm{MonoidalPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b) )$.
+#! @Arguments a,b,c
+DeclareOperation( "MonoidalPostCoComposeMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are
+#! an object $s = \mathrm{\underline{coHom}}(a,c)$,
+#! three objects $a,b,c$,
+#! and an object $r = \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)$.
+#! The output is the postcocomposition morphism
+#! $\mathrm{MonoidalPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b) )$.
+#! @Arguments s,a,b,c,r
+DeclareOperation( "MonoidalPostCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MonoidalPostCoComposeMorphismWithGivenObjects</C>.
+#! $F: (\mathrm{\underline{coHom}}(a,c),a,b,c,\mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)) \mapsto \mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMonoidalPostCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonoidalPostCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonoidalPostCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonoidalPostCoComposeMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+
+##
+#! @Description
+#! The argument is an object $a$.
+#! The output is its codual object $a_{\vee}$.
+#! @Returns an object
+#! @Arguments a
+DeclareAttribute( "CoDualOnObjects",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoDualOnObjects</C>.
+#! $F: a \mapsto a_{\vee}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoDualOnObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoDualOnObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoDualOnObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoDualOnObjects",
+                  [ IsCapCategory, IsList ] );
+
+##
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$.
+#! The output is its codual morphism $\alpha_{\vee}: b_{\vee} \rightarrow a_{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}( b_{\vee}, a_{\vee} )$.
+#! @Arguments alpha
+DeclareAttribute( "CoDualOnMorphisms",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The argument is an object $s = b_{\vee}$,
+#! a morphism $\alpha: a \rightarrow b$,
+#! and an object $r = a_{\vee}$.
+#! The output is the dual morphism $\alpha_{\vee}: b^{\vee} \rightarrow a^{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}( b_{\vee}, a_{\vee} )$.
+#! @Arguments s,alpha,r
+DeclareOperation( "CoDualOnMorphismsWithGivenCoDuals",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoDualOnMorphismsWithGivenCoDuals</C>.
+#! $F: (b_{\vee},\alpha,a_{\vee}) \mapsto \alpha_{\vee}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoDualOnMorphismsWithGivenCoDuals",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoDualOnMorphismsWithGivenCoDuals",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoDualOnMorphismsWithGivenCoDuals",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoDualOnMorphismsWithGivenCoDuals",
+                  [ IsCapCategory, IsList ] );
+
+##
+#! @Description
+#! The argument is an object $a$.
+#! The output is the coevaluation morphism $\mathrm{coev}_{a}: 1 \rightarrow a \otimes a_{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}( 1, a \otimes a_{\vee} )$.
+#! @Arguments a
+DeclareAttribute( "CoEvaluationForCoDual",
+                  IsCapCategoryObject );
+
+
+#! @Description
+#! The arguments are an object $s = 1$,
+#! an object $a$,
+#! and an object $r = a \otimes a_{\vee}$.
+#! The output is the coevaluation morphism $\mathrm{coev}_{a}: 1 \rightarrow a \otimes a_{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}( 1, a \otimes a_{\vee} )$.
+#! @Arguments s,a,r
+DeclareOperation( "CoEvaluationForCoDualWithGivenTensorProduct",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CoEvaluationForCoDualWithGivenTensorProduct</C>.
+#! $F: (1, a, a \otimes a_{vee}) \mapsto \mathrm{coev}_{a}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoEvaluationForCoDualWithGivenTensorProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoEvaluationForCoDualWithGivenTensorProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoEvaluationForCoDualWithGivenTensorProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoEvaluationForCoDualWithGivenTensorProduct",
+                  [ IsCapCategory, IsList ] );
+
+##
+#! @Description
+#! The argument is a cobidual object $(a_{\vee})_{\vee}$.
+#! The output is the morphism from the cobidual $(a_{\vee})_{\vee} \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}((a_{\vee})_{\vee}, a)$.
+#! @Arguments avv
+DeclareAttribute( "MorphismFromCoBidual",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The arguments are an object $s = (a_{\vee})_{\vee}$,
+#! and an object $a$.
+#! The output is the morphism from the cobidual $(a_{\vee})_{\vee} \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}((a_{\vee})_{\vee}, a)$.
+#! @Arguments s, a
+DeclareOperation( "MorphismFromCoBidualWithGivenCoBidual",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromCoBidualWithGivenCoBidual</C>.
+#! $F: ((a_{\vee})_{\vee}, a) \mapsto ((a_{\vee})_{\vee} \rightarrow a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromCoBidualWithGivenCoBidual",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromCoBidualWithGivenCoBidual",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromCoBidualWithGivenCoBidual",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromCoBidualWithGivenCoBidual",
+                  [ IsCapCategory, IsList ] );

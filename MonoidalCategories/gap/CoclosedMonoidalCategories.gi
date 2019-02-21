@@ -54,4 +54,97 @@ InstallMethod( DualCoEvaluationMorphism,
 
 end );
 
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MonoidalPreCoComposeMorphism :=
+  [ [ "MonoidalPreCoComposeMorphismWithGivenObjects", 1 ],
+    [ "TensorProductOnObjects", 1 ],
+    [ "InternalCoHomOnObjects", 3 ] ];
+##
+InstallMethod( MonoidalPreCoComposeMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+
+  function( object_1, object_2, object_3 )
+
+    return MonoidalPreCoComposeMorphismWithGivenObjects(
+             InternalCoHomOnObjects( object_1, object_3 ),
+             object_1, object_2, object_3,
+             TensorProductOnObjects( InternalCoHomOnObjects( object_1, object_2 ), InternalCoHomOnObjects( object_2, object_3 ) )
+           );
+
+end );
+
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MonoidalPostCoComposeMorphism :=
+  [ [ "MonoidalPostCoComposeMorphismWithGivenObjects", 1 ],
+    [ "TensorProductOnObjects", 1 ],
+    [ "InternalCoHomOnObjects", 3 ] ];
+##
+InstallMethod( MonoidalPostCoComposeMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+
+  function( object_1, object_2, object_3 )
+
+    return MonoidalPostCoComposeMorphismWithGivenObjects(
+             InternalCoHomOnObjects( object_1, object_3 ),
+             object_1, object_2, object_3,
+             TensorProductOnObjects( InternalCoHomOnObjects( object_2, object_3 ), InternalCoHomOnObjects( object_1, object_2 ) )
+           );
+
+end );
+
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoDualOnMorphisms :=
+  [ [ "CoDualOnMorphismsWithGivenCoDuals", 1 ],
+    [ "CoDualOnObjects", 2 ] ];
+##
+InstallMethod( CoDualOnMorphisms,
+               [ IsCapCategoryMorphism ],
+
+  function( morphism )
+
+    return CoDualOnMorphismsWithGivenCoDuals(
+             CoDualOnObjects( Range( morphism ) ),
+             morphism,
+             CoDualOnObjects( Source( morphism ) )
+           );
+
+end );
+
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoEvaluationForCoDual :=
+  [ [ "CoEvaluationForCoDualWithGivenTensorProduct", 1 ],
+    [ "TensorProductOnObjects", 1 ],
+    [ "CoDualOnObjects", 1 ],
+    [ "TensorUnit", 1 ] ];
+##
+InstallMethod( CoEvaluationForCoDual,
+               [ IsCapCategoryObject ],
+
+  function( object )
+    local category;
+
+    category := CapCategory( object );
+
+    return CoEvaluationForCoDualWithGivenTensorProduct(
+             TensorUnit( category ),
+             object,
+             TensorProductOnObjects( object, CoDualOnObjects( object ) )
+           );
+
+end );
+
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MorphismFromCoBidual :=
+  [ [ "MorphismFromCoBidualWithGivenCoBidual", 1 ],
+    [ "CoDualOnObjects", 2 ] ];
+##
+InstallMethod( MorphismFromCoBidual,
+               [ IsCapCategoryObject ],
+
+  function( object )
+
+    return MorphismFromCoBidualWithGivenCoBidual( CoDualOnObjects( CoDualOnObjects( object ) ), object );
+
+end );
+
 CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS );
