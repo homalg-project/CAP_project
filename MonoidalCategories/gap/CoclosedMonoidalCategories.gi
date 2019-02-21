@@ -147,4 +147,118 @@ InstallMethod( MorphismFromCoBidual,
 
 end );
 
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.InternalCoHomTensorProductCompatibilityMorphism :=
+  [ [ "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects", 1 ],
+    [ "TensorProductOnObjects", 3 ],
+    [ "InternalCoHomOnObjects", 3 ] ];
+##
+InstallMethod( InternalCoHomTensorProductCompatibilityMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+
+  function( object_1_1, object_1_2, object_2_1, object_2_2 )
+
+    return InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects(
+             object_1_1, object_1_2, object_2_1, object_2_2,
+             [ InternalCoHomOnObjects( TensorProductOnObjects( object_1_1, object_1_2 ), TensorProductOnObjects( object_2_1, object_2_2 ) ),
+               TensorProductOnObjects( InternalCoHomOnObjects( object_1_1, object_2_1 ), InternalCoHomOnObjects( object_1_2, object_2_2 ) ) ]
+           );
+
+end );
+
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoDualityTensorProductCompatibilityMorphism :=
+  [ [ "CoDualityTensorProductCompatibilityMorphismWithGivenObjects", 1 ],
+    [ "CoDualOnObjects", 3 ],
+    [ "TensorProductOnObjects", 2 ] ];
+##
+InstallMethod( CoDualityTensorProductCompatibilityMorphism,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+
+  function( object_1, object_2 )
+
+    return CoDualityTensorProductCompatibilityMorphismWithGivenObjects(
+             CoDualOnObjects( TensorProductOnObjects( object_1, object_2 ) ),
+             object_1, object_2,
+             TensorProductOnObjects( CoDualOnObjects( object_1 ), CoDualOnObjects( object_2 ) )
+           );
+
+end );
+
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.MorphismFromInternalCoHomToTensorProduct :=
+  [ [ "MorphismFromInternalCoHomToTensorProductWithGivenObjects", 1 ],
+    [ "CoDualOnObjects", 1 ],
+    [ "TensorProductOnObjects", 1 ],
+    [ "InternalCoHomOnObjects", 1 ] ];
+##
+InstallMethod( MorphismFromInternalCoHomToTensorProduct,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+
+  function( object_1, object_2 )
+
+    return MorphismFromInternalCoHomToTensorProductWithGivenObjects(
+             InternalCoHomOnObjects( object_1, object_2 ),
+             object_1, object_2,
+             TensorProductOnObjects( object_1, CoDualOnObjects( object_2 ) )
+           );
+
+end );
+
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.IsomorphismFromInternalCoHomToObject :=
+  [ [ "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom", 1 ],
+    [ "TensorUnit", 1 ],
+    [ "InternalCoHomOnObjects", 1 ] ];
+##
+InstallMethod( IsomorphismFromInternalCoHomToObject,
+               [ IsCapCategoryObject ],
+
+  function( object )
+    local category;
+
+    category := CapCategory( object );
+
+    return IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom( object, InternalCoHomOnObjects( object, TensorUnit( category ) ) );
+
+end );
+
+##
+InstallMethod( IsomorphismFromInternalCoHomToObject,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
+
+  function( object )
+
+    return IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom( object, object );
+
+end );
+
+##
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.IsomorphismFromObjectToInternalCoHom :=
+  [ [ "IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom", 1 ],
+    [ "TensorUnit", 1 ],
+    [ "InternalCoHomOnObjects", 1 ] ];
+##
+InstallMethod( IsomorphismFromObjectToInternalCoHom,
+               [ IsCapCategoryObject ],
+
+  function( object )
+    local category;
+
+    category := CapCategory( object );
+
+    return IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom( object, InternalCoHomOnObjects( object, TensorUnit( category ) ) );
+
+end );
+
+##
+InstallMethod( IsomorphismFromObjectToInternalCoHom,
+               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
+
+  function( object )
+
+    return IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom( object, object );
+
+end );
+
 CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS );

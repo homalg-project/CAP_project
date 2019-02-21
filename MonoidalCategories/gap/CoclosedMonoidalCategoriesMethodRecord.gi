@@ -86,6 +86,27 @@ MorphismFromCoBidualWithGivenCoBidual := rec(
   cache_name := "MorphismFromCoBidualWithGivenCoBidual",
   return_type := "morphism" ),
 
+InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects := rec(
+  installation_name := "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects",
+  filter_list := [ "object", "object", "object", "object", IsList ],
+  io_type := [ [ "a", "ap", "b", "bp", "L" ], [ "L_1", "L_2" ] ],
+  cache_name := "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects",
+  return_type := "morphism" ),
+
+CoDualityTensorProductCompatibilityMorphismWithGivenObjects := rec(
+  installation_name := "CoDualityTensorProductCompatibilityMorphismWithGivenObjects",
+  filter_list := [ "object", "object", "object", "object" ],
+  io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
+  cache_name := "CoDualityTensorProductCompatibilityMorphismWithGivenObjects",
+  return_type := "morphism" ),
+
+MorphismFromInternalCoHomToTensorProductWithGivenObjects := rec(
+  installation_name := "MorphismFromInternalCoHomToTensorProductWithGivenObjects",
+  filter_list := [ "object", "object", "object", "object" ],
+  io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
+  cache_name := "MorphismFromInternalCoHomToTensorProductWithGivenObjects",
+  return_type := "morphism" ),
+
 IsomorphismFromCoDualToInternalCoHom := rec(
   installation_name := "IsomorphismFromCoDualToInternalCoHom",
   filter_list := [ "object" ],
@@ -125,6 +146,21 @@ CoLambdaElimination := rec(
   cache_name := "CoLambdaElimination",
   return_type := "morphism",
   no_with_given := true ),
+
+IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom := rec(
+  installation_name := "IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "a", "r" ], [ "a", "r" ] ],
+  cache_name := "IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom",
+  return_type := "morphism" ),
+
+IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom := rec(
+  installation_name := "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "a", "s" ], [ "s", "a" ] ],
+  cache_name := "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom",
+  return_type := "morphism" ),
+
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );
