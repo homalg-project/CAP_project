@@ -445,3 +445,61 @@ DeclareOperation( "AddMorphismFromCoBidualWithGivenCoBidual",
 
 DeclareOperation( "AddMorphismFromCoBidualWithGivenCoBidual",
                   [ IsCapCategory, IsList ] );
+
+##
+#! @Description
+#! The argument is an object $a$.
+#! The output is the isomorphism
+#! $\mathrm{IsomorphismFromCoDualToInternalCoHom}_{a}: a_{\vee} \rightarrow \mathrm{\underline{coHom}}(1,a)$.
+#! @Returns a morphism in $\mathrm{Hom}(a_{\vee}, \mathrm{\underline{coHom}}(1,a))$.
+#! @Arguments a
+DeclareAttribute( "IsomorphismFromCoDualToInternalCoHom",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromCoDualToInternalCoHom</C>.
+#! $F: a \mapsto \mathrm{IsomorphismFromCoDualToInternalCoHom}_{a}$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromCoDualToInternalCoHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromCoDualToInternalCoHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoDualToInternalCoHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoDualToInternalCoHom",
+                  [ IsCapCategory, IsList ] );
+
+##
+#! @Description
+#! The argument is an object $a$.
+#! The output is the isomorphism
+#! $\mathrm{IsomorphismFromInternalCoHomToCoDual}_{a}: \mathrm{\underline{coHom}}(1,a) \rightarrow a_{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{coHom}}(1,a), a_{\vee})$.
+#! @Arguments a
+DeclareAttribute( "IsomorphismFromInternalCoHomToCoDual",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsomorphismFromInternalCoHomToCoDual</C>.
+#! $F: a \mapsto \mathrm{IsomorphismFromInternalCoHomToCoDual}_{a}$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDual",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDual",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDual",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDual",
+                  [ IsCapCategory, IsList ] );

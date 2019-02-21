@@ -85,6 +85,22 @@ MorphismFromCoBidualWithGivenCoBidual := rec(
   io_type := [ [ "s", "a" ], [ "s", "a" ] ],
   cache_name := "MorphismFromCoBidualWithGivenCoBidual",
   return_type := "morphism" ),
+
+IsomorphismFromCoDualToInternalCoHom := rec(
+  installation_name := "IsomorphismFromCoDualToInternalCoHom",
+  filter_list := [ "object" ],
+  io_type := [ [ "a" ], [ "i", "d" ] ],
+  cache_name := "IsomorphismFromCoDualToInternalCoHom",
+  return_type := "morphism",
+  no_with_given := true ),
+
+IsomorphismFromInternalCoHomToCoDual := rec(
+  installation_name := "IsomorphismFromInternalCoHomToCoDual",
+  filter_list := [ "object" ],
+  io_type := [ [ "a" ], [ "d", "i" ] ],
+  cache_name := "IsomorphismFromInternalCoHomToCoDual",
+  return_type := "morphism",
+  no_with_given := true ),
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );
