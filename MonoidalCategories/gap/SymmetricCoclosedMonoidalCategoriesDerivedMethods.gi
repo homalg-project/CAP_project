@@ -161,3 +161,59 @@ AddDerivationToCAP( CoLambdaElimination,
 
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
       Description := "CoLambdaElimination using the cohom tensor adjunction and right unitor" );
+
+##
+AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects,
+
+  function( a1, a2, b1, b2, new_source_and_range_list )
+    local morphism, tensor_product_b1_b2, int_cohom_a1_b1, int_cohom_a2_b2, id_int_cohom_a1_b1, id_int_cohom_a2_b2;
+
+    tensor_product_b1_b2 := TensorProductOnObjects( b1, b2 );
+
+    int_cohom_a1_b1 := InternalCoHomOnObjects( a1, b1 );
+
+    int_cohom_a2_b2 := InternalCoHomOnObjects( a2, b2 );
+
+    id_int_cohom_a1_b1 := IdentityMorphism( int_cohom_a1_b1 );
+
+    id_int_cohom_a2_b2 := IdentityMorphism( int_cohom_a2_b2 );
+
+    morphism := PreCompose( [
+                  TensorProductOnMorphisms( IdentityMorphism( a1 ),
+                                            CoEvaluationMorphism( a2, b2 ) ),
+
+                  AssociatorRightToLeft( a1, b2,  int_cohom_a2_b2),
+
+                  TensorProductOnMorphisms(
+                    TensorProductOnMorphisms(
+                      CoEvaluationMorphism( a1, b1 ),
+                      IdentityMorphism( b2 ) ),
+                     id_int_cohom_a2_b2),
+
+                  TensorProductOnMorphisms(
+                    AssociatorLeftToRight( b1, int_cohom_a1_b1, b2 ),
+                    id_int_cohom_a2_b2 ),
+
+                  TensorProductOnMorphisms(
+                    TensorProductOnMorphisms(
+                      IdentityMorphism( b1 ),
+                      Braiding( b2, int_cohom_a1_b1 ) ),
+                    id_int_cohom_a2_b2 ),
+
+                  TensorProductOnMorphisms(
+                    AssociatorRightToLeft( b1, b2, int_cohom_a1_b1 ),
+                    id_int_cohom_a2_b2 ),
+
+                  AssociatorLeftToRight(
+                    tensor_product_b1_b2,
+                    int_cohom_a1_b1,
+                    int_cohom_a2_b2 )
+                ] );
+
+    return TensorProductToInternalCoHomAdjunctionMap(
+             tensor_product_b1_b2,
+             TensorProductOnObjects( int_cohom_a1_b1, int_cohom_a2_b2 ),
+             morphism );
+
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects using associator, braiding and the CoEvaluation morphism" );
