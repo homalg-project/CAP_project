@@ -120,3 +120,14 @@ AddDerivationToCAP( CoDualOnMorphismsWithGivenCoDuals,
 
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
       Description := "CoDualOnMorphismsWithGivenCoDuals using InternalCoHomOnMorphisms and IsomorphismFromCoDualToInternalCoHom" );
+
+##
+AddDerivationToCAP( CoEvaluationForCoDualWithGivenTensorProduct,
+
+  function( unit, object, tensor_object )
+
+    return InternalCoHomToTensorProductAdjunctionMap( unit, object,
+                                                      IsomorphismFromInternalCoHomToCoDual( object ) );
+
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "CoEvaluationForCoDualWithGivenTensorProduct using the cohom tensor adjunction and IsomorphismFromInternalCoHomToCoDual" );
