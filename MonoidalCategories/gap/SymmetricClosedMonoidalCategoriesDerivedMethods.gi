@@ -251,7 +251,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
     return morphism;
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "TensorProductDualityCompatibilityMorphismWithGivenObjects using left unitoar, and compatibility of tensor product and internal hom" );
+      Description := "TensorProductDualityCompatibilityMorphismWithGivenObjects using left unitor, and compatibility of tensor product and internal hom" );
 
 ##
 AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
