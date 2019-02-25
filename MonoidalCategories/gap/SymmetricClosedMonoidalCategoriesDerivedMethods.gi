@@ -254,7 +254,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "TensorProductDualityCompatibilityMorphismWithGivenObjects using left unitor, and compatibility of tensor product and internal hom" );
 
 ##
-AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
+AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
                   
   function( object, internal_hom )
     local unit;
@@ -268,7 +268,7 @@ AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
                RightUnitor( object ) ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "IsomorphismFromInternalHomToObjectWithGivenInternalHom using the coevaluation morphism" );
+      Description := "IsomorphismFromObjectToInternalHomWithGivenInternalHom using the coevaluation morphism" );
 
 ## TODO: enable
 # ##
@@ -282,20 +282,18 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
 #       Description := "IsomorphismFromInternalHomToObjectWithGivenInternalHom as the inverse of IsomorphismFromObjectToInternalHom" );
 
 ##
-AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
+AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
                   
   function( object, internal_hom )
-    local unit, morphism;
+    local unit;
     
     unit := TensorUnit( CapCategory( object ) );
     
-    morphism := EvaluationMorphism( unit, object );
-    
     return PreCompose( RightUnitorInverse( internal_hom ),
-                       morphism );
+                       EvaluationMorphism( unit, object ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "IsomorphismFromObjectToInternalHomWithGivenInternalHom using the evaluation morphism" );
+      Description := "IsomorphismFromInternalHomToObjectWithGivenInternalHom using the evaluation morphism" );
 
 ## TODO: enable
 # ##
