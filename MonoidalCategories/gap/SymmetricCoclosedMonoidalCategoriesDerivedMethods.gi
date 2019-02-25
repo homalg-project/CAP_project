@@ -217,3 +217,32 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
 
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
       Description := "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects using associator, braiding and the CoEvaluation morphism" );
+
+##
+AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
+
+  function( new_source, object_1, object_2, new_range )
+    local morphism, unit, tensor_product_on_object_1_and_object_2;
+
+    unit := TensorUnit( CapCategory( object_1 ) );
+
+    tensor_product_on_object_1_and_object_2 := TensorProductOnObjects( object_1, object_2 );
+
+    morphism := PreCompose( [
+                  IsomorphismFromCoDualToInternalCoHom( tensor_product_on_object_1_and_object_2 ),
+
+                  InternalCoHomOnMorphisms(
+                    LeftUnitorInverse( unit ),
+                    IdentityMorphism( tensor_product_on_object_1_and_object_2 ) ),
+
+                  InternalCoHomTensorProductCompatibilityMorphism( unit, unit, object_1, object_2 ),
+
+                  TensorProductOnMorphisms(
+                    IsomorphismFromInternalCoHomToCoDual( object_1 ),
+                    IsomorphismFromInternalCoHomToCoDual( object_2 ) )
+                ] );
+
+    return morphism;
+
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "CoDualityTensorProductCompatibilityMorphismWithGivenObjects using left unitor, and compatibility of internal cohom and tensor product" );
