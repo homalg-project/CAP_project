@@ -231,7 +231,7 @@ InstallMethod( WitnessPairForBeingCongruentToZero,
     right_coeffs :=
         [ [ RelationMorphism( Range( morphism ) ), IdentityMorphism( Range( datum ) ) ] ];
     
-    return SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure( left_coeffs, right_coeffs, [ datum ] );
+    return SolveLinearSystemInAbCategory( left_coeffs, right_coeffs, [ datum ] );
     
 end );
 

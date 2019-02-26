@@ -597,223 +597,239 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
     end );
     
-    if IsCategoryWithHomomorphismStructure( underlying_category ) then
+    if HasRangeCategoryOfHomomorphismStructure( underlying_category ) then
         
         range_category := CapCategory( DistinguishedObjectOfHomomorphismStructure( underlying_category ) );
         
-        ##
-        InstallMethodWithCacheFromObject( HomomorphismStructureOnObjects,
-                                          [ IsCapCategoryObject and ObjectFilter( category ), IsCapCategoryObject and ObjectFilter( category ) ],
-          function( object_1, object_2 )
-            
-            return DirectSum( range_category,
-                     Concatenation(
-                       List( ObjectList( object_1 ), obj_i ->
-                          List( ObjectList( object_2 ), obj_j -> HomomorphismStructureOnObjects( obj_i, obj_j ) )
-                       )
-                     )
-                   );
-            
-        end );
-        
-        ##
-        InstallMethodWithCacheFromObject( HomomorphismStructureOnMorphismsWithGivenObjects,
-                                          [ IsCapCategoryObject,
-                                            IsCapCategoryMorphism and MorphismFilter( category ),
-                                            IsCapCategoryMorphism and MorphismFilter( category ),
-                                            IsCapCategoryObject ],
-          function( source, alpha, beta, range )
-            local matrix_alpha, matrix_beta, size_i, size_k, size_j, size_l;
-            
-            matrix_alpha := MorphismMatrix( alpha );
-            
-            matrix_beta := MorphismMatrix( beta );
-            
-            size_i := NrColumns( alpha );
-            
-            size_k := NrRows( alpha );
-            
-            size_j := NrRows( beta );
-            
-            size_l := NrColumns( beta );
-            
-            if ForAny( [ size_i, size_k, size_j, size_l ], IsZero ) then
-                
-                return ZeroMorphism( source, range );
-                
-            fi;
-            
-            return MorphismBetweenDirectSums(
-                     source,
-                     List( [ 1 .. size_i ], i ->
-                       List( [ 1 .. size_k ], k -> 
-                         MorphismBetweenDirectSums(
-                           List( [ 1 .. size_j ], j ->
-                             List( [ 1 .. size_l ], l ->
-                               HomomorphismStructureOnMorphisms( matrix_alpha[k][i], matrix_beta[j][l] )
-                             )
-                           )
-                         )
-                       )
-                     ),
-                     range );
-            
-        end );
-        
-        ##
-        InstallMethod( DistinguishedObjectOfHomomorphismStructure,
-                       [ IsCapCategory and CategoryFilter( category ) ],
-                       
-          function( cat )
-            
-            return DistinguishedObjectOfHomomorphismStructure( underlying_category );
-            
-        end );
-        
-        ##
-        InstallMethod( InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure,
-                       [ IsCapCategoryMorphism and MorphismFilter( category ) ],
-                       
-          function( alpha )
-            local size_i, size_j, matrix_alpha;
-            
-            size_i := NrRows( alpha );
-            
-            size_j := NrColumns( alpha );
-            
-            matrix_alpha := MorphismMatrix( alpha );
-            
-            if size_i = 0 or size_j = 0 then
-                
-                return UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( category ) );
-                
-            fi;
-            
-            return UniversalMorphismIntoDirectSum(
-                     List( [ 1 .. size_i ], i ->
-                       UniversalMorphismIntoDirectSum(
-                         List( [ 1 .. size_j ], j ->
-                           InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( matrix_alpha[i][j] )
-                         )
-                       )
-                     )
-                   );
-            
-        end );
-        
-        ##
-        InstallMethodWithCacheFromObject( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism,
-                                          [ IsCapCategoryObject and ObjectFilter( category ),
-                                            IsCapCategoryObject and ObjectFilter( category ),
-                                            IsCapCategoryMorphism ],
-                                           
-          function( A, B, morphism )
-            local obj_list_A, obj_list_B, size_i, size_j, matrix, summands;
-            
-            obj_list_A := ObjectList( A );
-            
-            obj_list_B := ObjectList( B );
-            
-            size_i := Size( obj_list_A );
-            
-            size_j := Size( obj_list_B );
-            
-            if size_i = 0 or size_j = 0 then
-                
-                return ZeroMorphism( A, B );
-                
-            fi;
-            
-            summands := 
-              Concatenation(
-                         List( obj_list_A, obj_i ->
-                            List( obj_list_B, obj_j -> HomomorphismStructureOnObjects( obj_i, obj_j ) )
-                         )
-                       );
-            
-            matrix := List( [ 1 .. size_i ], i ->
-                        List( [ 1 .. size_j ], j ->
-                          PreCompose(
-                            morphism,
-                            ProjectionInFactorOfDirectSum( summands, size_j * (i - 1) + j )
-                          )
-                        )
-                      );
-            
-            return AdditiveClosureMorphism(
-                     A,
-                     List( [ 1 .. size_i ], i ->
-                       List( [ 1 .. size_j ], j ->
-                         InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism(
-                           obj_list_A[i],
-                           obj_list_B[j],
-                           matrix[i][j]
-                         )
-                       )
-                     ),
-                     B
-                   );
-            
-        end );
-        
-        SetFilterObj( category, IsCategoryWithHomomorphismStructure );
-        
-        if  ForAll( [ "Lift",
-           "ProjectionInFactorOfDirectSum", 
-           "PreCompose", 
-           "UniversalMorphismIntoDirectSum", 
-           "UniversalMorphismFromDirectSum" ], f -> CanCompute( range_category, f ) ) then
+        if ForAll( [ "DirectSum" ], f -> CanCompute( range_category, f ) )
+           and  ForAll( [ "HomomorphismStructureOnObjects" ], f -> CanCompute( underlying_category, f ) ) then
             
             ##
-            AddLift( category,
-              function( alpha, beta )
-                local left_coefficients, right_coefficients, right_side, right_divide;
+            AddHomomorphismStructureOnObjects( category,
+              function( object_1, object_2 )
                 
-                left_coefficients := [ [ IdentityMorphism( Source( alpha ) ) ] ];
-                
-                right_coefficients := [ [ beta ] ];
-                
-                right_side := [ alpha ];
-                
-                right_divide := SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure(
-                                  left_coefficients, right_coefficients, right_side );
-                
-                if right_divide = fail then
-                  
-                  return fail;
-                  
-                fi;
-                
-                return right_divide[1];
+                return DirectSum( range_category,
+                          Concatenation(
+                            List( ObjectList( object_1 ), obj_i ->
+                              List( ObjectList( object_2 ), obj_j -> HomomorphismStructureOnObjects( obj_i, obj_j ) )
+                            )
+                          )
+                        );
                 
             end );
+        
+        fi;
+        
+        if ForAll( [ "MorphismBetweenDirectSums" ], f -> CanCompute( range_category, f ) )
+           and  ForAll( [ "HomomorphismStructureOnMorphismsWithGivenObjects" ], f -> CanCompute( underlying_category, f ) ) then
             
             ##
-            AddColift( category,
-              function( alpha, beta )
-                local left_coefficients, right_coefficients, right_side, left_divide;
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
+              function( source, alpha, beta, range )
+                local matrix_alpha, matrix_beta, size_i, size_k, size_j, size_l;
                 
-                left_coefficients := [ [ alpha ] ];
+                matrix_alpha := MorphismMatrix( alpha );
                 
-                right_coefficients := [ [ IdentityMorphism( Range( beta ) ) ] ];
+                matrix_beta := MorphismMatrix( beta );
                 
-                right_side := [ beta ];
+                size_i := NrColumns( alpha );
                 
-                left_divide := SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure(
-                                  left_coefficients, right_coefficients, right_side );
+                size_k := NrRows( alpha );
                 
-                if left_divide = fail then
-                  
-                  return fail;
-                  
+                size_j := NrRows( beta );
+                
+                size_l := NrColumns( beta );
+                
+                if ForAny( [ size_i, size_k, size_j, size_l ], IsZero ) then
+                    
+                    return ZeroMorphism( source, range );
+                    
                 fi;
                 
-                return left_divide[1];
+                return MorphismBetweenDirectSums(
+                        source,
+                        List( [ 1 .. size_i ], i ->
+                          List( [ 1 .. size_k ], k -> 
+                            MorphismBetweenDirectSums(
+                              List( [ 1 .. size_j ], j ->
+                                List( [ 1 .. size_l ], l ->
+                                  HomomorphismStructureOnMorphisms( matrix_alpha[k][i], matrix_beta[j][l] )
+                                )
+                              )
+                            )
+                          )
+                        ),
+                        range );
                 
             end );
             
         fi;
         
+        if ForAll( [ "DistinguishedObjectOfHomomorphismStructure" ], f -> CanCompute( underlying_category, f ) ) then
+            ##
+            AddDistinguishedObjectOfHomomorphismStructure( category,
+              function( )
+                
+                return DistinguishedObjectOfHomomorphismStructure( underlying_category );
+                
+            end );
+            
+        fi;
+        
+        if ForAll( [ "UniversalMorphismIntoZeroObject", 
+                     "UniversalMorphismIntoDirectSum" ], 
+                     f -> CanCompute( range_category, f ) )
+           and ForAll( [ "DistinguishedObjectOfHomomorphismStructure", 
+                         "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure" ], 
+                         f -> CanCompute( underlying_category, f ) ) then
+            
+            ##
+            AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+              function( alpha )
+                local size_i, size_j, matrix_alpha;
+                
+                size_i := NrRows( alpha );
+                
+                size_j := NrColumns( alpha );
+                
+                matrix_alpha := MorphismMatrix( alpha );
+                
+                if size_i = 0 or size_j = 0 then
+                    
+                    return UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( underlying_category ) );
+                    
+                fi;
+                
+                return UniversalMorphismIntoDirectSum(
+                        List( [ 1 .. size_i ], i ->
+                          UniversalMorphismIntoDirectSum(
+                            List( [ 1 .. size_j ], j ->
+                              InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( matrix_alpha[i][j] )
+                            )
+                          )
+                        )
+                      );
+                
+            end );
+            
+        fi;
+        
+        if ForAll( [ "HomomorphismStructureOnObjects",
+                     "PreCompose",
+                     "ProjectionInFactorOfDirectSum",
+                     "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism" ],
+                     f -> CanCompute( underlying_category, f ) ) then
+            
+            ##
+            AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+              function( A, B, morphism )
+                local obj_list_A, obj_list_B, size_i, size_j, matrix, summands;
+                
+                obj_list_A := ObjectList( A );
+                
+                obj_list_B := ObjectList( B );
+                
+                size_i := Size( obj_list_A );
+                
+                size_j := Size( obj_list_B );
+                
+                if size_i = 0 or size_j = 0 then
+                    
+                    return ZeroMorphism( A, B );
+                    
+                fi;
+                
+                summands := 
+                  Concatenation(
+                            List( obj_list_A, obj_i ->
+                                List( obj_list_B, obj_j -> HomomorphismStructureOnObjects( obj_i, obj_j ) )
+                            )
+                          );
+                
+                matrix := List( [ 1 .. size_i ], i ->
+                            List( [ 1 .. size_j ], j ->
+                              PreCompose(
+                                morphism,
+                                ProjectionInFactorOfDirectSum( summands, size_j * (i - 1) + j )
+                              )
+                            )
+                          );
+                
+                return AdditiveClosureMorphism(
+                        A,
+                        List( [ 1 .. size_i ], i ->
+                          List( [ 1 .. size_j ], j ->
+                            InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+                              obj_list_A[i],
+                              obj_list_B[j],
+                              matrix[i][j]
+                            )
+                          )
+                        ),
+                        B
+                      );
+                
+            end );
+        fi;
+        
+        SetFilterObj( category, IsCategoryWithHomomorphismStructure );
+        
+    fi;
+    
+    if  ForAll( [ "Lift",
+          "ProjectionInFactorOfDirectSum", 
+          "PreCompose", 
+          "UniversalMorphismIntoDirectSum", 
+          "UniversalMorphismFromDirectSum" ], f -> CanCompute( range_category, f ) ) then
+          
+          ##
+          AddLift( category,
+            function( alpha, beta )
+              local left_coefficients, right_coefficients, right_side, right_divide;
+              
+              left_coefficients := [ [ IdentityMorphism( Source( alpha ) ) ] ];
+              
+              right_coefficients := [ [ beta ] ];
+              
+              right_side := [ alpha ];
+              
+              right_divide := SolveLinearSystemInAbCategory(
+                                left_coefficients, right_coefficients, right_side );
+              
+              if right_divide = fail then
+                
+                return fail;
+                
+              fi;
+              
+              return right_divide[1];
+              
+          end );
+          
+          ##
+          AddColift( category,
+            function( alpha, beta )
+              local left_coefficients, right_coefficients, right_side, left_divide;
+              
+              left_coefficients := [ [ alpha ] ];
+              
+              right_coefficients := [ [ IdentityMorphism( Range( beta ) ) ] ];
+              
+              right_side := [ beta ];
+              
+              left_divide := SolveLinearSystemInAbCategory(
+                                left_coefficients, right_coefficients, right_side );
+              
+              if left_divide = fail then
+                
+                return fail;
+                
+              fi;
+              
+              return left_divide[1];
+              
+          end );
+          
     fi;
     
 end );

@@ -1121,33 +1121,6 @@ DeclareOperationWithCache( "InterpretMorphismFromDinstinguishedObjectToHomomorph
 
 ####################################
 ##
-#! @Section Linear systems
-##
-####################################
-
-#! @Description
-#! This methods works for additive categories with a homomorphism structure such
-#! that the range category of the homomorphism structure can compute lifts.
-#! The arguments are three lists $\alpha$, $\beta$, and $\gamma$.
-#! The first list $\alpha$ (the left coefficients) is a list of list of morphisms $\alpha_{ij}: A_i \rightarrow B_j$,
-#! where $i = 1 \dots m$ and $j = 1 \dots n$ for integers $m,n$.
-#! The second list $\beta$ (the right coefficients) is a list of list of morphisms $\beta_{ij}: C_j \rightarrow D_i$,
-#! where $i = 1 \dots m$ and $j = 1 \dots n$.
-#! The third list $\gamma$ (the right side) is a list of morphisms $\gamma_i: A_i \rightarrow D_i$,
-#! where $i = 1, \dots, m$.
-#! The output is either
-#! a list of morphisms $X_j: B_j \rightarrow C_j$ for $j=1\dots n$ solving the linear system
-#! defined by $\alpha$, $\beta$, $\gamma$, i.e.,
-#! $\sum_{j = 1}^n \alpha_{ij}\cdot X_j \cdot \beta_{ij} = \gamma_j$
-#! for all $i = 1 \dots m$,
-#! or $\texttt{fail}$ if no such solution exists.
-#! @Returns a list of morphisms $[X_1, \dots, X_n]$
-#! @Arguments alpha, beta, gamma
-DeclareOperation( "SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure",
-                  [ IsList, IsList, IsList ] );
-
-####################################
-##
 #! @Section Free abelian category
 ##
 ####################################

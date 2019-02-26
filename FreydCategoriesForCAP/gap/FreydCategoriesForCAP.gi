@@ -662,66 +662,6 @@ end );
 
 ####################################
 ##
-## Linear systems
-##
-####################################
-
-# needs:
-# IsCategoryWithHomomorphismStructure( category )
-#
-# and for the base categoy of the Homomorphism structure:
-#
-# ForAll( [ "Lift",
-#            "ProjectionInFactorOfDirectSum", 
-#            "PreCompose", 
-#            "UniversalMorphismIntoDirectSum", 
-#            "UniversalMorphismFromDirectSum" ], f -> CanCompute( underlying_category, f ) )
-#
-InstallMethod( SolveLinearSystemInAdditiveCategoryWithHomomorphismStructure,
-               [ IsList, IsList, IsList ],
-               
-  function( left_coefficients, right_coefficients, right_side )
-    local m, n, nu, H, lift, summands, list;
-    
-    ## TODO: Type-check of linear system
-    
-    m := Size( left_coefficients );
-    
-    n := Size( left_coefficients[1] );
-    
-    ## create lift diagram
-    
-    nu := UniversalMorphismIntoDirectSum( List( [ 1 .. m ], i -> InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( right_side[i] ) ) );
-    
-    list := List( [ 1 .. n ], j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) ) );
-    
-    H := MorphismBetweenDirectSums( list );
-    
-    ## the actual computation of the solution
-    lift := Lift( nu, H );
-    
-    if lift = fail then
-        
-        return fail;
-        
-    fi;
-    
-    ## reinterpretation of the solution
-    summands := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
-    
-    return
-      List( [ 1 .. n ], j -> 
-        InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism(
-          Range( left_coefficients[1][j] ),
-          Source( right_coefficients[1][j] ),
-          PreCompose( lift, ProjectionInFactorOfDirectSum( summands, j ) )
-        )
-      );
-    
-end );
-
-####################################
-##
 ## Homomorphism structures
 ##
 ####################################
