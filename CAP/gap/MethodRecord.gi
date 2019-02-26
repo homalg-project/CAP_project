@@ -2075,9 +2075,7 @@ UniversalMorphismIntoCoimage := rec(
   cache_name := "UniversalMorphismIntoCoimage",
   universal_object_position := "Range",
   universal_type := "Colimit",
-  dual_preprocessor_func := function( arg )
-      return CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS( CAP_INTERNAL_OPPOSITE_RECURSIVE( arg ) );
-  end,
+  dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( morphism, test_factorization )
     local value;
     
@@ -2113,9 +2111,7 @@ UniversalMorphismIntoCoimageWithGivenCoimage := rec(
   io_type := [ [ "alpha", "tau", "C" ], [ "tau_1_range", "C" ] ],
   cache_name := "UniversalMorphismIntoCoimageWithGivenCoimage",
   universal_type := "Colimit",
-  dual_preprocessor_func := function( arg )
-      return CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS( CAP_INTERNAL_OPPOSITE_RECURSIVE( arg ) );
-  end,
+  dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( morphism, test_factorization, image )
     local value;
     
@@ -2379,9 +2375,7 @@ UniversalMorphismFromImage := rec(
   universal_object_position := "Source",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismIntoCoimage",
-  dual_preprocessor_func := function( arg )
-      return CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS( CAP_INTERNAL_OPPOSITE_RECURSIVE( arg ) );
-  end,
+  dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( morphism, test_factorization )
     local value;
     
@@ -2417,9 +2411,7 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
   cache_name := "UniversalMorphismFromImageWithGivenImageObject",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismIntoCoimageWithGivenCoimage",
-  dual_preprocessor_func := function( arg )
-      return CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS( CAP_INTERNAL_OPPOSITE_RECURSIVE( arg ) );
-  end,
+  dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( morphism, test_factorization, image )
     local value;
     
@@ -3104,3 +3096,20 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
 end );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
+  function( arg )
+    local list;
+      
+    list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+      
+    return List( list, function( l )
+        if IsList( l ) then
+            return Reversed( l );
+        else
+            return l;
+        fi;
+    end );
+
+end );

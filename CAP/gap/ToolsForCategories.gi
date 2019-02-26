@@ -800,14 +800,3 @@ InstallGlobalFunction( CachingStatistic,
     od;
     
 end );
-
-InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS,
-    function( list )
-        return List( list, function( l )
-            if IsList( l ) then
-                return Reversed( l );
-            else
-                return l;
-            fi;
-    end );
-end );
