@@ -43,8 +43,6 @@ InstallMethod( AdditiveClosure,
     
     Finalize( category );
     
-    INSTALL_HOMOMORPHISM_STRUCTURE_FOR_OPPOSITE_CATEGORY( category );
-    
     return category;
     
 end );
@@ -601,6 +599,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         range_category := CapCategory( DistinguishedObjectOfHomomorphismStructure( underlying_category ) );
         
+        SetRangeCategoryOfHomomorphismStructure( category, range_category );
+        
         if ForAll( [ "DirectSum" ], f -> CanCompute( range_category, f ) )
            and  ForAll( [ "HomomorphismStructureOnObjects" ], f -> CanCompute( underlying_category, f ) ) then
             
@@ -715,10 +715,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         fi;
         
         if ForAll( [ "HomomorphismStructureOnObjects",
-                     "PreCompose",
-                     "ProjectionInFactorOfDirectSum",
                      "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism" ],
-                     f -> CanCompute( underlying_category, f ) ) then
+                     f -> CanCompute( underlying_category, f ) )
+           and ForAll( [ "PreCompose",
+                         "ProjectionInFactorOfDirectSum" ],
+                         f -> CanCompute( range_category, f ) ) then
             
             ##
             AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
@@ -771,8 +772,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
             end );
         fi;
-        
-        SetFilterObj( category, IsCategoryWithHomomorphismStructure );
         
     fi;
     

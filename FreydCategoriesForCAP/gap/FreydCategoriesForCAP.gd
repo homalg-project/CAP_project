@@ -19,8 +19,6 @@ DeclareGlobalFunction( "WEAK_BI_PUSHOUT_PREFUNCTION" );
 
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_WEAK_BI_PUSHOUT_PREFUNCTION" );
 
-DeclareGlobalFunction( "INSTALL_HOMOMORPHISM_STRUCTURE_FOR_OPPOSITE_CATEGORY" );
-
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_WEAK_FIBER_PRODUCT_PREFUNCTION" );
 
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION" );
@@ -1082,42 +1080,6 @@ DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGive
 
 DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
                   [ IsCapCategory, IsList ] );
-
-####################################
-##
-#! @Section Homomorphism structures
-##
-####################################
-
-## Since the method record only allows operations that stay within a single category,
-## we need a workaround for these functions
-
-DeclareFilter( "IsCategoryWithHomomorphismStructure",
-               IsCapCategory );
-
-##
-DeclareOperationWithCache( "HomomorphismStructureOnObjects",
-                           [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-##
-DeclareOperation( "HomomorphismStructureOnMorphisms",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-##
-DeclareOperationWithCache( "HomomorphismStructureOnMorphismsWithGivenObjects",
-                           [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
-
-##
-DeclareAttribute( "DistinguishedObjectOfHomomorphismStructure",
-                  IsCapCategory );
-
-##
-DeclareAttribute( "InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
-                  IsCapCategoryMorphism );
-
-##
-DeclareOperationWithCache( "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsHomomorphism",
-                           [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 ####################################
 ##

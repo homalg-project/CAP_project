@@ -37,8 +37,6 @@ InstallMethod( CategoryOfRows,
     
     Finalize( category );
     
-    INSTALL_HOMOMORPHISM_STRUCTURE_FOR_OPPOSITE_CATEGORY( category );
-    
     return category;
     
 end );
@@ -563,6 +561,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     if IsCommutative( ring ) then
         
+        SetRangeCategoryOfHomomorphismStructure( category, category );
+        
         ##
         AddHomomorphismStructureOnObjects( category,
           function( object_1, object_2 )
@@ -638,8 +638,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             return CategoryOfRowsMorphism( A, underlying_matrix, B );
             
         end );
-        
-        SetFilterObj( category, IsCategoryWithHomomorphismStructure);
         
     fi;
     

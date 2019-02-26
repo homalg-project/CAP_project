@@ -4,6 +4,7 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "GeneralizedMorphismsForCAP" );;
+LoadPackage( "Bialgebroids" );
 
 #! @Example
 SwitchGeneralizedMorphismStandard( "span" );;
@@ -11,7 +12,6 @@ snake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), snake_quiver );;
 Aoid := Algebroid( kQ, [ kQ.abc ] );;
 CapCategorySwitchLogicOff( Aoid );;
-INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID( Aoid );;
 m := SetOfGeneratingMorphisms( Aoid );;
 a := m[1];;
 b := m[2];;

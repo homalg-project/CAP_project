@@ -4,12 +4,12 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "GeneralizedMorphismsForCAP" );;
+LoadPackage( "Bialgebroids" );;
 SwitchGeneralizedMorphismStandard( "cospan" );
 snake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );
 kQ := PathAlgebra( HomalgFieldOfRationals(), snake_quiver );
 Aoid := Algebroid( kQ, [ kQ.abc ] );
 SetIsAbCategory( Aoid, true );
-INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID( Aoid );
 m := SetOfGeneratingMorphisms( Aoid );
 
 a := m[1];
@@ -19,9 +19,9 @@ c := m[3];
 cat := Aoid;
 CapCategorySwitchLogicOff( cat );
 cat := AdditiveClosure( cat );
-CapCategorySwitchLogicOff( cat );
 cat := Opposite( cat );
 CapCategorySwitchLogicOff( cat );
+CapCategorySwitchLogicOff( Opposite( cat ) );
 cat := FreydCategory( cat );
 CapCategorySwitchLogicOff( cat );
 cat := Opposite( cat );

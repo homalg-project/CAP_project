@@ -25,11 +25,12 @@ InstallMethod( AdelmanCategory,
         
     fi;
     
-    if not IsCategoryWithHomomorphismStructure( underlying_category ) then
+    ## TODO: get the conditions correct
+    # if not IsCategoryWithHomomorphismStructure( underlying_category ) then
         
-        Error( "The given category must have a homomorphism structure" );
+    #     Error( "The given category must have a homomorphism structure" );
         
-    fi;
+    # fi;
     
     if not CanCompute( CapCategory( DistinguishedObjectOfHomomorphismStructure( underlying_category ) ), "Lift" ) then
         

@@ -69,8 +69,6 @@ InstallMethod( FreydCategory,
     
     Finalize( freyd_category );
     
-    INSTALL_HOMOMORPHISM_STRUCTURE_FOR_OPPOSITE_CATEGORY( freyd_category );
-    
     return freyd_category;
     
 end );
@@ -809,6 +807,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             and HasIsProjective( distinguished_object )
             and IsProjective( distinguished_object ) then
             
+            SetRangeCategoryOfHomomorphismStructure( category, range_category );
+            
             homomorphism_structure_derivation_case := "abelian";
             
             homomorphism_structure_on_objects := HomomorphismStructureOnObjects;
@@ -834,6 +834,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                       "UniversalMorphismIntoBiasedWeakFiberProduct"
                       ],
                     f -> CanCompute( underlying_category, f ) )  then
+            
+            if IsIdenticalObj( range_category, underlying_category ) then
+                
+                SetRangeCategoryOfHomomorphismStructure( category, category );
+                
+            else
+                
+                SetRangeCategoryOfHomomorphismStructure( category, FreydCategory( range_category ) );
+                
+            fi;
             
             homomorphism_structure_derivation_case := "apply_freyd";
             
@@ -1003,8 +1013,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 return FreydCategoryMorphism( A, interpretation, B );
                 
             end );
-        
-        SetFilterObj( category, IsCategoryWithHomomorphismStructure );
         
         fi;
         

@@ -4,6 +4,7 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
+LoadPackage( "Bialgebroids" );
 
 # @Example
 R := HomalgRingOfIntegers();
@@ -156,7 +157,6 @@ kQ := PathAlgebra( HomalgFieldOfRationalsInSingular(), snake_quiver );
 A := kQ / [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ];
 Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ] );
 SetIsAbCategory( Aoid, true );
-INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID( Aoid );
 s := SetOfObjects( Aoid );
 m := SetOfGeneratingMorphisms( Aoid );
 interpretation := InterpretHomomorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( -m[3] );
