@@ -251,7 +251,8 @@ ZeroObject := rec(
   filter_list := [ "category" ],
   cache_name := "ZeroObject",
   return_type := "object",
-  dual_operation := "ZeroObject" ),
+  dual_operation := "ZeroObject",
+  zero_arguments_for_add_method := true ),
 
 ZeroObjectFunctorial := rec(
   installation_name := "ZeroObjectFunctorial",
@@ -582,7 +583,8 @@ TerminalObject := rec(
   cache_name := "TerminalObject",
   universal_type := "Limit",
   return_type := "object",
-  dual_operation := "InitialObject" ),
+  dual_operation := "InitialObject",
+  zero_arguments_for_add_method := true ),
 
 UniversalMorphismIntoTerminalObject := rec(
   installation_name := "UniversalMorphismIntoTerminalObject",
@@ -619,7 +621,8 @@ InitialObject := rec(
   cache_name := "InitialObject",
   universal_type := "Colimit",
   return_type := "object",
-  dual_operation := "TerminalObject"
+  dual_operation := "TerminalObject",
+  zero_arguments_for_add_method := true
 ),
 
 UniversalMorphismFromInitialObject := rec(
@@ -655,7 +658,8 @@ SubobjectClassifier := rec(
   installation_name := "SubobjectClassifier",
   filter_list := [ "category" ],
   cache_name := "SubobjectClassifier",
-  return_type := "object" ),
+  return_type := "object",
+  zero_arguments_for_add_method := true ),
 
 TruthMorphismIntoSubobjectClassifierWithGivenObjects := rec(
   installation_name := "TruthMorphismIntoSubobjectClassifierWithGivenObjects",
@@ -2071,7 +2075,9 @@ UniversalMorphismIntoCoimage := rec(
   cache_name := "UniversalMorphismIntoCoimage",
   universal_object_position := "Range",
   universal_type := "Colimit",
-  
+  dual_preprocessor_func := function( arg )
+      return CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS( CAP_INTERNAL_OPPOSITE_RECURSIVE( arg ) );
+  end,
   pre_function := function( morphism, test_factorization )
     local value;
     
@@ -2107,7 +2113,9 @@ UniversalMorphismIntoCoimageWithGivenCoimage := rec(
   io_type := [ [ "alpha", "tau", "C" ], [ "tau_1_range", "C" ] ],
   cache_name := "UniversalMorphismIntoCoimageWithGivenCoimage",
   universal_type := "Colimit",
-  
+  dual_preprocessor_func := function( arg )
+      return CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS( CAP_INTERNAL_OPPOSITE_RECURSIVE( arg ) );
+  end,
   pre_function := function( morphism, test_factorization, image )
     local value;
     
@@ -2371,7 +2379,9 @@ UniversalMorphismFromImage := rec(
   universal_object_position := "Source",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismIntoCoimage",
-  
+  dual_preprocessor_func := function( arg )
+      return CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS( CAP_INTERNAL_OPPOSITE_RECURSIVE( arg ) );
+  end,
   pre_function := function( morphism, test_factorization )
     local value;
     
@@ -2407,7 +2417,9 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
   cache_name := "UniversalMorphismFromImageWithGivenImageObject",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismIntoCoimageWithGivenCoimage",
-  
+  dual_preprocessor_func := function( arg )
+      return CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS( CAP_INTERNAL_OPPOSITE_RECURSIVE( arg ) );
+  end,
   pre_function := function( morphism, test_factorization, image )
     local value;
     
@@ -2911,7 +2923,12 @@ MorphismBetweenDirectSums := rec(
   io_type := [ [ "S", "mat", "T" ], [ "S", "T" ] ],
   cache_name := "MorphismBetweenDirectSums",
   return_type := "morphism",
-  dual_operation := "MorphismBetweenDirectSums"
+  dual_operation := "MorphismBetweenDirectSums",
+  dual_preprocessor_func := function( arg )
+      local list;
+      list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+      return [ list[3], TransposedMat( list[2] ), list[1] ];
+  end
 ),
 
 HomomorphismStructureOnObjects := rec(
@@ -2919,6 +2936,9 @@ HomomorphismStructureOnObjects := rec(
   filter_list := [ "object", "object" ],
   return_type := "other_object",
   cache_name := "HomomorphismStructureOnObjects",
+  dual_operation := "HomomorphismStructureOnObjects",
+  dual_arguments_reversed := true,
+  dual_postprocessor_func := IdFunc
 ),
 
 HomomorphismStructureOnMorphismsWithGivenObjects := rec(
@@ -2926,27 +2946,41 @@ HomomorphismStructureOnMorphismsWithGivenObjects := rec(
   filter_list := [ "other_object", "morphism", "morphism", "other_object" ],
   return_type := "other_morphism",
   cache_name := "HomomorphismStructureOnMorphismsWithGivenObjects",
+  dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
+  dual_preprocessor_func := function( source, alpha, beta, range )
+    return [ source, Opposite( beta ), Opposite( alpha ), range ];
+  end,
+  dual_postprocessor_func := IdFunc
 ),
 
 DistinguishedObjectOfHomomorphismStructure := rec(
   installation_name := "DistinguishedObjectOfHomomorphismStructure",
   filter_list := [ "category" ],
   cache_name := "DistinguishedObjectOfHomomorphismStructure",
-  return_type := "other_object" 
+  return_type := "other_object",
+  dual_operation := "DistinguishedObjectOfHomomorphismStructure",
+  dual_postprocessor_func := IdFunc,
+  zero_arguments_for_add_method := true
 ),
 
 InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure := rec(
   installation_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
   filter_list := [ "morphism" ],
   cache_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
-  return_type := "other_morphism" 
+  return_type := "other_morphism",
+  dual_operation := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  dual_postprocessor_func := IdFunc
 ),
 
 InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism := rec(
   installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
   filter_list := [ "object", "object", "other_morphism" ],
   cache_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
-  return_type := "morphism" 
+  return_type := "morphism",
+  dual_operation := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+  dual_preprocessor_func := function( A, B, morphism )
+    return [ Opposite( B ), Opposite( A ), morphism ];
+  end
 ),
 
 SolveLinearSystemInAbCategory := rec(
@@ -3059,6 +3093,11 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
+        if not IsBound( current_rec.zero_arguments_for_add_method ) then
+            
+            current_rec.zero_arguments_for_add_method := false;
+            
+        fi;
         
     od;
     

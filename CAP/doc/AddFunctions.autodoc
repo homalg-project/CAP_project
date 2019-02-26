@@ -154,6 +154,12 @@ The record can have the following components, used as described:
 
 * dual_arguments_reversed: Boolean, marks whether for the call of the dual operation all arguments have to be given in reversed order.
 
+* dual_preprocessor_func: let f be an operation with dual operation g. For the automatic installation of g from f, the arguments given to g are preprocessed by this given function.
+
+* dual_postprocessor_func: let f be an operation with dual operation g. For the automatic installation of g from f, the computed value of f is postprocessed by the given function.
+
+* zero_arguments_for_add_method: the add method of this operation should get a function without arguments
+
 Using all those entries, the operation CapInternalInstallAdd installs add methods as described above. It first provides a
 sanity check for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and
 with an optional third parameter for the weight.

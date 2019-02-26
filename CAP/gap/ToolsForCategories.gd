@@ -113,3 +113,5 @@ DeclareGlobalFunction( "CachingStatistic" );
 #! "hits" is the number of successful cache accesses, "misses" the number of unsuccessful cache
 #! accesses, and "stored" the number of objects currently stored in the cache.
 DeclareGlobalFunction( "BrowseCachingStatistic" );
+
+DeclareGlobalFunction( "CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS" );
