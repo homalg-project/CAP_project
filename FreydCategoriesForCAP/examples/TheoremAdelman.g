@@ -3,7 +3,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
 LoadPackage( "Bialgebroids" );;
-#! @Section Adelman category basics
+#! @Section Adelman category theorem
 
 #! @Example
 quiver := RightQuiver( "Q(9)[a:1->2,b:3->2]" );;

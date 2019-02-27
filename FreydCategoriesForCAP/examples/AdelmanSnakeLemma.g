@@ -1,6 +1,6 @@
 #! @Chapter Examples and Tests
 
-#! @Section Adelman category basics
+#! @Section Adelman snake lemma
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "GeneralizedMorphismsForCAP" );;

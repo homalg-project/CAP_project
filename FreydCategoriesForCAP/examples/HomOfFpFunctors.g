@@ -5,7 +5,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );;
 
-# @Example
+#! @Example
 R := HomalgFieldOfRationalsInSingular() * "x,y,z";;
 Rows_R := CategoryOfRows( R );;
 R1 := CategoryOfRowsObject( 1, Rows_R );;
@@ -17,4 +17,4 @@ c1 := CovariantExtAsFreydCategoryObject( M, 1 );;
 c2 := CovariantExtAsFreydCategoryObject( M, 2 );;
 IsZeroForObjects( HomomorphismStructureOnObjects( c0, c2 ) ); # = Ext^2( M, M )
 #! false
-# @EndExample
+#! @EndExample
