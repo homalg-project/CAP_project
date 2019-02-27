@@ -48,7 +48,7 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "",
+PackageWWWHome := "http://TODO/",
 
 ArchiveURL     := Concatenation( ~.PackageWWWHome, "ComplexesAndFilteredObjectsForCAP-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
