@@ -198,6 +198,10 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     ADD_GRADED_IS_IDENTICAL_FOR_MORPHISMS( category );
     
     ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
+
+    ADD_GRADED_LIFT_ALONG_MONOMORPHISM( category );
+
+    ADD_GRADED_COLIFT_ALONG_EPIMORPHISM( category );
     
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
@@ -271,6 +275,10 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_GRADED_IS_IDENTICAL_FOR_MORPHISMS( category );
     
     ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
+
+    ADD_GRADED_LIFT_ALONG_MONOMORPHISM( category );
+
+    ADD_GRADED_COLIFT_ALONG_EPIMORPHISM( category );
     
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
@@ -574,10 +582,20 @@ InstallGlobalFunction( ADD_GRADED_LIFT,
         lift := Lift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
         
         if lift = fail then
+        
             return fail;
+        
         fi;
         
-        return GradedPresentationMorphism( Source( alpha ), lift, Source( beta ) );
+        lift := GradedPresentationMorphism( Source( alpha ), lift, Source( beta ) );
+        
+        if not IsWellDefined( lift ) then
+          
+          Error( "An output of the Lift method is not well-defined!" );
+          
+        fi;
+        
+        return lift;
         
     end );
     
@@ -596,10 +614,20 @@ InstallGlobalFunction( ADD_GRADED_COLIFT,
         colift := Colift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
         
         if colift = fail then
-            return fail;
+        
+          return fail;
+        
         fi;
         
-        return GradedPresentationMorphism( Range( alpha ), colift, Range( beta ) );
+        colift := GradedPresentationMorphism( Range( alpha ), colift, Range( beta ) );
+        
+        if not IsWellDefined( colift ) then
+        
+          Error( "An output of the Colift method is not well-defined!" );
+        
+        fi;
+        
+        return colift;
         
     end );
     
@@ -922,6 +950,70 @@ InstallGlobalFunction( ADD_GRADED_IDENTITY,
         
         return GradedPresentationMorphism( object, morphism, object );
         
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_LIFT_ALONG_MONOMORPHISM,
+
+  function( category )
+    
+    AddLiftAlongMonomorphism( category,
+
+      function( iota, tau )
+        local lift;
+
+        lift := LiftAlongMonomorphism( UnderlyingPresentationMorphism( iota ), UnderlyingPresentationMorphism( tau ) );
+        
+        if lift = fail then
+
+            return fail;
+
+        fi;
+
+        lift := GradedPresentationMorphism( Source( tau ), lift, Source( iota ) );
+
+        if not IsWellDefined( lift ) then
+
+          Error( "An output of the LiftAlongMonomorphism is not well-defined!" );
+
+        fi;
+
+        return lift;
+
+    end );
+
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_COLIFT_ALONG_EPIMORPHISM,
+
+  function( category )
+
+    AddColiftAlongEpimorphism( category,
+
+      function( epsilon, tau )
+        local colift;
+
+        colift := ColiftAlongEpimorphism( UnderlyingPresentationMorphism( epsilon ), UnderlyingPresentationMorphism( tau ) );
+
+        if colift = fail then
+
+            return fail;
+
+        fi;
+
+        colift := GradedPresentationMorphism( Range( epsilon ), colift, Range( tau ) );
+
+        if not IsWellDefined( colift ) then
+
+          Error( "An output of the ColiftAlongEpimorphism is not well-defined!" );
+
+        fi;
+
+        return colift;
+
     end );
     
 end );
