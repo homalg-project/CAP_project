@@ -600,7 +600,7 @@ InstallGlobalFunction( "DisableBasicOperationTypeCheck",
     
     Print(
       Concatenation(
-      "WARNING: DisableBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2019.09.20. ",
+      "WARNING: DisableBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2020.02.27. ",
       "Please use DisableInputSanityChecks( category ) instead.\n"
       )
     );
@@ -613,7 +613,7 @@ InstallGlobalFunction( "EnablePartialBasicOperationTypeCheck",
     
     Print(
       Concatenation(
-      "WARNING: EnablePartialBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2019.09.20. ",
+      "WARNING: EnablePartialBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2020.02.27. ",
       "Please use EnablePartialInputSanityChecks( category ) instead.\n"
       )
     );
@@ -626,7 +626,7 @@ InstallGlobalFunction( "EnableFullBasicOperationTypeCheck",
     
     Print(
       Concatenation(
-      "WARNING: EnableFullBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2019.09.20. ",
+      "WARNING: EnableFullBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2020.02.27. ",
       "Please use EnableFullInputSanityChecks( category ) instead.\n"
       )
     );
@@ -639,7 +639,7 @@ InstallGlobalFunction( "EnableBasicOperationTypeCheck",
     
     Print(
       Concatenation(
-      "WARNING: EnableBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2019.09.20. ",
+      "WARNING: EnableBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2020.02.27. ",
       "Please use EnablePartialInputSanityChecks( category ) instead.\n"
       )
     );
