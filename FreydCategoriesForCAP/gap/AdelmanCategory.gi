@@ -17,7 +17,7 @@ InstallMethod( AdelmanCategory,
                [ IsCapCategory ],
 
   function( underlying_category )
-    local adelman_category;
+    local adelman_category, func;
     
     if not HasIsAdditiveCategory( underlying_category ) then
         
@@ -25,49 +25,15 @@ InstallMethod( AdelmanCategory,
         
     fi;
     
-    ## TODO: get the conditions correct
-    # if not IsCategoryWithHomomorphismStructure( underlying_category ) then
+    for func in [ "Lift", "Colift", "SubtractionForMorphisms", "AdditionForMorphisms", "PreCompose", "IdentityMorphism", "SolveLinearSystemInAbCategory" ] do
         
-    #     Error( "The given category must have a homomorphism structure" );
+        if not CanCompute( underlying_category, func ) then
+            
+            Error( "The given category should be able to compute ", func );
+            
+        fi;
         
-    # fi;
-    
-    if not CanCompute( CapCategory( DistinguishedObjectOfHomomorphismStructure( underlying_category ) ), "Lift" ) then
-        
-        Error( "The range category of the homomorphism structure of the given category should be able to compute Lift");
-        
-    fi;
-    
-    ## for IsCongruentForMorphisms to be correct
-    if not CanCompute( underlying_category, "Lift" ) then
-        
-        Error( "The given category should be able to compute Lift" );
-        
-    fi;
-    
-    if not CanCompute( underlying_category, "Colift" ) then
-        
-        Error( "The given category should be able to compute Colift" );
-        
-    fi;
-    
-    if not CanCompute( underlying_category, "SubtractionForMorphisms" ) then
-        
-        Error( "The given category should be able to compute SubtractionForMorphisms" );
-        
-    fi;
-    
-    if not CanCompute( underlying_category, "AdditionForMorphisms" ) then
-        
-        Error( "The given category should be able to compute AdditionForMorphisms" );
-        
-    fi;
-    
-    if not CanCompute( underlying_category, "PreCompose" ) then
-        
-        Error( "The given category should be able to compute PreCompose" );
-        
-    fi;
+    od;
     
     adelman_category := CreateCapCategory( Concatenation( "Adelman category( ", Name( underlying_category ), " )" ) );
     
