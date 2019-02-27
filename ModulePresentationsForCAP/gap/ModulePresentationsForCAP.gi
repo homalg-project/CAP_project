@@ -32,8 +32,6 @@ InstallMethod( LeftPresentations,
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
-      SetIsStrictMonoidalCategory( category, true );
-    
     fi;
     
     ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
@@ -199,6 +197,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
       
       ADD_LIFT_AND_COLIFT_LEFT( category );
       
+      ADD_ASSOCIATOR_LEFT( category );
+      
+      ADD_UNITOR( category );
+      
       ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT( category );
       
       ADD_TENSOR_PRODUCT_ON_MORPHISMS( category );
@@ -259,6 +261,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_LIFT_AND_COLIFT_RIGHT( category );
+      
+      ADD_ASSOCIATOR_RIGHT( category );
+      
+      ADD_UNITOR( category );
       
       ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT( category );
       
@@ -1179,6 +1185,78 @@ InstallGlobalFunction( ADD_IDENTITY_RIGHT,
         return PresentationMorphism( object, matrix, object );
         
     end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_ASSOCIATOR_LEFT,
+                      
+  function( category )
+    local homalg_ring, associator_func;
+    
+    homalg_ring := category!.ring_for_representation_category;
+    
+    associator_func := function( source, A, B, C, range )
+        
+        return PresentationMorphism(
+                  source,
+                  HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( source ) ), NrColumns( UnderlyingMatrix( range ) ), homalg_ring ),
+                  range
+               );
+        
+    end;
+    
+    AddAssociatorLeftToRightWithGivenTensorProducts( category,
+      associator_func
+    );
+    
+    AddAssociatorRightToLeftWithGivenTensorProducts( category,
+      associator_func
+    );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_ASSOCIATOR_RIGHT,
+                      
+  function( category )
+    local homalg_ring, associator_func;
+    
+    homalg_ring := category!.ring_for_representation_category;
+    
+    associator_func := function( source, A, B, C, range )
+        
+        return PresentationMorphism(
+                  source,
+                  HomalgIdentityMatrix( NrRows( UnderlyingMatrix( source ) ), NrRows( UnderlyingMatrix( range ) ), homalg_ring ),
+                  range
+               );
+        
+    end;
+    
+    AddAssociatorLeftToRightWithGivenTensorProducts( category,
+      associator_func
+    );
+    
+    AddAssociatorRightToLeftWithGivenTensorProducts( category,
+      associator_func
+    );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_UNITOR,
+                      
+  function( category )
+    local unitor_func;
+    
+    unitor_func := function( A, B )
+        return IdentityMorphism( A );
+    end;
+    
+    AddLeftUnitorWithGivenTensorProduct( category, unitor_func );
+    
+    AddRightUnitorWithGivenTensorProduct( category, unitor_func );
     
 end );
 
