@@ -209,8 +209,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
     local recnames, current_recname, category_weight_list, dual_name, current_entry, func,
-          current_add, create_func, create_func_with_category_input, morphism_between_direct_sums_func,
-          list_operation_func;
+          current_add, create_func, create_func_with_category_input, morphism_between_direct_sums_func;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
@@ -243,19 +242,8 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         end;
       
     end;
-
-    list_operation_func :=
-            function( list )
-                return List( list, function( l )
-                                    if IsList( l ) then
-                                        return Reversed( l );
-                                    else
-                                        return l;
-                                    fi;
-                                  end );
-            end;
-
-        for current_recname in recnames do
+    
+    for current_recname in recnames do
         
         current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
         
@@ -296,12 +284,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             end;
             
             func := create_func( dual_name, morphism_between_direct_sums_func );
-
-        elif IsBound( current_entry.only_lists_in_dual_arguments_are_reversed ) and
-                    current_entry.only_lists_in_dual_arguments_are_reversed then
-
-            func := create_func( dual_name, list_operation_func );
-
+            
         elif current_entry.dual_arguments_reversed then
             
             func := create_func( dual_name, Reversed );
