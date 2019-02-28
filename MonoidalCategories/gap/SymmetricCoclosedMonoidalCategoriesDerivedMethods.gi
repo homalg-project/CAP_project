@@ -341,3 +341,30 @@ AddDerivationToCAP( MorphismFromInternalCoHomToTensorProductWithGivenObjects,
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
       Description := "MorphismFromInternalCoHomToTensorProductWithGivenObjects using InternalCoHomTensorProductCompatibilityMorphism" );
+
+##
+AddDerivationToCAP( CoEvaluationMorphismWithGivenRange,
+                  
+  function( object_1, object_2, tensor_object )
+    
+    return InternalCoHomToTensorProductAdjunctionMap(
+             object_1,
+             object_2,
+             IdentityMorphism( InternalCoHomOnObjects( object_1, object_2 ) )
+           );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "CoEvaluationMorphismWithGivenRange using the cohom tensor adjunction on the identity" );
+
+AddDerivationToCAP( DualCoEvaluationMorphismWithGivenSource,
+                  
+  function( object_1, object_2, internal_cohom )
+    
+    return TensorProductToInternalCoHomAdjunctionMap(
+             object_1,
+             object_2,
+             IdentityMorphism( TensorProductOnObjects( object_1, object_2 ) )
+           );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "DualCoEvaluationMorphismWithGivenSource using the cohom tensor adjunction on the identity" );
