@@ -336,7 +336,7 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
              IdentityMorphism( InternalHomOnObjects( object_1, object_2 ) ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "EvaluationMorphismWithGivenSource using the tenor hom adjunction on the identity" );
+      Description := "EvaluationMorphismWithGivenSource using the tensor hom adjunction on the identity" );
 
 ##
 AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
