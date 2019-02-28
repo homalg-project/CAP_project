@@ -246,3 +246,45 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
 
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
       Description := "CoDualityTensorProductCompatibilityMorphismWithGivenObjects using left unitor, and compatibility of internal cohom and tensor product" );
+
+##
+AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
+                  
+  function( object, internal_cohom )
+    local unit;
+    
+    unit := TensorUnit( CapCategory( object ) );
+    
+    return PreCompose(
+             InternalCoHomOnMorphisms(
+               LeftUnitorInverse( object ),
+               IdentityMorphism( unit ) ),
+             DualCoEvaluationMorphism( unit, object ));
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom using the dualcoevaluation morphism" );
+
+## TODO: modify for the coclosed case and enable
+# ##
+# AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
+#                     
+#   function( object, internal_hom )
+#     
+#     return Inverse( IsomorphismFromObjectToInternalHom( object ) );
+#     
+# end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+#       Description := "IsomorphismFromInternalHomToObjectWithGivenInternalHom as the inverse of IsomorphismFromObjectToInternalHom" );
+
+##
+AddDerivationToCAP( IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom,
+                  
+  function( object, internal_cohom )
+    local unit;
+    
+    unit := TensorUnit( CapCategory( object ) );
+    
+    return PreCompose( CoEvaluationMorphism( object, unit ),
+                       LeftUnitor( internal_cohom ) );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom using the CoEvaluation morphism" );
