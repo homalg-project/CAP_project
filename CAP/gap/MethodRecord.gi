@@ -2987,7 +2987,7 @@ RandomMorphismWithFixedRange := rec(
 ),
 
 RandomMorphismWithFixedSourceAndRange := rec(
-  installation_name := "RandomMorphismWithFixedRange",
+  installation_name := "RandomMorphismWithFixedSourceAndRange",
   filter_list := [ "object", "object", IsInt ],
   return_type := "morphism",
   post_function := function( object1, object2, n, return_value )
