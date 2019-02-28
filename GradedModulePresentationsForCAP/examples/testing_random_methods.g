@@ -45,3 +45,45 @@ IsWellDefined( M );
 IsWellDefined( f );
 IsWellDefined( g );
 
+M := 0; f := 0; g := 0;
+
+test := function( cat, N, max )
+  local i;
+
+  for i in [ 1 .. N ] do
+    
+    Display( i );
+
+    M := RandomObject( cat, Random( [ 0 .. max ] ) );
+
+    f := RandomMorphismWithFixedSource( M, Random( [ 0 .. max ] ) );
+
+    g := RandomMorphismWithFixedRange( M, Random( [ 0 .. max ] ) );
+
+    if not IsWellDefined( f ) then
+
+      Error( "f" );
+
+    else
+
+      Display( "Ok" );
+      #Display( f );
+
+    fi;
+    
+    if not IsWellDefined( g ) then
+
+      Error( "g" );
+
+    else
+
+      Display( "Ok" );
+      #Display( g );
+
+    fi;
+
+  od;
+
+end;
+
+test( cat1, 10, 5 );
