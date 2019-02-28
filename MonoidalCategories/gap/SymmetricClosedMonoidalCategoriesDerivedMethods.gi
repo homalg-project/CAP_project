@@ -303,19 +303,17 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
     unit := TensorUnit( CapCategory( object_1 ) );
     
     return PreCompose( [ 
-                  TensorProductOnMorphisms(
-                    IsomorphismFromDualToInternalHom( object_1 ),
-                    IsomorphismFromObjectToInternalHom( object_2 ) ),
-                      
-                  TensorProductInternalHomCompatibilityMorphism(
-                    object_1, unit, unit, object_2 ),
-                      
-                  TensorProductOnMorphisms(
-                    IdentityMorphism( internal_hom ),
-                    IsomorphismFromInternalHomToObject( unit ) ),
-                    
-                  RightUnitor( internal_hom )
-                ] );
+             TensorProductOnMorphisms(
+               IsomorphismFromDualToInternalHom( object_1 ),
+               IsomorphismFromObjectToInternalHom( object_2 ) ),
+                
+             TensorProductInternalHomCompatibilityMorphism(
+               object_1, unit, unit, object_2 ),
+                
+             InternalHomOnMorphisms(
+               RightUnitor( object_1 ),
+               LeftUnitor( object_2 ) ),
+           ] );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "MorphismFromTensorProductToInternalHomWithGivenObjects using TensorProductInternalHomCompatibilityMorphism" );
