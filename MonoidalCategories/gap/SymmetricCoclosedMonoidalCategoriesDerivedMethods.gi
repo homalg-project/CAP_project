@@ -304,3 +304,40 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom,
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
       Description := "IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom using the CoEvaluation morphism" );
+
+## TODO: IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom as adjoint of right unitor.
+
+## TODO: modify for the coclosed case and enable
+# ##
+# AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
+#                     
+#   function( object, internal_hom )
+#     
+#     return Inverse( IsomorphismFromInternalHomToObject( object ) );
+#     
+# end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+#       Description := "IsomorphismFromObjectToInternalHom as the inverse of IsomorphismFromInternalHomToObject" );
+
+##
+AddDerivationToCAP( MorphismFromInternalCoHomToTensorProductWithGivenObjects,
+                    
+  function( internal_cohom, object_1, object_2, tensor_object )
+    local unit;
+    
+    unit := TensorUnit( CapCategory( object_1 ) );
+    
+    return PreCompose( [ 
+             InternalCoHomOnMorphisms( 
+               RightUnitorInverse( object_1 ),
+               LeftUnitorInverse( object_2 ) ),
+              
+             InternalCoHomTensorProductCompatibilityMorphism(
+               object_1, unit, unit, object_2 ),
+              
+             TensorProductOnMorphisms(
+               IsomorphismFromInternalCoHomToObject( object_1 ),
+               IsomorphismFromInternalCoHomToCoDual( object_2 ) )
+           ] );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "MorphismFromInternalCoHomToTensorProductWithGivenObjects using InternalCoHomTensorProductCompatibilityMorphism" );
