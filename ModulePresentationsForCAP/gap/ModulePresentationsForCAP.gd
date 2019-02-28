@@ -135,13 +135,9 @@ DeclareGlobalFunction( "ADD_LIFT_AND_COLIFT_LEFT" );
 
 DeclareGlobalFunction( "ADD_LIFT_AND_COLIFT_RIGHT" );
 
-DeclareGlobalFunction( "RANDOM_HOMALG_ELEMENT_FOR_MODULE_PRESENTATIONS" );
+DeclareGlobalFunction( "TRY_TO_ENHANCE_HOMALG_RING_WITH_RANDOM_FUNCTIONS" );
 
-DeclareGlobalFunction( "RANDOM_HOMALG_MATRIX_FOR_MODULE_PRESENTATIONS" );
-
-DeclareGlobalFunction( "ADD_RANDOM_OBJECT_LEFT" );
-
-DeclareGlobalFunction( "ADD_RANDOM_OBJECT_RIGHT" );
+DeclareGlobalFunction( "ADD_RANDOM_OBJECT" );
 
 DeclareGlobalFunction( "ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT" );
 

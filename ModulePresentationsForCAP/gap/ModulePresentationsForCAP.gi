@@ -27,7 +27,9 @@ InstallMethod( LeftPresentations,
     SetIsAbelianCategory( category, true );
 
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
-    
+   
+    TRY_TO_ENHANCE_HOMALG_RING_WITH_RANDOM_FUNCTIONS( ring );
+
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
@@ -96,6 +98,8 @@ InstallMethod( RightPresentations,
     SetIsAbelianCategory( category, true );
     
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
+
+    TRY_TO_ENHANCE_HOMALG_RING_WITH_RANDOM_FUNCTIONS( ring );
 
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
@@ -192,12 +196,17 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
     ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
+    
+    if IsBound( category!.ring_for_representation_category!.random_element_func ) and 
+         IsBound( category!.ring_for_representation_category!.random_matrix_func ) then
+      
+      ADD_RANDOM_OBJECT( category, "left" );
 
-    ADD_RANDOM_OBJECT_LEFT( category );
+      ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT( category );
 
-    ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT( category );
+      ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT( category );
 
-    ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT( category );
+    fi;
 
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
@@ -264,11 +273,16 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
 
-    ADD_RANDOM_OBJECT_RIGHT( category );
+    if IsBound( category!.ring_for_representation_category!.random_element_func ) and 
+         IsBound( category!.ring_for_representation_category!.random_matrix_func ) then
+      
+      ADD_RANDOM_OBJECT( category, "right" );
 
-    ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT( category );
+      ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT( category );
 
-    ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT( category );
+      ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT( category );
+
+    fi;
 
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
@@ -2164,46 +2178,11 @@ end );
 ##
 
 ##
-InstallGlobalFunction( RANDOM_HOMALG_ELEMENT_FOR_MODULE_PRESENTATIONS,
-  function( R )
-    local ind, l1, l2, n;
-
-    if HasIsFreePolynomialRing( R ) or HasIsExteriorRing( R ) then
-      ind := Concatenation(  [ One( R ) ], Indeterminates( R ), Indeterminates( R ) );
-      n := Random( [ 1, 1, 1, 2, 2, 3 ] );
-      l1 := List( [ 1 .. n ], i -> Product( Random( Combinations( ind, i ) ) ) );
-      l2 := List( [ 1 .. n ], i -> Random( [ -2, -1, -1, 0, 1, 1, 2 ] ) * One( R ) );
-      return l1*l2;
-    elif HasIsFieldForHomalg( R ) or HasIsIntegersForHomalg( R ) then
-      return Random( [ -20 .. 20 ] )*One( R );
-    elif HasAmbientRing( R ) then
-      return String( RANDOM_HOMALG_ELEMENT_FOR_MODULE_PRESENTATIONS( AmbientRing( R ) ) )/R;
-    else
-      Error( "No method has been installed for this ring!" );
-    fi;
-
-end );
-
-##
-InstallGlobalFunction( RANDOM_HOMALG_MATRIX_FOR_MODULE_PRESENTATIONS,
-    function( m, n, R )
-      local L;
-      if m*n = 0 then
-        return HomalgZeroMatrix( m, n, R );
-      else
-        L := List( [ 1 .. m ], i ->
-                    List( [ 1 .. n ], j ->
-                        RANDOM_HOMALG_ELEMENT_FOR_MODULE_PRESENTATIONS( R ) ) );
-        return HomalgMatrix( L, R );
-      fi;
-end );
-
-##
 ## Interpretation of n:
 ## The number of rows and colms of the matrix of the object is less or equal to n.
-InstallGlobalFunction( ADD_RANDOM_OBJECT_LEFT,
+InstallGlobalFunction( ADD_RANDOM_OBJECT,
 
-  function( category )
+  function( category, left_or_right )
 
     AddRandomObject( category,
 
@@ -2211,6 +2190,12 @@ InstallGlobalFunction( ADD_RANDOM_OBJECT_LEFT,
         local nr_rows, nr_cols, mat, homalg_ring;
 
         homalg_ring := category!.ring_for_representation_category;
+        
+        if n < 0 then
+          
+          Error( "The integer should be greater or equal to zero" );
+
+        fi;
 
         if n = 0 then
           
@@ -2222,30 +2207,17 @@ InstallGlobalFunction( ADD_RANDOM_OBJECT_LEFT,
 
         nr_cols := Random( [ 1 .. n ] );
 
-        mat := RANDOM_HOMALG_MATRIX_FOR_MODULE_PRESENTATIONS( nr_rows, nr_cols, homalg_ring );
+        mat := homalg_ring!.random_matrix_func( nr_rows, nr_cols );
 
-        return AsLeftPresentation( mat );
+        if left_or_right = "left" then
+          
+          return AsLeftPresentation( mat );
 
-      end );
+        else
 
-end );
+          return AsRightPresentation( mat );
 
-##
-InstallGlobalFunction( ADD_RANDOM_OBJECT_RIGHT,
-
-  function( category )
-
-    AddRandomObject( category,
-        function( category, n )
-        local homalg_ring, left_presentations, M;
-
-        homalg_ring := category!.ring_for_representation_category;
-
-        left_presentations := LeftPresentations( homalg_ring );
-
-        M := RandomObject( left_presentations, n );
-
-        return AsRightPresentation( Involution( UnderlyingMatrix( M ) ) );
+        fi;
 
       end );
 
@@ -2263,26 +2235,26 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT,
       AddRandomMorphismWithFixedSource( category,
         function( M, n )
           local m, y, syz, x, u, U, e;
-          
-          if n = 0 then
+
+          if n < 0 then
             
-            return UniversalMorphismIntoZeroObject( M );
+            Error( "The integer should be greater or equal to zero" );
 
           fi;
 
           m := UnderlyingMatrix( M );
 
-          y := RANDOM_HOMALG_MATRIX_FOR_MODULE_PRESENTATIONS( NrRows( m ), n, homalg_ring );
+          y := homalg_ring!.random_matrix_func( NrRows( m ), n );
 
           syz := SyzygiesOfColumns( UnionOfColumns( m, y ) );
 
           if NrCols( syz ) > 0 then
 
-            e := RANDOM_HOMALG_ELEMENT_FOR_MODULE_PRESENTATIONS( homalg_ring );
+            e := homalg_ring!.random_element_func( );
 
             e := Random( [ e, e, e, One( homalg_ring ) ] );
 
-            syz := e * CertainColumns( syz, [ 1 .. Random( [ 1 .. NrCols( syz ) ]  ) ] );
+            syz := CertainColumns( syz, [ 1 .. Random( [ 1 .. NrCols( syz ) ]  ) ] ) * e;
 
           fi;
 
@@ -2310,7 +2282,13 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
       AddRandomMorphismWithFixedRange( category,
         function( U, n )
           local u, x, syz, m, M, e;
-          
+
+          if n < 0 then
+            
+            Error( "The integer should be greater or equal to zero" );
+
+          fi;
+
           if n = 0 then
             
             return UniversalMorphismFromZeroObject( U );
@@ -2319,15 +2297,15 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
 
           u := UnderlyingMatrix( U );
 
-          x := RANDOM_HOMALG_MATRIX_FOR_MODULE_PRESENTATIONS( n, NrCols( u ), homalg_ring );
+          x := homalg_ring!.random_matrix_func( n, NrCols( u ) );
 
           syz := SyzygiesOfRows( UnionOfRows( x, u ) );
 
           if NrRows( syz ) > 0 then
 
-            e := RANDOM_HOMALG_ELEMENT_FOR_MODULE_PRESENTATIONS( homalg_ring );
+            e := homalg_ring!.random_element_func( );
 
-            e := Random( [ e, e, e, e, One( homalg_ring ) ] );
+            e := Random( [ e, e, e, One( homalg_ring ) ] );
 
             syz := e * CertainRows( syz, [ 1 .. Random( [ 1 .. NrRows( syz ) ] ) ] );
 
@@ -2346,54 +2324,184 @@ end );
 ##
 InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT,
     function( category )
+      local homalg_ring;
+      
+      homalg_ring := category!.ring_for_representation_category;
 
       AddRandomMorphismWithFixedSource( category,
-        function( M, n )
-          local M1, f;
+        function( U, n )
+          local u, x, syz, e, m, M, y;
 
-           M1 := AsLeftPresentation( Involution( UnderlyingMatrix( M ) ) );
+          if n < 0 then
+            
+            Error( "The integer should be greater or equal to zero" );
 
-           f := RandomMorphismWithFixedSource( M1, n );
+          fi;
 
-           return
-           PresentationMorphism(
+          u := UnderlyingMatrix( U );
 
-                AsRightPresentation( Involution( UnderlyingMatrix( Source( f ) ) ) ),
+          x := homalg_ring!.random_matrix_func( n, NrCols( u ) );
 
-                Involution( UnderlyingMatrix( f ) ),
+          syz := SyzygiesOfRows( UnionOfRows( x, u ) );
 
-                AsRightPresentation( Involution( UnderlyingMatrix( Range( f ) ) ) )
+          if NrRows( syz ) > 0 then
 
-           );
+            e := homalg_ring!.random_element_func( );
 
-     end );
+            e := Random( [ e, e, e, One( homalg_ring ) ] );
+
+            syz := e * CertainRows( syz, [ 1 .. Random( [ 1 .. NrRows( syz ) ] ) ] );
+
+          fi;
+
+          m := CertainColumns( syz, [ 1 .. NrRows( x ) ] );
+
+          M := AsRightPresentation( m );
+
+          y := CertainColumns( syz, [ NrRows( x ) + 1 .. NrCols( syz ) ] );
+
+          # Now: m*x + y*u = 0
+          return PresentationMorphism( U, y, M );
+
+    end );
 
 end );
 
 ##
 InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
     function( category )
+      local homalg_ring;
+
+      homalg_ring := category!.ring_for_representation_category;
 
       AddRandomMorphismWithFixedRange( category,
-        function( U, n )
-           local U1, f;
+        function( M, n )
+          local m, y, syz, e, u, U;
+          
+          if n < 0 then
+            
+            Error( "The integer should be greater or equal to zero" );
 
-           U1 := AsLeftPresentation( Involution( UnderlyingMatrix( U ) ) );
+          fi;
 
-           f := RandomMorphismWithFixedRange( U1, n );
+          if n = 0 then
 
-           return
-           PresentationMorphism(
+            return UniversalMorphismFromZeroObject( M );
 
-                AsRightPresentation( Involution( UnderlyingMatrix( Source( f ) ) ) ),
+          fi;
 
-                Involution( UnderlyingMatrix( f ) ),
+          m := UnderlyingMatrix( M );
 
-                AsRightPresentation( Involution( UnderlyingMatrix( Range( f ) ) ) )
+          y := homalg_ring!.random_matrix_func( NrRows( m ), n );
 
-           );
+          syz := SyzygiesOfColumns( UnionOfColumns( m, y ) );
 
-    end );
+          if NrCols( syz ) > 0 then
+
+            e := homalg_ring!.random_element_func( );
+
+            e := Random( [ e, e, e, One( homalg_ring ) ] );
+
+            syz := CertainColumns( syz, [ 1 .. Random( [ 1 .. NrCols( syz ) ]  ) ] ) * e;
+
+          fi;
+
+          u := CertainRows( syz, [ NrCols( m ) + 1 .. NrRows( syz ) ] );
+
+          U := AsRightPresentation( u );
+
+          return PresentationMorphism( U, y, M );
+     
+      end );
+
+end );
+
+##
+InstallGlobalFunction( TRY_TO_ENHANCE_HOMALG_RING_WITH_RANDOM_FUNCTIONS,
+  function( R )
+    local random_element_func, random_matrix_func;
+    
+    if IsBound( R!.random_element_func ) and IsBound( R!.random_matrix_func ) then
+
+      return true;
+
+    fi;
+
+    if ( HasIsFreePolynomialRing( R ) and IsFreePolynomialRing( R ) ) or 
+        ( HasIsExteriorRing( R ) and IsExteriorRing( R ) ) then
+
+      random_element_func :=
+        function(  )
+             local ind, n, l1, l2;
+
+             ind := Concatenation(  [ One( R ) ], Indeterminates( R ), Indeterminates( R ) );
+
+             n := Random( [ 1, 1, 1, 2, 2, 3 ] );
+
+             l1 := List( [ 1 .. n ], i -> Product( Random( Combinations( ind, i ) ) ) );
+
+             l2 := List( [ 1 .. n ], i -> Random( [ -2, -1, -1, 0, 1, 1, 2 ] ) * One( R ) );
+
+             return l1 * l2;
+
+        end;
+        
+      R!.random_element_func := random_element_func;
+    
+    elif ( HasIsFieldForHomalg( R ) and IsFieldForHomalg( R ) ) or
+          ( HasIsIntegersForHomalg( R ) and IsIntegersForHomalg( R ) ) then
+
+      random_element_func :=
+        function( )
+          
+          return Random( [ -20 .. 20 ] )*One( R );
+        
+        end;
+
+      R!.random_element_func := random_element_func;
+
+    elif HasAmbientRing( R ) and IsBound( AmbientRing( R )!.random_element_func ) then
+
+      random_element_func :=
+        function( )
+          
+          return AmbientRing( R )!.random_element_func(  )/R;
+        
+        end;
+
+      R!.random_element_func := random_element_func;
+ 
+     fi;
+
+     random_matrix_func :=
+        function( m, n )
+          local L;
+
+          if m * n = 0 then
+            
+            return HomalgZeroMatrix( m, n, R );
+          
+          else
+
+            L := List( [ 1 .. m ], i -> List( [ 1 .. n ], j -> R!.random_element_func(  ) ) );
+
+            return HomalgMatrix( L, m, n, R );
+          
+          fi;
+
+        end;
+
+     if IsBound( R!.random_element_func ) then
+       
+       R!.random_matrix_func := random_matrix_func;
+
+       return true;
+     
+     else
+
+       return false;
+
+     fi;
 
 end );
 
