@@ -32,8 +32,6 @@ InstallMethod( GradedLeftPresentations,
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
-      SetIsStrictMonoidalCategory( category, true );
-    
     fi;
     
     ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
@@ -219,6 +217,10 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
+      ADD_GRADED_UNITOR( category );
+      
+      ADD_GRADED_ASSOCIATOR_LEFT( category );
+      
       ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS( category );
       
       ADD_GRADED_TENSOR_PRODUCT_ON_MORPHISMS( category );
@@ -299,6 +301,10 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     fi;
 
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
+      
+      ADD_GRADED_UNITOR( category );
+      
+      ADD_GRADED_ASSOCIATOR_RIGHT( category );
       
       ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS( category );
       
@@ -1631,6 +1637,76 @@ InstallGlobalFunction( ENHANCE_GRADED_RING_WITH_RANDOM_FUNCTIONS,
 end );
 
 
+InstallGlobalFunction( ADD_GRADED_UNITOR,
+                      
+  function( category )
+    local unitor_func;
+    
+    unitor_func := function( A, B )
+        return IdentityMorphism( A );
+    end;
+    
+    AddLeftUnitorWithGivenTensorProduct( category, unitor_func );
+    
+    AddRightUnitorWithGivenTensorProduct( category, unitor_func );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_ASSOCIATOR_LEFT,
+                      
+  function( category )
+    local homalg_ring, associator_func;
+    
+    homalg_ring := category!.ring_for_representation_category;
+    
+    associator_func := function( source, A, B, C, range )
+        
+        return GradedPresentationMorphism(
+                  source,
+                  HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( source ) ), NrColumns( UnderlyingMatrix( range ) ), homalg_ring ),
+                  range
+               );
+        
+    end;
+    
+    AddAssociatorLeftToRightWithGivenTensorProducts( category,
+      associator_func
+    );
+    
+    AddAssociatorRightToLeftWithGivenTensorProducts( category,
+      associator_func
+    );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_ASSOCIATOR_RIGHT,
+                      
+  function( category )
+    local homalg_ring, associator_func;
+    
+    homalg_ring := category!.ring_for_representation_category;
+    
+    associator_func := function( source, A, B, C, range )
+        
+        return GradedPresentationMorphism(
+                  source,
+                  HomalgIdentityMatrix( NrRows( UnderlyingMatrix( source ) ), NrRows( UnderlyingMatrix( range ) ), homalg_ring ),
+                  range
+               );
+        
+    end;
+    
+    AddAssociatorLeftToRightWithGivenTensorProducts( category,
+      associator_func
+    );
+    
+    AddAssociatorRightToLeftWithGivenTensorProducts( category,
+      associator_func
+    );
+    
+end );
 # 
 # ##
 # InstallGlobalFunction( ADD_GRADED_BRAIDING_LEFT,

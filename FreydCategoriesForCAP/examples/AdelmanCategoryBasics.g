@@ -1,12 +1,10 @@
 #! @Chapter Examples and Tests
 
-LoadPackage( "FreydCategoriesForCAP" );;
-LoadPackage( "RingsForHomalg" );
-
 #! @Section Adelman category basics
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
+LoadPackage( "Bialgebroids" );
 
 #! @Example
 R := HomalgRingOfIntegers();;
@@ -64,7 +62,6 @@ Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf,
                          kQ.("fi") - kQ.hk,
                          kQ.gj - kQ.il,
                          kQ.mk + kQ.bn - kQ.di ] );;
-INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID( Aoid );;
 mm := SetOfGeneratingMorphisms( Aoid );;
 CapCategorySwitchLogicOff( Aoid );;
 Acat := AdditiveClosure( Aoid );;

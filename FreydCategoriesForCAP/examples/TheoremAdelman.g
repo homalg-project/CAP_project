@@ -2,14 +2,13 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
-
-#! @Section Adelman category basics
+LoadPackage( "Bialgebroids" );;
+#! @Section Adelman category theorem
 
 #! @Example
 quiver := RightQuiver( "Q(9)[a:1->2,b:3->2]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;
 Aoid := Algebroid( kQ );;
-INSTALL_HOMOMORPHISM_STRUCTURE_FOR_BIALGEBROID( Aoid );;
 mm := SetOfGeneratingMorphisms( Aoid );;
 CapCategorySwitchLogicOff( Aoid );;
 Acat := AdditiveClosure( Aoid );;

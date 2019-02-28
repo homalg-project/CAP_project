@@ -13,6 +13,7 @@ AutoDoc( "FreydCategoriesForCAP" : scaffold := true, autodoc :=
                               "LoadPackage( \"RingsForHomalg\" );",
                               "LoadPackage( \"GaussForHomalg\" );",
                               "LoadPackage( \"GeneralizedMorphismsForCAP\" );",
+                              "LoadPackage( \"Bialgebroids\" );",
                               "HOMALG_IO.show_banners := false;",
                               "HOMALG_IO.suppress_PID := true;",
                               "HOMALG_IO.use_common_stream := true;",

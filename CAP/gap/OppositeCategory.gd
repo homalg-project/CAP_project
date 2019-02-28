@@ -30,6 +30,8 @@ DeclareGlobalVariable( "CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY" );
 
+DeclareGlobalFunction( "CAP_INTERNAL_OPPOSITE_RECURSIVE" );
+
 ###################################
 ##
 #! @Section Constructor

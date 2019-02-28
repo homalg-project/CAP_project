@@ -26,4 +26,6 @@ IsWellDefined( mor );
 #! true
 IsWellDefined( Opposite( mor ) );
 #! true
+IsOne( UniversalMorphismFromImage( mor, [ CoastrictionToImage( mor ), ImageEmbedding( mor ) ] ) );
+#! true
 #! @EndExample
