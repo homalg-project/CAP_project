@@ -13,7 +13,7 @@ Subtitle := "Elementary toposes",
 Version := Maximum( [
                    "2019.01.20", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2018.07.01", ## Tom's version
+                   "2019.02.01", ## Tom's version
                    ## this line prevents merge conflicts
                    "2019.01.29", ## Mario's version
                    ] ),

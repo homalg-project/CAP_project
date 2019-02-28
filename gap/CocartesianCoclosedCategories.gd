@@ -47,7 +47,7 @@ DeclareOperation( "AddCoexponentialOnObjects",
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
 #! The output is the internal hom morphism
 #! $\mathrm{Coexponential}(\alpha,\beta): \mathrm{Coexponential}(a,b') \rightarrow \mathrm{Coexponential}(a',b)$.
-#! @Returns a morphism in $\mathrm{coHom}( \mathrm{Coexponential}(a,b'), \mathrm{Coexponential}(a',b) )$
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b'), \mathrm{Coexponential}(a',b) )$
 #! @Arguments alpha, beta
 DeclareOperation( "CoexponentialOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -58,7 +58,7 @@ DeclareOperation( "CoexponentialOnMorphisms",
 #! and an object $r = \mathrm{Coexponential}(a',b)$.
 #! The output is the internal hom morphism 
 #! $\mathrm{Coexponential}(\alpha,\beta): \mathrm{Coexponential}(a,b') \rightarrow \mathrm{Coexponential}(a',b)$.
-#! @Returns a morphism in $\mathrm{coHom}( \mathrm{Coexponential}(a,b'), \mathrm{Coexponential}(a',b) )$
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b'), \mathrm{Coexponential}(a',b) )$
 #! @Arguments s, alpha, beta, r
 DeclareOperation( "CoexponentialOnMorphismsWithGivenCoexponentials",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );

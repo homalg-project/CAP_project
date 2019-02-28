@@ -178,9 +178,9 @@ InstallMethod( DirectProductCartesianDualityCompatibilityMorphism,
   function( object_1, object_2 )
     
     return DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects(
-             CartesianDualOnObjects( DirectProduct( object_1, object_2 ) ),
+             DirectProduct( CartesianDualOnObjects( object_1 ), CartesianDualOnObjects( object_2 ) ),
              object_1, object_2,
-             DirectProduct( CartesianDualOnObjects( object_1 ), CartesianDualOnObjects( object_2 ) )
+             CartesianDualOnObjects( DirectProduct( object_1, object_2 ) )
            );
     
 end );

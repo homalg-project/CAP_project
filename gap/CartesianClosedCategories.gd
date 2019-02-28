@@ -10,7 +10,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_CARTESIAN_CLOSED_CATEGORIES_BASIC_OPERATION
 
 DeclareGlobalVariable( "CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD" );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory  := Concatenation( [ 
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory  := Concatenation( [
 "ExponentialOnObjects",
 "ExponentialOnMorphismsWithGivenExponentials",
 "CartesianEvaluationMorphismWithGivenSource",
@@ -28,7 +28,7 @@ DeclareOperation( "ExponentialOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operations adds the given function $F$
 #! to the category for the basic operation <C>ExponentialOnObjects</C>.
 #! $F: (a,b) \mapsto \mathrm{Exponential}(a,b)$.
 #! @Returns nothing
@@ -58,7 +58,7 @@ DeclareOperation( "ExponentialOnMorphisms",
 #! The arguments are an object $s = \mathrm{Exponential}(a',b)$,
 #! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$,
 #! and an object $r = \mathrm{Exponential}(a,b')$.
-#! The output is the internal hom morphism 
+#! The output is the internal hom morphism
 #! $\mathrm{Exponential}(\alpha,\beta): \mathrm{Exponential}(a',b) \rightarrow \mathrm{Exponential}(a,b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a',b), \mathrm{Exponential}(a,b') )$
 #! @Arguments s, alpha, beta, r
@@ -67,7 +67,7 @@ DeclareOperation( "ExponentialOnMorphismsWithGivenExponentials",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operations adds the given function $F$
 #! to the category for the basic operation <C>ExponentialOnMorphismsWithGivenExponentials</C>.
 #! $F: (\mathrm{Exponential}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{Exponential}(a,b') ) \mapsto \mathrm{Exponential}(\alpha,\beta)$.
 #! @Returns nothing
@@ -106,7 +106,7 @@ DeclareOperation( "CartesianEvaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operations adds the given function $F$
 #! to the category for the basic operation <C>CartesianEvaluationMorphismWithGivenSource</C>.
 #! $F: (a, b, \mathrm{Exponential}(a,b) \times a) \mapsto \mathrm{ev}_{a,b}$.
 #! @Returns nothing
@@ -126,7 +126,7 @@ DeclareOperation( "AddCartesianEvaluationMorphismWithGivenSource",
 ##
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential(b, a \times b)}$, i.e.,
+#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b) )$.
 #! @Arguments a,b
@@ -135,8 +135,8 @@ DeclareOperation( "CartesianCoevaluationMorphism",
 
 ## the last argument is $\mathrm{Exponential}(b, a \times b)$
 #! @Description
-#! The arguments are two objects $a,b$ and an object $r = \mathrm{Exponential(b, a \times b)}$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential(b, a \times b)}$, i.e.,
+#! The arguments are two objects $a,b$ and an object $r = \mathrm{Exponential}(b, a \times b)$.
+#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b) )$.
 #! @Arguments a,b,r
@@ -145,7 +145,7 @@ DeclareOperation( "CartesianCoevaluationMorphismWithGivenRange",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operations adds the given function $F$
 #! to the category for the basic operation <C>CartesianCoevaluationMorphismWithGivenRange</C>.
 #! $F: (a, b, \mathrm{Exponential}(b, a \times b)) \mapsto \mathrm{coev}_{a,b}$.
 #! @Returns nothing
@@ -204,7 +204,7 @@ DeclareOperation( "ExponentialToDirectProductAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>ExponentialToDirectProductAdjunctionMap</C>.
-#! $F: (b, c, g: a \rightarrow \mathrm{Exponential}(b,c)) \mapsto ( g: a \times b \rightarrow c )$.
+#! $F: (b, c, g: a \rightarrow \mathrm{Exponential}(b,c)) \mapsto ( f: a \times b \rightarrow c )$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddExponentialToDirectProductAdjunctionMap",
