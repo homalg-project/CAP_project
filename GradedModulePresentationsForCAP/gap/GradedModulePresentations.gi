@@ -984,15 +984,7 @@ InstallGlobalFunction( ADD_GRADED_LIFT_ALONG_MONOMORPHISM,
 
         fi;
 
-        lift := GradedPresentationMorphism( Source( tau ), lift, Source( iota ) );
-
-        if not IsWellDefined( lift ) then
-
-          Error( "An output of the LiftAlongMonomorphism is not well-defined!" );
-
-        fi;
-
-        return lift;
+        return GradedPresentationMorphism( Source( tau ), lift, Source( iota ) );
 
     end );
 
@@ -1016,15 +1008,7 @@ InstallGlobalFunction( ADD_GRADED_COLIFT_ALONG_EPIMORPHISM,
 
         fi;
 
-        colift := GradedPresentationMorphism( Range( epsilon ), colift, Range( tau ) );
-
-        if not IsWellDefined( colift ) then
-
-          Error( "An output of the ColiftAlongEpimorphism is not well-defined!" );
-
-        fi;
-
-        return colift;
+        return GradedPresentationMorphism( Range( epsilon ), colift, Range( tau ) );
 
     end );
     
