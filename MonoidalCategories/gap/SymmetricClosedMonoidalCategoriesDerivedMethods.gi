@@ -480,7 +480,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
              morphism );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
-      Description := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects using braiding an the evaluation morphism" );
+      Description := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects using braiding and the evaluation morphism" );
 
 ##
 AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
