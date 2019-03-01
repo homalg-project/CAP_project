@@ -3410,6 +3410,11 @@ BindGlobal( "CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES", function ( method
     
     excluded_names := [ "pre_function", "pre_function_full", "post_function" ];
 
+    if not IsBound( method_record.(entry_name) ) then
+        Display( Concatenation( "WARNING: The method record is missing a component named \"", entry_name, "\" which is expected by the validator.\n" ) );
+        return;
+    fi;
+
     method_record_entry := method_record.(entry_name);
     
     for name in RecNames( method_record_entry ) do
