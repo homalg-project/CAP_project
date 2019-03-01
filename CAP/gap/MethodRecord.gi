@@ -3221,7 +3221,7 @@ rec(
 
 rec(
   object_specification := [ "fixedobject", "fixedobject" ],
-  morphism_specification := [ [ 1, "varmorphism" ,2 ] ],
+  morphism_specification := [ [ 1, "varmorphism", 2 ] ],
   limit_object_name := "Equalizer",
   limit_projection_name := "EmbeddingOfEqualizer",
   colimit_object_name := "Coequalizer",
