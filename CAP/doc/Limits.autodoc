@@ -1,6 +1,6 @@
 @Chapter Limits and Colimits
 
-This section describes the support for limits and colimits in CAP.
+This section describes the support for limits and colimits in CAP. All notions defined in the following are considered with regard to limits, not colimits, except if explicitly stated otherwise. In particular, the diagram specification specifies a diagram over which the limit is taken. The colimit in turn is taken over the opposite diagram.
 
 @Section Specification of Limits and Colimits
 
