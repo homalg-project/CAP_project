@@ -206,7 +206,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
         
-        if caching = true then
+        if caching = true and not category!.default_cache_type = "none" then
             install_method := InstallMethodWithCache;
             PushOptions( rec( Cache := GET_METHOD_CACHE( category, cache_name, nr_arguments )  ) );
             popper := true;
