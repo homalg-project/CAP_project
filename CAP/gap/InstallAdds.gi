@@ -255,7 +255,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     fi;
                 fi;
                 
-                if not is_pair_func and category!.prefunction_check > 0 then
+                if not is_pair_func and category!.input_sanity_check_level > 0 then
                     
                     pre_func_return := CallFuncList( pre_function, arg );
                     if pre_func_return[ 1 ] = false then
@@ -264,7 +264,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             Name( category ), ":\033[0m\n\033[1m       ", pre_func_return[ 2 ], "\033[0m\n" ) );
                     fi;
                     
-                    if category!.prefunction_check > 1 then
+                    if category!.input_sanity_check_level > 1 then
                         pre_func_return := CallFuncList( pre_function_full, arg );
                         if pre_func_return[ 1 ] = false then
                             Error( Concatenation( "in function \033[1m", record.function_name, 
