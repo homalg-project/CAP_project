@@ -264,6 +264,22 @@ AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
       Description := "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom using the dualcoevaluation morphism" );
 
+##
+AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
+                  
+  function( object, internal_cohom )
+    local unit;
+    
+    unit := TensorUnit( CapCategory( object ) );
+    
+    return TensorProductToInternalCoHomAdjunctionMap(
+             unit,
+             object,
+             LeftUnitorInverse( object ) );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom as the adjoint of the left inverse unitor" );
+
 ## TODO: modify for the coclosed case and enable
 # ##
 # AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
