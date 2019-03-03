@@ -138,6 +138,6 @@ AvailabilityTest := function()
 
 TestFile := "tst/testall.g",
 
-Keywords := [ "monoidal categories", "monoidal closed categories", "monoidal coclosed categories", "tensor-Hom adjuction", "coHom-tensor adjuction" ],
+Keywords := [ "monoidal categories", "monoidal closed categories", "monoidal coclosed categories", "tensor-Hom adjunction", "coHom-tensor adjunction" ],
 
 ));
