@@ -237,3 +237,20 @@ AddDerivationToCAP( DualCoEvaluationForCoDualWithGivenTensorProduct,
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
       Description := "DualCoEvaluationForCoDualWithGivenTensorProduct using CoLambdaIntroduction on the identity and IsomorphismFromTensorProductToInternalCoHom" );
+
+##
+AddDerivationToCAP( CoTraceMap,
+                    
+  function( morphism )
+    local object;
+    
+    object := Source( morphism );
+    
+    return PreCompose( [
+             CoEvaluationForCoDual( object ) ,
+             IsomorphismFromTensorProductToInternalCoHom( object, object ),
+             CoLambdaIntroduction( morphism )
+           ] );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "CoTraceMap using CoEvaluationForCoDual and CoLambdaIntroduction" );
