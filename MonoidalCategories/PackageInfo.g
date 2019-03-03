@@ -19,7 +19,7 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2019.08.10", ## Fabian's version
   ## this line prevents merge conflicts
-  "2019.02.01", ## Tom's version
+  "2019.03-14", ## Tom's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -64,6 +64,22 @@ Persons := [
     LastName := "Posur",
     WWWHome := "http://algebra.mathematik.uni-siegen.de/posur/",
     Email := "sebastian.posur@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Tom",
+    LastName := "Kuhmichel",
+    WWWHome := "https://github.com/TKuh",
+    Email := "tom.kuhmichel@student.uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
