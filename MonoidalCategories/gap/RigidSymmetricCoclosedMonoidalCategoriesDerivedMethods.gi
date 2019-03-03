@@ -252,5 +252,25 @@ AddDerivationToCAP( CoTraceMap,
              CoLambdaIntroduction( morphism )
            ] );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
       Description := "CoTraceMap using CoEvaluationForCoDual and CoLambdaIntroduction" );
+
+##
+AddDerivationToCAP( CoRankMorphism,
+                    
+  function( object )
+    
+    return CoTraceMap( IdentityMorphism( object ) );
+    
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
+      Description := "Corank of an object as the cotrace of its identity" );
+
+##
+AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects,
+                    
+  function( a1, a2, b1, b2, new_source_and_range_list )
+    
+    return Inverse( InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects( a1, a2, b1, b2, new_source_and_range_list ) );
+    
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
+      Description := "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalCoHomCompatibilityMorphismWithGivenObjects" );
