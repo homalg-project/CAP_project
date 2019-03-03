@@ -34,3 +34,23 @@ AddDerivationToCAP( InternalCoHomOnMorphismsWithGivenInternalCoHoms,
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
       Description := "InternalCoHomOnMorphismsWithGivenInternalCoHoms using functoriality of CoDual and TensorProduct" );
+
+##
+AddDerivationToCAP( MorphismToCoBidualWithGivenCoBidual,
+                  
+  function( object, cobidual )
+    
+    return Inverse( MorphismFromCoBidualWithGivenCoBidual( object, cobidual ) );
+    
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
+      Description := "MorphismToCoBidualWithGivenCoBidual as the inverse of MorphismFromCoBidualWithGivenCoBidual" );
+
+##
+AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
+                  
+  function( object, cobidual )
+    
+    return Inverse( MorphismToCoBidualWithGivenCoBidual( object, cobidual ) );
+    
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
+      Description := "MorphismFromCoBidualWithGivenCoBidual as the inverse of MorphismToCoBidualWithGivenCoBidual" );
