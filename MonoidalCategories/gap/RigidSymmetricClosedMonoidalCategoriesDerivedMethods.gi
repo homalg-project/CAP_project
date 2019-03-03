@@ -26,10 +26,11 @@ AddDerivationToCAP( InternalHomOnMorphismsWithGivenInternalHoms,
     
     dual_morphism := DualOnMorphisms( morphism_1 );
     
-    return PreCompose( PreCompose( IsomorphismFromInternalHomToTensorProduct( Range( morphism_1 ), Source( morphism_2 ) ),
-                       TensorProductOnMorphisms( dual_morphism, morphism_2 ) ),
-                       IsomorphismFromTensorProductToInternalHom( Source( morphism_1 ), Range( morphism_2 ) )
-                     );
+    return PreCompose( [
+             IsomorphismFromInternalHomToTensorProduct( Range( morphism_1 ), Source( morphism_2 ) ),
+             TensorProductOnMorphisms( dual_morphism, morphism_2 ),
+             IsomorphismFromTensorProductToInternalHom( Source( morphism_1 ), Range( morphism_2 ) )
+           ] );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "InternalHomOnMorphismsWithGivenInternalHoms using functoriality of Dual and TensorProduct" );
@@ -60,31 +61,24 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
   function( object_1, object_2, internal_hom_tensored_object_1 )
     local morphism;
     
-    morphism := TensorProductOnMorphisms( 
-                  IsomorphismFromInternalHomToTensorProduct( object_1, object_2 ),
-                  IdentityMorphism( object_1 )
-                );
-    
-    morphism := PreCompose( morphism,
+    morphism := PreCompose( [
+                  TensorProductOnMorphisms( 
+                    IsomorphismFromInternalHomToTensorProduct( object_1, object_2 ),
+                    IdentityMorphism( object_1 ) ),
+                    
                   TensorProductOnMorphisms(
                     Braiding( DualOnObjects( object_1 ), object_2 ),
-                    IdentityMorphism( object_1 ) )
-                );
-    
-    morphism := PreCompose( morphism,
-                  AssociatorLeftToRight( object_2, DualOnObjects( object_1 ), object_1 )
-                );
-    
-    morphism := PreCompose( morphism,
+                    IdentityMorphism( object_1 ) ),
+                    
+                  AssociatorLeftToRight( object_2, DualOnObjects( object_1 ), object_1 ),
+                  
                   TensorProductOnMorphisms(
                     IdentityMorphism( object_2 ),
-                    EvaluationForDual( object_1 ) )
-                );
-    
-    morphism := PreCompose( morphism,
+                    EvaluationForDual( object_1 ) ),
+                    
                   RightUnitor( object_2 )
-                );
-    
+                ] );
+      
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
@@ -96,23 +90,20 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
   function( object_1, object_2, internal_hom_tensored_object_1 )
     local morphism;
     
-    morphism := TensorProductOnMorphisms( 
-                  IsomorphismFromInternalHomToTensorProduct( object_1, object_2 ),
-                  IdentityMorphism( object_1 )
-                );
-    
-    morphism := PreCompose( morphism,
+    morphism := PreCompose( [
+                  TensorProductOnMorphisms( 
+                    IsomorphismFromInternalHomToTensorProduct( object_1, object_2 ),
+                    IdentityMorphism( object_1 ) ),
+                    
                   TensorProductOnMorphisms(
                     Braiding( DualOnObjects( object_1 ), object_2 ),
-                    IdentityMorphism( object_1 ) )
-                );
-    
-    morphism := PreCompose( morphism,
+                    IdentityMorphism( object_1 ) ),
+                    
                   TensorProductOnMorphisms(
                     IdentityMorphism( object_2 ),
                     EvaluationForDual( object_1 ) )
-                );
-    
+                ] );
+                    
     return morphism;
       
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
@@ -128,36 +119,28 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
     
     id_1 := IdentityMorphism( object_1 );
     
-    morphism := LeftUnitorInverse( object_1 );
-    
-    morphism := PreCompose( morphism,
+    morphism := PreCompose( [
+                  LeftUnitorInverse( object_1 ),
+                    
                   TensorProductOnMorphisms(
                     CoevaluationForDual( object_2 ),
-                    id_1 )
-                );
-    
-    morphism := PreCompose( morphism,
+                    id_1 ),
+                    
                   TensorProductOnMorphisms(
                     Braiding( object_2, dual_2 ),
-                    id_1 )
-                );
-    
-    morphism := PreCompose( morphism,
-                  AssociatorLeftToRight( dual_2, object_2, object_1 )
-                );
-    
-    morphism := PreCompose( morphism,
+                    id_1 ),
+                    
+                  AssociatorLeftToRight( dual_2, object_2, object_1 ),
+                    
                   TensorProductOnMorphisms(
                     IdentityMorphism( dual_2 ),
-                    Braiding( object_2, object_1 ) )
-                );
-    
-    morphism := PreCompose( morphism,
+                    Braiding( object_2, object_1 ) ),
+                    
                   IsomorphismFromTensorProductToInternalHom(
                     object_2,
                     TensorProductOnObjects( object_1, object_2 ) )
-                );
-    
+                ] );
+                    
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
@@ -173,27 +156,23 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
     
     id_1 := IdentityMorphism( object_1 );
     
-    morphism := TensorProductOnMorphisms(
+    morphism := PreCompose( [
+                  TensorProductOnMorphisms(
                     CoevaluationForDual( object_2 ),
-                    id_1 );
-    
-    morphism := PreCompose( morphism,
+                    id_1 ),
+                    
                   TensorProductOnMorphisms(
                     Braiding( object_2, dual_2 ),
-                    id_1 )
-                );
-    
-    morphism := PreCompose( morphism,
+                    id_1 ),
+                    
                   TensorProductOnMorphisms(
                     IdentityMorphism( dual_2 ),
-                    Braiding( object_2, object_1 ) )
-                );
-    
-    morphism := PreCompose( morphism,
+                    Braiding( object_2, object_1 ) ),
+                    
                   IsomorphismFromTensorProductToInternalHom(
                     object_2,
                     TensorProductOnObjects( object_1, object_2 ) )
-                );
+                ] );
     
     return morphism;
     
@@ -248,14 +227,12 @@ AddDerivationToCAP( CoevaluationForDualWithGivenTensorProduct,
     
     morphism := IdentityMorphism( object );
     
-    morphism := LambdaIntroduction( morphism );
-    
-    morphism := PreCompose( morphism,
-                            IsomorphismFromInternalHomToTensorProduct( object, object ) );
-    
-    morphism := PreCompose( morphism,
-                            Braiding( DualOnObjects( object ), object ) );
-    
+    morphism := PreCompose( [
+                  LambdaIntroduction( morphism ),
+                  IsomorphismFromInternalHomToTensorProduct( object, object ),
+                  Braiding( DualOnObjects( object ), object )
+                ] );
+                            
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
@@ -267,18 +244,18 @@ AddDerivationToCAP( TraceMap,
   function( morphism )
     local result_morphism, object;
     
-    result_morphism := LambdaIntroduction( morphism );
-    
     object := Source( morphism );
     
-    result_morphism := PreCompose( result_morphism,
-                                   IsomorphismFromInternalHomToTensorProduct( object, object ) );
+    result_morphism := PreCompose( [
+                         LambdaIntroduction( morphism ),
+                         IsomorphismFromInternalHomToTensorProduct( object, object ),
+                         EvaluationForDual( object )
+                       ] );
     
-    return PreCompose( result_morphism,
-                       EvaluationForDual( object ) );
+    return result_morphism;
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "TraceMap composing the lambda abstraction with the evaluation" );
+      Description := "TraceMap using LambdaIntroduction and EvaluationForDual" );
 
 ##
 AddDerivationToCAP( RankMorphism,
@@ -293,9 +270,9 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects,
                     
-  function( a1, b1, a2, b2, new_source_and_range_list )
+  function( a1, a2, b1, b2, new_source_and_range_list )
     
-    return Inverse( TensorProductInternalHomCompatibilityMorphismWithGivenObjects( a1, b1, a2, b2, new_source_and_range_list ) );
+    return Inverse( TensorProductInternalHomCompatibilityMorphismWithGivenObjects( a1, a2, b1, b2, new_source_and_range_list ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalHomCompatibilityMorphismWithGivenObjects" );
