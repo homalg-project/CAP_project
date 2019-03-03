@@ -178,3 +178,24 @@ AddDerivationToCAP( DualCoEvaluationMorphismWithGivenSource,
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory and IsStrictMonoidalCategory,
       Description := "DualCoEvaluationMorphismWithGivenSource using the rigidity of the monoidal category" );
+
+##
+AddDerivationToCAP( MorphismFromInternalCoHomToTensorProductWithGivenObjects,
+                  
+  function( internal_cohom, object_1, object_2, tensor_object )
+    
+    return IsomorphismFromInternalCoHomToTensorProduct( object_1, object_2 );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "MorphismFromInternalCoHomToTensorProductWithGivenObjects using IsomorphismFromInternalCoHomToTensorProduct" );
+
+
+##
+AddDerivationToCAP( MorphismFromTensorProductToInternalCoHomWithGivenObjects,
+                  
+  function( tensor_object, object_1, object_2, internal_hom )
+    
+    return IsomorphismFromTensorProductToInternalCoHom( object_1, object_2 );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "MorphismFromTensorProductToInternalCoHomWithGivenObjects using IsomorphismFromTensorProductToInternalCoHom" );
