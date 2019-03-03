@@ -274,3 +274,63 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismInverseWithGi
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
       Description := "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalCoHomCompatibilityMorphismWithGivenObjects" );
+
+####################################
+## Final derived methods
+####################################
+
+## Final methods for InternalCoHom
+
+##
+AddFinalDerivation( IsomorphismFromTensorProductToInternalCoHom,
+                    [ [ IdentityMorphism, 1 ],
+                      [ CoDualOnObjects, 1 ],
+                      [ TensorProductOnObjects, 1 ] ],
+                    [ InternalCoHomOnObjects,
+                      InternalCoHomOnMorphismsWithGivenInternalCoHoms,
+                      CoEvaluationMorphismWithGivenRange,
+                      DualCoEvaluationMorphismWithGivenSource,
+                      TensorProductToInternalCoHomAdjunctionMap,
+                      InternalCoHomToTensorProductAdjunctionMap,
+                      MonoidalPreCoComposeMorphismWithGivenObjects,
+                      MonoidalPostCoComposeMorphismWithGivenObjects,
+                      InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects,
+                      CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
+                      MorphismFromTensorProductToInternalCoHomWithGivenObjects,
+                      MorphismFromInternalCoHomToTensorProductWithGivenObjects,
+                      IsomorphismFromTensorProductToInternalCoHom,
+                      IsomorphismFromInternalCoHomToTensorProduct ],
+                    
+  function( object_1, object_2 )
+    
+    return IdentityMorphism( TensorProductOnObjects( object_1, CoDualOnObjects( object_2 ) ) );
+    
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
+      Description := "IsomorphismFromTensorProductToInternalCoHom as the identity of (a tensored CoDual(b))" );
+
+##
+AddFinalDerivation( IsomorphismFromInternalCoHomToTensorProduct,
+                    [ [ IdentityMorphism, 1 ],
+                      [ CoDualOnObjects, 1 ],
+                      [ TensorProductOnObjects, 1 ] ],
+                    [ InternalCoHomOnObjects,
+                      InternalCoHomOnMorphismsWithGivenInternalCoHoms,
+                      CoEvaluationMorphismWithGivenRange,
+                      DualCoEvaluationMorphismWithGivenSource,
+                      TensorProductToInternalCoHomAdjunctionMap,
+                      InternalCoHomToTensorProductAdjunctionMap,
+                      MonoidalPreCoComposeMorphismWithGivenObjects,
+                      MonoidalPostCoComposeMorphismWithGivenObjects,
+                      InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects,
+                      CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
+                      MorphismFromTensorProductToInternalCoHomWithGivenObjects,
+                      MorphismFromInternalCoHomToTensorProductWithGivenObjects,
+                      IsomorphismFromTensorProductToInternalCoHom,
+                      IsomorphismFromInternalCoHomToTensorProduct ],
+                    
+  function( object_1, object_2 )
+    
+    return IdentityMorphism( TensorProductOnObjects( object_1, CoDualOnObjects( object_2 ) ) );
+    
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
+      Description := "IsomorphismFromInternalCoHomToTensorProduct as the identity of (a tensored CoDual(b))" );
