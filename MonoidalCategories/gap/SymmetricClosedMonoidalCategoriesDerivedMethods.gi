@@ -258,6 +258,22 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromObjectToInternalHomWithGivenInternalHom using the coevaluation morphism" );
 
+##
+AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
+                  
+  function( object, internal_hom )
+    local unit;
+    
+    unit := TensorUnit( CapCategory( object ) );
+    
+    return TensorProductToInternalHomAdjunctionMap(
+             object,
+             unit,
+             RightUnitor( object ) );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "IsomorphismFromObjectToInternalHomWithGivenInternalHom as the adjoint of the right unitor" );
+
 ## TODO: enable
 # ##
 # AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
