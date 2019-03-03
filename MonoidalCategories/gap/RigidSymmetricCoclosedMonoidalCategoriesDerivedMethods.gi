@@ -54,3 +54,57 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
       Description := "MorphismFromCoBidualWithGivenCoBidual as the inverse of MorphismToCoBidualWithGivenCoBidual" );
+
+##
+AddDerivationToCAP( CoEvaluationMorphismWithGivenRange,
+                  
+  function( object_1, object_2, object_2_tensored_internal_cohom )
+    local morphism;
+    
+    morphism := PreCompose( [
+                  LeftUnitorInverse( object_1 ),
+                  
+                  TensorProductOnMorphisms(
+                    CoEvaluationForCoDual( object_2 ),
+                    IdentityMorphism( object_1 ) ),
+                  
+                  AssociatorLeftToRight( object_2, CoDualOnObjects( object_2 ), object_1 ),
+                  
+                  TensorProductOnMorphisms(
+                    IdentityMorphism( object_2 ),
+                    Braiding( CoDualOnObjects( object_2 ), object_1 ) ),
+                  
+                  TensorProductOnMorphisms( 
+                    IdentityMorphism( object_2 ),
+                    IsomorphismFromTensorProductToInternalCoHom( object_1, object_2 ) ) 
+                ] );
+                    
+    return morphism;
+    
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
+      Description := "CoEvaluationMorphismWithGivenRange using the rigidity of the monoidal category" );
+
+##
+AddDerivationToCAP( CoEvaluationMorphismWithGivenRange,
+                    
+  function( object_1, object_2, object_2_tensored_internal_cohom )
+    local morphism;
+    
+    morphism := PreCompose( [
+                  TensorProductOnMorphisms(
+                    CoEvaluationForCoDual( object_2 ),
+                    IdentityMorphism( object_1 ) ),
+                  
+                  TensorProductOnMorphisms(
+                    IdentityMorphism( object_2 ),
+                    Braiding( CoDualOnObjects( object_2 ), object_1 ) ),
+                  
+                  TensorProductOnMorphisms( 
+                    IdentityMorphism( object_2 ),
+                    IsomorphismFromTensorProductToInternalCoHom( object_1, object_2 ) ) 
+                ] );
+                    
+    return morphism;
+      
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory and IsStrictMonoidalCategory,
+      Description := "CoEvaluationMorphismWithGivenRange using the rigidity and strictness of the monoidal category" );
