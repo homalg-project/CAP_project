@@ -199,3 +199,41 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalCoHomWithGivenObjects,
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "MorphismFromTensorProductToInternalCoHomWithGivenObjects using IsomorphismFromTensorProductToInternalCoHom" );
+
+##
+AddDerivationToCAP( IsomorphismFromInternalCoHomToTensorProduct,
+                    
+  function( object_1, object_2 )
+    
+    return MorphismFromInternalCoHomToTensorProduct( object_1, object_2 );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "IsomorphismFromInternalCoHomToTensorProduct using MorphismFromInternalCoHomToTensorProduct" );
+
+##
+AddDerivationToCAP( IsomorphismFromTensorProductToInternalCoHom,
+                    
+  function( object_1, object_2 )
+    
+    return MorphismFromTensorProductToInternalCoHom( object_1, object_2 );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "IsomorphismFromTensorProductToInternalCoHom using MorphismFromTensorProductToInternalCoHom" );
+
+AddDerivationToCAP( DualCoEvaluationForCoDualWithGivenTensorProduct,
+                    
+  function( tensor_object, object, unit )
+    local morphism;
+    
+    morphism := IdentityMorphism( object );
+    
+    morphism := PreCompose( [
+                  Braiding( CoDualOnObjects( object ), object ),
+                  IsomorphismFromTensorProductToInternalCoHom( object, object ),
+                  CoLambdaIntroduction( morphism ) 
+                ] );
+                            
+    return morphism;
+    
+end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
+      Description := "DualCoEvaluationForCoDualWithGivenTensorProduct using CoLambdaIntroduction on the identity and IsomorphismFromTensorProductToInternalCoHom" );
