@@ -16,6 +16,8 @@ Version := Maximum( [
                    "2019.02.01", ## Tom's version
                    ## this line prevents merge conflicts
                    "2019.01.29", ## Mario's version
+                   ## this line prevents merge conflicts
+                   "2019.03.03", ## Fabian's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -106,7 +108,7 @@ Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2019.01.29" ],
+                   [ "CAP", ">= 2019.03.02" ],
                    ],
   SuggestedOtherPackages := [
                    [ "MonoidalCategories", ">= 2019.01.20" ],
