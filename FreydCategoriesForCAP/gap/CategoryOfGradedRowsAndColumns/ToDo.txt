@@ -1,0 +1,5 @@
+TODO:
+
+Logic needed?
+
+Implement weak kernels and then the associated Freyd categories
