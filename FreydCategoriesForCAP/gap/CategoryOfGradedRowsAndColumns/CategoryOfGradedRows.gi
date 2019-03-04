@@ -453,7 +453,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     AddZeroObject( category,
       function( )
         
-        return CAPCategoryOfProjectiveGradedLeftModulesObject( [ ],
+        return GradedRow( [ ],
                                                    category!.homalg_graded_ring_for_category_of_graded_rows,
                                                    checks
                                                    );
@@ -515,7 +515,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
       degree_list_of_direct_sum_object := Concatenation( degree_list_list );
     
       # and then return the corresponding object
-      return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_of_direct_sum_object, 
+      return GradedRow( degree_list_of_direct_sum_object, 
                                                              homalg_graded_ring, 
                                                              checks 
                                                             );
@@ -1016,7 +1016,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         # check if object1 is of rank 1 (this includes the tensor unit)
         if Rank( object1 ) = 1 then
           degree_list_tensor_object := List( degree_list2, x -> [ x[ 1 ] + degree_list1[ 1 ][ 1 ], x[ 2 ] ] );
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_tensor_object,
+          return GradedRow( degree_list_tensor_object,
                                                                  UnderlyingHomalgGradedRing( object1 ),
                                                                  checks
                                                                 );
@@ -1025,7 +1025,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         # check if object2 is of rank 1 (this includes the tensor unit)
         if Rank( object2 ) = 1 then
           degree_list_tensor_object := List( degree_list1, x -> [ x[ 1 ] + degree_list2[ 1 ][ 1 ], x[ 2 ] ] );
-          return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_tensor_object,
+          return GradedRow( degree_list_tensor_object,
                                                                  UnderlyingHomalgGradedRing( object1 ),
                                                                  checks
                                                                 ); 
@@ -1043,7 +1043,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         od;
 
         # now construct a new object in this category
-        return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_tensor_object,
+        return GradedRow( degree_list_tensor_object,
                                                                UnderlyingHomalgGradedRing( object1 ),
                                                                checks
                                                               );
@@ -1076,7 +1076,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         local homalg_ring;
         
         homalg_ring := category!.homalg_graded_ring_for_category_of_graded_rows;
-        return CAPCategoryOfProjectiveGradedLeftModulesObject( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ],
+        return GradedRow( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ],
                                                                homalg_ring,
                                                                checks
                                                               );
@@ -1145,7 +1145,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
                                                           k -> [ MinusOne( HomalgRing( SuperObject( k[ 1 ] ) ) ) * k[ 1 ], k[ 2 ] ] );
         
         # and return the corresponding object
-        return CAPCategoryOfProjectiveGradedLeftModulesObject( degree_list_dual_object,
+        return GradedRow( degree_list_dual_object,
                                                                UnderlyingHomalgGradedRing( object ),
                                                                checks 
                                                               );
