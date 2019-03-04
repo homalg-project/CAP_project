@@ -1,0 +1,21 @@
+#############################################################################
+##
+##  README              CAPCategoryOfProjectiveGradedModules
+##                      Martin Bies
+##
+##  Copyright 2019      ULB Brussels
+##
+##  A package to handle the category of projective graded modules
+##  in the language of CAP
+##
+#############################################################################
+
+README file for the `CAPCategoryOfProjectiveGradedModules' GAP4 package
+        
+To get the latest version of this GAP 4 package pull the corresponding branch
+from github. This completes the installation of the package.
+
+E-mail me if there are any questions, remarks, suggestions. Also, I
+would like to hear about applications of this package.
+
+Martin Bies, martin.bies@alumni.uni-heidelberg.de
