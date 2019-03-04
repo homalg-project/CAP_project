@@ -1,6 +1,6 @@
 #############################################################################
 ##
-## CAPCategoryOfProjectiveGradedModules package
+## FreydCategoriesForCAP package
 ##
 ## Copyright 2019, Martin Bies,       ULB Brussels
 ##
@@ -15,25 +15,23 @@
 ####################################
 
 #! @Description
-#! The GAP category of morphisms of projective graded left or right modules
+#! The GAP category of morphisms of graded rows and columns
 #! over a graded ring $R$.
 #! @Arguments object
-DeclareCategory( "IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
+DeclareCategory( "IsGradedRowOrColumnMorphism",
                  IsCapCategoryMorphism );
 
 #! @Description
-#! The GAP category of morphisms of projective graded left modules
-#! over a graded ring $R$.
+#! The GAP category of morphisms of graded rows over a graded ring $R$.
 #! @Arguments object
-DeclareCategory( "IsCAPCategoryOfProjectiveGradedLeftModulesMorphism",
-                 IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
+DeclareCategory( "IsGradedRowMorphism",
+                 IsGradedRowOrColumnMorphism );
 
 #! @Description
-#! The GAP category of morphisms of projective graded right modules
-#! over a graded ring $R$.
+#! The GAP category of morphisms of graded columns over a graded ring $R$.
 #! @Arguments object
-DeclareCategory( "IsCAPCategoryOfProjectiveGradedRightModulesMorphism",
-                 IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
+DeclareCategory( "IsGradedColumnMorphism",
+                 IsGradedRowOrColumnMorphism );
 
 
 
@@ -44,25 +42,21 @@ DeclareCategory( "IsCAPCategoryOfProjectiveGradedRightModulesMorphism",
 ####################################
 
 #! @Description
-#! The arguments are an object $S$ in the category of projective graded left or right modules
-#! over a homalg graded ring $R$,a homalg matrix $M$ over $R$, and another object $T$
-#! in the category of projective graded left or right modules over $R$.
-#! The output is the morphism $S \rightarrow T$ in the category
-#! of projective graded left or right modules over $R$, whose underlying matrix is given by $M$.
+#! The arguments are an object $S$ in the category of graded rows or columns
+#! over a homalg graded ring $R$, a homalg matrix $M$ over $R$ and another graded row or column $T$
+#! over $R$. The output is the morphism $S \rightarrow T$ in the category
+#! of graded rows and columns over $R$, whose underlying matrix is given by $M$.
 #! @Returns a morphism in $\mathrm{Hom}(S,T)$
 #! @Arguments S, M, T
-DeclareOperation( "CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
-                                                                 IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ] );
+DeclareOperation( "GradedRowOrColumnMorphism",
+               [ IsGradedRowOrColumn, IsHomalgMatrix, IsGradedRowOrColumn ] );
 
 #! @Description
-#! As 'CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism' but does not perform checks on the input. Therefore
-#! this constructor is better suited for high performance applications.
+#! As 'GradedRowOrColumnMorphism', but carries a fourth input parameter. If this boolean is set to false, then no checks on the input a performed. That option is therefore better suited for high performance applications.
 #! @Returns a morphism in $\mathrm{Hom}(S,T)$
 #! @Arguments S, M, T
-DeclareOperation( "CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
-                                                          IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsBool ] );
+DeclareOperation( "GradedRowOrColumnMorphism",
+               [ IsGradedRowOrColumn, IsHomalgMatrix, IsGradedRowOrColumn, IsBool ] );
 
 
 
@@ -73,22 +67,20 @@ DeclareOperation( "CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism",
 ####################################
 
 #! @Description
-#! The argument is a morphism $\alpha$ in the category of projective graded left or right modules
-#! over a homalg graded ring $R$. 
-#! The output is the homalg graded ring $R$.
+#! The argument is a morphism $\alpha$ in the category of graded rows or columns
+#! over a homalg graded ring $R$. The output is the homalg graded ring $R$.
 #! @Returns a homalg graded ring
 #! @Arguments alpha
 DeclareAttribute( "UnderlyingHomalgGradedRing",
-                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
+                  IsGradedRowOrColumnMorphism );
 
 #! @Description
-#! The argument is a morphism $\alpha$ in the category of projective graded left or right modules
-#! over a homalg graded ring $R$. 
-#! The output is the underlying homalg matrix over $R$.
+#! The argument is a morphism $\alpha$ in the category of graded rows or columns
+#! over a homalg graded ring $R$. The output is the underlying homalg matrix over $R$.
 #! @Returns a matrix over a homalg graded ring
 #! @Arguments alpha
 DeclareAttribute( "UnderlyingHomalgMatrix",
-                  IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism );
+                  IsGradedRowOrColumnMorphism );
 
 
 
@@ -99,10 +91,9 @@ DeclareAttribute( "UnderlyingHomalgMatrix",
 #####################################################
 
 #! @Description
-#! The argument is a morphism $m$ in the category of projective graded modules. For such a morphisms it will 
-#! take three command to print source, range and the mapping matrix. This method performs this task immediately.
-#! and prints all this information.
+#! The argument is a morphism $m$ in the category of graded rows or columns. For such a morphism, 
+#! this methods  will print its source, range and mapping matrix.
 #! @Returns detailed information about the morphism
 #! @Arguments m
 DeclareOperation( "FullInformation",
-                 [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism ] );
+                 [ IsGradedRowOrColumnMorphism ] );

@@ -1,6 +1,6 @@
 #############################################################################
 ##
-## CAPCategoryOfProjectiveGradedModules package
+## FreydCategoriesForCAP package
 ##
 ## Copyright 2019, Martin Bies,       ULB Brussels
 ##
@@ -14,27 +14,26 @@
 ##
 ####################################
 
-DeclareRepresentation( "IsCAPCategoryOfProjectiveGradedLeftModulesMorphismRep",
-                       IsCAPCategoryOfProjectiveGradedLeftModulesMorphism and IsAttributeStoringRep,
+DeclareRepresentation( "IsGradedRowMorphismRep",
+                       IsGradedRowMorphism and IsAttributeStoringRep,
                        [ ] );
 
-BindGlobal( "TheFamilyOfCAPCategoryOfProjectiveGradedLeftModulesMorphisms",
-        NewFamily( "TheFamilyOfCAPCategoryOfProjectiveGradedLeftModulesMorphisms" ) );
+BindGlobal( "TheFamilyOfGradedRowMorphisms",
+        NewFamily( "TheFamilyOfGradedRowMorphisms" ) );
 
-BindGlobal( "TheTypeOfCAPCategoryOfProjectiveGradedLeftModulesMorphisms",
-        NewType( TheFamilyOfCAPCategoryOfProjectiveGradedLeftModulesMorphisms,
-                IsCAPCategoryOfProjectiveGradedLeftModulesMorphismRep ) );
+BindGlobal( "TheTypeOfGradedRowMorphisms",
+        NewType( TheFamilyOfGradedRowMorphisms, IsGradedRowMorphismRep ) );
 
-DeclareRepresentation( "IsCAPCategoryOfProjectiveGradedRightModulesMorphismRep",
-                       IsCAPCategoryOfProjectiveGradedRightModulesMorphism and IsAttributeStoringRep,
+DeclareRepresentation( "IsGradedColumnMorphismRep",
+                       IsGradedColumnMorphism and IsAttributeStoringRep,
                        [ ] );
 
-BindGlobal( "TheFamilyOfCAPCategoryOfProjectiveGradedRightModulesMorphisms",
-        NewFamily( "TheFamilyOfCAPCategoryOfProjectiveGradedRightModulesMorphisms" ) );
+BindGlobal( "TheFamilyOfGradedColumnMorphisms",
+        NewFamily( "TheFamilyOfGradedColumnMorphisms" ) );
 
-BindGlobal( "TheTypeOfCAPCategoryOfProjectiveGradedRightModulesMorphisms",
-        NewType( TheFamilyOfCAPCategoryOfProjectiveGradedRightModulesMorphisms,
-                IsCAPCategoryOfProjectiveGradedRightModulesMorphismRep ) );
+BindGlobal( "TheTypeOfGradedColumnMorphisms",
+        NewType( TheFamilyOfGradedColumnMorphisms, IsGradedColumnMorphismRep ) );
+
 
 ####################################
 ##
@@ -43,11 +42,10 @@ BindGlobal( "TheTypeOfCAPCategoryOfProjectiveGradedRightModulesMorphisms",
 ####################################
 
 ##
-InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
-                                                                      IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject ],
+InstallMethod( GradedRowOrColumnMorphism,
+               [ IsGradedRowOrColumn, IsHomalgMatrix, IsGradedRowOrColumn ],
   function( source, homalg_matrix, range )
-    local cap_category_of_projective_graded_modules_morphism, homalg_graded_ring, category, left, type;
+    local graded_row_or_column_morphism, homalg_graded_ring, category, left, type;
     
     # get category of source
     category := CapCategory( source );
@@ -72,7 +70,7 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
     fi;
 
     # work out if we are considering left or right presentations
-    left := IsCAPCategoryOfProjectiveGradedLeftModulesObject( source );
+    left := IsGradedRow( source );
     
     # and correspondingly check the dimensions of the matrix
     if left then
@@ -110,16 +108,16 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
     fi;
     
     # now create the morphism
-    cap_category_of_projective_graded_modules_morphism := rec( );
+    graded_row_or_column_morphism := rec( );
 
     # define the type
     if left then
-        type := TheTypeOfCAPCategoryOfProjectiveGradedLeftModulesMorphisms;
+        type := TheTypeOfGradedRowMorphisms;
     else
-        type := TheTypeOfCAPCategoryOfProjectiveGradedRightModulesMorphisms;
+        type := TheTypeOfGradedColumnMorphisms;
     fi;
     
-    ObjectifyWithAttributes( cap_category_of_projective_graded_modules_morphism, type, 
+    ObjectifyWithAttributes( graded_row_or_column_morphism, type, 
                              Source, source,
                              Range, range,
                              UnderlyingHomalgGradedRing, homalg_graded_ring,
@@ -127,40 +125,39 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
     );
 
     # add the morphism to the category
-    Add( category, cap_category_of_projective_graded_modules_morphism );
+    Add( category, graded_row_or_column_morphism );
     
     # and return the morphism
-    return cap_category_of_projective_graded_modules_morphism;
+    return graded_row_or_column_morphism;
     
 end );
 
 ##
-InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsHomalgMatrix, 
-                                                            IsCAPCategoryOfProjectiveGradedLeftOrRightModulesObject, IsBool ],
+InstallMethod( GradedRowOrColumnMorphism,
+               [ IsGradedRowOrColumn, IsHomalgMatrix, IsGradedRowOrColumn, IsBool ],
   function( source, homalg_matrix, range, checks_wished )
-    local cap_category_of_projective_graded_modules_morphism, homalg_graded_ring, category, left, type;
+    local graded_row_or_column_morphism, homalg_graded_ring, category, left, type;
     
     # if checks are wished, hand the input to the method above
     if checks_wished then
-      return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source, homalg_matrix, range );
+      return GradedRowOrColumnMorphism( source, homalg_matrix, range );
     fi;
     
     # checks not wished, so continue here and collect necessary data
     category := CapCategory( source );
     homalg_graded_ring := HomalgRing( homalg_matrix );
-    left := IsCAPCategoryOfProjectiveGradedLeftModulesObject( source );
+    left := IsGradedRows( source );
     
     # define the type
     if left then
-        type := TheTypeOfCAPCategoryOfProjectiveGradedLeftModulesMorphisms;
+        type := TheTypeOfGradedRowMorphisms;
     else
-        type := TheTypeOfCAPCategoryOfProjectiveGradedRightModulesMorphisms;
+        type := TheTypeOfGradedColumnMorphisms;
     fi;
 
     # construct the morphism
-    cap_category_of_projective_graded_modules_morphism := rec( );
-    ObjectifyWithAttributes( cap_category_of_projective_graded_modules_morphism, type, 
+    graded_row_or_column_morphism := rec( );
+    ObjectifyWithAttributes( graded_row_or_column_morphism, type, 
                              Source, source,
                              Range, range,
                              UnderlyingHomalgGradedRing, homalg_graded_ring,
@@ -168,10 +165,10 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism,
     );
 
     # and add it to the category
-    Add( category, cap_category_of_projective_graded_modules_morphism );
+    Add( category, graded_row_or_column_morphism );
     
     # finally return the morphism
-    return cap_category_of_projective_graded_modules_morphism;
+    return graded_row_or_column_morphism;
 
 end );
 
@@ -185,19 +182,19 @@ end );
 
 ##
 InstallMethod( String,
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism ],
+               [ IsGradedRowOrColumnMorphism ],
                999, # FIX ME FIX ME FIX ME!!!
-  function( cap_category_of_projective_graded_modules_morphism )
+  function( graded_row_or_column_morphism )
 
-    if IsCAPCategoryOfProjectiveGradedLeftModulesMorphism( cap_category_of_projective_graded_modules_morphism ) then
+    if IsGradedRowMorphism( graded_row_or_column_morphism ) then
 
-      return Concatenation( "A morphism in the category of projective graded left modules over ",
-                            RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ) );
+      return Concatenation( "A morphism in the category of graded rows over ",
+                            RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ) );
 
     else
 
-      return Concatenation( "A morphism in the category of projective graded right modules over ",
-                            RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ) );
+      return Concatenation( "A morphism in the category of graded columns over ",
+                            RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ) );
 
     fi;
 
@@ -212,25 +209,25 @@ end );
 ####################################
 
 InstallMethod( Display,
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism ], 
+               [ IsGradedRowOrColumnMorphism ], 
                999, # FIX ME FIX ME
-  function( cap_category_of_projective_graded_modules_morphism )
+  function( graded_row_or_column_morphism )
 
-    if IsCAPCategoryOfProjectiveGradedLeftModulesMorphism( cap_category_of_projective_graded_modules_morphism ) then
+    if IsGradedRowMorphism( graded_row_or_column_morphism ) then
 
-      Print( "A morphism in the category of projective graded left modules over ", 
-                                   RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ),
+      Print( "A morphism in the category of graded rows over ", 
+                                   RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ),
                                    " with matrix: \n" );
 
-      Display( UnderlyingHomalgMatrix( cap_category_of_projective_graded_modules_morphism ) );
+      Display( UnderlyingHomalgMatrix( graded_row_or_column_morphism ) );
 
     else
 
-      Print( "A morphism in the category of projective graded right modules over ", 
-                                   RingName( UnderlyingHomalgGradedRing( cap_category_of_projective_graded_modules_morphism ) ),
+      Print( "A morphism in the category of graded columns over ", 
+                                   RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ),
                                    " with matrix: \n" );
 
-      Display( UnderlyingHomalgMatrix( cap_category_of_projective_graded_modules_morphism ) );
+      Display( UnderlyingHomalgMatrix( graded_row_or_column_morphism ) );
 
     fi;
 
@@ -246,11 +243,11 @@ end );
 
 ##
 InstallMethod( ViewObj,
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism ], 
+               [ IsGradedRowOrColumnMorphism ], 
                999, # FIX ME FIX ME FIX ME!!!
-function( cap_category_of_projective_graded_modules_morphism )
+function( graded_row_or_column_morphism )
 
-      Print( Concatenation( "<", String( cap_category_of_projective_graded_modules_morphism ), ">" ) );
+      Print( Concatenation( "<", String( graded_row_or_column_morphism ), ">" ) );
 
 end );
 
@@ -263,7 +260,7 @@ end );
 #######################################
 
 InstallMethod( FullInformation,
-               [ IsCAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism ],
+               [ IsGradedRowOrColumnMorphism ],
   function( morphism )
 
     Print( "\n" );
