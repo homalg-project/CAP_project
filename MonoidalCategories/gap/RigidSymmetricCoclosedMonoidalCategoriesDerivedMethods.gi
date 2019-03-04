@@ -56,7 +56,7 @@ end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
       Description := "MorphismFromCoBidualWithGivenCoBidual as the inverse of MorphismToCoBidualWithGivenCoBidual" );
 
 ##
-AddDerivationToCAP( CoEvaluationMorphismWithGivenRange,
+AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
                   
   function( object_1, object_2, object_2_tensored_internal_cohom )
     local morphism;
@@ -65,7 +65,7 @@ AddDerivationToCAP( CoEvaluationMorphismWithGivenRange,
                   LeftUnitorInverse( object_1 ),
                   
                   TensorProductOnMorphisms(
-                    CoEvaluationForCoDual( object_2 ),
+                    CoclosedEvaluationForCoDual( object_2 ),
                     IdentityMorphism( object_1 ) ),
                   
                   AssociatorLeftToRight( object_2, CoDualOnObjects( object_2 ), object_1 ),
@@ -82,17 +82,17 @@ AddDerivationToCAP( CoEvaluationMorphismWithGivenRange,
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
-      Description := "CoEvaluationMorphismWithGivenRange using the rigidity of the monoidal category" );
+      Description := "CoclosedEvaluationMorphismWithGivenRange using the rigidity of the monoidal category" );
 
 ##
-AddDerivationToCAP( CoEvaluationMorphismWithGivenRange,
+AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
                     
   function( object_1, object_2, object_2_tensored_internal_cohom )
     local morphism;
     
     morphism := PreCompose( [
                   TensorProductOnMorphisms(
-                    CoEvaluationForCoDual( object_2 ),
+                    CoclosedEvaluationForCoDual( object_2 ),
                     IdentityMorphism( object_1 ) ),
                   
                   TensorProductOnMorphisms(
@@ -107,10 +107,10 @@ AddDerivationToCAP( CoEvaluationMorphismWithGivenRange,
     return morphism;
       
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory and IsStrictMonoidalCategory,
-      Description := "CoEvaluationMorphismWithGivenRange using the rigidity and strictness of the monoidal category" );
+      Description := "CoclosedEvaluationMorphismWithGivenRange using the rigidity and strictness of the monoidal category" );
 
 ##
-AddDerivationToCAP( DualCoEvaluationMorphismWithGivenSource,
+AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
                     
   function( object_1, object_2, internal_cohom )
     local morphism, codual_1, id_2;
@@ -136,7 +136,7 @@ AddDerivationToCAP( DualCoEvaluationMorphismWithGivenSource,
                     
                   TensorProductOnMorphisms(
                     id_2,
-                    DualCoEvaluationForCoDual( object_1 ) ),
+                    CoclosedCoevaluationForCoDual( object_1 ) ),
                     
                   RightUnitor( object_2 ) 
                 ] );
@@ -144,10 +144,10 @@ AddDerivationToCAP( DualCoEvaluationMorphismWithGivenSource,
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
-      Description := "DualCoEvaluationMorphismWithGivenSource using the rigidity of the monoidal category" );
+      Description := "CoclosedCoevaluationMorphismWithGivenSource using the rigidity of the monoidal category" );
 
 ##
-AddDerivationToCAP( DualCoEvaluationMorphismWithGivenSource,
+AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
                     
   function( object_1, object_2, internal_cohom )
     local morphism, codual_1, id_2;
@@ -171,13 +171,13 @@ AddDerivationToCAP( DualCoEvaluationMorphismWithGivenSource,
                     
                   TensorProductOnMorphisms(
                     id_2,
-                    DualCoEvaluationForCoDual( object_1 ) ) 
+                    CoclosedCoevaluationForCoDual( object_1 ) ) 
                 ] );
                     
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory and IsStrictMonoidalCategory,
-      Description := "DualCoEvaluationMorphismWithGivenSource using the rigidity of the monoidal category" );
+      Description := "CoclosedCoevaluationMorphismWithGivenSource using the rigidity of the monoidal category" );
 
 ##
 AddDerivationToCAP( MorphismFromInternalCoHomToTensorProductWithGivenObjects,
@@ -220,7 +220,7 @@ AddDerivationToCAP( IsomorphismFromTensorProductToInternalCoHom,
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromTensorProductToInternalCoHom using MorphismFromTensorProductToInternalCoHom" );
 
-AddDerivationToCAP( DualCoEvaluationForCoDualWithGivenTensorProduct,
+AddDerivationToCAP( CoclosedCoevaluationForCoDualWithGivenTensorProduct,
                     
   function( tensor_object, object, unit )
     local morphism;
@@ -236,7 +236,7 @@ AddDerivationToCAP( DualCoEvaluationForCoDualWithGivenTensorProduct,
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
-      Description := "DualCoEvaluationForCoDualWithGivenTensorProduct using CoLambdaIntroduction on the identity and IsomorphismFromTensorProductToInternalCoHom" );
+      Description := "CoclosedCoevaluationForCoDualWithGivenTensorProduct using CoLambdaIntroduction on the identity and IsomorphismFromTensorProductToInternalCoHom" );
 
 ##
 AddDerivationToCAP( CoTraceMap,
@@ -247,13 +247,13 @@ AddDerivationToCAP( CoTraceMap,
     object := Source( morphism );
     
     return PreCompose( [
-             CoEvaluationForCoDual( object ) ,
+             CoclosedEvaluationForCoDual( object ) ,
              IsomorphismFromTensorProductToInternalCoHom( object, object ),
              CoLambdaIntroduction( morphism )
            ] );
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
-      Description := "CoTraceMap using CoEvaluationForCoDual and CoLambdaIntroduction" );
+      Description := "CoTraceMap using CoclosedEvaluationForCoDual and CoLambdaIntroduction" );
 
 ##
 AddDerivationToCAP( CoRankMorphism,
@@ -288,8 +288,8 @@ AddFinalDerivation( IsomorphismFromTensorProductToInternalCoHom,
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalCoHomOnObjects,
                       InternalCoHomOnMorphismsWithGivenInternalCoHoms,
-                      CoEvaluationMorphismWithGivenRange,
-                      DualCoEvaluationMorphismWithGivenSource,
+                      CoclosedEvaluationMorphismWithGivenRange,
+                      CoclosedCoevaluationMorphismWithGivenSource,
                       TensorProductToInternalCoHomAdjunctionMap,
                       InternalCoHomToTensorProductAdjunctionMap,
                       MonoidalPreCoComposeMorphismWithGivenObjects,
@@ -315,8 +315,8 @@ AddFinalDerivation( IsomorphismFromInternalCoHomToTensorProduct,
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalCoHomOnObjects,
                       InternalCoHomOnMorphismsWithGivenInternalCoHoms,
-                      CoEvaluationMorphismWithGivenRange,
-                      DualCoEvaluationMorphismWithGivenSource,
+                      CoclosedEvaluationMorphismWithGivenRange,
+                      CoclosedCoevaluationMorphismWithGivenSource,
                       TensorProductToInternalCoHomAdjunctionMap,
                       InternalCoHomToTensorProductAdjunctionMap,
                       MonoidalPreCoComposeMorphismWithGivenObjects,
@@ -345,8 +345,8 @@ AddFinalDerivation( IsomorphismFromInternalCoHomToCoDual,
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalCoHomOnObjects,
                       InternalCoHomOnMorphismsWithGivenInternalCoHoms,
-                      CoEvaluationMorphismWithGivenRange,
-                      DualCoEvaluationMorphismWithGivenSource,
+                      CoclosedEvaluationMorphismWithGivenRange,
+                      CoclosedCoevaluationMorphismWithGivenSource,
                       TensorProductToInternalCoHomAdjunctionMap,
                       InternalCoHomToTensorProductAdjunctionMap,
                       MonoidalPreCoComposeMorphismWithGivenObjects,
@@ -372,8 +372,8 @@ AddFinalDerivation( IsomorphismFromCoDualToInternalCoHom,
                       [ TensorProductOnObjects, 1 ] ],
                     [ InternalCoHomOnObjects,
                       InternalCoHomOnMorphismsWithGivenInternalCoHoms,
-                      CoEvaluationMorphismWithGivenRange,
-                      DualCoEvaluationMorphismWithGivenSource,
+                      CoclosedEvaluationMorphismWithGivenRange,
+                      CoclosedCoevaluationMorphismWithGivenSource,
                       TensorProductToInternalCoHomAdjunctionMap,
                       InternalCoHomToTensorProductAdjunctionMap,
                       MonoidalPreCoComposeMorphismWithGivenObjects,

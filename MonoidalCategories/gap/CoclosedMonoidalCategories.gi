@@ -19,17 +19,17 @@ InstallMethod( InternalCoHomOnMorphisms,
 end );
 
 ##
-CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoEvaluationMorphism :=
-  [ [ "CoEvaluationMorphismWithGivenRange", 1 ],
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoclosedEvaluationMorphism :=
+  [ [ "CoclosedEvaluationMorphismWithGivenRange", 1 ],
     [ "TensorProductOnObjects", 1 ],
     [ "InternalCoHomOnObjects", 1 ] ];
 ##
-InstallMethod( CoEvaluationMorphism,
+InstallMethod( CoclosedEvaluationMorphism,
                [ IsCapCategoryObject, IsCapCategoryObject ],
 
   function( object_1, object_2 )
 
-    return CoEvaluationMorphismWithGivenRange(
+    return CoclosedEvaluationMorphismWithGivenRange(
              object_1, object_2,
              TensorProductOnObjects( object_2, InternalCoHomOnObjects( object_1, object_2 ) )
            );
@@ -37,17 +37,17 @@ InstallMethod( CoEvaluationMorphism,
 end );
 
 ##
-CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.DualCoEvaluationMorphism :=
-  [ [ "DualCoEvaluationMorphismWithGivenSource", 1 ],
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoclosedCoevaluationMorphism :=
+  [ [ "CoclosedCoevaluationMorphismWithGivenSource", 1 ],
     [ "TensorProductOnObjects", 1 ],
     [ "InternalCoHomOnObjects", 1 ] ];
 ##
-InstallMethod( DualCoEvaluationMorphism,
+InstallMethod( CoclosedCoevaluationMorphism,
                [ IsCapCategoryObject, IsCapCategoryObject ],
 
   function( object_1, object_2 )
 
-    return DualCoEvaluationMorphismWithGivenSource(
+    return CoclosedCoevaluationMorphismWithGivenSource(
              object_1, object_2,
              InternalCoHomOnObjects( TensorProductOnObjects( object_1, object_2 ), object_1 )
            );
@@ -111,13 +111,13 @@ InstallMethod( CoDualOnMorphisms,
 end );
 
 ##
-CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoEvaluationForCoDual :=
-  [ [ "CoEvaluationForCoDualWithGivenTensorProduct", 1 ],
+CAP_INTERNAL_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoclosedEvaluationForCoDual :=
+  [ [ "CoclosedEvaluationForCoDualWithGivenTensorProduct", 1 ],
     [ "TensorProductOnObjects", 1 ],
     [ "CoDualOnObjects", 1 ],
     [ "TensorUnit", 1 ] ];
 ##
-InstallMethod( CoEvaluationForCoDual,
+InstallMethod( CoclosedEvaluationForCoDual,
                [ IsCapCategoryObject ],
 
   function( object )
@@ -125,7 +125,7 @@ InstallMethod( CoEvaluationForCoDual,
 
     category := CapCategory( object );
 
-    return CoEvaluationForCoDualWithGivenTensorProduct(
+    return CoclosedEvaluationForCoDualWithGivenTensorProduct(
              TensorUnit( category ),
              object,
              TensorProductOnObjects( object, CoDualOnObjects( object ) )

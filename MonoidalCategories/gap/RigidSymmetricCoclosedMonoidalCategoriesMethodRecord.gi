@@ -1,10 +1,10 @@
 InstallValue( RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
-DualCoEvaluationForCoDualWithGivenTensorProduct := rec(
-  installation_name := "DualCoEvaluationForCoDualWithGivenTensorProduct",
+CoclosedCoevaluationForCoDualWithGivenTensorProduct := rec(
+  installation_name := "CoclosedCoevaluationForCoDualWithGivenTensorProduct",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
-  cache_name := "DualCoEvaluationForCoDualWithGivenTensorProduct",
+  cache_name := "CoclosedCoevaluationForCoDualWithGivenTensorProduct",
   return_type := "morphism" ),
 
 MorphismToCoBidualWithGivenCoBidual := rec(

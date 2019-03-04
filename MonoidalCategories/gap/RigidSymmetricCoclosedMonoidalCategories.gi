@@ -1,13 +1,13 @@
 InstallValue( CAP_INTERNAL_RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS, rec( ) );
 
 ##
-CAP_INTERNAL_RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.DualCoEvaluationForCoDual := 
-  [ [ "DualCoEvaluationForCoDualWithGivenTensorProduct", 1 ],
+CAP_INTERNAL_RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.CoclosedCoevaluationForCoDual := 
+  [ [ "CoclosedCoevaluationForCoDualWithGivenTensorProduct", 1 ],
     [ "TensorProductOnObjects", 1 ],
     [ "CoDualOnObjects", 1 ],
     [ "TensorUnit", 1 ] ];
 ##
-InstallMethod( DualCoEvaluationForCoDual,
+InstallMethod( CoclosedCoevaluationForCoDual,
                [ IsCapCategoryObject ],
                
   function( object )
@@ -15,11 +15,10 @@ InstallMethod( DualCoEvaluationForCoDual,
     
     category := CapCategory( object );
     
-    return DualCoEvaluationForCoDualWithGivenTensorProduct( 
+    return CoclosedCoevaluationForCoDualWithGivenTensorProduct( 
              TensorProductOnObjects( CoDualOnObjects( object ), object ),
              object,
-             TensorUnit( category )
-           );
+             TensorUnit( category ) );
     
 end );
 
@@ -71,8 +70,7 @@ InstallMethod( MorphismFromTensorProductToInternalCoHom,
     return MorphismFromTensorProductToInternalCoHomWithGivenObjects(
              TensorProductOnObjects( object_1, DualOnObjects( object_2 ) ),
              object_1, object_2,
-             InternalCoHomOnObjects( object_1, object_2 )
-           );
+             InternalCoHomOnObjects( object_1, object_2 ) );
     
 end );
 

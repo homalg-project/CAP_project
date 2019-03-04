@@ -154,10 +154,10 @@ DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWith
 ##
 #! @Description
 #! The argument is an object $a$.
-#! The output is the dual coevaluation morphism $\mathrm{dcoev}_{a}: a_{\vee} \otimes a \rightarrow 1$.
+#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a}: a_{\vee} \otimes a \rightarrow 1$.
 #! @Returns a morphism in $\mathrm{Hom}(a_{\vee} \otimes a, 1)$.
 #! @Arguments a
-DeclareAttribute( "DualCoEvaluationForCoDual",
+DeclareAttribute( "CoclosedCoevaluationForCoDual",
                   IsCapCategoryObject );
 
 
@@ -165,29 +165,29 @@ DeclareAttribute( "DualCoEvaluationForCoDual",
 #! The arguments are an object $s = a_{\vee} \otimes a$,
 #! an object $a$,
 #! and an object $r = 1$.
-#! The output is the dual coevaluation morphism $\mathrm{dcoev}_{a}: a_{\vee} \otimes a \rightarrow 1$.
+#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a}: a_{\vee} \otimes a \rightarrow 1$.
 #! @Returns a morphism in $\mathrm{Hom}(a_{\vee} \otimes a, 1)$.
 #! @Arguments s,a,r
-DeclareOperation( "DualCoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "CoclosedCoevaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
-#! to the category for the basic operation <C>DualCoEvaluationForCoDualWithGivenTensorProduct</C>.
+#! to the category for the basic operation <C>CoclosedCoevaluationForCoDualWithGivenTensorProduct</C>.
 #! $F: (a_{\vee} \otimes a, a,1) \mapsto \mathrm{dcoev}_{a}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddDualCoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddDualCoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddDualCoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddDualCoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 
