@@ -1,6 +1,6 @@
 #############################################################################
 ##
-## CAPCategoryOfProjectiveGradedModules package
+## FreydCategoriesForCAP package
 ##
 ## Copyright 2019, Martin Bies,       ULB Brussels
 ##
@@ -15,10 +15,10 @@
 ############################################
 
 InstallMethod( DeduceMapFromMatrixAndRangeLeft,
-               [ IsHomalgMatrix, IsCAPCategoryOfProjectiveGradedLeftModulesObject ],
+               [ IsHomalgMatrix, IsGradedRow ],
   function( matrix, range_object )
-    local homalg_graded_ring, source_object, non_zero_entries_index, expanded_degree_list, j, k, degrees_of_matrix_rows,
-         degrees_of_source_object;
+    local homalg_graded_ring, source_object, non_zero_entries_index, expanded_degree_list, j, k, 
+           degrees_of_matrix_rows, degrees_of_source_object;
 
       # check if the input is valid
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( range_object ) ) then
@@ -84,27 +84,22 @@ InstallMethod( DeduceMapFromMatrixAndRangeLeft,
         od;
 
         # and compute the source object
-        source_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_source_object, 
-                                                                         homalg_graded_ring,
-                                                                         CapCategory( range_object )!.constructor_checks_wished 
-                                                                        );
+        source_object := GradedRow( degrees_of_source_object, homalg_graded_ring,
+                                        CapCategory( range_object )!.constructor_checks_wished );
 
         # and return the mapping
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object,
-                                                                        matrix,
-                                                                        range_object,
-                                                                        CapCategory( range_object )!.constructor_checks_wished
-                                                                       );
+        return GradedRowOrColumnMorphism( source_object, matrix, range_object,
+                                            CapCategory( range_object )!.constructor_checks_wished );
 
       fi;
 
 end );
 
 InstallMethod( DeduceMapFromMatrixAndSourceLeft,
-               [ IsHomalgMatrix, IsCAPCategoryOfProjectiveGradedLeftModulesObject ],
+               [ IsHomalgMatrix, IsGradedRow ],
   function( matrix, source_object )
-    local homalg_graded_ring, range_object, non_zero_entries_index, expanded_degree_list, j, k, degrees_of_matrix_columns,
-         degrees_of_range_object;
+    local homalg_graded_ring, range_object, non_zero_entries_index, expanded_degree_list, j, k, 
+           degrees_of_matrix_columns, degrees_of_range_object;
 
       # check if the input is valid
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( source_object ) ) then
@@ -170,27 +165,22 @@ InstallMethod( DeduceMapFromMatrixAndSourceLeft,
         od;
 
         # and compute the range object
-        range_object := CAPCategoryOfProjectiveGradedLeftModulesObject( degrees_of_range_object,
-                                                                        homalg_graded_ring,
-                                                                        CapCategory( source_object )!.constructor_checks_wished
-                                                                       );
+        range_object := GradedRow( degrees_of_range_object, homalg_graded_ring,
+                                    CapCategory( source_object )!.constructor_checks_wished );
 
         # and return the mapping
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object,
-                                                                        matrix,
-                                                                        range_object,
-                                                                        CapCategory( source_object )!.constructor_checks_wished 
-                                                                       );
+        return GradedRowOrColumnMorphism( source_object, matrix, range_object,
+                                           CapCategory( source_object )!.constructor_checks_wished );
 
       fi;
 
 end );
 
 InstallMethod( DeduceMapFromMatrixAndRangeRight,
-               [ IsHomalgMatrix, IsCAPCategoryOfProjectiveGradedRightModulesObject ],
+               [ IsHomalgMatrix, IsGradedColumn ],
   function( matrix, range_object )
-    local homalg_graded_ring, source_object, non_zero_entries_index, expanded_degree_list, j, k, degrees_of_matrix_columns,
-         degrees_of_source_object;
+    local homalg_graded_ring, source_object, non_zero_entries_index, expanded_degree_list, j, k, 
+           degrees_of_matrix_columns, degrees_of_source_object;
 
       # check if the input is valid
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( range_object ) ) then
@@ -256,27 +246,22 @@ InstallMethod( DeduceMapFromMatrixAndRangeRight,
         od;
 
         # construct the kernel_object
-        source_object := CAPCategoryOfProjectiveGradedRightModulesObject( degrees_of_source_object,
-                                                                          homalg_graded_ring,
-                                                                          CapCategory( range_object )!.constructor_checks_wished 
-                                                                         );
+        source_object := GradedColumn( degrees_of_source_object, homalg_graded_ring,
+                                        CapCategory( range_object )!.constructor_checks_wished );
 
         # and return the kernel embedding
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object,
-                                                                        matrix,
-                                                                        range_object,
-                                                                        CapCategory( range_object )!.constructor_checks_wished 
-                                                                       );
+        return GradedRowOrColumnMorphism( source_object, matrix, range_object,
+                                           CapCategory( range_object )!.constructor_checks_wished );
 
       fi;
 
 end );
 
 InstallMethod( DeduceMapFromMatrixAndSourceRight,
-               [ IsHomalgMatrix, IsCAPCategoryOfProjectiveGradedRightModulesObject ],
+               [ IsHomalgMatrix, IsGradedColumn ],
   function( matrix, source_object )
-    local homalg_graded_ring, range_object, non_zero_entries_index, expanded_degree_list, j, k, degrees_of_matrix_rows,
-         degrees_of_range_object;
+    local homalg_graded_ring, range_object, non_zero_entries_index, expanded_degree_list, j, k,   
+           degrees_of_matrix_rows, degrees_of_range_object;
 
       # check if the input is valid
       if not IsIdenticalObj( HomalgRing( matrix ), UnderlyingHomalgGradedRing( source_object ) ) then
@@ -342,43 +327,19 @@ InstallMethod( DeduceMapFromMatrixAndSourceRight,
         od;
 
         # and from them the cokernel object
-        range_object := CAPCategoryOfProjectiveGradedRightModulesObject( degrees_of_range_object,
-                                                                         homalg_graded_ring,
-                                                                         CapCategory( source_object )!.constructor_checks_wished 
-                                                                        );
+        range_object := GradedColumn( degrees_of_range_object, homalg_graded_ring,
+                                       CapCategory( source_object )!.constructor_checks_wished );
 
         # and return the mapping morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source_object,
-                                                                        matrix,
-                                                                        range_object,
-                                                                        CapCategory( source_object )!.constructor_checks_wished 
-                                                                       );
+        return GradedRowOrColumnMorphism( source_object, matrix, range_object,
+                                           CapCategory( source_object )!.constructor_checks_wished );
 
       fi;
 
 end );
 
 InstallMethod( UnzipDegreeList,
-               [ IsCAPCategoryOfProjectiveGradedLeftModulesObject ],
-  function( projective_module )
-    local old_degree_list, i, j, new_degree_list;
-
-    old_degree_list := DegreeList( projective_module );
-    new_degree_list := [];
-
-    for i in [ 1 .. Length( old_degree_list ) ] do
-
-      new_degree_list := Concatenation( new_degree_list, 
-                                        List( [ 1 .. old_degree_list[ i ][ 2 ] ], k -> old_degree_list[ i ][ 1 ] ) );
-
-    od;
-
-    return new_degree_list;
-
-end );
-
-InstallMethod( UnzipDegreeList,
-               [ IsCAPCategoryOfProjectiveGradedRightModulesObject ],
+               [ IsGradedRowOrColumn ],
   function( projective_module )
     local old_degree_list, i, j, new_degree_list;
 
