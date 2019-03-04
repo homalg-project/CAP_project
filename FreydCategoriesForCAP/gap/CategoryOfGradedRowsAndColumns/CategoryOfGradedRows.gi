@@ -725,10 +725,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     ######################################################################
 
     # @Description
-    # This method computes the (weak) kernel embedding of a morphism <A>morphism</A>.
+    # This method computes the weak kernel embedding of a morphism <A>morphism</A>.
     # @Returns a morphism
     # @Arguments morphism
-    AddKernelEmbedding( category,
+    AddWeakKernelEmbedding( category,
       function( morphism )
         local kernel_matrix;
 
@@ -741,10 +741,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     end );
 
     # @Description
-    # This method computes the (weak) cokernel projection of a morphism <A>morphism</A>.
+    # This method computes the weak cokernel projection of a morphism <A>morphism</A>.
     # @Returns a morphism
     # @Arguments morphism
-    AddCokernelProjection( category,
+    AddWeakCokernelProjection( category,
       function( morphism )
         local cokernel_matrix;
              

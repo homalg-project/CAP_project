@@ -2,4 +2,9 @@ TODO:
 
 Logic needed?
 
-Implement weak kernels and then the associated Freyd categories
+(*) Check implementations of weak kernel embedding and weak cokernel projection
+(*) Implement ProjectionInBiasedWeakFibreProduct
+(*) Implement InjectionOfBiasedWeakPushout
+(*) Implement IsLiftable and IsColiftable
+(*) In case the underlying ring is commutative, the non-graded counter-part has special methods
+-> implement these functions also for this graded counterpart
