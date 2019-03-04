@@ -211,13 +211,13 @@ Display( UnderlyingHomalgMatrix( proj2L ) );
 #! 0,
 #! 1 
 #! (over a graded ring)
-kL := KernelEmbedding( proj1L );
+kL := WeakKernelEmbedding( proj1L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 Display( UnderlyingHomalgMatrix( kL ) );
 #! 0,0,1
 #! (over a graded ring)
-ckL := CokernelProjection( kL );
+ckL := WeakCokernelProjection( kL );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 Display( UnderlyingHomalgMatrix( ckL ) );
@@ -393,7 +393,7 @@ proj2R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 2 );
 Display( UnderlyingHomalgMatrix( proj2R ) );
 #! 0,0,1
 #! (over a graded ring)
-kR := KernelEmbedding( proj1R );
+kR := WeakKernelEmbedding( proj1R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 Display( UnderlyingHomalgMatrix( kR ) );
@@ -401,7 +401,7 @@ Display( UnderlyingHomalgMatrix( kR ) );
 #! 0,
 #! 1
 #! (over a graded ring)
-ckR := CokernelProjection( kR );
+ckR := WeakCokernelProjection( kR );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 Display( UnderlyingHomalgMatrix( ckR ) );
