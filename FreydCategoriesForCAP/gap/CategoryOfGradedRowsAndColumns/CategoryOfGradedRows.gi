@@ -341,7 +341,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
         composition := UnderlyingHomalgMatrix( morphism1 ) * UnderlyingHomalgMatrix( morphism2 );
 
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ),
+        return GradedRowOrColumnMorphism( Source( morphism1 ),
                                                                         composition, 
                                                                         Range( morphism2 ),
                                                                         checks );
@@ -359,7 +359,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         
         homalg_graded_ring := UnderlyingHomalgGradedRing( object );
         
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object, 
+        return GradedRowOrColumnMorphism( object, 
                                                           HomalgIdentityMatrix( Rank( object ), homalg_graded_ring ), 
                                                           object,
                                                           checks );
@@ -382,7 +382,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     AddAdditionForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism_1 ),
+        return GradedRowOrColumnMorphism( Source( morphism_1 ),
                                                     UnderlyingHomalgMatrix( morphism_1 ) + UnderlyingHomalgMatrix( morphism_2 ),
                                                     Range( morphism_2 ),
                                                     checks
@@ -397,7 +397,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     AddAdditiveInverseForMorphisms( category,
       function( morphism )
         
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism ),
+        return GradedRowOrColumnMorphism( Source( morphism ),
                                      MinusOne( UnderlyingHomalgGradedRing( morphism ) ) * UnderlyingHomalgMatrix( morphism ),
                                      Range( morphism ),
                                      checks
@@ -438,7 +438,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         
         homalg_graded_ring := UnderlyingHomalgGradedRing( source );
         
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source,
+        return GradedRowOrColumnMorphism( source,
                                            HomalgZeroMatrix( Rank( source ), Rank( range ), homalg_graded_ring ),
                                            range,
                                            checks
@@ -469,7 +469,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         local homalg_graded_ring, morphism;
         
         homalg_graded_ring := UnderlyingHomalgGradedRing( zero_object );
-        morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object,
+        morphism := GradedRowOrColumnMorphism( object,
                                                                     HomalgZeroMatrix( Rank( object ), 0, homalg_graded_ring ),
                                                                     zero_object,
                                                                     checks
@@ -489,7 +489,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
         homalg_graded_ring := UnderlyingHomalgGradedRing( zero_object );
 
-        morphism := CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( zero_object,
+        morphism := GradedRowOrColumnMorphism( zero_object,
                                                                     HomalgZeroMatrix( 0, Rank( object ), homalg_graded_ring ), 
                                                                     object,
                                                                     checks
@@ -552,7 +552,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
                                             UnionOfRows );
         
         # and return the corresonding morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( direct_sum_object,
+        return GradedRowOrColumnMorphism( direct_sum_object,
                                                                         projection_in_factor,
                                                                         object_list[ projection_number ],
                                                                         checks 
@@ -581,7 +581,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         od;
         
         # and then construct from it the corresponding morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( sink[ 1 ] ),
+        return GradedRowOrColumnMorphism( Source( sink[ 1 ] ),
                                                                         underlying_matrix_of_universal_morphism, 
                                                                         direct_sum,
                                                                         checks
@@ -618,7 +618,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
                                             UnionOfColumns );
         
         # and construct the associated morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object_list[ injection_number ],
+        return GradedRowOrColumnMorphism( object_list[ injection_number ],
                                                                         injection_of_cofactor,
                                                                         coproduct,
                                                                         checks
@@ -644,7 +644,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         
         od;
         
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( coproduct,
+        return GradedRowOrColumnMorphism( coproduct,
                                                                         underlying_matrix_of_universal_morphism,
                                                                         Range( sink[1] ),
                                                                         checks
@@ -680,7 +680,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         fi;
         
         # and if not, then construct the lift-morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Source( morphism1 ),
+        return GradedRowOrColumnMorphism( Source( morphism1 ),
                                                                         right_divide,
                                                                         Source( morphism2 ),
                                                                         checks
@@ -708,7 +708,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         fi;
 
         # if it did work, return the corresponding morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism1 ),
+        return GradedRowOrColumnMorphism( Range( morphism1 ),
                                                                         left_divide,
                                                                         Range( morphism2 ),
                                                                         checks
@@ -863,7 +863,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
           od;
 
           # and from this construct the projection map
-          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( fibre_product_object,
+          return GradedRowOrColumnMorphism( fibre_product_object,
                                                                           projection_matrix,
                                                                           Source( morphism_list[ projection_number ] ),
                                                                           checks
@@ -978,7 +978,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
           od;
 
           # from this construct the injection
-          return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( Range( morphism_list[ injection_number ] ),
+          return GradedRowOrColumnMorphism( Range( morphism_list[ injection_number ] ),
                                                                           embedding_matrix,
                                                                           pushout_object,
                                                                           checks
@@ -1058,7 +1058,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       function( source, morphism1, morphism2, range )
         
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source, 
+        return GradedRowOrColumnMorphism( source, 
                                         KroneckerMat( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) ),
                                         range,
                                         checks 
@@ -1114,7 +1114,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         permutation_matrix := HomalgMatrix( permutation_matrix, rank, rank, homalg_ring );
         
         # and return the corresponding morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( object_1_tensored_object_2,
+        return GradedRowOrColumnMorphism( object_1_tensored_object_2,
                                                                         permutation_matrix,
                                                                         object_2_tensored_object_1,
                                                                         checks
@@ -1160,7 +1160,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
       function( source, morphism, range )
     
       # simply transpose the mapping matrix and return the result
-      return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( source, 
+      return GradedRowOrColumnMorphism( source, 
                                                                       Involution( UnderlyingHomalgMatrix( morphism ) ),
                                                                       range,
                                                                       checks 
@@ -1198,7 +1198,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         fi;
         
         # return the evaluation morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( 
+        return GradedRowOrColumnMorphism( 
                                                         tensor_object,
                                                         HomalgMatrix( column, homalg_ring ),
                                                         unit,
@@ -1237,7 +1237,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         fi;
         
         # return the evaluation morphism
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism( unit,
+        return GradedRowOrColumnMorphism( unit,
                                                                         HomalgMatrix( column, homalg_ring ),
                                                                         tensor_object,
                                                                         checks
@@ -1253,7 +1253,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     AddMorphismToBidualWithGivenBidual( category,
       function( object, bidual_object )
       
-        return CAPCategoryOfProjectiveGradedLeftOrRightModulesMorphism(
+        return GradedRowOrColumnMorphism(
                                                 object,
                                                 HomalgIdentityMatrix( Rank( object ), UnderlyingHomalgGradedRing( object ) ),
                                                 bidual_object,

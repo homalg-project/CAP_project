@@ -146,7 +146,7 @@ InstallMethod( GradedRowOrColumnMorphism,
     # checks not wished, so continue here and collect necessary data
     category := CapCategory( source );
     homalg_graded_ring := HomalgRing( homalg_matrix );
-    left := IsGradedRows( source );
+    left := IsGradedRow( source );
     
     # define the type
     if left then
