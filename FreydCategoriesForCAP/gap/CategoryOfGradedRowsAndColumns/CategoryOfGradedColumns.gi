@@ -4,26 +4,26 @@
 ##
 ## Copyright 2019, Martin Bies,       ULB Brussels
 ##
-## Chapter Category of projective graded right modules
+## Chapter Category of graded columns
 ##
 #############################################################################
 
 
 #############################################################
 ##
-## Constructor for category of projective graded right-modules
+## Constructor for category of graded columns
 ##
 #############################################################
 
-InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
+InstallMethod( CAPCategoryOfGradedColumns,
                [ IsHomalgGradedRing ],
   function( homalg_graded_ring )
     local category;
     
       # create category
-      category := CreateCapCategory( Concatenation( "CAP category of projective graded right modules over "
+      category := CreateCapCategory( Concatenation( "CAP category of graded columns "
                                                                                           , RingName( homalg_graded_ring ) ) );
-      category!.homalg_graded_ring_for_category_of_projective_graded_right_modules := homalg_graded_ring;
+      category!.homalg_graded_ring_for_category_of_graded_columns := homalg_graded_ring;
 
       # here we can switch internal checks in constructor on or of - true means they are performed and false means they are not
       category!.constructor_checks_wished := true;
@@ -34,26 +34,26 @@ InstallMethod( CAPCategoryOfProjectiveGradedRightModules,
       SetIsRigidSymmetricClosedMonoidalCategory( category, true );
     
       # install its functionality
-      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES( category, category!.constructor_checks_wished );
+      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS( category, category!.constructor_checks_wished );
 
       # add theorem file
       AddTheoremFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),
+        DirectoriesPackageLibrary( "CAPCategoryOfGradedColumns", "LogicRight" ),
         "Propositions.tex" )
       );
     
       # add predicate-implication file
       AddPredicateImplicationFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),
+        DirectoriesPackageLibrary( "CAPCategoryOfGradedColumns", "LogicRight" ),
         "PredicateImplications.tex" )
       );
     
       # add relations file
       AddEvalRuleFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicRight" ),
+        DirectoriesPackageLibrary( "CAPCategoryOfGradedColumns", "LogicRight" ),
         "Relations.tex" )
       );
     
@@ -73,7 +73,7 @@ end );
 ##
 ####################################################################
 
-InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_RIGHT_MODULES,
+InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
   function( category, checks )
 
 
@@ -455,7 +455,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
         
         return CAPCategoryOfProjectiveGradedRightModulesObject( 
                                                   [ ], 
-                                                  category!.homalg_graded_ring_for_category_of_projective_graded_right_modules,
+                                                  category!.homalg_graded_ring_for_category_of_graded_columns,
                                                   checks
                                                  );
     end );
@@ -1079,7 +1079,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_R
       function( )
         local homalg_ring;
         
-        homalg_ring := category!.homalg_graded_ring_for_category_of_projective_graded_right_modules;
+        homalg_ring := category!.homalg_graded_ring_for_category_of_graded_columns;
         return CAPCategoryOfProjectiveGradedRightModulesObject( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ],
                                                                 homalg_ring,
                                                                 checks
