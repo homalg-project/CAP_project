@@ -39,21 +39,21 @@ InstallMethod( CAPCategoryOfGradedColumns,
       # add theorem file
       AddTheoremFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "FreydCategoriesForCAP", "LogicGradedColumns" ),
+        DirectoriesPackageLibrary( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/LogicGradedColumns" ),
         "Propositions.tex" )
       );
     
       # add predicate-implication file
       AddPredicateImplicationFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "FreydCategoriesForCAP", "LogicGradedColumns" ),
+        DirectoriesPackageLibrary( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/LogicGradedColumns" ),
         "PredicateImplications.tex" )
       );
     
       # add relations file
       AddEvalRuleFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "FreydCategoriesForCAP", "LogicGradedColumns" ),
+        DirectoriesPackageLibrary( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/LogicGradedColumns" ),
         "Relations.tex" )
       );
     
