@@ -11,6 +11,8 @@ SetPackageInfo( rec(
 PackageName := "FreydCategoriesForCAP",
 Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
 Version := Maximum( [
+  "2019.03.04", ## Martin's version
+  ## this line prevents merge conflicts
   "2019.02.27", ## Sepp's version
   ## this line prevents merge conflicts
   "2018.08.02", ## Mohamed's version
@@ -34,6 +36,23 @@ Persons := [
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Martin",
+    LastName := "Bies",
+    WWWHome := "https://www.ulb.ac.be/sciences/ptm/pmif/people.html",
+    Email := "martin.bies@alumni.uni-heidelberg.de",
+    PostalAddress := Concatenation(
+                 "Physique Théorique et Mathématique \n",
+                 "Université Libre de Bruxelles \n",
+                 "Campus Plaine - CP 231 \n",
+                 "Building NO - Level 6 - Office O.6.111 \n",
+                 "1050 Brussels \n",
+                 "Belgium" ), 
+    Place := "Brussels",
+    Institution := "ULB Brussels",
   ),
 ],
 
