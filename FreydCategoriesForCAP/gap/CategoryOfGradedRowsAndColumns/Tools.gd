@@ -4,7 +4,7 @@
 ##
 ## Copyright 2019, Martin Bies,       ULB Brussels
 ##
-#! @Chapter Tools
+#! @Chapter Category of graded rows and category of graded columns
 ##
 #############################################################################
 
@@ -54,7 +54,7 @@ DeclareOperation( "DeduceMapFromMatrixAndSourceRight",
 
 #! @Description
 #! Given a graded row or column <A>S</A>, the degrees are stored in compact form. For example, the degrees [ 1, 1, 1, 1 ] #! is stored internally as [ 1, 4 ]. The second argument is thus the multipicity with which three degree 1 
-#! appears. Still, it can be useful at times to also go in the opposite direction, i.e. to take the compact form [ #! 1, 4 ] and turn it into [ 1, 1, 1, 1 ]. This is performed by this operation and the obtained `extended' degree #! list is returned.
+#! appears. Still, it can be useful at times to also go in the opposite direction, i.e. to take the compact form [ #! 1, 4 ] and turn it into [ 1, 1, 1, 1 ]. This is performed by this operation and the obtained extended degree #! list is returned.
 #! @Returns a list
 #! @Arguments S
 DeclareOperation( "UnzipDegreeList",

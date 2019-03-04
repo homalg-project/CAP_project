@@ -4,7 +4,7 @@
 ##
 ## Copyright 2019, Martin Bies,       ULB Brussels
 ##
-#! @Chapter Objects
+#! @Chapter Category of graded rows and category of graded columns
 ##
 #############################################################################
 
