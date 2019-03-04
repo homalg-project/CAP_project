@@ -1,10 +1,10 @@
 #############################################################################
 ##
-## CAPCategoryOfProjectiveGradedModules package
+## FreydCategoriesForCAP package
 ##
 ## Copyright 2019, Martin Bies,       ULB Brussels
 ##
-#! @Chapter Category of projective graded left modules
+#! @Chapter Category of graded rows
 ##
 #############################################################################
 
@@ -17,10 +17,10 @@
 
 #! @Description
 #! The argument is a homalg graded ring $R$.
-#! The output is the category of projective graded left modules over $R$.
+#! The output is the category of graded rows over $R$.
 #! @Returns a category
 #! @Arguments R
-DeclareAttribute( "CAPCategoryOfProjectiveGradedLeftModules",
+DeclareAttribute( "CAPCategoryOfGradedRows",
                   IsHomalgGradedRing );
 
 
@@ -31,4 +31,4 @@ DeclareAttribute( "CAPCategoryOfProjectiveGradedLeftModules",
 ##
 ####################################
 
-DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES" );
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS" );

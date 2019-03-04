@@ -1,29 +1,29 @@
 #############################################################################
 ##
-## CAPCategoryOfProjectiveGradedModules package
+## FreydCategoriesForCAP package
 ##
 ## Copyright 2019, Martin Bies,       ULB Brussels
 ##
-## Chapter Category of projective graded left modules
+## Chapter Category of graded rows
 ##
 #############################################################################
 
 
 #############################################################
 ##
-## Constructor for category of projective graded left-modules
+## Constructor for category of graded rows
 ##
 #############################################################
 
-InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
+InstallMethod( CAPCategoryOfGradedRows,
                [ IsHomalgGradedRing ],
   function( homalg_graded_ring )
     local category;
 
       # construct the category
-      category := CreateCapCategory( Concatenation( "CAP category of projective graded left modules over "
+      category := CreateCapCategory( Concatenation( "CAP category of graded rows over "
                                                                                           , RingName( homalg_graded_ring ) ) );
-      category!.homalg_graded_ring_for_category_of_projective_graded_left_modules := homalg_graded_ring;
+      category!.homalg_graded_ring_for_category_of_graded_rows := homalg_graded_ring;
 
       # here we can switch internal checks in constructor on or of - true means they are performed and false means they are not
       category!.constructor_checks_wished := true;
@@ -34,26 +34,26 @@ InstallMethod( CAPCategoryOfProjectiveGradedLeftModules,
       SetIsRigidSymmetricClosedMonoidalCategory( category, true );
     
       # install its functionality
-      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES( category, category!.constructor_checks_wished );
+      INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS( category, category!.constructor_checks_wished );
     
       # add theorem file
       AddTheoremFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicLeft" ),
+        DirectoriesPackageLibrary( "CAPCategoryOfGradedRows", "LogicLeft" ),
         "Propositions.tex" )
       );
     
       # add predicate-implication file
       AddPredicateImplicationFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicLeft" ),
+        DirectoriesPackageLibrary( "CAPCategoryOfGradedRows", "LogicLeft" ),
         "PredicateImplications.tex" )
       );
     
       # add relations file
       AddEvalRuleFileToCategory( category,
         Filename(
-        DirectoriesPackageLibrary( "CAPCategoryOfProjectiveGradedModules", "LogicLeft" ),
+        DirectoriesPackageLibrary( "CAPCategoryOfGradedRows", "LogicLeft" ),
         "Relations.tex" )
       );
     
@@ -69,11 +69,11 @@ end );
 
 ####################################################################
 ##
-## Basic operations for category of projective, graded, left modules
+## Basic operations for category of graded rows
 ##
 ####################################################################
 
-InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_LEFT_MODULES,
+InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
   function( category, checks )
 
@@ -454,7 +454,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
       function( )
         
         return CAPCategoryOfProjectiveGradedLeftModulesObject( [ ],
-                                                   category!.homalg_graded_ring_for_category_of_projective_graded_left_modules,
+                                                   category!.homalg_graded_ring_for_category_of_graded_rows,
                                                    checks
                                                    );
     end );
@@ -1075,7 +1075,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_PROJECTIVE_GRADED_L
       function( )
         local homalg_ring;
         
-        homalg_ring := category!.homalg_graded_ring_for_category_of_projective_graded_left_modules;
+        homalg_ring := category!.homalg_graded_ring_for_category_of_graded_rows;
         return CAPCategoryOfProjectiveGradedLeftModulesObject( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ],
                                                                homalg_ring,
                                                                checks

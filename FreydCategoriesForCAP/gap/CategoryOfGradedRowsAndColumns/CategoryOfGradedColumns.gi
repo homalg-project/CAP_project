@@ -1,6 +1,6 @@
 #############################################################################
 ##
-## CAPCategoryOfProjectiveGradedModules package
+## FreydCategoriesForCAP package
 ##
 ## Copyright 2019, Martin Bies,       ULB Brussels
 ##
@@ -21,7 +21,7 @@ InstallMethod( CAPCategoryOfGradedColumns,
     local category;
     
       # create category
-      category := CreateCapCategory( Concatenation( "CAP category of graded columns "
+      category := CreateCapCategory( Concatenation( "CAP category of graded columns over "
                                                                                           , RingName( homalg_graded_ring ) ) );
       category!.homalg_graded_ring_for_category_of_graded_columns := homalg_graded_ring;
 
