@@ -232,7 +232,7 @@ ProjectiveLift := rec(
     
     return [ true ];
   end,
-  return_type := "morphism_or_fail",
+  return_type := "morphism",
   dual_operation := "InjectiveColift" ),
 
 InjectiveColift := rec(
@@ -257,7 +257,7 @@ InjectiveColift := rec(
     
     return [ true ];
   end,
-  return_type := "morphism_or_fail",
+  return_type := "morphism",
   dual_operation := "ProjectiveLift" ),
 
 IdentityMorphism := rec(
