@@ -43,6 +43,16 @@ BindGlobal( "CAP_INTERNAL_ADD_MORPHISM_OR_FAIL",
     
 end );
 
+BindGlobal( "CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY",
+  
+  function( function_name, category, message )
+    
+    Error( Concatenation( "in function \033[1m", function_name,
+        "\033[0m\n       of category \033[1m",
+        Name( category ), ":\033[0m\n\033[1m       ", message, "\033[0m\n" ) );
+    
+end );
+
 InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
@@ -259,17 +269,13 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     pre_func_return := CallFuncList( pre_function, arg );
                     if pre_func_return[ 1 ] = false then
-                        Error( Concatenation( "in function \033[1m", record.function_name, 
-                            "\033[0m\n       of category \033[1m",
-                            Name( category ), ":\033[0m\n\033[1m       ", pre_func_return[ 2 ], "\033[0m\n" ) );
+                        CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
                     fi;
                     
                     if category!.input_sanity_check_level > 1 then
                         pre_func_return := CallFuncList( pre_function_full, arg );
                         if pre_func_return[ 1 ] = false then
-                            Error( Concatenation( "in function \033[1m", record.function_name, 
-                                "\033[0m\n       of category \033[1m",
-                                Name( category ), ":\033[0m\n\033[1m       ", pre_func_return[ 2 ], "\033[0m\n" ) );
+                            CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
                         fi;
                     fi;
                     
@@ -281,8 +287,66 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result, category );
                 fi;
                 
-                if (not is_derivation) and category!.add_primitive_output then
-                    add_function( category, result );
+                if (not is_derivation) then
+                    if category!.add_primitive_output then
+                        add_function( category, result );
+                    elif category!.output_sanity_check_level > 0 then
+                        if record.return_type = "object" then
+                            if not IsCapCategoryObject( result ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryObject." );
+                            fi;
+                            if not HasCapCategory( result ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result has no CAP category." );
+                            fi;
+                            if not IsIdenticalObj( CapCategory( result ), category ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in this category." );
+                            fi;
+                            if not ObjectFilter( category )( result ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the object filter of this category." );
+                            fi;
+                        elif record.return_type = "morphism" then
+                            if not IsCapCategoryMorphism( result ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryMorphism." );
+                            fi;
+                            if not HasCapCategory( result ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result has no CAP category." );
+                            fi;
+                            if not IsIdenticalObj( CapCategory( result ), category ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in this category." );
+                            fi;
+                            if not MorphismFilter( category )( result ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the morphism filter of this category." );
+                            fi;
+                        elif record.return_type = "twocell" then
+                            if not IsCapCategoryTwoCell( result ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryTwoCell." );
+                            fi;
+                            if not HasCapCategory( result ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result has no CAP category." );
+                            fi;
+                            if not IsIdenticalObj( CapCategory( result ), category ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in this category." );
+                            fi;
+                            if not TwoCellFilter( category )( result ) then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the two cell filter of this category." );
+                            fi;
+                        elif record.return_type = "morphism_or_fail" then
+                            if result <> fail then
+                                if not IsCapCategoryMorphism( result ) then
+                                    CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryMorphism." );
+                                fi;
+                                if not HasCapCategory( result ) then
+                                    CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result has no CAP category." );
+                                fi;
+                                if not IsIdenticalObj( CapCategory( result ), category ) then
+                                    CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in this category." );
+                                fi;
+                                if not MorphismFilter( category )( result ) then
+                                    CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the morphism filter of this category." );
+                                fi;
+                            fi;
+                        fi;
+                    fi;
                 fi;
                 
                 if post_function <> false then
