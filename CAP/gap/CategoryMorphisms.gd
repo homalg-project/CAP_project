@@ -1164,10 +1164,9 @@ DeclareOperation( "AddIsColiftableAlongEpimorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$
-#! such that there is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$, i.e.,
-#! a morphism such that $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$.
-#! The output is such a lift or $\mathtt{fail}$ if it doesn't exist.
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
+#! The output is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$
+#! if such a lift exists or $\mathtt{fail}$ if it doesn't.
 #! @Returns a morphism in $\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}$
 #! @Arguments alpha, beta
 DeclareOperation( "Lift",
@@ -1195,10 +1194,9 @@ DeclareOperation( "AddLift",
 
 ##
 #! @Description
-#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$
-#! such that there is a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$., i.e.,
-#! a morphism such that $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$.
-#! The output is such a colift or $\mathtt{fail}$ if it doesn't exist.
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$.
+#! The output is a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$
+#! if such a colift exists or $\mathtt{fail}$ if it doesn't.
 #! @Returns a morphism in $\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}$
 #! @Arguments alpha, beta
 DeclareOperation( "Colift",
