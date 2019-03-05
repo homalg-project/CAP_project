@@ -1026,10 +1026,20 @@ DeclareOperation( "AddIsWellDefinedForMorphisms",
 
 ###################################
 ##
-#! @Section Basic Operations for Morphisms in Abelian Categories
+#! @Section Lift/Colift
 ##
 ###################################
 
+#! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$,
+#!  we call each morphism $\alpha / \beta: a \rightarrow b$ such that
+#!  $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$ a <Emph>lift of $\alpha$ along $\beta$</Emph>.
+#! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$,
+#!  we call each morphism $\alpha \backslash \beta: c \rightarrow b$ such that
+#!  $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$ a <Emph> colift of $\beta$ along $\alpha$</Emph>.
+#! Note that such lifts (or colifts) do not have to be unique. So in general,
+#! we do not expect that algorithms computing lifts (or colifts) do this in a functorial way.
+#! Thus the operations $\mathtt{Lift}$ and $\mathtt{Colift}$ are not regarded as 
+#! categorical operations, but only as set-theoretic operations.
 
 #! @Description
 #! The arguments are a monomorphism $\iota: k \hookrightarrow a$
@@ -1152,23 +1162,6 @@ DeclareOperation( "AddIsColiftableAlongEpimorphism",
 
 DeclareOperation( "AddIsColiftableAlongEpimorphism",
                   [ IsCapCategory, IsList ] );
-
-###################################
-##
-#! @Section Lift/ Colift
-##
-###################################
-
-#! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$,
-#!  we call each morphism $\alpha / \beta: a \rightarrow b$ such that
-#!  $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$ a <Emph>lift of $\alpha$ along $\beta$</Emph>.
-#! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$,
-#!  we call each morphism $\alpha \backslash \beta: c \rightarrow b$ such that
-#!  $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$ a <Emph> colift of $\beta$ along $\alpha$</Emph>.
-#! Note that such lifts (or colifts) do not have to be unique. So in general,
-#! we do not expect that algorithms computing lifts (or colifts) do this in a functorial way.
-#! Thus the operations $\mathtt{Lift}$ and $\mathtt{Colift}$ are not regarded as 
-#! categorical operations, but only as set-theoretic operations.
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$
