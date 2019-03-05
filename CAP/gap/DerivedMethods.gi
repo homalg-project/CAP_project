@@ -1081,8 +1081,19 @@ AddDerivationToCAP( RandomMorphism,
                     ],
 
   function( category, n )
+    local M;
 
-    return RandomMorphismWithFixedSource( RandomObject( category, n ), n );
+    M := RandomObject( category, n );
+
+    if M = fail then
+
+      return fail;
+
+    else
+ 
+      return RandomMorphismWithFixedSource( M, n );
+
+    fi;
 
 end : Description := "RandomMorphism using RandomObject and RandomMorphismWithFixedSource" );
 
@@ -1094,8 +1105,19 @@ AddDerivationToCAP( RandomMorphism,
                     ],
 
   function( category, n )
+    local M;
 
-    return RandomMorphismWithFixedRange( RandomObject( category, n ), n );
+    M := RandomObject( category, n );
+
+    if M = fail then
+
+      return fail;
+
+    else
+ 
+      return RandomMorphismWithFixedRange( M, n );
+
+    fi;
 
 end : Description := "RandomMorphism using RandomObject and RandomMorphismWithFixedRange" );
 
