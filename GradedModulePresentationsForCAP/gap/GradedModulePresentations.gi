@@ -68,8 +68,6 @@ InstallMethod( GradedLeftPresentations,
       
     fi;
     
-    Finalize( category );
-    
     return category;
     
 end );
@@ -159,13 +157,13 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     
     if CanCompute( category!.underlying_presentation_category, "Lift" ) then
     
-        ADD_GRADED_LIFT( category );
+        ADD_GRADED_LIFT( category, "left" );
     
     fi;
     
     if CanCompute( category!.underlying_presentation_category, "Colift" ) then
     
-        ADD_GRADED_COLIFT( category );
+        ADD_GRADED_COLIFT( category, "left" );
     
     fi;
 
@@ -232,13 +230,13 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     
     if CanCompute( category!.underlying_presentation_category, "Lift" ) then
     
-        ADD_GRADED_LIFT( category );
+        ADD_GRADED_LIFT( category, "right" );
     
     fi;
     
     if CanCompute( category!.underlying_presentation_category, "Colift" ) then
     
-        ADD_GRADED_COLIFT( category );
+        ADD_GRADED_COLIFT( category, "right" );
     
     fi;
     
@@ -562,12 +560,12 @@ end );
 ##
 InstallGlobalFunction( ADD_GRADED_LIFT,
                        
-  function( category )
+  function( category, left_or_right )
     
     AddLift( category,
       
       function( alpha, beta )
-        local lift;
+        local lift, required_degrees;
         
         lift := Lift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
         
@@ -575,8 +573,20 @@ InstallGlobalFunction( ADD_GRADED_LIFT,
             return fail;
         fi;
         
+        if left_or_right = "left" then
+
+          required_degrees := List( GeneratorDegrees( Source( alpha ) ),
+                                i -> List( GeneratorDegrees( Source( beta ) ), j -> i - j ) );
+        else
+
+          required_degrees := List( GeneratorDegrees( Source( beta ) ),
+                                i -> List( GeneratorDegrees( Source( alpha ) ), j -> j - i ) );
+        fi;
+
+        lift := HomogeneousPartOfMatrix( UnderlyingMatrix( lift ), required_degrees );
+
         return GradedPresentationMorphism( Source( alpha ), lift, Source( beta ) );
-        
+
     end );
     
 end );
@@ -584,12 +594,12 @@ end );
 ##
 InstallGlobalFunction( ADD_GRADED_COLIFT,
                        
-  function( category )
+  function( category, left_or_right )
     
     AddColift( category,
       
       function( alpha, beta )
-        local colift;
+        local colift, required_degrees;
         
         colift := Colift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
         
@@ -597,8 +607,20 @@ InstallGlobalFunction( ADD_GRADED_COLIFT,
             return fail;
         fi;
         
+        if left_or_right = "left" then
+
+          required_degrees := List( GeneratorDegrees( Range( alpha ) ),
+                                i -> List( GeneratorDegrees( Range( beta ) ), j -> i - j ) );
+        else
+
+          required_degrees := List( GeneratorDegrees( Range( beta ) ),
+                                i -> List( GeneratorDegrees( Range( alpha ) ), j -> j - i ) );
+        fi;
+
+        colift := HomogeneousPartOfMatrix( UnderlyingMatrix( colift ), required_degrees );
+
         return GradedPresentationMorphism( Range( alpha ), colift, Range( beta ) );
-        
+
     end );
     
 end );
