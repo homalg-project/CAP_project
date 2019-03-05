@@ -856,20 +856,35 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
 
     ## Random methods
+    
+    ## Interpretation: the output has dimension at most n.
     ##
     AddRandomObject( category,
 
       function( category, n )
 
-        return VectorSpaceObject( Random( [ 1 .. n ] ), homalg_field );
+        if n < 0 then
+
+          return fail;
+
+        fi;
+
+        return VectorSpaceObject( Random( [ 0 .. n ] ), homalg_field );
 
     end );
 
+    ## Interpretation: the range of the output has dimension at most n.
     ##
     AddRandomMorphismWithFixedSource( category,
 
       function( source_space, n )
         local mat, range_space;
+
+        if n < 0 then
+
+          return fail;
+
+        fi;
 
         range_space := RandomObject( category, n );
 
@@ -883,11 +898,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
 
     end );
 
+    
+    ## Interpretation: the source of the output has dimension at most n.
     ##
     AddRandomMorphismWithFixedRange( category,
 
       function( range_space, n )
         local mat, source_space;
+
+        if n < 0 then
+
+          return fail;
+
+        fi;
 
         source_space := RandomObject( category, n );
 

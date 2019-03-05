@@ -971,7 +971,7 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_OBJECT,
         
         if n < 0 then
 
-          Error( "The integer should be greater or equal to 0" );
+          return fail;
 
         fi;
 
@@ -1025,7 +1025,7 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT,
         
         if n < 0 then
         
-          Error( "The integer should be greater or equal to 0" );
+          return fail;
         
         fi;
         
@@ -1131,7 +1131,7 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
         
         if n < 0 then
         
-          Error( "The integer should be greater or equal to 0" );
+          return fail;
         
         fi;
         
@@ -1248,7 +1248,7 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT,
         
         if n < 0 then
         
-          Error( "The integer should be greater or equal to 0" );
+          return fail;
         
         fi;
         
@@ -1357,7 +1357,7 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
         
         if n < 0 then
         
-          Error( "The integer should be greater or equal to 0" );
+          return fail;
         
         fi;
         
