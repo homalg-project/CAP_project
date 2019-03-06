@@ -1167,6 +1167,8 @@ DeclareOperation( "AddIsColiftableAlongEpimorphism",
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
 #! The output is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$
 #! if such a lift exists or $\mathtt{fail}$ if it doesn't.
+#! Recall that a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$ is
+#! a morphism such that $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$.
 #! @Returns a morphism in $\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}$
 #! @Arguments alpha, beta
 DeclareOperation( "Lift",
@@ -1197,6 +1199,8 @@ DeclareOperation( "AddLift",
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$.
 #! The output is a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$
 #! if such a colift exists or $\mathtt{fail}$ if it doesn't.
+#! Recall that a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$ is
+#! a morphism such that $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$.
 #! @Returns a morphism in $\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}$
 #! @Arguments alpha, beta
 DeclareOperation( "Colift",
