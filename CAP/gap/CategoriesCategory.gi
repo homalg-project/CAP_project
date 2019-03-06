@@ -442,6 +442,9 @@ InstallGlobalFunction( ApplyFunctor,
             if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
                 Error( Concatenation( "the category of the result of the object function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
             fi;
+            if not ObjectFilter( range_category )( computed_value ) then
+                Error( Concatenation( "the result of the object function of the functor \"", Name(functor), "\" does not lie in the object filter of the range of this functor" ) );
+            fi;
         fi;
         
         if range_category!.add_primitive_output then
@@ -479,6 +482,9 @@ InstallGlobalFunction( ApplyFunctor,
             fi;
             if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
                 Error( Concatenation( "the category of the result of the morphism function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
+            fi;
+            if not MorphismFilter( range_category )( computed_value ) then
+                Error( Concatenation( "the result of the morphism function of the functor \"", Name(functor), "\" does not lie in the morphism filter of the range of this functor" ) );
             fi;
         fi;
         
