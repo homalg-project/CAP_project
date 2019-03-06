@@ -72,7 +72,7 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ModulePresentationsForCAP", ">=2017.03.20" ],
-                           [ "GradedRingForHomalg", ">=2018.02.04" ],
+                           [ "GradedRingForHomalg", ">=2018.12.04" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=2016.09.19" ],
                            [ "HomologicalAlgebraForCAP", ">=2015.05.08" ] ],
   SuggestedOtherPackages := [ ],
