@@ -174,9 +174,10 @@ DeclareOperation( "CapFunctor",
 #!  $[ [A_1, b_1], \dots, [A_n,b_n] ]$,
 #!  then $f$ must take $n$ arguments, where the $i$-th
 #!  argument is an object in the category $A_i$ (the boolean $b_i$ is ignored).
-#!  The function should return a GAP object in <C>IsAttributeStoringRep</C> which
-#!  will be automatically added to the range of the functor,
-#!  except when this feature was deactivated via <C>DisableAddForCategoricalOperations</C>.
+#!  The function should return an object in the range of the functor, except when
+#!  the automatic call of <C>AddObject</C> was enabled via <C>EnableAddForCategoricalOperations</C>.
+#!  In this case the output only has to be a GAP object in <C>IsAttributeStoringRep</C>,
+#!  which will be automatically added as an object to the range of the functor.
 #! @Arguments F, f
 DeclareOperation( "AddObjectFunction",
                   [ IsCapFunctor, IsFunction ] );
@@ -210,10 +211,11 @@ DeclareAttribute( "FunctorObjectOperation",
 #!  The last argument of $f$ must be an object $r$ that is equal (via <C>IsEqualForObjects</C>)
 #!  to the range of the result of applying
 #!  $F$ to the input morphisms.
-#!  The function should return a GAP object in <C>IsAttributeStoringRep</C> (with attributes <C>Source</C>
-#!  and <C>Range</C> containing also GAP objects in <C>IsAttributeStoringRep</C>) which
-#!  will be automatically added to the range of the functor,
-#!  except when this feature was deactivated via <C>DisableAddForCategoricalOperations</C>.
+#!  The function should return a morphism in the range of the functor, except when
+#!  the automatic call of <C>AddMorphism</C> was enabled via <C>EnableAddForCategoricalOperations</C>.
+#!  In this case the output only has to be a GAP object in <C>IsAttributeStoringRep</C>
+#!  (with attributes <C>Source</C> and <C>Range</C> containing also GAP objects in <C>IsAttributeStoringRep</C>),
+#!  which will be automatically added as a morphism to the range of the functor.
 #! @Arguments F, f
 DeclareOperation( "AddMorphismFunction",
                   [ IsCapFunctor, IsFunction ] );
