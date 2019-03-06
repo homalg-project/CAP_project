@@ -1,10 +1,10 @@
 #############################################################################
 ##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+## FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
 ##
-##  Copyright 2018, Sebastian Posur, University of Siegen
+## Copyright 2019, Martin Bies, Université libre Bruxelles
 ##
-#! @Chapter Category of rows
+#! @Chapter Category of columns
 #!
 #############################################################################
 
@@ -16,17 +16,17 @@
 
 #! @Description
 #! The GAP category of objects in the category
-#! of rows over a ring $R$.
+#! of columns over a ring $R$.
 #! @Arguments object
-DeclareCategory( "IsCategoryOfRowsObject",
+DeclareCategory( "IsCategoryOfColumnsObject",
                  IsCapCategoryObject );
 
-DeclareCategory( "IsCategoryOfRowsMorphism",
+DeclareCategory( "IsCategoryOfColumnsMorphism",
                  IsCapCategoryMorphism );
 
-DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS" );
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS" );
 
-DeclareCategory( "IsCategoryOfRows",
+DeclareCategory( "IsCategoryOfColumns",
                  IsCapCategory );
 
 ####################################
@@ -35,18 +35,18 @@ DeclareCategory( "IsCategoryOfRows",
 ##
 ####################################
 
-DeclareAttribute( "CategoryOfRows",
+DeclareAttribute( "CategoryOfColumns",
                   IsHomalgRing );
 
 
-DeclareOperationWithCache( "CategoryOfRowsObject",
-                           [ IsInt, IsCategoryOfRows ] );
+DeclareOperationWithCache( "CategoryOfColumnsObject",
+                           [ IsInt, IsCategoryOfColumns ] );
 
-DeclareAttribute( "AsCategoryOfRowsMorphism",
+DeclareAttribute( "AsCategoryOfColumnsMorphism",
                   IsHomalgMatrix );
 
-DeclareOperation( "CategoryOfRowsMorphism",
-                  [ IsCategoryOfRowsObject, IsHomalgMatrix, IsCategoryOfRowsObject ] );
+DeclareOperation( "CategoryOfColumnsMorphism",
+                  [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ] );
 
 ####################################
 ##
@@ -55,10 +55,10 @@ DeclareOperation( "CategoryOfRowsMorphism",
 ####################################
 
 DeclareAttribute( "UnderlyingRing",
-                  IsCategoryOfRows );
+                  IsCategoryOfColumns );
 
 DeclareAttribute( "RankOfObject",
-                  IsCategoryOfRowsObject );
+                  IsCategoryOfColumnsObject );
 
 DeclareAttribute( "UnderlyingMatrix",
-                  IsCategoryOfRowsMorphism );
+                  IsCategoryOfColumnsMorphism );

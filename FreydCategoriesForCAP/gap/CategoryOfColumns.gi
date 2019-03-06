@@ -1,8 +1,8 @@
 #############################################################################
 ##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+## FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
 ##
-##  Copyright 2018, Sebastian Posur, University of Siegen
+## Copyright 2019, Martin Bies, Université libre Bruxelles
 ##
 #############################################################################
 
