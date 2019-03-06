@@ -2248,15 +2248,7 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT,
 
           syz := SyzygiesOfColumns( UnionOfColumns( m, y ) );
 
-          if NrCols( syz ) > 0 then
-
-            e := homalg_ring!.random_element_func( );
-
-            e := Random( [ e, e, e, One( homalg_ring ) ] );
-
-            syz := CertainColumns( syz, [ 1 .. Random( [ 1 .. NrCols( syz ) ]  ) ] ) * e;
-
-          fi;
+          syz := syz * homalg_ring!.random_matrix_func( NrCols( syz ), Random( [ 2 .. 5 ] ) );
 
           x := CertainRows( syz, [ 1 .. NrCols( m ) ] );
 
@@ -2301,15 +2293,7 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
 
           syz := SyzygiesOfRows( UnionOfRows( x, u ) );
 
-          if NrRows( syz ) > 0 then
-
-            e := homalg_ring!.random_element_func( );
-
-            e := Random( [ e, e, e, One( homalg_ring ) ] );
-
-            syz := e * CertainRows( syz, [ 1 .. Random( [ 1 .. NrRows( syz ) ] ) ] );
-
-          fi;
+          syz := homalg_ring!.random_matrix_func( Random( [ 2 .. 5 ] ), NrRows( syz ) ) * syz;
 
           m := CertainColumns( syz, [ 1 .. NrRows( x ) ] );
 
@@ -2344,15 +2328,7 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT,
 
           syz := SyzygiesOfRows( UnionOfRows( x, u ) );
 
-          if NrRows( syz ) > 0 then
-
-            e := homalg_ring!.random_element_func( );
-
-            e := Random( [ e, e, e, One( homalg_ring ) ] );
-
-            syz := e * CertainRows( syz, [ 1 .. Random( [ 1 .. NrRows( syz ) ] ) ] );
-
-          fi;
+          syz := homalg_ring!.random_matrix_func( Random( [ 2 .. 5 ] ), NrRows( syz ) ) * syz;
 
           m := CertainColumns( syz, [ 1 .. NrRows( x ) ] );
 
@@ -2396,15 +2372,7 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
 
           syz := SyzygiesOfColumns( UnionOfColumns( m, y ) );
 
-          if NrCols( syz ) > 0 then
-
-            e := homalg_ring!.random_element_func( );
-
-            e := Random( [ e, e, e, One( homalg_ring ) ] );
-
-            syz := CertainColumns( syz, [ 1 .. Random( [ 1 .. NrCols( syz ) ]  ) ] ) * e;
-
-          fi;
+          syz := syz * homalg_ring!.random_matrix_func( NrCols( syz  ), Random( [ 2 .. 5 ] ) );
 
           u := CertainRows( syz, [ NrCols( m ) + 1 .. NrRows( syz ) ] );
 
