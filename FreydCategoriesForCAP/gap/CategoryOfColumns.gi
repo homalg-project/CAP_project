@@ -619,11 +619,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         ##
         AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
           function( A, B, morphism )
-            local nr_columns, nr_columns, underlying_matrix;
+            local nr_rows, nr_columns, underlying_matrix;
             
             nr_columns := RankOfObject( A );
             
-            nr_columns := RankOfObject( B );
+            nr_rows := RankOfObject( B );
             
             if nr_columns = 0 or nr_columns = 0 then
                 
