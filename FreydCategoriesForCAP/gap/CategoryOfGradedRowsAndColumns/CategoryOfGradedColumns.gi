@@ -274,43 +274,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments object1, object2
     AddIsEqualForObjects( category,
       function( object1, object2 )
-      local deg_list1, deg_list2, comparer_list, i, j, counter1, counter2, len;
+      local deg_list1, deg_list2;
       
-        if Rank( object1 ) <> Rank( object2 ) then
-          return false;
-        fi;
-        
         deg_list1 := UnzipDegreeList( object1 );
         deg_list2 := UnzipDegreeList( object2 );
-        comparer_list := DuplicateFreeList( deg_list1 );
         
-        # scan over all degrees that appear in deg_list1
-        for i in comparer_list do
-        
-          counter1 := 0;
-          counter2 := 0;
-          len := Length( deg_list1 );
-          for j in [ 0 .. len - 1 ] do
-          
-            if deg_list1[ len - j ] = i then
-              Remove( deg_list1, len - j );
-              counter1 := counter1 + 1;
-            fi;
-            
-            if deg_list2[ len - j ] = i then
-              Remove( deg_list2, len - j );
-              counter2 := counter2 + 1;
-            fi;
-            
-          od;
-          
-          if counter1 <> counter2 then
-            return false;
-          fi;
-          
-        od;
-        
-        return true;
+        return deg_list1 = deg_list2;
 
     end );
 
