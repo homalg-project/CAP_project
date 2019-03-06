@@ -432,19 +432,22 @@ InstallGlobalFunction( ApplyFunctor,
         
         computed_value := CallFuncList( FunctorObjectOperation( functor ), arguments );
 
-        if range_category!.output_sanity_check_level > 0 then
+        if range_category!.output_sanity_check_level > 0 and not range_category!.add_primitive_output then
             if not IsCapCategoryObject( computed_value ) then
                 Error( Concatenation("the result of the object function of the functor \"", Name(functor), "\" does not lie in the IsCapCategoryObject filter." ) );
             fi;
-            if HasCapCategory( computed_value ) then
-                if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
-                    Error( Concatenation( "the category of the result of the object function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
-                fi;
-            else
-                if not range_category!.add_primitive_output then
-                    Error( Concatenation("the result of the object function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
-                fi;
+            if not HasCapCategory( computed_value ) then
+                Error( Concatenation("the result of the object function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
             fi;
+            if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
+                Error( Concatenation( "the category of the result of the object function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
+            fi;
+        fi;
+        
+        if range_category!.add_primitive_output then
+            
+            AddObject( range_category, computed_value );
+            
         fi;
         
     elif IsCapCategoryMorphism( arguments[ 1 ] ) then
@@ -467,30 +470,27 @@ InstallGlobalFunction( ApplyFunctor,
         
         computed_value := CallFuncList( FunctorMorphismOperation( functor ), Concatenation( [ source_value ], arguments, [ range_value ] ) );
 
-        if range_category!.output_sanity_check_level > 0 then
+        if range_category!.output_sanity_check_level > 0 and not range_category!.add_primitive_output then
             if not IsCapCategoryMorphism( computed_value ) then
                 Error( Concatenation("the result of the morphism function of the functor \"", Name(functor), "\" does not lie in the IsCapCategoryMorphism filter." ) );
             fi;
-            if HasCapCategory( computed_value ) then
-                if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
-                    Error( Concatenation( "the category of the result of the morphism function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
-                fi;
-            else
-                if not range_category!.add_primitive_output then
-                    Error( Concatenation("the result of the morphism function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
-                fi;
+            if not HasCapCategory( computed_value ) then
+                Error( Concatenation("the result of the morphism function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
+            fi;
+            if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
+                Error( Concatenation( "the category of the result of the morphism function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
             fi;
         fi;
-
+        
+        if range_category!.add_primitive_output then
+            
+            AddMorphism( range_category, computed_value );
+            
+        fi;
+        
     else
         
         Error( "Second argument of ApplyFunctor must be a category cell" );
-        
-    fi;
-    
-    if range_category!.add_primitive_output then
-        
-        Add( range_category, computed_value );
         
     fi;
     
