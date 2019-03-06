@@ -1011,18 +1011,16 @@ end );
 InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT,
 
   function( category )
-    local homalg_ring, Deg;
+    local homalg_ring;
     
     homalg_ring := category!.ring_for_representation_category;
-    
-    Deg := homalg_ring!.random_degrees;
     
     AddRandomMorphismWithFixedSource( category,
     
       function( M, n )
-        local m, mat, degrees_mat, y, generator_degrees_of_y, m_y, generator_degrees_of_m_y, syz, degrees_syz, 
-            non_trivial_degrees, positions, generator_degrees_of_syz, x, u, U, i;
-        
+        local m, u, U, generators_degrees_of_m, relations_degrees_of_m, generators_degrees_of_y, degrees_mat, y, m_y, generators_degrees_of_m_y, syz,
+            generators_degrees_of_syz, some_degrees, some_mat, x;
+       
         if n < 0 then
         
           return fail;
@@ -1041,11 +1039,16 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT,
         
         fi;
         
-        mat := UnionOfColumns( List( [ 1 .. Int( n /NrCols( m ) ) + 1 ], j -> m ) );
+        # One can think of m as a morphism between free graded modules.
+        # Now I need the degrees of the source of m:
         
-        mat := CertainColumns( mat, [ 1 .. n ] );
+        generators_degrees_of_m := GeneratorDegrees( M );
         
-        degrees_mat := DegreesOfEntries( mat );
+        relations_degrees_of_m := homalg_ring!.detect_relations_degrees_func( m, generators_degrees_of_m, "left" );
+        
+        generators_degrees_of_y := List( [ 1 .. n ], i -> Random( generators_degrees_of_m ) );
+        
+        degrees_mat := List( relations_degrees_of_m, i -> List( generators_degrees_of_y, j -> i - j ) );
         
         y := List( degrees_mat, l -> List( l, d -> homalg_ring!.random_homogeneous_element_func( d ) ) );
         
@@ -1056,55 +1059,38 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT,
         else
           
           y := HomalgMatrix( y, NrRows( m ), n, homalg_ring );
-          
+          # Now AsGradedLeftPresentation( y, generators_degrees_of_y ) should be well-defined.
         fi;
         
-        generator_degrees_of_y := Concatenation( List( [ 1 .. Int( n /NrCols( m ) ) + 1 ], j -> GeneratorDegrees( M ) ) ){[1 .. n]};
         
         m_y := UnionOfColumns( m, y );
         
-        generator_degrees_of_m_y := Concatenation( GeneratorDegrees( M ), generator_degrees_of_y );
-        # Now AsGradedLeftPresentation( m_y, generator_degrees_of_m_y ) should be well-defined.
+        generators_degrees_of_m_y := Concatenation( generators_degrees_of_m, generators_degrees_of_y );
+        # Now AsGradedLeftPresentation( m_y, generators_degrees_of_m_y ) should be well-defined.
         
         syz := SyzygiesOfColumns( m_y );
         
-        if NrCols( syz ) <> 0 then
-          
-          syz := CertainColumns( syz, [ 1 .. Random( [ 1 .. NrCols( syz ) ] ) ] );
-          
-        fi;
+        generators_degrees_of_syz := homalg_ring!.detect_generators_degrees_func( syz, generators_degrees_of_m_y, "left" );
         
-        degrees_syz := DegreesOfEntries( syz );
-        
-        non_trivial_degrees := NonTrivialDegreePerColumn( syz );
-        
-        positions := List( [ 1 .. NrCols( syz ) ], 
-            i -> Position( TransposedMat( degrees_syz )[ i ], non_trivial_degrees[ i ] ) );
-        
-        if fail in positions then
+        if generators_degrees_of_syz <> [  ] then
           
-          for i in [ 1 .. NrCols( syz ) ] do
-            
-            if positions[ i ] = fail then
-              
-              positions[ i ] := 1;
-            
-            fi;
+          some_degrees := List( [ 1 .. Random( [ 2 .. 5 ] ) ], i -> Random( generators_degrees_of_syz ) - Random( homalg_ring!.random_degrees ) );
+        
+        else
           
-          od;
+          some_degrees := [  ];
         
         fi;
         
-        generator_degrees_of_syz :=
-            List( [ 1 .. NrCols( syz ) ],
-            i -> generator_degrees_of_m_y[ positions[ i ] ] - degrees_syz[ positions[ i ] ][ i ] );
-        # Now AsGradedLeftPresentation( syz, generator_degrees_of_syz ) should be well-defined.
+        some_mat := homalg_ring!.random_matrix_between_free_left_presentations_func( generators_degrees_of_syz, some_degrees );
+        
+        syz := syz * some_mat;
         
         x := CertainRows( syz, [ 1 .. NrCols( m ) ] );
         
         u := CertainRows( syz, [ NrCols( m ) + 1 .. NrRows( syz ) ] );
         
-        U := AsGradedLeftPresentation( u, generator_degrees_of_syz );
+        U := AsGradedLeftPresentation( u, some_degrees );
         
         return GradedPresentationMorphism( M, x, U );
         
@@ -1118,16 +1104,15 @@ end );
 InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
 
   function( category )
-    local homalg_ring, Deg;
+    local homalg_ring;
     
     homalg_ring := category!.ring_for_representation_category;
-    
-    Deg := homalg_ring!.random_degrees;
     
     AddRandomMorphismWithFixedRange( category,
     
       function( U, n )
-        local u, generator_degrees_of_source, source, mat, degrees_mat, x, x_u, degrees_x_u, non_trivial_degrees, positions, generator_degrees_of_syz, syz, m, M, i;
+        local u, m, M, generator_degrees_of_source, source, mat, generators_degrees_of_u, relations_degrees_of_u, relations_degrees_of_x, degrees_mat, x, x_u,
+            relations_degrees_of_x_u, syz, relations_degrees_of_syz, some_degrees, some_mat;
         
         if n < 0 then
         
@@ -1166,11 +1151,13 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
         
         fi;
         
-        mat := UnionOfRows( List( [ 1 .. Int( n /NrRows( u ) ) + 1 ], j -> u ) );
+        generators_degrees_of_u := GeneratorDegrees( U );
         
-        mat := CertainRows( mat, [ 1 .. n ] );
+        relations_degrees_of_u := homalg_ring!.detect_relations_degrees_func( u, generators_degrees_of_u, "left" );
         
-        degrees_mat := DegreesOfEntries( mat );
+        relations_degrees_of_x := List( [ 1 .. n ], i -> Random( relations_degrees_of_u ) );
+        
+        degrees_mat := List( relations_degrees_of_x, i -> List( generators_degrees_of_u, j -> i - j ) );
         
         x := List( degrees_mat, l -> List( l, d -> homalg_ring!.random_homogeneous_element_func( d ) ) );
         
@@ -1186,43 +1173,31 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
         
         x_u := UnionOfRows( x, u );
         # Now AsGradedLeftPresentation( x_u, GeneratorDegrees( U ) ) should be well-defined.
-        
-        degrees_x_u := DegreesOfEntries( x_u );
-        
-        non_trivial_degrees := NonTrivialDegreePerRow( x_u );
-        
-        positions := List( [ 1 .. NrRows( x_u ) ],
-            i -> Position( degrees_x_u[ i ], non_trivial_degrees[ i ] ) );
-        
-        if fail in positions then
-          
-          for i in [ 1 .. NrRows( x_u ) ] do
-            
-            if positions[ i ] = fail then
-            
-              positions[ i ] := 1;
-            
-            fi;
-          
-          od;
-        
-        fi;
-        
-        generator_degrees_of_syz := List( [ 1 .. NrRows( x_u ) ],
-                    i -> GeneratorDegrees( U )[ positions[ i ] ] + degrees_x_u[ i ][ positions[ i ] ] );
+         
+        relations_degrees_of_x_u := Concatenation( relations_degrees_of_x, relations_degrees_of_u );
         
         syz := SyzygiesOfRows( x_u );
-        # Now AsGradedLeftPresentation( syz, generator_degrees_of_syz ) should be well-defined.
+        # Now AsGradedLeftPresentation( syz, relations_degrees_of_x_u ) should be well-defined
         
-        if NrRows( syz ) <> 0 then
+        relations_degrees_of_syz := homalg_ring!.detect_relations_degrees_func( syz, relations_degrees_of_x_u, "left" );
         
-          syz := CertainRows( syz, [ 1 .. Random( [ 1 .. NrRows( syz ) ] ) ] );
+        if relations_degrees_of_syz <> [  ] then
+          
+          some_degrees := List( [ 1 .. Random( [ 2 .. 5 ] ) ], i -> Random( relations_degrees_of_syz ) + Random( homalg_ring!.random_degrees ) );
+        
+        else
+          
+          some_degrees := [  ];
         
         fi;
+        
+        some_mat := homalg_ring!.random_matrix_between_free_left_presentations_func( some_degrees, relations_degrees_of_syz );
+        
+        syz := some_mat * syz;
         
         m := CertainColumns( syz, [ 1 .. NrRows( x ) ] );
         
-        M := AsGradedLeftPresentation( m, generator_degrees_of_syz{ [ 1 .. NrRows( x ) ] } );
+        M := AsGradedLeftPresentation( m, relations_degrees_of_x_u{ [ 1 .. NrRows( x ) ] } );
         
         return GradedPresentationMorphism( M, x, U );
         
@@ -1243,9 +1218,9 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT,
     AddRandomMorphismWithFixedSource( category,
     
       function( U, n )
-        local u, mat, degrees_mat, x, generator_degrees_of_x, x_u, generator_degrees_of_x_u, syz, degrees_syz,
-            non_trivial_degrees, positions, generator_degrees_of_syz, m, y, M, i; 
-        
+        local u, m, M, generators_degrees_of_u, relations_degrees_of_u, generator_degrees_of_x, degrees_mat, x, x_u, generator_degrees_of_x_u, syz,
+            generator_degrees_of_syz, some_degrees, some_mat, y;
+       
         if n < 0 then
         
           return fail;
@@ -1269,12 +1244,15 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT,
           return ZeroMorphism( U, M );
           
         fi;
+
+
+        generators_degrees_of_u := GeneratorDegrees( U );
+
+        relations_degrees_of_u := homalg_ring!.detect_relations_degrees_func( u, generators_degrees_of_u, "right" );
+
+        generator_degrees_of_x := List( [ 1 .. n ], i -> Random( generators_degrees_of_u ) );
         
-        mat := UnionOfRows( List( [ 1 .. Int( n /NrRows( u ) ) + 1 ], j -> u ) );
-        
-        mat := CertainRows( mat, [ 1 .. n ] );
-        
-        degrees_mat := DegreesOfEntries( mat );
+        degrees_mat := List( generator_degrees_of_x, i -> List( relations_degrees_of_u, j -> j - i ) );
         
         x := List( degrees_mat, l -> List( l, d -> homalg_ring!.random_homogeneous_element_func( d ) ) );
         
@@ -1285,54 +1263,39 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT,
         else
           
           x := HomalgMatrix( x, n, NrCols( u ), homalg_ring );
-        
+          # Now AsGradedRightPresentation( x, generator_degrees_of_x ) should be well-defined.
+
         fi;
-        
-        generator_degrees_of_x := Concatenation( List( [ 1 .. Int( n /NrRows( u ) ) + 1 ], j -> GeneratorDegrees( U ) ) ){[1 .. n]};
         
         x_u := UnionOfRows( x, u );
         
-        generator_degrees_of_x_u := Concatenation( generator_degrees_of_x, GeneratorDegrees( U ) );
+        generator_degrees_of_x_u := Concatenation( generator_degrees_of_x, generators_degrees_of_u );
         # Now AsGradedRightPresentation( x_u, generator_degrees_of_x_u ) should be well-defined.
         
         syz := SyzygiesOfRows( x_u );
-        
-        if NrRows( syz ) <> 0 then
-          
-          syz := CertainRows( syz, [ 1 .. Random( [ 1 .. NrRows( syz ) ] ) ] );
-        
-        fi;
-        
-        degrees_syz := DegreesOfEntries( syz );
-        
-        non_trivial_degrees := NonTrivialDegreePerRow( syz );
-        
-        positions := List( [ 1 .. NrRows( syz ) ],
-            i -> Position( degrees_syz[ i ], non_trivial_degrees[ i ] ) );
-        
-        if fail in positions then
-          
-          for i in [ 1 .. NrRows( x_u ) ] do
-            
-            if positions[ i ] = fail then
-              
-              positions[ i ] := 1;
-            
-            fi;
-          
-          od;
-        
-        fi;
-        
-        generator_degrees_of_syz := List( [ 1 .. NrRows( syz ) ],
-                    i -> generator_degrees_of_x_u[ positions[ i ] ] - degrees_syz[ i ][ positions[ i ] ] );
+
+        generator_degrees_of_syz := homalg_ring!.detect_generators_degrees_func( syz, generator_degrees_of_x_u, "right" );
         # Now AsGradedRightPresentation( syz, generator_degrees_of_syz ) should be well-defined.
         
+        if generator_degrees_of_syz <> [  ] then
+          
+          some_degrees := List( [ 1 .. Random( [ 2 .. 5 ] ) ], i -> Random( generator_degrees_of_syz ) + Random( homalg_ring!.random_degrees ) );
+
+        else
+
+          some_degrees := [  ];
+
+        fi;
+
+        some_mat := homalg_ring!.random_matrix_between_free_right_presentations_func( some_degrees, generator_degrees_of_syz );
+
+        syz := some_mat * syz;
+
         m := CertainColumns( syz, [ 1 .. NrRows( x ) ] );
         
         y := CertainColumns( syz, [ NrRows( x ) + 1 .. NrCols( syz ) ] );
         
-        M := AsGradedRightPresentation( m, generator_degrees_of_syz );
+        M := AsGradedRightPresentation( m, some_degrees );
         
         return GradedPresentationMorphism( U, y, M );
         
@@ -1353,7 +1316,8 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
     AddRandomMorphismWithFixedRange( category,
     
       function( M, n )
-        local m, generator_degrees_of_source, U, mat, degrees_mat, y, m_y, degrees_m_y, non_trivial_degrees, positions, generator_degrees_of_syz, syz, u, i;
+        local m, u, U, generator_degrees_of_source, mat, generators_degrees_of_m, relations_degrees_of_m, relations_degrees_of_y, degrees_mat, y, m_y, 
+            relations_degrees_of_m_y, syz, relations_degrees_of_syz, some_degrees, some_mat;
         
         if n < 0 then
         
@@ -1386,12 +1350,14 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
         
         fi;
         
-        mat := UnionOfColumns( List( [ 1 .. Int( n /NrCols( m ) ) + 1 ], j -> m ) );
+        generators_degrees_of_m := GeneratorDegrees( M );
         
-        mat := CertainColumns( mat, [ 1 .. n ] );
+        relations_degrees_of_m := homalg_ring!.detect_relations_degrees_func( m, generators_degrees_of_m, "right" );
         
-        degrees_mat := DegreesOfEntries( mat );
-          
+        relations_degrees_of_y := List( [ 1 .. n ], i -> Random( relations_degrees_of_m ) );
+        
+        degrees_mat := List( generators_degrees_of_m, i -> List( relations_degrees_of_y, j -> j - i ) );
+        
         y := List( degrees_mat, l -> List( l, d -> homalg_ring!.random_homogeneous_element_func( d ) ) );
         
         if NrRows( m ) * n = 0 then
@@ -1401,48 +1367,37 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
         else
           
           y := HomalgMatrix( y, NrRows( m ), n, homalg_ring );
+          # Now AsGradedRightPresentation( y, generators_degrees_of_m ) should be well-defined
         
         fi;
         
         m_y := UnionOfColumns( m, y );
-        # Now AsGradedRightPresentation( m_y, GeneratorDegrees( M ) ) should be well-defined.
+        # Now AsGradedRightPresentation( m_y, generators_degrees_of_m ) should be well-defined.
         
-        degrees_m_y := DegreesOfEntries( m_y );
-        
-        non_trivial_degrees := NonTrivialDegreePerColumn( m_y );
-        
-        positions := List( [ 1 .. NrCols( m_y ) ], 
-           i -> Position( TransposedMat( degrees_m_y )[ i ], non_trivial_degrees[ i ] ) );
-        
-        if fail in positions then
-          
-          for i in [ 1 .. NrCols( m_y ) ] do
-            
-            if positions[ i ] = fail then
-              
-              positions[ i ] := 1;
-            
-            fi;
-          
-          od;
-        
-        fi;
-        
-        generator_degrees_of_syz := List( [ 1 .. NrCols( m_y ) ],
-        i -> GeneratorDegrees( M )[ positions[ i ] ] + degrees_m_y[ positions[ i ] ][ i ] );
+        relations_degrees_of_m_y := Concatenation( relations_degrees_of_m, relations_degrees_of_y );
         
         syz := SyzygiesOfColumns( m_y );
-        # Now AsGradedRightPresentation( syz, generator_degrees_of_syz ) should be well-defined.
+        # Now AsGradedRightPresentation( syz, relations_degrees_of_m_y ) should be well-defined.
         
-        if NrCols( syz ) <> 0 then
+        relations_degrees_of_syz := homalg_ring!.detect_relations_degrees_func( syz, relations_degrees_of_m_y, "right" );
+        
+        if relations_degrees_of_syz <> [  ] then
           
-          syz := CertainColumns( syz, [ 1 .. Random( [ 1 .. NrCols( syz ) ] ) ] );
+          some_degrees := List( [ 1 .. Random( [ 2 .. 5 ] ) ], i -> Random( relations_degrees_of_syz ) + Random( homalg_ring!.random_degrees ) );
+        
+        else
+          
+          some_degrees := [  ];
         
         fi;
+        
+        some_mat := homalg_ring!.random_matrix_between_free_right_presentations_func( relations_degrees_of_syz, some_degrees );
+        
+        syz := syz * some_mat;
         
         u := CertainRows( syz, [ NrCols( m ) + 1 .. NrRows( syz ) ] );
         
-        U := AsGradedRightPresentation( u, generator_degrees_of_syz{ [ NrCols( m ) + 1 .. NrRows( syz ) ] } );
+        U := AsGradedRightPresentation( u, relations_degrees_of_m_y{[ NrCols( m ) + 1 .. NrRows( syz ) ]} );
         
         return GradedPresentationMorphism( U, y, M );
       
@@ -1635,7 +1590,8 @@ end );
 InstallGlobalFunction( TRY_TO_ENHANCE_HOMALG_GRADED_RING_WITH_RANDOM_FUNCTIONS,
     function( S )
       local R, D, indeterminates, degrees_of_indeterminates, random_matrix_between_free_left_or_right_presentations_func,
-        random_matrix_for_left_or_right_presentation_func, random_homogeneous_element_func;
+        random_matrix_for_left_or_right_presentation_func, auxiliary_degree_func, auxiliary_sum_of_degrees_func,
+        random_homogeneous_element_func, detect_generators_degrees_func, detect_relations_degrees_func;
       
       if not IsHomalgGradedRing( S ) then
       
@@ -1650,8 +1606,6 @@ InstallGlobalFunction( TRY_TO_ENHANCE_HOMALG_GRADED_RING_WITH_RANDOM_FUNCTIONS,
              return true;
              
       fi;
-      
-      TRY_TO_ENHANCE_HOMALG_RING_WITH_RANDOM_FUNCTIONS( S );
       
       R := UnderlyingNonGradedRing( S );
       
@@ -1730,6 +1684,94 @@ InstallGlobalFunction( TRY_TO_ENHANCE_HOMALG_GRADED_RING_WITH_RANDOM_FUNCTIONS,
           
           end;
         
+        auxiliary_degree_func :=
+          function( e )
+            
+            if IsZero( e ) then
+              
+              return fail;
+            
+            else
+              
+              return Degree( e );
+            
+            fi;
+        
+        end;
+        
+        auxiliary_sum_of_degrees_func :=
+          function( d1, d2 )
+            
+            if d1 = fail or d2 = fail then
+              
+              return fail;
+            
+            else
+              
+              return d1 + d2;
+            
+            fi;
+        
+        end;
+        
+        detect_relations_degrees_func := function( m, generators_degrees, left_or_right )
+          local degrees_of_entries, relations_degrees;
+          
+          if left_or_right = "left" then
+            
+            degrees_of_entries := List( EntriesOfHomalgMatrixAsListList( m ), L -> List( L, S!.auxiliary_degree_func ) );
+          
+          else
+            
+            degrees_of_entries := TransposedMat( List( EntriesOfHomalgMatrixAsListList( m ), L -> List( L, S!.auxiliary_degree_func ) ) );
+          
+          fi;
+          
+          relations_degrees := List( degrees_of_entries, L -> ListN( generators_degrees, L, S!.auxiliary_sum_of_degrees_func ) );
+          
+          relations_degrees := List( relations_degrees, L -> Set( Filtered( L, d -> d <> fail )  ) );
+          
+          relations_degrees := List( relations_degrees, function( L )
+                                                          if L = [  ] then
+                                                            return Degree( One( S ) );
+                                                          else
+                                                            return L[ 1 ]; # if m defines a well-defined presentation then at this moment Length( L ) should be 1.
+                                                          fi;
+                                                        end );
+          
+          return relations_degrees;
+        
+        end;
+        
+        detect_generators_degrees_func := function( m, relations_degrees, left_or_right )
+          local degrees_of_entries, generators_degrees;
+        
+          if left_or_right = "left" then
+            
+            degrees_of_entries := TransposedMat( List( EntriesOfHomalgMatrixAsListList( m ), L -> List( L, S!.auxiliary_degree_func ) ) );
+          
+          else
+            
+            degrees_of_entries := List( EntriesOfHomalgMatrixAsListList( m ), L -> List( L, S!.auxiliary_degree_func ) );
+          
+          fi;
+          
+          generators_degrees := List( degrees_of_entries, L -> ListN( -relations_degrees, L, S!.auxiliary_sum_of_degrees_func ) );
+          
+          generators_degrees := -List( generators_degrees, L -> Set( Filtered( L, d -> d <> fail )  ) );
+          
+          generators_degrees := List( generators_degrees, function( L )
+                                                            if L = [  ] then
+                                                              return Degree( One( S ) );
+                                                            else
+                                                              return L[ 1 ]; # if m defines a well-defined presentation then at this moment Length( L ) should be 1.
+                                                            fi;
+                                                          end );
+          
+          return generators_degrees;
+        
+        end;
+        
         if  ( Rank( DegreeGroup( S ) ) = 1 and
                 ( IsSubset( Set( [ 0, 1 ] ), Set( List( degrees_of_indeterminates, HomalgElementToInteger ) ) ) or
                     IsSubset( Set( [ 0, -1 ] ), Set( List( degrees_of_indeterminates, HomalgElementToInteger ) ) ) ) ) then
@@ -1737,13 +1779,7 @@ InstallGlobalFunction( TRY_TO_ENHANCE_HOMALG_GRADED_RING_WITH_RANDOM_FUNCTIONS,
           random_homogeneous_element_func :=
             function( degree )
               local mat, p, coeffs, r, l1, l2;
-              
-              if degree = Degree( Zero( S ) ) then
-                
-                return Zero( S );
-              
-              fi;
-              
+                        
               # To use the command RandomMatrixBetweenGradedFreeLeftModules, all degrees of the indeterminates should be contained in {0,1} or {0,-1}.
               mat := RandomMatrixBetweenGradedFreeLeftModules( [ degree ], [ 0 ], S );
               
@@ -1777,6 +1813,14 @@ InstallGlobalFunction( TRY_TO_ENHANCE_HOMALG_GRADED_RING_WITH_RANDOM_FUNCTIONS,
             
             S!.random_degrees := Set( Concatenation( List( D, Sum ), [ Degree( One( S ) ), Degree( Zero( S ) ) ] ) );
             
+            S!.auxiliary_degree_func := auxiliary_degree_func;
+            
+            S!.auxiliary_sum_of_degrees_func := auxiliary_sum_of_degrees_func;
+            
+            S!.detect_generators_degrees_func := detect_generators_degrees_func;
+            
+            S!.detect_relations_degrees_func := detect_relations_degrees_func;
+            
             S!.random_homogeneous_element_func := random_homogeneous_element_func;
             
             S!.random_matrix_between_free_left_presentations_func :=
@@ -1799,12 +1843,6 @@ InstallGlobalFunction( TRY_TO_ENHANCE_HOMALG_GRADED_RING_WITH_RANDOM_FUNCTIONS,
           random_homogeneous_element_func :=
             function( degree )
               local A, B, D, d, dD, ID, P, G, M;
-              
-              if degree = Degree( Zero( S ) ) then
-                
-                return Zero( S );
-              
-              fi;
               
               A := DegreeGroup( S );
               
@@ -1868,7 +1906,15 @@ InstallGlobalFunction( TRY_TO_ENHANCE_HOMALG_GRADED_RING_WITH_RANDOM_FUNCTIONS,
             Remove( D, 1 );
             
             S!.random_degrees := Set( Concatenation( List( D, Sum ), [ Degree( One( S ) ), Degree( Zero( S ) ) ] ) );
-           
+            
+            S!.auxiliary_degree_func := auxiliary_degree_func;
+            
+            S!.auxiliary_sum_of_degrees_func := auxiliary_sum_of_degrees_func;
+            
+            S!.detect_generators_degrees_func := detect_generators_degrees_func;
+            
+            S!.detect_relations_degrees_func := detect_relations_degrees_func;
+            
             S!.random_homogeneous_element_func := random_homogeneous_element_func;
             
             S!.random_matrix_between_free_left_presentations_func :=
