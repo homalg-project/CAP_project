@@ -275,8 +275,6 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
     
     AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByCospan );
     
-    DisableAddForCategoricalOperations( generalized_morphism_category );
-    
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
     SetUnderlyingHonestCategory( generalized_morphism_category, category );

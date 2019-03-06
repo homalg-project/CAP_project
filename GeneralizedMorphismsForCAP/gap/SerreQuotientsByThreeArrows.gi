@@ -385,8 +385,6 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
     
     AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryByThreeArrowsMorphism );
     
-    DisableAddForCategoricalOperations( serre_category );
-    
     serre_category!.predicate_logic := category!.predicate_logic;
     
     SetFilterObj( serre_category, WasCreatedAsSerreQuotientCategoryByThreeArrows );

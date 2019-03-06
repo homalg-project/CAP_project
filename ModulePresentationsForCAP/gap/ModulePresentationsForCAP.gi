@@ -85,8 +85,6 @@ InstallMethod( RightPresentations,
     
     category := CreateCapCategory( Concatenation( "Category of right presentations of ", RingName( ring ) ) );
     
-    DisableAddForCategoricalOperations( category );
-    
     AddObjectRepresentation( category, IsRightPresentation );
     
     AddMorphismRepresentation( category, IsRightPresentationMorphism );

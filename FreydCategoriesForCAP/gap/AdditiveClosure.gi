@@ -37,8 +37,6 @@ InstallMethod( AdditiveClosure,
     
     AddMorphismRepresentation( category, IsAdditiveClosureMorphism );
     
-    DisableAddForCategoricalOperations( category );
-    
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
     
     Finalize( category );
