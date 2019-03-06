@@ -241,7 +241,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         [ function( morphism_1, morphism_2 )
             local composition;
             
-            composition := UnderlyingMatrix( morphism_1 ) * UnderlyingMatrix( morphism_2 );
+            composition := UnderlyingMatrix( morphism_2 ) * UnderlyingMatrix( morphism_1 );
             
             return CategoryOfColumnsMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
             
