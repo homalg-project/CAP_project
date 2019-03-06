@@ -59,8 +59,8 @@ UnzipDegreeList( Object2R );
 #! degree list, then in order to make sure that the kernel embedding is a mapping of graded modules, rows/columns
 #! of the matrix $N$ would have to be shuffled. The latter we do not wish to perform.
 
-#! Nevertheless, the 'IsEqualForObjects' methods returns true whenever two projective modules are isomorphic. So
-#! in particular it returns true, if the degree lists are mere permutations of one another. Here is an example.
+#! Note that the 'IsEqualForObjects' methods returns true whenever two projective modules are identical. So
+#! in particular it returns false, if the degree lists are mere permutations of one another. Here is an example.
 
 #! @Example
 
@@ -68,12 +68,12 @@ Object2LShuffle := GradedRow( [ [[0,1],1],
            [[1,0],2],[[0,1],1],[[1,0],4] ], S );
 #! <A graded row of rank 8>
 IsEqualForObjects( Object2L, Object2LShuffle );
-#! true
+#! false
 Object2RShuffle := GradedColumn( [ [[0,1],1],
            [[1,0],2],[[0,1],1],[[1,0],4] ], S );
 #! <A graded column of rank 8>
 IsEqualForObjects( Object2R, Object2RShuffle );
-#! true
+#! false
 
 #! @EndExample
 
