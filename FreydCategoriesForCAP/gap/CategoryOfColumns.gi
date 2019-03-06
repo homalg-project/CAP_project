@@ -196,7 +196,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
           
           return false;
           
-        elif NrColumns( UnderlyingMatrix( morphism ) ) <> RankOfObject( Range( morphism ) ) then
+        elif NrRows( UnderlyingMatrix( morphism ) ) <> RankOfObject( Range( morphism ) ) then
           
           return false;
           
