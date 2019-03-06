@@ -113,9 +113,9 @@ InstallMethod( CategoryOfColumnsMorphism,
       
     fi;
     
-    if NrColumns( homalg_matrix ) <> RankOfObject( range ) then
+    if NrRows( homalg_matrix ) <> RankOfObject( range ) then
       
-      return Error( "the number of columns has to be equal to the rank of the range" );
+      return Error( "the number of rows has to be equal to the rank of the range" );
       
     fi;
     
