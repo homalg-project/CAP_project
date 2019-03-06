@@ -405,7 +405,7 @@ InstallGlobalFunction( ApplyFunctor,
                
   function( arg )
     local functor, arguments, is_object, cache, cache_return, computed_value,
-          source_list, source_value, range_list, range_value, i, tmp, category;
+          source_list, source_value, range_list, range_value, i, tmp, range_category;
     
     functor := arg[ 1 ];
     
@@ -426,9 +426,26 @@ InstallGlobalFunction( ApplyFunctor,
          arguments[ 1 ] := Opposite( arguments[ 1 ] );
     fi;
     
+    range_category := AsCapCategory( Range( functor ) );
+    
     if IsCapCategoryObject( arguments[ 1 ] ) then
         
         computed_value := CallFuncList( FunctorObjectOperation( functor ), arguments );
+
+        if range_category!.output_sanity_check_level > 0 then
+            if not IsCapCategoryObject( computed_value ) then
+                Error( Concatenation("the result of the object function of the functor \"", Name(functor), "\" does not lie in the IsCapCategoryObject filter." ) );
+            fi;
+            if HasCapCategory( computed_value ) then
+                if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
+                    Error( Concatenation( "the category of the result of the object function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
+                fi;
+            else
+                if not range_category!.add_primitive_output then
+                    Error( Concatenation("the result of the object function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
+                fi;
+            fi;
+        fi;
         
     elif IsCapCategoryMorphism( arguments[ 1 ] ) then
         
@@ -449,18 +466,31 @@ InstallGlobalFunction( ApplyFunctor,
         range_value := CallFuncList( ApplyFunctor, Concatenation( [ functor ], range_list ) );
         
         computed_value := CallFuncList( FunctorMorphismOperation( functor ), Concatenation( [ source_value ], arguments, [ range_value ] ) );
-        
+
+        if range_category!.output_sanity_check_level > 0 then
+            if not IsCapCategoryMorphism( computed_value ) then
+                Error( Concatenation("the result of the morphism function of the functor \"", Name(functor), "\" does not lie in the IsCapCategoryMorphism filter." ) );
+            fi;
+            if HasCapCategory( computed_value ) then
+                if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
+                    Error( Concatenation( "the category of the result of the morphism function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
+                fi;
+            else
+                if not range_category!.add_primitive_output then
+                    Error( Concatenation("the result of the morphism function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
+                fi;
+            fi;
+        fi;
+
     else
         
         Error( "Second argument of ApplyFunctor must be a category cell" );
         
     fi;
     
-    category := AsCapCategory( Range( functor ) );
-    
-    if category!.add_primitive_output then
+    if range_category!.add_primitive_output then
         
-        Add( category, computed_value );
+        Add( range_category, computed_value );
         
     fi;
     

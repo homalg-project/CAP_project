@@ -334,25 +334,41 @@ DeclareGlobalFunction( "DeactivateCachingOfCategory" );
 
 ####################################
 ##
-#! @Section Type check
+#! @Section Sanity checks
 ##
 ####################################
 
 #! @BeginGroup
 #! @Description
-#!  Most operations have prefunctions, that perform additional checks on
-#!  the arguments. The checks can either be partial (enabled by default),
-#!  full, or disabled. With the following commands you can either
-#!  enable the full checks, just the basic checks, or, for performance,
-#!  disable the checks alltogether.
+#!  Most operations can perform optional sanity checks on their arguments and results.
+#!  The checks can either be partial (set by default), full, or disabled.
+#!  With the following commands you can either enable the full checks, the partial checks or, for performance, disable the checks altogether.
+#!  You can do this for input checks, output checks or for both at once.
 #! @Arguments category
-DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
-DeclareGlobalFunction( "EnablePartialBasicOperationTypeCheck" );
-DeclareGlobalFunction( "EnableFullBasicOperationTypeCheck" );
+DeclareGlobalFunction( "DisableInputSanityChecks" );
+#! @Arguments category
+DeclareGlobalFunction( "DisableOutputSanityChecks" );
+#! @Arguments category
+DeclareGlobalFunction( "EnablePartialInputSanityChecks" );
+#! @Arguments category
+DeclareGlobalFunction( "EnablePartialOutputSanityChecks" );
+#! @Arguments category
+DeclareGlobalFunction( "EnableFullInputSanityChecks" );
+#! @Arguments category
+DeclareGlobalFunction( "EnableFullOutputSanityChecks" );
+#! @Arguments category
+DeclareGlobalFunction( "DisableSanityChecks" );
+#! @Arguments category
+DeclareGlobalFunction( "EnablePartialSanityChecks" );
+#! @Arguments category
+DeclareGlobalFunction( "EnableFullSanityChecks" );
 #! @EndGroup
 
 ## Undocumented, but kept for compatibility
-BindGlobal( "EnableBasicOperationTypeCheck", EnablePartialBasicOperationTypeCheck );
+DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnablePartialBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnableFullBasicOperationTypeCheck" );
+DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
 
 #############################################
 ##
@@ -368,6 +384,7 @@ BindGlobal( "EnableBasicOperationTypeCheck", EnablePartialBasicOperationTypeChec
 #!  are added to the category by their constructors.
 #! @Arguments C
 DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
+#! @Arguments C
 DeclareGlobalFunction( "EnableAddForCategoricalOperations" );
 #! @EndGroup
 

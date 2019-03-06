@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "FreydCategoriesForCAP",
 Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
 Version := Maximum( [
-  "2018.01.08", ## Sepp's version
+  "2019.02.27", ## Sepp's version
   ## this line prevents merge conflicts
   "2018.08.02", ## Mohamed's version
 ] ),
@@ -74,9 +74,8 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2018.08.02" ],
+                           [ "CAP", ">= 2019.02.26" ],
                            [ "MatricesForHomalg", ">= 2017.05.24" ],
-                           [ "Bialgebroids", ">= 2017.06.13-4" ],
                            [ "LinearAlgebraForCAP", ">= 2017.12.30" ]
                          ],
   SuggestedOtherPackages := [ ],
