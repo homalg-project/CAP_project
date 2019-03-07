@@ -178,7 +178,7 @@ DeclareOperation( "MakeDerivationGraph", [ IsDenseList ] );
 
 
 #! @Description Adds a list of operation names <A>operations</A> to a given derivation graph <A>graph</A>.
-#!  This is used in extensions of CAP which want to have their own primitive operations,
+#!  This is used in extensions of CAP which want to have their own basic operations,
 #!  but do not want to pollute the CAP kernel any more. Please use it with caution. If
 #!  a weight list/category was created before it will not be aware of the operations.
 #! @Arguments graph, operations
