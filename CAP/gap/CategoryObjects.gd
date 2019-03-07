@@ -89,13 +89,14 @@ DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
 ###################################
 
 #! @Description
-#! The argument is a category $C$ and an integer $n$.
-#! The output is a random object in $C$. The integer $n$
+#! The arguments are a category $C$ and an integer $n$.
+#! The output is a random object in $C$ or <C>fail</C>. The integer $n$
 #! indicates the degree of complexity of the created object and
 #! its interpretation differs from one category to another. 
 #! For example, in the category of vector spaces, $n$ can indicate that
-#! the created random object should have dimension less or equal to $n$.
-#! @Returns an object
+#! the created random object should have dimension less or equal to $n$, hence
+#! the output should be <C>fail</C> for $n&lt;0$.
+#! @Returns an object or <C>fail</C>
 #! @Arguments C, n
 DeclareOperation( "RandomObject",
                   [ IsCapCategory, IsInt ] );

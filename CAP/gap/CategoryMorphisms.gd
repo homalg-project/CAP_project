@@ -73,12 +73,13 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 
 #! @Description
 #! The arguments are two objects $a$ and $b$ in a category $C$ and an integer $n$.
-#! The output is a random morphism $\alpha: a \rightarrow b$ in $C$.
+#! The output is a random morphism $\alpha: a \rightarrow b$ in $C$ or <C>fail</C>.
 #! The integer $n$ indicates the degree of complexity of the created morphism
 #! $\alpha$ and its interpretation differs from one category to another.
 #! For example in the category of rational vector spaces, $n$ can indicate that 
-#! all entries of the matrix of $f$ are less or equal to $n$.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! all entries of the matrix of $\alpha$ are less or equal to $n$, hence the output
+#! in this case can never be <C>fail</C>.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
 #! @Arguments a, b, n
 DeclareOperation( "RandomMorphismWithFixedSourceAndRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsInt ] );
@@ -87,7 +88,8 @@ DeclareOperation( "RandomMorphismWithFixedSourceAndRange",
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>RandomMorphismWithFixedSourceAndRange</C>.
-#! The function $F$ maps $(a,b,n)$ to a random morphism in $C$ from $a$ to $b$.
+#! The function $F$ maps $(a,b,n)$ to <C>fail</C> or to a random morphism in $C$ 
+#! from $a$ to $b$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddRandomMorphismWithFixedSourceAndRange",
@@ -103,22 +105,24 @@ DeclareOperation( "AddRandomMorphismWithFixedSourceAndRange",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! The argument is an object $a$ in a category $C$ and an integer $n$.
-#! The output is a random morphism $\alpha: a \rightarrow b$ for some object $b$ in $C$.
-#! The integer $n$ indicates the degree of complexity of the created morphism
-#! $\alpha$ and its interpretation differs from one category to another.
-#! For example in the category of vector spaces, $n$ can indicate the dimension of
-#! the range $b$.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! The arguments are an object $a$ in a category $C$ and an integer $n$.
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object 
+#! $b$ in $C$ or <C>fail</C>. The integer $n$ indicates the degree of complexity 
+#! of the created morphism $\alpha$ and its interpretation differs from one 
+#! category to another. For example in the category of vector spaces, $n$
+#! can indicate the dimension of the range $b$, hence the output should be
+#! <C>fail</C> for $n&lt;0$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
 #! @Arguments a, n
 DeclareOperation( "RandomMorphismWithFixedSource",
                   [ IsCapCategoryObject, IsInt ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>RandomMorphismWithFixedSource</C>.
-#! The function $F$ maps $(a,n)$ to a random morphism in $C$ whose source is $a$.
+#! The function $F$ maps $(a,n)$ to <C>fail</C> or to a random morphism in 
+#! $C$ whose source is $a$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddRandomMorphismWithFixedSource",
@@ -134,22 +138,24 @@ DeclareOperation( "AddRandomMorphismWithFixedSource",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! The argument is an object $b$ in a category $C$ and an integer $n$.
-#! The output is a random morphism $\alpha: a \rightarrow b$ for some object $a$ in $C$.
-#! The integer $n$ indicates the degree of complexity of the created morphism
-#! $\alpha$ and its interpretation differs from one category to another.
-#! For example in the category of vector spaces, $n$ can indicate the dimension of
-#! the source $a$.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! The arguments are an object $b$ in a category $C$ and an integer $n$.
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object 
+#! $a$ in $C$ or <C>fail</C>. The integer $n$ indicates the degree of complexity 
+#! of the created morphism $\alpha$ and its interpretation differs from one 
+#! category to another. For example in the category of vector spaces, $n$ can 
+#! indicate the dimension of the source $a$, hence the output should be <C>fail</C>
+#! for $n&lt;0$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
 #! @Arguments b, n
 DeclareOperation( "RandomMorphismWithFixedRange",
                   [ IsCapCategoryObject, IsInt ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>RandomMorphismWithFixedRange</C>.
-#! The function $F$ maps $(b,n)$ to a random morphism in $C$ whose range is $b$.
+#! The function $F$ maps $(b,n)$ to <C>fail</C> or to a random morphism in 
+#! $C$ whose range is $b$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddRandomMorphismWithFixedRange",
@@ -166,20 +172,21 @@ DeclareOperation( "AddRandomMorphismWithFixedRange",
 
 #! @Description
 #! The arguments are a category $C$ and an integer $n$.
-#! The output is a random morphism in $C$. Again $n$ indicates the degree of
-#! complexity of the created morphism. If the methods <C>RandomObject</C> and
+#! The output is a random morphism in $C$ or <C>fail</C>.
+#! Again $n$ indicates the degree of complexity of the created morphism.
+#! If the methods <C>RandomObject</C> and 
 #! <C>RandomMorphismWithFixedSource</C>(<C>RandomMorphismWithFixedRange</C>)
 #! are installed for the category $C$, then <C>RandomMorphism</C> can be
 #! derived to return a random morphism of complexity $n$ with random
 #! source(range) of complexity $n$.
-#! @Returns a morphism
+#! @Returns a morphism or <C>fail</C>
 #! @Arguments C, n
 DeclareOperation( "RandomMorphism",
                   [ IsCapCategory, IsInt ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>RandomMorphism</C>.
 #! $F: (C,n) \mapsto \mathtt{RandomMorphism}( C, n )$.
 #! @Returns nothing
