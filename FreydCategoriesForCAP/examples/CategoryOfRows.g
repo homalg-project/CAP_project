@@ -1,14 +1,11 @@
-#################################################################
-#################################################################
-#! @Chapter Examples on category of rows
-#################################################################
-#################################################################
+#! @Chapter Example on category of rows
 
 LoadPackage( "FreydCategoriesForCAP" );;
-
+LoadPackage( "RingsForHomalg" );
 
 #####################################
 #! @Section Constructors of objects
+#####################################
 
 #! @Example
 S := HomalgRingOfIntegers();
