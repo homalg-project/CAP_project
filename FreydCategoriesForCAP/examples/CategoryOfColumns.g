@@ -53,7 +53,7 @@ Display( UnderlyingMatrix( mor ) );
 
 #! @Example
 ZeroObject( cols );
-#! A column module over Z of rank 0
+#! <A column module over Z of rank 0>
 obj5 := CategoryOfColumnsObject( 2, cols );
 #! <A column module over Z of rank 2>
 Display( ZeroMorphism( ZeroObject( cols ), obj5 ) );
@@ -67,7 +67,7 @@ Display( IdentityMorphism( obj6 ) );
 #! 
 #! An identity morphism in Columns( Z )
 directSum := DirectSum( [ obj5, obj6 ] );
-#! <A graded column of rank 3>
+#! <A column module over Z of rank 3>
 Display( directSum );
 #! A column module over Z of rank 3
 i1 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 1 );
@@ -129,25 +129,25 @@ Display( mor1 );
 #! 
 #! A morphism in Columns( Z )
 mor2 := IdentityMorphism( obj6 );
-#! <A morphism in Columns( Z )>
+#! <An identity morphism in Columns( Z )>
 Display( mor2 );
 #! [ [  1 ] ]
 #! 
-#! A morphism in Columns( Z )
+#! An identity morphism in Columns( Z )
 lift := Lift( mor1, mor2 );
-#! A morphism in Columns( Z )
+#! <A morphism in Columns( Z )>
 Display( lift );
 #! [ [  1,  2 ] ]
 #! 
 #! A morphism in Columns( Z )
 source := CategoryOfColumnsObject( 1, cols );
-#! A column module of over Z of rank 1
+#! <A column module over Z of rank 1>
 range := CategoryOfColumnsObject( 2, cols );
-#! A column module of over Z of rank 2
+#! <A column module over Z of rank 2>
 mor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], S ), range );
-#! A morphism in Columns( Z )
+#! <A morphism in Columns( Z )>
 colift := Colift( mor2, mor );
-#! A morphism in Columns( Z )
+#! <A morphism in Columns( Z )>
 Display( colift );
 #! [ [  2 ],
 #!   [  3 ] ]

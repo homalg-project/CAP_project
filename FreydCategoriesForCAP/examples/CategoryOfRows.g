@@ -39,8 +39,7 @@ Display( Source( mor ) );
 Display( Range( mor ) );
 #! A row module over Z of rank 2
 Display( UnderlyingMatrix( mor ) );
-#! [ [  1 ],
-#!   [  2 ] ]
+#! [ [  1, 2 ] ]
 #! @EndExample
 
 
@@ -53,11 +52,11 @@ Display( UnderlyingMatrix( mor ) );
 
 #! @Example
 ZeroObject( rows );
-#! A row module over Z of rank 0
+#! <A row module over Z of rank 0>
 obj5 := CategoryOfRowsObject( 2, rows );
 #! <A row module over Z of rank 2>
 Display( ZeroMorphism( ZeroObject( rows ), obj5 ) );
-#! (an empty 2 x 0 matrix)
+#! (an empty 0 x 2 matrix)
 #! 
 #! A zero, split monomorphism in Rows( Z )
 obj6 := CategoryOfRowsObject( 1, rows );
@@ -67,7 +66,7 @@ Display( IdentityMorphism( obj6 ) );
 #! 
 #! An identity morphism in Rows( Z )
 directSum := DirectSum( [ obj5, obj6 ] );
-#! <A graded row of rank 3>
+#! <A row module over Z of rank 3>
 Display( directSum );
 #! A row module over Z of rank 3
 i1 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 1 );
@@ -128,25 +127,25 @@ Display( mor1 );
 #! 
 #! A morphism in Rows( Z )
 mor2 := IdentityMorphism( obj6 );
-#! <A morphism in Rows( Z )>
+#! <An identity morphism in Rows( Z )>
 Display( mor2 );
 #! [ [  1 ] ]
 #! 
-#! A morphism in Rows( Z )
+#! An identity morphism in Rows( Z )
 lift := Lift( mor1, mor2 );
-#! A morphism in Rows( Z )
+#! <A morphism in Rows( Z )>
 Display( lift );
 #! [ [  1 ], [ 2 ] ]
 #! 
 #! A morphism in Rows( Z )
 source := CategoryOfRowsObject( 1, rows );
-#! A row module of over Z of rank 1
+#! <A row module over Z of rank 1>
 range := CategoryOfRowsObject( 2, rows );
-#! A row module of over Z of rank 2
+#! <A row module over Z of rank 2>
 mor := CategoryOfRowsMorphism( source, HomalgMatrix( [[ 2, 3 ]], S ), range );
-#! A morphism in Rows( Z )
+#! <A morphism in Rows( Z )>
 colift := Colift( mor2, mor );
-#! A morphism in Rows( Z )
+#! <A morphism in Rows( Z )>
 Display( colift );
 #! [ [  2, 3 ] ]
 #!
