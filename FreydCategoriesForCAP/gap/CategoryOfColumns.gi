@@ -504,17 +504,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     ##
     AddLift( category,
       function( alpha, beta )
-        local right_divide;
+        local left_divide;
         
-        right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        left_divide := LeftDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) );
         
-        if right_divide = fail then
+        if left_divide = fail then
           
           return fail;
           
         fi;
         
-        return CategoryOfColumnsMorphism( Source( alpha ), right_divide, Source( beta ) );
+        return CategoryOfColumnsMorphism( Source( alpha ), left_divide, Source( beta ) );
         
     end );
     
