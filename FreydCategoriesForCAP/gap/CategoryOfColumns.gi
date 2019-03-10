@@ -425,15 +425,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         rank_post := Sum( object_list{ [ injection_number + 1 .. number_of_objects ] }, c -> RankOfObject( c ) );
         
         rank_cofactor := RankOfObject( object_list[ injection_number ] );
-        
-        injection_of_cofactor := HomalgZeroMatrix( rank_cofactor, rank_pre ,ring );
-        
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                             HomalgIdentityMatrix( rank_cofactor, ring ) );
-        
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                             HomalgZeroMatrix( rank_cofactor, rank_post, ring ) );
-        
+
+        # now construct the mapping matrix
+        injection_of_cofactor := HomalgZeroMatrix( rank_pre, rank_cofactor, ring );
+
+        injection_of_cofactor := Iterated( [ injection_of_cofactor,
+                                             HomalgIdentityMatrix( rank_cofactor, ring ) ],
+                                            UnionOfRows );
+        injection_of_cofactor := Iterated( [ injection_of_cofactor,
+                                             HomalgZeroMatrix( rank_post, rank_cofactor, ring ) ],
+                                            UnionOfRows );
+
         return CategoryOfColumnsMorphism( object_list[ injection_number ], injection_of_cofactor, coproduct );
 
     end );
