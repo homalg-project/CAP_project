@@ -7,10 +7,8 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 
 
-
-#################################################################
-#! @Section Constructors of objects and reduction of degree lists
-#################################################################
+#####################################
+#! @Section Constructors of objects
 
 #! @Example
 S := HomalgRingOfIntegers();
@@ -53,7 +51,7 @@ Display( UnderlyingMatrix( mor ) );
 
 
 ########################################################################
-#! @Section A few categorical constructions for projective right modules
+#! @Section A few categorical constructions for category of columns
 ########################################################################
 
 #! @Example
@@ -172,7 +170,9 @@ po := WeakBiPushout( mor, mor2 );
 inj_push := InjectionOfBiasedWeakPushout( mor, mor2 );
 #! <A morphism in Columns( Z )>
 Display( inj_push );
+#! [ [  -3,   2 ],
+#!   [   1,  -1 ] ]
+#! 
+#! A morphism in Columns( Z )
 
 #! @EndExample
-
-#Implement tensor product, internal hom, fibre product and pushout (projection, injections) for this category?
