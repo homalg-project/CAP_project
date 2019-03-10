@@ -113,26 +113,35 @@ Display( k );
 #! 
 #! A morphism in Columns( Z )
 ck := WeakCokernelProjection( k );
-#! 
+#! <A morphism in Columns( Z )>
 Display( ck );
+#! [ [   0,   1,   0 ],
+#!   [  -1,   0,   0 ] ]
 #! 
+#! A morphism in Columns( Z )
+IsMonomorphism( k );
+#! true
+IsEpimorphism( k );
+#! false
+IsMonomorphism( ck );
+#! false
+IsEpimorphism( ck );
+#! true
+mor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], S ), obj6 );
+#! <A morphism in Columns( Z )>
+Display( mor1 );
+#! [ [  1,  2 ] ]
+#! 
+#! A morphism in Columns( Z )
+mor2 := IdentityMorphism( obj6 );
+#! <A morphism in Columns( Z )>
+Display( mor2 );
+#! [ [  1 ] ]
+#! 
+#! A morphism in Columns( Z )
+
 Error( "Test" );
 
-IsMonomorphism( kR );
-#! true
-IsEpimorphism( kR );
-#! false
-IsMonomorphism( ckR );
-#! false
-IsEpimorphism( ckR );
-#! true
-m1R := GradedRowOrColumnMorphism( O1R, 
-      HomalgMatrix( [[ "x_1", "x_2" ]], S ), O2R );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
-m2R := IdentityMorphism( O2R );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 liftR := Lift( m1R, m2R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
