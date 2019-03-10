@@ -154,7 +154,7 @@ categoryR := CapCategory( Q1R );
 
 
 #######################################################################
-#! @Section A few categorical constructions for projective left modules
+#! @Section A few categorical constructions for graded rows
 #######################################################################
 
 #! @Example
@@ -337,7 +337,7 @@ Display( InternalHomOnObjects( ObjectL, ObjectL ) );
 
 
 ########################################################################
-#! @Section A few categorical constructions for projective right modules
+#! @Section A few categorical constructions for graded columns
 ########################################################################
 
 #! @Example
