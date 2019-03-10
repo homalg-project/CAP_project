@@ -158,41 +158,27 @@ Display( colift );
 #!   [  3 ] ]
 #!
 #! A morphism in Columns( Z )
-fp := FiberProduct( [ mor1, mor2, IdentityMorphism( Range( mor2 ) ) ] );
+fp := WeakBiFiberProduct( mor1, mor2 );
+#! <A column module over Z of rank 2>
+fp_proj := ProjectionOfBiasedWeakFiberProduct( mor1, mor2 );
+#! <A morphism in Columns( Z )>
+Display( fp_proj );
+#! [ [  -2,  -1 ],
+#!   [   1,   0 ] ]
+#! 
+#! A morphism in Columns( Z )
+po := WeakBiPushout( mor, mor2 );
+#! <A column module over Z of rank 2>
+inj_push := InjectionOfBiasedWeakPushout( mor, mor2 );
+#! <A morphism in Columns( Z )>
+Display( inj_push );
+
 
 Error( "Test" );
 
-fpR := FiberProduct( [ m1R, m2R, IdentityMorphism( Range( m2R ) ) ] );
-#! <A graded column of rank 2>
-fp_proj1R := ProjectionInFactorOfFiberProduct( [ m1R, m2R ], 1 );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( fp_proj1R ) );
-#! 1,0,
-#! 0,1 
-#! (over a graded ring)
-fp_proj2R := ProjectionInFactorOfFiberProduct( [ m1R, m2R ], 2 );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( fp_proj2R ) );
-#! x_1, x_2
-#! (over a graded ring)
-poR := Pushout( morR, m2R );
-#! <A graded column of rank 2>
-inj1R := InjectionOfCofactorOfPushout( [ morR, m2R ], 1 );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( inj1R ) );
-#! 1,0,
-#! 0,1 
-#! (over a graded ring)
-inj2R := InjectionOfCofactorOfPushout( [ morR, m2R ], 2 );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( inj2R ) );
-#! x_1,
-#! x_2
-#! (over a graded ring)
+
+
+
 tensorProductR := TensorProductOnObjects( O1R, O2R );
 #! <A graded column of rank 2>
 Display( tensorProductR );
