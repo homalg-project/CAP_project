@@ -262,7 +262,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         [ function( left_morphism, zero_morphism )
             
             return CategoryOfColumnsMorphism( Source( left_morphism ),
-                                        HomalgZeroMatrix( NrColumns( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
+                                        HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), 
+                                        NrColumns( UnderlyingMatrix( left_morphism ) ), ring ),
                                         Range( zero_morphism ) );
           
           end, [ , IsZeroForMorphisms ] ],
@@ -270,7 +271,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         [ function( zero_morphism, right_morphism )
             
             return CategoryOfColumnsMorphism( Source( zero_morphism ),
-                                           HomalgZeroMatrix( NrColumns( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), ring ),
+                                           HomalgZeroMatrix( NrRows( UnderlyingMatrix( right_morphism ) ), 
+                                           NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
                                            Range( right_morphism ) );
           
           end, [ IsZeroForMorphisms, ] ],
