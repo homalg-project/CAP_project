@@ -139,21 +139,22 @@ Display( mor2 );
 #! [ [  1 ] ]
 #! 
 #! A morphism in Columns( Z )
+lift := Lift( mor1, mor2 );
+#! A morphism in Columns( Z )
+Display( lift );
+#! [ [  1,  2 ] ]
+#! 
+#! A morphism in Columns( Z )
+source := CategoryOfColumnsObject( 1, cols );
+#! A column module of over Z of rank 1
+range := CategoryOfColumnsObject( 2, cols );
+#! A column module of over Z of rank 2
+mor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], S ), range );
+#! A morphism in Columns( Z )
+coliftR := Colift( mor2, mor );
 
 Error( "Test" );
 
-liftR := Lift( m1R, m2R );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( liftR ) );
-#! x_1,x_2
-#! (over a graded ring)
-O3R := GradedColumn( [ [[-1,0],2] ], S );
-#! <A graded column of rank 2>
-morR := GradedRowOrColumnMorphism( 
-       O2R, HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), O3R );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 coliftR := Colift( m2R, morR );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
