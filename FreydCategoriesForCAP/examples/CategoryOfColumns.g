@@ -151,17 +151,17 @@ range := CategoryOfColumnsObject( 2, cols );
 #! A column module of over Z of rank 2
 mor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], S ), range );
 #! A morphism in Columns( Z )
-coliftR := Colift( mor2, mor );
+colift := Colift( mor2, mor );
+#! A morphism in Columns( Z )
+Display( colift );
+#! [ [  2 ],
+#!   [  3 ] ]
+#!
+#! A morphism in Columns( Z )
+fp := FiberProduct( [ mor1, mor2, IdentityMorphism( Range( mor2 ) ) ] );
 
 Error( "Test" );
 
-coliftR := Colift( m2R, morR );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( coliftR ) );
-#! x_1,
-#! x_2
-#! (over a graded ring)
 fpR := FiberProduct( [ m1R, m2R, IdentityMorphism( Range( m2R ) ) ] );
 #! <A graded column of rank 2>
 fp_proj1R := ProjectionInFactorOfFiberProduct( [ m1R, m2R ], 1 );
