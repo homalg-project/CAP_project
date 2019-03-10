@@ -92,37 +92,32 @@ Display( i2 );
 #! 
 #! A morphism in Columns( Z )
 proj1 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 1 );
-
+#! <A morphism in Columns( Z )>
+Display( proj1 );
+#! [ [  1,  0,  0 ],
+#!   [  0,  1,  0 ] ]
+#! 
+#! A morphism in Columns( Z )
+proj2 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 2 );
+#! <A morphism in Columns( Z )>
+Display( proj2 );
+#! [ [  0,  0,  1 ] ]
+#! 
+#! A morphism in Columns( Z )
+k := WeakKernelEmbedding( proj1 );
+#! <A morphism in Columns( Z )>
+Display( k );
+#! [ [  0 ],
+#!   [  0 ],
+#!   [  1 ] ]
+#! 
+#! A morphism in Columns( Z )
+ck := WeakCokernelProjection( k );
+#! 
+Display( ck );
+#! 
 Error( "Test" );
 
-proj1R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 1 );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( proj1R ) );
-#! 1,0,0,
-#! 0,1,0
-#! (over a graded ring)
-proj2R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 2 );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( proj2R ) );
-#! 0,0,1
-#! (over a graded ring)
-kR := WeakKernelEmbedding( proj1R );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( kR ) );
-#! 0,
-#! 0,
-#! 1
-#! (over a graded ring)
-ckR := WeakCokernelProjection( kR );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( ckR ) );
-#! 1,0,0,
-#! 0,1,0
-#! (over a graded ring)
 IsMonomorphism( kR );
 #! true
 IsEpimorphism( kR );
