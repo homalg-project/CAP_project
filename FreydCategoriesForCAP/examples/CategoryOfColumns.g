@@ -76,26 +76,25 @@ directSum := DirectSum( [ obj5, obj6 ] );
 Display( directSum );
 #! A column module over Z of rank 3
 i1 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 1 );
+#! <A morphism in Columns( Z )>
+Display( i1 );
+#! [ [  1,  0 ],
+#!   [  0,  1 ],
+#!   [  0,  0 ] ]
+#! 
+#! A morphism in Columns( Z )
+i2 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 2 );
+#! <A morphism in Columns( Z )>
+Display( i2 );
+#! [ [  0 ],
+#!   [  0 ],
+#!   [  1 ] ]
+#! 
+#! A morphism in Columns( Z )
+proj1 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 1 );
 
 Error( "Test" );
 
-
-i1R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 1 );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( i1R ) );
-#! 1,0,
-#! 0,1,
-#! 0,0
-#! (over a graded ring)
-i2R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 2 );
-#! <A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>
-Display( UnderlyingHomalgMatrix( i2R ) );
-#! 0,
-#! 0,
-#! 1
-#! (over a graded ring)
 proj1R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 1 );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
