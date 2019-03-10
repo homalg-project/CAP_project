@@ -638,8 +638,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             fi;
             
             underlying_matrix := UnderlyingMatrix( morphism );
-            
-            underlying_matrix := Iterated( List( [ 1 .. nr_rows ], i -> CertainRows( underlying_matrix, [ ((i - 1) * nr_columns + 1) .. i * nr_columns ] ) ), UnionOfColumns );
+
+            underlying_matrix := Iterated( List( [ 1 .. nr_columns ], i -> CertainRows( underlying_matrix, [ ((i - 1) * nr_rows + 1) .. i * nr_rows ] ) ), UnionOfColumns );
             
             return CategoryOfColumnsMorphism( A, underlying_matrix, B );
             
