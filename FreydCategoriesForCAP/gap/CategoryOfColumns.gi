@@ -78,7 +78,7 @@ InstallMethod( AsCategoryOfColumnsMorphism,
     
     source := CategoryOfColumnsObject( NrColumns( homalg_matrix ), category );
     
-    range := CategoryOfColumnsObject( NrColumns( homalg_matrix ), category );
+    range := CategoryOfColumnsObject( NrRows( homalg_matrix ), category );
     
     return CategoryOfColumnsMorphism( source, homalg_matrix, range );
     
@@ -312,7 +312,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( source, range )
         
         return CategoryOfColumnsMorphism( source,
-                                       HomalgZeroMatrix( RankOfObject( source ), RankOfObject( range ), ring ),
+                                       HomalgZeroMatrix( RankOfObject( range ), RankOfObject( source ), ring ),
                                        range );
         
     end );
@@ -329,8 +329,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
       function( sink, zero_object )
         local morphism;
-        
-        morphism := CategoryOfColumnsMorphism( sink, HomalgZeroMatrix( RankOfObject( sink ), 0, ring ), zero_object );
+
+        morphism := CategoryOfColumnsMorphism( sink, HomalgZeroMatrix( 0, RankOfObject( sink ), ring ), zero_object );
         
         return morphism;
         
@@ -340,8 +340,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
       function( source, zero_object )
         local morphism;
-        
-        morphism := CategoryOfColumnsMorphism( zero_object, HomalgZeroMatrix( 0, RankOfObject( source ), ring ), source );
+
+        morphism := CategoryOfColumnsMorphism( zero_object, HomalgZeroMatrix( RankOfObject( source ), 0, ring ), source );
         
         return morphism;
         
