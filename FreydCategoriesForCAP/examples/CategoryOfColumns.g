@@ -174,3 +174,5 @@ inj_push := InjectionOfBiasedWeakPushout( mor, mor2 );
 Display( inj_push );
 
 #! @EndExample
+
+#Implement tensor product, internal hom, fibre product and pushout (projection, injections) for this category?
