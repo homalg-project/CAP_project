@@ -540,17 +540,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     ##
     AddColift( category,
       function( alpha, beta )
-        local left_divide;
+        local right_divide;
         
-        left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        right_divide := RightDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) );
         
-        if left_divide = fail then
+        if right_divide = fail then
           
           return fail;
           
         fi;
         
-        return CategoryOfColumnsMorphism( Range( alpha ), left_divide, Range( beta ) );
+        return CategoryOfColumnsMorphism( Range( alpha ), right_divide, Range( beta ) );
         
     end );
     
