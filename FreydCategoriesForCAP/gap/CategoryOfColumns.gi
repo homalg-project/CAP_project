@@ -407,7 +407,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         for morphism in sink{ [ 2 .. Length( sink ) ] } do
           
           underlying_matrix_of_universal_morphism := 
-            UnionOfColumns( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
+            UnionOfRows( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
           
         od;
         
