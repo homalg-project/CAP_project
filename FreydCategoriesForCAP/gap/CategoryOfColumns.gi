@@ -383,14 +383,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         rank_factor := RankOfObject( object_list[ projection_number ] );
         
-        projection_in_factor := HomalgZeroMatrix( rank_pre, rank_factor, ring );
-        
-        projection_in_factor := UnionOfColumns( projection_in_factor, 
-                                             HomalgIdentityMatrix( rank_factor, ring ) );
-        
-        projection_in_factor := UnionOfColumns( projection_in_factor, 
-                                             HomalgZeroMatrix( rank_post, rank_factor, ring ) );
-        
+        projection_in_factor := HomalgZeroMatrix( rank_factor, rank_pre, ring );
+
+        projection_in_factor := Iterated( [ projection_in_factor,
+                                            HomalgIdentityMatrix( rank_factor, ring ) ],
+                                            UnionOfColumns );
+
+        projection_in_factor := Iterated( [ projection_in_factor,
+                                            HomalgZeroMatrix( rank_factor, rank_post, ring ) ],
+                                            UnionOfColumns );
+
         return CategoryOfColumnsMorphism( direct_sum_object, projection_in_factor, object_list[ projection_number ] );
         
     end );
