@@ -59,30 +59,27 @@ Display( UnderlyingMatrix( mor ) );
 #! @Example
 ZeroObject( cols );
 #! A column module over Z of rank 0
+obj5 := CategoryOfColumnsObject( 2, cols );
+#! <A column module over Z of rank 2>
+Display( ZeroMorphism( ZeroObject( cols ), obj5 ) );
+#! (an empty 2 x 0 matrix)
+#! 
+#! A zero, split monomorphism in Columns( Z )
+obj6 := CategoryOfColumnsObject( 1, cols );
+#! <A column module over Z of rank 1>
+Display( IdentityMorphism( obj6 ) );
+#! [ [  1 ] ]
+#! 
+#! An identity morphism in Columns( Z )
+directSum := DirectSum( [ obj5, obj6 ] );
+#! <A graded column of rank 3>
+Display( directSum );
+#! A column module over Z of rank 3
+i1 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 1 );
 
 Error( "Test" );
 
-O1R := GradedColumn( [ [[1,0],2] ], S );
-#! <A graded column of rank 2>
-Display( ZeroMorphism( ZeroObject( categoryR ), O1R ) );
-#! A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
-#! with matrix: 
-#! (an empty 2 x 0 matrix)
-O2R := GradedColumn( [ [[0,0],1] ], S );
-#! <A graded column of rank 1>
-Display( IdentityMorphism( O2R ) );
-#! A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
-#! with matrix: 
-#! 1
-#! (over a graded ring)
-directSumR := DirectSum( [ O1R, O2R ] );
-#! <A graded column of rank 3>
-Display( directSumR );
-#! A graded column over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 0 ), 2 ], [ 0, 1 ] ]
+
 i1R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 1 );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
