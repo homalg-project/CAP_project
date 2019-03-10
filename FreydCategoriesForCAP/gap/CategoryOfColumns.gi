@@ -476,9 +476,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( morphism )
         local homalg_matrix, weak_cokernel_object;
         
-        homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism ) );
+        homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism ) );
         
-        return CategoryOfColumnsMorphism( Range( morphism ), homalg_matrix, CategoryOfColumnsObject( NrColumns( homalg_matrix ), category ) );
+        return CategoryOfColumnsMorphism( Range( morphism ), homalg_matrix, CategoryOfColumnsObject( NrRows( homalg_matrix ), category ) );
         
     end );
     
