@@ -604,13 +604,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             nr_columns := NrColumns( underlying_matrix );
             
-            if ( nr_columns = 0 ) or ( NrColumns( underlying_matrix ) = 0 ) then
+            if ( nr_columns = 0 ) or ( NrRows( underlying_matrix ) = 0 ) then
                 
                 return UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( category ) );
                 
             elif nr_columns > 1 then
                 
-                underlying_matrix := Iterated( List( [ 1 .. nr_columns ], i -> CertainColumns( underlying_matrix, [ i ] ) ), UnionOfColumns );
+                underlying_matrix := Iterated( List( [ 1 .. nr_columns ], i -> CertainColumns( underlying_matrix, [ i ] ) ), UnionOfRows );
                 
             fi;
             
@@ -631,7 +631,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             nr_rows := RankOfObject( B );
             
-            if nr_columns = 0 or nr_columns = 0 then
+            if nr_rows = 0 or nr_columns = 0 then
                 
                 return ZeroMorphism( A, B );
                 
@@ -639,7 +639,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             underlying_matrix := UnderlyingMatrix( morphism );
             
-            underlying_matrix := Iterated( List( [ 1 .. nr_columns ], i -> CertainColumns( underlying_matrix, [ ((i - 1) * nr_columns + 1) .. i * nr_columns ] ) ), UnionOfColumns );
+            underlying_matrix := Iterated( List( [ 1 .. nr_rows ], i -> CertainRows( underlying_matrix, [ ((i - 1) * nr_columns + 1) .. i * nr_columns ] ) ), UnionOfColumns );
             
             return CategoryOfColumnsMorphism( A, underlying_matrix, B );
             
