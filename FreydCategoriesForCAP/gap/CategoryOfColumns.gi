@@ -671,7 +671,7 @@ InstallMethod( String,
               
   function( category_of_columns_object )
     
-    return Concatenation( "A row module over ",
+    return Concatenation( "A column module over ",
                           RingName( UnderlyingRing( CapCategory( category_of_columns_object ) ) ),
                           " of rank ", String( RankOfObject( category_of_columns_object ) ) );
     
