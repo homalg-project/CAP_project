@@ -211,7 +211,9 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
 
   function( category )
-    local underlying_category;
+    local underlying_category, distinguished_object, range_category, homomorphism_structure_derivation_case,
+          homomorphism_structure_on_morphisms, interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure,
+          interpret_morphism_from_distinguished_object_to_homomorphism_structure_as_homomorphism;
     
     underlying_category := UnderlyingCategory( category );
     
@@ -650,6 +652,238 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                                         kernel_object );
         
     end );
+    
+    
+    ## Creation of a homomorphism structure for the Freyd category
+    
+    if ForAll( [ "DistinguishedObjectOfHomomorphismStructure" ], 
+               f -> CanCompute( underlying_category, f ) ) then
+        
+        distinguished_object := DistinguishedObjectOfHomomorphismStructure( underlying_category );
+            
+        range_category := CapCategory( distinguished_object );
+        
+        
+        ## 3 possible cases:
+        ## 1) the range category is abelian
+        ## 2) one could apply the Freyd category constructor to the range category to make it abelian
+        ## 3) else
+        
+        if HasIsAbelianCategory( range_category ) 
+           and IsAbelianCategory( range_category ) 
+           and HasIsProjective( distinguished_object )
+           and IsProjective( distinguished_object ) then
+            
+            SetRangeCategoryOfHomomorphismStructure( category, range_category );
+            
+            homomorphism_structure_derivation_case := "abelian";
+            
+            homomorphism_structure_on_morphisms := HomomorphismStructureOnMorphisms;
+            
+            distinguished_object := distinguished_object;
+            
+            interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure :=
+                InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure;
+            
+            interpret_morphism_from_distinguished_object_to_homomorphism_structure_as_homomorphism := 
+                InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism;
+            
+        elif  HasIsAdditiveCategory( range_category )
+               and IsAdditiveCategory( range_category )
+               and ForAll(
+                   [ "Lift",
+                     "SubtractionForMorphisms",
+                     "PreCompose",
+                     "Lift",
+                     "ProjectionOfBiasedWeakFiberProduct",
+                     "UniversalMorphismIntoBiasedWeakFiberProduct"
+                      ],
+                   f -> CanCompute( range_category, f ) )  then
+            
+            SetRangeCategoryOfHomomorphismStructure( category, FreydCategory( range_category ) );
+            
+            homomorphism_structure_derivation_case := "apply_freyd";
+            
+            homomorphism_structure_on_morphisms := 
+              function( alpha, beta )
+                
+                return AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( alpha, beta ) );
+                
+            end;
+            
+            distinguished_object := AsFreydCategoryObject( distinguished_object );
+            
+            interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure :=
+              function( alpha )
+                return AsFreydCategoryMorphism( InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( alpha ) );
+            end;
+            
+            interpret_morphism_from_distinguished_object_to_homomorphism_structure_as_homomorphism := 
+              function( a, b, morphism )
+                return InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( a, b, MorphismDatum( morphism ) );
+            end;
+            
+        else 
+            
+            homomorphism_structure_derivation_case := "none";
+            
+        fi;
+        
+        if homomorphism_structure_derivation_case <> "none" then
+            
+            ##
+            InstallMethodWithCacheFromObject( HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding, 
+                                              [ IsAdelmanCategoryObject and ObjectFilter( category ), IsAdelmanCategoryObject and ObjectFilter( category ) ],
+                function( object_A, object_B )
+                  local A, Ap, App, B, Bp, Bpp, a, b, ap, bp, 
+                        H_A_b, H_ap_B, H_A_bp, H_a_B, H_ap_Bpp, H_Ap_b, rel, corel, ker, coker, im;
+                  
+                  a := RelationMorphism( object_A );
+                  
+                  ap := CorelationMorphism( object_A );
+                  
+                  b := RelationMorphism( object_B );
+                  
+                  bp := CorelationMorphism( object_B );
+                  
+                  A := Range( a );
+                  
+                  Ap := Source( a );
+                  
+                  App := Range( ap );
+                  
+                  B := Range( b );
+                  
+                  Bp := Source( b );
+                  
+                  Bpp := Range( bp );
+                  
+                  H_A_b := homomorphism_structure_on_morphisms( IdentityMorphism( A ), b );
+
+                  H_ap_B := homomorphism_structure_on_morphisms( ap, IdentityMorphism( B ) );
+
+                  H_A_bp := homomorphism_structure_on_morphisms( IdentityMorphism( A ), bp );
+
+                  H_a_B := homomorphism_structure_on_morphisms( a, IdentityMorphism( B ) );
+
+                  H_ap_Bpp := homomorphism_structure_on_morphisms( ap, IdentityMorphism( Bpp ) );
+
+                  H_Ap_b := homomorphism_structure_on_morphisms( IdentityMorphism( Ap ), b );
+                  
+                  rel := UniversalMorphismFromDirectSum( [ H_A_b, H_ap_B ] );
+                  
+                  corel := UniversalMorphismIntoDirectSum( [ 
+                      PreCompose( H_A_bp, CokernelProjection( H_ap_Bpp ) ),
+                      PreCompose( H_a_B, CokernelProjection( H_Ap_b ) )
+                  ] );
+                  
+                  ker := KernelEmbedding( corel );
+                  
+                  coker := CokernelProjection( rel );
+                  
+                  im := ImageEmbedding( PreCompose( ker, coker ) );
+                  
+                  return GeneralizedMorphismByCospan( im, coker );
+                  
+            end );
+            
+            ##
+            AddHomomorphismStructureOnObjects( category,
+              function( object_A, object_B )
+                
+                return UnderlyingHonestObject( Source( HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( object_A, object_B ) ) );
+                
+            end );
+            
+            ##
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
+              function( source, mor_alpha, mor_beta, range )
+                local alpha, beta, H_alpha_beta, composition;
+                
+                alpha := MorphismDatum( mor_alpha );
+                
+                beta := MorphismDatum( mor_beta );
+                
+                H_alpha_beta := homomorphism_structure_on_morphisms( alpha, beta );
+                
+                composition :=
+                    PreCompose( [ 
+                        HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( Range( mor_alpha ), Source( mor_beta ) ),
+                        AsGeneralizedMorphismByCospan( H_alpha_beta ),
+                        PseudoInverse( HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( Source( mor_alpha ), Range( mor_beta ) ) )
+                    ] );
+                
+                return HonestRepresentative( composition );
+                
+            end );
+            
+             ##
+            AddDistinguishedObjectOfHomomorphismStructure( category,
+              function( cat )
+                
+                return distinguished_object;
+                
+            end );
+            
+            ##
+            AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+              function( mor_alpha )
+                local object_A, object_B, A, B, gen, arrow, reversed, alpha, interpret;
+                
+                object_A := Source( mor_alpha );
+                
+                object_B := Range( mor_alpha );
+                
+                A := Range( RelationMorphism( object_A ) );
+                
+                B := Range( RelationMorphism( object_B ) );
+                
+                gen := HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( object_A, object_B );
+                
+                arrow := Arrow( gen );
+                
+                reversed := ReversedArrow( gen );
+                
+                alpha := MorphismDatum( mor_alpha );
+                
+                interpret := interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure( alpha );
+                
+                return LiftAlongMonomorphism( 
+                    arrow,
+                    PreCompose( interpret, reversed )
+                );
+                
+            end );
+            
+            ##
+            AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+              function( object_A, object_B, morphism )
+                local gen, arrow, reversed, lift, A, B, interpret;
+                
+                gen := HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( object_A, object_B );
+                
+                arrow := Arrow( gen );
+                
+                reversed := ReversedArrow( gen );
+                
+                lift := Lift( 
+                    PreCompose( morphism, arrow ),
+                    reversed
+                );
+                
+                A := Range( RelationMorphism( object_A ) );
+                
+                B := Range( RelationMorphism( object_B ) );
+                
+                interpret := interpret_morphism_from_distinguished_object_to_homomorphism_structure_as_homomorphism( A, B, lift );
+                
+                return AdelmanCategoryMorphism( object_A, interpret, object_B );
+                
+            end );
+            
+        fi;
+        
+    fi;
     
 end );
 
