@@ -174,7 +174,7 @@ DeclareOperation( "CapFunctor",
 #!  $[ [A_1, b_1], \dots, [A_n,b_n] ]$,
 #!  then $f$ must take $n$ arguments, where the $i$-th
 #!  argument is an object in the category $A_i$ (the boolean $b_i$ is ignored).
-#!  The function should return a CapCategoryObject which
+#!  The function should return a GAP object in <C>IsAttributeStoringRep</C> which
 #!  will be automatically added to the range of the functor,
 #!  except when this feature was deactivated via <C>DisableAddForCategoricalOperations</C>.
 #! @Arguments F, f
@@ -210,7 +210,8 @@ DeclareAttribute( "FunctorObjectOperation",
 #!  The last argument of $f$ must be an object $r$ that is equal (via <C>IsEqualForObjects</C>)
 #!  to the range of the result of applying
 #!  $F$ to the input morphisms.
-#!  The function should return a CapCategoryMorphism which
+#!  The function should return a GAP object in <C>IsAttributeStoringRep</C> (with attributes <C>Source</C>
+#!  and <C>Range</C> containing also GAP objects in <C>IsAttributeStoringRep</C>) which
 #!  will be automatically added to the range of the functor,
 #!  except when this feature was deactivated via <C>DisableAddForCategoricalOperations</C>.
 #! @Arguments F, f
