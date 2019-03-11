@@ -96,8 +96,8 @@ Every Add method has the same structure. The steps in the Add method are as foll
 
 * Pair install: If there is a function pair, as described above, it is installed.
 
-After calling an add method, the corresponding Operation is availible in the category. Also, some derivations, which are triggered by the setting
-of the primitive value, might be availible.
+After calling an add method, the corresponding Operation is available in the category. Also, some derivations, which are triggered by the setting
+of the primitive value, might be available.
 
 
 @Section InstallAdd Function
