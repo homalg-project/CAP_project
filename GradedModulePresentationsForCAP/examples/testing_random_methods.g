@@ -163,61 +163,6 @@ S!.auxiliary_degree_func( "x*y^4"/S );
 # 5
 
 
-M := 0; f := 0; g := 0;
-
-test_random_objects_and_morphisms :=
-
-  function( cat, N, max )
-    local i;
-  
-    for i in [ 1 .. N ] do
-      
-      Display( i );
-      Display( "############################" );
-  
-      M := RandomObject( cat, Random( [ 0 .. max ] ) );
-      
-      if not IsWellDefined( M ) then
-  
-        Error( "M is not well-defined" );
-  
-      else
-  
-        #Display( "Ok" );
-        Display( M );
-  
-      fi;
-  
-      f := RandomMorphismWithFixedSource( M, Random( [ 0 .. max ] ) );
-  
-      if not IsWellDefined( f ) then
-  
-        Error( "f is not well-defined" );
-  
-      else
-  
-        #Display( "Ok" );
-        Display( f );
-  
-      fi;
-      
-      g := RandomMorphismWithFixedRange( M, Random( [ 0 .. max ] ) );
-      
-      if not IsWellDefined( g ) then
-  
-        Error( "g is not well-defined" );
-  
-      else
-  
-        #Display( "Ok" );
-        Display( g );
-  
-      fi;
-  
-    od;
-  
-  end;
-
 A := KoszulDualRing( S );
 
 lp_cat_S := GradedLeftPresentations( S );
@@ -225,5 +170,40 @@ rp_cat_S := GradedRightPresentations( S );
 lp_cat_A := GradedLeftPresentations( A );
 rp_cat_A := GradedRightPresentations( A );
 
-# test_random_objects_and_morphisms( lp_cat_S, 100, 5 );
+
+# random_func is function without arguments
+# list_of_properties should be applicable on the output of random_func()
+# N is the number of instances we want to test
+#
+statistic :=
+    function( random_func, list_of_properties, N )
+      local L, cell, i, j;
+      
+      L := List( list_of_properties, property -> 0 );
+      
+      for i in [ 1 .. N ] do
+        
+        Print( i, "\n\n" );
+        
+        cell := random_func( );
+        
+        for j in [ 1 .. Length( list_of_properties ) ] do
+          
+          if CallFuncList( list_of_properties[ j ], [ cell ] ) then
+             
+             L[ j ]:= L[ j ] + 1;
+          
+          fi;
+          
+          Print( Float( L[ j ] / i ) * 100, "% of instances satisfy ", NameFunction( list_of_properties[ j ] ), "\n" );
+        
+        od;
+        
+        Display( "\n-------------" );
+    
+    od;
+end;
+
+random_func := function() return RandomMorphism( lp_cat_S, 3 ); end;
+#statistic( random_func, [ IsWellDefined, IsZero ], 100 );
 
