@@ -1074,7 +1074,7 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT,
         
         if generators_degrees_of_syz <> [  ] then
           
-          some_degrees := List( [ 1 .. Random( [ 2 .. 5 ] ) ], i -> Random( generators_degrees_of_syz ) - Random( homalg_ring!.random_degrees ) );
+          some_degrees := List( [ 1 .. Random( [ Int( n/2 ) + 1 .. Int( 3*n/2 ) + 1 ] ) ], i -> Random( generators_degrees_of_syz ) - Random( homalg_ring!.random_degrees ) );
         
         else
           
@@ -1183,7 +1183,7 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
         
         if relations_degrees_of_syz <> [  ] then
           
-          some_degrees := List( [ 1 .. Random( [ 2 .. 5 ] ) ], i -> Random( relations_degrees_of_syz ) + Random( homalg_ring!.random_degrees ) );
+          some_degrees := List( [ 1 .. Random( [ Int( n/2 ) + 1 .. Int( 3*n/2 ) + 1 ] ) ], i -> Random( relations_degrees_of_syz ) + Random( homalg_ring!.random_degrees ) );
         
         else
           
@@ -1279,7 +1279,7 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT,
         
         if generator_degrees_of_syz <> [  ] then
           
-          some_degrees := List( [ 1 .. Random( [ 2 .. 5 ] ) ], i -> Random( generator_degrees_of_syz ) + Random( homalg_ring!.random_degrees ) );
+          some_degrees := List( [ 1 .. Random( [ Int( n/2 ) + 1 .. Int( 3*n/2 ) + 1 ] ) ], i -> Random( generator_degrees_of_syz ) + Random( homalg_ring!.random_degrees ) );
 
         else
 
@@ -1383,7 +1383,7 @@ InstallGlobalFunction( ADD_GRADED_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
         
         if relations_degrees_of_syz <> [  ] then
           
-          some_degrees := List( [ 1 .. Random( [ 2 .. 5 ] ) ], i -> Random( relations_degrees_of_syz ) + Random( homalg_ring!.random_degrees ) );
+          some_degrees := List( [ 1 .. Random( [ Int( n/2 ) + 1 .. Int( 3*n/2 ) + 1 ] ) ], i -> Random( relations_degrees_of_syz ) + Random( homalg_ring!.random_degrees ) );
         
         else
           
