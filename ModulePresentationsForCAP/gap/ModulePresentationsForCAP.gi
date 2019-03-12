@@ -201,13 +201,19 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
          IsBound( category!.ring_for_representation_category!.random_matrix_func ) then
       
       ADD_RANDOM_OBJECT( category, "left" );
-
+      
       ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT( category );
-
+      
       ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT( category );
-
+      
+      if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
+        
+        ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_AND_RANGE( category, "left" );
+      
+      fi;
+    
     fi;
-
+    
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_LIFT_AND_COLIFT_LEFT( category );
@@ -272,18 +278,24 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_IS_IDENTICAL_FOR_MORPHISMS( category );
     
     ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
-
+    
     if IsBound( category!.ring_for_representation_category!.random_element_func ) and 
          IsBound( category!.ring_for_representation_category!.random_matrix_func ) then
       
       ADD_RANDOM_OBJECT( category, "right" );
-
+      
       ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT( category );
-
+      
       ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT( category );
-
+      
+      if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
+        
+        ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_AND_RANGE( category, "right" );
+      
+      fi;
+    
     fi;
-
+    
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
       ADD_LIFT_AND_COLIFT_RIGHT( category );
@@ -2248,7 +2260,7 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_LEFT,
 
           syz := SyzygiesOfColumns( UnionOfColumns( m, y ) );
 
-          syz := syz * homalg_ring!.random_matrix_func( NrCols( syz ), Random( [ 2 .. 5 ] ) );
+          syz := syz * homalg_ring!.random_matrix_func( NrCols( syz ), Random( [ Int( n/2 ) + 1 .. Int( 3*n/2 ) + 1 ] ) );
 
           x := CertainRows( syz, [ 1 .. NrCols( m ) ] );
 
@@ -2293,7 +2305,7 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_LEFT,
 
           syz := SyzygiesOfRows( UnionOfRows( x, u ) );
 
-          syz := homalg_ring!.random_matrix_func( Random( [ 2 .. 5 ] ), NrRows( syz ) ) * syz;
+          syz := homalg_ring!.random_matrix_func( Random( [ Int( n/2 ) + 1 .. Int( 3*n/2 ) + 1 ] ), NrRows( syz ) ) * syz;
 
           m := CertainColumns( syz, [ 1 .. NrRows( x ) ] );
 
@@ -2328,7 +2340,7 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_RIGHT,
 
           syz := SyzygiesOfRows( UnionOfRows( x, u ) );
 
-          syz := homalg_ring!.random_matrix_func( Random( [ 2 .. 5 ] ), NrRows( syz ) ) * syz;
+          syz := homalg_ring!.random_matrix_func( Random( [ Int( n/2 ) + 1 .. Int( 3*n/2 ) + 1 ] ), NrRows( syz ) ) * syz;
 
           m := CertainColumns( syz, [ 1 .. NrRows( x ) ] );
 
@@ -2347,9 +2359,9 @@ end );
 InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
     function( category )
       local homalg_ring;
-
+      
       homalg_ring := category!.ring_for_representation_category;
-
+      
       AddRandomMorphismWithFixedRange( category,
         function( M, n )
           local m, y, syz, e, u, U;
@@ -2357,31 +2369,82 @@ InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_RANGE_RIGHT,
           if n < 0 then
             
             return fail;
-
+          
           fi;
-
+          
           if n = 0 then
-
+            
             return UniversalMorphismFromZeroObject( M );
-
+          
           fi;
-
+          
           m := UnderlyingMatrix( M );
-
+          
           y := homalg_ring!.random_matrix_func( NrRows( m ), n );
-
+          
           syz := SyzygiesOfColumns( UnionOfColumns( m, y ) );
-
-          syz := syz * homalg_ring!.random_matrix_func( NrCols( syz  ), Random( [ 2 .. 5 ] ) );
-
+          
+          syz := syz * homalg_ring!.random_matrix_func( NrCols( syz  ), Random( [ Int( n/2 ) + 1 .. Int( 3*n/2 ) + 1 ] ) );
+          
           u := CertainRows( syz, [ NrCols( m ) + 1 .. NrRows( syz ) ] );
-
+          
           U := AsRightPresentation( u );
-
+          
           return PresentationMorphism( U, y, M );
-     
+      
       end );
+    
+end );
 
+## In this method: we find a random linear combination of random elements in Hom(M,N) with coefficients |n|-powers of random ring elements.
+##
+
+InstallGlobalFunction( ADD_RANDOM_MORPHISM_WITH_FIXED_SOURCE_AND_RANGE,
+    function( category, left_or_right )
+      local homalg_ring;
+      
+      homalg_ring := category!.ring_for_representation_category;
+      
+      AddRandomMorphismWithFixedSourceAndRange( category,
+        function( M, N, n )
+          local H, nr_generators, random_positions, maps;
+          
+          H := InternalHomOnObjects( M, N );
+          
+          if left_or_right = "left" then
+            
+            nr_generators := NrCols( UnderlyingMatrix( H ) );
+          
+          else
+            
+            nr_generators := NrRows( UnderlyingMatrix( H ) );
+          
+          fi;
+          
+          if nr_generators = 0 then
+            
+            return ZeroMorphism( M, N );
+          
+          fi;
+          
+          random_positions := List( [ 1 .. Random( [ 1 .. nr_generators ] ) ], i -> Random( [ 1 .. nr_generators ] ) );
+          
+          maps := List( random_positions, p -> StandardGeneratorMorphism( H, p ) );
+          
+          if left_or_right = "left" then
+            
+            maps := List( maps, map -> homalg_ring!.random_element_func(  )^AbsInt( n ) * InternalHomToTensorProductAdjunctionMap( M, N, map ) );
+          
+          else
+            
+            maps := List( maps, map -> InternalHomToTensorProductAdjunctionMap( M, N, map ) * homalg_ring!.random_element_func(  ) );
+          
+          fi;
+          
+          return Sum( maps );
+    
+    end );
+    
 end );
 
 ##
