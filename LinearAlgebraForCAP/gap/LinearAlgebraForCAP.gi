@@ -812,7 +812,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
             
         else
             
-            new_matrix := HomalgZeroMatrix( 1, NrColumns( matrix ), homalg_field );
+            new_matrix := HomalgZeroMatrix( 1, 0, homalg_field );
             
         fi;
             
