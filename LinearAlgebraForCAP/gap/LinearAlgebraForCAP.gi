@@ -860,68 +860,121 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ## Interpretation: the output has dimension at most n.
     ##
     AddRandomObject( category,
-
+      
       function( category, n )
-
+        
         if n < 0 then
-
+          
           return fail;
-
+        
         fi;
-
+        
         return VectorSpaceObject( Random( [ 0 .. n ] ), homalg_field );
-
+    
     end );
 
-    ## Interpretation: the range of the output has dimension at most n.
+    ## Interpretation: the range of the output has dimension n.
     ##
     AddRandomMorphismWithFixedSource( category,
-
+      
       function( source_space, n )
-        local mat, range_space;
-
+        local range_space, func_1, func_2, list_of_funcs, mat;
+        
         if n < 0 then
-
+          
           return fail;
-
+        
         fi;
-
-        range_space := RandomObject( category, n );
-
+        
+        if n = 0 then
+          
+          return UniversalMorphismIntoZeroObject( source_space );
+        
+        fi;
+        
+        range_space := VectorSpaceObject( n, homalg_field );
+        
+        func_1 := IdFunc;
+        
+        func_2 := function( a ) if IsZero( a ) then return a; else return a^-1; fi; end;
+        
+        list_of_funcs := Concatenation( ListWithIdenticalEntries( Minimum( Dimension( source_space ), Dimension( range_space ) ), func_1 ), [ func_2 ] );
+        
         mat := List( [ 1 .. Dimension( source_space ) ],
                 i -> List( [ 1 .. Dimension( range_space ) ], 
-                    j -> Random( [ -n - 10 .. n + 10 ] ) * One( homalg_field ) ) );
-
+                    j -> Random( list_of_funcs )( Random( [ -n - 10 .. n + 10 ] ) * One( homalg_field ) ) ) );
+        
         mat := HomalgMatrix( mat, Dimension( source_space), Dimension( range_space ), homalg_field );
-
+        
         return VectorSpaceMorphism( source_space, mat, range_space );
-
-    end );
-
     
-    ## Interpretation: the source of the output has dimension at most n.
+    end );
+    
+    ## Interpretation: the source of the output has dimension n.
     ##
     AddRandomMorphismWithFixedRange( category,
-
+      
       function( range_space, n )
-        local mat, source_space;
-
+        local source_space, func_1, func_2, list_of_funcs, mat;
+        
         if n < 0 then
-
+          
           return fail;
-
+        
         fi;
-
-        source_space := RandomObject( category, n );
-
+        
+        if n = 0 then
+          
+          return UniversalMorphismFromZeroObject( range_space );
+        
+        fi;
+        
+        source_space := VectorSpaceObject( n, homalg_field );
+        
+        func_1 := IdFunc;
+        
+        func_2 := function( a ) if IsZero( a ) then return a; else return a^-1; fi; end;
+        
+        list_of_funcs := Concatenation( ListWithIdenticalEntries( Minimum( Dimension( source_space ), Dimension( range_space ) ), func_1 ), [ func_2 ] );
+        
         mat := List( [ 1 .. Dimension( source_space ) ],
                 i -> List( [ 1 .. Dimension( range_space ) ], 
-                    j -> Random( [ -n - 10 .. n + 10 ] ) * One( homalg_field ) ) );
-
+                    j -> Random( list_of_funcs )( Random( [ -n - 10 .. n + 10 ] ) * One( homalg_field ) ) ) );
+        
         mat := HomalgMatrix( mat, Dimension( source_space), Dimension( range_space ), homalg_field );
-
+        
         return VectorSpaceMorphism( source_space, mat, range_space );
+    
+    end );
 
+    ## Interpretation: The entries of the matrix are elements or inverse of elements in [ -|n| .. |n| ] * One( field )
+    ##
+    AddRandomMorphismWithFixedSourceAndRange( category,
+      
+      function( source_space, range_space, n )
+        local mat, func_1, func_2, list_of_funcs;
+        
+        if Dimension( source_space ) * Dimension( range_space ) = 0 then
+          
+          return ZeroMorphism( source_space, range_space );
+        
+        fi;
+        
+        func_1 := IdFunc;
+        
+        func_2 := function( a ) if IsZero( a ) then return a; else return a^-1; fi; end;
+        
+        list_of_funcs := Concatenation( ListWithIdenticalEntries( Minimum( Dimension( source_space ), Dimension( range_space ) ), func_1 ), [ func_2 ] );
+        
+        mat := List( [ 1 .. Dimension( source_space ) ],
+                i -> List( [ 1 .. Dimension( range_space ) ], 
+                     j -> Random( list_of_funcs )( Random( [ -AbsInt( n ) .. AbsInt( n ) ] ) * One( homalg_field ) ) ) );
+        
+        mat := HomalgMatrix( mat, Dimension( source_space), Dimension( range_space ), homalg_field );
+        
+        return VectorSpaceMorphism( source_space, mat, range_space );
+    
     end );
 
 end );
+
