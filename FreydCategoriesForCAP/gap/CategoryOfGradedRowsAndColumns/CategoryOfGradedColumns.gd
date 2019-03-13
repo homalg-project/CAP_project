@@ -31,3 +31,7 @@ DeclareAttribute( "CAPCategoryOfGradedColumns",
 ####################################
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS" );
+
+DeclareGlobalFunction( "CAP_INTERNAL_WEAK_FIBER_PRODUCT_GRADED_COLUMNS" );
+
+DeclareGlobalFunction( "CAP_INTERNAL_WEAK_PUSHOUT_GRADED_COLUMNS" );
