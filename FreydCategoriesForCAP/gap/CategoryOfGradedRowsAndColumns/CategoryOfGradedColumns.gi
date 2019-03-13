@@ -960,6 +960,38 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
     end );
 
+    
+    ######################################################################
+    #
+    # @Section Add BiasedWeakFibreProduct
+    #
+    ######################################################################
+
+    # @Description
+    # This method implements the projection of the biased weak fiber product onto the source of the 
+    # first morphism. By this we mean the following:
+    # Given morphisms m1: A to B and m2: C to B, we consider the diagram:
+    # P ------> C
+    # |         |
+    # g        m2
+    # |         |
+    # A --m1--> B
+    # We are interested in constructing a morphism g such that there exists a morphism d: P to C such that
+    # the above diagram commutes. However, we do not provide an algorithm to compute d.
+    # This morphism g must be universal in the sense that given another morphism tau: T -> A such that there 
+    # exists a morphism T -> C which makes the corresponding square commute, there exists a morphism
+    # u: T -> P such that g \circ u = tau. Note that u is not unique in this setup!
+    AddProjectionOfBiasedWeakFiberProduct( category,
+      function( morphism_1, morphism_2 )
+        local homalg_matrix, weak_cokernel_object;
+        
+        homalg_matrix := ReducedSyzygiesOfRows( UnderlyingHomalgMatrix( morphism_1 ), 
+                                                UnderlyingHomalgMatrix( morphism_2 ) );
+        
+        return DeduceMapFromMatrixAndRangeRight( homalg_matrix, Source( morphism_1 ) );
+        
+    end );
+
 
     # Monoidal structure can be defined if the underlying ring of graded rows is commutative
     # We are aware of the fact that this condition is in general not necessary.
