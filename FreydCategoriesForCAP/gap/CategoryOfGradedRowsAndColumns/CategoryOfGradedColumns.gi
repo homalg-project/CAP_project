@@ -276,10 +276,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
       function( object1, object2 )
       local deg_list1, deg_list2;
       
-        deg_list1 := UnzipDegreeList( object1 );
-        deg_list2 := UnzipDegreeList( object2 );
-        
-        return deg_list1 = deg_list2;
+        return DegreeList( object1 ) = DegreeList( object2 );
 
     end );
 
