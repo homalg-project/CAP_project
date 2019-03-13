@@ -714,7 +714,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             ];
             
             right_coefficients := [
-              [ IdentityMorphism( C ), rho_C, ZeroMorphism( R_A, C ) ],
+              [ IdentityMorphism( C ), rho_C, ZeroMorphism( R_B, C ) ],
               [ gamma, ZeroMorphism( R_C, B ), rho_B ]
             ];
             
