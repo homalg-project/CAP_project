@@ -635,7 +635,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Arguments morphism1, morphism2
     AddLift( category,
       function( morphism1, morphism2 )
-        local right_divide;
+        local right_divide, required_degrees, lift;
         
         # try to find a lift
         right_divide := RightDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
@@ -646,14 +646,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
           return fail;
           
         fi;
+
+        # identify the homogeneous part of this matrix
+        required_degrees := List( UnzipDegreeList( Source( morphism1 ) ),
+                                i -> List( UnzipDegreeList( Source( morphism2 ) ), j -> i - j ) );
+        lift := HomogeneousPartOfMatrix( right_divide, required_degrees );
         
-        # and if not, then construct the lift-morphism
+        # and construct the lift
         return GradedRowOrColumnMorphism( Source( morphism1 ),
-                                                                        right_divide,
-                                                                        Source( morphism2 ),
-                                                                        checks
-                                                                       );
-        
+                                          lift,
+                                          Source( morphism2 ),
+                                          checks
+                                          );
+
     end );
     
     # @Description
@@ -663,7 +668,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Arguments morphism1, morphism2
     AddColift( category,
       function( morphism1, morphism2 )
-        local left_divide;
+        local left_divide, required_degrees, colift;
 
         # try to find a matrix that performs the colift
         left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
@@ -675,12 +680,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
         fi;
 
+        required_degrees := List( UnzipDegreeList( Range( morphism1 ) ),
+                                i -> List( UnzipDegreeList( Range( morphism2 ) ), j -> i - j ) );
+        colift := HomogeneousPartOfMatrix( left_divide, required_degrees );
+                                
         # if it did work, return the corresponding morphism
         return GradedRowOrColumnMorphism( Range( morphism1 ),
-                                                                        left_divide,
-                                                                        Range( morphism2 ),
-                                                                        checks
-                                                                       );
+                                                 colift,
+                                                 Range( morphism2 ),
+                                                 checks
+                                                 );
 
     end );
 

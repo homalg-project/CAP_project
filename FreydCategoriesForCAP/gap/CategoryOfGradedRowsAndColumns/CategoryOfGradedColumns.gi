@@ -638,7 +638,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments morphism1, morphism2
     AddLift( category,
       function( morphism1, morphism2 )
-        local left_divide;
+        local left_divide, required_degrees, lift;
 
         # try to find a lift
         left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism2 ), UnderlyingHomalgMatrix( morphism1 ) );
@@ -649,13 +649,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
           return fail;
           
         fi;
+
+        # identify the homogeneous part of this matrix
+        required_degrees := List( UnzipDegreeList( Source( morphism2 ) ),
+                                i -> List( UnzipDegreeList( Source( morphism1 ) ), j -> j - i ) );
+        lift := HomogeneousPartOfMatrix( left_divide, required_degrees );
         
-        # and if not, then construct the lift-morphism
+        # and construct the lift
         return GradedRowOrColumnMorphism( Source( morphism1 ),
-                                                                        left_divide,
-                                                                        Source( morphism2 ),
-                                                                        checks
-                                                                       );
+                                          lift,
+                                          Source( morphism2 ),
+                                          checks
+                                          );
         
     end );    
 
@@ -678,12 +683,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
           
         fi;
         
+        required_degrees := List( UnzipDegreeList( Range( morphism2 ) ),
+                                i -> List( UnzipDegreeList( Range( morphism1 ) ), j -> j - i ) );
+        colift := HomogeneousPartOfMatrix( right_divide, required_degrees );
+                                
         # if it did work, return the corresponding morphism
         return GradedRowOrColumnMorphism( Range( morphism1 ),
-                                                                        right_divide,
-                                                                        Range( morphism2 ),
-                                                                        checks
-                                                                       );
+                                                 colift,
+                                                 Range( morphism2 ),
+                                                 checks
+                                                 );
         
     end );
 
