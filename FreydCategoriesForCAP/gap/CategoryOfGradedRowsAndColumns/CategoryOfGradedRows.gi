@@ -30,8 +30,10 @@ InstallMethod( CAPCategoryOfGradedRows,
 
       # set its properties
       SetIsAdditiveCategory( category, true );
-      SetIsStrictMonoidalCategory( category, true );
-      SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+      if IsCommutative( homalg_graded_ring ) then
+        SetIsStrictMonoidalCategory( category, true );
+        SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+      fi;
     
       # install its functionality
       INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS( category, category!.constructor_checks_wished );
@@ -955,6 +957,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     end );
 
 
+    # Monoidal structure can be defined if the underlying ring of graded rows is commutative
+    # We are aware of the fact that this condition is in general not necessary.
+    if IsCommutative( category!.homalg_graded_ring_for_category_of_graded_rows ) then
 
     ######################################################################
     #
@@ -1228,4 +1233,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
     end );    
     
+    fi;
+
 end );
