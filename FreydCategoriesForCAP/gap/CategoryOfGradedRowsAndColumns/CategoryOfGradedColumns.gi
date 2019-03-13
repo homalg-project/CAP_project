@@ -671,7 +671,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments morphism1, morphism2
     AddColift( category,
       function( morphism1, morphism2 )
-        local right_divide;
+        local right_divide, required_degrees, colift;
         
         # try to find a matrix that performs the colift
         right_divide := RightDivide( UnderlyingHomalgMatrix( morphism2 ), UnderlyingHomalgMatrix( morphism1 ) );
