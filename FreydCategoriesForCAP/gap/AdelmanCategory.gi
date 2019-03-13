@@ -653,6 +653,43 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
     end );
     
+    ##
+    AddEpimorphismFromSomeProjectiveObject( category,
+        function( obj )
+        local proj, rel, A;
+        
+        rel := CorelationMorphism( obj );
+        
+        A := Source( rel );
+        
+        proj := AdelmanCategoryObject( MorphismFromZeroObject( A ), rel );
+        
+        return AdelmanCategoryMorphism(
+            proj,
+            IdentityMorphism( A ),
+            obj
+        );
+        
+    end );
+    
+    ##
+    AddMonomorphismIntoSomeInjectiveObject( category,
+        function( obj )
+        local inj, rel, B;
+        
+        rel := RelationMorphism( obj );
+        
+        B := Range( rel );
+        
+        inj := AdelmanCategoryObject( rel, MorphismIntoZeroObject( B ) );
+        
+        return AdelmanCategoryMorphism(
+            obj,
+            IdentityMorphism( B ),
+            inj
+        );
+        
+    end );
     
     ## Creation of a homomorphism structure for the Freyd category
     
