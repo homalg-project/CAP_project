@@ -275,6 +275,18 @@ Display( UnderlyingHomalgMatrix( fp_proj2L ) );
 #! x_1,
 #! x_2 
 #! (over a graded ring)
+BiasedWeakFiberProduct( m1L, m2L );
+#! <A graded row of rank 2>
+pbwfprow := ProjectionOfBiasedWeakFiberProduct( m1L, m2L );
+#! <A morphism in the category of graded rows over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+Display( pbwfprow );
+#! A morphism in the category of graded rows over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! with matrix: 
+#! 1,0,
+#! 0,1 
+#! (over a graded ring)
 poL := Pushout( morL, m2L );
 #! <A graded row of rank 2>
 inj1L := InjectionOfCofactorOfPushout( [ morL, m2L ], 1 );
@@ -456,6 +468,18 @@ fp_proj2R := ProjectionInFactorOfFiberProduct( [ m1R, m2R ], 2 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 Display( UnderlyingHomalgMatrix( fp_proj2R ) );
 #! x_1, x_2
+#! (over a graded ring)
+BiasedWeakFiberProduct( m1R, m2R );
+#! <A graded column of rank 2>
+pbwfpcol := ProjectionOfBiasedWeakFiberProduct( m1R, m2R );
+#! <A morphism in the category of graded columns over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+Display( pbwfpcol );
+#! A morphism in the category of graded columns over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! with matrix: 
+#! 1,0,
+#! 0,1 
 #! (over a graded ring)
 poR := Pushout( morR, m2R );
 #! <A graded column of rank 2>
