@@ -54,12 +54,12 @@ UnzipDegreeList( Object2R );
 #! given by a homomgeneous matrix $M$ and that we want to compute the kernel embedding of this mapping. To this end we
 #! first compute the syzygies (of rows or columns, depending on whether we are dealing with right or left-modules) of
 #! $M$. Let us call the corresponding matrix $N$. Then we deduce the degree list of the kernel object from $N$ and
-#! from the projective graded module $A$. Once this degree list is known, we would call the object constructor.
+#! from the graded row $A$. Once this degree list is known, we would call the object constructor.
 #! If this object constructor summarised all (and not only subsequent) occurances of one degree element in the 
 #! degree list, then in order to make sure that the kernel embedding is a mapping of graded modules, rows/columns
 #! of the matrix $N$ would have to be shuffled. The latter we do not wish to perform.
 
-#! Note that the 'IsEqualForObjects' methods returns true whenever two projective modules are identical. So
+#! Note that the 'IsEqualForObjects' methods returns true whenever the degree lists of two graded rows are identical. So
 #! in particular it returns false, if the degree lists are mere permutations of one another. Here is an example.
 
 #! @Example
