@@ -14,7 +14,7 @@
 ##
 ############################################
 
-InstallMethod( DeduceMapFromMatrixAndRangeLeft,
+InstallMethod( DeduceMapFromMatrixAndRangeForGradedRows,
                [ IsHomalgMatrix, IsGradedRow ],
   function( matrix, range_object )
     local homalg_graded_ring, source_object, non_zero_entries_index, expanded_degree_list, j, k, 
@@ -95,7 +95,7 @@ InstallMethod( DeduceMapFromMatrixAndRangeLeft,
 
 end );
 
-InstallMethod( DeduceMapFromMatrixAndSourceLeft,
+InstallMethod( DeduceMapFromMatrixAndSourceForGradedRows,
                [ IsHomalgMatrix, IsGradedRow ],
   function( matrix, source_object )
     local homalg_graded_ring, range_object, non_zero_entries_index, expanded_degree_list, j, k, 
@@ -176,7 +176,7 @@ InstallMethod( DeduceMapFromMatrixAndSourceLeft,
 
 end );
 
-InstallMethod( DeduceMapFromMatrixAndRangeRight,
+InstallMethod( DeduceMapFromMatrixAndRangeForGradedCols,
                [ IsHomalgMatrix, IsGradedColumn ],
   function( matrix, range_object )
     local homalg_graded_ring, source_object, non_zero_entries_index, expanded_degree_list, j, k, 
@@ -257,7 +257,7 @@ InstallMethod( DeduceMapFromMatrixAndRangeRight,
 
 end );
 
-InstallMethod( DeduceMapFromMatrixAndSourceRight,
+InstallMethod( DeduceMapFromMatrixAndSourceForGradedCols,
                [ IsHomalgMatrix, IsGradedColumn ],
   function( matrix, source_object )
     local homalg_graded_ring, range_object, non_zero_entries_index, expanded_degree_list, j, k,   

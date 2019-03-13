@@ -716,7 +716,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         kernel_matrix := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
 
         # deduce the kernel_embedding from this
-        return DeduceMapFromMatrixAndRangeRight( kernel_matrix, Source( morphism ) );
+        return DeduceMapFromMatrixAndRangeForGradedCols( kernel_matrix, Source( morphism ) );
 
     end );
 
@@ -732,7 +732,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         cokernel_matrix := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
 
         # deduce the cokernel projection from this
-        return DeduceMapFromMatrixAndSourceRight( cokernel_matrix, Range( morphism ) );
+        return DeduceMapFromMatrixAndSourceForGradedCols( cokernel_matrix, Range( morphism ) );
 
     end );
 
@@ -799,7 +799,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
           od;
           
           # from this deduce the projection mapping
-          return DeduceMapFromMatrixAndRangeRight( projection_matrix, Source( morphism_list[ projection_number ] ) );
+          return DeduceMapFromMatrixAndRangeForGradedCols( projection_matrix, Source( morphism_list[ projection_number ] ) );
         
         fi;
 
@@ -916,7 +916,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
           od;
         
           # and from this deduce the injection
-          return DeduceMapFromMatrixAndSourceRight( embedding_matrix, Range( morphism_list[ injection_number ] ) );
+          return DeduceMapFromMatrixAndSourceForGradedCols( embedding_matrix, Range( morphism_list[ injection_number ] ) );
         
        fi;
 
@@ -997,7 +997,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingHomalgMatrix( morphism_1 ),
                                                    UnderlyingHomalgMatrix( morphism_2 ) );
         
-        return DeduceMapFromMatrixAndRangeRight( homalg_matrix, Source( morphism_1 ) );
+        return DeduceMapFromMatrixAndRangeForGradedCols( homalg_matrix, Source( morphism_1 ) );
         
     end );
 
