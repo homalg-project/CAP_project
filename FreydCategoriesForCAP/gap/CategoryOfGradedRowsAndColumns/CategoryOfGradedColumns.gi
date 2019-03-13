@@ -985,8 +985,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
       function( morphism_1, morphism_2 )
         local homalg_matrix, weak_cokernel_object;
         
-        homalg_matrix := ReducedSyzygiesOfRows( UnderlyingHomalgMatrix( morphism_1 ), 
-                                                UnderlyingHomalgMatrix( morphism_2 ) );
+        homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingHomalgMatrix( morphism_1 ),
+                                                   UnderlyingHomalgMatrix( morphism_2 ) );
         
         return DeduceMapFromMatrixAndRangeRight( homalg_matrix, Source( morphism_1 ) );
         
