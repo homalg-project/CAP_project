@@ -95,7 +95,7 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2019.02.26" ],
                            [ "MatricesForHomalg", ">= 2017.05.24" ],
-                           [ "GradedRingForHomalg", ">= 2015.12.04" ],
+                           [ "GradedRingForHomalg", ">=2018.12.04" ],
                            [ "LinearAlgebraForCAP", ">= 2017.12.30" ]
                          ],
   SuggestedOtherPackages := [ ],

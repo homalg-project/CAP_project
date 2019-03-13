@@ -22,7 +22,7 @@
 #! the map in the category of graded rows.
 #! @Returns a morphism
 #! @Arguments m, R
-DeclareOperation( "DeduceMapFromMatrixAndRangeLeft",
+DeclareOperation( "DeduceMapFromMatrixAndRangeForGradedRows",
                   [ IsHomalgMatrix, IsGradedRow ] );
 
 #! @Description
@@ -31,7 +31,7 @@ DeclareOperation( "DeduceMapFromMatrixAndRangeLeft",
 #! the map in the category of graded rows.
 #! @Returns a morphism
 #! @Arguments m, S
-DeclareOperation( "DeduceMapFromMatrixAndSourceLeft",
+DeclareOperation( "DeduceMapFromMatrixAndSourceForGradedRows",
                   [ IsHomalgMatrix, IsGradedRow ] );
 
 #! @Description
@@ -40,7 +40,7 @@ DeclareOperation( "DeduceMapFromMatrixAndSourceLeft",
 #! the map in the category of graded columns.
 #! @Returns a morphism
 #! @Arguments m, R
-DeclareOperation( "DeduceMapFromMatrixAndRangeRight",
+DeclareOperation( "DeduceMapFromMatrixAndRangeForGradedCols",
                   [ IsHomalgMatrix, IsGradedColumn ] );
 
 #! @Description
@@ -49,7 +49,7 @@ DeclareOperation( "DeduceMapFromMatrixAndRangeRight",
 #! the map in the category of graded columns.
 #! @Returns a morphism
 #! @Arguments m, S
-DeclareOperation( "DeduceMapFromMatrixAndSourceRight",
+DeclareOperation( "DeduceMapFromMatrixAndSourceForGradedCols",
                   [ IsHomalgMatrix, IsGradedColumn ] );
 
 #! @Description

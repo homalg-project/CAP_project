@@ -54,12 +54,12 @@ UnzipDegreeList( Object2R );
 #! given by a homomgeneous matrix $M$ and that we want to compute the kernel embedding of this mapping. To this end we
 #! first compute the syzygies (of rows or columns, depending on whether we are dealing with right or left-modules) of
 #! $M$. Let us call the corresponding matrix $N$. Then we deduce the degree list of the kernel object from $N$ and
-#! from the projective graded module $A$. Once this degree list is known, we would call the object constructor.
+#! from the graded row $A$. Once this degree list is known, we would call the object constructor.
 #! If this object constructor summarised all (and not only subsequent) occurances of one degree element in the 
 #! degree list, then in order to make sure that the kernel embedding is a mapping of graded modules, rows/columns
 #! of the matrix $N$ would have to be shuffled. The latter we do not wish to perform.
 
-#! Note that the 'IsEqualForObjects' methods returns true whenever two projective modules are identical. So
+#! Note that the 'IsEqualForObjects' methods returns true whenever the degree lists of two graded rows are identical. So
 #! in particular it returns false, if the degree lists are mere permutations of one another. Here is an example.
 
 #! @Example
@@ -275,6 +275,18 @@ Display( UnderlyingHomalgMatrix( fp_proj2L ) );
 #! x_1,
 #! x_2 
 #! (over a graded ring)
+BiasedWeakFiberProduct( m1L, m2L );
+#! <A graded row of rank 2>
+pbwfprow := ProjectionOfBiasedWeakFiberProduct( m1L, m2L );
+#! <A morphism in the category of graded rows over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+Display( pbwfprow );
+#! A morphism in the category of graded rows over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! with matrix: 
+#! 1,0,
+#! 0,1 
+#! (over a graded ring)
 poL := Pushout( morL, m2L );
 #! <A graded row of rank 2>
 inj1L := InjectionOfCofactorOfPushout( [ morL, m2L ], 1 );
@@ -456,6 +468,18 @@ fp_proj2R := ProjectionInFactorOfFiberProduct( [ m1R, m2R ], 2 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 Display( UnderlyingHomalgMatrix( fp_proj2R ) );
 #! x_1, x_2
+#! (over a graded ring)
+BiasedWeakFiberProduct( m1R, m2R );
+#! <A graded column of rank 2>
+pbwfpcol := ProjectionOfBiasedWeakFiberProduct( m1R, m2R );
+#! <A morphism in the category of graded columns over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+Display( pbwfpcol );
+#! A morphism in the category of graded columns over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! with matrix: 
+#! 1,0,
+#! 0,1 
 #! (over a graded ring)
 poR := Pushout( morR, m2R );
 #! <A graded column of rank 2>

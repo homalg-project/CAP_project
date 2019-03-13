@@ -30,8 +30,10 @@ InstallMethod( CAPCategoryOfGradedRows,
 
       # set its properties
       SetIsAdditiveCategory( category, true );
-      SetIsStrictMonoidalCategory( category, true );
-      SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+      if IsCommutative( UnderlyingNonGradedRing( homalg_graded_ring ) ) then
+        SetIsStrictMonoidalCategory( category, true );
+        SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+      fi;
     
       # install its functionality
       INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS( category, category!.constructor_checks_wished );
@@ -278,10 +280,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
       function( object1, object2 )
       local deg_list1, deg_list2;
       
-        deg_list1 := UnzipDegreeList( object1 );
-        deg_list2 := UnzipDegreeList( object2 );
-        
-        return deg_list1 = deg_list2;
+        return DegreeList( object1 ) = DegreeList( object2 );
 
     end );
 
@@ -636,7 +635,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Arguments morphism1, morphism2
     AddLift( category,
       function( morphism1, morphism2 )
-        local right_divide;
+        local right_divide, required_degrees, lift;
         
         # try to find a lift
         right_divide := RightDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
@@ -647,14 +646,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
           return fail;
           
         fi;
+
+        # identify the homogeneous part of this matrix
+        required_degrees := List( UnzipDegreeList( Source( morphism1 ) ),
+                                i -> List( UnzipDegreeList( Source( morphism2 ) ), j -> i - j ) );
+        lift := HomogeneousPartOfMatrix( right_divide, required_degrees );
         
-        # and if not, then construct the lift-morphism
+        # and construct the lift
         return GradedRowOrColumnMorphism( Source( morphism1 ),
-                                                                        right_divide,
-                                                                        Source( morphism2 ),
-                                                                        checks
-                                                                       );
-        
+                                          lift,
+                                          Source( morphism2 ),
+                                          checks
+                                          );
+
     end );
     
     # @Description
@@ -664,7 +668,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Arguments morphism1, morphism2
     AddColift( category,
       function( morphism1, morphism2 )
-        local left_divide;
+        local left_divide, required_degrees, colift;
 
         # try to find a matrix that performs the colift
         left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
@@ -676,12 +680,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
         fi;
 
+        required_degrees := List( UnzipDegreeList( Range( morphism1 ) ),
+                                i -> List( UnzipDegreeList( Range( morphism2 ) ), j -> i - j ) );
+        colift := HomogeneousPartOfMatrix( left_divide, required_degrees );
+                                
         # if it did work, return the corresponding morphism
         return GradedRowOrColumnMorphism( Range( morphism1 ),
-                                                                        left_divide,
-                                                                        Range( morphism2 ),
-                                                                        checks
-                                                                       );
+                                                 colift,
+                                                 Range( morphism2 ),
+                                                 checks
+                                                 );
 
     end );
 
@@ -705,7 +713,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         kernel_matrix := SyzygiesOfRows( UnderlyingHomalgMatrix( morphism ) );
 
         # and from this deduce the mapping
-        return DeduceMapFromMatrixAndRangeLeft( kernel_matrix, Source( morphism ) );
+        return DeduceMapFromMatrixAndRangeForGradedRows( kernel_matrix, Source( morphism ) );
 
     end );
 
@@ -721,7 +729,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         cokernel_matrix := SyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ) );
 
         # and from this deduce the mapping
-        return DeduceMapFromMatrixAndSourceLeft( cokernel_matrix, Range( morphism ) );
+        return DeduceMapFromMatrixAndSourceForGradedRows( cokernel_matrix, Range( morphism ) );
 
     end );
 
@@ -788,7 +796,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
           od;
 
           # and from this deduce the projection map
-          return DeduceMapFromMatrixAndRangeLeft( projection_matrix, Source( morphism_list[ projection_number ] ) );
+          return DeduceMapFromMatrixAndRangeForGradedRows( projection_matrix, Source( morphism_list[ projection_number ] ) );
 
         fi;
 
@@ -904,7 +912,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
           od;
 
           # from this decude the injection
-          return DeduceMapFromMatrixAndSourceLeft( embedding_matrix, Range( morphism_list[ injection_number ] ) );
+          return DeduceMapFromMatrixAndSourceForGradedRows( embedding_matrix, Range( morphism_list[ injection_number ] ) );
 
         fi;
 
@@ -958,6 +966,41 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     end );
 
 
+    ######################################################################
+    #
+    # @Section Add BiasedWeakFibreProduct
+    #
+    ######################################################################
+
+    # @Description
+    # This method implements the projection of the biased weak fiber product onto the source of the 
+    # first morphism. By this we mean the following:
+    # Given morphisms m1: A to B and m2: C to B, we consider the diagram:
+    # P ------> C
+    # |         |
+    # g        m2
+    # |         |
+    # A --m1--> B
+    # We are interested in constructing a morphism g such that there exists a morphism d: P to C such that
+    # the above diagram commutes. However, we do not provide an algorithm to compute d.
+    # This morphism g must be universal in the sense that given another morphism tau: T -> A such that there 
+    # exists a morphism T -> C which makes the corresponding square commute, there exists a morphism
+    # u: T -> P such that g \circ u = tau. Note that u is not unique in this setup!
+    AddProjectionOfBiasedWeakFiberProduct( category,
+      function( morphism_1, morphism_2 )
+        local homalg_matrix, weak_cokernel_object;
+        
+        homalg_matrix := ReducedSyzygiesOfRows( UnderlyingHomalgMatrix( morphism_1 ), 
+                                                UnderlyingHomalgMatrix( morphism_2 ) );
+        
+        return DeduceMapFromMatrixAndRangeForGradedRows( homalg_matrix, Source( morphism_1 ) );
+        
+    end );
+
+
+    # Monoidal structure can be defined if the underlying ring of graded rows is commutative
+    # We are aware of the fact that this condition is in general not necessary.
+    if IsCommutative( UnderlyingNonGradedRing( category!.homalg_graded_ring_for_category_of_graded_rows ) ) then
 
     ######################################################################
     #
@@ -1231,4 +1274,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
     end );    
     
+    fi;
+
 end );
