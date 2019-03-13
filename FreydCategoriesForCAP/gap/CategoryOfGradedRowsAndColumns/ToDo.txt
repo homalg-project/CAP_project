@@ -2,13 +2,5 @@ TODO:
 
 Logic needed?
 
-(*) Check implementations of weak kernel embedding and weak cokernel projection
-(*) Implement ProjectionInBiasedWeakFibreProduct
-(*) Implement InjectionOfBiasedWeakPushout
-(*) Implement IsLiftable and IsColiftable
-(*) In case the underlying ring is commutative, the non-graded counter-part has special methods
--> implement these functions also for this graded counterpart
-
-Test BiasedWeakFiberProduct and UniversalMorphismIntoBiasedWeakFiberProduct for category of graded rows and columns
-
-Remove "left" and "right" remnants in Tools.gd and Tools.gi
+(*) Implement InjectionOfBiasedWeakPushout and thereby also BiasedWeakPushout
+(*) Remove "left" and "right" remnants in Tools.gd and Tools.gi
