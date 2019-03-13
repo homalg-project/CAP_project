@@ -743,22 +743,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # In case the fibre product of more than two morphisms is to be computed, we essentially derive it nevertheless.
     #
     ################################################################################################################
-
-    # @Description
-    # This method computes the (weak) fibre product of a list of morphisms <A>morphism_list</A>
-    # @Returns an object
-    # @Arguments morphism_list
-    AddFiberProduct( category,
-      function( morphism_list )
-
-        if Length( morphism_list ) = 0 then
-          return ZeroObject( category );
-        else
-          return Source( ProjectionInFactorOfFiberProduct( morphism_list, 1 ) );
-        fi;
-
-    end );
-
+    
     # @Description
     # This method computes the projection morphism from the (weak) fibre product 
     # of a list of morphisms <A>morphism_list</A> into its <A>projection_number</A>-th factor
@@ -860,22 +845,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # In case the pushout of more than two morphisms is to be computed, we essentially derive it nevertheless.
     #
     ################################################################################################################
-
-    # @Description
-    # This method computes the (weak) pushout of a list of morphisms <A>morphism_list</A>
-    # @Returns an object
-    # @Arguments morphism_list
-    AddPushout( category,
-      function( morphism_list )
-
-        if Length( morphism_list ) = 0 then
-          return ZeroObject( category );
-        else
-          return Range( InjectionOfCofactorOfPushout( morphism_list, 1 ) );
-        fi;
-
-    end );
-
+    
     # @Description
     # This method computes the injection of the <A>injection_number</A>-th cofactor of a (weak) pushout 
     # of a list of morphisms <A>morphism_list</A>
