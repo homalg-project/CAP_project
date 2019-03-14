@@ -1,17 +1,21 @@
 @Chapter CAP Categories
 
-@Chapter Category of Categories
+@Chapter Objects
 
 @Chapter Morphisms
 
-@Chapter Objects
-
 @Chapter Category 2-Cells
+
+@Chapter Category of Categories
 
 @Chapter Universal Objects
 
 @Chapter Tensor Product and Internal Hom
 
+@Chapter Add Functions
+
 @Chapter Managing Derived Methods
 
-@Chapter Add Functions
+@Chapter Technical Details
+
+@Chapter Examples and Tests
