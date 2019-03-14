@@ -184,7 +184,7 @@ InstallMethod( AddObject,
 end );
 
 InstallMethod( AddObject,
-               [ IsCapCategory, IsObject ],
+               [ IsCapCategory, IsAttributeStoringRep ],
                
   function( category, object )
     

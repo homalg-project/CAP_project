@@ -132,7 +132,7 @@ InstallMethod( AddMorphism,
 end );
 
 InstallMethod( AddMorphism,
-               [ IsCapCategory, IsObject ],
+               [ IsCapCategory, IsAttributeStoringRep ],
                
   function( category, morphism )
     
