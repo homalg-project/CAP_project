@@ -285,9 +285,15 @@ DeclareOperation( "AddIsEqualForCacheForObjects",
 ##
 ###################################
 
+#! @Description
+#!  Adds <A>object</A> as an object to <A>category</A>.
+#! @Arguments category, object
 DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
+#! @Description
+#!  Adds <A>object</A> as an object to <A>category</A>.
+#! @Arguments category, object
 DeclareOperation( "AddObject",
                   [ IsCapCategory, IsAttributeStoringRep ] );
 

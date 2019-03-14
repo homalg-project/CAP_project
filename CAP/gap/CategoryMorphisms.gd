@@ -417,9 +417,15 @@ DeclareOperation( "AddIsAutomorphism",
 ##
 ###################################
 
+#! @Description
+#!  Adds <A>morphism</A> as a morphism to <A>category</A>.
+#! @Arguments category, morphism
 DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryMorphism ] );
 
+#! @Description
+#!  Adds <A>morphism</A> as a morphism to <A>category</A>.
+#! @Arguments category, morphism
 DeclareOperation( "AddMorphism",
                   [ IsCapCategory, IsAttributeStoringRep ] );
 
