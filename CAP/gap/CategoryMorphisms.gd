@@ -413,6 +413,7 @@ DeclareOperation( "AddIsAutomorphism",
 ###################################
 ##
 #! @Section Adding Morphisms to a Category
+#! @SectionLabel Adding_Morphisms_to_a_Category
 ##
 ###################################
 

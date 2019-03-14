@@ -258,6 +258,7 @@ DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
 #############################################
 ##
 #! @Section Logic switcher
+#! @SectionLabel Logic_switcher
 ##
 #############################################
 
@@ -318,6 +319,7 @@ DeclareProperty( "IsWellDefined",
 ####################################
 ##
 #! @Section Caching
+#! @SectionLabel Caching
 ##
 ####################################
 
@@ -333,14 +335,26 @@ DeclareOperation( "SetCachingToCrisp",
 DeclareOperation( "DeactivateCaching",
                   [ IsCapCategory, IsString ] );
 
+#! @Description
+#!  Sets the caching of <A>category</A> to <A>type</A>.
+#! @Arguments category, type
 DeclareGlobalFunction( "SetCachingOfCategory" );
+
+#! @BeginGroup
+#! @Description
+#!  Sets the caching of <A>category</A> to <C>weak</C>, <C>crips</C> or <C>none</C>, respectively.
+#! @Arguments category
 DeclareGlobalFunction( "SetCachingOfCategoryWeak" );
+#! @Arguments category
 DeclareGlobalFunction( "SetCachingOfCategoryCrisp" );
+#! @Arguments category
 DeclareGlobalFunction( "DeactivateCachingOfCategory" );
+#! @EndGroup
 
 ####################################
 ##
 #! @Section Sanity checks
+#! @SectionLabel Sanity_checks
 ##
 ####################################
 
@@ -379,6 +393,7 @@ DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
 #############################################
 ##
 #! @Section Enable automatic calls of <C>Add</C>
+#! @SectionLabel Automatic_adds
 ##
 #############################################
 
@@ -398,3 +413,23 @@ DeclareGlobalFunction( "EnableAddForCategoricalOperations" );
 DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #! @EndGroup
 
+
+#############################################
+##
+#! @Section Performance tweaks
+##
+#############################################
+
+#!  CAP has several settings which can improve the performance.
+#!  In the following some of these are listed.
+#!    * <C>DeactivateCachingOfCategory</C>: see <Ref Sect="Section_Caching" />.
+#!        This can either improve or degrade the performance depending on the concrete example.
+#!    * <C>CapCategorySwitchLogicOff</C>: see <Ref Sect="Section_Logic_switcher" />.
+#!        This can either improve or degrade the performance depending on the concrete example.
+#!    * <C>DisableSanityChecks</C>: see <Ref Sect="Section_Sanity_checks" />.
+#!    * <C>DisableAddForCategoricalOperations</C>: see <Ref Sect="Section_Automatic_adds" />.
+#!    * <C>DeactivateToDoList</C>: see the package <C>ToolsForHomalg</C>.
+#!    * use <C>ObjectifyObjectForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />)
+#!        instead of <C>AddObject</C> and
+#!        <C>ObjectifyMorphismForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />)
+#!        instead of <C>AddMorphism</C>.
