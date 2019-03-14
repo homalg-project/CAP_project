@@ -75,7 +75,7 @@ DeclareCategory( "IsCapCategory",
 #! of a CAP category lies in this GAP category.
 #! @Arguments object
 DeclareCategory( "IsCapCategoryCell",
-                 IsObject );
+                 IsAttributeStoringRep );
 
 #! @Description
 #! The GAP category of CAP category objects.

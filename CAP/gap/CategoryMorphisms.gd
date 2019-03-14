@@ -421,7 +421,7 @@ DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryMorphism ] );
 
 DeclareOperation( "AddMorphism",
-                  [ IsCapCategory, IsObject ] );
+                  [ IsCapCategory, IsAttributeStoringRep ] );
 
 #! @Arguments category, filter
 #! @Description

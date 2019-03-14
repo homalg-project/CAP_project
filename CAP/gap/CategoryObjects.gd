@@ -289,7 +289,7 @@ DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
 DeclareOperation( "AddObject",
-                  [ IsCapCategory, IsObject ] );
+                  [ IsCapCategory, IsAttributeStoringRep ] );
 
 #! @Arguments category, filter
 #! @Description
