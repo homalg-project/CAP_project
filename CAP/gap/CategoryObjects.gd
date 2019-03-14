@@ -281,6 +281,7 @@ DeclareOperation( "AddIsEqualForCacheForObjects",
 ###################################
 ##
 #! @Section Adding Objects to a Category
+#! @SectionLabel Adding_Objects_to_a_Category
 ##
 ###################################
 
