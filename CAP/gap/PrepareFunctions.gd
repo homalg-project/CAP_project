@@ -5,7 +5,7 @@
 ##  Copyright 2017, Sebastian Gutsche, Siegen University
 ##                  Sebastian Posur,   Siegen University
 ##
-#! @Chapter Prepare functions
+#! @Chapter Add Functions
 ##
 #############################################################################
 

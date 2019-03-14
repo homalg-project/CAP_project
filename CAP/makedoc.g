@@ -8,7 +8,7 @@ AutoDoc( "CAP" :
           ),
          autodoc :=
          rec( files := [ "doc/Intros.autodoc" ],
-         scan_dirs := [ "gap", "examples/testfiles", "doc" ] ),
+         scan_dirs := [ "doc", "gap", "examples/testfiles" ] ),
          maketest := rec( commands :=
                             [ "LoadPackage( \"CAP\" );",
                               "LoadPackage( \"IO_ForHomalg\" );",
