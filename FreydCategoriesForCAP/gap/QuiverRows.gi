@@ -19,6 +19,12 @@ InstallMethod( QuiverRows,
   function( underlying_quiver_algebra )
     local underlying_quiver, category;
     
+    if not IsFiniteDimensional( underlying_quiver_algebra ) then
+        
+        Error( "the given quiver has to be finite dimensional\n" );
+        
+    fi;
+    
     underlying_quiver := QuiverOfAlgebra( underlying_quiver_algebra );
     
     category := CreateCapCategory( Concatenation( "QuiverRows( ", String( underlying_quiver_algebra )," )"  ) );
@@ -220,6 +226,73 @@ InstallMethod( \[\],
     
 end );
 
+##
+InstallMethod( AsListListOfMatrices,
+                [ IsQuiverRowsMorphism ],
+  function( alpha )
+    local list_source, list_range, row_intervals, boundary, i, col_intervals, listlist, intr, intc, mat, row;
+    
+    list_source := ListOfQuiverVertices( Source( alpha ) );
+    
+    if IsEmpty( list_source ) then
+        
+        return [];
+        
+    fi;
+    
+    list_range := ListOfQuiverVertices( Range( alpha ) );
+    
+    if IsEmpty( list_range ) then
+        
+        return [];
+        
+    fi;
+    
+    row_intervals := [];
+    
+    boundary := 0;
+    
+    for i in [ 1 .. Size( list_source ) ] do
+        
+        boundary := boundary + 1;
+        
+        row_intervals[i] := [ boundary .. boundary + (list_source[i][2] - 1) ];
+        
+    od;
+    
+    col_intervals := [];
+    
+    boundary := 0;
+    
+    for i in [ 1 .. Size( list_range ) ] do
+        
+        boundary := boundary + 1;
+        
+        col_intervals[i] := [ boundary .. boundary + (list_range[i][2] - 1) ];
+        
+    od;
+    
+    mat := MorphismMatrix( alpha );
+    
+    listlist := [];
+    
+    for intr in row_intervals do
+        
+        row := [];
+        
+        for intc in col_intervals do
+            
+            Add( row, List( mat{intr}, r -> r{intc} ) );
+            
+        od;
+        
+        Add( listlist, row );
+        
+    od;
+    
+    return listlist;
+    
+end );
 
 
 ####################################
@@ -232,13 +305,120 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
   
   function( category )
-    local algebra, quiver, zero, IDENTITY_MATRIX_QUIVER_ROWS, ZERO_MATRIX_QUIVER_ROWS;
+    local algebra, quiver, zero, IDENTITY_MATRIX_QUIVER_ROWS, ZERO_MATRIX_QUIVER_ROWS,
+          vertices, basis, basis_paths_by_vertex_index, path, MATRIX_FOR_ALGEBROID_HOMSTRUCTURE, hom_structure_algebroid,
+          object_constructor, ring, morphism_constructor, hom_structure_range_category, hom_structure_on_morphisms_for_pure_components;
     
     algebra := UnderlyingQuiverAlgebra( category );
+    
+    ring := LeftActingDomain( algebra );
     
     quiver := UnderlyingQuiver( category );
     
     zero := Zero( algebra );
+    
+    ## prepare the homomorphism structure
+    
+    ## storing the basis paths
+    ## basis_paths_by_vertex_index[ v_index ][ w_index ] = [ p_1:v -> w, p_2:v -> w, ... ]
+    vertices := Vertices( quiver );
+    
+    basis := BasisPaths( CanonicalBasis( algebra ) );
+    
+    basis_paths_by_vertex_index := List( vertices, i -> List( vertices, i -> [ ] ) );
+    
+    for path in basis do
+        
+        Add( basis_paths_by_vertex_index[ VertexNumber( Source( path ) ) ][ VertexNumber( Target( path ) ) ], path );
+        
+    od;
+    
+    ## precomputing matrices for the hom structure of the algebroid
+    ## hom_structure_algebroid[ v_index ][ w_index ][ v'_index ][ w'_index ][ path_1_index ][ path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> path_1 * x * path_2 ]
+    
+    MATRIX_FOR_ALGEBROID_HOMSTRUCTURE := function( v, w, vp, wp, path_1, path_2 )
+        local mat, hom_v_w, hom_vp_wp, alpha, beta, path;
+        
+        mat := [];
+        
+        hom_v_w := basis_paths_by_vertex_index[ VertexNumber( v ) ][ VertexNumber( w ) ];
+        
+        if IsEmpty( hom_v_w ) then
+            
+            return mat;
+            
+        fi;
+        
+        hom_vp_wp := basis_paths_by_vertex_index[ VertexNumber( vp ) ][ VertexNumber( wp ) ];
+        
+        if IsEmpty( hom_vp_wp ) then
+            
+            return mat;
+            
+        fi;
+        
+        alpha := PathAsAlgebraElement( algebra, path_1 );
+        
+        beta := PathAsAlgebraElement( algebra, path_2 );
+        
+        if IsQuotientOfPathAlgebra( algebra ) then
+            
+            for path in hom_v_w do
+                
+                Add( mat,
+                  CoefficientsOfPaths( hom_vp_wp, Representative( alpha * PathAsAlgebraElement( algebra, path ) * beta ) )
+                );
+                
+            od;
+            
+        else
+            
+            for path in hom_v_w do
+                
+                Add( mat,
+                  CoefficientsOfPaths( hom_vp_wp, ( alpha * PathAsAlgebraElement( algebra, path ) * beta ) )
+                );
+                
+            od;
+            
+        fi;
+        
+        return mat;
+        
+    end;
+    
+    hom_structure_algebroid :=
+        List( vertices, v ->
+            List( vertices, w ->
+                List( vertices, vp ->
+                    List( vertices, wp ->
+                        List( basis_paths_by_vertex_index[ VertexNumber( v ) ][ VertexNumber( w ) ], path_1 ->
+                            List( basis_paths_by_vertex_index[ VertexNumber( vp ) ][ VertexNumber( wp ) ], path_2 ->
+                                MATRIX_FOR_ALGEBROID_HOMSTRUCTURE( v, w, vp, wp, path_1, path_2 )
+                            )
+                        )
+                    )
+                )
+            )
+        );
+    
+    ## object constructor for hom structure
+    
+    hom_structure_range_category := MatrixCategory( ring );
+    
+    ##
+    object_constructor := function( n )
+        
+        return VectorSpaceObject( n, ring );
+        
+    end;
+    
+    ##
+    morphism_constructor := function( source, mat, range )
+        
+        return VectorSpaceMorphism( source, mat, range );
+        
+    end;
     
     ##
     ZERO_MATRIX_QUIVER_ROWS := function( nr_rows, nr_cols )
@@ -630,7 +810,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     # ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( diagram, source, direct_sum )
-        local test_object, mat;
+        local test_object, mat, nr_rows;
         
         test_object := Source( source[1] );
         
@@ -666,6 +846,269 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         return QuiverRowsMorphism( direct_sum, mat, test_object );
         
     end );
+    
+    AddHomomorphismStructureOnObjects( category,
+      function( A, B )
+        local listA, listB, rank, a, b;
+        
+        listA := ListOfQuiverVertices( A );
+        
+        listB := ListOfQuiverVertices( B );
+        
+        rank := 0;
+        
+        for a in listA do
+            
+            for b in listB do
+                
+                rank := rank + Size( basis_paths_by_vertex_index[ VertexNumber( a[1] ) ][ VertexNumber( b[1] ) ] ) * a[2] * b[2] ;
+                
+            od;
+            
+        od;
+        
+        return object_constructor( rank );
+        
+    end );
+    
+    ## expects only non-zero cases
+    hom_structure_on_morphisms_for_pure_components := function( alpha, beta, listi, listj, listk, listl )
+        local j, k, i, l, a, b, c, d, alpha_ij, beta_kl, row, entry, row_counts, col_counts,
+              basis_vp_v, basis_w_wp, basis_v_w, m, basis_vp_wp, n, mat, vp, v, w, wp, coeffs_alpha, coeffs_beta, p, q;
+        
+        a := listj[2];
+        
+        b := listk[2];
+        
+        c := listi[2];
+        
+        d := listl[2];
+        
+        vp := listi[1];
+        
+        v := listj[1];
+        
+        w := listk[1];
+        
+        wp := listl[1];
+        
+        basis_vp_v := basis_paths_by_vertex_index[ VertexNumber(vp) ][ VertexNumber( v )];
+        
+        basis_w_wp := basis_paths_by_vertex_index[ VertexNumber(w) ][ VertexNumber( wp )];
+        
+        basis_v_w := basis_paths_by_vertex_index[ VertexNumber(v) ][ VertexNumber( w )];
+        
+        m := Size( basis_v_w );
+        
+        basis_vp_wp := basis_paths_by_vertex_index[ VertexNumber(vp) ][ VertexNumber( wp )];
+        
+        n := Size( basis_vp_wp );
+        
+        mat := [];
+        
+        for j in [ 1 .. a ] do
+            
+            for k in [ 1 .. b ] do
+                
+                row := [];
+                
+                for i in [ 1 .. c ] do
+                    
+                    for l in [ 1 .. d ] do
+                        
+                        ## create dummy zero mat
+                        entry := NullMat( m, n );
+                        
+                        alpha_ij := alpha[i][j];
+                        
+                        if not IsZero( alpha_ij ) then
+                            
+                            beta_kl := beta[k][l];
+                            
+                            if not IsZero( beta_kl ) then
+                                
+                                coeffs_alpha := CoefficientsOfPaths( basis_vp_v, alpha_ij );
+                                
+                                coeffs_beta := CoefficientsOfPaths( basis_w_wp, beta_kl );
+                                
+                                for p in [ 1 .. Size( basis_vp_v ) ] do
+                                    
+                                    for q in [ 1 .. Size( basis_w_wp ) ] do
+                                        
+                                        entry := entry + 
+                                            coeffs_alpha[p] * coeffs_beta[q] *
+                                            hom_structure_algebroid[ VertexNumber(v) ][ VertexNumber(w) ][ VertexNumber(vp) ][ VertexNumber(wp) ][ p ][ q ];
+                                        
+                                    od;
+                                    
+                                od;
+                                
+                            fi;
+                            
+                        fi;
+                        
+                        Add( row, entry );
+                        
+                    od;
+                    
+                od;
+                
+                Add( mat, row );
+                
+            od;
+            
+        od;
+        
+        row_counts := List( mat, r -> Size( r[1] ) );
+        
+        col_counts := List( mat[1], m -> Size( m[1] ) );
+        
+        return CAP_INTERNAL_MORPHISM_BETWEEN_DIRECT_SUMS_LIST_LIST( row_counts, mat, col_counts );
+        
+    end;
+    
+    ##
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
+      function( hom_source, alpha, beta, hom_range )
+        local listj, listk, listi, listl, listjk, listil, mat, j, k, row, i, l, row_counts, col_counts, alpham, betam, entry;
+        
+        listi := ListOfQuiverVertices( Source( alpha ) );
+        
+        listj := ListOfQuiverVertices( Range( alpha ) );
+        
+        listk := ListOfQuiverVertices( Source( beta ) );
+        
+        listl := ListOfQuiverVertices( Range( beta ) );
+        
+        ##
+        row_counts := [];
+        
+        for j in [ 1 .. Size( listj ) ] do
+            
+            for k in [ 1 .. Size( listk ) ] do
+                
+                Add( row_counts, listj[j][2] * listk[k][2] * Size( basis_paths_by_vertex_index[ VertexNumber( listj[j][1] ) ][ VertexNumber( listk[k][1] ) ] ) );
+                
+            od;
+            
+        od;
+        
+        col_counts := [];
+        
+        for i in [ 1 .. Size( listi ) ] do
+            
+            for l in [ 1 .. Size( listl ) ] do
+                
+                Add( col_counts, listi[i][2] * listl[l][2] * Size( basis_paths_by_vertex_index[ VertexNumber( listi[i][1] ) ][ VertexNumber( listl[l][1] ) ] ) );
+                
+            od;
+            
+        od;
+        
+        ##
+        alpham := AsListListOfMatrices( alpha );
+        
+        betam := AsListListOfMatrices( beta );
+        
+        mat := [];
+        
+        for j in [ 1 .. Size( listj ) ] do
+            
+            for k in [ 1 .. Size( listk ) ] do
+                
+                row := [];
+                
+                if row_counts[(j-1)*Size( listk ) + k] > 0 then
+                    
+                    for i in [ 1 .. Size( listi ) ] do
+                        
+                        for l in [ 1 .. Size( listl ) ] do
+                            
+                            entry := [];
+                            
+                            if col_counts[(i-1)*Size( listl ) + l] > 0 then
+                                
+                                entry := hom_structure_on_morphisms_for_pure_components(
+                                    alpham[i][j], betam[k][l], listi[i], listj[j], listk[k], listl[l]
+                                );
+                                
+                            fi;
+                            
+                            Add( row, entry );
+                            
+                        od;
+                        
+                    od;
+                    
+                fi;
+                
+                Add( mat, row );
+                
+            od;
+            
+        od;
+        
+        mat := CAP_INTERNAL_MORPHISM_BETWEEN_DIRECT_SUMS_LIST_LIST(
+            row_counts, mat, col_counts
+        );
+        
+        return morphism_constructor( hom_source, mat, hom_range );
+        
+    end );
+    
+end );
+
+
+####################################
+##
+## Helper
+##
+####################################
+
+InstallGlobalFunction( CAP_INTERNAL_MORPHISM_BETWEEN_DIRECT_SUMS_LIST_LIST,
+  function( row_counts, matrix, col_counts )
+    local nr_rows, nr_cols, row_count_indices, col_count_indices, result_mat, r;
+    
+    nr_rows := Size( row_counts );
+    
+    nr_cols := Size( col_counts );
+    
+    row_count_indices := Filtered( [ 1 .. nr_rows ], i -> row_counts[i] > 0 );
+    
+    if IsEmpty( row_count_indices ) then
+        
+        return [];
+        
+    fi;
+    
+    col_count_indices := Filtered( [ 1 .. nr_cols ], i -> col_counts[i] > 0 );
+    
+    if IsEmpty( col_count_indices ) then
+        
+        return [];
+        
+    fi;
+    
+    matrix := matrix{row_count_indices};
+    
+    matrix := List( matrix, r -> r{col_count_indices} );
+    
+    nr_rows := Size( row_count_indices );
+    
+    nr_cols := Size( col_count_indices );
+    
+    result_mat := [];
+    
+    for r in [ 1 .. nr_rows ] do
+        
+        Append( result_mat,
+                List( [ 1 .. row_counts[row_count_indices[r]] ],
+                i -> Concatenation( List( matrix[r], mat -> mat[i] ) ) )
+        );
+        
+    od;
+    
+    return result_mat;
     
 end );
 

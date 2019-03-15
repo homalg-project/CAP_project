@@ -73,6 +73,9 @@ DeclareAttribute( "NrRows",
 DeclareAttribute( "NrColumns",
                   IsQuiverRowsMorphism );
 
+DeclareAttribute( "AsListListOfMatrices",
+                  IsQuiverRowsMorphism );
+
 ####################################
 ##
 #! @Section Operators
@@ -84,3 +87,7 @@ DeclareOperation( "\[\]",
 
 DeclareOperation( "\[\]",
                   [ IsQuiverRowsObject, IsInt ] );
+
+DeclareGlobalFunction( "CAP_INTERNAL_MORPHISM_BETWEEN_DIRECT_SUMS_LIST_LIST" );
+
+DeclareGlobalFunction( "CAP_INTERNAL_QUIVER_ROWS_MORPHISM_AS_LIST_LIST" );
