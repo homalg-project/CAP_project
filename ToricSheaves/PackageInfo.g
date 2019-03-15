@@ -12,6 +12,7 @@ PackageName := "ToricSheaves",
 Subtitle := "Toric sheaves as Serre quotients",
 Version := "2016.08.12",
 Date := "12/08/2016", # dd/mm/yyyy format
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(

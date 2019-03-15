@@ -14,6 +14,7 @@ Version := Maximum( [
            "2017.04.10" # Sepps version
            ] ),
 Date := "04/04/2017", # dd/mm/yyyy format
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
