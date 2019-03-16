@@ -36,4 +36,12 @@ ForAll( [ 1, 2 ], i ->
     )
 );
 #! true
+Lift( c, d );
+#! fail
+Lift( d, c );
+#! 0
+Colift( c, d );
+#! 0
+Colift( d, c );
+#! fail
 #! @EndExample
