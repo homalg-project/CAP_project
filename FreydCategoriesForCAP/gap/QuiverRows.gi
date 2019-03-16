@@ -142,6 +142,49 @@ InstallMethod( QuiverRowsMorphism,
 end );
 
 ##
+InstallMethod( AsQuiverRowsObject,
+               [ IsQuiverVertex, IsQuiverRowsCategory ],
+               
+  function( v, category )
+    
+    return QuiverRowsObject( [ [ v, 1 ] ], category );
+    
+end );
+
+##
+InstallMethod( AsQuiverRowsMorphism,
+               [ IsQuiverAlgebraElement, IsQuiverRowsCategory ],
+               
+  function( m, category )
+    local v, w;
+    
+    if IsZero( m ) then
+        
+        Error( "cannot create a morphism form 0 since the information about source and range is not deducable\n" );
+        
+    fi;
+    
+    if not IsUniform( m ) then
+        
+        Error( "the given element is not uniform\n" );
+        
+    fi;
+    
+    if IsQuotientOfPathAlgebraElement( m ) then
+        
+        m := Representative( m );
+        
+    fi;
+    
+    v := Source( LeadingPath( m ) );
+    
+    w := Target( LeadingPath( m ) );
+    
+    return QuiverRowsMorphism( AsQuiverRowsObject( v, category ), [ [ m ] ], AsQuiverRowsObject( w, category ) );
+    
+end );
+
+##
 InstallMethod( NrRows,
                [ IsQuiverRowsMorphism ],
                

@@ -37,14 +37,14 @@ DeclareAttribute( "QuiverRows",
 DeclareOperation( "QuiverRowsObject",
                   [ IsList, IsQuiverRowsCategory ] );
 
-DeclareAttribute( "AsQuiverRowsObject",
-                  IsQuiverVertex );
+DeclareOperation( "AsQuiverRowsObject",
+                  [ IsQuiverVertex, IsQuiverRowsCategory ] );
 
 DeclareOperation( "QuiverRowsMorphism",
                   [ IsQuiverRowsObject, IsList, IsQuiverRowsObject ] );
 
-DeclareAttribute( "AsQuiverRowsMorphism",
-                  IsQuiverAlgebraElement );
+DeclareOperation( "AsQuiverRowsMorphism",
+                  [ IsQuiverAlgebraElement, IsQuiverRowsCategory ] );
 
 ####################################
 ##
