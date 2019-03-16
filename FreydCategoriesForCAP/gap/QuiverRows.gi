@@ -156,7 +156,7 @@ InstallMethod( AsQuiverRowsMorphism,
                [ IsQuiverAlgebraElement, IsQuiverRowsCategory ],
                
   function( m, category )
-    local v, w;
+    local v, w, m_rep;
     
     if IsZero( m ) then
         
@@ -172,13 +172,13 @@ InstallMethod( AsQuiverRowsMorphism,
     
     if IsQuotientOfPathAlgebraElement( m ) then
         
-        m := Representative( m );
+        m_rep := Representative( m );
         
     fi;
     
-    v := Source( LeadingPath( m ) );
+    v := Source( LeadingPath( m_rep ) );
     
-    w := Target( LeadingPath( m ) );
+    w := Target( LeadingPath( m_rep ) );
     
     return QuiverRowsMorphism( AsQuiverRowsObject( v, category ), [ [ m ] ], AsQuiverRowsObject( w, category ) );
     
@@ -209,6 +209,7 @@ InstallMethod( \[\],
                [ IsQuiverRowsMorphism, IsInt ],
                
   function( morphism, i )
+    local nr_cols, mat, zero;
     
     if not ( i >= 1 ) and ( i <= NrRows( morphism ) ) then
         
@@ -216,13 +217,25 @@ InstallMethod( \[\],
         
     fi;
     
-    if NrColumns( morphism ) = 0 then
+    nr_cols := NrColumns( morphism );
+    
+    if nr_cols = 0 then
         
         return [ ];
         
     fi;
     
-    return MorphismMatrix( morphism )[i];
+    mat := MorphismMatrix( morphism );
+    
+    zero := Zero( UnderlyingQuiverAlgebra( CapCategory( morphism ) ) );
+    
+    if IsEmpty( mat ) then
+        
+        return List( [ 1 .. nr_cols ], i -> zero );
+        
+    fi;
+    
+    return mat[i];
     
 end );
 
@@ -606,6 +619,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
                 
                 m := matrix[i][j];
                 
+                ##TODO: in operator does not distinguish between quotient and non-quotient algebra
                 if not (m in algebra) then
                     Print( "1");
                     return false;
