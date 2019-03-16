@@ -7,10 +7,10 @@ if fail = LoadPackage("AutoDoc", "2016.02.16") then
     Error("AutoDoc version 2016.02.16 or newer is required.");
 fi;
 
-AutoDoc( 
+AutoDoc(
         rec(
-            scaffold := rec( gapdoc_latex_options := rec( 
-                             LateExtraPreamble := "\\usepackage{amsmath}\\usepackage[T1]{fontenc}\n\\usepackage{tikz}\n\\usetikzlibrary{shapes,arrows,matrix}\n\\usepackage{faktor}" 
+            scaffold := rec( gapdoc_latex_options := rec(
+                             LateExtraPreamble := "\\usepackage{amsmath}\\usepackage[T1]{fontenc}\n\\usepackage{tikz}\n\\usetikzlibrary{shapes,arrows,matrix}\n\\usepackage{faktor}"
                                                         ),
                              entities := [ "GAP4", "CAP", "homalg" ],
                              ),
@@ -26,11 +26,14 @@ AutoDoc(
                                 "gap/SymmetricMonoidalCategoriesDoc.gd",
                                 "gap/ClosedMonoidalCategoriesDoc.gd",
                                 "gap/ClosedMonoidalCategories.gd",
-                                "gap/SymmetricClosedMonoidalCategoriesDoc.gd",
-                                "gap/RigidSymmetricClosedMonoidalCategoriesDoc.gd",
-                                "gap/RigidSymmetricClosedMonoidalCategories.gd",
                                 "gap/CoclosedMonoidalCategoriesDoc.gd",
                                 "gap/CoclosedMonoidalCategories.gd",
+                                "gap/SymmetricClosedMonoidalCategoriesDoc.gd",
+                                "gap/SymmetricCoclosedMonoidalCategoriesDoc.gd",
+                                "gap/RigidSymmetricClosedMonoidalCategoriesDoc.gd",
+                                "gap/RigidSymmetricClosedMonoidalCategories.gd",
+                                "gap/RigidSymmetricCoclosedMonoidalCategoriesDoc.gd",
+                                "gap/RigidSymmetricCoclosedMonoidalCategories.gd",
                                 ],
                             scan_dirs := [ ],
                             ),
