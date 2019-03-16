@@ -7,7 +7,7 @@
 ##
 InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES,
   function( key_val_rec )
-    local L, name;
+    local L, name, pos;
     
     L := [ "IsMonoidalCategory",
            "IsStrictMonoidalCategory",
@@ -22,9 +22,9 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES,
            "Distributivity",
            "DirectSum",
            "Braiding",
-           "Lambda",
-           "Evaluation",
-           "Coevaluation",
+           ["Lambda", "CoLambda"],
+           ["Evaluation", "CoclosedEvaluation"],
+           ["Coevaluation", "CoclosedCoevaluation"],
            "MONOIDAL",
            "Monoidal",
            "monoidal",
@@ -39,7 +39,19 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES,
            ];
     
     for name in L do
-        if not IsBound( key_val_rec.(name) ) then
+        if IsList( name ) and not IsString( name) then
+            if not IsBound( key_val_rec.( name[1] ) ) then
+                if not IsBound( key_val_rec.( name[2] ) ) then
+                    Error( "both components with the names ", name[1], " and ", name[2], " are missing in the given key_value_record record\n" );
+                else
+                    pos := Position(L, name);
+                    L[pos] := name[2];
+                fi;
+            else
+                pos := Position(L, name);
+                L[pos] := name[1];
+            fi;
+        elif not IsBound( key_val_rec.(name) ) then
             Error( "the component with the name ", name, " is missing in the given key_value_record record\n" );
         fi;
     od;
