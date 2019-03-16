@@ -307,7 +307,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
   function( category )
     local algebra, quiver, zero, IDENTITY_MATRIX_QUIVER_ROWS, ZERO_MATRIX_QUIVER_ROWS,
           vertices, basis, basis_paths_by_vertex_index, path, MATRIX_FOR_ALGEBROID_HOMSTRUCTURE, hom_structure_algebroid,
-          object_constructor, ring, morphism_constructor, hom_structure_range_category, hom_structure_on_morphisms_for_pure_components;
+          object_constructor, ring, morphism_constructor, hom_structure_range_category, hom_structure_on_morphisms_for_pure_components,
+          distinguished_object, representative_func;
     
     algebra := UnderlyingQuiverAlgebra( category );
     
@@ -419,6 +420,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         return VectorSpaceMorphism( source, mat, range );
         
     end;
+    
+    distinguished_object := TensorUnit( hom_structure_range_category );
+    
+    ##
+    if IsQuotientOfPathAlgebra( algebra ) then
+        
+        representative_func := Representative;
+        
+    else
+        
+        representative_func := IdFunc;
+        
+    fi;
     
     ##
     ZERO_MATRIX_QUIVER_ROWS := function( nr_rows, nr_cols )
@@ -1053,6 +1067,120 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         );
         
         return morphism_constructor( hom_source, mat, hom_range );
+        
+    end );
+    
+    ##
+    AddDistinguishedObjectOfHomomorphismStructure( category,
+      function( )
+        
+        return distinguished_object;
+        
+    end );
+    
+    ##
+    AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+      function( alpha )
+        local listlist, lists, listr, row, i, j, submat, basis, c, a;
+        
+        listlist := AsListListOfMatrices( alpha );
+        
+        lists := ListOfQuiverVertices( Source( alpha ) );
+        
+        listr := ListOfQuiverVertices( Range( alpha ) );
+        
+        row := [];
+        
+        for i in [ 1 .. Size( lists ) ] do
+            
+            for j in [ 1 .. Size( listr ) ] do
+                
+                submat := listlist[i][j];
+                
+                basis := basis_paths_by_vertex_index[ VertexNumber( lists[i][1] ) ][ VertexNumber( listr[j][1] ) ];
+                
+                for c in [ 1 .. lists[i][2] ] do
+                    
+                    for a in [ 1 .. listr[j][2] ] do
+                        
+                        Append( row, CoefficientsOfPaths( basis, representative_func( submat[c][a] ) ) );
+                        
+                    od;
+                    
+                od;
+                
+            od;
+            
+        od;
+        
+        return morphism_constructor( distinguished_object, row, object_constructor( Size( row ) ) );
+        
+    end );
+    
+    ##
+    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+      function( A, B, morphism )
+        local coeffs, lists, listr, mat, pos, i, row, j, submat, basis, c, submatrow, a,
+              entry, row_counts, col_counts;
+        
+        ## this works for range categories with attribute UnderlyingMatrix
+        coeffs := EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
+        
+        lists := ListOfQuiverVertices( A );
+        
+        listr := ListOfQuiverVertices( B );
+        
+        mat := [];
+        
+        pos := 1;
+        
+        for i in [ 1 .. Size( lists ) ] do
+            
+            row := [];
+            
+            for j in [ 1 .. Size( listr ) ] do
+                
+                submat := [];
+                
+                basis := basis_paths_by_vertex_index[ VertexNumber( lists[i][1] ) ][ VertexNumber( listr[j][1] ) ];
+                
+                for c in [ 1 .. lists[i][2] ] do
+                    
+                    submatrow := [];
+                    
+                    for a in [ 1 .. listr[j][2] ] do
+                        
+                        entry := coeffs{ [ pos .. pos + ( Size( basis ) - 1 ) ] };
+                        
+                        entry := QuiverAlgebraElement( algebra, entry, basis );
+                        
+                        Add( submatrow, entry );
+                        
+                        pos := pos + Size( basis );
+                        
+                    od;
+                    
+                    Add( submat, submatrow );
+                    
+                od;
+                
+                Add( row, submat );
+                
+            od;
+            
+            Add( mat, row );
+            
+        od;
+        
+        row_counts := List( lists, i -> i[2] );
+        
+        col_counts := List( listr, i -> i[2] );
+        
+        mat := CAP_INTERNAL_MORPHISM_BETWEEN_DIRECT_SUMS_LIST_LIST(
+            row_counts, mat, col_counts
+        );
+        
+        return QuiverRowsMorphism( A, mat, B );
         
     end );
     

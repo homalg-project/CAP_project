@@ -68,6 +68,13 @@ IsCongruentForMorphisms(
     IdentityMorphism( DirectSum( L ) )
 );
 #! true
+IsCongruentForMorphisms(
+    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( obj1, obj2, 
+        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( alpha )
+    ),
+    alpha
+);
+#! true
 
 ## quiver with relations
 quiver := RightQuiver( 
