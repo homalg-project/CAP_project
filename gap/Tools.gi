@@ -10,7 +10,7 @@ InstallGlobalFunction( CreateFilesForToposesPackage,
 
 ##
 WriteFileForMonoidalStructure(
-        rec( 
+        rec(
              IsMonoidalCategory := "IsCartesianCategory",
              IsStrictMonoidalCategory := "IsStrictCartesianCategory",
              IsBraidedMonoidalCategory := "IsCartesianCategory",
@@ -65,7 +65,7 @@ WriteFileForMonoidalStructure(
 
 ##
 WriteFileForClosedMonoidalStructure(
-        rec( 
+        rec(
              IsMonoidalCategory := "IsCartesianCategory",
              IsStrictMonoidalCategory := "IsStrictCartesianCategory",
              IsBraidedMonoidalCategory := "IsCartesianCategory",
@@ -120,7 +120,7 @@ WriteFileForClosedMonoidalStructure(
 
 ##
 WriteFileForMonoidalStructure(
-        rec( 
+        rec(
              IsMonoidalCategory := "IsCocartesianCategory",
              IsStrictMonoidalCategory := "IsStrictCocartesianCategory",
              IsBraidedMonoidalCategory := "IsCocartesianCategory",
@@ -134,9 +134,9 @@ WriteFileForMonoidalStructure(
              Distributivity := "CocartesianDistributivity",
              DirectSum := "DirectProduct",
              Braiding := "CocartesianBraiding",
-             Lambda := "CocartesianLambda",
-             Evaluation := "CocartesianEvaluation",
-             Coevaluation := "CocartesianCoevaluation",
+             CoLambda := "CocartesianLambda",
+             CoclosedEvaluation := "CocartesianEvaluation",
+             CoclosedCoevaluation := "CocartesianCoevaluation",
              MONOIDAL := "COCARTESIAN",
              Monoidal := "Cocartesian",
              monoidal := "cocartesian",
@@ -175,7 +175,7 @@ WriteFileForMonoidalStructure(
 
 ##
 WriteFileForCoclosedMonoidalStructure(
-        rec( 
+        rec(
              IsMonoidalCategory := "IsCocartesianCategory",
              IsStrictMonoidalCategory := "IsStrictCocartesianCategory",
              IsBraidedMonoidalCategory := "IsCocartesianCategory",
@@ -191,17 +191,17 @@ WriteFileForCoclosedMonoidalStructure(
              Distributivity := "CocartesianDistributivity",
              DirectSum := "DirectProduct",
              Braiding := "CocartesianBraiding",
-             Lambda := "CocartesianLambda",
-             Evaluation := "CocartesianEvaluation",
-             Coevaluation := "CocartesianCoevaluation",
+             CoLambda := "CocartesianLambda",
+             CoclosedEvaluation := "CocartesianEvaluation",
+             CoclosedCoevaluation := "CocartesianCoevaluation",
              InternalCoHom := "Coexponential",
              COCLOSED_MONOIDAL := "COCARTESIAN_COCLOSED",
              CoclosedMonoidal := "Cocartesian",
              MONOIDAL := "COCARTESIAN",
              Monoidal := "Cocartesian",
              monoidal := "cocartesian",
-             Dual := "CocartesianDual",
-             Bidual := "CocartesianBidual",
+             CoDual := "CocartesianDual",
+             CoBidual := "CocartesianBidual",
              tensor_object := "coproduct_object",
              tensored := "u",
              otimes := "sqcup",
@@ -222,8 +222,8 @@ WriteFileForCoclosedMonoidalStructure(
              CoclosedMonoidalCategories_gi := "CocartesianCoclosedCategories.gi",
              RigidSymmetricCoclosedMonoidalCategoriesMethodRecord_gi := fail,
              RigidSymmetricCoclosedMonoidalCategories_gi := fail,
-             CoclosedMonoidalCategoriesDerivedMethods_gi := fail, #"CocartesianCoclosedCategoriesDerivedMethods.gi",
-             SymmetricCoclosedMonoidalCategoriesDerivedMethods_gi := fail, #"SymmetricCocartesianCoclosedCategoriesDerivedMethods.gi",
+             CoclosedMonoidalCategoriesDerivedMethods_gi := "CocartesianCoclosedCategoriesDerivedMethods.gi",
+             SymmetricCoclosedMonoidalCategoriesDerivedMethods_gi := "SymmetricCocartesianCoclosedCategoriesDerivedMethods.gi",
              RigidSymmetricCoclosedMonoidalCategoriesDerivedMethods_gi := fail,
              )
         );
