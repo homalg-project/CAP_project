@@ -450,6 +450,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     hom_structure_range_category := MatrixCategory( ring );
     
+    SetRangeCategoryOfHomomorphismStructure( category, hom_structure_range_category );
+    
     ##
     object_constructor := function( n )
         
