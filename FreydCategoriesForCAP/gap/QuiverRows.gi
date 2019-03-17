@@ -350,6 +350,33 @@ InstallMethod( AsListListOfMatrices,
     
 end );
 
+##
+InstallMethod( PermutationToSortedRepresentative,
+               [ IsQuiverRowsObject ],
+               
+  function( object )
+    local list;
+    
+    list := ListOfQuiverVertices( object );
+    
+    return SortingPerm( List( list, l -> l[1] ) );
+    
+end );
+
+##
+InstallMethod( SortedRepresentative,
+               [ IsQuiverRowsObject ],
+                
+  function( object )
+    local perm, list;
+    
+    perm := PermutationToSortedRepresentative( object );
+    
+    list := ListOfQuiverVertices( object );
+    
+    return QuiverRowsObject( Permuted( list, perm ), CapCategory( object ) );
+    
+end );
 
 ####################################
 ##

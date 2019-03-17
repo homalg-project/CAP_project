@@ -76,6 +76,18 @@ DeclareAttribute( "NrColumns",
 DeclareAttribute( "AsListListOfMatrices",
                   IsQuiverRowsMorphism );
 
+DeclareAttribute( "SortedRepresentative",
+                  IsQuiverRowsObject );
+
+DeclareAttribute( "IsomorphismToSortedRepresentative",
+                  IsQuiverRowsObject );
+
+DeclareAttribute( "IsomorphismFromSortedRepresentative",
+                  IsQuiverRowsObject );
+
+DeclareAttribute( "PermutationToSortedRepresentative",
+                  IsQuiverRowsObject );
+
 ####################################
 ##
 #! @Section Operators
