@@ -392,6 +392,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ## precomputing matrices for the hom structure of the algebroid
     ## hom_structure_algebroid[ v_index ][ w_index ][ v'_index ][ w'_index ][ path_1_index ][ path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> path_1 * x * path_2 ]
+    ## in particular: (path_1: v' -> v), (path_2: w -> w')
     
     MATRIX_FOR_ALGEBROID_HOMSTRUCTURE := function( v, w, vp, wp, path_1, path_2 )
         local mat, hom_v_w, hom_vp_wp, alpha, beta, path;
@@ -449,8 +450,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             List( vertices, w ->
                 List( vertices, vp ->
                     List( vertices, wp ->
-                        List( basis_paths_by_vertex_index[ VertexNumber( v ) ][ VertexNumber( w ) ], path_1 ->
-                            List( basis_paths_by_vertex_index[ VertexNumber( vp ) ][ VertexNumber( wp ) ], path_2 ->
+                        List( basis_paths_by_vertex_index[ VertexNumber( vp ) ][ VertexNumber( v ) ], path_1 ->
+                            List( basis_paths_by_vertex_index[ VertexNumber( w ) ][ VertexNumber( wp ) ], path_2 ->
                                 MATRIX_FOR_ALGEBROID_HOMSTRUCTURE( v, w, vp, wp, path_1, path_2 )
                             )
                         )
