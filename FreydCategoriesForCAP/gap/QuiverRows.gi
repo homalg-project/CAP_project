@@ -1361,6 +1361,15 @@ InstallMethod( Display,
                
   function( morphism )
     
+    Print( "Source: ");
+    Display( Source( morphism ) );
+    Print( "  |\n");
+    Print( "  |\n");
+    Print( "Matrix: ");
     Display( MorphismMatrix( morphism ) );
+    Print( "  |\n");
+    Print( "  v\n");
+    Print( "Range : ");
+    Display( Range( morphism ) );
     
 end );
