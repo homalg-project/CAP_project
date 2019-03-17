@@ -306,25 +306,25 @@ InstallMethod( AsListListOfMatrices,
     
     row_intervals := [];
     
-    boundary := 0;
+    boundary := 1;
     
     for i in [ 1 .. Size( list_source ) ] do
         
-        boundary := boundary + 1;
-        
         row_intervals[i] := [ boundary .. boundary + (list_source[i][2] - 1) ];
+        
+        boundary := boundary + list_source[i][2];
         
     od;
     
     col_intervals := [];
     
-    boundary := 0;
+    boundary := 1;
     
     for i in [ 1 .. Size( list_range ) ] do
         
-        boundary := boundary + 1;
-        
         col_intervals[i] := [ boundary .. boundary + (list_range[i][2] - 1) ];
+        
+        boundary := boundary + list_range[i][2];
         
     od;
     
