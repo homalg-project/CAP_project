@@ -978,12 +978,6 @@ InstallGlobalFunction( ADD_GRADED_LIFT_ALONG_MONOMORPHISM,
 
         lift := LiftAlongMonomorphism( UnderlyingPresentationMorphism( iota ), UnderlyingPresentationMorphism( tau ) );
         
-        if lift = fail then
-
-            return fail;
-
-        fi;
-
         return GradedPresentationMorphism( Source( tau ), lift, Source( iota ) );
 
     end );
@@ -1001,12 +995,6 @@ InstallGlobalFunction( ADD_GRADED_COLIFT_ALONG_EPIMORPHISM,
         local colift;
 
         colift := ColiftAlongEpimorphism( UnderlyingPresentationMorphism( epsilon ), UnderlyingPresentationMorphism( tau ) );
-
-        if colift = fail then
-
-            return fail;
-
-        fi;
 
         return GradedPresentationMorphism( Range( epsilon ), colift, Range( tau ) );
 
