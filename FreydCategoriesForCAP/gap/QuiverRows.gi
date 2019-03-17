@@ -610,6 +610,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             
         fi;
         
+        if not Size( matrix ) = nr_rows then
+            
+            return false;
+            
+        fi;
+        
+        if not ForAll( matrix, row -> Size( row ) = nr_cols ) then
+            
+            return false;
+            
+        fi;
+        
         source := Source( morphism );
         
         range := Range( morphism );
