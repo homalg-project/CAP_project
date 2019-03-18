@@ -619,14 +619,6 @@ InstallGlobalFunction( ADD_GRADED_COLIFT,
         
         fi;
         
-        colift := GradedPresentationMorphism( Range( alpha ), colift, Range( beta ) );
-        
-        if not IsWellDefined( colift ) then
-        
-          Error( "An output of the Colift method is not well-defined!" );
-        
-        fi;
-        
         if left_or_right = "left" then
 
           required_degrees := List( GeneratorDegrees( Range( alpha ) ),
