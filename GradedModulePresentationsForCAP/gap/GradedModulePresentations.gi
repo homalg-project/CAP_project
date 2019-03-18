@@ -194,6 +194,10 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION,
     ADD_GRADED_IS_IDENTICAL_FOR_MORPHISMS( category );
     
     ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
+
+    ADD_GRADED_LIFT_ALONG_MONOMORPHISM( category );
+
+    ADD_GRADED_COLIFT_ALONG_EPIMORPHISM( category );
     
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
@@ -267,6 +271,10 @@ InstallGlobalFunction( ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_GRADED_IS_IDENTICAL_FOR_MORPHISMS( category );
     
     ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT( category );
+
+    ADD_GRADED_LIFT_ALONG_MONOMORPHISM( category );
+
+    ADD_GRADED_COLIFT_ALONG_EPIMORPHISM( category );
     
     if HasIsCommutative( category!.ring_for_representation_category ) and IsCommutative( category!.ring_for_representation_category ) then
       
@@ -570,7 +578,9 @@ InstallGlobalFunction( ADD_GRADED_LIFT,
         lift := Lift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
         
         if lift = fail then
+        
             return fail;
+        
         fi;
         
         if left_or_right = "left" then
@@ -604,7 +614,9 @@ InstallGlobalFunction( ADD_GRADED_COLIFT,
         colift := Colift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
         
         if colift = fail then
-            return fail;
+        
+          return fail;
+        
         fi;
         
         if left_or_right = "left" then
@@ -942,6 +954,42 @@ InstallGlobalFunction( ADD_GRADED_IDENTITY,
         
         return GradedPresentationMorphism( object, morphism, object );
         
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_LIFT_ALONG_MONOMORPHISM,
+
+  function( category )
+    
+    AddLiftAlongMonomorphism( category,
+
+      function( iota, tau )
+        local lift;
+
+        lift := LiftAlongMonomorphism( UnderlyingPresentationMorphism( iota ), UnderlyingPresentationMorphism( tau ) );
+        
+        return GradedPresentationMorphism( Source( tau ), lift, Source( iota ) );
+
+    end );
+
+end );
+
+##
+InstallGlobalFunction( ADD_GRADED_COLIFT_ALONG_EPIMORPHISM,
+
+  function( category )
+
+    AddColiftAlongEpimorphism( category,
+
+      function( epsilon, tau )
+        local colift;
+
+        colift := ColiftAlongEpimorphism( UnderlyingPresentationMorphism( epsilon ), UnderlyingPresentationMorphism( tau ) );
+
+        return GradedPresentationMorphism( Range( epsilon ), colift, Range( tau ) );
+
     end );
     
 end );
