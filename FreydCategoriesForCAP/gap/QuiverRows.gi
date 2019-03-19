@@ -174,6 +174,10 @@ InstallMethod( AsQuiverRowsMorphism,
         
         m_rep := Representative( m );
         
+    else
+        
+        m_rep := m;
+        
     fi;
     
     v := Source( LeadingPath( m_rep ) );
