@@ -45,22 +45,23 @@ UnzipDegreeList( Object2R );
 #! @EndExample
 
 
-#! Whenever the object constructor is called, it tried to simplify the given degree list. To this end it checks if 
+#! Whenever the object constructor is called, it tries to simplify the given degree list. To this end it checks if
 #! subsequent degree group elements match. If so, their multiplicities are added. So, as in the example above we have:
-#! $$ [ [[1,0],2], [[1,0],3],[[0,1],2],[[1,0],1] ] \mapsto [ [ ( 1, 0 ), 5 ], [ ( 0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ] $$
-#! Note that, even though there are two occurances of $\left( 1,0 \right)$ in the final degree list, which we do not 
-#! simplify. The reason for this is as follows. Assume that we have a map of graded modules
+#! $$ [ [(1,0),2], [(1,0),3],[(0,1),2],[(1,0),1] ] \mapsto [ [ ( 1, 0 ), 5 ], [ ( 0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ] $$
+#! Note that, even though there are two occurances of $\left( 1,0 \right)$ in the final degree list, we do not
+#! simplify further. The reason for this is as follows. Assume that we have a map of graded rows
 #! $$ \varphi \colon A \to B $$
-#! given by a homomgeneous matrix $M$ and that we want to compute the kernel embedding of this mapping. To this end we
-#! first compute the syzygies (of rows or columns, depending on whether we are dealing with right or left-modules) of
-#! $M$. Let us call the corresponding matrix $N$. Then we deduce the degree list of the kernel object from $N$ and
+#! given by a homomgeneous matrix $M$ and that we want to compute the weak kernel embedding of this mapping. To this end we
+#! first compute the row syzygies of
+#! $M$. Let us call the corresponding matrix $N$. Then we deduce the degree list of the weak kernel object from $N$ and
 #! from the graded row $A$. Once this degree list is known, we would call the object constructor.
-#! If this object constructor summarised all (and not only subsequent) occurances of one degree element in the 
-#! degree list, then in order to make sure that the kernel embedding is a mapping of graded modules, rows/columns
+#! If this object constructor summarised all (and not only subsequent) occurances of one degree element in the
+#! degree list, then in order to make sure that the weak kernel embedding is a mapping of graded rows, the rows
 #! of the matrix $N$ would have to be shuffled. The latter we do not wish to perform.
-
-#! Note that the 'IsEqualForObjects' methods returns true whenever the degree lists of two graded rows are identical. So
-#! in particular it returns false, if the degree lists are mere permutations of one another. Here is an example.
+#!
+#! Note that the 'IsEqualForObjects' methods returns true whenever the degree lists of two graded rows/columns are identical. So
+#! in particular it returns false, if the degree lists are mere permutations of one another.
+#! Here is an example.
 
 #! @Example
 
