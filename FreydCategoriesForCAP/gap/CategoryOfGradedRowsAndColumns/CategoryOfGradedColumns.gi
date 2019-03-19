@@ -23,6 +23,10 @@ InstallMethod( CAPCategoryOfGradedColumns,
       # create category
       category := CreateCapCategory( Concatenation( "CAP category of graded columns over "
                                                                                           , RingName( homalg_graded_ring ) ) );
+      AddObjectRepresentation( category, IsGradedColumnRep );
+      
+      AddMorphismRepresentation( category, IsGradedColumnMorphismRep );
+      
       category!.homalg_graded_ring_for_category_of_graded_columns := homalg_graded_ring;
 
       # here we can switch internal checks in constructor on or of - true means they are performed and false means they are not

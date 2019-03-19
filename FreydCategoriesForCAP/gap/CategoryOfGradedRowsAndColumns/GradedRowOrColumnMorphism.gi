@@ -18,22 +18,9 @@ DeclareRepresentation( "IsGradedRowMorphismRep",
                        IsGradedRowMorphism and IsAttributeStoringRep,
                        [ ] );
 
-BindGlobal( "TheFamilyOfGradedRowMorphisms",
-        NewFamily( "TheFamilyOfGradedRowMorphisms" ) );
-
-BindGlobal( "TheTypeOfGradedRowMorphisms",
-        NewType( TheFamilyOfGradedRowMorphisms, IsGradedRowMorphismRep ) );
-
 DeclareRepresentation( "IsGradedColumnMorphismRep",
                        IsGradedColumnMorphism and IsAttributeStoringRep,
                        [ ] );
-
-BindGlobal( "TheFamilyOfGradedColumnMorphisms",
-        NewFamily( "TheFamilyOfGradedColumnMorphisms" ) );
-
-BindGlobal( "TheTypeOfGradedColumnMorphisms",
-        NewType( TheFamilyOfGradedColumnMorphisms, IsGradedColumnMorphismRep ) );
-
 
 ####################################
 ##
@@ -109,23 +96,14 @@ InstallMethod( GradedRowOrColumnMorphism,
     
     # now create the morphism
     graded_row_or_column_morphism := rec( );
-
-    # define the type
-    if left then
-        type := TheTypeOfGradedRowMorphisms;
-    else
-        type := TheTypeOfGradedColumnMorphisms;
-    fi;
     
-    ObjectifyWithAttributes( graded_row_or_column_morphism, type, 
-                             Source, source,
-                             Range, range,
-                             UnderlyingHomalgGradedRing, homalg_graded_ring,
-                             UnderlyingHomalgMatrix, homalg_matrix
+    ObjectifyMorphismForCAPWithAttributes(
+      graded_row_or_column_morphism, category,
+      Source, source,
+      Range, range,
+      UnderlyingHomalgGradedRing, homalg_graded_ring,
+      UnderlyingHomalgMatrix, homalg_matrix
     );
-
-    # add the morphism to the category
-    Add( category, graded_row_or_column_morphism );
     
     # and return the morphism
     return graded_row_or_column_morphism;
@@ -136,7 +114,7 @@ end );
 InstallMethod( GradedRowOrColumnMorphism,
                [ IsGradedRowOrColumn, IsHomalgMatrix, IsGradedRowOrColumn, IsBool ],
   function( source, homalg_matrix, range, checks_wished )
-    local graded_row_or_column_morphism, homalg_graded_ring, category, left, type;
+    local graded_row_or_column_morphism, homalg_graded_ring, category, type;
     
     # if checks are wished, hand the input to the method above
     if checks_wished then
@@ -146,26 +124,17 @@ InstallMethod( GradedRowOrColumnMorphism,
     # checks not wished, so continue here and collect necessary data
     category := CapCategory( source );
     homalg_graded_ring := HomalgRing( homalg_matrix );
-    left := IsGradedRow( source );
     
-    # define the type
-    if left then
-        type := TheTypeOfGradedRowMorphisms;
-    else
-        type := TheTypeOfGradedColumnMorphisms;
-    fi;
-
     # construct the morphism
     graded_row_or_column_morphism := rec( );
-    ObjectifyWithAttributes( graded_row_or_column_morphism, type, 
-                             Source, source,
-                             Range, range,
-                             UnderlyingHomalgGradedRing, homalg_graded_ring,
-                             UnderlyingHomalgMatrix, homalg_matrix
+    
+    ObjectifyMorphismForCAPWithAttributes( 
+      graded_row_or_column_morphism, category,
+      Source, source,
+      Range, range,
+      UnderlyingHomalgGradedRing, homalg_graded_ring,
+      UnderlyingHomalgMatrix, homalg_matrix
     );
-
-    # and add it to the category
-    Add( category, graded_row_or_column_morphism );
     
     # finally return the morphism
     return graded_row_or_column_morphism;

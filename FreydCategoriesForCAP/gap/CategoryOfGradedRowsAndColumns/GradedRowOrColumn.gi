@@ -18,21 +18,9 @@ DeclareRepresentation( "IsGradedRowRep",
                        IsGradedRow and IsAttributeStoringRep,
                        [ ] );
 
-BindGlobal( "TheFamilyOfGradedRows",
-        NewFamily( "TheFamilyOfGradedRows" ) );
-
-BindGlobal( "TheTypeOfGradedRows",
-        NewType( TheFamilyOfGradedRows, IsGradedRowRep ) );
-
 DeclareRepresentation( "IsGradedColumnRep",
                        IsGradedColumn and IsAttributeStoringRep,
                        [ ] );
-
-BindGlobal( "TheFamilyOfGradedColumns",
-        NewFamily( "TheFamilyOfGradedColumns" ) );
-
-BindGlobal( "TheTypeOfGradedColumns",
-        NewType( TheFamilyOfGradedColumns, IsGradedColumnRep ) );
 
 ####################################
 ##
@@ -103,13 +91,15 @@ InstallGlobalFunction( GradedRowOrColumn,
     
     fi;
 
-    # now construct the correct category and type for the object
+    # now construct the correct category
     if left = true then
-        type := TheTypeOfGradedRows;
+        
         category := CAPCategoryOfGradedRows( homalg_graded_ring );
+        
     else
-        type := TheTypeOfGradedColumns;
+        
         category := CAPCategoryOfGradedColumns( homalg_graded_ring );
+        
     fi;
     
     # now construct the object
@@ -118,26 +108,18 @@ InstallGlobalFunction( GradedRowOrColumn,
     
     # check if the object is the zero object, and if so objectify it with the empty degree_list
     if rank = 0 then
-
-      ObjectifyWithAttributes( gradedRowOrColumn, type,
-                             DegreeList, [ ],
-                             RankOfObject, rank,
-                             UnderlyingHomalgGradedRing, homalg_graded_ring
-      );
         
-    else
-    
-      ObjectifyWithAttributes( gradedRowOrColumn, type,
-                             DegreeList, degree_list,
-                             RankOfObject, rank,
-                             UnderlyingHomalgGradedRing, homalg_graded_ring
-      );
-
+        degree_list := [];
+        
     fi;
-
-    # now add the object to the category
-    Add( category, gradedRowOrColumn );
-
+    
+    ObjectifyObjectForCAPWithAttributes( 
+      gradedRowOrColumn, category,
+      DegreeList, degree_list,
+      RankOfObject, rank,
+      UnderlyingHomalgGradedRing, homalg_graded_ring
+    );
+    
     # and return it
     return gradedRowOrColumn;
 
@@ -177,36 +159,29 @@ InstallGlobalFunction( GradedRowOrColumnLazy,
 
     # set the type
     if left = true then
-        type := TheTypeOfGradedRows;
+        
         category := CAPCategoryOfGradedRows( homalg_graded_ring );
+        
     else
-        type := TheTypeOfGradedColumns;
+        
         category := CAPCategoryOfGradedColumns( homalg_graded_ring );
+        
     fi;
     
     # check if the object is the zero object, and if so objectify it with the empty degree_list
-    gradedRowOrColumn := rec( );
     if rank = 0 then
-
-      ObjectifyWithAttributes( gradedRowOrColumn, type,
-                             DegreeList, [ ],
-                             RankOfObject, rank,
-                             UnderlyingHomalgGradedRing, homalg_graded_ring
-      );
-    
-    else
-    
-      ObjectifyWithAttributes( gradedRowOrColumn, type,
-                             DegreeList, degree_list,
-                             RankOfObject, rank,
-                             UnderlyingHomalgGradedRing, homalg_graded_ring
-      );
-
+        
+        degree_list := [];
+        
     fi;
-
-    # now add the object to the category
-    Add( category, gradedRowOrColumn );
-
+    
+    ObjectifyObjectForCAPWithAttributes( 
+      gradedRowOrColumn, category,
+      DegreeList, degree_list,
+      RankOfObject, rank,
+      UnderlyingHomalgGradedRing, homalg_graded_ring
+    );
+    
     # and return it
     return gradedRowOrColumn;
 
