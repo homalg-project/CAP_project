@@ -1997,6 +1997,57 @@ AddDerivationToCAP( IsomorphismFromDirectSumToCoproduct,
     
 end : Description := "IsomorphismFromDirectSumToCoproduct as the inverse of IsomorphismFromCoproductToDirectSum" );
 
+##
+AddDerivationToCAP( Lift,
+                    [ [ IdentityMorphism, 1 ],
+                      [ SolveLinearSystemInAbCategory, 1 ] ],
+  function( alpha, beta )
+    local left_coefficients, right_coefficients, right_side, right_divide;
+    
+    left_coefficients := [ [ IdentityMorphism( Source( alpha ) ) ] ];
+    
+    right_coefficients := [ [ beta ] ];
+    
+    right_side := [ alpha ];
+    
+    right_divide := SolveLinearSystemInAbCategory(
+                      left_coefficients, right_coefficients, right_side );
+    
+    if right_divide = fail then
+      
+      return fail;
+      
+    fi;
+    
+    return right_divide[1];
+    
+end : Description := "Lift by SolveLinearSystemInAbCategory" );
+              
+##
+AddDerivationToCAP( Colift,
+                    [ [ IdentityMorphism, 1 ],
+                      [ SolveLinearSystemInAbCategory, 1 ] ],
+  function( alpha, beta )
+    local left_coefficients, right_coefficients, right_side, left_divide;
+    
+    left_coefficients := [ [ alpha ] ];
+    
+    right_coefficients := [ [ IdentityMorphism( Range( beta ) ) ] ];
+    
+    right_side := [ beta ];
+    
+    left_divide := SolveLinearSystemInAbCategory(
+                      left_coefficients, right_coefficients, right_side );
+    
+    if left_divide = fail then
+      
+      return fail;
+      
+    fi;
+    
+    return left_divide[1];
+    
+end : Description := "Colift by SolveLinearSystemInAbCategory" );
 
 ###########################
 ##

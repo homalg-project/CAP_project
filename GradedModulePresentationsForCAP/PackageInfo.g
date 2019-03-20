@@ -23,6 +23,7 @@ Version := Maximum( [
            ] ),
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
@@ -71,7 +72,7 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ModulePresentationsForCAP", ">=2017.03.20" ],
-                           [ "GradedRingForHomalg", ">=2018.02.04" ],
+                           [ "GradedRingForHomalg", ">=2018.12.04" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=2016.09.19" ],
                            [ "HomologicalAlgebraForCAP", ">=2015.05.08" ] ],
   SuggestedOtherPackages := [ ],
