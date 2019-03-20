@@ -138,16 +138,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
              source_degrees, range_degrees, buffer_row, dummy_range_degrees, i, j;
         
         # extract source and range
-        source := Source( morphism );        
+        source := Source( morphism );
         range := Range( morphism );
         
-        # and that source and range are defined in the same category
-        if not IsIdenticalObj( CapCategory( source ), CapCategory( range ) ) then
-        
-          return false;
-        
-        fi;
-
         # next check that the underlying homalg_graded_rings are identical
         if not ( IsIdenticalObj( UnderlyingHomalgGradedRing( source ), UnderlyingHomalgGradedRing( morphism ) ) and
                         IsIdenticalObj( UnderlyingHomalgGradedRing( morphism ), UnderlyingHomalgGradedRing( range ) ) ) then
@@ -156,7 +149,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         
         fi;
         
-        # extract the mapping matrix        
+        # extract the mapping matrix
         morphism_matrix := UnderlyingHomalgMatrix( morphism );
         
         # then check if the dimensions of the matrix fit with the ranks of the source and range modules

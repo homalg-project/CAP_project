@@ -142,14 +142,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         # extract source and range
         source := Source( morphism );
         range := Range( morphism );
-
-        # and that source and range are defined in the same category
-        if not IsIdenticalObj( CapCategory( source ), CapCategory( range ) ) then
-
-          return false;
-
-        fi;
-
+        
         # next check that the underlying homalg_graded_rings are identical
         if not ( IsIdenticalObj( UnderlyingHomalgGradedRing( source ), UnderlyingHomalgGradedRing( morphism ) ) and
                  IsIdenticalObj( UnderlyingHomalgGradedRing( morphism ), UnderlyingHomalgGradedRing( range ) ) ) then
