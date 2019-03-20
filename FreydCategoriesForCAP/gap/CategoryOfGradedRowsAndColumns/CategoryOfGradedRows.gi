@@ -43,28 +43,9 @@ InstallMethod( CAPCategoryOfGradedRows,
     
       # install its functionality
       INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS( category, category!.constructor_checks_wished );
-    
-      # add theorem file
-      AddTheoremFileToCategory( category,
-        Filename(
-        DirectoriesPackageLibrary( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/LogicGradedRows" ),
-        "Propositions.tex" )
-      );
-    
-      # add predicate-implication file
-      AddPredicateImplicationFileToCategory( category,
-        Filename(
-        DirectoriesPackageLibrary( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/LogicGradedRows" ),
-        "PredicateImplications.tex" )
-      );
-    
-      # add relations file
-      AddEvalRuleFileToCategory( category,
-        Filename(
-        DirectoriesPackageLibrary( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/LogicGradedRows" ),
-        "Relations.tex" )
-      );
-    
+      
+      CapCategorySwitchLogicOff( category );
+      
       # finalise the category
       Finalize( category );
     

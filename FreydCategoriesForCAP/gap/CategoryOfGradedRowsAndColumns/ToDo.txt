@@ -1,7 +1,5 @@
 TODO:
 
-Logic needed?
-
 (*) Implement InjectionOfBiasedWeakPushout and thereby also BiasedWeakPushout
 (*) Remove "left" and "right" remnants in Tools.gd and Tools.gi
 (*) Apply FreydCategory to GradedRows and GradedColumns as test
