@@ -21,8 +21,7 @@ InstallMethod( CAPCategoryOfGradedRows,
     local category;
 
       # construct the category
-      category := CreateCapCategory( Concatenation( "CAP category of graded rows over "
-                                                                                          , RingName( homalg_graded_ring ) ) );
+      category := CreateCapCategory( Concatenation( "CAP category of graded rows over ", RingName( homalg_graded_ring ) ) );
       
       AddObjectRepresentation( category, IsGradedRowRep );
       

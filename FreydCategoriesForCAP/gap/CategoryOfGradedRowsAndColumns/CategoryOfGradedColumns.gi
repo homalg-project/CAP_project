@@ -21,8 +21,7 @@ InstallMethod( CAPCategoryOfGradedColumns,
     local category;
     
       # create category
-      category := CreateCapCategory( Concatenation( "CAP category of graded columns over "
-                                                                                          , RingName( homalg_graded_ring ) ) );
+      category := CreateCapCategory( Concatenation( "CAP category of graded columns over ", RingName( homalg_graded_ring ) ) );
       AddObjectRepresentation( category, IsGradedColumnRep );
       
       AddMorphismRepresentation( category, IsGradedColumnMorphismRep );
