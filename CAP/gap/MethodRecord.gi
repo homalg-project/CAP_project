@@ -2304,10 +2304,19 @@ IsWellDefinedForMorphisms := rec(
   dual_operation := "IsWellDefinedForMorphisms",
   
   redirect_function := function( morphism )
+    local category, source, range;
     
-    if not ( IsWellDefined( Source( morphism ) ) and IsWellDefined( Range( morphism ) ) ) then
+    source := Source( morphism );
+    
+    range := Range( morphism );
+    
+    category := CapCategory( morphism );
+    
+    if not ( IsWellDefined( source ) and IsWellDefined( range ) )
+       or not ( IsIdenticalObj( CapCategory( source ), category ) and IsIdenticalObj( CapCategory( range ), category ) ) then
       
       return [ true, false ];
+      
       
     else
       
